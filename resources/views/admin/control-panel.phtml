@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\CleanDataFolder;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\PhpInformation;
@@ -96,7 +97,7 @@ use Illuminate\Support\Collection;
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/preferences') ?></span>
-                        <a href="<?= e(route('admin-clean-data')) ?>">
+                        <a href="<?= e(route(CleanDataFolder::class)) ?>">
                             <?= I18N::translate('Clean up data folder') ?>
                         </a>
                     </li>

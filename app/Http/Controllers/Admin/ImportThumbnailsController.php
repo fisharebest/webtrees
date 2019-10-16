@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
@@ -309,7 +310,14 @@ class ImportThumbnailsController extends AbstractAdminController
     {
         $size       = 10;
         $sha1       = sha1_file($path);
-        $cache_file = WT_DATA_DIR . 'cache/' . $sha1 . '.php';
+
+        $cache_dir  = Webtrees::DATA_DIR . 'cache/';
+
+        if (!is_dir($cache_dir)) {
+            mkdir($cache_dir);
+        }
+
+        $cache_file = $cache_dir . $sha1 . '.php';
 
         if (file_exists($cache_file)) {
             return include $cache_file;

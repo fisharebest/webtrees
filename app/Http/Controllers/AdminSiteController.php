@@ -57,9 +57,6 @@ class AdminSiteController extends AbstractBaseController
     /** @var DatatablesService */
     private $datatables_service;
 
-    /** @var FilesystemInterface */
-    private $filesystem;
-
     /** @var MailService */
     private $mail_service;
 
@@ -76,103 +73,17 @@ class AdminSiteController extends AbstractBaseController
      * AdminSiteController constructor.
      *
      * @param DatatablesService   $datatables_service
-     * @param FilesystemInterface $filesystem
      * @param MailService         $mail_service
      * @param ModuleService       $module_service
      * @param UserService         $user_service
      */
-    public function __construct(DatatablesService $datatables_service, FilesystemInterface $filesystem, MailService $mail_service, ModuleService $module_service, TreeService $tree_service, UserService $user_service)
+    public function __construct(DatatablesService $datatables_service, MailService $mail_service, ModuleService $module_service, TreeService $tree_service, UserService $user_service)
     {
         $this->mail_service       = $mail_service;
         $this->datatables_service = $datatables_service;
-        $this->filesystem         = $filesystem;
         $this->module_service     = $module_service;
         $this->tree_service       = $tree_service;
         $this->user_service       = $user_service;
-    }
-
-    /**
-     * Show old user files in the data folder.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function cleanData(ServerRequestInterface $request): ResponseInterface
-    {
-        $protected = [
-            '.htaccess',
-            '.gitignore',
-            'index.php',
-            'config.ini.php',
-        ];
-
-        if ($request->getAttribute('dbtype') === 'sqlite') {
-            $protected[] = $request->getAttribute('dbname') . '.sqlite';
-        }
-
-        // Protect the media folders
-        foreach ($this->tree_service->all() as $tree) {
-            $media_directory = $tree->getPreference('MEDIA_DIRECTORY');
-            [$folder] = explode('/', $media_directory);
-
-            $protected[] = $folder;
-        }
-
-        // List the top-level contents of the data folder
-        $entries = array_map(static function (array $content) {
-            return $content['path'];
-        }, $this->filesystem->listContents());
-
-        return $this->viewResponse('admin/clean-data', [
-            'title'     => I18N::translate('Clean up data folder'),
-            'entries'   => $entries,
-            'protected' => $protected,
-        ]);
-    }
-
-    /**
-     * Delete old user files in the data folder.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function cleanDataAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $to_delete = $request->getParsedBody()['to_delete'] ?? [];
-        $to_delete = array_filter($to_delete);
-
-        foreach ($to_delete as $path) {
-            $metadata = $this->filesystem->getMetadata($path);
-
-            if ($metadata === false) {
-                // Already deleted?
-                continue;
-            }
-
-            if ($metadata['type'] === 'dir') {
-                try {
-                    $this->filesystem->deleteDir($path);
-
-                    FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', e($path)), 'success');
-                } catch (Exception $ex) {
-                    FlashMessages::addMessage(I18N::translate('The folder %s could not be deleted.', e($path)), 'danger');
-                }
-            }
-
-            if ($metadata['type'] === 'file') {
-                try {
-                    $this->filesystem->delete($path);
-
-                    FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', e($path)), 'success');
-                } catch (Exception $ex) {
-                    FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)), 'danger');
-                }
-            }
-        }
-
-        return redirect(route('admin-clean-data'));
     }
 
     /**

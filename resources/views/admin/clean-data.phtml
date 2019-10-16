@@ -1,6 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\DeletePath;
 use Fisharebest\Webtrees\I18N;
 
 ?>
@@ -16,24 +17,24 @@ use Fisharebest\Webtrees\I18N;
 <form method="post">
     <input type="hidden" value="admin-clean-data">
     <?= csrf_field() ?>
-    <ul class="fa-ul">
-        <?php
-        foreach ($entries as $entry) {
-            if (in_array($entry, $protected, true)) {
-                echo '<li><span class="fa-li">' . view('icons/ban') . '</span>', e($entry), '</li>';
-            } else {
-                echo '<li><span class="fa-li">' . view('icons/delete') . '</span>';
-                echo '<label>';
-                echo '<input type="checkbox" name="to_delete[]" value="', e($entry), '"> ';
-                echo e($entry);
-                echo '</label></li>';
-            }
-        }
-        ?>
-    </ul>
 
-    <button class="btn btn-danger" type="submit">
-        <?= view('icons/delete') ?>
-        <?= /* I18N: A button label. */ I18N::translate('delete') ?>
-    </button>
+    <ul class="fa-ul">
+        <?php foreach ($entries as $entry) : ?>
+            <li>
+                <?php if (substr_compare($entry, '/', -1) === 0) : ?>
+                    <?= view('icons/folder') ?>
+                <?php else : ?>
+                     <?= view('icons/file') ?>
+                <?php endif ?>
+                <?= e($entry) ?>
+                <?php if (in_array($entry, $protected, true)) : ?>
+                    <?= view('icons/ban') ?>
+                <?php else : ?>
+                    <a href="#" data-post-url="<?= e(route(DeletePath::class, ['path' => $entry])) ?>" class="btn btn-sm btn-link">
+                        <?= view('icons/delete') ?>
+                    </a>
+                <?php endif ?>
+            </li>
+        <?php endforeach ?>
+    </ul>
 </form>

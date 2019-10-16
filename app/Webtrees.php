@@ -69,6 +69,9 @@ class Webtrees
     // The root folder of this installation
     public const ROOT_DIR = __DIR__ . '/../';
 
+    // Some code needs a local filesystem, e.g. for caching.
+    public const DATA_DIR = self::ROOT_DIR . 'data/';
+
     // Location of the file containing the database connection details.
     public const CONFIG_FILE = self::ROOT_DIR . 'data/config.ini.php';
 
