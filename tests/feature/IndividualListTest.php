@@ -51,34 +51,31 @@ class IndividualListTest extends TestCase
         $individual_list_service = new IndividualListService($localization_service, $tree);
         $controller              = new ListController($individual_list_service, $localization_service);
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [
-            'route'  => 'module',
-            'module' => 'individual_list',
-            'action' => 'List',
-        ])->withAttribute('tree', $tree)
-            ->withAttribute('user', $user);
-        $response = $controller->individualList($request, $list_module);
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'alpha' => 'B'])
+        $request  = self::createRequest()
             ->withAttribute('tree', $tree)
             ->withAttribute('user', $user);
         $response = $controller->individualList($request, $list_module);
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'alpha' => ','])
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => 'B'])
             ->withAttribute('tree', $tree)
             ->withAttribute('user', $user);
         $response = $controller->individualList($request, $list_module);
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'alpha' => '@'])
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => ','])
+            ->withAttribute('tree', $tree)
+            ->withAttribute('user', $user);
+        $response = $controller->individualList($request, $list_module);
+        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => '@'])
             ->withAttribute('tree', $tree)
             ->withAttribute('user', $tree);
         $response = $controller->individualList($request, $list_module);
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['route' => 'module', 'module' => 'individual_list', 'action' => 'List', 'surname' => 'BRAUN'])
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['surname' => 'BRAUN'])
             ->withAttribute('tree', $tree)
             ->withAttribute('user', $user);
         $response = $controller->individualList($request, $list_module);

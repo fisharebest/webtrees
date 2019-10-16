@@ -68,7 +68,6 @@ class ChangesLogControllerTest extends TestCase
         $individual = $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
         $controller = new ChangesLogController($datatables_service, $myers_diff, $tree_service, $user_service);
         $request    = self::createRequest(RequestMethodInterface::METHOD_GET, [
-            'route'  => 'admin-changes-log-data',
             'search' => 'Joe',
             'from'   => '2000-01-01',
             'to'     => '2099-12-31',

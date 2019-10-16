@@ -37,7 +37,7 @@ class MapProviderControllerTest extends TestCase
     public function testMapProviderEdit(): void
     {
         $controller = new MapProviderController();
-        $request    = self::createRequest(RequestMethodInterface::METHOD_GET, ['route' => 'map-provider']);
+        $request    = self::createRequest();
         $response   = $controller->mapProviderEdit($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -49,7 +49,7 @@ class MapProviderControllerTest extends TestCase
     public function testMapProviderSave(): void
     {
         $controller = new MapProviderController();
-        $request    = self::createRequest(RequestMethodInterface::METHOD_POST, ['route' => 'map-provider'], ['provider' => '', 'geonames' => '']);
+        $request    = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['provider' => '', 'geonames' => '']);
         $response   = $controller->mapProviderSave($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());

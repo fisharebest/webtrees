@@ -42,7 +42,7 @@ class MediaControllerTest extends TestCase
         $datatables_service = new DatatablesService();
         $filesystem         = new Filesystem(new MemoryAdapter());
         $controller         = new MediaController($datatables_service, $filesystem);
-        $request            = self::createRequest(RequestMethodInterface::METHOD_GET, ['route' => 'admin-media']);
+        $request            = self::createRequest();
         $response           = $controller->index($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -57,7 +57,6 @@ class MediaControllerTest extends TestCase
         $filesystem         = new Filesystem(new MemoryAdapter());
         $controller         = new MediaController($datatables_service, $filesystem);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
-            'route'        => 'admin-media-data',
             'files'        => 'local',
             'media_folder' => '',
             'subfolders'   => 'include',
@@ -79,7 +78,6 @@ class MediaControllerTest extends TestCase
         $filesystem         = new Filesystem(new MemoryAdapter());
         $controller         = new MediaController($datatables_service, $filesystem);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
-            'route'        => 'admin-media-external',
             'files'        => 'local',
             'media_folder' => '',
             'subfolders'   => 'include',
@@ -101,7 +99,6 @@ class MediaControllerTest extends TestCase
         $filesystem         = new Filesystem(new MemoryAdapter());
         $controller         = new MediaController($datatables_service, $filesystem);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
-            'route'        => 'admin-media-unused',
             'files'        => 'local',
             'media_folder' => '',
             'subfolders'   => 'include',
@@ -122,7 +119,7 @@ class MediaControllerTest extends TestCase
         $datatables_service = new DatatablesService();
         $filesystem         = new Filesystem(new MemoryAdapter());
         $controller         = new MediaController($datatables_service, $filesystem);
-        $request            = self::createRequest(RequestMethodInterface::METHOD_POST, ['route' => 'admin-media-delete', 'file' => 'foo', 'folder' => 'bar']);
+        $request            = self::createRequest(RequestMethodInterface::METHOD_POST, ['file' => 'foo', 'folder' => 'bar']);
         $response           = $controller->delete($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -136,7 +133,7 @@ class MediaControllerTest extends TestCase
         $datatables_service = new DatatablesService();
         $filesystem         = new Filesystem(new MemoryAdapter());
         $controller         = new MediaController($datatables_service, $filesystem);
-        $request            = self::createRequest(RequestMethodInterface::METHOD_GET, ['route' => 'admin-media-upload']);
+        $request            = self::createRequest();
         $response           = $controller->upload($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -150,7 +147,7 @@ class MediaControllerTest extends TestCase
         $datatables_service = new DatatablesService();
         $filesystem         = new Filesystem(new MemoryAdapter());
         $controller         = new MediaController($datatables_service, $filesystem);
-        $request            = self::createRequest(RequestMethodInterface::METHOD_POST, ['route' => 'admin-media-delete']);
+        $request            = self::createRequest();
         $response           = $controller->uploadAction($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
