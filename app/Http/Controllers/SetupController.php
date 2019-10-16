@@ -43,8 +43,6 @@ use function define;
 use function random_bytes;
 use function touch;
 
-use const WT_DATA_DIR;
-
 /**
  * Controller for the installation wizard
  */
@@ -106,9 +104,6 @@ class SetupController extends AbstractBaseController
      */
     public function setup(ServerRequestInterface $request): ResponseInterface
     {
-        // Mini "bootstrap"
-        define('WT_DATA_DIR', 'data/');
-
         // We will need an IP address for the logs.
         $ip_address  = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
         $request     = $request->withAttribute('client-ip', $ip_address);
@@ -135,9 +130,9 @@ class SetupController extends AbstractBaseController
             $data['warnings'] = $this->server_check_service->serverWarnings();
         }
 
-        if (!$this->checkFolderIsWritable(WT_DATA_DIR)) {
+        if (!$this->checkFolderIsWritable(Webtrees::DATA_DIR)) {
             $data['errors']->push(
-                '<code>' . e(realpath(WT_DATA_DIR)) . '</code><br>' .
+                '<code>' . e(realpath(Webtrees::DATA_DIR)) . '</code><br>' .
                 I18N::translate('Oops! webtrees was unable to create files in this folder.') . ' ' .
                 I18N::translate('This usually means that you need to change the folder permissions to 777.')
             );
@@ -249,8 +244,8 @@ class SetupController extends AbstractBaseController
 
         try {
             file_put_contents($data_dir . 'test.txt', $text1);
-            $text2 = file_get_contents(WT_DATA_DIR . 'test.txt');
-            unlink(WT_DATA_DIR . 'test.txt');
+            $text2 = file_get_contents(Webtrees::DATA_DIR . 'test.txt');
+            unlink(Webtrees::DATA_DIR . 'test.txt');
         } catch (Exception $ex) {
             return false;
         }
