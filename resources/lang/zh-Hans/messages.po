@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-09-22 16:28+0100\n"
-"PO-Revision-Date: 2019-08-30 02:41+0000\n"
-"Last-Translator: yanhuangzisun <yanhuang@zisun.org>\n"
+"PO-Revision-Date: 2019-10-16 21:45+0000\n"
+"Last-Translator: Administrator <fisharebest@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/zh_Hans/>\n"
 "Language: zh-Hans\n"
 "MIME-Version: 1.0\n"
@@ -416,7 +416,7 @@ msgstr "AD&nbsp;%s"
 #: app/Module/StatisticsChartModule.php:863
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s+"
 
 #: app/Module/ClippingsCartModule.php:560
 #, php-format
@@ -720,7 +720,7 @@ msgstr ""
 #. I18N: Description of the “BranchesListModule” module
 #: app/Module/BranchesListModule.php:55
 msgid "A list of branches of a family."
-msgstr "家庭分支"
+msgstr "家庭分支。"
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:82
@@ -730,7 +730,7 @@ msgstr "需要主编人批准的变更的列表并电子邮件通知。"
 #. I18N: Description of the “FamilyListModule” module
 #: app/Module/FamilyListModule.php:56
 msgid "A list of families."
-msgstr "显示家谱的列表"
+msgstr "显示家谱的列表。"
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:71
@@ -740,12 +740,12 @@ msgstr "常见问题和答案清单。"
 #. I18N: Description of the “IndividualListModule” module
 #: app/Module/IndividualListModule.php:56
 msgid "A list of individuals."
-msgstr "显示个人的列表"
+msgstr "显示个人的列表。"
 
 #. I18N: Description of the “MediaListModule” module
 #: app/Module/MediaListModule.php:57
 msgid "A list of media objects."
-msgstr "添加新的多媒体"
+msgstr "添加新的多媒体。"
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:60
@@ -760,12 +760,12 @@ msgstr "最常用的名字列表。"
 #. I18N: Description of the “NoteListModule” module
 #: app/Module/NoteListModule.php:56
 msgid "A list of shared notes."
-msgstr "添加一个新的共享记录"
+msgstr "添加一个新的共享记录。"
 
 #. I18N: Description of the “SourceListModule” module
 #: app/Module/SourceListModule.php:56
 msgid "A list of sources."
-msgstr "随着来源"
+msgstr "随着来源。"
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:63
@@ -13564,7 +13564,7 @@ msgstr "已经通知管理员。当他给你登录权限,您就可以用你的�
 #. I18N: Description of the “Reports” module
 #: app/Module/CalendarMenuModule.php:50
 msgid "The calendar menu."
-msgstr "选择主题下拉选择器"
+msgstr "选择主题下拉选择器。"
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/Controllers/PendingChangesController.php:153
@@ -13581,7 +13581,7 @@ msgstr "更改“%s”被拒绝。"
 #. I18N: Description of the “Reports” module
 #: app/Module/ChartsMenuModule.php:69
 msgid "The charts menu."
-msgstr "选择主题下拉选择器"
+msgstr "选择主题下拉选择器。"
 
 #: resources/views/modules/clippings/show.phtml:6
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -13637,7 +13637,7 @@ msgstr "家谱已经成功合并。"
 #. I18N: Description of the “Reports” module
 #: app/Module/TreesMenuModule.php:51
 msgid "The family trees menu."
-msgstr "管理家谱 "
+msgstr "管理家谱。"
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/Controllers/EditGedcomRecordController.php:141
@@ -13764,7 +13764,7 @@ msgstr "已更新“%1$s”到“%2$s”的链接。"
 #. I18N: Description of the “Reports” module
 #: app/Module/ListsMenuModule.php:67
 msgid "The lists menu."
-msgstr "选择主题下拉选择器"
+msgstr "选择主题下拉选择器。"
 
 #: app/Http/Controllers/EditMediaController.php:250
 #: app/Http/Controllers/EditMediaController.php:263
@@ -13855,7 +13855,7 @@ msgstr ""
 #. I18N: Description of the “PlaceHierarchyListModule” module
 #: app/Module/PlaceHierarchyListModule.php:56
 msgid "The place hierarchy."
-msgstr "显示地点的层次结构"
+msgstr "显示地点的层次结构。"
 
 #: app/Http/Controllers/AdminController.php:353
 #: app/Http/Controllers/AdminTreesController.php:1140
@@ -13908,7 +13908,7 @@ msgstr "正则表达式似乎包含错误。不能用。"
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:71
 msgid "The reports menu."
-msgstr "选择主题下拉选择器"
+msgstr "选择主题下拉选择器。"
 
 #: app/Http/Controllers/EditRepositoryController.php:82
 msgid "The repository has been created"
@@ -13917,7 +13917,7 @@ msgstr "存储库已被创建"
 #. I18N: Description of the “Reports” module
 #: app/Module/SearchMenuModule.php:51
 msgid "The search menu."
-msgstr "选择主题下拉选择器"
+msgstr "选择主题下拉选择器。"
 
 #: app/Services/SearchService.php:958
 msgid "The search returned too many results."
@@ -20202,7 +20202,6 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
 
-#, php-format
 #~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
 #~ msgstr "新的密码已经被创建和发送给%s。你可以在你登录时更改密码。"
 
@@ -20248,7 +20247,6 @@ msgstr ""
 #~ msgid "Theme menu"
 #~ msgstr "选择主题下拉选择器"
 
-#, php-format
 #~ msgid "There is no account with the username or email “%s”."
 #~ msgstr "那里是没有用的用户名或电子邮件为“%s”的账户。"
 
