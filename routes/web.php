@@ -67,6 +67,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ReorderNamesAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderNamesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderSpousesAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderSpousesPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SelectDefaultTree;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme;
 use Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail;
@@ -148,8 +149,6 @@ $router->attach('', '/admin', static function (Map $router) {
     $router->post('admin-site-mail-update', '/admin-site-mail', 'AdminSiteController::mailSave');
     $router->get('admin-site-registration', '/admin-site-registration', 'AdminSiteController::registrationForm');
     $router->post('admin-site-registration-update', '/admin-site-registration', 'AdminSiteController::registrationSave');
-    $router->post('admin-trees-default', '/default-tree/{tree}', 'AdminTreesController::setDefault');
-
     $router->get('broadcast', '/broadcast', 'MessageController::broadcastPage');
     $router->post('broadcast-action', '/broadcast', 'MessageController::broadcastAction');
     $router->get(PhpInformation::class, '/information', PhpInformation::class);
@@ -160,6 +159,7 @@ $router->attach('', '/admin', static function (Map $router) {
     $router->get('admin-site-logs-export', '/logs-export', 'AdminSiteController::logsExport');
     $router->get(CreateTreePage::class, '/trees/create', CreateTreePage::class);
     $router->post(CreateTreeAction::class, '/trees/create', CreateTreeAction::class);
+    $router->post(SelectDefaultTree::class, '/trees/default/{tree}', SelectDefaultTree::class);
     $router->get('tree-page-default-edit', '/trees/default-blocks', 'HomePageController::treePageDefaultEdit');
     $router->post('tree-page-default-update', '/trees/default-blocks', 'HomePageController::treePageDefaultUpdate');
     $router->post(DeleteTreeAction::class, '/trees/delete/{tree}', DeleteTreeAction::class);

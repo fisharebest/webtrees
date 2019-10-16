@@ -1745,26 +1745,6 @@ class AdminTreesController extends AbstractBaseController
      *
      * @return ResponseInterface
      */
-    public function setDefault(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
-
-        Site::setPreference('DEFAULT_GEDCOM', $tree->name());
-
-        /* I18N: %s is the name of a family tree */
-        FlashMessages::addMessage(I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', e($tree->title())), 'success');
-
-        $url = route('manage-trees', ['tree' => $tree->name()]);
-
-        return redirect($url);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function synchronize(ServerRequestInterface $request): ResponseInterface
     {
         $gedcom_files = $this->gedcomFiles();
