@@ -148,7 +148,7 @@ $router->attach('', '/admin', static function (Map $router) {
     $router->post('admin-site-mail-update', '/admin-site-mail', 'AdminSiteController::mailSave');
     $router->get('admin-site-registration', '/admin-site-registration', 'AdminSiteController::registrationForm');
     $router->post('admin-site-registration-update', '/admin-site-registration', 'AdminSiteController::registrationSave');
-    $router->post('admin-trees-default', '/admin-trees-default', 'AdminTreesController::setDefault');
+    $router->post('admin-trees-default', '/default-tree/{tree}', 'AdminTreesController::setDefault');
 
     $router->get('broadcast', '/broadcast', 'MessageController::broadcastPage');
     $router->post('broadcast-action', '/broadcast', 'MessageController::broadcastAction');
