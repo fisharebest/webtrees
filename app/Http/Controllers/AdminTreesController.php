@@ -1989,7 +1989,7 @@ class AdminTreesController extends AbstractBaseController
         $sources = DB::table('sources')
             ->where('s_file', '=', $tree->id())
             ->groupBy(['s_name'])
-            ->having(new Expression('COUNT(s_id)'), '>', 1)
+            ->having(new Expression('COUNT(s_id)'), '>', '1')
             ->select([new Expression('GROUP_CONCAT(s_id) AS xrefs')])
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
@@ -2008,7 +2008,7 @@ class AdminTreesController extends AbstractBaseController
             ->where('d_file', '=', $tree->id())
             ->whereIn('d_fact', ['BIRT', 'CHR', 'BAPM', 'DEAT', 'BURI'])
             ->groupBy(['d_year', 'd_month', 'd_day', 'd_type', 'd_fact', 'n_type', 'n_full'])
-            ->having(new Expression('COUNT(DISTINCT d_gid)'), '>', 1)
+            ->having(new Expression('COUNT(DISTINCT d_gid)'), '>', '1')
             ->select([new Expression('GROUP_CONCAT(d_gid) AS xrefs')])
             ->distinct()
             ->pluck('xrefs')
@@ -2021,9 +2021,9 @@ class AdminTreesController extends AbstractBaseController
 
         $families = DB::table('families')
             ->where('f_file', '=', $tree->id())
-            ->groupBy(new Expression('LEAST(f_husb, f_wife)'))
-            ->groupBy(new Expression('GREATEST(f_husb, f_wife)'))
-            ->having(new Expression('COUNT(f_id)'), '>', 1)
+            ->groupBy([new Expression('LEAST(f_husb, f_wife)')])
+            ->groupBy([new Expression('GREATEST(f_husb, f_wife)')])
+            ->having(new Expression('COUNT(f_id)'), '>', '1')
             ->select([new Expression('GROUP_CONCAT(f_id) AS xrefs')])
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
@@ -2037,7 +2037,7 @@ class AdminTreesController extends AbstractBaseController
             ->where('m_file', '=', $tree->id())
             ->where('descriptive_title', '<>', '')
             ->groupBy(['descriptive_title'])
-            ->having(new Expression('COUNT(m_id)'), '>', 1)
+            ->having(new Expression('COUNT(m_id)'), '>', '1')
             ->select([new Expression('GROUP_CONCAT(m_id) AS xrefs')])
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {

@@ -60,22 +60,18 @@ class WrapHandler implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if (is_string($this->handler)) {
-            if (Str::contains($this->handler, self::SCOPE_OPERATOR)) {
-                [$class, $method] = explode(self::SCOPE_OPERATOR, $this->handler);
+        if (Str::contains($this->handler, self::SCOPE_OPERATOR)) {
+            [$class, $method] = explode(self::SCOPE_OPERATOR, $this->handler);
 
-                if (substr_compare($class, '\\', 0, 1) !== 0) {
-                    $class = self::CONTROLLER_NAMESPACE . $class;
-                }
-
-                $controller = app($class);
-
-                return $controller->$method($request);
+            if (substr_compare($class, '\\', 0, 1) !== 0) {
+                $class = self::CONTROLLER_NAMESPACE . $class;
             }
 
-            return app($this->handler)->handle($request);
+            $controller = app($class);
+
+            return $controller->$method($request);
         }
 
-        return $this->handler->handle($request);
+        return app($this->handler)->handle($request);
     }
 }

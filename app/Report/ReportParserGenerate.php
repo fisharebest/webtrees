@@ -951,7 +951,7 @@ class ReportParserGenerate extends ReportParserBase
                 );
                 $name = strip_tags($name);
                 if (!empty($attrs['truncate'])) {
-                    $name = Str::limit($name, $attrs['truncate'], I18N::translate('…'));
+                    $name = Str::limit($name, (int) $attrs['truncate'], I18N::translate('…'));
                 } else {
                     $addname = $record->alternateName();
                     $addname = preg_replace(
@@ -1047,7 +1047,7 @@ class ReportParserGenerate extends ReportParserBase
 
                 if (!empty($attrs['truncate'])) {
                     $value = strip_tags($value);
-                    $value = Str::limit($value, $attrs['truncate'], I18N::translate('…'));
+                    $value = Str::limit($value, (int) $attrs['truncate'], I18N::translate('…'));
                 }
                 $this->current_element->addText($value);
             }

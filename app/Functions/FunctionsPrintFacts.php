@@ -110,7 +110,7 @@ class FunctionsPrintFacts
         // Who is this fact about? Need it to translate fact label correctly
         if ($parent instanceof Family && $record instanceof Individual) {
             // Family event
-            $label_person = $fact->record()->spouse($record);
+            $label_person = $parent->spouse($record);
         } else {
             // Individual event
             $label_person = $parent;
