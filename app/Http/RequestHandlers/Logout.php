@@ -45,9 +45,6 @@ class Logout implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
-
         $user = $request->getAttribute('user');
 
         if ($user instanceof User) {
@@ -56,10 +53,6 @@ class Logout implements RequestHandlerInterface
             FlashMessages::addMessage(I18N::translate('You have signed out.'));
         }
 
-        if ($tree instanceof Tree) {
-            return redirect(route('tree-page', ['tree' => $tree->name()]));
-        }
-
-        return redirect(route('tree-page'));
+        return redirect(route('home-page'));
     }
 }
