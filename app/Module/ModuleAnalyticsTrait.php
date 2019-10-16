@@ -31,6 +31,11 @@ use function app;
 trait ModuleAnalyticsTrait
 {
     /**
+     * @return string
+     */
+    abstract public function name(): string;
+
+    /**
      * Should we add this tracker?
      *
      * @return bool

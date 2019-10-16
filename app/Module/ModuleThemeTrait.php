@@ -44,6 +44,16 @@ use function route;
 trait ModuleThemeTrait
 {
     /**
+     * @return string
+     */
+    abstract public function name(): string;
+
+    /**
+     * @return string
+     */
+    abstract public function title(): string;
+
+    /**
      * A sentence describing what this module does.
      *
      * @return string
