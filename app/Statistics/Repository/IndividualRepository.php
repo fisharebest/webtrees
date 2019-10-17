@@ -484,7 +484,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @param int $number_of_surnames
      * @param int $threshold
      *
-     * @return stdClass[]
+     * @return int[][]
      */
     private function topSurnames(int $number_of_surnames, int $threshold): array
     {

@@ -44,7 +44,6 @@ use Illuminate\Support\Str;
 use stdClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
-
 use function imagecreatefromstring;
 use function imagesx;
 use function imagesy;
@@ -2750,10 +2749,10 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Create a list of all ancestors.
      *
-     * @param string[] $list
-     * @param string   $pid
-     * @param bool     $children
-     * @param int      $generations
+     * @param stdClass[] $list
+     * @param string     $pid
+     * @param bool       $children
+     * @param int        $generations
      *
      * @return void
      */
