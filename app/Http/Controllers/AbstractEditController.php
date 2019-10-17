@@ -146,7 +146,7 @@ abstract class AbstractEditController extends AbstractBaseController
      *
      * @return string
      */
-    protected function updateRest($inputRec, $levelOverride = 'no'): string
+    protected function updateRest(string $inputRec): string
     {
         if (count($this->tagRest) === 0) {
             return $inputRec; // No update required
@@ -163,7 +163,7 @@ abstract class AbstractEditController extends AbstractBaseController
         $this->islink  = $this->islinkRest;
         $this->text    = $this->textRest;
 
-        $myRecord = $this->handleUpdates($inputRec, $levelOverride); // Now do the update
+        $myRecord = $this->handleUpdates($inputRec, 'no'); // Now do the update
 
         // Restore the original interface update arrays (just in case ...)
         $this->glevels = $glevelsSave;
@@ -199,15 +199,19 @@ abstract class AbstractEditController extends AbstractBaseController
      *
      * @return string The updated gedcom record
      */
-    protected function handleUpdates($newged, $levelOverride = 'no'): string
+    protected function handleUpdates(string $newged, $levelOverride = 'no'): string
     {
-        if ($levelOverride === 'no' || count($this->glevels) === 0) {
+        if ($levelOverride === 'no') {
             $levelAdjust = 0;
         } else {
-            $levelAdjust = $levelOverride - $this->glevels[0];
+            $levelAdjust = 1;
         }
 
-        // Assume all arrays are the same size.
+        // Assert all arrays are the same size.
+        assert(count($this->glevels) === count($this->tag));
+        assert(count($this->glevels) === count($this->text));
+        assert(count($this->glevels) === count($this->islink));
+
         $count = count($this->glevels);
 
         for ($j = 0; $j < $count; $j++) {
@@ -305,7 +309,7 @@ abstract class AbstractEditController extends AbstractBaseController
                 }
             }
             if ((bool) ($params['SOUR_' . $fact] ?? false)) {
-                return $this->updateSource($gedrec, 2);
+                return $this->updateSource($gedrec, 'yes');
             }
 
             return $gedrec;
@@ -313,7 +317,7 @@ abstract class AbstractEditController extends AbstractBaseController
 
         if ($FACT === 'Y') {
             if ((bool) ($params['SOUR_' . $fact] ?? false)) {
-                return $this->updateSource("\n1 " . $fact . ' Y', 2);
+                return $this->updateSource("\n1 " . $fact . ' Y', 'yes');
             }
 
             return "\n1 " . $fact . ' Y';
@@ -332,7 +336,7 @@ abstract class AbstractEditController extends AbstractBaseController
      *
      * @return string
      */
-    protected function updateSource($inputRec, $levelOverride = 'no'): string
+    protected function updateSource(string $inputRec, string $levelOverride = 'no'): string
     {
         if (count($this->tagSOUR) === 0) {
             return $inputRec; // No update required
