@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-09-22 16:28+0100\n"
-"PO-Revision-Date: 2019-06-09 20:13+0000\n"
+"PO-Revision-Date: 2019-10-17 14:09+0000\n"
 "Last-Translator: Suleyman <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
@@ -843,7 +843,7 @@ msgstr "Yeni versiyon webtrees mevcut."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:93
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr ""
+msgstr "“%s” 'e bir şifre sıfırlama bağlantısı gönderildi."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:60
@@ -1356,7 +1356,7 @@ msgstr "Bir etkinlik ekle"
 
 #: resources/views/modules/custom-css-js/edit.phtml:23
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr ""
+msgstr "<code>&lt;body&gt;</code> elemanının sonuna içerik ekleyin."
 
 #: resources/views/modules/custom-css-js/edit.phtml:11
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
@@ -20301,7 +20301,6 @@ msgstr "…"
 #~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 #~ msgstr "Bir veritabanı sunucusu birden fazla veritabanı depolayabilir. (Sunucunuzun yöneticisi tarafından oluşturulan) mevcut bir veritabanı seçin veya yeni bir tane oluşturun (eğer veritabanı kullanıcı hesabınız gerekli yetkilere sahip ise)."
 
-#, php-format
 #~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
 #~ msgstr "Yeni şifreniz oluşturulmuş ve '%s' email adresine gönderilmiştir. Bu şifre ile giriş yaptıktan sonra şifrenizi değiştirebilirsiniz."
 
@@ -21361,7 +21360,6 @@ msgstr "…"
 #~ msgid "Theme menu"
 #~ msgstr "Tema menüsü"
 
-#, php-format
 #~ msgid "There is no account with the username or email “%s”."
 #~ msgstr "Kullanıcı adı yada mail adresi “%s” olan bir kullanıcı hesabı bulunamadı."
 
