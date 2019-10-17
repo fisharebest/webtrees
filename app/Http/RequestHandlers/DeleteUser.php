@@ -54,7 +54,7 @@ class DeleteUser implements RequestHandlerInterface, StatusCodeInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $user_id = (int) $request->getParsedBody()['user_id'];
+        $user_id = (int) $request->getAttribute('user_id');
 
         $user = $this->user_service->find($user_id);
 

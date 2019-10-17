@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
@@ -45,7 +44,8 @@ class DeleteUserTest extends TestCase
         $user_service = $this->createMock(UserService::class);
         $user_service->expects($this->once())->method('find')->willReturn($user);
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['user_id' => $user->id()]);
+        $request  = self::createRequest()
+            ->withAttribute('user_id', $user->id());
         $handler  = new DeleteUser($user_service);
         $response = $handler->handle($request);
 
@@ -63,9 +63,10 @@ class DeleteUserTest extends TestCase
         $user_service = $this->createMock(UserService::class);
         $user_service->expects($this->once())->method('find')->willReturn(null);
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['user_id' => 98765]);
+        $request  = self::createRequest()
+            ->withAttribute('user_id', 98765);
         $handler  = new DeleteUser($user_service);
-        $response = $handler->handle($request);
+        $handler->handle($request);
     }
 
     /**
@@ -83,7 +84,8 @@ class DeleteUserTest extends TestCase
         $user_service = $this->createMock(UserService::class);
         $user_service->expects($this->once())->method('find')->willReturn($user);
 
-        $request = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['user_id' => $user->id()]);
+        $request  = self::createRequest()
+            ->withAttribute('user_id', $user->id());
         $handler = new DeleteUser($user_service);
         $handler->handle($request);
     }
