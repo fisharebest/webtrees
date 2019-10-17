@@ -92,7 +92,7 @@ trait ModuleChartTrait
      * The URL for a page showing chart options.
      *
      * @param Individual $individual
-     * @param string[]   $parameters
+     * @param mixed[]    $parameters
      *
      * @return string
      */

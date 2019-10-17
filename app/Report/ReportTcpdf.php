@@ -379,7 +379,7 @@ class ReportTcpdf extends TCPDF
         }
         $style = $this->wt_report->getStyle($this->currentStyle);
 
-        return $style['size'];
+        return (float) $style['size'];
     }
 
     /**

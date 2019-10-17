@@ -174,7 +174,7 @@ class Place
         if ($module instanceof PlaceHierarchyListModule) {
             return $module->listUrl($this->tree, [
                 'parent' => $this->parts->reverse()->all(),
-                'tree'    => $this->tree->name(),
+                'tree'   => $this->tree->name(),
             ]);
         }
 

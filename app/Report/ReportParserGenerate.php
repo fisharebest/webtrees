@@ -44,6 +44,7 @@ use Illuminate\Support\Str;
 use stdClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
+
 use function imagecreatefromstring;
 use function imagesx;
 use function imagesy;
@@ -259,8 +260,9 @@ class ReportParserGenerate extends ReportParserBase
         // int The size of the font in points
         $s['size'] = $this->wt_report->default_font_size;
         if (!empty($attrs['size'])) {
-            $s['size'] = (int) $attrs['size'];
-        } // Get it as int to ignore all decimal points or text (if any text then int(0))
+            // Get it as int to ignore all decimal points or text (if no text then 0)
+            $s['size'] = (string) (int) $attrs['size'];
+        }
 
         // string B: bold, I: italic, U: underline, D: line trough, The default value is regular.
         $s['style'] = '';

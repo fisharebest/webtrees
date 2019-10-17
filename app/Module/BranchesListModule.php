@@ -70,8 +70,8 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
     }
 
     /**
-     * @param Tree  $tree
-     * @param array $parameters
+     * @param Tree    $tree
+     * @param mixed[] $parameters
      *
      * @return string
      */

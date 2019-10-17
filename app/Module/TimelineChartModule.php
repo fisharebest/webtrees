@@ -117,7 +117,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      * The URL for this chart.
      *
      * @param Individual $individual
-     * @param string[]   $parameters
+     * @param mixed[]    $parameters
      *
      * @return string
      */

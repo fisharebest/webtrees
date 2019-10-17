@@ -81,8 +81,8 @@ trait ModuleListTrait
     /**
      * The URL for a page showing list options.
      *
-     * @param Tree       $tree
-     * @param string[]   $parameters
+     * @param Tree    $tree
+     * @param mixed[] $parameters
      *
      * @return string
      */

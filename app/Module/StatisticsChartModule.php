@@ -121,7 +121,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      * The URL for this chart.
      *
      * @param Individual $individual
-     * @param string[]   $parameters
+     * @param mixed[]    $parameters
      *
      * @return string
      */

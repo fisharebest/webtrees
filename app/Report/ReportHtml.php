@@ -600,7 +600,7 @@ class ReportHtml extends AbstractReport
         }
         $style = $this->getStyle($this->currentStyle);
 
-        return $style['size'];
+        return (float) $style['size'];
     }
 
     /**

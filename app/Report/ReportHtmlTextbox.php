@@ -55,14 +55,14 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                         $lastelement = $element;
                     } else {
                         // Checking if the Text has the same style
-                        if ($element->getStyleName() == $lastelement->getStyleName()) {
+                        if ($element->getStyleName() === $lastelement->getStyleName()) {
                             $lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
                         } elseif (!empty($lastelement)) {
                             $newelements[] = $lastelement;
                             $lastelement   = $element;
                         }
                     }
-                } elseif ($element instanceof ReportBaseFootnote) {
+                } elseif ($element instanceof ReportHtmlFootnote) {
                     // Check if the Footnote has been set with it’s link number
                     $renderer->checkFootnote($element);
                     // Save first the last element if any
@@ -72,7 +72,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                     }
                     // Save the Footnote with it’s link number as key for sorting later
                     $footnote_element[$element->num] = $element;
-                } elseif (!($element instanceof ReportBaseFootnote) || trim($element->getValue()) != '') {
+                } elseif (trim($element->getValue()) !== '') {
                     // Do not keep empty footnotes
                     if (!empty($footnote_element)) {
                         ksort($footnote_element);
