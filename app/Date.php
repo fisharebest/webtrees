@@ -30,6 +30,8 @@ use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\Date\JulianDate;
 use Fisharebest\Webtrees\Date\RomanDate;
 
+use function app;
+
 /**
  * A representation of GEDCOM dates and date ranges.
  *
@@ -250,9 +252,13 @@ class Date
     public function display($url = false, $date_format = null, $convert_calendars = true): string
     {
         // Do we need a new DateFormatterService class?
-        $tree = app(Tree::class);
-
-        $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
+        if (app()->has(Tree::class)) {
+            $tree            = app(Tree::class);
+            $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
+        } else {
+            $tree            = null;
+            $CALENDAR_FORMAT = '';
+        }
 
         if ($date_format === null) {
             $date_format = I18N::dateFormat();
