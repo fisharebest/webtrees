@@ -183,13 +183,10 @@ class ReportParserGenerate extends ReportParserBase
         }
         $attrs = $newattrs;
         if ($this->process_footnote && ($this->process_ifs === 0 || $name === 'if') && ($this->process_gedcoms === 0 || $name === 'Gedcom') && ($this->process_repeats === 0 || $name === 'Facts' || $name === 'RepeatTag')) {
-            $start_method = $name . 'StartHandler';
-            $end_method   = $name . 'EndHandler';
+            $method = $name . 'StartHandler';
 
-            if (method_exists($this, $start_method)) {
-                $this->$start_method($attrs);
-            } elseif (!method_exists($this, $end_method)) {
-                $this->htmlStartHandler($name, $attrs);
+            if (method_exists($this, $method)) {
+                $this->$method($attrs);
             }
         }
     }
@@ -207,12 +204,10 @@ class ReportParserGenerate extends ReportParserBase
     protected function endElement($parser, string $name): void
     {
         if (($this->process_footnote || $name === 'Footnote') && ($this->process_ifs === 0 || $name === 'if') && ($this->process_gedcoms === 0 || $name === 'Gedcom') && ($this->process_repeats === 0 || $name === 'Facts' || $name === 'RepeatTag' || $name === 'List' || $name === 'Relatives')) {
-            $start_method = $name . 'StartHandler';
-            $end_method   = $name . 'EndHandler';
-            if (method_exists($this, $end_method)) {
-                $this->$end_method();
-            } elseif (!method_exists($this, $start_method)) {
-                $this->htmlEndHandler($name);
+            $method = $name . 'EndHandler';
+
+            if (method_exists($this, $method)) {
+                $this->$method();
             }
         }
     }
@@ -388,32 +383,6 @@ class ReportParserGenerate extends ReportParserBase
         // Clear the Header before any new elements are added
         $this->wt_report->clearHeader();
         $this->wt_report->setProcessing('H');
-    }
-
-    /**
-     * XML <PageHeader>
-     *
-     * @return void
-     */
-    protected function pageHeaderStartHandler(): void
-    {
-        $this->print_data_stack[] = $this->print_data;
-        $this->print_data         = false;
-        $this->wt_report_stack[]  = $this->wt_report;
-        $this->wt_report          = $this->report_root->createPageHeader();
-    }
-
-    /**
-     * XML <pageHeaderEndHandler>
-     *
-     * @return void
-     */
-    protected function pageHeaderEndHandler(): void
-    {
-        $this->print_data      = array_pop($this->print_data_stack);
-        $this->current_element = $this->wt_report;
-        $this->wt_report       = array_pop($this->wt_report_stack);
-        $this->wt_report->addElement($this->current_element);
     }
 
     /**
@@ -2577,90 +2546,6 @@ class ReportParserGenerate extends ReportParserBase
     {
         $temp = 'addpage';
         $this->wt_report->addElement($temp);
-    }
-
-    /**
-     * XML <html>
-     *
-     * @param string   $tag   HTML tag name
-     * @param string[] $attrs an array of key value pairs for the attributes
-     *
-     * @return void
-     */
-    protected function htmlStartHandler(string $tag, array $attrs): void
-    {
-        if ($tag === 'tempdoc') {
-            return;
-        }
-        $this->wt_report_stack[] = $this->wt_report;
-        $this->wt_report         = $this->report_root->createHTML($tag, $attrs);
-        $this->current_element   = $this->wt_report;
-
-        $this->print_data_stack[] = $this->print_data;
-        $this->print_data         = true;
-    }
-
-    /**
-     * XML </html>
-     *
-     * @param string $tag
-     *
-     * @return void
-     */
-    protected function htmlEndHandler($tag): void
-    {
-        if ($tag === 'tempdoc') {
-            return;
-        }
-
-        $this->print_data      = array_pop($this->print_data_stack);
-        $this->current_element = $this->wt_report;
-        $this->wt_report       = array_pop($this->wt_report_stack);
-        if ($this->wt_report !== null) {
-            $this->wt_report->addElement($this->current_element);
-        } else {
-            $this->wt_report = $this->current_element;
-        }
-    }
-
-    /**
-     * Handle <Input>
-     *
-     * @return void
-     */
-    protected function inputStartHandler(): void
-    {
-        // Dummy function, to prevent the default HtmlStartHandler() being called
-    }
-
-    /**
-     * Handle </Input>
-     *
-     * @return void
-     */
-    protected function inputEndHandler(): void
-    {
-        // Dummy function, to prevent the default HtmlEndHandler() being called
-    }
-
-    /**
-     * Handle <Report>
-     *
-     * @return void
-     */
-    protected function reportStartHandler(): void
-    {
-        // Dummy function, to prevent the default HtmlStartHandler() being called
-    }
-
-    /**
-     * Handle </Report>
-     *
-     * @return void
-     */
-    protected function reportEndHandler(): void
-    {
-        // Dummy function, to prevent the default HtmlEndHandler() being called
     }
 
     /**
