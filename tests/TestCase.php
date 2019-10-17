@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UserService;
-use Illuminate\Cache\ArrayStore;
+use Illuminate\Cache\NullStore;
 use Illuminate\Cache\Repository;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -81,8 +81,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
         app()->bind(UploadedFileFactoryInterface::class, Psr17Factory::class);
         app()->bind(UriFactoryInterface::class, Psr17Factory::class);
 
-        // Use an array cache for database calls, etc.
-        app()->instance('cache.array', new Repository(new ArrayStore()));
+        // Disable the cache.
+        app()->instance('cache.array', new Repository(new NullStore()));
 
         app()->instance(UserService::class, new UserService());
         app()->instance(FilesystemInterface::class, new Filesystem(new MemoryAdapter()));
@@ -203,8 +203,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         if (static::$uses_database) {
             DB::connection()->rollBack();
         }
-
-        app('cache.array')->flush();
 
         Site::$preferences                  = [];
         Tree::$trees                        = [];

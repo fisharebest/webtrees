@@ -301,7 +301,6 @@ class TreeTest extends TestCase
         Site::setPreference('DEFAULT_GEDCOM', $tree->name());
 
         $tree_service->delete($tree);
-        app('cache.array')->flush();
 
         $this->assertNull($tree_service->findByName('demo.ged'));
         $this->assertSame('', Site::getPreference('DEFAULT_GEDCOM'));
