@@ -3,6 +3,7 @@
 /**
  * Example report.
  */
+
 declare(strict_types=1);
 
 namespace MyCustomNamespace;

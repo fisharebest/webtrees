@@ -3,6 +3,7 @@
 /**
  * Example module
  */
+
 declare(strict_types=1);
 
 namespace MyCustomNamespace;

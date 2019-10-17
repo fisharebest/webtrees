@@ -4,6 +4,7 @@
  * Example theme.  Here we are extending an existing theme.
  * Instead, you could extend AbstractModule and implement ModuleThemeInterface directly.
  */
+
 declare(strict_types=1);
 
 namespace MyCustomNamespace;

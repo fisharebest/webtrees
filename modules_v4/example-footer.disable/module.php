@@ -3,6 +3,7 @@
 /**
  * Example footer with a link to a page of information.
  */
+
 declare(strict_types=1);
 
 namespace MyCustomNamespace;

@@ -3,6 +3,7 @@
 /**
  * An example module to demonstrate middleware.
  */
+
 declare(strict_types=1);
 
 namespace MyCustomNamespace;

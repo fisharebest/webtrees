@@ -14,6 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
@@ -570,10 +571,10 @@ class Individual extends GedcomRecord
         /* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */
         return
             I18N::translate(
-                '%1$s–%2$s',
-                '<span title="' . $birth_place . ' ' . $birth_date . '">' . $this->getBirthYear() . '</span>',
-                '<span title="' . $death_place . ' ' . $death_date . '">' . $this->getDeathYear() . '</span>'
-            );
+            '%1$s–%2$s',
+            '<span title="' . $birth_place . ' ' . $birth_date . '">' . $this->getBirthYear() . '</span>',
+            '<span title="' . $death_place . ' ' . $death_date . '">' . $this->getDeathYear() . '</span>'
+        );
     }
 
     /**
