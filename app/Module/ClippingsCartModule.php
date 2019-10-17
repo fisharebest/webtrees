@@ -203,7 +203,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         // Create a new/empty .ZIP file
         $temp_zip_file  = tempnam(sys_get_temp_dir(), 'webtrees-zip-');
-        $zip_filesystem = new Filesystem(new ZipArchiveAdapter($temp_zip_file));
+        $zip_adapter    = new ZipArchiveAdapter($temp_zip_file);
+        $zip_filesystem = new Filesystem($zip_adapter);
 
         $manager = new MountManager([
             'media' => $tree->mediaFilesystem(),
@@ -301,7 +302,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $zip_filesystem->write('clippings.ged', $filetext);
 
         // Need to force-close ZipArchive filesystems.
-        $zip_filesystem->getAdapter()->getArchive()->close();
+        $zip_adapter->getArchive()->close();
 
         // Use a stream, so that we do not have to load the entire file into memory.
         $stream = app(StreamFactoryInterface::class)->createStreamFromFile($temp_zip_file);
