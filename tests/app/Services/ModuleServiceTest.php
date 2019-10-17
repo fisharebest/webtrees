@@ -51,8 +51,6 @@ class ModuleServiceTest extends TestCase
      */
     public function testAll(): void
     {
-        app()->instance(Tree::class, Tree::create('name', 'title'));
-
         $module_service = new ModuleService();
 
         $this->assertNotEmpty($module_service->all());
@@ -67,9 +65,7 @@ class ModuleServiceTest extends TestCase
      */
     public function testFindByComponent(): void
     {
-        $user_service = new UserService();
-        app()->instance(Tree::class, Tree::create('name', 'title'));
-
+        $user_service   = new UserService();
         $module_service = new ModuleService();
 
         $tree = $this->importTree('demo.ged');
@@ -89,8 +85,6 @@ class ModuleServiceTest extends TestCase
      */
     public function testFindByInterface(): void
     {
-        app()->instance(Tree::class, Tree::create('name', 'title'));
-
         $module_service = new ModuleService();
 
         $this->assertNotEmpty($module_service->findByInterface(ModuleAnalyticsInterface::class, true)->all());
@@ -114,7 +108,6 @@ class ModuleServiceTest extends TestCase
      */
     public function testOtherModules(): void
     {
-        app()->instance(Tree::class, Tree::create('name', 'title'));
         DB::table('module')->insert(['module_name' => 'not-a-module']);
 
         $module_service = new ModuleService();
@@ -128,7 +121,6 @@ class ModuleServiceTest extends TestCase
      */
     public function testDeletedModules(): void
     {
-        app()->instance(Tree::class, Tree::create('name', 'title'));
         DB::table('module')->insert(['module_name' => 'not-a-module']);
 
         $module_service = new ModuleService();

@@ -82,7 +82,6 @@ class FamilyGroupReportModuleTest extends TestCase
         Auth::login($user);
 
         $tree = $this->importTree('demo.ged');
-        app()->instance(Tree::class, $tree);
         $xml  = Webtrees::ROOT_DIR . 'resources/xml/reports/family_group_report.xml';
         $vars = [
             'id'       => ['id' => 'f1'],

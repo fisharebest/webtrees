@@ -82,7 +82,6 @@ class AhnentafelReportModuleTest extends TestCase
         Auth::login($user);
 
         $tree = $this->importTree('demo.ged');
-        app()->instance(Tree::class, $tree);
         $xml  = Webtrees::ROOT_DIR . 'resources/xml/reports/ahnentafel_report.xml';
         $vars = [
             'pid'      => ['id' => 'X1030'],

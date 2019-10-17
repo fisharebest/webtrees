@@ -19,12 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Controllers\Admin\UsersController;
+use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\MailService;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
-
-use function app;
 
 /**
  * Test the user administration pages
@@ -40,12 +40,16 @@ class UserAdminTest extends TestCase
      */
     public function testUserDetailsAreShownOnUserAdminPage(): void
     {
-        $user_service = new UserService();
-        $admin        = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $datatables_service = new DatatablesService();
+        $mail_service       = new MailService();
+        $module_service     = new ModuleService();
+        $user_service       = new UserService();
+        $admin              = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $controller = app(UsersController::class);
-        $request    = self::createRequest(RequestMethodInterface::METHOD_GET, ['length' => '10'])
+        $controller = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
+        $request    = self::createRequest()
+            ->withQueryParams(['length' => '10'])
             ->withAttribute('user', $admin);
         $response   = $controller->data($request);
 
@@ -68,15 +72,17 @@ class UserAdminTest extends TestCase
      */
     public function testFilteringUserAdminPage(): void
     {
-        $user_service = new UserService();
-        $admin        = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $datatables_service = new DatatablesService();
+        $mail_service       = new MailService();
+        $module_service     = new ModuleService();
+        $user_service       = new UserService();
+        $admin              = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $request = self::createRequest()
+        $controller = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
+        $request    = self::createRequest()
             ->withQueryParams(['search' => ['value' => 'admin']])
             ->withAttribute('user', $admin);
-
-        $controller = app(UsersController::class);
         $response   = $controller->data($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -98,15 +104,17 @@ class UserAdminTest extends TestCase
      */
     public function testPaginatingUserAdminPage(): void
     {
-        $user_service = new UserService();
-        $admin        = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $datatables_service = new DatatablesService();
+        $mail_service       = new MailService();
+        $module_service     = new ModuleService();
+        $user_service       = new UserService();
+        $admin              = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $request = self::createRequest()
+        $controller = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
+        $request    = self::createRequest()
             ->withQueryParams(['length' => 1])
             ->withAttribute('user', $admin);
-
-        $controller = app(UsersController::class);
         $response   = $controller->data($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -124,16 +132,19 @@ class UserAdminTest extends TestCase
      */
     public function testSortingUserAdminPage(): void
     {
-        $user_service = new UserService();
+        $datatables_service = new DatatablesService();
+        $mail_service       = new MailService();
+        $module_service     = new ModuleService();
+        $user_service       = new UserService();
 
         $admin = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $request = self::createRequest()
+        $controller = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
+        $request    = self::createRequest()
             ->withQueryParams(['column' => 2, 'dir' => 'asc'])
             ->withAttribute('user', $admin);
-
-        $response = app(UsersController::class)->data($request);
+        $response   = $controller->data($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
         $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
@@ -147,7 +158,7 @@ class UserAdminTest extends TestCase
             ->withQueryParams(['order' => [['column' => 2, 'dir' => 'desc']]])
             ->withAttribute('user', $admin);
 
-        $controller = app(UsersController::class);
+        $controller = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
         $response   = $controller->data($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());

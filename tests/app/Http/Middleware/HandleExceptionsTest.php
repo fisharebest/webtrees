@@ -50,13 +50,6 @@ class HandleExceptionsTest extends TestCase
         $module_service->method('findByComponent')->willReturn(new Collection([]));
         app()->instance(ModuleService::class, $module_service);
 
-        $user_service = $this->createMock(UserService::class);
-        app()->instance(UserService::class, $user_service);
-
-        // The error response needs a tree.
-        //$tree = $this->createMock(Tree::class);
-        View::share('tree', null);
-
         $request    = self::createRequest();
         $middleware = new HandleExceptions();
         $response   = $middleware->process($request, $handler);

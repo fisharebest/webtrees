@@ -82,7 +82,6 @@ class MarriageReportModuleTest extends TestCase
         Auth::login($user);
 
         $tree = $this->importTree('demo.ged');
-        app()->instance(Tree::class, $tree);
         $xml  = Webtrees::ROOT_DIR . 'resources/xml/reports/marriage_report.xml';
         $vars = [
             'name'      => ['id' => ''],

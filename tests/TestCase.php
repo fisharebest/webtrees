@@ -84,11 +84,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
         // Disable the cache.
         app()->instance('cache.array', new Repository(new NullStore()));
 
-        app()->instance(UserService::class, new UserService());
         app()->instance(FilesystemInterface::class, new Filesystem(new MemoryAdapter()));
         app()->bind(LocaleInterface::class, LocaleEnUs::class);
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
-        app()->bind(UserInterface::class, GuestUser::class);
 
         // Need the routing table, to generate URLs.
         app()->instance(RouterContainer::class, new RouterContainer());

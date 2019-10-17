@@ -82,7 +82,6 @@ class FactSourcesReportModuleTest extends TestCase
         Auth::login($user);
 
         $tree = $this->importTree('demo.ged');
-        app()->instance(Tree::class, $tree);
         $xml  = Webtrees::ROOT_DIR . 'resources/xml/reports/fact_sources.xml';
         $vars = [
             'id'       => ['id' => 's1'],

@@ -76,7 +76,6 @@ class BirthDeathMarriageReportModuleTest extends TestCase
     public function testReportRunsWithoutError(): void
     {
         $tree = $this->importTree('demo.ged');
-        app()->instance(Tree::class, $tree);
         $xml  = Webtrees::ROOT_DIR . 'resources/xml/reports/bdm_report.xml';
         $vars = [
             'name'       => ['id' => ''],

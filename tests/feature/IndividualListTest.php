@@ -42,11 +42,8 @@ class IndividualListTest extends TestCase
      */
     public function testIndividualList(): void
     {
-        $tree = $this->importTree('demo.ged');
-        $user = Auth::user();
-        app()->instance(Tree::class, $tree);
-        app()->instance(User::class, $user);
-
+        $tree                    = $this->importTree('demo.ged');
+        $user                    = Auth::user();
         $list_module             = new IndividualListModule();
         $localization_service    = new LocalizationService(new LocaleEnUs());
         $individual_list_service = new IndividualListService($localization_service, $tree);

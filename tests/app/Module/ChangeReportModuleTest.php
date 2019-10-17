@@ -83,7 +83,6 @@ class ChangeReportModuleTest extends TestCase
         Auth::login($user);
 
         $tree = $this->importTree('demo.ged');
-        app()->instance(Tree::class, $tree);
         $xml  = Webtrees::ROOT_DIR . 'resources/xml/reports/change_report.xml';
         $vars = [
             'changeRangeStart' => ['id' => Carbon::now()->subMonths(1)->format('d M Y')],

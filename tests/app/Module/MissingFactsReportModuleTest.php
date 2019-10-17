@@ -82,7 +82,6 @@ class MissingFactsReportModuleTest extends TestCase
         Auth::login($user);
 
         $tree = $this->importTree('demo.ged');
-        app()->instance(Tree::class, $tree);
         $xml  = Webtrees::ROOT_DIR . 'resources/xml/reports/missing_facts_report.xml';
         $vars = [
             'pid'       => ['id' => 'X1030'],

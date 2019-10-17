@@ -74,9 +74,6 @@ class EmbeddedVariablesTest extends TestCase
         $tree       = $this->importTree('demo.ged');
         $statistics = new Statistics(new ModuleService(), $tree, new UserService());
 
-        // For Date::display()
-        app()->instance(Tree::class, $tree);
-
         // As visitor
         $text = $statistics->embedTags('#getAllTagsTable#');
         $this->assertNotEquals('#getAllTagsTable#', $text);
@@ -97,9 +94,6 @@ class EmbeddedVariablesTest extends TestCase
     {
         $tree       = Tree::create('name', 'title');
         $statistics = new Statistics(new ModuleService(), $tree, new UserService());
-
-        // For Date::display()
-        app()->instance(Tree::class, $tree);
 
         // As visitor
         $text = $statistics->embedTags('#getAllTagsTable#');
