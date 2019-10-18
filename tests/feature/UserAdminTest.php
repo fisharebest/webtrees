@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Http\Controllers\Admin\UsersController;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 
 /**
@@ -43,11 +44,12 @@ class UserAdminTest extends TestCase
         $datatables_service = new DatatablesService();
         $mail_service       = new MailService();
         $module_service     = new ModuleService();
+        $tree_service       = new TreeService();
         $user_service       = new UserService();
         $admin              = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $controller = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
+        $controller = new UsersController($datatables_service, $mail_service, $module_service, $tree_service, $user_service);
         $request    = self::createRequest()
             ->withQueryParams(['length' => '10'])
             ->withAttribute('user', $admin);
@@ -75,11 +77,12 @@ class UserAdminTest extends TestCase
         $datatables_service = new DatatablesService();
         $mail_service       = new MailService();
         $module_service     = new ModuleService();
+        $tree_service       = new TreeService();
         $user_service       = new UserService();
         $admin              = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $controller = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
+        $controller = new UsersController($datatables_service, $mail_service, $module_service, $tree_service, $user_service);
         $request    = self::createRequest()
             ->withQueryParams(['search' => ['value' => 'admin']])
             ->withAttribute('user', $admin);
@@ -107,11 +110,12 @@ class UserAdminTest extends TestCase
         $datatables_service = new DatatablesService();
         $mail_service       = new MailService();
         $module_service     = new ModuleService();
+        $tree_service       = new TreeService();
         $user_service       = new UserService();
         $admin              = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $controller = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
+        $controller = new UsersController($datatables_service, $mail_service, $module_service, $tree_service, $user_service);
         $request    = self::createRequest()
             ->withQueryParams(['length' => 1])
             ->withAttribute('user', $admin);
@@ -135,12 +139,13 @@ class UserAdminTest extends TestCase
         $datatables_service = new DatatablesService();
         $mail_service       = new MailService();
         $module_service     = new ModuleService();
+        $tree_service       = new TreeService();
         $user_service       = new UserService();
 
         $admin = $user_service->create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        $controller = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
+        $controller = new UsersController($datatables_service, $mail_service, $module_service, $tree_service, $user_service);
         $request    = self::createRequest()
             ->withQueryParams(['column' => 2, 'dir' => 'asc'])
             ->withAttribute('user', $admin);
@@ -158,7 +163,7 @@ class UserAdminTest extends TestCase
             ->withQueryParams(['order' => [['column' => 2, 'dir' => 'desc']]])
             ->withAttribute('user', $admin);
 
-        $controller = new UsersController($datatables_service, $mail_service, $module_service, $user_service);
+        $controller = new UsersController($datatables_service, $mail_service, $module_service, $tree_service, $user_service);
         $response   = $controller->data($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());

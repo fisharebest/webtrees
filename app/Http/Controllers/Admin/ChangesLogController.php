@@ -84,7 +84,7 @@ class ChangesLogController extends AbstractAdminController
     public function changesLog(ServerRequestInterface $request): ResponseInterface
     {
         $tree_list = [];
-        foreach (Tree::getAll() as $tree) {
+        foreach ($this->tree_service->all() as $tree) {
             if (Auth::isManager($tree)) {
                 $tree_list[$tree->name()] = $tree->title();
             }

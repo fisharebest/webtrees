@@ -25,6 +25,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
 use Fisharebest\Webtrees\Services\TimeoutService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
@@ -50,6 +51,7 @@ class UpgradeControllerTest extends TestCase
     {
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
+            new TreeService(),
             new UpgradeService(new TimeoutService())
         );
 
@@ -68,6 +70,7 @@ class UpgradeControllerTest extends TestCase
 
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
+            new TreeService(),
             new UpgradeService(new TimeoutService())
         );
 
@@ -86,6 +89,7 @@ class UpgradeControllerTest extends TestCase
 
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
+            new TreeService(),
             new UpgradeService(new TimeoutService())
         );
 
@@ -102,6 +106,7 @@ class UpgradeControllerTest extends TestCase
         $mock_upgrade_service->method('latestVersion')->willReturn('999.999.999');
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
+            new TreeService(),
             $mock_upgrade_service
         );
 
@@ -122,6 +127,7 @@ class UpgradeControllerTest extends TestCase
         $mock_upgrade_service->method('latestVersion')->willReturn('');
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
+            new TreeService(),
             $mock_upgrade_service
         );
 
@@ -140,6 +146,7 @@ class UpgradeControllerTest extends TestCase
         $mock_upgrade_service->method('latestVersion')->willReturn('0.0.0');
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
+            new TreeService(),
             $mock_upgrade_service
         );
 
@@ -154,6 +161,7 @@ class UpgradeControllerTest extends TestCase
     {
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
+            new TreeService(),
             new UpgradeService(new TimeoutService())
         );
 
@@ -170,6 +178,7 @@ class UpgradeControllerTest extends TestCase
     {
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
+            new TreeService(),
             new UpgradeService(new TimeoutService())
         );
 
@@ -193,6 +202,7 @@ class UpgradeControllerTest extends TestCase
 
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
+            new TreeService(),
             new UpgradeService(new TimeoutService())
         );
 
@@ -208,6 +218,7 @@ class UpgradeControllerTest extends TestCase
         $tree       = $this->importTree('demo.ged');
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
+            new TreeService(),
             new UpgradeService(new TimeoutService())
         );
 
@@ -234,6 +245,7 @@ class UpgradeControllerTest extends TestCase
         $mock_upgrade_service->method('downloadFile')->will($this->throwException(new Exception()));
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
+            new TreeService(),
             $mock_upgrade_service
         );
 
@@ -250,6 +262,7 @@ class UpgradeControllerTest extends TestCase
         $mock_upgrade_service->method('downloadFile')->willReturn(123456);
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
+            new TreeService(),
             $mock_upgrade_service
         );
 
@@ -268,6 +281,7 @@ class UpgradeControllerTest extends TestCase
         $mock_upgrade_service->method('webtreesZipContents')->willReturn(new Collection([]));
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
+            new TreeService(),
             $mock_upgrade_service
         );
 
@@ -284,6 +298,7 @@ class UpgradeControllerTest extends TestCase
     {
         $controller = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
+            new TreeService(),
             new UpgradeService(new TimeoutService())
         );
 
@@ -301,6 +316,7 @@ class UpgradeControllerTest extends TestCase
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $controller           = new UpgradeController(
             new Filesystem(new MemoryAdapter()),
+            new TreeService(),
             $mock_upgrade_service
         );
 

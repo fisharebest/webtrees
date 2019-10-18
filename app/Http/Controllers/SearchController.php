@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
@@ -125,14 +126,19 @@ class SearchController extends AbstractBaseController
     /** @var SearchService */
     private $search_service;
 
+    /** @var TreeService */
+    private $tree_service;
+
     /**
      * SearchController constructor.
      *
      * @param SearchService $search_service
+     * @param TreeService   $tree_service
      */
-    public function __construct(SearchService $search_service)
+    public function __construct(SearchService $search_service, TreeService $tree_service)
     {
         $this->search_service = $search_service;
+        $this->tree_service   = $tree_service;
     }
 
     /**
@@ -188,7 +194,7 @@ class SearchController extends AbstractBaseController
 
         // What trees to seach?
         if (Site::getPreference('ALLOW_CHANGE_GEDCOM') === '1') {
-            $all_trees = Tree::getAll();
+            $all_trees = $this->tree_service->all()->all();
         } else {
             $all_trees = [$tree];
         }
@@ -318,7 +324,7 @@ class SearchController extends AbstractBaseController
 
         // What trees to seach?
         if (Site::getPreference('ALLOW_CHANGE_GEDCOM') === '1') {
-            $all_trees = Tree::getAll();
+            $all_trees = $this->tree_service->all()->all();
         } else {
             $all_trees = [$tree];
         }

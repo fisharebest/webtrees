@@ -21,8 +21,12 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+
+use function e;
+use function route;
 
 /**
  * Class TreesMenuModule - provide a menu option for the trees options
@@ -30,6 +34,19 @@ use Fisharebest\Webtrees\Tree;
 class TreesMenuModule extends AbstractModule implements ModuleMenuInterface
 {
     use ModuleMenuTrait;
+
+    /** @var TreeService */
+    private $tree_service;
+
+    /**
+     * TreesMenuModule constructor.
+     *
+     * @param TreeService $tree_service
+     */
+    public function __construct(TreeService $tree_service)
+    {
+        $this->tree_service = $tree_service;
+    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -72,12 +89,14 @@ class TreesMenuModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getMenu(Tree $tree): ?Menu
     {
-        if (Tree::all()->count() === 1 || Site::getPreference('ALLOW_CHANGE_GEDCOM') !== '1') {
+        $trees = $this->tree_service->all();
+
+        if ($trees->count() === 1 || Site::getPreference('ALLOW_CHANGE_GEDCOM') !== '1') {
             return new Menu(I18N::translate('Family tree'), route('tree-page', ['tree' => $tree->name()]), 'menu-tree');
         }
 
         $submenus = [];
-        foreach (Tree::all() as $menu_tree) {
+        foreach ($trees as $menu_tree) {
             if ($menu_tree->id() === $tree->id()) {
                 $active = 'active ';
             } else {

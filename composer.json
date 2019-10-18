@@ -110,7 +110,7 @@
             "### PHPSTAN",
             "@composer webtrees:phpstan",
             "### PSALM",
-            "@composer webtrees:phpstan"
+            "@composer webtrees:psalm"
         ],
         "webtrees:phpcs": [
             "@composer global require squizlabs/php_codesniffer=* --quiet",
@@ -121,7 +121,7 @@
             "@composer global require phan/phan=*",
             "@composer global update phan/phan",
             "@composer install --quiet",
-            "phan --color --progress-bar --dead-code-detection --signature-compatibility --strict-type-checking --directory=app --directory=vendor --exclude-directory-list=vendor",
+            "phan --color --progress-bar --dead-code-detection --signature-compatibility --strict-type-checking --directory=app --directory=modules_v4 --directory=routes --directory=vendor --exclude-directory-list=vendor",
             "@composer install --no-dev --quiet"
         ],
         "webtrees:phpstan": [
@@ -131,7 +131,7 @@
             "@composer global require --quiet phpstan/phpstan-strict-rules=*",
             "@composer global require --quiet phpstan/phpstan-phpunit=*",
             "@composer global update --quiet phpstan/*",
-            "phpstan --level=max analyze app routes index.php"
+            "phpstan --level=max analyze app modules_v4 routes index.php"
         ],
         "webtrees:psalm": [
             "@composer global update vimeo/psalm",

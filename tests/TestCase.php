@@ -203,7 +203,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         }
 
         Site::$preferences                  = [];
-        Tree::$trees                        = [];
         GedcomRecord::$gedcom_record_cache  = null;
         GedcomRecord::$pending_record_cache = null;
 

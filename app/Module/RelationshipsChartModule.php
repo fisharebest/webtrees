@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
@@ -64,6 +65,19 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         'ancestors' => self::DEFAULT_ANCESTORS,
         'recursion' => self::DEFAULT_RECURSION,
     ];
+
+    /** @var TreeService */
+    private $tree_service;
+
+    /**
+     * ModuleController constructor.
+     *
+     * @param TreeService   $tree_service
+     */
+    public function __construct(TreeService $tree_service)
+    {
+        $this->tree_service = $tree_service;
+    }
 
     /**
      * Initialization.
@@ -379,7 +393,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         $this->layout = 'layouts/administration';
 
         return $this->viewResponse('modules/relationships-chart/config', [
-            'all_trees'         => Tree::getAll(),
+            'all_trees'         => $this->tree_service->all(),
             'ancestors_options' => $this->ancestorsOptions(),
             'default_ancestors' => self::DEFAULT_ANCESTORS,
             'default_recursion' => self::DEFAULT_RECURSION,
@@ -395,7 +409,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        foreach (Tree::getAll() as $tree) {
+        foreach ($this->tree_service->all() as $tree) {
             $recursion = $request->getParsedBody()['relationship-recursion-' . $tree->id()] ?? '';
             $ancestors = $request->getParsedBody()['relationship-ancestors-' . $tree->id()] ?? '';
 

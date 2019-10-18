@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\SiteUser;
@@ -65,19 +66,29 @@ class UsersController extends AbstractAdminController
     /** @var UserService */
     private $user_service;
 
+    /** @var TreeService */
+    private $tree_service;
+
     /**
      * UsersController constructor.
      *
      * @param DatatablesService $datatables_service
      * @param MailService       $mail_service
      * @param ModuleService     $module_service
+     * @param TreeService       $tree_service
      * @param UserService       $user_service
      */
-    public function __construct(DatatablesService $datatables_service, MailService $mail_service, ModuleService $module_service, UserService $user_service)
-    {
+    public function __construct(
+        DatatablesService $datatables_service,
+        MailService $mail_service,
+        ModuleService $module_service,
+        TreeService $tree_service,
+        UserService $user_service
+    ) {
         $this->datatables_service = $datatables_service;
         $this->mail_service       = $mail_service;
         $this->module_service     = $module_service;
+        $this->tree_service       = $tree_service;
         $this->user_service       = $user_service;
     }
 
@@ -309,7 +320,7 @@ class UsersController extends AbstractAdminController
             'default_locale'  => WT_LOCALE,
             'locales'         => I18N::installedLocales(),
             'roles'           => $this->roles(),
-            'trees'           => Tree::getAll(),
+            'trees'           => $this->tree_service->all(),
             'theme_options'   => $this->themeOptions(),
             'title'           => I18N::translate('Edit the user'),
             'user'            => $user,
@@ -434,7 +445,7 @@ class UsersController extends AbstractAdminController
             $edit_user->setPreference('canadmin', $canadmin ? '1' : '0');
         }
 
-        foreach (Tree::getAll() as $tree) {
+        foreach ($this->tree_service->all() as $tree) {
             $path_length = (int) $request->getParsedBody()['RELATIONSHIP_PATH_LENGTH' . $tree->id()];
             $gedcom_id   = $request->getParsedBody()['gedcomid' . $tree->id()] ?? '';
             $can_edit    = $request->getParsedBody()['canedit' . $tree->id()] ?? '';

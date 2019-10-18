@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -44,6 +45,19 @@ class AdminController extends AbstractBaseController
 {
     /** @var string */
     protected $layout = 'layouts/administration';
+
+    /** @var TreeService */
+    private $tree_service;
+
+    /**
+     * TreesMenuModule constructor.
+     *
+     * @param TreeService $tree_service
+     */
+    public function __construct(TreeService $tree_service)
+    {
+        $this->tree_service = $tree_service;
+    }
 
     /**
      * Merge two genealogy records.
@@ -272,10 +286,11 @@ class AdminController extends AbstractBaseController
 
         return $this->viewResponse('admin/trees-privacy', [
             'all_tags'             => $all_tags,
-            'count_trees'          => count(Tree::getAll()),
+            'count_trees'          => $this->tree_service->all()->count(),
             'privacy_constants'    => $privacy_constants,
             'privacy_restrictions' => $privacy_restrictions,
             'title'                => $title,
+            'tree'                 => $tree,
         ]);
     }
 

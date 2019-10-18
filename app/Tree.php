@@ -46,28 +46,33 @@ class Tree
         'confidential' => Auth::PRIV_NONE,
         'hidden'       => Auth::PRIV_HIDE,
     ];
-    /** @var Tree[] All trees that we have permission to see, indexed by ID. */
-    public static $trees = [];
+
     /** @var int The tree's ID number */
     private $id;
+
     /** @var string The tree's name */
     private $name;
+
     /** @var string The tree's title */
     private $title;
+
     /** @var int[] Default access rules for facts in this tree */
     private $fact_privacy;
+
     /** @var int[] Default access rules for individuals in this tree */
     private $individual_privacy;
+
     /** @var integer[][] Default access rules for individual facts in this tree */
     private $individual_fact_privacy;
+
     /** @var string[] Cached copy of the wt_gedcom_setting table. */
     private $preferences = [];
+
     /** @var string[][] Cached copy of the wt_user_gedcom_setting table. */
     private $user_preferences = [];
 
     /**
-     * Create a tree object. This is a private constructor - it can only
-     * be called from Tree::getAll() to ensure proper initialisation.
+     * Create a tree object.
      *
      * @param int    $id
      * @param string $name
@@ -135,11 +140,7 @@ class Tree
      */
     public static function getAll(): array
     {
-        if (empty(self::$trees)) {
-            self::$trees = self::all()->all();
-        }
-
-        return self::$trees;
+        return (new TreeService())->all()->all();
     }
 
     /**
@@ -430,9 +431,6 @@ class Tree
         DB::table('gedcom_chunk')->where('gedcom_id', '=', $this->id)->delete();
         DB::table('log')->where('gedcom_id', '=', $this->id)->delete();
         DB::table('gedcom')->where('gedcom_id', '=', $this->id)->delete();
-
-        // After updating the database, we need to fetch a new (sorted) copy
-        self::$trees = [];
     }
 
     /**

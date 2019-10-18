@@ -23,7 +23,7 @@ use FilesystemIterator;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
@@ -40,6 +40,19 @@ use Throwable;
  */
 class ImportThumbnailsController extends AbstractAdminController
 {
+    /** @var TreeService */
+    private $tree_service;
+
+    /**
+     * ImportThumbnailsController constructor.
+     *
+     * @param TreeService $tree_service
+     */
+    public function __construct(TreeService $tree_service)
+    {
+        $this->tree_service = $tree_service;
+    }
+
     /**
      * Import custom thumbnails from webtres 1.x.
      *
@@ -71,7 +84,7 @@ class ImportThumbnailsController extends AbstractAdminController
         $media_objects = [];
 
         foreach ($xrefs as $key => $xref) {
-            $tree            = Tree::findByName($geds[$key]);
+            $tree            = $this->tree_service->findByName($geds[$key]);
             $media_objects[] = Media::getInstance($xref, $tree);
         }
 

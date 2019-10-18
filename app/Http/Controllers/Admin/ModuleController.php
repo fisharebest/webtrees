@@ -34,7 +34,7 @@ use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -62,19 +62,22 @@ class ModuleController extends AbstractAdminController
         ModuleTabInterface::class,
     ];
 
-    /**
-     * @var ModuleService
-     */
+    /** @var ModuleService */
     private $module_service;
+
+    /** @var TreeService */
+    private $tree_service;
 
     /**
      * ModuleController constructor.
      *
      * @param ModuleService $module_service
+     * @param TreeService   $tree_service
      */
-    public function __construct(ModuleService $module_service)
+    public function __construct(ModuleService $module_service, TreeService $tree_service)
     {
         $this->module_service = $module_service;
+        $this->tree_service   = $tree_service;
     }
 
     /**
@@ -278,7 +281,7 @@ class ModuleController extends AbstractAdminController
             'interface'    => $interface,
             'modules'      => $this->module_service->findByInterface($interface, true, true),
             'title'        => $title,
-            'trees'        => Tree::all(),
+            'trees'        => $this->tree_service->all(),
             'uses_access'  => $uses_access,
             'uses_sorting' => $uses_sorting,
         ]);
@@ -583,7 +586,7 @@ class ModuleController extends AbstractAdminController
      */
     private function updateAccessLevel(Collection $modules, string $interface, ServerRequestInterface $request): void
     {
-        $trees = Tree::all();
+        $trees = $this->tree_service->all();
 
         foreach ($modules as $module) {
             foreach ($trees as $tree) {

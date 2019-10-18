@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -37,6 +38,9 @@ use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+use function redirect;
+use function view;
 
 /**
  * Class SiteMapModule
@@ -47,6 +51,19 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
 
     private const RECORDS_PER_VOLUME = 500; // Keep sitemap files small, for memory, CPU and max_allowed_packet limits.
     private const CACHE_LIFE         = 1209600; // Two weeks
+
+    /** @var TreeService */
+    private $tree_service;
+
+    /**
+     * TreesMenuModule constructor.
+     *
+     * @param TreeService $tree_service
+     */
+    public function __construct(TreeService $tree_service)
+    {
+        $this->tree_service = $tree_service;
+    }
 
     /**
      * A sentence describing what this module does.
@@ -90,7 +107,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
         ];
 
         return $this->viewResponse('modules/sitemap/config', [
-            'all_trees'   => Tree::all(),
+            'all_trees'   => $this->tree_service->all(),
             'sitemap_url' => $sitemap_url,
             'submit_urls' => $submit_urls,
             'title'       => $this->title(),
@@ -117,7 +134,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     {
         $params = $request->getParsedBody();
 
-        foreach (Tree::all() as $tree) {
+        foreach ($this->tree_service->all() as $tree) {
             $include_in_sitemap = (bool) ($params['sitemap' . $tree->id()] ?? false);
             $tree->setPreference('include_in_sitemap', (string) $include_in_sitemap);
         }
@@ -167,7 +184,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
                 ->pluck('total', 's_file');
 
             $content = view('modules/sitemap/sitemap-index.xml', [
-                'all_trees'          => Tree::all(),
+                'all_trees'          => $this->tree_service->all(),
                 'count_individuals'  => $count_individuals,
                 'count_media'        => $count_media,
                 'count_notes'        => $count_notes,

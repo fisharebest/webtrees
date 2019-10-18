@@ -23,6 +23,7 @@ use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
@@ -82,15 +83,23 @@ class UpgradeController extends AbstractAdminController
     /** @var UpgradeService */
     private $upgrade_service;
 
+    /** @var TreeService */
+    private $tree_service;
+
     /**
      * UpgradeController constructor.
      *
      * @param FilesystemInterface $filesystem
+     * @param TreeService         $tree_service
      * @param UpgradeService      $upgrade_service
      */
-    public function __construct(FilesystemInterface $filesystem, UpgradeService $upgrade_service)
-    {
+    public function __construct(
+        FilesystemInterface $filesystem,
+        TreeService $tree_service,
+        UpgradeService $upgrade_service
+    ) {
         $this->filesystem      = $filesystem;
+        $this->tree_service    = $tree_service;
         $this->upgrade_service = $upgrade_service;
 
         $this->root_filesystem      = new Filesystem(new CachedAdapter(new Local(Webtrees::ROOT_DIR), new Memory()));
@@ -131,7 +140,7 @@ class UpgradeController extends AbstractAdminController
 
         $export_steps = [];
 
-        foreach (Tree::getAll() as $tree) {
+        foreach ($this->tree_service->all() as $tree) {
             $route = route('upgrade', [
                 'step' => self::STEP_EXPORT,
                 'tree'  => $tree->name(),

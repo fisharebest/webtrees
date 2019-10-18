@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MailService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\SiteUser;
@@ -40,25 +41,29 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
 
-    /**
-     * @var MailService
-     */
+    /** @var MailService */
     private $mail_service;
 
-    /**
-     * @var UserService
-     */
+    /** @var UserService */
     private $user_service;
+
+    /** @var TreeService */
+    private $tree_service;
 
     /**
      * ReviewChangesModule constructor.
      *
      * @param MailService $mail_service
+     * @param TreeService $tree_service
      * @param UserService $user_service
      */
-    public function __construct(MailService $mail_service, UserService $user_service)
-    {
+    public function __construct(
+        MailService $mail_service,
+        TreeService $tree_service,
+        UserService $user_service
+    ) {
         $this->mail_service = $mail_service;
+        $this->tree_service = $tree_service;
         $this->user_service = $user_service;
     }
 
@@ -114,7 +119,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                 // Which users have pending changes?
                 foreach ($this->user_service->all() as $user) {
                     if ($user->getPreference('contactmethod') !== 'none') {
-                        foreach (Tree::getAll() as $tmp_tree) {
+                        foreach ($this->tree_service->all() as $tmp_tree) {
                             if ($tmp_tree->hasPendingEdit() && Auth::isManager($tmp_tree, $user)) {
                                 I18N::init($user->getPreference('language'));
 
