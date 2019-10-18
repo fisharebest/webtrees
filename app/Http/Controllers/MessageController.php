@@ -449,7 +449,7 @@ class MessageController extends AbstractBaseController
             'messaging2',
             'mailto',
             'none',
-        ]);
+        ], true);
     }
 
     /**
@@ -466,7 +466,7 @@ class MessageController extends AbstractBaseController
             'messaging3',
             'mailto',
             'none',
-        ]);
+        ], true);
     }
 
     /**

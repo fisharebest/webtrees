@@ -98,12 +98,12 @@ class Tree
 
             if ($row->xref !== null) {
                 if ($row->tag_type !== null) {
-                    $this->individual_fact_privacy[$row->xref][$row->tag_type] = (int) $row->resn;
+                    $this->individual_fact_privacy[$row->xref][$row->tag_type] = $row->resn;
                 } else {
-                    $this->individual_privacy[$row->xref] = (int) $row->resn;
+                    $this->individual_privacy[$row->xref] = $row->resn;
                 }
             } else {
-                $this->fact_privacy[$row->tag_type] = (int) $row->resn;
+                $this->fact_privacy[$row->tag_type] = $row->resn;
             }
         }
     }

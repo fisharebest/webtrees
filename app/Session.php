@@ -69,7 +69,7 @@ class Session
         session_start();
 
         // A new session? Prevent session fixation attacks by choosing a new session ID.
-        if (!self::get('initiated')) {
+        if (self::get('initiated') !== true) {
             self::regenerate(true);
             self::put('initiated', true);
         }
