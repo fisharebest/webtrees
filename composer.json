@@ -100,6 +100,7 @@
         ],
         "webtrees:pre-commit-hook": [
             "@composer webtrees:phpcs",
+            "@composer webtrees:phan -- --minimum-severity=6",
             "@composer webtrees:test"
         ],
         "webtrees:check": [
