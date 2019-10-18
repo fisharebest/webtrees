@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use LogicException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -79,6 +80,9 @@ class UseDatabase implements MiddlewareInterface
         $capsule->setAsGlobal();
 
         Builder::macro('whereContains', function ($column, string $search, string $boolean = 'and'): Builder {
+            // Assertion helps static analysis tools understand where we will be using this closure.
+            assert($this instanceof Builder, new LogicException());
+
             $search = strtr($search, ['\\' => '\\\\', '%' => '\\%', '_' => '\\_', ' ' => '%']);
 
             return $this->where($column, 'LIKE', '%' . $search . '%', $boolean);

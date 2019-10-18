@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use League\Flysystem\Adapter\Local;
 use League\Flysystem\FileNotFoundException;
+use League\Flysystem\Filesystem;
 use League\Glide\Signatures\SignatureFactory;
 use Throwable;
 
@@ -342,12 +344,16 @@ class MediaFile
                 // External/missing files have no size.
             }
 
-            try {
-                $file = $this->media()->tree()->mediaFilesystem()->getAdapter()->applyPathPrefix($this->filename());
-                [$width, $height] = getimagesize($file);
-                $attributes['__IMAGE_SIZE__'] = I18N::translate('%1$s × %2$s pixels', I18N::number($width), I18N::number($height));
-            } catch (Throwable $ex) {
+            // Note: getAdapter() is defined on Filesystem, but not on FilesystemInterface.
+            $filesystem = $this->media()->tree()->mediaFilesystem();
+            if ($filesystem instanceof Filesystem) {
+                $adapter = $filesystem->getAdapter();
                 // Only works for local filesystems.
+                if ($adapter instanceof Local) {
+                    $file = $adapter->applyPathPrefix($this->filename());
+                    [$width, $height] = getimagesize($file);
+                    $attributes['__IMAGE_SIZE__'] = I18N::translate('%1$s × %2$s pixels', I18N::number($width), I18N::number($height));
+                }
             }
         }
 
