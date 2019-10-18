@@ -41,6 +41,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Str;
+use LogicException;
 use stdClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
@@ -822,6 +823,11 @@ class ReportParserGenerate extends ReportParserBase
     {
         $this->print_data      = array_pop($this->print_data_stack);
         $this->current_element = $this->wt_report;
+
+        // The TextBox handler is mis-using the wt_report attribute to store an element.
+        // Until this can be re-designed, we need this assertion to help static analysis tools.
+        assert($this->current_element instanceof ReportBaseElement, new LogicException());
+
         $this->wt_report       = array_pop($this->wt_report_stack);
         $this->wt_report->addElement($this->current_element);
     }
