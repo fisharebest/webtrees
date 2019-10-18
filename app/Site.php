@@ -47,7 +47,7 @@ class Site
     {
         // There are lots of settings, and we need to fetch lots of them on every page
         // so it is quicker to fetch them all in one go.
-        if (empty(self::$preferences)) {
+        if (self::$preferences === []) {
             self::$preferences = DB::table('site_setting')
                 ->pluck('setting_value', 'setting_name')
                 ->all();

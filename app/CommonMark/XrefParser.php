@@ -68,7 +68,7 @@ class XrefParser implements InlineParserInterface
         $previous_state = $cursor->saveState();
 
         $handle = $cursor->match('/@' . Gedcom::REGEX_XREF . '@/');
-        if (empty($handle)) {
+        if ($handle === null) {
             // Not an XREF?
             $cursor->restoreState($previous_state);
 

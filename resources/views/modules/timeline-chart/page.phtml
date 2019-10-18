@@ -60,7 +60,7 @@
             <?php if ($individual->getBirthDate()->isOK()) : ?>
                 <br>
                 <label>
-                    <input type="checkbox" name="agebar<?= $n ?>" value="ON" onclick="$('#agebox<?= $n ?>').toggle();">
+                    <input type="checkbox" name="agebar<?= $n ?>" onclick="$('#agebox<?= $n ?>').toggle();">
                     <?= /* I18N: an age indicator, which can be dragged around the screen */
                     I18N::translate('Show an age cursor') ?>
                 </label>

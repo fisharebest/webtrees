@@ -65,7 +65,7 @@ class Menu
      */
     public function bootstrap4(): string
     {
-        if (!empty($this->submenus)) {
+        if ($this->submenus !== []) {
             $submenus = '';
             foreach ($this->submenus as $submenu) {
                 $attrs = '';

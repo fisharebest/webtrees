@@ -3505,7 +3505,7 @@ class Soundex
     public static function compare($soundex1, $soundex2): bool
     {
         if ($soundex1 !== '' && $soundex2 !== '') {
-            return !empty(array_intersect(explode(':', $soundex1), explode(':', $soundex2)));
+            return array_intersect(explode(':', $soundex1), explode(':', $soundex2)) !== [];
         }
 
         return false;

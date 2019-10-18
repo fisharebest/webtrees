@@ -26,7 +26,7 @@
         <p class="alert alert-warning"><?= $warning ?></p>
     <?php endforeach ?>
 
-    <?php if (empty($errors) && empty($warnings)) : ?>
+    <?php if ($errors->isEmpty() && $warnings->isEmpty()) : ?>
         <p>
             <?= I18N::translate('The server configuration is OK.') ?>
         </p>

@@ -145,7 +145,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     public function hasTabContent(Individual $individual): bool
     {
-        return Auth::isManager($individual->tree()) || !empty($this->getStoriesForIndividual($individual));
+        return Auth::isManager($individual->tree()) || $this->getStoriesForIndividual($individual) !== [];
     }
 
     /**

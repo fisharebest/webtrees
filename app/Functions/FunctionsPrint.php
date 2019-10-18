@@ -344,7 +344,7 @@ class FunctionsPrint
 
         if ($sub_records) {
             $placerec = Functions::getSubRecord(2, '2 PLAC', $event->gedcom());
-            if (!empty($placerec)) {
+            if ($placerec !== '') {
                 if (preg_match_all('/\n3 (?:_HEB|ROMN) (.+)/', $placerec, $matches)) {
                     foreach ($matches[1] as $match) {
                         $wt_place = new Place($match, $tree);

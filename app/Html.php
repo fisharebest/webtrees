@@ -63,7 +63,7 @@ class Html
     {
         $path = str_replace(' ', '%20', $path);
 
-        if (!empty($data)) {
+        if ($data !== []) {
             $path .= '?' . http_build_query($data, '', '&', PHP_QUERY_RFC3986);
         }
 

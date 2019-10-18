@@ -259,7 +259,7 @@ class MediaFile
     {
         // Sign the URL, to protect against mass-resize attacks.
         $glide_key = Site::getPreference('glide-key');
-        if (empty($glide_key)) {
+        if ($glide_key === '') {
             $glide_key = bin2hex(random_bytes(128));
             Site::setPreference('glide-key', $glide_key);
         }

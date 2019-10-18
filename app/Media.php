@@ -181,7 +181,7 @@ class Media extends GedcomRecord
         }
         $names = array_filter(array_unique($names));
 
-        if (empty($names)) {
+        if ($names === []) {
             $names[] = $this->getFallBackName();
         }
 

@@ -79,7 +79,7 @@ class NoteController extends AbstractBaseController
             'families'        => $note->linkedFamilies('NOTE'),
             'individuals'     => $note->linkedIndividuals('NOTE'),
             'note'            => $note,
-            'notes'           => [],
+            'notes'           => new Collection([]),
             'media_objects'   => $note->linkedMedia('NOTE'),
             'meta_robots'     => 'index,follow',
             'sources'         => $note->linkedSources('NOTE'),

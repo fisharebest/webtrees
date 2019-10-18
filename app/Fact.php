@@ -626,7 +626,7 @@ class Fact
     {
         static $factsort = [];
 
-        if (empty($factsort)) {
+        if ($factsort === []) {
             $factsort = array_flip(self::FACT_ORDER);
         }
 

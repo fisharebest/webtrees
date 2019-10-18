@@ -5,7 +5,7 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<?php if (empty($articles)) : ?>
+<?php if ($articles->isEmpty()) : ?>
     <?= I18N::translate('No news articles have been submitted.') ?>
 <?php endif ?>
 

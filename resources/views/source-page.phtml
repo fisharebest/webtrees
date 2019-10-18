@@ -34,25 +34,25 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link<?= empty($individuals) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
+            <a class="nav-link<?= $individuals->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
                 <?= I18N::translate('Individuals') ?>
                 <?= view('components/badge', ['count' => count($individuals)]) ?>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link<?= empty($families) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#families">
+            <a class="nav-link<?= $families->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#families">
                 <?= I18N::translate('Families') ?>
                 <?= view('components/badge', ['count' => count($families)]) ?>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link<?= empty($media_objects) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#media">
+            <a class="nav-link<?= $media_objects->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#media">
                 <?= I18N::translate('Media objects') ?>
                 <?= view('components/badge', ['count' => count($media_objects)]) ?>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link<?= empty($notes) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#notes">
+            <a class="nav-link<?= $notes->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#notes">
                 <?= I18N::translate('Notes') ?>
                 <?= view('components/badge', ['count' => count($notes)]) ?>
             </a>

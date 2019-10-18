@@ -44,7 +44,7 @@ class ChartService
 
         $max = 2 ** ($generations - 1);
 
-        while (!empty($queue)) {
+        while ($queue !== []) {
             $sosa_stradonitz_number = array_shift($queue);
 
             if ($sosa_stradonitz_number >= $max) {

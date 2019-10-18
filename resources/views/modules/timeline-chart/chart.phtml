@@ -1,36 +1,33 @@
-<?php use Fisharebest\Webtrees\Date; ?>
-<?php use Fisharebest\Webtrees\Family; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsDate; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Individual; ?>
+<?php use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual; ?>
+<?php ?>
+<?php ?>
+<?php ?>
+<?php ?>
+<?php ?>
 
 <script>
-  var bottomy     = <?= ($topyear - $baseyear) * $scale - 5 ?>;
+  var bottomy     = <?= json_encode(($topyear - $baseyear) * $scale - 5) ?>;
   var topy        = 0;
   var baseyear    = <?= $baseyear - (25 / $scale) ?>;
   var birthyears  = [];
   var birthmonths = [];
   var birthdays   = [];
-    <?php
-    foreach ($individuals as $c => $indi) {
-        if (!empty($birthyears[$indi->xref()])) {
-            echo 'birthyears[' . $c . ']=' . $birthyears[$indi->xref()] . ';';
-        }
-        if (!empty($birthmonths[$indi->xref()])) {
-            echo 'birthmonths[' . $c . ']=' . $birthmonths[$indi->xref()] . ';';
-        }
-        if (!empty($birthdays[$indi->xref()])) {
-            echo 'birthdays[' . $c . ']=' . $birthdays[$indi->xref()] . ';';
-        }
-    }
-    ?>
+  <?php foreach ($individuals as $c => $indi) : ?>
+  birthyears [<?= json_encode($c) ?>] = <?= json_encode($birthyears[$indi->xref()] ?? null) ?>;
+  birthmonths[<?= json_encode($c) ?>] = <?= json_encode($birthmonths[$indi->xref()] ?? null) ?>;
+  birthdays  [<?= json_encode($c) ?>] = <?= json_encode($birthdays[$indi->xref()] ?? null) ?>;
+  <?php endforeach ?>
 
-  var bheight = <?= $bheight ?>;
-  var scale   = <?= $scale ?>;
+  var bheight = <?= json_encode($bheight) ?>;
+  var scale   = <?= json_encode($scale) ?>;
 
   timeline_chart_div              = document.getElementById("timeline_chart");
-  timeline_chart_div.style.height = '<?= 0 + ($topyear - $baseyear) * $scale * 1.1 ?>px';
+  timeline_chart_div.style.height = '<?= json_encode(0 + ($topyear - $baseyear) * $scale * 1.1) ?>px';
 
   /**
    * Find the position of an event, relative to an element.

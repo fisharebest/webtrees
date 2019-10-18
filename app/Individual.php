@@ -603,7 +603,7 @@ class Individual extends GedcomRecord
     {
         foreach (Gedcom::BIRTH_EVENTS as $event) {
             $places = $this->getAllEventPlaces([$event]);
-            if (!empty($places)) {
+            if ($places !== []) {
                 return $places;
             }
         }
@@ -637,7 +637,7 @@ class Individual extends GedcomRecord
     {
         foreach (Gedcom::DEATH_EVENTS as $event) {
             $places = $this->getAllEventPlaces([$event]);
-            if (!empty($places)) {
+            if ($places !== []) {
                 return $places;
             }
         }

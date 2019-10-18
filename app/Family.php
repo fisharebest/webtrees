@@ -364,7 +364,7 @@ class Family extends GedcomRecord
         foreach (Gedcom::MARRIAGE_EVENTS as $event) {
             $array = $this->getAllEventDates([$event]);
 
-            if (!empty($array)) {
+            if ($array !== []) {
                 return $array;
             }
         }
@@ -381,7 +381,7 @@ class Family extends GedcomRecord
     {
         foreach (Gedcom::MARRIAGE_EVENTS as $event) {
             $places = $this->getAllEventPlaces([$event]);
-            if (!empty($places)) {
+            if ($places !== []) {
                 return $places;
             }
         }
@@ -405,7 +405,7 @@ class Family extends GedcomRecord
                 });
             }
             // If the individual only has married names, create a dummy birth name.
-            if (empty($husb_names)) {
+            if ($husb_names === []) {
                 $husb_names[] = [
                     'type' => 'BIRT',
                     'sort' => '@N.N.',
@@ -423,7 +423,7 @@ class Family extends GedcomRecord
                 });
             }
             // If the individual only has married names, create a dummy birth name.
-            if (empty($wife_names)) {
+            if ($wife_names === []) {
                 $wife_names[] = [
                     'type' => 'BIRT',
                     'sort' => '@N.N.',

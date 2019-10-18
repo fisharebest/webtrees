@@ -255,7 +255,7 @@ class Tree
      */
     public function getPreference(string $setting_name, string $default = ''): string
     {
-        if (empty($this->preferences)) {
+        if ($this->preferences === []) {
             $this->preferences = DB::table('gedcom_setting')
                 ->where('gedcom_id', '=', $this->id)
                 ->pluck('setting_value', 'setting_name')

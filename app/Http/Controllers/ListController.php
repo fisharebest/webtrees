@@ -447,7 +447,7 @@ class ListController extends AbstractBaseController
             'formats'       => $formats,
             'form_type'     => $form_type,
             'max'           => $max,
-            'media_objects' => $media_objects,
+            'media_objects' => new Collection($media_objects),
             'page'          => $page,
             'pages'         => $pages,
             'subdirs'       => $subdirs,

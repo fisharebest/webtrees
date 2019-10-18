@@ -64,7 +64,7 @@ class DatatablesService
         }
 
         // Sorting
-        if (!empty($order)) {
+        if ($order !== []) {
             foreach ($order as $value) {
                 // Columns in datatables are numbered from zero.
                 // Columns in MySQL are numbered starting with one.
