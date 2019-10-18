@@ -49,7 +49,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      *
      * @param HtmlService $html_service
      */
-    public function boot(HtmlService $html_service)
+    public function boot(HtmlService $html_service): void
     {
         $this->html_service = $html_service;
     }

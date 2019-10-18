@@ -49,7 +49,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      *
      * @param HtmlService $html_service
      */
-    public function boot(HtmlService $html_service)
+    public function boot(HtmlService $html_service): void
     {
         $this->html_service = $html_service;
     }

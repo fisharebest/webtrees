@@ -31,6 +31,7 @@ use function view;
  */
 trait ViewResponseTrait
 {
+    /** @var string */
     protected $layout = 'layouts/default';
 
     /**

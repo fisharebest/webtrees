@@ -49,6 +49,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
 {
     use ModuleConfigTrait;
 
+    /** @var string */
     protected $layout = 'layouts/administration';
 
     /**

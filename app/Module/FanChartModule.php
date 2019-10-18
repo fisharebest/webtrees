@@ -87,7 +87,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
      *
      * @param RouterContainer $router_container
      */
-    public function boot(RouterContainer $router_container)
+    public function boot(RouterContainer $router_container): void
     {
         $router_container->getMap()
             ->get(self::ROUTE_NAME, self::ROUTE_URL, self::class)

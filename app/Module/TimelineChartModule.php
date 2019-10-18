@@ -74,7 +74,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @param RouterContainer $router_container
      */
-    public function boot(RouterContainer $router_container)
+    public function boot(RouterContainer $router_container): void
     {
         $router_container->getMap()
             ->get(self::ROUTE_NAME, self::ROUTE_URL, self::class)

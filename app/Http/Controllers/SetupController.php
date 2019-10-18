@@ -67,9 +67,9 @@ class SetupController extends AbstractBaseController
         'wtemail' => '',
     ];
 
-    // We need this information to complete the setup
     /** @var string */
     protected $layout = 'layouts/setup';
+
     /** @var MigrationService */
     private $migration_service;
 
