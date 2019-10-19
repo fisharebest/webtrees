@@ -291,13 +291,19 @@ trait ModuleThemeTrait
             return null;
         }
 
+        $request = app(ServerRequestInterface::class);
+
         // Return to this page after login...
-        $url = app(ServerRequestInterface::class)->getUri();
+        $url = $request->getUri();
 
         // ...but switch from the tree-page to the user-page
         $url = str_replace('route=tree-page', 'route=user-page', $url);
 
-        return new Menu(I18N::translate('Sign in'), route(LoginPage::class, ['url' => $url]), 'menu-login', ['rel' => 'nofollow']);
+        // Stay on the same tree page
+        $tree = $request->getAttribute('tree');
+        $url  = route(LoginPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null, 'url' => $url]);
+
+        return new Menu(I18N::translate('Sign in'), $url, 'menu-login', ['rel' => 'nofollow']);
     }
 
     /**

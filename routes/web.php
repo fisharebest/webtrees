@@ -376,8 +376,8 @@ $router->get('module-admin', '/module/{module}/{action}', ModuleAction::class)
 
 $router->get(HelpText::class, '/help/{topic}', HelpText::class);
 $router->post(SelectLanguage::class, '/language/{language}', SelectLanguage::class);
-$router->get(LoginPage::class, '/login', LoginPage::class);
-$router->post(LoginAction::class, '/login', LoginAction::class);
+$router->get(LoginPage::class, '/login{/tree}', LoginPage::class);
+$router->post(LoginAction::class, '/login{/tree}', LoginAction::class);
 $router->post(Logout::class, '/logout', Logout::class);
 $router->get(PasswordRequestPage::class, '/password-request', PasswordRequestPage::class);
 $router->post(PasswordRequestAction::class, '/password-request', PasswordRequestAction::class);

@@ -26,9 +26,11 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -65,6 +67,7 @@ class LoginAction extends AbstractBaseController
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $tree     = $request->getAttribute('tree');
         $username = $request->getParsedBody()['username'] ?? '';
         $password = $request->getParsedBody()['password'] ?? '';
         $url      = $request->getParsedBody()['url'] ?? '';
@@ -92,6 +95,7 @@ class LoginAction extends AbstractBaseController
         } catch (Exception $ex) {
             // Failed to log in.
             return redirect(route(LoginPage::class, [
+                'tree'     => $tree instanceof Tree ? $tree->name() : null,
                 'username' => $username,
                 'url'      => $url,
                 'error'    => $ex->getMessage(),

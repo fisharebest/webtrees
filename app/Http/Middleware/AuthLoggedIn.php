@@ -43,6 +43,7 @@ class AuthLoggedIn implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $user = $request->getAttribute('user');
 
         // Logged in?
@@ -51,6 +52,6 @@ class AuthLoggedIn implements MiddlewareInterface
         }
 
         // Not logged in.
-        return redirect(route(LoginPage::class, ['url' => $request->getUri()]));
+        return redirect(route(LoginPage::class, ['tree' => $tree->name(), 'url' => $request->getUri()]));
     }
 }

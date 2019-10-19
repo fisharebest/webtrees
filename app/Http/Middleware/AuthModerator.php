@@ -54,7 +54,7 @@ class AuthModerator implements MiddlewareInterface
         $user = $request->getAttribute('user');
 
         // Logged in with the correct role?
-        if ($tree instanceof Tree && Auth::isModerator($tree, $user)) {
+        if (Auth::isModerator($tree, $user)) {
             return $handler->handle($request);
         }
 
@@ -64,6 +64,6 @@ class AuthModerator implements MiddlewareInterface
         }
 
         // Not logged in.
-        return redirect(route(LoginPage::class, ['url' => $request->getUri()]));
+        return redirect(route(LoginPage::class, ['tree' => $tree->name(), 'url' => $request->getUri()]));
     }
 }
