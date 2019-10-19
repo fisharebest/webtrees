@@ -61,7 +61,7 @@ class FixLevel0MediaControllerTest extends TestCase
         ]);
         $response   = $controller->fixLevel0MediaAction($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 
     /**

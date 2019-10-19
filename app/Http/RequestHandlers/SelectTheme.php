@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Session;
 use InvalidArgumentException;
@@ -34,7 +33,7 @@ use function response;
 /**
  * Select a new theme for the current session.
  */
-class SelectTheme implements RequestHandlerInterface, StatusCodeInterface
+class SelectTheme implements RequestHandlerInterface
 {
     /**
      * @param ServerRequestInterface $request
@@ -52,6 +51,6 @@ class SelectTheme implements RequestHandlerInterface, StatusCodeInterface
         Session::put('theme', $theme);
         $user->setPreference('theme', $theme);
 
-        return response('', StatusCodeInterface::STATUS_NO_CONTENT);
+        return response();
     }
 }

@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use InvalidArgumentException;
@@ -37,7 +36,7 @@ use function response;
 /**
  * Delete a file.
  */
-class DeletePath implements RequestHandlerInterface, StatusCodeInterface
+class DeletePath implements RequestHandlerInterface
 {
     /** @var FilesystemInterface */
     private $filesystem;
@@ -86,6 +85,6 @@ class DeletePath implements RequestHandlerInterface, StatusCodeInterface
             FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)), 'danger');
         }
 
-        return response('', StatusCodeInterface::STATUS_NO_CONTENT);
+        return response();
     }
 }

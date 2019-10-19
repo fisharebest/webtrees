@@ -19,9 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\HtmlService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -32,6 +34,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
 use function assert;
+use function redirect;
+use function route;
 
 /**
  * Class FrequentlyAskedQuestionsModule
@@ -44,14 +48,19 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     /** @var HtmlService */
     private $html_service;
 
+    /** @var TreeService */
+    private $tree_service;
+
     /**
-     * HtmlBlockModule bootstrap.
+     * BatchUpdateModule constructor.
      *
      * @param HtmlService $html_service
+     * @param TreeService $tree_service
      */
-    public function boot(HtmlService $html_service): void
+    public function __construct(HtmlService $html_service, TreeService $tree_service)
     {
         $this->html_service = $html_service;
+        $this->tree_service = $tree_service;
     }
 
     /**
@@ -115,8 +124,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     {
         $this->layout = 'layouts/administration';
 
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        // This module can't run without a tree
+        $tree = $request->getQueryParams()['tree'] ?? '';
+        $tree = $this->tree_service->findByName($tree) ?? $this->tree_service->all()->first();
+        if (!$tree instanceof Tree) {
+            return redirect(route(ControlPanel::class));
+        }
 
         $faqs = $this->faqsForTree($tree);
 
@@ -159,7 +172,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function postAdminDeleteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
         $block_id = (int) $request->getQueryParams()['block_id'];
 
         DB::table('block_setting')->where('block_id', '=', $block_id)->delete();
@@ -169,7 +181,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $url = route('module', [
             'module' => $this->name(),
             'action' => 'Admin',
-            'tree'   => $tree->name(),
         ]);
 
         return redirect($url);
@@ -182,7 +193,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function postAdminMoveDownAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
         $block_id = (int) $request->getQueryParams()['block_id'];
 
         $block_order = DB::table('block')
@@ -191,17 +201,11 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         $swap_block = DB::table('block')
             ->where('module_name', '=', $this->name())
-            ->where('block_order', '=', function (Builder $query) use ($block_order): void {
-                $query
-                    ->from('block')
-                    ->where('module_name', '=', $this->name())
-                    ->where('block_order', '>', $block_order)
-                    ->min('block_order');
-            })
-            ->select(['block_order', 'block_id'])
+            ->where('block_order', '>', $block_order)
+            ->orderBy('block_order', 'asc')
             ->first();
 
-        if ($swap_block !== null) {
+        if ($block_order !== null && $swap_block !== null) {
             DB::table('block')
                 ->where('block_id', '=', $block_id)
                 ->update([
@@ -215,13 +219,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
                 ]);
         }
 
-        $url = route('module', [
-            'module' => $this->name(),
-            'action' => 'Admin',
-            'tree'   => $tree->name(),
-        ]);
-
-        return redirect($url);
+        return response();
     }
 
     /**
@@ -231,7 +229,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function postAdminMoveUpAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
         $block_id = (int) $request->getQueryParams()['block_id'];
 
         $block_order = DB::table('block')
@@ -240,17 +237,11 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         $swap_block = DB::table('block')
             ->where('module_name', '=', $this->name())
-            ->where('block_order', '=', function (Builder $query) use ($block_order): void {
-                $query
-                    ->from('block')
-                    ->where('module_name', '=', $this->name())
-                    ->where('block_order', '<', $block_order)
-                    ->max('block_order');
-            })
-            ->select(['block_order', 'block_id'])
+            ->where('block_order', '<', $block_order)
+            ->orderBy('block_order', 'desc')
             ->first();
 
-        if ($swap_block !== null) {
+        if ($block_order !== null && $swap_block !== null) {
             DB::table('block')
                 ->where('block_id', '=', $block_id)
                 ->update([
@@ -264,13 +255,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
                 ]);
         }
 
-        $url = route('module', [
-            'module' => $this->name(),
-            'action' => 'Admin',
-            'tree'    => $tree->name(),
-        ]);
-
-        return redirect($url);
+        return response();
     }
 
     /**

@@ -44,6 +44,6 @@ class CheckForMaintenanceModeTest extends TestCase
         $middleware = new CheckForMaintenanceMode();
         $response   = $middleware->process($request, $handler);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 }

@@ -115,6 +115,10 @@ function redirect(string $url, $code = StatusCodeInterface::STATUS_FOUND): Respo
  */
 function response($content = '', $code = StatusCodeInterface::STATUS_OK, $headers = []): ResponseInterface
 {
+    if ($content === '' && $code === StatusCodeInterface::STATUS_OK) {
+        $code = StatusCodeInterface::STATUS_NO_CONTENT;
+    }
+
     if ($headers === []) {
         if (is_string($content)) {
             $headers = [

@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
@@ -66,6 +65,6 @@ class DeleteTreeAction extends AbstractBaseController
         /* I18N: %s is the name of a family tree */
         FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->title())), 'success');
 
-        return response('', StatusCodeInterface::STATUS_NO_CONTENT);
+        return response();
     }
 }

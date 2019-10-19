@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UserService;
@@ -34,7 +33,7 @@ use function response;
 /**
  * Masquerade as another user, for testing and administration.
  */
-class MasqueradeAsUser implements RequestHandlerInterface, StatusCodeInterface
+class MasqueradeAsUser implements RequestHandlerInterface
 {
     /** @var UserService */
     private $user_service;
@@ -67,6 +66,6 @@ class MasqueradeAsUser implements RequestHandlerInterface, StatusCodeInterface
             Session::put('masquerade', '1');
         }
 
-        return response('', StatusCodeInterface::STATUS_NO_CONTENT);
+        return response();
     }
 }

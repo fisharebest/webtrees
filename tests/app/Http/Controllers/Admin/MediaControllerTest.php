@@ -123,7 +123,7 @@ class MediaControllerTest extends TestCase
         $request            = self::createRequest(RequestMethodInterface::METHOD_POST, ['file' => 'foo', 'folder' => 'bar']);
         $response           = $controller->delete($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 
     /**

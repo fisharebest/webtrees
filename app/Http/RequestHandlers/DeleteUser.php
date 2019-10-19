@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UserService;
@@ -34,7 +33,7 @@ use function response;
 /**
  * Delete a user.
  */
-class DeleteUser implements RequestHandlerInterface, StatusCodeInterface
+class DeleteUser implements RequestHandlerInterface
 {
     /** @var UserService */
     private $user_service;
@@ -69,6 +68,6 @@ class DeleteUser implements RequestHandlerInterface, StatusCodeInterface
         Log::addAuthenticationLog('Deleted user: ' . $user->userName());
         $this->user_service->delete($user);
 
-        return response('', StatusCodeInterface::STATUS_NO_CONTENT);
+        return response();
     }
 }

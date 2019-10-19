@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
@@ -97,7 +96,6 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      */
     public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree    = $request->getQueryParams()['tree'] ?? '';
         $user    = $request->getAttribute('user');
         $plugin  = $request->getQueryParams()['plugin'] ?? '';
         $xref    = $request->getQueryParams()['xref'] ?? '';
@@ -105,6 +103,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
         $plugin  = $plugins[$plugin] ?? null;
 
         // This module can't run without a tree
+        $tree = $request->getQueryParams()['tree'] ?? '';
         $tree = $this->tree_service->findByName($tree) ?? $this->tree_service->all()->first();
         if (!$tree instanceof Tree) {
             return redirect(route(ControlPanel::class));

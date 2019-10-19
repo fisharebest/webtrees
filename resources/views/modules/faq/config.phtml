@@ -40,10 +40,10 @@ use Fisharebest\Webtrees\I18N;
             <th><?= I18N::translate('Sort order') ?></th>
             <th><?= I18N::translate('Family tree') ?></th>
             <th><?= I18N::translate('Question') ?></th>
-            <th><span class="sr-only"><?= I18N::translate('Move up') ?></span></th>
-            <th><span class="sr-only"><?= I18N::translate('Move down') ?></span></th>
-            <th><span class="sr-only"><?= I18N::translate('Edit') ?></span></th>
-            <th><span class="sr-only"><?= I18N::translate('Delete') ?></span></th>
+            <th><?= I18N::translate('Move up') ?></th>
+            <th><?= I18N::translate('Move down') ?></th>
+            <th><?= I18N::translate('Edit') ?></th>
+            <th><?= I18N::translate('Delete') ?></th>
         </tr>
     </thead>
     <tbody>
@@ -64,40 +64,27 @@ use Fisharebest\Webtrees\I18N;
                 </td>
                 <td>
                     <?php if ($faq->block_order != $min_block_order) : ?>
-                        <form method="post" action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveUp', 'block_id' => $faq->block_id, 'tree' => $tree->name()])) ?>">
-                            <?= csrf_field() ?>
-                            <button type="submit" class="btn btn-secondary">
-                                <?= view('icons/arrow-up') ?>
-                                <?= I18N::translate('Move up') ?>
-                            </button>
-                        </form>
+                        <a href="#" data-post-url="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveUp', 'block_id' => $faq->block_id])) ?>" class="btn btn-secondary">
+                            <?= view('icons/arrow-up') ?>
+                        </a>
                     <?php endif ?>
                 </td>
                 <td>
                     <?php if ($faq->block_order != $max_block_order) : ?>
-                        <form method="post" action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveDown', 'block_id' => $faq->block_id, 'tree' => $tree->name()])) ?>">
-                            <?= csrf_field() ?>
-                            <button type="submit" class="btn btn-secondary">
-                                <?= view('icons/arrow-down') ?>
-                                <?= I18N::translate('Move down') ?>
-                            </button>
-                        </form>
+                        <a href="#" data-post-url="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveDown', 'block_id' => $faq->block_id])) ?>" class="btn btn-secondary">
+                        <?= view('icons/arrow-down') ?>
+                        </a>
                     <?php endif ?>
                 </td>
                 <td>
                     <a href="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminEdit', 'block_id' => $faq->block_id, 'tree' => $tree->name()])) ?>" class="btn btn-primary">
                         <?= view('icons/edit') ?>
-                        <?= I18N::translate('Edit') ?>
                     </a>
                 </td>
                 <td>
-                    <form method="post" action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminDelete', 'block_id' => $faq->block_id, 'tree' => $tree->name()])) ?>">
-                        <?= csrf_field() ?>
-                        <button type="submit" class="btn btn-danger" onclick="return confirm(this.dataset.confirm);" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($faq->header)) ?>">
-                            <?= view('icons/delete') ?>
-                            <?= I18N::translate('delete') ?>
-                        </button>
-                    </form>
+                    <a href="#" data-post-url="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminDelete', 'block_id' => $faq->block_id])) ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($faq->header)) ?>" class="btn btn-danger">
+                        <?= view('icons/delete') ?>
+                    </a>
                 </td>
             </tr>
         <?php endforeach ?>
