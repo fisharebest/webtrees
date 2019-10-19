@@ -45,6 +45,7 @@ class PrivacyPolicy implements RequestHandlerInterface
 
         return $this->viewResponse('privacy-policy', [
             'title'          => $title,
+            'tree'           => null,
             'uses_analytics' => $uses_analytics,
         ]);
     }
