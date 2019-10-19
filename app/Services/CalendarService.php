@@ -139,8 +139,8 @@ class CalendarService
         // Now fetch these events
         $found_facts = [];
 
-        foreach (['INDI' => $ind_query, 'FAM' => $fam_query] as $type => $query) {
-            foreach ($query->get() as $row) {
+        foreach (['INDI' => $ind_query, 'FAM' => $fam_query] as $type => $record_query) {
+            foreach ($record_query->get() as $row) {
                 if ($type === 'INDI') {
                     $record = Individual::getInstance($row->xref, $tree, $row->gedcom);
                 } else {
@@ -308,8 +308,8 @@ class CalendarService
                 ->select(['f_id AS xref', 'f_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact']);
 
             // Now fetch these anniversaries
-            foreach (['INDI' => $ind_query, 'FAM' => $fam_query] as $type => $query) {
-                foreach ($query->get() as $row) {
+            foreach (['INDI' => $ind_query, 'FAM' => $fam_query] as $type => $record_query) {
+                foreach ($record_query->get() as $row) {
                     if ($type === 'INDI') {
                         $record = Individual::getInstance($row->xref, $tree, $row->gedcom);
                     } else {
