@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
@@ -140,7 +141,7 @@ class FixLevel0MediaController extends AbstractAdminController
                     ->on('individuals.i_file', '=', 'link.l_file')
                     ->on('individuals.i_id', '=', 'link.l_from');
             })
-            ->where('i_gedcom', 'LIKE', new Expression("'%\n1 OBJE @' || " . $prefix . "media.m_id || '@%'"))
+            ->where('i_gedcom', 'LIKE', new Expression("('%\n1 OBJE @' || " . $prefix . "media.m_id || '@%')"))
             ->orderBy('individuals.i_file')
             ->orderBy('individuals.i_id')
             ->orderBy('media.m_id')
@@ -164,7 +165,7 @@ class FixLevel0MediaController extends AbstractAdminController
                 }
             }
             if ($deleted) {
-                $facts = [];
+                $facts = new Collection();
             }
 
             $facts = $facts->map(static function (Fact $fact) use ($individual, $media): string {
