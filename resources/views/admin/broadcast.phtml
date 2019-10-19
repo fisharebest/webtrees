@@ -11,8 +11,6 @@ use Fisharebest\Webtrees\I18N;
 
 <form method="post" action="<?= e(route('broadcast')) ?>">
     <?= csrf_field() ?>
-    <input type="hidden" name="url" value="<?= e($url) ?>">
-    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
 
     <div class="form-group row">
         <label class="col-sm-3 col-form-label" for="from">

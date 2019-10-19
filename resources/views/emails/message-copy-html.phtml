@@ -16,8 +16,10 @@
 
     <hr>
 
-    <p>
-        <?= I18N::translate('This message was sent while viewing the following URL: ') ?>
-        <?= e($url) ?>
-    </p>
+    <?php if ($url !== '') : ?>
+        <p>
+            <?= I18N::translate('This message was sent while viewing the following URL: ') ?>
+            <?= e($url) ?>
+        </p>
+    <?php endif ?>
 </div>

@@ -8,5 +8,7 @@
 
 ------------------------------------------------------------
 
+<?php if ($url !== '') : ?>
 <?= I18N::translate('This message was sent while viewing the following URL: ') ?>
 <?= $url ?>
+<?php endif ?>

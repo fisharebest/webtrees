@@ -110,13 +110,11 @@ class MessageController extends AbstractBaseController
      */
     public function broadcastAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree    = $request->getAttribute('tree');
         $user    = $request->getAttribute('user');
         $params  = $request->getParsedBody();
         $body    = $params['body'];
         $subject = $params['subject'];
         $to      = $params['to'];
-        $url     = $params['url'];
 
         $ip       = $request->getAttribute('client-ip');
         $to_users = $this->recipientUsers($to);
@@ -126,15 +124,13 @@ class MessageController extends AbstractBaseController
                 'body'    => $body,
                 'subject' => $subject,
                 'to'      => $to,
-                'tree'    => $tree,
-                'url'     => $url,
             ]));
         }
 
         $errors = false;
 
         foreach ($to_users as $to_user) {
-            if ($this->deliverMessage($user, $to_user, $subject, $body, $url, $ip)) {
+            if ($this->deliverMessage($user, $to_user, $subject, $body, '', $ip)) {
                 FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->realName())), 'success');
             } else {
                 $errors = true;
