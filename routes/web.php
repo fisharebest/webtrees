@@ -344,8 +344,6 @@ $router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->get('media', '/media/{xref}{/slug}', 'MediaController::show');
     $router->get('message', '/message', 'MessageController::messagePage');
     $router->post('message-action', '/message', 'MessageController::messageAction');
-    $router->get('module', '/module/{module}/{action}', ModuleAction::class)
-        ->allows(RequestMethodInterface::METHOD_POST);
     $router->get('note', '/note/{xref}{/slug}', 'NoteController::show');
     $router->get('record', '/record/{xref}{/slug}', 'GedcomRecordController::show');
     $router->get('repository', '/repository/{xref}{/slug}', 'RepositoryController::show');
@@ -371,7 +369,7 @@ $router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->get('example', '/…');
 });
 
-$router->get('module-admin', '/module/{module}/{action}', ModuleAction::class)
+$router->get('module', '/module/{module}/{action}{/tree}', ModuleAction::class)
     ->allows(RequestMethodInterface::METHOD_POST);
 
 $router->get(HelpText::class, '/help/{topic}', HelpText::class);

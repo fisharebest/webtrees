@@ -22,12 +22,14 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\BatchUpdate\BatchUpdateBasePlugin;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -36,7 +38,6 @@ use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function array_key_exists;
@@ -51,6 +52,19 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
 
     /** @var string */
     protected $layout = 'layouts/administration';
+
+    /** @var TreeService */
+    private $tree_service;
+
+    /**
+     * BatchUpdateModule constructor.
+     *
+     * @param TreeService $tree_service
+     */
+    public function __construct(TreeService $tree_service)
+    {
+        $this->tree_service = $tree_service;
+    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -83,26 +97,18 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      */
     public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
-
-        $user = $request->getAttribute('user');
-
-        // We need a tree to work with.
-        if ($tree === null) {
-            throw new NotFoundHttpException();
-        }
-
-        // Admins only.
-        if (!Auth::isAdmin($user)) {
-            throw new AccessDeniedHttpException();
-        }
-
-        $plugin = $request->getQueryParams()['plugin'] ?? '';
-        $xref   = $request->getQueryParams()['xref'] ?? '';
-
+        $tree    = $request->getQueryParams()['tree'] ?? '';
+        $user    = $request->getAttribute('user');
+        $plugin  = $request->getQueryParams()['plugin'] ?? '';
+        $xref    = $request->getQueryParams()['xref'] ?? '';
         $plugins = $this->getPluginList();
         $plugin  = $plugins[$plugin] ?? null;
+
+        // This module can't run without a tree
+        $tree = $this->tree_service->findByName($tree) ?? $this->tree_service->all()->first();
+        if (!$tree instanceof Tree) {
+            return redirect(route(ControlPanel::class));
+        }
 
         $curr_xref = '';
         $prev_xref = '';
@@ -337,18 +343,6 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree, new InvalidArgumentException());
-
-        $user = $request->getAttribute('user');
-
-        // We need a tree to work with.
-        if ($tree === null) {
-            throw new NotFoundHttpException();
-        }
-
-        // Admins only.
-        if (!Auth::isAdmin($user)) {
-            throw new AccessDeniedHttpException();
-        }
 
         $plugin = $request->getQueryParams()['plugin'] ?? '';
         $xref   = $request->getParsedBody()['xref'] ?? '';
