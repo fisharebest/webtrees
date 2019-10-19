@@ -389,9 +389,9 @@ class FunctionsEdit
         // Show names for spouses in MARR/HUSB/AGE and MARR/WIFE/AGE
         if ($fact === 'HUSB' || $fact === 'WIFE') {
             $family = Family::getInstance($xref, $tree);
-            if ($family) {
+            if ($family instanceof Family) {
                 $spouse_link = $family->facts([$fact])->first();
-                if ($spouse_link) {
+                if ($spouse_link instanceof Fact) {
                     $spouse = $spouse_link->target();
                     if ($spouse instanceof Individual) {
                         $html .= $spouse->fullName();

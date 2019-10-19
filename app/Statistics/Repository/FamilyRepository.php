@@ -753,7 +753,7 @@ class FamilyRepository
      */
     public function totalMarriedMales(): string
     {
-        $n = (int) DB::table('families')
+        $n = DB::table('families')
             ->where('f_file', '=', $this->tree->id())
             ->where('f_gedcom', 'LIKE', "%\n1 MARR%")
             ->distinct()
@@ -769,7 +769,7 @@ class FamilyRepository
      */
     public function totalMarriedFemales(): string
     {
-        $n = (int) DB::table('families')
+        $n = DB::table('families')
             ->where('f_file', '=', $this->tree->id())
             ->where('f_gedcom', 'LIKE', "%\n1 MARR%")
             ->distinct()

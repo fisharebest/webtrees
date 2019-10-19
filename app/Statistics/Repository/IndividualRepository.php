@@ -438,7 +438,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $query = DB::table('name')
             ->where('n_file', '=', $this->tree->id());
 
-        if (empty($params)) {
+        if ($params === []) {
             // Count number of distinct given names.
             $query
                 ->distinct()
@@ -455,7 +455,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * Count the number of distinct surnames (or the number of occurences of specific surnames).
+     * Count the number of distinct surnames (or the number of occurrences of specific surnames).
      *
      * @param string[] ...$params
      *
@@ -466,7 +466,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $query = DB::table('name')
             ->where('n_file', '=', $this->tree->id());
 
-        if (empty($params)) {
+        if ($params === []) {
             // Count number of distinct surnames
             $query->distinct()
                 ->whereNotNull('n_surn');
@@ -1764,7 +1764,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_indi = $this->totalIndividualsQuery();
         $given    = $this->commonGivenQuery('B', 'chart', false, 1, $maxtoshow);
 
-        if (empty($given)) {
+        if ($given === []) {
             return I18N::translate('This information is not available.');
         }
 
@@ -1789,7 +1789,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_indi     = $this->totalIndividualsQuery();
         $all_surnames = $this->topSurnames($number_of_surnames, 0);
 
-        if (empty($all_surnames)) {
+        if ($all_surnames === []) {
             return I18N::translate('This information is not available.');
         }
 

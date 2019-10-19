@@ -76,12 +76,12 @@ class GedcomFileController extends AbstractBaseController
                 ->get();
 
             // What is the current import status?
-            $import_offset = (int) DB::table('gedcom_chunk')
+            $import_offset = DB::table('gedcom_chunk')
                 ->where('gedcom_id', '=', $tree->id())
                 ->where('imported', '=', '1')
                 ->count();
 
-            $import_total = (int) DB::table('gedcom_chunk')
+            $import_total = DB::table('gedcom_chunk')
                 ->where('gedcom_id', '=', $tree->id())
                 ->count();
 

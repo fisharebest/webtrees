@@ -475,7 +475,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string[] ...$params
+     *
+     * @return string
      */
     public function totalSurnames(...$params): string
     {
@@ -483,7 +485,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string[] ...$params
+     *
+     * @return string
      */
     public function totalGivennames(...$params): string
     {
@@ -1073,7 +1077,14 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * General query on ages.
+     *
+     * @param string $related
+     * @param string $sex
+     * @param int    $year1
+     * @param int    $year2
+     *
+     * @return array|string
      */
     public function statsAgeQuery(string $related = 'BIRT', string $sex = 'BOTH', int $year1 = -1, int $year2 = -1)
     {

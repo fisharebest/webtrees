@@ -1028,7 +1028,7 @@ class FunctionsImport
             ->where('multimedia_file_refn', '=', mb_substr($file, 0, 248))
             ->value('m_id');
 
-        if (!$xref) {
+        if ($xref === null) {
             $xref = $tree->getNewXref();
             // renumber the lines
             $gedrec = preg_replace_callback('/\n(\d+)/', static function (array $m) use ($level): string {

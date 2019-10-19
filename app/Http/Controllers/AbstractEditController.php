@@ -288,10 +288,10 @@ abstract class AbstractEditController extends AbstractBaseController
             } else {
                 $gedrec = "\n1 " . $fact;
             }
-            if ($DATE) {
+            if ($DATE !== '') {
                 $gedrec .= "\n2 DATE " . $DATE;
             }
-            if ($PLAC) {
+            if ($PLAC !== '') {
                 $gedrec .= "\n2 PLAC " . $PLAC;
 
                 if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {

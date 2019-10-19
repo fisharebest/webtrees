@@ -274,7 +274,7 @@ class HelpText extends AbstractBaseController
     /**
      * Format GEDCOM dates in the local language.
      *
-     * @param string[] $gedcom_dates
+     * @param string[]|int[] $gedcom_dates
      *
      * @return string[]
      */

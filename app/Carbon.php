@@ -38,7 +38,7 @@ class Carbon extends CarbonImmutable
      */
     public function julianDay(): int
     {
-        return unixtojd($this->timestamp);
+        return (int) unixtojd($this->timestamp);
     }
 
     /**

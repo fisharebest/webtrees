@@ -260,7 +260,7 @@ class PlaceRepository implements PlaceRepositoryInterface
     {
         $countries = $this->statsPlaces();
 
-        if (empty($countries)) {
+        if ($countries === []) {
             return '';
         }
 

@@ -39,13 +39,14 @@ class PrivacyPolicy implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $title = I18N::translate('Privacy policy');
 
         $uses_analytics = true;
 
         return $this->viewResponse('privacy-policy', [
             'title'          => $title,
-            'tree'           => null,
+            'tree'           => $tree,
             'uses_analytics' => $uses_analytics,
         ]);
     }

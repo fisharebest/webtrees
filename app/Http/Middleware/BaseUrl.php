@@ -64,7 +64,7 @@ class BaseUrl implements MiddlewareInterface
             $request_url = $request_url
                 ->withScheme($base_scheme)
                 ->withHost($base_host)
-                ->withPort($base_port === null ? null : (int) $base_port);
+                ->withPort($base_port);
 
             $request = $request->withUri($request_url);
         }

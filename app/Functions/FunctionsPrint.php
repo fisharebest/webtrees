@@ -261,7 +261,7 @@ class FunctionsPrint
                     // wouldn't give the correct "days after death" result for people with
                     // no DEAT.
                     $death_event = $record->facts(['DEAT'])->first();
-                    if ($death_event) {
+                    if ($death_event instanceof Fact) {
                         $death_date = $death_event->date();
                     } else {
                         $death_date = new Date('');

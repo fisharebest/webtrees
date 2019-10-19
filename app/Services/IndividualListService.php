@@ -187,7 +187,7 @@ class IndividualListService
 
             $this->whereInitial($query2, 'n_givn', $letter, $locale, $collation);
 
-            $alphas[$letter] = (int) $query2->distinct()->count('n_id');
+            $alphas[$letter] = $query2->distinct()->count('n_id');
         }
 
         $rows = $query

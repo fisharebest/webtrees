@@ -88,7 +88,7 @@ class UpgradeService
         // The Flysystem ZIP archive adapter is painfully slow, so use the native PHP library.
         $zip = new ZipArchive();
 
-        if ($zip->open($zip_file)) {
+        if ($zip->open($zip_file) === true) {
             $zip->extractTo($target_folder);
             $zip->close();
         } else {

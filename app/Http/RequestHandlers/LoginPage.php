@@ -53,17 +53,17 @@ class LoginPage extends AbstractBaseController
         $title = I18N::translate('Sign in');
 
         switch (Site::getPreference('WELCOME_TEXT_AUTH_MODE')) {
-            case 1:
+            case '1':
             default:
                 $welcome = I18N::translate('Anyone with a user account can access this website.');
                 break;
-            case 2:
+            case '2':
                 $welcome = I18N::translate('You need to be an authorized user to access this website.');
                 break;
-            case 3:
+            case '3':
                 $welcome = I18N::translate('You need to be a family member to access this website.');
                 break;
-            case 4:
+            case '4':
                 $welcome = Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE);
                 break;
         }

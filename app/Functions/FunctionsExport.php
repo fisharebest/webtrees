@@ -115,14 +115,14 @@ class FunctionsExport
             ->where('o_type', '=', 'SUBN')
             ->where('o_file', '=', $tree->id())
             ->value('o_id');
-        if ($subn) {
+        if ($subn !== null) {
             $SUBN = "\n1 SUBN @{$subn}@";
         }
         $subm = DB::table('other')
             ->where('o_type', '=', 'SUBM')
             ->where('o_file', '=', $tree->id())
             ->value('o_id');
-        if ($subm) {
+        if ($subm !== null) {
             $SUBM = "\n1 SUBM @{$subm}@";
         }
 

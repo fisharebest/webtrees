@@ -618,7 +618,7 @@ class FunctionsPrintFacts
                     $data .= ' class="source_citations">';
                     // PUBL
                     $publ = $source->facts(['PUBL'])->first();
-                    if ($publ) {
+                    if ($publ instanceof Fact) {
                         $data .= GedcomTag::getLabelValue('PUBL', $publ->value());
                     }
                     $data .= self::printSourceStructure($tree, self::getSourceStructure($srec));
@@ -800,7 +800,7 @@ class FunctionsPrintFacts
                     echo '<a href="', e($source->url()), '">', $source->fullName(), '</a>';
                     // PUBL
                     $publ = $source->facts(['PUBL'])->first();
-                    if ($publ) {
+                    if ($publ instanceof Fact) {
                         echo GedcomTag::getLabelValue('PUBL', $publ->value());
                     }
                     // 2 RESN tags. Note, there can be more than one, such as "privacy" and "locked"
