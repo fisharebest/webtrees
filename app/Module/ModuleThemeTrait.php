@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
+use InvalidArgumentException;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
@@ -294,14 +295,18 @@ trait ModuleThemeTrait
         $request = app(ServerRequestInterface::class);
 
         // Return to this page after login...
-        $url = $request->getUri();
+        $redirect = (string) $request->getUri();
 
         // ...but switch from the tree-page to the user-page
-        $url = str_replace('route=tree-page', 'route=user-page', $url);
+        if ($request->getAttribute('route') === 'tree-page') {
+            $tree = $request->getAttribute('tree');
+            assert($tree instanceof Tree, new InvalidArgumentException());
+            $redirect  = route('user-page', ['tree' => $tree->name()]);
+        }
 
         // Stay on the same tree page
         $tree = $request->getAttribute('tree');
-        $url  = route(LoginPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null, 'url' => $url]);
+        $url  = route(LoginPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null, 'url' => $redirect]);
 
         return new Menu(I18N::translate('Sign in'), $url, 'menu-login', ['rel' => 'nofollow']);
     }

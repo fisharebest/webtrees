@@ -26,14 +26,14 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
-use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+
+use function route;
 
 /**
  * Perform a login.
@@ -70,24 +70,13 @@ class LoginAction extends AbstractBaseController
         $tree     = $request->getAttribute('tree');
         $username = $request->getParsedBody()['username'] ?? '';
         $password = $request->getParsedBody()['password'] ?? '';
-        $url      = $request->getParsedBody()['url'] ?? '';
+        $url      = $request->getParsedBody()['url'] ?? route('home-page');
 
         try {
             $this->doLogin($username, $password);
 
             if (Auth::isAdmin() && $this->upgrade_service->isUpgradeAvailable()) {
                 FlashMessages::addMessage(I18N::translate('A new version of webtrees is available.') . ' <a class="alert-link" href="' . e(route('upgrade')) . '">' . I18N::translate('Upgrade to webtrees %s.', '<span dir="ltr">' . $this->upgrade_service->latestVersion() . '</span>') . '</a>');
-            }
-
-            // If there was no referring page, redirect to "my page".
-            if ($url === '') {
-                // Switch to a tree where we have a genealogy record (or keep to the current/default).
-                $tree = (string) DB::table('gedcom')
-                    ->join('user_gedcom_setting', 'gedcom.gedcom_id', '=', 'user_gedcom_setting.gedcom_id')
-                    ->where('user_id', '=', Auth::id())
-                    ->value('gedcom_name');
-
-                $url = route('tree-page', ['tree' => $tree]);
             }
 
             // Redirect to the target URL
