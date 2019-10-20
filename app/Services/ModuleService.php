@@ -624,7 +624,8 @@ class ModuleService
         return null;
     }
 
-    private static function disable_module(string $filename) {
+    private static function disable_module(string $filename)
+    {
         $module_dir = dirname($filename);
 
         /*
