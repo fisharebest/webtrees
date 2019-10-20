@@ -214,7 +214,6 @@ use Illuminate\Support\Str;
 use RuntimeException;
 use stdClass;
 use Throwable;
-
 use function app;
 use function method_exists;
 
@@ -824,7 +823,6 @@ class ModuleService
                  * Maybe we need a new method in AbstracModule which allows us to get the path to the module.php file.
                  */
             }
-
         }
     }
 }
