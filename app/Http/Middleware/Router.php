@@ -72,22 +72,21 @@ class Router implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        // Turn the ugly URL into a pretty one, so the router can parse it.
         if ($request->getAttribute('rewrite_urls') !== '1') {
-            // Turn the ugly URL into a pretty one, so the router can parse it.
-            // Note that the 'route' parameter contains the full path.
-            $uri       = $request->getUri();
             $params    = $request->getQueryParams();
-            $url_route = $params['route'] ?? '/';
-            $uri       = $uri->withPath($url_route);
+            $url_route = $params['route'] ?? '';
             unset($params['route']);
-            $uri     = $uri->withQuery(http_build_query($params, '', '&', PHP_QUERY_RFC3986));
-            $temp_request = $request->withUri($uri)->withQueryParams($params);
-        } else {
-            $temp_request = $request;
+            $uri = $request->getUri()
+                ->withPath($url_route)
+                ->withQuery(http_build_query($params, '', '&', PHP_QUERY_RFC3986));
+            $request = $request
+                ->withUri($uri)
+                ->withQueryParams($params);
         }
 
         // Match the request to a route.
-        $route = $this->router_container->getMatcher()->match($temp_request);
+        $route = $this->router_container->getMatcher()->match($request);
 
         // No route matched?
         if ($route === false) {
