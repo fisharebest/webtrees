@@ -176,7 +176,7 @@ function route(string $route_name, array $parameters = []): string
     }, ARRAY_FILTER_USE_KEY);
 
     // Turn the pretty URL into an ugly one.
-    if ((bool) $request->getAttribute('rewrite_urls') === false) {
+    if ($request->getAttribute('rewrite_urls') !== '1') {
         $path       = parse_url($url, PHP_URL_PATH);
         $parameters = ['route' => $path] + $parameters;
         $base_url   = $request->getAttribute('base_url');

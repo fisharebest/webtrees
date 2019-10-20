@@ -72,7 +72,7 @@ class Router implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if ((bool) $request->getAttribute('rewrite_urls') === false) {
+        if ($request->getAttribute('rewrite_urls') !== '1') {
             // Turn the ugly URL into a pretty one, so the router can parse it.
             // Note that the 'route' parameter contains the full path.
             $uri       = $request->getUri();
