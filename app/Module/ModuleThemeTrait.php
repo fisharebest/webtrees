@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
@@ -319,7 +320,12 @@ trait ModuleThemeTrait
     public function menuLogout(): ?Menu
     {
         if (Auth::check()) {
-            return new Menu(I18N::translate('Sign out'), '#', 'menu-logout', ['data-post-url' => route(Logout::class)]);
+            $parameters = [
+                'data-post-url'   => route(Logout::class),
+                'data-reload-url' => route(HomePage::class),
+            ];
+
+            return new Menu(I18N::translate('Sign out'), '#', 'menu-logout', $parameters);
         }
 
         return null;
