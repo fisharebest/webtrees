@@ -145,7 +145,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         /** @var ServerRequestInterface $request */
         $request = app(ServerRequestInterface::class);
 
-        $route = $request->getQueryParams()['route'] ?? '';
+        $route = $request->getAttribute('route');
 
         $submenus = [
             new Menu($this->title(), route('module', [
@@ -156,7 +156,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         ];
 
         if (in_array($route, self::ROUTES_WITH_RECORDS, true)) {
-            $xref      = $request->getQueryParams()['xref'] ?? '';
+            $xref      = $request->getAttribute('xref');
             $action    = 'Add' . ucfirst($route);
             $add_route = route('module', [
                 'module' => $this->name(),
@@ -421,7 +421,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $title = I18N::translate('Add %s to the clippings cart', $family->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
-            'action'  => route('module', ['module' => $this->name(), 'action' => 'AddFamily']),
             'options' => $options,
             'default' => key($options),
             'record'  => $family,
@@ -556,7 +555,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $title = I18N::translate('Add %s to the clippings cart', $individual->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
-            'action'  => route('module', ['module' => $this->name(), 'action' => 'AddIndividual']),
             'options' => $options,
             'default' => key($options),
             'record'  => $individual,
@@ -701,7 +699,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $title = I18N::translate('Add %s to the clippings cart', $media->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
-            'action'  => route('module', ['module' => $this->name(), 'action' => 'AddMedia']),
             'options' => $options,
             'default' => key($options),
             'record'  => $media,
@@ -770,7 +767,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $title = I18N::translate('Add %s to the clippings cart', $note->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
-            'action'  => route('module', ['module' => $this->name(), 'action' => 'AddNote']),
             'options' => $options,
             'default' => key($options),
             'record'  => $note,
@@ -839,7 +835,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $title = I18N::translate('Add %s to the clippings cart', $repository->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
-            'action'  => route('module', ['module' => $this->name(), 'action' => 'AddRepository']),
             'options' => $options,
             'default' => key($options),
             'record'  => $repository,
@@ -908,7 +903,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $title = I18N::translate('Add %s to the clippings cart', $source->fullName());
 
         return $this->viewResponse('modules/clippings/add-options', [
-            'action'  => route('module', ['module' => $this->name(), 'action' => 'AddSource']),
             'options' => $options,
             'default' => key($options),
             'record'  => $source,
