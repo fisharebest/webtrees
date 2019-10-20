@@ -374,7 +374,7 @@ class ReportTcpdf extends TCPDF
      */
     public function getCurrentStyleHeight(): float
     {
-        if (empty($this->currentStyle)) {
+        if ($this->currentStyle === '') {
             return $this->wt_report->default_font_size;
         }
         $style = $this->wt_report->getStyle($this->currentStyle);

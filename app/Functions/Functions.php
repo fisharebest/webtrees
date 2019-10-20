@@ -88,9 +88,9 @@ class Functions
      *
      * @return string the subrecord that was found or an empty string "" if not found.
      */
-    public static function getSubRecord($level, $tag, $gedrec, $num = 1): string
+    public static function getSubRecord($level, $tag, string $gedrec, int $num = 1): string
     {
-        if (empty($gedrec)) {
+        if ($gedrec === '') {
             return '';
         }
         // -- adding \n before and after gedrec
@@ -243,7 +243,7 @@ class Functions
         ];
 
         // Loop over paths of length 1, 2, 3, ...
-        while (!empty($paths) && $maxlength >= 0) {
+        while ($paths !== [] && $maxlength >= 0) {
             $maxlength--;
 
             foreach ($paths as $i => $path) {

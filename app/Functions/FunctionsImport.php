@@ -1090,7 +1090,7 @@ class FunctionsImport
             ->get();
 
         foreach ($changes as $change) {
-            if (empty($change->new_gedcom)) {
+            if ($change->new_gedcom === '') {
                 // delete
                 self::updateRecord($change->old_gedcom, $tree, true);
             } else {

@@ -46,9 +46,11 @@ use stdClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
+use function explode;
 use function imagecreatefromstring;
 use function imagesx;
 use function imagesy;
+use function trim;
 
 /**
  * Class ReportParserGenerate - parse a report.xml file and generate the report.
@@ -652,8 +654,7 @@ class ReportParserGenerate extends ReportParserBase
                             break;
                         }
                     } else {
-                        $temp      = explode(' ', trim($tgedrec));
-                        $level     = 1 + (int) $temp[0];
+                        $level     = 1 + (int) explode(' ', trim($tgedrec))[0];
                         $newgedrec = Functions::getSubRecord($level, "$level $tag", $tgedrec);
                         $tgedrec   = $newgedrec;
                     }
@@ -987,13 +988,12 @@ class ReportParserGenerate extends ReportParserBase
             } else {
                 $tag = str_replace('@fact', $this->fact, $tag);
                 if (empty($attrs['level'])) {
-                    $temp  = explode(' ', trim($this->gedrec));
-                    $level = $temp[0];
-                    if ($level == 0) {
+                    $level = (int) explode(' ', trim($this->gedrec))[0];
+                    if ($level === 0) {
                         $level++;
                     }
                 } else {
-                    $level = $attrs['level'];
+                    $level = (int) $attrs['level'];
                 }
                 $tags  = preg_split('/[: ]/', $tag);
                 $value = $this->getGedcomValue($tag, $level, $this->gedrec);
@@ -1058,9 +1058,8 @@ class ReportParserGenerate extends ReportParserBase
             } else {
                 $tag   = str_replace('@fact', $this->fact, $tag);
                 $tags  = explode(':', $tag);
-                $temp  = explode(' ', trim($this->gedrec));
-                $level = $temp[0];
-                if ($level == 0) {
+                $level = (int) explode(' ', trim($this->gedrec))[0];
+                if ($level === 0) {
                     $level++;
                 }
                 $subrec = $this->gedrec;
@@ -1502,9 +1501,8 @@ class ReportParserGenerate extends ReportParserBase
             } elseif ($id === 'generation') {
                 $value = '"' . $this->generation . '"';
             } else {
-                $temp  = explode(' ', trim($this->gedrec));
-                $level = $temp[0];
-                if ($level == 0) {
+                $level = (int) explode(' ', trim($this->gedrec))[0];
+                if ($level === 0) {
                     $level++;
                 }
                 $value = $this->getGedcomValue($id, $level, $this->gedrec);
@@ -2139,7 +2137,7 @@ class ReportParserGenerate extends ReportParserBase
                         $tag  = $filter['tag'];
                         $expr = $filter['expr'];
                         $val  = $filter['val'];
-                        if ($val == "''") {
+                        if ($val === "''") {
                             $val = '';
                         }
                         $tags = explode(':', $tag);
@@ -2697,14 +2695,14 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return string the value of a gedcom tag from the given gedcom record
      */
-    private function getGedcomValue($tag, $level, $gedrec): string
+    private function getGedcomValue(string $tag, int $level, string $gedrec): string
     {
-        if (empty($gedrec)) {
+        if ($gedrec === '') {
             return '';
         }
         $tags      = explode(':', $tag);
         $origlevel = $level;
-        if ($level == 0) {
+        if ($level === 0) {
             $level = $gedrec[0] + 1;
         }
 
@@ -2723,12 +2721,12 @@ class ReportParserGenerate extends ReportParserBase
                         $t = 'ABBR';
                     }
                 }
-                if (empty($subrec)) {
+                if ($subrec === '') {
                     if ($level > 0) {
                         $level--;
                     }
                     $subrec = Functions::getSubRecord($level, "@ $t", $gedrec);
-                    if (empty($subrec)) {
+                    if ($subrec === '') {
                         return '';
                     }
                 }

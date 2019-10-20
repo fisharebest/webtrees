@@ -881,14 +881,13 @@ class FunctionsPrintFacts
             }
         }
 
-        if ($textSOUR['DATE'] !== '' || !empty($textSOUR['TEXT'])) {
-            if ($textSOUR['DATE']) {
-                $date = new Date($textSOUR['DATE']);
-                $html .= GedcomTag::getLabelValue('DATA:DATE', $date->display());
-            }
-            foreach ($textSOUR['TEXT'] as $text) {
-                $html .= GedcomTag::getLabelValue('TEXT', Filter::formatText($text, $tree));
-            }
+        if ($textSOUR['DATE'] !== '') {
+            $date = new Date($textSOUR['DATE']);
+            $html .= GedcomTag::getLabelValue('DATA:DATE', $date->display());
+        }
+
+        foreach ($textSOUR['TEXT'] as $text) {
+            $html .= GedcomTag::getLabelValue('TEXT', Filter::formatText($text, $tree));
         }
 
         if ($textSOUR['QUAY'] !== '') {

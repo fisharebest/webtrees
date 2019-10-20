@@ -87,7 +87,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
                 uasort($records, GedcomRecord::lastChangeComparator(-1));
         }
 
-        if (empty($records)) {
+        if ($records === []) {
             $content = I18N::plural('There have been no changes within the last %s day.', 'There have been no changes within the last %s days.', $days, I18N::number($days));
         } elseif ($infoStyle === 'list') {
             $content = view('modules/recent_changes/changes-list', [

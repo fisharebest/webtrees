@@ -510,7 +510,7 @@ class FamilyRepository
     {
         $record = $this->ageBetweenSiblingsNoList($total);
 
-        if (empty($record)) {
+        if ($record === []) {
             return I18N::translate('This information is not available.');
         }
 

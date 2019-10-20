@@ -134,7 +134,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
 
         $facts = $calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 
-        if (empty($facts)) {
+        if ($facts === []) {
             $content = view('modules/todays_events/empty');
         } elseif ($infoStyle === 'list') {
             $content = view('lists/anniversaries-list', [
