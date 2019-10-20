@@ -25,6 +25,7 @@ You can start contributing by
 * writing tests to [increase the test coverage](https://coveralls.io/github/fisharebest/webtrees?branch=master)
 * creating or updating [translations](#translations)
 * Join our slack. The invitation link will be updated on this line.
+* Help us maintaining our github page from the repository [webtrees.github.io](https://github.com/webtrees/webtrees.github.io).
 
 ## How to setup the environment
 
