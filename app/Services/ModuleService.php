@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Closure;
+use Exception;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
@@ -210,6 +211,7 @@ use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use RuntimeException;
 use stdClass;
 use Throwable;
 
@@ -606,7 +608,7 @@ class ModuleService
     }
 
     /**
-     * Load a module in a static scope, to prevent it from modifying local or object variables.
+     * Load a custom module in a static scope, to prevent it from modifying local or object variables.
      *
      * @param string $filename
      *
@@ -614,7 +616,35 @@ class ModuleService
      */
     private static function load(string $filename)
     {
-        return include $filename;
+        try {
+            return include $filename;
+        } catch (Exception $loading_exception) {
+            self::disable_module($filename);
+        }
+        return null;
+    }
+
+    private static function disable_module(string $filename) {
+        $module_dir = dirname($filename);
+
+        /*
+         * try to disable the module and maybe send a mail.
+         * Renaming might fail for various reasons, e.g. installation and runtime user might be different,
+         * or we are in a container and have only RO access.
+         * In this case, prevent spamming the administrator with log entries or mails.
+         */
+        try {
+            $disabled_module_name = $module_dir . '.disabled';
+            $renamed = rename($module_dir, $disabled_module_name);
+            if (!$renamed) {
+                throw new RuntimeException("Unable to rename $module_dir to $disabled_module_name");
+            }
+            // TODO: maybe log and/or send mail.
+            return true;
+        } catch (Exception $rename_exception) {
+            // TODO: Maybe show a warning to the administrator.
+            return false;
+        }
     }
 
     /**
@@ -783,7 +813,17 @@ class ModuleService
                 continue;
             }
 
-            app()->dispatch($module, 'boot');
+            try {
+                app()->dispatch($module, 'boot');
+            } catch (Exception $boot_exception) {
+                $module->setEnabled(false);
+                print_r($module);
+                /*
+                 * TODO: get the filename and call self::disable_module.
+                 * Maybe we need a new method in AbstracModule which allows us to get the path to the module.php file.
+                 */
+            }
+
         }
     }
 }
