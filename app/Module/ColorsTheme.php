@@ -20,14 +20,19 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use InvalidArgumentException;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function app;
+use function assert;
+use function asset;
+use function response;
 use function uasort;
 
 /**
@@ -35,6 +40,9 @@ use function uasort;
  */
 class ColorsTheme extends CloudsTheme
 {
+    // If no valid palette has been selected, use this one.
+    private const DEFAULT_PALETTE = 'ash';
+
     /**
      * How should this module be identified in the control panel, etc.?
      *
@@ -67,30 +75,70 @@ class ColorsTheme extends CloudsTheme
     }
 
     /**
+     * Switch to a new palette
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function postPaletteAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $user = $request->getAttribute('user');
+        assert($user instanceof UserInterface, new InvalidArgumentException());
+
+        $palette = $request->getQueryParams()['palette'];
+        assert(array_key_exists($palette, $this->palettes()), new InvalidArgumentException());
+
+        $user->setPreference('themecolor', $palette);
+
+        // If we are the admin, then use our selection as the site default.
+        if (Auth::isAdmin($user)) {
+            Site::setPreference('DEFAULT_COLOR_PALETTE', $palette);
+        }
+
+        Session::put('palette', $palette);
+
+        return response();
+    }
+
+    /**
+     * A list of CSS files to include for this page.
+     *
+     * @return string[]
+     */
+    public function stylesheets(): array
+    {
+        return [
+            asset('css/colors.min.css'),
+            asset('css/colors/' . $this->palette() . '.min.css'),
+        ];
+    }
+
+    /**
      * Create a menu of palette options
      *
      * @return Menu
      */
-    public function menuPalette(): Menu
+    protected function menuPalette(): Menu
     {
-        $request = app(ServerRequestInterface::class);
-
         /* I18N: A colour scheme */
         $menu = new Menu(I18N::translate('Palette'), '#', 'menu-color');
 
-        foreach ($this->palettes() as $palette_id => $palette_name) {
-            $url = $request->getAttribute((string) $request->getUri());
-            $url = preg_replace('/&themecolor=[a-z]+/', '', $url);
-            $url .= '&themecolor=' . $palette_id;
+        $palette = $this->palette();
 
-            $menu->addSubmenu(new Menu(
+        foreach ($this->palettes() as $palette_id => $palette_name) {
+            $url = route('module', ['module' => $this->name(), 'action' => 'Palette', 'palette' => $palette_id]);
+
+            $submenu = new Menu(
                 $palette_name,
                 '#',
-                'menu-color-' . $palette_id . ($this->palette() === $palette_id ? ' active' : ''),
+                'menu-color-' . $palette_id . ($palette === $palette_id ? ' active' : ''),
                 [
-                    'onclick' => 'document.location=\'' . $url . '\'',
+                    'data-post-url' => $url,
                 ]
-            ));
+            );
+
+            $menu->addSubmenu($submenu);
         }
 
         return $menu;
@@ -146,52 +194,19 @@ class ColorsTheme extends CloudsTheme
      */
     private function palette(): string
     {
-        $palettes = $this->palettes();
-
-        // If we've selected a new palette, and we are logged in, set this value as a default.
-        if (isset($_GET['themecolor'])) {
-            // Request to change color
-            $palette = $_GET['themecolor'];
-            Auth::user()->setPreference('themecolor', $palette);
-            if (Auth::isAdmin()) {
-                Site::setPreference('DEFAULT_COLOR_PALETTE', $palette);
-            }
-            unset($_GET['themecolor']);
-            // Rember that we have selected a value
-            Session::put('subColor', $palette);
-        }
-
         // If we are logged in, use our preference
-        $palette = Auth::user()->getPreference('themecolor');
+        $palette = Auth::user()->getPreference('themecolor', '');
 
-        // If not logged in or no preference, use one we selected earlier in the session?
-        if (!$palette) {
-            $palette = Session::get('subColor');
+        // If not logged in or no preference, use one we selected earlier in the session.
+        if ($palette === '') {
+            $palette = Session::get('palette', '');
         }
 
         // We haven't selected one this session? Use the site default
-        if (!$palette) {
-            $palette = Site::getPreference('DEFAULT_COLOR_PALETTE');
-        }
-
-        // Make sure our selected palette actually exists
-        if (!array_key_exists($palette, $palettes)) {
-            $palette = 'ash';
+        if ($palette === '') {
+            $palette = Site::getPreference('DEFAULT_COLOR_PALETTE', self::DEFAULT_PALETTE);
         }
 
         return $palette;
-    }
-
-    /**
-     * A list of CSS files to include for this page.
-     *
-     * @return string[]
-     */
-    public function stylesheets(): array
-    {
-        return [
-            asset('css/colors.min.css'),
-            asset('css/colors/' . $this->palette() . '.min.css'),
-        ];
     }
 }
