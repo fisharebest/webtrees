@@ -25,16 +25,16 @@ namespace Fisharebest\Webtrees\SurnameTradition;
 class DefaultSurnameTradition implements SurnameTraditionInterface
 {
     /** Extract a GIVN from a NAME */
-    protected const REGEX_GIVN = '~^(?<GIVN>[^/ ]+)~';
+    protected const REGEX_GIVN = '~^(?<GIVN>[^/ ]+)~u';
 
     /** Extract a SPFX and SURN from a NAME */
-    protected const REGEX_SPFX_SURN = '~(?<NAME>/(?<SPFX>[a-z’\']{0,4}(?: [a-z’\']{1,4})*) ?(?<SURN>[^/]*)/)~';
+    protected const REGEX_SPFX_SURN = '~(?<NAME>/(?<SPFX>[a-z\x{0590}-\x{05fe}’\']{0,4}(?: [a-z\x{0590}-\x{05fe}’\']{1,4})*) ?(?<SURN>[^/]*)/)~u';
 
     /** Extract a simple SURN from a NAME */
-    protected const REGEX_SURN = '~(?<NAME>/(?<SURN>[^/]+)/)~';
+    protected const REGEX_SURN = '~(?<NAME>/(?<SURN>[^/]+)/)~u';
 
     /** Extract two Spanish/Portuguese SURNs from a NAME */
-    protected const REGEX_SURNS = '~/(?<SURN1>[^ /]+)(?: | y |/ /|/ y /)(?<SURN2>[^ /]+)/~';
+    protected const REGEX_SURNS = '~/(?<SURN1>[^ /]+)(?: | y |/ /|/ y /)(?<SURN2>[^ /]+)/~u';
 
     /**
      * Does this surname tradition change surname at marriage?
