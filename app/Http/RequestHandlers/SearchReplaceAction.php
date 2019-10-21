@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\SearchService;
-use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
@@ -43,19 +42,14 @@ class SearchReplaceAction implements RequestHandlerInterface
     /** @var SearchService */
     private $search_service;
 
-    /** @var TreeService */
-    private $tree_service;
-
     /**
      * SearchController constructor.
      *
      * @param SearchService $search_service
-     * @param TreeService   $tree_service
      */
-    public function __construct(SearchService $search_service, TreeService $tree_service)
+    public function __construct(SearchService $search_service)
     {
         $this->search_service = $search_service;
-        $this->tree_service   = $tree_service;
     }
 
     /**
