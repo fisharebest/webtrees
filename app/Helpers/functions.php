@@ -175,9 +175,9 @@ function route(string $route_name, array $parameters = []): string
         $base_parts = parse_url($base_url);
         $prefix     = $base_parts['scheme'] . '://';
         if (array_key_exists('user', $base_parts)) {
-            $prefix .= $base_parts['user'];
+            $prefix .= rawurlencode($base_parts['user']);
             if (array_key_exists('pass', $base_parts)) {
-                $prefix .= $base_parts['pass'];
+                $prefix .= ':' . rawurlencode($base_parts['pass']);
             }
             $prefix .= '@';
         }
