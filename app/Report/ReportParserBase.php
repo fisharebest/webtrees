@@ -22,6 +22,9 @@ namespace Fisharebest\Webtrees\Report;
 use DomainException;
 use Exception;
 
+use function call_user_func;
+use function method_exists;
+
 /**
  * Class ReportParserBase
  */
@@ -98,7 +101,7 @@ class ReportParserBase
         $method = $name . 'StartHandler';
 
         if (method_exists($this, $method)) {
-            $this->$method($attrs);
+            call_user_func([$this, $method], $attrs);
         }
     }
 
@@ -115,7 +118,7 @@ class ReportParserBase
         $method = $name . 'EndHandler';
 
         if (method_exists($this, $method)) {
-            $this->$method();
+            call_user_func([$this, $method]);
         }
     }
 

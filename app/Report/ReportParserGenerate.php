@@ -46,10 +46,12 @@ use stdClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
+use function call_user_func;
 use function explode;
 use function imagecreatefromstring;
 use function imagesx;
 use function imagesy;
+use function method_exists;
 use function trim;
 
 /**
@@ -189,7 +191,7 @@ class ReportParserGenerate extends ReportParserBase
             $method = $name . 'StartHandler';
 
             if (method_exists($this, $method)) {
-                $this->$method($attrs);
+                call_user_func([$this, $method], $attrs);
             }
         }
     }
@@ -210,7 +212,7 @@ class ReportParserGenerate extends ReportParserBase
             $method = $name . 'EndHandler';
 
             if (method_exists($this, $method)) {
-                $this->$method();
+                call_user_func([$this, $method]);
             }
         }
     }

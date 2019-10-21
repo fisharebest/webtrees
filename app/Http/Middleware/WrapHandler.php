@@ -26,8 +26,8 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
+use function call_user_func;
 use function explode;
-use function is_string;
 use function substr_compare;
 
 /**
@@ -70,7 +70,7 @@ class WrapHandler implements MiddlewareInterface
 
             $controller = app($class);
 
-            return $controller->$method($request);
+            return call_user_func([$controller, $method], $request);
         }
 
         return app($this->handler)->handle($request);

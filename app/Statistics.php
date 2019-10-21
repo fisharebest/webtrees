@@ -57,6 +57,7 @@ use Fisharebest\Webtrees\Statistics\Repository\UserRepository;
 use Illuminate\Database\Query\Builder;
 use ReflectionMethod;
 
+use function call_user_func;
 use function count;
 use function in_array;
 
@@ -234,7 +235,7 @@ class Statistics implements
         foreach (get_class_methods($this) as $method) {
             $reflection = new ReflectionMethod($this, $method);
             if ($reflection->isPublic() && !in_array($method, self::$public_but_not_allowed, true) && (string) $reflection->getReturnType() !== Builder::class) {
-                $examples[$method] = $this->$method();
+                $examples[$method] = call_user_func([$this, $method]);
             }
         }
 
@@ -2657,7 +2658,7 @@ class Statistics implements
             $method = array_shift($params);
 
             if (method_exists($this, $method)) {
-                $tags[$match[0]] = $this->$method(...$params);
+                $tags[$match[0]] = call_user_func([$this, $method], ...$params);
             }
         }
 
