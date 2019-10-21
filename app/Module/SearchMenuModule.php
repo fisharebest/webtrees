@@ -20,9 +20,15 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\RequestHandlers\SearchAdvancedPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SearchGeneralPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SearchPhoneticPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SearchReplacePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
+
+use function route;
 
 /**
  * Class SearchMenuModule - provide a menu option for the search options
@@ -91,7 +97,7 @@ class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
      */
     protected function menuSearchGeneral(Tree $tree): Menu
     {
-        return new Menu(I18N::translate('General search'), route('search-general', ['tree' => $tree->name()]), 'menu-search-general', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('General search'), route(SearchGeneralPage::class, ['tree' => $tree->name()]), 'menu-search-general', ['rel' => 'nofollow']);
     }
 
     /**
@@ -101,8 +107,10 @@ class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
      */
     protected function menuSearchPhonetic(Tree $tree): Menu
     {
+        $url = route(SearchPhoneticPage::class, ['tree' => $tree->name()]);
+
         /* I18N: search using “sounds like”, rather than exact spelling */
-        return new Menu(I18N::translate('Phonetic search'), route('search-phonetic', ['tree' => $tree->name(), 'action' => 'soundex']), 'menu-search-soundex', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('Phonetic search'), $url, 'menu-search-soundex', ['rel' => 'nofollow']);
     }
 
     /**
@@ -112,7 +120,9 @@ class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
      */
     protected function menuSearchAdvanced(Tree $tree): Menu
     {
-        return new Menu(I18N::translate('Advanced search'), route('search-advanced', ['tree' => $tree->name()]), 'menu-search-advanced', ['rel' => 'nofollow']);
+        $url = route(SearchAdvancedPage::class, ['tree' => $tree->name()]);
+
+        return new Menu(I18N::translate('Advanced search'), $url, 'menu-search-advanced', ['rel' => 'nofollow']);
     }
 
     /**
@@ -123,10 +133,9 @@ class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
     protected function menuSearchAndReplace(Tree $tree): ?Menu
     {
         if (Auth::isEditor($tree)) {
-            return new Menu(I18N::translate('Search and replace'), route('search-replace', [
-                'tree'   => $tree->name(),
-                'action' => 'replace',
-            ]), 'menu-search-replace');
+            $url = route(SearchReplacePage::class, ['tree' => $tree->name()]);
+
+            return new Menu(I18N::translate('Search and replace'), $url, 'menu-search-replace');
         }
 
         return null;

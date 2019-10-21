@@ -1,0 +1,217 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2019 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
+
+use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
+use InvalidArgumentException;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+use function assert;
+
+/**
+ * Search and replace genealogy data
+ */
+class SearchReplaceAction implements RequestHandlerInterface
+{
+    use ViewResponseTrait;
+
+    /** @var SearchService */
+    private $search_service;
+
+    /** @var TreeService */
+    private $tree_service;
+
+    /**
+     * SearchController constructor.
+     *
+     * @param SearchService $search_service
+     * @param TreeService   $tree_service
+     */
+    public function __construct(SearchService $search_service, TreeService $tree_service)
+    {
+        $this->search_service = $search_service;
+        $this->tree_service   = $tree_service;
+    }
+
+    /**
+     * Search and replace.
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
+        $params  = $request->getParsedBody();
+        $search  = $params['search'] ?? '';
+        $replace = $params['replace'] ?? '';
+        $context = $params['context'] ?? 'all';
+
+        switch ($context) {
+            case 'all':
+                $records = $this->search_service->searchIndividuals([$tree], [$search]);
+                $count   = $this->replaceRecords($records, $search, $replace);
+                FlashMessages::addMessage(I18N::plural('%s individual has been updated.', '%s individuals have been updated.', $count, I18N::number($count)));
+
+                $records = $this->search_service->searchFamilies([$tree], [$search]);
+                $count   = $this->replaceRecords($records, $search, $replace);
+                FlashMessages::addMessage(I18N::plural('%s family has been updated.', '%s families have been updated.', $count, I18N::number($count)));
+
+                $records = $this->search_service->searchRepositories([$tree], [$search]);
+                $count   = $this->replaceRecords($records, $search, $replace);
+                FlashMessages::addMessage(I18N::plural('%s repository has been updated.', '%s repositories have been updated.', $count, I18N::number($count)));
+
+                $records = $this->search_service->searchSources([$tree], [$search]);
+                $count   = $this->replaceRecords($records, $search, $replace);
+                FlashMessages::addMessage(I18N::plural('%s source has been updated.', '%s sources have been updated.', $count, I18N::number($count)));
+
+                $records = $this->search_service->searchNotes([$tree], [$search]);
+                $count   = $this->replaceRecords($records, $search, $replace);
+                FlashMessages::addMessage(I18N::plural('%s note has been updated.', '%s notes have been updated.', $count, I18N::number($count)));
+                break;
+
+            case 'name':
+                $adv_name_tags = preg_split("/[\s,;: ]+/", $tree->getPreference('ADVANCED_NAME_FACTS'));
+                $name_tags     = array_unique(array_merge([
+                    'NAME',
+                    'NPFX',
+                    'GIVN',
+                    'SPFX',
+                    'SURN',
+                    'NSFX',
+                    '_MARNM',
+                    '_AKA',
+                ], $adv_name_tags));
+
+                $records = $this->search_service->searchIndividuals([$tree], [$search]);
+                $count   = $this->replaceIndividualNames($records, $search, $replace, $name_tags);
+                FlashMessages::addMessage(I18N::plural('%s individual has been updated.', '%s individuals have been updated.', $count, I18N::number($count)));
+                break;
+
+            case 'place':
+                $records = $this->search_service->searchIndividuals([$tree], [$search]);
+                $count   = $this->replacePlaces($records, $search, $replace);
+                FlashMessages::addMessage(I18N::plural('%s individual has been updated.', '%s individuals have been updated.', $count, I18N::number($count)));
+
+                $records = $this->search_service->searchFamilies([$tree], [$search]);
+                $count   = $this->replacePlaces($records, $search, $replace);
+                FlashMessages::addMessage(I18N::plural('%s family has been updated.', '%s families have been updated.', $count, I18N::number($count)));
+                break;
+        }
+
+        $url = route(SearchReplacePage::class, [
+            'search'  => $search,
+            'replace' => $replace,
+            'context' => $context,
+            'tree'    => $tree->name(),
+        ]);
+
+        return redirect($url);
+    }
+
+    /**
+     * @param Collection $records
+     * @param string     $search
+     * @param string     $replace
+     *
+     * @return int
+     */
+    private function replaceRecords(Collection $records, string $search, string $replace): int
+    {
+        $count = 0;
+        $query = preg_quote($search, '/');
+
+        foreach ($records as $record) {
+            $old_record = $record->gedcom();
+            $new_record = preg_replace('/(\n\d [A-Z0-9_]+ )' . $query . '/i', '$1' . $replace, $old_record);
+
+            if ($new_record !== $old_record) {
+                $record->updateRecord($new_record, true);
+                $count++;
+            }
+        }
+
+        return $count;
+    }
+
+    /**
+     * @param Collection $records
+     * @param string     $search
+     * @param string     $replace
+     * @param string[]   $name_tags
+     *
+     * @return int
+     */
+    private function replaceIndividualNames(Collection $records, string $search, string $replace, array $name_tags): int
+    {
+        $pattern     = '/(\n\d (?:' . implode('|', $name_tags) . ') (?:.*))' . preg_quote($search, '/') . '/i';
+        $replacement = '$1' . $replace;
+        $count       = 0;
+
+        foreach ($records as $record) {
+            $old_gedcom = $record->gedcom();
+            $new_gedcom = preg_replace($pattern, $replacement, $old_gedcom);
+
+            if ($new_gedcom !== $old_gedcom) {
+                $record->updateRecord($new_gedcom, true);
+                $count++;
+            }
+        }
+
+        return $count;
+    }
+
+    /**
+     * @param Collection $records
+     * @param string     $search
+     * @param string     $replace
+     *
+     * @return int
+     */
+    private function replacePlaces(Collection $records, string $search, string $replace): int
+    {
+        $pattern     = '/(\n\d PLAC\b.* )' . preg_quote($search, '/') . '([,\n])/i';
+        $replacement = '$1' . $replace . '$2';
+        $count       = 0;
+
+        foreach ($records as $record) {
+            $old_gedcom = $record->gedcom();
+            $new_gedcom = preg_replace($pattern, $replacement, $old_gedcom);
+
+            if ($new_gedcom !== $old_gedcom) {
+                $record->updateRecord($new_gedcom, true);
+                $count++;
+            }
+        }
+
+        return $count;
+    }
+}
