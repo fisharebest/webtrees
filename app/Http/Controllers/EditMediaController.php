@@ -576,13 +576,7 @@ class EditMediaController extends AbstractEditController
 
                 /** @var UploadedFileInterface|null $uploaded_file */
                 $uploaded_file = $request->getUploadedFiles()['file'];
-                if ($uploaded_file === null) {
-                    FlashMessages::addMessage(I18N::translate('No file was received. Please try again.'), 'danger');
-                    return '';
-                }
-
-                if ($uploaded_file->getError() !== UPLOAD_ERR_OK) {
-                    FlashMessages::addMessage(Functions::fileUploadErrorText($upload->getError()), 'danger');
+                if ($uploaded_file === null || $uploaded_file->getError() !== UPLOAD_ERR_OK) {
                     return '';
                 }
 
