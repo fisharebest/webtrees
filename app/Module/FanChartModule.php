@@ -510,7 +510,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
             }
         }
         // last line
-        if (!$line !== '') {
+        if ($line !== '') {
             $len = strlen($line);
             if (in_array(ord($line[0]), $RTLOrd, true)) {
                 $len /= 2;
