@@ -34,7 +34,7 @@ use function parse_ini_file;
  */
 class ReadConfigIni implements MiddlewareInterface
 {
-    /** @var SetupController $controller */
+    /** @var SetupController */
     private $setup_controller;
 
     /**
