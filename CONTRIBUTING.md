@@ -33,7 +33,7 @@ You will need three tools, in addition to the requirements of a live installatio
 
 * `git` - to fetch the latest development code, merge changes, create pull requests, etc.
 * [`composer`](https://getcomposer.org) - to install PHP dependencies, build releases, run tests, etc.
-* [`nodejs` and `npm`](https://nodejs.org/en/download/package-manager) - to install CSS/JS depencies and create portable/minified `.css` / `.js` files.
+* [`npm`](https://nodejs.org/en/download/package-manager) - to install CSS/JS depencies and create portable/minified `.css` / `.js` files.
 
 You do not need to understand the details of `composer` and `npm`.  You just need to be able to type a few commands at a console.
 
