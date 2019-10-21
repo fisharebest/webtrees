@@ -24,6 +24,7 @@ use Exception;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Module\AhnentafelReportModule;
 use Fisharebest\Webtrees\Module\AlbumModule;
 use Fisharebest\Webtrees\Module\AncestorsChartModule;
@@ -214,6 +215,7 @@ use Illuminate\Support\Str;
 use RuntimeException;
 use stdClass;
 use Throwable;
+
 use function app;
 use function method_exists;
 
@@ -618,33 +620,11 @@ class ModuleService
         try {
             return include $filename;
         } catch (Exception $loading_exception) {
-            self::disable_module($filename);
+            $module_name = basename(dirname($filename));
+            FlashMessages::addMessage(I18N::translate('Module %s errored while loading.', $module_name), 'danger');
+            FlashMessages::addMessage($loading_exception->getMessage(), 'danger');
         }
         return null;
-    }
-
-    private static function disable_module(string $filename)
-    {
-        $module_dir = dirname($filename);
-
-        /*
-         * try to disable the module and maybe send a mail.
-         * Renaming might fail for various reasons, e.g. installation and runtime user might be different,
-         * or we are in a container and have only RO access.
-         * In this case, prevent spamming the administrator with log entries or mails.
-         */
-        try {
-            $disabled_module_name = $module_dir . '.disabled';
-            $renamed = rename($module_dir, $disabled_module_name);
-            if (!$renamed) {
-                throw new RuntimeException("Unable to rename $module_dir to $disabled_module_name");
-            }
-            // TODO: maybe log and/or send mail.
-            return true;
-        } catch (Exception $rename_exception) {
-            // TODO: Maybe show a warning to the administrator.
-            return false;
-        }
     }
 
     /**
@@ -816,12 +796,8 @@ class ModuleService
             try {
                 app()->dispatch($module, 'boot');
             } catch (Exception $boot_exception) {
-                $module->setEnabled(false);
-                print_r($module);
-                /*
-                 * TODO: get the filename and call self::disable_module.
-                 * Maybe we need a new method in AbstracModule which allows us to get the path to the module.php file.
-                 */
+                FlashMessages::addMessage(I18N::translate('Module %s errored while loading.', $module_name), 'danger');
+                FlashMessages::addMessage($boot_exception->getMessage(), 'danger');
             }
         }
     }
