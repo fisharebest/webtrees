@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2018-05-20 07:26+0000\n"
+"PO-Revision-Date: 2019-10-21 11:26+0000\n"
 "Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
-"Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/el/>\n"
+"Language-Team: Greek <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -125,8 +125,8 @@ msgstr[1] "τα αρχεία %1$s εξήχθησαν σε %2$s δευτερόλ�
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s άτομο εμφανίσθηκε, από το φυσιολογικό πλήθος των %2$s, από %3$s γενεές."
+msgstr[1] "%1$s άτομα εμφανίσθηκαν, από το φυσιολογικό πλήθος των %2$s, από %3$s γενεές."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:852
@@ -3575,7 +3575,7 @@ msgstr "Έλεγχος ρυθμίσεων διακομιστή"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:131
 msgid "Chicago, Illinois, United States"
-msgstr ""
+msgstr "Σικάγο, Ιλινόϊς, Ηνωμένες Πολιτείες"
 
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:35 app/GedcomTag.php:274
@@ -3585,7 +3585,7 @@ msgstr "Τέκνο"
 #: modules_v3/ahnentafel_report/report.xml:388
 #: modules_v3/descendancy_report/report.xml:480
 msgid "Child of "
-msgstr ""
+msgstr "Τέκνο του "
 
 #. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:352
@@ -7353,11 +7353,11 @@ msgstr ""
 
 #: addmedia.php:545 admin_media_upload.php:254
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr ""
+msgstr "Εάν έχετε μεγάλο αριθμό από αρχεία πολυμέσων μπορείτε να τα οργανώσετε σε φακέλους και υποφακέλους."
 
 #: admin_trees_manage.php:278
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
-msgstr ""
+msgstr "Εάν έχετε δημιουργήσει αντικείμενα μέσων στο webtrees και στη συνέχεια έχετε επεξεργαστεί αυτό το αρχείο GEDCOM χρησιμοποιώντας λογισμικό γενεαλογικού περιεχομένου που διαγράφει αντικείμενα πολυμέσων, επιλέξτε αυτή την επιλογή για να συγχωνεύσετε τα τρέχοντα αντικείμενα μέσων με το νέο αρχείο GEDCOM."
 
 #: app/Module/RecentChangesModule.php:186
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
