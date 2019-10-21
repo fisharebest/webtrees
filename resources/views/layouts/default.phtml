@@ -85,7 +85,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
                         <div class="col wt-header-search">
                             <form method="get" action="<?= e(route('search-quick', ['tree' => $tree->name()])) ?>" class="wt-header-search-form" role="search">
-                                <input type="hidden" name="route" value="<?= e(route('search-quick', ['tree' => $tree->name()])) ?>">
+                                <input type="hidden" name="route" value="<?= e(route('search-quick', ['tree' => $tree->name()], true)) ?>">
                                 <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
                                 <div class="input-group">
                                     <label class="sr-only" for="quick-search"><?= I18N::translate('Search') ?></label>

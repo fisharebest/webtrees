@@ -158,10 +158,11 @@ function response($content = '', $code = StatusCodeInterface::STATUS_OK, $header
  *
  * @param string  $route_name
  * @param mixed[] $parameters
+ * @param bool    $skip_url Flag for rendering routes without absolute URL - for usage in GET forms
  *
  * @return string
  */
-function route(string $route_name, array $parameters = []): string
+function route(string $route_name, array $parameters = [], $skip_url = false): string
 {
     $request          = app(ServerRequestInterface::class);
     $router_container = app(RouterContainer::class);
@@ -187,13 +188,14 @@ function route(string $route_name, array $parameters = []): string
     // Generate the URL.
     $url = $router_container->getGenerator()->generate($route_name, $parameters);
 
+
     // Aura ignores parameters that are not tokens.  We need to add them as query parameters.
     $parameters = array_filter($parameters, static function (string $key) use ($route): bool {
         return strpos($route->path, '{' . $key . '}') === false && strpos($route->path, '{/' . $key . '}') === false;
     }, ARRAY_FILTER_USE_KEY);
 
     // Turn the pretty URL into an ugly one.
-    if ($request->getAttribute('rewrite_urls') !== '1') {
+    if (!$skip_url && $request->getAttribute('rewrite_urls') !== '1') {
         $path       = parse_url($url, PHP_URL_PATH);
         $parameters = ['route' => $path] + $parameters;
         $base_url   = $request->getAttribute('base_url');
