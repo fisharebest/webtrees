@@ -27,14 +27,38 @@ You can start contributing by
 * Join our slack. The invitation link will be updated on this line.
 * Help us maintaining our github page from the repository [webtrees.github.io](https://github.com/webtrees/webtrees.github.io).
 
-## How to setup the environment
+## How to setup a development environment
 
-You need
+In addition to the requirements of a live installation (webserver, database server), you'll need three tools
 
-* PHP >=7.1.8 (for webtrees 2.0; or PHP >=5.3.9 for webtrees 1.7)
-* MySQL 5
-* git
-* composer
+* git - to fetch the latest development code, create pull requests, etc.
+* [`composer`](https://getcomposer.org) - to manage PHP dependencies, build releases, run tests, etc.
+* [`nodejs` and `npm`](https://nodejs.org/en/download/package-manager) - to manage CSS/JS depencies and create portable/minified `.css` and `.js` files.
+
+You do not need to understand the details of `composer` and `npm`.  You just need to be able to type a few commands at a console.
+
+If you are going to submit your work to the project, you will need a basic understanding of `git`.  The workflow for using git is covered below in the section on "Pull Requests".
+
+### Composer
+
+The instructions below assume you have created an alias/shortcut for `composer`.
+If not, you'll need to replace `composer` with `php /path/to/your/copy/of/composer.phar`.
+
+* You would usually run `composer install` before starting any develoment.  This loads all the development tools, including the PHP debug bar, the build scripts, the analysis and testing tools.  You would then run `composer install --no-dev` before committing any changes.
+
+* The PHP Debug Bar can set a large number of HTTP headers, and you may need to increase the size of buffers in your webserver configuration.  There are some notes in the file `app/Http/Middleware/UseDebugbar.php`.
+
+* You can use a "pre-commit hook" to run checks on your code before you commit them to your local repository.  To do this, rename the file `.git/hooks/pre-commit.sample` to `.git/hooks/pre-commit` and then add this line at the end of the file: `composer webtrees:pre-commit-hook`. 
+
+### NPM
+
+* After modifying and CSS or JS files, you'll need to rebuild the files in `public/js` and `public/css`.  You do this with the command `npm run production`.
+
+## Creating a pull request
+
+[TODO]
+
+
 
 1. Fork and clone the repository
 2. Run `composer install` to update the PHP dependencies.
