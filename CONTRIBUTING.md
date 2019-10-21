@@ -29,11 +29,11 @@ You can start contributing by
 
 ## How to setup a development environment
 
-In addition to the requirements of a live installation (webserver, database server), you'll need three tools
+You will need three tools, in addition to the requirements of a live installation.
 
-* git - to fetch the latest development code, create pull requests, etc.
-* [`composer`](https://getcomposer.org) - to manage PHP dependencies, build releases, run tests, etc.
-* [`nodejs` and `npm`](https://nodejs.org/en/download/package-manager) - to manage CSS/JS depencies and create portable/minified `.css` and `.js` files.
+* `git` - to fetch the latest development code, merge changes, create pull requests, etc.
+* [`composer`](https://getcomposer.org) - to install PHP dependencies, build releases, run tests, etc.
+* [`nodejs` and `npm`](https://nodejs.org/en/download/package-manager) - to install CSS/JS depencies and create portable/minified `.css` / `.js` files.
 
 You do not need to understand the details of `composer` and `npm`.  You just need to be able to type a few commands at a console.
 
@@ -52,7 +52,7 @@ If not, you'll need to replace `composer` with `php /path/to/your/copy/of/compos
 
 ### NPM
 
-* After modifying and CSS or JS files, you'll need to rebuild the files in `public/js` and `public/css`.  You do this with the command `npm run production`.
+* After modifying any CSS or JS files, you'll need to rebuild the files in `public/js` and `public/css`.  You do this with the command `npm run production`.
 
 ## Creating a pull request
 
