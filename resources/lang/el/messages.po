@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-09-22 16:28+0100\n"
-"PO-Revision-Date: 2018-05-20 07:26+0000\n"
+"PO-Revision-Date: 2019-10-21 11:26+0000\n"
 "Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
-"Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
+"Language-Team: Greek <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3531,7 +3531,7 @@ msgstr "Έλεγχος ρυθμίσεων διακομιστή"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:298
 msgid "Chicago, Illinois, United States"
-msgstr ""
+msgstr "Σικάγο, Ιλινόϊς, Ηνωμένες Πολιτείες"
 
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:39 app/GedcomTag.php:587
@@ -3544,7 +3544,7 @@ msgstr "Τέκνο"
 #: resources/xml/reports/ahnentafel_report.xml:389
 #: resources/xml/reports/descendancy_report.xml:480
 msgid "Child of "
-msgstr ""
+msgstr "Τέκνο του "
 
 #. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:361
@@ -7342,11 +7342,11 @@ msgstr "Εάν δεν ζητήσατε εσείς τον λογαριασμό, �
 
 #: resources/views/modals/media-file-fields.phtml:63
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr ""
+msgstr "Εάν έχετε μεγάλο αριθμό από αρχεία πολυμέσων μπορείτε να τα οργανώσετε σε φακέλους και υποφακέλους."
 
 #: resources/views/admin/trees-import.phtml:79
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
-msgstr ""
+msgstr "Εάν έχετε δημιουργήσει αντικείμενα μέσων στο webtrees και στη συνέχεια έχετε επεξεργαστεί αυτό το αρχείο GEDCOM χρησιμοποιώντας λογισμικό γενεαλογικού περιεχομένου που διαγράφει αντικείμενα πολυμέσων, επιλέξτε αυτή την επιλογή για να συγχωνεύσετε τα τρέχοντα αντικείμενα μέσων με το νέο αρχείο GEDCOM."
 
 #: resources/views/admin/site-preferences.phtml:28
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -20292,7 +20292,6 @@ msgstr "…"
 #~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 #~ msgstr "Ένας διακομιστής βάσης δεδομένων μπορεί να αποθηκεύσει πολλές ξεχωριστές βάσεις δεδομένων. Πρέπει να επιλέξετε μια υπάρχουσα βάση δεδομένων (που δημιουργήθηκε από το διαχειριστή του διακομιστή σας) ή να δημιουργήσετε μια νέα (εάν ο λογαριασμός χρήστη σας στην βάση δεδομένων σας έχει επαρκή δικαιώματα)."
 
-#, php-format
 #~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
 #~ msgstr "Δημιουργήθηκε ένα νέο συνθηματικό και αποστάλθηκε με email στο %s. Μπορείτε να το αλλάξετε αφού συνδεθείτε."
 
