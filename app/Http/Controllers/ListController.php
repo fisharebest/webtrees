@@ -155,7 +155,7 @@ class ListController extends AbstractBaseController
                     'show_all' => 'yes',
                 ];
                 $show    = 'indi';
-            } elseif ($falpha) {
+            } elseif ($falpha !== '') {
                 $alpha   = '';
                 $surname = '';
                 $legend  = I18N::translate('All') . ', ' . e($falpha) . '…';
@@ -174,7 +174,7 @@ class ListController extends AbstractBaseController
                 ];
                 $show    = $request->getQueryParams()['show'] ?? 'surn';
             }
-        } elseif ($surname) {
+        } elseif ($surname !== '') {
             $alpha    = $this->localization_service->initialLetter($surname); // so we can highlight the initial letter
             $show_all = 'no';
             if ($surname === '@N.N.') {
@@ -216,7 +216,7 @@ class ListController extends AbstractBaseController
                 'tree'   => $tree->name(),
             ];
             $show     = 'indi'; // SURN list makes no sense here
-        } elseif ($alpha) {
+        } elseif ($alpha !== '') {
             $show_all = 'no';
             $legend   = e($alpha) . '…';
             $params   = [
@@ -277,7 +277,7 @@ class ListController extends AbstractBaseController
                     </p>
                 <?php endif ?>
 
-                <?php if ($alpha !== '@' && $alpha !== ',' && !$surname) : ?>
+                <?php if ($alpha !== '@' && $alpha !== ',' && $surname === '') : ?>
                     <?php if ($show === 'surn') : ?>
                         <p>
                             <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'show' => 'indi', 'show_marnm' => 'no'] + $params)) ?>">
@@ -332,21 +332,21 @@ class ListController extends AbstractBaseController
                     } else {
                         $givn_initials = $this->individual_list_service->givenAlpha($surname, $alpha, $show_marnm === 'yes', $families, WT_LOCALE, I18N::collation());
                         // Break long lists by initial letter of given name
-                        if ($surname || $show_all === 'yes') {
+                        if ($surname !== '' || $show_all === 'yes') {
                             if ($show_all === 'no') {
                                 echo '<h2 class="wt-page-title">', I18N::translate('Individuals with surname %s', $legend), '</h2>';
                             }
                             // Don't show the list until we have some filter criteria
-                            $show = ($falpha || $show_all_firstnames === 'yes') ? 'indi' : 'none';
+                            $show = ($falpha !== '' || $show_all_firstnames === 'yes') ? 'indi' : 'none';
                             $list = [];
                             echo '<ul class="d-flex flex-wrap list-unstyled justify-content-center wt-initials-list wt-initials-list-given-names">';
-                            foreach ($givn_initials as $givn_initial => $count) {
+                            foreach ($givn_initials as $givn_initial => $given_count) {
                                 echo '<li class="wt-initials-list-item d-flex">';
-                                if ($count > 0) {
+                                if ($given_count > 0) {
                                     if ($show === 'indi' && $givn_initial === $falpha && $show_all_firstnames === 'no') {
-                                        echo '<a class="wt-initial px-1 active" href="' . e(route('module', ['module' => $module, 'action' => $action, 'falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
+                                        echo '<a class="wt-initial px-1 active" href="' . e(route('module', ['module' => $module, 'action' => $action, 'falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($given_count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
                                     } else {
-                                        echo '<a class="wt-initial px-1" href="' . e(route('module', ['module' => $module, 'action' => $action, 'falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
+                                        echo '<a class="wt-initial px-1" href="' . e(route('module', ['module' => $module, 'action' => $action, 'falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($given_count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
                                     }
                                 } else {
                                     echo '<span class="wt-initial px-1 text-muted">' . $this->givenNameInitial((string) $givn_initial) . '</span>';
