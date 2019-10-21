@@ -40,6 +40,19 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
     private const DEFAULT_NUMBER = '10';
     private const DEFAULT_STYLE  = 'table';
 
+    /** @var ModuleService */
+    private $module_service;
+
+    /**
+     * TopSurnamesModule constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service)
+    {
+        $this->module_service = $module_service;
+    }
+
     /**
      * How should this module be identified in the control panel, etc.?
      *
@@ -103,10 +116,12 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             $all_surnames[$top_surname] = $variants;
         }
         
-        //find a module providing individual lists
-        $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $tree, Auth::user())->first(static function (ModuleInterface $module): bool {
-            return $module instanceof IndividualListModule;
-        });
+        // Find a module providing individual lists.
+        $module = $this->module_service
+            ->findByComponent(ModuleListInterface::class, $tree, Auth::user())
+            ->first(static function (ModuleInterface $module): bool {
+                return $module instanceof IndividualListModule;
+            });
         
         switch ($infoStyle) {
             case 'tagcloud':

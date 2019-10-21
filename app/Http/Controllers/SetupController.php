@@ -73,6 +73,9 @@ class SetupController extends AbstractBaseController
     /** @var MigrationService */
     private $migration_service;
 
+    /** @var ModuleService */
+    private $module_service;
+
     /** @var ServerCheckService */
     private $server_check_service;
 
@@ -83,16 +86,19 @@ class SetupController extends AbstractBaseController
      * SetupController constructor.
      *
      * @param MigrationService   $migration_service
+     * @param ModuleService      $module_service
      * @param ServerCheckService $server_check_service
      * @param UserService        $user_service
      */
     public function __construct(
         MigrationService $migration_service,
+        ModuleService $module_service,
         ServerCheckService $server_check_service,
         UserService $user_service
     ) {
         $this->user_service         = $user_service;
         $this->migration_service    = $migration_service;
+        $this->module_service       = $module_service;
         $this->server_check_service = $server_check_service;
     }
 
@@ -191,7 +197,7 @@ class SetupController extends AbstractBaseController
      */
     private function setupLocales(): array
     {
-        return app(ModuleService::class)
+        return $this->module_service
             ->setupLanguages()
             ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
                 return $module->locale();

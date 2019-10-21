@@ -29,6 +29,7 @@ use function parse_url;
 use function rtrim;
 
 use const PHP_URL_HOST;
+use const PHP_URL_PATH;
 use const PHP_URL_PORT;
 use const PHP_URL_SCHEME;
 
@@ -55,6 +56,11 @@ class BaseUrl implements MiddlewareInterface
             // Guess the base URL from the request URL.
             $base_url = rtrim(explode('index.php', (string) $request_url)[0], '/');
             $request  = $request->withAttribute('base_url', $base_url);
+
+            $base_path = parse_url($base_url, PHP_URL_PATH) ?? '';
+            $request_url = $request_url->withPath($base_path);
+
+            $request = $request->withUri($request_url);
         } else {
             // Update the request URL from the base URL.
             $base_scheme = parse_url($base_url, PHP_URL_SCHEME) ?? 'http';
