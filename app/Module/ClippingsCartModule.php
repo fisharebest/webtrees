@@ -1021,8 +1021,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     private function isCartEmpty(Tree $tree): bool
     {
-        $cart = Session::get('cart', []);
+        $cart     = Session::get('cart', []);
+        $contents = $cart[$tree->name()] ?? [];
 
-        return empty($cart[$tree->name()]);
+        return $contents === [];
     }
 }

@@ -274,6 +274,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         $transparent = imagecolorallocate($image, 0, 0, 0);
         imagecolortransparent($image, $transparent);
 
+        /** @var ModuleThemeInterface $theme */
         $theme = app(ModuleThemeInterface::class);
 
         $foreground = $this->imageColor($image, $theme->parameter('chart-font-color'));
@@ -494,13 +495,13 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                 $len  = strlen($line);
                 $wlen = strlen($word);
                 if (($len + $wlen) < $maxlen) {
-                    if (!empty($line)) {
+                    if ($line !== '') {
                         $line .= ' ';
                     }
                     $line .= $word;
                 } else {
                     $p = max(0, (int) (($maxlen - $len) / 2));
-                    if (!empty($line)) {
+                    if ($line !== '') {
                         $line = str_repeat(' ', $p) . $line; // center alignment using spaces
                         $text .= $line . "\n";
                     }
@@ -509,7 +510,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
             }
         }
         // last line
-        if (!empty($line)) {
+        if (!$line !== '') {
             $len = strlen($line);
             if (in_array(ord($line[0]), $RTLOrd, true)) {
                 $len /= 2;

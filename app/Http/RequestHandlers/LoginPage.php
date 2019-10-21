@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -43,7 +44,7 @@ class LoginPage extends AbstractBaseController
 
         // Already logged in?
         if ($user instanceof User) {
-            return redirect(route('user-page', ['tree' => $tree ? $tree->name() : '']));
+            return redirect(route('user-page', ['tree' => $tree instanceof Tree ? $tree->name() : '']));
         }
 
         $error    = $request->getQueryParams()['error'] ?? '';

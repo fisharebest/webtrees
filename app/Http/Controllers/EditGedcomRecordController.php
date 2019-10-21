@@ -448,7 +448,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         // For the GEDFact_assistant module
         $pid_array = $request->getParsedBody()['pid_array'] ?? '';
-        if ($pid_array) {
+        if ($pid_array !== '') {
             foreach (explode(',', $pid_array) as $pid) {
                 if ($pid !== $xref) {
                     $indi = Individual::getInstance($pid, $tree);

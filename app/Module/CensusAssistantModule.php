@@ -121,7 +121,7 @@ class CensusAssistantModule extends AbstractModule
         $ca_notes       = $params['ca_notes'] ?? '';
         $ca_census      = $params['ca_census'] ?? '';
 
-        if ($ca_census !== '' && !empty($ca_individuals)) {
+        if ($ca_census !== '' && $ca_individuals !== []) {
             $census = new $ca_census();
 
             $note_text   = $this->createNoteText($census, $ca_title, $ca_place, $ca_citation, $ca_individuals, $ca_notes);

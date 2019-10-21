@@ -68,7 +68,7 @@ class PendingChangesController extends AbstractBaseController
             ->get();
 
         foreach ($changes as $change) {
-            if (empty($change->new_gedcom)) {
+            if ($change->new_gedcom === '') {
                 // delete
                 FunctionsImport::updateRecord($change->old_gedcom, $tree, true);
             } else {
@@ -113,7 +113,7 @@ class PendingChangesController extends AbstractBaseController
             ->get();
 
         foreach ($changes as $change) {
-            if (empty($change->new_gedcom)) {
+            if ($change->new_gedcom === '') {
                 // delete
                 FunctionsImport::updateRecord($change->old_gedcom, $tree, true);
             } else {
@@ -308,7 +308,7 @@ class PendingChangesController extends AbstractBaseController
         $title = I18N::translate('Pending changes');
 
         // If the current tree has changes, activate that tab.  Otherwise activate the first tab.
-        if (empty($changes[$tree->id()])) {
+        if (($changes[$tree->id()] ?? []) === []) {
             reset($changes);
             $active_tree_id = key($changes);
         } else {
@@ -319,6 +319,7 @@ class PendingChangesController extends AbstractBaseController
             'active_tree_id' => $active_tree_id,
             'changes'        => $changes,
             'title'          => $title,
+            'tree'           => $tree,
             'url'            => $url,
         ]);
     }

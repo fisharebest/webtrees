@@ -131,7 +131,7 @@ class EditNoteController extends AbstractEditController
 
         $gedcom = '0 @@ NOTE ' . $note;
 
-        if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'])) {
+        if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'], true)) {
             $gedcom .= "\n1 RESN " . $privacy_restriction;
         }
 

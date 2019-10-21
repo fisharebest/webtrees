@@ -159,7 +159,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
         $date_options = $this->dateOptions();
         $name_options = $this->nameOptions();
 
-        if (!empty(array_filter($fields))) {
+        if (array_filter($fields) !== []) {
             $individuals = $this->search_service->searchIndividualsAdvanced([$tree], $fields, $modifiers);
         } else {
             $individuals = [];
