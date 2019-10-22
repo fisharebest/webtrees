@@ -70,7 +70,7 @@ class LoginAction extends AbstractBaseController
         $tree     = $request->getAttribute('tree');
         $username = $request->getParsedBody()['username'] ?? '';
         $password = $request->getParsedBody()['password'] ?? '';
-        $url      = $request->getParsedBody()['url'] ?? route('home-page');
+        $url      = $request->getParsedBody()['url'] ?? route(HomePage::class);
 
         try {
             $this->doLogin($username, $password);

@@ -54,6 +54,6 @@ class Logout implements RequestHandlerInterface
             FlashMessages::addMessage(I18N::translate('You have signed out.'));
         }
 
-        return redirect(route('home-page'));
+        return redirect(route(HomePage::class));
     }
 }
