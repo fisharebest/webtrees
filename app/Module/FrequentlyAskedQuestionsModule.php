@@ -125,9 +125,14 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $this->layout = 'layouts/administration';
 
         // This module can't run without a tree
-        $tree = $request->getQueryParams()['tree'] ?? '';
-        $tree = $this->tree_service->findByName($tree) ?? $this->tree_service->all()->first();
+        $tree = $request->getAttribute('tree');
+
         if (!$tree instanceof Tree) {
+            $tree = $this->tree_service->all()->first();
+            if ($tree instanceof Tree) {
+                return redirect(route('module', ['module' => $this->name(), 'action' => 'Admin', 'tree' => $tree->name()]));
+            }
+
             return redirect(route(ControlPanel::class));
         }
 
@@ -163,6 +168,20 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             'tree'            => $tree,
             'tree_names'      => Tree::getNameList(),
         ]);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
+    {
+        return redirect(route('module', [
+            'module' => $this->name(),
+            'action' => 'Admin',
+            'tree'   => $request->getParsedBody()['tree'] ?? '',
+        ]));
     }
 
     /**

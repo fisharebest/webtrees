@@ -20,10 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\HtmlService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use InvalidArgumentException;
@@ -32,6 +34,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
 use function assert;
+use function redirect;
+use function route;
 
 /**
  * Class StoriesModule
@@ -45,14 +49,19 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     /** @var HtmlService */
     private $html_service;
 
+    /** @var TreeService */
+    private $tree_service;
+
     /**
-     * HtmlBlockModule bootstrap.
+     * BatchUpdateModule constructor.
      *
      * @param HtmlService $html_service
+     * @param TreeService $tree_service
      */
-    public function boot(HtmlService $html_service): void
+    public function __construct(HtmlService $html_service, TreeService $tree_service)
     {
         $this->html_service = $html_service;
+        $this->tree_service = $tree_service;
     }
 
     /** @var int The default access level for this module.  It can be changed in the control panel. */
@@ -209,8 +218,17 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     {
         $this->layout = 'layouts/administration';
 
+        // This module can't run without a tree
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+
+        if (!$tree instanceof Tree) {
+            $tree = $this->tree_service->all()->first();
+            if ($tree instanceof Tree) {
+                return redirect(route('module', ['module' => $this->name(), 'action' => 'Admin', 'tree' => $tree->name()]));
+            }
+
+            return redirect(route(ControlPanel::class));
+        }
 
         $stories = DB::table('block')
             ->where('module_name', '=', $this->name())
@@ -233,6 +251,20 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             'tree'       => $tree,
             'tree_names' => Tree::getNameList(),
         ]);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
+    {
+        return redirect(route('module', [
+            'module' => $this->name(),
+            'action' => 'Admin',
+            'tree'   => $request->getParsedBody()['tree'] ?? '',
+        ]));
     }
 
     /**

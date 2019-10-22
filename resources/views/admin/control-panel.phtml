@@ -124,6 +124,12 @@ use Illuminate\Support\Collection;
         </h2>
     </div>
     <div class="card-body">
+        <?php if ($all_trees->isEmpty()) : ?>
+            <p class="alert alert-info">
+                <?= I18N::translate('You need to create a family tree.') ?>
+            </p>
+        <?php endif ?>
+
         <ul class="fa-ul">
             <li>
                 <span class="fa-li"><?= view('icons/add') ?></span>

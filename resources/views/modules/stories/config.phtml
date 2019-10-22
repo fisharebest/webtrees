@@ -9,8 +9,8 @@ use Fisharebest\Webtrees\I18N;
 
 <h1><?= $title ?></h1>
 
-<form method="get" action="<?= e(route('module', ['module' => $module->name(), 'action' => 'Admin'])) ?>" class="form-inline mb-4">
-    <input type="hidden" name="route" value="<?= e('/module/' . $module->name() . '/Admin') ?>">
+<form method="post" class="form-inline mb-4">
+    <?= csrf_field() ?>
 
     <label for="tree" class="sr-only">
         <?= I18N::translate('Family tree') ?>

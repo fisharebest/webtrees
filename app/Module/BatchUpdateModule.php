@@ -41,6 +41,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function array_key_exists;
 use function assert;
+use function redirect;
+use function route;
 
 /**
  * Class BatchUpdateModule
@@ -96,18 +98,23 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      */
     public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
+        // This module can't run without a tree
+        $tree = $request->getAttribute('tree');
+
+        if (!$tree instanceof Tree) {
+            $tree = $this->tree_service->all()->first();
+            if ($tree instanceof Tree) {
+                return redirect(route('module', ['module' => $this->name(), 'action' => 'Admin', 'tree' => $tree->name()]));
+            }
+
+            return redirect(route(ControlPanel::class));
+        }
+
         $user    = $request->getAttribute('user');
         $plugin  = $request->getQueryParams()['plugin'] ?? '';
         $xref    = $request->getQueryParams()['xref'] ?? '';
         $plugins = $this->getPluginList();
         $plugin  = $plugins[$plugin] ?? null;
-
-        // This module can't run without a tree
-        $tree = $request->getQueryParams()['tree'] ?? '';
-        $tree = $this->tree_service->findByName($tree) ?? $this->tree_service->all()->first();
-        if (!$tree instanceof Tree) {
-            return redirect(route(ControlPanel::class));
-        }
 
         $curr_xref = '';
         $prev_xref = '';
@@ -340,12 +347,23 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
+        $parameters = $request->getParsedBody();
+
+        $tree = $this->tree_service->findByName($parameters['tree' ?? '']);
         assert($tree instanceof Tree, new InvalidArgumentException());
 
-        $plugin = $request->getQueryParams()['plugin'] ?? '';
-        $xref   = $request->getParsedBody()['xref'] ?? '';
-        $update = $request->getParsedBody()['update'] ?? '';
+        $plugin = $parameters['plugin'] ?? '';
+
+        if ($plugin === '') {
+            return redirect(route('module', [
+                'module' => $this->name(),
+                'action' => 'Admin',
+                'tree'   => $tree->name(),
+            ]));
+        }
+
+        $xref   = $parameters['xref'] ?? '';
+        $update = $parameters['update'] ?? '';
 
         $plugins = $this->getPluginList();
         $plugin  = $plugins[$plugin] ?? null;
@@ -357,8 +375,10 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
 
         $all_data = $this->allData($plugin, $tree);
 
-        $parameters = $request->getParsedBody();
         unset($parameters['update']);
+        $parameters['tree']   = $tree->name();
+        $parameters['module'] = $this->name();
+        $parameters['action'] = 'Admin';
 
         switch ($update) {
             case 'one':

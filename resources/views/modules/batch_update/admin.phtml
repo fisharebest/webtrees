@@ -10,10 +10,10 @@ use Fisharebest\Webtrees\View;
 
 <h1><?= $title ?></h1>
 
-<form method="get" action="<?= e(route('module', ['module' => $module, 'action' => 'Admin'])) ?>" id="batch-update-form">
-    <input type="hidden" name="route" value="<?= e('/module/' . $module . '/Chart') ?>">
-    <input type="hidden" name="xref" value="<?= $curr_xref ?>">
+<form method="post" id="batch-update-form">
     <?= csrf_field() ?>
+
+    <input type="hidden" name="xref" value="<?= $curr_xref ?>">
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label"><?= I18N::translate('Family tree') ?></label>
