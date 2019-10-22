@@ -86,6 +86,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
                         <div class="col wt-header-search">
                             <form method="post" action="<?= e(route(SearchQuickAction::class, ['tree' => $tree->name()])) ?>" class="wt-header-search-form" role="search">
+                                <?= csrf_field() ?>
                                 <div class="input-group">
                                     <label class="sr-only" for="quick-search"><?= I18N::translate('Search') ?></label>
                                     <input type="search" class="form-control wt-header-search-field" id="quick-search" name="query" size="15" placeholder="<?= I18N::translate('Search') ?>">

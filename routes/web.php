@@ -361,13 +361,13 @@ $router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->get('report-list', '/report-list', 'ReportEngineController::reportList');
     $router->get('report-setup', '/report-setup', 'ReportEngineController::reportSetup');
     $router->get('report-run', '/report-run', 'ReportEngineController::reportRun');
-    $router->get(SearchQuickAction::class, '/search-quick', SearchQuickAction::class);
     $router->get(SearchAdvancedPage::class, '/search-advanced', SearchAdvancedPage::class);
     $router->post(SearchAdvancedAction::class, '/search-advanced', SearchAdvancedAction::class);
     $router->get(SearchGeneralPage::class, '/search-general', SearchGeneralPage::class);
     $router->post(SearchGeneralAction::class, '/search-general', SearchGeneralAction::class);
     $router->get(SearchPhoneticPage::class, '/search-phonetic', SearchPhoneticPage::class);
     $router->post(SearchPhoneticAction::class, '/search-phonetic', SearchPhoneticAction::class);
+    $router->post(SearchQuickAction::class, '/search-quick', SearchQuickAction::class);
     $router->post('select2-family', '/select2-family', 'AutocompleteController::select2Family');
     $router->post('select2-individual', '/select2-individual', 'AutocompleteController::select2Individual');
     $router->post('select2-media', '/select2-media', 'AutocompleteController::select2MediaObject');
