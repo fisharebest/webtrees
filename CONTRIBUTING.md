@@ -54,6 +54,20 @@ If not, you'll need to replace `composer` with `php /path/to/your/copy/of/compos
 
 * After modifying any CSS or JS files, you'll need to rebuild the files in `public/js` and `public/css`.  You do this with the command `npm run production`.
 
+## Third-party libraries and compiled files in the source tree
+
+For historic reasons, we include certain third-party libraries and compiled
+files in our source tree.  This is usually considered to be bad practice.
+We do it because we have a large number of testers and users who have become
+accustomed to downloading the latest source code and running it without any build step.
+
+We include the non-development PHP libraries from `/vendor`.
+These are created using the command `composer install --no-dev`.
+
+We include the compiled JS and CSS assets from `/public/{css,js}`).
+These are created using the command `npm run production`.
+
+
 ## Creating a pull request
 
 [TODO]
