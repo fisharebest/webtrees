@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2018-04-22 15:55+0000\n"
+"PO-Revision-Date: 2019-10-22 21:17+0000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
-"Language-Team: Lithuanian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/lt/>\n"
+"Language-Team: Lithuanian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -198,7 +198,7 @@ msgstr "%Y %F %j"
 #: app/Stats.php:6940
 #, php-format
 msgid "%s BCE"
-msgstr "%s BCE"
+msgstr "%s m. Prieš Kristų"
 
 #. I18N: size of file in KB
 #: admin_media.php:489 app/Media.php:277
@@ -275,7 +275,7 @@ msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
 msgstr[0] "%s šeima buvo redaguota."
 msgstr[1] "%s šeimos buvo redaguotos."
-msgstr[2] "%s šeimos buvo redaguotos."
+msgstr[2] "%s šeimų buvo redaguota."
 
 #: admin.php:853
 #, php-format
@@ -306,7 +306,7 @@ msgstr[2] "prieš %s valandų"
 msgid "%s individual"
 msgid_plural "%s individuals"
 msgstr[0] "%s asmuo"
-msgstr[1] "%s asmuo"
+msgstr[1] "%s asmenys"
 msgstr[2] "%s asmenų"
 
 #: app/Controller/SearchController.php:349
@@ -478,7 +478,7 @@ msgstr[2] "%s savaitės"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s metai"
-msgstr[1] "%s metų"
+msgstr[1] "%s metai"
 msgstr[2] "%s metų"
 
 #: app/I18N.php:794
@@ -517,7 +517,7 @@ msgstr "%s × pusbrolis"
 #: app/Date/JulianDate.php:85
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;BCE"
+msgstr "%s&nbsp;m.&nbsp;Prieš&nbsp;Kristų"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
@@ -20045,7 +20045,7 @@ msgstr "nežinoma"
 
 #: app/Module/RelationshipsChartModule.php:148
 msgid "unlimited"
-msgstr ""
+msgstr "neribotas"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
@@ -20191,7 +20191,7 @@ msgid "±%s year"
 msgid_plural "±%s years"
 msgstr[0] "±%s metai"
 msgstr[1] "±%s metai"
-msgstr[2] "±%s metai"
+msgstr[2] "±%s metų"
 
 #: app/Individual.php:1218
 #, php-format
