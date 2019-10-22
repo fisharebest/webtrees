@@ -44,14 +44,18 @@ class DebugBar
     /**
      * Initialize the Debugbar.
      *
+     * @param string $base_url - Will only be valid on dev builds.
+     *
      * @return void
      */
-    public static function enable(): void
+    public static function enable(string $base_url): void
     {
         self::$debugbar = new StandardDebugBar();
         self::$debugbar->addCollector(new ViewCollector());
 
-        self::$renderer = self::$debugbar->getJavascriptRenderer('./vendor/maximebf/debugbar/src/DebugBar/Resources/');
+        $base_url .= '/vendor/maximebf/debugbar/src/DebugBar/Resources/';
+
+        self::$renderer = self::$debugbar->getJavascriptRenderer($base_url);
     }
 
     /**

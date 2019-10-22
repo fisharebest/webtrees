@@ -49,7 +49,7 @@ class UseDebugbar implements MiddlewareInterface, StatusCodeInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if (class_exists(StandardDebugBar::class)) {
-            DebugBar::enable();
+            DebugBar::enable($request->getAttribute('base_url'));
 
             DebugBar::initPDO(DB::connection()->getPdo());
 
