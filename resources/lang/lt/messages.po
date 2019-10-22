@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-09-22 16:28+0100\n"
-"PO-Revision-Date: 2018-04-22 15:55+0000\n"
+"PO-Revision-Date: 2019-10-22 21:17+0000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
-"Language-Team: Lithuanian <https://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
+"Language-Team: Lithuanian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -168,7 +168,7 @@ msgstr "%Y %F %j"
 #: app/Statistics/Service/CenturyService.php:37
 #, php-format
 msgid "%s BCE"
-msgstr "%s BCE"
+msgstr "%s m. Prieš Kristų"
 
 #. I18N: size of file in KB
 #: app/Http/Controllers/Admin/MediaController.php:463
@@ -240,7 +240,7 @@ msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
 msgstr[0] "%s šeima buvo redaguota."
 msgstr[1] "%s šeimos buvo redaguotos."
-msgstr[2] "%s šeimos buvo redaguotos."
+msgstr[2] "%s šeimų buvo redaguota."
 
 #: resources/views/statistics/families/top10-list-grand.phtml:18
 #: resources/views/statistics/families/top10-nolist-grand.phtml:14
@@ -257,7 +257,7 @@ msgstr[2] "%s anūkų"
 msgid "%s individual"
 msgid_plural "%s individuals"
 msgstr[0] "%s asmuo"
-msgstr[1] "%s asmuo"
+msgstr[1] "%s asmenys"
 msgstr[2] "%s asmenų"
 
 #: app/Http/Controllers/SearchController.php:401
@@ -413,7 +413,7 @@ msgstr[2] "%s savaitės"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s metai"
-msgstr[1] "%s metų"
+msgstr[1] "%s metai"
 msgstr[2] "%s metų"
 
 #: app/Http/Controllers/CalendarController.php:510
@@ -444,7 +444,7 @@ msgstr "%s × pusbrolis"
 #: app/Date/JulianDate.php:96
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;BCE"
+msgstr "%s&nbsp;m.&nbsp;Prieš&nbsp;Kristų"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:100 app/Date/JulianDate.php:104
@@ -19080,7 +19080,7 @@ msgstr ""
 #: app/Functions/Functions.php:1338
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "dukterėčia"
 
 #: app/Functions/Functions.php:970
 msgctxt "brother’s son’s wife"
@@ -20073,7 +20073,7 @@ msgstr "nežinoma"
 
 #: app/Module/RelationshipsChartModule.php:168
 msgid "unlimited"
-msgstr ""
+msgstr "neribotas"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:56
@@ -20141,7 +20141,7 @@ msgstr "webtrees žinutė"
 
 #: resources/views/setup/step-3-database-type.phtml:26
 msgid "webtrees needs a database to store your genealogy data."
-msgstr ""
+msgstr "webtrees reikalinga duomenų bazė geneologijos duomenų išsaugojimui."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:46
@@ -20232,7 +20232,7 @@ msgid "±%s year"
 msgid_plural "±%s years"
 msgstr[0] "±%s metai"
 msgstr[1] "±%s metai"
-msgstr[2] "±%s metai"
+msgstr[2] "±%s metų"
 
 #: app/Individual.php:1298
 #, php-format
@@ -20347,7 +20347,6 @@ msgstr "…"
 #~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 #~ msgstr "Duomenų bazių serveryje galima laikyti daugelį atskirų duomenų bazių. Jūs turite pasirinkti esamą duomenų bazę (sukurtą serverio administratorius) arba sukurti naują (jei jūsų duomenų bazės vartotojo sąskaita turi tokias teises)."
 
-#, php-format
 #~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
 #~ msgstr "Naujas slaptažodis buvo sukurtas ir išsiųstas į %s. Galite pakeisti šį slaptažodį, po to kai prisijungsite."
 
@@ -21363,7 +21362,6 @@ msgstr "…"
 #~ msgid "Theme menu"
 #~ msgstr "Temų menu"
 
-#, php-format
 #~ msgid "There is no account with the username or email “%s”."
 #~ msgstr "Nepavyko rasti paskyros su vartotojo vardu arba el. paštu „%s“."
 
