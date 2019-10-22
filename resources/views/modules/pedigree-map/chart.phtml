@@ -120,14 +120,10 @@
       let domObj  = '.osm-sidebar';
       let sidebar = '';
 
-      $.getJSON("index.php", {
-        route:       "module",
-        module:      "pedigree-map",
-        action:      "MapData",
+      $.getJSON(<?= json_encode(route('module', ['module' => 'pedigree-map', 'action' => 'MapData', 'tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>, {
         reference:   reference,
         type:        mapType,
-        generations: Generations,
-        tree:        <?= json_encode($individual->tree()->name()) ?>
+        generations: Generations
       })
         .done(function (data, textStatus, jqXHR) {
           if (jqXHR.status === 200 && data.features.length === 1) {

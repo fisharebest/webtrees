@@ -189,7 +189,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $generations = (int) $request->getAttribute('generations');
         $tree        = $request->getAttribute('tree');
         $user        = $request->getAttribute('user');
-        $xref        = $request->getAttribute('xref');
+        $xref        = $request->getQueryParams()['xref'];
         $individual  = Individual::getInstance($xref, $tree);
         $color_count = count(self::LINE_COLORS);
 
@@ -305,7 +305,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     {
         $generations = (int) $request->getAttribute('generations');
         $tree        = $request->getAttribute('tree');
-        $xref        = $request->getAttribute('xref');
+        $xref        = $request->getQueryParams()['xref'];
         $individual  = Individual::getInstance($xref, $tree);
         $ancestors   = $chart_service->sosaStradonitzAncestors($individual, $generations);
         $facts       = [];
