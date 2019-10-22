@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
-use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Memory\MemoryAdapter;
@@ -195,8 +194,10 @@ class UpgradeControllerTest extends TestCase
     {
         $this->expectException(InternalServerErrorException::class);
 
-        $tree = Tree::create('name', 'title');
-        $user = (new UserService())->create('user', 'name', 'email', 'password');
+        $tree_service = new TreeService();
+        $tree         = $tree_service->create('name', 'title');
+        $user         = (new UserService())->create('user', 'name', 'email', 'password');
+
         Auth::login($user);
         $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
 

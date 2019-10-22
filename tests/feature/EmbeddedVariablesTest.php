@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 
 /**
@@ -92,8 +93,9 @@ class EmbeddedVariablesTest extends TestCase
      */
     public function testAllEmbeddedVariablesWithEmptyTree(): void
     {
-        $tree       = Tree::create('name', 'title');
-        $statistics = new Statistics(new ModuleService(), $tree, new UserService());
+        $tree_service = new TreeService();
+        $tree         = $tree_service->create('name', 'title');
+        $statistics   = new Statistics(new ModuleService(), $tree, new UserService());
 
         // As visitor
         $text = $statistics->embedTags('#getAllTagsTable#');

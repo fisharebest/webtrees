@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Services\GedcomService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
@@ -63,14 +64,19 @@ class LocationController extends AbstractAdminController
     /** @var GedcomService */
     private $gedcom_service;
 
+    /** @var TreeService */
+    private $tree_service;
+
     /**
      * Dependency injection.
      *
      * @param GedcomService $gedcom_service
+     * @param TreeService   $tree_service
      */
-    public function __construct(GedcomService $gedcom_service)
+    public function __construct(GedcomService $gedcom_service, TreeService $tree_service)
     {
         $this->gedcom_service = $gedcom_service;
+        $this->tree_service   = $tree_service;
     }
 
     /**
@@ -98,6 +104,7 @@ class LocationController extends AbstractAdminController
             'breadcrumbs' => $breadcrumbs,
             'parent_id'   => $parent_id,
             'placelist'   => $this->getPlaceListLocation($parent_id),
+            'tree_titles' => $this->tree_service->titles(),
         ]);
     }
 

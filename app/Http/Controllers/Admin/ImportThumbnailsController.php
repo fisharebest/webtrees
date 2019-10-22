@@ -84,7 +84,7 @@ class ImportThumbnailsController extends AbstractAdminController
         $media_objects = [];
 
         foreach ($xrefs as $key => $xref) {
-            $tree            = $this->tree_service->findByName($geds[$key]);
+            $tree            = $this->tree_service->all()->get($geds[$key]);
             $media_objects[] = Media::getInstance($xref, $tree);
         }
 

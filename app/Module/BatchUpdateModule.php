@@ -159,7 +159,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
             'prev_xref'   => $prev_xref,
             'title'       => I18N::translate('Batch update'),
             'tree'        => $tree,
-            'trees'       => Tree::getNameList(),
+            'trees'       => $this->tree_service->titles(),
         ]);
     }
 
@@ -349,7 +349,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
     {
         $parameters = $request->getParsedBody();
 
-        $tree = $this->tree_service->findByName($parameters['tree' ?? '']);
+        $tree = $this->tree_service->all()->get($parameters['tree' ?? '']);
         assert($tree instanceof Tree, new InvalidArgumentException());
 
         $plugin = $parameters['plugin'] ?? '';

@@ -1,6 +1,9 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Tree; ?>
-<?php use Fisharebest\Webtrees\Webtrees; ?>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Webtrees;
+
+?>
 
 <?= view('components/breadcrumbs', ['links' => $breadcrumbs]) ?>
 
@@ -129,7 +132,7 @@
             <?= I18N::translate('Import all places from a family tree') ?>
         </label>
         <div class="col-sm-6">
-            <?= view('components/select', ['name' => 'ged', 'selected' => '', 'options' => Tree::getNameList()]) ?>
+            <?= view('components/select', ['name' => 'ged', 'selected' => '', 'options' => $tree_titles]) ?>
         </div>
         <div class="col-sm-2">
             <button type="submit" class="btn btn-primary">

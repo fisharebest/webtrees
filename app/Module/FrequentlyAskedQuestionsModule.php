@@ -166,7 +166,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             'module'          => $this->name(),
             'title'           => $title,
             'tree'            => $tree,
-            'tree_names'      => Tree::getNameList(),
+            'tree_names'      => $this->tree_service->titles(),
         ]);
     }
 
@@ -286,46 +286,47 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     {
         $this->layout = 'layouts/administration';
 
-        $tree     = $request->getAttribute('tree');
         $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
 
         if ($block_id === 0) {
             // Creating a new faq
-            $header  = '';
-            $faqbody = '';
-
-            $block_order = 1 + (int) DB::table('block')
-                    ->where('module_name', '=', $this->name())
-                    ->max('block_order');
+            $header      = '';
+            $body        = '';
+            $gedcom_id   = null;
+            $block_order = 1 + (int) DB::table('block')->where('module_name', '=', $this->name())->max('block_order');
 
             $languages = [];
 
             $title = I18N::translate('Add an FAQ');
         } else {
             // Editing an existing faq
-            $header  = $this->getBlockSetting($block_id, 'header');
-            $faqbody = $this->getBlockSetting($block_id, 'faqbody');
-
-            $block_order = DB::table('block')
-                ->where('block_id', '=', $block_id)
-                ->value('block_order');
+            $header      = $this->getBlockSetting($block_id, 'header');
+            $body        = $this->getBlockSetting($block_id, 'faqbody');
+            $gedcom_id   = DB::table('block')->where('block_id', '=', $block_id)->value('gedcom_id');
+            $block_order = DB::table('block')->where('block_id', '=', $block_id)->value('block_order');
 
             $languages = explode(',', $this->getBlockSetting($block_id, 'languages'));
 
             $title = I18N::translate('Edit the FAQ');
         }
 
-        $tree_names = ['' => I18N::translate('All')] + Tree::getIdList();
+        $gedcom_ids = $this->tree_service->all()
+            ->mapWithKeys(static function (Tree $tree): array {
+                return [$tree->id() => $tree->title()];
+            })
+            ->all();
+
+        $gedcom_ids = ['' => I18N::translate('All')] + $gedcom_ids;
 
         return $this->viewResponse('modules/faq/edit', [
             'block_id'    => $block_id,
             'block_order' => $block_order,
             'header'      => $header,
-            'faqbody'     => $faqbody,
+            'body'        => $body,
             'languages'   => $languages,
             'title'       => $title,
-            'tree'        => $tree,
-            'tree_names'  => $tree_names,
+            'gedcom_id'   => $gedcom_id,
+            'gedcom_ids'  => $gedcom_ids,
         ]);
     }
 
@@ -336,18 +337,21 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function postAdminEditAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
         $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
 
         $params = $request->getParsedBody();
 
-        $faqbody     = $params['faqbody'];
+        $body        = $params['body'];
         $header      = $params['header'];
         $languages   = $params['languages'] ?? [];
-        $gedcom_id   = (int) $params['gedcom_id'] ?: null;
-        $block_order = (int) $params['block_order'];
+        $gedcom_id   = $params['gedcom_id'];
+        $block_order = $params['block_order'];
 
-        $faqbody = $this->html_service->sanitize($faqbody);
+        if ($gedcom_id === '') {
+            $gedcom_id = null;
+        }
+
+        $body    = $this->html_service->sanitize($body);
         $header  = $this->html_service->sanitize($header);
 
         if ($block_id !== 0) {
@@ -367,14 +371,13 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             $block_id = (int) DB::connection()->getPdo()->lastInsertId();
         }
 
-        $this->setBlockSetting($block_id, 'faqbody', $faqbody);
+        $this->setBlockSetting($block_id, 'faqbody', $body);
         $this->setBlockSetting($block_id, 'header', $header);
         $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
 
         $url = route('module', [
             'module' => $this->name(),
             'action' => 'Admin',
-            'tree'   => $tree->name(),
         ]);
 
         return redirect($url);

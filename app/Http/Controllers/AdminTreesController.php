@@ -658,7 +658,7 @@ class AdminTreesController extends AbstractBaseController
     public function index(ServerRequestInterface $request): ResponseInterface
     {
         $default = Site::getPreference('DEFAULT_GEDCOM');
-        $tree    = $this->tree_service->findByName($request->getQueryParams()['tree'] ?? $default);
+        $tree    = $this->tree_service->all()->get($request->getQueryParams()['tree'] ?? $default);
 
         $multiple_tree_threshold = (int) Site::getPreference('MULTIPLE_TREE_THRESHOLD', self::MULTIPLE_TREE_THRESHOLD);
         $gedcom_files            = $this->gedcomFiles();
@@ -705,8 +705,8 @@ class AdminTreesController extends AbstractBaseController
         $tree1_name = $params['tree1_name'] ?? '';
         $tree2_name = $params['tree2_name'] ?? '';
 
-        $tree1 = Tree::findByName($tree1_name);
-        $tree2 = Tree::findByName($tree2_name);
+        $tree1 = $this->tree_service->all()->get($tree1_name);
+        $tree2 = $this->tree_service->all()->get($tree2_name);
 
         if ($tree1 !== null && $tree2 !== null && $tree1->id() !== $tree2->id()) {
             $xrefs = $this->countCommonXrefs($tree1, $tree2);
@@ -714,12 +714,10 @@ class AdminTreesController extends AbstractBaseController
             $xrefs = 0;
         }
 
-        $tree_list = Tree::getNameList();
-
         $title = I18N::translate(I18N::translate('Merge family trees'));
 
         return $this->viewResponse('admin/trees-merge', [
-            'tree_list' => $tree_list,
+            'tree_list' => $this->tree_service->titles(),
             'tree1'     => $tree1,
             'tree2'     => $tree2,
             'title'     => $title,
@@ -738,10 +736,10 @@ class AdminTreesController extends AbstractBaseController
         $tree1_name = $params['tree1_name'] ?? '';
         $tree2_name = $params['tree2_name'] ?? '';
 
-        $tree1 = Tree::findByName($tree1_name);
-        $tree2 = Tree::findByName($tree2_name);
+        $tree1 = $this->tree_service->all()->get($tree1_name);
+        $tree2 = $this->tree_service->all()->get($tree2_name);
 
-        if ($tree1 !== null && $tree2 !== null && $tree1 !== $tree2 && $this->countCommonXrefs($tree1, $tree2) === 0) {
+        if ($tree1 instanceof Tree && $tree2 instanceof Tree && $tree1 !== $tree2 && $this->countCommonXrefs($tree1, $tree2) === 0) {
             (new Builder(DB::connection()))->from('individuals')->insertUsing([
                 'i_file',
                 'i_id',
@@ -1755,7 +1753,7 @@ class AdminTreesController extends AbstractBaseController
             // Only import files that have changed
             $filemtime = (string) $this->filesystem->getTimestamp($gedcom_file);
 
-            $tree = $this->tree_service->findByName($gedcom_file) ?? $this->tree_service->create($gedcom_file, $gedcom_file);
+            $tree = $this->tree_service->all()->get($gedcom_file) ?? $this->tree_service->create($gedcom_file, $gedcom_file);
 
             if ($tree->getPreference('filemtime') !== $filemtime) {
                 $resource = $this->filesystem->readStream($gedcom_file);

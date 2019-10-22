@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Services\TreeService;
 
 /**
  * Test the TreeUser class
@@ -38,8 +39,9 @@ class TreeUserTest extends TestCase
      */
     public function testConstructor(): void
     {
-        $tree = Tree::create('name', 'title');
-        $user = new TreeUser($tree);
+        $tree_service = new TreeService();
+        $tree         = $tree_service->create('name', 'title');
+        $user         = new TreeUser($tree);
 
         $this->assertInstanceOf(UserInterface::class, $user);
         $this->assertSame(0, $user->id());
@@ -55,8 +57,9 @@ class TreeUserTest extends TestCase
      */
     public function testPreferences(): void
     {
-        $tree = Tree::create('name', 'title');
-        $user = new TreeUser($tree);
+        $tree_service = new TreeService();
+        $tree         = $tree_service->create('name', 'title');
+        $user         = new TreeUser($tree);
 
         $this->assertSame('', $user->getPreference('foo'));
         $this->assertSame('', $user->getPreference('foo', ''));

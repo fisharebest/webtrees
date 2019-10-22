@@ -22,8 +22,8 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\GedcomService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
-use Fisharebest\Webtrees\Tree;
 
 use function dirname;
 
@@ -41,9 +41,11 @@ class LocationControllerTest extends TestCase
      */
     public function testMapData(): void
     {
-        $controller = new LocationController(new GedcomService());
-        $request    = self::createRequest();
-        $response   = $controller->mapData($request);
+        $gedcom_service = new GedcomService();
+        $tree_service   = new TreeService();
+        $controller     = new LocationController($gedcom_service, $tree_service);
+        $request        = self::createRequest();
+        $response       = $controller->mapData($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -53,9 +55,11 @@ class LocationControllerTest extends TestCase
      */
     public function testMapDataEdit(): void
     {
-        $controller = new LocationController(new GedcomService());
-        $request    = self::createRequest(RequestMethodInterface::METHOD_GET, ['place_id' => '0', 'parent_id' => '0']);
-        $response   = $controller->mapDataEdit($request);
+        $gedcom_service = new GedcomService();
+        $tree_service   = new TreeService();
+        $controller     = new LocationController($gedcom_service, $tree_service);
+        $request        = self::createRequest(RequestMethodInterface::METHOD_GET, ['place_id' => '0', 'parent_id' => '0']);
+        $response       = $controller->mapDataEdit($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -65,8 +69,10 @@ class LocationControllerTest extends TestCase
      */
     public function testMapDataSave(): void
     {
-        $controller = new LocationController(new GedcomService());
-        $request    = self::createRequest(RequestMethodInterface::METHOD_POST, [
+        $gedcom_service = new GedcomService();
+        $tree_service   = new TreeService();
+        $controller     = new LocationController($gedcom_service, $tree_service);
+        $request        = self::createRequest(RequestMethodInterface::METHOD_POST, [
             'parent_id' => '0',
             'place_id'  => '0',
         ], [
@@ -78,7 +84,7 @@ class LocationControllerTest extends TestCase
             'lati_control'    => 'S',
             'long_control'    => 'W',
         ]);
-        $response   = $controller->mapDataSave($request);
+        $response       = $controller->mapDataSave($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
@@ -88,9 +94,11 @@ class LocationControllerTest extends TestCase
      */
     public function testMapDataDelete(): void
     {
-        $controller = new LocationController(new GedcomService());
-        $request    = self::createRequest(RequestMethodInterface::METHOD_POST, ['parent_id' => '0', 'place_id' => '0']);
-        $response   = $controller->mapDataDelete($request);
+        $gedcom_service = new GedcomService();
+        $tree_service   = new TreeService();
+        $controller     = new LocationController($gedcom_service, $tree_service);
+        $request        = self::createRequest(RequestMethodInterface::METHOD_POST, ['parent_id' => '0', 'place_id' => '0']);
+        $response       = $controller->mapDataDelete($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
@@ -100,9 +108,11 @@ class LocationControllerTest extends TestCase
      */
     public function testExportLocations(): void
     {
-        $controller = new LocationController(new GedcomService());
-        $request    = self::createRequest(RequestMethodInterface::METHOD_GET, ['parent_id' => '0', 'format' => 'geojson']);
-        $response   = $controller->exportLocations($request);
+        $gedcom_service = new GedcomService();
+        $tree_service   = new TreeService();
+        $controller     = new LocationController($gedcom_service, $tree_service);
+        $request        = self::createRequest(RequestMethodInterface::METHOD_GET, ['parent_id' => '0', 'format' => 'geojson']);
+        $response       = $controller->exportLocations($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
         $this->assertSame($response->getHeaderLine('Content-Type'), 'application/vnd.geo+json');
@@ -113,9 +123,11 @@ class LocationControllerTest extends TestCase
      */
     public function testImportLocations(): void
     {
-        $controller = new LocationController(new GedcomService());
-        $request    = self::createRequest(RequestMethodInterface::METHOD_GET, ['parent_id' => '0']);
-        $response   = $controller->importLocations($request);
+        $gedcom_service = new GedcomService();
+        $tree_service   = new TreeService();
+        $controller     = new LocationController($gedcom_service, $tree_service);
+        $request        = self::createRequest(RequestMethodInterface::METHOD_GET, ['parent_id' => '0']);
+        $response       = $controller->importLocations($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -125,10 +137,12 @@ class LocationControllerTest extends TestCase
      */
     public function testImportLocationsAction(): void
     {
-        $csv        = $this->createUploadedFile(dirname(__DIR__, 4) . '/data/places.csv', 'text/csv');
-        $controller = new LocationController(new GedcomService());
-        $request    = self::createRequest(RequestMethodInterface::METHOD_POST, ['parent_id' => '0'], [], ['csv' => $csv]);
-        $response   = $controller->importLocationsAction($request);
+        $gedcom_service = new GedcomService();
+        $tree_service   = new TreeService();
+        $csv            = $this->createUploadedFile(dirname(__DIR__, 4) . '/data/places.csv', 'text/csv');
+        $controller     = new LocationController($gedcom_service, $tree_service);
+        $request        = self::createRequest(RequestMethodInterface::METHOD_POST, ['parent_id' => '0'], [], ['csv' => $csv]);
+        $response       = $controller->importLocationsAction($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
@@ -138,9 +152,11 @@ class LocationControllerTest extends TestCase
      */
     public function testImportLocationsFromTree(): void
     {
-        $tree       = Tree::create('name', 'title');
-        $controller = new LocationController(new GedcomService());
-        $request    = self::createRequest(RequestMethodInterface::METHOD_POST)
+        $gedcom_service = new GedcomService();
+        $tree_service   = new TreeService();
+        $tree           = $tree_service->create('name', 'title');
+        $controller     = new LocationController($gedcom_service, $tree_service);
+        $request        = self::createRequest()
             ->withAttribute('tree', $tree);
         $response = $controller->importLocationsFromTree($request);
 

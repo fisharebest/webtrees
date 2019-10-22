@@ -189,7 +189,7 @@ class ChangesLogController extends AbstractAdminController
             }
 
             // Only convert valid xrefs to links
-            $tree   = $this->tree_service->findByName($row->gedcom_name);
+            $tree   = $this->tree_service->all()->get($row->gedcom_name);
             $record = GedcomRecord::getInstance($row->xref, $tree);
 
             return [

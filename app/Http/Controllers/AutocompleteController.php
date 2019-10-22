@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Site;
@@ -34,12 +35,11 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function array_slice;
-use function array_unshift;
-use function count;
+use function assert;
 use function curl_close;
 use function curl_exec;
 use function curl_init;
@@ -199,7 +199,7 @@ class AutocompleteController extends AbstractBaseController
 
         $geonames = Site::getPreference('geonames');
 
-        if (empty($data) && $geonames !== '') {
+        if ($data === [] && $geonames !== '') {
             // No place found? Use an external gazetteer
             $url =
                 'http://api.geonames.org/searchJSON' .
@@ -244,6 +244,9 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
+        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($query !== '', new InvalidArgumentException());
+
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
@@ -281,6 +284,9 @@ class AutocompleteController extends AbstractBaseController
         $tree  = $request->getAttribute('tree');
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
+
+        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($query !== '', new InvalidArgumentException());
 
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset  = ($page - 1) * self::RESULTS_PER_PAGE;
@@ -320,6 +326,9 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
+        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($query !== '', new InvalidArgumentException());
+
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset  = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit   = self::RESULTS_PER_PAGE + 1;
@@ -358,6 +367,9 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
+        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($query !== '', new InvalidArgumentException());
+
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
@@ -391,95 +403,28 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
-        return response($this->placeSearch($tree, $page, $query, true));
-    }
+        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($query !== '', new InvalidArgumentException());
 
-    /**
-     * Look up a place name.
-     *
-     * @param Tree   $tree   Search this tree.
-     * @param int    $page   Skip this number of pages.  Starts with zero.
-     * @param string $query  Search terms.
-     * @param bool   $create if true, include the query in the results so it can be created.
-     *
-     * @return mixed[]
-     */
-    private function placeSearch(Tree $tree, int $page, string $query, bool $create): array
-    {
-        $offset  = ($page - 1) * self::RESULTS_PER_PAGE;
-        $results = [];
-        $found   = false;
+        // Fetch one more row than we need, so we can know if more rows exist.
+        $offset = ($page - 1) * self::RESULTS_PER_PAGE;
+        $limit  = self::RESULTS_PER_PAGE + 1;
 
-        foreach ($this->search_service->searchPlaces($tree, $query) as $place) {
-            $place_name = $place->gedcomName();
-            if ($place_name === $query) {
-                $found = true;
-            }
-            $results[] = [
-                'id'    => $place_name,
-                'text'  => $place_name,
-                'title' => ' ',
-            ];
-        }
+        $results = $this->search_service->searchPlaces($tree, $query, $offset, $limit)
+            ->map(static function (Place $place): array {
+                return [
+                    'id'    => $place->gedcomName(),
+                    'text'  => $place->gedcomName(),
+                    'title' => ' ',
+                ];
+            });
 
-        $geonames = Site::getPreference('geonames');
-
-        // No place found? Use an external gazetteer
-        if (empty($results) && $geonames !== '') {
-            $url =
-                'http://api.geonames.org/searchJSON' .
-                '?name_startsWith=' . rawurlencode($query) .
-                '&lang=' . WT_LOCALE .
-                '&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC' .
-                '&style=full' .
-                '&username=' . rawurlencode($geonames);
-            // try to use curl when file_get_contents not allowed
-            if (ini_get('allow_url_fopen')) {
-                $json   = file_get_contents($url);
-                $places = json_decode($json, true);
-            } elseif (function_exists('curl_init')) {
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $url);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                $json   = curl_exec($ch);
-                $places = json_decode($json, true);
-                curl_close($ch);
-            } else {
-                $places = [];
-            }
-            if (isset($places['geonames']) && is_array($places['geonames'])) {
-                foreach ($places['geonames'] as $k => $place) {
-                    $place_name = $place['name'] . ', ' . $place['adminName2'] . ', ' . $place['adminName1'] . ', ' . $place['countryName'];
-                    if ($place_name === $query) {
-                        $found = true;
-                    }
-                    $results[] = [
-                        'id'    => $place_name,
-                        'text'  => $place_name,
-                        'title' => ' ',
-                    ];
-                }
-            }
-        }
-
-        // Include the query term in the results.  This allows the user to select a
-        // place that doesn't already exist in the database.
-        if (!$found && $create) {
-            array_unshift($results, [
-                'id'   => $query,
-                'text' => $query,
-            ]);
-        }
-
-        $more    = count($results) > $offset + self::RESULTS_PER_PAGE;
-        $results = array_slice($results, $offset, self::RESULTS_PER_PAGE);
-
-        return [
-            'results'    => $results,
+        return response([
+            'results'    => $results->slice(0, self::RESULTS_PER_PAGE)->all(),
             'pagination' => [
-                'more' => $more,
+                'more' => $results->count() > self::RESULTS_PER_PAGE,
             ],
-        ];
+        ]);
     }
 
     /**
@@ -492,6 +437,9 @@ class AutocompleteController extends AbstractBaseController
         $tree  = $request->getAttribute('tree');
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
+
+        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($query !== '', new InvalidArgumentException());
 
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;
@@ -526,6 +474,9 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
+        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($query !== '', new InvalidArgumentException());
+
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
@@ -558,6 +509,9 @@ class AutocompleteController extends AbstractBaseController
         $tree  = $request->getAttribute('tree');
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
+
+        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($query !== '', new InvalidArgumentException());
 
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;

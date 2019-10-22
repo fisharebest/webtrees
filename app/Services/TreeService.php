@@ -29,6 +29,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+use RuntimeException;
 use stdClass;
 
 use function app;
@@ -110,23 +111,39 @@ class TreeService
             return $query
                 ->get()
                 ->mapWithKeys(static function (stdClass $row): array {
-                    return [$row->tree_id => Tree::rowMapper()($row)];
+                    return [$row->tree_name => Tree::rowMapper()($row)];
                 });
         });
     }
 
     /**
-     * Find the tree with a specific name.
+     * Find a tree by its ID.
      *
-     * @param string $name
+     * @param int $id
      *
-     * @return Tree|null
+     * @return Tree
      */
-    public function findByName($name): ?Tree
+    public function find(int $id): Tree
     {
-        return $this->all()->first(static function (Tree $tree) use ($name): bool {
-            return $tree->name() === $name;
+        $tree = $this->all()->first(static function (Tree $tree) use ($id): bool {
+            return $tree->id() === $id;
         });
+
+        assert($tree instanceof Tree, new RuntimeException());
+
+        return $tree;
+    }
+
+    /**
+     * All trees, name => title
+     *
+     * @return string[]
+     */
+    public function titles(): array
+    {
+        return $this->all()->map(static function (Tree $tree): string {
+            return $tree->title();
+        })->all();
     }
 
     /**
@@ -225,7 +242,7 @@ class TreeService
         $name   = 'tree';
         $number = 1;
 
-        while ($this->findByName($name . $number) instanceof Tree) {
+        while ($this->all()->get($name . $number) instanceof Tree) {
             $number++;
         }
 

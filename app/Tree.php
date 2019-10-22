@@ -35,6 +35,8 @@ use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\StreamInterface;
 use stdClass;
 
+use function app;
+
 /**
  * Provide an interface to the wt_gedcom table.
  */
@@ -126,97 +128,13 @@ class Tree
      * @param int $tree_id
      *
      * @return Tree
+     * @deprecated
      */
     public static function findById(int $tree_id): Tree
     {
-        return self::getAll()[$tree_id];
-    }
-
-    /**
-     * Fetch all the trees that we have permission to access.
-     *
-     * @return Tree[]
-     * @deprecated
-     */
-    public static function getAll(): array
-    {
-        return (new TreeService())->all()->all();
-    }
-
-    /**
-     * All the trees that we have permission to access.
-     *
-     * @return Collection
-     * @deprecated
-     */
-    public static function all(): Collection
-    {
-        return (new TreeService())->all();
-    }
-
-    /**
-     * Create arguments to select_edit_control()
-     * Note - these will be escaped later
-     *
-     * @return string[]
-     */
-    public static function getIdList(): array
-    {
-        $list = [];
-        foreach (self::getAll() as $tree) {
-            $list[$tree->id] = $tree->title;
-        }
-
-        return $list;
-    }
-
-    /**
-     * Create arguments to select_edit_control()
-     * Note - these will be escaped later
-     *
-     * @return string[]
-     */
-    public static function getNameList(): array
-    {
-        $list = [];
-        foreach (self::getAll() as $tree) {
-            $list[$tree->name] = $tree->title;
-        }
-
-        return $list;
-    }
-
-    /**
-     * Create a new tree
-     *
-     * @param string $tree_name
-     * @param string $tree_title
-     *
-     * @return Tree
-     * @deprecated
-     */
-    public static function create(string $tree_name, string $tree_title): Tree
-    {
-        return (new TreeService())->create($tree_name, $tree_title);
-    }
-
-    /**
-     * Find the tree with a specific name.
-     *
-     * @param string $name
-     *
-     * @return Tree|null
-     * @deprecated
-     */
-    public static function findByName($name): ?Tree
-    {
-        foreach (self::getAll() as $tree) {
-            if ($tree->name === $name) {
-                return $tree;
-            }
-        }
-
-        return null;
+        return app(TreeService::class)->all()->first(static function (Tree $tree) use ($tree_id): bool {
+            return $tree->id() === $tree_id;
+        });
     }
 
     /**

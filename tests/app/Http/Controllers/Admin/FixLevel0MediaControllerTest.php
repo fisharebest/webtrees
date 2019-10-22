@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 
@@ -51,9 +52,10 @@ class FixLevel0MediaControllerTest extends TestCase
      */
     public function testFixLevel0MediaAction(): void
     {
-        $tree       = Tree::create('name', 'title');
-        $controller = new FixLevel0MediaController(new DatatablesService());
-        $request    = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
+        $tree_service = new TreeService();
+        $tree         = $tree_service->create('name', 'title');
+        $controller   = new FixLevel0MediaController(new DatatablesService());
+        $request      = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
             'tree_id'   => $tree->id(),
             'fact_id'   => '',
             'indi_xref' => '',
@@ -70,7 +72,8 @@ class FixLevel0MediaControllerTest extends TestCase
     public function testFixLevel0MediaData(): void
     {
         $datatables_service = new DatatablesService();
-        $tree               = Tree::create('name', 'title');
+        $tree_service       = new TreeService();
+        $tree               = $tree_service->create('name', 'title');
         $controller         = new FixLevel0MediaController($datatables_service);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, ['tree_id' => $tree->id()]);
         $response           = $controller->fixLevel0MediaData($request);

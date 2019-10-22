@@ -184,7 +184,6 @@ class ModuleControllerTest extends TestCase
      */
     public function testUpdate(): void
     {
-        Tree::create('name', 'title');
         $controller = new ModuleController(new ModuleService(), new TreeService());
         $request    = self::createRequest(RequestMethodInterface::METHOD_POST);
         $response   = $controller->update($request);
@@ -197,7 +196,6 @@ class ModuleControllerTest extends TestCase
      */
     public function testUpdateAnalytics(): void
     {
-        Tree::create('name', 'title');
         $controller = new ModuleController(new ModuleService(), new TreeService());
         $request    = self::createRequest(RequestMethodInterface::METHOD_POST);
         $response   = $controller->updateAnalytics($request);
@@ -210,7 +208,6 @@ class ModuleControllerTest extends TestCase
      */
     public function testUpdateBlocks(): void
     {
-        Tree::create('name', 'title');
         $controller = new ModuleController(new ModuleService(), new TreeService());
         $request    = self::createRequest(RequestMethodInterface::METHOD_POST);
         $response   = $controller->updateBlocks($request);
@@ -223,7 +220,6 @@ class ModuleControllerTest extends TestCase
      */
     public function testUpdateCharts(): void
     {
-        Tree::create('name', 'title');
         $controller = new ModuleController(new ModuleService(), new TreeService());
         $request    = self::createRequest(RequestMethodInterface::METHOD_POST);
         $response   = $controller->updateCharts($request);
@@ -236,7 +232,6 @@ class ModuleControllerTest extends TestCase
      */
     public function testUpdateFooters(): void
     {
-        Tree::create('name', 'title');
         $controller = new ModuleController(new ModuleService(), new TreeService());
         $request    = self::createRequest(RequestMethodInterface::METHOD_POST);
         $response   = $controller->updateFooters($request);
@@ -249,7 +244,6 @@ class ModuleControllerTest extends TestCase
      */
     public function testUpdateHistory(): void
     {
-        Tree::create('name', 'title');
         $controller = new ModuleController(new ModuleService(), new TreeService());
         $request    = self::createRequest(RequestMethodInterface::METHOD_POST);
         $response   = $controller->updateHistory($request);
@@ -262,7 +256,6 @@ class ModuleControllerTest extends TestCase
      */
     public function testUpdateLanguages(): void
     {
-        Tree::create('name', 'title');
         $controller = new ModuleController(new ModuleService(), new TreeService());
         $request    = self::createRequest(RequestMethodInterface::METHOD_POST);
         $response   = $controller->updateLanguages($request);
@@ -275,7 +268,6 @@ class ModuleControllerTest extends TestCase
      */
     public function testUpdateMenus(): void
     {
-        Tree::create('name', 'title');
         $controller = new ModuleController(new ModuleService(), new TreeService());
         $request    = self::createRequest(RequestMethodInterface::METHOD_POST);
         $response   = $controller->updateMenus($request);
@@ -288,7 +280,6 @@ class ModuleControllerTest extends TestCase
      */
     public function testUpdateReports(): void
     {
-        Tree::create('name', 'title');
         $controller = new ModuleController(new ModuleService(), new TreeService());
         $request    = self::createRequest(RequestMethodInterface::METHOD_POST);
         $response   = $controller->updateReports($request);
@@ -301,7 +292,6 @@ class ModuleControllerTest extends TestCase
      */
     public function testUpdateSidebars(): void
     {
-        Tree::create('name', 'title');
         $controller = new ModuleController(new ModuleService(), new TreeService());
         $request    = self::createRequest(RequestMethodInterface::METHOD_POST);
         $response   = $controller->updateSidebars($request);
@@ -314,7 +304,6 @@ class ModuleControllerTest extends TestCase
      */
     public function testUpdateTabs(): void
     {
-        Tree::create('name', 'title');
         $controller = new ModuleController(new ModuleService(), new TreeService());
         $request    = self::createRequest(RequestMethodInterface::METHOD_POST);
         $response   = $controller->updateTabs($request);
@@ -327,7 +316,6 @@ class ModuleControllerTest extends TestCase
      */
     public function testUpdateThemes(): void
     {
-        Tree::create('name', 'title');
         $controller = new ModuleController(new ModuleService(), new TreeService());
         $request    = self::createRequest(RequestMethodInterface::METHOD_POST);
         $response   = $controller->updateThemes($request);

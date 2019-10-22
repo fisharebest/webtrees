@@ -60,7 +60,7 @@ class HomePage implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $default = Site::getPreference('DEFAULT_GEDCOM');
-        $tree    = $this->tree_service->findByName($default) ?? $this->tree_service->all()->first();
+        $tree    = $this->tree_service->all()->get($default) ?? $this->tree_service->all()->first();
         $user    = $request->getAttribute('user');
 
         if ($tree instanceof Tree) {

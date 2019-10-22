@@ -244,12 +244,16 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             $story->languages  = $this->getBlockSetting($block_id, 'languages');
         }
 
+        $tree_names = $this->tree_service->all()->map(static function (Tree $tree): string {
+            return $tree->title();
+        });
+
         return $this->viewResponse('modules/stories/config', [
             'module'     => $this->name(),
             'stories'    => $stories,
             'title'      => $this->title() . ' — ' . $tree->title(),
             'tree'       => $tree,
-            'tree_names' => Tree::getNameList(),
+            'tree_names' => $tree_names,
         ]);
     }
 

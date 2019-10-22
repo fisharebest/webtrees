@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Illuminate\Cache\NullStore;
 use Illuminate\Cache\Repository;
@@ -218,9 +219,10 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected function importTree(string $gedcom_file): Tree
     {
-        $tree = Tree::create(basename($gedcom_file), basename($gedcom_file));
+        $tree_service = new TreeService();
+        $tree         = $tree_service->create(basename($gedcom_file), basename($gedcom_file));
+        $stream       = app(StreamFactoryInterface::class)->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
 
-        $stream = app(StreamFactoryInterface::class)->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
         $tree->importGedcomFile($stream, $gedcom_file);
 
         View::share('tree', $tree);
