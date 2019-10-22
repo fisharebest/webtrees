@@ -39,6 +39,16 @@ You do not need to understand the details of `composer` and `npm`.  You just nee
 
 If you are going to submit your work to the project, you will need a basic understanding of `git`.  The workflow for using git is covered below in the section on "Pull Requests".
 
+### GIT
+
+The project has been running for many years, and has a lot of history.
+This means that the full repository is over 600MB.
+
+If you are only interested in the latest version of the code, you can use a
+"shallow clone", which is about 30MB.
+
+Use `git clone --depth 1 https://github.com/fisharebest/webtrees`.
+
 ### Composer
 
 The instructions below assume you have created an alias/shortcut for `composer`.
