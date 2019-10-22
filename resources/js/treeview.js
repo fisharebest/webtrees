@@ -24,8 +24,8 @@ function TreeViewHandler(treeview_instance, ged) {
 	this.boxWidth = 180; // default family box width
 	this.boxExpandedWidth = 250; // default expanded family box width
 	this.cookieDays = 3; // lifetime of preferences memory, in days
-	this.ajaxUrl1 = "index.php?route=/module/tree/";
-	this.ajaxUrl2 = "&ged=" + encodeURIComponent(ged) + "&instance=" + treeview_instance;
+	this.ajaxDetails = document.getElementById(treeview_instance + "_out").dataset.urlDetails + "?instance=" + encodeURIComponent(treeview_instance);
+	this.ajaxPersons = document.getElementById(treeview_instance + "_out").dataset.urlIndividuals + "?instance=" + encodeURIComponent(treeview_instance);
 
 	this.container = this.treeview.parent(); // Store the container element ("#" + treeview_instance + "_out")
 	this.auto_box_width = false;
@@ -176,7 +176,7 @@ TreeViewHandler.prototype.updateTree = function (center, button) {
 		tv.updating = true;
 		tv.setLoading();
 		jQuery.ajax({
-			url: tv.ajaxUrl1 + "Persons" + tv.ajaxUrl2,
+			url: tv.ajaxPersons,
 			dataType: "json",
 			data: "q=" + to_load.join(";"),
 			success: function (ret) {
@@ -311,7 +311,7 @@ TreeViewHandler.prototype.expandBox = function (box, event) {
 		tv.updating = true;
 		tv.setLoading();
 		// perform the Ajax request and load the result in the box
-		box.load(tv.ajaxUrl1 + "Details&pid=" + pid + tv.ajaxUrl2, function () {
+		box.load(tv.ajaxDetails + "&pid=" + encodeURIComponent(pid), function () {
 			// If Lightbox module is active, we reinitialize it for the new links
 			if (typeof CB_Init === "function") {
 				CB_Init();

@@ -4,7 +4,7 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<div id="<?= $name ?>_out" class="tv_out">
+<div id="<?= $name ?>_out" class="tv_out" data-url-details="<?= e(route('module', ['module' => $module, 'action' => 'Details', 'tree' => $tree->name()])) ?>" data-url-individuals="<?= e(route('module', ['module' => $module, 'action' => 'Individuals', 'tree' => $tree->name()])) ?>">
     <div id="tv_tools">
         <ul>
             <li id="tvbCompact" class="tv_button" title="<?= I18N::translate('Use compact layout') ?>">

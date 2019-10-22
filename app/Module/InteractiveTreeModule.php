@@ -243,13 +243,13 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return ResponseInterface
      */
-    public function getPersonsAction(ServerRequestInterface $request): ResponseInterface
+    public function getIndividualsAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = $request->getAttribute('tree');
         $q        = $request->getQueryParams()['q'];
         $instance = $request->getQueryParams()['instance'];
         $treeview = new TreeView($instance);
 
-        return response($treeview->getPersons($tree, $q));
+        return response($treeview->getIndividuals($tree, $q));
     }
 }

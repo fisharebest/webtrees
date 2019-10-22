@@ -56,6 +56,7 @@ class TreeView
     public function drawViewport(Individual $individual, int $generations): array
     {
         $html = view('modules/interactive-tree/chart', [
+            'module'     => 'tree',
             'name'       => $this->name,
             'individual' => $this->drawPerson($individual, $generations, 0, null, '', true),
         ]);
@@ -74,7 +75,7 @@ class TreeView
      *
      * @return string
      */
-    public function getPersons(Tree $tree, string $request): string
+    public function getIndividuals(Tree $tree, string $request): string
     {
         $json_requests = explode(';', $request);
         $r    = [];
