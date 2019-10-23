@@ -24,8 +24,8 @@ function TreeViewHandler(treeview_instance, ged) {
 	this.boxWidth = 180; // default family box width
 	this.boxExpandedWidth = 250; // default expanded family box width
 	this.cookieDays = 3; // lifetime of preferences memory, in days
-	this.ajaxDetails = document.getElementById(treeview_instance + "_out").dataset.urlDetails + "?instance=" + encodeURIComponent(treeview_instance);
-	this.ajaxPersons = document.getElementById(treeview_instance + "_out").dataset.urlIndividuals + "?instance=" + encodeURIComponent(treeview_instance);
+	this.ajaxDetails = document.getElementById(treeview_instance + "_out").dataset.urlDetails + "&instance=" + encodeURIComponent(treeview_instance);
+	this.ajaxPersons = document.getElementById(treeview_instance + "_out").dataset.urlIndividuals + "&instance=" + encodeURIComponent(treeview_instance);
 
 	this.container = this.treeview.parent(); // Store the container element ("#" + treeview_instance + "_out")
 	this.auto_box_width = false;
