@@ -23,6 +23,7 @@ use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Module\AhnentafelReportModule;
 use Fisharebest\Webtrees\Module\AlbumModule;
 use Fisharebest\Webtrees\Module\AncestorsChartModule;
@@ -606,7 +607,7 @@ class ModuleService
     }
 
     /**
-     * Load a module in a static scope, to prevent it from modifying local or object variables.
+     * Load a custom module in a static scope, to prevent it from modifying local or object variables.
      *
      * @param string $filename
      *
@@ -614,7 +615,13 @@ class ModuleService
      */
     private static function load(string $filename)
     {
-        return include $filename;
+        try {
+            return include $filename;
+        } catch (Throwable $loading_exception) {
+            $module_name = basename(dirname($filename));
+            FlashMessages::addMessage(I18N::translate('Module %s errored while loading.', $module_name) . '<br>' . $loading_exception->getMessage(), 'danger');
+        }
+        return null;
     }
 
     /**
