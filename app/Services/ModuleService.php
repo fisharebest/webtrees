@@ -617,9 +617,11 @@ class ModuleService
     {
         try {
             return include $filename;
-        } catch (Throwable $loading_exception) {
+        } catch (Throwable $exception) {
             $module_name = basename(dirname($filename));
-            FlashMessages::addMessage(I18N::translate('Module %s errored while loading.', $module_name) . '<br>' . $loading_exception->getMessage(), 'danger');
+            $message = 'Fatal error in module: ' . $module_name;
+            $message .= '<br>' . $exception;
+            FlashMessages::addMessage($message, 'danger');
         }
         return null;
     }

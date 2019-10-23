@@ -103,6 +103,8 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
      */
     private function unhandledExceptionResponse(ServerRequestInterface $request, Throwable $exception): ResponseInterface
     {
+        $this->layout = 'layouts/error';
+
         // Create a stack dump for the exception
         $base_path = dirname(__DIR__, 3);
         $trace     = $exception->getMessage() . ' ' . $exception->getFile() . ':' . $exception->getLine() . PHP_EOL . $exception->getTraceAsString();
