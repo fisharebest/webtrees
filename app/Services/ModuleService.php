@@ -621,8 +621,7 @@ class ModuleService
             return include $filename;
         } catch (Exception $loading_exception) {
             $module_name = basename(dirname($filename));
-            FlashMessages::addMessage(I18N::translate('Module %s errored while loading.', $module_name), 'danger');
-            FlashMessages::addMessage($loading_exception->getMessage(), 'danger');
+            FlashMessages::addMessage(I18N::translate('Module %s errored while loading.', $module_name) . '<br>' . $loading_exception->getMessage(), 'danger');
         }
         return null;
     }
