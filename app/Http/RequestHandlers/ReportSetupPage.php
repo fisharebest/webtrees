@@ -84,7 +84,7 @@ class ReportSetupPage implements RequestHandlerInterface
 
         Auth::checkComponentAccess($module, 'report', $tree, $user);
 
-        $xref    = $request->getQueryParams()['xref'] ?? '';
+        $xref = $request->getQueryParams()['xref'] ?? '';
 
         $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
 
@@ -139,7 +139,7 @@ class ReportSetupPage implements RequestHandlerInterface
                     break;
 
                 case 'DATE':
-                    $attributes       += [
+                    $attributes += [
                         'type'  => 'text',
                         'value' => $input['default'],
                         'dir'   => 'ltr',
@@ -152,7 +152,7 @@ class ReportSetupPage implements RequestHandlerInterface
                 default:
                     switch ($input['type']) {
                         case 'text':
-                            $attributes       += [
+                            $attributes += [
                                 'type'  => 'text',
                                 'value' => $input['default'],
                             ];
@@ -160,7 +160,7 @@ class ReportSetupPage implements RequestHandlerInterface
                             break;
 
                         case 'checkbox':
-                            $attributes       += [
+                            $attributes += [
                                 'type'    => 'checkbox',
                                 'checked' => (bool) $input['default'],
                             ];
