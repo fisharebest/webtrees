@@ -793,12 +793,7 @@ class ModuleService
                 continue;
             }
 
-            try {
-                app()->dispatch($module, 'boot');
-            } catch (Exception $boot_exception) {
-                FlashMessages::addMessage(I18N::translate('Module %s errored while loading.', $module_name), 'danger');
-                FlashMessages::addMessage($boot_exception->getMessage(), 'danger');
-            }
+            app()->dispatch($module, 'boot');
         }
     }
 }
