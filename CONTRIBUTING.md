@@ -32,8 +32,8 @@ You can start contributing by
 You will need three tools, in addition to the requirements of a live installation.
 
 * `git` - to fetch the latest development code, merge changes, create pull requests, etc.
-* [`composer`](https://getcomposer.org) - to install PHP dependencies, build releases, run tests, etc.
-* [`npm`](https://nodejs.org/en/download/package-manager) - to install CSS/JS depencies and create portable/minified `.css` / `.js` files.
+* [`composer`](https://getcomposer.org) - to install PHP dependencies, build releases, and run tests.
+* [`npm`](https://nodejs.org/en/download/package-manager) - to install CSS/JS dependencies and create portable/minified `.css` / `.js` files.
 
 You do not need to understand the details of `composer` and `npm`.  You just need to be able to type a few commands at a console.
 
