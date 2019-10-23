@@ -4,10 +4,8 @@
     <?= $title ?>
 </h2>
 
-<form method="get" action="<?= e(route('report-run', ['tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-report-setup">
-    <input type="hidden" name="route" value="report-run">
-    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
-    <input type="hidden" name="report" value="<?= e($report) ?>">
+<form method="post" class="wt-page-options wt-page-options-report-setup">
+    <?= csrf_field() ?>
 
     <div class="row form-group">
         <div class="col-sm-3 col-form-label wt-page-options-label">
@@ -33,18 +31,25 @@
 
     <div class="row form-group">
         <div class="col-sm-3 col-form-label wt-page-options-label">
+            <?= I18N::translate('Format') ?>
         </div>
 
         <div class="col-sm-9 wt-page-options-value d-flex justify-content-around">
             <div class="text-center">
-                <label for="HTML"><?= view('icons/mime', ['type' => 'text/html']) ?></label>
+                <label for="HTML" title="HTML">
+                    <?= view('icons/mime', ['type' => 'text/html']) ?>
+                    <span class="sr-only">HTML</span>
+                </label>
                 <br>
-                <input type="radio" name="output" id="HTML" value="HTML" checked>
+                <input type="radio" name="format" id="HTML" value="HTML" checked>
             </div>
             <div class="text-center">
-                <label for="PDF"><?= view('icons/mime', ['type' => 'application/pdf']) ?></label>
+                <label for="PDF" title="PDF">
+                    <?= view('icons/mime', ['type' => 'application/pdf']) ?>
+                    <span class="sr-only">PDF</span>
+                </label>
                 <br>
-                <input type="radio" name="output" value="PDF" id="PDF">
+                <input type="radio" name="format" value="PDF" id="PDF">
             </div>
         </div>
     </div>
@@ -52,8 +57,13 @@
     <div class="row form-group">
         <div class="col-sm-3 col-form-label wt-page-options-label"></div>
         <div class="col-sm-9 wt-page-options-value">
-            <button type="submit" class="btn btn-primary">
-                <?= I18N::translate('continue') ?>
+            <button type="submit" name="destination" value="view" class="btn btn-primary">
+                <?= view('icons/report') ?>
+                <?= I18N::translate('view') ?>
+            </button>
+            <button type="submit" name="destination" value="download" class="btn btn-secondary">
+                <?= view('icons/download') ?>
+                <?= I18N::translate('download') ?>
             </button>
         </div>
     </div>

@@ -60,6 +60,10 @@ class CheckCsrf implements MiddlewareInterface
 
                     return redirect((string) $request->getUri());
                 }
+
+                $params = $request->getParsedBody();
+                unset($params['csrf']);
+                $request = $request->withParsedBody($params);
             }
         }
 

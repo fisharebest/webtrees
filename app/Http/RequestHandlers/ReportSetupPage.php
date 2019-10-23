@@ -17,32 +17,36 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
-use Fisharebest\Webtrees\Report\ReportHtml;
-use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
-use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Psr\Http\Server\RequestHandlerInterface;
 
-use function addcslashes;
-use function response;
+use function assert;
+use function redirect;
+use function route;
 
 /**
- * Controller for help text.
+ * Get parameters for a report.
  */
-class ReportEngineController extends AbstractBaseController
+class ReportSetupPage implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
     /**
      * @var ModuleService
      */
@@ -59,50 +63,34 @@ class ReportEngineController extends AbstractBaseController
     }
 
     /**
-     * A list of available reports.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function reportList(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree  = $request->getAttribute('tree');
-        $user  = $request->getAttribute('user');
-        $title = I18N::translate('Choose a report to run');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
 
-        return $this->viewResponse('report-select-page', [
-            'reports' => $this->module_service->findByComponent(ModuleReportInterface::class, $tree, $user),
-            'title'   => $title,
-        ]);
-    }
+        $user = $request->getAttribute('user');
+        assert($user instanceof UserInterface, new InvalidArgumentException());
 
-    /**
-     * Fetch the options/parameters for a report.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function reportSetup(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree   = $request->getAttribute('tree');
-        $params = $request->getQueryParams();
-        $pid    = $params['xref'] ?? '';
-        $report = $params['report'] ?? '';
+        $report = $request->getAttribute('report');
         $module = $this->module_service->findByName($report);
 
         if (!$module instanceof ModuleReportInterface) {
-            return $this->reportList($request);
+            return redirect(route(ReportListPage::class, ['tree' => $tree->name()]));
         }
+
+        Auth::checkComponentAccess($module, 'report', $tree, $user);
+
+        $xref    = $request->getQueryParams()['xref'] ?? '';
 
         $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
 
         $report_array = (new ReportParserSetup($xml_filename))->reportProperties();
         $description  = $report_array['description'];
         $title        = $report_array['title'];
-
-        view('edit/initialize-calendar-popup');
 
         $inputs = [];
 
@@ -124,7 +112,7 @@ class ReportEngineController extends AbstractBaseController
                     $input['control'] = view('components/select-individual', [
                         'id'         => 'input-' . $n,
                         'name'       => 'vars[' . $input['name'] . ']',
-                        'individual' => Individual::getInstance($pid, $tree),
+                        'individual' => Individual::getInstance($xref, $tree),
                         'tree'       => $tree,
                         'required'   => true,
                     ]);
@@ -134,7 +122,7 @@ class ReportEngineController extends AbstractBaseController
                     $input['control'] = view('components/select-family', [
                         'id'       => 'input-' . $n,
                         'name'     => 'vars[' . $input['name'] . ']',
-                        'family'   => Family::getInstance($pid, $tree),
+                        'family'   => Family::getInstance($xref, $tree),
                         'tree'     => $tree,
                         'required' => true,
                     ]);
@@ -144,7 +132,7 @@ class ReportEngineController extends AbstractBaseController
                     $input['control'] = view('components/select-source', [
                         'id'       => 'input-' . $n,
                         'name'     => 'vars[' . $input['name'] . ']',
-                        'family'   => Source::getInstance($pid, $tree),
+                        'family'   => Source::getInstance($xref, $tree),
                         'tree'     => $tree,
                         'required' => true,
                     ]);
@@ -193,7 +181,7 @@ class ReportEngineController extends AbstractBaseController
                                     $options[$key] = I18N::translateContext($match[1], $match[2]);
                                 }
                             }
-                            $input['control'] = view('components/select', ['name' => 'vars[' . $input['name'] . ']', 'id'   => 'input-' . $n, 'selected' => $input['default'], 'options' => $options]);
+                            $input['control'] = view('components/select', ['name' => 'vars[' . $input['name'] . ']', 'id' => 'input-' . $n, 'selected' => $input['default'], 'options' => $options]);
                             break;
                     }
             }
@@ -206,60 +194,7 @@ class ReportEngineController extends AbstractBaseController
             'inputs'      => $inputs,
             'report'      => $report,
             'title'       => $title,
+            'tree'        => $tree,
         ]);
-    }
-
-    /**
-     * Generate a report.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function reportRun(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree     = $request->getAttribute('tree');
-        $params   = $request->getQueryParams();
-        $report   = $params['report'];
-        $output   = $params['output'];
-        $varnames = $params['varnames'] ?? [];
-
-        $module = $this->module_service->findByName($report);
-
-        if (!$module instanceof ModuleReportInterface) {
-            throw new NotFoundHttpException('Report ' . $report . ' not found.');
-        }
-
-        $vars = [];
-        foreach ($varnames as $name) {
-            $vars[$name]['id'] = $params['vars'][$name] ?? '';
-        }
-
-        $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
-
-        switch ($output) {
-            default:
-            case 'HTML':
-                ob_start();
-                new ReportParserGenerate($xml_filename, new ReportHtml(), $vars, $tree);
-                $html = ob_get_clean();
-
-                $this->layout = 'layouts/report';
-
-                return $this->viewResponse('report-page', [
-                    'content' => $html,
-                    'title'   => I18N::translate('Report'),
-                ]);
-
-            case 'PDF':
-                ob_start();
-                new ReportParserGenerate($xml_filename, new ReportPdf(), $vars, $tree);
-                $pdf = ob_get_clean();
-
-                return response($pdf, StatusCodeInterface::STATUS_OK, [
-                    'Content-Type' => 'application/pdf',
-                    'Content-Disposition' => 'attachment; filename="' . addcslashes($report, '"') . '.pdf"',
-                ]);
-        }
     }
 }
