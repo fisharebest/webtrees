@@ -187,10 +187,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
      */
     public function getMapDataAction(ServerRequestInterface $request): ResponseInterface
     {
-        $ajax        = $request->getQueryParams()['ajax'] ?? '';
-        $generations = (int) $request->getAttribute('generations');
         $tree        = $request->getAttribute('tree');
-        $user        = $request->getAttribute('user');
         $xref        = $request->getQueryParams()['xref'];
         $individual  = Individual::getInstance($xref, $tree);
         $color_count = count(self::LINE_COLORS);
@@ -314,7 +311,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
      */
     private function getPedigreeMapFacts(ServerRequestInterface $request, ChartService $chart_service): array
     {
-        $generations = (int) $request->getAttribute('generations');
+        $generations = (int) $request->getQueryParams()['generations'];
         $tree        = $request->getAttribute('tree');
         $xref        = $request->getQueryParams()['xref'];
         $individual  = Individual::getInstance($xref, $tree);
