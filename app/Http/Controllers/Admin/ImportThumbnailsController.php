@@ -233,7 +233,7 @@ class ImportThumbnailsController extends AbstractAdminController
         if (substr_compare($original, '.png', -4, 4) === 0) {
             $pattern = substr($original, 0, -3) . '*';
             $matches = glob($pattern, GLOB_NOSORT);
-            if (!empty($matches) && is_file($matches[0])) {
+            if ($matches !== [] && is_file($matches[0])) {
                 $original = $matches[0];
             }
         }
