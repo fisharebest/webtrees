@@ -37,6 +37,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function intdiv;
+use function redirect;
+use function route;
 use function view;
 
 /**
@@ -272,6 +274,15 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $user        = $request->getAttribute('user');
         $xref        = $request->getAttribute('xref');
         $individual  = Individual::getInstance($xref, $tree);
+
+        // Convert POST requests into GET requests for pretty URLs.
+        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            return redirect(route(self::ROUTE_NAME, [
+                'tree'        => $tree->name(),
+                'xref'        => $request->getParsedBody()['xref'],
+                'generations' => $request->getParsedBody()['generations'],
+            ]));
+        }
 
         Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
