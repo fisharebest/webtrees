@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Closure;
-use Exception;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
@@ -619,7 +618,7 @@ class ModuleService
     {
         try {
             return include $filename;
-        } catch (Exception $loading_exception) {
+        } catch (Throwable $loading_exception) {
             $module_name = basename(dirname($filename));
             FlashMessages::addMessage(I18N::translate('Module %s errored while loading.', $module_name) . '<br>' . $loading_exception->getMessage(), 'danger');
         }
