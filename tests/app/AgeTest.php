@@ -24,23 +24,23 @@ use Fisharebest\Webtrees\Age as WebtreesAge;
  */
 class AgeTest extends TestCase
 {
-  /**
-   * Test that the class exists
-   *
-   * @return void
-   */
+    /**
+     * Test that the class exists
+     *
+     * @return void
+     */
     public function testClassExists(): void
     {
         $this->assertTrue(class_exists('\Fisharebest\Webtrees\Age'));
     }
 
-  /**
-   * @dataProvider ageProvider
-   * @covers \Fisharebest\Webtrees\Age::__construct
-   * @covers \Fisharebest\Webtrees\Age::asText
-   * @covers \Fisharebest\Webtrees\Age::extractNumber
-   * @return void
-   */
+    /**
+     * @dataProvider ageProvider
+     * @covers \Fisharebest\Webtrees\Age::__construct
+     * @covers \Fisharebest\Webtrees\Age::asText
+     * @covers \Fisharebest\Webtrees\Age::extractNumber
+     * @return void
+     */
     public function testConstructor($ageTest, $ageAsText):void
     {
         $age = new Age($ageTest);
