@@ -211,7 +211,6 @@ use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use RuntimeException;
 use stdClass;
 use Throwable;
 
