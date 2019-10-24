@@ -336,7 +336,7 @@ trait ModuleThemeTrait
     /**
      * A link to allow users to edit their account settings.
      *
-     * @param Tree?null $tree
+     * @param Tree|null $tree
      *
      * @return Menu
      */
