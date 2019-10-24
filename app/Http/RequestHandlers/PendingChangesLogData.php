@@ -53,25 +53,19 @@ class PendingChangesLogData implements RequestHandlerInterface
     /** @var PendingChangesService */
     private $pending_changes_service;
 
-    /** @var TreeService */
-    private $tree_service;
-
     /**
      * @param DatatablesService     $datatables_service
      * @param MyersDiff             $myers_diff
      * @param PendingChangesService $pending_changes_service
-     * @param TreeService           $tree_service
      */
     public function __construct(
         DatatablesService $datatables_service,
         MyersDiff $myers_diff,
-        PendingChangesService $pending_changes_service,
-        TreeService $tree_service
+        PendingChangesService $pending_changes_service
     ) {
         $this->datatables_service      = $datatables_service;
         $this->myers_diff              = $myers_diff;
         $this->pending_changes_service = $pending_changes_service;
-        $this->tree_service            = $tree_service;
     }
 
     /**

@@ -55,17 +55,12 @@ class PendingChanges implements RequestHandlerInterface
     /** @var PendingChangesService */
     private $pending_changes_service;
 
-    /** @var TreeService */
-    private $tree_service;
-
     /**
-     * @param PendingChangesService $pending_changes_service
-     * @param TreeService           $tree_service
+     * @param TreeService $tree_service
      */
-    public function __construct(PendingChangesService $pending_changes_service, TreeService $tree_service)
+    public function __construct(TreeService $tree_service)
     {
-        $this->pending_changes_service = $pending_changes_service;
-        $this->tree_service            = $tree_service;
+        $this->tree_service = $tree_service;
     }
 
     /**

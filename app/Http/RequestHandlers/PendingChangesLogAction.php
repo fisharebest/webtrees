@@ -34,17 +34,6 @@ use function response;
  */
 class PendingChangesLogAction implements RequestHandlerInterface
 {
-    /** @var PendingChangesService */
-    private $pending_changes_service;
-
-    /**
-     * @param PendingChangesService $pending_changes_service
-     */
-    public function __construct(PendingChangesService $pending_changes_service)
-    {
-        $this->pending_changes_service = $pending_changes_service;
-    }
-
     /**
      * @param ServerRequestInterface $request
      *
