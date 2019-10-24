@@ -15,6 +15,7 @@ use DateInterval;
 use DateTime;
 use DateTimeImmutable;
 use DateTimeInterface;
+use DateTimeZone;
 use InvalidArgumentException;
 use JsonSerializable;
 use ReflectionException;
@@ -645,7 +646,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @throws InvalidArgumentException|ReflectionException
      *
-     * @return string|int|bool|\DateTimeZone|null
+     * @return string|int|bool|DateTimeZone|null
      */
     public function __get($name);
 
@@ -661,8 +662,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     /**
      * Set a part of the Carbon object
      *
-     * @param string                   $name
-     * @param string|int|\DateTimeZone $value
+     * @param string                  $name
+     * @param string|int|DateTimeZone $value
      *
      * @throws InvalidArgumentException|ReflectionException
      *
@@ -1886,7 +1887,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @throws InvalidArgumentException|ReflectionException
      *
-     * @return string|int|bool|\DateTimeZone|null
+     * @return string|int|bool|DateTimeZone|null
      */
     public function get($name);
 
@@ -2161,8 +2162,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @example
      * ```
+     * Carbon::parse('2018-07-25 12:45:16')->greaterThan('2018-07-25 12:45:15'); // true
      * Carbon::parse('2018-07-25 12:45:16')->greaterThan('2018-07-25 12:45:16'); // false
-     * Carbon::parse('2018-07-25 12:45:16')->greaterThan('2018-07-25 12:45:18'); // true
      * Carbon::parse('2018-07-25 12:45:16')->greaterThan('2018-07-25 12:45:17'); // false
      * ```
      *
@@ -2177,8 +2178,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @example
      * ```
+     * Carbon::parse('2018-07-25 12:45:16')->greaterThanOrEqualTo('2018-07-25 12:45:15'); // true
      * Carbon::parse('2018-07-25 12:45:16')->greaterThanOrEqualTo('2018-07-25 12:45:16'); // true
-     * Carbon::parse('2018-07-25 12:45:16')->greaterThanOrEqualTo('2018-07-25 12:45:18'); // true
      * Carbon::parse('2018-07-25 12:45:16')->greaterThanOrEqualTo('2018-07-25 12:45:17'); // false
      * ```
      *
@@ -2193,8 +2194,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @example
      * ```
+     * Carbon::parse('2018-07-25 12:45:16')->gt('2018-07-25 12:45:15'); // true
      * Carbon::parse('2018-07-25 12:45:16')->gt('2018-07-25 12:45:16'); // false
-     * Carbon::parse('2018-07-25 12:45:16')->gt('2018-07-25 12:45:18'); // true
      * Carbon::parse('2018-07-25 12:45:16')->gt('2018-07-25 12:45:17'); // false
      * ```
      *
@@ -2211,8 +2212,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @example
      * ```
+     * Carbon::parse('2018-07-25 12:45:16')->gte('2018-07-25 12:45:15'); // true
      * Carbon::parse('2018-07-25 12:45:16')->gte('2018-07-25 12:45:16'); // true
-     * Carbon::parse('2018-07-25 12:45:16')->gte('2018-07-25 12:45:18'); // true
      * Carbon::parse('2018-07-25 12:45:16')->gte('2018-07-25 12:45:17'); // false
      * ```
      *
@@ -2308,8 +2309,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @example
      * ```
+     * Carbon::parse('2018-07-25 12:45:16')->isAfter('2018-07-25 12:45:15'); // true
      * Carbon::parse('2018-07-25 12:45:16')->isAfter('2018-07-25 12:45:16'); // false
-     * Carbon::parse('2018-07-25 12:45:16')->isAfter('2018-07-25 12:45:18'); // true
      * Carbon::parse('2018-07-25 12:45:16')->isAfter('2018-07-25 12:45:17'); // false
      * ```
      *
@@ -2326,8 +2327,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @example
      * ```
+     * Carbon::parse('2018-07-25 12:45:16')->isBefore('2018-07-25 12:45:15'); // false
      * Carbon::parse('2018-07-25 12:45:16')->isBefore('2018-07-25 12:45:16'); // false
-     * Carbon::parse('2018-07-25 12:45:16')->isBefore('2018-07-25 12:45:18'); // false
      * Carbon::parse('2018-07-25 12:45:16')->isBefore('2018-07-25 12:45:17'); // true
      * ```
      *
@@ -2819,8 +2820,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @example
      * ```
+     * Carbon::parse('2018-07-25 12:45:16')->lessThan('2018-07-25 12:45:15'); // false
      * Carbon::parse('2018-07-25 12:45:16')->lessThan('2018-07-25 12:45:16'); // false
-     * Carbon::parse('2018-07-25 12:45:16')->lessThan('2018-07-25 12:45:18'); // false
      * Carbon::parse('2018-07-25 12:45:16')->lessThan('2018-07-25 12:45:17'); // true
      * ```
      *
@@ -2835,8 +2836,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @example
      * ```
+     * Carbon::parse('2018-07-25 12:45:16')->lessThanOrEqualTo('2018-07-25 12:45:15'); // false
      * Carbon::parse('2018-07-25 12:45:16')->lessThanOrEqualTo('2018-07-25 12:45:16'); // true
-     * Carbon::parse('2018-07-25 12:45:16')->lessThanOrEqualTo('2018-07-25 12:45:18'); // false
      * Carbon::parse('2018-07-25 12:45:16')->lessThanOrEqualTo('2018-07-25 12:45:17'); // true
      * ```
      *
@@ -2911,8 +2912,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @example
      * ```
+     * Carbon::parse('2018-07-25 12:45:16')->lt('2018-07-25 12:45:15'); // false
      * Carbon::parse('2018-07-25 12:45:16')->lt('2018-07-25 12:45:16'); // false
-     * Carbon::parse('2018-07-25 12:45:16')->lt('2018-07-25 12:45:18'); // false
      * Carbon::parse('2018-07-25 12:45:16')->lt('2018-07-25 12:45:17'); // true
      * ```
      *
@@ -2929,8 +2930,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @example
      * ```
+     * Carbon::parse('2018-07-25 12:45:16')->lte('2018-07-25 12:45:15'); // false
      * Carbon::parse('2018-07-25 12:45:16')->lte('2018-07-25 12:45:16'); // true
-     * Carbon::parse('2018-07-25 12:45:16')->lte('2018-07-25 12:45:18'); // false
      * Carbon::parse('2018-07-25 12:45:16')->lte('2018-07-25 12:45:17'); // true
      * ```
      *
@@ -3422,8 +3423,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     /**
      * Set a part of the Carbon object
      *
-     * @param string|array             $name
-     * @param string|int|\DateTimeZone $value
+     * @param string|array            $name
+     * @param string|int|DateTimeZone $value
      *
      * @throws InvalidArgumentException|ReflectionException
      *
@@ -3610,7 +3611,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     /**
      * Set the instance's timezone from a string or object.
      *
-     * @param \DateTimeZone|string $value
+     * @param DateTimeZone|string $value
      *
      * @return static
      */
@@ -3749,7 +3750,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     /**
      * Set the instance's timezone from a string or object and add/subtract the offset difference.
      *
-     * @param \DateTimeZone|string $value
+     * @param DateTimeZone|string $value
      *
      * @return static
      */
@@ -4013,7 +4014,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     /**
      * @alias setTimezone
      *
-     * @param \DateTimeZone|string $value
+     * @param DateTimeZone|string $value
      *
      * @return static
      */
@@ -4546,7 +4547,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     /**
      * Set the timezone or returns the timezone name if no arguments passed.
      *
-     * @param \DateTimeZone|string $value
+     * @param DateTimeZone|string $value
      *
      * @return static|string
      */
