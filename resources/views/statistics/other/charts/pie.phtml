@@ -1,50 +1,47 @@
 <?php
 declare(strict_types=1);
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 
-$id = 'google-chart-' . bin2hex(random_bytes(8));
+$id   = 'google-chart-' . bin2hex(random_bytes(8));
+$name = 'callback_' . bin2hex(random_bytes(12));
 ?>
 
 <?php if (count($data) === 1): ?>
     <?= I18N::translate('This information is not available.') ?>
 <?php else: ?>
-
-    <?= view('statistics/other/chart-setup') ?>
-
     <div id="<?= $id ?>"></div>
-
     <script>
 
-    var callbackPieChart = function () {
-        google.charts.setOnLoadCallback(function () {
-            drawPieChart(
-                '<?= $id ?>',
-                <?= json_encode($data) ?>,
-                <?= json_encode($colors) ?>,
-                '<?= $title ?>',
-                '<?= $labeledValueText ?? 'value' ?>'
-            );
-        });
+    let <?= $name ?> = function () {
+        statistics.drawPieChart(
+            <?= json_encode($id) ?>,
+            <?= json_encode($data) ?>,
+            {
+                title: '<?= $title ?>',
 
-        $(window).resize(function () {
-            drawPieChart(
-                '<?= $id ?>',
-                <?= json_encode($data) ?>,
-                <?= json_encode($colors) ?>,
-                '<?= $title ?>',
-                '<?= $labeledValueText ?? 'value' ?>'
-            );
-        });
+                // Note: "legend" needs to be defined completely as Object.assign does only a shallow merge
+                legend: {
+                    alignment: 'center',
+                    labeledValueText: <?= json_encode($labeledValueText ?? 'value') ?>,
+                    position: 'labeled'
+                },
+                colors: <?= json_encode($colors) ?>
+            }
+        );
     };
 
-    if (
-        document.readyState === "complete" ||
-        (document.readyState !== "loading" && !document.documentElement.doScroll)
+    if (document.readyState === "complete"
+        || (document.readyState !== "loading" && !document.documentElement.doScroll)
     ) {
-        callbackPieChart();
+        statistics.init(<?= json_encode(app(LocaleInterface::class)->code()) ?>);
+        statistics.addCallback(<?= $name ?>);
     } else {
-        document.addEventListener("DOMContentLoaded", callbackPieChart);
+        document.addEventListener("DOMContentLoaded", function () {
+            statistics.init(<?= json_encode(app(LocaleInterface::class)->code()) ?>);
+            statistics.addCallback(<?= $name ?>);
+        });
     }
 
     </script>

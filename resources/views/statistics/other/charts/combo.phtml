@@ -1,46 +1,37 @@
 <?php
 declare(strict_types=1);
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 
-$id = 'google-chart-' . bin2hex(random_bytes(8));
+$id   = 'google-chart-' . bin2hex(random_bytes(8));
+$name = 'callback_' . bin2hex(random_bytes(12));
 ?>
 
 <?php if (count($data) === 1): ?>
     <?= I18N::translate('This information is not available.') ?>
 <?php else: ?>
-
-    <?= view('statistics/other/chart-setup') ?>
-
     <div id="<?= $id ?>" title="<?= $chart_title ?? '' ?>"></div>
-
     <script>
 
-    var callbackComboChart = function () {
-        google.charts.setOnLoadCallback(function () {
-            drawComboChart(
-                '<?= $id ?>',
-                <?= json_encode($data) ?>,
-                <?= json_encode($chart_options) ?>
-            );
-        });
-
-        $(window).resize(function () {
-            drawComboChart(
-                '<?= $id ?>',
-                <?= json_encode($data) ?>,
-                <?= json_encode($chart_options) ?>
-            );
-        });
+    let <?= $name ?> = function () {
+        statistics.drawComboChart(
+            <?= json_encode($id) ?>,
+            <?= json_encode($data) ?>,
+            <?= json_encode($chart_options) ?>
+        );
     };
 
-    if (
-        document.readyState === "complete" ||
-        (document.readyState !== "loading" && !document.documentElement.doScroll)
+    if (document.readyState === "complete"
+        || (document.readyState !== "loading" && !document.documentElement.doScroll)
     ) {
-        callbackComboChart();
+        statistics.init(<?= json_encode(app(LocaleInterface::class)->code()) ?>);
+        statistics.addCallback(<?= $name ?>);
     } else {
-        document.addEventListener("DOMContentLoaded", callbackComboChart);
+        document.addEventListener("DOMContentLoaded", function () {
+            statistics.init(<?= json_encode(app(LocaleInterface::class)->code()) ?>);
+            statistics.addCallback(<?= $name ?>);
+        });
     }
 
     </script>
