@@ -1,6 +1,10 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsData;
+use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDelete;
+use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDownload;
+use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
 
@@ -10,9 +14,8 @@ use Fisharebest\Webtrees\View;
 
 <h1><?= $title ?></h1>
 
-<form method="get" action="<?= e(route('admin-site-logs')) ?>" class="form" name="logs">
-    <input type="hidden" name="route" value="<?= e(route('admin-site-logs')) ?>">
-    <input type="hidden" name="action" value="show">
+<form method="post" class="form" name="logs">
+    <?= csrf_field() ?>
 
     <div class="row">
         <div class="form-group col-xs-6 col-sm-3">
@@ -60,10 +63,10 @@ use Fisharebest\Webtrees\View;
         </div>
 
         <div class="form-group col-sm-4">
-            <label for="gedc">
+            <label for="tree">
                 <?= I18N::translate('Family tree') ?>
             </label>
-            <?= view('components/select', ['name' => 'gedc', 'selected' => $gedc, 'options' => $tree_options]) ?>
+            <?= view('components/select', ['name' => 'tree', 'selected' => $tree, 'options' => $tree_options]) ?>
         </div>
     </div>
 
@@ -73,53 +76,44 @@ use Fisharebest\Webtrees\View;
             <?= /* I18N: A button label. */ I18N::translate('search') ?>
         </button>
 
-        <a href="<?= e(route('admin-site-logs-export', ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'gedc' => $gedc])) ?>" class="btn btn-primary" <?= $action === 'show' ? '' : 'disabled' ?>>
+        <a href="<?= e(route(SiteLogsPage::class)) ?>" type="submit" class="btn btn-secondary">
+         <?= view('icons/cancel') ?>
+            <?= /* I18N: A button label. */ I18N::translate('reset') ?>
+        </a>
+
+        <a href="<?= e(route(SiteLogsDownload::class, ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'tree' => $tree])) ?>" class="btn btn-secondary">
         <?= view('icons/download') ?>
             <?= /* I18N: A button label. */ I18N::translate('download') ?>
         </a>
 
-        <a href="#" class="btn btn-primary" data-confirm="<?= I18N::translate('Permanently delete these records?') ?>" id="delete-button" <?= $action === 'show' ? '' : 'disabled' ?>>
+        <a href="#" class="btn btn-danger" data-confirm="<?= I18N::translate('Permanently delete these records?') ?>" data-post-url="<?= e(route(SiteLogsDelete::class, ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'tree' => $tree])) ?>">
         <?= view('icons/delete') ?>
             <?= /* I18N: A button label. */ I18N::translate('delete') ?>
         </a>
     </div>
 </form>
 
-<?php if ($action) : ?>
-    <table class="table table-bordered table-sm table-hover table-site-logs"
-        <?= view('lists/datatables-attributes') ?>
-        data-ajax="<?= e(route('admin-site-logs-data', ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'gedc' => $gedc])) ?>"
-        data-server-side="true"
-    >
-        <thead>
-            <tr>
-                <th></th>
-                <th><?= I18N::translate('Timestamp') ?></th>
-                <th><?= I18N::translate('Type') ?></th>
-                <th><?= I18N::translate('Message') ?></th>
-                <th><?= I18N::translate('IP address') ?></th>
-                <th><?= I18N::translate('User') ?></th>
-                <th><?= I18N::translate('Family tree') ?></th>
-            </tr>
-        </thead>
-    </table>
-<?php endif ?>
+<table
+    class="table table-bordered table-sm table-hover table-site-logs"
+    <?= view('lists/datatables-attributes') ?>
+    data-ajax="<?= e(route(SiteLogsData::class, ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'tree' => $tree])) ?>"
+    data-server-side="true"
+>
+    <thead>
+        <tr>
+            <th></th>
+            <th><?= I18N::translate('Timestamp') ?></th>
+            <th><?= I18N::translate('Type') ?></th>
+            <th><?= I18N::translate('Message') ?></th>
+            <th><?= I18N::translate('IP address') ?></th>
+            <th><?= I18N::translate('User') ?></th>
+            <th><?= I18N::translate('Family tree') ?></th>
+        </tr>
+    </thead>
+</table>
 
 <?php View::push('javascript') ?>
 <script>
-    $("#delete-button").click(function() {
-    if (confirm(this.dataset.confirm)) {
-      var data = $(this).closest('form').serialize();
-      data.csrf = <?= json_encode(csrf_token()) ?>;
-
-      jQuery.post(
-        <?= json_encode(route('admin-site-logs-delete')) ?>,
-          data,
-        function() { document.location.reload(); }
-      )
-    }
-  });
-
   $(".table-site-logs").dataTable( {
     processing: true,
     sorting: [[ 0, "desc" ]],

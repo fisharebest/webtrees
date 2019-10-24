@@ -26,8 +26,6 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
-use InvalidArgumentException;
-use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Manage pending changes
@@ -170,38 +168,26 @@ class PendingChangesService
     /**
      * Generate a query for filtering the changes log.
      *
-     * @param ServerRequestInterface $request
+     * @param string[] $params
      *
      * @return Builder
      */
-    public function changesQuery(ServerRequestInterface $request): Builder
+    public function changesQuery(array $params): Builder
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
-
-        $from     = $request->getQueryParams()['from'] ?? '';
-        $to       = $request->getQueryParams()['to'] ?? '';
-        $type     = $request->getQueryParams()['type'] ?? '';
-        $oldged   = $request->getQueryParams()['oldged'] ?? '';
-        $newged   = $request->getQueryParams()['newged'] ?? '';
-        $xref     = $request->getQueryParams()['xref'] ?? '';
-        $username = $request->getQueryParams()['username'] ?? '';
-        $search   = $request->getQueryParams()['search'] ?? [];
-        $search   = $search['value'] ?? '';
+        $tree     = $params['tree'];
+        $from     = $params['from'] ?? '';
+        $to       = $params['to'] ?? '';
+        $type     = $params['type'] ?? '';
+        $oldged   = $params['oldged'] ?? '';
+        $newged   = $params['newged'] ?? '';
+        $xref     = $params['xref'] ?? '';
+        $username = $params['username'] ?? '';
 
         $query = DB::table('change')
             ->leftJoin('user', 'user.user_id', '=', 'change.user_id')
             ->join('gedcom', 'gedcom.gedcom_id', '=', 'change.gedcom_id')
             ->select(['change.*', new Expression("COALESCE(user_name, '<none>') AS user_name"), 'gedcom_name'])
-            ->where('gedcom_name', '=', $tree->name());
-
-        if ($search !== '') {
-            $query->where(static function (Builder $query) use ($search): void {
-                $query
-                    ->whereContains('old_gedcom', $search)
-                    ->whereContains('new_gedcom', $search, 'or');
-            });
-        }
+            ->where('gedcom_name', '=', $tree);
 
         if ($from !== '') {
             $query->where('change_time', '>=', $from);

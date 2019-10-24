@@ -96,6 +96,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SearchReplacePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectDefaultTree;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme;
+use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsData;
+use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDelete;
+use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDownload;
+use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail;
 
 use function app;
@@ -179,10 +184,11 @@ $router->attach('', '/admin', static function (Map $router) {
     $router->post('broadcast-action', '/broadcast', 'MessageController::broadcastAction');
     $router->get(PhpInformation::class, '/information', PhpInformation::class);
     $router->post('masquerade', '/masquerade/{user_id}', MasqueradeAsUser::class);
-    $router->get('admin-site-logs', '/logs', 'AdminSiteController::logs');
-    $router->get('admin-site-logs-data', '/logs-data', 'AdminSiteController::logsData');
-    $router->post('admin-site-logs-delete', '/logs-delete', 'AdminSiteController::logsDelete');
-    $router->get('admin-site-logs-export', '/logs-export', 'AdminSiteController::logsExport');
+    $router->get(SiteLogsPage::class, '/logs', SiteLogsPage::class);
+    $router->post(SiteLogsAction::class, '/logs', SiteLogsAction::class);
+    $router->get(SiteLogsData::class, '/logs-data', SiteLogsData::class);
+    $router->post(SiteLogsDelete::class, '/logs-delete', SiteLogsDelete::class);
+    $router->get(SiteLogsDownload::class, '/logs-download', SiteLogsDownload::class);
     $router->get(CreateTreePage::class, '/trees/create', CreateTreePage::class);
     $router->post(CreateTreeAction::class, '/trees/create', CreateTreeAction::class);
     $router->post(SelectDefaultTree::class, '/trees/default/{tree}', SelectDefaultTree::class);

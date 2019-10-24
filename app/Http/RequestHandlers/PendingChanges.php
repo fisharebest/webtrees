@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
-use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
@@ -52,8 +51,8 @@ class PendingChanges implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var PendingChangesService */
-    private $pending_changes_service;
+    /** @var TreeService */
+    private $tree_service;
 
     /**
      * @param TreeService $tree_service

@@ -30,21 +30,10 @@ use function assert;
 use function response;
 
 /**
- * Delete pending changes.
+ * Show logs.
  */
-class PendingChangesLogDelete implements RequestHandlerInterface
+class SiteLogsAction implements RequestHandlerInterface
 {
-    /** @var PendingChangesService */
-    private $pending_changes_service;
-
-    /**
-     * @param PendingChangesService $pending_changes_service
-     */
-    public function __construct(PendingChangesService $pending_changes_service)
-    {
-        $this->pending_changes_service = $pending_changes_service;
-    }
-
     /**
      * @param ServerRequestInterface $request
      *
@@ -52,14 +41,14 @@ class PendingChangesLogDelete implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
-
-        $params = $request->getQueryParams();
-        $params['tree'] = $tree->name();
-
-        $this->pending_changes_service->changesQuery($params)->delete();
-
-        return response();
+        return redirect(route(SiteLogsPage::class, [
+            'tree'     => $request->getParsedBody()['tree'],
+            'from'     => $request->getParsedBody()['from'] ?? '',
+            'to'       => $request->getParsedBody()['to'] ?? '',
+            'type'     => $request->getParsedBody()['type'] ?? '',
+            'text'     => $request->getParsedBody()['text'] ?? '',
+            'ip'       => $request->getParsedBody()['ip'] ?? '',
+            'username' => $request->getParsedBody()['username'] ?? '',
+        ]));
     }
 }

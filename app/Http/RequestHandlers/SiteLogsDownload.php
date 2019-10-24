@@ -21,30 +21,29 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\PendingChangesService;
-use Fisharebest\Webtrees\Tree;
-use InvalidArgumentException;
+use Fisharebest\Webtrees\Services\SiteLogsService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use stdClass;
 
-use function assert;
 use function response;
+use function str_replace;
 
 /**
- * Download pending changes.
+ * Download logs.
  */
-class PendingChangesLogDownload implements RequestHandlerInterface
+class SiteLogsDownload implements RequestHandlerInterface
 {
-    /** @var PendingChangesService */
-    private $pending_changes_service;
+    /** @var SiteLogsService */
+    private $site_logs_service;
 
     /**
-     * @param PendingChangesService $pending_changes_service
+     * @param SiteLogsService $site_logs_service
      */
-    public function __construct(PendingChangesService $pending_changes_service)
+    public function __construct(SiteLogsService $site_logs_service)
     {
-        $this->pending_changes_service = $pending_changes_service;
+        $this->site_logs_service = $site_logs_service;
     }
 
     /**
@@ -54,31 +53,24 @@ class PendingChangesLogDownload implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
-
-        $params = $request->getQueryParams();
-        $params['tree'] = $tree->name();
-
-        $content = $this->pending_changes_service->changesQuery($params)
+        $content = $this->site_logs_service->logsQuery($request->getQueryParams())
+            ->orderBy('log_id')
             ->get()
             ->map(static function (stdClass $row): string {
-                // Convert to CSV
-                return implode(',', [
-                    '"' . $row->change_time . '"',
-                    '"' . $row->status . '"',
-                    '"' . $row->xref . '"',
-                    '"' . str_replace('"', '""', $row->old_gedcom) . '"',
-                    '"' . str_replace('"', '""', $row->new_gedcom) . '"',
-                    '"' . str_replace('"', '""', $row->user_name) . '"',
-                    '"' . str_replace('"', '""', $row->gedcom_name) . '"',
-                ]);
+                return
+                    '"' . $row->log_time . '",' .
+                    '"' . $row->log_type . '",' .
+                    '"' . str_replace('"', '""', $row->log_message) . '",' .
+                    '"' . $row->ip_address . '",' .
+                    '"' . str_replace('"', '""', $row->user_name) . '",' .
+                    '"' . str_replace('"', '""', $row->gedcom_name) . '"' .
+                    "\n";
             })
-            ->implode("\n");
+            ->implode('');
 
         return response($content, StatusCodeInterface::STATUS_OK, [
             'Content-Type'        => 'text/csv; charset=utf-8',
-            'Content-Disposition' => 'attachment; filename="changes.csv"',
+            'Content-Disposition' => 'attachment; filename="webtrees-logs.csv"',
         ]);
     }
 }

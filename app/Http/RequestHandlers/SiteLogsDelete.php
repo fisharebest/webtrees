@@ -19,30 +19,27 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Services\PendingChangesService;
-use Fisharebest\Webtrees\Tree;
-use InvalidArgumentException;
+use Fisharebest\Webtrees\Services\SiteLogsService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function response;
 
 /**
- * Delete pending changes.
+ * Delete logs.
  */
-class PendingChangesLogDelete implements RequestHandlerInterface
+class SiteLogsDelete implements RequestHandlerInterface
 {
-    /** @var PendingChangesService */
-    private $pending_changes_service;
+    /** @var SiteLogsService */
+    private $site_logs_service;
 
     /**
-     * @param PendingChangesService $pending_changes_service
+     * @param SiteLogsService $site_logs_service
      */
-    public function __construct(PendingChangesService $pending_changes_service)
+    public function __construct(SiteLogsService $site_logs_service)
     {
-        $this->pending_changes_service = $pending_changes_service;
+        $this->site_logs_service = $site_logs_service;
     }
 
     /**
@@ -52,13 +49,7 @@ class PendingChangesLogDelete implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
-
-        $params = $request->getQueryParams();
-        $params['tree'] = $tree->name();
-
-        $this->pending_changes_service->changesQuery($params)->delete();
+        $this->site_logs_service->logsQuery($request->getQueryParams())->delete();
 
         return response();
     }

@@ -4,6 +4,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogData;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogDelete;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogDownload;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogPage;
 use Fisharebest\Webtrees\I18N;
 
 ?>
@@ -81,6 +82,10 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('search') ?>
         </button>
 
+        <a href="<?= e(route(PendingChangesLogPage::class, ['tree' => $tree->name()])) ?>" type="submit" class="btn btn-secondary">
+            <?= view('icons/cancel') ?>
+            <?= /* I18N: A button label. */ I18N::translate('reset') ?>
+        </a>
         <a class="btn btn-secondary" href="<?= (route(PendingChangesLogDownload::class, ['from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'tree' => $tree->name(), 'username' => $username])) ?>">
             <?= view('icons/download') ?>
             <?= /* I18N: A button label. */ I18N::translate('download') ?>

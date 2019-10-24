@@ -78,7 +78,10 @@ class PendingChangesLogData implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree, new InvalidArgumentException());
 
-        $query = $this->pending_changes_service->changesQuery($request);
+        $params = $request->getQueryParams();
+        $params['tree'] = $tree->name();
+
+        $query = $this->pending_changes_service->changesQuery($params);
 
         $callback = function (stdClass $row) use ($tree): array {
             $old_lines = explode("\n", $row->old_gedcom);

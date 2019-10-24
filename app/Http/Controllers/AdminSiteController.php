@@ -19,29 +19,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Exception;
-use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
-use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Services\TreeService;
-use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
-use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
-use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use stdClass;
 
 use function filter_var;
 
@@ -55,210 +42,22 @@ class AdminSiteController extends AbstractBaseController
     /** @var string */
     protected $layout = 'layouts/administration';
 
-    /** @var DatatablesService */
-    private $datatables_service;
-
     /** @var MailService */
     private $mail_service;
 
     /** @var ModuleService */
     private $module_service;
 
-    /** @var TreeService */
-    private $tree_service;
-
-    /** @var UserService */
-    private $user_service;
-
     /**
      * AdminSiteController constructor.
      *
-     * @param DatatablesService   $datatables_service
-     * @param MailService         $mail_service
-     * @param ModuleService       $module_service
-     * @param UserService         $user_service
+     * @param MailService   $mail_service
+     * @param ModuleService $module_service
      */
-    public function __construct(DatatablesService $datatables_service, MailService $mail_service, ModuleService $module_service, TreeService $tree_service, UserService $user_service)
+    public function __construct(MailService $mail_service, ModuleService $module_service)
     {
-        $this->mail_service       = $mail_service;
-        $this->datatables_service = $datatables_service;
-        $this->module_service     = $module_service;
-        $this->tree_service       = $tree_service;
-        $this->user_service       = $user_service;
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function logs(ServerRequestInterface $request): ResponseInterface
-    {
-        $earliest = DB::table('log')->min('log_time');
-        $latest   = DB::table('log')->max('log_time');
-
-        $earliest = $earliest ? Carbon::make($earliest) : Carbon::now();
-        $latest   = $latest ? Carbon::make($latest) : Carbon::now();
-
-        $earliest = $earliest->toDateString();
-        $latest   = $latest->toDateString();
-
-        $params   = $request->getQueryParams();
-        $action   = $params['action'] ?? '';
-        $from     = $params['from'] ?? $earliest;
-        $to       = $params['to'] ?? $latest;
-        $type     = $params['type'] ?? '';
-        $text     = $params['text'] ?? '';
-        $ip       = $params['ip'] ?? '';
-        $username = $params['username'] ?? '';
-        $gedc     = $params['gedc'] ?? '';
-
-        $from = max($from, $earliest);
-        $to   = min(max($from, $to), $latest);
-
-        $user_options = $this->user_service->all()->mapWithKeys(static function (User $user): array {
-            return [$user->userName() => $user->userName()];
-        });
-        $user_options = (new Collection(['' => '']))->merge($user_options);
-
-        $tree_options = $this->tree_service->all()->mapWithKeys(static function (Tree $tree): array {
-            return [$tree->name() => $tree->title()];
-        });
-        $tree_options = (new Collection(['' => '']))->merge($tree_options);
-
-        $title = I18N::translate('Website logs');
-
-        return $this->viewResponse('admin/site-logs', [
-            'action'       => $action,
-            'earliest'     => $earliest,
-            'from'         => $from,
-            'gedc'         => $gedc,
-            'ip'           => $ip,
-            'latest'       => $latest,
-            'tree_options' => $tree_options,
-            'title'        => $title,
-            'to'           => $to,
-            'text'         => $text,
-            'type'         => $type,
-            'username'     => $username,
-            'user_options' => $user_options,
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function logsData(ServerRequestInterface $request): ResponseInterface
-    {
-        $query = $this->logsQuery($request->getQueryParams());
-
-        return $this->datatables_service->handle($request, $query, [], [], static function (stdClass $row): array {
-            return [
-                $row->log_id,
-                Carbon::make($row->log_time)->local()->format('Y-m-d H:i:s'),
-                $row->log_type,
-                '<span dir="auto">' . e($row->log_message) . '</span>',
-                '<span dir="auto">' . e($row->ip_address) . '</span>',
-                '<span dir="auto">' . e($row->user_name) . '</span>',
-                '<span dir="auto">' . e($row->gedcom_name) . '</span>',
-            ];
-        });
-    }
-
-    /**
-     * Generate a query for filtering the site log.
-     *
-     * @param string[] $params
-     *
-     * @return Builder
-     */
-    private function logsQuery(array $params): Builder
-    {
-        $from     = $params['from'];
-        $to       = $params['to'];
-        $type     = $params['type'];
-        $text     = $params['text'];
-        $ip       = $params['ip'];
-        $username = $params['username'];
-        $gedc     = $params['gedc'];
-
-        $query = DB::table('log')
-            ->leftJoin('user', 'user.user_id', '=', 'log.user_id')
-            ->leftJoin('gedcom', 'gedcom.gedcom_id', '=', 'log.gedcom_id')
-            ->select(['log.*', new Expression("COALESCE(user_name, '<none>') AS user_name"), new Expression("COALESCE(gedcom_name, '<none>') AS gedcom_name")]);
-
-        if ($from !== '') {
-            $query->where('log_time', '>=', $from);
-        }
-
-        if ($to !== '') {
-            // before end of the day
-            $query->where('log_time', '<', Carbon::make($to)->addDay());
-        }
-
-        if ($type !== '') {
-            $query->where('log_type', '=', $type);
-        }
-
-        if ($text) {
-            $query->whereContains('log_message', $text);
-        }
-
-        if ($ip) {
-            $query->whereContains('ip_address', $ip);
-        }
-
-        if ($username) {
-            $query->whereContains('user_name', $ip);
-        }
-
-        if ($gedc) {
-            $query->where('gedcom_name', '=', $gedc);
-        }
-
-        return $query;
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function logsDelete(ServerRequestInterface $request): ResponseInterface
-    {
-        $this->logsQuery($request->getParsedBody())->delete();
-
-        return response();
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function logsExport(ServerRequestInterface $request): ResponseInterface
-    {
-        $content = $this->logsQuery($request->getQueryParams())
-            ->orderBy('log_id')
-            ->get()
-            ->map(static function (stdClass $row): string {
-                return
-                    '"' . $row->log_time . '",' .
-                    '"' . $row->log_type . '",' .
-                    '"' . str_replace('"', '""', $row->log_message) . '",' .
-                    '"' . $row->ip_address . '",' .
-                    '"' . str_replace('"', '""', $row->user_name) . '",' .
-                    '"' . str_replace('"', '""', $row->gedcom_name) . '"' .
-                    "\n";
-            })
-            ->implode('');
-
-        return response($content, StatusCodeInterface::STATUS_OK, [
-            'Content-Type'        => 'text/csv; charset=utf-8',
-            'Content-Disposition' => 'attachment; filename="webtrees-logs.csv"',
-        ]);
+        $this->mail_service   = $mail_service;
+        $this->module_service = $module_service;
     }
 
     /**

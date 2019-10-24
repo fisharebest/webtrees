@@ -5,6 +5,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\Http\RequestHandlers\PhpInformation;
+use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyListModule;
 use Fisharebest\Webtrees\Module\IndividualListModule;
@@ -92,7 +93,7 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/preferences') ?></span>
-                        <a href="<?= e(route('admin-site-logs')) ?>">
+                        <a href="<?= e(route(SiteLogsPage::class)) ?>">
                             <?= I18N::translate('Website logs') ?>
                         </a>
                     </li>
