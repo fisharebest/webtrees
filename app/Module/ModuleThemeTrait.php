@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
@@ -335,15 +336,15 @@ trait ModuleThemeTrait
     /**
      * A link to allow users to edit their account settings.
      *
-     * @return Menu|null
+     * @param Tree?null $tree
+     *
+     * @return Menu
      */
-    public function menuMyAccount(): ?Menu
+    public function menuMyAccount(?Tree $tree): Menu
     {
-        if (Auth::check()) {
-            return new Menu(I18N::translate('My account'), route('my-account'));
-        }
+        $url = route(AccountEdit::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]);
 
-        return null;
+        return new Menu(I18N::translate('My account'), $url);
     }
 
     /**
@@ -385,15 +386,19 @@ trait ModuleThemeTrait
      */
     public function menuMyPages(?Tree $tree): ?Menu
     {
-        if ($tree instanceof Tree && Auth::id()) {
-            return new Menu(I18N::translate('My pages'), '#', 'menu-mymenu', [], array_filter([
-                $this->menuMyPage($tree),
-                $this->menuMyIndividualRecord($tree),
-                $this->menuMyPedigree($tree),
-                $this->menuMyAccount(),
-                $this->menuControlPanel($tree),
-                $this->menuChangeBlocks($tree),
-            ]));
+        if (Auth::id()) {
+            if ($tree instanceof Tree) {
+                return new Menu(I18N::translate('My pages'), '#', 'menu-mymenu', [], array_filter([
+                    $this->menuMyPage($tree),
+                    $this->menuMyIndividualRecord($tree),
+                    $this->menuMyPedigree($tree),
+                    $this->menuMyAccount($tree),
+                    $this->menuControlPanel($tree),
+                    $this->menuChangeBlocks($tree),
+                ]));
+            }
+
+            return $this->menuMyAccount($tree);
         }
 
         return null;

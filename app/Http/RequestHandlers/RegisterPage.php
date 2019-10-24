@@ -40,6 +40,7 @@ class RegisterPage extends AbstractBaseController
     {
         $this->checkRegistrationAllowed();
 
+        $tree     = $request->getAttribute('tree');
         $comments = $request->getQueryParams()['comments'] ?? '';
         $email    = $request->getQueryParams()['email'] ?? '';
         $realname = $request->getQueryParams()['realname'] ?? '';
@@ -55,6 +56,7 @@ class RegisterPage extends AbstractBaseController
             'realname'     => $realname,
             'show_caution' => $show_caution,
             'title'        => $title,
+            'tree'         => $tree,
             'username'     => $username,
         ]);
     }

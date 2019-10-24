@@ -86,7 +86,7 @@ class HomePage implements RequestHandlerInterface
 
         // Logged in, but no access to any tree.
         if ($user instanceof User) {
-            return $this->viewResponse('errors/no-tree-access', ['title' => '']);
+            return $this->viewResponse('errors/no-tree-access', ['title' => '', 'tree' => null]);
         }
 
         // Not logged in.

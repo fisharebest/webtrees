@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -43,15 +44,16 @@ class PasswordRequestPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
         $user = $request->getAttribute('user');
 
         // Already logged in?
         if ($user instanceof User) {
-            return redirect(route('my-account'));
+            return redirect(route(AccountEdit::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
         }
 
         $title = I18N::translate('Request a new password');
 
-        return $this->viewResponse('password-request-page', ['title' => $title]);
+        return $this->viewResponse('password-request-page', ['title' => $title, 'tree' => $tree instanceof Tree ? $tree->name() : null]);
     }
 }

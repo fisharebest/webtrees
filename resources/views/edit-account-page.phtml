@@ -1,13 +1,17 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\AccountDelete;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;use Fisharebest\Webtrees\View;
+
+?>
 
 <h2 class="wt-page-title">
     <?= $title ?>
 </h2>
 
-<form method="post" action="<?= e(route('my-account-update')) ?>" class="wt-page-options wt-page-options-my-account">
+<form method="post" class="wt-page-options wt-page-options-my-account">
     <?= csrf_field() ?>
-    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="user-name">
@@ -33,35 +37,37 @@
         </div>
     </div>
 
-    <div class="row form-group">
-        <label class="col-sm-3 col-form-label wt-page-options-label" for="gedcom-id">
-            <?= I18N::translate('Individual record') ?>
-        </label>
-        <div class="col-sm-9 wt-page-options-value">
-            <select class="form-control" id="gedcom-id" aria-describedby="gedcom-id-description" disabled>
-                <?php if ($my_individual_record !== null) : ?>
-                    <option value=""><?= $my_individual_record->fullName() ?></option>
-                <?php else : ?>
-                    <option value=""><?= I18N::translateContext('unknown people', 'Unknown') ?></option>
-                <?php endif ?>
-            </select>
-            <p class="small text-muted" id="gedcom-id-description">
-                <?= I18N::translate('This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator.') ?>
-            </p>
+    <?php if ($tree instanceof Tree): ?>
+        <div class="row form-group">
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="gedcom-id">
+                <?= I18N::translate('Individual record') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <select class="form-control" id="gedcom-id" aria-describedby="gedcom-id-description" disabled>
+                    <?php if ($my_individual_record !== null) : ?>
+                        <option value=""><?= $my_individual_record->fullName() ?></option>
+                    <?php else : ?>
+                        <option value=""><?= I18N::translateContext('unknown people', 'Unknown') ?></option>
+                    <?php endif ?>
+                </select>
+                <p class="small text-muted" id="gedcom-id-description">
+                    <?= I18N::translate('This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator.') ?>
+                </p>
+            </div>
         </div>
-    </div>
 
-    <div class="row form-group">
-        <label class="col-sm-3 col-form-label wt-page-options-label" for="root-id">
-            <?= I18N::translate('Default individual') ?>
-        </label>
-        <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select-individual', ['name' => 'root_id', 'id' => 'root-id', 'individual' => $default_individual, 'tree' => $tree]) ?>
-            <p class="small text-muted" id="root-id-description">
-                <?= I18N::translate('This individual will be selected by default when viewing charts and reports.') ?>
-            </p>
+        <div class="row form-group">
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="root-id">
+                <?= I18N::translate('Default individual') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <?= view('components/select-individual', ['name' => 'root_id', 'id' => 'root-id', 'individual' => $default_individual, 'tree' => $tree]) ?>
+                <p class="small text-muted" id="root-id-description">
+                    <?= I18N::translate('This individual will be selected by default when viewing charts and reports.') ?>
+                </p>
+            </div>
         </div>
-    </div>
+    <?php endif ?>
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="password">
@@ -139,21 +145,24 @@
     <div class="row form-group">
         <div class="col-sm-3 wt-page-options-label"></div>
         <div class="col-sm-9 wt-page-options-value">
-            <input class="btn btn-primary" type="submit" value="<?= I18N::translate('save') ?>">
+            <button type="submit" class="btn btn-primary">
+                <?= view('icons/save') ?>
+                <?= I18N::translate('save') ?>
+            </button>
         </div>
     </div>
 </form>
 
 <?php if ($show_delete_option) : ?>
-    <form method="post" action="<?= e(route('delete-account', ['tree' => $tree->name()])) ?>">
-        <?= csrf_field() ?>
-        <div class="row form-group">
-            <div class="col-sm-3 wt-page-options-label"></div>
-            <div class="col-sm-9 wt-page-options-value">
-                <input class="btn btn-danger" type="submit" value="<?= I18N::translate('Delete your account') ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($user->userName())) ?>" onclick="return confirm(this.dataset.confirm);">
-            </div>
+    <div class="row form-group">
+        <div class="col-sm-3 wt-page-options-label"></div>
+        <div class="col-sm-9 wt-page-options-value">
+            <a href="#" class="btn btn-danger" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($user->userName())) ?>" data-post-url="<?= e(route(AccountDelete::class)) ?>">
+                <?= view('icons/delete') ?>
+                <?= I18N::translate('Delete your account') ?>
+            </a>
         </div>
-    </form>
+    </div>
 <?php endif ?>
 
 <?php View::push('javascript') ?>

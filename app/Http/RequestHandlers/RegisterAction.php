@@ -32,13 +32,10 @@ use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Illuminate\Database\Capsule\Manager as DB;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
-use function assert;
 
 /**
  * Process a user registration.
@@ -76,11 +73,9 @@ class RegisterAction extends AbstractBaseController
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
-
         $this->checkRegistrationAllowed();
 
+        $tree     = $request->getAttribute('tree');
         $comments = $request->getParsedBody()['comments'] ?? '';
         $email    = $request->getParsedBody()['email'] ?? '';
         $password = $request->getParsedBody()['password'] ?? '';

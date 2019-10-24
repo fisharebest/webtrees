@@ -17,43 +17,53 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Middleware;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
+use function route;
 
 /**
- * Middleware to restrict access to logged-in users.
+ * Delete a user account.
  */
-class AuthLoggedIn implements MiddlewareInterface
+class AccountDelete implements RequestHandlerInterface
 {
+    /** @var UserService */
+    private $user_service;
+
     /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
+     * AccountController constructor.
+     *
+     * @param UserService $user_service
+     */
+    public function __construct(UserService $user_service)
+    {
+        $this->user_service = $user_service;
+    }
+
+    /**
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         $user = $request->getAttribute('user');
 
-        // Logged in?
-        if ($user instanceof User) {
-            return $handler->handle($request);
+        // An administrator can only be deleted by another administrator
+        if ($user instanceof User && !$user->getPreference('canadmin')) {
+            $this->user_service->delete($user);
+            Auth::logout();
         }
 
-        // Not logged in.
-        return redirect(route(LoginPage::class, [
-            'tree' => $tree instanceof Tree ? $tree->name() : null,
-            'url'  => $request->getUri(),
-        ]));
+        return redirect(route(AccountEdit::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
     }
 }

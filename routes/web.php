@@ -29,6 +29,10 @@ use Fisharebest\Webtrees\Http\Middleware\AuthLoggedIn;
 use Fisharebest\Webtrees\Http\Middleware\AuthManager;
 use Fisharebest\Webtrees\Http\Middleware\AuthMember;
 use Fisharebest\Webtrees\Http\Middleware\AuthModerator;
+use Fisharebest\Webtrees\Http\Middleware\AuthVisitor;
+use Fisharebest\Webtrees\Http\RequestHandlers\AccountDelete;
+use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\AccountUpdate;
 use Fisharebest\Webtrees\Http\RequestHandlers\CleanDataFolder;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreeAction;
@@ -355,9 +359,21 @@ $router->attach('', '', static function (Map $router) {
         'middleware' => [AuthLoggedIn::class]
     ]);
 
-    $router->get('my-account', '/my-account', 'AccountController::edit');
-    $router->post('my-account-update', '/my-account', 'AccountController::update');
-    $router->post('delete-account', '/delete-account', 'AccountController::delete');
+    $router->get(AccountEdit::class, '/my-account{/tree}', AccountEdit::class);
+    $router->post(AccountUpdate::class, '/my-account{/tree}', AccountUpdate::class);
+    $router->post(AccountDelete::class, '/my-account-delete', AccountDelete::class);
+});
+
+// Visitor routes.
+$router->attach('', '', static function (Map $router) {
+    $router->extras([
+        'middleware' => [AuthVisitor::class]
+    ]);
+
+    $router->get(PasswordRequestPage::class, '/password-request', PasswordRequestPage::class);
+    $router->post(PasswordRequestAction::class, '/password-request', PasswordRequestAction::class);
+    $router->get(RegisterPage::class, '/register', RegisterPage::class);
+    $router->post(RegisterAction::class, '/register', RegisterAction::class);
 });
 
 // Public routes.
@@ -413,13 +429,9 @@ $router->post(SelectLanguage::class, '/language/{language}', SelectLanguage::cla
 $router->get(LoginPage::class, '/login{/tree}', LoginPage::class);
 $router->post(LoginAction::class, '/login{/tree}', LoginAction::class);
 $router->post(Logout::class, '/logout', Logout::class);
-$router->get(PasswordRequestPage::class, '/password-request', PasswordRequestPage::class);
-$router->post(PasswordRequestAction::class, '/password-request', PasswordRequestAction::class);
 $router->get(PasswordResetPage::class, '/password-reset', PasswordResetPage::class);
 $router->post(PasswordResetAction::class, '/password-reset', PasswordResetAction::class);
 $router->get(Ping::class, '/ping', Ping::class);
-$router->get(RegisterPage::class, '/register', RegisterPage::class);
-$router->post(RegisterAction::class, '/register', RegisterAction::class);
 $router->post(SelectTheme::class, '/theme/{theme}', SelectTheme::class);
 $router->get(VerifyEmail::class, '/verify', VerifyEmail::class);
 $router->get(PrivacyPolicy::class, '/privacy-policy', PrivacyPolicy::class);
