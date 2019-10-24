@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 
@@ -37,10 +38,11 @@ class ImportThumbnailsControllerTest extends TestCase
      */
     public function testWebtrees1Thumbnails(): void
     {
-        $tree_service = new TreeService();
-        $controller   = new ImportThumbnailsController($tree_service);
-        $request      = self::createRequest();
-        $response     = $controller->webtrees1Thumbnails($request);
+        $tree_service            = new TreeService();
+        $pending_changes_service = new PendingChangesService();
+        $controller              = new ImportThumbnailsController($pending_changes_service, $tree_service);
+        $request                 = self::createRequest();
+        $response                = $controller->webtrees1Thumbnails($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -50,11 +52,12 @@ class ImportThumbnailsControllerTest extends TestCase
      */
     public function testWebtrees1ThumbnailsAction(): void
     {
-        $tree_service = new TreeService();
-        $controller   = new ImportThumbnailsController($tree_service);
-        $request      = self::createRequest()
+        $tree_service            = new TreeService();
+        $pending_changes_service = new PendingChangesService();
+        $controller              = new ImportThumbnailsController($pending_changes_service, $tree_service);
+        $request                 = self::createRequest()
             ->withParsedBody(['thumbnail' => 'foo', 'action' => '', 'xref' => [], 'ged' => []]);
-        $response     = $controller->webtrees1ThumbnailsAction($request);
+        $response                = $controller->webtrees1ThumbnailsAction($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -64,11 +67,12 @@ class ImportThumbnailsControllerTest extends TestCase
      */
     public function testWebtrees1ThumbnailsData(): void
     {
-        $tree_service = new TreeService();
-        $controller   = new ImportThumbnailsController($tree_service);
-        $request      = self::createRequest()
+        $tree_service            = new TreeService();
+        $pending_changes_service = new PendingChangesService();
+        $controller              = new ImportThumbnailsController($pending_changes_service, $tree_service);
+        $request                 = self::createRequest()
             ->withQueryParams(['start' => '0', 'length' => '10', 'search' => ['value' => ''], 'draw' => '1']);
-        $response     = $controller->webtrees1ThumbnailsData($request);
+        $response                = $controller->webtrees1ThumbnailsData($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }

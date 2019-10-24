@@ -1,7 +1,12 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <?= I18N::translate('Hello %s…', $user->realName()) ?>
 
 <?= I18N::translate('There are pending changes for you to moderate.') ?>
 
-<?= $tree->title() ?> - <?= route('show-pending', ['tree' => $tree->name()]) ?>
+<?= $tree->title() ?> - <?= route(PendingChanges::class, ['tree' => $tree->name()]) ?>

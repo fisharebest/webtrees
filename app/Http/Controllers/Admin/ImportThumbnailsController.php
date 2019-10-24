@@ -23,6 +23,7 @@ use FilesystemIterator;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -43,14 +44,19 @@ class ImportThumbnailsController extends AbstractAdminController
     /** @var TreeService */
     private $tree_service;
 
+    /** @var PendingChangesService */
+    private $pending_changes_service;
+
     /**
      * ImportThumbnailsController constructor.
      *
-     * @param TreeService $tree_service
+     * @param PendingChangesService $pending_changes_service
+     * @param TreeService           $tree_service
      */
-    public function __construct(TreeService $tree_service)
+    public function __construct(PendingChangesService $pending_changes_service, TreeService $tree_service)
     {
-        $this->tree_service = $tree_service;
+        $this->pending_changes_service = $pending_changes_service;
+        $this->tree_service            = $tree_service;
     }
 
     /**
@@ -120,7 +126,7 @@ class ImportThumbnailsController extends AbstractAdminController
                     }
 
                     // Accept the changes, to keep the filesystem in sync with the GEDCOM data.
-                    FunctionsImport::acceptAllChanges($media_object->xref(), $media_object->tree());
+                    $this->pending_changes_service->acceptRecord($media_object);
                 }
                 break;
         }

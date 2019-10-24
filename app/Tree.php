@@ -24,6 +24,7 @@ use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
+use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
@@ -514,9 +515,11 @@ class Tree
 
         // Accept this pending change
         if (Auth::user()->getPreference('auto_accept')) {
-            FunctionsImport::acceptAllChanges($xref, $this);
+            $record = new GedcomRecord($xref, $gedcom, null, $this);
+            
+            app(PendingChangesService::class)->acceptRecord($record);
 
-            return new GedcomRecord($xref, $gedcom, null, $this);
+            return $record;
         }
 
         return GedcomRecord::getInstance($xref, $this, $gedcom);
@@ -593,9 +596,11 @@ class Tree
 
         // Accept this pending change
         if (Auth::user()->getPreference('auto_accept')) {
-            FunctionsImport::acceptAllChanges($xref, $this);
+            $record = new Family($xref, $gedcom, null, $this);
 
-            return new Family($xref, $gedcom, null, $this);
+            app(PendingChangesService::class)->acceptRecord($record);
+
+            return $record;
         }
 
         return new Family($xref, '', $gedcom, $this);
@@ -632,9 +637,11 @@ class Tree
 
         // Accept this pending change
         if (Auth::user()->getPreference('auto_accept')) {
-            FunctionsImport::acceptAllChanges($xref, $this);
+            $record = new Individual($xref, $gedcom, null, $this);
 
-            return new Individual($xref, $gedcom, null, $this);
+            app(PendingChangesService::class)->acceptRecord($record);
+
+            return $record;
         }
 
         return new Individual($xref, '', $gedcom, $this);
@@ -671,9 +678,11 @@ class Tree
 
         // Accept this pending change
         if (Auth::user()->getPreference('auto_accept')) {
-            FunctionsImport::acceptAllChanges($xref, $this);
+            $record = new Media($xref, $gedcom, null, $this);
 
-            return new Media($xref, $gedcom, null, $this);
+            app(PendingChangesService::class)->acceptRecord($record);
+
+            return $record;
         }
 
         return new Media($xref, '', $gedcom, $this);

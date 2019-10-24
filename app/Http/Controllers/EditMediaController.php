@@ -23,12 +23,12 @@ use Exception;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use InvalidArgumentException;
@@ -62,6 +62,19 @@ class EditMediaController extends AbstractEditController
         'privacy',
         'confidential',
     ];
+
+    /** @var PendingChangesService */
+    private $pending_changes_service;
+
+    /**
+     * EditMediaController constructor.
+     *
+     * @param PendingChangesService $pending_changes_service
+     */
+    public function __construct(PendingChangesService $pending_changes_service)
+    {
+        $this->pending_changes_service = $pending_changes_service;
+    }
 
     /**
      * Add a media file to an existing media object.
@@ -135,7 +148,7 @@ class EditMediaController extends AbstractEditController
         $media->createFact($gedcom, true);
 
         // Accept the changes, to keep the filesystem in sync with the GEDCOM data.
-        FunctionsImport::acceptAllChanges($media->xref(), $tree);
+        $this->pending_changes_service->acceptRecord($media);
 
         return redirect($media->url());
     }
@@ -266,7 +279,7 @@ class EditMediaController extends AbstractEditController
 
         // Accept the changes, to keep the filesystem in sync with the GEDCOM data.
         if ($old !== $new && !$media_file->isExternal()) {
-            FunctionsImport::acceptAllChanges($media->xref(), $tree);
+            $this->pending_changes_service->acceptRecord($media);
         }
 
         return redirect($media->url());
@@ -327,7 +340,7 @@ class EditMediaController extends AbstractEditController
 
         $media_object = $tree->createRecord($gedcom);
         // Accept the new record.  Rejecting it would leave the filesystem out-of-sync with the genealogy
-        FunctionsImport::acceptAllChanges($media_object->xref(), $tree);
+        $this->pending_changes_service->acceptRecord($media_object);
 
         return redirect($media_object->url());
     }
@@ -383,7 +396,7 @@ class EditMediaController extends AbstractEditController
         $record = $tree->createMediaObject($gedcom);
 
         // Accept the new record to keep the filesystem synchronized with the genealogy.
-        FunctionsImport::acceptAllChanges($record->xref(), $record->tree());
+        $this->pending_changes_service->acceptRecord($record);
 
         return response([
             'id'   => $record->xref(),

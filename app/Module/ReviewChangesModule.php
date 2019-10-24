@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MailService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -148,7 +149,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
         if (Auth::isEditor($tree) && $tree->hasPendingEdit()) {
             $content = '';
             if (Auth::isModerator($tree)) {
-                $content .= '<a href="' . e(route('show-pending', ['tree' => $tree->name()])) . '">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
+                $content .= '<a href="' . e(route(PendingChanges::class, ['tree' => $tree->name()])) . '">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
             }
             if ($sendmail) {
                 $last_email_timestamp = Carbon::createFromTimestamp((int) Site::getPreference('LAST_CHANGE_EMAIL'));

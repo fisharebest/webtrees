@@ -1071,42 +1071,6 @@ class FunctionsImport
     }
 
     /**
-     * Accept all pending changes for a specified record.
-     *
-     * @param string $xref
-     * @param Tree   $tree
-     *
-     * @return void
-     */
-    public static function acceptAllChanges($xref, Tree $tree): void
-    {
-        $changes = DB::table('change')
-            ->join('gedcom', 'change.gedcom_id', '=', 'gedcom.gedcom_id')
-            ->where('status', '=', 'pending')
-            ->where('xref', '=', $xref)
-            ->where('gedcom.gedcom_id', '=', $tree->id())
-            ->orderBy('change_id')
-            ->select(['change_id', 'gedcom_name', 'old_gedcom', 'new_gedcom'])
-            ->get();
-
-        foreach ($changes as $change) {
-            if ($change->new_gedcom === '') {
-                // delete
-                self::updateRecord($change->old_gedcom, $tree, true);
-            } else {
-                // add/update
-                self::updateRecord($change->new_gedcom, $tree, false);
-            }
-
-            DB::table('change')
-                ->where('change_id', '=', $change->change_id)
-                ->update(['status' => 'accepted']);
-
-            Log::addEditLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database", $tree);
-        }
-    }
-
-    /**
      * update a record in the database
      *
      * @param string $gedrec

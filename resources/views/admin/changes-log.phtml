@@ -1,18 +1,19 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogData;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogDelete;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogDownload;
 use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route('manage-trees') => I18N::translate('Manage family trees'), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route('manage-trees', ['tree' => $tree->name()]) => I18N::translate('Manage family trees'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
-<form method="get" action="<?= e(route('admin-changes-log')) ?>" class="form" name="logs">
-    <input type="hidden" name="action" value="show">
-    <input type="hidden" name="route" value="admin-changes-log">
-    <input type="hidden" name="tree" value="<?= e($ged) ?>">
+<form method="post" class="form" name="logs">
+    <?= csrf_field() ?>
 
     <div class="row">
         <div class="form-group col-xs-6 col-md-3">
@@ -63,14 +64,14 @@ use Fisharebest\Webtrees\I18N;
             <label for="username">
                 <?= I18N::translate('User') ?>
             </label>
-            <?= view('components/select', ['name' => 'username', 'selected' => $username, 'options' => $user_list]) ?>
+            <?= view('components/select', ['name' => 'username', 'selected' => $username, 'options' => $users]) ?>
         </div>
 
         <div class="form-group col-xs-6 col-md-3">
             <label for="tree">
                 <?= I18N::translate('Family tree') ?>
             </label>
-            <?= view('components/select', ['name' => 'ged', 'selected' => $ged, 'options' => $tree_list]) ?>
+            <?= view('components/select', ['name' => 'tree', 'selected' => $tree->name(), 'options' => $trees]) ?>
         </div>
     </div>
 
@@ -80,38 +81,37 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('search') ?>
         </button>
 
-        <button type="submit" class="btn btn-secondary" onclick="document.logs.action.value='export';return true;" <?= $action === 'show' ? '' : 'disabled' ?>>
+        <a class="btn btn-secondary" href="<?= (route(PendingChangesLogDownload::class, ['from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'tree' => $tree->name(), 'username' => $username])) ?>">
             <?= view('icons/download') ?>
             <?= /* I18N: A button label. */ I18N::translate('download') ?>
-        </button>
+        </a>
 
-        <button type="submit" class="btn btn-danger" data-confirm="<?= I18N::translate('Permanently delete these records?') ?>" onclick="if (confirm(this.dataset.confirm)) {document.logs.action.value='delete'; return true;} else {return false;}" <?= $action === 'show' ? '' : 'disabled' ?>>
+        <a href="#" class="btn btn-danger" data-confirm="<?= I18N::translate('Permanently delete these records?') ?>" data-post-url="<?= (route(PendingChangesLogDelete::class, ['from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'tree' => $tree->name(), 'username' => $username])) ?>">
         <?= view('icons/delete') ?>
             <?= I18N::translate('delete') ?>
-        </button>
+        </a>
     </div>
 </form>
 
-<?php if ($action === 'show') : ?>
-    <table
-        class="table table-bordered table-sm table-hover table-site-changes datatables"
-        data-ajax="<?= route('admin-changes-log-data', ['from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'ged' => $ged, 'username' => $username]) ?>"
-        data-server-side="true"
-        data-sorting="<?= e('[[ 0, "desc" ]]') ?>"
-    >
-        <caption class="sr-only">
-            <?= $title ?>
-        </caption>
-        <thead>
-            <tr>
-                <th data-visible="false"></th>
-                <th><?= I18N::translate('Timestamp') ?></th>
-                <th><?= I18N::translate('Status') ?></th>
-                <th><?= I18N::translate('Record') ?></th>
-                <th data-sortable="false"><?= I18N::translate('Data') ?></th>
-                <th><?= I18N::translate('User') ?></th>
-                <th><?= I18N::translate('Family tree') ?></th>
-            </tr>
-        </thead>
-    </table>
-<?php endif ?>
+<table
+    class="table table-bordered table-sm table-hover table-site-changes datatables"
+    data-ajax="<?= route(PendingChangesLogData::class, ['from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'tree' => $tree->name(), 'username' => $username]) ?>"
+    data-server-side="true"
+    data-sorting="<?= e('[[ 0, "desc" ]]') ?>"
+>
+    <caption class="sr-only">
+        <?= $title ?>
+    </caption>
+
+    <thead>
+        <tr>
+            <th data-visible="false"></th>
+            <th><?= I18N::translate('Timestamp') ?></th>
+            <th><?= I18N::translate('Status') ?></th>
+            <th><?= I18N::translate('Record') ?></th>
+            <th data-sortable="false"><?= I18N::translate('Data') ?></th>
+            <th><?= I18N::translate('User') ?></th>
+            <th><?= I18N::translate('Family tree') ?></th>
+        </tr>
+    </thead>
+</table>

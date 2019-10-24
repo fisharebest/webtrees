@@ -43,7 +43,7 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::extractNumber
      * @return void
      */
-    public function testConstructor($ageTest, $ageAsText):void
+    public function testConstructor($ageTest, $ageAsText): void
     {
         $age = new Age($ageTest);
         $this->assertSame($ageAsText, $age->asText());

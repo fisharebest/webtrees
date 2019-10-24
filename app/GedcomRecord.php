@@ -21,15 +21,16 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Exception;
-use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Services\PendingChangesService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use stdClass;
+
+use function app;
 
 /**
  * A GEDCOM object.
@@ -39,36 +40,26 @@ class GedcomRecord
     public const RECORD_TYPE = 'UNKNOWN';
 
     protected const ROUTE_NAME = 'record';
-
-    /** @var string The record identifier */
-    protected $xref;
-
-    /** @var Tree  The family tree to which this record belongs */
-    protected $tree;
-
-    /** @var string  GEDCOM data (before any pending edits) */
-    protected $gedcom;
-
-    /** @var string|null  GEDCOM data (after any pending edits) */
-    protected $pending;
-
-    /** @var Fact[] facts extracted from $gedcom/$pending */
-    protected $facts;
-
-    /** @var string[][] All the names of this individual */
-    protected $getAllNames;
-
-    /** @var int|null Cached result */
-    protected $getPrimaryName;
-
-    /** @var int|null Cached result */
-    protected $getSecondaryName;
-
     /** @var GedcomRecord[][] Allow getInstance() to return references to existing objects */
     public static $gedcom_record_cache;
-
     /** @var stdClass[][] Fetch all pending edits in one database query */
     public static $pending_record_cache;
+    /** @var string The record identifier */
+    protected $xref;
+    /** @var Tree  The family tree to which this record belongs */
+    protected $tree;
+    /** @var string  GEDCOM data (before any pending edits) */
+    protected $gedcom;
+    /** @var string|null  GEDCOM data (after any pending edits) */
+    protected $pending;
+    /** @var Fact[] facts extracted from $gedcom/$pending */
+    protected $facts;
+    /** @var string[][] All the names of this individual */
+    protected $getAllNames;
+    /** @var int|null Cached result */
+    protected $getPrimaryName;
+    /** @var int|null Cached result */
+    protected $getSecondaryName;
 
     /**
      * Create a GedcomRecord object from raw GEDCOM data.
@@ -152,45 +143,6 @@ class GedcomRecord
     }
 
     /**
-     * Split the record into facts
-     *
-     * @return void
-     */
-    private function parseFacts(): void
-    {
-        // Split the record into facts
-        if ($this->gedcom) {
-            $gedcom_facts = preg_split('/\n(?=1)/s', $this->gedcom);
-            array_shift($gedcom_facts);
-        } else {
-            $gedcom_facts = [];
-        }
-        if ($this->pending) {
-            $pending_facts = preg_split('/\n(?=1)/s', $this->pending);
-            array_shift($pending_facts);
-        } else {
-            $pending_facts = [];
-        }
-
-        $this->facts = [];
-
-        foreach ($gedcom_facts as $gedcom_fact) {
-            $fact = new Fact($gedcom_fact, $this, md5($gedcom_fact));
-            if ($this->pending !== null && !in_array($gedcom_fact, $pending_facts, true)) {
-                $fact->setPendingDeletion();
-            }
-            $this->facts[] = $fact;
-        }
-        foreach ($pending_facts as $pending_fact) {
-            if (!in_array($pending_fact, $gedcom_facts, true)) {
-                $fact = new Fact($pending_fact, $this, md5($pending_fact));
-                $fact->setPendingAddition();
-                $this->facts[] = $fact;
-            }
-        }
-    }
-
-    /**
      * Get an instance of a GedcomRecord object. For single records,
      * we just receive the XREF. For bulk records (such as lists
      * and search results) we can receive the GEDCOM data as well.
@@ -199,8 +151,8 @@ class GedcomRecord
      * @param Tree        $tree
      * @param string|null $gedcom
      *
-     * @throws Exception
      * @return GedcomRecord|Individual|Family|Source|Repository|Media|Note|null
+     * @throws Exception
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
     {
@@ -412,71 +364,6 @@ class GedcomRecord
     }
 
     /**
-     * Work out whether this record can be shown to a user with a given access level
-     *
-     * @param int $access_level
-     *
-     * @return bool
-     */
-    private function canShowRecord(int $access_level): bool
-    {
-        // This setting would better be called "$ENABLE_PRIVACY"
-        if (!$this->tree->getPreference('HIDE_LIVE_PEOPLE')) {
-            return true;
-        }
-
-        // We should always be able to see our own record (unless an admin is applying download restrictions)
-        if ($this->xref() === $this->tree->getUserPreference(Auth::user(), 'gedcomid') && $access_level === Auth::accessLevel($this->tree)) {
-            return true;
-        }
-
-        // Does this record have a RESN?
-        if (strpos($this->gedcom, "\n1 RESN confidential") !== false) {
-            return Auth::PRIV_NONE >= $access_level;
-        }
-        if (strpos($this->gedcom, "\n1 RESN privacy") !== false) {
-            return Auth::PRIV_USER >= $access_level;
-        }
-        if (strpos($this->gedcom, "\n1 RESN none") !== false) {
-            return true;
-        }
-
-        // Does this record have a default RESN?
-        $individual_privacy = $this->tree->getIndividualPrivacy();
-        if (isset($individual_privacy[$this->xref()])) {
-            return $individual_privacy[$this->xref()] >= $access_level;
-        }
-
-        // Privacy rules do not apply to admins
-        if (Auth::PRIV_NONE >= $access_level) {
-            return true;
-        }
-
-        // Different types of record have different privacy rules
-        return $this->canShowByType($access_level);
-    }
-
-    /**
-     * Each object type may have its own special rules, and re-implement this function.
-     *
-     * @param int $access_level
-     *
-     * @return bool
-     */
-    protected function canShowByType(int $access_level): bool
-    {
-        $fact_privacy = $this->tree->getFactPrivacy();
-
-        if (isset($fact_privacy[static::RECORD_TYPE])) {
-            // Restriction found
-            return $fact_privacy[static::RECORD_TYPE] >= $access_level;
-        }
-
-        // No restriction found - must be public:
-        return true;
-    }
-
-    /**
      * Can the details of this record be shown?
      *
      * @param int|null $access_level
@@ -562,80 +449,6 @@ class GedcomRecord
         // We cannot display the details, but we may be able to display
         // limited data, such as links to other records.
         return $this->createPrivateGedcomRecord($access_level);
-    }
-
-    /**
-     * Generate a private version of this record
-     *
-     * @param int $access_level
-     *
-     * @return string
-     */
-    protected function createPrivateGedcomRecord(int $access_level): string
-    {
-        return '0 @' . $this->xref . '@ ' . static::RECORD_TYPE . "\n1 NOTE " . I18N::translate('Private');
-    }
-
-    /**
-     * Convert a name record into sortable and full/display versions. This default
-     * should be OK for simple record types. INDI/FAM records will need to redefine it.
-     *
-     * @param string $type
-     * @param string $value
-     * @param string $gedcom
-     *
-     * @return void
-     */
-    protected function addName(string $type, string $value, string $gedcom): void
-    {
-        $this->getAllNames[] = [
-            'type'   => $type,
-            'sort'   => preg_replace_callback('/([0-9]+)/', static function (array $matches): string {
-                return str_pad($matches[0], 10, '0', STR_PAD_LEFT);
-            }, $value),
-            'full'   => '<span dir="auto">' . e($value) . '</span>',
-            // This is used for display
-            'fullNN' => $value,
-            // This goes into the database
-        ];
-    }
-
-    /**
-     * Get all the names of a record, including ROMN, FONE and _HEB alternatives.
-     * Records without a name (e.g. FAM) will need to redefine this function.
-     * Parameters: the level 1 fact containing the name.
-     * Return value: an array of name structures, each containing
-     * ['type'] = the gedcom fact, e.g. NAME, TITL, FONE, _HEB, etc.
-     * ['full'] = the name as specified in the record, e.g. 'Vincent van Gogh' or 'John Unknown'
-     * ['sort'] = a sortable version of the name (not for display), e.g. 'Gogh, Vincent' or '@N.N., John'
-     *
-     * @param int        $level
-     * @param string     $fact_type
-     * @param Collection $facts
-     *
-     * @return void
-     */
-    protected function extractNamesFromFacts(int $level, string $fact_type, Collection $facts): void
-    {
-        $sublevel    = $level + 1;
-        $subsublevel = $sublevel + 1;
-        foreach ($facts as $fact) {
-            if (preg_match_all("/^{$level} ({$fact_type}) (.+)((\n[{$sublevel}-9].+)*)/m", $fact->gedcom(), $matches, PREG_SET_ORDER)) {
-                foreach ($matches as $match) {
-                    // Treat 1 NAME / 2 TYPE married the same as _MARNM
-                    if ($match[1] === 'NAME' && strpos($match[3], "\n2 TYPE married") !== false) {
-                        $this->addName('_MARNM', $match[2], $fact->gedcom());
-                    } else {
-                        $this->addName($match[1], $match[2], $fact->gedcom());
-                    }
-                    if ($match[3] && preg_match_all("/^{$sublevel} (ROMN|FONE|_\w+) (.+)((\n[{$subsublevel}-9].+)*)/m", $match[3], $submatches, PREG_SET_ORDER)) {
-                        foreach ($submatches as $submatch) {
-                            $this->addName($submatch[1], $submatch[2], $match[3]);
-                        }
-                    }
-                }
-            }
-        }
     }
 
     /**
@@ -1226,7 +1039,7 @@ class GedcomRecord
             $this->pending = $new_gedcom;
 
             if (Auth::user()->getPreference('auto_accept')) {
-                FunctionsImport::acceptAllChanges($this->xref, $this->tree);
+                app(PendingChangesService::class)->acceptRecord($this);
                 $this->gedcom  = $new_gedcom;
                 $this->pending = null;
             }
@@ -1268,7 +1081,7 @@ class GedcomRecord
 
         // Accept this pending change
         if (Auth::user()->getPreference('auto_accept')) {
-            FunctionsImport::acceptAllChanges($this->xref, $this->tree);
+            app(PendingChangesService::class)->acceptRecord($this);
             $this->gedcom  = $gedcom;
             $this->pending = null;
         }
@@ -1298,7 +1111,7 @@ class GedcomRecord
 
         // Auto-accept this pending change
         if (Auth::user()->getPreference('auto_accept')) {
-            FunctionsImport::acceptAllChanges($this->xref, $this->tree);
+            app(PendingChangesService::class)->acceptRecord($this);
         }
 
         // Clear the cache
@@ -1366,5 +1179,183 @@ class GedcomRecord
         return $xrefs->map(function (string $xref): GedcomRecord {
             return GedcomRecord::getInstance($xref, $this->tree);
         })->all();
+    }
+
+    /**
+     * Each object type may have its own special rules, and re-implement this function.
+     *
+     * @param int $access_level
+     *
+     * @return bool
+     */
+    protected function canShowByType(int $access_level): bool
+    {
+        $fact_privacy = $this->tree->getFactPrivacy();
+
+        if (isset($fact_privacy[static::RECORD_TYPE])) {
+            // Restriction found
+            return $fact_privacy[static::RECORD_TYPE] >= $access_level;
+        }
+
+        // No restriction found - must be public:
+        return true;
+    }
+
+    /**
+     * Generate a private version of this record
+     *
+     * @param int $access_level
+     *
+     * @return string
+     */
+    protected function createPrivateGedcomRecord(int $access_level): string
+    {
+        return '0 @' . $this->xref . '@ ' . static::RECORD_TYPE . "\n1 NOTE " . I18N::translate('Private');
+    }
+
+    /**
+     * Convert a name record into sortable and full/display versions. This default
+     * should be OK for simple record types. INDI/FAM records will need to redefine it.
+     *
+     * @param string $type
+     * @param string $value
+     * @param string $gedcom
+     *
+     * @return void
+     */
+    protected function addName(string $type, string $value, string $gedcom): void
+    {
+        $this->getAllNames[] = [
+            'type'   => $type,
+            'sort'   => preg_replace_callback('/([0-9]+)/', static function (array $matches): string {
+                return str_pad($matches[0], 10, '0', STR_PAD_LEFT);
+            }, $value),
+            'full'   => '<span dir="auto">' . e($value) . '</span>',
+            // This is used for display
+            'fullNN' => $value,
+            // This goes into the database
+        ];
+    }
+
+    /**
+     * Get all the names of a record, including ROMN, FONE and _HEB alternatives.
+     * Records without a name (e.g. FAM) will need to redefine this function.
+     * Parameters: the level 1 fact containing the name.
+     * Return value: an array of name structures, each containing
+     * ['type'] = the gedcom fact, e.g. NAME, TITL, FONE, _HEB, etc.
+     * ['full'] = the name as specified in the record, e.g. 'Vincent van Gogh' or 'John Unknown'
+     * ['sort'] = a sortable version of the name (not for display), e.g. 'Gogh, Vincent' or '@N.N., John'
+     *
+     * @param int        $level
+     * @param string     $fact_type
+     * @param Collection $facts
+     *
+     * @return void
+     */
+    protected function extractNamesFromFacts(int $level, string $fact_type, Collection $facts): void
+    {
+        $sublevel    = $level + 1;
+        $subsublevel = $sublevel + 1;
+        foreach ($facts as $fact) {
+            if (preg_match_all("/^{$level} ({$fact_type}) (.+)((\n[{$sublevel}-9].+)*)/m", $fact->gedcom(), $matches, PREG_SET_ORDER)) {
+                foreach ($matches as $match) {
+                    // Treat 1 NAME / 2 TYPE married the same as _MARNM
+                    if ($match[1] === 'NAME' && strpos($match[3], "\n2 TYPE married") !== false) {
+                        $this->addName('_MARNM', $match[2], $fact->gedcom());
+                    } else {
+                        $this->addName($match[1], $match[2], $fact->gedcom());
+                    }
+                    if ($match[3] && preg_match_all("/^{$sublevel} (ROMN|FONE|_\w+) (.+)((\n[{$subsublevel}-9].+)*)/m", $match[3], $submatches, PREG_SET_ORDER)) {
+                        foreach ($submatches as $submatch) {
+                            $this->addName($submatch[1], $submatch[2], $match[3]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Split the record into facts
+     *
+     * @return void
+     */
+    private function parseFacts(): void
+    {
+        // Split the record into facts
+        if ($this->gedcom) {
+            $gedcom_facts = preg_split('/\n(?=1)/s', $this->gedcom);
+            array_shift($gedcom_facts);
+        } else {
+            $gedcom_facts = [];
+        }
+        if ($this->pending) {
+            $pending_facts = preg_split('/\n(?=1)/s', $this->pending);
+            array_shift($pending_facts);
+        } else {
+            $pending_facts = [];
+        }
+
+        $this->facts = [];
+
+        foreach ($gedcom_facts as $gedcom_fact) {
+            $fact = new Fact($gedcom_fact, $this, md5($gedcom_fact));
+            if ($this->pending !== null && !in_array($gedcom_fact, $pending_facts, true)) {
+                $fact->setPendingDeletion();
+            }
+            $this->facts[] = $fact;
+        }
+        foreach ($pending_facts as $pending_fact) {
+            if (!in_array($pending_fact, $gedcom_facts, true)) {
+                $fact = new Fact($pending_fact, $this, md5($pending_fact));
+                $fact->setPendingAddition();
+                $this->facts[] = $fact;
+            }
+        }
+    }
+
+    /**
+     * Work out whether this record can be shown to a user with a given access level
+     *
+     * @param int $access_level
+     *
+     * @return bool
+     */
+    private function canShowRecord(int $access_level): bool
+    {
+        // This setting would better be called "$ENABLE_PRIVACY"
+        if (!$this->tree->getPreference('HIDE_LIVE_PEOPLE')) {
+            return true;
+        }
+
+        // We should always be able to see our own record (unless an admin is applying download restrictions)
+        if ($this->xref() === $this->tree->getUserPreference(Auth::user(), 'gedcomid') && $access_level === Auth::accessLevel($this->tree)) {
+            return true;
+        }
+
+        // Does this record have a RESN?
+        if (strpos($this->gedcom, "\n1 RESN confidential") !== false) {
+            return Auth::PRIV_NONE >= $access_level;
+        }
+        if (strpos($this->gedcom, "\n1 RESN privacy") !== false) {
+            return Auth::PRIV_USER >= $access_level;
+        }
+        if (strpos($this->gedcom, "\n1 RESN none") !== false) {
+            return true;
+        }
+
+        // Does this record have a default RESN?
+        $individual_privacy = $this->tree->getIndividualPrivacy();
+        if (isset($individual_privacy[$this->xref()])) {
+            return $individual_privacy[$this->xref()] >= $access_level;
+        }
+
+        // Privacy rules do not apply to admins
+        if (Auth::PRIV_NONE >= $access_level) {
+            return true;
+        }
+
+        // Different types of record have different privacy rules
+        return $this->canShowByType($access_level);
     }
 }

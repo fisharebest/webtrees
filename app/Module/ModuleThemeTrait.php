@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme;
 use Fisharebest\Webtrees\I18N;
@@ -438,7 +439,7 @@ trait ModuleThemeTrait
     public function menuPendingChanges(?Tree $tree): ?Menu
     {
         if ($tree instanceof Tree && $tree->hasPendingEdit() && Auth::isModerator($tree)) {
-            $url = route('show-pending', [
+            $url = route(PendingChanges::class, [
                 'tree' => $tree->name(),
                 'url' => (string) app(ServerRequestInterface::class)->getUri(),
             ]);

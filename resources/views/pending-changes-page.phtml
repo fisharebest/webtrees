@@ -1,5 +1,13 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Tree; ?>
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptChange;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptTree;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectChange;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectTree;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+
+?>
 
 <h2 class="wt-page-title">
     <?= $title ?>
@@ -51,13 +59,11 @@
                         <?php foreach ($record_changes as $record_change) : ?>
                             <tr>
                                 <td>
-                                    <form method="post" action="<?= e(route('accept-pending', ['change_id' => $record_change->change_id, 'xref' => $record_change->xref, 'tree' => $record_change->gedcom_name, 'url' => $url])) ?>">
-                                        <?= csrf_field() ?>
-                                        <button class="btn btn-primary" type="submit">
-                                            <?= I18N::translate('Accept') ?>
-                                        </button>
-                                    </form>
+                                    <a class="btn btn-primary" href="#" data-post-url="<?= e(route(PendingChangesAcceptChange::class, ['tree' => $record_change->gedcom_name, 'xref' => $record_change->xref, 'change' => $record_change->change_id])) ?>">
+                                        <?= I18N::translate('Accept') ?>
+                                    </a>
                                 </td>
+
                                 <td>
                                     <?php foreach ($record_change->record->facts() as $fact) : ?>
                                         <?php if ($fact->getTag() !== 'CHAN' && $fact->isPendingAddition()) : ?>
@@ -71,21 +77,21 @@
                                         <?php endif ?>
                                     <?php endforeach ?>
                                 </td>
+
                                 <td>
                                     <a href="<?= e(route('message', ['to' => $record_change->user_name, 'subject' => I18N::translate('Pending changes') . ' - ' . strip_tags($record_change->record->fullName()), 'body' => $record_change->record->url(), 'tree' => $record_change->gedcom_name])) ?>" title="<?= I18N::translate('Send a message') ?>">
                                         <?= e($record_change->real_name) ?> - <?= e($record_change->user_name) ?>
                                     </a>
                                 </td>
+
                                 <td>
                                     <?= view('components/datetime', ['timestamp' => $record_change->change_time]) ?>
                                 </td>
+
                                 <td>
-                                    <form method="post" action="<?= e(route('reject-pending', ['change_id' => $record_change->change_id, 'xref' => $record_change->xref, 'tree' => $record_change->gedcom_name, 'url' => $url])) ?>">
-                                        <?= csrf_field() ?>
-                                        <button class="btn btn-secondary" type="submit">
-                                            <?= I18N::translate('Reject') ?>
-                                        </button>
-                                    </form>
+                                    <a class="btn btn-secondary" href="#" data-post-url="<?= e(route(PendingChangesRejectChange::class, ['tree' => $record_change->gedcom_name, 'xref' => $record_change->xref, 'change' => $record_change->change_id])) ?>">
+                                        <?= I18N::translate('Reject') ?>
+                                    </a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -94,19 +100,13 @@
             <?php endforeach ?>
 
             <div class="d-flex justify-content-between">
-                <form method="post" action="<?= e(route('accept-all-changes', ['tree' => $tree->name(), 'url' => $url])) ?>">
-                    <?= csrf_field() ?>
-                    <button class="btn btn-primary" type="submit">
-                        <?= I18N::translate('Accept all changes') ?>
-                    </button>
-                </form>
+                <a class="btn btn-primary" href="#" data-post-url="<?= e(route(PendingChangesAcceptTree::class, ['tree' => $tree->name()])) ?>">
+                    <?= I18N::translate('Accept all changes') ?>
+                </a>
 
-                <form method="post" action="<?= e(route('reject-all-changes', ['tree' => $tree->name(), 'url' => $url])) ?>">
-                    <?= csrf_field() ?>
-                    <button class="btn btn-secondary" type="submit" data-confirm="<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>" onclick="return confirm(this.dataset.confirm);">
-                        <?= I18N::translate('Reject all changes') ?>
-                    </button>
-                </form>
+                <a class="btn btn-secondary" href="#" data-post-url="<?= e(route(PendingChangesRejectTree::class, ['tree' => $tree->name()])) ?>" data-confirm="<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>">
+                    <?= I18N::translate('Reject all changes') ?>
+                </a>
             </div>
         </div>
     <?php endforeach ?>

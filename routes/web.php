@@ -38,6 +38,18 @@ use Fisharebest\Webtrees\Http\RequestHandlers\DeleteTreeAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser;
 use Fisharebest\Webtrees\Http\RequestHandlers\HelpText;
 use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptChange;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptTree;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogData;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogDelete;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogDownload;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectChange;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectTree;
 use Fisharebest\Webtrees\Http\RequestHandlers\PhpInformation;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectFamilyPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectGedRecordPhp;
@@ -199,9 +211,11 @@ $router->attach('', '/tree/{tree}', static function (Map $router) {
         'middleware' => [AuthManager::class]
     ]);
 
-    $router->get('admin-changes-log', '/changes-log', 'Admin\ChangesLogController::changesLog');
-    $router->get('admin-changes-log-data', '/changes-log-data', 'Admin\ChangesLogController::changesLogData');
-    $router->get('admin-changes-log-download', '/changes-log-download', 'Admin\ChangesLogController::changesLogDownload');
+    $router->get(PendingChangesLogPage::class, '/changes-log', PendingChangesLogPage::class);
+    $router->post(PendingChangesLogAction::class, '/changes-log', PendingChangesLogAction::class);
+    $router->get(PendingChangesLogData::class, '/changes-data', PendingChangesLogData::class);
+    $router->post(PendingChangesLogDelete::class, '/changes-delete', PendingChangesLogDelete::class);
+    $router->get(PendingChangesLogDownload::class, '/changes-download', PendingChangesLogDownload::class);
     $router->get('admin-trees-check', '/check', 'AdminTreesController::check');
     $router->get('admin-trees-duplicates', '/duplicates', 'AdminTreesController::duplicates');
     $router->get('admin-trees-export', '/export', 'AdminTreesController::export');
@@ -229,17 +243,18 @@ $router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->post('tree-privacy-update', '/privacy', 'AdminController::treePrivacyUpdate');
 });
 
-// Manager routes.
+// Moderator routes.
 $router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->extras([
         'middleware' => [AuthModerator::class]
     ]);
-
-    $router->get('show-pending', '/show-pending', 'PendingChangesController::showChanges');
-    $router->post('accept-pending', '/accept-pending', 'PendingChangesController::acceptChange');
-    $router->post('reject-pending', '/reject-pending', 'PendingChangesController::rejectChange');
-    $router->post('accept-all-pending', '/accept-all-pending', 'PendingChangesController::acceptAllChanges');
-    $router->post('reject-all-pending', '/reject-all-pending', 'PendingChangesController::rejectAllChanges');
+    $router->post(PendingChangesAcceptTree::class, '/accept', PendingChangesAcceptTree::class);
+    $router->post(PendingChangesAcceptRecord::class, '/accept/{xref}', PendingChangesAcceptRecord::class);
+    $router->post(PendingChangesAcceptChange::class, '/accept/{xref}/{change}', PendingChangesAcceptChange::class);
+    $router->get(PendingChanges::class, '/pending', PendingChanges::class);
+    $router->post(PendingChangesRejectTree::class, '/reject', PendingChangesRejectTree::class);
+    $router->post(PendingChangesRejectRecord::class, '/reject/{xref}', PendingChangesRejectRecord::class);
+    $router->post(PendingChangesRejectChange::class, '/reject/{xref}/{change}', PendingChangesRejectChange::class);
 });
 
 // Editor routes.
@@ -342,8 +357,6 @@ $router->attach('', '', static function (Map $router) {
 // Public routes.
 $router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->get('tree-page', '/', 'HomePageController::treePage');
-    $router->post('accept-changes', '/accept/{xref}', 'PendingChangesController::acceptChanges');
-    $router->post('accept-all-changes', '/accept-all-changes', 'PendingChangesController::acceptAllChanges');
     $router->get('autocomplete-folder', '/autocomplete-folder', 'AutocompleteController::folder');
     $router->get('autocomplete-page', '/autocomplete-page', 'AutocompleteController::page');
     $router->get('autocomplete-place', '/autocomplete-place', 'AutocompleteController::place');
@@ -361,8 +374,6 @@ $router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->get('note', '/note/{xref}{/slug}', 'NoteController::show');
     $router->get('record', '/record/{xref}{/slug}', 'GedcomRecordController::show');
     $router->get('repository', '/repository/{xref}{/slug}', 'RepositoryController::show');
-    $router->post('reject-changes', '/reject/{xref}', 'PendingChangesController::rejectChanges');
-    $router->post('reject-all-changes', '/reject-all-changes', 'PendingChangesController::rejectAllChanges');
     $router->get(ReportListPage::class, '/report', ReportListPage::class);
     $router->post(ReportListAction::class, '/report', ReportListAction::class);
     $router->get(ReportSetupPage::class, '/report/{report}', ReportSetupPage::class);
