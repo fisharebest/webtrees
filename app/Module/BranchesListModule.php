@@ -19,16 +19,18 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Controllers\BranchesController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\Auth;
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
+use function redirect;
+use function route;
 
 /**
  * Class BranchesListModule
@@ -100,6 +102,26 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
       
         $listController = new BranchesController(app(ModuleService::class));
         return $listController->page($request);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function postPageAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
+        return redirect(route('module', [
+            'module'      => $this->name(),
+            'action'      => 'Page',
+            'surname'     => $request->getParsedBody()['surname'] ?? '',
+            'soundex_dm'  => $request->getParsedBody()['soundex_dm'] ?? '',
+            'soundex_std' => $request->getParsedBody()['soundex_std'] ?? '',
+            'tree'        => $tree->name(),
+        ]));
     }
 
     /**

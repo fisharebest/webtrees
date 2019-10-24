@@ -8,16 +8,15 @@ use Fisharebest\Webtrees\I18N;
     <?= $title ?>
 </h2>
 
-<form method="get" action="<?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-branches d-print-none">
-    <input type="hidden" name="route" value="<?= e('/module/' . $module . '/' . $action) ?>">
-    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
+<form method="post" class="wt-page-options wt-page-options-branches d-print-none">
+    <?= csrf_field() ?>
 
     <div class="form-group row">
         <label class="col-form-label col-sm-3 wt-page-options-label" for="surname">
             <?= I18N::translate('Surname') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <input class="form-control" data-autocomplete-type="SURN" type="text" name="surname" id="surname" value="<?= e($surname) ?>" dir="auto">
+            <input class="form-control" data-autocomplete-type="SURN" type="text" name="surname" id="surname" value="<?= e($surname) ?>" dir="auto" required>
         </div>
     </div>
 
