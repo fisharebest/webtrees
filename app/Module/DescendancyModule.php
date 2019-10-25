@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -91,7 +90,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     public function getSearchAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $search = $request->getQueryParams()['search'];
 
@@ -121,7 +120,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     public function getDescendantsAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 

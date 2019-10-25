@@ -37,7 +37,6 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
-use InvalidArgumentException;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
@@ -303,7 +302,7 @@ trait ModuleThemeTrait
         // ...but switch from the tree-page to the user-page
         if ($request->getAttribute('route') === 'tree-page') {
             $tree = $request->getAttribute('tree');
-            assert($tree instanceof Tree, new InvalidArgumentException());
+            assert($tree instanceof Tree);
             $redirect  = route('user-page', ['tree' => $tree->name()]);
         }
 

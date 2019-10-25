@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -217,7 +216,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
     public function getAncestorsAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
@@ -240,7 +239,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
     public function getDescendantsAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 

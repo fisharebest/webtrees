@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -47,7 +46,7 @@ class SelectDefaultTree implements RequestHandlerInterface, StatusCodeInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         Site::setPreference('DEFAULT_GEDCOM', $tree->name());
 

@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use InvalidArgumentException;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
@@ -354,7 +353,7 @@ class UserService
     public function contactLink(User $contact_user, ServerRequestInterface $request): string
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $user = $request->getAttribute('user');
 

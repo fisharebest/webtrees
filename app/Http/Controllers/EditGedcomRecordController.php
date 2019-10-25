@@ -30,7 +30,6 @@ use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -311,7 +310,7 @@ class EditGedcomRecordController extends AbstractEditController
     public function addFact(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
         $fact = $request->getQueryParams()['fact'];

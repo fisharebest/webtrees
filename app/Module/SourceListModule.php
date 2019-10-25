@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Auth;
 use Illuminate\Database\Capsule\Manager as DB;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -76,10 +75,10 @@ class SourceListModule extends AbstractModule implements ModuleListInterface
      *
      * @return ResponseInterface
      */
-    public function getListAction(ServerRequestInterface $request): ResponseInterface
+    public function getListAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $user = $request->getAttribute('user');
 

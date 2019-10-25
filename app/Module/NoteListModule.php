@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Auth;
 use Illuminate\Database\Capsule\Manager as DB;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -79,7 +78,7 @@ class NoteListModule extends AbstractModule implements ModuleListInterface
     public function getListAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $user = $request->getAttribute('user');
 

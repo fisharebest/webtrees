@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
-use InvalidArgumentException;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -57,7 +56,7 @@ class DeletePath implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $path = $request->getQueryParams()['path'];
-        assert(is_string($path), new InvalidArgumentException());
+        assert(is_string($path));
 
         if ($this->filesystem->has($path)) {
             $metadata = $this->filesystem->getMetadata($path);

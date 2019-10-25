@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Tree;
-use InvalidArgumentException;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
@@ -101,7 +100,7 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
 
         // Add extra dimensions (i.e. filtering categories)
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $user = $request->getAttribute('user');
 

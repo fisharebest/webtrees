@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
@@ -391,7 +390,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     public function getShowAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         // Filter foreign languages.
         $faqs = $this->faqsForTree($tree)

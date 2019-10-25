@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -47,13 +46,13 @@ class ReorderMediaPage implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getAttribute('xref');
-        assert(is_string($xref), new InvalidArgumentException());
+        assert(is_string($xref));
 
         $individual = Individual::getInstance($xref, $tree);
-        assert($individual instanceof Individual, new InvalidArgumentException());
+        assert($individual instanceof Individual);
 
         Auth::checkIndividualAccess($individual, true);
 

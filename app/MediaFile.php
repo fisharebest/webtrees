@@ -23,7 +23,6 @@ use League\Flysystem\Adapter\Local;
 use League\Flysystem\FileNotFoundException;
 use League\Flysystem\Filesystem;
 use League\Glide\Signatures\SignatureFactory;
-use Throwable;
 
 use function getimagesize;
 use function intdiv;

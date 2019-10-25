@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -49,16 +48,16 @@ class ReorderNamesAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getAttribute('xref');
-        assert(is_string($xref), new InvalidArgumentException());
+        assert(is_string($xref));
 
         $individual = Individual::getInstance($xref, $tree);
-        assert($individual instanceof Individual, new InvalidArgumentException());
+        assert($individual instanceof Individual);
 
         $order = $request->getParsedBody()['order'];
-        assert(is_array($order), new InvalidArgumentException());
+        assert(is_array($order));
 
         Auth::checkIndividualAccess($individual, true);
 

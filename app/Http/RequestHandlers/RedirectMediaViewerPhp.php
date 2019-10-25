@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -43,10 +42,10 @@ class RedirectMediaViewerPhp implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = $request->getQueryParams()['ged'];
-        assert(is_string($tree), new InvalidArgumentException());
+        assert(is_string($tree));
 
         $xref  = $request->getQueryParams()['mid'];
-        assert(is_string($xref), new InvalidArgumentException());
+        assert(is_string($xref));
 
         $route = route('media', ['tree' => $tree, 'xref' => $xref]);
 

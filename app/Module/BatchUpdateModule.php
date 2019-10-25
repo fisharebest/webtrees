@@ -33,7 +33,6 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
@@ -350,7 +349,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
         $parameters = $request->getParsedBody();
 
         $tree = $this->tree_service->all()->get($parameters['tree' ?? '']);
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $plugin = $parameters['plugin'] ?? '';
 

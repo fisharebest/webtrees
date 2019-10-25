@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\TestCase;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 
 /**

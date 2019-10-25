@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -47,13 +46,13 @@ class ReorderChildrenPage implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getAttribute('xref');
-        assert(is_string($xref), new InvalidArgumentException());
+        assert(is_string($xref));
 
         $family = Family::getInstance($xref, $tree);
-        assert($family instanceof Family, new InvalidArgumentException());
+        assert($family instanceof Family);
 
         Auth::checkFamilyAccess($family, true);
 

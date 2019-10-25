@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -84,10 +83,10 @@ class ColorsTheme extends CloudsTheme
     public function postPaletteAction(ServerRequestInterface $request): ResponseInterface
     {
         $user = $request->getAttribute('user');
-        assert($user instanceof UserInterface, new InvalidArgumentException());
+        assert($user instanceof UserInterface);
 
         $palette = $request->getQueryParams()['palette'];
-        assert(array_key_exists($palette, $this->palettes()), new InvalidArgumentException());
+        assert(array_key_exists($palette, $this->palettes()));
 
         $user->setPreference('themecolor', $palette);
 

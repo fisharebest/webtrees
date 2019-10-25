@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -235,7 +234,7 @@ class EditIndividualController extends AbstractEditController
     public function addSpouse(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 
@@ -342,7 +341,7 @@ class EditIndividualController extends AbstractEditController
     public function addUnlinked(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         return $this->viewResponse('edit/new-individual', [
             'next_action' => 'add-unlinked-individual-action',
@@ -437,7 +436,7 @@ class EditIndividualController extends AbstractEditController
     public function editNameAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getParsedBody()['xref'];
 
@@ -459,7 +458,7 @@ class EditIndividualController extends AbstractEditController
     public function addName(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 
@@ -489,7 +488,7 @@ class EditIndividualController extends AbstractEditController
     public function addNameAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getParsedBody()['xref'];
 
@@ -510,7 +509,7 @@ class EditIndividualController extends AbstractEditController
     public function linkChildToFamily(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 
@@ -580,7 +579,7 @@ class EditIndividualController extends AbstractEditController
     public function linkSpouseToIndividual(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 

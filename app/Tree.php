@@ -23,7 +23,6 @@ use Closure;
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
-use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Database\Capsule\Manager as DB;

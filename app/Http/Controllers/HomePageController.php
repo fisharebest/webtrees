@@ -44,7 +44,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -281,7 +280,7 @@ class HomePageController extends AbstractBaseController
     public function treePage(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $has_blocks = DB::table('block')
             ->where('gedcom_id', '=', $tree->id())
@@ -395,7 +394,7 @@ class HomePageController extends AbstractBaseController
     public function treePageEdit(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $main_blocks = $this->treeBlocks($tree->id(), self::MAIN_BLOCKS);
         $side_blocks = $this->treeBlocks($tree->id(), self::SIDE_BLOCKS);

@@ -142,7 +142,6 @@ abstract class AbstractEditController extends AbstractBaseController
      * See the FunctionsEdit::handle_updatesges() function for details.
      *
      * @param string $inputRec
-     * @param string $levelOverride
      *
      * @return string
      */

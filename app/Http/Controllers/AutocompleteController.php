@@ -35,7 +35,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -244,8 +243,8 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
-        assert($tree instanceof Tree, new InvalidArgumentException());
-        assert($query !== '', new InvalidArgumentException());
+        assert($tree instanceof Tree);
+        assert($query !== '');
 
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;
@@ -285,8 +284,8 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
-        assert($tree instanceof Tree, new InvalidArgumentException());
-        assert($query !== '', new InvalidArgumentException());
+        assert($tree instanceof Tree);
+        assert($query !== '');
 
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset  = ($page - 1) * self::RESULTS_PER_PAGE;
@@ -326,8 +325,8 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
-        assert($tree instanceof Tree, new InvalidArgumentException());
-        assert($query !== '', new InvalidArgumentException());
+        assert($tree instanceof Tree);
+        assert($query !== '');
 
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset  = ($page - 1) * self::RESULTS_PER_PAGE;
@@ -367,8 +366,8 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
-        assert($tree instanceof Tree, new InvalidArgumentException());
-        assert($query !== '', new InvalidArgumentException());
+        assert($tree instanceof Tree);
+        assert($query !== '');
 
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;
@@ -403,8 +402,8 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
-        assert($tree instanceof Tree, new InvalidArgumentException());
-        assert($query !== '', new InvalidArgumentException());
+        assert($tree instanceof Tree);
+        assert($query !== '');
 
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;
@@ -438,8 +437,8 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
-        assert($tree instanceof Tree, new InvalidArgumentException());
-        assert($query !== '', new InvalidArgumentException());
+        assert($tree instanceof Tree);
+        assert($query !== '');
 
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;
@@ -474,8 +473,8 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
-        assert($tree instanceof Tree, new InvalidArgumentException());
-        assert($query !== '', new InvalidArgumentException());
+        assert($tree instanceof Tree);
+        assert($query !== '');
 
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;
@@ -510,8 +509,8 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) ($request->getParsedBody()['page'] ?? 1);
         $query = $request->getParsedBody()['q'] ?? '';
 
-        assert($tree instanceof Tree, new InvalidArgumentException());
-        assert($query !== '', new InvalidArgumentException());
+        assert($tree instanceof Tree);
+        assert($query !== '');
 
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;

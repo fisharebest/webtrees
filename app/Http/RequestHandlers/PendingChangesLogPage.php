@@ -26,13 +26,9 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function array_key_exists;
-use function reset;
 
 /**
  * Show pending changes.
@@ -67,7 +63,7 @@ class PendingChangesLogPage implements RequestHandlerInterface
         $this->layout = 'layouts/administration';
 
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $trees = $this->tree_service->titles();
 

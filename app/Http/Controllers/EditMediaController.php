@@ -295,7 +295,7 @@ class EditMediaController extends AbstractEditController
     public function createMediaObject(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         return response(view('modals/create-media-object', [
             'max_upload_size' => $this->maxUploadFilesize(),
@@ -419,7 +419,7 @@ class EditMediaController extends AbstractEditController
     public function linkMediaToIndividual(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 
@@ -439,7 +439,7 @@ class EditMediaController extends AbstractEditController
     public function linkMediaToFamily(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 
@@ -459,7 +459,7 @@ class EditMediaController extends AbstractEditController
     public function linkMediaToSource(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 

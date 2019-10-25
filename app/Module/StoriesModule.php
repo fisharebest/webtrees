@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
@@ -402,7 +401,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     public function getShowListAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $stories = DB::table('block')
             ->where('module_name', '=', $this->name())

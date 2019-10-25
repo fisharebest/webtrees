@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Session;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -43,10 +42,10 @@ class SelectLanguage implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $user = $request->getAttribute('user');
-        assert($user instanceof UserInterface, new InvalidArgumentException());
+        assert($user instanceof UserInterface);
 
         $language = $request->getAttribute('language');
-        assert(is_string($language), new InvalidArgumentException());
+        assert(is_string($language));
 
         Session::put('language', $language);
         $user->setPreference('language', $language);

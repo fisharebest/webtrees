@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Http\Controllers\BranchesController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -94,7 +93,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
     public function getPageAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $user = $request->getAttribute('user');
 
@@ -112,7 +111,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
     public function postPageAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         return redirect(route('module', [
             'module'      => $this->name(),
@@ -132,7 +131,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
     public function getListAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $user = $request->getAttribute('user');
 

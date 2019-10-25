@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Tree;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -78,7 +77,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     public function getListAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $user = $request->getAttribute('user');
 

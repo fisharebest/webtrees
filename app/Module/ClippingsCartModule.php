@@ -40,7 +40,6 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use InvalidArgumentException;
 use League\Flysystem\Filesystem;
 use League\Flysystem\MountManager;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
@@ -364,7 +363,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     public function postRemoveAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 
@@ -389,7 +388,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     public function getShowAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         return $this->viewResponse('modules/clippings/show', [
             'records' => $this->allRecordsInCart($tree),
@@ -406,7 +405,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     public function getAddFamilyAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 
@@ -540,7 +539,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     public function getAddIndividualAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 
@@ -684,7 +683,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     public function getAddMediaAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 
@@ -729,7 +728,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     public function postAddMediaAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 
@@ -752,7 +751,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     public function getAddNoteAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 
@@ -797,7 +796,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     public function postAddNoteAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 
@@ -820,7 +819,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     public function getAddRepositoryAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 
@@ -865,7 +864,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     public function postAddRepositoryAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 
@@ -888,7 +887,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     public function getAddSourceAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
 
@@ -934,7 +933,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     public function postAddSourceAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $xref   = $request->getQueryParams()['xref'];
         $option = $request->getParsedBody()['option'];

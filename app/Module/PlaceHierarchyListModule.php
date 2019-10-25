@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Controllers\PlaceHierarchyController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -76,7 +75,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     public function getListAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         $user = $request->getAttribute('user');
 

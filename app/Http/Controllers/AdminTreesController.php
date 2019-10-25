@@ -49,7 +49,6 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use InvalidArgumentException;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
 use League\Flysystem\MountManager;
@@ -132,7 +131,7 @@ class AdminTreesController extends AbstractBaseController
     public function check(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree, new InvalidArgumentException());
+        assert($tree instanceof Tree);
 
         // We need to work with raw GEDCOM data, as we are looking for errors
         // which may prevent the GedcomRecord objects from working.

@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
 use Psr\Http\Server\RequestHandlerInterface;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 use function response;
 

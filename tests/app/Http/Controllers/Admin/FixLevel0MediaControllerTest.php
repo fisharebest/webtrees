@@ -24,7 +24,6 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
-use Fisharebest\Webtrees\Tree;
 
 /**
  * Test FixLevel0MediaControllerTest class.

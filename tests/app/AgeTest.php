@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Age as WebtreesAge;
-
 /**
  * Test the Age functions
  */

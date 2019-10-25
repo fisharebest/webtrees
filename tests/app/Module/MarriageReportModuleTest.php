@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 
 /**
