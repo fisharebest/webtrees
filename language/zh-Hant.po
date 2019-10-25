@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: Chinese (Traditional) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-09-22 16:28+0100\n"
-"PO-Revision-Date: 2019-05-14 10:11+0000\n"
-"Last-Translator: rui <xmlf@hotmail.com>\n"
-"Language-Team: Chinese (Traditional) <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/zh_Hant/>\n"
+"PO-Revision-Date: 2019-10-25 20:52+0000\n"
+"Last-Translator: Yu-Ten Lee <ylee3274@yahoo.com>\n"
+"Language-Team: Chinese (Traditional) <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/zh_Hant/>\n"
 "Language: zh-Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -86,14 +86,14 @@ msgstr " 在 "
 #: statisticsplot.php:1211 statisticsplot.php:1261 statisticsplot.php:1311
 #: statisticsplot.php:1361
 msgid " per gender"
-msgstr "性别"
+msgstr " 依照性别"
 
 #: statisticsplot.php:905 statisticsplot.php:955 statisticsplot.php:1009
 #: statisticsplot.php:1059 statisticsplot.php:1113 statisticsplot.php:1163
 #: statisticsplot.php:1213 statisticsplot.php:1263 statisticsplot.php:1313
 #: statisticsplot.php:1363
 msgid " per time period"
-msgstr "日期"
+msgstr " 依照日期"
 
 # I18N: Abbreviation for "number %s"
 #. I18N: Abbreviation for "number %s"
@@ -618,7 +618,7 @@ msgstr "隔 %s 代的堂（表）兄妹"
 #: app/Date/JulianDate.php:85 app/Date/JulianDate.php:96
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;BCE"
+msgstr "%s&nbsp;紀元前"
 
 # I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
@@ -878,7 +878,7 @@ msgstr "<b>重要提示：</b>遷移嚮導不能幫助移動多媒體項目。�
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-msgstr ""
+msgstr "<b>請注意：</ b>在世人員的私人信息將僅提供給家庭親戚和密友。 在收到任何私人數據之前，將要求您驗證您的關係。 有時，死者的信息也可能是私人的。 在這種情況下，這是因為沒有足夠的有關此人的信息來確定他們是否還活著，因此我們可能沒有關於此人的更多信息。<br> <br>請在提出問題之前， 通過檢查日期，地點和近親來驗證您是否在詢問正確的人。 如果您要提交家譜數據的更改，請提供獲得數據的來源。"
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:976 admin_users.php:488 edituser.php:278
@@ -1377,7 +1377,7 @@ msgstr "在“郵件驗證”和“經管理員批准”被勾選前，用戶將
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1105
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "水印是添加到圖像上的文本，目的是阻止他人未經許可複製圖像。"
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:100
@@ -1484,16 +1484,16 @@ msgstr "A4"
 
 #: app/I18N.php:441
 msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-msgstr ""
+msgstr "小寫字母=abcdefghijklmnopqrstuvwxyz"
 
 #: app/I18N.php:439
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-msgstr ""
+msgstr "大寫字母=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:307
 msgid "API key"
-msgstr ""
+msgstr "應用程式界面用戶證號"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -1847,7 +1847,7 @@ msgstr "添加一個新的限制"
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
-msgstr ""
+msgstr "區塊內容增加時添加捲動界面"
 
 #: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1118
 #: app/Module/NotesTabModule.php:112
@@ -1939,7 +1939,7 @@ msgstr "添加相關人員"
 
 #: timeline.php:299
 msgid "Add another individual to the chart"
-msgstr "%s和引用它的個人。"
+msgstr "將他人加入圖表"
 
 #: app/Functions/FunctionsPrint.php:551
 #: resources/views/edit/paste-fact-row.phtml:7
@@ -2032,7 +2032,7 @@ msgstr "添加未鏈接的記錄"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1100
 msgid "Add watermarks to thumbnails"
-msgstr ""
+msgstr "在縮略圖上添加水印"
 
 # I18N: Description of the “HTML” module
 #. I18N: Description of the “HTML” module
@@ -2545,7 +2545,7 @@ msgstr "所有項必須完成。"
 
 #: admin_site_upgrade.php:346
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "所有檔案都具有讀寫權限。"
 
 #: admin_trees_config.php:1618
 #: resources/views/admin/trees-preferences.phtml:735
@@ -2684,12 +2684,12 @@ msgstr "相關人員是一個和這個個體有關係（如朋友或雇主）個
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:33
 msgid "An edit menu for individuals, families, sources, etc."
-msgstr ""
+msgstr "個人，家庭，來源等的編輯菜單。"
 
 #: admin_site_upgrade.php:282 admin_site_upgrade.php:304
 #: admin_site_upgrade.php:314 admin_site_upgrade.php:398
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "解壓縮文件時發生錯誤。"
 
 # I18N: Description of the “HourglassChart” module
 #. I18N: Description of the “HourglassChart” module
@@ -2872,7 +2872,7 @@ msgstr "應用設定到新的家譜"
 #: admin_users.php:100
 #, php-format
 msgid "Approval of account at %s"
-msgstr ""
+msgstr "批准以下的帳戶%s"
 
 #: admin_users.php:854 resources/views/admin/users.phtml:24
 msgid "Approved"
@@ -3622,7 +3622,7 @@ msgstr "數碼資料"
 #: app/Functions/FunctionsPrint.php:470 app/Functions/FunctionsPrint.php:367,
 #: app/Functions/FunctionsPrint.php:369 app/Functions/FunctionsPrint.php:367
 msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgstr "㣲軟地圖服務"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -4186,7 +4186,7 @@ msgstr "藍色海洋"
 
 #: message.php:127
 msgid "Body"
-msgstr ""
+msgstr "物體"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -4294,7 +4294,7 @@ msgstr "伴娘"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:117
 msgid "Brigham City, Utah, United States"
-msgstr ""
+msgstr "美國猶他州布里格姆城"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -4588,7 +4588,7 @@ msgstr "默認情況下，SMTP在端口25上工作。"
 
 #: app/Module/GoogleMapsModule.php:3955
 msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
-msgstr ""
+msgstr "一般情況下，該列表僅顯示可以在您的家譜中找到的那些地方。 您可能需要其他地方的詳細信息，例如從外部檔案批量導入的地方。 選擇此選項將顯示所有地點，包括當前未使用的地點。"
 
 #: admin_site_config.php:224
 #, php-format
@@ -4639,7 +4639,7 @@ msgstr "轉換日曆"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:123
 msgid "Calgary, Alberta, Canada"
-msgstr ""
+msgstr "加拿大艾伯塔省卡爾加里"
 
 # I18N: gedcom tag CALN
 #. I18N: gedcom tag CALN
@@ -4731,11 +4731,11 @@ msgstr "警告！這可能需要很長的時間，請耐心等候."
 
 #: admin_site_upgrade.php:138
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "警告：舊模組可能無法正常工作，或者它們可能會阻止Webtrees正常工作。"
 
 #: admin_site_upgrade.php:202
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "警告：舊主題可能無法正常工作，或者它們可能會阻止Webtrees正常工作。"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -4746,7 +4746,7 @@ msgstr "開曼群島"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:129
 msgid "Cebu City, Philippines"
-msgstr ""
+msgstr "菲律賓宿霧市"
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:29
@@ -4959,7 +4959,7 @@ msgstr "檢查掛起的更改…"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:114
 msgid "Check for custom modules…"
-msgstr "自定義模塊"
+msgstr "檢查客製化模組…"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:155
@@ -4982,7 +4982,7 @@ msgstr "檢查掛起的更改…"
 
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 msgid "Check the access rights on this folder."
-msgstr ""
+msgstr "檢查此檔案夾的存取權限。"
 
 #: setup.php:269 setup.php:341
 msgid "Check the settings and try again."
@@ -5135,7 +5135,7 @@ msgstr "選擇親戚"
 
 #: addmedia.php:460 admin_media_upload.php:213
 msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-msgstr ""
+msgstr "選擇您要上傳的縮略圖。 儘管可以為圖像自動生成縮略圖，但是您可能希望生成自己的縮略圖，尤其是對於其他媒體類型。 例如，您可以提供視頻的靜止圖像，或提供進行錄音的個人照片。"
 
 #: admin_site_config.php:131 app/Http/Controllers/AdminSiteController.php:481
 #: app/Http/Controllers/AdminSiteController.php:492
@@ -5646,7 +5646,7 @@ msgstr "庫克群島"
 
 #: app/Theme/AbstractTheme.php:345
 msgid "Cookies"
-msgstr ""
+msgstr "網l路餅乾"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -5681,7 +5681,7 @@ msgstr "複製文件…"
 #: admin_site_upgrade.php:339
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
-msgstr ""
+msgstr "將這些文件複製到文件夾%s中，並替換所有具有相同名稱的文件。"
 
 # I18N: gedcom tag COPR
 #. I18N: gedcom tag COPR
@@ -5745,7 +5745,7 @@ msgstr "國家"
 #: statisticsplot.php:1222 statisticsplot.php:1272 statisticsplot.php:1322
 #: statisticsplot.php:1372
 msgid "Counts "
-msgstr "國家"
+msgstr "數量 "
 
 #: app/Module/GoogleMapsModule.php:3449
 msgid "County"
@@ -6061,7 +6061,7 @@ msgstr "達拉斯德克薩斯"
 #. I18N: A summary of the system status
 #: admin.php:482
 msgid "Dashboard"
-msgstr ""
+msgstr "儀表板"
 
 # I18N: gedcom tag DATA
 #. I18N: gedcom tag DATA
@@ -7538,7 +7538,7 @@ msgstr "直接的祖先和他們的家庭"
 
 #: admin_site_upgrade.php:137
 msgid "Disable these modules"
-msgstr ""
+msgstr "禁用這些模組"
 
 #: admin_site_upgrade.php:201
 msgid "Disable these themes"
@@ -7595,11 +7595,11 @@ msgstr "吉布提"
 
 #: addmedia.php:473 addmedia.php:500 admin_media_upload.php:224
 msgid "Do not change to keep original filename."
-msgstr "此條目留空將以原始文件名保存"
+msgstr "請勿更改以保存原始文件檔名."
 
 #: app/Module/GoogleMapsModule.php:3687
 msgid "Do not create new locations, just import coordinates for existing locations."
-msgstr ""
+msgstr "不要創建新位置，只需導入現有位置的坐標即可。"
 
 # I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -7852,7 +7852,7 @@ msgstr "更改性別"
 #: addmedia.php:237 addmedia.php:406 app/Controller/MediaController.php:43
 #: app/Module/AlbumModule.php:159
 msgid "Edit the media object"
-msgstr "移動這個多媒體?"
+msgstr "編輯這個媒體物件"
 
 #: app/Controller/IndividualController.php:168
 #: app/Functions/FunctionsEdit.php:699 edit_interface.php:1620
@@ -8145,7 +8145,7 @@ msgstr "英格蘭"
 
 #: addmedia.php:429 app/Module/FamilyTreeFavoritesModule.php:212
 msgid "Enter an individual, family, or source ID"
-msgstr "鏈接此用戶到家譜的個人。"
+msgstr "輸入個人，家庭，或原件編號"
 
 #: app/Module/FamilyTreeFavoritesModule.php:225
 #: resources/views/modules/favorites/favorites.phtml:138
@@ -8155,7 +8155,7 @@ msgstr "輸入這個收藏的備註"
 #: addmedia.php:434
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
 msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
-msgstr ""
+msgstr "輸入或搜索該媒體對象應鏈接到的個人，家庭或來源的ID。"
 
 #: search.php:191 resources/views/search-replace-page.phtml:33
 msgid "Entire record"
@@ -9391,7 +9391,7 @@ msgstr "對於具有一個以上的家譜網站，此選項會顯示在主菜單
 #: resources/views/login-page.phtml:61
 #: resources/views/modules/login_block/sign-in.phtml:28
 msgid "Forgot password?"
-msgstr "重置密碼"
+msgstr "忘記密碼？"
 
 # I18N: gedcom tag FORM
 #. I18N: gedcom tag FORM
@@ -9835,7 +9835,7 @@ msgstr "第七月"
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:313
 msgid "Get an API key from Google."
-msgstr ""
+msgstr "從Google獲取API密鑰。"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -9937,11 +9937,11 @@ msgstr "谷歌地圖™"
 #: app/Module/GoogleMapsModule.php:339 app/Module/GoogleMapsModule.php:2082
 #: app/Module/GoogleMapsModule.php:4328
 msgid "Google Street View™"
-msgstr ""
+msgstr "Google特有街道視圖"
 
 #: app/Module/GoogleMapsModule.php:311
 msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
-msgstr ""
+msgstr "Google每天允許少量匿名地圖請求。 如果您還需要更多，則需要一個Google帳戶和一個API密鑰。"
 
 # I18N: gedcom tag GRAD
 #. I18N: gedcom tag GRAD
@@ -10516,7 +10516,7 @@ msgstr "丈夫的年齡"
 
 #: app/Module/GoogleMapsModule.php:328
 msgid "Hybrid"
-msgstr ""
+msgstr "混血"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330
 #: resources/views/admin/site-logs.phtml:36,
@@ -10538,7 +10538,7 @@ msgstr "冰島"
 
 #: app/Module/GoogleMapsModule.php:3470 app/Module/GoogleMapsModule.php:3968
 msgid "Icon"
-msgstr ""
+msgstr "圖標"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -10647,7 +10647,7 @@ msgstr "如果您之前已經創建了多媒體對象,並離線使用一個刪�
 
 #: app/Module/RecentChangesModule.php:186
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
-msgstr ""
+msgstr "如果隱藏一個空塊，您將無法更改其配置，直到不再為空塊而可見為止。"
 
 #: admin_site_config.php:192 resources/views/admin/site-preferences.phtml:28
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -10683,7 +10683,7 @@ msgstr "如果您的服務器安全政策允許,您可以使用webtrees管理頁
 #. I18N: Help text for the "Website URL" site configuration setting
 #: admin_site_config.php:310
 msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one."
-msgstr ""
+msgstr "如果可以使用多個網址訪問您的網站，例如<b> http://www.example.com/webtrees/ </b>和<b> http://webtrees.example.com/</b>，您可以指定首選的網址。 對其他網址的請求將被重定向到首選網址。"
 
 #: admin_media.php:495 app/GedcomTag.php:1787 app/GedcomTag.php:2101,
 #: app/Http/Controllers/Admin/MediaController.php:469 app/GedcomTag.php:2101
@@ -10761,7 +10761,7 @@ msgstr "在這一年…"
 
 #: app/Module/GoogleMapsModule.php:1358
 msgid "Include fully matched places"
-msgstr ""
+msgstr "包括完全匹配的地方"
 
 #: famlist.php:178 indilist.php:178 app/Http/Controllers/ListController.php:272
 #, php-format
@@ -11424,7 +11424,7 @@ msgstr "六月"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:207
 msgid "Kansas City, Missouri, United States"
-msgstr ""
+msgstr "美國密蘇里州堪薩斯城"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -11438,7 +11438,7 @@ msgstr "保持打開"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:126
 msgid "Keep link in list"
-msgstr ""
+msgstr "保持鏈接在列表中"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
@@ -13407,7 +13407,7 @@ msgstr "兵役"
 
 #: app/Module/GoogleMapsModule.php:366
 msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
-msgstr ""
+msgstr "Google地圖的最小和最大縮放級別。 級別1是全圖，級別15是單一房子。 請注意，僅在某些區域提供級別15。"
 
 # I18N: Name of a module/report
 #. I18N: Name of a module/report
@@ -14276,7 +14276,7 @@ msgstr "沒有找到GEDCOM文件。"
 
 #: app/Module/GoogleMapsModule.php:849
 msgid "No ancestors in the database."
-msgstr ""
+msgstr "數據庫中沒有祖先。"
 
 #: admin_trees_config.php:35 app/Functions/FunctionsEdit.php:119
 msgid "No calendar conversion"
@@ -14296,11 +14296,11 @@ msgstr "無聯系方式"
 
 #: admin_site_upgrade.php:144
 msgid "No custom modules are enabled."
-msgstr ""
+msgstr "沒有啟用自定義模組。"
 
 #: admin_site_upgrade.php:208
 msgid "No custom themes are enabled."
-msgstr ""
+msgstr "沒有啟用自定義主題。"
 
 #: admin_trees_duplicates.php:181
 #: resources/views/admin/trees-duplicates.phtml:31
@@ -14369,7 +14369,7 @@ msgstr "兩個人之間沒有發現有聯系。"
 
 #: app/Module/GoogleMapsModule.php:182
 msgid "No map data exists for this individual"
-msgstr "这个人没有多媒体对象。"
+msgstr "此人没有對應資料"
 
 #: admin_site_merge.php:241 admin_site_merge.php:288 admin_site_merge.php:334
 #: resources/views/admin/merge-records-step-2.phtml:52,
@@ -14393,7 +14393,7 @@ msgstr "沒有提交新聞文章。"
 
 #: app/Module/GoogleMapsModule.php:3269 app/Module/GoogleMapsModule.php:3972
 msgid "No places found"
-msgstr "任何找到地方。"
+msgstr "查無此地"
 
 #: admin_trees_places.php:128 resources/views/admin/trees-places.phtml:37
 msgid "No places have been found."
@@ -14529,7 +14529,7 @@ msgstr "挪威"
 
 #: app/Module/CensusAssistantModule.php:262
 msgid "Not a valid individual, family, or source ID"
-msgstr ""
+msgstr "不正確的個人，家庭或來源ID"
 
 #: admin.php:718 resources/views/admin/control-panel.phtml:222
 msgid "Not approved by an administrator"
@@ -14963,12 +14963,12 @@ msgstr "OpenStreetMap™"
 
 #: app/Module/GoogleMapsModule.php:373
 msgid "Optional prefixes and suffixes"
-msgstr ""
+msgstr "可選的前綴和後綴"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Oquirrh Mountain, Utah, United States"
-msgstr ""
+msgstr "美國猶他州奧奎拉山"
 
 #: app/Date/JalaliDate.php:184 app/Date/JalaliDate.php:258
 msgctxt "Abbreviation for Persian month: Ordibehesht"
@@ -14978,7 +14978,7 @@ msgstr "第二月"
 #: admin_module_menus.php:89 admin_module_sidebar.php:89
 #: admin_module_tabs.php:89
 msgid "Order"
-msgstr ""
+msgstr "順序"
 
 # I18N: 2nd month in the Persian/Jalali calendar
 #. I18N: 2nd month in the Persian/Jalali calendar
@@ -15069,7 +15069,7 @@ msgstr "其它"
 
 #: app/Module/GoogleMapsModule.php:3697
 msgid "Overwrite existing coordinates."
-msgstr "仅更新存在的记录"
+msgstr "更改現存的座標."
 
 #: statistics.php:75
 msgid "Own charts"
@@ -15348,7 +15348,7 @@ msgstr "密码必须包含至少8个字符。"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
 msgid "Payson, Utah, United States"
-msgstr ""
+msgstr "美國，猶他州，佩森"
 
 # I18N: Name of a module/chart
 # I18N: Name of a report
@@ -15469,7 +15469,7 @@ msgstr "菲律賓"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:295
 msgid "Phoenix, Arizona, United States"
-msgstr ""
+msgstr "美國亞利桑那州鳳凰城"
 
 # I18N: gedcom tag PHON
 #. I18N: gedcom tag PHON
@@ -15782,12 +15782,12 @@ msgstr "居住地"
 #: admin_site_upgrade.php:354
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "通過新增檔案, %s, 使網站離線 …"
 
 #: admin_site_upgrade.php:410
 #, php-format
 msgid "Place the website online, by deleting the file %s…"
-msgstr ""
+msgstr "通過刪除檔案, %s, 使網站離線 …"
 
 # I18N: Name of a module
 #. I18N: Name of a module
@@ -15829,11 +15829,11 @@ msgstr "播放"
 
 #: search.php:55
 msgid "Please enter a given name, surname, or place in addition to the year"
-msgstr ""
+msgstr "請輸入年份, 名字，以及姓氏或地點"
 
 #: message.php:91
 msgid "Please enter a message subject."
-msgstr "創建多媒體對象"
+msgstr "請輸入一訊息的標題."
 
 #: message.php:50 app/Http/Controllers/MessageController.php:212
 #: app/Http/Controllers/MessageController.php:221
@@ -15847,11 +15847,11 @@ msgstr "请输入一个有效的电子邮件地址。"
 
 #: message.php:96
 msgid "Please enter some message text before sending."
-msgstr ""
+msgstr "請在發送之前輸入一些訊息文字。"
 
 #: message.php:117
 msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
-msgstr ""
+msgstr "請提供您的電子郵件地址，以便我們可以與您聯繫。 如果您沒有提供您的電子郵件地址，我們將無法回復您的詢問。 您的電子郵件地址除了回復此詢問之外，不會用於任何其他地方。"
 
 # I18N: a month in the French republican calendar
 #. I18N: a month in the French republican calendar
@@ -16138,7 +16138,7 @@ msgstr "財產信息"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:303
 msgid "Provo City Center, Utah, United States"
-msgstr ""
+msgstr "美國猶他州普羅沃市中心"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -16187,7 +16187,7 @@ msgstr "問題"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:307
 msgid "Quetzaltenango, Guatemala"
-msgstr ""
+msgstr "瓜地馬拉克薩爾特南戈"
 
 #: admin_trees_config.php:1823
 #: resources/views/admin/trees-preferences.phtml:828
@@ -16230,7 +16230,7 @@ msgstr "回復: "
 #. I18N: Menu entry
 #: admin_site_readme.php:28 app/Theme/AdministrationTheme.php:104
 msgid "README documentation"
-msgstr ""
+msgstr "自述文件"
 
 #: app/GedcomCode/GedcomCodeRela.php:219 app/GedcomCode/GedcomCodeRela.php:289
 msgid "Rabbi"
@@ -16479,7 +16479,7 @@ msgstr "記錄"
 
 #: admin_site_merge.php:59
 msgid "Records are not the same type. Cannot merge records that are not the same type."
-msgstr ""
+msgstr "記錄不是同一類型。 無法合併不同類型的記錄。"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -16964,7 +16964,7 @@ msgstr "留尼旺島"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:319
 msgid "Rexburg, Idaho, United States"
-msgstr ""
+msgstr "美國愛達荷州雷克斯堡"
 
 #: index_edit.php:304 resources/views/edit-blocks-page.phtml:27
 msgid "Right section blocks"
@@ -17148,7 +17148,7 @@ msgstr "聖馬力諾"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:323
 msgid "San Salvador, El Salvador"
-msgstr ""
+msgstr "薩爾瓦多聖薩爾瓦多"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -17185,7 +17185,7 @@ msgstr "周六"
 
 #: app/Module/GoogleMapsModule.php:327
 msgid "Satellite"
-msgstr ""
+msgstr "衛星"
 
 #: app/Date/CalendarDate.php:356 app/Date/AbstractCalendarDate.php:241
 msgid "Saturday"
@@ -17921,7 +17921,7 @@ msgstr "最短的婚姻"
 
 #: app/Module/RecentChangesModule.php:181
 msgid "Should this block be hidden when it is empty"
-msgstr ""
+msgstr "該區塊為空白時是否應隱藏"
 
 #: calendar.php:221 resources/views/calendar-page.phtml:75
 msgid "Show"
@@ -18130,7 +18130,7 @@ msgstr "顯示工作/職位"
 
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr ""
+msgstr "僅顯示出生，死亡和婚姻"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:136
@@ -18626,7 +18626,7 @@ msgstr "第九月"
 
 #: app/Module/GoogleMapsModule.php:429
 msgid "Size of map (in pixels)"
-msgstr ""
+msgstr "地圖大小（以像素為單位）"
 
 # I18N: Skip over the headers and menus, to the main content of the page
 #. I18N: Skip over the headers and menus, to the main content of the page
@@ -18717,7 +18717,7 @@ msgstr "可以顯示某些頁面被訪問的次數。"
 
 #: app/Module/GoogleMapsModule.php:410
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-msgstr ""
+msgstr "某些地名可能帶有可選的前綴和後綴。 例如，“橙色”與“橙色縣”。 如果家譜包含完整的地名，但地理數據庫包含簡短的地名，則應指定要忽略的前綴和後綴的列表。 多個值應使用分號分隔。 例如“ 市; 縣”或“ 村; 鄉; 鎮。”。"
 
 # I18N: Help text for the “Fact icons” configuration setting
 #. I18N: Help text for the “Fact icons” configuration setting
@@ -19218,12 +19218,12 @@ msgstr "停止"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1113
 msgid "Store watermarked full size images on server"
-msgstr ""
+msgstr "在服務器上存儲帶水印的全尺寸影像"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1126
 msgid "Store watermarked thumbnails on server"
-msgstr ""
+msgstr "在伺服器上存儲帶水印的縮略圖"
 
 # I18N: Name of a module
 #. I18N: Name of a module
@@ -19293,7 +19293,7 @@ msgstr "甦丹"
 
 #: app/Module/GoogleMapsModule.php:394
 msgid "Suffixes"
-msgstr ""
+msgstr "後綴"
 
 # I18N: abbreviation for Sunday
 #. I18N: abbreviation for Sunday
@@ -19552,7 +19552,7 @@ msgstr "技術支持聯系方式"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:365
 msgid "Tegucigalpa, Honduras"
-msgstr ""
+msgstr "洪都拉斯特古西加爾巴"
 
 #: app/Module/HtmlBlockModule.php:276
 #: resources/views/modules/html/config.phtml:16
@@ -19569,7 +19569,7 @@ msgstr "寺廟"
 
 #: app/Module/GoogleMapsModule.php:329
 msgid "Terrain"
-msgstr ""
+msgstr "地形"
 
 # I18N: a month in the Jewish calendar
 #. I18N: a month in the Jewish calendar
@@ -19679,7 +19679,7 @@ msgstr "收集箱允許您從該家譜中提取並將其下載為GEDCOM文件。
 
 #: site-unavailable.php:52
 msgid "The database reported the following error message:"
-msgstr "下面的短讯來自網站用戶賬戶:%s。"
+msgstr "資料庫報告了以下錯誤訊息:"
 
 #: admin_trees_config.php:1197
 #: resources/views/admin/trees-preferences.phtml:429
@@ -19955,7 +19955,7 @@ msgstr "这个家庭里没有考证任务。"
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr ""
+msgstr "您將上載的媒體檔案到伺服器上，檔案的名稱可以，或者應該，與您計算機上的名稱不同。 之所以如此，是因為通常您計算機上的檔案名對您有意義，但對其他訪問此網站的人來說意義不大。 試想一想，您和其他人都嘗試上載名為“ 祖母.jpg”的不同文件的可能性。<br> <br>在此欄位上，您可以指定要上載的檔案的新名稱。 您在此處輸入的名稱也將用於命名縮略圖，縮略圖可以單獨上傳或自動生成。 您無需輸入檔案類別名（jpg，gif，pdf，doc等）。<br> <br>如此欄位保留為空白，則伺服器將使用和您計算機上載的檔案相同名稱。"
 
 #: setup.php:172 resources/views/setup/step-2-server-checks.phtml:39
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -20029,7 +20029,7 @@ msgstr "單獨羅列最常見的來源事實，這樣就可以快速添加。"
 #: admin_site_upgrade.php:338
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr ""
+msgstr "新檔案目前位於檔案夾 %s 中。"
 
 #: admin_site_config.php:496 resources/views/admin/site-registration.phtml:45
 msgid "The new user will be asked to confirm their email address before the account is created."
@@ -20037,7 +20037,7 @@ msgstr "新用戶在創建賬戶之前，要驗証他們的電子郵件地址。
 
 #: help_text.php:298
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
-msgstr ""
+msgstr "指定姓名的出現次數將顯示在地圖上。 如果將此欄位留空白，則將使用最常用的姓氏。"
 
 #: setup.php:417 app/Http/Controllers/SetupController.php:363
 #: app/Http/Controllers/SetupController.php:372
@@ -20168,7 +20168,7 @@ msgstr "文件“%s”不存在。"
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: admin_site_config.php:296
 msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
-msgstr ""
+msgstr "在需要重新登錄之前，Webtree會話保持活動狀態的時間（以秒為單位）。 預設值為7200秒，即2小時。"
 
 #: admin_site_config.php:242 admin_users.php:427 edituser.php:253
 #: resources/views/admin/site-preferences.phtml:44,
@@ -20242,7 +20242,7 @@ msgstr "%s 的版本太旧了。"
 
 #: admin_site_access.php:77
 msgid "The website access rule has been created."
-msgstr "提交者已被创建"
+msgstr "已建立網站使用規範."
 
 #: admin_site_access.php:105
 msgid "The website access rule has been deleted."
@@ -20419,13 +20419,13 @@ msgstr "這些人與 %s 無關。"
 
 #: admin.php:578
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
-msgstr ""
+msgstr "這些頁面提供對該Webtrees網站的所有首選項和管理工具的界面。"
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:150
 #, php-format
 msgid "This GEDCOM file is encoded using %1$s. Assume this to mean %2$s."
-msgstr ""
+msgstr "此GEDCOM檔案使用%1$s編碼。假定這表示%2$s。"
 
 #: login.php:97 app/Http/Controllers/Auth/LoginController.php:190
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -20464,7 +20464,7 @@ msgstr "電子郵件地址將被用來發送你的密碼提示和網站中其他
 
 #: addmedia.php:540
 msgid "This entry is ignored if you have entered a URL into the filename field."
-msgstr ""
+msgstr "如果您在檔案名字欄位中輸入了URL，則將忽略此欄位。"
 
 #: family.php:63 app/Exceptions/FamilyAccessDeniedException.php:33,
 #: app/Exceptions/FamilyNotFoundException.php:33
@@ -20528,7 +20528,7 @@ msgstr "家譜數據最近更新是在%s。"
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
-msgstr ""
+msgstr "此檔案鏈接到伺服器上的另一個家族樹。 在刪除這些鏈接之前，無法刪除，移動或重命名該檔案。"
 
 # I18N: Help text for the "Data folder" site configuration setting
 #. I18N: Help text for the "Data folder" site configuration setting
@@ -20691,7 +20691,7 @@ msgstr "这是区分大小写的。如果这个名字的数据库已经不存在
 #. I18N: Help text for the “Show chart details by default” configuration setting
 #: admin_trees_config.php:1290
 msgid "This is the initial value for the “show details” option on the charts."
-msgstr ""
+msgstr "這是圖表上“顯示詳細信息”選項的初始值。"
 
 #: admin.php:629 admin_site_upgrade.php:67
 #: app/Http/Controllers/Admin/UpgradeController.php:209,
@@ -20776,7 +20776,7 @@ msgstr "這是SMTP伺服器的名稱。\"localhost\"指郵件服務的同一台�
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1090
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
-msgstr ""
+msgstr "這是程序自動生成縮略圖時將使用的寬度（以像素為單位）。 預設值為100。"
 
 #: admin_users.php:317 edituser.php:176 login.php:424 setup.php:430
 #: resources/views/admin/users-create.phtml:19,
@@ -20864,7 +20864,7 @@ msgstr "在查看以下URL時發送了此消息: "
 
 #: message.php:113
 msgid "This message will be sent to %s"
-msgstr "信息成功发送到 %s。"
+msgstr "此訊息將送給 %s"
 
 #: setup.php:438 resources/views/setup/step-5-administrator.phtml:61
 msgid "This must be at least six characters long. It is case-sensitive."
@@ -21176,7 +21176,7 @@ msgstr "星期四"
 
 #: addmedia.php:139 admin_media_upload.php:103
 msgid "Thumbnail files must contain images."
-msgstr "缩略图"
+msgstr "縮小檔必須包含影像."
 
 #: admin_trees_config.php:1041 admin_trees_config.php:1046
 #: resources/views/admin/trees-preferences.phtml:328,
@@ -21197,7 +21197,7 @@ msgstr "星期四"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:369
 msgid "Tijuana, Mexico"
-msgstr ""
+msgstr "墨西哥蒂華納"
 
 # I18N: gedcom tag TIME
 #. I18N: gedcom tag TIME
@@ -21355,7 +21355,7 @@ msgstr "為幫助你在開始使用這一塊,我們已經創建了一些標准�
 
 #: admin_site_upgrade.php:337
 msgid "To complete the upgrade, you should install the files manually."
-msgstr ""
+msgstr "要完成升級，您應該用手動安裝文件。"
 
 #: app/Module/ResearchTaskModule.php:202
 #: resources/views/modules/todo/config.phtml:5
@@ -21373,7 +21373,7 @@ msgstr "確保與家譜的其他應用程式的兼容性，註釋、 文本和�
 #: admin_site_upgrade.php:340
 #, php-format
 msgid "To prevent visitors from accessing the website while you are in the middle of copying files, you can temporarily create a file %s on the server. If it contains a message, it will be displayed to visitors."
-msgstr ""
+msgstr "為防止用戶在複製文件的過程中訪問網站，可以在伺服器上臨時創建檔案%s。 如果該檔案包含消息，它將顯示給訪問者。"
 
 # I18N: “Apache” is a software program.
 #. I18N: “Apache” is a software program.
@@ -21757,7 +21757,7 @@ msgstr "特立尼達和多巴哥"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:375
 msgid "Trujillo, Peru"
-msgstr ""
+msgstr "秘魯特魯希略"
 
 # I18N: abbreviation for Tuesday
 #. I18N: abbreviation for Tuesday
@@ -21811,7 +21811,7 @@ msgstr "圖斯特拉-古鐵雷斯,墨西哥"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:377
 msgid "Twin Falls, Idaho, United States"
-msgstr ""
+msgstr "美國愛達荷州雙子瀑布城"
 
 # I18N: gedcom tag TYPE
 #. I18N: gedcom tag TYPE
@@ -21851,7 +21851,7 @@ msgstr "事實類型"
 
 #: app/Module/GoogleMapsModule.php:452
 msgid "Type of place markers in the place hierarchy"
-msgstr ""
+msgstr "在場所層次結構中的場所標記的類型"
 
 #. I18N: placeholder text for repeat-password field
 #: admin_users.php:354 login.php:472
@@ -21907,7 +21907,7 @@ msgstr "美屬維爾京群島"
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: admin_site_upgrade.php:41
 msgid "UTC"
-msgstr ""
+msgstr "世界標準時間(UTC)"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -21927,7 +21927,7 @@ msgstr "无法使用这些设置连接。您的伺服器给出下列错误。"
 
 #: admin_trees_config.php:674
 msgid "Unable to find record with ID"
-msgstr ""
+msgstr "找不到包含ID的記錄"
 
 # I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -22039,7 +22039,7 @@ msgstr "未知個體"
 
 #: app/Module/AlbumModule.php:190
 msgid "Unlink the media object"
-msgstr "移動這個多媒體?"
+msgstr "切斷此媒體物件的連結"
 
 #: app/GedcomTag.php:1797 app/GedcomTag.php:2111
 msgid "Unrecognized GEDCOM code"
@@ -22141,7 +22141,7 @@ msgstr "烏拉圭"
 
 #: app/Module/GoogleMapsModule.php:419
 msgid "Use Google Maps™ for the place hierarchy"
-msgstr ""
+msgstr "將Google 地圖服務用於地點層次結構"
 
 #: admin_site_config.php:117
 msgid "Use PHP mail to send messages"
@@ -22370,7 +22370,7 @@ msgstr "用戶"
 
 #: admin.php:731
 msgid "Users who are signed in"
-msgstr "你是以 %s 身份登录。"
+msgstr "目前登錄的用戶"
 
 #: admin_users.php:711 resources/views/admin/users-cleanup.phtml:39
 msgid "User’s account has been inactive too long: "
@@ -22378,7 +22378,7 @@ msgstr "用戶賬戶已停用的時間太長： "
 
 #: app/Module/GoogleMapsModule.php:599
 msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
-msgstr ""
+msgstr "使用下拉菜單可以選擇一個國家，在該國家可以選擇一個標誌。 如果未顯示標誌，則該國家沒有定義標誌。"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -22389,7 +22389,7 @@ msgstr "烏茲別克斯坦"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:379
 msgid "Vancouver, British Columbia, Canada"
-msgstr ""
+msgstr "加拿大不列顛哥倫比亞省溫哥華"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -22400,7 +22400,7 @@ msgstr "瓦努阿圖"
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:42
 msgid "Various statistics charts."
-msgstr ""
+msgstr "各種統計圖表。"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -22517,7 +22517,7 @@ msgstr "顯示"
 
 #: placelist.php:157
 msgid "View all records found in this place"
-msgstr ""
+msgstr "查看在此地找到的所有記錄"
 
 #: app/Controller/MediaController.php:136 app/Module/AlbumModule.php:143
 msgid "View the details"
@@ -22673,7 +22673,7 @@ msgstr "水印是可選的並且只對訪客生效。"
 #. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1118
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
-msgstr ""
+msgstr "大圖像生成水印的速度可能會很慢。 繁忙的網站可能更喜歡一次生成它們，並將帶水印的圖像存儲在伺服器上。"
 
 #: login.php:390 resources/views/register-success-page.phtml:13
 #, php-format
@@ -22777,7 +22777,7 @@ msgstr "當用戶註冊帳號，發送給他們的電子郵件中包含驗証連
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
-msgstr ""
+msgstr "添加鏈接時，“ ID”欄位不能是空白。"
 
 # I18N: Help text for the “Source type” configuration setting
 #. I18N: Help text for the “Source type” configuration setting
@@ -22801,7 +22801,7 @@ msgstr "當你添加，編輯或刪除信息，更改無法立即保存。他們
 
 #: message.php:132
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
-msgstr ""
+msgstr "發送此訊息時，您將收到通過電子郵件發送到您提供的地址的副本。"
 
 #: admin_users.php:599 resources/views/help/relationship-privacy.phtml:4
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
@@ -22850,12 +22850,12 @@ msgstr "鰥夫"
 
 #: app/Module/GoogleMapsModule.php:435
 msgid "Width"
-msgstr ""
+msgstr "寬度"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1072
 msgid "Width of generated thumbnails"
-msgstr ""
+msgstr "生成的縮略圖的寬度"
 
 # I18N: gedcom tag WIFE
 #. I18N: gedcom tag WIFE
@@ -22977,12 +22977,12 @@ msgstr "世界"
 #. I18N: A configuration setting. The first letter(s) in a GEDCOM identifier.
 #: admin_trees_config.php:733
 msgid "XREF prefixes"
-msgstr ""
+msgstr "XREF前綴"
 
 #. I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
 #: app/GedcomTag.php:1769
 msgid "Yahrzeit"
-msgstr ""
+msgstr "先人忌日"
 
 # I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
@@ -23060,7 +23060,7 @@ msgstr "您可以使用“主題”更改網站的外觀。每個主題都有不
 #. I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14.
 #: admin_trees_config.php:842
 msgid "You can choose the prefix that will be used whenever new XREFs are created."
-msgstr ""
+msgstr "您可以選擇在創建新的XREF時將使用的前綴。"
 
 #: admin_users.php:462 edituser.php:312
 #: resources/views/admin/users-edit.phtml:162,
@@ -23117,7 +23117,7 @@ msgstr "雖然沒有去世，埋葬，火化等記錄，你仍然可以通過添
 
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
-msgstr ""
+msgstr "您無法創建一個規則，而該規則卻阻止您自己訪問您的網站。"
 
 #: login.php:75 app/Http/Controllers/Auth/LoginController.php:168
 msgid "You cannot sign in because your browser does not accept cookies."
@@ -23129,7 +23129,7 @@ msgstr "这个记录不存在或您无权查看它。"
 
 #: admin_site_merge.php:55
 msgid "You entered the same IDs. You cannot merge the same records."
-msgstr ""
+msgstr "您輸入了相同的ID。 因此造成您不能合併相同的記錄。"
 
 #: login.php:615 resources/views/verify-success-page.phtml:9
 msgid "You have confirmed your request to become a registered user."
@@ -23149,7 +23149,7 @@ msgstr "您已登出。"
 
 #: addmedia.php:473
 msgid "You may enter a URL, beginning with “http://”."
-msgstr ""
+msgstr "您可以輸入以“ http://” 爲開頭的URL。"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:445
 #: resources/views/modules/faq/config.phtml:10
@@ -23172,11 +23172,11 @@ msgstr "你的名字"
 
 #: edituser.php:129
 msgid "You must enter a real name."
-msgstr ""
+msgstr "您必須輸入真實姓名。"
 
 #: edituser.php:124
 msgid "You must enter a username."
-msgstr ""
+msgstr "您必須輸入用戶名。"
 
 #: setup.php:421 app/Http/Controllers/SetupController.php:359
 #: app/Http/Controllers/SetupController.php:368
@@ -23234,7 +23234,7 @@ msgstr "你要用你的PhpGedView使用者和密码登陆。"
 #. I18N: Help text for the "Login URL" site configuration setting
 #: admin_site_config.php:458
 msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr ""
+msgstr "僅當您要在用戶登錄時重定向到其他網站或位置時，才需要輸入登錄URL。這在用戶登錄時需要從http切換為https時非常有用。包括完整的URL 到<i>login.php</i>。例如，https://www.yourserver.com/webtrees/login.php。"
 
 #: message.php:247
 msgid "You sent the following message to a webtrees administrator:"
@@ -23253,11 +23253,11 @@ msgstr "你應該在升級之前接受或拒絕所有待定的更改。"
 
 #: admin_site_upgrade.php:136
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "您應諮詢該模組的作者，以確認與該模組與網絡樹的版本是相容的。"
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "您應諮詢該主題的作者，以確認與該主題與網絡樹的版本是相容的。"
 
 # I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
@@ -24126,7 +24126,7 @@ msgstr "下載"
 
 #: app/Module/GoogleMapsModule.php:3372
 msgid "east"
-msgstr ""
+msgstr "東"
 
 #. I18N: A button label.
 #: admin_trees_config.php:1353 admin_trees_config.php:1634
@@ -26578,10 +26578,9 @@ msgstr "岳父/岳母"
 #: app/Functions/Functions.php:1106 app/Functions/Functions.php:1102
 #: app/Functions/Functions.php:1104 app/Functions/Functions.php:1346
 #: app/Functions/Functions.php:1342 app/Functions/Functions.php:1344
-#, fuzzy
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr "外甥"
+msgstr "外甥/侄兒"
 
 #: app/Functions/Functions.php:914 app/Functions/Functions.php:858
 msgctxt "sibling’s son"
@@ -26612,10 +26611,9 @@ msgstr "外甥子"
 #: app/Functions/Functions.php:1094 app/Functions/Functions.php:1090
 #: app/Functions/Functions.php:1092 app/Functions/Functions.php:1334
 #: app/Functions/Functions.php:1330 app/Functions/Functions.php:1332
-#, fuzzy
 msgctxt "brother’s child"
 msgid "nephew/niece"
-msgstr "外甥"
+msgstr "外甥或侄兒/外甥女或侄女"
 
 #: app/Functions/Functions.php:910 app/Functions/Functions.php:854
 msgctxt "sibling’s child"
@@ -26670,10 +26668,9 @@ msgstr "下一頁"
 #: app/Functions/Functions.php:1100 app/Functions/Functions.php:1096
 #: app/Functions/Functions.php:1098 app/Functions/Functions.php:1340
 #: app/Functions/Functions.php:1336 app/Functions/Functions.php:1338
-#, fuzzy
 msgctxt "brother’s daughter"
 msgid "niece"
-msgstr "外甥女"
+msgstr "外甥女或侄女"
 
 #: app/Functions/Functions.php:912 app/Functions/Functions.php:856
 msgctxt "sibling’s daughter"
@@ -26829,7 +26826,7 @@ msgstr "中午"
 
 #: app/Module/GoogleMapsModule.php:3361
 msgid "north"
-msgstr ""
+msgstr "北"
 
 #: statistics.php:752 statisticsplot.php:876 statisticsplot.php:926
 #: statisticsplot.php:980 statisticsplot.php:1030 statisticsplot.php:1084
@@ -26887,7 +26884,7 @@ msgstr "去世日期"
 
 #: statistics.php:708
 msgid "overall"
-msgstr ""
+msgstr "總體"
 
 #. I18N: time format “%a” - between 12:00:01 and 23:59:59
 #: app/Functions/FunctionsDate.php:90
@@ -26956,7 +26953,7 @@ msgstr "百分比"
 
 #: admin_trees_config.php:1086
 msgid "pixels"
-msgstr ""
+msgstr "像素"
 
 # I18N: A button label.
 #. I18N: A button label.
@@ -27713,7 +27710,7 @@ msgstr "按日期排序"
 
 #: app/Module/GoogleMapsModule.php:3362
 msgid "south"
-msgstr ""
+msgstr "南"
 
 #: app/Functions/Functions.php:745 edit_interface.php:1910
 #: edit_interface.php:1920 edit_interface.php:1945 edit_interface.php:1956
@@ -27959,7 +27956,7 @@ msgstr "第十三代堂兄(妹)"
 
 #: admin_trees_config.php:550
 msgid "this record does not exist"
-msgstr "这条记录不存在。"
+msgstr "此記錄不存在"
 
 # I18N: layout option for the fan chart
 #. I18N: layout option for the fan chart
@@ -28197,7 +28194,7 @@ msgstr "webtrees数据库和PhpGedView的数据库必须在同一台伺服器上
 
 #: app/Module/GoogleMapsModule.php:3373
 msgid "west"
-msgstr ""
+msgstr "西"
 
 #: app/Functions/Functions.php:727 edit_interface.php:1909
 #: edit_interface.php:1944 app/Functions/Functions.php:647
@@ -28207,7 +28204,7 @@ msgstr "妻子"
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:149
 msgid "xenea"
-msgstr ""
+msgstr "基因"
 
 #: timeline.php:130 resources/views/modules/timeline-chart/chart.phtml:136
 msgid "years"
@@ -28363,7 +28360,7 @@ msgstr "…"
 #: indilist.php:230
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Family.php:353 app/Family.php:369 app/Individual.php:1213
 #: app/Individual.php:1303 app/Module/FamiliesSidebarModule.php:153
@@ -28372,4 +28369,4 @@ msgstr ""
 #: famlist.php:140 indilist.php:83 indilist.php:108 indilist.php:140
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
