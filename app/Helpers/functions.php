@@ -201,7 +201,7 @@ function route(string $route_name, array $parameters = []): string
         $url        = $base_path . '/index.php';
     }
 
-    return Html::url($url, $parameters);
+    return Html::url($prefix . $url, $parameters);
 }
 
 /**
