@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class CkeditorModule
@@ -73,9 +74,12 @@ class CkeditorModule extends AbstractModule implements ModuleExternalUrlInterfac
      */
     public function bodyContent(): string
     {
+        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
         return view('modules/ckeditor/ckeditor-js', [
             'ckeditor_path' => asset(self::CKEDITOR_PATH),
-            'language'      => app(LocaleInterface::class)->language()->code(),
+            'language'      => $locale->language()->code(),
         ]);
     }
 }

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
@@ -26,6 +27,8 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+
+use function assert;
 
 /**
  * Show a login form.
@@ -39,6 +42,9 @@ class LoginPage extends AbstractBaseController
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $locale = $request->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
         $tree = $request->getAttribute('tree');
         $user = $request->getAttribute('user');
 
@@ -65,7 +71,7 @@ class LoginPage extends AbstractBaseController
                 $welcome = I18N::translate('You need to be a family member to access this website.');
                 break;
             case '4':
-                $welcome = Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE);
+                $welcome = Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . $locale->languageTag());
                 break;
         }
 

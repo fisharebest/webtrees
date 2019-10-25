@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Exception;
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
@@ -36,6 +37,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+use function assert;
 
 /**
  * Process a user registration.
@@ -73,6 +76,9 @@ class RegisterAction extends AbstractBaseController
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $locale = $request->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
         $this->checkRegistrationAllowed();
 
         $tree     = $request->getAttribute('tree');
@@ -99,7 +105,7 @@ class RegisterAction extends AbstractBaseController
 
         $user = $this->user_service->create($username, $realname, $email, $password);
         $user
-            ->setPreference('language', WT_LOCALE)
+            ->setPreference('language', $locale->languageTag())
             ->setPreference('verified', '0')
             ->setPreference('verified_by_admin', '0')
             ->setPreference('reg_timestamp', date('U'))

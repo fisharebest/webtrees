@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
@@ -31,6 +32,8 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+
+use function assert;
 
 /**
  * Acknowledge an email verification code.
@@ -66,6 +69,9 @@ class VerifyEmail implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $locale = $request->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
         $username = $request->getQueryParams()['username'] ?? '';
         $token    = $request->getQueryParams()['token'] ?? '';
 
@@ -103,7 +109,7 @@ class VerifyEmail implements RequestHandlerInterface
                         'body'       => view('emails/verify-notify-text', ['user' => $user]),
                     ]);
                 }
-                I18N::init(WT_LOCALE);
+                I18N::init($locale->languageTag());
             }
 
             $user

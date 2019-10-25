@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\I18N;
@@ -29,10 +30,12 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+use Psr\Http\Message\ServerRequestInterface;
 use RuntimeException;
 use stdClass;
 
 use function app;
+use function assert;
 
 /**
  * Tree management and queries.
@@ -154,6 +157,9 @@ class TreeService
      */
     public function create(string $name, string $title): Tree
     {
+        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
         DB::table('gedcom')->insert([
             'gedcom_name' => $name,
         ]);
@@ -189,8 +195,8 @@ class TreeService
         // Gedcom and privacy settings
         $tree->setPreference('CONTACT_USER_ID', (string) Auth::id());
         $tree->setPreference('WEBMASTER_USER_ID', (string) Auth::id());
-        $tree->setPreference('LANGUAGE', WT_LOCALE); // Default to the current admin’s language
-        $tree->setPreference('SURNAME_TRADITION', self::DEFAULT_SURNAME_TRADITIONS[WT_LOCALE] ?? 'paternal');
+        $tree->setPreference('LANGUAGE', $locale->languageTag()); // Default to the current admin’s language
+        $tree->setPreference('SURNAME_TRADITION', self::DEFAULT_SURNAME_TRADITIONS[$locale->languageTag()] ?? 'paternal');
 
         // A tree needs at least one record.
         $head = "0 HEAD\n1 SOUR webtrees\n2 DEST webtrees\n1 GEDC\n2 VERS 5.5.1\n2 FORM LINEAGE-LINKED\n1 CHAR UTF-8";

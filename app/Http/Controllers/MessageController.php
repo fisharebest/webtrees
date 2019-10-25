@@ -387,6 +387,7 @@ class MessageController extends AbstractBaseController
         $success = true;
 
         // Temporarily switch to the recipient's language
+        $old_language = I18N::languageTag();
         I18N::init($recipient->getPreference('language'));
 
         $body_text = view('emails/message-user-text', [
@@ -426,7 +427,7 @@ class MessageController extends AbstractBaseController
             );
         }
 
-        I18N::init(WT_LOCALE);
+        I18N::init($old_language);
 
         return $success;
     }

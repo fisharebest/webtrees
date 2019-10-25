@@ -19,9 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
+use Psr\Http\Message\ServerRequestInterface;
 
+use function app;
+use function assert;
 use function count;
 
 /**
@@ -82,14 +86,15 @@ class ChartMortality
 
         $colors = $this->color_service->interpolateRgb($color_living, $color_dead, count($data) - 1);
 
-        return view(
-            'statistics/other/charts/pie',
-            [
-                'title'            => null,
-                'data'             => $data,
-                'colors'           => $colors,
-                'labeledValueText' => 'percentage',
-            ]
-        );
+        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
+        return view('statistics/other/charts/pie', [
+            'title'            => null,
+            'data'             => $data,
+            'colors'           => $colors,
+            'labeledValueText' => 'percentage',
+            'language'         => $locale->languageTag(),
+        ]);
     }
 }

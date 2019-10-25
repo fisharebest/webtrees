@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
@@ -43,6 +44,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use function assert;
 use function e;
 use function route;
 
@@ -307,6 +309,9 @@ class UsersController extends AbstractAdminController
      */
     public function edit(ServerRequestInterface $request): ResponseInterface
     {
+        $locale = $request->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
         $user_id = (int) $request->getQueryParams()['user_id'];
         $user    = $this->user_service->find($user_id);
 
@@ -316,7 +321,7 @@ class UsersController extends AbstractAdminController
 
         return $this->viewResponse('admin/users-edit', [
             'contact_methods' => FunctionsEdit::optionsContactMethods(),
-            'default_locale'  => WT_LOCALE,
+            'default_locale'  => $locale->languageTag(),
             'locales'         => I18N::installedLocales(),
             'roles'           => $this->roles(),
             'trees'           => $this->tree_service->all(),
@@ -333,6 +338,9 @@ class UsersController extends AbstractAdminController
      */
     public function save(ServerRequestInterface $request): ResponseInterface
     {
+        $locale = $request->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
         $username  = $request->getParsedBody()['username'];
         $real_name = $request->getParsedBody()['real_name'];
         $email     = $request->getParsedBody()['email'];
@@ -361,7 +369,7 @@ class UsersController extends AbstractAdminController
 
         $new_user = $this->user_service->create($username, $real_name, $email, $password)
             ->setPreference('verified', '1')
-            ->setPreference('language', WT_LOCALE)
+            ->setPreference('language', $locale->languageTag())
             ->setPreference('timezone', Site::getPreference('TIMEZONE'))
             ->setPreference('reg_timestamp', date('U'))
             ->setPreference('sessiontime', '0');

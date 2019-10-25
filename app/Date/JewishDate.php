@@ -22,6 +22,10 @@ namespace Fisharebest\Webtrees\Date;
 use Fisharebest\ExtCalendar\JewishCalendar;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
+use Psr\Http\Message\ServerRequestInterface;
+
+use function app;
+use function assert;
 
 /**
  * Definitions for the Jewish calendar
@@ -70,9 +74,10 @@ class JewishDate extends AbstractCalendarDate
      */
     protected function formatDay(): string
     {
-        $locale = app(LocaleInterface::class)->language()->code();
+        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
 
-        if ($locale === 'he' || $locale === 'yi') {
+        if ($locale->script()->code() === 'Hebr') {
             return (new JewishCalendar())->numberToHebrewNumerals($this->day, true);
         }
 
@@ -89,9 +94,10 @@ class JewishDate extends AbstractCalendarDate
      */
     protected function formatShortYear(): string
     {
-        $locale = app(LocaleInterface::class)->language()->code();
+        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
 
-        if ($locale === 'he' || $locale === 'yi') {
+        if ($locale->script()->code() === 'Hebr') {
             return (new JewishCalendar())->numberToHebrewNumerals($this->year, false);
         }
 
@@ -105,9 +111,10 @@ class JewishDate extends AbstractCalendarDate
      */
     protected function formatLongYear(): string
     {
-        $locale = app(LocaleInterface::class)->language()->code();
+        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
 
-        if ($locale === 'he' || $locale === 'yi') {
+        if ($locale->script()->code() === 'Hebr') {
             return (new JewishCalendar())->numberToHebrewNumerals($this->year, true);
         }
 

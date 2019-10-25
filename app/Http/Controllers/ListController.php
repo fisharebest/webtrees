@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
@@ -103,6 +104,9 @@ class ListController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $locale = $request->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
         $user = $request->getAttribute('user');
 
         // This action can show lists of both families and individuals.
@@ -181,7 +185,7 @@ class ListController extends AbstractBaseController
             } else {
                 // The surname parameter is a root/canonical form.
                 // Display it as the actual surname
-                $legend = implode('/', array_keys($this->individual_list_service->surnames($surname, $alpha, $show_marnm === 'yes', $families, WT_LOCALE, I18N::collation())));
+                $legend = implode('/', array_keys($this->individual_list_service->surnames($surname, $alpha, $show_marnm === 'yes', $families, $locale->languageTag(), I18N::collation())));
             }
             $params = [
                 'tree'     => $tree->name(),
@@ -241,7 +245,7 @@ class ListController extends AbstractBaseController
         <div class="d-flex flex-column wt-page-options wt-page-options-individual-list d-print-none">
             <ul class="d-flex flex-wrap list-unstyled justify-content-center wt-initials-list wt-initials-list-surname">
 
-                <?php foreach ($this->individual_list_service->surnameAlpha($show_marnm === 'yes', $families, WT_LOCALE, I18N::collation()) as $letter => $count) : ?>
+                <?php foreach ($this->individual_list_service->surnameAlpha($show_marnm === 'yes', $families, $locale->languageTag(), I18N::collation()) as $letter => $count) : ?>
                     <li class="wt-initials-list-item d-flex">
                         <?php if ($count > 0) : ?>
                             <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'alpha' => $letter, 'tree' => $tree->name()])) ?>" class="wt-initial px-1<?= $letter === $alpha ? ' active' : '' ?> '" title="<?= I18N::number($count) ?>"><?= $this->surnameInitial((string) $letter) ?></a>
@@ -298,7 +302,7 @@ class ListController extends AbstractBaseController
             <?php
 
             if ($show === 'indi' || $show === 'surn') {
-                $surns = $this->individual_list_service->surnames($surname, $alpha, $show_marnm === 'yes', $families, WT_LOCALE, I18N::collation());
+                $surns = $this->individual_list_service->surnames($surname, $alpha, $show_marnm === 'yes', $families, $locale->languageTag(), I18N::collation());
                 if ($show === 'surn') {
                     // Show the surname list
                     switch ($tree->getPreference('SURNAME_LIST_STYLE')) {
@@ -329,7 +333,7 @@ class ListController extends AbstractBaseController
                     if ($count < $tree->getPreference('SUBLIST_TRIGGER_I')) {
                         $falpha = '';
                     } else {
-                        $givn_initials = $this->individual_list_service->givenAlpha($surname, $alpha, $show_marnm === 'yes', $families, WT_LOCALE, I18N::collation());
+                        $givn_initials = $this->individual_list_service->givenAlpha($surname, $alpha, $show_marnm === 'yes', $families, $locale->languageTag(), I18N::collation());
                         // Break long lists by initial letter of given name
                         if ($surname !== '' || $show_all === 'yes') {
                             if ($show_all === 'no') {

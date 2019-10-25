@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -28,6 +29,10 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
+use Psr\Http\Message\ServerRequestInterface;
+
+use function app;
+use function assert;
 
 /**
  * Find lists and counts of individuals with specified initials, names and surnames.
@@ -272,6 +277,9 @@ class IndividualListService
      */
     public function individuals($surn, $salpha, $galpha, $marnm, $fams, string $collation): array
     {
+        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
         // Use specific collation for name fields.
         $n_givn = $this->fieldWithCollation('n_givn', $collation);
         $n_surn = $this->fieldWithCollation('n_surn', $collation);
@@ -295,13 +303,13 @@ class IndividualListService
         } elseif ($salpha === '@') {
             $query->where($n_surn, '=', '@N.N.');
         } elseif ($salpha) {
-            $this->whereInitial($query, 'n_surn', $salpha, WT_LOCALE, I18N::collation());
+            $this->whereInitial($query, 'n_surn', $salpha, $locale->languageTag(), I18N::collation());
         } else {
             // All surnames
             $query->whereNotIn($n_surn, ['', '@N.N.']);
         }
         if ($galpha) {
-            $this->whereInitial($query, 'n_givn', $galpha, WT_LOCALE, I18N::collation());
+            $this->whereInitial($query, 'n_givn', $galpha, $locale->languageTag(), I18N::collation());
         }
 
         $query

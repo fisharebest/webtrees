@@ -428,6 +428,14 @@ class I18N
     }
 
     /**
+     * @return string
+     */
+    public static function languageTag(): string
+    {
+        return self::$locale->languageTag();
+    }
+
+    /**
      * Return the script used by a given language
      *
      * @param string $locale

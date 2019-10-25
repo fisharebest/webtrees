@@ -19,11 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
+use Psr\Http\Message\ServerRequestInterface;
 
+use function app;
+use function assert;
 use function count;
 
 /**
@@ -152,13 +156,14 @@ class ChartCommonSurname
 
         $colors = $this->color_service->interpolateRgb($color_from, $color_to, count($data) - 1);
 
-        return view(
-            'statistics/other/charts/pie',
-            [
-                'title'  => null,
-                'data'   => $data,
-                'colors' => $colors,
-            ]
-        );
+        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
+        return view('statistics/other/charts/pie', [
+            'title'    => null,
+            'data'     => $data,
+            'colors'   => $colors,
+            'language' => $locale->languageTag(),
+        ]);
     }
 }

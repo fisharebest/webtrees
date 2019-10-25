@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -34,6 +35,8 @@ use Fisharebest\Webtrees\TreeUser;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
+
+use function assert;
 
 /**
  * Class ReviewChangesModule
@@ -102,6 +105,9 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
+        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
         $sendmail = (bool) $this->getBlockSetting($block_id, 'sendmail', '1');
         $days     = (int) $this->getBlockSetting($block_id, 'days', '1');
 
@@ -138,7 +144,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                                         'user' => $user,
                                     ])
                                 );
-                                I18N::init(WT_LOCALE);
+                                I18N::init($locale->languageTag());
                             }
                         }
                     }

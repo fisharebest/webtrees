@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\I18N;
@@ -1037,13 +1038,14 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             'colors'   => $colors,
         ];
 
-        return view(
-            'statistics/other/charts/custom',
-            [
-                'data'          => $data,
-                'chart_options' => $chart_options,
-                'chart_title'   => $chart_title,
-            ]
-        );
+        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
+        return view('statistics/other/charts/custom', [
+            'data'          => $data,
+            'chart_options' => $chart_options,
+            'chart_title'   => $chart_title,
+            'language'      => $locale->languageTag(),
+        ]);
     }
 }

@@ -17,10 +17,11 @@ use Psr\Http\Message\ServerRequestInterface;
  * @var string $content
  */
 
+$language_tag = app(ServerRequestInterface::class)->getAttribute('locale')->languageTag();
 ?>
 
 <!DOCTYPE html>
-<html dir="<?= I18N::direction() ?>" lang="<?= WT_LOCALE ?>">
+<html dir="<?= I18N::direction() ?>" lang="<?= e($language_tag) ?>">
     <head>
         <meta charset="UTF-8">
         <meta name="csrf" content="<?= e(csrf_token()) ?>">

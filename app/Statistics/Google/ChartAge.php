@@ -19,13 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
+
+use function app;
 
 /**
  * A chart showing the average age of individuals related to the death century.
@@ -143,13 +147,14 @@ class ChartAge
             ],
         ];
 
-        return view(
-            'statistics/other/charts/combo',
-            [
-                'data'          => $data,
-                'chart_options' => $chart_options,
-                'chart_title'   => $chart_title,
-            ]
-        );
+        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
+        return view('statistics/other/charts/combo', [
+            'data'          => $data,
+            'chart_options' => $chart_options,
+            'chart_title'   => $chart_title,
+            'language'      => $locale->languageTag(),
+        ]);
     }
 }

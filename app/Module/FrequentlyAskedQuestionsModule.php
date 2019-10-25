@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
@@ -103,7 +104,10 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function getMenu(Tree $tree): ?Menu
     {
-        if ($this->faqsExist($tree, WT_LOCALE)) {
+        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
+        if ($this->faqsExist($tree, $locale->languageTag())) {
             return new Menu($this->title(), route('module', [
                 'module' => $this->name(),
                 'action' => 'Show',
@@ -389,13 +393,16 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function getShowAction(ServerRequestInterface $request): ResponseInterface
     {
+        $locale = $request->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
         // Filter foreign languages.
         $faqs = $this->faqsForTree($tree)
-            ->filter(static function (stdClass $faq): bool {
-                return $faq->languages === '' || in_array(WT_LOCALE, explode(',', $faq->languages), true);
+            ->filter(static function (stdClass $faq) use ($locale): bool {
+                return $faq->languages === '' || in_array($locale->languageTag(), explode(',', $faq->languages), true);
             });
 
         return $this->viewResponse('modules/faq/show', [

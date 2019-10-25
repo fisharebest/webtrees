@@ -145,8 +145,6 @@ class SetupController extends AbstractBaseController
             );
         }
 
-        define('WT_LOCALE', $data['lang']);
-
         switch ($step) {
             default:
             case 1:
@@ -399,7 +397,7 @@ class SetupController extends AbstractBaseController
         // Create the user
         if ($admin === null) {
             $admin = $this->user_service->create($data['wtuser'], $data['wtname'], $data['wtemail'], $data['wtpass'])
-                ->setPreference('language', WT_LOCALE)
+                ->setPreference('language', $data['lang'])
                 ->setPreference('visibleonline', '1');
         } else {
             $admin->setPassword($_POST['wtpass']);
@@ -421,6 +419,7 @@ class SetupController extends AbstractBaseController
 
         Session::start($request);
         Auth::login($admin);
+        Session::put('language', $data['lang']);
     }
 
     private function connectToDatabase(array $data): void

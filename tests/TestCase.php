@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees;
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Localization\Locale\LocaleEnUs;
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Http\Controllers\GedcomFileController;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
@@ -84,7 +83,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         app()->instance('cache.array', new Repository(new NullStore()));
 
         app()->instance(FilesystemInterface::class, new Filesystem(new MemoryAdapter()));
-        app()->bind(LocaleInterface::class, LocaleEnUs::class);
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
 
         // Need the routing table, to generate URLs.
@@ -92,7 +90,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         require __DIR__ . '/../routes/web.php';
 
         defined('WT_DATA_DIR') || define('WT_DATA_DIR', Webtrees::ROOT_DIR . 'data/');
-        defined('WT_LOCALE') || define('WT_LOCALE', I18N::init('en-US', null, true));
+        I18N::init('en-US', null, true);
 
         if (static::$uses_database) {
             static::createTestDatabase();
@@ -172,7 +170,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
             ->withParsedBody($params)
             ->withUploadedFiles($files)
             ->withAttribute('base_url', 'https://webtrees.test')
-            ->withAttribute('client-ip', '127.0.0.1');
+            ->withAttribute('client-ip', '127.0.0.1')
+            ->withAttribute('locale', new LocaleEnUs());
 
         app()->instance(ServerRequestInterface::class, $request);
         View::share('request', $request);

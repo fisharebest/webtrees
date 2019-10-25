@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\Site;
             <?= /* I18N: A configuration setting */ I18N::translate('Custom welcome text') ?>
         </label>
         <div class="col-sm-9">
-            <textarea class="form-control" id="WELCOME_TEXT_AUTH_MODE_4" name="WELCOME_TEXT_AUTH_MODE_4" rows="5" dir="auto" maxlength="2000"><?= e(Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE)) ?></textarea>
+            <textarea class="form-control" id="WELCOME_TEXT_AUTH_MODE_4" name="WELCOME_TEXT_AUTH_MODE_4" rows="5" dir="auto" maxlength="2000"><?= e(Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . $language_tag)) ?></textarea>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the "Custom welcome text" site configuration setting */ I18N::translate('To set this text for other languages, you must switch to that language, and visit this page again.') ?>
             </p>

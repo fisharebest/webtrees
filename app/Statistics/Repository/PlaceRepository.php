@@ -269,6 +269,8 @@ class PlaceRepository implements PlaceRepositoryInterface
 
         // Get the country names for each language
         $country_names = [];
+        $old_language = I18N::languageTag();
+
         foreach (I18N::activeLocales() as $locale) {
             I18N::init($locale->languageTag());
             $all_countries = $this->country_service->getAllCountries();
@@ -277,7 +279,7 @@ class PlaceRepository implements PlaceRepositoryInterface
             }
         }
 
-        I18N::init(WT_LOCALE);
+        I18N::init($old_language);
 
         $all_db_countries = [];
         foreach ($countries as $place) {

@@ -43,11 +43,12 @@ class UseLocale implements MiddlewareInterface
     {
         $tree = $request->getAttribute('tree');
 
-        // Select a locale
-        define('WT_LOCALE', I18N::init('', $tree));
-        Session::put('language', WT_LOCALE);
+        // Select a locale and store it in the request and session.
+        $code    = I18N::init('', $tree);
+        $locale  = WebtreesLocale::create($code);
+        $request = $request->withAttribute('locale', $locale);
 
-        app()->instance(LocaleInterface::class, WebtreesLocale::create(WT_LOCALE));
+        Session::put('language', $code);
 
         return $handler->handle($request);
     }

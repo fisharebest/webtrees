@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Functions;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Census\Census;
 use Fisharebest\Webtrees\Config;
@@ -48,6 +49,8 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ServerRequestInterface;
 use Ramsey\Uuid\Uuid;
+
+use function app;
 
 /**
  * Class FunctionsEdit - common functions for editing
@@ -404,8 +407,11 @@ class FunctionsEdit
             $html .= '<input type="hidden" id="' . $id . '" name="' . $name . '" value="' . $value . '">';
 
             if ($fact === 'CENS' && $value === 'Y') {
+                $locale = app(ServerRequestInterface::class)->getAttribute('locale');
+                assert($locale instanceof LocaleInterface);
+
                 $html .= view('modules/GEDFact_assistant/select-census', [
-                    'census_places' => Census::censusPlaces(WT_LOCALE),
+                    'census_places' => Census::censusPlaces($locale->languageTag()),
                 ]);
 
                 $census_assistant = app(ModuleService::class)->findByInterface(CensusAssistantModule::class)->first();

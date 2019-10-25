@@ -21,7 +21,9 @@ namespace Fisharebest\Webtrees;
 
 use Carbon\CarbonImmutable;
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
+use function app;
 use function unixtojd;
 
 /**
@@ -48,9 +50,11 @@ class Carbon extends CarbonImmutable
      */
     public function local(): Carbon
     {
-        $locale   = app(LocaleInterface::class)->code();
+        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
         $timezone = Auth::user()->getPreference('TIMEZONE', Site::getPreference('TIMEZONE', 'UTC'));
 
-        return $this->locale($locale)->setTimezone($timezone);
+        return $this->locale($locale->code())->setTimezone($timezone);
     }
 }

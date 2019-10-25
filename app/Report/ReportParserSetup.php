@@ -23,6 +23,9 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
+use Psr\Http\Message\ServerRequestInterface;
+
+use function app;
 
 /**
  * Class ReportParserSetup - parse a report.xml file and extract the setup options.
@@ -146,7 +149,10 @@ class ReportParserSetup extends ReportParserBase
                 }
             }
         } elseif ($attrs['name'] === 'pageSize') {
-            $this->input['default'] = app(LocaleInterface::class)->territory()->paperSize();
+            $locale = app(ServerRequestInterface::class)->getAttribute('locale');
+            assert($locale instanceof LocaleInterface);
+
+            $this->input['default'] = $locale->territory()->paperSize();
         }
     }
 

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
@@ -28,9 +29,12 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
+use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
+use function app;
 use function array_key_exists;
+use function assert;
 
 /**
  * A chart showing the distribution of different events on a map.
@@ -323,8 +327,6 @@ class ChartDistribution
         string $chart_type = '',
         string $surname = ''
     ): string {
-        I18N::init(WT_LOCALE);
-
         switch ($chart_type) {
             case 'surname_distribution_chart':
                 $chart_title = I18N::translate('Surname distribution chart') . ': ' . $surname;
@@ -356,15 +358,16 @@ class ChartDistribution
         $chart_color2 = $this->theme->parameter('distribution-chart-high-values');
         $chart_color3 = $this->theme->parameter('distribution-chart-low-values');
 
-        return view(
-            'statistics/other/charts/geo',
-            [
-                'chart_title'  => $chart_title,
-                'chart_color2' => $chart_color2,
-                'chart_color3' => $chart_color3,
-                'region'       => $chart_shows,
-                'data'         => $data,
-            ]
-        );
+        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
+        return view('statistics/other/charts/geo', [
+            'chart_title'  => $chart_title,
+            'chart_color2' => $chart_color2,
+            'chart_color3' => $chart_color3,
+            'region'       => $chart_shows,
+            'data'         => $data,
+            'language'     => $locale->languageTag(),
+        ]);
     }
 }

@@ -16,7 +16,7 @@ use Fisharebest\Webtrees\I18N;
                         <?= $chart_title ?>
                     </div>
                     <div class="card-body">
-                        <?= view('statistics/other/charts/column', [ 'data' => $data, 'chart_options' => $chart_options]) ?>
+                        <?= view('statistics/other/charts/column', [ 'data' => $data, 'chart_options' => $chart_options, 'language' => $language]) ?>
                     </div>
                 </div>
             </div>
