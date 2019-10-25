@@ -92,8 +92,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             ->tokens([
                 'ancestors' => '\d+',
                 'recursion' => '\d+',
-            ])->defaults([
-                'xref2' => '',
             ]);
     }
 
@@ -198,16 +196,20 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         $tree      = $request->getAttribute('tree');
         $user      = $request->getAttribute('user');
         $xref      = $request->getAttribute('xref');
-        $xref2     = $request->getAttribute('xref2');
+        $xref2     = $request->getAttribute('xref2') ?? '';
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            // Optional parameters need to be null, not empty strings.
+            $xref2 = $request->getParsedBody()['xref2'] ?? '';
+            $xref2 = $xref2 === '' ? null : $xref2;
+
             return redirect(route(self::ROUTE_NAME, [
                 'ancestors' => $request->getParsedBody()['ancestors'],
                 'recursion' => $request->getParsedBody()['recursion'],
                 'tree'      => $request->getAttribute('tree')->name(),
                 'xref'      => $request->getParsedBody()['xref'],
-                'xref2'     => $request->getParsedBody()['xref2'],
+                'xref2'     => $xref2,
             ]));
         }
 
