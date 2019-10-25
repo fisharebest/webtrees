@@ -32,12 +32,12 @@ $name = 'callback_' . bin2hex(random_bytes(12));
             <?= json_encode($id) ?>,
             <?= json_encode($data) ?>,
             {
-                title: '<?= $chart_title ?>',
-                region: '<?= $region ?>',
+                title: <?= json_encode($chart_title) ?>,
+                region: <?= json_encode($region) ?>,
                 colorAxis: {
                     colors: [
-                        '#<?= $chart_color3 ?>',
-                        '#<?= $chart_color2 ?>'
+                        <?= json_encode('#' . $chart_color3) ?>,
+                        <?= json_encode('#' . $chart_color2) ?>
                     ]
                 }
             }

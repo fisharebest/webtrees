@@ -19,7 +19,7 @@ $name = 'callback_' . bin2hex(random_bytes(12));
             <?= json_encode($id) ?>,
             <?= json_encode($data) ?>,
             {
-                title: '<?= $title ?>',
+                title: <?= json_encode($title) ?>,
 
                 // Note: "legend" needs to be defined completely as Object.assign does only a shallow merge
                 legend: {
