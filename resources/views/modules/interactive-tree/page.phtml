@@ -17,7 +17,7 @@ use Fisharebest\Webtrees\View;
             <?= I18N::translate('Individual') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select-individual', ['name' => 'xref', 'individual' => $individual, 'tree' => $individual->tree()]) ?>
+            <?= view('components/select-individual', ['name' => 'xref', 'individual' => $individual, 'tree' => $individual->tree(), 'required' => true]) ?>
         </div>
     </div>
 

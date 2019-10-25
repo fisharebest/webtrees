@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Add individuals') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select-individual', ['name' => 'addxref', 'tree' => $tree]) ?>
+            <?= view('components/select-individual', ['name' => 'addxref', 'tree' => $tree, 'required' => true]) ?>
             <?= view('components/checkbox', ['label' => /* I18N: Label for a configuration option */ I18N::translate('Include the individual’s immediate family'), 'name' => 'addfam']) ?>
         </div>
     </div>

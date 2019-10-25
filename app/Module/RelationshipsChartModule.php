@@ -200,16 +200,12 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            // Optional parameters need to be null, not empty strings.
-            $xref2 = $request->getParsedBody()['xref2'] ?? '';
-            $xref2 = $xref2 === '' ? null : $xref2;
-
             return redirect(route(self::ROUTE_NAME, [
                 'ancestors' => $request->getParsedBody()['ancestors'],
                 'recursion' => $request->getParsedBody()['recursion'],
                 'tree'      => $request->getAttribute('tree')->name(),
                 'xref'      => $request->getParsedBody()['xref'],
-                'xref2'     => $xref2,
+                'xref2'     => $request->getParsedBody()['xref2'],
             ]));
         }
 
