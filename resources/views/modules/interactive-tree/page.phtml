@@ -9,9 +9,8 @@ use Fisharebest\Webtrees\View;
     <?= $title ?>
 </h2>
 
-<form method="get" action="<?= e(route('module', ['module' => $module, 'action' => 'Chart'])) ?>" class="wt-page-options wt-page-options-compact-chart d-print-none">
-    <input type="hidden" name="route" value="<?= e('/module/' . $module . '/Chart') ?>">
-    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
+<form method="post" class="wt-page-options wt-page-options-compact-chart d-print-none">
+    <?= csrf_field() ?>
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="xref">

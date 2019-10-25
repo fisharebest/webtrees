@@ -213,6 +213,25 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
         ]);
     }
 
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function postChartAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree, new InvalidArgumentException());
+
+        return redirect(route('module', [
+            'module' => $this->name(),
+            'action' => 'Chart',
+            'tree'   => $tree->name(),
+            'xref'   => $request->getParsedBody()['xref'] ?? '',
+        ]));
+    }
+
     /**
      * @param ServerRequestInterface $request
      *
