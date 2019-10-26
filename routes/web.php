@@ -136,7 +136,7 @@ $router->attach('', '/admin', static function (Map $router) {
     $router->get('lists', '/lists', 'Admin\ModuleController::listLists');
     $router->post('lists-update', '/lists', 'Admin\ModuleController::updateLists');
     $router->get('footers', '/footers', 'Admin\ModuleController::listFooters');
-    $router->post('footers-update', 'footers', 'Admin\ModuleController::updateFooters');
+    $router->post('footers-update', '/footers', 'Admin\ModuleController::updateFooters');
     $router->get('history', '/history', 'Admin\ModuleController::listHistory');
     $router->post('history-update', '/history', 'Admin\ModuleController::updateHistory');
     $router->get('menus', '/menus', 'Admin\ModuleController::listMenus');
