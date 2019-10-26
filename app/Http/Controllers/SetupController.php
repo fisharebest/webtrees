@@ -40,7 +40,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
 
 use function app;
-use function define;
 use function random_bytes;
 use function touch;
 

@@ -142,12 +142,16 @@ Note that you cannot type-hint the following objects in the constructor, as they
 created until after the modules. 
 
 * other modules
-* interfaces, such as `UserInterface` (the current user)
+* interfaces, such as `UserInterface` or `LocaleInterface` (the current user and language)
 * the current tree `Tree` or objects that depend on it (`Statistics`)
 as these objects are not created until after the module is created.
 
-Instead, you can fetch these items when they are needed from the "application container" using:
-``` $user = app(UserInterface::class)```
+Instead, the user, tree and locale can be obtained from the request object. e.g.
+```php
+$tree   = $request->getAttribute('tree');
+$user   = $request->getAttribute('user');
+$locale = $request->getAttribute('locale');
+```
 
 ```php
 <?php 

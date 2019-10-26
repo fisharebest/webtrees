@@ -62,7 +62,7 @@ class LocalizationService
     ];
 
     // Locales that use a non-default alphabet.
-    private const ALPHABETS_FOR_LOCALE = [
+    private const ALPHABETS = [
         'ar'      => self::ARABIC_ALPHABET,
         'cs'      => self::CZECH_ALPHABET,
         'da'      => self::NORWEGIAN_ALPHABET,
@@ -93,38 +93,29 @@ class LocalizationService
         'nn' => ['AA' => 'Å'],
     ];
 
-    /** @var LocaleInterface */
-    private $locale;
-
-    /**
-     * LocalizationService constructor.
-     *
-     * @param LocaleInterface $locale Localize for this locale
-     */
-    public function __construct(LocaleInterface $locale)
-    {
-        $this->locale = $locale;
-    }
-
     /**
      * Which alphabet is used in a locale?
      *
+     * @param LocaleInterface $locale
+     *
      * @return array
      */
-    public function alphabet(): array
+    public function alphabet(LocaleInterface $locale): array
     {
-        $locale = $this->locale->languageTag();
-        $script = $this->locale->script()->code();
+        $language = $locale->languageTag();
+        $script   = $locale->script()->code();
 
-        return self::ALPHABETS_FOR_LOCALE[$locale] ?? self::ALPHABETS_FOR_SCRIPT[$script] ?? self::LATIN_ALPHABET;
+        return self::ALPHABETS[$language] ?? self::ALPHABETS_FOR_SCRIPT[$script] ?? self::LATIN_ALPHABET;
     }
 
     /**
      * Which calendar is used in a locale?
      *
+     * @param LocaleInterface $locale
+     *
      * @return CalendarInterface
      */
-    public function calendar(): CalendarInterface
+    public function calendar(LocaleInterface $locale): CalendarInterface
     {
         $non_gregorian_calendars = [
             'ar' => new ArabicCalendar(),
@@ -133,21 +124,44 @@ class LocalizationService
             'yi' => new JewishCalendar(),
         ];
 
-        return $non_gregorian_calendars[$this->locale->languageTag()] ?? new GregorianCalendar();
+        return $non_gregorian_calendars[$locale->languageTag()] ?? new GregorianCalendar();
+    }
+
+    /**
+     * Which MySQL collation should be used for this locale?
+     *
+     * @param LocaleInterface $locale
+     *
+     * @return string
+     */
+    public function collation(LocaleInterface $locale): string
+    {
+        $collation = $locale->collation();
+
+        switch ($collation) {
+            case 'croatian_ci':
+            case 'german2_ci':
+            case 'vietnamese_ci':
+                // Only available in MySQL 5.6
+                return 'utf8_unicode_ci';
+            default:
+                return 'utf8_' . $collation;
+        }
     }
 
     /**
      * Extract the initial letter (or digraph or trigraph) from a name.
      *
-     * @param string $text
+     * @param string          $text
+     * @param LocaleInterface $locale
      *
      * @return string
      */
-    public function initialLetter(string $text): string
+    public function initialLetter(string $text, LocaleInterface $locale): string
     {
         $text = I18N::strtoupper($text);
 
-        $digraphs = self::DIGRAPHS[$this->locale->languageTag()] ?? [];
+        $digraphs = self::DIGRAPHS[$locale->languageTag()] ?? [];
 
         foreach ($digraphs as $key => $value) {
             if (substr_compare($text, $key, 0, strlen($key)) === 0) {
@@ -157,25 +171,5 @@ class LocalizationService
 
         // No special rules - just take the first character
         return mb_substr($text, 0, 1);
-    }
-
-    /**
-     * What is the last day of the weekend in a locale?
-     *
-     * @return int Sunday=0, Monday=1, etc.
-     */
-    public function weekendEnd(): int
-    {
-        return $this->locale->territory()->weekendEnd();
-    }
-
-    /**
-     * What is the first day of the weekend in a locale?
-     *
-     * @return int Sunday=0, Monday=1, etc.
-     */
-    public function weekendStart(): int
-    {
-        return $this->locale->territory()->weekendStart();
     }
 }

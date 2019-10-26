@@ -57,8 +57,6 @@ class UseSession implements MiddlewareInterface
             Session::put('session_time_updates', $timestamp_now);
         }
 
-        app()->instance(UserInterface::class, $user);
-
         $request = $request->withAttribute('user', $user);
 
         return $handler->handle($request);

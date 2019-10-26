@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\FrenchDate;
@@ -70,7 +71,12 @@ class CalendarController extends AbstractBaseController
      */
     public function page(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        $locale = $request->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
         $view     = $request->getAttribute('view');
         $cal      = $request->getQueryParams()['cal'] ?? '';
         $day      = $request->getQueryParams()['day'] ?? '';
@@ -82,7 +88,7 @@ class CalendarController extends AbstractBaseController
 
         if ($cal . $day . $month . $year === '') {
             // No date specified? Use the most likely calendar
-            $cal = $this->localization_service->calendar()->gedcomCalendarEscape();
+            $cal = $this->localization_service->calendar($locale)->gedcomCalendarEscape();
         }
 
         // need BC to parse date
@@ -165,7 +171,12 @@ class CalendarController extends AbstractBaseController
      */
     public function calendar(ServerRequestInterface $request): ResponseInterface
     {
-        $tree            = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        $locale = $request->getAttribute('locale');
+        assert($locale instanceof LocaleInterface);
+
         $view            = $request->getAttribute('view');
         $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
 
@@ -179,7 +190,7 @@ class CalendarController extends AbstractBaseController
 
         if ($cal . $day . $month . $year === '') {
             // No date specified? Use the most likely calendar
-            $cal = $this->localization_service->calendar()->gedcomCalendarEscape();
+            $cal = $this->localization_service->calendar($locale)->gedcomCalendarEscape();
         }
 
         // Create a CalendarDate from the parameters
@@ -348,8 +359,8 @@ class CalendarController extends AbstractBaseController
             case 'month':
                 // We use JD%7 = 0/Mon…6/Sun. Standard definitions use 0/Sun…6/Sat.
                 $week_start    = (I18N::firstDay() + 6) % 7;
-                $weekend_start = ($this->localization_service->weekendStart() + 6) % 7;
-                $weekend_end   = ($this->localization_service->weekendEnd() + 6) % 7;
+                $weekend_start = ($locale->territory()->weekendStart() + 6) % 7;
+                $weekend_end   = ($locale->territory()->weekendEnd() + 6) % 7;
                 // The french  calendar has a 10-day week, which starts on primidi
                 if ($days_in_week === 10) {
                     $week_start    = 0;

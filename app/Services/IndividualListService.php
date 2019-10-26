@@ -22,17 +22,12 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
-use Psr\Http\Message\ServerRequestInterface;
-
-use function app;
-use function assert;
 
 /**
  * Find lists and counts of individuals with specified initials, names and surnames.
@@ -91,15 +86,16 @@ class IndividualListService
     /**
      * Get a list of initial surname letters.
      *
-     * @param bool   $marnm if set, include married names
-     * @param bool   $fams  if set, only consider individuals with FAMS records
-     * @param string $locale
-     * @param string $collation
+     * @param bool            $marnm if set, include married names
+     * @param bool            $fams  if set, only consider individuals with FAMS records
+     * @param LocaleInterface $locale
      *
      * @return int[]
      */
-    public function surnameAlpha(bool $marnm, bool $fams, string $locale, string $collation): array
+    public function surnameAlpha(bool $marnm, bool $fams, LocaleInterface $locale): array
     {
+        $collation = $this->localization_service->collation($locale);
+
         $n_surn = $this->fieldWithCollation('n_surn', $collation);
         $alphas = [];
 
@@ -111,10 +107,10 @@ class IndividualListService
         // Fetch all the letters in our alphabet, whether or not there
         // are any names beginning with that letter. It looks better to
         // show the full alphabet, rather than omitting rare letters such as X.
-        foreach ($this->localization_service->alphabet() as $letter) {
+        foreach ($this->localization_service->alphabet($locale) as $letter) {
             $query2 = clone $query;
 
-            $this->whereInitial($query2, 'n_surn', $letter, $locale, $collation);
+            $this->whereInitial($query2, 'n_surn', $letter, $locale);
 
             $alphas[$letter] = $query2->count();
         }
@@ -122,7 +118,7 @@ class IndividualListService
         // Now fetch initial letters that are not in our alphabet,
         // including "@" (for "@N.N.") and "" for no surname.
         $query2 = clone $query;
-        foreach ($this->localization_service->alphabet() as $n => $letter) {
+        foreach ($this->localization_service->alphabet($locale) as $n => $letter) {
             $query2->where($n_surn, 'NOT LIKE', $letter . '%');
         }
 
@@ -151,17 +147,18 @@ class IndividualListService
     /**
      * Get a list of initial given name letters for indilist.php and famlist.php
      *
-     * @param string $surn   if set, only consider people with this surname
-     * @param string $salpha if set, only consider surnames starting with this letter
-     * @param bool   $marnm  if set, include married names
-     * @param bool   $fams   if set, only consider individuals with FAMS records
-     * @param string $locale
-     * @param string $collation
+     * @param string          $surn   if set, only consider people with this surname
+     * @param string          $salpha if set, only consider surnames starting with this letter
+     * @param bool            $marnm  if set, include married names
+     * @param bool            $fams   if set, only consider individuals with FAMS records
+     * @param LocaleInterface $locale
      *
      * @return int[]
      */
-    public function givenAlpha(string $surn, string $salpha, bool $marnm, bool $fams, string $locale, string $collation): array
+    public function givenAlpha(string $surn, string $salpha, bool $marnm, bool $fams, LocaleInterface $locale): array
     {
+        $collation = $this->localization_service->collation($locale);
+
         $alphas = [];
 
         $query = DB::table('name')
@@ -178,7 +175,7 @@ class IndividualListService
         } elseif ($salpha === '@') {
             $query->where('n_surn', '=', '@N.N.');
         } elseif ($salpha !== '') {
-            $this->whereInitial($query, 'n_surn', $salpha, $locale, $collation);
+            $this->whereInitial($query, 'n_surn', $salpha, $locale);
         } else {
             // All surnames
             $query->whereNotIn('n_surn', ['', '@N.N.']);
@@ -187,10 +184,10 @@ class IndividualListService
         // Fetch all the letters in our alphabet, whether or not there
         // are any names beginning with that letter. It looks better to
         // show the full alphabet, rather than omitting rare letters such as X
-        foreach ($this->localization_service->alphabet() as $letter) {
+        foreach ($this->localization_service->alphabet($locale) as $letter) {
             $query2 = clone $query;
 
-            $this->whereInitial($query2, 'n_givn', $letter, $locale, $collation);
+            $this->whereInitial($query2, 'n_givn', $letter, $locale);
 
             $alphas[$letter] = $query2->distinct()->count('n_id');
         }
@@ -213,21 +210,27 @@ class IndividualListService
     /**
      * Get a count of actual surnames and variants, based on a "root" surname.
      *
-     * @param string $surn   if set, only count people with this surname
-     * @param string $salpha if set, only consider surnames starting with this letter
-     * @param bool   $marnm  if set, include married names
-     * @param bool   $fams   if set, only consider individuals with FAMS records
-     * @param string $locale
-     * @param string $collation
+     * @param string          $surn   if set, only count people with this surname
+     * @param string          $salpha if set, only consider surnames starting with this letter
+     * @param bool            $marnm  if set, include married names
+     * @param bool            $fams   if set, only consider individuals with FAMS records
+     * @param LocaleInterface $locale
      *
      * @return int[][]
      */
-    public function surnames(string $surn, string $salpha, bool $marnm, bool $fams, string $locale, string $collation): array
-    {
+    public function surnames(
+        string $surn,
+        string $salpha,
+        bool $marnm,
+        bool $fams,
+        LocaleInterface $locale
+    ): array {
+        $collation = $this->localization_service->collation($locale);
+        
         $query = DB::table('name')
             ->where('n_file', '=', $this->tree->id())
             ->select([
-                new Expression('UPPER(n_surn /*! COLLATE ' . I18N::collation() . ' */) AS n_surn'),
+                new Expression('UPPER(n_surn /*! COLLATE ' . $collation . ' */) AS n_surn'),
                 new Expression('n_surname /*! COLLATE utf8_bin */ AS n_surname'),
                 new Expression('COUNT(*) AS total'),
             ]);
@@ -242,7 +245,7 @@ class IndividualListService
         } elseif ($salpha === '@') {
             $query->where('n_surn', '=', '@N.N.');
         } elseif ($salpha !== '') {
-            $this->whereInitial($query, 'n_surn', $salpha, $locale, $collation);
+            $this->whereInitial($query, 'n_surn', $salpha, $locale);
         } else {
             // All surnames
             $query->whereNotIn('n_surn', ['', '@N.N.']);
@@ -266,19 +269,24 @@ class IndividualListService
      * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
      * To search for names with no surnames, use $salpha=","
      *
-     * @param string $surn   if set, only fetch people with this surname
-     * @param string $salpha if set, only fetch surnames starting with this letter
-     * @param string $galpha if set, only fetch given names starting with this letter
-     * @param bool   $marnm  if set, include married names
-     * @param bool   $fams   if set, only fetch individuals with FAMS records
-     * @param string $collation
+     * @param string          $surn   if set, only fetch people with this surname
+     * @param string          $salpha if set, only fetch surnames starting with this letter
+     * @param string          $galpha if set, only fetch given names starting with this letter
+     * @param bool            $marnm  if set, include married names
+     * @param bool            $fams   if set, only fetch individuals with FAMS records
+     * @param LocaleInterface $locale
      *
      * @return Individual[]
      */
-    public function individuals($surn, $salpha, $galpha, $marnm, $fams, string $collation): array
-    {
-        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
-        assert($locale instanceof LocaleInterface);
+    public function individuals(
+        string $surn,
+        string $salpha,
+        string $galpha,
+        bool $marnm,
+        bool $fams,
+        LocaleInterface $locale
+    ): array {
+        $collation = $this->localization_service->collation($locale);
 
         // Use specific collation for name fields.
         $n_givn = $this->fieldWithCollation('n_givn', $collation);
@@ -303,13 +311,13 @@ class IndividualListService
         } elseif ($salpha === '@') {
             $query->where($n_surn, '=', '@N.N.');
         } elseif ($salpha) {
-            $this->whereInitial($query, 'n_surn', $salpha, $locale->languageTag(), I18N::collation());
+            $this->whereInitial($query, 'n_surn', $salpha, $locale);
         } else {
             // All surnames
             $query->whereNotIn($n_surn, ['', '@N.N.']);
         }
         if ($galpha) {
-            $this->whereInitial($query, 'n_givn', $galpha, $locale->languageTag(), I18N::collation());
+            $this->whereInitial($query, 'n_givn', $galpha, $locale);
         }
 
         $query
@@ -351,10 +359,10 @@ class IndividualListService
      *
      * @return Family[]
      */
-    public function families($surn, $salpha, $galpha, $marnm): array
+    public function families($surn, $salpha, $galpha, $marnm, LocaleInterface $locale): array
     {
         $list = [];
-        foreach ($this->individuals($surn, $salpha, $galpha, $marnm, true, I18N::collation()) as $indi) {
+        foreach ($this->individuals($surn, $salpha, $galpha, $marnm, true, $locale) as $indi) {
             foreach ($indi->spouseFamilies() as $family) {
                 $list[$family->xref()] = $family;
             }
@@ -381,20 +389,25 @@ class IndividualListService
      * Modify a query to restrict a field to a given initial letter.
      * Take account of digraphs, equialent letters, etc.
      *
-     * @param Builder $query
-     * @param string  $field
-     * @param string  $letter
-     * @param string  $locale
-     * @param string  $collation
+     * @param Builder         $query
+     * @param string          $field
+     * @param string          $letter
+     * @param LocaleInterface $locale
      *
      * @return void
      */
-    private function whereInitial(Builder $query, string $field, string $letter, string $locale, string $collation): void
-    {
+    private function whereInitial(
+        Builder $query,
+        string $field,
+        string $letter,
+        LocaleInterface $locale
+    ): void {
+        $collation = $this->localization_service->collation($locale);
+
         // Use MySQL-specific comments so we can run these queries on other RDBMS.
         $field_with_collation = $this->fieldWithCollation($field, $collation);
 
-        switch ($locale) {
+        switch ($locale->languageTag()) {
             case 'cs':
                 $this->whereInitialCzech($query, $field_with_collation, $letter);
                 break;
