@@ -41,19 +41,14 @@ class ModuleAction implements RequestHandlerInterface
     /** @var ModuleService */
     private $module_service;
 
-    /** @var UserInterface */
-    private $user;
-
     /**
      * ModuleController constructor.
      *
      * @param ModuleService $module_service
-     * @param UserInterface $user
      */
-    public function __construct(ModuleService $module_service, UserInterface $user)
+    public function __construct(ModuleService $module_service)
     {
         $this->module_service = $module_service;
-        $this->user           = $user;
     }
 
     /**
@@ -67,6 +62,8 @@ class ModuleAction implements RequestHandlerInterface
     {
         $module_name = $request->getAttribute('module');
         $action      = $request->getAttribute('action');
+        $user        = $request->getAttribute('user');
+        assert($user instanceof UserInterface);
 
         // Check that the module is enabled.
         // The module itself will need to check any tree-level access,
@@ -82,7 +79,7 @@ class ModuleAction implements RequestHandlerInterface
         $method = $verb . $action . 'Action';
 
         // Actions with "Admin" in the name are for administrators only.
-        if (strpos($action, 'Admin') !== false && !Auth::isAdmin($this->user)) {
+        if (strpos($action, 'Admin') !== false && !Auth::isAdmin($user)) {
             throw new AccessDeniedHttpException('Admin only action');
         }
 

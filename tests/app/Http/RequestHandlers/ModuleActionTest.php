@@ -52,8 +52,9 @@ class ModuleActionTest extends TestCase
         $user     = new GuestUser();
         $request  = self::createRequest()
             ->withAttribute('module', 'test')
-            ->withAttribute('action', 'Test');
-        $handler  = new ModuleAction($module_service, $user);
+            ->withAttribute('action', 'Test')
+            ->withAttribute('user', $user);
+        $handler  = new ModuleAction($module_service);
         $response = $handler->handle($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -78,8 +79,9 @@ class ModuleActionTest extends TestCase
         $user    = new GuestUser();
         $request = self::createRequest()
             ->withAttribute('module', 'test')
-            ->withAttribute('action', 'Testing');
-        $handler = new ModuleAction($module_service, $user);
+            ->withAttribute('action', 'Testing')
+            ->withAttribute('user', $user);
+        $handler = new ModuleAction($module_service);
         $handler->handle($request);
     }
 
@@ -101,8 +103,9 @@ class ModuleActionTest extends TestCase
         $user    = new GuestUser();
         $request = self::createRequest()
             ->withAttribute('module', 'test')
-            ->withAttribute('action', 'Test');
-        $handler = new ModuleAction($module_service, $user);
+            ->withAttribute('action', 'Test')
+            ->withAttribute('user', $user);
+        $handler = new ModuleAction($module_service);
         $handler->handle($request);
     }
 
@@ -124,8 +127,9 @@ class ModuleActionTest extends TestCase
         $user    = new GuestUser();
         $request = self::createRequest()
             ->withAttribute('module', 'test')
-            ->withAttribute('action', 'Admin');
-        $handler = new ModuleAction($module_service, $user);
+            ->withAttribute('action', 'Admin')
+            ->withAttribute('user', $user);
+        $handler = new ModuleAction($module_service);
         $handler->handle($request);
     }
 

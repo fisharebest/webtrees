@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -31,6 +32,8 @@ use function app;
  */
 trait ModuleAnalyticsTrait
 {
+    use ViewResponseTrait;
+
     /**
      * @return string
      */
@@ -97,15 +100,6 @@ trait ModuleAnalyticsTrait
             'title'       => $this->title(),
         ]);
     }
-
-    /**
-     * @param string  $view_name
-     * @param mixed[] $view_data
-     * @param int     $status
-     *
-     * @return ResponseInterface
-     */
-    abstract protected function viewResponse(string $view_name, array $view_data, $status = StatusCodeInterface::STATUS_OK): ResponseInterface;
 
     /**
      * Form fields to edit the parameters.
