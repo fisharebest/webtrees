@@ -13,11 +13,8 @@ use Fisharebest\Webtrees\I18N;
     <?= $title ?>
 </h2>
 
-<form method="get" action="<?= e(route('module', ['module' => $module, 'action' => $action])) ?>" class="wt-page-options wt-page-options-media-list d-print-none">
-    <input type="hidden" name="route" value="<?= e('/module/' . $module . '/' . $action) ?>">
-    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
-    <input type="hidden" name="action2" value="1">
-    <input type="hidden" name="search" value="yes">
+<form method="post" class="wt-page-options wt-page-options-media-list d-print-none">
+    <?= csrf_field() ?>
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="folder">

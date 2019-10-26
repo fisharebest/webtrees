@@ -30,6 +30,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
+use function redirect;
+use function route;
 
 /**
  * Class MediaListModule
@@ -86,6 +88,23 @@ class MediaListModule extends AbstractModule implements ModuleListInterface
       
         $listController = new ListController(app(IndividualListService::class), app(LocalizationService::class));
         return $listController->mediaList($request);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function postListAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        return redirect(route('module', [
+            'tree'      => $tree->name(),
+            'module'    => $this->name(),
+            'action'    => 'List',
+        ] + $request->getParsedBody()));
     }
 
     /**
