@@ -302,13 +302,13 @@ trait ModuleThemeTrait
         $request = app(ServerRequestInterface::class);
 
         // Return to this page after login...
-        $redirect = (string) $request->getUri();
+        $redirect = $request->getQueryParams()['url'] ?? (string) $request->getUri();
 
         // ...but switch from the tree-page to the user-page
         if ($request->getAttribute('route') === 'tree-page') {
             $tree = $request->getAttribute('tree');
             assert($tree instanceof Tree);
-            $redirect  = route('user-page', ['tree' => $tree->name()]);
+            $redirect = route('user-page', ['tree' => $tree->name()]);
         }
 
         // Stay on the same tree page
