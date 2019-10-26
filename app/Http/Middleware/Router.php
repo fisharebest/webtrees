@@ -32,9 +32,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
 use function array_map;
-use function http_build_query;
-
-use const PHP_QUERY_RFC3986;
 
 /**
  * Simple class to help migrate to a third-party routing library.
@@ -73,20 +70,17 @@ class Router implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // Turn the ugly URL into a pretty one, so the router can parse it.
+        $pretty = $request;
+
         if ($request->getAttribute('rewrite_urls') !== '1') {
-            $params    = $request->getQueryParams();
-            $url_route = $params['route'] ?? '';
-            unset($params['route']);
-            $uri = $request->getUri()
-                ->withPath($url_route)
-                ->withQuery(http_build_query($params, '', '&', PHP_QUERY_RFC3986));
-            $request = $request
-                ->withUri($uri)
-                ->withQueryParams($params);
+            // Ugly URLs store the path in a query parameter.
+            $url_route = $request->getQueryParams()['route'] ?? '';
+            $uri       = $request->getUri()->withPath($url_route);
+            $pretty    = $request->withUri($uri);
         }
 
         // Match the request to a route.
-        $route = $this->router_container->getMatcher()->match($request);
+        $route = $this->router_container->getMatcher()->match($pretty);
 
         // No route matched?
         if ($route === false) {
