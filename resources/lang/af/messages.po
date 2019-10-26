@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-09-22 16:28+0100\n"
-"PO-Revision-Date: 2019-07-21 11:22+0000\n"
+"PO-Revision-Date: 2019-10-26 11:29+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -843,7 +843,7 @@ msgstr "’n Nuwer weergawe van webtrees is beskikbaar."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:93
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr ""
+msgstr "’n Skakel om die wagwoord te herstel, is na “%s” gestuur."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:60
@@ -1388,7 +1388,7 @@ msgstr "Voeg ontbrekende getroude name by"
 
 #: resources/views/edit-blocks-page.phtml:30
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "Voeg meer blokke by uit die volgende lys."
 
 #: resources/views/search-advanced-page.phtml:26
 msgid "Add more fields"
@@ -4294,7 +4294,7 @@ msgstr "Tsjeggiese Republiek"
 #. I18N: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail
 #: resources/views/admin/site-mail.phtml:181
 msgid "DKIM digital signature"
-msgstr ""
+msgstr "DKIM digitale handtekening"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1785
@@ -5267,7 +5267,7 @@ msgstr "Dokument"
 
 #: resources/views/admin/site-mail.phtml:186
 msgid "Domain name"
-msgstr ""
+msgstr "Domeinnaam"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:159
@@ -5299,7 +5299,7 @@ msgstr "Laai lêer af"
 
 #: resources/views/edit-blocks-page.phtml:11
 msgid "Drag the blocks to change their position."
-msgstr ""
+msgstr "Sleep die blokke om hulle posisies te verander."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:337
@@ -5500,7 +5500,7 @@ msgstr "Elul"
 
 #: resources/views/password-request-page.phtml:18
 msgid "Email"
-msgstr ""
+msgstr "Epos"
 
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag _EMAIL
@@ -7329,7 +7329,7 @@ msgstr "As jy hierdie GEDCOM-lêer geskep het met genealogie sagteware wat spasi
 #: resources/views/emails/password-request-html.phtml:17
 #: resources/views/emails/password-request-text.phtml:9
 msgid "If you did not request a new password, please ignore this message."
-msgstr ""
+msgstr "As jy nie ’n nuwe wagwoord aangevra het nie, ignoreer asseblief hierdie boodskap."
 
 #: resources/views/emails/register-user-html.phtml:23
 #: resources/views/emails/register-user-text.phtml:10
@@ -9437,16 +9437,16 @@ msgstr "Mees algemene vanne"
 
 #: resources/views/admin/site-mail.phtml:173
 msgid "Most mail servers require a valid domain name."
-msgstr ""
+msgstr "Die meeste posbedieners vereis ’n geldige domeinnaam."
 
 #: resources/views/admin/site-mail.phtml:65
 msgid "Most mail servers require a valid email address."
-msgstr ""
+msgstr "Die meeste posbedieners vereis ’n geldige eposadres."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:168
 msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
-msgstr ""
+msgstr "Die meeste posbedieners vereis dat die bediener wat die boodksap uitstuur self korrek moet identifiseer, deur ’n geldige domeinnaam te gebruik."
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:154
@@ -10751,11 +10751,11 @@ msgstr "Plekname is baie keer te lank om op diagramme, lyste, ens, te pas. Hulle
 
 #: resources/views/help/place.phtml:8
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr ""
+msgstr "Plekname  kan mettertyd verander.  In genealogie is dit die gebruik om die huidige naam vir ’n dorp of land te gebruik. Die historiese name kan in die bronne, notas, ens. gewys word."
 
 #: resources/views/help/place.phtml:4
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr ""
+msgstr "Plekname moet as ’n komma geskeide lys ingevoer word, wat met die kleinste plek begin en met die land eindig. Byvoorbeeld, “Westminster, Vrystaat, Suid-Afrika”."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:505
@@ -10895,7 +10895,7 @@ msgstr "Voer asseblief 'n geldige eposadres in."
 #: app/Http/RequestHandlers/PasswordResetAction.php:79
 #: app/Http/RequestHandlers/PasswordResetForm.php:75
 msgid "Please try again."
-msgstr ""
+msgstr "Probeer asseblief weer."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:141
@@ -11107,7 +11107,7 @@ msgstr "Privaat"
 
 #: resources/views/admin/site-mail.phtml:204
 msgid "Private key"
-msgstr ""
+msgstr "Privaatsleutel"
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:941
@@ -12055,7 +12055,7 @@ msgstr "Kies twee rekords om saam te voeg."
 
 #: resources/views/admin/site-mail.phtml:195
 msgid "Selector"
-msgstr ""
+msgstr "Selekteerder"
 
 #: app/GedcomCode/GedcomCodeRela.php:311
 msgid "Seller"
@@ -12201,7 +12201,7 @@ msgstr "Bedienernaam"
 
 #: app/Http/RequestHandlers/PasswordResetForm.php:64
 msgid "Set a new password"
-msgstr ""
+msgstr "Skep ’n nuwe wagwoord"
 
 #: resources/views/admin/trees.phtml:116 resources/views/admin/trees.phtml:123
 msgid "Set as default"
@@ -13868,7 +13868,7 @@ msgstr "Die wagwoord wat vereis word vir identiteitstawing by die SMTP-bediener.
 #: app/Http/RequestHandlers/PasswordResetAction.php:78
 #: app/Http/RequestHandlers/PasswordResetForm.php:74
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "Die skakel wat die wagwoord herstel, het verstryk."
 
 #. I18N: Description of the “PlaceHierarchyListModule” module
 #: app/Module/PlaceHierarchyListModule.php:56
@@ -14104,7 +14104,7 @@ msgstr[1] "Daar was geen wysigings in die laaste %s dae nie."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:97
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr ""
+msgstr "Daar bestaan nie ’n gebruikersrekening met “%s” as epos."
 
 #: app/Http/Controllers/Admin/MediaController.php:581
 #: app/Http/Controllers/EditMediaController.php:118
@@ -14396,7 +14396,7 @@ msgstr "Hierdie is jou regte naam, soos jy dit op die skerm vertoon wil hê."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:94
 msgid "This link is valid for one hour."
-msgstr ""
+msgstr "Die skakel is vir een uur geldig."
 
 #: app/Exceptions/MediaAccessDeniedException.php:33
 #: app/Exceptions/MediaNotFoundException.php:33
@@ -14835,7 +14835,7 @@ msgstr "Om die grootte van die aflaaibare lêer te beperk, kan jy die data in 'n
 #: resources/views/emails/password-request-html.phtml:9
 #: resources/views/emails/password-request-text.phtml:5
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "Om 'n nuwe wagwoord te skep, volg hierdie skakel."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:31
@@ -16060,7 +16060,7 @@ msgstr "Jou naam"
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:71
 msgid "Your password has been updated."
-msgstr ""
+msgstr "Jou wagwoord is opgedateer."
 
 #: app/Http/Controllers/Auth/RegisterController.php:151
 #, php-format
@@ -20111,7 +20111,7 @@ msgstr "webtrees benodig 'n databasis om jou genealogie-data te berg."
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:46
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr ""
+msgstr "webtrees moet eposse uitstuur, soos byv. wagwoord herinneringe en webwerf kennisgewings."
 
 #: app/Functions/FunctionsEdit.php:132
 msgid "webtrees sends emails with no storage"
@@ -20301,7 +20301,6 @@ msgstr "…"
 #~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 #~ msgstr "'n Databasisbediener kan baie afsonderlike databasisse bewaar. Jy moet ’n bestaande databasis kies (geskep deur die beheerder van jou bediener) of ’n nuwe skep (as jou databasis gebruikersrekening voldoende voorregte het)."
 
-#, php-format
 #~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
 #~ msgstr "’n Nuwe wagwoord is geskep en is per epos na %s gestuur. Jy kan die wagwoord verander nadat jy aangemeld het."
 
@@ -21370,7 +21369,6 @@ msgstr "…"
 #~ msgid "Theme menu"
 #~ msgstr "Tema-kieslys"
 
-#, php-format
 #~ msgid "There is no account with the username or email “%s”."
 #~ msgstr "Daar is geen rekening met die gebruikersnaam of e-posadres “%s” nie."
 
