@@ -50,6 +50,9 @@ class UseLocale implements MiddlewareInterface
 
         Session::put('language', $code);
 
+        // @TODO - this shouldn't be needed
+        app()->instance(LocaleInterface::class, $locale);
+
         return $handler->handle($request);
     }
 }
