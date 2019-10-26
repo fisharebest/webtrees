@@ -80,7 +80,7 @@ use Fisharebest\Webtrees\MediaFile;
     var play = <?= json_encode($start_automatically) ?>;
 
     if (play) {
-        var timeout = setTimeout(slideShowReload, 6000);
+        var timeout = setTimeout(slideShowReload, <?= json_encode($delay * 1000) ?>);
     }
 
     function slideShowReload() {

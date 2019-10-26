@@ -27,8 +27,10 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
+use stdClass;
 
 use function app;
+use function assert;
 use function in_array;
 use function strpos;
 
@@ -38,6 +40,14 @@ use function strpos;
 class SlideShowModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
+
+    // Show media linked to events or individuals.
+    private const LINK_ALL        = 'all';
+    private const LINK_EVENT      = 'event';
+    private const LINK_INDIVIDUAL = 'indi';
+
+    // How long to show each slide (seconds)
+    private const DELAY = 6;
 
     /**
      * A sentence describing what this module does.
@@ -64,11 +74,11 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
     {
         $request       = app(ServerRequestInterface::class);
         $default_start = $this->getBlockSetting($block_id, 'start');
-        $filter        = $this->getBlockSetting($block_id, 'filter', 'all');
+        $filter_links  = $this->getBlockSetting($block_id, 'filter', self::LINK_ALL);
         $controls      = $this->getBlockSetting($block_id, 'controls', '1');
         $start         = (bool) ($request->getQueryParams()['start'] ?? $default_start);
 
-        $media_types = [
+        $filter_types = [
             $this->getBlockSetting($block_id, 'filter_audio', '0') ? 'audio' : null,
             $this->getBlockSetting($block_id, 'filter_book', '1') ? 'book' : null,
             $this->getBlockSetting($block_id, 'filter_card', '1') ? 'card' : null,
@@ -89,11 +99,11 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             $this->getBlockSetting($block_id, 'filter_video', '0') ? 'video' : null,
         ];
 
-        $media_types = array_filter($media_types);
+        $filter_types = array_filter($filter_types);
 
         // The type "other" includes media without a type.
-        if (in_array('other', $media_types, true)) {
-            $media_types[] = '';
+        if (in_array('other', $filter_types, true)) {
+            $filter_types[] = '';
         }
 
         // We can apply the filters using SQL, but it is more efficient to shuffle in PHP.
@@ -105,20 +115,27 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             })
             ->where('media.m_file', '=', $tree->id())
             ->whereIn('media_file.multimedia_format', ['jpg', 'jpeg', 'png', 'gif', 'tiff', 'bmp'])
-            ->whereIn('media_file.source_media_type', $media_types)
+            ->whereIn('media_file.source_media_type', $filter_types)
             ->select('media.*')
             ->get()
             ->shuffle()
-            ->first(static function (\stdClass $row) use ($filter, $tree): bool {
+            ->first(static function (stdClass $row) use ($filter_links, $tree): bool {
                 $media = Media::getInstance($row->m_id, $tree, $row->m_gedcom);
+                assert($media instanceof Media);
+
+                if (!$media->canShow()) {
+                    return false;
+                }
 
                 foreach ($media->linkedIndividuals('OBJE') as $individual) {
-                    switch ($filter) {
-                        case 'all':
+                    switch ($filter_links) {
+                        case self::LINK_ALL:
                             return true;
-                        case 'indi':
+
+                        case self::LINK_INDIVIDUAL:
                             return strpos($individual->gedcom(), "\n1 OBJE @" . $media->xref() . '@') !== false;
-                        case 'event':
+
+                        case self::LINK_EVENT:
                             return strpos($individual->gedcom(), "\n2 OBJE @" . $media->xref() . '@') !== false;
                     }
                 }
@@ -135,6 +152,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         if ($random_media instanceof Media) {
             $content = view('modules/random_media/slide-show', [
                 'block_id'            => $block_id,
+                'delay'               => self::DELAY,
                 'media'               => $random_media,
                 'media_file'          => $random_media->firstImageFile(),
                 'show_controls'       => $controls,
@@ -246,7 +264,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
-        $filter   = $this->getBlockSetting($block_id, 'filter', 'all');
+        $filter   = $this->getBlockSetting($block_id, 'filter', self::LINK_ALL);
         $controls = $this->getBlockSetting($block_id, 'controls', '1');
         $start    = $this->getBlockSetting($block_id, 'start', '0');
 
