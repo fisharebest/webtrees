@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-09-22 16:28+0100\n"
-"PO-Revision-Date: 2019-10-17 10:17+0000\n"
-"Last-Translator: M. Rivière <gustine@laposte.net>\n"
+"PO-Revision-Date: 2019-10-26 21:57+0000\n"
+"Last-Translator: Michael Rapp <mike_jpr@outlook.com>\n"
 "Language-Team: French <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -1059,31 +1059,31 @@ msgstr "Aba, Nigéria"
 #: app/Date/JalaliDate.php:264
 msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
-msgstr "Aban"
+msgstr "Âbân"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:137
 msgctxt "GENITIVE"
 msgid "Aban"
-msgstr "Aban"
+msgstr "Âbân"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:227
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr "Aban"
+msgstr "Âbân"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:182
 msgctxt "LOCATIVE"
 msgid "Aban"
-msgstr "Aban"
+msgstr "Âbân"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:92
 msgctxt "NOMINATIVE"
 msgid "Aban"
-msgstr "Aban"
+msgstr "Âbân"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:584
@@ -2360,31 +2360,31 @@ msgstr "Éviter espaces et ponctuation. Un nom de famille devrait être un bon c
 #: app/Date/JalaliDate.php:265
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
-msgstr "Azar"
+msgstr "Âzar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:139
 msgctxt "GENITIVE"
 msgid "Azar"
-msgstr "Azar"
+msgstr "Âzar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:229
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
-msgstr "Azar"
+msgstr "Âzar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:184
 msgctxt "LOCATIVE"
 msgid "Azar"
-msgstr "Azar"
+msgstr "Âzar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:94
 msgctxt "NOMINATIVE"
 msgid "Azar"
-msgstr "Azar"
+msgstr "Âzar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:70
