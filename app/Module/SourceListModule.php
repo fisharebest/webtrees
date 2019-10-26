@@ -75,7 +75,7 @@ class SourceListModule extends AbstractModule implements ModuleListInterface
      *
      * @return ResponseInterface
      */
-    public function getListAction(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function getListAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
