@@ -83,11 +83,12 @@ class LoginAction extends AbstractBaseController
             return redirect($url);
         } catch (Exception $ex) {
             // Failed to log in.
+            FlashMessages::addMessage($ex->getMessage(), 'danger');
+
             return redirect(route(LoginPage::class, [
                 'tree'     => $tree instanceof Tree ? $tree->name() : null,
                 'username' => $username,
                 'url'      => $url,
-                'error'    => $ex->getMessage(),
             ]));
         }
     }
