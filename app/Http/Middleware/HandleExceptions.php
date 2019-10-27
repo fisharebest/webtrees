@@ -86,6 +86,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             try {
                 return $this->unhandledExceptionResponse($request, $exception);
             } catch (Throwable $e) {
+                // That didn't work.  Try something else.
             }
 
             // Show the exception in a tree-less webtrees page (if we can).
@@ -94,6 +95,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
 
                 return $this->unhandledExceptionResponse($request, $exception);
             } catch (Throwable $e) {
+                // That didn't work.  Try something else.
             }
 
             // Show the exception in an error page (if we can).
@@ -102,6 +104,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
 
                 return $this->unhandledExceptionResponse($request, $exception);
             } catch (Throwable $e) {
+                // That didn't work.  Try something else.
             }
 
             // Show a stack dump.
