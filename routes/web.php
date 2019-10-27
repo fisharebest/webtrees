@@ -212,8 +212,12 @@ $router->attach('', '/admin', static function (Map $router) {
 });
 
 // Manager routes (without a tree).
-$router->attach('', '', static function (Map $router) {
-    $router->get('manage-trees', '/trees/manage', 'AdminTreesController::index');
+$router->attach('', '/admin', static function (Map $router) {
+    $router->extras([
+        'middleware' => [AuthManager::class]
+    ]);
+
+    $router->get('manage-trees', '/trees/manage{/tree}', 'AdminTreesController::index');
 });
 
 // Manager routes.

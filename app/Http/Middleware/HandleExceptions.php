@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Log;
 use Psr\Http\Message\ResponseInterface;
@@ -30,7 +31,9 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 
+use function app;
 use function dirname;
+use function ob_end_clean;
 use function ob_get_level;
 use function response;
 use function str_replace;
@@ -55,25 +58,54 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         try {
+            return $handler->handle($request);
+        } catch (HttpException $exception) {
+            // The router added the tree attribute to the request, and we need it for the error response.
+            $request = app(ServerRequestInterface::class) ?? $request;
+
+            return $this->httpExceptionResponse($request, $exception);
+        } catch (Throwable $exception) {
+            // Exception thrown while buffering output?
+            while (ob_get_level() > 0) {
+                ob_end_clean();
+            }
+
+            // The Router middleware may have added a tree attribute to the request.
+            // This might be usable in the error page.
+            if (app()->has(ServerRequestInterface::class)) {
+                $request = app(ServerRequestInterface::class) ?? $request;
+            }
+
+            // No locale set in the request?
+            if ($request->getAttribute('locale') === null) {
+                $request = $request->withAttribute('locale', new LocaleEnUs());
+                app()->instance(ServerRequestInterface::class, $request);
+            }
+
+            // Show the exception in a standard webtrees page (if we can).
             try {
-                return $handler->handle($request);
-            } catch (HttpException $exception) {
-                $original_exception = $exception;
+                return $this->unhandledExceptionResponse($request, $exception);
+            } catch (Throwable $e) {
+            }
 
-                return $this->httpExceptionResponse($request, $exception);
-            } catch (Throwable $exception) {
-                // Exception thrown while buffering output?
-                while (ob_get_level() > 0) {
-                    ob_get_clean();
-                }
-
-                $original_exception = $exception;
+            // Show the exception in a tree-less webtrees page (if we can).
+            try {
+                $request = $request->withAttribute('tree', null);
 
                 return $this->unhandledExceptionResponse($request, $exception);
+            } catch (Throwable $e) {
             }
-        } catch (Throwable $exception) {
-            // If we can't handle the exception, rethrow it.
-            throw $original_exception;
+
+            // Show the exception in an error page (if we can).
+            try {
+                $this->layout = 'layouts/error';
+
+                return $this->unhandledExceptionResponse($request, $exception);
+            } catch (Throwable $e) {
+            }
+
+            // Show a stack dump.
+            return response((string) $exception, StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -85,6 +117,8 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
      */
     private function httpExceptionResponse(ServerRequestInterface $request, HttpException $exception): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+
         if ($request->getHeaderLine('X-Requested-With') !== '') {
             $this->layout = 'layouts/ajax';
         }
@@ -92,6 +126,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
         return $this->viewResponse('components/alert-danger', [
             'alert' => $exception->getMessage(),
             'title' => $exception->getMessage(),
+            'tree'  => $tree,
         ], $exception->getStatusCode());
     }
 
@@ -103,7 +138,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
      */
     private function unhandledExceptionResponse(ServerRequestInterface $request, Throwable $exception): ResponseInterface
     {
-        $this->layout = 'layouts/error';
+        $this->layout = 'layouts/default';
 
         // Create a stack dump for the exception
         $base_path = dirname(__DIR__, 3);
@@ -131,6 +166,8 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
         return $this->viewResponse('errors/unhandled-exception', [
             'title' => 'Error',
             'error' => $trace,
+            'request' => $request,
+            'tree'  => null,
         ], StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
     }
 }

@@ -19,9 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -35,6 +37,19 @@ use function assert;
  */
 class LoginPage extends AbstractBaseController
 {
+    /** @var TreeService */
+    private $tree_service;
+
+    /**
+     * LoginPage constructor.
+     *
+     * @param TreeService $tree_service
+     */
+    public function __construct(TreeService $tree_service)
+    {
+        $this->tree_service = $tree_service;
+    }
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -53,9 +68,18 @@ class LoginPage extends AbstractBaseController
             return redirect(route('user-page', ['tree' => $tree instanceof Tree ? $tree->name() : '']));
         }
 
-        $error    = $request->getQueryParams()['error'] ?? '';
         $url      = $request->getQueryParams()['url'] ?? '';
         $username = $request->getQueryParams()['username'] ?? '';
+
+        // No tree?  perhaps we came here from a page without one.
+        if ($tree === null) {
+            $default = Site::getPreference('DEFAULT_GEDCOM');
+            $tree = $this->tree_service->all()->get($default) ?? $this->tree_service->all()->first();
+
+            if ($tree instanceof Tree) {
+                return redirect(route(self::class, ['tree' => $tree->name(), 'url' => $url]));
+            }
+        }
 
         $title = I18N::translate('Sign in');
 
@@ -83,7 +107,6 @@ class LoginPage extends AbstractBaseController
 
         return $this->viewResponse('login-page', [
             'can_register' => $can_register,
-            'error'        => $error,
             'title'        => $title,
             'url'          => $url,
             'tree'         => $tree,

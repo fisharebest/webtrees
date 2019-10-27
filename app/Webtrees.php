@@ -107,9 +107,9 @@ class Webtrees
     private const MIDDLEWARE = [
         PhpEnvironment::class,
         EmitResponse::class,
-        HandleExceptions::class,
         ReadConfigIni::class,
         BaseUrl::class,
+        HandleExceptions::class,
         ClientIp::class,
         UseDatabase::class,
         UseDebugbar::class,
@@ -140,7 +140,6 @@ class Webtrees
         error_reporting(self::ERROR_REPORTING);
 
         set_error_handler($this->phpErrorHandler());
-        set_exception_handler($this->phpExceptionHandler());
     }
 
     /**
@@ -157,27 +156,6 @@ class Webtrees
             }
 
             return true;
-        };
-    }
-
-    /**
-     * An exception handler that can be passed to set_exception_handler().
-     * Display any exception that are not caught by the middleware exception handler.
-     *
-     * @return Closure
-     */
-    private function phpExceptionHandler(): Closure
-    {
-        return static function (Throwable $ex): void {
-            $base_path = dirname(__DIR__);
-            $trace     = $ex->getMessage() . ' ' . $ex->getFile() . ':' . $ex->getLine() . PHP_EOL . $ex->getTraceAsString();
-            $trace     = str_replace($base_path, '…', $trace);
-
-            while (ob_get_level() > 0) {
-                ob_end_clean();
-            }
-
-            echo '<html lang="en"><head><title>Error</title><meta charset="UTF-8"></head><body><pre>' . $trace . '</pre></body></html>';
         };
     }
 

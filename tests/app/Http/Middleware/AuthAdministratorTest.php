@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
 use Psr\Http\Server\RequestHandlerInterface;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 use function response;
 
@@ -58,6 +59,9 @@ class AuthAdministratorTest extends TestCase
      */
     public function testNotAllowed(): void
     {
+        $this->expectException(AccessDeniedHttpException::class);
+        $this->expectExceptionMessage('You do not have permission to view this page.');
+
         $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
@@ -66,9 +70,8 @@ class AuthAdministratorTest extends TestCase
 
         $request    = self::createRequest()->withAttribute('user', $user);
         $middleware = new AuthAdministrator();
-        $response   = $middleware->process($request, $handler);
 
-        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        $middleware->process($request, $handler);
     }
 
     /**

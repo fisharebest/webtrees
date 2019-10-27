@@ -656,8 +656,7 @@ class AdminTreesController extends AbstractBaseController
      */
     public function index(ServerRequestInterface $request): ResponseInterface
     {
-        $default = Site::getPreference('DEFAULT_GEDCOM');
-        $tree    = $this->tree_service->all()->get($request->getQueryParams()['tree'] ?? $default);
+        $tree = $request->getAttribute('tree');
 
         $multiple_tree_threshold = (int) Site::getPreference('MULTIPLE_TREE_THRESHOLD', self::MULTIPLE_TREE_THRESHOLD);
         $gedcom_files            = $this->gedcomFiles();

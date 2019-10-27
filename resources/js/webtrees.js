@@ -766,7 +766,7 @@ $(function () {
     });
 });
 
-// Convert data-confirm, data-post-url, and data-reload-url attributes into useful behaviour.
+// Convert data-confirm and data-post-url attributes into useful behaviour.
 document.addEventListener("click",  (event) => {
     const target = event.target.closest("a");
 
@@ -786,8 +786,8 @@ document.addEventListener("click",  (event) => {
         request.setRequestHeader("X-CSRF-TOKEN", token);
         request.onreadystatechange = () => {
             if (request.readyState === request.DONE) {
-                if (request.status >= 200 && request.status <= 299 && "reloadUrl" in target.dataset) {
-                    document.location = target.dataset.reloadUrl;
+                if (request.status >= 300 && request.status <= 399) {
+                    document.location = request.getResponseHeader('Location');
                 } else {
                     document.location.reload();
                 }

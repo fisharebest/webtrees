@@ -20,14 +20,15 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 use function assert;
 use function redirect;
@@ -58,7 +59,7 @@ class AuthEditor implements MiddlewareInterface
 
         // Logged in, but without the correct role?
         if ($user instanceof User) {
-            return redirect(route(HomePage::class));
+            throw new AccessDeniedHttpException(I18N::translate('You do not have permission to view this page.'));
         }
 
         // Not logged in.

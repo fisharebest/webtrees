@@ -50,7 +50,7 @@ class AuthVisitor implements MiddlewareInterface
             return $handler->handle($request);
         }
 
-        // Logged in?
+        // Already logged in?
         return redirect(route(HomePage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
     }
 }
