@@ -90,6 +90,6 @@ class HomePage implements RequestHandlerInterface
         }
 
         // Not logged in.
-        return redirect(route(LoginPage::class, ['url' => $request->getUri()]));
+        return redirect(route(LoginPage::class, ['url' => '']));
     }
 }

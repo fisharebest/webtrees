@@ -68,9 +68,9 @@ class LoginAction extends AbstractBaseController
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = $request->getAttribute('tree');
-        $username = $request->getParsedBody()['username'] ?? '';
-        $password = $request->getParsedBody()['password'] ?? '';
-        $url      = $request->getParsedBody()['url'] ?? route(HomePage::class);
+        $username = $request->getParsedBody()['username'];
+        $password = $request->getParsedBody()['password'];
+        $url      = $request->getParsedBody()['url'];
 
         try {
             $this->doLogin($username, $password);
@@ -80,6 +80,8 @@ class LoginAction extends AbstractBaseController
             }
 
             // Redirect to the target URL
+            $url = $url ?: route(HomePage::class);
+
             return redirect($url);
         } catch (Exception $ex) {
             // Failed to log in.
@@ -104,7 +106,7 @@ class LoginAction extends AbstractBaseController
      */
     private function doLogin(string $username, string $password): void
     {
-        if (!$_COOKIE) {
+        if ($_COOKIE === []) {
             Log::addAuthenticationLog('Login failed (no session cookies): ' . $username);
             throw new Exception(I18N::translate('You cannot sign in because your browser does not accept cookies.'));
         }
