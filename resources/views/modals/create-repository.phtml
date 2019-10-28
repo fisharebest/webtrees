@@ -1,8 +1,7 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<form method="post" action="<?= e(route('create-repository')) ?>" id="wt-modal-form">
+<form method="post" action="<?= e(route('create-repository', ['tree' => $tree->name()])) ?>" id="wt-modal-form">
     <?= csrf_field() ?>
-    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
 
     <?= view('modals/header', ['title' => I18N::translate('Create a repository')]) ?>
 

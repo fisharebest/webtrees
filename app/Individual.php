@@ -569,8 +569,7 @@ class Individual extends GedcomRecord
         $death_date = strip_tags($this->getDeathDate()->display());
 
         /* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */
-        return
-            I18N::translate(
+        return I18N::translate(
             '%1$s–%2$s',
             '<span title="' . $birth_place . ' ' . $birth_date . '">' . $this->getBirthYear() . '</span>',
             '<span title="' . $death_place . ' ' . $death_date . '">' . $this->getDeathYear() . '</span>'
