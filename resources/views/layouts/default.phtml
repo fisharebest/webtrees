@@ -58,6 +58,8 @@ $language_tag = app(ServerRequestInterface::class)->getAttribute('locale')->lang
         <!--Windows 8.1 + IE11 and above-->
         <meta name="msapplication-config" content="<?= e(asset('browserconfig.xml')) ?>">
 
+        <link rel="manifest" href="<?= e(asset('site.webmanifest')) ?>">
+
         <link rel="stylesheet" href="<?= e(asset('css/vendor.min.css')) ?>">
         <?php foreach (app(ModuleThemeInterface::class)->stylesheets() as $stylesheet) : ?>
             <link rel="stylesheet" href="<?= e($stylesheet) ?>">
