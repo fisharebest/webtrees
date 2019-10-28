@@ -169,10 +169,10 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
         }
 
         return $this->viewResponse('errors/unhandled-exception', [
-            'title' => 'Error',
-            'error' => $trace,
+            'title'   => 'Error',
+            'error'   => $trace,
             'request' => $request,
-            'tree'  => null,
+            'tree'    => null,
         ], StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
     }
 }
