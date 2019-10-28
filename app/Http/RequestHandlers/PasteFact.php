@@ -39,7 +39,7 @@ class PasteFact implements RequestHandlerInterface
     private $clipboard_service;
 
     /**
-     * EditGedcomRecordController constructor.
+     * PasteFact constructor.
      *
      * @param ClipboardService $clipboard_service
      */

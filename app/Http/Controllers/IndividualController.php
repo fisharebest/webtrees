@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditFact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -347,7 +348,7 @@ class IndividualController extends AbstractBaseController
         }
 
         if ($individual->canEdit()) {
-            $edit_links = '<a class="btn btn-link" href="' . e(route('edit-fact', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) . '" title="' . I18N::translate('Edit the gender') . '">' . view('icons/edit') . '<span class="sr-only">' . I18N::translate('Edit the gender') . '</span></a>';
+            $edit_links = '<a class="btn btn-link" href="' . e(route(EditFact::class, ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) . '" title="' . I18N::translate('Edit the gender') . '">' . view('icons/edit') . '<span class="sr-only">' . I18N::translate('Edit the gender') . '</span></a>';
         } else {
             $edit_links = '';
         }

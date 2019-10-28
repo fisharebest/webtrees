@@ -402,8 +402,8 @@ class EditIndividualController extends AbstractEditController
     public function editName(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = $request->getAttribute('tree');
-        $fact_id = $request->getQueryParams()['fact_id'];
-        $xref    = $request->getQueryParams()['xref'];
+        $xref    = $request->getAttribute('xref');
+        $fact_id = $request->getAttribute('fact_id') ?? '';
 
         $individual = Individual::getInstance($xref, $tree);
 
@@ -436,13 +436,6 @@ class EditIndividualController extends AbstractEditController
     public function editNameAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getParsedBody()['xref'];
-
-        $individual = Individual::getInstance($xref, $tree);
-
-        Auth::checkIndividualAccess($individual, true);
 
         // @TODO - Move the name-specific code to this function?
         return app(EditGedcomRecordController::class)->updateFact($request, $tree);
@@ -489,12 +482,6 @@ class EditIndividualController extends AbstractEditController
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
-
-        $xref = $request->getParsedBody()['xref'];
-
-        $individual = Individual::getInstance($xref, $tree);
-
-        Auth::checkIndividualAccess($individual, true);
 
         // @TODO - Move the name-specific code to this function?
 

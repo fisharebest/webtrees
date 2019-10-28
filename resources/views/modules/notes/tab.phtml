@@ -1,6 +1,11 @@
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrintFacts; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php
+
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+?>
 
 <div class="wt-tan-notes py-4">
     <table class="table wt-facts-table">
@@ -36,7 +41,7 @@
                     <?= I18N::translate('Note') ?>
                 </th>
                 <td>
-                    <a href="<?= e(route('add-fact', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'NOTE'])) ?>">
+                    <a href="<?= e(route(AddNewFact::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'NOTE'])) ?>">
                         <?= I18N::translate('Add a note') ?>
                     </a>
                 </td>
@@ -46,7 +51,7 @@
                     <?= I18N::translate('Shared note') ?>
                 </th>
                 <td>
-                    <a href="<?= e(route('add-fact', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'SHARED_NOTE'])) ?>">
+                    <a href="<?= e(route(AddNewFact::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'SHARED_NOTE'])) ?>">
                         <?= I18N::translate('Add a shared note') ?>
                     </a>
                 </td>

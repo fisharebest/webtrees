@@ -1,6 +1,7 @@
 <?php
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
 use Fisharebest\Webtrees\I18N;
@@ -83,7 +84,7 @@ use Illuminate\Support\Collection;
 
                     <?php if (Auth::isEditor($individual->tree())) : ?>
                         <div class="text-center">
-                            <a href="<?= e(route('add-fact', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'OBJE'])) ?>">
+                            <a href="<?= e(route(AddNewFact::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'OBJE'])) ?>">
                                 <?= I18N::translate('Add a media object') ?>
                             </a>
                         </div>

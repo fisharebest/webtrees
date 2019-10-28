@@ -37,19 +37,6 @@ use function trim;
  */
 class EditRawFactAction implements RequestHandlerInterface
 {
-    /** @var ModuleService */
-    private $module_service;
-
-    /**
-     * EditGedcomRecordController constructor.
-     *
-     * @param ModuleService $module_service
-     */
-    public function __construct(ModuleService $module_service)
-    {
-        $this->module_service = $module_service;
-    }
-
     /**
      * @param ServerRequestInterface $request
      *

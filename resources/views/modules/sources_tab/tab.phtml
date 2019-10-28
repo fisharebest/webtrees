@@ -1,6 +1,11 @@
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrintFacts; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php
+
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+?>
 
 <div class="wt-tab-sources py-4">
     <table class="table wt-facts-table">
@@ -34,7 +39,7 @@
                     <?= I18N::translate('Source') ?>
                 </th>
                 <td>
-                    <a href="<?= e(route('add-fact', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'SOUR'])) ?>">
+                    <a href="<?= e(route(AddNewFact::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'SOUR'])) ?>">
                         <?= I18N::translate('Add a source citation') ?>
                     </a>
                 </td>

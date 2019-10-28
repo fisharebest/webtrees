@@ -41,7 +41,7 @@ class CopyFact implements RequestHandlerInterface
     private $clipboard_service;
 
     /**
-     * EditGedcomRecordController constructor.
+     * CopyFact constructor.
      *
      * @param ClipboardService $clipboard_service
      */

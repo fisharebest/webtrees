@@ -1,5 +1,11 @@
-<?php use Fisharebest\Webtrees\GedcomTag; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
+use Fisharebest\Webtrees\Http\RequestHandlers\SelectNewFact;
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <tr>
     <th scope="row">
@@ -8,10 +14,9 @@
         </label>
     </th>
     <td>
-        <form method="get" action="<?= e(route('add-fact')) ?>" onsubmit="if ($('#add-fact').val() === null) {event.preventDefault();}">
-            <input type="hidden" name="route" value="<?= e(route('add-fact')) ?>">
-            <input type="hidden" name="xref" value="<?= e($record->xref()) ?>">
-            <input type="hidden" name="tree" value="<?= e($record->tree()->name()) ?>">
+        <form method="post" action="<?= e(route(SelectNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" onsubmit="if ($('#add-fact').val() === null) {event.preventDefault();}">
+            <?= csrf_field() ?>
+
             <div class="input-group">
                 <select class="custom-select" id="add-fact" name="fact">
                     <option value="" disabled selected>
@@ -39,7 +44,7 @@
 
         <div class="wt-quick-facts">
             <?php foreach ($quick_facts as $fact) : ?>
-                <a class="btn btn-link btn-sm wt-quick-fact" href="<?= e(route('add-fact', [
+                <a class="btn btn-link btn-sm wt-quick-fact" href="<?= e(route(AddNewFact::class, [
                     'fact' => $fact,
                     'xref' => $record->xref(),
                     'tree' => $tree->name(),

@@ -21,18 +21,23 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function assert;
 
 /**
- * Edit the raw GEDCOM of a record.
+ * Edit a fact.
  */
-class EditRawRecordAction implements RequestHandlerInterface
+class EditFact implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -43,33 +48,34 @@ class EditRawRecordAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getAttribute('xref');
-        $record = GedcomRecord::getInstance($xref, $tree);
+        $xref    = $request->getQueryParams()['xref'];
+        $fact_id = $request->getQueryParams()['fact_id'];
 
+        $record = GedcomRecord::getInstance($xref, $tree);
         Auth::checkRecordAccess($record, true);
 
-        $facts    = $request->getParsedBody()['fact'] ?? [];
-        $fact_ids = $request->getParsedBody()['fact_id'] ?? [];
-
-        $gedcom = '0 @' . $record->xref() . '@ ' . $record::RECORD_TYPE;
-
-        // Retain any private facts
-        foreach ($record->facts([], false, Auth::PRIV_HIDE) as $fact) {
-            if (!in_array($fact->id(), $fact_ids, true) && !$fact->isPendingDeletion()) {
-                $gedcom .= "\n" . $fact->gedcom();
+        // Find the fact to edit
+        $edit_fact = null;
+        foreach ($record->facts() as $fact) {
+            if ($fact->id() === $fact_id && $fact->canEdit()) {
+                $edit_fact = $fact;
+                break;
             }
         }
-        // Append the updated facts
-        foreach ($facts as $fact) {
-            $gedcom .= "\n" . $fact;
+        if ($edit_fact === null) {
+            throw new NotFoundHttpException();
         }
 
-        // Empty lines and MSDOS line endings.
-        $gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom);
-        $gedcom = trim($gedcom);
+        $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');
 
-        $record->updateRecord($gedcom, false);
+        $title = $record->fullName() . ' - ' . GedcomTag::getLabel($edit_fact->getTag());
 
-        return redirect($record->url());
+        return $this->viewResponse('edit/edit-fact', [
+            'can_edit_raw' => $can_edit_raw,
+            'edit_fact'    => $edit_fact,
+            'record'       => $record,
+            'title'        => $title,
+            'tree'         => $tree,
+        ]);
     }
 }

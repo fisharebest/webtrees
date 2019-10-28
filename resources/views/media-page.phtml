@@ -4,6 +4,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
@@ -152,7 +153,7 @@ use Illuminate\Support\Collection;
                             <?= I18N::translate('Source') ?>
                         </th>
                         <td>
-                            <a href="<?= e(route('add-fact', ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact' => 'SOUR'])) ?>">
+                            <a href="<?= e(route(AddNewFact::class, ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact' => 'SOUR'])) ?>">
                                 <?= I18N::translate('Add a source citation') ?>
                             </a>
                         </td>
@@ -162,7 +163,7 @@ use Illuminate\Support\Collection;
                             <?= I18N::translate('Shared note') ?>
                         </th>
                         <td>
-                            <a href="<?= e(route('add-fact', ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact' => 'SHARED_NOTE'])) ?>">
+                            <a href="<?= e(route(AddNewFact::class, ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact' => 'SHARED_NOTE'])) ?>">
                                 <?= I18N::translate('Add a shared note') ?>
                             </a>
                         </td>
@@ -172,7 +173,7 @@ use Illuminate\Support\Collection;
                             <?= I18N::translate('Restriction') ?>
                         </th>
                         <td>
-                            <a href="<?= e(route('add-fact', ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact' => 'RESN'])) ?>">
+                            <a href="<?= e(route(AddNewFact::class, ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact' => 'RESN'])) ?>">
                                 <?= I18N::translate('Add a restriction') ?>
                             </a>
                         </td>

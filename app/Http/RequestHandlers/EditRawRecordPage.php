@@ -47,7 +47,7 @@ class EditRawRecordPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getQueryParams()['xref'];
+        $xref   = $request->getAttribute('xref');
         $record = GedcomRecord::getInstance($xref, $tree);
 
         Auth::checkRecordAccess($record, true);

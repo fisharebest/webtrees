@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -29,10 +31,12 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function assert;
 
 /**
- * Edit the raw GEDCOM of a record.
+ * Add a new fact.
  */
-class EditRawRecordAction implements RequestHandlerInterface
+class AddNewFact implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -43,33 +47,19 @@ class EditRawRecordAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getAttribute('xref');
-        $record = GedcomRecord::getInstance($xref, $tree);
+        $xref = $request->getAttribute('xref');
+        $fact = $request->getAttribute('fact');
 
+        $record = GedcomRecord::getInstance($xref, $tree);
         Auth::checkRecordAccess($record, true);
 
-        $facts    = $request->getParsedBody()['fact'] ?? [];
-        $fact_ids = $request->getParsedBody()['fact_id'] ?? [];
+        $title = $record->fullName() . ' - ' . GedcomTag::getLabel($fact, $record);
 
-        $gedcom = '0 @' . $record->xref() . '@ ' . $record::RECORD_TYPE;
-
-        // Retain any private facts
-        foreach ($record->facts([], false, Auth::PRIV_HIDE) as $fact) {
-            if (!in_array($fact->id(), $fact_ids, true) && !$fact->isPendingDeletion()) {
-                $gedcom .= "\n" . $fact->gedcom();
-            }
-        }
-        // Append the updated facts
-        foreach ($facts as $fact) {
-            $gedcom .= "\n" . $fact;
-        }
-
-        // Empty lines and MSDOS line endings.
-        $gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom);
-        $gedcom = trim($gedcom);
-
-        $record->updateRecord($gedcom, false);
-
-        return redirect($record->url());
+        return $this->viewResponse('edit/add-fact', [
+            'fact'   => $fact,
+            'record' => $record,
+            'title'  => $title,
+            'tree'   => $tree,
+        ]);
     }
 }

@@ -2,7 +2,8 @@
 <?php use Fisharebest\Webtrees\Functions\Functions; ?>
 <?php use Fisharebest\Webtrees\Gedcom; ?>
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
-<?php use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenPage;
+<?php use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
+use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenPage;
 use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Individual; ?>
 
@@ -123,7 +124,7 @@ use Fisharebest\Webtrees\I18N; ?>
                 <th scope="row">
                 </th>
                 <td>
-                    <a href="<?= e(route('add-fact', ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'fact' => 'MARR'])) ?>">
+                    <a href="<?= e(route(AddNewFact::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'fact' => 'MARR'])) ?>">
                         <?= I18N::translate('Add marriage details') ?>
                     </a>
                 </td>

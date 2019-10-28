@@ -127,10 +127,8 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 ?>
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route($next_action, ['tree' => $tree->name()])) ?>" onsubmit="return checkform();">
-    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
+<form method="post" action="<?= e(route($next_action, ['tree' => $tree->name(), 'xref' => $xref])) ?>" onsubmit="return checkform();">
     <input type="hidden" name="fact_id" value="<?= e($name_fact_id) ?>">
-    <input type="hidden" name="xref" value="<?= e($xref) ?>">
     <input type="hidden" name="famtag" value="<?= e($famtag) ?>">
     <input type="hidden" name="gender" value="<?= $gender ?>">
     <?= csrf_field() ?>

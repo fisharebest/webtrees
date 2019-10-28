@@ -55,79 +55,12 @@ class EditGedcomRecordController extends AbstractEditController
      *
      * @return ResponseInterface
      */
-    public function addFact(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getQueryParams()['xref'];
-        $fact = $request->getQueryParams()['fact'];
-
-        $record = GedcomRecord::getInstance($xref, $tree);
-        Auth::checkRecordAccess($record, true);
-
-        $title = $record->fullName() . ' - ' . GedcomTag::getLabel($fact, $record);
-
-        return $this->viewResponse('edit/add-fact', [
-            'fact'   => $fact,
-            'record' => $record,
-            'title'  => $title,
-            'tree'   => $tree,
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function editFact(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref    = $request->getQueryParams()['xref'];
-        $fact_id = $request->getQueryParams()['fact_id'];
-
-        $record = GedcomRecord::getInstance($xref, $tree);
-        Auth::checkRecordAccess($record, true);
-
-        // Find the fact to edit
-        $edit_fact = null;
-        foreach ($record->facts() as $fact) {
-            if ($fact->id() === $fact_id && $fact->canEdit()) {
-                $edit_fact = $fact;
-                break;
-            }
-        }
-        if ($edit_fact === null) {
-            throw new NotFoundHttpException();
-        }
-
-        $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');
-
-        $title = $record->fullName() . ' - ' . GedcomTag::getLabel($edit_fact->getTag());
-
-        return $this->viewResponse('edit/edit-fact', [
-            'can_edit_raw' => $can_edit_raw,
-            'edit_fact'    => $edit_fact,
-            'record'       => $record,
-            'title'        => $title,
-            'tree'         => $tree,
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function updateFact(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref    = $request->getParsedBody()['xref'];
+        $xref    = $request->getAttribute('xref');
         $fact_id = $request->getParsedBody()['fact_id'] ?? '';
 
         $record = GedcomRecord::getInstance($xref, $tree);

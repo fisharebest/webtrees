@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodeQuay;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeRela;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditFact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -773,7 +774,7 @@ class FunctionsPrintFacts
                         echo GedcomTag::getLabel($factname, $parent);
                     }
                 } elseif ($can_edit) {
-                    echo '<a href="' . e(route('edit-fact', [
+                    echo '<a href="' . e(route(EditFact::class, [
                             'xref'    => $parent->xref(),
                             'fact_id' => $fact->id(),
                             'tree'    => $tree->name(),
