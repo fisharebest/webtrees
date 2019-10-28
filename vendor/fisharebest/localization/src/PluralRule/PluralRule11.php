@@ -25,14 +25,20 @@ class PluralRule11 implements PluralRuleInterface
 
         if ($number === 1) {
             return 0;
-        } elseif ($number === 2) {
-            return 1;
-        } elseif ($number > 2 && $number < 7) {
-            return 2;
-        } elseif ($number > 6 && $number < 11) {
-            return 3;
-        } else {
-            return 4;
         }
+
+        if ($number === 2) {
+            return 1;
+        }
+
+        if ($number > 2 && $number < 7) {
+            return 2;
+        }
+
+        if ($number > 6 && $number < 11) {
+            return 3;
+        }
+
+        return 4;
     }
 }

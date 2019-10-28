@@ -23,12 +23,16 @@ class PluralRuleWelsh implements PluralRuleInterface
 
         if ($number === 1) {
             return 0;
-        } elseif ($number === 2) {
-            return 1;
-        } elseif ($number !== 8 && $number !== 11) {
-            return 2;
-        } else {
-            return 3;
         }
+
+        if ($number === 2) {
+            return 1;
+        }
+
+        if ($number !== 8 && $number !== 11) {
+            return 2;
+        }
+
+        return 3;
     }
 }

@@ -19,11 +19,6 @@ class LanguagePrg extends AbstractLanguage implements LanguageInterface
         return 'prg';
     }
 
-    public function defaultTerritory()
-    {
-        return new Territory001();
-    }
-
     public function pluralRule()
     {
         return new PluralRule3();

@@ -24,8 +24,8 @@ class PluralRule14 implements PluralRuleInterface
 
         if ($number % 10 === 1 && $number % 100 !== 11) {
             return 0;
-        } else {
-            return 1;
         }
+
+        return 1;
     }
 }

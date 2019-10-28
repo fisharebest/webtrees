@@ -1,6 +1,13 @@
 CHANGE LOG
 ==========
 
+## 1.15.1 (2019-07-02)
+ - Fix: escaped characters in PO files.
+
+## 1.15.0 (2019-06-22)
+ - Improve language negotiation for Chinese
+ - Add support for PO files.
+
 ## 1.14.0 (2019-03-09)
  - Better negotiation for browsers that request zh-CN instead of zh-Hans
  - Update to CLDR-34 and latest versions of iana-subtag-registry

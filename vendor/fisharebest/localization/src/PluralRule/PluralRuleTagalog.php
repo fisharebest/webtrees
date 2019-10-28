@@ -23,8 +23,8 @@ class PluralRuleTagalog implements PluralRuleInterface
 
         if ($number % 10 === 4 || $number % 10 === 6 || $number % 10 === 9) {
             return 1;
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 }

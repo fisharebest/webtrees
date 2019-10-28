@@ -36,6 +36,13 @@ abstract class AbstractScript
     }
 
     /**
+     * The ISO15924 number for this script.
+     *
+     * @return string
+     */
+    abstract public function number();
+
+    /**
      * The Unicode name (aka “property value alias”) for this script, or
      * null if one does not exist.
      *

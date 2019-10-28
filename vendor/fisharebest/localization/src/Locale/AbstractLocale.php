@@ -2,6 +2,7 @@
 
 namespace Fisharebest\Localization\Locale;
 
+use Fisharebest\Localization\Language\LanguageInterface;
 use Fisharebest\Localization\PluralRule\PluralRuleInterface;
 use Fisharebest\Localization\Script\ScriptInterface;
 use Fisharebest\Localization\Territory\TerritoryInterface;
@@ -124,6 +125,14 @@ abstract class AbstractLocale
     }
 
     /**
+     * The name of this locale, in its own language/script, and with the
+     * customary capitalization of the locale.
+     *
+     * @return string
+     */
+    abstract public function endonym();
+
+    /**
      * A sortable version of the locale name.  For example, “British English”
      * might sort as “ENGLISH, BRITISH” to keep all the variants of English together.
      *
@@ -143,12 +152,21 @@ abstract class AbstractLocale
      */
     public function htmlAttributes()
     {
-        if ($this->direction() === 'rtl' || $this->direction() !== $this->script()->direction()) {
+        $direction = $this->direction();
+
+        if ($direction === 'rtl' || $direction !== $this->script()->direction()) {
             return 'lang="' . $this->languageTag() . '" dir="' . $this->direction() . '"';
-        } else {
-            return 'lang="' . $this->languageTag() . '"';
         }
+
+        return 'lang="' . $this->languageTag() . '"';
     }
+
+    /**
+     * The language used by this locale.
+     *
+     * @return LanguageInterface
+     */
+    abstract public function language();
 
     /**
      * The IETF language tag for the locale.  Examples include
@@ -185,7 +203,7 @@ abstract class AbstractLocale
     /**
      * Convert (Hindu-Arabic) digits into a localized form
      *
-     * @param float $number The number to be localized
+     * @param int|float $number The number to be localized
      *
      * @return string
      */
