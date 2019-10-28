@@ -1,10 +1,14 @@
-<?php use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View; ?>
-<?php ?>
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlerInterface\EditRawRecordAction;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+?>
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route('edit-raw-record-action', ['tree' => $tree->name()])) ?>" class="wt-page-content">
+<form method="post" action="<?= e(route(EditRawRecordAction::class, ['tree' => $tree->name()])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
     <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="xref" value="<?= e($record->xref()) ?>">

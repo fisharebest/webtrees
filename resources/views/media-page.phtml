@@ -4,6 +4,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
 use Fisharebest\Webtrees\I18N;
@@ -94,7 +95,7 @@ use Illuminate\Support\Collection;
                                     </a>
 
                                     <?php if (count($media->mediaFiles()) > 1) : ?>
-                                        <a class="btn btn-link" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete this fact?') ?>" data-post-url="<?= e(route('delete-fact', ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact_id' => $media_file->factId()()])) ?>" title="<?= I18N::translate('Delete') ?>">
+                                        <a class="btn btn-link" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete this fact?') ?>" data-post-url="<?= e(route(DeleteFact::class, ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact_id' => $media_file->factId()()])) ?>" title="<?= I18N::translate('Delete') ?>">
                                             <?= view('icons/delete') ?>
                                             <span class="sr-only">
                                         <?= I18N::translate('Delete') ?>

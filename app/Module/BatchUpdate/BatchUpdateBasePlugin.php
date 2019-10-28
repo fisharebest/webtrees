@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
 use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditRawRecordPage;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
@@ -140,7 +141,7 @@ abstract class BatchUpdateBasePlugin
     {
         return preg_replace(
             "/@([^#@\n]+)@/m",
-            '<a href="' . e(route('edit-raw-record', [
+            '<a href="' . e(route(EditRawRecordPage::class, [
                 'tree'  => $record->tree()->name(),
                 'xref' => $record->xref(),
             ])) . '">@\\1@</a>',

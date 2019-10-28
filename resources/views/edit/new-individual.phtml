@@ -5,6 +5,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\SurnameTradition;
@@ -331,7 +332,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
             </a>
 
             <?php if ($name_fact instanceof Fact && (Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD'))) : ?>
-                <a class="btn btn-link" href="<?= e(route('edit-raw-fact', ['xref' => $xref, 'fact_id' => $name_fact->id(), 'tree' => $tree->name()])) ?>">
+                <a class="btn btn-link" href="<?= e(route(EditRawFactPage::class, ['xref' => $xref, 'fact_id' => $name_fact->id(), 'tree' => $tree->name()])) ?>">
                     <?= I18N::translate('Edit the raw GEDCOM') ?>
                 </a>
             <?php endif ?>

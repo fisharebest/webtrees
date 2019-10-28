@@ -1,9 +1,14 @@
-<?php use Fisharebest\Webtrees\Auth; ?>
-<?php use Fisharebest\Webtrees\Config; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
-<?php use Fisharebest\Webtrees\GedcomTag; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Ramsey\Uuid\Uuid; ?>
+<?php
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Config;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage;
+use Fisharebest\Webtrees\I18N;
+use Ramsey\Uuid\Uuid;
+
+?>
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
@@ -118,7 +123,7 @@
                 I18N::translate('cancel') ?>
             </a>
             <?php if ($can_edit_raw) : ?>
-                <a class="btn btn-link" href="<?= e(route('edit-raw-fact', ['xref' => $record->xref(), 'fact_id' => $edit_fact->id(), 'tree' => $tree->name()])) ?>">
+                <a class="btn btn-link" href="<?= e(route(EditRawFactPage::class, ['xref' => $record->xref(), 'fact_id' => $edit_fact->id(), 'tree' => $tree->name()])) ?>">
                     <?= I18N::translate('Edit the raw GEDCOM') ?>
                 </a>
             <?php endif; ?>
