@@ -87,7 +87,7 @@ use Illuminate\Support\Collection;
                         <th scope="row">
                             <?= I18N::translate('Media file') ?>
                             <?php if ($media->canEdit()) : ?>
-                                <div class="editfacts">
+                                <div class="editfacts nowrap">
                                     <a class="btn btn-link" href="#" data-toggle="modal" data-target="#wt-ajax-modal" data-href="<?= route('edit-media-file', ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact_id' => $media_file->factId()]) ?>" title="<?= I18N::translate('Edit') ?>">
                                         <?= view('icons/edit') ?>
                                         <span class="sr-only">

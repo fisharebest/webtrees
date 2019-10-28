@@ -206,7 +206,7 @@ class FunctionsPrintFacts
         echo $label;
 
         if ($fact->id() !== 'histo' && $fact->canEdit()) {
-            echo '<div class="editfacts">';
+            echo '<div class="editfacts nowrap">';
             echo view('edit/icon-fact-edit', ['fact' => $fact]);
             echo view('edit/icon-fact-copy', ['fact' => $fact]);
             echo view('edit/icon-fact-delete', ['fact' => $fact]);
@@ -783,7 +783,7 @@ class FunctionsPrintFacts
                         echo '<i class="icon-source"></i> ';
                     }
                     echo GedcomTag::getLabel($factname, $parent), '</a>';
-                    echo '<div class="editfacts">';
+                    echo '<div class="editfacts nowrap">';
                     if (preg_match('/^@.+@$/', $match[$j][2])) {
                         // Inline sources can't be edited. Attempting to save one will convert it
                         // into a link, and delete it.
@@ -994,7 +994,7 @@ class FunctionsPrintFacts
                     } else {
                         echo GedcomTag::getLabel('NOTE');
                     }
-                    echo '<div class="editfacts">';
+                    echo '<div class="editfacts nowrap">';
                     echo view('edit/icon-fact-edit', ['fact' => $fact]);
                     echo view('edit/icon-fact-copy', ['fact' => $fact]);
                     echo view('edit/icon-fact-delete', ['fact' => $fact]);
@@ -1127,7 +1127,7 @@ class FunctionsPrintFacts
                     }
                 } elseif ($can_edit) {
                     echo GedcomTag::getLabel($factname, $parent);
-                    echo '<div class="editfacts">';
+                    echo '<div class="editfacts nowrap">';
                     echo view('edit/icon-fact-copy', ['fact' => $fact]);
                     echo view('edit/icon-fact-delete', ['fact' => $fact]);
                     echo '</div>';
