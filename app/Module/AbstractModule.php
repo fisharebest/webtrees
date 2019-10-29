@@ -50,6 +50,13 @@ abstract class AbstractModule implements ModuleInterface
     public const CUSTOM_WEBSITE = '';
 
     /**
+     * Called for all *enabled* modules.
+     */
+    public function boot(): void
+    {
+    }
+
+    /**
      * How should this module be identified in the control panel, etc.?
      *
      * @return string

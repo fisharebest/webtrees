@@ -1,23 +1,44 @@
 <?php
 
 /**
- * Example module
+ * Example module.
  */
 
 declare(strict_types=1);
 
 namespace MyCustomNamespace;
 
-use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Localization\Translation;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
-use Fisharebest\Webtrees\Tree;
 
 return new class extends AbstractModule implements ModuleCustomInterface {
     use ModuleCustomTrait;
+
+    /**
+     * Constructor.  The constructor is called on *all* modules, even ones that are disabled.
+     * This is a good place to load business logic ("services").  Type-hint the parameters and
+     * they will be injected automatically.
+     */
+    public function __construct()
+    {
+        // NOTE:  If your module is dependent on any of the business logic ("services"),
+        // then you would type-hint them in the constructor and let webtrees inject them
+        // for you.  However, we can't use dependency injection on anonymous classes like
+        // this one. For an example of this, see the example-server-configuration module.
+    }
+
+    /**
+     * Bootstrap.  This function is called on *enabled* modules.
+     * It is a good place to register routes and views.
+     *
+     * @return void
+     */
+    public function boot(): void
+    {
+    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -80,31 +101,6 @@ return new class extends AbstractModule implements ModuleCustomInterface {
     }
 
     /**
-     *  Constructor.
-     */
-    public function __construct()
-    {
-        // IMPORTANT - the constructor is called on *all* modules, even ones that are disabled.
-        // It is also called before the webtrees framework is initialised, and so other components
-        // will not yet exist.
-    }
-
-    /**
-     *  Boostrap.
-     *
-     * @param UserInterface $user A user (or visitor) object.
-     * @param Tree|null     $tree Note that $tree can be null (if all trees are private).
-     */
-    public function boot(UserInterface $user, ?Tree $tree): void
-    {
-        // The boot() function is called after the framework has been booted.
-        // We can now use the current user, tree, etc.
-        if ($tree !== null && !Auth::isAdmin($user)) {
-            return;
-        }
-    }
-
-    /**
      * Additional/updated translations.
      *
      * @param string $language
@@ -113,10 +109,6 @@ return new class extends AbstractModule implements ModuleCustomInterface {
      */
     public function customTranslations(string $language): array
     {
-        // Here we are using an array for translations.
-        // If you had .MO files, you could use them with:
-        // return (new Translation('path/to/file.mo'))->asArray();
-
         switch ($language) {
             case 'en-AU':
             case 'en-GB':
@@ -126,6 +118,11 @@ return new class extends AbstractModule implements ModuleCustomInterface {
             case 'fr':
             case 'fr-CA':
                 return $this->frenchTranslations();
+
+            case 'some-other-language':
+                // Arrays are preferred, and faster.
+                // If your module uses .MO files, then you can convert them to arrays like this.
+                return (new Translation('path/to/file.mo'))->asArray();
 
             default:
                 return [];

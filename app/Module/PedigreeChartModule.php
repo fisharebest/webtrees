@@ -31,6 +31,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function app;
+use function assert;
 use function max;
 use function min;
 use function route;
@@ -88,10 +90,13 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     /**
      * Initialization.
      *
-     * @param RouterContainer $router_container
+     * @return void
      */
-    public function boot(RouterContainer $router_container): void
+    public function boot(): void
     {
+        $router_container = app(RouterContainer::class);
+        assert($router_container instanceof RouterContainer);
+
         $router_container->getMap()
             ->get(self::ROUTE_NAME, self::ROUTE_URL, self::class)
             ->allows(RequestMethodInterface::METHOD_POST)

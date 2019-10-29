@@ -27,6 +27,11 @@ use Fisharebest\Webtrees\Tree;
 interface ModuleInterface
 {
     /**
+     * Early initialisation.  Called before most of the middleware.
+     */
+    public function boot(): void;
+
+    /**
      * A unique internal name for this module (based on the installation folder).
      *
      * @param string $name

@@ -22,8 +22,8 @@ namespace Fisharebest\Webtrees\Services;
 use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\AhnentafelReportModule;
 use Fisharebest\Webtrees\Module\AlbumModule;
 use Fisharebest\Webtrees\Module\AncestorsChartModule;
@@ -215,7 +215,6 @@ use stdClass;
 use Throwable;
 
 use function app;
-use function method_exists;
 
 /**
  * Functions for managing and maintaining modules.
@@ -782,17 +781,13 @@ class ModuleService
      */
     public function bootModules(ModuleThemeInterface $current_theme): void
     {
-        $bootable_modules = $this->all()->filter(static function (ModuleInterface $module) {
-            return method_exists($module, 'boot');
-        });
-
-        foreach ($bootable_modules as $module) {
+        foreach ($this->all() as $module) {
             // Only bootstrap the current theme.
             if ($module instanceof ModuleThemeInterface && $module !== $current_theme) {
                 continue;
             }
 
-            app()->dispatch($module, 'boot');
+            $module->boot();
         }
     }
 }
