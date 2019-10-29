@@ -116,7 +116,7 @@ trait ModuleCustomTrait
 
         return route('module', [
             'module' => $this->name(),
-            'action' => 'asset',
+            'action' => 'Asset',
             'asset'  => $asset,
             'hash'   => $hash,
         ]);
