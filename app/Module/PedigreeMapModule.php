@@ -280,6 +280,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $tree        = $request->getAttribute('tree');
         $user        = $request->getAttribute('user');
         $xref        = $request->getAttribute('xref');
+        $generations = (int) $request->getAttribute('generations');
         $individual  = Individual::getInstance($xref, $tree);
 
         // Convert POST requests into GET requests for pretty URLs.
