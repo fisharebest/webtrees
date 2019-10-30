@@ -666,6 +666,7 @@ class AdminTreesController extends AbstractBaseController
         // On sites with hundreds or thousands of trees, this page becomes very large.
         // Just show the current tree, the default tree, and un-imported trees
         if ($all_trees->count() >= $multiple_tree_threshold) {
+            $default = Site::getPreference('DEFAULT_GEDCOM');
             $all_trees = $all_trees->filter(static function (Tree $x) use ($tree, $default): bool {
                 if ($x->getPreference('imported') === '0') {
                     return true;
