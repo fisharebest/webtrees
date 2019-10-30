@@ -114,6 +114,8 @@ class ReportBaseTextbox extends ReportBaseElement
     public $padding;
     /**
      * Resets this box last height after it’s done
+     *
+     * @var bool
      */
     public $reseth;
 
@@ -133,8 +135,20 @@ class ReportBaseTextbox extends ReportBaseElement
      * @param bool   $padding
      * @param bool   $reseth
      */
-    public function __construct($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth)
-    {
+    public function __construct(
+        float $width,
+        float $height,
+        bool $border,
+        string $bgcolor,
+        bool $newline,
+        float $left,
+        float $top,
+        bool $pagecheck,
+        string $style,
+        bool $fill,
+        bool $padding,
+        bool $reseth
+    ) {
         $this->border    = $border;
         $this->bgcolor   = $bgcolor;
         $this->fill      = $fill;
