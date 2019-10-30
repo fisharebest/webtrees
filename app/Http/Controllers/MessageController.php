@@ -281,6 +281,9 @@ class MessageController extends AbstractBaseController
      */
     public function messagePage(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user    = $request->getAttribute('user');
         $referer = $request->getHeaderLine('referer');
         $params  = $request->getQueryParams();
@@ -302,6 +305,7 @@ class MessageController extends AbstractBaseController
             'subject' => $subject,
             'title'   => $title,
             'to'      => $to_user,
+            'tree'    => $tree,
             'url'     => $url,
         ]);
     }
