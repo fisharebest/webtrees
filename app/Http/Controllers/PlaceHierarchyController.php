@@ -231,6 +231,7 @@ class PlaceHierarchyController extends AbstractBaseController
         return [
             'indilist' => $indilist,
             'famlist'  => $famlist,
+            'tree'     => $tree,
         ];
     }
 
