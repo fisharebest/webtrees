@@ -52,9 +52,7 @@ class ReorderChildrenPage implements RequestHandlerInterface
         assert(is_string($xref));
 
         $family = Family::getInstance($xref, $tree);
-        assert($family instanceof Family);
-
-        Auth::checkFamilyAccess($family, true);
+        $family = Auth::checkFamilyAccess($family, true);
 
         $title = $family->fullName() . ' — ' . I18N::translate('Re-order children');
 

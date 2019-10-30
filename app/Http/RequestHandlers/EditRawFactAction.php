@@ -28,6 +28,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function is_string;
 use function preg_replace;
 use function redirect;
 use function trim;
@@ -47,7 +48,9 @@ class EditRawFactAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getAttribute('xref');
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
         $record = GedcomRecord::getInstance($xref, $tree);
 
         $fact_id = $request->getAttribute('fact_id');
@@ -56,8 +59,7 @@ class EditRawFactAction implements RequestHandlerInterface
         // Cleanup the client’s bad editing?
         $gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom); // Empty lines
         $gedcom = trim($gedcom); // Leading/trailing spaces
-
-        Auth::checkRecordAccess($record, true);
+        $record = Auth::checkRecordAccess($record, true);
 
         foreach ($record->facts() as $fact) {
             if (!$fact->isPendingDeletion() && $fact->id() === $fact_id && $fact->canEdit()) {

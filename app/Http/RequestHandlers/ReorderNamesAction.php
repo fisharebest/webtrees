@@ -54,12 +54,10 @@ class ReorderNamesAction implements RequestHandlerInterface
         assert(is_string($xref));
 
         $individual = Individual::getInstance($xref, $tree);
-        assert($individual instanceof Individual);
+        $individual = Auth::checkIndividualAccess($individual, true);
 
         $order = $request->getParsedBody()['order'];
         assert(is_array($order));
-
-        Auth::checkIndividualAccess($individual, true);
 
         $dummy_facts = ['0 @' . $individual->xref() . '@ INDI'];
         $sort_facts  = [];

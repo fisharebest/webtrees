@@ -54,12 +54,10 @@ class ReorderChildrenAction implements RequestHandlerInterface
         assert(is_string($xref));
 
         $family = Family::getInstance($xref, $tree);
-        assert($family instanceof Family);
+        $family = Auth::checkFamilyAccess($family, true);
 
         $order = $request->getParsedBody()['order'];
         assert(is_array($order));
-
-        Auth::checkFamilyAccess($family, true);
 
         $dummy_facts = ['0 @' . $family->xref() . '@ FAM'];
         $sort_facts  = [];

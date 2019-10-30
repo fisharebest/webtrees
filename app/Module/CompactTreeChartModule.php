@@ -33,6 +33,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
 use function assert;
+use function is_string;
 use function route;
 
 /**
@@ -156,10 +157,14 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $user       = $request->getAttribute('user');
-        $xref       = $request->getAttribute('xref');
-        $ajax       = $request->getQueryParams()['ajax'] ?? '';
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
         $individual = Individual::getInstance($xref, $tree);
+        $individual = Auth::checkIndividualAccess($individual);
+
+        $user = $request->getAttribute('user');
+        $ajax = $request->getQueryParams()['ajax'] ?? '';
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
@@ -169,7 +174,6 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
             ]));
         }
 
-        Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
         if ($ajax === '1') {

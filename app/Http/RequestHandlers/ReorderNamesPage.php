@@ -52,9 +52,7 @@ class ReorderNamesPage implements RequestHandlerInterface
         assert(is_string($xref));
 
         $individual = Individual::getInstance($xref, $tree);
-        assert($individual instanceof Individual);
-
-        Auth::checkIndividualAccess($individual, true);
+        $individual = Auth::checkIndividualAccess($individual, true);
 
         $title = $individual->fullName() . ' — ' . I18N::translate('Re-order names');
 

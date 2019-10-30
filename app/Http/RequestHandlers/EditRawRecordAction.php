@@ -27,6 +27,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function is_string;
 
 /**
  * Edit the raw GEDCOM of a record.
@@ -43,10 +44,11 @@ class EditRawRecordAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getAttribute('xref');
-        $record = GedcomRecord::getInstance($xref, $tree);
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
 
-        Auth::checkRecordAccess($record, true);
+        $record = GedcomRecord::getInstance($xref, $tree);
+        $record = Auth::checkRecordAccess($record, true);
 
         $facts    = $request->getParsedBody()['fact'] ?? [];
         $fact_ids = $request->getParsedBody()['fact_id'] ?? [];

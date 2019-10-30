@@ -29,6 +29,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
+use function is_string;
 use function redirect;
 
 /**
@@ -62,12 +63,12 @@ class MediaController extends AbstractBaseController
         assert($tree instanceof Tree);
 
         $xref  = $request->getAttribute('xref');
-        $slug  = $request->getAttribute('slug');
+        assert(is_string($xref));
+
         $media = Media::getInstance($xref, $tree);
+        $media = Auth::checkMediaAccess($media);
 
-        Auth::checkMediaAccess($media);
-
-        if ($slug !== $media->slug()) {
+        if ($request->getAttribute('slug') !== $media->slug()) {
             return redirect($media->url());
         }
 

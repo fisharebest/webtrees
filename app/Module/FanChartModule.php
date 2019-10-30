@@ -36,6 +36,7 @@ use function app;
 use function array_keys;
 use function assert;
 use function implode;
+use function is_string;
 use function max;
 use function min;
 use function redirect;
@@ -188,13 +189,18 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $user        = $request->getAttribute('user');
-        $xref        = $request->getAttribute('xref');
+        $user = $request->getAttribute('user');
+
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
+        $individual = Individual::getInstance($xref, $tree);
+        $individual = Auth::checkIndividualAccess($individual);
+
         $style       = $request->getAttribute('style');
         $generations = (int) $request->getAttribute('generations');
         $width       = (int) $request->getAttribute('width');
         $ajax        = $request->getQueryParams()['ajax'] ?? '';
-        $individual  = Individual::getInstance($xref, $tree);
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
@@ -207,7 +213,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
             ]));
         }
 
-        Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
         $width = min($width, self::MAXIMUM_WIDTH);

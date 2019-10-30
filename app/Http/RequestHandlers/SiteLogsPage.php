@@ -70,8 +70,8 @@ class SiteLogsPage implements RequestHandlerInterface
         $earliest = DB::table('log')->min('log_time');
         $latest   = DB::table('log')->max('log_time');
 
-        $earliest = $earliest ? Carbon::make($earliest) : Carbon::now();
-        $latest   = $latest ? Carbon::make($latest) : Carbon::now();
+        $earliest = $earliest === null ? Carbon::now() : Carbon::make($earliest);
+        $latest   = $latest === null ? Carbon::now() : Carbon::make($latest);
 
         $earliest = $earliest->toDateString();
         $latest   = $latest->toDateString();

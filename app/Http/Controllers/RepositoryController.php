@@ -29,6 +29,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
+use function is_string;
 use function redirect;
 
 /**
@@ -74,13 +75,13 @@ class RepositoryController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $slug       = $request->getAttribute('slug');
-        $xref       = $request->getAttribute('xref');
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
         $repository = Repository::getInstance($xref, $tree);
+        $repository = Auth::checkRepositoryAccess($repository, false);
 
-        Auth::checkRepositoryAccess($repository, false);
-
-        if ($slug !== $repository->slug()) {
+        if ($request->getAttribute('slug') !== $repository->slug()) {
             return redirect($repository->url());
         }
 

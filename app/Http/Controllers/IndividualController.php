@@ -48,6 +48,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use function assert;
 use function e;
 use function explode;
+use function is_string;
 use function ob_get_clean;
 use function ob_start;
 use function preg_match_all;
@@ -94,14 +95,16 @@ class IndividualController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request): ResponseInterface
     {
-        $slug       = $request->getAttribute('slug');
-        $tree       = $request->getAttribute('tree');
-        $xref       = $request->getAttribute('xref');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
         $individual = Individual::getInstance($xref, $tree);
+        $individual = Auth::checkIndividualAccess($individual);
 
-        Auth::checkIndividualAccess($individual);
-
-        if ($slug !== $individual->slug()) {
+        if ($request->getAttribute('slug') !== $individual->slug()) {
             return redirect($individual->url());
         }
 
@@ -179,17 +182,21 @@ class IndividualController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
+        $record = Individual::getInstance($xref, $tree);
+        $record = Auth::checkIndividualAccess($record);
+
         $module_name = $request->getAttribute('module');
         $user        = $request->getAttribute('user');
-        $xref        = $request->getAttribute('xref');
-        $record      = Individual::getInstance($xref, $tree);
+
         $module      = $this->module_service->findByName($module_name);
 
         if (!$module instanceof ModuleTabInterface) {
             throw new NotFoundHttpException('No such tab: ' . $module_name);
         }
 
-        Auth::checkIndividualAccess($record);
         Auth::checkComponentAccess($module, 'tab', $tree, $user);
 
         $layout = view('layouts/ajax', [

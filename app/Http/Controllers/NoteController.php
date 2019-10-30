@@ -30,6 +30,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
+use function is_string;
 use function redirect;
 
 /**
@@ -63,12 +64,12 @@ class NoteController extends AbstractBaseController
         assert($tree instanceof Tree);
 
         $xref = $request->getAttribute('xref');
-        $slug = $request->getAttribute('slug');
+        assert(is_string($xref));
+
         $note = Note::getInstance($xref, $tree);
+        $note = Auth::checkNoteAccess($note, false);
 
-        Auth::checkNoteAccess($note, false);
-
-        if ($slug !== $note->slug()) {
+        if ($request->getAttribute('slug') !== $note->slug()) {
             return redirect($note->url());
         }
 

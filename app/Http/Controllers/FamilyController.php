@@ -29,6 +29,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
 use function assert;
+use function is_string;
 use function redirect;
 
 /**
@@ -61,13 +62,13 @@ class FamilyController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $slug   = $request->getAttribute('slug');
-        $xref   = $request->getAttribute('xref');
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
         $family = Family::getInstance($xref, $tree);
+        $family = Auth::checkFamilyAccess($family, false);
 
-        Auth::checkFamilyAccess($family, false);
-
-        if ($slug !== $family->slug()) {
+        if ($request->getAttribute('slug') !== $family->slug()) {
             return redirect($family->url());
         }
 

@@ -30,6 +30,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function is_string;
 use function response;
 
 /**
@@ -62,11 +63,12 @@ class CopyFact implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref    = $request->getAttribute('xref');
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
         $fact_id = $request->getAttribute('fact_id');
         $record  = GedcomRecord::getInstance($xref, $tree);
-
-        Auth::checkRecordAccess($record, true);
+        $record = Auth::checkRecordAccess($record, true);
 
         foreach ($record->facts() as $fact) {
             if ($fact->id() === $fact_id) {

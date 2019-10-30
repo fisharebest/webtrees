@@ -33,6 +33,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
 use function assert;
+use function is_string;
 use function max;
 use function min;
 use function route;
@@ -179,12 +180,19 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
+        $individual  = Individual::getInstance($xref, $tree);
+        $individual  = Auth::checkIndividualAccess($individual);
+
         $ajax        = $request->getQueryParams()['ajax'] ?? '';
         $generations = (int) $request->getAttribute('generations');
         $style       = $request->getAttribute('style');
         $user        = $request->getAttribute('user');
-        $xref        = $request->getAttribute('xref');
-        $individual  = Individual::getInstance($xref, $tree);
+
+        Auth::checkComponentAccess($this, 'chart', $tree, $user);
+
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
@@ -195,9 +203,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
                 'generations' => $request->getParsedBody()['generations'],
             ]));
         }
-
-        Auth::checkIndividualAccess($individual);
-        Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
         $generations = min($generations, self::MAXIMUM_GENERATIONS);
         $generations = max($generations, self::MINIMUM_GENERATIONS);

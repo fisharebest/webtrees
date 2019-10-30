@@ -60,8 +60,7 @@ class EditNoteController extends AbstractEditController
         $xref = $request->getQueryParams()['xref'];
 
         $note = Note::getInstance($xref, $tree);
-
-        Auth::checkNoteAccess($note, true);
+        $note = Auth::checkNoteAccess($note, true);
 
         return $this->viewResponse('edit/shared-note', [
             'note'  => $note,
@@ -85,8 +84,7 @@ class EditNoteController extends AbstractEditController
         $xref = $request->getQueryParams()['xref'];
 
         $note = Note::getInstance($xref, $tree);
-
-        Auth::checkNoteAccess($note, true);
+        $note = Auth::checkNoteAccess($note, true);
 
         $NOTE = $request->getParsedBody()['NOTE'];
 

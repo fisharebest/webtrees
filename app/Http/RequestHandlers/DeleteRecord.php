@@ -30,6 +30,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function is_string;
 use function preg_match;
 use function preg_match_all;
 use function preg_replace;
@@ -52,10 +53,11 @@ class DeleteRecord implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getAttribute('xref');
-        $record = GedcomRecord::getInstance($xref, $tree);
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
 
-        Auth::checkRecordAccess($record, true);
+        $record = GedcomRecord::getInstance($xref, $tree);
+        $record = Auth::checkRecordAccess($record, true);
 
         if ($record && Auth::isEditor($record->tree()) && $record->canShow() && $record->canEdit()) {
             // Delete links to this record

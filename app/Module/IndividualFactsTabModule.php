@@ -168,7 +168,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         return view('modules/personal_facts/tab', [
             'can_edit'             => $individual->canEdit(),
             'clipboard_facts'      => $this->clipboard_service->pastableFacts($individual, $exclude_facts),
-            'has_historical_facts' => !empty($historical_facts),
+            'has_historical_facts' => $historical_facts !== [],
             'individual'           => $individual,
             'facts'                => $indifacts,
         ]);

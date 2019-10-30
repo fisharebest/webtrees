@@ -30,6 +30,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function assert;
+use function is_string;
 
 /**
  * Controller for edit forms and responses.
@@ -48,10 +49,10 @@ class EditIndividualController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref       = $request->getQueryParams()['xref'];
-        $individual = Individual::getInstance($xref, $tree);
+        $xref = $request->getQueryParams()['xref'];
 
-        Auth::checkIndividualAccess($individual, true);
+        $individual = Individual::getInstance($xref, $tree);
+        $individual = Auth::checkIndividualAccess($individual, true);
 
         $title = $individual->fullName() . ' - ' . I18N::translate('Add a child to create a one-parent family');
 
@@ -77,11 +78,10 @@ class EditIndividualController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getParsedBody()['xref'];
+        $xref = $request->getParsedBody()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
-
-        Auth::checkIndividualAccess($individual, true);
+        $individual = Auth::checkIndividualAccess($individual, true);
 
         $PEDI = $request->getParsedBody()['PEDI'];
 
@@ -143,9 +143,10 @@ class EditIndividualController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getQueryParams()['xref'];
+        $xref = $request->getQueryParams()['xref'];
+
         $individual = Individual::getInstance($xref, $tree);
-        Auth::checkIndividualAccess($individual, true);
+        $individual = Auth::checkIndividualAccess($individual, true);
 
         $gender = $request->getQueryParams()['gender'];
 
@@ -179,9 +180,10 @@ class EditIndividualController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getParsedBody()['xref'];
+        $xref = $request->getParsedBody()['xref'];
+
         $individual = Individual::getInstance($xref, $tree);
-        Auth::checkIndividualAccess($individual, true);
+        $individual = Auth::checkIndividualAccess($individual, true);
 
         $this->glevels = $request->getParsedBody()['glevels'] ?? [];
         $this->tag     = $request->getParsedBody()['tag'] ?? [];
@@ -244,8 +246,7 @@ class EditIndividualController extends AbstractEditController
         $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
-
-        Auth::checkIndividualAccess($individual, true);
+        $individual = Auth::checkIndividualAccess($individual, true);
 
         if ($individual->sex() === 'F') {
             $title  = $individual->fullName() . ' - ' . I18N::translate('Add a husband');
@@ -279,9 +280,10 @@ class EditIndividualController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref       = $request->getParsedBody()['xref'];
+        $xref = $request->getParsedBody()['xref'];
+
         $individual = Individual::getInstance($xref, $tree);
-        Auth::checkIndividualAccess($individual, true);
+        $individual = Auth::checkIndividualAccess($individual, true);
 
         $sex = $request->getParsedBody()['SEX'];
 
@@ -411,12 +413,13 @@ class EditIndividualController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref    = $request->getAttribute('xref');
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
         $fact_id = $request->getAttribute('fact_id') ?? '';
 
         $individual = Individual::getInstance($xref, $tree);
-
-        Auth::checkIndividualAccess($individual, true);
+        $individual = Auth::checkIndividualAccess($individual, true);
 
         // Find the fact to edit
         foreach ($individual->facts() as $fact) {
@@ -466,8 +469,7 @@ class EditIndividualController extends AbstractEditController
         $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
-
-        Auth::checkIndividualAccess($individual, true);
+        $individual = Auth::checkIndividualAccess($individual, true);
 
         $title = $individual->fullName() . ' — ' . I18N::translate('Add a name');
 
@@ -512,7 +514,7 @@ class EditIndividualController extends AbstractEditController
 
         $individual = Individual::getInstance($xref, $tree);
 
-        Auth::checkIndividualAccess($individual, true);
+        $individual = Auth::checkIndividualAccess($individual, true);
 
         $title = $individual->fullName() . ' - ' . I18N::translate('Link this individual to an existing family as a child');
 
@@ -532,15 +534,17 @@ class EditIndividualController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getParsedBody()['xref'];
-        $famid  = $request->getParsedBody()['famid'];
-        $PEDI   = $request->getParsedBody()['PEDI'];
+        $xref  = $request->getParsedBody()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
-        Auth::checkIndividualAccess($individual, true);
+        $individual = Auth::checkIndividualAccess($individual, true);
+
+        $famid = $request->getParsedBody()['famid'];
 
         $family = Family::getInstance($famid, $tree);
-        Auth::checkFamilyAccess($family, true);
+        $family = Auth::checkFamilyAccess($family, true);
+
+        $PEDI  = $request->getParsedBody()['PEDI'];
 
         // Replace any existing child->family link (we may be changing the PEDI);
         $fact_id = '';
@@ -583,8 +587,7 @@ class EditIndividualController extends AbstractEditController
         $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
-
-        Auth::checkIndividualAccess($individual, true);
+        $individual = Auth::checkIndividualAccess($individual, true);
 
         if ($individual->sex() === 'F') {
             $title = $individual->fullName() . ' - ' . I18N::translate('Add a husband using an existing individual');
@@ -612,13 +615,14 @@ class EditIndividualController extends AbstractEditController
         assert($tree instanceof Tree);
 
         $xref   = $request->getParsedBody()['xref'];
-        $spouse = $request->getParsedBody()['spid'];
 
         $individual = Individual::getInstance($xref, $tree);
-        Auth::checkIndividualAccess($individual, true);
+        $individual = Auth::checkIndividualAccess($individual, true);
 
-        $spouse = Individual::getInstance($spouse, $tree);
-        Auth::checkIndividualAccess($spouse, true);
+        $spid = $request->getParsedBody()['spid'];
+
+        $spouse = Individual::getInstance($spid, $tree);
+        $spouse = Auth::checkIndividualAccess($spouse, true);
 
         if ($individual->sex() === 'M') {
             $gedcom = "0 @@ FAM\n1 HUSB @" . $individual->xref() . "@\n1 WIFE @" . $spouse->xref() . '@';

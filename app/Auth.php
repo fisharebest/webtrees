@@ -225,11 +225,11 @@ class Auth
      * @param Family|null $family
      * @param bool|null   $edit
      *
-     * @return void
+     * @return Family
      * @throws FamilyNotFoundException
      * @throws FamilyAccessDeniedException
      */
-    public static function checkFamilyAccess(Family $family = null, $edit = false): void
+    public static function checkFamilyAccess(Family $family = null, $edit = false): Family
     {
         if ($family === null) {
             throw new FamilyNotFoundException();
@@ -242,17 +242,19 @@ class Auth
         if ($edit && !$family->canEdit()) {
             throw new FamilyAccessDeniedException();
         }
+
+        return $family;
     }
 
     /**
      * @param Individual|null $individual
      * @param bool|null       $edit
      *
-     * @return void
+     * @return Individual
      * @throws IndividualNotFoundException
      * @throws IndividualAccessDeniedException
      */
-    public static function checkIndividualAccess(Individual $individual = null, $edit = false): void
+    public static function checkIndividualAccess(Individual $individual = null, $edit = false): Individual
     {
         if ($individual === null) {
             throw new IndividualNotFoundException();
@@ -265,17 +267,19 @@ class Auth
         if ($edit && !$individual->canEdit()) {
             throw new IndividualAccessDeniedException();
         }
+
+        return $individual;
     }
 
     /**
      * @param Media|null $media
      * @param bool|null  $edit
      *
-     * @return void
+     * @return Media
      * @throws MediaNotFoundException
      * @throws MediaAccessDeniedException
      */
-    public static function checkMediaAccess(Media $media = null, $edit = false): void
+    public static function checkMediaAccess(Media $media = null, $edit = false): Media
     {
         if ($media === null) {
             throw new MediaNotFoundException();
@@ -288,17 +292,19 @@ class Auth
         if ($edit && !$media->canEdit()) {
             throw new MediaAccessDeniedException();
         }
+
+        return $media;
     }
 
     /**
      * @param Note|null $note
      * @param bool|null $edit
      *
-     * @return void
+     * @return Note
      * @throws NoteNotFoundException
      * @throws NoteAccessDeniedException
      */
-    public static function checkNoteAccess(Note $note = null, $edit = false): void
+    public static function checkNoteAccess(Note $note = null, $edit = false): Note
     {
         if ($note === null) {
             throw new NoteNotFoundException();
@@ -311,17 +317,19 @@ class Auth
         if ($edit && !$note->canEdit()) {
             throw new NoteAccessDeniedException();
         }
+
+        return $note;
     }
 
     /**
      * @param GedcomRecord|null $record
      * @param bool|null         $edit
      *
-     * @return void
+     * @return GedcomRecord
      * @throws RecordNotFoundException
      * @throws RecordAccessDeniedException
      */
-    public static function checkRecordAccess(GedcomRecord $record = null, $edit = false): void
+    public static function checkRecordAccess(GedcomRecord $record = null, $edit = false): GedcomRecord
     {
         if ($record === null) {
             throw new RecordNotFoundException();
@@ -334,17 +342,19 @@ class Auth
         if ($edit && !$record->canEdit()) {
             throw new RecordAccessDeniedException();
         }
+
+        return $record;
     }
 
     /**
      * @param Repository|null $repository
      * @param bool|null       $edit
      *
-     * @return void
+     * @return Repository
      * @throws RepositoryNotFoundException
      * @throws RepositoryAccessDeniedException
      */
-    public static function checkRepositoryAccess(Repository $repository = null, $edit = false): void
+    public static function checkRepositoryAccess(Repository $repository = null, $edit = false): Repository
     {
         if ($repository === null) {
             throw new RepositoryNotFoundException();
@@ -357,17 +367,19 @@ class Auth
         if ($edit && !$repository->canEdit()) {
             throw new RepositoryAccessDeniedException();
         }
+
+        return $repository;
     }
 
     /**
      * @param Source|null $source
      * @param bool|null   $edit
      *
-     * @return void
+     * @return Source
      * @throws SourceNotFoundException
      * @throws SourceAccessDeniedException
      */
-    public static function checkSourceAccess(Source $source = null, $edit = false): void
+    public static function checkSourceAccess(Source $source = null, $edit = false): Source
     {
         if ($source === null) {
             throw new SourceNotFoundException();
@@ -380,5 +392,7 @@ class Auth
         if ($edit && !$source->canEdit()) {
             throw new SourceAccessDeniedException();
         }
+
+        return $source;
     }
 }

@@ -124,8 +124,7 @@ class AutocompleteController extends AbstractBaseController
         $xref  = $request->getQueryParams()['extra'] ?? '';
 
         $source = Source::getInstance($xref, $tree);
-
-        Auth::checkSourceAccess($source);
+        $source = Auth::checkSourceAccess($source);
 
         $regex_query = preg_quote(strtr($query, [' ' => '.+']), '/');
 
@@ -137,7 +136,7 @@ class AutocompleteController extends AbstractBaseController
                     ->on('l_from', '=', 'i_id');
             })
             ->where('i_file', '=', $tree->id())
-            ->where('l_to', '=', $xref)
+            ->where('l_to', '=', $source->xref())
             ->where('l_type', '=', 'SOUR')
             ->distinct()
             ->select(['individuals.*'])
@@ -153,7 +152,7 @@ class AutocompleteController extends AbstractBaseController
                     ->where('l_type', '=', 'SOUR');
             })
             ->where('f_file', '=', $tree->id())
-            ->where('l_to', '=', $xref)
+            ->where('l_to', '=', $source->xref())
             ->where('l_type', '=', 'SOUR')
             ->distinct()
             ->select(['families.*'])
@@ -164,11 +163,11 @@ class AutocompleteController extends AbstractBaseController
         $pages = new Collection();
 
         foreach ($individuals->merge($families) as $record) {
-            if (preg_match_all('/\n1 SOUR @' . $xref . '@(?:\n[2-9].*)*\n2 PAGE (.*' . $regex_query . '.*)/i', $record->gedcom(), $matches)) {
+            if (preg_match_all('/\n1 SOUR @' . $source->xref() . '@(?:\n[2-9].*)*\n2 PAGE (.*' . $regex_query . '.*)/i', $record->gedcom(), $matches)) {
                 $pages = $pages->concat($matches[1]);
             }
 
-            if (preg_match_all('/\n2 SOUR @' . $xref . '@(?:\n[3-9].*)*\n3 PAGE (.*' . $regex_query . '.*)/i', $record->gedcom(), $matches)) {
+            if (preg_match_all('/\n2 SOUR @' . $source->xref() . '@(?:\n[3-9].*)*\n3 PAGE (.*' . $regex_query . '.*)/i', $record->gedcom(), $matches)) {
                 $pages = $pages->concat($matches[1]);
             }
         }

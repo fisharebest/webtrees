@@ -25,6 +25,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function is_string;
 use function redirect;
 
 /**
@@ -43,6 +44,8 @@ class SelectNewFact implements RequestHandlerInterface
         assert($tree instanceof Tree);
 
         $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
         $fact = $request->getParsedBody()['fact'];
 
         return redirect(route(AddNewFact::class, [

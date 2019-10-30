@@ -279,7 +279,7 @@ class PlaceHierarchyController extends AbstractBaseController
         $features  = [];
         $flag_path = Webtrees::MODULES_DIR . 'openstreetmap/';
         $showlink  = true;
-        if (empty($places)) {
+        if ($places === []) {
             $places[] = $placeObj;
             $showlink = false;
         }
@@ -289,7 +289,7 @@ class PlaceHierarchyController extends AbstractBaseController
             $placeStats = [];
             foreach (['INDI', 'FAM'] as $type) {
                 $tmp               = $this->statistics->statsPlaces($type, '', $place->id());
-                $placeStats[$type] = empty($tmp) ? 0 : $tmp[0]->tot;
+                $placeStats[$type] = $tmp === [] ? 0 : $tmp[0]->tot;
             }
             //Flag
             if ($location->icon() !== '' && is_file($flag_path . $location->icon())) {

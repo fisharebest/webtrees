@@ -54,6 +54,7 @@ use function array_keys;
 use function array_map;
 use function assert;
 use function in_array;
+use function is_string;
 use function key;
 use function preg_match_all;
 use function redirect;
@@ -155,7 +156,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         ];
 
         if (in_array($route, self::ROUTES_WITH_RECORDS, true)) {
-            $xref      = $request->getAttribute('xref');
+            $xref = $request->getAttribute('xref');
+            assert(is_string($xref));
+
             $action    = 'Add' . ucfirst($route);
             $add_route = route('module', [
                 'module' => $this->name(),

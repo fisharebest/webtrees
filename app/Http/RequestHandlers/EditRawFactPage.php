@@ -29,6 +29,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function is_string;
 use function redirect;
 
 /**
@@ -48,10 +49,11 @@ class EditRawFactPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getAttribute('xref');
-        $record = GedcomRecord::getInstance($xref, $tree);
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
 
-        Auth::checkRecordAccess($record, true);
+        $record = GedcomRecord::getInstance($xref, $tree);
+        $record = Auth::checkRecordAccess($record, true);
 
         $fact_id = $request->getAttribute('fact_id');
 

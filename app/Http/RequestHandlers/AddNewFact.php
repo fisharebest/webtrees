@@ -29,6 +29,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function is_string;
 
 /**
  * Add a new fact.
@@ -48,10 +49,12 @@ class AddNewFact implements RequestHandlerInterface
         assert($tree instanceof Tree);
 
         $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
         $fact = $request->getAttribute('fact');
 
         $record = GedcomRecord::getInstance($xref, $tree);
-        Auth::checkRecordAccess($record, true);
+        $record = Auth::checkRecordAccess($record, true);
 
         $title = $record->fullName() . ' - ' . GedcomTag::getLabel($fact, $record);
 

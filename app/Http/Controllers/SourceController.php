@@ -29,6 +29,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
+use function is_string;
 use function redirect;
 
 /**
@@ -79,15 +80,13 @@ class SourceController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $slug   = $request->getAttribute('slug');
-        $tree   = $request->getAttribute('tree');
-        $xref   = $request->getAttribute('xref');
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
 
         $source = Source::getInstance($xref, $tree);
+        $source = Auth::checkSourceAccess($source, false);
 
-        Auth::checkSourceAccess($source, false);
-
-        if ($slug !== $source->slug()) {
+        if ($request->getAttribute('slug') !== $source->slug()) {
             return redirect($source->url());
         }
 

@@ -92,7 +92,7 @@ class EditMediaController extends AbstractEditController
         $media = Media::getInstance($xref, $tree);
 
         try {
-            Auth::checkMediaAccess($media);
+            $media = Auth::checkMediaAccess($media);
         } catch (Exception $ex) {
             return response(view('modals/error', [
                 'title' => I18N::translate('Add a media file'),
@@ -175,7 +175,7 @@ class EditMediaController extends AbstractEditController
         $media   = Media::getInstance($xref, $tree);
 
         try {
-            Auth::checkMediaAccess($media);
+            $media = Auth::checkMediaAccess($media);
         } catch (Exception $ex) {
             return response(view('modals/error', [
                 'title' => I18N::translate('Edit a media file'),

@@ -47,11 +47,12 @@ class EditFamilyController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getQueryParams()['xref'];
-        $gender = $request->getQueryParams()['gender'];
-        $family = Family::getInstance($xref, $tree);
+        $xref = $request->getQueryParams()['xref'];
 
-        Auth::checkFamilyAccess($family, true);
+        $family = Family::getInstance($xref, $tree);
+        $family = Auth::checkFamilyAccess($family, true);
+
+        $gender = $request->getQueryParams()['gender'];
 
         $title = $family->fullName() . ' - ' . I18N::translate('Add a child');
 
@@ -77,9 +78,10 @@ class EditFamilyController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getParsedBody()['xref'];
+        $xref = $request->getParsedBody()['xref'];
+
         $family = Family::getInstance($xref, $tree);
-        Auth::checkFamilyAccess($family, true);
+        $family = Auth::checkFamilyAccess($family, true);
 
         $PEDI      = $request->getParsedBody()['PEDI'];
         $keep_chan = (bool) ($request->getParsedBody()['keep_chan'] ?? false);
@@ -144,8 +146,7 @@ class EditFamilyController extends AbstractEditController
         $xref   = $request->getQueryParams()['xref'];
         $famtag = $request->getQueryParams()['famtag'];
         $family = Family::getInstance($xref, $tree);
-
-        Auth::checkFamilyAccess($family, true);
+        $family = Auth::checkFamilyAccess($family, true);
 
         if ($famtag === 'WIFE') {
             $title  = I18N::translate('Add a wife');
@@ -179,7 +180,7 @@ class EditFamilyController extends AbstractEditController
 
         $xref   = $request->getParsedBody()['xref'];
         $family = Family::getInstance($xref, $tree);
-        Auth::checkFamilyAccess($family, true);
+        $family = Auth::checkFamilyAccess($family, true);
 
         $this->glevels = $request->getParsedBody()['glevels'] ?? [];
         $this->tag     = $request->getParsedBody()['tag'] ?? [];
@@ -244,7 +245,7 @@ class EditFamilyController extends AbstractEditController
 
         $xref   = $request->getQueryParams()['xref'];
         $family = Family::getInstance($xref, $tree);
-        Auth::checkFamilyAccess($family, true);
+        $family = Auth::checkFamilyAccess($family, true);
 
         $title = I18N::translate('Change family members') . ' – ' . $family->fullName();
 
@@ -270,7 +271,7 @@ class EditFamilyController extends AbstractEditController
 
         $xref   = $request->getParsedBody()['xref'];
         $family = Family::getInstance($xref, $tree);
-        Auth::checkFamilyAccess($family, true);
+        $family = Auth::checkFamilyAccess($family, true);
 
         $HUSB = $request->getParsedBody()['HUSB'] ?? '';
         $WIFE = $request->getParsedBody()['WIFE'] ?? '';

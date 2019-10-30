@@ -31,6 +31,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function assert;
+use function is_string;
 
 /**
  * Controller for edit forms and responses.
@@ -60,11 +61,13 @@ class EditGedcomRecordController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref    = $request->getAttribute('xref');
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
         $fact_id = $request->getParsedBody()['fact_id'] ?? '';
 
         $record = GedcomRecord::getInstance($xref, $tree);
-        Auth::checkRecordAccess($record, true);
+        $record = Auth::checkRecordAccess($record, true);
 
         $keep_chan = (bool) ($request->getParsedBody()['keep_chan'] ?? false);
 

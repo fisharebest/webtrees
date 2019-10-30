@@ -40,6 +40,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
 use function assert;
+use function is_string;
 use function redirect;
 use function route;
 use function view;
@@ -198,12 +199,15 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
+        $xref2 = $request->getAttribute('xref2') ?? '';
+
         $ajax      = $request->getQueryParams()['ajax'] ?? '';
         $ancestors = (int) $request->getAttribute('ancestors');
         $recursion = (int) $request->getAttribute('recursion');
         $user      = $request->getAttribute('user');
-        $xref      = $request->getAttribute('xref');
-        $xref2     = $request->getAttribute('xref2') ?? '';
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
@@ -226,11 +230,11 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
         if ($tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') !== '1') {
             if ($individual1 instanceof Individual) {
-                Auth::checkIndividualAccess($individual1);
+                $individual1 = Auth::checkIndividualAccess($individual1);
             }
 
             if ($individual2 instanceof Individual) {
-                Auth::checkIndividualAccess($individual2);
+                $individual2 = Auth::checkIndividualAccess($individual2);
             }
         }
 

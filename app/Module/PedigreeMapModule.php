@@ -40,6 +40,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function app;
 use function assert;
 use function intdiv;
+use function is_string;
 use function redirect;
 use function route;
 use function view;
@@ -262,7 +263,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
             }
         }
 
-        $code = empty($facts) ? StatusCodeInterface::STATUS_NO_CONTENT : StatusCodeInterface::STATUS_OK;
+        $code = $facts === [] ? StatusCodeInterface::STATUS_NO_CONTENT : StatusCodeInterface::STATUS_OK;
 
         return response($geojson, $code);
     }
@@ -277,11 +278,15 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $tree        = $request->getAttribute('tree');
-        $user        = $request->getAttribute('user');
-        $xref        = $request->getAttribute('xref');
-        $generations = (int) $request->getAttribute('generations');
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
         $individual  = Individual::getInstance($xref, $tree);
+        $individual  = Auth::checkIndividualAccess($individual);
+
+        $user        = $request->getAttribute('user');
+        $generations = (int) $request->getAttribute('generations');
+        Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
@@ -291,9 +296,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                 'generations' => $request->getParsedBody()['generations'],
             ]));
         }
-
-        Auth::checkIndividualAccess($individual);
-        Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
         $map = view('modules/pedigree-map/chart', [
             'module'      => $this->name(),

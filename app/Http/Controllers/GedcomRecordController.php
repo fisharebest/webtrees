@@ -32,6 +32,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
+use function is_string;
 use function redirect;
 
 /**
@@ -51,13 +52,13 @@ class GedcomRecordController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $slug   = $request->getAttribute('slug');
-        $xref   = $request->getAttribute('xref');
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
         $record = GedcomRecord::getInstance($xref, $tree);
+        $record = Auth::checkRecordAccess($record);
 
-        Auth::checkRecordAccess($record);
-
-        if ($slug !== $record->slug()) {
+        if ($request->getAttribute('slug') !== $record->slug()) {
             return redirect($record->url());
         }
 

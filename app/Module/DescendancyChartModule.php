@@ -33,6 +33,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
 use function assert;
+use function is_string;
 use function max;
 use function min;
 use function route;
@@ -179,12 +180,16 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
+        $individual = Individual::getInstance($xref, $tree);
+        $individual = Auth::checkIndividualAccess($individual);
+
         $user        = $request->getAttribute('user');
-        $xref        = $request->getAttribute('xref');
         $style       = $request->getAttribute('style');
         $generations = (int) $request->getAttribute('generations');
         $ajax        = $request->getQueryParams()['ajax'] ?? '';
-        $individual  = Individual::getInstance($xref, $tree);
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
@@ -196,7 +201,6 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
             ]));
         }
 
-        Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
         $generations = min($generations, self::MAXIMUM_GENERATIONS);

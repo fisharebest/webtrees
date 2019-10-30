@@ -34,6 +34,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
 use function assert;
+use function is_string;
 use function response;
 use function view;
 
@@ -161,12 +162,16 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
+        $individual = Individual::getInstance($xref, $tree);
+        $individual = Auth::checkIndividualAccess($individual);
+
         $user        = $request->getAttribute('user');
-        $xref        = $request->getAttribute('xref');
         $generations = (int) $request->getAttribute('generations');
         $spouses     = (bool) $request->getAttribute('spouses');
         $ajax        = $request->getQueryParams()['ajax'] ?? '';
-        $individual  = Individual::getInstance($xref, $tree);
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
@@ -178,7 +183,6 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             ]));
         }
 
-        Auth::checkIndividualAccess($individual);
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 
         $generations = min($generations, self::MAXIMUM_GENERATIONS);
@@ -228,7 +232,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         $xref = $request->getQueryParams()['xref'] ?? '';
 
         $family = Family::getInstance($xref, $tree);
-        Auth::checkFamilyAccess($family);
+        $family = Auth::checkFamilyAccess($family);
 
         return response(view('modules/hourglass-chart/parents', [
             'family'      => $family,
@@ -252,8 +256,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
 
         $spouses    = (bool) ($request->getQueryParams()['spouses'] ?? false);
         $individual = Individual::getInstance($xref, $tree);
-
-        Auth::checkIndividualAccess($individual);
+        $individual = Auth::checkIndividualAccess($individual);
 
         $children = $individual->spouseFamilies()->map(static function (Family $family): Collection {
             return $family->children();
