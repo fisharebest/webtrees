@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
@@ -30,7 +31,6 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
-use function assert;
 use function redirect;
 use function route;
 
@@ -48,9 +48,12 @@ class AuthManager implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
         $user = $request->getAttribute('user');
+
+        // Tree no longer exists?
+        if (!$tree instanceof Tree) {
+            return redirect(route(ControlPanel::class));
+        }
 
         // Logged in with the correct role?
         if (Auth::isManager($tree, $user)) {
