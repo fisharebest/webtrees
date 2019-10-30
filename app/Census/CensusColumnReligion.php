@@ -37,9 +37,9 @@ class CensusColumnReligion extends AbstractCensusColumn implements CensusColumnI
      */
     public function generate(Individual $individual, Individual $head): string
     {
-        $fact = $individual->facts(['RELI'])->first();
-        if ($fact instanceof Fact) {
-            return $fact->value();
+        $reli_fact = $individual->facts(['RELI'])->first();
+        if ($reli_fact instanceof Fact) {
+            return $reli_fact->value();
         }
 
         foreach ($individual->facts() as $fact) {
