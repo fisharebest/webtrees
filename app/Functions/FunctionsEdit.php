@@ -51,6 +51,10 @@ use Psr\Http\Message\ServerRequestInterface;
 use Ramsey\Uuid\Uuid;
 
 use function app;
+use function explode;
+use function in_array;
+use function substr;
+use function substr_replace;
 
 /**
  * Class FunctionsEdit - common functions for editing
@@ -299,16 +303,20 @@ class FunctionsEdit
             'PLAC' => '',
         ];
 
-        preg_match('/^(?:(\d+) (' . Gedcom::REGEX_TAG . ') ?(.*))/', $tag, $match);
-        [, $level, $fact, $value] = $match;
+        $parts = explode(' ', $tag, 3);
+        $level = $parts[0] ?? '';
+        $fact  = $parts[1] ?? '';
+        $value = $parts[2] ?? '';
 
         if ($level === '0') {
+            // Adding a new fact.
             if ($upperlevel) {
                 $name = $upperlevel . '_' . $fact;
             } else {
                 $name = $fact;
             }
         } else {
+            // Editing an existing fact.
             $name = 'text[]';
         }
 
@@ -317,12 +325,11 @@ class FunctionsEdit
         $previous_ids[$fact] = $id;
 
         // field value
-        $islink = (substr($value, 0, 1) === '@' && substr($value, 0, 2) !== '@#');
+        $islink = (bool) preg_match('/^@[^#@][^@]*@$/', $value);
         if ($islink) {
             $value = trim($value, '@');
-        } else {
-            $value = (string) substr($tag, strlen($fact) + 3);
         }
+
         if ($fact === 'REPO' || $fact === 'SOUR' || $fact === 'OBJE' || $fact === 'FAMC') {
             $islink = true;
         }
@@ -821,15 +828,11 @@ class FunctionsEdit
             }
 
             // Insert missing tags
-            if (!empty($expected_subtags[$type])) {
-                foreach ($expected_subtags[$type] as $subtag) {
-                    if (!in_array($subtag, $subtags, true)) {
-                        echo self::addSimpleTag($tree, ($level + 1) . ' ' . $subtag, '', GedcomTag::getLabel($label . ':' . $subtag));
-                        if (!empty($expected_subtags[$subtag])) {
-                            foreach ($expected_subtags[$subtag] as $subsubtag) {
-                                echo self::addSimpleTag($tree, ($level + 2) . ' ' . $subsubtag, '', GedcomTag::getLabel($label . ':' . $subtag . ':' . $subsubtag));
-                            }
-                        }
+            foreach ($expected_subtags[$type] ?? [] as $subtag) {
+                if (!in_array($subtag, $subtags, true)) {
+                    echo self::addSimpleTag($tree, ($level + 1) . ' ' . $subtag, '', GedcomTag::getLabel($label . ':' . $subtag));
+                    foreach ($expected_subtags[$subtag] ?? [] as $subsubtag) {
+                        echo self::addSimpleTag($tree, ($level + 2) . ' ' . $subsubtag, '', GedcomTag::getLabel($label . ':' . $subtag . ':' . $subsubtag));
                     }
                 }
             }
