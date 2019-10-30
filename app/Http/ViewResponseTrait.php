@@ -42,7 +42,7 @@ trait ViewResponseTrait
      *
      * @return ResponseInterface
      */
-    protected function viewResponse(string $view_name, array $view_data, $status = StatusCodeInterface::STATUS_OK): ResponseInterface
+    protected function viewResponse(string $view_name, array $view_data, int $status = StatusCodeInterface::STATUS_OK): ResponseInterface
     {
         // Make the view's data available to the layout.
         $layout_data = $view_data;
