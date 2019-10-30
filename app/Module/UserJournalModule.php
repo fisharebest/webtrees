@@ -90,6 +90,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             'articles' => $articles,
             'block_id' => $block_id,
             'limit'    => 5,
+            'tree'     => $tree,
         ]);
 
         if ($context !== self::CONTEXT_EMBED) {
@@ -155,6 +156,9 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getEditJournalAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         if (!Auth::check()) {
             throw new AccessDeniedHttpException();
         }
@@ -180,6 +184,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             'news_id' => $news_id,
             'subject' => $row->subject,
             'title'   => $title,
+            'tree'    => $tree,
         ]);
     }
 
