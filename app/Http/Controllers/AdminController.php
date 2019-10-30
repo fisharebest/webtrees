@@ -366,10 +366,13 @@ class AdminController extends AbstractBaseController
         FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->title()), 'success'));
 
         // Coming soon...
-        if ($params['all_trees'] ?? false) {
+        $all_trees = $request->getParsedBody()['all_trees'] ?? '';
+        $new_trees = $request->getParsedBody()['new_trees'] ?? '';
+
+        if ($all_trees === 'on') {
             FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.', e($tree->title())), 'success');
         }
-        if ($params['new_trees'] ?? false) {
+        if ($new_trees === 'on') {
             FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.', e($tree->title())), 'success');
         }
 

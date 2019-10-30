@@ -255,7 +255,7 @@ class LocationController extends AbstractAdminController
         $parent_id = (int) $request->getQueryParams()['parent_id'];
         $place_id  = (int) $request->getQueryParams()['place_id'];
         $hierarchy = $this->getHierarchy($place_id);
-        $fqpn      = empty($hierarchy) ? '' : $hierarchy[0]->fqpn;
+        $fqpn      = $hierarchy === [] ? '' : $hierarchy[0]->fqpn;
         $location  = new Location($fqpn);
 
         if ($location->id() !== 0) {
@@ -311,7 +311,7 @@ class LocationController extends AbstractAdminController
             ->where('pl_id', '=', $id)
             ->first();
 
-        if (empty($row)) {
+        if ($row === null) {
             $json = [
                 'zoom'        => 2,
                 'coordinates' => [
@@ -438,7 +438,8 @@ class LocationController extends AbstractAdminController
         $hierarchy = $this->getHierarchy($parent_id);
 
         // Create the file name
-        $place_name = empty($hierarchy) ? 'Global' : $hierarchy[0]->fqpn; // $hierarchy[0] always holds the full placename
+        // $hierarchy[0] always holds the full placename
+        $place_name = $hierarchy === [] ? 'Global' : $hierarchy[0]->fqpn;
         $place_name = str_replace(Gedcom::PLACE_SEPARATOR, '-', $place_name);
         $filename   = 'Places-' . preg_replace('/[^a-zA-Z0-9.-]/', '', $place_name);
 
@@ -711,8 +712,8 @@ class LocationController extends AbstractAdminController
                         ->update([
                             'pl_lati' => $place['pl_lati'],
                             'pl_long' => $place['pl_long'],
-                            'pl_zoom' => $place['pl_zoom'] ? $place['pl_zoom'] : null,
-                            'pl_icon' => $place['pl_icon'] ? $place['pl_icon'] : null,
+                            'pl_zoom' => $place['pl_zoom'] ?: null,
+                            'pl_icon' => $place['pl_icon'] ?: null,
                         ]);
 
                     $updated++;

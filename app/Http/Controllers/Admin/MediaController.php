@@ -335,7 +335,7 @@ class MediaController extends AbstractAdminController
                 // Sort files - only option is column 0
                 sort($unused_files);
                 $order = $request->getQueryParams()['order'];
-                if ($order && $order[0]['dir'] === 'desc') {
+                if ($order[0]['dir'] === 'desc') {
                     $unused_files = array_reverse($unused_files);
                 }
 
@@ -423,7 +423,7 @@ class MediaController extends AbstractAdminController
             // Invalid GEDCOM - you cannot link a REPO to an OBJE
             $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
-        if (!empty($linked)) {
+        if ($linked !== []) {
             $html .= '<ul>';
             foreach ($linked as $link) {
                 $html .= '<li>' . $link . '</li>';
@@ -512,10 +512,7 @@ class MediaController extends AbstractAdminController
     {
         $media_folders = $this->allMediaFolders();
 
-        $filesize = ini_get('upload_max_filesize');
-        if (empty($filesize)) {
-            $filesize = '2M';
-        }
+        $filesize = ini_get('upload_max_filesize') ?: '2M';
 
         $title = I18N::translate('Upload media files');
 

@@ -1142,17 +1142,6 @@ class AdminTreesController extends AbstractBaseController
     public function preferencesUpdate(ServerRequestInterface $request): ResponseInterface
     {
         $tree      = $request->getAttribute('tree');
-        $all_trees = $request->getParsedBody()['all_trees'] ?? '';
-
-        if ($all_trees === '1') {
-            FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.'), 'success');
-        }
-
-        $new_trees = $request->getParsedBody()['new_trees'] ?? '';
-
-        if ($new_trees === '1') {
-            FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.'), 'success');
-        }
 
         $tree->setPreference('ADVANCED_NAME_FACTS', implode(',', $request->getParsedBody()['ADVANCED_NAME_FACTS'] ?? []));
         $tree->setPreference('ADVANCED_PLAC_FACTS', implode(',', $request->getParsedBody()['ADVANCED_PLAC_FACTS'] ?? []));
@@ -1236,6 +1225,18 @@ class AdminTreesController extends AbstractBaseController
         }
 
         FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->title())), 'success');
+
+        // Coming soon...
+        $all_trees = $request->getParsedBody()['all_trees'] ?? '';
+        $new_trees = $request->getParsedBody()['new_trees'] ?? '';
+
+        if ($all_trees === 'on') {
+            FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.'), 'success');
+        }
+
+        if ($new_trees === 'on') {
+            FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.'), 'success');
+        }
 
         $url = route('manage-trees', ['tree' => $tree->name()]);
 
