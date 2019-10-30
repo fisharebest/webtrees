@@ -204,7 +204,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
             $html                                    => I18N::translate('Custom'),
             view('modules/html/template-keywords')   => I18N::translate('Keyword examples'),
             view('modules/html/template-narrative')  => I18N::translate('Narrative description'),
-            view('modules/html/template-statistics') => I18N::translate('Statistics'),
+            view('modules/html/template-statistics', ['tree' => $tree]) => I18N::translate('Statistics'),
         ];
 
         return view('modules/html/config', [

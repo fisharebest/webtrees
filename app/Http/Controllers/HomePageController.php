@@ -305,6 +305,7 @@ class HomePageController extends AbstractBaseController
             'main_blocks' => $this->treeBlocks($tree->id(), self::MAIN_BLOCKS),
             'side_blocks' => $this->treeBlocks($tree->id(), self::SIDE_BLOCKS),
             'title'       => e($tree->title()),
+            'tree'        => $tree,
             'meta_robots' => 'index,follow',
         ]);
     }
@@ -410,6 +411,7 @@ class HomePageController extends AbstractBaseController
             'main_blocks' => $main_blocks,
             'side_blocks' => $side_blocks,
             'title'       => $title,
+            'tree'        => $tree,
             'url_cancel'  => $url_cancel,
             'url_save'    => $url_save,
         ]);
@@ -459,6 +461,9 @@ class HomePageController extends AbstractBaseController
      */
     public function userPage(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user = $request->getAttribute('user');
 
         $has_blocks = DB::table('block')
@@ -484,6 +489,7 @@ class HomePageController extends AbstractBaseController
             'main_blocks' => $this->userBlocks($user->id(), self::MAIN_BLOCKS),
             'side_blocks' => $this->userBlocks($user->id(), self::SIDE_BLOCKS),
             'title'       => I18N::translate('My page'),
+            'tree'        => $tree,
         ]);
     }
 
@@ -523,6 +529,8 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageDefaultEdit(ServerRequestInterface $request): ResponseInterface
     {
+        $this->layout = 'layouts/administration';
+
         $this->checkDefaultUserBlocksExist();
 
         $main_blocks = $this->userBlocks(-1, self::MAIN_BLOCKS);
@@ -569,7 +577,9 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageEdit(ServerRequestInterface $request): ResponseInterface
     {
-        $tree        = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user        = $request->getAttribute('user');
         $main_blocks = $this->userBlocks($user->id(), self::MAIN_BLOCKS);
         $side_blocks = $this->userBlocks($user->id(), self::SIDE_BLOCKS);
@@ -584,6 +594,7 @@ class HomePageController extends AbstractBaseController
             'main_blocks' => $main_blocks,
             'side_blocks' => $side_blocks,
             'title'       => $title,
+            'tree'        => $tree,
             'url_cancel'  => $url_cancel,
             'url_save'    => $url_save,
         ]);
@@ -633,7 +644,6 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageUserEdit(ServerRequestInterface $request): ResponseInterface
     {
-        $tree        = $request->getAttribute('tree');
         $user_id     = (int) $request->getQueryParams()['user_id'];
         $user        = $this->user_service->find($user_id);
 
@@ -646,7 +656,7 @@ class HomePageController extends AbstractBaseController
         $all_blocks  = $this->availableUserBlocks();
         $title       = I18N::translate('Change the blocks on this user’s “My page”') . ' - ' . e($user->userName());
         $url_cancel  = route('admin-users');
-        $url_save    = route('user-page-user-update', ['tree' => $tree->name(), 'user_id' => $user_id]);
+        $url_save    = route('user-page-user-update', ['user_id' => $user_id]);
 
         return $this->viewResponse('edit-blocks-page', [
             'all_blocks'  => $all_blocks,
@@ -654,6 +664,7 @@ class HomePageController extends AbstractBaseController
             'main_blocks' => $main_blocks,
             'side_blocks' => $side_blocks,
             'title'       => $title,
+            'tree'        => null,
             'url_cancel'  => $url_cancel,
             'url_save'    => $url_save,
         ]);

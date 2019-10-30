@@ -112,8 +112,6 @@ class Router implements MiddlewareInterface
                 $value = $this->tree_service->all()->get($value);
                 // @TODO - this is still required by the date formatter.
                 app()->instance(Tree::class, $value);
-                // @TODO - this is still required by various view templates.
-                View::share('tree', $value);
             }
             $request = $request->withAttribute($key, $value);
         }

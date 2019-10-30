@@ -90,6 +90,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             'articles' => $articles,
             'block_id' => $block_id,
             'limit'    => 5,
+            'tree'     => $tree,
         ]);
 
         if ($context !== self::CONTEXT_EMBED) {
