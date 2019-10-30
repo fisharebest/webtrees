@@ -112,6 +112,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             'is_admin'   => Auth::isAdmin(),
             'individual' => $individual,
             'stories'    => $this->getStoriesForIndividual($individual),
+            'tree'       => $individual->tree(),
         ]);
     }
 
