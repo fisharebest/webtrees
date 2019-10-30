@@ -236,6 +236,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
             'style'               => $style,
             'styles'              => $this->styles(),
             'title'               => $this->chartTitle($individual),
+            'tree'                => $tree,
             'width'               => $width,
         ]);
     }

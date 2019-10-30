@@ -57,6 +57,7 @@ class EditRawRecordPage implements RequestHandlerInterface
         return $this->viewResponse('edit/raw-gedcom-record', [
             'record' => $record,
             'title'  => $title,
+            'tree'   => $tree,
         ]);
     }
 }

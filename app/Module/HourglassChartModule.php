@@ -207,6 +207,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             'module'              => $this->name(),
             'spouses'             => $spouses,
             'title'               => $this->chartTitle($individual),
+            'tree'                => $tree,
         ]);
     }
 

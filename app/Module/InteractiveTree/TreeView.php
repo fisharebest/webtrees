@@ -59,6 +59,7 @@ class TreeView
             'module'     => 'tree',
             'name'       => $this->name,
             'individual' => $this->drawPerson($individual, $generations, 0, null, '', true),
+            'tree'       => $individual->tree(),
         ]);
 
         return [

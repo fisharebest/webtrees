@@ -187,6 +187,7 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
             'individual' => $individual,
             'module'     => $this->name(),
             'title'      => $this->chartTitle($individual),
+            'tree'       => $tree,
         ]);
     }
 }

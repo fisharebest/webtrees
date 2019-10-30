@@ -37,6 +37,7 @@ use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function assert;
 use function stripos;
 use function view;
 
@@ -67,6 +68,9 @@ class BranchesController extends AbstractBaseController
      */
     public function page(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $module = $request->getAttribute('module');
         $action = $request->getAttribute('action');
 
@@ -87,6 +91,7 @@ class BranchesController extends AbstractBaseController
             'soundex_std' => $soundex_std,
             'surname'     => $surname,
             'title'       => $title,
+            'tree'        => $tree,
             'module'      => $module,
             'action'      => $action,
         ]);

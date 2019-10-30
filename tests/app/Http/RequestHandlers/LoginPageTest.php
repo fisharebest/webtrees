@@ -36,7 +36,6 @@ class LoginPageTest extends TestCase
     public function testLoginPage(): void
     {
         $tree_service = new TreeService();
-        View::share('tree', null);
         $request  = self::createRequest();
         $handler  = new LoginPage($tree_service);
         $response = $handler->handle($request);

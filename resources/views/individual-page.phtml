@@ -46,7 +46,7 @@ use Illuminate\Support\Collection;
         <?= $individual->fullName() ?><?= $user_link ?>, <?= $individual->getLifeSpan() ?> <?= $age ?>
     </h2>
     <?php if ($individual->canEdit()) : ?>
-        <?= view('individual-page-menu', ['individual' => $individual, 'count_names' => $count_names, 'count_sex' => $count_sex]) ?>
+        <?= view('individual-page-menu', ['individual' => $individual, 'count_names' => $count_names, 'count_sex' => $count_sex, 'tree' => $tree]) ?>
     <?php endif ?>
 </div>
 

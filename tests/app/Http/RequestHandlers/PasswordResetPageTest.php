@@ -41,9 +41,7 @@ class PasswordResetPageTest extends TestCase
         $user_service = $this->createMock(UserService::class);
         $user_service->expects($this->once())->method('findByToken')->willReturn($user);
 
-        View::share('tree', null);
-
-        $request  = self::createRequest();
+        $request  = self::createRequest()->withAttribute('tree', null);
         $handler  = new PasswordResetPage($user_service);
         $response = $handler->handle($request);
 

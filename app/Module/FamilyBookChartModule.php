@@ -217,6 +217,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
             'module'              => $this->name(),
             'spouses'             => $spouses,
             'title'               => $this->chartTitle($individual),
+            'tree'                => $tree,
         ]);
     }
 }

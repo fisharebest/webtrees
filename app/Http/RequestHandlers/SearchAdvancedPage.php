@@ -174,6 +174,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
             'name_options' => $name_options,
             'other_fields' => $other_fields,
             'title'        => $title,
+            'tree'         => $tree,
         ]);
     }
 

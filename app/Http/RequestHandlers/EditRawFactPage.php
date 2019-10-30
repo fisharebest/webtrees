@@ -62,6 +62,7 @@ class EditRawFactPage implements RequestHandlerInterface
                 return $this->viewResponse('edit/raw-gedcom-fact', [
                     'fact'    => $fact,
                     'title'   => $title,
+                    'tree'    => $tree,
                 ]);
             }
         }

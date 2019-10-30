@@ -58,12 +58,18 @@ class PasswordResetPage implements RequestHandlerInterface, StatusCodeInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $tree  = $request->getAttribute('tree');
         $title = I18N::translate('Set a new password');
         $token = $request->getQueryParams()['token'] ?? '';
         $user  = $this->user_service->findByToken($token);
 
         if ($user instanceof User) {
-            return $this->viewResponse('password-reset-page', ['title' => $title, 'user' => $user, 'token' => $token]);
+            return $this->viewResponse('password-reset-page', [
+                'title' => $title,
+                'tree'  => $tree,
+                'user'  => $user,
+                'token' => $token,
+            ]);
         }
 
         $message1 = I18N::translate('The password reset link has expired.');

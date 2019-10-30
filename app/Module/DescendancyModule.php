@@ -152,6 +152,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     {
         return view('modules/descendancy/sidebar', [
             'individual_list' => $this->getPersonLi($individual, 1),
+            'tree'            => $individual->tree(),
         ]);
     }
 

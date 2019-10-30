@@ -202,6 +202,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             'module'    => $this->name(),
             'reset_url' => $reset_url,
             'title'     => $this->title(),
+            'tree'      => $tree,
             'xrefs'     => $xrefs,
         ]);
     }

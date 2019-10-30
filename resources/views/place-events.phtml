@@ -31,9 +31,7 @@
         <?php if (empty($famlist)) : ?>
             <p><?= I18N::translate('No results found.') ?></p>
         <?php else : ?>
-            <?= view('lists/families-table', [
-                'families' => $famlist,
-            ]) ?>
+            <?= view('lists/families-table', ['families' => $famlist, 'tree' => $tree]) ?>
         <?php endif ?>
     </div>
 </div>

@@ -63,7 +63,7 @@ use Fisharebest\Webtrees\I18N;
         </div>
 
         <div class="tab-pane fade" role="tabpanel" id="sources">
-            <?= view('lists/sources-table', ['sources' => $sources]) ?>
+            <?= view('lists/sources-table', ['sources' => $sources, 'tree' => $tree]) ?>
         </div>
     </div>
 </div>

@@ -113,7 +113,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('No results found.') ?>
         </div>
     <?php else : ?>
-        <?= view('search-results', ['families' => $families, 'individuals' => $individuals, 'notes' => $notes, 'repositories' => $repositories, 'sources' => $sources, 'search_families' => $search_families, 'search_individuals' => $search_individuals, 'search_notes' => $search_notes, 'search_repositories' => $search_repositories, 'search_sources' => $search_sources]) ?>
+        <?= view('search-results', ['families' => $families, 'individuals' => $individuals, 'notes' => $notes, 'repositories' => $repositories, 'sources' => $sources, 'search_families' => $search_families, 'search_individuals' => $search_individuals, 'search_notes' => $search_notes, 'search_repositories' => $search_repositories, 'search_sources' => $search_sources, 'tree' => $tree]) ?>
     <?php endif ?>
 <?php endif ?>
 

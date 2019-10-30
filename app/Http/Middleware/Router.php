@@ -84,9 +84,8 @@ class Router implements MiddlewareInterface
 
         // No route matched?
         if ($route === false) {
-            // Bind the request into the container and the layout
+            // Bind the request into the container
             app()->instance(ServerRequestInterface::class, $request);
-            View::share('request', $request);
 
             return $handler->handle($request);
         }
@@ -116,9 +115,8 @@ class Router implements MiddlewareInterface
             $request = $request->withAttribute($key, $value);
         }
 
-        // Bind the request into the container and the layout
+        // Bind the request into the container
         app()->instance(ServerRequestInterface::class, $request);
-        View::share('request', $request);
 
         $dispatcher = new Dispatcher($middleware, app());
 

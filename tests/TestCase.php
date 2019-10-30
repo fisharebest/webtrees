@@ -174,7 +174,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
             ->withAttribute('locale', new LocaleEnUs());
 
         app()->instance(ServerRequestInterface::class, $request);
-        View::share('request', $request);
 
         return $request;
     }
@@ -221,8 +220,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $stream       = app(StreamFactoryInterface::class)->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
 
         $tree->importGedcomFile($stream, $gedcom_file);
-
-        View::share('tree', $tree);
 
         $timeout_service = new TimeoutService(microtime(true));
         $controller      = new GedcomFileController($timeout_service);

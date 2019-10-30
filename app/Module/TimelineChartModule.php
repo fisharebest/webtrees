@@ -240,6 +240,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             'reset_url'    => $reset_url,
             'scale'        => $scale,
             'title'        => $this->title(),
+            'tree'         => $tree,
             'zoom_in_url'  => $zoom_in_url,
             'zoom_out_url' => $zoom_out_url,
         ]);

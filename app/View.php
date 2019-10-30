@@ -36,6 +36,8 @@ use function ob_get_level;
 use function ob_start;
 use function sha1;
 
+use const EXTR_OVERWRITE;
+
 /**
  * Simple view/template class.
  */
@@ -69,11 +71,6 @@ class View
     private static $replacements = [];
 
     /**
-     * @var mixed[] Data to be inserted into all views.
-     */
-    private static $shared_data = [];
-
-    /**
      * @var string Implementation of Blade "stacks".
      */
     private static $stack;
@@ -93,19 +90,6 @@ class View
     {
         $this->name = $name;
         $this->data = $data;
-    }
-
-    /**
-     * Shared data that is available to all views.
-     *
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return void
-     */
-    public static function share(string $key, $value): void
-    {
-        self::$shared_data[$key] = $value;
     }
 
     /**
@@ -194,8 +178,7 @@ class View
      */
     public function render(): string
     {
-        $variables_for_view = $this->data + self::$shared_data;
-        extract($variables_for_view, EXTR_SKIP);
+        extract($this->data, EXTR_OVERWRITE);
 
         try {
             ob_start();

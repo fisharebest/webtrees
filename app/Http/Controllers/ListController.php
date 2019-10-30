@@ -394,6 +394,7 @@ class ListController extends AbstractBaseController
         return $this->viewResponse('individual-list-page', [
             'content' => $html,
             'title'   => $title,
+            'tree'    => $tree,
         ]);
     }
 
@@ -454,6 +455,7 @@ class ListController extends AbstractBaseController
             'pages'         => $pages,
             'subdirs'       => $subdirs,
             'title'         => I18N::translate('Media'),
+            'tree'          => $tree,
             'module'        => $module,
             'action'        => $action,
         ]);
@@ -474,6 +476,7 @@ class ListController extends AbstractBaseController
         return $this->viewResponse('note-list-page', [
             'notes' => $notes,
             'title' => I18N::translate('Shared notes'),
+            'tree'  => $tree,
         ]);
     }
 
@@ -492,6 +495,7 @@ class ListController extends AbstractBaseController
         return $this->viewResponse('repository-list-page', [
             'repositories' => $repositories,
             'title'        => I18N::translate('Repositories'),
+            'tree'         => $tree,
         ]);
     }
 
@@ -510,6 +514,7 @@ class ListController extends AbstractBaseController
         return $this->viewResponse('source-list-page', [
             'sources' => $sources,
             'title'   => I18N::translate('Sources'),
+            'tree'    => $tree,
         ]);
     }
 

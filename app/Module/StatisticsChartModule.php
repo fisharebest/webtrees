@@ -177,6 +177,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             'module' => $this->name(),
             'tabs'   => $tabs,
             'title'  => $this->title(),
+            'tree'   => $tree,
         ]);
     }
 

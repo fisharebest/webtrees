@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 use function response;
 use function view;
@@ -48,6 +49,7 @@ trait ViewResponseTrait
 
         // Render the view
         $layout_data['content'] = view($view_name, $view_data);
+        $layout_data['request'] = app(ServerRequestInterface::class);
 
         // Most pages use the default layout.  Other built-in layouts include admin and ajax.
         $layout = $this->layout;

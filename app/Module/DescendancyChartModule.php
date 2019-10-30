@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Services\ChartService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
 use function app;
 use function assert;
 use function max;
@@ -220,10 +219,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
                 case self::CHART_STYLE_FAMILIES:
                     $families = $this->chart_service->descendantFamilies($individual, $generations - 1);
 
-                    return $this->viewResponse('lists/families-table', [
-                        'families' => $families,
-                        'tree'     => $tree,
-                    ]);
+                    return $this->viewResponse('lists/families-table', ['families' => $families, 'tree' => $tree]);
             }
         }
 
@@ -244,6 +240,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
             'minimum_generations' => self::MINIMUM_GENERATIONS,
             'module'              => $this->name(),
             'title'               => $this->chartTitle($individual),
+            'tree'                => $tree,
         ]);
     }
 

@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Services\ChartService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
 use function app;
 use function assert;
 use function max;
@@ -230,10 +229,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
                         }
                     }
 
-                    return $this->viewResponse('lists/families-table', [
-                        'families' => $families,
-                        'tree'     => $tree,
-                    ]);
+                    return $this->viewResponse('lists/families-table', ['families' => $families, 'tree' => $tree]);
             }
         }
 
@@ -254,6 +250,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
             'style'               => $style,
             'styles'              => $this->styles(),
             'title'               => $this->chartTitle($individual),
+            'tree'                => $tree,
         ]);
     }
 

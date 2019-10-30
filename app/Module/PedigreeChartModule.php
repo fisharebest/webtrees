@@ -259,6 +259,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
             'style'              => $style,
             'styles'             => $this->styles(),
             'title'              => $this->chartTitle($individual),
+            'tree'               => $tree,
         ]);
     }
 

@@ -163,6 +163,7 @@ class IndividualController extends AbstractBaseController
             'tabs'             => $this->getTabs($individual),
             'significant'      => $this->significant($individual),
             'title'            => $individual->fullName() . ' ' . $individual->getLifeSpan(),
+            'tree'             => $tree,
             'user_link'        => $user_link,
         ]);
     }

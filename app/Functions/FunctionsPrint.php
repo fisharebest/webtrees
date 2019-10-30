@@ -488,6 +488,7 @@ class FunctionsPrint
             'add_facts'   => $translated_addfacts,
             'quick_facts' => $quickfacts,
             'record'      => $record,
+            'tree'        => $tree,
         ]);
     }
 }
