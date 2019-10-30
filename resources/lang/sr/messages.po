@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-10-28 14:09+0000\n"
-"PO-Revision-Date: 2018-05-31 02:06+0000\n"
-"Last-Translator: Pedja Micevic <mpedja@gmail.com>\n"
-"Language-Team: Serbian <https://translate.webtrees.net/projects/webtrees/webtrees/sr/>\n"
+"POT-Creation-Date: 2019-09-22 16:28+0100\n"
+"PO-Revision-Date: 2019-10-30 21:25+0000\n"
+"Last-Translator: Pedja <mpedja@gmail.com>\n"
+"Language-Team: Serbian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/sr/>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,7 +83,7 @@ msgstr "%1$s КБ je преузетo у %2$s секунди."
 #: app/Http/Controllers/HomePageController.php:641
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s не постоји"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/Admin/UsersController.php:319
@@ -230,8 +230,8 @@ msgstr[2] "%s децe"
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s дан"
+msgstr[1] "%s дани"
 msgstr[2] ""
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
@@ -239,27 +239,27 @@ msgstr[2] ""
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s породица је ажурирана."
+msgstr[1] "%s породице су ажуриране."
+msgstr[2] "%s породице су ажуриране."
 
 #: resources/views/statistics/families/top10-list-grand.phtml:18
 #: resources/views/statistics/families/top10-nolist-grand.phtml:14
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s унуче"
+msgstr[1] "%s унуka"
+msgstr[2] "%s унуka"
 
 #: app/Module/LifespansChartModule.php:422
 #: resources/views/admin/trees-unconnected.phtml:34
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s појединац"
+msgstr[1] "%s појединца"
+msgstr[2] "%s појединаца"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:75
 #: app/Http/RequestHandlers/SearchReplaceAction.php:109
@@ -267,33 +267,33 @@ msgstr[2] ""
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s појединац је ажуриран."
+msgstr[1] "%s појединца су ажуриранa."
+msgstr[2] "%s појединца је ажуриранo."
 
 #: app/Module/LifespansChartModule.php:413
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s појединац са догађајима између %s и %s"
+msgstr[1] "%s појединца са догађајима између %s и %s"
+msgstr[2] "%s појединаца са догађајима између %s и %s"
 
 #: app/Module/LifespansChartModule.php:403
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s појединац са догађајима у %s"
+msgstr[1] "%s појединца са догађајима у %s"
+msgstr[2] "%s појединаца са догађајима у %s"
 
 #: app/Module/LifespansChartModule.php:391
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s појединац са догађајима у %s између %s и %s"
+msgstr[1] "%s појединца са догађајима у %s између %s и %s"
+msgstr[2] "%s појединаца са догађајима у %s између %s и %s"
 
 #: app/Http/Controllers/Admin/LocationController.php:840
 #, php-format
