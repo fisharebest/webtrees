@@ -40,15 +40,15 @@ class WrapHandler implements MiddlewareInterface
     // To parse Controller::action
     private const SCOPE_OPERATOR = '::';
 
-    /** @var string|MiddlewareInterface */
+    /** @var string|RequestHandlerInterface */
     private $handler;
 
     /**
      * WrapController constructor.
      *
-     * @param string $handler
+     * @param string|RequestHandlerInterface $handler
      */
-    public function __construct(string $handler)
+    public function __construct($handler)
     {
         $this->handler = $handler;
     }
@@ -61,6 +61,12 @@ class WrapHandler implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        // A request handler object?
+        if ($this->handler instanceof RequestHandlerInterface) {
+            return $this->handler->handle($request);
+        }
+
+        // A string containing class::method
         if (Str::contains($this->handler, self::SCOPE_OPERATOR)) {
             [$class, $method] = explode(self::SCOPE_OPERATOR, $this->handler);
 
@@ -73,6 +79,7 @@ class WrapHandler implements MiddlewareInterface
             return call_user_func([$controller, $method], $request);
         }
 
+        // A string containing a request handler class name
         return app($this->handler)->handle($request);
     }
 }

@@ -82,7 +82,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         assert($router_container instanceof RouterContainer);
 
         $router_container->getMap()
-            ->get(self::ROUTE_NAME, self::ROUTE_URL, self::class)
+            ->get(self::ROUTE_NAME, self::ROUTE_URL, $this)
             ->allows(RequestMethodInterface::METHOD_POST);
     }
 
