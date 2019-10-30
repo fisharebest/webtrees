@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -29,8 +30,6 @@ class CensusColumnReligion extends AbstractCensusColumn implements CensusColumnI
     /**
      * Generate the likely value of this census column, based on available information.
      *
-     * @todo Look for RELI tags (or subtags?)
-     *
      * @param Individual $individual
      * @param Individual $head
      *
@@ -38,6 +37,17 @@ class CensusColumnReligion extends AbstractCensusColumn implements CensusColumnI
      */
     public function generate(Individual $individual, Individual $head): string
     {
+        $fact = $individual->facts(['RELI'])->first();
+        if ($fact instanceof Fact) {
+            return $fact->value();
+        }
+
+        foreach ($individual->facts() as $fact) {
+            if ($fact->attribute('RELI') !== '') {
+                return $fact->attribute('RELI');
+            }
+        }
+
         return '';
     }
 }

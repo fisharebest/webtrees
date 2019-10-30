@@ -19,8 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 
 /**
  * Test harness for the class CensusColumnReligion
@@ -28,20 +30,75 @@ use Fisharebest\Webtrees\TestCase;
 class CensusColumnReligionTest extends TestCase
 {
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnReligion
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnOccupation
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
      * @return void
      */
-    public function testReligion(): void
+    public function testNoReligion(): void
     {
         $individual = $this->createMock(Individual::class);
+        $individual
+            ->expects($this->at(0))
+            ->method('facts')
+            ->with(['RELI'])
+            ->willReturn(new Collection());
+        $individual
+            ->expects($this->at(1))
+            ->method('facts')
+            ->with()
+            ->willReturn(new Collection());
 
         $census = $this->createMock(CensusInterface::class);
-        $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnReligion($census, '', '');
 
         $this->assertSame('', $column->generate($individual, $individual));
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnOccupation
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     * @return void
+     */
+    public function testRecordReligion(): void
+    {
+        $individual = $this->createMock(Individual::class);
+        $fact       = $this->createMock(Fact::class);
+        $fact->method('value')->willReturn('Jedi');
+        $individual->method('facts')->with(['RELI'])->willReturn(new Collection([$fact]));
+
+        $census = $this->createMock(CensusInterface::class);
+
+        $column = new CensusColumnReligion($census, '', '');
+
+        $this->assertSame('Jedi', $column->generate($individual, $individual));
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnOccupation
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     * @return void
+     */
+    public function testEventReligion(): void
+    {
+        $individual = $this->createMock(Individual::class);
+        $fact       = $this->createMock(Fact::class);
+        $fact->method('attribute')->with('RELI')->willReturn('Jedi');
+        $individual
+            ->expects($this->at(0))
+            ->method('facts')
+            ->with(['RELI'])
+            ->willReturn(new Collection());
+        $individual
+            ->expects($this->at(1))
+            ->method('facts')
+            ->with()
+            ->willReturn(new Collection([$fact]));
+
+        $census = $this->createMock(CensusInterface::class);
+
+        $column = new CensusColumnReligion($census, '', '');
+
+        $this->assertSame('Jedi', $column->generate($individual, $individual));
     }
 }
