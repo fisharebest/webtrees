@@ -35,6 +35,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
+use function assert;
+
 /**
  * Class UserFavoritesModule
  */
@@ -161,7 +163,9 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postAddFavoriteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user   = $request->getAttribute('user');
         $params = $request->getParsedBody();
 
@@ -195,7 +199,9 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postDeleteFavoriteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree        = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user        = $request->getAttribute('user');
         $favorite_id = $request->getQueryParams()['favorite_id'];
 

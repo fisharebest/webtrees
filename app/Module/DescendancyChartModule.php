@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -175,7 +176,9 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree        = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user        = $request->getAttribute('user');
         $xref        = $request->getAttribute('xref');
         $style       = $request->getAttribute('style');
@@ -186,7 +189,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             return redirect(route(self::ROUTE_NAME, [
-                'tree'        => $request->getAttribute('tree')->name(),
+                'tree'        => $tree->name(),
                 'xref'        => $request->getParsedBody()['xref'],
                 'style'       => $request->getParsedBody()['style'],
                 'generations' => $request->getParsedBody()['generations'],

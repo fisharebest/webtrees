@@ -27,9 +27,11 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function assert;
 use function redirect;
 
 /**
@@ -46,8 +48,10 @@ class GedcomRecordController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $slug   = $request->getAttribute('slug');
-        $tree   = $request->getAttribute('tree');
         $xref   = $request->getAttribute('xref');
         $record = GedcomRecord::getInstance($xref, $tree);
 

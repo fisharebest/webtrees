@@ -140,7 +140,9 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree  = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user  = $request->getAttribute('user');
         $scale = (int) $request->getAttribute('scale');
         $xrefs = $request->getQueryParams()['xrefs'] ?? [];

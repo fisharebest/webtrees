@@ -85,7 +85,9 @@ class EditMediaController extends AbstractEditController
      */
     public function addMediaFile(ServerRequestInterface $request): ResponseInterface
     {
-        $tree  = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref  = $request->getQueryParams()['xref'];
         $media = Media::getInstance($xref, $tree);
 
@@ -115,7 +117,9 @@ class EditMediaController extends AbstractEditController
      */
     public function addMediaFileAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree  = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref  = $request->getQueryParams()['xref'];
         $media = Media::getInstance($xref, $tree);
         $title = $request->getParsedBody()['title'];
@@ -162,7 +166,9 @@ class EditMediaController extends AbstractEditController
      */
     public function editMediaFile(ServerRequestInterface $request): ResponseInterface
     {
-        $tree    = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
         $fact_id = $params['fact_id'];
@@ -201,7 +207,9 @@ class EditMediaController extends AbstractEditController
      */
     public function editMediaFileAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref     = $request->getQueryParams()['xref'];
         $fact_id  = $request->getQueryParams()['fact_id'];
         $folder   = $request->getParsedBody()['folder'];
@@ -311,7 +319,9 @@ class EditMediaController extends AbstractEditController
      */
     public function createMediaObjectFromFileAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params = $request->getParsedBody();
         $file   = $params['file'];
         $type   = $params['type'];
@@ -354,7 +364,9 @@ class EditMediaController extends AbstractEditController
      */
     public function createMediaObjectAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree                = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params              = $request->getParsedBody();
         $note                = $params['media-note'];
         $title               = $params['title'];
@@ -478,7 +490,9 @@ class EditMediaController extends AbstractEditController
      */
     public function linkMediaToRecordAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params = $request->getParsedBody();
         $xref   = $params['xref'];
         $link   = $params['link'];
@@ -558,7 +572,9 @@ class EditMediaController extends AbstractEditController
      */
     private function uploadFile(ServerRequestInterface $request): string
     {
-        $tree          = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params        = $request->getParsedBody();
         $file_location = $params['file_location'];
 

@@ -23,10 +23,12 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function assert;
 use function redirect;
 
 /**
@@ -74,9 +76,11 @@ class SourceController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $slug   = $request->getAttribute('slug');
         $tree   = $request->getAttribute('tree');
-        $xref   = $request->getAttribute('xref');
         $source = Source::getInstance($xref, $tree);
 
         Auth::checkSourceAccess($source, false);

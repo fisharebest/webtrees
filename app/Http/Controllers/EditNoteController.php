@@ -119,7 +119,9 @@ class EditNoteController extends AbstractEditController
      */
     public function createNoteObjectAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree                = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params              = $request->getParsedBody();
         $note                = $params['note'];
         $privacy_restriction = $params['privacy-restriction'];

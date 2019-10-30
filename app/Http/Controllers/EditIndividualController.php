@@ -45,7 +45,9 @@ class EditIndividualController extends AbstractEditController
       */
     public function addChild(ServerRequestInterface $request): ResponseInterface
     {
-        $tree       = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref       = $request->getQueryParams()['xref'];
         $individual = Individual::getInstance($xref, $tree);
 
@@ -72,7 +74,9 @@ class EditIndividualController extends AbstractEditController
      */
     public function addChildAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref   = $request->getParsedBody()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
@@ -136,13 +140,14 @@ class EditIndividualController extends AbstractEditController
      */
     public function addParent(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref   = $request->getQueryParams()['xref'];
-        $gender = $request->getQueryParams()['gender'];
-
         $individual = Individual::getInstance($xref, $tree);
-
         Auth::checkIndividualAccess($individual, true);
+
+        $gender = $request->getQueryParams()['gender'];
 
         if ($gender === 'F') {
             $title  = $individual->fullName() . ' - ' . I18N::translate('Add a mother');
@@ -171,11 +176,11 @@ class EditIndividualController extends AbstractEditController
      */
     public function addParentAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref   = $request->getParsedBody()['xref'];
-
         $individual = Individual::getInstance($xref, $tree);
-
         Auth::checkIndividualAccess($individual, true);
 
         $this->glevels = $request->getParsedBody()['glevels'] ?? [];
@@ -271,11 +276,11 @@ class EditIndividualController extends AbstractEditController
      */
     public function addSpouseAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
-        $xref   = $request->getParsedBody()['xref'];
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
 
+        $xref       = $request->getParsedBody()['xref'];
         $individual = Individual::getInstance($xref, $tree);
-
         Auth::checkIndividualAccess($individual, true);
 
         $sex = $request->getParsedBody()['SEX'];
@@ -362,7 +367,9 @@ class EditIndividualController extends AbstractEditController
      */
     public function addUnlinkedAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree          = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $this->glevels = $request->getParsedBody()['glevels'] ?? [];
         $this->tag     = $request->getParsedBody()['tag'] ?? [];
         $this->text    = $request->getParsedBody()['text'] ?? [];
@@ -401,7 +408,9 @@ class EditIndividualController extends AbstractEditController
      */
     public function editName(ServerRequestInterface $request): ResponseInterface
     {
-        $tree    = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref    = $request->getAttribute('xref');
         $fact_id = $request->getAttribute('fact_id') ?? '';
 
@@ -436,6 +445,7 @@ class EditIndividualController extends AbstractEditController
     public function editNameAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
 
         // @TODO - Move the name-specific code to this function?
         return app(EditGedcomRecordController::class)->updateFact($request, $tree);
@@ -519,7 +529,9 @@ class EditIndividualController extends AbstractEditController
      */
     public function linkChildToFamilyAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref   = $request->getParsedBody()['xref'];
         $famid  = $request->getParsedBody()['famid'];
         $PEDI   = $request->getParsedBody()['PEDI'];
@@ -596,7 +608,9 @@ class EditIndividualController extends AbstractEditController
      */
     public function linkSpouseToIndividualAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref   = $request->getParsedBody()['xref'];
         $spouse = $request->getParsedBody()['spid'];
 

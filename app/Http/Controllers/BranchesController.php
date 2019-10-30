@@ -104,7 +104,9 @@ class BranchesController extends AbstractBaseController
      */
     public function list(ServerRequestInterface $request): ResponseInterface
     {
-        $tree        = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user        = $request->getAttribute('user');
         $params      = $request->getQueryParams();
         $surname     = $params['surname'];

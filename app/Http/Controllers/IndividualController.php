@@ -45,6 +45,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use function assert;
 use function e;
 use function explode;
 use function ob_get_clean;
@@ -175,8 +176,10 @@ class IndividualController extends AbstractBaseController
      */
     public function tab(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $module_name = $request->getAttribute('module');
-        $tree        = $request->getAttribute('tree');
         $user        = $request->getAttribute('user');
         $xref        = $request->getAttribute('xref');
         $record      = Individual::getInstance($xref, $tree);

@@ -127,7 +127,9 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree      = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user      = $request->getAttribute('user');
         $xrefs     = $request->getQueryParams()['xrefs'] ?? [];
         $ajax      = $request->getQueryParams()['ajax'] ?? '';
@@ -174,7 +176,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             return redirect(route(self::ROUTE_NAME, [
-                'tree'  => $request->getAttribute('tree')->name(),
+                'tree'  => $tree->name(),
                 'xrefs' => $xrefs,
             ]));
         }

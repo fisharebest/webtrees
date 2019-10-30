@@ -238,7 +238,9 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
      */
     public function getDetailsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree       = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $pid        = $request->getQueryParams()['pid'];
         $individual = Individual::getInstance($pid, $tree);
 
@@ -263,7 +265,9 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
      */
     public function getIndividualsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $q        = $request->getQueryParams()['q'];
         $instance = $request->getQueryParams()['instance'];
         $treeview = new TreeView($instance);

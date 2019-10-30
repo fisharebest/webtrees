@@ -23,10 +23,12 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function assert;
 use function redirect;
 
 /**
@@ -56,9 +58,11 @@ class MediaController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request): ResponseInterface
     {
-        $slug  = $request->getAttribute('slug');
-        $tree  = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref  = $request->getAttribute('xref');
+        $slug  = $request->getAttribute('slug');
         $media = Media::getInstance($xref, $tree);
 
         Auth::checkMediaAccess($media);

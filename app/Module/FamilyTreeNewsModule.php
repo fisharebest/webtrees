@@ -236,7 +236,9 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      */
     public function postDeleteNewsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree    = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $news_id = $request->getQueryParams()['news_id'];
 
         if (!Auth::isManager($tree)) {

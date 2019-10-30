@@ -37,6 +37,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use function assert;
+
 /**
  * Send messages to users and groups of users.
  */
@@ -153,7 +155,9 @@ class MessageController extends AbstractBaseController
      */
     public function contactPage(ServerRequestInterface $request): ResponseInterface
     {
-        $tree       = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $referer    = $request->getHeaderLine('referer');
         $params     = $request->getQueryParams();
         $body       = $params['body'] ?? '';
@@ -181,6 +185,7 @@ class MessageController extends AbstractBaseController
             'title'      => $title,
             'to'         => $to,
             'to_name'    => $to_name,
+            'tree'       => $tree,
             'url'        => $url,
         ]);
     }
@@ -194,7 +199,9 @@ class MessageController extends AbstractBaseController
      */
     public function contactAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree       = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params     = $request->getParsedBody();
         $body       = $params['body'];
         $from_email = $params['from_email'];
@@ -308,7 +315,9 @@ class MessageController extends AbstractBaseController
      */
     public function messageAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree    = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user    = $request->getAttribute('user');
         $params  = $request->getParsedBody();
         $body    = $params['body'];
@@ -327,7 +336,7 @@ class MessageController extends AbstractBaseController
                 'body'    => $body,
                 'subject' => $subject,
                 'to'      => $to,
-                'tree'    => $tree,
+                'tree'    => $tree->name(),
                 'url'     => $url,
             ]));
         }

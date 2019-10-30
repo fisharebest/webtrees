@@ -22,9 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Census\CensusInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+use function assert;
 
 /**
  * Class CensusAssistantModule
@@ -74,7 +77,9 @@ class CensusAssistantModule extends AbstractModule
      */
     public function getCensusIndividualAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree       = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params     = $request->getQueryParams();
         $individual = Individual::getInstance($params['xref'], $tree);
         $head       = Individual::getInstance($params['head'], $tree);

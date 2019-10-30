@@ -237,7 +237,9 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postDeleteJournalAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree    = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $news_id = $request->getQueryParams()['news_id'];
 
         DB::table('news')

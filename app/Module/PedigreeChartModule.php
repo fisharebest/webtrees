@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -186,10 +187,12 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $ajax        = $request->getQueryParams()['ajax'] ?? '';
         $generations = (int) $request->getAttribute('generations');
         $style       = $request->getAttribute('style');
-        $tree        = $request->getAttribute('tree');
         $user        = $request->getAttribute('user');
         $xref        = $request->getAttribute('xref');
         $individual  = Individual::getInstance($xref, $tree);

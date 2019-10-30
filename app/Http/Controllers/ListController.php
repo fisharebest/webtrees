@@ -407,7 +407,9 @@ class ListController extends AbstractBaseController
      */
     public function mediaList(ServerRequestInterface $request): ResponseInterface
     {
-        $tree      = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $module    = $request->getAttribute('module');
         $action    = $request->getAttribute('action');
         $params    = $request->getQueryParams();
@@ -470,7 +472,9 @@ class ListController extends AbstractBaseController
      */
     public function noteList(ServerRequestInterface $request): ResponseInterface
     {
-        $tree  = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $notes = $this->allNotes($tree);
 
         return $this->viewResponse('note-list-page', [
@@ -489,7 +493,9 @@ class ListController extends AbstractBaseController
      */
     public function repositoryList(ServerRequestInterface $request): ResponseInterface
     {
-        $tree         = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $repositories = $this->allRepositories($tree);
 
         return $this->viewResponse('repository-list-page', [
@@ -508,7 +514,9 @@ class ListController extends AbstractBaseController
      */
     public function sourceList(ServerRequestInterface $request): ResponseInterface
     {
-        $tree    = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $sources = $this->allSources($tree);
 
         return $this->viewResponse('source-list-page', [

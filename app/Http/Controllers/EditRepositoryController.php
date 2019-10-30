@@ -20,8 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+
+use function assert;
 
 /**
  * Controller for edit forms and responses.
@@ -49,7 +52,9 @@ class EditRepositoryController extends AbstractEditController
      */
     public function createRepositoryAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree                = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params              = $request->getParsedBody();
         $name                = $params['repository-name'];
         $privacy_restriction = $params['privacy-restriction'];

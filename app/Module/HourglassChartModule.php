@@ -158,7 +158,9 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree        = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user        = $request->getAttribute('user');
         $xref        = $request->getAttribute('xref');
         $generations = (int) $request->getAttribute('generations');
@@ -169,7 +171,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             return redirect(route(self::ROUTE_NAME, [
-                'tree'        => $request->getAttribute('tree')->name(),
+                'tree'        => $tree->name(),
                 'xref'        => $request->getParsedBody()['xref'],
                 'generations' => $request->getParsedBody()['generations'],
                 'spouses'     => $request->getParsedBody()['spouses'] ?? false,

@@ -195,10 +195,12 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $ajax      = $request->getQueryParams()['ajax'] ?? '';
         $ancestors = (int) $request->getAttribute('ancestors');
         $recursion = (int) $request->getAttribute('recursion');
-        $tree      = $request->getAttribute('tree');
         $user      = $request->getAttribute('user');
         $xref      = $request->getAttribute('xref');
         $xref2     = $request->getAttribute('xref2') ?? '';
@@ -208,7 +210,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             return redirect(route(self::ROUTE_NAME, [
                 'ancestors' => $request->getParsedBody()['ancestors'],
                 'recursion' => $request->getParsedBody()['recursion'],
-                'tree'      => $request->getAttribute('tree')->name(),
+                'tree'      => $tree->name(),
                 'xref'      => $request->getParsedBody()['xref'],
                 'xref2'     => $request->getParsedBody()['xref2'],
             ]));

@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Tree;
 use Intervention\Image\Exception\NotReadableException;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
@@ -43,6 +44,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 use function addcslashes;
+use function assert;
 use function basename;
 use function dirname;
 use function extension_loaded;
@@ -80,7 +82,9 @@ class MediaFileController extends AbstractBaseController
      */
     public function mediaDownload(ServerRequestInterface $request): ResponseInterface
     {
-        $tree    = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
         $fact_id = $params['fact_id'];
@@ -124,7 +128,9 @@ class MediaFileController extends AbstractBaseController
      */
     public function mediaThumbnail(ServerRequestInterface $request): ResponseInterface
     {
-        $tree    = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
         $fact_id = $params['fact_id'];

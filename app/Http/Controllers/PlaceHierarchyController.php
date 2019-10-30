@@ -37,6 +37,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use function assert;
+
 /**
  * Class PlaceHierarchyController
  */
@@ -69,7 +71,9 @@ class PlaceHierarchyController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request): ResponseInterface
     {
-        $tree    = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $module  = $request->getAttribute('module');
         $action  = $request->getAttribute('action');
         $action2 = $request->getQueryParams()['action2'] ?? 'hierarchy';

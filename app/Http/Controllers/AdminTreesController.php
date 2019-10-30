@@ -406,7 +406,9 @@ class AdminTreesController extends AbstractBaseController
       */
     public function duplicates(ServerRequestInterface $request): ResponseInterface
     {
-        $tree       = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $duplicates = $this->duplicateRecords($tree);
         $title      = I18N::translate('Find duplicates') . ' — ' . e($tree->title());
 
@@ -424,7 +426,9 @@ class AdminTreesController extends AbstractBaseController
      */
     public function export(ServerRequestInterface $request): ResponseInterface
     {
-        $tree  = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $title = I18N::translate('Export a GEDCOM file') . ' — ' . e($tree->title());
 
         return $this->viewResponse('admin/trees-export', [
@@ -440,7 +444,9 @@ class AdminTreesController extends AbstractBaseController
      */
     public function exportClient(ServerRequestInterface $request): ResponseInterface
     {
-        $tree             = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params           = $request->getQueryParams();
         $convert          = (bool) ($params['convert'] ?? false);
         $zip              = (bool) ($params['zip'] ?? false);
@@ -547,7 +553,9 @@ class AdminTreesController extends AbstractBaseController
      */
     public function exportServer(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $filename = $tree->name();
 
         // Force a ".ged" suffix
@@ -583,7 +591,9 @@ class AdminTreesController extends AbstractBaseController
      */
     public function importAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree               = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params             = $request->getParsedBody();
         $source             = $params['source'];
         $keep_media         = (bool) ($params['keep_media'] ?? false);
@@ -633,7 +643,9 @@ class AdminTreesController extends AbstractBaseController
      */
     public function importForm(ServerRequestInterface $request): ResponseInterface
     {
-        $tree                = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $default_gedcom_file = $tree->getPreference('gedcom_filename');
         $gedcom_media_path   = $tree->getPreference('GEDCOM_MEDIA_PATH');
         $gedcom_files        = $this->gedcomFiles();
@@ -935,7 +947,9 @@ class AdminTreesController extends AbstractBaseController
      */
     public function places(ServerRequestInterface $request): ResponseInterface
     {
-        $tree    = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params  = $request->getQueryParams();
         $search  = $params['search'] ?? '';
         $replace = $params['replace'] ?? '';
@@ -964,7 +978,9 @@ class AdminTreesController extends AbstractBaseController
      */
     public function placesAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree    = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params  = $request->getQueryParams();
         $search  = $params['search'] ?? '';
         $replace = $params['replace'] ?? '';
@@ -995,7 +1011,9 @@ class AdminTreesController extends AbstractBaseController
      */
     public function preferences(ServerRequestInterface $request): ResponseInterface
     {
-        $tree                     = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $french_calendar_start    = new Date('22 SEP 1792');
         $french_calendar_end      = new Date('31 DEC 1805');
         $gregorian_calendar_start = new Date('15 OCT 1582');
@@ -1123,7 +1141,9 @@ class AdminTreesController extends AbstractBaseController
      */
     public function renumber(ServerRequestInterface $request): ResponseInterface
     {
-        $tree  = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xrefs = $this->duplicateXrefs($tree);
 
         /* I18N: Renumber the records in a family tree */
@@ -1142,7 +1162,8 @@ class AdminTreesController extends AbstractBaseController
      */
     public function preferencesUpdate(ServerRequestInterface $request): ResponseInterface
     {
-        $tree      = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
 
         $tree->setPreference('ADVANCED_NAME_FACTS', implode(',', $request->getParsedBody()['ADVANCED_NAME_FACTS'] ?? []));
         $tree->setPreference('ADVANCED_PLAC_FACTS', implode(',', $request->getParsedBody()['ADVANCED_PLAC_FACTS'] ?? []));
@@ -1251,7 +1272,9 @@ class AdminTreesController extends AbstractBaseController
      */
     public function renumberAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree  = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xrefs = $this->duplicateXrefs($tree);
 
         foreach ($xrefs as $old_xref => $type) {
@@ -1783,7 +1806,9 @@ class AdminTreesController extends AbstractBaseController
      */
     public function unconnected(ServerRequestInterface $request): ResponseInterface
     {
-        $tree       = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user       = $request->getAttribute('user');
         $associates = (bool) ($request->getQueryParams()['associates'] ?? false);
 

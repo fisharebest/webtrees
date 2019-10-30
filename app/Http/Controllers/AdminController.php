@@ -38,6 +38,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
+use function assert;
+
 /**
  * Controller for the administration pages
  */
@@ -68,7 +70,9 @@ class AdminController extends AbstractBaseController
      */
     public function mergeRecords(ServerRequestInterface $request): ResponseInterface
     {
-        $tree  = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $title = I18N::translate('Merge records') . ' — ' . e($tree->title());
 
         $params = $request->getQueryParams();
@@ -156,7 +160,9 @@ class AdminController extends AbstractBaseController
      */
     public function mergeRecordsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree  = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref1 = $request->getQueryParams()['xref1'];
         $xref2 = $request->getQueryParams()['xref2'];
         $keep1 = $request->getParsedBody()['keep1'] ?? [];
@@ -278,7 +284,9 @@ class AdminController extends AbstractBaseController
      */
     public function treePrivacyEdit(ServerRequestInterface $request): ResponseInterface
     {
-        $tree                 = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $title                = e($tree->name()) . ' — ' . I18N::translate('Privacy');
         $all_tags             = $this->tagsForPrivacy($tree);
         $privacy_constants    = $this->privacyConstants();
@@ -301,7 +309,9 @@ class AdminController extends AbstractBaseController
      */
     public function treePrivacyUpdate(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params = $request->getParsedBody();
 
         $delete_default_resn_id = $params['delete'] ?? [];

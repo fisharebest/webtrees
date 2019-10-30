@@ -284,7 +284,9 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     {
         $this->layout = 'layouts/administration';
 
-        $tree     = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
 
         if ($block_id === 0) {
@@ -327,7 +329,9 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     public function postAdminEditAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
 
         $params = $request->getParsedBody();
@@ -378,7 +382,9 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     public function postAdminDeleteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $block_id = $request->getQueryParams()['block_id'];
 
         DB::table('block_setting')

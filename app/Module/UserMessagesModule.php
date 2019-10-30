@@ -33,6 +33,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
+use function assert;
 use function e;
 use function route;
 
@@ -89,7 +90,9 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postDeleteMessageAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree        = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $message_ids = $request->getParsedBody()['message_id'] ?? [];
 
         DB::table('message')

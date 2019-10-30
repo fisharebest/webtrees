@@ -190,7 +190,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getDownloadAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params = $request->getQueryParams();
 
         $privatize_export = $params['privatize_export'];
@@ -322,7 +324,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getDownloadFormAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree  = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user  = $request->getAttribute('user');
         $title = I18N::translate('Family tree clippings cart') . ' — ' . I18N::translate('Download');
 
@@ -341,7 +345,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getEmptyAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree                = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $cart                = Session::get('cart', []);
         $cart[$tree->name()] = [];
         Session::put('cart', $cart);
@@ -453,7 +459,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddFamilyAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref   = $request->getQueryParams()['xref'];
         $option = $request->getParsedBody()['option'];
 
@@ -599,7 +607,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddIndividualAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref   = $request->getQueryParams()['xref'];
         $option = $request->getParsedBody()['option'];
 

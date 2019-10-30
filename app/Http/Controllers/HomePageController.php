@@ -120,7 +120,9 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageBlockEdit(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user     = $request->getAttribute('user');
         $block_id = (int) $request->getQueryParams()['block_id'];
         $block    = $this->treeBlock($request, $user);
@@ -144,7 +146,9 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageBlockUpdate(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user     = $request->getAttribute('user');
         $block    = $this->treeBlock($request, $user);
         $block_id = (int) $request->getQueryParams()['block_id'];
@@ -164,7 +168,9 @@ class HomePageController extends AbstractBaseController
      */
     private function treeBlock(ServerRequestInterface $request, UserInterface $user): ModuleBlockInterface
     {
-        $tree     = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $block_id = (int) $request->getQueryParams()['block_id'];
 
         $block = DB::table('block')
@@ -199,7 +205,9 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageBlockEdit(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user     = $request->getAttribute('user');
         $block_id = (int) $request->getQueryParams()['block_id'];
         $block    = $this->userBlock($request, $user);
@@ -223,7 +231,9 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageBlockUpdate(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user     = $request->getAttribute('user');
         $block    = $this->userBlock($request, $user);
         $block_id = (int) $request->getQueryParams()['block_id'];
@@ -319,7 +329,9 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageBlock(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $block_id = $request->getQueryParams()['block_id'];
 
         $block_id = (int) DB::table('block')
@@ -426,7 +438,9 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageUpdate(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $params = $request->getParsedBody();
 
         $defaults = (bool) ($params['defaults'] ?? false);
@@ -502,7 +516,9 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageBlock(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user     = $request->getAttribute('user');
         $block_id = $request->getQueryParams()['block_id'];
 
@@ -609,7 +625,9 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageUpdate(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $user     = $request->getAttribute('user');
         $params   = $request->getParsedBody();
         $defaults = (bool) ($params['defaults'] ?? false);

@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -192,7 +193,9 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
      */
     public function getMapDataAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree        = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref        = $request->getQueryParams()['xref'];
         $individual  = Individual::getInstance($xref, $tree);
         $color_count = count(self::LINE_COLORS);
@@ -271,7 +274,9 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $generations = (int) $request->getAttribute('generations');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $tree        = $request->getAttribute('tree');
         $user        = $request->getAttribute('user');
         $xref        = $request->getAttribute('xref');
@@ -316,8 +321,10 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
      */
     private function getPedigreeMapFacts(ServerRequestInterface $request, ChartService $chart_service): array
     {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $generations = (int) $request->getQueryParams()['generations'];
-        $tree        = $request->getAttribute('tree');
         $xref        = $request->getQueryParams()['xref'];
         $individual  = Individual::getInstance($xref, $tree);
         $ancestors   = $chart_service->sosaStradonitzAncestors($individual, $generations);

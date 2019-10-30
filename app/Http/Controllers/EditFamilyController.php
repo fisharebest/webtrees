@@ -26,8 +26,11 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+
+use function assert;
 
 /**
  * Controller for edit forms and responses.
@@ -41,7 +44,9 @@ class EditFamilyController extends AbstractEditController
      */
     public function addChild(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref   = $request->getQueryParams()['xref'];
         $gender = $request->getQueryParams()['gender'];
         $family = Family::getInstance($xref, $tree);
@@ -69,11 +74,11 @@ class EditFamilyController extends AbstractEditController
      */
     public function addChildAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref   = $request->getParsedBody()['xref'];
-
         $family = Family::getInstance($xref, $tree);
-
         Auth::checkFamilyAccess($family, true);
 
         $PEDI      = $request->getParsedBody()['PEDI'];
@@ -133,7 +138,9 @@ class EditFamilyController extends AbstractEditController
      */
     public function addSpouse(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref   = $request->getQueryParams()['xref'];
         $famtag = $request->getQueryParams()['famtag'];
         $family = Family::getInstance($xref, $tree);
@@ -167,11 +174,11 @@ class EditFamilyController extends AbstractEditController
      */
     public function addSpouseAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref   = $request->getParsedBody()['xref'];
-
         $family = Family::getInstance($xref, $tree);
-
         Auth::checkFamilyAccess($family, true);
 
         $this->glevels = $request->getParsedBody()['glevels'] ?? [];
@@ -232,7 +239,9 @@ class EditFamilyController extends AbstractEditController
      */
     public function changeFamilyMembers(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref   = $request->getQueryParams()['xref'];
         $family = Family::getInstance($xref, $tree);
         Auth::checkFamilyAccess($family, true);
@@ -256,7 +265,9 @@ class EditFamilyController extends AbstractEditController
      */
     public function changeFamilyMembersAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $xref   = $request->getParsedBody()['xref'];
         $family = Family::getInstance($xref, $tree);
         Auth::checkFamilyAccess($family, true);

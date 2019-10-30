@@ -22,11 +22,13 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
+use function assert;
 use function redirect;
 
 /**
@@ -56,8 +58,10 @@ class FamilyController extends AbstractBaseController
      */
     public function show(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
         $slug   = $request->getAttribute('slug');
-        $tree   = $request->getAttribute('tree');
         $xref   = $request->getAttribute('xref');
         $family = Family::getInstance($xref, $tree);
 
