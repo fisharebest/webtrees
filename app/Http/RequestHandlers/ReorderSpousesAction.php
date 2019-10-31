@@ -59,7 +59,7 @@ class ReorderSpousesAction implements RequestHandlerInterface
         $order = $request->getParsedBody()['order'];
         assert(is_array($order));
 
-                $dummy_facts = ['0 @' . $individual->xref() . '@ INDI'];
+        $dummy_facts = ['0 @' . $individual->xref() . '@ INDI'];
         $sort_facts  = [];
         $keep_facts  = [];
 
