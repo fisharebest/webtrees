@@ -23,6 +23,7 @@ use Closure;
 use Exception;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -42,7 +43,8 @@ class GedcomRecord
 {
     public const RECORD_TYPE = 'UNKNOWN';
 
-    protected const ROUTE_NAME = 'record';
+    protected const ROUTE_NAME = GedcomRecordPage::class;
+
     /** @var GedcomRecord[][] Allow getInstance() to return references to existing objects */
     public static $gedcom_record_cache;
     /** @var stdClass[][] Fetch all pending edits in one database query */

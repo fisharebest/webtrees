@@ -36,33 +36,33 @@ use Fisharebest\Webtrees\I18N; ?>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link<?= empty($individuals) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
+            <a class="nav-link<?= $individuals->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
                 <?= I18N::translate('Individuals') ?>
-                <?= view('components/badge', ['count' => count($individuals)]) ?>
+                <?= view('components/badge', ['count' => $individuals->count()]) ?>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link<?= empty($families) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#families">
+            <a class="nav-link<?= $families->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#families">
                 <?= I18N::translate('Families') ?>
-                <?= view('components/badge', ['count' => count($families)]) ?>
+                <?= view('components/badge', ['count' => $families->count()]) ?>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link<?= empty($media_objects) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#media">
+            <a class="nav-link<?= $media_objects->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#media">
                 <?= I18N::translate('Media objects') ?>
-                <?= view('components/badge', ['count' => count($media_objects)]) ?>
+                <?= view('components/badge', ['count' => $media_objects->count()]) ?>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link<?= empty($sources) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#sources">
+            <a class="nav-link<?= $sources->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#sources">
                 <?= I18N::translate('Sources') ?>
-                <?= view('components/badge', ['count' => count($sources)]) ?>
+                <?= view('components/badge', ['count' => $sources->count()]) ?>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link<?= empty($notes) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#notes">
+            <a class="nav-link<?= $notes->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#notes">
                 <?= I18N::translate('Notes') ?>
-                <?= view('components/badge', ['count' => count($notes)]) ?>
+                <?= view('components/badge', ['count' => $notes->count()]) ?>
             </a>
         </li>
     </ul>

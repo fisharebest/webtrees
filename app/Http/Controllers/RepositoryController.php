@@ -81,7 +81,8 @@ class RepositoryController extends AbstractBaseController
         $repository = Repository::getInstance($xref, $tree);
         $repository = Auth::checkRepositoryAccess($repository, false);
 
-        if ($request->getAttribute('slug') !== $repository->slug()) {
+        // Redirect to correct xref/slug
+        if ($repository->xref() !== $xref ||  $request->getAttribute('slug') !== $repository->slug()) {
             return redirect($repository->url());
         }
 

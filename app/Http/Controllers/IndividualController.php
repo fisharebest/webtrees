@@ -104,7 +104,8 @@ class IndividualController extends AbstractBaseController
         $individual = Individual::getInstance($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual);
 
-        if ($request->getAttribute('slug') !== $individual->slug()) {
+        // Redirect to correct xref/slug
+        if ($individual->xref() !== $xref || $request->getAttribute('slug') !== $individual->slug()) {
             return redirect($individual->url());
         }
 

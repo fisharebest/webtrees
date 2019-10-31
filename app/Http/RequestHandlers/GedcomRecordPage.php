@@ -17,11 +17,12 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
@@ -30,16 +31,29 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 use function is_string;
 use function redirect;
 
 /**
- * Controller for the gedcom record page.
+ * Display non-standard genealogy records.
  */
-class GedcomRecordController extends AbstractBaseController
+class GedcomRecordPage implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
+    // These standard genealogy record types have their own pages.
+    private const STANDARD_RECORDS = [
+        Family::class,
+        Individual::class,
+        Media::class,
+        Note::class,
+        Repository::class,
+        Source::class,
+    ];
+
     /**
      * Show a gedcom record's page.
      *
@@ -47,7 +61,7 @@ class GedcomRecordController extends AbstractBaseController
      *
      * @return ResponseInterface
      */
-    public function show(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
@@ -58,11 +72,8 @@ class GedcomRecordController extends AbstractBaseController
         $record = GedcomRecord::getInstance($xref, $tree);
         $record = Auth::checkRecordAccess($record);
 
-        if ($request->getAttribute('slug') !== $record->slug()) {
-            return redirect($record->url());
-        }
-
-        if ($this->hasCustomPage($record)) {
+        // Standard genealogy records have their own pages.
+        if ($record->xref() !== $xref || in_array(get_class($record), self::STANDARD_RECORDS, true)) {
             return redirect($record->url());
         }
 
@@ -76,24 +87,7 @@ class GedcomRecordController extends AbstractBaseController
             'record'        => $record,
             'sources'       => $record->linkedSources($record::RECORD_TYPE),
             'title'         => $record->fullName(),
+            'tree'          => $tree,
         ]);
-    }
-
-    /**
-     * Is there a better place to display this record?
-     *
-     * @param GedcomRecord $record
-     *
-     * @return bool
-     */
-    private function hasCustomPage(GedcomRecord $record): bool
-    {
-        return
-            $record instanceof Individual ||
-            $record instanceof Family ||
-            $record instanceof Source ||
-            $record instanceof Repository ||
-            $record instanceof Note ||
-            $record instanceof Media;
     }
 }

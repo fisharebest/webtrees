@@ -86,7 +86,8 @@ class SourceController extends AbstractBaseController
         $source = Source::getInstance($xref, $tree);
         $source = Auth::checkSourceAccess($source, false);
 
-        if ($request->getAttribute('slug') !== $source->slug()) {
+        // Redirect to correct xref/slug
+        if ($source->xref() !== $xref || $request->getAttribute('slug') !== $source->slug()) {
             return redirect($source->url());
         }
 

@@ -68,7 +68,8 @@ class FamilyController extends AbstractBaseController
         $family = Family::getInstance($xref, $tree);
         $family = Auth::checkFamilyAccess($family, false);
 
-        if ($request->getAttribute('slug') !== $family->slug()) {
+        // Redirect to correct xref/slug
+        if ($family->xref() !== $xref || $request->getAttribute('slug') !== $family->slug()) {
             return redirect($family->url());
         }
 

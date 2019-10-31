@@ -49,6 +49,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\EditFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawRecordPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\HelpText;
 use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\PasteFact;
@@ -418,7 +419,7 @@ $router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->get('message', '/message', 'MessageController::messagePage');
     $router->post('message-action', '/message', 'MessageController::messageAction');
     $router->get('note', '/note/{xref}{/slug}', 'NoteController::show');
-    $router->get('record', '/record/{xref}{/slug}', 'GedcomRecordController::show');
+    $router->get(GedcomRecordPage::class, '/record/{xref}{/slug}', GedcomRecordPage::class);
     $router->get('repository', '/repository/{xref}{/slug}', 'RepositoryController::show');
     $router->get(ReportListPage::class, '/report', ReportListPage::class);
     $router->post(ReportListAction::class, '/report', ReportListAction::class);

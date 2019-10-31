@@ -68,7 +68,8 @@ class MediaController extends AbstractBaseController
         $media = Media::getInstance($xref, $tree);
         $media = Auth::checkMediaAccess($media);
 
-        if ($request->getAttribute('slug') !== $media->slug()) {
+        // Redirect to correct xref/slug
+        if ($media->xref() !== $xref || $request->getAttribute('slug') !== $media->slug()) {
             return redirect($media->url());
         }
 

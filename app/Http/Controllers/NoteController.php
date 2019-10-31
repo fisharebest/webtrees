@@ -69,7 +69,8 @@ class NoteController extends AbstractBaseController
         $note = Note::getInstance($xref, $tree);
         $note = Auth::checkNoteAccess($note, false);
 
-        if ($request->getAttribute('slug') !== $note->slug()) {
+        // Redirect to correct xref/slug
+        if ($note->xref() !== $xref || $request->getAttribute('slug') !== $note->slug()) {
             return redirect($note->url());
         }
 
