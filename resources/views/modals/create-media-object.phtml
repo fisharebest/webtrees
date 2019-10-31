@@ -1,12 +1,17 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
 
-<form method="post" action="<?= e(route('create-media-object', ['tree' => $tree->name()])) ?>" id="wt-modal-form">
+use Fisharebest\Webtrees\Http\RequestHandlers\CreateMediaObjectAction;
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<form method="post" action="<?= e(route(CreateMediaObjectAction::class, ['tree' => $tree->name()])) ?>" id="wt-modal-form">
     <?= csrf_field() ?>
 
     <?= view('modals/header', ['title' => I18N::translate('Create a media object')]) ?>
 
     <div class="modal-body">
-        <?= view('modals/media-object-fields', ['max_upload_size' => $max_upload_size, 'media_types' => $media_types, 'unused_files' => $unused_files]) ?>
+        <?= view('modals/media-object-fields', ['max_upload_size' => $max_upload_size, 'media_types' => $media_types, 'unused_files' => $unused_files, 'tree' => $tree]) ?>
     </div>
 
     <?= view('modals/footer-save-cancel') ?>

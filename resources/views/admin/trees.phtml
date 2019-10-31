@@ -2,6 +2,8 @@
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\CreateMediaObjectModal;
+use Fisharebest\Webtrees\Http\RequestHandlers\CreateNoteModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateRepositoryModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateSourceModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateSubmitterModal;
@@ -238,7 +240,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                     <!-- UNLINKED MEDIA OBJECT -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/media') ?></span>
-                                        <a href="#" data-href="<?= e(route('create-media-object', ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+                                        <a href="#" data-href="<?= e(route(CreateMediaObjectModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
 
                                             <?= I18N::translate('Media object') ?>
                                             <span class="sr-only">
@@ -249,7 +251,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                     <!-- UNLINKED NOTE -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/note') ?></span>
-                                        <a href="#" data-href="<?= e(route('create-note-object', ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+                                        <a href="#" data-href="<?= e(route(CreateNoteModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
                                             <span class="sr-only">
                                                 <?= e($managed_tree->title()) ?>
                                             </span>

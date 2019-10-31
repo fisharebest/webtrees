@@ -37,6 +37,7 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Http\RequestHandlers\CreateMediaObjectModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateRepositoryModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateSourceModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateSubmitterModal;
@@ -488,7 +489,7 @@ class FunctionsEdit
         } elseif ($fact === 'OBJE') {
             $html .=
                 '<div class="input-group">' .
-                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route('create-media-object', ['tree' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a media object') . '">' . view('icons/add') . '</button></div>' .
+                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route(CreateMediaObjectModal::class, ['tree' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a media object') . '">' . view('icons/add') . '</button></div>' .
                 view('components/select-media', ['id' => $id, 'name' => $name, 'media' => Media::getInstance($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'PAGE') {

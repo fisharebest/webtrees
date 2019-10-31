@@ -1,0 +1,125 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2019 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\MediaFileService;
+use Fisharebest\Webtrees\Services\PendingChangesService;
+use Fisharebest\Webtrees\Tree;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+use function assert;
+use function in_array;
+
+/**
+ * Process a form to create a new media object.
+ */
+class CreateMediaObjectAction implements RequestHandlerInterface
+{
+    /** @var MediaFileService */
+    private $media_file_service;
+
+    /** @var PendingChangesService */
+    private $pending_changes_service;
+
+    /**
+     * CreateMediaObjectAction constructor.
+     *
+     * @param MediaFileService      $media_file_service
+     * @param PendingChangesService $pending_changes_service
+     */
+    public function __construct(MediaFileService $media_file_service, PendingChangesService $pending_changes_service)
+    {
+        $this->media_file_service      = $media_file_service;
+        $this->pending_changes_service = $pending_changes_service;
+    }
+
+    /**
+     * Process a form to create a new media object.
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        $params              = $request->getParsedBody();
+        $note                = $params['media-note'];
+        $title               = $params['title'];
+        $type                = $params['type'];
+        $privacy_restriction = $params['privacy-restriction'];
+        $edit_restriction    = $params['edit-restriction'];
+
+        // Tidy whitespace
+        $type  = trim(preg_replace('/\s+/', ' ', $type));
+        $title = trim(preg_replace('/\s+/', ' ', $title));
+
+        // Convert line endings to GEDDCOM continuations
+        $note = str_replace([
+            "\r\n",
+            "\r",
+            "\n",
+        ], "\n1 CONT ", $note);
+
+        $file = $this->media_file_service->uploadFile($request);
+
+        if ($file === '') {
+            return response(['error_message' => I18N::translate('There was an error uploading your file.')], 406);
+        }
+
+        $gedcom = "0 @@ OBJE\n" . $this->media_file_service->createMediaFileGedcom($file, $type, $title);
+
+        if ($note !== '') {
+            $gedcom .= "\n1 NOTE " . preg_replace('/\r?\n/', "\n2 CONT ", $note);
+        }
+
+        if (in_array($privacy_restriction, $this->media_file_service::PRIVACY_RESTRICTIONS, true)) {
+            $gedcom .= "\n1 RESN " . $privacy_restriction;
+        }
+
+        if (in_array($edit_restriction, $this->media_file_service::EDIT_RESTRICTIONS, true)) {
+            $gedcom .= "\n1 RESN " . $edit_restriction;
+        }
+
+        $record = $tree->createMediaObject($gedcom);
+
+        // Accept the new record to keep the filesystem synchronized with the genealogy.
+        $this->pending_changes_service->acceptRecord($record);
+
+        // id and text are for select2 / autocomplete
+        // html is for interactive modals
+        return response([
+            'id'   => $record->xref(),
+            'text' => view('selects/media', [
+                'media' => $record,
+            ]),
+            'html' => view('modals/record-created', [
+                'title' => I18N::translate('The media object has been created'),
+                'name'  => $record->fullName(),
+                'url'   => $record->url(),
+            ]),
+        ]);
+    }
+}

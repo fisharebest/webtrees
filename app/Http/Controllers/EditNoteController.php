@@ -40,18 +40,6 @@ class EditNoteController extends AbstractEditController
      *
      * @return ResponseInterface
      */
-    public function createNoteObject(ServerRequestInterface $request): ResponseInterface
-    {
-        return response(view('modals/create-note-object'));
-    }
-
-    /**
-     * Show a form to create a new note object.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function editNoteObject(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
@@ -106,50 +94,5 @@ class EditNoteController extends AbstractEditController
         $note->updateRecord($gedrec, true);
 
         return redirect($note->url());
-    }
-
-    /**
-     * Process a form to create a new note object.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function createNoteObjectAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $params              = $request->getParsedBody();
-        $note                = $params['note'];
-        $privacy_restriction = $params['privacy-restriction'];
-        $edit_restriction    = $params['edit-restriction'];
-
-        // Convert line endings to GEDDCOM continuations
-        $note = preg_replace('/\r|\r\n|\n/', "\n1 CONT ", $note);
-
-        $gedcom = '0 @@ NOTE ' . $note;
-
-        if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'], true)) {
-            $gedcom .= "\n1 RESN " . $privacy_restriction;
-        }
-
-        if ($edit_restriction === 'locked') {
-            $gedcom .= "\n1 RESN " . $edit_restriction;
-        }
-
-        $record = $tree->createRecord($gedcom);
-
-        return response([
-            'id'   => $record->xref(),
-            'text' => view('selects/note', [
-                'note' => $record,
-            ]),
-            'html' => view('modals/record-created', [
-                'title' => I18N::translate('The note has been created'),
-                'name'  => $record->fullName(),
-                'url'   => $record->url(),
-            ]),
-        ]);
     }
 }

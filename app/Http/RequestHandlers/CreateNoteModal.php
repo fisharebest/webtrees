@@ -29,11 +29,13 @@ use function response;
 use function view;
 
 /**
- * Process a form to create a new source.
+ * Show a form to create a new note object.
  */
-class CreateSourceModal implements RequestHandlerInterface
+class CreateNoteModal implements RequestHandlerInterface
 {
     /**
+     * Show a form to create a new note object.
+     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
@@ -43,7 +45,7 @@ class CreateSourceModal implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        return response(view('modals/create-source', [
+        return response(view('modals/create-note-object', [
             'tree' => $tree,
         ]));
     }

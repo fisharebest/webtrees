@@ -19,20 +19,32 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
-use function response;
-use function view;
 
 /**
- * Process a form to create a new source.
+ * Show a form to create a new media object.
  */
-class CreateSourceModal implements RequestHandlerInterface
+class CreateMediaObjectModal implements RequestHandlerInterface
 {
+    /** @var MediaFileService */
+    private $media_file_service;
+
+    /**
+     * CreateMediaObjectModal constructor.
+     *
+     * @param MediaFileService $media_file_service
+     */
+    public function __construct(MediaFileService $media_file_service)
+    {
+        $this->media_file_service = $media_file_service;
+    }
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -43,8 +55,11 @@ class CreateSourceModal implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        return response(view('modals/create-source', [
-            'tree' => $tree,
+        return response(view('modals/create-media-object', [
+            'max_upload_size' => $this->media_file_service->maxUploadFilesize(),
+            'media_types'     => $this->media_file_service->mediaTypes(),
+            'unused_files'    => $this->media_file_service->unusedFiles($tree),
+            'tree'            => $tree,
         ]));
     }
 }

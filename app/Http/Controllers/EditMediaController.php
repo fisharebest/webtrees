@@ -24,44 +24,27 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
-use InvalidArgumentException;
 use League\Flysystem\FileExistsException;
 use League\Flysystem\FileNotFoundException;
 use League\Flysystem\Util;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\UploadedFileInterface;
-use RuntimeException;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use function assert;
-use function pathinfo;
-use function strpos;
-
-use const PATHINFO_EXTENSION;
-use const UPLOAD_ERR_OK;
 
 /**
  * Controller for edit forms and responses.
  */
 class EditMediaController extends AbstractEditController
 {
-    private const EDIT_RESTRICTIONS = [
-        'locked',
-    ];
-
-    private const PRIVACY_RESTRICTIONS = [
-        'none',
-        'privacy',
-        'confidential',
-    ];
+    /** @var MediaFileService */
+    private $media_file_service;
 
     /** @var PendingChangesService */
     private $pending_changes_service;
@@ -69,10 +52,12 @@ class EditMediaController extends AbstractEditController
     /**
      * EditMediaController constructor.
      *
+     * @param MediaFileService      $media_file_service
      * @param PendingChangesService $pending_changes_service
      */
-    public function __construct(PendingChangesService $pending_changes_service)
+    public function __construct(MediaFileService $media_file_service, PendingChangesService $pending_changes_service)
     {
+        $this->media_file_service      = $media_file_service;
         $this->pending_changes_service = $pending_changes_service;
     }
 
@@ -101,10 +86,10 @@ class EditMediaController extends AbstractEditController
         }
 
         return response(view('modals/add-media-file', [
-            'max_upload_size' => $this->maxUploadFilesize(),
+            'max_upload_size' => $this->media_file_service->maxUploadFilesize(),
             'media'           => $media,
-            'media_types'     => $this->mediaTypes(),
-            'unused_files'    => $this->unusedFiles($tree),
+            'media_types'     => $this->media_file_service->mediaTypes(),
+            'unused_files'    => $this->media_file_service->unusedFiles($tree),
         ]));
     }
 
@@ -133,7 +118,7 @@ class EditMediaController extends AbstractEditController
             return redirect(route('tree-page', ['tree' => $tree->name()]));
         }
 
-        $file = $this->uploadFile($request);
+        $file = $this->media_file_service->uploadFile($request);
 
         if ($file === '') {
             FlashMessages::addMessage(I18N::translate('There was an error uploading your file.'));
@@ -187,10 +172,10 @@ class EditMediaController extends AbstractEditController
             if ($media_file->factId() === $fact_id) {
                 return response(view('modals/edit-media-file', [
                     'media_file'      => $media_file,
-                    'max_upload_size' => $this->maxUploadFilesize(),
+                    'max_upload_size' => $this->media_file_service->maxUploadFilesize(),
                     'media'           => $media,
-                    'media_types'     => $this->mediaTypes(),
-                    'unused_files'    => $this->unusedFiles($tree),
+                    'media_types'     => $this->media_file_service->mediaTypes(),
+                    'unused_files'    => $this->media_file_service->unusedFiles($tree),
                 ]));
             }
         }
@@ -281,7 +266,7 @@ class EditMediaController extends AbstractEditController
             }
         }
 
-        $gedcom = $this->createMediaFileGedcom($file, $type, $title);
+        $gedcom = $this->media_file_service->createMediaFileGedcom($file, $type, $title);
 
         $media->updateFact($fact_id, $gedcom, true);
 
@@ -306,9 +291,9 @@ class EditMediaController extends AbstractEditController
         assert($tree instanceof Tree);
 
         return response(view('modals/create-media-object', [
-            'max_upload_size' => $this->maxUploadFilesize(),
-            'media_types'     => $this->mediaTypes(),
-            'unused_files'    => $this->unusedFiles($tree),
+            'max_upload_size' => $this->media_file_service->maxUploadFilesize(),
+            'media_types'     => $this->media_file_service->mediaTypes(),
+            'unused_files'    => $this->media_file_service->unusedFiles($tree),
         ]));
     }
 
@@ -385,23 +370,23 @@ class EditMediaController extends AbstractEditController
             "\n",
         ], "\n1 CONT ", $note);
 
-        $file = $this->uploadFile($request);
+        $file = $this->media_file_service->uploadFile($request);
 
         if ($file === '') {
             return response(['error_message' => I18N::translate('There was an error uploading your file.')], 406);
         }
 
-        $gedcom = "0 @@ OBJE\n" . $this->createMediaFileGedcom($file, $type, $title);
+        $gedcom = "0 @@ OBJE\n" . $this->media_file_service->createMediaFileGedcom($file, $type, $title);
 
         if ($note !== '') {
             $gedcom .= "\n1 NOTE " . preg_replace('/\r?\n/', "\n2 CONT ", $note);
         }
 
-        if (in_array($privacy_restriction, self::PRIVACY_RESTRICTIONS, true)) {
+        if (in_array($privacy_restriction, $this->media_file_service::PRIVACY_RESTRICTIONS, true)) {
             $gedcom .= "\n1 RESN " . $privacy_restriction;
         }
 
-        if (in_array($edit_restriction, self::EDIT_RESTRICTIONS, true)) {
+        if (in_array($edit_restriction, $this->media_file_service::EDIT_RESTRICTIONS, true)) {
             $gedcom .= "\n1 RESN " . $edit_restriction;
         }
 
@@ -503,180 +488,5 @@ class EditMediaController extends AbstractEditController
         $record->createFact('1 OBJE @' . $xref . '@', true);
 
         return redirect($media->url());
-    }
-
-    /**
-     * Convert the media file attributes into GEDCOM format.
-     *
-     * @param string $file
-     * @param string $type
-     * @param string $title
-     *
-     * @return string
-     */
-    private function createMediaFileGedcom(string $file, string $type, string $title): string
-    {
-        if (preg_match('/\.([a-z0-9]+)/i', $file, $match)) {
-            $extension = strtolower($match[1]);
-            $extension = str_replace('jpg', 'jpeg', $extension);
-            $extension = ' ' . $extension;
-        } else {
-            $extension = '';
-        }
-
-        $gedcom = '1 FILE ' . $file;
-        if ($type !== '') {
-            $gedcom .= "\n2 FORM" . $extension . "\n3 TYPE " . $type;
-        }
-        if ($title !== '') {
-            $gedcom .= "\n2 TITL " . $title;
-        }
-
-        return $gedcom;
-    }
-
-    /**
-     * What is the largest file a user may upload?
-     */
-    private function maxUploadFilesize(): string
-    {
-        $bytes = UploadedFile::getMaxFilesize();
-        $kb    = intdiv($bytes + 1023, 1024);
-
-        return I18N::translate('%s KB', I18N::number($kb));
-    }
-
-    /**
-     * A list of key/value options for media types.
-     *
-     * @param string $current
-     *
-     * @return array
-     */
-    private function mediaTypes($current = ''): array
-    {
-        $media_types = GedcomTag::getFileFormTypes();
-
-        $media_types = ['' => ''] + [$current => $current] + $media_types;
-
-        return $media_types;
-    }
-
-    /**
-     * Store an uploaded file (or URL), either to be added to a media object
-     * or to create a media object.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return string The value to be stored in the 'FILE' field of the media object.
-     */
-    private function uploadFile(ServerRequestInterface $request): string
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $params        = $request->getParsedBody();
-        $file_location = $params['file_location'];
-
-        switch ($file_location) {
-            case 'url':
-                $remote = $params['remote'];
-
-                if (strpos($remote, '://') !== false) {
-                    return $remote;
-                }
-
-                return '';
-
-            case 'unused':
-                $unused = $params['unused'];
-
-                if ($tree->mediaFilesystem()->has($unused)) {
-                    return $unused;
-                }
-
-                return '';
-
-            case 'upload':
-            default:
-                $folder   = $params['folder'];
-                $auto     = $params['auto'];
-                $new_file = $params['new_file'];
-
-                /** @var UploadedFileInterface|null $uploaded_file */
-                $uploaded_file = $request->getUploadedFiles()['file'];
-                if ($uploaded_file === null || $uploaded_file->getError() !== UPLOAD_ERR_OK) {
-                    return '';
-                }
-
-                // The filename
-                $new_file = str_replace('\\', '/', $new_file);
-                if ($new_file !== '' && strpos($new_file, '/') === false) {
-                    $file = $new_file;
-                } else {
-                    $file = $uploaded_file->getClientFilename();
-                }
-
-                // The folder
-                $folder = str_replace('\\', '/', $folder);
-                $folder = trim($folder, '/');
-                if ($folder !== '') {
-                    $folder .= '/';
-                }
-
-                // Generate a unique name for the file?
-                if ($auto === '1' || $tree->mediaFilesystem()->has($folder . $file)) {
-                    $folder    = '';
-                    $extension = pathinfo($uploaded_file->getClientFilename(), PATHINFO_EXTENSION);
-                    $file      = sha1((string) $uploaded_file->getStream()) . '.' . $extension;
-                }
-
-                try {
-                    $tree->mediaFilesystem()->writeStream($folder . $file, $uploaded_file->getStream()->detach());
-
-                    return $folder . $file;
-                } catch (RuntimeException | InvalidArgumentException $ex) {
-                    FlashMessages::addMessage(I18N::translate('There was an error uploading your file.'));
-
-                    return '';
-                }
-        }
-    }
-
-    /**
-     * A list of media files not already linked to a media object.
-     *
-     * @param Tree $tree
-     *
-     * @return array
-     */
-    private function unusedFiles(Tree $tree): array
-    {
-        $used_files = DB::table('media_file')
-            ->where('m_file', '=', $tree->id())
-            ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
-            ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->pluck('multimedia_file_refn')
-            ->all();
-
-        $disk_files = $tree->mediaFilesystem()->listContents('', true);
-
-        $disk_files = array_filter($disk_files, static function (array $item) {
-            // Older versions of webtrees used a couple of special folders.
-            return
-                $item['type'] === 'file' &&
-                strpos($item['path'], '/thumbs/') === false &&
-                strpos($item['path'], '/watermarks/') === false;
-        });
-
-        $disk_files = array_map(static function (array $item): string {
-            return $item['path'];
-        }, $disk_files);
-
-        $unused_files = array_diff($disk_files, $used_files);
-
-        sort($unused_files);
-
-        return array_combine($unused_files, $unused_files);
     }
 }

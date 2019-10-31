@@ -26,13 +26,11 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
-use function response;
-use function view;
 
 /**
- * Show a form to create a new repository.
+ * Process a form to create a new note object.
  */
-class CreateRepositoryModal implements RequestHandlerInterface
+class CreateNoteAction implements RequestHandlerInterface
 {
     /**
      * @param ServerRequestInterface $request
@@ -44,32 +42,15 @@ class CreateRepositoryModal implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        return response(view('modals/create-repository', [
-            'tree' => $tree,
-        ]));
-    }
-
-    /**
-     * Process a form to create a new repository.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function createRepositoryAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
         $params              = $request->getParsedBody();
-        $name                = $params['repository-name'];
+        $note                = $params['note'];
         $privacy_restriction = $params['privacy-restriction'];
         $edit_restriction    = $params['edit-restriction'];
 
-        // Fix whitespace
-        $name = trim(preg_replace('/\s+/', ' ', $name));
+        // Convert line endings to GEDDCOM continuations
+        $note = preg_replace('/\r|\r\n|\n/', "\n1 CONT ", $note);
 
-        $gedcom = "0 @@ REPO\n1 NAME " . $name;
+        $gedcom = '0 @@ NOTE ' . $note;
 
         if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'], true)) {
             $gedcom .= "\n1 RESN " . $privacy_restriction;
@@ -85,11 +66,11 @@ class CreateRepositoryModal implements RequestHandlerInterface
         // html is for interactive modals
         return response([
             'id'   => $record->xref(),
-            'text' => view('selects/repository', [
-                'repository' => $record,
+            'text' => view('selects/note', [
+                'note' => $record,
             ]),
             'html' => view('modals/record-created', [
-                'title' => I18N::translate('The repository has been created'),
+                'title' => I18N::translate('The note has been created'),
                 'name'  => $record->fullName(),
                 'url'   => $record->url(),
             ]),
