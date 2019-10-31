@@ -17,31 +17,36 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use stdClass;
+use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 use function is_string;
 use function redirect;
 
 /**
- * Controller for the family page.
+ * Show a note's page.
  */
-class FamilyController extends AbstractBaseController
+class NotePage implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
     /** @var ClipboardService */
     private $clipboard_service;
 
     /**
-     * FamilyController constructor.
+     * NotePage constructor.
      *
      * @param ClipboardService $clipboard_service
      */
@@ -51,13 +56,11 @@ class FamilyController extends AbstractBaseController
     }
 
     /**
-     * Show a family's page.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function show(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
@@ -65,49 +68,39 @@ class FamilyController extends AbstractBaseController
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $family = Family::getInstance($xref, $tree);
-        $family = Auth::checkFamilyAccess($family, false);
+        $note = Note::getInstance($xref, $tree);
+        $note = Auth::checkNoteAccess($note, false);
 
         // Redirect to correct xref/slug
-        if ($family->xref() !== $xref || $request->getAttribute('slug') !== $family->slug()) {
-            return redirect($family->url());
+        if ($note->xref() !== $xref || $request->getAttribute('slug') !== $note->slug()) {
+            return redirect($note->url());
         }
 
-        $clipboard_facts = $this->clipboard_service->pastableFacts($family, new Collection());
-
-        return $this->viewResponse('family-page', [
-            'facts'           => $family->facts([], true),
+        return $this->viewResponse('note-page', [
+            'clipboard_facts' => $this->clipboard_service->pastableFacts($note, new Collection()),
+            'facts'           => $this->facts($note),
+            'families'        => $note->linkedFamilies('NOTE'),
+            'individuals'     => $note->linkedIndividuals('NOTE'),
+            'note'            => $note,
+            'notes'           => new Collection([]),
+            'media_objects'   => $note->linkedMedia('NOTE'),
             'meta_robots'     => 'index,follow',
-            'clipboard_facts' => $clipboard_facts,
-            'record'          => $family,
-            'significant'     => $this->significant($family),
-            'title'           => $family->fullName(),
-            'tree'            => $tree,
+            'sources'         => $note->linkedSources('NOTE'),
+            'text'            => Filter::formatText($note->getNote(), $tree),
+            'title'           => $note->fullName(),
         ]);
     }
 
     /**
-     * What are the significant elements of this page?
-     * The layout will need them to generate URLs for charts and reports.
+     * @param Note $record
      *
-     * @param Family $family
-     *
-     * @return stdClass
+     * @return Collection
      */
-    private function significant(Family $family): stdClass
+    private function facts(Note $record): Collection
     {
-        $significant = (object) [
-            'family'     => $family,
-            'individual' => null,
-            'surname'    => '',
-        ];
-
-        foreach ($family->spouses()->merge($family->children()) as $individual) {
-            $significant->individual = $individual;
-            [$significant->surname] = explode(',', $individual->sortName());
-            break;
-        }
-
-        return $significant;
+        return $record->facts()
+            ->filter(static function (Fact $fact): bool {
+                return $fact->getTag() !== 'CONT';
+            });
     }
 }

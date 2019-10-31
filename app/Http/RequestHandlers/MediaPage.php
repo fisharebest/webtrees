@@ -17,31 +17,35 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 use function is_string;
 use function redirect;
 
 /**
- * Controller for the media page.
+ * Show a media object's page.
  */
-class MediaController extends AbstractBaseController
+class MediaPage implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
     /** @var ClipboardService */
     private $clipboard_service;
 
     /**
-     * MediaController constructor.
+     * MediaPage constructor.
      *
      * @param ClipboardService $clipboard_service
      */
@@ -51,18 +55,16 @@ class MediaController extends AbstractBaseController
     }
 
     /**
-     * Show a repository's page.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function show(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref  = $request->getAttribute('xref');
+        $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
         $media = Media::getInstance($xref, $tree);

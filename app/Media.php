@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use Exception;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use stdClass;
@@ -33,7 +34,7 @@ class Media extends GedcomRecord
 {
     public const RECORD_TYPE = 'OBJE';
 
-    protected const ROUTE_NAME = 'media';
+    protected const ROUTE_NAME = MediaPage::class;
 
     /**
      * A closure which will create a record from a database row.

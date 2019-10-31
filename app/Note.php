@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Exception;
+use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use stdClass;
@@ -32,7 +33,7 @@ class Note extends GedcomRecord
 {
     public const RECORD_TYPE = 'NOTE';
 
-    protected const ROUTE_NAME = 'note';
+    protected const ROUTE_NAME = NotePage::class;
 
     /**
      * A closure which will create a record from a database row.

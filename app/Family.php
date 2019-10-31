@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Exception;
+use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use stdClass;
@@ -32,7 +33,7 @@ class Family extends GedcomRecord
 {
     public const RECORD_TYPE = 'FAM';
 
-    protected const ROUTE_NAME = 'family';
+    protected const ROUTE_NAME = FamilyPage::class;
 
     /** @var Individual|null The husband (or first spouse for same-sex couples) */
     private $husb;
