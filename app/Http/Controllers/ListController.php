@@ -318,6 +318,7 @@ class ListController extends AbstractBaseController
                                 'surnames' => $surns,
                                 'families' => $families,
                                 'module'   => $moduleListInterface,
+                                'tree'     => $tree,
                             ]);
                             break;
                     }
