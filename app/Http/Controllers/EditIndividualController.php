@@ -521,6 +521,7 @@ class EditIndividualController extends AbstractEditController
         return $this->viewResponse('edit/link-child-to-family', [
             'individual' => $individual,
             'title'      => $title,
+            'tree'       => $tree,
         ]);
     }
 
@@ -601,6 +602,7 @@ class EditIndividualController extends AbstractEditController
             'individual' => $individual,
             'label'      => $label,
             'title'      => $title,
+            'tree'       => $tree,
         ]);
     }
 
