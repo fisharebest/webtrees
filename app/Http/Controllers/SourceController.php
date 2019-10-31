@@ -81,6 +81,8 @@ class SourceController extends AbstractBaseController
 
         $slug   = $request->getAttribute('slug');
         $tree   = $request->getAttribute('tree');
+        $xref   = $request->getAttribute('xref');
+
         $source = Source::getInstance($xref, $tree);
 
         Auth::checkSourceAccess($source, false);
@@ -99,6 +101,7 @@ class SourceController extends AbstractBaseController
             'media_objects'   => $source->linkedMedia('SOUR'),
             'source'          => $source,
             'title'           => $source->fullName(),
+            'tree'            => $tree,
         ]);
     }
 
