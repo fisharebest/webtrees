@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Exception;
+use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
 use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
 
@@ -31,7 +32,7 @@ class Source extends GedcomRecord
 {
     public const RECORD_TYPE = 'SOUR';
 
-    protected const ROUTE_NAME  = 'source';
+    protected const ROUTE_NAME  = SourcePage::class;
 
     /**
      * A closure which will create a record from a database row.

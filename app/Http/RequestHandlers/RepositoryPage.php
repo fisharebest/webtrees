@@ -17,26 +17,33 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_search;
 use function assert;
 use function is_string;
 use function redirect;
 
+use const PHP_INT_MAX;
+
 /**
- * Controller for the repository page.
+ * Show a repository's page.
  */
-class RepositoryController extends AbstractBaseController
+class RepositoryPage implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
     // Show the repository's facts in this order:
     private const FACT_ORDER = [
         1 => 'NAME',
@@ -54,7 +61,7 @@ class RepositoryController extends AbstractBaseController
     private $clipboard_service;
 
     /**
-     * MediaController constructor.
+     * RepositoryPage constructor.
      *
      * @param ClipboardService $clipboard_service
      */
@@ -64,13 +71,11 @@ class RepositoryController extends AbstractBaseController
     }
 
     /**
-     * Show a repository's page.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function show(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
@@ -93,6 +98,7 @@ class RepositoryController extends AbstractBaseController
             'repository'      => $repository,
             'sources'         => $repository->linkedSources('REPO'),
             'title'           => $repository->fullName(),
+            'tree'            => $tree,
         ]);
     }
 

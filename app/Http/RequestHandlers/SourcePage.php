@@ -17,26 +17,33 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_search;
 use function assert;
 use function is_string;
 use function redirect;
 
+use const PHP_INT_MAX;
+
 /**
- * Controller for the source page.
+ * Show a source's page.
  */
-class SourceController extends AbstractBaseController
+class SourcePage implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
     // Show the source's facts in this order:
     private const FACT_ORDER = [
         1 => 'TITL',
@@ -59,7 +66,7 @@ class SourceController extends AbstractBaseController
     private $clipboard_service;
 
     /**
-     * MediaController constructor.
+     * SourcePage constructor.
      *
      * @param ClipboardService $clipboard_service
      */
@@ -69,13 +76,11 @@ class SourceController extends AbstractBaseController
     }
 
     /**
-     * Show a repository's page.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function show(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);

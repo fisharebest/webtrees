@@ -99,6 +99,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ReportListAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReportListPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReportSetupAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReportSetupPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\RepositoryPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\RobotsTxt;
 use Fisharebest\Webtrees\Http\RequestHandlers\SearchAdvancedPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SearchAdvancedAction;
@@ -125,6 +126,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsData;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDelete;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDownload;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail;
 
 use function app;
@@ -420,7 +422,7 @@ $router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->post('message-action', '/message', 'MessageController::messageAction');
     $router->get('note', '/note/{xref}{/slug}', 'NoteController::show');
     $router->get(GedcomRecordPage::class, '/record/{xref}{/slug}', GedcomRecordPage::class);
-    $router->get('repository', '/repository/{xref}{/slug}', 'RepositoryController::show');
+    $router->get(RepositoryPage::class, '/repository/{xref}{/slug}', RepositoryPage::class);
     $router->get(ReportListPage::class, '/report', ReportListPage::class);
     $router->post(ReportListAction::class, '/report', ReportListAction::class);
     $router->get(ReportSetupPage::class, '/report/{report}', ReportSetupPage::class);
@@ -440,7 +442,7 @@ $router->attach('', '/tree/{tree}', static function (Map $router) {
     $router->post(Select2Source::class, '/select2-source', Select2Source::class);
     $router->post(Select2Submitter::class, '/select2-submitter', Select2Submitter::class);
     $router->post(Select2Repository::class, '/select2-repository', Select2Repository::class);
-    $router->get('source', '/source/{xref}{/slug}', 'SourceController::show');
+    $router->get(SourcePage::class, '/source/{xref}{/slug}', SourcePage::class);
     $router->get('individual-tab', '/tab-{module}/{xref}', 'IndividualController::tab');
     $router->get('tree-page-block', '/tree-page-block', 'HomePageController::treePageBlock');
     $router->get('example', '/…');

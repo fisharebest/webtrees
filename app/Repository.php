@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Exception;
+use Fisharebest\Webtrees\Http\RequestHandlers\RepositoryPage;
 use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
 
@@ -31,7 +32,7 @@ class Repository extends GedcomRecord
 {
     public const RECORD_TYPE = 'REPO';
 
-    protected const ROUTE_NAME = 'repository';
+    protected const ROUTE_NAME = RepositoryPage::class;
 
     /**
      * A closure which will create a record from a database row.
