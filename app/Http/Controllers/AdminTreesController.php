@@ -658,6 +658,7 @@ class AdminTreesController extends AbstractBaseController
             'gedcom_files'        => $gedcom_files,
             'gedcom_media_path'   => $gedcom_media_path,
             'title'               => $title,
+            'tree'                => $tree,
         ]);
     }
 
