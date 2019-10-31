@@ -23,6 +23,7 @@ use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Http\Controllers\GedcomFileController;
+use Fisharebest\Webtrees\Http\Routes\WebRoutes;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Services\MigrationService;
@@ -86,8 +87,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
 
         // Need the routing table, to generate URLs.
-        app()->instance(RouterContainer::class, new RouterContainer());
-        require __DIR__ . '/../routes/web.php';
+        $router_container = new RouterContainer('/');
+        (new WebRoutes())->load($router_container->getMap());
+        app()->instance(RouterContainer::class, $router_container);
 
         defined('WT_DATA_DIR') || define('WT_DATA_DIR', Webtrees::ROOT_DIR . 'data/');
         I18N::init('en-US', null, true);

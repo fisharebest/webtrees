@@ -20,6 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Aura\Router\RouterContainer;
+use Fisharebest\Webtrees\Http\Routes\ApiRoutes;
+use Fisharebest\Webtrees\Http\Routes\WebRoutes;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -35,6 +37,22 @@ use const PHP_URL_PATH;
  */
 class LoadRoutes implements MiddlewareInterface
 {
+    /** @var ApiRoutes */
+    private $api_routes;
+
+    /** @var WebRoutes */
+    private $web_routes;
+
+    /**
+     * @param ApiRoutes $api_routes
+     * @param WebRoutes $web_routes
+     */
+    public function __construct(ApiRoutes $api_routes, WebRoutes $web_routes)
+    {
+        $this->api_routes = $api_routes;
+        $this->web_routes = $web_routes;
+    }
+
     /**
      * @param ServerRequestInterface  $request
      * @param RequestHandlerInterface $handler
@@ -47,11 +65,13 @@ class LoadRoutes implements MiddlewareInterface
         $base_path        = parse_url($base_url, PHP_URL_PATH) ?? '';
         $router_container = new RouterContainer($base_path);
 
+        // Load the core routing tables. Modules will load their own routes later.
+        $map = $router_container->getMap();
+        $this->api_routes->load($map);
+        $this->web_routes->load($map);
+
         // Save the router in the container, as we'll need it to generate URLs.
         app()->instance(RouterContainer::class, $router_container);
-
-        // Load the routing table.
-        require __DIR__ . '/../../../routes/web.php';
 
         return $handler->handle($request);
     }
