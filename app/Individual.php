@@ -23,6 +23,7 @@ use Closure;
 use Exception;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
+use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use stdClass;
@@ -34,7 +35,7 @@ class Individual extends GedcomRecord
 {
     public const RECORD_TYPE = 'INDI';
 
-    protected const ROUTE_NAME = 'individual';
+    protected const ROUTE_NAME = IndividualPage::class;
 
     /** @var int used in some lists to keep track of this individual’s generation in that list */
     public $generation;

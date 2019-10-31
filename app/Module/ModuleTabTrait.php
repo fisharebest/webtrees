@@ -19,7 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+
+use function assert;
+use function response;
+use function view;
 
 /**
  * Trait ModuleTabTrait - default implementation of ModuleTabInterface
@@ -33,6 +43,25 @@ trait ModuleTabTrait
      * @return string
      */
     abstract public function title(): string;
+
+    /**
+     * Get a the current access level for a module
+     *
+     * @param Tree   $tree
+     * @param string $interface
+     *
+     * @return int
+     */
+    abstract public function accessLevel(Tree $tree, string $interface): int;
+
+    /**
+     * Generate the HTML content of this tab.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    abstract public function getTabContent(Individual $individual): string;
 
     /**
      * The text that appears on the tab.
@@ -84,5 +113,33 @@ trait ModuleTabTrait
     public function supportedFacts(): Collection
     {
         return new Collection([]);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function getTabAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        $xref = $request->getQueryParams()['xref'];
+
+        $record = Individual::getInstance($xref, $tree);
+        $record = Auth::checkIndividualAccess($record);
+
+        $user = $request->getAttribute('user');
+
+        if ($this->accessLevel($tree, 'tab') < Auth::accessLevel($tree, $user)) {
+            throw new AccessDeniedHttpException('Access denied');
+        }
+
+        $layout = view('layouts/ajax', [
+            'content' => $this->getTabContent($record),
+        ]);
+
+        return response($layout);
     }
 }

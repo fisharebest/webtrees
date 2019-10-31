@@ -17,35 +17,37 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 
 /**
- * Controller for edit forms and responses.
+ * Process a form to create a new source.
  */
-class EditSourceController extends AbstractEditController
+class CreateSourceModal implements RequestHandlerInterface
 {
     /**
-     * Show a form to create a new source.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function createSource(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        return response(view('modals/create-source'));
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        return response(view('modals/create-source', [
+            'tree' => $tree,
+        ]));
     }
 
     /**
-     * Process a form to create a new source.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface

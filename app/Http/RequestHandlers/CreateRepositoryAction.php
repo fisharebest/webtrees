@@ -17,40 +17,27 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 
 /**
- * Controller for edit forms and responses.
+ * Process a form to create a new repository.
  */
-class EditRepositoryController extends AbstractEditController
+class CreateRepositoryAction implements RequestHandlerInterface
 {
     /**
-     * Show a form to create a new repository.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function createRepository(ServerRequestInterface $request): ResponseInterface
-    {
-        return response(view('modals/create-repository'));
-    }
-
-    /**
-     * Process a form to create a new repository.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function createRepositoryAction(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);

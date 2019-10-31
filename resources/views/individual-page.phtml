@@ -1,4 +1,5 @@
 <?php
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
@@ -108,7 +109,7 @@ use Illuminate\Support\Collection;
             <ul class="nav nav-tabs flex-wrap">
                 <?php foreach ($tabs as $tab) : ?>
                     <li class="nav-item">
-                        <a class="nav-link<?= $tab->isGrayedOut($individual) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= e(route('individual-tab', ['xref' => $individual->xref(), 'tree' => $individual->tree()->name(), 'module' => $tab->name()])) ?>" href="#<?= $tab->name() ?>">
+                        <a class="nav-link<?= $tab->isGrayedOut($individual) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= e(route('module', ['module' => $tab->name(), 'action' => 'Tab', 'tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>" href="#<?= $tab->name() ?>">
                             <?= $tab->tabTitle() ?>
                         </a>
                     </li>
@@ -117,8 +118,7 @@ use Illuminate\Support\Collection;
             <div class="tab-content">
                 <?php foreach ($tabs as $tab) : ?>
                     <div id="<?= $tab->name() ?>" class="tab-pane fade wt-ajax-load" role="tabpanel"><?php if (!$tab->canLoadAjax()) :
-                        ?><?= $tab->getTabContent($individual) ?><?php
-                             endif ?></div>
+                        ?><?= $tab->getTabContent($individual) ?><?php endif ?></div>
                 <?php endforeach ?>
             </div>
         </div>

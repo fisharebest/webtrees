@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Interface ModuleTabInterface - Classes and libraries for module system
@@ -98,4 +100,13 @@ interface ModuleTabInterface extends ModuleInterface
      * @return Collection
      */
     public function supportedFacts(): Collection;
+
+    /**
+     * Generate an AJAX response for a tab.
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function getTabAction(ServerRequestInterface $request): ResponseInterface;
 }

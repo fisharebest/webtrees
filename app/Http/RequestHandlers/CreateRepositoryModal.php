@@ -17,65 +17,57 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 
 /**
- * Controller for edit forms and responses.
+ * Show a form to create a new repository.
  */
-class EditSubmitterController extends AbstractEditController
+class CreateRepositoryModal implements RequestHandlerInterface
 {
     /**
-     * Show a form to create a new submitter.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function createSubmitter(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        return response(view('modals/create-submitter'));
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        return response(view('modals/create-repository', [
+            'tree' => $tree,
+        ]));
     }
 
     /**
-     * Process a form to create a new submitter.
+     * Process a form to create a new repository.
      *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function createSubmitterAction(ServerRequestInterface $request): ResponseInterface
+    public function createRepositoryAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
         $params              = $request->getParsedBody();
-        $name                = $params['submitter_name'];
-        $address             = $params['submitter_address'];
+        $name                = $params['repository-name'];
         $privacy_restriction = $params['privacy-restriction'];
         $edit_restriction    = $params['edit-restriction'];
 
         // Fix whitespace
         $name = trim(preg_replace('/\s+/', ' ', $name));
 
-        // Convert line endings to GEDDCOM continuations
-        $address = str_replace([
-            "\r\n",
-            "\r",
-            "\n",
-        ], "\n1 CONT ", $address);
-
-        $gedcom = "0 @@ SUBM\n1 NAME " . $name;
-
-        if ($address !== '') {
-            $gedcom .= "\n1 ADDR " . $address;
-        }
+        $gedcom = "0 @@ REPO\n1 NAME " . $name;
 
         if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'], true)) {
             $gedcom .= "\n1 RESN " . $privacy_restriction;
@@ -87,13 +79,15 @@ class EditSubmitterController extends AbstractEditController
 
         $record = $tree->createRecord($gedcom);
 
+        // id and text are for select2 / autocomplete
+        // html is for interactive modals
         return response([
             'id'   => $record->xref(),
-            'text' => view('selects/submitter', [
-                'submitter' => $record,
+            'text' => view('selects/repository', [
+                'repository' => $record,
             ]),
             'html' => view('modals/record-created', [
-                'title' => I18N::translate('The submitter has been created'),
+                'title' => I18N::translate('The repository has been created'),
                 'name'  => $record->fullName(),
                 'url'   => $record->url(),
             ]),
