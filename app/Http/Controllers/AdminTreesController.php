@@ -884,8 +884,6 @@ class AdminTreesController extends AbstractBaseController
                     ->where('n_file', '=', $tree1->id());
             });
 
-            // @TODO placelinks is harder than the others...
-
             (new Builder(DB::connection()))->from('dates')->insertUsing([
                 'd_file',
                 'd_gid',
