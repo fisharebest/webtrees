@@ -109,7 +109,6 @@ class Router implements MiddlewareInterface
         foreach ($route->attributes as $key => $value) {
             if ($key === 'tree') {
                 $value = $this->tree_service->all()->get($value);
-                // @TODO - this is still required by the date formatter.
                 app()->instance(Tree::class, $value);
             }
             $request = $request->withAttribute($key, $value);
