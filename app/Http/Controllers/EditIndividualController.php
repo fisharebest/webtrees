@@ -450,7 +450,8 @@ class EditIndividualController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        // @TODO - Move the name-specific code to this function?
+        // Move the name-specific code to this function?
+
         return app(EditGedcomRecordController::class)->updateFact($request, $tree);
     }
 
@@ -495,7 +496,7 @@ class EditIndividualController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        // @TODO - Move the name-specific code to this function?
+        // Move the name-specific code to this function?
 
         return app(EditGedcomRecordController::class)->updateFact($request, $tree);
     }

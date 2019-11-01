@@ -72,8 +72,6 @@ trait ModuleThemeTrait
     /**
      * Display an icon for this fact.
      *
-     * @TODO use CSS for this
-     *
      * @param Fact $fact
      *
      * @return string
