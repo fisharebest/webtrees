@@ -2305,7 +2305,6 @@ class Functions
         $path1        = substr($path, 0, 3);
         $path2        = substr($path, 3);
         while ($path2) {
-            // @TODO need the actual people
             // I18N: A complex relationship, such as “third-cousin’s great-uncle”
             $tmp = I18N::translate(
                 '%1$s’s %2$s',

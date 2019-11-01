@@ -292,7 +292,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
         $paths = $this->calculateRelationships($individual1, $individual2, $recursion, (bool) $ancestors);
 
-        // @TODO - convert to views
         ob_start();
         if (I18N::direction() === 'ltr') {
             $diagonal1 = asset('css/images/dline.png');

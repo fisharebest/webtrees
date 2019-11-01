@@ -241,7 +241,7 @@ class CalendarService
             new HijriDate($jd),
         ];
 
-        // @TODO - there is a bug in the Persian Calendar that gives zero months for invalid dates
+        // There is a bug in the Persian Calendar that gives zero months for invalid dates
         if ($jd > (new PersianCalendar())->jdStart()) {
             $anniversaries[] = new JalaliDate($jd);
         }

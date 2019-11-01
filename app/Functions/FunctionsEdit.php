@@ -59,7 +59,6 @@ use function app;
 use function explode;
 use function in_array;
 use function substr;
-use function substr_replace;
 
 /**
  * Class FunctionsEdit - common functions for editing
