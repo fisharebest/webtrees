@@ -16,6 +16,8 @@
 /* The administration theme is mostly vanilla bootstrap. */
 @import "_base.css";
 
+@import "_mime-type-icons.css";
+
 /* Tree Preferences - fit thumbnail into parent for Default Individual*/
 .select2-selection.select2-selection--single {
 	min-height: 36px;
