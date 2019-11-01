@@ -1,8 +1,13 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\ContactAction;
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <h2><?= $title ?></h2>
 
-<form method="post" action="<?= e(route('contact-action', ['tree' => $tree->name()])) ?>">
+<form method="post" action="<?= e(route(ContactAction::class, ['tree' => $tree->name()])) ?>">
     <?= csrf_field() ?>
     <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="url" value="<?= e($url) ?>">

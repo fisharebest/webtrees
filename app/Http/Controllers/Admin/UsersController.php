@@ -25,11 +25,12 @@ use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
-use Fisharebest\Webtrees\Services\MailService;
+use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -58,8 +59,8 @@ class UsersController extends AbstractAdminController
     /** @var DatatablesService */
     private $datatables_service;
 
-    /** @var MailService */
-    private $mail_service;
+    /** @var EmailService */
+    private $email_service;
 
     /** @var ModuleService */
     private $module_service;
@@ -74,20 +75,20 @@ class UsersController extends AbstractAdminController
      * UsersController constructor.
      *
      * @param DatatablesService $datatables_service
-     * @param MailService       $mail_service
+     * @param EmailService      $email_service
      * @param ModuleService     $module_service
      * @param TreeService       $tree_service
      * @param UserService       $user_service
      */
     public function __construct(
         DatatablesService $datatables_service,
-        MailService $mail_service,
+        EmailService $email_service,
         ModuleService $module_service,
         TreeService $tree_service,
         UserService $user_service
     ) {
         $this->datatables_service = $datatables_service;
-        $this->mail_service       = $mail_service;
+        $this->email_service      = $email_service;
         $this->module_service     = $module_service;
         $this->tree_service       = $tree_service;
         $this->user_service       = $user_service;
@@ -254,7 +255,7 @@ class UsersController extends AbstractAdminController
             }
 
             // Link to send email to other users.
-            $row->email = '<a href="' . e(route('message', ['to' => $row->user_name])) . '">' . e($row->email) . '</a>';
+            $row->email = '<a href="' . e(route(MessagePage::class, ['to' => $row->user_name])) . '">' . e($row->email) . '</a>';
 
             $datum = [
                 '<div class="dropdown"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="edit-user-button-' . $row->user_id . '" aria-haspopup="true" aria-expanded="false">' . view('icons/edit') . ' <span class="caret"></span></button><div class="dropdown-menu" aria-labelledby="edit-user-button-' . $row->user_id . '"><div class="dropdown-item"><a href="' . e(route('admin-users-edit', ['user_id' => $row->user_id])) . '">' . view('icons/edit') . ' ' . I18N::translate('Edit') . '</a></div><div class="divider"></div><div class="dropdown-item"><a href="' . e(route('user-page-user-edit', ['user_id' => $row->user_id])) . '">' . view('icons/block') . ' ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></div>' . $admin_options . '</div></div>',
@@ -420,7 +421,7 @@ class UsersController extends AbstractAdminController
 
             $base_url = $request->getAttribute('base_url');
 
-            $this->mail_service->send(
+            $this->email_service->send(
                 new SiteUser(),
                 $edit_user,
                 Auth::user(),

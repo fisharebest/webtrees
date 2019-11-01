@@ -1,11 +1,12 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\Http\RequestHandlers\MessageAction;
+use Fisharebest\Webtrees\I18N; ?>
 
 <h2><?= $title ?></h2>
 
-<form method="post" action="<?= e(route('message-action', ['tree' => $tree->name()])) ?>">
+<form method="post" action="<?= e(route(MessageAction::class, ['tree' => $tree->name()])) ?>">
     <?= csrf_field() ?>
+
     <input type="hidden" name="url" value="<?= e($url) ?>">
-    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
 
     <div class="form-group row">
         <label class="col-sm-3 col-form-label" for="from">

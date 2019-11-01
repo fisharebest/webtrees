@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptChange;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptTree;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectChange;
@@ -79,7 +80,7 @@ use Fisharebest\Webtrees\Tree;
                                 </td>
 
                                 <td>
-                                    <a href="<?= e(route('message', ['to' => $record_change->user_name, 'subject' => I18N::translate('Pending changes') . ' - ' . strip_tags($record_change->record->fullName()), 'body' => $record_change->record->url(), 'tree' => $record_change->gedcom_name])) ?>" title="<?= I18N::translate('Send a message') ?>">
+                                    <a href="<?= e(route(MessagePage::class, ['to' => $record_change->user_name, 'subject' => I18N::translate('Pending changes') . ' - ' . strip_tags($record_change->record->fullName()), 'body' => $record_change->record->url(), 'tree' => $record_change->gedcom_name])) ?>" title="<?= I18N::translate('Send a message') ?>">
                                         <?= e($record_change->real_name) ?> - <?= e($record_change->user_name) ?>
                                     </a>
                                 </td>

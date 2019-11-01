@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Services\MailService;
+use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
@@ -45,8 +45,8 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
 
-    /** @var MailService */
-    private $mail_service;
+    /** @var EmailService */
+    private $email_service;
 
     /** @var UserService */
     private $user_service;
@@ -57,18 +57,18 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * ReviewChangesModule constructor.
      *
-     * @param MailService $mail_service
-     * @param TreeService $tree_service
-     * @param UserService $user_service
+     * @param EmailService $email_service
+     * @param TreeService  $tree_service
+     * @param UserService  $user_service
      */
     public function __construct(
-        MailService $mail_service,
+        EmailService $email_service,
         TreeService $tree_service,
         UserService $user_service
     ) {
-        $this->mail_service = $mail_service;
-        $this->tree_service = $tree_service;
-        $this->user_service = $user_service;
+        $this->email_service = $email_service;
+        $this->tree_service  = $tree_service;
+        $this->user_service  = $user_service;
     }
 
     /**
@@ -130,7 +130,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                             if ($tmp_tree->hasPendingEdit() && Auth::isManager($tmp_tree, $user)) {
                                 I18N::init($user->getPreference('language'));
 
-                                $this->mail_service->send(
+                                $this->email_service->send(
                                     new SiteUser(),
                                     $user,
                                     new TreeUser($tmp_tree),

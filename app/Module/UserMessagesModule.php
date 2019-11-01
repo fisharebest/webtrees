@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
+use Fisharebest\Webtrees\Http\RequestHandlers\MessageSelect;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
@@ -146,12 +148,11 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
         if ($users->isNotEmpty()) {
             $url = route('user-page', ['tree' => $tree->name()]);
 
-            $content .= '<form method="get" action="' . e(route('message', ['tree' => $tree->name()])) . '" onsubmit="return $(&quot;#to&quot;).val() !== &quot;&quot;">';
-            $content .= '<input type="hidden" name="route" value="message">';
-            $content .= '<input type="hidden" name="tree" value="' . e($tree->name()) . '">';
+            $content .= '<form method="post" action="' . e(route(MessageSelect::class, ['tree' => $tree->name()])) . '">';
+            $content .= csrf_field();
             $content .= '<input type="hidden" name="url" value="' . e($url) . '">';
             $content .= '<label for="to">' . I18N::translate('Send a message') . '</label>';
-            $content .= '<select id="to" name="to">';
+            $content .= '<select id="to" name="to" required>';
             $content .= '<option value="">' . I18N::translate('&lt;select&gt;') . '</option>';
             foreach ($users as $user) {
                 $content .= sprintf('<option value="%1$s">%2$s - %1$s</option>', e($user->userName()), e($user->realName()));
@@ -201,8 +202,8 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                 }
 
                 // If this user still exists, show a reply link.
-                if ($user) {
-                    $reply_url = route('message', [
+                if ($user instanceof User) {
+                    $reply_url = route(MessagePage::class, [
                         'subject' => $message->subject,
                         'to'      => $user->userName(),
                         'tree'    => $tree->name(),

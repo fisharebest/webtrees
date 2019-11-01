@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\NoReplyUser;
-use Fisharebest\Webtrees\Services\MailService;
+use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\User;
@@ -42,8 +42,8 @@ class VerifyEmail implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var MailService */
-    private $mail_service;
+    /** @var EmailService */
+    private $email_service;
 
     /** @var UserService */
     private $user_service;
@@ -51,13 +51,13 @@ class VerifyEmail implements RequestHandlerInterface
     /**
      * MessageController constructor.
      *
-     * @param MailService $mail_service
-     * @param UserService $user_service
+     * @param EmailService $email_service
+     * @param UserService  $user_service
      */
-    public function __construct(MailService $mail_service, UserService $user_service)
+    public function __construct(EmailService $email_service, UserService $user_service)
     {
-        $this->mail_service = $mail_service;
-        $this->user_service = $user_service;
+        $this->email_service = $email_service;
+        $this->user_service  = $user_service;
     }
 
     /**
@@ -89,7 +89,7 @@ class VerifyEmail implements RequestHandlerInterface
                 /* I18N: %s is a server name/URL */
                 $subject = I18N::translate('New user at %s', $base_url);
 
-                $this->mail_service->send(
+                $this->email_service->send(
                     new SiteUser(),
                     $administrator,
                     new NoReplyUser(),

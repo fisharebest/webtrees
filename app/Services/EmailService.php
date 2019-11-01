@@ -47,9 +47,9 @@ use const FILTER_VALIDATE_DOMAIN;
 use const FILTER_VALIDATE_EMAIL;
 
 /**
- * Send mail messages.
+ * Send emails.
  */
-class MailService
+class EmailService
 {
     /**
      * Send an external email message
@@ -172,7 +172,7 @@ class MailService
     }
 
     /**
-     * Where are we sending mail from?
+     * Who are we sending mail from?
      *
      * @return string
      */

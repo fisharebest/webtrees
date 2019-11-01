@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\BroadcastPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\CleanDataFolder;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
@@ -354,19 +355,19 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/email') ?></span>
-                        <a href="<?= e(route('broadcast', ['to' => 'all'])) ?>">
+                        <a href="<?= e(route(BroadcastPage::class, ['to' => 'all'])) ?>">
                             <?= I18N::translate('Send a message to all users') ?>
                         </a>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/email') ?></span>
-                        <a href="<?= e(route('broadcast', ['to' => 'never_logged'])) ?>">
+                        <a href="<?= e(route(BroadcastPage::class, ['to' => 'never_logged'])) ?>">
                             <?= I18N::translate('Send a message to users who have never signed in') ?>
                         </a>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/email') ?></span>
-                        <a href="<?= e(route('broadcast', ['to' => 'last_6mo'])) ?>">
+                        <a href="<?= e(route(BroadcastPage::class, ['to' => 'last_6mo'])) ?>">
                             <?= I18N::translate('Send a message to users who have not signed in for 6 months') ?>
                         </a>
                     </li>

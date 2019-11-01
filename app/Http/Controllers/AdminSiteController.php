@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
-use Fisharebest\Webtrees\Services\MailService;
+use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Site;
 use Illuminate\Support\Collection;
@@ -44,8 +44,8 @@ class AdminSiteController extends AbstractBaseController
     /** @var string */
     protected $layout = 'layouts/administration';
 
-    /** @var MailService */
-    private $mail_service;
+    /** @var EmailService */
+    private $email_service;
 
     /** @var ModuleService */
     private $module_service;
@@ -53,12 +53,12 @@ class AdminSiteController extends AbstractBaseController
     /**
      * AdminSiteController constructor.
      *
-     * @param MailService   $mail_service
+     * @param EmailService  $email_service
      * @param ModuleService $module_service
      */
-    public function __construct(MailService $mail_service, ModuleService $module_service)
+    public function __construct(EmailService $email_service, ModuleService $module_service)
     {
-        $this->mail_service   = $mail_service;
+        $this->email_service  = $email_service;
         $this->module_service = $module_service;
     }
 
@@ -69,16 +69,16 @@ class AdminSiteController extends AbstractBaseController
      */
     public function mailForm(ServerRequestInterface $request): ResponseInterface
     {
-        $mail_ssl_options       = $this->mail_service->mailSslOptions();
-        $mail_transport_options = $this->mail_service->mailTransportOptions();
+        $mail_ssl_options       = $this->email_service->mailSslOptions();
+        $mail_transport_options = $this->email_service->mailTransportOptions();
 
         $title = I18N::translate('Sending email');
 
         $SMTP_ACTIVE    = Site::getPreference('SMTP_ACTIVE');
         $SMTP_AUTH      = Site::getPreference('SMTP_AUTH');
         $SMTP_AUTH_USER = Site::getPreference('SMTP_AUTH_USER');
-        $SMTP_FROM_NAME = $this->mail_service->senderEmail();
-        $SMTP_HELO      = $this->mail_service->localDomain();
+        $SMTP_FROM_NAME = $this->email_service->senderEmail();
+        $SMTP_HELO      = $this->email_service->localDomain();
         $SMTP_HOST      = Site::getPreference('SMTP_HOST');
         $SMTP_PORT      = Site::getPreference('SMTP_PORT');
         $SMTP_SSL       = Site::getPreference('SMTP_SSL');
@@ -86,7 +86,7 @@ class AdminSiteController extends AbstractBaseController
         $DKIM_SELECTOR  = Site::getPreference('DKIM_SELECTOR');
         $DKIM_KEY       = Site::getPreference('DKIM_KEY');
 
-        $smtp_from_name_valid = $this->mail_service->isValidEmail($SMTP_FROM_NAME);
+        $smtp_from_name_valid = $this->email_service->isValidEmail($SMTP_FROM_NAME);
         $smtp_helo_valid      = filter_var($SMTP_HELO, FILTER_VALIDATE_DOMAIN);
 
         return $this->viewResponse('admin/site-mail', [

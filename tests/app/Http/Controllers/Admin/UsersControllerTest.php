@@ -23,7 +23,7 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Services\DatatablesService;
-use Fisharebest\Webtrees\Services\MailService;
+use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -44,7 +44,7 @@ class UsersControllerTest extends TestCase
     public function testIndex(): void
     {
         $datatables_service = new DatatablesService();
-        $mail_service       = new MailService();
+        $mail_service       = new EmailService();
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
@@ -62,7 +62,7 @@ class UsersControllerTest extends TestCase
     public function testData(): void
     {
         $datatables_service = new DatatablesService();
-        $mail_service       = new MailService();
+        $mail_service       = new EmailService();
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
@@ -79,7 +79,7 @@ class UsersControllerTest extends TestCase
     public function testCreate(): void
     {
         $datatables_service = new DatatablesService();
-        $mail_service       = new MailService();
+        $mail_service       = new EmailService();
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
@@ -96,7 +96,7 @@ class UsersControllerTest extends TestCase
     public function testSave(): void
     {
         $datatables_service = new DatatablesService();
-        $mail_service       = new MailService();
+        $mail_service       = new EmailService();
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
@@ -118,7 +118,7 @@ class UsersControllerTest extends TestCase
     public function testEdit(): void
     {
         $datatables_service = new DatatablesService();
-        $mail_service       = new MailService();
+        $mail_service       = new EmailService();
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
@@ -136,7 +136,7 @@ class UsersControllerTest extends TestCase
     public function testUpdate(): void
     {
         $datatables_service = new DatatablesService();
-        $mail_service       = new MailService();
+        $mail_service       = new EmailService();
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
@@ -171,7 +171,7 @@ class UsersControllerTest extends TestCase
     public function testCleanup(): void
     {
         $datatables_service = new DatatablesService();
-        $mail_service       = new MailService();
+        $mail_service       = new EmailService();
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
@@ -188,7 +188,7 @@ class UsersControllerTest extends TestCase
     public function testCleanupAction(): void
     {
         $datatables_service = new DatatablesService();
-        $mail_service       = new MailService();
+        $mail_service       = new EmailService();
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();

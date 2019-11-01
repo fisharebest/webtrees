@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Http\RequestHandlers\ContactPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -361,10 +363,10 @@ class UserService
             $url = 'mailto:' . $contact_user->email();
         } elseif ($user instanceof User) {
             // Logged-in users send direct messages
-            $url = route('message', ['to' => $contact_user->userName(), 'tree' => $tree->name()]);
+            $url = route(MessagePage::class, ['to' => $contact_user->userName(), 'tree' => $tree->name()]);
         } else {
             // Visitors use the contact form.
-            $url = route('contact', [
+            $url = route(ContactPage::class, [
                 'to'   => $contact_user->userName(),
                 'tree' => $tree->name(),
                 'url'  => (string) $request->getUri(),

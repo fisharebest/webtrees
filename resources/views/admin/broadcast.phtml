@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\BroadcastAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 
@@ -9,7 +10,7 @@ use Fisharebest\Webtrees\I18N;
 
 <h1><?= $title ?></h1>
 
-<form method="post" action="<?= e(route('broadcast')) ?>">
+<form method="post" action="<?= e(route(BroadcastAction::class)) ?>">
     <?= csrf_field() ?>
 
     <div class="form-group row">

@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Controllers\Admin\UsersController;
 use Fisharebest\Webtrees\Services\DatatablesService;
-use Fisharebest\Webtrees\Services\MailService;
+use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -42,7 +42,7 @@ class UserAdminTest extends TestCase
     public function testUserDetailsAreShownOnUserAdminPage(): void
     {
         $datatables_service = new DatatablesService();
-        $mail_service       = new MailService();
+        $mail_service       = new EmailService();
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
@@ -75,7 +75,7 @@ class UserAdminTest extends TestCase
     public function testFilteringUserAdminPage(): void
     {
         $datatables_service = new DatatablesService();
-        $mail_service       = new MailService();
+        $mail_service       = new EmailService();
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
@@ -108,7 +108,7 @@ class UserAdminTest extends TestCase
     public function testPaginatingUserAdminPage(): void
     {
         $datatables_service = new DatatablesService();
-        $mail_service       = new MailService();
+        $mail_service       = new EmailService();
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
@@ -137,7 +137,7 @@ class UserAdminTest extends TestCase
     public function testSortingUserAdminPage(): void
     {
         $datatables_service = new DatatablesService();
-        $mail_service       = new MailService();
+        $mail_service       = new EmailService();
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
