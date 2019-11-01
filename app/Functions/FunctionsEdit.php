@@ -518,7 +518,6 @@ class FunctionsEdit
                     'data-autocomplete-url' => route('autocomplete-place', ['tree'  => $tree->name(), 'query' => 'QUERY']),
                 ]) . '>';
 
-            /** @TODO - typeaheadjs.css doesn't work in an input-group */
             $html .= view('edit/input-addon-coordinates', ['id' => $id]);
             $html .= view('edit/input-addon-help', ['fact' => 'PLAC']);
             $html .= '</div>';
