@@ -42,6 +42,8 @@ use function redirect;
 use function response;
 use function route;
 
+use const PHP_VERSION_ID;
+
 /**
  * Show all available reports.
  */
@@ -122,6 +124,19 @@ class ReportGenerate implements RequestHandlerInterface
                 return $response;
 
             case 'PDF':
+                if (PHP_VERSION_ID >= 70400) {
+                    $pr    = 'https://github.com/tecnickcom/TCPDF/pull/137';
+                    $error = 'PDF reports do not currently work on PHP >= 7.4';
+                    $error .= '<br>';
+                    $error .= 'Waiting for <a href="' . $pr . '" class="alert-link">' . $pr . '</a>';
+
+                    return $this->viewResponse('errors/unhandled-exception', [
+                        'error' => $error,
+                        'title' => 'TCPDF error',
+                        'tree' => $tree,
+                    ]);
+                }
+
                 ob_start();
                 new ReportParserGenerate($xml_filename, new ReportPdf(), $variables, $tree);
                 $pdf = ob_get_clean();
