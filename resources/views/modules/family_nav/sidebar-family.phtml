@@ -57,7 +57,7 @@
                     <?php if ($child === $individual) : ?>
                         <?= Functions::getCloseRelationshipName($individual, $child) ?>
                         <i class="icon-selected"></i>
-                    <?php elseif ($child->spouseFamilies() !== []) : ?>
+                    <?php elseif ($child->spouseFamilies()->isNotEmpty()) : ?>
                         <div class="dropdown">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdown-<?= e($child->xref()) ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?= Functions::getCloseRelationshipName($individual, $child) ?>
