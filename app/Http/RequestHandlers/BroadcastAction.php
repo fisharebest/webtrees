@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MessageService;
-use Fisharebest\Webtrees\Services\UserService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -42,18 +41,13 @@ class BroadcastAction implements RequestHandlerInterface
     /** @var MessageService */
     private $message_service;
 
-    /** @var UserService */
-    private $user_service;
-
     /**
      * MessagePage constructor.
      *
      * @param MessageService $message_service
-     * @param UserService    $user_service
      */
-    public function __construct(MessageService $message_service, UserService $user_service)
+    public function __construct(MessageService $message_service)
     {
-        $this->user_service    = $user_service;
         $this->message_service = $message_service;
     }
 
