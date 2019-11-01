@@ -32,6 +32,16 @@
 	text-align: right;
 }
 
+/* Allows twitter typeahead to work with bootstrap input groups */
+.input-group > .twitter-typeahead {
+	flex: 1 1;
+}
+
+/* Allows select2 to work with bootstrap input groups */
+.input-group > .select2-container {
+	flex: 1 1;
+}
+
 /* Workaround for dropdown menu position on RTL with popper.js */
 /* See also https://github.com/FezVrasta/popper.js/issues/695 */
 [dir=rtl] .wt-genealogy-menu .dropdown-menu {
