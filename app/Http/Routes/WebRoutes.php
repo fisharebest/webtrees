@@ -61,6 +61,9 @@ use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawRecordAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawRecordPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ExportGedcomClient;
+use Fisharebest\Webtrees\Http\RequestHandlers\ExportGedcomPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ExportGedcomServer;
 use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\HelpText;
@@ -276,9 +279,9 @@ class WebRoutes
             $router->get(PendingChangesLogDownload::class, '/changes-download', PendingChangesLogDownload::class);
             $router->get('admin-trees-check', '/check', 'AdminTreesController::check');
             $router->get('admin-trees-duplicates', '/duplicates', 'AdminTreesController::duplicates');
-            $router->get('admin-trees-export', '/export', 'AdminTreesController::export');
-            $router->get('admin-trees-download', '/download', 'AdminTreesController::exportClient');
-            $router->post('admin-trees-export-action', '/export', 'AdminTreesController::exportServer');
+            $router->get(ExportGedcomPage::class, '/export', ExportGedcomPage::class);
+            $router->post(ExportGedcomClient::class, '/export-client', ExportGedcomClient::class);
+            $router->post(ExportGedcomServer::class, '/export-server', ExportGedcomServer::class);
             $router->get('admin-trees-import', '/import', 'AdminTreesController::importForm');
             $router->post('admin-trees-import-action', '/import', 'AdminTreesController::importAction');
             $router->get('admin-trees-places', '/places', 'AdminTreesController::places');
@@ -427,7 +430,7 @@ class WebRoutes
 
         // Public routes.
         $router->attach('', '/tree/{tree}', static function (Map $router) {
-            $router->get('tree-page', '/', 'HomePageController::treePage');
+            $router->get('tree-page', '', 'HomePageController::treePage');
             $router->get('autocomplete-folder', '/autocomplete-folder', 'AutocompleteController::folder');
             $router->get('autocomplete-page', '/autocomplete-page', 'AutocompleteController::page');
             $router->get('autocomplete-place', '/autocomplete-place', 'AutocompleteController::place');

@@ -27,11 +27,9 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -49,29 +47,20 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
-use League\Flysystem\MountManager;
-use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Nyholm\Psr7\UploadedFile;
-use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use stdClass;
-use Throwable;
 
-use function addcslashes;
 use function app;
 use function array_key_exists;
 use function assert;
 use function fclose;
-use function fopen;
-use function pathinfo;
 use function preg_match;
 use function route;
 
-use const PATHINFO_EXTENSION;
 use const UPLOAD_ERR_OK;
 
 /**
@@ -334,76 +323,10 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param string $type
-     * @param array  $links
-     * @param string $xref1
-     * @param string $xref2
-     * @param string $link
-     * @param array  $reciprocal
+     * @param ServerRequestInterface $request
      *
-     * @return bool
+     * @return ResponseInterface
      */
-    private function checkReverseLink(string $type, array $links, string $xref1, string $xref2, string $link, array $reciprocal): bool
-    {
-        return $type === $link && (!array_key_exists($xref1, $links[$xref2]) || !in_array($links[$xref2][$xref1], $reciprocal, true));
-    }
-
-    /**
-     * Create a message linking one record to another.
-     *
-     * @param Tree   $tree
-     * @param string $type1
-     * @param string $xref1
-     * @param string $type2
-     * @param string $xref2
-     *
-     * @return string
-     */
-    private function checkLinkMessage(Tree $tree, $type1, $xref1, $type2, $xref2): string
-    {
-        /* I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.” */
-        return I18N::translate(
-            '%1$s %2$s has a %3$s link to %4$s.',
-            $this->formatType($type1),
-            $this->checkLink($tree, $xref1),
-            $this->formatType($type2),
-            $this->checkLink($tree, $xref2)
-        );
-    }
-
-    /**
-     * Format a link to a record.
-     *
-     * @param Tree   $tree
-     * @param string $xref
-     *
-     * @return string
-     */
-    private function checkLink(Tree $tree, string $xref): string
-    {
-        return '<b><a href="' . e(route('record', [
-                'xref' => $xref,
-                'tree'  => $tree->name(),
-            ])) . '">' . $xref . '</a></b>';
-    }
-
-    /**
-     * Format a record type.
-     *
-     * @param string $type
-     *
-     * @return string
-     */
-    private function formatType($type): string
-    {
-        return '<b title="' . GedcomTag::getLabel($type) . '">' . $type . '</b>';
-    }
-
-    /**
-      * @param ServerRequestInterface $request
-      *
-      * @return ResponseInterface
-      */
     public function duplicates(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
@@ -417,171 +340,6 @@ class AdminTreesController extends AbstractBaseController
             'title'      => $title,
             'tree'       => $tree,
         ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function export(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $title = I18N::translate('Export a GEDCOM file') . ' — ' . e($tree->title());
-
-        return $this->viewResponse('admin/trees-export', [
-            'title' => $title,
-            'tree'  => $tree,
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function exportClient(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $params           = $request->getQueryParams();
-        $convert          = (bool) ($params['convert'] ?? false);
-        $zip              = (bool) ($params['zip'] ?? false);
-        $media            = (bool) ($params['media'] ?? false);
-        $media_path       = $params['media-path'] ?? '';
-        $privatize_export = $params['privatize_export'];
-
-        $access_levels = [
-            'gedadmin' => Auth::PRIV_NONE,
-            'user'     => Auth::PRIV_USER,
-            'visitor'  => Auth::PRIV_PRIVATE,
-            'none'     => Auth::PRIV_HIDE,
-        ];
-
-        $access_level = $access_levels[$privatize_export];
-        $encoding     = $convert ? 'ANSI' : 'UTF-8';
-
-        // What to call the downloaded file
-        $download_filename = $tree->name();
-
-        // Force a ".ged" suffix
-        if (strtolower(pathinfo($download_filename, PATHINFO_EXTENSION)) !== 'ged') {
-            $download_filename .= '.ged';
-        }
-
-        if ($zip || $media) {
-            // Export the GEDCOM to an in-memory stream.
-            $tmp_stream = tmpfile();
-            FunctionsExport::exportGedcom($tree, $tmp_stream, $access_level, $media_path, $encoding);
-            rewind($tmp_stream);
-
-            $path = $tree->getPreference('MEDIA_DIRECTORY', 'media/');
-
-            // Create a new/empty .ZIP file
-            $temp_zip_file  = tempnam(sys_get_temp_dir(), 'webtrees-zip-');
-            $zip_adapter    = new ZipArchiveAdapter($temp_zip_file);
-            $zip_filesystem = new Filesystem($zip_adapter);
-            $zip_filesystem->writeStream($download_filename, $tmp_stream);
-            fclose($tmp_stream);
-
-            if ($media) {
-                $manager = new MountManager([
-                    'media' => $tree->mediaFilesystem(),
-                    'zip'   => $zip_filesystem,
-                ]);
-
-                $records = DB::table('media')
-                    ->where('m_file', '=', $tree->id())
-                    ->get()
-                    ->map(Media::rowMapper())
-                    ->filter(GedcomRecord::accessFilter());
-
-                foreach ($records as $record) {
-                    foreach ($record->mediaFiles() as $media_file) {
-                        $from = 'media://' . $media_file->filename();
-                        $to   = 'zip://' . $path . $media_file->filename();
-                        if (!$media_file->isExternal() && $manager->has($from)) {
-                            $manager->copy($from, $to);
-                        }
-                    }
-                }
-            }
-
-            // Need to force-close ZipArchive filesystems.
-            $zip_adapter->getArchive()->close();
-
-            // Use a stream, so that we do not have to load the entire file into memory.
-            $stream   = app(StreamFactoryInterface::class)->createStreamFromFile($temp_zip_file);
-            $filename = addcslashes($download_filename, '"') . '.zip';
-
-            /** @var ResponseFactoryInterface $response_factory */
-            $response_factory = app(ResponseFactoryInterface::class);
-
-            return $response_factory->createResponse()
-                ->withBody($stream)
-                ->withHeader('Content-Type', 'application/zip')
-                ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
-        }
-
-        $resource = fopen('php://temp', 'wb+');
-        FunctionsExport::exportGedcom($tree, $resource, $access_level, $media_path, $encoding);
-        rewind($resource);
-
-        $charset = $convert ? 'ISO-8859-1' : 'UTF-8';
-
-        /** @var StreamFactoryInterface $response_factory */
-        $stream_factory = app(StreamFactoryInterface::class);
-
-        $stream = $stream_factory->createStreamFromResource($resource);
-
-        /** @var ResponseFactoryInterface $response_factory */
-        $response_factory = app(ResponseFactoryInterface::class);
-
-        return $response_factory->createResponse()
-            ->withBody($stream)
-            ->withHeader('Content-Type', 'text/x-gedcom; charset=' . $charset)
-            ->withHeader('Content-Disposition', 'attachment; filename="' . addcslashes($download_filename, '"') . '"');
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function exportServer(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $filename = $tree->name();
-
-        // Force a ".ged" suffix
-        if (strtolower(pathinfo($filename, PATHINFO_EXTENSION)) !== 'ged') {
-            $filename .= '.ged';
-        }
-
-        try {
-            $stream = fopen('php://temp', 'wb+');
-            $tree->exportGedcom($stream);
-            rewind($stream);
-            $this->filesystem->putStream($filename, $stream);
-            fclose($stream);
-
-            /* I18N: %s is a filename */
-            FlashMessages::addMessage(I18N::translate('The family tree has been exported to %s.', Html::filename($filename)), 'success');
-        } catch (Throwable $ex) {
-            FlashMessages::addMessage(
-                I18N::translate('The file %s could not be created.', Html::filename($filename)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>',
-                'danger'
-            );
-        }
-
-        $url = route('manage-trees', ['tree' => $tree->name()]);
-
-        return redirect($url);
     }
 
     /**
@@ -624,7 +382,7 @@ class AdminTreesController extends AbstractBaseController
 
             if ($basename) {
                 $resource = $this->filesystem->readStream($basename);
-                $stream = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
+                $stream   = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
                 $tree->importGedcomFile($stream, $basename);
             } else {
                 FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
@@ -679,7 +437,7 @@ class AdminTreesController extends AbstractBaseController
         // On sites with hundreds or thousands of trees, this page becomes very large.
         // Just show the current tree, the default tree, and un-imported trees
         if ($all_trees->count() >= $multiple_tree_threshold) {
-            $default = Site::getPreference('DEFAULT_GEDCOM');
+            $default   = Site::getPreference('DEFAULT_GEDCOM');
             $all_trees = $all_trees->filter(static function (Tree $x) use ($tree, $default): bool {
                 if ($x->getPreference('imported') === '0') {
                     return true;
@@ -713,7 +471,7 @@ class AdminTreesController extends AbstractBaseController
      */
     public function merge(ServerRequestInterface $request): ResponseInterface
     {
-        $params = $request->getQueryParams();
+        $params     = $request->getQueryParams();
         $tree1_name = $params['tree1_name'] ?? '';
         $tree2_name = $params['tree2_name'] ?? '';
 
@@ -744,7 +502,7 @@ class AdminTreesController extends AbstractBaseController
      */
     public function mergeAction(ServerRequestInterface $request): ResponseInterface
     {
-        $params = $request->getParsedBody();
+        $params     = $request->getParsedBody();
         $tree1_name = $params['tree1_name'] ?? '';
         $tree2_name = $params['tree2_name'] ?? '';
 
@@ -1779,7 +1537,7 @@ class AdminTreesController extends AbstractBaseController
 
             if ($tree->getPreference('filemtime') !== $filemtime) {
                 $resource = $this->filesystem->readStream($gedcom_file);
-                $stream = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
+                $stream   = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
                 $tree->importGedcomFile($stream, $gedcom_file);
                 $stream->close();
                 $tree->setPreference('filemtime', $filemtime);
@@ -1857,6 +1615,72 @@ class AdminTreesController extends AbstractBaseController
             'individual_groups' => $individual_groups,
             'title'             => $title,
         ]);
+    }
+
+    /**
+     * @param string $type
+     * @param array  $links
+     * @param string $xref1
+     * @param string $xref2
+     * @param string $link
+     * @param array  $reciprocal
+     *
+     * @return bool
+     */
+    private function checkReverseLink(string $type, array $links, string $xref1, string $xref2, string $link, array $reciprocal): bool
+    {
+        return $type === $link && (!array_key_exists($xref1, $links[$xref2]) || !in_array($links[$xref2][$xref1], $reciprocal, true));
+    }
+
+    /**
+     * Create a message linking one record to another.
+     *
+     * @param Tree   $tree
+     * @param string $type1
+     * @param string $xref1
+     * @param string $type2
+     * @param string $xref2
+     *
+     * @return string
+     */
+    private function checkLinkMessage(Tree $tree, $type1, $xref1, $type2, $xref2): string
+    {
+        /* I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.” */
+        return I18N::translate(
+            '%1$s %2$s has a %3$s link to %4$s.',
+            $this->formatType($type1),
+            $this->checkLink($tree, $xref1),
+            $this->formatType($type2),
+            $this->checkLink($tree, $xref2)
+        );
+    }
+
+    /**
+     * Format a link to a record.
+     *
+     * @param Tree   $tree
+     * @param string $xref
+     *
+     * @return string
+     */
+    private function checkLink(Tree $tree, string $xref): string
+    {
+        return '<b><a href="' . e(route('record', [
+                'xref' => $xref,
+                'tree' => $tree->name(),
+            ])) . '">' . $xref . '</a></b>';
+    }
+
+    /**
+     * Format a record type.
+     *
+     * @param string $type
+     *
+     * @return string
+     */
+    private function formatType($type): string
+    {
+        return '<b title="' . GedcomTag::getLabel($type) . '">' . $type . '</b>';
     }
 
     /**
