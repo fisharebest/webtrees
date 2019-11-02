@@ -169,12 +169,9 @@ class UserService
     public function administrators(): Collection
     {
         return DB::table('user')
-            ->join('user_setting', static function (JoinClause $join): void {
-                $join
-                    ->on('user_setting.user_id', '=', 'user.user_id')
-                    ->where('user_setting.setting_name', '=', 'canadmin')
-                    ->where('user_setting.setting_value', '=', '1');
-            })
+            ->join('user_setting', 'user_setting.user_id', '=', 'user.user_id')
+            ->where('user_setting.setting_name', '=', 'canadmin')
+            ->where('user_setting.setting_value', '=', '1')
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
             ->select(['user.*'])
@@ -190,13 +187,11 @@ class UserService
     public function managers(): Collection
     {
         return DB::table('user')
-            ->join('user_gedcom_setting', static function (JoinClause $join): void {
-                $join
-                    ->on('user_gedcom_setting.user_id', '=', 'user.user_id')
-                    ->where('user_gedcom_setting.setting_name', '=', 'canedit')
-                    ->where('user_gedcom_setting.setting_value', '=', 'admin');
-            })
+            ->join('user_gedcom_setting', 'user_gedcom_setting.user_id', '=', 'user.user_id')
+            ->where('user_gedcom_setting.setting_name', '=', 'canedit')
+            ->where('user_gedcom_setting.setting_value', '=', 'admin')
             ->where('user.user_id', '>', 0)
+            ->groupBy(['user.user_id'])
             ->orderBy('real_name')
             ->select(['user.*'])
             ->get()
@@ -211,13 +206,11 @@ class UserService
     public function moderators(): Collection
     {
         return DB::table('user')
-            ->join('user_gedcom_setting', static function (JoinClause $join): void {
-                $join
-                    ->on('user_gedcom_setting.user_id', '=', 'user.user_id')
-                    ->where('user_gedcom_setting.setting_name', '=', 'canedit')
-                    ->where('user_gedcom_setting.setting_value', '=', 'accept');
-            })
+            ->join('user_gedcom_setting', 'user_gedcom_setting.user_id', '=', 'user.user_id')
+            ->where('user_gedcom_setting.setting_name', '=', 'canedit')
+            ->where('user_gedcom_setting.setting_value', '=', 'accept')
             ->where('user.user_id', '>', 0)
+            ->groupBy(['user.user_id'])
             ->orderBy('real_name')
             ->select(['user.*'])
             ->get()
@@ -232,12 +225,9 @@ class UserService
     public function unapproved(): Collection
     {
         return DB::table('user')
-            ->join('user_setting', static function (JoinClause $join): void {
-                $join
-                    ->on('user_setting.user_id', '=', 'user.user_id')
-                    ->where('user_setting.setting_name', '=', 'verified_by_admin')
-                    ->where('user_setting.setting_value', '=', '0');
-            })
+            ->join('user_setting', 'user_setting.user_id', '=', 'user.user_id')
+            ->where('user_setting.setting_name', '=', 'verified_by_admin')
+            ->where('user_setting.setting_value', '<>', '1')
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
             ->select(['user.*'])
@@ -253,12 +243,9 @@ class UserService
     public function unverified(): Collection
     {
         return DB::table('user')
-            ->join('user_setting', static function (JoinClause $join): void {
-                $join
-                    ->on('user_setting.user_id', '=', 'user.user_id')
-                    ->where('user_setting.setting_name', '=', 'verified')
-                    ->where('user_setting.setting_value', '=', '0');
-            })
+            ->join('user_setting', 'user_setting.user_id', '=', 'user.user_id')
+            ->where('user_setting.setting_name', '=', 'verified')
+            ->where('user_setting.setting_value', '<>', '1')
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
             ->select(['user.*'])
