@@ -7,6 +7,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\Http\RequestHandlers\PhpInformation;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyListModule;
 use Fisharebest\Webtrees\Module\IndividualListModule;
@@ -78,7 +79,7 @@ use Illuminate\Support\Collection;
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/email') ?></span>
-                        <a href="<?= e(route('admin-site-mail')) ?>">
+                        <a href="<?= e(route(EmailPreferencesPage::class)) ?>">
                             <?= I18N::translate('Sending email') ?>
                         </a>
                     </li>

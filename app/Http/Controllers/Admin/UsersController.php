@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -247,15 +246,12 @@ class UsersController extends AbstractAdminController
         $sort_columns   = [];
 
         $callback = static function (stdClass $row) use ($installed_languages, $user): array {
-            // Link to send email to other users.
-            $row->email = '<a href="' . e(route(MessagePage::class, ['to' => $row->user_name])) . '">' . e($row->email) . '</a>';
-
             $datum = [
                 view('admin/users-table-options', ['row' => $row, 'user' => $user]),
                 $row->user_id,
                 '<span dir="auto">' . e($row->user_name) . '</span>',
                 '<span dir="auto">' . e($row->real_name) . '</span>',
-                $row->email,
+                '<a href="mailto:' . e($row->email) . '">' . e($row->email) . '</a>',
                 $installed_languages[$row->language] ?? $row->language,
                 $row->registered_at,
                 $row->registered_at ? view('components/datetime-diff', ['timestamp' => Carbon::createFromTimestamp((int) $row->registered_at)]) : '',

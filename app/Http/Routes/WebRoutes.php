@@ -148,6 +148,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsData;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDelete;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDownload;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail;
 
@@ -161,10 +163,27 @@ class WebRoutes
         // Admin routes.
         $router->attach('', '/admin', static function (Map $router) {
             $router->extras([
-                'middleware' => [AuthAdministrator::class]
+                'middleware' => [AuthAdministrator::class],
             ]);
 
-            $router->get(ControlPanel::class, '/control-panel', ControlPanel::class);
+            $router->get(ControlPanel::class, '', ControlPanel::class);
+            $router->get(BroadcastPage::class, '/broadcast', BroadcastPage::class);
+            $router->post(BroadcastAction::class, '/broadcast', BroadcastAction::class);
+            $router->get(CleanDataFolder::class, '/clean', CleanDataFolder::class);
+            $router->post(DeletePath::class, '/delete-path', DeletePath::class);
+            $router->get(EmailPreferencesPage::class, '/email', EmailPreferencesPage::class);
+            $router->post(EmailPreferencesAction::class, '/email', EmailPreferencesAction::class);
+            $router->get(PhpInformation::class, '/information', PhpInformation::class);
+            $router->get(SiteLogsPage::class, '/logs', SiteLogsPage::class);
+            $router->post(SiteLogsAction::class, '/logs', SiteLogsAction::class);
+            $router->get(SiteLogsData::class, '/logs-data', SiteLogsData::class);
+            $router->post(SiteLogsDelete::class, '/logs-delete', SiteLogsDelete::class);
+            $router->get(SiteLogsDownload::class, '/logs-download', SiteLogsDownload::class);
+            $router->post(Masquerade::class, '/masquerade/{user_id}', Masquerade::class);
+            $router->get(CreateTreePage::class, '/trees/create', CreateTreePage::class);
+            $router->post(CreateTreeAction::class, '/trees/create', CreateTreeAction::class);
+            $router->post(SelectDefaultTree::class, '/trees/default/{tree}', SelectDefaultTree::class);
+            $router->post(DeleteTreeAction::class, '/trees/delete/{tree}', DeleteTreeAction::class);
             $router->get('admin-fix-level-0-media', '/fix-level-0-media', 'Admin\FixLevel0MediaController::fixLevel0Media');
             $router->post('admin-fix-level-0-media-action', '/fix-level-0-media', 'Admin\FixLevel0MediaController::fixLevel0MediaAction');
             $router->get('admin-fix-level-0-media-data', '/fix-level-0-media-data', 'Admin\FixLevel0MediaController::fixLevel0MediaData');
@@ -223,29 +242,12 @@ class WebRoutes
             $router->post('admin-users-update', '/admin-users-edit', 'Admin\UsersController::update');
             $router->get('admin-users-cleanup', '/admin-users-cleanup', 'Admin\UsersController::cleanup');
             $router->post('admin-users-cleanup-action', '/admin-users-cleanup', 'Admin\UsersController::cleanupAction');
-            $router->get(CleanDataFolder::class, '/clean', CleanDataFolder::class);
-            $router->post(DeletePath::class, '/delete-path', DeletePath::class);
             $router->get('admin-site-preferences', '/admin-site-preferences', 'AdminSiteController::preferencesForm');
             $router->post('admin-site-preferences-update', '/admin-site-preferences', 'AdminSiteController::preferencesSave');
-            $router->get('admin-site-mail', '/admin-site-mail', 'AdminSiteController::mailForm');
-            $router->post('admin-site-mail-update', '/admin-site-mail', 'AdminSiteController::mailSave');
             $router->get('admin-site-registration', '/admin-site-registration', 'AdminSiteController::registrationForm');
             $router->post('admin-site-registration-update', '/admin-site-registration', 'AdminSiteController::registrationSave');
-            $router->get(BroadcastPage::class, '/broadcast', BroadcastPage::class);
-            $router->post(BroadcastAction::class, '/broadcast', BroadcastAction::class);
-            $router->get(PhpInformation::class, '/information', PhpInformation::class);
-            $router->post('masquerade', '/masquerade/{user_id}', Masquerade::class);
-            $router->get(SiteLogsPage::class, '/logs', SiteLogsPage::class);
-            $router->post(SiteLogsAction::class, '/logs', SiteLogsAction::class);
-            $router->get(SiteLogsData::class, '/logs-data', SiteLogsData::class);
-            $router->post(SiteLogsDelete::class, '/logs-delete', SiteLogsDelete::class);
-            $router->get(SiteLogsDownload::class, '/logs-download', SiteLogsDownload::class);
-            $router->get(CreateTreePage::class, '/trees/create', CreateTreePage::class);
-            $router->post(CreateTreeAction::class, '/trees/create', CreateTreeAction::class);
-            $router->post(SelectDefaultTree::class, '/trees/default/{tree}', SelectDefaultTree::class);
             $router->get('tree-page-default-edit', '/trees/default-blocks', 'HomePageController::treePageDefaultEdit');
             $router->post('tree-page-default-update', '/trees/default-blocks', 'HomePageController::treePageDefaultUpdate');
-            $router->post(DeleteTreeAction::class, '/trees/delete/{tree}', DeleteTreeAction::class);
             $router->get('admin-trees-merge', '/trees/merge', 'AdminTreesController::merge');
             $router->post('admin-trees-merge-action', '/trees/merge', 'AdminTreesController::mergeAction');
             $router->post('admin-trees-sync', '/trees/sync', 'AdminTreesController::synchronize');
@@ -258,7 +260,7 @@ class WebRoutes
         // Manager routes (without a tree).
         $router->attach('', '/admin', static function (Map $router) {
             $router->extras([
-                'middleware' => [AuthManager::class]
+                'middleware' => [AuthManager::class],
             ]);
 
             $router->get('manage-trees', '/trees/manage{/tree}', 'AdminTreesController::index');
@@ -267,7 +269,7 @@ class WebRoutes
         // Manager routes.
         $router->attach('', '/tree/{tree}', static function (Map $router) {
             $router->extras([
-                'middleware' => [AuthManager::class]
+                'middleware' => [AuthManager::class],
             ]);
 
             $router->get(PendingChangesLogPage::class, '/changes-log', PendingChangesLogPage::class);
@@ -305,7 +307,7 @@ class WebRoutes
         // Moderator routes.
         $router->attach('', '/tree/{tree}', static function (Map $router) {
             $router->extras([
-                'middleware' => [AuthModerator::class]
+                'middleware' => [AuthModerator::class],
             ]);
             $router->post(PendingChangesAcceptTree::class, '/accept', PendingChangesAcceptTree::class);
             $router->post(PendingChangesAcceptRecord::class, '/accept/{xref}', PendingChangesAcceptRecord::class);
@@ -319,7 +321,7 @@ class WebRoutes
         // Editor routes.
         $router->attach('', '/tree/{tree}', static function (Map $router) {
             $router->extras([
-                'middleware' => [AuthEditor::class]
+                'middleware' => [AuthEditor::class],
             ]);
 
             $router->get('add-child-to-family', '/add-child-to-family', 'EditFamilyController::addChild');
@@ -392,7 +394,7 @@ class WebRoutes
         // Member routes.
         $router->attach('', '/tree/{tree}', static function (Map $router) {
             $router->extras([
-                'middleware' => [AuthMember::class]
+                'middleware' => [AuthMember::class],
             ]);
 
             $router->get('user-page', '/my-page', 'HomePageController::userPage');
@@ -406,7 +408,7 @@ class WebRoutes
         // User routes.
         $router->attach('', '', static function (Map $router) {
             $router->extras([
-                'middleware' => [AuthLoggedIn::class]
+                'middleware' => [AuthLoggedIn::class],
             ]);
 
             $router->get(AccountEdit::class, '/my-account{/tree}', AccountEdit::class);
@@ -417,7 +419,7 @@ class WebRoutes
         // Visitor routes.
         $router->attach('', '', static function (Map $router) {
             $router->extras([
-                'middleware' => [AuthVisitor::class]
+                'middleware' => [AuthVisitor::class],
             ]);
 
             $router->get(PasswordRequestPage::class, '/password-request', PasswordRequestPage::class);
