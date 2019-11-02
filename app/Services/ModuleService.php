@@ -237,6 +237,25 @@ class ModuleService
         ModuleThemeInterface::class,
     ];
 
+    // Components that have access levels.
+    private const COMPONENTS_WITH_ACCESS = [
+        ModuleBlockInterface::class,
+        ModuleChartInterface::class,
+        ModuleListInterface::class,
+        ModuleMenuInterface::class,
+        ModuleReportInterface::class,
+        ModuleSidebarInterface::class,
+        ModuleTabInterface::class,
+    ];
+
+    // Components that are displayed in a particular order
+    private const COMPONENTS_WITH_SORT = [
+        ModuleFooterInterface::class,
+        ModuleMenuInterface::class,
+        ModuleSidebarInterface::class,
+        ModuleTabInterface::class,
+    ];
+
     // Array keys are module names, and should match module names from earlier versions of webtrees.
     private const CORE_MODULES = [
         'GEDFact_assistant'       => CensusAssistantModule::class,
@@ -789,5 +808,21 @@ class ModuleService
 
             $module->boot();
         }
+    }
+
+    /**
+     * @return string[]
+     */
+    public function componentsWithAccess(): array
+    {
+        return self::COMPONENTS_WITH_ACCESS;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function componentsWithOrder(): array
+    {
+        return self::COMPONENTS_WITH_SORT;
     }
 }

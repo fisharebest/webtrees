@@ -441,6 +441,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         return $this->viewResponse('modules/stories/list', [
             'stories' => $stories,
             'title'   => $this->title(),
+            'tree'    => $tree,
         ]);
     }
 }

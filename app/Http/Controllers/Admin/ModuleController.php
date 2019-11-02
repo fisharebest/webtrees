@@ -20,12 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
+use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
@@ -45,23 +47,6 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 class ModuleController extends AbstractAdminController
 {
-    private const COMPONENTS_WITH_ACCESS = [
-        ModuleBlockInterface::class,
-        ModuleChartInterface::class,
-        ModuleListInterface::class,
-        ModuleMenuInterface::class,
-        ModuleReportInterface::class,
-        ModuleSidebarInterface::class,
-        ModuleTabInterface::class,
-    ];
-
-    private const COMPONENTS_WITH_SORT = [
-        ModuleFooterInterface::class,
-        ModuleMenuInterface::class,
-        ModuleSidebarInterface::class,
-        ModuleTabInterface::class,
-    ];
-
     /** @var ModuleService */
     private $module_service;
 
@@ -273,17 +258,39 @@ class ModuleController extends AbstractAdminController
      */
     private function listComponents(string $interface, string $title, string $description): ResponseInterface
     {
-        $uses_access  = in_array($interface, self::COMPONENTS_WITH_ACCESS, true);
-        $uses_sorting = in_array($interface, self::COMPONENTS_WITH_SORT, true);
+        $trees        = $this->tree_service->all();
+        $modules      = $this->module_service->findByInterface($interface, true, true);
+        $uses_access  = in_array($interface, $this->module_service->componentsWithAccess(), true);
+        $uses_sorting = in_array($interface, $this->module_service->componentsWithOrder(), true);
+
+        $level_text = FunctionsEdit::optionsAccessLevels();
+
+        $access_summary = $modules
+            ->mapWithKeys(static function (ModuleInterface $module) use ($interface, $level_text, $trees): array {
+                $access_levels = $trees
+                    ->map(static function ($tree) use ($interface, $module): int {
+                        return $module->accessLevel($tree, $interface);
+                    })
+                    ->unique()
+                    ->values()
+                    ->map(static function (int $level) use ($level_text): string {
+                        return $level_text[$level];
+                    })
+                    ->all();
+
+                return [$module->name() => $access_levels];
+            })
+            ->all();
 
         return $this->viewResponse('admin/components', [
-            'description'  => $description,
-            'interface'    => $interface,
-            'modules'      => $this->module_service->findByInterface($interface, true, true),
-            'title'        => $title,
-            'trees'        => $this->tree_service->all(),
-            'uses_access'  => $uses_access,
-            'uses_sorting' => $uses_sorting,
+            'description'    => $description,
+            'interface'      => $interface,
+            'modules'        => $modules,
+            'title'          => $title,
+            'trees'          => $this->tree_service->all(),
+            'uses_access'    => $uses_access,
+            'uses_sorting'   => $uses_sorting,
+            'access_summary' => $access_summary,
         ]);
     }
 

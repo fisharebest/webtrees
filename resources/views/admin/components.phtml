@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\View;
                 <th><?= I18N::translate('Module') ?></th>
                 <th class="text-center"><?= I18N::translate('Enabled') ?></th>
                 <?php if ($uses_access) : ?>
-                    <th class="text-center"><?= I18N::translate('Access level') ?></th>
+                    <th colspan="2" class="text-center"><?= I18N::translate('Access level') ?></th>
                 <?php endif ?>
                 <?php if ($uses_sorting) : ?>
                     <th class="text-center"><?= I18N::translate('Move up') ?></th>
@@ -67,47 +67,53 @@ use Fisharebest\Webtrees\View;
                     </td>
 
                     <?php if ($uses_access) : ?>
-                        <td class="text-center">
-                        <div class="modal fade" id="access-level-<?= $module->name() ?>" tabindex="-1" role="dialog">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h2 class="modal-title">
-                                            <?= e($module->title()) ?> – <?= I18N::translate('Access level') ?>
-                                        </h2>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <table class="table table-sm">
-                                            <tbody>
-                                                <?php foreach ($trees as $tree) : ?>
-                                                    <tr>
-                                                        <td>
-                                                            <?= e($tree->title()) ?>
-                                                        </td>
-                                                        <td>
-                                                            <?= view('components/select', ['name' => 'access-' . $module->name() . '-' . $tree->id(), 'selected' => $module->accessLevel($tree, $interface), 'options' => FunctionsEdit::optionsAccessLevels()]) ?>
-                                                    </tr>
-                                                <?php endforeach ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        <td>
+                            <ul class="list-unstyled">
+                                <?php foreach ($access_summary[$module->name()] as $level): ?>
+                                    <li><?= $level ?></li>
+                                <?php endforeach ?>
+                            </ul>
+
+                            <div class="modal fade" id="access-level-<?= $module->name() ?>" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h2 class="modal-title">
+                                                <?= e($module->title()) ?> – <?= I18N::translate('Access level') ?>
+                                            </h2>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-sm">
+                                                <tbody>
+                                                    <?php foreach ($trees as $tree) : ?>
+                                                        <tr>
+                                                            <td>
+                                                                <?= e($tree->title()) ?>
+                                                            </td>
+                                                            <td>
+                                                                <?= view('components/select', ['name' => 'access-' . $module->name() . '-' . $tree->id(), 'selected' => $module->accessLevel($tree, $interface), 'options' => FunctionsEdit::optionsAccessLevels()]) ?>
+                                                        </tr>
+                                                    <?php endforeach ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </td>
 
-                        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#access-level-<?= $module->name() ?>">
-                            <?= view('icons/edit') ?>
-                            <span class="sr-only">
-                                 <?= I18N::translate('edit') ?>
-                            </span>
-                        </button>
-                    </td>
+                        <td>
+                            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#access-level-<?= $module->name() ?>">
+                                <?= view('icons/edit') ?>
+                                <span class="sr-only"><?= I18N::translate('edit') ?></span>
+                            </button>
+                        </td>
                     <?php endif ?>
 
                     <?php if ($uses_sorting) : ?>
