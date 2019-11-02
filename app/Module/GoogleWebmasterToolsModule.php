@@ -50,6 +50,16 @@ class GoogleWebmasterToolsModule extends AbstractModule implements ModuleAnalyti
     }
 
     /**
+     * Is this a tracker, as opposed to just a site-verification.
+     *
+     * @return bool
+     */
+    public function isTracker(): bool
+    {
+        return false;
+    }
+
+    /**
      * Form fields to edit the parameters.
      *
      * @return string

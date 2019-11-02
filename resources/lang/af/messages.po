@@ -14662,7 +14662,7 @@ msgid "This website is temporarily unavailable"
 msgstr "Hierdie webwerf is tydelik nie beskikbaar nie"
 
 #: resources/views/modules/cookie-warning/footer.phtml:6
-msgid "This website uses cookies to learn about visitor behaviour."
+msgid "This website uses cookies to learn about visitor behavior."
 msgstr "Hierdie webwerf gebruik koekies om meer van 'n gebruiker se gedrag te leer."
 
 #. I18N: %s is the name of a family tree

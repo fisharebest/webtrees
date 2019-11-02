@@ -14662,7 +14662,7 @@ msgid "This website is temporarily unavailable"
 msgstr "Dette nettstedet er for øyeblikket ikke tilgjengelig"
 
 #: resources/views/modules/cookie-warning/footer.phtml:6
-msgid "This website uses cookies to learn about visitor behaviour."
+msgid "This website uses cookies to learn about visitor behavior."
 msgstr "Denne websiten bruker cookies for å forstå besøkerens adferd."
 
 #. I18N: %s is the name of a family tree

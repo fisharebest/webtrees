@@ -19,30 +19,41 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function assert;
+use function view;
+
 /**
- * Class PoweredByWebtreesModule - show a cookie warning, to comply with the GDPR.
+ * Class PrivacyPolicy - to comply with the GDPR and similar local laws.
  */
-class CookieWarningModule extends AbstractModule implements ModuleFooterInterface
+class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface
 {
     use ModuleFooterTrait;
 
-    /**
-     * @var ModuleService
-     */
+    /** @var ModuleService */
     private $module_service;
+
+    /** @var UserService */
+    private $user_service;
 
     /**
      * Dependency injection.
      *
      * @param ModuleService $module_service
+     * @param UserService   $user_service
      */
-    public function __construct(ModuleService $module_service)
+    public function __construct(ModuleService $module_service, UserService $user_service)
     {
         $this->module_service = $module_service;
+        $this->user_service   = $user_service;
     }
 
     /**
@@ -53,7 +64,7 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
     public function title(): string
     {
         /* I18N: Name of a module */
-        return I18N::translate('Cookie warning');
+        return I18N::translate('Privacy policy');
     }
 
     /**
@@ -64,7 +75,7 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
     public function description(): string
     {
         /* I18N: Description of the “Cookie warning” module */
-        return I18N::translate('Tell visitors why this site uses cookies.');
+        return I18N::translate('Show a privacy policy.');
     }
 
     /**
@@ -86,40 +97,56 @@ class CookieWarningModule extends AbstractModule implements ModuleFooterInterfac
      */
     public function getFooter(ServerRequestInterface $request): string
     {
-        if ($this->isCookieWarningAcknowledged()) {
+        $tree = $request->getAttribute('tree');
+
+        if ($tree === null) {
             return '';
         }
 
-        if ($this->siteUsesAnalytics()) {
-            return view('modules/cookie-warning/footer');
-        }
+        $user = $request->getAttribute('user');
+        assert($user instanceof UserInterface);
 
-        return '';
+        return view('modules/privacy-policy/footer', [
+            'tree'           => $tree,
+            'uses_analytics' => $this->analyticsModules($tree, $user)->isNotEmpty(),
+        ]);
     }
 
     /**
-     * @return bool
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
      */
-    protected function isCookieWarningAcknowledged(): bool
+    public function getPageAction(ServerRequestInterface $request): ResponseInterface
     {
-        // We store acceptance of cookies in a .... cookie.
-        $request = app(ServerRequestInterface::class);
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
 
-        $cookies_ok = $request->getCookieParams()['cookie'] ?? '';
+        $user = $request->getAttribute('user');
+        assert($user instanceof UserInterface);
 
-        return $cookies_ok !== '';
+        $title = I18N::translate('Privacy policy');
+
+        return $this->viewResponse('modules/privacy-policy/page', [
+            'administrators' => $this->user_service->administrators(),
+            'analytics'      => $this->analyticsModules($tree, $user),
+            'title'          => $title,
+            'tree'           => $tree,
+        ]);
     }
 
     /**
-     * @return bool
+     * @param Tree          $tree
+     * @param UserInterface $user
+     *
+     * @return Collection
      */
-    protected function siteUsesAnalytics(): bool
+    protected function analyticsModules(Tree $tree, UserInterface $user): Collection
     {
         return $this->module_service
-            ->findByInterface(ModuleAnalyticsInterface::class)
+            ->findByComponent(ModuleAnalyticsInterface::class, $tree, $user)
             ->filter(static function (ModuleAnalyticsInterface $module): bool {
-                return $module->analyticsCanShow();
-            })
-            ->isNotEmpty();
+                return $module->isTracker();
+            });
     }
 }

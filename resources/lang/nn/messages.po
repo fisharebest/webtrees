@@ -14666,7 +14666,7 @@ msgid "This website is temporarily unavailable"
 msgstr "Denne nettstaden er for augneblinken ikkje tilgjengeleg"
 
 #: resources/views/modules/cookie-warning/footer.phtml:6
-msgid "This website uses cookies to learn about visitor behaviour."
+msgid "This website uses cookies to learn about visitor behavior."
 msgstr "Denne nettstaden nyttar informasjonskapslar for å betre brukaropplevinga."
 
 #. I18N: %s is the name of a family tree

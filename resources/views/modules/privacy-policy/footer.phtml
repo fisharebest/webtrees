@@ -1,0 +1,35 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+?>
+
+<div class="wt-footer wt-footer-privacy-policy text-center py-2">
+    <a href="<?= e(route('module', ['module' => 'privacy-policy', 'action' => 'Page', 'tree' => $tree->name()])) ?>">
+        <?= I18N::translate('Privacy policy') ?>
+    </a>
+
+    <?php if ($uses_analytics): ?>
+        <div class="alert alert-info alert-dismissible fade" id="cookie-warning">
+            <?= I18N::translate('This website uses cookies to learn about visitor behavior.') ?>
+
+            <button type="button" id="cookie-warning-button" class="close" data-dismiss="alert" aria-label="<?= I18N::translate('close') ?>">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif ?>
+</div>
+
+<?php View::push('javascript') ?>
+<script>
+    if (localStorage.getItem("cookie-warning") !== "ok") {
+        document.getElementById("cookie-warning").classList.add("show");
+    }
+    document.getElementById("cookie-warning-button").addEventListener("click", function() {
+        localStorage.setItem("cookie-warning", "ok");
+    })
+</script>
+<?php View::endpush() ?>
+
+

@@ -187,7 +187,7 @@ then a manual upgrade should be performed.
    [webtrees.net](https://webtrees.net/)
   3. While you are in the middle of uploading the new files,
    a visitor to your site would encounter a mixture of new and old files.  This
-   could cause unpredictable behaviour or errors.  To prevent this, create the
+   could cause unpredictable behavior or errors.  To prevent this, create the
    file **data/offline.txt**.  While this file exists, visitors will see a
    “site unavailable - come back later” message.
   4. Unzip the .ZIP file, and upload the files to your web server, overwriting the existing files.
@@ -197,7 +197,7 @@ then a manual upgrade should be performed.
 ### Note for Macintosh users
 
 Step 4 assumes you are using a copy tool that **merges** directories rather than
-replaces them. (**Merge** is standard behaviour on Windows and Linux.) If you use
+replaces them. (**Merge** is standard behavior on Windows and Linux.) If you use
 the Macintosh Finder or other similar tool to perform step 3, it will **replace**
 your configuration, media and other directories with the empty/default ones from
 the installation. This would be very bad (but you did take a backup in step 1,

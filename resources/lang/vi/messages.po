@@ -14687,7 +14687,7 @@ msgid "This website is temporarily unavailable"
 msgstr "Site hiện tạm thời không hoạt động"
 
 #: resources/views/modules/cookie-warning/footer.phtml:6
-msgid "This website uses cookies to learn about visitor behaviour."
+msgid "This website uses cookies to learn about visitor behavior."
 msgstr "Trang web này sử dụng cookie để tìm hiểu về hành vi của khách truy cập."
 
 #. I18N: %s is the name of a family tree

@@ -14666,7 +14666,7 @@ msgid "This website is temporarily unavailable"
 msgstr "Denna webbplats är otillgänglig för tillfället"
 
 #: resources/views/modules/cookie-warning/footer.phtml:6
-msgid "This website uses cookies to learn about visitor behaviour."
+msgid "This website uses cookies to learn about visitor behavior."
 msgstr "Denna webbplats använder cookies för att lära sig om besökarnas beteende."
 
 #. I18N: %s is the name of a family tree

@@ -14666,7 +14666,7 @@ msgid "This website is temporarily unavailable"
 msgstr "Lloc web indisponible temporalment"
 
 #: resources/views/modules/cookie-warning/footer.phtml:6
-msgid "This website uses cookies to learn about visitor behaviour."
+msgid "This website uses cookies to learn about visitor behavior."
 msgstr "Aquest lloc web fa servir galetes per conèixer com l'utilitzen els visitants."
 
 #. I18N: %s is the name of a family tree

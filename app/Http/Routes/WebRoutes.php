@@ -487,7 +487,6 @@ class WebRoutes
         $router->get(RobotsTxt::class, '/robots.txt', RobotsTxt::class);
         $router->post(SelectTheme::class, '/theme/{theme}', SelectTheme::class);
         $router->get(VerifyEmail::class, '/verify', VerifyEmail::class);
-        $router->get(PrivacyPolicy::class, '/privacy-policy', PrivacyPolicy::class);
         $router->get(HomePage::class, '/', HomePage::class);
 
         // Legacy URLs from older software.

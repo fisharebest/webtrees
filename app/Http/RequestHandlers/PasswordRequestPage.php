@@ -54,6 +54,6 @@ class PasswordRequestPage implements RequestHandlerInterface
 
         $title = I18N::translate('Request a new password');
 
-        return $this->viewResponse('password-request-page', ['title' => $title, 'tree' => $tree instanceof Tree ? $tree->name() : null]);
+        return $this->viewResponse('password-request-page', ['title' => $title, 'tree' => $tree]);
     }
 }

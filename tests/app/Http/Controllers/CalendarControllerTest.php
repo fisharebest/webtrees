@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\TestCase;
@@ -45,27 +45,20 @@ class CalendarControllerTest extends TestCase
     public function testCalendar(): void
     {
         $tree = $this->importTree('demo.ged');
-        app()->instance(Tree::class, $tree);
 
         $calendar_service     = new CalendarService();
-        $localization_service = new LocalizationService(new LocaleEnUs());
+        $localization_service = new LocalizationService();
         $controller           = new CalendarController($calendar_service, $localization_service);
 
-        $request  = self::createRequest()
-            ->withAttribute('tree', $tree)
-            ->withAttribute('view', 'day');
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $tree, 'view' => 'day']);
         $response = $controller->calendar($request);
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest()
-            ->withAttribute('tree', $tree)
-            ->withAttribute('view', 'month');
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $tree, 'view' => 'month']);
         $response = $controller->page($request);
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest()
-            ->withAttribute('tree', $tree)
-            ->withAttribute('view', 'year');
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $tree, 'view' => 'year']);
         $response = $controller->page($request);
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }

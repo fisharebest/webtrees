@@ -23,7 +23,6 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
-use Fisharebest\Webtrees\View;
 
 /**
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\LoginPage

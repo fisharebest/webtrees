@@ -80,10 +80,7 @@ table {
  * |           +---wt-page-options wt-page-options-xxxxx
  * |           +---wt-page-content
  * +---wt-footers
- *     +---wt-footer wt-footer-contact
- *     +---wt-footer wt-footer-cookies
- *     +---wt-footer wt-footer-page-views
- *     +---wt-footer wt-footer-powered-by
+ *     +---wt-footer wt-footer-xxxxx
  */
 
 .wt-global {

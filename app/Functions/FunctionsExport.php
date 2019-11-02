@@ -59,7 +59,7 @@ class FunctionsExport
                 do {
                     // Split after $pos chars
                     $pos = Gedcom::LINE_LENGTH;
-                    // Split on a non-space (standard gedcom behaviour)
+                    // Split on a non-space (standard gedcom behavior)
                     while (mb_substr($line, $pos - 1, 1) === ' ') {
                         --$pos;
                     }

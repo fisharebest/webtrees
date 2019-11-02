@@ -107,7 +107,7 @@ class Note extends GedcomRecord
             }
         }
 
-        // Apply default behaviour
+        // Apply default behavior
         return parent::canShowByType($access_level);
     }
 

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\ResetHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\PasswordResetPage;
 use Fisharebest\Webtrees\Services\UserService;
@@ -41,7 +42,7 @@ class PasswordResetPageTest extends TestCase
         $user_service = $this->createMock(UserService::class);
         $user_service->expects($this->once())->method('findByToken')->willReturn($user);
 
-        $request  = self::createRequest()->withAttribute('tree', null);
+        $request  = self::createRequest();
         $handler  = new PasswordResetPage($user_service);
         $response = $handler->handle($request);
 

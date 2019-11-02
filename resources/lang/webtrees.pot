@@ -18456,7 +18456,7 @@ msgid "Cookies"
 msgstr ""
 
 #: resources/views/modules/cookie-warning/footer.phtml:6
-msgid "This website uses cookies to learn about visitor behaviour."
+msgid "This website uses cookies to learn about visitor behavior."
 msgstr ""
 
 #: resources/views/modules/custom-css-js/edit.phtml:16

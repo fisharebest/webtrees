@@ -15815,7 +15815,7 @@ msgid "This website is temporarily unavailable"
 msgstr "Ky ueb sajt përkohësisht është i padisponueshëm"
 
 #: resources/views/modules/cookie-warning/footer.phtml:6
-msgid "This website uses cookies to learn about visitor behaviour."
+msgid "This website uses cookies to learn about visitor behavior."
 msgstr "Ky ueb sajt përdor kukit për të mësuar sjelljen e vizitorëve."
 
 # I18N: %s is the name of a family tree

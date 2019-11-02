@@ -21,11 +21,11 @@ namespace Fisharebest\Webtrees;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Http\Controllers\ListController;
 use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Test the individual lists.
@@ -43,39 +43,28 @@ class IndividualListTest extends TestCase
     public function testIndividualList(): void
     {
         $tree                    = $this->importTree('demo.ged');
-        $user                    = Auth::user();
         $list_module             = new IndividualListModule();
-        $localization_service    = new LocalizationService(new LocaleEnUs());
+        $localization_service    = new LocalizationService();
         $individual_list_service = new IndividualListService($localization_service, $tree);
         $controller              = new ListController($individual_list_service, $localization_service);
 
-        $request  = self::createRequest()
-            ->withAttribute('tree', $tree)
-            ->withAttribute('user', $user);
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $tree]);
         $response = $controller->individualList($request, $list_module);
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => 'B'])
-            ->withAttribute('tree', $tree)
-            ->withAttribute('user', $user);
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => 'B'], [], [], ['tree' => $tree]);
         $response = $controller->individualList($request, $list_module);
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => ','])
-            ->withAttribute('tree', $tree)
-            ->withAttribute('user', $user);
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => ','], [], [], ['tree' => $tree]);
         $response = $controller->individualList($request, $list_module);
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => '@'])
-            ->withAttribute('tree', $tree)
-            ->withAttribute('user', $tree);
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => '@'], [], [], ['tree' => $tree]);
         $response = $controller->individualList($request, $list_module);
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['surname' => 'BRAUN'])
-            ->withAttribute('tree', $tree)
-            ->withAttribute('user', $user);
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['surname' => 'BRAUN'], [], [], ['tree' => $tree]);
         $response = $controller->individualList($request, $list_module);
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }

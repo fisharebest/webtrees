@@ -94,7 +94,7 @@ class Media extends GedcomRecord
             }
         }
 
-        // ... otherwise apply default behaviour
+        // ... otherwise apply default behavior
         return parent::canShowByType($access_level);
     }
 

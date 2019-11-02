@@ -14641,7 +14641,7 @@ msgid "This website is temporarily unavailable"
 msgstr "Situs ini sementara tidak tersedia untuk umum"
 
 #: resources/views/modules/cookie-warning/footer.phtml:6
-msgid "This website uses cookies to learn about visitor behaviour."
+msgid "This website uses cookies to learn about visitor behavior."
 msgstr "Situs ini menggunakan pelacak untuk mempelajari perilaku pengunjung."
 
 #. I18N: %s is the name of a family tree

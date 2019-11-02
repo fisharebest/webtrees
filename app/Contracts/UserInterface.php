@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Contracts;
 
 /**
- * Behaviour required of a user object.
+ * behavior required of a user object.
  */
 interface UserInterface
 {

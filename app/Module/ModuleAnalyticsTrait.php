@@ -131,6 +131,16 @@ trait ModuleAnalyticsTrait
     abstract public function title(): string;
 
     /**
+     * Is this a tracker, as opposed to just a site-verification.
+     *
+     * @return bool
+     */
+    public function isTracker(): bool
+    {
+        return true;
+    }
+
+    /**
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface

@@ -766,7 +766,7 @@ $(function () {
     });
 });
 
-// Convert data-confirm and data-post-url attributes into useful behaviour.
+// Convert data-confirm and data-post-url attributes into useful behavior.
 document.addEventListener("click",  (event) => {
     const target = event.target.closest("a");
 

@@ -15926,7 +15926,7 @@ msgid "This website is temporarily unavailable"
 msgstr "该网站暂时不可用"
 
 #: resources/views/modules/cookie-warning/footer.phtml:6
-msgid "This website uses cookies to learn about visitor behaviour."
+msgid "This website uses cookies to learn about visitor behavior."
 msgstr "网站通过使用cookies来了解访客的行为。"
 
 # I18N: %s is the name of a family tree

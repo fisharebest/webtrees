@@ -11068,7 +11068,7 @@ msgstr "Datenschutz"
 
 #: app/Http/RequestHandlers/PrivacyPolicy.php:43
 msgid "Privacy policy"
-msgstr "Datenschutzrichtlinie"
+msgstr "Impressum"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.phtml:5
@@ -14662,7 +14662,7 @@ msgid "This website is temporarily unavailable"
 msgstr "Diese Webseite ist vorübergehend nicht verfügbar"
 
 #: resources/views/modules/cookie-warning/footer.phtml:6
-msgid "This website uses cookies to learn about visitor behaviour."
+msgid "This website uses cookies to learn about visitor behavior."
 msgstr "Diese Website verwendet Cookies um mehr über das Besucherverhalten zu erfahren."
 
 #. I18N: %s is the name of a family tree

@@ -1,0 +1,71 @@
+<?php use Fisharebest\Webtrees\I18N; ?>
+
+<h2><?= $title ?></h2>
+
+<h3><?= I18N::translate('Personal data') ?></h3>
+
+<ul>
+    <li>
+        <?= I18N::translate('This website processes personal data for the purpose of historical and genealogical research.') ?>
+    </li>
+    <li>
+        <?= I18N::translate('This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations.') ?>
+    </li>
+</ul>
+
+<h3><?= I18N::translate('Cookies') ?></h3>
+
+<ul>
+    <li>
+        <?= I18N::translate('This website uses cookies to enable login sessions, and to remember preferences such as your chosen language.') ?>
+    </li>
+    <li>
+        <?= I18N::translate('These cookies are “essential”, and do not require consent.') ?>
+    </li>
+</ul>
+
+<?php if ($analytics->isNotEmpty()): ?>
+    <h3><?= I18N::translate('Tracking and analytics') ?></h3>
+
+    <ul>
+        <li>
+            <?= I18N::translate('This website uses third-party services to learn about visitor behavior.') ?>
+            <ul>
+                <?php foreach ($analytics as $module): ?>
+                    <li>
+                        <a href="<?= e($module->externalUrl()) ?>"><?= $module->title() ?></a>
+                    </li>
+                <?php endforeach ?>
+            </ul>
+        </li>
+
+        <li>
+            <?= I18N::translate('These services may use cookies or other tracking technology.') ?>
+        </li>
+
+        <li>
+            <?= I18N::translate('You can opt out of tracking by setting the ”Do Not Track“ header in your browser preferences.') ?>
+        </li>
+    </ul>
+<?php endif ?>
+
+<h3><?= I18N::translate('Data controller') ?></h3>
+
+<ul>
+    <li>
+        <?= I18N::translate('This website is operated by the following individuals.') ?>
+
+        <ul>
+            <?php foreach ($administrators as $administrator): ?>
+                <li>
+                    <?= e($administrator->realName()) ?> —
+                    <a href="mailto:<?= e($administrator->email()) ?>"><?= e($administrator->email()) ?></a>
+
+
+                </li>
+            <?php endforeach ?>
+        </ul>
+
+    </li>
+</ul>
+
