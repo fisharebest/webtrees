@@ -198,9 +198,9 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     public function getFamilyLi(Family $family, Individual $person, $generations = 0): string
     {
         $spouse = $family->spouse($person);
-        if ($spouse) {
+        if ($spouse instanceof Individual) {
             $spouse_name = '<small>' . view('icons/sex-' . $spouse->sex()) . '</small>' . $spouse->fullName();
-            $spouse_link = '<a href="' . e($person->url()) . '" title="' . strip_tags($person->fullName()) . '">' . view('icons/individual') . '</a>';
+            $spouse_link = '<a href="' . e($spouse->url()) . '" title="' . strip_tags($spouse->fullName()) . '">' . view('icons/individual') . '</a>';
         } else {
             $spouse_name = '';
             $spouse_link = '';
