@@ -72,7 +72,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
-use Fisharebest\Webtrees\Http\RequestHandlers\MasqueradeAsUser;
+use Fisharebest\Webtrees\Http\RequestHandlers\Masquerade;
 use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessageAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
@@ -234,7 +234,7 @@ class WebRoutes
             $router->get(BroadcastPage::class, '/broadcast', BroadcastPage::class);
             $router->post(BroadcastAction::class, '/broadcast', BroadcastAction::class);
             $router->get(PhpInformation::class, '/information', PhpInformation::class);
-            $router->post('masquerade', '/masquerade/{user_id}', MasqueradeAsUser::class);
+            $router->post('masquerade', '/masquerade/{user_id}', Masquerade::class);
             $router->get(SiteLogsPage::class, '/logs', SiteLogsPage::class);
             $router->post(SiteLogsAction::class, '/logs', SiteLogsAction::class);
             $router->get(SiteLogsData::class, '/logs-data', SiteLogsData::class);
@@ -253,8 +253,6 @@ class WebRoutes
             $router->post('delete-user', '/users/delete/{user_id}', DeleteUser::class);
             $router->get('user-page-default-edit', '/user-page-default-edit', 'HomePageController::userPageDefaultEdit');
             $router->post('user-page-default-update', '/user-page-default-update', 'HomePageController::userPageDefaultUpdate');
-            $router->get('user-page-user-edit', '/user-page-user-edit', 'HomePageController::userPageUserEdit');
-            $router->post('user-page-user-update', '/user-page-user-update', 'HomePageController::userPageUserUpdate');
         });
 
         // Manager routes (without a tree).

@@ -654,59 +654,6 @@ class HomePageController extends AbstractBaseController
     }
 
     /**
-     * Show a form to edit the blocks for another user's page.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function userPageUserEdit(ServerRequestInterface $request): ResponseInterface
-    {
-        $user_id     = (int) $request->getQueryParams()['user_id'];
-        $user        = $this->user_service->find($user_id);
-
-        if ($user === null) {
-            throw new NotFoundHttpException(I18N::translate('%1$s does not exist', 'user_id:' . $user_id));
-        }
-
-        $main_blocks = $this->userBlocks($user->id(), self::MAIN_BLOCKS);
-        $side_blocks = $this->userBlocks($user->id(), self::SIDE_BLOCKS);
-        $all_blocks  = $this->availableUserBlocks();
-        $title       = I18N::translate('Change the blocks on this user’s “My page”') . ' - ' . e($user->userName());
-        $url_cancel  = route('admin-users');
-        $url_save    = route('user-page-user-update', ['user_id' => $user_id]);
-
-        return $this->viewResponse('edit-blocks-page', [
-            'all_blocks'  => $all_blocks,
-            'can_reset'   => false,
-            'main_blocks' => $main_blocks,
-            'side_blocks' => $side_blocks,
-            'title'       => $title,
-            'tree'        => null,
-            'url_cancel'  => $url_cancel,
-            'url_save'    => $url_save,
-        ]);
-    }
-
-    /**
-     * Save the updated blocks for another user's page.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function userPageUserUpdate(ServerRequestInterface $request): ResponseInterface
-    {
-        $user_id     = (int) $request->getQueryParams()['user_id'];
-        $main_blocks = $request->getParsedBody()[self::MAIN_BLOCKS] ?? [];
-        $side_blocks = $request->getParsedBody()[self::SIDE_BLOCKS] ?? [];
-
-        $this->updateUserBlocks($user_id, $main_blocks, $side_blocks);
-
-        return redirect(route(ControlPanel::class));
-    }
-
-    /**
      * Get a specific block.
      *
      * @param Tree $tree

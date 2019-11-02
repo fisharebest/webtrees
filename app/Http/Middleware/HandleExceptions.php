@@ -24,6 +24,8 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Site;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -47,6 +49,19 @@ use const PHP_EOL;
 class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
 {
     use ViewResponseTrait;
+
+    /** @var TreeService */
+    private $tree_service;
+
+    /**
+     * HandleExceptions constructor.
+     *
+     * @param TreeService $tree_service
+     */
+    public function __construct(TreeService $tree_service)
+    {
+        $this->tree_service = $tree_service;
+    }
 
     /**
      * @param ServerRequestInterface  $request
@@ -121,6 +136,9 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
     private function httpExceptionResponse(ServerRequestInterface $request, HttpException $exception): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+
+        $default = Site::getPreference('DEFAULT_GEDCOM');
+        $tree = $tree ?? $this->tree_service->all()[$default] ?? $this->tree_service->all()->first();
 
         if ($request->getHeaderLine('X-Requested-With') !== '') {
             $this->layout = 'layouts/ajax';

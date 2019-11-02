@@ -247,18 +247,11 @@ class UsersController extends AbstractAdminController
         $sort_columns   = [];
 
         $callback = static function (stdClass $row) use ($installed_languages, $user): array {
-            if ($row->user_id !== $user->id()) {
-                $admin_options = '<div class="dropdown-item"><a href="#" data-post-url="' . e(route('masquerade', ['user_id' => $row->user_id])) . '">' . view('icons/user') . ' ' . I18N::translate('Masquerade as this user') . '</a></div>' . '<div class="dropdown-item"><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($row->user_name)) . '" data-post-url="' . e(route('delete-user', ['user_id' => $row->user_id])) . '">' . view('icons/delete') . ' ' . I18N::translate('Delete') . '</a></div>';
-            } else {
-                // Do not delete ourself!
-                $admin_options = '';
-            }
-
             // Link to send email to other users.
             $row->email = '<a href="' . e(route(MessagePage::class, ['to' => $row->user_name])) . '">' . e($row->email) . '</a>';
 
             $datum = [
-                '<div class="dropdown"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="edit-user-button-' . $row->user_id . '" aria-haspopup="true" aria-expanded="false">' . view('icons/edit') . ' <span class="caret"></span></button><div class="dropdown-menu" aria-labelledby="edit-user-button-' . $row->user_id . '"><div class="dropdown-item"><a href="' . e(route('admin-users-edit', ['user_id' => $row->user_id])) . '">' . view('icons/edit') . ' ' . I18N::translate('Edit') . '</a></div><div class="divider"></div><div class="dropdown-item"><a href="' . e(route('user-page-user-edit', ['user_id' => $row->user_id])) . '">' . view('icons/block') . ' ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></div>' . $admin_options . '</div></div>',
+                view('admin/users-table-options', ['row' => $row, 'user' => $user]),
                 $row->user_id,
                 '<span dir="auto">' . e($row->user_name) . '</span>',
                 '<span dir="auto">' . e($row->real_name) . '</span>',

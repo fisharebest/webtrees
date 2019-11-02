@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
@@ -41,6 +42,8 @@ class HandleExceptionsTest extends TestCase
      */
     public function testMiddleware(): void
     {
+        $tree_service = $this->createMock(TreeService::class);
+
         $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willThrowException(new InternalServerErrorException('eek'));
 
@@ -50,7 +53,7 @@ class HandleExceptionsTest extends TestCase
         app()->instance(ModuleService::class, $module_service);
 
         $request    = self::createRequest();
-        $middleware = new HandleExceptions();
+        $middleware = new HandleExceptions($tree_service);
         $response   = $middleware->process($request, $handler);
 
         $this->assertSame(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR, $response->getStatusCode());

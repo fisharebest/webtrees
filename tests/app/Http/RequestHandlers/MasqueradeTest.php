@@ -28,9 +28,9 @@ use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MasqueradeAsUser
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\Masquerade
  */
-class MasqueradeAsUserTest extends TestCase
+class MasqueradeTest extends TestCase
 {
     /**
      * @return void
@@ -50,7 +50,7 @@ class MasqueradeAsUserTest extends TestCase
             ->withAttribute('user', $user1)
             ->withAttribute('user_id', $user2->id());
 
-        $handler  = new MasqueradeAsUser($user_service);
+        $handler  = new Masquerade($user_service);
         $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
@@ -73,7 +73,7 @@ class MasqueradeAsUserTest extends TestCase
             ->withAttribute('user', $user)
             ->withAttribute('user_id', $user->id());
 
-        $handler  = new MasqueradeAsUser($user_service);
+        $handler  = new Masquerade($user_service);
         $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
@@ -98,7 +98,7 @@ class MasqueradeAsUserTest extends TestCase
             ->withAttribute('user', $user)
             ->withAttribute('user_id', 2);
 
-        $handler = new MasqueradeAsUser($user_service);
+        $handler = new Masquerade($user_service);
         $handler->handle($request);
     }
 }

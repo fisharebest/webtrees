@@ -33,7 +33,7 @@ use function response;
 /**
  * Masquerade as another user, for testing and administration.
  */
-class MasqueradeAsUser implements RequestHandlerInterface
+class Masquerade implements RequestHandlerInterface
 {
     /** @var UserService */
     private $user_service;

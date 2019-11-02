@@ -1,0 +1,37 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="edit-user-button-<?= $row->user_id ?>" aria-haspopup="true" aria-expanded="false">
+        <?= view('icons/menu') ?>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="edit-user-button-<?= $row->user_id ?>">
+        <div class="dropdown-item">
+            <?= view('icons/edit') ?>
+            <a href="<?= e(route('admin-users-edit', ['user_id' => $row->user_id])) ?>">
+                <?= I18N::translate('Edit') ?>
+            </a>
+        </div>
+
+        <div class="divider"></div>
+
+        <?php if ($row->user_id !== $user->id()): ?>
+            <div class="dropdown-item">
+                <?= view('icons/user') ?>
+                <a href="#" data-post-url="<?= e(route('masquerade', ['user_id' => $row->user_id])) ?>">
+                    <?= I18N::translate('Masquerade as this user') ?>
+                </a>
+            </div>
+
+            <div class="dropdown-item">
+                <?= view('icons/delete') ?>
+                <a href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($row->user_name)) ?>" data-post-url="<?= e(route('delete-user', ['user_id' => $row->user_id])) ?>">
+                    <?= I18N::translate('Delete') ?>
+                </a>
+            </div>
+        <?php endif ?>
+    </div>
+</div>

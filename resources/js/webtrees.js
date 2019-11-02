@@ -786,11 +786,7 @@ document.addEventListener("click",  (event) => {
         request.setRequestHeader("X-CSRF-TOKEN", token);
         request.onreadystatechange = () => {
             if (request.readyState === request.DONE) {
-                if (request.status >= 300 && request.status <= 399) {
-                    document.location = request.getResponseHeader('Location');
-                } else {
-                    document.location.reload();
-                }
+                document.location.reload();
             }
         };
         request.send();
