@@ -28,9 +28,28 @@ use Fisharebest\Webtrees\View;
 
 <h1><?= $title ?></h1>
 
-<p class="alert alert-info">
-    <?= I18N::translate('To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]') . '<br>' . I18N::translate('You must also enable “less secure applications” in your Google account.') . ' <a href="https://www.google.com/settings/security/lesssecureapps">https://www.google.com/settings/security/lesssecureapps</a>' ?>
-</p>
+<div class="alert alert-info">
+    <a class="alert-link" data-toggle="collapse" href="#gmail-instructions" role="button" aria-expanded="false" aria-controls="gmail-instructions">
+        <?= I18N::translate('Instructions for Google mail') ?>
+    </a>
+
+    <dl class="collapse" id="gmail-instructions">
+        <dt><?= I18N::translate('Server name') ?></dt>
+        <dd>smtp.gmail.com</dd>
+        <dt><?= I18N::translate('Port number') ?></dt>
+        <dd>587</dd>
+        <dt><?= I18N::translate('Secure connection') ?></dt>
+        <dd><?= I18N::translate('tls') ?></dd>
+        <dt><?= I18N::translate('Username') ?></dt>
+        <dd>xxxxx@gmail.com</dd>
+        <dt><?= I18N::translate('Password') ?></dt>
+        <dd>
+            <?= I18N::translate('If you use two-factor authentication, create an <a href="https://myaccount.google.com/apppasswords">app password</a>.') ?>
+            <br>
+            <?= I18N::translate('If you do not use two-factor authentication, enable <a href="https://www.google.com/settings/security/lesssecureapps">less secure applications</a> and use your Google password.') ?>
+        </dd>
+    </dl>
+</div>
 
 <form method="post" action="<?= e(route('admin-site-mail-update')) ?>" class="form-horizontal">
     <?= csrf_field() ?>
@@ -55,16 +74,16 @@ use Fisharebest\Webtrees\View;
             I18N::translate('Sender name') ?>
         </label>
         <div class="col-sm-9">
-                <input type="email" class="form-control" id="SMTP_FROM_NAME" name="SMTP_FROM_NAME" value="<?= e($SMTP_FROM_NAME) ?>" maxlength="255">
+            <input type="email" class="form-control" id="SMTP_FROM_NAME" name="SMTP_FROM_NAME" value="<?= e($SMTP_FROM_NAME) ?>" maxlength="255">
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Sender name” site configuration setting */
                 I18N::translate('This name is used in the “From” field, when sending automatic emails from this server.') ?>
             </p>
 
             <?php if (!$smtp_from_name_valid) : ?>
-            <p class="alert alert-warning">
-                <?= I18N::translate('Most mail servers require a valid email address.') ?>
-            </p>
+                <p class="alert alert-warning">
+                    <?= I18N::translate('Most mail servers require a valid email address.') ?>
+                </p>
             <?php endif ?>
         </div>
     </div>
