@@ -98,7 +98,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectTree;
 use Fisharebest\Webtrees\Http\RequestHandlers\PhpInformation;
 use Fisharebest\Webtrees\Http\RequestHandlers\Ping;
-use Fisharebest\Webtrees\Http\RequestHandlers\PrivacyPolicy;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectFamilyPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectGedRecordPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectIndividualPhp;
