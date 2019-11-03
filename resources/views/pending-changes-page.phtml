@@ -68,11 +68,11 @@ use Fisharebest\Webtrees\Tree;
                                 <td>
                                     <?php foreach ($record_change->record->facts() as $fact) : ?>
                                         <?php if ($fact->getTag() !== 'CHAN' && $fact->isPendingAddition()) : ?>
-                                            <div class="new">
+                                            <div class="wt-new">
                                                 <?= strip_tags($fact->summary()) ?>
                                             </div>
                                         <?php elseif ($fact->getTag() !== 'CHAN' && $fact->isPendingDeletion()) : ?>
-                                            <div class="old">
+                                            <div class="wt-old">
                                                 <?= strip_tags($fact->summary()) ?>
                                             </div>
                                         <?php endif ?>
