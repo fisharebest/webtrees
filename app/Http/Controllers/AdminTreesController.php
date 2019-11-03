@@ -908,6 +908,7 @@ class AdminTreesController extends AbstractBaseController
 
         return $this->viewResponse('admin/trees-renumber', [
             'title' => $title,
+            'tree'  => $tree,
             'xrefs' => $xrefs,
         ]);
     }
