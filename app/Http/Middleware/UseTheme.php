@@ -57,7 +57,7 @@ class UseTheme implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        foreach ($this->themes($request) as $theme) {
+        foreach ($this->themes() as $theme) {
             if ($theme instanceof ModuleThemeInterface) {
                 // Bind this theme into the container
                 app()->instance(ModuleThemeInterface::class, $theme);
@@ -79,7 +79,7 @@ class UseTheme implements MiddlewareInterface
      *
      * @return Generator
      */
-    private function themes(ServerRequestInterface $request): Generator
+    private function themes(): Generator
     {
         $themes = $this->module_service->findByInterface(ModuleThemeInterface::class);
 
