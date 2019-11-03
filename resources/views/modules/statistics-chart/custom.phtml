@@ -10,7 +10,9 @@ use Fisharebest\Webtrees\View;
         <?= I18N::translate('Create your own chart') ?>
     </h4>
 
-    <form method="get" action="<?= e(route('module', ['module' => $module->name(), 'action' => 'CustomChart', 'tree' => $tree->name()])) ?>" id="own-stats-form" class="wt-page-options wt-page-options-statistics">
+    <form method="post" action="<?= e(route('module', ['module' => $module->name(), 'action' => 'CustomChart', 'tree' => $tree->name()])) ?>" id="own-stats-form" class="wt-page-options wt-page-options-statistics">
+        <?= csrf_field() ?>
+
         <div class="form-group row">
             <div class="col-sm-2 wt-page-options-label">
                 <?= I18N::translate('Chart type') ?>
@@ -272,7 +274,7 @@ use Fisharebest\Webtrees\View;
     function loadCustomChart() {
         $("#custom-chart").html("");
         var form = $("#own-stats-form");
-        jQuery.get(form.attr("action"), form.serialize())
+        jQuery.post(form.attr("action"), form.serialize())
             .done(function (data) {
                 $("#custom-chart").html(data);
             })

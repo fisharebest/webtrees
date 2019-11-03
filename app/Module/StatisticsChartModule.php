@@ -247,11 +247,11 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return ResponseInterface
      */
-    public function getCustomChartAction(ServerRequestInterface $request): ResponseInterface
+    public function postCustomChartAction(ServerRequestInterface $request): ResponseInterface
     {
         $statistics = app(Statistics::class);
 
-        $params = $request->getQueryParams();
+        $params = $request->getParsedBody();
 
         $x_axis_type = (int) $params['x-as'];
         $y_axis_type = (int) $params['y-as'];
