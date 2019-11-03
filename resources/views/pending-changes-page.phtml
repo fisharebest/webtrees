@@ -26,10 +26,10 @@ use Fisharebest\Webtrees\Tree;
 <?php endif ?>
 
 <ul class="nav nav-tabs" role="tablist">
-    <?php foreach ($changes as $tree_id => $gedcom_changes) : ?>
+    <?php foreach ($changes as $tree_name => $gedcom_changes) : ?>
         <li class="nav-item">
-            <a class="nav-link <?= $tree_id === $active_tree_id ? 'active' : '' ?>" data-toggle="tab" href="#tree-<?= e($tree_id) ?>" aria-controls="tree-<?= e($tree_id) ?>" id="tree-<?= e($tree_id) ?>-tab">
-                <?= e(Tree::findById($tree_id)->title()) ?>
+            <a class="nav-link <?= $tree_name === $active_tree_name ? 'active' : '' ?>" data-toggle="tab" href="#tree-<?= e(md5($tree_name)) ?>" aria-controls="tree-<?= e(md5($tree_name)) ?>" id="tree-<?= e(md5($tree_name)) ?>-tab">
+                <?= e($trees[$tree_name]->title()) ?>
                 <span class="badge badge-secondary">
                 <?= I18N::number(count($gedcom_changes)) ?>
             </span>
@@ -39,8 +39,8 @@ use Fisharebest\Webtrees\Tree;
 </ul>
 
 <div class="tab-content">
-    <?php foreach ($changes as $tree_id => $gedcom_changes) : ?>
-        <div class="tab-pane fade <?= $tree_id === $active_tree_id ? 'show active' : '' ?>" id="tree-<?= e($tree_id) ?>" role="tabpanel" aria-labelledby="tree-<?= e($tree_id) ?>-tab">
+    <?php foreach ($changes as $tree_name => $gedcom_changes) : ?>
+        <div class="tab-pane fade <?= $tree_name === $active_tree_name ? 'show active' : '' ?>" id="tree-<?= e(md5($tree_name)) ?>" role="tabpanel" aria-labelledby="tree-<?= e(md5($tree_name)) ?>-tab">
             <?php foreach ($gedcom_changes as $xref => $record_changes) : ?>
                 <h3 class="pt-2">
                     <a href="<?= e($record_changes[0]->record->url()) ?>"><?= $record_changes[0]->record->fullName() ?></a>
@@ -60,7 +60,7 @@ use Fisharebest\Webtrees\Tree;
                         <?php foreach ($record_changes as $record_change) : ?>
                             <tr>
                                 <td>
-                                    <a class="btn btn-primary" href="#" data-post-url="<?= e(route(PendingChangesAcceptChange::class, ['tree' => $record_change->gedcom_name, 'xref' => $record_change->xref, 'change' => $record_change->change_id])) ?>">
+                                    <a class="btn btn-primary" href="#" data-post-url="<?= e(route(PendingChangesAcceptChange::class, ['tree' => $tree_name, 'xref' => $record_change->xref, 'change' => $record_change->change_id])) ?>">
                                         <?= I18N::translate('Accept') ?>
                                     </a>
                                 </td>
@@ -80,7 +80,7 @@ use Fisharebest\Webtrees\Tree;
                                 </td>
 
                                 <td>
-                                    <a href="<?= e(route(MessagePage::class, ['to' => $record_change->user_name, 'subject' => I18N::translate('Pending changes') . ' - ' . strip_tags($record_change->record->fullName()), 'body' => $record_change->record->url(), 'tree' => $record_change->gedcom_name])) ?>" title="<?= I18N::translate('Send a message') ?>">
+                                    <a href="<?= e(route(MessagePage::class, ['to' => $record_change->user_name, 'subject' => I18N::translate('Pending changes') . ' - ' . strip_tags($record_change->record->fullName()), 'body' => $record_change->record->url(), 'tree' => $tree_name])) ?>" title="<?= I18N::translate('Send a message') ?>">
                                         <?= e($record_change->real_name) ?> - <?= e($record_change->user_name) ?>
                                     </a>
                                 </td>
@@ -90,7 +90,7 @@ use Fisharebest\Webtrees\Tree;
                                 </td>
 
                                 <td>
-                                    <a class="btn btn-secondary" href="#" data-post-url="<?= e(route(PendingChangesRejectChange::class, ['tree' => $record_change->gedcom_name, 'xref' => $record_change->xref, 'change' => $record_change->change_id])) ?>">
+                                    <a class="btn btn-secondary" href="#" data-post-url="<?= e(route(PendingChangesRejectChange::class, ['tree' => $tree_name, 'xref' => $record_change->xref, 'change' => $record_change->change_id])) ?>">
                                         <?= I18N::translate('Reject') ?>
                                     </a>
                                 </td>
@@ -101,11 +101,11 @@ use Fisharebest\Webtrees\Tree;
             <?php endforeach ?>
 
             <div class="d-flex justify-content-between">
-                <a class="btn btn-primary" href="#" data-post-url="<?= e(route(PendingChangesAcceptTree::class, ['tree' => $tree->name()])) ?>">
+                <a class="btn btn-primary" href="#" data-post-url="<?= e(route(PendingChangesAcceptTree::class, ['tree' => $tree_name])) ?>">
                     <?= I18N::translate('Accept all changes') ?>
                 </a>
 
-                <a class="btn btn-secondary" href="#" data-post-url="<?= e(route(PendingChangesRejectTree::class, ['tree' => $tree->name()])) ?>" data-confirm="<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>">
+                <a class="btn btn-secondary" href="#" data-post-url="<?= e(route(PendingChangesRejectTree::class, ['tree' => $tree_name])) ?>" data-confirm="<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>">
                     <?= I18N::translate('Reject all changes') ?>
                 </a>
             </div>

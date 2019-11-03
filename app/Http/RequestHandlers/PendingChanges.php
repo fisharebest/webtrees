@@ -115,7 +115,7 @@ class PendingChanges implements RequestHandlerInterface
                     break;
             }
 
-            $changes[$row->gedcom_id][$row->xref][] = $row;
+            $changes[$row->gedcom_name][$row->xref][] = $row;
         }
 
         $title = I18N::translate('Pending changes');
@@ -123,17 +123,18 @@ class PendingChanges implements RequestHandlerInterface
         // If the current tree has changes, activate that tab.  Otherwise activate the first tab.
         if (($changes[$tree->id()] ?? []) === []) {
             reset($changes);
-            $active_tree_id = key($changes);
+            $active_tree_name = key($changes);
         } else {
-            $active_tree_id = $tree->id();
+            $active_tree_name = $tree->name();
         }
 
         return $this->viewResponse('pending-changes-page', [
-            'active_tree_id' => $active_tree_id,
-            'changes'        => $changes,
-            'title'          => $title,
-            'tree'           => $tree,
-            'url'            => $url,
+            'active_tree_name' => $active_tree_name,
+            'changes'          => $changes,
+            'title'            => $title,
+            'tree'             => $tree,
+            'trees'            => $this->tree_service->all(),
+            'url'              => $url,
         ]);
     }
 }
