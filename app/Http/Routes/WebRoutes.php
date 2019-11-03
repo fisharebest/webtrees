@@ -438,6 +438,7 @@ class WebRoutes
             $router->get('autocomplete-page', '/autocomplete-page', 'AutocompleteController::page');
             $router->get('autocomplete-place', '/autocomplete-place', 'AutocompleteController::place');
             $router->get('calendar', '/calendar/{view}', 'CalendarController::page');
+            $router->post('calendar-select', '/calendar/{view}', 'CalendarController::select');
             $router->get('calendar-events', '/calendar-events/{view}', 'CalendarController::calendar');
             $router->get(ContactPage::class, '/contact', ContactPage::class);
             $router->post(ContactAction::class, '/contact', ContactAction::class);

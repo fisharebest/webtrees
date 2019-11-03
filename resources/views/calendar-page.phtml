@@ -8,13 +8,12 @@ use Fisharebest\Webtrees\I18N;
     <?= $title ?>
 </h2>
 
-<form method="get" action="<?= e(route('calendar', ['tree' => $tree->name()])) ?>" name="dateform">
-    <input type="hidden" name="route" value="calendar">
+<form method="post" action="<?= e(route('calendar', ['tree' => $tree->name(), 'view' => $view])) ?>" name="dateform">
+    <?= csrf_field() ?>
     <input type="hidden" name="cal" value="<?= e($cal) ?>">
     <input type="hidden" name="day" value="<?= e($cal_date->day()) ?>">
     <input type="hidden" name="month" value="<?= e($cal_month) ?>">
     <input type="hidden" name="year" value="<?= e($cal_date->year()) ?>">
-    <input type="hidden" name="view" value="<?= e($view) ?>">
     <input type="hidden" name="filtersx" value="<?= e($filtersx) ?>">
 
     <table class="table-sm wt-page-options w-100" role="presentation">
