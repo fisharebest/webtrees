@@ -95,19 +95,23 @@ class ChartDistribution
      */
     private function getIso3166Countries(): array
     {
-        $countries = $this->country_service->getAllCountries();
-
         // Get the country names for each language
         $country_to_iso3166 = [];
 
+        $current_language = I18N::languageTag();
+
         foreach (I18N::activeLocales() as $locale) {
             I18N::init($locale->languageTag());
+
+            $countries = $this->country_service->getAllCountries();
 
             foreach ($this->country_service->iso3166() as $three => $two) {
                 $country_to_iso3166[$three]             = $two;
                 $country_to_iso3166[$countries[$three]] = $two;
             }
         }
+
+        I18N::init($current_language);
 
         return $country_to_iso3166;
     }
