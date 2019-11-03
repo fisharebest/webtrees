@@ -195,7 +195,7 @@ class UpgradeController extends AbstractAdminController
             case self::STEP_EXPORT:
                 $tree_name = $request->getQueryParams()['tree'] ?? '';
                 $tree      = $this->tree_service->all()[$tree_name];
-                assert ($tree instanceof Tree);
+                assert($tree instanceof Tree);
 
                 return $this->wizardStepExport($tree);
 
