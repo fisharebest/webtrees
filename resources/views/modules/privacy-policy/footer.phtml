@@ -18,18 +18,18 @@ use Fisharebest\Webtrees\View;
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
+
+        <?php View::push('javascript') ?>
+            <script>
+                if (localStorage.getItem("cookie-warning") !== "ok") {
+                    document.getElementById("cookie-warning").classList.add("show");
+                }
+                document.getElementById("cookie-warning-button").addEventListener("click", function () {
+                    localStorage.setItem("cookie-warning", "ok");
+                });
+            </script>
+        <?php View::endpush() ?>
     <?php endif ?>
 </div>
-
-<?php View::push('javascript') ?>
-<script>
-    if (localStorage.getItem("cookie-warning") !== "ok") {
-        document.getElementById("cookie-warning").classList.add("show");
-    }
-    document.getElementById("cookie-warning-button").addEventListener("click", function() {
-        localStorage.setItem("cookie-warning", "ok");
-    })
-</script>
-<?php View::endpush() ?>
 
 
