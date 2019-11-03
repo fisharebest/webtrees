@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use InvalidArgumentException;
+use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use RuntimeException;
@@ -93,11 +94,12 @@ class MediaFileService
     /**
      * A list of media files not already linked to a media object.
      *
-     * @param Tree $tree
+     * @param Tree                $tree
+     * @param FilesystemInterface $data_filesystem
      *
      * @return array
      */
-    public function unusedFiles(Tree $tree): array
+    public function unusedFiles(Tree $tree, FilesystemInterface $data_filesystem): array
     {
         $used_files = DB::table('media_file')
             ->where('m_file', '=', $tree->id())
@@ -106,7 +108,7 @@ class MediaFileService
             ->pluck('multimedia_file_refn')
             ->all();
 
-        $disk_files = $tree->mediaFilesystem()->listContents('', true);
+        $disk_files = $tree->mediaFilesystem($data_filesystem)->listContents('', true);
 
         $disk_files = array_filter($disk_files, static function (array $item) {
             // Older versions of webtrees used a couple of special folders.
@@ -140,6 +142,9 @@ class MediaFileService
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $params        = $request->getParsedBody();
         $file_location = $params['file_location'];
 
@@ -156,7 +161,7 @@ class MediaFileService
             case 'unused':
                 $unused = $params['unused'];
 
-                if ($tree->mediaFilesystem()->has($unused)) {
+                if ($tree->mediaFilesystem($data_filesystem)->has($unused)) {
                     return $unused;
                 }
 
@@ -190,14 +195,14 @@ class MediaFileService
                 }
 
                 // Generate a unique name for the file?
-                if ($auto === '1' || $tree->mediaFilesystem()->has($folder . $file)) {
+                if ($auto === '1' || $tree->mediaFilesystem($data_filesystem)->has($folder . $file)) {
                     $folder    = '';
                     $extension = pathinfo($uploaded_file->getClientFilename(), PATHINFO_EXTENSION);
                     $file      = sha1((string) $uploaded_file->getStream()) . '.' . $extension;
                 }
 
                 try {
-                    $tree->mediaFilesystem()->writeStream($folder . $file, $uploaded_file->getStream()->detach());
+                    $tree->mediaFilesystem($data_filesystem)->writeStream($folder . $file, $uploaded_file->getStream()->detach());
 
                     return $folder . $file;
                 } catch (RuntimeException | InvalidArgumentException $ex) {

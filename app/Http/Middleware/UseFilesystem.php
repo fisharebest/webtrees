@@ -31,8 +31,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function realpath;
-
 /**
  * Middleware to set the data storage area.
  */
@@ -46,11 +44,17 @@ class UseFilesystem implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $data_dir   = realpath(Site::getPreference('INDEX_DIRECTORY', Webtrees::DATA_DIR)) . '/';
-        $filesystem = new Filesystem(new CachedAdapter(new Local($data_dir), new Memory()));
+        $data_dir = Site::getPreference('INDEX_DIRECTORY', Webtrees::DATA_DIR);
+        $root_dir = __DIR__ . '/../../..';
 
-        app()->instance(FilesystemInterface::class, $filesystem);
-        app()->instance('filesystem_description', $data_dir);
+        $data_filesystem = new Filesystem(new CachedAdapter(new Local($data_dir), new Memory()));
+        $root_filesystem = new Filesystem(new CachedAdapter(new Local($root_dir), new Memory()));
+
+        $request = $request
+            ->withAttribute('filesystem.data', $data_filesystem)
+            ->withAttribute('filesystem.data.name', $data_dir)
+            ->withAttribute('filesystem.root', $root_filesystem)
+            ->withAttribute('filesystem.root.name', realpath($root_dir) . '/');
 
         define('WT_DATA_DIR', $data_dir);
 

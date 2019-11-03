@@ -28,6 +28,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_map;
+use function assert;
 use function explode;
 
 /**
@@ -37,21 +38,16 @@ class CleanDataFolder implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var FilesystemInterface */
-    private $filesystem;
-
     /** @var TreeService */
     private $tree_service;
 
     /**
      * CleanDataFolder constructor.
      *
-     * @param FilesystemInterface $filesystem
-     * @param TreeService         $tree_service
+     * @param TreeService $tree_service
      */
-    public function __construct(FilesystemInterface $filesystem, TreeService $tree_service)
+    public function __construct(TreeService $tree_service)
     {
-        $this->filesystem   = $filesystem;
         $this->tree_service = $tree_service;
     }
 
@@ -62,6 +58,9 @@ class CleanDataFolder implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $this->layout = 'layouts/administration';
 
         $protected = [
@@ -90,7 +89,7 @@ class CleanDataFolder implements RequestHandlerInterface
             }
 
             return $content['path'];
-        }, $this->filesystem->listContents());
+        }, $data_filesystem->listContents());
 
         return $this->viewResponse('admin/clean-data', [
             'title'     => I18N::translate('Clean up data folder'),

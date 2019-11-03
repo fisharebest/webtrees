@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Report;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Webtrees;
+use League\Flysystem\FilesystemInterface;
 
 /**
  * Class AbstractReport - base for PDF and HTML reports
@@ -248,17 +249,27 @@ abstract class AbstractReport
     /**
      * Create a new image object from Media Object.
      *
-     * @param MediaFile $media_file
-     * @param float     $x
-     * @param float     $y
-     * @param float     $w     Image width
-     * @param float     $h     Image height
-     * @param string    $align L:left, C:center, R:right or empty to use x/y
-     * @param string    $ln    T:same line, N:next line
+     * @param MediaFile           $media_file
+     * @param float               $x
+     * @param float               $y
+     * @param float               $w     Image width
+     * @param float               $h     Image height
+     * @param string              $align L:left, C:center, R:right or empty to use x/y
+     * @param string              $ln    T:same line, N:next line
+     * @param FilesystemInterface $data_filesystem
      *
      * @return ReportBaseImage
      */
-    abstract public function createImageFromObject(MediaFile $media_file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportBaseImage;
+    abstract public function createImageFromObject(
+        MediaFile $media_file,
+        float $x,
+        float $y,
+        float $w,
+        float $h,
+        string $align,
+        string $ln,
+        FilesystemInterface $data_filesystem
+    ): ReportBaseImage;
 
     /**
      * Create a new Footnote object.

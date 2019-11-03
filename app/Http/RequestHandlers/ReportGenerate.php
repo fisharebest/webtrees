@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -81,6 +82,9 @@ class ReportGenerate implements RequestHandlerInterface
         $user = $request->getAttribute('user');
         assert($user instanceof UserInterface);
 
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $report = $request->getAttribute('report');
         $module = $this->module_service->findByName($report);
 
@@ -107,7 +111,7 @@ class ReportGenerate implements RequestHandlerInterface
             default:
             case 'HTML':
                 ob_start();
-                new ReportParserGenerate($xml_filename, new ReportHtml(), $variables, $tree);
+                new ReportParserGenerate($xml_filename, new ReportHtml(), $variables, $tree, $data_filesystem);
                 $html = ob_get_clean();
 
                 $this->layout = 'layouts/report';
@@ -138,7 +142,7 @@ class ReportGenerate implements RequestHandlerInterface
                 }
 
                 ob_start();
-                new ReportParserGenerate($xml_filename, new ReportPdf(), $variables, $tree);
+                new ReportParserGenerate($xml_filename, new ReportPdf(), $variables, $tree, $data_filesystem);
                 $pdf = ob_get_clean();
 
                 $headers = ['Content-Type' => 'application/pdf'];

@@ -32,6 +32,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -83,9 +84,12 @@ class AutocompleteController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $query = $request->getQueryParams()['query'] ?? '';
 
-        $media_filesystem = $tree->mediaFilesystem();
+        $media_filesystem = $tree->mediaFilesystem($data_filesystem);
 
         $contents = new Collection($media_filesystem->listContents('', true));
 

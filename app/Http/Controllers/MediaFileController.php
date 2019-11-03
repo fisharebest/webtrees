@@ -44,10 +44,13 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 use function addcslashes;
+use function array_map;
 use function assert;
 use function basename;
 use function dirname;
+use function explode;
 use function extension_loaded;
+use function implode;
 use function md5;
 use function redirect;
 use function response;
@@ -60,19 +63,6 @@ use function urlencode;
  */
 class MediaFileController extends AbstractBaseController
 {
-    /** @var FilesystemInterface */
-    private $filesystem;
-
-    /**
-     * MediaFileController constructor.
-     *
-     * @param FilesystemInterface $filesystem
-     */
-    public function __construct(FilesystemInterface $filesystem)
-    {
-        $this->filesystem = $filesystem;
-    }
-
     /**
      * Download a non-image media file.
      *
@@ -84,6 +74,9 @@ class MediaFileController extends AbstractBaseController
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
+
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
 
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
@@ -104,7 +97,7 @@ class MediaFileController extends AbstractBaseController
                     return redirect($media_file->filename());
                 }
 
-                if ($media_file->fileExists()) {
+                if ($media_file->fileExists($data_filesystem)) {
                     $data = $media_file->media()->tree()->mediaFilesystem()->read($media_file->filename());
 
                     return response($data, StatusCodeInterface::STATUS_OK, [
@@ -131,6 +124,9 @@ class MediaFileController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
         $fact_id = $params['fact_id'];
@@ -151,7 +147,7 @@ class MediaFileController extends AbstractBaseController
                 }
 
                 if ($media_file->isImage()) {
-                    return $this->generateImage($media_file, $request->getQueryParams());
+                    return $this->generateImage($media_file, $data_filesystem, $request->getQueryParams());
                 }
 
                 return $this->fileExtensionAsImage($media_file->extension());
@@ -182,12 +178,13 @@ class MediaFileController extends AbstractBaseController
     /**
      * Generate a thumbnail image for a file.
      *
-     * @param MediaFile $media_file
-     * @param array     $params
+     * @param MediaFile           $media_file
+     * @param FilesystemInterface $data_filesystem
+     * @param array               $params
      *
      * @return ResponseInterface
      */
-    private function generateImage(MediaFile $media_file, array $params): ResponseInterface
+    private function generateImage(MediaFile $media_file, FilesystemInterface $data_filesystem, array $params): ResponseInterface
     {
         try {
             // Validate HTTP signature
@@ -199,8 +196,8 @@ class MediaFileController extends AbstractBaseController
             $folder = dirname($path);
 
             $cache_path           = 'thumbnail-cache/' . md5($folder);
-            $cache_filesystem     = new Filesystem(new ChrootAdapter($this->filesystem, $cache_path));
-            $source_filesystem    = $media_file->media()->tree()->mediaFilesystem();
+            $cache_filesystem     = new Filesystem(new ChrootAdapter($data_filesystem, $cache_path));
+            $source_filesystem    = $media_file->media()->tree()->mediaFilesystem($data_filesystem);
             $watermark_filesystem = new Filesystem(new Local('resources/img'));
 
             $server = ServerFactory::create([
@@ -290,17 +287,23 @@ class MediaFileController extends AbstractBaseController
      */
     public function unusedMediaThumbnail(ServerRequestInterface $request): ResponseInterface
     {
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $params = $request->getQueryParams();
 
-        // The "file" name may also include sub-folders.
-        $path   = $params['folder'] . $params['file'];
+        $path   = $params['path'];
+
+        // Workaround for https://github.com/thephpleague/glide/issues/227
+        $path = implode('/', array_map('rawurlencode', explode('/', $path)));
+
         $folder = dirname($path);
         $file   = basename($path);
 
         try {
             $cache_path        = 'thumbnail-cache/' . md5($folder);
-            $cache_filesystem  = new Filesystem(new ChrootAdapter($this->filesystem, $cache_path));
-            $source_filesystem = new Filesystem(new ChrootAdapter($this->filesystem, $folder));
+            $cache_filesystem  = new Filesystem(new ChrootAdapter($data_filesystem, $cache_path));
+            $source_filesystem = new Filesystem(new ChrootAdapter($data_filesystem, $folder));
 
             $server = ServerFactory::create([
                 'cache'  => $cache_filesystem,
@@ -308,15 +311,12 @@ class MediaFileController extends AbstractBaseController
                 'source' => $source_filesystem,
             ]);
 
-            // Workaround for https://github.com/thephpleague/glide/issues/227
-            $file = urlencode($file);
+            $thumbnail = $server->makeImage($file, $params);
+            $cache     = $server->getCache();
 
-            $path  = $server->makeImage($file, $params);
-            $cache = $server->getCache();
-
-            return response($cache->read($path), StatusCodeInterface::STATUS_OK, [
-                'Content-Type'   => $cache->getMimetype($path),
-                'Content-Length' => $cache->getSize($path),
+            return response($cache->read($thumbnail), StatusCodeInterface::STATUS_OK, [
+                'Content-Type'   => $cache->getMimetype($thumbnail),
+                'Content-Length' => $cache->getSize($thumbnail),
                 'Cache-Control'  => 'max-age=31536000, public',
                 'Expires'        => Carbon::now()->addYears(10)->toRfc7231String(),
             ]);

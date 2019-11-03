@@ -112,7 +112,7 @@ use Illuminate\Support\Collection;
                                 <?php if ($media_file->isExternal()) : ?>
                                     <?= GedcomTag::getLabelValue('URL', $media_file->filename()) ?>
                                 <?php elseif (Auth::isEditor($media->tree())) :?>
-                                    <?php if (!$media_file->fileExists()) : ?>
+                                    <?php if (!$media_file->fileExists($data_filesystem)) : ?>
                                         <p class="alert alert-danger">
                                             <?= I18N::translate('The file “%s” does not exist.', $media_file->filename()) ?>
                                         </p>

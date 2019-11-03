@@ -29,9 +29,6 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\Cached\CachedAdapter;
-use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -39,6 +36,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use RuntimeException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
+
+use function assert;
 
 /**
  * Controller for upgrading to a new version of webtrees.
@@ -71,15 +70,6 @@ class UpgradeController extends AbstractAdminController
         'vendor',
     ];
 
-    /** @var FilesystemInterface */
-    private $filesystem;
-
-    /** @var FilesystemInterface */
-    private $root_filesystem;
-
-    /** @var FilesystemInterface */
-    private $temporary_filesystem;
-
     /** @var UpgradeService */
     private $upgrade_service;
 
@@ -89,21 +79,15 @@ class UpgradeController extends AbstractAdminController
     /**
      * UpgradeController constructor.
      *
-     * @param FilesystemInterface $filesystem
-     * @param TreeService         $tree_service
-     * @param UpgradeService      $upgrade_service
+     * @param TreeService    $tree_service
+     * @param UpgradeService $upgrade_service
      */
     public function __construct(
-        FilesystemInterface $filesystem,
         TreeService $tree_service,
         UpgradeService $upgrade_service
     ) {
-        $this->filesystem      = $filesystem;
         $this->tree_service    = $tree_service;
         $this->upgrade_service = $upgrade_service;
-
-        $this->root_filesystem      = new Filesystem(new CachedAdapter(new Local(Webtrees::ROOT_DIR), new Memory()));
-        $this->temporary_filesystem = new Filesystem(new ChrootAdapter($this->filesystem, self::UPGRADE_FOLDER));
     }
 
     /**
@@ -142,6 +126,58 @@ class UpgradeController extends AbstractAdminController
     }
 
     /**
+     * Perform one step of the wizard
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function step(ServerRequestInterface $request): ResponseInterface
+    {
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
+        $root_filesystem = $request->getAttribute('filesystem.root');
+        assert($root_filesystem instanceof FilesystemInterface);
+
+        $temporary_filesystem = new Filesystem(new ChrootAdapter($data_filesystem, self::UPGRADE_FOLDER));
+
+        $step = $request->getQueryParams()['step'] ?? self::STEP_CHECK;
+
+        switch ($step) {
+            case self::STEP_CHECK:
+                return $this->wizardStepCheck();
+
+            case self::STEP_PREPARE:
+                return $this->wizardStepPrepare($data_filesystem);
+
+            case self::STEP_PENDING:
+                return $this->wizardStepPending();
+
+            case self::STEP_EXPORT:
+                $tree_name = $request->getQueryParams()['tree'] ?? '';
+                $tree      = $this->tree_service->all()[$tree_name];
+                assert($tree instanceof Tree);
+
+                return $this->wizardStepExport($tree, $data_filesystem);
+
+            case self::STEP_DOWNLOAD:
+                return $this->wizardStepDownload($temporary_filesystem);
+
+            case self::STEP_UNZIP:
+                return $this->wizardStepUnzip();
+
+            case self::STEP_COPY:
+                return $this->wizardStepCopy($temporary_filesystem, $root_filesystem);
+
+            case self::STEP_CLEANUP:
+                return $this->wizardStepCleanup($data_filesystem, $root_filesystem);
+        }
+
+        throw new NotFoundHttpException();
+    }
+
+    /**
      * @return string[]
      */
     private function wizardSteps(): array
@@ -153,7 +189,7 @@ class UpgradeController extends AbstractAdminController
         foreach ($this->tree_service->all() as $tree) {
             $route = route('upgrade', [
                 'step' => self::STEP_EXPORT,
-                'tree'  => $tree->name(),
+                'tree' => $tree->name(),
             ]);
 
             $export_steps[$route] = I18N::translate('Export all the family trees to GEDCOM files…') . ' ' . e($tree->title());
@@ -169,50 +205,6 @@ class UpgradeController extends AbstractAdminController
                 route('upgrade', ['step' => self::STEP_COPY])     => I18N::translate('Copy files…'),
                 route('upgrade', ['step' => self::STEP_CLEANUP])  => I18N::translate('Delete old files…'),
             ];
-    }
-
-    /**
-     * Perform one step of the wizard
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function step(ServerRequestInterface $request): ResponseInterface
-    {
-        $step = $request->getQueryParams()['step'] ?? self::STEP_CHECK;
-
-        switch ($step) {
-            case self::STEP_CHECK:
-                return $this->wizardStepCheck();
-
-            case self::STEP_PREPARE:
-                return $this->wizardStepPrepare();
-
-            case self::STEP_PENDING:
-                return $this->wizardStepPending();
-
-            case self::STEP_EXPORT:
-                $tree_name = $request->getQueryParams()['tree'] ?? '';
-                $tree      = $this->tree_service->all()[$tree_name];
-                assert($tree instanceof Tree);
-
-                return $this->wizardStepExport($tree);
-
-            case self::STEP_DOWNLOAD:
-                return $this->wizardStepDownload();
-
-            case self::STEP_UNZIP:
-                return $this->wizardStepUnzip();
-
-            case self::STEP_COPY:
-                return $this->wizardStepCopy();
-
-            case self::STEP_CLEANUP:
-                return $this->wizardStepCleanup();
-        }
-
-        throw new NotFoundHttpException();
     }
 
     /**
@@ -242,12 +234,14 @@ class UpgradeController extends AbstractAdminController
     /**
      * Make sure the temporary folder exists.
      *
+     * @param FilesystemInterface $data_filesystem
+     *
      * @return ResponseInterface
      */
-    private function wizardStepPrepare(): ResponseInterface
+    private function wizardStepPrepare(FilesystemInterface $data_filesystem): ResponseInterface
     {
-        $this->filesystem->deleteDir(self::UPGRADE_FOLDER);
-        $this->filesystem->createDir(self::UPGRADE_FOLDER);
+        $data_filesystem->deleteDir(self::UPGRADE_FOLDER);
+        $data_filesystem->createDir(self::UPGRADE_FOLDER);
 
         return response(view('components/alert-success', [
             'alert' => I18N::translate('The folder %s has been created.', e(self::UPGRADE_FOLDER)),
@@ -271,11 +265,12 @@ class UpgradeController extends AbstractAdminController
     }
 
     /**
-     * @param Tree $tree
+     * @param Tree                $tree
+     * @param FilesystemInterface $data_filesystem
      *
      * @return ResponseInterface
      */
-    private function wizardStepExport(Tree $tree): ResponseInterface
+    private function wizardStepExport(Tree $tree, FilesystemInterface $data_filesystem): ResponseInterface
     {
         // We store the data in PHP temporary storage.
         $stream = fopen('php://temp', 'wb+');
@@ -286,13 +281,13 @@ class UpgradeController extends AbstractAdminController
 
         $filename = $tree->name() . date('-Y-m-d') . '.ged';
 
-        if ($this->filesystem->has($filename)) {
-            $this->filesystem->delete($filename);
+        if ($data_filesystem->has($filename)) {
+            $data_filesystem->delete($filename);
         }
 
         $tree->exportGedcom($stream);
         fseek($stream, 0);
-        $this->filesystem->writeStream($tree->name() . date('-Y-m-d') . '.ged', $stream);
+        $data_filesystem->writeStream($tree->name() . date('-Y-m-d') . '.ged', $stream);
         fclose($stream);
 
         return response(view('components/alert-success', [
@@ -301,15 +296,17 @@ class UpgradeController extends AbstractAdminController
     }
 
     /**
+     * @param FilesystemInterface $temporary_filesystem
+     *
      * @return ResponseInterface
      */
-    private function wizardStepDownload(): ResponseInterface
+    private function wizardStepDownload(FilesystemInterface $temporary_filesystem): ResponseInterface
     {
         $start_time   = microtime(true);
         $download_url = $this->upgrade_service->downloadUrl();
 
         try {
-            $bytes = $this->upgrade_service->downloadFile($download_url, $this->temporary_filesystem, self::ZIP_FILENAME);
+            $bytes = $this->upgrade_service->downloadFile($download_url, $temporary_filesystem, self::ZIP_FILENAME);
         } catch (Throwable $exception) {
             throw new InternalServerErrorException($exception->getMessage());
         }
@@ -345,14 +342,19 @@ class UpgradeController extends AbstractAdminController
     }
 
     /**
+     * @param FilesystemInterface $temporary_filesystem
+     * @param FilesystemInterface $root_filesystem
+     *
      * @return ResponseInterface
      */
-    private function wizardStepCopy(): ResponseInterface
-    {
-        $source_filesystem = new Filesystem(new ChrootAdapter($this->temporary_filesystem, self::ZIP_FILE_PREFIX));
+    private function wizardStepCopy(
+        FilesystemInterface $temporary_filesystem,
+        FilesystemInterface $root_filesystem
+    ): ResponseInterface {
+        $source_filesystem = new Filesystem(new ChrootAdapter($temporary_filesystem, self::ZIP_FILE_PREFIX));
 
         $this->upgrade_service->startMaintenanceMode();
-        $this->upgrade_service->moveFiles($source_filesystem, $this->root_filesystem);
+        $this->upgrade_service->moveFiles($source_filesystem, $root_filesystem);
         $this->upgrade_service->endMaintenanceMode();
 
         return response(view('components/alert-success', [
@@ -361,18 +363,23 @@ class UpgradeController extends AbstractAdminController
     }
 
     /**
+     * @param FilesystemInterface $data_filesystem
+     * @param FilesystemInterface $root_filesystem
+     *
      * @return ResponseInterface
      */
-    private function wizardStepCleanup(): ResponseInterface
-    {
+    private function wizardStepCleanup(
+        FilesystemInterface $data_filesystem,
+        FilesystemInterface $root_filesystem
+    ): ResponseInterface {
         $zip_path         = WT_DATA_DIR . self::UPGRADE_FOLDER;
         $zip_file         = $zip_path . '/' . self::ZIP_FILENAME;
         $files_to_keep    = $this->upgrade_service->webtreesZipContents($zip_file);
         $folders_to_clean = new Collection(self::FOLDERS_TO_CLEAN);
 
-        $this->upgrade_service->cleanFiles($this->root_filesystem, $folders_to_clean, $files_to_keep);
+        $this->upgrade_service->cleanFiles($root_filesystem, $folders_to_clean, $files_to_keep);
 
-        $this->filesystem->deleteDir(self::UPGRADE_FOLDER);
+        $data_filesystem->deleteDir(self::UPGRADE_FOLDER);
 
         $url    = route(ControlPanel::class);
         $button = '<a href="' . e($url) . '" class="btn btn-primary">' . I18N::translate('continue') . '</a>';

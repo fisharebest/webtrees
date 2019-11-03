@@ -27,6 +27,8 @@ use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Webtrees;
+use League\Flysystem\Adapter\NullAdapter;
+use League\Flysystem\Filesystem;
 
 /**
  * Test harness for the class FactSourcesReportModule
@@ -76,6 +78,8 @@ class DeathReportModuleTest extends TestCase
      */
     public function testReportRunsWithoutError(): void
     {
+        $data_filesystem = new Filesystem(new NullAdapter());
+
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('canadmin', '1');
         Auth::login($user);
@@ -96,13 +100,13 @@ class DeathReportModuleTest extends TestCase
         $this->assertIsArray($report->reportProperties());
 
         ob_start();
-        new ReportParserGenerate($xml, new ReportHtml(), $vars, $tree);
+        new ReportParserGenerate($xml, new ReportHtml(), $vars, $tree, $data_filesystem);
         $html = ob_get_clean();
         $this->assertStringStartsWith('<', $html);
         $this->assertStringEndsWith('>', $html);
 
         ob_start();
-        new ReportParserGenerate($xml, new ReportPdf(), $vars, $tree);
+        new ReportParserGenerate($xml, new ReportPdf(), $vars, $tree, $data_filesystem);
         $pdf = ob_get_clean();
         $this->assertStringStartsWith('%PDF', $pdf);
         $this->assertStringEndsWith("%%EOF\n", $pdf);

@@ -47,6 +47,7 @@ use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemInterface;
 use League\Flysystem\MountManager;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -203,6 +204,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $privatize_export = $request->getParsedBody()['privatize_export'];
         $convert          = (bool) ($request->getParsedBody()['convert'] ?? false);
 
@@ -216,7 +220,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $zip_filesystem = new Filesystem($zip_adapter);
 
         $manager = new MountManager([
-            'media' => $tree->mediaFilesystem(),
+            'media' => $tree->mediaFilesystem($data_filesystem),
             'zip'   => $zip_filesystem,
         ]);
 

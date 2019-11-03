@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use FilesystemIterator;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Services\PendingChangesService;
@@ -28,12 +27,13 @@ use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 use Intervention\Image\ImageManager;
+use League\Flysystem\Filesystem;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
 use Throwable;
+use function assert;
 
 /**
  * Controller for importing custom thumbnails from webtrees 1.x.
@@ -142,48 +142,47 @@ class ImportThumbnailsController extends AbstractAdminController
      */
     public function webtrees1ThumbnailsData(ServerRequestInterface $request): ResponseInterface
     {
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof Filesystem);
+
         $start  = (int) $request->getQueryParams()['start'];
         $length = (int) $request->getQueryParams()['length'];
         $search = $request->getQueryParams()['search']['value'];
 
         // Fetch all thumbnails
-        $thumbnails = [];
+        $thumbnails = Collection::make($data_filesystem->listContents('', true))
+            ->filter(static function (array $metadata): bool {
+                return $metadata['type'] === 'file' && strpos($metadata['path'], '/thumbs/') !== false;
+            })
+            ->map(static function (array $metadata): string {
+                return $metadata['path'];
+            });
 
-        $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(WT_DATA_DIR, FilesystemIterator::FOLLOW_SYMLINKS));
-
-        foreach ($iterator as $iteration) {
-            if ($iteration->isFile() && strpos($iteration->getPathname(), '/thumbs/') !== false) {
-                $thumbnails[] = $iteration->getPathname();
-            }
-        }
-
-        $recordsTotal = count($thumbnails);
+        $recordsTotal = $thumbnails->count();
 
         if ($search !== '') {
-            $thumbnails = array_filter($thumbnails, static function (string $thumbnail) use ($search): bool {
+            $thumbnails = $thumbnails->filter(static function (string $thumbnail) use ($search): bool {
                 return stripos($thumbnail, $search) !== false;
             });
         }
 
-        $recordsFiltered = count($thumbnails);
+        $recordsFiltered = $thumbnails->count();
 
-        $thumbnails = array_slice($thumbnails, $start, $length);
-
-        // Turn each filename into a row for the table
-        $data = array_map(function (string $thumbnail): array {
+        $data = $thumbnails
+            ->slice($start, $length)
+            ->map(function (string $thumbnail): array {
+            // Turn each filename into a row for the table
             $original = $this->findOriginalFileFromThumbnail($thumbnail);
 
             $original_url  = route('unused-media-thumbnail', [
-                'folder' => dirname($original),
-                'file'   => basename($original),
-                'w'      => 100,
-                'h'      => 100,
+                'path' => $original,
+                'w'    => 100,
+                'h'    => 100,
             ]);
             $thumbnail_url = route('unused-media-thumbnail', [
-                'folder' => dirname($thumbnail),
-                'file'   => basename($thumbnail),
-                'w'      => 100,
-                'h'      => 100,
+                'path' => $thumbnail,
+                'w'    => 100,
+                'h'    => 100,
             ]);
 
             $difference = $this->imageDiff($thumbnail, $original);
@@ -212,13 +211,13 @@ class ImportThumbnailsController extends AbstractAdminController
                 I18N::percentage($difference / 100.0, 0),
                 $action,
             ];
-        }, $thumbnails);
+        });
 
         return response([
             'draw'            => (int) $request->getQueryParams()['draw'],
             'recordsTotal'    => $recordsTotal,
             'recordsFiltered' => $recordsFiltered,
-            'data'            => $data,
+            'data'            => $data->values()->all(),
         ]);
     }
 

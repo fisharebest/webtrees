@@ -36,11 +36,11 @@ use Illuminate\Support\Str;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\UploadedFileInterface;
 use stdClass;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Throwable;
-
-use function dirname;
+use function assert;
 use function is_dir;
 use function preg_match;
 use function redirect;
@@ -48,7 +48,6 @@ use function route;
 use function str_replace;
 use function strpos;
 use function trim;
-
 use const UPLOAD_ERR_OK;
 
 /**
@@ -62,19 +61,14 @@ class MediaController extends AbstractAdminController
     /** @var DatatablesService */
     private $datatables_service;
 
-    /** @var FilesystemInterface */
-    private $filesystem;
-
     /**
      * MediaController constructor.
      *
      * @param DatatablesService   $datatables_service
-     * @param FilesystemInterface $filesystem
      */
-    public function __construct(DatatablesService $datatables_service, FilesystemInterface $filesystem)
+    public function __construct(DatatablesService $datatables_service)
     {
         $this->datatables_service = $datatables_service;
-        $this->filesystem         = $filesystem;
     }
 
     /**
@@ -84,11 +78,14 @@ class MediaController extends AbstractAdminController
      */
     public function index(ServerRequestInterface $request): ResponseInterface
     {
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $files        = $request->getQueryParams()['files'] ?? 'local'; // local|unused|external
         $media_folder = $request->getQueryParams()['media_folder'] ?? '';
         $subfolders   = $request->getQueryParams()['subfolders'] ?? 'include'; // include/exclude
 
-        $media_folders = $this->allMediaFolders();
+        $media_folders = $this->allMediaFolders($data_filesystem);
 
         // Preserve the pagination/filtering/sorting between requests, so that the
         // browser’s back button works. Pagination is dependent on the currently
@@ -123,32 +120,37 @@ class MediaController extends AbstractAdminController
     }
 
     /**
-     * Generate a list of all folders from all the trees.
+     * Generate a list of all folders in the filesystem.
+     *
+     * @param FilesystemInterface $filesystem
      *
      * @return Collection
      */
-    private function allMediaFolders(): Collection
+    private function allMediaFolders(FilesystemInterface $filesystem): Collection
     {
-        $base_folders = DB::table('gedcom_setting')
+        $media_folders = DB::table('gedcom_setting')
             ->where('setting_name', '=', 'MEDIA_DIRECTORY')
-            ->select(new Expression("setting_value || 'dummy.jpeg' AS path"));
+            ->pluck('setting_value')
+            ->unique();
 
-        return DB::table('media_file')
-            ->join('gedcom_setting', 'gedcom_id', '=', 'm_file')
-            ->where('setting_name', '=', 'MEDIA_DIRECTORY')
-            ->where('multimedia_file_refn', 'LIKE', '%/%')
-            ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
-            ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->select(new Expression('setting_value || multimedia_file_refn AS path'))
-            ->union($base_folders)
-            ->pluck('path')
-            ->map(static function (string $path): string {
-                return dirname($path) . '/';
-            })
+        $folders = new Collection();
+
+        foreach ($media_folders as $media_folder) {
+            $tmp = Collection::make($filesystem->listContents($media_folder, true))
+                ->filter(static function (array $metadata) {
+                    return $metadata['type'] === 'dir';
+                })
+                ->map(static function (array $metadata): string {
+                    return $metadata['path'] . '/';
+                });
+
+            $folders = $folders->concat($tmp);
+        }
+
+        return $folders
             ->unique()
-            ->sort()
-            ->mapWithKeys(static function (string $path): array {
-                return [$path => $path];
+            ->mapWithKeys(static function (string $folder): array {
+                return [$folder => $folder];
             });
     }
 
@@ -159,6 +161,9 @@ class MediaController extends AbstractAdminController
      */
     public function delete(ServerRequestInterface $request): ResponseInterface
     {
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $delete_file  = $request->getQueryParams()['file'];
         $media_folder = $request->getQueryParams()['folder'];
 
@@ -169,8 +174,8 @@ class MediaController extends AbstractAdminController
         if (in_array($delete_file, $disk_files, true)) {
             $path = $media_folder . $delete_file;
             try {
-                if ($this->filesystem->has($path)) {
-                    $this->filesystem->delete($path);
+                if ($data_filesystem->has($path)) {
+                    $data_filesystem->delete($path);
                 }
                 FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', e($path)), 'info');
             } catch (Throwable $ex) {
@@ -277,7 +282,7 @@ class MediaController extends AbstractAdminController
 
                     $media_files = $media->mediaFiles()
                         ->filter(static function (MediaFile $media_file) use ($row): bool {
-                            return $media_file->filename() == $row->multimedia_file_refn;
+                            return $media_file->filename() === $row->multimedia_file_refn;
                         })
                         ->map(static function (MediaFile $media_file): string {
                             return $media_file->displayImage(150, 150, '', []);
@@ -366,10 +371,9 @@ class MediaController extends AbstractAdminController
                         $img = '-';
                     } else {
                         $url = route('unused-media-thumbnail', [
-                            'folder' => $media_folder,
-                            'file'   => $unused_file,
-                            'w'      => 100,
-                            'h'      => 100,
+                            'path' => $media_folder . $unused_file,
+                            'w'    => 100,
+                            'h'    => 100,
                         ]);
                         $img = '<img src="' . e($url) . '">';
                     }
@@ -526,7 +530,10 @@ class MediaController extends AbstractAdminController
      */
     public function upload(ServerRequestInterface $request): ResponseInterface
     {
-        $media_folders = $this->allMediaFolders();
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
+        $media_folders = $this->allMediaFolders($data_filesystem);
 
         $filesize = ini_get('upload_max_filesize') ?: '2M';
 
@@ -547,9 +554,13 @@ class MediaController extends AbstractAdminController
      */
     public function uploadAction(ServerRequestInterface $request): ResponseInterface
     {
-        $all_folders = $this->allMediaFolders();
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
+        $all_folders = $this->allMediaFolders($data_filesystem);
 
         foreach ($request->getUploadedFiles() as $key => $uploaded_file) {
+            assert($uploaded_file instanceof UploadedFileInterface);
             if ($uploaded_file->getClientFilename() === '') {
                 continue;
             }
@@ -590,14 +601,14 @@ class MediaController extends AbstractAdminController
 
             $path = $folder . $filename;
 
-            if ($this->filesystem->has($path)) {
+            if ($data_filesystem->has($path)) {
                 FlashMessages::addMessage(I18N::translate('The file %s already exists. Use another filename.', $path, 'error'));
                 continue;
             }
 
             // Now copy the file to the correct location.
             try {
-                $this->filesystem->writeStream($path, $uploaded_file->getStream()->detach());
+                $data_filesystem->writeStream($path, $uploaded_file->getStream()->detach());
                 FlashMessages::addMessage(I18N::translate('The file %s has been uploaded.', Html::filename($path)), 'success');
                 Log::addMediaLog('Media file ' . $path . ' uploaded');
             } catch (Throwable $ex) {

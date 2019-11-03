@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Tree;
+use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -55,10 +56,13 @@ class CreateMediaObjectModal implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         return response(view('modals/create-media-object', [
             'max_upload_size' => $this->media_file_service->maxUploadFilesize(),
             'media_types'     => $this->media_file_service->mediaTypes(),
-            'unused_files'    => $this->media_file_service->unusedFiles($tree),
+            'unused_files'    => $this->media_file_service->unusedFiles($tree, $data_filesystem),
             'tree'            => $tree,
         ]));
     }

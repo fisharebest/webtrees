@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\FileNotFoundException;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemInterface;
 use League\Glide\Signatures\SignatureFactory;
 
 use function getimagesize;
@@ -330,13 +331,13 @@ class MediaFile
      *
      * @return string[]
      */
-    public function attributes(): array
+    public function attributes(FilesystemInterface $data_filesystem): array
     {
         $attributes = [];
 
-        if (!$this->isExternal() || $this->fileExists()) {
+        if (!$this->isExternal() || $this->fileExists($data_filesystem)) {
             try {
-                $bytes                       = $this->media()->tree()->mediaFilesystem()->getSize($this->filename());
+                $bytes                       = $this->media()->tree()->mediaFilesystem($data_filesystem)->getSize($this->filename());
                 $kb                          = intdiv($bytes + 1023, 1024);
                 $attributes['__FILE_SIZE__'] = I18N::translate('%s KB', I18N::number($kb));
             } catch (FileNotFoundException $ex) {
@@ -344,7 +345,7 @@ class MediaFile
             }
 
             // Note: getAdapter() is defined on Filesystem, but not on FilesystemInterface.
-            $filesystem = $this->media()->tree()->mediaFilesystem();
+            $filesystem = $this->media()->tree()->mediaFilesystem($data_filesystem);
             if ($filesystem instanceof Filesystem) {
                 $adapter = $filesystem->getAdapter();
                 // Only works for local filesystems.
@@ -362,21 +363,25 @@ class MediaFile
     /**
      * Read the contents of a media file.
      *
+     * @param FilesystemInterface $data_filesystem
+     *
      * @return string
      */
-    public function fileContents(): string
+    public function fileContents(FilesystemInterface $data_filesystem): string
     {
-        return $this->media->tree()->mediaFilesystem()->read($this->multimedia_file_refn);
+        return $this->media->tree()->mediaFilesystem($data_filesystem)->read($this->multimedia_file_refn);
     }
 
     /**
      * Check if the file exists on this server
      *
+     * @param FilesystemInterface $data_filesystem
+     *
      * @return bool
      */
-    public function fileExists(): bool
+    public function fileExists(FilesystemInterface $data_filesystem): bool
     {
-        return $this->media->tree()->mediaFilesystem()->has($this->multimedia_file_refn);
+        return $this->media->tree()->mediaFilesystem($data_filesystem)->has($this->multimedia_file_refn);
     }
 
     /**

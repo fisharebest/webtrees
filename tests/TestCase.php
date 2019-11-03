@@ -36,7 +36,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
-use League\Flysystem\Memory\MemoryAdapter;
+use League\Flysystem\Memory\NullAdapter;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
@@ -83,7 +83,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         // Disable the cache.
         app()->instance('cache.array', new Repository(new NullStore()));
 
-        app()->instance(FilesystemInterface::class, new Filesystem(new MemoryAdapter()));
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
 
         // Need the routing table, to generate URLs.

@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Webtrees;
+use League\Flysystem\Adapter\NullAdapter;
+use League\Flysystem\Filesystem;
 
 /**
  * Test harness for the class BirthDeathMarriageReportModule
@@ -74,6 +76,8 @@ class BirthDeathMarriageReportModuleTest extends TestCase
      */
     public function testReportRunsWithoutError(): void
     {
+        $data_filesystem = new Filesystem(new NullAdapter());
+
         $tree = $this->importTree('demo.ged');
         $xml  = Webtrees::ROOT_DIR . 'resources/xml/reports/bdm_report.xml';
         $vars = [
@@ -91,13 +95,13 @@ class BirthDeathMarriageReportModuleTest extends TestCase
         $this->assertIsArray($report->reportProperties());
 
         ob_start();
-        new ReportParserGenerate($xml, new ReportHtml(), $vars, $tree);
+        new ReportParserGenerate($xml, new ReportHtml(), $vars, $tree, $data_filesystem);
         $html = ob_get_clean();
         $this->assertStringStartsWith('<', $html);
         $this->assertStringEndsWith('>', $html);
 
         ob_start();
-        new ReportParserGenerate($xml, new ReportPdf(), $vars, $tree);
+        new ReportParserGenerate($xml, new ReportPdf(), $vars, $tree, $data_filesystem);
         $pdf = ob_get_clean();
         $this->assertStringStartsWith('%PDF', $pdf);
         $this->assertStringEndsWith("%%EOF\n", $pdf);

@@ -37,6 +37,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -411,6 +412,9 @@ class ListController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $module    = $request->getAttribute('module');
         $action    = $request->getAttribute('action');
         $params    = $request->getQueryParams();
@@ -446,21 +450,22 @@ class ListController extends AbstractBaseController
         $media_objects = array_slice($media_objects, ($page - 1) * $max, $max);
 
         return $this->viewResponse('media-list-page', [
-            'count'         => $count,
-            'filter'        => $filter,
-            'folder'        => $folder,
-            'folders'       => $folders,
-            'formats'       => $formats,
-            'form_type'     => $form_type,
-            'max'           => $max,
-            'media_objects' => new Collection($media_objects),
-            'page'          => $page,
-            'pages'         => $pages,
-            'subdirs'       => $subdirs,
-            'title'         => I18N::translate('Media'),
-            'tree'          => $tree,
-            'module'        => $module,
-            'action'        => $action,
+            'count'           => $count,
+            'filter'          => $filter,
+            'folder'          => $folder,
+            'folders'         => $folders,
+            'formats'         => $formats,
+            'form_type'       => $form_type,
+            'max'             => $max,
+            'media_objects'   => new Collection($media_objects),
+            'page'            => $page,
+            'pages'           => $pages,
+            'subdirs'         => $subdirs,
+            'title'           => I18N::translate('Media'),
+            'tree'            => $tree,
+            'module'          => $module,
+            'action'          => $action,
+            'data_filesystem' => $data_filesystem,
         ]);
     }
 

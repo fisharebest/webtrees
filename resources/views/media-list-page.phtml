@@ -131,13 +131,13 @@ use Fisharebest\Webtrees\I18N;
                                 echo FunctionsPrint::printFactNotes($tree, $media_object->gedcom(), 1);
                                 if ($media_file->isExternal()) {
                                     echo GedcomTag::getLabelValue('URL', $media_file->filename());
-                                } elseif ($media_file->fileExists()) {
+                                } elseif ($media_file->fileExists($data_filesystem)) {
                                     echo GedcomTag::getLabelValue('FORM', $media_file->mimeType());
                                     if (Auth::isEditor($tree)) {
                                         echo GedcomTag::getLabelValue('FILE', $media_file->filename());
                                     }
                                     if (Auth::isEditor($tree)) {
-                                        foreach ($media_file->attributes() as $tag => $value) {
+                                        foreach ($media_file->attributes($data_filesystem) as $tag => $value) {
                                             echo GedcomTag::getLabelValue($tag, $value);
                                         }
                                     }

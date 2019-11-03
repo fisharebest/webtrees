@@ -57,6 +57,7 @@ use function app;
 use function array_key_exists;
 use function assert;
 use function fclose;
+use function is_string;
 use function preg_match;
 use function route;
 
@@ -76,9 +77,6 @@ class AdminTreesController extends AbstractBaseController
     /** @var ModuleService */
     private $module_service;
 
-    /** @var FilesystemInterface */
-    private $filesystem;
-
     /** @var TimeoutService */
     private $timeout_service;
 
@@ -91,20 +89,17 @@ class AdminTreesController extends AbstractBaseController
     /**
      * AdminTreesController constructor.
      *
-     * @param FilesystemInterface $filesystem
      * @param ModuleService       $module_service
      * @param TimeoutService      $timeout_service
      * @param TreeService         $tree_service
      * @param UserService         $user_service
      */
     public function __construct(
-        FilesystemInterface $filesystem,
         ModuleService $module_service,
         TimeoutService $timeout_service,
         TreeService $tree_service,
         UserService $user_service
     ) {
-        $this->filesystem      = $filesystem;
         $this->module_service  = $module_service;
         $this->timeout_service = $timeout_service;
         $this->tree_service    = $tree_service;
@@ -351,6 +346,9 @@ class AdminTreesController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $params             = $request->getParsedBody();
         $source             = $params['source'];
         $keep_media         = (bool) ($params['keep_media'] ?? false);
@@ -380,7 +378,7 @@ class AdminTreesController extends AbstractBaseController
             $basename = basename($params['tree_name'] ?? '');
 
             if ($basename) {
-                $resource = $this->filesystem->readStream($basename);
+                $resource = $data_filesystem->readStream($basename);
                 $stream   = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
                 $tree->importGedcomFile($stream, $basename);
             } else {
@@ -403,14 +401,20 @@ class AdminTreesController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
+        $data_folder = $request->getAttribute('filesystem.data.name');
+        assert(is_string($data_folder));
+
         $default_gedcom_file = $tree->getPreference('gedcom_filename');
         $gedcom_media_path   = $tree->getPreference('GEDCOM_MEDIA_PATH');
-        $gedcom_files        = $this->gedcomFiles();
+        $gedcom_files        = $this->gedcomFiles($data_filesystem);
 
         $title = I18N::translate('Import a GEDCOM file') . ' — ' . e($tree->title());
 
         return $this->viewResponse('admin/trees-import', [
-            'data_folder'         => app('filesystem_description'),
+            'data_folder'         => $data_folder,
             'default_gedcom_file' => $default_gedcom_file,
             'gedcom_files'        => $gedcom_files,
             'gedcom_media_path'   => $gedcom_media_path,
@@ -428,8 +432,11 @@ class AdminTreesController extends AbstractBaseController
     {
         $tree = $request->getAttribute('tree');
 
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $multiple_tree_threshold = (int) Site::getPreference('MULTIPLE_TREE_THRESHOLD', self::MULTIPLE_TREE_THRESHOLD);
-        $gedcom_files            = $this->gedcomFiles();
+        $gedcom_files            = $this->gedcomFiles($data_filesystem);
 
         $all_trees = $this->tree_service->all();
 
@@ -770,6 +777,9 @@ class AdminTreesController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $data_folder = $request->getAttribute('filesystem.data.name');
+        assert(is_string($data_folder));
+
         $french_calendar_start    = new Date('22 SEP 1792');
         $french_calendar_end      = new Date('31 DEC 1805');
         $gregorian_calendar_start = new Date('15 OCT 1582');
@@ -871,7 +881,7 @@ class AdminTreesController extends AbstractBaseController
             'all_surname_traditions'   => $all_surname_traditions,
             'base_url'                 => $base_url,
             'calendar_formats'         => $calendar_formats,
-            'data_folder'              => app('filesystem_description'),
+            'data_folder'              => $data_folder,
             'formats'                  => $formats,
             'french_calendar_end'      => $french_calendar_end,
             'french_calendar_start'    => $french_calendar_start,
@@ -1526,16 +1536,19 @@ class AdminTreesController extends AbstractBaseController
      */
     public function synchronize(ServerRequestInterface $request): ResponseInterface
     {
-        $gedcom_files = $this->gedcomFiles();
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
+        $gedcom_files = $this->gedcomFiles($data_filesystem);
 
         foreach ($gedcom_files as $gedcom_file) {
             // Only import files that have changed
-            $filemtime = (string) $this->filesystem->getTimestamp($gedcom_file);
+            $filemtime = (string) $data_filesystem->getTimestamp($gedcom_file);
 
             $tree = $this->tree_service->all()->get($gedcom_file) ?? $this->tree_service->create($gedcom_file, $gedcom_file);
 
             if ($tree->getPreference('filemtime') !== $filemtime) {
-                $resource = $this->filesystem->readStream($gedcom_file);
+                $resource = $data_filesystem->readStream($gedcom_file);
                 $stream   = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
                 $tree->importGedcomFile($stream, $gedcom_file);
                 $stream->close();
@@ -1894,17 +1907,19 @@ class AdminTreesController extends AbstractBaseController
     /**
      * A list of GEDCOM files in the data folder.
      *
+     * @param FilesystemInterface $data_filesystem
+     *
      * @return array
      */
-    private function gedcomFiles(): array
+    private function gedcomFiles(FilesystemInterface $data_filesystem): array
     {
-        return Collection::make($this->filesystem->listContents())
-            ->filter(function (array $path): bool {
+        return Collection::make($data_filesystem->listContents())
+            ->filter(static function (array $path) use ($data_filesystem): bool {
                 if ($path['type'] !== 'file') {
                     return false;
                 }
 
-                $stream = $this->filesystem->readStream($path['path']);
+                $stream = $data_filesystem->readStream($path['path']);
                 $header = fread($stream, 64);
                 fclose($stream);
 

@@ -48,19 +48,6 @@ class ExportGedcomServer implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var FilesystemInterface */
-    private $filesystem;
-
-    /**
-     * ExportGedcomServer constructor.
-     *
-     * @param FilesystemInterface $filesystem
-     */
-    public function __construct(FilesystemInterface $filesystem)
-    {
-        $this->filesystem = $filesystem;
-    }
-
     /**
      * @param ServerRequestInterface $request
      *
@@ -70,6 +57,9 @@ class ExportGedcomServer implements RequestHandlerInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
+
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
 
         $filename = $tree->name();
 
@@ -82,7 +72,7 @@ class ExportGedcomServer implements RequestHandlerInterface
             $stream = fopen('php://temp', 'wb+');
             $tree->exportGedcom($stream);
             rewind($stream);
-            $this->filesystem->putStream($filename, $stream);
+            $data_filesystem->putStream($filename, $stream);
             fclose($stream);
 
             /* I18N: %s is a filename */

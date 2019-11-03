@@ -21,14 +21,13 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Services\HousekeepingService;
-use Fisharebest\Webtrees\Webtrees;
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+
+use function assert;
 
 /**
  * Run the housekeeping service at irregular intervals.
@@ -75,11 +74,17 @@ class DoHousekeeping implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
+        $root_filesystem = $request->getAttribute('filesystem.root');
+        assert($root_filesystem instanceof FilesystemInterface);
+
         $response = $handler->handle($request);
 
         // Run the cleanup after random page requests.
         if ($request->getMethod() === RequestMethodInterface::METHOD_GET && random_int(1, self::PROBABILITY) === 1) {
-            $this->runHousekeeping();
+            $this->runHousekeeping($data_filesystem, $root_filesystem);
         }
 
         return $response;
@@ -88,13 +93,13 @@ class DoHousekeeping implements MiddlewareInterface
     /**
      * Run the various housekeeping services.
      *
+     * @param FilesystemInterface $data_filesystem
+     * @param FilesystemInterface $root_filesystem
+     *
      * @return void
      */
-    private function runHousekeeping(): void
+    private function runHousekeeping(FilesystemInterface $data_filesystem, FilesystemInterface $root_filesystem): void
     {
-        $data_filesystem = app(FilesystemInterface::class);
-        $root_filesystem = new Filesystem(new Local(Webtrees::ROOT_DIR));
-
         // Clear files in the (user-specified) data folder - which might not be local files
         $this->housekeeping_service->deleteOldFiles($data_filesystem, 'cache', self::MAX_CACHE_AGE);
 

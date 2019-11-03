@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemInterface;
 use League\Flysystem\MountManager;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -65,6 +66,9 @@ class ExportGedcomClient implements RequestHandlerInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
+
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
 
         $convert          = (bool) ($request->getParsedBody()['convert'] ?? false);
         $zip              = (bool) ($request->getParsedBody()['zip'] ?? false);
@@ -107,7 +111,7 @@ class ExportGedcomClient implements RequestHandlerInterface
 
             if ($media) {
                 $manager = new MountManager([
-                    'media' => $tree->mediaFilesystem(),
+                    'media' => $tree->mediaFilesystem($data_filesystem),
                     'zip'   => $zip_filesystem,
                 ]);
 

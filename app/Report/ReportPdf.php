@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Webtrees;
+use League\Flysystem\FilesystemInterface;
 
 /**
  * Class ReportPdf
@@ -283,19 +284,28 @@ class ReportPdf extends AbstractReport
     /**
      * Create a new image object from Media Object.
      *
-     * @param MediaFile $media_file
-     * @param float     $x
-     * @param float     $y
-     * @param float     $w     Image width
-     * @param float     $h     Image height
-     * @param string    $align L:left, C:center, R:right or empty to use x/y
-     * @param string    $ln    T:same line, N:next line
+     * @param MediaFile           $media_file
+     * @param float               $x
+     * @param float               $y
+     * @param float               $w     Image width
+     * @param float               $h     Image height
+     * @param string              $align L:left, C:center, R:right or empty to use x/y
+     * @param string              $ln    T:same line, N:next line
+     * @param FilesystemInterface $data_filesystem
      *
      * @return ReportBaseImage
      */
-    public function createImageFromObject(MediaFile $media_file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportBaseImage
-    {
-        return new ReportPdfImage('@' . $media_file->fileContents(), $x, $y, $w, $h, $align, $ln);
+    public function createImageFromObject(
+        MediaFile $media_file,
+        float $x,
+        float $y,
+        float $w,
+        float $h,
+        string $align,
+        string $ln,
+        FilesystemInterface $data_filesystem
+    ): ReportBaseImage {
+        return new ReportPdfImage('@' . $media_file->fileContents($data_filesystem), $x, $y, $w, $h, $align, $ln);
     }
 
     /**

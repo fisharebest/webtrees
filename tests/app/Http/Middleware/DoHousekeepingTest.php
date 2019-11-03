@@ -22,6 +22,8 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use Fisharebest\Webtrees\TestCase;
+use League\Flysystem\Adapter\NullAdapter;
+use League\Flysystem\Filesystem;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
@@ -38,10 +40,15 @@ class DoHousekeepingTest extends TestCase
      */
     public function testMiddleware(): void
     {
+        $data_filesystem = new Filesystem(new NullAdapter());
+        $root_filesystem = new Filesystem(new NullAdapter());
+
         $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response());
 
-        $request    = self::createRequest();
+        $request    = self::createRequest()
+            ->withAttribute('filesystem.data', $data_filesystem)
+            ->withAttribute('filesystem.root', $root_filesystem);
         $middleware = new DoHousekeeping(new HousekeepingService());
         $response   = $middleware->process($request, $handler);
 

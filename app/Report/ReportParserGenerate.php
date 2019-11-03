@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
@@ -41,6 +42,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Str;
+use League\Flysystem\FilesystemInterface;
 use LogicException;
 use stdClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
@@ -143,22 +145,32 @@ class ReportParserGenerate extends ReportParserBase
     /** @var Tree The current tree */
     private $tree;
 
+    /** @var FilesystemInterface */
+    private $data_filesystem;
+
     /**
      * Create a parser for a report
      *
-     * @param string         $report The XML filename
-     * @param AbstractReport $report_root
-     * @param string[][]     $vars
-     * @param Tree           $tree
+     * @param string              $report The XML filename
+     * @param AbstractReport      $report_root
+     * @param string[][]          $vars
+     * @param Tree                $tree
+     * @param FilesystemInterface $data_filesystem
      */
-    public function __construct(string $report, AbstractReport $report_root, array $vars, Tree $tree)
-    {
+    public function __construct(
+        string $report,
+        AbstractReport $report_root,
+        array $vars,
+        Tree $tree,
+        FilesystemInterface $data_filesystem
+    ) {
         $this->report          = $report;
         $this->report_root     = $report_root;
         $this->wt_report       = $report_root;
         $this->current_element = new ReportBaseElement();
         $this->vars            = $vars;
         $this->tree            = $tree;
+        $this->data_filesystem = $data_filesystem;
 
         parent::__construct($report);
     }
@@ -1662,8 +1674,8 @@ class ReportParserGenerate extends ReportParserBase
         $person     = Individual::getInstance($id, $this->tree);
         $media_file = $person->findHighlightedMediaFile();
 
-        if ($media_file !== null && $media_file->fileExists()) {
-            $image      = imagecreatefromstring($media_file->fileContents());
+        if ($media_file instanceof MediaFile && $media_file->fileExists($this->data_filesystem)) {
+            $image      = imagecreatefromstring($media_file->fileContents($this->data_filesystem));
             $attributes = [(int) imagesx($image), (int) imagesy($image)];
 
             if ($width > 0 && $height == 0) {
@@ -1676,7 +1688,7 @@ class ReportParserGenerate extends ReportParserBase
                 $width  = $attributes[0];
                 $height = $attributes[1];
             }
-            $image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln);
+            $image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln, $this->data_filesystem);
             $this->wt_report->addElement($image);
         }
     }
@@ -1714,8 +1726,8 @@ class ReportParserGenerate extends ReportParserBase
                 $mediaobject = Media::getInstance($match[1], $this->tree);
                 $media_file  = $mediaobject->firstImageFile();
 
-                if ($media_file !== null && $media_file->fileExists()) {
-                    $image      = imagecreatefromstring($media_file->fileContents());
+                if ($media_file instanceof MediaFile && $media_file->fileExists($this->data_filesystem)) {
+                    $image      = imagecreatefromstring($media_file->fileContents($this->data_filesystem));
                     $attributes = [(int) imagesx($image), (int) imagesy($image)];
 
                     if ($width > 0 && $height == 0) {
@@ -1728,7 +1740,7 @@ class ReportParserGenerate extends ReportParserBase
                         $width  = $attributes[0];
                         $height = $attributes[1];
                     }
-                    $image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln);
+                    $image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln, $this->data_filesystem);
                     $this->wt_report->addElement($image);
                 }
             }

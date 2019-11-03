@@ -37,17 +37,6 @@ use function response;
  */
 class DeletePath implements RequestHandlerInterface
 {
-    /** @var FilesystemInterface */
-    private $filesystem;
-
-    /**
-     * @param FilesystemInterface $filesystem
-     */
-    public function __construct(FilesystemInterface $filesystem)
-    {
-        $this->filesystem = $filesystem;
-    }
-
     /**
      * @param ServerRequestInterface $request
      *
@@ -55,16 +44,19 @@ class DeletePath implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $path = $request->getQueryParams()['path'];
         assert(is_string($path));
 
-        if ($this->filesystem->has($path)) {
-            $metadata = $this->filesystem->getMetadata($path);
+        if ($data_filesystem->has($path)) {
+            $metadata = $data_filesystem->getMetadata($path);
 
             switch ($metadata['type']) {
                 case 'file':
                     try {
-                        $this->filesystem->delete($path);
+                        $data_filesystem->delete($path);
                         FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', e($path)), 'success');
                     } catch (Throwable $ex) {
                         FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)), 'danger');
@@ -73,7 +65,7 @@ class DeletePath implements RequestHandlerInterface
 
                 case 'dir':
                     try {
-                        $this->filesystem->deleteDir($path);
+                        $data_filesystem->deleteDir($path);
                         FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', e($path)), 'success');
                     } catch (Throwable $ex) {
                         FlashMessages::addMessage(I18N::translate('The folder %s could not be deleted.', e($path)), 'danger');

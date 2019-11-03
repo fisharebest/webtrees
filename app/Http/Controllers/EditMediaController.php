@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Tree;
 use League\Flysystem\FileExistsException;
 use League\Flysystem\FileNotFoundException;
+use League\Flysystem\FilesystemInterface;
 use League\Flysystem\Util;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -73,6 +74,9 @@ class EditMediaController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $xref  = $request->getQueryParams()['xref'];
         $media = Media::getInstance($xref, $tree);
 
@@ -89,7 +93,7 @@ class EditMediaController extends AbstractEditController
             'max_upload_size' => $this->media_file_service->maxUploadFilesize(),
             'media'           => $media,
             'media_types'     => $this->media_file_service->mediaTypes(),
-            'unused_files'    => $this->media_file_service->unusedFiles($tree),
+            'unused_files'    => $this->media_file_service->unusedFiles($tree, $data_filesystem),
         ]));
     }
 
@@ -154,6 +158,9 @@ class EditMediaController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
         $fact_id = $params['fact_id'];
@@ -175,7 +182,7 @@ class EditMediaController extends AbstractEditController
                     'max_upload_size' => $this->media_file_service->maxUploadFilesize(),
                     'media'           => $media,
                     'media_types'     => $this->media_file_service->mediaTypes(),
-                    'unused_files'    => $this->media_file_service->unusedFiles($tree),
+                    'unused_files'    => $this->media_file_service->unusedFiles($tree, $data_filesystem),
                 ]));
             }
         }
@@ -194,6 +201,9 @@ class EditMediaController extends AbstractEditController
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
+
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
 
         $xref     = $request->getQueryParams()['xref'];
         $fact_id  = $request->getQueryParams()['fact_id'];
@@ -246,7 +256,7 @@ class EditMediaController extends AbstractEditController
             $file = $media_file->filename();
         }
 
-        $filesystem = $media->tree()->mediaFilesystem();
+        $filesystem = $media->tree()->mediaFilesystem($data_filesystem);
         $old        = $media_file->filename();
         $new        = $file;
 
@@ -290,10 +300,13 @@ class EditMediaController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         return response(view('modals/create-media-object', [
             'max_upload_size' => $this->media_file_service->maxUploadFilesize(),
             'media_types'     => $this->media_file_service->mediaTypes(),
-            'unused_files'    => $this->media_file_service->unusedFiles($tree),
+            'unused_files'    => $this->media_file_service->unusedFiles($tree, $data_filesystem),
         ]));
     }
 
