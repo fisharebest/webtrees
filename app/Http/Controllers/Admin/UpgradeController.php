@@ -132,6 +132,16 @@ class UpgradeController extends AbstractAdminController
     }
 
     /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function confirm(ServerRequestInterface $request): ResponseInterface
+    {
+        return redirect(route('upgrade', ['continue' => 1]));
+    }
+
+    /**
      * @return string[]
      */
     private function wizardSteps(): array
@@ -170,7 +180,6 @@ class UpgradeController extends AbstractAdminController
      */
     public function step(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
         $step = $request->getQueryParams()['step'] ?? self::STEP_CHECK;
 
         switch ($step) {
@@ -184,9 +193,9 @@ class UpgradeController extends AbstractAdminController
                 return $this->wizardStepPending();
 
             case self::STEP_EXPORT:
-                if ($tree === null) {
-                    throw new RuntimeException('Exporting a non-existant tree?');
-                }
+                $tree_name = $request->getQueryParams()['tree'] ?? '';
+                $tree      = $this->tree_service->all()[$tree_name];
+                assert ($tree instanceof Tree);
 
                 return $this->wizardStepExport($tree);
 

@@ -54,7 +54,7 @@ use Illuminate\Support\Collection;
             <?= /* I18N: %s is a URL/link to the project website */
             I18N::translate('Support and documentation can be found at %s.', '<a href="https://webtrees.net/">webtrees.net</a>') ?>
         </p>
-        <p class="card-text ">
+        <p class="card-text">
             <?php if ($latest_version === '') : ?>
                 <?= I18N::translate('No upgrade information is available.') ?>
             <?php elseif (version_compare(Webtrees::VERSION, $latest_version) < 0) : ?>

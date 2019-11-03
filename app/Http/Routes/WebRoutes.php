@@ -235,6 +235,7 @@ class WebRoutes
             $router->get('map-provider', '/map-provider', 'Admin\MapProviderController::mapProviderEdit');
             $router->post('map-provider-action', '/map-provider', 'Admin\MapProviderController::mapProviderSave');
             $router->get('upgrade', '/upgrade', 'Admin\UpgradeController::wizard');
+            $router->post('upgrade-confirm', '/upgrade-confirm', 'Admin\UpgradeController::confirm');
             $router->post('upgrade-action', '/upgrade', 'Admin\UpgradeController::step');
             $router->get('admin-users', '/admin-users', 'Admin\UsersController::index');
             $router->get('admin-users-data', '/admin-users-data', 'Admin\UsersController::data');

@@ -26,8 +26,8 @@ use Fisharebest\Webtrees\I18N;
         <?= I18N::translate('Depending on your server configuration, you may be able to upgrade automatically.') ?>
     </p>
 
-    <form method="get" action="<?= e(route('upgrade')) ?>" class="form-horizontal">
-        <input type="hidden" name="route" value="<?= e(route('upgrade')) ?>">
+    <form method="post" action="<?= e(route('upgrade-confirm')) ?>" class="form-horizontal">
+        <?= csrf_field() ?>
 
         <button type="submit" class="btn btn-primary" name="continue" value="1">
             <?= I18N::translate('continue') ?>
