@@ -43,6 +43,8 @@ use Throwable;
 use function dirname;
 use function is_dir;
 use function preg_match;
+use function redirect;
+use function route;
 use function str_replace;
 use function strpos;
 use function trim;
@@ -104,6 +106,20 @@ class MediaController extends AbstractAdminController
             'table_id'      => $table_id,
             'title'         => $title,
         ]);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function select(ServerRequestInterface $request): ResponseInterface
+    {
+        return redirect(route('admin-media', [
+            'files'        => $request->getParsedBody()['files'],
+            'media_folder' => $request->getParsedBody()['media_folder'] ?? '',
+            'subfolders'   => $request->getParsedBody()['subfolders'] ?? 'include',
+        ]));
     }
 
     /**

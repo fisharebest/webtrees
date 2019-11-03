@@ -179,6 +179,12 @@ class WebRoutes
             $router->post(SiteLogsDelete::class, '/logs-delete', SiteLogsDelete::class);
             $router->get(SiteLogsDownload::class, '/logs-download', SiteLogsDownload::class);
             $router->post(Masquerade::class, '/masquerade/{user_id}', Masquerade::class);
+            $router->get('admin-media', '/media', 'Admin\MediaController::index');
+            $router->post('admin-media-select', '/media', 'Admin\MediaController::select');
+            $router->get('admin-media-data', '/media-data', 'Admin\MediaController::data');
+            $router->post('admin-media-delete', '/media-delete', 'Admin\MediaController::delete');
+            $router->get('admin-media-upload', '/media-upload', 'Admin\MediaController::upload');
+            $router->post('admin-media-upload-action', '/media-upload', 'Admin\MediaController::uploadAction');
             $router->get(CreateTreePage::class, '/trees/create', CreateTreePage::class);
             $router->post(CreateTreeAction::class, '/trees/create', CreateTreeAction::class);
             $router->post(SelectDefaultTree::class, '/trees/default/{tree}', SelectDefaultTree::class);
@@ -226,11 +232,6 @@ class WebRoutes
             $router->post('locations-import-from-tree', '/locations-import-from-tree', 'Admin\LocationController::importLocationsFromTree');
             $router->get('map-provider', '/map-provider', 'Admin\MapProviderController::mapProviderEdit');
             $router->post('map-provider-action', '/map-provider', 'Admin\MapProviderController::mapProviderSave');
-            $router->get('admin-media', '/admin-media', 'Admin\MediaController::index');
-            $router->get('admin-media-data', '/admin-media-data', 'Admin\MediaController::data');
-            $router->post('admin-media-delete', '/admin-media-delete', 'Admin\MediaController::delete');
-            $router->get('admin-media-upload', '/admin-media-upload', 'Admin\MediaController::upload');
-            $router->post('admin-media-upload-action', '/admin-media-upload', 'Admin\MediaController::uploadAction');
             $router->get('upgrade', '/upgrade', 'Admin\UpgradeController::wizard');
             $router->post('upgrade-action', '/upgrade', 'Admin\UpgradeController::step');
             $router->get('admin-users', '/admin-users', 'Admin\UsersController::index');

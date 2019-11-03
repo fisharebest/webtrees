@@ -10,8 +10,9 @@ use Fisharebest\Webtrees\View;
 
 <h1><?= $title ?></h1>
 
-<form method="get" action="<?= e(route('admin-media')) ?>" id="admin-media-form">
-    <input type="hidden" name="route" value="admin-media">
+<form method="post" action="<?= e(route('admin-media-select')) ?>" id="admin-media-form">
+    <?= csrf_field() ?>
+
     <table class="table table-bordered table-sm">
         <thead>
             <tr>
