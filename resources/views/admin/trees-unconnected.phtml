@@ -1,6 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -19,9 +20,9 @@ use Fisharebest\Webtrees\Tree;
 
 <h1><?= $title ?></h1>
 
-<form method="get" action="<?= e(route('admin-trees-unconnected')) ?>" class="form-inline">
-    <input type="hidden" name="route" value="<?= e(route('admin-trees-unconnected')) ?>">
-    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
+<form method="post" action="<?= e(route(UnconnectedAction::class, ['tree' => $tree->name()])) ?>" class="form-inline">
+    <?= csrf_field() ?>
+
     <?= view('components/checkbox-inline', ['label' => I18N::translate('Include associates'), 'checked' => $associates, 'name' => 'associates']) ?>
     <button type="submit" class="btn btn-primary">
         <?= I18N::translate('update') ?>

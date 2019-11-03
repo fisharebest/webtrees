@@ -11,6 +11,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\DeleteTreeAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ExportGedcomPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectDefaultTree;
+use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\View;
@@ -173,7 +174,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                     <!-- UNCONNECTED INDIVIDUALS -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/unlink') ?></span>
-                                        <a href="<?= e(route('admin-trees-unconnected', ['tree' => $managed_tree->name()])) ?>">
+                                        <a href="<?= e(route(UnconnectedPage::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Find unrelated individuals') ?>
                                             <span class="sr-only">
                                                 <?= e($managed_tree->title()) ?>

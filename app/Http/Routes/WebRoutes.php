@@ -150,6 +150,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
+use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail;
 
 /**
@@ -290,7 +292,6 @@ class WebRoutes
             $router->post('admin-trees-preferences-update', '/preferences', 'AdminTreesController::preferencesUpdate');
             $router->get('admin-trees-renumber', '/renumber', 'AdminTreesController::renumber');
             $router->post('admin-trees-renumber-action', '/renumber', 'AdminTreesController::renumberAction');
-            $router->get('admin-trees-unconnected', '/aunconnected', 'AdminTreesController::unconnected');
             $router->get('tree-page-edit', '/tree-page-edit', 'HomePageController::treePageEdit');
             $router->post('import', '/load', 'GedcomFileController::import');
             $router->post('tree-page-update', '/tree-page-update', 'HomePageController::treePageUpdate');
@@ -302,6 +303,8 @@ class WebRoutes
             $router->post('tree-preferences-update', '/preferences', 'AdminController::treePreferencesUpdate');
             $router->get('tree-privacy', '/privacy', 'AdminController::treePrivacyEdit');
             $router->post('tree-privacy-update', '/privacy', 'AdminController::treePrivacyUpdate');
+            $router->get(UnconnectedPage::class, '/unconnected', UnconnectedPage::class);
+            $router->post(UnconnectedAction::class, '/unconnected', UnconnectedAction::class);
         });
 
         // Moderator routes.

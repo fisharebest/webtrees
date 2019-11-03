@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Exception;
-use Fisharebest\Algorithm\ConnectedComponent;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
@@ -1554,67 +1553,6 @@ class AdminTreesController extends AbstractBaseController
         }
 
         return redirect(route('manage-trees'));
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function unconnected(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user       = $request->getAttribute('user');
-        $associates = (bool) ($request->getQueryParams()['associates'] ?? false);
-
-        if ($associates) {
-            $links = ['FAMS', 'FAMC', 'ASSO', '_ASSO'];
-        } else {
-            $links = ['FAMS', 'FAMC'];
-        }
-
-        $rows = DB::table('link')
-            ->where('l_file', '=', $tree->id())
-            ->whereIn('l_type', $links)
-            ->select(['l_from', 'l_to'])
-            ->get();
-
-        $graph = [];
-
-        foreach ($rows as $row) {
-            $graph[$row->l_from][$row->l_to] = 1;
-            $graph[$row->l_to][$row->l_from] = 1;
-        }
-
-        $algorithm  = new ConnectedComponent($graph);
-        $components = $algorithm->findConnectedComponents();
-        $root       = $tree->significantIndividual($user);
-        $xref       = $root->xref();
-
-        /** @var Individual[][] */
-        $individual_groups = [];
-
-        foreach ($components as $component) {
-            if (!in_array($xref, $component, true)) {
-                $individuals = [];
-                foreach ($component as $xref) {
-                    $individuals[] = Individual::getInstance($xref, $tree);
-                }
-                // The database query may return pending additions/deletions, which may not exist.
-                $individual_groups[] = array_filter($individuals);
-            }
-        }
-
-        $title = I18N::translate('Find unrelated individuals') . ' — ' . e($tree->title());
-
-        return $this->viewResponse('admin/trees-unconnected', [
-            'associates'        => $associates,
-            'root'              => $root,
-            'individual_groups' => $individual_groups,
-            'title'             => $title,
-        ]);
     }
 
     /**
