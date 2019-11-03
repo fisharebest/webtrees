@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-10-28 14:09+0000\n"
-"PO-Revision-Date: 2019-10-17 15:25+0000\n"
+"PO-Revision-Date: 2019-11-03 09:51+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -13714,7 +13714,7 @@ msgstr "Das Verzeichnis kann mit dem vollen Pfad (z.B. /home/user_name/webtrees_
 #: app/Http/Controllers/AdminSiteController.php:187
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "Der Ordner “%s” existiert nicht."
 
 #: resources/views/admin/merge-records-step-2.phtml:21
 msgid "The following facts and events were found in both records."
@@ -21305,7 +21305,6 @@ msgstr "…"
 #~ msgid "The file %s has been created."
 #~ msgstr "Die Datei %s wurde erstellt."
 
-#, php-format
 #~ msgid "The folder %s does not exist, and it could not be created."
 #~ msgstr "Der Ordner %s existiert nicht und konnte nicht erstellt werden."
 
