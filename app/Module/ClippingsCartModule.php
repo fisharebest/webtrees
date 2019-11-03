@@ -30,6 +30,12 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
+use Fisharebest\Webtrees\Http\RequestHandlers\RepositoryPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -75,12 +81,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
     // Routes that have a record which can be added to the clipboard
     private const ROUTES_WITH_RECORDS = [
-        'family',
-        'individual',
-        'media',
-        'note',
-        'repository',
-        'source',
+        'Family' => FamilyPage::class,
+        'Individual' => IndividualPage::class,
+        'Media' => MediaPage::class,
+        'Note' => NotePage::class,
+        'Repository' => RepositoryPage::class,
+        'Source' => SourcePage::class,
     ];
 
     /** @var int The default access level for this module.  It can be changed in the control panel. */
@@ -155,14 +161,14 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             ]), 'menu-clippings-cart', ['rel' => 'nofollow']),
         ];
 
-        if (in_array($route, self::ROUTES_WITH_RECORDS, true)) {
+        $action = array_search($route, self::ROUTES_WITH_RECORDS);
+        if ($action !== false) {
             $xref = $request->getAttribute('xref');
             assert(is_string($xref));
 
-            $action    = 'Add' . ucfirst($route);
             $add_route = route('module', [
                 'module' => $this->name(),
-                'action' => $action,
+                'action' => 'Add' . $action,
                 'xref'   => $xref,
                 'tree'    => $tree->name(),
             ]);
@@ -176,6 +182,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 'action' => 'Empty',
                 'tree'    => $tree->name(),
             ]), 'menu-clippings-empty', ['rel' => 'nofollow']);
+
             $submenus[] = new Menu(I18N::translate('Download'), route('module', [
                 'module' => $this->name(),
                 'action' => 'DownloadForm',
@@ -191,15 +198,13 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return ResponseInterface
      */
-    public function getDownloadAction(ServerRequestInterface $request): ResponseInterface
+    public function postDownloadAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params = $request->getQueryParams();
-
-        $privatize_export = $params['privatize_export'];
-        $convert          = (bool) ($params['convert'] ?? false);
+        $privatize_export = $request->getParsedBody()['privatize_export'];
+        $convert          = (bool) ($request->getParsedBody()['convert'] ?? false);
 
         $cart = Session::get('cart', []);
 
@@ -338,6 +343,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             'is_member'  => Auth::isMember($tree, $user),
             'module'     => $this->name(),
             'title'      => $title,
+            'tree'       => $tree,
         ]);
     }
 
