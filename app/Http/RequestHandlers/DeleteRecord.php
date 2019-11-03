@@ -66,9 +66,9 @@ class DeleteRecord implements RequestHandlerInterface
                 $new_gedcom = $this->removeLinks($old_gedcom, $record->xref());
                 if ($old_gedcom !== $new_gedcom) {
                     // If we have removed a link from a family to an individual, and it has only one member
-                    if (preg_match('/^0 @' . Gedcom::REGEX_XREF . '@ FAM/', $new_gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . Gedcom::REGEX_XREF . ')@/', $new_gedcom, $match) == 1) {
+                    if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ FAM/', $new_gedcom, $fmatch) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . Gedcom::REGEX_XREF . ')@/', $new_gedcom, $match) === 1) {
                         // Delete the family
-                        $family = GedcomRecord::getInstance($xref, $tree);
+                        $family = GedcomRecord::getInstance($fmatch[1], $tree);
                         /* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */
                         FlashMessages::addMessage(I18N::translate('The family “%s” has been deleted because it only has one member.', $family->fullName()));
                         $family->deleteRecord();
