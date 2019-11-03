@@ -224,20 +224,6 @@ use Fisharebest\Webtrees\I18N;
         </div>
     </div>
 
-    <h3><?= I18N::translate('User preferences') ?></h3>
-    <!-- THEME_DIR -->
-    <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="THEME_DIR">
-            <?= /* I18N: A configuration setting */ I18N::translate('Default theme') ?>
-        </label>
-        <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'THEME_DIR', 'selected' => $tree->getPreference('THEME_DIR'), 'options' => $theme_options]) ?>
-            <p class="small text-muted">
-                <?= /* I18N: Help text for the “Default theme” configuration setting */ I18N::translate('You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc.') ?>
-            </p>
-        </div>
-    </div>
-
     <h3><?= I18N::translate('Media folders') ?></h3>
 
     <!-- MEDIA_DIRECTORY -->

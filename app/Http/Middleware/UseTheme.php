@@ -86,13 +86,6 @@ class UseTheme implements MiddlewareInterface
         // Last theme used
         yield $themes->get(Session::get('theme', ''));
 
-        // Default for tree
-        $tree = $request->getAttribute('tree');
-
-        if ($tree instanceof Tree) {
-            yield $themes->get($tree->getPreference('THEME_DIR'));
-        }
-
         // Default for site
         yield $themes->get(Site::getPreference('THEME_DIR'));
 

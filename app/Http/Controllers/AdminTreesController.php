@@ -974,7 +974,6 @@ class AdminTreesController extends AbstractBaseController
         $tree->setPreference('SUBLIST_TRIGGER_I', $request->getParsedBody()['SUBLIST_TRIGGER_I'] ?? '200');
         $tree->setPreference('SURNAME_LIST_STYLE', $request->getParsedBody()['SURNAME_LIST_STYLE'] ?? '');
         $tree->setPreference('SURNAME_TRADITION', $request->getParsedBody()['SURNAME_TRADITION'] ?? '');
-        $tree->setPreference('THEME_DIR', $request->getParsedBody()['THEME_DIR'] ?? '');
         $tree->setPreference('USE_SILHOUETTE', $request->getParsedBody()['USE_SILHOUETTE'] ?? '');
         $tree->setPreference('WEBMASTER_USER_ID', $request->getParsedBody()['WEBMASTER_USER_ID'] ?? '');
         $tree->setPreference('title', $request->getParsedBody()['title'] ?? '');
