@@ -171,54 +171,54 @@ class ImportThumbnailsController extends AbstractAdminController
         $data = $thumbnails
             ->slice($start, $length)
             ->map(function (string $thumbnail): array {
-            // Turn each filename into a row for the table
-            $original = $this->findOriginalFileFromThumbnail($thumbnail);
+                // Turn each filename into a row for the table
+                $original = $this->findOriginalFileFromThumbnail($thumbnail);
 
-            $original_url  = route('unused-media-thumbnail', [
-                'path' => $original,
-                'w'    => 100,
-                'h'    => 100,
+                $original_url  = route('unused-media-thumbnail', [
+                    'path' => $original,
+                    'w'    => 100,
+                    'h'    => 100,
+                ]);
+                $thumbnail_url = route('unused-media-thumbnail', [
+                    'path' => $thumbnail,
+                    'w'    => 100,
+                    'h'    => 100,
+                ]);
+
+                $difference = $this->imageDiff($thumbnail, $original);
+
+                $original_path  = substr($original, strlen(WT_DATA_DIR));
+                $thumbnail_path = substr($thumbnail, strlen(WT_DATA_DIR));
+
+                $media = $this->findMediaObjectsForMediaFile($original_path);
+
+                $media_links = array_map(static function (Media $media): string {
+                    return '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>';
+                }, $media);
+
+                $media_links = implode('<br>', $media_links);
+
+                $action = view('admin/webtrees1-thumbnails-form', [
+                    'difference' => $difference,
+                    'media'      => $media,
+                    'thumbnail'  => $thumbnail_path,
+                ]);
+
+                return [
+                    '<img src="' . e($thumbnail_url) . '" title="' . e($thumbnail_path) . '">',
+                    '<img src="' . e($original_url) . '" title="' . e($original_path) . '">',
+                    $media_links,
+                    I18N::percentage($difference / 100.0, 0),
+                    $action,
+                ];
+            });
+
+            return response([
+                'draw'            => (int) $request->getQueryParams()['draw'],
+                'recordsTotal'    => $recordsTotal,
+                'recordsFiltered' => $recordsFiltered,
+                'data'            => $data->values()->all(),
             ]);
-            $thumbnail_url = route('unused-media-thumbnail', [
-                'path' => $thumbnail,
-                'w'    => 100,
-                'h'    => 100,
-            ]);
-
-            $difference = $this->imageDiff($thumbnail, $original);
-
-            $original_path  = substr($original, strlen(WT_DATA_DIR));
-            $thumbnail_path = substr($thumbnail, strlen(WT_DATA_DIR));
-
-            $media = $this->findMediaObjectsForMediaFile($original_path);
-
-            $media_links = array_map(static function (Media $media): string {
-                return '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>';
-            }, $media);
-
-            $media_links = implode('<br>', $media_links);
-
-            $action = view('admin/webtrees1-thumbnails-form', [
-                'difference' => $difference,
-                'media'      => $media,
-                'thumbnail'  => $thumbnail_path,
-            ]);
-
-            return [
-                '<img src="' . e($thumbnail_url) . '" title="' . e($thumbnail_path) . '">',
-                '<img src="' . e($original_url) . '" title="' . e($original_path) . '">',
-                $media_links,
-                I18N::percentage($difference / 100.0, 0),
-                $action,
-            ];
-        });
-
-        return response([
-            'draw'            => (int) $request->getQueryParams()['draw'],
-            'recordsTotal'    => $recordsTotal,
-            'recordsFiltered' => $recordsFiltered,
-            'data'            => $data->values()->all(),
-        ]);
     }
 
     /**
