@@ -292,7 +292,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
         if ($block_id === 0) {
             // Creating a new story
-            $individual  = null;
             $story_title = '';
             $story_body  = '';
             $languages   = [];
