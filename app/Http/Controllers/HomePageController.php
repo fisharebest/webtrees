@@ -38,7 +38,6 @@ use Fisharebest\Webtrees\Module\UserMessagesModule;
 use Fisharebest\Webtrees\Module\UserWelcomeModule;
 use Fisharebest\Webtrees\Module\WelcomeBlockModule;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -89,26 +88,17 @@ class HomePageController extends AbstractBaseController
         ],
     ];
 
-    /**
-     * @var ModuleService
-     */
+    /** @var ModuleService */
     private $module_service;
-
-    /**
-     * @var UserService
-     */
-    private $user_service;
 
     /**
      * HomePageController constructor.
      *
      * @param ModuleService $module_service
-     * @param UserService   $user_service
      */
-    public function __construct(ModuleService $module_service, UserService $user_service)
+    public function __construct(ModuleService $module_service)
     {
         $this->module_service = $module_service;
-        $this->user_service   = $user_service;
     }
 
     /**
