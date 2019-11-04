@@ -33,7 +33,8 @@
             <ul>
                 <?php foreach ($analytics as $module): ?>
                     <li>
-                        <a href="<?= e($module->externalUrl()) ?>"><?= $module->title() ?></a>
+                        <?= $module->title() ?> —
+                        <a href="<?= e($module->externalUrl()) ?>"><?= e($module->externalUrl()) ?></a>
                     </li>
                 <?php endforeach ?>
             </ul>
