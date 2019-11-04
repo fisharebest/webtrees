@@ -1,0 +1,166 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2019 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+use function assert;
+use function e;
+use function in_array;
+use function preg_replace;
+use function redirect;
+use function route;
+use function str_replace;
+
+/**
+ * Merge records
+ */
+class MergeFactsAction implements RequestHandlerInterface
+{
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        $xref1 = $request->getParsedBody()['xref1'] ?? '';
+        $xref2 = $request->getParsedBody()['xref2'] ?? '';
+
+        $keep1 = $request->getParsedBody()['keep1'] ?? [];
+        $keep2 = $request->getParsedBody()['keep2'] ?? [];
+
+        // Merge record2 into record1
+        $record1 = GedcomRecord::getInstance($xref1, $tree);
+        $record2 = GedcomRecord::getInstance($xref2, $tree);
+
+        if (
+            $record1 === null ||
+            $record2 === null ||
+            $record1 === $record2 ||
+            $record1::RECORD_TYPE !== $record2::RECORD_TYPE ||
+            $record1->isPendingDeletion() ||
+            $record2->isPendingDeletion()
+        ) {
+            return redirect(route(MergeRecordsPage::class, [
+                'tree'  => $tree->name(),
+                'xref1' => $xref1,
+                'xref2' => $xref2,
+            ]));
+        }
+
+        // If we are not auto-accepting, then we can show a link to the pending deletion
+        if (Auth::user()->getPreference('auto_accept')) {
+            $record2_name = $record2->fullName();
+        } else {
+            $record2_name = '<a class="alert-link" href="' . e($record2->url()) . '">' . $record2->fullName() . '</a>';
+        }
+
+        // Update records that link to the one we will be removing.
+        $linking_records = $record2->linkingRecords();
+
+        foreach ($linking_records as $record) {
+            if (!$record->isPendingDeletion()) {
+                /* I18N: The placeholders are the names of individuals, sources, etc. */
+                FlashMessages::addMessage(I18N::translate(
+                    'The link from “%1$s” to “%2$s” has been updated.',
+                    '<a class="alert-link" href="' . e($record->url()) . '">' . $record->fullName() . '</a>',
+                    $record2_name
+                ), 'info');
+                $gedcom = str_replace('@' . $xref2 . '@', '@' . $xref1 . '@', $record->gedcom());
+                $gedcom = preg_replace(
+                    '/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
+                    '$2',
+                    $gedcom
+                );
+                $record->updateRecord($gedcom, true);
+            }
+        }
+
+        // Update any linked user-accounts
+        DB::table('user_gedcom_setting')
+            ->where('gedcom_id', '=', $tree->id())
+            ->whereIn('setting_name', ['gedcomid', 'rootid'])
+            ->where('setting_value', '=', $xref2)
+            ->update(['setting_value' => $xref1]);
+
+        // Merge hit counters
+        $hits = DB::table('hit_counter')
+            ->where('gedcom_id', '=', $tree->id())
+            ->whereIn('page_parameter', [$xref1, $xref2])
+            ->groupBy(['page_name'])
+            ->pluck(new Expression('SUM(page_count)'), 'page_name');
+
+        foreach ($hits as $page_name => $page_count) {
+            DB::table('hit_counter')
+                ->where('gedcom_id', '=', $tree->id())
+                ->where('page_name', '=', $page_name)
+                ->update(['page_count' => $page_count]);
+        }
+
+        DB::table('hit_counter')
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('page_parameter', '=', $xref2)
+            ->delete();
+
+        $gedcom = '0 @' . $record1->xref() . '@ ' . $record1::RECORD_TYPE;
+
+        foreach ($record1->facts() as $fact) {
+            if (in_array($fact->id(), $keep1, true)) {
+                $gedcom .= "\n" . $fact->gedcom();
+            }
+        }
+
+        foreach ($record2->facts() as $fact) {
+            if (in_array($fact->id(), $keep2, true)) {
+                $gedcom .= "\n" . $fact->gedcom();
+            }
+        }
+
+        DB::table('favorite')
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('xref', '=', $xref2)
+            ->update(['xref' => $xref1]);
+
+        $record1->updateRecord($gedcom, true);
+        $record2->deleteRecord();
+
+        /* I18N: Records are individuals, sources, etc. */
+        FlashMessages::addMessage(I18N::translate(
+            'The records “%1$s” and “%2$s” have been merged.',
+            '<a class="alert-link" href="' . e($record1->url()) . '">' . $record1->fullName() . '</a>',
+            $record2_name
+        ), 'success');
+
+        return redirect(route(MergeRecordsPage::class, ['tree' => $tree->name()]));
+    }
+}

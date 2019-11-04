@@ -9,6 +9,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\CreateSourceModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateSubmitterModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteTreeAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ExportGedcomPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\MergeRecordsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectDefaultTree;
 use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage;
@@ -144,7 +145,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                     <!-- MERGE -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/merge') ?></span>
-                                        <a href="<?= e(route('merge-records', ['tree' => $managed_tree->name()])) ?>">
+                                        <a href="<?= e(route(MergeRecordsPage::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Merge records') ?>
                                             <span class="sr-only">
                                                 <?= e($managed_tree->title()) ?>

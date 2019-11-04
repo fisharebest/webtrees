@@ -1,6 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\MergeRecordsAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
 
@@ -10,9 +11,9 @@ use Fisharebest\Webtrees\View;
 
 <h1><?= $title ?></h1>
 
-<form>
-    <input type="hidden" name="route" value="merge-records">
-    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
+<form method="post" action="<?= e(route(MergeRecordsAction::class, ['tree' => $tree->name()])) ?>">
+    <?= csrf_field() ?>
+
     <div class="row form-group">
         <label class="col-sm-3 col-form-label" for="record-type">
             <?= I18N::translate('Select two records to merge.') ?>
@@ -33,21 +34,27 @@ use Fisharebest\Webtrees\View;
         <span class="col-sm-3 col-form-label">
             <?= I18N::translate('First record') ?>
         </span>
+
         <span class="col-sm-9 select-record select-individual">
             <?= view('components/select-individual', ['name' => 'xref1', 'id' => 'indi-xref-1', 'individual' => $individual1, 'tree' => $tree]) ?>
         </span>
+
         <span class="col-sm-9 select-record select-family d-none">
             <?= view('components/select-family', ['name' => 'xref1', 'id' => 'fam-xref-1', 'family' => $family1, 'tree' => $tree, 'disabled' => true]) ?>
         </span>
+
         <span class="col-sm-9 select-record select-source d-none">
             <?= view('components/select-source', ['name' => 'xref1', 'id' => 'sour-xref-1', 'source' => $source1, 'tree' => $tree, 'disabled' => true]) ?>
         </span>
+
         <span class="col-sm-9 select-record select-repository d-none">
             <?= view('components/select-repository', ['name' => 'xref1', 'id' => 'repo-xref-1', 'repository' => $repository1, 'tree' => $tree, 'disabled' => true]) ?>
         </span>
+
         <span class="col-sm-9 select-record select-note d-none">
             <?= view('components/select-note', ['name' => 'xref1', 'id' => 'note-xref-1', 'note' => $note1, 'tree' => $tree, 'disabled' => true]) ?>
         </span>
+
         <span class="col-sm-9 select-record select-media d-none">
             <?= view('components/select-media', ['name' => 'xref1', 'id' => 'media-xref-1', 'media' => $media1, 'tree' => $tree, 'disabled' => true]) ?>
         </span>
@@ -57,21 +64,27 @@ use Fisharebest\Webtrees\View;
         <span class="col-sm-3 col-form-label">
             <?= I18N::translate('Second record') ?>
         </span>
+
         <span class="col-sm-9 select-record select-individual">
             <?= view('components/select-individual', ['name' => 'xref2', 'id' => 'indi-xref-2', 'individual' => $individual2, 'tree' => $tree]) ?>
         </span>
+
         <span class="col-sm-9 select-record select-family d-none">
             <?= view('components/select-family', ['name' => 'xref2', 'id' => 'fam-xref-2', 'family' => $family2, 'tree' => $tree, 'disabled' => true]) ?>
         </span>
+
         <span class="col-sm-9 select-record select-source d-none">
             <?= view('components/select-source', ['name' => 'xref2', 'id' => 'sour-xref-2', 'source' => $source2, 'tree' => $tree, 'disabled' => true]) ?>
         </span>
+
         <span class="col-sm-9 select-record select-repository d-none">
             <?= view('components/select-repository', ['name' => 'xref2', 'id' => 'repo-xref-2', 'repository' => $repository2, 'tree' => $tree, 'disabled' => true]) ?>
         </span>
+
         <span class="col-sm-9 select-record select-note d-none">
             <?= view('components/select-note', ['name' => 'xref2', 'id' => 'note-xref-2', 'note' => $note2, 'tree' => $tree, 'disabled' => true]) ?>
         </span>
+
         <span class="col-sm-9 select-record select-media d-none">
             <?= view('components/select-media', ['name' => 'xref2', 'id' => 'obje-xref-2', 'media' => $media2, 'tree' => $tree, 'disabled' => true]) ?>
         </span>
@@ -80,9 +93,10 @@ use Fisharebest\Webtrees\View;
     <div class="row form-group">
         <div class="col-sm-3">
         </div>
+
         <div class="col-sm-9">
             <button class="btn btn-primary" type="submit">
-            <?= view('icons/save') ?>
+                <?= view('icons/save') ?>
                 <?= I18N::translate('continue') ?>
             </button>
         </div>

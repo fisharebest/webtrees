@@ -1,0 +1,85 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2019 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
+
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+use function assert;
+use function e;
+
+/**
+ * Merge records
+ */
+class MergeRecordsPage implements RequestHandlerInterface
+{
+    use ViewResponseTrait;
+
+    /**
+     * Merge two genealogy records.
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        $this->layout = 'layouts/administration';
+
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        $xref1  = $request->getQueryParams()['xref1'] ?? '';
+        $xref2  = $request->getQueryParams()['xref2'] ?? '';
+
+        $record1 = GedcomRecord::getInstance($xref1, $tree);
+        $record2 = GedcomRecord::getInstance($xref2, $tree);
+
+        $title = I18N::translate('Merge records') . ' — ' . e($tree->title());
+
+        return $this->viewResponse('admin/merge-records-step-1', [
+            'individual1' => $record1 instanceof Individual ? $record1 : null,
+            'individual2' => $record2 instanceof Individual ? $record2 : null,
+            'family1'     => $record1 instanceof Family ? $record1 : null,
+            'family2'     => $record2 instanceof Family ? $record2 : null,
+            'source1'     => $record1 instanceof Source ? $record1 : null,
+            'source2'     => $record2 instanceof Source ? $record2 : null,
+            'repository1' => $record1 instanceof Repository ? $record1 : null,
+            'repository2' => $record2 instanceof Repository ? $record2 : null,
+            'media1'      => $record1 instanceof Media ? $record1 : null,
+            'media2'      => $record2 instanceof Media ? $record2 : null,
+            'note1'       => $record1 instanceof Note ? $record1 : null,
+            'note2'       => $record2 instanceof Note ? $record2 : null,
+            'title'       => $title,
+            'tree'        => $tree,
+        ]);
+    }
+}

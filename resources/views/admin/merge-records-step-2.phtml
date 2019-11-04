@@ -2,6 +2,7 @@
 
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\MergeFactsAction;
 use Fisharebest\Webtrees\I18N;
 
 ?>
@@ -10,8 +11,12 @@ use Fisharebest\Webtrees\I18N;
 
 <h1><?= $title ?></h1>
 
-<form method="post" action="<?= e(route('merge-records', ['tree' => $tree->name(), 'xref1' => $record1->xref(), 'xref2' => $record2->xref()])) ?>">
+<form method="post" action="<?= e(route(MergeFactsAction::class, ['tree' => $tree->name()])) ?>">
     <?= csrf_field() ?>
+
+    <input type="hidden" name="xref1" value="<?= e($record1->xref()) ?>">
+    <input type="hidden" name="xref2" value="<?= e($record2->xref()) ?>">
+
     <p>
         <?= I18N::translate('Select the facts and events to keep from both records.') ?>
     </p>
