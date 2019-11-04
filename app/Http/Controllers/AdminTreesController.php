@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -699,70 +698,6 @@ class AdminTreesController extends AbstractBaseController
                 'tree2_name' => $tree2->name(),
             ]);
         }
-
-        return redirect($url);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function places(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $params  = $request->getQueryParams();
-        $search  = $params['search'] ?? '';
-        $replace = $params['replace'] ?? '';
-
-        if ($search !== '' && $replace !== '') {
-            $changes = $this->changePlacesPreview($tree, $search, $replace);
-        } else {
-            $changes = [];
-        }
-
-        /* I18N: Renumber the records in a family tree */
-        $title = I18N::translate('Update place names') . ' — ' . e($tree->title());
-
-        return $this->viewResponse('admin/trees-places', [
-            'changes' => $changes,
-            'replace' => $replace,
-            'search'  => $search,
-            'title'   => $title,
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function placesAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $params  = $request->getQueryParams();
-        $search  = $params['search'] ?? '';
-        $replace = $params['replace'] ?? '';
-
-        $changes = $this->changePlacesUpdate($tree, $search, $replace);
-
-        $feedback = I18N::translate('The following places have been changed:') . '<ul>';
-        foreach ($changes as $old_place => $new_place) {
-            $feedback .= '<li>' . e($old_place) . ' &rarr; ' . e($new_place) . '</li>';
-        }
-        $feedback .= '</ul>';
-
-        FlashMessages::addMessage($feedback, 'success');
-
-        $url = route('admin-trees-places', [
-            'tree'    => $tree->name(),
-            'replace' => $replace,
-            'search'  => $search,
-        ]);
 
         return redirect($url);
     }
@@ -1632,89 +1567,6 @@ class AdminTreesController extends AbstractBaseController
     private function formatType($type): string
     {
         return '<b title="' . GedcomTag::getLabel($type) . '">' . $type . '</b>';
-    }
-
-    /**
-     * Find a list of place names that would be updated.
-     *
-     * @param Tree   $tree
-     * @param string $search
-     * @param string $replace
-     *
-     * @return string[]
-     */
-    private function changePlacesPreview(Tree $tree, string $search, string $replace): array
-    {
-        // Fetch the latest GEDCOM for each individual and family
-        $union = DB::table('families')
-            ->where('f_file', '=', $tree->id())
-            ->whereContains('f_gedcom', $search)
-            ->select(['f_gedcom AS gedcom']);
-
-        return DB::table('individuals')
-            ->where('i_file', '=', $tree->id())
-            ->whereContains('i_gedcom', $search)
-            ->select(['i_gedcom AS gedcom'])
-            ->unionAll($union)
-            ->pluck('gedcom')
-            ->mapWithKeys(static function (string $gedcom) use ($search, $replace): array {
-                preg_match_all('/\n2 PLAC ((?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', $gedcom, $matches);
-
-                $changes = [];
-                foreach ($matches[1] as $prefix) {
-                    $changes[$prefix . $search] = $prefix . $replace;
-                }
-
-                return $changes;
-            })
-            ->sort()
-            ->all();
-    }
-
-    /**
-     * Find a list of place names that would be updated.
-     *
-     * @param Tree   $tree
-     * @param string $search
-     * @param string $replace
-     *
-     * @return string[]
-     */
-    private function changePlacesUpdate(Tree $tree, string $search, string $replace): array
-    {
-        $individual_changes = DB::table('individuals')
-            ->where('i_file', '=', $tree->id())
-            ->whereContains('i_gedcom', $search)
-            ->select(['individuals.*'])
-            ->get()
-            ->map(Individual::rowMapper());
-
-        $family_changes = DB::table('families')
-            ->where('f_file', '=', $tree->id())
-            ->whereContains('f_gedcom', $search)
-            ->select(['families.*'])
-            ->get()
-            ->map(Family::rowMapper());
-
-        return $individual_changes
-            ->merge($family_changes)
-            ->mapWithKeys(static function (GedcomRecord $record) use ($search, $replace): array {
-                $changes = [];
-
-                foreach ($record->facts() as $fact) {
-                    $old_place = $fact->attribute('PLAC');
-                    if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
-                        $new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
-                        $changes[$old_place] = $new_place;
-                        $gedcom              = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->gedcom());
-                        $record->updateFact($fact->id(), $gedcom, false);
-                    }
-                }
-
-                return $changes;
-            })
-            ->sort()
-            ->all();
     }
 
     /**

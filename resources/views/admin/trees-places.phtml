@@ -1,6 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\UpdatePlacesAction;
 use Fisharebest\Webtrees\I18N;
 
 ?>
@@ -13,9 +14,8 @@ use Fisharebest\Webtrees\I18N;
     <?= I18N::translate('This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”.') ?>
 </p>
 
-<form>
-    <input type="hidden" name="route" value="admin-trees-places">
-    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
+<form method="post" action="<?= e(route(UpdatePlacesAction::class, ['tree' => $tree->name()])) ?>">
+    <?= csrf_field() ?>
 
     <dl>
         <dt>
@@ -32,32 +32,31 @@ use Fisharebest\Webtrees\I18N;
         </dd>
     </dl>
 
-    <button class="btn btn-primary" type="submit" value="preview"><?= /* I18N: A button label. */
-        I18N::translate('preview') ?></button>
-</form>
+    <button class="btn btn-primary" type="submit" name="submit" value="preview">
+        <?= /* I18N: A button label. */ I18N::translate('preview') ?>
+    </button>
 
-<?php if ($search && $replace) : ?>
-    <?php if (empty($changes)) : ?>
-        <p>
-            <?= I18N::translate('No places have been found.') ?>
-        </p>
-    <?php else : ?>
-        <p>
-            <?= I18N::translate('The following places would be changed:') ?>
-        </p>
+    <?php if ($search !== '' && $replace !== '') : ?>
+        <?php if (empty($changes)) : ?>
+            <p>
+                <?= I18N::translate('No places have been found.') ?>
+            </p>
+        <?php else : ?>
+            <p>
+                <?= I18N::translate('The following places would be changed:') ?>
+            </p>
 
-        <ul>
-            <?php foreach ($changes as $old_place => $new_place) { ?>
-                <li>
-                    <?= e($old_place) ?> &rarr; <?= e($new_place) ?>
-                </li>
-            <?php } ?>
-        </ul>
+            <ul>
+                <?php foreach ($changes as $old_place => $new_place) : ?>
+                    <li>
+                        <?= e($old_place) ?> &rarr; <?= e($new_place) ?>
+                    </li>
+                <?php endforeach ?>
+            </ul>
 
-        <form method="post" action="<?= e(route('admin-trees-places', ['tree' => $tree->name(), 'search' => $search, 'replace' => $replace])) ?>">
-            <?= csrf_field() ?>
-            <button class="btn btn-primary" type="submit" value="update" name="confirm"><?= /* I18N: A button label. */
-                I18N::translate('update') ?></button>
-        </form>
+            <button class="btn btn-primary" type="submit" name="submit" value="update">
+                <?= /* I18N: A button label. */ I18N::translate('update') ?>
+            </button>
+        <?php endif ?>
     <?php endif ?>
-<?php endif ?>
+</form>
