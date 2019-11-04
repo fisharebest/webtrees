@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
@@ -53,8 +52,6 @@ use function route;
  */
 class UsersController extends AbstractAdminController
 {
-    private const SECONDS_PER_DAY = 24 * 60 * 60;
-
     /** @var DatatablesService */
     private $datatables_service;
 
@@ -91,74 +88,6 @@ class UsersController extends AbstractAdminController
         $this->module_service     = $module_service;
         $this->tree_service       = $tree_service;
         $this->user_service       = $user_service;
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function cleanup(ServerRequestInterface $request): ResponseInterface
-    {
-        $months = (int) ($request->getQueryParams()['months'] ?? 6);
-
-        $inactive_threshold   = time() - $months * 30 * self::SECONDS_PER_DAY;
-        $unverified_threshold = time() - 7 * self::SECONDS_PER_DAY;
-
-        $users = $this->user_service->all();
-
-        $inactive_users = $users->filter(static function (UserInterface $user) use ($inactive_threshold): bool {
-            if ($user->getPreference('sessiontime') === '0') {
-                $datelogin = (int) $user->getPreference('reg_timestamp');
-            } else {
-                $datelogin = (int) $user->getPreference('sessiontime');
-            }
-
-            return $datelogin < $inactive_threshold && $user->getPreference('verified');
-        });
-
-        $unverified_users = $users->filter(static function (UserInterface $user) use ($unverified_threshold): bool {
-            if ($user->getPreference('sessiontime') === '0') {
-                $datelogin = (int) $user->getPreference('reg_timestamp');
-            } else {
-                $datelogin = (int) $user->getPreference('sessiontime');
-            }
-
-            return $datelogin < $unverified_threshold && !$user->getPreference('verified');
-        });
-
-        $options = $this->monthOptions();
-
-        $title = I18N::translate('Delete inactive users');
-
-        return $this->viewResponse('admin/users-cleanup', [
-            'months'           => $months,
-            'options'          => $options,
-            'title'            => $title,
-            'inactive_users'   => $inactive_users,
-            'unverified_users' => $unverified_users,
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function cleanupAction(ServerRequestInterface $request): ResponseInterface
-    {
-        foreach ($this->user_service->all() as $user) {
-            if ((bool) $request->getParsedBody()['del_' . $user->id()]) {
-                Log::addAuthenticationLog('Deleted user: ' . $user->userName());
-                $this->user_service->delete($user);
-
-                FlashMessages::addMessage(I18N::translate('The user %s has been deleted.', e($user->userName())), 'success');
-            }
-        }
-
-        $url = route('admin-users-cleanup');
-
-        return redirect($url);
     }
 
     /**
@@ -492,23 +421,6 @@ class UsersController extends AbstractAdminController
             'accept' => I18N::translate('Moderator'),
             /* I18N: Listbox entry; name of a role */
             'admin'  => I18N::translate('Manager'),
-        ];
-    }
-
-    /**
-     * Delete users older than this.
-     *
-     * @return string[]
-     */
-    private function monthOptions(): array
-    {
-        return [
-            3  => I18N::number(3),
-            6  => I18N::number(6),
-            9  => I18N::number(9),
-            12 => I18N::number(12),
-            18 => I18N::number(18),
-            24 => I18N::number(24),
         ];
     }
 

@@ -156,6 +156,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail;
 
 /**
@@ -227,6 +229,8 @@ class WebRoutes
             $router->post('themes-update', '/themes', 'Admin\ModuleController::updateThemes');
             $router->get('tabs', '/tabs', 'Admin\ModuleController::listTabs');
             $router->post('tabs-update', '/tabs', 'Admin\ModuleController::updateTabs');
+            $router->get(UsersCleanupPage::class, '/users-cleanup', UsersCleanupPage::class);
+            $router->post(UsersCleanupAction::class, '/users-cleanup', UsersCleanupAction::class);
             $router->post('delete-module-settings', '/delete-module-settings', 'Admin\ModuleController::deleteModuleSettings');
             $router->get('map-data', '/map-data', 'Admin\LocationController::mapData');
             $router->get('map-data-edit', '/map-data-edit', 'Admin\LocationController::mapDataEdit');
@@ -247,8 +251,6 @@ class WebRoutes
             $router->post('admin-users-create-action', '/admin-users-create', 'Admin\UsersController::save');
             $router->get('admin-users-edit', '/admin-users-edit', 'Admin\UsersController::edit');
             $router->post('admin-users-update', '/admin-users-edit', 'Admin\UsersController::update');
-            $router->get('admin-users-cleanup', '/admin-users-cleanup', 'Admin\UsersController::cleanup');
-            $router->post('admin-users-cleanup-action', '/admin-users-cleanup', 'Admin\UsersController::cleanupAction');
             $router->get('admin-site-preferences', '/admin-site-preferences', 'AdminSiteController::preferencesForm');
             $router->post('admin-site-preferences-update', '/admin-site-preferences', 'AdminSiteController::preferencesSave');
             $router->get('admin-site-registration', '/admin-site-registration', 'AdminSiteController::registrationForm');

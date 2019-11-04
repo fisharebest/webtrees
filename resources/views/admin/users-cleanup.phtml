@@ -2,6 +2,7 @@
 
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupAction;
 use Fisharebest\Webtrees\I18N;
 
 ?>
@@ -10,24 +11,7 @@ use Fisharebest\Webtrees\I18N;
 
 <h1><?= $title ?></h1>
 
-<form>
-    <input type="hidden" name="route" value="admin-users-cleanup">
-    <div class="form-group row">
-        <label for="months" class="col-sm-8 col-form-label">
-            <?= I18N::translate('Number of months since the last sign-in for a user’s account to be considered inactive: ') ?>
-        </label>
-        <div class="col-sm-2">
-            <?= view('components/select', ['name' => 'months', 'selected' => $months, 'options' => $options]) ?>
-        </div>
-        <div class="col-sm-2">
-            <button type="submit" class="btn btn-primary">
-                <?= I18N::translate('update') ?>
-            </button>
-        </div>
-    </div>
-</form>
-
-<form method="post">
+<form method="post" action="<?= e(route(UsersCleanupAction::class)) ?>">
     <?= csrf_field() ?>
 
     <table class="table table-bordered">
@@ -45,7 +29,7 @@ use Fisharebest\Webtrees\I18N;
                     <?= view('components/datetime', ['timestamp' => Carbon::createFromTimestamp(max((int) $user->getPreference('reg_timestamp'), (int) $user->getPreference('sessiontime')))]) ?>
                 </td>
                 <td>
-                    <input type="checkbox" name="del_<?= $user->id() ?>">
+                    <input type="checkbox" name="delete[]" value="<?= $user->id() ?>">
                 </td>
             </tr>
         <?php endforeach ?>
@@ -66,19 +50,19 @@ use Fisharebest\Webtrees\I18N;
                     <?php endif ?>
                 </td>
                 <td>
-                    <input type="checkbox" name="del_<?= $user->id() ?>">
+                    <input type="checkbox" name="delete[]" value="<?= $user->id() ?>">
                 </td>
             </tr>
         <?php endforeach ?>
     </table>
 
     <p>
-        <?php if (empty($inactive_users) && empty($unverified_users)) : ?>
+        <?php if ($inactive_users->isEmpty() && $unverified_users->isEmpty()) : ?>
             <?= I18N::translate('Nothing found to cleanup') ?>
         <?php else : ?>
-        <button type="submit" class="btn btn-primary">
-            <?= I18N::translate('delete') ?>
-        </button>
+            <button type="submit" class="btn btn-primary">
+                <?= I18N::translate('delete') ?>
+            </button>
         <?php endif ?>
     </p>
 </form>

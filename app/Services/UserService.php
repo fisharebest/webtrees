@@ -19,20 +19,22 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\ContactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
 use function assert;
+use function max;
 
 /**
  * Functions for managing users.
@@ -145,6 +147,40 @@ class UserService
             ->get()
             ->map(User::rowMapper())
             ->first();
+    }
+
+    /**
+     * Callback to sort users by their last-login (or registration) time.
+     *
+     * @return Closure
+     */
+    public function sortByLastLogin(): Closure
+    {
+        return function (UserInterface $user1, UserInterface $user2) {
+            $registered_at1 = (int) $user1->getPreference('reg_timestamp');
+            $logged_in_at1  = (int) $user1->getPreference('sessiontime');
+            $registered_at2 = (int) $user2->getPreference('reg_timestamp');
+            $logged_in_at2  = (int) $user2->getPreference('sessiontime');
+
+            return max($registered_at1, $logged_in_at1) <=> max($registered_at2, $logged_in_at2);
+        };
+    }
+
+    /**
+     * Callback to filter users who have not logged in since a given time.
+     *
+     * @param int $timestamp
+     *
+     * @return Closure
+     */
+    public function filterInactive(int $timestamp): Closure
+    {
+        return function (UserInterface $user) use ($timestamp): bool {
+            $registered_at = (int) $user->getPreference('reg_timestamp');
+            $logged_in_at  = (int) $user->getPreference('sessiontime');
+
+            return max($registered_at, $logged_in_at) < $timestamp;
+        };
     }
 
     /**

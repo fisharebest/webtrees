@@ -164,38 +164,4 @@ class UsersControllerTest extends TestCase
 
         $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
-
-    /**
-     * @return void
-     */
-    public function testCleanup(): void
-    {
-        $datatables_service = new DatatablesService();
-        $mail_service       = new EmailService();
-        $module_service     = new ModuleService();
-        $tree_service       = new TreeService();
-        $user_service       = new UserService();
-        $controller         = new UsersController($datatables_service, $mail_service, $module_service, $tree_service, $user_service);
-        $request            = self::createRequest();
-        $response           = $controller->cleanup($request);
-
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-    }
-
-    /**
-     * @return void
-     */
-    public function testCleanupAction(): void
-    {
-        $datatables_service = new DatatablesService();
-        $mail_service       = new EmailService();
-        $module_service     = new ModuleService();
-        $tree_service       = new TreeService();
-        $user_service       = new UserService();
-        $controller         = new UsersController($datatables_service, $mail_service, $module_service, $tree_service, $user_service);
-        $request            = self::createRequest(RequestMethodInterface::METHOD_POST);
-        $response           = $controller->cleanupAction($request);
-
-        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
-    }
 }
