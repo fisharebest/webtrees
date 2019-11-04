@@ -296,6 +296,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             $story_title = '';
             $story_body  = '';
             $languages   = [];
+            $xref = $request->getQueryParams()['xref'] ?? '';
 
             $title = I18N::translate('Add a story') . ' — ' . e($tree->title());
         } else {
@@ -304,13 +305,14 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
                 ->where('block_id', '=', $block_id)
                 ->value('xref');
 
-            $individual  = Individual::getInstance($xref, $tree);
             $story_title = $this->getBlockSetting($block_id, 'title');
             $story_body  = $this->getBlockSetting($block_id, 'story_body');
             $languages   = explode(',', $this->getBlockSetting($block_id, 'languages'));
 
             $title = I18N::translate('Edit the story') . ' — ' . e($tree->title());
         }
+
+        $individual  = Individual::getInstance($xref, $tree);
 
         return $this->viewResponse('modules/stories/edit', [
             'block_id'    => $block_id,
