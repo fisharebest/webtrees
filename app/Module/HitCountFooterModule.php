@@ -19,6 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
+use Fisharebest\Webtrees\Http\RequestHandlers\RepositoryPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
@@ -38,12 +44,12 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
     // Which routes do we count?
     // For historical reasons, we record the names of the original webtrees script and parameter.
     protected const PAGE_NAMES = [
-        'family'     => 'family.php',
-        'individual' => 'individual.php',
-        'media'      => 'mediaviewer.php',
-        'note'       => 'note.php',
-        'repository' => 'repo.php',
-        'source'     => 'source.php',
+        FamilyPage::class     => 'family.php',
+        IndividualPage::class => 'individual.php',
+        MediaPage::class      => 'mediaviewer.php',
+        NotePage::class       => 'note.php',
+        RepositoryPage::class => 'repo.php',
+        SourcePage::class     => 'source.php',
         'tree-page'  => 'index.php',
         'user-page'  => 'index.php',
     ];
@@ -119,12 +125,12 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
             $page_name = self::PAGE_NAMES[$route] ?? '';
 
             switch ($route) {
-                case 'family':
-                case 'individual':
-                case 'media':
-                case 'note':
-                case 'repository':
-                case 'source':
+                case FamilyPage::class:
+                case IndividualPage::class:
+                case MediaPage::class:
+                case NotePage::class:
+                case RepositoryPage::class:
+                case SourcePage::class:
                     $this->page_hits = $this->countHit($tree, $page_name, $request->getQueryParams()['xref'] ?? '');
                     break;
 
