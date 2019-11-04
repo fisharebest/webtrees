@@ -40,6 +40,7 @@ use Psr\Http\Message\UploadedFileInterface;
 use stdClass;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Throwable;
+
 use function assert;
 use function is_dir;
 use function preg_match;
@@ -48,6 +49,7 @@ use function route;
 use function str_replace;
 use function strpos;
 use function trim;
+
 use const UPLOAD_ERR_OK;
 
 /**
@@ -122,21 +124,21 @@ class MediaController extends AbstractAdminController
     /**
      * Generate a list of all folders in the filesystem.
      *
-     * @param FilesystemInterface $filesystem
+     * @param FilesystemInterface $data_filesystem
      *
      * @return Collection
      */
-    private function allMediaFolders(FilesystemInterface $filesystem): Collection
+    private function allMediaFolders(FilesystemInterface $data_filesystem): Collection
     {
         $media_folders = DB::table('gedcom_setting')
             ->where('setting_name', '=', 'MEDIA_DIRECTORY')
             ->pluck('setting_value')
             ->unique();
 
-        $folders = new Collection();
+        $folders = new Collection($media_folders);
 
         foreach ($media_folders as $media_folder) {
-            $tmp = Collection::make($filesystem->listContents($media_folder, true))
+            $tmp = Collection::make($data_filesystem->listContents($media_folder, true))
                 ->filter(static function (array $metadata) {
                     return $metadata['type'] === 'dir';
                 })

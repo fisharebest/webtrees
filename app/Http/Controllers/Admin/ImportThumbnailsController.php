@@ -33,6 +33,7 @@ use League\Flysystem\Filesystem;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
+
 use function assert;
 
 /**
@@ -213,12 +214,12 @@ class ImportThumbnailsController extends AbstractAdminController
                 ];
             });
 
-            return response([
-                'draw'            => (int) $request->getQueryParams()['draw'],
-                'recordsTotal'    => $recordsTotal,
-                'recordsFiltered' => $recordsFiltered,
-                'data'            => $data->values()->all(),
-            ]);
+        return response([
+            'draw'            => (int) $request->getQueryParams()['draw'],
+            'recordsTotal'    => $recordsTotal,
+            'recordsFiltered' => $recordsFiltered,
+            'data'            => $data->values()->all(),
+        ]);
     }
 
     /**
