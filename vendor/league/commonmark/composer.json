@@ -27,6 +27,7 @@
         "ext-mbstring": "*"
     },
     "require-dev": {
+        "ext-json": "*",
         "cebe/markdown": "~1.0",
         "commonmark/commonmark.js": "0.29.0",
         "erusev/parsedown": "~1.0",
@@ -75,7 +76,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.1-dev"
+            "dev-master": "1.2-dev"
         }
     },
     "config": {

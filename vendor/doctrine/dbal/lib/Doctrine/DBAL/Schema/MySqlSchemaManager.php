@@ -68,7 +68,7 @@ class MySqlSchemaManager extends AbstractSchemaManager
             } elseif (strpos($v['index_type'], 'SPATIAL') !== false) {
                 $v['flags'] = ['SPATIAL'];
             }
-            $v['length'] = $v['sub_part'] ?? null;
+            $v['length'] = isset($v['sub_part']) ? (int) $v['sub_part'] : null;
 
             $tableIndexes[$k] = $v;
         }
@@ -296,13 +296,20 @@ class MySqlSchemaManager extends AbstractSchemaManager
 
         $tableOptions = $this->_conn->fetchAssoc($sql);
 
+        if ($tableOptions === false) {
+            return $table;
+        }
+
         $table->addOption('engine', $tableOptions['ENGINE']);
+
         if ($tableOptions['TABLE_COLLATION'] !== null) {
             $table->addOption('collation', $tableOptions['TABLE_COLLATION']);
         }
+
         if ($tableOptions['AUTO_INCREMENT'] !== null) {
             $table->addOption('autoincrement', $tableOptions['AUTO_INCREMENT']);
         }
+
         $table->addOption('comment', $tableOptions['TABLE_COMMENT']);
         $table->addOption('create_options', $this->parseCreateOptions($tableOptions['CREATE_OPTIONS']));
 

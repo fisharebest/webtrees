@@ -62,15 +62,20 @@ Information on how to upgrade to newer versions of this library can be found at 
 - [Twig Markdown extension](https://github.com/twigphp/markdown-extension)
 - [Twig filter and tag](https://github.com/aptoma/twig-markdown)
 
-### League Extensions
+### GFM Extensions
 
-The PHP League offers useful extensions that add extra syntax and features:
+You can easily add support for Github-Flavored Markdown by installing the [`league/commonmark-extras`](https://github.com/thephpleague/commonmark-extras) package, which includes bundles all of the extensions listed below:
 
- - [`league/commonmark-extras`](https://github.com/thephpleague/commonmark-extras) - Bundles the extensions below into a single dependency for convenience
-   - [`league/commonmark-ext-autolink`](https://github.com/thephpleague/commonmark-ext-autolink) - Extension for league/commonmark which autolinks URLs, emails, and (optionally) @-mentions
-   - [`league/commonmark-ext-smartpunct`](https://github.com/thephpleague/commonmark-ext-smartpunct) - Intelligently converts ASCII quotes, dashes, and ellipses to their Unicode equivalents
-   - [`league/commonmark-ext-strikethrough`](https://github.com/thephpleague/commonmark-ext-strikethrough) - Adds support for `~~strikethrough~~` syntax
-   - [`league/commonmark-ext-task-list`](https://github.com/thephpleague/commonmark-ext-task-list) - Support for Github-style task lists
+| Feature | Package Name | Description |
+| ------- | ------------ | ----------- |
+| Autolinks | [`league/commonmark-ext-autolink`](https://github.com/thephpleague/commonmark-ext-autolink) | Automatically links URLs, emails, and (optionally) @-mentions without needing to use `<...>` |
+| Smart Punctuation | [`league/commonmark-ext-smartpunct`](https://github.com/thephpleague/commonmark-ext-smartpunct) | Intelligently converts ASCII quotes, dashes, and ellipses to their Unicode equivalents |
+| Strikethrough | [`league/commonmark-ext-strikethrough`](https://github.com/thephpleague/commonmark-ext-strikethrough) | Adds support for `~~strikethrough~~` syntax |
+| Task Lists | [`league/commonmark-ext-task-list`](https://github.com/thephpleague/commonmark-ext-task-list) | Support for Github-style task lists |
+| Tables | [`league/commonmark-ext-table`](https://github.com/thephpleague/commonmark-ext-table) | GFM-style tables |
+
+### Other PHP League Extensions
+
  - [`league/commonmark-ext-inlines-only`](https://github.com/thephpleague/commonmark-ext-inlines-only) - Renders inline text without paragraph tags or other block-level elements
  - [`league/commonmark-ext-external-link`](https://github.com/thephpleague/commonmark-ext-external-link) - Mark external links, make them open in new windows, etc.
 
@@ -80,7 +85,6 @@ You can add them to your project or use them as examples to [develop your own cu
 
 Custom parsers/renderers can be bundled into extensions which extend CommonMark.  Here are some that you may find interesting:
 
- - [CommonMark Table Extension](https://github.com/webuni/commonmark-table-extension) - Adds the ability to create tables in CommonMark documents.
  - [CommonMark Attributes Extension](https://github.com/webuni/commonmark-attributes-extension) - Adds a syntax to define attributes on the various HTML elements.
  - [Alt Three Emoji](https://github.com/AltThree/Emoji) An emoji parser for CommonMark.
  - [Sup Sub extensions](https://github.com/OWS/commonmark-sup-sub-extensions) - Adds support of superscript and subscript (`<sup>` and `<sub>` HTML tags)
@@ -106,6 +110,8 @@ When a new **minor** version (`1.x`) is released, the previous one will continue
 When a new **major** version is released (`1.0`, `2.0`, etc), the previous one (`0.19.x`) will receive bug fixes for *at least* 3 months and security updates for 6 months after that new release comes out.
 
 (This policy may change in the future and exceptions may be made on a case-by-case basis.)
+
+**Professional support, including notification of new releases and security updates, is available through a [Tidelift Subscription](https://tidelift.com/subscription/pkg/packagist-league-commonmark?utm_source=packagist-league-commonmark&utm_medium=referral&utm_campaign=readme).**
 
 ## 👷‍♀️ Contributing
 
@@ -152,6 +158,7 @@ This code is partially based on the [CommonMark JS reference implementation][com
 
 We'd also like to extend our sincere thanks the following sponsors who support ongoing development of this project:
 
+ - [Tidelift](https://tidelift.com/subscription/pkg/packagist-league-commonmark?utm_source=packagist-league-commonmark&utm_medium=referral&utm_campaign=readme) for offering support to both the maintainers and end-users through their [professional support](https://tidelift.com/subscription/pkg/packagist-league-commonmark?utm_source=packagist-league-commonmark&utm_medium=referral&utm_campaign=readme) program
  - [RIPS Technologies](https://www.ripstech.com/) for supporting this project with a complimentary [RIPS SaaS](https://www.ripstech.com/product/) license
  - [JetBrains](https://www.jetbrains.com/) for supporting this project with complimentary [PhpStorm](https://www.jetbrains.com/phpstorm/) licenses
 
@@ -164,6 +171,18 @@ Are you interested in sponsoring development of this project? [Make a pledge](ht
 ## 🏛️ Governance
 
 This project is primarily maintained by [Colin O'Dell][@colinodell].  Members of the [PHP League] Leadership Team may occasionally assist with some of these duties.
+
+---
+
+<div align="center">
+	<b>
+		<a href="https://tidelift.com/subscription/pkg/packagist-league-commonmark?utm_source=packagist-league-commonmark&utm_medium=referral&utm_campaign=readme">Get professional support for league/commonmark with a Tidelift subscription</a>
+	</b>
+	<br>
+	<sub>
+		Tidelift helps make open source sustainable for maintainers while giving companies<br>assurances about security, maintenance, and licensing for their dependencies.
+	</sub>
+</div>
 
 [CommonMark]: http://commonmark.org/
 [CommonMark spec]: http://spec.commonmark.org/
