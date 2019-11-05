@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -61,6 +62,9 @@ class MediaPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
@@ -77,6 +81,7 @@ class MediaPage implements RequestHandlerInterface
 
         return $this->viewResponse('media-page', [
             'clipboard_facts' => $this->clipboard_service->pastableFacts($media, new Collection()),
+            'data_filesystem' => $data_filesystem,
             'families'        => $media->linkedFamilies('OBJE'),
             'facts'           => $this->facts($media),
             'individuals'     => $media->linkedIndividuals('OBJE'),
