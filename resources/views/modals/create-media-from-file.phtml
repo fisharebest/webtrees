@@ -2,7 +2,7 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="modal" id="modal-create-media-from-file">
-    <form method="post" action="<?= e(route('create-media-from-file')) ?>">
+    <form method="post" action="<?= e(route('create-media-from-file')) ?>" id="modal-create-media-from-file-form">
         <?= csrf_field() ?>
         <input type="hidden" name="action" value="create-media-object-from-file">
         <input type="hidden" name="tree" id="tree" value="">
