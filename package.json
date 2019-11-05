@@ -8,11 +8,11 @@
   "devDependencies": {
     "laravel-mix": "^5.0.0",
     "postcss-custom-properties": "^9.0.2",
-    "postcss-image-inliner": "^3.0.3",
+    "postcss-image-inliner": "^3.0.5",
     "postcss-import": "^12.0.1",
     "postcss-rtl": "^1.5.0",
     "resolve-url-loader": "^3.1.0",
-    "sass": "^1.23.0",
+    "sass": "^1.23.3",
     "sass-loader": "^8.0.0",
     "vue-template-compiler": "^2.6.10"
   },
@@ -31,8 +31,8 @@
     "leaflet-providers": "^1.9.0",
     "leaflet.markercluster": "^1.4.1",
     "moment": "^2.24.0",
-    "popper.js": "^1.15.0",
-    "select2": "4.0.10",
+    "popper.js": "^1.16.0",
+    "select2": "4.0.11",
     "sortablejs": "^1.10.1",
     "typeahead.js-bootstrap4-css": "^1.0.0",
     "wheelzoom": "^4.0.1"
