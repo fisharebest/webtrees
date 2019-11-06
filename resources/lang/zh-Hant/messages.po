@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Chinese (Traditional) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-10-28 14:09+0000\n"
-"PO-Revision-Date: 2019-10-25 23:32+0000\n"
-"Last-Translator: Yu-Ten Lee <ylee3274@yahoo.com>\n"
+"PO-Revision-Date: 2019-11-06 12:23+0000\n"
+"Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Traditional) <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/zh_Hant/>\n"
 "Language: zh-Hant\n"
 "MIME-Version: 1.0\n"
@@ -21623,7 +21623,7 @@ msgstr "網站信息"
 
 #: resources/views/setup/step-3-database-type.phtml:25
 msgid "webtrees needs a database to store your genealogy data."
-msgstr "webtrees需要一個MySQL數據庫，版本%s或更高版本。"
+msgstr "webtrees需要一個數據庫來存儲您的家譜數據。"
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:47
@@ -21830,7 +21830,6 @@ msgstr "…"
 #~ msgid "System settings"
 #~ msgstr "系統設定"
 
-#, php-format
 #~ msgid "The folder %s does not exist, and it could not be created."
 #~ msgstr "文件夾 %s 不存在，不能被創建。"
 
