@@ -183,6 +183,7 @@ class EditMediaController extends AbstractEditController
                     'media'           => $media,
                     'media_types'     => $this->media_file_service->mediaTypes(),
                     'unused_files'    => $this->media_file_service->unusedFiles($tree, $data_filesystem),
+                    'tree'            => $tree,
                 ]));
             }
         }
