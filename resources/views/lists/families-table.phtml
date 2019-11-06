@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
@@ -11,9 +12,8 @@ use Ramsey\Uuid\Uuid;
 
 $table_id = 'table-fam-' . Uuid::uuid4()->toString(); // lists requires a unique ID in case there are multiple lists per page
 
-$hundred_years_ago = new DateTime();
-$hundred_years_ago->modify('-100 years');
-$hundred_years_ago = new Date($hundred_years_ago->format('Y'));
+$hundred_years_ago = Carbon::now()->subYears(100)->julianDay();
+
 ?>
 
 <?php View::push('javascript') ?>
@@ -408,7 +408,7 @@ $marriageAgeData = [
                 <td hidden>
                     <?php if (!$family->canShow() || !$mdate->isOK()) : ?>
                         U
-                    <?php elseif (Date::compare($mdate, $hundred_years_ago) > 0) : ?>
+                    <?php elseif ($mdate->maximumJulianDay() > $hundred_years_ago) : ?>
                         Y100
                     <?php else : ?>
                         YES

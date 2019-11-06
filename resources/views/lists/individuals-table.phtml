@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -15,9 +16,7 @@ use Ramsey\Uuid\Uuid;
 // lists requires a unique ID in case there are multiple lists per page
 $table_id = 'table-indi-' . Uuid::uuid4()->toString();
 
-$hundred_years_ago = new DateTime();
-$hundred_years_ago->modify('-100 years');
-$hundred_years_ago = new Date($hundred_years_ago->format('Y'));
+$hundred_years_ago = Carbon::now()->subYears(100)->julianDay();
 
 $unique_indis = []; // Don't double-count indis with multiple names.
 
@@ -437,7 +436,7 @@ $deathAgeData = [
 
                 <!-- Filter by birth date -->
                 <td hidden>
-                    <?php if (!$individual->canShow() || Date::compare($individual->getEstimatedBirthDate(), $hundred_years_ago) > 0) : ?>
+                    <?php if (!$individual->canShow() || $individual->getEstimatedBirthDate()->maximumJulianDay() > $hundred_years_ago) : ?>
                         Y100
                     <?php else : ?>
                         YES
@@ -446,7 +445,7 @@ $deathAgeData = [
 
                 <!-- Filter by death date -->
                 <td hidden>
-                    <?php if (isset($death_dates[0]) && Date::compare($death_dates[0], $hundred_years_ago) > 0) : ?>
+                    <?php if ($individual->getEstimatedDeathDate()->maximumJulianDay() > $hundred_years_ago) : ?>
                         Y100
                     <?php elseif ($individual->isDead()) : ?>
                         YES

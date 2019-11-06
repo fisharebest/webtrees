@@ -514,7 +514,7 @@ class CalendarController extends AbstractBaseController
     private function applyFilter(array $facts, string $filterof, string $filtersx): array
     {
         $filtered      = [];
-        $hundred_years = Carbon::now()->subYears(100)->julianDay();
+        $hundred_years_ago = Carbon::now()->subYears(100)->julianDay();
         foreach ($facts as $fact) {
             $record = $fact->record();
             if ($filtersx) {
@@ -541,7 +541,7 @@ class CalendarController extends AbstractBaseController
                 }
             }
             // Filter on recent events
-            if ($filterof === 'recent' && $fact->date()->maximumJulianDay() < $hundred_years) {
+            if ($filterof === 'recent' && $fact->date()->maximumJulianDay() < $hundred_years_ago) {
                 continue;
             }
             $filtered[] = $fact;

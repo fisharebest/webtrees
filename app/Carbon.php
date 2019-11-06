@@ -24,6 +24,7 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
+use function gregoriantojd;
 use function unixtojd;
 
 /**
@@ -36,11 +37,10 @@ class Carbon extends CarbonImmutable
 {
     /**
      * We use julian days extensively, so a helper function to convert.
-     * unixtojd() can return false if timestamp is out of range.
      */
     public function julianDay(): int
     {
-        return (int) unixtojd($this->timestamp);
+        return gregoriantojd($this->month, $this->day, $this->year);
     }
 
     /**
