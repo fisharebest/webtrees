@@ -36,13 +36,13 @@ class CensusTest extends TestCase
         $censuses = Census::censusPlaces('XX');
 
         $this->assertCount(8, $censuses);
-        $this->assertInstanceOf(CensusOfCzechRepublic::class, $censuses[0]);
-        $this->assertInstanceOf(CensusOfDenmark::class, $censuses[1]);
-        $this->assertInstanceOf(CensusOfDeutschland::class, $censuses[2]);
-        $this->assertInstanceOf(CensusOfEngland::class, $censuses[3]);
-        $this->assertInstanceOf(CensusOfFrance::class, $censuses[4]);
-        $this->assertInstanceOf(CensusOfScotland::class, $censuses[5]);
-        $this->assertInstanceOf(CensusOfUnitedStates::class, $censuses[6]);
-        $this->assertInstanceOf(CensusOfWales::class, $censuses[7]);
+        $this->assertInstanceOf(CensusOfUnitedStates::class, $censuses[0]);
+        $this->assertInstanceOf(CensusOfEngland::class, $censuses[1]);
+        $this->assertInstanceOf(CensusOfScotland::class, $censuses[2]);
+        $this->assertInstanceOf(CensusOfWales::class, $censuses[3]);
+        $this->assertInstanceOf(CensusOfDeutschland::class, $censuses[4]);
+        $this->assertInstanceOf(CensusOfFrance::class, $censuses[5]);
+        $this->assertInstanceOf(CensusOfCzechRepublic::class, $censuses[6]);
+        $this->assertInstanceOf(CensusOfDenmark::class, $censuses[7]);
     }
 }

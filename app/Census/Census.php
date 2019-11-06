@@ -31,59 +31,93 @@ class Census
      */
     public static function censusPlaces(string $locale): array
     {
-        $all_census_places = [
-            new CensusOfCzechRepublic(),
-            new CensusOfDenmark(),
-            new CensusOfDeutschland(),
-            new CensusOfEngland(),
-            new CensusOfFrance(),
-            new CensusOfScotland(),
-            new CensusOfUnitedStates(),
-            new CensusOfWales(),
-        ];
-
         switch ($locale) {
             case 'cs':
-                $census_places = [new CensusOfCzechRepublic()];
-                break;
+                return [
+                    new CensusOfCzechRepublic(),
+                    new CensusOfDenmark(),
+                    new CensusOfDeutschland(),
+                    new CensusOfEngland(),
+                    new CensusOfFrance(),
+                    new CensusOfScotland(),
+                    new CensusOfUnitedStates(),
+                    new CensusOfWales(),
+                ];
 
             case 'en-AU':
             case 'en-GB':
-                $census_places = [
+                return [
                     new CensusOfEngland(),
-                    new CensusOfWales(),
                     new CensusOfScotland(),
+                    new CensusOfWales(),
+                    new CensusOfUnitedStates(),
+                    new CensusOfCzechRepublic(),
+                    new CensusOfDenmark(),
+                    new CensusOfDeutschland(),
+                    new CensusOfFrance(),
                 ];
-                break;
 
             case 'en-US':
-                $census_places = [new CensusOfUnitedStates()];
-                break;
+                return [
+                    new CensusOfUnitedStates(),
+                    new CensusOfCzechRepublic(),
+                    new CensusOfDenmark(),
+                    new CensusOfDeutschland(),
+                    new CensusOfEngland(),
+                    new CensusOfFrance(),
+                    new CensusOfScotland(),
+                    new CensusOfWales(),
+                ];
 
             case 'fr':
             case 'fr-CA':
-                $census_places = [new CensusOfFrance()];
+                return [
+                    new CensusOfFrance(),
+                    new CensusOfCzechRepublic(),
+                    new CensusOfDenmark(),
+                    new CensusOfDeutschland(),
+                    new CensusOfEngland(),
+                    new CensusOfScotland(),
+                    new CensusOfUnitedStates(),
+                    new CensusOfWales(),
+                ];
                 break;
 
             case 'da':
-                $census_places = [new CensusOfDenmark()];
-                break;
+                return [
+                    new CensusOfDenmark(),
+                    new CensusOfDeutschland(),
+                    new CensusOfCzechRepublic(),
+                    new CensusOfEngland(),
+                    new CensusOfFrance(),
+                    new CensusOfScotland(),
+                    new CensusOfUnitedStates(),
+                    new CensusOfWales(),
+                ];
 
             case 'de':
-                $census_places = [new CensusOfDeutschland()];
-                break;
+                return [
+                    new CensusOfDeutschland(),
+                    new CensusOfCzechRepublic(),
+                    new CensusOfDenmark(),
+                    new CensusOfEngland(),
+                    new CensusOfFrance(),
+                    new CensusOfScotland(),
+                    new CensusOfUnitedStates(),
+                    new CensusOfWales(),
+                ];
 
             default:
-                $census_places = [];
-                break;
+                return [
+                    new CensusOfUnitedStates(),
+                    new CensusOfEngland(),
+                    new CensusOfScotland(),
+                    new CensusOfWales(),
+                    new CensusOfDeutschland(),
+                    new CensusOfFrance(),
+                    new CensusOfCzechRepublic(),
+                    new CensusOfDenmark(),
+                ];
         }
-
-        foreach ($all_census_places as $census_place) {
-            if (!in_array($census_place, $census_places, false)) {
-                $census_places[] = $census_place;
-            }
-        }
-
-        return $census_places;
     }
 }
