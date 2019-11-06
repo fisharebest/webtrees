@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-10-28 14:09+0000\n"
-"PO-Revision-Date: 2019-10-17 08:20+0000\n"
+"PO-Revision-Date: 2019-11-06 12:20+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/zh_Hans/>\n"
 "Language: zh-Hans\n"
@@ -21644,7 +21644,7 @@ msgstr "网站信息"
 
 #: resources/views/setup/step-3-database-type.phtml:25
 msgid "webtrees needs a database to store your genealogy data."
-msgstr "webtrees需要一个MySQL数据库，版本%s或更高版本。"
+msgstr "webtrees需要一个数据库来存储您的家谱数据。"
 
 # I18N: Help text for the “Messages” site configuration setting
 #. I18N: Help text for the “Messages” site configuration setting
@@ -21819,7 +21819,6 @@ msgstr ""
 #~ msgid "Select a block and use the arrows to move it."
 #~ msgstr "选中一个块名称,然后点击一个箭头图标移动那选中块到箭头方向。"
 
-#, php-format
 #~ msgid "The folder %s does not exist, and it could not be created."
 #~ msgstr "文件夹 %s 不存在，不能被创建。"
 
