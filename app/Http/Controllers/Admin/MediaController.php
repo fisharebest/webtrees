@@ -22,16 +22,17 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Http\RequestHandlers\DeletePath;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\MediaFileService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -42,12 +43,18 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Throwable;
 
 use function assert;
-use function is_dir;
+use function e;
+use function filesize;
+use function getimagesize;
+use function ini_get;
+use function intdiv;
+use function is_string;
 use function preg_match;
 use function redirect;
 use function route;
 use function str_replace;
-use function strpos;
+use function strlen;
+use function substr;
 use function trim;
 
 use const UPLOAD_ERR_OK;
@@ -63,14 +70,19 @@ class MediaController extends AbstractAdminController
     /** @var DatatablesService */
     private $datatables_service;
 
+    /** @var MediaFileService */
+    private $media_file_service;
+
     /**
      * MediaController constructor.
      *
-     * @param DatatablesService   $datatables_service
+     * @param DatatablesService $datatables_service
+     * @param MediaFileService  $media_file_service
      */
-    public function __construct(DatatablesService $datatables_service)
+    public function __construct(DatatablesService $datatables_service, MediaFileService $media_file_service)
     {
         $this->datatables_service = $datatables_service;
+        $this->media_file_service = $media_file_service;
     }
 
     /**
@@ -83,26 +95,22 @@ class MediaController extends AbstractAdminController
         $data_filesystem = $request->getAttribute('filesystem.data');
         assert($data_filesystem instanceof FilesystemInterface);
 
-        $files        = $request->getQueryParams()['files'] ?? 'local'; // local|unused|external
-        $media_folder = $request->getQueryParams()['media_folder'] ?? '';
-        $subfolders   = $request->getQueryParams()['subfolders'] ?? 'include'; // include/exclude
+        $data_filesystem_name = $request->getAttribute('filesystem.data.name');
+        assert(is_string($data_filesystem_name));
 
-        $media_folders = $this->allMediaFolders($data_filesystem);
-
-        // Preserve the pagination/filtering/sorting between requests, so that the
-        // browser’s back button works. Pagination is dependent on the currently
-        // selected folder.
-        $table_id = md5($files . $media_folder . $subfolders);
+        $files         = $request->getQueryParams()['files'] ?? 'local'; // local|unused|external
+        $media_folder  = $request->getQueryParams()['media_folder'] ?? '';
+        $subfolders    = $request->getQueryParams()['subfolders'] ?? 'include'; // include|exclude
+        $media_folders = $this->media_file_service->allMediaFolders($data_filesystem);
 
         $title = I18N::translate('Manage media');
 
         return $this->viewResponse('admin/media', [
-            'data_folder'   => WT_DATA_DIR,
+            'data_folder'   => $data_filesystem_name,
             'files'         => $files,
             'media_folder'  => $media_folder,
             'media_folders' => $media_folders,
             'subfolders'    => $subfolders,
-            'table_id'      => $table_id,
             'title'         => $title,
         ]);
     }
@@ -122,133 +130,21 @@ class MediaController extends AbstractAdminController
     }
 
     /**
-     * Generate a list of all folders in the filesystem.
-     *
-     * @param FilesystemInterface $data_filesystem
-     *
-     * @return Collection
-     */
-    private function allMediaFolders(FilesystemInterface $data_filesystem): Collection
-    {
-        $media_folders = DB::table('gedcom_setting')
-            ->where('setting_name', '=', 'MEDIA_DIRECTORY')
-            ->pluck('setting_value')
-            ->unique();
-
-        $folders = new Collection($media_folders);
-
-        foreach ($media_folders as $media_folder) {
-            $tmp = Collection::make($data_filesystem->listContents($media_folder, true))
-                ->filter(static function (array $metadata) {
-                    return $metadata['type'] === 'dir';
-                })
-                ->map(static function (array $metadata): string {
-                    return $metadata['path'] . '/';
-                });
-
-            $folders = $folders->concat($tmp);
-        }
-
-        return $folders
-            ->unique()
-            ->mapWithKeys(static function (string $folder): array {
-                return [$folder => $folder];
-            });
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function delete(ServerRequestInterface $request): ResponseInterface
-    {
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
-
-        $delete_file  = $request->getQueryParams()['file'];
-        $media_folder = $request->getQueryParams()['folder'];
-
-        // Only delete valid (i.e. unused) media files
-        $disk_files = $this->allDiskFiles($media_folder, 'include');
-
-        // Check file exists? Maybe it was already deleted or renamed.
-        if (in_array($delete_file, $disk_files, true)) {
-            $path = $media_folder . $delete_file;
-            try {
-                if ($data_filesystem->has($path)) {
-                    $data_filesystem->delete($path);
-                }
-                FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', e($path)), 'info');
-            } catch (Throwable $ex) {
-                FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
-            }
-        }
-
-        return response();
-    }
-
-    /**
-     * Fetch a list of all files on disk
-     *
-     * @param string $media_folder Location of root folder
-     * @param string $subfolders   Include or exclude subfolders
-     *
-     * @return string[]
-     */
-    private function allDiskFiles(string $media_folder, string $subfolders): array
-    {
-        return $this->scanFolders(WT_DATA_DIR . $media_folder, $subfolders === 'include');
-    }
-
-    /**
-     * Search a folder (and optional subfolders) for filenames that match a search pattern.
-     *
-     * @param string $dir
-     * @param bool   $recursive
-     *
-     * @return string[]
-     */
-    private function scanFolders(string $dir, bool $recursive): array
-    {
-        $files = [];
-
-        // $dir comes from the database. The actual folder may not exist.
-        if (is_dir($dir)) {
-            foreach (scandir($dir, SCANDIR_SORT_NONE) as $path) {
-                if (is_dir($dir . $path)) {
-                    // What if there are user-defined subfolders “thumbs” or “watermarks”?
-                    if ($path !== '.' && $path !== '..' && $path !== 'thumbs' && $path !== 'watermark' && $recursive) {
-                        foreach ($this->scanFolders($dir . $path . '/', $recursive) as $subpath) {
-                            $files[] = $path . '/' . $subpath;
-                        }
-                    }
-                } else {
-                    $files[] = $path;
-                }
-            }
-        }
-
-        return $files;
-    }
-
-    /**
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
     public function data(ServerRequestInterface $request): ResponseInterface
     {
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $files  = $request->getQueryParams()['files']; // local|external|unused
-        $search = $request->getQueryParams()['search'];
-        $search = $search['value'];
-        $start  = (int) $request->getQueryParams()['start'];
-        $length = (int) $request->getQueryParams()['length'];
 
         // Files within this folder
         $media_folder = $request->getQueryParams()['media_folder'];
 
-        // subfolders within $media_path
+        // Show sub-folders within $media_folder
         $subfolders = $request->getQueryParams()['subfolders']; // include|exclude
 
         $search_columns = ['multimedia_file_refn', 'descriptive_title'];
@@ -257,6 +153,27 @@ class MediaController extends AbstractAdminController
             0 => 'multimedia_file_refn',
             2 => new Expression('descriptive_title || multimedia_file_refn'),
         ];
+
+        // Convert a row from the database into a row for datatables
+        $callback = function (stdClass $row): array {
+            /** @var Media $media */
+            $media = Media::rowMapper()($row);
+
+            $media_files = $media->mediaFiles()
+                ->filter(static function (MediaFile $media_file) use ($row): bool {
+                    return $media_file->filename() === $row->multimedia_file_refn;
+                })
+                ->map(static function (MediaFile $media_file): string {
+                    return $media_file->displayImage(150, 150, '', []);
+                })
+                ->first();
+
+            return [
+                $row->multimedia_file_refn,
+                $media_files,
+                $this->mediaObjectInfo($media),
+            ];
+        };
 
         switch ($files) {
             case 'local':
@@ -278,25 +195,7 @@ class MediaController extends AbstractAdminController
                     $query->where(new Expression('setting_value || multimedia_file_refn'), 'NOT LIKE', $media_folder . '%/%');
                 }
 
-                return $this->datatables_service->handle($request, $query, $search_columns, $sort_columns, function (stdClass $row): array {
-                    /** @var Media $media */
-                    $media = Media::rowMapper()($row);
-
-                    $media_files = $media->mediaFiles()
-                        ->filter(static function (MediaFile $media_file) use ($row): bool {
-                            return $media_file->filename() === $row->multimedia_file_refn;
-                        })
-                        ->map(static function (MediaFile $media_file): string {
-                            return $media_file->displayImage(150, 150, '', []);
-                        })
-                        ->implode('');
-
-                    return [
-                        $row->multimedia_file_refn,
-                        $media_files,
-                        $this->mediaObjectInfo($media),
-                    ];
-                });
+                return $this->datatables_service->handleQuery($request, $query, $search_columns, $sort_columns, $callback);
 
             case 'external':
                 $query = DB::table('media_file')
@@ -312,25 +211,7 @@ class MediaController extends AbstractAdminController
                     })
                     ->select(['media.*', 'multimedia_file_refn', 'descriptive_title']);
 
-                return $this->datatables_service->handle($request, $query, $search_columns, $sort_columns, function (stdClass $row): array {
-                    /** @var Media $media */
-                    $media = Media::rowMapper()($row);
-
-                    $media_files = $media->mediaFiles()
-                        ->filter(static function (MediaFile $media_file) use ($row): bool {
-                            return $media_file->filename() === $row->multimedia_file_refn;
-                        })
-                        ->map(static function (MediaFile $media_file): string {
-                            return $media_file->displayImage(150, 150, '', []);
-                        })
-                        ->implode('');
-
-                    return [
-                        $row->multimedia_file_refn,
-                        $media_files,
-                        $this->mediaObjectInfo($media),
-                    ];
-                });
+                return $this->datatables_service->handleQuery($request, $query, $search_columns, $sort_columns, $callback);
 
             case 'unused':
                 // Which trees use which media folder?
@@ -340,40 +221,27 @@ class MediaController extends AbstractAdminController
                     ->where('gedcom.gedcom_id', '>', 0)
                     ->pluck('setting_value', 'gedcom_name');
 
-                $disk_files = $this->allDiskFiles($media_folder, $subfolders);
-                $db_files   = $this->allMediaFiles($media_folder, $subfolders);
+                $disk_files = $this->media_file_service->allFilesOnDisk($data_filesystem, $media_folder, $subfolders === 'include');
+                $db_files   = $this->media_file_service->allFilesInDatabase($media_folder, $subfolders === 'include');
 
                 // All unused files
-                $unused_files = array_diff($disk_files, $db_files);
-                $recordsTotal = count($unused_files);
-
-                // Filter unused files
-                if ($search) {
-                    $unused_files = array_filter($unused_files, static function (string $x) use ($search): bool {
-                        return strpos($x, $search) !== false;
+                $unused_files = $disk_files->diff($db_files)
+                    ->map(static function (string $file): array {
+                        return (array) $file;
                     });
-                }
-                $recordsFiltered = count($unused_files);
 
-                // Sort files - only option is column 0
-                sort($unused_files);
-                $order = $request->getQueryParams()['order'];
-                if ($order[0]['dir'] === 'desc') {
-                    $unused_files = array_reverse($unused_files);
-                }
+                $search_columns = [0];
 
-                // Paginate unused files
-                $unused_files = array_slice($unused_files, $start, $length);
+                $sort_columns = [0 => 0];
 
-                $data = [];
-                foreach ($unused_files as $unused_file) {
-                    $imgsize = getimagesize(WT_DATA_DIR . $media_folder . $unused_file);
+                $callback = function (array $row) use ($media_folder, $media_trees): array {
+                    $imgsize = getimagesize(WT_DATA_DIR . $row[0]);
                     // We can’t create a URL (not in public_html) or use the media firewall (no such object)
                     if ($imgsize === false) {
                         $img = '-';
                     } else {
                         $url = route('unused-media-thumbnail', [
-                            'path' => $media_folder . $unused_file,
+                            'path' => $row[0],
                             'w'    => 100,
                             'h'    => 100,
                         ]);
@@ -383,37 +251,29 @@ class MediaController extends AbstractAdminController
                     // Form to create new media object in each tree
                     $create_form = '';
                     foreach ($media_trees as $media_tree => $media_directory) {
-                        if (Str::startsWith($media_folder . $unused_file, $media_directory)) {
-                            $tmp         = substr($media_folder . $unused_file, strlen($media_directory));
+                        if (Str::startsWith($row[0], $media_directory)) {
+                            $tmp         = substr($row[0], strlen($media_directory));
                             $create_form .=
                                 '<p><a href="#" data-toggle="modal" data-target="#modal-create-media-from-file" data-file="' . e($tmp) . '" data-url="' . e(route('create-media-from-file', ['tree' => $media_tree])) . '" onclick="document.getElementById(\'modal-create-media-from-file-form\').action=this.dataset.url; document.getElementById(\'file\').value=this.dataset.file;">' . I18N::translate('Create') . '</a> — ' . e($media_tree) . '<p>';
                         }
                     }
 
-                    $delete_link = '<p><a data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($unused_file)) . '" data-url="' . e(route('admin-media-delete', [
-                            'file'   => $unused_file,
-                            'folder' => $media_folder,
-                        ])) . '" onclick="if (confirm(this.dataset.confirm)) jQuery.post(this.dataset.url, function (){document.location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
+                    $delete_link = '<p><a data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($row[0])) . '" data-post-url="' . e(route(DeletePath::class, [
+                            'path'   => $row[0],
+                        ])) . '" href="#">' . I18N::translate('Delete') . '</a></p>';
 
-                    $data[] = [
-                        $this->mediaFileInfo($media_folder, $unused_file) . $delete_link,
+                    return [
+                        $this->mediaFileInfo($media_folder, $row[0]) . $delete_link,
                         $img,
                         $create_form,
                     ];
-                }
-                break;
+                };
+
+                return $this->datatables_service->handleCollection($request, $unused_files, $search_columns, $sort_columns, $callback);
 
             default:
                 throw new BadRequestHttpException();
         }
-
-        // See http://www.datatables.net/usage/server-side
-        return response([
-            'draw'            => (int) $request->getQueryParams()['draw'],
-            'recordsTotal'    => $recordsTotal,
-            'recordsFiltered' => $recordsFiltered,
-            'data'            => $data,
-        ]);
     }
 
     /**
@@ -456,33 +316,6 @@ class MediaController extends AbstractAdminController
         }
 
         return $html;
-    }
-
-    /**
-     * Fetch a list of all files on in the database.
-     *
-     * @param string $media_folder
-     * @param string $subfolders
-     *
-     * @return string[]
-     */
-    private function allMediaFiles(string $media_folder, string $subfolders): array
-    {
-        $query = DB::table('media_file')
-            ->join('gedcom_setting', 'gedcom_id', '=', 'm_file')
-            ->where('setting_name', '=', 'MEDIA_DIRECTORY')
-            ->where('multimedia_file_refn', 'LIKE', '%/%')
-            ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
-            ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->where(new Expression('setting_value || multimedia_file_refn'), 'LIKE', $media_folder . '%')
-            ->select(new Expression('setting_value || multimedia_file_refn AS path'))
-            ->orderBy(new Expression('setting_value || multimedia_file_refn'));
-
-        if ($subfolders === 'exclude') {
-            $query->where(new Expression('setting_value || multimedia_file_refn'), 'NOT LIKE', $media_folder . '%/%');
-        }
-
-        return $query->pluck('path')->all();
     }
 
     /**
@@ -535,7 +368,7 @@ class MediaController extends AbstractAdminController
         $data_filesystem = $request->getAttribute('filesystem.data');
         assert($data_filesystem instanceof FilesystemInterface);
 
-        $media_folders = $this->allMediaFolders($data_filesystem);
+        $media_folders = $this->media_file_service->allMediaFolders($data_filesystem);
 
         $filesize = ini_get('upload_max_filesize') ?: '2M';
 
@@ -559,7 +392,7 @@ class MediaController extends AbstractAdminController
         $data_filesystem = $request->getAttribute('filesystem.data');
         assert($data_filesystem instanceof FilesystemInterface);
 
-        $all_folders = $this->allMediaFolders($data_filesystem);
+        $all_folders = $this->media_file_service->allMediaFolders($data_filesystem);
 
         foreach ($request->getUploadedFiles() as $key => $uploaded_file) {
             assert($uploaded_file instanceof UploadedFileInterface);

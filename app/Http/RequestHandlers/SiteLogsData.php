@@ -61,7 +61,7 @@ class SiteLogsData implements RequestHandlerInterface
     {
         $query = $this->site_logs_service->logsQuery($request->getQueryParams());
 
-        return $this->datatables_service->handle($request, $query, [], [], static function (stdClass $row): array {
+        return $this->datatables_service->handleQuery($request, $query, [], [], static function (stdClass $row): array {
             return [
                 $row->log_id,
                 Carbon::make($row->log_time)->local()->format('Y-m-d H:i:s'),

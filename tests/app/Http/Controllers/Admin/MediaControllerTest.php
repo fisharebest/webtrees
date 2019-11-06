@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\TestCase;
 use League\Flysystem\Adapter\NullAdapter;
 use League\Flysystem\Filesystem;
@@ -40,11 +41,13 @@ class MediaControllerTest extends TestCase
      */
     public function testIndex(): void
     {
-        $data_filesystem    = new Filesystem(new NullAdapter());
         $datatables_service = new DatatablesService();
-        $filesystem         = new Filesystem(new NullAdapter());
-        $controller         = new MediaController($datatables_service, $filesystem);
-        $request            = self::createRequest()->withAttribute('filesystem.data', $data_filesystem);
+        $media_file_service = new MediaFileService();
+        $data_filesystem    = new Filesystem(new NullAdapter());
+        $controller         = new MediaController($datatables_service, $media_file_service);
+        $request            = self::createRequest()
+            ->withAttribute('filesystem.data', $data_filesystem)
+            ->withAttribute('filesystem.data.name', 'data/');
         $response           = $controller->index($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -56,8 +59,9 @@ class MediaControllerTest extends TestCase
     public function testDataLocal(): void
     {
         $datatables_service = new DatatablesService();
-        $filesystem         = new Filesystem(new NullAdapter());
-        $controller         = new MediaController($datatables_service, $filesystem);
+        $media_file_service = new MediaFileService();
+        $data_filesystem    = new Filesystem(new NullAdapter());
+        $controller         = new MediaController($datatables_service, $media_file_service);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
             'files'        => 'local',
             'media_folder' => '',
@@ -65,7 +69,9 @@ class MediaControllerTest extends TestCase
             'search'       => ['value' => ''],
             'start'        => '0',
             'length'       => '10',
-        ]);
+        ])
+            ->withAttribute('filesystem.data', $data_filesystem)
+            ->withAttribute('filesystem.data.name', 'data/');
         $response           = $controller->data($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -77,8 +83,9 @@ class MediaControllerTest extends TestCase
     public function testDataExternal(): void
     {
         $datatables_service = new DatatablesService();
-        $filesystem         = new Filesystem(new NullAdapter());
-        $controller         = new MediaController($datatables_service, $filesystem);
+        $media_file_service = new MediaFileService();
+        $data_filesystem    = new Filesystem(new NullAdapter());
+        $controller         = new MediaController($datatables_service, $media_file_service);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
             'files'        => 'local',
             'media_folder' => '',
@@ -86,7 +93,9 @@ class MediaControllerTest extends TestCase
             'search'       => ['value' => ''],
             'start'        => '0',
             'length'       => '10',
-        ]);
+        ])
+            ->withAttribute('filesystem.data', $data_filesystem)
+            ->withAttribute('filesystem.data.name', 'data/');
         $response           = $controller->data($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -98,8 +107,9 @@ class MediaControllerTest extends TestCase
     public function testDataUnused(): void
     {
         $datatables_service = new DatatablesService();
-        $filesystem         = new Filesystem(new NullAdapter());
-        $controller         = new MediaController($datatables_service, $filesystem);
+        $media_file_service = new MediaFileService();
+        $data_filesystem    = new Filesystem(new NullAdapter());
+        $controller         = new MediaController($datatables_service, $media_file_service);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
             'files'        => 'local',
             'media_folder' => '',
@@ -107,7 +117,9 @@ class MediaControllerTest extends TestCase
             'search'       => ['value' => ''],
             'start'        => '0',
             'length'       => '10',
-        ]);
+        ])
+            ->withAttribute('filesystem.data', $data_filesystem)
+            ->withAttribute('filesystem.data.name', 'data/');
         $response           = $controller->data($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -116,26 +128,12 @@ class MediaControllerTest extends TestCase
     /**
      * @return void
      */
-    public function testDelete(): void
-    {
-        $datatables_service = new DatatablesService();
-        $data_filesystem    = new Filesystem(new NullAdapter());
-        $controller         = new MediaController($datatables_service);
-        $request            = self::createRequest(RequestMethodInterface::METHOD_POST, ['file' => 'foo', 'folder' => 'bar'])
-            ->withAttribute('filesystem.data', $data_filesystem);
-        $response           = $controller->delete($request);
-
-        $this->assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
-    }
-
-    /**
-     * @return void
-     */
     public function testUpload(): void
     {
         $datatables_service = new DatatablesService();
+        $media_file_service = new MediaFileService();
         $data_filesystem    = new Filesystem(new NullAdapter());
-        $controller         = new MediaController($datatables_service);
+        $controller         = new MediaController($datatables_service, $media_file_service);
         $request            = self::createRequest()->withAttribute('filesystem.data', $data_filesystem);
         $response           = $controller->upload($request);
 
@@ -147,10 +145,10 @@ class MediaControllerTest extends TestCase
      */
     public function testUploadAction(): void
     {
-        $data_filesystem    = new Filesystem(new NullAdapter());
         $datatables_service = new DatatablesService();
-        $filesystem         = new Filesystem(new NullAdapter());
-        $controller         = new MediaController($datatables_service, $filesystem);
+        $media_file_service = new MediaFileService();
+        $data_filesystem    = new Filesystem(new NullAdapter());
+        $controller         = new MediaController($datatables_service, $media_file_service);
         $request            = self::createRequest()->withAttribute('filesystem.data', $data_filesystem);
         $response           = $controller->uploadAction($request);
 

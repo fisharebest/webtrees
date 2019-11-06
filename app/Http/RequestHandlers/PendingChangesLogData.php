@@ -125,6 +125,6 @@ class PendingChangesLogData implements RequestHandlerInterface
             ];
         };
 
-        return $this->datatables_service->handle($request, $query, [], [], $callback);
+        return $this->datatables_service->handleQuery($request, $query, [], [], $callback);
     }
 }

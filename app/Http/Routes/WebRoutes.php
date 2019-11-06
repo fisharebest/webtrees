@@ -192,7 +192,6 @@ class WebRoutes
             $router->get('admin-media', '/media', 'Admin\MediaController::index');
             $router->post('admin-media-select', '/media', 'Admin\MediaController::select');
             $router->get('admin-media-data', '/media-data', 'Admin\MediaController::data');
-            $router->post('admin-media-delete', '/media-delete', 'Admin\MediaController::delete');
             $router->get('admin-media-upload', '/media-upload', 'Admin\MediaController::upload');
             $router->post('admin-media-upload-action', '/media-upload', 'Admin\MediaController::uploadAction');
             $router->get(CreateTreePage::class, '/trees/create', CreateTreePage::class);

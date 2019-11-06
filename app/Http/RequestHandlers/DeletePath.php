@@ -33,7 +33,7 @@ use function is_string;
 use function response;
 
 /**
- * Delete a file.
+ * Delete a file or folder from the data filesystem.
  */
 class DeletePath implements RequestHandlerInterface
 {

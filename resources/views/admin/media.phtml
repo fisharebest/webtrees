@@ -76,19 +76,27 @@ use Fisharebest\Webtrees\View;
 <br>
 <br>
 
-<table class="table table-bordered table-sm" id="media-table-<?= e($table_id) ?>"
+<table class="table table-bordered table-sm datatables"
     <?= view('lists/datatables-attributes') ?>
     data-ajax="<?= e(route('admin-media-data', ['files' => $files, 'media_folder' => $media_folder, 'subfolders' => $subfolders])) ?>"
+    data-server-side="true"
+    data-auto-width="false"
 >
     <thead>
         <tr>
-            <th><?= I18N::translate('Media file') ?></th>
-            <th><?= I18N::translate('Media') ?></th>
-            <th><?= I18N::translate('Media object') ?></th>
+            <th>
+                <?= I18N::translate('Media file') ?>
+            </th>
+
+            <th data-sortable="false">
+                <?= I18N::translate('Media') ?>
+            </th>
+
+            <th data-sortable="<?= $files === 'unused' ? 'false' : 'true' ?>">
+                <?= I18N::translate('Media object') ?>
+            </th>
         </tr>
     </thead>
-    <tbody>
-    </tbody>
 </table>
 <?= view('modals/create-media-from-file') ?>
 
@@ -97,16 +105,5 @@ use Fisharebest\Webtrees\View;
     $("#admin-media-form input, #admin-media-form select").change(function () {
         $("#admin-media-form").submit();
     });
-
-  $("#media-table-<?= e($table_id) ?>").dataTable({
-    processing: true,
-    serverSide: true,
-    autoWidth: false,
-    columns: [
-      {},
-      {sortable: false},
-      {sortable: <?= $files === 'unused' ? 'false' : 'true' ?>}
-    ]
-  });
 </script>
 <?php View::endpush() ?>

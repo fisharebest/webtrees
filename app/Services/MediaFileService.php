@@ -24,6 +24,8 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
+use Illuminate\Support\Collection;
 use InvalidArgumentException;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -36,6 +38,7 @@ use function array_diff;
 use function array_filter;
 use function array_map;
 use function assert;
+use function dirname;
 use function intdiv;
 use function pathinfo;
 use function preg_match;
@@ -241,5 +244,106 @@ class MediaFileService
         }
 
         return $gedcom;
+    }
+
+    /**
+     * Fetch a list of all files on disk (in folders used by any tree).
+     *
+     * @param FilesystemInterface $data_filesystem Fileystem to search
+     * @param string              $media_folder    Root folder
+     * @param bool                $subfolders      Include subfolders
+     *
+     * @return Collection
+     */
+    public function allFilesOnDisk(FilesystemInterface $data_filesystem, string $media_folder, bool $subfolders): Collection
+    {
+        $array = $data_filesystem->listContents($media_folder, $subfolders);
+
+        return Collection::make($array)
+            ->filter(static function (array $metadata): bool {
+                return
+                    $metadata['type'] === 'file' &&
+                    strpos($metadata['path'], '/thumbs/') === false &&
+                    strpos($metadata['path'], '/watermark/') === false;
+            })
+            ->map(static function (array $metadata): string {
+                return $metadata['path'];
+            });
+    }
+
+    /**
+     * Fetch a list of all files on in the database.
+     *
+     * @param string $media_folder Root folder
+     * @param bool   $subfolders   Include subfolders
+     *
+     * @return Collection
+     */
+    public function allFilesInDatabase(string $media_folder, bool $subfolders): Collection
+    {
+        $query = DB::table('media_file')
+            ->join('gedcom_setting', 'gedcom_id', '=', 'm_file')
+            ->where('setting_name', '=', 'MEDIA_DIRECTORY')
+            //->where('multimedia_file_refn', 'LIKE', '%/%')
+            ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
+            ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
+            ->where(new Expression('setting_value || multimedia_file_refn'), 'LIKE', $media_folder . '%')
+            ->select(new Expression('setting_value || multimedia_file_refn AS path'))
+            ->orderBy(new Expression('setting_value || multimedia_file_refn'));
+
+        if (!$subfolders) {
+            $query->where(new Expression('setting_value || multimedia_file_refn'), 'NOT LIKE', $media_folder . '%/%');
+        }
+
+        return $query->pluck('path');
+    }
+
+    /**
+     * Generate a list of all folders in either the database or the filesystem.
+     *
+     * @param FilesystemInterface $data_filesystem
+     *
+     * @return Collection
+     */
+    public function allMediaFolders(FilesystemInterface $data_filesystem): Collection
+    {
+        $db_folders = DB::table('media_file')
+            ->join('gedcom_setting', 'gedcom_id', '=', 'm_file')
+            ->where('setting_name', '=', 'MEDIA_DIRECTORY')
+            ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
+            ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
+            ->select(new Expression('setting_value || multimedia_file_refn AS path'))
+            ->pluck('path')
+            ->map(static function (string $path): string {
+                return dirname($path) . '/';
+            });
+
+        $media_roots = DB::table('gedcom_setting')
+            ->where('setting_name', '=', 'MEDIA_DIRECTORY')
+            ->pluck('setting_value')
+            ->unique();
+
+        $disk_folders = new Collection($media_roots);
+
+        foreach ($media_roots as $media_folder) {
+            $tmp = Collection::make($data_filesystem->listContents($media_folder, true))
+                ->filter(static function (array $metadata) {
+                    return $metadata['type'] === 'dir';
+                })
+                ->map(static function (array $metadata): string {
+                    return $metadata['path'] . '/';
+                })
+                ->filter(static function (string $dir): bool {
+                    return strpos($dir, '/thumbs/') === false && strpos($dir, 'watermarks') === false;
+                });
+
+            $disk_folders = $disk_folders->concat($tmp);
+        }
+
+        return $disk_folders->concat($db_folders)
+            ->unique()
+            ->mapWithKeys(static function (string $folder): array {
+                return [$folder => $folder];
+            });
     }
 }

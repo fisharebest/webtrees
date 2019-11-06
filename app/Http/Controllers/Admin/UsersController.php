@@ -198,7 +198,7 @@ class UsersController extends AbstractAdminController
             return $datum;
         };
 
-        return $this->datatables_service->handle($request, $query, $search_columns, $sort_columns, $callback);
+        return $this->datatables_service->handleQuery($request, $query, $search_columns, $sort_columns, $callback);
     }
 
     /**
