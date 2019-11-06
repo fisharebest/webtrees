@@ -56,11 +56,12 @@ webtrees follows the [PHP Standards Recommendations](https://www.php-fig.org/psr
 * [PSR-4](https://www.php-fig.org/psr/psr-4) - Autoloading Stardard
 * [PSR-7](https://www.php-fig.org/psr/psr-7) - HTTP Message Interface
 * [PSR-11](https://www.php-fig.org/psr/psr-11) - Container Interface
-* [PSR-12](https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md) - Extended Coding Style Guide
+* [PSR-12](https://www.php-fig.org/psr/psr-12) - Extended Coding Style Guide
 * [PSR-15](https://www.php-fig.org/psr/psr-15) - HTTP Handlers
+* [PSR-16](https://www.php-fig.org/psr/psr-16) - Simple Cache
 * [PSR-17](https://www.php-fig.org/psr/psr-17) - HTTP Factories
 
-We do not currently use [PSR-3 (logging)](https://www.php-fig.org/psr/psr-3) or [PSR-6 (caching)](https://www.php-fig.org/psr/psr-6) - but we plan to do so in the future.
+We do not currently use [PSR-3 (logging)](https://www.php-fig.org/psr/psr-3) - but we plan to do so in the future.
 
 ## Introduction
 
