@@ -98,7 +98,7 @@ class MediaFileController extends AbstractBaseController
                 }
 
                 if ($media_file->fileExists($data_filesystem)) {
-                    $data = $media_file->media()->tree()->mediaFilesystem()->read($media_file->filename());
+                    $data = $media_file->media()->tree()->mediaFilesystem($data_filesystem)->read($media_file->filename());
 
                     return response($data, StatusCodeInterface::STATUS_OK, [
                         'Content-Type'        => $media_file->mimeType(),
