@@ -186,11 +186,22 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             return response(view('components/alert-danger', ['alert' => $trace]), $status_code);
         }
 
-        return $this->viewResponse('errors/unhandled-exception', [
-            'title'   => 'Error',
-            'error'   => $trace,
-            'request' => $request,
-            'tree'    => null,
-        ], StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
+        try {
+            // Try with a full header/menu
+            return $this->viewResponse('errors/unhandled-exception', [
+                'title'   => 'Error',
+                'error'   => $trace,
+                'request' => $request,
+                'tree'    => $request->getAttribute('tree'),
+            ], StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
+        } catch (Throwable $ex) {
+            // Try with a minimal header/menu
+            return $this->viewResponse('errors/unhandled-exception', [
+                'title'   => 'Error',
+                'error'   => $trace,
+                'request' => $request,
+                'tree'    => null,
+            ], StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
+        }
     }
 }
