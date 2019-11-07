@@ -152,10 +152,10 @@ class UsersControllerTest extends TestCase
             'language'       => '',
             'timezone'       => '',
             'comment'        => '',
-            'contact_method' => '',
+            'contact-method' => '',
             'auto_accept'    => '',
             'canadmin'       => '',
-            'visible_online' => '',
+            'visible-online' => '',
             'verified'       => '',
             'approved'       => '',
         ])

@@ -191,8 +191,9 @@ class Individual extends GedcomRecord
             }
         }
         // Consider relationship privacy (unless an admin is applying download restrictions)
-        $user_path_length = (int) $this->tree->getUserPreference(Auth::user(), 'RELATIONSHIP_PATH_LENGTH');
-        $gedcomid         = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
+        $user_path_length = (int) $this->tree->getUserPreference(Auth::user(), User::PREF_TREE_PATH_LENGTH);
+        $gedcomid         = $this->tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF);
+
         if ($gedcomid !== '' && $user_path_length > 0) {
             return self::isRelated($this, $user_path_length);
         }
@@ -213,7 +214,7 @@ class Individual extends GedcomRecord
     {
         static $cache = null;
 
-        $user_individual = self::getInstance($target->tree->getUserPreference(Auth::user(), 'gedcomid'), $target->tree);
+        $user_individual = self::getInstance($target->tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF), $target->tree);
         if ($user_individual) {
             if (!$cache) {
                 $cache = [

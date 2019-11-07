@@ -115,7 +115,7 @@ class TreeTest extends TestCase
         $tree_service = new TreeService();
         $tree         = $tree_service->create('name', 'title');
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
-        $user->setPreference('canadmin', '1');
+        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $tree->createIndividual("0 @@ FOO\n1 SEX U");
@@ -131,13 +131,13 @@ class TreeTest extends TestCase
         $tree_service = new TreeService();
         $tree         = $tree_service->create('name', 'title');
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
-        $user->setPreference('canadmin', '1');
+        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $record = $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
         $this->assertTrue($record->isPendingAddition());
 
-        $user->setPreference('auto_accept', '1');
+        $user->setPreference(User::PREF_AUTO_ACCEPT_EDITS, '1');
         $record = $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
         $this->assertFalse($record->isPendingAddition());
     }
@@ -154,7 +154,7 @@ class TreeTest extends TestCase
         $tree_service = new TreeService();
         $tree         = $tree_service->create('name', 'title');
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
-        $user->setPreference('canadmin', '1');
+        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $tree->createFamily("0 @@ FOO\n1 MARR Y");
@@ -170,13 +170,13 @@ class TreeTest extends TestCase
         $tree_service = new TreeService();
         $tree         = $tree_service->create('name', 'title');
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
-        $user->setPreference('canadmin', '1');
+        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $record = $tree->createFamily("0 @@ FAM\n1 MARR Y");
         $this->assertTrue($record->isPendingAddition());
 
-        $user->setPreference('auto_accept', '1');
+        $user->setPreference(User::PREF_AUTO_ACCEPT_EDITS, '1');
         $record = $tree->createFamily("0 @@ FAM\n1 MARR Y");
         $this->assertFalse($record->isPendingAddition());
     }
@@ -193,7 +193,7 @@ class TreeTest extends TestCase
         $tree_service = new TreeService();
         $tree         = $tree_service->create('name', 'title');
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
-        $user->setPreference('canadmin', '1');
+        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $tree->createMediaObject("0 @@ FOO\n1 MARR Y");
@@ -209,13 +209,13 @@ class TreeTest extends TestCase
         $tree_service = new TreeService();
         $tree         = $tree_service->create('name', 'title');
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
-        $user->setPreference('canadmin', '1');
+        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $record = $tree->createMediaObject("0 @@ OBJE\n1 FILE foo.jpeg");
         $this->assertTrue($record->isPendingAddition());
 
-        $user->setPreference('auto_accept', '1');
+        $user->setPreference(User::PREF_AUTO_ACCEPT_EDITS, '1');
         $record = $tree->createMediaObject("0 @@ OBJE\n1 FILE foo.jpeg");
         $this->assertFalse($record->isPendingAddition());
     }
@@ -232,7 +232,7 @@ class TreeTest extends TestCase
         $tree_service = new TreeService();
         $tree         = $tree_service->create('name', 'title');
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
-        $user->setPreference('canadmin', '1');
+        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $tree->createRecord("0 @@FOO\n1 NOTE noted");
@@ -248,13 +248,13 @@ class TreeTest extends TestCase
         $tree_service = new TreeService();
         $tree         = $tree_service->create('name', 'title');
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
-        $user->setPreference('canadmin', '1');
+        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $record = $tree->createRecord("0 @@ FOO\n1 NOTE noted");
         $this->assertTrue($record->isPendingAddition());
 
-        $user->setPreference('auto_accept', '1');
+        $user->setPreference(User::PREF_AUTO_ACCEPT_EDITS, '1');
         $record = $tree->createRecord("0 @@ FOO\n1 NOTE noted");
         $this->assertFalse($record->isPendingAddition());
     }
@@ -269,7 +269,7 @@ class TreeTest extends TestCase
         $tree_service = new TreeService();
         $tree         = $tree_service->create('name', 'title');
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
-        $user->setPreference('auto_accept', '1');
+        $user->setPreference(User::PREF_AUTO_ACCEPT_EDITS, '1');
         Auth::login($user);
 
         // Delete the tree's default individual.
@@ -291,11 +291,11 @@ class TreeTest extends TestCase
         $this->assertSame($record2->xref(), $tree->significantIndividual($user)->xref());
 
         // User preference
-        $tree->setUserPreference($user, 'gedcomid', $record3->xref());
+        $tree->setUserPreference($user, User::PREF_TREE_ACCOUNT_XREF, $record3->xref());
         $this->assertSame($record3->xref(), $tree->significantIndividual($user)->xref());
 
         // User record
-        $tree->setUserPreference($user, 'rootid', $record4->xref());
+        $tree->setUserPreference($user, User::PREF_TREE_DEFAULT_XREF, $record4->xref());
         $this->assertSame($record4->xref(), $tree->significantIndividual($user)->xref());
     }
 
@@ -326,14 +326,14 @@ class TreeTest extends TestCase
         $user_service = new UserService();
         $tree         = $this->importTree('demo.ged');
         $user         = $user_service->create('admin', 'Administrator', 'admin@example.com', 'secret');
-        $user->setPreference('canadmin', '1');
+        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
-        $user->setPreference('auto_accept', '1');
+        $user->setPreference(User::PREF_AUTO_ACCEPT_EDITS, '1');
         $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
         $this->assertFalse($tree->hasPendingEdit());
 
-        $user->setPreference('auto_accept', '0');
+        $user->setPreference(User::PREF_AUTO_ACCEPT_EDITS, '');
         $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
         $this->assertTrue($tree->hasPendingEdit());
     }

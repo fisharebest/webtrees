@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -123,22 +124,22 @@ class LoginAction extends AbstractBaseController
             throw new Exception(I18N::translate('The username or password is incorrect.'));
         }
 
-        if (!$user->getPreference('verified')) {
+        if ($user->getPreference(User::PREF_IS_EMAIL_VERIFIED) !== '1') {
             Log::addAuthenticationLog('Login failed (not verified by user): ' . $username);
             throw new Exception(I18N::translate('This account has not been verified. Please check your email for a verification message.'));
         }
 
-        if (!$user->getPreference('verified_by_admin')) {
+        if ($user->getPreference(User::PREF_IS_ACCOUNT_APPROVED) !== '1') {
             Log::addAuthenticationLog('Login failed (not approved by admin): ' . $username);
             throw new Exception(I18N::translate('This account has not been approved. Please wait for an administrator to approve it.'));
         }
 
         Auth::login($user);
         Log::addAuthenticationLog('Login: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
-        Auth::user()->setPreference('sessiontime', (string) Carbon::now()->unix());
+        Auth::user()->setPreference(User::PREF_TIMESTAMP_ACTIVE, (string) Carbon::now()->unix());
 
-        Session::put('language', Auth::user()->getPreference('language'));
-        Session::put('theme', Auth::user()->getPreference('theme'));
-        I18N::init(Auth::user()->getPreference('language'));
+        Session::put('language', Auth::user()->getPreference(User::PREF_LANGUAGE));
+        Session::put('theme', Auth::user()->getPreference(User::PREF_THEME));
+        I18N::init(Auth::user()->getPreference(User::PREF_LANGUAGE));
     }
 }

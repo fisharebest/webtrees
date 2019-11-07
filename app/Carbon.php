@@ -53,7 +53,7 @@ class Carbon extends CarbonImmutable
         $locale = app(ServerRequestInterface::class)->getAttribute('locale');
         assert($locale instanceof LocaleInterface);
 
-        $timezone = Auth::user()->getPreference('TIMEZONE', Site::getPreference('TIMEZONE', 'UTC'));
+        $timezone = Auth::user()->getPreference(User::PREF_TIME_ZONE, Site::getPreference('TIMEZONE', 'UTC'));
 
         return $this->locale($locale->code())->setTimezone($timezone);
     }

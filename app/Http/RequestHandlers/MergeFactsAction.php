@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;
@@ -79,7 +80,7 @@ class MergeFactsAction implements RequestHandlerInterface
         }
 
         // If we are not auto-accepting, then we can show a link to the pending deletion
-        if (Auth::user()->getPreference('auto_accept')) {
+        if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record2_name = $record2->fullName();
         } else {
             $record2_name = '<a class="alert-link" href="' . e($record2->url()) . '">' . $record2->fullName() . '</a>';
@@ -109,7 +110,7 @@ class MergeFactsAction implements RequestHandlerInterface
         // Update any linked user-accounts
         DB::table('user_gedcom_setting')
             ->where('gedcom_id', '=', $tree->id())
-            ->whereIn('setting_name', ['gedcomid', 'rootid'])
+            ->whereIn('setting_name', [User::PREF_TREE_ACCOUNT_XREF, User::PREF_TREE_DEFAULT_XREF])
             ->where('setting_value', '=', $xref2)
             ->update(['setting_value' => $xref1]);
 

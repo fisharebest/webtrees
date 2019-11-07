@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -47,17 +48,19 @@ class AccountEdit implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
+
         $user = $request->getAttribute('user');
+        assert($user instanceof User);
 
         if ($tree instanceof Tree) {
-            $my_individual_record = Individual::getInstance($tree->getUserPreference(Auth::user(), 'gedcomid'), $tree);
-            $default_individual   = Individual::getInstance($tree->getUserPreference(Auth::user(), 'rootid'), $tree);
+            $my_individual_record = Individual::getInstance($tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF), $tree);
+            $default_individual   = Individual::getInstance($tree->getUserPreference(Auth::user(), User::PREF_TREE_DEFAULT_XREF), $tree);
         } else {
             $my_individual_record = null;
             $default_individual   = null;
         }
 
-        $show_delete_option = $user->getPreference('canadmin') !== '1';
+        $show_delete_option = $user->getPreference(User::PREF_IS_ADMINISTRATOR) !== '1';
         $timezone_ids       = DateTimeZone::listIdentifiers();
         $timezones          = array_combine($timezone_ids, $timezone_ids);
         $title              = I18N::translate('My account');

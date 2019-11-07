@@ -29,6 +29,8 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -105,7 +107,7 @@ class UserService
             ->join('user_gedcom_setting', 'user_gedcom_setting.user_id', '=', 'user.user_id')
             ->where('gedcom_id', '=', $individual->tree()->id())
             ->where('setting_value', '=', $individual->xref())
-            ->where('setting_name', '=', 'gedcomid')
+            ->where('setting_name', '=', User::PREF_TREE_ACCOUNT_XREF)
             ->select(['user.*'])
             ->get()
             ->map(User::rowMapper());
@@ -156,11 +158,11 @@ class UserService
      */
     public function sortByLastLogin(): Closure
     {
-        return function (UserInterface $user1, UserInterface $user2) {
-            $registered_at1 = (int) $user1->getPreference('reg_timestamp');
-            $logged_in_at1  = (int) $user1->getPreference('sessiontime');
-            $registered_at2 = (int) $user2->getPreference('reg_timestamp');
-            $logged_in_at2  = (int) $user2->getPreference('sessiontime');
+        return static function (UserInterface $user1, UserInterface $user2) {
+            $registered_at1 = (int) $user1->getPreference(User::PREF_TIMESTAMP_REGISTERED);
+            $logged_in_at1  = (int) $user1->getPreference(User::PREF_TIMESTAMP_ACTIVE);
+            $registered_at2 = (int) $user2->getPreference(User::PREF_TIMESTAMP_REGISTERED);
+            $logged_in_at2  = (int) $user2->getPreference(User::PREF_TIMESTAMP_ACTIVE);
 
             return max($registered_at1, $logged_in_at1) <=> max($registered_at2, $logged_in_at2);
         };
@@ -175,9 +177,9 @@ class UserService
      */
     public function filterInactive(int $timestamp): Closure
     {
-        return function (UserInterface $user) use ($timestamp): bool {
-            $registered_at = (int) $user->getPreference('reg_timestamp');
-            $logged_in_at  = (int) $user->getPreference('sessiontime');
+        return static function (UserInterface $user) use ($timestamp): bool {
+            $registered_at = (int) $user->getPreference(User::PREF_TIMESTAMP_REGISTERED);
+            $logged_in_at  = (int) $user->getPreference(User::PREF_TIMESTAMP_ACTIVE);
 
             return max($registered_at, $logged_in_at) < $timestamp;
         };
@@ -206,7 +208,7 @@ class UserService
     {
         return DB::table('user')
             ->join('user_setting', 'user_setting.user_id', '=', 'user.user_id')
-            ->where('user_setting.setting_name', '=', 'canadmin')
+            ->where('user_setting.setting_name', '=', User::PREF_IS_ADMINISTRATOR)
             ->where('user_setting.setting_value', '=', '1')
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
@@ -224,8 +226,8 @@ class UserService
     {
         return DB::table('user')
             ->join('user_gedcom_setting', 'user_gedcom_setting.user_id', '=', 'user.user_id')
-            ->where('user_gedcom_setting.setting_name', '=', 'canedit')
-            ->where('user_gedcom_setting.setting_value', '=', 'admin')
+            ->where('user_gedcom_setting.setting_name', '=', User::PREF_TREE_ROLE)
+            ->where('user_gedcom_setting.setting_value', '=', User::ROLE_MANAGER)
             ->where('user.user_id', '>', 0)
             ->groupBy(['user.user_id'])
             ->orderBy('real_name')
@@ -243,8 +245,8 @@ class UserService
     {
         return DB::table('user')
             ->join('user_gedcom_setting', 'user_gedcom_setting.user_id', '=', 'user.user_id')
-            ->where('user_gedcom_setting.setting_name', '=', 'canedit')
-            ->where('user_gedcom_setting.setting_value', '=', 'accept')
+            ->where('user_gedcom_setting.setting_name', '=', User::PREF_TREE_ROLE)
+            ->where('user_gedcom_setting.setting_value', '=', User::ROLE_MODERATOR)
             ->where('user.user_id', '>', 0)
             ->groupBy(['user.user_id'])
             ->orderBy('real_name')
@@ -261,12 +263,18 @@ class UserService
     public function unapproved(): Collection
     {
         return DB::table('user')
-            ->join('user_setting', 'user_setting.user_id', '=', 'user.user_id')
-            ->where('user_setting.setting_name', '=', 'verified_by_admin')
-            ->where('user_setting.setting_value', '<>', '1')
+            ->leftJoin('user_setting', static function (JoinClause $join): void {
+                $join
+                    ->on('user_setting.user_id', '=', 'user.user_id')
+                    ->where('user_setting.setting_name', '=', User::PREF_IS_ACCOUNT_APPROVED);
+            })
+            ->where(static function (Builder $query): void {
+                $query
+                    ->where('user_setting.setting_value', '<>', '1')
+                    ->orWhereNull('user_setting.setting_value');
+            })
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
-            ->select(['user.*'])
             ->get()
             ->map(User::rowMapper());
     }
@@ -279,12 +287,18 @@ class UserService
     public function unverified(): Collection
     {
         return DB::table('user')
-            ->join('user_setting', 'user_setting.user_id', '=', 'user.user_id')
-            ->where('user_setting.setting_name', '=', 'verified')
-            ->where('user_setting.setting_value', '<>', '1')
+            ->leftJoin('user_setting', static function (JoinClause $join): void {
+                $join
+                    ->on('user_setting.user_id', '=', 'user.user_id')
+                    ->where('user_setting.setting_name', '=', User::PREF_IS_EMAIL_VERIFIED);
+            })
+            ->where(static function (Builder $query): void {
+                $query
+                    ->where('user_setting.setting_value', '<>', '1')
+                    ->orWhereNull('user_setting.setting_value');
+            })
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
-            ->select(['user.*'])
             ->get()
             ->map(User::rowMapper());
     }
@@ -382,7 +396,7 @@ class UserService
 
         $user = $request->getAttribute('user');
 
-        if ($contact_user->getPreference('contactmethod') === 'mailto') {
+        if ($contact_user->getPreference(User::PREF_CONTACT_METHOD) === 'mailto') {
             $url = 'mailto:' . $contact_user->email();
         } elseif ($user instanceof User) {
             // Logged-in users send direct messages

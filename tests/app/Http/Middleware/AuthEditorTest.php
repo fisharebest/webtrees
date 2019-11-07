@@ -45,10 +45,10 @@ class AuthEditorTest extends TestCase
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
         $user = $this->createMock(User::class);
-        $user->method('getPreference')->with('canadmin')->willReturn('0');
+        $user->method('getPreference')->with(User::PREF_IS_ADMINISTRATOR)->willReturn('');
 
         $tree = $this->createMock(Tree::class);
-        $tree->method('getUserPreference')->with($user, 'canedit')->willReturn('edit');
+        $tree->method('getUserPreference')->with($user, User::PREF_TREE_ROLE)->willReturn('edit');
 
         $request    = self::createRequest()->withAttribute('tree', $tree)->withAttribute('user', $user);
         $middleware = new AuthEditor();
@@ -70,10 +70,10 @@ class AuthEditorTest extends TestCase
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
         $user = $this->createMock(User::class);
-        $user->method('getPreference')->with('canadmin')->willReturn('0');
+        $user->method('getPreference')->with(User::PREF_IS_ADMINISTRATOR)->willReturn('');
 
         $tree = $this->createMock(Tree::class);
-        $tree->method('getUserPreference')->with($user, 'canedit')->willReturn('access');
+        $tree->method('getUserPreference')->with($user, User::PREF_TREE_ROLE)->willReturn('access');
 
         $request    = self::createRequest()->withAttribute('tree', $tree)->withAttribute('user', $user);
         $middleware = new AuthEditor();

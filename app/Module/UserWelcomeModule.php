@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Illuminate\Support\Str;
 
 /**
@@ -83,7 +84,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $gedcomid   = $tree->getUserPreference(Auth::user(), 'gedcomid');
+        $gedcomid   = $tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF);
         $individual = Individual::getInstance($gedcomid, $tree);
         $links      = [];
 

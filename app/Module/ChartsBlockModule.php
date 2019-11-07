@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -85,7 +86,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
         $PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
-        $gedcomid         = $tree->getUserPreference(Auth::user(), 'gedcomid');
+        $gedcomid         = $tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF);
         $default_xref     = $gedcomid ?: $PEDIGREE_ROOT_ID;
 
         $type = $this->getBlockSetting($block_id, 'type', 'pedigree');
@@ -230,7 +231,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
         $PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
-        $gedcomid         = $tree->getUserPreference(Auth::user(), 'gedcomid');
+        $gedcomid         = $tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF);
         $default_xref     = $gedcomid ?: $PEDIGREE_ROOT_ID;
 
         $type = $this->getBlockSetting($block_id, 'type', 'pedigree');

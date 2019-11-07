@@ -2,7 +2,9 @@
 
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountDelete;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Tree;use Fisharebest\Webtrees\View;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\View;
 
 ?>
 
@@ -57,12 +59,12 @@ use Fisharebest\Webtrees\Tree;use Fisharebest\Webtrees\View;
         </div>
 
         <div class="row form-group">
-            <label class="col-sm-3 col-form-label wt-page-options-label" for="root-id">
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="default-xref">
                 <?= I18N::translate('Default individual') ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
-                <?= view('components/select-individual', ['name' => 'root_id', 'id' => 'root-id', 'individual' => $default_individual, 'tree' => $tree]) ?>
-                <p class="small text-muted" id="root-id-description">
+                <?= view('components/select-individual', ['name' => 'default-xref', 'id' => 'default-xref', 'individual' => $default_individual, 'tree' => $tree]) ?>
+                <p class="small text-muted" id="default-xref-description">
                     <?= I18N::translate('This individual will be selected by default when viewing charts and reports.') ?>
                 </p>
             </div>
@@ -88,7 +90,7 @@ use Fisharebest\Webtrees\Tree;use Fisharebest\Webtrees\View;
             <?= I18N::translate('Language') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select', ['name' => 'language', 'selected' => $user->getPreference('language'), 'options' => $installed_languages]) ?>
+            <?= view('components/select', ['name' => 'language', 'selected' => $user->getPreference(User::PREF_LANGUAGE), 'options' => $installed_languages]) ?>
         </div>
     </div>
 
@@ -97,7 +99,7 @@ use Fisharebest\Webtrees\Tree;use Fisharebest\Webtrees\View;
             <?= I18N::translate('Time zone') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select', ['name' => 'timezone', 'selected' => $user->getPreference('TIMEZONE', 'UTC'), 'options' => $timezones]) ?>
+            <?= view('components/select', ['name' => 'timezone', 'selected' => $user->getPreference(User::PREF_TIME_ZONE, 'UTC'), 'options' => $timezones]) ?>
             <p class="small text-muted" id="timezone-description">
                 <?= I18N::translate('The time zone is required for date calculations, such as knowing today’s date.') ?>
             </p>
@@ -121,7 +123,7 @@ use Fisharebest\Webtrees\Tree;use Fisharebest\Webtrees\View;
             <?= I18N::translate('Contact method') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select', ['name' => 'contact_method', 'id' => 'contact-method', 'selected' => $user->getPreference('contactmethod'), 'options' => $contact_methods]) ?>
+            <?= view('components/select', ['name' => 'contact-method', 'id' => 'contact-method', 'selected' => $user->getPreference(User::PREF_CONTACT_METHOD), 'options' => $contact_methods]) ?>
             <p class="small text-muted" id="contact-method-description">
             <?= I18N::translate('Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all.') ?>
             </p>
@@ -134,7 +136,7 @@ use Fisharebest\Webtrees\Tree;use Fisharebest\Webtrees\View;
                 <?= I18N::translate('Visible online') ?>
             </legend>
             <div class="col-sm-9 wt-page-options-value">
-                <?= view('components/checkbox', ['label' => I18N::translate('Visible to other users when online'), 'name' => 'visible_online', 'checked' => (bool) $user->getPreference('visibleonline')]) ?>
+                <?= view('components/checkbox', ['label' => I18N::translate('Visible to other users when online'), 'name' => 'visible-online', 'checked' => (bool) $user->getPreference(User::PREF_IS_VISIBLE_ONLINE)]) ?>
                 <p class="small text-muted" id="visible-online-description">
                     <?= I18N::translate('You can choose whether to appear in the list of users who are currently signed-in.') ?>
                 </p>

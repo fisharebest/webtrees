@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
@@ -133,7 +134,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     public function chartMenu(Individual $individual): Menu
     {
-        $gedcomid = $individual->tree()->getUserPreference(Auth::user(), 'gedcomid');
+        $gedcomid = $individual->tree()->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF);
 
         if ($gedcomid !== '' && $gedcomid !== $individual->xref()) {
             return new Menu(

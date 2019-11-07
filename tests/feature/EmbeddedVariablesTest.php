@@ -81,7 +81,7 @@ class EmbeddedVariablesTest extends TestCase
 
         // As member
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
-        $user->setPreference('canadmin', '1');
+        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $text = $statistics->embedTags('#getAllTagsTable#');
@@ -103,7 +103,7 @@ class EmbeddedVariablesTest extends TestCase
 
         // As member
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
-        $user->setPreference('canadmin', '1');
+        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $text = $statistics->embedTags('#getAllTagsTable#');

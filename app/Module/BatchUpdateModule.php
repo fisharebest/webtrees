@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;
@@ -148,7 +149,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
         }
 
         return $this->viewResponse('modules/batch_update/admin', [
-            'auto_accept' => (bool) $user->getPreference('auto_accept'),
+            'auto_accept' => (bool) $user->getPreference(User::PREF_AUTO_ACCEPT_EDITS),
             'plugins'     => $plugins,
             'curr_xref'   => $curr_xref,
             'next_xref'   => $next_xref,

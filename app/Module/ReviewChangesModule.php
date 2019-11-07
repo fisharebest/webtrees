@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
+use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
@@ -125,10 +126,10 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             if ($next_email_timestamp < Carbon::now()) {
                 // Which users have pending changes?
                 foreach ($this->user_service->all() as $user) {
-                    if ($user->getPreference('contactmethod') !== 'none') {
+                    if ($user->getPreference(User::PREF_CONTACT_METHOD) !== 'none') {
                         foreach ($this->tree_service->all() as $tmp_tree) {
                             if ($tmp_tree->hasPendingEdit() && Auth::isManager($tmp_tree, $user)) {
-                                I18N::init($user->getPreference('language'));
+                                I18N::init($user->getPreference(User::PREF_LANGUAGE));
 
                                 $this->email_service->send(
                                     new SiteUser(),

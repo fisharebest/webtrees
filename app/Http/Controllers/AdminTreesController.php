@@ -40,6 +40,7 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -1055,7 +1056,7 @@ class AdminTreesController extends AbstractBaseController
                     DB::table('user_gedcom_setting')
                         ->where('gedcom_id', '=', $tree->id())
                         ->where('setting_value', '=', $old_xref)
-                        ->whereIn('setting_name', ['gedcomid', 'rootid'])
+                        ->whereIn('setting_name', [User::PREF_TREE_ACCOUNT_XREF, User::PREF_TREE_DEFAULT_XREF])
                         ->update([
                             'setting_value' => $new_xref,
                         ]);

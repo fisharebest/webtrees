@@ -44,7 +44,7 @@ class AuthAdministratorTest extends TestCase
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
         $user = $this->createMock(User::class);
-        $user->method('getPreference')->with('canadmin')->willReturn('1');
+        $user->method('getPreference')->with(User::PREF_IS_ADMINISTRATOR)->willReturn('1');
 
         $request    = self::createRequest()->withAttribute('user', $user);
         $middleware = new AuthAdministrator();
@@ -66,7 +66,7 @@ class AuthAdministratorTest extends TestCase
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
         $user = $this->createMock(User::class);
-        $user->method('getPreference')->with('canadmin')->willReturn('');
+        $user->method('getPreference')->with(User::PREF_IS_ADMINISTRATOR)->willReturn('');
 
         $request    = self::createRequest()->withAttribute('user', $user);
         $middleware = new AuthAdministrator();

@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 
@@ -90,7 +91,7 @@ class MessageService
 
         // Temporarily switch to the recipient's language
         $old_language = I18N::languageTag();
-        I18N::init($recipient->getPreference('language'));
+        I18N::init($recipient->getPreference(User::PREF_LANGUAGE));
 
         $body_text = view('emails/message-user-text', [
             'sender'    => $sender,
@@ -143,7 +144,7 @@ class MessageService
      */
     public function sendInternalMessage(UserInterface $user): bool
     {
-        return in_array($user->getPreference('contactmethod'), [
+        return in_array($user->getPreference(User::PREF_CONTACT_METHOD), [
             'messaging',
             'messaging2',
             'mailto',
@@ -160,7 +161,7 @@ class MessageService
      */
     public function sendEmail(UserInterface $user): bool
     {
-        return in_array($user->getPreference('contactmethod'), [
+        return in_array($user->getPreference(User::PREF_CONTACT_METHOD), [
             'messaging2',
             'messaging3',
             'mailto',
@@ -183,13 +184,13 @@ class MessageService
                 return $this->user_service->all();
             case 'never_logged':
                 return $this->user_service->all()->filter(static function (UserInterface $user): bool {
-                    return $user->getPreference('verified_by_admin') && $user->getPreference('reg_timestamp') > $user->getPreference('sessiontime');
+                    return $user->getPreference(User::PREF_IS_ACCOUNT_APPROVED) === '1' && $user->getPreference(User::PREF_TIMESTAMP_REGISTERED) > $user->getPreference(User::PREF_TIMESTAMP_ACTIVE);
                 });
             case 'last_6mo':
                 $six_months_ago = Carbon::now()->subMonths(6)->unix();
 
                 return $this->user_service->all()->filter(static function (UserInterface $user) use ($six_months_ago): bool {
-                    $session_time = (int) $user->getPreference('sessiontime');
+                    $session_time = (int) $user->getPreference(User::PREF_TIMESTAMP_ACTIVE);
 
                     return $session_time > 0 && $session_time < $six_months_ago;
                 });

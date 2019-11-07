@@ -79,7 +79,7 @@ class DeleteUserTest extends TestCase
 
         $user = $this->createMock(User::class);
         $user->method('id')->willReturn(1);
-        $user->expects($this->once())->method('getPreference')->with('canadmin')->willReturn('1');
+        $user->expects($this->once())->method('getPreference')->with(User::PREF_IS_ADMINISTRATOR)->willReturn('1');
 
         $user_service = $this->createMock(UserService::class);
         $user_service->expects($this->once())->method('find')->willReturn($user);

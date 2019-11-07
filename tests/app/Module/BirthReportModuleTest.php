@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
 use League\Flysystem\Adapter\NullAdapter;
 use League\Flysystem\Filesystem;
@@ -81,7 +82,7 @@ class BirthReportModuleTest extends TestCase
         $data_filesystem = new Filesystem(new NullAdapter());
 
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
-        $user->setPreference('canadmin', '1');
+        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $tree = $this->importTree('demo.ged');

@@ -70,7 +70,7 @@ class Auth
     {
         $user = $user ?? self::user();
 
-        return $user->getPreference('canadmin') === '1';
+        return $user->getPreference(User::PREF_IS_ADMINISTRATOR) === '1';
     }
 
     /**
@@ -85,7 +85,7 @@ class Auth
     {
         $user = $user ?? self::user();
 
-        return self::isAdmin($user) || $tree->getUserPreference($user, 'canedit') === 'admin';
+        return self::isAdmin($user) || $tree->getUserPreference($user, User::PREF_TREE_ROLE) === User::ROLE_MANAGER;
     }
 
     /**
@@ -100,7 +100,7 @@ class Auth
     {
         $user = $user ?? self::user();
 
-        return self::isManager($tree, $user) || $tree->getUserPreference($user, 'canedit') === 'accept';
+        return self::isManager($tree, $user) || $tree->getUserPreference($user, User::PREF_TREE_ROLE) === User::ROLE_MODERATOR;
     }
 
     /**
@@ -115,7 +115,7 @@ class Auth
     {
         $user = $user ?? self::user();
 
-        return self::isModerator($tree, $user) || $tree->getUserPreference($user, 'canedit') === 'edit';
+        return self::isModerator($tree, $user) || $tree->getUserPreference($user, User::PREF_TREE_ROLE) === 'edit';
     }
 
     /**
@@ -130,7 +130,7 @@ class Auth
     {
         $user = $user ?? self::user();
 
-        return self::isEditor($tree, $user) || $tree->getUserPreference($user, 'canedit') === 'access';
+        return self::isEditor($tree, $user) || $tree->getUserPreference($user, User::PREF_TREE_ROLE) === 'access';
     }
 
     /**

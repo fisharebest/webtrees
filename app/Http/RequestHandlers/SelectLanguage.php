@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -48,7 +49,7 @@ class SelectLanguage implements RequestHandlerInterface
         assert(is_string($language));
 
         Session::put('language', $language);
-        $user->setPreference('language', $language);
+        $user->setPreference(User::PREF_LANGUAGE, $language);
 
         return response();
     }

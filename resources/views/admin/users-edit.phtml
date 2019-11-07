@@ -5,6 +5,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
 
 ?>
@@ -78,11 +79,11 @@ use Fisharebest\Webtrees\View;
         <div class="col-sm-9">
             <div class="form-check">
                 <label>
-                    <input type="checkbox" name="verified" value="1" <?= $user->getPreference('verified') ? 'checked' : '' ?>>
+                    <input type="checkbox" name="verified" value="1" <?= $user->getPreference(User::PREF_IS_EMAIL_VERIFIED) === '1' ? 'checked' : '' ?>>
                     <?= I18N::translate('Email verified') ?>
                 </label>
                 <label>
-                    <input type="checkbox" name="approved" value="1" <?= $user->getPreference('verified_by_admin') ? 'checked' : '' ?>>
+                    <input type="checkbox" name="approved" value="1" <?= $user->getPreference(User::PREF_IS_ACCOUNT_APPROVED) === '1' ? 'checked' : '' ?>>
                     <?= I18N::translate('Approved by administrator') ?>
                 </label>
                 <p class="small text-muted">
@@ -109,7 +110,7 @@ use Fisharebest\Webtrees\View;
         <div class="col-sm-9">
             <select id="language" name="language" class="form-control">
                 <?php foreach ($locales as $locale) : ?>
-                    <option value="<?= $locale->languageTag() ?>" <?= $user->getPreference('language', $default_locale) === $locale->languageTag() ? 'selected' : '' ?>>
+                    <option value="<?= $locale->languageTag() ?>" <?= $user->getPreference(User::PREF_LANGUAGE, $default_locale) === $locale->languageTag() ? 'selected' : '' ?>>
                         <?= $locale->endonym() ?>
                     </option>
                 <?php endforeach ?>
@@ -123,7 +124,7 @@ use Fisharebest\Webtrees\View;
             <?= /* I18N: A configuration setting */ I18N::translate('Time zone') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'timezone', 'selected' => $user->getPreference('TIMEZONE', 'UTC'), 'options' => array_combine(DateTimeZone::listIdentifiers(), DateTimeZone::listIdentifiers())]) ?>
+            <?= view('components/select', ['name' => 'timezone', 'selected' => $user->getPreference(User::PREF_TIME_ZONE, 'UTC'), 'options' => array_combine(DateTimeZone::listIdentifiers(), DateTimeZone::listIdentifiers())]) ?>
             <p class="small text-muted">
                 <?= I18N::translate('The time zone is required for date calculations, such as knowing today’s date.') ?>
             </p>
@@ -138,7 +139,7 @@ use Fisharebest\Webtrees\View;
         <div class="col-sm-9">
             <div class="form-check">
                 <label>
-                    <input type="checkbox" name="auto_accept" value="1" <?= $user->getPreference('auto_accept') ? 'checked' : '' ?>>
+                    <input type="checkbox" name="auto_accept" value="1" <?= $user->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1' ? 'checked' : '' ?>>
                     <?= I18N::translate('Automatically accept changes made by this user') ?>
                 </label>
                 <p class="small text-muted">
@@ -150,13 +151,13 @@ use Fisharebest\Webtrees\View;
 
     <!-- VISIBLE ONLINE -->
     <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="visible_online">
+        <label class="col-sm-3 col-form-label" for="visible-online">
             <?= /* I18N: A configuration setting */ I18N::translate('Visible online') ?>
         </label>
         <div class="col-sm-9">
             <div class="form-check">
                 <label>
-                    <input type="checkbox" id="visible_online" name="visible_online" value="1" <?= $user->getPreference('visibleonline') ? 'checked' : '' ?>>
+                    <input type="checkbox" id="visible-online" name="visible-online" value="1" <?= $user->getPreference(User::PREF_IS_VISIBLE_ONLINE) === '1' ? 'checked' : '' ?>>
                     <?= /* I18N: A configuration setting */ I18N::translate('Visible to other users when online') ?>
                 </label>
                 <p class="small text-muted">
@@ -168,11 +169,11 @@ use Fisharebest\Webtrees\View;
 
     <!-- CONTACT METHOD -->
     <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="contactmethod">
+        <label class="col-sm-3 col-form-label" for="contact-method">
             <?= /* I18N: A configuration setting */ I18N::translate('Preferred contact method') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'contact_method', 'selected' => $user->getPreference('contactmethod'), 'options' => $contact_methods]) ?>
+            <?= view('components/select', ['id' => 'contact-method', 'name' => 'contact-method', 'selected' => $user->getPreference(User::PREF_CONTACT_METHOD), 'options' => $contact_methods]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Preferred contact method” configuration setting */
                 I18N::translate('Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all.') ?>
@@ -186,7 +187,7 @@ use Fisharebest\Webtrees\View;
             <?= I18N::translate('Theme') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'theme', 'selected' => $user->getPreference('theme'), 'options' => $theme_options]) ?>
+            <?= view('components/select', ['name' => 'theme', 'selected' => $user->getPreference(User::PREF_THEME), 'options' => $theme_options]) ?>
         </div>
     </div>
 
@@ -196,7 +197,7 @@ use Fisharebest\Webtrees\View;
             <?= I18N::translate('Administrator comments on user') ?>
         </label>
         <div class="col-sm-9">
-            <textarea class="form-control" id="comment" name="comment" rows="5" dir="auto" maxlength="255"><?= e($user->getPreference('comment')) ?></textarea>
+            <textarea class="form-control" id="comment" name="comment" rows="5" dir="auto" maxlength="255"><?= e($user->getPreference(User::PREF_NEW_ACCOUNT_COMMENT)) ?></textarea>
         </div>
     </div>
 
@@ -207,7 +208,7 @@ use Fisharebest\Webtrees\View;
         <div class="col-sm-9">
             <div class="form-check">
                 <label>
-                    <input type="checkbox" id="admin" name="canadmin" value="1" <?= $user->getPreference('canadmin') ? 'checked' : '' ?>  <?= $user->id() === Auth::id() ? 'disabled' : '' ?>>
+                    <input type="checkbox" id="admin" name="canadmin" value="1" <?= $user->getPreference(User::PREF_IS_ADMINISTRATOR) === '1' ? 'checked' : '' ?>  <?= $user->id() === Auth::id() ? 'disabled' : '' ?>>
                     <?= I18N::translate('Administrator') ?>
                 </label>
             </div>
@@ -306,7 +307,7 @@ use Fisharebest\Webtrees\View;
                         <select class="form-control" name="canedit<?= $tree->id() ?>">
                             <?php foreach ($roles as $role => $description) : ?>
                                 <option value="<?= $role ?>"
-                                    <?= $role === $tree->getUserPreference($user, 'canedit') ? 'selected' : '' ?>>
+                                    <?= $role === $tree->getUserPreference($user, User::PREF_TREE_ROLE) ? 'selected' : '' ?>>
                                     <?= $description ?>
                                 </option>
                             <?php endforeach ?>
@@ -318,7 +319,7 @@ use Fisharebest\Webtrees\View;
                     <td>
                         <select class="form-control" name="RELATIONSHIP_PATH_LENGTH<?= $tree->id() ?>" id="RELATIONSHIP_PATH_LENGTH<?= $tree->id() ?>" class="relpath">
                             <?php for ($n = 0; $n <= 10; ++$n) : ?>
-                                <option value="<?= $n ?>" <?= $tree->getUserPreference($user, 'RELATIONSHIP_PATH_LENGTH') == $n ? 'selected' : '' ?>>
+                                <option value="<?= $n ?>" <?= $tree->getUserPreference($user, User::PREF_TREE_PATH_LENGTH) == $n ? 'selected' : '' ?>>
                                     <?= $n ?: I18N::translate('No') ?>
                                 </option>
                             <?php endfor ?>

@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
@@ -114,7 +115,7 @@ class BranchesController extends AbstractBaseController
         $soundex_dm  = (bool) ($params['soundex_dm'] ?? false);
 
         // Highlight direct-line ancestors of this individual.
-        $self = Individual::getInstance($tree->getUserPreference($user, 'gedcomid'), $tree);
+        $self = Individual::getInstance($tree->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF), $tree);
 
         if ($surname !== '') {
             $individuals = $this->loadIndividuals($tree, $surname, $soundex_dm, $soundex_std);

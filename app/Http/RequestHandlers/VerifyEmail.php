@@ -79,10 +79,10 @@ class VerifyEmail implements RequestHandlerInterface
 
         $user = $this->user_service->findByUserName($username);
 
-        if ($user instanceof User && $user->getPreference('reg_hashcode') === $token) {
+        if ($user instanceof User && $user->getPreference(User::PREF_VERIFICATION_TOKEN) === $token) {
             foreach ($this->user_service->administrators() as $administrator) {
                 // switch language to administrator settings
-                I18N::init($administrator->getPreference('language'));
+                I18N::init($administrator->getPreference(User::PREF_LANGUAGE));
 
                 $base_url = $request->getAttribute('base_url');
 
@@ -112,10 +112,9 @@ class VerifyEmail implements RequestHandlerInterface
                 I18N::init($locale->languageTag());
             }
 
-            $user
-                ->setPreference('verified', '1')
-                ->setPreference('reg_timestamp', date('U'))
-                ->setPreference('reg_hashcode', '');
+            $user->setPreference(User::PREF_IS_EMAIL_VERIFIED, '1');
+            $user->setPreference(User::PREF_TIMESTAMP_REGISTERED, date('U'));
+            $user->setPreference(User::PREF_VERIFICATION_TOKEN, '');
 
             Log::addAuthenticationLog('User ' . $username . ' verified their email address');
 

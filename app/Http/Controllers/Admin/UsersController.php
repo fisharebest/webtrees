@@ -138,22 +138,22 @@ class UsersController extends AbstractAdminController
             ->leftJoin('user_setting AS us2', static function (JoinClause $join): void {
                 $join
                     ->on('us2.user_id', '=', 'user.user_id')
-                    ->where('us2.setting_name', '=', 'reg_timestamp');
+                    ->where('us2.setting_name', '=', User::PREF_TIMESTAMP_REGISTERED);
             })
             ->leftJoin('user_setting AS us3', static function (JoinClause $join): void {
                 $join
                     ->on('us3.user_id', '=', 'user.user_id')
-                    ->where('us3.setting_name', '=', 'sessiontime');
+                    ->where('us3.setting_name', '=', User::PREF_TIMESTAMP_ACTIVE);
             })
             ->leftJoin('user_setting AS us4', static function (JoinClause $join): void {
                 $join
                     ->on('us4.user_id', '=', 'user.user_id')
-                    ->where('us4.setting_name', '=', 'verified');
+                    ->where('us4.setting_name', '=', User::PREF_IS_EMAIL_VERIFIED);
             })
             ->leftJoin('user_setting AS us5', static function (JoinClause $join): void {
                 $join
                     ->on('us5.user_id', '=', 'user.user_id')
-                    ->where('us5.setting_name', '=', 'verified_by_admin');
+                    ->where('us5.setting_name', '=', User::PREF_IS_ACCOUNT_APPROVED);
             })
             ->where('user.user_id', '>', '0')
             ->select([
@@ -286,12 +286,12 @@ class UsersController extends AbstractAdminController
             return redirect($url);
         }
 
-        $new_user = $this->user_service->create($username, $real_name, $email, $password)
-            ->setPreference('verified', '1')
-            ->setPreference('language', $locale->languageTag())
-            ->setPreference('timezone', Site::getPreference('TIMEZONE'))
-            ->setPreference('reg_timestamp', date('U'))
-            ->setPreference('sessiontime', '0');
+        $new_user = $this->user_service->create($username, $real_name, $email, $password);
+        $new_user->setPreference(User::PREF_IS_EMAIL_VERIFIED, '1');
+        $new_user->setPreference(User::PREF_LANGUAGE, $locale->languageTag());
+        $new_user->setPreference(User::PREF_TIME_ZONE, Site::getPreference('TIMEZONE'));
+        $new_user->setPreference(User::PREF_TIMESTAMP_REGISTERED, date('U'));
+        $new_user->setPreference(User::PREF_TIMESTAMP_ACTIVE, '0');
 
         Log::addAuthenticationLog('User ->' . $username . '<- created');
 
@@ -319,13 +319,13 @@ class UsersController extends AbstractAdminController
         $theme          = $request->getParsedBody()['theme'];
         $language       = $request->getParsedBody()['language'];
         $timezone       = $request->getParsedBody()['timezone'];
-        $contact_method = $request->getParsedBody()['contact_method'];
+        $contact_method = $request->getParsedBody()['contact-method'];
         $comment        = $request->getParsedBody()['comment'];
-        $auto_accept    = (bool) ($request->getParsedBody()['auto_accept'] ?? false);
-        $canadmin       = (bool) ($request->getParsedBody()['canadmin'] ?? false);
-        $visible_online = (bool) ($request->getParsedBody()['visible_online'] ?? false);
-        $verified       = (bool) ($request->getParsedBody()['verified'] ?? false);
-        $approved       = (bool) ($request->getParsedBody()['approved'] ?? false);
+        $auto_accept    = (bool) ($request->getParsedBody()[User::PREF_AUTO_ACCEPT_EDITS] ?? '');
+        $canadmin       = (bool) ($request->getParsedBody()[User::PREF_IS_ADMINISTRATOR] ?? '');
+        $visible_online = (bool) ($request->getParsedBody()['visible-online'] ?? '');
+        $verified       = (bool) ($request->getParsedBody()[User::PREF_IS_EMAIL_VERIFIED] ?? '');
+        $approved       = (bool) ($request->getParsedBody()['approved'] ?? '');
 
         $edit_user = $this->user_service->find($user_id);
 
@@ -334,8 +334,8 @@ class UsersController extends AbstractAdminController
         }
 
         // We have just approved a user.  Tell them
-        if ($approved && $edit_user->getPreference('verified_by_admin') !== '1') {
-            I18N::init($edit_user->getPreference('language'));
+        if ($approved && $edit_user->getPreference(User::PREF_IS_ACCOUNT_APPROVED) !== '1') {
+            I18N::init($edit_user->getPreference(User::PREF_LANGUAGE));
 
             $base_url = $request->getAttribute('base_url');
 
@@ -350,17 +350,16 @@ class UsersController extends AbstractAdminController
             );
         }
 
-        $edit_user
-            ->setRealName($real_name)
-            ->setPreference('theme', $theme)
-            ->setPreference('language', $language)
-            ->setPreference('TIMEZONE', $timezone)
-            ->setPreference('contactmethod', $contact_method)
-            ->setPreference('comment', $comment)
-            ->setPreference('auto_accept', (string) $auto_accept)
-            ->setPreference('visibleonline', (string) $visible_online)
-            ->setPreference('verified', (string) $verified)
-            ->setPreference('verified_by_admin', (string) $approved);
+        $edit_user->setRealName($real_name);
+        $edit_user->setPreference(User::PREF_THEME, $theme);
+        $edit_user->setPreference(User::PREF_LANGUAGE, $language);
+        $edit_user->setPreference(User::PREF_TIME_ZONE, $timezone);
+        $edit_user->setPreference(User::PREF_CONTACT_METHOD, $contact_method);
+        $edit_user->setPreference(User::PREF_NEW_ACCOUNT_COMMENT, $comment);
+        $edit_user->setPreference(User::PREF_AUTO_ACCEPT_EDITS, (string) $auto_accept);
+        $edit_user->setPreference(User::PREF_IS_VISIBLE_ONLINE, (string) $visible_online);
+        $edit_user->setPreference(User::PREF_IS_EMAIL_VERIFIED, (string) $verified);
+        $edit_user->setPreference(User::PREF_IS_ACCOUNT_APPROVED, (string) $approved);
 
         if ($password !== '') {
             $edit_user->setPassword($password);
@@ -368,7 +367,7 @@ class UsersController extends AbstractAdminController
 
         // We cannot change our own admin status. Another admin will need to do it.
         if ($edit_user->id() !== $user->id()) {
-            $edit_user->setPreference('canadmin', $canadmin ? '1' : '0');
+            $edit_user->setPreference(User::PREF_IS_ADMINISTRATOR, $canadmin ? '1' : '');
         }
 
         foreach ($this->tree_service->all() as $tree) {
@@ -381,9 +380,9 @@ class UsersController extends AbstractAdminController
                 $path_length = 0;
             }
 
-            $tree->setUserPreference($edit_user, 'gedcomid', $gedcom_id);
-            $tree->setUserPreference($edit_user, 'canedit', $can_edit);
-            $tree->setUserPreference($edit_user, 'RELATIONSHIP_PATH_LENGTH', (string) $path_length);
+            $tree->setUserPreference($edit_user, User::PREF_TREE_ACCOUNT_XREF, $gedcom_id);
+            $tree->setUserPreference($edit_user, User::PREF_TREE_ROLE, $can_edit);
+            $tree->setUserPreference($edit_user, User::PREF_TREE_PATH_LENGTH, (string) $path_length);
         }
 
         if ($edit_user->email() !== $email && $this->user_service->findByEmail($email) instanceof User) {
@@ -412,15 +411,15 @@ class UsersController extends AbstractAdminController
     {
         return [
             /* I18N: Listbox entry; name of a role */
-            'none'   => I18N::translate('Visitor'),
+            User::ROLE_VISITOR   => I18N::translate('Visitor'),
             /* I18N: Listbox entry; name of a role */
-            'access' => I18N::translate('Member'),
+            User::ROLE_MEMBER => I18N::translate('Member'),
             /* I18N: Listbox entry; name of a role */
-            'edit'   => I18N::translate('Editor'),
+            User::ROLE_EDITOR   => I18N::translate('Editor'),
             /* I18N: Listbox entry; name of a role */
-            'accept' => I18N::translate('Moderator'),
+            User::ROLE_MODERATOR => I18N::translate('Moderator'),
             /* I18N: Listbox entry; name of a role */
-            'admin'  => I18N::translate('Manager'),
+            User::ROLE_MANAGER  => I18N::translate('Manager'),
         ];
     }
 

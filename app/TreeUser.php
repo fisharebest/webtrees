@@ -110,10 +110,9 @@ class TreeUser implements UserInterface
      * @param string $setting_name
      * @param string $setting_value
      *
-     * @return UserInterface
+     * @return void
      */
-    public function setPreference(string $setting_name, string $setting_value): UserInterface
+    public function setPreference(string $setting_name, string $setting_value): void
     {
-        return $this;
     }
 }

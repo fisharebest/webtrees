@@ -1046,7 +1046,7 @@ class GedcomRecord
 
             $this->pending = $new_gedcom;
 
-            if (Auth::user()->getPreference('auto_accept')) {
+            if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
                 app(PendingChangesService::class)->acceptRecord($this);
                 $this->gedcom  = $new_gedcom;
                 $this->pending = null;
@@ -1088,7 +1088,7 @@ class GedcomRecord
         $this->pending = $gedcom;
 
         // Accept this pending change
-        if (Auth::user()->getPreference('auto_accept')) {
+        if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
             app(PendingChangesService::class)->acceptRecord($this);
             $this->gedcom  = $gedcom;
             $this->pending = null;
@@ -1118,7 +1118,7 @@ class GedcomRecord
         }
 
         // Auto-accept this pending change
-        if (Auth::user()->getPreference('auto_accept')) {
+        if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
             app(PendingChangesService::class)->acceptRecord($this);
         }
 
@@ -1337,7 +1337,7 @@ class GedcomRecord
         }
 
         // We should always be able to see our own record (unless an admin is applying download restrictions)
-        if ($this->xref() === $this->tree->getUserPreference(Auth::user(), 'gedcomid') && $access_level === Auth::accessLevel($this->tree)) {
+        if ($this->xref() === $this->tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF) && $access_level === Auth::accessLevel($this->tree)) {
             return true;
         }
 

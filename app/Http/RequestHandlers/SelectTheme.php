@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -48,7 +49,7 @@ class SelectTheme implements RequestHandlerInterface
         assert(is_string($theme));
 
         Session::put('theme', $theme);
-        $user->setPreference('theme', $theme);
+        $user->setPreference(User::PREF_THEME, $theme);
 
         return response();
     }

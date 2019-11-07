@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -52,7 +53,7 @@ class UseSession implements MiddlewareInterface
             $timestamp_now = Carbon::now()->unix();
 
             if (Session::get('masquerade') === null) {
-                $user->setPreference('sessiontime', (string) $timestamp_now);
+                $user->setPreference(User::PREF_TIMESTAMP_ACTIVE, (string) $timestamp_now);
             }
             Session::put('session_time_updates', $timestamp_now);
         }

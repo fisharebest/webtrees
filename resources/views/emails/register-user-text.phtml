@@ -1,6 +1,8 @@
 <?php
 use Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\User;
+
 ?>
 
 <?= I18N::translate('Hello %s…', $user->realName()) ?>
@@ -9,6 +11,6 @@ use Fisharebest\Webtrees\I18N;
 
 <?= I18N::translate('Follow this link to verify your email address.') ?>
 
-<?= route(VerifyEmail::class, ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'tree' => $tree ? $tree->name() : '']) ?>
+<?= route(VerifyEmail::class, ['username' => $user->userName(), 'token' => $user->getPreference(User::PREF_VERIFICATION_TOKEN), 'tree' => $tree ? $tree->name() : '']) ?>
 
 <?= I18N::translate('If you didn’t request an account, you can just delete this message.') ?>

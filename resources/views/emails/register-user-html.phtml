@@ -1,6 +1,8 @@
 <?php
 use Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\User;
+
 ?>
 <div <?= I18N::htmlAttributes() ?>>
     <p>
@@ -17,8 +19,8 @@ use Fisharebest\Webtrees\I18N;
     </p>
 
     <p>
-        <a href="<?= e(route(VerifyEmail::class, ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'tree' => $tree ? $tree->name() : ''])) ?>">
-            <?= e(route(VerifyEmail::class, ['username' => $user->userName(), 'token' => $user->getPreference('reg_hashcode'), 'tree' => $tree ? $tree->name() : ''])) ?>
+        <a href="<?= e(route(VerifyEmail::class, ['username' => $user->userName(), 'token' => $user->getPreference(User::PREF_VERIFICATION_TOKEN), 'tree' => $tree ? $tree->name() : ''])) ?>">
+            <?= e(route(VerifyEmail::class, ['username' => $user->userName(), 'token' => $user->getPreference(User::PREF_VERIFICATION_TOKEN), 'tree' => $tree ? $tree->name() : ''])) ?>
         </a>
     </p>
 

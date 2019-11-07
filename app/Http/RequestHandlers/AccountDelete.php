@@ -59,7 +59,7 @@ class AccountDelete implements RequestHandlerInterface
         $user = $request->getAttribute('user');
 
         // An administrator can only be deleted by another administrator
-        if ($user instanceof User && !$user->getPreference('canadmin')) {
+        if ($user instanceof User && $user->getPreference(User::PREF_IS_ADMINISTRATOR) !== '1') {
             $this->user_service->delete($user);
             Auth::logout();
         }

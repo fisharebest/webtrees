@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -68,7 +69,7 @@ class MessagePage implements RequestHandlerInterface
         $url     = $request->getQueryParams()['url'] ?? $referer;
         $to_user = $this->user_service->findByUserName($to);
 
-        if ($to_user === null || $to_user->getPreference('contactmethod') === 'none') {
+        if ($to_user === null || $to_user->getPreference(User::PREF_CONTACT_METHOD) === 'none') {
             throw new AccessDeniedHttpException('Invalid contact user id');
         }
 

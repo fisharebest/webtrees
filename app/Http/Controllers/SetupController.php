@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Cache\ArrayStore;
 use Illuminate\Cache\Repository;
@@ -395,17 +396,16 @@ class SetupController extends AbstractBaseController
         }
         // Create the user
         if ($admin === null) {
-            $admin = $this->user_service->create($data['wtuser'], $data['wtname'], $data['wtemail'], $data['wtpass'])
-                ->setPreference('language', $data['lang'])
-                ->setPreference('visibleonline', '1');
+            $admin = $this->user_service->create($data['wtuser'], $data['wtname'], $data['wtemail'], $data['wtpass']);
+            $admin->setPreference(User::PREF_LANGUAGE, $data['lang']);
+            $admin->setPreference(User::PREF_IS_VISIBLE_ONLINE, '1');
         } else {
             $admin->setPassword($_POST['wtpass']);
         }
         // Make the user an administrator
-        $admin
-            ->setPreference('canadmin', '1')
-            ->setPreference('verified', '1')
-            ->setPreference('verified_by_admin', '1');
+        $admin->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
+        $admin->setPreference(User::PREF_IS_EMAIL_VERIFIED, '1');
+        $admin->setPreference(User::PREF_IS_ACCOUNT_APPROVED, '1');
 
         // Write the config file. We already checked that this would work.
         $config_ini_php = view('setup/config.ini', $data);

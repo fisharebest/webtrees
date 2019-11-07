@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\LatestUserRepositoryInterface;
+use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
@@ -77,7 +78,7 @@ class LatestUserRepository implements LatestUserRepositoryInterface
             ->leftJoin('user_setting as us', static function (JoinClause $join): void {
                 $join->on(static function (Builder $query): void {
                     $query->whereColumn('u.user_id', '=', 'us.user_id')
-                        ->where('us.setting_name', '=', 'reg_timestamp');
+                        ->where('us.setting_name', '=', User::PREF_TIMESTAMP_REGISTERED);
                 });
             })
             ->orderByDesc('us.setting_value')
@@ -111,7 +112,7 @@ class LatestUserRepository implements LatestUserRepositoryInterface
     {
         $format    = $format ?? I18N::dateFormat();
         $user      = $this->latestUserQuery();
-        $timestamp = (int) $user->getPreference('reg_timestamp');
+        $timestamp = (int) $user->getPreference(User::PREF_TIMESTAMP_REGISTERED);
 
         return Carbon::createFromTimestamp($timestamp)->format(strtr($format, ['%' => '']));
     }
@@ -124,7 +125,7 @@ class LatestUserRepository implements LatestUserRepositoryInterface
         $format = $format ?? str_replace('%', '', I18N::timeFormat());
         $user   = $this->latestUserQuery();
 
-        return date($format, (int) $user->getPreference('reg_timestamp'));
+        return date($format, (int) $user->getPreference(User::PREF_TIMESTAMP_REGISTERED));
     }
 
     /**

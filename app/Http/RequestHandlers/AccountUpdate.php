@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -56,18 +57,21 @@ class AccountUpdate implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getAttribute('tree');
-        $user   = $request->getAttribute('user');
+        $tree = $request->getAttribute('tree');
+
+        $user = $request->getAttribute('user');
+        assert($user instanceof User);
+
         $params = $request->getParsedBody();
 
-        $contact_method = $params['contact_method'];
+        $contact_method = $params['contact-method'];
         $email          = $params['email'];
         $language       = $params['language'];
         $real_name      = $params['real_name'];
         $password       = $params['password'];
         $time_zone      = $params['timezone'];
         $user_name      = $params['user_name'];
-        $visible_online = $params['visible_online'] ?? '';
+        $visible_online = $params['visible-online'] ?? '';
 
         // Change the password
         if ($password !== '') {
@@ -92,16 +96,15 @@ class AccountUpdate implements RequestHandlerInterface
             }
         }
 
-        $user
-            ->setRealName($real_name)
-            ->setPreference('contactmethod', $contact_method)
-            ->setPreference('language', $language)
-            ->setPreference('TIMEZONE', $time_zone)
-            ->setPreference('visibleonline', $visible_online);
+        $user->setRealName($real_name);
+        $user->setPreference(User::PREF_CONTACT_METHOD, $contact_method);
+        $user->setPreference(User::PREF_LANGUAGE, $language);
+        $user->setPreference(User::PREF_TIME_ZONE, $time_zone);
+        $user->setPreference(User::PREF_IS_VISIBLE_ONLINE, $visible_online);
 
         if ($tree instanceof Tree) {
-            $rootid = $params['root_id'];
-            $tree->setUserPreference($user, 'rootid', $rootid);
+            $default_xref = $params['default-xref'];
+            $tree->setUserPreference($user, User::PREF_TREE_DEFAULT_XREF, $default_xref);
         }
 
         // Switch to the new language now

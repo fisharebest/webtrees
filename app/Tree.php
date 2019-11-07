@@ -513,7 +513,7 @@ class Tree
         ]);
 
         // Accept this pending change
-        if (Auth::user()->getPreference('auto_accept')) {
+        if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS)) {
             $record = new GedcomRecord($xref, $gedcom, null, $this);
             
             app(PendingChangesService::class)->acceptRecord($record);
@@ -594,7 +594,7 @@ class Tree
         ]);
 
         // Accept this pending change
-        if (Auth::user()->getPreference('auto_accept')) {
+        if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record = new Family($xref, $gedcom, null, $this);
 
             app(PendingChangesService::class)->acceptRecord($record);
@@ -635,7 +635,7 @@ class Tree
         ]);
 
         // Accept this pending change
-        if (Auth::user()->getPreference('auto_accept')) {
+        if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record = new Individual($xref, $gedcom, null, $this);
 
             app(PendingChangesService::class)->acceptRecord($record);
@@ -676,7 +676,7 @@ class Tree
         ]);
 
         // Accept this pending change
-        if (Auth::user()->getPreference('auto_accept')) {
+        if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record = new Media($xref, $gedcom, null, $this);
 
             app(PendingChangesService::class)->acceptRecord($record);
@@ -698,12 +698,12 @@ class Tree
     {
         $individual = null;
 
-        if ($this->getUserPreference($user, 'rootid') !== '') {
-            $individual = Individual::getInstance($this->getUserPreference($user, 'rootid'), $this);
+        if ($this->getUserPreference($user, User::PREF_TREE_DEFAULT_XREF) !== '') {
+            $individual = Individual::getInstance($this->getUserPreference($user, User::PREF_TREE_DEFAULT_XREF), $this);
         }
 
-        if ($individual === null && $this->getUserPreference($user, 'gedcomid') !== '') {
-            $individual = Individual::getInstance($this->getUserPreference($user, 'gedcomid'), $this);
+        if ($individual === null && $this->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF) !== '') {
+            $individual = Individual::getInstance($this->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF), $this);
         }
 
         if ($individual === null && $this->getPreference('PEDIGREE_ROOT_ID') !== '') {

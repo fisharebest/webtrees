@@ -4,6 +4,7 @@ use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\User;
 
 ?>
 
@@ -26,7 +27,7 @@ use Fisharebest\Webtrees\I18N;
                 </td>
                 <td>
                     <?= I18N::translate('User’s account has been inactive too long: ') ?>
-                    <?= view('components/datetime', ['timestamp' => Carbon::createFromTimestamp(max((int) $user->getPreference('reg_timestamp'), (int) $user->getPreference('sessiontime')))]) ?>
+                    <?= view('components/datetime', ['timestamp' => Carbon::createFromTimestamp(max((int) $user->getPreference(User::PREF_TIMESTAMP_REGISTERED), (int) $user->getPreference(User::PREF_TIMESTAMP_ACTIVE)))]) ?>
                 </td>
                 <td>
                     <input type="checkbox" name="delete[]" value="<?= $user->id() ?>">
@@ -45,7 +46,7 @@ use Fisharebest\Webtrees\I18N;
                 </td>
                 <td>
                     <?= I18N::translate('User didn’t verify within 7 days.') ?>
-                    <?php if ($user->getPreference('verified_by_admin') !== '1') : ?>
+                    <?php if ($user->getPreference(User::PREF_IS_ACCOUNT_APPROVED) !== '1') : ?>
                         <?= I18N::translate('User not verified by administrator.') ?>
                     <?php endif ?>
                 </td>

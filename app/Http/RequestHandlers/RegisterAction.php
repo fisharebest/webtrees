@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
+use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -104,18 +105,17 @@ class RegisterAction extends AbstractBaseController
         Log::addAuthenticationLog('User registration requested for: ' . $username);
 
         $user = $this->user_service->create($username, $realname, $email, $password);
-        $user
-            ->setPreference('language', $locale->languageTag())
-            ->setPreference('verified', '0')
-            ->setPreference('verified_by_admin', '0')
-            ->setPreference('reg_timestamp', date('U'))
-            ->setPreference('reg_hashcode', md5(Uuid::uuid4()->toString()))
-            ->setPreference('contactmethod', 'messaging2')
-            ->setPreference('comment', $comments)
-            ->setPreference('visibleonline', '1')
-            ->setPreference('auto_accept', '0')
-            ->setPreference('canadmin', '0')
-            ->setPreference('sessiontime', '0');
+        $user->setPreference(User::PREF_LANGUAGE, $locale->languageTag());
+        $user->setPreference(User::PREF_IS_EMAIL_VERIFIED, '');
+        $user->setPreference(User::PREF_IS_ACCOUNT_APPROVED, '');
+        $user->setPreference(User::PREF_TIMESTAMP_REGISTERED, date('U'));
+        $user->setPreference(User::PREF_VERIFICATION_TOKEN, md5(Uuid::uuid4()->toString()));
+        $user->setPreference(User::PREF_CONTACT_METHOD, 'messaging2');
+        $user->setPreference(User::PREF_NEW_ACCOUNT_COMMENT, $comments);
+        $user->setPreference(User::PREF_IS_VISIBLE_ONLINE, '1');
+        $user->setPreference(User::PREF_AUTO_ACCEPT_EDITS, '');
+        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '');
+        $user->setPreference(User::PREF_TIMESTAMP_ACTIVE, '0');
 
         $base_url = $request->getAttribute('base_url');
         $reply_to = $tree instanceof Tree ? new TreeUser($tree) : new SiteUser();
@@ -133,7 +133,7 @@ class RegisterAction extends AbstractBaseController
 
         // Tell the administrators about the registration.
         foreach ($this->user_service->administrators() as $administrator) {
-            I18N::init($administrator->getPreference('language'));
+            I18N::init($administrator->getPreference(User::PREF_LANGUAGE));
 
             /* I18N: %s is a server name/URL */
             $subject = I18N::translate('New registration at %s', $base_url);
@@ -148,7 +148,7 @@ class RegisterAction extends AbstractBaseController
                 view('emails/register-notify-html', ['user' => $user, 'comments' => $comments, 'base_url' => $base_url])
             );
 
-            $mail1_method = $administrator->getPreference('contact_method');
+            $mail1_method = $administrator->getPreference(User::PREF_CONTACT_METHOD);
             if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
                 DB::table('message')->insert([
                     'sender'     => $user->email(),

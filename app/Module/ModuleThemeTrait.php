@@ -37,6 +37,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -357,7 +358,7 @@ trait ModuleThemeTrait
      */
     public function menuMyIndividualRecord(Tree $tree): ?Menu
     {
-        $record = Individual::getInstance($tree->getUserPreference(Auth::user(), 'gedcomid'), $tree);
+        $record = Individual::getInstance($tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF), $tree);
 
         if ($record) {
             return new Menu(I18N::translate('My individual record'), $record->url(), 'menu-myrecord');
@@ -414,7 +415,7 @@ trait ModuleThemeTrait
      */
     public function menuMyPedigree(Tree $tree): ?Menu
     {
-        $gedcomid = $tree->getUserPreference(Auth::user(), 'gedcomid');
+        $gedcomid = $tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF);
 
         $pedigree_chart = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
             ->filter(static function (ModuleInterface $module): bool {

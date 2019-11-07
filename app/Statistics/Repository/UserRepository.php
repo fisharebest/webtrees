@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\UserRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 
 use function count;
 
@@ -70,7 +71,7 @@ class UserRepository implements UserRepositoryInterface
         $logged_in = [];
 
         foreach ($this->user_service->allLoggedIn() as $user) {
-            if (Auth::isAdmin() || $user->getPreference('visibleonline')) {
+            if (Auth::isAdmin() || $user->getPreference(User::PREF_IS_VISIBLE_ONLINE) === '1') {
                 $logged_in[] = $user;
             } else {
                 $anonymous++;
@@ -109,7 +110,7 @@ class UserRepository implements UserRepositoryInterface
                     $content .= '<li>';
                 }
 
-                $individual = Individual::getInstance($this->tree->getUserPreference($user, 'gedcomid'), $this->tree);
+                $individual = Individual::getInstance($this->tree->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF), $this->tree);
 
                 if ($individual instanceof Individual && $individual->canShow()) {
                     $content .= '<a href="' . e($individual->url()) . '">' . e($user->realName()) . '</a>';
@@ -119,7 +120,7 @@ class UserRepository implements UserRepositoryInterface
 
                 $content .= ' - ' . e($user->userName());
 
-                if (($user->getPreference('contactmethod') !== 'none') && (Auth::id() !== $user->id())) {
+                if (($user->getPreference(User::PREF_CONTACT_METHOD) !== 'none') && (Auth::id() !== $user->id())) {
                     if ($type === 'list') {
                         $content .= '<br>';
                     }
@@ -164,7 +165,7 @@ class UserRepository implements UserRepositoryInterface
      */
     private function isUserVisible(UserInterface $user): bool
     {
-        return Auth::isAdmin() || $user->getPreference('visibleonline');
+        return Auth::isAdmin() || $user->getPreference(User::PREF_IS_VISIBLE_ONLINE) === '1';
     }
 
     /**

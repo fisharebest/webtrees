@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -89,18 +90,18 @@ class TreeService
                     ->leftJoin('user_gedcom_setting', static function (JoinClause $join): void {
                         $join->on('user_gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
                             ->where('user_gedcom_setting.user_id', '=', Auth::id())
-                            ->where('user_gedcom_setting.setting_name', '=', 'canedit');
+                            ->where('user_gedcom_setting.setting_name', '=', User::PREF_TREE_ROLE);
                     })
                     ->where(static function (Builder $query): void {
                         $query
                             // Managers
-                            ->where('user_gedcom_setting.setting_value', '=', 'admin')
+                            ->where('user_gedcom_setting.setting_value', '=', User::ROLE_MANAGER)
                             // Members
                             ->orWhere(static function (Builder $query): void {
                                 $query
                                     ->where('gs2.setting_value', '=', '1')
                                     ->where('gs3.setting_value', '=', '1')
-                                    ->where('user_gedcom_setting.setting_value', '<>', 'none');
+                                    ->where('user_gedcom_setting.setting_value', '<>', User::ROLE_VISITOR);
                             })
                             // Public trees
                             ->orWhere(static function (Builder $query): void {
