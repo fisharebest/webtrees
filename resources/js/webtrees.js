@@ -695,21 +695,16 @@ $(function () {
     };
     $("select.select2").select2({
         language: select2_languages[lang] || lang,
-        // "auto" breaks content that is initially hidden.
-        // "100%" breaks content that isn't.
-        // "90%"
-        //width: "90%",
-        // Do not escape.
+        // Do not escape - we do it on the server.
         escapeMarkup: function (x) {
             return x;
         },
-        // Same formatting for both selections and rsult
-        //templateResult: templateOptionForSelect2,
-        //templateSelection: templateOptionForSelect2
-    })
+    });
+
+    // If we clear the select (using the "X" button), we need an empty value
+    // (rather than no value at all) for (non-multiple) selects with name="array[]"
+    $("select.select2:not([multiple])")
     .on("select2:unselect", function (evt) {
-        // If we clear the select (using the "X" button), we need an empty
-        // value (rather than no value at all) for inputs with name="array[]"
         $(evt.delegateTarget).html("<option value=\"\" selected></option>");
     });
 
