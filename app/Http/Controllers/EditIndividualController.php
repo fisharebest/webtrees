@@ -78,7 +78,7 @@ class EditIndividualController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getParsedBody()['xref'];
+        $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
@@ -180,7 +180,7 @@ class EditIndividualController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getParsedBody()['xref'];
+        $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
@@ -280,7 +280,7 @@ class EditIndividualController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getParsedBody()['xref'];
+        $xref = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
@@ -523,6 +523,7 @@ class EditIndividualController extends AbstractEditController
             'individual' => $individual,
             'title'      => $title,
             'tree'       => $tree,
+            'xref'       => $xref,
         ]);
     }
 
@@ -536,7 +537,7 @@ class EditIndividualController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref  = $request->getParsedBody()['xref'];
+        $xref  = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
@@ -604,6 +605,7 @@ class EditIndividualController extends AbstractEditController
             'label'      => $label,
             'title'      => $title,
             'tree'       => $tree,
+            'xref'       => $xref,
         ]);
     }
 
@@ -617,7 +619,7 @@ class EditIndividualController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getParsedBody()['xref'];
+        $xref   = $request->getQueryParams()['xref'];
 
         $individual = Individual::getInstance($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);

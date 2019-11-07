@@ -78,7 +78,7 @@ class EditFamilyController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getParsedBody()['xref'];
+        $xref = $request->getQueryParams()['xref'];
 
         $family = Family::getInstance($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
@@ -178,7 +178,7 @@ class EditFamilyController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getParsedBody()['xref'];
+        $xref   = $request->getQueryParams()['xref'];
         $family = Family::getInstance($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 

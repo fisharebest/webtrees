@@ -3,7 +3,7 @@
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route('link-child-to-family-action', ['tree' => $tree->name()])) ?>" class="wt-page-content">
+<form method="post" action="<?= e(route('link-child-to-family-action', ['tree' => $tree->name(), 'xref' => $xref])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
 
     <div class="row form-group">
