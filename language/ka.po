@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2017-04-25 15:46+0000\n"
-"Last-Translator: Gela Gzirishvili <gelagzirishvili@gmail.com>\n"
-"Language-Team: Georgian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ka/>\n"
+"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"Language-Team: Georgian <http://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -788,27 +789,27 @@ msgstr "Список записей, которые были недавно об
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:44
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr "Список заданий и работ которые связанны с генеалогическим древом"
+msgstr "Список заданий и работ которые связанны с генеалогическим древом."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "იუბილეები დღეს"
+msgstr "იუბილეები დღეს."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
 msgid "A list of the anniversaries that occur today."
-msgstr "იუბილეები დღეს"
+msgstr "იუბილეები დღეს."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:44
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr "იუბილეები დღეს"
+msgstr "იუბილეები დღეს."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
 msgid "A list of the most popular given names."
-msgstr "ყველაზე პოპულარული სახელების ჩამონათვალი"
+msgstr "ყველაზე პოპულარული სახელების ჩამონათვალი."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
@@ -891,7 +892,7 @@ msgstr "ფაქტების სია, რომლებიც მოყ�
 #: app/Module/FamilyGroupReportModule.php:35
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr "მონაცემები ოჯახის წევრებზე"
+msgstr "მონაცემები ოჯახის წევრებზე."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
@@ -930,7 +931,7 @@ msgstr "დავეთანხმოთ ან არა მოლოდინ
 #: app/Module/IndividualFamiliesReportModule.php:35
 #: modules_v3/individual_ext_report/report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr "შევქმნათ ანგარიში ამ პერსონის ახლო ნათესავების ოჯახების შესახებ. "
+msgstr "შევქმნათ ანგარიში ამ პერსონის ახლო ნათესავების ოჯახების შესახებ."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:35
@@ -982,32 +983,32 @@ msgstr ""
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:38
 msgid "A sidebar showing the descendants of an individual."
-msgstr "პერსონების ჩვენება სიის მიხედვით"
+msgstr "პერსონების ჩვენება სიის მიხედვით."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
 msgid "A tab showing the close relatives of an individual."
-msgstr "შევქმნათ ანგარიში ამ პერსონის ახლო ნათესავების ოჯახების შესახებ. "
+msgstr "შევქმნათ ანგარიში ამ პერსონის ახლო ნათესავების ოჯახების შესახებ."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
 msgid "A tab showing the facts and events of an individual."
-msgstr "შევქმნათ ანგარიში ამ პერსონის ახლო ნათესავების ოჯახების შესახებ. "
+msgstr "შევქმნათ ანგარიში ამ პერსონის ახლო ნათესავების ოჯახების შესახებ."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
 msgid "A tab showing the media objects linked to an individual."
-msgstr "შევქმნათ ანგარიში ამ პერსონის ახლო ნათესავების ოჯახების შესახებ. "
+msgstr "შევქმნათ ანგარიში ამ პერსონის ახლო ნათესავების ოჯახების შესახებ."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
 msgid "A tab showing the notes attached to an individual."
-msgstr "შევქმნათ ანგარიში ამ პერსონის ახლო ნათესავების ოჯახების შესახებ. "
+msgstr "შევქმნათ ანგარიში ამ პერსონის ახლო ნათესავების ოჯახების შესახებ."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:39
 msgid "A tab showing the sources linked to an individual."
-msgstr "შევქმნათ ანგარიში ამ პერსონის ახლო ნათესავების ოჯახების შესახებ. "
+msgstr "შევქმნათ ანგარიში ამ პერსონის ახლო ნათესავების ოჯახების შესახებ."
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
@@ -1795,7 +1796,7 @@ msgstr "ყველა"
 
 #: admin_trees_manage.php:724
 msgid "All changes in PhpGedView must be accepted"
-msgstr "ყველა ველი უნდა იყოს შევსებული."
+msgstr "ყველა ველი უნდა იყოს შევსებული"
 
 #: admin_trees_manage.php:727
 msgid "All existing PhpGedView users must have distinct email addresses"
@@ -1823,7 +1824,7 @@ msgstr "ერთჯერადი ფაქტები პერსონი�
 
 #: calendar.php:228 calendar.php:239 calendar.php:438
 msgid "All individuals"
-msgstr "პერსონები სულ "
+msgstr "პერსონები სულ"
 
 #: admin_trees_config.php:554
 msgid "All records"
@@ -1831,11 +1832,11 @@ msgstr ""
 
 #: admin_trees_config.php:1943
 msgid "All repository facts"
-msgstr "არქივის ერთჯერადი ფაქტები "
+msgstr "არქივის ერთჯერადი ფაქტები"
 
 #: admin_trees_config.php:1854
 msgid "All source facts"
-msgstr "წყაროს ერთჯერადი ფაქტები "
+msgstr "წყაროს ერთჯერადი ფაქტები"
 
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:32
@@ -1906,12 +1907,12 @@ msgstr ""
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:32
 msgid "An alternative way to select a new theme."
-msgstr "ალტერნატიული ავტორიზაცია"
+msgstr "ალტერნატიული ავტორიზაცია."
 
 #. I18N: Description of the “Sign in” module
 #: app/Module/LoginBlockModule.php:34
 msgid "An alternative way to sign in and sign out."
-msgstr "ალტერნატიული ავტორიზაცია"
+msgstr "ალტერნატიული ავტორიზაცია."
 
 #: app/Functions/FunctionsEdit.php:910
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
@@ -1961,7 +1962,7 @@ msgstr "წინაპართა თაობა"
 
 #: modules_v3/ahnentafel_report/report.xml:55
 msgid "Ancestors of "
-msgstr "წინაპრები"
+msgstr "წინაპრები "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/AncestryController.php:54
@@ -3523,12 +3524,12 @@ msgstr ""
 
 #: admin_trees_check.php:33 admin_trees_manage.php:499
 msgid "Check for errors"
-msgstr "შეცდომებზე შემოწმება "
+msgstr "შეცდომებზე შემოწმება"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:94
 msgid "Check for pending changes…"
-msgstr "ვაჩვენოთ რედაქტირებული ცვლილებები"
+msgstr "ვაჩვენოთ რედაქტირებული ცვლილებები…"
 
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 msgid "Check the access rights on this folder."
@@ -4051,7 +4052,7 @@ msgstr "ქვეყანა"
 #: statisticsplot.php:1222 statisticsplot.php:1272 statisticsplot.php:1322
 #: statisticsplot.php:1372
 msgid "Counts "
-msgstr "მრიცხველი"
+msgstr "მრიცხველი "
 
 #: app/Module/GoogleMapsModule.php:3449
 msgid "County"
@@ -4980,7 +4981,7 @@ msgstr "მონიშნული შეტყობინებების �
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:424
 msgid "Delete temporary files…"
-msgstr "წაშლილი ფაილები:"
+msgstr "წაშლილი ფაილები…"
 
 #: admin_modules.php:103
 msgid "Delete the preferences for this module."
@@ -5039,7 +5040,7 @@ msgstr "შთამომავლები"
 #. I18N: gedcom tag DESI
 #: app/GedcomTag.php:366
 msgid "Descendants interest"
-msgstr "Боковая панель - показывает потомков персоны."
+msgstr "Боковая панель - показывает потомков персоны"
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
@@ -5050,7 +5051,7 @@ msgstr "შთამომავლები от "
 #: app/Module/ChartsBlockModule.php:103
 #, php-format
 msgid "Descendants of %s"
-msgstr "%sს შთამომავლები "
+msgstr "%sს შთამომავლები"
 
 #. I18N: gedcom tag DSCR
 #: admin_module_blocks.php:74 admin_module_charts.php:67
@@ -5283,7 +5284,7 @@ msgstr "გადმოტვირთვა"
 #: admin_site_upgrade.php:243
 #, php-format
 msgid "Download %s…"
-msgstr "გადმოტვირთვა %s"
+msgstr "გადმოტვირთვა %s…"
 
 #: mediaviewer.php:143
 msgid "Download file"
@@ -5767,7 +5768,7 @@ msgstr ""
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:219
 msgid "Export all the family trees to GEDCOM files…"
-msgstr "ოჯახის გენეალოგიური ხის ექსპორტი"
+msgstr "ოჯახის გენეალოგიური ხის ექსპორტი…"
 
 #: admin_trees_download.php:134
 msgid "Export preferences"
@@ -5985,7 +5986,7 @@ msgstr "მონაცემები ოჯახის შესახებ"
 #. I18N: Name of a module/sidebar
 #: app/Module/FamiliesSidebarModule.php:32
 msgid "Family list"
-msgstr "ოჯახების სია "
+msgstr "ოჯახების სია"
 
 #. I18N: Name of a module/sidebar
 #: app/Module/FamilyNavigatorModule.php:34 edit_interface.php:1397
@@ -6199,7 +6200,7 @@ msgstr "თებერვალი"
 #: statisticsplot.php:1209 statisticsplot.php:1259 statisticsplot.php:1309
 #: statisticsplot.php:1359
 msgid "Female"
-msgstr "მდედრ."
+msgstr "მდედრ"
 
 #: app/Functions/FunctionsPrintLists.php:1880
 #: app/Module/FamilyTreeStatisticsModule.php:109
@@ -6259,7 +6260,7 @@ msgstr "ფილტრი"
 #: app/Functions/FunctionsPrint.php:794 find.php:76 find.php:81 find.php:86
 #: find.php:91 find.php:96 find.php:101
 msgid "Find a fact or event"
-msgstr "ძებნა ფაქტის ან მოვლენის "
+msgstr "ძებნა ფაქტის ან მოვლენის"
 
 #: app/Functions/FunctionsPrint.php:709 find.php:54
 msgid "Find a family"
@@ -6695,7 +6696,7 @@ msgstr "თაობა"
 #: modules_v3/ahnentafel_report/report.xml:78
 #: modules_v3/descendancy_report/report.xml:55
 msgid "Generation "
-msgstr "თაობა"
+msgstr "თაობა "
 
 #: ancestry.php:97 app/Module/GoogleMapsModule.php:744 descendancy.php:76
 #: familybook.php:66 fanchart.php:101 hourglass.php:67
@@ -6980,7 +6981,7 @@ msgstr ""
 
 #: modules_v3/descendancy_report/report.xml:428
 msgid "He "
-msgstr "იგი"
+msgstr "იგი "
 
 #: modules_v3/ahnentafel_report/report.xml:289
 msgid "He died"
@@ -7045,16 +7046,16 @@ msgstr "სიმაღლე"
 #: login.php:256 login.php:337
 #, php-format
 msgid "Hello %s…"
-msgstr "გამარჯობათ, %s..."
+msgstr "გამარჯობათ, %s…"
 
 #: login.php:389
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "მოგესალმებით, %s...<br /> მოხარულები ვართ რომ დაგვიკავშირდით"
+msgstr "მოგესალმებით, %s...<br> მოხარულები ვართ რომ დაგვიკავშირდით."
 
 #: login.php:320 login.php:558
 msgid "Hello administrator…"
-msgstr "მოგესალმებით, ადმინისტრატორო..."
+msgstr "მოგესალმებით, ადმინისტრატორო…"
 
 #: help_text.php:320
 msgid "Help"
@@ -7181,7 +7182,7 @@ msgstr "გრაფიკი \"ქვიშის საათი\""
 #: app/Module/ChartsBlockModule.php:111
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr "გრაფიკი \"ქვიშის საათი\" %s "
+msgstr "გრაფიკი \"ქვიშის საათი\" %s"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:143
 msgid "Household"
@@ -7276,7 +7277,9 @@ msgstr "Если у персоны две фамилии, обе должны б
 #: help_text.php:232
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Если персона была известна под прозвищем не являющееся частью имени, оно должно быть указанно между кавычками: <%s>Иван \"Цыган\" /Иванов/<%s>"
+msgstr ""
+"Если персона была известна под прозвищем не являющееся частью имени, оно "
+"должно быть указанно между кавычками: <%s>Иван \"Цыган\" /Иванов/<%s>."
 
 #: help_text.php:230
 #, php-format
@@ -7424,11 +7427,11 @@ msgstr "В некоторых странах законы о частной жи
 
 #: calendar.php:125
 msgid "In this month…"
-msgstr "ამ თვეში, წარსულში..."
+msgstr "ამ თვეში, წარსულში…"
 
 #: calendar.php:128
 msgid "In this year…"
-msgstr "ამ წელს, თქვენს ისტორიებში...."
+msgstr "ამ წელს, თქვენს ისტორიებში…"
 
 #: app/Module/GoogleMapsModule.php:1358
 msgid "Include fully matched places"
@@ -7452,7 +7455,7 @@ msgstr "ქვეკატალოგების ჩათვლით"
 #. I18N: Label for a configuration option
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "მოიცავდეს ახლო ნათესავებს ამ პერსონის?"
+msgstr "მოიცავდეს ახლო ნათესავებს ამ პერსონის"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6777
@@ -7894,7 +7897,7 @@ msgstr "კენია"
 
 #: app/Module/HtmlBlockModule.php:156
 msgid "Keyword examples"
-msgstr "მაგალითად საკვანძო სიტვები "
+msgstr "მაგალითად საკვანძო სიტვები"
 
 #: app/Date/JalaliDate.php:185
 msgctxt "Abbreviation for Persian month: Khordad"
@@ -8298,7 +8301,7 @@ msgstr "ვიპოვოთ ჩანაწერი ადამიანი�
 
 #: app/I18N.php:233 app/I18N.php:234
 msgid "Loading…"
-msgstr "იტვირთება..."
+msgstr "იტვირთება…"
 
 #. I18N: “Local files” are stored on this computer
 #: admin_media.php:632
@@ -8360,7 +8363,7 @@ msgstr "Редлендс, Калифорния"
 
 #: login.php:255
 msgid "Lost password request"
-msgstr "დაგავიწყდათ პაროლი ?"
+msgstr "დაგავიწყდათ პაროლი"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:221
@@ -8776,7 +8779,7 @@ msgstr "ოჯახური მდგომარეობა"
 
 #: app/GedcomTag.php:588
 msgid "Marriage type unknown"
-msgstr "ქორწინების ტიპი უცნობია "
+msgstr "ქორწინების ტიპი უცნობია"
 
 #. I18N: Name of a module/report
 #: app/Module/MarriageReportModule.php:29
@@ -9550,7 +9553,7 @@ msgstr "ძიძა"
 
 #: app/Module/HtmlBlockModule.php:159
 msgid "Narrative description"
-msgstr "ამბავი მოთხრობის სახით "
+msgstr "ამბავი მოთხრობის სახით"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:257
@@ -9754,7 +9757,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:849
 msgid "No ancestors in the database."
-msgstr "ამ მონაცემთა ბაზაში წინაპრები არაა"
+msgstr "ამ მონაცემთა ბაზაში წინაპრები არაა."
 
 #: admin_trees_config.php:35
 msgid "No calendar conversion"
@@ -9848,7 +9851,7 @@ msgstr ""
 
 #: app/Module/FamilyTreeNewsModule.php:109
 msgid "No news articles have been submitted."
-msgstr "ახალი ამბის დამატება"
+msgstr "ახალი ამბის დამატება."
 
 #: app/Module/GoogleMapsModule.php:3269 app/Module/GoogleMapsModule.php:3972
 msgid "No places found"
@@ -9856,7 +9859,7 @@ msgstr "ადგილები არ მოიძებნა"
 
 #: admin_trees_places.php:128
 msgid "No places have been found."
-msgstr "ადგილები არ მოიძებნა"
+msgstr "ადგილები არ მოიძებნა."
 
 #: admin_site_config.php:127
 msgid "No predefined text"
@@ -9873,7 +9876,7 @@ msgstr "ჩანაწერი არაა რომ ვაჩვენოთ
 #: find.php:640 find.php:667 find.php:689 find.php:711 find.php:735
 #: placelist.php:62
 msgid "No results found."
-msgstr "ადგილები არ მოიძებნა"
+msgstr "ადგილები არ მოიძებნა."
 
 #: app/Stats.php:5901
 msgid "No signed-in and no anonymous users"
@@ -10016,7 +10019,7 @@ msgstr "არაფერი არ მოიძებნა რომ წა�
 
 #: app/Module/BatchUpdateModule.php:257
 msgid "Nothing found."
-msgstr "არაფერი არ მოიძებნა"
+msgstr "არაფერი არ მოიძებნა."
 
 #: app/Date/CalendarDate.php:331
 msgctxt "Abbreviation for November"
@@ -10062,7 +10065,7 @@ msgstr "დღეების რაოდენობა"
 
 #: app/Stats.php:5209 statistics.php:307
 msgid "Number of families without children"
-msgstr "უშვილო ოჯახების რაოდენობა."
+msgstr "უშვილო ოჯახების რაოდენობა"
 
 #: app/Module/ClippingsCartModule.php:224
 #: app/Module/ClippingsCartModule.php:243
@@ -10230,7 +10233,7 @@ msgstr "დღეს"
 
 #: calendar.php:122
 msgid "On this day…"
-msgstr "დღეს"
+msgstr "დღეს…"
 
 #: app/Functions/FunctionsEdit.php:229
 #: app/Functions/FunctionsPrintFacts.php:274
@@ -10514,7 +10517,7 @@ msgstr "Пароль должен быть не менее 6 символов с
 
 #: edituser.php:139
 msgid "Passwords must contain at least 6 characters."
-msgstr "პაროლი უნდა იყოს მინიმუმ 6 სიმბოლო"
+msgstr "პაროლი უნდა იყოს მინიმუმ 6 სიმბოლო."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
@@ -10859,7 +10862,7 @@ msgstr "Пожалуйста укажите имя, фамилию или мес
 
 #: message.php:91
 msgid "Please enter a message subject."
-msgstr "გზავნილის თემა"
+msgstr "გზავნილის თემა."
 
 #: message.php:50
 msgid "Please enter a valid email address."
@@ -10872,7 +10875,7 @@ msgstr ""
 
 #: message.php:96
 msgid "Please enter some message text before sending."
-msgstr "შეიყვანეთ გზავნილის ტექსტი"
+msgstr "შეიყვანეთ გზავნილის ტექსტი."
 
 #: message.php:117
 msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
@@ -11040,7 +11043,7 @@ msgstr "Примиди"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Отображать основные события если нет сведений?"
+msgstr "Отображать основные события если нет сведений"
 
 #: admin_trees_config.php:310 admin_trees_manage.php:398
 msgid "Privacy"
@@ -11127,11 +11130,11 @@ msgstr "ერთჯერადი ფაქტები პერსონი�
 
 #: admin_trees_config.php:2001
 msgid "Quick repository facts"
-msgstr "არქივის ერთჯერადი ფაქტები "
+msgstr "არქივის ერთჯერადი ფაქტები"
 
 #: admin_trees_config.php:1912
 msgid "Quick source facts"
-msgstr "წყაროს ერთჯერადი ფაქტები "
+msgstr "წყაროს ერთჯერადი ფაქტები"
 
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:201
@@ -11261,7 +11264,7 @@ msgstr ""
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:39
 msgid "Random images from the current family tree."
-msgstr "შემთხვევითი სურათები მიმდინარე ოჯახის გენეალოგიურ ხეზე"
+msgstr "შემთხვევითი სურათები მიმდინარე ოჯახის გენეალოგიურ ხეზე."
 
 #: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
 #: edit_interface.php:1779 edit_interface.php:1849
@@ -12051,7 +12054,7 @@ msgstr "შეტყობინების გაგზავნა"
 #. I18N: Label for a configuration option
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Посылать напоминания электронной почтой?"
+msgstr "Посылать напоминания электронной почтой"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:335
@@ -12309,7 +12312,7 @@ msgstr ""
 
 #: modules_v3/descendancy_report/report.xml:358
 msgid "She "
-msgstr "იგი"
+msgstr "იგი "
 
 #: modules_v3/ahnentafel_report/report.xml:290
 msgid "She died"
@@ -12384,7 +12387,7 @@ msgstr "ყველაზე ხანმოკლე წორწინებ�
 
 #: app/Module/RecentChangesModule.php:181
 msgid "Should this block be hidden when it is empty"
-msgstr "Скрывать этот блок, если он пуст?"
+msgstr "Скрывать этот блок, если он пуст"
 
 #: calendar.php:221
 msgid "Show"
@@ -12432,7 +12435,7 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "ვაჩვენოთ წინაპართა შვილები?"
+msgstr "ვაჩვენოთ წინაპართა შვილები"
 
 #. I18N: Label for a configuration option
 #: app/Module/TopPageViewsModule.php:165
@@ -12470,7 +12473,7 @@ msgstr "ვაჩვენოთ ბიძაშვილები"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:296
 msgid "Show date of last update"
-msgstr "ვაჩვენოთ განახლების თარიღი?"
+msgstr "ვაჩვენოთ განახლების თარიღი"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:384
@@ -12540,11 +12543,11 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "ვაჩვენოთ სანიშნეები?"
+msgstr "ვაჩვენოთ სანიშნეები"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "ვაჩვენოთ პროფესიები?"
+msgstr "ვაჩვენოთ პროფესიები"
 
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
@@ -12567,7 +12570,7 @@ msgstr "პერსონები რომელთა სქესიც გ
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "მხოლოდ პერსონა, მოვლენა თუ ორივე ერთად?"
+msgstr "მხოლოდ პერსონა, მოვლენა თუ ორივე ერთად"
 
 #: app/Functions/FunctionsPrintLists.php:177
 msgid "Show only males."
@@ -12575,7 +12578,7 @@ msgstr "ვაჩვენოთ მხოლოდ მამრობითი 
 
 #: find.php:527
 msgid "Show only the selected tags"
-msgstr "ვაჩვენოთ მხოლოდ მდედრობითი სქესის წარმომადგენლები."
+msgstr "ვაჩვენოთ მხოლოდ მდედრობითი სქესის წარმომადგენლები"
 
 #: app/Functions/FunctionsPrintLists.php:307
 #: app/Functions/FunctionsPrintLists.php:742
@@ -12590,7 +12593,7 @@ msgstr "ვაჩვენოთ რედაქტირებული ცვ�
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "ვაჩვენოთ ფოტო?"
+msgstr "ვაჩვენოთ ფოტო"
 
 #: placelist.php:81
 msgid "Show places in hierarchy"
@@ -12619,12 +12622,12 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "ვაჩვენოთ საცხოვრებელი ადგილი?"
+msgstr "ვაჩვენოთ საცხოვრებელი ადგილი"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:409
 msgid "Show slide show controls"
-msgstr "ვაჩვენოთ სლაიდ-შოუს კონტროლი?"
+msgstr "ვაჩვენოთ სლაიდ-შოუს კონტროლი"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12632,7 +12635,7 @@ msgstr "ვაჩვენოთ სლაიდ-შოუს კონტრო
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "ვაჩვენოთ წყაროები?"
+msgstr "ვაჩვენოთ წყაროები"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -13141,7 +13144,7 @@ msgstr "მშობლებზე გადასვლა"
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:415
 msgid "Start slide show on page load"
-msgstr "ვაჩვენოთ სლაიდ-შოუ გვერდის ჩატვირთვისას?"
+msgstr "ვაჩვენოთ სლაიდ-შოუ გვერდის ჩატვირთვისას"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -13270,7 +13273,7 @@ msgstr "კვირა"
 #: admin.php:617
 #, php-format
 msgid "Support and documentation can be found at %s."
-msgstr "მხარდაჭერა და დოკუმენტაცია შეიძლება იყოს ნაპოვნი %s"
+msgstr "მხარდაჭერა და დოკუმენტაცია შეიძლება იყოს ნაპოვნი %s."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6884
@@ -13620,7 +13623,7 @@ msgstr ""
 #: admin_site_upgrade.php:358
 #, php-format
 msgid "The file %s has been created."
-msgstr "Она была кримирована"
+msgstr "Она была кримирована."
 
 #: admin_media.php:61 admin_media.php:70 admin_site_clean.php:32
 #: admin_site_upgrade.php:413 admin_site_upgrade.php:434
@@ -13631,7 +13634,7 @@ msgstr ""
 #: admin_media_upload.php:141 admin_media_upload.php:159
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr "მედიაფაილის ამორჩევა"
+msgstr "მედიაფაილის ამორჩევა."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:76
@@ -13647,7 +13650,7 @@ msgstr "ფაილი “%s” არ არსებობს."
 #: admin_site_clean.php:36 admin_site_upgrade.php:430
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr "Файл %s не может быть скопирован из %s"
+msgstr "Файл %s не может быть скопирован из %s."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
@@ -13662,12 +13665,12 @@ msgstr ""
 #: admin_trees_config.php:285
 #, php-format
 msgid "The folder %s has been created."
-msgstr "მედიაკატალოგი დაზიანებულია"
+msgstr "მედიაკატალოგი დაზიანებულია."
 
 #: admin_site_clean.php:30 admin_site_upgrade.php:428
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr "მედიაკატალოგი დაზიანებულია"
+msgstr "მედიაკატალოგი დაზიანებულია."
 
 #: admin_site_config.php:195
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -13729,7 +13732,7 @@ msgstr ""
 #: addmedia.php:313 addmedia.php:344
 #, php-format
 msgid "The media file %1$s could not be renamed to %2$s."
-msgstr "Файл %s не может быть скопирован из %s"
+msgstr "Файл %1$s не может быть скопирован из %2$s."
 
 #: addmedia.php:342
 #, php-format
@@ -13755,12 +13758,12 @@ msgstr ""
 
 #: message.php:193
 msgid "The message was not sent."
-msgstr "შეტყობინება არ გაიგზავნა"
+msgstr "შეტყობინება არ გაიგზავნა."
 
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "Сообщение послано в адрес пользователя %s"
+msgstr "Сообщение послано в адрес пользователя %s."
 
 #: admin_modules.php:54
 #, php-format
@@ -13816,7 +13819,7 @@ msgstr "Пароль, необходимый для аутентификации
 
 #: admin_users.php:75 edituser.php:134 setup.php:419
 msgid "The passwords do not match."
-msgstr "პაროლი არ დაემთხვა"
+msgstr "პაროლი არ დაემთხვა."
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
@@ -13857,7 +13860,7 @@ msgstr ""
 
 #: action.php:92
 msgid "The record has been copied to the clipboard."
-msgstr "ჩანაწერი კოპირებულია ბუფერში"
+msgstr "ჩანაწერი კოპირებულია ბუფერში."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:172
@@ -13872,7 +13875,7 @@ msgstr ""
 
 #: setup.php:154
 msgid "The server configuration is OK."
-msgstr "საიტის კონფიგურაცია"
+msgstr "საიტის კონფიგურაცია."
 
 #: admin_trees_renumber.php:257
 msgid "The server’s time limit has been reached."
@@ -13896,7 +13899,7 @@ msgstr ""
 #: addmedia.php:360
 #, php-format
 msgid "The thumbnail file %1$s could not be renamed to %2$s."
-msgstr "Файл %s не может быть скопирован из %s"
+msgstr "Файл %1$s не может быть скопирован из %2$s."
 
 #: addmedia.php:358
 #, php-format
@@ -13926,7 +13929,7 @@ msgstr[0] ""
 
 #: admin_site_upgrade.php:447
 msgid "The upgrade is complete."
-msgstr "მედიაკატალოგი დაზიანებულია"
+msgstr "მედიაკატალოგი დაზიანებულია."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:73
@@ -13959,12 +13962,12 @@ msgstr ""
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too new."
-msgstr "ვერსია %s უახლესია"
+msgstr "ვერსია %s უახლესია."
 
 #: admin_pgv_to_wt.php:101
 #, php-format
 msgid "The version of %s is too old."
-msgstr "ვერსია %s ძალიანი ძველია"
+msgstr "ვერსია %s ძალიანი ძველია."
 
 #: admin_site_access.php:77
 msgid "The website access rule has been created."
@@ -14036,7 +14039,7 @@ msgstr "ამ პერსონის შესახებ ფაქტებ
 
 #: admin_site_upgrade.php:105
 msgid "There are no pending changes."
-msgstr "ცვლილებების მოდერირება"
+msgstr "ცვლილებების მოდერირება."
 
 #: app/Module/ResearchTaskModule.php:151
 msgid "There are no research tasks in this family tree."
@@ -14208,7 +14211,7 @@ msgstr "ეს ოჯახი არ არსებობს ან თქვ�
 
 #: individual.php:58
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "პერსონა წაიშალა. წაშლა მოითხოვს მოდერატორისგან შემოწმებას"
+msgstr "პერსონა წაიშალა. წაშლა მოითხოვს მოდერატორისგან შემოწმებას."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: individual.php:53
@@ -14290,22 +14293,42 @@ msgstr ""
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1757
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "Это список фактов GEDCOM, которые ваши пользователи могут добавлять к семьям. Мы можете изменить этот список удаляя/добавляя имена фактов, даже произвольные, по мере необходимости. Нельзя что бы имена фактов, появляющихся в этом списке, записаны также и в списке <i>Одноразовые факты семьи</i>"
+msgstr ""
+"Это список фактов GEDCOM, которые ваши пользователи могут добавлять к "
+"семьям. Мы можете изменить этот список удаляя/добавляя имена фактов, даже "
+"произвольные, по мере необходимости. Нельзя что бы имена фактов, "
+"появляющихся в этом списке, записаны также и в списке <i>Одноразовые факты "
+"семьи</i>."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1639
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "Это список фактов GEDCOM, которые ваши пользователи могут добавлять к семьям. Мы можете изменить этот список удаляя/добавляя имена фактов, даже произвольные, по мере необходимости. Нельзя что бы имена фактов, появляющихся в этом списке, записаны также и в списке <i>Одноразовые факты семьи</i>"
+msgstr ""
+"Это список фактов GEDCOM, которые ваши пользователи могут добавлять к "
+"семьям. Мы можете изменить этот список удаляя/добавляя имена фактов, даже "
+"произвольные, по мере необходимости. Нельзя что бы имена фактов, "
+"появляющихся в этом списке, записаны также и в списке <i>Одноразовые факты "
+"семьи</i>."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:1964
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr "Это список фактов GEDCOM, которые ваши пользователи могут добавлять к семьям. Мы можете изменить этот список удаляя/добавляя имена фактов, даже произвольные, по мере необходимости. Нельзя что бы имена фактов, появляющихся в этом списке, записаны также и в списке <i>Одноразовые факты семьи</i>"
+msgstr ""
+"Это список фактов GEDCOM, которые ваши пользователи могут добавлять к "
+"семьям. Мы можете изменить этот список удаляя/добавляя имена фактов, даже "
+"произвольные, по мере необходимости. Нельзя что бы имена фактов, "
+"появляющихся в этом списке, записаны также и в списке <i>Одноразовые факты "
+"семьи</i>."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1875
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "Это список фактов GEDCOM, которые ваши пользователи могут добавлять к семьям. Мы можете изменить этот список удаляя/добавляя имена фактов, даже произвольные, по мере необходимости. Нельзя что бы имена фактов, появляющихся в этом списке, записаны также и в списке <i>Одноразовые факты семьи</i>"
+msgstr ""
+"Это список фактов GEDCOM, которые ваши пользователи могут добавлять к "
+"семьям. Мы можете изменить этот список удаляя/добавляя имена фактов, даже "
+"произвольные, по мере необходимости. Нельзя что бы имена фактов, "
+"появляющихся в этом списке, записаны также и в списке <i>Одноразовые факты "
+"семьи</i>."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1786
@@ -14344,7 +14367,7 @@ msgstr "Ваше настоящее имя, которое вы желаете �
 
 #: admin_trees_check.php:135
 msgid "This may be a mistake in your data."
-msgstr "Это может быть ошибкой в Ваших данных"
+msgstr "Это может быть ошибкой в Ваших данных."
 
 #: admin_trees_check.php:134
 msgid "This may cause a problem for other applications."
@@ -14360,11 +14383,11 @@ msgstr "ფაილი “%s” არ არსებობს."
 
 #: admin_media.php:505
 msgid "This media file exists, but cannot be accessed."
-msgstr "მედია ფაილი დაზიანებულია"
+msgstr "მედია ფაილი დაზიანებულია."
 
 #: mediafirewall.php:402
 msgid "This media file is broken and cannot be watermarked."
-msgstr "მედია ფაილი დაზიანებულია"
+msgstr "მედია ფაილი დაზიანებულია."
 
 #: mediaviewer.php:60
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14392,7 +14415,7 @@ msgstr "Этот медиаобъект был редактирован. Вы д
 
 #: admin_media.php:570 find.php:634
 msgid "This media object is not linked to any other record."
-msgstr "Этот медиаобъект находится в медиапапке по умолчанию"
+msgstr "Этот медиаобъект находится в медиапапке по умолчанию."
 
 #: message.php:239 message.php:280
 msgid "This message was sent while viewing the following URL: "
@@ -14576,7 +14599,10 @@ msgstr ""
 #: setup.php:183
 #, php-format
 msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
-msgstr "Этот сервер имеет следующие качества:<br/> memory limit = %sMB (рабочая память для скриптов)<br/>CPU time limit = %s c. (максимальное время для исполнения скрипта)"
+msgstr ""
+"Этот сервер имеет следующие качества: memory limit = %sMB (рабочая память "
+"для скриптов), CPU time limit = %s c (максимальное время для исполнения "
+"скрипта)."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1358
@@ -14948,7 +14974,7 @@ msgstr "სახელები და მამის სახელები
 #: modules_v3/occupation_report/report.xml:94
 #: modules_v3/relative_ext_report/report.xml:140
 msgid "Total individuals"
-msgstr "პერსონები სულ "
+msgstr "პერსონები სულ"
 
 #: app/Module/CensusAssistantModule.php:214 calendar.php:433 find.php:558
 #: statistics.php:90
@@ -15156,7 +15182,7 @@ msgstr "Нерешенные: недостаточно данных"
 
 #: admin_trees_config.php:1765
 msgid "Unique family facts"
-msgstr "ოჯახის ერთჯერადი ფაქტები "
+msgstr "ოჯახის ერთჯერადი ფაქტები"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
@@ -15175,11 +15201,11 @@ msgstr "ერთჯერადი ფაქტები პერსონი�
 
 #: admin_trees_config.php:1972
 msgid "Unique repository facts"
-msgstr "არქივის ერთჯერადი ფაქტები "
+msgstr "არქივის ერთჯერადი ფაქტები"
 
 #: admin_trees_config.php:1883
 msgid "Unique source facts"
-msgstr "წყაროს ერთჯერადი ფაქტები "
+msgstr "წყაროს ერთჯერადი ფაქტები"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6678
@@ -15273,7 +15299,7 @@ msgstr ""
 #: admin.php:626 admin_site_upgrade.php:82 login.php:118
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "Обновить webtrees на %s"
+msgstr "Обновить webtrees на %s."
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
@@ -15388,7 +15414,7 @@ msgstr ""
 
 #: admin_users.php:759
 msgid "User not verified by administrator."
-msgstr "იუზერების ადმინისტრირება"
+msgstr "იუზერების ადმინისტრირება."
 
 #: admin_trees_config.php:956
 #, fuzzy
@@ -15781,7 +15807,7 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "რომელი გენეალოგიური ხე ჩავრთოთ საიტის რუკაზე?"
+msgstr "რომელი გენეალოგიური ხე ჩავრთოთ საიტის რუკაზე"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1018
@@ -16037,7 +16063,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:81
 #: modules_v3/GEDFact_assistant/census/census-edit.php:207
 msgid "You must enter a name"
-msgstr "შეიყვანეთ გვარი, სახელი, მამის-სახელი "
+msgstr "შეიყვანეთ გვარი, სახელი, მამის-სახელი"
 
 #: edituser.php:129
 msgid "You must enter a real name."
@@ -16053,7 +16079,7 @@ msgstr "Вам нужно заполнить все поля в учётной �
 
 #: edit_interface.php:1502
 msgid "You must provide a repository name."
-msgstr "უნდა მიუთითოთ არქივის დასახელება"
+msgstr "უნდა მიუთითოთ არქივის დასახელება."
 
 #: edit_interface.php:1183
 msgid "You must provide a source title"
@@ -16102,7 +16128,7 @@ msgstr ""
 
 #: message.php:247
 msgid "You sent the following message to a webtrees administrator:"
-msgstr "ახალი შეტყობინება"
+msgstr "ახალი შეტყობინება:"
 
 #: message.php:244
 msgid "You sent the following message to a webtrees user:"
@@ -16144,7 +16170,7 @@ msgstr "ყველაზე ახალგაზრდა მამა"
 
 #: statistics.php:264
 msgid "Youngest female"
-msgstr "უახლესი გათხოვილი "
+msgstr "უახლესი გათხოვილი"
 
 #: statistics.php:263
 msgid "Youngest male"
@@ -16396,7 +16422,7 @@ msgstr "მდე"
 #: app/Date.php:310
 #, php-format
 msgid "before %s"
-msgstr "перед %s "
+msgstr "перед %s"
 
 #. I18N: Gedcom BET-AND dates
 #: app/Date.php:322
