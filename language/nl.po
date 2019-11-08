@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2017-09-29 02:45+0000\n"
-"Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
-"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/nl/>\n"
+"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"Language-Team: Dutch <http://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -1950,7 +1951,7 @@ msgstr "Een gerelateerd persoon is een persoon die in betrekking staat tot deze 
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:33
 msgid "An edit menu for individuals, families, sources, etc."
-msgstr "Een menu om personen, gezinnen, bronnen, enz. te wijzigen"
+msgstr "Een menu om personen, gezinnen, bronnen, enz. te wijzigen."
 
 #: admin_site_upgrade.php:282 admin_site_upgrade.php:304
 #: admin_site_upgrade.php:314 admin_site_upgrade.php:398
@@ -7069,7 +7070,7 @@ msgstr "Lengte"
 #: login.php:256 login.php:337
 #, php-format
 msgid "Hello %s…"
-msgstr "Hallo %s,"
+msgstr "Hallo %s…"
 
 #: login.php:389
 #, php-format
@@ -7078,7 +7079,7 @@ msgstr "Hallo %s,<br><br>Bedankt voor uw registratie."
 
 #: login.php:320 login.php:558
 msgid "Hello administrator…"
-msgstr "Hallo beheerder,"
+msgstr "Hallo beheerder…"
 
 #: help_text.php:320
 msgid "Help"
@@ -7476,7 +7477,7 @@ msgstr "Inclusief submappen"
 #. I18N: Label for a configuration option
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "Inclusief de naaste familie van deze persoon?"
+msgstr "Inclusief de naaste familie van deze persoon"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6777
