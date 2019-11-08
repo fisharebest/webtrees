@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2018-10-01 12:27+0000\n"
-"Last-Translator: Truong Van Phap <hotruongphuhoa@gmail.com>\n"
-"Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/vi/>\n"
+"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"Language-Team: Vietnamese <http://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/vi/>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -14638,7 +14639,9 @@ msgstr "Nguồn này đã được sửa. Bạn phải xem xét các thay đổi
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: admin_trees_config.php:931
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
-msgstr "Văn bản này sẽ được thêm vào mỗi tiêu đề trang. Nó sẽ hiện ở thanh tiêu đề trình duyệt, đánh dấu v.v"
+msgstr ""
+"Văn bản này sẽ được thêm vào mỗi tiêu đề trang. Nó sẽ hiện ở thanh tiêu đề "
+"trình duyệt, đánh dấu v.v."
 
 #: admin_trees_check.php:180 admin_trees_check.php:185
 msgid "This type of link is not allowed here."
@@ -20194,7 +20197,7 @@ msgstr "“%s” đã được thêm vào mục ưa thích của bạn."
 #: action.php:47
 #, php-format
 msgid "“%s” has been deleted."
-msgstr "%s đã xóa"
+msgstr "%s đã xóa."
 
 #: app/Functions/FunctionsPrint.php:120 app/Note.php:107
 msgid "…"
