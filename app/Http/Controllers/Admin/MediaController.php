@@ -238,7 +238,8 @@ class MediaController extends AbstractAdminController
                     $imgsize = getimagesize(WT_DATA_DIR . $row[0]);
                     // We can’t create a URL (not in public_html) or use the media firewall (no such object)
                     if ($imgsize === false) {
-                        $img = '-';
+                        $mime_type = mime_content_type(WT_DATA_DIR . $row[0]) ?? 'application/octet-stream';
+                        $img       = view('icons/mime', ['type' => $mime_type]);
                     } else {
                         $url = route('unused-media-thumbnail', [
                             'path' => $row[0],
