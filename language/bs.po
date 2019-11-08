@@ -3,15 +3,17 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2017-07-17 14:25+0000\n"
-"Last-Translator: Elvedin Zlatarac <elvedin.zlatarac@gmail.com>\n"
-"Language-Team: Bosnian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/bs/>\n"
+"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"Language-Team: Bosnian <http://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/bs/>\n"
 "Language: bs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.10\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -7505,7 +7507,7 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "Uključi neposrednu porodicu osobe?"
+msgstr "Uključi neposrednu porodicu osobe"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6777
@@ -12443,7 +12445,7 @@ msgstr "Najkraći brak"
 
 #: app/Module/RecentChangesModule.php:181
 msgid "Should this block be hidden when it is empty"
-msgstr "Da li ovaj blok treba biti sakriven kada je prazan?"
+msgstr "Da li ovaj blok treba biti sakriven kada je prazan"
 
 #: calendar.php:221
 msgid "Show"
@@ -12482,7 +12484,7 @@ msgstr "Prikaži sve oznake"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "Prikaži pokazivač starosti?"
+msgstr "Prikaži pokazivač starosti"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
@@ -12491,12 +12493,12 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "Prikaži djecu predaka?"
+msgstr "Prikaži djecu predaka"
 
 #. I18N: Label for a configuration option
 #: app/Module/TopPageViewsModule.php:165
 msgid "Show counts before or after name"
-msgstr "Postavi brojčanik prije ili poslije imena?"
+msgstr "Postavi brojčanik prije ili poslije imena"
 
 #: app/Functions/FunctionsPrintLists.php:711
 msgid "Show couples where either partner married more than once."
@@ -12529,7 +12531,7 @@ msgstr "Prikaži rođake"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:296
 msgid "Show date of last update"
-msgstr "Prikaži datum zadnje izmjene?"
+msgstr "Prikaži datum zadnje izmjene"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:384
@@ -12599,21 +12601,21 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Prikaži zabilješke?"
+msgstr "Prikaži zabilješke"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Prikaži zanimanja?"
+msgstr "Prikaži zanimanja"
 
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "Prikaži samo Rođendane, Smrti i Vjenčanja?"
+msgstr "Prikaži samo Rođendane, Smrti i Vjenčanja"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:136
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Prikaži samo događaje za žive osobe?"
+msgstr "Prikaži samo događaje za žive osobe"
 
 #: app/Functions/FunctionsPrintLists.php:186
 msgid "Show only females."
@@ -12626,7 +12628,7 @@ msgstr "Prikaži samo osobe kojima spol nije poznat."
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Prikaži samo osobe, događaje ili sve?"
+msgstr "Prikaži samo osobe, događaje ili sve"
 
 #: app/Functions/FunctionsPrintLists.php:177
 msgid "Show only males."
@@ -12678,12 +12680,12 @@ msgstr "Prikaži zadatke istraživanja koji imaju datum postavljen u budućnosti
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Prikaži mjesto stanovanja?"
+msgstr "Prikaži mjesto stanovanja"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:409
 msgid "Show slide show controls"
-msgstr "Show slide kontrole za prikaz?"
+msgstr "Show slide kontrole za prikaz"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12691,7 +12693,7 @@ msgstr "Show slide kontrole za prikaz?"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "Prikaži izvore?"
+msgstr "Prikaži izvore"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -12743,7 +12745,7 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "Za koje jezike želite prikazati ovaj blok?"
+msgstr "Za koje jezike želite prikazati ovaj blok"
 
 #: admin_trees_config.php:1051
 #, fuzzy
@@ -13199,7 +13201,7 @@ msgstr "Počni kod roditelja"
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:415
 msgid "Start slide show on page load"
-msgstr "Pokreni slide show kod učitavanja stranice?"
+msgstr "Pokreni slide show kod učitavanja stranice"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -15851,7 +15853,7 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Koja porodična stabla trebaju biti uključena u mapi sitea?"
+msgstr "Koja porodična stabla trebaju biti uključena u mapi sitea"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1018
