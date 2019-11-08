@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-10-28 14:09+0000\n"
-"PO-Revision-Date: 2017-10-21 11:44+0000\n"
-"Last-Translator: Gudjon Sigurdsson <gudjonsi@gmail.com>\n"
-"Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\n"
-"Language: is\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 09:32+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Icelandic <http://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -7489,7 +7477,7 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:24
 msgid "Include the individual’s immediate family"
-msgstr "Láta nánustu fjölskyldu persónunnar fylgja með?"
+msgstr "Láta nánustu fjölskyldu persónunnar fylgja með"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:249
@@ -11075,7 +11063,7 @@ msgstr "Primidi"
 
 #: resources/xml/reports/family_group_report.xml:10
 msgid "Print basic events when blank"
-msgstr "Prentið grunn atburði þegar autt?"
+msgstr "Prentið grunn atburði þegar autt"
 
 #: app/Http/Controllers/AdminController.php:282
 #: resources/views/admin/trees.phtml:82
@@ -12112,7 +12100,7 @@ msgstr "Senda skilaboð til notenda sem hafa ekki skráð sig inn í 6 mánuði"
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:10
 msgid "Send out reminder emails"
-msgstr "Senda út tölvupóst áminningar?"
+msgstr "Senda út tölvupóst áminningar"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:55
@@ -12459,16 +12447,16 @@ msgstr "Sýna allar heimildir"
 #. I18N: an age indicator, which can be dragged around the screen
 #: resources/views/modules/timeline-chart/page.phtml:65
 msgid "Show an age cursor"
-msgstr "Sýna aldurs bendil?"
+msgstr "Sýna aldurs bendil"
 
 #: resources/xml/reports/ahnentafel_report.xml:12
 msgid "Show children of ancestors"
-msgstr "Sýna börn forfeðra?"
+msgstr "Sýna börn forfeðra"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/top10_pageviews/config.phtml:14
 msgid "Show counts before or after name"
-msgstr "Staðsetja talningu framan eða aftan við nafn?"
+msgstr "Staðsetja talningu framan eða aftan við nafn"
 
 #: resources/views/lists/families-table.phtml:240
 msgid "Show couples where either partner married more than once."
@@ -12497,7 +12485,7 @@ msgstr "Sýna pör þar sem giftingardag vantar."
 #. I18N: label for yes/no option
 #: resources/views/modules/gedcom_stats/config.phtml:9
 msgid "Show date of last update"
-msgstr "Sýna dagsetningu á nýjustu uppfærslu?"
+msgstr "Sýna dagsetningu á nýjustu uppfærslu"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:47
@@ -12553,16 +12541,16 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:10
 #: resources/xml/reports/individual_report.xml:7
 msgid "Show notes"
-msgstr "Sýna glósur?"
+msgstr "Sýna glósur"
 
 #: resources/xml/reports/ahnentafel_report.xml:10
 msgid "Show occupations"
-msgstr "Sýna starfsheiti?"
+msgstr "Sýna starfsheiti"
 
 #: resources/views/modules/todays_events/config.phtml:5
 #: resources/views/modules/upcoming_events/config.phtml:15
 msgid "Show only events of living individuals"
-msgstr "Sýna eingöngu atburði fólks sem er á lífi?"
+msgstr "Sýna eingöngu atburði fólks sem er á lífi"
 
 #: resources/views/lists/individuals-table.phtml:179
 msgid "Show only females."
@@ -12574,7 +12562,7 @@ msgstr "Sýna aðeins persónur þar sem kyn er óþekkt."
 
 #: resources/views/modules/random_media/config.phtml:9
 msgid "Show only individuals, events, or all"
-msgstr "Sýna aðeins persónur, atburði eða allt?"
+msgstr "Sýna aðeins persónur, atburði eða allt"
 
 #: resources/views/lists/individuals-table.phtml:171
 msgid "Show only males."
@@ -12593,7 +12581,7 @@ msgstr "Sýna fyrirhugaðar breytingar"
 #: resources/xml/reports/individual_ext_report.xml:11
 #: resources/xml/reports/individual_report.xml:8
 msgid "Show photos"
-msgstr "Sýna myndir?"
+msgstr "Sýna myndir"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:97
 msgid "Show place hierarchy"
@@ -12618,11 +12606,11 @@ msgstr "Sýna rannsóknarverkefni sem eru með dagsetningu í framtíðinni"
 
 #: resources/xml/reports/ahnentafel_report.xml:11
 msgid "Show residences"
-msgstr "Sýna búsetu?"
+msgstr "Sýna búsetu"
 
 #: resources/views/modules/random_media/config.phtml:31
 msgid "Show slide show controls"
-msgstr "Sýna stjórntæki myndasýningar?"
+msgstr "Sýna stjórntæki myndasýningar"
 
 #: resources/xml/reports/ahnentafel_report.xml:8
 #: resources/xml/reports/descendancy_report.xml:7
@@ -12630,7 +12618,7 @@ msgstr "Sýna stjórntæki myndasýningar?"
 #: resources/xml/reports/individual_ext_report.xml:9
 #: resources/xml/reports/individual_report.xml:6
 msgid "Show sources"
-msgstr "Sýna heimildir?"
+msgstr "Sýna heimildir"
 
 #: resources/views/modules/family-book-chart/page.phtml:46
 #: resources/views/modules/hourglass-chart/page.phtml:39
@@ -12690,7 +12678,7 @@ msgstr ""
 #: resources/views/modules/html/config.phtml:52
 #: resources/views/modules/stories/edit.phtml:45
 msgid "Show this block for which languages"
-msgstr "Sýna þetta box fyrir hvaða tungumál?"
+msgstr "Sýna þetta box fyrir hvaða tungumál"
 
 #: resources/views/admin/trees-preferences.phtml:306
 #, fuzzy
@@ -13158,7 +13146,7 @@ msgstr "St. Paul, Minnesota, United States"
 
 #: resources/views/modules/random_media/config.phtml:40
 msgid "Start slide show on page load"
-msgstr "Hefja myndasýningu þegar síða er sótt?"
+msgstr "Hefja myndasýningu þegar síða er sótt"
 
 #: resources/views/modules/lifespans-chart/page.phtml:45
 msgid "Start year"
@@ -13815,14 +13803,14 @@ msgstr "Kröfurnar um minni og örgjörvatíma ráðast af fjölda einstaklinga 
 #: app/Http/Controllers/MessageController.php:253
 #: app/Http/Controllers/MessageController.php:343
 msgid "The message was not sent."
-msgstr "Skilaboð var ekki sent"
+msgstr "Skilaboð var ekki sent."
 
 #: app/Http/Controllers/MessageController.php:134
 #: app/Http/Controllers/MessageController.php:246
 #: app/Http/Controllers/MessageController.php:336
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "Það tókst að senda skilaboðin á %s"
+msgstr "Það tókst að senda skilaboðin á %s."
 
 #: app/Http/Controllers/Admin/ModuleController.php:313
 #: app/Http/Controllers/Admin/ModuleController.php:570
@@ -15799,12 +15787,12 @@ msgstr "Þar sem notandi er tengdur við einstaklingsfærslu í fjölskyldutré 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:17
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Hvaða fjölskyldutré ætti að innifela i staðarkortinu?"
+msgstr "Hvaða fjölskyldutré ætti að innifela i staðarkortinu"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:270
 msgid "Who can upload new media files"
-msgstr "Hver getur flutt inn nýjar miðilsskrár?"
+msgstr "Hver getur flutt inn nýjar miðilsskrár"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:42
