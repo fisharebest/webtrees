@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-10-28 14:09+0000\n"
-"PO-Revision-Date: 2019-11-03 09:51+0000\n"
-"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
-"Language-Team: German <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/de/>\n"
-"Language: de\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 09:31+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: German <http://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -13782,7 +13770,7 @@ msgstr "Die Mediendatei %1$s wurde in %2$s umbenannt."
 
 #: app/Http/Controllers/EditMediaController.php:407
 msgid "The media object has been created"
-msgstr "Das Medienobjekt wurde erstellt."
+msgstr "Das Medienobjekt wurde erstellt"
 
 #: resources/views/setup/step-2-server-checks.phtml:38
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13839,7 +13827,7 @@ msgstr "Der neue Benutzer wird aufgefordert seine E-Mail-Adresse zu bestätigen,
 
 #: app/Http/Controllers/EditNoteController.php:149
 msgid "The note has been created"
-msgstr "Die Notiz wurde erstellt."
+msgstr "Die Notiz wurde erstellt"
 
 #: app/Http/Controllers/SetupController.php:371
 msgid "The password needs to be at least six characters long."
@@ -13915,7 +13903,7 @@ msgstr "Das Berichte-Menü."
 
 #: app/Http/Controllers/EditRepositoryController.php:81
 msgid "The repository has been created"
-msgstr "Das Archiv wurde erstellt."
+msgstr "Das Archiv wurde erstellt"
 
 #. I18N: Description of the “Reports” module
 #: app/Module/SearchMenuModule.php:59
@@ -13946,11 +13934,11 @@ msgstr "Anzahl der Personen im Stammbaum, älteste und neueste Ereignisse, häuf
 
 #: app/Http/Controllers/EditSourceController.php:123
 msgid "The source has been created"
-msgstr "Die Quelle wurde erstellt."
+msgstr "Die Quelle wurde erstellt"
 
 #: app/Http/Controllers/EditSubmitterController.php:91
 msgid "The submitter has been created"
-msgstr "Der Übermittler wurde erstellt."
+msgstr "Der Übermittler wurde erstellt"
 
 #: resources/views/help/name.phtml:9
 #, php-format
@@ -15759,7 +15747,7 @@ msgstr "Wenn ein Benutzer einem einzelnen Datensatz in einem Stammbaum zugeordne
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:17
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Welche Stammbäume sollen in den Sitemaps enthalten sein?"
+msgstr "Welche Stammbäume sollen in den Sitemaps enthalten sein"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:270
