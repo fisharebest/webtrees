@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-08-23 19:42+0000\n"
-"Last-Translator: Rasool Mahmoodi <rasmoodi@gmail.com>\n"
-"Language-Team: Persian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/fa/>\n"
+"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"Language-Team: Persian <http://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Poedit-Language: Persian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -91,13 +92,13 @@ msgstr "%1$s %2$s"
 #: admin_site_upgrade.php:255
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$s کیلوبایت در %2$s ثانیه بارگیری شد"
+msgstr "%1$s کیلوبایت در %2$s ثانیه بارگیری شد."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
 #, php-format
 msgid "%1$s does not exist."
-msgstr "%1$s وجود ندارد"
+msgstr "%1$s وجود ندارد."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:164
@@ -771,7 +772,10 @@ msgstr ""
 
 #: setup.php:372
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-msgstr "یک سرور دیتابیس می تواند ممکن است تعداد زیادی دیتابیس دیگر را نیز سرویس دهی کند، شما باید یک دیتابیس موجود را انتخاب کنید و یا از یک دیتابیس جدید که ایجاد می کنید استفاده نمایید"
+msgstr ""
+"یک سرور دیتابیس می تواند ممکن است تعداد زیادی دیتابیس دیگر را نیز سرویس دهی "
+"کند، شما باید یک دیتابیس موجود را انتخاب کنید و یا از یک دیتابیس جدید که "
+"ایجاد می کنید استفاده نمایید."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
@@ -1482,7 +1486,7 @@ msgstr "اضافه کردن رکورد لینک نشده"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1100
 msgid "Add watermarks to thumbnails"
-msgstr "اضافه‌کردن مهر به تصاویر بندانگشتی؟"
+msgstr "اضافه‌کردن مهر به تصاویر بندانگشتی"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -1718,7 +1722,7 @@ msgstr "سن در زمان تولد فرزند"
 
 #: admin_trees_config.php:403
 msgid "Age at which to assume an individual is dead"
-msgstr "سنی که در آن فرد به عنوان متوفی شناخته می شود."
+msgstr "سنی که در آن فرد به عنوان متوفی شناخته می شود"
 
 #: statistics.php:338
 msgid "Age between husband and wife"
@@ -1969,7 +1973,7 @@ msgstr ""
 
 #: setup.php:507
 msgid "An unexpected database error occurred."
-msgstr "یک پیام خطای ناشناخته رخ داده است"
+msgstr "یک پیام خطای ناشناخته رخ داده است."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -2921,7 +2925,7 @@ msgstr "آبی مارینانی"
 
 #: message.php:127
 msgid "Body"
-msgstr "بدنه :"
+msgstr "بدنه"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:109
@@ -3267,7 +3271,7 @@ msgstr ""
 #. I18N: Help text for the "Port number" site configuration setting
 #: admin_site_config.php:368
 msgid "By default, SMTP works on port 25."
-msgstr "به صورت پیش فرض SMTP با استفاده از درگاه 25 کار می کند"
+msgstr "به صورت پیش فرض SMTP با استفاده از درگاه 25 کار می کند."
 
 #: app/Module/GoogleMapsModule.php:3955
 msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
@@ -3367,7 +3371,7 @@ msgstr ""
 
 #: statistics.php:703
 msgid "Categories"
-msgstr "دسته بندی‌ها:"
+msgstr "دسته بندی‌ها"
 
 #. I18N: gedcom tag CAUS
 #: app/GedcomTag.php:242
@@ -3563,7 +3567,7 @@ msgstr ""
 
 #: setup.php:269 setup.php:341
 msgid "Check the settings and try again."
-msgstr "تنظیمات را بررسی کرده و دوباره امتحان کنید"
+msgstr "تنظیمات را بررسی کرده و دوباره امتحان کنید."
 
 #: setup.php:156
 msgid "Checking server capacity"
@@ -3665,7 +3669,7 @@ msgstr ""
 
 #: admin_site_config.php:131
 msgid "Choose user defined welcome text typed below"
-msgstr "متن پیش‌فرض خوش‌آمد‌گویی را برای کاربر انتخاب کنید."
+msgstr "متن پیش‌فرض خوش‌آمد‌گویی را برای کاربر انتخاب کنید"
 
 #: addmedia.php:522
 msgid "Choose: "
@@ -4540,7 +4544,7 @@ msgstr "تاریخ ثبت نام"
 
 #: app/Module/UserMessagesModule.php:113
 msgid "Date sent"
-msgstr "تاریخ ارسال:"
+msgstr "تاریخ ارسال"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:709
@@ -5269,7 +5273,7 @@ msgstr ""
 
 #: addmedia.php:473 addmedia.php:500 admin_media_upload.php:224
 msgid "Do not change to keep original filename."
-msgstr "برای نگه داری نام اصلی فایل تغییری ایجاد نکنید"
+msgstr "برای نگه داری نام اصلی فایل تغییری ایجاد نکنید."
 
 #: app/Module/GoogleMapsModule.php:3687
 msgid "Do not create new locations, just import coordinates for existing locations."
@@ -5554,7 +5558,7 @@ msgstr "اِلول"
 #: app/Module/UserMessagesModule.php:114 edituser.php:259 login.php:325
 #: login.php:430 message.php:117 message.php:270 setup.php:443
 msgid "Email address"
-msgstr "نشانی پست الکترونیکی:"
+msgstr "نشانی پست الکترونیکی"
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:865
@@ -6275,7 +6279,9 @@ msgstr ""
 #: admin_site_clean.php:88
 #, php-format
 msgid "Files marked with %s are required for proper operation and cannot be removed."
-msgstr "فایل های علامت گذاری شده با %s جهت انجام یک سری فعالیت‌ها لازم می‌باشند و قابل پاک شدن نیستند"
+msgstr ""
+"فایل های علامت گذاری شده با %s جهت انجام یک سری فعالیت‌ها لازم می‌باشند و "
+"قابل پاک شدن نیستند."
 
 #: app/I18N.php:235 app/Module/SlideShowModule.php:302 find.php:532
 msgid "Filter"
@@ -7380,7 +7386,9 @@ msgstr ""
 
 #: setup.php:185
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
-msgstr "اگر بیش از حد ممکن از امکانات استفاده سرور استفاده کنید، ممکن است با مشکلاتی از قبیل صفحات خالی و نیمه تمام ماندن گزارش ها روبه رو شوید"
+msgstr ""
+"اگر بیش از حد ممکن از امکانات استفاده سرور استفاده کنید، ممکن است با مشکلاتی "
+"از قبیل صفحات خالی و نیمه تمام ماندن گزارش ها روبه رو شوید."
 
 #: admin_site_config.php:519
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
@@ -7388,7 +7396,9 @@ msgstr ""
 
 #: setup.php:187
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
-msgstr "در صورتی که نیاز به مقدار حافظه و قدرت پردازشگر بیشتری هستید با مدیر سرور خود تماس بگیرید"
+msgstr ""
+"در صورتی که نیاز به مقدار حافظه و قدرت پردازشگر بیشتری هستید با مدیر سرور "
+"خود تماس بگیرید."
 
 #. I18N: Help text for the "Website URL" site configuration setting
 #: admin_site_config.php:310
@@ -8323,7 +8333,7 @@ msgstr ""
 
 #: app/I18N.php:233 app/I18N.php:234
 msgid "Loading…"
-msgstr "در حال بارگذاری"
+msgstr "در حال بارگذاری…"
 
 #. I18N: “Local files” are stored on this computer
 #: admin_media.php:632
@@ -8932,7 +8942,7 @@ msgstr "رسانه"
 #. I18N: Label for search field
 #: find.php:184
 msgid "Media contains"
-msgstr "مدیا حاوی:"
+msgstr "مدیا حاوی"
 
 #: admin_media.php:691 admin_media_upload.php:200
 msgid "Media file"
@@ -9352,7 +9362,7 @@ msgstr ""
 #. I18N: Help text for the “Use password” site configuration setting
 #: admin_site_config.php:381
 msgid "Most SMTP servers require a password."
-msgstr "اکثر کارگزاران SMTP به رمز عبور نیاز دارند"
+msgstr "اکثر کارگزاران SMTP به رمز عبور نیاز دارند."
 
 #: app/Module/FamilyTreeStatisticsModule.php:213
 #: app/Module/FamilyTreeStatisticsModule.php:429
@@ -9363,15 +9373,17 @@ msgstr ""
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: admin_site_config.php:420
 msgid "Most servers do not use secure connections."
-msgstr "اکثر کارگزاران از اتصال امن استفاده نمی کنند"
+msgstr "اکثر کارگزاران از اتصال امن استفاده نمی کنند."
 
 #: setup.php:282
 msgid "Most sites are configured to use localhost. This means that your database runs on the same computer as your web server."
-msgstr "اکثر سایت ها برای Localhost تنظیم شده اند، این بدین معناست که دیتابیس شما تحت سرور اجرا می شود که فایل های سیستم نیز در آن هستند"
+msgstr ""
+"اکثر سایت ها برای Localhost تنظیم شده اند، این بدین معناست که دیتابیس شما "
+"تحت سرور اجرا می شود که فایل های سیستم نیز در آن هستند."
 
 #: setup.php:286
 msgid "Most sites are configured to use the default value of 3306."
-msgstr "اکثر سایت ها برای 3306 تنظیم شده اند"
+msgstr "اکثر سایت ها برای 3306 تنظیم شده اند."
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:36
@@ -9538,7 +9550,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:148 find.php:165
 msgid "Name contains"
-msgstr "نام حاوی:"
+msgstr "نام حاوی"
 
 #: app/GedcomTag.php:610
 msgid "Name in Hebrew"
@@ -9822,22 +9834,22 @@ msgstr[1] ""
 #: app/Functions/FunctionsPrintLists.php:1710
 #: app/Functions/FunctionsPrintLists.php:1819
 msgid "No events exist for today."
-msgstr "هیچ رخدادی موجود نیست"
+msgstr "هیچ رخدادی موجود نیست."
 
 #: app/Functions/FunctionsPrintLists.php:1718
 #: app/Functions/FunctionsPrintLists.php:1829
 msgid "No events exist for tomorrow."
-msgstr "هیچ رخدادی برای فردا موجود نیست"
+msgstr "هیچ رخدادی برای فردا موجود نیست."
 
 #: app/Functions/FunctionsPrintLists.php:1712
 #: app/Functions/FunctionsPrintLists.php:1821
 msgid "No events for living individuals exist for today."
-msgstr "هیچ رخدادی برای افرادی که در قید حیات هستند در امروز موجود نیست"
+msgstr "هیچ رخدادی برای افرادی که در قید حیات هستند در امروز موجود نیست."
 
 #: app/Functions/FunctionsPrintLists.php:1724
 #: app/Functions/FunctionsPrintLists.php:1836
 msgid "No events for living individuals exist for tomorrow."
-msgstr "هیچ رخدادی برای فردا برای افرادی که در قید حیات هستند موجود نیست"
+msgstr "هیچ رخدادی برای فردا برای افرادی که در قید حیات هستند موجود نیست."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: app/Functions/FunctionsPrintLists.php:1727
@@ -9849,7 +9861,7 @@ msgstr[0] ""
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts exist for this family."
-msgstr "هیچ مشخصاتی برای این خانواده در دسترس نیست"
+msgstr "هیچ مشخصاتی برای این خانواده در دسترس نیست."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:79
@@ -9858,7 +9870,7 @@ msgstr ""
 
 #: relationship.php:242
 msgid "No link between the two individuals could be found."
-msgstr "هیچ گونه ارتباطی بین این دو فرد موجود نیست"
+msgstr "هیچ گونه ارتباطی بین این دو فرد موجود نیست."
 
 #: app/Module/GoogleMapsModule.php:182
 msgid "No map data exists for this individual"
@@ -10038,7 +10050,7 @@ msgstr "یادداشت‌ها"
 
 #: admin_users.php:774
 msgid "Nothing found to cleanup"
-msgstr "هیچ چیزی برای پاکسازی یافت نشد."
+msgstr "هیچ چیزی برای پاکسازی یافت نشد"
 
 #: app/Module/BatchUpdateModule.php:257
 msgid "Nothing found."
@@ -10672,7 +10684,9 @@ msgstr ""
 
 #: admin_pgv_to_wt.php:91
 msgid "PhpGedView must use the same database as webtrees."
-msgstr "سیستم PhpGedView نیز باید از یک دیتابیس مشابه با دیتابیس سیستم webtrees استفاده کند"
+msgstr ""
+"سیستم PhpGedView نیز باید از یک دیتابیس مشابه با دیتابیس سیستم webtrees "
+"استفاده کند."
 
 #: admin_pgv_to_wt.php:42 admin_trees_manage.php:707 admin_trees_manage.php:735
 msgid "PhpGedView to webtrees transfer wizard"
@@ -10714,7 +10728,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:202
 msgid "Place contains"
-msgstr "مکان حاوی:"
+msgstr "مکان حاوی"
 
 #: app/Module/GoogleMapsModule.php:414 app/Theme/AbstractTheme.php:1531
 #: placelist.php:41 placelist.php:43 placelist.php:139
@@ -10894,11 +10908,11 @@ msgstr "لطفاً یک نشانی پست الکترونیکی معتبر وار
 #: app/Module/CensusAssistantModule.php:169 find.php:127 search.php:36
 #: search.php:48
 msgid "Please enter more than one character."
-msgstr "لطفا بیش از یک کاراکتر را وارد کنید"
+msgstr "لطفا بیش از یک کاراکتر را وارد کنید."
 
 #: message.php:96
 msgid "Please enter some message text before sending."
-msgstr "لطفا قبل از فرستادن متنی را وارد کنید"
+msgstr "لطفا قبل از فرستادن متنی را وارد کنید."
 
 #: message.php:117
 msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
@@ -11000,15 +11014,21 @@ msgstr "پریریال"
 
 #: admin_site_config.php:129
 msgid "Predefined text that states admin will decide on each request for a user account"
-msgstr "متن ا‌زپیش‌تعریف‌شده‌ای که بیانگر این است که مدیریت مختار است تا درخواست کاربران برای داشتن حساب کاربری رد و یا قبول کند."
+msgstr ""
+"متن ا‌زپیش‌تعریف‌شده‌ای که بیانگر این است که مدیریت مختار است تا درخواست "
+"کاربران برای داشتن حساب کاربری رد و یا قبول کند"
 
 #: admin_site_config.php:128
 msgid "Predefined text that states all users can request a user account"
-msgstr "متن از‌پیش‌تعریف‌شده‌ای که بیان‌کننده‌ی آن است که تمام کاربران می‌توانند یک حساب کاربری داشته باشند."
+msgstr ""
+"متن از‌پیش‌تعریف‌شده‌ای که بیان‌کننده‌ی آن است که تمام کاربران می‌توانند یک "
+"حساب کاربری داشته باشند"
 
 #: admin_site_config.php:130
 msgid "Predefined text that states only family members can request a user account"
-msgstr "متن ا‌زپیش‌تعریف‌شده‌ای که بیانگر این است که فقط اعضای این خانواده می‌توانند درخواست داشتن حساب کاربری ارسال نمایند."
+msgstr ""
+"متن ا‌زپیش‌تعریف‌شده‌ای که بیانگر این است که فقط اعضای این خانواده می‌توانند "
+"درخواست داشتن حساب کاربری ارسال نمایند"
 
 #: admin_trees_config.php:325 admin_trees_manage.php:388
 #: app/Module/ChartsBlockModule.php:77
@@ -11079,7 +11099,9 @@ msgstr "مرزبندی های حریم خصوصی"
 
 #: admin_trees_config.php:521
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "مرزبندی های حریم خصوصی - اینها به تمام سوابق و مشخصاتی که حاوی تگ مخصوص نیستند صدق می کند."
+msgstr ""
+"مرزبندی های حریم خصوصی - اینها به تمام سوابق و مشخصاتی که حاوی تگ مخصوص "
+"نیستند صدق می کند"
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:531
 #: app/GedcomRecord.php:609 app/GedcomRecord.php:734 app/Individual.php:1309
@@ -11584,7 +11606,7 @@ msgstr "مخزن"
 #. I18N: Label for search field
 #: find.php:220
 msgid "Repository contains"
-msgstr "مخزن حاوی:"
+msgstr "مخزن حاوی"
 
 #: app/Functions/FunctionsPrintLists.php:1260 edit_interface.php:1517
 msgid "Repository name"
@@ -12273,7 +12295,7 @@ msgstr "متن به اشتراک گذاشته شده"
 #. I18N: Label for search field
 #: find.php:239
 msgid "Shared note contains"
-msgstr "متن اشتراک گذاشته شده حاوی:"
+msgstr "متن اشتراک گذاشته شده حاوی"
 
 #: app/Functions/FunctionsPrintLists.php:1045 app/Theme/AbstractTheme.php:1522
 #: notelist.php:33 notelist.php:37 search.php:103
@@ -12448,7 +12470,7 @@ msgstr "نمایش تمام تگ‌ها"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "نشانگر سن نمایش داده شود؟"
+msgstr "نشانگر سن نمایش داده شود"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
@@ -12478,15 +12500,15 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:684
 msgid "Show couples who married more than 100 years ago."
-msgstr "نشان دادن زوج هایی که قبل از 100 سال پیش ازدواج کرده اند"
+msgstr "نشان دادن زوج هایی که قبل از 100 سال پیش ازدواج کرده اند."
 
 #: app/Functions/FunctionsPrintLists.php:693
 msgid "Show couples who married within the last 100 years."
-msgstr "نشان دادن زوج هایی که در صد سال اخیر ازدواج کرده اند"
+msgstr "نشان دادن زوج هایی که در صد سال اخیر ازدواج کرده اند."
 
 #: app/Functions/FunctionsPrintLists.php:675
 msgid "Show couples with an unknown marriage date."
-msgstr "نشان دادن زوج های با تاریخ نامشخص ازدواج"
+msgstr "نشان دادن زوج های با تاریخ نامشخص ازدواج."
 
 #: ancestry.php:75
 msgid "Show cousins"
@@ -12509,7 +12531,7 @@ msgstr "نمایش جزئیات"
 
 #: app/Functions/FunctionsPrintLists.php:702
 msgid "Show divorced couples."
-msgstr "نمایش زوج های مطلقه"
+msgstr "نمایش زوج های مطلقه."
 
 #: compact.php:60
 msgid "Show images"
@@ -12530,7 +12552,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:206
 #: app/Functions/FunctionsPrintLists.php:617
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr "نمایش کسانی که زنده اند یا زوجهایی که هردو زنده اند"
+msgstr "نمایش کسانی که زنده اند یا زوجهایی که هردو زنده اند."
 
 #: app/Functions/FunctionsPrintLists.php:215
 #: app/Functions/FunctionsPrintLists.php:644
@@ -12573,21 +12595,21 @@ msgstr ""
 
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "فقط تولدها، مرگ ها و ازدواج ها نمایش داده شود؟"
+msgstr "فقط تولدها، مرگ ها و ازدواج ها نمایش داده شود"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:136
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "فقط رخداد های افراد در قید حیات نمایش داده شود؟"
+msgstr "فقط رخداد های افراد در قید حیات نمایش داده شود"
 
 #: app/Functions/FunctionsPrintLists.php:186
 msgid "Show only females."
-msgstr "فقط نمایش زن ها"
+msgstr "فقط نمایش زن ها."
 
 #: app/Functions/FunctionsPrintLists.php:195
 msgid "Show only individuals for whom the gender is not known."
-msgstr "فقط نمایش اشخاصی که جنسیتشان مشخص نشده است"
+msgstr "فقط نمایش اشخاصی که جنسیتشان مشخص نشده است."
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
@@ -12596,7 +12618,7 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:177
 msgid "Show only males."
-msgstr "فقط نمایش مردان"
+msgstr "فقط نمایش مردان."
 
 #: find.php:527
 msgid "Show only the selected tags"
@@ -12615,7 +12637,7 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "تصویر را نمایش دهد؟"
+msgstr "تصویر را نمایش دهد"
 
 #: placelist.php:81
 msgid "Show places in hierarchy"
@@ -13034,7 +13056,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:257
 msgid "Source contains"
-msgstr "منبع حاوی:"
+msgstr "منبع حاوی"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2118 modules_v3/fact_sources/report.xml:6
@@ -13226,12 +13248,12 @@ msgstr "اتمام"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1113
 msgid "Store watermarked full size images on server"
-msgstr "نگهداری سایز اصلی عکس‌های مهرخورده بر روی سرور؟"
+msgstr "نگهداری سایز اصلی عکس‌های مهرخورده بر روی سرور"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1126
 msgid "Store watermarked thumbnails on server"
-msgstr "نگهداری تصاویر بندانگشتی بر روی سرور؟"
+msgstr "نگهداری تصاویر بندانگشتی بر روی سرور"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
@@ -13254,7 +13276,7 @@ msgstr ""
 
 #: app/Module/UserMessagesModule.php:112 message.php:119
 msgid "Subject"
-msgstr "موضوع:"
+msgstr "موضوع"
 
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:814
@@ -13581,7 +13603,7 @@ msgstr ""
 #: admin_site_upgrade.php:231 admin_trees_export.php:41
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr "درخت فامیلی به %s صادر شد"
+msgstr "درخت فامیلی به %s صادر شد."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:77
@@ -13708,7 +13730,7 @@ msgstr ""
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
-msgstr "لیست زیر نیازهای اساسی را نمایش می دهند"
+msgstr "لیست زیر نیازهای اساسی را نمایش می دهند."
 
 #: admin_trees_places.php:115
 msgid "The following places have been changed:"
@@ -13766,7 +13788,7 @@ msgstr ""
 
 #: mediafirewall.php:38
 msgid "The media file was not found in this family tree."
-msgstr "فایل مدیا در این شجره‌نامه یافت نشد"
+msgstr "فایل مدیا در این شجره‌نامه یافت نشد."
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13774,7 +13796,9 @@ msgstr ""
 
 #: setup.php:172
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
-msgstr "مقدار مورد نیاز حافظه و پردازشگر به تعداد کل افراد موجود در شجره نامه بستگی دارند"
+msgstr ""
+"مقدار مورد نیاز حافظه و پردازشگر به تعداد کل افراد موجود در شجره نامه بستگی "
+"دارند."
 
 #: message.php:193
 msgid "The message was not sent."
@@ -13783,7 +13807,7 @@ msgstr ""
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "پیغام با موفقیت برای %s ارسال شد"
+msgstr "پیغام با موفقیت برای %s ارسال شد."
 
 #: admin_modules.php:54
 #, php-format
@@ -13830,7 +13854,7 @@ msgstr ""
 
 #: setup.php:417
 msgid "The password needs to be at least six characters long."
-msgstr "رمز عبور حداقل باید دارای طولی 6 کاراکتری باشد"
+msgstr "رمز عبور حداقل باید دارای طولی 6 کاراکتری باشد."
 
 #. I18N: Help text for the "Password" site configuration setting
 #: admin_site_config.php:407
@@ -13839,7 +13863,7 @@ msgstr ""
 
 #: admin_users.php:75 edituser.php:134 setup.php:419
 msgid "The passwords do not match."
-msgstr "رمز عبور تایید نشد"
+msgstr "رمز عبور تایید نشد."
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
@@ -13871,7 +13895,9 @@ msgstr ""
 
 #: setup.php:381
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-msgstr "پیشوند اختیاری است، ولی با گذاشتن پسوند های جداگانه برای هر نوع دیتابیس تشخیص آنها ساده تر خواهد بود"
+msgstr ""
+"پیشوند اختیاری است، ولی با گذاشتن پسوند های جداگانه برای هر نوع دیتابیس "
+"تشخیص آنها ساده تر خواهد بود."
 
 #: admin_trees_renumber.php:242
 #, php-format
@@ -13880,7 +13906,7 @@ msgstr ""
 
 #: action.php:92
 msgid "The record has been copied to the clipboard."
-msgstr "رکورد ها در کلیپ بورد کپی شدند"
+msgstr "رکورد ها در کلیپ بورد کپی شدند."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:172
@@ -13895,7 +13921,7 @@ msgstr ""
 
 #: setup.php:154
 msgid "The server configuration is OK."
-msgstr "تنظیمات سرور درست اند"
+msgstr "تنظیمات سرور درست اند."
 
 #: admin_trees_renumber.php:257
 msgid "The server’s time limit has been reached."
@@ -13982,12 +14008,12 @@ msgstr ""
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too new."
-msgstr "نسخه %s خیلی جدید می باشد"
+msgstr "نسخه %s خیلی جدید می باشد."
 
 #: admin_pgv_to_wt.php:101
 #, php-format
 msgid "The version of %s is too old."
-msgstr "نسخه %s خیلی قدیمی می باشد"
+msgstr "نسخه %s خیلی قدیمی می باشد."
 
 #: admin_site_access.php:77
 msgid "The website access rule has been created."
@@ -14071,7 +14097,7 @@ msgstr ""
 #: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
 #: app/Theme/AbstractTheme.php:1961
 msgid "There are pending changes for you to moderate."
-msgstr "تغییرات معلقی در انتظار مدیریت هستند"
+msgstr "تغییرات معلقی در انتظار مدیریت هستند."
 
 #: app/Module/RecentChangesModule.php:89
 #, php-format
@@ -14146,7 +14172,9 @@ msgstr "این دیتابیس و پیشوند استفاده شده قبلا ت�
 #: setup.php:258
 #, php-format
 msgid "This database is only running MySQL version %s. You cannot install webtrees here."
-msgstr "این دیتابیس فقط بر روی MySQL نسخه %s قابل اجراست، شما نمی توانید این سیستم را در اینجا نصب کنید"
+msgstr ""
+"این دیتابیس فقط بر روی MySQL نسخه %s قابل اجراست، شما نمی توانید این سیستم "
+"را در اینجا نصب کنید."
 
 #: admin_users.php:366 edituser.php:265 login.php:434 setup.php:445
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
@@ -14257,7 +14285,7 @@ msgstr ""
 #: app/Stats.php:3124 app/Stats.php:3422 app/Stats.php:4405 app/Stats.php:4537
 #: app/Stats.php:4586 timeline.php:287
 msgid "This information is private and cannot be shown."
-msgstr "این اطلاعات خصوصی می باشند و نمی توانند برایتان به نمایش در آیند"
+msgstr "این اطلاعات خصوصی می باشند و نمی توانند برایتان به نمایش در آیند."
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
@@ -14294,11 +14322,13 @@ msgstr ""
 
 #: setup.php:290 setup.php:294
 msgid "This is case sensitive."
-msgstr "به بزرگی و کوچکی کاراکتر حساس است"
+msgstr "به بزرگی و کوچکی کاراکتر حساس است."
 
 #: setup.php:377
 msgid "This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails."
-msgstr "به بزرگی و کوچکی کاراکتر حساس است، در صورت عدم وجود webtrees این دیتابیس را برایتان ایجاد خواهد کرد (البته به تنظیمات دسترسی سرور نیز بستگی دارد)"
+msgstr ""
+"به بزرگی و کوچکی کاراکتر حساس است، در صورت عدم وجود webtrees این دیتابیس را "
+"برایتان ایجاد خواهد کرد (البته به تنظیمات دسترسی سرور نیز بستگی دارد)."
 
 #. I18N: Help text for the “Show chart details by default” configuration setting
 #: admin_trees_config.php:1290
@@ -14386,7 +14416,7 @@ msgstr ""
 
 #: mediafirewall.php:402
 msgid "This media file is broken and cannot be watermarked."
-msgstr "این فایل مدیا خراب است و قابل مهرزدن نیست"
+msgstr "این فایل مدیا خراب است و قابل مهرزدن نیست."
 
 #: mediaviewer.php:60
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14427,7 +14457,9 @@ msgstr "این پیام فرستاده خواهد شد برای %s"
 
 #: setup.php:438
 msgid "This must be at least six characters long. It is case-sensitive."
-msgstr "این قسمت حداقل باید دارای 6 کاراکتر باشد، این قسمت به حروف بزرگ و کوچک حساس است"
+msgstr ""
+"این قسمت حداقل باید دارای 6 کاراکتر باشد، این قسمت به حروف بزرگ و کوچک حساس "
+"است."
 
 #. I18N: Help text for the “Sender name” site configuration setting
 #: admin_site_config.php:340
@@ -14597,7 +14629,9 @@ msgstr ""
 #: setup.php:183
 #, php-format
 msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
-msgstr "نهایت حافظه سرور %s مگابایت و نهایت محدودیت زمانی پردازشگر نیز %s ثانیه می باشد"
+msgstr ""
+"نهایت حافظه سرور %s مگابایت و نهایت محدودیت زمانی پردازشگر نیز %s ثانیه می "
+"باشد."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1358
@@ -15123,7 +15157,7 @@ msgstr ""
 
 #: edituser.php:232 login.php:477 setup.php:441
 msgid "Type your password again, to make sure you have typed it correctly."
-msgstr "برای اطمینان از صحبت رمز عبورتان آن را دوباره وارد کنید"
+msgstr "برای اطمینان از صحبت رمز عبورتان آن را دوباره وارد کنید."
 
 #: admin_trees_check.php:132
 msgid "Types of error"
@@ -15792,7 +15826,9 @@ msgstr ""
 
 #: message.php:132
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
-msgstr "به هنگام ارسال این پیام یک نسخه رونوشت به آدرس ایمیلی که داده اید ارسال خواهد شد"
+msgstr ""
+"به هنگام ارسال این پیام یک نسخه رونوشت به آدرس ایمیلی که داده اید ارسال "
+"خواهد شد."
 
 #: admin_users.php:599
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
@@ -16044,7 +16080,7 @@ msgstr ""
 
 #: addmedia.php:473
 msgid "You may enter a URL, beginning with “http://”."
-msgstr "با استفاده از «http://» می توانید یک لینک وارد کنید"
+msgstr "با استفاده از «http://» می توانید یک لینک وارد کنید."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:445
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -16073,7 +16109,7 @@ msgstr "شما باید یک نام کاربری وارد کنید."
 
 #: setup.php:421
 msgid "You must enter all the administrator account fields."
-msgstr "شما باید تمامی قسمت ها را پر کنید"
+msgstr "شما باید تمامی قسمت ها را پر کنید."
 
 #: edit_interface.php:1502
 msgid "You must provide a repository name."
@@ -16113,7 +16149,9 @@ msgstr ""
 
 #: setup.php:425
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr "شما باید یک حساب کاربری برای مدیریت ایجاد کنید، این حساب کاربری کنترل تمامی قسمت ها را در دست دارد، برای امنیت بیشتر از یک رمز عبور قدرتمند استفاده کنید"
+msgstr ""
+"شما باید یک حساب کاربری برای مدیریت ایجاد کنید، این حساب کاربری کنترل تمامی "
+"قسمت ها را در دست دارد، برای امنیت بیشتر از یک رمز عبور قدرتمند استفاده کنید."
 
 #: admin_pgv_to_wt.php:1151
 msgid "You need to sign in again, using your PhpGedView username and password."
@@ -16160,7 +16198,7 @@ msgstr ""
 
 #: setup.php:434
 msgid "You will use this to sign in to webtrees."
-msgstr "برای ورود به سیستم به این احتیاج دارید"
+msgstr "برای ورود به سیستم به این احتیاج دارید."
 
 #: statistics.php:286
 msgid "Youngest father"
@@ -16195,7 +16233,7 @@ msgstr ""
 
 #: setup.php:277
 msgid "Your server’s administrator will provide you with the connection details."
-msgstr "مدیر سرور شما مشخصات اتصال را برایتان فراهم خواهد کرد"
+msgstr "مدیر سرور شما مشخصات اتصال را برایتان فراهم خواهد کرد."
 
 #: app/Module/BatchUpdateModule.php:228
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
@@ -20077,7 +20115,7 @@ msgstr "پیغام سایت"
 #: setup.php:276
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr "webtrees به یک دیتابیس MySQL، حداقل نسخه %s نیازمند است"
+msgstr "webtrees به یک دیتابیس MySQL، حداقل نسخه %s نیازمند است."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:327
