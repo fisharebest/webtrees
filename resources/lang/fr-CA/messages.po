@@ -1,19 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-10-28 14:09+0000\n"
-"PO-Revision-Date: 2018-08-16 00:28+0000\n"
-"Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
-"Language-Team: French (Canada) <https://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
-"Language: fr-CA\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.10\n"
-"X-Poedit-Country: CANADA\n"
-"X-Poedit-Language: French\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 09:31+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: French (Canada) <http://translate.webtrees.net/projects/webtrees/webtrees/fr_CA/>\nLanguage: fr-CA\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Country: CANADA\nX-Poedit-Language: French\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -2974,7 +2960,7 @@ msgstr "Demoiselle d’honneur"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Brigham City, Utah, United States"
-msgstr "Brigham City, Utah, United States"
+msgstr "Brigham City, Utah, États-Unis"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:282
@@ -3868,7 +3854,7 @@ msgstr "Terminé avant 1970, date non disponible"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:118
 msgid "Completed; date unknown"
-msgstr "Terminé; date inconnue"
+msgstr "Terminé ; date inconnue"
 
 #: resources/views/admin/trees-export.phtml:43
 msgid "Compress the GEDCOM file"
@@ -5306,7 +5292,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:339
 msgid "Draper, Utah, United States"
-msgstr "Draper, Utah, United States"
+msgstr "Draper, Utah, États-Unis"
 
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:289
@@ -6452,7 +6438,7 @@ msgstr "Mise en forme du texte et des notes"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:348
 msgid "Fort Lauderdale, Florida, United States"
-msgstr "Fort Lauderdale, Florida, United States"
+msgstr "Fort Lauderdale, Florida, États-Unis"
 
 #: app/GedcomCode/GedcomCodePedi.php:85
 msgctxt "Female pedigree"
@@ -6774,12 +6760,12 @@ msgstr "Gibraltar"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:363
 msgid "Gila Valley, Arizona, United States"
-msgstr "Gila Valley, Arizona, United States"
+msgstr "Gila Valley, Arizona, États-Unis"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:366
 msgid "Gilbert, Arizona, United States"
-msgstr "Gilbert, Arizona, United States"
+msgstr "Gilbert, Arizona, États-Unis"
 
 #: resources/views/lists/given-names-table.phtml:10
 #: resources/views/search-phonetic-page.phtml:17
@@ -7488,7 +7474,7 @@ msgstr "Inde"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:405
 msgid "Indianapolis, Indiana, United States"
-msgstr "Indianapolis, Indiana, United States"
+msgstr "Indianapolis, Indiana, États-Unis"
 
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
@@ -7926,7 +7912,7 @@ msgstr "juin"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:414
 msgid "Kansas City, Missouri, United States"
-msgstr "Kansas City, Missouri, United States"
+msgstr "Kansas City, Missouri, États-Unis"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:274
@@ -8577,7 +8563,7 @@ msgstr "Manaus, Brazil"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:450
 msgid "Manhattan, New York, United States"
-msgstr "Manhattan, New York, United States"
+msgstr "Manhattan, New York, États-Unis"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:453
@@ -10341,7 +10327,7 @@ msgstr "OpenStreetMap™"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:522
 msgid "Oquirrh Mountain, Utah, United States"
-msgstr "Oquirrh Mountain, Utah, United States"
+msgstr "Oquirrh Mountain, Utah, États-Unis"
 
 #: app/Date/JalaliDate.php:260
 msgctxt "Abbreviation for Persian month: Ordibehesht"
@@ -10571,7 +10557,7 @@ msgstr "Les mots de passe doivent comporter au minimum 8 caractères et sont sen
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:540
 msgid "Payson, Utah, United States"
-msgstr "Payson, Utah, United States"
+msgstr "Payson, Utah, États-Unis"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report
@@ -10648,7 +10634,7 @@ msgstr "Philippines"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:546
 msgid "Phoenix, Arizona, United States"
-msgstr "Phoenix, Arizona, United States"
+msgstr "Phoenix, Arizona, États-Unis"
 
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:925
@@ -11110,7 +11096,7 @@ msgstr "Biens et possessions"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:558
 msgid "Provo City Center, Utah, United States"
-msgstr "Provo City Center, Utah, United States"
+msgstr "Provo City Center, Utah, États-Unis"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:561
@@ -11176,7 +11162,7 @@ msgstr "Quintidi"
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: app/Module/UserMessagesModule.php:196 app/Module/UserMessagesModule.php:197
 msgid "RE: "
-msgstr "RE: "
+msgstr "RE : "
 
 #: app/GedcomCode/GedcomCodeRela.php:291
 msgid "Rabbi"
@@ -11706,7 +11692,7 @@ msgstr "Réunion"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:582
 msgid "Rexburg, Idaho, United States"
-msgstr "Rexburg, Idaho, United States"
+msgstr "Rexburg, Idaho, États-Unis"
 
 #: app/Module/PedigreeChartModule.php:366
 msgid "Right"
@@ -13421,25 +13407,25 @@ msgstr "Tampico, Mexique"
 #: app/Date/JewishDate.php:215
 msgctxt "GENITIVE"
 msgid "Tamuz"
-msgstr "Tamuz"
+msgstr "Tammouz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:321
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
-msgstr "Tamuz"
+msgstr "Tammouz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:268
 msgctxt "LOCATIVE"
 msgid "Tamuz"
-msgstr "Tamuz"
+msgstr "Tammouz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:162
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
-msgstr "Tamuz"
+msgstr "Tammouz"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:504
@@ -14761,19 +14747,19 @@ msgstr "Tir"
 #: app/Date/JewishDate.php:193
 msgctxt "GENITIVE"
 msgid "Tishrei"
-msgstr "Tishrei"
+msgstr "Tishri"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:299
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
-msgstr "Tishrei"
+msgstr "Tishri"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:246
 msgctxt "LOCATIVE"
 msgid "Tishrei"
-msgstr "Tishrei"
+msgstr "Tishri"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:140
@@ -14884,7 +14870,7 @@ msgstr "Tonga"
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "Top des %s prénoms"
+msgstr[0] "Top des %s prénom"
 msgstr[1] "Top des %s prénoms"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
@@ -14892,7 +14878,7 @@ msgstr[1] "Top des %s prénoms"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "Top des %s noms de familles"
+msgstr[0] "Top des %s noms de famille"
 msgstr[1] "Top des %s noms de familles"
 
 #. I18N: i.e. most popular given name.
@@ -15124,7 +15110,7 @@ msgstr "Tuxtla Gutierrez, Mexique"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:669
 msgid "Twin Falls, Idaho, United States"
-msgstr "Twin Falls, Idaho, United States"
+msgstr "Twin Falls, Idaho, États-Unis"
 
 #. I18N: gedcom tag TYPE
 #: app/Functions/FunctionsPrintFacts.php:678 app/GedcomTag.php:1067
@@ -16511,7 +16497,7 @@ msgstr "clouds"
 #. I18N: Name of a theme.
 #: app/Module/ColorsTheme.php:53
 msgid "colors"
-msgstr "colors"
+msgstr "couleurs"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:237
