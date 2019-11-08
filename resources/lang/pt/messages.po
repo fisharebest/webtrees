@@ -1,22 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-10-28 14:09+0000\n"
-"PO-Revision-Date: 2017-11-24 23:42+0000\n"
-"Last-Translator: Tgalvao <admin@genealogiafacil.pt>\n"
-"Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/webtrees/pt/>\n"
-"Language: pt\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
-"X-Poedit-Language: Portuguese\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 09:32+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Portuguese <http://translate.webtrees.net/projects/webtrees/webtrees/pt/>\nLanguage: pt\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Portuguese\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -351,8 +334,8 @@ msgstr[1] "%s utilizadores conectados"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] "%s fonte foi atualizada"
-msgstr[1] "%s fontes foram atualizadas"
+msgstr[0] "%s fonte foi atualizada."
+msgstr[1] "%s fontes foram atualizadas."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2280
@@ -7485,7 +7468,7 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:24
 msgid "Include the individual’s immediate family"
-msgstr "Incluir a família imediata da pessoa?"
+msgstr "Incluir a família imediata da pessoa"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:249
@@ -11070,7 +11053,7 @@ msgstr "Primidi"
 
 #: resources/xml/reports/family_group_report.xml:10
 msgid "Print basic events when blank"
-msgstr "Imprimir eventos básicos quando vazios?"
+msgstr "Imprimir eventos básicos quando vazios"
 
 #: app/Http/Controllers/AdminController.php:282
 #: resources/views/admin/trees.phtml:82
@@ -12107,7 +12090,7 @@ msgstr "Enviar mensagem aos usuários que não acessam o site há 6 meses"
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:10
 msgid "Send out reminder emails"
-msgstr "Enviar lembrete por emails?"
+msgstr "Enviar lembrete por emails"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:55
@@ -12458,12 +12441,12 @@ msgstr ""
 
 #: resources/xml/reports/ahnentafel_report.xml:12
 msgid "Show children of ancestors"
-msgstr "Exibir filhos dos antepassados?"
+msgstr "Exibir filhos dos antepassados"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/top10_pageviews/config.phtml:14
 msgid "Show counts before or after name"
-msgstr "Colocar contadores antes ou depois do nome?"
+msgstr "Colocar contadores antes ou depois do nome"
 
 #: resources/views/lists/families-table.phtml:240
 msgid "Show couples where either partner married more than once."
@@ -12492,7 +12475,7 @@ msgstr "Exibir casais com a data de casamento desconhecida."
 #. I18N: label for yes/no option
 #: resources/views/modules/gedcom_stats/config.phtml:9
 msgid "Show date of last update"
-msgstr "Exibir data da última atualização?"
+msgstr "Exibir data da última atualização"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:47
@@ -12548,16 +12531,16 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:10
 #: resources/xml/reports/individual_report.xml:7
 msgid "Show notes"
-msgstr "Exibir notas?"
+msgstr "Exibir notas"
 
 #: resources/xml/reports/ahnentafel_report.xml:10
 msgid "Show occupations"
-msgstr "Exibir ocupações?"
+msgstr "Exibir ocupações"
 
 #: resources/views/modules/todays_events/config.phtml:5
 #: resources/views/modules/upcoming_events/config.phtml:15
 msgid "Show only events of living individuals"
-msgstr "Exibir somente eventos dos Vivos?"
+msgstr "Exibir somente eventos dos Vivos"
 
 #: resources/views/lists/individuals-table.phtml:179
 msgid "Show only females."
@@ -12569,7 +12552,7 @@ msgstr "Exibir somente pessoas em que o gênero não é conhecido."
 
 #: resources/views/modules/random_media/config.phtml:9
 msgid "Show only individuals, events, or all"
-msgstr "Exibir apenas pessoas, eventos ou tudo?"
+msgstr "Exibir apenas pessoas, eventos ou tudo"
 
 #: resources/views/lists/individuals-table.phtml:171
 msgid "Show only males."
@@ -12588,7 +12571,7 @@ msgstr "Exibir alterações pendentes"
 #: resources/xml/reports/individual_ext_report.xml:11
 #: resources/xml/reports/individual_report.xml:8
 msgid "Show photos"
-msgstr "Exibir fotos?"
+msgstr "Exibir fotos"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:97
 msgid "Show place hierarchy"
@@ -12613,11 +12596,11 @@ msgstr "Exibir tarefas de pesquisa que tem uma data no futuro"
 
 #: resources/xml/reports/ahnentafel_report.xml:11
 msgid "Show residences"
-msgstr "Exibir residências?"
+msgstr "Exibir residências"
 
 #: resources/views/modules/random_media/config.phtml:31
 msgid "Show slide show controls"
-msgstr "Exibir controles de exibição da apresentação?"
+msgstr "Exibir controles de exibição da apresentação"
 
 #: resources/xml/reports/ahnentafel_report.xml:8
 #: resources/xml/reports/descendancy_report.xml:7
@@ -12625,7 +12608,7 @@ msgstr "Exibir controles de exibição da apresentação?"
 #: resources/xml/reports/individual_ext_report.xml:9
 #: resources/xml/reports/individual_report.xml:6
 msgid "Show sources"
-msgstr "Exibir fontes?"
+msgstr "Exibir fontes"
 
 #: resources/views/modules/family-book-chart/page.phtml:46
 #: resources/views/modules/hourglass-chart/page.phtml:39
@@ -12685,7 +12668,7 @@ msgstr ""
 #: resources/views/modules/html/config.phtml:52
 #: resources/views/modules/stories/edit.phtml:45
 msgid "Show this block for which languages"
-msgstr "Exibir este bloco para quais idiomas?"
+msgstr "Exibir este bloco para quais idiomas"
 
 #: resources/views/admin/trees-preferences.phtml:306
 #, fuzzy
@@ -13153,7 +13136,7 @@ msgstr "St. Paul, Minnesota, United States"
 
 #: resources/views/modules/random_media/config.phtml:40
 msgid "Start slide show on page load"
-msgstr "Iniciar a exibição da apresentação no carregamento da página?"
+msgstr "Iniciar a exibição da apresentação no carregamento da página"
 
 #: resources/views/modules/lifespans-chart/page.phtml:45
 msgid "Start year"
@@ -13811,14 +13794,14 @@ msgstr "Os requisitos de memória e tempo de processamento dependem do número d
 #: app/Http/Controllers/MessageController.php:253
 #: app/Http/Controllers/MessageController.php:343
 msgid "The message was not sent."
-msgstr "A mensagem não foi enviada"
+msgstr "A mensagem não foi enviada."
 
 #: app/Http/Controllers/MessageController.php:134
 #: app/Http/Controllers/MessageController.php:246
 #: app/Http/Controllers/MessageController.php:336
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "Mensagem enviada com sucesso para %s"
+msgstr "Mensagem enviada com sucesso para %s."
 
 #: app/Http/Controllers/Admin/ModuleController.php:313
 #: app/Http/Controllers/Admin/ModuleController.php:570
@@ -15789,12 +15772,12 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:17
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Qual árvore genealógica deve ser incluída no mapa do site?"
+msgstr "Qual árvore genealógica deve ser incluída no mapa do site"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:270
 msgid "Who can upload new media files"
-msgstr "Quem pode carregar novos arquivos de mídia?"
+msgstr "Quem pode carregar novos arquivos de mídia"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:42
