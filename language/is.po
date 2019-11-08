@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2017-10-21 11:44+0000\n"
-"Last-Translator: Gudjon Sigurdsson <gudjonsi@gmail.com>\n"
-"Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/is/>\n"
+"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"Language-Team: Icelandic <http://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/is/>\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -1485,7 +1486,7 @@ msgstr "Bæta við ótengdar færslur"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1100
 msgid "Add watermarks to thumbnails"
-msgstr "Bæta við vatnsmerki á smámynd?"
+msgstr "Bæta við vatnsmerki á smámynd"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -7486,7 +7487,7 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "Láta nánustu fjölskyldu persónunnar fylgja með?"
+msgstr "Láta nánustu fjölskyldu persónunnar fylgja með"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6777
@@ -11078,7 +11079,7 @@ msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Prentið grunn atburði þegar autt?"
+msgstr "Prentið grunn atburði þegar autt"
 
 #: admin_trees_config.php:310 admin_trees_manage.php:398
 msgid "Privacy"
@@ -12091,7 +12092,7 @@ msgstr "Senda útsendingar skilaboð"
 #. I18N: Label for a configuration option
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Senda út tölvupóst áminningar?"
+msgstr "Senda út tölvupóst áminningar"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:335
@@ -12424,7 +12425,7 @@ msgstr "Stysta gifting"
 
 #: app/Module/RecentChangesModule.php:181
 msgid "Should this block be hidden when it is empty"
-msgstr "Ætti þetta box að vera falið þegar það er tómt?"
+msgstr "Ætti þetta box að vera falið þegar það er tómt"
 
 #: calendar.php:221
 msgid "Show"
@@ -12463,7 +12464,7 @@ msgstr "Sýna alla merkimiða"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "Sýna aldurs bendil?"
+msgstr "Sýna aldurs bendil"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
@@ -12472,12 +12473,12 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "Sýna börn forfeðra?"
+msgstr "Sýna börn forfeðra"
 
 #. I18N: Label for a configuration option
 #: app/Module/TopPageViewsModule.php:165
 msgid "Show counts before or after name"
-msgstr "Staðsetja talningu framan eða aftan við nafn?"
+msgstr "Staðsetja talningu framan eða aftan við nafn"
 
 #: app/Functions/FunctionsPrintLists.php:711
 msgid "Show couples where either partner married more than once."
@@ -12510,7 +12511,7 @@ msgstr "Sýna frændur"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:296
 msgid "Show date of last update"
-msgstr "Sýna dagsetningu á nýjustu uppfærslu?"
+msgstr "Sýna dagsetningu á nýjustu uppfærslu"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:384
@@ -12580,21 +12581,21 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Sýna glósur?"
+msgstr "Sýna glósur"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Sýna starfsheiti?"
+msgstr "Sýna starfsheiti"
 
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "Sýna eingöngu fæðingar, andlát og giftingar?"
+msgstr "Sýna eingöngu fæðingar, andlát og giftingar"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:136
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Sýna eingöngu atburði fólks sem er á lífi?"
+msgstr "Sýna eingöngu atburði fólks sem er á lífi"
 
 #: app/Functions/FunctionsPrintLists.php:186
 msgid "Show only females."
@@ -12607,7 +12608,7 @@ msgstr "Sýna aðeins persónur þar sem kyn er óþekkt."
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Sýna aðeins persónur, atburði eða allt?"
+msgstr "Sýna aðeins persónur, atburði eða allt"
 
 #: app/Functions/FunctionsPrintLists.php:177
 msgid "Show only males."
@@ -12630,7 +12631,7 @@ msgstr "Sýna fyrirhugaðar breytingar"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Sýna myndir?"
+msgstr "Sýna myndir"
 
 #: placelist.php:81
 msgid "Show places in hierarchy"
@@ -12659,12 +12660,12 @@ msgstr "Sýna rannsóknarverkefni sem eru með dagsetningu í framtíðinni"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Sýna búsetu?"
+msgstr "Sýna búsetu"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:409
 msgid "Show slide show controls"
-msgstr "Sýna stjórntæki myndasýningar?"
+msgstr "Sýna stjórntæki myndasýningar"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12672,7 +12673,7 @@ msgstr "Sýna stjórntæki myndasýningar?"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "Sýna heimildir?"
+msgstr "Sýna heimildir"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -12724,7 +12725,7 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "Sýna þetta box fyrir hvaða tungumál?"
+msgstr "Sýna þetta box fyrir hvaða tungumál"
 
 #: admin_trees_config.php:1051
 #, fuzzy
@@ -13181,7 +13182,7 @@ msgstr "Byrja á foreldrum"
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:415
 msgid "Start slide show on page load"
-msgstr "Hefja myndasýningu þegar síða er sótt?"
+msgstr "Hefja myndasýningu þegar síða er sótt"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -13243,12 +13244,12 @@ msgstr "Stöðva"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1113
 msgid "Store watermarked full size images on server"
-msgstr "Vista vatnsmerktar myndir í fullri stærð á þjóni?"
+msgstr "Vista vatnsmerktar myndir í fullri stærð á þjóni"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1126
 msgid "Store watermarked thumbnails on server"
-msgstr "Vista vatnsmerktar smámyndir á þjóni?"
+msgstr "Vista vatnsmerktar smámyndir á þjóni"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
@@ -13795,12 +13796,12 @@ msgstr "Kröfurnar um minni og örgjörvatíma ráðast af fjölda einstaklinga 
 
 #: message.php:193
 msgid "The message was not sent."
-msgstr "Skilaboð var ekki sent"
+msgstr "Skilaboð var ekki sent."
 
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "Það tókst að senda skilaboðin á %s"
+msgstr "Það tókst að senda skilaboðin á %s."
 
 #: admin_modules.php:54
 #, php-format
@@ -15838,12 +15839,12 @@ msgstr "Hvar er PhpGedView uppsetning þín?"
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Hvaða fjölskyldutré ætti að innifela i staðarkortinu?"
+msgstr "Hvaða fjölskyldutré ætti að innifela i staðarkortinu"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1018
 msgid "Who can upload new media files"
-msgstr "Hver getur flutt inn nýjar miðilsskrár?"
+msgstr "Hver getur flutt inn nýjar miðilsskrár"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
