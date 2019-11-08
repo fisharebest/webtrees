@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-09-15 09:36+0000\n"
-"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
-"Language-Team: German <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/de/>\n"
+"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"Language-Team: German <http://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -15790,7 +15791,7 @@ msgstr "Wo befindet sich Ihre PhpGedView Installation?"
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Welche Stammbäume sollen in den Sitemaps enthalten sein?"
+msgstr "Welche Stammbäume sollen in den Sitemaps enthalten sein"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1018
