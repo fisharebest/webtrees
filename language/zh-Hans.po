@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2019-10-17 08:20+0000\n"
-"Last-Translator: rui <xmlf@hotmail.com>\n"
-"Language-Team: Chinese (Simplified) <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/zh_Hans/>\n"
+"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"Language-Team: Chinese (Simplified) <http://translate.webtrees.net/projects/"
+"webtrees/webtrees-17/zh_Hans/>\n"
 "Language: zh-Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -86,14 +87,14 @@ msgstr " 在 "
 #: statisticsplot.php:1211 statisticsplot.php:1261 statisticsplot.php:1311
 #: statisticsplot.php:1361
 msgid " per gender"
-msgstr "性别"
+msgstr " 性别"
 
 #: statisticsplot.php:905 statisticsplot.php:955 statisticsplot.php:1009
 #: statisticsplot.php:1059 statisticsplot.php:1113 statisticsplot.php:1163
 #: statisticsplot.php:1213 statisticsplot.php:1263 statisticsplot.php:1313
 #: statisticsplot.php:1363
 msgid " per time period"
-msgstr "日期"
+msgstr " 日期"
 
 # I18N: Abbreviation for "number %s"
 #. I18N: Abbreviation for "number %s"
@@ -1892,7 +1893,7 @@ msgstr "添加相关人员"
 
 #: timeline.php:299
 msgid "Add another individual to the chart"
-msgstr "%s和引用它的個人。"
+msgstr "%s和引用它的個人"
 
 #: app/Functions/FunctionsPrint.php:551
 #: resources/views/edit/paste-fact-row.phtml:7
@@ -1981,7 +1982,7 @@ msgstr "添加未链接的记录"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1100
 msgid "Add watermarks to thumbnails"
-msgstr "添加水印到缩略图？"
+msgstr "添加水印到缩略图"
 
 # I18N: Description of the “HTML” module
 #. I18N: Description of the “HTML” module
@@ -4878,7 +4879,7 @@ msgstr "檢查掛起的更改…"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:114
 msgid "Check for custom modules…"
-msgstr "自定義模塊"
+msgstr "自定義模塊…"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:155
@@ -5676,7 +5677,7 @@ msgstr "国家"
 #: statisticsplot.php:1222 statisticsplot.php:1272 statisticsplot.php:1322
 #: statisticsplot.php:1372
 msgid "Counts "
-msgstr "國家"
+msgstr "國家 "
 
 #: app/Module/GoogleMapsModule.php:3449
 msgid "County"
@@ -7508,7 +7509,7 @@ msgstr "吉布提"
 
 #: addmedia.php:473 addmedia.php:500 admin_media_upload.php:224
 msgid "Do not change to keep original filename."
-msgstr "此條目留空將以原始文件名保存"
+msgstr "此條目留空將以原始文件名保存。"
 
 #: app/Module/GoogleMapsModule.php:3687
 msgid "Do not create new locations, just import coordinates for existing locations."
@@ -7759,7 +7760,7 @@ msgstr "更改性别"
 #: addmedia.php:237 addmedia.php:406 app/Controller/MediaController.php:43
 #: app/Module/AlbumModule.php:159
 msgid "Edit the media object"
-msgstr "移動這個多媒體?"
+msgstr "移動這個多媒體"
 
 #: app/Controller/IndividualController.php:168
 #: app/Functions/FunctionsEdit.php:699 edit_interface.php:1620
@@ -8051,7 +8052,7 @@ msgstr "英格兰"
 
 #: addmedia.php:429 app/Module/FamilyTreeFavoritesModule.php:212
 msgid "Enter an individual, family, or source ID"
-msgstr "鏈接此用戶到家譜的個人。"
+msgstr "鏈接此用戶到家譜的個人"
 
 #: app/Module/FamilyTreeFavoritesModule.php:225
 #: resources/views/modules/favorites/favorites.phtml:138
@@ -14226,7 +14227,7 @@ msgstr "两个人之间没有发现有联系。"
 
 #: app/Module/GoogleMapsModule.php:182
 msgid "No map data exists for this individual"
-msgstr "这个人没有多媒体对象。"
+msgstr "这个人没有多媒体对象"
 
 #: admin_site_merge.php:241 admin_site_merge.php:288 admin_site_merge.php:334
 #: resources/views/admin/merge-records-step-2.phtml:52
@@ -14250,7 +14251,7 @@ msgstr "没有提交新闻文章。"
 
 #: app/Module/GoogleMapsModule.php:3269 app/Module/GoogleMapsModule.php:3972
 msgid "No places found"
-msgstr "任何找到地方。"
+msgstr "任何找到地方"
 
 #: admin_trees_places.php:128 resources/views/admin/trees-places.phtml:37
 msgid "No places have been found."
@@ -14920,7 +14921,7 @@ msgstr "其它"
 
 #: app/Module/GoogleMapsModule.php:3697
 msgid "Overwrite existing coordinates."
-msgstr "仅更新存在的记录"
+msgstr "仅更新存在的记录。"
 
 #: statistics.php:75
 msgid "Own charts"
@@ -15682,7 +15683,7 @@ msgstr "请加入到这个年份新的名字，姓名或者是地方"
 
 #: message.php:91
 msgid "Please enter a message subject."
-msgstr "創建多媒體對象"
+msgstr "創建多媒體對象。"
 
 #: message.php:50 app/Http/Controllers/MessageController.php:221
 msgid "Please enter a valid email address."
@@ -17757,7 +17758,7 @@ msgstr "最短的婚姻"
 
 #: app/Module/RecentChangesModule.php:181
 msgid "Should this block be hidden when it is empty"
-msgstr "该块是空的时候隐藏？"
+msgstr "该块是空的时候隐藏"
 
 #: calendar.php:221 resources/views/calendar-page.phtml:75
 msgid "Show"
@@ -17961,7 +17962,7 @@ msgstr "显示工作/岗位"
 
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "只显示出生，去世和婚姻？"
+msgstr "只显示出生，去世和婚姻"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:136
@@ -19035,12 +19036,12 @@ msgstr "停止"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1113
 msgid "Store watermarked full size images on server"
-msgstr "全尺寸的水印图像存储在服务器？"
+msgstr "全尺寸的水印图像存储在服务器"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1126
 msgid "Store watermarked thumbnails on server"
-msgstr "水印缩略图存储服务器？"
+msgstr "水印缩略图存储服务器"
 
 # I18N: Name of a module
 #. I18N: Name of a module
@@ -19490,7 +19491,7 @@ msgstr "收集箱允许您从该家谱中提取并将其下载为GEDCOM文件。
 
 #: site-unavailable.php:52
 msgid "The database reported the following error message:"
-msgstr "下面的短讯來自網站用戶賬戶:%s。"
+msgstr "下面的短讯來自網站用戶賬戶:"
 
 #: admin_trees_config.php:1197
 #: resources/views/admin/trees-preferences.phtml:394
@@ -20013,7 +20014,7 @@ msgstr "%s 的版本太旧了。"
 
 #: admin_site_access.php:77
 msgid "The website access rule has been created."
-msgstr "提交者已被创建"
+msgstr "提交者已被创建。"
 
 #: admin_site_access.php:105
 msgid "The website access rule has been deleted."
@@ -20606,7 +20607,7 @@ msgstr "在查看以下URL时发送了此消息: "
 
 #: message.php:113
 msgid "This message will be sent to %s"
-msgstr "信息成功发送到 %s。"
+msgstr "信息成功发送到 %s"
 
 #: setup.php:438 resources/views/setup/step-5-administrator.phtml:61
 msgid "This must be at least six characters long. It is case-sensitive."
@@ -20917,7 +20918,7 @@ msgstr "星期四"
 
 #: addmedia.php:139 admin_media_upload.php:103
 msgid "Thumbnail files must contain images."
-msgstr "缩略图"
+msgstr "缩略图。"
 
 #: admin_trees_config.php:1041 admin_trees_config.php:1046
 #: resources/views/admin/trees-preferences.phtml:293
@@ -21776,7 +21777,7 @@ msgstr "未知个体"
 
 #: app/Module/AlbumModule.php:190
 msgid "Unlink the media object"
-msgstr "移動這個多媒體?"
+msgstr "移動這個多媒體"
 
 #: app/GedcomTag.php:1797 app/GedcomTag.php:2111
 msgid "Unrecognized GEDCOM code"
@@ -22091,7 +22092,7 @@ msgstr "用户"
 
 #: admin.php:731
 msgid "Users who are signed in"
-msgstr "你是以 %s 身份登录。"
+msgstr "你是以 %s 身份登录"
 
 #: admin_users.php:711 resources/views/admin/users-cleanup.phtml:39
 msgid "User’s account has been inactive too long: "
@@ -27651,7 +27652,7 @@ msgstr "第十三代堂兄(妹)"
 
 #: admin_trees_config.php:550
 msgid "this record does not exist"
-msgstr "这条记录不存在。"
+msgstr "这条记录不存在"
 
 # I18N: layout option for the fan chart
 #. I18N: layout option for the fan chart
