@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2017-04-30 20:46+0000\n"
-"Last-Translator: Ladislav Jurdik <laco@jurdik.sk>\n"
-"Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/sk/>\n"
+"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"Language-Team: Slovak <http://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Poedit-Language: Slovak\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -235,7 +236,7 @@ msgstr "%s a jeho predkovia"
 #: app/Module/ClippingsCartModule.php:305
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr "%s je názov zdroja"
+msgstr "%s je názov zdroja."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:134
@@ -1526,7 +1527,7 @@ msgstr "Pridať nezávislé záznamy"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1100
 msgid "Add watermarks to thumbnails"
-msgstr "Pridať vodoznak do náhľadov?"
+msgstr "Pridať vodoznak do náhľadov"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -6495,17 +6496,18 @@ msgstr "Napríklad ak zadáte cestu o veľkosti 2, osoba bude môcť vidieť svo
 #: app/Theme/AbstractTheme.php:296
 #, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "S otázkami k rodokmeňu sa obracajte na %s"
+msgstr "S otázkami k rodokmeňu sa obracajte na %s."
 
 #: app/Theme/AbstractTheme.php:307
 #, php-format
 msgid "For technical support and information contact %s."
-msgstr "Pre technickú podporu a ďalšie informácie kontaktujte: %s"
+msgstr "Pre technickú podporu a ďalšie informácie kontaktujte: %s."
 
 #: app/Theme/AbstractTheme.php:285
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Pre technickú podporu, alebo s otázkami k rodokmeňu prosím kontaktujte: %s"
+msgstr ""
+"Pre technickú podporu, alebo s otázkami k rodokmeňu prosím kontaktujte: %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:283
@@ -7521,7 +7523,7 @@ msgstr "Zahrnúť podpriečinky"
 #. I18N: Label for a configuration option
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "Zahrnúť i najbližšiu rodinu osoby?"
+msgstr "Zahrnúť i najbližšiu rodinu osoby"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6777
@@ -11112,7 +11114,7 @@ msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Tlačiť základné údaje, i keď sú prázdne?"
+msgstr "Tlačiť základné údaje, i keď sú prázdne"
 
 #: admin_trees_config.php:310 admin_trees_manage.php:398
 msgid "Privacy"
@@ -12120,7 +12122,7 @@ msgstr "Poslať správy všetkým užívateľom"
 #. I18N: Label for a configuration option
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Odoslať pripomínacie e-maily?"
+msgstr "Odoslať pripomínacie e-maily"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:335
@@ -12453,7 +12455,7 @@ msgstr "Najkratšie manželstvo"
 
 #: app/Module/RecentChangesModule.php:181
 msgid "Should this block be hidden when it is empty"
-msgstr "Ukryť tento blok keď je prázdny?"
+msgstr "Ukryť tento blok keď je prázdny"
 
 #: calendar.php:221
 msgid "Show"
@@ -12492,7 +12494,7 @@ msgstr "Zobraziť všetky tagy"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "Zobraziť indikátor veku?"
+msgstr "Zobraziť indikátor veku"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
@@ -12501,12 +12503,12 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "Zobraziť deti predkov?"
+msgstr "Zobraziť deti predkov"
 
 #. I18N: Label for a configuration option
 #: app/Module/TopPageViewsModule.php:165
 msgid "Show counts before or after name"
-msgstr "Umiestniť súčty pred alebo za mená?"
+msgstr "Umiestniť súčty pred alebo za mená"
 
 #: app/Functions/FunctionsPrintLists.php:711
 msgid "Show couples where either partner married more than once."
@@ -12539,7 +12541,7 @@ msgstr "Zobraz bratrancov/sesternice"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:296
 msgid "Show date of last update"
-msgstr "Zobraziť dátum poslednej aktualizácie?"
+msgstr "Zobraziť dátum poslednej aktualizácie"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:384
@@ -12609,21 +12611,21 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Zobrazit poznámky?"
+msgstr "Zobrazit poznámky"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Zobraziť povolanie?"
+msgstr "Zobraziť povolanie"
 
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "Zobraziť iba narodenia, úmrtia a sobáše?"
+msgstr "Zobraziť iba narodenia, úmrtia a sobáše"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:136
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Zobraziť iba udalosti žijúcich osôb?"
+msgstr "Zobraziť iba udalosti žijúcich osôb"
 
 #: app/Functions/FunctionsPrintLists.php:186
 msgid "Show only females."
@@ -12636,7 +12638,7 @@ msgstr "Zobraziť iba osoby, ktorých pohlavie nie je známe."
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Zobraziť iba osoby a udalosti alebo všetko?"
+msgstr "Zobraziť iba osoby a udalosti alebo všetko"
 
 #: app/Functions/FunctionsPrintLists.php:177
 msgid "Show only males."
@@ -12659,7 +12661,7 @@ msgstr "Zobraziť čakajúce zmeny"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Zobraziť fotky?"
+msgstr "Zobraziť fotky"
 
 #: placelist.php:81
 msgid "Show places in hierarchy"
@@ -12688,12 +12690,12 @@ msgstr "Zobraziť úlohy na preskúmanie, ktoré majú dátum v budúcnosti"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Zobraziť sídlo?"
+msgstr "Zobraziť sídlo"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:409
 msgid "Show slide show controls"
-msgstr "Zobraziť ovládanie prezentácie?"
+msgstr "Zobraziť ovládanie prezentácie"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12701,7 +12703,7 @@ msgstr "Zobraziť ovládanie prezentácie?"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "Zobraziť zdroje?"
+msgstr "Zobraziť zdroje"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -12753,11 +12755,11 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "Zobraziť tento blok pre všetky jazyky?"
+msgstr "Zobraziť tento blok pre všetky jazyky"
 
 #: admin_trees_config.php:1051
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Zobraziť náhľady obrázkov v diagramoch a rodinných skupinách"
+msgstr "Zobraziť náhľady obrázkov v diagramoch a rodinných skupinách."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:207
@@ -13207,7 +13209,7 @@ msgstr "Začať u rodičov"
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:415
 msgid "Start slide show on page load"
-msgstr "Spustiť prezentáciu pri načítaní stránky?"
+msgstr "Spustiť prezentáciu pri načítaní stránky"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -13269,12 +13271,12 @@ msgstr "Stop"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1113
 msgid "Store watermarked full size images on server"
-msgstr "Ukladať na server obrázky s vodoznakom v plnej veľkosti ?"
+msgstr "Ukladať na server obrázky s vodoznakom v plnej veľkosti"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1126
 msgid "Store watermarked thumbnails on server"
-msgstr "Ukladať náhľady s vodoznakom na server?"
+msgstr "Ukladať náhľady s vodoznakom na server"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
@@ -13821,12 +13823,12 @@ msgstr "Požiadavky na pamäť a procesorový čas závisia na počtu osôb vo v
 
 #: message.php:193
 msgid "The message was not sent."
-msgstr "Správa nebola odoslaná"
+msgstr "Správa nebola odoslaná."
 
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "Správa bola úspešne odoslaná na %s"
+msgstr "Správa bola úspešne odoslaná na %s."
 
 #: admin_modules.php:54
 #, php-format
@@ -15861,12 +15863,12 @@ msgstr "Kde je nainštalované vaše PhpGedView?"
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Ktoré rodokmene majú byť zahrnuté do mapy stránok?"
+msgstr "Ktoré rodokmene majú byť zahrnuté do mapy stránok"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1018
 msgid "Who can upload new media files"
-msgstr "Kto môže nahrať nové multimediálne súbory?"
+msgstr "Kto môže nahrať nové multimediálne súbory"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
@@ -16145,7 +16147,7 @@ msgstr ""
 
 #: app/Module/ChartsBlockModule.php:138
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Musíte vybrať osobu a typ grafu v nastaveniach bloku."
+msgstr "Musíte vybrať osobu a typ grafu v nastaveniach bloku"
 
 #: admin_users.php:286
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
