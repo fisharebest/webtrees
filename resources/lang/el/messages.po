@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-10-28 14:09+0000\n"
-"PO-Revision-Date: 2019-10-21 11:26+0000\n"
-"Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
-"Language-Team: Greek <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/el/>\n"
-"Language: el\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 09:31+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Greek <http://translate.webtrees.net/projects/webtrees/webtrees/el/>\nLanguage: el\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SearchPath-0: .\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -3970,7 +3954,7 @@ msgstr "Πίνακας Ελέγχου"
 #: resources/views/admin/trees-export.phtml:70
 #: resources/views/modules/clippings/download.phtml:49
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr "Θέλετε να μετατρέψετε αυτό το GEDCOM από UTF-8 σε ISO-8859-1;"
+msgstr "Θέλετε να μετατρέψετε αυτό το GEDCOM από UTF-8 σε ISO-8859-1"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
@@ -7480,7 +7464,7 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:24
 msgid "Include the individual’s immediate family"
-msgstr "Να συμπεριληφθεί η άμεση οικογένειά του ατόμου;"
+msgstr "Να συμπεριληφθεί η άμεση οικογένειά του ατόμου"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:249
@@ -12096,7 +12080,7 @@ msgstr "Αποστολή μηνύματος σε χρήστες που δεν σ
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:10
 msgid "Send out reminder emails"
-msgstr "Αποστολή email υπενθύμισης;"
+msgstr "Αποστολή email υπενθύμισης"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:55
@@ -12443,7 +12427,7 @@ msgstr "Εμφάνιση όλων των πηγών"
 #. I18N: an age indicator, which can be dragged around the screen
 #: resources/views/modules/timeline-chart/page.phtml:65
 msgid "Show an age cursor"
-msgstr "Εμφάνιση δείκτη Ηλικίας;"
+msgstr "Εμφάνιση δείκτη Ηλικίας"
 
 #: resources/xml/reports/ahnentafel_report.xml:12
 msgid "Show children of ancestors"
@@ -12452,7 +12436,7 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: resources/views/modules/top10_pageviews/config.phtml:14
 msgid "Show counts before or after name"
-msgstr "Τοποθέτηση μετρήσεων πριν ή μετά το όνομα;"
+msgstr "Τοποθέτηση μετρήσεων πριν ή μετά το όνομα"
 
 #: resources/views/lists/families-table.phtml:240
 msgid "Show couples where either partner married more than once."
@@ -12481,7 +12465,7 @@ msgstr "Εμφάνιση ζευγαριών με άγνωστη ημερομην
 #. I18N: label for yes/no option
 #: resources/views/modules/gedcom_stats/config.phtml:9
 msgid "Show date of last update"
-msgstr "Εμφάνιση ημερομηνίας τελευταίας ενημέρωσης;"
+msgstr "Εμφάνιση ημερομηνίας τελευταίας ενημέρωσης"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:47
@@ -12541,12 +12525,12 @@ msgstr "Εμφάνιση σημειώσεων"
 
 #: resources/xml/reports/ahnentafel_report.xml:10
 msgid "Show occupations"
-msgstr "Εμφάνιση επαγγελμάτων;"
+msgstr "Εμφάνιση επαγγελμάτων"
 
 #: resources/views/modules/todays_events/config.phtml:5
 #: resources/views/modules/upcoming_events/config.phtml:15
 msgid "Show only events of living individuals"
-msgstr "Εμφάνιση συμβάντων από ζωντανά άτομα μόνο;"
+msgstr "Εμφάνιση συμβάντων από ζωντανά άτομα μόνο"
 
 #: resources/views/lists/individuals-table.phtml:179
 msgid "Show only females."
@@ -12558,7 +12542,7 @@ msgstr "Εμφάνιση μόνο ατόμων αγνώστου φύλου."
 
 #: resources/views/modules/random_media/config.phtml:9
 msgid "Show only individuals, events, or all"
-msgstr "Εμφάνιση μόνο ατόμων, συμβάντων, ή όλων;"
+msgstr "Εμφάνιση μόνο ατόμων, συμβάντων, ή όλων"
 
 #: resources/views/lists/individuals-table.phtml:171
 msgid "Show only males."
@@ -12674,7 +12658,7 @@ msgstr ""
 #: resources/views/modules/html/config.phtml:52
 #: resources/views/modules/stories/edit.phtml:45
 msgid "Show this block for which languages"
-msgstr "Για ποιες γλώσσες να εμφανιζεται αυτό το μπλοκ;"
+msgstr "Για ποιες γλώσσες να εμφανιζεται αυτό το μπλοκ"
 
 #: resources/views/admin/trees-preferences.phtml:306
 msgid "Show thumbnail images in charts and family groups."
@@ -13139,7 +13123,7 @@ msgstr ""
 
 #: resources/views/modules/random_media/config.phtml:40
 msgid "Start slide show on page load"
-msgstr "Εκκίνηση προβολής φωτ/φιών με την φορτωση της σελίδας;"
+msgstr "Εκκίνηση προβολής φωτ/φιών με την φορτωση της σελίδας"
 
 #: resources/views/modules/lifespans-chart/page.phtml:45
 msgid "Start year"
@@ -15764,12 +15748,12 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:17
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Ποιά οικ. δέντρα να συμπεριληφθούν στους χάρτες ιστοσελίδων;"
+msgstr "Ποιά οικ. δέντρα να συμπεριληφθούν στους χάρτες ιστοσελίδων"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:270
 msgid "Who can upload new media files"
-msgstr "Ποιοί μπορούν να ανεβάσουν νεα αρχεία πολυμέσων;"
+msgstr "Ποιοί μπορούν να ανεβάσουν νεα αρχεία πολυμέσων"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:42
