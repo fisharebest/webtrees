@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2017-06-21 07:20+0000\n"
-"Last-Translator: Tuna András <tunandras@gmail.com>\n"
-"Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/hu/>\n"
+"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"Language-Team: Hungarian <http://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Poedit-Language: Hungarian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -6279,7 +6280,7 @@ msgstr "A %s jellel jelölt fájok szükségesek a rendes működéshez, ezért 
 
 #: app/I18N.php:235 app/Module/SlideShowModule.php:302 find.php:532
 msgid "Filter"
-msgstr "Szűrő&nbsp;"
+msgstr "Szűrő"
 
 #: app/Functions/FunctionsPrint.php:794 find.php:76 find.php:81 find.php:86
 #: find.php:91 find.php:96 find.php:101
@@ -7014,7 +7015,7 @@ msgstr "Elhunyt"
 #: modules_v3/ahnentafel_report/report.xml:259
 #: modules_v3/descendancy_report/report.xml:173
 msgid "He married"
-msgstr "Feleség:"
+msgstr "Feleség"
 
 #: modules_v3/ahnentafel_report/report.xml:222
 msgid "He resided at"
@@ -7040,7 +7041,7 @@ msgstr "Elhamvasztották"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:64
 #: modules_v3/GEDFact_assistant/census/census-edit.php:71
 msgid "Head of household"
-msgstr "Háztartás vezetője:"
+msgstr "Háztartás vezetője"
 
 #. I18N: gedcom tag HEAD
 #: app/GedcomTag.php:512
@@ -7075,11 +7076,11 @@ msgstr "Kedves %s…"
 #: login.php:389
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Kedves %s!<br>Köszönjük a regisztrációját!"
+msgstr "Kedves %s!<br>Köszönjük a regisztrációját."
 
 #: login.php:320 login.php:558
 msgid "Hello administrator…"
-msgstr "Kedves Rendszergazda!"
+msgstr "Kedves Rendszergazda…"
 
 #: help_text.php:320
 msgid "Help"
@@ -7110,7 +7111,7 @@ msgstr "Helvetica"
 
 #: modules_v3/ahnentafel_report/report.xml:196
 msgid "Her occupation was"
-msgstr "Ez volt a foglalkozása:"
+msgstr "Ez volt a foglalkozása"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:193
@@ -7164,7 +7165,7 @@ msgstr "Hidzsri"
 
 #: modules_v3/ahnentafel_report/report.xml:195
 msgid "His occupation was"
-msgstr "Ez volt a foglalkozása:"
+msgstr "Ez volt a foglalkozása"
 
 #: app/Module/IndividualFactsTabModule.php:140
 msgid "Historical facts"
@@ -10714,7 +10715,7 @@ msgstr "Hely ellenőrzése"
 #. I18N: Label for search field
 #: find.php:202
 msgid "Place contains"
-msgstr "Hely tartalmazza:"
+msgstr "Hely tartalmazza"
 
 #: app/Module/GoogleMapsModule.php:414 app/Theme/AbstractTheme.php:1531
 #: placelist.php:41 placelist.php:43 placelist.php:139
@@ -12341,7 +12342,7 @@ msgstr "Elhunyt"
 #: modules_v3/ahnentafel_report/report.xml:260
 #: modules_v3/descendancy_report/report.xml:242
 msgid "She married"
-msgstr "Férj:"
+msgstr "Férj"
 
 #: modules_v3/ahnentafel_report/report.xml:223
 msgid "She resided at"
@@ -14202,7 +14203,7 @@ msgstr "A családfa utolsó frissítése: #gedcomUpdated#. Összesen #totalSurna
 #: app/Module/HtmlBlockModule.php:165
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "A családfa utolsó frissítésének időpontja: %s"
+msgstr "A családfa utolsó frissítésének időpontja: %s."
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
@@ -15737,7 +15738,7 @@ msgstr "Súly"
 #: app/Module/UserWelcomeModule.php:51
 #, php-format
 msgid "Welcome %s"
-msgstr "Üdvözlet, %s!"
+msgstr "Üdvözlet, %s"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:466
@@ -15746,7 +15747,7 @@ msgstr "A bejelentkező oldal üdvözlőszövege"
 
 #: login.php:166
 msgid "Welcome to this genealogy website"
-msgstr "Üdvözöljük ezen a származástani webhelyen!"
+msgstr "Üdvözöljük ezen a származástani webhelyen"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6741
@@ -16640,7 +16641,7 @@ msgstr "lánygyermek"
 
 #: modules_v3/descendancy_report/report.xml:226
 msgid "daughter of"
-msgstr "az ő lánya:"
+msgstr "az ő lánya"
 
 #: app/Functions/Functions.php:824
 msgctxt "child’s wife"
