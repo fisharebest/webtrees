@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-10-28 14:09+0000\n"
-"PO-Revision-Date: 2017-07-17 14:25+0000\n"
-"Last-Translator: Elvedin Zlatarac <elvedin.zlatarac@gmail.com>\n"
-"Language-Team: Bosnian <https://translate.webtrees.net/projects/webtrees/webtrees/bs/>\n"
-"Language: bs\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.10\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 09:31+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Bosnian <http://translate.webtrees.net/projects/webtrees/webtrees/bs/>\nLanguage: bs\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -7500,7 +7488,7 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:24
 msgid "Include the individual’s immediate family"
-msgstr "Uključi neposrednu porodicu osobe?"
+msgstr "Uključi neposrednu porodicu osobe"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:249
@@ -12469,16 +12457,16 @@ msgstr "Prikaži sve izvore"
 #. I18N: an age indicator, which can be dragged around the screen
 #: resources/views/modules/timeline-chart/page.phtml:65
 msgid "Show an age cursor"
-msgstr "Prikaži pokazivač starosti?"
+msgstr "Prikaži pokazivač starosti"
 
 #: resources/xml/reports/ahnentafel_report.xml:12
 msgid "Show children of ancestors"
-msgstr "Prikaži djecu predaka?"
+msgstr "Prikaži djecu predaka"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/top10_pageviews/config.phtml:14
 msgid "Show counts before or after name"
-msgstr "Postavi brojčanik prije ili poslije imena?"
+msgstr "Postavi brojčanik prije ili poslije imena"
 
 #: resources/views/lists/families-table.phtml:240
 msgid "Show couples where either partner married more than once."
@@ -12507,7 +12495,7 @@ msgstr "Prikaži parove sa nepoznatim datumom vjenčanja."
 #. I18N: label for yes/no option
 #: resources/views/modules/gedcom_stats/config.phtml:9
 msgid "Show date of last update"
-msgstr "Prikaži datum zadnje izmjene?"
+msgstr "Prikaži datum zadnje izmjene"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:47
@@ -12563,16 +12551,16 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:10
 #: resources/xml/reports/individual_report.xml:7
 msgid "Show notes"
-msgstr "Prikaži zabilješke?"
+msgstr "Prikaži zabilješke"
 
 #: resources/xml/reports/ahnentafel_report.xml:10
 msgid "Show occupations"
-msgstr "Prikaži zanimanja?"
+msgstr "Prikaži zanimanja"
 
 #: resources/views/modules/todays_events/config.phtml:5
 #: resources/views/modules/upcoming_events/config.phtml:15
 msgid "Show only events of living individuals"
-msgstr "Prikaži samo događaje za žive osobe?"
+msgstr "Prikaži samo događaje za žive osobe"
 
 #: resources/views/lists/individuals-table.phtml:179
 msgid "Show only females."
@@ -12584,7 +12572,7 @@ msgstr "Prikaži samo osobe kojima spol nije poznat."
 
 #: resources/views/modules/random_media/config.phtml:9
 msgid "Show only individuals, events, or all"
-msgstr "Prikaži samo osobe, događaje ili sve?"
+msgstr "Prikaži samo osobe, događaje ili sve"
 
 #: resources/views/lists/individuals-table.phtml:171
 msgid "Show only males."
@@ -12628,11 +12616,11 @@ msgstr "Prikaži zadatke istraživanja koji imaju datum postavljen u budućnosti
 
 #: resources/xml/reports/ahnentafel_report.xml:11
 msgid "Show residences"
-msgstr "Prikaži mjesto stanovanja?"
+msgstr "Prikaži mjesto stanovanja"
 
 #: resources/views/modules/random_media/config.phtml:31
 msgid "Show slide show controls"
-msgstr "Show slide kontrole za prikaz?"
+msgstr "Show slide kontrole za prikaz"
 
 #: resources/xml/reports/ahnentafel_report.xml:8
 #: resources/xml/reports/descendancy_report.xml:7
@@ -12640,7 +12628,7 @@ msgstr "Show slide kontrole za prikaz?"
 #: resources/xml/reports/individual_ext_report.xml:9
 #: resources/xml/reports/individual_report.xml:6
 msgid "Show sources"
-msgstr "Prikaži izvore?"
+msgstr "Prikaži izvore"
 
 #: resources/views/modules/family-book-chart/page.phtml:46
 #: resources/views/modules/hourglass-chart/page.phtml:39
@@ -12700,7 +12688,7 @@ msgstr ""
 #: resources/views/modules/html/config.phtml:52
 #: resources/views/modules/stories/edit.phtml:45
 msgid "Show this block for which languages"
-msgstr "Za koje jezike želite prikazati ovaj blok?"
+msgstr "Za koje jezike želite prikazati ovaj blok"
 
 #: resources/views/admin/trees-preferences.phtml:306
 #, fuzzy
@@ -13168,7 +13156,7 @@ msgstr ""
 
 #: resources/views/modules/random_media/config.phtml:40
 msgid "Start slide show on page load"
-msgstr "Pokreni slide show kod učitavanja stranice?"
+msgstr "Pokreni slide show kod učitavanja stranice"
 
 #: resources/views/modules/lifespans-chart/page.phtml:45
 msgid "Start year"
@@ -15805,7 +15793,7 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:17
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Koja porodična stabla trebaju biti uključena u mapi sitea?"
+msgstr "Koja porodična stabla trebaju biti uključena u mapi sitea"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:270
