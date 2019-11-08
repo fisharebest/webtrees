@@ -1,18 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-10-28 14:09+0000\n"
-"PO-Revision-Date: 2019-11-08 15:05+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: English (United Kingdom) <http://example.com/projects/"
-"webtrees/webtreeswebtrees/en_GB/>\n"
-"Language: en-GB\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 09:31+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: English (United Kingdom) <http://translate.webtrees.net/projects/webtrees/webtrees/en_GB/>\nLanguage: en-GB\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -13408,7 +13395,7 @@ msgstr "Table prefix"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Tabloid"
-msgstr ""
+msgstr "Tabloid"
 
 #: app/Http/Controllers/Admin/ModuleController.php:248
 #: resources/views/admin/control-panel.phtml:497
@@ -13484,7 +13471,7 @@ msgstr "Tegucigalpa, Honduras"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/CookieWarningModule.php:67
 msgid "Tell visitors why this site uses cookies."
-msgstr ""
+msgstr "Tell visitors why this site uses cookies."
 
 #: resources/views/modules/html/config.phtml:16
 msgid "Templates"
@@ -13545,7 +13532,7 @@ msgstr "The GEDCOM file ‘%s’ has been imported."
 
 #: resources/views/modals/media-file-fields.phtml:95
 msgid "The GEDCOM standard does not allow URLs in media objects."
-msgstr ""
+msgstr "The GEDCOM standard does not allow URLs in media objects."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:378
@@ -13555,12 +13542,12 @@ msgstr "The Hague, Netherlands"
 #: app/Services/ServerCheckService.php:126
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr ""
+msgstr "The PHP extension “%s” is not installed."
 
 #: app/Services/ServerCheckService.php:184
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr ""
+msgstr "The PHP function “%1$s” is disabled."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:59
@@ -13570,12 +13557,12 @@ msgstr "The PHP temporary folder is missing."
 #: app/Services/ServerCheckService.php:145
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr ""
+msgstr "The PHP.INI setting “%1$s” is disabled."
 
 #: app/Services/ServerCheckService.php:149
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr ""
+msgstr "The PHP.INI setting “%1$s” is enabled."
 
 #: resources/views/emails/approve-user-html.phtml:9
 #: resources/views/emails/approve-user-text.phtml:4
@@ -13590,7 +13577,7 @@ msgstr "The administrator has been informed. As soon as they give you permission
 #. I18N: Description of the “Reports” module
 #: app/Module/CalendarMenuModule.php:52
 msgid "The calendar menu."
-msgstr ""
+msgstr "The calendar menu."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:69
@@ -13609,7 +13596,7 @@ msgstr "The changes to ‘%s’ have been rejected."
 #. I18N: Description of the “Reports” module
 #: app/Module/ChartsMenuModule.php:71
 msgid "The charts menu."
-msgstr ""
+msgstr "The charts menu."
 
 #: resources/views/modules/clippings/show.phtml:8
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -13617,7 +13604,7 @@ msgstr "The clippings cart allows you to take extracts from this family tree and
 
 #: resources/views/privacy-policy.phtml:8
 msgid "The data in this website has been collected for the purposes of genealogical research."
-msgstr ""
+msgstr "The data in this website has been collected for the purposes of genealogical research."
 
 #: resources/views/admin/trees-preferences.phtml:396
 msgid "The date and time of the last update"
@@ -13627,7 +13614,7 @@ msgstr "The date and time of the last update"
 #: app/Http/RequestHandlers/AccountUpdate.php:110
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr ""
+msgstr "The details for “%s” have been updated."
 
 #. I18N: %s is a filename
 #: app/Http/Controllers/Admin/UpgradeController.php:290
@@ -13666,7 +13653,7 @@ msgstr "The family trees have been merged successfully."
 #. I18N: Description of the “Reports” module
 #: app/Module/TreesMenuModule.php:70
 msgid "The family trees menu."
-msgstr ""
+msgstr "The family trees menu."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/Controllers/EditGedcomRecordController.php:142
@@ -13736,7 +13723,7 @@ msgstr "The folder can be specified in full (e.g. /home/user_name/webtrees_data/
 #: app/Http/Controllers/AdminSiteController.php:187
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "The folder “%s” does not exist."
 
 #: resources/views/admin/merge-records-step-2.phtml:21
 msgid "The following facts and events were found in both records."
@@ -13790,7 +13777,7 @@ msgstr "The link from ‘%1$s’ to ‘%2$s’ has been updated."
 #. I18N: Description of the “Reports” module
 #: app/Module/ListsMenuModule.php:69
 msgid "The lists menu."
-msgstr ""
+msgstr "The lists menu."
 
 #: app/Http/Controllers/EditMediaController.php:271
 #, php-format
@@ -13804,7 +13791,7 @@ msgstr "The media file %1$s has been renamed to %2$s."
 
 #: app/Http/Controllers/EditMediaController.php:407
 msgid "The media object has been created"
-msgstr ""
+msgstr "The media object has been created"
 
 #: resources/views/setup/step-2-server-checks.phtml:38
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13861,7 +13848,7 @@ msgstr "The new user will be asked to confirm their email address before the acc
 
 #: app/Http/Controllers/EditNoteController.php:149
 msgid "The note has been created"
-msgstr ""
+msgstr "The note has been created"
 
 #: app/Http/Controllers/SetupController.php:371
 msgid "The password needs to be at least six characters long."
@@ -13875,12 +13862,12 @@ msgstr "The password required for authentication with the SMTP server."
 #: app/Http/RequestHandlers/PasswordResetAction.php:79
 #: app/Http/RequestHandlers/PasswordResetPage.php:69
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "The password-reset link has expired."
 
 #. I18N: Description of the “PlaceHierarchyListModule” module
 #: app/Module/PlaceHierarchyListModule.php:57
 msgid "The place hierarchy."
-msgstr ""
+msgstr "The place hierarchy."
 
 #: app/Http/Controllers/AdminController.php:370
 #: app/Http/Controllers/AdminTreesController.php:1148
@@ -13914,7 +13901,7 @@ msgstr "The preferences for the module ‘%s’ have been updated."
 #: resources/views/setup/step-4-database-sqlite.phtml:61
 #: resources/views/setup/step-4-database-sqlsvr.phtml:87
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
-msgstr ""
+msgstr "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
 
 #: app/Http/Controllers/EditGedcomRecordController.php:82
 msgid "The record has been copied to the clipboard."
@@ -13933,20 +13920,20 @@ msgstr "The regular expression appears to contain an error. It can’t be used."
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:74
 msgid "The reports menu."
-msgstr ""
+msgstr "The reports menu."
 
 #: app/Http/Controllers/EditRepositoryController.php:81
 msgid "The repository has been created"
-msgstr ""
+msgstr "The repository has been created"
 
 #. I18N: Description of the “Reports” module
 #: app/Module/SearchMenuModule.php:59
 msgid "The search menu."
-msgstr ""
+msgstr "The search menu."
 
 #: app/Services/SearchService.php:961
 msgid "The search returned too many results."
-msgstr ""
+msgstr "The search returned too many results."
 
 #: resources/views/setup/step-2-server-checks.phtml:31
 msgid "The server configuration is OK."
@@ -13954,7 +13941,7 @@ msgstr "The server configuration is OK."
 
 #: app/Services/ServerCheckService.php:249
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "The server’s temporary folder cannot be accessed."
 
 #: app/Http/Controllers/AdminTreesController.php:1731
 #: app/Services/UpgradeService.php:150 app/Services/UpgradeService.php:183
@@ -13968,11 +13955,11 @@ msgstr "The size of the family tree, earliest and latest events, common names, e
 
 #: app/Http/Controllers/EditSourceController.php:123
 msgid "The source has been created"
-msgstr ""
+msgstr "The source has been created"
 
 #: app/Http/Controllers/EditSubmitterController.php:91
 msgid "The submitter has been created"
-msgstr ""
+msgstr "The submitter has been created"
 
 #: resources/views/help/name.phtml:9
 #, php-format
@@ -14085,7 +14072,7 @@ msgstr "There are no facts for this individual."
 
 #: app/Http/Controllers/Admin/MediaController.php:433
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "There are no links to this media object."
 
 #: resources/views/modules/media/tab.phtml:16
 msgid "There are no media objects for this individual."
@@ -14124,7 +14111,7 @@ msgstr[1] "There have been no changes within the last %s days."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:99
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr ""
+msgstr "There is no user account with the email “%s”."
 
 #: app/Http/Controllers/Admin/MediaController.php:591
 #: app/Http/Controllers/EditMediaController.php:135
@@ -14303,7 +14290,7 @@ msgstr "This individual will be selected by default when viewing charts and repo
 #: resources/views/statistics/other/places.phtml:54
 #: resources/views/statistics/other/top10-list.phtml:23
 msgid "This information is not available."
-msgstr ""
+msgstr "This information is not available."
 
 #: app/Statistics/Repository/EventRepository.php:252
 #: app/Statistics/Repository/FamilyDatesRepository.php:110
@@ -14416,7 +14403,7 @@ msgstr "This is your real name, as you would like it displayed on screen."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:96
 msgid "This link is valid for one hour."
-msgstr ""
+msgstr "This link is valid for one hour."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -14542,7 +14529,7 @@ msgstr "This record does not exist or you do not have permission to view it."
 
 #: resources/views/admin/trees-privacy.phtml:240
 msgid "This record does not exist."
-msgstr ""
+msgstr "This record does not exist."
 
 #: resources/views/gedcom-record-page.phtml:12
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
@@ -14621,11 +14608,11 @@ msgstr "This should be a comma or space separated list of facts, in addition to 
 
 #: resources/views/privacy-policy.phtml:25
 msgid "This site does not use any third-party tracking or analytics services."
-msgstr ""
+msgstr "This site does not use any third-party tracking or analytics services."
 
 #: resources/views/privacy-policy.phtml:16
 msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-msgstr ""
+msgstr "This site uses cookies to store your preferences on this site, such as the language you have selected."
 
 #: app/Exceptions/SourceAccessDeniedException.php:35
 #: app/Exceptions/SourceNotFoundException.php:35
@@ -14705,7 +14692,7 @@ msgstr "Thu"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:34
 msgid "Thumbnail image"
-msgstr ""
+msgstr "Thumbnail image"
 
 #: resources/views/admin/trees-preferences.phtml:295
 #: resources/views/admin/trees-preferences.phtml:301
@@ -14855,7 +14842,7 @@ msgstr "To reduce the size of the download, you can compress the data into a .ZI
 #: resources/views/emails/password-request-html.phtml:9
 #: resources/views/emails/password-request-text.phtml:5
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "To set a new password, follow this link."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:36
@@ -15084,7 +15071,7 @@ msgstr "Trailer"
 #: app/Module/AncestorsChartModule.php:263
 #: app/Module/DescendancyChartModule.php:253
 msgid "Tree"
-msgstr ""
+msgstr "Tree"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:291
@@ -15292,7 +15279,7 @@ msgstr "Unzip %s to a temporary folder…"
 
 #: app/Module/PedigreeChartModule.php:367
 msgid "Up"
-msgstr ""
+msgstr "Up"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:96
@@ -15381,7 +15368,7 @@ msgstr "Use full source citations"
 #: resources/views/setup/step-4-database-sqlite.phtml:62
 #: resources/views/setup/step-4-database-sqlsvr.phtml:88
 msgid "Use letters A-Z, a-z, digits 0-9, or underscores"
-msgstr ""
+msgstr "Use letters A-Z, a-z, digits 0-9, or underscores"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:106
@@ -15601,7 +15588,7 @@ msgstr "View"
 #: resources/views/places-page.phtml:35
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "View table of events occurring in %s"
 
 #: resources/views/calendar-page.phtml:165
 msgid "View this day"
@@ -16086,7 +16073,7 @@ msgstr "Your name"
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:72
 msgid "Your password has been updated."
-msgstr ""
+msgstr "Your password has been updated."
 
 #: app/Http/RequestHandlers/RegisterAction.php:129
 #, php-format
@@ -16182,7 +16169,7 @@ msgstr "add"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:101
 msgid "add place"
-msgstr ""
+msgstr "add place"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:73
@@ -16635,7 +16622,7 @@ msgstr "died"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "down"
-msgstr ""
+msgstr "down"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:91
@@ -16647,7 +16634,7 @@ msgstr "download"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:17
 msgid "d’Aboville number"
-msgstr ""
+msgstr "d’Aboville number"
 
 #: resources/views/admin/components.phtml:107
 #: resources/views/family-page-menu.phtml:8
@@ -16754,7 +16741,7 @@ msgstr "ex-wife"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:107
 msgid "export file"
-msgstr ""
+msgstr "export file"
 
 #: app/Http/Controllers/AdminTreesController.php:1027
 #: resources/xml/reports/fact_sources.xml:6
@@ -18717,7 +18704,7 @@ msgstr "import"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:120
 msgid "import file"
-msgstr ""
+msgstr "import file"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:353
@@ -18769,7 +18756,7 @@ msgstr "last"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "left"
-msgstr ""
+msgstr "left"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -18784,7 +18771,7 @@ msgstr "list"
 #: app/Http/Controllers/Admin/LocationController.php:722
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "locations updated: %s, locations added: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:148
@@ -18905,17 +18892,17 @@ msgstr "nephew"
 #: app/Functions/Functions.php:1113
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "nephew"
 
 #: app/Functions/Functions.php:1109
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "nephew"
 
 #: app/Functions/Functions.php:1111
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "nephew"
 
 #: app/Functions/Functions.php:865
 msgctxt "sibling’s son"
@@ -18930,17 +18917,17 @@ msgstr "nephew"
 #: app/Functions/Functions.php:1353
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "nephew"
 
 #: app/Functions/Functions.php:1349
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "nephew"
 
 #: app/Functions/Functions.php:1351
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "nephew"
 
 #: app/Functions/Functions.php:951
 msgctxt "brother’s daughter’s husband"
@@ -18965,17 +18952,17 @@ msgstr "nephew/niece"
 #: app/Functions/Functions.php:1101
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nephew/niece"
 
 #: app/Functions/Functions.php:1097
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nephew/niece"
 
 #: app/Functions/Functions.php:1099
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nephew/niece"
 
 #: app/Functions/Functions.php:861
 msgctxt "sibling’s child"
@@ -18990,17 +18977,17 @@ msgstr "nephew/niece"
 #: app/Functions/Functions.php:1341
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nephew/niece"
 
 #: app/Functions/Functions.php:1337
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nephew/niece"
 
 #: app/Functions/Functions.php:1339
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nephew/niece"
 
 #: app/Functions/FunctionsEdit.php:556
 msgid "never"
@@ -19032,17 +19019,17 @@ msgstr "niece"
 #: app/Functions/Functions.php:1107
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "niece"
 
 #: app/Functions/Functions.php:1103
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "niece"
 
 #: app/Functions/Functions.php:1105
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "niece"
 
 #: app/Functions/Functions.php:863
 msgctxt "sibling’s daughter"
@@ -19057,17 +19044,17 @@ msgstr "niece"
 #: app/Functions/Functions.php:1347
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "niece"
 
 #: app/Functions/Functions.php:1343
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "niece"
 
 #: app/Functions/Functions.php:1345
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "niece"
 
 #: app/Functions/Functions.php:977
 msgctxt "brother’s son’s wife"
@@ -19319,7 +19306,7 @@ msgstr "reset"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "right"
-msgstr ""
+msgstr "right"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:31
@@ -20070,7 +20057,7 @@ msgstr "unreliable evidence"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "up"
-msgstr ""
+msgstr "up"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-places.phtml:60
@@ -20130,12 +20117,12 @@ msgstr "webtrees message"
 
 #: resources/views/setup/step-3-database-type.phtml:25
 msgid "webtrees needs a database to store your genealogy data."
-msgstr ""
+msgstr "webtrees needs a database to store your genealogy data."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:47
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr ""
+msgstr "webtrees needs to send emails, such as password reminders and website notifications."
 
 #: app/Functions/FunctionsEdit.php:137
 msgid "webtrees sends emails with no storage"
