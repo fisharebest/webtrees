@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-10-28 14:09+0000\n"
-"PO-Revision-Date: 2018-10-01 12:27+0000\n"
-"Last-Translator: Truong Van Phap <hotruongphuhoa@gmail.com>\n"
-"Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees/vi/>\n"
-"Language: vi\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.10\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees vietnamese Version 1.5.3\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 09:32+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Vietnamese <http://translate.webtrees.net/projects/webtrees/webtrees/vi/>\nLanguage: vi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -276,7 +260,7 @@ msgstr[0] "%s cá nhân với các sự kiện vào %s giữa %s và %s"
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] "%s vị trí đã được nhập"
+msgstr[0] "%s vị trí đã được nhập."
 
 #: app/Module/UserMessagesModule.php:224
 #, php-format
@@ -314,7 +298,7 @@ msgstr "%s đời 1 lệch 1 nhỏ"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] "%s kho lưu trữ đã cập nhật"
+msgstr[0] "%s kho lưu trữ đã cập nhật."
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:9
@@ -14658,7 +14642,7 @@ msgstr "Nguồn này đã được sửa. Bạn phải xem xét các thay đổi
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:202
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
-msgstr "Văn bản này sẽ được thêm vào mỗi tiêu đề trang. Nó sẽ hiện ở thanh tiêu đề trình duyệt, đánh dấu v.v"
+msgstr "Văn bản này sẽ được thêm vào mỗi tiêu đề trang. Nó sẽ hiện ở thanh tiêu đề trình duyệt, đánh dấu v.v."
 
 #: app/Http/Controllers/AdminTreesController.php:301
 #: app/Http/Controllers/AdminTreesController.php:306
@@ -20249,7 +20233,7 @@ msgstr "“%s”"
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:66
 #, php-format
 msgid "“%s” has been deleted."
-msgstr "%s đã xóa"
+msgstr "%s đã xóa."
 
 #: app/Functions/FunctionsPrint.php:90 app/Note.php:154
 #: app/Report/ReportParserGenerate.php:934
