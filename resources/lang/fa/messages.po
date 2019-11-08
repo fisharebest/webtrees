@@ -1,19 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-10-28 14:09+0000\n"
-"PO-Revision-Date: 2019-08-23 19:42+0000\n"
-"Last-Translator: Rasool Mahmoodi <rasmoodi@gmail.com>\n"
-"Language-Team: Persian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/fa/>\n"
-"Language: fa\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
-"X-Poedit-Language: Persian\n"
-"X-Poedit-SourceCharset: utf-8\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 09:31+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Persian <http://translate.webtrees.net/projects/webtrees/webtrees/fa/>\nLanguage: fa\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Persian\nX-Poedit-SourceCharset: utf-8\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -74,7 +60,7 @@ msgstr "%1$s %2$s"
 #: app/Http/Controllers/Admin/UpgradeController.php:313
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$s کیلوبایت در %2$s ثانیه بارگیری شد"
+msgstr "%1$s کیلوبایت در %2$s ثانیه بارگیری شد."
 
 #: app/Http/Controllers/Admin/UsersController.php:414
 #: app/Http/Controllers/HomePageController.php:641
@@ -87,7 +73,7 @@ msgstr "%1$s وجود ندارد"
 #: app/Http/Controllers/AdminTreesController.php:291
 #, php-format
 msgid "%1$s does not exist."
-msgstr "%1$s وجود ندارد"
+msgstr "%1$s وجود ندارد."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:288
@@ -1682,7 +1668,7 @@ msgstr "سن در زمان تولد فرزند"
 
 #: resources/views/admin/trees-privacy.phtml:66
 msgid "Age at which to assume an individual is dead"
-msgstr "سنی که در آن فرد به عنوان متوفی شناخته می شود."
+msgstr "سنی که در آن فرد به عنوان متوفی شناخته می شود"
 
 #: resources/views/statistics/families/age-difference.phtml:41
 msgid "Age between husband and wife"
@@ -1926,7 +1912,7 @@ msgstr ""
 #: resources/views/errors/database-error.phtml:4
 #: resources/views/setup/step-6-failed.phtml:4
 msgid "An unexpected database error occurred."
-msgstr "یک پیام خطای ناشناخته رخ داده است"
+msgstr "یک پیام خطای ناشناخته رخ داده است."
 
 #: resources/views/admin/location-edit.phtml:136
 #: resources/views/modules/pedigree-map/chart.phtml:57
@@ -3244,7 +3230,7 @@ msgstr ""
 #. I18N: Help text for the "Port number" site configuration setting
 #: resources/views/admin/site-mail.phtml:97
 msgid "By default, SMTP works on port 25."
-msgstr "به صورت پیش فرض SMTP با استفاده از درگاه 25 کار می کند"
+msgstr "به صورت پیش فرض SMTP با استفاده از درگاه 25 کار می کند."
 
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:45
@@ -3335,7 +3321,7 @@ msgstr ""
 
 #: resources/views/modules/statistics-chart/custom.phtml:69
 msgid "Categories"
-msgstr "دسته بندی‌ها:"
+msgstr "دسته بندی‌ها"
 
 #. I18N: gedcom tag CAUS
 #: app/GedcomTag.php:561
@@ -3625,7 +3611,7 @@ msgstr ""
 
 #: app/Http/Controllers/AdminSiteController.php:233
 msgid "Choose user defined welcome text typed below"
-msgstr "متن پیش‌فرض خوش‌آمد‌گویی را برای کاربر انتخاب کنید."
+msgstr "متن پیش‌فرض خوش‌آمد‌گویی را برای کاربر انتخاب کنید"
 
 #. I18N: gedcom tag CHR
 #: app/GedcomTag.php:592 resources/xml/reports/family_group_report.xml:206
@@ -4529,7 +4515,7 @@ msgstr "تاریخ ثبت نام"
 
 #: app/Module/UserMessagesModule.php:172
 msgid "Date sent"
-msgstr "تاریخ ارسال:"
+msgstr "تاریخ ارسال"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:119
@@ -5519,7 +5505,7 @@ msgstr ""
 #: resources/views/register-page.phtml:46
 #: resources/views/setup/step-5-administrator.phtml:68
 msgid "Email address"
-msgstr "نشانی پست الکترونیکی:"
+msgstr "نشانی پست الکترونیکی"
 
 #: resources/views/admin/users-edit.phtml:82
 msgid "Email verified"
@@ -6249,7 +6235,7 @@ msgstr ""
 #: resources/views/admin/clean-data.phtml:14
 #, php-format
 msgid "Files marked with %s are required for proper operation and cannot be removed."
-msgstr "فایل های علامت گذاری شده با %s جهت انجام یک سری فعالیت‌ها لازم می‌باشند و قابل پاک شدن نیستند"
+msgstr "فایل های علامت گذاری شده با %s جهت انجام یک سری فعالیت‌ها لازم می‌باشند و قابل پاک شدن نیستند."
 
 #: resources/views/lists/datatables-attributes.phtml:28
 msgid "Filter"
@@ -7363,7 +7349,7 @@ msgstr ""
 
 #: resources/views/setup/step-2-server-checks.phtml:56
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
-msgstr "اگر بیش از حد ممکن از امکانات استفاده سرور استفاده کنید، ممکن است با مشکلاتی از قبیل صفحات خالی و نیمه تمام ماندن گزارش ها روبه رو شوید"
+msgstr "اگر بیش از حد ممکن از امکانات استفاده سرور استفاده کنید، ممکن است با مشکلاتی از قبیل صفحات خالی و نیمه تمام ماندن گزارش ها روبه رو شوید."
 
 #: app/Http/Controllers/Admin/ModuleController.php:109
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
@@ -8370,7 +8356,7 @@ msgstr ""
 
 #: resources/views/lists/datatables-attributes.phtml:26
 msgid "Loading…"
-msgstr "در حال بارگذاری"
+msgstr "در حال بارگذاری…"
 
 #. I18N: “Local files” are stored on this computer
 #: resources/views/admin/media.phtml:27
@@ -9423,7 +9409,7 @@ msgstr ""
 #. I18N: Help text for the “Use password” site configuration setting
 #: resources/views/admin/site-mail.phtml:112
 msgid "Most SMTP servers require a password."
-msgstr "اکثر کارگزاران SMTP به رمز عبور نیاز دارند"
+msgstr "اکثر کارگزاران SMTP به رمز عبور نیاز دارند."
 
 #: resources/views/modules/gedcom_stats/config.phtml:48
 #: resources/views/modules/gedcom_stats/statistics.phtml:239
@@ -9447,13 +9433,13 @@ msgstr ""
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:155
 msgid "Most servers do not use secure connections."
-msgstr "اکثر کارگزاران از اتصال امن استفاده نمی کنند"
+msgstr "اکثر کارگزاران از اتصال امن استفاده نمی کنند."
 
 #: resources/views/setup/step-4-database-mysql.phtml:32
 #: resources/views/setup/step-4-database-pgsql.phtml:30
 #: resources/views/setup/step-4-database-sqlsvr.phtml:30
 msgid "Most sites are configured to use localhost. This means that your database runs on the same computer as your web server."
-msgstr "اکثر سایت ها برای Localhost تنظیم شده اند، این بدین معناست که دیتابیس شما تحت سرور اجرا می شود که فایل های سیستم نیز در آن هستند"
+msgstr "اکثر سایت ها برای Localhost تنظیم شده اند، این بدین معناست که دیتابیس شما تحت سرور اجرا می شود که فایل های سیستم نیز در آن هستند."
 
 #: resources/views/setup/step-4-database-sqlsvr.phtml:42
 msgid "Most sites are configured to use the default value of 1433."
@@ -9461,7 +9447,7 @@ msgstr ""
 
 #: resources/views/setup/step-4-database-mysql.phtml:50
 msgid "Most sites are configured to use the default value of 3306."
-msgstr "اکثر سایت ها برای 3306 تنظیم شده اند"
+msgstr "اکثر سایت ها برای 3306 تنظیم شده اند."
 
 #: resources/views/setup/step-4-database-pgsql.phtml:42
 msgid "Most sites are configured to use the default value of 5432."
@@ -9901,15 +9887,15 @@ msgstr[1] ""
 
 #: resources/views/modules/todays_events/empty.phtml:4
 msgid "No events exist for today."
-msgstr "هیچ رخدادی موجود نیست"
+msgstr "هیچ رخدادی موجود نیست."
 
 #: app/Module/UpcomingAnniversariesModule.php:151
 msgid "No events exist for tomorrow."
-msgstr "هیچ رخدادی برای فردا موجود نیست"
+msgstr "هیچ رخدادی برای فردا موجود نیست."
 
 #: resources/views/family-page.phtml:55
 msgid "No facts exist for this family."
-msgstr "هیچ مشخصاتی برای این خانواده در دسترس نیست"
+msgstr "هیچ مشخصاتی برای این خانواده در دسترس نیست."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:56
@@ -9918,7 +9904,7 @@ msgstr ""
 
 #: app/Module/RelationshipsChartModule.php:376
 msgid "No link between the two individuals could be found."
-msgstr "هیچ گونه ارتباطی بین این دو فرد موجود نیست"
+msgstr "هیچ گونه ارتباطی بین این دو فرد موجود نیست."
 
 #: resources/views/admin/location-edit.phtml:135
 #: resources/views/modules/pedigree-map/chart.phtml:56
@@ -10099,7 +10085,7 @@ msgstr "یادداشت‌ها"
 
 #: resources/views/admin/users-cleanup.phtml:77
 msgid "Nothing found to cleanup"
-msgstr "هیچ چیزی برای پاکسازی یافت نشد."
+msgstr "هیچ چیزی برای پاکسازی یافت نشد"
 
 #: resources/views/modules/batch_update/admin.phtml:100
 msgid "Nothing found."
@@ -10995,15 +10981,15 @@ msgstr "پریریال"
 
 #: app/Http/Controllers/AdminSiteController.php:231
 msgid "Predefined text that states admin will decide on each request for a user account"
-msgstr "متن ا‌زپیش‌تعریف‌شده‌ای که بیانگر این است که مدیریت مختار است تا درخواست کاربران برای داشتن حساب کاربری رد و یا قبول کند."
+msgstr "متن ا‌زپیش‌تعریف‌شده‌ای که بیانگر این است که مدیریت مختار است تا درخواست کاربران برای داشتن حساب کاربری رد و یا قبول کند"
 
 #: app/Http/Controllers/AdminSiteController.php:230
 msgid "Predefined text that states all users can request a user account"
-msgstr "متن از‌پیش‌تعریف‌شده‌ای که بیان‌کننده‌ی آن است که تمام کاربران می‌توانند یک حساب کاربری داشته باشند."
+msgstr "متن از‌پیش‌تعریف‌شده‌ای که بیان‌کننده‌ی آن است که تمام کاربران می‌توانند یک حساب کاربری داشته باشند"
 
 #: app/Http/Controllers/AdminSiteController.php:232
 msgid "Predefined text that states only family members can request a user account"
-msgstr "متن ا‌زپیش‌تعریف‌شده‌ای که بیانگر این است که فقط اعضای این خانواده می‌توانند درخواست داشتن حساب کاربری ارسال نمایند."
+msgstr "متن ا‌زپیش‌تعریف‌شده‌ای که بیانگر این است که فقط اعضای این خانواده می‌توانند درخواست داشتن حساب کاربری ارسال نمایند"
 
 #: app/Http/Controllers/AdminTreesController.php:1085
 #: app/Http/Controllers/HomePageController.php:127
@@ -11088,7 +11074,7 @@ msgstr "مرزبندی های حریم خصوصی"
 
 #: resources/views/admin/trees-privacy.phtml:211
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "مرزبندی های حریم خصوصی - اینها به تمام سوابق و مشخصاتی که حاوی تگ مخصوص نیستند صدق می کند."
+msgstr "مرزبندی های حریم خصوصی - اینها به تمام سوابق و مشخصاتی که حاوی تگ مخصوص نیستند صدق می کند"
 
 #: app/GedcomRecord.php:484 app/GedcomRecord.php:595 app/GedcomRecord.php:1219
 #: app/Note.php:122 app/Report/ReportParserGenerate.php:916
@@ -12447,7 +12433,7 @@ msgstr ""
 #. I18N: an age indicator, which can be dragged around the screen
 #: resources/views/modules/timeline-chart/page.phtml:65
 msgid "Show an age cursor"
-msgstr "نشانگر سن نمایش داده شود؟"
+msgstr "نشانگر سن نمایش داده شود"
 
 #: resources/xml/reports/ahnentafel_report.xml:12
 msgid "Show children of ancestors"
@@ -12472,15 +12458,15 @@ msgstr ""
 
 #: resources/views/lists/families-table.phtml:216
 msgid "Show couples who married more than 100 years ago."
-msgstr "نشان دادن زوج هایی که قبل از 100 سال پیش ازدواج کرده اند"
+msgstr "نشان دادن زوج هایی که قبل از 100 سال پیش ازدواج کرده اند."
 
 #: resources/views/lists/families-table.phtml:224
 msgid "Show couples who married within the last 100 years."
-msgstr "نشان دادن زوج هایی که در صد سال اخیر ازدواج کرده اند"
+msgstr "نشان دادن زوج هایی که در صد سال اخیر ازدواج کرده اند."
 
 #: resources/views/lists/families-table.phtml:208
 msgid "Show couples with an unknown marriage date."
-msgstr "نشان دادن زوج های با تاریخ نامشخص ازدواج"
+msgstr "نشان دادن زوج های با تاریخ نامشخص ازدواج."
 
 #. I18N: label for yes/no option
 #: resources/views/modules/gedcom_stats/config.phtml:9
@@ -12494,7 +12480,7 @@ msgstr "نمایش افراد متوفی"
 
 #: resources/views/lists/families-table.phtml:232
 msgid "Show divorced couples."
-msgstr "نمایش زوج های مطلقه"
+msgstr "نمایش زوج های مطلقه."
 
 #: resources/views/lists/individuals-table.phtml:231
 msgid "Show individuals born more than 100 years ago."
@@ -12506,7 +12492,7 @@ msgstr ""
 
 #: resources/views/lists/individuals-table.phtml:197
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr "نمایش کسانی که زنده اند یا زوجهایی که هردو زنده اند"
+msgstr "نمایش کسانی که زنده اند یا زوجهایی که هردو زنده اند."
 
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/individuals-table.phtml:205
@@ -12550,15 +12536,15 @@ msgstr ""
 #: resources/views/modules/todays_events/config.phtml:5
 #: resources/views/modules/upcoming_events/config.phtml:15
 msgid "Show only events of living individuals"
-msgstr "فقط رخداد های افراد در قید حیات نمایش داده شود؟"
+msgstr "فقط رخداد های افراد در قید حیات نمایش داده شود"
 
 #: resources/views/lists/individuals-table.phtml:179
 msgid "Show only females."
-msgstr "فقط نمایش زن ها"
+msgstr "فقط نمایش زن ها."
 
 #: resources/views/lists/individuals-table.phtml:187
 msgid "Show only individuals for whom the gender is not known."
-msgstr "فقط نمایش اشخاصی که جنسیتشان مشخص نشده است"
+msgstr "فقط نمایش اشخاصی که جنسیتشان مشخص نشده است."
 
 #: resources/views/modules/random_media/config.phtml:9
 msgid "Show only individuals, events, or all"
@@ -12566,7 +12552,7 @@ msgstr ""
 
 #: resources/views/lists/individuals-table.phtml:171
 msgid "Show only males."
-msgstr "فقط نمایش مردان"
+msgstr "فقط نمایش مردان."
 
 #: resources/views/lists/families-table.phtml:276
 #: resources/views/lists/individuals-table.phtml:301
@@ -12581,7 +12567,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:11
 #: resources/xml/reports/individual_report.xml:8
 msgid "Show photos"
-msgstr "تصویر را نمایش دهد؟"
+msgstr "تصویر را نمایش دهد"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:97
 msgid "Show place hierarchy"
@@ -13221,7 +13207,7 @@ msgstr ""
 #: resources/views/admin/broadcast.phtml:36
 #: resources/views/contact-page.phtml:39 resources/views/message-page.phtml:31
 msgid "Subject"
-msgstr "موضوع:"
+msgstr "موضوع"
 
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:1040
@@ -13622,7 +13608,7 @@ msgstr ""
 #: app/Http/Controllers/AdminTreesController.php:566
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr "درخت فامیلی به %s صادر شد"
+msgstr "درخت فامیلی به %s صادر شد."
 
 #: app/Http/RequestHandlers/CreateTreeAction.php:63
 #, php-format
@@ -13739,7 +13725,7 @@ msgstr ""
 
 #: resources/views/setup/step-2-server-checks.phtml:41
 msgid "The following list shows typical requirements."
-msgstr "لیست زیر نیازهای اساسی را نمایش می دهند"
+msgstr "لیست زیر نیازهای اساسی را نمایش می دهند."
 
 #: app/Http/Controllers/AdminTreesController.php:973
 msgid "The following places have been changed:"
@@ -13796,7 +13782,7 @@ msgstr ""
 
 #: resources/views/setup/step-2-server-checks.phtml:38
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
-msgstr "مقدار مورد نیاز حافظه و پردازشگر به تعداد کل افراد موجود در شجره نامه بستگی دارند"
+msgstr "مقدار مورد نیاز حافظه و پردازشگر به تعداد کل افراد موجود در شجره نامه بستگی دارند."
 
 #: app/Http/Controllers/MessageController.php:141
 #: app/Http/Controllers/MessageController.php:253
@@ -13809,7 +13795,7 @@ msgstr ""
 #: app/Http/Controllers/MessageController.php:336
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "پیغام با موفقیت برای %s ارسال شد"
+msgstr "پیغام با موفقیت برای %s ارسال شد."
 
 #: app/Http/Controllers/Admin/ModuleController.php:313
 #: app/Http/Controllers/Admin/ModuleController.php:570
@@ -13853,7 +13839,7 @@ msgstr ""
 
 #: app/Http/Controllers/SetupController.php:371
 msgid "The password needs to be at least six characters long."
-msgstr "رمز عبور حداقل باید دارای طولی 6 کاراکتری باشد"
+msgstr "رمز عبور حداقل باید دارای طولی 6 کاراکتری باشد."
 
 #. I18N: Help text for the "Password" site configuration setting
 #: resources/views/admin/site-mail.phtml:141
@@ -13906,7 +13892,7 @@ msgstr ""
 
 #: app/Http/Controllers/EditGedcomRecordController.php:82
 msgid "The record has been copied to the clipboard."
-msgstr "رکورد ها در کلیپ بورد کپی شدند"
+msgstr "رکورد ها در کلیپ بورد کپی شدند."
 
 #: app/Http/Controllers/AdminController.php:266
 #, php-format
@@ -13938,7 +13924,7 @@ msgstr ""
 
 #: resources/views/setup/step-2-server-checks.phtml:31
 msgid "The server configuration is OK."
-msgstr "تنظیمات سرور درست اند"
+msgstr "تنظیمات سرور درست اند."
 
 #: app/Services/ServerCheckService.php:249
 msgid "The server’s temporary folder cannot be accessed."
@@ -14100,7 +14086,7 @@ msgstr ""
 #: resources/views/emails/pending-changes-html.phtml:13
 #: resources/views/emails/pending-changes-text.phtml:10
 msgid "There are pending changes for you to moderate."
-msgstr "تغییرات معلقی در انتظار مدیریت هستند"
+msgstr "تغییرات معلقی در انتظار مدیریت هستند."
 
 #: app/Module/RecentChangesModule.php:91
 #, php-format
@@ -14307,7 +14293,7 @@ msgstr ""
 #: app/Statistics/Repository/IndividualRepository.php:1227
 #: app/Statistics/Repository/IndividualRepository.php:1247
 msgid "This information is private and cannot be shown."
-msgstr "این اطلاعات خصوصی می باشند و نمی توانند برایتان به نمایش در آیند"
+msgstr "این اطلاعات خصوصی می باشند و نمی توانند برایتان به نمایش در آیند."
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:876
@@ -14340,7 +14326,7 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsvr.phtml:54
 #: resources/views/setup/step-4-database-sqlsvr.phtml:66
 msgid "This is case sensitive."
-msgstr "به بزرگی و کوچکی کاراکتر حساس است"
+msgstr "به بزرگی و کوچکی کاراکتر حساس است."
 
 #: app/Http/Controllers/Admin/UpgradeController.php:221
 #: resources/views/admin/control-panel.phtml:65
@@ -14440,7 +14426,7 @@ msgstr "این پیام به هنگاه مشاهده صفحه مقابل ارس�
 
 #: resources/views/setup/step-5-administrator.phtml:61
 msgid "This must be at least six characters long. It is case-sensitive."
-msgstr "این قسمت حداقل باید دارای 6 کاراکتر باشد، این قسمت به حروف بزرگ و کوچک حساس است"
+msgstr "این قسمت حداقل باید دارای 6 کاراکتر باشد، این قسمت به حروف بزرگ و کوچک حساس است."
 
 #. I18N: Help text for the “Sender name” site configuration setting
 #: resources/views/admin/site-mail.phtml:61
@@ -14599,7 +14585,7 @@ msgstr ""
 #: resources/views/setup/step-2-server-checks.phtml:52
 #, php-format
 msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
-msgstr "نهایت حافظه سرور %s مگابایت و نهایت محدودیت زمانی پردازشگر نیز %s ثانیه می باشد"
+msgstr "نهایت حافظه سرور %s مگابایت و نهایت محدودیت زمانی پردازشگر نیز %s ثانیه می باشد."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:433
@@ -15986,7 +15972,7 @@ msgstr ""
 
 #: app/Http/Controllers/SetupController.php:367
 msgid "You must enter all the administrator account fields."
-msgstr "شما باید تمامی قسمت ها را پر کنید"
+msgstr "شما باید تمامی قسمت ها را پر کنید."
 
 #: resources/views/admin/trees-merge.phtml:20
 msgid "You must renumber the records in one of the trees before you can merge them."
@@ -16020,7 +16006,7 @@ msgstr ""
 
 #: resources/views/setup/step-5-administrator.phtml:27
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr "شما باید یک حساب کاربری برای مدیریت ایجاد کنید، این حساب کاربری کنترل تمامی قسمت ها را در دست دارد، برای امنیت بیشتر از یک رمز عبور قدرتمند استفاده کنید"
+msgstr "شما باید یک حساب کاربری برای مدیریت ایجاد کنید، این حساب کاربری کنترل تمامی قسمت ها را در دست دارد، برای امنیت بیشتر از یک رمز عبور قدرتمند استفاده کنید."
 
 #: resources/views/emails/message-copy-html.phtml:8
 #: resources/views/emails/message-copy-text.phtml:4
@@ -16049,7 +16035,7 @@ msgstr ""
 
 #: resources/views/setup/step-5-administrator.phtml:49
 msgid "You will use this to sign in to webtrees."
-msgstr "برای ورود به سیستم به این احتیاج دارید"
+msgstr "برای ورود به سیستم به این احتیاج دارید."
 
 #: resources/views/statistics/families/birth-age.phtml:21
 msgid "Youngest father"
