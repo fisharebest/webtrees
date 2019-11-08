@@ -3,15 +3,17 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2018-03-21 09:11+0000\n"
-"Last-Translator: Liviu <liviu.ene@gmail.com>\n"
-"Language-Team: Romanian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ro/>\n"
+"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"Language-Team: Romanian <http://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/ro/>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
-"X-Generator: Weblate 2.10\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Poedit-Language: Romanian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -70,7 +72,7 @@ msgstr "%s"
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s%2$s are %3$s legături către %4$s"
+msgstr "%1$s%2$s are %3$s legături către %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
@@ -94,13 +96,13 @@ msgstr ""
 #: admin_site_upgrade.php:255
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$s KB au fost ddescărcați in %2$s secunde"
+msgstr "%1$s KB au fost ddescărcați in %2$s secunde."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
 #, php-format
 msgid "%1$s does not exist."
-msgstr "%1$s nu există"
+msgstr "%1$s nu există."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:164
@@ -13819,7 +13821,7 @@ msgstr ""
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "Mesajul a fost trimis la %s cu succes"
+msgstr "Mesajul a fost trimis la %s cu succes."
 
 #: admin_modules.php:54
 #, php-format
