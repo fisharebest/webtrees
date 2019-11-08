@@ -44,6 +44,7 @@ use Throwable;
 
 use function assert;
 use function e;
+use function explode;
 use function filesize;
 use function getimagesize;
 use function ini_get;
@@ -234,19 +235,18 @@ class MediaController extends AbstractAdminController
 
                 $sort_columns = [0 => 0];
 
-                $callback = function (array $row) use ($media_folder, $media_trees): array {
-                    $imgsize = getimagesize(WT_DATA_DIR . $row[0]);
-                    // We can’t create a URL (not in public_html) or use the media firewall (no such object)
-                    if ($imgsize === false) {
-                        $mime_type = mime_content_type(WT_DATA_DIR . $row[0]) ?? 'application/octet-stream';
-                        $img       = view('icons/mime', ['type' => $mime_type]);
-                    } else {
+                $callback = function (array $row) use ($data_filesystem, $media_folder, $media_trees): array {
+                    $mime_type = $data_filesystem->getMimeType($row[0]);
+
+                    if (explode('/', $mime_type)[0] === 'image') {
                         $url = route('unused-media-thumbnail', [
                             'path' => $row[0],
                             'w'    => 100,
                             'h'    => 100,
                         ]);
                         $img = '<img src="' . e($url) . '">';
+                    } else {
+                        $img = view('icons/mime', ['type' => $mime_type]);
                     }
 
                     // Form to create new media object in each tree
