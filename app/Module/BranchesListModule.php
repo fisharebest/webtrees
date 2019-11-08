@@ -56,7 +56,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
      */
     public function description(): string
     {
-        /* I18N: Description of the “BranchesListModule” module */
+        /* I18N: Description of the “Branches” module */
         return I18N::translate('A list of branches of a family.');
     }
 

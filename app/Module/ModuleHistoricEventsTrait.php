@@ -37,7 +37,7 @@ trait ModuleHistoricEventsTrait
      */
     public function description(): string
     {
-        return I18N::translate('Add historic events to an individual‘s page.');
+        return I18N::translate('Add historic events to an individual’s page.');
     }
 
     /**

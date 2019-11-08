@@ -55,7 +55,7 @@ class FamilyListModule extends AbstractModule implements ModuleListInterface
      */
     public function description(): string
     {
-        /* I18N: Description of the “FamilyListModule” module */
+        /* I18N: Description of the “Families” module */
         return I18N::translate('A list of families.');
     }
 

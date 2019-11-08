@@ -55,7 +55,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      */
     public function description(): string
     {
-        /* I18N: Description of the “IndividualListModule” module */
+        /* I18N: Description of the “Individuals” module */
         return I18N::translate('A list of individuals.');
     }
 

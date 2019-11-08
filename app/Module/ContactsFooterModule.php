@@ -64,7 +64,7 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
      */
     public function description(): string
     {
-        /* I18N: Description of the “Hit counters” module */
+        /* I18N: Description of the “Contact information” module */
         return I18N::translate('A link to the site contacts.');
     }
 

@@ -63,7 +63,7 @@ use Fisharebest\Webtrees\View;
     <fieldset class="form-group">
         <div class="row">
             <legend class="col-form-label col-sm-4" for="import-options">
-                <?= I18N::translate('Import Options.') ?>
+                <?= I18N::translate('Import') ?>
             </legend>
             <div class="col-sm-8">
                 <?= view('components/select', ['name' => 'import-options', 'selected' => '', 'options' => ['addupdate' => I18N::translate('Add new, and update existing records'), 'add' => I18N::translate('Only add new records'), 'update' => I18N::translate('Only update existing records')]]) ?>

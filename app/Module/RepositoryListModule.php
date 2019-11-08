@@ -56,7 +56,7 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
      */
     public function description(): string
     {
-        /* I18N: Description of the “RepositoryListModule” module */
+        /* I18N: Description of the “Repositories” module */
         return I18N::translate('A list of repositories.');
     }
 

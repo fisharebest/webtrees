@@ -37,7 +37,7 @@ use Fisharebest\Webtrees\I18N; ?>
         </li>
         <li class="nav-item">
             <a class="nav-link<?= $individuals->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
-                <?= I18N::translate('Individuals!') ?>
+                <?= I18N::translate('Individuals') ?>
                 <?= view('components/badge', ['count' => count($individuals)]) ?>
             </a>
         </li>

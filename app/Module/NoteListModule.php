@@ -56,7 +56,7 @@ class NoteListModule extends AbstractModule implements ModuleListInterface
      */
     public function description(): string
     {
-        /* I18N: Description of the “NoteListModule” module */
+        /* I18N: Description of the “Shared notes” module */
         return I18N::translate('A list of shared notes.');
     }
 

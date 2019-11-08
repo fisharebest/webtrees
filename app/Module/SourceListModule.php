@@ -56,7 +56,7 @@ class SourceListModule extends AbstractModule implements ModuleListInterface
      */
     public function description(): string
     {
-        /* I18N: Description of the “SourceListModule” module */
+        /* I18N: Description of the “Sources” module */
         return I18N::translate('A list of sources.');
     }
 
