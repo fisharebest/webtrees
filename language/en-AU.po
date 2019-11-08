@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2016-06-29 13:40+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: English (Australia) <https://translate.webtrees.net/projects/webtrees/webtrees/en-AU/>\n"
+"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"Language-Team: English (Australia) <http://translate.webtrees.net/projects/"
+"webtrees/webtrees-17/en_AU/>\n"
 "Language: en-AU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -6451,7 +6452,7 @@ msgstr "For help with genealogy questions contact %s."
 #: app/Theme/AbstractTheme.php:307
 #, php-format
 msgid "For technical support and information contact %s."
-msgstr "For technical support and information contact %s"
+msgstr "For technical support and information contact %s."
 
 #: app/Theme/AbstractTheme.php:285
 #, php-format
