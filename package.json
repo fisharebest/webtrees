@@ -32,7 +32,7 @@
     "leaflet.markercluster": "^1.4.1",
     "moment": "^2.24.0",
     "popper.js": "^1.16.0",
-    "select2": "4.0.11",
+    "select2": "4.0.12",
     "sortablejs": "^1.10.1",
     "typeahead.js-bootstrap4-css": "^1.0.0",
     "wheelzoom": "^4.0.1"
