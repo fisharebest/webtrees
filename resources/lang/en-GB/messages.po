@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 09:31+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: English (United Kingdom) <http://translate.webtrees.net/projects/webtrees/webtrees/en_GB/>\nLanguage: en-GB\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 18:04+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: English (United Kingdom) <http://translate.webtrees.net/projects/webtrees/webtrees/en_GB/>\nLanguage: en-GB\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -6354,7 +6354,7 @@ msgstr "Folder name on server"
 #: resources/views/emails/register-user-html.phtml:16
 #: resources/views/emails/register-user-text.phtml:10
 msgid "Follow this link to verify your email address."
-msgstr "Follow this link to verify your email address."
+msgstr "Follow this link to verify your e-mail address."
 
 #: resources/xml/reports/ahnentafel_report.xml:15
 #: resources/xml/reports/bdm_report.xml:14
@@ -7435,9 +7435,7 @@ msgstr "In this year…"
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:14
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr ""
-"In webtrees version 1, you could add custom thumbnails to media objects by "
-"creating files in the “thumbs” folders."
+msgstr "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the ‘thumbs’ folders."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:16
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
@@ -9431,7 +9429,7 @@ msgstr "Most mail servers require a valid domain name."
 
 #: resources/views/admin/site-mail.phtml:66
 msgid "Most mail servers require a valid email address."
-msgstr "Most mail servers require a valid email address."
+msgstr "Most mail servers require a valid e-mail address."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:169
@@ -10746,10 +10744,7 @@ msgstr ""
 
 #: resources/views/help/place.phtml:4
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr ""
-"Place names should be entered as a comma-separated list, starting with the "
-"smallest place and ending with the country. For example, “Westminster, "
-"London, England”."
+msgstr "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, ‘Westminster, London, England’."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:507
@@ -12111,7 +12106,7 @@ msgstr "Sender name"
 #: app/Http/Controllers/AdminSiteController.php:75
 #: resources/views/admin/control-panel.phtml:81
 msgid "Sending email"
-msgstr "Sending email"
+msgstr "Sending e-mail"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:163
@@ -13542,12 +13537,12 @@ msgstr "The Hague, Netherlands"
 #: app/Services/ServerCheckService.php:126
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr "The PHP extension “%s” is not installed."
+msgstr "The PHP extension ‘%s’ is not installed."
 
 #: app/Services/ServerCheckService.php:184
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr "The PHP function “%1$s” is disabled."
+msgstr "The PHP function ‘%1$s’ is disabled."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:59
@@ -13557,12 +13552,12 @@ msgstr "The PHP temporary folder is missing."
 #: app/Services/ServerCheckService.php:145
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr "The PHP.INI setting “%1$s” is disabled."
+msgstr "The PHP.INI setting ‘%1$s’ is disabled."
 
 #: app/Services/ServerCheckService.php:149
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr "The PHP.INI setting “%1$s” is enabled."
+msgstr "The PHP.INI setting ‘%1$s’ is enabled."
 
 #: resources/views/emails/approve-user-html.phtml:9
 #: resources/views/emails/approve-user-text.phtml:4
@@ -13614,7 +13609,7 @@ msgstr "The date and time of the last update"
 #: app/Http/RequestHandlers/AccountUpdate.php:110
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr "The details for “%s” have been updated."
+msgstr "The details for ‘%s’ have been updated."
 
 #. I18N: %s is a filename
 #: app/Http/Controllers/Admin/UpgradeController.php:290
@@ -13723,7 +13718,7 @@ msgstr "The folder can be specified in full (e.g. /home/user_name/webtrees_data/
 #: app/Http/Controllers/AdminSiteController.php:187
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr "The folder “%s” does not exist."
+msgstr "The folder ‘%s’ does not exist."
 
 #: resources/views/admin/merge-records-step-2.phtml:21
 msgid "The following facts and events were found in both records."
@@ -13844,7 +13839,7 @@ msgstr "The most common source facts are listed separately, so that they can be 
 
 #: resources/views/admin/site-registration.phtml:50
 msgid "The new user will be asked to confirm their email address before the account is created."
-msgstr "The new user will be asked to confirm their email address before the account is created."
+msgstr "The new user will be asked to confirm their e-mail address before the account is created."
 
 #: app/Http/Controllers/EditNoteController.php:149
 msgid "The note has been created"
@@ -14111,7 +14106,7 @@ msgstr[1] "There have been no changes within the last %s days."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:99
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr "There is no user account with the email “%s”."
+msgstr "There is no user account with the e-mail ‘%s’."
 
 #: app/Http/Controllers/Admin/MediaController.php:591
 #: app/Http/Controllers/EditMediaController.php:135
@@ -14444,7 +14439,7 @@ msgstr "This must be at least six characters long. It is case-sensitive."
 #. I18N: Help text for the “Sender name” site configuration setting
 #: resources/views/admin/site-mail.phtml:61
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "This name is used in the ‘From’ field, when sending automatic emails from this server."
+msgstr "This name is used in the ‘From’ field, when sending automatic e-mails from this server."
 
 #: app/Exceptions/NoteAccessDeniedException.php:35
 #: app/Exceptions/NoteNotFoundException.php:35
@@ -15745,7 +15740,7 @@ msgstr "When a record is edited, the user and timestamp are recorded. Sometimes 
 
 #: resources/views/admin/users-edit.phtml:89
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the ‘e-mail verified’ option is selected automatically."
+msgstr "When a user registers for an account, an e-mail is sent to their e-mail address with a verification link. When they follow this link, we know the e-mail address is correct, and the ‘e-mail verified’ option is selected automatically."
 
 #. I18N: Help text for the “Source type” configuration setting
 #: resources/views/admin/trees-preferences.phtml:935
@@ -15977,7 +15972,7 @@ msgstr "You may use HTML to format the answer and to add links to other websites
 
 #: resources/views/admin/site-mail.phtml:32
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr "You must also enable “less secure applications” in your Google account."
+msgstr "You must also enable ‘less secure applications’ in your Google account."
 
 #: app/Http/Controllers/SetupController.php:367
 msgid "You must enter all the administrator account fields."
@@ -20122,7 +20117,7 @@ msgstr "webtrees needs a database to store your genealogy data."
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:47
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr "webtrees needs to send emails, such as password reminders and website notifications."
+msgstr "webtrees needs to send e-mails, such as password reminders and website notifications."
 
 #: app/Functions/FunctionsEdit.php:137
 msgid "webtrees sends emails with no storage"
