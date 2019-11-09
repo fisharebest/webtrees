@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 09:31+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Persian <http://translate.webtrees.net/projects/webtrees/webtrees/fa/>\nLanguage: fa\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Persian\nX-Poedit-SourceCharset: utf-8\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 18:04+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Persian <http://translate.webtrees.net/projects/webtrees/webtrees/fa/>\nLanguage: fa\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Persian\nX-Poedit-SourceCharset: utf-8\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -188,10 +188,11 @@ msgid "%s and their descendants"
 msgstr "%s و زادگان(اولاد) آنها"
 
 #: app/Statistics/Repository/UserRepository.php:86
-#, php-format
+#, fuzzy, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
 msgstr[0] "%s کاربر ناشناس وارد شده اند"
+msgstr[1] "%s کاربر ناشناس وارد شده اند"
 
 #: resources/views/family-page-children.phtml:13
 #: resources/views/modules/ancestors-chart/tree.phtml:39
@@ -20196,10 +20197,11 @@ msgstr ""
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:209
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:210
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:211
-#, php-format
+#, fuzzy, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
 msgstr[0] "±%s سال"
+msgstr[1] "±%s سال"
 
 #: app/Individual.php:1268
 #, php-format
