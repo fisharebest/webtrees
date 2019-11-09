@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 09:32+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Romanian <http://translate.webtrees.net/projects/webtrees/webtrees/ro/>\nLanguage: ro\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Romanian\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 18:04+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Romanian <http://translate.webtrees.net/projects/webtrees/webtrees/ro/>\nLanguage: ro\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Romanian\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -292,6 +292,7 @@ msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] "%s mesaj"
 msgstr[1] "%s mesaje"
+msgstr[2] "%s mesaje"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:141 app/Functions/FunctionsDate.php:58
@@ -3478,7 +3479,7 @@ msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Modificări în ultima zi"
 msgstr[1] "Modificări în ultimele %s zile"
-msgstr[2] ""
+msgstr[2] "Modificări în ultimele %s zile"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:101
 #: resources/views/admin/trees.phtml:191
@@ -14916,6 +14917,7 @@ msgid "Top %s surname"
 msgid_plural "Top %s surnames"
 msgstr[0] "Cel mai întâlnit nume de familie: %s"
 msgstr[1] "Cele mai întâlnite nume de familie: %s"
+msgstr[2] "Cele mai întâlnite nume de familie: %s"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:101
@@ -18871,6 +18873,7 @@ msgid "maximum %s day"
 msgid_plural "maximum %s days"
 msgstr[0] "maxim %s zi"
 msgstr[1] "maxim %s zile"
+msgstr[2] "maxim %s zile"
 
 #: resources/views/admin/trees-privacy.phtml:27
 #: resources/views/admin/trees-privacy.phtml:51
