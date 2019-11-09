@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-09 18:45+0000\n"
-"PO-Revision-Date: 2018-08-04 15:27+0000\n"
-"Last-Translator: Руслан <baryshevruslan152@gmail.com>\n"
-"Language-Team: Kazakh <https://translate.webtrees.net/projects/webtrees/webtrees/kk/>\n"
-"Language: kk\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-09 18:45+0000\nPO-Revision-Date: 2019-11-09 21:34+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Kazakh <http://translate.webtrees.net/projects/webtrees/webtrees/kk/>\nLanguage: kk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -148,7 +136,7 @@ msgstr "%1$s–%2$s"
 #: app/Functions/Functions.php:2310
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr "%1$-ның %2$s"
+msgstr "%1$s-ның %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:677
@@ -9231,7 +9219,7 @@ msgstr "Мексико, Мексика"
 #. I18N: Type of media object
 #: app/GedcomTag.php:2375
 msgid "Microfiche"
-msgstr "Microfiche"
+msgstr ""
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2378
@@ -11819,7 +11807,7 @@ msgstr "Сафар"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:179
 msgid "Sage"
-msgstr "Sage"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:441
@@ -13480,7 +13468,7 @@ msgstr "Танзания"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:183
 msgid "Teal Top"
-msgstr "Teal Top"
+msgstr ""
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:168
@@ -15808,7 +15796,7 @@ msgstr "Жаңа медиа файлдарын кім жүктей алады"
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:42
 msgid "Who is online"
-msgstr "Онлайнда кім бар?"
+msgstr "Онлайнда кім бар"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:199
 msgid "Whole words only"
