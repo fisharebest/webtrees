@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"PO-Revision-Date: 2019-11-09 18:04+0000\n"
 "Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
 "Language-Team: Georgian <http://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ka/>\n"
@@ -1233,7 +1233,7 @@ msgstr "დამატება"
 #: app/Module/ClippingsCartModule.php:737
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr "საქაღალდეში გადატანა"
+msgstr ""
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:120
 msgid "Add a blank row"
@@ -3997,7 +3997,7 @@ msgstr ""
 #: admin_site_upgrade.php:339
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
-msgstr "Скопируйте новые файлы на сервер, заменяя все с одинаковым именем."
+msgstr "Скопируйте новые файлы на сервер %s, заменяя все с одинаковым именем."
 
 #. I18N: gedcom tag COPR
 #: app/GedcomTag.php:322
@@ -4536,7 +4536,7 @@ msgstr "ქალიშვილი"
 #: app/Module/InteractiveTree/TreeView.php:349
 #, php-format
 msgid "Daughter of %s"
-msgstr "дочь от"
+msgstr "дочь от %s"
 
 #: app/Theme/AbstractTheme.php:1063 calendar.php:151
 msgid "Day"
@@ -9645,7 +9645,7 @@ msgstr ""
 #: login.php:577
 #, php-format
 msgid "New user at %s"
-msgstr "ახალი ჩანაწერის ფაქტები"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:263
@@ -10844,7 +10844,7 @@ msgstr "მოიძებნა ადგილები"
 #: placelist.php:137
 #, php-format
 msgid "Places in %s"
-msgstr "ადგილების ჩამონათვალი"
+msgstr "ადგილების ჩამონათვალი %s"
 
 #: help_text.php:253
 msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
@@ -13623,7 +13623,7 @@ msgstr ""
 #: admin_site_upgrade.php:358
 #, php-format
 msgid "The file %s has been created."
-msgstr "Она была кримирована."
+msgstr ""
 
 #: admin_media.php:61 admin_media.php:70 admin_site_clean.php:32
 #: admin_site_upgrade.php:413 admin_site_upgrade.php:434
@@ -13634,7 +13634,7 @@ msgstr ""
 #: admin_media_upload.php:141 admin_media_upload.php:159
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr "მედიაფაილის ამორჩევა."
+msgstr ""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:76
@@ -13650,7 +13650,7 @@ msgstr "ფაილი “%s” არ არსებობს."
 #: admin_site_clean.php:36 admin_site_upgrade.php:430
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr "Файл %s не может быть скопирован из %s."
+msgstr ""
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
@@ -13665,12 +13665,12 @@ msgstr ""
 #: admin_trees_config.php:285
 #, php-format
 msgid "The folder %s has been created."
-msgstr "მედიაკატალოგი დაზიანებულია."
+msgstr ""
 
 #: admin_site_clean.php:30 admin_site_upgrade.php:428
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr "მედიაკატალოგი დაზიანებულია."
+msgstr ""
 
 #: admin_site_config.php:195
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -17313,17 +17313,17 @@ msgstr "%sх დიდი ბაბუა"
 #: app/Functions/Functions.php:1669
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr "მამიდა/ბიძია მამის მხრიდან"
+msgstr ""
 
 #: app/Functions/Functions.php:2042 app/Functions/Functions.php:2057
 #, php-format
 msgid "great ×%s grandchild"
-msgstr "пра-внук/внучка"
+msgstr ""
 
 #: app/Functions/Functions.php:2040 app/Functions/Functions.php:2055
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr "пра(х7) внучка"
+msgstr "пра(х%s) внучка"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1912 app/Functions/Functions.php:1922
@@ -17345,13 +17345,13 @@ msgstr "%sх დიდი ბებია"
 #: app/Functions/Functions.php:1958
 #, php-format
 msgid "great ×%s grandparent"
-msgstr "пра(х7)-дед/бабушка"
+msgstr "пра(х%s)-дед/бабушка"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2038 app/Functions/Functions.php:2053
 #, php-format
 msgid "great ×%s grandson"
-msgstr "правнук"
+msgstr ""
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1823 app/Functions/Functions.php:1836
@@ -17380,7 +17380,7 @@ msgstr "%sх დიდი ბაბუა"
 #: app/Functions/Functions.php:1827 app/Functions/Functions.php:1840
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr "правнучатый племянник/племянница"
+msgstr ""
 
 #: app/Functions/Functions.php:1813
 #, fuzzy, php-format
@@ -17392,13 +17392,13 @@ msgstr "правнучатый племянник/племянница"
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "правнучатый племянник/племянница"
+msgstr ""
 
 #: app/Functions/Functions.php:1817
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr "правнучатый племянник/племянница"
+msgstr ""
 
 #: app/Functions/Functions.php:1825 app/Functions/Functions.php:1838
 #, php-format
