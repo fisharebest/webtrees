@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"PO-Revision-Date: 2019-11-09 18:04+0000\n"
 "Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
 "Language-Team: Persian <http://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fa/>\n"
@@ -132,8 +132,8 @@ msgstr[1] ""
 #, php-format
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] "مختصات نقشه محل تولد %1$s نفر وجود ندارد:   %2$s"
-msgstr[1] "مختصات نقشه محل تولد %1$s تا از افراد وجود ندارد:   %2$s"
+msgstr[0] "مختصات نقشه محل تولد %1$s نفر وجود ندارد: %2$s."
+msgstr[1] "مختصات نقشه محل تولد %1$s تا از افراد وجود ندارد: %2$s."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:192
@@ -233,10 +233,11 @@ msgid "%s and their descendants"
 msgstr "%s و زادگان(اولاد) آنها"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5904
-#, php-format
+#, fuzzy, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
 msgstr[0] "%s کاربر ناشناس وارد شده اند"
+msgstr[1] "%s کاربر ناشناس وارد شده اند"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4454 app/Stats.php:4458
 #, php-format
@@ -20106,7 +20107,7 @@ msgstr ""
 #: admin_pgv_to_wt.php:110
 #, php-format
 msgid "webtrees cannot connect to the PhpGedView database: %s."
-msgstr "سیستم نمی تواند به دیتابیس موردنظر متصل شود : %s"
+msgstr "سیستم نمی تواند به دیتابیس موردنظر متصل شود : %s."
 
 #: message.php:40 message.php:260 message.php:320
 msgid "webtrees message"
@@ -20197,10 +20198,11 @@ msgstr ""
 
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:169 search_advanced.php:170 search_advanced.php:171
-#, php-format
+#, fuzzy, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
 msgstr[0] "±%s سال"
+msgstr[1] "±%s سال"
 
 #: app/Individual.php:1218
 #, php-format
