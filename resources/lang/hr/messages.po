@@ -15999,7 +15999,7 @@ msgid "You can make it easier to search for married women by recording their mar
 msgstr "Lakše ćete pronaći udanu ženu upisujući njezino vjenčano ime. Međutim, ne uzima svaka žena muževo prezime, pa pazite da ne unesete netočne informacije u bazu podataka."
 
 #: resources/views/modules/privacy-policy/page.phtml:48
-msgid "You can opt out of tracking by setting the ”Do Not Track“ header in your browser preferences."
+msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:17

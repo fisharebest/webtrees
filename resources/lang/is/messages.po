@@ -15999,7 +15999,7 @@ msgid "You can make it easier to search for married women by recording their mar
 msgstr "Þú getur auðveldað leitina að giftum konum með því að skrá giftingarnöfn þeirra. Allar konur taka þó ekki eftirnöfn eiginmanna sinna, svo þú skalt varast að setja inn rangar upplýsingar inn í gagnagrunninn þinn."
 
 #: resources/views/modules/privacy-policy/page.phtml:48
-msgid "You can opt out of tracking by setting the ”Do Not Track“ header in your browser preferences."
+msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:17

@@ -15998,7 +15998,7 @@ msgid "You can make it easier to search for married women by recording their mar
 msgstr "Вы можете облегчить поиск замужних женщин, делая запись их фамилии по мужу. Однако, не все женщины берут фамилию своего мужа, поэтому остерегайтесь введения неправильной информации в Вашу базу данных."
 
 #: resources/views/modules/privacy-policy/page.phtml:48
-msgid "You can opt out of tracking by setting the ”Do Not Track“ header in your browser preferences."
+msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:17
