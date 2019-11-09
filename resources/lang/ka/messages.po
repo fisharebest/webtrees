@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 09:32+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Georgian <http://translate.webtrees.net/projects/webtrees/webtrees/ka/>\nLanguage: ka\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 18:04+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Georgian <http://translate.webtrees.net/projects/webtrees/webtrees/ka/>\nLanguage: ka\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -1180,7 +1180,7 @@ msgstr "დამატება"
 #: app/Module/ClippingsCartModule.php:902
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr "საქაღალდეში გადატანა"
+msgstr ""
 
 #: resources/views/modules/relatives/family.phtml:205
 msgid "Add a brother or sister"
@@ -4522,7 +4522,7 @@ msgstr "ქალიშვილი"
 #: app/Module/InteractiveTree/TreeView.php:360
 #, php-format
 msgid "Daughter of %s"
-msgstr "дочь от"
+msgstr "дочь от %s"
 
 #: app/Module/CalendarMenuModule.php:90 resources/views/calendar-page.phtml:23
 msgid "Day"
@@ -9729,7 +9729,7 @@ msgstr ""
 #: app/Http/RequestHandlers/VerifyEmail.php:90
 #, php-format
 msgid "New user at %s"
-msgstr "ახალი ჩანაწერის ფაქტები"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:498
@@ -13661,7 +13661,7 @@ msgstr ""
 #: app/Http/Controllers/Admin/MediaController.php:588
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr "მედიაფაილის ამორჩევა."
+msgstr ""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:53
@@ -13678,17 +13678,17 @@ msgstr "ფაილი “%s” არ არსებობს."
 #: app/Http/RequestHandlers/DeletePath.php:79
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr "Файл %s не может быть скопирован из %s."
+msgstr ""
 
 #: app/Http/Controllers/Admin/UpgradeController.php:244
 #, php-format
 msgid "The folder %s has been created."
-msgstr "მედიაკატალოგი დაზიანებულია."
+msgstr ""
 
 #: app/Http/RequestHandlers/DeletePath.php:77
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr "მედიაკატალოგი დაზიანებულია."
+msgstr ""
 
 #: resources/views/admin/site-preferences.phtml:36
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -17212,19 +17212,19 @@ msgstr "%sх დიდი ბაბუა"
 #: app/Functions/Functions.php:1739
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr "მამიდა/ბიძია მამის მხრიდან"
+msgstr ""
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2189 app/Functions/Functions.php:2210
 #, php-format
 msgid "great ×%s grandchild"
-msgstr "пра-внук/внучка"
+msgstr ""
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2186 app/Functions/Functions.php:2206
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr "пра(х7) внучка"
+msgstr "пра(х%s) внучка"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2036 app/Functions/Functions.php:2048
@@ -17248,13 +17248,13 @@ msgstr "%sх დიდი ბებია"
 #: app/Functions/Functions.php:2098
 #, php-format
 msgid "great ×%s grandparent"
-msgstr "пра(х7)-дед/бабушка"
+msgstr "пра(х%s)-дед/бабушка"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2182 app/Functions/Functions.php:2201
 #, php-format
 msgid "great ×%s grandson"
-msgstr "правнук"
+msgstr ""
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1931 app/Functions/Functions.php:1947
@@ -17283,7 +17283,7 @@ msgstr "%sх დიდი ბაბუა"
 #: app/Functions/Functions.php:1938 app/Functions/Functions.php:1954
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr "правнучатый племянник/племянница"
+msgstr ""
 
 #: app/Functions/Functions.php:1920
 #, fuzzy, php-format
@@ -17295,13 +17295,13 @@ msgstr "правнучатый племянник/племянница"
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "правнучатый племянник/племянница"
+msgstr ""
 
 #: app/Functions/Functions.php:1927
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr "правнучатый племянник/племянница"
+msgstr ""
 
 #: app/Functions/Functions.php:1935 app/Functions/Functions.php:1951
 #, php-format
