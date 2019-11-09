@@ -1,23 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-10-28 14:09+0000\n"
-"PO-Revision-Date: 2019-10-03 09:57+0000\n"
-"Last-Translator: Sergio Livi <me@serl.it>\n"
-"Language-Team: Italian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/it/>\n"
-"Language: it\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
-"X-Language: it_IT\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-Language: Italian\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 18:04+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Italian <http://translate.webtrees.net/projects/webtrees/webtrees/it/>\nLanguage: it\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Language: it_IT\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: .\nX-Poedit-Language: Italian\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -15954,7 +15936,7 @@ msgstr "Non è possibile effettuare l’accesso in quanto il browser non accetta
 #: app/Http/Middleware/AuthMember.php:62
 #: app/Http/Middleware/AuthModerator.php:62
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "Non si ha il permesso di vedere questa pagina."
 
 #: resources/views/verify-success-page.phtml:9
 msgid "You have confirmed your request to become a registered user."
