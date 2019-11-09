@@ -1774,17 +1774,17 @@
     },
     {
         "name": "nesbot/carbon",
-        "version": "2.25.3",
-        "version_normalized": "2.25.3.0",
+        "version": "2.26.0",
+        "version_normalized": "2.26.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/briannesbitt/Carbon.git",
-            "reference": "d07636581795383e2fea2d711212d30f941f2039"
+            "reference": "e01ecc0b71168febb52ae1fdc1cfcc95428e604e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d07636581795383e2fea2d711212d30f941f2039",
-            "reference": "d07636581795383e2fea2d711212d30f941f2039",
+            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e01ecc0b71168febb52ae1fdc1cfcc95428e604e",
+            "reference": "e01ecc0b71168febb52ae1fdc1cfcc95428e604e",
             "shasum": ""
         },
         "require": {
@@ -1800,7 +1800,7 @@
             "phpunit/phpunit": "^7.5 || ^8.0",
             "squizlabs/php_codesniffer": "^3.4"
         },
-        "time": "2019-10-20T11:05:44+00:00",
+        "time": "2019-10-21T21:32:25+00:00",
         "bin": [
             "bin/carbon"
         ],
@@ -1907,17 +1907,17 @@
     },
     {
         "name": "nyholm/psr7-server",
-        "version": "0.4.0",
-        "version_normalized": "0.4.0.0",
+        "version": "0.4.1",
+        "version_normalized": "0.4.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/Nyholm/psr7-server.git",
-            "reference": "f1fa9e8685024a45c7b84844c14a48e49044b0a8"
+            "reference": "e6a526e9170e6e33a13efc2b61703ca476b7ea68"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Nyholm/psr7-server/zipball/f1fa9e8685024a45c7b84844c14a48e49044b0a8",
-            "reference": "f1fa9e8685024a45c7b84844c14a48e49044b0a8",
+            "url": "https://api.github.com/repos/Nyholm/psr7-server/zipball/e6a526e9170e6e33a13efc2b61703ca476b7ea68",
+            "reference": "e6a526e9170e6e33a13efc2b61703ca476b7ea68",
             "shasum": ""
         },
         "require": {
@@ -1930,7 +1930,7 @@
             "nyholm/psr7": "^1.0",
             "phpunit/phpunit": "^7.0"
         },
-        "time": "2019-11-04T10:44:02+00:00",
+        "time": "2019-11-05T20:36:33+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -3676,17 +3676,17 @@
     },
     {
         "name": "symfony/service-contracts",
-        "version": "v1.1.7",
-        "version_normalized": "1.1.7.0",
+        "version": "v1.1.8",
+        "version_normalized": "1.1.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/service-contracts.git",
-            "reference": "ffcde9615dc5bb4825b9f6aed07716f1f57faae0"
+            "reference": "ffc7f5692092df31515df2a5ecf3b7302b3ddacf"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/service-contracts/zipball/ffcde9615dc5bb4825b9f6aed07716f1f57faae0",
-            "reference": "ffcde9615dc5bb4825b9f6aed07716f1f57faae0",
+            "url": "https://api.github.com/repos/symfony/service-contracts/zipball/ffc7f5692092df31515df2a5ecf3b7302b3ddacf",
+            "reference": "ffc7f5692092df31515df2a5ecf3b7302b3ddacf",
             "shasum": ""
         },
         "require": {
@@ -3696,7 +3696,7 @@
         "suggest": {
             "symfony/service-implementation": ""
         },
-        "time": "2019-09-17T11:12:18+00:00",
+        "time": "2019-10-14T12:27:06+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

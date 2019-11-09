@@ -2371,7 +2371,7 @@ trait Date
      */
     public static function singularUnit(string $unit): string
     {
-        $unit = rtrim(strtolower($unit), 's');
+        $unit = rtrim(mb_strtolower($unit), 's');
 
         if ($unit === 'centurie') {
             return 'century';

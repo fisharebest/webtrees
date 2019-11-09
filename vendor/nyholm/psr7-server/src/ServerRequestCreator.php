@@ -242,14 +242,18 @@ final class ServerRequestCreator implements ServerRequestCreatorInterface
     {
         $uri = $this->uriFactory->createUri('');
 
-        if (isset($server['REQUEST_SCHEME'])) {
-            $uri = $uri->withScheme($server['REQUEST_SCHEME']);
-        } elseif (isset($server['HTTPS'])) {
-            $uri = $uri->withScheme('on' === $server['HTTPS'] ? 'https' : 'http');
-        }
+        if (isset($server['HTTP_X_FORWARDED_PROTO'])) {
+            $uri = $uri->withScheme($server['HTTP_X_FORWARDED_PROTO']);
+        } else {
+            if (isset($server['REQUEST_SCHEME'])) {
+                $uri = $uri->withScheme($server['REQUEST_SCHEME']);
+            } elseif (isset($server['HTTPS'])) {
+                $uri = $uri->withScheme('on' === $server['HTTPS'] ? 'https' : 'http');
+            }
 
-        if (isset($server['SERVER_PORT'])) {
-            $uri = $uri->withPort($server['SERVER_PORT']);
+            if (isset($server['SERVER_PORT'])) {
+                $uri = $uri->withPort($server['SERVER_PORT']);
+            }
         }
 
         if (isset($server['HTTP_HOST'])) {

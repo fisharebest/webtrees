@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.4.1
+
+### Fixed
+
+- Support for ´HTTP_X_FORWARDED_PROTO´
+
 ## 0.4.0
 
 ### Fixed

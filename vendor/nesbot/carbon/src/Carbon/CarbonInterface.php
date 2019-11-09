@@ -2057,6 +2057,15 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public static function getTestNow();
 
     /**
+     * Return a format from H:i to H:i:s.u according to given unit precision.
+     *
+     * @param string $unitPrecision "minute", "second", "millisecond" or "microsecond"
+     *
+     * @return string
+     */
+    public static function getTimeFormatByPrecision($unitPrecision);
+
+    /**
      * Get the translation of the current week day name (with context for languages with multiple forms).
      *
      * @param string|null $context      whole format string
@@ -4162,11 +4171,15 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * @example
      * ```
      * echo Carbon::now()->toDateTimeLocalString();
+     * echo "\n";
+     * echo Carbon::now()->toDateTimeLocalString('minute'); // You can specify precision among: minute, second, millisecond and microsecond
      * ```
+     *
+     * @param string $unitPrecision
      *
      * @return string
      */
-    public function toDateTimeLocalString();
+    public function toDateTimeLocalString($unitPrecision = 'second');
 
     /**
      * Format the instance as date and time
@@ -4176,9 +4189,11 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * echo Carbon::now()->toDateTimeString();
      * ```
      *
+     * @param string $unitPrecision
+     *
      * @return string
      */
-    public function toDateTimeString();
+    public function toDateTimeString($unitPrecision = 'second');
 
     /**
      * Format the instance with day, date and time
@@ -4247,9 +4262,11 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * echo Carbon::now()->toIso8601ZuluString();
      * ```
      *
+     * @param string $unitPrecision
+     *
      * @return string
      */
-    public function toIso8601ZuluString();
+    public function toIso8601ZuluString($unitPrecision = 'second');
 
     /**
      * Return the ISO-8601 string (ex: 1977-04-22T06:00:00Z) with UTC timezone.
@@ -4439,9 +4456,11 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * echo Carbon::now()->toTimeString();
      * ```
      *
+     * @param string $unitPrecision
+     *
      * @return string
      */
-    public function toTimeString();
+    public function toTimeString($unitPrecision = 'second');
 
     /**
      * Format the instance as W3C
