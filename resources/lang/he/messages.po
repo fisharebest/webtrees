@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-10-28 14:09+0000\n"
-"PO-Revision-Date: 2019-09-25 17:40+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Hebrew <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/he/>\n"
-"Language: he\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 09:32+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Hebrew <http://translate.webtrees.net/projects/webtrees/webtrees/he/>\nLanguage: he\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -3248,7 +3232,7 @@ msgstr "כברירת מחדל, SMTP משתמש בפורט‏ 25."
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:45
 msgid "CKEditor™"
-msgstr "CKEditor™"
+msgstr "CKEditor™‎"
 
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:82
@@ -10338,7 +10322,7 @@ msgstr "אופס! webtrees לא הצליחה ליצור קבצים בתיקיי�
 #: app/Functions/FunctionsPrint.php:380 app/Functions/FunctionsPrint.php:382
 #: resources/views/admin/map-provider.phtml:21
 msgid "OpenStreetMap™"
-msgstr "OpenStreetMap™"
+msgstr "OpenStreetMap™‎"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:522
@@ -10965,7 +10949,7 @@ msgstr "מיקוד"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:41
 msgid "Powered by webtrees™"
-msgstr "מופעל על ידי ™webtrees"
+msgstr "מופעל על ידי ™‎webtrees"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:151
