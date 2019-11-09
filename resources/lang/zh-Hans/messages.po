@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 09:32+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Chinese (Simplified) <http://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 18:04+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Chinese (Simplified) <http://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -7741,7 +7741,7 @@ msgstr "沙漏图"
 #: app/Module/HourglassChartModule.php:131
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr ""
+msgstr "%s 的沙漏圖"
 
 #: resources/views/modules/census-assistant.phtml:109
 msgid "Household"
@@ -17317,7 +17317,7 @@ msgstr "因你的浏览器不支持COOKIES，所以无法登录。"
 #: app/Http/Middleware/AuthMember.php:62
 #: app/Http/Middleware/AuthModerator.php:62
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "这个记录不存在或您无权查看它。"
 
 #: resources/views/verify-success-page.phtml:9
 msgid "You have confirmed your request to become a registered user."
