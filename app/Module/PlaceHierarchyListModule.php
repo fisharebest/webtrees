@@ -53,7 +53,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
      */
     public function description(): string
     {
-        /* I18N: Description of the “PlaceHierarchyListModule” module */
+        /* I18N: Description of the “Place hierarchy” module */
         return I18N::translate('The place hierarchy.');
     }
 

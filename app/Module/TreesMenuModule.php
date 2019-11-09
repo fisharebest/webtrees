@@ -66,7 +66,7 @@ class TreesMenuModule extends AbstractModule implements ModuleMenuInterface
      */
     public function description(): string
     {
-        /* I18N: Description of the “Reports” module */
+        /* I18N: Description of the “Family trees” module */
         return I18N::translate('The family trees menu.');
     }
 

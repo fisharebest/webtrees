@@ -48,7 +48,7 @@ class CalendarMenuModule extends AbstractModule implements ModuleMenuInterface
      */
     public function description(): string
     {
-        /* I18N: Description of the “Reports” module */
+        /* I18N: Description of the “Calendar” module */
         return I18N::translate('The calendar menu.');
     }
 

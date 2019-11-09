@@ -67,7 +67,7 @@ class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
      */
     public function description(): string
     {
-        /* I18N: Description of the “Reports” module */
+        /* I18N: Description of the “Charts” module */
         return I18N::translate('The charts menu.');
     }
 

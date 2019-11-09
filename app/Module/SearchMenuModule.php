@@ -55,7 +55,7 @@ class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
      */
     public function description(): string
     {
-        /* I18N: Description of the “Reports” module */
+        /* I18N: Description of the “Search” module */
         return I18N::translate('The search menu.');
     }
 

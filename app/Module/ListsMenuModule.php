@@ -65,7 +65,7 @@ class ListsMenuModule extends AbstractModule implements ModuleMenuInterface
      */
     public function description(): string
     {
-        /* I18N: Description of the “Reports” module */
+        /* I18N: Description of the “Lists” module */
         return I18N::translate('The lists menu.');
     }
 
