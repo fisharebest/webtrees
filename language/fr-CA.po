@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"PO-Revision-Date: 2019-11-09 18:04+0000\n"
 "Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
 "Language-Team: French (Canada) <http://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/fr_CA/>\n"
@@ -9825,7 +9825,7 @@ msgstr "Aucune erreur trouvée."
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] "Aucun événement dans le prochain jour."
+msgstr[0] "Aucun événement dans le prochain %s jour."
 msgstr[1] "Aucun événement dans les %s prochains jours."
 
 #: app/Functions/FunctionsPrintLists.php:1710
