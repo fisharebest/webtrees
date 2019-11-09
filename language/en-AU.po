@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"PO-Revision-Date: 2019-11-09 18:04+0000\n"
 "Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
 "Language-Team: English (Australia) <http://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/en_AU/>\n"
@@ -6324,7 +6324,7 @@ msgstr "Find an individual"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Find any relationship"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6337,7 +6337,7 @@ msgstr "Find other relationships"
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Find relationships via ancestors"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
@@ -6345,7 +6345,7 @@ msgstr "Find the closest relationships"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "Find unrelated individuals"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
@@ -6415,7 +6415,7 @@ msgstr "Folder name on server"
 
 #: login.php:342
 msgid "Follow this link to verify your email address."
-msgstr "Follow this link to verify your email address."
+msgstr "Follow this link to verify your e-mail address."
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -12080,7 +12080,7 @@ msgstr "Sender name"
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:96
 msgid "Sending email"
-msgstr "Sending email"
+msgstr "Sending e-mail"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:428
@@ -13814,7 +13814,9 @@ msgstr "The new files are currently located in the folder %s."
 
 #: admin_site_config.php:496
 msgid "The new user will be asked to confirm their email address before the account is created."
-msgstr "The new user will be asked to confirm their email address before the account is created."
+msgstr ""
+"The new user will be asked to confirm their e-mail address before the "
+"account is created."
 
 #: help_text.php:298
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -14108,7 +14110,7 @@ msgstr "Thermidor"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "These groups of individuals are not related to %s."
 
 #: admin.php:578
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -14130,7 +14132,10 @@ msgstr "This account has not been verified. Please check your e-mail for a verif
 
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
+msgstr ""
+"This block will show editors a list of records with pending changes that "
+"need to be reviewed by a moderator. It also generates daily e-mails to "
+"moderators whenever pending changes exist."
 
 #: setup.php:351 setup.php:362
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
@@ -14425,7 +14430,9 @@ msgstr "This must be at least six characters long. It is case-sensitive."
 #. I18N: Help text for the “Sender name” site configuration setting
 #: admin_site_config.php:340
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "This name is used in the ‘From’ field, when sending automatic emails from this server."
+msgstr ""
+"This name is used in the ‘From’ field, when sending automatic e-mails from "
+"this server."
 
 #: note.php:61
 msgid "This note does not exist or you do not have permission to view it."
@@ -15360,7 +15367,7 @@ msgstr "Use password"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Use sendmail to send messages"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
@@ -15756,7 +15763,11 @@ msgstr "When a record is edited, the user and timestamp are recorded. Sometimes 
 
 #: admin_users.php:388
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
+msgstr ""
+"When a user registers for an account, an e-mail is sent to their e-mail "
+"address with a verification link. When they follow this link, we know the e-"
+"mail address is correct, and the ‘e-mail verified’ option is selected "
+"automatically."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -16037,7 +16048,7 @@ msgstr "You may use HTML to format the answer and to add links to other websites
 
 #: admin_site_config.php:441
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr "You must also enable “less secure applications” in your Google account."
+msgstr "You must also enable ‘less secure applications’ in your Google account."
 
 #: setup.php:215
 msgid "You must change this before you can continue."
