@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2016-04-19 11:48+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Occitan <https://translate.webtrees.net/projects/webtrees/webtrees/oc/>\n"
+"PO-Revision-Date: 2019-11-09 18:04+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"Language-Team: Occitan <http://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/oc/>\n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -114,8 +115,8 @@ msgstr "%1$s a pas de ligam damb %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "Lo fichièr a estat extrach en %2$s segondes."
-msgstr[1] "%1$s an estat extrachs en %2$s segondes."
+msgstr[0] "%1$s fichièr a estat extrach en %2$s segondes."
+msgstr[1] "%1$s fichièr an estat extrachs en %2$s segondes."
 
 #: app/Module/GoogleMapsModule.php:838
 #, php-format
@@ -297,7 +298,7 @@ msgstr[1] "%s personas"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] "Una persona a estat actulisada."
+msgstr[0] "%s persona a estat actulisada."
 msgstr[1] "%s personas an estat actulisadas."
 
 #: app/Module/GoogleMapsModule.php:845
@@ -15100,7 +15101,7 @@ msgstr ""
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "Lo prenom mai balhat"
+msgstr[0] "Lo %s prenom mai balhat"
 msgstr[1] "Los %s prenoms mai balhats"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
@@ -15108,7 +15109,7 @@ msgstr[1] "Los %s prenoms mai balhats"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "Lo nom de familha mai corrent"
+msgstr[0] "Lo %s nom de familha mai corrent"
 msgstr[1] "Los %s noms de familha mai corrents"
 
 #. I18N: i.e. most popular given name.
