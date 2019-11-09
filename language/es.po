@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-05-10 06:26+0000\n"
-"Last-Translator: Alejandro Cavazos <alexcavazos67@gmail.com>\n"
-"Language-Team: Spanish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/es/>\n"
+"PO-Revision-Date: 2019-11-09 18:04+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"Language-Team: Spanish <http://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Poedit-Language: Spanish\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -19250,19 +19251,19 @@ msgstr "rechazado"
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:144
 msgid "religious name"
-msgstr "﻿﻿nombre religioso"
+msgstr "nombre religioso"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:141
 msgctxt "FEMALE"
 msgid "religious name"
-msgstr "﻿﻿nombre religioso"
+msgstr "nombre religioso"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:138
 msgctxt "MALE"
 msgid "religious name"
-msgstr "﻿﻿nombre religioso"
+msgstr "nombre religioso"
 
 #. I18N: A button label.
 #: search.php:217
