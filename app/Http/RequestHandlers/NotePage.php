@@ -88,6 +88,7 @@ class NotePage implements RequestHandlerInterface
             'sources'         => $note->linkedSources('NOTE'),
             'text'            => Filter::formatText($note->getNote(), $tree),
             'title'           => $note->fullName(),
+            'tree'            => $tree,
         ]);
     }
 
