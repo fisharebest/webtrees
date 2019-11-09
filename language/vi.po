@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"PO-Revision-Date: 2019-11-09 18:04+0000\n"
 "Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
 "Language-Team: Vietnamese <http://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/vi/>\n"
@@ -13853,7 +13853,7 @@ msgstr "Các tùy chọn cho các cây gia đình mới đã được cập nh�
 #: app/Module/RelationshipsChartModule.php:218
 #, php-format
 msgid "The preferences for the chart “%s” have been updated."
-msgstr "Tùy chọn cho biểu đồ “% s 1” đã được cập nhật."
+msgstr "Tùy chọn cho biểu đồ “%s” đã được cập nhật."
 
 #: admin_trees_config.php:178 admin_trees_config.php:301
 #, php-format
