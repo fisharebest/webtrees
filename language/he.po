@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2019-08-23 14:05+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Hebrew <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/he/>\n"
+"PO-Revision-Date: 2019-11-09 09:33+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"Language-Team: Hebrew <http://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -3885,7 +3886,7 @@ msgstr "כברירת מחדל, השרת מאפשר לסקריפטים להשתמ
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:27 app/Module/CkeditorModule.php:42
 msgid "CKEditor™"
-msgstr "CKEditor™"
+msgstr "CKEditor™‎"
 
 #: admin_trees_manage.php:367 resources/views/admin/trees.phtml:37
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -12364,7 +12365,7 @@ msgstr "אופס! webtrees לא הצליחה ליצור קבצים בתיקיי�
 #: app/Functions/FunctionsPrint.php:374
 #: resources/views/admin/map-provider.phtml:16
 msgid "OpenStreetMap™"
-msgstr "OpenStreetMap™"
+msgstr "OpenStreetMap™‎"
 
 #: app/Module/GoogleMapsModule.php:373
 msgid "Optional prefixes and suffixes"
