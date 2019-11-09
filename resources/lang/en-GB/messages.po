@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-09 18:45+0000\n"
-"PO-Revision-Date: 2019-11-09 18:04+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: English (United Kingdom) <http://translate.webtrees.net/projects/webtrees/webtrees/en_GB/>\n"
-"Language: en-GB\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-09 18:45+0000\nPO-Revision-Date: 2019-11-09 21:43+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: English (United Kingdom) <http://translate.webtrees.net/projects/webtrees/webtrees/en_GB/>\nLanguage: en-GB\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -1369,7 +1357,7 @@ msgstr "Add from clipboard"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
-msgstr ""
+msgstr "Add historic events to an individual’s page."
 
 #: resources/views/modules/lifespans-chart/page.phtml:20
 msgid "Add individuals"
@@ -4311,7 +4299,7 @@ msgstr "Data"
 
 #: resources/views/modules/privacy-policy/page.phtml:53
 msgid "Data controller"
-msgstr ""
+msgstr "Data controller"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
@@ -7289,11 +7277,11 @@ msgstr "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "If the thumbnail image is a custom image, you should add it to the media object."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:18
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-msgstr ""
+msgstr "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:78
@@ -7342,7 +7330,7 @@ msgstr "If you didn’t request an account, you can just delete this message."
 
 #: resources/views/admin/site-mail.phtml:50
 msgid "If you do not use two-factor authentication, enable <a href=\"https://www.google.com/settings/security/lesssecureapps\">less secure applications</a> and use your Google password."
-msgstr ""
+msgstr "If you do not use two-factor authentication, enable <a href=\"https://www.google.com/settings/security/lesssecureapps\">less secure applications</a> and use your Google password."
 
 #: resources/views/modals/media-file-fields.phtml:62
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
@@ -7376,7 +7364,7 @@ msgstr "If you use one of the following tracking and analytics services, webtree
 
 #: resources/views/admin/site-mail.phtml:48
 msgid "If you use two-factor authentication, create an <a href=\"https://myaccount.google.com/apppasswords\">app password</a>."
-msgstr ""
+msgstr "If you use two-factor authentication, create an <a href=\"https://myaccount.google.com/apppasswords\">app password</a>."
 
 #: app/GedcomTag.php:2103 app/Http/Controllers/Admin/MediaController.php:347
 msgid "Image dimensions"
@@ -7642,8 +7630,9 @@ msgid "Informant"
 msgstr "Informant"
 
 #: resources/views/admin/site-mail.phtml:34
+#, fuzzy
 msgid "Instructions for Google mail"
-msgstr ""
+msgstr "Instructions for Google mail"
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:244 app/Module/InteractiveTreeModule.php:52
@@ -10643,7 +10632,7 @@ msgstr "Permanently delete these records?"
 
 #: resources/views/modules/privacy-policy/page.phtml:5
 msgid "Personal data"
-msgstr ""
+msgstr "Personal data"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:543
@@ -12113,7 +12102,7 @@ msgstr "Send a message to users who have not signed in for 6 months"
 
 #: resources/views/admin/site-mail.phtml:239
 msgid "Send a test email using these settings"
-msgstr ""
+msgstr "Send a test email using these settings"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:10
@@ -12449,7 +12438,7 @@ msgstr "Show a download link in the media viewer"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
 msgid "Show a privacy policy."
-msgstr ""
+msgstr "Show a privacy policy."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:62
@@ -14160,7 +14149,7 @@ msgstr "Thermidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:23
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "These cookies are ‘essential’, and do not require consent."
 
 #: resources/views/admin/trees-unconnected.phtml:32
 #, php-format
@@ -14169,7 +14158,7 @@ msgstr "These groups of individuals are not related to %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:44
 msgid "These services may use cookies or other tracking technology."
-msgstr ""
+msgstr "These services may use cookies or other tracking technology."
 
 #: app/Http/RequestHandlers/LoginAction.php:134
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -14600,7 +14589,7 @@ msgstr "This repository has been edited. You should review the changes and then 
 
 #: resources/views/modules/privacy-policy/page.phtml:12
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr ""
+msgstr "This research is a ‘legitimate interest’ under article 6(f) of the EU General Data Protection Regulations."
 
 #: resources/views/admin/users-edit.phtml:250
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -14685,7 +14674,7 @@ msgstr "This website is down for maintenance. You should <a href=\"index.php\">t
 
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "This website is operated by the following individuals."
-msgstr ""
+msgstr "This website is operated by the following individuals."
 
 #: resources/views/layouts/error.phtml:9 resources/views/layouts/error.phtml:26
 #: resources/views/layouts/offline.phtml:58
@@ -14694,11 +14683,11 @@ msgstr "This website is temporarily unavailable"
 
 #: resources/views/modules/privacy-policy/page.phtml:9
 msgid "This website processes personal data for the purpose of historical and genealogical research."
-msgstr ""
+msgstr "This website processes personal data for the purpose of historical and genealogical research."
 
 #: resources/views/modules/privacy-policy/page.phtml:20
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
-msgstr ""
+msgstr "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
 
 #: resources/views/modules/privacy-policy/footer.phtml:15
 msgid "This website uses cookies to learn about visitor behavior."
@@ -14706,7 +14695,7 @@ msgstr "This website uses cookies to learn about visitor behaviour."
 
 #: resources/views/modules/privacy-policy/page.phtml:32
 msgid "This website uses third-party services to learn about visitor behavior."
-msgstr ""
+msgstr "This website uses third-party services to learn about visitor behavior."
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml:15
@@ -15961,7 +15950,7 @@ msgstr "You can make it easier to search for married women by recording their ma
 
 #: resources/views/modules/privacy-policy/page.phtml:48
 msgid "You can opt out of tracking by setting the ”Do Not Track“ header in your browser preferences."
-msgstr ""
+msgstr "You can opt out of tracking by setting the ‘Do Not Track’ header in your browser preferences."
 
 #: resources/views/admin/trees-renumber.phtml:17
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
