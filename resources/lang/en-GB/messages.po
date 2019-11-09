@@ -7651,7 +7651,6 @@ msgid "Informant"
 msgstr "Informant"
 
 #: resources/views/admin/site-mail.phtml:34
-#, fuzzy
 msgid "Instructions for Google mail"
 msgstr "Instructions for Google mail"
 
