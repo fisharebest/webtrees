@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: Chinese (Simplified) (webtrees)\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-10-28 14:09+0000\n"
-"PO-Revision-Date: 2019-11-06 12:20+0000\n"
-"Last-Translator: rui <xmlf@hotmail.com>\n"
-"Language-Team: Chinese (Simplified) <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/zh_Hans/>\n"
-"Language: zh-Hans\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.10\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-10-28 14:09+0000\nPO-Revision-Date: 2019-11-09 09:32+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Chinese (Simplified) <http://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -14728,7 +14712,7 @@ msgstr "文件“%s”不存在。"
 #: app/Services/ServerCheckService.php:184
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr "模块“%s”已被禁用。"
+msgstr "模块“%1$s”已被禁用。"
 
 # I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -14739,12 +14723,12 @@ msgstr "PHP临时目录不存在。"
 #: app/Services/ServerCheckService.php:145
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr "模块“%s”已被禁用。"
+msgstr "模块“%1$s”已被禁用。"
 
 #: app/Services/ServerCheckService.php:149
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr "模块“%s”已被启用。"
+msgstr "模块“%1$s”已被启用。"
 
 #: resources/views/emails/approve-user-html.phtml:9
 #: resources/views/emails/approve-user-text.phtml:4
