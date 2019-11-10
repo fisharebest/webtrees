@@ -108,14 +108,20 @@ use Fisharebest\Webtrees\View;
     document.querySelector('#census-assistant-class').value = census;
     document.querySelector('#census-assistant-title').value = censusYear + ' ' + censusPlace + ' - <?= I18N::translate('Census transcript') ?> - <?= strip_tags($individual->fullName()) ?> - <?= I18N::translate('Household') ?>';
 
-    fetch('<?= route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusHeader', 'tree' => $individual->tree()->name()]) ?>&census=' + census)
-      .then(function (response) {
-        return response.text();
-      })
-      .then(function (text) {
+    let formData = new FormData();
+    formData.append('census', census);
+    formData.append('csrf', document.querySelector('meta[name=csrf]').content);
+
+    fetch(<?= json_encode(route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusHeader', 'tree' => $individual->tree()->name()])) ?>, {
+        credentials: 'same-origin',
+        body: formData,
+        method: 'POST',
+    })
+    .then(response => response.text())
+    .then(function (text) {
         document.querySelector('#census-assistant-table thead').innerHTML = text;
         document.querySelector('#census-assistant-table tbody').innerHTML = '';
-      });
+    });
   }
 
   // When the census assistant is activated, show the input fields
@@ -138,13 +144,21 @@ use Fisharebest\Webtrees\View;
     var headTd         = document.querySelector('#census-assistant-table td');
     var head           = headTd === null ? xref : headTd.innerHTML;
 
-    fetch('<?= route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual', 'tree' => $individual->tree()->name()]) ?>&census=' + encodeURIComponent(census) + '&xref=' + encodeURIComponent(xref) + '&head=' + encodeURIComponent(head), {credentials: 'same-origin'})
-      .then(function (response) {
-        return response.text();
-      })
-      .then(function (text) {
+    let formData = new FormData();
+    formData.append('census', census);
+    formData.append('csrf', document.querySelector('meta[name=csrf]').content);
+    formData.append('head', head);
+    formData.append('xref', xref);
+
+    fetch(<?= json_encode(route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual', 'tree' => $individual->tree()->name()])) ?>, {
+        credentials: 'same-origin',
+        body: formData,
+        method: 'POST'
+    })
+    .then(response => response.text())
+    .then(function (text) {
         document.querySelector('#census-assistant-table tbody').innerHTML += text;
-      });
+    });
 
     return false;
   }
@@ -156,13 +170,21 @@ use Fisharebest\Webtrees\View;
     var indi_selector  = document.querySelector('#census-assistant-individual');
     var xref           = indi_selector.options[indi_selector.selectedIndex].value;
 
-    fetch('<?= route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual', 'tree' => $individual->tree()->name()]) ?>&census=' + encodeURIComponent(census) + '&xref=' + encodeURIComponent(xref) + '&head=' + encodeURIComponent(xref), {credentials: 'same-origin'})
-      .then(function (response) {
-        return response.text();
-      })
-      .then(function (text) {
+    let formData = new FormData();
+    formData.append('census', census);
+    formData.append('csrf', document.querySelector('meta[name=csrf]').content);
+    formData.append('head', xref);
+    formData.append('xref', xref);
+
+    fetch(<?= json_encode(route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual', 'tree' => $individual->tree()->name()])) ?> , {
+        credentials: 'same-origin',
+        body: formData,
+        method: 'POST',
+    })
+    .then(response => response.text())
+    .then(function (text) {
         document.querySelector('#census-assistant-table tbody').innerHTML = text;
-      });
+    });
 
     return false;
   }
