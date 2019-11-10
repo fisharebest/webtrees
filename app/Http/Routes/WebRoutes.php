@@ -437,8 +437,8 @@ class WebRoutes
 
             $router->get(PasswordRequestPage::class, '/password-request', PasswordRequestPage::class);
             $router->post(PasswordRequestAction::class, '/password-request', PasswordRequestAction::class);
-            $router->get(RegisterPage::class, '/register', RegisterPage::class);
-            $router->post(RegisterAction::class, '/register', RegisterAction::class);
+            $router->get(RegisterPage::class, '/register{/tree}', RegisterPage::class);
+            $router->post(RegisterAction::class, '/register{/tree}', RegisterAction::class);
         });
 
         // Public routes.

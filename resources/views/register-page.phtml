@@ -25,9 +25,8 @@ use Fisharebest\Webtrees\View;
     </div>
 <?php endif ?>
 
-<form method="post" action="<?= e(route(RegisterAction::class)) ?>" autocomplete="off" class="wt-page-options wt-page-options-register">
+<form method="post" action="<?= e(route(RegisterAction::class, ['tree' => $tree instanceof Tree ? $tree->name() : null])) ?>" autocomplete="off" class="wt-page-options wt-page-options-register">
     <?= csrf_field() ?>
-    <input name="tree" type="hidden" value="<?= $tree instanceof Tree ? e($tree->name()) : '' ?>">
 
     <div class="form-group row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="realname">

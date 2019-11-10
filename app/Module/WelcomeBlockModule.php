@@ -110,7 +110,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
 
         if (Site::getPreference('USE_REGISTRATION_MODULE') === '1' && !Auth::check()) {
             $links[] = [
-                'url'   => route(RegisterPage::class),
+                'url'   => route(RegisterPage::class, ['tree' => $tree->name()]),
                 'title' => I18N::translate('Request a new user account'),
                 'icon'  => 'icon-user_add',
             ];

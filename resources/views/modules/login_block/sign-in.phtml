@@ -4,6 +4,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\LoginAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\PasswordRequestAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\RegisterPage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 
 ?>
@@ -38,7 +39,7 @@ use Fisharebest\Webtrees\View;
 </form>
 
 <?php if ($allow_register) : ?>
-    <a class="btn btn-link" href="<?= e(route(RegisterPage::class)) ?>">
+    <a class="btn btn-link" href="<?= e(route(RegisterPage::class, ['tree' => $tree->name()])) ?>">
         <?= I18N::translate('Request a new user account') ?>
     </a>
 <?php endif ?>

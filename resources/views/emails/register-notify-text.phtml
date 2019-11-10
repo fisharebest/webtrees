@@ -1,12 +1,18 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
 <?= I18N::translate('Hello administrator…') ?>
 
-<?= /* I18N: %s is a server name/URL */I18N::translate('A prospective user has registered with webtrees at %s.', $base_url) ?>
+<?= /* I18N: %s is a server name/URL */
+I18N::translate('A prospective user has registered with webtrees at %s.', $base_url) ?>
 
 <?= I18N::translate('Username') ?> - <?= e($user->userName()) ?>
 <?= I18N::translate('Real name') ?> - <?= e($user->realName()) ?>
 <?= I18N::translate('Email address') ?> - <?= e($user->email()) ?>
 <?= I18N::translate('Comments') ?> - <?= e($comments) ?>
+<?= I18N::translate('Tree') ?> - <?= e($tree ? $tree->name() : '') ?>
 
 <?= I18N::translate('The user has been sent an email with the information necessary to confirm the access request.') ?>
 

@@ -40,6 +40,7 @@ use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function assert;
+use function view;
 
 /**
  * Process a user registration.
@@ -80,14 +81,15 @@ class RegisterAction extends AbstractBaseController
         $locale = $request->getAttribute('locale');
         assert($locale instanceof LocaleInterface);
 
+        $tree = $request->getAttribute('tree');
+
         $this->checkRegistrationAllowed();
 
-        $tree     = $request->getAttribute('tree');
-        $comments = $request->getParsedBody()['comments'] ?? '';
-        $email    = $request->getParsedBody()['email'] ?? '';
-        $password = $request->getParsedBody()['password'] ?? '';
-        $realname = $request->getParsedBody()['realname'] ?? '';
-        $username = $request->getParsedBody()['username'] ?? '';
+        $comments  = $request->getParsedBody()['comments'] ?? '';
+        $email     = $request->getParsedBody()['email'] ?? '';
+        $password  = $request->getParsedBody()['password'] ?? '';
+        $realname  = $request->getParsedBody()['realname'] ?? '';
+        $username  = $request->getParsedBody()['username'] ?? '';
 
         try {
             $this->doValidateRegistration($request, $username, $email, $realname, $comments, $password);
@@ -138,14 +140,29 @@ class RegisterAction extends AbstractBaseController
             /* I18N: %s is a server name/URL */
             $subject = I18N::translate('New registration at %s', $base_url);
 
+            $body_text = view('emails/register-notify-text', [
+                'user'     => $user,
+                'comments' => $comments,
+                'base_url' => $base_url,
+                'tree'     => $tree,
+            ]);
+
+            $body_html = view('emails/register-notify-html', [
+                'user'     => $user,
+                'comments' => $comments,
+                'base_url' => $base_url,
+                'tree'     => $tree,
+            ]);
+
+
             /* I18N: %s is a server name/URL */
             $this->email_service->send(
                 new SiteUser(),
                 $administrator,
                 new NoReplyUser(),
                 $subject,
-                view('emails/register-notify-text', ['user' => $user, 'comments' => $comments, 'base_url' => $base_url]),
-                view('emails/register-notify-html', ['user' => $user, 'comments' => $comments, 'base_url' => $base_url])
+                $body_text,
+                $body_html
             );
 
             $mail1_method = $administrator->getPreference(User::PREF_CONTACT_METHOD);
@@ -155,7 +172,7 @@ class RegisterAction extends AbstractBaseController
                     'ip_address' => $request->getAttribute('client-ip'),
                     'user_id'    => $administrator->id(),
                     'subject'    => $subject,
-                    'body'       => view('emails/register-notify-text', ['user' => $user, 'comments' => $comments, 'base_url' => $base_url]),
+                    'body'       => $body_text,
                 ]);
             }
         }
@@ -164,6 +181,7 @@ class RegisterAction extends AbstractBaseController
 
         return $this->viewResponse('register-success-page', [
             'title' => $title,
+            'tree'  => $tree,
             'user'  => $user,
         ]);
     }
