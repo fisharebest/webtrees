@@ -157,7 +157,7 @@ class LocationControllerTest extends TestCase
         $tree           = $tree_service->create('name', 'title');
         $controller     = new LocationController($gedcom_service, $tree_service);
         $request        = self::createRequest()
-            ->withAttribute('tree', $tree);
+            ->withParsedBody(['ged' => $tree->name()]);
         $response = $controller->importLocationsFromTree($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());

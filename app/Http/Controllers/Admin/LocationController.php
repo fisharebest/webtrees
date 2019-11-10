@@ -49,8 +49,8 @@ use function fclose;
 use function fputcsv;
 use function implode;
 use function rewind;
-use function route;
 use function round;
+use function route;
 use function stream_get_contents;
 
 use const UPLOAD_ERR_OK;
@@ -737,7 +737,8 @@ class LocationController extends AbstractAdminController
      */
     public function importLocationsFromTree(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
+        $ged  = $request->getParsedBody()['ged'] ?? '';
+        $tree = $this->tree_service->all()->get($ged);
         assert($tree instanceof Tree);
 
         // Get all the places from the places table ...
