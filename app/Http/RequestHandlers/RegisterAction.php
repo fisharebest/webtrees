@@ -127,8 +127,8 @@ class RegisterAction extends AbstractBaseController
             $user,
             $reply_to,
             I18N::translate('Your registration at %s', $base_url),
-            view('emails/register-user-text', ['user' => $user, 'base_url' => $base_url]),
-            view('emails/register-user-html', ['user' => $user, 'base_url' => $base_url])
+            view('emails/register-user-text', ['user' => $user, 'base_url' => $base_url, 'tree' => $tree]),
+            view('emails/register-user-html', ['user' => $user, 'base_url' => $base_url, 'tree' => $tree])
         );
 
         // Tell the administrators about the registration.
