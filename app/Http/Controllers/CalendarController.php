@@ -372,11 +372,14 @@ class CalendarController extends AbstractBaseController
         switch ($view) {
             case 'year':
             case 'day':
-                echo '<table class="w-100"><tr>';
-                echo '<td class="descriptionbox center"><i class="icon-indis"></i>', I18N::translate('Individuals'), '</td>';
-                echo '<td class="descriptionbox center"><i class="icon-cfamily"></i>', I18N::translate('Families'), '</td>';
-                echo '</tr><tr>';
-                echo '<td class="optionbox wrap">';
+                echo '<table class="w-100"><tr><td class="wt-page-options-label text-center w-50">';
+                echo view('icons/individual');
+                echo I18N::plural('%s individual', '%s individuals', count($indis), I18N::number(count($indis)));
+                echo '</td><td class="wt-page-options-label text-center w-50">';
+                echo view('icons/family');
+            echo I18N::plural('%s family', '%s families', count($fams), I18N::number(count($fams)));
+                echo '</td></tr><tr>';
+                echo '<td class="wt-page-options-value">';
 
                 $content = $this->calendarListText($indis, '<li>', '</li>', $tree);
                 if ($content) {
@@ -384,7 +387,7 @@ class CalendarController extends AbstractBaseController
                 }
 
                 echo '</td>';
-                echo '<td class="optionbox wrap">';
+                echo '<td class="wt-page-options-value">';
 
                 $content = $this->calendarListText($fams, '<li>', '</li>', $tree);
                 if ($content) {
@@ -392,9 +395,6 @@ class CalendarController extends AbstractBaseController
                 }
 
                 echo '</td>';
-                echo '</tr><tr>';
-                echo '<td class="descriptionbox">', I18N::translate('Total individuals: %s', I18N::number(count($indis))), '</td>';
-                echo '<td class="descriptionbox">', I18N::translate('Total families: %s', I18N::number(count($fams))), '</td>';
                 echo '</tr></table>';
 
                 break;
@@ -413,9 +413,9 @@ class CalendarController extends AbstractBaseController
                 for ($week_day = 0; $week_day < $days_in_week; ++$week_day) {
                     $day_name = $cal_date->dayNames(($week_day + $week_start) % $days_in_week);
                     if ($week_day == $weekend_start || $week_day == $weekend_end) {
-                        echo '<th class="descriptionbox weekend" width="' . (100 / $days_in_week) . '%">', $day_name, '</th>';
+                        echo '<th class="wt-page-options-label weekend" width="' . (100 / $days_in_week) . '%">', $day_name, '</th>';
                     } else {
-                        echo '<th class="descriptionbox" width="' . (100 / $days_in_week) . '%">', $day_name, '</th>';
+                        echo '<th class="wt-page-options-label" width="' . (100 / $days_in_week) . '%">', $day_name, '</th>';
                     }
                 }
                 echo '</tr>';
@@ -433,7 +433,7 @@ class CalendarController extends AbstractBaseController
                     if (($d + $cal_date->minimumJulianDay() - $week_start) % $days_in_week === 1) {
                         echo '<tr>';
                     }
-                    echo '<td class="optionbox wrap">';
+                    echo '<td class="wt-page-options-value">';
                     if ($d < 1 || $d > $days_in_month) {
                         if (count($cal_facts[0]) > 0) {
                             echo '<span class="cal_day">', I18N::translate('Day not set'), '</span><br style="clear: both;">';
