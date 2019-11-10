@@ -19,14 +19,14 @@ use Fisharebest\Webtrees\I18N;
     <div class="row">
         <div class="form-group col-xs-6 col-md-3">
             <label for="from">
-                <?= /* I18N: From date1 (To date2) */ I18N::translate('From') ?>
+                <?= I18N::translateContext('Start of date range', 'From') ?>
             </label>
             <input type="date" class="form-control" id="from" max="<?= e($latest) ?>" min="<?= e($earliest) ?>" name="from" value="<?= e($from) ?>" required>
         </div>
 
         <div class="form-group col-xs-6 col-md-3">
             <label for="to">
-                <?= /* I18N: (From date1) To date2 */ I18N::translate('To') ?>
+                <?= I18N::translateContext('End of date range', 'To') ?>
             </label>
             <input type="date" class="form-control" id="to" max="<?= e($latest) ?>" min="<?= e($earliest) ?>"  name="to" value="<?= e($to) ?>" required>
         </div>

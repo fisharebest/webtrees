@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-09 18:45+0000\n"
+"POT-Creation-Date: 2019-11-10 16:16+0000\n"
 "PO-Revision-Date: 2019-11-09 09:32+0000\n"
 "Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
 "Language-Team: Hungarian <http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -230,6 +230,13 @@ msgid_plural "%s days"
 msgstr[0] "%s nap"
 msgstr[1] "%s nap"
 
+#: resources/views/calendar-list.phtml:18
+#, php-format
+msgid "%s family"
+msgid_plural "%s families"
+msgstr[0] ""
+msgstr[1] ""
+
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
 #, php-format
@@ -248,6 +255,7 @@ msgstr[1] "%s unoka"
 
 #: app/Module/LifespansChartModule.php:431
 #: resources/views/admin/trees-unconnected.phtml:35
+#: resources/views/calendar-list.phtml:13
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
@@ -284,7 +292,7 @@ msgid_plural "%s individuals with events in %s between %s and %s"
 msgstr[0] "%s személy eseménnyel, helyszín: %s, %s és %s között"
 msgstr[1] "%s személy eseménnyel, helyszín: %s, %s és %s között"
 
-#: app/Http/Controllers/Admin/LocationController.php:841
+#: app/Http/Controllers/Admin/LocationController.php:842
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
@@ -397,7 +405,7 @@ msgid_plural "%s years"
 msgstr[0] "%s év"
 msgstr[1] "%s év"
 
-#: app/Http/Controllers/CalendarController.php:565
+#: app/Http/Controllers/CalendarController.php:542
 #: resources/views/modules/yahrzeit/list.phtml:10
 #, php-format
 msgid "%s year anniversary"
@@ -856,8 +864,8 @@ msgid "A private area to record notes or keep a journal."
 msgstr "Privát terület – saját jegyzetek bejegyzéséhez vagy naplóíráshoz."
 
 #. I18N: %s is a server name/URL
-#: resources/views/emails/register-notify-html.phtml:9
-#: resources/views/emails/register-notify-text.phtml:4
+#: resources/views/emails/register-notify-html.phtml:13
+#: resources/views/emails/register-notify-text.phtml:9
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
 msgstr "Egy leendő felhasználó regisztrált a webtreesben – itt: %s."
@@ -1779,7 +1787,7 @@ msgstr "Élők"
 #: app/Http/Controllers/ListController.php:367
 #: app/Module/FrequentlyAskedQuestionsModule.php:322
 #: app/Module/UserMessagesModule.php:174
-#: resources/views/calendar-page.phtml:129
+#: resources/views/calendar-page.phtml:153
 #: resources/views/lists/datatables-attributes.phtml:6
 #: resources/views/modules/faq/config.phtml:58
 #: resources/views/modules/random_media/config.phtml:12
@@ -1804,7 +1812,7 @@ msgstr "Minden tény és esemény"
 msgid "All family facts"
 msgstr "Az összes családtény"
 
-#: app/Http/RequestHandlers/RegisterAction.php:201
+#: app/Http/RequestHandlers/RegisterAction.php:219
 msgid "All fields must be completed."
 msgstr "Minden mezőt ki kell tölteni."
 
@@ -1812,8 +1820,8 @@ msgstr "Minden mezőt ki kell tölteni."
 msgid "All individual facts"
 msgstr "Az összes személytény"
 
-#: resources/views/calendar-page.phtml:81
-#: resources/views/calendar-page.phtml:92
+#: resources/views/calendar-page.phtml:95
+#: resources/views/calendar-page.phtml:107
 msgid "All individuals"
 msgstr "Az összes személy"
 
@@ -2446,7 +2454,7 @@ msgid "Bangladesh"
 msgstr "Banglades"
 
 #. I18N: gedcom tag BAPM
-#: app/GedcomTag.php:510 resources/views/calendar-page.phtml:135
+#: app/GedcomTag.php:510 resources/views/calendar-page.phtml:159
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Baptism"
 msgstr "Keresztelés"
@@ -2618,7 +2626,7 @@ msgid "Birmingham, Alabama, United States"
 msgstr "Birmingham, Alabama, Egyesült Államok"
 
 #. I18N: gedcom tag BIRT
-#: app/GedcomTag.php:531 resources/views/calendar-page.phtml:132
+#: app/GedcomTag.php:531 resources/views/calendar-page.phtml:156
 #: resources/views/lists/individuals-table.phtml:232
 #: resources/views/lists/individuals-table.phtml:240
 #: resources/views/lists/individuals-table.phtml:269
@@ -3071,7 +3079,7 @@ msgid "Bulgaria"
 msgstr "Bulgária"
 
 #. I18N: gedcom tag BURI
-#: app/GedcomTag.php:548 resources/views/calendar-page.phtml:147
+#: app/GedcomTag.php:548 resources/views/calendar-page.phtml:171
 #: resources/xml/reports/family_group_report.xml:351
 #: resources/xml/reports/family_group_report.xml:705
 #: resources/xml/reports/family_group_report.xml:1049
@@ -3823,9 +3831,9 @@ msgstr "Columbus, Ohio, Egyesült Államok"
 msgid "Comment"
 msgstr "Megjegyzés"
 
-#: resources/views/emails/register-notify-html.phtml:19
-#: resources/views/emails/register-notify-text.phtml:9
-#: resources/views/register-page.phtml:83
+#: resources/views/emails/register-notify-html.phtml:23
+#: resources/views/emails/register-notify-text.phtml:14
+#: resources/views/register-page.phtml:82
 msgid "Comments"
 msgstr "Megjegyzések"
 
@@ -4256,7 +4264,7 @@ msgstr "Curitiba, Brazília"
 msgid "Custom"
 msgstr "Egyedi"
 
-#: resources/views/calendar-page.phtml:153
+#: resources/views/calendar-page.phtml:177
 #: resources/views/edit/add-fact-row.phtml:33
 msgid "Custom event"
 msgstr "Egyedi esemény"
@@ -4551,11 +4559,11 @@ msgstr "Lánygyermek"
 msgid "Daughter of %s"
 msgstr "%s lánya"
 
-#: app/Module/CalendarMenuModule.php:90 resources/views/calendar-page.phtml:22
+#: app/Module/CalendarMenuModule.php:90 resources/views/calendar-page.phtml:14
 msgid "Day"
 msgstr "Nap"
 
-#: app/Http/Controllers/CalendarController.php:439
+#: app/Http/Controllers/CalendarController.php:416
 msgid "Day not set"
 msgstr "A nap nincs megadva"
 
@@ -4571,7 +4579,7 @@ msgid "Dead"
 msgstr "Elhunytak"
 
 #. I18N: gedcom tag DEAT
-#: app/GedcomTag.php:654 resources/views/calendar-page.phtml:144
+#: app/GedcomTag.php:654 resources/views/calendar-page.phtml:168
 #: resources/views/lists/individuals-table.phtml:214
 #: resources/views/lists/individuals-table.phtml:222
 #: resources/views/lists/individuals-table.phtml:279
@@ -5228,7 +5236,7 @@ msgid "Display and manage a user’s favorite pages."
 msgstr "A felhasználó kedvenc oldalainak megjelenítése és kezelése."
 
 #. I18N: gedcom tag DIV
-#: app/GedcomTag.php:672 resources/views/calendar-page.phtml:141
+#: app/GedcomTag.php:672 resources/views/calendar-page.phtml:165
 #: resources/views/lists/families-table.phtml:234
 msgid "Divorce"
 msgstr "Válás"
@@ -5316,14 +5324,14 @@ msgstr "Kettes napok"
 #: app/Http/Controllers/Admin/UsersController.php:275
 #: app/Http/Controllers/Admin/UsersController.php:389
 #: app/Http/RequestHandlers/AccountUpdate.php:95
-#: app/Http/RequestHandlers/RegisterAction.php:211
+#: app/Http/RequestHandlers/RegisterAction.php:229
 msgid "Duplicate email address. A user with that email already exists."
 msgstr "E-mail cím kettőzése. Egy felhasználó ezzel az e-mail címmel már létezik."
 
 #: app/Http/Controllers/Admin/UsersController.php:270
 #: app/Http/Controllers/Admin/UsersController.php:395
 #: app/Http/RequestHandlers/AccountUpdate.php:86
-#: app/Http/RequestHandlers/RegisterAction.php:206
+#: app/Http/RequestHandlers/RegisterAction.php:224
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
 msgstr "Felhasználónév-kettőzés. Egy felhasználó ezzel a névvel már létezik. Kérjük, válasszon másikat."
 
@@ -5513,9 +5521,9 @@ msgstr ""
 #: resources/views/admin/users-edit.phtml:63
 #: resources/views/admin/users.phtml:22 resources/views/contact-page.phtml:35
 #: resources/views/edit-account-page.phtml:111
-#: resources/views/emails/register-notify-html.phtml:17
-#: resources/views/emails/register-notify-text.phtml:8
-#: resources/views/register-page.phtml:46
+#: resources/views/emails/register-notify-html.phtml:21
+#: resources/views/emails/register-notify-text.phtml:13
+#: resources/views/register-page.phtml:45
 #: resources/views/setup/step-5-administrator.phtml:68
 msgid "Email address"
 msgstr "E-mail cím"
@@ -5525,7 +5533,7 @@ msgid "Email verified"
 msgstr "E-mail cím ellenőrizve"
 
 #. I18N: gedcom tag EMIG
-#: app/GedcomTag.php:693 resources/views/calendar-page.phtml:150
+#: app/GedcomTag.php:693 resources/views/calendar-page.phtml:174
 msgid "Emigration"
 msgstr "Kivándorlás"
 
@@ -5722,7 +5730,7 @@ msgid "Excluded from this submission"
 msgstr "Kizárva ebből az engedelmességből"
 
 #. I18N: placeholder text for registration-comments field
-#: resources/views/register-page.phtml:87
+#: resources/views/register-page.phtml:86
 msgid "Explain why you are requesting an account."
 msgstr "Írja le, hogy miért folyamodik felhasználói fiókhoz."
 
@@ -5890,7 +5898,6 @@ msgstr "Falkland-szigetek"
 #. I18N: Name of a module/list
 #. I18N: Name of a module
 #: app/Http/Controllers/AdminTreesController.php:1702
-#: app/Http/Controllers/CalendarController.php:377
 #: app/Http/Controllers/ListController.php:242
 #: app/Module/AncestorsChartModule.php:276
 #: app/Module/DescendancyChartModule.php:265 app/Module/FamilyListModule.php:48
@@ -6192,7 +6199,7 @@ msgstr "Nő"
 #: app/Statistics/Google/ChartAge.php:115
 #: app/Statistics/Google/ChartMarriageAge.php:139
 #: app/Statistics/Google/ChartSex.php:72
-#: resources/views/calendar-page.phtml:114
+#: resources/views/calendar-page.phtml:129
 #: resources/views/lists/families-table.phtml:111
 #: resources/views/lists/families-table.phtml:126
 #: resources/views/lists/families-table.phtml:136
@@ -6435,7 +6442,7 @@ msgid "For websites with more than one family tree, this option will show the li
 msgstr "Egynél több családfát tartalmazó webhelyek esetén ez a beállítás megjeleníti a családfák listáját a főmenüben, a keresőoldalakon stb."
 
 #: resources/views/login-page.phtml:60
-#: resources/views/modules/login_block/sign-in.phtml:35
+#: resources/views/modules/login_block/sign-in.phtml:36
 msgid "Forgot password?"
 msgstr "Elfelejtette a jelszót?"
 
@@ -6578,15 +6585,18 @@ msgctxt "NOMINATIVE"
 msgid "Frimaire"
 msgstr "Dér hava"
 
-#. I18N: From date1 (To date2)
-#. I18N: label for the start of a date range (from x to y)
 #: resources/views/admin/broadcast.phtml:18
-#: resources/views/admin/changes-log.phtml:22
 #: resources/views/admin/email-page.phtml:18
-#: resources/views/admin/site-logs.phtml:23
 #: resources/views/message-page.phtml:13
+msgctxt "Email sender"
 msgid "From"
-msgstr "Ettől"
+msgstr ""
+
+#: resources/views/admin/changes-log.phtml:22
+#: resources/views/admin/site-logs.phtml:23
+msgctxt "Start of date range"
+msgid "From"
+msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
@@ -7042,8 +7052,8 @@ msgstr "Kedves %s…"
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "Kedves %s!<br>Köszönjük a regisztrációját."
 
-#: resources/views/emails/register-notify-html.phtml:4
-#: resources/views/emails/register-notify-text.phtml:2
+#: resources/views/emails/register-notify-html.phtml:8
+#: resources/views/emails/register-notify-text.phtml:6
 #: resources/views/emails/verify-notify-html.phtml:4
 #: resources/views/emails/verify-notify-text.phtml:2
 msgid "Hello administrator…"
@@ -7576,7 +7586,6 @@ msgstr "Legmagasabb kort megélt személy"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/AdminTreesController.php:1701
-#: app/Http/Controllers/CalendarController.php:376
 #: app/Http/Controllers/ListController.php:244
 #: app/Module/AncestorsChartModule.php:275
 #: app/Module/DescendancyChartModule.php:264
@@ -8376,7 +8385,7 @@ msgstr "litván"
 msgid "Living"
 msgstr "Élő"
 
-#: resources/views/calendar-page.phtml:84
+#: resources/views/calendar-page.phtml:98
 msgid "Living individuals"
 msgstr "Élő személyek"
 
@@ -8520,7 +8529,7 @@ msgstr "Férfi"
 #: app/Statistics/Google/ChartAge.php:114
 #: app/Statistics/Google/ChartMarriageAge.php:138
 #: app/Statistics/Google/ChartSex.php:67
-#: resources/views/calendar-page.phtml:104
+#: resources/views/calendar-page.phtml:119
 #: resources/views/lists/families-table.phtml:108
 #: resources/views/lists/families-table.phtml:123
 #: resources/views/lists/families-table.phtml:135
@@ -8661,7 +8670,7 @@ msgstr "A Markdown egy egyszerű szövegformázó jelölőnyelv, amelyet olyan w
 
 #. I18N: gedcom tag MARR
 #: app/GedcomTag.php:838 app/Http/Controllers/BranchesController.php:341
-#: resources/views/calendar-page.phtml:138
+#: resources/views/calendar-page.phtml:162
 #: resources/views/lists/families-table.phtml:210
 #: resources/views/lists/families-table.phtml:218
 #: resources/views/lists/families-table.phtml:226
@@ -9346,7 +9355,7 @@ msgstr "Montevideo, Uruguay"
 #: app/Module/StatisticsChartModule.php:387
 #: app/Module/StatisticsChartModule.php:429
 #: app/Module/StatisticsChartModule.php:478
-#: resources/views/calendar-page.phtml:38
+#: resources/views/calendar-page.phtml:30
 msgid "Month"
 msgstr "Hónap"
 
@@ -9763,7 +9772,7 @@ msgid "New data"
 msgstr "Új adatok"
 
 #. I18N: %s is a server name/URL
-#: app/Http/RequestHandlers/RegisterAction.php:139
+#: app/Http/RequestHandlers/RegisterAction.php:141
 #, php-format
 msgid "New registration at %s"
 msgstr "Új regisztráció a(z) %s webhelyen"
@@ -10569,9 +10578,9 @@ msgstr "Szülők életkora"
 #: resources/views/admin/users-edit.phtml:50
 #: resources/views/edit-account-page.phtml:76
 #: resources/views/login-page.phtml:43
-#: resources/views/modules/login_block/sign-in.phtml:24
+#: resources/views/modules/login_block/sign-in.phtml:25
 #: resources/views/password-reset-page.phtml:34
-#: resources/views/register-page.phtml:70
+#: resources/views/register-page.phtml:69
 #: resources/views/setup/step-5-administrator.phtml:56
 msgid "Password"
 msgstr "Jelszó"
@@ -10580,7 +10589,7 @@ msgstr "Jelszó"
 #: resources/views/admin/users-edit.phtml:55
 #: resources/views/edit-account-page.phtml:81
 #: resources/views/password-reset-page.phtml:39
-#: resources/views/register-page.phtml:76
+#: resources/views/register-page.phtml:75
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
 msgstr "A jelszó, ami legalább 8 karakter hosszú kell legyen, érzékeny a kis- és nagybetűk közötti különbségre, tehát a „titkos” és a „TITKOS” különbözik."
 
@@ -11347,9 +11356,9 @@ msgstr "Névsorrendcsere"
 #: resources/views/admin/users-edit.phtml:24
 #: resources/views/admin/users.phtml:21
 #: resources/views/edit-account-page.phtml:32
-#: resources/views/emails/register-notify-html.phtml:15
-#: resources/views/emails/register-notify-text.phtml:7
-#: resources/views/register-page.phtml:34
+#: resources/views/emails/register-notify-html.phtml:19
+#: resources/views/emails/register-notify-text.phtml:12
+#: resources/views/register-page.phtml:33
 msgid "Real name"
 msgstr "Valódi név"
 
@@ -11363,7 +11372,7 @@ msgstr "Biztos, hogy törli az összes földrajzi adatot?"
 msgid "Recent changes"
 msgstr "Legutóbbi változtatások"
 
-#: resources/views/calendar-page.phtml:87
+#: resources/views/calendar-page.phtml:101
 msgid "Recent years (&lt; 100 yrs)"
 msgstr "Az utóbbi évekből (&lt; 100 év)"
 
@@ -11651,14 +11660,14 @@ msgstr "Kongó (Brazzaville)"
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:88
 #: app/Http/RequestHandlers/PasswordRequestPage.php:55
-#: resources/views/modules/login_block/sign-in.phtml:48
+#: resources/views/modules/login_block/sign-in.phtml:49
 msgid "Request a new password"
 msgstr "Új jelszó kérése"
 
-#: app/Http/RequestHandlers/RegisterAction.php:163
+#: app/Http/RequestHandlers/RegisterAction.php:180
 #: app/Http/RequestHandlers/RegisterPage.php:51
 #: app/Module/WelcomeBlockModule.php:114 resources/views/login-page.phtml:65
-#: resources/views/modules/login_block/sign-in.phtml:42
+#: resources/views/modules/login_block/sign-in.phtml:43
 msgid "Request a new user account"
 msgstr "Új felhasználói fiók igénylése"
 
@@ -12442,7 +12451,7 @@ msgstr "Rövidítés"
 msgid "Shortest marriage"
 msgstr "Legrövidebb házasság"
 
-#: resources/views/calendar-page.phtml:74
+#: resources/views/calendar-page.phtml:79
 msgid "Show"
 msgstr "Megjelenítés"
 
@@ -14016,8 +14025,8 @@ msgstr "A feltöltendő fájl meghaladja a megengedett méretet."
 msgid "The user %s has been deleted."
 msgstr "A(z) %s felhasználó törlése megtörtént."
 
-#: resources/views/emails/register-notify-html.phtml:24
-#: resources/views/emails/register-notify-text.phtml:11
+#: resources/views/emails/register-notify-html.phtml:30
+#: resources/views/emails/register-notify-text.phtml:17
 msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr "A felhasználó egy e-mailt küldött a kért hozzáférés-kérelem megerősítéséhez szükséges információkkal."
 
@@ -14191,7 +14200,7 @@ msgstr "Ez a blokk mutatja a szerkesztőknek a webhelykezelő felülvizsgálatá
 #: resources/views/admin/users-create.phtml:63
 #: resources/views/admin/users-edit.phtml:68
 #: resources/views/edit-account-page.phtml:116
-#: resources/views/register-page.phtml:51
+#: resources/views/register-page.phtml:50
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr "Ezt az e-mail címet használjuk jelszó-emlékeztetők, webhelyértesítések és az ezen a webhelyen regisztrált más családtagok üzeneteinek elküldéséhez."
@@ -14423,7 +14432,7 @@ msgstr "Ez az SMTP-szerver neve. A „localhost” azt jelenti, hogy a levelező
 #: resources/views/admin/users-create.phtml:24
 #: resources/views/admin/users-edit.phtml:29
 #: resources/views/edit-account-page.phtml:37
-#: resources/views/register-page.phtml:39
+#: resources/views/register-page.phtml:38
 #: resources/views/setup/step-5-administrator.phtml:37
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr "Ez az Ön valódi neve, ahogy szeretné, hogy megjelenjen a képernyőn."
@@ -14847,15 +14856,18 @@ msgstr "Mű-/szövegcím"
 msgid "Title in Hebrew"
 msgstr "Cím héberül"
 
-#. I18N: (From date1) To date2
-#. I18N: label for the end of a date range (from x to y)
 #: resources/views/admin/broadcast.phtml:27
-#: resources/views/admin/changes-log.phtml:29
 #: resources/views/admin/email-page.phtml:27
-#: resources/views/admin/site-logs.phtml:30
 #: resources/views/contact-page.phtml:17 resources/views/message-page.phtml:22
+msgctxt "Email recipient"
 msgid "To"
-msgstr "Eddig"
+msgstr ""
+
+#: resources/views/admin/changes-log.phtml:29
+#: resources/views/admin/site-logs.phtml:30
+msgctxt "End of date range"
+msgid "To"
+msgstr ""
 
 #: resources/views/modules/html/config.phtml:25
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -15022,11 +15034,6 @@ msgstr "Események száma összesen"
 msgid "Total families"
 msgstr "Családok száma összesen"
 
-#: app/Http/Controllers/CalendarController.php:397
-#, php-format
-msgid "Total families: %s"
-msgstr "Családok száma összesen: %s"
-
 #: resources/views/statistics/individuals/total-records.phtml:31
 msgid "Total females"
 msgstr "Nők száma összesen"
@@ -15049,11 +15056,6 @@ msgstr "Utónevek száma összesen"
 #: resources/xml/reports/relative_ext_report.xml:140
 msgid "Total individuals"
 msgstr "Személyek száma összesen"
-
-#: app/Http/Controllers/CalendarController.php:396
-#, php-format
-msgid "Total individuals: %s"
-msgstr "Személyek száma összesen: %s"
 
 #: resources/views/statistics/individuals/total-records.phtml:52
 msgid "Total living"
@@ -15106,6 +15108,8 @@ msgstr "Vontatmány"
 
 #: app/Module/AncestorsChartModule.php:274
 #: app/Module/DescendancyChartModule.php:263
+#: resources/views/emails/register-notify-html.phtml:25
+#: resources/views/emails/register-notify-text.phtml:15
 msgid "Tree"
 msgstr "Fa"
 
@@ -15377,7 +15381,7 @@ msgstr "Használja a „?”-et egy karakter helyettesítésére vagy a „*”-
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:48
 #: resources/views/admin/users-edit.phtml:53
-#: resources/views/register-page.phtml:74
+#: resources/views/register-page.phtml:73
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -15431,7 +15435,7 @@ msgstr "Árnyképek használata"
 msgid "Use the GeoNames database for autocomplete on places"
 msgstr "Használja a GeoNames adatbázist a helynevek automatikus kiegészítéséhez"
 
-#: resources/views/register-page.phtml:89
+#: resources/views/register-page.phtml:88
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 msgstr "Ebben a mezőben írhatja meg a rendszergazdának, hogy miért igényel felhasználói fiókot, és hogy milyen kapcsolatban áll ezzel a családdal. Természetesen bármilyen más közlendője is lehet a rendszergazda számára."
 
@@ -15476,26 +15480,26 @@ msgstr "Felhasználó ellenőrzése"
 #: resources/views/admin/users-edit.phtml:37
 #: resources/views/admin/users.phtml:20
 #: resources/views/edit-account-page.phtml:20
-#: resources/views/emails/register-notify-html.phtml:13
-#: resources/views/emails/register-notify-text.phtml:6
+#: resources/views/emails/register-notify-html.phtml:17
+#: resources/views/emails/register-notify-text.phtml:11
 #: resources/views/login-page.phtml:34
-#: resources/views/modules/login_block/sign-in.phtml:17
+#: resources/views/modules/login_block/sign-in.phtml:18
 #: resources/views/modules/todo/research-tasks.phtml:13
 #: resources/views/password-reset-page.phtml:25
-#: resources/views/register-page.phtml:58
+#: resources/views/register-page.phtml:57
 #: resources/views/setup/step-5-administrator.phtml:44
 msgid "Username"
 msgstr "Felhasználónév"
 
 #: resources/views/forgot-password-page.phtml:20
-#: resources/views/modules/login_block/sign-in.phtml:51
+#: resources/views/modules/login_block/sign-in.phtml:52
 msgid "Username or email address"
 msgstr "Falhasználónév vagy e-mail cím"
 
 #: resources/views/admin/users-create.phtml:37
 #: resources/views/admin/users-edit.phtml:42
 #: resources/views/edit-account-page.phtml:25
-#: resources/views/register-page.phtml:63
+#: resources/views/register-page.phtml:62
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr "A felhasználónév érzéketlen a kis- és nagybetűk közötti különbségre, valamint az ékezetekre, tehát a „györgyi”, „gyorgyi” és „Györgyi” megegyezik."
 
@@ -15625,7 +15629,7 @@ msgstr "Megtekintés"
 msgid "View table of events occurring in %s"
 msgstr "%s eseménytáblájának megjelenítése"
 
-#: resources/views/calendar-page.phtml:164
+#: resources/views/calendar-page.phtml:189
 msgid "View this day"
 msgstr "Ezen a napon"
 
@@ -15637,11 +15641,11 @@ msgstr "Ezen a napon"
 msgid "View this family"
 msgstr "E család megjelenítése"
 
-#: resources/views/calendar-page.phtml:168
+#: resources/views/calendar-page.phtml:193
 msgid "View this month"
 msgstr "Ebben a hónapban"
 
-#: resources/views/calendar-page.phtml:172
+#: resources/views/calendar-page.phtml:197
 msgid "View this year"
 msgstr "Ebben az évben"
 
@@ -15673,7 +15677,7 @@ msgstr "Látogató"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:40
-#: resources/views/calendar-page.phtml:126
+#: resources/views/calendar-page.phtml:150
 #: resources/xml/reports/bdm_report.xml:3
 #: resources/xml/reports/bdm_report.xml:34
 msgid "Vital records"
@@ -15908,7 +15912,7 @@ msgstr "Évforduló"
 msgid "Yahrzeiten"
 msgstr "Évfordulók"
 
-#: app/Module/CalendarMenuModule.php:116 resources/views/calendar-page.phtml:57
+#: app/Module/CalendarMenuModule.php:116 resources/views/calendar-page.phtml:49
 msgid "Year"
 msgstr "Év"
 
@@ -15930,7 +15934,7 @@ msgid "You (or someone claiming to be you) has requested an account at %1$s usin
 msgstr "Ön (vagy valaki az Ön nevében) felhasználói fiókot igényelt a(z) %1$s webhelyen a(z) %2$s e-mail címet használva."
 
 #: app/Http/RequestHandlers/ContactAction.php:107
-#: app/Http/RequestHandlers/RegisterAction.php:218
+#: app/Http/RequestHandlers/RegisterAction.php:236
 msgid "You are not allowed to send messages that contain external links."
 msgstr "Ön nem küldhet külső hivatkozásokat tartalmazó üzeneteket."
 
@@ -15965,7 +15969,7 @@ msgid "You can make it easier to search for married women by recording their mar
 msgstr "Megkönnyítheti a feleségek keresését, ha beírja a házassági nevüket. Bár nem minden nő veszi fel a férje nevét házasságkötéskor, tehát óvakodjon attól, hogy hibás adatokat vezessen be az adatbázisba."
 
 #: resources/views/modules/privacy-policy/page.phtml:48
-msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
+msgid "You can opt out of tracking by setting the AccountUpdate header in your browser preferences."
 msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:17
@@ -16061,7 +16065,7 @@ msgstr "Az összes függőben lévő változtatást el kell fogadnia vagy el kel
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: app/Http/RequestHandlers/ContactAction.php:108
-#: app/Http/RequestHandlers/RegisterAction.php:218
+#: app/Http/RequestHandlers/RegisterAction.php:236
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr "Törölje a(z) „%1$s” részt a(z) „%2$s” címből, és próbálja újra."
@@ -16070,8 +16074,8 @@ msgstr "Törölje a(z) „%1$s” részt a(z) „%2$s” címből, és próbálj
 msgid "You should not approve an account unless you know that the email address is correct."
 msgstr "Nem szabad jóváhagyni egy felhasználói fiókot, amíg nem tudja, hogy az e-mail cím helyes."
 
-#: resources/views/emails/register-notify-html.phtml:28
-#: resources/views/emails/register-notify-text.phtml:13
+#: resources/views/emails/register-notify-html.phtml:34
+#: resources/views/emails/register-notify-text.phtml:19
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr "E-mail értesítést kap, ha a leendő felhasználó megerősítette a kérelmét. Ezután befejezheti a folyamatot a felhasználó nevének aktiválásával. Az új felhasználó addig nem tud bejelentkezni, amíg Ön nem aktiválja a fiókját."
 
@@ -16108,7 +16112,7 @@ msgstr "Az Ön neve"
 msgid "Your password has been updated."
 msgstr ""
 
-#: app/Http/RequestHandlers/RegisterAction.php:129
+#: app/Http/RequestHandlers/RegisterAction.php:131
 #, php-format
 msgid "Your registration at %s"
 msgstr "Az Ön regisztrációja a(z) %s webhelyen"
@@ -16575,11 +16579,11 @@ msgstr "felsorolás"
 #: resources/views/admin/upgrade/wizard.phtml:33
 #: resources/views/forgot-password-page.phtml:33
 #: resources/views/modules/clippings/add-options.phtml:22
-#: resources/views/modules/login_block/sign-in.phtml:57
+#: resources/views/modules/login_block/sign-in.phtml:58
 #: resources/views/password-request-page.phtml:33
 #: resources/views/password-reset-page.phtml:50
 #: resources/views/pending-changes-page.phtml:23
-#: resources/views/register-page.phtml:99
+#: resources/views/register-page.phtml:98
 #: resources/views/report-select-page.phtml:32
 msgid "continue"
 msgstr "tovább"
@@ -19626,7 +19630,7 @@ msgstr "testvér"
 
 #. I18N: A button label.
 #: resources/views/login-page.phtml:56
-#: resources/views/modules/login_block/sign-in.phtml:31
+#: resources/views/modules/login_block/sign-in.phtml:32
 msgid "sign in"
 msgstr "bejelentkezés"
 
@@ -20763,6 +20767,9 @@ msgstr "…"
 #~ msgid "Find an individual"
 #~ msgstr "Személy keresése"
 
+#~ msgid "From"
+#~ msgstr "Ettől"
+
 #~ msgid "Gender icon on charts"
 #~ msgstr "Nemek ikonja az ábrákon"
 
@@ -21554,6 +21561,9 @@ msgstr "…"
 #~ msgid "Thumbnail to upload"
 #~ msgstr "Feltöltendő bélyegkép"
 
+#~ msgid "To"
+#~ msgstr "Eddig"
+
 #~ msgid "To complete the upgrade, you should install the files manually."
 #~ msgstr "A frissítés befejezéséhez, a fájlokat saját kezűleg kell telepíteni."
 
@@ -21568,6 +21578,14 @@ msgstr "…"
 
 #~ msgid "Top level"
 #~ msgstr "Felső szint"
+
+#, php-format
+#~ msgid "Total families: %s"
+#~ msgstr "Családok száma összesen: %s"
+
+#, php-format
+#~ msgid "Total individuals: %s"
+#~ msgstr "Személyek száma összesen: %s"
 
 #~ msgid "Total number of users"
 #~ msgstr "Felhasználók száma összesen"

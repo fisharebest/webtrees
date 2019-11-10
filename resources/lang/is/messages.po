@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-09 18:45+0000\n"
+"POT-Creation-Date: 2019-11-10 16:16+0000\n"
 "PO-Revision-Date: 2019-11-09 09:32+0000\n"
 "Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
 "Language-Team: Icelandic <http://translate.webtrees.net/projects/webtrees/webtrees/is/>\n"
@@ -225,6 +225,13 @@ msgid_plural "%s days"
 msgstr[0] "%s dagur"
 msgstr[1] "%s dagar"
 
+#: resources/views/calendar-list.phtml:18
+#, php-format
+msgid "%s family"
+msgid_plural "%s families"
+msgstr[0] ""
+msgstr[1] ""
+
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
 #, php-format
@@ -243,6 +250,7 @@ msgstr[1] "%s barnabörn"
 
 #: app/Module/LifespansChartModule.php:431
 #: resources/views/admin/trees-unconnected.phtml:35
+#: resources/views/calendar-list.phtml:13
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
@@ -279,7 +287,7 @@ msgid_plural "%s individuals with events in %s between %s and %s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/Http/Controllers/Admin/LocationController.php:841
+#: app/Http/Controllers/Admin/LocationController.php:842
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
@@ -392,7 +400,7 @@ msgid_plural "%s years"
 msgstr[0] "%s ár"
 msgstr[1] "%s ár"
 
-#: app/Http/Controllers/CalendarController.php:565
+#: app/Http/Controllers/CalendarController.php:542
 #: resources/views/modules/yahrzeit/list.phtml:10
 #, php-format
 msgid "%s year anniversary"
@@ -852,8 +860,8 @@ msgid "A private area to record notes or keep a journal."
 msgstr "Einkamála svæði til að skrá glósur eða að halda dagbók."
 
 #. I18N: %s is a server name/URL
-#: resources/views/emails/register-notify-html.phtml:9
-#: resources/views/emails/register-notify-text.phtml:4
+#: resources/views/emails/register-notify-html.phtml:13
+#: resources/views/emails/register-notify-text.phtml:9
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
 msgstr "Væntanlegur notandi hefur skráð sig á webtrees við %s."
@@ -1782,7 +1790,7 @@ msgstr "Á lífi"
 #: app/Http/Controllers/ListController.php:367
 #: app/Module/FrequentlyAskedQuestionsModule.php:322
 #: app/Module/UserMessagesModule.php:174
-#: resources/views/calendar-page.phtml:129
+#: resources/views/calendar-page.phtml:153
 #: resources/views/lists/datatables-attributes.phtml:6
 #: resources/views/modules/faq/config.phtml:58
 #: resources/views/modules/random_media/config.phtml:12
@@ -1807,7 +1815,7 @@ msgstr ""
 msgid "All family facts"
 msgstr ""
 
-#: app/Http/RequestHandlers/RegisterAction.php:201
+#: app/Http/RequestHandlers/RegisterAction.php:219
 msgid "All fields must be completed."
 msgstr "Alla reiti þarf að fylla út."
 
@@ -1815,8 +1823,8 @@ msgstr "Alla reiti þarf að fylla út."
 msgid "All individual facts"
 msgstr ""
 
-#: resources/views/calendar-page.phtml:81
-#: resources/views/calendar-page.phtml:92
+#: resources/views/calendar-page.phtml:95
+#: resources/views/calendar-page.phtml:107
 msgid "All individuals"
 msgstr "Allt fólk"
 
@@ -2450,7 +2458,7 @@ msgid "Bangladesh"
 msgstr "Bangladess"
 
 #. I18N: gedcom tag BAPM
-#: app/GedcomTag.php:510 resources/views/calendar-page.phtml:135
+#: app/GedcomTag.php:510 resources/views/calendar-page.phtml:159
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Baptism"
 msgstr "Skírn"
@@ -2622,7 +2630,7 @@ msgid "Birmingham, Alabama, United States"
 msgstr "Birmingham, Alabama, United States"
 
 #. I18N: gedcom tag BIRT
-#: app/GedcomTag.php:531 resources/views/calendar-page.phtml:132
+#: app/GedcomTag.php:531 resources/views/calendar-page.phtml:156
 #: resources/views/lists/individuals-table.phtml:232
 #: resources/views/lists/individuals-table.phtml:240
 #: resources/views/lists/individuals-table.phtml:269
@@ -3075,7 +3083,7 @@ msgid "Bulgaria"
 msgstr "Búlgaría"
 
 #. I18N: gedcom tag BURI
-#: app/GedcomTag.php:548 resources/views/calendar-page.phtml:147
+#: app/GedcomTag.php:548 resources/views/calendar-page.phtml:171
 #: resources/xml/reports/family_group_report.xml:351
 #: resources/xml/reports/family_group_report.xml:705
 #: resources/xml/reports/family_group_report.xml:1049
@@ -3827,9 +3835,9 @@ msgstr "Columbus, Ohio, United States"
 msgid "Comment"
 msgstr "Athugasemd"
 
-#: resources/views/emails/register-notify-html.phtml:19
-#: resources/views/emails/register-notify-text.phtml:9
-#: resources/views/register-page.phtml:83
+#: resources/views/emails/register-notify-html.phtml:23
+#: resources/views/emails/register-notify-text.phtml:14
+#: resources/views/register-page.phtml:82
 msgid "Comments"
 msgstr "Athugasemdir"
 
@@ -4260,7 +4268,7 @@ msgstr ""
 msgid "Custom"
 msgstr "Sérsniðið"
 
-#: resources/views/calendar-page.phtml:153
+#: resources/views/calendar-page.phtml:177
 #: resources/views/edit/add-fact-row.phtml:33
 msgid "Custom event"
 msgstr "Sérsniðin atburður"
@@ -4555,11 +4563,11 @@ msgstr "Dóttir"
 msgid "Daughter of %s"
 msgstr "Dóttir %s"
 
-#: app/Module/CalendarMenuModule.php:90 resources/views/calendar-page.phtml:22
+#: app/Module/CalendarMenuModule.php:90 resources/views/calendar-page.phtml:14
 msgid "Day"
 msgstr "Dagur"
 
-#: app/Http/Controllers/CalendarController.php:439
+#: app/Http/Controllers/CalendarController.php:416
 msgid "Day not set"
 msgstr "Dagur ekki valinn"
 
@@ -4575,7 +4583,7 @@ msgid "Dead"
 msgstr "Látin/-n"
 
 #. I18N: gedcom tag DEAT
-#: app/GedcomTag.php:654 resources/views/calendar-page.phtml:144
+#: app/GedcomTag.php:654 resources/views/calendar-page.phtml:168
 #: resources/views/lists/individuals-table.phtml:214
 #: resources/views/lists/individuals-table.phtml:222
 #: resources/views/lists/individuals-table.phtml:279
@@ -5232,7 +5240,7 @@ msgid "Display and manage a user’s favorite pages."
 msgstr "Birta og stjórna uppáhaldssíður notanda."
 
 #. I18N: gedcom tag DIV
-#: app/GedcomTag.php:672 resources/views/calendar-page.phtml:141
+#: app/GedcomTag.php:672 resources/views/calendar-page.phtml:165
 #: resources/views/lists/families-table.phtml:234
 msgid "Divorce"
 msgstr "Skilnaður"
@@ -5320,14 +5328,14 @@ msgstr "Duodi"
 #: app/Http/Controllers/Admin/UsersController.php:275
 #: app/Http/Controllers/Admin/UsersController.php:389
 #: app/Http/RequestHandlers/AccountUpdate.php:95
-#: app/Http/RequestHandlers/RegisterAction.php:211
+#: app/Http/RequestHandlers/RegisterAction.php:229
 msgid "Duplicate email address. A user with that email already exists."
 msgstr "Tvöfalt netfang. Notandi með þetta netfang er þegar til staðar."
 
 #: app/Http/Controllers/Admin/UsersController.php:270
 #: app/Http/Controllers/Admin/UsersController.php:395
 #: app/Http/RequestHandlers/AccountUpdate.php:86
-#: app/Http/RequestHandlers/RegisterAction.php:206
+#: app/Http/RequestHandlers/RegisterAction.php:224
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
 msgstr "Tvöfalt notandaheiti. Notandi með þetta notandaheiti er þegar til staðar. Vinsamlega veljið annað notandaheiti."
 
@@ -5519,9 +5527,9 @@ msgstr ""
 #: resources/views/admin/users-edit.phtml:63
 #: resources/views/admin/users.phtml:22 resources/views/contact-page.phtml:35
 #: resources/views/edit-account-page.phtml:111
-#: resources/views/emails/register-notify-html.phtml:17
-#: resources/views/emails/register-notify-text.phtml:8
-#: resources/views/register-page.phtml:46
+#: resources/views/emails/register-notify-html.phtml:21
+#: resources/views/emails/register-notify-text.phtml:13
+#: resources/views/register-page.phtml:45
 #: resources/views/setup/step-5-administrator.phtml:68
 msgid "Email address"
 msgstr "Netfang"
@@ -5531,7 +5539,7 @@ msgid "Email verified"
 msgstr "Netfang staðfest"
 
 #. I18N: gedcom tag EMIG
-#: app/GedcomTag.php:693 resources/views/calendar-page.phtml:150
+#: app/GedcomTag.php:693 resources/views/calendar-page.phtml:174
 msgid "Emigration"
 msgstr "Fólksflutningur"
 
@@ -5728,7 +5736,7 @@ msgid "Excluded from this submission"
 msgstr "Undanskilið frá þessari umsókn"
 
 #. I18N: placeholder text for registration-comments field
-#: resources/views/register-page.phtml:87
+#: resources/views/register-page.phtml:86
 msgid "Explain why you are requesting an account."
 msgstr ""
 
@@ -5896,7 +5904,6 @@ msgstr "Falklandseyjar (Malvinas)"
 #. I18N: Name of a module/list
 #. I18N: Name of a module
 #: app/Http/Controllers/AdminTreesController.php:1702
-#: app/Http/Controllers/CalendarController.php:377
 #: app/Http/Controllers/ListController.php:242
 #: app/Module/AncestorsChartModule.php:276
 #: app/Module/DescendancyChartModule.php:265 app/Module/FamilyListModule.php:48
@@ -6198,7 +6205,7 @@ msgstr "Kvenkyn"
 #: app/Statistics/Google/ChartAge.php:115
 #: app/Statistics/Google/ChartMarriageAge.php:139
 #: app/Statistics/Google/ChartSex.php:72
-#: resources/views/calendar-page.phtml:114
+#: resources/views/calendar-page.phtml:129
 #: resources/views/lists/families-table.phtml:111
 #: resources/views/lists/families-table.phtml:126
 #: resources/views/lists/families-table.phtml:136
@@ -6442,7 +6449,7 @@ msgid "For websites with more than one family tree, this option will show the li
 msgstr ""
 
 #: resources/views/login-page.phtml:60
-#: resources/views/modules/login_block/sign-in.phtml:35
+#: resources/views/modules/login_block/sign-in.phtml:36
 msgid "Forgot password?"
 msgstr ""
 
@@ -6585,13 +6592,16 @@ msgctxt "NOMINATIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: From date1 (To date2)
-#. I18N: label for the start of a date range (from x to y)
 #: resources/views/admin/broadcast.phtml:18
-#: resources/views/admin/changes-log.phtml:22
 #: resources/views/admin/email-page.phtml:18
-#: resources/views/admin/site-logs.phtml:23
 #: resources/views/message-page.phtml:13
+msgctxt "Email sender"
+msgid "From"
+msgstr ""
+
+#: resources/views/admin/changes-log.phtml:22
+#: resources/views/admin/site-logs.phtml:23
+msgctxt "Start of date range"
 msgid "From"
 msgstr ""
 
@@ -7049,8 +7059,8 @@ msgstr "Halló %s …"
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "Halló %s …<br>Takk fyrir skráninguna þína."
 
-#: resources/views/emails/register-notify-html.phtml:4
-#: resources/views/emails/register-notify-text.phtml:2
+#: resources/views/emails/register-notify-html.phtml:8
+#: resources/views/emails/register-notify-text.phtml:6
 #: resources/views/emails/verify-notify-html.phtml:4
 #: resources/views/emails/verify-notify-text.phtml:2
 msgid "Hello administrator…"
@@ -7584,7 +7594,6 @@ msgstr "Persóna sem lifði lengst"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/AdminTreesController.php:1701
-#: app/Http/Controllers/CalendarController.php:376
 #: app/Http/Controllers/ListController.php:244
 #: app/Module/AncestorsChartModule.php:275
 #: app/Module/DescendancyChartModule.php:264
@@ -8384,7 +8393,7 @@ msgstr "Litháíska"
 msgid "Living"
 msgstr "Lifandi"
 
-#: resources/views/calendar-page.phtml:84
+#: resources/views/calendar-page.phtml:98
 msgid "Living individuals"
 msgstr "Fólk á lífi"
 
@@ -8528,7 +8537,7 @@ msgstr "Karlkyn"
 #: app/Statistics/Google/ChartAge.php:114
 #: app/Statistics/Google/ChartMarriageAge.php:138
 #: app/Statistics/Google/ChartSex.php:67
-#: resources/views/calendar-page.phtml:104
+#: resources/views/calendar-page.phtml:119
 #: resources/views/lists/families-table.phtml:108
 #: resources/views/lists/families-table.phtml:123
 #: resources/views/lists/families-table.phtml:135
@@ -8669,7 +8678,7 @@ msgstr ""
 
 #. I18N: gedcom tag MARR
 #: app/GedcomTag.php:838 app/Http/Controllers/BranchesController.php:341
-#: resources/views/calendar-page.phtml:138
+#: resources/views/calendar-page.phtml:162
 #: resources/views/lists/families-table.phtml:210
 #: resources/views/lists/families-table.phtml:218
 #: resources/views/lists/families-table.phtml:226
@@ -9355,7 +9364,7 @@ msgstr "Montevideo, Uruguay"
 #: app/Module/StatisticsChartModule.php:387
 #: app/Module/StatisticsChartModule.php:429
 #: app/Module/StatisticsChartModule.php:478
-#: resources/views/calendar-page.phtml:38
+#: resources/views/calendar-page.phtml:30
 msgid "Month"
 msgstr "Mánuður"
 
@@ -9772,7 +9781,7 @@ msgid "New data"
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: app/Http/RequestHandlers/RegisterAction.php:139
+#: app/Http/RequestHandlers/RegisterAction.php:141
 #, php-format
 msgid "New registration at %s"
 msgstr "Nýskráning við %s"
@@ -10580,9 +10589,9 @@ msgstr "Aldur foreldra"
 #: resources/views/admin/users-edit.phtml:50
 #: resources/views/edit-account-page.phtml:76
 #: resources/views/login-page.phtml:43
-#: resources/views/modules/login_block/sign-in.phtml:24
+#: resources/views/modules/login_block/sign-in.phtml:25
 #: resources/views/password-reset-page.phtml:34
-#: resources/views/register-page.phtml:70
+#: resources/views/register-page.phtml:69
 #: resources/views/setup/step-5-administrator.phtml:56
 msgid "Password"
 msgstr "Lykilorð"
@@ -10591,7 +10600,7 @@ msgstr "Lykilorð"
 #: resources/views/admin/users-edit.phtml:55
 #: resources/views/edit-account-page.phtml:81
 #: resources/views/password-reset-page.phtml:39
-#: resources/views/register-page.phtml:76
+#: resources/views/register-page.phtml:75
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
 msgstr "Lykilorð verða að vera að lágmarki 8 stafir að lengd og þau eru stafstaða viðkvæm, þannig að „secret“ er frábrugðið við „SECRET“."
 
@@ -11359,9 +11368,9 @@ msgstr ""
 #: resources/views/admin/users-edit.phtml:24
 #: resources/views/admin/users.phtml:21
 #: resources/views/edit-account-page.phtml:32
-#: resources/views/emails/register-notify-html.phtml:15
-#: resources/views/emails/register-notify-text.phtml:7
-#: resources/views/register-page.phtml:34
+#: resources/views/emails/register-notify-html.phtml:19
+#: resources/views/emails/register-notify-text.phtml:12
+#: resources/views/register-page.phtml:33
 msgid "Real name"
 msgstr "Raunverulegt nafn"
 
@@ -11375,7 +11384,7 @@ msgstr ""
 msgid "Recent changes"
 msgstr "Nýlegar breytingar"
 
-#: resources/views/calendar-page.phtml:87
+#: resources/views/calendar-page.phtml:101
 msgid "Recent years (&lt; 100 yrs)"
 msgstr "Nýleg ár (&lt; 100 ár)"
 
@@ -11665,14 +11674,14 @@ msgstr "Kongó (Brazzaville)"
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:88
 #: app/Http/RequestHandlers/PasswordRequestPage.php:55
-#: resources/views/modules/login_block/sign-in.phtml:48
+#: resources/views/modules/login_block/sign-in.phtml:49
 msgid "Request a new password"
 msgstr "Óska eftir nýju lykilorði"
 
-#: app/Http/RequestHandlers/RegisterAction.php:163
+#: app/Http/RequestHandlers/RegisterAction.php:180
 #: app/Http/RequestHandlers/RegisterPage.php:51
 #: app/Module/WelcomeBlockModule.php:114 resources/views/login-page.phtml:65
-#: resources/views/modules/login_block/sign-in.phtml:42
+#: resources/views/modules/login_block/sign-in.phtml:43
 msgid "Request a new user account"
 msgstr "Óska eftir nýjum notandareikningi"
 
@@ -12457,7 +12466,7 @@ msgstr "Flýtileið"
 msgid "Shortest marriage"
 msgstr "Stysta gifting"
 
-#: resources/views/calendar-page.phtml:74
+#: resources/views/calendar-page.phtml:79
 msgid "Show"
 msgstr "Sýna"
 
@@ -14038,8 +14047,8 @@ msgstr "Innhlaðin skrá yfir leyfilegri stærð."
 msgid "The user %s has been deleted."
 msgstr ""
 
-#: resources/views/emails/register-notify-html.phtml:24
-#: resources/views/emails/register-notify-text.phtml:11
+#: resources/views/emails/register-notify-html.phtml:30
+#: resources/views/emails/register-notify-text.phtml:17
 msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr "Notandinn hefur fengið tölvupóst með nauðsynlegar upplýsingar til að staðfesta aðgangsbeiðnina."
 
@@ -14215,7 +14224,7 @@ msgstr "Þetta box mun sýna ritstjórum lista yfir færslur með breytingar sem
 #: resources/views/admin/users-create.phtml:63
 #: resources/views/admin/users-edit.phtml:68
 #: resources/views/edit-account-page.phtml:116
-#: resources/views/register-page.phtml:51
+#: resources/views/register-page.phtml:50
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr "Þetta netfang verður notað til að senda þér lykilorða upprifjun, vefsíðu tilkynningar og skilaboð frá öðrum fjölskyldumeðlimum sem eru skráðir á vefsíðunni."
@@ -14447,7 +14456,7 @@ msgstr "Þetta er heiti á SMTP þjóninum. 'localhost' þýðir að tölvupóst
 #: resources/views/admin/users-create.phtml:24
 #: resources/views/admin/users-edit.phtml:29
 #: resources/views/edit-account-page.phtml:37
-#: resources/views/register-page.phtml:39
+#: resources/views/register-page.phtml:38
 #: resources/views/setup/step-5-administrator.phtml:37
 #, fuzzy
 msgid "This is your real name, as you would like it displayed on screen."
@@ -14875,13 +14884,16 @@ msgstr "Heiti"
 msgid "Title in Hebrew"
 msgstr "Heiti á Hebresku"
 
-#. I18N: (From date1) To date2
-#. I18N: label for the end of a date range (from x to y)
 #: resources/views/admin/broadcast.phtml:27
-#: resources/views/admin/changes-log.phtml:29
 #: resources/views/admin/email-page.phtml:27
-#: resources/views/admin/site-logs.phtml:30
 #: resources/views/contact-page.phtml:17 resources/views/message-page.phtml:22
+msgctxt "Email recipient"
+msgid "To"
+msgstr ""
+
+#: resources/views/admin/changes-log.phtml:29
+#: resources/views/admin/site-logs.phtml:30
+msgctxt "End of date range"
 msgid "To"
 msgstr ""
 
@@ -15050,11 +15062,6 @@ msgstr "Samtals atburðir"
 msgid "Total families"
 msgstr "Fjöldi fjölskylda"
 
-#: app/Http/Controllers/CalendarController.php:397
-#, php-format
-msgid "Total families: %s"
-msgstr "Samtals fjölskyldur: %s"
-
 #: resources/views/statistics/individuals/total-records.phtml:31
 msgid "Total females"
 msgstr "Samtals kvenmenn"
@@ -15077,11 +15084,6 @@ msgstr "Samtals skírnarnöfn"
 #: resources/xml/reports/relative_ext_report.xml:140
 msgid "Total individuals"
 msgstr "Samtals einstaklingar"
-
-#: app/Http/Controllers/CalendarController.php:396
-#, php-format
-msgid "Total individuals: %s"
-msgstr "Samtals einstaklingar: %s"
 
 #: resources/views/statistics/individuals/total-records.phtml:52
 msgid "Total living"
@@ -15134,6 +15136,8 @@ msgstr "Sýnishorn"
 
 #: app/Module/AncestorsChartModule.php:274
 #: app/Module/DescendancyChartModule.php:263
+#: resources/views/emails/register-notify-html.phtml:25
+#: resources/views/emails/register-notify-text.phtml:15
 msgid "Tree"
 msgstr ""
 
@@ -15406,7 +15410,7 @@ msgstr "Notið „?“ til að finna samsvörun við einn bókstaf, notið use &
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:48
 #: resources/views/admin/users-edit.phtml:53
-#: resources/views/register-page.phtml:74
+#: resources/views/register-page.phtml:73
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -15460,7 +15464,7 @@ msgstr "Nota skuggamyndir"
 msgid "Use the GeoNames database for autocomplete on places"
 msgstr "Nota GeoNames gagnagrunn fyrir sjálfkrafa útfyllingu á stöðum"
 
-#: resources/views/register-page.phtml:89
+#: resources/views/register-page.phtml:88
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 msgstr "Notið þennan reit til að láta kerfisstjóra vefsíðunnar vita hvers vegna þú ert að óska eftir reikningi og hvernig þú ert tengdur ættfræðinni sem birt er á þessari vefsíðu. Þú getur einnig notað þetta til að slá inn aðrar athugasemdir sem þú kannt að hafa handa kerfisstjóra vefsíðunnar."
 
@@ -15505,26 +15509,26 @@ msgstr "Notanda staðfesting"
 #: resources/views/admin/users-edit.phtml:37
 #: resources/views/admin/users.phtml:20
 #: resources/views/edit-account-page.phtml:20
-#: resources/views/emails/register-notify-html.phtml:13
-#: resources/views/emails/register-notify-text.phtml:6
+#: resources/views/emails/register-notify-html.phtml:17
+#: resources/views/emails/register-notify-text.phtml:11
 #: resources/views/login-page.phtml:34
-#: resources/views/modules/login_block/sign-in.phtml:17
+#: resources/views/modules/login_block/sign-in.phtml:18
 #: resources/views/modules/todo/research-tasks.phtml:13
 #: resources/views/password-reset-page.phtml:25
-#: resources/views/register-page.phtml:58
+#: resources/views/register-page.phtml:57
 #: resources/views/setup/step-5-administrator.phtml:44
 msgid "Username"
 msgstr "Notandaheiti"
 
 #: resources/views/forgot-password-page.phtml:20
-#: resources/views/modules/login_block/sign-in.phtml:51
+#: resources/views/modules/login_block/sign-in.phtml:52
 msgid "Username or email address"
 msgstr "Notendaheiti eða netfang"
 
 #: resources/views/admin/users-create.phtml:37
 #: resources/views/admin/users-edit.phtml:42
 #: resources/views/edit-account-page.phtml:25
-#: resources/views/register-page.phtml:63
+#: resources/views/register-page.phtml:62
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr "Notandaheiti er stafstaða ónæmt og sleppið broddstöfum, þannig að „chloe“, „chloë“ og „Chloe“ eru álitin vera það sama."
 
@@ -15654,7 +15658,7 @@ msgstr "Sýn"
 msgid "View table of events occurring in %s"
 msgstr ""
 
-#: resources/views/calendar-page.phtml:164
+#: resources/views/calendar-page.phtml:189
 #, fuzzy
 msgid "View this day"
 msgstr "Skoða dag"
@@ -15668,12 +15672,12 @@ msgstr "Skoða dag"
 msgid "View this family"
 msgstr "Skoða fjölskyldu"
 
-#: resources/views/calendar-page.phtml:168
+#: resources/views/calendar-page.phtml:193
 #, fuzzy
 msgid "View this month"
 msgstr "Skoða mánuð"
 
-#: resources/views/calendar-page.phtml:172
+#: resources/views/calendar-page.phtml:197
 #, fuzzy
 msgid "View this year"
 msgstr "Skoða ár"
@@ -15706,7 +15710,7 @@ msgstr "Gestur"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:40
-#: resources/views/calendar-page.phtml:126
+#: resources/views/calendar-page.phtml:150
 #: resources/xml/reports/bdm_report.xml:3
 #: resources/xml/reports/bdm_report.xml:34
 msgid "Vital records"
@@ -15942,7 +15946,7 @@ msgstr "Árstími"
 msgid "Yahrzeiten"
 msgstr "Árstími"
 
-#: app/Module/CalendarMenuModule.php:116 resources/views/calendar-page.phtml:57
+#: app/Module/CalendarMenuModule.php:116 resources/views/calendar-page.phtml:49
 msgid "Year"
 msgstr "Ár"
 
@@ -15964,7 +15968,7 @@ msgid "You (or someone claiming to be you) has requested an account at %1$s usin
 msgstr "Þú (eða einhver sem segist vera þú) hefur stofnað reikning á %1$s með því að nota netfangið %2$s."
 
 #: app/Http/RequestHandlers/ContactAction.php:107
-#: app/Http/RequestHandlers/RegisterAction.php:218
+#: app/Http/RequestHandlers/RegisterAction.php:236
 msgid "You are not allowed to send messages that contain external links."
 msgstr "Þú hefur ekki heimild til að senda skilaboð sem innihalda ytri krækjur."
 
@@ -15999,7 +16003,7 @@ msgid "You can make it easier to search for married women by recording their mar
 msgstr "Þú getur auðveldað leitina að giftum konum með því að skrá giftingarnöfn þeirra. Allar konur taka þó ekki eftirnöfn eiginmanna sinna, svo þú skalt varast að setja inn rangar upplýsingar inn í gagnagrunninn þinn."
 
 #: resources/views/modules/privacy-policy/page.phtml:48
-msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
+msgid "You can opt out of tracking by setting the AccountUpdate header in your browser preferences."
 msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:17
@@ -16096,7 +16100,7 @@ msgstr ""
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: app/Http/RequestHandlers/ContactAction.php:108
-#: app/Http/RequestHandlers/RegisterAction.php:218
+#: app/Http/RequestHandlers/RegisterAction.php:236
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr "Þú ættir að eyða „%1$s“ frá „%2$s“ og reyna aftur."
@@ -16105,8 +16109,8 @@ msgstr "Þú ættir að eyða „%1$s“ frá „%2$s“ og reyna aftur."
 msgid "You should not approve an account unless you know that the email address is correct."
 msgstr "Þú ættir ekki að samþykkja reikning nema því aðeins að þú vitir að netfangið sé rétt."
 
-#: resources/views/emails/register-notify-html.phtml:28
-#: resources/views/emails/register-notify-text.phtml:13
+#: resources/views/emails/register-notify-html.phtml:34
+#: resources/views/emails/register-notify-text.phtml:19
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr "Þú verður upplýstur með tölvupósti þegar þessi væntanlegi notandi hefur staðfest beiðnina. Þú getur þá afgreitt ferlið með því að virkja notandaheitið. Nýji notandinn getur ekki skráð sig inn fyrr en þú hefur virkjað reikninginn."
 
@@ -16143,7 +16147,7 @@ msgstr "Nafnið þitt"
 msgid "Your password has been updated."
 msgstr ""
 
-#: app/Http/RequestHandlers/RegisterAction.php:129
+#: app/Http/RequestHandlers/RegisterAction.php:131
 #, php-format
 msgid "Your registration at %s"
 msgstr "Þín skráning á %s"
@@ -16612,11 +16616,11 @@ msgstr "samanþjappaður listi"
 #: resources/views/admin/upgrade/wizard.phtml:33
 #: resources/views/forgot-password-page.phtml:33
 #: resources/views/modules/clippings/add-options.phtml:22
-#: resources/views/modules/login_block/sign-in.phtml:57
+#: resources/views/modules/login_block/sign-in.phtml:58
 #: resources/views/password-request-page.phtml:33
 #: resources/views/password-reset-page.phtml:50
 #: resources/views/pending-changes-page.phtml:23
-#: resources/views/register-page.phtml:99
+#: resources/views/register-page.phtml:98
 #: resources/views/report-select-page.phtml:32
 msgid "continue"
 msgstr "halda áfram"
@@ -19665,7 +19669,7 @@ msgstr "systkini"
 
 #. I18N: A button label.
 #: resources/views/login-page.phtml:56
-#: resources/views/modules/login_block/sign-in.phtml:31
+#: resources/views/modules/login_block/sign-in.phtml:32
 msgid "sign in"
 msgstr "innskráning"
 
@@ -21376,6 +21380,14 @@ msgstr "…"
 
 #~ msgid "Top level"
 #~ msgstr "Efsta stig"
+
+#, php-format
+#~ msgid "Total families: %s"
+#~ msgstr "Samtals fjölskyldur: %s"
+
+#, php-format
+#~ msgid "Total individuals: %s"
+#~ msgstr "Samtals einstaklingar: %s"
 
 #~ msgid "Total number of users"
 #~ msgstr "Heildarfjöldi notenda"

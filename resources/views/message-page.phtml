@@ -10,7 +10,7 @@ use Fisharebest\Webtrees\I18N; ?>
 
     <div class="form-group row">
         <label class="col-sm-3 col-form-label" for="from">
-            <?= I18N::translate('From') ?>
+            <?= I18N::translateContext('Email sender', 'From') ?>
         </label>
         <div class="col-sm-9">
             <input class="form-control" id="from" type="text" value="<?= e($from->realName()) ?>" dir="auto" disabled>
@@ -19,7 +19,7 @@ use Fisharebest\Webtrees\I18N; ?>
 
     <div class="form-group row">
         <label class="col-sm-3 col-form-label" for="to">
-            <?= I18N::translate('To') ?>
+            <?= I18N::translateContext('Email recipient', 'To') ?>
         </label>
         <div class="col-sm-9">
             <input type="hidden" name="to" value="<?= e($to->userName()) ?>">

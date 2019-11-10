@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-09 18:45+0000\n"
+"POT-Creation-Date: 2019-11-10 16:16+0000\n"
 "PO-Revision-Date: 2019-10-22 21:17+0000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: Lithuanian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/lt/>\n"
@@ -233,6 +233,14 @@ msgstr[0] "%s diena"
 msgstr[1] "%s dienos"
 msgstr[2] "%s dienų"
 
+#: resources/views/calendar-list.phtml:18
+#, php-format
+msgid "%s family"
+msgid_plural "%s families"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
 #, php-format
@@ -253,6 +261,7 @@ msgstr[2] "%s anūkų"
 
 #: app/Module/LifespansChartModule.php:431
 #: resources/views/admin/trees-unconnected.phtml:35
+#: resources/views/calendar-list.phtml:13
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
@@ -294,7 +303,7 @@ msgstr[0] "%s asmuo su įvykiais %s tarp %s ir %s"
 msgstr[1] "%s asmenys su įvykiais %s tarp %s ir %s"
 msgstr[2] "%s asmenų su įvykiais %s tarp %s ir %s"
 
-#: app/Http/Controllers/Admin/LocationController.php:841
+#: app/Http/Controllers/Admin/LocationController.php:842
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
@@ -416,7 +425,7 @@ msgstr[0] "%s metai"
 msgstr[1] "%s metai"
 msgstr[2] "%s metų"
 
-#: app/Http/Controllers/CalendarController.php:565
+#: app/Http/Controllers/CalendarController.php:542
 #: resources/views/modules/yahrzeit/list.phtml:10
 #, php-format
 msgid "%s year anniversary"
@@ -875,8 +884,8 @@ msgid "A private area to record notes or keep a journal."
 msgstr "Privati vieta pastaboms ar kitiems įrašams."
 
 #. I18N: %s is a server name/URL
-#: resources/views/emails/register-notify-html.phtml:9
-#: resources/views/emails/register-notify-text.phtml:4
+#: resources/views/emails/register-notify-html.phtml:13
+#: resources/views/emails/register-notify-text.phtml:9
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
 msgstr "Būsimasis naudotojas užsiregistravo su webtrees į %s."
@@ -1798,7 +1807,7 @@ msgstr "Gyvi"
 #: app/Http/Controllers/ListController.php:367
 #: app/Module/FrequentlyAskedQuestionsModule.php:322
 #: app/Module/UserMessagesModule.php:174
-#: resources/views/calendar-page.phtml:129
+#: resources/views/calendar-page.phtml:153
 #: resources/views/lists/datatables-attributes.phtml:6
 #: resources/views/modules/faq/config.phtml:58
 #: resources/views/modules/random_media/config.phtml:12
@@ -1823,7 +1832,7 @@ msgstr "Visi faktai ir įvykiai"
 msgid "All family facts"
 msgstr "Visi šeimos faktai"
 
-#: app/Http/RequestHandlers/RegisterAction.php:201
+#: app/Http/RequestHandlers/RegisterAction.php:219
 msgid "All fields must be completed."
 msgstr "Visi laukai turi būti užpildyti."
 
@@ -1831,8 +1840,8 @@ msgstr "Visi laukai turi būti užpildyti."
 msgid "All individual facts"
 msgstr "Visi asmens faktai"
 
-#: resources/views/calendar-page.phtml:81
-#: resources/views/calendar-page.phtml:92
+#: resources/views/calendar-page.phtml:95
+#: resources/views/calendar-page.phtml:107
 msgid "All individuals"
 msgstr "Visi asmenys"
 
@@ -2465,7 +2474,7 @@ msgid "Bangladesh"
 msgstr "Bangladešas"
 
 #. I18N: gedcom tag BAPM
-#: app/GedcomTag.php:510 resources/views/calendar-page.phtml:135
+#: app/GedcomTag.php:510 resources/views/calendar-page.phtml:159
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Baptism"
 msgstr "Krikštas"
@@ -2637,7 +2646,7 @@ msgid "Birmingham, Alabama, United States"
 msgstr "Birmingham, Alabama, United States"
 
 #. I18N: gedcom tag BIRT
-#: app/GedcomTag.php:531 resources/views/calendar-page.phtml:132
+#: app/GedcomTag.php:531 resources/views/calendar-page.phtml:156
 #: resources/views/lists/individuals-table.phtml:232
 #: resources/views/lists/individuals-table.phtml:240
 #: resources/views/lists/individuals-table.phtml:269
@@ -3090,7 +3099,7 @@ msgid "Bulgaria"
 msgstr "Bulgarija"
 
 #. I18N: gedcom tag BURI
-#: app/GedcomTag.php:548 resources/views/calendar-page.phtml:147
+#: app/GedcomTag.php:548 resources/views/calendar-page.phtml:171
 #: resources/xml/reports/family_group_report.xml:351
 #: resources/xml/reports/family_group_report.xml:705
 #: resources/xml/reports/family_group_report.xml:1049
@@ -3843,9 +3852,9 @@ msgstr "Columbus, Ohajo"
 msgid "Comment"
 msgstr "Komenatas"
 
-#: resources/views/emails/register-notify-html.phtml:19
-#: resources/views/emails/register-notify-text.phtml:9
-#: resources/views/register-page.phtml:83
+#: resources/views/emails/register-notify-html.phtml:23
+#: resources/views/emails/register-notify-text.phtml:14
+#: resources/views/register-page.phtml:82
 msgid "Comments"
 msgstr "Komentarai"
 
@@ -4276,7 +4285,7 @@ msgstr "Kuritiba, Brazilija"
 msgid "Custom"
 msgstr "Pasirinktinis"
 
-#: resources/views/calendar-page.phtml:153
+#: resources/views/calendar-page.phtml:177
 #: resources/views/edit/add-fact-row.phtml:33
 msgid "Custom event"
 msgstr "Pasirinktinis įvykis"
@@ -4571,11 +4580,11 @@ msgstr "Dukra"
 msgid "Daughter of %s"
 msgstr "Duktė %s"
 
-#: app/Module/CalendarMenuModule.php:90 resources/views/calendar-page.phtml:22
+#: app/Module/CalendarMenuModule.php:90 resources/views/calendar-page.phtml:14
 msgid "Day"
 msgstr "Diena"
 
-#: app/Http/Controllers/CalendarController.php:439
+#: app/Http/Controllers/CalendarController.php:416
 msgid "Day not set"
 msgstr "Nenustatyta diena"
 
@@ -4591,7 +4600,7 @@ msgid "Dead"
 msgstr "Iš viso mirusių"
 
 #. I18N: gedcom tag DEAT
-#: app/GedcomTag.php:654 resources/views/calendar-page.phtml:144
+#: app/GedcomTag.php:654 resources/views/calendar-page.phtml:168
 #: resources/views/lists/individuals-table.phtml:214
 #: resources/views/lists/individuals-table.phtml:222
 #: resources/views/lists/individuals-table.phtml:279
@@ -5248,7 +5257,7 @@ msgid "Display and manage a user’s favorite pages."
 msgstr "Tvarkyti ir rodyti naudotojo mėgstamiausius puslapius."
 
 #. I18N: gedcom tag DIV
-#: app/GedcomTag.php:672 resources/views/calendar-page.phtml:141
+#: app/GedcomTag.php:672 resources/views/calendar-page.phtml:165
 #: resources/views/lists/families-table.phtml:234
 msgid "Divorce"
 msgstr "Skyrybos"
@@ -5336,14 +5345,14 @@ msgstr "Duodi"
 #: app/Http/Controllers/Admin/UsersController.php:275
 #: app/Http/Controllers/Admin/UsersController.php:389
 #: app/Http/RequestHandlers/AccountUpdate.php:95
-#: app/Http/RequestHandlers/RegisterAction.php:211
+#: app/Http/RequestHandlers/RegisterAction.php:229
 msgid "Duplicate email address. A user with that email already exists."
 msgstr "Pasikartojantis elektroninio pašto adresas. Su tokiu elektroniniu pašto adresu kilmės medžio narys jau yra."
 
 #: app/Http/Controllers/Admin/UsersController.php:270
 #: app/Http/Controllers/Admin/UsersController.php:395
 #: app/Http/RequestHandlers/AccountUpdate.php:86
-#: app/Http/RequestHandlers/RegisterAction.php:206
+#: app/Http/RequestHandlers/RegisterAction.php:224
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
 msgstr "Pasikartojantis vardas. Naudotojas tokiu vardu jau egzistuoja. Pasirinkite kitą naudotojo vardą."
 
@@ -5533,9 +5542,9 @@ msgstr ""
 #: resources/views/admin/users-edit.phtml:63
 #: resources/views/admin/users.phtml:22 resources/views/contact-page.phtml:35
 #: resources/views/edit-account-page.phtml:111
-#: resources/views/emails/register-notify-html.phtml:17
-#: resources/views/emails/register-notify-text.phtml:8
-#: resources/views/register-page.phtml:46
+#: resources/views/emails/register-notify-html.phtml:21
+#: resources/views/emails/register-notify-text.phtml:13
+#: resources/views/register-page.phtml:45
 #: resources/views/setup/step-5-administrator.phtml:68
 msgid "Email address"
 msgstr "Elektroninis adresas"
@@ -5545,7 +5554,7 @@ msgid "Email verified"
 msgstr "Elektroninio pašto adresas patvirtintas"
 
 #. I18N: gedcom tag EMIG
-#: app/GedcomTag.php:693 resources/views/calendar-page.phtml:150
+#: app/GedcomTag.php:693 resources/views/calendar-page.phtml:174
 msgid "Emigration"
 msgstr "Emigravimas"
 
@@ -5742,7 +5751,7 @@ msgid "Excluded from this submission"
 msgstr "Nepatenka į šį pateikimą"
 
 #. I18N: placeholder text for registration-comments field
-#: resources/views/register-page.phtml:87
+#: resources/views/register-page.phtml:86
 msgid "Explain why you are requesting an account."
 msgstr "Paaiškinkite, kodėl Jūs prašote prieigos sąskaitos."
 
@@ -5910,7 +5919,6 @@ msgstr "Folklendo salos"
 #. I18N: Name of a module/list
 #. I18N: Name of a module
 #: app/Http/Controllers/AdminTreesController.php:1702
-#: app/Http/Controllers/CalendarController.php:377
 #: app/Http/Controllers/ListController.php:242
 #: app/Module/AncestorsChartModule.php:276
 #: app/Module/DescendancyChartModule.php:265 app/Module/FamilyListModule.php:48
@@ -6212,7 +6220,7 @@ msgstr "Moteris"
 #: app/Statistics/Google/ChartAge.php:115
 #: app/Statistics/Google/ChartMarriageAge.php:139
 #: app/Statistics/Google/ChartSex.php:72
-#: resources/views/calendar-page.phtml:114
+#: resources/views/calendar-page.phtml:129
 #: resources/views/lists/families-table.phtml:111
 #: resources/views/lists/families-table.phtml:126
 #: resources/views/lists/families-table.phtml:136
@@ -6455,7 +6463,7 @@ msgid "For websites with more than one family tree, this option will show the li
 msgstr "Svetainėse su daugiau negu vienu šeimos medžiu ši parinktis parodys šeimos medžių sąrašą pagrindiniame meniu, paieškų puslapyje ir t.t."
 
 #: resources/views/login-page.phtml:60
-#: resources/views/modules/login_block/sign-in.phtml:35
+#: resources/views/modules/login_block/sign-in.phtml:36
 msgid "Forgot password?"
 msgstr "Pamiršote slaptažodį?"
 
@@ -6598,15 +6606,18 @@ msgctxt "NOMINATIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: From date1 (To date2)
-#. I18N: label for the start of a date range (from x to y)
 #: resources/views/admin/broadcast.phtml:18
-#: resources/views/admin/changes-log.phtml:22
 #: resources/views/admin/email-page.phtml:18
-#: resources/views/admin/site-logs.phtml:23
 #: resources/views/message-page.phtml:13
+msgctxt "Email sender"
 msgid "From"
-msgstr "Nuo"
+msgstr ""
+
+#: resources/views/admin/changes-log.phtml:22
+#: resources/views/admin/site-logs.phtml:23
+msgctxt "Start of date range"
+msgid "From"
+msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
@@ -7062,8 +7073,8 @@ msgstr "Sveiki %s …"
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "Sveiki %s…<br>Ačiū už prisiregistravimą."
 
-#: resources/views/emails/register-notify-html.phtml:4
-#: resources/views/emails/register-notify-text.phtml:2
+#: resources/views/emails/register-notify-html.phtml:8
+#: resources/views/emails/register-notify-text.phtml:6
 #: resources/views/emails/verify-notify-html.phtml:4
 #: resources/views/emails/verify-notify-text.phtml:2
 msgid "Hello administrator…"
@@ -7596,7 +7607,6 @@ msgstr "Ilgiausiai gyvenęs asmuo"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/AdminTreesController.php:1701
-#: app/Http/Controllers/CalendarController.php:376
 #: app/Http/Controllers/ListController.php:244
 #: app/Module/AncestorsChartModule.php:275
 #: app/Module/DescendancyChartModule.php:264
@@ -8396,7 +8406,7 @@ msgstr "Lietuvių"
 msgid "Living"
 msgstr "Gyvi"
 
-#: resources/views/calendar-page.phtml:84
+#: resources/views/calendar-page.phtml:98
 msgid "Living individuals"
 msgstr "Gyvi žmonės"
 
@@ -8540,7 +8550,7 @@ msgstr "Vyras"
 #: app/Statistics/Google/ChartAge.php:114
 #: app/Statistics/Google/ChartMarriageAge.php:138
 #: app/Statistics/Google/ChartSex.php:67
-#: resources/views/calendar-page.phtml:104
+#: resources/views/calendar-page.phtml:119
 #: resources/views/lists/families-table.phtml:108
 #: resources/views/lists/families-table.phtml:123
 #: resources/views/lists/families-table.phtml:135
@@ -8681,7 +8691,7 @@ msgstr "Markdown yra paprasta formatavimo sistema, naudojama svetainių kaip Wik
 
 #. I18N: gedcom tag MARR
 #: app/GedcomTag.php:838 app/Http/Controllers/BranchesController.php:341
-#: resources/views/calendar-page.phtml:138
+#: resources/views/calendar-page.phtml:162
 #: resources/views/lists/families-table.phtml:210
 #: resources/views/lists/families-table.phtml:218
 #: resources/views/lists/families-table.phtml:226
@@ -9366,7 +9376,7 @@ msgstr "Montevideo, Urugvajus"
 #: app/Module/StatisticsChartModule.php:387
 #: app/Module/StatisticsChartModule.php:429
 #: app/Module/StatisticsChartModule.php:478
-#: resources/views/calendar-page.phtml:38
+#: resources/views/calendar-page.phtml:30
 msgid "Month"
 msgstr "Mėnesis"
 
@@ -9783,7 +9793,7 @@ msgid "New data"
 msgstr "Naujos duomenys"
 
 #. I18N: %s is a server name/URL
-#: app/Http/RequestHandlers/RegisterAction.php:139
+#: app/Http/RequestHandlers/RegisterAction.php:141
 #, php-format
 msgid "New registration at %s"
 msgstr "Nauja registracija %s|"
@@ -10590,9 +10600,9 @@ msgstr "Tėvų amžius"
 #: resources/views/admin/users-edit.phtml:50
 #: resources/views/edit-account-page.phtml:76
 #: resources/views/login-page.phtml:43
-#: resources/views/modules/login_block/sign-in.phtml:24
+#: resources/views/modules/login_block/sign-in.phtml:25
 #: resources/views/password-reset-page.phtml:34
-#: resources/views/register-page.phtml:70
+#: resources/views/register-page.phtml:69
 #: resources/views/setup/step-5-administrator.phtml:56
 msgid "Password"
 msgstr "Slaptažodis"
@@ -10601,7 +10611,7 @@ msgstr "Slaptažodis"
 #: resources/views/admin/users-edit.phtml:55
 #: resources/views/edit-account-page.phtml:81
 #: resources/views/password-reset-page.phtml:39
-#: resources/views/register-page.phtml:76
+#: resources/views/register-page.phtml:75
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
 msgstr "Slaptažodis turi būti bent 8 simbolių ilgio ir susidaryti iš didžiųjų bei mažųjų raidžių, kaip šis „paslaptis“ skiriasi nuo „PASLAPTIS“."
 
@@ -11368,9 +11378,9 @@ msgstr ""
 #: resources/views/admin/users-edit.phtml:24
 #: resources/views/admin/users.phtml:21
 #: resources/views/edit-account-page.phtml:32
-#: resources/views/emails/register-notify-html.phtml:15
-#: resources/views/emails/register-notify-text.phtml:7
-#: resources/views/register-page.phtml:34
+#: resources/views/emails/register-notify-html.phtml:19
+#: resources/views/emails/register-notify-text.phtml:12
+#: resources/views/register-page.phtml:33
 msgid "Real name"
 msgstr "Tikrasis vardas"
 
@@ -11384,7 +11394,7 @@ msgstr ""
 msgid "Recent changes"
 msgstr "Naujausi pakeitimai"
 
-#: resources/views/calendar-page.phtml:87
+#: resources/views/calendar-page.phtml:101
 msgid "Recent years (&lt; 100 yrs)"
 msgstr "Pastarieji metai (&lt; 100 m)"
 
@@ -11672,14 +11682,14 @@ msgstr "Kongas (Brazavilis)"
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:88
 #: app/Http/RequestHandlers/PasswordRequestPage.php:55
-#: resources/views/modules/login_block/sign-in.phtml:48
+#: resources/views/modules/login_block/sign-in.phtml:49
 msgid "Request a new password"
 msgstr "Naujo slaptažodžio sukūrimas"
 
-#: app/Http/RequestHandlers/RegisterAction.php:163
+#: app/Http/RequestHandlers/RegisterAction.php:180
 #: app/Http/RequestHandlers/RegisterPage.php:51
 #: app/Module/WelcomeBlockModule.php:114 resources/views/login-page.phtml:65
-#: resources/views/modules/login_block/sign-in.phtml:42
+#: resources/views/modules/login_block/sign-in.phtml:43
 msgid "Request a new user account"
 msgstr "Naujo naudotojo sukūrimas"
 
@@ -12463,7 +12473,7 @@ msgstr "Spartusis klavišas"
 msgid "Shortest marriage"
 msgstr "Trumpiausios trukmės šeimyninis gyvenimas"
 
-#: resources/views/calendar-page.phtml:74
+#: resources/views/calendar-page.phtml:79
 msgid "Show"
 msgstr "Rodyti"
 
@@ -14038,8 +14048,8 @@ msgstr "Siunčiama byla viršijo maksimaliai leistiną dydį."
 msgid "The user %s has been deleted."
 msgstr "Naudotojas %s buvo ištrintas."
 
-#: resources/views/emails/register-notify-html.phtml:24
-#: resources/views/emails/register-notify-text.phtml:11
+#: resources/views/emails/register-notify-html.phtml:30
+#: resources/views/emails/register-notify-text.phtml:17
 msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr "Naudotojas išsiuntė el.laišką su informacija, kuri būtina prieigos prašymo patvirtinimui."
 
@@ -14214,7 +14224,7 @@ msgstr "Šis blokas bus rodomas redaktoriams su įrašais, kuriuos reikia patvir
 #: resources/views/admin/users-create.phtml:63
 #: resources/views/admin/users-edit.phtml:68
 #: resources/views/edit-account-page.phtml:116
-#: resources/views/register-page.phtml:51
+#: resources/views/register-page.phtml:50
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr "Šis elektroninio pašto adresas bus naudojamas siųsti slaptažodžio priminimus, svetainės pranešimus ir žinutes iš kitų šeimos narių, kurie yra užsiregistravę svetainėje."
@@ -14447,7 +14457,7 @@ msgstr "Tai yra SMTP serverio vardas. „localhost“ reiškia, kad pašto pasla
 #: resources/views/admin/users-create.phtml:24
 #: resources/views/admin/users-edit.phtml:29
 #: resources/views/edit-account-page.phtml:37
-#: resources/views/register-page.phtml:39
+#: resources/views/register-page.phtml:38
 #: resources/views/setup/step-5-administrator.phtml:37
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr "Tai tavo realus vardas, kaip norėtumėte rodyti jį ekrane."
@@ -14872,15 +14882,18 @@ msgstr "Titulas"
 msgid "Title in Hebrew"
 msgstr "Titulas hebrajų kalba"
 
-#. I18N: (From date1) To date2
-#. I18N: label for the end of a date range (from x to y)
 #: resources/views/admin/broadcast.phtml:27
-#: resources/views/admin/changes-log.phtml:29
 #: resources/views/admin/email-page.phtml:27
-#: resources/views/admin/site-logs.phtml:30
 #: resources/views/contact-page.phtml:17 resources/views/message-page.phtml:22
+msgctxt "Email recipient"
 msgid "To"
-msgstr "iki"
+msgstr ""
+
+#: resources/views/admin/changes-log.phtml:29
+#: resources/views/admin/site-logs.phtml:30
+msgctxt "End of date range"
+msgid "To"
+msgstr ""
 
 #: resources/views/modules/html/config.phtml:25
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -15049,11 +15062,6 @@ msgstr "Iš viso įvykių"
 msgid "Total families"
 msgstr "Iš viso šeimų"
 
-#: app/Http/Controllers/CalendarController.php:397
-#, php-format
-msgid "Total families: %s"
-msgstr "Iš viso šeimų: %s"
-
 #: resources/views/statistics/individuals/total-records.phtml:31
 msgid "Total females"
 msgstr "Iš viso moterų"
@@ -15076,11 +15084,6 @@ msgstr "Iš viso vardų"
 #: resources/xml/reports/relative_ext_report.xml:140
 msgid "Total individuals"
 msgstr "Iš viso vardų"
-
-#: app/Http/Controllers/CalendarController.php:396
-#, php-format
-msgid "Total individuals: %s"
-msgstr "Iš viso asmenų: %s"
 
 #: resources/views/statistics/individuals/total-records.phtml:52
 msgid "Total living"
@@ -15133,6 +15136,8 @@ msgstr "Priekaba"
 
 #: app/Module/AncestorsChartModule.php:274
 #: app/Module/DescendancyChartModule.php:263
+#: resources/views/emails/register-notify-html.phtml:25
+#: resources/views/emails/register-notify-text.phtml:15
 msgid "Tree"
 msgstr ""
 
@@ -15404,7 +15409,7 @@ msgstr "Naudokite „?“ vienam rašmens atitikimui, naudokite „*“ nei vien
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:48
 #: resources/views/admin/users-edit.phtml:53
-#: resources/views/register-page.phtml:74
+#: resources/views/register-page.phtml:73
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -15459,7 +15464,7 @@ msgstr "Naudokite siluetus"
 msgid "Use the GeoNames database for autocomplete on places"
 msgstr "Naudoti GeoVardų duomenų bazę vietovardžių rašymo užbaigimui"
 
-#: resources/views/register-page.phtml:89
+#: resources/views/register-page.phtml:88
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 msgstr ""
 
@@ -15504,26 +15509,26 @@ msgstr "Naudotojo patvirtinimas"
 #: resources/views/admin/users-edit.phtml:37
 #: resources/views/admin/users.phtml:20
 #: resources/views/edit-account-page.phtml:20
-#: resources/views/emails/register-notify-html.phtml:13
-#: resources/views/emails/register-notify-text.phtml:6
+#: resources/views/emails/register-notify-html.phtml:17
+#: resources/views/emails/register-notify-text.phtml:11
 #: resources/views/login-page.phtml:34
-#: resources/views/modules/login_block/sign-in.phtml:17
+#: resources/views/modules/login_block/sign-in.phtml:18
 #: resources/views/modules/todo/research-tasks.phtml:13
 #: resources/views/password-reset-page.phtml:25
-#: resources/views/register-page.phtml:58
+#: resources/views/register-page.phtml:57
 #: resources/views/setup/step-5-administrator.phtml:44
 msgid "Username"
 msgstr "Nario vardas"
 
 #: resources/views/forgot-password-page.phtml:20
-#: resources/views/modules/login_block/sign-in.phtml:51
+#: resources/views/modules/login_block/sign-in.phtml:52
 msgid "Username or email address"
 msgstr "Vartotojo vardas ar elektroninis adresas"
 
 #: resources/views/admin/users-create.phtml:37
 #: resources/views/admin/users-edit.phtml:42
 #: resources/views/edit-account-page.phtml:25
-#: resources/views/register-page.phtml:63
+#: resources/views/register-page.phtml:62
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr "Vartotojo vardai yra didžiųjų ir mažųjų raidžių ir ignoruoja kirčiuotas raides, tad „chloe“, „Chloë“ ir „Chloe“, yra laikomi tuo patčiu."
 
@@ -15653,7 +15658,7 @@ msgstr "Rodyti"
 msgid "View table of events occurring in %s"
 msgstr ""
 
-#: resources/views/calendar-page.phtml:164
+#: resources/views/calendar-page.phtml:189
 msgid "View this day"
 msgstr "Rodyti šią dieną"
 
@@ -15665,11 +15670,11 @@ msgstr "Rodyti šią dieną"
 msgid "View this family"
 msgstr "Rodyti šią šeimą"
 
-#: resources/views/calendar-page.phtml:168
+#: resources/views/calendar-page.phtml:193
 msgid "View this month"
 msgstr "Rodyti šį mėnesį"
 
-#: resources/views/calendar-page.phtml:172
+#: resources/views/calendar-page.phtml:197
 msgid "View this year"
 msgstr "Rodyti šiuos metus"
 
@@ -15701,7 +15706,7 @@ msgstr "Lankytojas"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:40
-#: resources/views/calendar-page.phtml:126
+#: resources/views/calendar-page.phtml:150
 #: resources/xml/reports/bdm_report.xml:3
 #: resources/xml/reports/bdm_report.xml:34
 msgid "Vital records"
@@ -15936,7 +15941,7 @@ msgstr "Metų laikas"
 msgid "Yahrzeiten"
 msgstr "Metų laikai"
 
-#: app/Module/CalendarMenuModule.php:116 resources/views/calendar-page.phtml:57
+#: app/Module/CalendarMenuModule.php:116 resources/views/calendar-page.phtml:49
 msgid "Year"
 msgstr "Metai"
 
@@ -15958,7 +15963,7 @@ msgid "You (or someone claiming to be you) has requested an account at %1$s usin
 msgstr "Jūs (ar kas nors apsimetes jumis) paprašė registracijos %1$s naudojant elektroninio pašto adresą %2$s."
 
 #: app/Http/RequestHandlers/ContactAction.php:107
-#: app/Http/RequestHandlers/RegisterAction.php:218
+#: app/Http/RequestHandlers/RegisterAction.php:236
 msgid "You are not allowed to send messages that contain external links."
 msgstr "Jums neleidžiama siųsti laiškus, kurie turi išorines nuorodas."
 
@@ -15993,7 +15998,7 @@ msgid "You can make it easier to search for married women by recording their mar
 msgstr "Jūs galite padaryti tai lengviau ieškoti ištekėjusios moters įrašant jos povedybinę pavardę. Tačiau ne visos moterys ima savo vyro pavardę, todėl saugokitės įvesti neteisingą informaciją į savo duomenų bazę."
 
 #: resources/views/modules/privacy-policy/page.phtml:48
-msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
+msgid "You can opt out of tracking by setting the AccountUpdate header in your browser preferences."
 msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:17
@@ -16089,7 +16094,7 @@ msgstr "Jūs turite priimpti ar atmesti visus laukiančius pakeitimus prieš ide
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: app/Http/RequestHandlers/ContactAction.php:108
-#: app/Http/RequestHandlers/RegisterAction.php:218
+#: app/Http/RequestHandlers/RegisterAction.php:236
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr "Turėtumėte ištrinti „%1$s“ iš „%2$s“ ir pabandyti dar kartą."
@@ -16098,8 +16103,8 @@ msgstr "Turėtumėte ištrinti „%1$s“ iš „%2$s“ ir pabandyti dar kartą
 msgid "You should not approve an account unless you know that the email address is correct."
 msgstr "Jūs turėtumėt nepatvirtinti sąskaitos, nebent jus žinote, kad elektroninio pašto adresas yra teisingas."
 
-#: resources/views/emails/register-notify-html.phtml:28
-#: resources/views/emails/register-notify-text.phtml:13
+#: resources/views/emails/register-notify-html.phtml:34
+#: resources/views/emails/register-notify-text.phtml:19
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr "Jūs būsite informuotas el.laišku, kuomet šis būsimasis naudotojas patvirtins prašymą. Tuomet galėsite užbaigti procesą aktyvuodamas naudotojo vardą. Naujas naudotojas negalės prisijungti iki kol aktyvuosite paskyrą."
 
@@ -16136,7 +16141,7 @@ msgstr "Jūsų vardas"
 msgid "Your password has been updated."
 msgstr ""
 
-#: app/Http/RequestHandlers/RegisterAction.php:129
+#: app/Http/RequestHandlers/RegisterAction.php:131
 #, php-format
 msgid "Your registration at %s"
 msgstr "Jūsų prisijungimas prie %s|"
@@ -16603,11 +16608,11 @@ msgstr "glaustas sąrašas"
 #: resources/views/admin/upgrade/wizard.phtml:33
 #: resources/views/forgot-password-page.phtml:33
 #: resources/views/modules/clippings/add-options.phtml:22
-#: resources/views/modules/login_block/sign-in.phtml:57
+#: resources/views/modules/login_block/sign-in.phtml:58
 #: resources/views/password-request-page.phtml:33
 #: resources/views/password-reset-page.phtml:50
 #: resources/views/pending-changes-page.phtml:23
-#: resources/views/register-page.phtml:99
+#: resources/views/register-page.phtml:98
 #: resources/views/report-select-page.phtml:32
 msgid "continue"
 msgstr "tęsti"
@@ -19656,7 +19661,7 @@ msgstr "brolis/sesuo"
 
 #. I18N: A button label.
 #: resources/views/login-page.phtml:56
-#: resources/views/modules/login_block/sign-in.phtml:31
+#: resources/views/modules/login_block/sign-in.phtml:32
 msgid "sign in"
 msgstr "prisijungti"
 
@@ -20793,6 +20798,9 @@ msgstr "…"
 #~ msgid "Find an individual"
 #~ msgstr "Rasti asmenį"
 
+#~ msgid "From"
+#~ msgstr "Nuo"
+
 #~ msgid "Gender icon on charts"
 #~ msgstr "Lyties piktograma diagramose"
 
@@ -21498,6 +21506,9 @@ msgstr "…"
 #~ msgid "Thumbnail to upload"
 #~ msgstr "Miniatiūra įkėlimui"
 
+#~ msgid "To"
+#~ msgstr "iki"
+
 #~ msgid "To complete the upgrade, you should install the files manually."
 #~ msgstr "Norėdami baigti atnaujinimą, jūs turite įdiegti bylas rankiniu būdu."
 
@@ -21509,6 +21520,14 @@ msgstr "…"
 
 #~ msgid "Top level"
 #~ msgstr "Aukščiausias lygmuo"
+
+#, php-format
+#~ msgid "Total families: %s"
+#~ msgstr "Iš viso šeimų: %s"
+
+#, php-format
+#~ msgid "Total individuals: %s"
+#~ msgstr "Iš viso asmenų: %s"
 
 #~ msgid "Total number of users"
 #~ msgstr "Visų narių skaičius"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Chinese (Traditional) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-09 18:45+0000\n"
+"POT-Creation-Date: 2019-11-10 16:16+0000\n"
 "PO-Revision-Date: 2019-11-09 18:04+0000\n"
 "Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
 "Language-Team: Chinese (Traditional) <http://translate.webtrees.net/projects/webtrees/webtrees/zh_Hant/>\n"
@@ -244,6 +244,12 @@ msgid "%s day"
 msgid_plural "%s days"
 msgstr[0] "%s 天"
 
+#: resources/views/calendar-list.phtml:18
+#, php-format
+msgid "%s family"
+msgid_plural "%s families"
+msgstr[0] ""
+
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
 #, php-format
@@ -260,6 +266,7 @@ msgstr[0] "%s 孫子"
 
 #: app/Module/LifespansChartModule.php:431
 #: resources/views/admin/trees-unconnected.phtml:35
+#: resources/views/calendar-list.phtml:13
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
@@ -291,7 +298,7 @@ msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
 msgstr[0] "%s個人在%s事件介於 %s 和 %s 之間"
 
-#: app/Http/Controllers/Admin/LocationController.php:841
+#: app/Http/Controllers/Admin/LocationController.php:842
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
@@ -405,7 +412,7 @@ msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s 歲"
 
-#: app/Http/Controllers/CalendarController.php:565
+#: app/Http/Controllers/CalendarController.php:542
 #: resources/views/modules/yahrzeit/list.phtml:10
 #, php-format
 msgid "%s year anniversary"
@@ -911,8 +918,8 @@ msgstr "記錄或日記僅本人可瀏覽。"
 
 # I18N: %s is a server name/URL
 #. I18N: %s is a server name/URL
-#: resources/views/emails/register-notify-html.phtml:9
-#: resources/views/emails/register-notify-text.phtml:4
+#: resources/views/emails/register-notify-html.phtml:13
+#: resources/views/emails/register-notify-text.phtml:9
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
 msgstr "有個用戶在 %s 註冊。"
@@ -1909,7 +1916,7 @@ msgstr "在世"
 #: app/Http/Controllers/ListController.php:367
 #: app/Module/FrequentlyAskedQuestionsModule.php:322
 #: app/Module/UserMessagesModule.php:174
-#: resources/views/calendar-page.phtml:129
+#: resources/views/calendar-page.phtml:153
 #: resources/views/lists/datatables-attributes.phtml:6
 #: resources/views/modules/faq/config.phtml:58
 #: resources/views/modules/random_media/config.phtml:12
@@ -1934,7 +1941,7 @@ msgstr "所有的事實和事件"
 msgid "All family facts"
 msgstr "所有的家庭事件"
 
-#: app/Http/RequestHandlers/RegisterAction.php:201
+#: app/Http/RequestHandlers/RegisterAction.php:219
 msgid "All fields must be completed."
 msgstr "所有項必須完成。"
 
@@ -1942,8 +1949,8 @@ msgstr "所有項必須完成。"
 msgid "All individual facts"
 msgstr "所有的個人事件"
 
-#: resources/views/calendar-page.phtml:81
-#: resources/views/calendar-page.phtml:92
+#: resources/views/calendar-page.phtml:95
+#: resources/views/calendar-page.phtml:107
 msgid "All individuals"
 msgstr "所有人"
 
@@ -2643,7 +2650,7 @@ msgstr "孟加拉共和國"
 
 # I18N: gedcom tag BAPM
 #. I18N: gedcom tag BAPM
-#: app/GedcomTag.php:510 resources/views/calendar-page.phtml:135
+#: app/GedcomTag.php:510 resources/views/calendar-page.phtml:159
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Baptism"
 msgstr "洗禮"
@@ -2833,7 +2840,7 @@ msgstr "伯明翰，阿拉巴馬州"
 
 # I18N: gedcom tag BIRT
 #. I18N: gedcom tag BIRT
-#: app/GedcomTag.php:531 resources/views/calendar-page.phtml:132
+#: app/GedcomTag.php:531 resources/views/calendar-page.phtml:156
 #: resources/views/lists/individuals-table.phtml:232
 #: resources/views/lists/individuals-table.phtml:240
 #: resources/views/lists/individuals-table.phtml:269
@@ -3317,7 +3324,7 @@ msgstr "保加利亞"
 
 # I18N: gedcom tag BURI
 #. I18N: gedcom tag BURI
-#: app/GedcomTag.php:548 resources/views/calendar-page.phtml:147
+#: app/GedcomTag.php:548 resources/views/calendar-page.phtml:171
 #: resources/xml/reports/family_group_report.xml:351
 #: resources/xml/reports/family_group_report.xml:705
 #: resources/xml/reports/family_group_report.xml:1049
@@ -4131,9 +4138,9 @@ msgstr "俄亥俄州哥倫布市"
 msgid "Comment"
 msgstr "評論"
 
-#: resources/views/emails/register-notify-html.phtml:19
-#: resources/views/emails/register-notify-text.phtml:9
-#: resources/views/register-page.phtml:83
+#: resources/views/emails/register-notify-html.phtml:23
+#: resources/views/emails/register-notify-text.phtml:14
+#: resources/views/register-page.phtml:82
 msgid "Comments"
 msgstr "備註"
 
@@ -4589,7 +4596,7 @@ msgstr "巴西庫裡提巴"
 msgid "Custom"
 msgstr "定制"
 
-#: resources/views/calendar-page.phtml:153
+#: resources/views/calendar-page.phtml:177
 #: resources/views/edit/add-fact-row.phtml:33
 msgid "Custom event"
 msgstr "自定義事件"
@@ -4900,11 +4907,11 @@ msgstr "女兒"
 msgid "Daughter of %s"
 msgstr "%s 的女兒"
 
-#: app/Module/CalendarMenuModule.php:90 resources/views/calendar-page.phtml:22
+#: app/Module/CalendarMenuModule.php:90 resources/views/calendar-page.phtml:14
 msgid "Day"
 msgstr "日"
 
-#: app/Http/Controllers/CalendarController.php:439
+#: app/Http/Controllers/CalendarController.php:416
 msgid "Day not set"
 msgstr "沒有設定日期"
 
@@ -4921,7 +4928,7 @@ msgstr "去世的"
 
 # I18N: gedcom tag DEAT
 #. I18N: gedcom tag DEAT
-#: app/GedcomTag.php:654 resources/views/calendar-page.phtml:144
+#: app/GedcomTag.php:654 resources/views/calendar-page.phtml:168
 #: resources/views/lists/individuals-table.phtml:214
 #: resources/views/lists/individuals-table.phtml:222
 #: resources/views/lists/individuals-table.phtml:279
@@ -5616,7 +5623,7 @@ msgstr "顯示和管理用戶收藏的頁面。"
 
 # I18N: gedcom tag DIV
 #. I18N: gedcom tag DIV
-#: app/GedcomTag.php:672 resources/views/calendar-page.phtml:141
+#: app/GedcomTag.php:672 resources/views/calendar-page.phtml:165
 #: resources/views/lists/families-table.phtml:234
 msgid "Divorce"
 msgstr "訴訟離婚"
@@ -5713,14 +5720,14 @@ msgstr "週二"
 #: app/Http/Controllers/Admin/UsersController.php:275
 #: app/Http/Controllers/Admin/UsersController.php:389
 #: app/Http/RequestHandlers/AccountUpdate.php:95
-#: app/Http/RequestHandlers/RegisterAction.php:211
+#: app/Http/RequestHandlers/RegisterAction.php:229
 msgid "Duplicate email address. A user with that email already exists."
 msgstr "電子郵件地址重複。該電子郵件已經被一個用戶使用。"
 
 #: app/Http/Controllers/Admin/UsersController.php:270
 #: app/Http/Controllers/Admin/UsersController.php:395
 #: app/Http/RequestHandlers/AccountUpdate.php:86
-#: app/Http/RequestHandlers/RegisterAction.php:206
+#: app/Http/RequestHandlers/RegisterAction.php:224
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
 msgstr "用戶名重複。該用戶名已經被另一個用戶使用。請更換您的用戶名。"
 
@@ -5925,9 +5932,9 @@ msgstr "電子郵件"
 #: resources/views/admin/users-edit.phtml:63
 #: resources/views/admin/users.phtml:22 resources/views/contact-page.phtml:35
 #: resources/views/edit-account-page.phtml:111
-#: resources/views/emails/register-notify-html.phtml:17
-#: resources/views/emails/register-notify-text.phtml:8
-#: resources/views/register-page.phtml:46
+#: resources/views/emails/register-notify-html.phtml:21
+#: resources/views/emails/register-notify-text.phtml:13
+#: resources/views/register-page.phtml:45
 #: resources/views/setup/step-5-administrator.phtml:68
 msgid "Email address"
 msgstr "電子郵件地址"
@@ -5938,7 +5945,7 @@ msgstr "驗證電子郵件"
 
 # I18N: gedcom tag EMIG
 #. I18N: gedcom tag EMIG
-#: app/GedcomTag.php:693 resources/views/calendar-page.phtml:150
+#: app/GedcomTag.php:693 resources/views/calendar-page.phtml:174
 msgid "Emigration"
 msgstr "移民"
 
@@ -6151,7 +6158,7 @@ msgstr "不包括在此提交"
 
 # I18N: placeholder text for registration-comments field
 #. I18N: placeholder text for registration-comments field
-#: resources/views/register-page.phtml:87
+#: resources/views/register-page.phtml:86
 msgid "Explain why you are requesting an account."
 msgstr "說明你為什麼要申請一個賬戶。"
 
@@ -6332,7 +6339,6 @@ msgstr "福克蘭群島"
 #. I18N: Name of a module/list
 #. I18N: Name of a module
 #: app/Http/Controllers/AdminTreesController.php:1702
-#: app/Http/Controllers/CalendarController.php:377
 #: app/Http/Controllers/ListController.php:242
 #: app/Module/AncestorsChartModule.php:276
 #: app/Module/DescendancyChartModule.php:265 app/Module/FamilyListModule.php:48
@@ -6659,7 +6665,7 @@ msgstr "女性"
 #: app/Statistics/Google/ChartAge.php:115
 #: app/Statistics/Google/ChartMarriageAge.php:139
 #: app/Statistics/Google/ChartSex.php:72
-#: resources/views/calendar-page.phtml:114
+#: resources/views/calendar-page.phtml:129
 #: resources/views/lists/families-table.phtml:111
 #: resources/views/lists/families-table.phtml:126
 #: resources/views/lists/families-table.phtml:136
@@ -6913,7 +6919,7 @@ msgid "For websites with more than one family tree, this option will show the li
 msgstr "對於具有一個以上的家譜網站，此選項會顯示在主菜單的家譜清單，搜索頁面等。"
 
 #: resources/views/login-page.phtml:60
-#: resources/views/modules/login_block/sign-in.phtml:35
+#: resources/views/modules/login_block/sign-in.phtml:36
 msgid "Forgot password?"
 msgstr "忘記密碼？"
 
@@ -7072,17 +7078,18 @@ msgctxt "NOMINATIVE"
 msgid "Frimaire"
 msgstr "第三月"
 
-# I18N: From date1 (To date2)
-# I18N: label for the start of a date range (from x to y)
-#. I18N: From date1 (To date2)
-#. I18N: label for the start of a date range (from x to y)
 #: resources/views/admin/broadcast.phtml:18
-#: resources/views/admin/changes-log.phtml:22
 #: resources/views/admin/email-page.phtml:18
-#: resources/views/admin/site-logs.phtml:23
 #: resources/views/message-page.phtml:13
+msgctxt "Email sender"
 msgid "From"
-msgstr "從"
+msgstr ""
+
+#: resources/views/admin/changes-log.phtml:22
+#: resources/views/admin/site-logs.phtml:23
+msgctxt "Start of date range"
+msgid "From"
+msgstr ""
 
 # I18N: a month in the French republican calendar
 #. I18N: a month in the French republican calendar
@@ -7594,8 +7601,8 @@ msgstr "你好 %s …"
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "你好 %s …<br>您已經註冊成功，謝謝你的註冊。"
 
-#: resources/views/emails/register-notify-html.phtml:4
-#: resources/views/emails/register-notify-text.phtml:2
+#: resources/views/emails/register-notify-html.phtml:8
+#: resources/views/emails/register-notify-text.phtml:6
 #: resources/views/emails/verify-notify-html.phtml:4
 #: resources/views/emails/verify-notify-text.phtml:2
 msgid "Hello administrator…"
@@ -8168,7 +8175,6 @@ msgstr "最長壽"
 # I18N: Name of a module/list
 #. I18N: Name of a module/list
 #: app/Http/Controllers/AdminTreesController.php:1701
-#: app/Http/Controllers/CalendarController.php:376
 #: app/Http/Controllers/ListController.php:244
 #: app/Module/AncestorsChartModule.php:275
 #: app/Module/DescendancyChartModule.php:264
@@ -9047,7 +9053,7 @@ msgstr "立陶宛"
 msgid "Living"
 msgstr "在世的"
 
-#: resources/views/calendar-page.phtml:84
+#: resources/views/calendar-page.phtml:98
 msgid "Living individuals"
 msgstr "在世的人"
 
@@ -9211,7 +9217,7 @@ msgstr "男性"
 #: app/Statistics/Google/ChartAge.php:114
 #: app/Statistics/Google/ChartMarriageAge.php:138
 #: app/Statistics/Google/ChartSex.php:67
-#: resources/views/calendar-page.phtml:104
+#: resources/views/calendar-page.phtml:119
 #: resources/views/lists/families-table.phtml:108
 #: resources/views/lists/families-table.phtml:123
 #: resources/views/lists/families-table.phtml:135
@@ -9364,7 +9370,7 @@ msgstr "Markdown是一個簡單格式化系統，就如維基百科網站就在�
 # I18N: gedcom tag MARR
 #. I18N: gedcom tag MARR
 #: app/GedcomTag.php:838 app/Http/Controllers/BranchesController.php:341
-#: resources/views/calendar-page.phtml:138
+#: resources/views/calendar-page.phtml:162
 #: resources/views/lists/families-table.phtml:210
 #: resources/views/lists/families-table.phtml:218
 #: resources/views/lists/families-table.phtml:226
@@ -10114,7 +10120,7 @@ msgstr "蒙得維的亞烏拉圭"
 #: app/Module/StatisticsChartModule.php:387
 #: app/Module/StatisticsChartModule.php:429
 #: app/Module/StatisticsChartModule.php:478
-#: resources/views/calendar-page.phtml:38
+#: resources/views/calendar-page.phtml:30
 msgid "Month"
 msgstr "月"
 
@@ -10574,7 +10580,7 @@ msgstr "新的數據"
 
 # I18N: %s is a server name/URL
 #. I18N: %s is a server name/URL
-#: app/Http/RequestHandlers/RegisterAction.php:139
+#: app/Http/RequestHandlers/RegisterAction.php:141
 #, php-format
 msgid "New registration at %s"
 msgstr "%s 有新用戶註冊"
@@ -11449,9 +11455,9 @@ msgstr "父母的年齡"
 #: resources/views/admin/users-edit.phtml:50
 #: resources/views/edit-account-page.phtml:76
 #: resources/views/login-page.phtml:43
-#: resources/views/modules/login_block/sign-in.phtml:24
+#: resources/views/modules/login_block/sign-in.phtml:25
 #: resources/views/password-reset-page.phtml:34
-#: resources/views/register-page.phtml:70
+#: resources/views/register-page.phtml:69
 #: resources/views/setup/step-5-administrator.phtml:56
 msgid "Password"
 msgstr "密碼"
@@ -11460,7 +11466,7 @@ msgstr "密碼"
 #: resources/views/admin/users-edit.phtml:55
 #: resources/views/edit-account-page.phtml:81
 #: resources/views/password-reset-page.phtml:39
-#: resources/views/register-page.phtml:76
+#: resources/views/register-page.phtml:75
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
 msgstr "長度不少于8個字符，並區分大小寫，您將使用它登入網站。"
 
@@ -12303,9 +12309,9 @@ msgstr "重新排列名字順序"
 #: resources/views/admin/users-edit.phtml:24
 #: resources/views/admin/users.phtml:21
 #: resources/views/edit-account-page.phtml:32
-#: resources/views/emails/register-notify-html.phtml:15
-#: resources/views/emails/register-notify-text.phtml:7
-#: resources/views/register-page.phtml:34
+#: resources/views/emails/register-notify-html.phtml:19
+#: resources/views/emails/register-notify-text.phtml:12
+#: resources/views/register-page.phtml:33
 msgid "Real name"
 msgstr "真實姓名"
 
@@ -12320,7 +12326,7 @@ msgstr "確定刪除所有地理數據？"
 msgid "Recent changes"
 msgstr "最近更改"
 
-#: resources/views/calendar-page.phtml:87
+#: resources/views/calendar-page.phtml:101
 msgid "Recent years (&lt; 100 yrs)"
 msgstr "近期事件(< 100 年)"
 
@@ -12633,14 +12639,14 @@ msgstr "剛果(布拉柴維爾)"
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:88
 #: app/Http/RequestHandlers/PasswordRequestPage.php:55
-#: resources/views/modules/login_block/sign-in.phtml:48
+#: resources/views/modules/login_block/sign-in.phtml:49
 msgid "Request a new password"
 msgstr "重置密碼"
 
-#: app/Http/RequestHandlers/RegisterAction.php:163
+#: app/Http/RequestHandlers/RegisterAction.php:180
 #: app/Http/RequestHandlers/RegisterPage.php:51
 #: app/Module/WelcomeBlockModule.php:114 resources/views/login-page.phtml:65
-#: resources/views/modules/login_block/sign-in.phtml:42
+#: resources/views/modules/login_block/sign-in.phtml:43
 msgid "Request a new user account"
 msgstr "註冊賬戶"
 
@@ -13506,7 +13512,7 @@ msgstr "縮寫"
 msgid "Shortest marriage"
 msgstr "最短的婚姻"
 
-#: resources/views/calendar-page.phtml:74
+#: resources/views/calendar-page.phtml:79
 msgid "Show"
 msgstr "顯示"
 
@@ -15212,8 +15218,8 @@ msgstr "上傳的文件超過允許的大小。"
 msgid "The user %s has been deleted."
 msgstr "用戶 %s 已被刪除。"
 
-#: resources/views/emails/register-notify-html.phtml:24
-#: resources/views/emails/register-notify-text.phtml:11
+#: resources/views/emails/register-notify-html.phtml:30
+#: resources/views/emails/register-notify-text.phtml:17
 msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr "已將驗証信息通過郵件發送給用戶。"
 
@@ -15394,7 +15400,7 @@ msgstr "這一塊會顯示需要通過管理員審核的編輯或更改記錄表
 #: resources/views/admin/users-create.phtml:63
 #: resources/views/admin/users-edit.phtml:68
 #: resources/views/edit-account-page.phtml:116
-#: resources/views/register-page.phtml:51
+#: resources/views/register-page.phtml:50
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr "電子郵件地址將被用來發送你的密碼提示和網站中其他家庭成員給您的消息通知。"
@@ -15646,7 +15652,7 @@ msgstr "這是SMTP伺服器的名稱。\"localhost\"指郵件服務的同一台�
 #: resources/views/admin/users-create.phtml:24
 #: resources/views/admin/users-edit.phtml:29
 #: resources/views/edit-account-page.phtml:37
-#: resources/views/register-page.phtml:39
+#: resources/views/register-page.phtml:38
 #: resources/views/setup/step-5-administrator.phtml:37
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr "請輸入你的真實姓名。"
@@ -16104,17 +16110,18 @@ msgstr "標題"
 msgid "Title in Hebrew"
 msgstr "猶太標題"
 
-# I18N: (From date1) To date2
-# I18N: label for the end of a date range (from x to y)
-#. I18N: (From date1) To date2
-#. I18N: label for the end of a date range (from x to y)
 #: resources/views/admin/broadcast.phtml:27
-#: resources/views/admin/changes-log.phtml:29
 #: resources/views/admin/email-page.phtml:27
-#: resources/views/admin/site-logs.phtml:30
 #: resources/views/contact-page.phtml:17 resources/views/message-page.phtml:22
+msgctxt "Email recipient"
 msgid "To"
-msgstr "到"
+msgstr ""
+
+#: resources/views/admin/changes-log.phtml:29
+#: resources/views/admin/site-logs.phtml:30
+msgctxt "End of date range"
+msgid "To"
+msgstr ""
 
 #: resources/views/modules/html/config.phtml:25
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -16294,11 +16301,6 @@ msgstr "事件總數"
 msgid "Total families"
 msgstr "家庭總數"
 
-#: app/Http/Controllers/CalendarController.php:397
-#, php-format
-msgid "Total families: %s"
-msgstr "家庭總數: %s"
-
 #: resources/views/statistics/individuals/total-records.phtml:31
 msgid "Total females"
 msgstr "女性總數"
@@ -16321,11 +16323,6 @@ msgstr "名字總數"
 #: resources/xml/reports/relative_ext_report.xml:140
 msgid "Total individuals"
 msgstr "個人總數"
-
-#: app/Http/Controllers/CalendarController.php:396
-#, php-format
-msgid "Total individuals: %s"
-msgstr "總人數: %s"
 
 #: resources/views/statistics/individuals/total-records.phtml:52
 msgid "Total living"
@@ -16379,6 +16376,8 @@ msgstr "拖車"
 
 #: app/Module/AncestorsChartModule.php:274
 #: app/Module/DescendancyChartModule.php:263
+#: resources/views/emails/register-notify-html.phtml:25
+#: resources/views/emails/register-notify-text.phtml:15
 msgid "Tree"
 msgstr "樹狀"
 
@@ -16681,7 +16680,7 @@ msgstr "使用'？'匹配一個字符，使用“*”匹配零個或多個字符
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:48
 #: resources/views/admin/users-edit.phtml:53
-#: resources/views/register-page.phtml:74
+#: resources/views/register-page.phtml:73
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -16739,7 +16738,7 @@ msgstr "使用輪廓"
 msgid "Use the GeoNames database for autocomplete on places"
 msgstr "使用GeoNames數據庫自動完善地方"
 
-#: resources/views/register-page.phtml:89
+#: resources/views/register-page.phtml:88
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 msgstr "請在這里輸入你與本網站上家譜的關系。您也可以使用此輸入你可能對網站管理員有其他意見。"
 
@@ -16785,26 +16784,26 @@ msgstr "用戶驗証"
 #: resources/views/admin/users-edit.phtml:37
 #: resources/views/admin/users.phtml:20
 #: resources/views/edit-account-page.phtml:20
-#: resources/views/emails/register-notify-html.phtml:13
-#: resources/views/emails/register-notify-text.phtml:6
+#: resources/views/emails/register-notify-html.phtml:17
+#: resources/views/emails/register-notify-text.phtml:11
 #: resources/views/login-page.phtml:34
-#: resources/views/modules/login_block/sign-in.phtml:17
+#: resources/views/modules/login_block/sign-in.phtml:18
 #: resources/views/modules/todo/research-tasks.phtml:13
 #: resources/views/password-reset-page.phtml:25
-#: resources/views/register-page.phtml:58
+#: resources/views/register-page.phtml:57
 #: resources/views/setup/step-5-administrator.phtml:44
 msgid "Username"
 msgstr "用戶名"
 
 #: resources/views/forgot-password-page.phtml:20
-#: resources/views/modules/login_block/sign-in.phtml:51
+#: resources/views/modules/login_block/sign-in.phtml:52
 msgid "Username or email address"
 msgstr "用戶名或電子郵件地址"
 
 #: resources/views/admin/users-create.phtml:37
 #: resources/views/admin/users-edit.phtml:42
 #: resources/views/edit-account-page.phtml:25
-#: resources/views/register-page.phtml:63
+#: resources/views/register-page.phtml:62
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr "不分大小寫，可由字母、數字、或中文組成，您將使用它登入網站。"
 
@@ -16951,7 +16950,7 @@ msgstr "顯示"
 msgid "View table of events occurring in %s"
 msgstr "查看 %s 中發送的事件表"
 
-#: resources/views/calendar-page.phtml:164
+#: resources/views/calendar-page.phtml:189
 msgid "View this day"
 msgstr "按天查看"
 
@@ -16963,11 +16962,11 @@ msgstr "按天查看"
 msgid "View this family"
 msgstr "顯示家庭"
 
-#: resources/views/calendar-page.phtml:168
+#: resources/views/calendar-page.phtml:193
 msgid "View this month"
 msgstr "按月查看"
 
-#: resources/views/calendar-page.phtml:172
+#: resources/views/calendar-page.phtml:197
 msgid "View this year"
 msgstr "按年查看"
 
@@ -17004,7 +17003,7 @@ msgstr "訪客"
 # I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:40
-#: resources/views/calendar-page.phtml:126
+#: resources/views/calendar-page.phtml:150
 #: resources/xml/reports/bdm_report.xml:3
 #: resources/xml/reports/bdm_report.xml:34
 msgid "Vital records"
@@ -17262,7 +17261,7 @@ msgstr "先人忌日"
 msgid "Yahrzeiten"
 msgstr "忌日"
 
-#: app/Module/CalendarMenuModule.php:116 resources/views/calendar-page.phtml:57
+#: app/Module/CalendarMenuModule.php:116 resources/views/calendar-page.phtml:49
 msgid "Year"
 msgstr "年"
 
@@ -17286,7 +17285,7 @@ msgid "You (or someone claiming to be you) has requested an account at %1$s usin
 msgstr "你(或有人聲稱是你)在 %1$s 使用電子郵件地址 %2$s 註冊了一個賬戶。"
 
 #: app/Http/RequestHandlers/ContactAction.php:107
-#: app/Http/RequestHandlers/RegisterAction.php:218
+#: app/Http/RequestHandlers/RegisterAction.php:236
 msgid "You are not allowed to send messages that contain external links."
 msgstr "你不允許發送包含外部鏈接的消息。"
 
@@ -17324,7 +17323,7 @@ msgid "You can make it easier to search for married women by recording their mar
 msgstr "您可以更容易地搜索已婚婦女如果記錄他們的婚姻名。但是不是所有的女人需要隨丈夫的姓，所以要當心輸入不正確的信息到你的數據庫中。"
 
 #: resources/views/modules/privacy-policy/page.phtml:48
-msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
+msgid "You can opt out of tracking by setting the AccountUpdate header in your browser preferences."
 msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:17
@@ -17422,7 +17421,7 @@ msgstr "你應該在升級之前接受或拒絕所有待定的更改。"
 # I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: app/Http/RequestHandlers/ContactAction.php:108
-#: app/Http/RequestHandlers/RegisterAction.php:218
+#: app/Http/RequestHandlers/RegisterAction.php:236
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr "你應該從 ‘%2$s’ 中刪除 ‘%1$s’ 並再次嘗試。"
@@ -17431,8 +17430,8 @@ msgstr "你應該從 ‘%2$s’ 中刪除 ‘%1$s’ 並再次嘗試。"
 msgid "You should not approve an account unless you know that the email address is correct."
 msgstr "在你確認這個賬戶電子郵件地址前，你不應該批准它。"
 
-#: resources/views/emails/register-notify-html.phtml:28
-#: resources/views/emails/register-notify-text.phtml:13
+#: resources/views/emails/register-notify-html.phtml:34
+#: resources/views/emails/register-notify-text.phtml:19
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr "用戶註冊信息將通過電子郵件通知您。您可以批准該賬戶。在您批准該賬戶前,該賬戶將無法登入。"
 
@@ -17469,7 +17468,7 @@ msgstr "你的名字"
 msgid "Your password has been updated."
 msgstr "您的密碼已被更新。"
 
-#: app/Http/RequestHandlers/RegisterAction.php:129
+#: app/Http/RequestHandlers/RegisterAction.php:131
 #, php-format
 msgid "Your registration at %s"
 msgstr "您在 %s 的註冊"
@@ -17969,11 +17968,11 @@ msgstr "緊湊列表"
 #: resources/views/admin/upgrade/wizard.phtml:33
 #: resources/views/forgot-password-page.phtml:33
 #: resources/views/modules/clippings/add-options.phtml:22
-#: resources/views/modules/login_block/sign-in.phtml:57
+#: resources/views/modules/login_block/sign-in.phtml:58
 #: resources/views/password-request-page.phtml:33
 #: resources/views/password-reset-page.phtml:50
 #: resources/views/pending-changes-page.phtml:23
-#: resources/views/register-page.phtml:99
+#: resources/views/register-page.phtml:98
 #: resources/views/report-select-page.phtml:32
 msgid "continue"
 msgstr "繼續"
@@ -21106,7 +21105,7 @@ msgstr "兄弟姐妹"
 # I18N: A button label.
 #. I18N: A button label.
 #: resources/views/login-page.phtml:56
-#: resources/views/modules/login_block/sign-in.phtml:31
+#: resources/views/modules/login_block/sign-in.phtml:32
 msgid "sign in"
 msgstr "登入"
 
@@ -21829,6 +21828,11 @@ msgstr "…"
 #~ msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
 #~ msgstr "這個E-mail地址用於網站自動創建電子郵件時候的From資料欄中。<br><br>網站可以自動創建電子郵件通知系統管理員的需要進行審批更改。網站發送通知電子郵件給註冊用戶。<br><br>通常情況下，這些自動創建的電子郵件發件人是<i>webtrees-noreply@ yoursite</i>，並且暗示不用回复。為了防止垃圾郵件或其他電子郵件濫用情況，一些電子郵件提供商需要每封郵件要有被允許的“FROM:”資料欄，以此確認一個它是有效的E-mail帳號，否則您將無法使用發送郵件服務。"
 
+# I18N: From date1 (To date2)
+# I18N: label for the start of a date range (from x to y)
+#~ msgid "From"
+#~ msgstr "從"
+
 #~ msgid "Historical facts"
 #~ msgstr "歷史事實"
 
@@ -21938,8 +21942,21 @@ msgstr "…"
 #~ msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
 #~ msgstr "網站使用cookies存儲您的偏好設定，例如你選擇的顯示語言。"
 
+# I18N: (From date1) To date2
+# I18N: label for the end of a date range (from x to y)
+#~ msgid "To"
+#~ msgstr "到"
+
 #~ msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
 #~ msgstr "使用谷歌郵件賬戶，請使用以下設定： server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
+
+#, php-format
+#~ msgid "Total families: %s"
+#~ msgstr "家庭總數: %s"
+
+#, php-format
+#~ msgid "Total individuals: %s"
+#~ msgstr "總人數: %s"
 
 #~ msgid "User preferences"
 #~ msgstr "用戶選項"

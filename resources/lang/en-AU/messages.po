@@ -1,5 +1,17 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-09 18:45+0000\nPO-Revision-Date: 2019-11-09 21:43+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: English (Australia) <http://translate.webtrees.net/projects/webtrees/webtrees/en_AU/>\nLanguage: en-AU\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr ""
+"Project-Id-Version: webtrees\n"
+"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
+"POT-Creation-Date: 2019-11-10 16:16+0000\n"
+"PO-Revision-Date: 2019-11-09 21:43+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"Language-Team: English (Australia) <http://translate.webtrees.net/projects/webtrees/webtrees/en_AU/>\n"
+"Language: en-AU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -213,6 +225,13 @@ msgid_plural "%s days"
 msgstr[0] "%s day"
 msgstr[1] "%s days"
 
+#: resources/views/calendar-list.phtml:18
+#, php-format
+msgid "%s family"
+msgid_plural "%s families"
+msgstr[0] ""
+msgstr[1] ""
+
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
 #, php-format
@@ -231,6 +250,7 @@ msgstr[1] "%s grandchildren"
 
 #: app/Module/LifespansChartModule.php:431
 #: resources/views/admin/trees-unconnected.phtml:35
+#: resources/views/calendar-list.phtml:13
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
@@ -267,7 +287,7 @@ msgid_plural "%s individuals with events in %s between %s and %s"
 msgstr[0] "%s individual with events in %s between %s and %s"
 msgstr[1] "%s individuals with events in %s between %s and %s"
 
-#: app/Http/Controllers/Admin/LocationController.php:841
+#: app/Http/Controllers/Admin/LocationController.php:842
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
@@ -380,7 +400,7 @@ msgid_plural "%s years"
 msgstr[0] "%s year"
 msgstr[1] "%s years"
 
-#: app/Http/Controllers/CalendarController.php:565
+#: app/Http/Controllers/CalendarController.php:542
 #: resources/views/modules/yahrzeit/list.phtml:10
 #, php-format
 msgid "%s year anniversary"
@@ -839,8 +859,8 @@ msgid "A private area to record notes or keep a journal."
 msgstr "A private area to record notes or keep a journal."
 
 #. I18N: %s is a server name/URL
-#: resources/views/emails/register-notify-html.phtml:9
-#: resources/views/emails/register-notify-text.phtml:4
+#: resources/views/emails/register-notify-html.phtml:13
+#: resources/views/emails/register-notify-text.phtml:9
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
 msgstr "A prospective user has registered with webtrees at %s."
@@ -1762,7 +1782,7 @@ msgstr "Alive"
 #: app/Http/Controllers/ListController.php:367
 #: app/Module/FrequentlyAskedQuestionsModule.php:322
 #: app/Module/UserMessagesModule.php:174
-#: resources/views/calendar-page.phtml:129
+#: resources/views/calendar-page.phtml:153
 #: resources/views/lists/datatables-attributes.phtml:6
 #: resources/views/modules/faq/config.phtml:58
 #: resources/views/modules/random_media/config.phtml:12
@@ -1787,7 +1807,7 @@ msgstr "All facts and events"
 msgid "All family facts"
 msgstr "All family facts"
 
-#: app/Http/RequestHandlers/RegisterAction.php:201
+#: app/Http/RequestHandlers/RegisterAction.php:219
 msgid "All fields must be completed."
 msgstr "All fields must be completed."
 
@@ -1795,8 +1815,8 @@ msgstr "All fields must be completed."
 msgid "All individual facts"
 msgstr "All individual facts"
 
-#: resources/views/calendar-page.phtml:81
-#: resources/views/calendar-page.phtml:92
+#: resources/views/calendar-page.phtml:95
+#: resources/views/calendar-page.phtml:107
 msgid "All individuals"
 msgstr "All individuals"
 
@@ -2429,7 +2449,7 @@ msgid "Bangladesh"
 msgstr "Bangladesh"
 
 #. I18N: gedcom tag BAPM
-#: app/GedcomTag.php:510 resources/views/calendar-page.phtml:135
+#: app/GedcomTag.php:510 resources/views/calendar-page.phtml:159
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Baptism"
 msgstr "Baptism"
@@ -2601,7 +2621,7 @@ msgid "Birmingham, Alabama, United States"
 msgstr "Birmingham, Alabama, United States"
 
 #. I18N: gedcom tag BIRT
-#: app/GedcomTag.php:531 resources/views/calendar-page.phtml:132
+#: app/GedcomTag.php:531 resources/views/calendar-page.phtml:156
 #: resources/views/lists/individuals-table.phtml:232
 #: resources/views/lists/individuals-table.phtml:240
 #: resources/views/lists/individuals-table.phtml:269
@@ -3054,7 +3074,7 @@ msgid "Bulgaria"
 msgstr "Bulgaria"
 
 #. I18N: gedcom tag BURI
-#: app/GedcomTag.php:548 resources/views/calendar-page.phtml:147
+#: app/GedcomTag.php:548 resources/views/calendar-page.phtml:171
 #: resources/xml/reports/family_group_report.xml:351
 #: resources/xml/reports/family_group_report.xml:705
 #: resources/xml/reports/family_group_report.xml:1049
@@ -3806,9 +3826,9 @@ msgstr "Columbus, Ohio, United States"
 msgid "Comment"
 msgstr "Comment"
 
-#: resources/views/emails/register-notify-html.phtml:19
-#: resources/views/emails/register-notify-text.phtml:9
-#: resources/views/register-page.phtml:83
+#: resources/views/emails/register-notify-html.phtml:23
+#: resources/views/emails/register-notify-text.phtml:14
+#: resources/views/register-page.phtml:82
 msgid "Comments"
 msgstr "Comments"
 
@@ -4239,7 +4259,7 @@ msgstr "Curitiba, Brazil"
 msgid "Custom"
 msgstr "Custom"
 
-#: resources/views/calendar-page.phtml:153
+#: resources/views/calendar-page.phtml:177
 #: resources/views/edit/add-fact-row.phtml:33
 msgid "Custom event"
 msgstr "Custom event"
@@ -4534,11 +4554,11 @@ msgstr "Daughter"
 msgid "Daughter of %s"
 msgstr "Daughter of %s"
 
-#: app/Module/CalendarMenuModule.php:90 resources/views/calendar-page.phtml:22
+#: app/Module/CalendarMenuModule.php:90 resources/views/calendar-page.phtml:14
 msgid "Day"
 msgstr "Day"
 
-#: app/Http/Controllers/CalendarController.php:439
+#: app/Http/Controllers/CalendarController.php:416
 msgid "Day not set"
 msgstr "Day not set"
 
@@ -4554,7 +4574,7 @@ msgid "Dead"
 msgstr "Dead"
 
 #. I18N: gedcom tag DEAT
-#: app/GedcomTag.php:654 resources/views/calendar-page.phtml:144
+#: app/GedcomTag.php:654 resources/views/calendar-page.phtml:168
 #: resources/views/lists/individuals-table.phtml:214
 #: resources/views/lists/individuals-table.phtml:222
 #: resources/views/lists/individuals-table.phtml:279
@@ -5211,7 +5231,7 @@ msgid "Display and manage a user’s favorite pages."
 msgstr "Display and manage a user’s favourite pages."
 
 #. I18N: gedcom tag DIV
-#: app/GedcomTag.php:672 resources/views/calendar-page.phtml:141
+#: app/GedcomTag.php:672 resources/views/calendar-page.phtml:165
 #: resources/views/lists/families-table.phtml:234
 msgid "Divorce"
 msgstr "Divorce"
@@ -5299,14 +5319,14 @@ msgstr "Duodi"
 #: app/Http/Controllers/Admin/UsersController.php:275
 #: app/Http/Controllers/Admin/UsersController.php:389
 #: app/Http/RequestHandlers/AccountUpdate.php:95
-#: app/Http/RequestHandlers/RegisterAction.php:211
+#: app/Http/RequestHandlers/RegisterAction.php:229
 msgid "Duplicate email address. A user with that email already exists."
 msgstr "Duplicate e-mail address. A user with that e-mail already exists."
 
 #: app/Http/Controllers/Admin/UsersController.php:270
 #: app/Http/Controllers/Admin/UsersController.php:395
 #: app/Http/RequestHandlers/AccountUpdate.php:86
-#: app/Http/RequestHandlers/RegisterAction.php:206
+#: app/Http/RequestHandlers/RegisterAction.php:224
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
 msgstr "Duplicate username. A user with that username already exists. Please choose another username."
 
@@ -5496,9 +5516,9 @@ msgstr "E-mail"
 #: resources/views/admin/users-edit.phtml:63
 #: resources/views/admin/users.phtml:22 resources/views/contact-page.phtml:35
 #: resources/views/edit-account-page.phtml:111
-#: resources/views/emails/register-notify-html.phtml:17
-#: resources/views/emails/register-notify-text.phtml:8
-#: resources/views/register-page.phtml:46
+#: resources/views/emails/register-notify-html.phtml:21
+#: resources/views/emails/register-notify-text.phtml:13
+#: resources/views/register-page.phtml:45
 #: resources/views/setup/step-5-administrator.phtml:68
 msgid "Email address"
 msgstr "E-mail address"
@@ -5508,7 +5528,7 @@ msgid "Email verified"
 msgstr "E-mail verified"
 
 #. I18N: gedcom tag EMIG
-#: app/GedcomTag.php:693 resources/views/calendar-page.phtml:150
+#: app/GedcomTag.php:693 resources/views/calendar-page.phtml:174
 msgid "Emigration"
 msgstr "Emigration"
 
@@ -5705,7 +5725,7 @@ msgid "Excluded from this submission"
 msgstr "Excluded from this submission"
 
 #. I18N: placeholder text for registration-comments field
-#: resources/views/register-page.phtml:87
+#: resources/views/register-page.phtml:86
 msgid "Explain why you are requesting an account."
 msgstr "Explain why you are requesting an account."
 
@@ -5873,7 +5893,6 @@ msgstr "Falkland Islands"
 #. I18N: Name of a module/list
 #. I18N: Name of a module
 #: app/Http/Controllers/AdminTreesController.php:1702
-#: app/Http/Controllers/CalendarController.php:377
 #: app/Http/Controllers/ListController.php:242
 #: app/Module/AncestorsChartModule.php:276
 #: app/Module/DescendancyChartModule.php:265 app/Module/FamilyListModule.php:48
@@ -6175,7 +6194,7 @@ msgstr "Female"
 #: app/Statistics/Google/ChartAge.php:115
 #: app/Statistics/Google/ChartMarriageAge.php:139
 #: app/Statistics/Google/ChartSex.php:72
-#: resources/views/calendar-page.phtml:114
+#: resources/views/calendar-page.phtml:129
 #: resources/views/lists/families-table.phtml:111
 #: resources/views/lists/families-table.phtml:126
 #: resources/views/lists/families-table.phtml:136
@@ -6418,7 +6437,7 @@ msgid "For websites with more than one family tree, this option will show the li
 msgstr "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
 
 #: resources/views/login-page.phtml:60
-#: resources/views/modules/login_block/sign-in.phtml:35
+#: resources/views/modules/login_block/sign-in.phtml:36
 msgid "Forgot password?"
 msgstr "Forgot password?"
 
@@ -6561,15 +6580,18 @@ msgctxt "NOMINATIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: From date1 (To date2)
-#. I18N: label for the start of a date range (from x to y)
 #: resources/views/admin/broadcast.phtml:18
-#: resources/views/admin/changes-log.phtml:22
 #: resources/views/admin/email-page.phtml:18
-#: resources/views/admin/site-logs.phtml:23
 #: resources/views/message-page.phtml:13
+msgctxt "Email sender"
 msgid "From"
-msgstr "From"
+msgstr ""
+
+#: resources/views/admin/changes-log.phtml:22
+#: resources/views/admin/site-logs.phtml:23
+msgctxt "Start of date range"
+msgid "From"
+msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
@@ -7025,8 +7047,8 @@ msgstr "Hello %s…"
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "Hello %s…<br>Thank you for your registration."
 
-#: resources/views/emails/register-notify-html.phtml:4
-#: resources/views/emails/register-notify-text.phtml:2
+#: resources/views/emails/register-notify-html.phtml:8
+#: resources/views/emails/register-notify-text.phtml:6
 #: resources/views/emails/verify-notify-html.phtml:4
 #: resources/views/emails/verify-notify-text.phtml:2
 msgid "Hello administrator…"
@@ -7559,7 +7581,6 @@ msgstr "Individual who lived the longest"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/AdminTreesController.php:1701
-#: app/Http/Controllers/CalendarController.php:376
 #: app/Http/Controllers/ListController.php:244
 #: app/Module/AncestorsChartModule.php:275
 #: app/Module/DescendancyChartModule.php:264
@@ -8359,7 +8380,7 @@ msgstr "Lithuanian"
 msgid "Living"
 msgstr "Living"
 
-#: resources/views/calendar-page.phtml:84
+#: resources/views/calendar-page.phtml:98
 msgid "Living individuals"
 msgstr "Living individuals"
 
@@ -8503,7 +8524,7 @@ msgstr "Male"
 #: app/Statistics/Google/ChartAge.php:114
 #: app/Statistics/Google/ChartMarriageAge.php:138
 #: app/Statistics/Google/ChartSex.php:67
-#: resources/views/calendar-page.phtml:104
+#: resources/views/calendar-page.phtml:119
 #: resources/views/lists/families-table.phtml:108
 #: resources/views/lists/families-table.phtml:123
 #: resources/views/lists/families-table.phtml:135
@@ -8644,7 +8665,7 @@ msgstr "Markdown is a simple system of formatting, used on websites such as Wiki
 
 #. I18N: gedcom tag MARR
 #: app/GedcomTag.php:838 app/Http/Controllers/BranchesController.php:341
-#: resources/views/calendar-page.phtml:138
+#: resources/views/calendar-page.phtml:162
 #: resources/views/lists/families-table.phtml:210
 #: resources/views/lists/families-table.phtml:218
 #: resources/views/lists/families-table.phtml:226
@@ -9329,7 +9350,7 @@ msgstr "Montevideo, Uruguay"
 #: app/Module/StatisticsChartModule.php:387
 #: app/Module/StatisticsChartModule.php:429
 #: app/Module/StatisticsChartModule.php:478
-#: resources/views/calendar-page.phtml:38
+#: resources/views/calendar-page.phtml:30
 msgid "Month"
 msgstr "Month"
 
@@ -9746,7 +9767,7 @@ msgid "New data"
 msgstr "New data"
 
 #. I18N: %s is a server name/URL
-#: app/Http/RequestHandlers/RegisterAction.php:139
+#: app/Http/RequestHandlers/RegisterAction.php:141
 #, php-format
 msgid "New registration at %s"
 msgstr "New registration at %s"
@@ -10552,9 +10573,9 @@ msgstr "Parent’s age"
 #: resources/views/admin/users-edit.phtml:50
 #: resources/views/edit-account-page.phtml:76
 #: resources/views/login-page.phtml:43
-#: resources/views/modules/login_block/sign-in.phtml:24
+#: resources/views/modules/login_block/sign-in.phtml:25
 #: resources/views/password-reset-page.phtml:34
-#: resources/views/register-page.phtml:70
+#: resources/views/register-page.phtml:69
 #: resources/views/setup/step-5-administrator.phtml:56
 msgid "Password"
 msgstr "Password"
@@ -10563,7 +10584,7 @@ msgstr "Password"
 #: resources/views/admin/users-edit.phtml:55
 #: resources/views/edit-account-page.phtml:81
 #: resources/views/password-reset-page.phtml:39
-#: resources/views/register-page.phtml:76
+#: resources/views/register-page.phtml:75
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
 msgstr "Passwords must be at least 8 characters long and are case-sensitive, so that ‘secret’ is different to ‘SECRET’."
 
@@ -11330,9 +11351,9 @@ msgstr "Re-order names"
 #: resources/views/admin/users-edit.phtml:24
 #: resources/views/admin/users.phtml:21
 #: resources/views/edit-account-page.phtml:32
-#: resources/views/emails/register-notify-html.phtml:15
-#: resources/views/emails/register-notify-text.phtml:7
-#: resources/views/register-page.phtml:34
+#: resources/views/emails/register-notify-html.phtml:19
+#: resources/views/emails/register-notify-text.phtml:12
+#: resources/views/register-page.phtml:33
 msgid "Real name"
 msgstr "Real name"
 
@@ -11346,7 +11367,7 @@ msgstr "Really delete all geographic data?"
 msgid "Recent changes"
 msgstr "Recent changes"
 
-#: resources/views/calendar-page.phtml:87
+#: resources/views/calendar-page.phtml:101
 msgid "Recent years (&lt; 100 yrs)"
 msgstr "Recent years (&lt; 100 yrs)"
 
@@ -11634,14 +11655,14 @@ msgstr "Republic of the Congo"
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:88
 #: app/Http/RequestHandlers/PasswordRequestPage.php:55
-#: resources/views/modules/login_block/sign-in.phtml:48
+#: resources/views/modules/login_block/sign-in.phtml:49
 msgid "Request a new password"
 msgstr "Request a new password"
 
-#: app/Http/RequestHandlers/RegisterAction.php:163
+#: app/Http/RequestHandlers/RegisterAction.php:180
 #: app/Http/RequestHandlers/RegisterPage.php:51
 #: app/Module/WelcomeBlockModule.php:114 resources/views/login-page.phtml:65
-#: resources/views/modules/login_block/sign-in.phtml:42
+#: resources/views/modules/login_block/sign-in.phtml:43
 msgid "Request a new user account"
 msgstr "Request a new user account"
 
@@ -12425,7 +12446,7 @@ msgstr "Shortcut"
 msgid "Shortest marriage"
 msgstr "Shortest marriage"
 
-#: resources/views/calendar-page.phtml:74
+#: resources/views/calendar-page.phtml:79
 msgid "Show"
 msgstr "Show"
 
@@ -13999,8 +14020,8 @@ msgstr "The uploaded file exceeds the allowed size."
 msgid "The user %s has been deleted."
 msgstr "The user %s has been deleted."
 
-#: resources/views/emails/register-notify-html.phtml:24
-#: resources/views/emails/register-notify-text.phtml:11
+#: resources/views/emails/register-notify-html.phtml:30
+#: resources/views/emails/register-notify-text.phtml:17
 msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr "The user has been sent an e-mail with the information necessary to confirm the access request."
 
@@ -14174,7 +14195,7 @@ msgstr "This block will show editors a list of records with pending changes that
 #: resources/views/admin/users-create.phtml:63
 #: resources/views/admin/users-edit.phtml:68
 #: resources/views/edit-account-page.phtml:116
-#: resources/views/register-page.phtml:51
+#: resources/views/register-page.phtml:50
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr "This e-mail address will be used to send password reminders, website notifications and messages from other family members who are registered on the website."
@@ -14406,7 +14427,7 @@ msgstr "This is the name of the SMTP server. ‘localhost’ means that the mail
 #: resources/views/admin/users-create.phtml:24
 #: resources/views/admin/users-edit.phtml:29
 #: resources/views/edit-account-page.phtml:37
-#: resources/views/register-page.phtml:39
+#: resources/views/register-page.phtml:38
 #: resources/views/setup/step-5-administrator.phtml:37
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr "This is your real name, as you would like it displayed on screen."
@@ -14830,15 +14851,18 @@ msgstr "Title"
 msgid "Title in Hebrew"
 msgstr "Title in Hebrew"
 
-#. I18N: (From date1) To date2
-#. I18N: label for the end of a date range (from x to y)
 #: resources/views/admin/broadcast.phtml:27
-#: resources/views/admin/changes-log.phtml:29
 #: resources/views/admin/email-page.phtml:27
-#: resources/views/admin/site-logs.phtml:30
 #: resources/views/contact-page.phtml:17 resources/views/message-page.phtml:22
+msgctxt "Email recipient"
 msgid "To"
-msgstr "To"
+msgstr ""
+
+#: resources/views/admin/changes-log.phtml:29
+#: resources/views/admin/site-logs.phtml:30
+msgctxt "End of date range"
+msgid "To"
+msgstr ""
 
 #: resources/views/modules/html/config.phtml:25
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -15005,11 +15029,6 @@ msgstr "Total events"
 msgid "Total families"
 msgstr "Total families"
 
-#: app/Http/Controllers/CalendarController.php:397
-#, php-format
-msgid "Total families: %s"
-msgstr "Total families: %s"
-
 #: resources/views/statistics/individuals/total-records.phtml:31
 msgid "Total females"
 msgstr "Total females"
@@ -15032,11 +15051,6 @@ msgstr "Total given names"
 #: resources/xml/reports/relative_ext_report.xml:140
 msgid "Total individuals"
 msgstr "Total individuals"
-
-#: app/Http/Controllers/CalendarController.php:396
-#, php-format
-msgid "Total individuals: %s"
-msgstr "Total individuals: %s"
 
 #: resources/views/statistics/individuals/total-records.phtml:52
 msgid "Total living"
@@ -15089,6 +15103,8 @@ msgstr "Trailer"
 
 #: app/Module/AncestorsChartModule.php:274
 #: app/Module/DescendancyChartModule.php:263
+#: resources/views/emails/register-notify-html.phtml:25
+#: resources/views/emails/register-notify-text.phtml:15
 msgid "Tree"
 msgstr "Tree"
 
@@ -15360,7 +15376,7 @@ msgstr "Use a ‘?’ to match a single character, use ‘*’ to match zero or 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:48
 #: resources/views/admin/users-edit.phtml:53
-#: resources/views/register-page.phtml:74
+#: resources/views/register-page.phtml:73
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -15414,7 +15430,7 @@ msgstr "Use silhouettes"
 msgid "Use the GeoNames database for autocomplete on places"
 msgstr "Use the GeoNames database for autocomplete on places"
 
-#: resources/views/register-page.phtml:89
+#: resources/views/register-page.phtml:88
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 msgstr "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 
@@ -15459,26 +15475,26 @@ msgstr "User verification"
 #: resources/views/admin/users-edit.phtml:37
 #: resources/views/admin/users.phtml:20
 #: resources/views/edit-account-page.phtml:20
-#: resources/views/emails/register-notify-html.phtml:13
-#: resources/views/emails/register-notify-text.phtml:6
+#: resources/views/emails/register-notify-html.phtml:17
+#: resources/views/emails/register-notify-text.phtml:11
 #: resources/views/login-page.phtml:34
-#: resources/views/modules/login_block/sign-in.phtml:17
+#: resources/views/modules/login_block/sign-in.phtml:18
 #: resources/views/modules/todo/research-tasks.phtml:13
 #: resources/views/password-reset-page.phtml:25
-#: resources/views/register-page.phtml:58
+#: resources/views/register-page.phtml:57
 #: resources/views/setup/step-5-administrator.phtml:44
 msgid "Username"
 msgstr "Username"
 
 #: resources/views/forgot-password-page.phtml:20
-#: resources/views/modules/login_block/sign-in.phtml:51
+#: resources/views/modules/login_block/sign-in.phtml:52
 msgid "Username or email address"
 msgstr "Username or e-mail address"
 
 #: resources/views/admin/users-create.phtml:37
 #: resources/views/admin/users-edit.phtml:42
 #: resources/views/edit-account-page.phtml:25
-#: resources/views/register-page.phtml:63
+#: resources/views/register-page.phtml:62
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr "Usernames are case-insensitive and ignore accented letters, so that ‘chloe’, ‘chloë’ and ‘Chloe’ are considered to be the same."
 
@@ -15608,7 +15624,7 @@ msgstr "View"
 msgid "View table of events occurring in %s"
 msgstr "View table of events occurring in %s"
 
-#: resources/views/calendar-page.phtml:164
+#: resources/views/calendar-page.phtml:189
 msgid "View this day"
 msgstr "View this day"
 
@@ -15620,11 +15636,11 @@ msgstr "View this day"
 msgid "View this family"
 msgstr "View this family"
 
-#: resources/views/calendar-page.phtml:168
+#: resources/views/calendar-page.phtml:193
 msgid "View this month"
 msgstr "View this month"
 
-#: resources/views/calendar-page.phtml:172
+#: resources/views/calendar-page.phtml:197
 msgid "View this year"
 msgstr "View this year"
 
@@ -15656,7 +15672,7 @@ msgstr "Visitor"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:40
-#: resources/views/calendar-page.phtml:126
+#: resources/views/calendar-page.phtml:150
 #: resources/xml/reports/bdm_report.xml:3
 #: resources/xml/reports/bdm_report.xml:34
 msgid "Vital records"
@@ -15891,7 +15907,7 @@ msgstr "Yahrzeit"
 msgid "Yahrzeiten"
 msgstr "Yahrzeiten"
 
-#: app/Module/CalendarMenuModule.php:116 resources/views/calendar-page.phtml:57
+#: app/Module/CalendarMenuModule.php:116 resources/views/calendar-page.phtml:49
 msgid "Year"
 msgstr "Year"
 
@@ -15913,7 +15929,7 @@ msgid "You (or someone claiming to be you) has requested an account at %1$s usin
 msgstr "You (or someone claiming to be you) has requested an account at %1$s using the e-mail address %2$s."
 
 #: app/Http/RequestHandlers/ContactAction.php:107
-#: app/Http/RequestHandlers/RegisterAction.php:218
+#: app/Http/RequestHandlers/RegisterAction.php:236
 msgid "You are not allowed to send messages that contain external links."
 msgstr "You are not allowed to send messages that contain external links."
 
@@ -15948,8 +15964,8 @@ msgid "You can make it easier to search for married women by recording their mar
 msgstr "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 
 #: resources/views/modules/privacy-policy/page.phtml:48
-msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
-msgstr "You can opt out of tracking by setting the ‘Do Not Track’ header in your browser preferences."
+msgid "You can opt out of tracking by setting the AccountUpdate header in your browser preferences."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:17
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
@@ -16044,7 +16060,7 @@ msgstr "You should accept or reject all pending changes before upgrading."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: app/Http/RequestHandlers/ContactAction.php:108
-#: app/Http/RequestHandlers/RegisterAction.php:218
+#: app/Http/RequestHandlers/RegisterAction.php:236
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr "You should delete the ‘%1$s’ from ‘%2$s’ and try again."
@@ -16053,8 +16069,8 @@ msgstr "You should delete the ‘%1$s’ from ‘%2$s’ and try again."
 msgid "You should not approve an account unless you know that the email address is correct."
 msgstr "You should not approve an account unless you know that the e-mail address is correct."
 
-#: resources/views/emails/register-notify-html.phtml:28
-#: resources/views/emails/register-notify-text.phtml:13
+#: resources/views/emails/register-notify-html.phtml:34
+#: resources/views/emails/register-notify-text.phtml:19
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr "You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 
@@ -16091,7 +16107,7 @@ msgstr "Your name"
 msgid "Your password has been updated."
 msgstr "Your password has been updated."
 
-#: app/Http/RequestHandlers/RegisterAction.php:129
+#: app/Http/RequestHandlers/RegisterAction.php:131
 #, php-format
 msgid "Your registration at %s"
 msgstr "Your registration at %s"
@@ -16558,11 +16574,11 @@ msgstr "compact list"
 #: resources/views/admin/upgrade/wizard.phtml:33
 #: resources/views/forgot-password-page.phtml:33
 #: resources/views/modules/clippings/add-options.phtml:22
-#: resources/views/modules/login_block/sign-in.phtml:57
+#: resources/views/modules/login_block/sign-in.phtml:58
 #: resources/views/password-request-page.phtml:33
 #: resources/views/password-reset-page.phtml:50
 #: resources/views/pending-changes-page.phtml:23
-#: resources/views/register-page.phtml:99
+#: resources/views/register-page.phtml:98
 #: resources/views/report-select-page.phtml:32
 msgid "continue"
 msgstr "continue"
@@ -19609,7 +19625,7 @@ msgstr "sibling"
 
 #. I18N: A button label.
 #: resources/views/login-page.phtml:56
-#: resources/views/modules/login_block/sign-in.phtml:31
+#: resources/views/modules/login_block/sign-in.phtml:32
 msgid "sign in"
 msgstr "sign in"
 
@@ -20743,6 +20759,9 @@ msgstr "…"
 #~ msgid "Find an individual"
 #~ msgstr "Find an individual"
 
+#~ msgid "From"
+#~ msgstr "From"
+
 #~ msgid "Gender icon on charts"
 #~ msgstr "Sex icon on charts"
 
@@ -21525,6 +21544,9 @@ msgstr "…"
 #~ msgid "Thumbnail to upload"
 #~ msgstr "Thumbnail to upload"
 
+#~ msgid "To"
+#~ msgstr "To"
+
 #~ msgid "To complete the upgrade, you should install the files manually."
 #~ msgstr "To complete the upgrade, you should install the files manually."
 
@@ -21539,6 +21561,14 @@ msgstr "…"
 
 #~ msgid "Top level"
 #~ msgstr "Top level"
+
+#, php-format
+#~ msgid "Total families: %s"
+#~ msgstr "Total families: %s"
+
+#, php-format
+#~ msgid "Total individuals: %s"
+#~ msgstr "Total individuals: %s"
 
 #~ msgid "Total number of users"
 #~ msgstr "Total number of users"
@@ -21680,6 +21710,9 @@ msgstr "…"
 
 #~ msgid "You can choose the prefix that will be used whenever new XREFs are created."
 #~ msgstr "You can choose the prefix that will be used whenever new XREFs are created."
+
+#~ msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
+#~ msgstr "You can opt out of tracking by setting the ‘Do Not Track’ header in your browser preferences."
 
 #~ msgid "You can re-enable these modules after the upgrade."
 #~ msgstr "You can re-enable these modules after the upgrade."
