@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-09-28 17:10+0000\n"
+"PO-Revision-Date: 2019-11-10 15:42+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
-"Language-Team: Czech <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/cs/>\n"
+"Language-Team: Czech <http://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Poedit-Language: Czech\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -12745,7 +12746,7 @@ msgstr "Pro které jazyky tento blok zobrazit"
 
 #: admin_trees_config.php:1051
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Zobrazovat náhledy obrázků v diagramech a rodinných skupinách."
+msgstr "Zobrazovat náhledové obrázky v diagramech a rodinných skupinách."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:207
@@ -14718,7 +14719,7 @@ msgstr "Náhledy musí být obrázky."
 
 #: admin_trees_config.php:1041 admin_trees_config.php:1046
 msgid "Thumbnail images"
-msgstr "Náhledy obrázků"
+msgstr "Náhledové obrázky"
 
 #: addmedia.php:459 admin_media_upload.php:208
 msgid "Thumbnail to upload"
