@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-10 16:16+0000\n"
-"PO-Revision-Date: 2019-11-09 09:32+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Hebrew <http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
-"Language: he\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-10 17:34+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Hebrew <http://translate.webtrees.net/projects/webtrees/webtrees/he/>\nLanguage: he\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -233,8 +217,8 @@ msgstr[1] "%s ימים"
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "משפחה %s"
+msgstr[1] "%s משפחות"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
@@ -6589,13 +6573,13 @@ msgstr "פרימר"
 #: resources/views/message-page.phtml:13
 msgctxt "Email sender"
 msgid "From"
-msgstr ""
+msgstr "השולח"
 
 #: resources/views/admin/changes-log.phtml:22
 #: resources/views/admin/site-logs.phtml:23
 msgctxt "Start of date range"
 msgid "From"
-msgstr ""
+msgstr "מתאריך"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
@@ -14866,7 +14850,7 @@ msgstr ""
 #: resources/views/admin/site-logs.phtml:30
 msgctxt "End of date range"
 msgid "To"
-msgstr ""
+msgstr "עד תאריך"
 
 #: resources/views/modules/html/config.phtml:25
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
