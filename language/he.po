@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2019-11-09 09:33+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"PO-Revision-Date: 2019-11-10 15:42+0000\n"
+"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <http://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/he/>\n"
 "Language: he\n"
@@ -22345,10 +22345,9 @@ msgstr "חם/חמות"
 #: app/Functions/Functions.php:1106 app/Functions/Functions.php:1102
 #: app/Functions/Functions.php:1104 app/Functions/Functions.php:1346
 #: app/Functions/Functions.php:1342 app/Functions/Functions.php:1344
-#, fuzzy
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr "אחיינה של האשה"
+msgstr "אחיין"
 
 #: app/Functions/Functions.php:914 app/Functions/Functions.php:858
 msgctxt "sibling’s son"
@@ -22379,10 +22378,9 @@ msgstr "אחיין"
 #: app/Functions/Functions.php:1094 app/Functions/Functions.php:1090
 #: app/Functions/Functions.php:1092 app/Functions/Functions.php:1334
 #: app/Functions/Functions.php:1330 app/Functions/Functions.php:1332
-#, fuzzy
 msgctxt "brother’s child"
 msgid "nephew/niece"
-msgstr "האחיין/אחיינית של האישה"
+msgstr "אחיין/אחיינית"
 
 #: app/Functions/Functions.php:910 app/Functions/Functions.php:854
 msgctxt "sibling’s child"
@@ -22422,10 +22420,9 @@ msgstr "הבא"
 #: app/Functions/Functions.php:1100 app/Functions/Functions.php:1096
 #: app/Functions/Functions.php:1098 app/Functions/Functions.php:1340
 #: app/Functions/Functions.php:1336 app/Functions/Functions.php:1338
-#, fuzzy
 msgctxt "brother’s daughter"
 msgid "niece"
-msgstr "אחייניתה של האשה"
+msgstr "אחיינית"
 
 #: app/Functions/Functions.php:912 app/Functions/Functions.php:856
 msgctxt "sibling’s daughter"
