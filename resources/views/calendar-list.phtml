@@ -1,0 +1,50 @@
+<?php
+
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+
+?>
+
+<table class="w-100" role="presentation">
+    <tr>
+        <td class="wt-page-options-label text-center w-50">
+            <?= view('icons/individual') ?>
+            <?= I18N::plural('%s individual', '%s individuals', count($individuals), I18N::number(count($individuals))) ?>
+        </td>
+
+        <td class="wt-page-options-label text-center w-50">
+            <?= view('icons/family') ?>
+            <?= I18N::plural('%s family', '%s families', count($families), I18N::number(count($families))) ?>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="wt-page-options-value">
+            <ul class="list-unstyled">
+                <?php foreach ($individuals as $xref => $facts) : ?>
+                    <li>
+                        <a href="<?= e(Individual::getInstance($xref, $tree)->url()) ?>">
+                            <?= Individual::getInstance($xref, $tree)->fullName() ?>
+                        </a>
+
+                        <div class="indent"><?= $facts ?></div>
+                    </li>
+                <?php endforeach ?>
+            </ul>
+        </td>
+        <td class="wt-page-options-value">
+            <ul class="list-unstyled">
+                <?php foreach ($families as $xref => $facts) : ?>
+                    <li>
+                        <a href="<?= e(Family::getInstance($xref, $tree)->url()) ?>">
+                            <?= Family::getInstance($xref, $tree)->fullName() ?>
+                        </a>
+
+                        <div class="indent"><?= $facts ?></div>
+                    </li>
+                <?php endforeach ?>
+            </ul>
+        </td>
+    </tr>
+</table>

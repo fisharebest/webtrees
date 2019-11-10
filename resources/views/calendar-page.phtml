@@ -8,59 +8,63 @@ use Fisharebest\Webtrees\I18N;
     <?= $title ?>
 </h2>
 
-<form method="post" action="<?= e(route('calendar', ['tree' => $tree->name(), 'view' => $view])) ?>" name="dateform">
-    <?= csrf_field() ?>
-    <input type="hidden" name="cal" value="<?= e($cal) ?>">
-    <input type="hidden" name="day" value="<?= e($cal_date->day()) ?>">
-    <input type="hidden" name="month" value="<?= e($cal_month) ?>">
-    <input type="hidden" name="year" value="<?= e($cal_date->year()) ?>">
-    <input type="hidden" name="filtersx" value="<?= e($filtersx) ?>">
+<table class="table-sm wt-page-options w-100" role="presentation">
+    <tr>
+        <th class="wt-page-options-label">
+            <?= I18N::translate('Day') ?>
+        </th>
+        <td class="wt-page-options-value" colspan="3">
+            <?php for ($d = 1; $d <= $days_in_month; $d++) : ?>
+                <a <?= $d === $cal_date->day() ? 'class="error"' : '' ?> href="<?= e(route('calendar', ['cal' => $cal, 'day' => $d, 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'day', 'tree' => $tree->name()])) ?>" rel="nofollow">
+                    <?= (new Date($cal_date->format("%@ {$d} %O %E")))->minimumDate()->format('%j') ?>
+                </a>
+                |
+            <?php endfor ?>
+            <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $today->day(), 'month' => $today_month, 'year' => $today->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'day', 'tree' => $tree->name()])) ?>" rel="nofollow">
+                <b><?php $tmp = new Date($today->format('%@ %A %O %E')); echo $tmp->display() ?></b>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <th class="wt-page-options-label">
+            <?= I18N::translate('Month') ?>
+        </th>
+        <td class="wt-page-options-value" colspan="3">
+            <?php foreach ($months as $m => $month_name) : ?>
+                <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $m, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'month', 'tree' => $tree->name()])) ?>" rel="nofollow">
+                    <?php if ($m === $cal_month) : ?>
+                        <span class="error"><?= e($month_name) ?></span>
+                    <?php else : ?>
+                        <?= e($month_name) ?>
+                    <?php endif ?>
+                </a> |
+            <?php endforeach ?>
+            <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => min($cal_date->day(), $today->daysInMonth()), 'month' => $today_month, 'year' => $today->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'month', 'tree' => $tree->name()])) ?>" rel="nofollow">
+                <b><?= $today->format('%F %Y') ?></b>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <th class="wt-page-options-label">
+            <label for="year"><?= I18N::translate('Year') ?></label>
+        </th>
 
-    <table class="table-sm wt-page-options w-100" role="presentation">
-        <tr>
-            <th class="wt-page-options-label">
-                <?= I18N::translate('Day') ?>
-            </th>
-            <td class="wt-page-options-value" colspan="3">
-                <?php for ($d = 1; $d <= $days_in_month; $d++) : ?>
-                    <a <?= $d === $cal_date->day() ? 'class="error"' : '' ?> href="<?= e(route('calendar', ['cal' => $cal, 'day' => $d, 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'day', 'tree' => $tree->name()])) ?>" rel="nofollow">
-                        <?= (new Date($cal_date->format("%@ {$d} %O %E")))->minimumDate()->format('%j') ?>
-                    </a>
-                    |
-                <?php endfor ?>
-                <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $today->day(), 'month' => $today_month, 'year' => $today->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'day', 'tree' => $tree->name()])) ?>" rel="nofollow">
-                    <b><?php $tmp = new Date($today->format('%@ %A %O %E')); echo $tmp->display() ?></b>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <th class="wt-page-options-label">
-                <?= I18N::translate('Month') ?>
-            </th>
-            <td class="wt-page-options-value" colspan="3">
-                <?php foreach ($months as $m => $month_name) : ?>
-                    <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $m, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'month', 'tree' => $tree->name()])) ?>" rel="nofollow">
-                        <?php if ($m === $cal_month) : ?>
-                            <span class="error"><?= e($month_name) ?></span>
-                        <?php else : ?>
-                            <?= e($month_name) ?>
-                        <?php endif ?>
-                    </a> |
-                <?php endforeach ?>
-                <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => min($cal_date->day(), $today->daysInMonth()), 'month' => $today_month, 'year' => $today->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'month', 'tree' => $tree->name()])) ?>" rel="nofollow">
-                    <b><?= $today->format('%F %Y') ?></b>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <th class="wt-page-options-label">
-                <label for="year"><?= I18N::translate('Year') ?></label>
-            </th>
-            <td class="wt-page-options-value">
+        <td class="wt-page-options-value">
+            <form method="post" action="<?= e(route('calendar', ['tree' => $tree->name(), 'view' => $view])) ?>" class="d-inline">
+                <?= csrf_field() ?>
+                <input type="hidden" name="cal" value="<?= e($cal) ?>">
+                <input type="hidden" name="day" value="<?= e($cal_date->day()) ?>">
+                <input type="hidden" name="month" value="<?= e($cal_month) ?>">
+                <input type="hidden" name="filtersx" value="<?= e($filtersx) ?>">
+                <input type="hidden" name="filterof" value="<?= e($filtersx) ?>">
+                <input type="hidden" name="filterev" value="<?= e($filtersx) ?>">
+
                 <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year() === 1 ? -1 : $cal_date->year() - 1, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
                     -1
                 </a>
+
                 <input type="text" id="year" name="year" value="<?= $year ?>" size="4">
+
                 <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year() === -1 ? 1 : $cal_date->year() + 1, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
                     +1
                 </a>
@@ -68,94 +72,115 @@ use Fisharebest\Webtrees\I18N;
                 <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $today->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
                     <?= $today->format('%Y') ?>
                 </a>
-            </td>
+            </form>
+        </td>
 
-            <th class="wt-page-options-label">
-                <?= I18N::translate('Show') ?>
-            </th>
+        <th class="wt-page-options-label">
+            <?= I18N::translate('Show') ?>
+        </th>
 
-            <td class="wt-page-options-value">
-                <?php if (!$tree->getPreference('HIDE_LIVE_PEOPLE') || Auth::check()) : ?>
-                    <select class="list_value" name="filterof" onchange="document.dateform.submit();">
-                        <option value="all" <?= $filterof === 'all' ? 'selected' : '' ?>>
-                            <?= I18N::translate('All individuals') ?>
-                        </option>
-                        <option value="living" <?= $filterof === 'living' ? 'selected' : '' ?>>
-                            <?= I18N::translate('Living individuals') ?>
-                        </option>
-                        <option value="recent" <?= $filterof === 'recent' ? 'selected' : '' ?>>
-                            <?= I18N::translate('Recent years (&lt; 100 yrs)') ?>
-                        </option>
-                    </select>
-                <?php endif ?>
+        <td class="wt-page-options-value">
+            <?php if (!$tree->getPreference('HIDE_LIVE_PEOPLE') || Auth::check()) : ?>
+            <form method="post" action="<?= e(route('calendar', ['tree' => $tree->name(), 'view' => $view])) ?>" class="d-inline">
+                <?= csrf_field() ?>
+                <input type="hidden" name="cal" value="<?= e($cal) ?>">
+                <input type="hidden" name="day" value="<?= e($cal_date->day()) ?>">
+                <input type="hidden" name="month" value="<?= e($cal_month) ?>">
+                <input type="hidden" name="year" value="<?= e($cal_date->year()) ?>">
+                <input type="hidden" name="filtersx" value="<?= e($filtersx) ?>">
+                <input type="hidden" name="filterev" value="<?= e($filtersx) ?>">
 
-                <a title="<?= I18N::translate('All individuals') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => '', 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
-                    <?php if ($filtersx === '') : ?>
-                        <?= view('icons/sex-M') ?>
-                        <?= view('icons/sex-F') ?>
-                    <?php else: ?>
-                        <small>
-                            <?= view('icons/sex-M') ?>
-                            <?= view('icons/sex-F') ?>
-                        </small>
-                    <?php endif ?>
-                </a>
-                |
-                <a title="<?= I18N::translate('Males') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => 'M', 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
-                    <?php if ($filtersx === 'M') : ?>
-                        <?= view('icons/sex-M') ?>
-                    <?php else: ?>
-                        <small>
-                            <?= view('icons/sex-M') ?>
-                        </small>
-                    <?php endif ?>
-                </a>
-                |
-                <a title="<?= I18N::translate('Females') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => 'F', 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
-                    <?php if ($filtersx === 'F') : ?>
-                        <?= view('icons/sex-F') ?>
-                    <?php else: ?>
-                        <small>
-                            <?= view('icons/sex-F') ?>
-                        </small>
-                    <?php endif ?>
-                </a>
-
-                <select class="list_value" name="filterev" onchange="document.dateform.submit();">
-                    <option value="BIRT-MARR-DEAT" <?= $filterev === 'BIRT-MARR-DEAT' ? 'selected' : '' ?>>
-                        <?= I18N::translate('Vital records') ?>
+                <select class="list_value" name="filterof" onchange="this.form.submit();">
+                    <option value="all" <?= $filterof === 'all' ? 'selected' : '' ?>>
+                        <?= I18N::translate('All individuals') ?>
                     </option>
-                    <option value="" <?= $filterev === '' ? 'selected' : '' ?>>
-                        <?= I18N::translate('All') ?>
+                    <option value="living" <?= $filterof === 'living' ? 'selected' : '' ?>>
+                        <?= I18N::translate('Living individuals') ?>
                     </option>
-                    <option value="BIRT" <?= $filterev === 'BIRT' ? 'selected' : '' ?>>
-                        <?= I18N::translate('Birth') ?>
-                    </option>
-                    <option value="BAPM-CHR-CHRA" <?= $filterev === 'BAPM-CHR-CHRA' ? 'selected' : '' ?>>
-                        <?= I18N::translate('Baptism') ?>
-                    </option>
-                    <option value="MARR-_COML-_NMR" <?= $filterev === 'MARR-_COML-_NMR' ? 'selected' : '' ?>>
-                        <?= I18N::translate('Marriage') ?>
-                    </option>
-                    <option value="DIV-_SEPR" <?= $filterev === 'DIV-_SEPR' ? 'selected' : '' ?>>
-                        <?= I18N::translate('Divorce') ?>
-                    </option>
-                    <option value="DEAT" <?= $filterev === 'DEAT' ? 'selected' : '' ?>>
-                        <?= I18N::translate('Death') ?>
-                    </option>
-                    <option value="BURI" <?= $filterev === 'BURI' ? 'selected' : '' ?>>
-                        <?= I18N::translate('Burial') ?>
-                    </option>
-                    <option value="IMMI,EMIG" <?= $filterev === 'IMMI,EMIG' ? 'selected' : '' ?>>
-                        <?= I18N::translate('Emigration') ?>
-                    </option>
-                    <option value="EVEN" <?= $filterev === 'EVEN' ? 'selected' : '' ?>>
-                        <?= I18N::translate('Custom event') ?>
+                    <option value="recent" <?= $filterof === 'recent' ? 'selected' : '' ?>>
+                        <?= I18N::translate('Recent years (&lt; 100 yrs)') ?>
                     </option>
                 </select>
-            </td>
-        </tr>
-    </table>
+            </form>
+            <?php endif ?>
+
+            <a title="<?= I18N::translate('All individuals') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => '', 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
+                <?php if ($filtersx === '') : ?>
+                    <?= view('icons/sex-M') ?>
+                    <?= view('icons/sex-F') ?>
+                <?php else: ?>
+                    <small>
+                        <?= view('icons/sex-M') ?>
+                        <?= view('icons/sex-F') ?>
+                    </small>
+                <?php endif ?>
+            </a>
+            |
+            <a title="<?= I18N::translate('Males') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => 'M', 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
+                <?php if ($filtersx === 'M') : ?>
+                    <?= view('icons/sex-M') ?>
+                <?php else: ?>
+                    <small>
+                        <?= view('icons/sex-M') ?>
+                    </small>
+                <?php endif ?>
+            </a>
+            |
+            <a title="<?= I18N::translate('Females') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => 'F', 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
+                <?php if ($filtersx === 'F') : ?>
+                    <?= view('icons/sex-F') ?>
+                <?php else: ?>
+                    <small>
+                        <?= view('icons/sex-F') ?>
+                    </small>
+                <?php endif ?>
+            </a>
+
+            <form method="post" action="<?= e(route('calendar', ['tree' => $tree->name(), 'view' => $view])) ?>" class="d-inline">
+                <?= csrf_field() ?>
+                <input type="hidden" name="cal" value="<?= e($cal) ?>">
+                <input type="hidden" name="day" value="<?= e($cal_date->day()) ?>">
+                <input type="hidden" name="month" value="<?= e($cal_month) ?>">
+                <input type="hidden" name="year" value="<?= e($cal_date->year()) ?>">
+                <input type="hidden" name="filtersx" value="<?= e($filtersx) ?>">
+                <input type="hidden" name="filterof" value="<?= e($filtersx) ?>">
+
+                <select class="list_value" name="filterev" onchange="this.form.submit();">
+                <option value="BIRT-MARR-DEAT" <?= $filterev === 'BIRT-MARR-DEAT' ? 'selected' : '' ?>>
+                    <?= I18N::translate('Vital records') ?>
+                </option>
+                <option value="" <?= $filterev === '' ? 'selected' : '' ?>>
+                    <?= I18N::translate('All') ?>
+                </option>
+                <option value="BIRT" <?= $filterev === 'BIRT' ? 'selected' : '' ?>>
+                    <?= I18N::translate('Birth') ?>
+                </option>
+                <option value="BAPM-CHR-CHRA" <?= $filterev === 'BAPM-CHR-CHRA' ? 'selected' : '' ?>>
+                    <?= I18N::translate('Baptism') ?>
+                </option>
+                <option value="MARR-_COML-_NMR" <?= $filterev === 'MARR-_COML-_NMR' ? 'selected' : '' ?>>
+                    <?= I18N::translate('Marriage') ?>
+                </option>
+                <option value="DIV-_SEPR" <?= $filterev === 'DIV-_SEPR' ? 'selected' : '' ?>>
+                    <?= I18N::translate('Divorce') ?>
+                </option>
+                <option value="DEAT" <?= $filterev === 'DEAT' ? 'selected' : '' ?>>
+                    <?= I18N::translate('Death') ?>
+                </option>
+                <option value="BURI" <?= $filterev === 'BURI' ? 'selected' : '' ?>>
+                    <?= I18N::translate('Burial') ?>
+                </option>
+                <option value="IMMI,EMIG" <?= $filterev === 'IMMI,EMIG' ? 'selected' : '' ?>>
+                    <?= I18N::translate('Emigration') ?>
+                </option>
+                <option value="EVEN" <?= $filterev === 'EVEN' ? 'selected' : '' ?>>
+                    <?= I18N::translate('Custom event') ?>
+                </option>
+            </select>
+            </form>
+        </td>
+    </tr>
+</table>
 
     <table class="w-100">
         <tr>
@@ -187,7 +212,6 @@ use Fisharebest\Webtrees\I18N;
             </td>
         </tr>
     </table>
-</form>
 
 <div class="wt-ajax-load wt-page-content" data-ajax-url="<?= e(route('calendar-events', ['tree' => $tree->name(), 'cal' => $cal, 'day' => $day, 'month' => $month, 'year' => $year, 'view' => $view, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx])) ?>"></div>
 

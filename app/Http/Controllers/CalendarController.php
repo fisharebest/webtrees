@@ -372,32 +372,9 @@ class CalendarController extends AbstractBaseController
         switch ($view) {
             case 'year':
             case 'day':
-                echo '<table class="w-100"><tr><td class="wt-page-options-label text-center w-50">';
-                echo view('icons/individual');
-                echo I18N::plural('%s individual', '%s individuals', count($indis), I18N::number(count($indis)));
-                echo '</td><td class="wt-page-options-label text-center w-50">';
-                echo view('icons/family');
-            echo I18N::plural('%s family', '%s families', count($fams), I18N::number(count($fams)));
-                echo '</td></tr><tr>';
-                echo '<td class="wt-page-options-value">';
-
-                $content = $this->calendarListText($indis, '<li>', '</li>', $tree);
-                if ($content) {
-                    echo '<ul>', $content, '</ul>';
-                }
-
-                echo '</td>';
-                echo '<td class="wt-page-options-value">';
-
-                $content = $this->calendarListText($fams, '<li>', '</li>', $tree);
-                if ($content) {
-                    echo '<ul>', $content, '</ul>';
-                }
-
-                echo '</td>';
-                echo '</tr></table>';
-
+                echo view('calendar-list', ['families' => $fams, 'individuals' => $indis, 'tree' => $tree]);
                 break;
+
             case 'month':
                 // We use JD%7 = 0/Mon…6/Sun. Standard definitions use 0/Sun…6/Sat.
                 $week_start    = (I18N::firstDay() + 6) % 7;
