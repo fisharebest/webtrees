@@ -27,6 +27,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
+use function is_string;
 
 /**
  * Controller for edit forms and responses.
@@ -45,7 +46,7 @@ class EditNoteController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getAttribute('xref');
 
         $note = Note::getInstance($xref, $tree);
         $note = Auth::checkNoteAccess($note, true);
@@ -69,7 +70,7 @@ class EditNoteController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getAttribute('xref');
 
         $note = Note::getInstance($xref, $tree);
         $note = Auth::checkNoteAccess($note, true);

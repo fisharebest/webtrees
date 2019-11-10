@@ -366,8 +366,8 @@ class WebRoutes
             $router->get(EditFact::class, '/edit-fact', EditFact::class);
             $router->get('edit-media-file', '/edit-media-file', 'EditMediaController::editMediaFile');
             $router->post('edit-media-file-update', '/edit-media-file', 'EditMediaController::editMediaFileAction');
-            $router->get('edit-note-object', '/edit-note-object', 'EditNoteController::editNoteObject');
-            $router->post('edit-note-object-action', '/edit-note-object', 'EditNoteController::updateNoteObject');
+            $router->get('edit-note-object', '/edit-note-object/{xref}', 'EditNoteController::editNoteObject');
+            $router->post('edit-note-object-action', '/edit-note-object/{xref}', 'EditNoteController::updateNoteObject');
             $router->get(EditRawFactPage::class, '/edit-raw/{xref}/{fact_id}', EditRawFactPage::class);
             $router->post(EditRawFactAction::class, '/edit-raw/{xref}/{fact_id}', EditRawFactAction::class);
             $router->get(EditRawRecordPage::class, '/edit-raw/{xref}', EditRawRecordPage::class);
