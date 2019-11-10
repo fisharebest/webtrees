@@ -16012,7 +16012,7 @@ msgid "You can make it easier to search for married women by recording their mar
 msgstr "Poți face căutarea femeilor măritate mai ușoară înregistrând numele lor după căsătorie. Totuși, nu toate femeile preiau numele soțului, așa că atenție la introducerea datelor incorecte în baza de date."
 
 #: resources/views/modules/privacy-policy/page.phtml:48
-msgid "You can opt out of tracking by setting the AccountUpdate header in your browser preferences."
+msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:17

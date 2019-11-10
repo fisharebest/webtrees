@@ -15969,7 +15969,7 @@ msgid "You can make it easier to search for married women by recording their mar
 msgstr "Megkönnyítheti a feleségek keresését, ha beírja a házassági nevüket. Bár nem minden nő veszi fel a férje nevét házasságkötéskor, tehát óvakodjon attól, hogy hibás adatokat vezessen be az adatbázisba."
 
 #: resources/views/modules/privacy-policy/page.phtml:48
-msgid "You can opt out of tracking by setting the AccountUpdate header in your browser preferences."
+msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:17

@@ -17341,7 +17341,7 @@ msgid "You can make it easier to search for married women by recording their mar
 msgstr "您可以更容易地搜索已婚妇女如果记录他们的婚姻名。但是不是所有的女人需要随丈夫的姓，所以要当心输入不正确的信息到你的数据库中。"
 
 #: resources/views/modules/privacy-policy/page.phtml:48
-msgid "You can opt out of tracking by setting the AccountUpdate header in your browser preferences."
+msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:17

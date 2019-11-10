@@ -15968,7 +15968,7 @@ msgid "You can make it easier to search for married women by recording their mar
 msgstr "Podeu fer més fàcil la recerca de dones casades enregistrant llur nom de casada. Tanmateix, no totes les dones adopten el cognom de l’espòs, per tant cal que aneu en compte per no introduir dades incorrectes a la base de dades."
 
 #: resources/views/modules/privacy-policy/page.phtml:48
-msgid "You can opt out of tracking by setting the AccountUpdate header in your browser preferences."
+msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:17

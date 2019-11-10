@@ -15964,7 +15964,7 @@ msgid "You can make it easier to search for married women by recording their mar
 msgstr "Jy kan dit makliker maak om vir getroude vroue te soek deur hulle getroude naam aan te teken. Nie alle vroue neem egter hulle man se van aan nie, so pasop dat jy nie foutiewe inligting in jou databasis invoer nie."
 
 #: resources/views/modules/privacy-policy/page.phtml:48
-msgid "You can opt out of tracking by setting the AccountUpdate header in your browser preferences."
+msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:17

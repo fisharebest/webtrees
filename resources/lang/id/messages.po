@@ -15939,7 +15939,7 @@ msgid "You can make it easier to search for married women by recording their mar
 msgstr "Anda dapat membuatnya lebih mudah untuk mencari wanita yang sudah menikah dengan merekam nama pernikahan mereka. Namun tidak semua wanita menggunakan nama keluarga suaminya, jadi berhati-hatilah untuk memasukkan informasi yang salah ke dalam basis data Anda."
 
 #: resources/views/modules/privacy-policy/page.phtml:48
-msgid "You can opt out of tracking by setting the AccountUpdate header in your browser preferences."
+msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:17

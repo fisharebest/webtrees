@@ -15993,7 +15993,7 @@ msgid "You can make it easier to search for married women by recording their mar
 msgstr "Você pode fazer com que a busca por mulheres casadas registrando seu nome de casada. Entretanto nem todas as mulheres levam o sobrenome de seus maridos, então tenha cuidado para não incluir informação incorreta em sua base de dados."
 
 #: resources/views/modules/privacy-policy/page.phtml:48
-msgid "You can opt out of tracking by setting the AccountUpdate header in your browser preferences."
+msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:17
