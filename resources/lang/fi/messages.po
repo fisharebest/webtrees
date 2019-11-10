@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-10 16:16+0000\n"
-"PO-Revision-Date: 2019-09-24 20:31+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Finnish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/fi/>\n"
-"Language: fi\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-11 08:34+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Finnish <http://translate.webtrees.net/projects/webtrees/webtrees/fi/>\nLanguage: fi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -229,8 +217,8 @@ msgstr[1] "%s päivää"
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s perhe"
+msgstr[1] "%s perhettä"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
@@ -1377,7 +1365,7 @@ msgstr "Lisää leikepöydältä"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
-msgstr ""
+msgstr "Lisää historiallisia tapahtumia henkilösivulle."
 
 #: resources/views/modules/lifespans-chart/page.phtml:20
 msgid "Add individuals"
@@ -4319,7 +4307,7 @@ msgstr "Tiedot"
 
 #: resources/views/modules/privacy-policy/page.phtml:53
 msgid "Data controller"
-msgstr ""
+msgstr "Tieto-ohjain"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
@@ -6585,13 +6573,13 @@ msgstr "Frimaire"
 #: resources/views/message-page.phtml:13
 msgctxt "Email sender"
 msgid "From"
-msgstr ""
+msgstr "Lähettäjä"
 
 #: resources/views/admin/changes-log.phtml:22
 #: resources/views/admin/site-logs.phtml:23
 msgctxt "Start of date range"
 msgid "From"
-msgstr ""
+msgstr "Päivästä"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
@@ -7299,11 +7287,11 @@ msgstr "Jos sukunimi on tuntematon, käytä tyhjiä kauttaviivoja: <%s>Mary //<%
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "Jos pikkukuva on mukautettu kuva, lisää se mediakohteeseen."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:18
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-msgstr ""
+msgstr "Jos pikkukuva on sama kuin alkuperäinen kuva, sitä ei enää tarvita ja sinun pitäisi poistaa se."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:78
@@ -7352,7 +7340,7 @@ msgstr "Jos et pyytänyt käyttäjätiliä, voit poistaa tämän ilmoituksen."
 
 #: resources/views/admin/site-mail.phtml:50
 msgid "If you do not use two-factor authentication, enable <a href=\"https://www.google.com/settings/security/lesssecureapps\">less secure applications</a> and use your Google password."
-msgstr ""
+msgstr "Jos et käytä kaksifaktorista todennusta, ota käyttöön <a href=\"https://www.google.com/settings/security/lesssecureapps\">vähemmän turvalliset sovellukset</a> ja käytä Google-salasanaasi."
 
 #: resources/views/modals/media-file-fields.phtml:62
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
@@ -7386,7 +7374,7 @@ msgstr "Jos käytät jotakin seuraavista seuranta ja analytiikka palveluista, we
 
 #: resources/views/admin/site-mail.phtml:48
 msgid "If you use two-factor authentication, create an <a href=\"https://myaccount.google.com/apppasswords\">app password</a>."
-msgstr ""
+msgstr "Jos käytät kaksifaktorista todennusta, luo <a href=\"https://myaccount.google.com/apppasswords\">sovelluksen salasana</a>."
 
 #: app/GedcomTag.php:2103 app/Http/Controllers/Admin/MediaController.php:347
 msgid "Image dimensions"
@@ -7652,7 +7640,7 @@ msgstr "Tiedon antaja"
 
 #: resources/views/admin/site-mail.phtml:34
 msgid "Instructions for Google mail"
-msgstr ""
+msgstr "Ohjeet Google Mailille"
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:244 app/Module/InteractiveTreeModule.php:52
@@ -10652,7 +10640,7 @@ msgstr "Poista pysyvästi nämä tiedot?"
 
 #: resources/views/modules/privacy-policy/page.phtml:5
 msgid "Personal data"
-msgstr ""
+msgstr "Henkilökohtaiset tiedot"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:543
@@ -12122,7 +12110,7 @@ msgstr "Lähetä viesti käyttäjille, jotka eivät ole kirjautuneet sivustolle 
 
 #: resources/views/admin/site-mail.phtml:239
 msgid "Send a test email using these settings"
-msgstr ""
+msgstr "Lähetä testisähköpostiviesti näiden asetusten avulla"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:10
@@ -12458,7 +12446,7 @@ msgstr "Näytä latauslinkki media katsojassa"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
 msgid "Show a privacy policy."
-msgstr ""
+msgstr "Näytä tietosuojakäytäntö."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:62
@@ -13745,7 +13733,7 @@ msgstr "Kansion voi määrittää kokonaisuudessaan (esim. /home/user_name/webtr
 #: app/Http/Controllers/AdminSiteController.php:109
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "Kansio ”%s” ei ole olemassa."
 
 #: resources/views/admin/merge-records-step-2.phtml:26
 msgid "The following facts and events were found in both records."
@@ -14169,7 +14157,7 @@ msgstr "Thermidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:23
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "Nämä evästeet ovat ”välttämättömiä”, eivätkä vaadi suostumusta."
 
 #: resources/views/admin/trees-unconnected.phtml:32
 #, php-format
@@ -14178,7 +14166,7 @@ msgstr "Nämä henkilöryhmät eivät ole sukua henkilöön %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:44
 msgid "These services may use cookies or other tracking technology."
-msgstr ""
+msgstr "Nämä palvelut voivat käyttää evästeitä tai muuta seurantatekniikkaa."
 
 #: app/Http/RequestHandlers/LoginAction.php:134
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -14609,7 +14597,7 @@ msgstr "Tämä tietovarasto on muokattu. Tarkista muutokset ja %1$s tai %2$s ne.
 
 #: resources/views/modules/privacy-policy/page.phtml:12
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr ""
+msgstr "Tämä tutkimus on EU:n yleisten tietosuoja-asetusten 6(f) artiklan mukainen \"oikeutettu etu\"."
 
 #: resources/views/admin/users-edit.phtml:250
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -14694,7 +14682,7 @@ msgstr "Sivusto on suljettu huollon ajaksi. Sinun pitäisi <a href=\"index.php\"
 
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "This website is operated by the following individuals."
-msgstr ""
+msgstr "Tätä verkkosivustoa ylläpitävät seuraavat henkilöt."
 
 #: resources/views/layouts/error.phtml:9 resources/views/layouts/error.phtml:26
 #: resources/views/layouts/offline.phtml:58
@@ -14703,11 +14691,11 @@ msgstr "Tämä sivusto on tilapäisesti poissa käytöstä"
 
 #: resources/views/modules/privacy-policy/page.phtml:9
 msgid "This website processes personal data for the purpose of historical and genealogical research."
-msgstr ""
+msgstr "Tämä verkkosivusto käsittelee henkilötietoja historiallista- ja sukututkimusta varten."
 
 #: resources/views/modules/privacy-policy/page.phtml:20
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
-msgstr ""
+msgstr "Tämä verkkosivusto käyttää evästeitä kirjautumistilojen käyttöön ottamiseksi ja asetusten, kuten valitsemasi kielen, muistamiseksi."
 
 #: resources/views/modules/privacy-policy/footer.phtml:15
 msgid "This website uses cookies to learn about visitor behavior."
@@ -14715,7 +14703,7 @@ msgstr "Tämä sivusto käyttää evästeitä oppiakseen kuinka vierailijat käy
 
 #: resources/views/modules/privacy-policy/page.phtml:32
 msgid "This website uses third-party services to learn about visitor behavior."
-msgstr ""
+msgstr "Tämä verkkosivusto käyttää kolmansien osapuolten palveluita oppiakseen vierailijoiden käyttäytymisestä."
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml:15
@@ -14856,13 +14844,13 @@ msgstr "Otsikko hepreaksi"
 #: resources/views/contact-page.phtml:17 resources/views/message-page.phtml:22
 msgctxt "Email recipient"
 msgid "To"
-msgstr ""
+msgstr "Vastaanottaja"
 
 #: resources/views/admin/changes-log.phtml:29
 #: resources/views/admin/site-logs.phtml:30
 msgctxt "End of date range"
 msgid "To"
-msgstr ""
+msgstr "Päivään"
 
 #: resources/views/modules/html/config.phtml:25
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -15965,7 +15953,7 @@ msgstr "On helpompi etsiä avioituneita naisia merkitsemällä heidän avionimen
 
 #: resources/views/modules/privacy-policy/page.phtml:48
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
-msgstr ""
+msgstr "Voit poistaa käytön seuraamisesta asettamalla \"Älä seuraa\"-otsikon selaimen asetuksissa."
 
 #: resources/views/admin/trees-renumber.phtml:17
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
