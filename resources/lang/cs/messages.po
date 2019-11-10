@@ -12745,7 +12745,7 @@ msgstr "Pro které jazyky tento blok zobrazit"
 
 #: resources/views/admin/trees-preferences.phtml:292
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Zobrazovat náhledy obrázků v diagramech a rodinných skupinách."
+msgstr "Zobrazovat náhledové obrázky v diagramech a rodinných skupinách."
 
 #: app/Functions/FunctionsEdit.php:105 app/Functions/FunctionsEdit.php:228
 #: app/Functions/FunctionsEdit.php:249
@@ -14774,7 +14774,7 @@ msgstr "Náhledový obrázek"
 #: resources/views/admin/trees-preferences.phtml:281
 #: resources/views/admin/trees-preferences.phtml:287
 msgid "Thumbnail images"
-msgstr "Náhledy obrázků"
+msgstr "Náhledové obrázky"
 
 #: app/Date/AbstractCalendarDate.php:241
 msgid "Thursday"
