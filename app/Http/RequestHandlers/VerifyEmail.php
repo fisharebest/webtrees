@@ -66,8 +66,9 @@ class VerifyEmail implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $username = $request->getQueryParams()['username'] ?? '';
-        $token    = $request->getQueryParams()['token'] ?? '';
+        $token    = $request->getAttribute('token');
+        $tree     = $request->getAttribute('tree');
+        $username = $request->getAttribute('username');
 
         $title = I18N::translate('User verification');
 
@@ -116,11 +117,13 @@ class VerifyEmail implements RequestHandlerInterface
 
             return $this->viewResponse('verify-success-page', [
                 'title' => $title,
+                'tree' => $tree,
             ]);
         }
 
         return $this->viewResponse('verify-failure-page', [
             'title' => $title,
+            'tree' => $tree,
         ]);
     }
 }

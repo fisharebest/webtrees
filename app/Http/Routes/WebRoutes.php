@@ -500,7 +500,7 @@ class WebRoutes
         $router->get(Ping::class, '/ping', Ping::class);
         $router->get(RobotsTxt::class, '/robots.txt', RobotsTxt::class);
         $router->post(SelectTheme::class, '/theme/{theme}', SelectTheme::class);
-        $router->get(VerifyEmail::class, '/verify', VerifyEmail::class);
+        $router->get(VerifyEmail::class, '/verify/{username}/{token}{/tree}', VerifyEmail::class);
         $router->get(HomePage::class, '/', HomePage::class);
 
         // Legacy URLs from older software.
