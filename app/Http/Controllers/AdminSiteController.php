@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
-use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Site;
 use Illuminate\Support\Collection;
@@ -38,21 +37,16 @@ class AdminSiteController extends AbstractBaseController
     /** @var string */
     protected $layout = 'layouts/administration';
 
-    /** @var EmailService */
-    private $email_service;
-
     /** @var ModuleService */
     private $module_service;
 
     /**
      * AdminSiteController constructor.
      *
-     * @param EmailService  $email_service
      * @param ModuleService $module_service
      */
-    public function __construct(EmailService $email_service, ModuleService $module_service)
+    public function __construct(ModuleService $module_service)
     {
-        $this->email_service  = $email_service;
         $this->module_service = $module_service;
     }
 

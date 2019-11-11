@@ -22,10 +22,6 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Services\DatatablesService;
-use Fisharebest\Webtrees\Services\EmailService;
-use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -38,40 +34,15 @@ class UsersCleanupPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var DatatablesService */
-    private $datatables_service;
-
-    /** @var EmailService */
-    private $email_service;
-
-    /** @var ModuleService */
-    private $module_service;
-
     /** @var UserService */
     private $user_service;
 
-    /** @var TreeService */
-    private $tree_service;
-
     /**
-     * @param DatatablesService $datatables_service
-     * @param EmailService      $email_service
-     * @param ModuleService     $module_service
-     * @param TreeService       $tree_service
-     * @param UserService       $user_service
+     * @param UserService $user_service
      */
-    public function __construct(
-        DatatablesService $datatables_service,
-        EmailService $email_service,
-        ModuleService $module_service,
-        TreeService $tree_service,
-        UserService $user_service
-    ) {
-        $this->datatables_service = $datatables_service;
-        $this->email_service      = $email_service;
-        $this->module_service     = $module_service;
-        $this->tree_service       = $tree_service;
-        $this->user_service       = $user_service;
+    public function __construct(UserService $user_service)
+    {
+        $this->user_service = $user_service;
     }
 
     /**
