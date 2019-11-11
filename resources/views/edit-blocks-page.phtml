@@ -13,16 +13,20 @@ use Fisharebest\Webtrees\View;
 
 <form method="post" action="<?= e($url_save) ?>" id="edit-blocks">
     <?= csrf_field() ?>
-    <div class="row" id="current-blocks">
-        <div class="col-sm-7" id="main-blocks">
-            <?php foreach ($main_blocks as $block_id => $block) : ?>
-                <?= view('edit-blocks-block', ['block_id' => $block_id, 'block' => $block]) ?>
-            <?php endforeach ?>
+    <div class="card-deck" id="current-blocks">
+        <div class="card" id="main-blocks">
+            <div class="card-body">
+                <?php foreach ($main_blocks as $block_id => $block) : ?>
+                    <?= view('edit-blocks-block', ['block_id' => $block_id, 'block' => $block]) ?>
+                <?php endforeach ?>
+            </div>
         </div>
-        <div class="col-sm-5" id="side-blocks">
-            <?php foreach ($side_blocks as $block_id => $block) : ?>
-                <?= view('edit-blocks-block', ['block_id' => $block_id, 'block' => $block]) ?>
-            <?php endforeach ?>
+        <div class="card" id="side-blocks">
+            <div class="card-body">
+                <?php foreach ($side_blocks as $block_id => $block) : ?>
+                    <?= view('edit-blocks-block', ['block_id' => $block_id, 'block' => $block]) ?>
+                <?php endforeach ?>
+            </div>
         </div>
     </div>
 
