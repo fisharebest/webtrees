@@ -184,6 +184,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             'news_id' => $news_id,
             'subject' => $row->subject,
             'title'   => $title,
+            'tree'    => $tree,
         ]);
     }
 
