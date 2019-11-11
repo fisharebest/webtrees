@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Functions;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Census\Census;
 use Fisharebest\Webtrees\Config;
@@ -418,11 +417,8 @@ class FunctionsEdit
             $html .= '<input type="hidden" id="' . $id . '" name="' . $name . '" value="' . $value . '">';
 
             if ($fact === 'CENS' && $value === 'Y') {
-                $locale = app(ServerRequestInterface::class)->getAttribute('locale');
-                assert($locale instanceof LocaleInterface);
-
                 $html .= view('modules/GEDFact_assistant/select-census', [
-                    'census_places' => Census::censusPlaces($locale->languageTag()),
+                    'census_places' => Census::censusPlaces(I18N::languageTag()),
                 ]);
 
                 $census_assistant = app(ModuleService::class)->findByInterface(CensusAssistantModule::class)->first();

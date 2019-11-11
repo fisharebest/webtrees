@@ -591,9 +591,6 @@ class Functions
      */
     public static function getRelationshipNameFromPath($path, Individual $person1 = null, Individual $person2 = null): string
     {
-        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
-        assert($locale instanceof LocaleInterface);
-
         if (!preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $path)) {
             return '<span class="error">' . $path . '</span>';
         }
@@ -1691,7 +1688,7 @@ class Functions
                     // An English great ×12 uncle is a Danish great ×10 uncle.
                     //
                     // Need to find out which languages use which rules.
-                    switch ($locale->languageTag()) {
+                    switch (I18N::languageTag()) {
                         case 'da':
                             if ($sex2 === 'M') {
                                 return I18N::translate('great ×%s uncle', I18N::number($up - 4));
@@ -1890,7 +1887,7 @@ class Functions
                     // An English great ×12 nephew is a Polish great ×11 nephew.
                     //
                     // Need to find out which languages use which rules.
-                    switch ($locale->languageTag()) {
+                    switch (I18N::languageTag()) {
                         case 'pl': // Source: Lukasz Wilenski
                             if ($sex2 === 'M') {
                                 if ($first === 'bro' && $sex1 === 'M') {
@@ -2030,7 +2027,7 @@ class Functions
                     // An English great ×12 grandfather is a Danish great ×11 grandfather.
                     //
                     // Need to find out which languages use which rules.
-                    switch ($locale->languageTag()) {
+                    switch (I18N::languageTag()) {
                         case 'da': // Source: Patrick Sorensen
                             if ($sex2 === 'M') {
                                 return I18N::translate('great ×%s grandfather', I18N::number($up - 3));
@@ -2174,7 +2171,7 @@ class Functions
                     // An English great ×12 grandson is a Danish great ×11 grandson.
                     //
                     // Need to find out which languages use which rules.
-                    switch ($locale->languageTag()) {
+                    switch (I18N::languageTag()) {
                         case 'nn': // Source: Hogne Røed Nilsen
                         case 'nb':
                         case 'da': // Source: Patrick Sorensen
@@ -2224,7 +2221,7 @@ class Functions
             // an English “second cousin once removed” is a Polish “cousin of 7th degree”.
             //
             // Need to find out which languages use which rules.
-            switch ($locale->languageTag()) {
+            switch (I18N::languageTag()) {
                 case 'pl': // Source: Lukasz Wilenski
                     return self::cousinName($up + $down + 2, $sex2);
                 case 'it':

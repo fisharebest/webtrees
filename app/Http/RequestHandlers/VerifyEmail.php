@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
@@ -32,8 +31,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function assert;
 
 /**
  * Acknowledge an email verification code.
@@ -69,9 +66,6 @@ class VerifyEmail implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $locale = $request->getAttribute('locale');
-        assert($locale instanceof LocaleInterface);
-
         $username = $request->getQueryParams()['username'] ?? '';
         $token    = $request->getQueryParams()['token'] ?? '';
 
@@ -80,6 +74,8 @@ class VerifyEmail implements RequestHandlerInterface
         $user = $this->user_service->findByUserName($username);
 
         if ($user instanceof User && $user->getPreference(User::PREF_VERIFICATION_TOKEN) === $token) {
+            $old_language = I18N::languageTag();
+
             foreach ($this->user_service->administrators() as $administrator) {
                 // switch language to administrator settings
                 I18N::init($administrator->getPreference(User::PREF_LANGUAGE));
@@ -109,8 +105,8 @@ class VerifyEmail implements RequestHandlerInterface
                         'body'       => view('emails/verify-notify-text', ['user' => $user]),
                     ]);
                 }
-                I18N::init($locale->languageTag());
             }
+            I18N::init($old_language);
 
             $user->setPreference(User::PREF_IS_EMAIL_VERIFIED, '1');
             $user->setPreference(User::PREF_TIMESTAMP_REGISTERED, date('U'));

@@ -19,13 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
-use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
 use function app;
@@ -145,14 +143,11 @@ class ChartNoChildrenFamilies
             ],
         ];
 
-        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
-        assert($locale instanceof LocaleInterface);
-
         return view('statistics/other/charts/column', [
             'data'          => $data,
             'chart_options' => $chart_options,
             'chart_title'   => $chart_title,
-            'language'      => $locale->languageTag(),
+            'language'      => I18N::languageTag(),
         ]);
     }
 }

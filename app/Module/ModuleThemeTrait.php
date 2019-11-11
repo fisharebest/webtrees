@@ -19,14 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
@@ -267,14 +265,11 @@ trait ModuleThemeTrait
      */
     public function menuLanguages(): ?Menu
     {
-        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
-        assert($locale instanceof LocaleInterface);
-
         $menu = new Menu(I18N::translate('Language'), '#', 'menu-language');
 
         foreach (I18N::activeLocales() as $active_locale) {
             $language_tag = $active_locale->languageTag();
-            $class        = 'menu-language-' . $language_tag . ($locale->languageTag() === $language_tag ? ' active' : '');
+            $class        = 'menu-language-' . $language_tag . (I18N::languageTag() === $language_tag ? ' active' : '');
             $menu->addSubmenu(new Menu($active_locale->endonym(), '#', $class, [
                 'data-post-url' => route(SelectLanguage::class, ['language' => $language_tag]),
             ]));

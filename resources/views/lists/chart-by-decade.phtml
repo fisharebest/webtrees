@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
-use Psr\Http\Message\ServerRequestInterface;
 
 $chart_options = [
     'title' => '',
@@ -26,12 +24,9 @@ $chart_options = [
     'isStacked' => true,
 ];
 
-$locale = app(ServerRequestInterface::class)->getAttribute('locale');
-assert($locale instanceof LocaleInterface);
-
 echo view('statistics/other/charts/column', [
     'data'          => $data,
     'chart_options' => $chart_options,
     'chart_title'   => $title,
-    'language'      => $locale->languageTag(),
+    'language'      => I18N::languageTag(),
 ]);

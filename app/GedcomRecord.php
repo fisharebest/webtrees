@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Exception;
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\Services\PendingChangesService;
@@ -30,11 +29,9 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
 use function app;
-use function assert;
 
 /**
  * A GEDCOM object.
@@ -510,10 +507,7 @@ class GedcomRecord
         static $language_script;
 
         if ($language_script === null) {
-            $locale = app(ServerRequestInterface::class)->getAttribute('locale');
-            assert($locale instanceof LocaleInterface);
-
-            $language_script = $locale->script()->code();
+            $language_script = $language_script ?? I18N::locale()->script()->code();
         }
 
         if ($this->getPrimaryName === null) {

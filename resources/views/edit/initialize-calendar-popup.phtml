@@ -28,6 +28,6 @@
         <?= json_encode(I18N::translate('Sat')) ?>
   );
 
-  cal_setWeekStart(" . I18N::firstDay() . ");
+  cal_setWeekStart(<?= I18N::locale()->territory()->firstDay() ?>);
 </script>
 <?php View::endpush() ?>

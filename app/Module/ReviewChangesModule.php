@@ -106,8 +106,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
-        assert($locale instanceof LocaleInterface);
+        $old_language = I18N::languageTag();
 
         $sendmail = (bool) $this->getBlockSetting($block_id, 'sendmail', '1');
         $days     = (int) $this->getBlockSetting($block_id, 'days', '1');
@@ -145,11 +144,11 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                                         'user' => $user,
                                     ])
                                 );
-                                I18N::init($locale->languageTag());
                             }
                         }
                     }
                 }
+                I18N::init($old_language);
                 Site::setPreference('LAST_CHANGE_EMAIL', (string) Carbon::now()->unix());
             }
         }

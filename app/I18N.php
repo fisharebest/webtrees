@@ -280,26 +280,6 @@ class I18N
     }
 
     /**
-     * What is the first day of the week.
-     *
-     * @return int Sunday=0, Monday=1, etc.
-     */
-    public static function firstDay(): int
-    {
-        return self::$locale->territory()->firstDay();
-    }
-
-    /**
-     * Generate i18n markup for the <html> tag, e.g. lang="ar" dir="rtl"
-     *
-     * @return string
-     */
-    public static function htmlAttributes(): string
-    {
-        return self::$locale->htmlAttributes();
-    }
-
-    /**
      * Initialise the translation adapter with a locale setting.
      *
      * @param string $code
@@ -379,6 +359,14 @@ class I18N
     public static function languageTag(): string
     {
         return self::$locale->languageTag();
+    }
+
+    /**
+     * @return LocaleInterface
+     */
+    public static function locale(): LocaleInterface
+    {
+        return self::$locale;
     }
 
     /**

@@ -16,11 +16,10 @@ use Psr\Http\Message\ServerRequestInterface;
 /** @var string $title */
 /** @var string $content */
 
-$language_tag = app(ServerRequestInterface::class)->getAttribute('locale')->languageTag();
 ?>
 
 <!DOCTYPE html>
-<html dir="<?= I18N::direction() ?>" lang="<?= e($language_tag) ?>">
+<html dir="<?= I18N::locale()->direction() ?>" lang="<?= I18N::locale()->languageTag() ?>">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,7 +57,7 @@ $language_tag = app(ServerRequestInterface::class)->getAttribute('locale')->lang
                     </a>
                     <div class="dropdown-menu">
                         <?php foreach (I18N::activeLocales() as $locale) : ?>
-                            <a class="dropdown-item menu-language-<?= $locale->languageTag() ?> <?= $language_tag === $locale->languageTag() ? ' active' : '' ?>" href="#" data-post-url="<?= e(route(SelectLanguage::class, ['language' => $locale->languageTag()])) ?>"><?= $locale->endonym() ?></a>
+                            <a class="dropdown-item menu-language-<?= $locale->languageTag() ?> <?= I18N::languageTag() === $locale->languageTag() ? ' active' : '' ?>" href="#" data-post-url="<?= e(route(SelectLanguage::class, ['language' => $locale->languageTag()])) ?>"><?= $locale->endonym() ?></a>
                         <?php endforeach ?>
                     </div>
                 </li>

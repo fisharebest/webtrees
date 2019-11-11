@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
@@ -30,11 +29,6 @@ use Fisharebest\Webtrees\Site;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function assert;
-use function filter_var;
-
-use const FILTER_VALIDATE_DOMAIN;
 
 /**
  * Controller for site administration.
@@ -126,15 +120,12 @@ class AdminSiteController extends AbstractBaseController
      */
     public function registrationForm(ServerRequestInterface $request): ResponseInterface
     {
-        $locale = $request->getAttribute('locale');
-        assert($locale instanceof LocaleInterface);
-
         $title = I18N::translate('Sign-in and registration');
 
         $registration_text_options = $this->registrationTextOptions();
 
         return $this->viewResponse('admin/site-registration', [
-            'language_tag'              => $locale->languageTag(),
+            'language_tag'              => I18N::languageTag(),
             'registration_text_options' => $registration_text_options,
             'title'                     => $title,
         ]);
@@ -163,13 +154,10 @@ class AdminSiteController extends AbstractBaseController
      */
     public function registrationSave(ServerRequestInterface $request): ResponseInterface
     {
-        $locale = $request->getAttribute('locale');
-        assert($locale instanceof LocaleInterface);
-
         $params = $request->getParsedBody();
 
         Site::setPreference('WELCOME_TEXT_AUTH_MODE', $params['WELCOME_TEXT_AUTH_MODE']);
-        Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . $locale->languageTag(), $params['WELCOME_TEXT_AUTH_MODE_4']);
+        Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . I18N::languageTag(), $params['WELCOME_TEXT_AUTH_MODE_4']);
         Site::setPreference('USE_REGISTRATION_MODULE', $params['USE_REGISTRATION_MODULE']);
         Site::setPreference('SHOW_REGISTER_CAUTION', $params['SHOW_REGISTER_CAUTION']);
 

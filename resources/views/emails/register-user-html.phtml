@@ -1,10 +1,11 @@
 <?php
+
 use Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\User;
 
 ?>
-<div <?= I18N::htmlAttributes() ?>>
+<div dir="<?= I18N::locale()->direction() ?>" lang="<?= I18N::locale()->languageTag() ?>">
     <p>
         <?= I18N::translate('Hello %s…', e($user->realName())) ?>
     </p>

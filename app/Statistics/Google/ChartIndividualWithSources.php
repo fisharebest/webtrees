@@ -19,14 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
-use function assert;
 use function count;
 
 /**
@@ -95,15 +92,12 @@ class ChartIndividualWithSources
 
         $colors = $this->color_service->interpolateRgb($color_from, $color_to, count($data) - 1);
 
-        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
-        assert($locale instanceof LocaleInterface);
-
         return view('statistics/other/charts/pie', [
             'title'            => I18N::translate('Individuals with sources'),
             'data'             => $data,
             'colors'           => $colors,
             'labeledValueText' => 'percentage',
-            'language'         => $locale->languageTag(),
+            'language'         => I18N::languageTag(),
         ]);
     }
 }

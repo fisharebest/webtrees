@@ -20,12 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Carbon\CarbonImmutable;
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
-use function app;
 use function gregoriantojd;
-use function unixtojd;
 
 /**
  * A wrapper around CarbonImmutable dates.
@@ -50,11 +46,8 @@ class Carbon extends CarbonImmutable
      */
     public function local(): Carbon
     {
-        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
-        assert($locale instanceof LocaleInterface);
-
         $timezone = Auth::user()->getPreference(User::PREF_TIME_ZONE, Site::getPreference('TIMEZONE', 'UTC'));
 
-        return $this->locale($locale->code())->setTimezone($timezone);
+        return $this->locale(I18N::locale()->code())->setTimezone($timezone);
     }
 }

@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
@@ -33,7 +32,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
-use function app;
 use function assert;
 use function redirect;
 use function route;
@@ -123,9 +121,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     private function getStoriesForIndividual(Individual $individual): array
     {
-        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
-        assert($locale instanceof LocaleInterface);
-
         $block_ids = DB::table('block')
             ->where('module_name', '=', $this->name())
             ->where('xref', '=', $individual->xref())
@@ -138,7 +133,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
             // Only show this block for certain languages
             $languages = $this->getBlockSetting($block_id, 'languages');
-            if ($languages === '' || in_array($locale->languageTag(), explode(',', $languages), true)) {
+            if ($languages === '' || in_array(I18N::languageTag(), explode(',', $languages), true)) {
                 $stories[] = (object) [
                     'block_id'   => $block_id,
                     'title'      => $this->getBlockSetting($block_id, 'title'),
@@ -416,9 +411,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $locale = $request->getAttribute('locale');
-        assert($locale instanceof LocaleInterface);
-
         $stories = DB::table('block')
             ->where('module_name', '=', $this->name())
             ->where('gedcom_id', '=', $tree->id())
@@ -434,9 +426,9 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             })->filter(static function (stdClass $story): bool {
                 // Filter non-existant and private individuals.
                 return $story->individual instanceof Individual && $story->individual->canShow();
-            })->filter(static function (stdClass $story) use ($locale): bool {
+            })->filter(static function (stdClass $story): bool {
                 // Filter foreign languages.
-                return $story->languages === '' || in_array($locale->languageTag(), explode(',', $story->languages), true);
+                return $story->languages === '' || in_array(I18N::languageTag(), explode(',', $story->languages), true);
             });
 
         return $this->viewResponse('modules/stories/list', [

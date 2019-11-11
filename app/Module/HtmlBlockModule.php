@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\HtmlService;
@@ -28,8 +27,6 @@ use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function assert;
 
 /**
  * Class HtmlBlockModule
@@ -90,9 +87,6 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
-        assert($locale instanceof LocaleInterface);
-
         $statistics = app(Statistics::class);
 
         $title          = $this->getBlockSetting($block_id, 'title');
@@ -101,7 +95,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $languages      = $this->getBlockSetting($block_id, 'languages');
 
         // Only show this block for certain languages
-        if ($languages && !in_array($locale->languageTag(), explode(',', $languages), true)) {
+        if ($languages && !in_array(I18N::languageTag(), explode(',', $languages), true)) {
             return '';
         }
 

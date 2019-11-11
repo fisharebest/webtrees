@@ -23,6 +23,7 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
@@ -89,12 +90,6 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             // This might be usable in the error page.
             if (app()->has(ServerRequestInterface::class)) {
                 $request = app(ServerRequestInterface::class) ?? $request;
-            }
-
-            // No locale set in the request?
-            if ($request->getAttribute('locale') === null) {
-                $request = $request->withAttribute('locale', new LocaleEnUs());
-                app()->instance(ServerRequestInterface::class, $request);
             }
 
             // Show the exception in a standard webtrees page (if we can).

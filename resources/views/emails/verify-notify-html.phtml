@@ -1,5 +1,9 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<div <?= I18N::htmlAttributes() ?>>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+<div dir="<?= I18N::locale()->direction() ?>" lang="<?= I18N::locale()->languageTag() ?>">
     <p>
         <?= I18N::translate('Hello administrator…') ?>
     </p>

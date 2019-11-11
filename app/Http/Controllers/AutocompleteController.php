@@ -19,10 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Site;
@@ -191,9 +191,6 @@ class AutocompleteController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $locale = $request->getAttribute('locale');
-        assert($locale instanceof LocaleInterface);
-
         $query = $request->getQueryParams()['query'] ?? '';
         $data  = [];
 
@@ -208,7 +205,7 @@ class AutocompleteController extends AbstractBaseController
             $url =
                 'http://api.geonames.org/searchJSON' .
                 '?name_startsWith=' . rawurlencode($query) .
-                '&lang=' . $locale->languageTag() .
+                '&lang=' . I18N::languageTag() .
                 '&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC' .
                 '&style=full' .
                 '&username=' . rawurlencode($geonames);

@@ -19,18 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
 use function app;
-use function assert;
 use function count;
 
 /**
@@ -122,14 +119,11 @@ class ChartDeath
 
         $colors = $this->color_service->interpolateRgb($color_from, $color_to, count($data) - 1);
 
-        $locale = app(ServerRequestInterface::class)->getAttribute('locale');
-        assert($locale instanceof LocaleInterface);
-
         return view('statistics/other/charts/pie', [
             'title'    => I18N::translate('Deaths by century'),
             'data'     => $data,
             'colors'   => $colors,
-            'language' => $locale->languageTag(),
+            'language' => I18N::languageTag(),
         ]);
     }
 }
