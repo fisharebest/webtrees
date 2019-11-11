@@ -121,11 +121,25 @@ class SetupController extends AbstractBaseController
         $data = $this->userData($request);
 
         $step = (int) ($request->getParsedBody()['step'] ?? '1');
-        $lang = $request->getParsedBody()['lang'] ?? $data['lang'];
 
-        $data['lang']         = I18N::init($lang, null, true);
+        $locales = $this->module_service
+            ->setupLanguages()
+            ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
+                return $module->locale();
+            });
+
+        if ($data['lang'] === '') {
+            $default = new LocaleEnUs();
+            
+            $locale  = Locale::httpAcceptLanguage($request->getServerParams(), $locales->all(), $default);
+
+            $data['lang'] = $locale->languageTag();
+        }
+
+        I18N::init($data['lang'], true);
+
         $data['cpu_limit']    = $this->maxExecutionTime();
-        $data['locales']      = $this->setupLocales();
+        $data['locales']      = $locales->all();
         $data['memory_limit'] = $this->memoryLimit();
 
         // Only show database errors after the user has chosen a driver.
@@ -186,21 +200,6 @@ class SetupController extends AbstractBaseController
     private function maxExecutionTime(): int
     {
         return (int) ini_get('max_execution_time');
-    }
-
-    /**
-     * Which languages are available during the installation.
-     *
-     * @return LocaleInterface[]
-     */
-    private function setupLocales(): array
-    {
-        return $this->module_service
-            ->setupLanguages()
-            ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
-                return $module->locale();
-            })
-            ->all();
     }
 
     /**
@@ -265,10 +264,6 @@ class SetupController extends AbstractBaseController
      */
     private function step1Language(array $data): ResponseInterface
     {
-        if ($data['lang'] === '') {
-            $data['lang'] = Locale::httpAcceptLanguage($_SERVER, $data['locales'], new LocaleEnUs())->languageTag();
-        }
-
         return $this->viewResponse('setup/step-1-language', $data);
     }
 

@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
@@ -39,6 +41,19 @@ use function array_combine;
 class AccountEdit implements RequestHandlerInterface
 {
     use ViewResponseTrait;
+
+    /** @var ModuleService */
+    private $module_service;
+
+    /**
+     * AccountEdit constructor.
+     *
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service)
+    {
+        $this->module_service = $module_service;
+    }
 
     /**
      * @param ServerRequestInterface $request
@@ -60,6 +75,13 @@ class AccountEdit implements RequestHandlerInterface
             $default_individual   = null;
         }
 
+        $languages = $this->module_service->findByInterface(ModuleLanguageInterface::class, true, true)
+            ->mapWithKeys(static function (ModuleLanguageInterface $module): array {
+                $locale = $module->locale();
+
+                return [$locale->languageTag() => $locale->endonym()];
+            });
+
         $show_delete_option = $user->getPreference(User::PREF_IS_ADMINISTRATOR) !== '1';
         $timezone_ids       = DateTimeZone::listIdentifiers();
         $timezones          = array_combine($timezone_ids, $timezone_ids);
@@ -68,7 +90,7 @@ class AccountEdit implements RequestHandlerInterface
         return $this->viewResponse('edit-account-page', [
             'contact_methods'      => FunctionsEdit::optionsContactMethods(),
             'default_individual'   => $default_individual,
-            'installed_languages'  => $this->installedLanguages(),
+            'languages'            => $languages->all(),
             'my_individual_record' => $my_individual_record,
             'show_delete_option'   => $show_delete_option,
             'timezones'            => $timezones,
@@ -76,20 +98,5 @@ class AccountEdit implements RequestHandlerInterface
             'tree'                 => $tree,
             'user'                 => $user,
         ]);
-    }
-
-    /**
-     * A list of installed languages (e.g. for an edit control).
-     *
-     * @return string[]
-     */
-    private function installedLanguages(): array
-    {
-        $languages = [];
-        foreach (I18N::installedLocales() as $locale) {
-            $languages[$locale->languageTag()] = $locale->endonym();
-        }
-
-        return $languages;
     }
 }

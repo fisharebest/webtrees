@@ -108,13 +108,7 @@ use Fisharebest\Webtrees\View;
             <?= /* I18N: A configuration setting */ I18N::translate('Language') ?>
         </label>
         <div class="col-sm-9">
-            <select id="language" name="language" class="form-control">
-                <?php foreach ($locales as $locale) : ?>
-                    <option value="<?= $locale->languageTag() ?>" <?= $user->getPreference(User::PREF_LANGUAGE, $default_locale) === $locale->languageTag() ? 'selected' : '' ?>>
-                        <?= $locale->endonym() ?>
-                    </option>
-                <?php endforeach ?>
-            </select>
+            <?= view('components/select', ['name' => 'language', 'selected' => $user->getPreference(User::PREF_LANGUAGE, $default_language), 'options' => $languages]) ?>
         </div>
     </div>
 

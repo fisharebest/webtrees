@@ -85,30 +85,4 @@ class I18NTest extends TestCase
         $this->assertSame(I18N::reverseText('123' . $rtl_abc . '456'), '456' . $rtl_cba . '123');
         $this->assertSame(I18N::reverseText($rtl_abc . '&lt;'), '>' . $rtl_cba);
     }
-
-    /**
-     * @covers \Fisharebest\Webtrees\I18N::languageName
-     *
-     * @return void
-     */
-    public function testKnownLanguageName(): void
-    {
-        $this->assertSame('العربية', I18N::languageName('ar'));
-        $this->assertSame('Deutsch', I18N::languageName('de'));
-        $this->assertSame('Ελληνικά', I18N::languageName('el'));
-        $this->assertSame('British English', I18N::languageName('en-GB'));
-        $this->assertSame('français', I18N::languageName('fr'));
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\I18N::languageScript
-     *
-     * @return void
-     */
-    public function testLanguageScript(): void
-    {
-        $this->assertSame('Arab', I18N::languageScript('ar'));
-        $this->assertSame('Latn', I18N::languageScript('de'));
-        $this->assertSame('Grek', I18N::languageScript('el'));
-    }
 }

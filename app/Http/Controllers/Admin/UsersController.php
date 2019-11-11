@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\EmailService;
@@ -124,10 +125,12 @@ class UsersController extends AbstractAdminController
     {
         $user = $request->getAttribute('user');
 
-        $installed_languages = [];
-        foreach (I18N::installedLocales() as $installed_locale) {
-            $installed_languages[$installed_locale->languageTag()] = $installed_locale->endonym();
-        }
+        $languages = $this->module_service->findByInterface(ModuleLanguageInterface::class, true)
+            ->mapWithKeys(static function (ModuleLanguageInterface $module): array {
+                $locale = $module->locale();
+
+                return [$locale->languageTag() => $locale->endonym()];
+            });
 
         $query = DB::table('user')
             ->leftJoin('user_setting AS us1', static function (JoinClause $join): void {
@@ -174,14 +177,14 @@ class UsersController extends AbstractAdminController
         $search_columns = ['user_name', 'real_name', 'email'];
         $sort_columns   = [];
 
-        $callback = static function (stdClass $row) use ($installed_languages, $user): array {
+        $callback = static function (stdClass $row) use ($languages, $user): array {
             $datum = [
                 view('admin/users-table-options', ['row' => $row, 'user' => $user]),
                 $row->user_id,
                 '<span dir="auto">' . e($row->user_name) . '</span>',
                 '<span dir="auto">' . e($row->real_name) . '</span>',
                 '<a href="mailto:' . e($row->email) . '">' . e($row->email) . '</a>',
-                $installed_languages[$row->language] ?? $row->language,
+                $languages->get($row->language, $row->language),
                 $row->registered_at,
                 $row->registered_at ? view('components/datetime-diff', ['timestamp' => Carbon::createFromTimestamp((int) $row->registered_at)]) : '',
                 $row->active_at,
@@ -238,15 +241,23 @@ class UsersController extends AbstractAdminController
             throw new NotFoundHttpException(I18N::translate('%1$s does not exist.', 'user_id:' . $user_id));
         }
 
+        $languages = $this->module_service->findByInterface(ModuleLanguageInterface::class, true, true)
+            ->mapWithKeys(static function (ModuleLanguageInterface $module): array {
+                $locale = $module->locale();
+
+                return [$locale->languageTag() => $locale->endonym()];
+            });
+
+
         return $this->viewResponse('admin/users-edit', [
-            'contact_methods' => FunctionsEdit::optionsContactMethods(),
-            'default_locale'  => $locale->languageTag(),
-            'locales'         => I18N::installedLocales(),
-            'roles'           => $this->roles(),
-            'trees'           => $this->tree_service->all(),
-            'theme_options'   => $this->themeOptions(),
-            'title'           => I18N::translate('Edit the user'),
-            'user'            => $user,
+            'contact_methods'  => FunctionsEdit::optionsContactMethods(),
+            'default_language' => $locale->languageTag(),
+            'languages'        => $languages->all(),
+            'roles'            => $this->roles(),
+            'trees'            => $this->tree_service->all(),
+            'theme_options'    => $this->themeOptions(),
+            'title'            => I18N::translate('Edit the user'),
+            'user'             => $user,
         ]);
     }
 

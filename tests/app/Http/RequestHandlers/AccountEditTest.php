@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
 
@@ -39,7 +40,7 @@ class AccountEditTest extends TestCase
     public function testHandler(): void
     {
         $user     = $this->createMock(User::class);
-        $handler  = new AccountEdit();
+        $handler  = new AccountEdit(new ModuleService());
         $request  = self::createRequest()
             ->withAttribute('user', $user);
         $response = $handler->handle($request);

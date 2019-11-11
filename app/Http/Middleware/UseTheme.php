@@ -24,15 +24,16 @@ use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Tree;
 use Generator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function app;
+
 /**
- * Middleware to set a global theme.
+ * Middleware to select a theme.
  */
 class UseTheme implements MiddlewareInterface
 {
@@ -59,12 +60,9 @@ class UseTheme implements MiddlewareInterface
     {
         foreach ($this->themes() as $theme) {
             if ($theme instanceof ModuleThemeInterface) {
-                // Bind this theme into the container
                 app()->instance(ModuleThemeInterface::class, $theme);
-
-                // Remember this setting
+                $request = $request->withAttribute('theme', $theme);
                 Session::put('theme', $theme->name());
-
                 break;
             }
         }
@@ -75,8 +73,6 @@ class UseTheme implements MiddlewareInterface
     /**
      * The theme can be chosen in various ways.
      *
-     * @param ServerRequestInterface $request
-     *
      * @return Generator
      */
     private function themes(): Generator
@@ -84,7 +80,7 @@ class UseTheme implements MiddlewareInterface
         $themes = $this->module_service->findByInterface(ModuleThemeInterface::class);
 
         // Last theme used
-        yield $themes->get(Session::get('theme', ''));
+        yield $themes->get(Session::get('theme'));
 
         // Default for site
         yield $themes->get(Site::getPreference('THEME_DIR'));

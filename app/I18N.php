@@ -302,43 +302,17 @@ class I18N
     /**
      * Initialise the translation adapter with a locale setting.
      *
-     * @param string    $code  Use this locale/language code, or choose one automatically
-     * @param Tree|null $tree
-     * @param bool      $setup During setup, we cannot access the database.
+     * @param string $code
+     * @param bool   $setup
      *
-     * @return string $string
+     * @return void
      */
-    public static function init(string $code = '', Tree $tree = null, $setup = false): string
+    public static function init(string $code, bool $setup = false): void
     {
-        if ($code !== '') {
-            // Create the specified locale
-            self::$locale = Locale::create($code);
-        } elseif (Session::has('language')) {
-            // Select a previously used locale
-            self::$locale = Locale::create(Session::get('language'));
-        } else {
-            if ($tree instanceof Tree) {
-                $default_locale = Locale::create($tree->getPreference('LANGUAGE', 'en-US'));
-            } else {
-                $default_locale = new LocaleEnUs();
-            }
-
-            // Negotiate with the browser.
-            // Search engines don't negotiate.  They get the default locale of the tree.
-            if ($setup) {
-                $installed_locales = app(ModuleService::class)->setupLanguages()
-                    ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
-                        return $module->locale();
-                    });
-            } else {
-                $installed_locales = self::installedLocales();
-            }
-
-            self::$locale = Locale::httpAcceptLanguage($_SERVER, $installed_locales->all(), $default_locale);
-        }
+        self::$locale = Locale::create($code);
 
         // Load the translation file
-        $translation_file = Webtrees::ROOT_DIR . 'resources/lang/' . self::$locale->languageTag() . '/messages.php';
+        $translation_file = __DIR__ . '/../resources/lang/' . self::$locale->languageTag() . '/messages.php';
 
         try {
             $translation  = new Translation($translation_file);
@@ -380,22 +354,6 @@ class I18N
             // PHP-INTL is not installed?  We'll use a fallback later.
             self::$collator = null;
         }
-
-        return self::$locale->languageTag();
-    }
-
-    /**
-     * All locales for which a translation file exists.
-     *
-     * @return Collection
-     */
-    public static function installedLocales(): Collection
-    {
-        return app(ModuleService::class)
-            ->findByInterface(ModuleLanguageInterface::class, true)
-            ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
-                return $module->locale();
-            });
     }
 
     /**
@@ -416,35 +374,11 @@ class I18N
     }
 
     /**
-     * Return the endonym for a given language - as per http://cldr.unicode.org/
-     *
-     * @param string $locale
-     *
-     * @return string
-     */
-    public static function languageName(string $locale): string
-    {
-        return Locale::create($locale)->endonym();
-    }
-
-    /**
      * @return string
      */
     public static function languageTag(): string
     {
         return self::$locale->languageTag();
-    }
-
-    /**
-     * Return the script used by a given language
-     *
-     * @param string $locale
-     *
-     * @return string
-     */
-    public static function languageScript(string $locale): string
-    {
-        return Locale::create($locale)->script()->code();
     }
 
     /**

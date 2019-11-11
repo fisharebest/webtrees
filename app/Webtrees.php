@@ -38,7 +38,7 @@ use Fisharebest\Webtrees\Http\Middleware\UseCache;
 use Fisharebest\Webtrees\Http\Middleware\UseDatabase;
 use Fisharebest\Webtrees\Http\Middleware\UseDebugbar;
 use Fisharebest\Webtrees\Http\Middleware\UseFilesystem;
-use Fisharebest\Webtrees\Http\Middleware\UseLocale;
+use Fisharebest\Webtrees\Http\Middleware\UseLanguage;
 use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
@@ -117,7 +117,7 @@ class Webtrees
         UseCache::class,
         UseFilesystem::class,
         UseSession::class,
-        UseLocale::class,
+        UseLanguage::class,
         CheckForMaintenanceMode::class,
         UseTheme::class,
         DoHousekeeping::class,

@@ -90,7 +90,7 @@ use Fisharebest\Webtrees\View;
             <?= I18N::translate('Language') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select', ['name' => 'language', 'selected' => $user->getPreference(User::PREF_LANGUAGE), 'options' => $installed_languages]) ?>
+            <?= view('components/select', ['name' => 'language', 'selected' => $user->getPreference(User::PREF_LANGUAGE), 'options' => $languages]) ?>
         </div>
     </div>
 
