@@ -1,22 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-10 16:16+0000\n"
-"PO-Revision-Date: 2019-11-09 09:32+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Hungarian <http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
-"Language: hu\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Hungarian\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-15 20:29+0000\nLast-Translator: Gyönyör János <gyj@centrum.sk>\nLanguage-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\nLanguage: hu\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Hungarian\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -234,8 +217,8 @@ msgstr[1] "%s nap"
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s család"
+msgstr[1] "%s család"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
@@ -856,7 +839,7 @@ msgstr "A webtrees új verziója érhető el."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:95
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr ""
+msgstr "A jelszóbeállítás utalása “%s” címre elküldve."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:64
@@ -1382,7 +1365,7 @@ msgstr "Felvétel a vágólapról"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
-msgstr ""
+msgstr "Történelmi esemény hozzáadása a személy lapjához."
 
 #: resources/views/modules/lifespans-chart/page.phtml:20
 msgid "Add individuals"
@@ -4299,7 +4282,7 @@ msgstr "Cseh Köztársaság"
 #. I18N: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail
 #: resources/views/admin/site-mail.phtml:202
 msgid "DKIM digital signature"
-msgstr ""
+msgstr "DKIM digitális aláírás"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1787
@@ -4324,7 +4307,7 @@ msgstr "Adat"
 
 #: resources/views/modules/privacy-policy/page.phtml:53
 msgid "Data controller"
-msgstr ""
+msgstr "Adatkezelő"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
@@ -5277,7 +5260,7 @@ msgstr "Dokumentum"
 
 #: resources/views/admin/site-mail.phtml:207
 msgid "Domain name"
-msgstr ""
+msgstr "Tartománynév"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:161
@@ -5511,7 +5494,7 @@ msgstr "Elul"
 
 #: resources/views/password-request-page.phtml:20
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag _EMAIL
@@ -6590,13 +6573,13 @@ msgstr "Dér hava"
 #: resources/views/message-page.phtml:13
 msgctxt "Email sender"
 msgid "From"
-msgstr ""
+msgstr "Feladó"
 
 #: resources/views/admin/changes-log.phtml:22
 #: resources/views/admin/site-logs.phtml:23
 msgctxt "Start of date range"
 msgid "From"
-msgstr ""
+msgstr "Ettől"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
@@ -7304,11 +7287,11 @@ msgstr "Ha a vezetéknév ismeretlen, használjunk két, egymást követő perje
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "Ha a bélyegkép egyedi kép, akkor hozzá kell adnia egy médiaobjektumhoz."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:18
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-msgstr ""
+msgstr "Ha a bélyegkép egyezik az eredeti képpel, akkor többé nincs rá szükség, törölheti azt."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:78
@@ -7348,7 +7331,7 @@ msgstr "Ha a GEDCOM-fájlt olyan származástani alkalmazással hozta létre, am
 #: resources/views/emails/password-request-html.phtml:17
 #: resources/views/emails/password-request-text.phtml:9
 msgid "If you did not request a new password, please ignore this message."
-msgstr ""
+msgstr "Ha ön nem kért új jelszót, kérjük, hagyja figyelmen kívül ezt az üzenetet."
 
 #: resources/views/emails/register-user-html.phtml:28
 #: resources/views/emails/register-user-text.phtml:16
@@ -7357,7 +7340,7 @@ msgstr "Ha Ön nem kért felhasználói fiókot, nyugodtan törölheti ezt az ü
 
 #: resources/views/admin/site-mail.phtml:50
 msgid "If you do not use two-factor authentication, enable <a href=\"https://www.google.com/settings/security/lesssecureapps\">less secure applications</a> and use your Google password."
-msgstr ""
+msgstr "Ha nem kéttényezős hitelesítést használ, engedélyezze <a href=\"https://www.google.com/settings/security/lesssecureapps\">kevésbé biztonságos alkalmazások</a> és használja a Google jelszavát."
 
 #: resources/views/modals/media-file-fields.phtml:62
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
@@ -7391,7 +7374,7 @@ msgstr "Ha a következő követő- és elemzőszolgáltatások egyikét használ
 
 #: resources/views/admin/site-mail.phtml:48
 msgid "If you use two-factor authentication, create an <a href=\"https://myaccount.google.com/apppasswords\">app password</a>."
-msgstr ""
+msgstr "Kéttényezős hitelesítés esetén hozzon létre egy  <a href=\"https://myaccount.google.com/apppasswords\">alkalmazásjelszót</a>."
 
 #: app/GedcomTag.php:2103 app/Http/Controllers/Admin/MediaController.php:347
 msgid "Image dimensions"
@@ -7657,7 +7640,7 @@ msgstr "Tudósító"
 
 #: resources/views/admin/site-mail.phtml:34
 msgid "Instructions for Google mail"
-msgstr ""
+msgstr "Útmutatások a Google mailhez"
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:244 app/Module/InteractiveTreeModule.php:52
@@ -8607,7 +8590,7 @@ msgstr "Manhattan, New York, Egyesült Államok"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:453
 msgid "Manila, Philippines"
-msgstr "Manila, Philippines"
+msgstr "Manila, Fülöp-szigetek"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:456
@@ -9457,16 +9440,16 @@ msgstr "Leggyakoribb vezetéknevek"
 
 #: resources/views/admin/site-mail.phtml:194
 msgid "Most mail servers require a valid domain name."
-msgstr ""
+msgstr "A legtöbb levélkiszolgáló érvényes tartománynevet igényel."
 
 #: resources/views/admin/site-mail.phtml:86
 msgid "Most mail servers require a valid email address."
-msgstr ""
+msgstr "A legtöbb levélkiszolgáló érvényes e-mail címet igényel."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:189
 msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
-msgstr ""
+msgstr "A legtöbb levélkiszolgáló megköveteli, hogy a küldő kiszolgáló helyesen azonosítsa magát érvényes tartománynevet használva."
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:175
@@ -10657,7 +10640,7 @@ msgstr "Véglegesen törlendőek ezek a bejegyzések?"
 
 #: resources/views/modules/privacy-policy/page.phtml:5
 msgid "Personal data"
-msgstr ""
+msgstr "Személyes adatok"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:543
@@ -10913,7 +10896,7 @@ msgstr "Kérjük, írjon be egy érvényes e-mail címet."
 #: app/Http/RequestHandlers/PasswordResetAction.php:80
 #: app/Http/RequestHandlers/PasswordResetPage.php:76
 msgid "Please try again."
-msgstr ""
+msgstr "Kérem próbálja újra."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:143
@@ -11127,7 +11110,7 @@ msgstr "Privát adat"
 
 #: resources/views/admin/site-mail.phtml:225
 msgid "Private key"
-msgstr ""
+msgstr "Titkos egyéni kulcs"
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:943
@@ -12079,7 +12062,7 @@ msgstr "Válasszon ki két összefűzendő bejegyzést."
 
 #: resources/views/admin/site-mail.phtml:216
 msgid "Selector"
-msgstr ""
+msgstr "Választó"
 
 #: app/GedcomCode/GedcomCodeRela.php:313
 msgid "Seller"
@@ -12127,7 +12110,7 @@ msgstr "Üzenetküldés azoknak a felhasználóknak, akik 6 hónapja nem jelentk
 
 #: resources/views/admin/site-mail.phtml:239
 msgid "Send a test email using these settings"
-msgstr ""
+msgstr "Küldjön teszt e-mailt ezekkel a beállításokkal"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:10
@@ -12231,7 +12214,7 @@ msgstr "Szervernév"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php:62
 msgid "Set a new password"
-msgstr ""
+msgstr "Állítson be új jelszót"
 
 #: resources/views/admin/trees.phtml:115 resources/views/admin/trees.phtml:122
 msgid "Set as default"
@@ -12463,7 +12446,7 @@ msgstr "Legyen letöltési hivatkozás a médiamegjelenítőben"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
 msgid "Show a privacy policy."
-msgstr ""
+msgstr "Az adatvédelmi irányelv megtekintése."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:62
@@ -13750,7 +13733,7 @@ msgstr "A mappa megadható a teljes elérési úttal (pl. /home/user_name/webtre
 #: app/Http/Controllers/AdminSiteController.php:109
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "A “%s” mappa nem létezik."
 
 #: resources/views/admin/merge-records-step-2.phtml:26
 msgid "The following facts and events were found in both records."
@@ -13892,7 +13875,7 @@ msgstr "A jelszó szükséges az SMPT-szerverrel történő azonosításhoz."
 #: app/Http/RequestHandlers/PasswordResetAction.php:79
 #: app/Http/RequestHandlers/PasswordResetPage.php:75
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "A jelszó-visszaállítási hivatkozás lejárt."
 
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php:57
@@ -14138,7 +14121,7 @@ msgstr[1] "Az utolsó %s napon nem történt semmilyen változtatás."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:99
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr ""
+msgstr "Nincs “%s” e-mail címes felhasználói fiók."
 
 #: app/Http/Controllers/Admin/MediaController.php:451
 #: app/Http/Controllers/EditMediaController.php:128
@@ -14174,7 +14157,7 @@ msgstr "Hőség hónapja"
 
 #: resources/views/modules/privacy-policy/page.phtml:23
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "Ezek a sütik “alapvetőek” és nem igényelnek hozzájárulást."
 
 #: resources/views/admin/trees-unconnected.phtml:32
 #, php-format
@@ -14183,7 +14166,7 @@ msgstr "Nincs kapcsolat %s és ezen személyek csoportjai között."
 
 #: resources/views/modules/privacy-policy/page.phtml:44
 msgid "These services may use cookies or other tracking technology."
-msgstr ""
+msgstr "Ezek a szolgáltatások sütiket vagy más nyomkövető technológiát használhatnak."
 
 #: app/Http/RequestHandlers/LoginAction.php:134
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -14439,7 +14422,7 @@ msgstr "Ez az Ön valódi neve, ahogy szeretné, hogy megjelenjen a képernyőn.
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:96
 msgid "This link is valid for one hour."
-msgstr ""
+msgstr "Az utalás egy órán át érvényes."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -14614,7 +14597,7 @@ msgstr "Ezt az adattárat szerkesztették. Ellenőrzés után választhatja a v�
 
 #: resources/views/modules/privacy-policy/page.phtml:12
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr ""
+msgstr "Ez a kutatás az EU általános adatvédelmi rendelete 6. cikkének értelmében \"jogos érdek\"."
 
 #: resources/views/admin/users-edit.phtml:250
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -14699,7 +14682,7 @@ msgstr "Ezen a webhelyen éppen karbantartás folyik. <a href=\"index.php\">Pró
 
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "This website is operated by the following individuals."
-msgstr ""
+msgstr "Ezt a weboldalt a következő személyek üzemeltetik."
 
 #: resources/views/layouts/error.phtml:9 resources/views/layouts/error.phtml:26
 #: resources/views/layouts/offline.phtml:58
@@ -14708,11 +14691,11 @@ msgstr "Ez a webhely ideiglenesen nem elérhető"
 
 #: resources/views/modules/privacy-policy/page.phtml:9
 msgid "This website processes personal data for the purpose of historical and genealogical research."
-msgstr ""
+msgstr "Ez a weboldal a személyes adatokat történelmi és származástani kutatás céljából dolgozza fel."
 
 #: resources/views/modules/privacy-policy/page.phtml:20
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
-msgstr ""
+msgstr "Ez a weboldal sütiket használ a bejelentkezés menetének engedélyezéséhez és a beállítások megtartásához, mint a nyelvválasztás."
 
 #: resources/views/modules/privacy-policy/footer.phtml:15
 msgid "This website uses cookies to learn about visitor behavior."
@@ -14720,7 +14703,7 @@ msgstr "Ez a webhely sütiket használ, hogy látogatói viselkedéssel ismerked
 
 #: resources/views/modules/privacy-policy/page.phtml:32
 msgid "This website uses third-party services to learn about visitor behavior."
-msgstr ""
+msgstr "A weboldal harmadik fél szolgáltatásait használja fel a látogatók viselkedésének megismerésére."
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml:15
@@ -14861,13 +14844,13 @@ msgstr "Cím héberül"
 #: resources/views/contact-page.phtml:17 resources/views/message-page.phtml:22
 msgctxt "Email recipient"
 msgid "To"
-msgstr ""
+msgstr "Címzett"
 
 #: resources/views/admin/changes-log.phtml:29
 #: resources/views/admin/site-logs.phtml:30
 msgctxt "End of date range"
 msgid "To"
-msgstr ""
+msgstr "Eddig"
 
 #: resources/views/modules/html/config.phtml:25
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -14894,7 +14877,7 @@ msgstr "A letöltés nagyságának csökkentéhez, tömörítheti az adatokat .Z
 #: resources/views/emails/password-request-html.phtml:9
 #: resources/views/emails/password-request-text.phtml:5
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "Új jelszó beállításához kövesse ezt az utalást."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:36
@@ -15970,7 +15953,7 @@ msgstr "Megkönnyítheti a feleségek keresését, ha beírja a házassági nev�
 
 #: resources/views/modules/privacy-policy/page.phtml:48
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
-msgstr ""
+msgstr "A követésről a “Ne kövessen nyomon” fejléc választásával iratkozhat le a böngészője beállításaiban."
 
 #: resources/views/admin/trees-renumber.phtml:17
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
@@ -16110,7 +16093,7 @@ msgstr "Az Ön neve"
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:72
 msgid "Your password has been updated."
-msgstr ""
+msgstr "A jelszava frissült."
 
 #: app/Http/RequestHandlers/RegisterAction.php:131
 #, php-format
@@ -20162,7 +20145,7 @@ msgstr "A webtrees-nek szüksége van egy adatbázisra a származástani adatok 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:67
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr ""
+msgstr "A webtreesnek e-maileket kell küldenie, mint például jelszó emlékeztetőket és webhely-értesítéseket."
 
 #: app/Functions/FunctionsEdit.php:145
 msgid "webtrees sends emails with no storage"
