@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-09 09:33+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Hungarian <http://translate.webtrees.net/projects/webtrees/"
+"PO-Revision-Date: 2019-11-15 20:29+0000\n"
+"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
+"Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -8535,7 +8535,7 @@ msgstr "Manhattan, New York, Egyesült Államok"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:233
 msgid "Manila, Philippines"
-msgstr "Manila, Philippines"
+msgstr "Manila, Fülöp-szigetek"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:235
