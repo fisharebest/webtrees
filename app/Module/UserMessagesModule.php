@@ -170,7 +170,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
         $content .= csrf_field();
 
         if ($messages->isNotEmpty()) {
-            $content .= '<table class="list_table w-100"><tr>';
+            $content .= '<table class="table table-sm table-responsive w-100"><tr>';
             $content .= '<th class="list_label">' . I18N::translate('Delete') . '<br><a href="#" onclick="$(\'#block-' . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">' . I18N::translate('All') . '</a></th>';
             $content .= '<th class="list_label">' . I18N::translate('Subject') . '</th>';
             $content .= '<th class="list_label">' . I18N::translate('Date sent') . '</th>';
