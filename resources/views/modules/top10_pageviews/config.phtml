@@ -8,12 +8,3 @@
         <input class="form-control" id="num" name="num" type="number" min="1" value="<?= e($num) ?>" required>
     </div>
 </div>
-
-<div class="form-group row">
-    <label class="col-sm-3 col-form-label" for="count_placement">
-        <?= /* I18N: Label for a configuration option */ I18N::translate('Show counts before or after name') ?>
-    </label>
-    <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'count_placement', 'selected' => $count_placement, 'options' => $options]) ?>
-    </div>
-</div>

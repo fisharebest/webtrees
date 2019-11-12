@@ -33,6 +33,8 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
 
+    private const DEFAULT_NUMBER_TO_SHOW = '10';
+
     /**
      * How should this module be identified in the control panel, etc.?
      *
@@ -67,34 +69,32 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $num             = $this->getBlockSetting($block_id, 'num', '10');
-        $count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
+        $num = (int) $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER_TO_SHOW);
 
         extract($config, EXTR_OVERWRITE);
 
-        $top10 = DB::table('hit_counter')
+        $query = DB::table('hit_counter')
             ->where('gedcom_id', '=', $tree->id())
             ->whereIn('page_name', ['individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php'])
-            ->orderByDesc('page_count')
-            ->limit((int) $num)
-            ->pluck('page_count', 'page_parameter');
+            ->orderByDesc('page_count');
 
-        $content = '<table>';
-        foreach ($top10 as $id => $count) {
-            $record = GedcomRecord::getInstance($id, $tree);
-            if ($record && $record->canShow()) {
-                $content .= '<tr>';
-                if ($count_placement === 'before') {
-                    $content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
-                }
-                $content .= '<td class="name2" ><a href="' . e($record->url()) . '">' . $record->fullName() . '</a></td>';
-                if ($count_placement === 'after') {
-                    $content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
-                }
-                $content .= '</tr>';
+        $results = [];
+        foreach ($query->cursor() as $row) {
+            $record = GedcomRecord::getInstance($row->page_parameter, $tree);
+
+            if ($record instanceof GedcomRecord && $record->canShow()) {
+                $results[] = [
+                    'record' => $record,
+                    'count'  => $row->page_count,
+                ];
+            }
+
+            if (count($results) === $num) {
+                break;
             }
         }
-        $content .= '</table>';
+
+        $content = view('modules/top10_pageviews/list', ['results' => $results]);
 
         if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
@@ -154,7 +154,6 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
         $params = $request->getParsedBody();
 
         $this->setBlockSetting($block_id, 'num', $params['num']);
-        $this->setBlockSetting($block_id, 'count_placement', $params['count_placement']);
     }
 
     /**
@@ -167,20 +166,10 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
-        $num             = $this->getBlockSetting($block_id, 'num', '10');
-        $count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
-
-        $options = [
-            /* I18N: An option in a list-box */
-            'before' => I18N::translate('before'),
-            /* I18N: An option in a list-box */
-            'after'  => I18N::translate('after'),
-        ];
+        $num = $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER_TO_SHOW);
 
         return view('modules/top10_pageviews/config', [
-            'count_placement' => $count_placement,
-            'num'             => $num,
-            'options'         => $options,
+            'num' => $num,
         ]);
     }
 }

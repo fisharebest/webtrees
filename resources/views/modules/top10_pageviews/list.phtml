@@ -1,0 +1,15 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+<ul class="list-unstyled">
+    <?php foreach ($results as $result) : ?>
+        <li>
+            <span class="badge badge-secondary"><?= I18N::number($result['count']) ?></span>
+            <a href="<?= e($result['record']->url()) ?>">
+                <?= $result['record']->fullName() ?>
+            </a>
+        </li>
+    <?php endforeach ?>
+</ul>
