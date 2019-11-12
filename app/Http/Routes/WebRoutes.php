@@ -429,16 +429,21 @@ class WebRoutes
             $router->post(AccountDelete::class, '/my-account-delete', AccountDelete::class);
         });
 
-        // Visitor routes.
+        // Visitor routes - with an optional tree (for sites with no public trees).
         $router->attach('', '', static function (Map $router) {
             $router->extras([
                 'middleware' => [AuthVisitor::class],
             ]);
 
-            $router->get(PasswordRequestPage::class, '/password-request', PasswordRequestPage::class);
-            $router->post(PasswordRequestAction::class, '/password-request', PasswordRequestAction::class);
+            $router->get(LoginPage::class, '/login{/tree}', LoginPage::class);
+            $router->post(LoginAction::class, '/login{/tree}', LoginAction::class);
+            $router->get(PasswordRequestPage::class, '/password-request{/tree}', PasswordRequestPage::class);
+            $router->post(PasswordRequestAction::class, '/password-request{/tree}', PasswordRequestAction::class);
             $router->get(RegisterPage::class, '/register{/tree}', RegisterPage::class);
             $router->post(RegisterAction::class, '/register{/tree}', RegisterAction::class);
+            $router->get(PasswordResetPage::class, '/password-reset/{token}{/tree}', PasswordResetPage::class);
+            $router->post(PasswordResetAction::class, '/password-reset/{token}{/tree}', PasswordResetAction::class);
+            $router->get(VerifyEmail::class, '/verify/{username}/{token}{/tree}', VerifyEmail::class);
         });
 
         // Public routes.
@@ -492,15 +497,10 @@ class WebRoutes
 
         $router->get(HelpText::class, '/help/{topic}', HelpText::class);
         $router->post(SelectLanguage::class, '/language/{language}', SelectLanguage::class);
-        $router->get(LoginPage::class, '/login{/tree}', LoginPage::class);
-        $router->post(LoginAction::class, '/login{/tree}', LoginAction::class);
         $router->post(Logout::class, '/logout', Logout::class);
-        $router->get(PasswordResetPage::class, '/password-reset', PasswordResetPage::class);
-        $router->post(PasswordResetAction::class, '/password-reset', PasswordResetAction::class);
         $router->get(Ping::class, '/ping', Ping::class);
         $router->get(RobotsTxt::class, '/robots.txt', RobotsTxt::class);
         $router->post(SelectTheme::class, '/theme/{theme}', SelectTheme::class);
-        $router->get(VerifyEmail::class, '/verify/{username}/{token}{/tree}', VerifyEmail::class);
         $router->get(HomePage::class, '/', HomePage::class);
 
         // Legacy URLs from older software.

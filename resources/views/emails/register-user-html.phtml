@@ -21,8 +21,8 @@ use Fisharebest\Webtrees\User;
     </p>
 
     <p>
-        <a href="<?= e(route(VerifyEmail::class, ['username' => $user->userName(), 'token' => $user->getPreference(User::PREF_VERIFICATION_TOKEN), 'tree' => $tree instanceof Tree ? $tree->name() : null])) ?>">
-            <?= e(route(VerifyEmail::class, ['username' => $user->userName(), 'token' => $user->getPreference(User::PREF_VERIFICATION_TOKEN), 'tree' => $tree instanceof Tree ? $tree->name() : null])) ?>
+        <a href="<?= e($verify_url) ?>">
+            <?= e($verify_url) ?>
         </a>
     </p>
 

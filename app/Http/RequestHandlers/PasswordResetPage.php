@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -59,8 +60,8 @@ class PasswordResetPage implements RequestHandlerInterface, StatusCodeInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = $request->getAttribute('tree');
+        $token = $request->getAttribute('token');
         $title = I18N::translate('Set a new password');
-        $token = $request->getQueryParams()['token'] ?? '';
         $user  = $this->user_service->findByToken($token);
 
         if ($user instanceof User) {
@@ -78,6 +79,6 @@ class PasswordResetPage implements RequestHandlerInterface, StatusCodeInterface
 
         FlashMessages::addMessage($message, 'danger');
 
-        return redirect(route(PasswordRequestPage::class));
+        return redirect(route(PasswordRequestPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
     }
 }

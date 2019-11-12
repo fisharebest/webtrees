@@ -321,7 +321,7 @@ trait ModuleThemeTrait
     {
         if (Auth::check()) {
             $parameters = [
-                'data-post-url'   => route(Logout::class),
+                'data-post-url' => route(Logout::class),
             ];
 
             return new Menu(I18N::translate('Sign out'), '#', 'menu-logout', $parameters);

@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SiteUser;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
@@ -70,13 +71,18 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+
         $email = $request->getParsedBody()['email'] ?? '';
         $user  = $this->user_service->findByEmail($email);
 
         if ($user instanceof User) {
             $token  = Str::random(self::TOKEN_LENGTH);
             $expire = (string) Carbon::now()->addHour()->timestamp;
-            $url    = route(PasswordResetPage::class, ['token' => $token]);
+            $url    = route(PasswordResetPage::class, [
+                'token' => $token,
+                'tree'  => $tree instanceof Tree ? $tree->name() : null,
+            ]);
 
             $user->setPreference('password-token', $token);
             $user->setPreference('password-token-expire', $expire);
@@ -100,6 +106,6 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
             FlashMessages::addMessage($message, 'danger');
         }
 
-        return redirect(route(PasswordRequestPage::class));
+        return redirect(route(LoginPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
     }
 }

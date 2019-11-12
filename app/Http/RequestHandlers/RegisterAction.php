@@ -117,6 +117,12 @@ class RegisterAction extends AbstractBaseController
         $base_url = $request->getAttribute('base_url');
         $reply_to = $tree instanceof Tree ? new TreeUser($tree) : new SiteUser();
 
+        $verify_url = route(VerifyEmail::class, [
+            'username' => $user->userName(),
+            'token' => $user->getPreference(User::PREF_VERIFICATION_TOKEN),
+            'tree' => $tree instanceof Tree ? $tree->name() : null,
+        ]);
+
         // Send a verification message to the user.
         /* I18N: %s is a server name/URL */
         $this->email_service->send(
@@ -124,8 +130,8 @@ class RegisterAction extends AbstractBaseController
             $user,
             $reply_to,
             I18N::translate('Your registration at %s', $base_url),
-            view('emails/register-user-text', ['user' => $user, 'base_url' => $base_url, 'tree' => $tree]),
-            view('emails/register-user-html', ['user' => $user, 'base_url' => $base_url, 'tree' => $tree])
+            view('emails/register-user-text', ['user' => $user, 'base_url' => $base_url, 'verify_url' => $verify_url]),
+            view('emails/register-user-html', ['user' => $user, 'base_url' => $base_url, 'verify_url' => $verify_url])
         );
 
         // Tell the administrators about the registration.

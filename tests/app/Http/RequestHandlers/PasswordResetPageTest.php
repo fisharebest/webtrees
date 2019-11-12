@@ -40,9 +40,14 @@ class PasswordResetPageTest extends TestCase
         $user = $this->createMock(User::class);
 
         $user_service = $this->createMock(UserService::class);
-        $user_service->expects($this->once())->method('findByToken')->willReturn($user);
+        $user_service
+            ->expects($this->once())
+            ->method('findByToken')
+            ->with('1234')
+            ->willReturn($user);
 
-        $request  = self::createRequest();
+        $request  = self::createRequest()
+            ->withAttribute('token', '1234');
         $handler  = new PasswordResetPage($user_service);
         $response = $handler->handle($request);
 
@@ -55,9 +60,14 @@ class PasswordResetPageTest extends TestCase
     public function testPasswordResetPageWithoutValidToken(): void
     {
         $user_service = $this->createMock(UserService::class);
-        $user_service->expects($this->once())->method('findByToken')->willReturn(null);
+        $user_service
+            ->expects($this->once())
+            ->method('findByToken')
+            ->with('4321')
+            ->willReturn(null);
 
-        $request  = self::createRequest();
+        $request  = self::createRequest()
+            ->withAttribute('token', '4321');
         $handler  = new PasswordResetPage($user_service);
         $response = $handler->handle($request);
 

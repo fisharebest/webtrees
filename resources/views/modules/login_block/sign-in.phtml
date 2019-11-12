@@ -45,7 +45,7 @@ use Fisharebest\Webtrees\View;
 <?php endif ?>
 
 <div class="collapse" id="forgot-password">
-    <form method="post" action="<?= e(route(PasswordRequestAction::class)) ?>">
+    <form method="post" action="<?= e(route(PasswordRequestAction::class, ['tree' => $tree instanceof Tree ? $tree->name() : null])) ?>">
         <?= I18N::translate('Request a new password') ?>
         <div class="form-group">
             <label for="new_passwd_username">
