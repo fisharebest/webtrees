@@ -170,7 +170,8 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
         $content .= csrf_field();
 
         if ($messages->isNotEmpty()) {
-            $content .= '<table class="table table-sm table-responsive w-100"><tr>';
+            $content .= '<div class="table-responsive">';
+            $content .= '<table class="table table-sm w-100"><tr>';
             $content .= '<th class="list_label">' . I18N::translate('Delete') . '<br><a href="#" onclick="$(\'#block-' . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">' . I18N::translate('All') . '</a></th>';
             $content .= '<th class="list_label">' . I18N::translate('Subject') . '</th>';
             $content .= '<th class="list_label">' . I18N::translate('Date sent') . '</th>';
@@ -214,6 +215,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                 $content .= '<button type="button" class="btn btn-danger" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onclick="if (confirm(this.dataset.confirm)) {$(\'#messageform :checkbox\').prop(\'checked\', false); $(\'#cb_message' . $message->message_id . '\').prop(\'checked\', true); document.messageform.submit();}">' . I18N::translate('Delete') . '</button></div></td></tr>';
             }
             $content .= '</table>';
+            $content .= '</div>';
             $content .= '<p><button type="submit">' . I18N::translate('Delete selected messages') . '</button></p>';
         }
         $content .= '</form>';
