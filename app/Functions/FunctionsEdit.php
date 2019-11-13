@@ -437,9 +437,13 @@ class FunctionsEdit
         } elseif ($fact === 'ADOP') {
             $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => GedcomCodeAdop::getValues()]);
         } elseif ($fact === 'ALIA') {
+            $html .= '<div class="input-group">';
             $html .= view('components/select-individual', ['id' => $id, 'name' => $name, 'individual' => Individual::getInstance($value, $tree), 'tree' => $tree]);
+            $html .= '</div>';
         } elseif ($fact === 'ASSO' || $fact === '_ASSO') {
+            $html .= '<div class="input-group">';
             $html .= view('components/select-individual', ['id' => $id, 'name' => $name, 'individual' => Individual::getInstance($value, $tree), 'tree' => $tree]);
+            $html .= '</div>';
             if ($level === '1') {
                 $html .= '<p class="small text-muted">' . I18N::translate('An associate is another individual who was involved with this individual, such as a friend or an employer.') . '</p>';
             } else {
