@@ -818,7 +818,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['other.*'])
             ->get()
-            ->map(Individual::rowMapper())
+            ->map(Repository::rowMapper())
             ->filter(self::accessFilter());
     }
 
