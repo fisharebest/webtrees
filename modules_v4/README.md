@@ -125,7 +125,7 @@ return new class extends PedigreeChartModule implements ModuleCustomInterface {
     }
     
     // Change the default layout...
-    public const DEFAULT_ORIENTATION = self::STYLE_DOWN;
+    public const DEFAULT_ORIENTATION = parent::STYLE_DOWN;
 };
 ```
 
@@ -146,11 +146,10 @@ created until after the modules.
 * the current tree `Tree` or objects that depend on it (`Statistics`)
 as these objects are not created until after the module is created.
 
-Instead, the user, tree and locale can be obtained from the request object. e.g.
+Instead, these objects can be obtained from the request object. e.g.
 ```php
-$tree   = $request->getAttribute('tree');
-$user   = $request->getAttribute('user');
-$locale = $request->getAttribute('locale');
+$tree = $request->getAttribute('tree');
+$user = $request->getAttribute('user');
 ```
 
 ```php
@@ -159,9 +158,8 @@ use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\Services\TimeoutService;
-use Fisharebest\Webtrees\Tree;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Creating an anoymous class will prevent conflicts with other custom modules.
@@ -189,14 +187,21 @@ return new class extends AbstractModule implements ModuleCustomInterface {
      * dependency-injection.  You'll almost certainly need the request
      * object.
      * 
-     * @param Request   $request
-     * @param Tree|null $tree                       
+     * @param ServerRequestInterface $request
      * 
-     * @return Response
+     * @return ResponseInterface
      */
-    public function getFooBarAction(Request $request, ?Tree $tree): Response
+    public function getFooBarAction(ServerRequestInterface $request): ResponseInterface
     {
-        return new Response();    
+        // This assumes that there is a tree parameter in the URL.
+        $tree = $request->getAttribute('tree');
+
+        // This will be a User (or a GuestUser for visitors).
+        $user = $request->getAttribute('user');
+
+        $html = $tree->name() . '/' . $user->realName();
+
+        return response($html);    
     }
 };
 ```
