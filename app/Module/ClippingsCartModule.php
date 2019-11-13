@@ -70,7 +70,6 @@ use function str_replace;
 use function strip_tags;
 use function sys_get_temp_dir;
 use function tempnam;
-use function ucfirst;
 use function utf8_decode;
 
 /**

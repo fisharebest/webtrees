@@ -56,7 +56,6 @@ use function redirect;
 use function response;
 use function strlen;
 use function strtolower;
-use function urlencode;
 
 /**
  * Controller for the media page and displaying images.

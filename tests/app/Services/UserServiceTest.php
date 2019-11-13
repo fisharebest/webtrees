@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Services\UserService;
-use Illuminate\Support\Facades\DB;
 
 /**
  * Test the UserService class

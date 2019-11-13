@@ -20,12 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Functions;
 
 use Exception;
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class Functions - common functions

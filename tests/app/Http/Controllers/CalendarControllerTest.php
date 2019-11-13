@@ -24,9 +24,6 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\TestCase;
-use Fisharebest\Webtrees\Tree;
-
-use function app;
 
 /**
  * Test the module controller

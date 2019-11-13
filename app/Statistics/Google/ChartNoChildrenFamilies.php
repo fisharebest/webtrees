@@ -26,9 +26,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use stdClass;
 
-use function app;
-use function assert;
-
 /**
  * A chart showing the number of families with no children by century.
  */
