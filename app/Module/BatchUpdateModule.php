@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
@@ -28,6 +29,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\BatchUpdate\BatchUpdateBasePlugin;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
@@ -54,17 +56,22 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
     /** @var string */
     protected $layout = 'layouts/administration';
 
+    /** @var TimeoutService */
+    private $timeout_service;
+
     /** @var TreeService */
     private $tree_service;
 
     /**
      * BatchUpdateModule constructor.
      *
-     * @param TreeService $tree_service
+     * @param TimeoutService $timeout_service
+     * @param TreeService    $tree_service
      */
-    public function __construct(TreeService $tree_service)
+    public function __construct(TimeoutService $timeout_service, TreeService $tree_service)
     {
-        $this->tree_service = $tree_service;
+        $this->timeout_service = $timeout_service;
+        $this->tree_service    = $tree_service;
     }
 
     /**
@@ -395,6 +402,12 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
 
             case 'all':
                 foreach ($all_data as $xref => $value) {
+                    if ($this->timeout_service->isTimeNearlyUp()) {
+                        FlashMessages::addMessage('The server’s time limit has been reached.');
+                        $parameters['xref'] = $xref;
+                        break 2;
+                    }
+
                     $record = $this->getRecord($value, $tree);
                     if ($plugin->doesRecordNeedUpdate($record)) {
                         $new_gedcom = $plugin->updateRecord($record);
