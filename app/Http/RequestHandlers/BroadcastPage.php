@@ -54,12 +54,10 @@ class BroadcastPage implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $user    = $request->getAttribute('user');
-        $referer = $request->getHeaderLine('referer');
         $params  = $request->getQueryParams();
         $body    = $params['body'] ?? '';
         $subject = $params['subject'] ?? '';
         $to      = $params['to'];
-        $url     = $params['url'] ?? $referer;
 
         $to_names = $this->message_service->recipientUsers($to)
             ->map(static function (UserInterface $user): string {
@@ -77,7 +75,6 @@ class BroadcastPage implements RequestHandlerInterface
             'title'    => $title,
             'to'       => $to,
             'to_names' => $to_names,
-            'url'      => $url,
         ]);
     }
 }

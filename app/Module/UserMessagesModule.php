@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Http\Controllers\HomePageController;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessageSelect;
 use Fisharebest\Webtrees\I18N;
@@ -208,6 +209,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                         'subject' => $message->subject,
                         'to'      => $user->userName(),
                         'tree'    => $tree->name(),
+                        'url'     => route('user-page', ['tree' => $tree->name()]),
                     ]);
 
                     $content .= '<a class="btn btn-primary" href="' . e($reply_url) . '" title="' . I18N::translate('Reply') . '">' . I18N::translate('Reply') . '</a> ';

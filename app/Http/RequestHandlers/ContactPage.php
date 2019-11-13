@@ -31,6 +31,7 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 use function assert;
 use function in_array;
+use function route;
 
 /**
  * Compose a message from a visitor.
@@ -67,14 +68,13 @@ class ContactPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $referer    = $request->getHeaderLine('referer');
         $params     = $request->getQueryParams();
         $body       = $params['body'] ?? '';
         $from_email = $params['from_email'] ?? '';
         $from_name  = $params['from_name'] ?? '';
         $subject    = $params['subject'] ?? '';
         $to         = $params['to'] ?? '';
-        $url        = $params['url'] ?? $referer;
+        $url        = $params['url'] ?? route(HomePage::class);
 
         $to_user = $this->user_service->findByUserName($to);
 

@@ -400,7 +400,11 @@ class UserService
             $url = 'mailto:' . $contact_user->email();
         } elseif ($user instanceof User) {
             // Logged-in users send direct messages
-            $url = route(MessagePage::class, ['to' => $contact_user->userName(), 'tree' => $tree->name()]);
+            $url = route(MessagePage::class, [
+                'to' => $contact_user->userName(),
+                'tree' => $tree->name(),
+                'url'  => (string) $request->getUri(),
+            ]);
         } else {
             // Visitors use the contact form.
             $url = route(ContactPage::class, [

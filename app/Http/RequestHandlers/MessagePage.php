@@ -30,6 +30,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 use function assert;
+use function route;
 
 /**
  * Compose a message from a logged-in user.
@@ -62,11 +63,10 @@ class MessagePage implements RequestHandlerInterface
         assert($tree instanceof Tree);
 
         $user    = $request->getAttribute('user');
-        $referer = $request->getHeaderLine('referer');
         $body    = $request->getQueryParams()['body'] ?? '';
         $subject = $request->getQueryParams()['subject'] ?? '';
         $to      = $request->getQueryParams()['to'] ?? '';
-        $url     = $request->getQueryParams()['url'] ?? $referer;
+        $url     = $request->getQueryParams()['url'] ?? route(HomePage::class);
         $to_user = $this->user_service->findByUserName($to);
 
         if ($to_user === null || $to_user->getPreference(User::PREF_CONTACT_METHOD) === 'none') {
