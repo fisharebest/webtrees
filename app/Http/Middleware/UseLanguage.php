@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Module\LanguageEnglishUnitedStates;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Session;
-use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Generator;
 use Psr\Http\Message\ResponseInterface;
@@ -66,8 +65,6 @@ class UseLanguage implements MiddlewareInterface
         foreach ($this->languages($request) as $language) {
             if ($language instanceof ModuleLanguageInterface) {
                 I18N::init($language->locale()->languageTag());
-                $request = $request->withAttribute('language', $language);
-                $request = $request->withAttribute('locale', $language->locale());
                 Session::put('language', $language->locale()->languageTag());
                 break;
             }

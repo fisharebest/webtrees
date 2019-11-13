@@ -174,7 +174,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
             ->withUploadedFiles($files)
             ->withAttribute('base_url', 'https://webtrees.test')
             ->withAttribute('client-ip', '127.0.0.1')
-            ->withAttribute('locale', new LocaleEnUs())
             ->withAttribute('user', new GuestUser());
 
         foreach ($attributes as $key => $value) {
