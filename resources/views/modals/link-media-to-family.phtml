@@ -1,9 +1,7 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<form method="post" action="<?= e(route('link-media-to-record')) ?>" id="wt-modal-form">
+<form method="post" action="<?= e(route('link-media-to-record', ['tree' => $tree->name(), 'xref' => $media->xref()])) ?>" id="wt-modal-form">
     <?= csrf_field() ?>
-    <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
-    <input type="hidden" name="xref" value="<?= e($media->xref()) ?>">
 
     <?= view('modals/header', ['title' => I18N::translate('Link this media object to a family')]) ?>
 

@@ -375,7 +375,7 @@ class WebRoutes
             $router->get('link-media-to-individual', '/link-media-to-individual', 'EditMediaController::linkMediaToIndividual');
             $router->get('link-media-to-family', '/link-media-to-family', 'EditMediaController::linkMediaToFamily');
             $router->get('link-media-to-source', '/link-media-to-source', 'EditMediaController::linkMediaToSource');
-            $router->post('link-media-to-record', '/link-media-to-record', 'EditMediaController::linkMediaToRecordAction');
+            $router->post('link-media-to-record', '/link-media-to-record/{xref}', 'EditMediaController::linkMediaToRecordAction');
             $router->post(PasteFact::class, '/paste-fact/{xref}', PasteFact::class);
             $router->get(ReorderChildrenPage::class, '/reorder-children/{xref}', ReorderChildrenPage::class);
             $router->post(ReorderChildrenAction::class, '/reorder-children/{xref}', ReorderChildrenAction::class);

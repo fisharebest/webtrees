@@ -38,6 +38,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
+use function is_string;
 
 /**
  * Controller for edit forms and responses.
@@ -433,7 +434,6 @@ class EditMediaController extends AbstractEditController
         assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
-
         $media = Media::getInstance($xref, $tree);
 
         return response(view('modals/link-media-to-individual', [
@@ -492,9 +492,10 @@ class EditMediaController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params = $request->getParsedBody();
-        $xref   = $params['xref'];
-        $link   = $params['link'];
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
+        $link = $request->getParsedBody()['link'];
 
         $media  = Media::getInstance($xref, $tree);
         $record = GedcomRecord::getInstance($link, $tree);
