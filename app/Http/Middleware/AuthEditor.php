@@ -29,8 +29,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-use function assert;
 use function redirect;
 use function route;
 
@@ -48,7 +48,11 @@ class AuthEditor implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+
+        // We've matched a tree parameter in the route, but it is private or deleted.
+        if (!$tree instanceof Tree) {
+            throw new NotFoundHttpException(I18N::translate('You do not have permission to view this page.'));
+        }
 
         $user = $request->getAttribute('user');
 
