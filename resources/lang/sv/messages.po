@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-10 17:41+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Swedish <http://translate.webtrees.net/projects/webtrees/webtrees/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-15 08:42+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -1365,7 +1365,7 @@ msgstr "Lägg till ur klippskorgen"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
-msgstr ""
+msgstr "Lägg till historiska händelser på en individs sida."
 
 #: resources/views/modules/lifespans-chart/page.phtml:20
 msgid "Add individuals"
@@ -4307,7 +4307,7 @@ msgstr "Data"
 
 #: resources/views/modules/privacy-policy/page.phtml:53
 msgid "Data controller"
-msgstr ""
+msgstr "Datakontroll"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
@@ -7287,11 +7287,11 @@ msgstr "Använd tomma snedstreck om efternamnet är okänt: <%s>Mary //<%s>"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "Om miniatyrbilden är en anpassad bild bör du lägga till den i medieobjektet."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:18
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-msgstr ""
+msgstr "Om miniatyrbilden är densamma som originalbilden behövs den inte längre och du bör ta bort den."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:78
@@ -7340,7 +7340,7 @@ msgstr "Om du inte begärde ett konto kan du radera meddelandet."
 
 #: resources/views/admin/site-mail.phtml:50
 msgid "If you do not use two-factor authentication, enable <a href=\"https://www.google.com/settings/security/lesssecureapps\">less secure applications</a> and use your Google password."
-msgstr ""
+msgstr "Om du inte använder tvåfaktorautentisering aktiverar du <a href=\"https://www.google.com/settings/security/lesssecureapps\">mindre säkra applikationer</a> och använder ditt Google-lösenord."
 
 #: resources/views/modals/media-file-fields.phtml:62
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
@@ -7374,7 +7374,7 @@ msgstr "Om du använder en av de följande spårnings- och analystjänster, kan 
 
 #: resources/views/admin/site-mail.phtml:48
 msgid "If you use two-factor authentication, create an <a href=\"https://myaccount.google.com/apppasswords\">app password</a>."
-msgstr ""
+msgstr "Om du använder tvåfaktorautentisering skapar du ett <a href=\"https://myaccount.google.com/apppasswords\">applösenord</a>."
 
 #: app/GedcomTag.php:2103 app/Http/Controllers/Admin/MediaController.php:347
 msgid "Image dimensions"
@@ -7640,7 +7640,7 @@ msgstr "Meddelare"
 
 #: resources/views/admin/site-mail.phtml:34
 msgid "Instructions for Google mail"
-msgstr ""
+msgstr "Instruktioner för Google-post"
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:244 app/Module/InteractiveTreeModule.php:52
@@ -10640,7 +10640,7 @@ msgstr "Tas dessa dataposter bort, permanent?"
 
 #: resources/views/modules/privacy-policy/page.phtml:5
 msgid "Personal data"
-msgstr ""
+msgstr "Personlig information"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:543
@@ -12110,7 +12110,7 @@ msgstr "Skicka meddelande till användare som inte loggat in på 6 månader"
 
 #: resources/views/admin/site-mail.phtml:239
 msgid "Send a test email using these settings"
-msgstr ""
+msgstr "Skicka ett testmeddelande med dessa inställningar"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:10
@@ -12446,7 +12446,7 @@ msgstr "Visa nedladdninglänken i mediavisaren"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
 msgid "Show a privacy policy."
-msgstr ""
+msgstr "Visa en integritetspolicy."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:62
@@ -13733,7 +13733,7 @@ msgstr "Mappen kan anges absolut (t.ex. /home/user_name/webtrees_data/) eller re
 #: app/Http/Controllers/AdminSiteController.php:109
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "Mappen ”%s” finns inte."
 
 #: resources/views/admin/merge-records-step-2.phtml:26
 msgid "The following facts and events were found in both records."
@@ -14157,7 +14157,7 @@ msgstr "Thermidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:23
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "Dessa kakor är \"väsentliga\" och kräver inte samtycke."
 
 #: resources/views/admin/trees-unconnected.phtml:32
 #, php-format
@@ -14166,7 +14166,7 @@ msgstr "Dessa grupper av individer är inte släkt med %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:44
 msgid "These services may use cookies or other tracking technology."
-msgstr ""
+msgstr "Dessa tjänster kan använda kakor eller annan spårningsteknik."
 
 #: app/Http/RequestHandlers/LoginAction.php:134
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -14597,7 +14597,7 @@ msgstr "Detta arkiv har ändrats. Du bör granska ändringarna och %1$s eller %2
 
 #: resources/views/modules/privacy-policy/page.phtml:12
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr ""
+msgstr "Denna forskning är ett \"legitimt intresse\" enligt artikel 6(f) i EU:s allmänna dataskyddsförordningar."
 
 #: resources/views/admin/users-edit.phtml:250
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -14682,7 +14682,7 @@ msgstr "Webbplatsen är stängd för underhåll. Du kan försöka <a href=\"inde
 
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "This website is operated by the following individuals."
-msgstr ""
+msgstr "Denna webbplats drivs av följande personer."
 
 #: resources/views/layouts/error.phtml:9 resources/views/layouts/error.phtml:26
 #: resources/views/layouts/offline.phtml:58
@@ -14691,19 +14691,19 @@ msgstr "Denna webbplats är otillgänglig för tillfället"
 
 #: resources/views/modules/privacy-policy/page.phtml:9
 msgid "This website processes personal data for the purpose of historical and genealogical research."
-msgstr ""
+msgstr "Denna webbplats behandlar personuppgifter för historisk- och släktforskning."
 
 #: resources/views/modules/privacy-policy/page.phtml:20
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
-msgstr ""
+msgstr "Denna webbplats använder kakor för att aktivera inloggningssessioner och för att komma ihåg preferenser som ditt valda språk."
 
 #: resources/views/modules/privacy-policy/footer.phtml:15
 msgid "This website uses cookies to learn about visitor behavior."
-msgstr "Denna webbplats använder cookies för att lära sig om besökarnas beteende."
+msgstr "Denna webbplats använder kakor för att lära sig om besökarnas beteende."
 
 #: resources/views/modules/privacy-policy/page.phtml:32
 msgid "This website uses third-party services to learn about visitor behavior."
-msgstr ""
+msgstr "Denna webbplats använder tredjeparts tjänster för att lära sig om besökarnas beteende."
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml:15
@@ -15953,7 +15953,7 @@ msgstr "Du kan göra det lättare att söka efter gifta kvinnor genom att lägga
 
 #: resources/views/modules/privacy-policy/page.phtml:48
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
-msgstr ""
+msgstr "Du kan välja bort spårning genom att ställa in rubriken \"Spåra inte\" i dina webbläsarinställningar."
 
 #: resources/views/admin/trees-renumber.phtml:17
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
@@ -15974,7 +15974,7 @@ msgstr "Du kan snabba upp integritetsberäkningarna genom att lägga till en dö
 
 #: app/Http/RequestHandlers/LoginAction.php:112
 msgid "You cannot sign in because your browser does not accept cookies."
-msgstr "Du kan inte logga in på grund av att din webbläsare inte accepterar cookies."
+msgstr "Du kan inte logga in på grund av att din webbläsare inte accepterar kakor."
 
 #: app/Http/Middleware/AuthAdministrator.php:57
 #: app/Http/Middleware/AuthEditor.php:62 app/Http/Middleware/AuthManager.php:65
