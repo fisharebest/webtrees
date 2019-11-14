@@ -31,6 +31,53 @@ use function route;
 trait ModuleBlockTrait
 {
     /**
+     * Generate the HTML content of this block.
+     *
+     * @param Tree   $tree
+     * @param int    $block_id
+     * @param string $context
+     * @param array  $config
+     *
+     * @return string
+     */
+    public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
+    {
+        return '';
+    }
+
+    /**
+     * Should this block load asynchronously using AJAX?
+     *
+     * Simple blocks are faster in-line, more complex ones can be loaded later.
+     *
+     * @return bool
+     */
+    public function loadAjax(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Can this block be shown on the user’s home page?
+     *
+     * @return bool
+     */
+    public function isUserBlock(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Can this block be shown on the tree’s home page?
+     *
+     * @return bool
+     */
+    public function isTreeBlock(): bool
+    {
+        return false;
+    }
+
+    /**
      * @param Tree   $tree
      * @param string $context
      * @param int    $block_id
