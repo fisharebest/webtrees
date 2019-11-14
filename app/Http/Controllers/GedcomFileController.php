@@ -229,6 +229,7 @@ class GedcomFileController extends AbstractBaseController
 
             return $this->viewResponse('admin/import-fail', [
                 'error' => $ex->getMessage(),
+                'tree'  => $tree,
             ]);
         }
     }
