@@ -184,10 +184,6 @@ class FunctionsPrintFacts
         echo '<tr class="', $styleadd, '">';
         echo '<th scope="row">';
 
-        if ($tree->getPreference('SHOW_FACT_ICONS')) {
-            echo app(ModuleThemeInterface::class)->icon($fact), ' ';
-        }
-
         switch ($fact->getTag()) {
             case '_BIRT_CHIL':
                 $children[$fact->record()->xref()] = true;
@@ -536,7 +532,7 @@ class FunctionsPrintFacts
 
                         if ($parent instanceof Family) {
                             // For family ASSO records (e.g. MARR), identify the spouse with a sex icon
-                            $relationship_name .= '<small>' . view('icons/sex-' . $associate->sex()) . '</small>';
+                            $relationship_name .= '<small>' . view('icons/sex', ['sex' => $associate->sex()]) . '</small>';
                         }
 
                         $values[] = '<a href="' . $module->chartUrl($associate, ['xref2' => $person->xref()]) . '" rel="nofollow">' . $relationship_name . '</a>';
@@ -779,9 +775,6 @@ class FunctionsPrintFacts
                             'fact_id' => $fact->id(),
                             'tree'    => $tree->name(),
                         ])) . '" title="', I18N::translate('Edit'), '">';
-                    if ($tree->getPreference('SHOW_FACT_ICONS') && $level === 1) {
-                        echo '<i class="icon-source"></i> ';
-                    }
                     echo GedcomTag::getLabel($factname, $parent), '</a>';
                     echo '<div class="editfacts nowrap">';
                     if (preg_match('/^@.+@$/', $match[$j][2])) {
@@ -1002,9 +995,6 @@ class FunctionsPrintFacts
                 }
             } else {
                 if ($level < 2) {
-                    if ($tree->getPreference('SHOW_FACT_ICONS')) {
-                        echo '<i class="icon-note"></i> ';
-                    }
                     if ($note) {
                         echo GedcomTag::getLabel('SHARED_NOTE');
                     } else {

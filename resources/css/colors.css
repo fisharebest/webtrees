@@ -355,8 +355,8 @@ table {
 	content: url(colors/menu/search-search.png);
 }
 
-.menu-help .nav-link::before {
-	content: url(colors/menu/help.png);
+.menu-faq .nav-link::before {
+	content: url(colors/menu/faq.png);
 }
 
 .menu-clippings .nav-link::before {
@@ -364,11 +364,9 @@ table {
 }
 
 .menu-clippings-add::before {
-	content: url(colors/menu/clippings-add.png);
 }
 
 .menu-clippings-cart::before {
-	content: url(colors/menu/clippings-cart.png);
 }
 
 .menu-clippings-download::before {
@@ -1377,7 +1375,7 @@ div.faq_body {
 
 .sb_indi_surname_li,
 .sb_fam_surname_li {
-	list-style-image: url(colors/images/plus.png);
+	list-style-image: url(icons/plus.png);
 }
 
 .name_tree_div ul {
@@ -1629,180 +1627,81 @@ div.faq_body {
 	background-repeat: no-repeat;
 }
 
-.icon-add {
-	width: 14px;
-	height: 15px;
-	background-image: url(images/add.png);
-}
-
 .icon-cfamily {
-	width: 32px;
-	height: 32px;
-	background-image: url(colors/images/cfamily.png);
+	content: url(colors/images/cfamily.png);
 }
 
 .icon-childless {
-	width: 25px;
-	height: 25px;
-	background-image: url(colors/images/childless.png);
+	content: url(images/childless.png);
 }
 
 .icon-children {
-	width: 16px;
-	height: 16px;
-	background-image: url(colors/images/children.png);
-}
-
-.icon-clippings {
-	width: 32px;
-	height: 32px;
-	background-image: url(colors/images/clippings.png);
+	content: url(images/children.png);
 }
 
 .icon-edit_indi {
-	width: 22px;
-	height: 22px;
-	background-image: url(colors/images/edit_indi.png);
+	content: url(colors/images/edit_indi.png);
 }
 
 .icon-fam-list {
-	width: 32px;
-	height: 32px;
-	background-image: url(colors/images/sfamily.png);
+	content: url(colors/images/sfamily.png);
 }
 
 .icon-indi-list {
-	width: 32px;
-	height: 32px;
-	background-image: url(colors/images/indis.png);
+	content: url(colors/images/indis.png);
 }
 
 .icon-loading-small {
-	width: 16px;
-	height: 16px;
-	background-image: url(colors/images/indicator.gif);
-}
-
-.icon-media {
-	width: 32px;
-	height: 32px;
-	background-image: url(colors/images/media.png);
-}
-
-.icon-media-list {
-	width: 32px;
-	height: 32px;
-	background-image: url(colors/images/media.png);
-}
-
-.icon-media-next {
-	width: 20px;
-	height: 20px;
-	background-image: url(colors/images/rdarrow.png);
-}
-
-.icon-media-play {
-	width: 20px;
-	height: 20px;
-	background-image: url(colors/images/rarrow.png);
-}
-
-.icon-media-stop {
-	width: 20px;
-	height: 20px;
-	background-image: url(colors/images/stop.png);
+	content: url(images/indicator.gif);
 }
 
 .icon-minus {
-	width: 11px;
-	height: 11px;
-	background-image: url(colors/images/minus.png);
+	content: url(icons/minus.png);
 }
 
 .icon-mypage {
-	width: 22px;
-	height: 25px;
-	background-image: url(colors/images/mypage.png);
-}
-
-.icon-note {
-	width: 33px;
-	height: 35px;
-	background-image: url(colors/icons/note.png);
+	content: url(colors/images/mypage.png);
 }
 
 .icon-plus {
-	width: 11px;
-	height: 11px;
-	background-image: url(colors/images/plus.png);
-}
-
-.icon-remove {
-	width: 16px;
-	height: 16px;
-	background-image: url(colors/images/delete.png);
+	content: url(icons/plus.png);
 }
 
 .icon-resn-confidential {
-	width: 16px;
-	height: 16px;
-	background-image: url(colors/images/resn_confidential.png);
+	content: url(images/resn_confidential.png);
 }
 
 .icon-resn-locked {
-	width: 16px;
-	height: 16px;
-	background-image: url(colors/images/resn_locked.png);
+	content: url(images/resn_locked.png);
 }
 
 .icon-resn-none {
-	width: 16px;
-	height: 16px;
-	background-image: url(colors/images/resn_none.png);
+	content: url(images/resn_none.png);
 }
 
 .icon-resn-privacy {
-	width: 16px;
-	height: 16px;
-	background-image: url(colors/images/resn_privacy.png);
+	content: url(images/resn_privacy.png);
 }
 
 .icon-rings {
-	width: 9px;
-	height: 9px;
-	background-image: url(colors/images/rings.png);
+	content: url(images/rings.png);
 }
 
 .icon-selected {
-	width: 12px;
-	height: 12px;
-	background-image: url(colors/images/selected.png);
-}
-
-
-.icon-source {
-	width: 32px;
-	height: 32px;
-	background-image: url(colors/images/source.png);
+	content: url(colors/images/selected.png);
 }
 
 /* Silhouettes on charts */
 .icon-silhouette-F {
-	width: 37px;
-	height: 45px;
-	background-image: url(colors/images/silhouette_female_small.png);
+	content: url(colors/images/silhouette_female_small.png);
 }
 
 .icon-silhouette-M {
-	width: 37px;
-	height: 45px;
-	background-image: url(colors/images/silhouette_male_small.png);
+	content: url(colors/images/silhouette_male_small.png);
 }
 
 .icon-silhouette-U {
-	width: 37px;
-	height: 45px;
-	background-image: url(colors/images/silhouette_unknown_small.png);
+	content: url(colors/images/silhouette_unknown_small.png);
 }
 
 /*
@@ -1814,11 +1713,7 @@ div.faq_body {
 
 /*
  * Default icons are provided by FontAwesome.
- * Some icons get mirrored on RTL pages.  Typiclly arrows
  */
-[dir=rtl] .wt-flip-rtl {
-}
-
 .wt-icon-anniversary {
 }
 
@@ -1854,10 +1749,62 @@ a > .wt-icon-arrow-up:hover {
 	content: url(colors/icons/arrow-up-hover.png);
 }
 
+.wt-icon-bing-maps {
+}
+
+.wt-icon-calendar {
+}
+
+.wt-icon-collapse {
+}
+
 .wt-icon-coordinates {
 }
 
+.wt-icon-copy {
+}
+
+.wt-icon-delete {
+}
+
+.wt-icon-edit {
+}
+
+.wt-icon-expand {
+}
+
+.wt-icon-family {
+}
+
+.wt-icon-google-maps {
+}
+
+.wt-icon-help {
+	content: url(colors/icons/help.png);
+}
+
+.wt-icon-individual {
+}
+
+.wt-icon-keyboard {
+}
+
+.wt-icon-media {
+}
+
+.wt-icon-note {
+}
+
+.wt-icon-openstreetmap {
+}
+
+.wt-icon-preferences {
+}
+
 .wt-icon-reorder {
+}
+
+.wt-icon-repository {
 }
 
 .wt-icon-sex-f {
@@ -1872,201 +1819,42 @@ a > .wt-icon-arrow-up:hover {
 .wt-icon-sex-x {
 }
 
+.wt-icon-source {
+}
+
+.wt-icon-submitter {
+}
+
 .wt-icon-warning {
 }
 
 .wt-icon-zoom-in {
-	content: url(colors/images/zoomin.png);
+	content: url(colors/icons/zoom-in.png);
 }
 
 .wt-icon-zoom-out {
-	content: url(colors/images/zoomout.png);
+	content: url(colors/icons/zoom-out.png);
 }
 
-/*
- * .wt-icon-bing-maps
- * .wt-icon-calendar
- * .wt-icon-copy
- * .wt-icon-delete
- * .wt-icon-edit
- * .wt-icon-email
- * .wt-icon-family
- * .wt-icon-help
- * .wt-icon-individual
- * .wt-icon-google-maps
- * .wt-icon-keyboard
- * .wt-icon-media
- * .wt-icon-note
- * .wt-icon-openstreetmap
- * .wt-icon-preferences
- * .wt-icon-repository
- * .wt-icon-source
- * .wt-icon-submitter
- */
-.wt-icon-bing-maps::before {
-	width: 16px;
-	height: 16px;
-	content: url(colors/icons/bing-maps.png);
-}
-
-.wt-icon-calendar::before {
-	width: 19px;
-	height: 15px;
-	content: url(colors/icons/calendar.png)
-}
-
-.wt-icon-copy::before {
-	width: 16px;
-	height: 16px;
-	content: url(colors/icons/copy.png)
-}
-
-.wt-icon-delete::before {
-	width: 16px;
-	height: 16px;
-	content: url(colors/icons/delete.png);
-}
-
-.wt-icon-edit::before {
-	width: 16px;
-	height: 16px;
-	content: url(colors/icons/edit.png);
-}
-
-.wt-icon-family::before {
-	width: 14px;
-	height: 15px;
-	content: url(colors/icons/family.png);
-}
-
-.wt-icon-help::before {
-	width: 16px;
-	height: 16px;
-	content: url(colors/icons/help.png);
-}
-
-.wt-icon-google-maps::before {
-	width: 16px;
-	height: 16px;
-	content: url(colors/icons/google-maps.png);
-}
-
-.wt-icon-individual::before {
-	width: 11px;
-	height: 15px;
-	content: url(colors/icons/individual.png);
-}
-
-.wt-icon-keyboard::before {
-	width: 30px;
-	height: 15px;
-	content: url(colors/icons/keyboard.png);
-}
-
-.wt-icon-media::before {
-	width: 18px;
-	height: 16px;
-	content: url(colors/icons/media.png);
-}
-
-.wt-icon-note::before {
-	width: 20px;
-	height: 20px;
-	content: url(colors/icons/note.png);
-}
-
-.wt-icon-openstreetmap::before {
-	width: 16px;
-	height: 16px;
-	content: url(colors/icons/openstreetmap.png);
-}
-
-.wt-icon-preferences::before {
-	width: 25px;
-	height: 25px;
-	content: url(colors/icons/preferences.png);
-}
-
-.wt-icon-repository::before {
-	width: 15px;
-	height: 15px;
-	content: url(colors/icons/repository.png);
-}
-
-.wt-icon-source::before {
-	width: 18px;
-	height: 16px;
-	content: url(colors/icons/source.png);
-}
-
-.wt-icon-submitter::before {
-	width: 11px;
-	height: 15px;
-	content: url(colors/icons/individual.png);
-}
-
-i[class*="wt-icon-media"] {
-	opacity: 0.5;
-}
-
+/* Miscellaneous images */
 .icon-indis {
-	width: 25px;
-	height: 25px;
-	background-image: url(colors/images/mypage.png);
+	content: url(colors/images/mypage.png);
 }
 
 .icon-patriarch {
-	width: 20px;
-	height: 20px;
-	background-image: url(colors/images/patriarch.png);
+	content: url(colors/images/patriarch.png);
 }
 
 .icon-pedigree {
-	width: 25px;
-	height: 25px;
-	background-image: url(colors/images/pedigree.png);
-}
-
-.icon-place {
-	width: 20px;
-	height: 20px;
-	background-image: url(colors/images/place.png);
-}
-
-.icon-repo-list {
-	width: 20px;
-	height: 20px;
-	background-image: url(colors/images/repository.png);
-}
-
-.icon-repository {
-	width: 20px;
-	height: 20px;
-	background-image: url(colors/images/repository.png);
-}
-
-.icon-search {
-	width: 17px;
-	height: 17px;
-	background-image: url(colors/images/search.png);
+	content: url(colors/images/pedigree.png);
 }
 
 .icon-sfamily {
-	width: 22px;
-	height: 22px;
-	background-image: url(colors/images/sfamily.png);
-}
-
-.icon-source-list {
-	width: 20px;
-	height: 20px;
-	background-image: url(colors/images/source.png);
+	content: url(colors/images/sfamily.png);
 }
 
 .icon-user_add {
-	width: 25px;
-	height: 25px;
-	background-image: url(colors/images/user_add.png);
+	content: url(colors/images/user_add.png);
 }
 
 /* Census assistant */

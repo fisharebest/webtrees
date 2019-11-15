@@ -4,7 +4,7 @@
     <a href="<?= e($yahrzeit->individual->url()) ?>" class="list_item name2">
         <?= $yahrzeit->individual->fullName() ?>
     </a>
-    <small><?= view('icons/sex-' . $yahrzeit->individual->sex()) ?></small>
+    <small><?= view('icons/sex', ['sex' => $yahrzeit->individual->sex()]) ?></small>
     <div class="indent">
         <?= $yahrzeit->fact->date()->display(true, null, false) ?>,
         <?= $yahrzeit->yahrzeit_date->display(true, null, false) ?>,

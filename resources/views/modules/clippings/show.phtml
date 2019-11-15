@@ -24,21 +24,7 @@ use Fisharebest\Webtrees\I18N; ?>
             <?php foreach ($records as $record) : ?>
                 <tr>
                     <td>
-                        <?php if ($record::RECORD_TYPE === 'INDI') : ?>
-                        <i class="icon-indis"></i>
-                        <?php elseif ($record::RECORD_TYPE === 'FAM') : ?>
-                        <i class="icon-sfamily"></i>
-                        <?php elseif ($record::RECORD_TYPE === 'SOUR') : ?>
-                        <i class="icon-source"></i>
-                        <?php elseif ($record::RECORD_TYPE === 'REPO') : ?>
-                        <i class="icon-repository"></i>
-                        <?php elseif ($record::RECORD_TYPE === 'NOTE') : ?>
-                        <i class="icon-note"></i>
-                        <?php elseif ($record::RECORD_TYPE === 'OBJE') : ?>
-                        <i class="icon-media"></i>
-                        <?php else : ?>
-                        <i class="icon-clippings"></i>
-                        <?php endif ?>
+                        <?= view('icons/record', ['record' => $record]) ?>
 
                         <a href="<?= e($record->url()) ?>">
                             <?= $record->fullName() ?>
@@ -48,7 +34,7 @@ use Fisharebest\Webtrees\I18N; ?>
                         <form method="post" action="<?= e(route('module', ['module' => 'clippings', 'action' => 'Remove', 'tree' => $tree->name(), 'xref' => $record->xref()])) ?>">
                             <?= csrf_field() ?>
                             <button type="submit" class="btn btn-link" title="<?= I18N::translate('Remove') ?>">
-                                <i class="icon-remove"></i>
+                                <?= view('icons/delete') ?>
                             </button>
                         </form>
                     </td>

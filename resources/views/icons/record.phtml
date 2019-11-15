@@ -1,0 +1,15 @@
+<?php if ($record::RECORD_TYPE === 'INDI') : ?>
+    <?= view('icons/individual') ?>
+<?php elseif ($record::RECORD_TYPE === 'FAM') : ?>
+    <?= view('icons/family') ?>
+<?php elseif ($record::RECORD_TYPE === 'SOUR') : ?>
+    <?= view('icons/source') ?>
+<?php elseif ($record::RECORD_TYPE === 'REPO') : ?>
+    <?= view('icons/repository') ?>
+<?php elseif ($record::RECORD_TYPE === 'NOTE') : ?>
+    <?= view('icons/note') ?>
+<?php elseif ($record::RECORD_TYPE === 'OBJE') : ?>
+    <?= view('icons/media') ?>
+<?php elseif ($record::RECORD_TYPE === 'SUBM') : ?>
+    <?= view('icons/submitter') ?>
+<?php endif ?>

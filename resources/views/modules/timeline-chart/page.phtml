@@ -46,7 +46,7 @@
 <div class="row my-4">
     <?php foreach ($individuals as $n => $individual) : ?>
         <div class="col-md-6 col-lg-4 col-xl-3 person<?= $n % 6 ?>">
-            <?= view('icons/sex-' . $individual->sex()) ?>
+            <?= view('icons/sex', ['sex' => $individual->sex()]) ?>
             <a href="<?= e($individual->url()) ?>">
                 <?= $individual->fullName() ?>
                 <?php if ($individual->alternateName() !== '') : ?>

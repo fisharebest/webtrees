@@ -298,7 +298,7 @@ $marriageAgeData = [
                             <?= $name['full'] ?>
                         </a>
                             <?php if ($num === $husb->getPrimaryName()) : ?>
-                                <small><?= view('icons/sex-' . $husb->sex()) ?></small>
+                                <small><?= view('icons/sex', ['sex' => $husb->sex()]) ?></small>
                             <?php endif ?>
                         <br>
                         <?php endif ?>
@@ -334,7 +334,7 @@ $marriageAgeData = [
                                 <?= $name['full'] ?>
                             </a>
                             <?php if ($num === $wife->getPrimaryName()) : ?>
-                                <small><?= view('icons/sex-' . $wife->sex()) ?></small>
+                                <small><?= view('icons/sex', ['sex' => $wife->sex()]) ?></small>
                             <?php endif ?>
                             <br>
                         <?php endif ?>

@@ -14,7 +14,7 @@ use Fisharebest\Webtrees\Individual;
         <?= $record->fullName() ?>
     </a>
     <?php if ($record instanceof Individual) : ?>
-        <?= view('icons/sex-' . $record->sex()) ?>
+        <?= view('icons/sex', ['sex' => $record->sex()]) ?>
     <?php endif ?>
     <div class="indent">
         <?= $fact->label() . ' — ' . $fact->date()->display(true) ?>

@@ -285,7 +285,7 @@ class BranchesController extends AbstractBaseController
 
         // No matching name? Typically children with a different surname. The branch stops here.
         if (!$person_name) {
-            return '<li title="' . strip_tags($individual->fullName()) . '"><small>' . view('icons/sex-' . $individual->sex()) . '…</small></li>';
+            return '<li title="' . strip_tags($individual->fullName()) . '"><small>' . view('icons/sex', ['sex' => $individual->sex()]) . '…</small></li>';
         }
 
         // Is this individual one of our ancestors?
@@ -299,7 +299,7 @@ class BranchesController extends AbstractBaseController
         }
 
         // Generate HTML for this individual, and all their descendants
-        $indi_html = '<small>' . view('icons/sex-' . $individual->sex()) . '</small><a class="' . $sosa_class . '" href="' . e($individual->url()) . '">' . $person_name . '</a> ' . $individual->getLifeSpan() . $sosa_html;
+        $indi_html = '<small>' . view('icons/sex', ['sex' => $individual->sex()]) . '</small><a class="' . $sosa_class . '" href="' . e($individual->url()) . '">' . $person_name . '</a> ' . $individual->getLifeSpan() . $sosa_html;
 
         // If this is not a birth pedigree (e.g. an adoption), highlight it
         if ($parents) {
@@ -342,7 +342,7 @@ class BranchesController extends AbstractBaseController
                     } else {
                         $fam_html .= ' <a href="' . e($family->url()) . '" title="' . I18N::translate('Not married') . '"><i class="icon-rings"></i></a>';
                     }
-                    $fam_html .= ' <small>' . view('icons/sex-' . $spouse->sex()) . '</small><a class="' . $sosa_class . '" href="' . e($spouse->url()) . '">' . $spouse->fullName() . '</a> ' . $spouse->getLifeSpan() . ' ' . $sosa_html;
+                    $fam_html .= ' <small>' . view('icons/sex', ['sex' => $spouse->sex()]) . '</small><a class="' . $sosa_class . '" href="' . e($spouse->url()) . '">' . $spouse->fullName() . '</a> ' . $spouse->getLifeSpan() . ' ' . $sosa_html;
                 }
 
                 $fam_html .= '<ol>';

@@ -20,6 +20,36 @@ import "popper.js";
 import "bootstrap";
 import "datatables.net";
 
+// Just import the subset of icons that we use in resources/views/icons/
+import { dom, library } from "@fortawesome/fontawesome-svg-core";
+import {
+    faBell, faCopy, faEnvelope, faFile, faFileAlt, faFileImage, faFolder, faKeyboard,
+    faMinusSquare, faPlusSquare, faStar, faStickyNote, faTrashAlt, faUser
+} from "@fortawesome/free-regular-svg-icons";
+library.add(
+    faBell, faCopy, faEnvelope, faFile, faFileAlt, faFileImage, faFolder, faKeyboard,
+    faMap, faMinusSquare, faPlusSquare, faStar, faStickyNote, faTrashAlt, faUser
+);
+import {
+    faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
+    faCalendar, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
+    faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
+    faLock, faMagic, faMap, faMapMarkerAlt, faMars, faPaintBrush, faPause, faPencilAlt,
+    faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faSearch, faSearchMinus, faSearchPlus,
+    faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faThList, faThumbtack,
+    faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench
+} from "@fortawesome/free-solid-svg-icons";
+library.add(
+    faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
+    faCalendar, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
+    faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
+    faLock, faMagic, faMap, faMapMarkerAlt, faMars, faPaintBrush, faPause, faPencilAlt,
+    faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faSearch, faSearchMinus, faSearchPlus,
+    faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faThList, faThumbtack,
+    faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench
+);
+dom.watch();
+
 window.Bloodhound = require("corejs-typeahead/dist/bloodhound.min.js");
 import "corejs-typeahead";
 

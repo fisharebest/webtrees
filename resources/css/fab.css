@@ -1233,7 +1233,7 @@ div.faq_body {
 
 .sb_indi_surname_li,
 .sb_fam_surname_li {
-	list-style-image: url(fab/images/plus.png);
+	list-style-image: url(icons/plus.png);
 }
 
 .name_tree_div ul {
@@ -1494,14 +1494,8 @@ div.faq_body {
 
 /*
  * Default icons are provided by FontAwesome.
- * Some icons get mirrored on RTL pages.  Typiclly arrows
  */
-[dir=rtl] .wt-flip-rtl {
-	transform: scale(-1, 1);
-}
-
 .wt-icon-anniversary {
-	content: url(images/anniversary.png);
 }
 
 .wt-icon-arrow-down {
@@ -1528,18 +1522,61 @@ a > .wt-icon-arrow-right:hover {
 a > .wt-icon-arrow-up:hover {
 }
 
+.wt-icon-bing-maps {
+}
+
+.wt-icon-calendar {
+}
+
 .wt-icon-collapse {
 }
 
 .wt-icon-coordinates {
-	content: url(images/coordinates.png)
+}
+
+.wt-icon-copy {
+}
+
+.wt-icon-delete {
+}
+
+.wt-icon-edit {
 }
 
 .wt-icon-expand {
 }
 
+.wt-icon-family {
+}
+
+.wt-icon-google-maps {
+}
+
+.wt-icon-help {
+}
+
+.wt-icon-individual {
+}
+
+.wt-icon-keyboard {
+}
+
+.wt-icon-media {
+}
+
+.wt-icon-note {
+}
+
+.wt-icon-openstreetmap {
+}
+
+.wt-icon-preferences {
+}
+
 .wt-icon-reorder {
-	content: url(images/reorder.png);
+}
+
+.wt-icon-repository {
 }
 
 .wt-icon-sex-f {
@@ -1558,242 +1595,105 @@ a > .wt-icon-arrow-up:hover {
 	color: var(--sex-u-fg);
 }
 
+.wt-icon-source {
+}
+
+.wt-icon-submitter {
+}
+
 .wt-icon-warning {
 }
 
 .wt-icon-zoom-in {
-	content: url(fab/images/zoomin.png);
 }
 
 .wt-icon-zoom-out {
-	content: url(fab/images/zoomout.png);
 }
 
-/*
- * .wt-icon-bing-maps
- * .wt-icon-calendar
- * .wt-icon-copy
- * .wt-icon-delete
- * .wt-icon-edit
- * .wt-icon-email
- * .wt-icon-family
- * .wt-icon-help
- * .wt-icon-individual
- * .wt-icon-google-maps
- * .wt-icon-keyboard
- * .wt-icon-media
- * .wt-icon-note
- * .wt-icon-openstreetmap
- * .wt-icon-preferences
- * .wt-icon-repository
- * .wt-icon-source
- * .wt-icon-submitter
- */
-[class^="icon-"],
-[class*=" icon-"] {
-	display: inline-block;
-	vertical-align: middle;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
-.icon-add {
-	width: 14px;
-	height: 15px;
-	background-image: url(images/add.png);
-}
-
+/* Miscellaneous images */
 .icon-cfamily {
-	width: 24px;
-	height: 24px;
-	background-image: url(fab/images/cfamily.png);
+	content: url(fab/images/cfamily.png);
 }
 
 .icon-childless {
-	width: 25px;
-	height: 25px;
-	background-image: url(fab/images/childless.png);
+	content: url(images/childless.png);
 }
 
 .icon-children {
-	width: 16px;
-	height: 16px;
-	background-image: url(fab/images/children.png);
-}
-
-.icon-clippings {
-	width: 24px;
-	height: 24px;
-	background-image: url(fab/images/clippings.png);
+	content: url(images/children.png);
 }
 
 .icon-edit_indi {
-	width: 25px;
-	height: 25px;
-	background-image: url(fab/images/edit_indi.png);
+	content: url(fab/images/edit_indi.png);
 }
 
 .icon-fam-list {
-	width: 24px;
-	height: 24px;
-	background-image: url(fab/images/sfamily.png);
+	content: url(fab/images/sfamily.png);
 }
 
 .icon-indi-list {
-	width: 50px;
-	height: 50px;
-	background-image: url(fab/images/indis.png);
+	content: url(fab/images/indis.png);
 }
 
 .icon-loading-small {
-	width: 16px;
-	height: 16px;
-	background-image: url(fab/images/indicator.gif);
-}
-
-.icon-media {
-	width: 24px;
-	height: 24px;
-	background-image: url(fab/images/media.png);
-}
-
-.icon-media-list {
-	width: 24px;
-	height: 24px;
-	background-image: url(fab/images/media.png);
-}
-
-.icon-media-next {
-	width: 20px;
-	height: 20px;
-	background-image: url(fab/images/rdarrow.png);
-}
-
-.icon-media-play {
-	width: 20px;
-	height: 20px;
-	background-image: url(fab/images/rarrow.png);
-}
-
-.icon-media-stop {
-	width: 20px;
-	height: 20px;
-	background-image: url(fab/images/stop.png);
+	content: url(images/indicator.gif);
 }
 
 .icon-minus {
-	width: 11px;
-	height: 11px;
-	background-image: url(fab/images/minus.png);
+	content: url(icons/minus.png);
 }
 
 .icon-mypage {
-	width: 25px;
-	height: 25px;
-	background-image: url(fab/images/mypage.png);
-}
-
-.icon-note {
-	width: 16px;
-	height: 16px;
-	background-image: url(fab/icons/note.png);
+	content: url(fab/images/mypage.png);
 }
 
 .icon-pin-in {
-	width: 16px;
-	height: 16px;
-	background-image: url(fab/images/pin-in.png);
+	content: url(fab/images/pin-in.png);
 }
 
 .icon-pin-out {
-	width: 16px;
-	height: 16px;
-	background-image: url(fab/images/pin-out.png);
+	content: url(fab/images/pin-out.png);
 }
 
 .icon-plus {
-	width: 11px;
-	height: 11px;
-	background-image: url(fab/images/plus.png);
-}
-
-.icon-remove {
-	width: 14px;
-	height: 15px;
-	background-image: url(fab/images/remove.png);
+	content: url(icons/plus.png);
 }
 
 .icon-resn-confidential {
-	width: 16px;
-	height: 16px;
-	background-image: url(fab/images/resn_confidential.png);
+	content: url(images/resn_confidential.png);
 }
 
 .icon-resn-locked {
-	width: 16px;
-	height: 16px;
-	background-image: url(fab/images/resn_locked.png);
+	content: url(images/resn_locked.png);
 }
 
 .icon-resn-none {
-	width: 16px;
-	height: 16px;
-	background-image: url(fab/images/resn_none.png);
+	content: url(images/resn_none.png);
 }
 
 .icon-resn-privacy {
-	width: 16px;
-	height: 16px;
-	background-image: url(fab/images/resn_privacy.png);
+	content: url(images/resn_privacy.png);
 }
 
 .icon-rings {
-	width: 9px;
-	height: 9px;
-	background-image: url(fab/images/rings.png);
+	content: url(images/rings.png);
 }
 
 .icon-selected {
-	width: 12px;
-	height: 12px;
-	background-image: url(fab/images/selected.png);
-}
-
-.icon-slide_close {
-	width: 22px;
-	height: 20px;
-	background-image: url(fab/images/close.png);
-}
-
-.icon-slide_open {
-	width: 20px;
-	height: 22px;
-	background-image: url(fab/images/open.png);
-}
-
-.icon-source {
-	width: 24px;
-	height: 24px;
-	background-image: url(fab/images/source.png);
+	content: url(fab/images/selected.png);
 }
 
 /* Silhouettes on charts */
 .icon-silhouette-F {
-	width: 37px;
-	height: 45px;
-	background-image: url(fab/images/silhouette_female_small.png);
+	content: url(fab/images/silhouette_female_small.png);
 }
 
 .icon-silhouette-M {
-	width: 37px;
-	height: 45px;
-	background-image: url(fab/images/silhouette_male_small.png);
+	content: url(fab/images/silhouette_male_small.png);
 }
 
 .icon-silhouette-U {
-	width: 37px;
-	height: 45px;
-	background-image: url(fab/images/silhouette_unknown_small.png);
+	content: url(fab/images/silhouette_unknown_small.png);
 }
 
 .menu-language li {
@@ -1805,63 +1705,23 @@ a > .wt-icon-arrow-up:hover {
 }
 
 .icon-indis {
-	width: 24px;
-	height: 24px;
-	background-image: url(fab/images/indis.png);
+	content: url(fab/images/indis.png);
 }
 
 .icon-patriarch {
-	width: 24px;
-	height: 24px;
-	background-image: url(fab/images/patriarch.png);
+	content: url(fab/images/patriarch.png);
 }
 
 .icon-pedigree {
-	width: 24px;
-	height: 24px;
-	background-image: url(fab/images/pedigree.png);
-}
-
-.icon-place {
-	width: 24px;
-	height: 24px;
-	background-image: url(fab/images/place.png);
-}
-
-.icon-repo-list {
-	width: 30px;
-	height: 30px;
-	background-image: url(fab/images/repository.png);
-}
-
-.icon-repository {
-	width: 30px;
-	height: 30px;
-	background-image: url(fab/images/repository.png);
-}
-
-.icon-search {
-	width: 24px;
-	height: 24px;
-	background-image: url(fab/images/search.png);
+	content: url(fab/images/pedigree.png);
 }
 
 .icon-sfamily {
-	width: 24px;
-	height: 24px;
-	background-image: url(fab/images/sfamily.png);
-}
-
-.icon-source-list {
-	width: 24px;
-	height: 24px;
-	background-image: url(fab/images/source.png);
+	content: url(fab/images/sfamily.png);
 }
 
 .icon-user_add {
-	width: 24px;
-	height: 24px;
-	background-image: url(fab/images/user_add.png);
+	content: url(fab/images/user_add.png);
 }
 
 /* Census assistant */

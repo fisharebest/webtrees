@@ -17,7 +17,9 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.11.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-regular-svg-icons": "^5.11.2",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "beautifymarker": "^1.0.7",
     "bootstrap": "^4.3.1",
     "corejs-typeahead": "^1.2.1",

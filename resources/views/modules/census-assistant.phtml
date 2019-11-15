@@ -57,12 +57,12 @@ use Fisharebest\Webtrees\View;
             </div>
             <?= view('components/select-individual', ['name' => 'census-assistant-individual', 'individual' => $individual, 'tree' => $individual->tree()]) ?>
             <div class="input-group-append">
-                <button type="button" class="btn btn-primary" id="census-assistant-add" aria-label="<?= I18N::translate('add') ?>">
+                <button type="button" class="btn btn-primary" id="census-assistant-add" title="<?= I18N::translate('add') ?>">
                     <?= view('icons/add') ?>
                 </button>
             </div>
             <div class="input-group-append">
-                <button type="button" class="btn btn-primary" id="census-assistant-head" aria-label="<?= I18N::translate('Head of household') ?>">
+                <button type="button" class="btn btn-primary" id="census-assistant-head" title="<?= I18N::translate('Head of household') ?>">
                     <?= view('icons/individual') ?>
                 </button>
             </div>
@@ -196,7 +196,7 @@ use Fisharebest\Webtrees\View;
   $('#census-assistant-add').on('click', censusAssistantAdd);
   $('#census-assistant-head').on('click', censusAssistantHead);
 
-  $('#census-assistant-table').on('click', 'a.icon-remove', function() {
+  $('#census-assistant-table').on('click', '.wt-icon-delete', function() {
     $(this).closest('tr').remove();
 
     return false;

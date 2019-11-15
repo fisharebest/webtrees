@@ -23,9 +23,6 @@ const postcss_custom_properties = require("postcss-custom-properties")();
 mix.styles([
     "node_modules/bootstrap/dist/css/bootstrap.min.css",
     "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css",
-    "node_modules/@fortawesome/fontawesome-free/css/regular.css",
-    "node_modules/@fortawesome/fontawesome-free/css/solid.css",
-    "node_modules/@fortawesome/fontawesome-free/css/fontawesome.css",
     "resources/css/begin-ignore-rtl.css",
     "node_modules/select2/dist/css/select2.min.css",
     "resources/css/end-ignore-rtl.css",
@@ -47,8 +44,6 @@ mix
     .babel(["resources/js/webtrees.js", "resources/js/statistics.js", "resources/js/treeview.js"], "public/js/webtrees.min.js")
     .copy("node_modules/leaflet/dist/images/*", "public/css/images/")
     .copy("node_modules/dejavu-fonts-ttf/ttf/DejaVuSans.ttf", "resources/fonts/")
-    .copy("node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-*", "public/webfonts/")
-    .copy("node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-*", "public/webfonts/")
     .options({
             processCssUrls: false,
             postCss: [

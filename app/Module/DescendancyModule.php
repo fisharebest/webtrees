@@ -179,7 +179,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
                 'xref'   => $person->xref(),
             ])) . '">' .
             '<i class="plusminus ' . $icon . '"></i>' .
-            '<small>' . view('icons/sex-' . $person->sex()) . '</small>' . $person->fullName() . $lifespan .
+            '<small>' . view('icons/sex', ['sex' => $person->sex()]) . '</small>' . $person->fullName() . $lifespan .
             '</a>' .
             '<a href="' . e($person->url()) . '" title="' . strip_tags($person->fullName()) . '">' . view('icons/individual') . '</a>' .
             '<div>' . $spouses . '</div>' .
@@ -199,7 +199,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     {
         $spouse = $family->spouse($person);
         if ($spouse instanceof Individual) {
-            $spouse_name = '<small>' . view('icons/sex-' . $spouse->sex()) . '</small>' . $spouse->fullName();
+            $spouse_name = '<small>' . view('icons/sex', ['sex' => $spouse->sex()]) . '</small>' . $spouse->fullName();
             $spouse_link = '<a href="' . e($spouse->url()) . '" title="' . strip_tags($spouse->fullName()) . '">' . view('icons/individual') . '</a>';
         } else {
             $spouse_name = '';

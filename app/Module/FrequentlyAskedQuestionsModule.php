@@ -108,7 +108,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
                 'module' => $this->name(),
                 'action' => 'Show',
                 'tree'   => $tree->name(),
-            ]), 'menu-help');
+            ]), 'menu-faq');
         }
 
         return null;

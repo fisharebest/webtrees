@@ -175,7 +175,7 @@ class FunctionsPrint
             $family = $families->first();
             foreach ($family->spouses() as $parent) {
                 if ($parent->getBirthDate()->isOK()) {
-                    $sex      = '<small>' . view('icons/sex-' . $parent->sex()) . '</small>';
+                    $sex      = '<small>' . view('icons/sex', ['sex' => $parent->sex()]) . '</small>';
                     $age      = Date::getAge($parent->getBirthDate(), $birth_date);
                     $deatdate = $parent->getDeathDate();
                     switch ($parent->sex()) {

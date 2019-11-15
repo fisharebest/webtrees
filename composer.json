@@ -160,7 +160,9 @@
             "find resources/lang -name '*.po' -exec msgmerge --no-wrap --sort-output --no-fuzzy-matching --quiet --output={} {} resources/lang/webtrees.pot \\;"
         ],
         "webtrees:png": [
-            "find resources/css -name *.png -exec pngquant --ext .png --force --skip-if-larger --speed 1 {} \\;"
+            "find resources/css -name *.png -exec pngquant --ext .png --force --skip-if-larger --speed 1 {} \\;",
+            "find resources/css -name *.png -exec pngcrush -rem allb -brute -reduce {} {} \\;",
+            "find resources/css -name *.png -exec optipng -o7 -zm1-9 {} \\;"
         ]
     },
     "scripts-descriptions": {
