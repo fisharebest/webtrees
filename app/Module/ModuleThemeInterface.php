@@ -30,15 +30,6 @@ use Fisharebest\Webtrees\Tree;
 interface ModuleThemeInterface extends ModuleInterface
 {
     /**
-     * Display an icon for this fact.
-     *
-     * @param Fact $fact
-     *
-     * @return string
-     */
-    public function icon(Fact $fact): string;
-
-    /**
      * Links, to show in chart boxes;
      *
      * @param Individual $individual

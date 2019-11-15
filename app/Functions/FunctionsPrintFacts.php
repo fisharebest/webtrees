@@ -209,6 +209,10 @@ class FunctionsPrintFacts
             echo '</div>';
         }
 
+        if ($tree->getPreference('SHOW_FACT_ICONS')) {
+            echo '<span class="wt-fact-icon wt-fact-icon-' . $fact->getTag() . '" title="' . GedcomTag::getLabel($fact->getTag()) . '"></span>';
+        }
+
         echo '</th>';
         echo '<td class="', $styleadd, '">';
 

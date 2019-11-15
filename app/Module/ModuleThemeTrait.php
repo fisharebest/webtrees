@@ -69,29 +69,6 @@ trait ModuleThemeTrait
     }
 
     /**
-     * Display an icon for this fact.
-     *
-     * @param Fact $fact
-     *
-     * @return string
-     */
-    public function icon(Fact $fact): string
-    {
-        $asset = 'public/css/' . $this->name() . '/images/facts/' . $fact->getTag() . '.png';
-        if (file_exists(Webtrees::ROOT_DIR . 'public' . $asset)) {
-            return '<img src="' . e(asset($asset)) . '" title="' . GedcomTag::getLabel($fact->getTag()) . '">';
-        }
-
-        // Spacer image - for alignment - until we move to a sprite.
-        $asset = 'public/css/' . $this->name() . '/images/facts/NULL.png';
-        if (file_exists(Webtrees::ROOT_DIR . 'public' . $asset)) {
-            return '<img src="' . e(asset($asset)) . '">';
-        }
-
-        return '';
-    }
-
-    /**
      * Generate the facts, for display in charts.
      *
      * @param Individual $individual

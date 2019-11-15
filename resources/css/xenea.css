@@ -1780,6 +1780,152 @@ a > .wt-icon-arrow-up:hover {
 	content: url(xenea/icons/zoom-out.png);
 }
 
+/* Fact icons */
+.wt-fact-icon {
+	display: block;
+	margin: 1rem auto;
+	content: url(facts/NULL.png);
+}
+
+.wt-fact-icon-ADDR {
+	content: url(facts/ADDR.png);
+}
+
+.wt-fact-icon-ADOP {
+	content: url(facts/ADOP.png);
+}
+
+.wt-fact-icon-AFN,
+.wt-fact-icon-REFN,
+.wt-fact-icon-RFN,
+.wt-fact-icon-RIN,
+.wt-fact-icon-_UID {
+	content: url(facts/REFN.png);
+}
+
+.wt-fact-icon-ASSO {
+	content: url(facts/ADOP.png);
+}
+
+.wt-fact-icon-BIRT {
+	content: url(facts/BIRT.png);
+}
+
+.wt-fact-icon-BURI {
+	content: url(facts/BURI.png);
+}
+
+.wt-fact-icon-CEME {
+	content: url(facts/CEME.png);
+}
+
+.wt-fact-icon-CENS {
+	content: url(facts/CENS.png);
+}
+
+.wt-fact-icon-CHAN {
+	content: url(facts/CHAN.png);
+}
+
+.wt-fact-icon-CHR,
+.wt-fact-icon-BAPL,
+.wt-fact-icon-BAPM {
+	content: url(facts/CHR.png);
+}
+
+.wt-fact-icon-CONF,
+.wt-fact-icon-CONL {
+	content: url(facts/CONF.png);
+}
+
+.wt-fact-icon-DEAT {
+	content: url(facts/DEAT.png);
+}
+
+.wt-fact-icon-ANUL,
+.wt-fact-icon-DIV {
+	content: url(facts/DIV.png);
+}
+
+.wt-fact-icon-DIVF {
+	content: url(facts/DIVF.png);
+}
+
+.wt-fact-icon-EMAIL {
+	content: url(facts/EMAIL.png);
+}
+
+.wt-fact-icon-EMIG {
+	content: url(facts/EMIG.png);
+}
+
+.wt-fact-icon-ENGA,
+.wt-fact-icon-MARB {
+	content: url(facts/ENGA.png);
+}
+
+.wt-fact-icon-EVEN {
+	content: url(facts/EVEN.png);
+}
+
+.wt-fact-icon-FACT {
+	content: url(facts/FACT.png);
+}
+
+.wt-fact-icon-IMMI {
+	content: url(facts/IMMI.png);
+}
+
+.wt-fact-icon-MARR,
+.wt-fact-icon-SLGS {
+	content: url(facts/MARR.png);
+}
+
+.wt-fact-icon-OCCU {
+	content: url(facts/OCCU.png);
+}
+
+.wt-fact-icon-ORDN {
+	content: url(facts/ORDN.png);
+}
+
+.wt-fact-icon-PHON {
+	content: url(facts/PHON.png);
+}
+
+.wt-fact-icon-PROP,
+.wt-fact-icon-RESI {
+	content: url(facts/RESI.png);
+}
+
+.wt-fact-icon-WWW {
+	content: url(facts/WWW.png);
+}
+
+.wt-fact-icon-_MDCL {
+	content: url(facts/_MDCL.png);
+}
+
+.wt-fact-icon-_MILI {
+	content: url(facts/_MILI.png);
+}
+
+.wt-fact-icon-_NMAR {
+	content: url(facts/_NMAR.png);
+}
+
+.wt-fact-icon-_NMR {
+	content: url(facts/MARR.png);
+}
+
+.wt-fact-icon-_SEPR {
+	content: url(facts/_SEPR.png);
+}
+
+.wt-fact-icon-_TODO {
+	content: url(facts/_TODO.png);
+}
+
 /* Miscellaneous images */
 .icon-cfamily {
 	content: url(xenea/images/cfamily.png);
