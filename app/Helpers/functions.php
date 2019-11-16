@@ -167,23 +167,6 @@ function route(string $route_name, array $parameters = []): string
     $router_container = app(RouterContainer::class);
     $route            = $router_container->getMap()->getRoute($route_name);
 
-    // Scheme/user/pass/host needed for absolute URLs.
-    static $prefix = null;
-
-    if ($prefix === null) {
-        $base_url   = $request->getAttribute('base_url');
-        $base_parts = parse_url($base_url);
-        $prefix     = $base_parts['scheme'] . '://';
-        if (array_key_exists('user', $base_parts)) {
-            $prefix .= rawurlencode($base_parts['user']);
-            if (array_key_exists('pass', $base_parts)) {
-                $prefix .= ':' . rawurlencode($base_parts['pass']);
-            }
-            $prefix .= '@';
-        }
-        $prefix .= $base_parts['host'];
-    }
-
     // Generate the URL.
     $url = $router_container->getGenerator()->generate($route_name, $parameters);
 
@@ -194,14 +177,13 @@ function route(string $route_name, array $parameters = []): string
 
     // Turn the pretty URL into an ugly one.
     if ($request->getAttribute('rewrite_urls') !== '1') {
+        $base_url   = $request->getAttribute('base_url');
         $path       = parse_url($url, PHP_URL_PATH);
         $parameters = ['route' => $path] + $parameters;
-        $base_url   = $request->getAttribute('base_url');
-        $base_path  = parse_url($base_url, PHP_URL_PATH) ?? '';
-        $url        = $base_path . '/index.php';
+        $url        = $base_url . '/index.php';
     }
 
-    return Html::url($prefix . $url, $parameters);
+    return Html::url($url, $parameters);
 }
 
 /**

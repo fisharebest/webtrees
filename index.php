@@ -23,8 +23,19 @@ use Middleland\Dispatcher;
 use Nyholm\Psr7Server\ServerRequestCreator;
 
 use function app;
+use function parse_url;
+
+use const PHP_SAPI;
+use const PHP_URL_PATH;
 
 require __DIR__ . '/vendor/autoload.php';
+
+if (PHP_SAPI === 'cli-server') {
+    $file = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    if (file_exists($file)) {
+        return false;
+    }
+}
 
 // Create the application.
 $application = new Webtrees();

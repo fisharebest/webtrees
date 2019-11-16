@@ -54,10 +54,9 @@ class BaseUrl implements MiddlewareInterface
 
         if ($base_url === '') {
             // Guess the base URL from the request URL.
-            $base_url = rtrim(explode('index.php', (string) $request_url)[0], '/');
-            $request  = $request->withAttribute('base_url', $base_url);
-
-            $base_path = parse_url($base_url, PHP_URL_PATH) ?? '';
+            $base_url    = rtrim(explode('index.php', (string) $request_url)[0], '/');
+            $request     = $request->withAttribute('base_url', $base_url);
+            $base_path   = parse_url($base_url, PHP_URL_PATH) ?? '';
             $request_url = $request_url->withPath($base_path);
 
             $request = $request->withUri($request_url);

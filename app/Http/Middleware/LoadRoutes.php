@@ -62,7 +62,7 @@ class LoadRoutes implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $base_url         = $request->getAttribute('base_url');
-        $base_path        = parse_url($base_url, PHP_URL_PATH) ?? '';
+        $base_path        = parse_url($base_url, PHP_URL_PATH);
         $router_container = new RouterContainer($base_path);
 
         // Load the core routing tables. Modules will load their own routes later.
