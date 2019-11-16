@@ -30,8 +30,12 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_filter;
 use function assert;
+use function in_array;
 use function preg_match;
+use function preg_replace;
+use function redirect;
 use function str_replace;
 use function trim;
 
@@ -193,6 +197,9 @@ class SearchGeneralPage implements RequestHandlerInterface
             $search_terms[] = trim($match[1]);
             $query          = str_replace($match[0], '', $query);
         }
+
+        // Treat CJK characters as separate words, not as characters.
+        $query = preg_replace('/\p{Han}/u', '$0 ', $query);
 
         // Other words get treated separately
         while (preg_match('/[\S]+/', $query, $match)) {
