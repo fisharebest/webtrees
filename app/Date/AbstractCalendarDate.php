@@ -26,6 +26,23 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use InvalidArgumentException;
 
+use function array_key_exists;
+use function array_search;
+use function get_class;
+use function intdiv;
+use function is_array;
+use function is_int;
+use function max;
+use function preg_match;
+use function preg_match_all;
+use function preg_replace;
+use function route;
+use function sprintf;
+use function str_replace;
+use function strpbrk;
+use function trim;
+use function view;
+
 /**
  * Classes for Gedcom Date/Calendar functionality.
  *
@@ -533,28 +550,21 @@ abstract class AbstractCalendarDate
      */
     public function format(string $format, string $qualifier = ''): string
     {
+        // Dates can include additional punctuation and symbols.
+        // e.g. "%Y年 %n月 %j日", "Y.M.D" and "M D, Y".
+        // The logic here is inflexible, and should be replaced with
+        // specific translations for each abbreviated format.
+
         // Don’t show exact details for inexact dates
         if (!$this->day) {
-            // The comma is for US "M D, Y" dates
-            $format = preg_replace('/%[djlDNSwz][,]?/', '', $format);
+            $format = preg_replace('/%[djlDNSwz][,日]?/u', '', $format);
+            $format = str_replace(['%d,', '%j日', '%j,', '%j', '%l', '%D', '%N', '%S', '%w', '%z'], '', $format);
         }
         if (!$this->month) {
-            $format = str_replace([
-                '%F',
-                '%m',
-                '%M',
-                '%n',
-                '%t',
-            ], '', $format);
+            $format = str_replace(['%F', '%m', '%M', '年 %n月', '%n', '%t'], '', $format);
         }
         if (!$this->year) {
-            $format = str_replace([
-                '%t',
-                '%L',
-                '%G',
-                '%y',
-                '%Y',
-            ], '', $format);
+            $format = str_replace(['%t', '%L', '%G', '%y', '%Y年', '%Y'], '', $format);
         }
         // If we’ve trimmed the format, also trim the punctuation
         if (!$this->day || !$this->month || !$this->year) {
