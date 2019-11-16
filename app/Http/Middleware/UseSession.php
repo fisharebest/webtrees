@@ -28,6 +28,11 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function session_destroy;
+use function session_status;
+
+use const PHP_SESSION_ACTIVE;
+
 /**
  * Middleware to activate sessions.
  */
@@ -41,6 +46,12 @@ class UseSession implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        // Some sites (e.g. Wordpress/NinjaFirewall) use the PHP auto_prepend_file
+        // setting to run their own startup code - which may start a session.
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_destroy();
+        }
+
         // Sessions
         Session::start($request);
 
