@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2018-08-21 08:44+0000\n"
-"Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
-"Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/nn/>\n"
+"PO-Revision-Date: 2019-11-17 01:47+0000\n"
+"Last-Translator: Hogne R Nilsen <hogne.roed.nilsen@gmail.com>\n"
+"Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
+"webtrees/webtrees-17/nn/>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -1782,7 +1783,7 @@ msgstr "Album"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:89
 msgid "Albuquerque, New Mexico, United States"
-msgstr "Albuquerque, New Mexico, United States"
+msgstr "Albuquerque, New Mexico, USA"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6736
@@ -2004,7 +2005,7 @@ msgstr "AFN nummer"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:91
 msgid "Anchorage, Alaska, United States"
-msgstr "Anchorage, Alaska, United States"
+msgstr "Anchorage, Alaska, USA"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6677
@@ -2240,7 +2241,7 @@ msgstr "Til sjøs"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:99
 msgid "Atlanta, Georgia, United States"
-msgstr "Atlanta, Georgia, United States"
+msgstr "Atlanta, Georgia, USA"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
@@ -2572,7 +2573,7 @@ msgstr "Masseoppdatering"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:121
 msgid "Baton Rouge, Louisiana, United States"
-msgstr "Baton Rouge, Louisiana, United States"
+msgstr "Baton Rouge, Louisiana, USA"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2340
@@ -2636,7 +2637,7 @@ msgstr "Bibliografi"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:103
 msgid "Billings, Montana, United States"
-msgstr "Billings, Montana, United States"
+msgstr "Billings, Montana, USA"
 
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:222
@@ -2650,7 +2651,7 @@ msgstr "Bing Maps™"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:105
 msgid "Birmingham, Alabama, United States"
-msgstr "Birmingham, Alabama, United States"
+msgstr "Birmingham, Alabama, USA"
 
 #. I18N: gedcom tag BIRT
 #: app/GedcomTag.php:206 modules_v3/ahnentafel_report/report.xml:441
@@ -2891,7 +2892,7 @@ msgstr "Fødslar etter hundreår"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:107
 msgid "Bismarck, North Dakota, United States"
-msgstr "Bismarck, North Dakota, United States"
+msgstr "Bismarck, North Dakota, USA"
 
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:214
@@ -2930,7 +2931,7 @@ msgstr "Bogota, Colombia"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:111
 msgid "Boise, Idaho, United States"
-msgstr "Boise, Idaho, United States"
+msgstr "Boise, Idaho, USA"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6703
@@ -2959,7 +2960,7 @@ msgstr "Bosnia-Hercegovina"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:113
 msgid "Boston, Massachusetts, United States"
-msgstr "Boston, Massachusetts, United States"
+msgstr "Boston, Massachusetts, USA"
 
 #: app/Functions/FunctionsPrintLists.php:619
 msgid "Both alive"
@@ -2977,7 +2978,7 @@ msgstr "Botswana"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:115
 msgid "Bountiful, Utah, United States"
-msgstr "Bountiful, Utah, United States"
+msgstr "Bountiful, Utah, USA"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6708
@@ -3575,7 +3576,7 @@ msgstr "Kontrollerar serverinnstillingar"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:131
 msgid "Chicago, Illinois, United States"
-msgstr "Chicago, Illinois, United States"
+msgstr "Chicago, Illinois, USA"
 
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:35 app/GedcomTag.php:274
@@ -3850,17 +3851,17 @@ msgstr "Colonia Juarez, Mexico"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:147
 msgid "Columbia River, Washington, United States"
-msgstr "Columbia River, Washington, United States"
+msgstr "Columbia River, Washington, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:139
 msgid "Columbia, South Carolina, United States"
-msgstr "Columbia, South Carolina, United States"
+msgstr "Columbia, South Carolina, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:141
 msgid "Columbus, Ohio, United States"
-msgstr "Columbus, Ohio, United States"
+msgstr "Columbus, Ohio, USA"
 
 #: medialist.php:164
 msgid "Columns per page"
@@ -4337,7 +4338,7 @@ msgstr "Daitch-Mokotoff"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:151
 msgid "Dallas, Texas, United States"
-msgstr "Dallas, Texas, United States"
+msgstr "Dallas, Texas, USA"
 
 #. I18N: A summary of the system status
 #: admin.php:482
@@ -5037,7 +5038,7 @@ msgstr "Danmark"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:153
 msgid "Denver, Colorado, United States"
-msgstr "Denver, Colorado, United States"
+msgstr "Denver, Colorado, USA"
 
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
@@ -5113,7 +5114,7 @@ msgstr "Detaljar om den nye brukaren vil bli sendt til kontaktpersonen for det a
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:155
 msgid "Detroit, Michigan, United States"
-msgstr "Detroit, Michigan, United States"
+msgstr "Detroit, Michigan, USA"
 
 #: app/Date/JalaliDate.php:192
 msgctxt "Abbreviation for Persian month: Dey"
@@ -6559,7 +6560,7 @@ msgstr "Ofte stilte spørsmål"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:169
 msgid "Fresno, California, United States"
-msgstr "Fresno, California, United States"
+msgstr "Fresno, California, USA"
 
 #. I18N: abbreviation for Friday
 #: app/Date/CalendarDate.php:380 app/Functions/FunctionsPrint.php:664
@@ -7000,7 +7001,7 @@ msgstr "Hamilton, New Zealand"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:187
 msgid "Hartford, Connecticut, United States"
-msgstr "Hartford, Connecticut, United States"
+msgstr "Hartford, Connecticut, USA"
 
 #: modules_v3/descendancy_report/report.xml:428
 msgid "He "
@@ -8040,7 +8041,7 @@ msgstr "Mormon tempel"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:189
 msgid "Laie, Hawaii, United States"
-msgstr "Laie, Hawaii, United States"
+msgstr "Laie, Hawaii, USA"
 
 #. I18N: page orientation
 #: admin_trees_config.php:54 modules_v3/change_report/report.xml:10
@@ -8211,7 +8212,7 @@ msgstr "Lesotho"
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "Letter"
-msgstr "Letter"
+msgstr "Brev"
 
 #: app/Module/GoogleMapsModule.php:384 app/Module/GoogleMapsModule.php:400
 #: app/Module/GoogleMapsModule.php:1438 app/Module/GoogleMapsModule.php:3444
@@ -8380,7 +8381,7 @@ msgstr "lengdegrad"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:213
 msgid "Los Angeles, California, United States"
-msgstr "Los Angeles, California, United States"
+msgstr "Los Angeles, California, USA"
 
 #: login.php:255
 msgid "Lost password request"
@@ -9410,7 +9411,7 @@ msgstr "Mors familie med ein ukjend person"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:255
 msgid "Mount Timpanogos, Utah, United States"
-msgstr "Mount Timpanogos, Utah, United States"
+msgstr "Mount Timpanogos, Utah, USA"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:490 index_edit.php:312
 #: index_edit.php:361
@@ -9604,7 +9605,7 @@ msgstr "Nauvoo, Illinois (ny)"
 #. I18N: Location of an historic LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:261
 msgid "Nauvoo (original), Illinois, United States"
-msgstr "Nauvoo (original), Illinois, United States"
+msgstr "Nauvoo (original), Illinois, USA"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6843
@@ -9645,7 +9646,7 @@ msgstr "Ny Kaledonia"
 #. I18N: Location of an historic LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:267
 msgid "New York, New York, United States"
-msgstr "New York, New York, United States"
+msgstr "New York, New York, USA"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6845
@@ -9671,7 +9672,7 @@ msgstr "Ny brukar på %s"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:263
 msgid "Newport Beach, California, United States"
-msgstr "Newport Beach, California, United States"
+msgstr "Newport Beach, California, USA"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeNewsModule.php:53
@@ -10138,7 +10139,7 @@ msgstr "Pleiar"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:271
 msgid "Oakland, California, United States"
-msgstr "Oakland, California, United States"
+msgstr "Oakland, California, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:273
@@ -10201,7 +10202,7 @@ msgstr "Ogden, Utah, United States"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:277
 msgid "Oklahoma City, Oklahoma, United States"
-msgstr "Oklahoma City, Oklahoma, United States"
+msgstr "Oklahoma City, Oklahoma, USA"
 
 #: admin_site_change.php:337
 msgid "Old data"
@@ -10339,7 +10340,7 @@ msgstr "Orientering"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:281
 msgid "Orlando, Florida, United States"
-msgstr "Orlando, Florida, United States"
+msgstr "Orlando, Florida, USA"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1944 app/Stats.php:5453 app/Stats.php:5872
@@ -10484,7 +10485,7 @@ msgstr "Palett"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:285
 msgid "Palmyra, New York, United States"
-msgstr "Palmyra, New York, United States"
+msgstr "Palmyra, New York, USA"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6848
@@ -11257,7 +11258,7 @@ msgstr "Rajab"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:309
 msgid "Raleigh, North Carolina, United States"
-msgstr "Raleigh, North Carolina, United States"
+msgstr "Raleigh, North Carolina, USA"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:98
@@ -11355,7 +11356,7 @@ msgstr "Postane er ikkje av same type. Kan ikkje flette data som er av ulik type
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:313
 msgid "Redlands, California, United States"
-msgstr "Redlands, California, United States"
+msgstr "Redlands, California, USA"
 
 #. I18N: gedcom tag REFN
 #: app/GedcomTag.php:716
@@ -11729,7 +11730,7 @@ msgstr "SMTP mail server"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:321
 msgid "Sacramento, California, United States"
-msgstr "Sacramento, California, United States"
+msgstr "Sacramento, California, USA"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:91
@@ -11803,7 +11804,7 @@ msgstr "San Antonio, Texas, United States"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:329
 msgid "San Diego, California, United States"
-msgstr "San Diego, California, United States"
+msgstr "San Diego, California, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:339
