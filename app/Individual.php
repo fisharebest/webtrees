@@ -887,55 +887,6 @@ class Individual extends GedcomRecord
     }
 
     /**
-     * Get the preferred parents for this individual.
-     *
-     * An individual may multiple parents (e.g. birth, adopted, disputed).
-     * The preferred family record is:
-     * (a) the first one with an explicit tag "_PRIMARY Y"
-     * (b) the first one with a pedigree of "birth"
-     * (c) the first one with no pedigree (default is "birth")
-     * (d) the first one found
-     *
-     * @return Family|null
-     */
-    public function primaryChildFamily(): ?Family
-    {
-        $families = $this->childFamilies();
-        switch ($families->count()) {
-            case 0:
-                return null;
-            case 1:
-                return $families[0];
-            default:
-                // If there is more than one FAMC record, choose the preferred parents:
-                // a) records with '2 _PRIMARY'
-                foreach ($families as $fam) {
-                    $famid = $fam->xref();
-                    if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 _PRIMARY Y)/", $this->gedcom())) {
-                        return $fam;
-                    }
-                }
-                // b) records with '2 PEDI birt'
-                foreach ($families as $fam) {
-                    $famid = $fam->xref();
-                    if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI birth)/", $this->gedcom())) {
-                        return $fam;
-                    }
-                }
-                // c) records with no '2 PEDI'
-                foreach ($families as $fam) {
-                    $famid = $fam->xref();
-                    if (!preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI)/", $this->gedcom())) {
-                        return $fam;
-                    }
-                }
-
-                // d) any record
-                return $families[0];
-        }
-    }
-
-    /**
      * Get a list of step-parent families.
      *
      * @return Collection
@@ -1084,7 +1035,7 @@ class Individual extends GedcomRecord
      */
     public function getPrimaryParentsNames($classname = '', $display = ''): string
     {
-        $fam = $this->primaryChildFamily();
+        $fam = $this->childFamilies()->first();
         if (!$fam) {
             return '';
         }

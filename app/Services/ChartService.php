@@ -51,7 +51,7 @@ class ChartService
                 break;
             }
 
-            $family = $ancestors[$sosa_stradonitz_number]->primaryChildFamily();
+            $family = $ancestors[$sosa_stradonitz_number]->childFamilies()->first();
 
             if ($family instanceof Family) {
                 if ($family->husband() instanceof Individual) {

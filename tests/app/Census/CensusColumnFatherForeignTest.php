@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 
 /**
  * Test harness for the class CensusColumnFatherForeign
@@ -59,7 +60,7 @@ class CensusColumnFatherForeignTest extends TestCase
         $family->method('husband')->willReturn($father);
 
         $individual = $this->createMock(Individual::class);
-        $individual->method('primaryChildFamily')->willReturn($family);
+        $individual->method('childFamilies')->willReturn(new Collection([$family]));
 
         $census = $this->createMock(CensusInterface::class);
         $census->method('censusPlace')->willReturn('England');
@@ -84,7 +85,7 @@ class CensusColumnFatherForeignTest extends TestCase
         $family->method('husband')->willReturn($father);
 
         $individual = $this->createMock(Individual::class);
-        $individual->method('primaryChildFamily')->willReturn($family);
+        $individual->method('childFamilies')->willReturn(new Collection([$family]));
 
         $census = $this->createMock(CensusInterface::class);
         $census->method('censusPlace')->willReturn('Ireland');
@@ -106,7 +107,7 @@ class CensusColumnFatherForeignTest extends TestCase
         $family->method('husband')->willReturn(null);
 
         $individual = $this->createMock(Individual::class);
-        $individual->method('primaryChildFamily')->willReturn($family);
+        $individual->method('childFamilies')->willReturn(new Collection([$family]));
 
         $census = $this->createMock(CensusInterface::class);
         $census->method('censusPlace')->willReturn('England');
@@ -125,7 +126,7 @@ class CensusColumnFatherForeignTest extends TestCase
     public function testPlaceNoParentFamily(): void
     {
         $individual = $this->createMock(Individual::class);
-        $individual->method('primaryChildFamily')->willReturn(null);
+        $individual->method('childFamilies')->willReturn(new Collection());
 
         $census = $this->createMock(CensusInterface::class);
         $census->method('censusPlace')->willReturn('England');

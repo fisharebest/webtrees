@@ -36,9 +36,9 @@ use function redirect;
 use function uksort;
 
 /**
- * Reorder the spouses of an individual.
+ * Reorder the parents and/or spouses of an individual.
  */
-class ReorderSpousesAction implements RequestHandlerInterface
+class ReorderFamiliesAction implements RequestHandlerInterface
 {
     /**
      * @param ServerRequestInterface $request
@@ -65,7 +65,9 @@ class ReorderSpousesAction implements RequestHandlerInterface
 
         // Split facts into FAMS and other
         foreach ($individual->facts() as $fact) {
-            if ($fact->getTag() === 'FAMS') {
+            $tag = $fact->getTag();
+
+            if ($tag === 'FAMC' || $tag === 'FAMS') {
                 $sort_facts[$fact->id()] = $fact->gedcom();
             } else {
                 $keep_facts[] = $fact->gedcom();
@@ -74,7 +76,7 @@ class ReorderSpousesAction implements RequestHandlerInterface
 
         // Sort the facts
         uksort($sort_facts, static function ($x, $y) use ($order) {
-            return array_search($x, $order, true) - array_search($y, $order, true);
+            return array_search($x, $order, true) <=> array_search($y, $order, true);
         });
 
         // Merge the facts

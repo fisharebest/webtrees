@@ -33,7 +33,7 @@ $children = $individual->spouseFamilies()->map(static function (Family $family):
     <div class="wt-chart-horizontal-spacer">
         <div class="wt-chart-horizontal-line"></div>
     </div>
-    <?= view('modules/family-book-chart/parents', ['generations' => $book_size - 1, 'family' => $individual->primaryChildFamily()]) ?>
+    <?= view('modules/family-book-chart/parents', ['generations' => $book_size - 1, 'family' => $individual->childFamilies()->first()]) ?>
 </div>
 
 <?php if ($generations > 1): ?>

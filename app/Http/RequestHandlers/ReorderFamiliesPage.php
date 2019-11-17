@@ -32,9 +32,9 @@ use function assert;
 use function is_string;
 
 /**
- * Reorder the spouses of an individual.
+ * Reorder the parents and/or spouses of an individual.
  */
-class ReorderSpousesPage implements RequestHandlerInterface
+class ReorderFamiliesPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -56,7 +56,9 @@ class ReorderSpousesPage implements RequestHandlerInterface
 
         $title = $individual->fullName() . ' — ' . I18N::translate('Re-order families');
 
-        return $this->viewResponse('edit/reorder-spouses', [
+        return $this->viewResponse('edit/reorder-families', [
+            'famc_facts' => $individual->facts(['FAMC']),
+            'fams_facts' => $individual->facts(['FAMS']),
             'individual' => $individual,
             'title'      => $title,
             'tree'       => $tree,

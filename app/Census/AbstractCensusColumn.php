@@ -74,7 +74,7 @@ class AbstractCensusColumn
      */
     public function father(Individual $individual): ?Individual
     {
-        $family = $individual->primaryChildFamily();
+        $family = $individual->childFamilies()->first();
 
         if ($family instanceof Family) {
             return $family->husband();
@@ -92,7 +92,7 @@ class AbstractCensusColumn
      */
     public function mother(Individual $individual): ?Individual
     {
-        $family = $individual->primaryChildFamily();
+        $family = $individual->childFamilies()->first();
 
         if ($family instanceof Family) {
             return $family->wife();

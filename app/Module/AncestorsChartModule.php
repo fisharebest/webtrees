@@ -217,7 +217,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
                 case self::CHART_STYLE_TREE:
                     return $this->viewResponse('modules/ancestors-chart/tree', [
                         'individual'  => $individual,
-                        'parents'     => $individual->primaryChildFamily(),
+                        'parents'     => $individual->childFamilies()->first(),
                         'generations' => $generations,
                         'sosa'        => 1,
                     ]);

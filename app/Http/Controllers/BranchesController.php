@@ -153,7 +153,7 @@ class BranchesController extends AbstractBaseController
         do {
             $sosa = key($ancestors);
 
-            $family = $ancestors[$sosa]->primaryChildFamily();
+            $family = $ancestors[$sosa]->childFamilies()->first();
 
             if ($family !== null) {
                 if ($family->husband() !== null) {

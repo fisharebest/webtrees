@@ -14,7 +14,7 @@
                     <?php if ($spouse === $individual) : ?>
                         <?= Functions::getCloseRelationshipName($individual, $spouse) ?>
                         <i class="icon-selected"></i>
-                    <?php elseif ($spouse->primaryChildFamily() !== null) : ?>
+                    <?php elseif ($spouse->childFamilies()->first() !== null) : ?>
                     <div class="dropdown">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdown-<?= e($spouse->xref()) ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?= Functions::getCloseRelationshipName($individual, $spouse) ?>
@@ -24,7 +24,7 @@
                             <div class="dropdown-header wt-family-navigator-dropdown-heading">
                                 <?= I18N::translate('Parents') ?>
                             </div>
-                            <?php foreach ($spouse->primaryChildFamily()->spouses() as $parent) : ?>
+                            <?php foreach ($spouse->childFamilies()->first()->spouses() as $parent) : ?>
                                 <a class="dropdown-item" href="<?= e($parent->url()) ?>">
                                     <?= $parent->fullName() ?>
                                 </a>

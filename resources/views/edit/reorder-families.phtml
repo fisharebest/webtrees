@@ -1,0 +1,121 @@
+<?php
+
+use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
+use Fisharebest\Webtrees\Http\RequestHandlers\ReorderFamiliesAction;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+?>
+
+<h2 class="wt-page-title"><?= $title ?></h2>
+
+<form method="post" action="<?= e(route(ReorderFamiliesAction::class, ['tree' => $tree->name(), 'xref' => $individual->xref()])) ?>" class="wt-page-content">
+    <?= csrf_field() ?>
+
+    <?php if ($fams_facts->count() < 2) : ?>
+        <?php foreach ($fams_facts as $fact) : ?>
+            <input type="hidden" name="order[]" value="<?= e($fact->id()) ?>">
+        <?php endforeach ?>
+    <?php else : ?>
+        <h3><?= I18N::translate('Spouses') ?></h3>
+
+        <p>
+            <?= I18N::translate('When an individual has more than one spouse, you should sort the families in date order.') ?>
+        </p>
+
+        <p>
+            <button class="btn btn-secondary" id="btn-default-order" type="button">
+                <?= view('icons/sort') ?>
+                <?= /* I18N: A button label. */ I18N::translate('sort by date of marriage') ?>
+            </button>
+        </p>
+
+        <div class="wt-sortable-list-fams">
+            <?php foreach ($fams_facts as $fact) : ?>
+                <div class="card mb-2 wt-sortable-item" data-sortbydate="<?= $fact->target()->getMarriageDate()->julianDay() ?>">
+                    <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
+                    <div class="card-header">
+                    <span class="drag-handle">
+                        <?= view('icons/drag-handle') ?>
+                    </span>
+                        <?= $fact->target()->fullName() ?>
+                    </div>
+                    <div class="card-body">
+                        <?= $fact->target()->formatFirstMajorFact(Gedcom::MARRIAGE_EVENTS, 2) ?>
+                        <?= $fact->target()->formatFirstMajorFact(Gedcom::DIVORCE_EVENTS, 2) ?>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </div>
+    <?php endif ?>
+
+    <?php if ($famc_facts->count() < 2) : ?>
+            <?php foreach ($famc_facts as $fact) : ?>
+                <input type="hidden" name="order[]" value="<?= e($fact->id()) ?>">
+            <?php endforeach ?>
+    <?php else : ?>
+        <?php if ($fams_facts->count() >= 2) : ?>
+        <hr>
+        <?php endif ?>
+
+        <h3><?= I18N::translate('Parents') ?></h3>
+
+        <p>
+            <?= I18N::translate('An individual can have more than one set of parents.  For example, birth and adopted.') ?>
+            <br>
+            <?= I18N::translate('The first family in the list will be used in charts, lists, reports, etc.') ?>
+        </p>
+
+        <div class="wt-sortable-list-famc">
+            <?php foreach ($famc_facts as $fact) : ?>
+                <div class="card mb-2 wt-sortable-item" data-sortbydate="<?= $fact->target()->getMarriageDate()->julianDay() ?>">
+                    <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
+                    <div class="card-header">
+                    <span class="drag-handle">
+                        <?= view('icons/drag-handle') ?>
+                    </span>
+                        <?= $fact->target()->fullName() ?>
+                        <?php if ($fact->attribute('PEDI') !== '') : ?>
+                        — <?= GedcomCodePedi::getValue($fact->attribute('PEDI'), $individual) ?>
+                        <?php endif ?>
+                    </div>
+                    <div class="card-body">
+                        <?= $fact->target()->formatFirstMajorFact(Gedcom::MARRIAGE_EVENTS, 2) ?>
+                        <?= $fact->target()->formatFirstMajorFact(Gedcom::DIVORCE_EVENTS, 2) ?>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </div>
+    <?php endif ?>
+
+    <p>
+        <button class="btn btn-primary" type="submit">
+            <?= view('icons/save') ?>
+            <?= /* I18N: A button label. */ I18N::translate('save') ?>
+        </button>
+
+        <a class="btn btn-secondary" href="<?= e($individual->url()) ?>">
+            <?= view('icons/cancel') ?>
+            <?= /* I18N: A button label. */ I18N::translate('cancel') ?>
+        </a>
+    </p>
+</form>
+
+<?php View::push('javascript') ?>
+<script>
+    new Sortable(document.querySelector(".wt-sortable-list-famc"), {
+        handle: ".drag-handle",
+    });
+
+    new Sortable(document.querySelector(".wt-sortable-list-fams"), {
+        handle: ".drag-handle",
+    });
+
+    $("#btn-default-order").on("click", function() {
+        $(".wt-sortable-list-fams .wt-sortable-item").sort(function(x, y) {
+            return Math.sign(x.dataset.sortbydate - y.dataset.sortbydate);
+        }).appendTo(".wt-sortable-list-fams");
+    });
+</script>
+<?php View::endpush() ?>

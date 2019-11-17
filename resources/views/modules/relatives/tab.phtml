@@ -1,4 +1,4 @@
-<?php use Fisharebest\Webtrees\Http\RequestHandlers\ReorderSpousesPage;
+<?php use Fisharebest\Webtrees\Http\RequestHandlers\ReorderFamiliesPage;
 use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
@@ -88,7 +88,7 @@ use Fisharebest\Webtrees\I18N; ?>
             <?php if ($spouse_families->count() > 1) : ?>
                 <tr>
                     <td>
-                        <a href="<?= e(route(ReorderSpousesPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+                        <a href="<?= e(route(ReorderFamiliesPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
                             <?= view('icons/reorder') ?>
                             <?= I18N::translate('Re-order families') ?>
                         </a>

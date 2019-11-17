@@ -63,7 +63,7 @@ class CensusColumnMotherBirthPlaceSimpleTest extends TestCase
         $family->method('wife')->willReturn($father);
 
         $individual = $this->createMock(Individual::class);
-        $individual->method('primaryChildFamily')->willReturn($family);
+        $individual->method('childFamilies')->willReturn(new Collection([$family]));
 
         $census = $this->createMock(CensusInterface::class);
         $census->method('censusPlace')->willReturn('United States');

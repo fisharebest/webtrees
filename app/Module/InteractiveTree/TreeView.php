@@ -271,7 +271,7 @@ class TreeView
             foreach ($person->spouseFamilies() as $family) {
                 $spouse = $family->spouse($person);
                 if ($spouse instanceof Individual) {
-                    $spouse_parents = $spouse->primaryChildFamily();
+                    $spouse_parents = $spouse->childFamilies()->first();
                     if ($spouse_parents instanceof Family) {
                         $spouse_parent = $spouse_parents->husband() ?? $spouse_parents->wife();
 
@@ -287,7 +287,7 @@ class TreeView
         }
         $html .= '</div></td>';
 
-        $primaryChildFamily = $person->primaryChildFamily();
+        $primaryChildFamily = $person->childFamilies()->first();
         if ($primaryChildFamily instanceof Family) {
             $parent = $primaryChildFamily->husband() ?? $primaryChildFamily->wife();
         } else {
@@ -345,7 +345,7 @@ class TreeView
      */
     private function drawPersonName(Individual $individual, string $dashed): string
     {
-        $family = $individual->primaryChildFamily();
+        $family = $individual->childFamilies()->first();
         if ($family) {
             $family_name = strip_tags($family->fullName());
         } else {
