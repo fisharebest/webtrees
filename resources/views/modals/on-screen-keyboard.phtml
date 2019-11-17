@@ -1,12 +1,8 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="container card wt-osk">
-    <div class="card-header">
+    <div class="row card-header">
         <div class="card-title">
-            <button type="button" class="btn btn-primary wt-osk-close">&times;</button>
-
-            <button type="button" class="btn btn-secondary wt-osk-pin-button" data-toggle="button" aria-pressed="false" aria-label="<?= I18N::translate('Keep open') ?>"><?= view('icons/pin') ?></button>
-
             <button type="button" class="btn btn-secondary wt-osk-shift-button" data-toggle="button" aria-pressed="false">a &harr; A</button>
 
             <div class="btn-group" role="group" data-toggle="buttons">
@@ -29,21 +25,25 @@
                     <input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="hebr" name="osk-script"> &#x5d0;&#x5d1;&#x5d2;&#x5d3;
                 </button>
             </div>
+
+            <button type="button" class="btn btn-secondary wt-osk-pin-button" data-toggle="button" aria-pressed="false" aria-label="<?= I18N::translate('Keep open') ?>"><?= view('icons/pin') ?></button>
+
+            <button type="button" class="btn btn-primary wt-osk-close">&times;</button>
         </div>
     </div>
-    <div class="card-body wt-osk-keys">
+    <div class="row card-body wt-osk-keys">
         <!-- Quotation marks -->
         <div class="wt-osk-group">
             <span class="wt-osk-key">&lsquo;<sup class="wt-osk-key-shift">&ldquo;</sup></span>
             <span class="wt-osk-key">&rsquo;<sup class="wt-osk-key-shift">&rdquo;</sup></span>
-            <span class="wt-osk-key">&lsaquo;<sup class="wt-osk-key-shift">&ldquo;</sup></span>
-            <span class="wt-osk-key">&rsaquo;<sup class="wt-osk-key-shift">&raquo;</sup></span>
-            <span class="wt-osk-key">&sbquo;<sup class="wt-osk-key-shift">&bdquo;</sup></span>
+            <span class="wt-osk-key">«<sup class="wt-osk-key-shift">‹</sup></span>
+            <span class="wt-osk-key">»<sup class="wt-osk-key-shift">›</sup></span>
+            <span class="wt-osk-key">„<sup class="wt-osk-key-shift">‚</sup></span>
             <span class="wt-osk-key">&prime;<sup class="wt-osk-key-shift">&Prime;</sup></span>
         </div>
         <!-- Symbols and punctuation -->
         <div class="wt-osk-group">
-            <span class="wt-osk-key">&copy;</span>
+            <span class="wt-osk-key">&copy;<sup class="wt-osk-key-shift">™</sup></span>
             <span class="wt-osk-key">&deg;</span>
             <span class="wt-osk-key">&hellip;</span>
             <span class="wt-osk-key">&middot;<sup class="wt-osk-key-shift">&bullet;</sup></span>

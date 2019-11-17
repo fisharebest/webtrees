@@ -13,10 +13,19 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-'use strict';
+"use strict";
 
-let webtrees = function () {
+(function(webtrees) {
     const lang = document.documentElement.lang;
+
+    // Identify the script used by some text.
+    const scriptRegexes = {
+        Han:  /[\u3400-\u9FCC]/,
+        Grek: /[\u0370-\u03FF]/,
+        Cyrl: /[\u0400-\u04FF]/,
+        Hebr: /[\u0590-\u05FF]/,
+        Arab: /[\u0600-\u06FF]/,
+    };
 
     /**
      * Tidy the whitespace in a string.
@@ -29,21 +38,15 @@ let webtrees = function () {
     /**
      * Look for non-latin characters in a string.
      */
-    function detectScript(str) {
-        if (str.match(/[\u3400-\u9FCC]/)) {
-            return "cjk";
-        } else if (str.match(/[\u0370-\u03FF]/)) {
-            return "greek";
-        } else if (str.match(/[\u0400-\u04FF]/)) {
-            return "cyrillic";
-        } else if (str.match(/[\u0590-\u05FF]/)) {
-            return "hebrew";
-        } else if (str.match(/[\u0600-\u06FF]/)) {
-            return "arabic";
+    webtrees.detectScript = function (str) {
+        for(const script in scriptRegexes) {
+            if (str.match(scriptRegexes[script])) {
+                return script;
+            }
         }
 
-        return "latin";
-    }
+        return "Latn";
+    };
 
     /**
      * In some languages, the SURN uses a male/default form, but NAME uses a gender-inflected form.
@@ -65,8 +68,8 @@ let webtrees = function () {
      *
      * Assumes the language of the document is the same as the language of the name.
      */
-    function buildNameFromParts(npfx, givn, spfx, surn, nsfx, sex) {
-        const usesCJK      = detectScript(npfx + givn + spfx + givn + surn + nsfx) === "cjk";
+    webtrees.buildNameFromParts = function (npfx, givn, spfx, surn, nsfx, sex) {
+        const usesCJK      = webtrees.detectScript(npfx + givn + spfx + givn + surn + nsfx) === "Han";
         const separator    = usesCJK ? "" : " ";
         const surnameFirst = usesCJK || ['hu', 'jp', 'ko', 'vi', 'zh-Hans', 'zh-Hant'].indexOf(lang) !== -1;
         const patronym     = ['is'].indexOf(lang) !== -1;
@@ -84,14 +87,21 @@ let webtrees = function () {
         const name = surnameFirst ? slash + surname + slash + separator + givn : givn + separator + slash + surname + slash;
 
         return trim(npfx + separator + name + separator + nsfx);
-    }
-
-    // Public methods
-    return {
-        buildNameFromParts: buildNameFromParts,
-        detectScript:       detectScript,
     };
-}();
+
+    // Insert text at the current cursor position in a text field.
+    webtrees.pasteAtCursor = function (element, text) {
+        if (element !== null) {
+            const caret_pos  = element.selectionStart + text.length;
+            const textBefore = element.value.substring(0, element.selectionStart);
+            const textAfter  = element.value.substring(element.selectionEnd);
+            element.value    = textBefore + text + textAfter;
+            element.setSelectionRange(caret_pos, caret_pos);
+            element.focus();
+        }
+
+    }
+}(window.webtrees = window.webtrees || {}));
 
 function expand_layer(sid)
 {
@@ -102,12 +112,6 @@ function expand_layer(sid)
 }
 
 var pastefield;
-function addmedia_links(field, iid, iname)
-{
-    pastefield = field;
-    insertRowToTable(iid, iname);
-    return false;
-}
 
 function valid_date(datefield, dmy)
 {
@@ -727,9 +731,7 @@ $(function () {
         osk_focus_element = document.getElementById($(this).data('id'));
         osk_focus_element.focus();
         $('.wt-osk').show();
-
     });
-
     $('.wt-osk-script-button').change(function () {
         $('.wt-osk-script').prop('hidden', true);
         $('.wt-osk-script-' + $(this).data('script')).prop('hidden', false);
@@ -744,15 +746,9 @@ $(function () {
         if (shift_state && shift_key !== undefined) {
             key = shift_key.innerText;
         }
-        if (osk_focus_element !== null) {
-            var cursorPos = osk_focus_element.selectionStart;
-            var v = osk_focus_element.value;
-            var textBefore = v.substring(0, cursorPos);
-            var textAfter  = v.substring(cursorPos, v.length);
-            osk_focus_element.value = textBefore + key + textAfter;
-            if ($('.wt-osk-pin-button').hasClass('active') === false) {
-                $('.wt-osk').hide();
-            }
+        webtrees.pasteAtCursor(osk_focus_element, key);
+        if ($('.wt-osk-pin-button').hasClass('active') === false) {
+            $('.wt-osk').hide();
         }
     });
 

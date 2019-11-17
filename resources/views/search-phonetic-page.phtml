@@ -17,8 +17,8 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Given name') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <div class="input-group input-group-sm">
-                <input class= "form-control form-control-sm" type="text" name="firstname" id="firstname" value="<?= e($firstname) ?>" autofocus>
+            <div class="input-group">
+                <input class= "form-control" type="text" name="firstname" id="firstname" value="<?= e($firstname) ?>" autofocus>
                 <?= view('edit/input-addon-keyboard', ['id' => 'firstname']) ?>
             </div>
         </div>
@@ -29,8 +29,8 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Surname') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <div class="input-group input-group-sm">
-                <input class="form-control form-control-sm" type="text" name="lastname" id="lastname" value="<?= e($lastname) ?>">
+            <div class="input-group">
+                <input class="form-control" type="text" name="lastname" id="lastname" value="<?= e($lastname) ?>">
                 <?= view('edit/input-addon-keyboard', ['id' => 'lastname']) ?>
             </div>
         </div>
@@ -41,7 +41,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Place') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <input class="form-control form-control-sm" type="text" name="place" id="place" value="<?= e($place) ?>">
+            <input class="form-control" type="text" name="place" id="place" value="<?= e($place) ?>">
         </div>
     </div>
 

@@ -16,8 +16,8 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Search for') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <div class="input-group input-group-sm">
-                <input id="query" class="form-control form-control-sm" type="text" name="query" value="<?= e($query) ?>" required>
+            <div class="input-group">
+                <input id="query" class="form-control" type="text" name="query" value="<?= e($query) ?>" required>
                 <?= view('edit/input-addon-keyboard', ['id' => 'query']) ?>
             </div>
         </div>
