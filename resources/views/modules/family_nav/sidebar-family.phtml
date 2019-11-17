@@ -10,7 +10,7 @@
     <tbody>
         <?php foreach ($family->spouses() as $spouse) : ?>
             <tr class="text-center wt-family-navigator-parent wt-gender-<?= $spouse->sex() ?>">
-                <th class="text-nowrap align-middle wt-family-navigator-label" scope="row">
+                <th class="align-middle wt-family-navigator-label" scope="row">
                     <?php if ($spouse === $individual) : ?>
                         <?= Functions::getCloseRelationshipName($individual, $spouse) ?>
                         <i class="icon-selected"></i>
