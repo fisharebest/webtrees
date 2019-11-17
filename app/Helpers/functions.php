@@ -178,10 +178,8 @@ function route(string $route_name, array $parameters = []): string
 
     if ($request->getAttribute('rewrite_urls') === '1') {
         // Make the pretty URL absolute.
-        $base_path = parse_url($base_url, PHP_URL_PATH);
-        if ($base_path !== null) {
-            $url = substr($base_url, 0, -strlen($base_path)) . $url;
-        }
+        $base_path = parse_url($base_url, PHP_URL_PATH) ?? '';
+        $url = $base_url . substr($url, strlen($base_path));
     } else {
         // Turn the pretty URL into an ugly one.
         $path       = parse_url($url, PHP_URL_PATH);
