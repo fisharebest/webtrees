@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-17 01:47+0000\nLast-Translator: Hogne R Nilsen <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees/nn/>\nLanguage: nn\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-19 08:23+0000\nLast-Translator: Hogne R Nilsen <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees/nn/>\nLanguage: nn\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -10756,7 +10756,7 @@ msgstr "Stadnamn kan endre seg over tid.  I genealogi er det tradisjon for å br
 
 #: resources/views/help/place.phtml:4
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr "Stadnamn bør registrerast som ei kommaseparert liste, ved å starte med minste eining og ende med land. Til dømes “Gardsnamn, Kommune, Fylke, Land”. "
+msgstr "Stadnamn bør registrerast som ei kommaseparert liste, ved å starte med minste eining og ende med land. Til dømes “Gardsnamn, Kommune, Fylke, Land”."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:507
@@ -14695,7 +14695,7 @@ msgstr "Denne nettsataden handsamar personlege data i samband med historisk og g
 
 #: resources/views/modules/privacy-policy/page.phtml:20
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
-msgstr "Nettstaden nyttar informasjonskapslar for å huske innlogging og innstillingar, som tildømes ditt val av språk."
+msgstr "Nettstaden nyttar informasjonskapslar for å huske innloggingstatus og innstillingar, som tildømes ditt val av språk."
 
 #: resources/views/modules/privacy-policy/footer.phtml:15
 msgid "This website uses cookies to learn about visitor behavior."
