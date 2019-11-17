@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-10 16:16+0000\n"
-"PO-Revision-Date: 2018-09-30 14:48+0000\n"
-"Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
-"Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
-"Language: nb\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-19 08:23+0000\nLast-Translator: Hogne R Nilsen <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb_NO/>\nLanguage: nb\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -229,8 +217,8 @@ msgstr[1] "%s dager"
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s familie"
+msgstr[1] "%s familier"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
@@ -734,17 +722,17 @@ msgstr "Velkomsthilsen til besøkende."
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:68
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "En lenke til nettstedets kontaktpersoner."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "En lenke til webtrees startside."
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:60
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "En liste over grener av en familie."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:94
@@ -754,7 +742,7 @@ msgstr "En liste over endringer som krever godkjennelse av en moderator, og vars
 #. I18N: Description of the “Families” module
 #: app/Module/FamilyListModule.php:59
 msgid "A list of families."
-msgstr ""
+msgstr "En liste over familier."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:85
@@ -764,12 +752,12 @@ msgstr "Liste over vanlige spørsmål og svar."
 #. I18N: Description of the “Individuals” module
 #: app/Module/IndividualListModule.php:59
 msgid "A list of individuals."
-msgstr ""
+msgstr "En liste over personer."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:62
 msgid "A list of media objects."
-msgstr ""
+msgstr "En liste over medieobjekt."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:62
@@ -779,17 +767,17 @@ msgstr "Liste over nylig endrede poster."
 #. I18N: Description of the “Repositories” module
 #: app/Module/RepositoryListModule.php:60
 msgid "A list of repositories."
-msgstr ""
+msgstr "En liste over arkiver."
 
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:60
 msgid "A list of shared notes."
-msgstr ""
+msgstr "En liste over delte notater."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:60
 msgid "A list of sources."
-msgstr ""
+msgstr "En liste over kilder."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:65
@@ -851,7 +839,7 @@ msgstr "Det finnes en ny versjon av webtrees."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:95
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr ""
+msgstr "En lenke for tilbakestilling av passord har blitt sendt til “%s”."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:64
@@ -1361,15 +1349,15 @@ msgstr "Legg til en ny forbindelse"
 
 #: resources/views/cards/add-sour-data-even.phtml:7
 msgid "Add an event"
-msgstr ""
+msgstr "Legg til en hendelse"
 
 #: resources/views/modules/custom-css-js/edit.phtml:28
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr ""
+msgstr "Legg til innhold til enden av <code>&lt;body&gt;</code> elementet."
 
 #: resources/views/modules/custom-css-js/edit.phtml:16
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr ""
+msgstr "Legg til innhold til enden av <code>&lt;head&gt;</code> elementet."
 
 #: resources/views/edit/paste-fact-row.phtml:12
 msgid "Add from clipboard"
@@ -1377,7 +1365,7 @@ msgstr "Legg til fra utklippstavle"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
-msgstr ""
+msgstr "Legg til historiske hendelser til personside."
 
 #: resources/views/modules/lifespans-chart/page.phtml:20
 msgid "Add individuals"
@@ -1397,7 +1385,7 @@ msgstr "Legg til navn som gift"
 
 #: resources/views/edit-blocks-page.phtml:30
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "Legg til flere blokker fra følgende liste."
 
 #: resources/views/search-advanced-page.phtml:30
 msgid "Add more fields"
@@ -1419,7 +1407,7 @@ msgstr "Legg til mellomrom der lange linjer er delt med linjeskift"
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:43
 msgid "Add styling and scripts to every page."
-msgstr ""
+msgstr "Legg til kode og script til hver side."
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: resources/views/admin/trees-export.phtml:77
@@ -1824,7 +1812,7 @@ msgstr "Alle personer"
 #: resources/views/admin/components.phtml:13
 #: resources/views/admin/control-panel.phtml:399
 msgid "All modules"
-msgstr ""
+msgstr "Alle moduler"
 
 #: resources/views/admin/trees-privacy.phtml:244
 msgid "All records"
@@ -2337,7 +2325,7 @@ msgstr "Gjennomsnittsalder ved død"
 
 #: app/Statistics/Google/ChartMarriageAge.php:160
 msgid "Average age at marriage"
-msgstr ""
+msgstr "Gjennomsnittlig alder ved vielse"
 
 #: app/Statistics/Google/ChartMarriageAge.php:157
 msgid "Average age in century of marriage"
@@ -2349,7 +2337,7 @@ msgstr "Gjennomsnittsalder ved død (per århundre)"
 
 #: app/Statistics/Google/ChartChildren.php:94
 msgid "Average number"
-msgstr ""
+msgstr "Gjennomsnittlig antall"
 
 #: app/Statistics/Google/ChartChildren.php:105
 #: resources/views/modules/gedcom_stats/config.phtml:35
@@ -3258,7 +3246,7 @@ msgstr "CKEditor™"
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:82
 msgid "CSS and JS"
-msgstr ""
+msgstr "CSS og JS"
 
 #: resources/views/admin/trees.phtml:54
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -3422,7 +3410,7 @@ msgstr "Den sentralafrikanske republikk"
 #: resources/views/lists/individuals-table.phtml:119
 #: resources/views/lists/individuals-table.phtml:134
 msgid "Century"
-msgstr ""
+msgstr "Århundre"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2363
@@ -4040,7 +4028,7 @@ msgstr "Kunne ikke gjenkjenne opplysningene du oppga! Gå tilbake og prøv igjen
 #. I18N: Description of the “Hit counters” module
 #: app/Module/HitCountFooterModule.php:79
 msgid "Count the visits to each page"
-msgstr ""
+msgstr "Tell antall besøkende på hver side"
 
 #. I18N: gedcom tag CTRY
 #: app/GedcomTag.php:640 app/Statistics/Google/ChartDistribution.php:130
@@ -4092,7 +4080,7 @@ msgstr "Opprett en bidragsyter"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:200
 msgid "Create a temporary folder…"
-msgstr ""
+msgstr "Opprett en midlertidig mappe…"
 
 #: resources/views/modals/media-file-fields.phtml:67
 msgid "Create a unique filename"
@@ -4294,7 +4282,7 @@ msgstr "Den tsjekkiske republikk"
 #. I18N: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail
 #: resources/views/admin/site-mail.phtml:202
 msgid "DKIM digital signature"
-msgstr ""
+msgstr "DKIM digital signatur"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1787
@@ -4319,7 +4307,7 @@ msgstr "Data"
 
 #: resources/views/modules/privacy-policy/page.phtml:53
 msgid "Data controller"
-msgstr ""
+msgstr "Dataadministrasjon"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
@@ -4348,7 +4336,7 @@ msgstr "Database passord"
 
 #: resources/views/setup/step-3-database-type.phtml:30
 msgid "Database type"
-msgstr ""
+msgstr "Databasetype"
 
 #: resources/views/setup/step-4-database-mysql.phtml:57
 #: resources/views/setup/step-4-database-pgsql.phtml:49
@@ -4994,7 +4982,7 @@ msgstr "Slett inaktive brukere"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:206
 msgid "Delete old files…"
-msgstr ""
+msgstr "Slett gamle filer…"
 
 #: app/Module/UserMessagesModule.php:217
 msgid "Delete selected messages"
@@ -5263,7 +5251,7 @@ msgstr "Ikke besegl: uautorisert (mormon)"
 
 #: resources/views/admin/map-provider.phtml:20
 msgid "Do not use maps"
-msgstr ""
+msgstr "Bruk ikke kart"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2369
@@ -5272,7 +5260,7 @@ msgstr "Dokument"
 
 #: resources/views/admin/site-mail.phtml:207
 msgid "Domain name"
-msgstr ""
+msgstr "Nettstednavn"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:161
@@ -5286,7 +5274,7 @@ msgstr "Den Dominikanske Republikk"
 
 #: app/Module/PedigreeChartModule.php:381
 msgid "Down"
-msgstr ""
+msgstr "Ned"
 
 #: app/Module/ClippingsCartModule.php:187
 #: app/Module/ClippingsCartModule.php:343
@@ -5304,7 +5292,7 @@ msgstr "Last ned fil"
 
 #: resources/views/edit-blocks-page.phtml:11
 msgid "Drag the blocks to change their position."
-msgstr ""
+msgstr "Dra blokkene for å endre deres posisjon."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:339
@@ -5506,7 +5494,7 @@ msgstr "Elul"
 
 #: resources/views/password-request-page.phtml:20
 msgid "Email"
-msgstr ""
+msgstr "E-post"
 
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag _EMAIL
@@ -6397,14 +6385,14 @@ msgstr "Skrifttype"
 #: resources/views/admin/modules.phtml:221
 #: resources/views/admin/modules.phtml:224
 msgid "Footer"
-msgstr ""
+msgstr "Undertekst"
 
 #: app/Http/Controllers/Admin/ModuleController.php:135
 #: resources/views/admin/control-panel.phtml:450
 #: resources/views/admin/modules.phtml:95
 #: resources/views/admin/modules.phtml:97
 msgid "Footers"
-msgstr ""
+msgstr "Undertekster"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: resources/views/admin/trees-import.phtml:107
@@ -6585,13 +6573,13 @@ msgstr "Frimaire"
 #: resources/views/message-page.phtml:13
 msgctxt "Email sender"
 msgid "From"
-msgstr ""
+msgstr "Fra"
 
 #: resources/views/admin/changes-log.phtml:22
 #: resources/views/admin/site-logs.phtml:23
 msgctxt "Start of date range"
 msgid "From"
-msgstr ""
+msgstr "Fra"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
@@ -6663,7 +6651,7 @@ msgstr "Kjønn"
 
 #: resources/views/admin/control-panel.phtml:408
 msgid "Genealogy"
-msgstr ""
+msgstr "Genealogi"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:148
@@ -7147,7 +7135,7 @@ msgstr "Hans yrke var"
 #: resources/views/admin/modules.phtml:240
 #: resources/views/modules/personal_facts/tab.phtml:18
 msgid "Historic events"
-msgstr ""
+msgstr "Historiske hendelser"
 
 #. I18N: Name of a module
 #. I18N: A configuration setting
@@ -7299,11 +7287,11 @@ msgstr "Hvis etternavnet er ukjent, bruk to skråstreker uten noe imellom: <%s>N
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "Om miniatyrbildet er egentilpasset, skal det legges til i medieobjektet."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:18
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-msgstr ""
+msgstr "Om miniatyrbildet er det samme som originalbildet behøves det ikke, og bør slettes."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:78
@@ -7334,7 +7322,7 @@ msgstr "Hvis du ikke klarer å løse problemet selv, kan du spørre om hjelp på
 
 #: resources/views/setup/step-4-database-mysql.phtml:36
 msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
-msgstr ""
+msgstr "Om du kobler til databasen ved å bruke UNIX socket, skriv inn stien her og la portnummer stå tomt."
 
 #: resources/views/admin/trees-import.phtml:91
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7343,7 +7331,7 @@ msgstr "Dersom du opprettet denne GEDCOM-filen i et slektsprogram som utelater m
 #: resources/views/emails/password-request-html.phtml:17
 #: resources/views/emails/password-request-text.phtml:9
 msgid "If you did not request a new password, please ignore this message."
-msgstr ""
+msgstr "Om du ikke har bedt om nytt passord, vennligst se bort fra denne meldingen."
 
 #: resources/views/emails/register-user-html.phtml:28
 #: resources/views/emails/register-user-text.phtml:16
@@ -7352,7 +7340,7 @@ msgstr "Dersom du ikke har bedt om å få en konto, kan du bare slette denne epo
 
 #: resources/views/admin/site-mail.phtml:50
 msgid "If you do not use two-factor authentication, enable <a href=\"https://www.google.com/settings/security/lesssecureapps\">less secure applications</a> and use your Google password."
-msgstr ""
+msgstr "Om du ikke bruker totrinns autentisering, aktiver <a href=\"https://www.google.com/settings/security/lesssecureapps\">Tilgang til mindre sikre apper</a> og bruk ditt Google passord."
 
 #: resources/views/modals/media-file-fields.phtml:62
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
@@ -7386,7 +7374,7 @@ msgstr "Dersom du bruker en av de følgende sporing- og analysetjenestene, kan w
 
 #: resources/views/admin/site-mail.phtml:48
 msgid "If you use two-factor authentication, create an <a href=\"https://myaccount.google.com/apppasswords\">app password</a>."
-msgstr ""
+msgstr "Om du bruker totrinns autentisering, opprett et <a href=\"https://myaccount.google.com/apppasswords\">App-password</a>."
 
 #: app/GedcomTag.php:2103 app/Http/Controllers/Admin/MediaController.php:347
 msgid "Image dimensions"
@@ -7488,11 +7476,11 @@ msgstr "Inkluder undermapper"
 
 #: resources/views/modules/custom-css-js/edit.phtml:33
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr ""
+msgstr "Inkluder  <code>&lt;script&gt;&lt;/script&gt;</code> kodene."
 
 #: resources/views/modules/custom-css-js/edit.phtml:21
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
-msgstr ""
+msgstr "Inkluder <code>&lt;style&gt;&lt;/style&gt;</code> kodene."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:24
@@ -7562,7 +7550,7 @@ msgstr "Utbredelse pr person"
 
 #: resources/views/admin/control-panel.phtml:496
 msgid "Individual page"
-msgstr ""
+msgstr "Personside"
 
 #: resources/views/admin/trees-preferences.phtml:424
 msgid "Individual pages"
@@ -7652,7 +7640,7 @@ msgstr "Hjemmelsmann"
 
 #: resources/views/admin/site-mail.phtml:34
 msgid "Instructions for Google mail"
-msgstr ""
+msgstr "Innstillinger for Google mail"
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:244 app/Module/InteractiveTreeModule.php:52
@@ -7698,7 +7686,7 @@ msgstr "Ugyldig GEDCOMfil, fant ikke noen hovedregistrering."
 
 #: app/Exceptions/GedcomErrorException.php:37
 msgid "Invalid GEDCOM record"
-msgstr ""
+msgstr "Ukjent GEDCOM-post"
 
 #: app/Date.php:380
 msgid "Invalid date"
@@ -8237,7 +8225,7 @@ msgstr "Libanon"
 
 #: app/Module/PedigreeChartModule.php:378
 msgid "Left"
-msgstr ""
+msgstr "Venstre"
 
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:816
@@ -8271,7 +8259,7 @@ msgstr "Lesotho"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Letter"
-msgstr "Letter"
+msgstr "Brev"
 
 #: app/Http/Controllers/Admin/LocationController.php:463
 msgid "Level"
@@ -9452,16 +9440,16 @@ msgstr "Vanligste etternavn"
 
 #: resources/views/admin/site-mail.phtml:194
 msgid "Most mail servers require a valid domain name."
-msgstr ""
+msgstr "De fleste e-postservere krever et gyldig domenenavn."
 
 #: resources/views/admin/site-mail.phtml:86
 msgid "Most mail servers require a valid email address."
-msgstr ""
+msgstr "De fleste e-postservere krever en gyldig e-postadresse."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:189
 msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
-msgstr ""
+msgstr "De fleste e-postservere krever at server som sender identifiserer seg korrekt, ved bruk av et gyldig domenenavn."
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:175
@@ -9476,7 +9464,7 @@ msgstr "De fleste nettsteder er konfigurert til å bruke localhost. Dette betyr 
 
 #: resources/views/setup/step-4-database-sqlsvr.phtml:42
 msgid "Most sites are configured to use the default value of 1433."
-msgstr ""
+msgstr "De fleste nettsteder er konfigurert til å bruke standardport 1433."
 
 #: resources/views/setup/step-4-database-mysql.phtml:50
 msgid "Most sites are configured to use the default value of 3306."
@@ -9484,7 +9472,7 @@ msgstr "De fleste nettsteder er konfigurert til å bruke standardporten 3306."
 
 #: resources/views/setup/step-4-database-pgsql.phtml:42
 msgid "Most sites are configured to use the default value of 5432."
-msgstr ""
+msgstr "De fleste nettsteder er konfigurert til å bruke standardport 5432."
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:44
@@ -10029,7 +10017,7 @@ msgstr "Nord-Korea"
 
 #: resources/views/modules/statistics-chart/custom.phtml:177
 msgid "Northern America"
-msgstr ""
+msgstr "Nordamerika"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:371
@@ -10652,7 +10640,7 @@ msgstr "Slett disse postene permanent?"
 
 #: resources/views/modules/privacy-policy/page.phtml:5
 msgid "Personal data"
-msgstr ""
+msgstr "Persondata"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:543
@@ -10764,11 +10752,11 @@ msgstr "Stedsnavn er ofte for lange til å passe i skjemaer, lister osv. Disse k
 
 #: resources/views/help/place.phtml:8
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr ""
+msgstr "Stednavn kan endre seg over tid.  I genealogi er det vanlig å bruke nåværende navn på by eller land. Historiske navn kan vises i kilder, notater, etc."
 
 #: resources/views/help/place.phtml:4
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr ""
+msgstr "Stednavn bør skrives inn som en kommaseparert liste, ved å starte ved laveste enhet og avslutte med land. Eksempelvis “Gårdsnavn, Kommune, Fylke, Land”."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:507
@@ -10908,7 +10896,7 @@ msgstr "Angi en gyldig epostadresse."
 #: app/Http/RequestHandlers/PasswordResetAction.php:80
 #: app/Http/RequestHandlers/PasswordResetPage.php:76
 msgid "Please try again."
-msgstr ""
+msgstr "Vennligst prøv igjen."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:143
@@ -10988,7 +10976,7 @@ msgstr "Postnummer"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:41
 msgid "Powered by webtrees™"
-msgstr ""
+msgstr "Drevet av webtrees™"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:151
@@ -11073,7 +11061,7 @@ msgstr "Preston, England"
 
 #: resources/views/admin/analytics-edit.phtml:18
 msgid "Preview"
-msgstr ""
+msgstr "Forhåndsvisning"
 
 #: app/GedcomCode/GedcomCodeRela.php:287
 msgid "Priest"
@@ -11122,7 +11110,7 @@ msgstr "Privat"
 
 #: resources/views/admin/site-mail.phtml:225
 msgid "Private key"
-msgstr ""
+msgstr "Private key"
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:943
@@ -11737,7 +11725,7 @@ msgstr "Rexburg, Idaho, USA"
 
 #: app/Module/PedigreeChartModule.php:379
 msgid "Right"
-msgstr ""
+msgstr "Høyre"
 
 #. I18N: gedcom tag ROLE
 #: app/GedcomTag.php:994 resources/views/admin/users-edit.phtml:276
@@ -11789,12 +11777,12 @@ msgstr "SMTP epostserver"
 
 #: app/Services/ServerCheckService.php:324
 msgid "SQLite is only suitable for small sites, testing and evaluation."
-msgstr ""
+msgstr "SQLite er kun passende for små nettsteder, testing og evaluering."
 
 #: app/Services/ServerCheckService.php:217
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
-msgstr ""
+msgstr "SQLite versjon %s er installert. SQLite versjon %s eller senere er påkrevd."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:585
@@ -12074,7 +12062,7 @@ msgstr "Velg to poster som skal slåes sammen."
 
 #: resources/views/admin/site-mail.phtml:216
 msgid "Selector"
-msgstr ""
+msgstr "Selector"
 
 #: app/GedcomCode/GedcomCodeRela.php:313
 msgid "Seller"
@@ -12122,7 +12110,7 @@ msgstr "Send melding til brukere som ikke har logget seg inn siste 6 måneder"
 
 #: resources/views/admin/site-mail.phtml:239
 msgid "Send a test email using these settings"
-msgstr ""
+msgstr "Send en testmail med disse innstillingene"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:10
@@ -12226,7 +12214,7 @@ msgstr "Servernavn"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php:62
 msgid "Set a new password"
-msgstr ""
+msgstr "Endre passord"
 
 #: resources/views/admin/trees.phtml:115 resources/views/admin/trees.phtml:122
 msgid "Set as default"
@@ -12458,7 +12446,7 @@ msgstr "Vis lenke for nedlasting i medieviseren"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
 msgid "Show a privacy policy."
-msgstr ""
+msgstr "Vis personvernerklæring."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:62
@@ -13001,7 +12989,7 @@ msgstr "Sosa-nummer"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:18
 msgid "Sosa-Stradonitz number"
-msgstr ""
+msgstr "Sosa-Stradonitz nummer"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:227
 msgid "Sounds like"
@@ -13294,11 +13282,11 @@ msgstr "Hjelp og dokumentasjon finnes på %s."
 
 #: app/Services/ServerCheckService.php:329
 msgid "Support for PostgreSQL is experimental."
-msgstr ""
+msgstr "Støtte for PostgreSQL er eksperimentell."
 
 #: app/Services/ServerCheckService.php:334
 msgid "Support for SQL Server is experimental."
-msgstr ""
+msgstr "Støtte for SQL Server er eksperimentell."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:461
@@ -13428,7 +13416,7 @@ msgstr "Tabellprefiks"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Tabloid"
-msgstr ""
+msgstr "Tabloid"
 
 #: app/Http/Controllers/Admin/ModuleController.php:233
 #: resources/views/admin/control-panel.phtml:503
@@ -13570,12 +13558,12 @@ msgstr "Haag, Nederland"
 #: app/Services/ServerCheckService.php:126
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr ""
+msgstr "PHP-utvidelsen “%s” er ikke installert."
 
 #: app/Services/ServerCheckService.php:184
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr ""
+msgstr "PHP-funksjonen “%1$s” er ikke aktivert."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:59
@@ -13585,12 +13573,12 @@ msgstr "Finner ikke midlertidig mappe til PHP."
 #: app/Services/ServerCheckService.php:145
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr ""
+msgstr "PHP.INI innstilling “%1$s” er ikke aktivert."
 
 #: app/Services/ServerCheckService.php:149
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr ""
+msgstr "PHP.INI innstilling “%1$s” er aktivert."
 
 #: resources/views/emails/approve-user-html.phtml:9
 #: resources/views/emails/approve-user-text.phtml:4
@@ -13605,7 +13593,7 @@ msgstr "Administratoren til nettstedet har fått beskjed om søknaden.<br>Så sn
 #. I18N: Description of the “Calendar” module
 #: app/Module/CalendarMenuModule.php:52
 msgid "The calendar menu."
-msgstr ""
+msgstr "Kalendermeny."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:69
@@ -13624,7 +13612,7 @@ msgstr "Forandringene i «%s» er blitt avvist."
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php:71
 msgid "The charts menu."
-msgstr ""
+msgstr "Diagrammeny."
 
 #: resources/views/modules/clippings/show.phtml:8
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -13677,7 +13665,7 @@ msgstr "Sammenfletningen av slektstreene var vellykket."
 #. I18N: Description of the “Family trees” module
 #: app/Module/TreesMenuModule.php:70
 msgid "The family trees menu."
-msgstr ""
+msgstr "Familietremeny."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/RequestHandlers/DeleteRecord.php:73
@@ -13745,7 +13733,7 @@ msgstr "Mappen kan angis fullt ut (f.eks. /home/user_name/webtrees_data/) eller 
 #: app/Http/Controllers/AdminSiteController.php:109
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "Mappen “%s” finnes ikke."
 
 #: resources/views/admin/merge-records-step-2.phtml:26
 msgid "The following facts and events were found in both records."
@@ -13799,7 +13787,7 @@ msgstr "Lenken fra “%1$s” til “%2$s” har blitt oppdatert."
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php:69
 msgid "The lists menu."
-msgstr ""
+msgstr "Listemeny."
 
 #: app/Http/Controllers/EditMediaController.php:275
 #, php-format
@@ -13887,12 +13875,12 @@ msgstr "Passordet som kreves for autentisering på SMTP-tjeneren."
 #: app/Http/RequestHandlers/PasswordResetAction.php:79
 #: app/Http/RequestHandlers/PasswordResetPage.php:75
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "Lenken til å tilbakestille passord er utgått."
 
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php:57
 msgid "The place hierarchy."
-msgstr ""
+msgstr "Stedhierarki."
 
 #: app/Http/Controllers/AdminController.php:167
 #: app/Http/Controllers/AdminTreesController.php:958
@@ -13926,7 +13914,7 @@ msgstr "Innstillingene for modulen “%s” har blitt oppdaterte."
 #: resources/views/setup/step-4-database-sqlite.phtml:61
 #: resources/views/setup/step-4-database-sqlsvr.phtml:87
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
-msgstr ""
+msgstr "Prefix er valgfritt, men anbefalt. Ved å gi tabellnavnene et unikt prefix, kan flere applikasjoner benytte samme database."
 
 #: app/Http/RequestHandlers/CopyFact.php:77
 msgid "The record has been copied to the clipboard."
@@ -13945,7 +13933,7 @@ msgstr "Din regulært uttrykk ser ut til å inneholde feil og kan ikke brukes."
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:74
 msgid "The reports menu."
-msgstr ""
+msgstr "Rapportmeny."
 
 #: app/Http/RequestHandlers/CreateRepositoryAction.php:73
 #: app/Http/RequestHandlers/CreateRepositoryModal.php:92
@@ -13955,11 +13943,11 @@ msgstr "Arkivet er blitt opprettet"
 #. I18N: Description of the “Search” module
 #: app/Module/SearchMenuModule.php:59
 msgid "The search menu."
-msgstr ""
+msgstr "Søkemeny."
 
 #: app/Services/SearchService.php:961
 msgid "The search returned too many results."
-msgstr ""
+msgstr "Søket ga for mange resultater."
 
 #: resources/views/setup/step-2-server-checks.phtml:31
 msgid "The server configuration is OK."
@@ -13967,7 +13955,7 @@ msgstr "Serverkonfigurasjon OK."
 
 #: app/Services/ServerCheckService.php:249
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "Ingen tilgang til serverens midlertidige mappe."
 
 #: app/Http/Controllers/AdminTreesController.php:1458
 #: app/Services/UpgradeService.php:150 app/Services/UpgradeService.php:183
@@ -14133,7 +14121,7 @@ msgstr[1] "Det har ikke vært endringer innen de %s dagene."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:99
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr ""
+msgstr "Det finnes ingen brukerkonto med e-postadresse “%s”."
 
 #: app/Http/Controllers/Admin/MediaController.php:451
 #: app/Http/Controllers/EditMediaController.php:128
@@ -14169,7 +14157,7 @@ msgstr "Thermidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:23
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "Informasjonskapslene er “essensielle”, og krever ikke samtykke."
 
 #: resources/views/admin/trees-unconnected.phtml:32
 #, php-format
@@ -14178,7 +14166,7 @@ msgstr "Disse grupper av individer har ingen relasjon til %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:44
 msgid "These services may use cookies or other tracking technology."
-msgstr ""
+msgstr "Disse tjenestene kan kanskje bruke informasjonskapsler eller annen sporingsteknologi."
 
 #: app/Http/RequestHandlers/LoginAction.php:134
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -14321,7 +14309,7 @@ msgstr "Denne personen vil bli brukt som utgangspunkt for diagrammer og blokker 
 #: resources/views/statistics/other/places.phtml:54
 #: resources/views/statistics/other/top10-list.phtml:23
 msgid "This information is not available."
-msgstr ""
+msgstr "Denne informasjonen er ikke tilgjengelig."
 
 #: app/Statistics/Repository/EventRepository.php:252
 #: app/Statistics/Repository/FamilyDatesRepository.php:110
@@ -14434,7 +14422,7 @@ msgstr "Dette er ditt egentlige navn, slik du vil ha det vist på nettstedet."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:96
 msgid "This link is valid for one hour."
-msgstr ""
+msgstr "Denne lenken er aktiv i en time."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -14609,7 +14597,7 @@ msgstr "Arkivet er blitt endret. Se over endringene og %1$s eller %2$s dem."
 
 #: resources/views/modules/privacy-policy/page.phtml:12
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr ""
+msgstr "Denne granskingen er av “legitim interesse” under artikkel 6(f) i EU's Personvernforordning."
 
 #: resources/views/admin/users-edit.phtml:250
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -14694,7 +14682,7 @@ msgstr "Nettstedet er nede for vedlikehold. <a href=\"index.php\">Prøv igjen</a
 
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "This website is operated by the following individuals."
-msgstr ""
+msgstr "Dette nettstedet er drevet av følgende personer."
 
 #: resources/views/layouts/error.phtml:9 resources/views/layouts/error.phtml:26
 #: resources/views/layouts/offline.phtml:58
@@ -14703,11 +14691,11 @@ msgstr "Dette nettstedet er for øyeblikket ikke tilgjengelig"
 
 #: resources/views/modules/privacy-policy/page.phtml:9
 msgid "This website processes personal data for the purpose of historical and genealogical research."
-msgstr ""
+msgstr "Dette nettstedet behandler personlige data i forbindelse med historisk og genealogisk gransking."
 
 #: resources/views/modules/privacy-policy/page.phtml:20
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
-msgstr ""
+msgstr "Dette nettstedet bruker informasjonskapsler for å huske innloggingstatus og innstillinger, som for eksempel ditt valg av språk."
 
 #: resources/views/modules/privacy-policy/footer.phtml:15
 msgid "This website uses cookies to learn about visitor behavior."
@@ -14715,7 +14703,7 @@ msgstr "Denne websiten bruker cookies for å forstå besøkerens adferd."
 
 #: resources/views/modules/privacy-policy/page.phtml:32
 msgid "This website uses third-party services to learn about visitor behavior."
-msgstr ""
+msgstr "Dette nettstedet bruker tredjeparts tjenester for lære mer om bruken av nettsidene."
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml:15
@@ -14856,13 +14844,13 @@ msgstr "Tittel på hebraisk"
 #: resources/views/contact-page.phtml:17 resources/views/message-page.phtml:22
 msgctxt "Email recipient"
 msgid "To"
-msgstr ""
+msgstr "Til"
 
 #: resources/views/admin/changes-log.phtml:29
 #: resources/views/admin/site-logs.phtml:30
 msgctxt "End of date range"
 msgid "To"
-msgstr ""
+msgstr "Til"
 
 #: resources/views/modules/html/config.phtml:25
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -14889,7 +14877,7 @@ msgstr "For å redusere størrelsen på nedlastingen, kan du komprimere data til
 #: resources/views/emails/password-request-html.phtml:9
 #: resources/views/emails/password-request-text.phtml:5
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "For å endre passord, følg denne lenken."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:36
@@ -15106,7 +15094,7 @@ msgstr "Sluttkode GEDCOM"
 #: resources/views/emails/register-notify-html.phtml:25
 #: resources/views/emails/register-notify-text.phtml:15
 msgid "Tree"
-msgstr ""
+msgstr "Familietre"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:291
@@ -15315,7 +15303,7 @@ msgstr "Pakke ut %s til en midlertidig mappe…"
 
 #: app/Module/PedigreeChartModule.php:380
 msgid "Up"
-msgstr ""
+msgstr "Opp"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:96
@@ -15404,7 +15392,7 @@ msgstr "Bruk full kildehenvisning"
 #: resources/views/setup/step-4-database-sqlite.phtml:62
 #: resources/views/setup/step-4-database-sqlsvr.phtml:88
 msgid "Use letters A-Z, a-z, digits 0-9, or underscores"
-msgstr ""
+msgstr "Bruk bokstavene A-Z, a-z, tallene 0-9, eller understrek"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:126
@@ -15965,7 +15953,7 @@ msgstr "Du kan gjøre det enklere å søke etter gifte kvinner ved å legge til 
 
 #: resources/views/modules/privacy-policy/page.phtml:48
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
-msgstr ""
+msgstr "Du kan velge bort sporing ved å sette “Do Not Track” i innstillinger for din nettleser."
 
 #: resources/views/admin/trees-renumber.phtml:17
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
@@ -16105,7 +16093,7 @@ msgstr "Ditt navn"
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:72
 msgid "Your password has been updated."
-msgstr ""
+msgstr "Ditt passord er oppdatert."
 
 #: app/Http/RequestHandlers/RegisterAction.php:131
 #, php-format
@@ -16657,7 +16645,7 @@ msgstr "døde"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "down"
-msgstr ""
+msgstr "ned"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:91
@@ -16669,7 +16657,7 @@ msgstr "last ned"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:17
 msgid "d’Aboville number"
-msgstr ""
+msgstr "d’Aboville nummer"
 
 #: resources/views/admin/components.phtml:114
 #: resources/views/family-page-menu.phtml:14
@@ -18791,7 +18779,7 @@ msgstr "siste"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "left"
-msgstr ""
+msgstr "venstre"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -19342,7 +19330,7 @@ msgstr "nullstill"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "right"
-msgstr ""
+msgstr "høyre"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:31
@@ -20093,7 +20081,7 @@ msgstr "upålitelig kilde"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "up"
-msgstr ""
+msgstr "opp"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-places.phtml:58
@@ -20152,12 +20140,12 @@ msgstr "webtrees beskjed"
 
 #: resources/views/setup/step-3-database-type.phtml:25
 msgid "webtrees needs a database to store your genealogy data."
-msgstr ""
+msgstr "webtrees behøver en database for å lagre dine data."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:67
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr ""
+msgstr "webtrees må kunne sende e-post, som passord og påminnelser fra nettstedet."
 
 #: app/Functions/FunctionsEdit.php:145
 msgid "webtrees sends emails with no storage"
