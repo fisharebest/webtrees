@@ -539,7 +539,7 @@ use Illuminate\Support\Collection;
                                 <?php if ($module instanceof ModuleConfigInterface): ?>
                                     <a href="<?= e($module->getConfigLink()) ?>">
                                     <?= $module->title() ?>
-                                    <span class="fa"><?= view('icons/preferences') ?></span>
+                                    <?= view('icons/preferences') ?>
                                     </a>
                                 <?php else : ?>
                                     <?= $module->title() ?>
@@ -549,7 +549,7 @@ use Illuminate\Support\Collection;
                                     <span class="fa-li"><?= view('icons/module') ?></span>
                                      <?= $module->title() ?>
                                     <?php if ($module instanceof ModuleConfigInterface): ?>
-                                        <span class="fa"><?= view('icons/preferences') ?></span>
+                                        <?= view('icons/preferences') ?>
                                     <?php endif ?>
                                     </span>
                                 </span>
