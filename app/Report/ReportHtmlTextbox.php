@@ -19,6 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use function abs;
+use function count;
+use function is_object;
+use function ksort;
+use function str_replace;
+use function trim;
+
 /**
  * Class ReportHtmlTextbox
  */
@@ -27,7 +34,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
     /**
      * Render the elements.
      *
-     * @param ReportHtml $renderer
+     * @param HtmlRenderer $renderer
      *
      * @return void
      */
@@ -224,10 +231,8 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         // LTR (left) or RTL (right)
         echo $renderer->alignRTL, ':', $cX, 'pt;';
         // Background color
-        if ($this->fill) {
-            if (!empty($this->bgcolor)) {
-                echo ' background-color:', $this->bgcolor, ';';
-            }
+        if ($this->fill && $this->bgcolor !== '') {
+            echo ' background-color:', $this->bgcolor, ';';
         }
         // Print padding only when it’s set
         if ($this->padding) {

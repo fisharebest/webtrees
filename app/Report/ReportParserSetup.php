@@ -23,6 +23,9 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
 
+use function preg_match;
+use function strtoupper;
+
 /**
  * Class ReportParserSetup - parse a report.xml file and extract the setup options.
  */

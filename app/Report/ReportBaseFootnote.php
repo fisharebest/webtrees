@@ -19,6 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use function htmlspecialchars_decode;
+use function str_replace;
+use function strip_tags;
+use function strpos;
+use function trim;
+
 /**
  * Class ReportBaseFootnote
  */
@@ -84,7 +90,7 @@ class ReportBaseFootnote extends ReportBaseElement
      *
      * @return void
      */
-    public function addText(string $t)
+    public function addText(string $t): void
     {
         $t          = trim($t, "\r\n\t");
         $t          = str_replace([

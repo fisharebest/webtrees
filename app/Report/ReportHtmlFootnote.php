@@ -19,6 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use function count;
+use function explode;
+use function str_replace;
+use function substr_count;
+
 /**
  * Class ReportHtmlFootnote
  */
@@ -27,7 +32,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote
     /**
      * HTML Footnotes number renderer
      *
-     * @param ReportHtml $renderer
+     * @param HtmlRenderer $renderer
      *
      * @return void
      */
@@ -43,13 +48,13 @@ class ReportHtmlFootnote extends ReportBaseFootnote
      * Write the Footnote text
      * Uses style name "footnote" by default
      *
-     * @param ReportHtml $renderer
+     * @param HtmlRenderer $renderer
      *
      * @return void
      */
-    public function renderFootnote($renderer)
+    public function renderFootnote($renderer): void
     {
-        if ($renderer->getCurrentStyle() != $this->styleName) {
+        if ($renderer->getCurrentStyle() !== $this->styleName) {
             $renderer->setCurrentStyle($this->styleName);
         }
 
@@ -62,7 +67,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote
             '<u>',
             '</u>',
         ], $temptext);
-        echo "\n<div><a name=\"footnote", $this->num, '"></a>';
+        echo '<div><a id="footnote', $this->num, '"></a>';
         $renderer->write($this->num . '. ' . $temptext);
         echo '</div>';
 
@@ -72,14 +77,14 @@ class ReportHtmlFootnote extends ReportBaseFootnote
     /**
      * Calculates the Footnotes height
      *
-     * @param ReportHtml $html
-     * @param float      $cellWidth The width of the cell to use it for text wraping
+     * @param HtmlRenderer $html
+     * @param float        $cellWidth The width of the cell to use it for text wraping
      *
      * @return float     Footnote height in points
      */
     public function getFootnoteHeight($html, float $cellWidth = 0): float
     {
-        if ($html->getCurrentStyle() != $this->styleName) {
+        if ($html->getCurrentStyle() !== $this->styleName) {
             $html->setCurrentStyle($this->styleName);
         }
 
@@ -98,7 +103,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote
      * Get the width of text
      * Breaks up a text into lines if needed
      *
-     * @param ReportHtml $renderer
+     * @param HtmlRenderer $renderer
      *
      * @return float|array
      */
@@ -143,13 +148,13 @@ class ReportHtmlFootnote extends ReportBaseFootnote
                             $lw += $renderer->getStringWidth($word . ' ');
                             if ($lw <= $wrapWidthRemaining) {
                                 $newtext .= $word;
-                                if ($addspace != 0) {
+                                if ($addspace !== 0) {
                                     $newtext .= ' ';
                                 }
                             } else {
                                 $lw = $renderer->getStringWidth($word . ' ');
                                 $newtext .= "\n$word";
-                                if ($addspace != 0) {
+                                if ($addspace !== 0) {
                                     $newtext .= ' ';
                                 }
                                 // Reset the wrap width to the cell width

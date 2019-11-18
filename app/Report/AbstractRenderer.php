@@ -24,10 +24,12 @@ use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Webtrees;
 use League\Flysystem\FilesystemInterface;
 
+use function current;
+
 /**
- * Class AbstractReport - base for PDF and HTML reports
+ * Class AbstractRenderer - base for PDF and HTML reports
  */
-abstract class AbstractReport
+abstract class AbstractRenderer
 {
     // Reports layouts are measured in points.
     protected const UNITS = 'pt';
@@ -48,8 +50,6 @@ abstract class AbstractReport
         'US-Legal'   => [8.5 * self::INCH_TO_POINTS, 14.0 * self::INCH_TO_POINTS],
         'US-Tabloid' => [11.0 * self::INCH_TO_POINTS, 17.0 * self::INCH_TO_POINTS],
     ];
-
-    protected const DEFAULT_PAPER_SIZE = 'A4';
 
     /** @var float Left Margin */
     public $left_margin = 18.0 * self::MM_TO_POINTS;
@@ -119,14 +119,14 @@ abstract class AbstractReport
      *
      * @return void
      */
-    abstract public function clearHeader();
+    abstract public function clearHeader(): void;
 
     /**
      * Create a new Page Header object
      *
-     * @return ReportBasePageheader
+     * @return ReportBasePageHeader
      */
-    abstract public function createPageHeader(): ReportBasePageheader;
+    abstract public function createPageHeader(): ReportBasePageHeader;
 
     /**
      * Add an element.
@@ -135,14 +135,14 @@ abstract class AbstractReport
      *
      * @return void
      */
-    abstract public function addElement($element);
+    abstract public function addElement($element): void;
 
     /**
      * Run the report.
      *
      * @return void
      */
-    abstract public function run();
+    abstract public function run(): void;
 
     /**
      * Create a new Cell object.
@@ -307,7 +307,7 @@ abstract class AbstractReport
      *
      * @return void
      */
-    public function setProcessing(string $p)
+    public function setProcessing(string $p): void
     {
         $this->processing = $p;
     }
@@ -319,7 +319,7 @@ abstract class AbstractReport
      *
      * @return void
      */
-    public function addTitle(string $data)
+    public function addTitle(string $data): void
     {
         $this->title .= $data;
     }
@@ -331,7 +331,7 @@ abstract class AbstractReport
      *
      * @return void
      */
-    public function addDescription(string $data)
+    public function addDescription(string $data): void
     {
         $this->rsubject .= $data;
     }
@@ -343,7 +343,7 @@ abstract class AbstractReport
      *
      * @return void
      */
-    public function addStyle(array $style)
+    public function addStyle(array $style): void
     {
         $this->styles[$style['name']] = $style;
     }

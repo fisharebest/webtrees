@@ -33,6 +33,6 @@ class ReportPDFTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(ReportPdf::class));
+        $this->assertTrue(class_exists(PdfRenderer::class));
     }
 }

@@ -19,20 +19,34 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use Fisharebest\Webtrees\TestCase;
+use TCPDF;
 
 /**
- * Test harness for the class ReportBase
+ * Class TcpdfWrapper
  */
-class ReportBaseTest extends TestCase
+class TcpdfWrapper extends TCPDF
 {
     /**
-     * Test that the class exists
+     * Expose protected method in base class.
      *
-     * @return void
+     * @return float Return the remaining width
      */
-    public function testClassExists(): void
+    public function getRemainingWidth(): float
     {
-        $this->assertTrue(class_exists(AbstractRenderer::class));
+        return parent::getRemainingWidth();
+    }
+
+    /**
+     * Expose protected method in base class.
+     *
+     * @param mixed $h       Cell height. Default value: 0.
+     * @param mixed $y       Starting y position, leave empty for current position.
+     * @param bool  $add_page If true add a page, otherwise only return the true/false state
+     *
+     * @return boolean true in case of page break, false otherwise.
+     */
+    public function checkPageBreak($h = 0, $y = '', $add_page = true): bool
+    {
+        return parent::checkPageBreak($h, $y, $add_page);
     }
 }

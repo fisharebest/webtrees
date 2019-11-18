@@ -170,7 +170,7 @@ class ReportBaseTextbox extends ReportBaseElement
      *
      * @return void
      */
-    public function addElement($element)
+    public function addElement($element): void
     {
         $this->elements[] = $element;
     }

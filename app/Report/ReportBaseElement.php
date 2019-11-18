@@ -19,6 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use function htmlspecialchars_decode;
+use function str_replace;
+use function strip_tags;
+use function trim;
+
 /**
  * Class ReportBaseElement
  */
@@ -33,7 +38,7 @@ class ReportBaseElement
     /**
      * Element renderer
      *
-     * @param ReportHtml|ReportTcpdf $renderer
+     * @param HtmlRenderer|PdfRenderer $renderer
      *
      * @return void
      */
@@ -45,7 +50,7 @@ class ReportBaseElement
     /**
      * Get the height.
      *
-     * @param ReportHtml|ReportTcpdf $renderer
+     * @param HtmlRenderer|PdfRenderer $renderer
      *
      * @return float
      */
@@ -57,7 +62,7 @@ class ReportBaseElement
     /**
      * Get the width.
      *
-     * @param ReportHtml|ReportTcpdf $renderer
+     * @param HtmlRenderer|PdfRenderer $renderer
      *
      * @return float|array
      */
@@ -73,7 +78,7 @@ class ReportBaseElement
      *
      * @return void
      */
-    public function addText(string $t)
+    public function addText(string $t): void
     {
         $t          = trim($t, "\r\n\t");
         $t          = str_replace([
@@ -93,7 +98,7 @@ class ReportBaseElement
      *
      * @return void
      */
-    public function addNewline()
+    public function addNewline(): void
     {
         $this->text .= "\n";
     }
@@ -124,11 +129,11 @@ class ReportBaseElement
     /**
      * Render the footnotes.
      *
-     * @param ReportHtml|ReportTcpdf $renderer
+     * @param HtmlRenderer|PdfRenderer $renderer
      *
      * @return void
      */
-    public function renderFootnote($renderer)
+    public function renderFootnote($renderer): void
     {
     }
 
@@ -139,7 +144,7 @@ class ReportBaseElement
      *
      * @return void
      */
-    public function setText(string $text)
+    public function setText(string $text): void
     {
         $this->text = $text;
     }

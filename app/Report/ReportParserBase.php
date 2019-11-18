@@ -23,7 +23,23 @@ use DomainException;
 use Exception;
 
 use function call_user_func;
+use function fclose;
+use function feof;
+use function fopen;
+use function fread;
 use function method_exists;
+use function sprintf;
+use function xml_error_string;
+use function xml_get_current_line_number;
+use function xml_get_error_code;
+use function xml_parse;
+use function xml_parser_create;
+use function xml_parser_free;
+use function xml_parser_set_option;
+use function xml_set_character_data_handler;
+use function xml_set_element_handler;
+
+use const XML_OPTION_CASE_FOLDING;
 
 /**
  * Class ReportParserBase

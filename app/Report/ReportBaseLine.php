@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use function abs;
+
 /**
  * Class ReportBaseLine
  */
@@ -68,7 +70,7 @@ class ReportBaseLine extends ReportBaseElement
     /**
      * Get the height of the line.
      *
-     * @param ReportHtml|ReportTcpdf $renderer
+     * @param HtmlRenderer|PdfRenderer $renderer
      *
      * @return float
      */
@@ -80,7 +82,7 @@ class ReportBaseLine extends ReportBaseElement
     /**
      * Get the width of the line.
      *
-     * @param ReportHtml|ReportTcpdf $renderer
+     * @param HtmlRenderer|PdfRenderer $renderer
      *
      * @return float|array
      */

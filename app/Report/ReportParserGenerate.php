@@ -48,13 +48,52 @@ use stdClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
+use function addcslashes;
+use function addslashes;
+use function array_pop;
+use function array_shift;
+use function assert;
 use function call_user_func;
+use function count;
+use function end;
 use function explode;
+use function file;
+use function file_exists;
+use function getimagesize;
 use function imagecreatefromstring;
 use function imagesx;
 use function imagesy;
+use function in_array;
 use function method_exists;
+use function preg_match;
+use function preg_match_all;
+use function preg_replace;
+use function preg_replace_callback;
+use function preg_split;
+use function reset;
+use function round;
+use function sprintf;
+use function str_replace;
+use function strip_tags;
+use function strlen;
+use function strpos;
+use function strstr;
+use function strtoupper;
+use function substr;
 use function trim;
+use function uasort;
+use function xml_error_string;
+use function xml_get_current_line_number;
+use function xml_get_error_code;
+use function xml_parse;
+use function xml_parser_create;
+use function xml_parser_free;
+use function xml_parser_set_option;
+use function xml_set_character_data_handler;
+use function xml_set_element_handler;
+
+use const PREG_SET_ORDER;
+use const XML_OPTION_CASE_FOLDING;
 
 /**
  * Class ReportParserGenerate - parse a report.xml file and generate the report.
@@ -88,7 +127,7 @@ class ReportParserGenerate extends ReportParserBase
     /** @var array[] Nested repeating data */
     private $repeats_stack = [];
 
-    /** @var AbstractReport[] Nested repeating data */
+    /** @var AbstractRenderer[] Nested repeating data */
     private $wt_report_stack = [];
 
     /** @var resource Nested repeating data */
@@ -133,10 +172,10 @@ class ReportParserGenerate extends ReportParserBase
     /** @var string The filename of the XML report */
     protected $report;
 
-    /** @var AbstractReport A factory for creating report elements */
+    /** @var AbstractRenderer A factory for creating report elements */
     private $report_root;
 
-    /** @var AbstractReport Nested report elements */
+    /** @var AbstractRenderer Nested report elements */
     private $wt_report;
 
     /** @var string[][] Variables defined in the report at run-time */
@@ -152,14 +191,14 @@ class ReportParserGenerate extends ReportParserBase
      * Create a parser for a report
      *
      * @param string              $report The XML filename
-     * @param AbstractReport      $report_root
+     * @param AbstractRenderer    $report_root
      * @param string[][]          $vars
      * @param Tree                $tree
      * @param FilesystemInterface $data_filesystem
      */
     public function __construct(
         string $report,
-        AbstractReport $report_root,
+        AbstractRenderer $report_root,
         array $vars,
         Tree $tree,
         FilesystemInterface $data_filesystem
@@ -1676,7 +1715,7 @@ class ReportParserGenerate extends ReportParserBase
 
         if ($media_file instanceof MediaFile && $media_file->fileExists($this->data_filesystem)) {
             $image      = imagecreatefromstring($media_file->fileContents($this->data_filesystem));
-            $attributes = [(int) imagesx($image), (int) imagesy($image)];
+            $attributes = [imagesx($image), imagesy($image)];
 
             if ($width > 0 && $height == 0) {
                 $perc   = $width / $attributes[0];
@@ -1728,7 +1767,7 @@ class ReportParserGenerate extends ReportParserBase
 
                 if ($media_file instanceof MediaFile && $media_file->fileExists($this->data_filesystem)) {
                     $image      = imagecreatefromstring($media_file->fileContents($this->data_filesystem));
-                    $attributes = [(int) imagesx($image), (int) imagesy($image)];
+                    $attributes = [imagesx($image), imagesy($image)];
 
                     if ($width > 0 && $height == 0) {
                         $perc   = $width / $attributes[0];

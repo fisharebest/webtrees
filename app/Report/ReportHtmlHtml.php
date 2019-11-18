@@ -27,9 +27,9 @@ class ReportHtmlHtml extends ReportBaseHtml
     /**
      * Render the elements.
      *
-     * @param ReportHtml $renderer
-     * @param bool       $sub
-     * @param bool       $inat
+     * @param HtmlRenderer $renderer
+     * @param bool         $sub
+     * @param bool         $inat
      *
      * @return void|string
      */

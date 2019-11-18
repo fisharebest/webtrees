@@ -33,6 +33,6 @@ class ReportHTMLTest extends TestCase
      */
     public function testClassExists(): void
     {
-        $this->assertTrue(class_exists(ReportHtml::class));
+        $this->assertTrue(class_exists(HtmlRenderer::class));
     }
 }

@@ -19,6 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use function count;
+use function explode;
+use function str_replace;
+use function substr_count;
+
 /**
  * Class ReportHtmlText
  */
@@ -27,16 +32,16 @@ class ReportHtmlText extends ReportBaseText
     /**
      * Render the elements.
      *
-     * @param ReportHtml $renderer
-     * @param int        $curx
-     * @param bool       $attrib Is is called from a different element?
+     * @param HtmlRenderer $renderer
+     * @param int          $curx
+     * @param bool         $attrib Is is called from a different element?
      *
      * @return void
      */
     public function render($renderer, $curx = 0, $attrib = true)
     {
         // Set up the style
-        if ($renderer->getCurrentStyle() != $this->styleName) {
+        if ($renderer->getCurrentStyle() !== $this->styleName) {
             $renderer->setCurrentStyle($this->styleName);
         }
         $temptext = str_replace('#PAGENUM#', (string) $renderer->pageNo(), $this->text);
@@ -75,7 +80,7 @@ class ReportHtmlText extends ReportBaseText
                     $renderer->write($temptext, $this->color);
                     echo "</div>\n";
                     $renderer->setX($startX + $renderer->getStringWidth($temptext));
-                    if ($renderer->countLines($temptext) != 1) {
+                    if ($renderer->countLines($temptext) !== 1) {
                         $renderer->setXy(0, $startY + $renderer->getTextCellHeight($temptext));
                     }
                 }
@@ -87,7 +92,7 @@ class ReportHtmlText extends ReportBaseText
      * Returns the height in points of the text element
      * The height is already calculated in getWidth()
      *
-     * @param ReportHtml $renderer
+     * @param HtmlRenderer $renderer
      *
      * @return float
      */
@@ -105,14 +110,14 @@ class ReportHtmlText extends ReportBaseText
     /**
      * Get the width of text and wrap it too
      *
-     * @param ReportHtml $renderer
+     * @param HtmlRenderer $renderer
      *
      * @return float|array
      */
     public function getWidth($renderer)
     {
         // Setup the style name, a font must be selected to calculate the width
-        if ($renderer->getCurrentStyle() != $this->styleName) {
+        if ($renderer->getCurrentStyle() !== $this->styleName) {
             $renderer->setCurrentStyle($this->styleName);
         }
 
@@ -147,13 +152,13 @@ class ReportHtmlText extends ReportBaseText
                             $lw += $renderer->getStringWidth($word . ' ');
                             if ($lw <= $wrapWidthRemaining) {
                                 $newtext .= $word;
-                                if ($addspace != 0) {
+                                if ($addspace !== 0) {
                                     $newtext .= ' ';
                                 }
                             } else {
                                 $lw = $renderer->getStringWidth($word . ' ');
                                 $newtext .= "\n$word";
-                                if ($addspace != 0) {
+                                if ($addspace !== 0) {
                                     $newtext .= ' ';
                                 }
                                 // Reset the wrap width to the cell width

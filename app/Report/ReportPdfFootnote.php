@@ -19,6 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use function ceil;
+use function count;
+use function explode;
+use function str_replace;
+use function substr_count;
+
 /**
  * Class ReportPdfFootnote
  */
@@ -27,36 +33,36 @@ class ReportPdfFootnote extends ReportBaseFootnote
     /**
      * PDF Footnotes number renderer
      *
-     * @param ReportTcpdf $renderer
+     * @param PdfRenderer $renderer
      *
      * @return void
      */
     public function render($renderer)
     {
         $renderer->setCurrentStyle('footnotenum');
-        $renderer->Write($renderer->getCurrentStyleHeight(), $this->numText, $this->addlink); //source link numbers after name
+        $renderer->tcpdf->Write($renderer->getCurrentStyleHeight(), $this->numText, $this->addlink); //source link numbers after name
     }
 
     /**
      * Write the Footnote text
      * Uses style name "footnote" by default
      *
-     * @param ReportTcpdf $renderer
+     * @param PdfRenderer $renderer
      *
      * @return void
      */
-    public function renderFootnote($renderer)
+    public function renderFootnote($renderer): void
     {
-        if ($renderer->getCurrentStyle() != $this->styleName) {
+        if ($renderer->getCurrentStyle() !== $this->styleName) {
             $renderer->setCurrentStyle($this->styleName);
         }
-        $temptext = str_replace('#PAGENUM#', (string) $renderer->PageNo(), $this->text);
+        $temptext = str_replace('#PAGENUM#', (string) $renderer->tcpdf->PageNo(), $this->text);
         // Set the link to this y/page position
-        $renderer->SetLink($this->addlink, -1, -1);
+        $renderer->tcpdf->SetLink($this->addlink, -1, -1);
         // Print first the source number
         // working
-        if ($renderer->getRTL()) {
-            $renderer->writeHTML('<span> .' . $this->num . '</span>', false, false, false, false, '');
+        if ($renderer->tcpdf->getRTL()) {
+            $renderer->tcpdf->writeHTML('<span> .' . $this->num . '</span>', false, false, false, false, '');
         } else {
             $temptext = '<span>' . $this->num . '. </span>' . $temptext;
         }
@@ -68,13 +74,13 @@ class ReportPdfFootnote extends ReportBaseFootnote
             '<u>',
             '</u>',
         ], $temptext);
-        $renderer->writeHTML($temptext, true, false, true, false, '');
+        $renderer->tcpdf->writeHTML($temptext, true, false, true, false, '');
     }
 
     /**
      * Returns the height in points of the Footnote element
      *
-     * @param ReportTcpdf $renderer
+     * @param PdfRenderer $renderer
      *
      * @return float $h
      */
@@ -87,7 +93,7 @@ class ReportPdfFootnote extends ReportBaseFootnote
      * Splits the text into lines to fit into a giving cell
      * and returns the last lines width
      *
-     * @param ReportTcpdf $renderer
+     * @param PdfRenderer $renderer
      *
      * @return float|array
      */
@@ -108,7 +114,7 @@ class ReportPdfFootnote extends ReportBaseFootnote
         }
 
         // Get the line width
-        $lw = ceil($renderer->GetStringWidth($this->numText));
+        $lw = ceil($renderer->tcpdf->GetStringWidth($this->numText));
         // Line Feed counter - Number of lines in the text
         $lfct = substr_count($this->numText, "\n") + 1;
         // If there is still remaining wrap width...
@@ -121,7 +127,7 @@ class ReportPdfFootnote extends ReportBaseFootnote
                 // Go throught the text line by line
                 foreach ($lines as $line) {
                     // Line width in points
-                    $lw = ceil($renderer->GetStringWidth($line));
+                    $lw = ceil($renderer->tcpdf->GetStringWidth($line));
                     // If the line has to be wraped
                     if ($lw >= $wrapWidthRemaining) {
                         $words    = explode(' ', $line);
@@ -129,16 +135,16 @@ class ReportPdfFootnote extends ReportBaseFootnote
                         $lw       = 0;
                         foreach ($words as $word) {
                             $addspace--;
-                            $lw += ceil($renderer->GetStringWidth($word . ' '));
+                            $lw += ceil($renderer->tcpdf->GetStringWidth($word . ' '));
                             if ($lw < $wrapWidthRemaining) {
                                 $newtext .= $word;
-                                if ($addspace != 0) {
+                                if ($addspace !== 0) {
                                     $newtext .= ' ';
                                 }
                             } else {
-                                $lw = $renderer->GetStringWidth($word . ' ');
+                                $lw = $renderer->tcpdf->GetStringWidth($word . ' ');
                                 $newtext .= "\n$word";
-                                if ($addspace != 0) {
+                                if ($addspace !== 0) {
                                     $newtext .= ' ';
                                 }
                                 // Reset the wrap width to the cell width

@@ -19,6 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use function str_replace;
+use function stripos;
+use function strpos;
+
 /**
  * Class ReportHtmlCell
  */
@@ -27,7 +31,7 @@ class ReportHtmlCell extends ReportBaseCell
     /**
      * HTML Cell renderer
      *
-     * @param ReportHtml $renderer
+     * @param HtmlRenderer $renderer
      *
      * @return void
      */

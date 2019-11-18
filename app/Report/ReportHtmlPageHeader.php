@@ -20,14 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 /**
- * class ReportPdfPageheader
+ * Class ReportHtmlPageHeader
  */
-class ReportPdfPageheader extends ReportBasePageheader
+class ReportHtmlPageHeader extends ReportBasePageHeader
 {
     /**
      * PageHeader element renderer
      *
-     * @param ReportTcpdf $renderer
+     * @param HtmlRenderer $renderer
      *
      * @return void
      */

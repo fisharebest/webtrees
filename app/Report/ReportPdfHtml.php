@@ -27,8 +27,8 @@ class ReportPdfHtml extends ReportBaseHtml
     /**
      * Render the output.
      *
-     * @param      $renderer
-     * @param bool $sub
+     * @param PdfRenderer $renderer
+     * @param bool        $sub
      *
      * @return string|void
      */
@@ -57,6 +57,6 @@ class ReportPdfHtml extends ReportBaseHtml
         if ($sub) {
             return $this->text;
         }
-        $renderer->writeHTML($this->text); //prints 2 empty cells in the Expanded Relatives report
+        $renderer->tcpdf->writeHTML($this->text); //prints 2 empty cells in the Expanded Relatives report
     }
 }

@@ -27,7 +27,7 @@ class ReportHtmlImage extends ReportBaseImage
     /**
      * Image renderer
      *
-     * @param ReportHtml $renderer
+     * @param HtmlRenderer $renderer
      *
      * @return void
      */
@@ -41,10 +41,8 @@ class ReportHtmlImage extends ReportBaseImage
         }
         if ($this->y === ReportBaseElement::CURRENT_POSITION) {
             //-- first check for a collision with the last picture
-            if (isset($lastpicbottom)) {
-                if (($renderer->pageNo() == $lastpicpage) && ($lastpicbottom >= $renderer->getY()) && ($this->x >= $lastpicleft) && ($this->x <= $lastpicright)) {
-                    $renderer->setY($lastpicbottom + ($renderer->cPadding * 2));
-                }
+            if ($lastpicbottom !== null && $renderer->pageNo() === $lastpicpage && $lastpicbottom >= $renderer->getY() && $this->x >= $lastpicleft && $this->x <= $lastpicright) {
+                $renderer->setY($lastpicbottom + ($renderer->cPadding * 2));
             }
             $this->y = $renderer->getY();
         }
@@ -84,7 +82,7 @@ class ReportHtmlImage extends ReportBaseImage
      * This would be called from the TextBox only for multiple images
      * so we add a bit bottom space between the images
      *
-     * @param ReportHtml $renderer
+     * @param HtmlRenderer $renderer
      *
      * @return float
      */

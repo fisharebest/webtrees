@@ -20,9 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 /**
- * Class ReportBasePageheader
+ * Class ReportBasePageHeader
  */
-class ReportBasePageheader extends ReportBaseElement
+class ReportBasePageHeader extends ReportBaseElement
 {
     /** @var ReportBaseElement[] Elements */
     public $elements = [];
@@ -40,7 +40,7 @@ class ReportBasePageheader extends ReportBaseElement
      *
      * @return void
      */
-    public function textBox()
+    public function textBox(): void
     {
         $this->elements = [];
     }
@@ -52,7 +52,7 @@ class ReportBasePageheader extends ReportBaseElement
      *
      * @return void
      */
-    public function addElement($element)
+    public function addElement($element): void
     {
         $this->elements[] = $element;
     }

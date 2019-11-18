@@ -21,6 +21,13 @@ namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\Functions\FunctionsRtl;
 
+use function count;
+use function explode;
+use function hexdec;
+use function preg_match;
+use function str_replace;
+use function substr_count;
+
 /**
  * Class ReportPdfText
  */
@@ -29,17 +36,17 @@ class ReportPdfText extends ReportBaseText
     /**
      * PDF Text renderer
      *
-     * @param ReportTcpdf $renderer
+     * @param PdfRenderer $renderer
      *
      * @return void
      */
     public function render($renderer)
     {
         // Set up the style
-        if ($renderer->getCurrentStyle() != $this->styleName) {
+        if ($renderer->getCurrentStyle() !== $this->styleName) {
             $renderer->setCurrentStyle($this->styleName);
         }
-        $temptext = str_replace('#PAGENUM#', (string) $renderer->PageNo(), $this->text);
+        $temptext = str_replace('#PAGENUM#', (string) $renderer->tcpdf->PageNo(), $this->text);
         // underline «title» part of Source item
         $temptext = str_replace([
             '«',
@@ -55,9 +62,9 @@ class ReportPdfText extends ReportBaseText
             $r = hexdec($match[1]);
             $g = hexdec($match[2]);
             $b = hexdec($match[3]);
-            $renderer->SetTextColor($r, $g, $b);
+            $renderer->tcpdf->SetTextColor($r, $g, $b);
         } else {
-            $renderer->SetTextColor(0, 0, 0);
+            $renderer->tcpdf->SetTextColor(0, 0, 0);
         }
         $temptext = FunctionsRtl::spanLtrRtl($temptext);
         $temptext = str_replace(
@@ -75,7 +82,7 @@ class ReportPdfText extends ReportBaseText
             ],
             $temptext
         );
-        $renderer->writeHTML(
+        $renderer->tcpdf->writeHTML(
             $temptext,
             false,
             false,
@@ -84,14 +91,14 @@ class ReportPdfText extends ReportBaseText
             ''
         ); //change height - line break etc. - the form is mirror on rtl pages
         // Reset the text color to black or it will be inherited
-        $renderer->SetTextColor(0, 0, 0);
+        $renderer->tcpdf->SetTextColor(0, 0, 0);
     }
 
     /**
      * Returns the height in points of the text element
      * The height is already calculated in getWidth()
      *
-     * @param ReportTcpdf $renderer
+     * @param PdfRenderer $renderer
      *
      * @return float
      */
@@ -103,14 +110,14 @@ class ReportPdfText extends ReportBaseText
     /**
      * Splits the text into lines if necessary to fit into a giving cell
      *
-     * @param ReportTcpdf $renderer
+     * @param PdfRenderer $renderer
      *
      * @return float|array
      */
     public function getWidth($renderer)
     {
         // Setup the style name, a font must be selected to calculate the width
-        if ($renderer->getCurrentStyle() != $this->styleName) {
+        if ($renderer->getCurrentStyle() !== $this->styleName) {
             $renderer->setCurrentStyle($this->styleName);
         }
 
@@ -121,7 +128,7 @@ class ReportPdfText extends ReportBaseText
         }
 
         // Get the line width for the text in points
-        $lw = $renderer->GetStringWidth($this->text);
+        $lw = $renderer->tcpdf->GetStringWidth($this->text);
         // Line Feed counter - Number of lines in the text
         $lfct = substr_count($this->text, "\n") + 1;
         // If there is still remaining wrap width...
@@ -134,7 +141,7 @@ class ReportPdfText extends ReportBaseText
                 // Go throught the text line by line
                 foreach ($lines as $line) {
                     // Line width in points + a little margin
-                    $lw = $renderer->GetStringWidth($line);
+                    $lw = $renderer->tcpdf->GetStringWidth($line);
                     // If the line has to be wraped
                     if ($lw > $wrapWidthRemaining) {
                         $words    = explode(' ', $line);
@@ -142,16 +149,16 @@ class ReportPdfText extends ReportBaseText
                         $lw       = 0;
                         foreach ($words as $word) {
                             $addspace--;
-                            $lw += $renderer->GetStringWidth($word . ' ');
+                            $lw += $renderer->tcpdf->GetStringWidth($word . ' ');
                             if ($lw <= $wrapWidthRemaining) {
                                 $newtext .= $word;
-                                if ($addspace != 0) {
+                                if ($addspace !== 0) {
                                     $newtext .= ' ';
                                 }
                             } else {
-                                $lw = $renderer->GetStringWidth($word . ' ');
+                                $lw = $renderer->tcpdf->GetStringWidth($word . ' ');
                                 $newtext .= "\n$word";
-                                if ($addspace != 0) {
+                                if ($addspace !== 0) {
                                     $newtext .= ' ';
                                 }
                                 // Reset the wrap width to the cell width

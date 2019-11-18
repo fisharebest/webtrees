@@ -19,15 +19,24 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use function count;
+use function hexdec;
+use function is_array;
+use function is_object;
+use function ksort;
+use function preg_match;
+use function str_replace;
+use function trim;
+
 /**
- * Class ReportPdfTextbox
+ * Class ReportPdfTextBox
  */
-class ReportPdfTextbox extends ReportBaseTextbox
+class ReportPdfTextBox extends ReportBaseTextbox
 {
     /**
      * PDF Text Box renderer
      *
-     * @param ReportTcpdf $renderer
+     * @param PdfRenderer $renderer
      *
      * @return void
      */
@@ -118,7 +127,7 @@ class ReportPdfTextbox extends ReportBaseTextbox
 
         // If current position (left)
         if ($this->left === ReportBaseElement::CURRENT_POSITION) {
-            $cX = $renderer->GetX();
+            $cX = $renderer->tcpdf->GetX();
         } else {
             // For static position add margin (returns and updates X)
             $cX = $renderer->addMarginX($this->left);
@@ -126,10 +135,10 @@ class ReportPdfTextbox extends ReportBaseTextbox
 
         // If current position (top)
         if ($this->top === ReportBaseElement::CURRENT_POSITION) {
-            $cY = $renderer->GetY();
+            $cY = $renderer->tcpdf->GetY();
         } else {
             $cY = $this->top;
-            $renderer->SetY($cY);
+            $renderer->tcpdf->SetY($cY);
         }
 
         // Check the width if set to page wide OR set by xml to larger then page width (margin)
@@ -140,7 +149,7 @@ class ReportPdfTextbox extends ReportBaseTextbox
         }
 
         // Save the original margins
-        $cM = $renderer->getMargins();
+        $cM = $renderer->tcpdf->getMargins();
         // Use cell padding to wrap the width
         // Temp Width with cell padding
         if (is_array($cM['cell'])) {
@@ -194,7 +203,7 @@ class ReportPdfTextbox extends ReportBaseTextbox
             // Check if this is text or some other element, like images
             if ($eH == 0) {
                 // This is text elements. Number of LF but at least one line
-                $cHT = ($cHT + 1) * $renderer->getCellHeightRatio();
+                $cHT = ($cHT + 1) * $renderer->tcpdf->getCellHeightRatio();
                 // Calculate the cell hight with the largest font size used within this Box
                 $cHT *= $renderer->largestFontHeight;
                 // Add cell padding
@@ -222,7 +231,7 @@ class ReportPdfTextbox extends ReportBaseTextbox
             // Reset last cell height or Header/Footer will inherit it, in case of pagebreak
             $renderer->lastCellHeight = 0;
             if ($renderer->checkPageBreakPDF($cH)) {
-                $cY = $renderer->GetY();
+                $cY = $renderer->tcpdf->GetY();
             }
         }
 
@@ -234,65 +243,63 @@ class ReportPdfTextbox extends ReportBaseTextbox
         $match = [];
         // Fill the background
         if ($this->fill) {
-            if (!empty($this->bgcolor)) {
-                if (preg_match('/#?(..)(..)(..)/', $this->bgcolor, $match)) {
-                    $cS .= 'F'; // F: Fill the background
-                    $r  = hexdec($match[1]);
-                    $g  = hexdec($match[2]);
-                    $b  = hexdec($match[3]);
-                    $renderer->SetFillColor($r, $g, $b);
-                }
+            if (preg_match('/#?(..)(..)(..)/', $this->bgcolor, $match)) {
+                $cS .= 'F'; // F: Fill the background
+                $r  = hexdec($match[1]);
+                $g  = hexdec($match[2]);
+                $b  = hexdec($match[3]);
+                $renderer->tcpdf->SetFillColor($r, $g, $b);
             }
         }
         // Clean up a bit
         unset($lw, $w, $match, $cE, $eH);
         // Draw the border
         if (!empty($cS)) {
-            if (!$renderer->getRTL()) {
+            if (!$renderer->tcpdf->getRTL()) {
                 $cXM = $cX;
             } else {
-                $cXM = $renderer->getPageWidth() - $cX - $cW;
+                $cXM = $renderer->tcpdf->getPageWidth() - $cX - $cW;
             }
-            $renderer->Rect($cXM, $cY, $cW, $cH, $cS);
+            $renderer->tcpdf->Rect($cXM, $cY, $cW, $cH, $cS);
         }
         // Add cell padding if set and if any text (element) exist
         if ($this->padding) {
             if ($cHT > 0) {
                 if (is_array($cM['cell'])) {
-                    $renderer->SetY($cY + $cM['padding_top']);
+                    $renderer->tcpdf->SetY($cY + $cM['padding_top']);
                 } else {
-                    $renderer->SetY($cY + $cM['cell']);
+                    $renderer->tcpdf->SetY($cY + $cM['cell']);
                 }
             }
         }
         // Change the margins X, Width
-        if (!$renderer->getRTL()) {
+        if (!$renderer->tcpdf->getRTL()) {
             if ($this->padding) {
                 if (is_array($cM['cell'])) {
-                    $renderer->SetLeftMargin($cX + $cM['padding_left']);
+                    $renderer->tcpdf->SetLeftMargin($cX + $cM['padding_left']);
                 } else {
-                    $renderer->SetLeftMargin($cX + $cM['cell']);
+                    $renderer->tcpdf->SetLeftMargin($cX + $cM['cell']);
                 }
-                $renderer->SetRightMargin($renderer->getRemainingWidthPDF() - $cW + $cM['right']);
+                $renderer->tcpdf->SetRightMargin($renderer->getRemainingWidthPDF() - $cW + $cM['right']);
             } else {
-                $renderer->SetLeftMargin($cX);
-                $renderer->SetRightMargin($renderer->getRemainingWidthPDF() - $cW + $cM['right']);
+                $renderer->tcpdf->SetLeftMargin($cX);
+                $renderer->tcpdf->SetRightMargin($renderer->getRemainingWidthPDF() - $cW + $cM['right']);
             }
         } else {
             if ($this->padding) {
                 if (is_array($cM['cell'])) {
-                    $renderer->SetRightMargin($cX + $cM['padding_right']);
+                    $renderer->tcpdf->SetRightMargin($cX + $cM['padding_right']);
                 } else {
-                    $renderer->SetRightMargin($cX + $cM['cell']);
+                    $renderer->tcpdf->SetRightMargin($cX + $cM['cell']);
                 }
-                $renderer->SetLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
+                $renderer->tcpdf->SetLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
             } else {
-                $renderer->SetRightMargin($cX);
-                $renderer->SetLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
+                $renderer->tcpdf->SetRightMargin($cX);
+                $renderer->tcpdf->SetLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
             }
         }
         // Save the current page number
-        $cPN = $renderer->getPage();
+        $cPN = $renderer->tcpdf->getPage();
 
         // Render the elements (write text, print picture...)
         foreach ($this->elements as $element) {
@@ -305,25 +312,25 @@ class ReportPdfTextbox extends ReportBaseTextbox
             }
         }
         // Restore the margins
-        $renderer->SetLeftMargin($cM['left']);
-        $renderer->SetRightMargin($cM['right']);
+        $renderer->tcpdf->SetLeftMargin($cM['left']);
+        $renderer->tcpdf->SetRightMargin($cM['right']);
 
         // This will be mostly used to trick the multiple images last height
         if ($this->reseth) {
             $cH = 0;
             // This can only happen with multiple images and with pagebreak
-            if ($cPN != $renderer->getPage()) {
-                $renderer->setPage($cPN);
+            if ($cPN != $renderer->tcpdf->getPage()) {
+                $renderer->tcpdf->setPage($cPN);
             }
         }
         // New line and some clean up
         if (!$this->newline) {
-            $renderer->SetXY($cX + $cW, $cY);
+            $renderer->tcpdf->SetXY($cX + $cW, $cY);
             $renderer->lastCellHeight = $cH;
         } else {
             // addMarginX() also updates X
             $renderer->addMarginX(0);
-            $renderer->SetY($cY + $cH);
+            $renderer->tcpdf->SetY($cY + $cH);
             $renderer->lastCellHeight = 0;
         }
     }

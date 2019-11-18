@@ -25,10 +25,18 @@ use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Webtrees;
 use League\Flysystem\FilesystemInterface;
 
+use function ceil;
+use function count;
+use function explode;
+use function preg_match;
+use function str_replace;
+use function stripos;
+use function substr_count;
+
 /**
- * Class ReportHtml
+ * Class HtmlRenderer
  */
-class ReportHtml extends AbstractReport
+class HtmlRenderer extends AbstractRenderer
 {
     /**
      * Cell padding
@@ -178,7 +186,7 @@ class ReportHtml extends AbstractReport
      *
      * @return void
      */
-    public function addElement($element)
+    public function addElement($element): void
     {
         if ($this->processing === 'B') {
             $this->bodyElements[] = $element;
@@ -194,7 +202,7 @@ class ReportHtml extends AbstractReport
      *
      * @return void
      */
-    private function runPageHeader()
+    private function runPageHeader(): void
     {
         foreach ($this->pageHeaderElements as $element) {
             if ($element instanceof ReportBaseElement) {
@@ -212,7 +220,7 @@ class ReportHtml extends AbstractReport
      *
      * @return void
      */
-    public function footnotes()
+    public function footnotes(): void
     {
         $this->currentStyle = '';
         if (!empty($this->printedfootnotes)) {
@@ -227,7 +235,7 @@ class ReportHtml extends AbstractReport
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         // Setting up the styles
         echo '<style type="text/css">';
@@ -254,7 +262,7 @@ class ReportHtml extends AbstractReport
             }
             echo '}', PHP_EOL;
         }
-        unset($class, $style);
+
         //-- header divider
         echo '</style>', PHP_EOL;
         echo '<div id="headermargin" style="position: relative; top: auto; height: ', $this->header_margin, 'pt; width: ', $this->noMarginWidth, 'pt;"></div>';
@@ -394,11 +402,11 @@ class ReportHtml extends AbstractReport
     /**
      * Create a new Page Header object
      *
-     * @return ReportBasePageheader
+     * @return ReportBasePageHeader
      */
-    public function createPageHeader(): ReportBasePageheader
+    public function createPageHeader(): ReportBasePageHeader
     {
-        return new ReportHtmlPageheader();
+        return new ReportHtmlPageHeader();
     }
 
     /**
@@ -479,7 +487,7 @@ class ReportHtml extends AbstractReport
      *
      * @return void
      */
-    public function clearHeader()
+    public function clearHeader(): void
     {
         $this->headerElements = [];
     }
@@ -489,7 +497,7 @@ class ReportHtml extends AbstractReport
      *
      * @return void
      */
-    public function addPage()
+    public function addPage(): void
     {
         $this->pageN++;
 
@@ -513,7 +521,7 @@ class ReportHtml extends AbstractReport
      *
      * @return void
      */
-    public function addMaxY($y)
+    public function addMaxY($y): void
     {
         if ($this->maxY < $y) {
             $this->maxY = $y;
@@ -523,11 +531,11 @@ class ReportHtml extends AbstractReport
     /**
      * Add a page header.
      *
-     * @param $element
+     * @param ReportBaseElement $element
      *
      * @return void
      */
-    public function addPageHeader($element)
+    public function addPageHeader($element): void
     {
         $this->pageHeaderElements[] = $element;
     }
@@ -545,7 +553,7 @@ class ReportHtml extends AbstractReport
         $i   = 0;
         $val = $footnote->getValue();
         while ($i < $ct) {
-            if ($this->printedfootnotes[$i]->getValue() == $val) {
+            if ($this->printedfootnotes[$i]->getValue() === $val) {
                 // If this footnote already exist then set up the numbers for this object
                 $footnote->setNum($i + 1);
                 $footnote->setAddlink((string) ($i + 1));
@@ -567,7 +575,7 @@ class ReportHtml extends AbstractReport
      *
      * @return void
      */
-    public function clearPageHeader()
+    public function clearPageHeader(): void
     {
         $this->pageHeaderElements = [];
     }
@@ -717,7 +725,7 @@ class ReportHtml extends AbstractReport
      *
      * @void
      */
-    public function setCurrentStyle(string $s)
+    public function setCurrentStyle(string $s): void
     {
         $this->currentStyle = $s;
     }
@@ -729,7 +737,7 @@ class ReportHtml extends AbstractReport
      *
      * @return void
      */
-    public function setX($x)
+    public function setX($x): void
     {
         $this->X = $x;
     }
@@ -743,7 +751,7 @@ class ReportHtml extends AbstractReport
      *
      * @return void
      */
-    public function setY($y)
+    public function setY($y): void
     {
         $this->Y = $y;
         if ($this->maxY < $y) {
@@ -761,7 +769,7 @@ class ReportHtml extends AbstractReport
      *
      * @return void
      */
-    public function setXy($x, $y)
+    public function setXy($x, $y): void
     {
         $this->setX($x);
         $this->setY($y);
@@ -806,18 +814,16 @@ class ReportHtml extends AbstractReport
      *
      * @return void
      */
-    public function write($text, $color = '', $useclass = true)
+    public function write($text, $color = '', $useclass = true): void
     {
         $style    = $this->getStyle($this->getCurrentStyle());
         $htmlcode = '<span dir="' . I18N::direction() . '"';
         if ($useclass) {
             $htmlcode .= ' class="' . $style['name'] . '"';
         }
-        if (!empty($color)) {
-            // Check if Text Color is set and if it’s valid HTML color
-            if (preg_match('/#?(..)(..)(..)/', $color)) {
-                $htmlcode .= ' style="color:' . $color . ';"';
-            }
+        // Check if Text Color is set and if it’s valid HTML color
+        if (preg_match('/#?(..)(..)(..)/', $color)) {
+            $htmlcode .= ' style="color:' . $color . ';"';
         }
 
         $htmlcode .= '>' . $text . '</span>';

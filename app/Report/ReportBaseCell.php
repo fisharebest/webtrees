@@ -134,8 +134,22 @@ class ReportBaseCell extends ReportBaseElement
      * @param string $tcolor  Text color
      * @param bool   $reseth
      */
-    public function __construct($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, int $fill, int $stretch, string $bocolor, string $tcolor, bool $reseth)
-    {
+    public function __construct(
+        $width,
+        $height,
+        $border,
+        $align,
+        string $bgcolor,
+        string $style,
+        int $ln,
+        $top,
+        $left,
+        int $fill,
+        int $stretch,
+        string $bocolor,
+        string $tcolor,
+        bool $reseth
+    ) {
         $this->align     = $align;
         $this->border    = $border;
         $this->bgcolor   = $bgcolor;
@@ -157,7 +171,7 @@ class ReportBaseCell extends ReportBaseElement
     /**
      * Get the cell height
      *
-     * @param ReportHtml|ReportTcpdf $renderer
+     * @param HtmlRenderer|PdfRenderer $renderer
      *
      * @return float
      */
@@ -173,7 +187,7 @@ class ReportBaseCell extends ReportBaseElement
      *
      * @return void
      */
-    public function setUrl($url)
+    public function setUrl($url): void
     {
         $this->url = $url;
     }
@@ -181,7 +195,7 @@ class ReportBaseCell extends ReportBaseElement
     /**
      * Get the cell width
      *
-     * @param ReportHtml|ReportTcpdf $renderer
+     * @param HtmlRenderer|PdfRenderer $renderer
      *
      * @return float|array
      */

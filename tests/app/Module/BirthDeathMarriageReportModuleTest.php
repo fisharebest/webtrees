@@ -19,10 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Report\ReportHtml;
+use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
-use Fisharebest\Webtrees\Report\ReportPdf;
+use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Webtrees;
 use League\Flysystem\Adapter\NullAdapter;
@@ -33,38 +33,38 @@ use League\Flysystem\Filesystem;
  *
  * @covers \Fisharebest\Webtrees\Module\BirthDeathMarriageReportModule
  * @covers \Fisharebest\Webtrees\Module\ModuleReportTrait
- * @covers \Fisharebest\Webtrees\Report\AbstractReport
+ * @covers \Fisharebest\Webtrees\Report\AbstractRenderer
  * @covers \Fisharebest\Webtrees\Report\ReportBaseCell
  * @covers \Fisharebest\Webtrees\Report\ReportBaseElement
  * @covers \Fisharebest\Webtrees\Report\ReportBaseFootnote
  * @covers \Fisharebest\Webtrees\Report\ReportBaseHtml
  * @covers \Fisharebest\Webtrees\Report\ReportBaseImage
  * @covers \Fisharebest\Webtrees\Report\ReportBaseLine
- * @covers \Fisharebest\Webtrees\Report\ReportBasePageheader
+ * @covers \Fisharebest\Webtrees\Report\ReportBasePageHeader
  * @covers \Fisharebest\Webtrees\Report\ReportBaseText
  * @covers \Fisharebest\Webtrees\Report\ReportBaseTextbox
  * @covers \Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider
- * @covers \Fisharebest\Webtrees\Report\ReportHtml
+ * @covers \Fisharebest\Webtrees\Report\HtmlRenderer
  * @covers \Fisharebest\Webtrees\Report\ReportHtmlCell
  * @covers \Fisharebest\Webtrees\Report\ReportHtmlFootnote
  * @covers \Fisharebest\Webtrees\Report\ReportHtmlHtml
  * @covers \Fisharebest\Webtrees\Report\ReportHtmlImage
  * @covers \Fisharebest\Webtrees\Report\ReportHtmlLine
- * @covers \Fisharebest\Webtrees\Report\ReportHtmlPageheader
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlPageHeader
  * @covers \Fisharebest\Webtrees\Report\ReportHtmlText
  * @covers \Fisharebest\Webtrees\Report\ReportHtmlTextbox
  * @covers \Fisharebest\Webtrees\Report\ReportParserBase
  * @covers \Fisharebest\Webtrees\Report\ReportParserGenerate
  * @covers \Fisharebest\Webtrees\Report\ReportParserSetup
- * @covers \Fisharebest\Webtrees\Report\ReportPdf
+ * @covers \Fisharebest\Webtrees\Report\PdfRenderer
  * @covers \Fisharebest\Webtrees\Report\ReportPdfCell
  * @covers \Fisharebest\Webtrees\Report\ReportPdfFootnote
  * @covers \Fisharebest\Webtrees\Report\ReportPdfHtml
  * @covers \Fisharebest\Webtrees\Report\ReportPdfImage
  * @covers \Fisharebest\Webtrees\Report\ReportPdfLine
- * @covers \Fisharebest\Webtrees\Report\ReportPdfPageheader
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfPageHeader
  * @covers \Fisharebest\Webtrees\Report\ReportPdfText
- * @covers \Fisharebest\Webtrees\Report\ReportPdfTextbox
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfTextBox
  * @covers \Fisharebest\Webtrees\Report\ReportTcpdf
  */
 class BirthDeathMarriageReportModuleTest extends TestCase
@@ -95,13 +95,13 @@ class BirthDeathMarriageReportModuleTest extends TestCase
         $this->assertIsArray($report->reportProperties());
 
         ob_start();
-        new ReportParserGenerate($xml, new ReportHtml(), $vars, $tree, $data_filesystem);
+        new ReportParserGenerate($xml, new HtmlRenderer(), $vars, $tree, $data_filesystem);
         $html = ob_get_clean();
         $this->assertStringStartsWith('<', $html);
         $this->assertStringEndsWith('>', $html);
 
         ob_start();
-        new ReportParserGenerate($xml, new ReportPdf(), $vars, $tree, $data_filesystem);
+        new ReportParserGenerate($xml, new PdfRenderer(), $vars, $tree, $data_filesystem);
         $pdf = ob_get_clean();
         $this->assertStringStartsWith('%PDF', $pdf);
         $this->assertStringEndsWith("%%EOF\n", $pdf);
