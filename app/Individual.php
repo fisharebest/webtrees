@@ -893,28 +893,19 @@ class Individual extends GedcomRecord
      */
     public function childStepFamilies(): Collection
     {
-        $step_families = [];
+        $step_families = new Collection();
         $families      = $this->childFamilies();
         foreach ($families as $family) {
-            $father = $family->husband();
-            if ($father) {
-                foreach ($father->spouseFamilies() as $step_family) {
+            foreach ($family->spouses() as $parent) {
+                foreach ($parent->spouseFamilies() as $step_family) {
                     if (!$families->containsStrict($step_family)) {
-                        $step_families[] = $step_family;
-                    }
-                }
-            }
-            $mother = $family->wife();
-            if ($mother) {
-                foreach ($mother->spouseFamilies() as $step_family) {
-                    if (!$families->containsStrict($step_family)) {
-                        $step_families[] = $step_family;
+                        $step_families->add($step_family);
                     }
                 }
             }
         }
 
-        return new Collection($step_families);
+        return $step_families->unique();
     }
 
     /**
