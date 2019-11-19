@@ -563,6 +563,22 @@ use Fisharebest\Webtrees\I18N;
         </div>
     </fieldset>
 
+    <!-- EXPAND_NAMES -->
+    <fieldset class="form-group">
+        <div class="row">
+            <legend class="col-form-label col-sm-3">
+                <?= /* I18N: A configuration setting */ I18N::translate('Automatically expand names') ?>
+            </legend>
+            <div class="col-sm-9">
+                <?= view('components/radios-inline', ['name' => 'EXPAND_NAMES', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $tree->getPreference('EXPAND_NAMES')]) ?>
+                <p class="small text-muted">
+                    <?= /* I18N: Help text for the “Automatically expand names” configuration setting */
+                    I18N::translate('This option controls whether or not to automatically display content of a <i>Name</i> record on the Individual page.') ?>
+                </p>
+            </div>
+        </div>
+    </fieldset>
+
     <h3><?= I18N::translate('Places') ?></h3>
 
     <!-- SHOW_PEDIGREE_PLACES -->

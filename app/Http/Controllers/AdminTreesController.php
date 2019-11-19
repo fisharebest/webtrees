@@ -880,6 +880,7 @@ class AdminTreesController extends AbstractBaseController
         ])));
         $tree->setPreference('CHART_BOX_TAGS', implode(',', $request->getParsedBody()['CHART_BOX_TAGS'] ?? []));
         $tree->setPreference('CONTACT_USER_ID', $request->getParsedBody()['CONTACT_USER_ID'] ?? '');
+        $tree->setPreference('EXPAND_NAMES', $request->getParsedBody()['EXPAND_NAMES'] ?? '');
         $tree->setPreference('EXPAND_NOTES', $request->getParsedBody()['EXPAND_NOTES'] ?? '');
         $tree->setPreference('EXPAND_SOURCES', $request->getParsedBody()['EXPAND_SOURCES'] ?? '');
         $tree->setPreference('FAM_FACTS_ADD', implode(',', $request->getParsedBody()['FAM_FACTS_ADD'] ?? []));

@@ -1,0 +1,61 @@
+<?php
+
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact;
+
+/**
+ * @var Fact $fact
+ * @var Individual $individual
+ * @var array $list_items
+ * @var string $sources
+ * @var string $notes
+ * @var int $index
+ * @var Bool $show
+ * @var string $pending_class
+ */
+
+?>
+<div class="card<?= $pending_class ?>">
+    <div class="card-header" role="tab" id="name-header-<?= $index ?>">
+        <a data-toggle="collapse" data-parent="#individual-names" href="#name-content-<?= $index ?>"
+           aria-expanded="<?= $show ? 'true' : 'false' ?>"
+           aria-controls="name-content-<?= $index ?>"><?= $list_items[0]['detail'] ?></a>
+
+        <?php if ($fact->canEdit()) : ?>
+            <a class="btn btn-link" href="#"
+               data-confirm="<?= I18N::translate('Are you sure you want to delete this fact?') ?>"
+               data-post-url="<?= e(route(DeleteFact::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact_id' => $fact->id()])) ?>"
+               title="<?= I18N::translate('Delete this name') ?>">
+                <?= view('icons/delete') ?>
+                <span class="sr-only"><?= I18N::translate('Delete this name') ?></span>
+            </a><a class="btn btn-link"
+               href=" <?= e(route('edit-name', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) ?>"
+               title="<?= I18N::translate('Edit this name') ?>">
+                <?= view('icons/edit') ?>
+                <span class="sr-only"><?= I18N::translate('Edit this name') ?></span>
+            </a>
+        <?php endif; ?>
+
+    </div>
+
+    <div id="name-content-<?= $index ?>" class="collapse<?= $show ? ' show' : '' ?>" role="tabpanel"
+         aria-labelledby="name-header-<?= $index ?>">
+        <div class="card-body">
+            <dl>
+                <?php foreach ($list_items as $list_item) : ?>
+                    <dt class="label"><?= $list_item['term'] ?></dt>
+                    <dd class="field"><?= $list_item['detail'] ?></dd>
+                <?php endforeach; ?>
+            </dl>
+
+            <?php if ($sources !== '') : ?>
+                <div id="indi_sour" class="clearfix"><?= $sources ?></div>
+            <?php endif; ?>
+            <?php if ($notes !== '') : ?>
+                <div id="indi_note" class="clearfix"><?= $notes ?></div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
