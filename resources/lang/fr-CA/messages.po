@@ -1,19 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-10 16:16+0000\n"
-"PO-Revision-Date: 2019-11-09 18:04+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: French (Canada) <http://translate.webtrees.net/projects/webtrees/webtrees/fr_CA/>\n"
-"Language: fr-CA\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Country: CANADA\n"
-"X-Poedit-Language: French\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-19 08:22+0000\nLast-Translator: Jacqueline Tetreault <gazaillegen@gmail.com>\nLanguage-Team: French (Canada) <https://translate.webtrees.net/projects/webtrees/webtrees/fr_CA/>\nLanguage: fr-CA\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Country: CANADA\nX-Poedit-Language: French\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -231,8 +217,8 @@ msgstr[1] "%s jours"
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s famille"
+msgstr[1] "%s familles"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
@@ -736,17 +722,17 @@ msgstr "Message d’accueil aux visiteurs."
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:68
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "Lien vers les contacts du site."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "Lien vers la page Portail de webtrees."
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:60
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "Liste des branches d’une famille."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:94
@@ -756,7 +742,7 @@ msgstr "Une liste des modifications en attente d’approbation, et notifications
 #. I18N: Description of the “Families” module
 #: app/Module/FamilyListModule.php:59
 msgid "A list of families."
-msgstr ""
+msgstr "Liste des familles."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:85
@@ -766,12 +752,12 @@ msgstr "Liste de questions fréquentes et leurs réponses."
 #. I18N: Description of the “Individuals” module
 #: app/Module/IndividualListModule.php:59
 msgid "A list of individuals."
-msgstr ""
+msgstr "Liste des individus."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:62
 msgid "A list of media objects."
-msgstr ""
+msgstr "Liste des objets médias."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:62
@@ -781,17 +767,17 @@ msgstr "Liste des documents mis à jour récemment."
 #. I18N: Description of the “Repositories” module
 #: app/Module/RepositoryListModule.php:60
 msgid "A list of repositories."
-msgstr ""
+msgstr "Liste des dépôts d’archives."
 
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:60
 msgid "A list of shared notes."
-msgstr ""
+msgstr "Liste des notes partagées."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:60
 msgid "A list of sources."
-msgstr ""
+msgstr "Liste des sources."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:65
