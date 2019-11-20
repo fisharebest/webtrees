@@ -101,6 +101,7 @@ use Fisharebest\Webtrees\Module\LanguageGeorgian;
 use Fisharebest\Webtrees\Module\LanguageGerman;
 use Fisharebest\Webtrees\Module\LanguageGreek;
 use Fisharebest\Webtrees\Module\LanguageHebrew;
+use Fisharebest\Webtrees\Module\LanguageHindi;
 use Fisharebest\Webtrees\Module\LanguageHungarian;
 use Fisharebest\Webtrees\Module\LanguageIcelandic;
 use Fisharebest\Webtrees\Module\LanguageIndonesian;
@@ -328,6 +329,7 @@ class ModuleService
         'language-fr-CA'          => LanguageFrenchCanada::class,
         'language-gl'             => LanguageGalician::class,
         'language-he'             => LanguageHebrew::class,
+        'language-hi'             => LanguageHindi::class,
         'language-hr'             => LanguageCroatian::class,
         'language-hu'             => LanguageHungarian::class,
         'language-id'             => LanguageIndonesian::class,
