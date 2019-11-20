@@ -4,33 +4,22 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-10 16:16+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: hi\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-21 09:13+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
 msgid "(stillborn)"
-msgstr ""
+msgstr "(मृत)"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (in infancy)
 #: app/Age.php:123
 msgid "(in infancy)"
-msgstr ""
+msgstr "(शैशवावस्था में)"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (in childhood)
 #: app/Age.php:128
 msgid "(in childhood)"
-msgstr ""
+msgstr "(बचपन में)"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:136 app/Functions/FunctionsDate.php:56
@@ -40,8 +29,8 @@ msgstr ""
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s साल"
+msgstr[1] "%s साल"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:141 app/Functions/FunctionsDate.php:58
@@ -49,1931 +38,1931 @@ msgstr[1] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s माह"
+msgstr[1] "%s महीने"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:146 app/Functions/FunctionsDate.php:60
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s हफ्ता"
+msgstr[1] "%s हफ्ते"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:151 app/Functions/FunctionsDate.php:62
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s दिन"
+msgstr[1] "%s दिन"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/Age.php:163
 #, php-format
 msgid "(aged less than %s)"
-msgstr ""
+msgstr "(%s से कम आयु)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
 #: app/Age.php:168
 #, php-format
 msgid "(aged more than %s)"
-msgstr ""
+msgstr "(%s से अधिक आयु)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/Age.php:172
 #, php-format
 msgid "(aged %s)"
-msgstr ""
+msgstr "(आयु %s)"
 
 #. I18N: The gregorian calendar
 #: app/Date.php:229 app/Module/YahrzeitModule.php:249
 msgid "Gregorian"
-msgstr ""
+msgstr "ग्रेगोरियन"
 
 #. I18N: The julian calendar
 #: app/Date.php:231 resources/views/help/date.phtml:135
 msgid "Julian"
-msgstr ""
+msgstr "जूलियन"
 
 #. I18N: The French calendar
 #: app/Date.php:233 resources/views/help/date.phtml:183
 msgid "French"
-msgstr ""
+msgstr "फ्रेंच"
 
 #. I18N: The Hebrew/Jewish calendar
 #: app/Date.php:235 app/Module/YahrzeitModule.php:248
 #: resources/views/help/date.phtml:151
 msgid "Jewish"
-msgstr ""
+msgstr "यहूदी"
 
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:237 resources/views/help/date.phtml:167
 msgid "Hijri"
-msgstr ""
+msgstr "हिजरी"
 
 #. I18N: The Persian/Jalali calendar
 #: app/Date.php:239
 msgid "Jalali"
-msgstr ""
+msgstr "जलाली"
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:341
 #, php-format
 msgid "about %s"
-msgstr ""
+msgstr "लगभग %s"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:345
 #, php-format
 msgid "calculated %s"
-msgstr ""
+msgstr "परिकलित %s"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:349
 #, php-format
 msgid "estimated %s"
-msgstr ""
+msgstr "अनुमानित %s"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:353
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr ""
+msgstr "व्याख्यायित %s (%s)"
 
 #. I18N: Gedcom BEF dates
 #: app/Date.php:357
 #, php-format
 msgid "before %s"
-msgstr ""
+msgstr "%s से पहले"
 
 #. I18N: Gedcom AFT dates
 #: app/Date.php:361
 #, php-format
 msgid "after %s"
-msgstr ""
+msgstr "%s के बाद"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:365
 #, php-format
 msgid "from %s"
-msgstr ""
+msgstr "%s से"
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:369
 #, php-format
 msgid "to %s"
-msgstr ""
+msgstr "%s तक"
 
 #. I18N: Gedcom BET-AND dates
 #: app/Date.php:373
 #, php-format
 msgid "between %s and %s"
-msgstr ""
+msgstr "%s और %s के बीच"
 
 #. I18N: Gedcom FROM-TO dates
 #: app/Date.php:377
 #, php-format
 msgid "from %s to %s"
-msgstr ""
+msgstr "%s से %s तक"
 
 #: app/Date.php:380
 msgid "Invalid date"
-msgstr ""
+msgstr "अमान्य दिनांक"
 
 #: app/Date/AbstractCalendarDate.php:238
 msgid "Monday"
-msgstr ""
+msgstr "सोमवार"
 
 #: app/Date/AbstractCalendarDate.php:239
 msgid "Tuesday"
-msgstr ""
+msgstr "मंगलवार"
 
 #: app/Date/AbstractCalendarDate.php:240
 msgid "Wednesday"
-msgstr ""
+msgstr "बुधवार"
 
 #: app/Date/AbstractCalendarDate.php:241
 msgid "Thursday"
-msgstr ""
+msgstr "गुरुवार"
 
 #: app/Date/AbstractCalendarDate.php:242
 msgid "Friday"
-msgstr ""
+msgstr "शुक्रवार"
 
 #: app/Date/AbstractCalendarDate.php:243
 msgid "Saturday"
-msgstr ""
+msgstr "शनिवार"
 
 #: app/Date/AbstractCalendarDate.php:244
 msgid "Sunday"
-msgstr ""
+msgstr "रविवार"
 
 #. I18N: abbreviation for Monday
 #: app/Date/AbstractCalendarDate.php:265
 #: resources/views/edit/initialize-calendar-popup.phtml:23
 msgid "Mon"
-msgstr ""
+msgstr "सोम"
 
 #. I18N: abbreviation for Tuesday
 #: app/Date/AbstractCalendarDate.php:267
 #: resources/views/edit/initialize-calendar-popup.phtml:24
 msgid "Tue"
-msgstr ""
+msgstr "मंगल"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/AbstractCalendarDate.php:269
 #: resources/views/edit/initialize-calendar-popup.phtml:25
 msgid "Wed"
-msgstr ""
+msgstr "बुध"
 
 #. I18N: abbreviation for Thursday
 #: app/Date/AbstractCalendarDate.php:271
 #: resources/views/edit/initialize-calendar-popup.phtml:26
 msgid "Thu"
-msgstr ""
+msgstr "गुरु"
 
 #. I18N: abbreviation for Friday
 #: app/Date/AbstractCalendarDate.php:273
 #: resources/views/edit/initialize-calendar-popup.phtml:27
 msgid "Fri"
-msgstr ""
+msgstr "शुक्र"
 
 #. I18N: abbreviation for Saturday
 #: app/Date/AbstractCalendarDate.php:275
 #: resources/views/edit/initialize-calendar-popup.phtml:28
 msgid "Sat"
-msgstr ""
+msgstr "शनि"
 
 #. I18N: abbreviation for Sunday
 #: app/Date/AbstractCalendarDate.php:277
 #: resources/views/edit/initialize-calendar-popup.phtml:22
 msgid "Sun"
-msgstr ""
+msgstr "रवि"
 
 #: app/Date/AbstractGregorianJulianDate.php:63
 #: app/Module/StatisticsChartModule.php:803
 #: resources/views/edit/initialize-calendar-popup.phtml:7
 msgctxt "NOMINATIVE"
 msgid "January"
-msgstr ""
+msgstr "जनवरी"
 
 #: app/Date/AbstractGregorianJulianDate.php:64
 #: app/Module/StatisticsChartModule.php:804
 #: resources/views/edit/initialize-calendar-popup.phtml:8
 msgctxt "NOMINATIVE"
 msgid "February"
-msgstr ""
+msgstr "फरवरी"
 
 #: app/Date/AbstractGregorianJulianDate.php:65
 #: app/Module/StatisticsChartModule.php:805
 #: resources/views/edit/initialize-calendar-popup.phtml:9
 msgctxt "NOMINATIVE"
 msgid "March"
-msgstr ""
+msgstr "मार्च"
 
 #: app/Date/AbstractGregorianJulianDate.php:66
 #: app/Module/StatisticsChartModule.php:806
 #: resources/views/edit/initialize-calendar-popup.phtml:10
 msgctxt "NOMINATIVE"
 msgid "April"
-msgstr ""
+msgstr "अप्रैल"
 
 #: app/Date/AbstractGregorianJulianDate.php:67
 #: app/Module/StatisticsChartModule.php:807
 #: resources/views/edit/initialize-calendar-popup.phtml:11
 msgctxt "NOMINATIVE"
 msgid "May"
-msgstr ""
+msgstr "मई"
 
 #: app/Date/AbstractGregorianJulianDate.php:68
 #: app/Module/StatisticsChartModule.php:808
 #: resources/views/edit/initialize-calendar-popup.phtml:12
 msgctxt "NOMINATIVE"
 msgid "June"
-msgstr ""
+msgstr "जून"
 
 #: app/Date/AbstractGregorianJulianDate.php:69
 #: app/Module/StatisticsChartModule.php:809
 #: resources/views/edit/initialize-calendar-popup.phtml:13
 msgctxt "NOMINATIVE"
 msgid "July"
-msgstr ""
+msgstr "जुलाई"
 
 #: app/Date/AbstractGregorianJulianDate.php:70
 #: app/Module/StatisticsChartModule.php:810
 #: resources/views/edit/initialize-calendar-popup.phtml:14
 msgctxt "NOMINATIVE"
 msgid "August"
-msgstr ""
+msgstr "अगस्त"
 
 #: app/Date/AbstractGregorianJulianDate.php:71
 #: app/Module/StatisticsChartModule.php:811
 #: resources/views/edit/initialize-calendar-popup.phtml:15
 msgctxt "NOMINATIVE"
 msgid "September"
-msgstr ""
+msgstr "सितंबर"
 
 #: app/Date/AbstractGregorianJulianDate.php:72
 #: app/Module/StatisticsChartModule.php:812
 #: resources/views/edit/initialize-calendar-popup.phtml:16
 msgctxt "NOMINATIVE"
 msgid "October"
-msgstr ""
+msgstr "अक्टूबर"
 
 #: app/Date/AbstractGregorianJulianDate.php:73
 #: app/Module/StatisticsChartModule.php:813
 #: resources/views/edit/initialize-calendar-popup.phtml:17
 msgctxt "NOMINATIVE"
 msgid "November"
-msgstr ""
+msgstr "नवंबर"
 
 #: app/Date/AbstractGregorianJulianDate.php:74
 #: app/Module/StatisticsChartModule.php:814
 #: resources/views/edit/initialize-calendar-popup.phtml:18
 msgctxt "NOMINATIVE"
 msgid "December"
-msgstr ""
+msgstr "दिसंबर"
 
 #: app/Date/AbstractGregorianJulianDate.php:98
 msgctxt "GENITIVE"
 msgid "January"
-msgstr ""
+msgstr "जनवरी"
 
 #: app/Date/AbstractGregorianJulianDate.php:99
 msgctxt "GENITIVE"
 msgid "February"
-msgstr ""
+msgstr "फरवरी"
 
 #: app/Date/AbstractGregorianJulianDate.php:100
 msgctxt "GENITIVE"
 msgid "March"
-msgstr ""
+msgstr "मार्च"
 
 #: app/Date/AbstractGregorianJulianDate.php:101
 msgctxt "GENITIVE"
 msgid "April"
-msgstr ""
+msgstr "अप्रैल"
 
 #: app/Date/AbstractGregorianJulianDate.php:102
 msgctxt "GENITIVE"
 msgid "May"
-msgstr ""
+msgstr "मई"
 
 #: app/Date/AbstractGregorianJulianDate.php:103
 msgctxt "GENITIVE"
 msgid "June"
-msgstr ""
+msgstr "जून"
 
 #: app/Date/AbstractGregorianJulianDate.php:104
 msgctxt "GENITIVE"
 msgid "July"
-msgstr ""
+msgstr "जुलाई"
 
 #: app/Date/AbstractGregorianJulianDate.php:105
 msgctxt "GENITIVE"
 msgid "August"
-msgstr ""
+msgstr "अगस्त"
 
 #: app/Date/AbstractGregorianJulianDate.php:106
 msgctxt "GENITIVE"
 msgid "September"
-msgstr ""
+msgstr "सितंबर"
 
 #: app/Date/AbstractGregorianJulianDate.php:107
 msgctxt "GENITIVE"
 msgid "October"
-msgstr ""
+msgstr "अक्टूबर"
 
 #: app/Date/AbstractGregorianJulianDate.php:108
 msgctxt "GENITIVE"
 msgid "November"
-msgstr ""
+msgstr "नवंबर"
 
 #: app/Date/AbstractGregorianJulianDate.php:109
 msgctxt "GENITIVE"
 msgid "December"
-msgstr ""
+msgstr "दिसंबर"
 
 #: app/Date/AbstractGregorianJulianDate.php:133
 msgctxt "LOCATIVE"
 msgid "January"
-msgstr ""
+msgstr "जनवरी"
 
 #: app/Date/AbstractGregorianJulianDate.php:134
 msgctxt "LOCATIVE"
 msgid "February"
-msgstr ""
+msgstr "फरवरी"
 
 #: app/Date/AbstractGregorianJulianDate.php:135
 msgctxt "LOCATIVE"
 msgid "March"
-msgstr ""
+msgstr "मार्च"
 
 #: app/Date/AbstractGregorianJulianDate.php:136
 msgctxt "LOCATIVE"
 msgid "April"
-msgstr ""
+msgstr "अप्रैल"
 
 #: app/Date/AbstractGregorianJulianDate.php:137
 msgctxt "LOCATIVE"
 msgid "May"
-msgstr ""
+msgstr "मई"
 
 #: app/Date/AbstractGregorianJulianDate.php:138
 msgctxt "LOCATIVE"
 msgid "June"
-msgstr ""
+msgstr "जून"
 
 #: app/Date/AbstractGregorianJulianDate.php:139
 msgctxt "LOCATIVE"
 msgid "July"
-msgstr ""
+msgstr "जुलाई"
 
 #: app/Date/AbstractGregorianJulianDate.php:140
 msgctxt "LOCATIVE"
 msgid "August"
-msgstr ""
+msgstr "अगस्त"
 
 #: app/Date/AbstractGregorianJulianDate.php:141
 msgctxt "LOCATIVE"
 msgid "September"
-msgstr ""
+msgstr "सितंबर"
 
 #: app/Date/AbstractGregorianJulianDate.php:142
 msgctxt "LOCATIVE"
 msgid "October"
-msgstr ""
+msgstr "अक्टूबर"
 
 #: app/Date/AbstractGregorianJulianDate.php:143
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr ""
+msgstr "नवंबर"
 
 #: app/Date/AbstractGregorianJulianDate.php:144
 msgctxt "LOCATIVE"
 msgid "December"
-msgstr ""
+msgstr "दिसंबर"
 
 #: app/Date/AbstractGregorianJulianDate.php:168
 msgctxt "INSTRUMENTAL"
 msgid "January"
-msgstr ""
+msgstr "जनवरी"
 
 #: app/Date/AbstractGregorianJulianDate.php:169
 msgctxt "INSTRUMENTAL"
 msgid "February"
-msgstr ""
+msgstr "फरवरी"
 
 #: app/Date/AbstractGregorianJulianDate.php:170
 msgctxt "INSTRUMENTAL"
 msgid "March"
-msgstr ""
+msgstr "मार्च"
 
 #: app/Date/AbstractGregorianJulianDate.php:171
 msgctxt "INSTRUMENTAL"
 msgid "April"
-msgstr ""
+msgstr "अप्रैल"
 
 #: app/Date/AbstractGregorianJulianDate.php:172
 msgctxt "INSTRUMENTAL"
 msgid "May"
-msgstr ""
+msgstr "मई"
 
 #: app/Date/AbstractGregorianJulianDate.php:173
 msgctxt "INSTRUMENTAL"
 msgid "June"
-msgstr ""
+msgstr "जून"
 
 #: app/Date/AbstractGregorianJulianDate.php:174
 msgctxt "INSTRUMENTAL"
 msgid "July"
-msgstr ""
+msgstr "जुलाई"
 
 #: app/Date/AbstractGregorianJulianDate.php:175
 msgctxt "INSTRUMENTAL"
 msgid "August"
-msgstr ""
+msgstr "अगस्त"
 
 #: app/Date/AbstractGregorianJulianDate.php:176
 msgctxt "INSTRUMENTAL"
 msgid "September"
-msgstr ""
+msgstr "सितंबर"
 
 #: app/Date/AbstractGregorianJulianDate.php:177
 msgctxt "INSTRUMENTAL"
 msgid "October"
-msgstr ""
+msgstr "अक्टूबर"
 
 #: app/Date/AbstractGregorianJulianDate.php:178
 msgctxt "INSTRUMENTAL"
 msgid "November"
-msgstr ""
+msgstr "नवंबर"
 
 #: app/Date/AbstractGregorianJulianDate.php:179
 msgctxt "INSTRUMENTAL"
 msgid "December"
-msgstr ""
+msgstr "दिसंबर"
 
 #: app/Date/AbstractGregorianJulianDate.php:201
 msgctxt "Abbreviation for January"
 msgid "Jan"
-msgstr ""
+msgstr "जन"
 
 #: app/Date/AbstractGregorianJulianDate.php:202
 msgctxt "Abbreviation for February"
 msgid "Feb"
-msgstr ""
+msgstr "फर"
 
 #: app/Date/AbstractGregorianJulianDate.php:203
 msgctxt "Abbreviation for March"
 msgid "Mar"
-msgstr ""
+msgstr "मार्च"
 
 #: app/Date/AbstractGregorianJulianDate.php:204
 msgctxt "Abbreviation for April"
 msgid "Apr"
-msgstr ""
+msgstr "अप्रै"
 
 #: app/Date/AbstractGregorianJulianDate.php:205
 msgctxt "Abbreviation for May"
 msgid "May"
-msgstr ""
+msgstr "मई"
 
 #: app/Date/AbstractGregorianJulianDate.php:206
 msgctxt "Abbreviation for June"
 msgid "Jun"
-msgstr ""
+msgstr "जून"
 
 #: app/Date/AbstractGregorianJulianDate.php:207
 msgctxt "Abbreviation for July"
 msgid "Jul"
-msgstr ""
+msgstr "जुल"
 
 #: app/Date/AbstractGregorianJulianDate.php:208
 msgctxt "Abbreviation for August"
 msgid "Aug"
-msgstr ""
+msgstr "अग"
 
 #: app/Date/AbstractGregorianJulianDate.php:209
 msgctxt "Abbreviation for September"
 msgid "Sep"
-msgstr ""
+msgstr "सित"
 
 #: app/Date/AbstractGregorianJulianDate.php:210
 msgctxt "Abbreviation for October"
 msgid "Oct"
-msgstr ""
+msgstr "अक"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
 msgid "Nov"
-msgstr ""
+msgstr "नव"
 
 #: app/Date/AbstractGregorianJulianDate.php:212
 msgctxt "Abbreviation for December"
 msgid "Dec"
-msgstr ""
+msgstr "दिस"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:87
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "वेनडेमियर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:89
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "ब्रूमेयर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:91
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "फ्रीमैर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:93
 msgctxt "NOMINATIVE"
 msgid "Nivose"
-msgstr ""
+msgstr "निवोस"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:95
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
-msgstr ""
+msgstr "प्लूविओस"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:97
 msgctxt "NOMINATIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "वेन्टोस"
 
 #. I18N: a month in the French republican calendar
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:100
 msgctxt "NOMINATIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "जर्मिनल"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:102
 msgctxt "NOMINATIVE"
 msgid "Floreal"
-msgstr ""
+msgstr "फ्लोरिअल"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:104
 msgctxt "NOMINATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "प्रेरिअल"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:106
 msgctxt "NOMINATIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "मेसीडोर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:108
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "थर्मिडोर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:110
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "फ्रुक्टिडोर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:112
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "जोर्स कम्प्लीमेंटरेस"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:135
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "वेनडेमियर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:137
 msgctxt "GENITIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "ब्रूमेयर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:139
 msgctxt "GENITIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "फ्रीमैर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:141
 msgctxt "GENITIVE"
 msgid "Nivose"
-msgstr ""
+msgstr "निवोस"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:143
 msgctxt "GENITIVE"
 msgid "Pluviose"
-msgstr ""
+msgstr "प्लूविओस"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:145
 msgctxt "GENITIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "वेन्टोस"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:147
 msgctxt "GENITIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "जर्मिनल"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:149
 msgctxt "GENITIVE"
 msgid "Floreal"
-msgstr ""
+msgstr "फ्लोरिअल"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:151
 msgctxt "GENITIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "प्रेरिअल"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:153
 msgctxt "GENITIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "मेसीडोर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:155
 msgctxt "GENITIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "थर्मिडोर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
 msgctxt "GENITIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "फ्रुक्टिडोर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "जोर्स कम्प्लीमेंटरेस"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:182
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "वेनडेमियर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:184
 msgctxt "LOCATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "ब्रूमेयर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:186
 msgctxt "LOCATIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "फ्रीमैर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:188
 msgctxt "LOCATIVE"
 msgid "Nivose"
-msgstr ""
+msgstr "निवोस"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:190
 msgctxt "LOCATIVE"
 msgid "Pluviose"
-msgstr ""
+msgstr "प्लूविओस"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:192
 msgctxt "LOCATIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "वेन्टोस"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:194
 msgctxt "LOCATIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "जर्मिनल"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:196
 msgctxt "LOCATIVE"
 msgid "Floreal"
-msgstr ""
+msgstr "फ्लोरिअल"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:198
 msgctxt "LOCATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "प्रेरिअल"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:200
 msgctxt "LOCATIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "मेसीडोर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:202
 msgctxt "LOCATIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "थर्मिडोर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:204
 msgctxt "LOCATIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "फ्रुक्टिडोर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:206
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "जोर्स कम्प्लीमेंटरेस"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:229
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "वेनडेमियर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:231
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
-msgstr ""
+msgstr "ब्रूमेयर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:233
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
-msgstr ""
+msgstr "फ्रीमैर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:235
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
-msgstr ""
+msgstr "निवोस"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:237
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
-msgstr ""
+msgstr "प्लूविओस"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:239
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
-msgstr ""
+msgstr "वेन्टोस"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:241
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
-msgstr ""
+msgstr "जर्मिनल"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:243
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
-msgstr ""
+msgstr "फ्लोरिअल"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:245
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
-msgstr ""
+msgstr "प्रेरिअल"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:247
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
-msgstr ""
+msgstr "मेसीडोर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:249
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
-msgstr ""
+msgstr "थर्मिडोर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:251
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
-msgstr ""
+msgstr "फ्रुक्टिडोर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:253
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr ""
+msgstr "जोर्स कम्प्लीमेंटरेस"
 
 #. I18N: The first day in the French republican calendar
 #: app/Date/FrenchDate.php:287
 msgid "Primidi"
-msgstr ""
+msgstr "प्रीमिडी"
 
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:289
 msgid "Duodi"
-msgstr ""
+msgstr "डुओडी"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:291
 msgid "Tridi"
-msgstr ""
+msgstr "ट्राईडी"
 
 #. I18N: The fourth day in the French republican calendar
 #: app/Date/FrenchDate.php:293
 msgid "Quartidi"
-msgstr ""
+msgstr "क्वार्टीडी"
 
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:295
 msgid "Quintidi"
-msgstr ""
+msgstr "क्विंटिडी"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:297
 msgid "Sextidi"
-msgstr ""
+msgstr "सेक्सटीडी"
 
 #. I18N: The seventh day in the French republican calendar
 #: app/Date/FrenchDate.php:299
 msgid "Septidi"
-msgstr ""
+msgstr "सेप्टिडी"
 
 #. I18N: The eighth day in the French republican calendar
 #: app/Date/FrenchDate.php:301
 msgid "Octidi"
-msgstr ""
+msgstr "ऑक्टीडी"
 
 #. I18N: The ninth day in the French republican calendar
 #: app/Date/FrenchDate.php:303
 msgid "Nonidi"
-msgstr ""
+msgstr "नोनिडी"
 
 #. I18N: The tenth day in the French republican calendar
 #: app/Date/FrenchDate.php:305
 msgid "Decidi"
-msgstr ""
+msgstr "डेसिडी"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:83
 msgctxt "NOMINATIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "मुहर्रम"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:85
 msgctxt "NOMINATIVE"
 msgid "Safar"
-msgstr ""
+msgstr "सफर"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:87
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "रबी ऊल-अव्वल"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:89
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "रबी ऊल-सानी"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:91
 msgctxt "NOMINATIVE"
 msgid "Jumada al-awwal"
-msgstr ""
+msgstr "जमादिल अव्वल"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:93
 msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
-msgstr ""
+msgstr "जमादिल सानी"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:95
 msgctxt "NOMINATIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "रज्जब"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:97
 msgctxt "NOMINATIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "शाबान"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:99
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "रमजान"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:101
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "शव्वाल"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:103
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "ज़िल क़दा"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:105
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "ज़िल हज"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:128
 msgctxt "GENITIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "मुहर्रम"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:130
 msgctxt "GENITIVE"
 msgid "Safar"
-msgstr ""
+msgstr "सफर"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:132
 msgctxt "GENITIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "रबी ऊल-अव्वल"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:134
 msgctxt "GENITIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "रबी ऊल-सानी"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:136
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
-msgstr ""
+msgstr "जमादिल अव्वल"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:138
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
-msgstr ""
+msgstr "जमादिल सानी"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:140
 msgctxt "GENITIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "रज्जब"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:142
 msgctxt "GENITIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "शाबान"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:144
 msgctxt "GENITIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "रमजान"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:146
 msgctxt "GENITIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "शव्वाल"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:148
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "ज़िल क़दा"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:150
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "ज़िल हज"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:173
 msgctxt "LOCATIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "मुहर्रम"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:175
 msgctxt "LOCATIVE"
 msgid "Safar"
-msgstr ""
+msgstr "सफर"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:177
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "रबी ऊल-अव्वल"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:179
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "रबी ऊल-सानी"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:181
 msgctxt "LOCATIVE"
 msgid "Jumada al-awwal"
-msgstr ""
+msgstr "जमादिल अव्वल"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:183
 msgctxt "LOCATIVE"
 msgid "Jumada al-thani"
-msgstr ""
+msgstr "जमादिल सानी"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:185
 msgctxt "LOCATIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "रज्जब"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:187
 msgctxt "LOCATIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "शाबान"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:189
 msgctxt "LOCATIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "रमजान"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:191
 msgctxt "LOCATIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "शव्वाल"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:193
 msgctxt "LOCATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "ज़िल क़दा"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:195
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "ज़िल हज"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:218
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
-msgstr ""
+msgstr "मुहर्रम"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:220
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
-msgstr ""
+msgstr "सफर"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:222
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "रबी ऊल-अव्वल"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:224
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "रबी ऊल-सानी"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:226
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-awwal"
-msgstr ""
+msgstr "जमादिल अव्वल"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:228
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-thani"
-msgstr ""
+msgstr "जमादिल सानी"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:230
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
-msgstr ""
+msgstr "रज्जब"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:232
 msgctxt "INSTRUMENTAL"
 msgid "Sha’aban"
-msgstr ""
+msgstr "शाबान"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:234
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
-msgstr ""
+msgstr "रमजान"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:236
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
-msgstr ""
+msgstr "शव्वाल"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:238
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "ज़िल क़दा"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:240
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "ज़िल हज"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:80
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "फरवरदिन"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:82
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "ओर्दिबेहेश्त"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:84
 msgctxt "NOMINATIVE"
 msgid "Khordad"
-msgstr ""
+msgstr "खोरदाद"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:86
 msgctxt "NOMINATIVE"
 msgid "Tir"
-msgstr ""
+msgstr "तीर"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:88
 msgctxt "NOMINATIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "मोरदाद"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:90
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "शहरीवर"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:92
 msgctxt "NOMINATIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "मेहर"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:94
 msgctxt "NOMINATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "आबान"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:96
 msgctxt "NOMINATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "आज़र"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:98
 msgctxt "NOMINATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "दे"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:100
 msgctxt "NOMINATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "बेहमन"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:102
 msgctxt "NOMINATIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "इसफंद"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:125
 msgctxt "GENITIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "फरवरदिन"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:127
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "ओर्दिबेहेश्त"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:129
 msgctxt "GENITIVE"
 msgid "Khordad"
-msgstr ""
+msgstr "खोरदाद"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:131
 msgctxt "GENITIVE"
 msgid "Tir"
-msgstr ""
+msgstr "तीर"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:133
 msgctxt "GENITIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "मोरदाद"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:135
 msgctxt "GENITIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "शहरीवर"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:137
 msgctxt "GENITIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "मेहर"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:139
 msgctxt "GENITIVE"
 msgid "Aban"
-msgstr ""
+msgstr "आबान"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:141
 msgctxt "GENITIVE"
 msgid "Azar"
-msgstr ""
+msgstr "आज़र"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:143
 msgctxt "GENITIVE"
 msgid "Dey"
-msgstr ""
+msgstr "दे"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:145
 msgctxt "GENITIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "बेहमन"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:147
 msgctxt "GENITIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "इसफंद"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:170
 msgctxt "LOCATIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "फरवरदिन"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:172
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "ओर्दिबेहेश्त"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:174
 msgctxt "LOCATIVE"
 msgid "Khordad"
-msgstr ""
+msgstr "खोरदाद"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:176
 msgctxt "LOCATIVE"
 msgid "Tir"
-msgstr ""
+msgstr "तीर"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:178
 msgctxt "LOCATIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "मोरदाद"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:180
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "शहरीवर"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:182
 msgctxt "LOCATIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "मेहर"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:184
 msgctxt "LOCATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "आबान"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:186
 msgctxt "LOCATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "आज़र"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:188
 msgctxt "LOCATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "दे"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:190
 msgctxt "LOCATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "बेहमन"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:192
 msgctxt "LOCATIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "इसफंद"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:215
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
-msgstr ""
+msgstr "फरवरदिन"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:217
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "ओर्दिबेहेश्त"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:219
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
-msgstr ""
+msgstr "खोरदाद"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:221
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
-msgstr ""
+msgstr "तीर"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:223
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
-msgstr ""
+msgstr "मोरदाद"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:225
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
-msgstr ""
+msgstr "शहरीवर"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:227
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
-msgstr ""
+msgstr "मेहर"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:229
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr ""
+msgstr "आबान"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:231
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
-msgstr ""
+msgstr "आज़र"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:233
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
-msgstr ""
+msgstr "दे"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:235
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
-msgstr ""
+msgstr "बेहमन"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:237
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
-msgstr ""
+msgstr "इसफंद"
 
 #: app/Date/JalaliDate.php:259
 msgctxt "Abbreviation for Persian month: Farvardin"
 msgid "Far"
-msgstr ""
+msgstr "फर"
 
 #: app/Date/JalaliDate.php:260
 msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
-msgstr ""
+msgstr "ओर"
 
 #: app/Date/JalaliDate.php:261
 msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
-msgstr ""
+msgstr "खोर"
 
 #: app/Date/JalaliDate.php:262
 msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
-msgstr ""
+msgstr "तीर"
 
 #: app/Date/JalaliDate.php:263
 msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
-msgstr ""
+msgstr "मोर"
 
 #: app/Date/JalaliDate.php:264
 msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
-msgstr ""
+msgstr "शह"
 
 #: app/Date/JalaliDate.php:265
 msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
-msgstr ""
+msgstr "मेहर"
 
 #: app/Date/JalaliDate.php:266
 msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
-msgstr ""
+msgstr "आबान"
 
 #: app/Date/JalaliDate.php:267
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
-msgstr ""
+msgstr "आज़र"
 
 #: app/Date/JalaliDate.php:268
 msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
-msgstr ""
+msgstr "दे"
 
 #: app/Date/JalaliDate.php:269
 msgctxt "Abbreviation for Persian month: Bahman"
 msgid "Bah"
-msgstr ""
+msgstr "बेह"
 
 #: app/Date/JalaliDate.php:270
 msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
-msgstr ""
+msgstr "इसफ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:140
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "तिशरी"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:142
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "चेशवन"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:144
 msgctxt "NOMINATIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "किसलेव"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:146
 msgctxt "NOMINATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "तेवत"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:148
 msgctxt "NOMINATIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "शेवत"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:150
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "अदार अव्वल"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:152
 msgctxt "NOMINATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "अदार"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:154
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "अदार दुवम"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:156
 msgctxt "NOMINATIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "निसान"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:158
 msgctxt "NOMINATIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "यार"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:160
 msgctxt "NOMINATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "सीवान"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:162
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "तामुज़"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:164
 msgctxt "NOMINATIVE"
 msgid "Av"
-msgstr ""
+msgstr "आव"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:166
 msgctxt "NOMINATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "एलूल"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:193
 msgctxt "GENITIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "तिशरी"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:195
 msgctxt "GENITIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "चेशवन"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:197
 msgctxt "GENITIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "किसलेव"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:199
 msgctxt "GENITIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "तेवत"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:201
 msgctxt "GENITIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "शेवत"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:203
 msgctxt "GENITIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "अदार अव्वल"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:205
 msgctxt "GENITIVE"
 msgid "Adar"
-msgstr ""
+msgstr "अदार"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:207
 msgctxt "GENITIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "अदार दुवम"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:209
 msgctxt "GENITIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "निसान"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:211
 msgctxt "GENITIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "यार"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:213
 msgctxt "GENITIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "सीवान"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:215
 msgctxt "GENITIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "तामुज़"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:217
 msgctxt "GENITIVE"
 msgid "Av"
-msgstr ""
+msgstr "आव"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:219
 msgctxt "GENITIVE"
 msgid "Elul"
-msgstr ""
+msgstr "एलूल"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:246
 msgctxt "LOCATIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "तिशरी"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:248
 msgctxt "LOCATIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "चेशवन"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:250
 msgctxt "LOCATIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "किसलेव"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:252
 msgctxt "LOCATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "तेवत"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:254
 msgctxt "LOCATIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "शेवत"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:256
 msgctxt "LOCATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "अदार अव्वल"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:258
 msgctxt "LOCATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "अदार"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:260
 msgctxt "LOCATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "अदार दुवम"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:262
 msgctxt "LOCATIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "निसान"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:264
 msgctxt "LOCATIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "यार"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:266
 msgctxt "LOCATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "सीवान"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:268
 msgctxt "LOCATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "तामुज़"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:270
 msgctxt "LOCATIVE"
 msgid "Av"
-msgstr ""
+msgstr "आव"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:272
 msgctxt "LOCATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "एलूल"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:299
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
-msgstr ""
+msgstr "तिशरी"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:301
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
-msgstr ""
+msgstr "चेशवन"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:303
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
-msgstr ""
+msgstr "किसलेव"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:305
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
-msgstr ""
+msgstr "तेवत"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:307
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
-msgstr ""
+msgstr "शेवत"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:309
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
-msgstr ""
+msgstr "अदार अव्वल"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:311
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
-msgstr ""
+msgstr "अदार"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:313
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr ""
+msgstr "अदार दुवम"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:315
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
-msgstr ""
+msgstr "निसान"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:317
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
-msgstr ""
+msgstr "यार"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:319
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
-msgstr ""
+msgstr "सीवान"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:321
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
-msgstr ""
+msgstr "तामुज़"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:323
 msgctxt "INSTRUMENTAL"
 msgid "Av"
-msgstr ""
+msgstr "आव"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:325
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
-msgstr ""
+msgstr "एलूल"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s&nbsp;बीसीई"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s&nbsp;सीई"
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
 msgid "This family does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "यह परिवार मौजूद नहीं है या आपको इसे देखने की अनुमति नहीं है।"
 
 #: app/Exceptions/GedcomErrorException.php:37
 msgid "Invalid GEDCOM record"
-msgstr ""
+msgstr "अमान्य GEDCOM रिकॉर्ड"
 
 #: app/Exceptions/IndividualAccessDeniedException.php:35
 #: app/Exceptions/IndividualNotFoundException.php:35
 msgid "This individual does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "यह व्यक्ति मौजूद नहीं है या आपको इसे देखने की अनुमति नहीं है।"
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
 msgid "This media object does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "यह मीडिया ऑब्जेक्ट मौजूद नहीं है या आपको इसे देखने की अनुमति नहीं है।"
 
 #: app/Exceptions/NoteAccessDeniedException.php:35
 #: app/Exceptions/NoteNotFoundException.php:35
 msgid "This note does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "यह नोट मौजूद नहीं है या आपको इसे देखने की अनुमति नहीं है।"
 
 #: app/Exceptions/RecordAccessDeniedException.php:35
 #: app/Exceptions/RecordNotFoundException.php:35
 msgid "This record does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "यह रिकॉर्ड मौजूद नहीं है या आपको इसे देखने की अनुमति नहीं है।"
 
 #: app/Exceptions/RepositoryAccessDeniedException.php:35
 #: app/Exceptions/RepositoryNotFoundException.php:35
 msgid "This repository does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "यह कोष मौजूद नहीं है या आपको इसे देखने की अनुमति नहीं है।"
 
 #: app/Exceptions/SourceAccessDeniedException.php:35
 #: app/Exceptions/SourceNotFoundException.php:35
 msgid "This source does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "यह स्रोत मौजूद नहीं है या आपको इसे देखने की अनुमति नहीं है।"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:586 app/Functions/FunctionsPrintFacts.php:548
 #: app/GedcomTag.php:2132
 #, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-msgstr ""
+msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 
 #: app/Family.php:413 app/Family.php:431
 #: app/Http/Controllers/ListController.php:200
 #: app/Http/Controllers/ListController.php:689 app/Individual.php:1265
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Family.php:413 app/Family.php:431
 #: app/Http/Controllers/ListController.php:185
@@ -1981,772 +1970,772 @@ msgstr ""
 #: app/Http/Controllers/ListController.php:706 app/Individual.php:1264
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Functions/Functions.php:46
 msgid "File successfully uploaded"
-msgstr ""
+msgstr "फ़ाइल सफलतापूर्वक अपलोड हो गई"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:50
 msgid "The uploaded file exceeds the allowed size."
-msgstr ""
+msgstr "अपलोड की गई फ़ाइल अनुमत साईज़ से अधिक बड़ी है।"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:53
 msgid "The file was only partially uploaded. Please try again."
-msgstr ""
+msgstr "फ़ाइल केवल टुकड़ों में अपलोड की गई थी।  कृपया पुन: प्रयास करें।"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:56
 msgid "No file was received. Please try again."
-msgstr ""
+msgstr "कोई फाइल नहीं मिली।  कृपया पुन: प्रयास करें।"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:59
 msgid "The PHP temporary folder is missing."
-msgstr ""
+msgstr "PHP टेम्पररी फ़ोल्डर गायब है।"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:62
 msgid "PHP failed to write to disk."
-msgstr ""
+msgstr "PHP डिस्क में लिखने में विफल रही।"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:65
 msgid "PHP blocked the file because of its extension."
-msgstr ""
+msgstr "PHP ने फ़ाइल को इसके एक्सटेंशन के कारण से ब्लॉक कर दिया।"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:189
 msgid "himself"
-msgstr ""
+msgstr "ख़ुद"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:192
 msgid "herself"
-msgstr ""
+msgstr "ख़ुद"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:195
 msgid "themself"
-msgstr ""
+msgstr "ख़ुद"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:376
 msgctxt "MALE"
 msgid "first cousin"
-msgstr ""
+msgstr "पहला कज़िन"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:379
 msgctxt "MALE"
 msgid "second cousin"
-msgstr ""
+msgstr "दूसरा कज़िन"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:382
 msgctxt "MALE"
 msgid "third cousin"
-msgstr ""
+msgstr "तीसरा कज़िन"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:385
 msgctxt "MALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "चौथा कज़िन"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:388
 msgctxt "MALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "पांचवां कज़िन"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:391
 msgctxt "MALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "छठा कज़िन"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:394
 msgctxt "MALE"
 msgid "seventh cousin"
-msgstr ""
+msgstr "सातवां कज़िन"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:397
 msgctxt "MALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "आठवां कज़िन"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:400
 msgctxt "MALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "नौवां कज़िन"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:403
 msgctxt "MALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "दसवां कज़िन"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:406
 msgctxt "MALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "ग्यारहवां कज़िन"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:409
 msgctxt "MALE"
 msgid "twelfth cousin"
-msgstr ""
+msgstr "बारहवाँ कज़िन"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:412
 msgctxt "MALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "तेरहवां कज़िन"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:415
 msgctxt "MALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "चौदहवां कज़िन"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:418
 msgctxt "MALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "पंद्रहवां कज़िन"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:421
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × कज़िन"
 
 #: app/Functions/Functions.php:428
 msgctxt "FEMALE"
 msgid "first cousin"
-msgstr ""
+msgstr "पहली कज़िन"
 
 #: app/Functions/Functions.php:430
 msgctxt "FEMALE"
 msgid "second cousin"
-msgstr ""
+msgstr "दूसरी कज़िन"
 
 #: app/Functions/Functions.php:432
 msgctxt "FEMALE"
 msgid "third cousin"
-msgstr ""
+msgstr "तीसरी कज़िन"
 
 #: app/Functions/Functions.php:434
 msgctxt "FEMALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "चौथी कज़िन"
 
 #: app/Functions/Functions.php:436
 msgctxt "FEMALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "पांचवी कज़िन"
 
 #: app/Functions/Functions.php:438
 msgctxt "FEMALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "छठी कज़िन"
 
 #: app/Functions/Functions.php:440
 msgctxt "FEMALE"
 msgid "seventh cousin"
-msgstr ""
+msgstr "सातवीं कज़िन"
 
 #: app/Functions/Functions.php:442
 msgctxt "FEMALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "आठवीं कज़िन"
 
 #: app/Functions/Functions.php:444
 msgctxt "FEMALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "नौवीं कज़िन"
 
 #: app/Functions/Functions.php:446
 msgctxt "FEMALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "दसवीं कज़िन"
 
 #: app/Functions/Functions.php:448
 msgctxt "FEMALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "ग्यारहवीं कज़िन"
 
 #: app/Functions/Functions.php:450
 msgctxt "FEMALE"
 msgid "twelfth cousin"
-msgstr ""
+msgstr "बारहवीं कज़िन"
 
 #: app/Functions/Functions.php:452
 msgctxt "FEMALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "तेरहवीं कज़िन"
 
 #: app/Functions/Functions.php:454
 msgctxt "FEMALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "चौदहवीं कज़िन"
 
 #: app/Functions/Functions.php:456
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "पन्द्रहवीं कज़िन"
 
 #: app/Functions/Functions.php:458
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × कज़िन"
 
 #: app/Functions/Functions.php:464
 msgid "first cousin"
-msgstr ""
+msgstr "पहले कज़िन"
 
 #: app/Functions/Functions.php:466
 msgid "second cousin"
-msgstr ""
+msgstr "दूसरे कज़िन"
 
 #: app/Functions/Functions.php:468
 msgid "third cousin"
-msgstr ""
+msgstr "तीसरे कज़िन"
 
 #: app/Functions/Functions.php:470
 msgid "fourth cousin"
-msgstr ""
+msgstr "चौथे कज़िन"
 
 #: app/Functions/Functions.php:472
 msgid "fifth cousin"
-msgstr ""
+msgstr "पाँचवे कज़िन"
 
 #: app/Functions/Functions.php:474
 msgid "sixth cousin"
-msgstr ""
+msgstr "छठे कज़िन"
 
 #: app/Functions/Functions.php:476
 msgid "seventh cousin"
-msgstr ""
+msgstr "सातवें कज़िन"
 
 #: app/Functions/Functions.php:478
 msgid "eighth cousin"
-msgstr ""
+msgstr "आठवें कज़िन"
 
 #: app/Functions/Functions.php:480
 msgid "ninth cousin"
-msgstr ""
+msgstr "नौवें कज़िन"
 
 #: app/Functions/Functions.php:482
 msgid "tenth cousin"
-msgstr ""
+msgstr "दसवें कज़िन"
 
 #: app/Functions/Functions.php:484
 msgid "eleventh cousin"
-msgstr ""
+msgstr "ग्यारहवें कज़िन"
 
 #: app/Functions/Functions.php:486
 msgid "twelfth cousin"
-msgstr ""
+msgstr "बारहवें कज़िन"
 
 #: app/Functions/Functions.php:488
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "तेरहवें कज़िन"
 
 #: app/Functions/Functions.php:490
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "चौदहवें कज़िन"
 
 #: app/Functions/Functions.php:492
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "पंद्रहवें कज़िन"
 
 #: app/Functions/Functions.php:494
 #, php-format
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × कज़िन"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:514
 #, php-format
 msgctxt "MALE"
 msgid "first %s"
-msgstr ""
+msgstr "पहला %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:517
 #, php-format
 msgctxt "MALE"
 msgid "second %s"
-msgstr ""
+msgstr "दूसरा %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:520
 #, php-format
 msgctxt "MALE"
 msgid "third %s"
-msgstr ""
+msgstr "तीसरा %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:523
 #, php-format
 msgctxt "MALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "चौथा %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:526
 #, php-format
 msgctxt "MALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "पांचवां %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:529
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:537
 #, php-format
 msgctxt "FEMALE"
 msgid "first %s"
-msgstr ""
+msgstr "पहली %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:540
 #, php-format
 msgctxt "FEMALE"
 msgid "second %s"
-msgstr ""
+msgstr "दूसरी %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:543
 #, php-format
 msgctxt "FEMALE"
 msgid "third %s"
-msgstr ""
+msgstr "तीसरी %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:546
 #, php-format
 msgctxt "FEMALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "चौथी %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:549
 #, php-format
 msgctxt "FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "पांचवी %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:552
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:559
 #, php-format
 msgid "first %s"
-msgstr ""
+msgstr "पहले %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:562
 #, php-format
 msgid "second %s"
-msgstr ""
+msgstr "दूसरे %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:565
 #, php-format
 msgid "third %s"
-msgstr ""
+msgstr "तीसरे %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:568
 #, php-format
 msgid "fourth %s"
-msgstr ""
+msgstr "चौथे %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:571
 #, php-format
 msgid "fifth %s"
-msgstr ""
+msgstr "पांचवें %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:574
 #, php-format
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #: app/Functions/Functions.php:617
 msgid "self"
-msgstr ""
+msgstr "स्वयं"
 
 #: app/Functions/Functions.php:620
 msgid "mother"
-msgstr ""
+msgstr "माता"
 
 #: app/Functions/Functions.php:622
 msgid "father"
-msgstr ""
+msgstr "पिता"
 
 #: app/Functions/Functions.php:624
 msgid "parent"
-msgstr ""
+msgstr "माँ-बाप"
 
 #: app/Functions/Functions.php:631
 msgid "ex-husband"
-msgstr ""
+msgstr "पिछले-पति"
 
 #: app/Functions/Functions.php:634
 msgid "husband"
-msgstr ""
+msgstr "पति"
 
 #: app/Functions/Functions.php:638
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "पिछले-साथी"
 
 #: app/Functions/Functions.php:644
 msgctxt "MALE"
 msgid "partner"
-msgstr ""
+msgstr "साथी"
 
 #: app/Functions/Functions.php:651
 msgid "ex-wife"
-msgstr ""
+msgstr "पिछली-पत्नी"
 
 #: app/Functions/Functions.php:654
 msgid "wife"
-msgstr ""
+msgstr "पत्नी"
 
 #: app/Functions/Functions.php:658
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "पिछले-साथी"
 
 #: app/Functions/Functions.php:664
 msgctxt "FEMALE"
 msgid "partner"
-msgstr ""
+msgstr "साथी"
 
 #: app/Functions/Functions.php:671
 msgid "ex-spouse"
-msgstr ""
+msgstr "पिछले-जीवनसाथी"
 
 #: app/Functions/Functions.php:674
 msgid "spouse"
-msgstr ""
+msgstr "जीवनसाथी"
 
 #: app/Functions/Functions.php:678
 msgid "ex-partner"
-msgstr ""
+msgstr "पिछले-जीवनसाथी"
 
 #: app/Functions/Functions.php:684
 msgid "partner"
-msgstr ""
+msgstr "साथी"
 
 #: app/Functions/Functions.php:686
 msgid "son"
-msgstr ""
+msgstr "बेटा"
 
 #: app/Functions/Functions.php:688
 msgid "daughter"
-msgstr ""
+msgstr "बेटी"
 
 #: app/Functions/Functions.php:690
 msgid "child"
-msgstr ""
+msgstr "औलाद"
 
 #: app/Functions/Functions.php:698
 msgid "twin brother"
-msgstr ""
+msgstr "जुड़वा भाई"
 
 #: app/Functions/Functions.php:702
 msgid "younger brother"
-msgstr ""
+msgstr "छोटा भाई"
 
 #: app/Functions/Functions.php:706
 msgid "elder brother"
-msgstr ""
+msgstr "बड़े भाई"
 
 #: app/Functions/Functions.php:711
 msgid "brother"
-msgstr ""
+msgstr "भाई"
 
 #: app/Functions/Functions.php:719
 msgid "twin sister"
-msgstr ""
+msgstr "जुड़वा बहन"
 
 #: app/Functions/Functions.php:723
 msgid "younger sister"
-msgstr ""
+msgstr "छोटी बहन"
 
 #: app/Functions/Functions.php:727
 msgid "elder sister"
-msgstr ""
+msgstr "बड़ी बहन"
 
 #: app/Functions/Functions.php:732
 msgid "sister"
-msgstr ""
+msgstr "बहन"
 
 #: app/Functions/Functions.php:740
 msgid "twin sibling"
-msgstr ""
+msgstr "जुड़वा सहोदर"
 
 #: app/Functions/Functions.php:744
 msgid "younger sibling"
-msgstr ""
+msgstr "छोटे सहोदर"
 
 #: app/Functions/Functions.php:748
 msgid "elder sibling"
-msgstr ""
+msgstr "बड़े सहोदर"
 
 #: app/Functions/Functions.php:753
 msgid "sibling"
-msgstr ""
+msgstr "सहोदर"
 
 #: app/Functions/Functions.php:757
 msgctxt "brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "भतीजा/भतीजी"
 
 #: app/Functions/Functions.php:759
 msgctxt "brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "भतीजी"
 
 #: app/Functions/Functions.php:761
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "भतीजा"
 
 #: app/Functions/Functions.php:763
 msgctxt "brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "भाभी"
 
 #: app/Functions/Functions.php:765
 msgctxt "child’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "नाती"
 
 #: app/Functions/Functions.php:767
 msgctxt "child’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "नाती"
 
 #: app/Functions/Functions.php:769
 msgctxt "child’s husband"
 msgid "son-in-law"
-msgstr ""
+msgstr "दामाद"
 
 #: app/Functions/Functions.php:771
 msgctxt "child’s son"
 msgid "grandson"
-msgstr ""
+msgstr "नाती"
 
 #: app/Functions/Functions.php:773
 msgctxt "child’s spouse"
 msgid "son/daughter-in-law"
-msgstr ""
+msgstr "दामाद/बहू"
 
 #: app/Functions/Functions.php:775
 msgctxt "child’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "बहू"
 
 #: app/Functions/Functions.php:777
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "नाती"
 
 #: app/Functions/Functions.php:779
 msgctxt "daughter’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "नवासी"
 
 #: app/Functions/Functions.php:781
 msgctxt "daughter’s husband"
 msgid "son-in-law"
-msgstr ""
+msgstr "दामाद"
 
 #: app/Functions/Functions.php:783
 msgctxt "daughter’s son"
 msgid "grandson"
-msgstr ""
+msgstr "नवासा"
 
 #: app/Functions/Functions.php:785
 msgctxt "father’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "चाचा"
 
 #: app/Functions/Functions.php:787
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "सौतेले"
 
 #: app/Functions/Functions.php:789
 msgctxt "father’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "सौतेली-बहन"
 
 #: app/Functions/Functions.php:791
 msgctxt "father’s father"
 msgid "paternal grandfather"
-msgstr ""
+msgstr "दादा"
 
 #: app/Functions/Functions.php:793
 msgctxt "father’s mother"
 msgid "paternal grandmother"
-msgstr ""
+msgstr "दादी"
 
 #: app/Functions/Functions.php:795
 msgctxt "father’s parent"
 msgid "paternal grandparent"
-msgstr ""
+msgstr "दादा-दादी"
 
 #: app/Functions/Functions.php:797
 msgctxt "father’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "बुआ/चाचा"
 
 #: app/Functions/Functions.php:799
 msgctxt "father’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "बुआ"
 
 #: app/Functions/Functions.php:801
 msgctxt "father’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "सौतेले-भाई"
 
 #: app/Functions/Functions.php:803
 msgctxt "father’s wife"
 msgid "step-mother"
-msgstr ""
+msgstr "सौतेली-माँ"
 
 #: app/Functions/Functions.php:805
 msgctxt "husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "देवर"
 
 #: app/Functions/Functions.php:807
 msgctxt "husband’s child"
 msgid "step-child"
-msgstr ""
+msgstr "सौतेले-बच्चे"
 
 #: app/Functions/Functions.php:809
 msgctxt "husband’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "सौतेली-बेटी"
 
 #: app/Functions/Functions.php:811
 msgctxt "husband’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "ससुर"
 
 #: app/Functions/Functions.php:813
 msgctxt "husband’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "सास"
 
 #: app/Functions/Functions.php:815
 msgctxt "husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "देवर/ननद"
 
 #: app/Functions/Functions.php:817
 msgctxt "husband’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "ननद"
 
 #: app/Functions/Functions.php:819
 msgctxt "husband’s son"
 msgid "step-son"
-msgstr ""
+msgstr "सौतेला-बेटा"
 
 #: app/Functions/Functions.php:821
 msgctxt "mother’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "मामा"
 
 #: app/Functions/Functions.php:823
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "सौतेले-सहोदर"
 
 #: app/Functions/Functions.php:825
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "सौतेली-बहन"
 
 #: app/Functions/Functions.php:827
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr ""
+msgstr "नाना"
 
 #: app/Functions/Functions.php:829
 msgctxt "mother’s husband"
 msgid "step-father"
-msgstr ""
+msgstr "सौतेले-पिता"
 
 #: app/Functions/Functions.php:831
 msgctxt "mother’s mother"
 msgid "maternal grandmother"
-msgstr ""
+msgstr "नानी"
 
 #: app/Functions/Functions.php:833
 msgctxt "mother’s parent"
 msgid "maternal grandparent"
-msgstr ""
+msgstr "नाना-नानी"
 
 #: app/Functions/Functions.php:835
 msgctxt "mother’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "मौसी/मामा"
 
 #: app/Functions/Functions.php:837
 msgctxt "mother’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "मौसी"
 
 #: app/Functions/Functions.php:839
 msgctxt "mother’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "सौतेला-भाई"
 
 #: app/Functions/Functions.php:841
 msgctxt "parent’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "अंकल"
 
 #: app/Functions/Functions.php:843
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "सौतेले-सहोदर"
 
 #: app/Functions/Functions.php:845
 msgctxt "parent’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "सौतेली-बहन"
 
 #: app/Functions/Functions.php:847
 msgctxt "parent’s father"
