@@ -22,10 +22,12 @@
 .tv_out {
 	position: relative;
 	overflow: hidden;
-	height: 100%;
 	border: thin solid #CCCCCC; /* customizable */
-	min-height: 350px; /* customizable, not mandatory, but should be set to have allways something to display */
-	max-height: 95vh; /* customizable, not mandatory, but should be set not too high to limit the size of ajax requests and not too low to enable whole big trees printing */
+	/* The chart height can be adjusted to fill the pag */
+	height: 50vh;
+	resize: vertical;
+	min-height: 25vh;
+	max-height: 95vh;
 	background: #E6E6E6; /* customizable */
 	display: -webkit-box;
 	display: -moz-box;
