@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-21 20:54+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-21 21:36+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -1407,7 +1407,7 @@ msgstr "Afegeix espais on s'han comprimit les línies llargues"
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:43
 msgid "Add styling and scripts to every page."
-msgstr "Afegeix estils i scripts a cada pàgina.\n"
+msgstr "Afegeix estils i scripts a cada pàgina."
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: resources/views/admin/trees-export.phtml:77
@@ -4028,7 +4028,7 @@ msgstr "No és possible verificar la informació que heu entrat. Torneu-ho a pro
 #. I18N: Description of the “Hit counters” module
 #: app/Module/HitCountFooterModule.php:79
 msgid "Count the visits to each page"
-msgstr "Compta les visites a cada pàgina\n"
+msgstr "Compta les visites a cada pàgina"
 
 #. I18N: gedcom tag CTRY
 #: app/GedcomTag.php:640 app/Statistics/Google/ChartDistribution.php:130
@@ -7287,7 +7287,7 @@ msgstr "Si es desconeix el cognom, cal posar-hi barres buides: <%s> Mary //<%s>"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
-msgstr "Si la imatge en miniatura és personalitzada, haureu d'afegir-la a l'objecte multimèdia.\n"
+msgstr "Si la imatge en miniatura és personalitzada, haureu d'afegir-la a l'objecte multimèdia."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:18
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
