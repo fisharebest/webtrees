@@ -56,7 +56,7 @@ use Fisharebest\Webtrees\I18N;
 
         <div class="dropdown-divider"></div>
 
-        <?php if ($individual->spouseFamilies()->count() > 1) : ?>
+        <?php if ($individual->spouseFamilies()->count() > 1 || $individual->childFamilies()->count() > 1) : ?>
             <a class="dropdown-item" href="<?= e(route(ReorderFamiliesPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
                 <?= view('icons/reorder') ?>
                 <?= I18N::translate('Re-order families') ?>
