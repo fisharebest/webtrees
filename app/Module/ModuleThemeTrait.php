@@ -229,7 +229,7 @@ trait ModuleThemeTrait
         }
 
         if (Auth::isManager($tree)) {
-            return new Menu(I18N::translate('Control panel'), route('manage-trees'), 'menu-admin');
+            return new Menu(I18N::translate('Control panel'), route('manage-trees', ['tree' => $tree->name()]), 'menu-admin');
         }
 
         return null;
