@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-21 09:13+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-21 17:14+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -2740,522 +2740,522 @@ msgstr "सौतेली-बहन"
 #: app/Functions/Functions.php:847
 msgctxt "parent’s father"
 msgid "grandfather"
-msgstr ""
+msgstr "दादा/नाना"
 
 #: app/Functions/Functions.php:849
 msgctxt "parent’s mother"
 msgid "grandmother"
-msgstr ""
+msgstr "दादी/नानी"
 
 #: app/Functions/Functions.php:851
 msgctxt "parent’s parent"
 msgid "grandparent"
-msgstr ""
+msgstr "ग्रैंडपैरेंट"
 
 #: app/Functions/Functions.php:853
 msgctxt "parent’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "आंटी/अंकल"
 
 #: app/Functions/Functions.php:855
 msgctxt "parent’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "आंटी"
 
 #: app/Functions/Functions.php:857
 msgctxt "parent’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "सौतेला-भाई"
 
 #: app/Functions/Functions.php:859
 msgctxt "parent’s spouse"
 msgid "step-parent"
-msgstr ""
+msgstr "सौतेले माँ-बाप"
 
 #: app/Functions/Functions.php:861
 msgctxt "sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "भांजा-भतीजा/भांजी-भतीजी"
 
 #: app/Functions/Functions.php:863
 msgctxt "sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "भांजी/भतीजी"
 
 #: app/Functions/Functions.php:865
 msgctxt "sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "भांजा/भतीजा"
 
 #: app/Functions/Functions.php:867
 msgctxt "sibling’s spouse"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "जीजा/भाभी"
 
 #: app/Functions/Functions.php:869
 msgctxt "sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "भांजा/भांजी"
 
 #: app/Functions/Functions.php:871
 msgctxt "sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "भांजी"
 
 #: app/Functions/Functions.php:873
 msgctxt "sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "जीजा"
 
 #: app/Functions/Functions.php:875
 msgctxt "sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "भांजा"
 
 #: app/Functions/Functions.php:877
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "पोता"
 
 #: app/Functions/Functions.php:879
 msgctxt "son’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "पोती"
 
 #: app/Functions/Functions.php:881
 msgctxt "son’s son"
 msgid "grandson"
-msgstr ""
+msgstr "पोता"
 
 #: app/Functions/Functions.php:883
 msgctxt "son’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "बहू"
 
 #: app/Functions/Functions.php:885
 msgctxt "spouse’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "देवर/साले"
 
 #: app/Functions/Functions.php:887
 msgctxt "spouse’s child"
 msgid "step-child"
-msgstr ""
+msgstr "सौतेले-बच्चे"
 
 #: app/Functions/Functions.php:889
 msgctxt "spouse’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "सौतेली-बेटी"
 
 #: app/Functions/Functions.php:891
 msgctxt "spouse’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "ससुर"
 
 #: app/Functions/Functions.php:893
 msgctxt "spouse’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "सास"
 
 #: app/Functions/Functions.php:895
 msgctxt "spouse’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "ननद/साली"
 
 #: app/Functions/Functions.php:897
 msgctxt "spouse’s son"
 msgid "step-son"
-msgstr ""
+msgstr "सौतेला-बेटा"
 
 #: app/Functions/Functions.php:899
 msgctxt "spouse’s parent"
 msgid "mother/father-in-law"
-msgstr ""
+msgstr "सास/ससुर"
 
 #: app/Functions/Functions.php:901
 msgctxt "spouse’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "देवर/साले/ननद/भाभी"
 
 #: app/Functions/Functions.php:903
 msgctxt "wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "साले"
 
 #: app/Functions/Functions.php:905
 msgctxt "wife’s child"
 msgid "step-child"
-msgstr ""
+msgstr "सौतेले-बच्चे"
 
 #: app/Functions/Functions.php:907
 msgctxt "wife’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "सौतेली-बेटी"
 
 #: app/Functions/Functions.php:909
 msgctxt "wife’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "ससुर"
 
 #: app/Functions/Functions.php:911
 msgctxt "wife’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "सास"
 
 #: app/Functions/Functions.php:913
 msgctxt "wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "साले/साली"
 
 #: app/Functions/Functions.php:915
 msgctxt "wife’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "साली"
 
 #: app/Functions/Functions.php:917
 msgctxt "wife’s son"
 msgid "step-son"
-msgstr ""
+msgstr "सौतेला-बेटा"
 
 #: app/Functions/Functions.php:922
 msgctxt "(a man’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "पोता/पोती"
 
 #: app/Functions/Functions.php:925
 msgctxt "(a woman’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "पोता/पोती"
 
 #: app/Functions/Functions.php:928
 msgctxt "(a man’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "नाती"
 
 #: app/Functions/Functions.php:931
 msgctxt "(a woman’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "नाती"
 
 #: app/Functions/Functions.php:934
 msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "नाती"
 
 #: app/Functions/Functions.php:937
 msgctxt "(a woman’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "नाती"
 
 #: app/Functions/Functions.php:940
 msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "नाती"
 
 #: app/Functions/Functions.php:943
 msgctxt "(a woman’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "नाती"
 
 #: app/Functions/Functions.php:946
 msgctxt "(a man’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "नवासी"
 
 #: app/Functions/Functions.php:949
 msgctxt "(a woman’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "नवासी"
 
 #: app/Functions/Functions.php:951
 msgctxt "brother’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "दामाद"
 
 #: app/Functions/Functions.php:954
 msgctxt "(a man’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "नवासा"
 
 #: app/Functions/Functions.php:957
 msgctxt "(a woman’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "नवासा"
 
 #: app/Functions/Functions.php:960
 msgctxt "(a man’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "पोता/पोती"
 
 #: app/Functions/Functions.php:963
 msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "पोता/पोती"
 
 #: app/Functions/Functions.php:966
 msgctxt "(a man’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "पोती"
 
 #: app/Functions/Functions.php:969
 msgctxt "(a woman’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "पोती"
 
 #: app/Functions/Functions.php:972
 msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "पोता"
 
 #: app/Functions/Functions.php:975
 msgctxt "(a woman’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "पोता"
 
 #: app/Functions/Functions.php:977
 msgctxt "brother’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "बहू"
 
 #: app/Functions/Functions.php:979
 msgctxt "brother’s wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "समधी"
 
 #: app/Functions/Functions.php:981
 msgctxt "brother’s wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "समधी/समधन"
 
 #: app/Functions/Functions.php:983
 msgctxt "brother’s wife’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "समधन"
 
 #: app/Functions/Functions.php:985
 msgctxt "child’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "पर-पोते/पर-नवासे"
 
 #: app/Functions/Functions.php:987
 msgctxt "child’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "पर-पोती/पर-नवासी"
 
 #: app/Functions/Functions.php:989
 msgctxt "child’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "पर-पोता/पर-नवासा"
 
 #: app/Functions/Functions.php:991
 msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "पर-नवासे"
 
 #: app/Functions/Functions.php:993
 msgctxt "child’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "पर-नवासी"
 
 #: app/Functions/Functions.php:995
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "नवासा दामाद"
 
 #: app/Functions/Functions.php:997
 msgctxt "child’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "पर-नवासा"
 
 #: app/Functions/Functions.php:999
 msgctxt "child’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "पर-पोते"
 
 #: app/Functions/Functions.php:1001
 msgctxt "child’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "पर-पोती"
 
 #: app/Functions/Functions.php:1003
 msgctxt "child’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "पर-पोता"
 
 #: app/Functions/Functions.php:1005
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "पोती बहू"
 
 #: app/Functions/Functions.php:1007
 msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "पर-पोते/पर-नवासे"
 
 #: app/Functions/Functions.php:1009
 msgctxt "daughter’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "पर-पोती/पर-नवासी"
 
 #: app/Functions/Functions.php:1011
 msgctxt "daughter’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "पर-पोता/पर-नवासा"
 
 #: app/Functions/Functions.php:1013
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "पर-नवासी/पर-नवासा"
 
 #: app/Functions/Functions.php:1015
 msgctxt "daughter’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "पर-नवासी"
 
 #: app/Functions/Functions.php:1017
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "नवासा दामाद"
 
 #: app/Functions/Functions.php:1019
 msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "पर-पोता"
 
 #: app/Functions/Functions.php:1021
 msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
-msgstr ""
+msgstr "समधी"
 
 #: app/Functions/Functions.php:1023
 msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
-msgstr ""
+msgstr "समधन"
 
 #: app/Functions/Functions.php:1025
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr ""
+msgstr "समधी/समधन"
 
 #: app/Functions/Functions.php:1027
 msgctxt "daughter’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "पर-पोता/पर-पोती"
 
 #: app/Functions/Functions.php:1029
 msgctxt "daughter’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "पर-पोती"
 
 #: app/Functions/Functions.php:1031
 msgctxt "daughter’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "पर-पोता"
 
 #: app/Functions/Functions.php:1033
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "नवासी बहू"
 
 #: app/Functions/Functions.php:1035
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "चचा ज़ाद"
 
 #: app/Functions/Functions.php:1037
 msgctxt "father’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "चचेरी बहन"
 
 #: app/Functions/Functions.php:1039
 msgctxt "father’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "चचेरे भाई"
 
 #: app/Functions/Functions.php:1041
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "चाची"
 
 #: app/Functions/Functions.php:1043
 msgctxt "father’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "दादा"
 
 #: app/Functions/Functions.php:1045
 msgctxt "father’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "पर-दादा"
 
 #: app/Functions/Functions.php:1047
 msgctxt "father’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "पर-दादी"
 
 #: app/Functions/Functions.php:1049
 msgctxt "father’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "पर-दादा/दादी"
 
 #: app/Functions/Functions.php:1051
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "दादा/दादी"
 
 #: app/Functions/Functions.php:1053
 msgctxt "father’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "दादी"
 
 #: app/Functions/Functions.php:1055
 msgctxt "father’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "दादा"
 
 #: app/Functions/Functions.php:1057
 msgctxt "father’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "पर-दादा"
 
 #: app/Functions/Functions.php:1059
 msgctxt "father’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "पर-दादी"
 
 #: app/Functions/Functions.php:1061
 msgctxt "father’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "पर-दादा/दादी"
 
 #: app/Functions/Functions.php:1063
 msgctxt "father’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "दादा/दादी"
 
 #: app/Functions/Functions.php:1065
 msgctxt "father’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "दादी"
 
 #: app/Functions/Functions.php:1067
 msgctxt "father’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "दादा"
 
 #: app/Functions/Functions.php:1069
 msgctxt "father’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "पर-दादा"
 
 #: app/Functions/Functions.php:1071
 msgctxt "father’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "पर-दादी"
 
 #: app/Functions/Functions.php:1073
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "पर-दादा/दादी"
 
 #: app/Functions/Functions.php:1075
 msgctxt "father’s parent’s sibling"
