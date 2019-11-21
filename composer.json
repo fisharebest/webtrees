@@ -16,6 +16,7 @@
     },
     "autoload-dev": {
         "classmap": [
+            "modules_v4/",
             "tests/TestCase.php",
             "tests/MockGlobalFunctions.php"
         ]
