@@ -130,7 +130,7 @@ use Illuminate\Support\Collection;
                                     <?= $media_file->displayImage(200, 150, 'contain', []) ?>
                                     <?php if ($media->tree()->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($media->tree()) && $media_file->fileExists($data_filesystem)) : ?>
                                         <br>
-                                        <a href="<?= $media_file->imageUrl(0, 0, '') ?>">
+                                        <a href="<?= e(route('media-download', ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact_id' => $media_file->factId()])) ?>">
                                             <?= I18N::translate('Download file') ?>
                                         </a>
                                     <?php endif ?>
