@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
 "PO-Revision-Date: 2019-11-21 21:36+0000\n"
-"Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
+"Last-Translator: Hussain Khatri <Mr.axe009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
 "Language: hi\n"
@@ -12910,7 +12910,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6886
 msgid "Slovenia"
-msgstr ""
+msgstr "स्लोवेनिया"
 
 #: setup.php:176
 msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
@@ -13880,7 +13880,7 @@ msgstr ""
 #: admin_site_merge.php:172
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "रिकॉर्ड “%1$s” और “%2$s” मिला दिए गए।"
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
