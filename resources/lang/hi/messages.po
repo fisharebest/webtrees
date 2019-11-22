@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-22 06:31+0000\nLast-Translator: Hussain Khatri <Mr.axe009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-22 09:10+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -3690,27 +3690,27 @@ msgstr "पोती/नवासी"
 #: app/Functions/Functions.php:1251
 msgctxt "(a woman’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "नवासी/पोती"
 
 #: app/Functions/Functions.php:1254
 msgctxt "(a man’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "पोता/नवासा"
 
 #: app/Functions/Functions.php:1257
 msgctxt "(a woman’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "पोता/नवासा"
 
 #: app/Functions/Functions.php:1260
 msgctxt "(a man’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "नाती"
 
 #: app/Functions/Functions.php:1263
 msgctxt "(a woman’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "नाती"
 
 #: app/Functions/Functions.php:1266
 msgctxt "(a man’s) sister’s daughter’s daughter"
@@ -11231,7 +11231,7 @@ msgstr "रिकॉर्ड “%1$s” और “%2$s” मिला दि�
 #: app/Http/RequestHandlers/MergeRecordsPage.php:66
 #: resources/views/admin/trees.phtml:150
 msgid "Merge records"
-msgstr "रिकॉर्ड विलय करें"
+msgstr "रिकॉर्ड्स का विलय करें"
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:88
 #: app/Http/RequestHandlers/PasswordRequestPage.php:55
@@ -11242,7 +11242,7 @@ msgstr "नए पासवर्ड के लिए अनुरोध कर�
 #: app/Http/RequestHandlers/PasswordRequestAction.php:95
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr ""
+msgstr "पासवर्ड रीसेट की लिंक “%s” पर भेजी गई है।"
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:96
 msgid "This link is valid for one hour."
