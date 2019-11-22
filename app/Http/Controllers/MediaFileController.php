@@ -165,9 +165,9 @@ class MediaFileController extends AbstractBaseController
      */
     private function httpStatusAsImage(int $status): ResponseInterface
     {
-        $svg = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="#F88" /><text x="5" y="55" font-family="Verdana" font-size="35">' . $status . '</text></svg>';
+        $svg = view('errors/image-svg', ['status' => $status]);
 
-        // We can't use the actual status code, as browser's won't show images with 4xx/5xx
+        // We can't use the actual status code, as browsers won't show images with 4xx/5xx
         return response($svg, StatusCodeInterface::STATUS_OK, [
             'Content-Type'   => 'image/svg+xml',
             'Content-Length' => strlen($svg),
