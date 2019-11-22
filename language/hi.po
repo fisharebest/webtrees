@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
 "PO-Revision-Date: 2019-11-24 08:49+0000\n"
-"Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
+"Last-Translator: Hussain Khatri <Mr.axe009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
 "Language: hi\n"
@@ -9663,7 +9663,7 @@ msgstr ""
 #: login.php:330
 #, php-format
 msgid "New registration at %s"
-msgstr ""
+msgstr "%s पर नया रजिस्ट्रैशन"
 
 #. I18N: %s is a server name/URL
 #: login.php:577
@@ -11602,7 +11602,7 @@ msgstr "नए पासवर्ड के लिए अनुरोध कर�
 #: app/Module/LoginBlockModule.php:90 app/Module/WelcomeBlockModule.php:60
 #: login.php:213 login.php:280
 msgid "Request a new user account"
-msgstr ""
+msgstr "नए खाते का अनुरोध करें"
 
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:1743
@@ -16188,7 +16188,7 @@ msgstr ""
 #: login.php:350
 #, php-format
 msgid "Your registration at %s"
-msgstr ""
+msgstr "%s पर आपका रजिस्ट्रैशन"
 
 #: setup.php:277
 msgid "Your server’s administrator will provide you with the connection details."
@@ -19199,7 +19199,7 @@ msgstr ""
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:56
 msgid "pending"
-msgstr "विचाराधीन"
+msgstr "रुका हुआ"
 
 #: statistics.php:757 statisticsplot.php:889 statisticsplot.php:939
 #: statisticsplot.php:993 statisticsplot.php:1043 statisticsplot.php:1097
@@ -19255,7 +19255,7 @@ msgstr ""
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:55
 msgid "rejected"
-msgstr "अस्वीकृत कर दिया गया"
+msgstr "खारिज कर दिया गया"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:144
