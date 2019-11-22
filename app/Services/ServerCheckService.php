@@ -100,6 +100,7 @@ class ServerCheckService
             $this->databaseDriverWarnings($driver),
             $this->databaseEngineWarnings(),
             $this->checkPhpExtension('curl'),
+            $this->checkPhpExtension('fileinfo'),
             $this->checkPhpExtension('gd'),
             $this->checkPhpExtension('zip'),
             $this->checkPhpExtension('simplexml'),
