@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-22 09:10+0000\nLast-Translator: Hussain Khatri <Mr.axe009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-22 10:43+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -30,7 +30,7 @@ msgstr "(बचपन में)"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s साल"
-msgstr[1] "%s सालो"
+msgstr[1] "%s साल"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:141 app/Functions/FunctionsDate.php:58
@@ -3715,92 +3715,92 @@ msgstr "नाती"
 #: app/Functions/Functions.php:1266
 msgctxt "(a man’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "नवासी"
 
 #: app/Functions/Functions.php:1269
 msgctxt "(a woman’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "नवासी"
 
 #: app/Functions/Functions.php:1271
 msgctxt "sisters’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "दामाद"
 
 #: app/Functions/Functions.php:1274
 msgctxt "(a man’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "नवासा"
 
 #: app/Functions/Functions.php:1277
 msgctxt "(a woman’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "नवासा"
 
 #: app/Functions/Functions.php:1279
 msgctxt "sister’s husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "समधी"
 
 #: app/Functions/Functions.php:1281
 msgctxt "sister’s husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "समधी/समधन"
 
 #: app/Functions/Functions.php:1283
 msgctxt "sister’s husband’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "समधन"
 
 #: app/Functions/Functions.php:1286
 msgctxt "(a man’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "पोता/पोती"
 
 #: app/Functions/Functions.php:1289
 msgctxt "(a woman’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "पोता/पोती"
 
 #: app/Functions/Functions.php:1292
 msgctxt "(a man’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "पोती"
 
 #: app/Functions/Functions.php:1295
 msgctxt "(a woman’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "पोती"
 
 #: app/Functions/Functions.php:1298
 msgctxt "(a man’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "पोता"
 
 #: app/Functions/Functions.php:1301
 msgctxt "(a woman’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "पोता"
 
 #: app/Functions/Functions.php:1303
 msgctxt "sisters’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "दामाद"
 
 #: app/Functions/Functions.php:1305
 msgctxt "son’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "पर-नाती/पोते"
 
 #: app/Functions/Functions.php:1307
 msgctxt "son’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "पर-नाती/पोती"
 
 #: app/Functions/Functions.php:1309
 msgctxt "son’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "पर-नवासा/पोता"
 
 #: app/Functions/Functions.php:1311
 msgctxt "son’s daughter’s child"
@@ -11251,7 +11251,7 @@ msgstr "यह लिंक एक घंटे के लिए वैध ह�
 #: app/Http/RequestHandlers/PasswordRequestAction.php:99
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr "“%s” ईमेल पर कोई युज़र अकाऊंट नही है।"
+msgstr "ईमेल “%s” के साथ कोई युज़र अकाऊंट नही है।"
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:72
 msgid "Your password has been updated."
