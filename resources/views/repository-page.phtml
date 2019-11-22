@@ -40,7 +40,7 @@ use Fisharebest\Webtrees\I18N;
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link<?= empty($sources) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#sources">
+            <a class="nav-link<?= $sources->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#sources">
                 <?= I18N::translate('Sources') ?>
                 <?= view('components/badge', ['count' => count($sources)]) ?>
             </a>

@@ -87,7 +87,6 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
         $individuals = $this->individualsWithTasks($tree, $end_jd);
         $families    = $this->familiesWithTasks($tree, $end_jd);
 
-        /** @var GedcomRecord[] $records */
         $records = $individuals->merge($families);
 
         $tasks = [];
@@ -109,7 +108,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             }
         }
 
-        if (empty($records)) {
+        if ($records->isEmpty()) {
             $content = '<p>' . I18N::translate('There are no research tasks in this family tree.') . '</p>';
         } else {
             $content = view('modules/todo/research-tasks', ['tasks' => $tasks]);

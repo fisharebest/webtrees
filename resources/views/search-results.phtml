@@ -5,7 +5,7 @@
     <ul class="nav nav-tabs wt-search-results-tabs" role="tablist">
         <?php if ($search_individuals) : ?>
             <li class="nav-item">
-                <a class="nav-link <?= empty($individuals) ? 'text-muted' : '' ?>" id="individuals-tab" data-toggle="tab" href="#individuals" role="tab" aria-controls="individuals">
+                <a class="nav-link <?= $individuals->isEmpty() ? 'text-muted' : '' ?>" id="individuals-tab" data-toggle="tab" href="#individuals" role="tab" aria-controls="individuals">
                     <?= I18N::translate('Individuals') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($individuals)) ?>
@@ -16,7 +16,7 @@
 
         <?php if ($search_families) : ?>
             <li class="nav-item">
-                <a class="nav-link <?= empty($families) ? 'text-muted' : '' ?>" id="families-tab" data-toggle="tab" href="#families" role="tab" aria-controls="families">
+                <a class="nav-link <?= $families->isEmpty() ? 'text-muted' : '' ?>" id="families-tab" data-toggle="tab" href="#families" role="tab" aria-controls="families">
                     <?= I18N::translate('Families') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($families)) ?>
@@ -27,7 +27,7 @@
 
         <?php if ($search_sources) : ?>
             <li class="nav-item">
-                <a class="nav-link <?= empty($sources) ? 'text-muted' : '' ?>" id="sources-tab" data-toggle="tab" href="#sources" role="tab" aria-controls="sources">
+                <a class="nav-link <?= $sources->isEmpty() ? 'text-muted' : '' ?>" id="sources-tab" data-toggle="tab" href="#sources" role="tab" aria-controls="sources">
                     <?= I18N::translate('Sources') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($sources)) ?>
@@ -38,7 +38,7 @@
 
         <?php if ($search_repositories) : ?>
             <li class="nav-item">
-                <a class="nav-link <?= empty($repositories) ? 'text-muted' : '' ?>" id="repositories-tab" data-toggle="tab" href="#repositories" role="tab" aria-controls="repositories">
+                <a class="nav-link <?= $repositories->isEmpty() ? 'text-muted' : '' ?>" id="repositories-tab" data-toggle="tab" href="#repositories" role="tab" aria-controls="repositories">
                     <?= I18N::translate('Repositories') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($repositories)) ?>
@@ -49,7 +49,7 @@
 
         <?php if ($search_notes) : ?>
             <li class="nav-item">
-                <a class="nav-link <?= empty($notes) ? 'text-muted' : '' ?>" id="notes-tab" data-toggle="tab" href="#notes" role="tab" aria-controls="notes">
+                <a class="nav-link <?= $notes->isEmpty() ? 'text-muted' : '' ?>" id="notes-tab" data-toggle="tab" href="#notes" role="tab" aria-controls="notes">
                     <?= I18N::translate('Notes') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($notes)) ?>

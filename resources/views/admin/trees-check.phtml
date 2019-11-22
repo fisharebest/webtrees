@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\I18N;
         <li class="list-group-item list-group-item-warning"><?= $warning ?></li>
     <?php endforeach ?>
 
-    <?php if (empty($errors) && empty($warnings)) : ?>
+    <?php if ($errors === [] && $warnings === []) : ?>
         <li class="list-group-item"><?= I18N::translate('No errors have been found.') ?></li>
     <?php endif ?>
 </ul>

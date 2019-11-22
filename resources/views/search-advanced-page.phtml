@@ -76,7 +76,7 @@ use Fisharebest\Webtrees\I18N;
 </div>
 
 <?php if (true) : ?>
-    <?php if (empty($individuals)) : ?>
+    <?php if ($individuals->isEmpty()) : ?>
         <div class="alert alert-info row">
             <?= I18N::translate('No results found.') ?>
         </div>

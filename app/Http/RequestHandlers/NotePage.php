@@ -82,7 +82,7 @@ class NotePage implements RequestHandlerInterface
             'families'        => $note->linkedFamilies('NOTE'),
             'individuals'     => $note->linkedIndividuals('NOTE'),
             'note'            => $note,
-            'notes'           => new Collection([]),
+            'notes'           => new Collection(),
             'media_objects'   => $note->linkedMedia('NOTE'),
             'meta_robots'     => 'index,follow',
             'sources'         => $note->linkedSources('NOTE'),

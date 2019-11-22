@@ -108,7 +108,7 @@ use Fisharebest\Webtrees\I18N;
 </form>
 
 <?php if ($query !== '') : ?>
-    <?php if (empty($individuals) && empty($families) && empty($repositories) && empty($sources) && empty($notes)) : ?>
+    <?php if ($individuals->isEmpty() && $families->isEmpty() && $repositories->isEmpty() && $sources->isEmpty() && $notes->isEmpty()) : ?>
         <div class="alert alert-info row">
             <?= I18N::translate('No results found.') ?>
         </div>

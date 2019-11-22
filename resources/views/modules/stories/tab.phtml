@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\I18N;
         <?php endif ?>
     <?php endforeach ?>
 
-    <?php if ($is_admin && empty($stories)) : ?>
+    <?php if ($is_admin && $stories === []) : ?>
         <div>
             <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'xref' => $individual->xref(), 'tree' => $tree->name()])) ?>">
                 <?= I18N::translate('Add a story') ?>

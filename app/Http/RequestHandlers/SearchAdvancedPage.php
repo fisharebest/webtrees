@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -161,7 +162,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
         if (array_filter($fields) !== []) {
             $individuals = $this->search_service->searchIndividualsAdvanced([$tree], $fields, $modifiers);
         } else {
-            $individuals = [];
+            $individuals = new Collection();
         }
 
         $title = I18N::translate('Advanced search');

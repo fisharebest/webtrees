@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -93,7 +94,7 @@ class SearchPhoneticPage implements RequestHandlerInterface
             $search_trees = [$tree];
         }
 
-        $individuals = [];
+        $individuals = new Collection();
 
         if ($lastname !== '' || $firstname !== '' || $place !== '') {
             $individuals = $this->search_service->searchIndividualsPhonetic($soundex, $lastname, $firstname, $place, $search_trees);

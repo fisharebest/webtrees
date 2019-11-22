@@ -48,8 +48,8 @@ class HandleExceptionsTest extends TestCase
         $handler->method('handle')->willThrowException(new InternalServerErrorException('eek'));
 
         $module_service = $this->createMock(ModuleService::class);
-        $module_service->method('findByInterface')->willReturn(new Collection([]));
-        $module_service->method('findByComponent')->willReturn(new Collection([]));
+        $module_service->method('findByInterface')->willReturn(new Collection());
+        $module_service->method('findByComponent')->willReturn(new Collection());
         app()->instance(ModuleService::class, $module_service);
 
         $request    = self::createRequest();

@@ -84,6 +84,6 @@ trait ModuleSidebarTrait
      */
     public function supportedFacts(): Collection
     {
-        return new Collection([]);
+        return new Collection();
     }
 }

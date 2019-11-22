@@ -293,7 +293,7 @@ class UpgradeControllerTest extends TestCase
     public function testStepUnzip(): void
     {
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
-        $mock_upgrade_service->method('webtreesZipContents')->willReturn(new Collection([]));
+        $mock_upgrade_service->method('webtreesZipContents')->willReturn(new Collection());
         $controller = new UpgradeController(
             new TreeService(),
             $mock_upgrade_service

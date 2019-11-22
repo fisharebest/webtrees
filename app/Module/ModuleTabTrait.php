@@ -112,7 +112,7 @@ trait ModuleTabTrait
      */
     public function supportedFacts(): Collection
     {
-        return new Collection([]);
+        return new Collection();
     }
 
     /**

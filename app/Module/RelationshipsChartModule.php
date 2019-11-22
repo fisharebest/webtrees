@@ -306,7 +306,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         foreach ($paths as $path) {
             // Extract the relationship names between pairs of individuals
             $relationships = $this->oldStyleRelationshipPath($tree, $path);
-            if (empty($relationships)) {
+            if ($relationships === []) {
                 // Cannot see one of the families/individuals, due to privacy;
                 continue;
             }
@@ -492,7 +492,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         $graph = [];
 
         foreach ($rows as $row) {
-            if (empty($ancestors) || in_array($row->l_from, $ancestors, true) && !in_array($row->l_to, $exclude, true)) {
+            if ($ancestors === [] || in_array($row->l_from, $ancestors, true) && !in_array($row->l_to, $exclude, true)) {
                 $graph[$row->l_from][$row->l_to] = 1;
                 $graph[$row->l_to][$row->l_from] = 1;
             }
@@ -585,7 +585,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             $xref1,
             $xref2,
         ];
-        while (!empty($queue)) {
+        while ($queue !== []) {
             $parents = DB::table('link AS l1')
                 ->join('link AS l2', static function (JoinClause $join): void {
                     $join

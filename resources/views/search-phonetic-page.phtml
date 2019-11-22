@@ -109,7 +109,7 @@ use Fisharebest\Webtrees\I18N;
 </form>
 
 <?php if ($firstname !== '' || $lastname !== '' || $place !== '') : ?>
-    <?php if (empty($individuals)) : ?>
+    <?php if ($individuals->isEmpty()) : ?>
         <div class="alert alert-info row">
             <?= I18N::translate('No results found.') ?>
         </div>

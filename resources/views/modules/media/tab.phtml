@@ -10,7 +10,7 @@
             <?php FunctionsPrintFacts::printMainMedia($fact, 4) ?>
         <?php endforeach ?>
 
-        <?php if (empty($facts)) : ?>
+        <?php if ($facts->isEmpty()) : ?>
             <tr>
                 <td colspan="2">
                     <?= I18N::translate('There are no media objects for this individual.') ?>

@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\I18N;
             </h2>
         </div>
         <div class="card-body">
-            <?php if (!empty($facts)) : ?>
+            <?php if ($facts !== []) : ?>
                 <table class="table table-bordered table-sm">
                     <thead>
                         <tr>
@@ -74,7 +74,7 @@ use Fisharebest\Webtrees\I18N;
                     </h2>
                 </div>
                 <div class="card-body">
-                    <?php if (!empty($facts1)) : ?>
+                    <?php if ($facts1 !== []) : ?>
                         <table class="table table-bordered table-sm">
                             <thead>
                                 <tr>
@@ -120,7 +120,7 @@ use Fisharebest\Webtrees\I18N;
                     </h2>
                 </div>
                 <div class="card-body">
-                    <?php if (!empty($facts2)) : ?>
+                    <?php if ($facts2 !== []) : ?>
                         <table class="table table-bordered table-sm">
                             <thead>
                                 <tr>
