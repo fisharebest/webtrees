@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-24 08:50+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-24 08:50+0000\nLast-Translator: Hussain Khatri <Mr.axe009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -11297,12 +11297,12 @@ msgstr "स्वीकारा गया"
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:124
 msgid "rejected"
-msgstr "अस्वीकृत कर दिया गया"
+msgstr "खारिज कर दिया गया"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:126
 msgid "pending"
-msgstr "विचाराधीन"
+msgstr "रुका हुआ"
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesRejectRecord.php:67
@@ -11319,20 +11319,20 @@ msgstr "सर्वर की जानकारी"
 #: app/Http/RequestHandlers/RegisterAction.php:131
 #, php-format
 msgid "Your registration at %s"
-msgstr ""
+msgstr "%s पर आपका रजिस्ट्रैशन"
 
 #. I18N: %s is a server name/URL
 #: app/Http/RequestHandlers/RegisterAction.php:141
 #, php-format
 msgid "New registration at %s"
-msgstr ""
+msgstr "%s पर नया रजिस्ट्रैशन"
 
 #: app/Http/RequestHandlers/RegisterAction.php:180
 #: app/Http/RequestHandlers/RegisterPage.php:51
 #: app/Module/WelcomeBlockModule.php:114 resources/views/login-page.phtml:65
 #: resources/views/modules/login_block/sign-in.phtml:43
 msgid "Request a new user account"
-msgstr ""
+msgstr "नए खाते का अनुरोध करें"
 
 #: app/Http/RequestHandlers/RegisterAction.php:219
 msgid "All fields must be completed."
