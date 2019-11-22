@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2017-02-11 20:39+0000\n"
+"PO-Revision-Date: 2019-11-24 08:49+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
-"Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ca/>\n"
+"Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -7013,7 +7014,7 @@ msgstr "Morí el"
 #: modules_v3/ahnentafel_report/report.xml:259
 #: modules_v3/descendancy_report/report.xml:173
 msgid "He married"
-msgstr "Catsat amb"
+msgstr "Casat amb"
 
 #: modules_v3/ahnentafel_report/report.xml:222
 msgid "He resided at"
@@ -14865,8 +14866,8 @@ msgstr "Tonga"
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "%s nom de pila més freqüent"
-msgstr[1] "%s noms de pila més freqüents"
+msgstr[0] "%s nom de pila més comú"
+msgstr[1] "%s noms de pila més comuns"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:97
@@ -16616,7 +16617,7 @@ msgstr "llista compacta"
 #: login.php:228 login.php:498 reportengine.php:131 reportengine.php:265
 #: setup.php:190 setup.php:216 setup.php:298 setup.php:384 setup.php:449
 msgid "continue"
-msgstr "segueix"
+msgstr "continua"
 
 #. I18N: A button label.
 #: admin_trees_manage.php:688
