@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-21 21:36+0000\n"
+"PO-Revision-Date: 2019-11-22 08:45+0000\n"
 "Last-Translator: Hussain Khatri <Mr.axe009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
@@ -449,7 +449,7 @@ msgstr[1] "%s हफ्ते"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s साल"
-msgstr[1] "%s साल"
+msgstr[1] "%s सालो"
 
 #: app/I18N.php:794
 #, php-format
@@ -3504,7 +3504,7 @@ msgstr[1] ""
 
 #: admin_trees_manage.php:529
 msgid "Changes log"
-msgstr ""
+msgstr "परिवर्तन दैनिकी"
 
 #. I18N: gedcom tag CHAR
 #: app/GedcomTag.php:270
@@ -9089,7 +9089,7 @@ msgstr ""
 
 #: admin_site_merge.php:35 admin_trees_manage.php:479
 msgid "Merge records"
-msgstr ""
+msgstr "रिकॉर्ड विलय करें"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:243
@@ -11593,7 +11593,7 @@ msgstr ""
 
 #: app/Module/LoginBlockModule.php:99 login.php:222
 msgid "Request a new password"
-msgstr ""
+msgstr "नए पासवर्ड के लिए अनुरोध करें"
 
 #: app/Module/LoginBlockModule.php:90 app/Module/WelcomeBlockModule.php:60
 #: login.php:213 login.php:280
@@ -12156,7 +12156,7 @@ msgstr ""
 #. I18N: Menu entry
 #: admin.php:589 admin_site_info.php:26 app/Theme/AdministrationTheme.php:103
 msgid "Server information"
-msgstr ""
+msgstr "सर्वर की जानकारी"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:350 setup.php:280
@@ -13543,13 +13543,13 @@ msgstr ""
 #: action.php:50
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr ""
+msgstr "“%s” में परिवर्तन स्वीकार कर लिया गया है।"
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:234
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr ""
+msgstr "“%s” में परिवर्तन अस्वीकार कर दिया गया है।"
 
 #: app/Module/ClippingsCartModule.php:324
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -16260,7 +16260,7 @@ msgstr ""
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:54
 msgid "accepted"
-msgstr ""
+msgstr "स्वीकारा गया"
 
 #. I18N: A button label.
 #: admin_trees_config.php:537 app/Functions/FunctionsPrint.php:569
@@ -19187,7 +19187,7 @@ msgstr ""
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:56
 msgid "pending"
-msgstr ""
+msgstr "विचाराधीन"
 
 #: statistics.php:757 statisticsplot.php:889 statisticsplot.php:939
 #: statisticsplot.php:993 statisticsplot.php:1043 statisticsplot.php:1097
@@ -19243,7 +19243,7 @@ msgstr ""
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:55
 msgid "rejected"
-msgstr ""
+msgstr "अस्वीकृत कर दिया गया"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:144
@@ -20164,7 +20164,7 @@ msgstr ""
 #: action.php:47
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "“%s” को हटा दिया गया है।"
 
 #: app/Functions/FunctionsPrint.php:120 app/Note.php:107
 msgid "…"
