@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
 "PO-Revision-Date: 2019-11-22 08:45+0000\n"
-"Last-Translator: Hussain Khatri <Mr.axe009@gmail.com>\n"
+"Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
 "Language: hi\n"
@@ -18361,7 +18361,7 @@ msgstr "पोता"
 #: app/Functions/Functions.php:1287
 msgctxt "(a man’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "पोता/नवासा"
 
 #: app/Functions/Functions.php:1307
 msgctxt "(a man’s) sister’s daughter’s son"
@@ -18391,7 +18391,7 @@ msgstr "पोता"
 #: app/Functions/Functions.php:1289
 msgctxt "(a woman’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "पोता/नवासा"
 
 #: app/Functions/Functions.php:1309
 msgctxt "(a woman’s) sister’s daughter’s son"
@@ -18441,7 +18441,7 @@ msgstr "नाती/पोते"
 #: app/Functions/Functions.php:1293
 msgctxt "(a man’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "नाती"
 
 #: app/Functions/Functions.php:1319
 msgctxt "(a man’s) sister’s son’s child"
@@ -18471,7 +18471,7 @@ msgstr "नाती/पोते"
 #: app/Functions/Functions.php:1295
 msgctxt "(a woman’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "नाती"
 
 #: app/Functions/Functions.php:1321
 msgctxt "(a woman’s) sister’s son’s child"
@@ -18541,7 +18541,7 @@ msgstr "पोती"
 #: app/Functions/Functions.php:1283
 msgctxt "(a woman’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "नवासी/पोती"
 
 #: app/Functions/Functions.php:1301
 msgctxt "(a woman’s) sister’s daughter’s daughter"
