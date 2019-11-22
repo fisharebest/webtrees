@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-22 09:10+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-22 09:10+0000\nLast-Translator: Hussain Khatri <Mr.axe009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -30,7 +30,7 @@ msgstr "(बचपन में)"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s साल"
-msgstr[1] "%s साल"
+msgstr[1] "%s सालो"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:141 app/Functions/FunctionsDate.php:58
@@ -11251,7 +11251,7 @@ msgstr "यह लिंक एक घंटे के लिए वैध ह�
 #: app/Http/RequestHandlers/PasswordRequestAction.php:99
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr "“%s” ईमेल पर कोई यृज़र अकाऊंट नही है।"
+msgstr "“%s” ईमेल पर कोई युज़र अकाऊंट नही है।"
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:72
 msgid "Your password has been updated."
@@ -11260,61 +11260,61 @@ msgstr "आपका पासवर्ड अपडेट कर दिया �
 #: app/Http/RequestHandlers/PasswordResetAction.php:79
 #: app/Http/RequestHandlers/PasswordResetPage.php:75
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "पासवर्ड रीसेट लिंक की वैधता समाप्त हो चुकी है।"
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:80
 #: app/Http/RequestHandlers/PasswordResetPage.php:76
 msgid "Please try again."
-msgstr ""
+msgstr "कृपया पुन: प्रयास करें।"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php:62
 msgid "Set a new password"
-msgstr ""
+msgstr "नया पासवर्ड सेट करें"
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:66
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "“%s” को हटा दिया गया है।"
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:69
 #: app/Http/RequestHandlers/PendingChangesAcceptTree.php:62
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr ""
+msgstr "“%s” में परिवर्तन स्वीकार कर लिया गया है।"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:101
 #: resources/views/admin/trees.phtml:200
 msgid "Changes log"
-msgstr ""
+msgstr "परिवर्तन दैनिकी"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:122
 msgid "accepted"
-msgstr ""
+msgstr "स्वीकारा गया"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:124
 msgid "rejected"
-msgstr ""
+msgstr "अस्वीकृत कर दिया गया"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:126
 msgid "pending"
-msgstr ""
+msgstr "विचाराधीन"
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesRejectRecord.php:67
 #: app/Http/RequestHandlers/PendingChangesRejectTree.php:62
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr ""
+msgstr "“%s” में परिवर्तन अस्वीकार कर दिया गया है।"
 
 #: app/Http/RequestHandlers/PhpInformation.php:60
 #: resources/views/admin/control-panel.phtml:112
 msgid "Server information"
-msgstr ""
+msgstr "सर्वर की जानकारी"
 
 #: app/Http/RequestHandlers/RegisterAction.php:131
 #, php-format
