@@ -22,11 +22,9 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Services\PendingChangesService;
+use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Intervention\Image\ImageManager;
 use League\Flysystem\Filesystem;
@@ -41,21 +39,29 @@ use function assert;
  */
 class ImportThumbnailsController extends AbstractAdminController
 {
-    /** @var TreeService */
-    private $tree_service;
-
     /** @var PendingChangesService */
     private $pending_changes_service;
+
+    /** @var SearchService */
+    private $search_service;
+
+    /** @var TreeService */
+    private $tree_service;
 
     /**
      * ImportThumbnailsController constructor.
      *
      * @param PendingChangesService $pending_changes_service
+     * @param SearchService         $search_service
      * @param TreeService           $tree_service
      */
-    public function __construct(PendingChangesService $pending_changes_service, TreeService $tree_service)
-    {
+    public function __construct(
+        PendingChangesService $pending_changes_service,
+        SearchService $search_service,
+        TreeService $tree_service
+    ) {
         $this->pending_changes_service = $pending_changes_service;
+        $this->search_service          = $search_service;
         $this->tree_service            = $tree_service;
     }
 
@@ -191,7 +197,7 @@ class ImportThumbnailsController extends AbstractAdminController
                 $original_path  = substr($original, strlen(WT_DATA_DIR));
                 $thumbnail_path = substr($thumbnail, strlen(WT_DATA_DIR));
 
-                $media = $this->findMediaObjectsForMediaFile($original_path);
+                $media = $this->search_service->findMediaObjectsForMediaFile($original_path);
 
                 $media_links = array_map(static function (Media $media): string {
                     return '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>';
@@ -244,30 +250,6 @@ class ImportThumbnailsController extends AbstractAdminController
         }
 
         return $original;
-    }
-
-    /**
-     * Find the media object that uses a particular media file.
-     *
-     * @param string $file
-     *
-     * @return Media[]
-     */
-    private function findMediaObjectsForMediaFile(string $file): array
-    {
-        return DB::table('media')
-            ->join('media_file', static function (JoinClause $join): void {
-                $join
-                    ->on('media_file.m_file', '=', 'media.m_file')
-                    ->on('media_file.m_id', '=', 'media.m_id');
-            })
-            ->join('gedcom_setting', 'media.m_file', '=', 'gedcom_setting.gedcom_id')
-            ->where(new Expression('setting_value || multimedia_file_refn'), '=', $file)
-            ->select(['media.*'])
-            ->distinct()
-            ->get()
-            ->map(Media::rowMapper())
-            ->all();
     }
 
     /**

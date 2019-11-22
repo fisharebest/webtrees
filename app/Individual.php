@@ -49,14 +49,19 @@ class Individual extends GedcomRecord
     /**
      * A closure which will create a record from a database row.
      *
+     * @param Tree $tree
+     *
      * @return Closure
      */
-    public static function rowMapper(): Closure
+    public static function rowMapper(Tree $tree): Closure
     {
-        return static function (stdClass $row): Individual {
-            $individual = Individual::getInstance($row->i_id, Tree::findById((int) $row->i_file), $row->i_gedcom);
+        return static function (stdClass $row) use ($tree): Individual {
+            $individual = Individual::getInstance($row->i_id, $tree, $row->i_gedcom);
+            assert($individual instanceof Individual);
 
-            if ($row->n_num ?? null) {
+            // Some queries include the names table.
+            // For these we must select the specified name.
+            if (($row->n_num ?? null) !== null) {
                 $individual = clone $individual;
                 $individual->setPrimaryName($row->n_num);
 

@@ -118,7 +118,7 @@ class ExportGedcomClient implements RequestHandlerInterface
                 $records = DB::table('media')
                     ->where('m_file', '=', $tree->id())
                     ->get()
-                    ->map(Media::rowMapper())
+                    ->map(Media::rowMapper($tree))
                     ->filter(GedcomRecord::accessFilter());
 
                 foreach ($records as $record) {

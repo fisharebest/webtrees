@@ -214,7 +214,7 @@ class BranchesController extends AbstractBaseController
             ->select(['individuals.*'])
             ->distinct()
             ->get()
-            ->map(Individual::rowMapper())
+            ->map(Individual::rowMapper($tree))
             ->filter(GedcomRecord::accessFilter())
             ->all();
 

@@ -213,7 +213,7 @@ class PlaceHierarchyController extends AbstractBaseController
             ->select(['individuals.*'])
             ->distinct()
             ->get()
-            ->map(Individual::rowMapper())
+            ->map(Individual::rowMapper($tree))
             ->filter(Individual::accessFilter())
             ->all();
 
@@ -228,7 +228,7 @@ class PlaceHierarchyController extends AbstractBaseController
             ->select(['families.*'])
             ->distinct()
             ->get()
-            ->map(Family::rowMapper())
+            ->map(Family::rowMapper($tree))
             ->filter(Family::accessFilter())
             ->all();
 

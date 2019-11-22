@@ -23,6 +23,7 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\MediaFileService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use League\Flysystem\Adapter\NullAdapter;
 use League\Flysystem\Filesystem;
@@ -43,8 +44,9 @@ class MediaControllerTest extends TestCase
     {
         $datatables_service = new DatatablesService();
         $media_file_service = new MediaFileService();
+        $tree_service       = new TreeService();
         $data_filesystem    = new Filesystem(new NullAdapter());
-        $controller         = new MediaController($datatables_service, $media_file_service);
+        $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
         $request            = self::createRequest()
             ->withAttribute('filesystem.data', $data_filesystem)
             ->withAttribute('filesystem.data.name', 'data/');
@@ -60,8 +62,9 @@ class MediaControllerTest extends TestCase
     {
         $datatables_service = new DatatablesService();
         $media_file_service = new MediaFileService();
+        $tree_service       = new TreeService();
         $data_filesystem    = new Filesystem(new NullAdapter());
-        $controller         = new MediaController($datatables_service, $media_file_service);
+        $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
             'files'        => 'local',
             'media_folder' => '',
@@ -84,8 +87,9 @@ class MediaControllerTest extends TestCase
     {
         $datatables_service = new DatatablesService();
         $media_file_service = new MediaFileService();
+        $tree_service       = new TreeService();
         $data_filesystem    = new Filesystem(new NullAdapter());
-        $controller         = new MediaController($datatables_service, $media_file_service);
+        $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
             'files'        => 'local',
             'media_folder' => '',
@@ -108,8 +112,9 @@ class MediaControllerTest extends TestCase
     {
         $datatables_service = new DatatablesService();
         $media_file_service = new MediaFileService();
+        $tree_service       = new TreeService();
         $data_filesystem    = new Filesystem(new NullAdapter());
-        $controller         = new MediaController($datatables_service, $media_file_service);
+        $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
             'files'        => 'local',
             'media_folder' => '',
@@ -132,8 +137,9 @@ class MediaControllerTest extends TestCase
     {
         $datatables_service = new DatatablesService();
         $media_file_service = new MediaFileService();
+        $tree_service       = new TreeService();
         $data_filesystem    = new Filesystem(new NullAdapter());
-        $controller         = new MediaController($datatables_service, $media_file_service);
+        $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
         $request            = self::createRequest()->withAttribute('filesystem.data', $data_filesystem);
         $response           = $controller->upload($request);
 
@@ -147,8 +153,9 @@ class MediaControllerTest extends TestCase
     {
         $datatables_service = new DatatablesService();
         $media_file_service = new MediaFileService();
+        $tree_service       = new TreeService();
         $data_filesystem    = new Filesystem(new NullAdapter());
-        $controller         = new MediaController($datatables_service, $media_file_service);
+        $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
         $request            = self::createRequest()->withAttribute('filesystem.data', $data_filesystem);
         $response           = $controller->uploadAction($request);
 

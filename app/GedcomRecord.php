@@ -85,12 +85,14 @@ class GedcomRecord
     /**
      * A closure which will create a record from a database row.
      *
+     * @param Tree $tree
+     *
      * @return Closure
      */
-    public static function rowMapper(): Closure
+    public static function rowMapper(Tree $tree): Closure
     {
-        return static function (stdClass $row): GedcomRecord {
-            return GedcomRecord::getInstance($row->o_id, Tree::findById((int) $row->o_file), $row->o_gedcom);
+        return static function (stdClass $row) use ($tree): GedcomRecord {
+            return GedcomRecord::getInstance($row->o_id, $tree, $row->o_gedcom);
         };
     }
 
@@ -696,7 +698,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['individuals.*'])
             ->get()
-            ->map(Individual::rowMapper())
+            ->map(Individual::rowMapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -720,7 +722,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['families.*'])
             ->get()
-            ->map(Family::rowMapper())
+            ->map(Family::rowMapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -744,7 +746,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['sources.*'])
             ->get()
-            ->map(Source::rowMapper())
+            ->map(Source::rowMapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -768,7 +770,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['media.*'])
             ->get()
-            ->map(Media::rowMapper())
+            ->map(Media::rowMapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -793,7 +795,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['other.*'])
             ->get()
-            ->map(Note::rowMapper())
+            ->map(Note::rowMapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -818,7 +820,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['other.*'])
             ->get()
-            ->map(Repository::rowMapper())
+            ->map(Repository::rowMapper($this->tree))
             ->filter(self::accessFilter());
     }
 

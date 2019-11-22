@@ -70,12 +70,14 @@ class Family extends GedcomRecord
     /**
      * A closure which will create a record from a database row.
      *
+     * @param Tree $tree
+     *
      * @return Closure
      */
-    public static function rowMapper(): Closure
+    public static function rowMapper(Tree $tree): Closure
     {
-        return static function (stdClass $row): Family {
-            return Family::getInstance($row->f_id, Tree::findById((int) $row->f_file), $row->f_gedcom);
+        return static function (stdClass $row) use ($tree): Family {
+            return Family::getInstance($row->f_id, $tree, $row->f_gedcom);
         };
     }
 

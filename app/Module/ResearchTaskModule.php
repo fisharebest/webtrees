@@ -218,7 +218,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             ->select(['families.*'])
             ->distinct()
             ->get()
-            ->map(Family::rowMapper())
+            ->map(Family::rowMapper($tree))
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -242,7 +242,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             ->select(['individuals.*'])
             ->distinct()
             ->get()
-            ->map(Individual::rowMapper())
+            ->map(Individual::rowMapper($tree))
             ->filter(GedcomRecord::accessFilter());
     }
 }

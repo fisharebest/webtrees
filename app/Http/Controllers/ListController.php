@@ -616,7 +616,7 @@ class ListController extends AbstractBaseController
 
         return $query
             ->get()
-            ->map(Media::rowMapper())
+            ->map(Media::rowMapper($tree))
             ->filter(GedcomRecord::accessFilter())
             ->all();
     }
@@ -634,7 +634,7 @@ class ListController extends AbstractBaseController
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', 'NOTE')
             ->get()
-            ->map(Note::rowMapper())
+            ->map(Note::rowMapper($tree))
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -651,7 +651,7 @@ class ListController extends AbstractBaseController
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', 'REPO')
             ->get()
-            ->map(Repository::rowMapper())
+            ->map(Repository::rowMapper($tree))
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -667,7 +667,7 @@ class ListController extends AbstractBaseController
         return DB::table('sources')
             ->where('s_file', '=', $tree->id())
             ->get()
-            ->map(Source::rowMapper())
+            ->map(Source::rowMapper($tree))
             ->filter(GedcomRecord::accessFilter());
     }
 

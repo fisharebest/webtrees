@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\MediaFileService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -74,16 +75,24 @@ class MediaController extends AbstractAdminController
     /** @var MediaFileService */
     private $media_file_service;
 
+    /** @var TreeService */
+    private $tree_service;
+
     /**
      * MediaController constructor.
      *
      * @param DatatablesService $datatables_service
      * @param MediaFileService  $media_file_service
+     * @param TreeService       $tree_service
      */
-    public function __construct(DatatablesService $datatables_service, MediaFileService $media_file_service)
-    {
+    public function __construct(
+        DatatablesService $datatables_service,
+        MediaFileService $media_file_service,
+        TreeService $tree_service
+    ) {
         $this->datatables_service = $datatables_service;
         $this->media_file_service = $media_file_service;
+        $this->tree_service       = $tree_service;
     }
 
     /**
@@ -158,7 +167,9 @@ class MediaController extends AbstractAdminController
         // Convert a row from the database into a row for datatables
         $callback = function (stdClass $row): array {
             /** @var Media $media */
-            $media = Media::rowMapper()($row);
+            $tree = $this->tree_service->find((int) $row->m_file);
+            $media = Media::getInstance($row->m_id, $tree, $row->m_gedcom);
+            assert($media instanceof Media);
 
             $media_files = $media->mediaFiles()
                 ->filter(static function (MediaFile $media_file) use ($row): bool {

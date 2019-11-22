@@ -137,7 +137,7 @@ class AutocompleteController extends AbstractBaseController
             ->distinct()
             ->select(['individuals.*'])
             ->get()
-            ->map(Individual::rowMapper())
+            ->map(Individual::rowMapper($tree))
             ->filter(GedcomRecord::accessFilter());
 
         $families = DB::table('families')
@@ -153,7 +153,7 @@ class AutocompleteController extends AbstractBaseController
             ->distinct()
             ->select(['families.*'])
             ->get()
-            ->map(Family::rowMapper())
+            ->map(Family::rowMapper($tree))
             ->filter(GedcomRecord::accessFilter());
 
         $pages = new Collection();

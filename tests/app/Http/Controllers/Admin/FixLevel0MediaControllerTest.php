@@ -39,9 +39,11 @@ class FixLevel0MediaControllerTest extends TestCase
      */
     public function testFixLevel0Media(): void
     {
-        $controller = new FixLevel0MediaController(new DatatablesService());
-        $request    = self::createRequest();
-        $response   = $controller->fixLevel0Media($request);
+        $datatables_service = new DatatablesService();
+        $tree_service       = new TreeService();
+        $controller         = new FixLevel0MediaController($datatables_service, $tree_service);
+        $request            = self::createRequest();
+        $response           = $controller->fixLevel0Media($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -53,7 +55,7 @@ class FixLevel0MediaControllerTest extends TestCase
     {
         $tree_service = new TreeService();
         $tree         = $tree_service->create('name', 'title');
-        $controller   = new FixLevel0MediaController(new DatatablesService());
+        $controller   = new FixLevel0MediaController(new DatatablesService(), $tree_service);
         $request      = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
             'tree_id'   => $tree->id(),
             'fact_id'   => '',
@@ -73,7 +75,7 @@ class FixLevel0MediaControllerTest extends TestCase
         $datatables_service = new DatatablesService();
         $tree_service       = new TreeService();
         $tree               = $tree_service->create('name', 'title');
-        $controller         = new FixLevel0MediaController($datatables_service);
+        $controller         = new FixLevel0MediaController($datatables_service, $tree_service);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, ['tree_id' => $tree->id()]);
         $response           = $controller->fixLevel0MediaData($request);
 

@@ -37,12 +37,14 @@ class Repository extends GedcomRecord
     /**
      * A closure which will create a record from a database row.
      *
+     * @param Tree $tree
+     *
      * @return Closure
      */
-    public static function rowMapper(): Closure
+    public static function rowMapper(Tree $tree): Closure
     {
-        return static function (stdClass $row): Repository {
-            return Repository::getInstance($row->o_id, Tree::findById((int) $row->o_file), $row->o_gedcom);
+        return static function (stdClass $row) use ($tree): Repository {
+            return Repository::getInstance($row->o_id, $tree, $row->o_gedcom);
         };
     }
 

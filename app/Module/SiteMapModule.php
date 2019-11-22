@@ -221,7 +221,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
         if ($timestamp > $expiry_time) {
             $content = $this->getPreference('sitemap-' . $file . '.xml');
         } else {
-            $tree = Tree::findById((int) $match[1]);
+            $tree = $this->tree_service->find((int) $match[1]);
 
             if ($tree === null) {
                 throw new NotFoundHttpException('No such tree');
@@ -295,7 +295,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Individual::rowMapper());
+            ->map(Individual::rowMapper($tree));
     }
 
     /**
@@ -313,7 +313,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Media::rowMapper());
+            ->map(Media::rowMapper($tree));
     }
 
     /**
@@ -332,7 +332,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Note::rowMapper());
+            ->map(Note::rowMapper($tree));
     }
 
     /**
@@ -351,7 +351,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Repository::rowMapper());
+            ->map(Repository::rowMapper($tree));
     }
 
     /**
@@ -369,6 +369,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Source::rowMapper());
+            ->map(Source::rowMapper($tree));
     }
 }

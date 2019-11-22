@@ -36,7 +36,8 @@ class SearchServiceTest extends TestCase
      */
     public function testSearchesReturnCollections(): void
     {
-        $search_service = new SearchService();
+        $tree_service   = new TreeService();
+        $search_service = new SearchService($tree_service);
         $tree           = $this->importTree('demo.ged');
 
         $result = $search_service->searchFamilies([$tree], ['windsor']);

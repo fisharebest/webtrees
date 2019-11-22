@@ -123,21 +123,6 @@ class Tree
     }
 
     /**
-     * Find the tree with a specific ID.
-     *
-     * @param int $tree_id
-     *
-     * @return Tree
-     * @deprecated
-     */
-    public static function findById(int $tree_id): Tree
-    {
-        return app(TreeService::class)->all()->first(static function (Tree $tree) use ($tree_id): bool {
-            return $tree->id() === $tree_id;
-        });
-    }
-
-    /**
      * Set the tree’s configuration settings.
      *
      * @param string $setting_name

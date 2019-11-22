@@ -79,7 +79,7 @@ class FamilyRepository
         }
 
         /** @var Family $family */
-        $family = Family::rowMapper()($row);
+        $family = Family::rowMapper($this->tree)($row);
 
         if (!$family->canShow()) {
             return I18N::translate('This information is private and cannot be shown.');
@@ -160,7 +160,7 @@ class FamilyRepository
             ->select(['families.*'])
             ->limit($total)
             ->get()
-            ->map(Family::rowMapper())
+            ->map(Family::rowMapper($this->tree))
             ->filter(GedcomRecord::accessFilter())
             ->map(static function (Family $family): array {
                 $count = 0;
@@ -242,7 +242,7 @@ class FamilyRepository
             ->where('f_file', '=', $this->tree->id())
             ->where('f_numchil', '=', 0)
             ->get()
-            ->map(Family::rowMapper())
+            ->map(Family::rowMapper($this->tree))
             ->filter(GedcomRecord::accessFilter());
 
         $top10 = [];
@@ -619,7 +619,7 @@ class FamilyRepository
             ->orderBy('f_numchil', 'DESC')
             ->limit($total)
             ->get()
-            ->map(Family::rowMapper())
+            ->map(Family::rowMapper($this->tree))
             ->filter(GedcomRecord::accessFilter())
             ->map(static function (Family $family): array {
                 return [
@@ -1287,7 +1287,7 @@ class FamilyRepository
             ->select(['families.*'])
             ->take($total)
             ->get()
-            ->map(Family::rowMapper())
+            ->map(Family::rowMapper($this->tree))
             ->filter(GedcomRecord::accessFilter())
             ->map(function (Family $family) use ($age_dir): array {
                 $husb_birt_jd = $family->husband()->getBirthDate()->minimumJulianDay();

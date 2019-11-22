@@ -48,6 +48,19 @@ use function mb_stripos;
  */
 class SearchService
 {
+    /** @var TreeService */
+    private $tree_service;
+
+    /**
+     * SearchService constructor.
+     *
+     * @param TreeService $tree_service
+     */
+    public function __construct(TreeService $tree_service)
+    {
+        $this->tree_service = $tree_service;
+    }
+
     /**
      * @param Tree[]   $trees
      * @param string[] $search
@@ -64,7 +77,7 @@ class SearchService
         return $query
             ->get()
             ->each($this->rowLimiter())
-            ->map(Family::rowMapper())
+            ->map($this->familyRowMapper())
             ->filter(GedcomRecord::accessFilter())
             ->filter($this->rawGedcomFilter($search));
     }
@@ -107,7 +120,7 @@ class SearchService
             ->select(['families.*', 'husb_name.n_sort', 'wife_name.n_sort'])
             ->distinct();
 
-        return $this->paginateQuery($query, Family::rowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
+        return $this->paginateQuery($query, $this->familyRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
     }
 
     /**
@@ -126,7 +139,7 @@ class SearchService
         return $query
             ->get()
             ->each($this->rowLimiter())
-            ->map(Individual::rowMapper())
+            ->map($this->individualRowMapper())
             ->filter(GedcomRecord::accessFilter())
             ->filter($this->rawGedcomFilter($search));
     }
@@ -155,7 +168,7 @@ class SearchService
         $this->whereTrees($query, 'i_file', $trees);
         $this->whereSearch($query, 'n_full', $search);
 
-        return $this->paginateQuery($query, Individual::rowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
+        return $this->paginateQuery($query, $this->individualRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
     }
 
     /**
@@ -175,7 +188,7 @@ class SearchService
         $this->whereTrees($query, 'media.m_file', $trees);
         $this->whereSearch($query, 'm_gedcom', $search);
 
-        return $this->paginateQuery($query, Media::rowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
+        return $this->paginateQuery($query, $this->mediaRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
     }
 
     /**
@@ -196,7 +209,7 @@ class SearchService
         $this->whereTrees($query, 'o_file', $trees);
         $this->whereSearch($query, 'o_gedcom', $search);
 
-        return $this->paginateQuery($query, Note::rowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
+        return $this->paginateQuery($query, $this->noteRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
     }
 
     /**
@@ -217,7 +230,7 @@ class SearchService
         $this->whereTrees($query, 'o_file', $trees);
         $this->whereSearch($query, 'o_gedcom', $search);
 
-        return $this->paginateQuery($query, Repository::rowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
+        return $this->paginateQuery($query, $this->repositoryRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
     }
 
     /**
@@ -237,7 +250,7 @@ class SearchService
         $this->whereTrees($query, 's_file', $trees);
         $this->whereSearch($query, 's_gedcom', $search);
 
-        return $this->paginateQuery($query, Source::rowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
+        return $this->paginateQuery($query, $this->sourceRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
     }
 
     /**
@@ -258,7 +271,7 @@ class SearchService
         $this->whereTrees($query, 's_file', $trees);
         $this->whereSearch($query, 's_name', $search);
 
-        return $this->paginateQuery($query, Source::rowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
+        return $this->paginateQuery($query, $this->sourceRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
     }
 
     /**
@@ -279,7 +292,7 @@ class SearchService
         $this->whereTrees($query, 'o_file', $trees);
         $this->whereSearch($query, 'o_gedcom', $search);
 
-        return $this->paginateQuery($query, GedcomRecord::rowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
+        return $this->paginateQuery($query, $this->submitterRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
     }
 
     /**
@@ -695,7 +708,7 @@ class SearchService
         return $query
             ->get()
             ->each($this->rowLimiter())
-            ->map(Individual::rowMapper())
+            ->map($this->individualRowMapper())
             ->filter(GedcomRecord::accessFilter())
             ->filter(static function (Individual $individual) use ($fields): bool {
                 // Check for searches which were only partially matched by SQL
@@ -825,7 +838,7 @@ class SearchService
         return $query
             ->get()
             ->each($this->rowLimiter())
-            ->map(Individual::rowMapper())
+            ->map($this->individualRowMapper())
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -918,6 +931,31 @@ class SearchService
         $query->whereIn($tree_id_field, $tree_ids);
     }
 
+
+    /**
+     * Find the media object that uses a particular media file.
+     *
+     * @param string $file
+     *
+     * @return Media[]
+     */
+    public function findMediaObjectsForMediaFile(string $file): array
+    {
+        return DB::table('media')
+            ->join('media_file', static function (JoinClause $join): void {
+                $join
+                    ->on('media_file.m_file', '=', 'media.m_file')
+                    ->on('media_file.m_id', '=', 'media.m_id');
+            })
+            ->join('gedcom_setting', 'media.m_file', '=', 'gedcom_setting.gedcom_id')
+            ->where(new Expression('setting_value || multimedia_file_refn'), '=', $file)
+            ->select(['media.*'])
+            ->distinct()
+            ->get()
+            ->map($this->mediaRowMapper())
+            ->all();
+    }
+
     /**
      * A closure to filter records by privacy-filtered GEDCOM data.
      *
@@ -962,6 +1000,104 @@ class SearchService
 
                 throw new InternalServerErrorException($message);
             }
+        };
+    }
+
+    /**
+     * Convert a row from any tree in the families table into a family object.
+     *
+     * @return Closure
+     */
+    private function familyRowMapper(): Closure
+    {
+        return function (stdClass $row): Family {
+            $tree = $this->tree_service->find((int) $row->f_file);
+
+            return Family::getInstance($row->f_id, $tree, $row->f_gedcom);
+        };
+    }
+
+    /**
+     * Convert a row from any tree in the individuals table into an individual object.
+     *
+     * @return Closure
+     */
+    private function individualRowMapper(): Closure
+    {
+        return function (stdClass $row): Individual {
+            $tree = $this->tree_service->find((int) $row->i_file);
+
+            return Individual::getInstance($row->i_id, $tree, $row->i_gedcom);
+        };
+    }
+
+    /**
+     * Convert a row from any tree in the media table into an media object.
+     *
+     * @return Closure
+     */
+    private function mediaRowMapper(): Closure
+    {
+        return function (stdClass $row): Media {
+            $tree = $this->tree_service->find((int) $row->m_file);
+
+            return Media::getInstance($row->m_id, $tree, $row->m_gedcom);
+        };
+    }
+
+    /**
+     * Convert a row from any tree in the other table into a note object.
+     *
+     * @return Closure
+     */
+    private function noteRowMapper(): Closure
+    {
+        return function (stdClass $row): Note {
+            $tree = $this->tree_service->find((int) $row->o_file);
+
+            return Note::getInstance($row->o_id, $tree, $row->o_gedcom);
+        };
+    }
+
+    /**
+     * Convert a row from any tree in the other table into a repository object.
+     *
+     * @return Closure
+     */
+    private function repositoryRowMapper(): Closure
+    {
+        return function (stdClass $row): Repository {
+            $tree = $this->tree_service->find((int) $row->o_file);
+
+            return Repository::getInstance($row->o_id, $tree, $row->o_gedcom);
+        };
+    }
+
+    /**
+     * Convert a row from any tree in the sources table into a source object.
+     *
+     * @return Closure
+     */
+    private function sourceRowMapper(): Closure
+    {
+        return function (stdClass $row): Source {
+            $tree = $this->tree_service->find((int) $row->s_file);
+
+            return Source::getInstance($row->s_id, $tree, $row->s_gedcom);
+        };
+    }
+
+    /**
+     * Convert a row from any tree in the other table into a submitter object.
+     *
+     * @return Closure
+     */
+    private function submitterRowMapper(): Closure
+    {
+        return function (stdClass $row): GedcomRecord {
+            $tree = $this->tree_service->find((int) $row->o_file);
+
+            return GedcomRecord::getInstance($row->o_id, $tree, $row->o_gedcom);
         };
     }
 }

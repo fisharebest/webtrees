@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\PendingChangesService;
+use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use League\Flysystem\Filesystem;
@@ -41,8 +42,10 @@ class ImportThumbnailsControllerTest extends TestCase
     public function testWebtrees1Thumbnails(): void
     {
         $tree_service            = new TreeService();
+        $search_service          = new SearchService($tree_service);
+        $tree_service            = new TreeService();
         $pending_changes_service = new PendingChangesService();
-        $controller              = new ImportThumbnailsController($pending_changes_service, $tree_service);
+        $controller              = new ImportThumbnailsController($pending_changes_service, $search_service, $tree_service);
         $request                 = self::createRequest();
         $response                = $controller->webtrees1Thumbnails($request);
 
@@ -55,8 +58,9 @@ class ImportThumbnailsControllerTest extends TestCase
     public function testWebtrees1ThumbnailsAction(): void
     {
         $tree_service            = new TreeService();
+        $search_service          = new SearchService($tree_service);
         $pending_changes_service = new PendingChangesService();
-        $controller              = new ImportThumbnailsController($pending_changes_service, $tree_service);
+        $controller              = new ImportThumbnailsController($pending_changes_service, $search_service, $tree_service);
         $request                 = self::createRequest()
             ->withParsedBody(['thumbnail' => 'foo', 'action' => '', 'xref' => [], 'ged' => []]);
         $response                = $controller->webtrees1ThumbnailsAction($request);
@@ -70,8 +74,9 @@ class ImportThumbnailsControllerTest extends TestCase
     public function testWebtrees1ThumbnailsData(): void
     {
         $tree_service            = new TreeService();
+        $search_service          = new SearchService($tree_service);
         $pending_changes_service = new PendingChangesService();
-        $controller              = new ImportThumbnailsController($pending_changes_service, $tree_service);
+        $controller              = new ImportThumbnailsController($pending_changes_service, $search_service, $tree_service);
         $request                 = self::createRequest()
             ->withQueryParams(['start' => '0', 'length' => '10', 'search' => ['value' => ''], 'draw' => '1'])
             ->withAttribute('filesystem.data', new Filesystem(new MemoryAdapter()));

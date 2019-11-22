@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Services\DatatablesService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
@@ -41,14 +41,19 @@ class FixLevel0MediaController extends AbstractAdminController
     /** @var DatatablesService */
     private $datatables_service;
 
+    /** @var TreeService */
+    private $tree_service;
+
     /**
      * FixLevel0MediaController constructor.
      *
      * @param DatatablesService $datatables_service
+     * @param TreeService       $tree_service
      */
-    public function __construct(DatatablesService $datatables_service)
+    public function __construct(DatatablesService $datatables_service, TreeService $tree_service)
     {
         $this->datatables_service = $datatables_service;
+        $this->tree_service       = $tree_service;
     }
 
     /**
@@ -80,7 +85,7 @@ class FixLevel0MediaController extends AbstractAdminController
         $obje_xref = $request->getParsedBody()['obje_xref'];
         $tree_id   = (int) $request->getParsedBody()['tree_id'];
 
-        $tree       = Tree::findById($tree_id);
+        $tree       = $this->tree_service->find($tree_id);
         $individual = Individual::getInstance($indi_xref, $tree);
         $media      = Media::getInstance($obje_xref, $tree);
 
@@ -147,8 +152,8 @@ class FixLevel0MediaController extends AbstractAdminController
             ->orderBy('media.m_id')
             ->select(['media.m_file', 'media.m_id', 'media.m_gedcom', 'individuals.i_id', 'individuals.i_gedcom']);
 
-        return $this->datatables_service->handleQuery($request, $query, [], [], static function (stdClass $datum) use ($ignore_facts): array {
-            $tree       = Tree::findById((int) $datum->m_file);
+        return $this->datatables_service->handleQuery($request, $query, [], [], function (stdClass $datum) use ($ignore_facts): array {
+            $tree       = $this->tree_service->find((int) $datum->m_file);
             $media      = Media::getInstance($datum->m_id, $tree, $datum->m_gedcom);
             $individual = Individual::getInstance($datum->i_id, $tree, $datum->i_gedcom);
 

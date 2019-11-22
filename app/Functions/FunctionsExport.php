@@ -181,7 +181,7 @@ class FunctionsExport
             ->where('m_file', '=', $tree->id())
             ->orderBy('m_id')
             ->get()
-            ->map(Media::rowMapper())
+            ->map(Media::rowMapper($tree))
             ->map(static function (Media $record) use ($access_level): string {
                 return $record->privatizeGedcom($access_level);
             })
@@ -193,7 +193,7 @@ class FunctionsExport
             ->where('s_file', '=', $tree->id())
             ->orderBy('s_id')
             ->get()
-            ->map(Source::rowMapper())
+            ->map(Source::rowMapper($tree))
             ->map(static function (Source $record) use ($access_level): string {
                 return $record->privatizeGedcom($access_level);
             });
@@ -203,7 +203,7 @@ class FunctionsExport
             ->whereNotIn('o_type', ['HEAD', 'TRLR'])
             ->orderBy('o_id')
             ->get()
-            ->map(GedcomRecord::rowMapper())
+            ->map(GedcomRecord::rowMapper($tree))
             ->map(static function (GedcomRecord $record) use ($access_level): string {
                 return $record->privatizeGedcom($access_level);
             });
@@ -212,7 +212,7 @@ class FunctionsExport
             ->where('i_file', '=', $tree->id())
             ->orderBy('i_id')
             ->get()
-            ->map(Individual::rowMapper())
+            ->map(Individual::rowMapper($tree))
             ->map(static function (Individual $record) use ($access_level): string {
                 return $record->privatizeGedcom($access_level);
             });
@@ -221,7 +221,7 @@ class FunctionsExport
             ->where('f_file', '=', $tree->id())
             ->orderBy('f_id')
             ->get()
-            ->map(Family::rowMapper())
+            ->map(Family::rowMapper($tree))
             ->map(static function (Family $record) use ($access_level): string {
                 return $record->privatizeGedcom($access_level);
             });

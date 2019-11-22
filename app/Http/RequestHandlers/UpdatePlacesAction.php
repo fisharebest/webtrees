@@ -63,14 +63,14 @@ class UpdatePlacesAction implements RequestHandlerInterface
                 ->whereContains('i_gedcom', $search)
                 ->select(['individuals.*'])
                 ->get()
-                ->map(Individual::rowMapper());
+                ->map(Individual::rowMapper($tree));
 
             $family_changes = DB::table('families')
                 ->where('f_file', '=', $tree->id())
                 ->whereContains('f_gedcom', $search)
                 ->select(['families.*'])
                 ->get()
-                ->map(Family::rowMapper());
+                ->map(Family::rowMapper($tree));
 
             $changes = $individual_changes->merge($family_changes)
                 ->mapWithKeys(static function (GedcomRecord $record) use ($search, $replace): array {
