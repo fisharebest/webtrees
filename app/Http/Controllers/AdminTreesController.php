@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -1552,7 +1553,7 @@ class AdminTreesController extends AbstractBaseController
      */
     private function checkLink(Tree $tree, string $xref): string
     {
-        return '<b><a href="' . e(route('record', [
+        return '<b><a href="' . e(route(GedcomRecordPage::class, [
                 'xref' => $xref,
                 'tree' => $tree->name(),
             ])) . '">' . $xref . '</a></b>';
