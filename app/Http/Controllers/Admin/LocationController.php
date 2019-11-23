@@ -29,9 +29,11 @@ use Fisharebest\Webtrees\Services\GedcomService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Database\QueryException;
+use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
@@ -39,19 +41,37 @@ use stdClass;
 
 use function abs;
 use function addcslashes;
+use function array_combine;
 use function array_filter;
+use function array_merge;
+use function array_pad;
 use function array_pop;
+use function array_reverse;
+use function array_search;
 use function array_shift;
+use function array_slice;
 use function assert;
 use function count;
+use function e;
 use function explode;
 use function fclose;
+use function fgetcsv;
+use function fopen;
 use function fputcsv;
 use function implode;
+use function is_numeric;
+use function is_string;
+use function json_decode;
+use function preg_replace;
+use function redirect;
+use function response;
 use function rewind;
 use function round;
 use function route;
+use function str_replace;
 use function stream_get_contents;
+use function stripos;
+use function substr_count;
 
 use const UPLOAD_ERR_OK;
 
@@ -60,6 +80,9 @@ use const UPLOAD_ERR_OK;
  */
 class LocationController extends AbstractAdminController
 {
+    // Location of files to import
+    private const PLACES_FOLDER = 'places/';
+
     /** @var GedcomService */
     private $gedcom_service;
 
@@ -581,24 +604,28 @@ class LocationController extends AbstractAdminController
      */
     public function importLocations(ServerRequestInterface $request): ResponseInterface
     {
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
+        $data_filesystem_name = $request->getAttribute('filesystem.data.name');
+        assert(is_string($data_filesystem_name));
+
         $parent_id = (int) $request->getQueryParams()['parent_id'];
 
-        $files = array_merge(
-            glob(WT_DATA_DIR . 'places/*.csv', GLOB_NOSORT),
-            glob(WT_DATA_DIR . 'places/*.geojson', GLOB_NOSORT)
-        );
-
-        $files = array_map(static function (string $place): string {
-            return substr($place, strlen(WT_DATA_DIR . 'places/'));
-        }, $files);
-
-        asort($files);
+        $files = Collection::make($data_filesystem->listContents('places'))
+            ->filter(static function (array $metadata): bool {
+                return $metadata['extension'] === 'csv' || $metadata['extension'] === 'geojson';
+            })
+            ->map(static function (array $metadata): string {
+                return $metadata['basename'];
+            })
+            ->sort();
 
         return $this->viewResponse('admin/map-import-form', [
-            'data_folder' => WT_DATA_DIR,
-            'title'       => I18N::translate('Import geographic data'),
-            'parent_id'   => $parent_id,
-            'files'       => $files,
+            'place_folder' => $data_filesystem_name . self::PLACES_FOLDER,
+            'title'        => I18N::translate('Import geographic data'),
+            'parent_id'    => $parent_id,
+            'files'        => $files,
         ]);
     }
 
@@ -614,12 +641,14 @@ class LocationController extends AbstractAdminController
      */
     public function importLocationsAction(ServerRequestInterface $request): ResponseInterface
     {
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         $serverfile     = $request->getParsedBody()['serverfile'] ?? '';
         $options        = $request->getParsedBody()['import-options'] ?? '';
         $clear_database = (bool) ($request->getParsedBody()['cleardatabase'] ?? false);
         $local_file     = $request->getUploadedFiles()['localfile'] ?? null;
 
-        $filename    = '';
         $places      = [];
         $field_names = [
             'pl_level',
@@ -632,100 +661,100 @@ class LocationController extends AbstractAdminController
 
         $url = route('map-data', ['parent_id' => 0]);
 
-        if ($serverfile !== '' && is_dir(WT_DATA_DIR . 'places')) {
+        $fp = false;
+
+        if ($serverfile !== '' && $data_filesystem->has(self::PLACES_FOLDER . $serverfile)) {
             // first choice is file on server
-            $fp = fopen(WT_DATA_DIR . 'places/' . $serverfile, 'rb+');
+            $fp = $data_filesystem->readStream(self::PLACES_FOLDER . $serverfile);
         } elseif ($local_file instanceof UploadedFileInterface && $local_file->getError() === UPLOAD_ERR_OK) {
             // 2nd choice is local file
             $fp = $local_file->getStream()->detach();
-        } else {
+        }
+
+        if ($fp === false) {
             return redirect($url);
         }
 
-        if ($fp !== false) {
-            $string = stream_get_contents($fp);
+        $string = stream_get_contents($fp);
 
-            // Check the filetype
-            if (stripos($string, 'FeatureCollection') !== false) {
-                $input_array = json_decode($string, false);
+        // Check the file type
+        if (stripos($string, 'FeatureCollection') !== false) {
+            $input_array = json_decode($string, false);
 
-                foreach ($input_array->features as $feature) {
-                    $places[] = array_combine($field_names, [
-                        $feature->properties->level ?? substr_count($feature->properties->name, ','),
-                        $this->gedcom_service->writeLongitude($feature->geometry->coordinates[0]),
-                        $this->gedcom_service->writeLatitude($feature->geometry->coordinates[1]),
-                        $feature->properties->zoom ?? null,
-                        $feature->properties->icon ?? null,
-                        $feature->properties->name,
-                    ]);
-                }
-            } else {
-                rewind($fp);
-                while (($row = fgetcsv($fp, 0, ';')) !== false) {
-                    // Skip the header
-                    if (!is_numeric($row[0])) {
-                        continue;
-                    }
-
-                    $level = (int) $row[0];
-                    $count = count($row);
-
-                    // convert separate place fields into a comma separated placename
-                    $fqdn = implode(Gedcom::PLACE_SEPARATOR, array_reverse(array_slice($row, 1, 1 + $level)));
-
-                    $places[] = [
-                        'pl_level' => $level,
-                        'pl_long'  => $row[$count - 4],
-                        'pl_lati'  => $row[$count - 3],
-                        'pl_zoom'  => $row[$count - 2],
-                        'pl_icon'  => $row[$count - 1],
-                        'fqpn'     => $fqdn,
-                    ];
-                }
+            foreach ($input_array->features as $feature) {
+                $places[] = array_combine($field_names, [
+                    $feature->properties->level ?? substr_count($feature->properties->name, ','),
+                    $this->gedcom_service->writeLongitude($feature->geometry->coordinates[0]),
+                    $this->gedcom_service->writeLatitude($feature->geometry->coordinates[1]),
+                    $feature->properties->zoom ?? null,
+                    $feature->properties->icon ?? null,
+                    $feature->properties->name,
+                ]);
             }
-
-            fclose($fp);
-
-            if ($clear_database) {
-                DB::table('placelocation')->delete();
-            }
-
-            //process places
-            $added   = 0;
-            $updated = 0;
-
-            foreach ($places as $place) {
-                $location = new Location($place['fqpn']);
-                $exists   = $location->exists();
-
-                if ($options === 'update' && !$exists) {
+        } else {
+            rewind($fp);
+            while (($row = fgetcsv($fp, 0, ';')) !== false) {
+                // Skip the header
+                if (!is_numeric($row[0])) {
                     continue;
                 }
 
-                if (!$exists) {
-                    $added++;
-                }
+                $level = (int) $row[0];
+                $count = count($row);
 
-                if (!$exists || $options === 'update') {
-                    DB::table('placelocation')
-                        ->where('pl_id', '=', $location->id())
-                        ->update([
-                            'pl_lati' => $place['pl_lati'],
-                            'pl_long' => $place['pl_long'],
-                            'pl_zoom' => $place['pl_zoom'] ?: null,
-                            'pl_icon' => $place['pl_icon'] ?: null,
-                        ]);
+                // convert separate place fields into a comma separated placename
+                $fqdn = implode(Gedcom::PLACE_SEPARATOR, array_reverse(array_slice($row, 1, 1 + $level)));
 
-                    $updated++;
-                }
+                $places[] = [
+                    'pl_level' => $level,
+                    'pl_long'  => $row[$count - 4],
+                    'pl_lati'  => $row[$count - 3],
+                    'pl_zoom'  => $row[$count - 2],
+                    'pl_icon'  => $row[$count - 1],
+                    'fqpn'     => $fqdn,
+                ];
             }
-            FlashMessages::addMessage(
-                I18N::translate('locations updated: %s, locations added: %s', I18N::number($updated), I18N::number($added)),
-                $added + $updated === 0 ? 'info' : 'success'
-            );
-        } else {
-            throw new Exception('Unable to open file: ' . $filename);
         }
+
+        fclose($fp);
+
+        if ($clear_database) {
+            DB::table('placelocation')->delete();
+        }
+
+        //process places
+        $added   = 0;
+        $updated = 0;
+
+        foreach ($places as $place) {
+            $location = new Location($place['fqpn']);
+            $exists   = $location->exists();
+
+            if ($options === 'update' && !$exists) {
+                continue;
+            }
+
+            if (!$exists) {
+                $added++;
+            }
+
+            if (!$exists || $options === 'update') {
+                DB::table('placelocation')
+                    ->where('pl_id', '=', $location->id())
+                    ->update([
+                        'pl_lati' => $place['pl_lati'],
+                        'pl_long' => $place['pl_long'],
+                        'pl_zoom' => $place['pl_zoom'] ?: null,
+                        'pl_icon' => $place['pl_icon'] ?: null,
+                    ]);
+
+                $updated++;
+            }
+        }
+        FlashMessages::addMessage(
+            I18N::translate('locations updated: %s, locations added: %s', I18N::number($updated), I18N::number($added)),
+            $added + $updated === 0 ? 'info' : 'success'
+        );
 
         return redirect($url);
     }

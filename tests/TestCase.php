@@ -33,6 +33,8 @@ use Illuminate\Cache\NullStore;
 use Illuminate\Cache\Repository;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use League\Flysystem\Filesystem;
+use League\Flysystem\Memory\MemoryAdapter;
 use League\Flysystem\Memory\NullAdapter;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -171,7 +173,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
             ->withUploadedFiles($files)
             ->withAttribute('base_url', 'https://webtrees.test')
             ->withAttribute('client-ip', '127.0.0.1')
-            ->withAttribute('user', new GuestUser());
+            ->withAttribute('user', new GuestUser())
+            ->withAttribute('filesystem.data', new Filesystem(new MemoryAdapter()))
+            ->withAttribute('filesystem.data.name', 'data/');
 
         foreach ($attributes as $key => $value) {
             $request = $request->withAttribute($key, $value);
