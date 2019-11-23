@@ -21,12 +21,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function call_user_func;
 use function method_exists;
@@ -71,7 +71,7 @@ class ModuleAction implements RequestHandlerInterface
         $module = $this->module_service->findByName($module_name);
 
         if ($module === null) {
-            throw new NotFoundHttpException('Module ' . $module_name . ' does not exist');
+            throw new HttpNotFoundException('Module ' . $module_name . ' does not exist');
         }
 
         // We'll call a function such as Module::getFooBarAction()
@@ -80,11 +80,11 @@ class ModuleAction implements RequestHandlerInterface
 
         // Actions with "Admin" in the name are for administrators only.
         if (strpos($action, 'Admin') !== false && !Auth::isAdmin($user)) {
-            throw new AccessDeniedHttpException('Admin only action');
+            throw new HttpAccessDeniedException('Admin only action');
         }
 
         if (!method_exists($module, $method)) {
-            throw new NotFoundHttpException('Method ' . $method . '() not found in ' . $module_name);
+            throw new HttpNotFoundException('Method ' . $method . '() not found in ' . $module_name);
         }
 
         return call_user_func([$module, $method], $request);

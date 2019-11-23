@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
+use Fisharebest\Webtrees\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -45,7 +45,7 @@ class HandleExceptionsTest extends TestCase
         $tree_service = $this->createMock(TreeService::class);
 
         $handler = $this->createMock(RequestHandlerInterface::class);
-        $handler->method('handle')->willThrowException(new InternalServerErrorException('eek'));
+        $handler->method('handle')->willThrowException(new HttpServerErrorException('eek'));
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service->method('findByInterface')->willReturn(new Collection());

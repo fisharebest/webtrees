@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Exception;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
@@ -36,7 +37,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Ramsey\Uuid\Uuid;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function view;
 
@@ -191,12 +191,12 @@ class RegisterAction extends AbstractBaseController
      * Check that visitors are allowed to register on this site.
      *
      * @return void
-     * @throws NotFoundHttpException
+     * @throws HttpNotFoundException
      */
     private function checkRegistrationAllowed(): void
     {
         if (Site::getPreference('USE_REGISTRATION_MODULE') !== '1') {
-            throw new NotFoundHttpException();
+            throw new HttpNotFoundException();
         }
     }
 

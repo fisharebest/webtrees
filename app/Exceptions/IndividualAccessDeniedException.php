@@ -20,18 +20,19 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Exceptions;
 
 use Fisharebest\Webtrees\I18N;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Exception thrown when an individual cannot be accessed due to privacy rules.
  */
-class IndividualAccessDeniedException extends AccessDeniedHttpException
+class IndividualAccessDeniedException extends HttpAccessDeniedException
 {
     /**
      * IndividualNotFoundException constructor.
      */
     public function __construct()
     {
-        parent::__construct(I18N::translate('This individual does not exist or you do not have permission to view it.'));
+        parent::__construct(I18N::translate(
+            'This individual does not exist or you do not have permission to view it.'
+        ));
     }
 }

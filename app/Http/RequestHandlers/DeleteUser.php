@@ -20,13 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UserService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function response;
 
@@ -58,11 +58,11 @@ class DeleteUser implements RequestHandlerInterface
         $user = $this->user_service->find($user_id);
 
         if ($user === null) {
-            throw new NotFoundHttpException('User ID ' . $user_id . ' not found');
+            throw new HttpNotFoundException('User ID ' . $user_id . ' not found');
         }
 
         if (Auth::isAdmin($user)) {
-            throw new AccessDeniedHttpException('Cannot delete an administrator');
+            throw new HttpAccessDeniedException('Cannot delete an administrator');
         }
 
         Log::addAuthenticationLog('Deleted user: ' . $user->userName());

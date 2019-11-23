@@ -40,7 +40,7 @@ trait MemcachedTrait
         return \extension_loaded('memcached') && version_compare(phpversion('memcached'), '2.2.0', '>=');
     }
 
-    private function init(\Memcached $client, $namespace, $defaultLifetime, ?MarshallerInterface $marshaller)
+    private function init(\Memcached $client, string $namespace, int $defaultLifetime, ?MarshallerInterface $marshaller)
     {
         if (!static::isSupported()) {
             throw new CacheException('Memcached >= 2.2.0 is required');
@@ -71,7 +71,6 @@ trait MemcachedTrait
      * - [['localhost', 11211, 33]]
      *
      * @param array[]|string|string[] $servers An array of servers, a DSN, or an array of DSNs
-     * @param array                   $options An array of options
      *
      * @return \Memcached
      *
@@ -307,10 +306,7 @@ trait MemcachedTrait
         throw new CacheException(sprintf('MemcachedAdapter client error: %s.', strtolower($this->client->getResultMessage())));
     }
 
-    /**
-     * @return \Memcached
-     */
-    private function getClient()
+    private function getClient(): \Memcached
     {
         if ($this->client) {
             return $this->client;

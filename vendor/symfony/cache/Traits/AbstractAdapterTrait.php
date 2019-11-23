@@ -51,11 +51,13 @@ trait AbstractAdapterTrait
             foreach ($this->doFetch([$id]) as $value) {
                 $isHit = true;
             }
+
+            return $f($key, $value, $isHit);
         } catch (\Exception $e) {
             CacheItem::log($this->logger, 'Failed to fetch key "{key}": '.$e->getMessage(), ['key' => $key, 'exception' => $e]);
         }
 
-        return $f($key, $value, $isHit);
+        return $f($key, null, false);
     }
 
     /**
@@ -84,6 +86,8 @@ trait AbstractAdapterTrait
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function save(CacheItemInterface $item)
     {
@@ -97,6 +101,8 @@ trait AbstractAdapterTrait
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function saveDeferred(CacheItemInterface $item)
     {
@@ -125,7 +131,7 @@ trait AbstractAdapterTrait
         }
     }
 
-    private function generateItems($items, &$keys)
+    private function generateItems(iterable $items, array &$keys): iterable
     {
         $f = $this->createCacheItem;
 

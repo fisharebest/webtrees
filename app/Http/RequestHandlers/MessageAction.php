@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
@@ -29,7 +30,6 @@ use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 use function assert;
 use function e;
@@ -81,7 +81,7 @@ class MessageAction implements RequestHandlerInterface
         $ip      = $request->getAttribute('client-ip');
 
         if ($to_user === null || $to_user->getPreference(User::PREF_CONTACT_METHOD) === 'none') {
-            throw new AccessDeniedHttpException('Invalid contact user id');
+            throw new HttpAccessDeniedException('Invalid contact user id');
         }
 
         if ($body === '' || $subject === '') {

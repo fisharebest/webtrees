@@ -31,7 +31,6 @@ use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use RuntimeException;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use function array_combine;
 use function array_diff;
@@ -39,7 +38,11 @@ use function array_filter;
 use function array_map;
 use function assert;
 use function dirname;
+use function ini_get;
 use function intdiv;
+use function intval;
+use function ltrim;
+use function min;
 use function pathinfo;
 use function preg_match;
 use function sha1;
@@ -47,9 +50,11 @@ use function sort;
 use function str_replace;
 use function strpos;
 use function strtolower;
+use function substr;
 use function trim;
 
 use const PATHINFO_EXTENSION;
+use const PHP_INT_MAX;
 use const UPLOAD_ERR_OK;
 
 /**
@@ -72,10 +77,42 @@ class MediaFileService
      */
     public function maxUploadFilesize(): string
     {
-        $bytes = UploadedFile::getMaxFilesize();
+        $sizePostMax = $this->parseIniFileSize(ini_get('post_max_size'));
+        $sizeUploadMax = $this->parseIniFileSize(ini_get('upload_max_filesize'));
+
+        $bytes =  min($sizePostMax, $sizeUploadMax);
         $kb    = intdiv($bytes + 1023, 1024);
 
         return I18N::translate('%s KB', I18N::number($kb));
+    }
+
+    /**
+     * Returns the given size from an ini value in bytes.
+     *
+     * @param $size
+     *
+     * @return int
+     */
+    private function parseIniFileSize($size): int
+    {
+        $number = (int) $size;
+
+        switch (substr($size, -1)) {
+            case 't':
+            case 'T':
+                return $number * 1024 ** 4;
+            case 'g':
+            case 'G':
+                return $number * 1024 ** 3;
+            case 'm':
+            case 'M':
+                return $number * 1024 ** 2;
+            case 'k':
+            case 'K':
+                return $number * 1024;
+            default:
+                return $number;
+        }
     }
 
     /**

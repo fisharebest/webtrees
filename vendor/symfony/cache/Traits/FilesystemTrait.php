@@ -33,7 +33,7 @@ trait FilesystemTrait
         $time = time();
         $pruned = true;
 
-        foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($this->directory, \FilesystemIterator::SKIP_DOTS), \RecursiveIteratorIterator::LEAVES_ONLY) as $file) {
+        foreach ($this->scanHashDir($this->directory) as $file) {
             if (!$h = @fopen($file, 'rb')) {
                 continue;
             }
@@ -107,5 +107,18 @@ trait FilesystemTrait
         }
 
         return $failed;
+    }
+
+    private function getFileKey(string $file): string
+    {
+        if (!$h = @fopen($file, 'rb')) {
+            return '';
+        }
+
+        fgets($h); // expiry
+        $encodedKey = fgets($h);
+        fclose($h);
+
+        return rawurldecode(rtrim($encodedKey));
     }
 }

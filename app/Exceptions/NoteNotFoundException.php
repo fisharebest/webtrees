@@ -20,18 +20,19 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Exceptions;
 
 use Fisharebest\Webtrees\I18N;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Exception thrown when a note does not exist.
  */
-class NoteNotFoundException extends NotFoundHttpException
+class NoteNotFoundException extends HttpNotFoundException
 {
     /**
      * NoteNotFoundException constructor.
      */
     public function __construct()
     {
-        parent::__construct(I18N::translate('This note does not exist or you do not have permission to view it.'));
+        parent::__construct(I18N::translate(
+            'This note does not exist or you do not have permission to view it.'
+        ));
     }
 }

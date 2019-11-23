@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Html;
@@ -40,7 +41,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use stdClass;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Throwable;
 
 use function assert;
@@ -284,7 +284,7 @@ class MediaController extends AbstractAdminController
                 return $this->datatables_service->handleCollection($request, $unused_files, $search_columns, $sort_columns, $callback);
 
             default:
-                throw new BadRequestHttpException();
+                throw new HttpNotFoundException();
         }
     }
 

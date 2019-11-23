@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Closure;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
+use Fisharebest\Webtrees\Exceptions\HttpServiceUnavailableException;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -998,7 +998,7 @@ class SearchService
             if (++$n > $limit) {
                 $message = I18N::translate('The search returned too many results.');
 
-                throw new InternalServerErrorException($message);
+                throw new HttpServiceUnavailableException($message);
             }
         };
     }

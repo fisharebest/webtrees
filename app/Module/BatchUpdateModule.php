@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -39,7 +40,6 @@ use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function array_key_exists;
 use function assert;
@@ -376,7 +376,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
         $plugin  = $plugins[$plugin] ?? null;
 
         if ($plugin === null) {
-            throw new NotFoundHttpException();
+            throw new HttpNotFoundException();
         }
         $plugin->getOptions($request);
 

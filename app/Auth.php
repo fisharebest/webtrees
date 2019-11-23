@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\FamilyAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\FamilyNotFoundException;
+use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
 use Fisharebest\Webtrees\Exceptions\MediaAccessDeniedException;
@@ -36,7 +37,6 @@ use Fisharebest\Webtrees\Exceptions\SourceAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\UserService;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Authentication.
@@ -217,7 +217,7 @@ class Auth
     public static function checkComponentAccess(ModuleInterface $module, string $component, Tree $tree, UserInterface $user): void
     {
         if ($module->accessLevel($tree, $component) < self::accessLevel($tree, $user)) {
-            throw new AccessDeniedHttpException('Access denied');
+            throw new HttpAccessDeniedException();
         }
     }
 

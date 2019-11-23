@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\User;
@@ -27,7 +28,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 use function redirect;
 use function route;
@@ -54,7 +54,7 @@ class AuthAdministrator implements MiddlewareInterface
 
         // Logged in, but without the correct role?
         if ($user instanceof User) {
-            throw new AccessDeniedHttpException(I18N::translate('You do not have permission to view this page.'));
+            throw new HttpAccessDeniedException();
         }
 
         // Not logged in.

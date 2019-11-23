@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Exceptions\HttpException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -29,7 +30,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 
 use function app;
@@ -141,7 +141,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             'alert' => $exception->getMessage(),
             'title' => $exception->getMessage(),
             'tree'  => $tree,
-        ], $exception->getStatusCode());
+        ], $exception->getCode());
     }
 
     /**

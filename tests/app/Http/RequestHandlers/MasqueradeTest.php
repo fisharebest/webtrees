@@ -21,11 +21,11 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\Masquerade
@@ -85,7 +85,7 @@ class MasqueradeTest extends TestCase
      */
     public function testMasqueradeAsNonExistingUser(): void
     {
-        $this->expectException(NotFoundHttpException::class);
+        $this->expectException(HttpNotFoundException::class);
         $this->expectExceptionMessage('User ID 2 not found');
 
         $user = $this->createMock(User::class);

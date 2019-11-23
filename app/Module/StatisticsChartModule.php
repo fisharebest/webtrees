@@ -21,13 +21,13 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function app;
 use function array_key_exists;
@@ -296,7 +296,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 switch ($z_axis_type) {
@@ -327,7 +327,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
@@ -345,7 +345,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 switch ($z_axis_type) {
@@ -376,7 +376,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
@@ -394,7 +394,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 switch ($z_axis_type) {
@@ -418,7 +418,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
@@ -436,7 +436,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 switch ($z_axis_type) {
@@ -467,7 +467,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
@@ -485,7 +485,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 switch ($z_axis_type) {
@@ -521,7 +521,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
@@ -540,7 +540,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 switch ($z_axis_type) {
@@ -583,7 +583,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
@@ -602,7 +602,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 switch ($z_axis_type) {
@@ -644,7 +644,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
@@ -663,7 +663,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 switch ($z_axis_type) {
@@ -717,7 +717,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
@@ -735,7 +735,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 switch ($z_axis_type) {
@@ -759,13 +759,13 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     default:
-                        throw new NotFoundHttpException();
+                        throw new HttpNotFoundException();
                 }
 
                 return response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             default:
-                throw new NotFoundHttpException();
+                throw new HttpNotFoundException();
                 break;
         }
     }

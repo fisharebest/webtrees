@@ -20,7 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
-use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -34,7 +35,6 @@ use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use RuntimeException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 use function assert;
@@ -174,7 +174,7 @@ class UpgradeController extends AbstractAdminController
                 return $this->wizardStepCleanup($data_filesystem, $root_filesystem);
         }
 
-        throw new NotFoundHttpException();
+        throw new HttpNotFoundException();
     }
 
     /**
@@ -215,12 +215,12 @@ class UpgradeController extends AbstractAdminController
         $latest_version = $this->upgrade_service->latestVersion();
 
         if ($latest_version === '') {
-            throw new InternalServerErrorException(I18N::translate('No upgrade information is available.'));
+            throw new HttpServerErrorException(I18N::translate('No upgrade information is available.'));
         }
 
         if (version_compare(Webtrees::VERSION, $latest_version) >= 0) {
             $message = I18N::translate('This is the latest version of webtrees. No upgrade is available.');
-            throw new InternalServerErrorException($message);
+            throw new HttpServerErrorException($message);
         }
 
         /* I18N: %s is a version number, such as 1.2.3 */
@@ -256,7 +256,7 @@ class UpgradeController extends AbstractAdminController
         $changes = DB::table('change')->where('status', '=', 'pending')->exists();
 
         if ($changes) {
-            throw new InternalServerErrorException(I18N::translate('You should accept or reject all pending changes before upgrading.'));
+            throw new HttpServerErrorException(I18N::translate('You should accept or reject all pending changes before upgrading.'));
         }
 
         return response(view('components/alert-success', [
@@ -308,7 +308,7 @@ class UpgradeController extends AbstractAdminController
         try {
             $bytes = $this->upgrade_service->downloadFile($download_url, $temporary_filesystem, self::ZIP_FILENAME);
         } catch (Throwable $exception) {
-            throw new InternalServerErrorException($exception->getMessage());
+            throw new HttpServerErrorException($exception->getMessage());
         }
 
         $kb       = I18N::number(intdiv($bytes + 1023, 1024));

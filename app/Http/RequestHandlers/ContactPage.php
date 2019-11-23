@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MessageService;
@@ -27,7 +28,6 @@ use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 use function assert;
 use function in_array;
@@ -79,7 +79,7 @@ class ContactPage implements RequestHandlerInterface
         $to_user = $this->user_service->findByUserName($to);
 
         if (!in_array($to_user, $this->message_service->validContacts($tree), false)) {
-            throw new AccessDeniedHttpException('Invalid contact user id');
+            throw new HttpAccessDeniedException('Invalid contact user id');
         }
 
         $to_name = $to_user->realName();

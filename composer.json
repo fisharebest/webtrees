@@ -69,9 +69,7 @@
         "psr/http-server-middleware": "~1.0",
         "ramsey/uuid": "~3.8",
         "swiftmailer/swiftmailer": "~6.1",
-        "symfony/expression-language": "~4.2",
-        "symfony/http-foundation": "~4.2",
-        "symfony/http-kernel": "~4.2",
+        "symfony/expression-language": "~4.4",
         "symfony/polyfill-mbstring": "~1.11",
         "symfony/polyfill-php72": "~1.11",
         "tecnickcom/tcpdf": "~6.2"

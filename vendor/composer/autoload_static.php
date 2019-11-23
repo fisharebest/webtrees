@@ -4,19 +4,18 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitada08cf78f4e9b8136568f8f9fff9e06
+class ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
-        'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
+        'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         'b3134b0e457069f7362d2c9cf91628c7' => __DIR__ . '/..' . '/fisharebest/ext-calendar/src/shims.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
@@ -27,7 +26,6 @@ class ComposerStaticInitada08cf78f4e9b8136568f8f9fff9e06
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
-            'Symfony\\Polyfill\\Php73\\' => 23,
             'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Intl\\Idn\\' => 26,
@@ -35,16 +33,10 @@ class ComposerStaticInitada08cf78f4e9b8136568f8f9fff9e06
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Contracts\\Translation\\' => 30,
             'Symfony\\Contracts\\Service\\' => 26,
-            'Symfony\\Contracts\\EventDispatcher\\' => 34,
             'Symfony\\Contracts\\Cache\\' => 24,
             'Symfony\\Component\\VarExporter\\' => 30,
             'Symfony\\Component\\Translation\\' => 30,
-            'Symfony\\Component\\Mime\\' => 23,
-            'Symfony\\Component\\HttpKernel\\' => 29,
-            'Symfony\\Component\\HttpFoundation\\' => 33,
             'Symfony\\Component\\ExpressionLanguage\\' => 37,
-            'Symfony\\Component\\EventDispatcher\\' => 34,
-            'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\Cache\\' => 24,
         ),
         'R' => 
@@ -130,10 +122,6 @@ class ComposerStaticInitada08cf78f4e9b8136568f8f9fff9e06
     );
 
     public static $prefixDirsPsr4 = array (
-        'Symfony\\Polyfill\\Php73\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php73',
-        ),
         'Symfony\\Polyfill\\Php72\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php72',
@@ -162,10 +150,6 @@ class ComposerStaticInitada08cf78f4e9b8136568f8f9fff9e06
         array (
             0 => __DIR__ . '/..' . '/symfony/service-contracts',
         ),
-        'Symfony\\Contracts\\EventDispatcher\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/event-dispatcher-contracts',
-        ),
         'Symfony\\Contracts\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/cache-contracts',
@@ -178,29 +162,9 @@ class ComposerStaticInitada08cf78f4e9b8136568f8f9fff9e06
         array (
             0 => __DIR__ . '/..' . '/symfony/translation',
         ),
-        'Symfony\\Component\\Mime\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/mime',
-        ),
-        'Symfony\\Component\\HttpKernel\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/http-kernel',
-        ),
-        'Symfony\\Component\\HttpFoundation\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/http-foundation',
-        ),
         'Symfony\\Component\\ExpressionLanguage\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/expression-language',
-        ),
-        'Symfony\\Component\\EventDispatcher\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
-        ),
-        'Symfony\\Component\\Debug\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/debug',
         ),
         'Symfony\\Component\\Cache\\' => 
         array (
@@ -386,7 +350,6 @@ class ComposerStaticInitada08cf78f4e9b8136568f8f9fff9e06
 
     public static $classMap = array (
         'Datamatrix' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/datamatrix.php',
-        'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'PDF417' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/pdf417.php',
         'QRcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/qrcode.php',
         'TCPDF' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf.php',
@@ -405,10 +368,10 @@ class ComposerStaticInitada08cf78f4e9b8136568f8f9fff9e06
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitada08cf78f4e9b8136568f8f9fff9e06::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitada08cf78f4e9b8136568f8f9fff9e06::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitada08cf78f4e9b8136568f8f9fff9e06::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitada08cf78f4e9b8136568f8f9fff9e06::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99::$classMap;
 
         }, null, ClassLoader::class);
     }

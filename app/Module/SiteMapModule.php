@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Html;
@@ -37,7 +38,6 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function redirect;
 use function view;
@@ -212,7 +212,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
         $file = $request->getQueryParams()['file'];
 
         if (!preg_match('/^(\d+)-([imnrs])-(\d+)$/', $file, $match)) {
-            throw new NotFoundHttpException('Bad sitemap file');
+            throw new HttpNotFoundException('Bad sitemap file');
         }
 
         $timestamp   = (int) $this->getPreference('sitemap-' . $file . '.timestamp');
@@ -224,7 +224,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             $tree = $this->tree_service->find((int) $match[1]);
 
             if ($tree === null) {
-                throw new NotFoundHttpException('No such tree');
+                throw new HttpNotFoundException('No such tree');
             }
 
             $records = $this->sitemapRecords($tree, $match[2], self::RECORDS_PER_VOLUME, self::RECORDS_PER_VOLUME * $match[3]);
@@ -271,7 +271,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
                 break;
 
             default:
-                throw new NotFoundHttpException('Invalid record type: ' . $type);
+                throw new HttpNotFoundException('Invalid record type: ' . $type);
         }
 
         // Skip private records.

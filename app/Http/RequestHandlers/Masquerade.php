@@ -20,13 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function response;
 
@@ -57,7 +57,7 @@ class Masquerade implements RequestHandlerInterface
         $user    = $this->user_service->find($user_id);
 
         if ($user === null) {
-            throw new NotFoundHttpException('User ID ' . $user_id . ' not found');
+            throw new HttpNotFoundException('User ID ' . $user_id . ' not found');
         }
 
         if ($request->getAttribute('user')->id() !== $user_id) {

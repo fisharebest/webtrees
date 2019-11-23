@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Exception;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
@@ -35,7 +36,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function assert;
 
@@ -111,7 +111,7 @@ class PlaceHierarchyController extends AbstractBaseController
                 }
                 break;
             default:
-                throw new NotFoundHttpException('Invalid action');
+                throw new HttpNotFoundException('Invalid action');
         }
 
         $breadcrumbs = $this->breadcrumbs($place);

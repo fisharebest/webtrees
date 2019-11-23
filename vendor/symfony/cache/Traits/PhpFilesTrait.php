@@ -54,7 +54,7 @@ trait PhpFilesTrait
 
         set_error_handler($this->includeHandler);
         try {
-            foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($this->directory, \FilesystemIterator::SKIP_DOTS), \RecursiveIteratorIterator::LEAVES_ONLY) as $file) {
+            foreach ($this->scanHashDir($this->directory) as $file) {
                 try {
                     if (\is_array($expiresAt = include $file)) {
                         $expiresAt = $expiresAt[0];
@@ -211,17 +211,19 @@ trait PhpFilesTrait
                 $value = var_export($value, true);
             }
 
+            $encodedKey = rawurlencode($key);
+
             if (!$isStaticValue) {
                 // We cannot use a closure here because of https://bugs.php.net/76982
                 $value = str_replace('\Symfony\Component\VarExporter\Internal\\', '', $value);
-                $value = "<?php\n\nnamespace Symfony\Component\VarExporter\Internal;\n\nreturn \$getExpiry ? {$expiry} : {$value};\n";
+                $value = "namespace Symfony\Component\VarExporter\Internal;\n\nreturn \$getExpiry ? {$expiry} : {$value};";
             } else {
-                $value = "<?php return [{$expiry}, {$value}];\n";
+                $value = "return [{$expiry}, {$value}];";
             }
 
             $file = $this->files[$key] = $this->getFile($key, true);
             // Since OPcache only compiles files older than the script execution start, set the file's mtime in the past
-            $ok = $this->write($file, $value, self::$startTime - 10) && $ok;
+            $ok = $this->write($file, "<?php //{$encodedKey}\n\n{$value}\n", self::$startTime - 10) && $ok;
 
             if ($allowCompile) {
                 @opcache_invalidate($file, true);
@@ -266,6 +268,18 @@ trait PhpFilesTrait
 
         return @unlink($file);
     }
+
+    private function getFileKey(string $file): string
+    {
+        if (!$h = @fopen($file, 'rb')) {
+            return '';
+        }
+
+        $encodedKey = substr(fgets($h), 8);
+        fclose($h);
+
+        return rawurldecode(rtrim($encodedKey));
+    }
 }
 
 /**
@@ -275,7 +289,7 @@ class LazyValue
 {
     public $file;
 
-    public function __construct($file)
+    public function __construct(string $file)
     {
         $this->file = $file;
     }

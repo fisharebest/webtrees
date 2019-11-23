@@ -20,6 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleInterface;
@@ -27,8 +29,6 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function response;
 
@@ -66,7 +66,7 @@ class ModuleActionTest extends TestCase
      */
     public function testNonExistingAction(): void
     {
-        $this->expectException(NotFoundHttpException::class);
+        $this->expectException(HttpNotFoundException::class);
         $this->expectExceptionMessage('Method getTestingAction() not found in test');
 
         $module_service = $this->createMock(ModuleService::class);
@@ -90,7 +90,7 @@ class ModuleActionTest extends TestCase
      */
     public function testNonExistingModule(): void
     {
-        $this->expectException(NotFoundHttpException::class);
+        $this->expectException(HttpNotFoundException::class);
         $this->expectExceptionMessage('Module test does not exist');
 
         $module_service = $this->createMock(ModuleService::class);
@@ -114,7 +114,7 @@ class ModuleActionTest extends TestCase
      */
     public function testAdminAction(): void
     {
-        $this->expectException(AccessDeniedHttpException::class);
+        $this->expectException(HttpAccessDeniedException::class);
         $this->expectExceptionMessage('Admin only action');
 
         $module_service = $this->createMock(ModuleService::class);

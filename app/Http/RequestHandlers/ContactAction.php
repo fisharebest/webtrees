@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -29,8 +31,6 @@ use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function assert;
 use function checkdnsrr;
@@ -87,11 +87,11 @@ class ContactAction implements RequestHandlerInterface
         $to_user    = $this->user_service->findByUserName($to);
 
         if ($to_user === null) {
-            throw new NotFoundHttpException();
+            throw new HttpNotFoundException();
         }
 
         if (!in_array($to_user, $this->message_service->validContacts($tree), false)) {
-            throw new AccessDeniedHttpException('Invalid contact user id');
+            throw new HttpAccessDeniedException('Invalid contact user id');
         }
 
         $errors = $body === '' || $subject === '' || $from_email === '' || $from_name === '';

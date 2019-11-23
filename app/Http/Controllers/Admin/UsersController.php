@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
@@ -41,7 +42,6 @@ use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function e;
 use function route;
@@ -233,7 +233,7 @@ class UsersController extends AbstractAdminController
         $user    = $this->user_service->find($user_id);
 
         if ($user === null) {
-            throw new NotFoundHttpException(I18N::translate('%1$s does not exist.', 'user_id:' . $user_id));
+            throw new HttpNotFoundException(I18N::translate('%1$s does not exist.', 'user_id:' . $user_id));
         }
 
         $languages = $this->module_service->findByInterface(ModuleLanguageInterface::class, true, true)
@@ -242,7 +242,6 @@ class UsersController extends AbstractAdminController
 
                 return [$locale->languageTag() => $locale->endonym()];
             });
-
 
         return $this->viewResponse('admin/users-edit', [
             'contact_methods'  => FunctionsEdit::optionsContactMethods(),
@@ -333,7 +332,7 @@ class UsersController extends AbstractAdminController
         $edit_user = $this->user_service->find($user_id);
 
         if ($edit_user === null) {
-            throw new NotFoundHttpException(I18N::translate('%1$s does not exist', 'user_id:' . $user_id));
+            throw new HttpNotFoundException(I18N::translate('%1$s does not exist', 'user_id:' . $user_id));
         }
 
         // We have just approved a user.  Tell them

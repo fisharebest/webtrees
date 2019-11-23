@@ -20,18 +20,19 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Exceptions;
 
 use Fisharebest\Webtrees\I18N;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Exception thrown when a media cannot be accessed due to privacy rules.
  */
-class MediaAccessDeniedException extends AccessDeniedHttpException
+class MediaAccessDeniedException extends HttpAccessDeniedException
 {
     /**
      * MediaNotFoundException constructor.
      */
     public function __construct()
     {
-        parent::__construct(I18N::translate('This media object does not exist or you do not have permission to view it.'));
+        parent::__construct(I18N::translate(
+            'This media object does not exist or you do not have permission to view it.'
+        ));
     }
 }

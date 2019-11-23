@@ -11,8 +11,8 @@
 
 namespace Symfony\Component\Cache\Adapter;
 
-use Symfony\Component\Cache\Marshaller\DefaultMarshaller;
 use Symfony\Component\Cache\Marshaller\MarshallerInterface;
+use Symfony\Component\Cache\Marshaller\TagAwareMarshaller;
 use Symfony\Component\Cache\PruneableInterface;
 use Symfony\Component\Cache\Traits\FilesystemTrait;
 
@@ -21,14 +21,12 @@ use Symfony\Component\Cache\Traits\FilesystemTrait;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  * @author André Rømcke <andre.romcke+symfony@gmail.com>
- *
- * @experimental in 4.3
  */
 class FilesystemTagAwareAdapter extends AbstractTagAwareAdapter implements PruneableInterface
 {
     use FilesystemTrait {
+        doClear as private doClearCache;
         doSave as private doSaveCache;
-        doDelete as private doDeleteCache;
     }
 
     /**
@@ -38,9 +36,58 @@ class FilesystemTagAwareAdapter extends AbstractTagAwareAdapter implements Prune
 
     public function __construct(string $namespace = '', int $defaultLifetime = 0, string $directory = null, MarshallerInterface $marshaller = null)
     {
-        $this->marshaller = $marshaller ?? new DefaultMarshaller();
+        $this->marshaller = new TagAwareMarshaller($marshaller);
         parent::__construct('', $defaultLifetime);
         $this->init($namespace, $directory);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function doClear($namespace)
+    {
+        $ok = $this->doClearCache($namespace);
+
+        if ('' !== $namespace) {
+            return $ok;
+        }
+
+        set_error_handler(static function () {});
+        $chars = '+-ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+        try {
+            foreach ($this->scanHashDir($this->directory.self::TAG_FOLDER.\DIRECTORY_SEPARATOR) as $dir) {
+                if (rename($dir, $renamed = substr_replace($dir, bin2hex(random_bytes(4)), -8))) {
+                    $dir = $renamed.\DIRECTORY_SEPARATOR;
+                } else {
+                    $dir .= \DIRECTORY_SEPARATOR;
+                    $renamed = null;
+                }
+
+                for ($i = 0; $i < 38; ++$i) {
+                    if (!file_exists($dir.$chars[$i])) {
+                        continue;
+                    }
+                    for ($j = 0; $j < 38; ++$j) {
+                        if (!file_exists($d = $dir.$chars[$i].\DIRECTORY_SEPARATOR.$chars[$j])) {
+                            continue;
+                        }
+                        foreach (scandir($d, SCANDIR_SORT_NONE) ?: [] as $link) {
+                            if ('.' !== $link && '..' !== $link && (null !== $renamed || !realpath($d.\DIRECTORY_SEPARATOR.$link))) {
+                                unlink($d.\DIRECTORY_SEPARATOR.$link);
+                            }
+                        }
+                        null === $renamed ?: rmdir($d);
+                    }
+                    null === $renamed ?: rmdir($dir.$chars[$i]);
+                }
+                null === $renamed ?: rmdir($renamed);
+            }
+        } finally {
+            restore_error_handler();
+        }
+
+        return $ok;
     }
 
     /**
@@ -85,19 +132,59 @@ class FilesystemTagAwareAdapter extends AbstractTagAwareAdapter implements Prune
     /**
      * {@inheritdoc}
      */
-    protected function doDelete(array $ids, array $tagData = []): bool
+    protected function doDeleteYieldTags(array $ids): iterable
     {
-        $ok = $this->doDeleteCache($ids);
+        foreach ($ids as $id) {
+            $file = $this->getFile($id);
+            if (!file_exists($file) || !$h = @fopen($file, 'rb')) {
+                continue;
+            }
 
-        // Remove tags
-        foreach ($tagData as $tagId => $idMap) {
+            if ((\PHP_VERSION_ID >= 70300 || '\\' !== \DIRECTORY_SEPARATOR) && !@unlink($file)) {
+                fclose($h);
+                continue;
+            }
+
+            $meta = explode("\n", fread($h, 4096), 3)[2] ?? '';
+
+            // detect the compact format used in marshall() using magic numbers in the form 9D-..-..-..-..-00-..-..-..-5F
+            if (13 < \strlen($meta) && "\x9D" === $meta[0] && "\0" === $meta[5] && "\x5F" === $meta[9]) {
+                $meta[9] = "\0";
+                $tagLen = unpack('Nlen', $meta, 9)['len'];
+                $meta = substr($meta, 13, $tagLen);
+
+                if (0 < $tagLen -= \strlen($meta)) {
+                    $meta .= fread($h, $tagLen);
+                }
+
+                try {
+                    yield $id => '' === $meta ? [] : $this->marshaller->unmarshall($meta);
+                } catch (\Exception $e) {
+                    yield $id => [];
+                }
+            }
+
+            fclose($h);
+
+            if (\PHP_VERSION_ID < 70300 && '\\' === \DIRECTORY_SEPARATOR) {
+                @unlink($file);
+            }
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function doDeleteTagRelations(array $tagData): bool
+    {
+        foreach ($tagData as $tagId => $idList) {
             $tagFolder = $this->getTagFolder($tagId);
-            foreach ($idMap as $id) {
+            foreach ($idList as $id) {
                 @unlink($this->getFile($id, false, $tagFolder));
             }
         }
 
-        return $ok;
+        return true;
     }
 
     /**
@@ -113,13 +200,13 @@ class FilesystemTagAwareAdapter extends AbstractTagAwareAdapter implements Prune
             set_error_handler(static function () {});
 
             try {
-                if (rename($tagFolder, $renamed = substr_replace($tagFolder, bin2hex(random_bytes(4)), -1))) {
+                if (rename($tagFolder, $renamed = substr_replace($tagFolder, bin2hex(random_bytes(4)), -9))) {
                     $tagFolder = $renamed.\DIRECTORY_SEPARATOR;
                 } else {
                     $renamed = null;
                 }
 
-                foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($tagFolder, \FilesystemIterator::SKIP_DOTS | \FilesystemIterator::CURRENT_AS_PATHNAME)) as $itemLink) {
+                foreach ($this->scanHashDir($tagFolder) as $itemLink) {
                     unlink(realpath($itemLink) ?: $itemLink);
                     unlink($itemLink);
                 }

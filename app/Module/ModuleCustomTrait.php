@@ -21,11 +21,11 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function strlen;
 
@@ -136,7 +136,7 @@ trait ModuleCustomTrait
 
         // Do not allow requests that try to access parent folders.
         if (Str::contains($asset, '..')) {
-            throw new AccessDeniedHttpException($asset);
+            throw new HttpAccessDeniedException($asset);
         }
 
         // Find the file for this asset.
@@ -145,7 +145,7 @@ trait ModuleCustomTrait
         $file = $this->resourcesFolder() . $asset;
 
         if (!file_exists($file)) {
-            throw new NotFoundHttpException($file);
+            throw new HttpNotFoundException($file);
         }
 
         $content   = file_get_contents($file);

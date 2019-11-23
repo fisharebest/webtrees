@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
@@ -29,7 +30,6 @@ use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 use function assert;
 
@@ -160,7 +160,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         assert($tree instanceof Tree);
 
         if (!Auth::isManager($tree)) {
-            throw new AccessDeniedHttpException();
+            throw new HttpAccessDeniedException();
         }
 
         $news_id = $request->getQueryParams()['news_id'] ?? '';
@@ -199,7 +199,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         assert($tree instanceof Tree);
 
         if (!Auth::isManager($tree)) {
-            throw new AccessDeniedHttpException();
+            throw new HttpAccessDeniedException();
         }
 
         $news_id = $request->getQueryParams()['news_id'] ?? '';
@@ -243,7 +243,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         $news_id = $request->getQueryParams()['news_id'];
 
         if (!Auth::isManager($tree)) {
-            throw new AccessDeniedHttpException();
+            throw new HttpAccessDeniedException();
         }
 
         DB::table('news')

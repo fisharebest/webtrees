@@ -20,12 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 use function assert;
 use function response;
@@ -133,7 +133,7 @@ trait ModuleTabTrait
         $user = $request->getAttribute('user');
 
         if ($this->accessLevel($tree, 'tab') < Auth::accessLevel($tree, $user)) {
-            throw new AccessDeniedHttpException('Access denied');
+            throw new HttpAccessDeniedException();
         }
 
         $layout = view('layouts/ajax', [

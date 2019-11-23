@@ -22,6 +22,8 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
@@ -39,8 +41,6 @@ use League\Glide\Signatures\SignatureException;
 use League\Glide\Signatures\SignatureFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 use function addcslashes;
@@ -87,7 +87,7 @@ class MediaFileController extends AbstractBaseController
         }
 
         if (!$media->canShow()) {
-            throw new AccessDeniedHttpException();
+            throw new HttpAccessDeniedException();
         }
 
         foreach ($media->mediaFiles() as $media_file) {
@@ -108,7 +108,7 @@ class MediaFileController extends AbstractBaseController
             }
         }
 
-        throw new NotFoundHttpException();
+        throw new HttpNotFoundException();
     }
 
     /**

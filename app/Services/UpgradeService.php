@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Carbon;
-use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
+use Fisharebest\Webtrees\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Webtrees;
@@ -92,7 +92,7 @@ class UpgradeService
             $zip->extractTo($target_folder);
             $zip->close();
         } else {
-            throw new InternalServerErrorException('Cannot read ZIP file. Is it corrupt?');
+            throw new HttpServerErrorException('Cannot read ZIP file. Is it corrupt?');
         }
     }
 
@@ -147,7 +147,7 @@ class UpgradeService
             fwrite($tmp, $stream->read(self::READ_BLOCK_SIZE));
 
             if ($this->timeout_service->isTimeNearlyUp()) {
-                throw new InternalServerErrorException(I18N::translate('The server’s time limit has been reached.'));
+                throw new HttpServerErrorException(I18N::translate('The server’s time limit has been reached.'));
             }
         }
 
@@ -180,7 +180,7 @@ class UpgradeService
                 $source->delete($path['path']);
 
                 if ($this->timeout_service->isTimeNearlyUp()) {
-                    throw new InternalServerErrorException(I18N::translate('The server’s time limit has been reached.'));
+                    throw new HttpServerErrorException(I18N::translate('The server’s time limit has been reached.'));
                 }
             }
         }

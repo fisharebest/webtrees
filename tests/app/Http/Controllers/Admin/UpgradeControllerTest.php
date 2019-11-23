@@ -23,7 +23,8 @@ use Exception;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Exceptions\InternalServerErrorException;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
@@ -32,7 +33,6 @@ use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 use League\Flysystem\Adapter\NullAdapter;
 use League\Flysystem\Filesystem;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Test UpgradeController class.
@@ -84,7 +84,7 @@ class UpgradeControllerTest extends TestCase
      */
     public function testStepInvalid(): void
     {
-        $this->expectException(NotFoundHttpException::class);
+        $this->expectException(HttpNotFoundException::class);
 
         $controller = new UpgradeController(
             new TreeService(),
@@ -122,7 +122,7 @@ class UpgradeControllerTest extends TestCase
      */
     public function testStepCheckUnavailable(): void
     {
-        $this->expectException(InternalServerErrorException::class);
+        $this->expectException(HttpServerErrorException::class);
 
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('latestVersion')->willReturn('');
@@ -142,7 +142,7 @@ class UpgradeControllerTest extends TestCase
      */
     public function testStepCheckFail(): void
     {
-        $this->expectException(InternalServerErrorException::class);
+        $this->expectException(HttpServerErrorException::class);
 
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('latestVersion')->willReturn('0.0.0');
@@ -198,7 +198,7 @@ class UpgradeControllerTest extends TestCase
      */
     public function testStepPendingExist(): void
     {
-        $this->expectException(InternalServerErrorException::class);
+        $this->expectException(HttpServerErrorException::class);
 
         $tree_service = new TreeService();
         $tree         = $tree_service->create('name', 'title');
@@ -252,7 +252,7 @@ class UpgradeControllerTest extends TestCase
      */
     public function testStepDownloadFails(): void
     {
-        $this->expectException(InternalServerErrorException::class);
+        $this->expectException(HttpServerErrorException::class);
 
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('downloadFile')->will($this->throwException(new Exception()));

@@ -82,6 +82,8 @@ trait AbstractTrait
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function hasItem($key)
     {
@@ -102,9 +104,14 @@ trait AbstractTrait
 
     /**
      * {@inheritdoc}
+     *
+     * @param string $prefix
+     *
+     * @return bool
      */
-    public function clear()
+    public function clear(/*string $prefix = ''*/)
     {
+        $prefix = 0 < \func_num_args() ? (string) func_get_arg(0) : '';
         $this->deferred = [];
         if ($cleared = $this->versioningIsEnabled) {
             $namespaceVersion = substr_replace(base64_encode(pack('V', mt_rand())), static::NS_SEPARATOR, 5);
@@ -120,7 +127,7 @@ trait AbstractTrait
         }
 
         try {
-            return $this->doClear($this->namespace) || $cleared;
+            return $this->doClear($this->namespace.$prefix) || $cleared;
         } catch (\Exception $e) {
             CacheItem::log($this->logger, 'Failed to clear the cache: '.$e->getMessage(), ['exception' => $e]);
 
@@ -130,6 +137,8 @@ trait AbstractTrait
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function deleteItem($key)
     {
@@ -138,6 +147,8 @@ trait AbstractTrait
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function deleteItems(array $keys)
     {
@@ -239,7 +250,7 @@ trait AbstractTrait
         }
     }
 
-    private function getId($key)
+    private function getId($key): string
     {
         if ($this->versioningIsEnabled && '' === $this->namespaceVersion) {
             $this->ids = [];

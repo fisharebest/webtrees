@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
@@ -27,7 +28,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function assert;
 use function is_string;
@@ -437,7 +437,7 @@ class EditIndividualController extends AbstractEditController
             }
         }
 
-        throw new NotFoundHttpException();
+        throw new HttpNotFoundException();
     }
 
     /**

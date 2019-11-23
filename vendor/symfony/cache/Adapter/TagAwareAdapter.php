@@ -151,6 +151,8 @@ class TagAwareAdapter implements TagAwareAdapterInterface, TagAwareCacheInterfac
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function hasItem($key)
     {
@@ -222,16 +224,36 @@ class TagAwareAdapter implements TagAwareAdapterInterface, TagAwareCacheInterfac
 
     /**
      * {@inheritdoc}
+     *
+     * @param string $prefix
+     *
+     * @return bool
      */
-    public function clear()
+    public function clear(/*string $prefix = ''*/)
     {
-        $this->deferred = [];
+        $prefix = 0 < \func_num_args() ? (string) func_get_arg(0) : '';
+
+        if ('' !== $prefix) {
+            foreach ($this->deferred as $key => $item) {
+                if (0 === strpos($key, $prefix)) {
+                    unset($this->deferred[$key]);
+                }
+            }
+        } else {
+            $this->deferred = [];
+        }
+
+        if ($this->pool instanceof AdapterInterface) {
+            return $this->pool->clear($prefix);
+        }
 
         return $this->pool->clear();
     }
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function deleteItem($key)
     {
@@ -240,6 +262,8 @@ class TagAwareAdapter implements TagAwareAdapterInterface, TagAwareCacheInterfac
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function deleteItems(array $keys)
     {
@@ -254,6 +278,8 @@ class TagAwareAdapter implements TagAwareAdapterInterface, TagAwareCacheInterfac
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function save(CacheItemInterface $item)
     {
@@ -267,6 +293,8 @@ class TagAwareAdapter implements TagAwareAdapterInterface, TagAwareCacheInterfac
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function saveDeferred(CacheItemInterface $item)
     {
@@ -280,6 +308,8 @@ class TagAwareAdapter implements TagAwareAdapterInterface, TagAwareCacheInterfac
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function commit()
     {
@@ -301,7 +331,7 @@ class TagAwareAdapter implements TagAwareAdapterInterface, TagAwareCacheInterfac
         $this->commit();
     }
 
-    private function generateItems($items, array $tagKeys)
+    private function generateItems(iterable $items, array $tagKeys)
     {
         $bufferedItems = $itemTags = [];
         $f = $this->setCacheItemTags;

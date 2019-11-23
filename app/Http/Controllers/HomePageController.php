@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
@@ -45,8 +47,6 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use function assert;
 use function e;
@@ -176,17 +176,17 @@ class HomePageController extends AbstractBaseController
             ->first();
 
         if ($block === null) {
-            throw new NotFoundHttpException();
+            throw new HttpNotFoundException();
         }
 
         $module = $this->module_service->findByName($block->module_name);
 
         if (!$module instanceof ModuleBlockInterface) {
-            throw new NotFoundHttpException();
+            throw new HttpNotFoundException();
         }
 
         if ($block->user_id !== $user->id() && !Auth::isAdmin()) {
-            throw new AccessDeniedHttpException();
+            throw new HttpAccessDeniedException();
         }
 
         return $module;
@@ -258,19 +258,19 @@ class HomePageController extends AbstractBaseController
             ->first();
 
         if ($block === null) {
-            throw new NotFoundHttpException('This block does not exist');
+            throw new HttpNotFoundException('This block does not exist');
         }
 
         $module = $this->module_service->findByName($block->module_name);
 
         if (!$module instanceof ModuleBlockInterface) {
-            throw new NotFoundHttpException($block->module_name . ' is not a block');
+            throw new HttpNotFoundException($block->module_name . ' is not a block');
         }
 
         $block_owner_id = (int) $block->user_id;
 
         if ($block_owner_id !== $user->id() && !Auth::isAdmin()) {
-            throw new AccessDeniedHttpException('You are not allowed to edit this block');
+            throw new HttpAccessDeniedException('You are not allowed to edit this block');
         }
 
         return $module;
@@ -666,7 +666,7 @@ class HomePageController extends AbstractBaseController
         });
 
         if ($block === null) {
-            throw new NotFoundHttpException('Block not found');
+            throw new HttpNotFoundException('Block not found');
         }
 
         return $block;

@@ -14,6 +14,7 @@ namespace Symfony\Component\Cache\Traits;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\ServerInfoAwareConnection;
+use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Exception\TableNotFoundException;
 use Doctrine\DBAL\Schema\Schema;
 use Symfony\Component\Cache\Exception\InvalidArgumentException;
@@ -40,7 +41,7 @@ trait PdoTrait
     private $connectionOptions = [];
     private $namespace;
 
-    private function init($connOrDsn, $namespace, $defaultLifetime, array $options, ?MarshallerInterface $marshaller)
+    private function init($connOrDsn, string $namespace, int $defaultLifetime, array $options, ?MarshallerInterface $marshaller)
     {
         if (isset($namespace[0]) && preg_match('#[^-+.A-Za-z0-9]#', $namespace, $match)) {
             throw new InvalidArgumentException(sprintf('Namespace contains "%s" but only characters in [-+.A-Za-z0-9] are allowed.', $match[0]));
@@ -159,6 +160,8 @@ trait PdoTrait
             $delete = $this->getConnection()->prepare($deleteSql);
         } catch (TableNotFoundException $e) {
             return true;
+        } catch (\PDOException $e) {
+            return true;
         }
         $delete->bindValue(':time', time(), \PDO::PARAM_INT);
 
@@ -168,6 +171,8 @@ trait PdoTrait
         try {
             return $delete->execute();
         } catch (TableNotFoundException $e) {
+            return true;
+        } catch (\PDOException $e) {
             return true;
         }
     }
@@ -244,6 +249,7 @@ trait PdoTrait
         try {
             $conn->exec($sql);
         } catch (TableNotFoundException $e) {
+        } catch (\PDOException $e) {
         }
 
         return true;
@@ -260,6 +266,7 @@ trait PdoTrait
             $stmt = $this->getConnection()->prepare($sql);
             $stmt->execute(array_values($ids));
         } catch (TableNotFoundException $e) {
+        } catch (\PDOException $e) {
         }
 
         return true;
@@ -316,6 +323,11 @@ trait PdoTrait
                 $this->createTable();
             }
             $stmt = $conn->prepare($sql);
+        } catch (\PDOException $e) {
+            if (!$conn->inTransaction() || \in_array($this->driver, ['pgsql', 'sqlite', 'sqlsrv'], true)) {
+                $this->createTable();
+            }
+            $stmt = $conn->prepare($sql);
         }
 
         if ('sqlsrv' === $driver || 'oci' === $driver) {
@@ -350,6 +362,11 @@ trait PdoTrait
                     $this->createTable();
                 }
                 $stmt->execute();
+            } catch (\PDOException $e) {
+                if (!$conn->inTransaction() || \in_array($this->driver, ['pgsql', 'sqlite', 'sqlsrv'], true)) {
+                    $this->createTable();
+                }
+                $stmt->execute();
             }
             if (null === $driver && !$stmt->rowCount()) {
                 try {
@@ -370,8 +387,15 @@ trait PdoTrait
     private function getConnection()
     {
         if (null === $this->conn) {
-            $this->conn = new \PDO($this->dsn, $this->username, $this->password, $this->connectionOptions);
-            $this->conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            if (strpos($this->dsn, '://')) {
+                if (!class_exists(DriverManager::class)) {
+                    throw new InvalidArgumentException(sprintf('Failed to parse the DSN "%s". Try running "composer require doctrine/dbal".', $this->dsn));
+                }
+                $this->conn = DriverManager::getConnection(['url' => $this->dsn]);
+            } else {
+                $this->conn = new \PDO($this->dsn, $this->username, $this->password, $this->connectionOptions);
+                $this->conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            }
         }
         if (null === $this->driver) {
             if ($this->conn instanceof \PDO) {
@@ -403,10 +427,7 @@ trait PdoTrait
         return $this->conn;
     }
 
-    /**
-     * @return string
-     */
-    private function getServerVersion()
+    private function getServerVersion(): string
     {
         if (null === $this->serverVersion) {
             $conn = $this->conn instanceof \PDO ? $this->conn : $this->conn->getWrappedConnection();
