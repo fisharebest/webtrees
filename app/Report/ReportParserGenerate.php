@@ -2128,6 +2128,7 @@ class ReportParserGenerate extends ReportParserBase
                             //-- only limit to a level number if we are specifically looking at a level
                             if (count($tags) > 1) {
                                 $level = 1;
+                                $t = 'XXXX';
                                 foreach ($tags as $t) {
                                     if (!empty($searchstr)) {
                                         $searchstr .= "[^\n]*(\n[2-9][^\n]*)*\n";
@@ -2760,6 +2761,7 @@ class ReportParserGenerate extends ReportParserBase
         }
 
         $subrec = $gedrec;
+        $t = 'XXXX';
         foreach ($tags as $t) {
             $lastsubrec = $subrec;
             $subrec     = Functions::getSubRecord($level, "$level $t", $subrec);
@@ -2788,10 +2790,10 @@ class ReportParserGenerate extends ReportParserBase
         }
         $level--;
         $ct = preg_match("/$level $t(.*)/", $subrec, $match);
-        if ($ct == 0) {
+        if ($ct === 0) {
             $ct = preg_match("/$level @.+@ (.+)/", $subrec, $match);
         }
-        if ($ct == 0) {
+        if ($ct === 0) {
             $ct = preg_match("/@ $t (.+)/", $subrec, $match);
         }
         if ($ct > 0) {
@@ -2805,7 +2807,7 @@ class ReportParserGenerate extends ReportParserBase
                     $value = $match[1];
                 }
             }
-            if ($level != 0 || $t != 'NOTE') {
+            if ($level !== 0 || $t !== 'NOTE') {
                 $value .= Functions::getCont($level + 1, $subrec);
             }
 
