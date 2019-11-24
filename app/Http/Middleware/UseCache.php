@@ -39,8 +39,8 @@ class UseCache implements MiddlewareInterface
     private const GC_PROBABILITY = 100;
 
     // Filesystem cache parameters.
-    private const FILES_LIFETIME = 8640000;
-    private const FILES_DIR      = Webtrees::DATA_DIR . 'cache/';
+    private const FILES_TTL = 8640000;
+    private const FILES_DIR = Webtrees::DATA_DIR . 'cache/';
 
     /** @var ArrayAdapter */
     private $array_adapter;
@@ -54,7 +54,7 @@ class UseCache implements MiddlewareInterface
     public function __construct()
     {
         $this->array_adapter = new ArrayAdapter();
-        $this->files_adapter = new FilesystemAdapter('', self::FILES_LIFETIME, self::FILES_DIR);
+        $this->files_adapter = new FilesystemAdapter('', self::FILES_TTL, self::FILES_DIR);
     }
 
     /**

@@ -117,10 +117,17 @@ class ImportThumbnailsController extends AbstractAdminController
      */
     public function webtrees1ThumbnailsAction(ServerRequestInterface $request): ResponseInterface
     {
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof Filesystem);
+
         $thumbnail = $request->getParsedBody()['thumbnail'];
         $action    = $request->getParsedBody()['action'];
         $xrefs     = $request->getParsedBody()['xref'];
         $geds      = $request->getParsedBody()['ged'];
+
+        if (!$data_filesystem->has($thumbnail)) {
+            return response([]);
+        }
 
         $media_objects = [];
 
@@ -129,23 +136,22 @@ class ImportThumbnailsController extends AbstractAdminController
             $media_objects[] = Media::getInstance($xref, $tree);
         }
 
-        $thumbnail = WT_DATA_DIR . $thumbnail;
-
         switch ($action) {
             case 'delete':
-                if (file_exists($thumbnail)) {
-                    unlink($thumbnail);
-                }
+                $data_filesystem->delete($thumbnail);
                 break;
 
             case 'add':
-                $image_size = getimagesize($thumbnail);
-                [, $extension] = explode('/', $image_size['mime']);
-                $move_to = dirname($thumbnail, 2) . '/' . sha1_file($thumbnail) . '.' . $extension;
-                rename($thumbnail, $move_to);
+                $mime_type = $data_filesystem->getMimetype($thumbnail);
+                $directory = dirname($thumbnail, 2);
+                $sha1      = sha1($data_filesystem->read($thumbnail));
+                $extension = explode('/', $mime_type)[1];
+                $move_to   = $directory . '/' . $sha1 . '.' . $extension;
+
+                $data_filesystem->rename($thumbnail, $move_to);
 
                 foreach ($media_objects as $media_object) {
-                    $prefix = WT_DATA_DIR . $media_object->tree()->getPreference('MEDIA_DIRECTORY');
+                    $prefix = $media_object->tree()->getPreference('MEDIA_DIRECTORY');
                     $gedcom = '1 FILE ' . substr($move_to, strlen($prefix)) . "\n2 FORM " . $extension;
 
                     if ($media_object->firstImageFile() === null) {
@@ -223,10 +229,7 @@ class ImportThumbnailsController extends AbstractAdminController
 
                 $difference = $this->imageDiff($data_filesystem, $thumbnail, $original);
 
-                $original_path  = substr($original, strlen(WT_DATA_DIR));
-                $thumbnail_path = substr($thumbnail, strlen(WT_DATA_DIR));
-
-                $media = $this->search_service->findMediaObjectsForMediaFile($original_path);
+                $media = $this->search_service->findMediaObjectsForMediaFile($original);
 
                 $media_links = array_map(static function (Media $media): string {
                     return '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>';
@@ -237,12 +240,12 @@ class ImportThumbnailsController extends AbstractAdminController
                 $action = view('admin/webtrees1-thumbnails-form', [
                     'difference' => $difference,
                     'media'      => $media,
-                    'thumbnail'  => $thumbnail_path,
+                    'thumbnail'  => $thumbnail,
                 ]);
 
                 return [
-                    '<img src="' . e($thumbnail_url) . '" title="' . e($thumbnail_path) . '">',
-                    '<img src="' . e($original_url) . '" title="' . e($original_path) . '">',
+                    '<img src="' . e($thumbnail_url) . '" title="' . e($thumbnail) . '">',
+                    '<img src="' . e($original_url) . '" title="' . e($original) . '">',
                     $media_links,
                     I18N::percentage($difference / 100.0, 0),
                     $action,
