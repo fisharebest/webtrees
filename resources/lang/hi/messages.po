@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-24 08:50+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-24 19:47+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -9615,104 +9615,104 @@ msgstr "पोते की ख़तना"
 
 #: app/GedcomTag.php:2092
 msgid "Brit milah of a half-brother"
-msgstr ""
+msgstr "सौतेले भाई की ख़तना"
 
 #: app/GedcomTag.php:2094
 msgid "Brit milah of a brother"
-msgstr ""
+msgstr "भाई की ख़तना"
 
 #: app/GedcomTag.php:2100 app/Http/Controllers/Admin/MediaController.php:342
 msgid "File size"
-msgstr ""
+msgstr "फाइल साईज"
 
 #: app/GedcomTag.php:2103 app/Http/Controllers/Admin/MediaController.php:347
 msgid "Image dimensions"
-msgstr ""
+msgstr "इमेज डायमेंशन"
 
 #: app/GedcomTag.php:2113
 msgid "Unrecognized GEDCOM code"
-msgstr ""
+msgstr "असंगठित GEDCOM कोड"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2354
 msgid "Audio"
-msgstr ""
+msgstr "ऑडियो"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2357
 msgid "Book"
-msgstr ""
+msgstr "किताब"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2360
 msgid "Card"
-msgstr ""
+msgstr "कार्ड"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2363
 msgid "Certificate"
-msgstr ""
+msgstr "प्रमाणपत्र"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2366
 msgid "Coat of arms"
-msgstr ""
+msgstr "राज्य-चिह्न"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2369
 msgid "Document"
-msgstr ""
+msgstr "दस्तावेज़"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2372
 msgid "Electronic"
-msgstr ""
+msgstr "इलेक्ट्रोनिक"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2375
 msgid "Microfiche"
-msgstr ""
+msgstr "माइक्रोफीच"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2378
 msgid "Microfilm"
-msgstr ""
+msgstr "माइक्रोफिल्म"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2381
 msgid "Magazine"
-msgstr ""
+msgstr "मैगजीन"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2384
 msgid "Manuscript"
-msgstr ""
+msgstr "हस्तलिपि"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2387 resources/views/admin/control-panel.phtml:608
 #: resources/views/modules/statistics-chart/custom.phtml:52
 msgid "Map"
-msgstr ""
+msgstr "नक्शा"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2390
 msgid "Newspaper"
-msgstr ""
+msgstr "अख़बार"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2396
 msgid "Tombstone"
-msgstr ""
+msgstr "कब्र का पत्थर"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2399
 msgid "Video"
-msgstr ""
+msgstr "वीडियो"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2402
 msgid "Painting"
-msgstr ""
+msgstr "चित्रकारी"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2405 app/Module/StatisticsChartModule.php:164
@@ -9720,24 +9720,24 @@ msgstr ""
 #: app/Statistics/Google/ChartCommonSurname.php:153
 #: resources/views/admin/control-panel.phtml:528
 msgid "Other"
-msgstr ""
+msgstr "अन्य"
 
 #: app/Http/Controllers/Admin/FixLevel0MediaController.php:65
 #: resources/views/admin/control-panel.phtml:591
 msgid "Link media objects to facts and events"
-msgstr ""
+msgstr "मीडिया फाइल को तथ्यों और घटनाओं से जोड़ें"
 
 #: app/Http/Controllers/Admin/ImportThumbnailsController.php:72
 #: resources/views/admin/control-panel.phtml:597
 msgid "Import custom thumbnails from webtrees version 1"
-msgstr ""
+msgstr "webtrees version 1 से कस्टम थंबनेल आयात करें"
 
 #: app/Http/Controllers/Admin/LocationController.php:90
 #: app/Http/Controllers/Admin/LocationController.php:275
 #: resources/views/admin/control-panel.phtml:618
 #: resources/views/admin/map-import-form.phtml:9
 msgid "Geographic data"
-msgstr ""
+msgstr "भौगोलिक डेटा"
 
 #: app/Http/Controllers/Admin/LocationController.php:92
 #: app/Http/Controllers/Admin/LocationController.php:274
@@ -9790,57 +9790,57 @@ msgstr ""
 #: resources/views/modules/stories/config.phtml:8
 #: resources/views/modules/stories/edit.phtml:9
 msgid "Control panel"
-msgstr ""
+msgstr "कंट्रोल पैनल"
 
 #: app/Http/Controllers/Admin/LocationController.php:283
 msgid "Add"
-msgstr ""
+msgstr "जोड़ें"
 
 #: app/Http/Controllers/Admin/LocationController.php:380
 #: app/Http/RequestHandlers/AccountUpdate.php:113
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr ""
+msgstr "“%s” की तफ़सील अपडेट कर दी गई।"
 
 #: app/Http/Controllers/Admin/LocationController.php:407
 msgid "Location not removed: this location contains sub-locations"
-msgstr ""
+msgstr "स्थान नहीं हटाया गया: इस स्थान में उप-स्थान शामिल हैं"
 
 #: app/Http/Controllers/Admin/LocationController.php:463
 msgid "Level"
-msgstr ""
+msgstr "स्तर"
 
 #: app/Http/Controllers/Admin/LocationController.php:599
 msgid "Import geographic data"
-msgstr ""
+msgstr "भौगोलिक डेटा आयात करें"
 
 #: app/Http/Controllers/Admin/LocationController.php:723
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "स्थान अपडेट किए गए: %s, स्थान जोड़े गए: %s"
 
 #: app/Http/Controllers/Admin/LocationController.php:842
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s स्थान आयात कर लिया गया।"
+msgstr[1] "%s स्थान आयात कर लिए गए।"
 
 #: app/Http/Controllers/Admin/MapProviderController.php:41
 #: resources/views/admin/control-panel.phtml:628
 #: resources/views/admin/map-provider.phtml:16
 msgid "Map provider"
-msgstr ""
+msgstr "नक्शा प्रदाता"
 
 #: app/Http/Controllers/Admin/MediaController.php:107
 #: resources/views/admin/control-panel.phtml:579
 #: resources/views/admin/media-upload.phtml:4
 msgid "Manage media"
-msgstr ""
+msgstr "मीडिया मैनेज करें"
 
 #: app/Http/Controllers/Admin/MediaController.php:258
 msgid "Create"
-msgstr ""
+msgstr "बनाएं"
 
 #: app/Http/Controllers/Admin/MediaController.php:262
 #: resources/views/admin/trees.phtml:101
@@ -9858,7 +9858,7 @@ msgstr ""
 #: resources/views/source-page-menu.phtml:17
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "क्या आप वाकई “%s” को हटाना चाहते हैं?"
 
 #: app/Http/Controllers/Admin/MediaController.php:264
 #: app/Module/UserMessagesModule.php:174 app/Module/UserMessagesModule.php:214
@@ -9883,49 +9883,49 @@ msgstr ""
 #: resources/views/repository-page-menu.phtml:19
 #: resources/views/source-page-menu.phtml:19
 msgid "Delete"
-msgstr ""
+msgstr "हटाएं"
 
 #: app/Http/Controllers/Admin/MediaController.php:316
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "इस मीडिया फाइल तक कोई लिंक नहीं है।"
 
 #. I18N: size of file in KB
 #: app/Http/Controllers/Admin/MediaController.php:341 app/MediaFile.php:342
 #: app/Services/MediaFileService.php:78
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s के.बी"
 
 #. I18N: image dimensions, width × height
 #: app/Http/Controllers/Admin/MediaController.php:349 app/MediaFile.php:355
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s पिक्सल"
 
 #: app/Http/Controllers/Admin/MediaController.php:376
 #: resources/views/admin/control-panel.phtml:585
 msgid "Upload media files"
-msgstr ""
+msgstr "मीडिया फाइलें अपलोड करें"
 
 #: app/Http/Controllers/Admin/MediaController.php:428
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr ""
+msgstr "फ़ाइलनाम में अक्षर “%s” लगाने की अनुमति नहीं है।"
 
 #: app/Http/Controllers/Admin/MediaController.php:434
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr ""
+msgstr "फ़ाइलनाम का एक्सटेंशन “%s” रखने की अनुमति नहीं है।"
 
 #: app/Http/Controllers/Admin/MediaController.php:441
 #, php-format
 msgid "The file %s already exists. Use another filename."
-msgstr ""
+msgstr "फ़ाइल %s पहले से मौजूद है। किसी और नाम की फाइल उपयोग करें।"
 
 #: app/Http/Controllers/Admin/MediaController.php:448
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr ""
+msgstr "फ़ाइल %s अपलोड हो गई।"
 
 #: app/Http/Controllers/Admin/MediaController.php:451
 #: app/Http/Controllers/EditMediaController.php:128
@@ -9933,13 +9933,13 @@ msgstr ""
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:89
 #: app/Services/MediaFileService.php:212
 msgid "There was an error uploading your file."
-msgstr ""
+msgstr "आपकी फ़ाइल अपलोड करने में बाधा हुई।"
 
 #: app/Http/Controllers/Admin/ModuleController.php:78
 #: resources/views/admin/components.phtml:13
 #: resources/views/admin/control-panel.phtml:399
 msgid "All modules"
-msgstr ""
+msgstr "सारे मॉड्यूल"
 
 #: app/Http/Controllers/Admin/ModuleController.php:93
 #: app/Module/ModuleAnalyticsTrait.php:84
@@ -9951,18 +9951,18 @@ msgstr ""
 #: resources/views/admin/modules.phtml:232
 #: resources/views/modules/privacy-policy/page.phtml:28
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "ट्रैकिंग और विश्लेषण"
 
 #: app/Http/Controllers/Admin/ModuleController.php:94
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
-msgstr ""
+msgstr "यदि आप निम्नलिखित ट्रैकिंग और एनालिटिक्स सेवाओं में से एक का उपयोग करते हैं, तो webtrees ट्रैकिंग कोड को खुद ब खुद जोड़ सकती है।"
 
 #: app/Http/Controllers/Admin/ModuleController.php:107
 #: resources/views/admin/control-panel.phtml:489
 #: resources/views/admin/modules.phtml:79
 #: resources/views/admin/modules.phtml:81
 msgid "Blocks"
-msgstr ""
+msgstr "खंड"
 
 #. I18N: Name of a module/block
 #. I18N: Name of a module
@@ -9974,14 +9974,14 @@ msgstr ""
 #: resources/views/admin/modules.phtml:85
 #: resources/views/admin/trees-preferences.phtml:392
 msgid "Charts"
-msgstr ""
+msgstr "चार्ट"
 
 #: app/Http/Controllers/Admin/ModuleController.php:135
 #: resources/views/admin/control-panel.phtml:450
 #: resources/views/admin/modules.phtml:95
 #: resources/views/admin/modules.phtml:97
 msgid "Footers"
-msgstr ""
+msgstr "फुटर"
 
 #: app/Http/Controllers/Admin/ModuleController.php:149
 #: resources/views/admin/control-panel.phtml:517
@@ -9991,14 +9991,14 @@ msgstr ""
 #: resources/views/admin/modules.phtml:240
 #: resources/views/modules/personal_facts/tab.phtml:18
 msgid "Historic events"
-msgstr ""
+msgstr "ऐतिहासिक घटनाएँ"
 
 #: app/Http/Controllers/Admin/ModuleController.php:163
 #: resources/views/admin/control-panel.phtml:471
 #: resources/views/admin/modules.phtml:111
 #: resources/views/admin/modules.phtml:113
 msgid "Languages"
-msgstr ""
+msgstr "भाषाएं"
 
 #. I18N: Name of a module
 #: app/Http/Controllers/Admin/ModuleController.php:177
@@ -10008,14 +10008,14 @@ msgstr ""
 #: resources/views/admin/modules.phtml:89
 #: resources/views/admin/trees-preferences.phtml:328
 msgid "Lists"
-msgstr ""
+msgstr "लिस्ट"
 
 #: app/Http/Controllers/Admin/ModuleController.php:191
 #: resources/views/admin/control-panel.phtml:415
 #: resources/views/admin/modules.phtml:67
 #: resources/views/admin/modules.phtml:69
 msgid "Menus"
-msgstr ""
+msgstr "मेनू"
 
 #. I18N: Name of a module
 #: app/Http/Controllers/Admin/ModuleController.php:205
@@ -10024,40 +10024,40 @@ msgstr ""
 #: resources/views/admin/modules.phtml:91
 #: resources/views/admin/modules.phtml:93
 msgid "Reports"
-msgstr ""
+msgstr "विवरण"
 
 #: app/Http/Controllers/Admin/ModuleController.php:219
 #: resources/views/admin/control-panel.phtml:510
 #: resources/views/admin/modules.phtml:75
 #: resources/views/admin/modules.phtml:77
 msgid "Sidebars"
-msgstr ""
+msgstr "साइडबार"
 
 #: app/Http/Controllers/Admin/ModuleController.php:233
 #: resources/views/admin/control-panel.phtml:503
 #: resources/views/admin/modules.phtml:71
 #: resources/views/admin/modules.phtml:73
 msgid "Tabs"
-msgstr ""
+msgstr "टैब्स"
 
 #: app/Http/Controllers/Admin/ModuleController.php:247
 #: resources/views/admin/control-panel.phtml:464
 #: resources/views/admin/modules.phtml:107
 #: resources/views/admin/modules.phtml:109
 msgid "Themes"
-msgstr ""
+msgstr "थीम"
 
 #: app/Http/Controllers/Admin/ModuleController.php:318
 #: app/Http/Controllers/Admin/ModuleController.php:575
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "मॉड्यूल “%s” सक्षम किया गया।"
 
 #: app/Http/Controllers/Admin/ModuleController.php:320
 #: app/Http/Controllers/Admin/ModuleController.php:577
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "मॉड्यूल “%s” अक्षम कर दिया गया।"
 
 #: app/Http/Controllers/Admin/ModuleController.php:325
 #: app/Http/Controllers/Admin/ModuleController.php:341
@@ -10076,59 +10076,59 @@ msgstr ""
 #: app/Http/Controllers/AdminSiteController.php:176
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:82
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "वेबसाइट की वरीयताओं को अपडेट कर दिया गया है।"
 
 #: app/Http/Controllers/Admin/ModuleController.php:650
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "मॉड्यूल “%s” की प्राथमिकताएं हटा दी गई हैं।"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:102
 #: app/Http/Controllers/Admin/UpgradeController.php:199
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "अपग्रेड विज़ार्ड"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:195
 msgid "Export all the family trees to GEDCOM files…"
-msgstr ""
+msgstr "सारी फॅमिली ट्री GEDCOM फ़ाइलों को निर्यात करें…"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:200
 msgid "Create a temporary folder…"
-msgstr ""
+msgstr "एक टेम्पररी फ़ोल्डर बनाएँ…"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:201
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "लंबित परिवर्तनों को जाँचें…"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:203
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "डाउनलोड %s…"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:204
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "%s को एक टेम्पररी फ़ोल्डर में अनज़िप करें…"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:205
 msgid "Copy files…"
-msgstr ""
+msgstr "फ़ाइलें कॉपी करें…"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:206
 msgid "Delete old files…"
-msgstr ""
+msgstr "पुरानी फ़ाइलें हटाएं…"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:218
 #: resources/views/admin/control-panel.phtml:60
 #: resources/views/admin/upgrade/wizard.phtml:14
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "कोई अपग्रेड की जानकारी उपलब्ध नहीं।"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:222
 #: resources/views/admin/control-panel.phtml:68
 #: resources/views/admin/upgrade/wizard.phtml:18
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr ""
+msgstr "यह webtrees का नवीनतम वर्शन है। कोई अपग्रेड उपलब्ध नहीं है।"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -10137,45 +10137,45 @@ msgstr ""
 #: resources/views/admin/control-panel.phtml:65
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr ""
+msgstr "अपग्रेड करें webtrees %s पर।"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:247
 #, php-format
 msgid "The folder %s has been created."
-msgstr ""
+msgstr "फोल्डर %s बना दिया गया।"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:259
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr ""
+msgstr "अपग्रेड करने से पहले आपको सभी लंबित परिवर्तनों को स्वीकार या अस्वीकार करना चाहिए।"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:263
 #: resources/views/pending-changes-page.phtml:19
 msgid "There are no pending changes."
-msgstr ""
+msgstr "कोई लंबित परिवर्तन नहीं हैं।"
 
 #. I18N: %s is a filename
 #: app/Http/Controllers/Admin/UpgradeController.php:294
 #: app/Http/RequestHandlers/ExportGedcomServer.php:79
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr ""
+msgstr "फॅमिली ट्री को %s में निर्यात कर दिया गया।"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:319
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$s के.बी %2$s सेकंड में डाउनलोड हुई।"
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: app/Http/Controllers/Admin/UpgradeController.php:337
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2$s सेकंड में %1$s फ़ाइल बाहर लाई गई।"
+msgstr[1] "%2$s सेकंड में %1$s फ़ाइलें बाहर लाई गई।"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:361
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "अपग्रेड पूरा हो गया है।"
 
 #. I18N: A button label.
 #: app/Http/Controllers/Admin/UpgradeController.php:385
@@ -10198,7 +10198,7 @@ msgstr ""
 #: resources/views/register-page.phtml:98
 #: resources/views/report-select-page.phtml:32
 msgid "continue"
-msgstr ""
+msgstr "जारी"
 
 #: app/Http/Controllers/Admin/UsersController.php:108
 #: resources/views/admin/control-panel.phtml:336
@@ -10207,54 +10207,54 @@ msgstr ""
 #: resources/views/admin/users-create.phtml:9
 #: resources/views/admin/users-edit.phtml:13
 msgid "User administration"
-msgstr ""
+msgstr "यूजर एडमिनिस्ट्रेशन"
 
 #: app/Http/Controllers/Admin/UsersController.php:188
 #: resources/views/components/datetime.phtml:11
 msgid "Never"
-msgstr ""
+msgstr "कभी नहीं"
 
 #: app/Http/Controllers/Admin/UsersController.php:214
 #: resources/views/admin/control-panel.phtml:342
 msgid "Add a user"
-msgstr ""
+msgstr "यूज़र ऐड करें"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/Admin/UsersController.php:238
 #: app/Http/Controllers/AdminTreesController.php:274
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s उपलब्ध नहीं है।"
 
 #: app/Http/Controllers/Admin/UsersController.php:248
 msgid "Edit the user"
-msgstr ""
+msgstr "यूज़र एडिट करें"
 
 #: app/Http/Controllers/Admin/UsersController.php:270
 #: app/Http/Controllers/Admin/UsersController.php:395
 #: app/Http/RequestHandlers/AccountUpdate.php:86
 #: app/Http/RequestHandlers/RegisterAction.php:224
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
-msgstr ""
+msgstr "डुप्लिकेट यूज़रनेम। उस यूज़रनेम वाला उपयोगकर्ता पहले से मौजूद है। कृपया दूसरा यूज़रनेम चुनें।"
 
 #: app/Http/Controllers/Admin/UsersController.php:275
 #: app/Http/Controllers/Admin/UsersController.php:389
 #: app/Http/RequestHandlers/AccountUpdate.php:95
 #: app/Http/RequestHandlers/RegisterAction.php:229
 msgid "Duplicate email address. A user with that email already exists."
-msgstr ""
+msgstr "डुप्लिकेट इमेल एड्रेस। उस ईमेल वाला उपयोगकर्ता पहले से मौजूद है।"
 
 #: app/Http/Controllers/Admin/UsersController.php:333
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s उपलब्ध नहीं है"
 
 #. I18N: %s is a server name/URL
 #: app/Http/Controllers/Admin/UsersController.php:347
 #: app/Http/RequestHandlers/VerifyEmail.php:90
 #, php-format
 msgid "New user at %s"
-msgstr ""
+msgstr "%s पर नया उपयोगकर्ता"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/Controllers/Admin/UsersController.php:414
@@ -10263,7 +10263,7 @@ msgstr ""
 #: resources/views/modules/clippings/download.phtml:28
 #: resources/views/modules/clippings/download.phtml:41
 msgid "Visitor"
-msgstr ""
+msgstr "दर्शक"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/Controllers/Admin/UsersController.php:416
@@ -10272,19 +10272,19 @@ msgstr ""
 #: resources/views/modules/clippings/download.phtml:25
 #: resources/views/modules/clippings/download.phtml:38
 msgid "Member"
-msgstr ""
+msgstr "सदस्य"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/Controllers/Admin/UsersController.php:418
 #: resources/views/admin/users-edit.phtml:241
 msgid "Editor"
-msgstr ""
+msgstr "एडिटर"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/Controllers/Admin/UsersController.php:420
 #: resources/views/admin/users-edit.phtml:247
 msgid "Moderator"
-msgstr ""
+msgstr "मॉडरेटर"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/Controllers/Admin/UsersController.php:422
@@ -10292,115 +10292,115 @@ msgstr ""
 #: resources/views/admin/users-edit.phtml:255
 #: resources/views/modules/clippings/download.phtml:22
 msgid "Manager"
-msgstr ""
+msgstr "मैनेजर"
 
 #: app/Http/Controllers/Admin/UsersController.php:434
 #: app/Http/Controllers/AdminTreesController.php:1796
 msgid "<default theme>"
-msgstr ""
+msgstr "<डिफॉल्ट थीम>"
 
 #: app/Http/Controllers/AdminController.php:74
 #: resources/views/admin/trees.phtml:91
 msgid "Privacy"
-msgstr ""
+msgstr "निजता"
 
 #: app/Http/Controllers/AdminController.php:160
 #: app/Http/Controllers/AdminTreesController.php:951
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "फॅमिली ट्री “%s” की प्राथमिकताएं अपडेट की गई हैं।"
 
 #: app/Http/Controllers/AdminController.php:167
 #: app/Http/Controllers/AdminTreesController.php:958
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "सारी फैमिली ट्री की प्राथमिकताएं अपडेट की गई हैं।"
 
 #: app/Http/Controllers/AdminController.php:170
 #: app/Http/Controllers/AdminTreesController.php:962
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "नई फैमिली ट्री के लिए प्राथमिकताएं अपडेट की गई हैं।"
 
 #: app/Http/Controllers/AdminController.php:269
 #: resources/views/admin/trees-privacy.phtml:251
 msgid "All facts and events"
-msgstr ""
+msgstr "सभी तथ्य और घटनाएं"
 
 #: app/Http/Controllers/AdminSiteController.php:74
 #: resources/views/admin/control-panel.phtml:78
 msgid "Website preferences"
-msgstr ""
+msgstr "वेबसाइट की प्राथमिकताएँ"
 
 #: app/Http/Controllers/AdminSiteController.php:109
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "फ़ोल्डर “%s” मौजूद नहीं है।"
 
 #: app/Http/Controllers/AdminSiteController.php:132
 #: resources/views/admin/control-panel.phtml:90
 msgid "Sign-in and registration"
-msgstr ""
+msgstr "साइन-इन और रजिस्ट्रेशन"
 
 #: app/Http/Controllers/AdminSiteController.php:151
 msgid "No predefined text"
-msgstr ""
+msgstr "कोई पूर्वनिर्धारित लेख नहीं"
 
 #: app/Http/Controllers/AdminSiteController.php:152
 msgid "Predefined text that states all users can request a user account"
-msgstr ""
+msgstr "पूर्वनिर्धारित लेख, जो बताता है कि सभी उपयोगकर्ता एक यूज़र अकाउंट के लिए अनुरोध कर सकते हैं"
 
 #: app/Http/Controllers/AdminSiteController.php:153
 msgid "Predefined text that states admin will decide on each request for a user account"
-msgstr ""
+msgstr "पूर्वनिर्धारित लेख, जो बताता है कि प्रत्येक अनुरोध पर एडमिन निर्णय करेंगे यूज़र अकाउंट किसे प्रदान करना है"
 
 #: app/Http/Controllers/AdminSiteController.php:154
 msgid "Predefined text that states only family members can request a user account"
-msgstr ""
+msgstr "पूर्वनिर्धारित लेख, जो बताता है केवल परिवार के सदस्य ही यूज़र अकाउंट के लिए अनुरोध कर सकते हैं"
 
 #: app/Http/Controllers/AdminSiteController.php:155
 msgid "Choose user defined welcome text typed below"
-msgstr ""
+msgstr "नीचे दिए गए “यूज़र डिफाइंड” स्वागत लेख चुनें"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:271
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s मौजूद नहीं है। क्या आपका मतलब %2$s है?"
 
 #: app/Http/Controllers/AdminTreesController.php:284
 #: app/Http/Controllers/AdminTreesController.php:289
 msgid "This type of link is not allowed here."
-msgstr ""
+msgstr "इस प्रकार की लिंक की यहाँ अनुमति नहीं है।"
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: app/Http/Controllers/AdminTreesController.php:295
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s एक %2$s है लेकिन एक %3$s अपेक्षित है।"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: app/Http/Controllers/AdminTreesController.php:304
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s में वापसी के लिए %2$s तक कोई लिंक नहीं है।"
 
 #: app/Http/Controllers/AdminTreesController.php:309
 #: resources/views/admin/trees.phtml:170
 msgid "Check for errors"
-msgstr ""
+msgstr "बाधाओं की जाँच करें"
 
 #: app/Http/Controllers/AdminTreesController.php:330
 #: resources/views/admin/trees.phtml:140
 msgid "Find duplicates"
-msgstr ""
+msgstr "डुप्लिकेट खोजें"
 
 #: app/Http/Controllers/AdminTreesController.php:373
 #: app/Http/Controllers/AdminTreesController.php:385
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "कोई GEDCOM फ़ाइल प्राप्त नहीं हुई।"
 
 #: app/Http/Controllers/AdminTreesController.php:414
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "GEDCOM फ़ाइल आयात करें"
 
 #: app/Http/Controllers/AdminTreesController.php:459
 #: resources/views/admin/changes-log.phtml:12
@@ -10413,16 +10413,16 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml:9
 #: resources/views/admin/trees-privacy.phtml:12
 msgid "Manage family trees"
-msgstr ""
+msgstr "फॅमिली ट्री मैनेज करें"
 
 #: app/Http/Controllers/AdminTreesController.php:493
 #: resources/views/admin/control-panel.phtml:155
 msgid "Merge family trees"
-msgstr ""
+msgstr "दो फॅमिली ट्री को मिलाएँ"
 
 #: app/Http/Controllers/AdminTreesController.php:693
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "फॅमिली ट्री को सफलतापूर्वक मिला दिया गया है।"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -10432,7 +10432,7 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:259
 #: app/Module/YahrzeitModule.php:242
 msgid "list"
-msgstr ""
+msgstr "लिस्ट"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -10442,28 +10442,28 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:261
 #: app/Module/YahrzeitModule.php:244
 msgid "table"
-msgstr ""
+msgstr "टेबल"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
 #: app/Http/Controllers/AdminTreesController.php:729
 #: app/Module/TopSurnamesModule.php:241
 msgid "tag cloud"
-msgstr ""
+msgstr "टैग क्लाउड"
 
 #. I18N: page orientation
 #: app/Http/Controllers/AdminTreesController.php:734
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
 msgid "Portrait"
-msgstr ""
+msgstr "पोर्ट्रेट"
 
 #. I18N: page orientation
 #: app/Http/Controllers/AdminTreesController.php:736
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
 msgid "Landscape"
-msgstr ""
+msgstr "लैंडस्केप"
 
 #. I18N: None of the other options
 #: app/Http/Controllers/AdminTreesController.php:741
@@ -10472,22 +10472,22 @@ msgstr ""
 #: app/Services/EmailService.php:217
 #: resources/views/modules/statistics-chart/custom.phtml:75
 msgid "none"
-msgstr ""
+msgstr "कोई नहीं"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: app/Http/Controllers/AdminTreesController.php:743
 msgid "markdown"
-msgstr ""
+msgstr "मार्कडाउन"
 
 #: app/Http/Controllers/AdminTreesController.php:748
 #: resources/xml/reports/fact_sources.xml:6
 msgid "facts"
-msgstr ""
+msgstr "तथ्य"
 
 #: app/Http/Controllers/AdminTreesController.php:749
 #: resources/xml/reports/fact_sources.xml:6
 msgid "records"
-msgstr ""
+msgstr "रिकार्ड"
 
 #: app/Http/Controllers/AdminTreesController.php:806
 #: app/Http/Controllers/HomePageController.php:125
@@ -10502,36 +10502,36 @@ msgstr ""
 #: resources/views/modules/block-template.phtml:6
 #: resources/views/modules/block-template.phtml:8
 msgid "Preferences"
-msgstr ""
+msgstr "प्राथमिकताएं"
 
 #. I18N: Renumber the records in a family tree
 #: app/Http/Controllers/AdminTreesController.php:852
 #: resources/views/admin/trees-merge.phtml:24
 #: resources/views/admin/trees-merge.phtml:29
 msgid "Renumber family tree"
-msgstr ""
+msgstr "फॅमिली ट्री पुनः अंकित करें"
 
 #: app/Http/Controllers/AdminTreesController.php:1458
 #: app/Services/UpgradeService.php:150 app/Services/UpgradeService.php:183
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "सर्वर की समय सीमा पूरी हो गई है।"
 
 #: app/Http/Controllers/AdminTreesController.php:1493
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "GEDCOM फ़ाइल “%s” आयात कर ली गई।"
 
 #. I18N: %s is the name of a family tree
 #: app/Http/Controllers/AdminTreesController.php:1500
 #: app/Http/RequestHandlers/DeleteTreeAction.php:65
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "फॅमिली ट्री “%s” को हटा दिया गया।"
 
 #: app/Http/Controllers/AdminTreesController.php:1537
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s में %4$s के लिए %3$s लिंक है।"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/AdminTreesController.php:1699
@@ -10547,7 +10547,7 @@ msgstr ""
 #: resources/views/search-results.phtml:42
 #: resources/views/statistics/other/total-records.phtml:47
 msgid "Repositories"
-msgstr ""
+msgstr "संग्रह स्थान"
 
 #. I18N: Name of a module/list
 #. I18N: Name of a module
@@ -10577,7 +10577,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:644
 #: resources/xml/reports/individual_report.xml:646
 msgid "Sources"
-msgstr ""
+msgstr "स्रोत"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/AdminTreesController.php:1701
@@ -10614,7 +10614,7 @@ msgstr ""
 #: resources/xml/reports/fact_sources.xml:54
 #: resources/xml/reports/fact_sources.xml:258
 msgid "Individuals"
-msgstr ""
+msgstr "व्यक्ती"
 
 #. I18N: Name of a module/list
 #. I18N: Name of a module
@@ -10644,7 +10644,7 @@ msgstr ""
 #: resources/xml/reports/fact_sources.xml:152
 #: resources/xml/reports/fact_sources.xml:314
 msgid "Families"
-msgstr ""
+msgstr "परिवार"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/AdminTreesController.php:1703
@@ -10663,20 +10663,20 @@ msgstr ""
 #: resources/views/statistics/other/chart-objects.phtml:11
 #: resources/views/statistics/other/total-records.phtml:20
 msgid "Media objects"
-msgstr ""
+msgstr "मीडिया फ़ाइल्स"
 
 #. I18N: %s is a surname
 #: app/Http/Controllers/BranchesController.php:84
 #, php-format
 msgid "Branches of the %s family"
-msgstr ""
+msgstr "कुलनाम %s के परिवार"
 
 #. I18N: Branches of a family tree
 #. I18N: Name of a module/list
 #: app/Http/Controllers/BranchesController.php:87
 #: app/Module/BranchesListModule.php:49
 msgid "Branches"
-msgstr ""
+msgstr "शाखाएं"
 
 #. I18N: Name of a module/chart
 #. I18N: Configuration option
@@ -10687,43 +10687,43 @@ msgstr ""
 #: resources/views/lists/individuals-table.phtml:332
 #: resources/views/modules/relationships-chart/config.phtml:22
 msgid "Relationships"
-msgstr ""
+msgstr "रिश्तेदारी"
 
 #: app/Http/Controllers/BranchesController.php:397
 msgid "Generation"
-msgstr ""
+msgstr "पीढ़ी"
 
 #: app/Http/Controllers/CalendarController.php:148
 msgid "Anniversary calendar"
-msgstr ""
+msgstr "सालगिरह कैलेंडर"
 
 #: app/Http/Controllers/CalendarController.php:152
 msgid "On this day…"
-msgstr ""
+msgstr "आज के दिन…"
 
 #: app/Http/Controllers/CalendarController.php:155
 msgid "In this month…"
-msgstr ""
+msgstr "इस महीने में…"
 
 #: app/Http/Controllers/CalendarController.php:158
 msgid "In this year…"
-msgstr ""
+msgstr "इस वर्ष में…"
 
 #: app/Http/Controllers/CalendarController.php:416
 msgid "Day not set"
-msgstr ""
+msgstr "दिन निर्धारित नहीं"
 
 #: app/Http/Controllers/CalendarController.php:542
 #: resources/views/modules/yahrzeit/list.phtml:10
 #, php-format
 msgid "%s year anniversary"
-msgstr ""
+msgstr "%s वर्षी सालगिरह"
 
 #: app/Http/Controllers/EditFamilyController.php:57
 #: resources/views/family-page-children.phtml:35
 #: resources/views/family-page-menu.phtml:39
 msgid "Add a child"
-msgstr ""
+msgstr "एक औलाद जोड़ें"
 
 #: app/Http/Controllers/EditFamilyController.php:152
 #: app/Http/Controllers/EditIndividualController.php:256
@@ -10732,7 +10732,7 @@ msgstr ""
 #: resources/views/modules/relatives/family.phtml:85
 #: resources/views/modules/relatives/tab.phtml:110
 msgid "Add a wife"
-msgstr ""
+msgstr "एक पत्नी जोड़ें"
 
 #: app/Http/Controllers/EditFamilyController.php:155
 #: app/Http/Controllers/EditIndividualController.php:252
@@ -10741,103 +10741,103 @@ msgstr ""
 #: resources/views/modules/relatives/family.phtml:48
 #: resources/views/modules/relatives/tab.phtml:112
 msgid "Add a husband"
-msgstr ""
+msgstr "एक पति जोड़े"
 
 #: app/Http/Controllers/EditFamilyController.php:250
 #: resources/views/family-page-menu.phtml:20
 msgid "Change family members"
-msgstr ""
+msgstr "परिवार के सदस्य बदलें"
 
 #: app/Http/Controllers/EditIndividualController.php:57
 #: resources/views/modules/relatives/tab.phtml:133
 msgid "Add a child to create a one-parent family"
-msgstr ""
+msgstr "एकल अभिभावक परिवार बनाने के लिए एक औलाद को जोड़ें"
 
 #: app/Http/Controllers/EditIndividualController.php:154
 #: resources/views/family-page-grandparents.phtml:54
 #: resources/views/family-page-grandparents.phtml:62
 #: resources/views/modules/relatives/tab.phtml:32
 msgid "Add a mother"
-msgstr ""
+msgstr "एक माँ जोड़ें"
 
 #: app/Http/Controllers/EditIndividualController.php:157
 #: resources/views/family-page-grandparents.phtml:24
 #: resources/views/family-page-grandparents.phtml:32
 #: resources/views/modules/relatives/tab.phtml:25
 msgid "Add a father"
-msgstr ""
+msgstr "एक पिता जोड़ें"
 
 #: app/Http/Controllers/EditIndividualController.php:356
 msgid "Create an individual"
-msgstr ""
+msgstr "नया व्यक्ती जोड़ें"
 
 #: app/Http/Controllers/EditIndividualController.php:475
 #: resources/views/individual-page-menu.phtml:24
 msgid "Add a name"
-msgstr ""
+msgstr "एक नाम जोड़ें"
 
 #: app/Http/Controllers/EditIndividualController.php:520
 #: resources/views/modules/relatives/tab.phtml:101
 msgid "Link this individual to an existing family as a child"
-msgstr ""
+msgstr "इस व्यक्ति को एक बच्चे के रूप में किसी मौजूदा परिवार से जोड़ें"
 
 #: app/Http/Controllers/EditIndividualController.php:596
 #: resources/views/modules/relatives/tab.phtml:124
 msgid "Add a husband using an existing individual"
-msgstr ""
+msgstr "किसी मौजूदा व्यक्ति में से एक पति जोड़ें"
 
 #: app/Http/Controllers/EditIndividualController.php:599
 #: resources/views/modules/relatives/tab.phtml:122
 msgid "Add a wife using an existing individual"
-msgstr ""
+msgstr "किसी मौजूदा व्यक्ति में से एक पत्नी जोड़ें"
 
 #: app/Http/Controllers/EditMediaController.php:87
 #: resources/views/media-page.phtml:187
 #: resources/views/modals/add-media-file.phtml:6
 msgid "Add a media file"
-msgstr ""
+msgstr "एक मीडिया फाइल जोड़े"
 
 #: app/Http/Controllers/EditMediaController.php:173
 #: resources/views/modals/edit-media-file.phtml:6
 msgid "Edit a media file"
-msgstr ""
+msgstr "मीडिया फाइल एडिट करें"
 
 #: app/Http/Controllers/EditMediaController.php:269
 #, php-format
 msgid "The media file %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "मीडिया फ़ाइल %1$s का नाम बदलकर %2$s कर दिया गया।"
 
 #: app/Http/Controllers/EditMediaController.php:275
 #, php-format
 msgid "The media file %1$s could not be renamed to %2$s."
-msgstr ""
+msgstr "मीडिया फ़ाइल %1$s का नाम बदलकर %2$s नहीं किया जा सका।"
 
 #: app/Http/Controllers/EditMediaController.php:418
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:119
 msgid "The media object has been created"
-msgstr ""
+msgstr "मीडिया ऑब्जेक्ट बना लिया गया है"
 
 #: app/Http/Controllers/EditNoteController.php:55
 msgid "Edit the shared note"
-msgstr ""
+msgstr "आम नोट एडिट करें"
 
 #: app/Http/Controllers/GedcomFileController.php:126
 msgid "Invalid GEDCOM file - no header record found."
-msgstr ""
+msgstr "अमान्य GEDCOM फ़ाइल - कोई हेडर रिकॉर्ड नहीं मिला।"
 
 #: app/Http/Controllers/GedcomFileController.php:189
 #, php-format
 msgid "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
-msgstr ""
+msgstr "बाधा: GEDCOM फ़ाइलों को %s एन्कोडिंग से UTF-8 एन्कोडिंग में परिवर्तित करना वर्तमान में समर्थित नहीं है।"
 
 #: app/Http/Controllers/HomePageController.php:364
 #: resources/views/admin/control-panel.phtml:148
 msgid "Set the default blocks for new family trees"
-msgstr ""
+msgstr "नए फॅमिली ट्री के लिए डिफ़ॉल्ट ब्लॉक सेट करें"
 
 #: app/Http/Controllers/HomePageController.php:412
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "“होम पेज” के ब्लॉक बदलें"
 
 #. I18N: Name of a module
 #: app/Http/Controllers/HomePageController.php:499
@@ -10846,16 +10846,16 @@ msgstr ""
 #: resources/views/admin/modules.phtml:181
 #: resources/views/layouts/administration.phtml:53
 msgid "My page"
-msgstr ""
+msgstr "मेरा पेज"
 
 #: app/Http/Controllers/HomePageController.php:549
 #: resources/views/admin/control-panel.phtml:354
 msgid "Set the default blocks for new users"
-msgstr ""
+msgstr "नए यूज़र के लिए डिफ़ॉल्ट ब्लॉक सेट करें"
 
 #: app/Http/Controllers/HomePageController.php:597
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "“मेरा पेज” के ब्लॉक बदलें"
 
 #: app/Http/Controllers/IndividualController.php:117
 #: app/Http/Controllers/IndividualController.php:120
@@ -10865,26 +10865,26 @@ msgstr ""
 #: app/Module/StatisticsChartModule.php:594
 #: app/Module/StatisticsChartModule.php:655
 msgid "age"
-msgstr ""
+msgstr "उम्र"
 
 #: app/Http/Controllers/IndividualController.php:314
 #: app/Http/RequestHandlers/IndividualPage.php:279
 #: resources/views/edit/icon-fact-delete.phtml:8
 #: resources/views/media-page.phtml:99
 msgid "Are you sure you want to delete this fact?"
-msgstr ""
+msgstr "क्या आप वाकई इस तथ्य को हटाना चाहते हैं?"
 
 #: app/Http/Controllers/IndividualController.php:314
 #: app/Http/RequestHandlers/IndividualPage.php:279
 msgid "Delete this name"
-msgstr ""
+msgstr "यह नाम हटाएं"
 
 #: app/Http/Controllers/IndividualController.php:363
 #: app/Http/RequestHandlers/IndividualPage.php:328
 #: resources/views/individual-page-menu.phtml:44
 #: resources/views/individual-page-menu.phtml:52
 msgid "Edit the gender"
-msgstr ""
+msgstr "लिंग एडिट करें"
 
 #: app/Http/Controllers/ListController.php:217
 #: app/Http/Controllers/ListController.php:708
@@ -10895,30 +10895,30 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:11
 #: resources/xml/reports/individual_report.xml:8
 msgid "None"
-msgstr ""
+msgstr "कुछ नहीं"
 
 #: app/Http/Controllers/ListController.php:273
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr ""
+msgstr "विवाहित नाम %s वाले व्यक्तियों को अलग कर दें"
 
 #: app/Http/Controllers/ListController.php:279
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr ""
+msgstr "विवाहित नाम %s वाले व्यक्तियों को शामिल करें"
 
 #: app/Http/Controllers/ListController.php:288
 msgid "Show the list of individuals"
-msgstr ""
+msgstr "व्यक्तियों की सूची दिखाएं"
 
 #: app/Http/Controllers/ListController.php:294
 msgid "Show the list of surnames"
-msgstr ""
+msgstr "कुलनामों की सूची दिखाएं"
 
 #: app/Http/Controllers/ListController.php:342
 #, php-format
 msgid "Individuals with surname %s"
-msgstr ""
+msgstr "कुलनाम %s वाले व्यक्ति"
 
 #. I18N: Name of a module
 #: app/Http/Controllers/ListController.php:464 app/Module/MediaTabModule.php:60
@@ -10928,22 +10928,22 @@ msgstr ""
 #: resources/views/lists/media-table.phtml:67
 #: resources/views/modules/recent_changes/changes-table.phtml:37
 msgid "Media"
-msgstr ""
+msgstr "मीडिया"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/ListController.php:488 app/Module/NoteListModule.php:49
 #: resources/views/lists/sources-table.phtml:87
 #: resources/views/search-general-page.phtml:62
 msgid "Shared notes"
-msgstr ""
+msgstr "आम नोट"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:101
 msgid "Show place hierarchy"
-msgstr ""
+msgstr "प्लेस हाइअराकि दिखाएं"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:106
 msgid "Show all places in a list"
-msgstr ""
+msgstr "सूची में सारे स्थान दिखाएं"
 
 #. I18N: Name of a module
 #: app/Http/Controllers/PlaceHierarchyController.php:122
@@ -10952,39 +10952,39 @@ msgstr ""
 #: resources/views/search-replace-page.phtml:38
 #: resources/views/statistics/other/places.phtml:11
 msgid "Places"
-msgstr ""
+msgstr "स्थान"
 
 #: app/Http/Controllers/SetupController.php:143
 msgid "Oops! webtrees was unable to create files in this folder."
-msgstr ""
+msgstr "उफ़! webtrees इस फ़ोल्डर में फाइल बनाने में असमर्थ रही।"
 
 #: app/Http/Controllers/SetupController.php:144
 msgid "This usually means that you need to change the folder permissions to 777."
-msgstr ""
+msgstr "आमतौर पर इस का मतलब यह है कि आपको फ़ोल्डर परमिशन 777 में बदलने की आवश्यकता है।"
 
 #: app/Http/Controllers/SetupController.php:368
 msgid "You must enter all the administrator account fields."
-msgstr ""
+msgstr "आपको एडमिनिस्ट्रेटर अकाउंट की सारी फ़ील्ड को भरना होगा।"
 
 #: app/Http/Controllers/SetupController.php:372
 msgid "The password needs to be at least six characters long."
-msgstr ""
+msgstr "पासवर्ड कम से कम छह अक्षरों का होना चाहिए।"
 
 #: app/Http/Middleware/AuthAdministrator.php:57
 #: app/Http/Middleware/AuthEditor.php:62 app/Http/Middleware/AuthManager.php:65
 #: app/Http/Middleware/AuthMember.php:62
 #: app/Http/Middleware/AuthModerator.php:62
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "आपको यह पेज देखने की अनुमति नहीं है।"
 
 #: app/Http/Middleware/CheckCsrf.php:59
 msgid "This form has expired. Try again."
-msgstr ""
+msgstr "इस फॉर्म की समय सीमा समाप्त। दोबारा कोशिश करें।"
 
 #: app/Http/RequestHandlers/AccountEdit.php:66
 #: app/Module/ModuleThemeTrait.php:349 app/Module/UserWelcomeModule.php:114
 msgid "My account"
-msgstr ""
+msgstr "मेरा अकाउंट"
 
 #: app/Http/RequestHandlers/BroadcastAction.php:82
 #: app/Http/RequestHandlers/ContactAction.php:127
