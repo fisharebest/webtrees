@@ -9611,7 +9611,7 @@ msgstr "नवासे की ख़तना"
 #: app/GedcomTag.php:2090
 msgctxt "son’s son"
 msgid "Brit milah of a grandson"
-msgstr ""
+msgstr "पोते की ख़तना"
 
 #: app/GedcomTag.php:2092
 msgid "Brit milah of a half-brother"
