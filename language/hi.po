@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-24 08:50+0000\n"
+"PO-Revision-Date: 2019-11-25 13:37+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
@@ -66,7 +66,7 @@ msgstr "#%s"
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s में %4$s के लिए %3$s लिंक है।"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
@@ -90,33 +90,33 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:255
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$s के.बी %2$s सेकंड में डाउनलोड हुई।"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s उपलब्ध नहीं है।"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:164
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s मौजूद नहीं है। क्या आपका मतलब %2$s है?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:204
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s में वापसी के लिए %2$s तक कोई लिंक नहीं है।"
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:312 admin_site_upgrade.php:396
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2$s सेकंड में %1$s फ़ाइल बाहर लाई गई।"
+msgstr[1] "%2$s सेकंड में %1$s फ़ाइलें बाहर लाई गई।"
 
 #: app/Module/GoogleMapsModule.php:838
 #, php-format
@@ -137,7 +137,7 @@ msgstr[1] ""
 #: admin_trees_check.php:192
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s एक %2$s है लेकिन एक %3$s अपेक्षित है।"
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:645
@@ -163,7 +163,7 @@ msgstr "%1$s × %2$s"
 #: admin_media.php:497 app/Media.php:387
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s पिक्सल"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #. I18N: A range of numbers
@@ -176,7 +176,7 @@ msgstr ""
 #: app/Functions/Functions.php:2154
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr "%1$s’के %2$s"
+msgstr "%1$s के %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:822
@@ -198,7 +198,7 @@ msgstr ""
 #: admin_media.php:489 app/Media.php:277
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s के.बी"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:216
@@ -462,7 +462,7 @@ msgstr[1] ""
 #: calendar.php:601
 #, php-format
 msgid "%s year anniversary"
-msgstr ""
+msgstr "%s वर्षी सालगिरह"
 
 #: app/Functions/Functions.php:585
 #, php-format
@@ -713,7 +713,7 @@ msgstr ""
 #. I18N: default option in list of themes
 #: admin_trees_config.php:976 admin_users.php:488 edituser.php:278
 msgid "<default theme>"
-msgstr ""
+msgstr "<डिफॉल्ट थीम>"
 
 #: login.php:409
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
@@ -876,7 +876,7 @@ msgstr ""
 
 #: admin.php:624 admin_site_upgrade.php:79 login.php:116
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "webtrees का एक नया वर्शन उपलब्ध है।"
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
@@ -1255,7 +1255,7 @@ msgstr "अदार दुवम"
 #: edit_interface.php:2013 index_edit.php:329 index_edit.php:346
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:170
 msgid "Add"
-msgstr ""
+msgstr "जोड़ें"
 
 #: app/Module/ClippingsCartModule.php:737
 #, php-format
@@ -1272,11 +1272,11 @@ msgstr ""
 
 #: edit_interface.php:496
 msgid "Add a child"
-msgstr ""
+msgstr "एक औलाद जोड़ें"
 
 #: app/Module/RelativesTabModule.php:398 edit_interface.php:575
 msgid "Add a child to create a one-parent family"
-msgstr ""
+msgstr "एकल अभिभावक परिवार बनाने के लिए एक औलाद को जोड़ें"
 
 #: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
@@ -1288,7 +1288,7 @@ msgstr ""
 
 #: app/Module/RelativesTabModule.php:326 edit_interface.php:655 family.php:92
 msgid "Add a father"
-msgstr ""
+msgstr "एक पिता जोड़ें"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
 msgid "Add a favorite"
@@ -1301,7 +1301,7 @@ msgstr ""
 #: app/Module/RelativesTabModule.php:387 edit_interface.php:790
 #: edit_interface.php:880
 msgid "Add a husband"
-msgstr ""
+msgstr "एक पति जोड़े"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
@@ -1310,7 +1310,7 @@ msgstr ""
 #: app/Module/RelativesTabModule.php:392 edit_interface.php:1064
 #: edit_interface.php:1136
 msgid "Add a husband using an existing individual"
-msgstr ""
+msgstr "किसी मौजूदा व्यक्ति में से एक पति जोड़ें"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
@@ -1324,11 +1324,11 @@ msgstr ""
 
 #: app/Module/RelativesTabModule.php:329 edit_interface.php:652 family.php:96
 msgid "Add a mother"
-msgstr ""
+msgstr "एक माँ जोड़ें"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1635
 msgid "Add a name"
-msgstr ""
+msgstr "एक नाम जोड़ें"
 
 #: app/Module/FamilyTreeNewsModule.php:130
 msgid "Add a news article"
@@ -1378,12 +1378,12 @@ msgstr ""
 #. I18N: Menu entry
 #: admin_users.php:264 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
-msgstr ""
+msgstr "यूज़र ऐड करें"
 
 #: app/Module/RelativesTabModule.php:375 edit_interface.php:787
 #: edit_interface.php:877
 msgid "Add a wife"
-msgstr ""
+msgstr "एक पत्नी जोड़ें"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1392,7 +1392,7 @@ msgstr ""
 #: app/Module/RelativesTabModule.php:380 edit_interface.php:1067
 #: edit_interface.php:1138
 msgid "Add a wife using an existing individual"
-msgstr ""
+msgstr "किसी मौजूदा व्यक्ति में से एक पत्नी जोड़ें"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
@@ -1609,7 +1609,7 @@ msgstr "पुत्री को अपनाना"
 
 #: app/GedcomTag.php:885 app/GedcomTag.php:894 app/GedcomTag.php:903
 msgid "Adoption of a grandchild"
-msgstr "पोता/पोती को गोद लेना"
+msgstr "पोते/पोती को गोद लेना"
 
 #: app/GedcomTag.php:883
 msgid "Adoption of a granddaughter"
@@ -1828,7 +1828,7 @@ msgstr ""
 
 #: admin_trees_config.php:563
 msgid "All facts and events"
-msgstr ""
+msgstr "सभी तथ्य और घटनाएं"
 
 #: admin_trees_config.php:1736
 msgid "All family facts"
@@ -2033,7 +2033,7 @@ msgstr ""
 
 #: calendar.php:118
 msgid "Anniversary calendar"
-msgstr ""
+msgstr "सालगिरह कैलेंडर"
 
 #. I18N: gedcom tag ANUL
 #: app/GedcomTag.php:162
@@ -2056,7 +2056,7 @@ msgstr ""
 
 #: login.php:170
 msgid "Anyone with a user account can access this website."
-msgstr ""
+msgstr "कोई भी यूज़र अकाउंट वाला व्यक्ति इस वेबसाइट को एक्सेस कर सकता है।"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:93
@@ -2134,7 +2134,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:1026
 #: app/Functions/FunctionsPrintFacts.php:1174
 msgid "Are you sure you want to delete this fact?"
-msgstr ""
+msgstr "क्या आप वाकई इस तथ्य को हटाना चाहते हैं?"
 
 #: app/Module/UserMessagesModule.php:96 app/Module/UserMessagesModule.php:139
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
@@ -2156,7 +2156,7 @@ msgstr ""
 #: edituser.php:320
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "क्या आप वाकई “%s” को हटाना चाहते हैं?"
 
 #: edit_changes.php:236
 msgid "Are you sure you want to reject all the changes to this family tree?"
@@ -2224,7 +2224,7 @@ msgstr "साथी"
 
 #: edit_interface.php:1221 help_text.php:292
 msgid "Associate events with this source"
-msgstr ""
+msgstr "इस स्रोत के साथ घटनाओं को संबंधित करें"
 
 #: search.php:107 search.php:266
 msgid "Associates"
@@ -2276,7 +2276,7 @@ msgstr "उपस्थित"
 #. I18N: Type of media object
 #: app/GedcomTag.php:1910
 msgid "Audio"
-msgstr ""
+msgstr "ऑडियो"
 
 #: app/Date/CalendarDate.php:328
 msgctxt "Abbreviation for August"
@@ -2909,7 +2909,7 @@ msgstr ""
 #: admin_module_blocks.php:35 admin_modules.php:162
 #: app/Theme/AdministrationTheme.php:193
 msgid "Blocks"
-msgstr ""
+msgstr "ब्लॉक्स"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:79
@@ -2943,7 +2943,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1912
 msgid "Book"
-msgstr ""
+msgstr "किताब"
 
 #: ancestry.php:71 descendancy.php:62
 msgid "Booklet"
@@ -2990,13 +2990,13 @@ msgstr ""
 #. I18N: Branches of a family tree
 #: app/Controller/BranchesController.php:68 app/Theme/AbstractTheme.php:1482
 msgid "Branches"
-msgstr ""
+msgstr "शाखाएं"
 
 #. I18N: %s is a surname
 #: app/Controller/BranchesController.php:61
 #, php-format
 msgid "Branches of the %s family"
-msgstr ""
+msgstr "कुलनाम %s के परिवार"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6704
@@ -3024,7 +3024,7 @@ msgstr "खतना"
 
 #: app/GedcomTag.php:1782
 msgid "Brit milah of a brother"
-msgstr ""
+msgstr "भाई की ख़तना"
 
 #: app/GedcomTag.php:1774
 msgid "Brit milah of a grandson"
@@ -3038,11 +3038,11 @@ msgstr "नवासे की ख़तना"
 #: app/GedcomTag.php:1778
 msgctxt "son’s son"
 msgid "Brit milah of a grandson"
-msgstr ""
+msgstr "पोते की ख़तना"
 
 #: app/GedcomTag.php:1780
 msgid "Brit milah of a half-brother"
-msgstr ""
+msgstr "सौतेले भाई की ख़तना"
 
 #: app/GedcomTag.php:1772
 msgid "Brit milah of a son"
@@ -3351,7 +3351,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1914
 msgid "Card"
-msgstr ""
+msgstr "कार्ड"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:87
@@ -3378,7 +3378,7 @@ msgstr "वजह"
 
 #: app/GedcomTag.php:354
 msgid "Cause of death"
-msgstr "मौत की वजह"
+msgstr "मृत्यु की वजह"
 
 #: admin_trees_manage.php:767 admin_trees_renumber.php:286
 msgid "Caution! This may take a long time. Be patient."
@@ -3444,7 +3444,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1916
 msgid "Certificate"
-msgstr ""
+msgstr "प्रमाणपत्र"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6893
@@ -3458,7 +3458,7 @@ msgstr ""
 #: app/Controller/FamilyController.php:77 edit_interface.php:1886
 #: edit_interface.php:2049
 msgid "Change family members"
-msgstr ""
+msgstr "परिवार के सदस्य बदलें"
 
 #: app/Module/GoogleMapsModule.php:539 app/Module/GoogleMapsModule.php:542
 #: app/Module/GoogleMapsModule.php:545 app/Module/GoogleMapsModule.php:596
@@ -3473,11 +3473,11 @@ msgstr ""
 
 #: admin_trees_manage.php:408 index_edit.php:50
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "“होम पेज” के ब्लॉक बदलें"
 
 #: index_edit.php:42
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "“मेरा पेज” के ब्लॉक बदलें"
 
 #. I18N: [a record was] Changed on <date/time>
 #: app/Module/RecentChangesModule.php:261
@@ -3533,7 +3533,7 @@ msgstr ""
 #: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
 #: app/Theme/AdministrationTheme.php:195
 msgid "Charts"
-msgstr ""
+msgstr "चार्ट"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:327
@@ -3552,12 +3552,12 @@ msgstr ""
 
 #: admin_trees_check.php:33 admin_trees_manage.php:499
 msgid "Check for errors"
-msgstr ""
+msgstr "बाधाओं की जाँच करें"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:94
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "लंबित परिवर्तनों को जाँचें…"
 
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 msgid "Check the access rights on this folder."
@@ -3667,7 +3667,7 @@ msgstr ""
 
 #: admin_site_config.php:131
 msgid "Choose user defined welcome text typed below"
-msgstr ""
+msgstr "नीचे दिए गए “यूज़र डिफाइंड” स्वागत लेख चुनें"
 
 #: addmedia.php:522
 msgid "Choose: "
@@ -3803,7 +3803,7 @@ msgstr "नागरिक रजिस्ट्रार"
 #. I18N: Menu entry
 #: admin_site_clean.php:51 app/Theme/AdministrationTheme.php:102
 msgid "Clean up data folder"
-msgstr ""
+msgstr "डेटा फ़ोल्डर साफ़ करें"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:76
@@ -3818,7 +3818,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1918
 msgid "Coat of arms"
-msgstr ""
+msgstr "राज्य-चिह्न"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:135
@@ -3918,7 +3918,7 @@ msgstr "पूरा हुआ: तिथि अज्ञात"
 
 #: admin_trees_download.php:141
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "GEDCOM फ़ाइल को कंप्रेस करें"
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:302
@@ -3982,12 +3982,12 @@ msgstr "निरंतर"
 #: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
 #: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
-msgstr ""
+msgstr "कंट्रोल पैनल"
 
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:426
 #: app/Module/ClippingsCartModule.php:794
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr ""
+msgstr "UTF-8 से ISO-8859-1 में परिवर्तित करें"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6720
@@ -4020,7 +4020,7 @@ msgstr ""
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:369
 msgid "Copy files…"
-msgstr ""
+msgstr "फ़ाइलें कॉपी करें…"
 
 #: admin_site_upgrade.php:339
 #, php-format
@@ -4088,11 +4088,11 @@ msgstr ""
 
 #: admin_media.php:314
 msgid "Create"
-msgstr ""
+msgstr "बनाएं"
 
 #: admin_trees_manage.php:634
 msgid "Create a family tree"
-msgstr ""
+msgstr "एक फॅमिली ट्री बनाएं"
 
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:417
 msgid "Create a media object"
@@ -4125,7 +4125,7 @@ msgstr ""
 
 #: edit_interface.php:730
 msgid "Create an individual"
-msgstr ""
+msgstr "नया व्यक्ती जोड़ें"
 
 #: statistics.php:497
 msgid "Create your own chart"
@@ -4572,7 +4572,7 @@ msgstr ""
 
 #: calendar.php:483
 msgid "Day not set"
-msgstr ""
+msgstr "दिन निर्धारित नहीं"
 
 #: timeline.php:128 timeline.php:130 timeline.php:132
 msgid "Day:"
@@ -4704,7 +4704,7 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:1370
 #: modules_v3/relative_ext_report/report.xml:62
 msgid "Death"
-msgstr "मौत"
+msgstr "मृत्यु"
 
 #: app/Stats.php:1674 statistics.php:575
 msgid "Death by country"
@@ -4991,7 +4991,7 @@ msgstr ""
 #: app/Module/UserJournalModule.php:106 app/Module/UserMessagesModule.php:111
 #: app/Module/UserMessagesModule.php:139
 msgid "Delete"
-msgstr ""
+msgstr "हटाएं"
 
 #: app/Module/GoogleMapsModule.php:3677
 msgid "Delete all existing geographic data before importing the file."
@@ -5017,7 +5017,7 @@ msgstr ""
 
 #: app/Controller/IndividualController.php:167
 msgid "Delete this name"
-msgstr ""
+msgstr "यह नाम हटाएं"
 
 #: edituser.php:321
 msgid "Delete your account"
@@ -5290,7 +5290,7 @@ msgstr "सील ना करें: अनाधिकृत"
 #. I18N: Type of media object
 #: app/GedcomTag.php:1920
 msgid "Document"
-msgstr ""
+msgstr "दस्तावेज़"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6733
@@ -5312,7 +5312,7 @@ msgstr ""
 #: admin_site_upgrade.php:243
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "डाउनलोड %s…"
 
 #: mediaviewer.php:143
 msgid "Download file"
@@ -5334,11 +5334,13 @@ msgstr "डुओडी"
 
 #: admin_users.php:73 edituser.php:60 login.php:289
 msgid "Duplicate email address. A user with that email already exists."
-msgstr ""
+msgstr "डुप्लिकेट इमेल एड्रेस। उस ईमेल वाला उपयोगकर्ता पहले से मौजूद है।"
 
 #: admin_users.php:71 edituser.php:58 login.php:287
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
 msgstr ""
+"डुप्लिकेट यूज़रनेम। उस यूज़रनेम वाला उपयोगकर्ता पहले से मौजूद है। कृपया दूसरा"
+" यूज़रनेम चुनें।"
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -5434,7 +5436,7 @@ msgstr ""
 #: app/Controller/IndividualController.php:283
 #: app/Controller/IndividualController.php:291
 msgid "Edit the gender"
-msgstr ""
+msgstr "लिंग एडिट करें"
 
 #: addmedia.php:237 addmedia.php:406 app/Controller/MediaController.php:43
 #: app/Module/AlbumModule.php:159
@@ -5459,7 +5461,7 @@ msgstr ""
 #: edit_interface.php:112 edit_interface.php:162 edit_interface.php:224
 #: edit_interface.php:319 edit_interface.php:2559 help_text.php:284
 msgid "Edit the raw GEDCOM"
-msgstr ""
+msgstr "मूल GEDCOM एडिट करें"
 
 #: app/Controller/RepositoryController.php:43
 #: app/Controller/RepositoryController.php:48
@@ -5469,7 +5471,7 @@ msgstr ""
 #: app/Functions/FunctionsEdit.php:450 edit_interface.php:1424
 #: edit_interface.php:1470
 msgid "Edit the shared note"
-msgstr ""
+msgstr "आम नोट एडिट करें"
 
 #: app/Controller/SourceController.php:42
 #: app/Controller/SourceController.php:47
@@ -5482,7 +5484,7 @@ msgstr ""
 
 #: admin_users.php:272
 msgid "Edit the user"
-msgstr ""
+msgstr "यूज़र एडिट करें"
 
 #: app/Tree.php:494
 msgid "Edit this individual and replace their details with your own."
@@ -5491,7 +5493,7 @@ msgstr ""
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:543
 msgid "Editor"
-msgstr ""
+msgstr "एडिटर"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:159
@@ -5516,7 +5518,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1922
 msgid "Electronic"
-msgstr ""
+msgstr "इलेक्ट्रोनिक"
 
 #. I18N: Angle of elevation (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2342
@@ -5556,7 +5558,7 @@ msgstr "एलूल"
 #: app/Module/UserMessagesModule.php:114 edituser.php:259 login.php:325
 #: login.php:430 message.php:117 message.php:270 setup.php:443
 msgid "Email address"
-msgstr "इमेल अड्रेस"
+msgstr "इमेल एड्रेस"
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:865
@@ -5679,6 +5681,8 @@ msgstr ""
 #, php-format
 msgid "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
 msgstr ""
+"बाधा: GEDCOM फ़ाइलों को %s एन्कोडिंग से UTF-8 एन्कोडिंग में परिवर्तित करना "
+"वर्तमान में समर्थित नहीं है।"
 
 #: app/Date/JalaliDate.php:194
 msgctxt "Abbreviation for Persian month: Esfand"
@@ -5767,7 +5771,7 @@ msgstr ""
 #: famlist.php:176 indilist.php:176
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr ""
+msgstr "विवाहित नाम %s वाले व्यक्तियों को अलग कर दें"
 
 #: admin_media.php:671
 msgid "Exclude subfolders"
@@ -5789,12 +5793,12 @@ msgstr ""
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "GEDCOM फ़ाइल निर्यात करें"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:219
 msgid "Export all the family trees to GEDCOM files…"
-msgstr ""
+msgstr "सारी फॅमिली ट्री GEDCOM फ़ाइलों को निर्यात करें…"
 
 #: admin_trees_download.php:134
 msgid "Export preferences"
@@ -5958,7 +5962,7 @@ msgstr ""
 #: repo.php:127 search.php:93 source.php:131 statistics.php:71
 #: statisticsplot.php:990 statisticsplot.php:1094 statisticsplot.php:1344
 msgid "Families"
-msgstr ""
+msgstr "परिवार"
 
 #: app/Stats.php:520 statistics.php:395
 msgid "Families with sources"
@@ -6245,7 +6249,7 @@ msgstr ""
 
 #: admin_media.php:490 app/GedcomTag.php:1785
 msgid "File size"
-msgstr ""
+msgstr "फाइल साईज"
 
 #: app/Functions/Functions.php:69
 msgid "File successfully uploaded"
@@ -6263,12 +6267,12 @@ msgstr ""
 #: addmedia.php:161 addmedia.php:295 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr ""
+msgstr "फ़ाइलनाम में अक्षर “%s” लगाने की अनुमति नहीं है।"
 
 #: addmedia.php:165 addmedia.php:299 admin_media_upload.php:122
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr ""
+msgstr "फ़ाइलनाम का एक्सटेंशन “%s” रखने की अनुमति नहीं है।"
 
 #: admin.php:893
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
@@ -6334,7 +6338,7 @@ msgstr ""
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
-msgstr ""
+msgstr "डुप्लिकेट खोजें"
 
 #: relationship.php:134
 msgid "Find other relationships"
@@ -6717,7 +6721,7 @@ msgstr ""
 
 #: app/Controller/BranchesController.php:290
 msgid "Generation"
-msgstr ""
+msgstr "पीढ़ी"
 
 #: modules_v3/ahnentafel_report/report.xml:78
 #: modules_v3/descendancy_report/report.xml:55
@@ -6749,7 +6753,7 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:3495 app/Module/GoogleMapsModule.php:3507
 #: app/Module/GoogleMapsModule.php:3719 app/Module/GoogleMapsModule.php:3886
 msgid "Geographic data"
-msgstr ""
+msgstr "भौगोलिक डेटा"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6754
@@ -7387,6 +7391,8 @@ msgstr ""
 #: admin_site_config.php:519
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
+"यदि आप निम्नलिखित ट्रैकिंग और एनालिटिक्स सेवाओं में से एक का उपयोग करते हैं, "
+"तो webtrees ट्रैकिंग कोड को खुद ब खुद जोड़ सकती है।"
 
 #: setup.php:187
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
@@ -7399,7 +7405,7 @@ msgstr ""
 
 #: admin_media.php:495 app/GedcomTag.php:1787
 msgid "Image dimensions"
-msgstr ""
+msgstr "इमेज डायमेंशन"
 
 #: admin_trees_config.php:1136
 msgid "Images without watermarks"
@@ -7416,7 +7422,7 @@ msgstr ""
 
 #: admin_trees_manage.php:178
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "GEDCOM फ़ाइल आयात करें"
 
 #: app/Module/GoogleMapsModule.php:4036
 msgid "Import all places from a family tree"
@@ -7451,11 +7457,11 @@ msgstr ""
 
 #: calendar.php:125
 msgid "In this month…"
-msgstr ""
+msgstr "इस महीने में…"
 
 #: calendar.php:128
 msgid "In this year…"
-msgstr ""
+msgstr "इस वर्ष में…"
 
 #: app/Module/GoogleMapsModule.php:1358
 msgid "Include fully matched places"
@@ -7464,7 +7470,7 @@ msgstr ""
 #: famlist.php:178 indilist.php:178
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr ""
+msgstr "विवाहित नाम %s वाले व्यक्तियों को शामिल करें"
 
 #: app/Module/ClippingsCartModule.php:386
 #: app/Module/ClippingsCartModule.php:771
@@ -7564,7 +7570,7 @@ msgstr ""
 #: statisticsplot.php:886 statisticsplot.php:936 statisticsplot.php:1144
 #: statisticsplot.php:1194 statisticsplot.php:1244 statisticsplot.php:1294
 msgid "Individuals"
-msgstr ""
+msgstr "व्यक्ती"
 
 #: app/Stats.php:422 statistics.php:394
 msgid "Individuals with sources"
@@ -7573,7 +7579,7 @@ msgstr ""
 #: famlist.php:255 indilist.php:255
 #, php-format
 msgid "Individuals with surname %s"
-msgstr ""
+msgstr "कुलनाम %s वाले व्यक्ति"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6776
@@ -7643,7 +7649,7 @@ msgstr "दफ़नाया गया"
 
 #: import.php:114
 msgid "Invalid GEDCOM file - no header record found."
-msgstr ""
+msgstr "अमान्य GEDCOM फ़ाइल - कोई हेडर रिकॉर्ड नहीं मिला।"
 
 #: app/Functions/FunctionsImport.php:619
 msgid "Invalid GEDCOM format"
@@ -8049,7 +8055,7 @@ msgstr ""
 #: admin_trees_config.php:54 modules_v3/change_report/report.xml:10
 #: modules_v3/pedigree_report/report.xml:6 pedigree.php:182
 msgid "Landscape"
-msgstr ""
+msgstr "लैंडस्केप"
 
 #. I18N: A configuration setting
 #. I18N: gedcom tag LANG
@@ -8062,7 +8068,7 @@ msgstr "भाषा"
 #. I18N: Menu entry
 #: admin_site_config.php:153 app/Theme/AdministrationTheme.php:98
 msgid "Languages"
-msgstr ""
+msgstr "भाषाएं"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6798
@@ -8219,7 +8225,7 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:384 app/Module/GoogleMapsModule.php:400
 #: app/Module/GoogleMapsModule.php:1438 app/Module/GoogleMapsModule.php:3444
 msgid "Level"
-msgstr ""
+msgstr "स्तर"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6800
@@ -8259,7 +8265,7 @@ msgstr ""
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:963
 #: edit_interface.php:1023
 msgid "Link this individual to an existing family as a child"
-msgstr ""
+msgstr "इस व्यक्ति को एक बच्चे के रूप में किसी मौजूदा परिवार से जोड़ें"
 
 #: admin_media.php:531 app/Controller/MediaController.php:57
 #: app/Controller/MediaController.php:127 app/Module/AlbumModule.php:178
@@ -8303,7 +8309,7 @@ msgstr ""
 
 #: admin_trees_config.php:1146 app/Theme/AbstractTheme.php:1471
 msgid "Lists"
-msgstr ""
+msgstr "लिस्ट"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6806
@@ -8339,7 +8345,7 @@ msgstr "स्थान"
 
 #: app/Module/GoogleMapsModule.php:3896
 msgid "Location not removed: this location contains sub-locations"
-msgstr ""
+msgstr "स्थान नहीं हटाया गया: इस स्थान में उप-स्थान शामिल हैं"
 
 #: app/GedcomCode/GedcomCodeRela.php:191
 msgid "Lodger"
@@ -8431,7 +8437,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1928
 msgid "Magazine"
-msgstr ""
+msgstr "मैगजीन"
 
 #. I18N: gedcom tag _NAME
 #: app/GedcomTag.php:1675
@@ -8500,12 +8506,12 @@ msgstr ""
 #: admin_trees_places.php:91 admin_trees_unconnected.php:74
 #: app/Theme/AdministrationTheme.php:127
 msgid "Manage family trees"
-msgstr ""
+msgstr "फॅमिली ट्री मैनेज करें"
 
 #. I18N: Menu entry
 #: admin_media.php:588 app/Theme/AdministrationTheme.php:178
 msgid "Manage media"
-msgstr ""
+msgstr "मीडिया मैनेज करें"
 
 #: admin_media.php:535 app/Controller/MediaController.php:49
 #: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
@@ -8517,7 +8523,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:403
 #: app/Module/ClippingsCartModule.php:780
 msgid "Manager"
-msgstr ""
+msgstr "मैनेजर"
 
 #: admin.php:679
 msgid "Managers"
@@ -8546,7 +8552,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1930
 msgid "Manuscript"
-msgstr ""
+msgstr "हस्तलिपि"
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: admin_trees_config.php:1593
@@ -8563,7 +8569,7 @@ msgstr ""
 #: app/GedcomTag.php:556 app/GedcomTag.php:1932
 #: app/Module/GoogleMapsModule.php:326
 msgid "Map"
-msgstr ""
+msgstr "नक्शा"
 
 #: app/Date/CalendarDate.php:323
 msgctxt "Abbreviation for March"
@@ -8929,7 +8935,7 @@ msgstr ""
 #: inverselink.php:70
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:74
 msgid "Media"
-msgstr ""
+msgstr "मीडिया"
 
 #. I18N: Label for search field
 #: find.php:184
@@ -8979,7 +8985,7 @@ msgstr "मीडिया फाइल"
 #: repo.php:134 source.php:138 statistics.php:353 statistics.php:380
 #: statistics.php:383
 msgid "Media objects"
-msgstr ""
+msgstr "मीडिया फ़ाइल्स"
 
 #: medialist.php:233
 msgid "Media objects found"
@@ -9055,7 +9061,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:781
 #: app/Module/ClippingsCartModule.php:788
 msgid "Member"
-msgstr ""
+msgstr "सदस्य"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:203
@@ -9075,7 +9081,7 @@ msgstr ""
 #: admin_module_menus.php:28 admin_modules.php:159
 #: app/Theme/AdministrationTheme.php:191
 msgid "Menus"
-msgstr ""
+msgstr "मेनू"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:85
@@ -9089,7 +9095,7 @@ msgstr ""
 #. I18N: Menu entry
 #: admin_trees_merge.php:34 app/Theme/AdministrationTheme.php:137
 msgid "Merge family trees"
-msgstr ""
+msgstr "दो फॅमिली ट्री को मिलाएँ"
 
 #: admin_site_merge.php:35 admin_trees_manage.php:479
 msgid "Merge records"
@@ -9152,12 +9158,12 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1924
 msgid "Microfiche"
-msgstr ""
+msgstr "माइक्रोफीच"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1926
 msgid "Microfilm"
-msgstr ""
+msgstr "माइक्रोफिल्म"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6751
@@ -9201,7 +9207,7 @@ msgstr ""
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:42 admin_users.php:549
 msgid "Moderator"
-msgstr ""
+msgstr "मॉडरेटर"
 
 #: admin.php:692
 msgid "Moderators"
@@ -9469,12 +9475,12 @@ msgstr ""
 #: app/Module/UserWelcomeModule.php:53 app/Theme/AbstractTheme.php:1599
 #: edituser.php:111
 msgid "My account"
-msgstr ""
+msgstr "मेरा अकाउंट"
 
 #. I18N: Default name for a new tree
 #: admin_trees_manage.php:165
 msgid "My family tree"
-msgstr ""
+msgstr "मेरी फॅमिली ट्री"
 
 #: app/Module/UserWelcomeModule.php:61 app/Theme/AbstractTheme.php:1614
 msgid "My individual record"
@@ -9484,7 +9490,7 @@ msgstr ""
 #: admin_modules.php:226 app/Module/UserWelcomeModule.php:29
 #: app/Theme/AbstractTheme.php:1626 index.php:88 index.php:96
 msgid "My page"
-msgstr ""
+msgstr "मेरा पेज"
 
 #: app/Theme/AbstractTheme.php:1636
 msgid "My pages"
@@ -9621,7 +9627,7 @@ msgstr ""
 
 #: admin_users.php:239
 msgid "Never"
-msgstr ""
+msgstr "कभी नहीं"
 
 #. I18N: gedcom tag _NMAR
 #: app/GedcomTag.php:1697
@@ -9669,7 +9675,7 @@ msgstr "%s पर नया रजिस्ट्रैशन"
 #: login.php:577
 #, php-format
 msgid "New user at %s"
-msgstr ""
+msgstr "%s पर नया उपयोगकर्ता"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:263
@@ -9684,7 +9690,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1934
 msgid "Newspaper"
-msgstr ""
+msgstr "अख़बार"
 
 #: app/Module/ReviewChangesModule.php:115
 msgid "Next email reminder will be sent after "
@@ -9773,7 +9779,7 @@ msgstr "नहीं"
 
 #: admin_trees_manage.php:104 admin_trees_manage.php:125
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "कोई GEDCOM फ़ाइल प्राप्त नहीं हुई।"
 
 #: admin_trees_manage.php:256
 msgid "No GEDCOM files found."
@@ -9889,7 +9895,7 @@ msgstr ""
 
 #: admin_site_config.php:127
 msgid "No predefined text"
-msgstr ""
+msgstr "कोई पूर्वनिर्धारित लेख नहीं"
 
 #: app/I18N.php:227 app/I18N.php:237
 msgid "No records to display"
@@ -9914,7 +9920,7 @@ msgstr "बिना मठ के रहने रस्म"
 
 #: admin.php:622 admin_site_upgrade.php:61
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "कोई अपग्रेड की जानकारी उपलब्ध नहीं।"
 
 #: app/Stats.php:1739
 msgid "Nobody at all"
@@ -9935,7 +9941,7 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "None"
-msgstr ""
+msgstr "कुछ नहीं"
 
 #. I18N: The ninth day in the French republican calendar
 #: app/Date/FrenchDate.php:205
@@ -10259,7 +10265,7 @@ msgstr ""
 
 #: calendar.php:122
 msgid "On this day…"
-msgstr ""
+msgstr "आज के दिन…"
 
 #: app/Functions/FunctionsEdit.php:229
 #: app/Functions/FunctionsPrintFacts.php:274
@@ -10275,7 +10281,7 @@ msgstr ""
 
 #: setup.php:213
 msgid "Oops! webtrees was unable to create files in this folder."
-msgstr ""
+msgstr "उफ़! webtrees इस फ़ोल्डर में फाइल बनाने में असमर्थ रही।"
 
 #: app/Functions/FunctionsPrint.php:471
 msgid "OpenStreetMap™"
@@ -10347,7 +10353,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1944 app/Stats.php:5453 app/Stats.php:5872
 msgid "Other"
-msgstr ""
+msgstr "अन्य"
 
 #: admin_trees_config.php:1337
 msgid "Other facts to show in charts"
@@ -10467,7 +10473,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1942
 msgid "Painting"
-msgstr ""
+msgstr "चित्रकारी"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6847
@@ -10590,7 +10596,7 @@ msgstr ""
 #: app/Theme/AbstractTheme.php:1678 edit_changes.php:35 edit_changes.php:49
 #: help_text.php:302 modules_v3/change_report/report.xml:52
 msgid "Pending changes"
-msgstr ""
+msgstr "रुके हुए परिवर्तन"
 
 #: help_text.php:309
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
@@ -10804,7 +10810,7 @@ msgstr "श्मशान का स्थान"
 #: app/GedcomTag.php:358 modules_v3/fact_sources/report.xml:275
 #: modules_v3/missing_facts_report/report.xml:516
 msgid "Place of death"
-msgstr "मौत की जगह"
+msgstr "मृत्यु की जगह"
 
 #: app/GedcomTag.php:408
 msgid "Place of emigration"
@@ -10860,7 +10866,7 @@ msgstr ""
 
 #: admin_trees_config.php:1500 search.php:204 statistics.php:408
 msgid "Places"
-msgstr ""
+msgstr "स्थान"
 
 #: find.php:665
 msgid "Places found"
@@ -10891,7 +10897,7 @@ msgstr ""
 
 #: message.php:50
 msgid "Please enter a valid email address."
-msgstr ""
+msgstr "कृपया सही ईमेल एड्रेस दर्ज करें।"
 
 #: app/Module/CensusAssistantModule.php:169 find.php:127 search.php:36
 #: search.php:48
@@ -10959,7 +10965,7 @@ msgstr ""
 #: admin_trees_config.php:53 modules_v3/change_report/report.xml:10
 #: modules_v3/pedigree_report/report.xml:6 pedigree.php:182
 msgid "Portrait"
-msgstr ""
+msgstr "पोर्ट्रेट"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6857
@@ -11003,14 +11009,20 @@ msgstr "प्रेरिअल"
 #: admin_site_config.php:129
 msgid "Predefined text that states admin will decide on each request for a user account"
 msgstr ""
+"पूर्वनिर्धारित लेख, जो बताता है कि प्रत्येक अनुरोध पर एडमिन निर्णय करेंगे "
+"यूज़र अकाउंट किसे प्रदान करना है"
 
 #: admin_site_config.php:128
 msgid "Predefined text that states all users can request a user account"
 msgstr ""
+"पूर्वनिर्धारित लेख, जो बताता है कि सभी उपयोगकर्ता एक यूज़र अकाउंट के लिए "
+"अनुरोध कर सकते हैं"
 
 #: admin_site_config.php:130
 msgid "Predefined text that states only family members can request a user account"
 msgstr ""
+"पूर्वनिर्धारित लेख, जो बताता है केवल परिवार के सदस्य ही यूज़र अकाउंट के लिए "
+"अनुरोध कर सकते हैं"
 
 #: admin_trees_config.php:325 admin_trees_manage.php:388
 #: app/Module/ChartsBlockModule.php:77
@@ -11023,7 +11035,7 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:78
 #: app/Module/YahrzeitModule.php:74 block_edit.php:64
 msgid "Preferences"
-msgstr ""
+msgstr "प्राथमिकताएं"
 
 #: admin_modules.php:98
 #, php-format
@@ -11072,7 +11084,7 @@ msgstr ""
 
 #: admin_trees_config.php:310 admin_trees_manage.php:398
 msgid "Privacy"
-msgstr ""
+msgstr "निजता"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: admin_trees_config.php:498
@@ -11455,7 +11467,7 @@ msgstr ""
 #: app/Module/RelationshipsChartModule.php:90
 #: app/Module/RelationshipsChartModule.php:179 relationship.php:59
 msgid "Relationships"
-msgstr ""
+msgstr "रिश्तेदारी"
 
 #. I18N: %s are individual’s names
 #: relationship.php:54
@@ -11538,7 +11550,7 @@ msgstr ""
 #: admin_trees_merge.php:100 admin_trees_merge.php:105
 #: admin_trees_renumber.php:33
 msgid "Renumber family tree"
-msgstr ""
+msgstr "फॅमिली ट्री पुनः अंकित करें"
 
 #: admin_trees_places.php:105 search.php:162
 msgid "Replace with"
@@ -11561,7 +11573,7 @@ msgstr ""
 #: admin_module_reports.php:28 admin_modules.php:164
 #: app/Theme/AbstractTheme.php:1698 app/Theme/AdministrationTheme.php:196
 msgid "Reports"
-msgstr ""
+msgstr "विवरण"
 
 #: admin.php:771 admin.php:829 admin_trees_duplicates.php:140
 #: app/Module/FamilyTreeStatisticsModule.php:124
@@ -11569,7 +11581,7 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:199 app/Theme/AbstractTheme.php:1540
 #: repolist.php:33 repolist.php:37 statistics.php:356
 msgid "Repositories"
-msgstr ""
+msgstr "संग्रह स्थान"
 
 #: find.php:687
 msgid "Repositories found"
@@ -11638,7 +11650,7 @@ msgstr ""
 
 #: admin_users.php:584
 msgid "Restrict to immediate family"
-msgstr ""
+msgstr "सगे परिवार तक प्रतिबंधित करें"
 
 #. I18N: gedcom tag RESN
 #: app/GedcomTag.php:740
@@ -12054,7 +12066,7 @@ msgstr ""
 #: app/Module/LoggedInUsersModule.php:90 app/Module/UserMessagesModule.php:100
 #: app/Stats.php:5930 app/Stats.php:5932 edit_changes.php:201 message.php:103
 msgid "Send a message"
-msgstr ""
+msgstr "एक संदेश भेजें"
 
 #: admin_users_bulk.php:41
 msgid "Send a message to all users"
@@ -12086,7 +12098,7 @@ msgstr ""
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:96
 msgid "Sending email"
-msgstr ""
+msgstr "ईमेल भेजना"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:428
@@ -12184,12 +12196,12 @@ msgstr ""
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
 msgid "Set the default blocks for new family trees"
-msgstr ""
+msgstr "नए फॅमिली ट्री के लिए डिफ़ॉल्ट ब्लॉक सेट करें"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:167 index_edit.php:39
 msgid "Set the default blocks for new users"
-msgstr ""
+msgstr "नए यूज़र के लिए डिफ़ॉल्ट ब्लॉक सेट करें"
 
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: admin_trees_config.php:1237
@@ -12278,7 +12290,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:1045 app/Theme/AbstractTheme.php:1522
 #: notelist.php:33 notelist.php:37 search.php:103
 msgid "Shared notes"
-msgstr ""
+msgstr "आम नोट"
 
 #: find.php:709
 msgid "Shared notes found"
@@ -12431,7 +12443,7 @@ msgstr ""
 
 #: placelist.php:212
 msgid "Show all places in a list"
-msgstr ""
+msgstr "सूची में सारे स्थान दिखाएं"
 
 #: app/Module/SourcesTabModule.php:70
 msgid "Show all sources"
@@ -12689,11 +12701,11 @@ msgstr ""
 
 #: famlist.php:183 indilist.php:183
 msgid "Show the list of individuals"
-msgstr ""
+msgstr "व्यक्तियों की सूची दिखाएं"
 
 #: famlist.php:185 indilist.php:185
 msgid "Show the list of surnames"
-msgstr ""
+msgstr "कुलनामों की सूची दिखाएं"
 
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:77
@@ -12781,7 +12793,7 @@ msgstr ""
 #: admin_module_sidebar.php:28 admin_modules.php:161
 #: app/Theme/AdministrationTheme.php:194
 msgid "Sidebars"
-msgstr ""
+msgstr "साइडबार"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6877
@@ -12792,7 +12804,7 @@ msgstr ""
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:69
 #: app/Theme/AbstractTheme.php:1561 login.php:151
 msgid "Sign in"
-msgstr ""
+msgstr "साइन इन करें"
 
 #: app/Module/LoginBlockModule.php:62 app/Theme/AbstractTheme.php:1572
 msgid "Sign out"
@@ -12806,7 +12818,7 @@ msgstr ""
 #. I18N: Menu entry
 #: admin_site_config.php:147 app/Theme/AdministrationTheme.php:97
 msgid "Sign-in and registration"
-msgstr ""
+msgstr "साइन-इन और रजिस्ट्रेशन"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -13057,7 +13069,7 @@ msgstr ""
 #: search.php:98 source.php:144 sourcelist.php:33 sourcelist.php:37
 #: statistics.php:354 statistics.php:391
 msgid "Sources"
-msgstr ""
+msgstr "स्रोत"
 
 #: modules_v3/missing_facts_report/report.xml:14
 msgid "Sources to the events"
@@ -13390,7 +13402,7 @@ msgstr ""
 #: admin_module_tabs.php:28 admin_modules.php:160
 #: app/Theme/AdministrationTheme.php:192
 msgid "Tabs"
-msgstr ""
+msgstr "टैब्स"
 
 #: find.php:519
 msgid "Tag"
@@ -13518,7 +13530,7 @@ msgstr ""
 #: admin_trees_manage.php:148
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "GEDCOM फ़ाइल “%s” आयात कर ली गई।"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13579,25 +13591,25 @@ msgstr ""
 #: admin_site_upgrade.php:231 admin_trees_export.php:41
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr ""
+msgstr "फॅमिली ट्री को %s में निर्यात कर दिया गया।"
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:77
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "%s फॅमिली ट्री पहले से मौजूद है।"
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:80
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "%s फॅमिली ट्री बना दी गई।"
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:57 admin_trees_manage.php:154
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "फॅमिली ट्री “%s” को हटा दिया गया।"
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:66
@@ -13607,31 +13619,31 @@ msgstr ""
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "फॅमिली ट्री को सफलतापूर्वक मिला दिया गया है।"
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:144
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr ""
+msgstr "“%s” परिवार को हटा दिया गया है क्योंकि इसमें केवल एक ही सदस्य है।"
 
 #: addmedia.php:178 admin_media_upload.php:136
 #, php-format
 msgid "The file %s already exists. Use another filename."
-msgstr ""
+msgstr "फ़ाइल %s पहले से मौजूद है। किसी और नाम की फाइल उपयोग करें।"
 
 #: admin_site_upgrade.php:233 admin_site_upgrade.php:360
 #: admin_site_upgrade.php:393 admin_trees_export.php:44
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "फ़ाइल %s नहीं बनाई जा सका।"
 
 #: admin_media.php:63 admin_media.php:72 admin_site_clean.php:38
 #: admin_site_upgrade.php:415 admin_site_upgrade.php:436
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr ""
+msgstr "%s फ़ाइल को हटाया नहीं जा सका।"
 
 #: admin_site_upgrade.php:335
 #, php-format
@@ -13647,12 +13659,12 @@ msgstr ""
 #: admin_site_upgrade.php:413 admin_site_upgrade.php:434
 #, php-format
 msgid "The file %s has been deleted."
-msgstr ""
+msgstr "%s फ़ाइल को हटा दिया गया है।"
 
 #: admin_media_upload.php:141 admin_media_upload.php:159
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr ""
+msgstr "फ़ाइल %s अपलोड हो गई।"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:76
@@ -13668,7 +13680,7 @@ msgstr ""
 #: admin_site_clean.php:36 admin_site_upgrade.php:430
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "%s फ़ोल्डर को हटाया नहीं जा सका।"
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
@@ -13683,12 +13695,12 @@ msgstr ""
 #: admin_trees_config.php:285
 #, php-format
 msgid "The folder %s has been created."
-msgstr ""
+msgstr "फोल्डर %s बना दिया गया।"
 
 #: admin_site_clean.php:30 admin_site_upgrade.php:428
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "%s फ़ोल्डर हटा दिया गया है।"
 
 #: admin_site_config.php:195
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -13722,7 +13734,7 @@ msgstr ""
 
 #: help_text.php:321
 msgid "The help text has not been written for this item."
-msgstr ""
+msgstr "इस विषय के लिए कोई सहायता लेख नहीं लिखा हुआ है।"
 
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: admin_trees_config.php:909
@@ -13739,7 +13751,7 @@ msgstr ""
 #: app/Controller/GedcomRecordController.php:65
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr ""
+msgstr "“%1$s” से “%2$s” की लिंक को हटा दिया गया है।"
 
 #. I18N: The placeholders are the names of individuals, sources, etc.
 #: admin_site_merge.php:113
@@ -13750,12 +13762,12 @@ msgstr ""
 #: addmedia.php:313 addmedia.php:344
 #, php-format
 msgid "The media file %1$s could not be renamed to %2$s."
-msgstr ""
+msgstr "मीडिया फ़ाइल %1$s का नाम बदलकर %2$s नहीं किया जा सका।"
 
 #: addmedia.php:342
 #, php-format
 msgid "The media file %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "मीडिया फ़ाइल %1$s का नाम बदलकर %2$s कर दिया गया।"
 
 #: addmedia.php:349
 #, php-format
@@ -13776,22 +13788,22 @@ msgstr ""
 
 #: message.php:193
 msgid "The message was not sent."
-msgstr ""
+msgstr "संदेश नहीं गया।"
 
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr ""
+msgstr "%s को संदेश भेज दिया गया।"
 
 #: admin_modules.php:54
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "मॉड्यूल “%s” अक्षम कर दिया गया।"
 
 #: admin_modules.php:56
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "मॉड्यूल “%s” सक्षम किया गया।"
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1844
@@ -13828,7 +13840,7 @@ msgstr ""
 
 #: setup.php:417
 msgid "The password needs to be at least six characters long."
-msgstr ""
+msgstr "पासवर्ड कम से कम छह अक्षरों का होना चाहिए।"
 
 #. I18N: Help text for the "Password" site configuration setting
 #: admin_site_config.php:407
@@ -13841,11 +13853,11 @@ msgstr ""
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "सारी फैमिली ट्री की प्राथमिकताएं अपडेट की गई हैं।"
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "नई फैमिली ट्री के लिए प्राथमिकताएं अपडेट की गई हैं।"
 
 #: app/Module/RelationshipsChartModule.php:218
 #, php-format
@@ -13855,12 +13867,12 @@ msgstr ""
 #: admin_trees_config.php:178 admin_trees_config.php:301
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "फॅमिली ट्री “%s” की प्राथमिकताएं अपडेट की गई हैं।"
 
 #: admin_modules.php:86
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "मॉड्यूल “%s” की प्राथमिकताएं हटा दी गई हैं।"
 
 #: app/Module/GoogleMapsModule.php:266
 #, php-format
@@ -13878,7 +13890,7 @@ msgstr ""
 
 #: action.php:92
 msgid "The record has been copied to the clipboard."
-msgstr ""
+msgstr "रिकॉर्ड क्लिपबोर्ड पर कॉपी हो गया।"
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:172
@@ -13897,7 +13909,7 @@ msgstr ""
 
 #: admin_trees_renumber.php:257
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "सर्वर की समय सीमा पूरी हो गई है।"
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:42
@@ -13948,7 +13960,7 @@ msgstr[1] ""
 
 #: admin_site_upgrade.php:447
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "अपग्रेड पूरा हो गया है।"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:73
@@ -13966,7 +13978,7 @@ msgstr ""
 
 #: login.php:82 login.php:87
 msgid "The username or password is incorrect."
-msgstr ""
+msgstr "यूज़रनेम या पासवर्ड गलत है।"
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:394
@@ -14003,7 +14015,7 @@ msgstr ""
 #: admin_site_config.php:47 admin_site_config.php:66 admin_site_config.php:78
 #: admin_site_config.php:93 admin_site_config.php:102
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "वेबसाइट की वरीयताओं को अपडेट कर दिया गया है।"
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:1547
@@ -14039,7 +14051,7 @@ msgstr ""
 
 #: admin_modules.php:165
 msgid "Themes"
-msgstr ""
+msgstr "थीम"
 
 #: admin_site_config.php:258
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
@@ -14060,7 +14072,7 @@ msgstr ""
 
 #: admin_site_upgrade.php:105
 msgid "There are no pending changes."
-msgstr ""
+msgstr "कोई लंबित परिवर्तन नहीं हैं।"
 
 #: app/Module/ResearchTaskModule.php:151
 msgid "There are no research tasks in this family tree."
@@ -14089,7 +14101,7 @@ msgstr ""
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."
-msgstr ""
+msgstr "आपकी फ़ाइल अपलोड करने में बाधा हुई।"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:98
@@ -14133,10 +14145,14 @@ msgstr ""
 #: login.php:97
 msgid "This account has not been approved. Please wait for an administrator to approve it."
 msgstr ""
+"इस अकाउंट को मंजूरी नहीं दी गई है। कृपया किसी एडमिनिस्ट्रेटर के इसे मंजुर "
+"करने तक प्रतीक्षा करें।"
 
 #: login.php:92
 msgid "This account has not been verified. Please check your email for a verification message."
 msgstr ""
+"इस अकाउंट को वेरीफाई नहीं किया गया है। कृपया वेरिफिकेशन मैसेज के लिए अपना ईमे"
+"ल देखें।"
 
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
@@ -14226,7 +14242,7 @@ msgstr ""
 
 #: app/Filter.php:480
 msgid "This form has expired. Try again."
-msgstr ""
+msgstr "इस फॉर्म की समय सीमा समाप्त। दोबारा कोशिश करें।"
 
 #: app/Controller/ChartController.php:57 individual.php:80
 msgid "This individual does not exist or you do not have permission to view it."
@@ -14311,7 +14327,7 @@ msgstr ""
 
 #: admin.php:629 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr ""
+msgstr "यह webtrees का नवीनतम वर्शन है। कोई अपग्रेड उपलब्ध नहीं है।"
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1757
@@ -14639,7 +14655,7 @@ msgstr ""
 
 #: admin_trees_check.php:180 admin_trees_check.php:185
 msgid "This type of link is not allowed here."
-msgstr ""
+msgstr "इस प्रकार की लिंक की यहाँ अनुमति नहीं है।"
 
 #: includes/session.php:435
 msgid "This user account does not have access to any tree."
@@ -14648,6 +14664,8 @@ msgstr ""
 #: setup.php:214
 msgid "This usually means that you need to change the folder permissions to 777."
 msgstr ""
+"आमतौर पर इस का मतलब यह है कि आपको फ़ोल्डर परमिशन 777 में बदलने की आवश्यकता "
+"है।"
 
 #: admin_site_upgrade.php:41
 msgid "This website is being upgraded. Try again in a few minutes."
@@ -14860,7 +14878,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1938
 msgid "Tombstone"
-msgstr ""
+msgstr "कब्र का पत्थर"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6900
@@ -15030,7 +15048,7 @@ msgstr ""
 #. I18N: Menu entry
 #: admin_site_config.php:150 app/Theme/AdministrationTheme.php:99
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "ट्रैकिंग और विश्लेषण"
 
 #: admin_site_config.php:575 admin_site_config.php:600
 #: admin_site_config.php:625
@@ -15255,7 +15273,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1797
 msgid "Unrecognized GEDCOM code"
-msgstr ""
+msgstr "असंगठित GEDCOM कोड"
 
 #: admin_media.php:642
 msgid "Unused files"
@@ -15265,7 +15283,7 @@ msgstr ""
 #: admin_site_upgrade.php:273
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "%s को एक टेम्पररी फ़ोल्डर में अनज़िप करें…"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:35
@@ -15299,11 +15317,11 @@ msgstr ""
 #: admin.php:626 admin_site_upgrade.php:82 login.php:118
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr ""
+msgstr "अपग्रेड करें webtrees %s पर।"
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "अपग्रेड विज़ार्ड"
 
 #: app/Module/GoogleMapsModule.php:3630 app/Module/GoogleMapsModule.php:4056
 msgid "Upload geographic data"
@@ -15312,7 +15330,7 @@ msgstr ""
 #. I18N: Menu entry
 #: admin_media_upload.php:37 app/Theme/AdministrationTheme.php:179
 msgid "Upload media files"
-msgstr ""
+msgstr "मीडिया फाइलें अपलोड करें"
 
 #: admin_media_upload.php:187
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
@@ -15409,7 +15427,7 @@ msgstr ""
 #: admin_users.php:298 admin_users.php:670 admin_users.php:794
 #: admin_users_bulk.php:33 app/Theme/AdministrationTheme.php:163
 msgid "User administration"
-msgstr ""
+msgstr "यूजर एडमिनिस्ट्रेशन"
 
 #: admin_users.php:735
 msgid "User didn’t verify within 7 days."
@@ -15569,7 +15587,7 @@ msgstr "वर्शन"
 #. I18N: Type of media object
 #: app/GedcomTag.php:1940
 msgid "Video"
-msgstr ""
+msgstr "वीडियो"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6918
@@ -15645,7 +15663,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:782
 #: app/Module/ClippingsCartModule.php:789
 msgid "Visitor"
-msgstr ""
+msgstr "दर्शक"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:33 calendar.php:254
@@ -15725,7 +15743,7 @@ msgstr ""
 #. I18N: Menu entry
 #: admin_site_config.php:141 app/Theme/AdministrationTheme.php:95
 msgid "Website preferences"
-msgstr ""
+msgstr "वेबसाइट की प्राथमिकताएँ"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/CalendarDate.php:378 app/Functions/FunctionsPrint.php:662
@@ -15941,7 +15959,7 @@ msgstr ""
 
 #: login.php:292 message.php:57
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "आपको बाहरी लिंक वाले संदेश भेजने की अनुमति नहीं है।"
 
 #: app/Module/LoginBlockModule.php:64
 #, php-format
@@ -16014,10 +16032,11 @@ msgstr ""
 #: login.php:75
 msgid "You cannot sign in because your browser does not accept cookies."
 msgstr ""
+"आप साइन इन नहीं कर सकते क्योंकि आपका ब्राउज़र कुकीज़ स्वीकार नहीं करता है।"
 
 #: includes/session.php:493
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "आपको यह पेज देखने की अनुमति नहीं है।"
 
 #: admin_site_merge.php:55
 msgid "You entered the same IDs. You cannot merge the same records."
@@ -16070,7 +16089,7 @@ msgstr ""
 
 #: setup.php:421
 msgid "You must enter all the administrator account fields."
-msgstr ""
+msgstr "आपको एडमिनिस्ट्रेटर अकाउंट की सारी फ़ील्ड को भरना होगा।"
 
 #: edit_interface.php:1502
 msgid "You must provide a repository name."
@@ -16098,7 +16117,7 @@ msgstr ""
 
 #: login.php:173
 msgid "You need to be an authorized user to access this website."
-msgstr ""
+msgstr "इस वेबसाइट को एक्सेस करने के लिए आपका एक ऑथराइज़्ड यूज़र होना ज़रूरी है।"
 
 #: admin_trees_manage.php:320
 msgid "You need to create a family tree."
@@ -16132,6 +16151,8 @@ msgstr ""
 #: admin_site_upgrade.php:99
 msgid "You should accept or reject all pending changes before upgrading."
 msgstr ""
+"अपग्रेड करने से पहले आपको सभी लंबित परिवर्तनों को स्वीकार या अस्वीकार करना "
+"चाहिए।"
 
 #: admin_site_upgrade.php:136
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
@@ -16145,7 +16166,7 @@ msgstr ""
 #: login.php:293 message.php:58
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr ""
+msgstr "आपको “%2$s” से “%1$s” हटा कर दोबारा प्रयास करना चाहिए।"
 
 #: admin_users.php:394
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -16319,7 +16340,7 @@ msgstr "मृत्यु के बाद"
 #: statisticsplot.php:1133 statisticsplot.php:1183 statisticsplot.php:1233
 #: statisticsplot.php:1283
 msgid "age"
-msgstr ""
+msgstr "उम्र"
 
 #. I18N: An access rule - allow access to the site
 #: admin_site_access.php:27 admin_site_access.php:34
@@ -16625,7 +16646,7 @@ msgstr ""
 #: login.php:228 login.php:498 reportengine.php:131 reportengine.php:265
 #: setup.php:190 setup.php:216 setup.php:298 setup.php:384 setup.php:449
 msgid "continue"
-msgstr ""
+msgstr "जारी"
 
 #. I18N: A button label.
 #: admin_trees_manage.php:688
@@ -16825,7 +16846,7 @@ msgstr "पिछली-पत्नी"
 
 #: admin_trees_config.php:69 modules_v3/fact_sources/report.xml:6
 msgid "facts"
-msgstr ""
+msgstr "तथ्य"
 
 #: app/Functions/Functions.php:689
 msgid "father"
@@ -17217,12 +17238,12 @@ msgstr "नाती/पोते"
 #: app/Functions/Functions.php:826
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr "नवासा/नवासी"
+msgstr "नवासे/नवासी"
 
 #: app/Functions/Functions.php:926
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr "पोता/पोती"
+msgstr "पोते/पोती"
 
 #: app/Functions/Functions.php:816
 msgctxt "child’s daughter"
@@ -17242,17 +17263,17 @@ msgstr "पोती"
 #: app/Functions/Functions.php:1046
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "नवासा दामाद"
+msgstr "नवासे दामाद"
 
 #: app/Functions/Functions.php:1068
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "नवासा दामाद"
+msgstr "नवासे दामाद"
 
 #: app/Functions/Functions.php:1348
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "नवासा दामाद"
+msgstr "नवासे दामाद"
 
 #: app/Functions/Functions.php:896
 msgctxt "parent’s father"
@@ -17272,17 +17293,17 @@ msgstr "दादा/दादी/नाना/नानी"
 #: app/Functions/Functions.php:820
 msgctxt "child’s son"
 msgid "grandson"
-msgstr "पोता/नवासा"
+msgstr "पोते/नवासे"
 
 #: app/Functions/Functions.php:832
 msgctxt "daughter’s son"
 msgid "grandson"
-msgstr "नवासा"
+msgstr "नवासे"
 
 #: app/Functions/Functions.php:930
 msgctxt "son’s son"
 msgid "grandson"
-msgstr "पोता"
+msgstr "पोते"
 
 #: app/Functions/Functions.php:1056
 msgctxt "child’s son’s wife"
@@ -17924,12 +17945,12 @@ msgstr "पर-पोते/पर-नवासे"
 #: app/Functions/Functions.php:1064
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr "पर-नवासी/पर-नवासा"
+msgstr "पर-नवासी/पर-नवासे"
 
 #: app/Functions/Functions.php:1078
 msgctxt "daughter’s son’s child"
 msgid "great-grandchild"
-msgstr "पर-पोता/पर-पोती"
+msgstr "पर-पोते/पर-पोती"
 
 #: app/Functions/Functions.php:1338
 msgctxt "son’s child’s child"
@@ -17939,12 +17960,12 @@ msgstr "पर-नाती/पोते"
 #: app/Functions/Functions.php:1344
 msgctxt "son’s daughter’s child"
 msgid "great-grandchild"
-msgstr "पर-नवासा/पर-नवासी"
+msgstr "पर-नवासे/पर-नवासी"
 
 #: app/Functions/Functions.php:1352
 msgctxt "son’s son’s child"
 msgid "great-grandchild"
-msgstr "पर-पोता/पर-पोती"
+msgstr "पर-पोते/पर-पोती"
 
 #: app/Functions/Functions.php:1038
 msgctxt "child’s child’s daughter"
@@ -18129,47 +18150,47 @@ msgstr "पर-नाना/पर-नानी/पर-दादा/पर-द�
 #: app/Functions/Functions.php:1040
 msgctxt "child’s child’s son"
 msgid "great-grandson"
-msgstr "पर-पोता/पर-नवासा"
+msgstr "पर-पोते/पर-नवासे"
 
 #: app/Functions/Functions.php:1048
 msgctxt "child’s daughter’s son"
 msgid "great-grandson"
-msgstr "पर-नवासा"
+msgstr "पर-नवासे"
 
 #: app/Functions/Functions.php:1054
 msgctxt "child’s son’s son"
 msgid "great-grandson"
-msgstr "पर-पोता"
+msgstr "पर-पोते"
 
 #: app/Functions/Functions.php:1062
 msgctxt "daughter’s child’s son"
 msgid "great-grandson"
-msgstr "पर-पोता/पर-नवासा"
+msgstr "पर-पोते/पर-नवासे"
 
 #: app/Functions/Functions.php:1070
 msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
-msgstr "पर-पोता"
+msgstr "पर-पोते"
 
 #: app/Functions/Functions.php:1082
 msgctxt "daughter’s son’s son"
 msgid "great-grandson"
-msgstr "पर-पोता"
+msgstr "पर-पोते"
 
 #: app/Functions/Functions.php:1342
 msgctxt "son’s child’s son"
 msgid "great-grandson"
-msgstr "पर-नवासा/पोता"
+msgstr "पर-नवासे/पोते"
 
 #: app/Functions/Functions.php:1350
 msgctxt "son’s daughter’s son"
 msgid "great-grandson"
-msgstr "पर-नवासा"
+msgstr "पर-नवासे"
 
 #: app/Functions/Functions.php:1356
 msgctxt "son’s son’s son"
 msgid "great-grandson"
-msgstr "पर-पोता"
+msgstr "पर-पोते"
 
 #: app/Functions/Functions.php:1549
 msgid "great-great-aunt"
@@ -18358,92 +18379,92 @@ msgstr ""
 #: app/Functions/Functions.php:985
 msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr "पोता/नवासा"
+msgstr "पोते/नवासे"
 
 #: app/Functions/Functions.php:1005
 msgctxt "(a man’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr "नवासा"
+msgstr "नवासे"
 
 #: app/Functions/Functions.php:1023
 msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr "पोता"
+msgstr "पोते"
 
 #: app/Functions/Functions.php:1287
 msgctxt "(a man’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr "पोता/नवासा"
+msgstr "पोते/नवासे"
 
 #: app/Functions/Functions.php:1307
 msgctxt "(a man’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr "नवासा"
+msgstr "नवासे"
 
 #: app/Functions/Functions.php:1331
 msgctxt "(a man’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr "पोता"
+msgstr "पोते"
 
 #: app/Functions/Functions.php:987
 msgctxt "(a woman’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr "पोता/नवासा"
+msgstr "पोते/नवासे"
 
 #: app/Functions/Functions.php:1007
 msgctxt "(a woman’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr "नवासा"
+msgstr "नवासे"
 
 #: app/Functions/Functions.php:1025
 msgctxt "(a woman’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr "पोता"
+msgstr "पोते"
 
 #: app/Functions/Functions.php:1289
 msgctxt "(a woman’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr "पोता/नवासा"
+msgstr "पोते/नवासे"
 
 #: app/Functions/Functions.php:1309
 msgctxt "(a woman’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr "नवासा"
+msgstr "नवासे"
 
 #: app/Functions/Functions.php:1333
 msgctxt "(a woman’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr "पोता"
+msgstr "पोते"
 
 #: app/Functions/Functions.php:1256
 msgctxt "sibling’s child’s son"
 msgid "great-nephew"
-msgstr "पोता/नवासा"
+msgstr "पोते/नवासे"
 
 #: app/Functions/Functions.php:1264
 msgctxt "sibling’s daughter’s son"
 msgid "great-nephew"
-msgstr "नवासा"
+msgstr "नवासे"
 
 #: app/Functions/Functions.php:1270
 msgctxt "sibling’s son’s son"
 msgid "great-nephew"
-msgstr "पोता"
+msgstr "पोते"
 
 #: app/Functions/Functions.php:973
 msgctxt "(a man’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr "पोता/पोती/नवासा/नवासी"
+msgstr "पोते/पोती/नवासे/नवासी"
 
 #: app/Functions/Functions.php:991
 msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "नवासा/नवासी"
+msgstr "नवासे/नवासी"
 
 #: app/Functions/Functions.php:1011
 msgctxt "(a man’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr "पोता/पोती"
+msgstr "पोते/पोती"
 
 #: app/Functions/Functions.php:1275
 msgctxt "(a man’s) sister’s child’s child"
@@ -18458,22 +18479,22 @@ msgstr "नाती"
 #: app/Functions/Functions.php:1319
 msgctxt "(a man’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr "पोता/पोती"
+msgstr "पोते/पोती"
 
 #: app/Functions/Functions.php:975
 msgctxt "(a woman’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr "पोता/पोती/नवासा/नवासी"
+msgstr "पोते/पोती/नवासे/नवासी"
 
 #: app/Functions/Functions.php:993
 msgctxt "(a woman’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "नवासा/नवासी"
+msgstr "नवासे/नवासी"
 
 #: app/Functions/Functions.php:1013
 msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr "पोता/पोती"
+msgstr "पोते/पोती"
 
 #: app/Functions/Functions.php:1277
 msgctxt "(a woman’s) sister’s child’s child"
@@ -18488,7 +18509,7 @@ msgstr "नाती"
 #: app/Functions/Functions.php:1321
 msgctxt "(a woman’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr "पोता/पोती"
+msgstr "पोते/पोती"
 
 #: app/Functions/Functions.php:1252
 msgctxt "sibling’s child’s child"
@@ -18498,12 +18519,12 @@ msgstr "नाती/पोते"
 #: app/Functions/Functions.php:1258
 msgctxt "sibling’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "नवासा/नवासी"
+msgstr "नवासे/नवासी"
 
 #: app/Functions/Functions.php:1266
 msgctxt "sibling’s son’s child"
 msgid "great-nephew/niece"
-msgstr "पोता/पोती"
+msgstr "पोते/पोती"
 
 #: app/Functions/Functions.php:979
 msgctxt "(a man’s) brother’s child’s daughter"
@@ -18842,7 +18863,7 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:168
 #: app/Module/YahrzeitModule.php:276
 msgid "list"
-msgstr ""
+msgstr "लिस्ट"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:121
@@ -18856,7 +18877,7 @@ msgstr ""
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
 msgid "markdown"
-msgstr ""
+msgstr "मार्कडाउन"
 
 #: app/Stats.php:2912
 msgid "marriage"
@@ -18982,17 +19003,17 @@ msgstr "सास/ससुर"
 #: app/Functions/Functions.php:810
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr "भतीजा"
+msgstr "भतीजे"
 
 #: app/Functions/Functions.php:914
 msgctxt "sibling’s son"
 msgid "nephew"
-msgstr "भानजा/भतीजा"
+msgstr "भानजे/भतीजे"
 
 #: app/Functions/Functions.php:924
 msgctxt "sister’s son"
 msgid "nephew"
-msgstr "भानजा"
+msgstr "भानजे"
 
 #: app/Functions/Functions.php:1002
 msgctxt "brother’s daughter’s husband"
@@ -19012,17 +19033,17 @@ msgstr "दामाद"
 #: app/Functions/Functions.php:806
 msgctxt "brother’s child"
 msgid "nephew/niece"
-msgstr "भतीजा/भतीजी"
+msgstr "भतीजे/भतीजी"
 
 #: app/Functions/Functions.php:910
 msgctxt "sibling’s child"
 msgid "nephew/niece"
-msgstr "भानजा/भतीजा/भानजी/भतीजी"
+msgstr "भानजे/भतीजे/भानजी/भतीजी"
 
 #: app/Functions/Functions.php:918
 msgctxt "sister’s child"
 msgid "nephew/niece"
-msgstr "भानजा/भानजी"
+msgstr "भानजे/भानजी"
 
 #. I18N: option in list box “never use this image”
 #: app/Functions/FunctionsEdit.php:663
@@ -19100,7 +19121,7 @@ msgstr "नहीं"
 #: admin_trees_config.php:68 app/Module/FamilyNavigatorModule.php:260
 #: app/Module/RelationshipsChartModule.php:144
 msgid "none"
-msgstr ""
+msgstr "कोई नहीं"
 
 #: app/SurnameTradition.php:100
 msgctxt "Surname tradition"
@@ -19238,7 +19259,7 @@ msgstr "संदिग्ध सबूत"
 
 #: admin_trees_config.php:70 modules_v3/fact_sources/report.xml:6
 msgid "records"
-msgstr ""
+msgstr "रिकार्ड"
 
 #: family.php:51 gedrecord.php:64 individual.php:65 mediaviewer.php:52
 #: note.php:53 repo.php:52 source.php:52
@@ -19834,12 +19855,12 @@ msgstr "सौतेला-बेटा"
 #: app/Module/UpcomingAnniversariesModule.php:168
 #: app/Module/YahrzeitModule.php:276
 msgid "table"
-msgstr ""
+msgstr "टेबल"
 
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:49 app/Module/TopSurnamesModule.php:165
 msgid "tag cloud"
-msgstr ""
+msgstr "टैग क्लाउड"
 
 #: app/Functions/Functions.php:573
 msgid "tenth cousin"
