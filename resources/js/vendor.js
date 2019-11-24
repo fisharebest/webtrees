@@ -35,7 +35,7 @@ import {
     faCalendar, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
     faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
     faLock, faMagic, faMap, faMapMarkerAlt, faMars, faPaintBrush, faPause, faPencilAlt,
-    faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faSearch, faSearchMinus, faSearchPlus,
+    faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchMinus, faSearchPlus,
     faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faThList, faThumbtack,
     faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench
 } from "@fortawesome/free-solid-svg-icons";
@@ -44,7 +44,7 @@ library.add(
     faCalendar, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
     faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
     faLock, faMagic, faMap, faMapMarkerAlt, faMars, faPaintBrush, faPause, faPencilAlt,
-    faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faSearch, faSearchMinus, faSearchPlus,
+    faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchMinus, faSearchPlus,
     faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faThList, faThumbtack,
     faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench
 );
