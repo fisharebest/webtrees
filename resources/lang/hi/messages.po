@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-24 19:47+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-25 13:37+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -2515,7 +2515,7 @@ msgstr "सहोदर"
 #: app/Functions/Functions.php:757
 msgctxt "brother’s child"
 msgid "nephew/niece"
-msgstr "भतीजा/भतीजी"
+msgstr "भतीजे/भतीजी"
 
 #: app/Functions/Functions.php:759
 msgctxt "brother’s daughter"
@@ -2525,7 +2525,7 @@ msgstr "भतीजी"
 #: app/Functions/Functions.php:761
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr "भतीजा"
+msgstr "भतीजे"
 
 #: app/Functions/Functions.php:763
 msgctxt "brother’s wife"
@@ -2550,7 +2550,7 @@ msgstr "दामाद"
 #: app/Functions/Functions.php:771
 msgctxt "child’s son"
 msgid "grandson"
-msgstr "पोता/नवासा"
+msgstr "पोते/नवासे"
 
 #: app/Functions/Functions.php:773
 msgctxt "child’s spouse"
@@ -2565,7 +2565,7 @@ msgstr "बहू"
 #: app/Functions/Functions.php:777
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr "नवासा/नवासी"
+msgstr "नवासे/नवासी"
 
 #: app/Functions/Functions.php:779
 msgctxt "daughter’s daughter"
@@ -2580,7 +2580,7 @@ msgstr "दामाद"
 #: app/Functions/Functions.php:783
 msgctxt "daughter’s son"
 msgid "grandson"
-msgstr "नवासा"
+msgstr "नवासे"
 
 #: app/Functions/Functions.php:785
 msgctxt "father’s brother"
@@ -2775,7 +2775,7 @@ msgstr "सौतेली-माँ/सौतेले-पिता"
 #: app/Functions/Functions.php:861
 msgctxt "sibling’s child"
 msgid "nephew/niece"
-msgstr "भानजा/भतीजा/भानजी/भतीजी"
+msgstr "भानजे/भतीजे/भानजी/भतीजी"
 
 #: app/Functions/Functions.php:863
 msgctxt "sibling’s daughter"
@@ -2785,7 +2785,7 @@ msgstr "भानजी/भतीजी"
 #: app/Functions/Functions.php:865
 msgctxt "sibling’s son"
 msgid "nephew"
-msgstr "भानजा/भतीजा"
+msgstr "भानजे/भतीजे"
 
 #: app/Functions/Functions.php:867
 msgctxt "sibling’s spouse"
@@ -2795,7 +2795,7 @@ msgstr "जीजा/भाभी"
 #: app/Functions/Functions.php:869
 msgctxt "sister’s child"
 msgid "nephew/niece"
-msgstr "भानजा/भानजी"
+msgstr "भानजे/भानजी"
 
 #: app/Functions/Functions.php:871
 msgctxt "sister’s daughter"
@@ -2810,12 +2810,12 @@ msgstr "जीजा"
 #: app/Functions/Functions.php:875
 msgctxt "sister’s son"
 msgid "nephew"
-msgstr "भानजा"
+msgstr "भानजे"
 
 #: app/Functions/Functions.php:877
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr "पोता/पोती"
+msgstr "पोते/पोती"
 
 #: app/Functions/Functions.php:879
 msgctxt "son’s daughter"
@@ -2825,7 +2825,7 @@ msgstr "पोती"
 #: app/Functions/Functions.php:881
 msgctxt "son’s son"
 msgid "grandson"
-msgstr "पोता"
+msgstr "पोते"
 
 #: app/Functions/Functions.php:883
 msgctxt "son’s wife"
@@ -2920,12 +2920,12 @@ msgstr "सौतेला-बेटा"
 #: app/Functions/Functions.php:922
 msgctxt "(a man’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr "पोता/पोती/नवासा/नवासी"
+msgstr "पोते/पोती/नवासे/नवासी"
 
 #: app/Functions/Functions.php:925
 msgctxt "(a woman’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr "पोता/पोती/नवासा/नवासी"
+msgstr "पोते/पोती/नवासे/नवासी"
 
 #: app/Functions/Functions.php:928
 msgctxt "(a man’s) brother’s child’s daughter"
@@ -2940,22 +2940,22 @@ msgstr "पोती/नवासी"
 #: app/Functions/Functions.php:934
 msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr "पोता/नवासा"
+msgstr "पोते/नवासे"
 
 #: app/Functions/Functions.php:937
 msgctxt "(a woman’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr "पोता/नवासा"
+msgstr "पोते/नवासे"
 
 #: app/Functions/Functions.php:940
 msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "नवासा/नवासी"
+msgstr "नवासे/नवासी"
 
 #: app/Functions/Functions.php:943
 msgctxt "(a woman’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "नवासा/नवासी"
+msgstr "नवासे/नवासी"
 
 #: app/Functions/Functions.php:946
 msgctxt "(a man’s) brother’s daughter’s daughter"
@@ -2975,22 +2975,22 @@ msgstr "दामाद"
 #: app/Functions/Functions.php:954
 msgctxt "(a man’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr "नवासा"
+msgstr "नवासे"
 
 #: app/Functions/Functions.php:957
 msgctxt "(a woman’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr "नवासा"
+msgstr "नवासे"
 
 #: app/Functions/Functions.php:960
 msgctxt "(a man’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr "पोता/पोती"
+msgstr "पोते/पोती"
 
 #: app/Functions/Functions.php:963
 msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr "पोता/पोती"
+msgstr "पोते/पोती"
 
 #: app/Functions/Functions.php:966
 msgctxt "(a man’s) brother’s son’s daughter"
@@ -3005,12 +3005,12 @@ msgstr "पोती"
 #: app/Functions/Functions.php:972
 msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr "पोता"
+msgstr "पोते"
 
 #: app/Functions/Functions.php:975
 msgctxt "(a woman’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr "पोता"
+msgstr "पोते"
 
 #: app/Functions/Functions.php:977
 msgctxt "brother’s son’s wife"
@@ -3045,7 +3045,7 @@ msgstr "पर-पोती/पर-नवासी"
 #: app/Functions/Functions.php:989
 msgctxt "child’s child’s son"
 msgid "great-grandson"
-msgstr "पर-पोता/पर-नवासा"
+msgstr "पर-पोते/पर-नवासे"
 
 #: app/Functions/Functions.php:991
 msgctxt "child’s daughter’s child"
@@ -3060,12 +3060,12 @@ msgstr "पर-नवासी"
 #: app/Functions/Functions.php:995
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "नवासा दामाद"
+msgstr "नवासे दामाद"
 
 #: app/Functions/Functions.php:997
 msgctxt "child’s daughter’s son"
 msgid "great-grandson"
-msgstr "पर-नवासा"
+msgstr "पर-नवासे"
 
 #: app/Functions/Functions.php:999
 msgctxt "child’s son’s child"
@@ -3080,7 +3080,7 @@ msgstr "पर-पोती"
 #: app/Functions/Functions.php:1003
 msgctxt "child’s son’s son"
 msgid "great-grandson"
-msgstr "पर-पोता"
+msgstr "पर-पोते"
 
 #: app/Functions/Functions.php:1005
 msgctxt "child’s son’s wife"
@@ -3100,12 +3100,12 @@ msgstr "पर-पोती/पर-नवासी"
 #: app/Functions/Functions.php:1011
 msgctxt "daughter’s child’s son"
 msgid "great-grandson"
-msgstr "पर-पोता/पर-नवासा"
+msgstr "पर-पोते/पर-नवासे"
 
 #: app/Functions/Functions.php:1013
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr "पर-नवासी/पर-नवासा"
+msgstr "पर-नवासी/पर-नवासे"
 
 #: app/Functions/Functions.php:1015
 msgctxt "daughter’s daughter’s daughter"
@@ -3115,12 +3115,12 @@ msgstr "पर-नवासी"
 #: app/Functions/Functions.php:1017
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "नवासा दामाद"
+msgstr "नवासे दामाद"
 
 #: app/Functions/Functions.php:1019
 msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
-msgstr "पर-पोता"
+msgstr "पर-पोते"
 
 #: app/Functions/Functions.php:1021
 msgctxt "daughter’s husband’s father"
@@ -3140,7 +3140,7 @@ msgstr "समधी/समधन"
 #: app/Functions/Functions.php:1027
 msgctxt "daughter’s son’s child"
 msgid "great-grandchild"
-msgstr "पर-पोता/पर-पोती"
+msgstr "पर-पोते/पर-पोती"
 
 #: app/Functions/Functions.php:1029
 msgctxt "daughter’s son’s daughter"
@@ -3150,7 +3150,7 @@ msgstr "पर-पोती"
 #: app/Functions/Functions.php:1031
 msgctxt "daughter’s son’s son"
 msgid "great-grandson"
-msgstr "पर-पोता"
+msgstr "पर-पोते"
 
 #: app/Functions/Functions.php:1033
 msgctxt "daughter’s son’s wife"
@@ -3315,17 +3315,17 @@ msgstr "नन्दोई"
 #: app/Functions/Functions.php:1097
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr "भतीजा/भतीजी"
+msgstr "भतीजे/भतीजी"
 
 #: app/Functions/Functions.php:1099
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr "भतीजा/भतीजी"
+msgstr "भतीजे/भतीजी"
 
 #: app/Functions/Functions.php:1101
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr "भतीजा/भतीजी"
+msgstr "भतीजे/भतीजी"
 
 #: app/Functions/Functions.php:1103
 msgctxt "husband’s sibling’s daughter"
@@ -3345,17 +3345,17 @@ msgstr "भतीजी"
 #: app/Functions/Functions.php:1109
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr "भानजा/भतीजा"
+msgstr "भानजे/भतीजे"
 
 #: app/Functions/Functions.php:1111
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr "भानजा"
+msgstr "भानजे"
 
 #: app/Functions/Functions.php:1113
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr "भतीजा"
+msgstr "भतीजे"
 
 #: app/Functions/Functions.php:1115
 msgctxt "mother’s brother’s child"
@@ -3630,12 +3630,12 @@ msgstr "पोती/नवासी"
 #: app/Functions/Functions.php:1223
 msgctxt "sibling’s child’s son"
 msgid "great-nephew"
-msgstr "पोता/नवासा"
+msgstr "पोते/नवासे"
 
 #: app/Functions/Functions.php:1225
 msgctxt "sibling’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "नवासा/नवासी"
+msgstr "नवासे/नवासी"
 
 #: app/Functions/Functions.php:1227
 msgctxt "sibling’s daughter’s daughter"
@@ -3650,12 +3650,12 @@ msgstr "दामाद"
 #: app/Functions/Functions.php:1231
 msgctxt "sibling’s daughter’s son"
 msgid "great-nephew"
-msgstr "नवासा"
+msgstr "नवासे"
 
 #: app/Functions/Functions.php:1233
 msgctxt "sibling’s son’s child"
 msgid "great-nephew/niece"
-msgstr "पोता/पोती"
+msgstr "पोते/पोती"
 
 #: app/Functions/Functions.php:1235
 msgctxt "sibling’s son’s daughter"
@@ -3665,7 +3665,7 @@ msgstr "पोती"
 #: app/Functions/Functions.php:1237
 msgctxt "sibling’s son’s son"
 msgid "great-nephew"
-msgstr "पोता"
+msgstr "पोते"
 
 #: app/Functions/Functions.php:1239
 msgctxt "sibling’s son’s wife"
@@ -3695,12 +3695,12 @@ msgstr "नवासी/पोती"
 #: app/Functions/Functions.php:1254
 msgctxt "(a man’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr "पोता/नवासा"
+msgstr "पोते/नवासे"
 
 #: app/Functions/Functions.php:1257
 msgctxt "(a woman’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr "पोता/नवासा"
+msgstr "पोते/नवासे"
 
 #: app/Functions/Functions.php:1260
 msgctxt "(a man’s) sister’s daughter’s child"
@@ -3730,12 +3730,12 @@ msgstr "दामाद"
 #: app/Functions/Functions.php:1274
 msgctxt "(a man’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr "नवासा"
+msgstr "नवासे"
 
 #: app/Functions/Functions.php:1277
 msgctxt "(a woman’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr "नवासा"
+msgstr "नवासे"
 
 #: app/Functions/Functions.php:1279
 msgctxt "sister’s husband’s brother"
@@ -3755,12 +3755,12 @@ msgstr "समधन"
 #: app/Functions/Functions.php:1286
 msgctxt "(a man’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr "पोता/पोती"
+msgstr "पोते/पोती"
 
 #: app/Functions/Functions.php:1289
 msgctxt "(a woman’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr "पोता/पोती"
+msgstr "पोते/पोती"
 
 #: app/Functions/Functions.php:1292
 msgctxt "(a man’s) sister’s son’s daughter"
@@ -3775,12 +3775,12 @@ msgstr "पोती"
 #: app/Functions/Functions.php:1298
 msgctxt "(a man’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr "पोता"
+msgstr "पोते"
 
 #: app/Functions/Functions.php:1301
 msgctxt "(a woman’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr "पोता"
+msgstr "पोते"
 
 #: app/Functions/Functions.php:1303
 msgctxt "sisters’s son’s wife"
@@ -3800,12 +3800,12 @@ msgstr "पर-नाती/पोती"
 #: app/Functions/Functions.php:1309
 msgctxt "son’s child’s son"
 msgid "great-grandson"
-msgstr "पर-नवासा/पोता"
+msgstr "पर-नवासे/पोते"
 
 #: app/Functions/Functions.php:1311
 msgctxt "son’s daughter’s child"
 msgid "great-grandchild"
-msgstr "पर-नवासा/पर-नवासी"
+msgstr "पर-नवासे/पर-नवासी"
 
 #: app/Functions/Functions.php:1313
 msgctxt "son’s daughter’s daughter"
@@ -3815,17 +3815,17 @@ msgstr "पर-नवासी"
 #: app/Functions/Functions.php:1315
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "नवासा दामाद"
+msgstr "नवासे दामाद"
 
 #: app/Functions/Functions.php:1317
 msgctxt "son’s daughter’s son"
 msgid "great-grandson"
-msgstr "पर-नवासा"
+msgstr "पर-नवासे"
 
 #: app/Functions/Functions.php:1319
 msgctxt "son’s son’s child"
 msgid "great-grandchild"
-msgstr "पर-पोता/पर-पोती"
+msgstr "पर-पोते/पर-पोती"
 
 #: app/Functions/Functions.php:1321
 msgctxt "son’s son’s daughter"
@@ -3835,7 +3835,7 @@ msgstr "पर-पोती"
 #: app/Functions/Functions.php:1323
 msgctxt "son’s son’s son"
 msgid "great-grandson"
-msgstr "पर-पोता"
+msgstr "पर-पोते"
 
 #: app/Functions/Functions.php:1325
 msgctxt "son’s son’s wife"
@@ -3870,17 +3870,17 @@ msgstr "साढ़ू"
 #: app/Functions/Functions.php:1337
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr "भतीजा/भतीजी/भानजा/भानजी"
+msgstr "भतीजे/भतीजी/भानजे/भानजी"
 
 #: app/Functions/Functions.php:1339
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr "भानजा/भानजी"
+msgstr "भानजे/भानजी"
 
 #: app/Functions/Functions.php:1341
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr "भतीजा/भतीजी"
+msgstr "भतीजे/भतीजी"
 
 #: app/Functions/Functions.php:1343
 msgctxt "wife’s sibling’s daughter"
@@ -3900,17 +3900,17 @@ msgstr "भतीजी"
 #: app/Functions/Functions.php:1349
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr "भानजा/भतीजा"
+msgstr "भानजे/भतीजे"
 
 #: app/Functions/Functions.php:1351
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr "भानजा"
+msgstr "भानजे"
 
 #: app/Functions/Functions.php:1353
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr "भतीजा"
+msgstr "भतीजे"
 
 #: app/Functions/Functions.php:1357
 msgctxt "father’s father’s brother’s wife"
@@ -4963,7 +4963,7 @@ msgstr ""
 #: app/Functions/Functions.php:2310
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr "%1$s’के %2$s"
+msgstr "%1$s के %2$s"
 
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:41 app/GedcomTag.php:589
@@ -7584,11 +7584,11 @@ msgstr "तारीख"
 #: resources/xml/reports/pedigree_report.xml:1381
 #: resources/xml/reports/relative_ext_report.xml:62
 msgid "Death"
-msgstr "मौत"
+msgstr "मृत्यु"
 
 #: app/GedcomTag.php:656
 msgid "Cause of death"
-msgstr "मौत की वजह"
+msgstr "मृत्यु की वजह"
 
 #: app/GedcomTag.php:658 resources/xml/reports/cemetery_report.xml:46
 #: resources/xml/reports/fact_sources.xml:274
@@ -7599,7 +7599,7 @@ msgstr "मृत्यु तिथि"
 #: app/GedcomTag.php:660 resources/xml/reports/fact_sources.xml:275
 #: resources/xml/reports/missing_facts_report.xml:516
 msgid "Place of death"
-msgstr "मौत की जगह"
+msgstr "मृत्यु की जगह"
 
 #. I18N: gedcom tag DESC
 #. I18N: Name of a module/chart
@@ -7665,7 +7665,7 @@ msgstr "स्कूल या कॉलेज"
 #: resources/views/register-page.phtml:45
 #: resources/views/setup/step-5-administrator.phtml:68
 msgid "Email address"
-msgstr "इमेल अड्रेस"
+msgstr "इमेल एड्रेस"
 
 #. I18N: gedcom tag EMIG
 #: app/GedcomTag.php:693 resources/views/calendar-page.phtml:174
@@ -8519,7 +8519,7 @@ msgstr "पोती को गोद लेना"
 
 #: app/GedcomTag.php:1103 app/GedcomTag.php:1114 app/GedcomTag.php:1125
 msgid "Adoption of a grandchild"
-msgstr "पोता/पोती को गोद लेना"
+msgstr "पोते/पोती को गोद लेना"
 
 #: app/GedcomTag.php:1107
 msgctxt "daughter’s son"
@@ -9962,7 +9962,7 @@ msgstr "यदि आप निम्नलिखित ट्रैकिंग
 #: resources/views/admin/modules.phtml:79
 #: resources/views/admin/modules.phtml:81
 msgid "Blocks"
-msgstr "खंड"
+msgstr "ब्लॉक्स"
 
 #. I18N: Name of a module/block
 #. I18N: Name of a module
@@ -10992,35 +10992,35 @@ msgstr "मेरा अकाउंट"
 #: app/Http/RequestHandlers/MessageAction.php:98
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr ""
+msgstr "%s को संदेश भेज दिया गया।"
 
 #: app/Http/RequestHandlers/BroadcastAction.php:89
 #: app/Http/RequestHandlers/ContactAction.php:134
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:92
 #: app/Http/RequestHandlers/MessageAction.php:105
 msgid "The message was not sent."
-msgstr ""
+msgstr "संदेश नहीं गया।"
 
 #: app/Http/RequestHandlers/CleanDataFolder.php:95
 #: resources/views/admin/control-panel.phtml:106
 msgid "Clean up data folder"
-msgstr ""
+msgstr "डेटा फ़ोल्डर साफ़ करें"
 
 #: app/Http/RequestHandlers/ContactAction.php:100
 msgid "Please enter a valid email address."
-msgstr ""
+msgstr "कृपया सही ईमेल एड्रेस दर्ज करें।"
 
 #: app/Http/RequestHandlers/ContactAction.php:107
 #: app/Http/RequestHandlers/RegisterAction.php:236
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "आपको बाहरी लिंक वाले संदेश भेजने की अनुमति नहीं है।"
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: app/Http/RequestHandlers/ContactAction.php:108
 #: app/Http/RequestHandlers/RegisterAction.php:236
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr ""
+msgstr "आपको “%2$s” से “%1$s” हटा कर दोबारा प्रयास करना चाहिए।"
 
 #: app/Http/RequestHandlers/ContactPage.php:87
 #: app/Http/RequestHandlers/MessagePage.php:76
@@ -11028,81 +11028,81 @@ msgstr ""
 #: app/Statistics/Repository/UserRepository.php:127
 #: resources/views/pending-changes-page.phtml:83
 msgid "Send a message"
-msgstr ""
+msgstr "एक संदेश भेजें"
 
 #: app/Http/RequestHandlers/CopyFact.php:77
 msgid "The record has been copied to the clipboard."
-msgstr ""
+msgstr "रिकॉर्ड क्लिपबोर्ड पर कॉपी हो गया।"
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:73
 msgid "The note has been created"
-msgstr ""
+msgstr "नोट बना लिया गया"
 
 #: app/Http/RequestHandlers/CreateRepositoryAction.php:73
 #: app/Http/RequestHandlers/CreateRepositoryModal.php:92
 msgid "The repository has been created"
-msgstr ""
+msgstr "संग्रह बना दिया गया है"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:115
 msgid "The source has been created"
-msgstr ""
+msgstr "स्रोत बना दिया गया है"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:83
 msgid "The submitter has been created"
-msgstr ""
+msgstr "प्रस्तुतकर्ता बना दिया गया है"
 
 #: app/Http/RequestHandlers/CreateTreeAction.php:63
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "%s फॅमिली ट्री पहले से मौजूद है।"
 
 #: app/Http/RequestHandlers/CreateTreeAction.php:70
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "%s फॅमिली ट्री बना दी गई।"
 
 #: app/Http/RequestHandlers/CreateTreePage.php:55
 #: resources/views/admin/control-panel.phtml:142
 msgid "Create a family tree"
-msgstr ""
+msgstr "एक फॅमिली ट्री बनाएं"
 
 #: app/Http/RequestHandlers/CreateTreePage.php:57
 msgid "My family tree"
-msgstr ""
+msgstr "मेरी फॅमिली ट्री"
 
 #: app/Http/RequestHandlers/DeletePath.php:60
 #, php-format
 msgid "The file %s has been deleted."
-msgstr ""
+msgstr "%s फ़ाइल को हटा दिया गया है।"
 
 #: app/Http/RequestHandlers/DeletePath.php:62
 #: app/Http/RequestHandlers/DeletePath.php:76
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr ""
+msgstr "%s फ़ाइल को हटाया नहीं जा सका।"
 
 #: app/Http/RequestHandlers/DeletePath.php:69
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "%s फ़ोल्डर हटा दिया गया है।"
 
 #: app/Http/RequestHandlers/DeletePath.php:71
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "%s फ़ोल्डर को हटाया नहीं जा सका।"
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/RequestHandlers/DeleteRecord.php:73
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr ""
+msgstr "“%s” परिवार को हटा दिया गया है क्योंकि इसमें केवल एक ही सदस्य है।"
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: app/Http/RequestHandlers/DeleteRecord.php:82
 #: app/Http/RequestHandlers/DeleteRecord.php:87
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr ""
+msgstr "“%1$s” से “%2$s” की लिंक को हटा दिया गया है।"
 
 #: app/Http/RequestHandlers/EditRawFactPage.php:60
 #: app/Http/RequestHandlers/EditRawRecordPage.php:57
@@ -11116,25 +11116,25 @@ msgstr ""
 #: resources/views/repository-page-menu.phtml:25
 #: resources/views/source-page-menu.phtml:25
 msgid "Edit the raw GEDCOM"
-msgstr ""
+msgstr "मूल GEDCOM एडिट करें"
 
 #: app/Http/RequestHandlers/EmailPreferencesPage.php:64
 #: resources/views/admin/control-panel.phtml:84
 msgid "Sending email"
-msgstr ""
+msgstr "ईमेल भेजना"
 
 #: app/Http/RequestHandlers/ExportGedcomPage.php:49
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "GEDCOM फ़ाइल निर्यात करें"
 
 #: app/Http/RequestHandlers/ExportGedcomServer.php:82
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "फ़ाइल %s नहीं बनाई जा सका।"
 
 #: app/Http/RequestHandlers/HelpText.php:244
 msgid "Associate events with this source"
-msgstr ""
+msgstr "इस स्रोत के साथ घटनाओं को संबंधित करें"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/HelpText.php:249
@@ -11146,64 +11146,64 @@ msgstr ""
 #: resources/views/pending-changes-page.phtml:83
 #: resources/xml/reports/change_report.xml:52
 msgid "Pending changes"
-msgstr ""
+msgstr "रुके हुए परिवर्तन"
 
 #: app/Http/RequestHandlers/HelpText.php:256
 #: resources/views/admin/users-edit.phtml:282
 msgid "Restrict to immediate family"
-msgstr ""
+msgstr "सगे परिवार तक प्रतिबंधित करें"
 
 #: app/Http/RequestHandlers/HelpText.php:261
 #: resources/views/admin/trees-export.phtml:66
 #: resources/views/modules/clippings/download.phtml:48
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr ""
+msgstr "UTF-8 से ISO-8859-1 में परिवर्तित करें"
 
 #: app/Http/RequestHandlers/HelpText.php:266
 #: resources/views/admin/trees-export.phtml:51
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "GEDCOM फ़ाइल को कंप्रेस करें"
 
 #: app/Http/RequestHandlers/HelpText.php:272
 msgid "The help text has not been written for this item."
-msgstr ""
+msgstr "इस विषय के लिए कोई सहायता लेख नहीं लिखा हुआ है।"
 
 #: app/Http/RequestHandlers/LoginAction.php:80
 #: resources/views/admin/control-panel.phtml:62
 #: resources/views/admin/upgrade/wizard.phtml:22
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "webtrees का एक नया वर्शन उपलब्ध है।"
 
 #: app/Http/RequestHandlers/LoginAction.php:112
 msgid "You cannot sign in because your browser does not accept cookies."
-msgstr ""
+msgstr "आप साइन इन नहीं कर सकते क्योंकि आपका ब्राउज़र कुकीज़ स्वीकार नहीं करता है।"
 
 #: app/Http/RequestHandlers/LoginAction.php:119
 #: app/Http/RequestHandlers/LoginAction.php:124
 msgid "The username or password is incorrect."
-msgstr ""
+msgstr "यूज़रनेम या पासवर्ड गलत है।"
 
 #: app/Http/RequestHandlers/LoginAction.php:129
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr ""
+msgstr "इस अकाउंट को वेरीफाई नहीं किया गया है। कृपया वेरिफिकेशन मैसेज के लिए अपना ईमेल देखें।"
 
 #: app/Http/RequestHandlers/LoginAction.php:134
 msgid "This account has not been approved. Please wait for an administrator to approve it."
-msgstr ""
+msgstr "इस अकाउंट को मंजूरी नहीं दी गई है। कृपया किसी एडमिनिस्ट्रेटर के इसे मंजुर करने तक प्रतीक्षा करें।"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/LoginPage.php:84 app/Module/LoginBlockModule.php:43
 #: app/Module/LoginBlockModule.php:75 app/Module/ModuleThemeTrait.php:317
 msgid "Sign in"
-msgstr ""
+msgstr "साइन इन करें"
 
 #: app/Http/RequestHandlers/LoginPage.php:89
 msgid "Anyone with a user account can access this website."
-msgstr ""
+msgstr "कोई भी यूज़र अकाउंट वाला व्यक्ति इस वेबसाइट को एक्सेस कर सकता है।"
 
 #: app/Http/RequestHandlers/LoginPage.php:92
 msgid "You need to be an authorized user to access this website."
-msgstr ""
+msgstr "इस वेबसाइट को एक्सेस करने के लिए आपका एक ऑथराइज़्ड यूज़र होना ज़रूरी है।"
 
 #: app/Http/RequestHandlers/LoginPage.php:95
 msgid "You need to be a family member to access this website."
