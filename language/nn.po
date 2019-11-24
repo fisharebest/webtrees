@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-17 01:47+0000\n"
-"Last-Translator: Hogne R Nilsen <hogne.roed.nilsen@gmail.com>\n"
+"PO-Revision-Date: 2019-11-26 20:24+0000\n"
+"Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nn/>\n"
 "Language: nn\n"
@@ -16999,7 +16999,7 @@ msgstr "fetter"
 #: app/Functions/Functions.php:1430
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "far sitt syskenbarn"
+msgstr "fars syskenbarn"
 
 #: app/Functions/Functions.php:1426
 msgctxt "father’s father’s brother’s daughter"
@@ -17014,7 +17014,7 @@ msgstr "fars fetter"
 #: app/Functions/Functions.php:1436
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "far sitt syskenbarn"
+msgstr "fars syskenbarn"
 
 #: app/Functions/Functions.php:1432
 msgctxt "father’s father’s sister’s daughter"
@@ -17029,7 +17029,7 @@ msgstr "fars fetter"
 #: app/Functions/Functions.php:1442
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "far sitt syskenbarn"
+msgstr "fars syskenbarn"
 
 #: app/Functions/Functions.php:1438
 msgctxt "father’s mother’s brother’s daughter"
@@ -17044,7 +17044,7 @@ msgstr "fars fetter"
 #: app/Functions/Functions.php:1448
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "far sitt syskenbarn"
+msgstr "fars syskenbarn"
 
 #: app/Functions/Functions.php:1444
 msgctxt "father’s mother’s sister’s daughter"
@@ -17059,7 +17059,7 @@ msgstr "fars fetter"
 #: app/Functions/Functions.php:1454
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "mor sitt syskenbarn"
+msgstr "mors syskenbarn"
 
 #: app/Functions/Functions.php:1450
 msgctxt "mother’s father’s brother’s daughter"
@@ -17074,7 +17074,7 @@ msgstr "mors fetter"
 #: app/Functions/Functions.php:1460
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "mor sitt syskenbarn"
+msgstr "mors syskenbarn"
 
 #: app/Functions/Functions.php:1456
 msgctxt "mother’s father’s sister’s daughter"
@@ -17089,7 +17089,7 @@ msgstr "mors fetter"
 #: app/Functions/Functions.php:1466
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "mor sitt syskenbarn"
+msgstr "mors syskenbarn"
 
 #: app/Functions/Functions.php:1462
 msgctxt "mother’s mother’s brother’s daughter"
@@ -17104,7 +17104,7 @@ msgstr "mors fetter"
 #: app/Functions/Functions.php:1472
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "mor sitt syskenbarn"
+msgstr "mors syskenbarn"
 
 #: app/Functions/Functions.php:1468
 msgctxt "mother’s mother’s sister’s daughter"
