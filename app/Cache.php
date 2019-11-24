@@ -50,7 +50,7 @@ class Cache
      *
      * @return mixed
      */
-    public function remember(string $key, Closure $closure, int $ttl = PHP_INT_MAX)
+    public function remember(string $key, Closure $closure, int $ttl = 8640000)
     {
         return $this->cache->get($key, static function (ItemInterface $item) use ($closure, $ttl) {
             $item->expiresAfter($ttl);

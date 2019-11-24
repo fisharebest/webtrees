@@ -19,26 +19,55 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\TreeService;
-use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
 use Intervention\Image\ImageManager;
 use League\Flysystem\Filesystem;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Throwable;
 
+use function abs;
+use function app;
+use function array_map;
 use function assert;
+use function dirname;
+use function e;
+use function explode;
+use function file_exists;
+use function getimagesize;
+use function glob;
+use function implode;
+use function intdiv;
+use function is_file;
+use function max;
+use function md5;
+use function rename;
+use function response;
+use function route;
+use function sha1_file;
+use function str_replace;
+use function stripos;
+use function strlen;
+use function strpos;
+use function substr;
+use function substr_compare;
+use function unlink;
+use function view;
+
+use const GLOB_NOSORT;
 
 /**
  * Controller for importing custom thumbnails from webtrees 1.x.
  */
 class ImportThumbnailsController extends AbstractAdminController
 {
+    private const FINGERPRINT_PIXELS = 10;
+
     /** @var PendingChangesService */
     private $pending_changes_service;
 
@@ -177,7 +206,7 @@ class ImportThumbnailsController extends AbstractAdminController
 
         $data = $thumbnails
             ->slice($start, $length)
-            ->map(function (string $thumbnail): array {
+            ->map(function (string $thumbnail) use ($data_filesystem): array {
                 // Turn each filename into a row for the table
                 $original = $this->findOriginalFileFromThumbnail($thumbnail);
 
@@ -192,7 +221,7 @@ class ImportThumbnailsController extends AbstractAdminController
                     'h'    => 100,
                 ]);
 
-                $difference = $this->imageDiff($thumbnail, $original);
+                $difference = $this->imageDiff($data_filesystem, $thumbnail, $original);
 
                 $original_path  = substr($original, strlen(WT_DATA_DIR));
                 $thumbnail_path = substr($thumbnail, strlen(WT_DATA_DIR));
@@ -256,35 +285,37 @@ class ImportThumbnailsController extends AbstractAdminController
      * Compare two images, and return a quantified difference.
      * 0 (different) ... 100 (same)
      *
-     * @param string $thumbanil
-     * @param string $original
+     * @param Filesystem $data_filesystem
+     * @param string     $thumbnail
+     * @param string     $original
      *
      * @return int
      */
-    private function imageDiff($thumbanil, $original): int
+    private function imageDiff(Filesystem $data_filesystem, string $thumbnail, string $original): int
     {
-        try {
-            if (getimagesize($thumbanil) === false) {
-                return 100;
-            }
-        } catch (Throwable $ex) {
-            // If the first file is not an image then similarity is unimportant.
+        // The original filename was generated from the thumbnail filename.
+        // It may not actually exist.
+        if (!$data_filesystem->has($original)) {
+            return 100;
+        }
+
+        $thumbnail_type = explode('/', $data_filesystem->getMimetype($thumbnail))[0];
+        $original_type  = explode('/', $data_filesystem->getMimetype($original))[0];
+
+        if ($thumbnail_type !== 'image') {
+            // If the thumbnail file is not an image then similarity is unimportant.
             // Response with an exact match, so the GUI will recommend deleting it.
             return 100;
         }
 
-        try {
-            if (getimagesize($original) === false) {
-                return 0;
-            }
-        } catch (Throwable $ex) {
-            // If the first file is not an image then the thumbnail .
+        if ($original_type !== 'image') {
+            // If the original file is not an image then similarity is unimportant .
             // Response with an exact mismatch, so the GUI will recommend importing it.
             return 0;
         }
 
-        $pixels1 = $this->scaledImagePixels($thumbanil);
-        $pixels2 = $this->scaledImagePixels($original);
+        $pixels1 = $this->scaledImagePixels($data_filesystem, $thumbnail);
+        $pixels2 = $this->scaledImagePixels($data_filesystem, $original);
 
         $max_difference = 0;
 
@@ -303,41 +334,33 @@ class ImportThumbnailsController extends AbstractAdminController
      * This is a slow operation, add we will do it many times on
      * the "import wetbrees 1 thumbnails" page so cache the results.
      *
-     * @param string $path
+     * @param Filesystem $filesystem
+     * @param string     $path
      *
      * @return int[][]
      */
-    private function scaledImagePixels($path): array
+    private function scaledImagePixels(Filesystem $filesystem, string $path): array
     {
-        $size       = 10;
-        $sha1       = sha1_file($path);
+        $cache = app('cache.files');
+        assert($cache instanceof Cache);
 
-        $cache_dir  = Webtrees::DATA_DIR . 'cache/';
+        $cache_key = 'pixels-' . md5($path);
 
-        if (!is_dir($cache_dir)) {
-            mkdir($cache_dir);
-        }
+        return $cache->remember($cache_key, static function () use ($filesystem, $path): array {
+            $blob    = $filesystem->read($path);
+            $manager = new ImageManager();
+            $image   = $manager->make($blob)->resize(self::FINGERPRINT_PIXELS, self::FINGERPRINT_PIXELS);
 
-        $cache_file = $cache_dir . $sha1 . '.php';
-
-        if (file_exists($cache_file)) {
-            return include $cache_file;
-        }
-
-        $manager = new ImageManager();
-        $image   = $manager->make($path)->resize($size, $size);
-
-        $pixels = [];
-        for ($x = 0; $x < $size; ++$x) {
-            $pixels[$x] = [];
-            for ($y = 0; $y < $size; ++$y) {
-                $pixel          = $image->pickColor($x, $y);
-                $pixels[$x][$y] = (int) (($pixel[0] + $pixel[1] + $pixel[2]) / 3);
+            $pixels = [];
+            for ($x = 0; $x < self::FINGERPRINT_PIXELS; ++$x) {
+                $pixels[$x] = [];
+                for ($y = 0; $y < self::FINGERPRINT_PIXELS; ++$y) {
+                    $pixel          = $image->pickColor($x, $y);
+                    $pixels[$x][$y] = (int) (($pixel[0] + $pixel[1] + $pixel[2]) / 3);
+                }
             }
-        }
 
-        file_put_contents($cache_file, '<?php return ' . var_export($pixels, true) . ';');
-
-        return $pixels;
+            return $pixels;
+        });
     }
 }
