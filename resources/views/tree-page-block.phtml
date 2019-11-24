@@ -1,8 +1,7 @@
 <?php use Fisharebest\Webtrees\Module\ModuleBlockInterface; ?>
 
 <?php if ($block->loadAjax()) : ?>
-    <div class="wt-ajax-load" data-ajax-url="<?= e(route('tree-page-block', ['tree' => $tree->name(), 'block_id' => $block_id])) ?>">
-    </div>
+    <div class="wt-ajax-load" data-ajax-url="<?= e(route('tree-page-block', ['tree' => $tree->name(), 'block_id' => $block_id])) ?>"></div>
 <?php else : ?>
     <?= $block->getBlock($tree, $block_id, ModuleBlockInterface::CONTEXT_TREE_PAGE) ?>
 <?php endif ?>
