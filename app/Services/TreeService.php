@@ -58,7 +58,7 @@ class TreeService
      */
     public function all(): Collection
     {
-        return app('cache.array')->rememberForever(__CLASS__ . __METHOD__, static function (): Collection {
+        return app('cache.array')->remember('all-trees', static function (): Collection {
             // All trees
             $query = DB::table('gedcom')
                 ->leftJoin('gedcom_setting', static function (JoinClause $join): void {

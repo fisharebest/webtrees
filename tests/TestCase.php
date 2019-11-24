@@ -29,13 +29,10 @@ use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
-use Illuminate\Cache\NullStore;
-use Illuminate\Cache\Repository;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Memory\MemoryAdapter;
-use League\Flysystem\Memory\NullAdapter;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
@@ -44,6 +41,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Message\UriFactoryInterface;
+use Symfony\Component\Cache\Adapter\NullAdapter;
 
 use function app;
 use function basename;
@@ -80,7 +78,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         app()->bind(UriFactoryInterface::class, Psr17Factory::class);
 
         // Disable the cache.
-        app()->instance('cache.array', new Repository(new NullStore()));
+        app()->instance('cache.array', new Cache(new NullAdapter()));
 
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
 

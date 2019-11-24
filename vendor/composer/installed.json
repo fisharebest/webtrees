@@ -1004,57 +1004,6 @@
         ]
     },
     {
-        "name": "illuminate/cache",
-        "version": "v5.8.35",
-        "version_normalized": "5.8.35.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/illuminate/cache.git",
-            "reference": "e6acac59f94c6362809b580918f7f3f6142d5796"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/cache/zipball/e6acac59f94c6362809b580918f7f3f6142d5796",
-            "reference": "e6acac59f94c6362809b580918f7f3f6142d5796",
-            "shasum": ""
-        },
-        "require": {
-            "illuminate/contracts": "5.8.*",
-            "illuminate/support": "5.8.*",
-            "php": "^7.1.3"
-        },
-        "suggest": {
-            "illuminate/database": "Required to use the database cache driver (5.8.*).",
-            "illuminate/filesystem": "Required to use the file cache driver (5.8.*).",
-            "illuminate/redis": "Required to use the redis cache driver (5.8.*)."
-        },
-        "time": "2019-08-18T13:53:57+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "5.8-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Illuminate\\Cache\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Taylor Otwell",
-                "email": "taylor@laravel.com"
-            }
-        ],
-        "description": "The Illuminate Cache package.",
-        "homepage": "https://laravel.com"
-    },
-    {
         "name": "illuminate/container",
         "version": "v5.8.35",
         "version_normalized": "5.8.35.0",

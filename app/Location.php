@@ -68,7 +68,7 @@ class Location
      */
     public function id(): int
     {
-        return app('cache.array')->rememberForever(__CLASS__ . __METHOD__ . $this->location_name, function () {
+        return app('cache.array')->remember('location-id-' . $this->location_name, function () {
             // The "top-level" location won't exist in the database.
             if ($this->parts->isEmpty()) {
                 return 0;
@@ -129,7 +129,7 @@ class Location
      */
     private function details(): stdClass
     {
-        return app('cache.array')->rememberForever(__CLASS__ . __METHOD__ . $this->id(), function () {
+        return app('cache.array')->remember('location-details-' . $this->id(), function () {
             // The "top-level" location won't exist in the database.
             if ($this->parts->isEmpty()) {
                 return (object) [

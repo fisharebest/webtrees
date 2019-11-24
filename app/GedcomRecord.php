@@ -384,9 +384,9 @@ class GedcomRecord
             return true;
         }
 
-        $cache_key = 'canShow' . $this->xref . ':' . $this->tree->id() . ':' . $access_level;
+        $cache_key = 'can-show-' . $this->xref . '-' . $this->tree->id() . '-' . $access_level;
 
-        return app('cache.array')->rememberForever($cache_key, function () use ($access_level) {
+        return app('cache.array')->remember($cache_key, function () use ($access_level) {
             return $this->canShowRecord($access_level);
         });
     }

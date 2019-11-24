@@ -24,6 +24,7 @@ use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\MigrationService;
@@ -33,11 +34,10 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Cache\ArrayStore;
-use Illuminate\Cache\Repository;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\Cache\Adapter\NullAdapter;
 use Throwable;
 
 use function app;
@@ -116,7 +116,7 @@ class SetupController extends AbstractBaseController
         $request     = $request->withAttribute('client-ip', $ip_address);
 
         app()->instance(ServerRequestInterface::class, $request);
-        app()->instance('cache.array', new Repository(new ArrayStore()));
+        app()->instance('cache.array', new Cache(new NullAdapter()));
 
         $data = $this->userData($request);
 

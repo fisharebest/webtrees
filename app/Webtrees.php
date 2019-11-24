@@ -62,7 +62,8 @@ class Webtrees
     // The root folder of this installation
     public const ROOT_DIR = __DIR__ . '/../';
 
-    // Some code needs a local filesystem, e.g. for caching.
+    // Some system data needs a local storage, e.g. for caching.
+    // All user data should be accessed via a filesystem object.
     public const DATA_DIR = self::ROOT_DIR . 'data/';
 
     // Location of the file containing the database connection details.
