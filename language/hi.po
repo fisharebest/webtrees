@@ -3033,7 +3033,7 @@ msgstr "पोते/नवासे की ख़तना"
 #: app/GedcomTag.php:1776
 msgctxt "daughter’s son"
 msgid "Brit milah of a grandson"
-msgstr ""
+msgstr "नवासे की ख़तना"
 
 #: app/GedcomTag.php:1778
 msgctxt "son’s son"
