@@ -332,7 +332,7 @@ class ImportThumbnailsController extends AbstractAdminController
     /**
      * Scale an image to 10x10 and read the individual pixels.
      * This is a slow operation, add we will do it many times on
-     * the "import wetbrees 1 thumbnails" page so cache the results.
+     * the "import webtrees 1 thumbnails" page so cache the results.
      *
      * @param Filesystem $filesystem
      * @param string     $path

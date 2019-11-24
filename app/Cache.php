@@ -28,6 +28,9 @@ use Symfony\Contracts\Cache\ItemInterface;
  */
 class Cache
 {
+    // Default time-to-live for cache items; 100 days.
+    private const DEFAULT_TTL = 8640000;
+
     /** @var CacheInterface */
     private $cache;
 
@@ -50,7 +53,7 @@ class Cache
      *
      * @return mixed
      */
-    public function remember(string $key, Closure $closure, int $ttl = 8640000)
+    public function remember(string $key, Closure $closure, int $ttl = self::DEFAULT_TTL)
     {
         return $this->cache->get($key, static function (ItemInterface $item) use ($closure, $ttl) {
             $item->expiresAfter($ttl);
