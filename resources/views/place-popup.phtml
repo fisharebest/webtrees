@@ -1,0 +1,22 @@
+<?php
+use \Fisharebest\Webtrees\Place;
+
+/**
+ * @var bool $showlink
+ * @var Place $place
+ * @var string $flag
+ *
+ */
+?>
+<div dir="auto" class="label">
+    <?php if ($flag) : ?>
+        <img class="flag mx-1 mr-1" alt = "<?=strip_tags($place->placeName()) ?>" title = "<?=strip_tags($place->placeName()) ?>" src='<?= $flag ?>'>
+    <?php endif ?>
+    <?php if ($showlink) : ?>
+        <a href="<?= e($place->url()) ?>">
+            <?= $place->placeName() ?>
+        </a>
+    <?php else: ?>
+        <?= $place->placeName() ?>
+    <?php endif ?>
+</div>

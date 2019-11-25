@@ -45,6 +45,7 @@ use function assert;
 class PlaceHierarchyController extends AbstractBaseController
 {
     private const MAP_MODULE = 'openstreetmap';
+    private const FLAG_PATH = 'data/';  //Assume the flags are in a sub-folder of data
 
     /** @var SearchService */
     private $search_service;
@@ -277,7 +278,7 @@ class PlaceHierarchyController extends AbstractBaseController
         $placeObj  = new Place($reference, $tree);
         $places    = $placeObj->getChildPlaces();
         $features  = [];
-        $flag_path = Webtrees::MODULES_DIR . 'openstreetmap/';
+
         $showlink  = true;
         if ($places === []) {
             $places[] = $placeObj;
@@ -292,8 +293,8 @@ class PlaceHierarchyController extends AbstractBaseController
                 $placeStats[$type] = $tmp === [] ? 0 : $tmp[0]->tot;
             }
             //Flag
-            if ($location->icon() !== '' && is_file($flag_path . $location->icon())) {
-                $flag = $flag_path . $location->icon();
+            if ($location->icon() !== '' && is_file(self::FLAG_PATH . $location->icon())) {
+                $flag = self::FLAG_PATH . $location->icon();
             } else {
                 $flag = '';
             }
@@ -316,6 +317,11 @@ class PlaceHierarchyController extends AbstractBaseController
                         'flag'     => $flag,
                         'place'    => $place,
                         'stats'    => $placeStats,
+                    ]),
+                    'popup' => view('place-popup', [
+                        'showlink' => $showlink,
+                        'flag'     => $flag,
+                        'place'    => $place,
                     ]),
                     'zoom'    => $location->zoom() ?: 2,
                 ],
