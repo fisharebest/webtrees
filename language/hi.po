@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
 "PO-Revision-Date: 2019-11-25 13:42+0000\n"
-"Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
+"Last-Translator: Hussain Khatri <Mr.axe009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
 "Language: hi\n"
@@ -15968,7 +15968,7 @@ msgstr ""
 
 #: login.php:170 login.php:173 login.php:176
 msgid "You can apply for an account using the link below."
-msgstr ""
+msgstr "आप नीचे दिए गए लिंक का उपयोग करके एक अकाऊटं के लिए आवेदन कर सकते हैं।"
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
