@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-25 13:37+0000\n"
-"Last-Translator: Hussain Khatri <Mr.axe009@gmail.com>\n"
+"PO-Revision-Date: 2019-11-25 13:42+0000\n"
+"Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
 "Language: hi\n"
@@ -16056,7 +16056,7 @@ msgstr ""
 
 #: logout.php:27
 msgid "You have signed out."
-msgstr "आपने साइन आउट कर दिया है"
+msgstr "आपने साइन आउट कर दिया है।"
 
 #: addmedia.php:473
 msgid "You may enter a URL, beginning with “http://”."
@@ -16113,7 +16113,7 @@ msgstr ""
 
 #: login.php:176
 msgid "You need to be a family member to access this website."
-msgstr ""
+msgstr "इस वेबसाइट को एक्सेस करने के लिए आपको परिवार का एक सदस्य होना चाहिए।"
 
 #: login.php:173
 msgid "You need to be an authorized user to access this website."
