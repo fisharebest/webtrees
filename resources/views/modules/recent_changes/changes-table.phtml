@@ -1,72 +1,74 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
-<table class="table table-sm datatables wt-table-changes" data-filter="false" data-info="false" data-paging="false">
-    <thead>
-        <tr>
-            <th>
+<div class="table-responsive">
+    <table class="table table-sm datatables wt-table-changes" data-filter="false" data-info="false" data-paging="false">
+        <thead>
+            <tr>
+                <th class="wt-side-block-optional">
                 <span class="sr-only">
                     <?= I18N::translate('Type') ?>
                 </span>
-            </th>
-            <th>
-                <?= I18N::translate('Record') ?>
-            </th>
-            <th>
-                <?= I18N::translate('Last change') ?>
-            </th>
-            <?php if ($show_user) : ?>
-                <th>
-                    <?= I18N::translate('User') ?>
                 </th>
-            <?php endif ?>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($records as $record) : ?>
-            <tr>
-                <td data-sort="<?= $record::RECORD_TYPE ?>" class="text-centre">
-                    <?php if ($record::RECORD_TYPE === 'INDI') : ?>
-                        <?= view('icons/individual') ?>
-                        <span class="sr-only"><?= I18N::translate('Individual') ?></span>
-                    <?php elseif ($record::RECORD_TYPE === 'FAM') : ?>
-                        <?= view('icons/family') ?>
-                        <span class="sr-only"><?= I18N::translate('Family') ?></span>
-                    <?php elseif ($record::RECORD_TYPE === 'OBJE') : ?>
-                        <?= view('icons/media') ?>
-                        <span class="sr-only"><?= I18N::translate('Media') ?></span>
-                    <?php elseif ($record::RECORD_TYPE === 'NOTE') : ?>
-                        <?= view('icons/note') ?>
-                        <span class="sr-only"><?= I18N::translate('Note') ?></span>
-                    <?php elseif ($record::RECORD_TYPE === 'SOUR') : ?>
-                        <?= view('icons/source') ?>
-                        <span class="sr-only"><?= I18N::translate('Source') ?></span>
-                    <?php elseif ($record::RECORD_TYPE === 'SUBM') : ?>
-                        <?= view('icons/submitter') ?>
-                        <span class="sr-only"><?= I18N::translate('Submitter') ?></span>
-                    <?php elseif ($record::RECORD_TYPE === 'REPO') : ?>
-                        <?= view('icons/repository') ?>
-                        <span class="sr-only"><?= I18N::translate('Repository') ?></span>
-                    <?php endif ?>
-                </td>
-
-                <td data-sort="<?= e($record->sortName()) ?>">
-                    <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
-                </td>
-
-                <td data-sort="<?= $record->lastChangeTimestamp()->unix() ?>">
-                    <?= view('components/datetime', ['timestamp' => $record->lastChangeTimestamp()]) ?>
-                </td>
-
+                <th>
+                    <?= I18N::translate('Record') ?>
+                </th>
+                <th>
+                    <?= I18N::translate('Last change') ?>
+                </th>
                 <?php if ($show_user) : ?>
-                    <td>
-                        <?= e($record->lastChangeUser()) ?>
-                    </td>
+                    <th>
+                        <?= I18N::translate('User') ?>
+                    </th>
                 <?php endif ?>
             </tr>
-        <?php endforeach ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php foreach ($records as $record) : ?>
+                <tr>
+                    <td data-sort="<?= $record::RECORD_TYPE ?>" class="text-centre wt-side-block-optional">
+                        <?php if ($record::RECORD_TYPE === 'INDI') : ?>
+                            <?= view('icons/individual') ?>
+                            <span class="sr-only"><?= I18N::translate('Individual') ?></span>
+                        <?php elseif ($record::RECORD_TYPE === 'FAM') : ?>
+                            <?= view('icons/family') ?>
+                            <span class="sr-only"><?= I18N::translate('Family') ?></span>
+                        <?php elseif ($record::RECORD_TYPE === 'OBJE') : ?>
+                            <?= view('icons/media') ?>
+                            <span class="sr-only"><?= I18N::translate('Media') ?></span>
+                        <?php elseif ($record::RECORD_TYPE === 'NOTE') : ?>
+                            <?= view('icons/note') ?>
+                            <span class="sr-only"><?= I18N::translate('Note') ?></span>
+                        <?php elseif ($record::RECORD_TYPE === 'SOUR') : ?>
+                            <?= view('icons/source') ?>
+                            <span class="sr-only"><?= I18N::translate('Source') ?></span>
+                        <?php elseif ($record::RECORD_TYPE === 'SUBM') : ?>
+                            <?= view('icons/submitter') ?>
+                            <span class="sr-only"><?= I18N::translate('Submitter') ?></span>
+                        <?php elseif ($record::RECORD_TYPE === 'REPO') : ?>
+                            <?= view('icons/repository') ?>
+                            <span class="sr-only"><?= I18N::translate('Repository') ?></span>
+                        <?php endif ?>
+                    </td>
+
+                    <td data-sort="<?= e($record->sortName()) ?>">
+                        <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
+                    </td>
+
+                    <td data-sort="<?= $record->lastChangeTimestamp()->unix() ?>">
+                        <?= view('components/datetime', ['timestamp' => $record->lastChangeTimestamp()]) ?>
+                    </td>
+
+                    <?php if ($show_user) : ?>
+                        <td>
+                            <?= e($record->lastChangeUser()) ?>
+                        </td>
+                    <?php endif ?>
+                </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+</div>
 
 <?php View::push('javascript') ?>
 <script>
