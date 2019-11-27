@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-26 20:24+0000\n"
+"PO-Revision-Date: 2019-11-29 21:49+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
@@ -192,7 +192,7 @@ msgstr "%j %F %Y"
 #: app/Stats.php:6940
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s आम युग"
 
 #. I18N: size of file in KB
 #: admin_media.php:489 app/Media.php:277
@@ -234,8 +234,8 @@ msgstr "%s और इनके वंशज"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s अनाम साइन-इन यूज़र"
+msgstr[1] "%s अनाम साइन-इन यूज़र्स"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4454 app/Stats.php:4458
 #, php-format
@@ -312,7 +312,7 @@ msgstr[1] ""
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] "%s व्यक्ति %s और %s के बीच की घटनाओं वाले"
+msgstr[0] "%s व्यक्ति %s और %s के बीच की घटनाओं वाला"
 msgstr[1] "%s व्यक्ति %s और %s के बीच की घटनाओं वाले"
 
 #: app/Controller/LifespanController.php:248
@@ -339,8 +339,8 @@ msgstr ""
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s संदेश"
+msgstr[1] "%s संदेश"
 
 #: app/I18N.php:810
 #, php-format
@@ -401,8 +401,8 @@ msgstr ""
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s साइन-इन यूज़र"
+msgstr[1] "%s साइन-इन यूज़र्स"
 
 #: app/Controller/SearchController.php:411
 #, php-format
@@ -498,7 +498,7 @@ msgstr "%s&nbsp;सीई"
 #: statisticsplot.php:788
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s+"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:235
@@ -551,7 +551,7 @@ msgstr "%s, इनकी पत्नी और वंशज"
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:619
 #: app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
-msgstr ""
+msgstr "&lt;चुनें&gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/I18N.php:329 app/I18N.php:333
@@ -600,107 +600,107 @@ msgstr ", "
 #: app/Stats.php:6967
 msgctxt "CENTURY"
 msgid "10th"
-msgstr ""
+msgstr "10वीं"
 
 #: app/Stats.php:6965
 msgctxt "CENTURY"
 msgid "11th"
-msgstr ""
+msgstr "11वीं"
 
 #: app/Stats.php:6963
 msgctxt "CENTURY"
 msgid "12th"
-msgstr ""
+msgstr "12वीं"
 
 #: app/Stats.php:6961
 msgctxt "CENTURY"
 msgid "13th"
-msgstr ""
+msgstr "13वीं"
 
 #: app/Stats.php:6959
 msgctxt "CENTURY"
 msgid "14th"
-msgstr ""
+msgstr "14वीं"
 
 #: app/Stats.php:6957
 msgctxt "CENTURY"
 msgid "15th"
-msgstr ""
+msgstr "15वीं"
 
 #: app/Stats.php:6955
 msgctxt "CENTURY"
 msgid "16th"
-msgstr ""
+msgstr "16वीं"
 
 #: app/Stats.php:6953
 msgctxt "CENTURY"
 msgid "17th"
-msgstr ""
+msgstr "17वीं"
 
 #: app/Stats.php:6951
 msgctxt "CENTURY"
 msgid "18th"
-msgstr ""
+msgstr "18वीं"
 
 #: app/Stats.php:6949
 msgctxt "CENTURY"
 msgid "19th"
-msgstr ""
+msgstr "19वीं"
 
 #: app/Stats.php:6985
 msgctxt "CENTURY"
 msgid "1st"
-msgstr ""
+msgstr "1ली"
 
 #: app/Stats.php:6947
 msgctxt "CENTURY"
 msgid "20th"
-msgstr ""
+msgstr "20वीं"
 
 #: app/Stats.php:6945
 msgctxt "CENTURY"
 msgid "21st"
-msgstr ""
+msgstr "21वीं"
 
 #: app/Stats.php:6983
 msgctxt "CENTURY"
 msgid "2nd"
-msgstr ""
+msgstr "2री"
 
 #: app/Stats.php:6981
 msgctxt "CENTURY"
 msgid "3rd"
-msgstr ""
+msgstr "3री"
 
 #: app/Stats.php:6979
 msgctxt "CENTURY"
 msgid "4th"
-msgstr ""
+msgstr "4थी"
 
 #: app/Stats.php:6977
 msgctxt "CENTURY"
 msgid "5th"
-msgstr ""
+msgstr "5वीं"
 
 #: app/Stats.php:6975
 msgctxt "CENTURY"
 msgid "6th"
-msgstr ""
+msgstr "6वीं"
 
 #: app/Stats.php:6973
 msgctxt "CENTURY"
 msgid "7th"
-msgstr ""
+msgstr "7वीं"
 
 #: app/Stats.php:6971
 msgctxt "CENTURY"
 msgid "8th"
-msgstr ""
+msgstr "8वीं"
 
 #: app/Stats.php:6969
 msgctxt "CENTURY"
 msgid "9th"
-msgstr ""
+msgstr "9वीं"
 
 #: admin_trees_manage.php:731
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -786,27 +786,29 @@ msgstr "किसी व्यक्ति के पूर्वजों क�
 #: admin_trees_download.php:115 admin_trees_manage.php:225
 #: app/Module/GoogleMapsModule.php:3651
 msgid "A file on the server"
-msgstr ""
+msgstr "सर्वर पर एक फ़ाइल"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:214
 #: app/Module/GoogleMapsModule.php:3639
 msgid "A file on your computer"
-msgstr ""
+msgstr "आपके कंप्यूटर पर एक फ़ाइल"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:34
 msgid "A greeting message and useful links for a user."
-msgstr ""
+msgstr "एक स्वागत संदेश और यूज़र के लिए उपयोगी लिंक।"
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:35
 msgid "A greeting message for site visitors."
-msgstr ""
+msgstr "साइट दर्शकों के लिए एक शुभकामना संदेश।"
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr ""
+"परिवर्तनों की लिस्ट जो किसी मॉडरेटर द्वारा समीक्षा की जानी चाहिए, और ईमेल "
+"सूचनाएं।"
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
@@ -821,12 +823,12 @@ msgstr "रिकॉर्ड्स की एक लिस्ट जिन्�
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:44
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr ""
+msgstr "फॅमिली ट्री से जुड़ी हुए कार्यों और गतिविधियों की लिस्ट।"
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr ""
+msgstr "हिब्रू मृत्यु वर्षगांठ की एक लिस्ट जो निकट भविष्य में घटित होगी।"
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
@@ -836,22 +838,22 @@ msgstr "आज के दिन आने वाली सालगिरहो�
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:44
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "निकट भविष्य में आने वाली सालगिरहों की लिस्ट।"
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
 msgid "A list of the most popular given names."
-msgstr ""
+msgstr "सबसे लोकप्रिय दिए गए नामों की लिस्ट।"
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "सबसे लोकप्रिय कुलनामों की लिस्ट।"
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "सबसे अधिक बार देखे गए पेज की लिस्ट।"
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
@@ -884,7 +886,7 @@ msgstr "webtrees का एक नया वर्शन उपलब्ध ह�
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
 msgid "A private area to record notes or keep a journal."
-msgstr ""
+msgstr "नोट्स लिखने या दैनिकी रखने के लिए एक निजी क्षेत्र।"
 
 #. I18N: %s is a server name/URL
 #: login.php:322
@@ -1040,12 +1042,12 @@ msgstr "किसी व्यक्ति से जुड़े नोट्�
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:39
 msgid "A tab showing the sources linked to an individual."
-msgstr ""
+msgstr "किसी व्यक्ति से जुड़े स्रोतों को दिखाने वाला टैब।"
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "व्यक्तिगत घटनाओं को प्रदर्शित करने वाली एक समय-रेखा।"
 
 #: admin_users.php:397
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
@@ -1148,7 +1150,7 @@ msgstr "आबान"
 #: admin_trees_config.php:1505 admin_trees_config.php:1507
 #: admin_trees_config.php:1511
 msgid "Abbreviate place names"
-msgstr ""
+msgstr "स्थानो के नामों को छोटा करें"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:118
@@ -1168,7 +1170,7 @@ msgstr ""
 #: admin_module_sidebar.php:90 admin_module_tabs.php:90
 #: admin_trees_config.php:532
 msgid "Access level"
-msgstr ""
+msgstr "प्रवेश स्तर"
 
 #: admin_users.php:520
 msgid "Access to family trees"
@@ -1376,7 +1378,7 @@ msgstr ""
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
 msgid "Add a story"
-msgstr ""
+msgstr "एक कहानी जोड़ें"
 
 #. I18N: Menu entry
 #: admin_users.php:264 app/Theme/AdministrationTheme.php:164
@@ -1442,22 +1444,22 @@ msgstr ""
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
 msgid "Add narrative stories to individuals in the family tree."
-msgstr ""
+msgstr "व्यक्तियों के लिए फॅमिली ट्री में कथा कहानियां जोड़ें।"
 
 #: admin_trees_manage.php:282
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "वहाँ स्पेस जोड़ें जहां लंबी लाइनें लपेटी हुई हैं"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:435
 #: app/Module/ClippingsCartModule.php:798
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "फ़ाइलों के नाम के साथ लिए GEDCOM मीडिया पथ जोड़ें"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:919
 msgid "Add to TITLE header tag"
-msgstr ""
+msgstr "हेडर टैग TITLE में जोड़ें"
 
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:71 app/Theme/AbstractTheme.php:1367
@@ -1476,7 +1478,7 @@ msgstr "क्लिपिंग कार्ट में जोड़ें"
 #. I18N: A configuration setting
 #: admin_trees_config.php:720
 msgid "Add unique identifiers"
-msgstr ""
+msgstr "अनन्य पहचानकर्ता जोड़ें"
 
 #: admin_trees_manage.php:540
 msgid "Add unlinked records"
@@ -1528,7 +1530,7 @@ msgstr ""
 
 #: admin.php:666
 msgid "Administrators"
-msgstr ""
+msgstr "एडमिनिस्ट्रेटर्स"
 
 #: app/GedcomCode/GedcomCodePedi.php:59
 msgctxt "Female pedigree"
@@ -1691,7 +1693,7 @@ msgstr "एडवांस्ड सर्च"
 #. I18N: Name of a country or state
 #: app/Stats.php:6672
 msgid "Afghanistan"
-msgstr ""
+msgstr "अफ़ग़ानिस्तान"
 
 #: statistics.php:697
 msgid "Africa"
@@ -1699,7 +1701,7 @@ msgstr ""
 
 #: admin_trees_manage.php:691
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr ""
+msgstr "फैमिली ट्री बनाने के बाद, आप किसी GEDCOM फ़ाइल से डेटा आयात कर पाएंगे।"
 
 #: login.php:260
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
@@ -1740,17 +1742,17 @@ msgstr ""
 
 #: statistics.php:550 statisticsplot.php:1282
 msgid "Age in year of first marriage"
-msgstr ""
+msgstr "पहली शादी के साल में उम्र"
 
 #: app/Functions/FunctionsPrintLists.php:972 statistics.php:260
 #: statistics.php:545 statisticsplot.php:1232
 msgid "Age in year of marriage"
-msgstr ""
+msgstr "शादी के साल में उम्र"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1311
 msgid "Age of parents next to child’s birthdate"
-msgstr ""
+msgstr "बच्चे की जन्मतिथि के आगे माता-पिता की आयु"
 
 #: statistics.php:535 statisticsplot.php:1132
 msgid "Age related to birth year"
@@ -1769,12 +1771,12 @@ msgstr "एजेंसी"
 #. I18N: Name of a country or state
 #: app/Stats.php:6675
 msgid "Aland Islands"
-msgstr ""
+msgstr "ऑलैण्ड द्वीपसमूह"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6676
 msgid "Albania"
-msgstr ""
+msgstr "अल्बानिया"
 
 #. I18N: Name of a module
 #: app/Module/AlbumModule.php:40
@@ -1784,12 +1786,12 @@ msgstr "एल्बम"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:89
 msgid "Albuquerque, New Mexico, United States"
-msgstr "अल्बुकर्क, न्यू मैक्सिको, यूनाइटेड स्टेट्स"
+msgstr "अल्बुकर्क, न्यू मैक्सिको, संयुक्त राज्य"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6736
 msgid "Algeria"
-msgstr ""
+msgstr "अल्जीरिया"
 
 #. I18N: gedcom tag ALIA
 #: app/GedcomTag.php:150
@@ -1875,7 +1877,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1575
 msgid "Allow users to see raw GEDCOM records"
-msgstr ""
+msgstr "यूज़र्स को मूल GEDCOM रिकॉर्ड देखने दें"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:266
@@ -1885,7 +1887,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_site_config.php:491
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "दर्शकों को एक नए यूज़र अकाउंट का अनुरोध करने की अनुमति दें"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:967
@@ -1907,7 +1909,7 @@ msgstr "उर्फ़"
 #. I18N: Name of a country or state
 #: app/Stats.php:6681
 msgid "American Samoa"
-msgstr ""
+msgstr "अमेरिकन समोआ"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:223
@@ -1917,6 +1919,8 @@ msgstr ""
 #: admin_site_config.php:498
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
 msgstr ""
+"नए यूज़र के साइन इन करने से पहले किसी एडमिनिस्ट्रेटर को  नए यूज़र अकाउंट को "
+"मंजूरी दे कर एक “एक्सेस लेवल” का चयन करना होगा।"
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
@@ -1938,7 +1942,7 @@ msgstr ""
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:32
 msgid "An alternative way to select a new theme."
-msgstr ""
+msgstr "नई थीम चुनने का एक वैकल्पिक तरीका।"
 
 #. I18N: Description of the “Sign in” module
 #: app/Module/LoginBlockModule.php:34
@@ -2015,22 +2019,22 @@ msgstr "खानदानी फाइल नंबर"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:91
 msgid "Anchorage, Alaska, United States"
-msgstr "एंकोरेज, अलास्का, यूनाइटेड स्टेट्स"
+msgstr "एंकोरेज, अलास्का, संयुक्त राज्य"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6677
 msgid "Andorra"
-msgstr ""
+msgstr "अंडोरा"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6673
 msgid "Angola"
-msgstr ""
+msgstr "अंगोला"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6674
 msgid "Anguilla"
-msgstr ""
+msgstr "एंगुइला"
 
 #: app/Functions/FunctionsPrintLists.php:287
 #: app/Functions/FunctionsPrintLists.php:291
@@ -2055,12 +2059,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6682
 msgid "Antarctica"
-msgstr ""
+msgstr "अंटार्कटिका"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6684
 msgid "Antigua and Barbuda"
-msgstr ""
+msgstr "अण्टीगुआ और बारबूडा"
 
 #: login.php:170
 msgid "Anyone with a user account can access this website."
@@ -2081,7 +2085,7 @@ msgstr "अपने वंशावली डेटा पर ऑटोमै�
 #: app/Module/ClippingsCartModule.php:777
 #: app/Module/ClippingsCartModule.php:786
 msgid "Apply privacy settings"
-msgstr ""
+msgstr "गोपनीयता सेटिंग्स लागू करें"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2154
@@ -2147,6 +2151,7 @@ msgstr "क्या आप वाकई इस तथ्य को हटान
 #: app/Module/UserMessagesModule.php:96 app/Module/UserMessagesModule.php:139
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
 msgstr ""
+"क्या आप वाक़ई यह संदेश हटाना चाहते हैं? इसे बाद में वापस नहीं लाया जा सकेगा।"
 
 #: admin_media.php:318 admin_media.php:529 admin_site_access.php:193
 #: admin_trees_manage.php:417 admin_trees_manage.php:428 admin_users.php:210
@@ -2181,7 +2186,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6679
 msgid "Argentina"
-msgstr ""
+msgstr "अर्जेंटीना"
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -2204,12 +2209,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6680
 msgid "Armenia"
-msgstr ""
+msgstr "आर्मीनिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6671
 msgid "Aruba"
-msgstr ""
+msgstr "अरूबा"
 
 #: app/Module/HtmlBlockModule.php:316
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
@@ -2246,12 +2251,12 @@ msgstr "असुनियन, पैराग्वे"
 #. I18N: Name of a country or state
 #: app/Stats.php:6869
 msgid "At sea"
-msgstr ""
+msgstr "समुद्र में"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:99
 msgid "Atlanta, Georgia, United States"
-msgstr "अटलांटा, जॉर्जिया, यूनाइटेड स्टेट्स"
+msgstr "अटलांटा, जॉर्जिया, संयुक्त राज्य"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
@@ -2314,12 +2319,12 @@ msgstr "अगस्त"
 #. I18N: Name of a country or state
 #: app/Stats.php:6685
 msgid "Australia"
-msgstr ""
+msgstr "ऑस्ट्रेलिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6686
 msgid "Austria"
-msgstr ""
+msgstr "ऑस्ट्रिया"
 
 #. I18N: gedcom tag AUTH
 #: app/GedcomTag.php:170
@@ -2338,12 +2343,12 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1474
 msgid "Automatically expand notes"
-msgstr ""
+msgstr "स्वचालित रूप से नोट्स को फैलाएं"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1489
 msgid "Automatically expand sources"
-msgstr ""
+msgstr "स्वचालित रूप से स्रोतों को फैलाएं"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:147
@@ -2375,33 +2380,35 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:1880 app/Stats.php:3942
 msgid "Average age"
-msgstr ""
+msgstr "औसत आयु"
 
 #: app/Module/FamilyTreeStatisticsModule.php:177
 #: app/Module/FamilyTreeStatisticsModule.php:390
 #: app/Module/HtmlBlockModule.php:241 app/Stats.php:2599 statistics.php:149
 msgid "Average age at death"
-msgstr ""
+msgstr "मृत्यु के समय औसत आयु"
 
 #: app/Stats.php:3930 app/Stats.php:3931 app/Stats.php:3935 app/Stats.php:3939
 #: app/Stats.php:3942
 msgid "Average age in century of marriage"
-msgstr ""
+msgstr "विवाह की शताब्दी में औसत आयु"
 
 #: app/Stats.php:2586 app/Stats.php:2599
 msgid "Average age related to death century"
-msgstr ""
+msgstr "मृत्यु शताब्दी से संबंधित औसत आयु"
 
 #: app/Module/FamilyTreeStatisticsModule.php:193
 #: app/Module/FamilyTreeStatisticsModule.php:418
 #: app/Module/HtmlBlockModule.php:251 app/Stats.php:4947 statistics.php:306
 msgid "Average number of children per family"
-msgstr ""
+msgstr "प्रति परिवार बच्चों की औसत संख्या"
 
 #. I18N: help text for family tree / GEDCOM file names
 #: admin_trees_config.php:627 admin_trees_manage.php:680
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
 msgstr ""
+"रिक्त स्थान और विराम चिह्न से बचें।  एक परिवार का नाम एक अच्छा विकल्प हो सकता"
+" है।"
 
 #: app/Date/JalaliDate.php:191
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2435,12 +2442,12 @@ msgstr "आज़र"
 #. I18N: Name of a country or state
 #: app/Stats.php:6687
 msgid "Azerbaijan"
-msgstr ""
+msgstr "आज़रबाइजान"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6688
 msgid "Azores"
-msgstr ""
+msgstr "अज़ोरेस"
 
 #: app/Date/JalaliDate.php:193
 msgctxt "Abbreviation for Persian month: Bahman"
@@ -2450,7 +2457,7 @@ msgstr "बेह"
 #. I18N: Name of a country or state
 #: app/Stats.php:6697
 msgid "Bahamas"
-msgstr ""
+msgstr "बहामास"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:97
@@ -2479,12 +2486,12 @@ msgstr "बेहमन"
 #. I18N: Name of a country or state
 #: app/Stats.php:6696
 msgid "Bahrain"
-msgstr ""
+msgstr "बहरीन"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6694
 msgid "Bangladesh"
-msgstr ""
+msgstr "बांग्लादेश"
 
 #. I18N: gedcom tag BAPM
 #: app/GedcomTag.php:182 modules_v3/missing_facts_report/report.xml:16
@@ -2567,7 +2574,7 @@ msgstr "बार मित्ज़वाह"
 #. I18N: Name of a country or state
 #: app/Stats.php:6705
 msgid "Barbados"
-msgstr ""
+msgstr "बारबाडोस"
 
 #. I18N: gedcom tag BASM
 #: app/GedcomTag.php:198 modules_v3/missing_facts_report/report.xml:18
@@ -2583,7 +2590,7 @@ msgstr "बैच अपडेट"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:121
 msgid "Baton Rouge, Louisiana, United States"
-msgstr "बैटन रूज, लुइसियाना, यूनाइटेड स्टेट्स"
+msgstr "बैटन रूज, लुइसियाना, संयुक्त राज्य"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2340
@@ -2598,7 +2605,7 @@ msgstr "शुरुआती अक्षर"
 #. I18N: Name of a country or state
 #: app/Stats.php:6700
 msgid "Belarus"
-msgstr ""
+msgstr "बेलोरूस"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:78
@@ -2608,22 +2615,22 @@ msgstr "बेल्जियन चॉकलेट"
 #. I18N: Name of a country or state
 #: app/Stats.php:6690
 msgid "Belgium"
-msgstr ""
+msgstr "बेल्जियम"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6701
 msgid "Belize"
-msgstr ""
+msgstr "बेलीज़"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6691
 msgid "Benin"
-msgstr ""
+msgstr "बेनिन"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6702
 msgid "Bermuda"
-msgstr ""
+msgstr "बरमूडा"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:357
@@ -2637,7 +2644,7 @@ msgstr "शहबाला"
 #. I18N: Name of a country or state
 #: app/Stats.php:6707
 msgid "Bhutan"
-msgstr ""
+msgstr "भूटान"
 
 #. I18N: gedcom tag _BIBL
 #: app/GedcomTag.php:1030
@@ -2647,7 +2654,7 @@ msgstr "ग्रन्थसूची"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:103
 msgid "Billings, Montana, United States"
-msgstr "बिलिंग्स, मोंटाना, यूनाइटेड स्टेट्स"
+msgstr "बिलिंग्स, मोंटाना, संयुक्त राज्य"
 
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:222
@@ -2661,7 +2668,7 @@ msgstr "Bing Maps™"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:105
 msgid "Birmingham, Alabama, United States"
-msgstr "बर्मिंघम, अलबामा, यूनाइटेड स्टेट्स"
+msgstr "बर्मिंघम, अलबामा, संयुक्त राज्य"
 
 #. I18N: gedcom tag BIRT
 #: app/GedcomTag.php:206 modules_v3/ahnentafel_report/report.xml:441
@@ -2897,12 +2904,12 @@ msgstr "जन्म"
 
 #: app/Stats.php:1953 statistics.php:121
 msgid "Births by century"
-msgstr ""
+msgstr "शताब्दी के दौरान जन्म"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:107
 msgid "Bismarck, North Dakota, United States"
-msgstr "बिस्मार्क, नॉर्थ डकोटा, यूनाइटेड स्टेट्स"
+msgstr "बिस्मार्क, नॉर्थ डकोटा, संयुक्त राज्य"
 
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:214
@@ -2941,12 +2948,12 @@ msgstr "बोगोटा, कोलंबिया"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:111
 msgid "Boise, Idaho, United States"
-msgstr "बोइस, इडाहो, यूनाइटेड स्टेट्स"
+msgstr "बोइस, इडाहो, संयुक्त राज्य"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6703
 msgid "Bolivia"
-msgstr ""
+msgstr "बोलिविया"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1912
@@ -2965,12 +2972,12 @@ msgstr "वाचा में जन्मा"
 #. I18N: Name of a country or state
 #: app/Stats.php:6698
 msgid "Bosnia and Herzegovina"
-msgstr ""
+msgstr "बॉस्निया और हर्ज़ेगोविना"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:113
 msgid "Boston, Massachusetts, United States"
-msgstr "बोस्टन, मैसाचुसेट्स, यूनाइटेड स्टेट्स"
+msgstr "बोस्टन, मैसाचुसेट्स, संयुक्त राज्य"
 
 #: app/Functions/FunctionsPrintLists.php:619
 msgid "Both alive"
@@ -2983,17 +2990,17 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6709
 msgid "Botswana"
-msgstr ""
+msgstr "बोत्सवाना"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:115
 msgid "Bountiful, Utah, United States"
-msgstr "बाउंटफुल, यूटा, यूनाइटेड स्टेट्स"
+msgstr "बाउंटफुल, यूटा, संयुक्त राज्य"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6708
 msgid "Bouvet Island"
-msgstr ""
+msgstr "बौवेट आइलैंड"
 
 #. I18N: Branches of a family tree
 #: app/Controller/BranchesController.php:68 app/Theme/AbstractTheme.php:1482
@@ -3009,7 +3016,7 @@ msgstr "कुलनाम %s के परिवार"
 #. I18N: Name of a country or state
 #: app/Stats.php:6704
 msgid "Brazil"
-msgstr ""
+msgstr "ब्राज़िल"
 
 #: app/GedcomCode/GedcomCodeRela.php:78
 msgid "Bridesmaid"
@@ -3018,7 +3025,7 @@ msgstr "वधू-सखी"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:117
 msgid "Brigham City, Utah, United States"
-msgstr "ब्रिघम सिटी, यूटा, यूनाइटेड स्टेट्स"
+msgstr "ब्रिघम सिटी, यूटा, संयुक्त राज्य"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:119
@@ -3059,12 +3066,12 @@ msgstr "बेटे की ख़तना"
 #. I18N: Name of a country or state
 #: app/Stats.php:6779
 msgid "British Indian Ocean Territory"
-msgstr ""
+msgstr "ब्रिटिश हिंद महासागर क्षेत्र"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6916
 msgid "British Virgin Islands"
-msgstr ""
+msgstr "ब्रिटिश वर्जिन द्वीपसमूह"
 
 #: modules_v3/individual_ext_report/report.xml:319
 #: modules_v3/individual_report/report.xml:316
@@ -3098,7 +3105,7 @@ msgstr "ब्रूमेयर"
 #. I18N: Name of a country or state
 #: app/Stats.php:6706
 msgid "Brunei Darussalam"
-msgstr ""
+msgstr "ब्रुनेई"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:101
@@ -3108,7 +3115,7 @@ msgstr "ब्यूनस आयर्स, अर्जेंटीना"
 #. I18N: Name of a country or state
 #: app/Stats.php:6695
 msgid "Bulgaria"
-msgstr ""
+msgstr "बुल्गारिया"
 
 #. I18N: gedcom tag BURI
 #: app/GedcomTag.php:226 modules_v3/family_group_report/report.xml:351
@@ -3253,12 +3260,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6693
 msgid "Burkina Faso"
-msgstr ""
+msgstr "बुर्किना फासो"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6689
 msgid "Burundi"
-msgstr ""
+msgstr "बुरुण्डी"
 
 #: app/GedcomCode/GedcomCodeRela.php:86
 msgid "Buyer"
@@ -3277,7 +3284,7 @@ msgstr "ख़रीदार"
 #. I18N: Help text for the "Port number" site configuration setting
 #: admin_site_config.php:368
 msgid "By default, SMTP works on port 25."
-msgstr ""
+msgstr "डिफ़ॉल्ट रूप से, SMTP पोर्ट 25 पर काम करता है।"
 
 #: app/Module/GoogleMapsModule.php:3955
 msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
@@ -3299,7 +3306,7 @@ msgstr ""
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:27
 msgid "CKEditor™"
-msgstr "CKEditor™"
+msgstr "सी.के.एडिटर™"
 
 #: admin_trees_manage.php:367
 msgid "Calculating…"
@@ -3314,7 +3321,7 @@ msgstr "कैलेंडर"
 #: admin_trees_config.php:688 admin_trees_config.php:690
 #: admin_trees_config.php:693
 msgid "Calendar conversion"
-msgstr ""
+msgstr "कैलेंडर परिवर्तन"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:123
@@ -3329,12 +3336,12 @@ msgstr "कॉल नंबर"
 #. I18N: Name of a country or state
 #: app/Stats.php:6793
 msgid "Cambodia"
-msgstr ""
+msgstr "कंबोडिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6717
 msgid "Cameroon"
-msgstr ""
+msgstr "कैमरून"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:125
@@ -3344,12 +3351,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6711
 msgid "Canada"
-msgstr ""
+msgstr "कनाडा"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6723
 msgid "Cape Verde"
-msgstr ""
+msgstr "केप वर्दे"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:127
@@ -3403,7 +3410,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6728
 msgid "Cayman Islands"
-msgstr ""
+msgstr "केमन द्वीपसमूह"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:129
@@ -3447,7 +3454,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6710
 msgid "Central African Republic"
-msgstr ""
+msgstr "मध्य अफ़्रीकी गणराज्य"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1916
@@ -3457,7 +3464,7 @@ msgstr "प्रमाणपत्र"
 #. I18N: Name of a country or state
 #: app/Stats.php:6893
 msgid "Chad"
-msgstr ""
+msgstr "चाड"
 
 #: edit_interface.php:1933 edit_interface.php:1969 edit_interface.php:1996
 msgid "Change"
@@ -3525,7 +3532,7 @@ msgstr "अक्षर समुह"
 
 #: admin_module_charts.php:66 admin_modules.php:237
 msgid "Chart"
-msgstr ""
+msgstr "चार्ट"
 
 #: app/Module/RelationshipsChartModule.php:159
 msgid "Chart preferences"
@@ -3609,7 +3616,7 @@ msgstr "%s की संतान"
 #: modules_v3/family_group_report/report.xml:761
 #: modules_v3/relative_ext_report/report.xml:115 statisticsplot.php:1040
 msgid "Children"
-msgstr ""
+msgstr "संतान"
 
 #: statistics.php:303
 msgid "Children in family"
@@ -3623,17 +3630,17 @@ msgstr ""
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:88
 msgid "Children take a patronym instead of a surname."
-msgstr ""
+msgstr "बच्चे एक कुलनाम के बजाय एक गोत्र अपनाते हैं।"
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition.php:82
 msgid "Children take one surname from the father and one surname from the mother."
-msgstr ""
+msgstr "बच्चे पिता से एक कुलनाम और माँ से एक कुलनाम अपनाते हैं।"
 
 #. I18N: In the Portuguese surname tradition, ...
 #: app/SurnameTradition.php:85
 msgid "Children take one surname from the mother and one surname from the father."
-msgstr ""
+msgstr "बच्चे एक कुलनाम माँ से लेते हैं और एक कुलनाम पिता से।"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the patrilineal surname tradition, ...
@@ -3642,22 +3649,22 @@ msgstr ""
 #: app/SurnameTradition.php:72 app/SurnameTradition.php:76
 #: app/SurnameTradition.php:91 app/SurnameTradition.php:96
 msgid "Children take their father’s surname."
-msgstr ""
+msgstr "बच्चे अपने पिता का कुलनाम अपनाते हैं।"
 
 #. I18N: In the matrilineal surname tradition, ...
 #: app/SurnameTradition.php:79
 msgid "Children take their mother’s surname."
-msgstr ""
+msgstr "बच्चे अपनी माँ का कुलनाम अपनाते हैं।"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6714
 msgid "Chile"
-msgstr ""
+msgstr "चिली"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6715
 msgid "China"
-msgstr ""
+msgstr "चीन"
 
 #: reportengine.php:116 reportengine.php:120
 msgid "Choose a report to run"
@@ -3760,7 +3767,7 @@ msgstr "बेटे का नामकरण"
 #. I18N: Name of a country or state
 #: app/Stats.php:6727
 msgid "Christmas Island"
-msgstr ""
+msgstr "क्रिसमस द्वीप"
 
 #: app/GedcomCode/GedcomCodeRela.php:90
 msgid "Circumciser"
@@ -3836,7 +3843,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6712
 msgid "Cocos (Keeling) Islands"
-msgstr ""
+msgstr "कोकोस (कीलिंग) द्वीपसमूह"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:81
@@ -3851,7 +3858,7 @@ msgstr "कोल्ड डे"
 #. I18N: Name of a country or state
 #: app/Stats.php:6721
 msgid "Colombia"
-msgstr ""
+msgstr "कोलम्बिया"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:137
@@ -3894,12 +3901,12 @@ msgstr "आम कानूनी विवाह"
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:38
 msgid "Communicate directly with other users, using private messages."
-msgstr ""
+msgstr "निजी संदेशों के ज़रिए अन्य यूज़र्स के साथ सीधे संवाद करें।"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6722
 msgid "Comoros"
-msgstr ""
+msgstr "कोमोरोस"
 
 #. I18N: Name of a module/chart
 #: app/Controller/CompactController.php:46
@@ -4000,7 +4007,7 @@ msgstr "UTF-8 से ISO-8859-1 में परिवर्तित करे�
 #. I18N: Name of a country or state
 #: app/Stats.php:6720
 msgid "Cook Islands"
-msgstr ""
+msgstr "कुक द्वीपसमूह"
 
 #: app/Theme/AbstractTheme.php:345
 msgid "Cookies"
@@ -4023,7 +4030,7 @@ msgstr ""
 #: admin_trees_merge.php:195
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "%1$s से %2$s में सारे रिकॉर्ड कॉपी करें।"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:369
@@ -4059,12 +4066,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6724
 msgid "Costa Rica"
-msgstr ""
+msgstr "कोस्ता रीका"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6716
 msgid "Cote d’Ivoire"
-msgstr ""
+msgstr "कोत दिव्वार"
 
 #: login.php:619
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
@@ -4278,12 +4285,12 @@ msgstr "पत्नी का दाह संस्कार"
 #. I18N: Name of a country or state
 #: app/Stats.php:6773
 msgid "Croatia"
-msgstr ""
+msgstr "क्रोएशिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6725
 msgid "Cuba"
-msgstr ""
+msgstr "क्यूबा"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:149
@@ -4308,7 +4315,7 @@ msgstr ""
 
 #: admin_modules.php:191 admin_site_upgrade.php:126 admin_site_upgrade.php:129
 msgid "Custom module"
-msgstr ""
+msgstr "कस्टम मॉड्यूल"
 
 #: find.php:533
 msgid "Custom tags"
@@ -4321,7 +4328,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_site_config.php:478
 msgid "Custom welcome text"
-msgstr ""
+msgstr "कस्टम स्वागत लेख"
 
 #: app/Theme/AbstractTheme.php:1078 app/Theme/AbstractTheme.php:1080
 msgid "Customize this page"
@@ -4330,12 +4337,12 @@ msgstr "इस पेज को मनचाहा बनाएं"
 #. I18N: Name of a country or state
 #: app/Stats.php:6729
 msgid "Cyprus"
-msgstr ""
+msgstr "साइप्रस"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6730
 msgid "Czech Republic"
-msgstr ""
+msgstr "चेक गणराज्य"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1463
@@ -4345,7 +4352,7 @@ msgstr "DNA मार्कर"
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:30 branches.php:57 search.php:262
 msgid "Daitch-Mokotoff"
-msgstr ""
+msgstr "दाइच-मोकोतोफ़"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:151
@@ -4365,7 +4372,7 @@ msgstr "डेटा"
 #. I18N: A configuration setting
 #: admin_site_config.php:181
 msgid "Data folder"
-msgstr ""
+msgstr "डेटा फ़ोल्डर"
 
 #: setup.php:371
 msgid "Database and table names"
@@ -4552,13 +4559,16 @@ msgstr ""
 
 #: app/Module/UserMessagesModule.php:113
 msgid "Date sent"
-msgstr ""
+msgstr "भेजने की तिथि"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:709
 #, php-format
 msgid "Dates are only converted if they are valid for the calendar. For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar."
 msgstr ""
+"दिनांक केवल तभी परिवर्तित होंगे जब वे किसी कैलेंडर के लिए मान्य होंगे। उदा"
+"हरण के लिए, केवल %1$s और %2$s के बीच की तारीखों को फ्रेंच कैलेंडर में बदला "
+"जाएगा और केवल %3$s के बाद की तारीखों को ग्रेगोरियन कैलेंडर में बदला जाएगा।"
 
 #: help_text.php:134
 msgid "Dates are stored using English abbreviations and keywords. Shortcuts are available as alternatives to these abbreviations and keywords."
@@ -4591,7 +4601,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:218 app/Stats.php:1069
 #: app/Stats.php:1071
 msgid "Dead"
-msgstr ""
+msgstr "मृत"
 
 #. I18N: gedcom tag DEAT
 #: app/GedcomTag.php:352 modules_v3/ahnentafel_report/report.xml:457
@@ -4718,7 +4728,7 @@ msgstr "मृत्यु"
 
 #: app/Stats.php:1674 statistics.php:575
 msgid "Death by country"
-msgstr ""
+msgstr "देश के हिसाब से मृत्यु"
 
 #: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
 msgid "Death date range end"
@@ -4746,7 +4756,7 @@ msgstr "पिता की मृत्यु"
 
 #: app/GedcomTag.php:1396 app/GedcomTag.php:1405 app/GedcomTag.php:1414
 msgid "Death of a grand-parent"
-msgstr "एक पूर्वजकी मृत्यु"
+msgstr "किसी पूर्वज की मृत्यु"
 
 #: app/GedcomTag.php:1369 app/GedcomTag.php:1378 app/GedcomTag.php:1387
 msgid "Death of a grandchild"
@@ -4869,7 +4879,7 @@ msgstr "मृत्यु"
 
 #: app/Stats.php:2046 statistics.php:122
 msgid "Deaths by century"
-msgstr ""
+msgstr "शताब्दी के दौरान मृत्यु"
 
 #: app/Date/CalendarDate.php:332
 msgctxt "Abbreviation for December"
@@ -4920,7 +4930,7 @@ msgstr ""
 
 #: app/Module/WelcomeBlockModule.php:56
 msgid "Default chart"
-msgstr ""
+msgstr "डिफ़ॉल्ट चार्ट"
 
 #: admin_trees_manage.php:438
 msgid "Default family tree"
@@ -4930,7 +4940,7 @@ msgstr ""
 #: admin_trees_config.php:654 app/Module/WelcomeBlockModule.php:58
 #: edituser.php:196
 msgid "Default individual"
-msgstr ""
+msgstr "डिफ़ॉल्ट व्यक्ति"
 
 #: app/Module/GoogleMapsModule.php:321
 msgid "Default map type"
@@ -4949,7 +4959,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_site_config.php:250 admin_trees_config.php:973
 msgid "Default theme"
-msgstr ""
+msgstr "पूर्व निर्धारित थीम"
 
 #. I18N: gedcom tag _DEG
 #: app/GedcomTag.php:1455
@@ -5005,7 +5015,7 @@ msgstr "हटाएं"
 
 #: app/Module/GoogleMapsModule.php:3677
 msgid "Delete all existing geographic data before importing the file."
-msgstr ""
+msgstr "फ़ाइल आयात करने से पहले सभी मौजूदा भौगोलिक डेटा हटाएं।"
 
 #. I18N: Menu entry
 #: admin_users.php:664 app/Theme/AdministrationTheme.php:166
@@ -5014,7 +5024,7 @@ msgstr "बेकार यूज़र्स को हटाएं"
 
 #: app/Module/UserMessagesModule.php:142
 msgid "Delete selected messages"
-msgstr ""
+msgstr "चयनित संदेश हटाएं"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:424
@@ -5023,7 +5033,7 @@ msgstr ""
 
 #: admin_modules.php:103
 msgid "Delete the preferences for this module."
-msgstr ""
+msgstr "इस मॉड्यूल के लिए प्राथमिकताएँ हटाएं।"
 
 #: app/Controller/IndividualController.php:167
 msgid "Delete this name"
@@ -5040,12 +5050,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6718
 msgid "Democratic Republic of the Congo"
-msgstr ""
+msgstr "कांगो लोकतान्त्रिक गणराज्य"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6734
 msgid "Denmark"
-msgstr ""
+msgstr "डेनमार्क"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:153
@@ -5102,7 +5112,7 @@ msgstr "विवरण"
 #. I18N: A configuration setting
 #: admin_trees_config.php:939
 msgid "Description META tag"
-msgstr ""
+msgstr "विवरण META टैग"
 
 #: app/Module/CensusAssistantModule.php:316
 msgid "Description unavailable"
@@ -5117,11 +5127,11 @@ msgstr "मंज़िल"
 #: gedrecord.php:105 mediaviewer.php:94 note.php:106 repo.php:114
 #: source.php:118
 msgid "Details"
-msgstr ""
+msgstr "तफ़सील"
 
 #: admin_site_config.php:497
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
-msgstr ""
+msgstr "नए यूज़र का विवरण इसी फॅमिली ट्री के “वंशावली संपर्क” को भेजा जाएगा।"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:155
@@ -5223,6 +5233,13 @@ msgstr ""
 #: admin_trees_config.php:706
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past. Where possible, you should enter dates using the calendar in which the event was originally recorded. You can then specify a conversion, to show these dates in a more familiar calendar. If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
 msgstr ""
+"दुनिया के विभिन्न हिस्सों में विभिन्न कैलेंडर प्रणालियों का उपयोग किया जाता "
+"है, और कई अन्य कैलेंडर प्रणालियों का उपयोग अतीत में किया गया है। जहां संभव हो"
+", आपको कैलेंडर का उपयोग करके तिथियां दर्ज कर देनी चाहिए, जिसमें घटना मूल रूप "
+"से दर्ज की गई थी। फिर आप इन तिथियों को अधिक परिचित कैलेंडर में दिखाने के लिए "
+"किसी कैलेंडर परिवर्तन को विशेष कर सकते हैं। यदि आप नियमित रूप से दो कैलेंडर "
+"का उपयोग करते हैं, तो आप दो रूपांतरण निर्दिष्ट कर सकते हैं और दिनांक दोनों "
+"चयनित कैलेंडर में परिवर्तित हो जाएंगे।"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
@@ -5258,7 +5275,7 @@ msgstr "किसी फॅमिली ट्री के पसंदीद�
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:34
 msgid "Display and manage a user’s favorite pages."
-msgstr ""
+msgstr "यूज़र के पसंदीदा पेजों को प्रदर्शित और प्रबंधित करें।"
 
 #. I18N: gedcom tag DIV
 #: app/GedcomTag.php:374
@@ -5272,12 +5289,12 @@ msgstr "तलाक़ दायर की गई"
 
 #: app/Stats.php:3637 statistics.php:224
 msgid "Divorces by century"
-msgstr ""
+msgstr "शताब्दी के दौरान तलाक़"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6732
 msgid "Djibouti"
-msgstr ""
+msgstr "जिबूती"
 
 #: addmedia.php:473 addmedia.php:500 admin_media_upload.php:224
 msgid "Do not change to keep original filename."
@@ -5305,12 +5322,12 @@ msgstr "दस्तावेज़"
 #. I18N: Name of a country or state
 #: app/Stats.php:6733
 msgid "Dominica"
-msgstr ""
+msgstr "डोमिनिका"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6735
 msgid "Dominican Republic"
-msgstr ""
+msgstr "डोमिनिकन गणराज्य"
 
 #: app/Module/ClippingsCartModule.php:372
 #: app/Module/ClippingsCartModule.php:732
@@ -5391,7 +5408,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6737
 msgid "Ecuador"
-msgstr ""
+msgstr "ईक्वाडोर"
 
 #. I18N: Name of a module/menu
 #: admin_media.php:528 admin_site_access.php:193 admin_site_access.php:359
@@ -5490,7 +5507,7 @@ msgstr ""
 
 #: app/Module/StoriesModule.php:106 app/Module/StoriesModule.php:188
 msgid "Edit the story"
-msgstr ""
+msgstr "कहानी एडिट करें"
 
 #: admin_users.php:272
 msgid "Edit the user"
@@ -5498,7 +5515,7 @@ msgstr "यूज़र एडिट करें"
 
 #: app/Tree.php:494
 msgid "Edit this individual and replace their details with your own."
-msgstr ""
+msgstr "इस व्यक्ति को एडिट करें और उनकी तफ़सील की जगह अपनी तफ़सील डाल दें।"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:543
@@ -5518,12 +5535,12 @@ msgstr "शिक्षा"
 #. I18N: Name of a country or state
 #: app/Stats.php:6738
 msgid "Egypt"
-msgstr ""
+msgstr "मिस्र"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6878
 msgid "El Salvador"
-msgstr ""
+msgstr "एल साल्वाडोर"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1922
@@ -5624,7 +5641,7 @@ msgstr "क्लिपिंग कार्ट खाली करें"
 
 #: admin_modules.php:156
 msgid "Enabled"
-msgstr ""
+msgstr "सक्रिय"
 
 #. I18N: Help text for the “Family tree” configuration setting
 #: admin_trees_config.php:370
@@ -5658,7 +5675,7 @@ msgstr "सगाई"
 #. I18N: Name of a country or state
 #: app/Stats.php:6739
 msgid "England"
-msgstr ""
+msgstr "इंगलैंड"
 
 #: addmedia.php:429 app/Module/FamilyTreeFavoritesModule.php:212
 msgid "Enter an individual, family, or source ID"
@@ -5680,12 +5697,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6762
 msgid "Equatorial Guinea"
-msgstr ""
+msgstr "भूमध्यवर्ती गिनी"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6740
 msgid "Eritrea"
-msgstr ""
+msgstr "इरिट्रिया"
 
 #: import.php:193
 #, php-format
@@ -5726,17 +5743,17 @@ msgstr "इसफंद"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1184
 msgid "Estimated dates for birth and death"
-msgstr ""
+msgstr "जन्म और मृत्यु की अनुमानित तारीखें"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6743
 msgid "Estonia"
-msgstr ""
+msgstr "एस्टोनिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6744
 msgid "Ethiopia"
-msgstr ""
+msgstr "इथियोपिया"
 
 #: statistics.php:682
 msgid "Europe"
@@ -5785,7 +5802,7 @@ msgstr "विवाहित नाम %s वाले व्यक्तिय
 
 #: admin_media.php:671
 msgid "Exclude subfolders"
-msgstr ""
+msgstr "सबफ़ोल्डर्स को छोड़ दें"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:92
@@ -5812,7 +5829,7 @@ msgstr "सारी फॅमिली ट्री GEDCOM फ़ाइलो�
 
 #: admin_trees_download.php:134
 msgid "Export preferences"
-msgstr ""
+msgstr "निर्यात प्राथमिकताएँ"
 
 #. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: admin_trees_config.php:443
@@ -5822,11 +5839,11 @@ msgstr ""
 #. I18N: “External files” are stored on other computers
 #: admin_media.php:637
 msgid "External files"
-msgstr ""
+msgstr "बाहरी फाइलें"
 
 #: admin_media.php:676
 msgid "External media files have a URL instead of a filename."
-msgstr ""
+msgstr "बाहरी मीडिया फ़ाइलों का फ़ाइल नाम के बजाय एक URL (लिंक) होता है।"
 
 #. I18N: Name of a module/sidebar
 #: app/Module/ExtraInformationModule.php:29
@@ -5913,7 +5930,7 @@ msgstr "तथ्य 9"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1459
 msgid "Fact icons"
-msgstr ""
+msgstr "तथ्य चिह्न"
 
 #: admin_trees_config.php:529 app/Functions/FunctionsPrint.php:614
 msgid "Fact or event"
@@ -5954,7 +5971,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6748
 msgid "Falkland Islands"
-msgstr ""
+msgstr "फ़ॉकलैंड द्वीपसमूह"
 
 #. I18N: Name of a module
 #: admin.php:769 admin.php:809 admin_trees_duplicates.php:143 ancestry.php:87
@@ -5976,7 +5993,7 @@ msgstr "परिवार"
 
 #: app/Stats.php:520 statistics.php:395
 msgid "Families with sources"
-msgstr ""
+msgstr "स्रोत वाले परिवार"
 
 #. I18N: gedcom tag FAM
 #. I18N: Name of a module/report
@@ -6055,7 +6072,7 @@ msgstr ""
 #: app/Module/StoriesModule.php:356 app/Theme/AbstractTheme.php:1386
 #: edit_changes.php:185
 msgid "Family tree"
-msgstr ""
+msgstr "फॅमिली ट्री"
 
 #: app/Module/ClippingsCartModule.php:103
 #: app/Module/ClippingsCartModule.php:492
@@ -6064,13 +6081,13 @@ msgstr "फॅमिली ट्री क्लिपिंग कार्ट
 
 #: admin_trees_config.php:590 admin_trees_manage.php:645
 msgid "Family tree title"
-msgstr ""
+msgstr "फॅमिली ट्री का नाम"
 
 #. I18N: Menu entry
 #: admin.php:754 admin.php:762 app/Theme/AbstractTheme.php:1398
 #: app/Theme/AdministrationTheme.php:114 search.php:127 search.php:284
 msgid "Family trees"
-msgstr ""
+msgstr "फॅमिली ट्री"
 
 #. I18N: %s is the spouse name
 #: app/Controller/IndividualController.php:416
@@ -6141,7 +6158,7 @@ msgstr "फर"
 #. I18N: Name of a country or state
 #: app/Stats.php:6750
 msgid "Faroe Islands"
-msgstr ""
+msgstr "फ़रो द्वीपसमूह"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:87
@@ -6250,12 +6267,12 @@ msgstr "स्त्री"
 #: app/Stats.php:2599 app/Stats.php:3942 calendar.php:248 calendar.php:436
 #: statistics.php:151 statistics.php:167 statistics.php:180
 msgid "Females"
-msgstr ""
+msgstr "महिलाएं"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6746
 msgid "Fiji"
-msgstr ""
+msgstr "फ़िजी"
 
 #: admin_media.php:490 app/GedcomTag.php:1785
 msgid "File size"
@@ -6272,7 +6289,7 @@ msgstr "फ़ाइल का नाम"
 
 #: addmedia.php:472 addmedia.php:492 admin_media_upload.php:219
 msgid "Filename on server"
-msgstr ""
+msgstr "सर्वर पर फ़ाइल नाम"
 
 #: addmedia.php:161 addmedia.php:295 admin_media_upload.php:117
 #, php-format
@@ -6287,11 +6304,15 @@ msgstr "फ़ाइलनाम का एक्सटेंशन “%s” र
 #: admin.php:893
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
 msgstr ""
+"फ़ाइलें webtrees के पिछले वर्शन से मिली हैं। पुरानी फाइलें कभी-कभी सुरक्षा के"
+" लिए जोखिम हो सकती हैं। आपको उन्हें हटाना चाहिए।"
 
 #: admin_site_clean.php:88
 #, php-format
 msgid "Files marked with %s are required for proper operation and cannot be removed."
 msgstr ""
+"%s से चिह्नित फाइलें उचित संचालन के लिए आवश्यक हैं और इन्हें हटाया नहीं जा "
+"सकता।"
 
 #: app/I18N.php:235 app/Module/SlideShowModule.php:302 find.php:532
 msgid "Filter"
@@ -6370,7 +6391,7 @@ msgstr "असंबंधित व्यक्तियों का पता
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
 msgid "Finland"
-msgstr ""
+msgstr "फिनलैंड"
 
 #. I18N: gedcom tag FCOM
 #: app/GedcomTag.php:480 modules_v3/missing_facts_report/report.xml:21
@@ -6384,7 +6405,7 @@ msgstr ""
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:357
 msgid "First record"
-msgstr ""
+msgstr "पहला रिकार्ड"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:30
 msgid "Fix name slashes and spaces"
@@ -6394,12 +6415,12 @@ msgstr "नाम के “स्लैश” और “स्पेस” क�
 #: app/Module/GoogleMapsModule.php:458 app/Module/GoogleMapsModule.php:3390
 #: app/Module/GoogleMapsModule.php:3395
 msgid "Flag"
-msgstr ""
+msgstr "झंडा"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6747
 msgid "Flanders"
-msgstr ""
+msgstr "फ़्लैंडर्स"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:95
@@ -6431,7 +6452,7 @@ msgstr ""
 
 #: addmedia.php:513 admin_media_upload.php:234
 msgid "Folder name on server"
-msgstr ""
+msgstr "सर्वर पर फ़ोल्डर का नाम"
 
 #: login.php:342
 msgid "Follow this link to verify your email address."
@@ -6459,6 +6480,8 @@ msgstr ""
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
+"उदाहरण के लिए, अगर GEDCOM फ़ाइल में %1$s है और webtrees को मीडिया फ़ोल्डर में"
+" %2$s खोजने की अपेक्षा है, तो आपको %3$s निकालने की आवश्यकता होगी।"
 
 #: admin_users.php:600
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -6483,6 +6506,8 @@ msgstr "तकनीकी सहायता या वंशावली क�
 #: admin_site_config.php:283
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
 msgstr ""
+"एक से अधिक फॅमिली ट्री वाली वेबसाइटों के लिए, यह विकल्प मुख्य मेनू, सर्च पे"
+"ज, वगैरह में फॅमिली ट्री की लिस्ट दिखाएगा।"
 
 #: app/Module/LoginBlockModule.php:87 login.php:210
 msgid "Forgot password?"
@@ -6497,7 +6522,7 @@ msgstr "स्वरूप"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1557
 msgid "Format text and notes"
-msgstr ""
+msgstr "लेख और नोट्स को प्रारूपित करें"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:163
@@ -6534,7 +6559,7 @@ msgstr "पालक माँ"
 #. I18N: Name of a country or state
 #: app/Stats.php:6749
 msgid "France"
-msgstr ""
+msgstr "फ्रांस"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:165
@@ -6554,17 +6579,17 @@ msgstr "फ्रेंच"
 #. I18N: Name of a country or state
 #: app/Stats.php:6767
 msgid "French Guiana"
-msgstr ""
+msgstr "फ्रेंच गयाना"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6860
 msgid "French Polynesia"
-msgstr ""
+msgstr "फ्रेंच पॉलीनेशिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6683
 msgid "French Southern Territories"
-msgstr ""
+msgstr "दक्षिणी फ्राँसिसी क्षेत्र"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:163
 #: app/Module/FrequentlyAskedQuestionsModule.php:342
@@ -6667,7 +6692,7 @@ msgstr "मय्यत"
 #. I18N: A configuration setting
 #: admin_trees_check.php:139 admin_trees_config.php:1588
 msgid "GEDCOM errors"
-msgstr ""
+msgstr "GEDCOM एरर"
 
 #. I18N: gedcom tag GEDC
 #. I18N: gedcom tag _GEDF
@@ -6678,12 +6703,12 @@ msgstr "GEDCOM फाइल"
 #. I18N: Name of a country or state
 #: app/Stats.php:6752
 msgid "Gabon"
-msgstr ""
+msgstr "गैबॉन"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6760
 msgid "Gambia"
-msgstr ""
+msgstr "गाम्बिया"
 
 #. I18N: gedcom tag SEX
 #: app/GedcomTag.php:770 modules_v3/family_group_report/report.xml:844
@@ -6702,7 +6727,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:873
 msgid "Genealogy contact"
-msgstr ""
+msgstr "वंशावली संपर्क"
 
 #. I18N: Individuals, sources, dates, places, etc.
 #: admin_trees_manage.php:462
@@ -6711,7 +6736,7 @@ msgstr ""
 
 #: admin_trees_config.php:585 admin_trees_config.php:1570
 msgid "General"
-msgstr ""
+msgstr "सामान्य"
 
 #: app/Controller/SearchController.php:188
 #: app/Controller/SearchController.php:192 app/Theme/AbstractTheme.php:1724
@@ -6721,13 +6746,13 @@ msgstr "जनरल सर्च"
 #. I18N: Description of the “Sitemaps” module
 #: app/Module/SiteMapModule.php:44
 msgid "Generate sitemap files for search engines."
-msgstr ""
+msgstr "सर्च इंजन के लिए साइटमैप फ़ाइलें बनाएँ।"
 
 #. I18N: This is a report footer. %s is the name of the application.
 #: app/Report/ReportBase.php:108
 #, php-format
 msgid "Generated by %s"
-msgstr ""
+msgstr "%s द्वारा उत्पन्न"
 
 #: app/Controller/BranchesController.php:290
 msgid "Generation"
@@ -6768,12 +6793,12 @@ msgstr "भौगोलिक डेटा"
 #. I18N: Name of a country or state
 #: app/Stats.php:6754
 msgid "Georgia"
-msgstr ""
+msgstr "जॉर्जिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6731
 msgid "Germany"
-msgstr ""
+msgstr "जर्मनी"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:94
@@ -6807,12 +6832,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6756
 msgid "Ghana"
-msgstr ""
+msgstr "घाना"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6757
 msgid "Gibraltar"
-msgstr ""
+msgstr "जिब्राल्टर"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:173
@@ -6903,7 +6928,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6763
 msgid "Greece"
-msgstr ""
+msgstr "यूनान"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:83
@@ -6913,7 +6938,7 @@ msgstr "ग्रीन बीम"
 #. I18N: Name of a country or state
 #: app/Stats.php:6765
 msgid "Greenland"
-msgstr ""
+msgstr "ग्रीनलैंड"
 
 #. I18N: The gregorian calendar
 #: app/Date.php:198 app/Module/YahrzeitModule.php:284
@@ -6923,7 +6948,7 @@ msgstr "ग्रेगोरियन"
 #. I18N: Name of a country or state
 #: app/Stats.php:6764
 msgid "Grenada"
-msgstr ""
+msgstr "ग्रेनेडा"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:177
@@ -6933,12 +6958,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6759
 msgid "Guadeloupe"
-msgstr ""
+msgstr "ग्वाडेलोप"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6768
 msgid "Guam"
-msgstr ""
+msgstr "गुआम"
 
 #: app/GedcomCode/GedcomCodeRela.php:173
 msgid "Guardian"
@@ -6957,7 +6982,7 @@ msgstr "सरपरस्त"
 #. I18N: Name of a country or state
 #: app/Stats.php:6766
 msgid "Guatemala"
-msgstr ""
+msgstr "ग्वाटेमाला"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:179
@@ -6972,22 +6997,22 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6755
 msgid "Guernsey"
-msgstr ""
+msgstr "गरनेज़ी"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6758
 msgid "Guinea"
-msgstr ""
+msgstr "गिनी"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6761
 msgid "Guinea-Bissau"
-msgstr ""
+msgstr "गिनी-बिसाऊ"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6769
 msgid "Guyana"
-msgstr ""
+msgstr "गुयाना"
 
 #. I18N: Name of a module
 #: app/Module/HtmlBlockModule.php:36
@@ -7002,7 +7027,7 @@ msgstr "बलों का रंग"
 #. I18N: Name of a country or state
 #: app/Stats.php:6774
 msgid "Haiti"
-msgstr ""
+msgstr "हैती"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:185
@@ -7066,7 +7091,7 @@ msgstr "हेडर"
 #. I18N: Name of a country or state
 #: app/Stats.php:6771
 msgid "Heard Island and McDonald Islands"
-msgstr ""
+msgstr "हर्ड द्वीप और मैकडोनाल्ड द्वीप"
 
 #. I18N: gedcom tag _HEB
 #: app/GedcomTag.php:1521
@@ -7199,12 +7224,12 @@ msgstr "प्रलय"
 #. I18N: Name of a module
 #: admin_modules.php:229 app/Module/WelcomeBlockModule.php:30
 msgid "Home page"
-msgstr ""
+msgstr "मुख पेज"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6772
 msgid "Honduras"
-msgstr ""
+msgstr "हौण्डुरस"
 
 #. I18N: Location of an LDS church temple
 #. I18N: Name of a country or state
@@ -7241,7 +7266,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6775
 msgid "Hungary"
-msgstr ""
+msgstr "हंगरी"
 
 #. I18N: gedcom tag HUSB
 #: app/GedcomTag.php:516 edit_interface.php:1065
@@ -7269,17 +7294,17 @@ msgstr ""
 
 #: admin_site_logs.php:275 admin_site_logs.php:330
 msgid "IP address"
-msgstr ""
+msgstr "IP एड्रेस"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6783
 msgid "Iceland"
-msgstr ""
+msgstr "आइसलैंड"
 
 #: app/SurnameTradition.php:87
 msgctxt "Surname tradition"
 msgid "Icelandic"
-msgstr ""
+msgstr "आइसलैंडी"
 
 #: app/Module/GoogleMapsModule.php:3470 app/Module/GoogleMapsModule.php:3968
 msgid "Icon"
@@ -7299,6 +7324,10 @@ msgstr "पहचान नंबर"
 #: admin_trees_config.php:646
 msgid "If a visitor to the website has not selected a preferred language in their browser preferences, or they have selected an unsupported language, then this language will be used. Typically this applies to search engines."
 msgstr ""
+"यदि वेबसाइट पर आने वाले किसी विज़िटर ने अपनी ब्राउज़र प्राथमिकताओं में "
+"पसंदीदा भाषा का चयन नहीं किया है, या उन्होंने किसी असमर्थित भाषा का चयन किया "
+"हुआ है, तो इस भाषा का उपयोग किया जाएगा। आमतौर पर यह सर्च इंजन पर लागू होता "
+"है।"
 
 #: admin_users.php:391
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -7338,6 +7367,9 @@ msgstr ""
 #: admin_trees_config.php:1008
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
 msgstr ""
+"यदि दो फॅमिली ट्री एक ही मीडिया फ़ोल्डर का उपयोग करते हैं, तो वे मीडिया "
+"फ़ाइलों को साझा करने में सक्षम होंगे।  यदि वे अलग-अलग मीडिया फ़ोल्डर का उपयो"
+"ग करते हैं, तो उनकी मीडिया फ़ाइलों को अलग रखा जाएगा।"
 
 #: admin_trees_config.php:374
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -7347,6 +7379,8 @@ msgstr ""
 #: admin_trees_config.php:1023
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
 msgstr ""
+"यदि आप चिंतित हैं कि यूज़र अनुचित चित्र अपलोड कर सकते हैं, तो आप केवल मैनेजर्"
+"स के लिए मीडिया अपलोड को प्रतिबंधित कर सकते हैं।"
 
 #: site-unavailable.php:82
 msgid "If you are the website administrator, you should check that:"
@@ -7359,6 +7393,9 @@ msgstr ""
 #: admin_trees_manage.php:285
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
 msgstr ""
+"यदि आपने ऐसे किसी वंशावली सॉफ़्टवेयर का उपयोग करके इस GEDCOM फ़ाइल को बनाया "
+"है जो लंबी लाइनों को विभाजित करते समय रिक्त स्थान छोड़ देता है, तो लापता रिक्"
+"त स्थान को पुन: स्थापित करने के लिए इस विकल्प का चयन करें।"
 
 #: login.php:349
 msgid "If you didn’t request an account, you can just delete this message."
@@ -7375,6 +7412,10 @@ msgstr ""
 #: admin_trees_manage.php:278
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
 msgstr ""
+"यदि आपने webtrees में मीडिया फाइलें बनाई हैं, और बाद में इस GEDCOM फाइल को "
+"वंशावली सॉफ़्टवेयर का उपयोग करके संपादित किया हो जो मीडिया फाइलों को हटाता "
+"देता है, तो नई GEDCOM फ़ाइल के साथ वर्तमान मीडिया फाइलों को मर्ज करने के लिए "
+"इस विकल्प का चयन करें।"
 
 #: app/Module/RecentChangesModule.php:186
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
@@ -7383,11 +7424,16 @@ msgstr ""
 #: admin_site_config.php:192
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr ""
+"यदि आप एक अलग फ़ोल्डर का चयन करते हैं, तो आपको मौजूदा फ़ोल्डर से सभी फाइलों ("
+"config.ini.php, index.php, और .htaccess को छोड़कर) को नए फ़ोल्डर में ले जाना "
+"होगा।"
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1007
 msgid "If you select a different folder, you must also move any media files from the existing folder to the new one."
 msgstr ""
+"यदि आप एक अलग फ़ोल्डर का चयन करते हैं, तो आपको मौजूदा फ़ोल्डर से सभी मीडिया "
+"फ़ाइलों को एक नए फ़ोल्डर में स्थानांतरित करना होगा।"
 
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: admin_trees_config.php:434
@@ -7419,7 +7465,7 @@ msgstr "इमेज डायमेंशन"
 
 #: admin_trees_config.php:1136
 msgid "Images without watermarks"
-msgstr ""
+msgstr "बिना वॉटरमार्क के इमेज"
 
 #. I18N: gedcom tag IMMI
 #: app/GedcomTag.php:524
@@ -7428,7 +7474,7 @@ msgstr "आप्रवासन"
 
 #: admin_trees_manage.php:614
 msgid "Import"
-msgstr ""
+msgstr "आयात"
 
 #: admin_trees_manage.php:178
 msgid "Import a GEDCOM file"
@@ -7436,16 +7482,18 @@ msgstr "GEDCOM फ़ाइल आयात करें"
 
 #: app/Module/GoogleMapsModule.php:4036
 msgid "Import all places from a family tree"
-msgstr ""
+msgstr "एक फॅमिली ट्री से सारे स्थानों को आयात करें"
 
 #: admin_trees_manage.php:270
 msgid "Import preferences"
-msgstr ""
+msgstr "आयात करने की प्राथमिकताएँ"
 
 #: admin_trees_config.php:841 admin_trees_merge.php:86
 #: admin_trees_renumber.php:265
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
 msgstr ""
+"किसी फॅमिली ट्री के हर एक रिकॉर्ड में एक अंदरुनी संदर्भ नंबर होता है (जिसे "
+"“XREF” कहा जाता है) जैसे कि “F123” या “R14”।"
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
@@ -7459,6 +7507,10 @@ msgstr ""
 #: admin_trees_config.php:712
 msgid "In some calendars, days start at midnight. In other calendars, days start at sunset. The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
 msgstr ""
+"कुछ कैलेंडर में, दिन आधी रात को शुरू होते हैं। अन्य कैलेंडर में, दिन सूर्यास्"
+"त से शुरू होते हैं। परिवर्तन प्रक्रिया में समय का ध्यान नहीं रखा जाता है, "
+"इसलिए सूर्यास्त और मध्यरात्रि के बीच होने वाली किसी भी घटना के लिए, इन प्रका"
+"र के कैलेंडर के बीच परिवर्तन एक दिन का होगा।"
 
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: admin_trees_config.php:455
@@ -7485,12 +7537,12 @@ msgstr "विवाहित नाम %s वाले व्यक्तिय
 #: app/Module/ClippingsCartModule.php:386
 #: app/Module/ClippingsCartModule.php:771
 msgid "Include media (automatically zips files)"
-msgstr ""
+msgstr "मीडिया शामिल करें (ऑटोमेटिकली ज़िप फ़ाइल)"
 
 #. I18N: Label for check-box
 #: admin_media.php:666 medialist.php:121
 msgid "Include subfolders"
-msgstr ""
+msgstr "सबफोल्डर्स शामिल करें"
 
 #. I18N: Label for a configuration option
 #: lifespan.php:86
@@ -7500,7 +7552,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6777
 msgid "India"
-msgstr ""
+msgstr "भारत"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
@@ -7542,7 +7594,7 @@ msgstr ""
 
 #: app/Stats.php:1708 statistics.php:655
 msgid "Individual distribution chart"
-msgstr ""
+msgstr "व्यक्ती वितरण चार्ट"
 
 #. I18N: Name of a module
 #: app/Module/IndividualSidebarModule.php:33
@@ -7551,7 +7603,7 @@ msgstr ""
 
 #: admin_trees_config.php:1363
 msgid "Individual pages"
-msgstr ""
+msgstr "व्यक्ती के पेज"
 
 #: admin_users.php:581 edituser.php:181
 msgid "Individual record"
@@ -7584,7 +7636,7 @@ msgstr "व्यक्ती"
 
 #: app/Stats.php:422 statistics.php:394
 msgid "Individuals with sources"
-msgstr ""
+msgstr "स्रोत वाले व्यक्ति"
 
 #: famlist.php:255 indilist.php:255
 #, php-format
@@ -7594,7 +7646,7 @@ msgstr "कुलनाम %s वाले व्यक्ति"
 #. I18N: Name of a country or state
 #: app/Stats.php:6776
 msgid "Indonesia"
-msgstr ""
+msgstr "इंडोनेशिया"
 
 #. I18N: gedcom tag INFL
 #: app/Functions/FunctionsDate.php:37 app/GedcomTag.php:536
@@ -7672,27 +7724,27 @@ msgstr "अमान्य दिनांक"
 #. I18N: Name of a country or state
 #: app/Stats.php:6781
 msgid "Iran"
-msgstr ""
+msgstr "ईरान"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6782
 msgid "Iraq"
-msgstr ""
+msgstr "इराक"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6780
 msgid "Ireland"
-msgstr ""
+msgstr "आयरलैंड"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6778
 msgid "Isle of Man"
-msgstr ""
+msgstr "आइल ऑफ़ मैन"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6784
 msgid "Israel"
-msgstr ""
+msgstr "इजराइल"
 
 #: admin_site_upgrade.php:77 admin_site_upgrade.php:81
 msgid "It can take several minutes to download and install the upgrade. Be patient."
@@ -7701,7 +7753,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6785
 msgid "Italy"
-msgstr ""
+msgstr "इटली"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:144
@@ -7735,7 +7787,7 @@ msgstr "जलाली"
 #. I18N: Name of a country or state
 #: app/Stats.php:6786
 msgid "Jamaica"
-msgstr ""
+msgstr "जमैका"
 
 #: app/Date/CalendarDate.php:321
 msgctxt "Abbreviation for January"
@@ -7765,7 +7817,7 @@ msgstr "जनवरी"
 #. I18N: Name of a country or state
 #: app/Stats.php:6789
 msgid "Japan"
-msgstr ""
+msgstr "जापान"
 
 #. I18N: The Hebrew/Jewish calendar
 #: app/Date.php:201 app/Module/YahrzeitModule.php:283 help_text.php:172
@@ -7780,12 +7832,12 @@ msgstr ""
 #. I18N: This should be a common/default/placeholder name of an individual. Put slashes around the surname.
 #: app/Tree.php:493
 msgid "John /DOE/"
-msgstr ""
+msgstr "John /DOE/"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6788
 msgid "Jordan"
-msgstr ""
+msgstr "जॉर्डन"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:205
@@ -7795,7 +7847,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/UserJournalModule.php:47
 msgid "Journal"
-msgstr ""
+msgstr "दैनिकी"
 
 #: app/Date/CalendarDate.php:327
 msgctxt "Abbreviation for July"
@@ -7908,7 +7960,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6790
 msgid "Kazakhstan"
-msgstr ""
+msgstr "कजाखस्तान"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:105
 msgid "Keep"
@@ -7921,7 +7973,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_manage.php:275
 msgid "Keep media objects"
-msgstr ""
+msgstr "मीडिया फाइलें रखें"
 
 #. I18N: A configuration setting
 #: addmedia.php:705 admin_trees_config.php:2131
@@ -7933,7 +7985,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6791
 msgid "Kenya"
-msgstr ""
+msgstr "केन्या"
 
 #: app/Module/HtmlBlockModule.php:156
 msgid "Keyword examples"
@@ -7976,7 +8028,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6794
 msgid "Kiribati"
-msgstr ""
+msgstr "किरिबाती"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:137
@@ -8010,17 +8062,17 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6796
 msgid "Korea"
-msgstr ""
+msgstr "कोरिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6797
 msgid "Kuwait"
-msgstr ""
+msgstr "कुवैत"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6792
 msgid "Kyrgyzstan"
-msgstr ""
+msgstr "किर्गिज़स्तान"
 
 #. I18N: gedcom tag BAPL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:174
@@ -8083,7 +8135,7 @@ msgstr "भाषाएं"
 #. I18N: Name of a country or state
 #: app/Stats.php:6798
 msgid "Laos"
-msgstr ""
+msgstr "लाओस"
 
 #: setup.php:180
 msgid "Large systems (50,000 individuals): 64–128 MB, 40–80 seconds"
@@ -8091,7 +8143,7 @@ msgstr ""
 
 #: app/Stats.php:4855 statistics.php:318
 msgid "Largest families"
-msgstr ""
+msgstr "सबसे बड़े परिवार"
 
 #: statistics.php:319
 msgid "Largest number of grandchildren"
@@ -8110,7 +8162,7 @@ msgstr "आखिरी परिवर्तन"
 
 #: app/Module/ReviewChangesModule.php:114
 msgid "Last email reminder was sent "
-msgstr ""
+msgstr "आखिरी ईमेल रिमाइंडर भेजा गया "
 
 #: statistics.php:371
 msgid "Last event"
@@ -8157,7 +8209,7 @@ msgstr "अक्षांश"
 #. I18N: Name of a country or state
 #: app/Stats.php:6808
 msgid "Latvia"
-msgstr ""
+msgstr "लातविया"
 
 #: ancestry.php:59 descendancy.php:55 fanchart.php:88 pedigree.php:163
 msgid "Layout"
@@ -8180,7 +8232,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6799
 msgid "Lebanon"
-msgstr ""
+msgstr "लेबनान"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -8212,7 +8264,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6805
 msgid "Lesotho"
-msgstr ""
+msgstr "लिसूतू"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -8240,17 +8292,17 @@ msgstr "स्तर"
 #. I18N: Name of a country or state
 #: app/Stats.php:6800
 msgid "Liberia"
-msgstr ""
+msgstr "लाइबेरिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6801
 msgid "Libya"
-msgstr ""
+msgstr "लीबिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6803
 msgid "Liechtenstein"
-msgstr ""
+msgstr "लिख्टेंश्टाइन"
 
 #: statistics.php:146
 msgid "Lifespan"
@@ -8315,7 +8367,7 @@ msgstr ""
 
 #: ancestry.php:65 descendancy.php:59
 msgid "List"
-msgstr ""
+msgstr "लिस्ट"
 
 #: admin_trees_config.php:1146 app/Theme/AbstractTheme.php:1471
 msgid "Lists"
@@ -8324,16 +8376,16 @@ msgstr "लिस्ट"
 #. I18N: Name of a country or state
 #: app/Stats.php:6806
 msgid "Lithuania"
-msgstr ""
+msgstr "लिथुआनिया"
 
 #: app/SurnameTradition.php:95
 msgctxt "Surname tradition"
 msgid "Lithuanian"
-msgstr ""
+msgstr "लिथुआनियाई"
 
 #: app/Stats.php:1068 app/Stats.php:1070
 msgid "Living"
-msgstr ""
+msgstr "जिवित"
 
 #: calendar.php:231
 msgid "Living individuals"
@@ -8346,7 +8398,7 @@ msgstr ""
 #. I18N: “Local files” are stored on this computer
 #: admin_media.php:632
 msgid "Local files"
-msgstr ""
+msgstr "लोकल फ़ाइलें"
 
 #. I18N: gedcom tag _LOC
 #: app/GedcomTag.php:1552
@@ -8385,6 +8437,10 @@ msgstr ""
 #: admin_trees_config.php:1176
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
 msgstr ""
+"एक ही कुलनाम वाले व्यक्तियों की लंबी लिस्ट को व्यक्ति के दिए गए नाम के पहले "
+"अक्षर के अनुसार छोटी लिस्ट में तोड़ा जा सकता है। <br><br> यह विकल्प निर्धारि"
+"त करता है कि कुलनामों की छोटी लिस्ट कब दिखाई देगी। छोटी लिस्ट को पूरी तरह से "
+"बंद करने के लिए, इस विकल्प को शून्य पर सेट करें।"
 
 #: statistics.php:251
 msgid "Longest marriage"
@@ -8422,22 +8478,22 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6807
 msgid "Luxembourg"
-msgstr ""
+msgstr "लक्ज़मबर्ग"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6809
 msgid "Macau"
-msgstr ""
+msgstr "मकाउ"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6818
 msgid "Macedonia"
-msgstr ""
+msgstr "मैसेडोनिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6814
 msgid "Madagascar"
-msgstr ""
+msgstr "मेडागास्कर"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:227
@@ -8465,17 +8521,17 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6830
 msgid "Malawi"
-msgstr ""
+msgstr "मलावी"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6831
 msgid "Malaysia"
-msgstr ""
+msgstr "मलेशिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6815
 msgid "Maldives"
-msgstr ""
+msgstr "मालदीव"
 
 #: app/Controller/IndividualController.php:238
 #: app/Controller/IndividualController.php:241
@@ -8495,17 +8551,17 @@ msgstr "पुरुष"
 #: app/Stats.php:2599 app/Stats.php:3942 calendar.php:244 calendar.php:435
 #: statistics.php:150 statistics.php:166 statistics.php:179
 msgid "Males"
-msgstr ""
+msgstr "पुरुष"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6819
 msgid "Mali"
-msgstr ""
+msgstr "माली"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6820
 msgid "Malta"
-msgstr ""
+msgstr "माल्टा"
 
 #. I18N: Menu entry
 #: admin_pgv_to_wt.php:130 admin_site_change.php:289 admin_site_merge.php:187
@@ -8537,7 +8593,7 @@ msgstr "मैनेजर"
 
 #: admin.php:679
 msgid "Managers"
-msgstr ""
+msgstr "मैनेजर्स"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:229
@@ -8610,6 +8666,9 @@ msgstr "मार्च"
 #: admin_trees_config.php:1565
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
 msgstr ""
+"मार्कडाउन प्रारूपण की एक सरल प्रणाली है, जिसका इस्तेमाल विकिपीडिया जैसी "
+"वेबसाइटों पर किया जाता है। यह हेडर और सब-हेडर, बोल्ड और इटैलिक लेख, सूचियाँ, "
+"टेबल वगैरह बनाने के लिए विनीत विराम चिह्न वर्णों का उपयोग करता है।"
 
 #. I18N: gedcom tag MARR
 #: app/GedcomTag.php:576 modules_v3/ahnentafel_report/report.xml:449
@@ -8681,7 +8740,7 @@ msgstr "विवाह दस्तावेज"
 
 #: app/Stats.php:1690 statistics.php:570
 msgid "Marriage by country"
-msgstr ""
+msgstr "देश के हिसाब से विवाह"
 
 #. I18N: gedcom tag MARC
 #: app/GedcomTag.php:568
@@ -8830,7 +8889,7 @@ msgstr "शादियां"
 
 #: app/Stats.php:3540 statistics.php:223
 msgid "Marriages by century"
-msgstr ""
+msgstr "शताब्दी के दौरान विवाह"
 
 #. I18N: gedcom tag _MARNM
 #: app/GedcomTag.php:1560 modules_v3/cemetery_report/report.xml:7
@@ -8845,12 +8904,12 @@ msgstr "विवाहित कुलनाम"
 #. I18N: Name of a country or state
 #: app/Stats.php:6817
 msgid "Marshall Islands"
-msgstr ""
+msgstr "मार्शल द्वीपसमूह"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6828
 msgid "Martinique"
-msgstr ""
+msgstr "मार्टीनिक"
 
 #. I18N: Pretend to be another user, by logging in as them
 #: admin_users.php:210
@@ -8877,12 +8936,12 @@ msgstr "सटीक लेख से मिलान करें, जब त�
 #. I18N: Name of a country or state
 #: app/Stats.php:6826
 msgid "Mauritania"
-msgstr ""
+msgstr "मॉरिटानिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6829
 msgid "Mauritius"
-msgstr ""
+msgstr "मॉरीशस"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1265
@@ -8892,7 +8951,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1163
 msgid "Maximum number of surnames on individual list"
-msgstr ""
+msgstr "व्यक्तियों की सूची में कुलनामों की अधिकतम संख्या"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1245
@@ -8901,7 +8960,7 @@ msgstr ""
 
 #: admin_media_upload.php:188
 msgid "Maximum upload size: "
-msgstr ""
+msgstr "अधिकतम अपलोड आकार: "
 
 #: app/Date/CalendarDate.php:325
 msgctxt "Abbreviation for May"
@@ -8931,7 +8990,7 @@ msgstr "मई"
 #. I18N: Name of a country or state
 #: app/Stats.php:6832
 msgid "Mayotte"
-msgstr ""
+msgstr "मायोत"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:237
@@ -8954,30 +9013,30 @@ msgstr ""
 
 #: admin_media.php:691 admin_media_upload.php:200
 msgid "Media file"
-msgstr ""
+msgstr "मीडिया फाइल"
 
 #: addmedia.php:455 admin_media_upload.php:202
 msgid "Media file to upload"
-msgstr ""
+msgstr "अपलोड करने के लिए मीडिया फ़ाइल"
 
 #. I18N: %s is the name of a folder.
 #: admin_trees_download.php:163
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "मीडिया फ़ाइल के नाम से पहले %s लगाया जाएगा।"
 
 #: admin_media.php:623 admin_trees_config.php:1013
 msgid "Media files"
-msgstr ""
+msgstr "मीडिया फ़ाइलें"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:988
 msgid "Media folder"
-msgstr ""
+msgstr "मीडिया फोल्डर"
 
 #: admin_media.php:624 admin_trees_config.php:983
 msgid "Media folders"
-msgstr ""
+msgstr "मीडिया फ़ोल्डर"
 
 #. I18N: gedcom tag OBJE
 #: admin_media.php:693 admin_trees_config.php:809 admin_trees_manage.php:577
@@ -9085,7 +9144,7 @@ msgstr ""
 
 #: admin_module_menus.php:87 admin_modules.php:204
 msgid "Menu"
-msgstr ""
+msgstr "मेन्यू"
 
 #. I18N: Menu entry
 #: admin_module_menus.php:28 admin_modules.php:159
@@ -9100,7 +9159,7 @@ msgstr "मर्करी"
 
 #: admin_trees_duplicates.php:174
 msgid "Merge"
-msgstr ""
+msgstr "मर्ज"
 
 #. I18N: Menu entry
 #: admin_trees_merge.php:34 app/Theme/AdministrationTheme.php:137
@@ -9119,17 +9178,17 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:95
 msgid "Mesa, Arizona, United States"
-msgstr "मेसा, एरिज़ोना, यूनाइटेड स्टेट्स"
+msgstr "मेसा, एरिज़ोना, संयुक्त राज्य"
 
 #: admin_site_logs.php:284 admin_site_logs.php:329
 msgid "Message"
-msgstr ""
+msgstr "संदेश"
 
 #. I18N: A configuration setting
 #. I18N: Name of a module
 #: admin_site_config.php:322 app/Module/UserMessagesModule.php:33
 msgid "Messages"
-msgstr ""
+msgstr "संदेशे"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:97
@@ -9158,7 +9217,7 @@ msgstr "मेसीडोर"
 #. I18N: Name of a country or state
 #: app/Stats.php:6816
 msgid "Mexico"
-msgstr ""
+msgstr "मेक्सिको"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:245
@@ -9178,7 +9237,7 @@ msgstr "माइक्रोफिल्म"
 #. I18N: Name of a country or state
 #: app/Stats.php:6751
 msgid "Micronesia"
-msgstr ""
+msgstr "माइक्रोनीशिया"
 
 #: statistics.php:694
 msgid "Middle East"
@@ -9221,11 +9280,11 @@ msgstr "मॉडरेटर"
 
 #: admin.php:692
 msgid "Moderators"
-msgstr ""
+msgstr "मॉडरेटर्स"
 
 #: admin_modules.php:157
 msgid "Module"
-msgstr ""
+msgstr "मॉड्यूल"
 
 #. I18N: Menu entry
 #: admin_module_blocks.php:61 admin_module_charts.php:54
@@ -9240,17 +9299,17 @@ msgstr ""
 #: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
 #: app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
-msgstr ""
+msgstr "मॉड्यूल एडमिनिस्ट्रेशन"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:189
 msgid "Modules"
-msgstr ""
+msgstr "मॉड्यूल"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6813
 msgid "Moldova"
-msgstr ""
+msgstr "मॉल्डोवा"
 
 #. I18N: abbreviation for Monday
 #: app/Date/CalendarDate.php:376 app/Functions/FunctionsPrint.php:660
@@ -9260,7 +9319,7 @@ msgstr "सोम"
 #. I18N: Name of a country or state
 #: app/Stats.php:6812
 msgid "Monaco"
-msgstr ""
+msgstr "मोनाको"
 
 #: app/Date/CalendarDate.php:351
 msgid "Monday"
@@ -9269,12 +9328,12 @@ msgstr "सोमवार"
 #. I18N: Name of a country or state
 #: app/Stats.php:6822
 msgid "Mongolia"
-msgstr ""
+msgstr "मंगोलिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6824
 msgid "Montenegro"
-msgstr ""
+msgstr "मॉन्टेनीग्रो"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:249
@@ -9292,23 +9351,23 @@ msgstr "महीना"
 
 #: statistics.php:510 statisticsplot.php:874
 msgid "Month of birth"
-msgstr ""
+msgstr "जन्म का महीना"
 
 #: app/Stats.php:4735 statistics.php:530 statisticsplot.php:1028
 msgid "Month of birth of first child in a relation"
-msgstr ""
+msgstr "किसी रिश्ते में पहले बच्चे के जन्म का महीना"
 
 #: statistics.php:515 statisticsplot.php:924
 msgid "Month of death"
-msgstr ""
+msgstr "मृत्यु का महीना"
 
 #: statistics.php:525 statisticsplot.php:1082
 msgid "Month of first marriage"
-msgstr ""
+msgstr "पहली शादी का महीना"
 
 #: statistics.php:520 statisticsplot.php:978
 msgid "Month of marriage"
-msgstr ""
+msgstr "शादी का महीना"
 
 #: timeline.php:128 timeline.php:130 timeline.php:132
 msgid "Month:"
@@ -9327,7 +9386,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6827
 msgid "Montserrat"
-msgstr ""
+msgstr "मोंटेसेराट"
 
 #: app/Date/JalaliDate.php:187
 msgctxt "Abbreviation for Persian month: Mordad"
@@ -9365,12 +9424,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6811
 msgid "Morocco"
-msgstr ""
+msgstr "मोरक्को"
 
 #. I18N: Help text for the “Use password” site configuration setting
 #: admin_site_config.php:381
 msgid "Most SMTP servers require a password."
-msgstr ""
+msgstr "ज़्यादातर SMTP सर्वर को पासवर्ड की आवश्यकता होती है।"
 
 #: app/Module/FamilyTreeStatisticsModule.php:213
 #: app/Module/FamilyTreeStatisticsModule.php:429
@@ -9381,7 +9440,7 @@ msgstr ""
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: admin_site_config.php:420
 msgid "Most servers do not use secure connections."
-msgstr ""
+msgstr "ज़्यादातर सर्वर सेक्युर कनेक्शन का उपयोग नहीं करते।"
 
 #: setup.php:282
 msgid "Most sites are configured to use localhost. This means that your database runs on the same computer as your web server."
@@ -9394,7 +9453,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:36
 msgid "Most viewed pages"
-msgstr ""
+msgstr "सर्वाधिक देखे गए पेज"
 
 #: modules_v3/bdm_report/report.xml:120
 #: modules_v3/family_group_report/report.xml:474
@@ -9434,7 +9493,7 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:490 index_edit.php:312
 #: index_edit.php:361
 msgid "Move down"
-msgstr ""
+msgstr "नीचे ले जाएं"
 
 #: index_edit.php:342
 msgid "Move left"
@@ -9447,12 +9506,12 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:484 index_edit.php:310
 #: index_edit.php:359
 msgid "Move up"
-msgstr ""
+msgstr "ऊपर ले जाएं"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6825
 msgid "Mozambique"
-msgstr ""
+msgstr "मोजाम्बिक"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:90
@@ -9523,7 +9582,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6821
 msgid "Myanmar"
-msgstr ""
+msgstr "म्यांमार"
 
 #. I18N: gedcom tag NAME
 #: app/Controller/IndividualController.php:155 app/GedcomTag.php:605
@@ -9585,7 +9644,7 @@ msgstr "हमनाम"
 #. I18N: Name of a country or state
 #: app/Stats.php:6833
 msgid "Namibia"
-msgstr ""
+msgstr "नामीबिया"
 
 #: app/GedcomCode/GedcomCodeRela.php:195
 msgid "Nanny"
@@ -9613,7 +9672,7 @@ msgstr "समीकरण"
 #. I18N: Name of a country or state
 #: app/Stats.php:6844
 msgid "Nauru"
-msgstr ""
+msgstr "नाउरू"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:259
@@ -9628,12 +9687,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6843
 msgid "Nepal"
-msgstr ""
+msgstr "नेपाल"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6841
 msgid "Netherlands"
-msgstr ""
+msgstr "नीदरलैंड"
 
 #: admin_users.php:239
 msgid "Never"
@@ -9659,7 +9718,7 @@ msgstr "अविवाहित रहे"
 #. I18N: Name of a country or state
 #: app/Stats.php:6834
 msgid "New Caledonia"
-msgstr ""
+msgstr "न्यू कैलेडोनिया"
 
 #. I18N: Location of an historic LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:267
@@ -9669,11 +9728,11 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6845
 msgid "New Zealand"
-msgstr ""
+msgstr "न्यूजीलैंड"
 
 #: admin_site_change.php:344
 msgid "New data"
-msgstr ""
+msgstr "नया डेटा"
 
 #. I18N: %s is a server name/URL
 #: login.php:330
@@ -9704,7 +9763,7 @@ msgstr "अख़बार"
 
 #: app/Module/ReviewChangesModule.php:115
 msgid "Next email reminder will be sent after "
-msgstr ""
+msgstr "अगला ईमेल रिमाइंडर भेजा जाएगा "
 
 #: app/Module/SlideShowModule.php:140
 msgid "Next image"
@@ -9713,7 +9772,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6838
 msgid "Nicaragua"
-msgstr ""
+msgstr "निकारागुआ"
 
 #. I18N: gedcom tag NICK
 #: app/GedcomTag.php:630
@@ -9723,12 +9782,12 @@ msgstr "उपनाम"
 #. I18N: Name of a country or state
 #: app/Stats.php:6835
 msgid "Niger"
-msgstr ""
+msgstr "नाइजर"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6837
 msgid "Nigeria"
-msgstr ""
+msgstr "नाइजीरिया"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:143
@@ -9757,7 +9816,7 @@ msgstr "निसान"
 #. I18N: Name of a country or state
 #: app/Stats.php:6840
 msgid "Niue"
-msgstr ""
+msgstr "निउए"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:91
@@ -9793,7 +9852,7 @@ msgstr "कोई GEDCOM फ़ाइल प्राप्त नहीं ह�
 
 #: admin_trees_manage.php:256
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "कोई GEDCOM फ़ाइलें नहीं मिलीं।"
 
 #: app/Module/GoogleMapsModule.php:849
 msgid "No ancestors in the database."
@@ -9822,11 +9881,11 @@ msgstr ""
 
 #: admin_trees_duplicates.php:181
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "कोई डुप्लीकेट नहीं मिल सके।"
 
 #: admin_trees_check.php:211
 msgid "No errors have been found."
-msgstr ""
+msgstr "कोई एरर नहीं मिला।"
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: app/Functions/FunctionsPrintLists.php:1720
@@ -9834,8 +9893,8 @@ msgstr ""
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "अगले %s दिन के लिए कोई कार्यक्रम मौजूद नहीं है।"
+msgstr[1] "अगले %s दिनों के लिए कोई कार्यक्रम मौजूद नहीं है।"
 
 #: app/Functions/FunctionsPrintLists.php:1710
 #: app/Functions/FunctionsPrintLists.php:1819
@@ -9845,7 +9904,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:1718
 #: app/Functions/FunctionsPrintLists.php:1829
 msgid "No events exist for tomorrow."
-msgstr ""
+msgstr "कल के लिए कोई के कार्यक्रम मौजूद नहीं है।"
 
 #: app/Functions/FunctionsPrintLists.php:1712
 #: app/Functions/FunctionsPrintLists.php:1821
@@ -9885,7 +9944,7 @@ msgstr ""
 
 #: admin_site_merge.php:241 admin_site_merge.php:288 admin_site_merge.php:334
 msgid "No matching facts found"
-msgstr ""
+msgstr "कोई मेल खाते तथ्य नहीं मिले"
 
 #: addmedia.php:168 addmedia.php:302 admin_media_upload.php:126
 msgid "No media file was provided."
@@ -9901,7 +9960,7 @@ msgstr ""
 
 #: admin_trees_places.php:128
 msgid "No places have been found."
-msgstr ""
+msgstr "कोई स्थान नहीं मिला।"
 
 #: admin_site_config.php:127
 msgid "No predefined text"
@@ -9922,7 +9981,7 @@ msgstr ""
 
 #: app/Stats.php:5901
 msgid "No signed-in and no anonymous users"
-msgstr ""
+msgstr "कोई साइन-इन और कोई अनाम उपयोगकर्ता नहीं"
 
 #: app/Functions/FunctionsEdit.php:634
 msgid "No temple - living ordinance"
@@ -9966,7 +10025,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6836
 msgid "Norfolk Island"
-msgstr ""
+msgstr "नॉरफ़ॉक आइलैंड"
 
 #: admin_users.php:444
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
@@ -9975,22 +10034,22 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6856
 msgid "North Korea"
-msgstr ""
+msgstr "उत्तर कोरिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6839
 msgid "Northern Ireland"
-msgstr ""
+msgstr "उत्तरी आयरलैंड"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6823
 msgid "Northern Mariana Islands"
-msgstr ""
+msgstr "उत्तरी मारियाना द्वीप"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6842
 msgid "Norway"
-msgstr ""
+msgstr "नॉर्वे"
 
 #: app/Module/CensusAssistantModule.php:262
 msgid "Not a valid individual, family, or source ID"
@@ -9998,7 +10057,7 @@ msgstr ""
 
 #: admin.php:718
 msgid "Not approved by an administrator"
-msgstr ""
+msgstr "किसी एडमिनिस्ट्रेटर द्वारा अप्रूव्ड नहीं है"
 
 #. I18N: gedcom tag _NLIV
 #: app/GedcomTag.php:1683
@@ -10024,7 +10083,7 @@ msgstr "अविवाहित"
 
 #: admin.php:705
 msgid "Not verified by the user"
-msgstr ""
+msgstr "यूज़र द्वारा वेरिफाइड नहीं है"
 
 #. I18N: gedcom tag NOTE
 #: admin_trees_config.php:826 app/Controller/FamilyController.php:147
@@ -10107,7 +10166,7 @@ msgstr ""
 
 #: app/Stats.php:5209 statistics.php:307
 msgid "Number of families without children"
-msgstr ""
+msgstr "बिना बच्चों वाले परिवारों की संख्या"
 
 #: app/Module/ClippingsCartModule.php:224
 #: app/Module/ClippingsCartModule.php:243
@@ -10168,19 +10227,19 @@ msgstr ""
 #: app/GedcomTag.php:654 modules_v3/occupation_report/report.xml:5
 #: modules_v3/occupation_report/report.xml:54
 msgid "Occupation"
-msgstr "व्यवसाय"
+msgstr "पेशा"
 
 #. I18N: Name of a report
 #: app/Module/OccupationReportModule.php:29
 #: modules_v3/occupation_report/report.xml:3
 #: modules_v3/occupation_report/report.xml:37
 msgid "Occupations"
-msgstr "व्यवसाय"
+msgstr "पेशा"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6859
 msgid "Occupied Palestinian Territory"
-msgstr ""
+msgstr "फिलीस्तीनी इलाके"
 
 #: app/Date/CalendarDate.php:330
 msgctxt "Abbreviation for October"
@@ -10224,11 +10283,11 @@ msgstr ""
 
 #: admin_site_change.php:337
 msgid "Old data"
-msgstr ""
+msgstr "पुराना डेटा"
 
 #: admin.php:886
 msgid "Old files found"
-msgstr ""
+msgstr "पुरानी फाइलें मिलीं"
 
 #: pedigree.php:182
 msgid "Oldest at bottom"
@@ -10266,7 +10325,7 @@ msgstr "ओलिविआ"
 #. I18N: Name of a country or state
 #: app/Stats.php:6846
 msgid "Oman"
-msgstr ""
+msgstr "ओमान"
 
 #. I18N: Name of a module
 #: app/Module/OnThisDayModule.php:31
@@ -10367,7 +10426,7 @@ msgstr "अन्य"
 
 #: admin_trees_config.php:1337
 msgid "Other facts to show in charts"
-msgstr ""
+msgstr "चार्ट में दिखाने के लिए अन्य तथ्य"
 
 #: addmedia.php:524 admin_media_upload.php:242
 msgid "Other folder… please type in"
@@ -10430,7 +10489,7 @@ msgstr "PHP डिस्क में लिखने में विफल र
 
 #: admin_site_info.php:51
 msgid "PHP information"
-msgstr ""
+msgstr "PHP की जानकारी"
 
 #: setup.php:149
 #, php-format
@@ -10488,12 +10547,12 @@ msgstr "चित्रकारी"
 #. I18N: Name of a country or state
 #: app/Stats.php:6847
 msgid "Pakistan"
-msgstr ""
+msgstr "पाकिस्तान"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6852
 msgid "Palau"
-msgstr ""
+msgstr "पलाऊ"
 
 #. I18N: A colour scheme
 #: app/Theme/ColorsTheme.php:149
@@ -10508,7 +10567,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6848
 msgid "Panama"
-msgstr ""
+msgstr "पनामा"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:287
@@ -10523,12 +10582,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6853
 msgid "Papua New Guinea"
-msgstr ""
+msgstr "पापुआ न्यू गिनी"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6858
 msgid "Paraguay"
-msgstr ""
+msgstr "पैराग्वे"
 
 #: app/Controller/HourglassController.php:340
 #: app/Module/FamilyNavigatorModule.php:204 family.php:82
@@ -10550,7 +10609,7 @@ msgstr "माँ-बाप की उम्र"
 #: app/Module/LoginBlockModule.php:79 edituser.php:213 login.php:197
 #: login.php:259 login.php:450 login.php:530 setup.php:436
 msgid "Password"
-msgstr ""
+msgstr "पासवर्ड"
 
 #: admin_users.php:343 edituser.php:219 login.php:461
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
@@ -10619,7 +10678,7 @@ msgstr "परमनेन्ट नंबर"
 
 #: admin_site_change.php:373 admin_site_logs.php:313
 msgid "Permanently delete these records?"
-msgstr ""
+msgstr "इन रिकॉर्ड्स को स्थायी रूप से हटाएं?"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:293
@@ -10629,12 +10688,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6850
 msgid "Peru"
-msgstr ""
+msgstr "पेरू"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6851
 msgid "Philippines"
-msgstr ""
+msgstr "फ़िलीपीन्स"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:295
@@ -10704,7 +10763,7 @@ msgstr "पिंक प्लास्टिक"
 #. I18N: Name of a country or state
 #: app/Stats.php:6849
 msgid "Pitcairn"
-msgstr ""
+msgstr "पिटकेर्न द्वीपसमूह"
 
 #. I18N: gedcom tag PLAC
 #: app/GedcomTag.php:686 app/Module/GoogleMapsModule.php:1431
@@ -10751,6 +10810,9 @@ msgstr ""
 #: admin_trees_config.php:1526
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
 msgstr ""
+"स्थान के नाम अक्सर चार्ट, लिस्ट वगैरह पर फिट होने के लिए काफ़ी लंबे होते हैं"
+", उन्हें नाम के प्रथम कुछ भाग, जैसे कि <i>गांव, ज़िला</i>, या अंतिम कुछ भाग "
+"जैसे कि <i>राज्य, देश</i>, दिखाकर छोटा किया जा सकता है।"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:178
@@ -10949,17 +11011,17 @@ msgstr "प्लूविओस"
 #. I18N: Name of a country or state
 #: app/Stats.php:6854
 msgid "Poland"
-msgstr ""
+msgstr "पोलैंड"
 
 #: app/SurnameTradition.php:90
 msgctxt "Surname tradition"
 msgid "Polish"
-msgstr ""
+msgstr "पोलिश"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:363 setup.php:284
 msgid "Port number"
-msgstr ""
+msgstr "पोर्ट नंबर"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:299
@@ -10980,12 +11042,12 @@ msgstr "पोर्ट्रेट"
 #. I18N: Name of a country or state
 #: app/Stats.php:6857
 msgid "Portugal"
-msgstr ""
+msgstr "पुर्तगाल"
 
 #: app/SurnameTradition.php:84
 msgctxt "Surname tradition"
 msgid "Portuguese"
-msgstr ""
+msgstr "पुर्तगाली"
 
 #. I18N: gedcom tag POST
 #: app/GedcomTag.php:696
@@ -11051,6 +11113,8 @@ msgstr "प्राथमिकताएं"
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
 msgstr ""
+"मॉड्यूल “%s” के लिए प्राथमिकताएँ मौजूद हैं, लेकिन यह मॉड्यूल अब मौजूद नहीं "
+"है।"
 
 #. I18N: A configuration setting
 #: admin_users.php:471
@@ -11141,12 +11205,12 @@ msgstr "प्रकाशन"
 #. I18N: Name of a country or state
 #: app/Stats.php:6855
 msgid "Puerto Rico"
-msgstr ""
+msgstr "पोर्टो रीको"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6861
 msgid "Qatar"
-msgstr ""
+msgstr "कतर"
 
 #. I18N: gedcom tag QUAY
 #: app/GedcomTag.php:712
@@ -11191,7 +11255,7 @@ msgstr "क्विंटिडी"
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: app/Module/UserMessagesModule.php:133 app/Module/UserMessagesModule.php:134
 msgid "RE: "
-msgstr ""
+msgstr "उत्तर: "
 
 #. I18N: Menu entry
 #: admin_site_readme.php:28 app/Theme/AdministrationTheme.php:104
@@ -11311,7 +11375,7 @@ msgstr "रमजान"
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:39
 msgid "Random images from the current family tree."
-msgstr ""
+msgstr "वर्तमान फॅमिली ट्री से अनियमित इमेज।"
 
 #: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
 #: edit_interface.php:1779 edit_interface.php:1849
@@ -11357,7 +11421,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
-msgstr ""
+msgstr "रिकार्ड"
 
 #. I18N: gedcom tag RIN
 #: app/GedcomTag.php:754
@@ -11541,11 +11605,11 @@ msgstr ""
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:288
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "फ़ाइलनेम से GEDCOM मीडिया पथ निकालें"
 
 #: app/Module/GoogleMapsModule.php:3917
 msgid "Remove this location?"
-msgstr ""
+msgstr "यह स्थान निकालना है?"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:317
@@ -11564,7 +11628,7 @@ msgstr "फॅमिली ट्री पुनः अंकित करे�
 
 #: admin_trees_places.php:105 search.php:162
 msgid "Replace with"
-msgstr ""
+msgstr "से बदलें"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:153
 msgid "Replacement text"
@@ -11572,7 +11636,7 @@ msgstr "बदली का लेख"
 
 #: app/Module/UserMessagesModule.php:137
 msgid "Reply"
-msgstr ""
+msgstr "उत्तर"
 
 #: admin_module_reports.php:66 admin_modules.php:244 reportengine.php:125
 #: reportengine.php:153
@@ -11615,7 +11679,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6719
 msgid "Republic of the Congo"
-msgstr ""
+msgstr "कांगो गणराज्य"
 
 #: app/Module/LoginBlockModule.php:99 login.php:222
 msgid "Request a new password"
@@ -11687,7 +11751,7 @@ msgstr "कार्यमुक्ति"
 #. I18N: Name of a country or state
 #: app/Stats.php:6862
 msgid "Reunion"
-msgstr ""
+msgstr "रीयूनियन"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:319
@@ -11706,7 +11770,7 @@ msgstr "भूमिका"
 #. I18N: Name of a country or state
 #: app/Stats.php:6863
 msgid "Romania"
-msgstr ""
+msgstr "रोमानिया"
 
 #. I18N: gedcom tag ROMN
 #: app/GedcomTag.php:762
@@ -11735,21 +11799,21 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:29 branches.php:55 search.php:258
 msgid "Russell"
-msgstr ""
+msgstr "रसेल"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6864
 msgid "Russia"
-msgstr ""
+msgstr "रूस"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6865
 msgid "Rwanda"
-msgstr ""
+msgstr "रवांडा"
 
 #: admin_site_config.php:345
 msgid "SMTP mail server"
-msgstr ""
+msgstr "SMTP मेल सर्वर"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:321
@@ -11788,27 +11852,27 @@ msgstr "सेज"
 #. I18N: Name of a country or state
 #: app/Stats.php:6874
 msgid "Saint Helena"
-msgstr ""
+msgstr "सेंट हेलेना"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6795
 msgid "Saint Kitts and Nevis"
-msgstr ""
+msgstr "सेंट किट्स एंड नेविस"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6802
 msgid "Saint Lucia"
-msgstr ""
+msgstr "सेंट लूसिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6881
 msgid "Saint Pierre and Miquelon"
-msgstr ""
+msgstr "सन्त पियर और मिकलान"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6914
 msgid "Saint Vincent and the Grenadines"
-msgstr ""
+msgstr "सेंट विंसेंट एंड ग्रेनाडाइन्स"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:341
@@ -11818,7 +11882,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6922
 msgid "Samoa"
-msgstr ""
+msgstr "समोआ"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:327
@@ -11838,7 +11902,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6879
 msgid "San Marino"
-msgstr ""
+msgstr "सैन मैरीनो"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:323
@@ -11863,7 +11927,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6883
 msgid "Sao Tome and Principe"
-msgstr ""
+msgstr "साओ तोमे और प्रिन्सिपी"
 
 #. I18N: abbreviation for Saturday
 #: app/Date/CalendarDate.php:381 app/Functions/FunctionsPrint.php:665
@@ -11881,7 +11945,7 @@ msgstr "शनिवार"
 #. I18N: Name of a country or state
 #: app/Stats.php:6866
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "सऊदी अरब"
 
 #: app/GedcomTag.php:388
 msgid "School or college"
@@ -11890,7 +11954,7 @@ msgstr "स्कूल या कॉलेज"
 #. I18N: Name of a country or state
 #: app/Stats.php:6867
 msgid "Scotland"
-msgstr ""
+msgstr "स्कॉटलैंड"
 
 #. I18N: gedcom tag _SCBK
 #: app/GedcomTag.php:1723
@@ -11929,7 +11993,7 @@ msgstr "रद्द सीलिंग (तलाक़)"
 #: app/Theme/WebtreesTheme.php:58 app/Theme/WebtreesTheme.php:59
 #: app/Theme/XeneaTheme.php:57 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:89
 msgid "Search"
-msgstr ""
+msgstr "सर्च"
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -11954,7 +12018,7 @@ msgstr ""
 
 #: admin_trees_places.php:103 search.php:76 search.php:156
 msgid "Search for"
-msgstr ""
+msgstr "सर्च"
 
 #: app/Module/GoogleMapsModule.php:3351
 msgid "Search globally"
@@ -11984,12 +12048,12 @@ msgstr ""
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:374
 msgid "Second record"
-msgstr ""
+msgstr "दूसरा रिकार्ड"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:415
 msgid "Secure connection"
-msgstr ""
+msgstr "सेक्युर कनेक्शन"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:620
@@ -12004,12 +12068,12 @@ msgstr "अधिक जानकारी के लिए %s देखें�
 
 #: admin_site_merge.php:214 admin_site_merge.php:261 admin_site_merge.php:307
 msgid "Select"
-msgstr ""
+msgstr "चुनें"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:208
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "आयात करने के लिए GEDCOM फ़ाइल चुनें"
 
 #: index_edit.php:284 index_edit.php:367
 msgid "Select a block and use the arrows to move it."
@@ -12048,7 +12112,7 @@ msgstr ""
 
 #: admin_site_merge.php:200
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "दोनों रिकॉर्ड में से रखने के लिए तथ्यों और घटनाओं का चयन करें।"
 
 #: admin_site_config.php:634
 msgid "Select the languages that will be shown in menus."
@@ -12057,7 +12121,7 @@ msgstr ""
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:352
 msgid "Select two records to merge."
-msgstr ""
+msgstr "मर्ज करने के लिए दो रिकॉर्ड चुनें।"
 
 #: app/GedcomCode/GedcomCodeRela.php:236
 msgid "Seller"
@@ -12075,7 +12139,7 @@ msgstr "विक्रेता"
 
 #: app/Module/UserMessagesModule.php:107 login.php:538 message.php:128
 msgid "Send"
-msgstr ""
+msgstr "भेजें"
 
 #: app/Module/LoggedInUsersModule.php:90 app/Module/UserMessagesModule.php:100
 #: app/Stats.php:5930 app/Stats.php:5932 edit_changes.php:201 message.php:103
@@ -12084,15 +12148,15 @@ msgstr "एक संदेश भेजें"
 
 #: admin_users_bulk.php:41
 msgid "Send a message to all users"
-msgstr ""
+msgstr "सारे यूज़र्स को एक संदेश भेजें"
 
 #: admin_users_bulk.php:46
 msgid "Send a message to users who have never signed in"
-msgstr ""
+msgstr "उन यूज़र्स को संदेश भेजें, जिन्होंने कभी साइन इन नहीं किया"
 
 #: admin_users_bulk.php:51
 msgid "Send a message to users who have not signed in for 6 months"
-msgstr ""
+msgstr "उन यूज़र्स को संदेश भेजें, जिन्होंने 6 महीनों से साइन इन नहीं किया"
 
 #. I18N: Menu entry
 #: admin_users_bulk.php:26 app/Theme/AdministrationTheme.php:165
@@ -12107,7 +12171,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_site_config.php:335
 msgid "Sender name"
-msgstr ""
+msgstr "भेजने वाले का नाम"
 
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:96
@@ -12117,12 +12181,12 @@ msgstr "ईमेल भेजना"
 #. I18N: A configuration setting
 #: admin_site_config.php:428
 msgid "Sending server name"
-msgstr ""
+msgstr "भेजने वाले सर्वर का नाम"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6870
 msgid "Senegal"
-msgstr ""
+msgstr "सेनेगल"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:335
@@ -12167,7 +12231,7 @@ msgstr "सेप्टिडी"
 #. I18N: Name of a country or state
 #: app/Stats.php:6871
 msgid "Serbia"
-msgstr ""
+msgstr "सर्बिया"
 
 #: app/GedcomCode/GedcomCodeRela.php:245
 msgid "Servant"
@@ -12191,7 +12255,7 @@ msgstr "सर्वर की जानकारी"
 #. I18N: A configuration setting
 #: admin_site_config.php:350 setup.php:280
 msgid "Server name"
-msgstr ""
+msgstr "सर्वर का नाम"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:291
@@ -12259,7 +12323,7 @@ msgstr "सेक्सटीडी"
 #. I18N: Name of a country or state
 #: app/Stats.php:6890
 msgid "Seychelles"
-msgstr ""
+msgstr "सेशेल्स"
 
 #: app/Date/JalaliDate.php:188
 msgctxt "Abbreviation for Persian month: Shahrivar"
@@ -12444,12 +12508,12 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1031
 msgid "Show a download link in the media viewer"
-msgstr ""
+msgstr "मीडिया व्यूअर में डाउनलोड की लिंक दिखाएं"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:506
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr ""
+msgstr "“नए यूज़र अकाउंट का अनुरोध” पेज पर स्वीकार्य उपयोग की शर्तें दिखाएं"
 
 #: app/Module/NotesTabModule.php:74
 msgid "Show all notes"
@@ -12574,7 +12638,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_site_config.php:278
 msgid "Show list of family trees"
-msgstr ""
+msgstr "फॅमिली ट्री की लिस्ट दिखाएं"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:424
@@ -12698,7 +12762,7 @@ msgstr ""
 #: admin_trees_config.php:1516
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr ""
+msgstr "किसी स्थान के नाम से %1$s %2$s भाग दिखाएं।"
 
 #: app/Module/HtmlBlockModule.php:325
 msgid "Show the date and time of update"
@@ -12706,7 +12770,7 @@ msgstr ""
 
 #: admin_trees_config.php:1368
 msgid "Show the events of close relatives on the individual page"
-msgstr ""
+msgstr "व्यक्तिगत पेज पर करीबी रिश्तेदारों की घटनाओं को दिखाएं"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:360
@@ -12739,7 +12803,7 @@ msgstr ""
 
 #: admin_trees_config.php:1051
 msgid "Show thumbnail images in charts and family groups."
-msgstr ""
+msgstr "चार्ट और परिवार ग्रुप्स में थंबनेल इमेज दिखाएं।"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:207
@@ -12801,7 +12865,7 @@ msgstr ""
 
 #: admin_module_sidebar.php:87 admin_modules.php:218
 msgid "Sidebar"
-msgstr ""
+msgstr "साइडबार"
 
 #. I18N: Menu entry
 #: admin_module_sidebar.php:28 admin_modules.php:161
@@ -12812,7 +12876,7 @@ msgstr "साइडबार"
 #. I18N: Name of a country or state
 #: app/Stats.php:6877
 msgid "Sierra Leone"
-msgstr ""
+msgstr "सियरा लिओन"
 
 #. I18N: Name of a module
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:69
@@ -12841,7 +12905,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6872
 msgid "Singapore"
-msgstr ""
+msgstr "सिंगापुर"
 
 #: modules_v3/individual_ext_report/report.xml:355
 #: modules_v3/individual_report/report.xml:352
@@ -12872,7 +12936,7 @@ msgstr ""
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
 msgid "Sitemaps"
-msgstr ""
+msgstr "साइटमैप"
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: app/Module/SiteMapModule.php:306
@@ -12935,7 +12999,7 @@ msgstr "स्लाइड शो"
 #. I18N: Name of a country or state
 #: app/Stats.php:6885
 msgid "Slovakia"
-msgstr ""
+msgstr "स्लोवाकिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6886
@@ -12959,17 +13023,20 @@ msgstr "सामाजिक सुरक्षा नंबर"
 #. I18N: Name of a country or state
 #: app/Stats.php:6876
 msgid "Solomon Islands"
-msgstr ""
+msgstr "सोलोमन द्वीप"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6880
 msgid "Somalia"
-msgstr ""
+msgstr "सोमालिया"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:300
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
 msgstr ""
+"कुछ वंशावली सॉफ़्टवेयर GEDCOM ऐसी फ़ाइलों को बनाते हैं जिनमें पूर्ण पथ के सा"
+"थ मीडिया फ़ाइलनाम होते हैं। वह पथ वेब-सर्वर पर मौजूद नहीं होंगे। webtrees को "
+"फ़ाइल खोजने की अनुमति देने के लिए, पथ के पहले भाग को हटाया जाना चाहिए।"
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1606
@@ -12983,7 +13050,7 @@ msgstr ""
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1465
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr ""
+msgstr "कुछ थीम “तथ्य और घटनाओं” के टैब पर चिह्न प्रदर्शित कर सकती हैं।"
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:526
@@ -13092,7 +13159,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6924
 msgid "South Africa"
-msgstr ""
+msgstr "दक्षिण अफ्रीका"
 
 #: statistics.php:688
 msgid "South America"
@@ -13101,22 +13168,22 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6873
 msgid "South Georgia and the South Sandwich Islands"
-msgstr ""
+msgstr "दक्षिण जॉर्जिया एवं दक्षिण सैंडविच द्वीप समूह"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6882
 msgid "South Sudan"
-msgstr ""
+msgstr "दक्षिण सूडान"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6742
 msgid "Spain"
-msgstr ""
+msgstr "स्पेन"
 
 #: app/SurnameTradition.php:81
 msgctxt "Surname tradition"
 msgid "Spanish"
-msgstr ""
+msgstr "स्पेनिश"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:351
@@ -13154,7 +13221,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6804
 msgid "Sri Lanka"
-msgstr ""
+msgstr "श्रीलंका"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:337
@@ -13260,7 +13327,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
 msgid "Stories"
-msgstr ""
+msgstr "कहानियां"
 
 #: app/Module/StoriesModule.php:237
 msgid "Story"
@@ -13278,7 +13345,7 @@ msgstr ""
 
 #: app/Module/UserMessagesModule.php:112 message.php:119
 msgid "Subject"
-msgstr ""
+msgstr "विषय"
 
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:814
@@ -13298,7 +13365,7 @@ msgstr "जमाकर्ता"
 #. I18N: Name of a country or state
 #: app/Stats.php:6868
 msgid "Sudan"
-msgstr ""
+msgstr "सूडान"
 
 #: app/Module/GoogleMapsModule.php:394
 msgid "Suffixes"
@@ -13317,12 +13384,12 @@ msgstr "रविवार"
 #: admin.php:617
 #, php-format
 msgid "Support and documentation can be found at %s."
-msgstr ""
+msgstr "मदद और प्रलेखन %s पर पाए जा सकते हैं।"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6884
 msgid "Suriname"
-msgstr ""
+msgstr "सूरीनाम"
 
 #. I18N: gedcom tag SURN
 #: app/GedcomTag.php:818 help_text.php:297 search.php:236
@@ -13331,11 +13398,11 @@ msgstr "कुलनाम"
 
 #: app/Stats.php:1638 statistics.php:658
 msgid "Surname distribution chart"
-msgstr ""
+msgstr "कुलनाम वितरण चार्ट"
 
 #: admin_trees_config.php:1151
 msgid "Surname list style"
-msgstr ""
+msgstr "कुलनाम लिस्ट प्रकार"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:153
 msgid "Surname option"
@@ -13354,11 +13421,15 @@ msgstr ""
 #: app/SurnameTradition.php:98
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
 msgstr ""
+"किसी व्यक्ती के स्त्री/पुरुष और वैवाहिक स्थिति की पहचान के लिए कुलनामों को "
+"टेढ़ा-मेढ़ा किया जाता है।"
 
 #. I18N: In the Polish surname tradition, ...
 #: app/SurnameTradition.php:93
 msgid "Surnames are inflected to indicate an individual’s gender."
 msgstr ""
+"किसी व्यक्ती के स्त्री/पुरुष की पहचान के लिए कुलनामों को टेढ़ा-मेढ़ा किया "
+"जाता है।"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:355
@@ -13368,7 +13439,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6875
 msgid "Svalbard and Jan Mayen"
-msgstr ""
+msgstr "स्वालबार्ड और जान मायेन"
 
 #. I18N: Reverse the order of two individuals
 #: relationship.php:100
@@ -13378,17 +13449,17 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6888
 msgid "Swaziland"
-msgstr ""
+msgstr "स्वाजीलैंड"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6887
 msgid "Sweden"
-msgstr ""
+msgstr "स्वीडन"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6713
 msgid "Switzerland"
-msgstr ""
+msgstr "स्विट्जरलैंड"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:359
@@ -13402,11 +13473,11 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6891
 msgid "Syria"
-msgstr ""
+msgstr "सीरिया"
 
 #: admin_module_tabs.php:87 admin_modules.php:211
 msgid "Tab"
-msgstr ""
+msgstr "टैब"
 
 #: setup.php:379
 msgid "Table prefix"
@@ -13430,12 +13501,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6905
 msgid "Taiwan"
-msgstr ""
+msgstr "ताइवान"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6896
 msgid "Tajikistan"
-msgstr ""
+msgstr "तजाकिस्तान"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:363
@@ -13469,7 +13540,7 @@ msgstr "तामुज़"
 #. I18N: Name of a country or state
 #: app/Stats.php:6906
 msgid "Tanzania"
-msgstr ""
+msgstr "तंजानिया"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:91
@@ -13479,7 +13550,7 @@ msgstr "टील टॉप"
 #. I18N: A configuration setting
 #: admin_trees_config.php:895
 msgid "Technical help contact"
-msgstr ""
+msgstr "तकनीकी मदद का संपर्क"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:365
@@ -13531,7 +13602,7 @@ msgstr "पाठ"
 #. I18N: Name of a country or state
 #: app/Stats.php:6895
 msgid "Thailand"
-msgstr ""
+msgstr "थाईलैंड"
 
 #: help_text.php:219
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
@@ -13591,7 +13662,7 @@ msgstr ""
 
 #: admin_trees_config.php:1197
 msgid "The date and time of the last update"
-msgstr ""
+msgstr "आख़िरी अपडेट की तारीख और समय"
 
 #: family.php:111
 msgid "The details of this family are private."
@@ -13719,16 +13790,19 @@ msgstr "%s फ़ोल्डर हटा दिया गया है।"
 #: admin_site_config.php:195
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr ""
+"फ़ोल्डर को पूर्ण निर्दिष्ट किया जा सकता है (जैसे: /Home/user_name/"
+"webtrees_data/) या इन्स्टालेशन फ़ोल्डर से संबंधी (जैसे: ../../webtrees_data/"
+")किया जा सकता है।"
 
 #: admin_site_merge.php:205
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "निम्नलिखित तथ्य और घटनाएँ दोनों रिकार्ड में पाई गईं।"
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:252 admin_site_merge.php:298
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "निम्नलिखित तथ्य और घटनाएँ केवल %s के रिकॉर्ड में पाए गए।"
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
@@ -13740,7 +13814,7 @@ msgstr "निम्नलिखित स्थानों को बदल �
 
 #: admin_trees_places.php:115
 msgid "The following places would be changed:"
-msgstr ""
+msgstr "निम्नलिखित स्थानों को बदल दिया जाएगा:"
 
 #: admin_site_access.php:355
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
@@ -13754,11 +13828,13 @@ msgstr "इस विषय के लिए कोई सहायता ले
 #: admin_trees_config.php:909
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
 msgstr ""
+"आपकी वेबसाइट पर आने वाले तकनीकी प्रश्नों या त्रुटियों के बारे में संपर्क किए "
+"जाने वाले व्यक्ति।"
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:887
 msgid "The individual to contact about the genealogy data on this website."
-msgstr ""
+msgstr "इस वेबसाइट के वंशावली डेटा के बारे में संपर्क करने के लिए व्यक्ति।"
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: action.php:152 action.php:156 app/Controller/GedcomRecordController.php:57
@@ -13847,6 +13923,8 @@ msgstr ""
 #: admin_site_config.php:496
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr ""
+"नए यूज़र का खाता बनाने से पहले, उन्हें अपने ईमेल एड्रेस की पुष्टि करने के लि"
+"ए कहा जाएगा।"
 
 #: help_text.php:298
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13859,7 +13937,7 @@ msgstr "पासवर्ड कम से कम छह अक्षरों 
 #. I18N: Help text for the "Password" site configuration setting
 #: admin_site_config.php:407
 msgid "The password required for authentication with the SMTP server."
-msgstr ""
+msgstr "SMTP सर्वर के साथ ऑथेंटिकेशन के लिए पासवर्ड आवश्यक है।"
 
 #: admin_users.php:75 edituser.php:134 setup.php:419
 msgid "The passwords do not match."
@@ -13963,15 +14041,16 @@ msgstr ""
 
 #: admin_site_config.php:242 admin_users.php:427 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
-msgstr ""
+msgstr "दिनांक गणना के लिए समय क्षेत्र आवश्यक है, जैसे कि आज की तारीख जानना।"
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
+msgstr[0] "दो फॅमिली ट्री में %1$s रिकॉर्ड है जो एक समान “XREF” का उपयोग करता है।"
 msgstr[1] ""
+"दो फॅमिली ट्री में %1$s रिकॉर्ड हैं जो एक समान “XREF” का उपयोग करते हैं।"
 
 #: admin_site_upgrade.php:447
 msgid "The upgrade is complete."
@@ -13998,12 +14077,14 @@ msgstr "यूज़रनेम या पासवर्ड गलत है�
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:394
 msgid "The username required for authentication with the SMTP server."
-msgstr ""
+msgstr "SMTP सर्वर के साथ ऑथेंटिकेशन के लिए यूज़रनेम आवश्यक है।"
 
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:951
 msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
 msgstr ""
+"HTML पेज हेडर के “मेटा विवरण” टैग में रखने के लिए मान। फॅमिली ट्री का नाम "
+"इस्तेमाल करने के लिए इस क्षेत्र को खाली छोड़ दें।"
 
 #: admin_pgv_to_wt.php:104
 #, php-format
@@ -14036,7 +14117,7 @@ msgstr "वेबसाइट की वरीयताओं को अपड�
 #: admin_trees_config.php:1547
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
 msgstr ""
-"वेबसाइट www.geonames.org जगह नामों का एक बड़ा डेटाबेस प्रदान करती है। नए "
+"वेबसाइट www.geonames.org जगह के नामों का एक बड़ा डेटाबेस प्रदान करती है। नए "
 "स्थानों में प्रवेश करते समय इसे खोजा जा सकता है। इस सुविधा का उपयोग करने के "
 "लिए, आपको www.geonames.org पर एक निशुल्क खाते के लिए पंजीकरण करना होगा और "
 "यूज़रनेम प्रदान करना होगा।"
@@ -14057,7 +14138,7 @@ msgstr "थीम"
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:27
 msgid "Theme change"
-msgstr ""
+msgstr "थीम परिवर्तन"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:960
@@ -14091,7 +14172,7 @@ msgstr "कोई लंबित परिवर्तन नहीं है�
 
 #: app/Module/ResearchTaskModule.php:151
 msgid "There are no research tasks in this family tree."
-msgstr ""
+msgstr "इस फॅमिली ट्री में कोई रिसर्च टास्क नहीं हैं।"
 
 #: app/Module/SourcesTabModule.php:83
 msgid "There are no source citations for this individual."
@@ -14100,7 +14181,7 @@ msgstr ""
 #: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
 #: app/Theme/AbstractTheme.php:1961
 msgid "There are pending changes for you to moderate."
-msgstr ""
+msgstr "आपके मॉडरेट करने के लिए कुछ लंबित परिवर्तन हैं।"
 
 #: app/Module/RecentChangesModule.php:89
 #, php-format
@@ -14227,7 +14308,7 @@ msgstr[1] ""
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
-msgstr ""
+msgstr "इस फॅमिली ट्री में प्रदर्शित करने के लिए कोई इमेज नहीं है।"
 
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
@@ -14249,11 +14330,16 @@ msgstr ""
 #: admin_site_config.php:186
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
 msgstr ""
+"इस फ़ोल्डर का उपयोग webtrees द्वारा मीडिया फ़ाइलों, GEDCOM फ़ाइलों, टेम्पररी "
+"फ़ाइलों, वगैरह. को संग्रहीत करने के लिए किया जाएगा। इन फ़ाइलों में निजी डेटा "
+"हो सकता है, और इसे इंटरनेट पर उपलब्ध नहीं कराया जाना चाहिए।"
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1006
 msgid "This folder will be used to store the media files for this family tree."
 msgstr ""
+"इस फ़ोल्डर का उपयोग इस फॅमिली ट्री के लिए मीडिया फ़ाइलों को संग्रहीत करने के "
+"लिए किया जाएगा।"
 
 #: app/Filter.php:480
 msgid "This form has expired. Try again."
@@ -14286,13 +14372,13 @@ msgstr ""
 #. I18N: Help text for the “Default individual” configuration setting
 #: admin_trees_config.php:680 edituser.php:207
 msgid "This individual will be selected by default when viewing charts and reports."
-msgstr ""
+msgstr "चार्ट और रिपोर्ट देखने पर यह व्यक्ति डिफ़ॉल्ट रूप से चुना जाएगा।"
 
 #: app/Stats.php:1452 app/Stats.php:2267 app/Stats.php:2375 app/Stats.php:2950
 #: app/Stats.php:3124 app/Stats.php:3422 app/Stats.php:4405 app/Stats.php:4537
 #: app/Stats.php:4586 timeline.php:287
 msgid "This information is private and cannot be shown."
-msgstr ""
+msgstr "यह जानकारी निजी है और इसे दिखाया नहीं जा सकता।"
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
@@ -14388,6 +14474,8 @@ msgstr ""
 #: admin_site_config.php:355
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
 msgstr ""
+"यह SMTP सर्वर का नाम है। “localhost” का अर्थ है कि मेल सेवा आपके वेब सर्वर "
+"वाले कंप्यूटर पर ही चल रही है।"
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1090
@@ -14467,6 +14555,8 @@ msgstr ""
 #: admin_site_config.php:340
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
 msgstr ""
+"इस नाम का उपयोग “प्रेषक” फ़ील्ड में किया जाता है, जब इस सर्वर से स्वचालित ईमे"
+"ल भेजे जाते हैं।"
 
 #: note.php:61
 msgid "This note does not exist or you do not have permission to view it."
@@ -14496,21 +14586,30 @@ msgstr ""
 #: admin_trees_config.php:1480
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
 msgstr ""
+"यह विकल्प नियंत्रित करता है कि व्यक्ती के पेज पर किसी <i>नोट</i> रिकॉर्ड की "
+"सामग्री को स्वचालित रूप से दिखाया जाए या नहीं।"
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: admin_trees_config.php:1495
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
 msgstr ""
+"यह विकल्प नियंत्रित करता है कि व्यक्ती के पेज पर किसी <i>स्रोत</i> रिकॉर्ड की"
+" सामग्री को स्वचालित रूप से दिखाया जाए या नहीं।"
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: admin_trees_config.php:1316
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
 msgstr ""
+"यह विकल्प नियंत्रित करता है कि चार्ट पर बच्चे की जन्मतिथि के आगे पिता और मां "
+"की उम्र दिखाना है या नहीं।"
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: admin_trees_config.php:1189
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
 msgstr ""
+"यह विकल्प नियंत्रित करता है कि जन्म और मृत्यु की अनुमानित तारीखें दिखाना है "
+"या नहीं, बजाय इसके कि उन व्यक्तियों की लिस्ट और चार्ट पर खाली जगह छोड़ दे, "
+"जिनकी तारीखों का पता नहीं है।"
 
 #. I18N: Help text for the “Gender icon on charts” configuration setting
 #: admin_trees_config.php:1303
@@ -14525,7 +14624,7 @@ msgstr ""
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1036
 msgid "This option will make it easier for users to download images."
-msgstr ""
+msgstr "यह विकल्प यूज़र्स के लिए इमेज को डाउनलोड करना आसान बना देगा।"
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:494
@@ -14638,6 +14737,11 @@ msgstr ""
 #: admin_trees_config.php:1358
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
 msgstr ""
+"जन्म और मृत्यु के अलावा तथ्यों की यह लिस्ट कोमा या स्पेस से अलग की हुई होनी "
+"चाहिए, जो आप चार्ट बॉक्स में दिखना चाहते हैं जैसे वंशावली चार्ट। इस लिस्ट में"
+" आपको “GEDCOM 5.5.1 मानक” में निर्धारित फैक्ट टैग उपयोग करने की आवश्यकता है। "
+"उदाहरण के लिए, यदि आप बॉक्स में पेशा (occupation) दिखाना चाहते हैं, तो आप इस "
+"क्षेत्र में “OCCU” जोड़ेंगे।"
 
 #: source.php:60
 msgid "This source does not exist or you do not have permission to view it."
@@ -14667,6 +14771,8 @@ msgstr ""
 #: admin_trees_config.php:931
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
 msgstr ""
+"यह लेख हर एक पेज के टाइटल से जोड़ा जाएगा। इसे ब्राउज़र के टाइटल बार, बुकमार्"
+"क आदि में दिखाया जाएगा।"
 
 #: admin_trees_check.php:180 admin_trees_check.php:185
 msgid "This type of link is not allowed here."
@@ -14684,7 +14790,7 @@ msgstr ""
 
 #: admin_site_upgrade.php:41
 msgid "This website is being upgraded. Try again in a few minutes."
-msgstr ""
+msgstr "इस वेबसाइट को अपग्रेड किया जा रहा है।  कुछ मिनटों में पुन: प्रयास करें।"
 
 #: site-offline.php:71
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
@@ -14703,10 +14809,15 @@ msgstr ""
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr ""
+"यह सभी वंशावली डेटा को “%s” से हटा देगा और इसे GEDCOM फ़ाइल के डेटा से बदल "
+"देगा।"
 
 #: admin_trees_places.php:98
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
 msgstr ""
+"यह उच्चतम-स्तर का हिस्सा या स्थान नाम के कुछ हिस्सों को अपडेट करेगा। उदाहरण "
+"के लिए, “मेक्सिको” “क्विंटाना रो, मैक्सिको” से मेल खाएगा, लेकिन “सांता फे, "
+"न्यू मैक्सिको” से नहीं।"
 
 #. I18N: abbreviation for Thursday
 #: app/Date/CalendarDate.php:379 app/Functions/FunctionsPrint.php:663
@@ -14719,7 +14830,7 @@ msgstr ""
 
 #: admin_trees_config.php:1041 admin_trees_config.php:1046
 msgid "Thumbnail images"
-msgstr ""
+msgstr "थंबनेल इमेज"
 
 #: addmedia.php:459 admin_media_upload.php:208
 msgid "Thumbnail to upload"
@@ -14742,22 +14853,22 @@ msgstr "समय"
 #. I18N: A configuration setting
 #: admin_site_config.php:237 admin_users.php:422 edituser.php:247
 msgid "Time zone"
-msgstr ""
+msgstr "समय क्षेत्र"
 
 #. I18N: Name of a module/chart
 #: app/Controller/TimelineController.php:74
 #: app/Module/TimelineChartModule.php:33 timeline.php:246
 msgid "Timeline"
-msgstr ""
+msgstr "समय-रेखा"
 
 #: admin_site_change.php:387 admin_site_logs.php:327
 msgid "Timestamp"
-msgstr ""
+msgstr "समय-चिह्न"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6899
 msgid "Timor-Leste"
-msgstr ""
+msgstr "तिमोर-लेस्ते"
 
 #: app/Date/JalaliDate.php:186
 msgctxt "Abbreviation for Persian month: Tir"
@@ -14843,6 +14954,9 @@ msgstr ""
 #: admin_trees_config.php:1562
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
 msgstr ""
+"अन्य वंशावली एप्लिकेशन के साथ तालमेल बिठाने के लिए, नोट्स, लेख और लिपियों को "
+"सरल, अप्रारूपित लेख में दर्ज किया जाना चाहिए। हालांकि प्रारूपण प्रस्तुति, "
+"समझ, वगैरह की सहायता के लिए अक्सर आकर्षक होता है।"
 
 #: admin_site_upgrade.php:340
 #, php-format
@@ -14853,6 +14967,11 @@ msgstr ""
 #: admin_site_config.php:189
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
 msgstr ""
+"इस निजी डेटा की सुरक्षा के लिए, webtrees एक अपाचे कॉन्फ़िगरेशन फ़ाइल "
+"(.htaccess) का उपयोग करती है, जो इस फ़ोल्डर के सभी एक्सेस को ब्लॉक करती है। "
+"यदि आपका वेब-सर्वर .htaccess फ़ाइलों का समर्थन नहीं करता है, और आप इस फ़ोल्"
+"डर तक पहुँच को प्रतिबंधित नहीं कर सकते हैं, तो आप अपने वेब दस्तावेज़ों से दू"
+"र एक अलग फ़ोल्डर का चयन कर सकते हैं।"
 
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:377
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
@@ -14862,6 +14981,8 @@ msgstr ""
 #: admin_site_config.php:483
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
 msgstr ""
+"इस लेख को अन्य भाषाओं के लिए सेट करना हो तो, आपको उस भाषा पर स्विच करना होगा"
+", और इस पेज पर फिर से आना होगा।"
 
 #: app/Module/SiteMapModule.php:331
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -14878,12 +14999,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6894
 msgid "Togo"
-msgstr ""
+msgstr "टोगो"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6897
 msgid "Tokelau"
-msgstr ""
+msgstr "टोकेलाऊ"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:371
@@ -14898,33 +15019,33 @@ msgstr "कब्र का पत्थर"
 #. I18N: Name of a country or state
 #: app/Stats.php:6900
 msgid "Tonga"
-msgstr ""
+msgstr "टोंगा"
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:74
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s सर्वोच्च दिया गया नाम"
+msgstr[1] "%s सर्वोच्च दिए गए नाम"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:97
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s सर्वोच्च कुलनाम"
+msgstr[1] "%s सर्वोच्च कुलनाम"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:71
 msgid "Top given name"
-msgstr ""
+msgstr "सर्वोच्च दिया गया नाम"
 
 #. I18N: Name of a module. Top=Most common
 #: app/Module/TopGivenNamesModule.php:31 statistics.php:201
 msgid "Top given names"
-msgstr ""
+msgstr "सर्वोच्च दिए गए नाम"
 
 #: app/Module/GoogleMapsModule.php:3944 app/Module/GoogleMapsModule.php:4020
 #: placelist.php:107
@@ -14934,12 +15055,12 @@ msgstr ""
 #. I18N: i.e. most popular surname.
 #: app/Module/TopSurnamesModule.php:94
 msgid "Top surname"
-msgstr ""
+msgstr "सर्वोच्च कुलनाम"
 
 #. I18N: Name of a module. Top=Most common
 #: app/Module/TopSurnamesModule.php:37 statistics.php:200
 msgid "Top surnames"
-msgstr ""
+msgstr "सर्वोच्च कुलनाम"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:373
@@ -14948,7 +15069,7 @@ msgstr ""
 
 #: admin.php:851
 msgid "Total"
-msgstr ""
+msgstr "कुल"
 
 #: modules_v3/change_report/report.xml:127
 msgid "Total accepted changes: "
@@ -14983,7 +15104,7 @@ msgstr ""
 #: modules_v3/fact_sources/report.xml:354
 #: modules_v3/marriage_report/report.xml:111
 msgid "Total families"
-msgstr ""
+msgstr "कुल परिवार"
 
 #: calendar.php:441 find.php:582 statistics.php:211
 #, php-format
@@ -15083,7 +15204,7 @@ msgstr "ट्राईडी"
 #. I18N: Name of a country or state
 #: app/Stats.php:6901
 msgid "Trinidad and Tobago"
-msgstr ""
+msgstr "त्रिनिदाद और टोबैगो"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:375
@@ -15102,27 +15223,27 @@ msgstr "मंगलवार"
 #. I18N: Name of a country or state
 #: app/Stats.php:6902
 msgid "Tunisia"
-msgstr ""
+msgstr "ट्यूनीशिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6903
 msgid "Turkey"
-msgstr ""
+msgstr "तुर्की"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6898
 msgid "Turkmenistan"
-msgstr ""
+msgstr "तुर्कमेनिस्तान"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6892
 msgid "Turks and Caicos Islands"
-msgstr ""
+msgstr "तुर्क और केकोस द्वीपसमूह"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6904
 msgid "Tuvalu"
-msgstr ""
+msgstr "तुवालु"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:367
@@ -15179,12 +15300,12 @@ msgstr "URL"
 #. I18N: Name of a country or state
 #: app/Stats.php:6909
 msgid "US Minor Outlying Islands"
-msgstr ""
+msgstr "यूएस माइनर आउटलाइंग आइलैंड"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6917
 msgid "US Virgin Islands"
-msgstr ""
+msgstr "यूएस वर्जिन द्वीपसमूह"
 
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: admin_site_upgrade.php:41
@@ -15194,12 +15315,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6907
 msgid "Uganda"
-msgstr ""
+msgstr "युगांडा"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6908
 msgid "Ukraine"
-msgstr ""
+msgstr "यूक्रेन"
 
 #: setup.php:267 setup.php:339
 msgid "Unable to connect using this username and password. Your server gave the following error."
@@ -15227,6 +15348,10 @@ msgstr "यूनिक ID"
 #: admin_trees_config.php:725
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
 msgstr ""
+"अनन्य पहचानकर्ता एक ही रिकॉर्ड को विभिन्न फॅमिली ट्री और विभिन्न प्रणालियों "
+"में पाए जाने की अनुमति देते हैं। जब भी रिकॉर्ड बनाए जाएंगे या अपडेट किए "
+"जाएंगे, उन्हें जोड़ा जाएगा। यदि आप नहीं चाहते कि अनन्य पहचानकर्ता प्रदर्शित "
+"हों, तो आप गोपनीयता नियमों का उपयोग करके उन्हें छिपा सकते हैं।"
 
 #: admin_trees_config.php:1647
 msgid "Unique individual facts"
@@ -15243,17 +15368,17 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6678
 msgid "United Arab Emirates"
-msgstr ""
+msgstr "संयुक्त अरब अमीरात"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6753
 msgid "United Kingdom"
-msgstr ""
+msgstr "यूनाइटेड किंगडम"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6911 statistics.php:685
 msgid "United States"
-msgstr ""
+msgstr "संयुक्त राज्य"
 
 #. I18N: Name of a country or state
 #: app/GedcomRecord.php:1158 app/GedcomRecord.php:1162 app/Stats.php:6670
@@ -15263,7 +15388,7 @@ msgstr "अज्ञात"
 #: app/Stats.php:5190
 msgctxt "unknown century"
 msgid "Unknown"
-msgstr ""
+msgstr "अज्ञात"
 
 #: app/Controller/IndividualController.php:256
 #: app/Controller/IndividualController.php:259
@@ -15292,7 +15417,7 @@ msgstr "असंगठित GEDCOM कोड"
 
 #: admin_media.php:642
 msgid "Unused files"
-msgstr ""
+msgstr "अप्रयुक्त फ़ाइलें"
 
 #. I18N: The system is about to…; %s is a .ZIP file.
 #: admin_site_upgrade.php:273
@@ -15303,7 +15428,7 @@ msgstr "%s को एक टेम्पररी फ़ोल्डर मे�
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:35
 msgid "Upcoming events"
-msgstr ""
+msgstr "आने वाले कार्यक्रम"
 
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:78
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:83
@@ -15356,7 +15481,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6910
 msgid "Uruguay"
-msgstr ""
+msgstr "उरुग्वे"
 
 #: app/Module/GoogleMapsModule.php:419
 msgid "Use Google Maps™ for the place hierarchy"
@@ -15368,7 +15493,7 @@ msgstr ""
 
 #: admin_site_config.php:119
 msgid "Use SMTP to send messages"
-msgstr ""
+msgstr "संदेश भेजने के लिए SMTP का उपयोग करें"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
@@ -15402,26 +15527,29 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_site_config.php:376
 msgid "Use password"
-msgstr ""
+msgstr "पासवर्ड का उपयोग करें"
 
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "संदेश भेजने के लिए sendmail का उपयोग करें"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
 msgstr ""
+"छाया-आकृति का इस्तेमाल तब करें जब उस व्यक्ति के लिए कोई हाइलाइट की गई इमेज "
+"तय नहीं की गई हो। उपयोग की गई छाया-आकृति स्त्री/पुरुष के लिए अलग अलग विशिष्ट "
+"हैं।"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1059
 msgid "Use silhouettes"
-msgstr ""
+msgstr "छाया-आकृति इस्तेमाल करें"
 
 #: admin_trees_config.php:1534
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr ""
+msgstr "स्थानों पर स्वतः पूर्ण के लिए GeoNames डेटाबेस का उपयोग करें"
 
 #: login.php:491
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -15438,7 +15566,7 @@ msgstr ""
 #: admin_site_change.php:351 admin_site_change.php:391 admin_site_logs.php:291
 #: admin_site_logs.php:331 edit_changes.php:183
 msgid "User"
-msgstr ""
+msgstr "यूज़र"
 
 #. I18N: Menu entry
 #: admin_users.php:298 admin_users.php:670 admin_users.php:794
@@ -15473,7 +15601,7 @@ msgstr ""
 #: edituser.php:158 login.php:192 login.php:258 login.php:323 login.php:347
 #: login.php:440 login.php:526 setup.php:432
 msgid "Username"
-msgstr ""
+msgstr "यूज़रनेम"
 
 #: app/Module/LoginBlockModule.php:101 login.php:224
 msgid "Username or email address"
@@ -15486,7 +15614,7 @@ msgstr ""
 #. I18N: Menu entry
 #: admin.php:643 admin.php:651 app/Theme/AdministrationTheme.php:162
 msgid "Users"
-msgstr ""
+msgstr "यूज़र्स"
 
 #: admin.php:731
 msgid "Users who are signed in"
@@ -15503,7 +15631,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6912
 msgid "Uzbekistan"
-msgstr ""
+msgstr "उज़्बेकिस्तान"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:379
@@ -15513,17 +15641,17 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6919
 msgid "Vanuatu"
-msgstr ""
+msgstr "वानुअतु"
 
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:42
 msgid "Various statistics charts."
-msgstr ""
+msgstr "विभिन्न आँकड़ों की चार्ट।"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6913
 msgid "Vatican City"
-msgstr ""
+msgstr "वेटिकन सिटी"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:88
@@ -15594,7 +15722,7 @@ msgstr "सत्यापित"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:383
 msgid "Vernal, Utah, United States"
-msgstr "वर्नल, यूटा, यूनाइटेड स्टेट्स"
+msgstr "वर्नल, यूटा, संयुक्त राज्य"
 
 #. I18N: gedcom tag VERS
 #: admin_modules.php:193 app/GedcomTag.php:856
@@ -15719,12 +15847,12 @@ msgstr ""
 
 #: admin_trees_config.php:1095
 msgid "Watermarks"
-msgstr ""
+msgstr "वाटरमार्क"
 
 #. I18N: Help text for the “Images without watermarks” configuration setting
 #: admin_trees_config.php:1141
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "वॉटरमार्क वैकल्पिक हैं और आम तौर पर केवल दर्शकों को दिखाए जाते हैं।"
 
 #. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1118
@@ -15739,7 +15867,7 @@ msgstr ""
 #. I18N: Menu entry
 #: admin_trees_config.php:914 app/Theme/AdministrationTheme.php:94
 msgid "Website"
-msgstr ""
+msgstr "वेबसाइट"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:305
@@ -15780,12 +15908,12 @@ msgstr "वज़न"
 #: app/Module/UserWelcomeModule.php:51
 #, php-format
 msgid "Welcome %s"
-msgstr ""
+msgstr "आपका स्वागत है %s"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:466
 msgid "Welcome text on sign-in page"
-msgstr ""
+msgstr "साइन-इन पेज पर स्वागत का लेख"
 
 #: login.php:166
 msgid "Welcome to this genealogy website"
@@ -15794,7 +15922,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6741
 msgid "Western Sahara"
-msgstr ""
+msgstr "पश्चिमी सहारा"
 
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: admin_trees_config.php:2136
@@ -15843,7 +15971,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1018
 msgid "Who can upload new media files"
-msgstr ""
+msgstr "नई मीडिया फ़ाइलें कौन अपलोड कर सकता है"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
@@ -15913,11 +16041,11 @@ msgstr ""
 
 #: app/Stats.php:421 app/Stats.php:519
 msgid "With sources"
-msgstr ""
+msgstr "सूत्रों के साथ"
 
 #: app/Stats.php:420 app/Stats.php:518
 msgid "Without sources"
-msgstr ""
+msgstr "बिना स्रोतों के"
 
 #. I18N: gedcom tag _WITN
 #: app/GedcomCode/GedcomCodeRela.php:267 app/GedcomTag.php:1763
@@ -15930,7 +16058,7 @@ msgstr "गवाह"
 #: app/SurnameTradition.php:73 app/SurnameTradition.php:92
 #: app/SurnameTradition.php:97
 msgid "Wives take their husband’s surname."
-msgstr ""
+msgstr "पत्नियाँ अपने पति का कुलनाम अपनाती हैं।"
 
 #: statistics.php:679
 msgid "World"
@@ -15949,7 +16077,7 @@ msgstr "बरसी"
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:37
 msgid "Yahrzeiten"
-msgstr ""
+msgstr "यह्रज़ेंटेन"
 
 #: app/Theme/AbstractTheme.php:1067 calendar.php:203 search.php:248
 msgid "Year"
@@ -15966,7 +16094,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6923
 msgid "Yemen"
-msgstr ""
+msgstr "यमन"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
 #: login.php:340
@@ -15993,6 +16121,8 @@ msgstr "नीचे दी गई लिंक का उपयोग करक
 #: admin_site_config.php:255 admin_trees_config.php:978 edituser.php:287
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
 msgstr ""
+"आप “थीम” का उपयोग करके webtrees की दिखावट बदल सकते हैं। प्रत्येक थीम का एक "
+"अलग अंदाज़, लेआउट, रंग योजना वगैरह होता है।"
 
 #. I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14.
 #: admin_trees_config.php:842
@@ -16075,7 +16205,7 @@ msgstr ""
 
 #: admin_trees_manage.php:201
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
-msgstr ""
+msgstr "आपने एक अलग नाम की GEDCOM फ़ाइल का चयन किया है। क्या ये सही है?"
 
 #: logout.php:27
 msgid "You have signed out."
@@ -16125,6 +16255,8 @@ msgstr ""
 #: admin_trees_merge.php:96
 msgid "You must renumber the records in one of the trees before you can merge them."
 msgstr ""
+"इससे पहले कि आप उन्हें मर्ज कर सकें, आपको दोनों ट्री में से किसी एक के रिकॉर्"
+"ड को पुनः अंकित करना होगा।"
 
 #: app/Module/ChartsBlockModule.php:138
 msgid "You must select an individual and a chart type in the block preferences"
@@ -16145,7 +16277,7 @@ msgstr "इस वेबसाइट को एक्सेस करने क�
 
 #: admin_trees_manage.php:320
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "आपको एक फॅमिली ट्री बनाने की आवश्यकता है।"
 
 #: login.php:567
 msgid "You need to review the account details."
@@ -16247,16 +16379,18 @@ msgstr ""
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr ""
+"आपका वेब सर्वर PHP version %s का उपयोग कर रहा है, जिसे अब सिक्युरिटी अपडेट "
+"नहीं मिल रहे हैं। आपको जल्द से जल्द किसी नए वर्शन में अपग्रेड करना चाहिए।"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6925
 msgid "Zambia"
-msgstr ""
+msgstr "जाम्बिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6926
 msgid "Zimbabwe"
-msgstr ""
+msgstr "जिम्बाब्वे"
 
 #: app/Module/ClippingsCartModule.php:381
 #: app/Module/ClippingsCartModule.php:768
@@ -16266,11 +16400,11 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:1497 app/Module/GoogleMapsModule.php:2344
 #: fanchart.php:109
 msgid "Zoom"
-msgstr ""
+msgstr "ज़ूम"
 
 #: timeline.php:313
 msgid "Zoom in"
-msgstr ""
+msgstr "ज़ूम इन"
 
 #: app/Theme/AbstractTheme.php:756 app/Theme/AbstractTheme.php:808
 msgid "Zoom in/out on this box."
@@ -16279,7 +16413,7 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:3381 app/Module/GoogleMapsModule.php:3470
 #: app/Module/GoogleMapsModule.php:3967
 msgid "Zoom level"
-msgstr ""
+msgstr "ज़ूम लेवल"
 
 #: app/Module/GoogleMapsModule.php:349
 msgid "Zoom level of map"
@@ -16287,7 +16421,7 @@ msgstr ""
 
 #: timeline.php:314
 msgid "Zoom out"
-msgstr ""
+msgstr "ज़ूम आउट"
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:84
@@ -16345,11 +16479,11 @@ msgstr "दत्तक नाम"
 
 #: app/Stats.php:2913
 msgid "adoption"
-msgstr ""
+msgstr "दत्तक"
 
 #: app/Module/TopPageViewsModule.php:167
 msgid "after"
-msgstr ""
+msgstr "के बाद"
 
 #. I18N: Gedcom AFT dates
 #: app/Date.php:313
@@ -16403,7 +16537,7 @@ msgstr "हमेशा"
 #: modules_v3/descendancy_report/report.xml:433
 #: modules_v3/descendancy_report/report.xml:486
 msgid "and"
-msgstr ""
+msgstr "और"
 
 #: app/Functions/Functions.php:1092
 msgctxt "father’s brother’s wife"
@@ -16456,7 +16590,7 @@ msgstr ""
 
 #: app/Module/TopPageViewsModule.php:167
 msgid "before"
-msgstr ""
+msgstr "से पहले"
 
 #. I18N: Gedcom BEF dates
 #: app/Date.php:310
@@ -16472,7 +16606,7 @@ msgstr "%s और %s के बीच"
 
 #: app/Stats.php:2910
 msgid "birth"
-msgstr ""
+msgstr "जन्म"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:79
@@ -16573,11 +16707,11 @@ msgstr "साले/साली"
 
 #: app/Module/TopSurnamesModule.php:165
 msgid "bullet list"
-msgstr ""
+msgstr "गोली लिस्ट"
 
 #: app/Stats.php:2914
 msgid "burial"
-msgstr ""
+msgstr "दफ़्न"
 
 #: app/GedcomTag.php:1715
 msgid "by"
@@ -16592,11 +16726,11 @@ msgstr "परिकलित %s"
 #. I18N: A button label.
 #: app/Module/ClippingsCartModule.php:809
 msgid "cancel"
-msgstr ""
+msgstr "रद्द"
 
 #: app/Stats.php:2915
 msgid "census added"
-msgstr ""
+msgstr "जनगणना शामिल"
 
 #: app/Stats.php:2585 app/Stats.php:3926 app/Stats.php:3928 app/Stats.php:4940
 #: app/Stats.php:4942 app/Stats.php:4944 app/Stats.php:5190
@@ -16656,7 +16790,7 @@ msgstr "कलर्स"
 
 #: app/Module/TopSurnamesModule.php:165
 msgid "compact list"
-msgstr ""
+msgstr "ठोस लिस्ट"
 
 #. I18N: A button label.
 #: admin_pgv_to_wt.php:183 admin_pgv_to_wt.php:1152 admin_site_merge.php:391
@@ -16675,7 +16809,7 @@ msgstr "जारी"
 #. I18N: A button label.
 #: admin_trees_manage.php:688
 msgid "create"
-msgstr ""
+msgstr "बनाएँ"
 
 #. I18N: a program feature
 #: setup.php:135
@@ -16722,18 +16856,18 @@ msgstr "समधी/समधन"
 
 #: app/Stats.php:2911
 msgid "death"
-msgstr ""
+msgstr "मृत्यु"
 
 #. I18N: Measure of latitude/longitude
 #: app/Module/GoogleMapsModule.php:3359 app/Module/GoogleMapsModule.php:3370
 msgid "degrees"
-msgstr ""
+msgstr "डिग्री"
 
 #. I18N: A button label.
 #: admin_site_change.php:374 admin_site_clean.php:115 admin_site_logs.php:314
 #: admin_users.php:772
 msgid "delete"
-msgstr ""
+msgstr "हटाएं"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:28 admin_site_access.php:35
@@ -16757,7 +16891,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:445
 #: app/Module/ClippingsCartModule.php:810 app/Module/GoogleMapsModule.php:4083
 msgid "download"
-msgstr ""
+msgstr "डाउनलोड"
 
 #: app/Module/GoogleMapsModule.php:3372
 msgid "east"
@@ -16775,7 +16909,7 @@ msgstr ""
 #: admin_trees_config.php:2077
 #: app/Module/FrequentlyAskedQuestionsModule.php:365
 msgid "edit"
-msgstr ""
+msgstr "एडिट"
 
 #: app/Functions/Functions.php:569
 msgid "eighth cousin"
@@ -16947,12 +17081,12 @@ msgstr ""
 #. I18N: A button label, first page
 #: admin_trees_config.php:1508 app/I18N.php:222
 msgid "first"
-msgstr ""
+msgstr "प्रथम"
 
 #: admin_trees_config.php:1519
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr ""
+msgstr "प्रथम"
 
 #. I18N: A Spanish relationship name, such as first great-nephew
 #: app/Functions/Functions.php:635
@@ -18781,7 +18915,7 @@ msgstr "घंटे:मिनट या घंटे:मिनट:सेकं�
 
 #: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:342
 msgid "hide"
-msgstr ""
+msgstr "छुपाएं"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:277
@@ -18813,7 +18947,7 @@ msgstr "आप्रवास नाम"
 #. I18N: A button label.
 #: app/Module/GoogleMapsModule.php:4044
 msgid "import"
-msgstr ""
+msgstr "आयात"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
@@ -18868,12 +19002,12 @@ msgstr "जोर्स कम्प्लीमेंटरेस"
 #. I18N: A button label, last page
 #: admin_trees_config.php:1508 app/I18N.php:223
 msgid "last"
-msgstr ""
+msgstr "अंतिम"
 
 #: admin_trees_config.php:1520
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
-msgstr ""
+msgstr "अंतिम"
 
 #. I18N: A button label (a verb).
 #: inverselink.php:152
@@ -18905,7 +19039,7 @@ msgstr "मार्कडाउन"
 
 #: app/Stats.php:2912
 msgid "marriage"
-msgstr ""
+msgstr "विवाह"
 
 #: modules_v3/descendancy_report/report.xml:245
 msgctxt "FEMALE"
@@ -18952,7 +19086,7 @@ msgstr "नाना/नानी"
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition.php:78
 msgid "matrilineal"
-msgstr ""
+msgstr "मातृवंशीय"
 
 #: app/Module/GoogleMapsModule.php:361
 msgid "maximum"
@@ -19150,7 +19284,7 @@ msgstr "कोई नहीं"
 #: app/SurnameTradition.php:100
 msgctxt "Surname tradition"
 msgid "none"
-msgstr ""
+msgstr "कोई नहीं"
 
 #. I18N: time format “%a” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:87
@@ -19219,7 +19353,7 @@ msgstr "साथी"
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr ""
+msgstr "पैतृक"
 
 #: app/Functions/Functions.php:840
 msgctxt "father’s father"
@@ -19239,7 +19373,7 @@ msgstr "दादा/दादी"
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition.php:75
 msgid "patrilineal"
-msgstr ""
+msgstr "पितृवंशीय"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:56
@@ -19260,7 +19394,7 @@ msgstr ""
 #. I18N: A button label.
 #: admin_trees_places.php:108
 msgid "preview"
-msgstr ""
+msgstr "पूर्वदर्शन"
 
 #. I18N: A button label, previous page
 #: app/I18N.php:225 app/Module/BatchUpdateModule.php:246
@@ -19333,7 +19467,7 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:4343 lifespan.php:109 medialist.php:196
 #: timeline.php:315
 msgid "reset"
-msgstr ""
+msgstr "रीसेट"
 
 #. I18N: http://en.wikipedia.org/wiki/Web_crawler
 #: admin_site_access.php:29 admin_site_access.php:36
@@ -19360,7 +19494,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:197
 msgid "save"
-msgstr ""
+msgstr "सुरक्षित"
 
 #. I18N: A button label.
 #: admin_site_change.php:366 admin_site_logs.php:306 find.php:154 find.php:171
@@ -19368,7 +19502,7 @@ msgstr ""
 #: medialist.php:193 modules_v3/GEDFact_assistant/census/census-edit.php:110
 #: search.php:143 search.php:185 search.php:300 search_advanced.php:288
 msgid "search"
-msgstr ""
+msgstr "सर्च"
 
 #. I18N: A Spanish relationship name, such as second great-nephew
 #: app/Functions/Functions.php:637
@@ -19575,7 +19709,7 @@ msgstr ""
 #: admin_trees_config.php:43 app/Module/FrequentlyAskedQuestionsModule.php:456
 #: app/Module/GoogleMapsModule.php:342 app/Module/StoriesModule.php:361
 msgid "show"
-msgstr ""
+msgstr "दिखाएं"
 
 #: statistics.php:765
 msgid "show the chart"
@@ -19765,7 +19899,7 @@ msgstr "जीवनसाथी"
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: admin_site_config.php:112
 msgid "ssl"
-msgstr ""
+msgstr "SSL"
 
 #: app/Functions/Functions.php:1142
 msgctxt "father’s wife’s son"
@@ -19976,7 +20110,7 @@ msgstr "पौना-चक्र"
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:113
 msgid "tls"
-msgstr ""
+msgstr "TLS"
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:319
@@ -20049,7 +20183,7 @@ msgstr "फूफा/मौसा"
 #: app/Module/GoogleMapsModule.php:3931 app/Module/GoogleMapsModule.php:3938
 #: app/Module/GoogleMapsModule.php:3979 app/Place.php:141
 msgid "unknown"
-msgstr ""
+msgstr "अज्ञात"
 
 #: app/Module/FamilyNavigatorModule.php:230
 #: app/Module/InteractiveTree/TreeView.php:342
@@ -20069,12 +20203,12 @@ msgstr "अविश्वसनीय सबूत"
 #. I18N: A button label.
 #: admin_trees_places.php:109
 msgid "update"
-msgstr ""
+msgstr "अपडेट"
 
 #. I18N: A button label.
 #: admin_media_upload.php:263 app/Module/GoogleMapsModule.php:4062
 msgid "upload"
-msgstr ""
+msgstr "अपलोड"
 
 #. I18N: A button label.
 #: ancestry.php:92 app/Module/GoogleMapsModule.php:738 branches.php:49
@@ -20103,7 +20237,7 @@ msgstr ""
 
 #: app/Theme/WebtreesTheme.php:133
 msgid "webtrees"
-msgstr ""
+msgstr "वेबट्रीस"
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:110
@@ -20113,7 +20247,7 @@ msgstr ""
 
 #: message.php:40 message.php:260 message.php:320
 msgid "webtrees message"
-msgstr ""
+msgstr "webtrees संदेश"
 
 #: setup.php:276
 #, php-format
@@ -20158,7 +20292,7 @@ msgstr "पत्नी"
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:149
 msgid "xenea"
-msgstr ""
+msgstr "शेन्या"
 
 #: timeline.php:130
 msgid "years"
