@@ -63,7 +63,8 @@ class FavoritesRepository implements FavoritesRepositoryInterface
     public function gedcomFavorites(): string
     {
         $module = $this->module_service
-            ->findByInterface(FamilyTreeFavoritesModule::class);
+            ->findByInterface(FamilyTreeFavoritesModule::class)
+            ->first();
 
         if ($module instanceof FamilyTreeFavoritesModule) {
             return $module->getBlock($this->tree, 0, ModuleBlockInterface::CONTEXT_EMBED);
@@ -78,7 +79,8 @@ class FavoritesRepository implements FavoritesRepositoryInterface
     public function userFavorites(): string
     {
         $module = $this->module_service
-            ->findByInterface(UserFavoritesModule::class);
+            ->findByInterface(UserFavoritesModule::class)
+            ->first();
 
         if ($module instanceof UserFavoritesModule) {
             return $module->getBlock($this->tree, 0, ModuleBlockInterface::CONTEXT_EMBED);
@@ -94,7 +96,8 @@ class FavoritesRepository implements FavoritesRepositoryInterface
     {
         $count  = 0;
         $module = $this->module_service
-            ->findByInterface(FamilyTreeFavoritesModule::class);
+            ->findByInterface(FamilyTreeFavoritesModule::class)
+            ->first();
 
         if ($module instanceof FamilyTreeFavoritesModule) {
             $count = count($module->getFavorites($this->tree));
@@ -110,7 +113,8 @@ class FavoritesRepository implements FavoritesRepositoryInterface
     {
         $count  = 0;
         $module = $this->module_service
-            ->findByInterface(UserFavoritesModule::class);
+            ->findByInterface(UserFavoritesModule::class)
+            ->first();
 
         if ($module instanceof UserFavoritesModule) {
             $count = count($module->getFavorites($this->tree, Auth::user()));
