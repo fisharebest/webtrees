@@ -442,21 +442,6 @@ a:hover {
     text-decoration: underline!important;
 }
 
-/* ==== Theme select block === */
-.theme_form ul {
-	margin: -10px auto;
-}
-
-.theme_form li {
-	visibility: hidden;
-}
-
-.theme_form li ul li {
-	display: inline-block;
-	padding: 10px;
-	visibility: visible;
-}
-
 /* ==== FAQ table styles ===== */
 table.faq {
 	background-color: #ddd;

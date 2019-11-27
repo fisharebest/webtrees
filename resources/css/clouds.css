@@ -1022,21 +1022,6 @@ a:hover .name1, a:hover .name2 {
 	vertical-align: top;
 }
 
-/* ==== Theme select block === */
-.theme_form ul {
-	margin: -10px auto;
-}
-
-.theme_form li {
-	visibility: hidden;
-}
-
-.theme_form li ul li {
-	display: inline-block;
-	padding: 10px;
-	visibility: visible;
-}
-
 /* ==== FAQ table styles ===== */
 table.faq {
 	background-color: #eee;
