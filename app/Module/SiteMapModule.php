@@ -223,10 +223,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
         } else {
             $tree = $this->tree_service->find((int) $match[1]);
 
-            if ($tree === null) {
-                throw new HttpNotFoundException('No such tree');
-            }
-
             $records = $this->sitemapRecords($tree, $match[2], self::RECORDS_PER_VOLUME, self::RECORDS_PER_VOLUME * $match[3]);
 
             $content = view('modules/sitemap/sitemap-file.xml', ['records' => $records]);
