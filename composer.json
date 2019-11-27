@@ -53,7 +53,7 @@
         "illuminate/database": "~5.8",
         "illuminate/support": "~5.8",
         "league/commonmark": "~1.0",
-        "league/commonmark-ext-table": "*",
+        "league/commonmark-ext-table": "~2.1",
         "league/flysystem": "~1.0",
         "league/flysystem-cached-adapter": "~1.0",
         "league/flysystem-ziparchive": "~1.0",
