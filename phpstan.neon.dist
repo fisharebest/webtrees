@@ -1,0 +1,8 @@
+includes:
+	- phpstan-baseline.neon
+
+parameters:
+    ignoreErrors:
+        - '#Call to an undefined method Aura\\Router\\Map::extras\(\)\.#'
+        - '#Call to an undefined method Illuminate\\Support\\Fluent::references\(\)\.#'
+        - '#Call to an undefined method Illuminate\\Database\\Query\\Builder::whereContains\(\).#'

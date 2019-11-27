@@ -1,0 +1,39 @@
+name: Unit tests
+
+on: [push, pull_request]
+
+jobs:
+  run:
+    runs-on: ${{ matrix.operating-system }}
+
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+        php-version: ['7.1', '7.2', '7.3', '7.4']
+
+    name: Testing PHP ${{ matrix.php-version }} on ${{ matrix.operating-system }}
+
+    steps:
+      - uses: shivammathur/setup-php@master
+        with:
+          php-version: ${{ matrix.php-version }}
+          extension-csv: gd,intl,mbstring,pdo_sqlite,sqlite3,zip
+          coverage: pcov
+
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+
+      - run: composer validate
+
+      - run: composer install --prefer-dist --no-progress --no-suggest --ignore-platform-reqs
+
+      - run: composer require pcov/clobber
+      - run: vendor/bin/pcov clobber
+
+      - run: vendor/bin/phpunit --coverage-clover=tests/coverage.xml
+
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: tests/coverage.xml

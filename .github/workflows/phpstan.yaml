@@ -1,0 +1,25 @@
+name: Static analysis
+
+on: [push, pull_request]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    name: phpstan
+
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+
+      - uses: shivammathur/setup-php@master
+        with:
+          php-version: 7.4
+          extension-csv: gd,intl,sqlite,zip
+          coverage: disable
+
+      - run: composer global require phpstan/phpstan phpstan/extension-installer phpstan/phpstan-deprecation-rules phpstan/phpstan-strict-rules phpstan/phpstan-phpunit
+
+      - run: composer install --no-progress --no-suggest --ignore-platform-reqs
+
+      - run: ~/.composer/vendor/bin/phpstan analyze --no-progress --level=max app modules_v4 index.php
