@@ -89,11 +89,11 @@ class MediaFileService
     /**
      * Returns the given size from an ini value in bytes.
      *
-     * @param $size
+     * @param string $size
      *
      * @return int
      */
-    private function parseIniFileSize($size): int
+    private function parseIniFileSize(string $size): int
     {
         $number = (int) $size;
 
