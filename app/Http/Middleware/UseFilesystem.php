@@ -55,8 +55,6 @@ class UseFilesystem implements MiddlewareInterface
             ->withAttribute('filesystem.root', $root_filesystem)
             ->withAttribute('filesystem.root.name', realpath($root_dir) . '/');
 
-        define('WT_DATA_DIR', $data_dir);
-
         return $handler->handle($request);
     }
 }

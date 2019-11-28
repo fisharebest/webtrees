@@ -62,15 +62,17 @@ class Webtrees
     // The root folder of this installation
     public const ROOT_DIR = __DIR__ . '/../';
 
-    // Some system data needs a local storage, e.g. for caching.
-    // All user data should be accessed via a filesystem object.
-    public const DATA_DIR = self::ROOT_DIR . 'data/';
+    // This is the location of system data, such as temporary and cache files.
+    // The system files are always in this location.
+    // It is also the default location of user data, such as media and GEDCOM files.
+    // The user files could be anywhere supported by Flysystem.
+    public const DATA_DIR  = self::ROOT_DIR . 'data/';
 
     // Location of the file containing the database connection details.
-    public const CONFIG_FILE = self::ROOT_DIR . 'data/config.ini.php';
+    public const CONFIG_FILE = self::DATA_DIR . 'config.ini.php';
 
     // Location of the file that triggers maintenance mode.
-    public const OFFLINE_FILE = self::ROOT_DIR . 'data/offline.txt';
+    public const OFFLINE_FILE = self::DATA_DIR . 'offline.txt';
 
     // Location of our modules.
     public const MODULES_PATH = 'modules_v4/';

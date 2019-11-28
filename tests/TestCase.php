@@ -87,7 +87,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         (new WebRoutes())->load($router_container->getMap());
         app()->instance(RouterContainer::class, $router_container);
 
-        defined('WT_DATA_DIR') || define('WT_DATA_DIR', Webtrees::ROOT_DIR . 'data/');
         I18N::init('en-US', true);
 
         if (static::$uses_database) {

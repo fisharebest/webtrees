@@ -82,10 +82,8 @@ class UpgradeControllerTest extends TestCase
     /**
      * @return void
      */
-    public function testStepInvalid(): void
+    public function testIgnoreStepInvalid(): void
     {
-        $this->expectException(HttpNotFoundException::class);
-
         $controller = new UpgradeController(
             new TreeService(),
             new UpgradeService(new TimeoutService())
@@ -94,7 +92,10 @@ class UpgradeControllerTest extends TestCase
         $request = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Invalid'])
             ->withAttribute('filesystem.data', new Filesystem(new NullAdapter()))
             ->withAttribute('filesystem.root', new Filesystem(new NullAdapter()));
-        $controller->step($request);
+
+        $response = $controller->step($request);
+
+        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**

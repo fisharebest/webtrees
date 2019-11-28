@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -46,7 +47,6 @@ use Throwable;
 use function assert;
 use function e;
 use function explode;
-use function filesize;
 use function getimagesize;
 use function ini_get;
 use function intdiv;
@@ -246,7 +246,7 @@ class MediaController extends AbstractAdminController
 
                 $sort_columns = [0 => 0];
 
-                $callback = function (array $row) use ($data_filesystem, $media_folder, $media_trees): array {
+                $callback = function (array $row) use ($data_filesystem, $media_trees): array {
                     $mime_type = $data_filesystem->getMimeType($row[0]);
 
                     if (explode('/', $mime_type)[0] === 'image') {
@@ -275,7 +275,7 @@ class MediaController extends AbstractAdminController
                         ])) . '" href="#">' . I18N::translate('Delete') . '</a></p>';
 
                     return [
-                        $this->mediaFileInfo($media_folder, $row[0]) . $delete_link,
+                        $this->mediaFileInfo($data_filesystem, $row[0]) . $delete_link,
                         $img,
                         $create_form,
                     ];
@@ -333,20 +333,19 @@ class MediaController extends AbstractAdminController
     /**
      * Generate some useful information and links about a media file.
      *
-     * @param string $media_folder
-     * @param string $file
+     * @param FilesystemInterface $data_filesystem
+     * @param string              $file
      *
      * @return string
      */
-    private function mediaFileInfo(string $media_folder, string $file): string
+    private function mediaFileInfo(FilesystemInterface $data_filesystem, string $file): string
     {
         $html = '<dl>';
         $html .= '<dt>' . I18N::translate('Filename') . '</dt>';
         $html .= '<dd>' . e($file) . '</dd>';
 
-        $full_path = WT_DATA_DIR . $media_folder . $file;
-        try {
-            $size = filesize($full_path);
+        if ($data_filesystem->has($file)) {
+            $size = $data_filesystem->getSize($file);
             $size = intdiv($size + 1023, 1024); // Round up to next KB
             /* I18N: size of file in KB */
             $size = I18N::translate('%s KB', I18N::number($size));
@@ -354,18 +353,18 @@ class MediaController extends AbstractAdminController
             $html .= '<dd>' . $size . '</dd>';
 
             try {
-                $imgsize = getimagesize($full_path);
+                // This will work for local filesystems.  For remote filesystems, we will
+                // need to copy the file locally to work out the image size.
+                $imgsize = getimagesize(Webtrees::DATA_DIR .  $file);
                 $html    .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
                 /* I18N: image dimensions, width × height */
                 $html .= '<dd>' . I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
             } catch (Throwable $ex) {
                 // Not an image, or not a valid image?
             }
-
-            $html .= '</dl>';
-        } catch (Throwable $ex) {
-            // Not a file?  Not an image?
         }
+
+        $html .= '</dl>';
 
         return $html;
     }
