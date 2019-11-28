@@ -699,6 +699,8 @@ $(function () {
     };
     $("select.select2").select2({
         language: select2_languages[lang] || lang,
+        // Needed for elements that are initially hidden.
+        width: "100%",
         // Do not escape - we do it on the server.
         escapeMarkup: function (x) {
             return x;
