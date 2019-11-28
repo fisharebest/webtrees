@@ -347,9 +347,7 @@ class ImportThumbnailsController extends AbstractAdminController
         $cache = app('cache.files');
         assert($cache instanceof Cache);
 
-        $cache_key = 'pixels-' . md5($path);
-
-        return $cache->remember($cache_key, static function () use ($filesystem, $path): array {
+        return $cache->remember('pixels-' . $path, static function () use ($filesystem, $path): array {
             $blob    = $filesystem->read($path);
             $manager = new ImageManager();
             $image   = $manager->make($blob)->resize(self::FINGERPRINT_PIXELS, self::FINGERPRINT_PIXELS);

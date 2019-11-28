@@ -25,6 +25,7 @@ use Symfony\Contracts\Cache\ItemInterface;
 
 /**
  * Wrapper around the symfony PSR6 cache library.
+ * Hash the keys to protect against characters that are not allowed in PSR6.
  */
 class Cache
 {
@@ -52,7 +53,7 @@ class Cache
      */
     public function remember(string $key, Closure $closure, int $ttl = null)
     {
-        return $this->cache->get($key, static function (ItemInterface $item) use ($closure, $ttl) {
+        return $this->cache->get(md5($key), static function (ItemInterface $item) use ($closure, $ttl) {
             $item->expiresAfter($ttl);
 
             return $closure();
@@ -66,6 +67,6 @@ class Cache
      */
     public function forget(string $key): void
     {
-        $this->cache->delete($key);
+        $this->cache->delete(md5($key));
     }
 }

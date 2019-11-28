@@ -52,7 +52,7 @@ class UserService
      */
     public function find($user_id): ?User
     {
-        return app('cache.array')->remember('user-service-' . $user_id, static function () use ($user_id): ?User {
+        return app('cache.array')->remember('user-' . $user_id, static function () use ($user_id): ?User {
             return DB::table('user')
                 ->where('user_id', '=', $user_id)
                 ->get()

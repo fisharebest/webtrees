@@ -68,7 +68,7 @@ class Location
      */
     public function id(): int
     {
-        return app('cache.array')->remember('location-id-' . $this->location_name, function () {
+        return app('cache.array')->remember('location-' . $this->location_name, function () {
             // The "top-level" location won't exist in the database.
             if ($this->parts->isEmpty()) {
                 return 0;
