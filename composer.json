@@ -100,7 +100,7 @@
         ],
         "webtrees:pre-commit-hook": [
             "@composer webtrees:phpcs",
-            "@composer webtrees:phpstan -- --level=0",
+            "@composer webtrees:phpstan -- --level=1",
             "@composer webtrees:phan -- --minimum-severity=6",
             "@composer webtrees:test"
         ],
@@ -108,7 +108,7 @@
             "### PHP-CODE-SNIFFER",
             "@composer webtrees:phpcs",
             "### PHPSTAN",
-            "@composer webtrees:phpstan -- --level=1",
+            "@composer webtrees:phpstan -- --level=2",
             "### PHAN",
             "@composer webtrees:phan -- --minimum-severity=5",
             "### PSALM",
