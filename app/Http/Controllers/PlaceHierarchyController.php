@@ -44,8 +44,6 @@ use function assert;
  */
 class PlaceHierarchyController extends AbstractBaseController
 {
-    private const MAP_MODULE = 'openstreetmap';
-
     /** @var SearchService */
     private $search_service;
 
