@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-29 11:12+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-29 21:49+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -8168,7 +8168,7 @@ msgstr "मीडिया फाइल"
 #: app/GedcomTag.php:902 resources/xml/reports/occupation_report.xml:5
 #: resources/xml/reports/occupation_report.xml:54
 msgid "Occupation"
-msgstr "व्यवसाय"
+msgstr "पेशा"
 
 #. I18N: gedcom tag ORDI
 #: app/GedcomTag.php:907
@@ -9125,7 +9125,7 @@ msgstr "नानी/दादी की मृत्यु"
 #: app/GedcomTag.php:1711 app/GedcomTag.php:1722 app/GedcomTag.php:1733
 #: resources/views/admin/trees-preferences.phtml:512
 msgid "Death of a grand-parent"
-msgstr "एक पूर्वजकी मृत्यु"
+msgstr "किसी पूर्वज की मृत्यु"
 
 #: app/GedcomTag.php:1715
 msgid "Death of a paternal grandfather"
@@ -12630,7 +12630,7 @@ msgstr "किसी व्यक्ति से जुड़े नोट्�
 #: resources/xml/reports/occupation_report.xml:3
 #: resources/xml/reports/occupation_report.xml:37
 msgid "Occupations"
-msgstr "व्यवसाय"
+msgstr "पेशा"
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:56
@@ -12916,7 +12916,7 @@ msgstr "अगला ईमेल रिमाइंडर भेजा जा�
 #: resources/views/modules/descendancy/sidebar.phtml:28
 #: resources/views/search-replace-page.phtml:35
 msgid "Search"
-msgstr "खोजें"
+msgstr "सर्च"
 
 #. I18N: Description of the “Search” module
 #: app/Module/SearchMenuModule.php:59
@@ -15370,7 +15370,7 @@ msgstr "यूज़र"
 #: resources/views/search-general-page.phtml:105
 #: resources/views/search-phonetic-page.phtml:106
 msgid "search"
-msgstr "खोजें"
+msgstr "सर्च"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:87
@@ -16257,7 +16257,7 @@ msgstr "यह उच्चतम-स्तर का हिस्सा या 
 #: resources/views/search-general-page.phtml:16
 #: resources/views/search-replace-page.phtml:17
 msgid "Search for"
-msgstr "खोजें"
+msgstr "सर्च"
 
 #: resources/views/admin/trees-places.phtml:28
 #: resources/views/search-replace-page.phtml:26
@@ -16511,7 +16511,7 @@ msgstr "चार्ट में दिखाने के लिए अन्�
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:419
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "जन्म और मृत्यु के अलावा तथ्यों की यह लिस्ट कोमा या स्पेस से अलग की हुई होनी चाहिए, जो आप चार्ट बॉक्स में दिखना चाहते हैं  जैसे वंशावली चार्ट। इस लिस्ट में आपको “GEDCOM 5.5.1 मानक” में निर्धारित फैक्ट टैग उपयोग करने की आवश्यकता है। उदाहरण के लिए, यदि आप बॉक्स में व्यवसाय (occupation) दिखाना चाहते हैं, तो आप इस क्षेत्र में “OCCU” जोड़ेंगे।"
+msgstr "जन्म और मृत्यु के अलावा तथ्यों की यह लिस्ट कोमा या स्पेस से अलग की हुई होनी चाहिए, जो आप चार्ट बॉक्स में दिखना चाहते हैं जैसे वंशावली चार्ट। इस लिस्ट में आपको “GEDCOM 5.5.1 मानक” में निर्धारित फैक्ट टैग उपयोग करने की आवश्यकता है। उदाहरण के लिए, यदि आप बॉक्स में पेशा (occupation) दिखाना चाहते हैं, तो आप इस क्षेत्र में “OCCU” जोड़ेंगे।"
 
 #: resources/views/admin/trees-preferences.phtml:424
 msgid "Individual pages"
@@ -16529,34 +16529,34 @@ msgstr "तथ्य चिह्न"
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml:528
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr ""
+msgstr "कुछ थीम “तथ्य और घटनाओं” के टैब पर चिह्न प्रदर्शित कर सकती हैं।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:538
 msgid "Automatically expand notes"
-msgstr ""
+msgstr "स्वचालित रूप से नोट्स को फैलाएं"
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:544
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
-msgstr ""
+msgstr "यह विकल्प नियंत्रित करता है कि व्यक्ती के पेज पर किसी <i>नोट</i> रिकॉर्ड की सामग्री को स्वचालित रूप से दिखाया जाए या नहीं।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:554
 msgid "Automatically expand sources"
-msgstr ""
+msgstr "स्वचालित रूप से स्रोतों को फैलाएं"
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: resources/views/admin/trees-preferences.phtml:560
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
-msgstr ""
+msgstr "यह विकल्प नियंत्रित करता है कि व्यक्ती के पेज पर किसी <i>स्रोत</i> रिकॉर्ड की सामग्री को स्वचालित रूप से दिखाया जाए या नहीं।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:572
 #: resources/views/admin/trees-preferences.phtml:574
 #: resources/views/admin/trees-preferences.phtml:578
 msgid "Abbreviate place names"
-msgstr ""
+msgstr "स्थानो के नामों को छोटा करें"
 
 #. I18N: A button label, first page
 #: resources/views/admin/trees-preferences.phtml:575
@@ -16564,7 +16564,7 @@ msgstr ""
 #: resources/views/media-list-page.phtml:79
 #: resources/views/media-list-page.phtml:178
 msgid "first"
-msgstr ""
+msgstr "प्रथम"
 
 #. I18N: A button label, last page
 #: resources/views/admin/trees-preferences.phtml:575
@@ -16572,49 +16572,49 @@ msgstr ""
 #: resources/views/media-list-page.phtml:103
 #: resources/views/media-list-page.phtml:202
 msgid "last"
-msgstr ""
+msgstr "अंतिम"
 
 #. I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
 #: resources/views/admin/trees-preferences.phtml:583
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr ""
+msgstr "प्रथम"
 
 #: resources/views/admin/trees-preferences.phtml:583
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
-msgstr ""
+msgstr "अंतिम"
 
 #. I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
 #: resources/views/admin/trees-preferences.phtml:582
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr ""
+msgstr "किसी स्थान के नाम से %1$s %2$s भाग दिखाएं।"
 
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: resources/views/admin/trees-preferences.phtml:587
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr ""
+msgstr "स्थान के नाम अक्सर चार्ट, लिस्ट वगैरह पर फिट होने के लिए काफ़ी लंबे होते हैं, उन्हें नाम के प्रथम कुछ भाग, जैसे कि <i>गांव, ज़िला</i>, या अंतिम कुछ भाग जैसे कि <i>राज्य, देश</i>, दिखाकर छोटा किया जा सकता है।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:599
 msgid "Format text and notes"
-msgstr ""
+msgstr "लेख और नोट्स को प्रारूपित करें"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:604
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr ""
+msgstr "अन्य वंशावली एप्लिकेशन के साथ तालमेल बिठाने के लिए, नोट्स, लेख और लिपियों को सरल, अप्रारूपित लेख में दर्ज किया जाना चाहिए। हालांकि प्रारूपण प्रस्तुति, समझ, वगैरह की सहायता के लिए अक्सर आकर्षक होता है।"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:607
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr ""
+msgstr "मार्कडाउन प्रारूपण की एक सरल प्रणाली है, जिसका इस्तेमाल विकिपीडिया जैसी वेबसाइटों पर किया जाता है। यह हेडर और सब-हेडर, बोल्ड और इटैलिक लेख, सूचियाँ, टेबल वगैरह बनाने के लिए विनीत विराम चिह्न वर्णों का उपयोग करता है।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:619
 msgid "Allow users to see raw GEDCOM records"
-msgstr ""
+msgstr "यूज़र्स को मूल GEDCOM रिकॉर्ड देखने दें"
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml:624
