@@ -64,22 +64,22 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     // Limits
     public const MAXIMUM_GENERATIONS = 10;
 
-    private const LINE_COLORS = [
-        '#FF0000',
+    private const COLORS = [
+        ['line' => '#FF0000', 'icon' => 'red'],
         // Red
-        '#00FF00',
+        ['line' => '#00FF00', 'icon' => 'green'],
         // Green
-        '#0000FF',
+        ['line' => '#0000FF', 'icon' => 'blue'],
         // Blue
-        '#FFB300',
+        ['line' => '#FFB300', 'icon' => 'yellow'],
         // Gold
-        '#00FFFF',
+        ['line' => '#00FFFF', 'icon' => 'cyan'],
         // Cyan
-        '#FF00FF',
-        // Purple
-        '#7777FF',
-        // Light blue
-        '#80FF80'
+        ['line' => '#FFA500', 'icon' => 'orange'],
+        // Orange
+        ['line' => '#00008B', 'icon' => 'blue-dark'],
+        // Dark blue
+        ['line' => '#80FF80', 'icon' => 'green-light']
         // Light green
     ];
 
@@ -199,7 +199,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
         $xref        = $request->getQueryParams()['xref'];
         $individual  = Individual::getInstance($xref, $tree);
-        $color_count = count(self::LINE_COLORS);
+        $color_count = count(self::COLORS);
 
         $facts = $this->getPedigreeMapFacts($request, $this->chart_service);
 
@@ -223,11 +223,12 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                 $longitude = $location->longitude();
             }
 
-            $icon = ['color' => 'Gold', 'name' => 'bullseye '];
             if ($latitude !== 0.0 || $longitude !== 0.0) {
                 $polyline         = null;
-                $color            = self::LINE_COLORS[log($id, 2) % $color_count];
-                $icon['color']    = $color; //make icon color the same as the line
+
+                $color_index      = log($id, 2) % $color_count;
+                $color            = self::COLORS[$color_index]['line'];
+                $iconcolor        = self::COLORS[$color_index]['icon']; //make icon color the same as the line
                 $sosa_points[$id] = [$latitude, $longitude];
                 $sosa_parent      = intdiv($id, 2);
                 if (array_key_exists($sosa_parent, $sosa_points)) {
@@ -247,14 +248,13 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                 $geojson['features'][] = [
                     'type'       => 'Feature',
                     'id'         => $id,
-                    'valid'      => true,
                     'geometry'   => [
                         'type'        => 'Point',
                         'coordinates' => [$longitude, $latitude],
                     ],
                     'properties' => [
                         'polyline' => $polyline,
-                        'icon'     => $icon,
+                        'iconcolor'=> $iconcolor,
                         'tooltip'  => strip_tags($fact->place()->fullName()),
                         'summary'  => view('modules/pedigree-map/events', $this->summaryData($individual, $fact, $id)),
                         'zoom'     => $location->zoom() ?: 2,
@@ -298,9 +298,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         }
 
         $map = view('modules/pedigree-map/chart', [
-            'module'      => $this->name(),
             'individual'  => $individual,
-            'type'        => 'pedigree',
             'generations' => $generations,
         ]);
 

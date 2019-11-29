@@ -38,24 +38,24 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     use ModuleTabTrait;
 
     protected const ICONS = [
-        'BIRT' => ['color' => 'lightcoral', 'name' => 'baby-carriage'],
-        'BAPM' => ['color' => 'lightcoral', 'name' => 'water'],
-        'BARM' => ['color' => 'lightcoral', 'name' => 'star-of-david'],
-        'BASM' => ['color' => 'lightcoral', 'name' => 'star-of-david'],
-        'CHR'  => ['color' => 'lightcoral', 'name' => 'water'],
-        'CHRA' => ['color' => 'lightcoral', 'name' => 'water'],
-        'MARR' => ['color' => 'green', 'name' => 'infinity'],
-        'DEAT' => ['color' => 'black', 'name' => 'times'],
-        'BURI' => ['color' => 'sienna', 'name' => 'times'],
-        'CREM' => ['color' => 'black', 'name' => 'times'],
-        'CENS' => ['color' => 'mediumblue', 'name' => 'list'],
-        'RESI' => ['color' => 'mediumblue', 'name' => 'home'],
-        'OCCU' => ['color' => 'mediumblue', 'name' => 'industry'],
-        'GRAD' => ['color' => 'plum', 'name' => 'university'],
-        'EDUC' => ['color' => 'plum', 'name' => 'university'],
+        'BIRT' => ['color' => 'pink', 'name' => 'fa-baby-carriage'],
+        'BAPM' => ['color' => 'pink', 'name' => 'fa-water'],
+        'BARM' => ['color' => 'pink', 'name' => 'fa-star-of-david'],
+        'BASM' => ['color' => 'pink', 'name' => 'fa-star-of-david'],
+        'CHR'  => ['color' => 'pink', 'name' => 'fa-water'],
+        'CHRA' => ['color' => 'pink', 'name' => 'fa-water'],
+        'MARR' => ['color' => 'green', 'name' => 'fa-infinity'],
+        'DEAT' => ['color' => 'black', 'name' => 'fa-times'],
+        'BURI' => ['color' => 'purple', 'name' => 'fa-times'],
+        'CREM' => ['color' => 'black', 'name' => 'fa-times'],
+        'CENS' => ['color' => 'cyan', 'name' => 'fa-list'],
+        'RESI' => ['color' => 'cyan', 'name' => 'fa-home'],
+        'OCCU' => ['color' => 'cyan', 'name' => 'fa-industry'],
+        'GRAD' => ['color' => 'violet', 'name' => 'fa-university'],
+        'EDUC' => ['color' => 'violet', 'name' => 'fa-university'],
     ];
 
-    protected const DEFAULT_ICON = ['color' => 'gold', 'name' => 'bullseye '];
+    protected const DEFAULT_ICON = ['color' => 'yellow', 'name' => 'fa-bullseye '];
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -165,20 +165,17 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                 $longitude = $location->longitude();
             }
 
-            $icon = static::ICONS[$fact->getTag()] ?? static::DEFAULT_ICON;
-
             if ($latitude !== 0.0 || $longitude !== 0.0) {
                 $geojson['features'][] = [
                     'type'       => 'Feature',
                     'id'         => $id,
-                    'valid'      => true,
                     'geometry'   => [
                         'type'        => 'Point',
                         'coordinates' => [$longitude, $latitude],
                     ],
                     'properties' => [
                         'polyline' => null,
-                        'icon'     => $icon,
+                        'icon'     => static::ICONS[$fact->getTag()] ?? static::DEFAULT_ICON,
                         'tooltip'  => strip_tags($fact->place()->fullName()),
                         'summary'  => view('modules/places/event-sidebar', $this->summaryData($indi, $fact)),
                         'zoom'     => $location->zoom(),

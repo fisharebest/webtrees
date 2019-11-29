@@ -1,5 +1,13 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\View;
+
+/**
+ * @var Individual $individual
+ */
+?>
+
 
 <div class="py-4">
     <div class="row gchart osm-wrapper">
@@ -33,10 +41,6 @@
         height: 15px;
         width: 25px
     }
-
-    .osm-sidebar .border-danger:hover {
-        cursor: not-allowed
-    }
 </style>
 <?php View::endpush() ?>
 
@@ -49,13 +53,6 @@
       minZoom: 2,
       providerName: "OpenStreetMap.Mapnik",
       providerOptions: [],
-      I18N: {
-        zoomInTitle: <?= json_encode(I18N::translate('Zoom in')) ?>,
-        zoomOutTitle: <?= json_encode(I18N::translate('Zoom out')) ?>,
-        reset: <?= json_encode(I18N::translate('Reset to initial map state')) ?>,
-        noData: <?= json_encode(I18N::translate('No mappable items')) ?>,
-        error: <?= json_encode(I18N::translate('An unknown error occurred')) ?>
-      }
     };
 
     let map          = null;
@@ -77,15 +74,19 @@
           } else {
             map.flyToBounds(markers.getBounds().pad(0.2));
           }
+          let sidebar = $(".osm-sidebar");
+          sidebar.scrollTo(sidebar.children(":first"));
+
           return false;
         };
         let anchor   = L.DomUtil.create('a', 'leaflet-control-reset', container);
+        let reset = <?= json_encode(I18N::translate('Reset to initial map state')) ?>;
         anchor.href  = '#';
-        anchor.title = baseData.I18N.reset;
+        anchor.title = reset;
         anchor.role  = 'button';
         $(anchor).attr('aria-label', 'reset');
         let image = L.DomUtil.create('i', 'fas fa-redo', anchor);
-        image.alt = baseData.I18N.reset;
+        image.alt = reset;
 
         return container;
       },
@@ -103,26 +104,22 @@
       });
       L.tileLayer.provider(baseData.providerName, baseData.providerOptions).addTo(map);
       L.control.zoom({ // Add zoom with localised text
-        zoomInTitle : baseData.I18N.zoomInTitle,
-        zoomOutTitle: baseData.I18N.zoomOutTitle,
+        zoomInTitle : <?= json_encode(I18N::translate('Zoom in')) ?>,
+        zoomOutTitle: <?= json_encode(I18N::translate('Zoom out')) ?>,
       }).addTo(map);
     };
 
     /**
      *
-     * @param reference
-     * @param mapType
      * @param Generations
      * @private
      */
-    let _addLayer = function (reference, mapType, Generations) {
+    let _addLayer = function (Generations) {
       let geoJsonLayer;
       let domObj  = '.osm-sidebar';
       let sidebar = '';
 
       $.getJSON(<?= json_encode(route('module', ['module' => 'pedigree-map', 'action' => 'MapData', 'tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>, {
-        reference:   reference,
-        type:        mapType,
         generations: Generations
       })
         .done(function (data, textStatus, jqXHR) {
@@ -132,13 +129,12 @@
           geoJsonLayer = L.geoJson(data, {
             pointToLayer : function (feature, latlng) {
               return new L.Marker(latlng, {
-                icon : L.BeautifyIcon.icon({
-                  icon           : feature.properties.icon['name'],
-                  borderColor    : 'transparent',
-                  backgroundColor: feature.valid ? feature.properties.icon['color'] : 'transparent',
-                  iconShape      : 'marker',
-                  textColor      : feature.valid ? 'white' : 'transparent',
-                }),
+                  icon: L.ExtraMarkers.icon({
+                      icon: 'fa-bullseye',
+                      prefix: 'fas',
+                      shape: "circle",
+                      markerColor: feature.properties.iconcolor,
+                  }),
                 title: feature.properties.tooltip,
                 alt  : feature.properties.tooltip,
                 id   : feature.id
@@ -160,8 +156,7 @@
                 markers.addLayer(pline);
               }
               layer.bindPopup(feature.properties.summary);
-              let myclass = feature.valid ? 'gchart' : 'border border-danger';
-              sidebar += `<li class="${myclass}" data-id=${feature.id}>${feature.properties.summary}</li>`;
+              sidebar += `<li class="gchart" data-id=${feature.id}>${feature.properties.summary}</li>`;
             },
           });
         })
@@ -183,11 +178,11 @@
               break;
             case 204: // No data
               map.fitWorld();
-              $(domObj).append('<div class="bg-info text-white">' + baseData.I18N.noData + '</div>');
+              $(domObj).append('<div class="bg-info text-white">' + <?= json_encode(I18N::translate('No mappable items')) ?> + '</div>');
               break;
             default: // Anything else
               map.fitWorld();
-              $(domObj).append('<div class="bg-danger text-white">' + baseData.I18N.error + '</div>');
+              $(domObj).append('<div class="bg-danger text-white">' + <?= json_encode(I18N::translate('An unknown error occurred')) ?> + '</div>');
           }
           $(domObj).slideDown(300);
         });
@@ -209,12 +204,10 @@
 
     /**
      *
-     * @param reference string
-     * @param mapType string
      * @param generations integer
      * @private
      */
-    let _initialize = function (reference, mapType, generations) {
+    let _initialize = function (generations) {
       // Activate marker popup when sidebar entry clicked
       $(function () {
         $('.osm-sidebar')
@@ -242,24 +235,20 @@
       });
 
       _drawMap();
-      _addLayer(reference, mapType, generations);
+      _addLayer(generations);
     };
 
     return {
       /**
        *
-       * @param reference string
-       * @param mapType string
        * @param generations integer
        */
-      drawMap: function (reference, mapType, generations) {
-        mapType     = typeof mapType !== 'undefined' ? mapType : 'individual';
-        generations = typeof generations !== 'undefined' ? generations : null;
-        _initialize(reference, mapType, generations);
+      drawMap: function (generations) {
+        _initialize(generations);
       }
     };
   })();
 
-    WT_OSM.drawMap(<?= json_encode($individual->xref()) ?>, <?= json_encode($type) ?>, <?= json_encode($generations ?? null) ?>);
+    WT_OSM.drawMap(<?= json_encode($generations ?? null) ?>);
 </script>
 <?php View::endpush() ?>

@@ -1,7 +1,18 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+use Fisharebest\Webtrees\I18N;
+use \Fisharebest\Webtrees\Place;
+
+/**
+ * @var bool $showlink
+ * @var Place $place
+ * @var string $flag
+ * @var array $stats
+ *
+ */
+?>
 
 <div class="row">
-    <div class="col-sm-12 label">
+    <div class="offset-sm-1 col-sm-7 label">
         <?php if ($showlink) : ?>
             <a href="<?= e($place->url()) ?>">
                 <?= $place->placeName() ?>
@@ -9,25 +20,15 @@
         <?php else : ?>
             <?= $place->placeName() ?>
         <?php endif ?>
-
-        <?php if ($flag) : ?>
-            <img src='<?= $flag ?>'>
-        <?php endif ?>
     </div>
-
-    <div class="offset-sm-1 col-sm-7">
-        <?= I18N::translate('Individuals') ?>
-    </div>
-
-    <div class="col-sm-3 align-digits">
-        <?= $stats['INDI'] ?>
-    </div>
-
-    <div class="offset-sm-1 col-sm-7">
-        <?= I18N::translate('Families') ?>
-    </div>
-
-    <div class="col-sm-3 align-digits">
-        <?= $stats['FAM'] ?>
-    </div>
+    <?php if ($flag) : ?>
+        <div class="col-sm-3 align-digits">
+            <img class="flag" alt = "<?=strip_tags($place->placeName()) ?>" title = "<?=strip_tags($place->placeName()) ?>" src='<?= $flag ?>'>
+        </div>
+    <?php endif ?>
+    <div class="offset-sm-1 col-sm-7"><?= I18N::translate('Individuals') ?></div>
+    <div class="col-sm-3 align-digits"><?= $stats['INDI'] ?></div>
+    <div class="offset-sm-1 col-sm-7"><?= I18N::translate('Families') ?></div>
+    <div class="col-sm-3 align-digits"><?= $stats['FAM'] ?></div>
 </div>
+

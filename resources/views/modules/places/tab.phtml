@@ -72,6 +72,9 @@
           } else {
             map.flyToBounds(markers.getBounds().pad(0.2));
           }
+          let sidebar = $(".osm-sidebar");
+          sidebar.scrollTo(sidebar.children(":first"));
+
           return false;
         };
         let anchor        = L.DomUtil.create("a", "leaflet-control-reset", container);
@@ -113,13 +116,12 @@
       geoJsonLayer = L.geoJson(data, {
         pointToLayer:  function (feature, latlng) {
           return new L.Marker(latlng, {
-            icon:  L.BeautifyIcon.icon({
-              icon:            feature.properties.icon["name"],
-              borderColor:     "transparent",
-              backgroundColor: feature.valid ? feature.properties.icon["color"] : "transparent",
-              iconShape:       "marker",
-              textColor:       feature.valid ? "white" : "transparent",
-            }),
+              icon: L.ExtraMarkers.icon({
+                  icon: feature.properties.icon["name"],
+                  prefix: 'fas',
+                  shape: 'circle',
+                  markerColor: feature.properties.icon["color"],
+              }),
             title: feature.properties.tooltip,
             alt:   feature.properties.tooltip,
             id:    feature.id,
@@ -136,10 +138,6 @@
             });
         },
         onEachFeature: function (feature, layer) {
-          if (feature.properties.polyline) {
-            let pline = L.polyline(feature.properties.polyline.points, feature.properties.polyline.options);
-            markers.addLayer(pline);
-          }
           layer.bindPopup(feature.properties.summary);
           let myclass = feature.valid ? "gchart" : "border border-danger";
           sidebar += `<li class="${myclass}" data-id=${feature.id}>${feature.properties.summary}</li>`;

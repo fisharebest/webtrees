@@ -37,16 +37,17 @@ import {
     faLock, faMagic, faMap, faMapMarkerAlt, faMars, faPaintBrush, faPause, faPencilAlt,
     faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchMinus, faSearchPlus,
     faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faThList, faThumbtack,
-    faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench
+    faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench,
+    faGlobe, faStarOfDavid, faInfinity, faWater
 } from "@fortawesome/free-solid-svg-icons";
 library.add(
-    faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
-    faCalendar, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
-    faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
-    faLock, faMagic, faMap, faMapMarkerAlt, faMars, faPaintBrush, faPause, faPencilAlt,
+    faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBabyCarriage, faBan, faBars, faBullseye,
+    faCalendar, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless, faGlobe,
+    faGripHorizontal, faGripLines, faHistory, faHome, faInfinity, faIndustry, faInfoCircle, faLanguage,
+    faLink, faList, faLock, faMagic, faMap, faMapMarkerAlt, faMars, faPaintBrush, faPause, faPencilAlt,
     faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchMinus, faSearchPlus,
-    faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faThList, faThumbtack,
-    faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench
+    faSitemap, faSortAmountDown, faStarOfDavid, faStepForward, faStop, faSyncAlt, faThList, faThumbtack,
+    faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench, faWater
 );
 dom.watch();
 
@@ -135,4 +136,8 @@ import "leaflet";
 import "leaflet-providers";
 window.GeoSearch = require("leaflet-geosearch");
 import "leaflet.markercluster";
-import "beautifymarker";
+import "leaflet-extra-markers";
+import {faBabyCarriage} from "@fortawesome/free-solid-svg-icons/faBabyCarriage";
+import {faBullseye} from "@fortawesome/free-solid-svg-icons/faBullseye";
+import {faHome} from "@fortawesome/free-solid-svg-icons/faHome";
+import {faIndustry} from "@fortawesome/free-solid-svg-icons/faIndustry";
