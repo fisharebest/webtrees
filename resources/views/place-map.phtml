@@ -159,7 +159,7 @@ use Fisharebest\Webtrees\View;
                 }
             } else {
                 map.fitWorld();
-                  $(domObj).append("<div class=\"bg-info text-white\">" + baseData.I18N.noData + "</div>");
+                  $(domObj).append("<div class=\"bg-info text-white\">" + <?= json_encode(I18N::translate('No mappable items')) ?> + "</div>");
             }
 
             $(domObj).slideDown(300);
