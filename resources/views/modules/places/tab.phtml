@@ -72,6 +72,9 @@
           } else {
             map.flyToBounds(markers.getBounds().pad(0.2));
           }
+          let sidebar = $(".osm-sidebar");
+          sidebar.scrollTo(sidebar.children(":first"));
+
           return false;
         };
         let anchor        = L.DomUtil.create("a", "leaflet-control-reset", container);
