@@ -110,7 +110,6 @@ use Fisharebest\Webtrees\View;
     };
 
     /**
-     *
      * @param Generations
      * @private
      */
@@ -203,7 +202,6 @@ use Fisharebest\Webtrees\View;
     };
 
     /**
-     *
      * @param generations integer
      * @private
      */
@@ -240,7 +238,6 @@ use Fisharebest\Webtrees\View;
 
     return {
       /**
-       *
        * @param generations integer
        */
       drawMap: function (generations) {
@@ -249,6 +246,6 @@ use Fisharebest\Webtrees\View;
     };
   })();
 
-    WT_OSM.drawMap(<?= json_encode($generations ?? null) ?>);
+    WT_OSM.drawMap(<?= json_encode($generations) ?>);>>>>>>> master
 </script>
 <?php View::endpush() ?>

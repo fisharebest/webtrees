@@ -100,8 +100,6 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
 
         // Add extra dimensions (i.e. filtering categories)
         $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
         $user = $request->getAttribute('user');
 
         $parameters['dimensions'] = (object) [

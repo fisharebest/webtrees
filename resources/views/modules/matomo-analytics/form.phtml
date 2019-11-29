@@ -9,7 +9,6 @@
     </div>
 </div>
 
-<!-- MATOMO_URL -->
 <div class="row form-group">
     <label for="MATOMO_URL" class="col-sm-3 col-form-label">
         <?= /* I18N: A configuration setting */ I18N::translate('URL') ?>
@@ -18,7 +17,3 @@
         <input type="text" class="form-control" id="MATOMO_URL" name="MATOMO_URL" value="<?= e($MATOMO_URL ?? '') ?>" placeholder="//example.com/piwik/" maxlength="255">
     </div>
 </div>
-
-<p>
-    <?= I18N::translate('Tracking and analytics are not added to the control panel.') ?>
-</p>
