@@ -139,10 +139,6 @@
             });
         },
         onEachFeature: function (feature, layer) {
-          if (feature.properties.polyline) {
-            let pline = L.polyline(feature.properties.polyline.points, feature.properties.polyline.options);
-            markers.addLayer(pline);
-          }
           layer.bindPopup(feature.properties.summary);
           let myclass = feature.valid ? "gchart" : "border border-danger";
           sidebar += `<li class="${myclass}" data-id=${feature.id}>${feature.properties.summary}</li>`;

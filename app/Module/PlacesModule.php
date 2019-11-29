@@ -165,20 +165,17 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                 $longitude = $location->longitude();
             }
 
-            $icon = static::ICONS[$fact->getTag()] ?? static::DEFAULT_ICON;
-
             if ($latitude !== 0.0 || $longitude !== 0.0) {
                 $geojson['features'][] = [
                     'type'       => 'Feature',
                     'id'         => $id,
-                    'valid'      => true,
                     'geometry'   => [
                         'type'        => 'Point',
                         'coordinates' => [$longitude, $latitude],
                     ],
                     'properties' => [
                         'polyline' => null,
-                        'icon'     => $icon,
+                        'icon'     => static::ICONS[$fact->getTag()] ?? static::DEFAULT_ICON,
                         'tooltip'  => strip_tags($fact->place()->fullName()),
                         'summary'  => view('modules/places/event-sidebar', $this->summaryData($indi, $fact)),
                         'zoom'     => $location->zoom(),

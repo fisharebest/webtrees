@@ -41,10 +41,6 @@ use Fisharebest\Webtrees\View;
         height: 15px;
         width: 25px
     }
-
-    .osm-sidebar .border-danger:hover {
-        cursor: not-allowed
-    }
 </style>
 <?php View::endpush() ?>
 
@@ -160,8 +156,7 @@ use Fisharebest\Webtrees\View;
                 markers.addLayer(pline);
               }
               layer.bindPopup(feature.properties.summary);
-              let myclass = feature.valid ? 'gchart' : 'border border-danger';
-              sidebar += `<li class="${myclass}" data-id=${feature.id}>${feature.properties.summary}</li>`;
+              sidebar += `<li class="gchart" data-id=${feature.id}>${feature.properties.summary}</li>`;
             },
           });
         })
