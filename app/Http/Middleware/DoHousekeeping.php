@@ -34,10 +34,7 @@ use function assert;
  */
 class DoHousekeeping implements MiddlewareInterface
 {
-    // Delete cache files after 1 hour.
-    private const MAX_CACHE_AGE = 60 * 60;
-
-    // Delete thumnnails after 90 days.
+    // Delete thumbnails after 90 days.
     private const MAX_THUMBNAIL_AGE = 60 * 60 * 24 * 90;
 
     // Delete files in /data/tmp after 1 hour.
@@ -100,12 +97,10 @@ class DoHousekeeping implements MiddlewareInterface
      */
     private function runHousekeeping(FilesystemInterface $data_filesystem, FilesystemInterface $root_filesystem): void
     {
-        // Clear files in the (user-specified) data folder - which might not be local files
-        $this->housekeeping_service->deleteOldFiles($data_filesystem, 'cache', self::MAX_CACHE_AGE);
-
+        // Clear old thumbnails
         $this->housekeeping_service->deleteOldFiles($data_filesystem, 'thumbnail-cache', self::MAX_THUMBNAIL_AGE);
 
-        // Clear files in /data - which need to be local files
+        // Clear temporary files
         $this->housekeeping_service->deleteOldFiles($root_filesystem, self::TMP_DIR, self::MAX_TMP_FILE_AGE);
 
         // Clear entries in database tables
