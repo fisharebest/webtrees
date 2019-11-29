@@ -44,7 +44,6 @@ use function assert;
  */
 class PlaceHierarchyController extends AbstractBaseController
 {
-
     /** @var SearchService */
     private $search_service;
 
