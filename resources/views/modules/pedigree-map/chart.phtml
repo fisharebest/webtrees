@@ -1,5 +1,13 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\View;
+
+/**
+ * @var Individual $individual
+ */
+?>
+
 
 <div class="py-4">
     <div class="row gchart osm-wrapper">
@@ -109,20 +117,15 @@
     };
 
     /**
-     *
-     * @param reference
-     * @param mapType
      * @param Generations
      * @private
      */
-    let _addLayer = function (reference, mapType, Generations) {
+    let _addLayer = function (Generations) {
       let geoJsonLayer;
       let domObj  = '.osm-sidebar';
       let sidebar = '';
 
       $.getJSON(<?= json_encode(route('module', ['module' => 'pedigree-map', 'action' => 'MapData', 'tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>, {
-        reference:   reference,
-        type:        mapType,
         generations: Generations
       })
         .done(function (data, textStatus, jqXHR) {
@@ -208,13 +211,10 @@
     };
 
     /**
-     *
-     * @param reference string
-     * @param mapType string
      * @param generations integer
      * @private
      */
-    let _initialize = function (reference, mapType, generations) {
+    let _initialize = function (generations) {
       // Activate marker popup when sidebar entry clicked
       $(function () {
         $('.osm-sidebar')
@@ -242,24 +242,19 @@
       });
 
       _drawMap();
-      _addLayer(reference, mapType, generations);
+      _addLayer(generations);
     };
 
     return {
       /**
-       *
-       * @param reference string
-       * @param mapType string
        * @param generations integer
        */
-      drawMap: function (reference, mapType, generations) {
-        mapType     = typeof mapType !== 'undefined' ? mapType : 'individual';
-        generations = typeof generations !== 'undefined' ? generations : null;
-        _initialize(reference, mapType, generations);
+      drawMap: function (generations) {
+        _initialize(generations);
       }
     };
   })();
 
-    WT_OSM.drawMap(<?= json_encode($individual->xref()) ?>, <?= json_encode($type) ?>, <?= json_encode($generations ?? null) ?>);
+    WT_OSM.drawMap(<?= json_encode($generations) ?>);
 </script>
 <?php View::endpush() ?>
