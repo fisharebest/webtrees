@@ -57,13 +57,6 @@ use Fisharebest\Webtrees\View;
       minZoom: 2,
       providerName: "OpenStreetMap.Mapnik",
       providerOptions: [],
-      I18N: {
-        zoomInTitle: <?= json_encode(I18N::translate('Zoom in')) ?>,
-        zoomOutTitle: <?= json_encode(I18N::translate('Zoom out')) ?>,
-        reset: <?= json_encode(I18N::translate('Reset to initial map state')) ?>,
-        noData: <?= json_encode(I18N::translate('No mappable items')) ?>,
-        error: <?= json_encode(I18N::translate('An unknown error occurred')) ?>
-      }
     };
 
     let map          = null;
@@ -88,12 +81,13 @@ use Fisharebest\Webtrees\View;
           return false;
         };
         let anchor   = L.DomUtil.create('a', 'leaflet-control-reset', container);
+        let reset = <?= json_encode(I18N::translate('Reset to initial map state')) ?>;
         anchor.href  = '#';
-        anchor.title = baseData.I18N.reset;
+        anchor.title = reset;
         anchor.role  = 'button';
         $(anchor).attr('aria-label', 'reset');
         let image = L.DomUtil.create('i', 'fas fa-redo', anchor);
-        image.alt = baseData.I18N.reset;
+        image.alt = reset;
 
         return container;
       },
@@ -111,8 +105,8 @@ use Fisharebest\Webtrees\View;
       });
       L.tileLayer.provider(baseData.providerName, baseData.providerOptions).addTo(map);
       L.control.zoom({ // Add zoom with localised text
-        zoomInTitle : baseData.I18N.zoomInTitle,
-        zoomOutTitle: baseData.I18N.zoomOutTitle,
+        zoomInTitle : <?= json_encode(I18N::translate('Zoom in')) ?>,
+        zoomOutTitle: <?= json_encode(I18N::translate('Zoom out')) ?>,
       }).addTo(map);
     };
 
@@ -186,11 +180,11 @@ use Fisharebest\Webtrees\View;
               break;
             case 204: // No data
               map.fitWorld();
-              $(domObj).append('<div class="bg-info text-white">' + baseData.I18N.noData + '</div>');
+              $(domObj).append('<div class="bg-info text-white">' + <?= json_encode(I18N::translate('No mappable items')) ?> + '</div>');
               break;
             default: // Anything else
               map.fitWorld();
-              $(domObj).append('<div class="bg-danger text-white">' + baseData.I18N.error + '</div>');
+              $(domObj).append('<div class="bg-danger text-white">' + <?= json_encode(I18N::translate('An unknown error occurred')) ?> + '</div>');
           }
           $(domObj).slideDown(300);
         });
