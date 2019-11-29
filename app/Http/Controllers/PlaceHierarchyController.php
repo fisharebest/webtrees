@@ -89,9 +89,6 @@ class PlaceHierarchyController extends AbstractBaseController
         if ($showmap) {
             $note = true;
             $content .= view('place-map', [
-                'module' => self::MAP_MODULE,
-                'ref'    => $fqpn,
-                'type'   => 'placelist',
                 'data'   => $this->mapData($tree, $fqpn),
             ]);
         }
