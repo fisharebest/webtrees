@@ -298,9 +298,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         }
 
         $map = view('modules/pedigree-map/chart', [
-            'module'      => $this->name(),
             'individual'  => $individual,
-            'type'        => 'pedigree',
             'generations' => $generations,
         ]);
 
