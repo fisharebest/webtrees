@@ -119,9 +119,9 @@
             icon:  L.BeautifyIcon.icon({
               icon:            feature.properties.icon["name"],
               borderColor:     "transparent",
-              backgroundColor: feature.valid ? feature.properties.icon["color"] : "transparent",
+              backgroundColor: feature.properties.icon["color"],
               iconShape:       "marker",
-              textColor:       feature.valid ? "white" : "transparent",
+              textColor:       "white",
             }),
             title: feature.properties.tooltip,
             alt:   feature.properties.tooltip,

@@ -302,7 +302,7 @@ class PlaceHierarchyController extends AbstractBaseController
                     ],
                     'properties' => [
                         'icon'    => [
-                            'name'  => 'map-marker-alt fas',
+                            'name'  => 'bullseye fas',
                             'color' => '#1e90ff',
                         ],
                         'tooltip' => $place->gedcomName(),
@@ -322,7 +322,8 @@ class PlaceHierarchyController extends AbstractBaseController
                 $tmp               = $this->statistics->statsPlaces($type, '', $place->id());
                 $placeStats[$type] = $tmp === [] ? 0 : $tmp[0]->tot;
             }
-            $sidebar .= sprintf("<li title='%s' class ='gchart %s' data-id='%s'>%s</li>",
+            $sidebar .= sprintf(
+                "<li title='%s' class ='gchart %s' data-id='%s'>%s</li>",
                 $sidebar_title,
                 $sidebar_class,
                 $id,
@@ -331,7 +332,8 @@ class PlaceHierarchyController extends AbstractBaseController
                     'flag'     => $flag,
                     'place'    => $place,
                     'stats'    => $placeStats,
-                ]));
+                ])
+            );
         }
 
         return [

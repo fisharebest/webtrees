@@ -23,30 +23,38 @@ import "datatables.net";
 // Just import the subset of icons that we use in resources/views/icons/
 import { dom, library } from "@fortawesome/fontawesome-svg-core";
 import {
+    // For resources/views/icons/*
     faBell, faCopy, faEnvelope, faFile, faFileAlt, faFileImage, faFolder, faKeyboard,
-    faMinusSquare, faPlusSquare, faStar, faStickyNote, faTrashAlt, faUser
+    faMinusSquare, faPlusSquare, faStar, faStickyNote, faTrashAlt, faUser,
 } from "@fortawesome/free-regular-svg-icons";
 library.add(
+    // For resources/views/icons/*
     faBell, faCopy, faEnvelope, faFile, faFileAlt, faFileImage, faFolder, faKeyboard,
-    faMap, faMinusSquare, faPlusSquare, faStar, faStickyNote, faTrashAlt, faUser
+    faMap, faMinusSquare, faPlusSquare, faStar, faStickyNote, faTrashAlt, faUser,
 );
 import {
+    // For resources/views/icons/*
     faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
     faCalendar, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
     faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
     faLock, faMagic, faMap, faMapMarkerAlt, faMars, faPaintBrush, faPause, faPencilAlt,
     faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchMinus, faSearchPlus,
     faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faThList, faThumbtack,
-    faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench
+    faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench,
+    // For the BeautifyMarker library
+    faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater,
 } from "@fortawesome/free-solid-svg-icons";
 library.add(
+    // For resources/views/icons/*
     faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
     faCalendar, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
     faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
     faLock, faMagic, faMap, faMapMarkerAlt, faMars, faPaintBrush, faPause, faPencilAlt,
     faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchMinus, faSearchPlus,
     faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faThList, faThumbtack,
-    faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench
+    faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench,
+    // For the BeautifyMarker library
+    faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater,
 );
 dom.watch();
 

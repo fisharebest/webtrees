@@ -38,24 +38,24 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     use ModuleTabTrait;
 
     protected const ICONS = [
-        'BIRT' => ['color' => 'lightcoral', 'name' => 'baby-carriage'],
-        'BAPM' => ['color' => 'lightcoral', 'name' => 'water'],
-        'BARM' => ['color' => 'lightcoral', 'name' => 'star-of-david'],
-        'BASM' => ['color' => 'lightcoral', 'name' => 'star-of-david'],
-        'CHR'  => ['color' => 'lightcoral', 'name' => 'water'],
-        'CHRA' => ['color' => 'lightcoral', 'name' => 'water'],
-        'MARR' => ['color' => 'green', 'name' => 'infinity'],
-        'DEAT' => ['color' => 'black', 'name' => 'times'],
-        'BURI' => ['color' => 'sienna', 'name' => 'times'],
-        'CREM' => ['color' => 'black', 'name' => 'times'],
-        'CENS' => ['color' => 'mediumblue', 'name' => 'list'],
-        'RESI' => ['color' => 'mediumblue', 'name' => 'home'],
-        'OCCU' => ['color' => 'mediumblue', 'name' => 'industry'],
-        'GRAD' => ['color' => 'plum', 'name' => 'university'],
-        'EDUC' => ['color' => 'plum', 'name' => 'university'],
+        'BIRT' => ['color' => 'pink', 'name' => 'baby-carriage fas'],
+        'BAPM' => ['color' => 'pink', 'name' => 'water fas'],
+        'BARM' => ['color' => 'pink', 'name' => 'star-of-david fas'],
+        'BASM' => ['color' => 'pink', 'name' => 'star-of-david fas'],
+        'CHR'  => ['color' => 'pink', 'name' => 'water fas'],
+        'CHRA' => ['color' => 'pink', 'name' => 'water fas'],
+        'MARR' => ['color' => 'green', 'name' => 'infinity fas'],
+        'DEAT' => ['color' => 'black', 'name' => 'times fas'],
+        'BURI' => ['color' => 'purple', 'name' => 'times fas'],
+        'CREM' => ['color' => 'black', 'name' => 'times fas'],
+        'CENS' => ['color' => 'cyan', 'name' => 'list fas'],
+        'RESI' => ['color' => 'cyan', 'name' => 'home fas'],
+        'OCCU' => ['color' => 'cyan', 'name' => 'industry fas'],
+        'GRAD' => ['color' => 'violet', 'name' => 'university fas'],
+        'EDUC' => ['color' => 'violet', 'name' => 'university fas'],
     ];
 
-    protected const DEFAULT_ICON = ['color' => 'gold', 'name' => 'bullseye '];
+    protected const DEFAULT_ICON = ['color' => 'gold', 'name' => 'fa-bullseye fas'];
 
     /**
      * How should this module be identified in the control panel, etc.?
