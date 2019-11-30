@@ -33,13 +33,17 @@ use Fisharebest\Webtrees\View;
         padding: 2px
     }
 
-    .osm-sidebar .gchart img {
-        height: 15px;
-        width: 25px
+    .unmapped {
+        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><line x1='0' y1='0' x2='100' y2='100' stroke='black' vector-effect='non-scaling-stroke'/><line x1='0' y1='100' x2='100' y2='0' stroke='black' vector-effect='non-scaling-stroke'/></svg>");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100% 100%, auto;
     }
 
-    .osm-sidebar .border-danger:hover {
-        cursor: not-allowed
+    .flag {
+        border: 1px solid grey !important;
+        height: 15px;
+        width: 25px;
     }
 </style>
 <?php View::endpush() ?>
@@ -108,8 +112,8 @@ use Fisharebest\Webtrees\View;
         let _addLayer = function () {
             let geoJsonLayer;
             let domObj = ".osm-sidebar";
-            let sidebar = "";
-            let data = <?= json_encode($data) ?>;
+            let sidebar = <?= json_encode($data['sidebar']) ?>;
+            let data = <?= json_encode($data['markers']) ?>;
 
             if (data.features.length === 1) {
                 zoom = data.features[0].properties.zoom;
@@ -120,9 +124,9 @@ use Fisharebest\Webtrees\View;
                         icon:  L.BeautifyIcon.icon({
                             icon: feature.properties.icon["name"],
                             borderColor: "transparent",
-                            backgroundColor: feature.valid ? feature.properties.icon["color"] : "transparent",
+                            backgroundColor: feature.properties.icon["color"],
                             iconShape: "marker",
-                            textColor: feature.valid ? "white" : "transparent",
+                            textColor: "white",
                         }),
                         title: feature.properties.tooltip,
                         alt: feature.properties.tooltip,
@@ -130,28 +134,21 @@ use Fisharebest\Webtrees\View;
                     })
                         .on("popupopen", function (e) {
                             let sidebar = $(".osm-sidebar");
-                            let item = sidebar.children(".gchart[data-id=" + e.target.feature.id + "]");
+                            let item = sidebar.children(".mapped[data-id=" + e.target.feature.id + "]");
                             item.addClass("messagebox");
                             sidebar.scrollTo(item);
                         })
                         .on("popupclose", function () {
-                            $(".osm-sidebar").children(".gchart")
+                            $(".osm-sidebar").children(".mapped")
                                 .removeClass("messagebox");
                         });
                 },
                 onEachFeature: function (feature, layer) {
-                    if (feature.properties.polyline) {
-                        let pline = L.polyline(feature.properties.polyline.points, feature.properties.polyline.options);
-                        markers.addLayer(pline);
-                    }
-                    layer.bindPopup(feature.properties.summary);
-                    let myclass = feature.valid ? "gchart" : "border border-danger";
-                    sidebar += `<li class="${myclass}" data-id=${feature.id}>${feature.properties.summary}</li>`;
+                    layer.bindPopup(feature.properties.popup);
                 },
             });
 
             if (data.features.length > 0) {
-                $(domObj).append(sidebar);
                 markers.addLayer(geoJsonLayer);
                 map
                     .addControl(new resetControl())
@@ -164,8 +161,12 @@ use Fisharebest\Webtrees\View;
                 map.fitWorld();
                   $(domObj).append("<div class=\"bg-info text-white\">" + <?= json_encode(I18N::translate('No mappable items')) ?> + "</div>");
             }
-
-            $(domObj).slideDown(300);
+            if (sidebar === "") {
+                sidebar = "<div class='bg-info text-white'>" + <?= json_encode(I18N::translate('No mappable items')) ?>+ "</div>"
+            }
+            $(domObj)
+                .append(sidebar)
+                .slideDown(300);
         };
 
         /**
@@ -190,7 +191,7 @@ use Fisharebest\Webtrees\View;
             $(function () {
                 $(".osm-sidebar")
                 // open marker popup if sidebar event is clicked
-                    .on("click", ".gchart", function (e) {
+                    .on("click", ".mapped", function (e) {
                         // first close any existing
                         map.closePopup();
                         let eventId = $(this).data("id");

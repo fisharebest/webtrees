@@ -272,6 +272,7 @@ class PlaceHierarchyController extends AbstractBaseController
         $placeObj  = new Place($reference, $tree);
         $places    = $placeObj->getChildPlaces();
         $features  = [];
+        $sidebar   = '';
         $flag_path = Webtrees::MODULES_DIR . 'openstreetmap/';
         $showlink  = true;
         if ($places === []) {
@@ -280,51 +281,65 @@ class PlaceHierarchyController extends AbstractBaseController
         }
         foreach ($places as $id => $place) {
             $location = new Location($place->gedcomName());
-            //Stats
-            $placeStats = [];
-            foreach (['INDI', 'FAM'] as $type) {
-                $tmp               = $this->statistics->statsPlaces($type, '', $place->id());
-                $placeStats[$type] = $tmp === [] ? 0 : $tmp[0]->tot;
-            }
             //Flag
             if ($location->icon() !== '' && is_file($flag_path . $location->icon())) {
                 $flag = $flag_path . $location->icon();
             } else {
                 $flag = '';
             }
-            $features[] = [
-                'type'       => 'Feature',
-                'id'         => $id,
-                'valid'      => $location->longitude() !== 0.0 || $location->latitude() !== 0.0,
-                'geometry'   => [
-                    'type'        => 'Point',
-                    'coordinates' => [$location->longitude(), $location->latitude()],
-                ],
-                'properties' => [
-                    'icon'    => [
-                        'name'  => 'globe',
-                        'color' => '#1e90ff',
+            $sidebar_title = $place->gedcomName();
+            $sidebar_class = "mapped";
+            if ($location->latitude() === 0.0 && $location->longitude() === 0.0) {
+                $sidebar_class = 'unmapped';
+                $sidebar_title .= " " . I18N::translate("(No map co-ordinates)");
+            } else {
+                $features[] = [
+                    'type'       => 'Feature',
+                    'id'         => $id,
+                    'geometry'   => [
+                        'type'        => 'Point',
+                        'coordinates' => [$location->longitude(), $location->latitude()],
                     ],
+                    'properties' => [
+                        'icon'    => [
+                            'name'  => 'map-marker-alt fas',
+                            'color' => '#1e90ff',
+                        ],
                         'tooltip' => $place->gedcomName(),
                         'popup'   => view('place-popup', [
                             'showlink' => $showlink,
                             'flag'     => $flag,
                             'place'    => $place,
                         ]),
-                    'summary' => view('place-sidebar', [
-                        'showlink' => $showlink,
-                        'flag'     => $flag,
-                        'place'    => $place,
-                        'stats'    => $placeStats,
-                    ]),
                         'zoom'    => $location->zoom() ?: 2,
                     ],
                 ];
             }
 
+            //Stats
+            $placeStats = [];
+            foreach (['INDI', 'FAM'] as $type) {
+                $tmp               = $this->statistics->statsPlaces($type, '', $place->id());
+                $placeStats[$type] = $tmp === [] ? 0 : $tmp[0]->tot;
+            }
+            $sidebar .= sprintf("<li title='%s' class ='gchart %s' data-id='%s'>%s</li>",
+                $sidebar_title,
+                $sidebar_class,
+                $id,
+                view('place-sidebar', [
+                    'showlink' => $showlink,
+                    'flag'     => $flag,
+                    'place'    => $place,
+                    'stats'    => $placeStats,
+                ]));
+        }
+
         return [
+            'sidebar' => $sidebar,
+            'markers' => [
                 'type'     => 'FeatureCollection',
                 'features' => $features,
+            ]
         ];
     }
 }
