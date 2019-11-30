@@ -305,21 +305,26 @@ class PlaceHierarchyController extends AbstractBaseController
                         'name'  => 'globe',
                         'color' => '#1e90ff',
                     ],
-                    'tooltip' => $place->gedcomName(),
+                        'tooltip' => $place->gedcomName(),
+                        'popup'   => view('place-popup', [
+                            'showlink' => $showlink,
+                            'flag'     => $flag,
+                            'place'    => $place,
+                        ]),
                     'summary' => view('place-sidebar', [
                         'showlink' => $showlink,
                         'flag'     => $flag,
                         'place'    => $place,
                         'stats'    => $placeStats,
                     ]),
-                    'zoom'    => $location->zoom() ?: 2,
-                ],
-            ];
-        }
+                        'zoom'    => $location->zoom() ?: 2,
+                    ],
+                ];
+            }
 
         return [
-            'type'     => 'FeatureCollection',
-            'features' => $features,
+                'type'     => 'FeatureCollection',
+                'features' => $features,
         ];
     }
 }
