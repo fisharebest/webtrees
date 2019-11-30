@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-29 21:49+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-01 20:49+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -5188,7 +5188,7 @@ msgstr "एक सामान्य नोट बनाएँ"
 #: resources/views/modals/create-media-from-file.phtml:12
 #: resources/views/modals/create-media-object.phtml:11
 msgid "Create a media object"
-msgstr "नई मीडिया फाइल बनाएँ"
+msgstr "नया मीडिया ऑब्जेक्ट बनाएँ"
 
 #: app/Functions/FunctionsEdit.php:530
 #: resources/views/modals/create-repository.phtml:11
@@ -8162,7 +8162,7 @@ msgstr "अंतिम नाम"
 #: resources/views/modules/favorites/favorites.phtml:87
 #: resources/views/source-page.phtml:84
 msgid "Media object"
-msgstr "मीडिया फाइल"
+msgstr "मीडिया ऑब्जेक्ट"
 
 #. I18N: gedcom tag OCCU
 #: app/GedcomTag.php:902 resources/xml/reports/occupation_report.xml:5
@@ -9725,7 +9725,7 @@ msgstr "अन्य"
 #: app/Http/Controllers/Admin/FixLevel0MediaController.php:65
 #: resources/views/admin/control-panel.phtml:591
 msgid "Link media objects to facts and events"
-msgstr "मीडिया फाइल को तथ्यों और घटनाओं से जोड़ें"
+msgstr "मीडिया ऑब्जेक्ट को तथ्यों और घटनाओं से जोड़ें"
 
 #: app/Http/Controllers/Admin/ImportThumbnailsController.php:72
 #: resources/views/admin/control-panel.phtml:597
@@ -9887,7 +9887,7 @@ msgstr "हटाएं"
 
 #: app/Http/Controllers/Admin/MediaController.php:316
 msgid "There are no links to this media object."
-msgstr "इस मीडिया फाइल तक कोई लिंक नहीं है।"
+msgstr "इस मीडिया ऑब्जेक्ट तक कोई लिंक नहीं है।"
 
 #. I18N: size of file in KB
 #: app/Http/Controllers/Admin/MediaController.php:341 app/MediaFile.php:342
@@ -10663,7 +10663,7 @@ msgstr "परिवार"
 #: resources/views/statistics/other/chart-objects.phtml:11
 #: resources/views/statistics/other/total-records.phtml:20
 msgid "Media objects"
-msgstr "मीडिया फ़ाइल्स"
+msgstr "मीडिया ऑब्जेक्ट्स"
 
 #. I18N: %s is a surname
 #: app/Http/Controllers/BranchesController.php:84
@@ -12544,12 +12544,12 @@ msgstr "उन व्यक्तियों की रिपोर्ट ज�
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:62
 msgid "A list of media objects."
-msgstr "मीडिया फाइलों की लिस्ट।"
+msgstr "मीडिया ऑब्जेक्ट की लिस्ट।"
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:71
 msgid "A tab showing the media objects linked to an individual."
-msgstr "किसी व्यक्ति से जुड़ी मीडिया फाइलों को दिखाने वाला टैब।"
+msgstr "किसी व्यक्ति से जुड़े मीडिया ऑब्जेक्ट को दिखाने वाला टैब।"
 
 #. I18N: Name of a theme.
 #: app/Module/MinimalTheme.php:39
@@ -15522,7 +15522,7 @@ msgstr "मीडिया फाइल को स्थानांतरित
 
 #: resources/views/admin/fix-level-0-media.phtml:10
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
-msgstr "यदि एक मीडिया फाइल किसी व्यक्ति से जुड़ी हुई है, जब इसे किसी तथ्य या घटना से जोड़ा जाना चाहिए, तो आप इसे सही स्थान पर स्थानांतरित कर सकते हैं।"
+msgstr "यदि एक मीडिया ऑब्जेक्ट किसी व्यक्ति से जुड़ी हुई है, जब इसे किसी तथ्य या घटना से जोड़ा जाना चाहिए, तो आप इसे सही स्थान पर स्थानांतरित कर सकते हैं।"
 
 #: resources/views/admin/location-edit.phtml:31
 #: resources/views/admin/locations.phtml:19
@@ -16189,11 +16189,11 @@ msgstr "आयात करने की प्राथमिकताएँ"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-import.phtml:81
 msgid "Keep media objects"
-msgstr "मीडिया फाइलें रखें"
+msgstr "मीडिया ऑब्जेक्ट रखें"
 
 #: resources/views/admin/trees-import.phtml:84
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
-msgstr "यदि आपने webtrees में मीडिया फाइलें बनाई हैं, और बाद में इस GEDCOM फाइल को वंशावली सॉफ़्टवेयर का उपयोग करके संपादित किया हो जो मीडिया फाइलों को हटाता देता है, तो नई GEDCOM फ़ाइल के साथ वर्तमान मीडिया फाइलों को मर्ज करने के लिए इस विकल्प का चयन करें।"
+msgstr "यदि आपने webtrees में मीडिया ऑब्जेक्ट बनाएं हैं, और बाद में इस GEDCOM फाइल को वंशावली सॉफ़्टवेयर का उपयोग करके संपादित किया हो जो मीडिया ऑब्जेक्ट को हटाता देता है, तो नई GEDCOM फ़ाइल के साथ वर्तमान मीडिया ऑब्जेक्ट को मर्ज करने के लिए इस विकल्प का चयन करें।"
 
 #: resources/views/admin/trees-import.phtml:88
 msgid "Add spaces where long lines were wrapped"
@@ -16325,12 +16325,12 @@ msgstr "कुछ कैलेंडर में, दिन आधी रात
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:132
 msgid "Add unique identifiers"
-msgstr "अनन्य पहचानकर्ता जोड़ें"
+msgstr "यूनिक पहचानकर्ता जोड़ें"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: resources/views/admin/trees-preferences.phtml:137
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
-msgstr "अनन्य पहचानकर्ता एक ही रिकॉर्ड को विभिन्न फॅमिली ट्री और विभिन्न प्रणालियों में पाए जाने की अनुमति देते हैं। जब भी रिकॉर्ड बनाए जाएंगे या अपडेट किए जाएंगे, उन्हें जोड़ा जाएगा। यदि आप नहीं चाहते कि अनन्य पहचानकर्ता प्रदर्शित हों, तो आप गोपनीयता नियमों का उपयोग करके उन्हें छिपा सकते हैं।"
+msgstr "यूनिक पहचानकर्ता एक ही रिकॉर्ड को विभिन्न फॅमिली ट्री और विभिन्न प्रणालियों में पाए जाने की अनुमति देते हैं। जब भी रिकॉर्ड बनाए जाएंगे या अपडेट किए जाएंगे, उन्हें जोड़ा जाएगा। यदि आप नहीं चाहते कि यूनिक पहचानकर्ता प्रदर्शित हों, तो आप गोपनीयता नियमों का उपयोग करके उन्हें छिपा सकते हैं।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:148
@@ -16619,249 +16619,249 @@ msgstr "यूज़र्स को मूल GEDCOM रिकॉर्ड द�
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml:624
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr ""
+msgstr "इसे <b>हां</b> पर सेट करने से यूज़र्स को, व्यक्तियों, स्रोतों, और परिवारों पर GEDCOM फ़ाइल के बाहर लिए गए मूल डेटा वाले किसी अन्य विंडो को सामने लाने के लिए लिंक दिए जा सकेंगे।"
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:639
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr ""
+msgstr "कई “वंशावली प्रोग्राम” कस्टम टैग के साथ GEDCOM फाइलें बनाते हैं, और webtrees उनमें से ज्यादातर को समझती है। जब कोई गैर-मान्यता प्राप्त टैग मिलते हैं, तो यह विकल्प आपको यह चुनने देता है कि, उन्हें अनदेखा करना है या कोई चेतावनी संदेश प्रदर्शित करना है।"
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:654
 msgid "Some pages can display the number of times that they have been visited."
-msgstr ""
+msgstr "कुछ पेज उस संख्या को प्रदर्शित कर सकते हैं, जब उनका दौरा किया गया।"
 
 #. I18N: Options for editing
 #: resources/views/admin/trees-preferences.phtml:660
 msgid "Edit preferences"
-msgstr ""
+msgstr "प्राथमिकताएं एडिट करें"
 
 #: resources/views/admin/trees-preferences.phtml:662
 msgid "Facts for individual records"
-msgstr ""
+msgstr "व्यक्ती के रिकॉर्ड के लिए तथ्य"
 
 #: resources/views/admin/trees-preferences.phtml:667
 msgid "All individual facts"
-msgstr ""
+msgstr "सभी व्यक्तिगत तथ्य"
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:672
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr ""
+msgstr "यह उन GEDCOM तथ्यों की सूची है जो आपके युज़र “व्यक्तियों” के साथ जोड़ सकते हैं, आवश्यकतानुसार आप इस सूची को तथ्य के नाम (चाहे कस्टम ही हो) हटाकर या जोड़कर संशोधित कर सकते हैं। इस सूची में दिखाई देने वाले तथ्य के नाम “यूनिक व्यक्तिगत तथ्य” की सूची में भी और ना दिखाए जाएं।"
 
 #: resources/views/admin/trees-preferences.phtml:680
 msgid "Unique individual facts"
-msgstr ""
+msgstr "यूनिक व्यक्तिगत तथ्य"
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:685
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr ""
+msgstr "यह उन GEDCOM तथ्यों की सूची है जो आपके यूज़र्स केवल एक बार ही व्यक्तियों के साथ जोड़ सकते हैं। उदाहरण के लिए, यदि BIRT इस सूची में है, तो युज़र एक व्यक्ति के साथ एक से अधिक BIRT रिकॉर्ड नहीं जोड़ पाएंगे। इस सूची में दिखाई देने वाले तथ्य के नाम “सभी व्यक्तिगत तथ्य” की सूची में भी और ना दिखाए जाएं।"
 
 #: resources/views/admin/trees-preferences.phtml:693
 msgid "Facts for new individuals"
-msgstr ""
+msgstr "नए व्यक्तियों के लिए तथ्य"
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: resources/views/admin/trees-preferences.phtml:698
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr ""
+msgstr "यह कोमा द्वारा अलग की गई GEDCOM तथ्य के टैग की लिस्ट है, जिसे नए व्यक्ति को जोड़ते समय दिखाया जाएगा। उदाहरण के लिए, अगर लिस्ट में BIRT टैग है, तो फॉर्म पर जन्म तिथि और जन्म स्थान की फ़ील्ड दिखाई देगी।"
 
 #: resources/views/admin/trees-preferences.phtml:706
 msgid "Quick individual facts"
-msgstr ""
+msgstr "क्विक व्यक्तिगत तथ्य"
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:711
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
-msgstr ""
+msgstr "सबसे आम व्यक्तिगत तथ्यों और घटनाओं को अलग-अलग सूचीबद्ध किया गया है, ताकि उन्हें और अधिक आसानी से जोड़ा जा सके।"
 
 #: resources/views/admin/trees-preferences.phtml:716
 msgid "Facts for family records"
-msgstr ""
+msgstr "पारिवारिक रिकॉर्ड के लिए तथ्य"
 
 #: resources/views/admin/trees-preferences.phtml:721
 msgid "All family facts"
-msgstr ""
+msgstr "सभी पारिवारिक तथ्य"
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:726
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr ""
+msgstr "यह उन GEDCOM तथ्यों की सूची है जो आपके युज़र “परिवारों” के साथ जोड़ सकते हैं, आवश्यकतानुसार आप इस सूची को तथ्य के नाम (चाहे कस्टम ही हो) हटाकर या जोड़कर संशोधित कर सकते हैं। इस सूची में दिखाई देने वाले तथ्य के नाम “यूनिक पारिवारिक तथ्य” की सूची में भी और ना दिखाए जाएं।"
 
 #: resources/views/admin/trees-preferences.phtml:734
 msgid "Unique family facts"
-msgstr ""
+msgstr "यूनिक पारिवारिक तथ्य"
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:739
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr ""
+msgstr "यह उन GEDCOM तथ्यों की सूची है जो आपके यूज़र्स केवल एक बार ही परिवारों के साथ जोड़ सकते हैं। उदाहरण के लिए, यदि MARR इस सूची में है, तो युज़र एक परिवार के साथ एक से अधिक MARR रिकॉर्ड नहीं जोड़ पाएंगे। इस सूची में दिखाई देने वाले तथ्य के नाम “सभी पारिवारिक तथ्य” की सूची में भी और ना दिखाए जाएं।"
 
 #: resources/views/admin/trees-preferences.phtml:747
 msgid "Facts for new families"
-msgstr ""
+msgstr "नए परिवारों के लिए तथ्य"
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: resources/views/admin/trees-preferences.phtml:752
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr ""
+msgstr "यह कोमा द्वारा अलग की गई GEDCOM तथ्य के टैग की लिस्ट है, जिसे नए परिवार को जोड़ते समय दिखाया जाएगा। उदाहरण के लिए, अगर लिस्ट में MARR टैग है, तो फॉर्म पर विवाह तिथि और विवाह स्थान की फ़ील्ड दिखाई देगी।"
 
 #: resources/views/admin/trees-preferences.phtml:760
 msgid "Quick family facts"
-msgstr ""
+msgstr "क्विक पारिवारिक तथ्य"
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:765
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
-msgstr ""
+msgstr "सबसे आम पारिवारिक तथ्यों और घटनाओं को अलग-अलग सूचीबद्ध किया गया है, ताकि उन्हें और अधिक आसानी से जोड़ा जा सके।"
 
 #: resources/views/admin/trees-preferences.phtml:770
 msgid "Facts for source records"
-msgstr ""
+msgstr "स्रोत रिकॉर्ड के लिए तथ्य"
 
 #: resources/views/admin/trees-preferences.phtml:775
 msgid "All source facts"
-msgstr ""
+msgstr "सभी स्रोत तथ्य"
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:780
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr ""
+msgstr "यह उन GEDCOM तथ्यों की सूची है जो आपके युज़र “स्रोतों” के साथ जोड़ सकते हैं, आवश्यकतानुसार आप इस सूची को तथ्य के नाम (चाहे कस्टम ही हो) हटाकर या जोड़कर संशोधित कर सकते हैं। इस सूची में दिखाई देने वाले तथ्य के नाम “यूनिक स्रोत तथ्य” की सूची में भी और ना दिखाए जाएं।"
 
 #: resources/views/admin/trees-preferences.phtml:788
 msgid "Unique source facts"
-msgstr ""
+msgstr "यूनिक स्रोत तथ्य"
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:793
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr ""
+msgstr "यह उन GEDCOM तथ्यों की सूची है जो आपके यूज़र्स केवल एक बार ही स्रोतों के साथ जोड़ सकते हैं। उदाहरण के लिए, यदि TITL इस सूची में है, तो युज़र एक स्रोत के साथ एक से अधिक TITL रिकॉर्ड नहीं जोड़ पाएंगे। इस सूची में दिखाई देने वाले तथ्य के नाम “सभी स्रोत तथ्य” की सूची में भी और ना दिखाए जाएं।"
 
 #: resources/views/admin/trees-preferences.phtml:801
 msgid "Quick source facts"
-msgstr ""
+msgstr "क्विक स्रोत तथ्य"
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:806
 msgid "The most common source facts are listed separately, so that they can be added more easily."
-msgstr ""
+msgstr "सबसे आम स्रोत तथ्यों को अलग-अलग सूचीबद्ध किया गया है, ताकि उन्हें और अधिक आसानी से जोड़ा जा सके।"
 
 #: resources/views/admin/trees-preferences.phtml:811
 msgid "Facts for repository records"
-msgstr ""
+msgstr "संग्रह के रिकॉर्ड के लिए तथ्य"
 
 #: resources/views/admin/trees-preferences.phtml:816
 msgid "All repository facts"
-msgstr ""
+msgstr "सभी संग्रह तथ्य"
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:821
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr ""
+msgstr "यह उन GEDCOM तथ्यों की सूची है जो आपके युज़र “संग्रहों” के साथ जोड़ सकते हैं, आवश्यकतानुसार आप इस सूची को तथ्य के नाम (चाहे कस्टम ही हो) हटाकर या जोड़कर संशोधित कर सकते हैं। इस सूची में दिखाई देने वाले तथ्य के नाम “यूनिक संग्रह तथ्य” की सूची में भी और ना दिखाए जाएं।"
 
 #: resources/views/admin/trees-preferences.phtml:829
 msgid "Unique repository facts"
-msgstr ""
+msgstr "यूनिक संग्रह तथ्य"
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:834
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr ""
+msgstr "यह उन GEDCOM तथ्यों की सूची है जो आपके यूज़र्स केवल एक बार ही संग्रहों के साथ जोड़ सकते हैं। उदाहरण के लिए, यदि NAME इस सूची में है, तो युज़र एक संग्रह के साथ एक से अधिक NAME रिकॉर्ड नहीं जोड़ पाएंगे। इस सूची में दिखाई देने वाले तथ्य के नाम “सभी संग्रह तथ्य” की सूची में भी और ना दिखाए जाएं।"
 
 #: resources/views/admin/trees-preferences.phtml:842
 msgid "Quick repository facts"
-msgstr ""
+msgstr "क्विक संग्रह तथ्य"
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:847
 msgid "The most common repository facts are listed separately, so that they can be added more easily."
-msgstr ""
+msgstr "सबसे आम संग्रह तथ्यों को अलग-अलग सूचीबद्ध किया गया है, ताकि उन्हें और अधिक आसानी से जोड़ा जा सके।"
 
 #: resources/views/admin/trees-preferences.phtml:852
 msgid "Advanced fact preferences"
-msgstr ""
+msgstr "एडवांस्ड तथ्य प्राथमिकताएं"
 
 #: resources/views/admin/trees-preferences.phtml:857
 msgid "Advanced name facts"
-msgstr ""
+msgstr "एडवांस्ड नाम तथ्य"
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:862
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr ""
+msgstr "यह कोमा द्वारा अलग की गई GEDCOM तथ्य के टैग की एक लिस्ट है, जिसे नाम जोड़ने/एडिट करने वाले फॉर्म पर दिखाया जाएगा। अगर आप गैर-लैटिन वर्णमाला जैसे कि हिब्रू, ग्रीक, सिरिलिक या अरबी का उपयोग करते हैं, तो आप _HEB, ROMN, FONE, वगैरह जैसे टैग जोड़ना चाहेंगे। ताकि आपको कई अलग-अलग वर्णमालाओं में नाम संग्रहीत करने की अनुमति मिल सके।"
 
 #: resources/views/admin/trees-preferences.phtml:870
 msgid "Advanced place name facts"
-msgstr ""
+msgstr "एडवांस्ड स्थान नाम तथ्य"
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:875
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr ""
+msgstr "यह कोमा द्वारा अलग की गई GEDCOM तथ्य के टैग की एक लिस्ट है, जिसे स्थानों के नाम जोड़ते/एडिट करते समय दिखाया जाएगा। अगर आप गैर-लैटिन वर्णमाला जैसे कि हिब्रू, ग्रीक, सिरिलिक या अरबी का उपयोग करते हैं, तो आप _HEB, ROMN, FONE, वगैरह जैसे टैग जोड़ना चाहेंगे। ताकि आपको कई अलग-अलग वर्णमालाओं में स्थानों के नाम संग्रहीत करने की अनुमति मिल सके।"
 
 #: resources/views/admin/trees-preferences.phtml:880
 msgid "Other preferences"
-msgstr ""
+msgstr "अन्य प्राथमिकताएँ"
 
 #: resources/views/admin/trees-preferences.phtml:886
 msgid "Surname tradition"
-msgstr ""
+msgstr "कुलनाम परंपरा"
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:891
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
-msgstr ""
+msgstr "जब आप एक परिवार का नया सदस्य जोड़ते हैं, तो एक डिफ़ॉल्ट कुलनाम प्रदान किया जा सकता है। यह कुलनाम स्थानीय परंपरा पर निर्भर करेगा।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:901
 msgid "Use full source citations"
-msgstr ""
+msgstr "स्रोत के पूरे प्रमाण का इस्तेमाल करें"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: resources/views/admin/trees-preferences.phtml:906
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-msgstr ""
+msgstr "स्रोत के प्रमाण में डेटा की गुणवत्ता (मुख्य, माध्यमिक, वगैरह) रिकॉर्ड करने के लिए फ़ील्ड और घटना स्रोत में दर्ज की गई तारीख शामिल हो सकते हैं। अगर आप इन फ़ील्ड का उपयोग नहीं करते हैं, तो आप नए स्रोत प्रमाण बनाते समय उन्हें अक्षम कर सकते हैं।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:916
 #: resources/xml/reports/fact_sources.xml:6
 msgid "Source type"
-msgstr ""
+msgstr "स्रोत प्रकार"
 
 #. I18N: Help text for the “Source type” configuration setting
 #: resources/views/admin/trees-preferences.phtml:921
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr ""
+msgstr "नए करीबी रिश्तेदारों को जोड़ते समय, आप रिकॉर्ड (व्यक्ती और परिवार) या तथ्यों और घटनाओं (जन्म, विवाह और मृत्यु) में स्रोत प्रमाण जोड़ सकते हैं। यह विकल्प नियंत्रित करता है कि क्या रिकॉर्ड या तथ्य डिफ़ॉल्ट रूप से चुने जाएंगे।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:931
 #: resources/views/edit/add-fact.phtml:74
 #: resources/views/edit/edit-fact.phtml:103
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "मौजूदा “अंतिम परिवर्तन” की जानकारी रखें"
 
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml:936
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr ""
+msgstr "जब कोई रिकॉर्ड एडिट किया जाता है, तो यूज़र और टाइमस्टैम्प रिकॉर्ड किए जाते हैं। कभी-कभी मौजूदा “अंतिम परिवर्तन” जानकारी को रखना वांछनीय है, उदाहरण के लिए किसी और के डेटा में मामूली सुधार करते समय। यह विकल्प नियंत्रित करता है कि क्या यह सुविधा डिफ़ॉल्ट रूप से चुनी गई है।"
 
 #. I18N: Label for checkbox
 #: resources/views/admin/trees-preferences.phtml:957
 #: resources/views/admin/trees-privacy.phtml:287
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "इन प्राथमिकताओं को सभी फॅमिली ट्री पर लागू करें"
 
 #. I18N: Label for checkbox
 #: resources/views/admin/trees-preferences.phtml:964
 #: resources/views/admin/trees-privacy.phtml:294
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "इन प्राथमिकताओं को नए फॅमिली ट्री पर लागू करें"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:23
 msgid "Show the family tree"
-msgstr ""
+msgstr "फैमिली ट्री दिखाएं"
 
 #: resources/views/admin/trees-privacy.phtml:26
 #: resources/views/admin/trees-privacy.phtml:50
@@ -16869,7 +16869,7 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:132
 #: resources/views/admin/trees-privacy.phtml:152
 msgid "visitors"
-msgstr ""
+msgstr "दर्शक"
 
 #: resources/views/admin/trees-privacy.phtml:27
 #: resources/views/admin/trees-privacy.phtml:51
@@ -16877,104 +16877,104 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:133
 #: resources/views/admin/trees-privacy.phtml:153
 msgid "members"
-msgstr ""
+msgstr "सदस्य"
 
 #. I18N: Help text for the “Family tree” configuration setting
 #: resources/views/admin/trees-privacy.phtml:33
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
-msgstr ""
+msgstr "इस विकल्प को सक्षम करने से सभी दर्शक वेबसाइट पर किसी भी डेटा को देखने से पहले साइन इन करने के लिए प्रतिबंधित होंगे।"
 
 #: resources/views/admin/trees-privacy.phtml:37
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
-msgstr ""
+msgstr "दर्शक अगर फॅमिली ट्री को नहीं देख सकते हैं, तो वे अकाउंट के लिए साइन अप नहीं कर पाएंगे। आपको मैन्युअल रूप से उनका खाता जोड़ना होगा।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:47
 msgid "Show dead individuals"
-msgstr ""
+msgstr "मृत व्यक्तियों को दिखाएं"
 
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:57
 msgid "Set the privacy access level for all dead individuals."
-msgstr ""
+msgstr "सभी मृत व्यक्तियों के लिए गोपनीयता पहुँच स्तर (प्राइवेसी एक्सेस लेवल) सेट करें।"
 
 #: resources/views/admin/trees-privacy.phtml:66
 msgid "Age at which to assume an individual is dead"
-msgstr ""
+msgstr "उम्र जिसमें में किसी व्यक्ति को मृत मान लिया जाता हो"
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:78
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr ""
+msgstr "यदि इन व्यक्ति की मृत्यु, दफन, या दाह संस्कार के अलावा कोई और घटना इन वर्षों की संख्या से अधिक नई (ताज़ा) हो तो इन्हें “जीवित” माना जाएगा। इस उद्देश्य के लिए बच्चों की जन्मतिथि को इस तरह के आयोजन माना जाता है।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:88
 msgid "Show living individuals"
-msgstr ""
+msgstr "जीवित व्यक्तियों को दिखाएं"
 
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:98
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
-msgstr ""
+msgstr "यदि आप दर्शकों को जीवित व्यक्ति दिखाते हैं, तो अन्य सभी गोपनीयता प्रतिबंधों को अनदेखा कर दिया जाता है। ऐसा तभी करें जब आपके ट्री का सारा डेटा सार्वजनिक हो।"
 
 #. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
 #: resources/views/admin/trees-privacy.phtml:108
 msgid "Extend privacy to dead individuals"
-msgstr ""
+msgstr "मृत व्यक्तियों के लिए गोपनीयता बढ़ाएँ"
 
 #. I18N: Extend privacy to dead individuals who were…
 #: resources/views/admin/trees-privacy.phtml:114
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr ""
+msgstr "पिछले %1$s वर्षों में पैदा हुए या पिछले %2$s वर्षों में जिनकी मृत्यु हुई"
 
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:119
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
-msgstr ""
+msgstr "कुछ देशों में, गोपनीयता कानून न केवल जीवित व्यक्तियों पर लागू होते हैं, बल्कि उन लोगों पर भी लागू होते हैं जिनकी हाल ही में मृत्यु हुई हो। यह विकल्प आपको जीवित व्यक्तियों के लिए गोपनीयता नियमों का विस्तार करने की अनुमति देगा जो वर्षों की एक खास संख्या के भीतर जन्मे या मृत हुए। इस सुविधा को अक्षम करने के लिए इन मानों को खाली छोड़ दें।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:129
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "प्राइवेट व्यक्तियों के नाम दिखाएं"
 
 #: resources/views/admin/trees-privacy.phtml:134
 msgid "managers"
-msgstr ""
+msgstr "मैनेजर्स"
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:140
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr ""
+msgstr "यह विकल्प प्राइवेट व्यक्तियों के नाम (लेकिन कोई अन्य विवरण) नहीं दिखाएगा। यदि वे अभी जीवित हैं या उनके व्यक्तिगत रिकॉर्ड में कोई गोपनीयता प्रतिबंध जोड़ा गया हो, तो वे व्यक्ति प्राइवेट हैं। कोई एक विशिष्ट नाम छिपाने के लिए, उस नाम रिकॉर्ड में गोपनीयता प्रतिबंध जोड़ें।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:149
 msgid "Show private relationships"
-msgstr ""
+msgstr "प्राइवेट संबंध दिखाएं"
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:159
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr ""
+msgstr "यह विकल्प निजी लिंक में पारिवारिक लिंक को बनाए रखेगा।  इसका मतलब यह है कि आप निजी व्यक्तियों के साथ पेडिग्री चार्ट और अन्य चार्ट पर खाली “निजी” बक्से देखेंगे।"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:163
 msgid "Privacy restrictions"
-msgstr ""
+msgstr "गोपनीयता प्रतिबंध"
 
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:165
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr ""
+msgstr "आप इसमें किसी प्रतिबंध को जोड़कर किसी खास रिकॉर्ड, तथ्य या घटना के लिए एक्सेस सेट कर सकते हैं। यदि कोई रिकॉर्ड, तथ्य या घटना पर प्रतिबंध नहीं है, तो निम्न डिफ़ॉल्ट प्रतिबंधों का उपयोग किया जाएगा।"
 
 #: resources/views/admin/trees-privacy.phtml:211
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr ""
+msgstr "गोपनीयता प्रतिबंध - ये उन रिकॉर्ड्स और तथ्यों पर लागू होते हैं जिनमें GEDCOM का RESN टैग नहीं है"
 
 #: resources/views/admin/trees-privacy.phtml:219
 #: resources/views/edit/add-fact-row.phtml:13
 msgid "Fact or event"
-msgstr ""
+msgstr "तथ्य या घटना"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-privacy.phtml:227
@@ -16985,106 +16985,106 @@ msgstr ""
 #: resources/views/modules/lifespans-chart/page.phtml:66
 #: resources/views/modules/timeline-chart/page.phtml:25
 msgid "add"
-msgstr ""
+msgstr "जोड़ें"
 
 #: resources/views/admin/trees-privacy.phtml:240
 msgid "This record does not exist."
-msgstr ""
+msgstr "यह रिकॉर्ड मौजूद नहीं है।"
 
 #: resources/views/admin/trees-privacy.phtml:244
 msgid "All records"
-msgstr ""
+msgstr "सभी रिकॉर्ड"
 
 #: resources/views/admin/trees-renumber.phtml:17
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr ""
+msgstr "आप एक फॅमिली ट्री में रिकॉर्ड को पुनः अंकित सकते हैं, ताकि इन आंतरिक संदर्भ संख्याओं को किसी अन्य फॅमिली ट्री में डुप्लिकेट न किया जाए।"
 
 #: resources/views/admin/trees-renumber.phtml:21
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "इस फॅमिली ट्री में %s रिकॉर्ड है जो वही “XREF” उपयोग कर रहा है जो दूसरी फॅमिली ट्री में भी किया जा रहा है।"
+msgstr[1] "इस फॅमिली ट्री में %s रिकॉर्ड हैं जो वही “XREF” उपयोग कर रहे हैं जो दूसरी फॅमिली ट्री में भी किए जा रहे हैं।"
 
 #: resources/views/admin/trees-renumber.phtml:26
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "आप इस फैमिली ट्री को पुनः अंकित कर सकते हैं।"
 
 #: resources/views/admin/trees-renumber.phtml:37
 #: resources/views/admin/trees.phtml:336
 msgid "Caution! This may take a long time. Be patient."
-msgstr ""
+msgstr "सावधान!  इसमें लंबा समय लग सकता है।  धैर्य रखें।"
 
 #: resources/views/admin/trees-unconnected.phtml:26
 msgid "Include associates"
-msgstr ""
+msgstr "सहयोगियों को शामिल करें"
 
 #: resources/views/admin/trees-unconnected.phtml:32
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "व्यक्तियों के ये समूह %s से संबंधित नहीं हैं।"
 
 #: resources/views/admin/trees.phtml:54
 #: resources/views/lists/datatables-attributes.phtml:27
 msgid "Calculating…"
-msgstr ""
+msgstr "गणना जारी है…"
 
 #: resources/views/admin/trees.phtml:112
 msgid "Default family tree"
-msgstr ""
+msgstr "डिफॉल्ट फॅमिली ट्री"
 
 #: resources/views/admin/trees.phtml:115 resources/views/admin/trees.phtml:122
 msgid "Set as default"
-msgstr ""
+msgstr "डिफॉल्ट के रूप में सेट करें"
 
 #. I18N: Individuals, sources, dates, places, etc.
 #: resources/views/admin/trees.phtml:133
 msgid "Genealogy data"
-msgstr ""
+msgstr "वंशावली डेटा"
 
 #: resources/views/admin/trees.phtml:190
 msgid "Renumber"
-msgstr ""
+msgstr "पुनः अंकित"
 
 #: resources/views/admin/trees.phtml:211
 msgid "Add unlinked records"
-msgstr ""
+msgstr "अनलिंक रिकॉर्ड जोड़ें"
 
 #: resources/views/admin/trees.phtml:286
 msgid "Export"
-msgstr ""
+msgstr "निर्यात"
 
 #: resources/views/admin/trees.phtml:318
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "GEDCOM फ़ाइलों के साथ फॅमिली ट्री को सिंक्रनाइज़ करें"
 
 #: resources/views/admin/trees.phtml:326
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
-msgstr ""
+msgstr "डेटा फ़ोल्डर में प्रत्येक GEDCOM फ़ाइल के लिए फॅमिली ट्री बनाएं, अपडेट करें और हटाएं।"
 
 #: resources/views/admin/upgrade/steps.phtml:14
 msgid "It can take several minutes to download and install the upgrade. Be patient."
-msgstr ""
+msgstr "अपग्रेड को डाउनलोड करने और इंस्टॉल करने में कई मिनट लग सकते हैं।  धैर्य रखें।"
 
 #: resources/views/admin/upgrade/wizard.phtml:26
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr ""
+msgstr "आपके सर्वर कॉन्फ़िगरेशन के आधार पर, आप स्वचालित रूप से अपग्रेड करने में सक्षम हो भी सकते हैं।"
 
 #: resources/views/admin/users-cleanup.phtml:29
 msgid "User’s account has been inactive too long: "
-msgstr ""
+msgstr "यूज़र का अकाउंट लंबे समय से निष्क्रिय है: "
 
 #: resources/views/admin/users-cleanup.phtml:48
 msgid "User didn’t verify within 7 days."
-msgstr ""
+msgstr "युज़र ने 7 दिनों के भीतर वेरीफाई नहीं किया।"
 
 #: resources/views/admin/users-cleanup.phtml:50
 msgid "User not verified by administrator."
-msgstr ""
+msgstr "यूज़र एडमिनिस्ट्रेटर द्वारा वेरिफाइड नहीं है।"
 
 #: resources/views/admin/users-cleanup.phtml:62
 msgid "Nothing found to cleanup"
-msgstr ""
+msgstr "सफाई के लिए कुछ नहीं मिला"
 
 #: resources/views/admin/users-create.phtml:19
 #: resources/views/admin/users-edit.phtml:24
@@ -17094,7 +17094,7 @@ msgstr ""
 #: resources/views/emails/register-notify-text.phtml:12
 #: resources/views/register-page.phtml:33
 msgid "Real name"
-msgstr ""
+msgstr "वास्तविक नाम"
 
 #: resources/views/admin/users-create.phtml:24
 #: resources/views/admin/users-edit.phtml:29
@@ -17102,14 +17102,14 @@ msgstr ""
 #: resources/views/register-page.phtml:38
 #: resources/views/setup/step-5-administrator.phtml:37
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr ""
+msgstr "यह आपका वास्तविक नाम है, जैसा कि आप स्क्रीन पर प्रदर्शित करना चाहते हैं।"
 
 #: resources/views/admin/users-create.phtml:37
 #: resources/views/admin/users-edit.phtml:42
 #: resources/views/edit-account-page.phtml:25
 #: resources/views/register-page.phtml:62
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr ""
+msgstr "युज़रनेम केस-सेंसिटिव हैं और उच्चारण अक्षरों को अनदेखा करते हैं, ताकि “chloe”, “chloë”, और “Chloe” को समान माना जाए।"
 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:48
@@ -17118,8 +17118,8 @@ msgstr ""
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "कम से कम %s अक्षर का उपयोग करें।"
+msgstr[1] "कम से कम %s अक्षरों का उपयोग करें।"
 
 #: resources/views/admin/users-create.phtml:50
 #: resources/views/admin/users-edit.phtml:55
@@ -17127,7 +17127,7 @@ msgstr[1] ""
 #: resources/views/password-reset-page.phtml:39
 #: resources/views/register-page.phtml:75
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr ""
+msgstr "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए और केस-सेंसिटिव हो, ताकि “secret” से “SECRET” अलग हो।"
 
 #: resources/views/admin/users-create.phtml:63
 #: resources/views/admin/users-edit.phtml:68
@@ -17135,49 +17135,49 @@ msgstr ""
 #: resources/views/register-page.phtml:50
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr ""
+msgstr "इस ईमेल एड्रेस का उपयोग पासवर्ड रिमाइंडर, वेबसाइट सूचनाएं और परिवार के अन्य सदस्यों के संदेश भेजने के लिए किया जाएगा, जो वेबसाइट पर रजिस्टर्ड हैं।"
 
 #: resources/views/admin/users-edit.phtml:77
 msgid "Account approval and email verification"
-msgstr ""
+msgstr "अकाउंट अप्रूवल और इमेल वेरीफिकेशन"
 
 #: resources/views/admin/users-edit.phtml:83
 msgid "Email verified"
-msgstr ""
+msgstr "इमेल वेरीफाइड हुआ"
 
 #: resources/views/admin/users-edit.phtml:87
 msgid "Approved by administrator"
-msgstr ""
+msgstr "एडमिनिस्ट्रेटर द्वारा अप्रूव्ड"
 
 #: resources/views/admin/users-edit.phtml:90
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr ""
+msgstr "जब कोई युज़र किसी अकाउंट के लिए रजिस्टर करते हैं, तो वेरीफिकेशन लिंक के साथ उनके ईमेल एड्रेस पर एक ईमेल भेजा जाता है। जब वे इस लिंक का अनुसरण करते हैं, तो हम जानते हैं कि ईमेल एड्रेस सही है, और “मेल वेरीफाइड” विकल्प स्वचालित रूप से चुन लिया जाता है।"
 
 #: resources/views/admin/users-edit.phtml:93
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
-msgstr ""
+msgstr "यदि कोई एडमिनिस्ट्रेटर एक युज़र अकाउंट बनाता है, तो वेरीफिकेशन ईमेल नहीं भेजा जाता, और ईमेल को मैन्युअल रूप से वेरीफाइड किया जाना चाहिए।"
 
 #: resources/views/admin/users-edit.phtml:96
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr ""
+msgstr "जब तक आपको पता न चले कि ईमेल एड्रेस सही है, तब तक आपको किसी अकाउंट को मंज़ूर नहीं करना चाहिए।"
 
 #: resources/views/admin/users-edit.phtml:99
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr ""
+msgstr "एक युज़र तब तक साइन इन नहीं कर पाएगा जब तक कि “ईमेल वेरीफाइड” और “एडमिनिस्ट्रेटर द्वारा अप्रूव्ड” दोनों का चयन नहीं किया जाता।"
 
 #: resources/views/admin/users-edit.phtml:143
 msgid "Automatically accept changes made by this user"
-msgstr ""
+msgstr "इस युज़र द्वारा किए गए परिवर्तनों को स्वचालित रूप से स्वीकार करें"
 
 #: resources/views/admin/users-edit.phtml:146
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr ""
+msgstr "आम तौर पर, फॅमिली ट्री में किए गए किसी भी बदलाव की समीक्षा एक मॉडरेटर द्वारा की जानी चाहिए। यह विकल्प युज़र को मॉडरेटर की आवश्यकता के बिना परिवर्तन करने की अनुमति देता है।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:155
 #: resources/views/edit-account-page.phtml:136
 msgid "Visible online"
-msgstr "ऑनलाइन दिखाई दे"
+msgstr "ऑनलाइन दिखाई दें"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:161
@@ -17188,121 +17188,121 @@ msgstr "ऑनलाइन होने पर अन्य यूज़र्�
 #: resources/views/admin/users-edit.phtml:164
 #: resources/views/edit-account-page.phtml:141
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr ""
+msgstr "आप चुन सकते हैं कि वर्तमान में साइन-इन करने वाले यूज़र्स की लिस्ट में प्रकट होना है या नहीं।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:173
 msgid "Preferred contact method"
-msgstr ""
+msgstr "पसंदीदा संपर्क विधि"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: resources/views/admin/users-edit.phtml:179
 #: resources/views/edit-account-page.phtml:128
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "साइट के सदस्य एक दूसरे को संदेश भेज सकते हैं। आप चुन सकते हैं कि ये संदेश आपको कैसे भेजे जाते हैं, या उन्हें बिल्कुल न प्राप्त करना चुनें।"
 
 #: resources/views/admin/users-edit.phtml:197
 msgid "Administrator comments on user"
-msgstr ""
+msgstr "युज़र पर एडमिनिस्ट्रेटर टिप्पणियाँ"
 
 #: resources/views/admin/users-edit.phtml:212
 #: resources/views/admin/users-edit.phtml:261
 msgid "Administrator"
-msgstr ""
+msgstr "एडमिनिस्ट्रेटर"
 
 #: resources/views/admin/users-edit.phtml:218
 msgid "Access to family trees"
-msgstr ""
+msgstr "फॅमिली ट्री तक पहुंच"
 
 #: resources/views/admin/users-edit.phtml:221
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr ""
+msgstr "एक भूमिका प्रवेश अधिकारों का एक सेट है, जो डेटा को देखने, प्राथमिकताओं को बदलने आदि की अनुमति देता है। प्रवेश अधिकार भूमिकाओं को सौंपा गया है, और भूमिकाएँ यूज़र्स को दी जाती हैं।  प्रत्येक फॅमिली ट्री प्रत्येक भूमिका के लिए अलग-अलग पहुंच प्रदान कर सकती है, और प्रत्येक फॅमिली ट्री में यूज़र्स की एक अलग भूमिका हो सकती है।"
 
 #: resources/views/admin/users-edit.phtml:230
 msgid "Everybody has this role, including visitors to the website and search engines."
-msgstr ""
+msgstr "प्रत्येक व्यक्ति की यह भूमिका है, जिसमें वेबसाइट के दर्शक और सर्च इंजन भी शामिल हैं।"
 
 #: resources/views/admin/users-edit.phtml:236
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
-msgstr ""
+msgstr "इस भूमिका में दर्शक भूमिका की सभी अनुमतियां हैं, साथ ही फॅमिली ट्री के कॉन्फ़िगरेशन द्वारा दी गई कोई भी अतिरिक्त पहुंच।"
 
 #: resources/views/admin/users-edit.phtml:244
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr ""
+msgstr "इस भूमिका में सदस्य भूमिका की सभी अनुमतियाँ हैं, साथ ही डेटा जोड़ने/बदलने/हटाने की अनुमति है। किसी भी परिवर्तन की समीक्षा एक मॉडरेटर द्वारा करने की आवश्यकता होगी, जब तक कि युज़र के पास “स्वचालित रूप से परिवर्तन स्वीकार” विकल्प सक्षम न हो।"
 
 #: resources/views/admin/users-edit.phtml:250
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr ""
+msgstr "इस भूमिका में एडीटर की सभी अनुमतियाँ हैं, साथ ही अन्य यूज़र्स द्वारा किए गए परिवर्तनों को स्वीकार/अस्वीकार करने की अनुमति है।"
 
 #: resources/views/admin/users-edit.phtml:258
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
-msgstr ""
+msgstr "इस भूमिका में मॉडरेटर भूमिका की सभी अनुमतियां हैं, साथ ही फॅमिली ट्री के कॉन्फ़िगरेशन द्वारा दी गई किसी भी अतिरिक्त पहुंच, फॅमिली ट्री की सेटिंग्स/कॉन्फ़िगरेशन को बदलने की अनुमति है।"
 
 #: resources/views/admin/users-edit.phtml:264
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
-msgstr ""
+msgstr "इस भूमिका में सभी फॅमिली ट्री के मैनेजर की भूमिका की सभी अनुमतियाँ हैं, साथ ही वेबसाइट, यूज़र्स और मॉड्यूल की सेटिंग्स/कॉन्फ़िगरेशन को बदलने की अनुमति है।"
 
 #: resources/views/admin/users-edit.phtml:279
 #: resources/views/edit-account-page.phtml:45
 msgid "Individual record"
-msgstr ""
+msgstr "व्यक्तिगत रिकॉर्ड"
 
 #: resources/views/admin/users-edit.phtml:293
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "इस युज़र को फॅमिली ट्री में एक व्यक्ति से लिंक करें।"
 
 #: resources/views/admin/users-edit.phtml:351
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
-msgstr ""
+msgstr "युज़र को उनके निकटतम परिवार तक सीमित करने से पहले आपको एक व्यक्तिगत रिकॉर्ड उल्लिखित करना होगा।"
 
 #: resources/views/admin/users-table-options.phtml:26
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "इस यूज़र के वेष में"
 
 #: resources/views/admin/users.phtml:25
 msgid "Date registered"
-msgstr ""
+msgstr "तारीख दर्ज की गई"
 
 #: resources/views/admin/users.phtml:27
 msgid "Last signed in"
-msgstr ""
+msgstr "अंतिम साइन इन"
 
 #: resources/views/admin/users.phtml:28
 msgid "Verified"
-msgstr "सत्यापित"
+msgstr "वेरीफाइड"
 
 #: resources/views/admin/users.phtml:29
 msgid "Approved"
-msgstr ""
+msgstr "अप्रूव्ड"
 
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:14
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr ""
+msgstr "webtrees version 1 में, आप “thumbs” फ़ोल्डर में फाइल बनाकर मीडिया ऑब्जेक्ट में कस्टम थंबनेल जोड़ सकते हैं।"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:16
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-msgstr ""
+msgstr "webtrees version 2 में, कस्टम थंबनेल को उसी मीडिया ऑब्जेक्ट में दूसरी मीडिया फ़ाइल के रूप में संग्रहीत किया जाता है।"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:18
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-msgstr ""
+msgstr "यदि थंबनेल इमेज मूल इमेज के समान है, तो इसकी अब आवश्यकता नहीं है और आपको इसे हटा देना चाहिए।"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "यदि थंबनेल इमेज एक कस्टम इमेज है, तो आपको इसे मीडिया ऑब्जेक्ट में जोड़ना चाहिए।"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:35
 msgid "Thumbnail image"
-msgstr ""
+msgstr "थंबनेल इमेज"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:38
 msgid "Comparison"
-msgstr ""
+msgstr "तुलना"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:39
 msgid "Action"
-msgstr ""
+msgstr "एक्शन"
 
 #. I18N: A button label.
 #: resources/views/branches-page.phtml:40
@@ -17318,36 +17318,36 @@ msgstr ""
 #: resources/views/modules/relationships-chart/page.phtml:67
 #: resources/views/report-setup-page.phtml:62
 msgid "view"
-msgstr ""
+msgstr "देखें"
 
 #: resources/views/calendar-list.phtml:18
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s परिवार"
+msgstr[1] "%s परिवार"
 
 #: resources/views/calendar-page.phtml:79
 msgid "Show"
-msgstr ""
+msgstr "दिखाएं"
 
 #: resources/views/calendar-page.phtml:95
 #: resources/views/calendar-page.phtml:107
 msgid "All individuals"
-msgstr ""
+msgstr "सभी व्यक्ति"
 
 #: resources/views/calendar-page.phtml:98
 msgid "Living individuals"
-msgstr ""
+msgstr "जीवित व्यक्ति"
 
 #: resources/views/calendar-page.phtml:101
 msgid "Recent years (&lt; 100 yrs)"
-msgstr ""
+msgstr "हाल के वर्ष (< 100 वर्ष)"
 
 #: resources/views/calendar-page.phtml:177
 #: resources/views/edit/add-fact-row.phtml:33
 msgid "Custom event"
-msgstr ""
+msgstr "कस्टम घटना"
 
 #: resources/views/calendar-page.phtml:189
 msgid "View this day"
@@ -17363,7 +17363,7 @@ msgstr "यह साल देखें"
 
 #: resources/views/cards/add-associate.phtml:11
 msgid "Add an associate"
-msgstr ""
+msgstr "एक सहयोगी जोड़ें"
 
 #: resources/views/cards/add-media-object.phtml:7
 #: resources/views/family-page.phtml:98
@@ -17371,38 +17371,38 @@ msgstr ""
 #: resources/views/individual-page.phtml:89
 #: resources/views/source-page.phtml:88
 msgid "Add a media object"
-msgstr ""
+msgstr "मीडिया ऑब्जेक्ट जोड़ें"
 
 #: resources/views/cards/add-note.phtml:7 resources/views/family-page.phtml:75
 #: resources/views/modules/notes/tab.phtml:45
 msgid "Add a note"
-msgstr ""
+msgstr "नोट जोड़ें"
 
 #: resources/views/cards/add-restriction.phtml:7
 #: resources/views/media-page.phtml:177
 msgid "Add a restriction"
-msgstr ""
+msgstr "एक प्रतिबंध जोड़ें"
 
 #: resources/views/cards/add-shared-note.phtml:7
 #: resources/views/family-page.phtml:86 resources/views/media-page.phtml:167
 #: resources/views/modules/notes/tab.phtml:55
 msgid "Add a shared note"
-msgstr ""
+msgstr "एक आम नोट जोड़ें"
 
 #: resources/views/cards/add-sour-data-even.phtml:7
 msgid "Add an event"
-msgstr ""
+msgstr "एक घटना जोड़ें"
 
 #: resources/views/cards/add-source-citation.phtml:9
 #: resources/views/family-page.phtml:110 resources/views/media-page.phtml:157
 #: resources/views/modules/sources_tab/tab.phtml:43
 msgid "Add a source citation"
-msgstr ""
+msgstr "एक स्रोत प्रमाण जोड़ें"
 
 #: resources/views/chart-box.phtml:110 resources/views/chart-box.phtml:122
 #: resources/views/chart-box.phtml:123
 msgid "Links"
-msgstr ""
+msgstr "लिंक्स"
 
 #: resources/views/components/alert-warning-dismissible.phtml:6
 #: resources/views/layouts/administration.phtml:75
@@ -17412,54 +17412,54 @@ msgstr ""
 #: resources/views/modals/header.phtml:7
 #: resources/views/modules/privacy-policy/footer.phtml:17
 msgid "close"
-msgstr ""
+msgstr "बंद करें"
 
 #: resources/views/contact-page.phtml:27
 #: resources/views/setup/step-5-administrator.phtml:32
 msgid "Your name"
-msgstr ""
+msgstr "आपका नाम"
 
 #: resources/views/edit-account-page.phtml:52
 msgctxt "unknown people"
 msgid "Unknown"
-msgstr ""
+msgstr "अज्ञात"
 
 #: resources/views/edit-account-page.phtml:56
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
-msgstr ""
+msgstr "यह फॅमिली ट्री में खुद आपके अपने के रिकॉर्ड की लिंक है।  अगर यह गलत व्यक्ति है, तो किसी एडमिनिस्ट्रेटर से संपर्क करें।"
 
 #: resources/views/edit-account-page.phtml:83
 msgid "Leave the password blank if you want to keep the current password."
-msgstr ""
+msgstr "अगर आप मौजूदा पासवर्ड ही रखना चाहते हैं तो पासवर्ड को खाली छोड़ दें।"
 
 #: resources/views/edit-account-page.phtml:123
 msgid "Contact method"
-msgstr ""
+msgstr "संपर्क विधि"
 
 #: resources/views/edit-account-page.phtml:164
 msgid "Delete your account"
-msgstr ""
+msgstr "अपना अकाउंट हटाएं"
 
 #: resources/views/edit-blocks-block.phtml:16
 msgid "Block"
-msgstr ""
+msgstr "ब्लॉक"
 
 #: resources/views/edit-blocks-page.phtml:11
 msgid "Drag the blocks to change their position."
-msgstr ""
+msgstr "ब्लॉक को घसीट कर उनकी जगह बदलें।"
 
 #: resources/views/edit-blocks-page.phtml:30
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "नीचे दी गई लिस्ट में से अधिक ब्लॉक जोड़ें।"
 
 #: resources/views/edit-blocks-page.phtml:53
 #: resources/views/edit-blocks-page.phtml:54
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "डिफ़ॉल्ट ब्लॉक लेआउट को पुनर्स्थापित करें"
 
 #: resources/views/edit/add-fact-row.phtml:30
 msgid "Custom fact"
-msgstr ""
+msgstr "कस्टम तथ्य"
 
 #: resources/views/edit/change-family-members.phtml:18
 #: resources/views/edit/change-family-members.phtml:33
@@ -17468,62 +17468,62 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:202
 #: resources/xml/reports/individual_ext_report.xml:219
 msgid "Spouse"
-msgstr ""
+msgstr "जीवनसाथी"
 
 #: resources/views/edit/change-family-members.phtml:45
 #: resources/xml/reports/family_group_report.xml:774
 #: resources/xml/reports/individual_ext_report.xml:526
 #: resources/xml/reports/individual_report.xml:530
 msgid "Son"
-msgstr ""
+msgstr "बेटे"
 
 #: resources/views/edit/change-family-members.phtml:47
 #: resources/xml/reports/family_group_report.xml:809
 #: resources/xml/reports/individual_ext_report.xml:562
 #: resources/xml/reports/individual_report.xml:566
 msgid "Daughter"
-msgstr ""
+msgstr "बेटी"
 
 #: resources/views/edit/icon-fact-copy.phtml:8
 #: resources/views/edit/icon-fact-copy.phtml:10
 msgid "Copy"
-msgstr ""
+msgstr "कॉपी"
 
 #: resources/views/edit/input-addon-keyboard.phtml:5
 #: resources/views/edit/input-addon-keyboard.phtml:8
 #: resources/views/edit/shared-note.phtml:16
 #: resources/views/edit/shared-note.phtml:18
 msgid "Find a special character"
-msgstr ""
+msgstr "कोई विशेष अक्षर खोजें"
 
 #: resources/views/edit/link-child-to-family.phtml:25
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr ""
+msgstr "किसी बच्चे के एक से अधिक माता-पिता भी हो सकते हैं। बच्चों और माता-पिता के बीच संबंध जैविक, कानूनी, या स्थानीय संस्कृति और परंपरा पर आधारित हो सकते हैं। यदि कोई वंशावली निर्दिष्ट नहीं है, तो एक जैविक संबंध माना जाएगा।"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:323
 msgid "go to new individual"
-msgstr ""
+msgstr "नए व्यक्ती पर जाएं"
 
 #: resources/views/edit/paste-fact-row.phtml:12
 msgid "Add from clipboard"
-msgstr ""
+msgstr "क्लिपबोर्ड से जोड़ें"
 
 #: resources/views/edit/raw-gedcom-fact.phtml:14
 #: resources/views/edit/raw-gedcom-record.phtml:15
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
-msgstr ""
+msgstr "यह पेज आपको सामान्य फॉर्म से बचाकर कर सीधे मूल डेटा को एडिट करने की अनुमति देता है। यह एक एडवांस्ड विकल्प है, और जब तक आप GEDCOM फॉर्मेट को नहीं समझते, तब तक आपको इसका उपयोग नहीं करना चाहिए। अगर आप यहां  कोई गलती करते हैं, तो इसे ठीक करना मुश्किल हो सकता है।"
 
 #. I18N: %s is a URL
 #: resources/views/edit/raw-gedcom-fact.phtml:17
 #: resources/views/edit/raw-gedcom-record.phtml:18
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr ""
+msgstr "%s से आप GEDCOM विनिर्देश की एक कॉपी डाउनलोड कर सकते हैं।"
 
 #: resources/views/edit/raw-gedcom-record.phtml:48
 msgid "Add a fact"
-msgstr ""
+msgstr "तथ्य जोड़ें"
 
 #. I18N: A button label.
 #: resources/views/edit/reorder-children.phtml:41
@@ -17535,13 +17535,13 @@ msgstr ""
 #: resources/xml/reports/occupation_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "sort by date of birth"
-msgstr ""
+msgstr "जन्म तिथि के अनुसार रखें"
 
 #. I18N: A button label.
 #: resources/views/edit/reorder-spouses.phtml:41
 #: resources/xml/reports/marriage_report.xml:9
 msgid "sort by date of marriage"
-msgstr ""
+msgstr "विवाह तिथि के अनुसार रखें"
 
 #: resources/views/emails/approve-user-html.phtml:5
 #: resources/views/emails/message-copy-html.phtml:4
@@ -17556,160 +17556,160 @@ msgstr ""
 #: resources/views/emails/register-user-text.phtml:8
 #, php-format
 msgid "Hello %s…"
-msgstr ""
+msgstr "हैलो %s…"
 
 #: resources/views/emails/approve-user-html.phtml:9
 #: resources/views/emails/approve-user-text.phtml:4
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
-msgstr ""
+msgstr "webtrees साइट %s पर एडमिनिस्ट्रेटर ने अकाउंट के लिए आपके आवेदन को मंजूरी दे दी है। अब आप इस लिंक पर पहुँच कर साइन इन कर सकते हैं: %s"
 
 #: resources/views/emails/message-copy-html.phtml:8
 #: resources/views/emails/message-copy-text.phtml:4
 msgid "You sent the following message to a webtrees user:"
-msgstr ""
+msgstr "आपने एक webtrees युज़र को निम्नलिखित संदेश भेजा है:"
 
 #: resources/views/emails/message-copy-html.phtml:21
 #: resources/views/emails/message-copy-text.phtml:11
 #: resources/views/emails/message-user-html.phtml:22
 #: resources/views/emails/message-user-text.phtml:12
 msgid "This message was sent while viewing the following URL: "
-msgstr ""
+msgstr "इस URL को देखते समय यह संदेश भेजा गया था: "
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:9
 #: resources/views/emails/message-user-text.phtml:4
 #, php-format
 msgid "%s sent you the following message."
-msgstr ""
+msgstr "%s ने आपके लिए यह संदेश भेजा है।"
 
 #: resources/views/emails/password-request-html.phtml:9
 #: resources/views/emails/password-request-text.phtml:5
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "नया पासवर्ड सेट करने के लिए, इस लिंक का अनुसरण करें।"
 
 #: resources/views/emails/password-request-html.phtml:17
 #: resources/views/emails/password-request-text.phtml:9
 msgid "If you did not request a new password, please ignore this message."
-msgstr ""
+msgstr "यदि आपने नए पासवर्ड का अनुरोध नहीं किया है, तो कृपया इस संदेश को अनदेखा कर दें।"
 
 #: resources/views/emails/register-notify-html.phtml:8
 #: resources/views/emails/register-notify-text.phtml:6
 #: resources/views/emails/verify-notify-html.phtml:4
 #: resources/views/emails/verify-notify-text.phtml:2
 msgid "Hello administrator…"
-msgstr ""
+msgstr "हैलो एडमिनिस्ट्रेटर…"
 
 #. I18N: %s is a server name/URL
 #: resources/views/emails/register-notify-html.phtml:13
 #: resources/views/emails/register-notify-text.phtml:9
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr ""
+msgstr "किसी संभावित युज़र ने webtrees के साथ %s पर रजिस्ट्रेशन किया है।"
 
 #: resources/views/emails/register-notify-html.phtml:23
 #: resources/views/emails/register-notify-text.phtml:14
 #: resources/views/register-page.phtml:82
 msgid "Comments"
-msgstr ""
+msgstr "टिप्पणियाँ"
 
 #: resources/views/emails/register-notify-html.phtml:30
 #: resources/views/emails/register-notify-text.phtml:17
 msgid "The user has been sent an email with the information necessary to confirm the access request."
-msgstr ""
+msgstr "युज़र को एक्सेस अनुरोध की पुष्टि करने के लिए आवश्यक जानकारी के साथ एक ईमेल भेजा गया है।"
 
 #: resources/views/emails/register-notify-html.phtml:34
 #: resources/views/emails/register-notify-text.phtml:19
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
-msgstr ""
+msgstr "जब यह संभावित युज़र अनुरोध की पुष्टि कर लेगा तब आपको ईमेल द्वारा सूचित किया जाएगा। फिर आप यूज़रनेम को सक्रिय करके प्रक्रिया को पूरा कर सकते हैं। जब तक आप अकाउंट को सक्रिय नहीं करेंगे तब तक नया युज़र साइन नहीं कर सकेगा।"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
 #: resources/views/emails/register-user-html.phtml:14
 #: resources/views/emails/register-user-text.phtml:10
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr ""
+msgstr "आपने (या आपके दावेदार किसी व्यक्ति) ने %2$s ईमेल एड्रेस का उपयोग करके %1$s पर एक अकाउंट का अनुरोध किया है।"
 
 #: resources/views/emails/register-user-html.phtml:18
 #: resources/views/emails/register-user-text.phtml:12
 msgid "Follow this link to verify your email address."
-msgstr ""
+msgstr "अपना ईमेल एड्रेस वेरीफाइ करने के लिए इस लिंक का अनुसरण करें।"
 
 #: resources/views/emails/register-user-html.phtml:28
 #: resources/views/emails/register-user-text.phtml:16
 msgid "If you didn’t request an account, you can just delete this message."
-msgstr ""
+msgstr "यदि आपने किसी अकाउंट का अनुरोध नहीं किया है, तो आप इस संदेश को मिटा सकते हैं।"
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: resources/views/emails/verify-notify-html.phtml:10
 #: resources/views/emails/verify-notify-text.phtml:5
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr ""
+msgstr "एक नए युज़र (%1$s) ने अकाउंट (%2$s) का अनुरोध किया है और ईमेल एड्रेस (%3$s) को वेरीफाइ कर लिया है।"
 
 #: resources/views/emails/verify-notify-html.phtml:18
 #: resources/views/emails/verify-notify-text.phtml:11
 msgid "You need to review the account details."
-msgstr ""
+msgstr "आपको अकाउंट के विवरण की समीक्षा करने की आवश्यकता है।"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:27
 #: resources/views/emails/verify-notify-text.phtml:15
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "“अप्रूव्ड” की स्थिति सेट करें।"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:29
 #: resources/views/emails/verify-notify-text.phtml:16
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "प्रत्येक ट्री के लिए एक्सेस लेवल सेट करें।"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:31
 #: resources/views/emails/verify-notify-text.phtml:17
 msgid "Link the user account to an individual."
-msgstr ""
+msgstr "युज़र अकाउंट को किसी व्यक्ति से लिंक करें।"
 
 #: resources/views/errors/database-connection.phtml:5
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
-msgstr ""
+msgstr "उफ़! वेबसर्वर डेटाबेस सर्वर से कनेक्ट करने में असमर्थ है। यह व्यस्त हो सकता है, या रखरखाव से गुजर रहा है, या सिर्फ़ टूट गया है। आपको कुछ मिनटों में <a href=\"index.php\">पुनः प्रयास</a> करना चाहिए, या वेबसाइट एडमिनिस्ट्रेटर से संपर्क करना चाहिए।"
 
 #: resources/views/errors/database-connection.phtml:12
 msgid "If you are the website administrator, you should check that:"
-msgstr ""
+msgstr "यदि आप वेबसाइट के एडमिनिस्ट्रेटर हैं, तो आपको यह देखना चाहिए:"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:16
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr ""
+msgstr "फ़ाइल में डेटाबेस कनेक्शन की सेटिंग्स “/data/config.ini.php” अब भी सही हैं"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:19
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr ""
+msgstr "फ़ोल्डर “/data” और फ़ाइल “/data/config.ini.php” के पास एक्सेस परमिशन्स हैं जो वेबसर्वर को उन्हें पढ़ने की अनुमति देती हैं"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:22
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr ""
+msgstr "आप अन्य एप्लीकेशन, जैसे कि phpmyadmin का उपयोग करके डेटाबेस से जुड़ सकते हैं"
 
 #: resources/views/errors/database-connection.phtml:27
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
-msgstr ""
+msgstr "यदि आप स्वयं समस्या का समाधान नहीं कर सकते, तो आप <a href=\"https://webtrees.net\"> webtrees.net </a> के फोरम पर मदद मांग सकते हैं।"
 
 #: resources/views/errors/database-error.phtml:4
 #: resources/views/setup/step-6-failed.phtml:4
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "एक अनपेक्षित डेटाबेस ग़लती हुई है।"
 
 #: resources/views/errors/database-error.phtml:12
 #: resources/views/setup/step-6-failed.phtml:12
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr ""
+msgstr "इस खामी के बारे में जानने के लिए वेब्ट्रीज़ डेवलपर्स को बहुत दिलचस्पी होगी। यदि आप उनसे संपर्क करते हैं, तो वे समस्या को हल करने में आपकी मदद करेंगे।"
 
 #: resources/views/errors/no-tree-access.phtml:4
 msgid "This user account does not have access to any tree."
-msgstr ""
+msgstr "इस युज़र अकाउंट की किसी भी ट्री तक पहुंच नहीं है।"
 
 #: resources/views/family-page-children.phtml:13
 #: resources/views/modules/ancestors-chart/tree.phtml:39
@@ -17719,12 +17719,12 @@ msgstr ""
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s संतान"
+msgstr[1] "%s संतानें"
 
 #: resources/views/family-page-menu.phtml:51
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr ""
+msgstr "परिवार को हटाना सभी व्यक्तियों को एक-दूसरे से अलग कर देगा लेकिन व्यक्तियों को उनकी जगह छोड़ देगा। क्या आप वाकई इस परिवार को हटाना चाहते हैं?"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:16
@@ -17734,7 +17734,7 @@ msgstr ""
 #: resources/views/source-page.phtml:15
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
-msgstr ""
+msgstr "स्वीकार"
 
 #: resources/views/family-page.phtml:16
 #: resources/views/gedcom-record-page.phtml:10
@@ -17743,17 +17743,17 @@ msgstr ""
 #: resources/views/source-page.phtml:15
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
-msgstr ""
+msgstr "अस्वीकार"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:16
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "यह परिवार हटा दिया गया है। आपको विलोपन की समीक्षा करनी चाहिए और फिर इसे %1$s या %2$s करना चाहिए।"
 
 #: resources/views/family-page.phtml:18
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "यह परिवार हटा दिया गया है। विलोपन की समीक्षा एक मॉडरेटर द्वारा की जानी चाहिए।"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:22
@@ -17763,7 +17763,7 @@ msgstr ""
 #: resources/views/source-page.phtml:21
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr ""
+msgstr "स्वीकार"
 
 #: resources/views/family-page.phtml:22
 #: resources/views/gedcom-record-page.phtml:16
@@ -17772,202 +17772,202 @@ msgstr ""
 #: resources/views/source-page.phtml:21
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
-msgstr ""
+msgstr "अस्वीकार"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:22
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "यह परिवार एडिट किया गया है। आपको बादलों की समीक्षा करनी चाहिए और फिर इसे %1$s या %2$s करना चाहिए।"
 
 #: resources/views/family-page.phtml:24
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "यह परिवार एडिट किया गया है। बदलावों की समीक्षा एक मॉडरेटर द्वारा की जानी चाहिए।"
 
 #: resources/views/family-page.phtml:56
 msgid "No facts exist for this family."
-msgstr ""
+msgstr "इस परिवार के लिए कोई तथ्य मौजूद नहीं है।"
 
 #: resources/views/forgot-password-page.phtml:20
 #: resources/views/modules/login_block/sign-in.phtml:52
 msgid "Username or email address"
-msgstr ""
+msgstr "युज़रनेम या इमेल एड्रेस"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/gedcom-record-page.phtml:10
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "यह रिकॉर्ड हटा दिया गया है। आपको इस विलोपन की समीक्षा करनी चाहिए और फिर %1$s या %2$s करना चाहिए।"
 
 #: resources/views/gedcom-record-page.phtml:12
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "यह रिकॉर्ड हटा दिया गया है। विलोपन की समीक्षा किसी मॉडरेटर द्वारा की जानी चाहिए।"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/gedcom-record-page.phtml:16
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "यह रिकॉर्ड एडिट किया गया है। आपको इन बदलावों की समीक्षा करनी चाहिए और फिर %1$s या %2$s करना चाहिए।"
 
 #: resources/views/gedcom-record-page.phtml:18
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "यह रिकॉर्ड एडिट किया गया है। बदलाव की समीक्षा किसी मॉडरेटर द्वारा की जानी चाहिए।"
 
 #: resources/views/help/date.phtml:4
 msgid "Dates are stored using English abbreviations and keywords. Shortcuts are available as alternatives to these abbreviations and keywords."
-msgstr ""
+msgstr "तिथियां अंग्रेजी संक्षिप्ताक्षर और कीवर्ड का उपयोग करके संग्रहीत की जाती हैं। इन संक्षिप्ताक्षर और कीवर्ड के विकल्प के रूप में शॉर्टकट उपलब्ध हैं।"
 
 #: resources/views/help/date.phtml:17 resources/views/help/date.phtml:55
 #: resources/views/help/date.phtml:93
 msgid "Shortcut"
-msgstr ""
+msgstr "शॉर्टकट"
 
 #: resources/views/help/date.phtml:42
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
-msgstr ""
+msgstr "दिनांक सीमाओं का उपयोग यह संकेत देने के लिए किया जाता है कि कोई घटना, जैसे कि एक जन्म, एक संभावित सीमा के भीतर किसी अज्ञात तारीख को हुई।"
 
 #: resources/views/help/date.phtml:49
 #: resources/views/modules/statistics-chart/custom.phtml:88
 msgid "Date range"
-msgstr ""
+msgstr "दिनांक सीमा"
 
 #: resources/views/help/date.phtml:80
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr ""
+msgstr "दिनांक की मुद्दत का उपयोग यह संकेत देने के लिए किया जाता है कि एक तथ्य, जैसे कि कोई व्यवसाय, समय की कितनी मुद्दत के लिए जारी रहा।"
 
 #: resources/views/help/date.phtml:87
 msgid "Date period"
-msgstr ""
+msgstr "दिनांक मुद्दत"
 
 #: resources/views/help/date.phtml:118
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
-msgstr ""
+msgstr "सरल तिथियों को ग्रेगोरियन कैलेंडर में माना जाता है। किसी अन्य कैलेंडर में दिनांक उल्लिखित करने के लिए, तिथि से पहले एक कीवर्ड जोड़ें। यह कीवर्ड वैकल्पिक है यदि महीना या वर्ष प्रारूप तारीख को अस्पष्ट बनाता है।"
 
 #: resources/views/help/hebrew.phtml:4
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr ""
+msgstr "कई संस्कृतियों में पारंपरिक पात्रों में एक पारंपरिक नाम का उच्चारण करने का रिवाज है और नाम का एक रोमानी संस्करण भी है क्योंकि इसे लैटिन वर्णमाला के आधार पर भाषाओं में वर्तनी या उच्चारण किया जाएगा, जैसे कि अंग्रेजी। <br><br> आप सामान्य नाम क्षेत्रों में नाम दर्ज करने के लिए लैटिन वर्णमाला का उपयोग करना पसंद करते हैं, तो आप इस क्षेत्र का उपयोग गैर-लैटिन वर्णमाला जैसे कि ग्रीक, हिब्रू, रूसी, अरबी या चीनी में भी कर सकते हैं। नाम के दोनों संस्करण सूचियों और चार्ट में दिखाई देंगे। <br><br> हालांकि इस क्षेत्र को “हिब्रू” लेबल दिया गया है, लेकिन यह केवल हिब्रू वर्णों तक ही सीमित नहीं है।"
 
 #: resources/views/help/iso-8859-1.phtml:4
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr ""
+msgstr "webtrees उच्चारण अक्षरों, विशेष वर्णों और गैर-लैटिन लिपियों के लिए UTF-8 एन्कोडिंग का उपयोग करती है। यदि आप ऐसे वंशावली सॉफ़्टवेयर के साथ इस GEDCOM फ़ाइल का उपयोग करना चाहते हैं जो UTF-8 का समर्थन नहीं करता, तो आप इसे ISO-8859-1 एन्कोडिंग का उपयोग करके भी बना सकते हैं।"
 
 #: resources/views/help/media-object.phtml:4
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr ""
+msgstr "मीडिया ऑब्जेक्ट फॅमिली ट्री में एक रिकॉर्ड होता है जिसमें मीडिया फ़ाइल के बारे में जानकारी होती है। इस जानकारी में एक शीर्षक, एक कॉपीराइट नोटिस, एक प्रतिलेख, गोपनीयता प्रतिबंध आदि शामिल हो सकते हैं। मीडिया फ़ाइल, जैसे कि फोटो या वीडियो, स्थानीय रूप से (इस वेबसर्वर पर) या दूरस्थ रूप से (एक अलग वेबसर्वर पर) संग्रहीत की जा सकती है।"
 
 #: resources/views/help/name.phtml:4
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
-msgstr ""
+msgstr "<b>नाम</b> फ़ील्ड में व्यक्ति का पूरा नाम होता है, क्योंकि उन्होंने इसे वर्तनी में दर्ज किया होगा। इसे स्क्रीन पर प्रदर्शित किया जाएगा। यह नाम के विभिन्न हिस्सों की पहचान करने के लिए सामान्य वंशावली एनोटेशन का उपयोग करता है।"
 
 #: resources/views/help/name.phtml:9
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr ""
+msgstr "कुलनाम स्लैश द्वारा संलग्न है: <%s>जॉन पॉल /स्मिथ/<%s>"
 
 #: resources/views/help/name.phtml:12
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
-msgstr ""
+msgstr "यदि कुलनाम अज्ञात है, तो खाली स्लैश का उपयोग करें: <%s> मैरी //<%s>"
 
 #: resources/views/help/name.phtml:15
 #, php-format
 msgid "If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
-msgstr ""
+msgstr "यदि किसी व्यक्ति के दो अलग-अलग कुलनाम हैं, तो दोनों को स्लैश द्वारा संलग्न किया जाना चाहिए: <%s>जोस एंटोनियो /गोमेज़/ /इग्लेसियस/<%s>"
 
 #: resources/views/help/name.phtml:18
 #, php-format
 msgid "If an individual does not have a surname, no slashes are needed: <%s>Jón Einarsson<%s>"
-msgstr ""
+msgstr "यदि किसी व्यक्ति का कोई कुलनाम नहीं है, तो किसी स्लैश की आवश्यकता नहीं है: <%s>आर्यभट<%s>"
 
 #: resources/views/help/name.phtml:21
 #, php-format
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
-msgstr ""
+msgstr "यदि किसी व्यक्ति को उनके पहले दिए गए नाम से नहीं जाना जाता है, तो पसंदीदा नाम को तारांकन चिह्न के साथ सांकेतिक किया जाना चाहिए: <%s>जॉन पॉल* /स्मिथ/<%s>"
 
 #: resources/views/help/name.phtml:24
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr ""
+msgstr "यदि किसी व्यक्ति को एक उपनाम से जाना जाता है जो उनके औपचारिक नाम का हिस्सा नहीं है, तो इसे उद्धरण चिह्नों द्वारा संलग्न किया जाना चाहिए। उदाहरण के लिए, <%s>जॉन \"नोबी\" /क्लार्क/<%s>।"
 
 #: resources/views/help/pending-changes.phtml:4
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr ""
+msgstr "जब आप जानकारी जोड़ते हैं, एडिट करते हैं, या हटाते हैं, तो परिवर्तन तुरंत सहेजे नहीं जाते हैं। इसके बजाय, उन्हें “लंबित” क्षेत्र में रखा जाता है। स्वीकृत होने से पहले इन लंबित परिवर्तनों की समीक्षा एक मॉडरेटर द्वारा की जानी चाहिए।"
 
 #: resources/views/help/pending-changes.phtml:8
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
-msgstr ""
+msgstr "यह प्रक्रिया साइट के मालिक को यह सुनिश्चित करने की अनुमति देती है कि नई जानकारी साइट के मानकों और सम्मेलनों का पालन करती है, उचित स्रोत विशेषता हैं, वगैरह।"
 
 #: resources/views/help/pending-changes.phtml:12
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr ""
+msgstr "लंबित परिवर्तन केवल तभी दिखाए जाते हैं जब आपके अकाउंट को एडिट करने की अनुमति हो। जब आप साइन आउट करते हैं, तो आप उन्हें देख नहीं पाएंगे। इसके अलावा, लंबित परिवर्तन केवल कुछ पेजों पर दिखाए जाते हैं। उदाहरण के लिए, उन्हें लिस्ट , रिपोर्ट या सर्च रिज़ल्ट में नहीं दिखाया जाता।"
 
 #: resources/views/help/pending-changes.phtml:17
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr ""
+msgstr "प्रत्येक युज़र अकाउंट में “परिवर्तनों को स्वचालित रूप से स्वीकार करने” का विकल्प होता है। जब यह सक्षम हो जाता है, तो उस युज़र द्वारा किए गए किसी भी परिवर्तन को तुरंत सहेज लिया जाता है। कई एडमिनिस्ट्रेटर इसे अपने स्वयं के युज़र अकाउंट के लिए सक्षम करते हैं।"
 
 #: resources/views/help/place.phtml:4
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr ""
+msgstr "स्थानों के नाम एक कॉमा द्वारा अलग की गई लिस्ट के रूप में दर्ज किए जाने चाहिए, जो सबसे छोटी जगह से शुरू होता है और देश के साथ समाप्त होता है। उदाहरण के लिए, “नागपुर, महाराष्ट्र, इंडिया”।"
 
 #: resources/views/help/place.phtml:8
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr ""
+msgstr "समय के साथ जगह के नाम बदल सकते हैं। वंशावली में, किसी शहर या देश के लिए वर्तमान नाम का उपयोग करना प्रथा है।  ऐतिहासिक नाम को स्रोतों, नोट्स वगैरह में दिखाया जा सकता है।"
 
 #: resources/views/help/relationship-privacy.phtml:4
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr ""
+msgstr "जहां एक यूज़र एक फॅमिली ट्री में किसी व्यक्तिगत रिकॉर्ड से जुड़ा होता है और इसमें सदस्य, एडिटर या मॉडरेटर की भूमिका होती है, वहां आप उसके दूर दराज के जीवित रिश्तेदारों के विवरण तक पहुंचने पर रोक लगा सकते हैं। आप उन रिश्तेदारी की स्टेप्स की संख्या तय कर सकते हैं जो यूज़र को देखने की अनुमति होगी।"
 
 #: resources/views/help/relationship-privacy.phtml:8
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
-msgstr ""
+msgstr "उदाहरण के लिए, यदि आप पथ की लंबाई 2 तय करते हैं, तो व्यक्ति, अपने पोते (बच्चे के बच्चे), मौसी/बुआ (माता-पिता के भाई बहन), सौतेली संतान (जीवनसाथी के बच्चे) को देख पाएंगे, लेकिन उनके पहले चचेरे भाई/बहन (माता-पिता के सहोदर के बच्चों) को नहीं देख सकेंगे।"
 
 #: resources/views/help/relationship-privacy.phtml:12
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
-msgstr ""
+msgstr "नोट: लंबी पथ लंबाई के लिए बहुत अधिक गणना की आवश्यकता होती है, जो आपकी वेबसाइट को इन युज़र्स के लिए धीमा चला सकती है।"
 
 #: resources/views/help/restriction.phtml:4
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr ""
+msgstr "प्रतिबंधों को रिकॉर्ड और/या तथ्यों में जोड़ा जा सकता है। वे प्रतिबंधित करते हैं कि कौन डेटा देख सकता है और कौन इसे एडिट कर सकता है।"
 
 #: resources/views/help/restriction.phtml:7
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
-msgstr ""
+msgstr "ध्यान दें यदि यूज़र अकाउंट किसी रिकॉर्ड से जुड़ा हुआ है, तो वह यूज़र हमेशा उस रिकॉर्ड को देख सकेगा।"
 
 #: resources/views/help/romanized.phtml:4
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr ""
+msgstr "कई संस्कृतियों में पारंपरिक पात्रों में एक पारंपरिक नाम का उच्चारण करने का रिवाज है और नाम का एक रोमानी संस्करण भी है क्योंकि इसे लैटिन वर्णमाला के आधार पर भाषाओं में वर्तनी या उच्चारण किया जाएगा, जैसे कि अंग्रेजी।<br><br> आप मानक नाम क्षेत्रों में नाम दर्ज करने के लिए हिब्रू, ग्रीक, रूसी, चीनी या अरबी जैसे गैर-लैटिन वर्णमाला का उपयोग करना पसंद करते हैं तो आप लैटिन वर्णमाला का उपयोग करके उसी नाम को दर्ज करने के लिए इस क्षेत्र का उपयोग कर सकते हैं। नाम के दोनों संस्करण सूचियों और चार्ट में दिखाई देंगे। <br><br>हालांकि इस क्षेत्र को “Romanized” कहा जाता है, यह केवल लैटिन वर्णमाला के आधार पर वर्णों तक ही सीमित नहीं है। यह जापानी नामों के साथ भी उपयोग हो सकता है, जहां तीन अलग-अलग अक्षर हो सकते हैं।"
 
 #: resources/views/help/source-events.phtml:4
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr ""
+msgstr "प्रत्येक स्रोत विशिष्ट घटनाओं को दर्ज करता है, आम तौर पर दी गई तिथि सीमा और एक स्थान अधिकार क्षेत्र के लिए।  उदाहरण के लिए, एक जनगणना, जनगणना की घटनाओं और चर्च के रिकॉर्ड जन्म, विवाह, और मृत्यु की घटनाओं को रिकॉर्ड करता है।<br><br>उन घटनाओं का चयन करें जो इस स्रोत द्वारा दर्ज की गई घटनाओं की सूची से दर्ज की गई हैं। दिनांक को एक श्रेणी प्रारूप में निर्दिष्ट किया जाना चाहिए जैसे <i>1900 से 1910 तक</i>। स्थान क्षेत्राधिकार सबसे कम अधिकार क्षेत्र का नाम है जो इस स्रोत में नामित सभी निचले-स्तर के स्थानों को शामिल करता है। उदाहरण के लिए, “वनडा, इडाहो, यूएसए” को वनडा काउंटी के भीतर विभिन्न शहरों में होने वाली घटनाओं के लिए एक स्रोत क्षेत्राधिकार के रूप में इस्तेमाल किया जाएगा। “इडाहो, यूएसए” स्रोत क्षेत्राधिकार स्थान होगा यदि दर्ज की गई घटनाएं न केवल वनडा काउंटी में बल्कि इडाओ में अन्य काउंटी में भी हुईं।"
 
 #: resources/views/help/surname.phtml:4
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr ""
+msgstr "<b>कुलनाम</b> फ़ील्ड में एक नाम होता है जो सॉर्टिंग और ग्रुपिंग के लिए उपयोग किया जाता है। यह व्यक्ति के वास्तविक कुलनाम से भिन्न हो सकता है जिसे हमेशा <b>नाम</b> फ़ील्ड से लिया जाता है। इस फ़ील्ड का उपयोग कुलनाम के साथ या बिना उपसर्ग (Gogh / van Gogh) और समूह वर्तनी भिन्नताओं या विभक्तियों (Kowalski / Kowalska) के लिए किया जा सकता है। यदि किसी व्यक्ति को एक से अधिक उपनामों के तहत सूचीबद्ध करने की आवश्यकता होती है, तो प्रत्येक नाम को कोमा द्वारा अलग किया जाना चाहिए।"
 
 #: resources/views/help/zip-gedcom.phtml:4
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
-msgstr ""
+msgstr "डाउनलोड के आकार को कम करने के लिए, आप डेटा को एक .ZIP फ़ाइल में कंप्रेस कर सकते हैं। उपयोग करने से पहले आपको .ZIP फ़ाइल को अनकंप्रेस करना होगा।"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page.phtml:29
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "इस व्यक्ति को हटा दिया गया है। आपको इस विलोपन की समीक्षा करनी चाहिए और फिर इसे %1$s या %2$s करना चाहिए।"
 
 #: resources/views/individual-page.phtml:32
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "इस व्यक्ति को हटा दिया गया है। विलोपन की समीक्षा एक मॉडरेटर द्वारा की जानी चाहिए।"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page.phtml:38
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "इस व्यक्ति को एडिट किया गया है। आपको बदलावों की समीक्षा करनी चाहिए और फिर उन्हें %1$s या %2$s करना चाहिए।"
 
 #: resources/views/individual-page.phtml:41
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "इस व्यक्ति को एडिट किया गया है। बदलाव की समीक्षा एक मॉडरेटर द्वारा की जानी चाहिए।"
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page.phtml:77
@@ -17984,7 +17984,7 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsvr.phtml:101
 #: resources/views/setup/step-5-administrator.phtml:86
 msgid "previous"
-msgstr ""
+msgstr "पिछला"
 
 #. I18N: A button label, next page
 #: resources/views/individual-page.phtml:81
@@ -18002,38 +18002,38 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsvr.phtml:97
 #: resources/views/setup/step-5-administrator.phtml:82
 msgid "next"
-msgstr ""
+msgstr "अगला"
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: resources/views/layouts/administration.phtml:47
 #: resources/views/layouts/default.phtml:82
 msgid "Skip to content"
-msgstr ""
+msgstr "इसे छोड़ें सामग्री पर बढ़े"
 
 #: resources/views/layouts/default.phtml:157
 #: resources/views/modules/random_media/slide-show.phtml:21
 #: resources/views/modules/random_media/slide-show.phtml:23
 msgid "Play"
-msgstr ""
+msgstr "प्ले"
 
 #: resources/views/layouts/default.phtml:158
 #: resources/views/modules/random_media/slide-show.phtml:25
 #: resources/views/modules/random_media/slide-show.phtml:27
 msgid "Stop"
-msgstr ""
+msgstr "रोकें"
 
 #: resources/views/layouts/error.phtml:9 resources/views/layouts/error.phtml:26
 #: resources/views/layouts/offline.phtml:58
 msgid "This website is temporarily unavailable"
-msgstr ""
+msgstr "यह वेबसाइट अस्थायी रूप से अनुपलब्ध है"
 
 #: resources/views/layouts/offline.phtml:61
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
-msgstr ""
+msgstr "यह वेबसाइट रखरखाव के लिए बंद है। आप कुछ मिनटों में <a href=\"index.php\">पुन: प्रयास करें</a>।"
 
 #: resources/views/layouts/setup.phtml:8 resources/views/layouts/setup.phtml:16
 msgid "Setup wizard for webtrees"
-msgstr ""
+msgstr "webtrees के लिए सेटअप विज़ार्ड"
 
 #: resources/views/lists/anniversaries-table.phtml:16
 #: resources/views/lists/families-table.phtml:257
@@ -18041,334 +18041,334 @@ msgstr ""
 #: resources/views/lists/individuals-table.phtml:281
 #: resources/views/modules/yahrzeit/table.phtml:16
 msgid "Anniversary"
-msgstr ""
+msgstr "सालगिरह"
 
 #: resources/views/lists/datatables-attributes.phtml:18
 #: resources/views/lists/datatables-attributes.phtml:29
 msgid "No records to display"
-msgstr ""
+msgstr "दिखाने के लिए कोई रेकॉर्ड नहीं है"
 
 #. I18N: %s are placeholders for numbers
 #: resources/views/lists/datatables-attributes.phtml:20
 #: resources/views/lists/datatables-attributes.phtml:21
 #, php-format
 msgid "Showing %1$s to %2$s of %3$s"
-msgstr ""
+msgstr "%3$s में से %1$s से %2$s तक दिखाए जा रहे हैं"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:23
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr ""
+msgstr "(कुल %s इंट्री में से फिल्टर किया गया)"
 
 #. I18N: %s is a number of records per page
 #: resources/views/lists/datatables-attributes.phtml:25
 #, php-format
 msgid "Display %s"
-msgstr ""
+msgstr "%s प्रदर्शित करें"
 
 #: resources/views/lists/datatables-attributes.phtml:26
 msgid "Loading…"
-msgstr ""
+msgstr "लोडिंग…"
 
 #: resources/views/lists/datatables-attributes.phtml:28
 msgid "Filter"
-msgstr ""
+msgstr "फिल्टर"
 
 #: resources/views/lists/families-table.phtml:158
 msgid "Both alive"
-msgstr ""
+msgstr "दोनों जिवित"
 
 #: resources/views/lists/families-table.phtml:164
 msgid "Show couples where only the female partner is dead."
-msgstr ""
+msgstr "ऐसे जोड़े दिखाएँ जहाँ केवल महिला साथी मृत हो।"
 
 #: resources/views/lists/families-table.phtml:166
 msgid "Widower"
-msgstr ""
+msgstr "विधुर"
 
 #: resources/views/lists/families-table.phtml:172
 msgid "Show couples where only the male partner is dead."
-msgstr ""
+msgstr "ऐसे जोड़े दिखाएँ जहाँ केवल पुरुष साथी मृत हो।"
 
 #: resources/views/lists/families-table.phtml:174
 msgid "Widow"
-msgstr ""
+msgstr "विधवा"
 
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/individuals-table.phtml:204
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr ""
+msgstr "उन व्यक्तियों को दिखाएं जो मृत हैं या वे जोड़े जहां दोनों साथी मृत हो चुके हैं।"
 
 #: resources/views/lists/families-table.phtml:182
 msgid "Both dead"
-msgstr ""
+msgstr "दोनों मृत"
 
 #: resources/views/lists/families-table.phtml:190
 #: resources/views/lists/individuals-table.phtml:248
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr ""
+msgstr "“जड़ों” के जोड़े या व्यक्तियों को दिखाएं। इन व्यक्तियों को “कुलपति” भी कहा जा सकता है। वे ऐसे व्यक्ति हैं जिनके पास डेटाबेस में कोई माता-पिता दर्ज नहीं है।"
 
 #: resources/views/lists/families-table.phtml:192
 #: resources/views/lists/individuals-table.phtml:250
 msgid "Roots"
-msgstr ""
+msgstr "जड़ें"
 
 #: resources/views/lists/families-table.phtml:198
 #: resources/views/lists/individuals-table.phtml:256
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr ""
+msgstr "“पत्तों” जोड़े या व्यक्ति दिखाएं। ये ऐसे व्यक्ति हैं जो जीवित हैं, लेकिन उनके डेटाबेस में कोई बच्चे दर्ज नहीं हैं।"
 
 #: resources/views/lists/families-table.phtml:200
 #: resources/views/lists/individuals-table.phtml:258
 msgid "Leaves"
-msgstr ""
+msgstr "पत्ते"
 
 #: resources/views/lists/families-table.phtml:208
 msgid "Show couples with an unknown marriage date."
-msgstr ""
+msgstr "शादी की अज्ञात तारीख वाले जोड़े दिखाएं।"
 
 #: resources/views/lists/families-table.phtml:216
 msgid "Show couples who married more than 100 years ago."
-msgstr ""
+msgstr "उन जोड़ों को दिखाएं जिन्होंने 100 साल से अधिक समय पहले शादी की थी।"
 
 #: resources/views/lists/families-table.phtml:224
 msgid "Show couples who married within the last 100 years."
-msgstr ""
+msgstr "पिछले 100 वर्षों के भीतर शादी करने वाले जोड़ों को दिखाएं।"
 
 #: resources/views/lists/families-table.phtml:232
 msgid "Show divorced couples."
-msgstr ""
+msgstr "तलाकशुदा जोड़ों को दिखाएं।"
 
 #: resources/views/lists/families-table.phtml:240
 msgid "Show couples where either partner married more than once."
-msgstr ""
+msgstr "ऐसे जोड़े दिखाएँ जहाँ किसी एक साथी ने एक से अधिक बार विवाह किया हो।"
 
 #: resources/views/lists/families-table.phtml:242
 msgid "Multiple marriages"
-msgstr ""
+msgstr "एक से अधिक शादियां"
 
 #: resources/views/lists/families-table.phtml:276
 #: resources/views/lists/individuals-table.phtml:300
 msgid "Show parents"
-msgstr ""
+msgstr "माता-पिता को दिखाएं"
 
 #: resources/views/lists/families-table.phtml:279
 #: resources/views/lists/individuals-table.phtml:303
 msgid "Show statistics charts"
-msgstr ""
+msgstr "आंकड़ों की चार्ट दिखाएं"
 
 #: resources/views/lists/families-table.phtml:470
 #: resources/views/lists/families-table.phtml:486
 #: resources/views/lists/individuals-table.phtml:479
 #: resources/views/lists/individuals-table.phtml:496
 msgid "Decade of birth"
-msgstr ""
+msgstr "जन्म का दशक"
 
 #: resources/views/lists/families-table.phtml:495
 #: resources/views/lists/families-table.phtml:511
 msgid "Decade of marriage"
-msgstr ""
+msgstr "विवाह का दशक"
 
 #: resources/views/lists/given-names-table.phtml:10
 #: resources/views/search-phonetic-page.phtml:17
 msgid "Given name"
-msgstr ""
+msgstr "दिया गया नाम"
 
 #: resources/views/lists/individuals-table.phtml:170
 msgid "Show only males."
-msgstr ""
+msgstr "केवल पुरुषों को दिखाएं।"
 
 #: resources/views/lists/individuals-table.phtml:178
 msgid "Show only females."
-msgstr ""
+msgstr "केवल महिलाओं को दिखाएं।"
 
 #: resources/views/lists/individuals-table.phtml:186
 msgid "Show only individuals for whom the gender is not known."
-msgstr ""
+msgstr "केवल उन व्यक्तियों को दिखाएं जिनके लिए लिंग ज्ञात नहीं है।"
 
 #: resources/views/lists/individuals-table.phtml:196
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr ""
+msgstr "उन व्यक्तियों को दिखाएँ जो जीवित हैं या जोड़े हैं जहाँ दोनों साथी जीवित हैं।"
 
 #: resources/views/lists/individuals-table.phtml:198
 msgid "Alive"
-msgstr ""
+msgstr "जिवित"
 
 #: resources/views/lists/individuals-table.phtml:212
 msgid "Show individuals who died more than 100 years ago."
-msgstr ""
+msgstr "ऐसे व्यक्तियों को दिखाएं, जिनकी मृत्यु को 100 वर्ष से अधिक हो चुके हैं।"
 
 #: resources/views/lists/individuals-table.phtml:220
 msgid "Show individuals who died within the last 100 years."
-msgstr ""
+msgstr "ऐसे व्यक्तियों को दिखाएं जो पिछले 100 वर्षों के भीतर मृत हुए।"
 
 #: resources/views/lists/individuals-table.phtml:230
 msgid "Show individuals born more than 100 years ago."
-msgstr ""
+msgstr "100 से अधिक साल पहले पैदा हुए व्यक्तियों को दिखाएं।"
 
 #: resources/views/lists/individuals-table.phtml:238
 msgid "Show individuals born within the last 100 years."
-msgstr ""
+msgstr "पिछले 100 वर्षों के भीतर पैदा हुए व्यक्तियों को दिखाएं।"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:268
 msgid "Sosa"
-msgstr ""
+msgstr "सोसा"
 
 #: resources/views/lists/individuals-table.phtml:505
 #: resources/views/lists/individuals-table.phtml:522
 msgid "Decade of death"
-msgstr ""
+msgstr "मृत्यु का दशक"
 
 #: resources/views/lists/individuals-table.phtml:531
 #: resources/views/lists/individuals-table.phtml:573
 msgid "Age related to death year"
-msgstr ""
+msgstr "मृत्यु वर्ष से संबंधित आयु"
 
 #: resources/views/lists/repositories-table.phtml:41
 msgid "Repository name"
-msgstr ""
+msgstr "संग्रह का नाम"
 
 #: resources/views/lists/surnames-table.phtml:11
 #: resources/views/modules/gedcom_stats/config.phtml:44
 #: resources/views/modules/gedcom_stats/statistics.phtml:52
 #: resources/views/modules/statistics-chart/custom.phtml:155
 msgid "Surnames"
-msgstr ""
+msgstr "कुलनाम"
 
 #: resources/views/lists/surnames-table.phtml:20
 #: resources/views/modules/family-book-chart/page.phtml:43
 #: resources/views/modules/pedigree-chart/previous.phtml:29
 msgid "Spouses"
-msgstr ""
+msgstr "जीवनसाथी"
 
 #: resources/views/login-page.phtml:21
 msgid "Welcome to this genealogy website"
-msgstr ""
+msgstr "इस वंशावली वेबसाइट में आपका स्वागत है"
 
 #. I18N: A button label.
 #: resources/views/login-page.phtml:56
 #: resources/views/modules/login_block/sign-in.phtml:32
 msgid "sign in"
-msgstr ""
+msgstr "साइन इन"
 
 #: resources/views/login-page.phtml:60
 #: resources/views/modules/login_block/sign-in.phtml:36
 msgid "Forgot password?"
-msgstr ""
+msgstr "पासवर्ड भूल गए?"
 
 #: resources/views/media-list-page.phtml:21
 #: resources/views/modals/media-file-fields.phtml:48
 msgid "Folder"
-msgstr ""
+msgstr "फ़ोल्डर"
 
 #: resources/views/media-list-page.phtml:29
 msgid "Media objects per page"
-msgstr ""
+msgstr "मीडिया ऑब्जेक्ट प्रति पेज"
 
 #: resources/views/media-list-page.phtml:52
 msgid "Search filters"
-msgstr ""
+msgstr "सर्च फिल्टर"
 
 #: resources/views/media-list-page.phtml:73
 msgid "Media objects found"
-msgstr ""
+msgstr "मीडिया ऑब्जेक्ट मिले"
 
 #: resources/views/media-list-page.phtml:91
 #: resources/views/media-list-page.phtml:190
 #, php-format
 msgid "Page %s of %s"
-msgstr ""
+msgstr "पेज %s, %s में से"
 
 #. I18N: %s is a filename
 #: resources/views/media-list-page.phtml:145
 #: resources/views/media-page.phtml:117
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr ""
+msgstr "फ़ाइल “%s” मौजूद नहीं है।"
 
 #: resources/views/media-page-menu.phtml:19
 #: resources/views/modals/link-media-to-individual.phtml:8
 msgid "Link this media object to an individual"
-msgstr ""
+msgstr "इस मीडिया ऑब्जेक्ट को किसी व्यक्ति से लिंक करें"
 
 #: resources/views/media-page-menu.phtml:24
 #: resources/views/modals/link-media-to-family.phtml:8
 msgid "Link this media object to a family"
-msgstr ""
+msgstr "इस मीडिया ऑब्जेक्ट को किसी परिवार से लिंक करें"
 
 #: resources/views/media-page-menu.phtml:29
 #: resources/views/modals/link-media-to-source.phtml:8
 msgid "Link this media object to a source"
-msgstr ""
+msgstr "इस मीडिया ऑब्जेक्ट को किसी स्रोत से लिंक करें"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/media-page.phtml:28
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "यह मीडिया ऑब्जेक्ट हटा दिया गया है। आपको इस विलोपन की समीक्षा करनी चाहिए और फिर %1$s या %2$s करना चाहिए।"
 
 #: resources/views/media-page.phtml:30
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "यह मीडिया ऑब्जेक्ट हटा दिया गया है। विलोपन की समीक्षा किसी मॉडरेटर द्वारा की जानी चाहिए।"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/media-page.phtml:34
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "यह मीडिया ऑब्जेक्ट एडिट किया गया है। आपको बदलावों की समीक्षा करनी चाहिए और फिर उन्हें %1$s या %2$s करना चाहिए।"
 
 #: resources/views/media-page.phtml:36
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "यह मीडिया ऑब्जेक्ट एडिट किया गया है। बदलाव की समीक्षा किसी मॉडरेटर द्वारा की जानी चाहिए।"
 
 #: resources/views/media-page.phtml:134
 msgid "Download file"
-msgstr ""
+msgstr "डाउनलोड फाइल"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:19
 msgid "A URL"
-msgstr ""
+msgstr "एक URL"
 
 #: resources/views/modals/media-file-fields.phtml:58
 msgid "Same as uploaded file"
-msgstr ""
+msgstr "अपलोड की गई फ़ाइल के समान"
 
 #: resources/views/modals/media-file-fields.phtml:62
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr ""
+msgstr "यदि आपके पास बड़ी संख्या में मीडिया फ़ाइलें हैं, तो आप उन्हें फ़ोल्डर्स और सबफ़ोल्डर में व्यवस्थित कर सकते हैं।"
 
 #: resources/views/modals/media-file-fields.phtml:67
 msgid "Create a unique filename"
-msgstr ""
+msgstr "एक यूनिक फ़ाइल नाम बनाएँ"
 
 #: resources/views/modals/media-file-fields.phtml:92
 msgid "Caution!"
-msgstr ""
+msgstr "सावधान!"
 
 #: resources/views/modals/media-file-fields.phtml:94
 msgid "The GEDCOM standard does not allow URLs in media objects."
-msgstr ""
+msgstr "GEDCOM मानक मीडिया ऑब्जेक्ट्स में URL की अनुमति नहीं देता है।"
 
 #: resources/views/modals/media-file-fields.phtml:95
 msgid "Other genealogy applications might not recognize this data."
-msgstr ""
+msgstr "अन्य वंशावली एप्लीकेशन इस डेटा को नहीं भी पहचान सकते हैं।"
 
 #: resources/views/modals/on-screen-keyboard.phtml:8
 msgid "Keep open"
-msgstr ""
+msgstr "खुला रखें"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.phtml:5
 msgid "Privacy restriction"
-msgstr ""
+msgstr "गोपनीयता प्रतिबंध"
 
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.phtml:22
 msgid "Editing restriction"
-msgstr ""
+msgstr "एडिटिंग प्रतिबंध"
 
 #: resources/views/modules/ancestors-chart/page.phtml:25
 #: resources/views/modules/descendancy_chart/page.phtml:24
@@ -18382,7 +18382,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:7
 #: resources/xml/reports/missing_facts_report.xml:7
 msgid "Generations"
-msgstr ""
+msgstr "पीढ़ियां"
 
 #: resources/views/modules/ancestors-chart/page.phtml:35
 #: resources/views/modules/descendancy_chart/page.phtml:34
@@ -18390,122 +18390,122 @@ msgstr ""
 #: resources/views/modules/hourglass-chart/page.phtml:36
 #: resources/views/modules/pedigree-chart/page.phtml:34
 msgid "Layout"
-msgstr ""
+msgstr "ख़ाका"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:18
 msgid "Sosa-Stradonitz number"
-msgstr ""
+msgstr "सोसा-स्ट्रैडोनिट्ज़ संख्या"
 
 #: resources/views/modules/batch_update/admin.phtml:77
 msgid "Update"
-msgstr ""
+msgstr "अपडेट"
 
 #: resources/views/modules/batch_update/admin.phtml:82
 #: resources/views/modules/batch_update/admin.phtml:86
 msgid "Update all"
-msgstr ""
+msgstr "सभी अपडेट करें"
 
 #: resources/views/modules/batch_update/admin.phtml:85
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr ""
+msgstr "आपके यूज़र अकाउंट में “स्वचालित रूप से परिवर्तनों का स्वीकार” सक्षम नहीं है। आप केवल एक बार में एक रिकॉर्ड बदल पाएंगे।"
 
 #: resources/views/modules/batch_update/admin.phtml:100
 msgid "Nothing found."
-msgstr ""
+msgstr "कुछ नहीं मिला।"
 
 #. I18N: A configuration setting
 #: resources/views/modules/bing-webmaster-tools/form.phtml:5
 #: resources/views/modules/google-webmaster-tools/form.phtml:5
 msgid "Site verification code"
-msgstr ""
+msgstr "साइट वेरीफिकेशन कोड"
 
 #: resources/views/modules/bing-webmaster-tools/form.phtml:14
 #: resources/views/modules/google-webmaster-tools/form.phtml:14
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr ""
+msgstr "जब webtrees किसी सबफ़ोल्डर में इंस्टाल की गई हो तो साइट वेरीफिकेशन कोड काम नहीं करते।"
 
 #: resources/views/modules/census-assistant.phtml:10
 msgid "Create a shared note using the census assistant"
-msgstr ""
+msgstr "जनगणना सहायक का उपयोग करके एक आम नोट बनाएं"
 
 #: resources/views/modules/census-assistant.phtml:32
 msgid "Citation"
-msgstr ""
+msgstr "प्रणाम"
 
 #: resources/views/modules/census-assistant.phtml:65
 msgid "Head of household"
-msgstr ""
+msgstr "घर के मुखिया"
 
 #: resources/views/modules/census-assistant.phtml:109
 msgid "Census transcript"
-msgstr ""
+msgstr "जनगणना प्रतिलेख"
 
 #: resources/views/modules/census-assistant.phtml:109
 msgid "Household"
-msgstr ""
+msgstr "गृहस्थी"
 
 #: resources/views/modules/charts/config.phtml:5
 #: resources/views/modules/statistics-chart/custom.phtml:18
 #: resources/views/modules/statistics-chart/custom.phtml:147
 #: resources/views/modules/statistics-chart/custom.phtml:149
 msgid "Chart type"
-msgstr ""
+msgstr "चार्ट प्रकार"
 
 #: resources/views/modules/clippings/show.phtml:8
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr ""
+msgstr "क्लिपिंग कार्ट आपको इस फॅमिली ट्री से उद्धरण लेने और उन्हें GEDCOM फ़ाइल के रूप में डाउनलोड करने की अनुमति देता है।"
 
 #: resources/views/modules/clippings/show.phtml:13
 msgid "Your clippings cart is empty."
-msgstr ""
+msgstr "आपकी क्लिपिंग कार्ट खाली है।"
 
 #: resources/views/modules/custom-css-js/edit.phtml:16
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr ""
+msgstr "<code>&lt;head&gt;</code> तत्व के अंत में कन्टेंट जोड़ें।"
 
 #: resources/views/modules/custom-css-js/edit.phtml:21
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
-msgstr ""
+msgstr "<code>&lt;style&gt;&lt;/style&gt;</code> टैग शामिल करें।"
 
 #: resources/views/modules/custom-css-js/edit.phtml:28
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr ""
+msgstr "<code>&lt;body&gt;</code> तत्व के अंत में कन्टेंट जोड़ें।"
 
 #: resources/views/modules/custom-css-js/edit.phtml:33
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr ""
+msgstr "<code>&lt;script&gt;&lt;/script&gt;</code> टैग शामिल करें।"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:17
 msgid "d’Aboville number"
-msgstr ""
+msgstr "d’Aboville नंबर"
 
 #: resources/views/modules/family-book-chart/chart.phtml:21
 #, php-format
 msgid "Family of %s"
-msgstr ""
+msgstr "%s का परिवार"
 
 #: resources/views/modules/family-book-chart/page.phtml:33
 msgid "Descendant generations"
-msgstr ""
+msgstr "वंशज पीढ़ी"
 
 #: resources/views/modules/family-book-chart/page.phtml:46
 #: resources/views/modules/hourglass-chart/page.phtml:39
 #: resources/xml/reports/pedigree_report.xml:6
 msgid "Show spouses"
-msgstr ""
+msgstr "जीवनसाथी दिखाएं"
 
 #: resources/views/modules/family_nav/sidebar-family.phtml:25
 msgid "Parents"
-msgstr ""
+msgstr "माता-पिता"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/config.phtml:14
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
-msgstr ""
+msgstr "FAQs बार बार पूछे गए प्रश्नों और उत्तरों की सूची है, जो आपको अपने दर्शकों को साइट के नियमों, नीतियों और प्रक्रियाओं को समझाने की अनुमति देते हैं। प्रश्न आम तौर पर गोपनीयता, कॉपीराइट, युज़र-अकाउंट, अनुपयुक्त सामग्री, स्रोत-उद्धरणों की आवश्यकता आदि से संबंधित होते हैं।"
 
 #: resources/views/modules/faq/config.phtml:15
 msgid "You may use HTML to format the answer and to add links to other websites."
-msgstr ""
+msgstr "उत्तर को प्रारूपित करने और अन्य वेबसाइटों से लिंक जोड़ने के लिए आप HTML का उपयोग कर सकते हैं।"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:41
@@ -18524,144 +18524,144 @@ msgstr ""
 #: resources/xml/reports/occupation_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "Sort order"
-msgstr ""
+msgstr "तरतीब"
 
 #: resources/views/modules/faq/config.phtml:43
 #: resources/views/modules/faq/edit.phtml:19
 msgid "Question"
-msgstr ""
+msgstr "प्रश्न"
 
 #: resources/views/modules/faq/edit.phtml:30
 msgid "Answer"
-msgstr ""
+msgstr "उत्तर"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/edit.phtml:41
 #: resources/views/modules/html/config.phtml:56
 #: resources/views/modules/stories/edit.phtml:45
 msgid "Show this block for which languages"
-msgstr ""
+msgstr "यह ब्लॉक किन भाषाओं के लिए दिखाएं"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/edit.phtml:68
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr ""
+msgstr "सभी फॅमिली ट्री में से एक पर या सभी फॅमिली ट्री पर एक FAQ प्रदर्शित किया जा सकता है।"
 
 #: resources/views/modules/faq/show.phtml:20
 msgid "back to top"
-msgstr ""
+msgstr "वापस ऊपर"
 
 #: resources/views/modules/favorites/favorites.phtml:33
 msgid "Are you sure you want to remove this item from your list of favorites?"
-msgstr ""
+msgstr "क्या आप वाकई इस आइटम को अपनी पसंदीदा सूची से निकालना चाहते हैं?"
 
 #: resources/views/modules/favorites/favorites.phtml:42
 #: resources/views/modules/favorites/favorites.phtml:52
 msgid "Add a favorite"
-msgstr ""
+msgstr "एक पसंदीदा जोड़ें"
 
 #: resources/views/modules/favorites/favorites.phtml:138
 msgid "Enter an optional note about this favorite"
-msgstr ""
+msgstr "इस पसंदीदा के बारे में एक वैकल्पिक नोट दर्ज करें"
 
 #: resources/views/modules/gedcom_news/edit.phtml:24
 #: resources/views/modules/html/config.phtml:32
 #: resources/views/modules/user_blog/edit.phtml:24
 msgid "Content"
-msgstr ""
+msgstr "कन्टेंट"
 
 #: resources/views/modules/gedcom_news/list.phtml:9
 #: resources/views/modules/user_blog/list.phtml:9
 msgid "No news articles have been submitted."
-msgstr ""
+msgstr "कोई समाचार लेख प्रस्तुत नहीं किया गया है।"
 
 #: resources/views/modules/gedcom_news/list.phtml:17
 #: resources/views/modules/user_blog/list.phtml:15
 msgid "More news articles"
-msgstr ""
+msgstr "अधिक समाचार लेख"
 
 #: resources/views/modules/gedcom_news/list.phtml:51
 msgid "Add a news article"
-msgstr ""
+msgstr "एक समाचार लेख जोड़ें"
 
 #. I18N: label for yes/no option
 #: resources/views/modules/gedcom_stats/config.phtml:9
 msgid "Show date of last update"
-msgstr ""
+msgstr "अंतिम अपडेट की तिथि दिखाएं"
 
 #: resources/views/modules/gedcom_stats/config.phtml:21
 #: resources/views/modules/html/template-statistics.phtml:30
 #: resources/views/statistics/individuals/names.phtml:21
 msgid "Total surnames"
-msgstr ""
+msgstr "कुल कुलनाम"
 
 #: resources/views/modules/gedcom_stats/config.phtml:26
 #: resources/views/statistics/other/total-events.phtml:11
 #: resources/xml/reports/missing_facts_report.xml:602
 msgid "Total events"
-msgstr ""
+msgstr "कुल घटनाएँ"
 
 #: resources/views/modules/gedcom_stats/config.phtml:27
 msgid "Total users"
-msgstr ""
+msgstr "कुल यूज़र्स"
 
 #: resources/views/modules/gedcom_stats/config.phtml:28
 #: resources/views/modules/gedcom_stats/statistics.phtml:140
 #: resources/views/modules/html/template-statistics.phtml:63
 #: resources/views/statistics/individuals/total-events.phtml:43
 msgid "Earliest birth"
-msgstr ""
+msgstr "सबसे पुराना जन्म"
 
 #: resources/views/modules/gedcom_stats/config.phtml:29
 #: resources/views/modules/gedcom_stats/statistics.phtml:151
 #: resources/views/modules/html/template-statistics.phtml:67
 #: resources/views/statistics/individuals/total-events.phtml:54
 msgid "Latest birth"
-msgstr ""
+msgstr "हालिया जन्म"
 
 #: resources/views/modules/gedcom_stats/config.phtml:30
 #: resources/views/modules/gedcom_stats/statistics.phtml:162
 #: resources/views/modules/html/template-statistics.phtml:71
 #: resources/views/statistics/individuals/total-events.phtml:91
 msgid "Earliest death"
-msgstr ""
+msgstr "सबसे पुरानी मृत्यु"
 
 #: resources/views/modules/gedcom_stats/config.phtml:31
 #: resources/views/modules/gedcom_stats/statistics.phtml:173
 #: resources/views/modules/html/template-statistics.phtml:75
 #: resources/views/statistics/individuals/total-events.phtml:102
 msgid "Latest death"
-msgstr ""
+msgstr "हालिया मृत्यु"
 
 #: resources/views/modules/gedcom_stats/config.phtml:32
 #: resources/views/modules/gedcom_stats/statistics.phtml:184
 #: resources/views/modules/html/template-statistics.phtml:79
 msgid "Individual who lived the longest"
-msgstr ""
+msgstr "व्यक्ती जो सबसे लंबे समय तक जिये"
 
 #: resources/views/modules/gedcom_stats/config.phtml:34
 #: resources/views/modules/gedcom_stats/statistics.phtml:210
 #: resources/views/modules/html/template-statistics.phtml:87
 msgid "Family with the most children"
-msgstr ""
+msgstr "सबसे अधिक बच्चों वाला परिवार"
 
 #: resources/views/modules/gedcom_stats/config.phtml:48
 #: resources/views/modules/gedcom_stats/statistics.phtml:239
 #: resources/views/modules/html/template-statistics.phtml:99
 msgid "Most common surnames"
-msgstr ""
+msgstr "सबसे आम कुलनाम"
 
 #. I18N: ... to show in a list
 #: resources/views/modules/gedcom_stats/config.phtml:56
 #: resources/views/modules/top10_surnames/config.phtml:5
 msgid "Number of surnames"
-msgstr ""
+msgstr "कुलनामों की संख्या"
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:5
 #: resources/views/modules/html/template-statistics.phtml:12
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr ""
+msgstr "यह फॅमिली ट्री अंतिम बार %s को अपडेट किया गया था।"
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:108
 #: resources/views/modules/html/template-statistics.phtml:50
@@ -18669,203 +18669,203 @@ msgstr ""
 #: resources/views/modules/upcoming_events/config.phtml:24
 #: resources/views/statistics/individuals/total-events.phtml:11
 msgid "Events"
-msgstr ""
+msgstr "घटनाएं"
 
 #. I18N: A configuration setting
 #: resources/views/modules/google-analytics/form.phtml:5
 #: resources/views/modules/matomo-analytics/form.phtml:5
 #: resources/views/modules/statcounter/form.phtml:5
 msgid "Site identification code"
-msgstr ""
+msgstr "साइट पहचान कोड"
 
 #: resources/views/modules/google-analytics/form.phtml:14
 #: resources/views/modules/matomo-analytics/form.phtml:23
 #: resources/views/modules/statcounter/form.phtml:23
 msgid "Tracking and analytics are not added to the control panel."
-msgstr ""
+msgstr "ट्रैकिंग और एनालिटिक्स को कंट्रोल पैनल में नहीं जोड़ा जाता है।"
 
 #: resources/views/modules/html/config.phtml:20
 msgid "Templates"
-msgstr ""
+msgstr "टेम्पलेट्स"
 
 #: resources/views/modules/html/config.phtml:25
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
-msgstr ""
+msgstr "इस ब्लॉक के साथ आरंभ करने में आपकी सहायता करने के लिए, हमने कई मानक टेम्पलेट बनाए हैं। जब आप इनमें से किसी एक टेम्पलेट का चयन करते हैं, तो लेख क्षेत्र में एक कॉपी होगी जिसमें आप अपनी साइट की आवश्यकताओं के अनुरूप परिवर्तन कर सकते हैं।"
 
 #: resources/views/modules/html/config.phtml:36
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr ""
+msgstr "HTML स्वरूपण लागू करने के लिए टूलबार का उपयोग करने के साथ-साथ, आप डेटाबेस फ़ील्ड डाल सकते हैं जो स्वचालित रूप से अपडेट की जाती हैं। ये विशेष फ़ील्ड <b>#</b> से चिह्नित हैं। उदाहरण के लिए <b>#totalFamilies#</b> को डेटाबेस में परिवारों की वास्तविक संख्या से बदल दिया जाएगा। एडवांस्ड यूज़र्स CSS क्लास को अपने टेक्स्ट पर लागू करना चाहेंगे, ताकि प्रारूपण वर्तमान में चयनित थीम से मेल खाए।"
 
 #: resources/views/modules/html/config.phtml:45
 msgid "Show the date and time of update"
-msgstr ""
+msgstr "अपडेट की तिथि और समय दिखाएं"
 
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:7
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr ""
+msgstr "इस फॅमिली ट्री को आखिरी बार #gedcomUpdated# पर अपडेट किया गया था। इस फॅमिली ट्री में #totalSurnames# कुलनाम हैं। सबसे पुरानी दर्ज की गई घटना #firstEventType# के #firstEventName# #firstEventYear# में है। सबसे हाल की घटना है #lastEventType# #lastEventName# की #lastEventYear# में। <br><br> यदि आपकी कोई टिप्पणी या प्रतिक्रिया है तो कृपया #contactWebmaster# पर संपर्क करें।"
 
 #: resources/views/modules/interactive-tree/chart.phtml:10
 msgid "Use compact layout"
-msgstr ""
+msgstr "कॉम्पैक्ट लेआउट का उपयोग करें"
 
 #: resources/views/modules/lifespans-chart/page.phtml:20
 msgid "Add individuals"
-msgstr ""
+msgstr "व्यक्तियों को जोड़ें"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:24
 msgid "Include the individual’s immediate family"
-msgstr ""
+msgstr "व्यक्ति के निकटतम परिवार को शामिल करें"
 
 #: resources/views/modules/lifespans-chart/page.phtml:30
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "स्थान या दिनांक के अनुसार व्यक्तियों का चयन करें"
 
 #: resources/views/modules/lifespans-chart/page.phtml:45
 msgid "Start year"
-msgstr ""
+msgstr "शुरुवाती साल"
 
 #: resources/views/modules/lifespans-chart/page.phtml:54
 msgid "End year"
-msgstr ""
+msgstr "आखिर साल"
 
 #: resources/views/modules/login_block/sign-out.phtml:9
 #, php-format
 msgid "You are signed in as %s."
-msgstr ""
+msgstr "आप %s के रूप में साइन इन हैं।"
 
 #. I18N: A button label.
 #: resources/views/modules/login_block/sign-out.phtml:14
 msgid "sign out"
-msgstr ""
+msgstr "साइन आउट"
 
 #: resources/views/modules/media/tab.phtml:16
 msgid "There are no media objects for this individual."
-msgstr ""
+msgstr "इस व्यक्ती के लिए कोई मीडिया ऑब्जेक्ट नहीं हैं।"
 
 #: resources/views/modules/notes/tab.phtml:16
 msgid "Show all notes"
-msgstr ""
+msgstr "सभी नोट्स दिखाएं"
 
 #: resources/views/modules/notes/tab.phtml:31
 msgid "There are no notes for this individual."
-msgstr ""
+msgstr "इस व्यक्ति के लिए कोई नोट नहीं है।"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "left"
-msgstr ""
+msgstr "बाएं"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "right"
-msgstr ""
+msgstr "दाएं"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "up"
-msgstr ""
+msgstr "ऊपर"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "down"
-msgstr ""
+msgstr "नीचे"
 
 #: resources/views/modules/pedigree-chart/previous.phtml:20
 msgid "Siblings"
-msgstr ""
+msgstr "सहोदर"
 
 #: resources/views/modules/pedigree-chart/previous.phtml:22
 msgid "Sibling"
-msgstr ""
+msgstr "सहोदर"
 
 #: resources/views/modules/personal_facts/tab.phtml:13
 msgid "Events of close relatives"
-msgstr ""
+msgstr "निकट संबंधियों के कार्यक्रम"
 
 #: resources/views/modules/personal_facts/tab.phtml:31
 msgid "There are no facts for this individual."
-msgstr ""
+msgstr "इस व्यक्ति के लिए कोई तथ्य नहीं हैं।"
 
 #: resources/views/modules/privacy-policy/footer.phtml:15
 msgid "This website uses cookies to learn about visitor behavior."
-msgstr ""
+msgstr "यह वेबसाइट दर्शक के व्यवहार के बारे में जानने के लिए कुकीज़ का उपयोग करती है।"
 
 #: resources/views/modules/privacy-policy/page.phtml:5
 msgid "Personal data"
-msgstr ""
+msgstr "व्यक्तिगत डेटा"
 
 #: resources/views/modules/privacy-policy/page.phtml:9
 msgid "This website processes personal data for the purpose of historical and genealogical research."
-msgstr ""
+msgstr "यह वेबसाइट ऐतिहासिक और वंशावली अनुसंधान के उद्देश्य के लिए व्यक्तिगत डेटा संसाधित करती है।"
 
 #: resources/views/modules/privacy-policy/page.phtml:12
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr ""
+msgstr "यह शोध EU General Data Protection के article 6(f) के तहत “वैध हित” है।"
 
 #: resources/views/modules/privacy-policy/page.phtml:16
 msgid "Cookies"
-msgstr ""
+msgstr "कुकीज़"
 
 #: resources/views/modules/privacy-policy/page.phtml:20
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
-msgstr ""
+msgstr "यह वेबसाइट लॉगिन सत्र को सक्षम करने के लिए और आपकी चुनी हुई भाषा जैसी प्राथमिकताओं को याद रखने के लिए कुकीज़ का उपयोग करती है।"
 
 #: resources/views/modules/privacy-policy/page.phtml:23
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "ये कुकीज़ “आवश्यक” हैं, और सहमति की आवश्यकता नहीं है।"
 
 #: resources/views/modules/privacy-policy/page.phtml:32
 msgid "This website uses third-party services to learn about visitor behavior."
-msgstr ""
+msgstr "यह वेबसाइट दर्शक व्यवहार के बारे में जानने के लिए तृतीय-पक्ष सेवाओं का उपयोग करती है।"
 
 #: resources/views/modules/privacy-policy/page.phtml:44
 msgid "These services may use cookies or other tracking technology."
-msgstr ""
+msgstr "ये सेवाएँ कुकीज़ या अन्य ट्रैकिंग तकनीक का उपयोग कर सकती हैं।"
 
 #: resources/views/modules/privacy-policy/page.phtml:48
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
-msgstr ""
+msgstr "आप अपनी ब्राउज़र प्राथमिकताओं में “Do Not Track” हेडर सेट करके ट्रैकिंग से बाहर निकल सकते हैं।"
 
 #: resources/views/modules/privacy-policy/page.phtml:53
 msgid "Data controller"
-msgstr ""
+msgstr "डेटा नियंत्रक"
 
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "This website is operated by the following individuals."
-msgstr ""
+msgstr "यह वेबसाइट निम्नलिखित व्यक्तियों द्वारा संचालित की जाती है।"
 
 #: resources/views/modules/random_media/config.phtml:9
 msgid "Show only individuals, events, or all"
-msgstr ""
+msgstr "केवल व्यक्तियों, घटनाओं या सभी को दिखाएं"
 
 #: resources/views/modules/random_media/config.phtml:31
 msgid "Show slide show controls"
-msgstr ""
+msgstr "स्लाइड शो नियंत्रण दिखाएं"
 
 #: resources/views/modules/random_media/config.phtml:40
 msgid "Start slide show on page load"
-msgstr ""
+msgstr "पेज लोड पर स्लाइड शो शुरू करें"
 
 #: resources/views/modules/random_media/slide-show.phtml:29
 #: resources/views/modules/random_media/slide-show.phtml:31
 msgid "Next image"
-msgstr ""
+msgstr "अगली इमेज"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: resources/views/modules/recent_changes/changes-list.phtml:10
 #, php-format
 msgid "Changed on %1$s by %2$s"
-msgstr ""
+msgstr "%2$s द्वारा %1$s को परिवर्तित किया गया"
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:12
 #, php-format
 msgid "Changed on %1$s"
-msgstr ""
+msgstr "%1$s पर बदला गया"
 
 #: resources/views/modules/recent_changes/config.phtml:5
 #: resources/views/modules/upcoming_events/config.phtml:5
 #: resources/views/modules/yahrzeit/config.phtml:5
 msgid "Number of days to show"
-msgstr ""
+msgstr "दिखाने के लिए दिनों की संख्या"
 
 #: resources/views/modules/recent_changes/config.phtml:9
 #: resources/views/modules/upcoming_events/config.phtml:9
@@ -18873,8 +18873,8 @@ msgstr ""
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "अधिकतम %s दिन"
+msgstr[1] "अधिकतम %s दिन"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/recent_changes/config.phtml:15
@@ -18884,110 +18884,110 @@ msgstr[1] ""
 #: resources/views/modules/upcoming_events/config.phtml:33
 #: resources/views/modules/yahrzeit/config.phtml:17
 msgid "Presentation style"
-msgstr ""
+msgstr "प्रस्तुति अंदाज़"
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:33
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "वह युज़र दिखाएं जिसने परिवर्तन किया है"
 
 #: resources/views/modules/relationships-chart/config.phtml:12
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
-msgstr ""
+msgstr "सभी संभावित रिश्तों की तलाश में जटिल ट्री में बहुत समय लग सकता है।"
 
 #. I18N: Configuration option
 #: resources/views/modules/relationships-chart/config.phtml:33
 msgid "How much recursion to use when searching for relationships"
-msgstr ""
+msgstr "रिश्तों को खोजते समय कितनी बार तकरार का उपयोग करना है"
 
 #: resources/views/modules/relationships-chart/page.phtml:17
 msgid "Individual 1"
-msgstr ""
+msgstr "पहले व्यक्ती"
 
 #: resources/views/modules/relationships-chart/page.phtml:26
 msgid "Individual 2"
-msgstr ""
+msgstr "दूसरे व्यक्ति"
 
 #. I18N: Reverse the order of two individuals
 #: resources/views/modules/relationships-chart/page.phtml:72
 msgid "Swap individuals"
-msgstr ""
+msgstr "व्यक्तियों की अदला-बदली करें"
 
 #: resources/views/modules/relatives/family.phtml:128
 msgid "Add marriage details"
-msgstr ""
+msgstr "विवाह विवरण जोड़ें"
 
 #: resources/views/modules/relatives/family.phtml:204
 msgid "Add a son or daughter"
-msgstr ""
+msgstr "बेटा या बेटी जोड़ें"
 
 #: resources/views/modules/relatives/family.phtml:206
 msgid "Add a brother or sister"
-msgstr ""
+msgstr "भाई या बहन को जोड़ें"
 
 #: resources/views/modules/relatives/tab.phtml:12
 msgid "Date differences"
-msgstr ""
+msgstr "तिथि का अंतर"
 
 #: resources/views/modules/review_changes/config.phtml:4
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr ""
+msgstr "यह ब्लॉक एडिटर्स को उन लंबित परिवर्तनों के साथ रिकॉर्ड की एक सूची दिखाएगा, जिन्हें मॉडरेटर द्वारा समीक्षा करने की आवश्यकता है। जब भी लंबित परिवर्तन मौजूद हों, तब यह मॉडरेटर्स को दैनिक ईमेल भी जनरेट करता है।"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:10
 msgid "Send out reminder emails"
-msgstr ""
+msgstr "रिमाइंडर ईमेल भेजें"
 
 #: resources/views/modules/review_changes/config.phtml:20
 msgid "Reminder email frequency (days)"
-msgstr ""
+msgstr "रिमाइंडर ईमेल की आवृत्ति (दिन)"
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml:13
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr ""
+msgstr "साइटमैप वेबमास्टर्स के लिए सर्च इंजन को उन पेजों के बारे में बताने का एक तरीका है जो वेबसाइट पर क्रॉलिंग के लिए उपलब्ध हैं। सभी प्रमुख सर्च इंजन साइटमैप का समर्थन करते हैं। अधिक जानकारी के लिए, <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a> देखें।"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:17
 msgid "Which family trees should be included in the sitemaps"
-msgstr ""
+msgstr "कौन से फॅमिली ट्री को साइटमैप में शामिल किया जाना चाहिए"
 
 #: resources/views/modules/sitemap/config.phtml:36
 msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
-msgstr ""
+msgstr "सर्च इंजन बताने के लिए कि साइटमैप उपलब्ध हैं, आपको अपनी robots.txt फ़ाइल में निम्न पंक्ति जोड़नी चाहिए।"
 
 #: resources/views/modules/sitemap/config.phtml:44
 msgid "To tell search engines that sitemaps are available, you can use the following links."
-msgstr ""
+msgstr "सर्च इंजन को बताने के लिए कि साइटमैप उपलब्ध हैं, इन लिंक का उपयोग कर सकते हैं।"
 
 #: resources/views/modules/sources_tab/tab.phtml:16
 msgid "Show all sources"
-msgstr ""
+msgstr "सभी स्रोतों को दिखाएं"
 
 #: resources/views/modules/sources_tab/tab.phtml:29
 msgid "There are no source citations for this individual."
-msgstr ""
+msgstr "इस व्यक्ति के लिए कोई भी स्रोत प्रमाण नहीं है।"
 
 #. I18N: A configuration setting
 #: resources/views/modules/statcounter/form.phtml:15
 msgid "Security code"
-msgstr ""
+msgstr "सिक्युरिटी कोड"
 
 #: resources/views/modules/statistics-chart/custom.phtml:10
 msgid "Create your own chart"
-msgstr ""
+msgstr "अपना खुद का चार्ट बनाएं"
 
 #: resources/views/modules/statistics-chart/custom.phtml:71
 msgid "Categories"
-msgstr ""
+msgstr "श्रेणियाँ"
 
 #: resources/views/modules/statistics-chart/custom.phtml:80
 msgid "gender"
-msgstr ""
+msgstr "लिंग"
 
 #: resources/views/modules/statistics-chart/custom.phtml:85
 msgid "date periods"
-msgstr ""
+msgstr "तारीख की मुद्दत"
 
 #. I18N: from 1700 interval 50 years
 #: resources/views/modules/statistics-chart/custom.phtml:93
@@ -18999,64 +18999,64 @@ msgstr ""
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s के अंतराल से %2$s साल"
+msgstr[1] "%1$s के अंतराल से %2$s साल"
 
 #: resources/views/modules/statistics-chart/custom.phtml:114
 msgid "Results"
-msgstr ""
+msgstr "परिणाम"
 
 #: resources/views/modules/statistics-chart/custom.phtml:118
 msgid "numbers"
-msgstr ""
+msgstr "संख्या"
 
 #: resources/views/modules/statistics-chart/custom.phtml:123
 msgid "percentage"
-msgstr ""
+msgstr "प्रतिशत"
 
 #: resources/views/modules/statistics-chart/custom.phtml:128
 #: resources/views/modules/statistics-chart/custom.phtml:131
 #: resources/views/modules/statistics-chart/custom.phtml:137
 msgid "Age interval"
-msgstr ""
+msgstr "आयु का अंतराल"
 
 #: resources/views/modules/statistics-chart/custom.phtml:140
 msgid "Select the desired age interval"
-msgstr ""
+msgstr "मनचाहे आयु अंतराल का चयन करें"
 
 #: resources/views/modules/statistics-chart/custom.phtml:166
 #: resources/views/modules/statistics-chart/custom.phtml:168
 msgid "Geographic area"
-msgstr ""
+msgstr "भौगोलिक क्षेत्र"
 
 #: resources/views/modules/statistics-chart/custom.phtml:171
 #: resources/views/places-page.phtml:11 resources/views/places-page.phtml:14
 msgid "World"
-msgstr ""
+msgstr "विश्व"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 msgid "Europe"
-msgstr ""
+msgstr "यूरोप"
 
 #: resources/views/modules/statistics-chart/custom.phtml:177
 msgid "Northern America"
-msgstr ""
+msgstr "उत्तरी अमेरिका"
 
 #: resources/views/modules/statistics-chart/custom.phtml:180
 msgid "South America"
-msgstr ""
+msgstr "दक्षिण अमेरिका"
 
 #: resources/views/modules/statistics-chart/custom.phtml:183
 msgid "Asia"
-msgstr ""
+msgstr "एशिया"
 
 #: resources/views/modules/statistics-chart/custom.phtml:186
 msgid "Middle East"
-msgstr ""
+msgstr "मध्य पूर्व"
 
 #: resources/views/modules/statistics-chart/custom.phtml:189
 msgid "Africa"
-msgstr ""
+msgstr "अफ्रीका"
 
 #: resources/views/modules/statistics-chart/custom.phtml:200
 msgid "show the chart"
