@@ -129,11 +129,11 @@ use Fisharebest\Webtrees\View;
             pointToLayer : function (feature, latlng) {
               return new L.Marker(latlng, {
                 icon : L.BeautifyIcon.icon({
-                  icon           : feature.properties.icon['name'],
+                  icon           : 'bullseye fas',
                   borderColor    : 'transparent',
-                  backgroundColor: feature.valid ? feature.properties.icon['color'] : 'transparent',
+                  backgroundColor: feature.properties.iconcolor,
                   iconShape      : 'marker',
-                  textColor      : feature.valid ? 'white' : 'transparent',
+                  textColor      : 'white',
                 }),
                 title: feature.properties.tooltip,
                 alt  : feature.properties.tooltip,
