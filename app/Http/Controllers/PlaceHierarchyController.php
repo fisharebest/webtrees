@@ -51,7 +51,7 @@ class PlaceHierarchyController extends AbstractBaseController
     private $statistics;
 
     /**
-     * TopGivenNamesModule constructor.
+     * PlaceHierarchy constructor.
      *
      * @param SearchService $search_service
      * @param Statistics    $statistics
@@ -64,8 +64,8 @@ class PlaceHierarchyController extends AbstractBaseController
 
     /**
      * @param ServerRequestInterface $request
-     *
      * @return ResponseInterface
+     * @throws Exception
      */
     public function show(ServerRequestInterface $request): ResponseInterface
     {
@@ -86,7 +86,7 @@ class PlaceHierarchyController extends AbstractBaseController
 
         if ($showmap) {
             $note = true;
-            $content .= view('place-map', [
+            $content .= view('place-hierarchy-map', [
                 'data'   => $this->mapData($tree, $fqpn),
             ]);
         }
@@ -94,7 +94,7 @@ class PlaceHierarchyController extends AbstractBaseController
         switch ($action2) {
             case 'list':
                 $nextaction = ['hierarchy' => I18N::translate('Show place hierarchy')];
-                $content .= view('place-list', $this->getList($tree, $this->search_service));
+                $content .= view('place-hierarchy-list', $this->getList($tree, $this->search_service));
                 break;
             case 'hierarchy':
             case 'hierarchy-e':
@@ -102,7 +102,7 @@ class PlaceHierarchyController extends AbstractBaseController
                 $data       = $this->getHierarchy($tree, $place, $parent);
                 $content .= (null === $data || $showmap) ? '' : view('place-hierarchy', $data);
                 if (null === $data || $action2 === 'hierarchy-e') {
-                    $content .= view('place-events', $this->getEvents($tree, $place));
+                    $content .= view('place-hierarchy-events', $this->getEvents($tree, $place));
                 }
                 break;
             default:
@@ -112,7 +112,7 @@ class PlaceHierarchyController extends AbstractBaseController
         $breadcrumbs = $this->breadcrumbs($place);
 
         return $this->viewResponse(
-            'places-page',
+            'place-hierarchy-page',
             [
                 'title'          => I18N::translate('Places'),
                 'note'           => $note,
@@ -301,15 +301,13 @@ class PlaceHierarchyController extends AbstractBaseController
                         'coordinates' => [$location->longitude(), $location->latitude()],
                     ],
                     'properties' => [
-                        'icon'    => [
-                            'name'  => 'bullseye fas',
-                            'color' => '#1e90ff',
-                        ],
                         'tooltip' => $place->gedcomName(),
-                        'popup'   => view('place-popup', [
+                        'popup'   => view('place-hierarchy-popup', [
                             'showlink' => $showlink,
                             'flag'     => $flag,
                             'place'    => $place,
+                            'latitude' => $location->latitude(),
+                            'longitude'=> $location->longitude(),
                         ]),
                         'zoom'    => $location->zoom() ?: 2,
                     ],
@@ -327,7 +325,7 @@ class PlaceHierarchyController extends AbstractBaseController
                 $sidebar_title,
                 $sidebar_class,
                 $id,
-                view('place-sidebar', [
+                view('place-hierarchy-sidebar', [
                     'showlink' => $showlink,
                     'flag'     => $flag,
                     'place'    => $place,

@@ -1,22 +1,31 @@
 <?php
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
 
 /**
+ * @var string $module
+ * @var Tree $tree
+ * @var string $action
  * @var string $title
- * @var bool $current
- *
+ * @var string $current
+ * @var array $breadcrumbs
+ * @var bool $note
+ * @var string $content
+ * @var bool $showeventslink
+ * @var string $place
+ * @var array $parent
+ * @var array $nextaction
  */
+
 ?>
-
-
 
 <div id="place-hierarchy">
     <div class="container">
         <h4><?= $title ?></h4>
         <h5 class="text-center">
             <?php if ($current) : ?>
-                <a href="<?= e(route('module', ['action' => $action, 'tree' => $tree->name()])) ?>">
+                <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name()])) ?>">
                     <?= I18N::translate('World') ?>
                 </a>
             <?php else : ?>
