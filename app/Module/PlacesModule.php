@@ -55,7 +55,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
         'EDUC' => ['color' => 'violet', 'name' => 'university fas'],
     ];
 
-    protected const DEFAULT_ICON = ['color' => 'gold', 'name' => 'fa-bullseye fas'];
+    protected const DEFAULT_ICON = ['color' => 'gold', 'name' => 'bullseye fas'];
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -174,7 +174,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                         'coordinates' => [$longitude, $latitude],
                     ],
                     'properties' => [
-                        'polyline' => null,
                         'icon'     => static::ICONS[$fact->getTag()] ?? static::DEFAULT_ICON,
                         'tooltip'  => strip_tags($fact->place()->fullName()),
                         'summary'  => view('modules/places/event-sidebar', $this->summaryData($indi, $fact)),

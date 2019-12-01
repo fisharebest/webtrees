@@ -1,11 +1,13 @@
 <?php
 
 use Fisharebest\Webtrees\Place;
-
+use Fisharebest\Webtrees\I18N;
 /**
  * @var bool   $showlink
  * @var Place  $place
  * @var string $flag
+ * @var string $latitude
+ * @var string $longitude
  */
 ?>
 <div dir="auto" class="label">
@@ -19,4 +21,14 @@ use Fisharebest\Webtrees\Place;
     <?php else: ?>
         <?= $place->placeName() ?>
     <?php endif ?>
+    <table class="table table-borderless">
+        <tr>
+            <th scope="row" class="p-0"><?= I18N::translate('Latitude') ?></th>
+            <td class="p-0 align-digits"><?= $latitude ?></td>
+        </tr>
+        <tr>
+            <th scope="row" class="p-0"><?= I18N::translate('Longitude') ?></th>
+            <td class="p-0 align-digits"><?= $longitude ?></td>
+        </tr>
+    </table>
 </div>
