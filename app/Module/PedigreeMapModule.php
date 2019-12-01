@@ -244,11 +244,11 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                         'coordinates' => [$longitude, $latitude],
                     ],
                     'properties' => [
-                        'polyline' => $polyline,
-                        'iconcolor'=> $color,
-                        'tooltip'  => strip_tags($fact->place()->fullName()),
-                        'summary'  => view('modules/pedigree-map/events', $this->summaryData($individual, $fact, $id)),
-                        'zoom'     => $location->zoom() ?: 2,
+                        'polyline'  => $polyline,
+                        'iconcolor' => $color,
+                        'tooltip'   => strip_tags($fact->place()->fullName()),
+                        'summary'   => view('modules/pedigree-map/events', $this->summaryData($individual, $fact, $id)),
+                        'zoom'      => $location->zoom() ?: 2,
                     ],
                 ];
             }
