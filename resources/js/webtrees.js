@@ -562,58 +562,6 @@ function valid_lati_long(field, pos, neg)
     field.value = txt;
 }
 
-// This is the default way for webtrees to show image galleries.
-// Custom themes may use a different viewer.
-function activate_colorbox(config)
-{
-    $.extend($.colorbox.settings, {
-      // Don't scroll window with document
-        fixed: true,
-        current: '',
-        previous: '\uf048',
-        next: '\uf051',
-        slideshowStart: '\uf04b',
-        slideshowStop: '\uf04c',
-        close: '\uf00d'
-    });
-    if (config) {
-        $.extend($.colorbox.settings, config);
-    }
-
-  // Trigger an event when we click on an (any) image
-    $('body').on('click', 'a.gallery', function () {
-      // Enable colorbox for images
-        $('a[type^=image].gallery').colorbox({
-            photo: true,
-            maxWidth: '95%',
-            maxHeight: '95%',
-            rel: 'gallery', // Turn all images on the page into a slideshow
-            slideshow: true,
-            slideshowAuto: false,
-          // Add wheelzoom to the displayed image
-            onComplete: function () {
-              // Disable click on image triggering next image
-              // https://github.com/jackmoore/colorbox/issues/668
-                $('.cboxPhoto').unbind('click');
-
-                wheelzoom(document.querySelectorAll('.cboxPhoto'));
-            }
-        });
-
-      // Enable colorbox for audio using <audio></audio>, where supported
-      // $('html.video a[type^=video].gallery').colorbox({
-      //  rel:         'nofollow' // Slideshows are just for images
-      // });
-
-      // Enable colorbox for video using <video></video>, where supported
-      // $('html.audio a[type^=audio].gallery').colorbox({
-      //  rel:         'nofollow', // Slideshows are just for images
-      // });
-
-      // Allow all other media types remain as download links
-    });
-}
-
 // Initialize autocomplete elements.
 function autocomplete(selector)
 {

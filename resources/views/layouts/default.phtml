@@ -148,16 +148,36 @@ use Psr\Http\Message\ServerRequestInterface;
         <script src="<?= e(asset('js/webtrees.min.js')) ?>"></script>
 
         <script>
-            activate_colorbox();
-            jQuery.extend(jQuery.colorbox.settings, {
-                width:          "85%",
-                height:         "85%",
-                transition:     "none",
-                slideshowStart: "<?= I18N::translate('Play') ?>",
-                slideshowStop:  "<?= I18N::translate('Stop') ?>",
-                title:          function () {
-                    return this.dataset.title;
-                },
+            // Trigger an event when we click on an (any) image
+            $('body').on('click', 'a.gallery', function () {
+                // Enable colorbox for images
+                $("a[type^=image].gallery").colorbox({
+                    // Don't scroll window with document
+                    fixed:          true,
+                    width:          "85%",
+                    height:         "85%",
+                    current:        "",
+                    previous:       '<i class="fas fa-arrow-left wt-icon-flip-rtl" title="<?= I18N::translate('previous') ?>"></i>',
+                    next:           '<i class="fas fa-arrow-right wt-icon-flip-rtl" title="<?= I18N::translate('next') ?>"></i>',
+                    slideshowStart: '<i class="fas fa-play" title="<?= I18N::translate('Play') ?>"></i>',
+                    slideshowStop:  '<i class="fas fa-stop" title="<?= I18N::translate('Stop') ?>"></i>',
+                    close:          '<i class="fas fa-times" title="<?= I18N::translate('close') ?>"></i>',
+                    title:          function () {
+                        return this.dataset.title;
+                    },
+                    photo:          true,
+                    rel:            "gallery", // Turn all images on the page into a slideshow
+                    slideshow:      true,
+                    slideshowAuto:  false,
+                    // Add wheelzoom to the displayed image
+                    onComplete:     function () {
+                        // Disable click on image triggering next image
+                        // https://github.com/jackmoore/colorbox/issues/668
+                        $(".cboxPhoto").unbind("click");
+
+                        wheelzoom(document.querySelectorAll(".cboxPhoto"));
+                    }
+                });
             });
         </script>
 

@@ -1,0 +1,129 @@
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2019 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*
+ * http://www.jacklmoore.com/colorbox
+ *
+ * #cboxOverlay
+ * #cboxLoadingOverlay
+ * #cboxLoadingGraphic
+ * #colorbox
+ * +----#cboxWrapper
+ *      +----<div>
+ *      |    +----#cboxTopLeft
+ *      |    +----#cboxTopCentre
+ *      |    +----#cboxTopRight
+ *      +----<div>
+ *      |    +----#cboxMiddleLeft
+ *      |    +----#cboxContent
+ *      |    |    +----#cboxLoadedContent
+ *      |    |         +----#cboxPhoto
+ *      |    |    +----#cboxTitle
+ *      |    |    +----#cboxCurrent
+ *      |    |    +----#cboxPrevious
+ *      |    |    +----#cboxNext
+ *      |    |    +----#cboxSlideshow
+ *      |    |    +----#cboxLoadingOverlay
+ *      |    |    +----#cboxLoadingGraphic
+ *      |    |    +----#cboxClose
+ *      |    +----cboxMiddleRight
+ *      +----<div>
+ *           +----#cboxBottomLeft
+ *           +----#cboxBottomCenter
+ *           +----#cboxBottomRight
+ */
+
+#cboxOverlay,
+#cboxLoadingOverlay,
+#cboxLoadingGraphic {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+#cboxOverlay,
+#colorbox {
+	z-index: 9999;
+}
+
+#cboxContent,
+#cboxOverlay {
+	background: #fff;
+}
+
+#cboxContent {
+	overflow: hidden;
+	position: relative;
+	padding: 0.5rem;
+	border: 0.25rem solid #ccc;
+	border-radius: 0.5rem;
+	box-sizing: content-box;
+}
+
+.cboxPhoto {
+	margin: auto;
+	display: block;
+}
+
+#cboxError {
+	padding: 50px;
+	border: 1px solid #ccc;
+}
+
+#cboxLoadedContent {
+	margin-bottom: 28px;
+	box-sizing: content-box;
+}
+
+#cboxTitle {
+	background: #fff;
+	position: absolute;
+	bottom: 0.25rem;
+	margin: 0 2rem 0 4.5rem;
+	text-align: center;
+}
+
+#cboxLoadingGraphic {
+	background: url(images/loading-32x32.gif) no-repeat center center;
+}
+
+#cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {
+	background: #eee;
+	border: 0;
+	border-radius: 0.5rem;
+	overflow: visible;
+	padding: 0 0.5rem;
+	position: absolute;
+}
+
+#cboxSlideshow {
+	bottom: 0.25rem;
+	right: 0.25rem;
+}
+
+#cboxPrevious {
+	bottom: 0.25rem;
+	left: 0.25rem;
+}
+
+#cboxNext {
+	bottom: 0.25rem;
+	left: 2.5rem;
+}
+
+#cboxClose {
+	top: 0.25rem;
+	right: 0.25rem;
+}
