@@ -1137,7 +1137,7 @@ class FunctionsPrintFacts
                         echo '<br>';
                         echo '<a href="' . e($media->url()) . '"> ';
                         echo '<em>';
-                        echo $media_file->title() ?: $media_file->filename();
+                        echo e($media_file->title() ?: $media_file->filename());
                         echo '</em>';
                         echo '</a>';
                         echo '</div>';

@@ -120,9 +120,9 @@ use Illuminate\Support\Collection;
                                     <?= GedcomTag::getLabelValue('FILE', $media_file->filename()) ?>
                                 <?php endif ?>
 
-                                <?= GedcomTag::getLabelValue('TITL', $media_file->title()) ?>
-                                <?= GedcomTag::getLabelValue('TYPE', $media_file->type()) ?>
-                                <?= GedcomTag::getLabelValue('FORM', $media_file->format()) ?>
+                                <?= GedcomTag::getLabelValue('TITL', e($media_file->title())) ?>
+                                <?= GedcomTag::getLabelValue('TYPE', e($media_file->type())) ?>
+                                <?= GedcomTag::getLabelValue('FORM', e($media_file->format())) ?>
                             </div>
 
                             <div>
