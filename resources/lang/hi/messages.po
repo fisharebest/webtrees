@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-01 20:49+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-02 16:06+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -19060,220 +19060,220 @@ msgstr "अफ्रीका"
 
 #: resources/views/modules/statistics-chart/custom.phtml:200
 msgid "show the chart"
-msgstr ""
+msgstr "चार्ट दिखाएं"
 
 #: resources/views/modules/stories/config.phtml:36
 #: resources/views/modules/stories/edit.phtml:27
 #: resources/views/modules/stories/list.phtml:8
 msgid "Story title"
-msgstr ""
+msgstr "कहानी का टाइटल"
 
 #: resources/views/modules/stories/edit.phtml:36
 msgid "Story"
-msgstr ""
+msgstr "कहानी"
 
 #: resources/views/modules/timeline-chart/chart.phtml:131
 #: resources/views/modules/timeline-chart/chart.phtml:133
 #: resources/views/modules/timeline-chart/chart.phtml:135
 msgid "Month:"
-msgstr ""
+msgstr "महीना:"
 
 #: resources/views/modules/timeline-chart/chart.phtml:131
 #: resources/views/modules/timeline-chart/chart.phtml:133
 #: resources/views/modules/timeline-chart/chart.phtml:135
 msgid "Day:"
-msgstr ""
+msgstr "दिन:"
 
 #: resources/views/modules/timeline-chart/chart.phtml:133
 msgid "years"
-msgstr ""
+msgstr "साल"
 
 #: resources/views/modules/timeline-chart/chart.phtml:135
 #: resources/views/modules/timeline-chart/chart.phtml:403
 msgid "Year:"
-msgstr ""
+msgstr "साल:"
 
 #: resources/views/modules/timeline-chart/chart.phtml:346
 msgid "Husband’s age"
-msgstr ""
+msgstr "पति की उम्र"
 
 #: resources/views/modules/timeline-chart/chart.phtml:346
 msgid "Wife’s age"
-msgstr ""
+msgstr "पत्नी की उम्र"
 
 #: resources/views/modules/timeline-chart/page.phtml:58
 msgid "Remove individual"
-msgstr ""
+msgstr "व्यक्ती को निकालें"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: resources/views/modules/timeline-chart/page.phtml:65
 msgid "Show an age cursor"
-msgstr ""
+msgstr "एक आयु कर्सर दिखाएँ"
 
 #: resources/views/modules/todays_events/config.phtml:5
 #: resources/views/modules/upcoming_events/config.phtml:15
 msgid "Show only events of living individuals"
-msgstr ""
+msgstr "केवल जीवित व्यक्तियों की घटनाएं दिखाएं"
 
 #: resources/views/modules/todays_events/empty.phtml:4
 msgid "No events exist for today."
-msgstr ""
+msgstr "कोई घटना आज के लिए मौजूद नहीं है।"
 
 #: resources/views/modules/todo/config.phtml:4
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr ""
+msgstr "रिसर्च टास्क विशेष घटनाएँ हैं, जिन्हें आपके फॅमिली ट्री में व्यक्तियों को जोड़ा जाता है, जो आगे के शोध की आवश्यकता की पहचान करते हैं। आप उन्हें अधिक विश्वसनीय स्रोतों के खिलाफ तथ्यों की जांच करने, दस्तावेजों या तस्वीरों को प्राप्त करने, परस्पर विरोधी जानकारी को हल करने, आदि के लिए अनुस्मारक के रूप में उपयोग कर सकते हैं।"
 
 #: resources/views/modules/todo/config.phtml:5
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr ""
+msgstr "नए शोध कार्य बनाने के लिए, आपको पहले फॅमिली ट्री की प्राथमिकताओं में तथ्यों और घटनाओं की सूची में “रिसर्च टास्क” जोड़ना होगा।"
 
 #: resources/views/modules/todo/config.phtml:6
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr ""
+msgstr "शोध कार्य (रिसर्च टास्क) कस्टम GEDCOM टैग “_TODO” का उपयोग करके संग्रहीत किए जाते हैं। अन्य वंशावली एप्लीकेशन इस टैग को नहीं पहचान सकते हैं।"
 
 #: resources/views/modules/todo/config.phtml:11
 msgid "Show research tasks that are assigned to other users"
-msgstr ""
+msgstr "अन्य यूज़र्स को असाइन किए गए शोध कार्य दिखाएं"
 
 #: resources/views/modules/todo/config.phtml:21
 msgid "Show research tasks that are not assigned to any user"
-msgstr ""
+msgstr "ऐसे अनुसंधान कार्य (रिसर्च टास्क) दिखाएं जो किसी भी युज़र को नहीं दिए गए हैं"
 
 #: resources/views/modules/todo/config.phtml:30
 msgid "Show research tasks that have a date in the future"
-msgstr ""
+msgstr "भविष्य में किसी तारीख वाले रिसर्च टास्क दिखाएं"
 
 #. I18N: ... to show in a list
 #: resources/views/modules/top10_givnnames/config.phtml:5
 msgid "Number of given names"
-msgstr ""
+msgstr "दिए गए नामों की संख्या"
 
 #. I18N: ... to show in a list
 #: resources/views/modules/top10_pageviews/config.phtml:5
 msgid "Number of pages"
-msgstr ""
+msgstr "पेजों की संख्या"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/top10_pageviews/config.phtml:14
 msgid "Show counts before or after name"
-msgstr ""
+msgstr "नाम से पहले या बाद में गिनती दिखाएं"
 
 #: resources/views/modules/user_blog/list.phtml:48
 msgid "Add a journal entry"
-msgstr ""
+msgstr "एक पत्रिका की एंट्री जोड़ें"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page.phtml:10
 #, php-format
 msgid "This note has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "यह नोट हटा दिया गया है। आपको विलोपन की समीक्षा करनी चाहिए और फिर %1$s या %2$s करना चाहिए।"
 
 #: resources/views/note-page.phtml:12
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "यह नोट हटा दिया गया है। विलोपन की समीक्षा किसी मॉडरेटर द्वारा की जानी चाहिए।"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page.phtml:16
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "यह नोट एडिट किया गया है। आपको परिवर्तनों की समीक्षा करनी चाहिए और फिर उन्हें %1$s या %2$s करना चाहिए।"
 
 #: resources/views/note-page.phtml:18
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "यह नोट एडिट किया गया है। बदलाव की समीक्षा किसी मॉडरेटर द्वारा की जानी चाहिए।"
 
 #: resources/views/password-request-page.phtml:20
 msgid "Email"
-msgstr ""
+msgstr "इमेल"
 
 #: resources/views/pending-changes-page.phtml:52
 #: resources/views/pending-changes-page.phtml:64
 msgid "Accept"
-msgstr ""
+msgstr "स्वीकारें"
 
 #: resources/views/pending-changes-page.phtml:56
 #: resources/views/pending-changes-page.phtml:94
 msgid "Reject"
-msgstr ""
+msgstr "अस्वीकार करें"
 
 #: resources/views/pending-changes-page.phtml:105
 msgid "Accept all changes"
-msgstr ""
+msgstr "सभी परिवर्तनों को स्वीकार करें"
 
 #: resources/views/pending-changes-page.phtml:108
 msgid "Are you sure you want to reject all the changes to this family tree?"
-msgstr ""
+msgstr "क्या आप वाकई इस फॅमिली ट्री के सभी परिवर्तनों को अस्वीकार करना चाहते हैं?"
 
 #: resources/views/pending-changes-page.phtml:109
 msgid "Reject all changes"
-msgstr ""
+msgstr "सभी परिवर्तनों को अस्वीकार करें"
 
 #: resources/views/place-events.phtml:20 resources/views/place-events.phtml:32
 #: resources/views/search-advanced-page.phtml:81
 #: resources/views/search-general-page.phtml:113
 #: resources/views/search-phonetic-page.phtml:114
 msgid "No results found."
-msgstr ""
+msgstr "कोई परिणाम नहीं मिला।"
 
 #: resources/views/place-list.phtml:6
 msgid "Place list"
-msgstr ""
+msgstr "स्थान सूची"
 
 #: resources/views/places-page.phtml:28
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-msgstr ""
+msgstr "मान्य निर्देशांक (coordinate) के बिना स्थानों को नक़्शे पर नहीं दिखाया जाता, और साइडबार एंट्री के चारों ओर एक लाल सीमा होती है"
 
 #: resources/views/places-page.phtml:35
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "%s में आने वाली घटनाओं की तालिका देखें"
 
 #: resources/views/register-page.phtml:24
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr ""
+msgstr "<div class=\"largeError\"> सूचना:</div><div class=\"error\">इस फ़ॉर्म को पूरा भरने और सबमिट करने के साथ, आप सहमत होते हैं:<ul><li>हमारी साइट पर सूचीबद्ध जीवित व्यक्तियों की गोपनीयता की रक्षा करने के लिए;</li><li>और नीचे दिए गए टेक्स्ट बॉक्स में, जिनसे आप संबंधित हैं, या हमें किसी ऐसे व्यक्ति के बारे में जानकारी प्रदान करने के लिए, जिसे हमारी वेबसाइट पर सूचीबद्ध किया जाना चाहिए।</li></ul></div>"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:86
 msgid "Explain why you are requesting an account."
-msgstr ""
+msgstr "समझाएं कि आप अकाउंट का अनुरोध क्यों कर रहे हैं।"
 
 #: resources/views/register-page.phtml:88
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
-msgstr ""
+msgstr "आप अकाउंट का अनुरोध क्यों कर रहे हैं और आप इस साइट पर प्रदर्शित वंशावली से कैसे संबंधित हैं, यह साइट एडमिनिस्ट्रेटर को बताने के लिए इस फ़ील्ड का उपयोग करें। इसके अलावा आप इसमें साइट एडमिनिस्ट्रेटर के लिए अपनी अन्य टिप्पणियों को भी दर्ज कर सकते हैं।"
 
 #: resources/views/register-success-page.phtml:9
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr ""
+msgstr "हैलो %s…<br>आपका रजिस्ट्रेशन करने के लिए धन्यवाद।"
 
 #: resources/views/register-success-page.phtml:13
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr ""
+msgstr "अब हम <b>%s</b> पते पर एक कन्फर्मेशन ईमेल भेजेंगे। कन्फर्मेशन ईमेल में दिए गए निर्देशों का पालन करते हुए आपको अपने अकाउंट के अनुरोध को वेरीफाइ करना होगा। यदि आप सात दिनों के भीतर अपने अकाउंट के अनुरोध की पुष्टि नहीं करते हैं, तो आपका आवेदन स्वचालित रूप से अस्वीकार कर दिया जाएगा। फिर आपको दोबारा आवेदन करना होगा।<br><br>आपके द्वारा कन्फर्मेशन ईमेल में दिए गए निर्देशों का पालन करने के बाद, अब भी आपके अकाउंट का उपयोग करने से पहले एडमिनिस्ट्रेटर को आपका अनुरोध स्वीकार करना होगा।<br><br>इस वेबसाइट में साइन इन करने के लिए , आपको अपना युज़रनेम और पासवर्ड पता होना चाहिए।"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/repository-page.phtml:14
 #, php-format
 msgid "This repository has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "इस संग्रहालय को हटा दिया गया है। आपको विलोपन की समीक्षा करनी चाहिए और फिर %1$s या %2$s करना चाहिए।"
 
 #: resources/views/repository-page.phtml:16
 msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "इस संग्रहालय को हटा दिया गया है। विलोपन की समीक्षा किसी मॉडरेटर द्वारा की जानी चाहिए।"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/repository-page.phtml:20
 #, php-format
 msgid "This repository has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "यह संग्रह एडिट किया गया है। आपको बदलावों की समीक्षा करनी चाहिए और फिर उन्हें  %1$s या %2$s करना चाहिए।"
 
 #: resources/views/repository-page.phtml:22
 msgid "This repository has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "यह संग्रह एडिट किया गया है। बदलाव की समीक्षा किसी मॉडरेटर द्वारा की जानी चाहिए।"
 
 #: resources/views/search-advanced-page.phtml:30
 msgid "Add more fields"
-msgstr ""
+msgstr "अधिक फ़ील्ड जोड़ें"
 
 #: resources/views/search-advanced-page.phtml:47
 #: resources/xml/reports/bdm_report.xml:118
@@ -19283,7 +19283,7 @@ msgstr ""
 #: resources/xml/reports/individual_report.xml:240
 #: resources/xml/reports/relative_ext_report.xml:64
 msgid "Father"
-msgstr ""
+msgstr "पिता"
 
 #: resources/views/search-advanced-page.phtml:59
 #: resources/xml/reports/bdm_report.xml:120
@@ -19293,86 +19293,86 @@ msgstr ""
 #: resources/xml/reports/individual_report.xml:276
 #: resources/xml/reports/relative_ext_report.xml:65
 msgid "Mother"
-msgstr ""
+msgstr "माँ"
 
 #: resources/views/search-general-page.phtml:28
 #: resources/views/statistics/other/total-records.phtml:11
 msgid "Records"
-msgstr ""
+msgstr "रिकार्ड्स"
 
 #. I18N: select all (of the family trees)
 #: resources/views/search-general-page.phtml:89
 #: resources/views/search-phonetic-page.phtml:90
 msgid "select all"
-msgstr ""
+msgstr "सभी चुनें"
 
 #. I18N: select none (of the family trees)
 #: resources/views/search-general-page.phtml:90
 #: resources/views/search-phonetic-page.phtml:91
 msgid "select none"
-msgstr ""
+msgstr "कोई न चुनें"
 
 #: resources/views/search-general-page.phtml:92
 #: resources/views/search-phonetic-page.phtml:93
 msgid "invert selection"
-msgstr ""
+msgstr "चयन को उल्टा करें"
 
 #: resources/views/search-phonetic-page.phtml:51
 msgid "Phonetic algorithm"
-msgstr ""
+msgstr "ध्वन्यात्मक एल्गोरिथ्म"
 
 #: resources/views/search-replace-page.phtml:38
 msgid "Entire record"
-msgstr ""
+msgstr "संपूर्ण रिकॉर्ड"
 
 #: resources/views/search-replace-page.phtml:38
 #: resources/views/statistics/individuals/names.phtml:11
 #: resources/xml/reports/cemetery_report.xml:7
 #: resources/xml/reports/death_report.xml:10
 msgid "Names"
-msgstr ""
+msgstr "नाम"
 
 #. I18N: A button label.
 #: resources/views/search-replace-page.phtml:44
 msgid "replace"
-msgstr ""
+msgstr "बदलें"
 
 #: resources/views/setup/step-2-server-checks.phtml:18
 msgid "Checking server configuration"
-msgstr ""
+msgstr "सर्वर कॉन्फ़िगरेशन की जाँच"
 
 #: resources/views/setup/step-2-server-checks.phtml:31
 msgid "The server configuration is OK."
-msgstr ""
+msgstr "सर्वर कॉन्फ़िगरेशन ठीक है।"
 
 #: resources/views/setup/step-2-server-checks.phtml:35
 msgid "Checking server capacity"
-msgstr ""
+msgstr "सर्वर क्षमता की जाँच"
 
 #: resources/views/setup/step-2-server-checks.phtml:38
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
-msgstr ""
+msgstr "मेमोरी और सीपीयू के समय की मांग आपके फॅमिली ट्री में व्यक्तियों की संख्या पर निर्भर करती हैं।"
 
 #: resources/views/setup/step-2-server-checks.phtml:41
 msgid "The following list shows typical requirements."
-msgstr ""
+msgstr "यह सूची विशिष्ट आवश्यकताओं को दर्शाती है।"
 
 #: resources/views/setup/step-2-server-checks.phtml:44
 msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
-msgstr ""
+msgstr "छोटे सिस्टम (500 व्यक्ति): 16–32 एमबी, 10-20 सेकंड"
 
 #: resources/views/setup/step-2-server-checks.phtml:46
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
-msgstr ""
+msgstr "मध्यम सिस्टम (5,000 व्यक्ति): 32-64 एमबी, 20–40 सेकंड"
 
 #: resources/views/setup/step-2-server-checks.phtml:48
 msgid "Large systems (50,000 individuals): 64–128 MB, 40–80 seconds"
-msgstr ""
+msgstr "बड़े सिस्टम (50,000 व्यक्ति): 64–128 एमबी, 40-80 सेकंड"
 
 #: resources/views/setup/step-2-server-checks.phtml:52
 #, php-format
 msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
-msgstr ""
+msgstr "इस सर्वर की मेमोरी क्षमता %s एमबी है और इसके सीपीयू की समय सीमा %s सेकंड है।"
 
 #: resources/views/setup/step-2-server-checks.phtml:56
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
