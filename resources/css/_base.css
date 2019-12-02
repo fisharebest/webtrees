@@ -50,10 +50,14 @@
 }
 
 /*
+ * https://github.com/fisharebest/webtrees/issues/2291
  * Chrome 72 has problems with all cards in the control panel.
  * Chrome 73 has problems with the family-tree card in the control panel.
+ * Chrome 76 seems OK.
+ * https://github.com/fisharebest/webtrees/issues/2813
+ * Safari 13 has the same issue.
  */
-.wt-route-admin-control-panel .card {
+.wt-control-panel .card {
 	display: block;
 }
 
