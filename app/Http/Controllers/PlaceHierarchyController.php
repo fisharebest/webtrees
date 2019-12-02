@@ -36,8 +36,8 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-
 use function assert;
+use function view;
 
 /**
  * Class PlaceHierarchyController
@@ -320,18 +320,15 @@ class PlaceHierarchyController extends AbstractBaseController
                 $tmp               = $this->statistics->statsPlaces($type, '', $place->id());
                 $placeStats[$type] = $tmp === [] ? 0 : $tmp[0]->tot;
             }
-            $sidebar .= sprintf(
-                "<li title='%s' class ='gchart %s' data-id='%s'>%s</li>",
-                $sidebar_title,
-                $sidebar_class,
-                $id,
-                view('modules/place-hierarchy/sidebar', [
-                    'showlink' => $showlink,
-                    'flag'     => $flag,
-                    'place'    => $place,
-                    'stats'    => $placeStats,
-                ])
-            );
+            $sidebar .= view('modules/place-hierarchy/sidebar', [
+                'showlink'      => $showlink,
+                'flag'          => $flag,
+                'id'            => $id,
+                'place'         => $place,
+                'sidebar_class' => $sidebar_class,
+                'sidebar_title' => $sidebar_title,
+                'stats'         => $placeStats,
+            ]);
         }
 
         return [
