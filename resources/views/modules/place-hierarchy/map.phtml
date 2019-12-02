@@ -33,13 +33,6 @@ use Fisharebest\Webtrees\View;
         padding: 2px
     }
 
-    .unmapped {
-        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><line x1='0' y1='0' x2='100' y2='100' stroke='black' vector-effect='non-scaling-stroke'/><line x1='0' y1='100' x2='100' y2='0' stroke='black' vector-effect='non-scaling-stroke'/></svg>");
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: 100% 100%, auto;
-    }
-
     .flag {
         border: 1px solid grey !important;
         height: 15px;
@@ -159,10 +152,6 @@ use Fisharebest\Webtrees\View;
                 }
             } else {
                 map.fitWorld();
-                  $(domObj).append("<div class=\"bg-info text-white\">" + <?= json_encode(I18N::translate('No mappable items')) ?> + "</div>");
-            }
-            if (sidebar === "") {
-                sidebar = "<div class='bg-info text-white'>" + <?= json_encode(I18N::translate('No mappable items')) ?>+ "</div>"
             }
             $(domObj)
                 .append(sidebar)

@@ -9,14 +9,13 @@ use Fisharebest\Webtrees\Place;
  * @var string $flag
  * @var int    $id
  * @var string $sidebar_class
- * @var string $sidebar_title
  * @var array  $stats
  */
 ?>
 
-<li title="<?= $sidebar_title ?>" class="gchart <?= $sidebar_class ?>" data-id="<?= $id ?>">
-    <div class="row">
-        <div class="offset-sm-1 col-sm-7 label">
+<li class="gchart px-md-2 <?= $sidebar_class ?>" data-id="<?= $id ?>">
+    <div class="row label">
+        <div class="col" style="word-wrap: break-word">
             <?php if ($showlink) : ?>
                 <a href="<?= e($place->url()) ?>">
                     <?= $place->placeName() ?>
@@ -25,14 +24,28 @@ use Fisharebest\Webtrees\Place;
                 <?= $place->placeName() ?>
             <?php endif ?>
         </div>
+
         <?php if ($flag) : ?>
             <div class="col-sm-3 align-digits">
-                <img class="flag" alt="<?= strip_tags($place->placeName()) ?>" title="<?= strip_tags($place->placeName()) ?>" src='<?= $flag ?>'>
+                <img class="flag" alt="<?= strip_tags($place->placeName()) ?>" title="<?= strip_tags($place->placeName()) ?>" src="<?= $flag ?>">
             </div>
         <?php endif ?>
-        <div class="offset-sm-1 col-sm-7"><?= I18N::translate('Individuals') ?></div>
+    </div>
+
+    <?php if ($sidebar_class === 'unmapped'): ?>
+        <div class="row">
+            <div class="col-sm-9"><i><?= I18N::translate('The location of this place is not known.') ?></i></div>
+            <div class="col-sm-3 align-digits"><?= view('icons/warning') ?></div>
+        </div>
+    <?php endif ?>
+
+    <div class="row">
+        <div class="col-sm-9"><?= I18N::translate('Individuals') ?></div>
         <div class="col-sm-3 align-digits"><?= $stats['INDI'] ?></div>
-        <div class="offset-sm-1 col-sm-7"><?= I18N::translate('Families') ?></div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-9"><?= I18N::translate('Families') ?></div>
         <div class="col-sm-3 align-digits"><?= $stats['FAM'] ?></div>
     </div>
 </li>

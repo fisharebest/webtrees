@@ -41,12 +41,9 @@ use Fisharebest\Webtrees\Tree;
                 - <?= $current->placeName() ?>
             <?php endif ?>
         </h5>
-        <?php if ($note) : ?>
-            <div class="text-center small text-muted">
-                <?= I18N::translate('Places without valid co-ordinates do not appear on the map and are indicated by the sidebar entry being crossed through') ?>
-            </div>
-        <?php endif ?>
+
         <?= $content ?>
+
         <div class="text-center">
             <?php if ($showeventslink) : ?>
                 <a class="formField" href= <?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name(), 'parent' => $parent, 'action2' => 'hierarchy-e'])) ?>>

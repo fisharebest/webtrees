@@ -82,10 +82,8 @@ class PlaceHierarchyController extends AbstractBaseController
         $content    = '';
         $showmap    = Site::getPreference('map-provider') !== '';
         $data       = null;
-        $note       = false;
 
         if ($showmap) {
-            $note = true;
             $content .= view('modules/place-hierarchy/map', [
                 'data'   => $this->mapData($tree, $fqpn),
             ]);
@@ -115,7 +113,6 @@ class PlaceHierarchyController extends AbstractBaseController
             'modules/place-hierarchy/page',
             [
                 'title'          => I18N::translate('Places'),
-                'note'           => $note,
                 'tree'           => $tree,
                 'current'        => $breadcrumbs['current'],
                 'breadcrumbs'    => $breadcrumbs['breadcrumbs'],
@@ -287,13 +284,11 @@ class PlaceHierarchyController extends AbstractBaseController
             } else {
                 $flag = '';
             }
-            $sidebar_title = $place->gedcomName();
-            $sidebar_class = "mapped";
             if ($location->latitude() === 0.0 && $location->longitude() === 0.0) {
                 $sidebar_class = 'unmapped';
-                $sidebar_title .= " " . I18N::translate("(No map co-ordinates)");
             } else {
-                $features[] = [
+                $sidebar_class = 'mapped';
+                $features[]    = [
                     'type'       => 'Feature',
                     'id'         => $id,
                     'geometry'   => [
@@ -326,7 +321,6 @@ class PlaceHierarchyController extends AbstractBaseController
                 'id'            => $id,
                 'place'         => $place,
                 'sidebar_class' => $sidebar_class,
-                'sidebar_title' => $sidebar_title,
                 'stats'         => $placeStats,
             ]);
         }
