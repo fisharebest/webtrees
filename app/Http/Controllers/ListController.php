@@ -389,7 +389,7 @@ class ListController extends AbstractBaseController
 
         $html = ob_get_clean();
 
-        return $this->viewResponse('individual-list-page', [
+        return $this->viewResponse('modules/individual-list/page', [
             'content' => $html,
             'title'   => $title,
             'tree'    => $tree,
@@ -445,7 +445,7 @@ class ListController extends AbstractBaseController
 
         $media_objects = array_slice($media_objects, ($page - 1) * $max, $max);
 
-        return $this->viewResponse('media-list-page', [
+        return $this->viewResponse('modules/media-list/page', [
             'count'           => $count,
             'filter'          => $filter,
             'folder'          => $folder,
@@ -479,7 +479,7 @@ class ListController extends AbstractBaseController
 
         $notes = $this->allNotes($tree);
 
-        return $this->viewResponse('note-list-page', [
+        return $this->viewResponse('modules/note-list/page', [
             'notes' => $notes,
             'title' => I18N::translate('Shared notes'),
             'tree'  => $tree,
@@ -500,7 +500,7 @@ class ListController extends AbstractBaseController
 
         $repositories = $this->allRepositories($tree);
 
-        return $this->viewResponse('repository-list-page', [
+        return $this->viewResponse('modules/repository-list/page', [
             'repositories' => $repositories,
             'title'        => I18N::translate('Repositories'),
             'tree'         => $tree,
@@ -521,7 +521,7 @@ class ListController extends AbstractBaseController
 
         $sources = $this->allSources($tree);
 
-        return $this->viewResponse('source-list-page', [
+        return $this->viewResponse('modules/source-list/page', [
             'sources' => $sources,
             'title'   => I18N::translate('Sources'),
             'tree'    => $tree,

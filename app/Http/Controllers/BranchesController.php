@@ -129,7 +129,7 @@ class BranchesController extends AbstractBaseController
             $ancestors = [];
         }
 
-        $html = view('branches-list', [
+        $html = view('modules/branches/list', [
             'branches' => $this->getPatriarchsHtml($tree, $individuals, $ancestors, $surname, $soundex_dm, $soundex_std),
         ]);
 
