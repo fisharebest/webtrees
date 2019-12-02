@@ -149,7 +149,7 @@
         }
       } else {
         map.fitWorld();
-        $(domObj).append("<div class='bg-info text-white'>" + <?= json_encode(I18N::translate('No mappable items')) ?> + "</div>");
+        $(domObj).append('<div class="bg-info text-white">' + baseData.I18N.noData + "</div>");
       }
 
       $(domObj).slideDown(300);
