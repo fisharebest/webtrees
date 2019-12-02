@@ -32,11 +32,6 @@ use Ramsey\Uuid\Uuid;
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Family tree” configuration setting */ I18N::translate('Enabling this option will force all visitors to sign in before they can view any data on the website.') ?>
             </p>
-            <?php if (Site::getPreference('USE_REGISTRATION_MODULE') === '1') : ?>
-                <p class="small text-muted">
-                    <?= I18N::translate('If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually.') ?>
-                </p>
-            <?php endif ?>
         </div>
     </div>
 
