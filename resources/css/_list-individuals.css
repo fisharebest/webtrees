@@ -31,22 +31,22 @@
  */
 
 .wt-initials-list {
-	font-size: 1.25rem;
+    font-size: 1.25rem;
 }
 
 .wt-initials-list-item {
-	display: inline;
+    display: inline;
 }
 
 .wt-initials-list-item + .wt-initials-list-item::before {
-	content: '|';
+    content: '|';
 }
 
 .wt-initial {
 }
 
 .wt-initial.active {
-	color: #f00;
-	font-weight: bold;
+    color: #f00;
+    font-weight: bold;
 }
 

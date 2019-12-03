@@ -19,12 +19,12 @@
  * wt-chart, wt-chart-family-book
  */
 .wt-chart-family-book .wt-chart-box {
-	width: 15rem;
+    width: 15rem;
 }
 
 .wt-chart-family-book .wt-chart-box-lifespan {
-	display: none;
+    display: none;
 }
 .wt-chart-family-book .wt-family-break {
-	page-break-before: always;
+    page-break-before: always;
 }

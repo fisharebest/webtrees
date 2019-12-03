@@ -17,13 +17,13 @@
 
 /* Header */
 .wt-header-wrapper, .btn-primary {
-	background: #a30f42;
-	border: 0;
-	color: #fff;
+    background: #a30f42;
+    border: 0;
+    color: #fff;
 }
 
 .wt-genealogy-menu, .btn-primary:hover {
-	background: #fc6d1d;
+    background: #fc6d1d;
 }
 
 /* Tbls and menus  */
@@ -32,12 +32,12 @@
 .descriptionbox, .descriptionbox a,
 .topbottombar, .topbottombar a,
 .list_label, .list_label a {
-	background-color: #d23014;
-	color: #fff;
+    background-color: #d23014;
+    color: #fff;
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active {
-	background: none repeat scroll 0 0 #d23014;
+    background: none repeat scroll 0 0 #d23014;
 }
 
 /* Base */
@@ -48,19 +48,19 @@
 .optionbox, .ui-state-active a:link,
 .list_value, .list_value_wrap, .list_value_wrap a,
 #login-form, #new_passwd_form, #register-form  {
-	background: #fef9dc;
+    background: #fef9dc;
 }
 
 /* Alerts */
 .error, .warning, .red {
-	color: #f00;
+    color: #f00;
 }
 
 /* Light Text */
 .user-menu li a {
-	color: #fff;
+    color: #fff;
 }
 
 .subheaders {
-	color: #494949;
+    color: #494949;
 }

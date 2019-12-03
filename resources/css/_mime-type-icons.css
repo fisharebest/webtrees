@@ -21,29 +21,29 @@
  * Creative Commons BY 3.0
  */
 .wt-mime {
-	background: url(images/mime.svg);
-	display: inline-block;
-	width: 48px;
-	height: 48px;
+    background: url(images/mime.svg);
+    display: inline-block;
+    width: 48px;
+    height: 48px;
 }
 
 .wt-mime-application-pdf {
-	background: url(images/mime-application-pdf.svg);
+    background: url(images/mime-application-pdf.svg);
 }
 
 .wt-mime-audio {
-	background: url(images/mime-audio.svg);
+    background: url(images/mime-audio.svg);
 }
 
 .wt-mime-text {
-	background: url(images/mime-text.svg);
+    background: url(images/mime-text.svg);
 }
 
 .wt-mime-text-html {
-	background: url(images/mime-text-html.svg);
+    background: url(images/mime-text-html.svg);
 }
 
 .wt-mime-video {
-	background: url(images/mime-video.svg);
+    background: url(images/mime-video.svg);
 }
 

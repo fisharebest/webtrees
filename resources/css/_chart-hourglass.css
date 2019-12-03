@@ -19,14 +19,14 @@
  * wt-chart, wt-chart-hourglass
  */
 .wt-chart-hourglass {
-	overflow-y: auto;
+    overflow-y: auto;
 }
 
 .wt-chart-hourglass .wt-chart-box {
-	width: 15rem;
+    width: 15rem;
 }
 
 .wt-chart-hourglass .wt-chart-box-lifespan {
-	display: none;
+    display: none;
 }
 

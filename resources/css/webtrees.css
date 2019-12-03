@@ -25,33 +25,33 @@
 
 /* Colors for chart boxes, etc. */
 :root {
-	--sex-f-fg: #ff2080;
-	--sex-m-fg: #81a9cb;
-	--sex-u-fg: #81a9cb;
-	--sex-f-bg: #e9daf1;
-	--sex-m-bg: #edf7fd;
-	--sex-u-bg: #ffffff;
-	--chart-line: solid gray thin;
-	--chart-line-radius: 1rem;
+    --sex-f-fg: #ff2080;
+    --sex-m-fg: #81a9cb;
+    --sex-u-fg: #81a9cb;
+    --sex-f-bg: #e9daf1;
+    --sex-m-bg: #edf7fd;
+    --sex-u-bg: #ffffff;
+    --chart-line: solid gray thin;
+    --chart-line-radius: 1rem;
 }
 
 /* Override Bootstrap formatting */
 .btn-link {
-	padding-left: 0.25rem;
-	padding-right: 0.25rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
 }
 
 .table-given-name {
-	overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 .container-fluid {
-	padding-left: 5px;
-	padding-right: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 table {
-	border-collapse: separate;
+    border-collapse: separate;
 }
 
 /*
@@ -84,7 +84,7 @@ table {
  */
 
 .wt-global {
-	color: #555;
+    color: #555;
 }
 
 .wt-header-wrapper {
@@ -100,28 +100,28 @@ table {
 }
 
 .wt-site-logo {
-	order: 1;
-	flex: 0 0 272px;
+    order: 1;
+    flex: 0 0 272px;
 }
 
 .wt-site-logo:after {
-	height: 50px;
-	width: 242px;
-	content: url(webtrees/images/webtrees.png);
+    height: 50px;
+    width: 242px;
+    content: url(webtrees/images/webtrees.png);
 }
 
 .wt-site-title {
-	order: 3;
-	flex: 0 0 calc(100% - 15rem);
-	font-size: 1.5rem;
-	font-weight: normal;
+    order: 3;
+    flex: 0 0 calc(100% - 15rem);
+    font-size: 1.5rem;
+    font-weight: normal;
 }
 
 .wt-header-search {
-	order: 4;
-	flex: 0 0 15rem;
-	position: relative;
-	top: -0.75rem;
+    order: 4;
+    flex: 0 0 15rem;
+    position: relative;
+    top: -0.75rem;
 }
 
 .wt-header-search-form {
@@ -134,239 +134,239 @@ table {
 }
 
 .wt-secondary-navigation {
-	order: 2;
-	white-space: nowrap;
-	margin-bottom: 15px;
+    order: 2;
+    white-space: nowrap;
+    margin-bottom: 15px;
 }
 
 .wt-user-menu {
-	flex-wrap: nowrap;
-	justify-content: flex-end;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
 }
 
 .wt-user-menu .nav-link {
-	display: inline-block;
-	padding: 0.5rem;
+    display: inline-block;
+    padding: 0.5rem;
 }
 
 .wt-user-menu .nav-item + .nav-item::before {
-	content: "|";
+    content: "|";
 }
 
 .wt-user-menu .dropdown-toggle::after {
-	display: none;
+    display: none;
 }
 
 .wt-primary-navigation {
-	order: 5;
-	/* Extend to full page width */
-	flex: 0 0 100vw;
-	max-width: 100vw;
-	/* Recalculate margins for content */
-	margin: 0 calc(50% - 50vw);
-	padding: 0 calc(50vw - 50%);
-	border-bottom: 2px solid #81a9cb;
-	border-top: 2px solid #81a9cb;
+    order: 5;
+    /* Extend to full page width */
+    flex: 0 0 100vw;
+    max-width: 100vw;
+    /* Recalculate margins for content */
+    margin: 0 calc(50% - 50vw);
+    padding: 0 calc(50vw - 50%);
+    border-bottom: 2px solid #81a9cb;
+    border-top: 2px solid #81a9cb;
 }
 
 .wt-genealogy-menu {
-	justify-content: center;
+    justify-content: center;
 }
 
 .wt-genealogy-menu .nav-item {
-	text-align: center;
-	min-width: 5rem;
+    text-align: center;
+    min-width: 5rem;
 }
 
 .wt-genealogy-menu .nav-link::before {
-	display: block;
+    display: block;
 }
 
 .wt-genealogy-menu .dropdown-toggle::after {
-	display: none;
+    display: none;
 }
 
 .wt-genealogy-menu .dropdown-menu {
-	border-radius: 0;
-	border: thin solid #aaa;
+    border-radius: 0;
+    border: thin solid #aaa;
 }
 
 .wt-genealogy-menu .dropdown-item {
-	/* Space between icons and align with submenu icons */
-	padding: 0 5px 0 0;
-	line-height: 1.0;
+    /* Space between icons and align with submenu icons */
+    padding: 0 5px 0 0;
+    line-height: 1.0;
 }
 
 .wt-genealogy-menu .dropdown-item::before {
-	vertical-align: text-top;
-	line-height: 2.4;
-	padding: 0 .25rem;
+    vertical-align: text-top;
+    line-height: 2.4;
+    padding: 0 .25rem;
 }
 
 .menu-tree .nav-link::before {
-	content: url(webtrees/menu/tree.png);
+    content: url(webtrees/menu/tree.png);
 }
 
 .menu-tree .dropdown-item::before {
-	content: url(webtrees/menu/tree-tree.png);
+    content: url(webtrees/menu/tree-tree.png);
 }
 
 .menu-chart .nav-link::before {
-	content: url(webtrees/menu/chart.png);
+    content: url(webtrees/menu/chart.png);
 }
 
 .menu-chart-ancestry::before {
-	content: url(webtrees/menu/chart-ancestors.png);
+    content: url(webtrees/menu/chart-ancestors.png);
 }
 
 .menu-chart-compact::before {
-	content: url(webtrees/menu/chart-compact.png);
+    content: url(webtrees/menu/chart-compact.png);
 }
 
 .menu-chart-descendants::before {
-	content: url(webtrees/menu/chart-descendants.png);
+    content: url(webtrees/menu/chart-descendants.png);
 }
 
 .menu-chart-familybook::before {
-	content: url(webtrees/menu/chart-family-book.png);
+    content: url(webtrees/menu/chart-family-book.png);
 }
 
 .menu-chart-fanchart::before {
-	content: url(webtrees/menu/chart-fanchart.png);
+    content: url(webtrees/menu/chart-fanchart.png);
 }
 
 .menu-chart-hourglass::before {
-	content: url(webtrees/menu/chart-hourglass.png);
+    content: url(webtrees/menu/chart-hourglass.png);
 }
 
 .menu-chart-lifespan::before {
-	content: url(webtrees/menu/chart-lifespan.png);
+    content: url(webtrees/menu/chart-lifespan.png);
 }
 
 .menu-chart-pedigree::before {
-	content: url(webtrees/menu/chart-pedigree.png);
+    content: url(webtrees/menu/chart-pedigree.png);
 }
 
 .menu-chart-pedigreemap::before {
-	content: url(webtrees/menu/chart-pedigree-map.png);
+    content: url(webtrees/menu/chart-pedigree-map.png);
 }
 
 .menu-chart-relationship::before {
-	content: url(webtrees/menu/chart-relationship.png);
+    content: url(webtrees/menu/chart-relationship.png);
 }
 
 .menu-chart-statistics::before {
-	content: url(webtrees/menu/chart-statistics.png);
+    content: url(webtrees/menu/chart-statistics.png);
 }
 
 .menu-chart-timeline::before {
-	content: url(webtrees/menu/chart-timeline.png);
+    content: url(webtrees/menu/chart-timeline.png);
 }
 
 .menu-chart-tree::before {
-	content: url(webtrees/menu/chart-tree.png);
+    content: url(webtrees/menu/chart-tree.png);
 }
 
 .menu-list .nav-link::before {
-	content: url(webtrees/menu/list.png);
+    content: url(webtrees/menu/list.png);
 }
 
 .menu-branches::before {
-	content: url(webtrees/menu/branches.png);
+    content: url(webtrees/menu/branches.png);
 }
 
 .menu-list-fam::before {
-	content: url(webtrees/menu/list-fam.png);
+    content: url(webtrees/menu/list-fam.png);
 }
 
 .menu-list-indi::before {
-	content: url(webtrees/menu/list-indi.png);
+    content: url(webtrees/menu/list-indi.png);
 }
 
 .menu-list-note::before {
-	content: url(webtrees/menu/list-note.png);
+    content: url(webtrees/menu/list-note.png);
 }
 
 .menu-list-obje::before {
-	content: url(webtrees/menu/list-obje.png);
+    content: url(webtrees/menu/list-obje.png);
 }
 
 .menu-list-plac::before {
-	content: url(webtrees/menu/list-plac.png);
+    content: url(webtrees/menu/list-plac.png);
 }
 
 .menu-list-repo::before {
-	content: url(webtrees/menu/list-repo.png);
+    content: url(webtrees/menu/list-repo.png);
 }
 
 .menu-list-sour::before {
-	content: url(webtrees/menu/list-sour.png);
+    content: url(webtrees/menu/list-sour.png);
 }
 
 .menu-calendar .nav-link::before {
-	content: url(webtrees/menu/calendar.png);
+    content: url(webtrees/menu/calendar.png);
 }
 
 .menu-calendar-day::before {
-	content: url(webtrees/menu/calendar-calendar.png);
+    content: url(webtrees/menu/calendar-calendar.png);
 }
 
 .menu-calendar-month::before {
-	content: url(webtrees/menu/calendar-calendar.png);
+    content: url(webtrees/menu/calendar-calendar.png);
 }
 
 .menu-calendar-year::before {
-	content: url(webtrees/menu/calendar-calendar.png);
+    content: url(webtrees/menu/calendar-calendar.png);
 }
 
 .menu-report .nav-link::before {
-	content: url(webtrees/menu/report.png);
+    content: url(webtrees/menu/report.png);
 }
 
 .menu-report .dropdown-item::before {
-	content: url(webtrees/menu/report-report.png);
+    content: url(webtrees/menu/report-report.png);
 }
 
 .menu-search .nav-link::before {
-	content: url(webtrees/menu/search.png);
+    content: url(webtrees/menu/search.png);
 }
 
 .menu-search .dropdown-item::before {
-	content: url(webtrees/menu/search-search.png);
+    content: url(webtrees/menu/search-search.png);
 }
 
 .menu-faq .nav-link::before {
-	content: url(webtrees/menu/faq.png);
+    content: url(webtrees/menu/faq.png);
 }
 
 .menu-clippings .nav-link::before {
-	content: url(webtrees/menu/clippings.png);
+    content: url(webtrees/menu/clippings.png);
 }
 
 .menu-clippings-add::before {
-	content: url(webtrees/menu/clippings-add.png);
+    content: url(webtrees/menu/clippings-add.png);
 }
 
 .menu-clippings-cart::before {
-	content: url(webtrees/menu/clippings-cart.png);
+    content: url(webtrees/menu/clippings-cart.png);
 }
 
 .menu-clippings-download::before {
-	content: url(webtrees/menu/edit-preferences.png);
+    content: url(webtrees/menu/edit-preferences.png);
 }
 
 .menu-clippings-empty::before {
-	content: url(webtrees/menu/edit-delete.png);
+    content: url(webtrees/menu/edit-delete.png);
 }
 
 .menu-story .nav-link::before {
-	content: url(webtrees/menu/story.png);
+    content: url(webtrees/menu/story.png);
 }
 
 .wt-main-container {
-	/* Space between the header/footer and the main content. */
-	padding-top: 1rem;
-	padding-bottom: 1rem;
+    /* Space between the header/footer and the main content. */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .wt-main {
@@ -376,10 +376,10 @@ table {
 }
 
 .wt-page-title {
-	color: #006;
-	font-size: 1.5rem;
-	font-weight: bold;
-	text-align: center;
+    color: #006;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
 }
 
 .wt-page-options {
@@ -389,25 +389,25 @@ table {
 }
 
 .wt-page-options .form-group {
-	margin-bottom: 2px;
+    margin-bottom: 2px;
 }
 
 .wt-page-options-label {
-	color: #fff;
-	background-color: #81a9cb;
-	font-weight: bold;
-	border-left: 2px solid transparent;
-	border-right: 2px solid transparent;
+    color: #fff;
+    background-color: #81a9cb;
+    font-weight: bold;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
 }
 
 .wt-page-options-value {
-	background-color: #edf7f9;
-	border: solid #81a9cb 1px;
-	padding: 0.25rem 0.75rem;
+    background-color: #edf7f9;
+    border: solid #81a9cb 1px;
+    padding: 0.25rem 0.75rem;
 }
 
 .wt-page-content {
-	margin-top: 1rem;
+    margin-top: 1rem;
 }
 
 .wt-footers {
@@ -420,9 +420,9 @@ table {
 }
 
 .wt-footer-cookies {
-	background: #aaa;
-	color: #fff;
-	transition: height 0.5s;
+    background: #aaa;
+    color: #fff;
+    transition: height 0.5s;
 }
 
 .wt-footer-page-views {
@@ -432,9 +432,9 @@ table {
 }
 
 .wt-footer-powered-by-webtrees {
-	width: 100px;
-	height: 21px;
-	content: url(images/powered-by-webtrees.png);
+    width: 100px;
+    height: 21px;
+    content: url(images/powered-by-webtrees.png);
 }
 
 /*
@@ -457,30 +457,30 @@ table {
  */
 
 .wt-block {
-	background-color: #edf7fd;
-	border: solid #81a9cb 1px;
+    background-color: #edf7fd;
+    border: solid #81a9cb 1px;
 }
 
 .wt-block-header {
-	background-color: #edf7fd;
-	border-bottom: none;
-	font-weight: bold;
+    background-color: #edf7fd;
+    border-bottom: none;
+    font-weight: bold;
 }
 
 .wt-block-content {
 }
 
 .wt-block-content .list_table {
-	border-spacing: 1px;
-	border: solid #81a9cb 1px;
-	border-right: 0;
+    border-spacing: 1px;
+    border: solid #81a9cb 1px;
+    border-right: 0;
 }
 
 .wt-block-content .list_value,
 .wt-block-content .list_value_wrap {
-	border: 0;
-	border-top: solid #81a9cb 1px;
-	border-right: solid #81a9cb 1px;
+    border: 0;
+    border-top: solid #81a9cb 1px;
+    border-right: solid #81a9cb 1px;
 }
 
 /*
@@ -491,15 +491,15 @@ table {
  */
 
 .wt-individual-silhouette {
-	content: url(images/individual-silhouette-unknown.png);
+    content: url(images/individual-silhouette-unknown.png);
 }
 
 .wt-individual-silhouette-f {
-	content: url(images/individual-silhouette-female.png);
+    content: url(images/individual-silhouette-female.png);
 }
 
 .wt-individual-silhouette-m {
-	content: url(images/individual-silhouette-male.png);
+    content: url(images/individual-silhouette-male.png);
 }
 
 /*
@@ -522,716 +522,716 @@ table {
  */
 .wt-chart-box,
 .wt-chart-box-menu {
-	background: var(--sex-u-bg);
-	border: dashed var(--sex-u-fg) thin;
+    background: var(--sex-u-bg);
+    border: dashed var(--sex-u-fg) thin;
 }
 
 .wt-chart-box {
-	height: 5rem;
-	padding: 2px;
-	line-height: 1.1;
+    height: 5rem;
+    padding: 2px;
+    line-height: 1.1;
 }
 
 .wt-chart-box-f,
 .wt-chart-box-f .wt-chart-box-dropdown {
-	background: var(--sex-f-bg);
-	border: solid var(--sex-f-fg) thin;
+    background: var(--sex-f-bg);
+    border: solid var(--sex-f-fg) thin;
 }
 
 .wt-chart-box-m,
 .wt-chart-box-m .wt-chart-box-dropdown {
-	background: var(--sex-m-bg);
-	border: solid var(--sex-m-fg) thin;
+    background: var(--sex-m-bg);
+    border: solid var(--sex-m-fg) thin;
 }
 
 a {
-	color: #555;
-	text-decoration: none;
+    color: #555;
+    text-decoration: none;
 }
 
 a:hover {
-	color: #f00;
-	text-decoration: none;
+    color: #f00;
+    text-decoration: none;
 }
 
 :focus {
-	outline-style: none;
+    outline-style: none;
 }
 
 .flash-messages {
-	clear: both;
-	text-align: center;
+    clear: both;
+    text-align: center;
 }
 
 img {
-	border: 0;
+    border: 0;
 }
 
 legend img {
-	height: 20px;
-	vertical-align: middle;
-	width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    width: 20px;
 }
 
 img.block {
-	border: 0;
-	height: 25px;
-	vertical-align: middle;
+    border: 0;
+    height: 25px;
+    vertical-align: middle;
 }
 
 .topbottombar {
-	background-color: #81a9cb;
-	color: #fff;
-	font-weight: bold;
-	padding: 4px;
-	text-align: center;
+    background-color: #81a9cb;
+    color: #fff;
+    font-weight: bold;
+    padding: 4px;
+    text-align: center;
 }
 
 .button {
-	width: 60px;
+    width: 60px;
 }
 
 .alpha_index {
-	color: #999;
+    color: #999;
 }
 
 .news_box:target,
 #gedcom_stats:target {
-	background-color: #ffc;
+    background-color: #ffc;
 }
 
 /* families tab person box */
 table.center {
-	margin-left: auto;
-	margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .list_table {
-	margin: 0 auto;
+    margin: 0 auto;
 }
 
 .list_label,
 .list_label_wrap {
-	color: #fff;
-	background-color: #81a9cb;
-	font-weight: bold;
-	text-align: center;
+    color: #fff;
+    background-color: #81a9cb;
+    font-weight: bold;
+    text-align: center;
 }
 
 .list_value,
 .list_value_wrap {
-	background-color: #edf7f9;
-	border: solid #81a9cb 1px;
-	vertical-align: top;
-	padding: 4px;
+    background-color: #edf7f9;
+    border: solid #81a9cb 1px;
+    vertical-align: top;
+    padding: 4px;
 }
 
 .list_label,
 .list_value {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .list_label_wrap,
 .list_value_wrap {
-	white-space: normal;
+    white-space: normal;
 }
 
 div.fact_SHARED_NOTE {
-	clear: both;
+    clear: both;
 }
 
 /* Table of genealogical facts */
 .wt-facts-table caption {
-	caption-side: top;
+    caption-side: top;
 }
 
 .wt-facts-table th {
-	background-color: #81a9cb;
-	border: solid #81a9cb 1px;
-	text-align: center;
-	font-weight: normal;
-	min-width: 20%;
+    background-color: #81a9cb;
+    border: solid #81a9cb 1px;
+    text-align: center;
+    font-weight: normal;
+    min-width: 20%;
 }
 
 .wt-facts-table td {
-	background-color: #edf7fd;
-	border: solid #81a9cb 1px;
+    background-color: #edf7fd;
+    border: solid #81a9cb 1px;
 }
 
 .wt-facts-table .wt-gender-M td {
-	background-color: #edf7fd;
-	border-color: #81a9cb;
+    background-color: #edf7fd;
+    border-color: #81a9cb;
 }
 
 .wt-facts-table .wt-gender-F td {
-	background-color: #e9daf1;
-	border-color: #ff2080;
+    background-color: #e9daf1;
+    border-color: #ff2080;
 }
 
 .name1 {
-	font-weight: bold;
-	font-size: 12px;
+    font-weight: bold;
+    font-size: 12px;
 }
 
 .name2 {
-	font-size: 16px;
+    font-size: 16px;
 }
 
 a:hover .name1, a:hover .name2 {
-	color: #f00;
-	font-weight: bold;
-	font-size: 12px;
+    color: #f00;
+    font-weight: bold;
+    font-size: 12px;
 }
 
 .details0,
 .details1 {
-	font-size: 11px;
+    font-size: 11px;
 }
 
 .details2 {
-	font-size: 12px;
+    font-size: 12px;
 }
 
 .details_label {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .date {
-	color: #337;
+    color: #337;
 }
 
 .label {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .error {
-	color: #d00;
-	font-weight: bold;
+    color: #d00;
+    font-weight: bold;
 }
 
 .largeError {
-	color: #d00;
-	font-size: large;
-	font-weight: bold;
+    color: #d00;
+    font-size: large;
+    font-weight: bold;
 }
 
 .warning {
-	color: #f00;
-	font-weight: bold;
+    color: #f00;
+    font-weight: bold;
 }
 
 .indent {
-	padding-left: 20px;
+    padding-left: 20px;
 }
 
 .thumbnail {
-	height: auto;
-	padding: 3px;
+    height: auto;
+    padding: 3px;
 }
 
 .icon {
-	border: 0;
-	padding: 0 5px;
+    border: 0;
+    padding: 0 5px;
 }
 
 .subheaders {
-	font-weight: bold;
-	font-size: 15px;
-	margin-top: 15px;
-	vertical-align: bottom;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 15px;
+    vertical-align: bottom;
 }
 
 .parentdeath {
-	border: thin solid #888;
-	padding: 1px;
+    border: thin solid #888;
+    padding: 1px;
 }
 
 .source_citations {
-	display: none;
+    display: none;
 }
 
 .selected-option {
-	background-color: #edf7fd;
+    background-color: #edf7fd;
 }
 
 .border1 {
-	border: solid #000 1px;
+    border: solid #000 1px;
 }
 
 .journal_box {
-	padding: 3pt;
-	border: thin solid #aaa;
-	overflow: visible;
+    padding: 3pt;
+    border: thin solid #aaa;
+    overflow: visible;
 }
 
 .news_box {
-	background-color: #edf7fd;
-	border-top: solid #81a9cb 1px;
+    background-color: #edf7fd;
+    border-top: solid #81a9cb 1px;
 }
 
 .news_title {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .news_date {
-	margin-bottom: 12px;
+    margin-bottom: 12px;
 }
 
 .current_day {
-	font-weight: bold;
-	font-size: 16px;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .cal_day {
-	float: left;
-	font-weight: bold;
+    float: left;
+    font-weight: bold;
 }
 
 .rtl_cal_day {
-	direction: rtl;
-	float: right;
-	color: #00f;
-	font-weight: bold;
+    direction: rtl;
+    float: right;
+    color: #00f;
+    font-weight: bold;
 }
 
 #user-page h1 {
-	margin: 0.25em auto 0.6em;
+    margin: 0.25em auto 0.6em;
 }
 
 .tvertline {
-	vertical-align: bottom;
+    vertical-align: bottom;
 }
 
 #childbox {
-	padding: 5px;
-	position: absolute;
-	display: none;
-	text-align: start;
-	white-space: nowrap;
-	top: 20px;
-	left: 0;
+    padding: 5px;
+    position: absolute;
+    display: none;
+    text-align: start;
+    white-space: nowrap;
+    top: 20px;
+    left: 0;
 }
 
 .layout3 #childbox {
-	top: auto;
-	bottom: 20px;
+    top: auto;
+    bottom: 20px;
 }
 
 #childbox a.name1 {
-	display: block;
-	margin-left: 5px;
+    display: block;
+    margin-left: 5px;
 }
 
 .person0 {
-	background-color: #aaf;
-	border: outset #aaf 1px;
-	vertical-align: top;
+    background-color: #aaf;
+    border: outset #aaf 1px;
+    vertical-align: top;
 }
 
 .person1 {
-	background-color: #afa;
-	border: outset #afa 1px;
-	vertical-align: top;
+    background-color: #afa;
+    border: outset #afa 1px;
+    vertical-align: top;
 }
 
 .person2 {
-	background-color: #faa;
-	border: outset #faa 1px;
-	vertical-align: top;
+    background-color: #faa;
+    border: outset #faa 1px;
+    vertical-align: top;
 }
 
 .person3 {
-	background-color: #55f;
-	border: outset #55f 1px;
-	vertical-align: top;
+    background-color: #55f;
+    border: outset #55f 1px;
+    vertical-align: top;
 }
 
 .person4 {
-	background-color: #f55;
-	border: outset #f55 1px;
-	vertical-align: top;
+    background-color: #f55;
+    border: outset #f55 1px;
+    vertical-align: top;
 }
 
 .person5 {
-	background-color: #5f5;
-	border: outset #5f5 1px;
-	vertical-align: top;
+    background-color: #5f5;
+    border: outset #5f5 1px;
+    vertical-align: top;
 }
 
 .starredname {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 .search_hit {
-	background-color: #ff0;
+    background-color: #ff0;
 }
 
 .descriptionbox {
-	color: #fff;
-	font-size: 12px;
-	background-color: #81a9cb;
-	border: solid #81a9cb 1px;
-	vertical-align: top;
-	padding: 3px;
+    color: #fff;
+    font-size: 12px;
+    background-color: #81a9cb;
+    border: solid #81a9cb 1px;
+    vertical-align: top;
+    padding: 3px;
 }
 
 .optionbox {
-	background-color: #d1d9ef;
-	font-size: 1rem;
-	border: solid #81a9cb 1px;
-	vertical-align: top;
-	white-space: nowrap;
-	padding: 3px;
+    background-color: #d1d9ef;
+    font-size: 1rem;
+    border: solid #81a9cb 1px;
+    vertical-align: top;
+    white-space: nowrap;
+    padding: 3px;
 }
 
 .red {
-	color: #f00;
+    color: #f00;
 }
 
 .wt-relation-fact,
 .wt-historic-fact {
-	opacity: 0.8;
+    opacity: 0.8;
 }
 
 .messagebox {
-	background-color: #c2ceef;
-	border: solid #81a9cb 1px;
+    background-color: #c2ceef;
+    border: solid #81a9cb 1px;
 }
 
 /* ---Pending edits--- */
 .wt-new {
-	outline: solid blue 1px;
+    outline: solid blue 1px;
 }
 
 .wt-old {
-	outline: solid red 1px;
+    outline: solid red 1px;
 }
 
 .tag_cloud {
-	text-align: center;
+    text-align: center;
 }
 
 .tag_cloud a {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .nowrap {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .wrap {
-	white-space: normal;
+    white-space: normal;
 }
 
 .statistics-page {
-	text-align: center;
+    text-align: center;
 }
 
 .gchart {
-	border: solid #81a9cb 1px;
+    border: solid #81a9cb 1px;
 }
 
 #facts_content dd {
-	float: left;
-	width: 70%;
+    float: left;
+    width: 70%;
 }
 
 td.descriptionbox a {
-	color: #fff;
+    color: #fff;
 }
 
 /* this keeps the tag color the same when it is a link as when not */
 
 .place {
-	padding-top: 5px;
+    padding-top: 5px;
 }
 
 .filtersH,
 .filtersF {
-	margin: 4px;
+    margin: 4px;
 }
 
 .filtersH img {
-	margin-bottom: 2px;
+    margin-bottom: 2px;
 }
 
 .list-charts {
-	text-align: center;
+    text-align: center;
 }
 
 #place-hierarchy h2,
 #place-hierarchy h4 {
-	text-align: center;
+    text-align: center;
 }
 
 /* ==== FAQ table styles ===== */
 table.faq {
-	background-color: #e0e0e0;
-	margin: 5px 0 50px 5px;
-	width: 98%;
+    background-color: #e0e0e0;
+    margin: 5px 0 50px 5px;
+    width: 98%;
 }
 
 table.faq tr:nth-child(odd) td {
-	background-color: #e7eef3;
+    background-color: #e7eef3;
 }
 
 div.faq_title {
-	background-color: #e0e0e0;
-	margin: 1em 0;
-	padding: .25em;
-	font-weight: bold;
-	width: 98%;
+    background-color: #e0e0e0;
+    margin: 1em 0;
+    padding: .25em;
+    font-weight: bold;
+    width: 98%;
 }
 
 div.faq_body {
-	clear: both;
-	padding: 0 1em;
+    clear: both;
+    padding: 0 1em;
 }
 
 .faq_top {
-	float: right;
+    float: right;
 }
 
 /* === Positioning edit, copy, delete links === */
 /* General use */
 .editfacts {
-	clear: left;
-	padding-top: 15px;
+    clear: left;
+    padding-top: 15px;
 }
 
 #indi_note {
-	margin: 0 0 5px;
+    margin: 0 0 5px;
 }
 
 .indi_table {
-	clear: left;
+    clear: left;
 }
 
 #sex {
-	float: right;
+    float: right;
 }
 
 #dates {
-	float: right;
+    float: right;
 }
 
 #individual-names .wt-icon-edit,
 #individual-names .wt-icon-delete {
-	float: right;
+    float: right;
 }
 
 #indi_note .fact_NOTE {
-	float: left;
-	margin: 0 5px 0 0;
+    float: left;
+    margin: 0 5px 0 0;
 }
 
 #indi_note .fact_SOUR {
-	margin: 3px 0;
+    margin: 3px 0;
 }
 
 #indi_note .fact_SOUR a {
-	font-size: 100%;
+    font-size: 100%;
 }
 
 #indi_note .fact_NOTE,
 #indi_note .fact_SOUR {
-	clear: both;
+    clear: both;
 }
 
 /* markdown formatting */
 
 .markdown {
-	/* Tables and pre-formatted text can break the layout. */
-	overflow-x: auto;
+    /* Tables and pre-formatted text can break the layout. */
+    overflow-x: auto;
 }
 
 .markdown p {
-	margin: 0 0 0.5em;
-	white-space: pre-wrap;
+    margin: 0 0 0.5em;
+    white-space: pre-wrap;
 }
 
 .markdown table {
-	border-collapse: collapse;
-	margin-bottom: 5px;
+    border-collapse: collapse;
+    margin-bottom: 5px;
 }
 
 .markdown th {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .markdown td,
 .markdown th {
-	border: solid thin #000;
-	padding: 3px;
+    border: solid thin #000;
+    padding: 3px;
 }
 
 .odometer {
-	font-family: courier, monospace;
-	font-weight: bold;
-	background: #000;
-	color: #fff;
+    font-family: courier, monospace;
+    font-weight: bold;
+    background: #000;
+    color: #fff;
 }
 
 /* ======== Indi tabs ======== */
 /* Facts & Events tab */
 .media-display-image {
-	float: left;
+    float: left;
 }
 
 .media-display-title {
-	float: left;
-	font-style: italic;
-	margin: 10px;
+    float: left;
+    font-style: italic;
+    margin: 10px;
 }
 
 /* Sidebar - Family navigator */
 .wt-family-navigator-dropdown {
-	background: #edf7fd;
+    background: #edf7fd;
 }
 
 .wt-family-navigator-dropdown-heading {
-	font-weight: bold;
-	font-size: inherit;
-	color: inherit;
+    font-weight: bold;
+    font-size: inherit;
+    color: inherit;
 }
 
 /* Sidebar - Descendants */
 #sb_content_descendancy {
-	margin-top: 5px;
+    margin-top: 5px;
 }
 
 #sb_desc_content {
-	margin-left: 3px;
-	font-size: 0.8em;
+    margin-left: 3px;
+    font-size: 0.8em;
 }
 
 #sb_desc_content ul {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .sb_desc_indi_li {
-	list-style-type: none;
+    list-style-type: none;
 }
 
 /* Individuals and Families */
 #sidebar-content-individuals,
 #sidebar-content-families {
-	margin-top: 5px;
+    margin-top: 5px;
 }
 
 .sb_indi_surname_li,
 .sb_fam_surname_li {
-	list-style-image: url(icons/plus.png);
+    list-style-image: url(icons/plus.png);
 }
 
 .name_tree_div ul {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .name_tree_div li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* Clippings */
 #sb_clippings_content ul {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 #sb_clippings_content li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	white-space: nowrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
 }
 
 /* Extra info */
 #sb_content_extra_info {
-	font-size: 80%;
-	font-weight: bold;
-	margin-top: 1px;
-	overflow: hidden;
-	padding: 5px;
+    font-size: 80%;
+    font-weight: bold;
+    margin-top: 1px;
+    overflow: hidden;
+    padding: 5px;
 }
 
 #sb_content_extra_info .editfacts {
-	float: right;
-	margin-top: -30px;
+    float: right;
+    margin-top: -30px;
 }
 
 #sb_content_extra_info a {
-	display: block;
+    display: block;
 }
 
 #sb_content_extra_info span {
-	font-weight: normal;
+    font-weight: normal;
 }
 
 #sb_content_extra_info span a {
-	display: inline;
+    display: inline;
 }
 
 #sb_content_extra_info #hitcounter {
-	border-top: 1px solid #b2c7d7;
-	font-weight: bold;
-	padding-top: 5px;
+    border-top: 1px solid #b2c7d7;
+    font-weight: bold;
+    padding-top: 5px;
 }
 
 /* Stories module */
 .story_title {
-	padding-top: 12px;
-	font-size: 13px;
-	height: 32px;
-	font-weight: bold;
+    padding-top: 12px;
+    font-size: 13px;
+    height: 32px;
+    font-weight: bold;
 }
 
 .story_body {
-	padding: 20px;
-	white-space: normal;
+    padding: 20px;
+    white-space: normal;
 }
 
 .story_edit {
-	padding: 12px;
+    padding: 12px;
 }
 
 /*-- Fan chart ---- */
 .fan_chart_menu {
-	background: #fff;
-	position: absolute;
-	display: none;
-	z-index: 100;
+    background: #fff;
+    position: absolute;
+    display: none;
+    z-index: 100;
 }
 
 #fan_chart ul {
-	list-style-type: none;
-	margin: 0;
+    list-style-type: none;
+    margin: 0;
 }
 
 /* Lifespans chart */
 .wt-lifespans-subtitle {
-	text-align: center;
+    text-align: center;
 }
 
 .wt-lifespans-scale {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .wt-lifespans-decade {
-	width: 70px;
-	height: 60px;
-	display: inline-block;
-	background-image: url(images/lifespan-decade.png);
-	background-position-y: bottom;
-	background-repeat: no-repeat;
-	background-size: 70px 37px;
+    width: 70px;
+    height: 60px;
+    display: inline-block;
+    background-image: url(images/lifespan-decade.png);
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: 70px 37px;
 }
 
 .wt-lifespans-individuals {
-	background: #fafafa;
+    background: #fafafa;
 }
 
 .wt-lifespans-individual {
@@ -1239,20 +1239,20 @@ div.faq_body {
 }
 
 .wt-lifespans-summary {
-	background: #ffffff;
-	border: thin solid #000;
-	z-index: 1;
+    background: #ffffff;
+    border: thin solid #000;
+    z-index: 1;
 }
 
 .wt-lifespans-summary-link {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 /*-- timeline  --*/
 #timeline_chart {
-	position: relative;
-	top: 0;
-	left: 0;
+    position: relative;
+    top: 0;
+    left: 0;
 }
 
 /*
@@ -1260,260 +1260,260 @@ div.faq_body {
  * We can provide a "loading" placeholder for empty elements with this class.
  */
 .wt-ajax-load:empty {
-	height: 32px;
-	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
+    height: 32px;
+    background: url(images/loading-32x32.gif) no-repeat 50% 50%;
 }
 
 /*
  * Default icons are provided by FontAwesome.
  */
 .wt-icon-anniversary {
-	content: url(icons/anniversary.png);
+    content: url(icons/anniversary.png);
 }
 
 .wt-icon-arrow-down {
-	content: url(webtrees/icons/arrow-down.png);
+    content: url(webtrees/icons/arrow-down.png);
 }
 
 a > .wt-icon-arrow-down:hover {
-	content: url(webtrees/icons/arrow-down-hover.png);
+    content: url(webtrees/icons/arrow-down-hover.png);
 }
 
 .wt-icon-arrow-left {
-	content: url(webtrees/icons/arrow-left.png);
+    content: url(webtrees/icons/arrow-left.png);
 }
 
 a > .wt-icon-arrow-left:hover {
-	content: url(webtrees/icons/arrow-left-hover.png);
+    content: url(webtrees/icons/arrow-left-hover.png);
 }
 
 .wt-icon-arrow-right {
-	content: url(webtrees/icons/arrow-right.png);
+    content: url(webtrees/icons/arrow-right.png);
 }
 
 a > .wt-icon-arrow-right:hover {
-	content: url(webtrees/icons/arrow-right-hover.png);
+    content: url(webtrees/icons/arrow-right-hover.png);
 }
 
 .wt-icon-arrow-up {
-	content: url(webtrees/icons/arrow-up.png);
+    content: url(webtrees/icons/arrow-up.png);
 }
 
 a > .wt-icon-arrow-up:hover {
-	content: url(webtrees/icons/arrow-up-hover.png);
+    content: url(webtrees/icons/arrow-up-hover.png);
 }
 
 .wt-icon-bing-maps {
-	content: url(icons/bing-maps.png);
+    content: url(icons/bing-maps.png);
 }
 
 .wt-icon-calendar {
-	content: url(icons/calendar.png)
+    content: url(icons/calendar.png)
 }
 
 .wt-icon-collapse {
 }
 
 .wt-icon-coordinates {
-	content: url(icons/coordinates.png)
+    content: url(icons/coordinates.png)
 }
 
 .wt-icon-copy {
-	content: url(icons/copy.png)
+    content: url(icons/copy.png)
 }
 
 .wt-icon-delete {
-	content: url(icons/delete.png);
+    content: url(icons/delete.png);
 }
 
 .wt-icon-edit {
-	content: url(icons/edit.png);
+    content: url(icons/edit.png);
 }
 
 .wt-icon-expand {
 }
 
 .wt-icon-family {
-	content: url(icons/family.png);
+    content: url(icons/family.png);
 }
 
 .wt-icon-google-maps {
-	content: url(icons/google-maps.png);
+    content: url(icons/google-maps.png);
 }
 
 .wt-icon-help {
-	content: url(webtrees/icons/help.png);
+    content: url(webtrees/icons/help.png);
 }
 
 .wt-icon-individual {
-	content: url(icons/individual.png);
+    content: url(icons/individual.png);
 }
 
 .wt-icon-keyboard {
-	content: url(icons/keyboard.png);
+    content: url(icons/keyboard.png);
 }
 
 .wt-icon-media {
-	content: url(icons/media.png);
+    content: url(icons/media.png);
 }
 
 .wt-icon-note {
-	content: url(icons/note.png);
+    content: url(icons/note.png);
 }
 
 .wt-icon-openstreetmap {
-	content: url(icons/openstreetmap.png);
+    content: url(icons/openstreetmap.png);
 }
 
 .wt-icon-preferences {
-	content: url(webtrees/icons/preferences.png);
+    content: url(webtrees/icons/preferences.png);
 }
 
 .wt-icon-reorder {
-	content: url(icons/reorder.png);
+    content: url(icons/reorder.png);
 }
 
 .wt-icon-repository {
-	content: url(icons/repository.png);
+    content: url(icons/repository.png);
 }
 
 .wt-icon-sex-f {
-	content: url(icons/sex-female.png);
+    content: url(icons/sex-female.png);
 }
 
 .wt-icon-sex-m {
-	content: url(icons/sex-male.png);
+    content: url(icons/sex-male.png);
 }
 
 .wt-icon-sex-u {
-	content: url(icons/sex-unknown.png);
+    content: url(icons/sex-unknown.png);
 }
 
 .wt-icon-sex-x {
-	content: url(icons/sex-unknown.png);
+    content: url(icons/sex-unknown.png);
 }
 
 .wt-icon-source {
-	content: url(icons/source.png);
+    content: url(icons/source.png);
 }
 
 .wt-icon-submitter {
-	content: url(icons/individual.png);
+    content: url(icons/individual.png);
 }
 
 .wt-icon-warning {
-	content: url(icons/warning.png);
+    content: url(icons/warning.png);
 }
 
 .wt-icon-zoom-in {
-	content: url(webtrees/icons/zoom-in.png);
+    content: url(webtrees/icons/zoom-in.png);
 }
 
 .wt-icon-zoom-out {
-	content: url(webtrees/icons/zoom-out.png);
+    content: url(webtrees/icons/zoom-out.png);
 }
 
 /* Miscellaneous images */
 .icon-cfamily {
-	content: url(webtrees/images/family.png);
+    content: url(webtrees/images/family.png);
 }
 
 .icon-childless {
-	content: url(images/childless.png);
+    content: url(images/childless.png);
 }
 
 .icon-children {
-	content: url(images/children.png);
+    content: url(images/children.png);
 }
 
 .icon-edit_indi {
-	content: url(webtrees/images/edit_indi.png);
+    content: url(webtrees/images/edit_indi.png);
 }
 
 .icon-fam-list {
-	content: url(webtrees/images/family.png);
+    content: url(webtrees/images/family.png);
 }
 
 .icon-indi-list {
-	content: url(webtrees/images/indis.png);
+    content: url(webtrees/images/indis.png);
 }
 
 .icon-loading-small {
-	content: url(images/indicator.gif);
+    content: url(images/indicator.gif);
 }
 
 .icon-minus {
-	content: url(icons/minus.png);
+    content: url(icons/minus.png);
 }
 
 .icon-mypage {
-	content: url(webtrees/images/mypage.png);
+    content: url(webtrees/images/mypage.png);
 }
 
 .icon-plus {
-	content: url(icons/plus.png);
+    content: url(icons/plus.png);
 }
 
 .icon-resn-confidential {
-	content: url(images/resn_confidential.png);
+    content: url(images/resn_confidential.png);
 }
 
 .icon-resn-locked {
-	content: url(images/resn_locked.png);
+    content: url(images/resn_locked.png);
 }
 
 .icon-resn-none {
-	content: url(images/resn_none.png);
+    content: url(images/resn_none.png);
 }
 
 .icon-resn-privacy {
-	content: url(images/resn_privacy.png);
+    content: url(images/resn_privacy.png);
 }
 
 .icon-rings {
-	content: url(images/rings.png);
+    content: url(images/rings.png);
 }
 
 .icon-selected {
-	content: url(webtrees/images/selected.png);
+    content: url(webtrees/images/selected.png);
 }
 
 /* Silhouettes on charts */
 .icon-silhouette-F {
-	content: url(webtrees/images/silhouette_female_small.png);
+    content: url(webtrees/images/silhouette_female_small.png);
 }
 
 .icon-silhouette-M {
-	content: url(webtrees/images/silhouette_male_small.png);
+    content: url(webtrees/images/silhouette_male_small.png);
 }
 
 .icon-silhouette-U {
-	content: url(webtrees/images/silhouette_unknown_small.png);
+    content: url(webtrees/images/silhouette_unknown_small.png);
 }
 
 .icon-indis {
-	content: url(webtrees/images/indis.png);
+    content: url(webtrees/images/indis.png);
 }
 
 .icon-patriarch {
-	content: url(webtrees/images/patriarch.png);
+    content: url(webtrees/images/patriarch.png);
 }
 
 .icon-pedigree {
-	content: url(webtrees/images/pedigree.png);
+    content: url(webtrees/images/pedigree.png);
 }
 
 .icon-sfamily {
-	content: url(webtrees/images/family.png);
+    content: url(webtrees/images/family.png);
 }
 
 .icon-user_add {
-	content: url(webtrees/images/user_add.png);
+    content: url(webtrees/images/user_add.png);
 }
 
 /* Census assistant */
 .wt-census-assistant-form-control:focus {
-	min-width: 12rem;
+    min-width: 12rem;
 }
 
 /*
@@ -1523,38 +1523,38 @@ a > .wt-icon-arrow-up:hover {
 }
 
 .wt-sortable-item {
-	cursor: move;
+    cursor: move;
 }
 
 /* Some blocks show a reduced version on the right-hand side. */
 .wt-side-blocks .wt-side-block-optional {
-	display: none !important;
+    display: none !important;
 }
 
 /* my page chart enhancements */
 .wt-block-content-charts {
-	overflow: auto;
+    overflow: auto;
 }
 
 /* Some charts are wider than the page. */
 .wt-chart {
-	overflow-x: auto;
-	overflow-y: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 /* Fit thumbnail into parent on charts */
 .select2-selection.select2-selection--single {
-	min-height: 36px;
-	height: auto;
-	padding: 2px 0;
+    min-height: 36px;
+    height: auto;
+    padding: 2px 0;
 }
 
 .select2-container .select2-selection--single .select2-selection__rendered {
-	padding-left: 2px;
+    padding-left: 2px;
 }
 
 .select2-selection--single .NAME {
-	padding-left: 4px;
+    padding-left: 4px;
 }
 
 /*
@@ -1564,20 +1564,20 @@ a > .wt-icon-arrow-up:hover {
  */
 
 #place-hierarchy ul {
-	list-style-type: none;
+    list-style-type: none;
 }
 
 .d-table-cell {
-	padding-right: 5px;
+    padding-right: 5px;
 }
 
 /* Some menus (e.g. languages) can be longer than a page */
 .dropdown-menu {
-	max-height: 30rem;
-	overflow-x: hidden;
+    max-height: 30rem;
+    overflow-x: hidden;
 }
 
 /* Forms */
 .col-form-label {
-	font-weight: bold;
+    font-weight: bold;
 }

@@ -31,14 +31,14 @@
   --sex-f-bg: #ffffff;
   --sex-m-bg: #ffffff;
   --sex-u-bg: #ffffff;
-	--chart-line: solid gray thin;
-	--chart-line-radius: 1rem;
+    --chart-line: solid gray thin;
+    --chart-line-radius: 1rem;
 }
 
 /* Override Bootstrap formatting */
 .btn-link {
-	padding-left: 0.25rem;
-	padding-right: 0.25rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
 }
 
 .table-given-name {
@@ -51,7 +51,7 @@
 }
 
 table {
-	border-collapse: separate;
+    border-collapse: separate;
 }
 
 /*
@@ -84,16 +84,16 @@ table {
  */
 
 .wt-global {
-	/* Avoid extremes of black and white.  It is better for users with dyslexia. */
-	color: #0a0a0a;
-	background-color: #f9f9f9;
+    /* Avoid extremes of black and white.  It is better for users with dyslexia. */
+    color: #0a0a0a;
+    background-color: #f9f9f9;
 }
 
 .wt-header-wrapper {
 }
 
 .wt-header-container {
-	margin-top: 1rem;
+    margin-top: 1rem;
 }
 
 .wt-header-content {
@@ -103,18 +103,18 @@ table {
 }
 
 .wt-site-logo {
-	display: none;
+    display: none;
 }
 
 .wt-site-title {
-	order: 1;
-	flex: 1 1 0;
-	font-size: 1.75rem;
+    order: 1;
+    flex: 1 1 0;
+    font-size: 1.75rem;
 }
 
 .wt-header-search {
-	order: 3;
-	flex: 0 0 15rem;
+    order: 3;
+    flex: 0 0 15rem;
 }
 
 .wt-header-search-form {
@@ -127,42 +127,42 @@ table {
 }
 
 .wt-secondary-navigation {
-	order: 2;
-	flex: 0 0 0;
-	white-space: nowrap;
+    order: 2;
+    flex: 0 0 0;
+    white-space: nowrap;
 }
 
 .wt-user-menu {
-	flex-wrap: nowrap;
+    flex-wrap: nowrap;
 }
 
 .wt-user-menu .nav-link {
-	padding: 0.5rem;
+    padding: 0.5rem;
 }
 
 .wt-primary-navigation {
-	order: 4;
-	/* Extend to full page width */
-	flex: 0 1 100vw;
-	max-width: 100vw;
-	/* Recalculate margins for content */
-	margin: 0 calc(50% - 50vw);
-	padding: 0 calc(50vw - 50%);
-	border-bottom: 2px solid #aaa;
+    order: 4;
+    /* Extend to full page width */
+    flex: 0 1 100vw;
+    max-width: 100vw;
+    /* Recalculate margins for content */
+    margin: 0 calc(50% - 50vw);
+    padding: 0 calc(50vw - 50%);
+    border-bottom: 2px solid #aaa;
 }
 
 .wt-genealogy-menu {
-	justify-content: center;
+    justify-content: center;
 }
 
 .wt-genealogy-menu .nav-link {
-	padding: 0.5rem;
+    padding: 0.5rem;
 }
 
 .wt-main-container {
-	/* Space between the header/footer and the main content. */
-	padding-top: 1rem;
-	padding-bottom: 1rem;
+    /* Space between the header/footer and the main content. */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .wt-main {
@@ -172,11 +172,11 @@ table {
 }
 
 .wt-page-title {
-	text-align: center;
+    text-align: center;
 }
 
 .wt-page-content {
-	margin-top: 1rem;
+    margin-top: 1rem;
 }
 
 .wt-footers {
@@ -189,9 +189,9 @@ table {
 }
 
 .wt-footer-cookies {
-	background: #aaa;
-	color: #fff;
-	transition: height 0.5s;
+    background: #aaa;
+    color: #fff;
+    transition: height 0.5s;
 }
 
 .wt-footer-page-views {
@@ -223,27 +223,27 @@ table {
  */
 
 .wt-block {
-	border: solid #000 1px;
+    border: solid #000 1px;
 }
 
 .wt-block-header {
-	background-color: #fff;
+    background-color: #fff;
 }
 
 .wt-block-content {
 }
 
 .wt-block-content .list_table {
-	border-spacing: 1px;
-	border: solid #000 1px;
-	border-right: 0;
+    border-spacing: 1px;
+    border: solid #000 1px;
+    border-right: 0;
 }
 
 .wt-block-content .list_value,
 .wt-block-content .list_value_wrap {
-	border: 0;
-	border-top: solid #000 1px;
-	border-right: solid #000 1px;
+    border: 0;
+    border-top: solid #000 1px;
+    border-right: solid #000 1px;
 }
 
 /*
@@ -254,15 +254,15 @@ table {
  */
 
 .wt-individual-silhouette {
-	content: url(images/individual-silhouette-unknown.png);
+    content: url(images/individual-silhouette-unknown.png);
 }
 
 .wt-individual-silhouette-f {
-	content: url(images/individual-silhouette-female.png);
+    content: url(images/individual-silhouette-female.png);
 }
 
 .wt-individual-silhouette-m {
-	content: url(images/individual-silhouette-male.png);
+    content: url(images/individual-silhouette-male.png);
 }
 
 /*
@@ -285,158 +285,158 @@ table {
  */
 .wt-chart-box,
 .wt-chart-box-menu {
-	background: var(--sex-u-bg);
-	border: dashed var(--sex-u-fg) thin;
+    background: var(--sex-u-bg);
+    border: dashed var(--sex-u-fg) thin;
 }
 
 .wt-chart-box {
-	height: 5rem;
-	padding: 2px;
-	line-height: 1.1;
+    height: 5rem;
+    padding: 2px;
+    line-height: 1.1;
 }
 
 .wt-chart-box-f,
 .wt-chart-box-f .wt-chart-box-dropdown {
-	background: var(--sex-f-bg);
-	border: solid var(--sex-f-fg) thin;
+    background: var(--sex-f-bg);
+    border: solid var(--sex-f-fg) thin;
 }
 
 .wt-chart-box-m,
 .wt-chart-box-m .wt-chart-box-dropdown {
-	background: var(--sex-m-bg);
-	border: solid var(--sex-m-fg) thin;
+    background: var(--sex-m-bg);
+    border: solid var(--sex-m-fg) thin;
 }
 
 /* ---Pending edits--- */
 .wt-new {
-	outline: solid thin blue;
+    outline: solid thin blue;
 }
 
 .wt-old {
-	outline: solid thin red;
+    outline: solid thin red;
 }
 
 .list_value,
 .list_value_wrap {
-	border: solid #000 1px;
-	vertical-align: top;
-	padding: 4px;
+    border: solid #000 1px;
+    vertical-align: top;
+    padding: 4px;
 }
 
 .list_table {
-	margin: 0 auto;
+    margin: 0 auto;
 }
 
 .filtersH,
 .filtersF {
-	margin: 4px;
+    margin: 4px;
 }
 
 .filtersH img {
-	margin-bottom: 2px;
+    margin-bottom: 2px;
 }
 
 .list-charts {
-	text-align: center;
+    text-align: center;
 }
 
 #place-hierarchy h2,
 #place-hierarchy h4 {
-	text-align: center;
+    text-align: center;
 }
 
 /* ======== Block styles ===== */
 #index_main_blocks {
-	clear: none;
-	width: 60%;
-	float: left;
+    clear: none;
+    width: 60%;
+    float: left;
 }
 
 #index_small_blocks {
-	clear: none;
-	width: 40%;
-	float: right;
+    clear: none;
+    width: 40%;
+    float: right;
 }
 
 #index_full_blocks {
-	clear: none;
-	width: 100%;
+    clear: none;
+    width: 100%;
 }
 
 .block {
-	background-color: #fff;
-	color: #555;
-	border: solid #ccc 1px;
-	padding: 3px;
-	vertical-align: top;
+    background-color: #fff;
+    color: #555;
+    border: solid #ccc 1px;
+    padding: 3px;
+    vertical-align: top;
 }
 
 .blockcontent {
-	margin: 5px;
-	overflow: auto;
+    margin: 5px;
+    overflow: auto;
 }
 
 .blockcontent .list_table {
-	border-spacing: 0;
-	border: solid #555 1px;
-	border-right: 0;
+    border-spacing: 0;
+    border: solid #555 1px;
+    border-right: 0;
 }
 
 .blockcontent .list_value,
 .blockcontent .list_value_wrap {
-	border: 0;
-	border-top: solid #555 1px;
-	border-right: solid #555 1px;
+    border: 0;
+    border-top: solid #555 1px;
+    border-right: solid #555 1px;
 }
 
 .blockheader {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 /* end Block styles */
 
 .user_welcome_block table,
 .gedcom_block_block table {
-	margin: auto;
+    margin: auto;
 }
 
 .user_welcome_block td,
 .gedcom_block_block td {
-	width: 33%;
-	text-align: center;
-	vertical-align: top;
+    width: 33%;
+    text-align: center;
+    vertical-align: top;
 }
 
 .user_welcome_block i,
 .gedcom_block_block i {
-	background-image: none;
-	height: 0;
-	width: 0;
+    background-image: none;
+    height: 0;
+    width: 0;
 }
 
 /* Table of genealogical facts */
 .wt-facts-table caption {
-	caption-side: top;
+    caption-side: top;
 }
 
 .wt-facts-table th {
-	border: 1px solid #000;
-	font-weight: normal;
-	min-width: 20%;
+    border: 1px solid #000;
+    font-weight: normal;
+    min-width: 20%;
 }
 
 .wt-facts-table td {
-	border: solid #000 1px;
+    border: solid #000 1px;
 }
 
 a {
-	color: #333;
-	text-decoration: none;
+    color: #333;
+    text-decoration: none;
 }
 
 a:hover {
-	color: #333;
-	text-decoration: underline;
+    color: #333;
+    text-decoration: underline;
 }
 
 a:hover {
@@ -445,297 +445,297 @@ a:hover {
 
 /* ==== FAQ table styles ===== */
 table.faq {
-	background-color: #ddd;
-	margin: 5px 0 50px 5px;
-	width: 98%;
+    background-color: #ddd;
+    margin: 5px 0 50px 5px;
+    width: 98%;
 }
 
 table.faq tr:nth-child(odd) td {
-	background-color: #fff;
+    background-color: #fff;
 }
 
 div.faq_title {
-	background-color: #ddd;
-	margin: 1em 0;
-	padding: .25em;
-	font-weight: bold;
-	width: 98%;
+    background-color: #ddd;
+    margin: 1em 0;
+    padding: .25em;
+    font-weight: bold;
+    width: 98%;
 }
 
 div.faq_body {
-	clear: both;
-	padding: 0 1em;
+    clear: both;
+    padding: 0 1em;
 }
 
 .faq_top {
-	float: right;
+    float: right;
 }
 
 /* === Positioning edit, copy, delete links === */
 /* General use */
 .editfacts {
-	clear: left;
-	padding-top: 15px;
+    clear: left;
+    padding-top: 15px;
 }
 
 #indi_note {
-	margin: 0 0 5px;
+    margin: 0 0 5px;
 }
 
 .indi_table {
-	clear: left;
+    clear: left;
 }
 
 #sex {
-	float: right;
+    float: right;
 }
 
 #dates {
-	color: #666;
-	float: right;
+    color: #666;
+    float: right;
 }
 
 .label {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 #individual-names .wt-icon-edit,
 #individual-names .wt-icon-delete {
-	float: right;
+    float: right;
 }
 
 #indi_note .fact_NOTE {
-	float: left;
-	margin: 0 5px 0 0;
+    float: left;
+    margin: 0 5px 0 0;
 }
 
 #indi_note .fact_SOUR {
-	margin: 3px 0;
+    margin: 3px 0;
 }
 
 #indi_note .fact_SOUR a {
-	font-size: 100%;
+    font-size: 100%;
 }
 
 #indi_note .fact_NOTE,
 #indi_note .fact_SOUR {
-	clear: both;
+    clear: both;
 }
 
 /* markdown formatting */
 
 .markdown {
-	/* Tables and pre-formatted text can break the layout. */
-	overflow-x: auto;
+    /* Tables and pre-formatted text can break the layout. */
+    overflow-x: auto;
 }
 
 .markdown p {
-	margin: 0 0 0.5em;
-	white-space: pre-wrap;
+    margin: 0 0 0.5em;
+    white-space: pre-wrap;
 }
 
 .markdown table {
-	border-collapse: collapse;
-	font-size: 10px;
-	margin-bottom: 5px;
+    border-collapse: collapse;
+    font-size: 10px;
+    margin-bottom: 5px;
 }
 
 .markdown th {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .markdown td,
 .markdown th {
-	border: solid thin #000;
-	padding: 3px;
+    border: solid thin #000;
+    padding: 3px;
 }
 
 .odometer {
-	font-family: courier, monospace;
-	font-weight: bold;
-	background: #000;
-	color: #fff;
+    font-family: courier, monospace;
+    font-weight: bold;
+    background: #000;
+    color: #fff;
 }
 
 /* ======== Indi tabs ======== */
 /* Facts & Events tab */
 .media-display-image {
-	float: left;
+    float: left;
 }
 
 .media-display-title {
-	float: left;
-	font-style: italic;
-	margin: 10px;
+    float: left;
+    font-style: italic;
+    margin: 10px;
 }
 
 .upcoming_events_block button,
 .todays_events_block button {
-	margin: 0 20px;
+    margin: 0 20px;
 }
 
 /* Sidebar - Family navigator */
 
 /* Sidebar - Descendants */
 #sb_content_descendancy {
-	margin-top: 5px;
+    margin-top: 5px;
 }
 
 #sb_desc_content {
-	margin-left: 3px;
-	font-size: 0.8em;
+    margin-left: 3px;
+    font-size: 0.8em;
 }
 
 #sb_desc_content ul {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .sb_desc_indi_li {
-	list-style-type: none;
+    list-style-type: none;
 }
 
 /* Individuals and Families */
 #sidebar-content-individuals,
 #sidebar-content-families {
-	margin-top: 5px;
+    margin-top: 5px;
 }
 
 .sb_indi_surname_li,
 .sb_fam_surname_li {
-	list-style-image: url(icons/plus.png);
+    list-style-image: url(icons/plus.png);
 }
 
 .name_tree_div ul {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .name_tree_div li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* Clippings */
 #sb_clippings_content ul {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 #sb_clippings_content li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	white-space: nowrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
 }
 
 /* Extra info */
 #sb_content_extra_info {
-	font-size: 80%;
-	font-weight: bold;
-	margin-top: 1px;
-	overflow: hidden;
-	padding: 5px;
+    font-size: 80%;
+    font-weight: bold;
+    margin-top: 1px;
+    overflow: hidden;
+    padding: 5px;
 }
 
 #sb_content_extra_info .editfacts {
-	float: right;
-	margin-top: -10px;
+    float: right;
+    margin-top: -10px;
 }
 
 #sb_content_extra_info a {
-	display: block;
+    display: block;
 }
 
 #sb_content_extra_info span {
-	font-weight: normal;
+    font-weight: normal;
 }
 
 #sb_content_extra_info span a {
-	display: inline;
+    display: inline;
 }
 
 #sb_content_extra_info #hitcounter {
-	border-top: 1px solid #b2c7d7;
-	font-weight: bold;
-	padding-top: 5px;
+    border-top: 1px solid #b2c7d7;
+    font-weight: bold;
+    padding-top: 5px;
 }
 
 /* Stories module */
 .story_title {
-	padding-top: 12px;
-	font-size: 13px;
-	height: 32px;
-	font-weight: bold;
+    padding-top: 12px;
+    font-size: 13px;
+    height: 32px;
+    font-weight: bold;
 }
 
 .story_body {
-	padding: 20px;
-	white-space: normal;
+    padding: 20px;
+    white-space: normal;
 }
 
 .story_edit {
-	padding: 12px;
+    padding: 12px;
 }
 
 /* Stories module */
 .story_title {
-	padding-top: 12px;
-	font-size: 13px;
-	height: 32px;
-	font-weight: bold;
+    padding-top: 12px;
+    font-size: 13px;
+    height: 32px;
+    font-weight: bold;
 }
 
 .story_body {
-	padding: 20px;
-	white-space: normal;
+    padding: 20px;
+    white-space: normal;
 }
 
 .story_edit {
-	padding: 12px;
+    padding: 12px;
 }
 
 /* ====== Charts Styles ======== */
 
 #people label {
-	display: block;
+    display: block;
 }
 
 /*-- Fan chart ---- */
 .fan_chart_menu {
-	background: #fff;
-	position: absolute;
-	display: none;
-	z-index: 100;
+    background: #fff;
+    position: absolute;
+    display: none;
+    z-index: 100;
 }
 
 #fan_chart ul {
-	list-style-type: none;
-	margin: 0;
+    list-style-type: none;
+    margin: 0;
 }
 
 /* Lifespans chart */
 .wt-lifespans-subtitle {
-	text-align: center;
+    text-align: center;
 }
 
 .wt-lifespans-scale {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .wt-lifespans-decade {
-	width: 70px;
-	height: 60px;
-	display: inline-block;
-	background-image: url(images/lifespan-decade.png);
-	background-position-y: bottom;
-	background-repeat: no-repeat;
-	background-size: 70px 37px;
+    width: 70px;
+    height: 60px;
+    display: inline-block;
+    background-image: url(images/lifespan-decade.png);
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: 70px 37px;
 }
 
 .wt-lifespans-individuals {
-	background: #fafafa;
+    background: #fafafa;
 }
 
 .wt-lifespans-individual {
@@ -743,79 +743,79 @@ div.faq_body {
 }
 
 .wt-lifespans-summary {
-	background: #ffffff;
-	border: thin solid #000;
-	z-index: 1;
+    background: #ffffff;
+    border: thin solid #000;
+    z-index: 1;
 }
 
 .wt-lifespans-summary-link {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 /*-- Pedigree ---- */
 .tvertline {
-	vertical-align: bottom;
+    vertical-align: bottom;
 }
 
 .optionbox, .descriptionbox {
-	border: solid #000 1px;
-	vertical-align: top;
-	padding: 3px;
+    border: solid #000 1px;
+    vertical-align: top;
+    padding: 3px;
 }
 
 #childbox {
-	padding: 5px;
-	position: absolute;
-	display: none;
-	text-align: start;
-	white-space: nowrap;
-	top: 20px;
-	left: 0;
+    padding: 5px;
+    position: absolute;
+    display: none;
+    text-align: start;
+    white-space: nowrap;
+    top: 20px;
+    left: 0;
 }
 
 .layout3 #childbox {
-	top: auto;
-	bottom: 20px;
+    top: auto;
+    bottom: 20px;
 }
 
 #childbox a.name1 {
-	display: block;
-	margin-left: 5px;
+    display: block;
+    margin-left: 5px;
 }
 
 .person0, .person1, .person2, .person3, .person4, .person5 {
-	border:outset #555 1px;
-	vertical-align:top;
+    border:outset #555 1px;
+    vertical-align:top;
 }
 .person0{
-	background-color:#eee;
+    background-color:#eee;
 }
 
 .person1{
-	background-color:#bfbfbf;
+    background-color:#bfbfbf;
 }
 
 .person2{
-	background-color:#999;
+    background-color:#999;
 }
 
 .person3{
-	background-color:#dfdfdf;
+    background-color:#dfdfdf;
 }
 
 .person4{
-	background-color:#eee;
+    background-color:#eee;
 }
 
 .person5{
-	background-color:#fefefe;
+    background-color:#fefefe;
 }
 
 /*-- timeline  --*/
 #timeline_chart {
-	position: relative;
-	top: 0;
-	left: 0;
+    position: relative;
+    top: 0;
+    left: 0;
 }
 
 /*
@@ -823,8 +823,8 @@ div.faq_body {
  * We can provide a "loading" placeholder for empty elements with this class.
  */
 .wt-ajax-load:empty {
-	height: 32px;
-	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
+    height: 32px;
+    background: url(images/loading-32x32.gif) no-repeat 50% 50%;
 }
 
 /*
@@ -915,19 +915,19 @@ a > .wt-icon-arrow-up:hover {
 }
 
 .wt-icon-sex-f {
-	color: var(--sex-m-fg);
+    color: var(--sex-m-fg);
 }
 
 .wt-icon-sex-m {
-	color: var(--sex-m-fg);
+    color: var(--sex-m-fg);
 }
 
 .wt-icon-sex-u {
-	color: var(--sex-u-fg);
+    color: var(--sex-u-fg);
 }
 
 .wt-icon-sex-x {
-	color: var(--sex-u-fg);
+    color: var(--sex-u-fg);
 }
 
 .wt-icon-source {
@@ -950,97 +950,97 @@ a > .wt-icon-arrow-up:hover {
 }
 
 .icon-childless {
-	content: url(images/childless.png);
+    content: url(images/childless.png);
 }
 
 .icon-children {
-	content: url(images/children.png);
+    content: url(images/children.png);
 }
 
 .icon-edit_indi {
-	content: url(minimal/images/edit_indi.png);
+    content: url(minimal/images/edit_indi.png);
 }
 
 .icon-fam-list {
-	content: url(minimal/images/sfamily.png);
+    content: url(minimal/images/sfamily.png);
 }
 
 .icon-indi-list {
-	content: url(minimal/images/indis.png);
+    content: url(minimal/images/indis.png);
 }
 
 .icon-loading-small {
-	content: url(images/indicator.gif);
+    content: url(images/indicator.gif);
 }
 
 .icon-loading-large {
-	content: url(images/loading-32x32.gif);
+    content: url(images/loading-32x32.gif);
 }
 
 .icon-minus {
-	content: url(icons/minus.png);
+    content: url(icons/minus.png);
 }
 
 .icon-mypage {
-	content: url(minimal/images/mypage.png);
+    content: url(minimal/images/mypage.png);
 }
 
 .icon-plus {
-	content: url(icons/plus.png);
+    content: url(icons/plus.png);
 }
 
 .icon-resn-confidential {
-	content: none;
+    content: none;
 }
 
 .icon-resn-locked {
-	content: none;
+    content: none;
 }
 
 .icon-resn-none {
-	content: none;
+    content: none;
 }
 
 .icon-resn-privacy {
-	content: none;
+    content: none;
 }
 
 .icon-rings {
-	content: url(images/rings.png);
+    content: url(images/rings.png);
 }
 
 .icon-selected {
-	content: url(minimal/images/selected.png);
+    content: url(minimal/images/selected.png);
 }
 
 .icon-sfamily {
-	content: url(minimal/images/sfamily.png);
+    content: url(minimal/images/sfamily.png);
 }
 
 /* Silhouettes on charts */
 .icon-silhouette-F {
-	content: url(minimal/images/silhouette_female_small.png);
+    content: url(minimal/images/silhouette_female_small.png);
 }
 
 .icon-silhouette-M {
-	content: url(minimal/images/silhouette_male_small.png);
+    content: url(minimal/images/silhouette_male_small.png);
 }
 
 .icon-silhouette-U {
-	content: url(minimal/images/silhouette_unknown_small.png);
+    content: url(minimal/images/silhouette_unknown_small.png);
 }
 
 .icon-indis {
-	content: url(minimal/images/indis.png);
+    content: url(minimal/images/indis.png);
 }
 
 .icon-pedigree {
-	content: url(minimal/images/pedigree.png);
+    content: url(minimal/images/pedigree.png);
 }
 
 /* Census assistant */
 .wt-census-assistant-form-control:focus {
-	min-width: 12rem;
+    min-width: 12rem;
 }
 
 /*
@@ -1050,38 +1050,38 @@ a > .wt-icon-arrow-up:hover {
 }
 
 .wt-sortable-item {
-	cursor: move;
+    cursor: move;
 }
 
 /* Some blocks show a reduced version on the right-hand side. */
 .wt-side-blocks .wt-side-block-optional {
-	display: none !important;
+    display: none !important;
 }
 
 /* my page chart enhancements */
 .wt-block-content-charts {
-	overflow: auto;
+    overflow: auto;
 }
 
 /* Some charts are wider than the page. */
 .wt-chart {
-	overflow-x: auto;
-	overflow-y: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 /* Fit thumbnail into parent on charts */
 .select2-selection.select2-selection--single {
-	min-height: 36px;
-	height: auto;
-	padding: 2px 0;
+    min-height: 36px;
+    height: auto;
+    padding: 2px 0;
 }
 
 .select2-container .select2-selection--single .select2-selection__rendered {
-	padding-left: 2px;
+    padding-left: 2px;
 }
 
 .select2-selection--single .NAME {
-	padding-left: 4px;
+    padding-left: 4px;
 }
 
 /*
@@ -1095,44 +1095,44 @@ a > .wt-icon-arrow-up:hover {
 
 /* Ascentors */
 .wt-chart-ancestors .linea1 {
-	margin-bottom: 4px;
+    margin-bottom: 4px;
 }
 
 .wt-chart-ancestors .linea2 {
-	margin-bottom: 7px;
+    margin-bottom: 7px;
 }
 
 .wt-chart-ancestors .linea3 {
-	margin-bottom: 4px;
+    margin-bottom: 4px;
 }
 
 .wt-chart-ancestors .linea4 {
-	margin-bottom: 7px;
+    margin-bottom: 7px;
 }
 
 .wt-chart-ancestors .linea5 {
-	vertical-align: top;
+    vertical-align: top;
 }
 
 /* Descendants */
 .wt-chart-descendants .lined1 {
-	margin-bottom: 4px;
+    margin-bottom: 4px;
 }
 
 .wt-chart-descendants .lined2 {
-	margin-bottom: 7px;
+    margin-bottom: 7px;
 }
 
 .wt-chart-descendants .lined3 {
-	margin-bottom: 4px;
+    margin-bottom: 4px;
 }
 
 .wt-chart-descendants .lined4 {
-	margin-bottom: 7px;
+    margin-bottom: 7px;
 }
 
 .wt-chart-descendants .linea5 {
-	vertical-align: top;
+    vertical-align: top;
 }
 
 /*
@@ -1142,20 +1142,20 @@ a > .wt-icon-arrow-up:hover {
  */
 
 #place-hierarchy ul {
-	list-style-type: none;
+    list-style-type: none;
 }
 
 .d-table-cell {
-	padding-right: 5px;
+    padding-right: 5px;
 }
 
 /* Some menus (e.g. languages) can be longer than a page */
 .dropdown-menu {
-	max-height: 30rem;
-	overflow-x: hidden;
+    max-height: 30rem;
+    overflow-x: hidden;
 }
 
 /* Forms */
 .col-form-label {
-	font-weight: bold;
+    font-weight: bold;
 }

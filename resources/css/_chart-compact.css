@@ -20,15 +20,15 @@
  * +---- wt-chart-compact-table
  */
 .wt-chart.wt-chart-compact {
-	overflow-x: inherit;
+    overflow-x: inherit;
 }
 
 .wt-chart-compact .wt-chart-box {
-	min-width: 5rem;
+    min-width: 5rem;
 }
 
 .wt-chart-compact .wt-chart-box-thumbnail,
 .wt-chart-compact .wt-chart-box-extra,
 .wt-chart-compact .wt-chart-box-facts {
-	display: none;
+    display: none;
 }

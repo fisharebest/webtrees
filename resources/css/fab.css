@@ -31,14 +31,14 @@
   --sex-f-bg: #ffdddd;
   --sex-m-bg: #ddddff;
   --sex-u-bg: #ddffdd;
-	--chart-line: solid gray thin;
-	--chart-line-radius: 1rem;
+    --chart-line: solid gray thin;
+    --chart-line-radius: 1rem;
 }
 
 /* Override Bootstrap formatting */
 .btn-link {
-	padding-left: 0.25rem;
-	padding-right: 0.25rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
 }
 
 .table-given-name {
@@ -51,7 +51,7 @@
 }
 
 table {
-	border-collapse: separate;
+    border-collapse: separate;
 }
 
 /*
@@ -84,14 +84,14 @@ table {
  */
 
 .wt-global {
-	color: #555;
+    color: #555;
 }
 
 .wt-header-wrapper {
 }
 
 .wt-header-container {
-	background-color: #eee;
+    background-color: #eee;
 }
 
 .wt-header-content {
@@ -101,19 +101,19 @@ table {
 }
 
 .wt-site-logo {
-	display: none;
+    display: none;
 }
 
 .wt-site-title {
-	order: 1;
-	flex: 1 1 0;
-	font-size: 1.5rem;
-	color: #888;
+    order: 1;
+    flex: 1 1 0;
+    font-size: 1.5rem;
+    color: #888;
 }
 
 .wt-header-search {
-	order: 3;
-	flex: 0 0 15rem;
+    order: 3;
+    flex: 0 0 15rem;
 }
 
 .wt-header-search-form {
@@ -126,56 +126,56 @@ table {
 }
 
 .wt-secondary-navigation {
-	order: 2;
-	flex: 0 0 0;
-	white-space: nowrap;
+    order: 2;
+    flex: 0 0 0;
+    white-space: nowrap;
 }
 
 .wt-user-menu {
-	flex-wrap: nowrap;
+    flex-wrap: nowrap;
 }
 
 .wt-user-menu .nav-link {
-	display: inline-block;
-	padding: 0.5rem;
+    display: inline-block;
+    padding: 0.5rem;
 }
 
 .wt-user-menu .nav-item::after {
-	content: "|";
+    content: "|";
 }
 
 .wt-user-menu .dropdown-toggle::after {
-	display: none;
+    display: none;
 }
 
 .wt-primary-navigation {
-	order: 4;
-	flex: 0 0 100%;
-	background-color: #eee;
+    order: 4;
+    flex: 0 0 100%;
+    background-color: #eee;
 }
 
 .wt-genealogy-menu {
-	justify-content: center;
+    justify-content: center;
 }
 
 .wt-genealogy-menu .dropdown-toggle::after {
-	display: none;
+    display: none;
 }
 
 .wt-genealogy-menu .nav-link {
-	white-space: nowrap;
-	display: inline-block;
-	padding: 0.5rem;
+    white-space: nowrap;
+    display: inline-block;
+    padding: 0.5rem;
 }
 
 .wt-genealogy-menu .nav-item + .nav-item::before {
-	content: "|";
+    content: "|";
 }
 
 .wt-main-container {
-	/* Space between the header/footer and the main content. */
-	padding-top: 1rem;
-	padding-bottom: 1rem;
+    /* Space between the header/footer and the main content. */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .wt-main {
@@ -185,7 +185,7 @@ table {
 }
 
 .wt-page-title {
-	text-align: center;
+    text-align: center;
 }
 
 .wt-page-options .form-group {
@@ -193,23 +193,23 @@ table {
 }
 
 .wt-page-options-label {
-	background-color: #ccc;
-	border-left: 2px solid transparent;
-	border-right: 2px solid transparent;
-	Color: #555;
-	font-weight: bold;
+    background-color: #ccc;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    Color: #555;
+    font-weight: bold;
 }
 
 .wt-page-options-value {
-	background-color: #ddd;
-	border: 1px solid #fff;
-	border-top: 1px solid #ddd;
+    background-color: #ddd;
+    border: 1px solid #fff;
+    border-top: 1px solid #ddd;
 
-	padding: 0.25rem 0.75rem;
+    padding: 0.25rem 0.75rem;
 }
 
 .wt-page-content {
-	margin-top: 1rem;
+    margin-top: 1rem;
 }
 
 .wt-footers {
@@ -222,9 +222,9 @@ table {
 }
 
 .wt-footer-cookies {
-	background: #aaa;
-	color: #fff;
-	transition: height 0.5s;
+    background: #aaa;
+    color: #fff;
+    transition: height 0.5s;
 }
 
 .wt-footer-page-views {
@@ -234,9 +234,9 @@ table {
 }
 
 .wt-footer-powered-by-webtrees {
-	width: 100px;
-	height: 21px;
-	content: url(images/powered-by-webtrees.png);
+    width: 100px;
+    height: 21px;
+    content: url(images/powered-by-webtrees.png);
 }
 
 /*
@@ -259,29 +259,29 @@ table {
  */
 
 .wt-block {
-	background-color: #eee;
-	padding: 3px;
-	vertical-align: top;
+    background-color: #eee;
+    padding: 3px;
+    vertical-align: top;
 }
 
 .wt-block-header {
-	background-color: #eee;
-	border-bottom: 0;
-	font-weight: bold;
+    background-color: #eee;
+    border-bottom: 0;
+    font-weight: bold;
 }
 
 .wt-block-content {
 }
 
 .wt-block-content .list_table {
-	border-spacing: 1px;
-	border: solid #000 1px;
-	border-right: 0;
+    border-spacing: 1px;
+    border: solid #000 1px;
+    border-right: 0;
 }
 
 .wt-block-content .list_value,
 .wt-block-content .list_value_wrap {
-	border: 0;
+    border: 0;
 }
 
 /*
@@ -292,15 +292,15 @@ table {
  */
 
 .wt-individual-silhouette {
-	content: url(images/individual-silhouette-unknown.png);
+    content: url(images/individual-silhouette-unknown.png);
 }
 
 .wt-individual-silhouette-f {
-	content: url(images/individual-silhouette-female.png);
+    content: url(images/individual-silhouette-female.png);
 }
 
 .wt-individual-silhouette-m {
-	content: url(images/individual-silhouette-male.png);
+    content: url(images/individual-silhouette-male.png);
 }
 
 /*
@@ -323,25 +323,25 @@ table {
  */
 .wt-chart-box,
 .wt-chart-box-menu {
-	background: var(--sex-u-bg);
-	border: dashed var(--sex-u-fg) thin;
+    background: var(--sex-u-bg);
+    border: dashed var(--sex-u-fg) thin;
 }
 
 .wt-chart-box {
-	height: 5rem;
-	padding: 2px;
-	line-height: 1.1;
-	border: none;
+    height: 5rem;
+    padding: 2px;
+    line-height: 1.1;
+    border: none;
 }
 
 .wt-chart-box-f,
 .wt-chart-box-f .wt-chart-box-dropdown {
-	background: var(--sex-f-bg);
+    background: var(--sex-f-bg);
 }
 
 .wt-chart-box-m,
 .wt-chart-box-m .wt-chart-box-dropdown {
-	background: var(--sex-m-bg);
+    background: var(--sex-m-bg);
 }
 
 /* ====== Round Corners ======== */
@@ -364,674 +364,674 @@ table {
 #indi_main_blocks,
 #tabs,
 .topbottombar {
-	margin: 4px;
-	padding: 4px;
-	border-radius: 4px;
+    margin: 4px;
+    padding: 4px;
+    border-radius: 4px;
 }
 
 a {
-	text-decoration: none;
-	color: #369;
+    text-decoration: none;
+    color: #369;
 }
 
 a:hover,
 a:active {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 :focus {
-	outline-style: none;
+    outline-style: none;
 }
 
 .flash-messages {
-	clear: both;
-	text-align: center;
+    clear: both;
+    text-align: center;
 }
 
 dl {
-	margin: 0;
+    margin: 0;
 }
 
 dt {
-	float: left;
-	font-weight: bold;
-	margin-right: 10px;
+    float: left;
+    font-weight: bold;
+    margin-right: 10px;
 }
 
 .button {
-	width: 60px;
+    width: 60px;
 }
 
 .alpha_index {
-	color: #999;
+    color: #999;
 }
 
 .news_box:target,
 #gedcom_stats:target {
-	background-color: #ffc;
+    background-color: #ffc;
 }
 
 /* families tab person box */
 table.center {
-	margin-left: auto;
-	margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .list_table {
-	margin: 0 auto;
+    margin: 0 auto;
 }
 
 .list_label,
 .list_label_wrap {
-	background-color: #ccc;
-	font-weight: bold;
-	text-align: center;
+    background-color: #ccc;
+    font-weight: bold;
+    text-align: center;
 }
 
 .list_value,
 .list_value_wrap {
-	background-color: #ddd;
-	vertical-align: top;
+    background-color: #ddd;
+    vertical-align: top;
 }
 
 .list_label,
 .list_value {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .list_label_wrap,
 .list_value_wrap {
-	white-space: normal;
+    white-space: normal;
 }
 
 div.fact_SHARED_NOTE {
-	clear: both;
+    clear: both;
 }
 
 /* Table of genealogical facts */
 .wt-facts-table caption {
-	caption-side: top;
+    caption-side: top;
 }
 
 .wt-facts-table th {
-	background-color: #ccc;
-	border-radius: 4px;
-	text-align: center;
-	font-weight: normal;
-	min-width: 20%;
+    background-color: #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: normal;
+    min-width: 20%;
 }
 
 .wt-facts-table td {
-	border-radius: 4px;
-	background-color: #ddd;
+    border-radius: 4px;
+    background-color: #ddd;
 }
 
 .wt-facts-table .wt-gender-M td {
-	background-color: #ddf;
+    background-color: #ddf;
 }
 
 .wt-facts-table .wt-gender-F td {
-	background-color: #fdd;
+    background-color: #fdd;
 }
 
 .name1, .name2 {
-	color: #337;
+    color: #337;
 }
 
 a:hover, a:hover .name1, a:hover .name2 {
-	color: #f00;
+    color: #f00;
 }
 
 .details_label {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .date {
-	color: #337;
+    color: #337;
 }
 
 .label {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .error {
-	color: #f00;
-	font-weight: bold;
+    color: #f00;
+    font-weight: bold;
 }
 
 .largeError {
-	color: #f00;
-	font-weight: bold;
+    color: #f00;
+    font-weight: bold;
 }
 
 .warning {
-	color: #f00;
-	font-weight: bold;
+    color: #f00;
+    font-weight: bold;
 }
 
 .indent {
-	padding-left: 7px;
+    padding-left: 7px;
 }
 
 .thumbnail {
-	height: auto;
-	padding: 3px;
+    height: auto;
+    padding: 3px;
 }
 
 .icon {
-	border: 0;
-	padding: 0 5px;
+    border: 0;
+    padding: 0 5px;
 }
 
 .subheaders {
-	font-weight: bold;
-	font-size: 15px;
-	margin-top: 15px;
-	vertical-align: bottom;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 15px;
+    vertical-align: bottom;
 }
 
 .parentdeath {
-	padding: 1px;
+    padding: 1px;
 }
 
 .source_citations {
-	display: none;
+    display: none;
 }
 
 .selected-option {
-	background-color: #d6e0ea;
+    background-color: #d6e0ea;
 }
 
 .border1 {
-	border: 0;
+    border: 0;
 }
 
 .journal_box {
-	padding: 3pt;
-	border: thin solid #aaa;
-	overflow: visible;
+    padding: 3pt;
+    border: thin solid #aaa;
+    overflow: visible;
 }
 
 .news_box {
-	background-color: #ccc;
-	border-top: none;
+    background-color: #ccc;
+    border-top: none;
 }
 
 .news_title {
-	font-weight: bold;
-	font-size: 14px;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .news_date {
-	margin-bottom: 12px;
+    margin-bottom: 12px;
 }
 
 .current_day {
-	font-weight: bold;
-	font-size: 16px;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .cal_day {
-	float: left;
-	font-weight: bold;
+    float: left;
+    font-weight: bold;
 }
 
 .rtl_cal_day {
-	direction: rtl;
-	float: right;
-	color: #00f;
-	font-weight: bold;
+    direction: rtl;
+    float: right;
+    color: #00f;
+    font-weight: bold;
 }
 
 #user-page h1 {
-	margin: 0.25em auto 0.6em;
+    margin: 0.25em auto 0.6em;
 }
 
 .tvertline {
-	vertical-align: bottom;
+    vertical-align: bottom;
 }
 
 #childbox {
-	padding: 5px;
-	position: absolute;
-	display: none;
-	text-align: start;
-	white-space: nowrap;
-	top: 20px;
-	left: 0;
+    padding: 5px;
+    position: absolute;
+    display: none;
+    text-align: start;
+    white-space: nowrap;
+    top: 20px;
+    left: 0;
 }
 
 .layout3 #childbox {
-	top: auto;
-	bottom: 20px;
+    top: auto;
+    bottom: 20px;
 }
 
 #childbox a.name1 {
-	display: block;
-	margin-left: 5px;
+    display: block;
+    margin-left: 5px;
 }
 
 .person0 {
-	background-color: #aaf;
-	vertical-align: top;
+    background-color: #aaf;
+    vertical-align: top;
 }
 
 .person1 {
-	background-color: #afa;
-	vertical-align: top;
+    background-color: #afa;
+    vertical-align: top;
 }
 
 .person2 {
-	background-color: #faa;
-	vertical-align: top;
+    background-color: #faa;
+    vertical-align: top;
 }
 
 .person3 {
-	background-color: #55f;
-	vertical-align: top;
+    background-color: #55f;
+    vertical-align: top;
 }
 
 .person4 {
-	background-color: #f55;
-	vertical-align: top;
+    background-color: #f55;
+    vertical-align: top;
 }
 
 .person5 {
-	background-color: #5f5;
-	vertical-align: top;
+    background-color: #5f5;
+    vertical-align: top;
 }
 
 .starredname {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 .search_hit {
-	background-color: #ff0;
+    background-color: #ff0;
 }
 
 .topbottombar,
 .descriptionbox {
-	font-weight: bold;
-	background-color: #ccc;
-	vertical-align: top;
+    font-weight: bold;
+    background-color: #ccc;
+    vertical-align: top;
 }
 
 .descriptionbox {
-	font-size: 14px;
-	background-color: #ccc;
-	vertical-align: top;
-	padding: 3px;
+    font-size: 14px;
+    background-color: #ccc;
+    vertical-align: top;
+    padding: 3px;
 }
 
 .optionbox {
-	background-color: #ddd;
-	color: #000;
-	vertical-align: top;
-	white-space: nowrap;
-	padding: 3px;
+    background-color: #ddd;
+    color: #000;
+    vertical-align: top;
+    white-space: nowrap;
+    padding: 3px;
 }
 
 .red {
-	color: #f00;
+    color: #f00;
 }
 
 .wt-relation-fact,
 .wt-historic-fact {
-	opacity: 0.8;
+    opacity: 0.8;
 }
 
 .messagebox {
-	background-color: #bce;
+    background-color: #bce;
 }
 
 /* ---Pending edits--- */
 .wt-new {
-	outline: solid #00f 1px;
+    outline: solid #00f 1px;
 }
 
 .wt-old {
-	outline: solid #f00 1px;
+    outline: solid #f00 1px;
 }
 
 .tag_cloud {
-	text-align: center;
+    text-align: center;
 }
 
 .tag_cloud a {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .nowrap {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .wrap {
-	white-space: normal;
+    white-space: normal;
 }
 
 .statistics-page {
-	text-align: center;
+    text-align: center;
 }
 
 .gchart {
-	border: 0;
+    border: 0;
 }
 
 #facts_content dd {
-	float: left;
-	width: 70%;
+    float: left;
+    width: 70%;
 }
 
 /* this keeps the tag color the same when it is a link as when not */
 
 .place {
-	padding-top: 5px;
+    padding-top: 5px;
 }
 
 .filtersH,
 .filtersF {
-	margin: 4px;
+    margin: 4px;
 }
 
 .filtersH img {
-	margin-bottom: 2px;
+    margin-bottom: 2px;
 }
 
 .list-charts {
-	text-align: center;
+    text-align: center;
 }
 
 #place-hierarchy h2,
 #place-hierarchy h4 {
-	text-align: center;
+    text-align: center;
 }
 
 .user_welcome_block table,
 .gedcom_block_block table {
-	margin: auto;
+    margin: auto;
 }
 
 .user_welcome_block td,
 .gedcom_block_block td {
-	width: 33%;
-	text-align: center;
-	vertical-align: top;
+    width: 33%;
+    text-align: center;
+    vertical-align: top;
 }
 
 /* ==== FAQ table styles ===== */
 table.faq {
-	background-color: #ddd;
-	margin: 5px 0 50px 5px;
-	width: 98%;
+    background-color: #ddd;
+    margin: 5px 0 50px 5px;
+    width: 98%;
 }
 
 table.faq tr:nth-child(odd) td {
-	background-color: #eee;
+    background-color: #eee;
 }
 
 div.faq_title {
-	background-color: #ddd;
-	margin: 1em 0;
-	padding: .25em;
-	font-weight: bold;
-	width: 98%;
+    background-color: #ddd;
+    margin: 1em 0;
+    padding: .25em;
+    font-weight: bold;
+    width: 98%;
 }
 
 div.faq_body {
-	clear: both;
-	padding: 0 1em;
+    clear: both;
+    padding: 0 1em;
 }
 
 .faq_top {
-	float: right;
+    float: right;
 }
 
 /* === Positioning edit, copy, delete links === */
 /* General use */
 .editfacts {
-	clear: left;
-	padding-top: 15px;
+    clear: left;
+    padding-top: 15px;
 }
 
 #indi_note {
-	margin: 0 0 5px;
+    margin: 0 0 5px;
 }
 
 .indi_table {
-	clear: left;
+    clear: left;
 }
 
 #sex {
-	float: right;
+    float: right;
 }
 
 #dates {
-	color: #369;
-	float: right;
+    color: #369;
+    float: right;
 }
 
 #individual-names .wt-icon-edit,
 #individual-names .wt-icon-delete {
-	float: right;
+    float: right;
 }
 
 #indi_note .fact_NOTE {
-	float: left;
-	margin: 0 5px 0 0;
+    float: left;
+    margin: 0 5px 0 0;
 }
 
 #indi_note .fact_SOUR {
-	margin: 3px 0;
+    margin: 3px 0;
 }
 
 #indi_note .fact_SOUR a {
-	font-size: 100%;
+    font-size: 100%;
 }
 
 #indi_note .fact_NOTE,
 #indi_note .fact_SOUR {
-	clear: both;
+    clear: both;
 }
 
 /* ===== markdown formatting ===== */
 
 .markdown {
-	/* Tables and pre-formatted text can break the layout. */
-	overflow-x: auto;
+    /* Tables and pre-formatted text can break the layout. */
+    overflow-x: auto;
 }
 
 .markdown p {
-	margin: 0 0 0.5em;
-	white-space: pre-wrap;
+    margin: 0 0 0.5em;
+    white-space: pre-wrap;
 }
 
 .markdown table {
-	border-collapse: collapse;
-	font-size: 10px;
-	margin-bottom: 8px;
+    border-collapse: collapse;
+    font-size: 10px;
+    margin-bottom: 8px;
 }
 
 .markdown th {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .markdown td,
 .markdown th {
-	border: solid thin #000;
-	padding: 3px;
+    border: solid thin #000;
+    padding: 3px;
 }
 
 .odometer {
-	font-family: courier, monospace;
-	font-weight: bold;
-	background: #000;
-	color: #fff;
+    font-family: courier, monospace;
+    font-weight: bold;
+    background: #000;
+    color: #fff;
 }
 
 /* ======== Indi tabs ======== */
 /* Facts & Events tab */
 .media-display-image {
-	float: left;
+    float: left;
 }
 
 .media-display-title {
-	float: left;
-	font-style: italic;
-	margin: 10px;
+    float: left;
+    font-style: italic;
+    margin: 10px;
 }
 
 .upcoming_events_block button,
 .todays_events_block button {
-	margin: 0 20px;
+    margin: 0 20px;
 }
 
 /* Sidebar - Family navigator */
 .wt-family-navigator-dropdown {
-	background: #eee;
+    background: #eee;
 }
 
 .wt-family-navigator-dropdown-heading {
-	font-weight: bold;
-	font-size: inherit;
-	color: inherit;
+    font-weight: bold;
+    font-size: inherit;
+    color: inherit;
 }
 
 /* Sidebar - Descendants */
 #sb_content_descendancy {
-	margin-top: 5px;
+    margin-top: 5px;
 }
 
 #sb_desc_content {
-	margin-left: 3px;
-	font-size: 0.8em;
+    margin-left: 3px;
+    font-size: 0.8em;
 }
 
 #sb_desc_content ul {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .sb_desc_indi_li {
-	list-style-type: none;
+    list-style-type: none;
 }
 
 /* Individuals and Families */
 #sidebar-content-individuals,
 #sidebar-content-families {
-	margin-top: 5px;
+    margin-top: 5px;
 }
 
 .sb_indi_surname_li,
 .sb_fam_surname_li {
-	list-style-image: url(icons/plus.png);
+    list-style-image: url(icons/plus.png);
 }
 
 .name_tree_div ul {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .name_tree_div li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* Clippings */
 #sb_clippings_content ul {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 #sb_clippings_content li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	white-space: nowrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
 }
 
 /* Extra info */
 #sb_content_extra_info {
-	font-size: 80%;
-	font-weight: bold;
-	margin-top: 1px;
-	overflow: hidden;
-	padding: 5px;
+    font-size: 80%;
+    font-weight: bold;
+    margin-top: 1px;
+    overflow: hidden;
+    padding: 5px;
 }
 
 #sb_content_extra_info .editfacts {
-	float: right;
-	margin-top: -10px;
+    float: right;
+    margin-top: -10px;
 }
 
 #sb_content_extra_info a {
-	display: block;
+    display: block;
 }
 
 #sb_content_extra_info span {
-	font-weight: normal;
+    font-weight: normal;
 }
 
 #sb_content_extra_info span a {
-	display: inline;
+    display: inline;
 }
 
 #sb_content_extra_info #hitcounter {
-	font-weight: bold;
-	padding-top: 5px;
+    font-weight: bold;
+    padding-top: 5px;
 }
 
 /* Stories module */
 .story_title {
-	padding-top: 12px;
-	font-size: 13px;
-	height: 32px;
-	font-weight: bold;
+    padding-top: 12px;
+    font-size: 13px;
+    height: 32px;
+    font-weight: bold;
 }
 
 .story_body {
-	padding: 20px;
-	white-space: normal;
+    padding: 20px;
+    white-space: normal;
 }
 
 .story_edit {
-	padding: 12px;
+    padding: 12px;
 }
 
 /*-- Fan chart ---- */
 .fan_chart_menu {
-	background: #fff;
-	position: absolute;
-	display: none;
-	z-index: 100;
+    background: #fff;
+    position: absolute;
+    display: none;
+    z-index: 100;
 }
 
 #fan_chart ul {
-	list-style-type: none;
-	margin: 0;
+    list-style-type: none;
+    margin: 0;
 }
 
 /* Lifespans chart */
 .wt-lifespans-subtitle {
-	text-align: center;
+    text-align: center;
 }
 
 .wt-lifespans-scale {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .wt-lifespans-decade {
-	width: 70px;
-	height: 60px;
-	display: inline-block;
-	background-image: url(images/lifespan-decade.png);
-	background-position-y: bottom;
-	background-repeat: no-repeat;
-	background-size: 70px 37px;
+    width: 70px;
+    height: 60px;
+    display: inline-block;
+    background-image: url(images/lifespan-decade.png);
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: 70px 37px;
 }
 
 .wt-lifespans-individuals {
-	background: #fafafa;
+    background: #fafafa;
 }
 
 .wt-lifespans-individual {
@@ -1039,26 +1039,26 @@ div.faq_body {
 }
 
 .wt-lifespans-summary {
-	background: #ffffff;
-	border: thin solid #000;
-	z-index: 1;
+    background: #ffffff;
+    border: thin solid #000;
+    z-index: 1;
 }
 
 .wt-lifespans-summary-link {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 /*-- timeline  --*/
 #timeline_chart {
-	position: relative;
-	top: 0;
-	left: 0;
+    position: relative;
+    top: 0;
+    left: 0;
 }
 
 /*-- Relationship ---- */
 .wt-relationship-chart .hline-text,
 .wt-relationship-chart .vline-text {
-	font-size: 12px;
+    font-size: 12px;
 }
 
 /*
@@ -1066,8 +1066,8 @@ div.faq_body {
  * We can provide a "loading" placeholder for empty elements with this class.
  */
 .wt-ajax-load:empty {
-	height: 32px;
-	background: url(images/loading-32x32.gif) no-repeat 50% 50%;
+    height: 32px;
+    background: url(images/loading-32x32.gif) no-repeat 50% 50%;
 }
 
 /*
@@ -1158,19 +1158,19 @@ a > .wt-icon-arrow-up:hover {
 }
 
 .wt-icon-sex-f {
-	color: var(--sex-f-fg);
+    color: var(--sex-f-fg);
 }
 
 .wt-icon-sex-m {
-	color: var(--sex-m-fg);
+    color: var(--sex-m-fg);
 }
 
 .wt-icon-sex-u {
-	color: var(--sex-u-fg);
+    color: var(--sex-u-fg);
 }
 
 .wt-icon-sex-x {
-	color: var(--sex-u-fg);
+    color: var(--sex-u-fg);
 }
 
 .wt-icon-source {
@@ -1190,121 +1190,121 @@ a > .wt-icon-arrow-up:hover {
 
 /* Miscellaneous images */
 .icon-cfamily {
-	content: url(fab/images/cfamily.png);
+    content: url(fab/images/cfamily.png);
 }
 
 .icon-childless {
-	content: url(images/childless.png);
+    content: url(images/childless.png);
 }
 
 .icon-children {
-	content: url(images/children.png);
+    content: url(images/children.png);
 }
 
 .icon-edit_indi {
-	content: url(fab/images/edit_indi.png);
+    content: url(fab/images/edit_indi.png);
 }
 
 .icon-fam-list {
-	content: url(fab/images/sfamily.png);
+    content: url(fab/images/sfamily.png);
 }
 
 .icon-indi-list {
-	content: url(fab/images/indis.png);
+    content: url(fab/images/indis.png);
 }
 
 .icon-loading-small {
-	content: url(images/indicator.gif);
+    content: url(images/indicator.gif);
 }
 
 .icon-minus {
-	content: url(icons/minus.png);
+    content: url(icons/minus.png);
 }
 
 .icon-mypage {
-	content: url(fab/images/mypage.png);
+    content: url(fab/images/mypage.png);
 }
 
 .icon-pin-in {
-	content: url(fab/images/pin-in.png);
+    content: url(fab/images/pin-in.png);
 }
 
 .icon-pin-out {
-	content: url(fab/images/pin-out.png);
+    content: url(fab/images/pin-out.png);
 }
 
 .icon-plus {
-	content: url(icons/plus.png);
+    content: url(icons/plus.png);
 }
 
 .icon-resn-confidential {
-	content: url(images/resn_confidential.png);
+    content: url(images/resn_confidential.png);
 }
 
 .icon-resn-locked {
-	content: url(images/resn_locked.png);
+    content: url(images/resn_locked.png);
 }
 
 .icon-resn-none {
-	content: url(images/resn_none.png);
+    content: url(images/resn_none.png);
 }
 
 .icon-resn-privacy {
-	content: url(images/resn_privacy.png);
+    content: url(images/resn_privacy.png);
 }
 
 .icon-rings {
-	content: url(images/rings.png);
+    content: url(images/rings.png);
 }
 
 .icon-selected {
-	content: url(fab/images/selected.png);
+    content: url(fab/images/selected.png);
 }
 
 /* Silhouettes on charts */
 .icon-silhouette-F {
-	content: url(fab/images/silhouette_female_small.png);
+    content: url(fab/images/silhouette_female_small.png);
 }
 
 .icon-silhouette-M {
-	content: url(fab/images/silhouette_male_small.png);
+    content: url(fab/images/silhouette_male_small.png);
 }
 
 .icon-silhouette-U {
-	content: url(fab/images/silhouette_unknown_small.png);
+    content: url(fab/images/silhouette_unknown_small.png);
 }
 
 .menu-language li {
-	text-align: left; /* The language menu is always LTR, even on RTL pages */
+    text-align: left; /* The language menu is always LTR, even on RTL pages */
 }
 
 .menu-theme li {
-	text-align: left; /* The theme menu is always LTR, even on RTL pages */
+    text-align: left; /* The theme menu is always LTR, even on RTL pages */
 }
 
 .icon-indis {
-	content: url(fab/images/indis.png);
+    content: url(fab/images/indis.png);
 }
 
 .icon-patriarch {
-	content: url(fab/images/patriarch.png);
+    content: url(fab/images/patriarch.png);
 }
 
 .icon-pedigree {
-	content: url(fab/images/pedigree.png);
+    content: url(fab/images/pedigree.png);
 }
 
 .icon-sfamily {
-	content: url(fab/images/sfamily.png);
+    content: url(fab/images/sfamily.png);
 }
 
 .icon-user_add {
-	content: url(fab/images/user_add.png);
+    content: url(fab/images/user_add.png);
 }
 
 /* Census assistant */
 .wt-census-assistant-form-control:focus {
-	min-width: 12rem;
+    min-width: 12rem;
 }
 
 /*
@@ -1314,38 +1314,38 @@ a > .wt-icon-arrow-up:hover {
 }
 
 .wt-sortable-item {
-	cursor: move;
+    cursor: move;
 }
 
 /* Some blocks show a reduced version on the right-hand side. */
 .wt-side-blocks .wt-side-block-optional {
-	display: none !important;
+    display: none !important;
 }
 
 /* my page chart enhancements */
 .wt-block-content-charts {
-	overflow: auto;
+    overflow: auto;
 }
 
 /* Some charts are wider than the page. */
 .wt-chart {
-	overflow-x: auto;
-	overflow-y: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 /* Fit thumbnail into parent on charts */
 .select2-selection.select2-selection--single {
-	min-height: 36px;
-	height: auto;
-	padding: 2px 0;
+    min-height: 36px;
+    height: auto;
+    padding: 2px 0;
 }
 
 .select2-container .select2-selection--single .select2-selection__rendered {
-	padding-left: 2px;
+    padding-left: 2px;
 }
 
 .select2-selection--single .NAME {
-	padding-left: 4px;
+    padding-left: 4px;
 }
 
 /*
@@ -1355,20 +1355,20 @@ a > .wt-icon-arrow-up:hover {
  */
 
 #place-hierarchy ul {
-	list-style-type: none;
+    list-style-type: none;
 }
 
 .d-table-cell {
-	padding-right: 5px;
+    padding-right: 5px;
 }
 
 /* Some menus (e.g. languages) can be longer than a page */
 .dropdown-menu {
-	max-height: 30rem;
-	overflow-x: hidden;
+    max-height: 30rem;
+    overflow-x: hidden;
 }
 
 /* Forms */
 .col-form-label {
-	font-weight: bold;
+    font-weight: bold;
 }

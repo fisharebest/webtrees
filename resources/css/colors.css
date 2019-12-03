@@ -32,37 +32,37 @@
 }
 
 .btn-link {
-	padding: 0 .25rem;
-	color: #333;
+    padding: 0 .25rem;
+    color: #333;
 }
 
 .card-header h4 {
-	font-size: 1.2rem;
+    font-size: 1.2rem;
 }
 
 .btn.focus, .btn:focus {
-	box-shadow: none;
+    box-shadow: none;
 }
 
 .btn-link:hover, .btn-link:focus {
-	color: #f00;
-	text-decoration: none;
+    color: #f00;
+    text-decoration: none;
 }
 
 .pagination, .page-link, .page-link:hover, .page-link:focus {
-	border-color: #e6e6e6;
-	color: #555;
+    border-color: #e6e6e6;
+    color: #555;
 }
 
 .page-item.active .page-link {
-	background-color: #e6e6e6;
-	color: #555;
-	border-color: #ccc;
+    background-color: #e6e6e6;
+    color: #555;
+    border-color: #ccc;
 }
 
 .form-control:focus{
-	border-color:#ccc;
-	box-shadow:0 0 0 .2rem rgba(128,128,128,.25);
+    border-color:#ccc;
+    box-shadow:0 0 0 .2rem rgba(128,128,128,.25);
 }
 
 .container-fluid {
@@ -71,17 +71,17 @@
 }
 
 table {
-	border-collapse: separate;
+    border-collapse: separate;
 }
 
 /* fit primary and secondary menus on mobile devices */
 @media (max-width: 500px) {
-	.wt-genealogy-menu .nav-item {
+    .wt-genealogy-menu .nav-item {
     padding: 0 0.45rem!important;
     }
     .wt-user-menu .nav-link {
-	padding: 0.25rem!important;
-	}
+    padding: 0.25rem!important;
+    }
 }
 
 /*
@@ -114,18 +114,18 @@ table {
  */
 
 .wt-global {
-	background: #fff;
-	color: #333;
+    background: #fff;
+    color: #333;
 }
 
 .wt-header-wrapper {
-	background: #acf none;
+    background: #acf none;
 }
 
 .wt-header-wrapper .dropdown-item.active {
-	background-color: inherit;
-	color: inherit;
-	font-weight: bold;
+    background-color: inherit;
+    color: inherit;
+    font-weight: bold;
 }
 
 .wt-header-container {
@@ -141,16 +141,16 @@ table {
 }
 
 .wt-site-title {
-	order: 1;
-	flex: 1 1 0;
-	font-size: 1.5rem;
-	padding: 0.75rem 0.75rem 0;
+    order: 1;
+    flex: 1 1 0;
+    font-size: 1.5rem;
+    padding: 0.75rem 0.75rem 0;
 }
 
 .wt-header-search {
-	order: 3;
-	flex: 0 0 15rem;
-	padding-bottom: 0.5rem;
+    order: 3;
+    flex: 0 0 15rem;
+    padding-bottom: 0.5rem;
 }
 
 .wt-header-search-form {
@@ -163,44 +163,44 @@ table {
 }
 
 .wt-secondary-navigation {
-	order: 2;
-	flex: 0 0 0;
-	white-space: nowrap;
+    order: 2;
+    flex: 0 0 0;
+    white-space: nowrap;
 }
 
 .wt-user-menu {
-	flex-wrap: nowrap;
+    flex-wrap: nowrap;
 }
 
 .wt-user-menu .nav-link {
-	display: inline-block;
-	padding: 0.5rem;
-	color: inherit; /* Inherit from wt-header-container */
+    display: inline-block;
+    padding: 0.5rem;
+    color: inherit; /* Inherit from wt-header-container */
 }
 
 .wt-user-menu .nav-item + .nav-item::before {
-	content: "|";
+    content: "|";
 }
 
 .wt-user-menu .dropdown-toggle:after {
-	display: none;
+    display: none;
 }
 
 .wt-user-menu .menu-color .dropdown-menu {
-	max-height: 60rem;
+    max-height: 60rem;
 }
 
 .wt-primary-navigation {
-	order: 4;
-	flex: 0 0 100%;
+    order: 4;
+    flex: 0 0 100%;
 }
 
 .wt-genealogy-menu {
-	/* Extend to full page width */
-	flex: 0 1 100vw;
-	/* Recalculate margins for content */
-	margin: 0 calc(50% - 50vw);
-	padding: 0 calc(50vw - 50%);
+    /* Extend to full page width */
+    flex: 0 1 100vw;
+    /* Recalculate margins for content */
+    margin: 0 calc(50% - 50vw);
+    padding: 0 calc(50vw - 50%);
 }
 
 .wt-genealogy-menu .dropdown-menu {
@@ -208,159 +208,159 @@ table {
 }
 
 .wt-genealogy-menu .nav-item {
-	padding: 0 0.75rem;
+    padding: 0 0.75rem;
 }
 
 .wt-genealogy-menu .nav-link {
-	/* All menu icons are 40px x 40px */
-	height: calc(40px + 1rem);
-	width: 40px;
+    /* All menu icons are 40px x 40px */
+    height: calc(40px + 1rem);
+    width: 40px;
 }
 
 .wt-genealogy-menu .nav-item::before {
-	/* The size of the menu icons */
-	width: 40px;
-	height: 40px;
+    /* The size of the menu icons */
+    width: 40px;
+    height: 40px;
 }
 
 .menu-tree .nav-link::before {
-	content: url(colors/menu/tree.png);
+    content: url(colors/menu/tree.png);
 }
 
 .menu-tree .dropdown-item:not(:first-child)::before {
-	content: url(colors/menu/tree-tree.png);
+    content: url(colors/menu/tree-tree.png);
 }
 
 .menu-chart .nav-link::before {
-	content: url(colors/menu/chart.png);
+    content: url(colors/menu/chart.png);
 }
 
 .menu-chart-ancestry::before {
-	content: url(colors/menu/chart-ancestors.png);
+    content: url(colors/menu/chart-ancestors.png);
 }
 
 .menu-chart-compact::before {
-	content: url(colors/menu/chart-compact.png);
+    content: url(colors/menu/chart-compact.png);
 }
 
 .menu-chart-descendants::before {
-	content: url(colors/menu/chart-descendants.png);
+    content: url(colors/menu/chart-descendants.png);
 }
 
 .menu-chart-familybook::before {
-	content: url(colors/menu/chart-family-book.png);
+    content: url(colors/menu/chart-family-book.png);
 }
 
 .menu-chart-fanchart::before {
-	content: url(colors/menu/chart-fanchart.png);
+    content: url(colors/menu/chart-fanchart.png);
 }
 
 .menu-chart-hourglass::before {
-	content: url(colors/menu/chart-hourglass.png);
+    content: url(colors/menu/chart-hourglass.png);
 }
 
 .menu-chart-lifespan::before {
-	content: url(colors/menu/chart-lifespan.png);
+    content: url(colors/menu/chart-lifespan.png);
 }
 
 .menu-chart-pedigree::before {
-	content: url(colors/menu/chart-pedigree.png);
+    content: url(colors/menu/chart-pedigree.png);
 }
 
 .menu-chart-pedigreemap::before {
-	content: url(colors/menu/chart-pedigree-map.png);
+    content: url(colors/menu/chart-pedigree-map.png);
 }
 
 .menu-chart-relationship::before {
-	content: url(colors/menu/chart-relationship.png);
+    content: url(colors/menu/chart-relationship.png);
 }
 
 .menu-chart-statistics::before {
-	content: url(colors/menu/chart-statistics.png);
+    content: url(colors/menu/chart-statistics.png);
 }
 
 .menu-chart-timeline::before {
-	content: url(colors/menu/chart-timeline.png);
+    content: url(colors/menu/chart-timeline.png);
 }
 
 .menu-chart-tree::before {
-	content: url(colors/menu/chart-tree.png);
+    content: url(colors/menu/chart-tree.png);
 }
 
 .menu-list .nav-link::before {
-	content: url(colors/menu/list.png);
+    content: url(colors/menu/list.png);
 }
 
 .menu-branches::before {
-	content: url(colors/menu/branches.png);
+    content: url(colors/menu/branches.png);
 }
 
 .menu-list-fam::before {
-	content: url(colors/menu/list-fam.png);
+    content: url(colors/menu/list-fam.png);
 }
 
 .menu-list-indi::before {
-	content: url(colors/menu/list-indi.png);
+    content: url(colors/menu/list-indi.png);
 }
 
 .menu-list-note::before {
-	content: url(colors/menu/list-note.png);
+    content: url(colors/menu/list-note.png);
 }
 
 .menu-list-obje::before {
-	content: url(colors/menu/list-obje.png);
+    content: url(colors/menu/list-obje.png);
 }
 
 .menu-list-plac::before {
-	content: url(colors/menu/list-plac.png);
+    content: url(colors/menu/list-plac.png);
 }
 
 .menu-list-repo::before {
-	content: url(colors/menu/list-repo.png);
+    content: url(colors/menu/list-repo.png);
 }
 
 .menu-list-sour::before {
-	content: url(colors/menu/list-sour.png);
+    content: url(colors/menu/list-sour.png);
 }
 
 .menu-calendar .nav-link::before {
-	content: url(colors/menu/calendar.png);
+    content: url(colors/menu/calendar.png);
 }
 
 .menu-calendar-day::before {
-	content: url(colors/menu/calendar-calendar.png);
+    content: url(colors/menu/calendar-calendar.png);
 }
 
 .menu-calendar-month::before {
-	content: url(colors/menu/calendar-calendar.png);
+    content: url(colors/menu/calendar-calendar.png);
 }
 
 .menu-calendar-year::before {
-	content: url(colors/menu/calendar-calendar.png);
+    content: url(colors/menu/calendar-calendar.png);
 }
 
 .menu-report .nav-link::before {
-	content: url(colors/menu/report.png);
+    content: url(colors/menu/report.png);
 }
 
 .menu-report .dropdown-item:not(:first-child)::before {
-	content: url(colors/menu/report-report.png);
+    content: url(colors/menu/report-report.png);
 }
 
 .menu-search .nav-link::before {
-	content: url(colors/menu/search.png);
+    content: url(colors/menu/search.png);
 }
 
 .menu-search .dropdown-item:not(:first-child)::before {
-	content: url(colors/menu/search-search.png);
+    content: url(colors/menu/search-search.png);
 }
 
 .menu-faq .nav-link::before {
-	content: url(colors/menu/faq.png);
+    content: url(colors/menu/faq.png);
 }
 
 .menu-clippings .nav-link::before {
-	content: url(colors/menu/clippings.png);
+    content: url(colors/menu/clippings.png);
 }
 
 .menu-clippings-add::before {
@@ -370,21 +370,21 @@ table {
 }
 
 .menu-clippings-download::before {
-	content: url(colors/menu/edit-gedcom.png);
+    content: url(colors/menu/edit-gedcom.png);
 }
 
 .menu-clippings-empty::before {
-	content: url(colors/menu/edit-delete.png);
+    content: url(colors/menu/edit-delete.png);
 }
 
 .menu-story .nav-link::before {
-	content: url(colors/menu/story.png);
+    content: url(colors/menu/story.png);
 }
 
 .wt-main-container {
-	/* Space between the header/footer and the main content. */
-	padding-top: 1rem;
-	padding-bottom: 1rem;
+    /* Space between the header/footer and the main content. */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .wt-main {
@@ -394,7 +394,7 @@ table {
 }
 
 .wt-page-title {
-	text-align: center;
+    text-align: center;
 }
 
 .wt-page-options {
@@ -405,7 +405,7 @@ table {
 }
 
 .wt-page-content {
-	margin-top: 1rem;
+    margin-top: 1rem;
 }
 
 .wt-footers {
@@ -418,9 +418,9 @@ table {
 }
 
 .wt-footer-cookies {
-	background: #aaa;
-	color: #fff;
-	transition: height 0.5s;
+    background: #aaa;
+    color: #fff;
+    transition: height 0.5s;
 }
 
 .wt-footer-page-views {
@@ -430,7 +430,7 @@ table {
 }
 
 .wt-footer-powered-by-webtrees {
-	content: url(colors/images/powered-by-webtrees.png);
+    content: url(colors/images/powered-by-webtrees.png);
 }
 
 /*
@@ -459,7 +459,7 @@ table {
 }
 
 .wt-block-header::before {
-	content: url(colors/images/block-header-disk.png);
+    content: url(colors/images/block-header-disk.png);
 }
 
 .wt-block-content {
@@ -514,137 +514,137 @@ table {
 }
 
 .wt-chart-box-name {
-	color: #555555;
+    color: #555555;
 }
 
 /* ios on click workaround */
 a {
-	color: #333;
-	text-decoration: none;
+    color: #333;
+    text-decoration: none;
 }
 
 a:hover {
-	color: #f00;
-	text-decoration: none;
+    color: #f00;
+    text-decoration: none;
 }
 
 :focus {
-	outline-style: none;
+    outline-style: none;
 }
 
 .flash-messages {
-	clear: both;
-	text-align: center;
+    clear: both;
+    text-align: center;
 }
 
 img {
-	border: 0;
+    border: 0;
 }
 
 legend img {
-	height: 20px;
-	vertical-align: middle;
-	width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    width: 20px;
 }
 
 img.block {
-	border: 0;
-	height: 25px;
-	vertical-align: middle;
+    border: 0;
+    height: 25px;
+    vertical-align: middle;
 }
 
 .topbottombar {
-	color: #fff;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 4px;
-	text-align: center;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px;
+    text-align: center;
 }
 
 .button {
-	width: 60px;
+    width: 60px;
 }
 
 .btn-primary.focus, .btn-primary:focus {
-	box-shadow:none;
-	border: 0;
+    box-shadow:none;
+    border: 0;
 }
 
 .alpha_index {
-	color: #999;
+    color: #999;
 }
 
 hr {
-	margin-top: 5px;
+    margin-top: 5px;
 }
 
 table.center {
-	margin-left: auto;
-	margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .list_table {
-	margin: 0 auto;
+    margin: 0 auto;
 }
 
 .list_label,
 .list_label_wrap {
-	color: #fff;
-	background-color: #81a9cb;
-	border: 1px solid #ddd;
-	font-weight: bold;
-	text-align: center;
+    color: #fff;
+    background-color: #81a9cb;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    text-align: center;
 }
 
 .list_value,
 .list_value_wrap {
-	background-color: #edf7f9;
-	border: solid #ddd 1px;
-	vertical-align: top;
-	padding: 4px;
+    background-color: #edf7f9;
+    border: solid #ddd 1px;
+    vertical-align: top;
+    padding: 4px;
 }
 
 .list_label,
 .list_value {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .list_label_wrap,
 .list_value_wrap {
-	white-space: normal;
+    white-space: normal;
 }
 
 div.fact_SHARED_NOTE {
-	clear: both;
+    clear: both;
 }
 
 /* Table of genealogical facts */
 .wt-facts-table {
-	border-collapse: separate;
+    border-collapse: separate;
 }
 
 .wt-facts-table caption {
-	caption-side: top;
+    caption-side: top;
 }
 
 .wt-facts-table th {
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	text-align: center;
-	min-width: 20%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    text-align: center;
+    min-width: 20%;
 }
 
 .wt-facts-table td {
-	border: solid #999 1px;
-	border-radius: 3px;
+    border: solid #999 1px;
+    border-radius: 3px;
 }
 
 .wt-facts-table .wt-gender-M td {
-	background-color: #ddf;
+    background-color: #ddf;
 }
 
 .wt-facts-table .wt-gender-F td {
-	background-color: #fdd;
+    background-color: #fdd;
 }
 
 .name1 {
@@ -654,222 +654,222 @@ div.fact_SHARED_NOTE {
 }
 
 a:hover .name1, a:hover .name2 {
-	color: #f00;
-	font-weight: bold;
-	font-size: 12px;
+    color: #f00;
+    font-weight: bold;
+    font-size: 12px;
 }
 
 .details2 {
-	font-size: 12px;
+    font-size: 12px;
 }
 
 .details_label {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .date {
-	color: #333;
+    color: #333;
 }
 
 .label {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .error {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .largeError {
-	color: #d00;
-	font-size: large;
-	font-weight: bold;
+    color: #d00;
+    font-size: large;
+    font-weight: bold;
 }
 
 .warning {
-	color: #f00;
-	font-weight: bold;
+    color: #f00;
+    font-weight: bold;
 }
 
 .indent {
-	padding-left: 7px;
+    padding-left: 7px;
 }
 
 .thumbnail {
-	height: auto;
-	padding: 3px;
+    height: auto;
+    padding: 3px;
 }
 
 .icon {
-	border: 0;
-	padding: 0 5px;
+    border: 0;
+    padding: 0 5px;
 }
 
 .subheaders {
-	font-weight: bold;
-	font-size: 15px;
-	margin-top: 15px;
-	vertical-align: bottom;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 15px;
+    vertical-align: bottom;
 }
 
 .parentdeath {
-	border: thin solid #888;
-	padding: 1px;
+    border: thin solid #888;
+    padding: 1px;
 }
 
 .source_citations {
-	display: none;
+    display: none;
 }
 
 .selected-option {
-	background-color: #edf7fd;
+    background-color: #edf7fd;
 }
 
 .border1 {
-	border: solid #000 1px;
+    border: solid #000 1px;
 }
 
 .journal_box {
-	padding: 3pt;
-	border: thin solid #aaa;
-	overflow: visible;
+    padding: 3pt;
+    border: thin solid #aaa;
+    overflow: visible;
 }
 
 .news_box {
-	border-top: solid #ccc 1px;
+    border-top: solid #ccc 1px;
 }
 
 .news_title {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .news_date {
-	margin-bottom: 12px;
+    margin-bottom: 12px;
 }
 
 .current_day {
-	font-weight: bold;
-	font-size: 16px;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .cal_day {
-	float: left;
-	font-weight: bold;
+    float: left;
+    font-weight: bold;
 }
 
 .rtl_cal_day {
-	direction: rtl;
-	float: right;
-	color: #00f;
-	font-weight: bold;
+    direction: rtl;
+    float: right;
+    color: #00f;
+    font-weight: bold;
 }
 
 #user-page h1 {
-	margin: 0.25em auto 0.6em;
+    margin: 0.25em auto 0.6em;
 }
 
 .tvertline {
-	vertical-align: bottom;
+    vertical-align: bottom;
 }
 
 #childbox {
-	padding: 5px;
-	position: absolute;
-	display: none;
-	text-align: start;
-	white-space: nowrap;
-	top: 20px;
-	left: 0;
+    padding: 5px;
+    position: absolute;
+    display: none;
+    text-align: start;
+    white-space: nowrap;
+    top: 20px;
+    left: 0;
 }
 
 .layout3 #childbox {
-	top: auto;
-	bottom: 20px;
+    top: auto;
+    bottom: 20px;
 }
 
 #childbox a.name1 {
-	display: block;
-	margin-left: 5px;
+    display: block;
+    margin-left: 5px;
 }
 
 .person0 {
-	background-color: #ddf;
-	border: outset #999 1px;
-	vertical-align: top;
+    background-color: #ddf;
+    border: outset #999 1px;
+    vertical-align: top;
 }
 
 .person1 {
-	background-color: #afa;
-	border: outset #afa 1px;
-	vertical-align: top;
+    background-color: #afa;
+    border: outset #afa 1px;
+    vertical-align: top;
 }
 
 .person2 {
-	background-color: #faa;
-	border: outset #faa 1px;
-	vertical-align: top;
+    background-color: #faa;
+    border: outset #faa 1px;
+    vertical-align: top;
 }
 
 .person3 {
-	background-color: #aad;
-	border: outset #55f 1px;
-	vertical-align: top;
+    background-color: #aad;
+    border: outset #55f 1px;
+    vertical-align: top;
 }
 
 .person4 {
-	background-color: #f55;
-	border: outset #f55 1px;
-	vertical-align: top;
+    background-color: #f55;
+    border: outset #f55 1px;
+    vertical-align: top;
 }
 
 .person5 {
-	background-color: #5f5;
-	border: outset #5f5 1px;
-	vertical-align: top;
+    background-color: #5f5;
+    border: outset #5f5 1px;
+    vertical-align: top;
 }
 
 .starredname {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 .search_hit {
-	background-color: #ff0;
+    background-color: #ff0;
 }
 
 .descriptionbox {
-	font-size: 1rem;
-	color: #333;
-	border: 1px solid #999;
-	vertical-align: top;
-	padding: 3px;
+    font-size: 1rem;
+    color: #333;
+    border: 1px solid #999;
+    vertical-align: top;
+    padding: 3px;
 }
 
 .optionbox {
-	font-size: 1rem;
-	color: #333;
-	border: 1px solid #999;
-	vertical-align: top;
-	white-space: nowrap;
-	padding: 3px;
+    font-size: 1rem;
+    color: #333;
+    border: 1px solid #999;
+    vertical-align: top;
+    white-space: nowrap;
+    padding: 3px;
 }
 
 .optionbox .list_value {
-	background-color: #fff;
-	border: 1px solid #999;
-	border-radius: 3px;
+    background-color: #fff;
+    border: 1px solid #999;
+    border-radius: 3px;
 }
 
 .red {
-	color: #f00;
+    color: #f00;
 }
 
 .wt-relation-fact,
 .wt-historic-fact {
-	opacity: 0.8;
+    opacity: 0.8;
 }
 
 .messagebox {
-	background-color: #c2ceef;
-	border: solid #ccc 1px;
+    background-color: #c2ceef;
+    border: solid #ccc 1px;
 }
 
 /* ---Pending edits--- */
@@ -880,322 +880,322 @@ a:hover .name1, a:hover .name2 {
 }
 
 .tag_cloud {
-	text-align: center;
+    text-align: center;
 }
 
 .tag_cloud a {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .nowrap {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .wrap {
-	white-space: normal;
+    white-space: normal;
 }
 
 .statistics-page {
-	text-align: center;
+    text-align: center;
 }
 
 .gchart {
-	border: solid #999 1px;
+    border: solid #999 1px;
 }
 
 #facts_content dd {
-	float: left;
-	width: 70%;
+    float: left;
+    width: 70%;
 }
 
 /* this keeps the tag color the same when it is a link as when not */
 
 .place {
-	padding-top: 5px;
+    padding-top: 5px;
 }
 
 .filtersH,
 .filtersF {
-	margin: 4px;
+    margin: 4px;
 }
 
 .filtersH img {
-	margin-bottom: 2px;
+    margin-bottom: 2px;
 }
 
 .list-charts {
-	text-align: center;
+    text-align: center;
 }
 
 #place-hierarchy h2,
 #place-hierarchy h4 {
-	text-align: center;
+    text-align: center;
 }
 
 /* ==== FAQ table styles ===== */
 table.faq {
-	background-color: #e0e0e0;
-	margin: 5px 0 50px 5px;
-	width: 98%;
+    background-color: #e0e0e0;
+    margin: 5px 0 50px 5px;
+    width: 98%;
 }
 
 table.faq tr:nth-child(odd) td {
-	background-color: #e7eef3;
+    background-color: #e7eef3;
 }
 
 div.faq_title {
-	background-color: #e0e0e0;
-	margin: 1em 0;
-	padding: .25em;
-	font-weight: bold;
-	width: 98%;
+    background-color: #e0e0e0;
+    margin: 1em 0;
+    padding: .25em;
+    font-weight: bold;
+    width: 98%;
 }
 
 div.faq_body {
-	clear: both;
-	padding: 0 1em;
+    clear: both;
+    padding: 0 1em;
 }
 
 .faq_top {
-	float: right;
+    float: right;
 }
 
 /* === Positioning edit, copy, delete links === */
 /* General use */
 .editfacts {
-	clear: left;
-	padding-top: 15px;
+    clear: left;
+    padding-top: 15px;
 }
 
 #indi_note {
-	margin: 0 0 5px;
+    margin: 0 0 5px;
 }
 
 .indi_table {
-	clear: left;
+    clear: left;
 }
 
 #sex {
-	float: right;
+    float: right;
 }
 
 #dates {
-	float: right;
+    float: right;
 }
 
 #individual-names .wt-icon-edit,
 #individual-names .wt-icon-delete {
-	float: right;
+    float: right;
 }
 
 #indi_note .fact_NOTE {
-	float: left;
-	margin: 0 5px 0 0;
+    float: left;
+    margin: 0 5px 0 0;
 }
 
 #indi_note .fact_SOUR {
-	margin: 3px 0;
+    margin: 3px 0;
 }
 
 #indi_note .fact_SOUR a {
-	font-size: 100%;
+    font-size: 100%;
 }
 
 #indi_note .fact_NOTE,
 #indi_note .fact_SOUR {
-	clear: both;
+    clear: both;
 }
 
 /* markdown formatting */
 
 .markdown {
-	/* Tables and pre-formatted text can break the layout. */
-	overflow-x: auto;
+    /* Tables and pre-formatted text can break the layout. */
+    overflow-x: auto;
 }
 
 .markdown p {
-	margin: 0 0 0.5em;
-	white-space: pre-wrap;
+    margin: 0 0 0.5em;
+    white-space: pre-wrap;
 }
 
 .markdown table {
-	border-collapse: collapse;
-	margin-bottom: 5px;
+    border-collapse: collapse;
+    margin-bottom: 5px;
 }
 
 .markdown th {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .markdown td,
 .markdown th {
-	border: solid thin #000;
-	padding: 3px;
+    border: solid thin #000;
+    padding: 3px;
 }
 
 .odometer {
-	font-family: courier, monospace;
-	font-weight: bold;
-	background: #000;
-	color: #fff;
+    font-family: courier, monospace;
+    font-weight: bold;
+    background: #000;
+    color: #fff;
 }
 
 /* ======== Indi tabs ======== */
 /* Facts & Events tab */
 .media-display-image {
-	float: left;
+    float: left;
 }
 
 .media-display-title {
-	float: left;
-	font-style: italic;
-	margin: 10px;
+    float: left;
+    font-style: italic;
+    margin: 10px;
 }
 
 /* Sidebar - Family navigator */
 .wt-family-navigator-dropdown-heading {
-	font-weight: bold;
-	font-size: inherit;
-	color: inherit;
+    font-weight: bold;
+    font-size: inherit;
+    color: inherit;
 }
 
 /* Sidebar - Descendants */
 #sb_content_descendancy {
-	margin-top: 2px;
+    margin-top: 2px;
 }
 
 #sb_desc_content {
-	margin-left: 3px;
-	font-size: 0.8em;
+    margin-left: 3px;
+    font-size: 0.8em;
 }
 
 #sb_desc_content ul {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .sb_desc_indi_li {
-	list-style-type: none;
+    list-style-type: none;
 }
 
 /* Individuals and Families */
 #sidebar-content-individuals,
 #sidebar-content-families {
-	margin-top: 2px;
+    margin-top: 2px;
 }
 
 .sb_indi_surname_li,
 .sb_fam_surname_li {
-	list-style-image: url(icons/plus.png);
+    list-style-image: url(icons/plus.png);
 }
 
 .name_tree_div ul {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .name_tree_div li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* Clippings */
 #sb_clippings_content ul {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 #sb_clippings_content li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	white-space: nowrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
 }
 
 /* Extra info */
 #sb_content_extra_info {
-	font-size: 80%;
-	font-weight: bold;
-	margin-top: 1px;
-	overflow: hidden;
-	padding: 5px;
+    font-size: 80%;
+    font-weight: bold;
+    margin-top: 1px;
+    overflow: hidden;
+    padding: 5px;
 }
 
 #sb_content_extra_info .editfacts {
-	float: right;
-	margin-top: -30px;
+    float: right;
+    margin-top: -30px;
 }
 
 #sb_content_extra_info a {
-	display: block;
+    display: block;
 }
 
 #sb_content_extra_info span {
-	font-weight: normal;
+    font-weight: normal;
 }
 
 #sb_content_extra_info span a {
-	display: inline;
+    display: inline;
 }
 
 #sb_content_extra_info #hitcounter {
-	border-top: 1px solid #b2c7d7;
-	font-weight: bold;
-	padding-top: 5px;
+    border-top: 1px solid #b2c7d7;
+    font-weight: bold;
+    padding-top: 5px;
 }
 
 /* Stories module */
 .story_title {
-	padding-top: 12px;
-	font-size: 13px;
-	height: 32px;
-	font-weight: bold;
+    padding-top: 12px;
+    font-size: 13px;
+    height: 32px;
+    font-weight: bold;
 }
 
 .story_body {
-	padding: 20px;
-	white-space: normal;
+    padding: 20px;
+    white-space: normal;
 }
 
 .story_edit {
-	padding: 12px;
+    padding: 12px;
 }
 
 /*-- Fan chart ---- */
 .fan_chart_menu {
-	background: #fff;
-	position: absolute;
-	display: none;
-	z-index: 100;
+    background: #fff;
+    position: absolute;
+    display: none;
+    z-index: 100;
 }
 
 #fan_chart ul {
-	list-style-type: none;
-	margin: 0;
+    list-style-type: none;
+    margin: 0;
 }
 
 /* Lifespans chart */
 .wt-lifespans-subtitle {
-	text-align: center;
+    text-align: center;
 }
 
 .wt-lifespans-scale {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .wt-lifespans-decade {
-	width: 70px;
-	height: 60px;
-	display: inline-block;
-	background-image: url(images/lifespan-decade.png);
-	background-position-y: bottom;
-	background-repeat: no-repeat;
-	background-size: 70px 37px;
+    width: 70px;
+    height: 60px;
+    display: inline-block;
+    background-image: url(images/lifespan-decade.png);
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: 70px 37px;
 }
 
 .wt-lifespans-individuals {
-	background: #fafafa;
+    background: #fafafa;
 }
 
 .wt-lifespans-individual {
@@ -1203,104 +1203,104 @@ div.faq_body {
 }
 
 .wt-lifespans-summary {
-	background: #ffffff;
-	border: thin solid #000;
-	z-index: 1;
+    background: #ffffff;
+    border: thin solid #000;
+    z-index: 1;
 }
 
 .wt-lifespans-summary-link {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 /*-- timeline  --*/
 #timeline_chart {
-	position: relative;
-	top: 0;
-	left: 0;
+    position: relative;
+    top: 0;
+    left: 0;
 }
 
 [class^="icon-"],
 [class*=" icon-"] {
-	display: inline-block;
-	vertical-align: middle;
-	background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    background-repeat: no-repeat;
 }
 
 .icon-cfamily {
-	content: url(colors/images/cfamily.png);
+    content: url(colors/images/cfamily.png);
 }
 
 .icon-childless {
-	content: url(images/childless.png);
+    content: url(images/childless.png);
 }
 
 .icon-children {
-	content: url(images/children.png);
+    content: url(images/children.png);
 }
 
 .icon-edit_indi {
-	content: url(colors/images/edit_indi.png);
+    content: url(colors/images/edit_indi.png);
 }
 
 .icon-fam-list {
-	content: url(colors/images/sfamily.png);
+    content: url(colors/images/sfamily.png);
 }
 
 .icon-indi-list {
-	content: url(colors/images/indis.png);
+    content: url(colors/images/indis.png);
 }
 
 .icon-loading-small {
-	content: url(images/indicator.gif);
+    content: url(images/indicator.gif);
 }
 
 .icon-minus {
-	content: url(icons/minus.png);
+    content: url(icons/minus.png);
 }
 
 .icon-mypage {
-	content: url(colors/images/mypage.png);
+    content: url(colors/images/mypage.png);
 }
 
 .icon-plus {
-	content: url(icons/plus.png);
+    content: url(icons/plus.png);
 }
 
 .icon-resn-confidential {
-	content: url(images/resn_confidential.png);
+    content: url(images/resn_confidential.png);
 }
 
 .icon-resn-locked {
-	content: url(images/resn_locked.png);
+    content: url(images/resn_locked.png);
 }
 
 .icon-resn-none {
-	content: url(images/resn_none.png);
+    content: url(images/resn_none.png);
 }
 
 .icon-resn-privacy {
-	content: url(images/resn_privacy.png);
+    content: url(images/resn_privacy.png);
 }
 
 .icon-rings {
-	content: url(images/rings.png);
+    content: url(images/rings.png);
 }
 
 .icon-selected {
-	content: url(colors/images/selected.png);
+    content: url(colors/images/selected.png);
 }
 
 /* Silhouettes on charts */
 .icon-silhouette-F {
-	content: url(colors/images/silhouette_female_small.png);
+    content: url(colors/images/silhouette_female_small.png);
 }
 
 .icon-silhouette-M {
-	content: url(colors/images/silhouette_male_small.png);
+    content: url(colors/images/silhouette_male_small.png);
 }
 
 .icon-silhouette-U {
-	content: url(colors/images/silhouette_unknown_small.png);
+    content: url(colors/images/silhouette_unknown_small.png);
 }
 
 /*
@@ -1317,35 +1317,35 @@ div.faq_body {
 }
 
 .wt-icon-arrow-down {
-	content: url(colors/icons/arrow-down.png);
+    content: url(colors/icons/arrow-down.png);
 }
 
 a > .wt-icon-arrow-down:hover {
-	content: url(colors/icons/arrow-down-hover.png);
+    content: url(colors/icons/arrow-down-hover.png);
 }
 
 .wt-icon-arrow-left {
-	content: url(colors/icons/arrow-left.png);
+    content: url(colors/icons/arrow-left.png);
 }
 
 a > .wt-icon-arrow-left:hover {
-	content: url(colors/icons/arrow-left-hover.png);
+    content: url(colors/icons/arrow-left-hover.png);
 }
 
 .wt-icon-arrow-right {
-	content: url(colors/icons/arrow-right.png);
+    content: url(colors/icons/arrow-right.png);
 }
 
 a > .wt-icon-arrow-right:hover {
-	content: url(colors/icons/arrow-right-hover.png);
+    content: url(colors/icons/arrow-right-hover.png);
 }
 
 .wt-icon-arrow-up {
-	content: url(colors/icons/arrow-up.png);
+    content: url(colors/icons/arrow-up.png);
 }
 
 a > .wt-icon-arrow-up:hover {
-	content: url(colors/icons/arrow-up-hover.png);
+    content: url(colors/icons/arrow-up-hover.png);
 }
 
 .wt-icon-bing-maps {
@@ -1379,7 +1379,7 @@ a > .wt-icon-arrow-up:hover {
 }
 
 .wt-icon-help {
-	content: url(colors/icons/help.png);
+    content: url(colors/icons/help.png);
 }
 
 .wt-icon-individual {
@@ -1428,32 +1428,32 @@ a > .wt-icon-arrow-up:hover {
 }
 
 .wt-icon-zoom-in {
-	content: url(colors/icons/zoom-in.png);
+    content: url(colors/icons/zoom-in.png);
 }
 
 .wt-icon-zoom-out {
-	content: url(colors/icons/zoom-out.png);
+    content: url(colors/icons/zoom-out.png);
 }
 
 /* Miscellaneous images */
 .icon-indis {
-	content: url(colors/images/mypage.png);
+    content: url(colors/images/mypage.png);
 }
 
 .icon-patriarch {
-	content: url(colors/images/patriarch.png);
+    content: url(colors/images/patriarch.png);
 }
 
 .icon-pedigree {
-	content: url(colors/images/pedigree.png);
+    content: url(colors/images/pedigree.png);
 }
 
 .icon-sfamily {
-	content: url(colors/images/sfamily.png);
+    content: url(colors/images/sfamily.png);
 }
 
 .icon-user_add {
-	content: url(colors/images/user_add.png);
+    content: url(colors/images/user_add.png);
 }
 
 /* Census assistant */
@@ -1471,33 +1471,33 @@ a > .wt-icon-arrow-up:hover {
 
 /* Some blocks show a reduced version on the right-hand side. */
 .wt-side-blocks .wt-side-block-optional {
-	display: none !important;
+    display: none !important;
 }
 
 /* my page chart enhancements */
 .wt-block-content-charts {
-	overflow: auto;
+    overflow: auto;
 }
 
 /* Some charts are wider than the page. */
 .wt-chart {
-	overflow-x: auto;
-	overflow-y: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 /* Fit thumbnail into parent on charts */
 .select2-selection.select2-selection--single {
-	min-height: 36px;
-	height: auto;
-	padding: 2px 0;
+    min-height: 36px;
+    height: auto;
+    padding: 2px 0;
 }
 
 .select2-container .select2-selection--single .select2-selection__rendered {
-	padding-left: 2px;
+    padding-left: 2px;
 }
 
 .select2-selection--single .NAME {
-	padding-left: 4px;
+    padding-left: 4px;
 }
 
 /*
@@ -1507,20 +1507,20 @@ a > .wt-icon-arrow-up:hover {
  */
 
 #place-hierarchy ul {
-	list-style-type: none;
+    list-style-type: none;
 }
 
 .d-table-cell {
-	padding-right: 5px;
+    padding-right: 5px;
 }
 
 /* Some menus (e.g. languages) can be longer than a page */
 .dropdown-menu {
-	max-height: 30rem;
-	overflow-x: hidden;
+    max-height: 30rem;
+    overflow-x: hidden;
 }
 
 /* Forms */
 .col-form-label {
-	font-weight: bold;
+    font-weight: bold;
 }

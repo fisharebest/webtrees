@@ -19,13 +19,13 @@
  * wt-chart, wt-chart-relationships
  */
 .wt-chart-relationships .wt-chart-box {
-	width: 15rem;
+    width: 15rem;
 }
 
 .wt-chart-relationships .wt-chart-box-lifespan {
-	display: none;
+    display: none;
 }
 
 .vline-text, .hline-text {
-	font-size: 0.7rem;
+    font-size: 0.7rem;
 }

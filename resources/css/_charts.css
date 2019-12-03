@@ -28,97 +28,97 @@
 
 /* Lines for "vertical" charts, such as the ancestors and descendants chart. */
 .wt-chart-vertical-indent {
-	width: 3rem;
+    width: 3rem;
 }
 
 .wt-chart-vertical-line {
-	width: 50%;
-	height: 100%;
-	right: 0;
-	border-left: var(--chart-line);
+    width: 50%;
+    height: 100%;
+    right: 0;
+    border-left: var(--chart-line);
 }
 
 .wt-chart-vertical-last-child-line {
-	width: 50%;
-	right: 0;
-	height: 2.5rem;
-	top: 0;
-	border-left: var(--chart-line);
-	border-bottom: var(--chart-line);
-	border-radius: 0 0 0 var(--chart-line-radius);
+    width: 50%;
+    right: 0;
+    height: 2.5rem;
+    top: 0;
+    border-left: var(--chart-line);
+    border-bottom: var(--chart-line);
+    border-radius: 0 0 0 var(--chart-line-radius);
 }
 
 .wt-chart-vertical-child-line {
-	width: 50%;
-	right: 0;
-	height: 2.5rem;
-	top: 0;
-	border-bottom: var(--chart-line);
+    width: 50%;
+    right: 0;
+    height: 2.5rem;
+    top: 0;
+    border-bottom: var(--chart-line);
 }
 
 /* Lines for horizontal trees, such as the family page */
 .wt-chart-horizontal-spacer {
-	width: 1rem;
+    width: 1rem;
 }
 
 .wt-chart-horizontal-line {
-	width: 1rem;
-	height: 50%;
-	border-bottom: var(--chart-line);
+    width: 1rem;
+    height: 50%;
+    border-bottom: var(--chart-line);
 }
 
 .wt-chart-horizontal-first-child {
-	height: 50%;
-	position: relative;
-	top: 50%;
-	border-top: var(--chart-line);
-	border-right: var(--chart-line);
-	border-radius: 0 var(--chart-line-radius) 0 0;
+    height: 50%;
+    position: relative;
+    top: 50%;
+    border-top: var(--chart-line);
+    border-right: var(--chart-line);
+    border-radius: 0 var(--chart-line-radius) 0 0;
 }
 
 .wt-chart-horizontal-middle-child {
-	height: 100%;
-	border-right: var(--chart-line);
+    height: 100%;
+    border-right: var(--chart-line);
 }
 
 .wt-chart-horizontal-last-child {
-	height: 50%;
-	border-bottom: var(--chart-line);
-	border-right: var(--chart-line);
-	border-radius: 0 0 var(--chart-line-radius) 0;
+    height: 50%;
+    border-bottom: var(--chart-line);
+    border-right: var(--chart-line);
+    border-radius: 0 0 var(--chart-line-radius) 0;
 }
 
 .wt-chart-horizontal-first-parent {
-	height: 50%;
-	position: relative;
-	top: 50%;
-	border-top: var(--chart-line);
-	border-left: var(--chart-line);
-	border-radius: var(--chart-line-radius) 0 0 0;
+    height: 50%;
+    position: relative;
+    top: 50%;
+    border-top: var(--chart-line);
+    border-left: var(--chart-line);
+    border-radius: var(--chart-line-radius) 0 0 0;
 }
 
 .wt-chart-horizontal-last-parent {
-	height: 50%;
-	border-bottom: var(--chart-line);
-	border-left: var(--chart-line);
-	border-radius: 0 0 0 var(--chart-line-radius);
+    height: 50%;
+    border-bottom: var(--chart-line);
+    border-left: var(--chart-line);
+    border-radius: 0 0 0 var(--chart-line-radius);
 }
 
 /* Buttons to expand/collapse other parts of the chart */
 .wt-chart-expansion-control > .chart-expand {
-	display: none;
+    display: none;
 }
 
 .wt-chart-expansion-control > .chart-collapse {
-	display: inline;
+    display: inline;
 }
 
 .wt-chart-expansion-control.collapsed > .chart-expand {
-	display: inline;
+    display: inline;
 }
 
 .wt-chart-expansion-control.collapsed > .chart-collapse {
-	display: none;
+    display: none;
 }
 
 

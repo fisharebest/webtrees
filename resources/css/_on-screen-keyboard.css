@@ -17,40 +17,40 @@
  * On-screen keyboard, for entering characters that are not on the keyboard
  */
 .wt-osk {
-	position: fixed;
-	z-index: 1000;
-	top: 1rem;
-	display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 1rem;
+    display: none;
 }
 
 .wt-osk-keys {
-	background: #eee;
-	padding: 0.25rem;
-	font-size: larger;
+    background: #eee;
+    padding: 0.25rem;
+    font-size: larger;
 }
 
 .wt-osk-group {
-	display: inline-block;
-	margin: 0.25rem;
-	padding: 0.25rem 0;
+    display: inline-block;
+    margin: 0.25rem;
+    padding: 0.25rem 0;
 }
 
 .wt-osk-key {
-	background: #ddd;
-	border-radius: .25rem;
-	padding: 0.25rem;
-	cursor: pointer;
+    background: #ddd;
+    border-radius: .25rem;
+    padding: 0.25rem;
+    cursor: pointer;
 }
 
 .wt-osk-key-shift {
-	color: #aaa;
-	font-size: smaller;
+    color: #aaa;
+    font-size: smaller;
 }
 
 .wt-osk-keys.shifted .wt-osk-key {
-	color: #aaa;
+    color: #aaa;
 }
 
 .wt-osk-keys.shifted .wt-osk-key-shift {
-	color: #555;
+    color: #555;
 }

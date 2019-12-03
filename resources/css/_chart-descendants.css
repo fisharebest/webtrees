@@ -17,15 +17,15 @@
  * Descendants chart
  */
 .wt-chart-descendants .wt-chart-box {
-	width: 20rem;
+    width: 20rem;
 }
 
 .wt-chart-descendants .wt-chart-box-lifespan {
-	display: none;
+    display: none;
 }
 
 .wt-daboville-number {
-	border: thin dotted grey;
+    border: thin dotted grey;
 }
 
 

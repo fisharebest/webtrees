@@ -17,13 +17,13 @@
  * Ancestors chart
  */
 .wt-chart-ancestors .wt-chart-box {
-	width: 20rem;
+    width: 20rem;
 }
 
 .wt-chart-ancestors .wt-chart-box-lifespan {
-	display: none;
+    display: none;
 }
 
 .wt-sosa-number {
-	border: thin dotted grey;
+    border: thin dotted grey;
 }
