@@ -30,6 +30,10 @@ use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
 use League\Flysystem\Adapter\NullAdapter;
 use League\Flysystem\Filesystem;
+use PHPUnit\Framework\Error\Notice;
+
+use function ob_get_clean;
+use function ob_start;
 
 /**
  * Test harness for the class AhnentafelReportModule
@@ -108,8 +112,16 @@ class AhnentafelReportModuleTest extends TestCase
         $this->assertStringEndsWith('>', $html);
 
         ob_start();
-        new ReportParserGenerate($xml, new PdfRenderer(), $vars, $tree, $data_filesystem);
-        $pdf = ob_get_clean();
+        try {
+            if (PHP_VERSION_ID >= 70400) {
+                $this->expectException(Notice::class);
+                $this->expectExceptionMessage('Trying to access array offset on value of type int');
+            }
+
+            new ReportParserGenerate($xml, new PdfRenderer(), $vars, $tree, $data_filesystem);
+        } finally {
+            $pdf = ob_get_clean();
+        }
         $this->assertStringStartsWith('%PDF', $pdf);
         $this->assertStringEndsWith("%%EOF\n", $pdf);
     }

@@ -10,8 +10,9 @@ php:
   - 7.1
   - 7.2
   - 7.3
-  - 7.4snapshot
-  - nightly
+  - 7.4
+# doctrine/dbal isn't working with PHP 8.0 builds yet.
+#  - nightly
 
 ## Non-sudo environments are faster
 sudo: false
@@ -22,14 +23,14 @@ cache:
     - vendor
     - $HOME/.composer/cache
 
-# 7.4snapshot does not currently have ext-gd - but we don't need it for our tests
+# 7.4 does not currently have ext-gd and ext-zip - but we don't need them for our tests
 install:
   - curl -s http://getcomposer.org/installer | php
-  - if [ $TRAVIS_PHP_VERSION = nightly     ]; then php composer.phar install --ignore-platform-reqs; fi
-  - if [ $TRAVIS_PHP_VERSION = 7.4snapshot ]; then php composer.phar install --ignore-platform-reqs; fi
-  - if [ $TRAVIS_PHP_VERSION = 7.3         ]; then php composer.phar install; fi
-  - if [ $TRAVIS_PHP_VERSION = 7.2         ]; then php composer.phar install; fi
-  - if [ $TRAVIS_PHP_VERSION = 7.1         ]; then php composer.phar install; fi
+  - if [ $TRAVIS_PHP_VERSION = nightly ]; then php composer.phar install --ignore-platform-reqs; fi
+  - if [ $TRAVIS_PHP_VERSION = 7.4     ]; then php composer.phar install --ignore-platform-reqs; fi
+  - if [ $TRAVIS_PHP_VERSION = 7.3     ]; then php composer.phar install; fi
+  - if [ $TRAVIS_PHP_VERSION = 7.2     ]; then php composer.phar install; fi
+  - if [ $TRAVIS_PHP_VERSION = 7.1     ]; then php composer.phar install; fi
 
 before_script:
   - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
@@ -37,11 +38,11 @@ before_script:
 
 # Coverage testing is slow, so only do it once.
 script:
-  - if [ $TRAVIS_PHP_VERSION = nightly     ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
-  - if [ $TRAVIS_PHP_VERSION = 7.4snapshot ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
-  - if [ $TRAVIS_PHP_VERSION = 7.3         ]; then vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml; fi
-  - if [ $TRAVIS_PHP_VERSION = 7.2         ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
-  - if [ $TRAVIS_PHP_VERSION = 7.1         ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
+  - if [ $TRAVIS_PHP_VERSION = nightly ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
+  - if [ $TRAVIS_PHP_VERSION = 7.4     ]; then vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml; fi
+  - if [ $TRAVIS_PHP_VERSION = 7.3     ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
+  - if [ $TRAVIS_PHP_VERSION = 7.2     ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
+  - if [ $TRAVIS_PHP_VERSION = 7.1     ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
 
 after_script:
-  - if [ $TRAVIS_PHP_VERSION = 7.3 ]; then travis_retry php vendor/bin/php-coveralls -v; fi
+  - if [ $TRAVIS_PHP_VERSION = 7.4 ]; then travis_retry php vendor/bin/php-coveralls -v; fi
