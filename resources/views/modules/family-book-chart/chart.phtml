@@ -24,8 +24,8 @@ $children = $individual->spouseFamilies()->map(static function (Family $family):
     <?= view('modules/family-book-chart/children', ['children' => $children, 'generations' => $book_size - 1]) ?>
     <div class="align-self-center">
         <?= view('chart-box', ['individual' => $individual]) ?>
-        <?php if ($spouses): ?>
-            <?php foreach ($individual->spouseFamilies() as $family): ?>
+        <?php if ($spouses) : ?>
+            <?php foreach ($individual->spouseFamilies() as $family) : ?>
                 <?= view('chart-box', ['individual' => $family->spouse($individual)]) ?>
             <?php endforeach ?>
         <?php endif ?>
@@ -36,8 +36,8 @@ $children = $individual->spouseFamilies()->map(static function (Family $family):
     <?= view('modules/family-book-chart/parents', ['generations' => $book_size - 1, 'family' => $individual->childFamilies()->first()]) ?>
 </div>
 
-<?php if ($generations > 1): ?>
-    <?php foreach ($children as $child): ?>
+<?php if ($generations > 1) : ?>
+    <?php foreach ($children as $child) : ?>
         <hr class="wt-family-separator">
         <?= view('modules/family-book-chart/chart', ['individual' => $child, 'generations' => $generations - 1, 'book_size' => $book_size, 'spouses' => $spouses]) ?>
     <?php endforeach ?>

@@ -28,11 +28,11 @@ use Fisharebest\Webtrees\Tree;
     <?= ($disabled ?? false) ? 'disabled' : '' ?>
     <?= ($required ?? false) ? 'required' : '' ?>
 >
-    <?php if (($note ?? null) instanceof Note): ?>
+    <?php if (($note ?? null) instanceof Note) : ?>
         <option value="<?= e($note->xref()) ?>">
             <?= view('selects/note', ['note' => $note]) ?>
         </option>
-    <?php else: ?>
+    <?php else : ?>
         <option></option>
     <?php endif ?>
 </select>

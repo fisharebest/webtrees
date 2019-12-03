@@ -1,6 +1,6 @@
 # robots.txt for <?= $base_url ?>
 
-<?php if ($base_path !== ''): ?>
+<?php if ($base_path !== '') : ?>
 # CAUTION!  This robots.txt needs to be copied to the root folder.
 <?php endif ?>
 
@@ -11,7 +11,6 @@ Disallow: <?= $base_path ?>/editor
 Disallow: <?= $base_path ?>/account
 Crawl-delay: 10
 
-<?php if ($sitemap_url !== ''): ?>
-
+<?php if ($sitemap_url !== '') : ?>
 Sitemap: <?= $sitemap_url ?>
 <?php endif ?>

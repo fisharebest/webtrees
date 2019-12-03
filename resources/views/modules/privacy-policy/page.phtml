@@ -1,4 +1,8 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <h2><?= $title ?></h2>
 
@@ -24,14 +28,14 @@
     </li>
 </ul>
 
-<?php if ($analytics->isNotEmpty()): ?>
+<?php if ($analytics->isNotEmpty()) : ?>
     <h3><?= I18N::translate('Tracking and analytics') ?></h3>
 
     <ul>
         <li>
             <?= I18N::translate('This website uses third-party services to learn about visitor behavior.') ?>
             <ul>
-                <?php foreach ($analytics as $module): ?>
+                <?php foreach ($analytics as $module) : ?>
                     <li>
                         <?= $module->title() ?> —
                         <a href="<?= e($module->externalUrl()) ?>"><?= e($module->externalUrl()) ?></a>
@@ -57,7 +61,7 @@
         <?= I18N::translate('This website is operated by the following individuals.') ?>
 
         <ul>
-            <?php foreach ($administrators as $administrator): ?>
+            <?php foreach ($administrators as $administrator) : ?>
                 <li>
                     <?= e($administrator->realName()) ?> —
                     <a href="mailto:<?= e($administrator->email()) ?>"><?= e($administrator->email()) ?></a>

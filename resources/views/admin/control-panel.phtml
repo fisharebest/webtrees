@@ -321,7 +321,7 @@ use Illuminate\Support\Collection;
                                 <?= e($user->realName()) ?>
                             </a>
                         <?php endforeach ?>
-                        <?php if ($list->isEmpty()): ?>
+                        <?php if ($list->isEmpty()) : ?>
                         —
                         <?php endif ?>
                     </dd>
@@ -535,8 +535,8 @@ use Illuminate\Support\Collection;
                         <li>
                             <span class="fa-li"><?= view('icons/module') ?></span>
 
-                            <?php if ($module->isEnabled()): ?>
-                                <?php if ($module instanceof ModuleConfigInterface): ?>
+                            <?php if ($module->isEnabled()) : ?>
+                                <?php if ($module instanceof ModuleConfigInterface) : ?>
                                     <a href="<?= e($module->getConfigLink()) ?>">
                                     <?= $module->title() ?>
                                     <?= view('icons/preferences') ?>
@@ -548,14 +548,14 @@ use Illuminate\Support\Collection;
                                 <span class="text-muted">
                                     <span class="fa-li"><?= view('icons/module') ?></span>
                                      <?= $module->title() ?>
-                                    <?php if ($module instanceof ModuleConfigInterface): ?>
+                                    <?php if ($module instanceof ModuleConfigInterface) : ?>
                                         <?= view('icons/preferences') ?>
                                     <?php endif ?>
                                     </span>
                                 </span>
                             <?php endif ?>
 
-                            <?php if ($module instanceof ModuleCustomInterface): ?>
+                            <?php if ($module instanceof ModuleCustomInterface) : ?>
                                 <?= view('admin/custom-module-info', ['module' => $module]) ?>
                             <?php endif ?>
                         </li>

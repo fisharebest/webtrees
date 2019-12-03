@@ -10,23 +10,25 @@ use Illuminate\Support\Collection;
 
 ?>
 <div class="align-self-center">
-    <?php foreach ($children as $n => $child): ?>
-        <?php $grandchildren = $child->spouseFamilies()->map(static function (Family $family): Collection { return $family->children(); })->flatten() ?>
+    <?php foreach ($children as $n => $child) : ?>
+        <?php $grandchildren = $child->spouseFamilies()->map(static function (Family $family): Collection {
+    return $family->children();
+        })->flatten() ?>
         <div class="d-flex justify-content-end">
-            <?php if ($generations > 1 && $grandchildren->isNotEmpty()): ?>
+            <?php if ($generations > 1 && $grandchildren->isNotEmpty()) : ?>
                 <?= view('modules/family-book-chart/children', ['children' => $grandchildren, 'generations' => $generations - 1]) ?>
             <?php endif ?>
             <div class="align-self-center">
                 <?= view('chart-box', ['individual' => $child]) ?>
             </div>
             <div class="wt-chart-horizontal-spacer">
-                <?php if ($children->count() === 1): ?>
+                <?php if ($children->count() === 1) : ?>
                     <div class="wt-chart-horizontal-line"></div>
-                <?php elseif ($n === 0): ?>
+                <?php elseif ($n === 0) : ?>
                     <div class="wt-chart-horizontal-first-child"></div>
-                <?php elseif ($n + 1 === $children->count()): ?>
+                <?php elseif ($n + 1 === $children->count()) : ?>
                     <div class="wt-chart-horizontal-last-child"></div>
-                <?php else: ?>
+                <?php else : ?>
                     <div class="wt-chart-horizontal-middle-child">
                         <div class="wt-chart-horizontal-line"></div>
                     </div>
@@ -35,7 +37,7 @@ use Illuminate\Support\Collection;
         </div>
     <?php endforeach ?>
 </div>
-<?php if ($children->count() > 0): ?>
+<?php if ($children->count() > 0) : ?>
     <div class="wt-chart-horizontal-spacer">
         <div class="wt-chart-horizontal-line"></div>
     </div>

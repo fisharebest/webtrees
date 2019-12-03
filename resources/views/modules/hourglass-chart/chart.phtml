@@ -21,13 +21,13 @@ $children = $individual->spouseFamilies()->map(static function (Family $family):
     <?= view('modules/hourglass-chart/children', ['children' => $children, 'generations' => $generations - 1, 'spouses' => $spouses]) ?>
     <div class="align-self-center">
         <?= view('chart-box', ['individual' => $individual]) ?>
-        <?php if ($spouses): ?>
-            <?php foreach ($individual->spouseFamilies() as $family): ?>
+        <?php if ($spouses) : ?>
+            <?php foreach ($individual->spouseFamilies() as $family) : ?>
                 <?= view('chart-box', ['individual' => $family->spouse($individual)]) ?>
             <?php endforeach ?>
         <?php endif ?>
     </div>
-    <?php if ($individual->childFamilies()->first() !== null): ?>
+    <?php if ($individual->childFamilies()->first() !== null) : ?>
         <div class="wt-chart-horizontal-spacer">
             <div class="wt-chart-horizontal-line"></div>
         </div>

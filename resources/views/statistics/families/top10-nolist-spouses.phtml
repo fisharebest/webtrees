@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Family;
@@ -7,7 +8,7 @@ use Fisharebest\Webtrees\Family;
 /* @var Family $family */
 ?>
 
-<?php foreach ($records as $record): ?>
+<?php foreach ($records as $record) : ?>
     <?php $family = $record['family']; ?>
     <a href="<?= e($family->url()) ?>"><?= $family->fullName() ?></a> (<?= $record['age'] ?>)
 <?php endforeach; ?>

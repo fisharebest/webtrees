@@ -11,13 +11,13 @@ use Fisharebest\Webtrees\I18N;
             </div>
 
             <div class="align-self-center">
-                <?php if ($family->husband()): ?>
+                <?php if ($family->husband()) : ?>
                     <?= view('chart-box', ['individual' => $family->husband()]) ?>
-                <?php else: ?>
+                <?php else : ?>
                 <div class="wt-chart-box">
-                    <?php if ($family->canEdit()): ?>
+                    <?php if ($family->canEdit()) : ?>
                         <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'HUSB'])) ?>">
-                            <?= I18N::translate('Add a husband' )?>
+                            <?= I18N::translate('Add a husband')?>
                         </a>
                     <?php endif ?>
                 </div>
@@ -33,13 +33,13 @@ use Fisharebest\Webtrees\I18N;
             </div>
 
             <div class="align-self-center">
-                <?php if ($family->wife()): ?>
+                <?php if ($family->wife()) : ?>
                     <?= view('chart-box', ['individual' => $family->wife()]) ?>
-                <?php else: ?>
+                <?php else : ?>
                     <div class="wt-chart-box">
-                        <?php if ($family->canEdit()): ?>
+                        <?php if ($family->canEdit()) : ?>
                             <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'WIFE'])) ?>">
-                                <?= I18N::translate('Add a wife' )?>
+                                <?= I18N::translate('Add a wife')?>
                             </a>
                         <?php endif ?>
                     </div>

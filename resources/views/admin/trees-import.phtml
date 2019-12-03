@@ -5,7 +5,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
 
 ?>
-<?php ?>
 
 <?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route('manage-trees', ['tree' => $tree->name()]) => I18N::translate('Manage family trees'), $title]]) ?>
 

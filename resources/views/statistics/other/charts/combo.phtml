@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
@@ -7,9 +8,9 @@ $id   = 'google-chart-' . bin2hex(random_bytes(8));
 $name = 'callback_' . bin2hex(random_bytes(12));
 ?>
 
-<?php if (count($data) === 1): ?>
+<?php if (count($data) === 1) : ?>
     <?= I18N::translate('This information is not available.') ?>
-<?php else: ?>
+<?php else : ?>
     <div id="<?= $id ?>" title="<?= $chart_title ?? '' ?>"></div>
     <script>
 

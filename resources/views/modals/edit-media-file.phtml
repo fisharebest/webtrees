@@ -1,4 +1,8 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <form method="post" action="<?= e(route('edit-media-file', ['xref' => $media->xref(), 'tree' => $media->tree()->name(), 'fact_id' => $media_file->factId()])) ?>" enctype="multipart/form-data">
     <?= csrf_field() ?>

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
@@ -20,7 +21,9 @@ use Fisharebest\Webtrees\Statistics;
                 <?php $result = $stats->firstEvent() ?>
                 <h5 class="card-header">
                     <?= I18N::translate('First event') ?>
-                    <?php if ($type): ?><?= ' - ', $type ?><?php endif; ?>
+                    <?php if ($type) :
+                        ?><?= ' - ', $type ?><?php
+                    endif; ?>
                 </h5>
                 <div class="card-body">
                     <?= $result ?>
@@ -34,7 +37,9 @@ use Fisharebest\Webtrees\Statistics;
                 <?php $result = $stats->lastEvent() ?>
                 <h5 class="card-header">
                     <?= I18N::translate('Last event') ?>
-                    <?php if ($type): ?><?= ' - ', $type ?><?php endif; ?>
+                    <?php if ($type) :
+                        ?><?= ' - ', $type ?><?php
+                    endif; ?>
                 </h5>
                 <div class="card-body">
                     <?= $result ?>

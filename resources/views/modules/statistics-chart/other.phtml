@@ -1,9 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 /** @var Statistics $stats */
 
-use Fisharebest\Webtrees\Statistics; ?>
+use Fisharebest\Webtrees\Statistics;
+
+?>
 
 <div class="container pt-3">
     <?= view('statistics/other/total-records', ['stats' => $stats]) ?>

@@ -28,11 +28,11 @@ use Fisharebest\Webtrees\Tree;
     <?= ($disabled ?? false) ? 'disabled' : '' ?>
     <?= ($required ?? false) ? 'required' : '' ?>
 >
-    <?php if (($repository ?? null) instanceof Repository): ?>
+    <?php if (($repository ?? null) instanceof Repository) : ?>
         <option value="<?= e($repository->xref()) ?>">
             <?= view('selects/repository', ['repository' => $repository]) ?>
         </option>
-    <?php else: ?>
+    <?php else : ?>
         <option></option>
     <?php endif ?>
 </select>

@@ -18,7 +18,7 @@ use Fisharebest\Webtrees\I18N;
     <div class="dropdown-menu" aria-labelledby="pedigree-previous-link">
         <?php if (count($siblings) > 1) : ?>
             <strong class="dropdown-item-text"><?= I18N::translate('Siblings') ?></strong>
-        <?php elseif (count($siblings) > 0 ) : ?>
+        <?php elseif (count($siblings) > 0) : ?>
             <strong class="dropdown-item-text"><?= I18N::translate('Sibling') ?></strong>
         <?php endif ?>
         <?php foreach ($siblings as $sibling) : ?>
@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\I18N;
 
         <?php if (count($spouses) > 1) : ?>
             <strong class="dropdown-item-text"><?= I18N::translate('Spouses') ?></strong>
-        <?php elseif (count($spouses) > 0 ) : ?>
+        <?php elseif (count($spouses) > 0) : ?>
             <strong class="dropdown-item-text"><?= I18N::translate('Spouse') ?></strong>
         <?php endif ?>
         <?php foreach ($spouses as $spouse) : ?>
@@ -36,7 +36,7 @@ use Fisharebest\Webtrees\I18N;
 
         <?php if (count($children) > 1) : ?>
             <strong class="dropdown-item-text"><?= I18N::translate('Children') ?></strong>
-        <?php elseif (count($children) > 0 ) : ?>
+        <?php elseif (count($children) > 0) : ?>
             <strong class="dropdown-item-text"><?= I18N::translate('Child') ?></strong>
         <?php endif ?>
         <?php foreach ($children as $child) : ?>

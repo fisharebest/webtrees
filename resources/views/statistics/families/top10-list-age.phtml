@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Family;
@@ -11,9 +12,9 @@ use Fisharebest\Webtrees\Individual;
 /* @var Individual $child2 */
 ?>
 
-<?php if ($records): ?>
+<?php if ($records) : ?>
     <ul class="list-group list-group-flush">
-        <?php foreach ($records as $record): ?>
+        <?php foreach ($records as $record) : ?>
             <?php $child1 = $record['child1']; ?>
             <?php $child2 = $record['child2']; ?>
             <?php $family = $record['family']; ?>
@@ -27,7 +28,7 @@ use Fisharebest\Webtrees\Individual;
             </li>
         <?php endforeach; ?>
     </ul>
-<?php else: ?>
+<?php else : ?>
     <div class="card-body">
         <?= I18N::translate('This information is not available.') ?>
     </div>

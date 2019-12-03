@@ -10,7 +10,7 @@ use Fisharebest\Webtrees\I18N;
     <span class="wt-timestamp">
         <?= I18N::translate('Never') ?>
     </span>
-<?php else: ?>
+<?php else : ?>
     <span class="wt-timestamp" title="<?= e($timestamp->local()->diffForHumans()) ?>" dir="auto">
         <?= e($timestamp->local()->isoFormat('LLLL')) ?>
     </span>

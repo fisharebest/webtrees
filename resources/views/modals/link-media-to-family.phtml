@@ -1,4 +1,8 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <form method="post" action="<?= e(route('link-media-to-record', ['tree' => $tree->name(), 'xref' => $media->xref()])) ?>" id="wt-modal-form">
     <?= csrf_field() ?>

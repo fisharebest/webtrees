@@ -20,14 +20,14 @@ use Fisharebest\Webtrees\Family;
                 <?= view('chart-box', ['individual' => $family->husband()]) ?>
             </div>
 
-            <?php if ($family->husband() && $family->husband()->childFamilies()->first()): ?>
+            <?php if ($family->husband() && $family->husband()->childFamilies()->first()) : ?>
                 <div class="wt-chart-horizontal-spacer">
                     <div class="wt-chart-horizontal-line"></div>
                 </div>
 
-                <?php if ($generations > 1): ?>
+                <?php if ($generations > 1) : ?>
                     <?= view('modules/hourglass-chart/parents', ['family' => $family->husband()->childFamilies()->first(), 'generations' => $generations - 1]) ?>
-                <?php else: ?>
+                <?php else : ?>
                     <div class="align-self-center">
                         <div class="hourglass-arrow" data-xref="<?= route('module', ['module' => 'hourglass_chart', 'action' => 'Ancestors', 'xref' => $family->husband()->childFamilies()->first()->xref(), 'tree' => $family->husband()->childFamilies()->first()->tree()->name()]) ?>">
                             <?= view('icons/arrow-right') ?>
@@ -46,14 +46,14 @@ use Fisharebest\Webtrees\Family;
                 <?= view('chart-box', ['individual' => $family->wife()]) ?>
             </div>
 
-            <?php if ($family->wife() && $family->wife()->childFamilies()->first()): ?>
+            <?php if ($family->wife() && $family->wife()->childFamilies()->first()) : ?>
                 <div class="wt-chart-horizontal-spacer">
                     <div class="wt-chart-horizontal-line"></div>
                 </div>
 
-                <?php if ($generations > 1): ?>
+                <?php if ($generations > 1) : ?>
                     <?= view('modules/hourglass-chart/parents', ['family' => $family->wife()->childFamilies()->first(), 'generations' => $generations - 1]) ?>
-                <?php else: ?>
+                <?php else : ?>
                     <div class="align-self-center">
                         <div class="align-self-center">
                             <div class="hourglass-arrow" data-xref="<?= route('module', ['module' => 'hourglass_chart', 'action' => 'Ancestors', 'xref' => $family->wife()->childFamilies()->first()->xref(), 'tree' => $family->wife()->childFamilies()->first()->tree()->name()]) ?>">

@@ -1,14 +1,13 @@
-<?php use Fisharebest\Webtrees\Date;
+<?php
+
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual; ?>
-<?php ?>
-<?php ?>
-<?php ?>
-<?php ?>
-<?php ?>
+use Fisharebest\Webtrees\Individual;
+
+?>
 
 <script>
   var bottomy     = <?= json_encode(($topyear - $baseyear) * $scale - 5) ?>;
@@ -17,11 +16,11 @@ use Fisharebest\Webtrees\Individual; ?>
   var birthyears  = [];
   var birthmonths = [];
   var birthdays   = [];
-  <?php foreach ($individuals as $c => $indi) : ?>
+    <?php foreach ($individuals as $c => $indi) : ?>
   birthyears [<?= json_encode($c) ?>] = <?= json_encode($birthyears[$indi->xref()] ?? null) ?>;
   birthmonths[<?= json_encode($c) ?>] = <?= json_encode($birthmonths[$indi->xref()] ?? null) ?>;
   birthdays  [<?= json_encode($c) ?>] = <?= json_encode($birthdays[$indi->xref()] ?? null) ?>;
-  <?php endforeach ?>
+    <?php endforeach ?>
 
   var bheight = <?= json_encode($bheight) ?>;
   var scale   = <?= json_encode($scale) ?>;

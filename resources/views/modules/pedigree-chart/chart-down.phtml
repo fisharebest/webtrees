@@ -32,7 +32,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <?php if ($generation < $generations): ?>
+    <?php if ($generation < $generations) : ?>
         <div class="d-flex">
             <?= view('modules/pedigree-chart/chart-down', ['ancestors' => $ancestors, 'sosa' => $sosa * 2, 'generation' => $generation + 1, 'generations' => $generations, 'links' => $links]) ?>
 

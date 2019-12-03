@@ -66,7 +66,9 @@ use Psr\Http\Message\ServerRequestInterface;
 
         <?= View::stack('styles') ?>
 
-        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string { return $module->headContent(); })->implode('') ?>
+        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
+    return $module->headContent();
+        })->implode('') ?>
 
         <?= DebugBar::renderHead() ?>
     </head>
@@ -141,7 +143,9 @@ use Psr\Http\Message\ServerRequestInterface;
         </main>
 
         <footer class="wt-footers container d-print-none">
-            <?= app(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static function (ModuleFooterInterface $module) use ($request): string { return $module->getFooter($request); })->implode('') ?>
+            <?= app(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static function (ModuleFooterInterface $module) use ($request): string {
+    return $module->getFooter($request);
+            })->implode('') ?>
         </footer>
 
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>
@@ -183,7 +187,9 @@ use Psr\Http\Message\ServerRequestInterface;
 
         <?= View::stack('javascript') ?>
 
-        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string { return $module->bodyContent(); })->implode('') ?>
+        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
+    return $module->bodyContent();
+        })->implode('') ?>
 
         <?= DebugBar::render() ?>
     </body>

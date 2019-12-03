@@ -18,7 +18,9 @@ use Fisharebest\Webtrees\GedcomTag;
     </label>
 
     <div class="col-sm-6 wt-page-options-value">
-        <input class="form-control form-control" type="text" id="fields[<?= e($field_name) ?>]" name="fields[<?= e($field_name) ?>]" value="<?= e($field_value) ?>" <?php if (substr($field_name, -5) === ':DATE'): ?>onchange="valid_date(this, 'dmy')" <?php endif ?>>
+        <input class="form-control form-control" type="text" id="fields[<?= e($field_name) ?>]" name="fields[<?= e($field_name) ?>]" value="<?= e($field_value) ?>" <?php if (substr($field_name, -5) === ':DATE') :
+            ?>onchange="valid_date(this, 'dmy')" <?php
+                                                                        endif ?>>
     </div>
 
     <div class="col-sm-3 wt-page-options-value">

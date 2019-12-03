@@ -11,13 +11,15 @@ use Illuminate\Support\Collection;
 
 ?>
 <div class="align-self-center">
-    <?php foreach ($children as $n => $child): ?>
-        <?php $grandchildren = $child->spouseFamilies()->map(static function (Family $family): Collection { return $family->children(); })->flatten() ?>
+    <?php foreach ($children as $n => $child) : ?>
+        <?php $grandchildren = $child->spouseFamilies()->map(static function (Family $family): Collection {
+    return $family->children();
+        })->flatten() ?>
         <div class="d-flex justify-content-end">
-            <?php if ($grandchildren->isNotEmpty()): ?>
-                <?php if ($generations > 1): ?>
+            <?php if ($grandchildren->isNotEmpty()) : ?>
+                <?php if ($generations > 1) : ?>
                     <?= view('modules/hourglass-chart/children', ['children' => $grandchildren, 'generations' => $generations - 1, 'spouses' => $spouses]) ?>
-                <?php else: ?>
+                <?php else : ?>
                     <div class="d-flex align-self-center">
                         <div class="hourglass-arrow" data-xref="<?= route('module', ['module' => 'hourglass_chart', 'action' => 'Descendants', 'xref' => $child->xref(), 'tree' => $child->tree()->name(), 'spouses' => $spouses]) ?>">
                             <?= view('icons/arrow-left') ?>
@@ -26,25 +28,25 @@ use Illuminate\Support\Collection;
                 <?php endif ?>
             <?php endif ?>
             <div class="align-self-center">
-                <?php if ($spouses): ?>
+                <?php if ($spouses) : ?>
                     <div>&nbsp;</div>
                 <?php endif ?>
                 <?= view('chart-box', ['individual' => $child]) ?>
-                <?php if ($spouses): ?>
-                    <?php foreach ($child->spouseFamilies() as $spouse_family): ?>
+                <?php if ($spouses) : ?>
+                    <?php foreach ($child->spouseFamilies() as $spouse_family) : ?>
                         <?= view('chart-box', ['individual' => $spouse_family->spouse($child)]) ?>
                     <?php endforeach ?>
                     <div>&nbsp;</div>
                 <?php endif ?>
             </div>
             <div class="wt-chart-horizontal-spacer">
-                <?php if ($children->count() === 1): ?>
+                <?php if ($children->count() === 1) : ?>
                     <div class="wt-chart-horizontal-line"></div>
-                <?php elseif ($n === 0): ?>
+                <?php elseif ($n === 0) : ?>
                     <div class="wt-chart-horizontal-first-child"></div>
-                <?php elseif ($n + 1 === $children->count()): ?>
+                <?php elseif ($n + 1 === $children->count()) : ?>
                     <div class="wt-chart-horizontal-last-child"></div>
-                <?php else: ?>
+                <?php else : ?>
                     <div class="wt-chart-horizontal-middle-child">
                         <div class="wt-chart-horizontal-line"></div>
                     </div>
@@ -54,7 +56,7 @@ use Illuminate\Support\Collection;
     <?php endforeach ?>
 </div>
 
-<?php if ($children->count() > 0): ?>
+<?php if ($children->count() > 0) : ?>
     <div class="wt-chart-horizontal-spacer">
         <div class="wt-chart-horizontal-line"></div>
     </div>

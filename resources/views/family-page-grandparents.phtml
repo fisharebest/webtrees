@@ -15,25 +15,25 @@ use Fisharebest\Webtrees\I18N;
             </div>
 
             <div class="align-self-center">
-                <?php if ($individual === null): ?>
+                <?php if ($individual === null) : ?>
                     <?= view('chart-box', ['individual' => null]) ?>
-                <?php elseif ($family === null): ?>
+                <?php elseif ($family === null) : ?>
                     <div class="wt-chart-box">
-                        <?php if ($individual->canEdit()): ?>
+                        <?php if ($individual->canEdit()) : ?>
                             <a class="btn btn-link" href="<?= e(route('add-parent-to-individual', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'gender' => 'M'])) ?>">
                                 <?= I18N::translate('Add a father') ?>
                             </a>
                         <?php endif ?>
                     </div>
-                <?php elseif ($family->husband() === null): ?>
+                <?php elseif ($family->husband() === null) : ?>
                     <div class="wt-chart-box">
-                        <?php if ($family->canEdit()): ?>
+                        <?php if ($family->canEdit()) : ?>
                             <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'HUSB'])) ?>">
                                 <?= I18N::translate('Add a father') ?>
                             </a>
                         <?php endif ?>
                     </div>
-                <?php else: ?>
+                <?php else : ?>
                     <?= view('chart-box', ['individual' => $family ? $family->husband() : null]) ?>
                 <?php endif ?>
             </div>
@@ -45,31 +45,31 @@ use Fisharebest\Webtrees\I18N;
             </div>
 
             <div class="align-self-center">
-                <?php if ($individual === null): ?>
+                <?php if ($individual === null) : ?>
                     <?= view('chart-box', ['individual' => null]) ?>
-                <?php elseif ($family === null): ?>
+                <?php elseif ($family === null) : ?>
                     <div class="wt-chart-box">
-                        <?php if ($individual->canEdit()): ?>
+                        <?php if ($individual->canEdit()) : ?>
                             <a class="btn btn-link" href="<?= e(route('add-parent-to-individual', ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'gender' => 'F'])) ?>">
                                 <?= I18N::translate('Add a mother') ?>
                             </a>
                         <?php endif ?>
                     </div>
-                <?php elseif ($family->wife() === null): ?>
+                <?php elseif ($family->wife() === null) : ?>
                     <div class="wt-chart-box">
-                        <?php if ($family->canEdit()): ?>
+                        <?php if ($family->canEdit()) : ?>
                             <a class="btn btn-link" href="<?= e(route('add-spouse-to-family', ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'WIFE'])) ?>">
                                 <?= I18N::translate('Add a mother') ?>
                             </a>
                         <?php endif ?>
                     </div>
-                <?php else: ?>
+                <?php else : ?>
                     <?= view('chart-box', ['individual' => $family ? $family->wife() : null]) ?>
                 <?php endif ?>
             </div>
         </div>
     </div>
-    <?php if ($family !== null): ?>
+    <?php if ($family !== null) : ?>
         <div class="align-self-center">
             <a class="btn btn-text" href="<?= e($family->url()) ?>" title="<?= strip_tags($family->fullName()) ?>">
                 <?= view('icons/arrow-right') ?>

@@ -20,14 +20,14 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Change family members') ?>
         </a>
 
-        <?php if ($record->husband() === null): ?>
+        <?php if ($record->husband() === null) : ?>
             <a class="dropdown-item" href="<?= e(route('add-spouse-to-family', ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'famtag' => 'HUSB'])) ?>">
                 <?= view('icons/add') ?>
                 <?= I18N::translate('Add a husband') ?>
             </a>
         <?php endif ?>
 
-        <?php if ($record->wife() === null): ?>
+        <?php if ($record->wife() === null) : ?>
             <a class="dropdown-item" href="<?= e(route('add-spouse-to-family', ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'famtag' => 'WIFE'])) ?>">
                 <?= view('icons/add') ?>
                 <?= I18N::translate('Add a wife') ?>

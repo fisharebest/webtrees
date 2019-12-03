@@ -32,7 +32,7 @@ use Fisharebest\Webtrees\Place;
         <?php endif ?>
     </div>
 
-    <?php if ($sidebar_class === 'unmapped'): ?>
+    <?php if ($sidebar_class === 'unmapped') : ?>
         <div class="row">
             <div class="col-sm-9"><i><?= I18N::translate('The location of this place is not known.') ?></i></div>
             <div class="col-sm-3 align-digits"><?= view('icons/warning') ?></div>

@@ -19,7 +19,7 @@ use Fisharebest\Webtrees\I18N;
 
         <div class="divider"></div>
 
-        <?php if ($row->user_id !== $user->id()): ?>
+        <?php if ($row->user_id !== $user->id()) : ?>
             <div class="dropdown-item">
                 <?= view('icons/user') ?>
                 <a href="#" data-post-url="<?= e(route(Masquerade::class, ['user_id' => $row->user_id])) ?>">

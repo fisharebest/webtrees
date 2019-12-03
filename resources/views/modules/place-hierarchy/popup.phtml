@@ -2,6 +2,7 @@
 
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\I18N;
+
 /**
  * @var bool   $showlink
  * @var Place  $place
@@ -18,7 +19,7 @@ use Fisharebest\Webtrees\I18N;
         <a href="<?= e($place->url()) ?>">
             <?= $place->placeName() ?>
         </a>
-    <?php else: ?>
+    <?php else : ?>
         <?= $place->placeName() ?>
     <?php endif ?>
     <table class="table table-borderless">

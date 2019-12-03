@@ -1,7 +1,9 @@
 <?php
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\I18N;
+
 ?>
 
 <h2 class="wt-page-title">
@@ -108,7 +110,7 @@ use Fisharebest\Webtrees\I18N;
                 <?php if ($filtersx === '') : ?>
                     <?= view('icons/sex', ['sex' => 'M']) ?>
                     <?= view('icons/sex', ['sex' => 'F']) ?>
-                <?php else: ?>
+                <?php else : ?>
                     <small>
                         <?= view('icons/sex', ['sex' => 'M']) ?>
                         <?= view('icons/sex', ['sex' => 'F']) ?>
@@ -119,7 +121,7 @@ use Fisharebest\Webtrees\I18N;
             <a title="<?= I18N::translate('Males') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => 'M', 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
                 <?php if ($filtersx === 'M') : ?>
                     <?= view('icons/sex', ['sex' => 'M']) ?>
-                <?php else: ?>
+                <?php else : ?>
                     <small>
                         <?= view('icons/sex', ['sex' => 'M']) ?>
                     </small>
@@ -129,7 +131,7 @@ use Fisharebest\Webtrees\I18N;
             <a title="<?= I18N::translate('Females') ?>" href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => 'F', 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
                 <?php if ($filtersx === 'F') : ?>
                     <?= view('icons/sex', ['sex' => 'F']) ?>
-                <?php else: ?>
+                <?php else : ?>
                     <small>
                         <?= view('icons/sex', ['sex' => 'F']) ?>
                     </small>

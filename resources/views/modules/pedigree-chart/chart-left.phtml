@@ -13,7 +13,7 @@ use Illuminate\Support\Collection;
 ?>
 
 <div class="d-flex">
-    <?php if ($generation < $generations): ?>
+    <?php if ($generation < $generations) : ?>
         <div class="d-flex flex-column">
             <?= view('modules/pedigree-chart/chart-left', ['ancestors' => $ancestors, 'sosa' => $sosa * 2, 'generation' => $generation + 1, 'generations' => $generations, 'links' => $links]) ?>
 

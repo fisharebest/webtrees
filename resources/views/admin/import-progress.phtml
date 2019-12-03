@@ -1,4 +1,8 @@
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
 
 <div class="progress" id="progress<?= e($tree->id()) ?>">
     <div
@@ -13,12 +17,12 @@
     </div>
 </div>
 
-<?php if ($errors === ''): ?>
+<?php if ($errors === '') : ?>
     <script>
         $("#import<?= e($tree->id()) ?>")
             .load("<?= route('import', ['tree' => $tree->name()]) ?>", {});
     </script>
-<?php else: ?>
+<?php else : ?>
     <div class="alert alert-danger">
         <?= $errors ?>
     </div>

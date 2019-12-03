@@ -28,11 +28,11 @@ use Fisharebest\Webtrees\Tree;
     <?= ($disabled ?? false) ? 'disabled' : '' ?>
     <?= ($required ?? false) ? 'required' : '' ?>
 >
-    <?php if (($submitter ?? null) instanceof GedcomRecord): ?>
+    <?php if (($submitter ?? null) instanceof GedcomRecord) : ?>
         <option value="<?= e($submitter->xref()) ?>">
             <?= view('selects/submitter', ['submitter' => $submitter]) ?>
         </option>
-    <?php else: ?>
+    <?php else : ?>
         <option></option>
     <?php endif ?>
 </select>

@@ -21,7 +21,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 ?>
 
-<?php if (!empty($all_trees)): ?>
+<?php if (!empty($all_trees)) : ?>
     <?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
 <?php endif ?>
 
@@ -59,7 +59,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                     $("#import<?= $managed_tree->id() ?>").load("<?= route('import', ['tree' => $managed_tree->name()]) ?>", {});
                                 </script>
                                 <?php View::endpush() ?>
-                            <?php endif ?>
+                        <?php endif ?>
                         <div class="row<?= $importing ? ' d-none' : '' ?>" id="actions<?= $managed_tree->id() ?>">
                             <div class="col-sm-6 col-md-3">
                                 <h3>
