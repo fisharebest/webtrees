@@ -7,33 +7,19 @@ use Fisharebest\Webtrees\I18N;
 <div class="py-4">
     <div class="row gchart osm-wrapper">
         <div id="osm-map" class="col-sm-9 wt-ajax-load osm-user-map" dir="ltr"></div>
-        <ul class="col-sm-3 osm-sidebar wt-page-options-value list-unstyled p-0"></ul>
+        <ul class="col-sm-3 osm-sidebar wt-page-options-value list-unstyled px-md-1"></ul>
     </div>
 </div>
 
 <style>
     .osm-wrapper, .osm-user-map {
-        height: 75vh
+        height: 70vh
     }
 
     .osm-sidebar {
         height: 100%;
         overflow-y: auto;
-        padding: 0;
-        margin: 0;
-        border: 0;
-        display: none;
         font-size: small;
-    }
-
-    .osm-sidebar .gchart {
-        margin: 1px;
-        padding: 2px
-    }
-
-    .osm-sidebar .gchart img {
-        height: 15px;
-        width: 25px
     }
 </style>
 
@@ -49,6 +35,7 @@ use Fisharebest\Webtrees\I18N;
 
     let map     = null;
     let zoom    = null;
+    let sidebar = $(".osm-sidebar");
     let markers = L.markerClusterGroup({
       showCoverageOnHover: false,
     });
@@ -66,7 +53,6 @@ use Fisharebest\Webtrees\I18N;
           } else {
             map.flyToBounds(markers.getBounds().pad(0.2));
           }
-          let sidebar = $(".osm-sidebar");
           sidebar.scrollTo(sidebar.children(":first"));
 
           return false;
@@ -103,8 +89,7 @@ use Fisharebest\Webtrees\I18N;
 
     let _addLayer = function () {
       let geoJsonLayer;
-      let domObj  = ".osm-sidebar";
-      let sidebar = "";
+      let sidebar_content = "";
 
       let data = <?= json_encode($data) ?>;
 
@@ -123,24 +108,23 @@ use Fisharebest\Webtrees\I18N;
             id:    feature.id,
           })
             .on("popupopen", function (e) {
-              let sidebar = $(".osm-sidebar");
               let item    = sidebar.children(".gchart[data-id=" + e.target.feature.id + "]");
               item.addClass("messagebox");
               sidebar.scrollTo(item);
             })
             .on("popupclose", function () {
-              $(".osm-sidebar").children(".gchart")
+              sidebar.children(".gchart")
                 .removeClass("messagebox");
             });
         },
         onEachFeature: function (feature, layer) {
           layer.bindPopup(feature.properties.summary);
-          sidebar += `<li class="gchart" data-id=${feature.id}>${feature.properties.summary}</li>`;
+          sidebar_content += `<li class="gchart px-md-2" data-id=${feature.id}>${feature.properties.summary}</li>`;
         },
       });
 
       if (data.features.length > 0) {
-        $(domObj).append(sidebar);
+        sidebar.append(sidebar_content);
         markers.addLayer(geoJsonLayer);
         map
           .addControl(new resetControl())
@@ -153,10 +137,8 @@ use Fisharebest\Webtrees\I18N;
         }
       } else {
         map.fitWorld();
-        $(domObj).append('<div class="bg-info text-white">' + baseData.I18N.noData + "</div>");
+        sidebar.append('<div class="bg-info text-white">' + <?= json_encode(I18N::translate('No mappable items')) ?> + "</div>");
       }
-
-      $(domObj).slideDown(300);
     };
 
     /**
@@ -179,7 +161,7 @@ use Fisharebest\Webtrees\I18N;
         _addLayer();
 
         // Activate marker popup when sidebar entry clicked
-        $(".osm-sidebar")
+        sidebar
           .on("click", ".gchart", function (e) {
             // first close any existing
             map.closePopup();

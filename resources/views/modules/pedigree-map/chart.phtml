@@ -6,42 +6,29 @@ use Fisharebest\Webtrees\View;
 
 /**
  * @var Individual $individual
+ * @var int $generations
  */
 ?>
-
 
 <div class="py-4">
     <div class="row gchart osm-wrapper">
         <div id="osm-map" class="col-sm-9 wt-ajax-load osm-user-map" dir="ltr"></div>
-        <ul class="col-sm-3 osm-sidebar wt-page-options-value list-unstyled p-0"></ul>
+        <ul class="col-sm-3 osm-sidebar wt-page-options-value list-unstyled px-md-1"></ul>
     </div>
 </div>
 
 <?php View::push('styles') ?>
 <style>
     .osm-wrapper, .osm-user-map {
-        height: 75vh
+        height: 70vh
     }
 
     .osm-sidebar {
         height: 100%;
         overflow-y: auto;
-        padding: 0;
-        margin: 0;
-        border: 0;
-        display: none;
         font-size: small;
     }
 
-    .osm-sidebar .gchart {
-        margin: 1px;
-        padding: 2px
-    }
-
-    .osm-sidebar .gchart img {
-        height: 15px;
-        width: 25px
-    }
 </style>
 <?php View::endpush() ?>
 
@@ -58,6 +45,7 @@ use Fisharebest\Webtrees\View;
 
     let map          = null;
     let zoom         = null;
+    let sidebar      = $('.osm-sidebar');
     let markers      = L.markerClusterGroup({
       showCoverageOnHover: false
     });
@@ -75,7 +63,6 @@ use Fisharebest\Webtrees\View;
           } else {
             map.flyToBounds(markers.getBounds().pad(0.2));
           }
-          let sidebar = $(".osm-sidebar");
           sidebar.scrollTo(sidebar.children(":first"));
 
           return false;
@@ -115,9 +102,8 @@ use Fisharebest\Webtrees\View;
      * @private
      */
     let _addLayer = function (Generations) {
-      let geoJsonLayer;
-      let domObj  = '.osm-sidebar';
-      let sidebar = '';
+        let geoJsonLayer;
+        let sidebar_content = '';
 
       $.getJSON(<?= json_encode(route('module', ['module' => 'pedigree-map', 'action' => 'MapData', 'tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>, {
         generations: Generations
@@ -141,13 +127,12 @@ use Fisharebest\Webtrees\View;
                 id   : feature.id
               })
                 .on('popupopen', function (e) {
-                  let sidebar = $('.osm-sidebar');
                   let item  = sidebar.children(".gchart[data-id=" + e.target.feature.id + "]");
                   item.addClass('messagebox');
                   sidebar.scrollTo(item);
                 })
                 .on('popupclose', function () {
-                  $('.osm-sidebar').children(".gchart")
+                  sidebar.children(".gchart")
                     .removeClass('messagebox');
                 });
             },
@@ -157,7 +142,7 @@ use Fisharebest\Webtrees\View;
                 markers.addLayer(pline);
               }
               layer.bindPopup(feature.properties.summary);
-              sidebar += `<li class="gchart" data-id=${feature.id}>${feature.properties.summary}</li>`;
+              sidebar_content += `<li class="gchart px-md-2" data-id=${feature.id}>${feature.properties.summary}</li>`;
             },
           });
         })
@@ -167,7 +152,7 @@ use Fisharebest\Webtrees\View;
         .always(function (data_jqXHR, textStatus, jqXHR_errorThrown) {
           switch (jqXHR_errorThrown.status) {
             case 200: // Success
-              $(domObj).append(sidebar);
+              sidebar.append(sidebar_content);
               markers.addLayer(geoJsonLayer);
               map
                 .addControl(new resetControl())
@@ -179,13 +164,12 @@ use Fisharebest\Webtrees\View;
               break;
             case 204: // No data
               map.fitWorld();
-              $(domObj).append('<div class="bg-info text-white">' + <?= json_encode(I18N::translate('No mappable items')) ?> + '</div>');
+              sidebar.append('<div class="bg-info text-white">' + <?= json_encode(I18N::translate('No mappable items')) ?> + '</div>');
               break;
             default: // Anything else
               map.fitWorld();
-              $(domObj).append('<div class="bg-danger text-white">' + <?= json_encode(I18N::translate('An unknown error occurred')) ?> + '</div>');
+              sidebar.append('<div class="bg-danger text-white">' + <?= json_encode(I18N::translate('An unknown error occurred')) ?> + '</div>');
           }
-          $(domObj).slideDown(300);
         });
     };
 
@@ -210,7 +194,7 @@ use Fisharebest\Webtrees\View;
     let _initialize = function (generations) {
       // Activate marker popup when sidebar entry clicked
       $(function () {
-        $('.osm-sidebar')
+        sidebar
         // open marker popup if sidebar event is clicked
           .on('click', '.gchart', function (e) {
             // first close any existing

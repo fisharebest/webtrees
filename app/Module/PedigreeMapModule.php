@@ -64,16 +64,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     // Limits
     public const MAXIMUM_GENERATIONS = 10;
 
-    private const COLORS = [
-        ['red'],
-        ['green'],
-        ['blue'],
-        ['gold'],
-        ['cyan'],
-        ['orange'],
-        ['blue-dark'],
-        ['green-light']
-    ];
+    private const COLORS = ['Red', 'Green', 'Blue', 'Gold', 'Cyan', 'Orange', 'DarkBlue', 'LightGreen', 'Magenta', 'Brown'];
 
     /** @var ChartService */
     private $chart_service;
@@ -217,18 +208,17 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
             if ($latitude !== 0.0 || $longitude !== 0.0) {
                 $polyline         = null;
-
-                $color_index      = log($id, 2) % $color_count;
-                $color            = self::COLORS[$color_index];
                 $sosa_points[$id] = [$latitude, $longitude];
-                $sosa_parent      = intdiv($id, 2);
-                if (array_key_exists($sosa_parent, $sosa_points)) {
+                $sosa_child       = intdiv($id, 2);
+                $color            = self::COLORS[$sosa_child % $color_count];
+
+                if (array_key_exists($sosa_child, $sosa_points)) {
                     // Would like to use a GeometryCollection to hold LineStrings
                     // rather than generate polylines but the MarkerCluster library
                     // doesn't seem to like them
                     $polyline = [
                         'points'  => [
-                            $sosa_points[$sosa_parent],
+                            $sosa_points[$sosa_child],
                             [$latitude, $longitude],
                         ],
                         'options' => [
