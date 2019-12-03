@@ -218,21 +218,21 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
             if ($latitude !== 0.0 || $longitude !== 0.0) {
                 $polyline         = null;
 
-                $color_index      = log($id, 2) % $color_count;
-                $color            = self::COLORS[$color_index];
-                $sosa_points[$id] = [$latitude, $longitude];
-                $sosa_parent      = intdiv($id, 2);
-                if (array_key_exists($sosa_parent, $sosa_points)) {
+                $color_index        = log($id, 2) % $color_count;
+                $sosa_points[$id]   = [$latitude, $longitude];
+                $sosa_child         = intdiv($id, 2);
+                $color[$sosa_child] = self::COLORS[$color_index];
+                if (array_key_exists($sosa_child, $sosa_points)) {
                     // Would like to use a GeometryCollection to hold LineStrings
                     // rather than generate polylines but the MarkerCluster library
                     // doesn't seem to like them
                     $polyline = [
                         'points'  => [
-                            $sosa_points[$sosa_parent],
+                            $sosa_points[$sosa_child],
                             [$latitude, $longitude],
                         ],
                         'options' => [
-                            'color' => $color,
+                            'color' => $color[$sosa_child],
                         ],
                     ];
                 }
@@ -245,7 +245,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                     ],
                     'properties' => [
                         'polyline'  => $polyline,
-                        'iconcolor' => $color,
+                        'iconcolor' => $color[$sosa_child],
                         'tooltip'   => strip_tags($fact->place()->fullName()),
                         'summary'   => view('modules/pedigree-map/events', $this->summaryData($individual, $fact, $id)),
                         'zoom'      => $location->zoom() ?: 2,
