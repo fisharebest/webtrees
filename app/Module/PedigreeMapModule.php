@@ -64,7 +64,18 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     // Limits
     public const MAXIMUM_GENERATIONS = 10;
 
-    private const COLORS = ['Red', 'Green', 'Blue', 'Gold', 'Cyan', 'Orange', 'DarkBlue', 'LightGreen', 'Magenta', 'Brown'];
+    private const COLORS = [
+        'Red',
+        'Green',
+        'Blue',
+        'Gold',
+        'Cyan',
+        'Orange',
+        'DarkBlue',
+        'LightGreen',
+        'Magenta',
+        'Brown',
+    ];
 
     /** @var ChartService */
     private $chart_service;
