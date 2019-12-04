@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-27 20:16+0000\nLast-Translator: HRN <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees/nn/>\nLanguage: nn\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-04 15:48+0000\nLast-Translator: HRN <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees/nn/>\nLanguage: nn\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -12485,7 +12485,7 @@ msgstr "Syn par der ein av partnarane har vore gift meir enn ein gong."
 
 #: resources/views/lists/families-table.phtml:164
 msgid "Show couples where only the female partner is dead."
-msgstr "Syn par der kun den kvinnelege partnar er død."
+msgstr "Syn par der kun den kvinnelege partnaren er død."
 
 #: resources/views/lists/families-table.phtml:172
 msgid "Show couples where only the male partner is dead."
@@ -12527,12 +12527,12 @@ msgstr "Syn personar som er fødde innan dei siste 100 år."
 
 #: resources/views/lists/individuals-table.phtml:196
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr "Syn nolevande personar eller par der båe ektemakane er i live."
+msgstr "Syn nolevande personar eller par der båe partnarar er i live."
 
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/individuals-table.phtml:204
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr "Syn avdøde personar eller par der båe ektemakane er døde."
+msgstr "Syn avdøde personar eller par der båe partnarar er døde."
 
 #: resources/views/lists/individuals-table.phtml:212
 msgid "Show individuals who died more than 100 years ago."
