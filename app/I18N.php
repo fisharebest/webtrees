@@ -115,7 +115,7 @@ class I18N
         } else {
             $codes = array(
                 'ar', 'bg', 'bs', 'ca', 'cs', 'da', 'de', 'el', 'en-GB', 'en-US', 'es',
-                'et', 'fi', 'fr', 'he', 'hr', 'hu', 'is', 'it', 'ka', 'lt', 'mr', 'nb',
+                'et', 'fi', 'fr', 'he', 'hr', 'hi', 'hu', 'is', 'it', 'ka', 'lt', 'mr', 'nb',
                 'nl', 'nn', 'pl', 'pt', 'ru', 'sk', 'sv', 'tr', 'uk', 'vi', 'zh-Hans', 'zh-Hant',
             );
         }
