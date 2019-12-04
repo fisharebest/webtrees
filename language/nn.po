@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-26 20:24+0000\n"
+"PO-Revision-Date: 2019-12-04 13:46+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nn/>\n"
@@ -12468,7 +12468,7 @@ msgstr "Syn par der ein av partnarane har vore gift meir enn ein gong."
 
 #: app/Functions/FunctionsPrintLists.php:626
 msgid "Show couples where only the female partner is dead."
-msgstr "Syn par der kun den kvinnelege partnar er død."
+msgstr "Syn par der kun den kvinnelege partnaren er død."
 
 #: app/Functions/FunctionsPrintLists.php:635
 msgid "Show couples where only the male partner is dead."
@@ -12528,12 +12528,12 @@ msgstr "Syn personar som er fødde innan dei siste 100 år."
 #: app/Functions/FunctionsPrintLists.php:206
 #: app/Functions/FunctionsPrintLists.php:617
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr "Syn nolevande personar eller par der båe ektemakane er i live."
+msgstr "Syn nolevande personar eller par der båe partnarar er i live."
 
 #: app/Functions/FunctionsPrintLists.php:215
 #: app/Functions/FunctionsPrintLists.php:644
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr "Syn avdøde personar eller par der båe ektemakane er døde."
+msgstr "Syn avdøde personar eller par der båe partnarar er døde."
 
 #: app/Functions/FunctionsPrintLists.php:224
 msgid "Show individuals who died more than 100 years ago."
