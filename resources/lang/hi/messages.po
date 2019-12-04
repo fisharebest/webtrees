@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-04 09:11+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-06 06:51+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -4444,37 +4444,37 @@ msgstr "पर ×6 दादा/दादी/नाना/नानी"
 #: app/Functions/Functions.php:1697 app/Functions/Functions.php:1732
 #, php-format
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "पर ×%s दादा/नाना"
 
 #: app/Functions/Functions.php:1701 app/Functions/Functions.php:1720
 #: app/Functions/Functions.php:1736
 #, php-format
 msgid "great ×%s aunt"
-msgstr ""
+msgstr "पर ×%s दादी/नानी"
 
 #: app/Functions/Functions.php:1704 app/Functions/Functions.php:1723
 #: app/Functions/Functions.php:1739
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr ""
+msgstr "पर ×%s दादी/नानी/दादा/नाना"
 
 #: app/Functions/Functions.php:1709
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "पर ×%s दादा/नाना"
 
 #: app/Functions/Functions.php:1713
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "पर ×%s दादा/नाना"
 
 #: app/Functions/Functions.php:1716
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "पर ×%s दादा/नाना"
 
 #: app/Functions/Functions.php:1751
 msgctxt "(a man’s) brother’s great-grandson"
@@ -4660,71 +4660,71 @@ msgstr "पर ×4 पाते/नवासे/पोती/नवासी"
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "पर ×%s पोते/नवासे"
 
 #: app/Functions/Functions.php:1901
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "पर ×%s पोते/नवासे"
 
 #: app/Functions/Functions.php:1904
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "पर ×%s पोते/नवासे"
 
 #: app/Functions/Functions.php:1909
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "पर ×%s पोती/नवासी"
 
 #: app/Functions/Functions.php:1913
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "पर ×%s पोती/नवासी"
 
 #: app/Functions/Functions.php:1916
 #, php-format
 msgctxt "(a woman’s) great ×%s niece"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "पर ×%s पोती/नवासी"
 
 #: app/Functions/Functions.php:1920
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "पर ×%s पोते/नवासे/पोती/नवासी"
 
 #: app/Functions/Functions.php:1924
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "पर ×%s पोते/नवासे/पोती/नवासी"
 
 #: app/Functions/Functions.php:1927
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "पर ×%s पोते/नवासे/पोती/नवासी"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1931 app/Functions/Functions.php:1947
 #, php-format
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "पर ×%s पोते/नवासे"
 
 #: app/Functions/Functions.php:1935 app/Functions/Functions.php:1951
 #, php-format
 msgid "great ×%s niece"
-msgstr ""
+msgstr "पर ×%s पोती/नवासी"
 
 #: app/Functions/Functions.php:1938 app/Functions/Functions.php:1954
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "पर ×%s पोते/नवासे/पोती/नवासी"
 
 #: app/Functions/Functions.php:1964
 msgid "great-great-grandfather"
@@ -18703,7 +18703,7 @@ msgstr "अपडेट की तिथि और समय दिखाएं"
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:7
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "इस फॅमिली ट्री को आखिरी बार #gedcomUpdated# पर अपडेट किया गया था। इस फॅमिली ट्री में #totalSurnames# कुलनाम हैं। सबसे पुरानी दर्ज की गई घटना #firstEventType# के #firstEventName# #firstEventYear# में है। सबसे हाल की घटना है #lastEventType# #lastEventName# की #lastEventYear# में। <br><br> यदि आपकी कोई टिप्पणी या प्रतिक्रिया है तो कृपया #contactWebmaster# पर संपर्क करें।"
+msgstr "इस फॅमिली ट्री को आखिरी बार #gedcomUpdated# को अपडेट किया गया था। इस फॅमिली ट्री में टोटल #totalSurnames# कुलनाम हैं। सबसे पुरानी दर्ज की गई घटना #firstEventName# के #firstEventType# #firstEventYear# की है। और सबसे हाल की घटना है #lastEventName# के #lastEventType# की #lastEventYear# में। <br><br>यदि आपकी कोई टिप्पणी या प्रतिक्रिया है तो कृपया #contactWebmaster# से संपर्क करें।"
 
 #: resources/views/modules/interactive-tree/chart.phtml:10
 msgid "Use compact layout"
