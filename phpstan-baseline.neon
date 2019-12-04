@@ -756,11 +756,6 @@ parameters:
 			path: app/Http/Controllers/Admin/MediaController.php
 
 		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 2
-			path: app/Http/Controllers/Admin/MediaController.php
-
-		-
 			message: "#^Parameter \\#4 \\$sort_columns of method Fisharebest\\\\Webtrees\\\\Services\\\\DatatablesService\\:\\:handleQuery\\(\\) expects array\\<string\\>, array\\<int, Illuminate\\\\Database\\\\Query\\\\Expression\\|string\\> given\\.$#"
 			count: 2
 			path: app/Http/Controllers/Admin/MediaController.php
@@ -1011,18 +1006,8 @@ parameters:
 			path: app/Http/Controllers/AdminTreesController.php
 
 		-
-			message: "#^Parameter \\#1 \\$table of static method Illuminate\\\\Database\\\\Capsule\\\\Manager\\:\\:table\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 2
-			path: app/Http/Controllers/AdminTreesController.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminTreesController\\:\\:duplicateRecords\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: app/Http/Controllers/AdminTreesController.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:having\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 4
 			path: app/Http/Controllers/AdminTreesController.php
 
 		-
@@ -1621,11 +1606,6 @@ parameters:
 			path: app/Http/RequestHandlers/ContactPage.php
 
 		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 7
-			path: app/Http/RequestHandlers/ControlPanel.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\ControlPanel\\:\\:totalIndividuals\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ControlPanel.php
@@ -2022,11 +2002,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateRecord\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MergeFactsAction.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MergeFactsAction.php
 
@@ -2609,16 +2584,6 @@ parameters:
 			message: "#^Cannot access offset 'body' on array\\|object\\|null\\.$#"
 			count: 1
 			path: app/Module/FamilyTreeNewsModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:orderByDesc\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Module/FamilyTreeStatisticsModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Module/FamilyTreeStatisticsModule.php
 
 		-
 			message: "#^Cannot access offset 'number_of_surnames' on array\\|object\\|null\\.$#"
@@ -3506,16 +3471,6 @@ parameters:
 			path: app/Module/TopPageViewsModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:orderByDesc\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Module/TopSurnamesModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Module/TopSurnamesModule.php
-
-		-
 			message: "#^Cannot access offset 'num' on array\\|object\\|null\\.$#"
 			count: 1
 			path: app/Module/TopSurnamesModule.php
@@ -3607,11 +3562,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Place\\:\\:lastParts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Place.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:orderBy\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 1
 			path: app/Place.php
 
@@ -4046,11 +3996,6 @@ parameters:
 			path: app/Services/CalendarService.php
 
 		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Services/CalendarService.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ChartService\\:\\:sosaStradonitzAncestors\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
 			count: 1
 			path: app/Services/ChartService.php
@@ -4096,11 +4041,6 @@ parameters:
 			path: app/Services/DatatablesService.php
 
 		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:orderBy\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Services/DatatablesService.php
-
-		-
 			message: "#^Parameter \\#1 \\$hostname of function gethostbyname expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Services/EmailService.php
@@ -4131,21 +4071,6 @@ parameters:
 			path: app/Services/HousekeepingService.php
 
 		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 38
-			path: app/Services/IndividualListService.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:orderBy\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 8
-			path: app/Services/IndividualListService.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:whereNotIn\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Services/IndividualListService.php
-
-		-
 			message: "#^Cannot call method getAllNames\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
 			count: 1
 			path: app/Services/IndividualListService.php
@@ -4162,11 +4087,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\IndividualListService\\:\\:individuals\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Individual\\> but returns array\\<int, Fisharebest\\\\Webtrees\\\\Individual\\|null\\>\\.$#"
-			count: 1
-			path: app/Services/IndividualListService.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:orWhere\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 1
 			path: app/Services/IndividualListService.php
 
@@ -4253,16 +4173,6 @@ parameters:
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:allFilesInDatabase\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
 			count: 1
-			path: app/Services/MediaFileService.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:orderBy\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Services/MediaFileService.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 2
 			path: app/Services/MediaFileService.php
 
 		-
@@ -4402,11 +4312,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:orWhere\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression\\|string given\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 1
 			path: app/Services/SearchService.php
 
@@ -4726,11 +4631,6 @@ parameters:
 			path: app/Statistics/Google/ChartDistribution.php
 
 		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Statistics/Google/ChartDistribution.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartDistribution\\:\\:getSurnameChartData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Statistics/Google/ChartDistribution.php
@@ -4803,11 +4703,6 @@ parameters:
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\FamilyRepository\\:\\:topTenGrandFamilyQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:orderBy\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 4
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
@@ -4899,11 +4794,6 @@ parameters:
 			message: "#^Access to an undefined property object\\:\\:\\$d_year\\.$#"
 			count: 1
 			path: app/Statistics/Repository/GedcomRepository.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 2
-			path: app/Statistics/Repository/IndividualRepository.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\IndividualRepository\\:\\:commonGiven\\(\\) should return string but returns array\\<int\\>\\|string\\.$#"
@@ -5026,11 +4916,6 @@ parameters:
 			path: app/Statistics/Repository/IndividualRepository.php
 
 		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:orderBy\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
 			message: "#^Parameter \\#2 \\$given of method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartCommonGiven\\:\\:chartCommonGiven\\(\\) expects array, \\(array\\<int\\>\\)\\|string given\\.$#"
 			count: 1
 			path: app/Statistics/Repository/IndividualRepository.php
@@ -5091,22 +4976,12 @@ parameters:
 			path: app/Tree.php
 
 		-
-			message: "#^Unsafe usage of new static\\(\\)\\.$#"
-			count: 1
-			path: app/User.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\View\\:\\:__construct\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/View.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\View\\:\\:render\\(\\) should return string but returns string\\|false\\.$#"
-			count: 1
-			path: app/View.php
-
-		-
-			message: "#^Unsafe usage of new static\\(\\)\\.$#"
 			count: 1
 			path: app/View.php
 

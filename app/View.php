@@ -275,7 +275,7 @@ class View
      */
     public static function make($name, $data = []): string
     {
-        $view = new static($name, $data);
+        $view = new self($name, $data);
 
         DebugBar::addView($name, $data);
 
