@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-12-04 13:46+0000\n"
+"PO-Revision-Date: 2019-12-07 09:00+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
@@ -122,16 +122,17 @@ msgstr[1] "%2$s सेकंड में %1$s फ़ाइलें बाह�
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] ""
+msgstr[0] "%3$s पीढ़ियों में से, %1$s व्यक्ती को सामान्य टोटल %2$s से दिखाया गया।"
 msgstr[1] ""
+"%3$s पीढ़ियों में से, %1$s व्यक्तियों को सामान्य टोटल %2$s से दिखाया गया।"
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:852
 #, php-format
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s व्यक्ति के जन्मस्थान में नक़्शे के निर्देशांक: %2$s गायब है।"
+msgstr[1] "%1$s व्यक्तियों के जन्मस्थान में नक़्शे के निर्देशांक: %2$s गायब है।"
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:192
@@ -349,8 +350,8 @@ msgstr[1] "%s संदेश"
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s मिनट पहले"
+msgstr[1] "%s मिंटो पहले"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:50 app/I18N.php:306
@@ -365,8 +366,8 @@ msgstr[1] "%s महीने"
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s महीना पहले"
+msgstr[1] "%s महीने पहले"
 
 #: app/Controller/SearchController.php:432
 #, php-format
@@ -391,8 +392,8 @@ msgstr "एक अवरोही पीढ़ी को हटा कर %s"
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s सेकंड पहले"
+msgstr[1] "%s सेकंड पहले"
 
 #. I18N: %s is a person's name
 #: message.php:300 message.php:303 message.php:305
@@ -458,8 +459,8 @@ msgstr[1] "%s साल"
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s साल पहले"
+msgstr[1] "%s साल पहले"
 
 #: app/Functions/FunctionsPrintLists.php:1805 app/Module/YahrzeitModule.php:129
 #: calendar.php:601
@@ -708,10 +709,23 @@ msgstr "9वीं"
 #: admin_trees_manage.php:731
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr ""
+"<b>महत्वपूर्ण नोट:</b>ट्रांसफ़र विज़ार्ड चलती मीडिया आइटम के साथ सहायता करने "
+"में सक्षम नहीं है। ट्रांसफ़र विज़ार्ड समाप्त होने के बाद आपको अपने मीडिया "
+"कॉन्फ़िगरेशन और ऑब्जेक्ट्स को अलग-अलग सेट और मूव या कॉपी करना होगा।"
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 msgstr ""
+"<b>कृपया ध्यान दें:</b>जीवित व्यक्तियों की निजी जानकारी केवल परिवार के "
+"रिश्तेदारों और करीबी दोस्तों को दी जाएगी।  कोई भी निजी डेटा प्राप्त करने से "
+"पहले आपको अपने रिश्ते को वेरीफाइ करने के लिए कहा जाएगा। कभी-कभी मृत "
+"व्यक्तियों की जानकारी भी निजी हो सकती है। यदि यह मामला है, तो यह इसलिए है "
+"क्योंकि यह निर्धारित करने के लिए व्यक्ति के बारे में पर्याप्त जानकारी नहीं है"
+" कि वे जीवित हैं या नहीं और हम शायद इस व्यक्ति के बारे में अधिक जानकारी नहीं "
+"रखते हैं।<br><br>कोई प्रश्न पूछने से पहले, कृपया। वेरीफाइ करें कि आप दिनांक, "
+"स्थान और करीबी रिश्तेदारों की जाँच करके सही व्यक्ति के बारे में पूछताछ कर रहे"
+" हैं। यदि आप वंशावली डेटा में परिवर्तन प्रस्तुत कर रहे हैं, तो कृपया उन "
+"स्रोतों को शामिल करें जहाँ से आपने डेटा प्राप्त किया था।"
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:976 admin_users.php:488 edituser.php:278
@@ -789,6 +803,10 @@ msgstr ""
 #: setup.php:372
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 msgstr ""
+"एक डेटाबेस सर्वर कई अलग-अलग डेटाबेस को स्टोर कर सकता है। आपको एक मौजूदा "
+"डेटाबेस (आपके सर्वर के एडमिनिस्ट्रेटर द्वारा बनाया गया) का चयन करना होगा या "
+"एक नया बनाना होगा (यदि आपके डेटाबेस युज़र अकाउंट में पर्याप्त विशेषाधिकार "
+"हैं)।"
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
@@ -885,10 +903,12 @@ msgstr ""
 #, php-format
 msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
 msgstr ""
+"एक नया पासवर्ड बना कर %s पर ईमेल कर दिया गया है। साइन इन करने के बाद आप इस "
+"पासवर्ड को बदल सकते हैं।"
 
 #: login.php:257
 msgid "A new password has been requested for your username."
-msgstr ""
+msgstr "आपके युज़र नेम के लिए एक नया पासवर्ड मांगा गया है।"
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:561
@@ -1014,19 +1034,21 @@ msgid "A role is a set of access rights, which give permission to view data, cha
 msgstr ""
 "एक भूमिका प्रवेश अधिकारों का एक सेट है, जो डेटा को देखने, प्राथमिकताओं को "
 "बदलने आदि की अनुमति देता है। प्रवेश अधिकार भूमिकाओं को सौंपा गया है, और "
-"भूमिकाएँ यूज़र्स को दी जाती हैं।  प्रत्येक फॅमिली ट्री प्रत्येक भूमिका के लि"
-"ए अलग-अलग पहुंच प्रदान कर सकती है, और प्रत्येक फॅमिली ट्री में यूज़र्स की एक "
+"भूमिकाएँ यूज़र्स को दी जाती हैं। प्रत्येक फॅमिली ट्री प्रत्येक भूमिका के लिए "
+"अलग-अलग पहुंच प्रदान कर सकती है, और प्रत्येक फॅमिली ट्री में यूज़र्स की एक "
 "अलग भूमिका हो सकती है।"
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
 msgid "A sidebar showing an alphabetic list of all the families in the family tree."
 msgstr ""
+"एक साइडबार जो फॅमिली ट्री में सभी परिवारों की एक अक्षर अंकित सूची दिखाता है।"
 
 #. I18N: Description of “Individuals” module
 #: app/Module/IndividualSidebarModule.php:38
 msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
 msgstr ""
+"एक साइडबार, जो फॅमिली ट्री के सभी व्यक्तियों की अल्फ़ाबेटिक सूची दिखाती है।"
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
@@ -14550,12 +14572,12 @@ msgstr "इस फॅमिली ट्री में प्रदर्श�
 #: app/Module/HtmlBlockModule.php:160
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
 msgstr ""
-"इस फॅमिली ट्री को आखिरी बार #gedcomUpdated# पर अपडेट किया गया था। इस फॅमिली "
-"ट्री में #totalSurnames# कुलनाम हैं। सबसे पुरानी दर्ज की गई घटना "
-"#firstEventType# के #firstEventName# #firstEventYear# में है। सबसे हाल की "
-"घटना है #lastEventType# #lastEventName# की #lastEventYear# में। <br><br> यदि "
-"आपकी कोई टिप्पणी या प्रतिक्रिया है तो कृपया #contactWebmaster# पर संपर्क "
-"करें।"
+"इस फॅमिली ट्री को आखिरी बार #gedcomUpdated# को अपडेट किया गया था। इस फॅमिली "
+"ट्री में टोटल #totalSurnames# कुलनाम हैं। सबसे पुरानी दर्ज की गई घटना "
+"#firstEventName# के #firstEventType# #firstEventYear# की है। और सबसे हाल की "
+"घटना है #lastEventName# के #lastEventType# की #lastEventYear# में। "
+"<br><br>यदि आपकी कोई टिप्पणी या प्रतिक्रिया है तो कृपया #contactWebmaster# से"
+" संपर्क करें।"
 
 #. I18N: %s is a date
 #: app/Module/FamilyTreeStatisticsModule.php:101
@@ -17797,8 +17819,8 @@ msgstr "चौथे कज़िन"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] "%1$s के अंतराल से %2$s साल"
-msgstr[1] "%1$s के अंतराल से %2$s साल"
+msgstr[0] "%1$s से अंतराल %2$s साल"
+msgstr[1] "%1$s से अंतराल %2$s साल"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:316
@@ -17920,13 +17942,13 @@ msgstr "पोती"
 #: app/Functions/Functions.php:1667
 #, php-format
 msgid "great ×%s aunt"
-msgstr ""
+msgstr "पर ×%s दादी/नानी"
 
 #: app/Functions/Functions.php:1641 app/Functions/Functions.php:1656
 #: app/Functions/Functions.php:1669
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr ""
+msgstr "पर ×%s दादी/नानी/दादा/नाना"
 
 #: app/Functions/Functions.php:2042 app/Functions/Functions.php:2057
 #, php-format
@@ -17970,95 +17992,95 @@ msgstr "पर ×%s पोते/नवासे"
 #: app/Functions/Functions.php:1823 app/Functions/Functions.php:1836
 #, php-format
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "पर ×%s पोते/नवासे"
 
 #: app/Functions/Functions.php:1797
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "पर ×%s पोते/नवासे"
 
 #: app/Functions/Functions.php:1799
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "पर ×%s पोते/नवासे"
 
 #: app/Functions/Functions.php:1801
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "पर ×%s पोते/नवासे"
 
 #: app/Functions/Functions.php:1827 app/Functions/Functions.php:1840
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "पर ×%s पोते/नवासे/पोती/नवासी"
 
 #: app/Functions/Functions.php:1813
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "पर ×%s पोते/नवासे/पोती/नवासी"
 
 #: app/Functions/Functions.php:1815
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "पर ×%s पोते/नवासे/पोती/नवासी"
 
 #: app/Functions/Functions.php:1817
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "पर ×%s पोते/नवासे/पोती/नवासी"
 
 #: app/Functions/Functions.php:1825 app/Functions/Functions.php:1838
 #, php-format
 msgid "great ×%s niece"
-msgstr ""
+msgstr "पर ×%s पोती/नवासी"
 
 #: app/Functions/Functions.php:1805
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "पर ×%s पोती/नवासी"
 
 #: app/Functions/Functions.php:1807
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "पर ×%s पोती/नवासी"
 
 #: app/Functions/Functions.php:1809
 #, php-format
 msgctxt "(a woman’s) great ×%s niece"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "पर ×%s पोती/नवासी"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1637 app/Functions/Functions.php:1665
 #, php-format
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "पर ×%s दादा/नाना"
 
 #: app/Functions/Functions.php:1647
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "पर ×%s दादा/नाना"
 
 #: app/Functions/Functions.php:1649
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "पर ×%s दादा/नाना"
 
 #: app/Functions/Functions.php:1651
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "पर ×%s दादा/नाना"
 
 #: app/Functions/Functions.php:1579
 msgid "great ×4 aunt"
