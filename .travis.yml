@@ -4,31 +4,20 @@ sudo: false
 
 matrix:
   include:
-    - php: nightly
     - php: 7.3
     - php: 7.2
     - php: 7.1
     - php: 7.0
     - php: 5.6
     - php: 5.5
+      dist: trusty
     - php: 5.4
-    - php: 5.3
-      dist: precise
-
-## Cache composer and vendor libraries
-cache:
-  directories:
-    - vendor
-    - $HOME/.composer/cache
+      dist: trusty
 
 before_script:
+  - phpenv config-rm xdebug.ini
   - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
-  - if [ -f "$HOME/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini" ]; then cp $HOME/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini /tmp/; phpenv config-rm xdebug.ini; fi
   - travis_retry composer update
-  - if [ -f "/tmp/xdebug.ini" ]; then phpenv config-add /tmp/xdebug.ini; fi
 
 script:
-  - vendor/bin/phpunit --coverage-clover tests/clover.xml
-
-after_script:
- pick - vendor/bin/coveralls -v
+  - vendor/bin/phpunit
