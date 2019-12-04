@@ -118,8 +118,7 @@
             "@composer global require squizlabs/php_codesniffer=* --quiet",
             "~/.composer/vendor/bin/phpcs --standard=PSR12 --colors --extensions=php --exclude=Generic.Files.LineLength index.php app modules_v4 tests",
             "~/.composer/vendor/bin/phpcs --standard=PSR12 --colors --extensions=phtml -n --exclude=Generic.Files.LineLength resources/views",
-            "~/.composer/vendor/bin/phpcs --colors --extensions=css resources/css",
-            "~/.composer/vendor/bin/phpcs --colors --extensions=js resources/js"
+            "~/.composer/vendor/bin/phpcs --colors --extensions=css resources/css"
         ],
         "webtrees:phan": [
             "@composer global require phan/phan=*",
