@@ -42,20 +42,21 @@ class Select2Family extends AbstractSelect2Handler
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
     {
-        // Allow private records to be selected by XREF?
-        $filter = $tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1' ? null : Family::accessFilter();
+        // Search by XREF
+        $family = Family::getInstance($query, $tree);
 
-        return $this->search_service
-            ->searchFamilyNames([$tree], [$query], $offset, $limit)
-            ->prepend(Family::getInstance($query, $tree))
-            ->filter($filter)
-            ->values()
-            ->map(static function (Family $family): array {
-                return [
-                    'id'    => $family->xref(),
-                    'text'  => view('selects/family', ['family' => $family]),
-                    'title' => ' ',
-                ];
-            });
+        if ($family instanceof Family) {
+            $results = new Collection([$family]);
+        } else {
+            $results = $this->search_service->searchFamilyNames([$tree], [$query], $offset, $limit);
+        }
+
+        return $results->map(static function (Family $family): array {
+            return [
+                'id'    => $family->xref(),
+                'text'  => view('selects/family', ['family' => $family]),
+                'title' => ' ',
+            ];
+        });
     }
 }

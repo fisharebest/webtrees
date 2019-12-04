@@ -42,14 +42,21 @@ class Select2Submitter extends AbstractSelect2Handler
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
     {
-        return $this->search_service
-            ->searchSubmitters([$tree], [$query], $offset, $limit)
-            ->map(static function (GedcomRecord $submitter): array {
-                return [
-                    'id'    => $submitter->xref(),
-                    'text'  => view('selects/submitter', ['submitter' => $submitter]),
-                    'title' => ' ',
-                ];
-            });
+        // Search by XREF
+        $submitter = GedcomRecord::getInstance($query, $tree);
+
+        if ($submitter instanceof GedcomRecord && $submitter::RECORD_TYPE === 'UNKNOWN') {
+            $results = new Collection([$submitter]);
+        } else {
+            $results = $this->search_service->searchSubmitters([$tree], [$query], $offset, $limit);
+        }
+
+        return $results->map(static function (GedcomRecord $submitter): array {
+            return [
+                'id'    => $submitter->xref(),
+                'text'  => view('selects/submitter', ['submitter' => $submitter]),
+                'title' => ' ',
+            ];
+        });
     }
 }

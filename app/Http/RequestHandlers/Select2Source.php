@@ -42,14 +42,21 @@ class Select2Source extends AbstractSelect2Handler
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
     {
-        return $this->search_service
-            ->searchSourcesByName([$tree], [$query], $offset, $limit)
-            ->map(static function (Source $source): array {
-                return [
-                    'id'    => $source->xref(),
-                    'text'  => view('selects/source', ['source' => $source]),
-                    'title' => ' ',
-                ];
-            });
+        // Search by XREF
+        $source = Source::getInstance($query, $tree);
+
+        if ($source instanceof Source) {
+            $results = new Collection([$source]);
+        } else {
+            $results = $this->search_service->searchSourcesByName([$tree], [$query], $offset, $limit);
+        }
+
+        return $results->map(static function (Source $source): array {
+            return [
+                'id'    => $source->xref(),
+                'text'  => view('selects/source', ['source' => $source]),
+                'title' => ' ',
+            ];
+        });
     }
 }

@@ -42,14 +42,21 @@ class Select2MediaObject extends AbstractSelect2Handler
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
     {
-        return $this->search_service
-            ->searchMedia([$tree], [$query], $offset, $limit)
-            ->map(static function (Media $media): array {
-                return [
-                    'id'    => $media->xref(),
-                    'text'  => view('selects/media', ['media' => $media]),
-                    'title' => ' ',
-                ];
-            });
+        // Search by XREF
+        $media = Media::getInstance($query, $tree);
+
+        if ($media instanceof Media) {
+            $results = new Collection([$media]);
+        } else {
+            $results = $this->search_service->searchMedia([$tree], [$query], $offset, $limit);
+        }
+
+        return $results->map(static function (Media $media): array {
+            return [
+                'id'    => $media->xref(),
+                'text'  => view('selects/media', ['media' => $media]),
+                'title' => ' ',
+            ];
+        });
     }
 }

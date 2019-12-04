@@ -42,20 +42,21 @@ class Select2Individual extends AbstractSelect2Handler
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
     {
-        // Allow private records to be selected by XREF?
-        $filter = $tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1' ? null : Individual::accessFilter();
+        // Search by XREF
+        $individual = Individual::getInstance($query, $tree);
 
-        return $this->search_service
-            ->searchIndividualNames([$tree], [$query], $offset, $limit)
-            ->prepend(Individual::getInstance($query, $tree))
-            ->filter($filter)
-            ->values()
-            ->map(static function (Individual $individual): array {
-                return [
-                    'id'    => $individual->xref(),
-                    'text'  => view('selects/individual', ['individual' => $individual]),
-                    'title' => ' ',
-                ];
-            });
+        if ($individual instanceof Individual) {
+            $results = new Collection([$individual]);
+        } else {
+            $results = $this->search_service->searchIndividualNames([$tree], [$query], $offset, $limit);
+        }
+
+        return $results->map(static function (Individual $individual): array {
+            return [
+                'id'    => $individual->xref(),
+                'text'  => view('selects/individual', ['individual' => $individual]),
+                'title' => ' ',
+            ];
+        });
     }
 }

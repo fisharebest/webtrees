@@ -42,14 +42,21 @@ class Select2Repository extends AbstractSelect2Handler
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
     {
-        return $this->search_service
-            ->searchRepositories([$tree], [$query], $offset, $limit)
-            ->map(static function (Repository $repository): array {
-                return [
-                    'id'    => $repository->xref(),
-                    'text'  => view('selects/repository', ['repository' => $repository]),
-                    'title' => ' ',
-                ];
-            });
+        // Search by XREF
+        $repository = Repository::getInstance($query, $tree);
+
+        if ($repository instanceof Repository) {
+            $results = new Collection([$repository]);
+        } else {
+            $results = $this->search_service->searchRepositories([$tree], [$query], $offset, $limit);
+        }
+
+        return $results->map(static function (Repository $repository): array {
+            return [
+                'id'    => $repository->xref(),
+                'text'  => view('selects/repository', ['repository' => $repository]),
+                'title' => ' ',
+            ];
+        });
     }
 }

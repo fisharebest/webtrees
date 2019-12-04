@@ -42,14 +42,21 @@ class Select2Note extends AbstractSelect2Handler
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
     {
-        return $this->search_service
-            ->searchNotes([$tree], [$query], $offset, $limit)
-            ->map(static function (Note $note): array {
-                return [
-                    'id'    => $note->xref(),
-                    'text'  => view('selects/note', ['note' => $note]),
-                    'title' => ' ',
-                ];
-            });
+        // Search by XREF
+        $note = Note::getInstance($query, $tree);
+
+        if ($note instanceof Note) {
+            $results = new Collection([$note]);
+        } else {
+            $results = $this->search_service->searchNotes([$tree], [$query], $offset, $limit);
+        }
+
+        return $results->map(static function (Note $note): array {
+            return [
+                'id'    => $note->xref(),
+                'text'  => view('selects/note', ['note' => $note]),
+                'title' => ' ',
+            ];
+        });
     }
 }
