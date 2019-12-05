@@ -621,15 +621,15 @@ class Functions
                 if ($person1 && $person2) {
                     foreach ($person1->spouseFamilies() as $family) {
                         if ($person2 === $family->spouse($person1)) {
-                            if ($family->facts(['MARR'])->isNotEmpty()) {
-                                if ($family->facts(Gedcom::DIVORCE_EVENTS)->isNotEmpty()) {
+                            if ($family->facts(['MARR'], false, Auth::PRIV_HIDE)->isNotEmpty()) {
+                                if ($family->facts(Gedcom::DIVORCE_EVENTS, false, Auth::PRIV_HIDE)->isNotEmpty()) {
                                     return I18N::translate('ex-husband');
                                 }
 
                                 return I18N::translate('husband');
                             }
 
-                            if ($family->facts(Gedcom::DIVORCE_EVENTS)->isNotEmpty()) {
+                            if ($family->facts(Gedcom::DIVORCE_EVENTS, false, Auth::PRIV_HIDE)->isNotEmpty()) {
                                 return I18N::translateContext('MALE', 'ex-partner');
                             }
                         }
@@ -641,15 +641,15 @@ class Functions
                 if ($person1 && $person2) {
                     foreach ($person1->spouseFamilies() as $family) {
                         if ($person2 === $family->spouse($person1)) {
-                            if ($family->facts(['MARR'])->isNotEmpty()) {
-                                if ($family->facts(Gedcom::DIVORCE_EVENTS)->isNotEmpty()) {
+                            if ($family->facts(['MARR'], false, Auth::PRIV_HIDE)->isNotEmpty()) {
+                                if ($family->facts(Gedcom::DIVORCE_EVENTS, false, Auth::PRIV_HIDE)->isNotEmpty()) {
                                     return I18N::translate('ex-wife');
                                 }
 
                                 return I18N::translate('wife');
                             }
 
-                            if ($family->facts(Gedcom::DIVORCE_EVENTS)->isNotEmpty()) {
+                            if ($family->facts(Gedcom::DIVORCE_EVENTS, false, Auth::PRIV_HIDE)->isNotEmpty()) {
                                 return I18N::translateContext('FEMALE', 'ex-partner');
                             }
                         }
@@ -661,15 +661,15 @@ class Functions
                 if ($person1 && $person2) {
                     foreach ($person1->spouseFamilies() as $family) {
                         if ($person2 === $family->spouse($person1)) {
-                            if ($family->facts(['MARR'])->isNotEmpty()) {
-                                if ($family->facts(Gedcom::DIVORCE_EVENTS)->isNotEmpty()) {
+                            if ($family->facts(['MARR'], false, Auth::PRIV_HIDE)->isNotEmpty()) {
+                                if ($family->facts(Gedcom::DIVORCE_EVENTS, false, Auth::PRIV_HIDE)->isNotEmpty()) {
                                     return I18N::translate('ex-spouse');
                                 }
 
                                 return I18N::translate('spouse');
                             }
 
-                            if ($family->facts(Gedcom::DIVORCE_EVENTS)->isNotEmpty()) {
+                            if ($family->facts(Gedcom::DIVORCE_EVENTS, false, Auth::PRIV_HIDE)->isNotEmpty()) {
                                 return I18N::translate('ex-partner');
                             }
                         }
