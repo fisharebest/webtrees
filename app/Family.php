@@ -126,14 +126,16 @@ class Family extends GedcomRecord
      */
     protected function createPrivateGedcomRecord(int $access_level): string
     {
-        $SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
+        if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
+            $access_level = Auth::PRIV_HIDE;
+        }
 
         $rec = '0 @' . $this->xref . '@ FAM';
         // Just show the 1 CHIL/HUSB/WIFE tag, not any subtags, which may contain private data
         preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom, $matches, PREG_SET_ORDER);
         foreach ($matches as $match) {
             $rela = Individual::getInstance($match[1], $this->tree);
-            if ($rela && ($SHOW_PRIVATE_RELATIONSHIPS || $rela->canShow($access_level))) {
+            if ($rela instanceof Individual && $rela->canShow($access_level)) {
                 $rec .= $match[0];
             }
         }
@@ -166,9 +168,11 @@ class Family extends GedcomRecord
      */
     public function husband($access_level = null): ?Individual
     {
-        $SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
+        if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
+            $access_level = Auth::PRIV_HIDE;
+        }
 
-        if ($this->husb && ($SHOW_PRIVATE_RELATIONSHIPS || $this->husb->canShowName($access_level))) {
+        if ($this->husb instanceof Individual && $this->husb->canShowName($access_level)) {
             return $this->husb;
         }
 
@@ -184,9 +188,11 @@ class Family extends GedcomRecord
      */
     public function wife($access_level = null): ?Individual
     {
-        $SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
+        if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
+            $access_level = Auth::PRIV_HIDE;
+        }
 
-        if ($this->wife && ($SHOW_PRIVATE_RELATIONSHIPS || $this->wife->canShowName($access_level))) {
+        if ($this->wife instanceof Individual && $this->wife->canShowName($access_level)) {
             return $this->wife;
         }
 
@@ -271,18 +277,18 @@ class Family extends GedcomRecord
      */
     public function children($access_level = null): Collection
     {
-        if ($access_level === null) {
-            $access_level = Auth::accessLevel($this->tree);
-        }
+        $access_level = $access_level ?? Auth::accessLevel($this->tree);
 
-        $SHOW_PRIVATE_RELATIONSHIPS = (bool) $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
+        if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
+            $access_level = Auth::PRIV_HIDE;
+        }
 
         $children = new Collection();
 
-        foreach ($this->facts(['CHIL'], false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
+        foreach ($this->facts(['CHIL'], false, $access_level) as $fact) {
             $child = $fact->target();
 
-            if ($child instanceof Individual && ($SHOW_PRIVATE_RELATIONSHIPS || $child->canShowName($access_level))) {
+            if ($child instanceof Individual && $child->canShowName($access_level)) {
                 $children->push($child);
             }
         }

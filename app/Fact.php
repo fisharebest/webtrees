@@ -289,9 +289,7 @@ class Fact
      */
     public function canShow(int $access_level = null): bool
     {
-        if ($access_level === null) {
-            $access_level = Auth::accessLevel($this->record()->tree());
-        }
+        $access_level = $access_level ?? Auth::accessLevel($this->record->tree());
 
         // Does this record have an explicit RESN?
         if (strpos($this->gedcom, "\n2 RESN confidential") !== false) {

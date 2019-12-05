@@ -880,9 +880,7 @@ class GedcomRecord
      */
     public function facts(array $filter = [], bool $sort = false, int $access_level = null, bool $override = false): Collection
     {
-        if ($access_level === null) {
-            $access_level = Auth::accessLevel($this->tree);
-        }
+        $access_level = $access_level ?? Auth::accessLevel($this->tree);
 
         $facts = new Collection();
         if ($this->canShow($access_level) || $override) {
