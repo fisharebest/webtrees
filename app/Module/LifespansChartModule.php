@@ -116,7 +116,8 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
         return route(self::ROUTE_NAME, [
-                'tree' => $individual->tree()->name(),
+                'tree'  => $individual->tree()->name(),
+                'xrefs' => [$individual->xref()],
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
