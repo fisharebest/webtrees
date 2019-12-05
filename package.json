@@ -21,7 +21,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.11.2",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "beautifymarker": "^1.0.7",
-    "bootstrap": "^4.4.0",
+    "bootstrap": "^4.4.1",
     "corejs-typeahead": "^1.3.0",
     "datatables.net-bs4": "^1.10.20",
     "dejavu-fonts-ttf": "^2.37.3",
