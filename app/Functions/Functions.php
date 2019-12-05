@@ -1717,6 +1717,18 @@ class Functions
 
                             return I18N::translate('great ×%s aunt/uncle', I18N::number($up - 2));
 
+                        case 'hi': // Source: MrQD
+                            if ($sex2 === 'M') {
+                                // I18N: if you need a different number for %s, contact the developers, as a code-change is required
+                                return I18N::translate('great ×%s uncle', I18N::number($up - 2));
+                            }
+
+                            if ($sex2 === 'F') {
+                                return I18N::translate('great ×%s aunt', I18N::number($up - 2));
+                            }
+
+                            return I18N::translate('great ×%s aunt/uncle', I18N::number($up - 2));
+
                         case 'it': // Source: Michele Locati
                         case 'en_AU':
                         case 'en_GB':
@@ -1931,6 +1943,18 @@ class Functions
                             }
 
                             return I18N::translate('great ×%s nephew/niece', I18N::number($down - 1));
+
+                        case 'hi': // Source: MrQD.
+                            if ($sex2 === 'M') {
+                                // I18N: if you need a different number for %s, contact the developers, as a code-change is required
+                                return I18N::translate('great ×%s nephew', I18N::number($down - 3));
+                            }
+
+                            if ($sex2 === 'F') {
+                                return I18N::translate('great ×%s niece', I18N::number($down - 3));
+                            }
+
+                            return I18N::translate('great ×%s nephew/niece', I18N::number($down - 3));
 
                         case 'it': // Source: Michele Locati.
                         case 'en_AU':
