@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\Tree;
@@ -43,14 +44,12 @@ class AuthVisitor implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-        $user = $request->getAttribute('user');
 
-        // Visitor?
-        if ($user instanceof GuestUser) {
+        // We've matched a tree parameter in the route, and it is visible.
+        if ($tree instanceof Tree) {
             return $handler->handle($request);
         }
 
-        // Already logged in?
-        return redirect(route(HomePage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
+        return redirect(HomePage::class);
     }
 }

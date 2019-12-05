@@ -431,10 +431,6 @@ class WebRoutes
 
         // Visitor routes - with an optional tree (for sites with no public trees).
         $router->attach('', '', static function (Map $router) {
-            $router->extras([
-                'middleware' => [AuthVisitor::class],
-            ]);
-
             $router->get(LoginPage::class, '/login{/tree}', LoginPage::class);
             $router->post(LoginAction::class, '/login{/tree}', LoginAction::class);
             $router->get(PasswordRequestPage::class, '/password-request{/tree}', PasswordRequestPage::class);
@@ -446,8 +442,12 @@ class WebRoutes
             $router->get(VerifyEmail::class, '/verify/{username}/{token}{/tree}', VerifyEmail::class);
         });
 
-        // Public routes.
+        // Visitor routes with a tree.
         $router->attach('', '/tree/{tree}', static function (Map $router) {
+            $router->extras([
+                'middleware' => [AuthVisitor::class],
+            ]);
+
             $router->get('tree-page', '', 'HomePageController::treePage');
             $router->get('autocomplete-folder', '/autocomplete-folder', 'AutocompleteController::folder');
             $router->get('autocomplete-page', '/autocomplete-page', 'AutocompleteController::page');

@@ -275,15 +275,14 @@ trait ModuleThemeTrait
         // Return to this page after login...
         $redirect = $request->getQueryParams()['url'] ?? (string) $request->getUri();
 
+        $tree = $request->getAttribute('tree');
+
         // ...but switch from the tree-page to the user-page
         if ($request->getAttribute('route') === 'tree-page') {
-            $tree = $request->getAttribute('tree');
-            assert($tree instanceof Tree);
-            $redirect = route('user-page', ['tree' => $tree->name()]);
+            $redirect = route('user-page', ['tree' => $tree instanceof Tree ? $tree->name() : null]);
         }
 
         // Stay on the same tree page
-        $tree = $request->getAttribute('tree');
         $url  = route(LoginPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null, 'url' => $redirect]);
 
         return new Menu(I18N::translate('Sign in'), $url, 'menu-login', ['rel' => 'nofollow']);
