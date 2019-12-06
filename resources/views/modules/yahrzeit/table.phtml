@@ -1,56 +1,63 @@
 <?php
 
 use Fisharebest\Webtrees\I18N;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Collection $yahrzeits
+ */
 
 ?>
 
-<table
+<div class="table-responsive">
+    <table
     class="table table-sm datatable wt-table-yahrzeits"
     data-info="false"
     data-paging="false"
     data-searching="false"
     data-sorting="<?= e('[[3, "asc" ]]') ?>"
-    <?= view('lists/datatables-attributes') ?>
->
-    <thead>
-        <tr>
-            <th><?= I18N::translate('Name') ?></th>
-            <th><?= I18N::translate('Death') ?></th>
-            <th>
+        <?= view('lists/datatables-attributes') ?>
+    >
+        <thead>
+            <tr>
+                <th><?= I18N::translate('Name') ?></th>
+                <th><?= I18N::translate('Death') ?></th>
+                <th>
                 <span title="<?= I18N::translate('Anniversary') ?>">
                     <?= view('icons/anniversary') ?>
                 </span>
 
-            </th>
-            <th><?= I18N::translate('Yahrzeit') ?></th>
-        </tr>
-    </thead>
-    <tbody>
-
-        <?php foreach ($yahrzeits as $yahrzeit) : ?>
-            <tr>
-                <td data-sort="<?= e($yahrzeit->individual->sortName()) ?>">
-                    <a href="<?= e($yahrzeit->individual->url()) ?>">
-                        <?= $yahrzeit->individual->fullName() ?>
-                        <?php if ($yahrzeit->individual->alternateName()) : ?>
-                        <br>
-                            <?= $yahrzeit->individual->alternateName() ?>
-                        <?php endif ?>
-                    </a>
-                </td>
-                <td data-sort="<?= e($yahrzeit->fact_date->julianDay()) ?>">
-                    <?= $yahrzeit->fact_date->display(true, null, false) ?>
-                </td>
-                <td data-sort="<?= e($yahrzeit->fact->anniv) ?>">
-                    <?= I18N::number($yahrzeit->fact->anniv) ?>
-                </td>
-                <td data-sort="<?= e($yahrzeit->yahrzeit_date->julianDay()) ?>">
-                    <?= $yahrzeit->yahrzeit_date->display(true, null, false) ?>
-                </td>
+                </th>
+                <th><?= I18N::translate('Yahrzeit') ?></th>
             </tr>
-        <?php endforeach ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+
+            <?php foreach ($yahrzeits as $yahrzeit) : ?>
+                <tr>
+                    <td data-sort="<?= e($yahrzeit->individual->sortName()) ?>">
+                        <a href="<?= e($yahrzeit->individual->url()) ?>">
+                            <?= $yahrzeit->individual->fullName() ?>
+                            <?php if ($yahrzeit->individual->alternateName()) : ?>
+                                <br>
+                                <?= $yahrzeit->individual->alternateName() ?>
+                            <?php endif ?>
+                        </a>
+                    </td>
+                    <td data-sort="<?= e($yahrzeit->fact_date->julianDay()) ?>">
+                        <?= $yahrzeit->fact_date->display(true, null, false) ?>
+                    </td>
+                    <td data-sort="<?= e($yahrzeit->fact->anniv) ?>">
+                        <?= I18N::number($yahrzeit->fact->anniv) ?>
+                    </td>
+                    <td data-sort="<?= e($yahrzeit->yahrzeit_date->julianDay()) ?>">
+                        <?= $yahrzeit->yahrzeit_date->display(true, null, false) ?>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+</div>
 
 <script>
   $(".wt-table-yahrzeits").dataTable();
