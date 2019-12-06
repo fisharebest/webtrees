@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-06 06:51+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-07 09:01+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -17216,7 +17216,7 @@ msgstr "फॅमिली ट्री तक पहुंच"
 
 #: resources/views/admin/users-edit.phtml:221
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "एक भूमिका प्रवेश अधिकारों का एक सेट है, जो डेटा को देखने, प्राथमिकताओं को बदलने आदि की अनुमति देता है। प्रवेश अधिकार भूमिकाओं को सौंपा गया है, और भूमिकाएँ यूज़र्स को दी जाती हैं।  प्रत्येक फॅमिली ट्री प्रत्येक भूमिका के लिए अलग-अलग पहुंच प्रदान कर सकती है, और प्रत्येक फॅमिली ट्री में यूज़र्स की एक अलग भूमिका हो सकती है।"
+msgstr "एक भूमिका प्रवेश अधिकारों का एक सेट है, जो डेटा को देखने, प्राथमिकताओं को बदलने आदि की अनुमति देता है। प्रवेश अधिकार भूमिकाओं को सौंपा गया है, और भूमिकाएँ यूज़र्स को दी जाती हैं। प्रत्येक फॅमिली ट्री प्रत्येक भूमिका के लिए अलग-अलग पहुंच प्रदान कर सकती है, और प्रत्येक फॅमिली ट्री में यूज़र्स की एक अलग भूमिका हो सकती है।"
 
 #: resources/views/admin/users-edit.phtml:230
 msgid "Everybody has this role, including visitors to the website and search engines."
@@ -18999,8 +18999,8 @@ msgstr "तारीख की मुद्दत"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] "%1$s के अंतराल से %2$s साल"
-msgstr[1] "%1$s के अंतराल से %2$s साल"
+msgstr[0] "%1$s से अंतराल %2$s साल"
+msgstr[1] "%1$s से अंतराल %2$s साल"
 
 #: resources/views/modules/statistics-chart/custom.phtml:114
 msgid "Results"
