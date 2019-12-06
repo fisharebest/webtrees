@@ -63,12 +63,10 @@ $("#<?= e($table_id) ?>").dataTable({
 $("#<?= e($table_id) ?>")
     /* Hide/show parents */
     .on("click", ".btn-toggle-parents", function() {
-        $(this).toggleClass("ui-state-active");
-        $(".parents", $(this).closest("table").DataTable().rows().nodes()).slideToggle();
+        $(".wt-individual-list-parents").slideToggle();
     })
     /* Hide/show statistics */
     .on("click", ".btn-toggle-statistics", function() {
-        $(this).toggleClass("ui-state-active");
         $("#individual-charts-<?= e($table_id) ?>").slideToggle({
             complete: function () {
                 // Trigger resize to redraw the chart
@@ -297,10 +295,10 @@ $deathAgeData = [
                 <th colspan="16">
                     <div class="btn-toolbar">
                         <div class="btn-group">
-                            <button class="ui-state-default btn-toggle-parents">
+                            <button class="btn-toggle-parents">
                                 <?= I18N::translate('Show parents') ?>
                             </button>
-                            <button class="ui-state-default btn-toggle-statistics">
+                            <button class="btn-toggle-statistics">
                                 <?= I18N::translate('Show statistics charts') ?>
                             </button>
                         </div>
@@ -322,7 +320,7 @@ $deathAgeData = [
                         <?php endif ?>
                         <br>
                     <?php endforeach ?>
-                    <?= $individual->getPrimaryParentsNames('parents details1', 'none') ?>
+                    <?= view('lists/individual-table-parents', ['individual' => $individual]) ?>
                 </td>
 
                 <td hidden data-sort="<?= e(str_replace([',', '@P.N.', '@N.N.'], 'AAAA', $individual->sortName())) ?>"></td>

@@ -167,7 +167,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     public function getPersonLi(Individual $person, $generations = 0): string
     {
         $icon     = $generations > 0 ? 'icon-minus' : 'icon-plus';
-        $lifespan = $person->canShow() ? '(' . $person->getLifeSpan() . ')' : '';
+        $lifespan = $person->canShow() ? '(' . $person->lifespan() . ')' : '';
         $spouses  = $generations > 0 ? $this->loadSpouses($person, 0) : '';
 
         return

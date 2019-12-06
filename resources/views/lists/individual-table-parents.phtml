@@ -1,0 +1,21 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<?php foreach ($individual->childFamilies() as $family) : ?>
+    <div class="wt-individual-list-parents small" style="display: none">
+        <?php foreach ($family->spouses() as $spouse) : ?>
+            <div class="wt-individual-list-parent">
+                <?php $spouse = clone($spouse); ?>
+                <?php $spouse->setPrimaryName(null); ?>
+                <?php if ($spouse->sex() === 'F') : ?>
+                    <?= I18N::translate('Mother: %s', $spouse->fullName()) ?>
+                <?php else : ?>
+                    <?= I18N::translate('Father: %s', $spouse->fullName()) ?>
+                <?php endif ?>
+            </div>
+        <?php endforeach ?>
+    </div>
+<?php endforeach ?>

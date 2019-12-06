@@ -292,14 +292,14 @@ class BranchesController extends AbstractBaseController
         $sosa = array_search($individual, $ancestors, true);
         if (is_int($sosa) && $module instanceof RelationshipsChartModule) {
             $sosa_class = 'search_hit';
-            $sosa_html  = '<a class="details1 ' . $individual->getBoxStyle() . '" href="' . e($module->chartUrl($individual, ['xref2' => $individuals[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationships') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
+            $sosa_html  = '<a class="small ' . $individual->getBoxStyle() . '" href="' . e($module->chartUrl($individual, ['xref2' => $individuals[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationships') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
         } else {
             $sosa_class = '';
             $sosa_html  = '';
         }
 
         // Generate HTML for this individual, and all their descendants
-        $indi_html = '<small>' . view('icons/sex', ['sex' => $individual->sex()]) . '</small><a class="' . $sosa_class . '" href="' . e($individual->url()) . '">' . $person_name . '</a> ' . $individual->getLifeSpan() . $sosa_html;
+        $indi_html = '<small>' . view('icons/sex', ['sex' => $individual->sex()]) . '</small><a class="' . $sosa_class . '" href="' . e($individual->url()) . '">' . $person_name . '</a> ' . $individual->lifespan() . $sosa_html;
 
         // If this is not a birth pedigree (e.g. an adoption), highlight it
         if ($parents) {
@@ -329,7 +329,7 @@ class BranchesController extends AbstractBaseController
                     $sosa = array_search($spouse, $ancestors, true);
                     if (is_int($sosa) && $module instanceof RelationshipsChartModule) {
                         $sosa_class = 'search_hit';
-                        $sosa_html  = '<a class="details1 ' . $spouse->getBoxStyle() . '" href="' . e($module->chartUrl($individual, ['xref2' => $individuals[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationships') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
+                        $sosa_html  = '<a class="small ' . $spouse->getBoxStyle() . '" href="' . e($module->chartUrl($individual, ['xref2' => $individuals[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationships') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
                     } else {
                         $sosa_class = '';
                         $sosa_html  = '';
@@ -342,7 +342,7 @@ class BranchesController extends AbstractBaseController
                     } else {
                         $fam_html .= ' <a href="' . e($family->url()) . '" title="' . I18N::translate('Not married') . '"><i class="icon-rings"></i></a>';
                     }
-                    $fam_html .= ' <small>' . view('icons/sex', ['sex' => $spouse->sex()]) . '</small><a class="' . $sosa_class . '" href="' . e($spouse->url()) . '">' . $spouse->fullName() . '</a> ' . $spouse->getLifeSpan() . ' ' . $sosa_html;
+                    $fam_html .= ' <small>' . view('icons/sex', ['sex' => $spouse->sex()]) . '</small><a class="' . $sosa_class . '" href="' . e($spouse->url()) . '">' . $spouse->fullName() . '</a> ' . $spouse->lifespan() . ' ' . $sosa_html;
                 }
 
                 $fam_html .= '<ol>';

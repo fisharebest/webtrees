@@ -367,7 +367,7 @@ class TreeView
         }
         $sex = $individual->sex();
 
-        return '<div class="tv' . $sex . ' ' . $dashed . '"' . $title . '><a href="' . e($individual->url()) . '"></a>' . $individual->fullName() . ' <span class="dates">' . $individual->getLifeSpan() . '</span></div>';
+        return '<div class="tv' . $sex . ' ' . $dashed . '"' . $title . '><a href="' . e($individual->url()) . '"></a>' . $individual->fullName() . ' <span class="dates">' . $individual->lifespan() . '</span></div>';
     }
 
     /**

@@ -340,7 +340,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                         $text .= "\n" . I18N::reverseText($addname);
                     }
 
-                    $text .= "\n" . I18N::reverseText($person->getLifeSpan());
+                    $text .= "\n" . I18N::reverseText($person->lifespan());
 
                     $background = $backgrounds[$person->sex()];
 
@@ -428,7 +428,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                     // add action url
                     $areas .= '" href="#' . $person->xref() . '"';
                     $html  .= '<div id="' . $person->xref() . '" class="fan_chart_menu">';
-                    $html  .= '<div class="person_box"><div class="details1">';
+                    $html  .= '<div class="person_box"><div class="small">';
                     $html  .= '<div class="charts">';
                     $html  .= '<a href="' . e($person->url()) . '" class="dropdown-item">' . $name . '</a>';
                     foreach ($theme->individualBoxMenu($person) as $menu) {

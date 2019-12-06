@@ -46,7 +46,7 @@ use Fisharebest\Webtrees\Functions\Functions;
                             <?= $spouse->fullName() ?>
                         </a>
                         <div class="small">
-                            <?= $spouse->getLifeSpan() ?>
+                            <?= $spouse->lifespan() ?>
                         </div>
                     <?php else : ?>
                         <?= $spouse->fullName() ?>
@@ -107,7 +107,7 @@ use Fisharebest\Webtrees\Functions\Functions;
                             <?= $child->fullName() ?>
                         </a>
                         <div class="small">
-                            <?= $child->getLifeSpan() ?>
+                            <?= $child->lifespan() ?>
                         </div>
                     <?php else : ?>
                         <?= $child->fullName() ?>

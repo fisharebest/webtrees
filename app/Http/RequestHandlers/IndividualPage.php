@@ -166,7 +166,7 @@ class IndividualPage implements RequestHandlerInterface
             'sidebars'         => $this->getSidebars($individual),
             'tabs'             => $this->getTabs($individual),
             'significant'      => $this->significant($individual),
-            'title'            => $individual->fullName() . ' ' . $individual->getLifeSpan(),
+            'title'            => $individual->fullName() . ' ' . $individual->lifespan(),
             'tree'             => $tree,
             'user_link'        => $user_link,
         ]);

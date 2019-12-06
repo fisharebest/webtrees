@@ -407,7 +407,7 @@ class CalendarController extends AbstractBaseController
                     if ($d < 1 || $d > $days_in_month) {
                         if (count($cal_facts[0]) > 0) {
                             echo '<span class="cal_day">', I18N::translate('Day not set'), '</span><br style="clear: both;">';
-                            echo '<div class="details1" style="height: 180px; overflow: auto;">';
+                            echo '<div class="small" style="height: 180px; overflow: auto;">';
                             echo $this->calendarListText($cal_facts[0], '', '', $tree);
                             echo '</div>';
                             $cal_facts[0] = [];
@@ -453,7 +453,7 @@ class CalendarController extends AbstractBaseController
                                 break;
                             }
                         }
-                        echo '<br style="clear: both;"><div class="details1" style="height: 180px; overflow: auto;">';
+                        echo '<br style="clear: both;"><div class="small" style="height: 180px; overflow: auto;">';
                         echo $this->calendarListText($cal_facts[$d], '', '', $tree);
                         echo '</div>';
                     }

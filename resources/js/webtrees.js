@@ -570,6 +570,7 @@ function autocomplete(selector)
         let that = this;
         $(this).typeahead(null, {
             display: 'value',
+            limit: 0,
             source: new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,

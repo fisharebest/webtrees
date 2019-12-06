@@ -564,7 +564,7 @@ class Individual extends GedcomRecord
      *
      * @return string
      */
-    public function getLifeSpan(): string
+    public function lifespan(): string
     {
         // Just the first part of the place name
         $birth_place = strip_tags($this->getBirthPlace()->shortName());
@@ -1017,53 +1017,6 @@ class Individual extends GedcomRecord
         }
 
         return $family->fullName();
-    }
-
-    /**
-     * get primary parents names for this individual
-     *
-     * @param string $classname optional css class
-     * @param string $display   optional css style display
-     *
-     * @return string a div block with father & mother names
-     */
-    public function getPrimaryParentsNames($classname = '', $display = ''): string
-    {
-        $fam = $this->childFamilies()->first();
-        if (!$fam) {
-            return '';
-        }
-        $txt = '<div';
-        if ($classname) {
-            $txt .= ' class="' . $classname . '"';
-        }
-        if ($display) {
-            $txt .= ' style="display:' . $display . '"';
-        }
-        $txt .= '>';
-        $husb = $fam->husband();
-        if ($husb) {
-            // Temporarily reset the 'prefered' display name, as we always
-            // want the default name, not the one selected for display on the indilist.
-            $primary = $husb->getPrimaryName();
-            $husb->setPrimaryName(null);
-            /* I18N: %s is the name of an individual’s father */
-            $txt .= I18N::translate('Father: %s', $husb->fullName()) . '<br>';
-            $husb->setPrimaryName($primary);
-        }
-        $wife = $fam->wife();
-        if ($wife) {
-            // Temporarily reset the 'prefered' display name, as we always
-            // want the default name, not the one selected for display on the indilist.
-            $primary = $wife->getPrimaryName();
-            $wife->setPrimaryName(null);
-            /* I18N: %s is the name of an individual’s mother */
-            $txt .= I18N::translate('Mother: %s', $wife->fullName());
-            $wife->setPrimaryName($primary);
-        }
-        $txt .= '</div>';
-
-        return $txt;
     }
 
     /**
