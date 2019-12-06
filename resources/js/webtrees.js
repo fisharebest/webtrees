@@ -122,7 +122,7 @@ function valid_date(datefield, dmy)
     var jalali_months = ['FARVA', 'ORDIB', 'KHORD', 'TIR', 'MORDA', 'SHAHR', 'MEHR', 'ABAN', 'AZAR', 'DEY', 'BAHMA', 'ESFAN'];
 
     var datestr = datefield.value;
-  // if a date has a date phrase marked by () this has to be excluded from altering
+    // if a date has a date phrase marked by () this has to be excluded from altering
     var datearr = datestr.split('(');
     var datephrase = '';
     if (datearr.length > 1) {
@@ -130,21 +130,21 @@ function valid_date(datefield, dmy)
         datephrase = datearr[1];
     }
 
-  // Gedcom dates are upper case
+    // Gedcom dates are upper case
     datestr = datestr.toUpperCase();
-  // Gedcom dates have no leading/trailing/repeated whitespace
+    // Gedcom dates have no leading/trailing/repeated whitespace
     datestr = datestr.replace(/\s+/, ' ');
     datestr = datestr.replace(/(^\s)|(\s$)/, '');
-  // Gedcom dates have spaces between letters and digits, e.g. "01JAN2000" => "01 JAN 2000"
+    // Gedcom dates have spaces between letters and digits, e.g. "01JAN2000" => "01 JAN 2000"
     datestr = datestr.replace(/(\d)([A-Z])/, '$1 $2');
     datestr = datestr.replace(/([A-Z])(\d)/, '$1 $2');
 
-  // Shortcut for quarter format, "Q1 1900" => "BET JAN 1900 AND MAR 1900". See [ 1509083 ]
+    // Shortcut for quarter format, "Q1 1900" => "BET JAN 1900 AND MAR 1900". See [ 1509083 ]
     if (datestr.match(/^Q ([1-4]) (\d\d\d\d)$/)) {
         datestr = 'BET ' + months[RegExp.$1 * 3 - 3] + ' ' + RegExp.$2 + ' AND ' + months[RegExp.$1 * 3 - 1] + ' ' + RegExp.$2;
     }
 
-  // Shortcut for @#Dxxxxx@ 01 01 1400, etc.
+    // Shortcut for @#Dxxxxx@ 01 01 1400, etc.
     if (datestr.match(/^(@#DHIJRI@|HIJRI)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
         datestr = '@#DHIJRI@' + RegExp.$2 + hijri_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
     }
@@ -158,7 +158,7 @@ function valid_date(datefield, dmy)
         datestr = '@#DFRENCH R@' + RegExp.$2 + french_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
     }
 
-  // e.g. 17.11.1860, 03/04/2005 or 1999-12-31. Use locale settings where DMY order is ambiguous.
+    // e.g. 17.11.1860, 03/04/2005 or 1999-12-31. Use locale settings where DMY order is ambiguous.
     var qsearch = /^([^\d]*)(\d+)[^\d](\d+)[^\d](\d+)$/i;
     if (qsearch.exec(datestr)) {
         var f0 = RegExp.$1;
@@ -181,7 +181,7 @@ function valid_date(datefield, dmy)
         }
     }
 
-  // Shortcuts for date ranges
+    // Shortcuts for date ranges
     datestr = datestr.replace(/^[>]([\w ]+)$/, 'AFT $1');
     datestr = datestr.replace(/^[<]([\w ]+)$/, 'BEF $1');
     datestr = datestr.replace(/^([\w ]+)[-]$/, 'FROM $1');
@@ -192,7 +192,7 @@ function valid_date(datefield, dmy)
     datestr = datestr.replace(/^([\w ]+) ?- ?([\w ]+)$/, 'BET $1 AND $2');
     datestr = datestr.replace(/^([\w ]+) ?~ ?([\w ]+)$/, 'FROM $1 TO $2');
 
-  // Convert full months to short months
+    // Convert full months to short months
     datestr = datestr.replace(/(JANUARY)/, 'JAN');
     datestr = datestr.replace(/(FEBRUARY)/, 'FEB');
     datestr = datestr.replace(/(MARCH)/, 'MAR');
@@ -206,18 +206,18 @@ function valid_date(datefield, dmy)
     datestr = datestr.replace(/(NOVEMBER)/, 'NOV');
     datestr = datestr.replace(/(DECEMBER)/, 'DEC');
 
-  // Americans frequently enter dates as SEP 20, 1999
-  // No need to internationalise this, as this is an english-language issue
+    // Americans frequently enter dates as SEP 20, 1999
+    // No need to internationalise this, as this is an english-language issue
     datestr = datestr.replace(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\.? (\d\d?)[, ]+(\d\d\d\d)/, '$2 $1 $3');
 
-  // Apply leading zero to day numbers
+    // Apply leading zero to day numbers
     datestr = datestr.replace(/(^| )(\d [A-Z]{3,5} \d{4})/, '$10$2');
 
     if (datephrase) {
         datestr = datestr + ' (' + datephrase;
     }
-  // Only update it if is has been corrected - otherwise input focus
-  // moves to the end of the field unnecessarily
+    // Only update it if is has been corrected - otherwise input focus
+    // moves to the end of the field unnecessarily
     if (datefield.value !== datestr) {
         datefield.value = datestr;
     }
@@ -310,7 +310,7 @@ function calendarWidget(dateDivId, dateFieldId)
         return false;
     }
 
-  /* Javascript calendar functions only work with precise gregorian dates "D M Y" or "Y" */
+    /* Javascript calendar functions only work with precise gregorian dates "D M Y" or "Y" */
     var greg_regex = /((\d+ (JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) )?\d+)/i;
     var date;
     if (greg_regex.exec(dateField.value)) {
@@ -484,18 +484,18 @@ function pastename(name)
 function paste_char(value)
 {
     if (document.selection) {
-      // IE
+        // IE
         pastefield.focus();
         document.selection.createRange().text = value;
     } else if (pastefield.selectionStart || pastefield.selectionStart === 0) {
-      // Mozilla/Chrome/Safari
+        // Mozilla/Chrome/Safari
         pastefield.value =
         pastefield.value.substring(0, pastefield.selectionStart) +
         value +
         pastefield.value.substring(pastefield.selectionEnd, pastefield.value.length);
         pastefield.selectionStart = pastefield.selectionEnd = pastefield.selectionStart + value.length;
     } else {
-      // Fallback? - just append
+        // Fallback? - just append
         pastefield.value += value;
     }
 
@@ -526,19 +526,19 @@ function persistent_toggle(element_id)
 
 function valid_lati_long(field, pos, neg)
 {
-  // valid LATI or LONG according to Gedcom standard
-  // pos (+) : N or E
-  // neg (-) : S or W
+    // valid LATI or LONG according to Gedcom standard
+    // pos (+) : N or E
+    // neg (-) : S or W
     var txt = field.value.toUpperCase();
     txt = txt.replace(/(^\s*)|(\s*$)/g, ''); // trim
     txt = txt.replace(/ /g, ':'); // N12 34 ==> N12.34
     txt = txt.replace(/\+/g, ''); // +17.1234 ==> 17.1234
     txt = txt.replace(/-/g, neg); // -0.5698 ==> W0.5698
     txt = txt.replace(/,/g, '.'); // 0,5698 ==> 0.5698
-  // 0°34'11 ==> 0:34:11
+    // 0°34'11 ==> 0:34:11
     txt = txt.replace(/\u00b0/g, ':'); // °
     txt = txt.replace(/\u0027/g, ':'); // '
-  // 0:34:11.2W ==> W0.5698
+    // 0:34:11.2W ==> W0.5698
     txt = txt.replace(/^([0-9]+):([0-9]+):([0-9.]+)(.*)/g, function ($0, $1, $2, $3, $4) {
         var n = parseFloat($1);
         n += ($2 / 60);
@@ -546,16 +546,16 @@ function valid_lati_long(field, pos, neg)
         n = Math.round(n * 1E4) / 1E4;
         return $4 + n;
     });
-  // 0:34W ==> W0.5667
+    // 0:34W ==> W0.5667
     txt = txt.replace(/^([0-9]+):([0-9]+)(.*)/g, function ($0, $1, $2, $3) {
         var n = parseFloat($1);
         n += ($2 / 60);
         n = Math.round(n * 1E4) / 1E4;
         return $3 + n;
     });
-  // 0.5698W ==> W0.5698
+    // 0.5698W ==> W0.5698
     txt = txt.replace(/(.*)([N|S|E|W]+)$/g, '$2$1');
-  // 17.1234 ==> N17.1234
+    // 17.1234 ==> N17.1234
     if (txt && txt.charAt(0) !== neg && txt.charAt(0) !== pos) {
         txt = pos + txt;
     }
@@ -565,7 +565,7 @@ function valid_lati_long(field, pos, neg)
 // Initialize autocomplete elements.
 function autocomplete(selector)
 {
-  // Use typeahead/bloodhound for autocomplete
+    // Use typeahead/bloodhound for autocomplete
     $(selector).each(function () {
         let that = this;
         $(this).typeahead(null, {
@@ -619,13 +619,13 @@ $.ajaxSetup({
 
 // Initialisation
 $(function () {
-  // Page elements that load automaticaly via AJAX.
-  // This prevents bad robots from crawling resource-intensive pages.
+    // Page elements that load automaticaly via AJAX.
+    // This prevents bad robots from crawling resource-intensive pages.
     $("[data-ajax-url]").each(function () {
         $(this).load($(this).data('ajaxUrl'));
     });
 
-  // Select2 - format entries in the select list
+    // Select2 - format entries in the select list
     function templateOptionForSelect2(data)
     {
         if (data.loading) {
@@ -671,14 +671,29 @@ $(function () {
         return y.localeCompare(x, document.documentElement.lang, {'sensitivity': 'base'});
     };
 
-  // DataTables - start hidden to prevent FOUC.
+    // DataTables - start hidden to prevent FOUC.
     $('table.datatables').each(function () {
-        $(this).DataTable(); $(this).removeClass('d-none'); });
+        $(this).DataTable();
+        $(this).removeClass('d-none');
+    });
 
-  // Activate the on-screen keyboard
+    // Save button state between pages
+    document.querySelectorAll("[data-toggle=button][data-persist]").forEach((element) => {
+        // Previously selected?
+        if (localStorage.getItem("state-of-" + element.dataset.persist) === 'T') {
+            element.click();
+        }
+        // Save state on change
+        element.addEventListener("click", (event) => {
+            // Event occurs *before* the state changes, so reverse T/F.
+            localStorage.setItem("state-of-" + event.target.dataset.persist, event.target.classList.contains("active") ? 'F' : 'T');
+        });
+    });
+
+    // Activate the on-screen keyboard
     var osk_focus_element;
     $('.wt-osk-trigger').click(function () {
-      // When a user clicks the icon, set focus to the corresponding input
+        // When a user clicks the icon, set focus to the corresponding input
         osk_focus_element = document.getElementById($(this).data('id'));
         osk_focus_element.focus();
         $('.wt-osk').show();
