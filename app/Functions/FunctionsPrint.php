@@ -143,22 +143,6 @@ class FunctionsPrint
     }
 
     /**
-     * Print a link for a popup help window.
-     *
-     * @param string $topic
-     *
-     * @return string
-     */
-    public static function helpLink($topic): string
-    {
-        return
-            '<a href="#" data-toggle="modal" data-target="#wt-ajax-modal" data-href="' . e(route(HelpText::class, ['topic' => $topic])) . '" title="' . I18N::translate('Help') . '">' .
-            view('icons/help') .
-            '<span class="sr-only">' . I18N::translate('Help') . '</span>' .
-            '</a>';
-    }
-
-    /**
      * Format age of parents in HTML
      *
      * @param Individual $person child

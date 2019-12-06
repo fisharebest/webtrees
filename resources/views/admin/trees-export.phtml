@@ -1,6 +1,5 @@
 <?php
 
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ExportGedcomClient;
 use Fisharebest\Webtrees\Http\RequestHandlers\ExportGedcomServer;
@@ -50,7 +49,7 @@ use Fisharebest\Webtrees\I18N;
                             <input class="form-check-input" type="checkbox" name="zip">
                             <?= I18N::translate('Compress the GEDCOM file') ?>
                         </label>
-                        <?= FunctionsPrint::helpLink('zip-gedcom') ?>
+                        <?= view('help/link', ['topic' => 'zip-gedcom']) ?>
                     </div>
 
                     <div class="form-check">
@@ -65,7 +64,7 @@ use Fisharebest\Webtrees\I18N;
                             <input class="form-check-input" type="checkbox" name="convert">
                             <?= I18N::translate('Convert from UTF-8 to ISO-8859-1') ?>
                         </label>
-                        <?= FunctionsPrint::helpLink('iso-8859-1') ?>
+                       <?= view('help/link', ['topic' => 'iso-8859-1']) ?>
                     </div>
 
                     <?php if ($tree->getPreference('GEDCOM_MEDIA_PATH')) : ?>

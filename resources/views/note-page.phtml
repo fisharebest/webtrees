@@ -1,25 +1,25 @@
 <?php
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
+use Fisharebest\Webtrees\I18N;
 
 ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrintFacts; ?>
-<?php use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
-use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
-use Fisharebest\Webtrees\I18N; ?>
 
 <?php if ($note->isPendingDeletion()) : ?>
     <?php if (Auth::isModerator($note->tree())) : ?>
-        <?= view('components/alert-warning-dismissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This note has been deleted. You should review the deletion and then %1$s or %2$s it.', '<a href="#" class="alert-link" data-post-url="' . e(route(PendingChangesAcceptRecord::class, ['tree' => $note->tree()->name(), 'xref' => $note->xref()])) . '">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>', '<a href="#" class="alert-link" data-post-url="' . e(route(PendingChangesRejectRecord::class, ['tree' => $note->tree()->name(), 'xref' => $note->xref()])) . '">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
+        <?= view('components/alert-warning-dismissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This note has been deleted. You should review the deletion and then %1$s or %2$s it.', '<a href="#" class="alert-link" data-post-url="' . e(route(PendingChangesAcceptRecord::class, ['tree' => $note->tree()->name(), 'xref' => $note->xref()])) . '">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>', '<a href="#" class="alert-link" data-post-url="' . e(route(PendingChangesRejectRecord::class, ['tree' => $note->tree()->name(), 'xref' => $note->xref()])) . '">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>') . ' ' . view('help/link', ['topic' => 'pending_changes'])]) ?>
     <?php elseif (Auth::isEditor($note->tree())) : ?>
-        <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This note has been deleted. The deletion will need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
+        <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This note has been deleted. The deletion will need to be reviewed by a moderator.') . ' ' . view('help/link', ['topic' => 'pending_changes'])]) ?>
     <?php endif ?>
 <?php elseif ($note->isPendingAddition()) : ?>
     <?php if (Auth::isModerator($note->tree())) : ?>
-        <?= view('components/alert-warning-dismissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This note has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" data-post-url="' . e(route(PendingChangesAcceptRecord::class, ['tree' => $note->tree()->name(), 'xref' => $note->xref()])) . '">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" data-post-url="' . e(route(PendingChangesRejectRecord::class, ['tree' => $note->tree()->name(), 'xref' => $note->xref()])) . '">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
+        <?= view('components/alert-warning-dismissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This note has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" data-post-url="' . e(route(PendingChangesAcceptRecord::class, ['tree' => $note->tree()->name(), 'xref' => $note->xref()])) . '">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" data-post-url="' . e(route(PendingChangesRejectRecord::class, ['tree' => $note->tree()->name(), 'xref' => $note->xref()])) . '">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>') . ' ' . view('help/link', ['topic' => 'pending_changes'])]) ?>
     <?php elseif (Auth::isEditor($note->tree())) : ?>
-        <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This note has been edited. The changes need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
+        <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This note has been edited. The changes need to be reviewed by a moderator.') . ' ' . view('help/link', ['topic' => 'pending_changes'])]) ?>
     <?php endif ?>
 <?php endif ?>
 

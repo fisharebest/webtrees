@@ -58,6 +58,7 @@ use function app;
 use function explode;
 use function in_array;
 use function substr;
+use function view;
 
 /**
  * Class FunctionsEdit - common functions for editing
@@ -378,13 +379,13 @@ class FunctionsEdit
         switch ($fact) {
             case 'NAME':
                 if ($upperlevel !== 'REPO' && $upperlevel !== 'UNKNOWN') {
-                    $html .= FunctionsPrint::helpLink($fact);
+                    $html .= view('help/link', ['topic' => $fact]);
                 }
                 break;
             case 'ROMN':
             case 'SURN':
             case '_HEB':
-                $html .= FunctionsPrint::helpLink($fact);
+                $html .= view('help/link', ['topic' => $fact]);
                 break;
         }
 
