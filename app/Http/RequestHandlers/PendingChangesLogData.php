@@ -91,13 +91,13 @@ class PendingChangesLogData implements RequestHandlerInterface
             foreach ($differences as $difference) {
                 switch ($difference[1]) {
                     case MyersDiff::DELETE:
-                        $diff_lines[] = '<del>' . $difference[0] . '</del>';
+                        $diff_lines[] = '<del>' . e($difference[0]) . '</del>';
                         break;
                     case MyersDiff::INSERT:
-                        $diff_lines[] = '<ins>' . $difference[0] . '</ins>';
+                        $diff_lines[] = '<ins>' . e($difference[0]) . '</ins>';
                         break;
                     default:
-                        $diff_lines[] = $difference[0];
+                        $diff_lines[] = e($difference[0]);
                 }
             }
 
