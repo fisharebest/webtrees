@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-12-07 09:00+0000\n"
+"PO-Revision-Date: 2019-12-10 11:59+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
@@ -1321,7 +1321,7 @@ msgstr ""
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
-msgstr "भाई या बहन को जोड़ें"
+msgstr "कोई भाई या बहन जोड़ें"
 
 #: edit_interface.php:496
 msgid "Add a child"
@@ -1412,7 +1412,7 @@ msgstr "एक आम नोट जोड़ें"
 
 #: app/Module/RelativesTabModule.php:271
 msgid "Add a son or daughter"
-msgstr "बेटा या बेटी जोड़ें"
+msgstr "कोई बेटा या बेटी जोड़ें"
 
 #: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1057
 #: app/Module/SourcesTabModule.php:95
@@ -16600,8 +16600,8 @@ msgstr ""
 #: admin_trees_renumber.php:266
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 msgstr ""
-"आप एक फॅमिली ट्री में रिकॉर्ड को पुनः अंकित सकते हैं, ताकि इन आंतरिक संदर्भ "
-"संख्याओं को किसी अन्य फॅमिली ट्री में डुप्लिकेट न किया जाए।"
+"आप एक फॅमिली ट्री में रिकॉर्ड को पुनः अंकित कर सकते हैं, ताकि इन आंतरिक संदर्"
+"भ संख्याओं को किसी अन्य फॅमिली ट्री में डुप्लिकेट न किया जाए।"
 
 #: admin_trees_renumber.php:279
 msgid "You can renumber this family tree."
@@ -17177,7 +17177,7 @@ msgstr "दफ़्न"
 
 #: app/GedcomTag.php:1715
 msgid "by"
-msgstr "से"
+msgstr "द्वारा"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:301
@@ -19366,7 +19366,7 @@ msgstr ""
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:279
 msgid "herself"
-msgstr "वह-ख़ुद"
+msgstr "स्वयं"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:762
@@ -19380,7 +19380,7 @@ msgstr "छुपाएं"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:277
 msgid "himself"
-msgstr "वह-ख़ुद"
+msgstr "स्वयं"
 
 #: app/Functions/Functions.php:709 edit_interface.php:1908
 #: edit_interface.php:1943
@@ -20251,7 +20251,7 @@ msgstr "छठे कज़िन"
 #: app/Functions/Functions.php:747 app/Functions/FunctionsCharts.php:311
 #: edit_interface.php:1979
 msgid "son"
-msgstr "बेटा"
+msgstr "बेटे"
 
 #: modules_v3/descendancy_report/report.xml:295
 msgid "son of"
@@ -20454,17 +20454,17 @@ msgstr "सौतेली-बहन"
 #: app/Functions/Functions.php:868
 msgctxt "husband’s son"
 msgid "step-son"
-msgstr "सौतेला-बेटा"
+msgstr "सौतेले बेटे"
 
 #: app/Functions/Functions.php:946
 msgctxt "spouse’s son"
 msgid "step-son"
-msgstr "सौतेला-बेटा"
+msgstr "सौतेले बेटे"
 
 #: app/Functions/Functions.php:966
 msgctxt "wife’s son"
 msgid "step-son"
-msgstr "सौतेला-बेटा"
+msgstr "सौतेले बेटे"
 
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:48 app/Module/OnThisDayModule.php:144
@@ -20511,7 +20511,7 @@ msgstr ""
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:281
 msgid "themself"
-msgstr "वह-ख़ुद"
+msgstr "स्वयं"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:639
@@ -20790,7 +20790,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:761
 msgid "younger brother"
-msgstr "छोटा भाई"
+msgstr "छोटे भाई"
 
 #: app/Functions/Functions.php:795
 msgid "younger sibling"
