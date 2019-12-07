@@ -455,6 +455,16 @@ class FunctionsPrint
                 $uniquefacts = ['_PRIM'];
                 $quickfacts  = [];
                 break;
+            case 'SUBM':
+                $addfacts    = ['EMAIL', 'LANG', 'PHON', 'WWW'];
+                $uniquefacts = ['ADDR', 'NAME'];
+                $quickfacts  = [];
+                break;
+            case 'HEAD':
+                $addfacts    = [];
+                $uniquefacts = ['COPR', 'LANG', 'SUBM'];
+                $quickfacts  = [];
+                break;
             default:
                 return;
         }

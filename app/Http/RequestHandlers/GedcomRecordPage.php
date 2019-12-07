@@ -80,6 +80,8 @@ class GedcomRecordPage implements RequestHandlerInterface
 
         if (preg_match('/^0 @' . Gedcom::REGEX_XREF . '@ ([_A-Z0-9]+)/', $record->gedcom(), $match)) {
             $record_type = $match[1];
+        } elseif (preg_match('/^0 ([_A-Z0-9]+)/', $record->gedcom(), $match)) {
+            $record_type = $match[1];
         } else {
             $record_type = $record::RECORD_TYPE;
         }
@@ -92,6 +94,7 @@ class GedcomRecordPage implements RequestHandlerInterface
             'notes'         => $record->linkedNotes($record_type),
             'media_objects' => $record->linkedMedia($record_type),
             'record'        => $record,
+            'record_type'   => $record_type,
             'sources'       => $record->linkedSources($record_type),
             'title'         => $record->fullName(),
             'tree'          => $tree,

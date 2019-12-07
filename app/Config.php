@@ -183,6 +183,7 @@ class Config
             'FAX',
             'FILE',
             'HUSB',
+            'LANG',
             'NAME',
             'NCHI',
             'NOTE',

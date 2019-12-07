@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeAdop;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeLang;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeQuay;
@@ -437,6 +438,8 @@ class FunctionsEdit
             $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" data-autocomplete-type="SURN" oninput="updatewholename()">';
         } elseif ($fact === 'ADOP') {
             $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => GedcomCodeAdop::getValues()]);
+        } elseif ($fact === 'LANG') {
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => GedcomCodeLang::getValues()]);
         } elseif ($fact === 'ALIA') {
             $html .= '<div class="input-group">';
             $html .= view('components/select-individual', ['id' => $id, 'name' => $name, 'individual' => Individual::getInstance($value, $tree), 'tree' => $tree]);

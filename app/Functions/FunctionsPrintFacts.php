@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeAdop;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeLang;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeQuay;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeRela;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -245,6 +246,9 @@ class FunctionsPrintFacts
             case 'EMAI':
             case '_EMAIL':
                 echo '<div class="field"><a href="mailto:', e($fact->value()), '">', e($fact->value()), '</a></div>';
+                break;
+            case 'LANG':
+                echo GedcomCodeLang::getValue($fact->value());
                 break;
             case 'RESN':
                 echo '<div class="field">';
