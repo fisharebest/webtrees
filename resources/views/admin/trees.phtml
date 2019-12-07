@@ -49,7 +49,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                     <div class="card-body">
                         <?php $importing = DB::table('gedcom_chunk')->where('gedcom_id', '=', $managed_tree->id())->where('imported', '=', 0)->exists() ?>
                         <?php if ($importing) : ?>
-                            <div id="import<?= $managed_tree->id() ?>" class="col-xs-12">
+                            <div id="import<?= $managed_tree->id() ?>" class="col-12">
                                 <div class="progress">
                                     <?= I18N::translate('Calculating…') ?>
                                 </div>
