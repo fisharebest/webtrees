@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-10 15:42+0000\n"
+"PO-Revision-Date: 2019-12-10 11:59+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
-"Language-Team: Czech <http://translate.webtrees.net/projects/webtrees/"
+"Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -1397,7 +1397,7 @@ msgstr "Přidat syna nebo dceru"
 #: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1057
 #: app/Module/SourcesTabModule.php:95
 msgid "Add a source citation"
-msgstr "Přidat pramen citací"
+msgstr "Přidat citaci pramene"
 
 #: edit_interface.php:817
 msgid "Add a spouse"
@@ -20130,7 +20130,7 @@ msgstr "webtrees používá kódování UTF-8 pro písmena s diakritikou, speci�
 
 #: app/Functions/FunctionsPrint.php:211
 msgid "webtrees wiki"
-msgstr "webtrees wiki"
+msgstr "wiki aplikace webtrees"
 
 #: admin_trees_manage.php:718
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
