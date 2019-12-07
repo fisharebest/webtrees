@@ -216,15 +216,17 @@ class MediaFile
             $image = '<img ' . Html::attributes($image_attributes + [
                         'dir'    => 'auto',
                         'src'    => $src,
-                        'srcset' => implode(',', $srcset),
                         'alt'    => strip_tags($this->media->fullName()),
                     ]) . '>';
 
             $link_attributes = Html::attributes([
-                'class'      => 'gallery',
-                'type'       => $this->mimeType(),
-                'href'       => $this->imageUrl(0, 0, 'contain'),
-                'data-title' => strip_tags($this->media->fullName()),
+                'class'       => 'gallery',
+                'type'        => $this->mimeType(),
+                'href'        => $this->imageUrl(0, 0, 'contain'),
+                'data-id'     => $this->media->xref(),
+                'data-title'  => strip_tags($this->media->fullName()),
+                'data-srcset' => implode(',', $srcset),
+                'data-src'    => $src,
             ]);
         } else {
             $image = view('icons/mime', ['type' => $this->mimeType()]);

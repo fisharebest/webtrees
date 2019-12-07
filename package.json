@@ -27,7 +27,6 @@
     "dejavu-fonts-ttf": "^2.37.3",
     "hideshowpassword": "^2.1.1",
     "jquery": "^3.4.1",
-    "jquery-colorbox": "^1.6.4",
     "leaflet": "^1.6.0",
     "leaflet-geosearch": "^2.7.0",
     "leaflet-providers": "^1.9.1",
@@ -38,7 +37,11 @@
     "select2": "4.0.12",
     "sortablejs": "^1.10.1",
     "typeahead.js-bootstrap4-css": "^1.0.0",
-    "wheelzoom": "^4.0.1"
+    "lightgallery": "^1.6.12",
+    "lg-zoom": "^1.1.0",
+    "lg-thumbnail": "^1.1.0",
+    "lg-fullscreen": "^1.1.0",
+    "lg-autoplay": "^1.0.4"
   },
   "browserslist": [
     ">0.1% and not dead"

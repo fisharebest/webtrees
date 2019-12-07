@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\RequestHandlers\SearchQuickAction;
@@ -7,14 +8,18 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
+use Nyholm\Psr7\ServerRequest;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * @var string $title
  * @var string $content
+ * @var Tree $tree
+ * @var ServerRequest $request
  */
 
 ?>
@@ -152,39 +157,54 @@ use Psr\Http\Message\ServerRequestInterface;
         <script src="<?= e(asset('js/webtrees.min.js')) ?>"></script>
 
         <script>
-            // Trigger an event when we click on an (any) image
-            $('body').on('click', 'a.gallery', function () {
-                // Enable colorbox for images
-                $("a[type^=image].gallery").colorbox({
-                    // Don't scroll window with document
-                    fixed:          true,
-                    width:          "85%",
-                    height:         "85%",
-                    current:        "",
-                    previous:       '<i class="fas fa-arrow-left wt-icon-flip-rtl" title="<?= I18N::translate('previous') ?>"></i>',
-                    next:           '<i class="fas fa-arrow-right wt-icon-flip-rtl" title="<?= I18N::translate('next') ?>"></i>',
-                    slideshowStart: '<i class="fas fa-play" title="<?= I18N::translate('Play') ?>"></i>',
-                    slideshowStop:  '<i class="fas fa-stop" title="<?= I18N::translate('Stop') ?>"></i>',
-                    close:          '<i class="fas fa-times" title="<?= I18N::translate('close') ?>"></i>',
-                    title:          function () {
-                        return this.dataset.title;
-                    },
-                    photo:          true,
-                    rel:            "gallery", // Turn all images on the page into a slideshow
-                    slideshow:      true,
-                    slideshowAuto:  false,
-                    // Add wheelzoom to the displayed image
-                    onComplete:     function () {
-                        // Disable click on image triggering next image
-                        // https://github.com/jackmoore/colorbox/issues/668
-                        $(".cboxPhoto").unbind("click");
+            "use strict";
 
-                        wheelzoom(document.querySelectorAll(".cboxPhoto"));
+            window.WT_Lightgallery = (function () {
+                let collection = [];
+
+                // reset collection on tab change
+                // can remove this if :visible removed from selector
+                $('body')
+                .on('click', 'a.nav-link', function (e) {
+                    collection.length = 0;
+                })
+                // Trigger an event when an image is clicked
+                .on('click', 'a.gallery', function (e) {
+                    e.preventDefault();
+
+                    if (collection.length === 0) {
+                        // remove :visible to include all images from all tabs
+                        $('a.gallery[type^=image]:visible').each(function () {
+                            let that = $(this);
+                            let id = that.data('id');
+                            // Only add if image not already in the collection
+                            if (collection.find( collection => collection['id'] === id ) === undefined) {
+                                collection.push({
+                                    id:         id,
+                                    subHtml:    that.data('title'),
+                                    thumb:      that.data('src'),
+                                    src:        that.attr('href'),
+                                    srcset:     that.data('srcset'),
+                                });
+                            }
+                        });
                     }
-                });
-            });
-        </script>
 
+                    $(this).lightGallery({
+                        dynamic:    true,
+                        dynamicEl:  collection,
+                        fullScreen: true,
+                        zoom:       true,
+                        thumbnail:  true,
+                        loop:       false,
+                        download:   <?= json_encode(Auth::isEditor($tree)) ?>,
+                        mode:       'lg-slide-circular',
+                        index:      collection.findIndex((element) => element.id === this.dataset.id),
+                    });
+                });
+                return "Lightgallery interface for webtrees 2.0";
+            })();
+        </script>
         <?= View::stack('javascript') ?>
 
         <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {

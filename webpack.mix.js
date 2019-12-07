@@ -32,6 +32,8 @@ mix.styles([
     "node_modules/leaflet-geosearch/dist/style.css",
     "node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css",
     "node_modules/leaflet.markercluster/dist/MarkerCluster.css",
+    "node_modules/lightGallery/dist/css/lightgallery.css",
+    "node_modules/lightGallery/dist/css/lg-transitions.css",
 ], "public/css/vendor.css");
 
 mix
@@ -44,6 +46,7 @@ mix
     .babel(["resources/js/webtrees.js", "resources/js/statistics.js", "resources/js/treeview.js"], "public/js/webtrees.min.js")
     .copy("node_modules/leaflet/dist/images/*", "public/css/images/")
     .copy("node_modules/dejavu-fonts-ttf/ttf/DejaVuSans.ttf", "resources/fonts/")
+    .copy("node_modules/lightgallery/dist/fonts/*", "public/fonts")
     .options({
             processCssUrls: false,
             postCss: [
