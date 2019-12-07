@@ -191,13 +191,13 @@ switch ($action) {
             foreach ($differences as $difference) {
                 switch ($difference[1]) {
                     case MyersDiff::DELETE:
-                        $diff_lines[] = '<del>' . $difference[0] . '</del>';
+                        $diff_lines[] = '<del>' . Filter::escapeHtml($difference[0]) . '</del>';
                         break;
                     case MyersDiff::INSERT:
-                        $diff_lines[] = '<ins>' . $difference[0] . '</ins>';
+                        $diff_lines[] = '<ins>' . Filter::escapeHtml($difference[0]) . '</ins>';
                     break;
                     default:
-                        $diff_lines[] = $difference[0];
+                        $diff_lines[] = Filter::escapeHtml($difference[0]);
                 }
             }
 
