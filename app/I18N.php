@@ -46,6 +46,7 @@ use function strip_tags;
 use function strlen;
 use function strpos;
 use function strtr;
+use function var_export;
 
 /**
  * Internationalization (i18n) and localization (l10n).
@@ -304,7 +305,7 @@ class I18N
             $po_file      = Webtrees::ROOT_DIR . 'resources/lang/' . self::$locale->languageTag() . '/messages.po';
             $translation  = new Translation($po_file);
             $translations = $translation->asArray();
-            file_put_contents($translation_file, '<?php return ' . var_export($translations, true) . ';');
+            file_put_contents($translation_file, "<?php\n\nreturn " . var_export($translations, true) . ";\n");
         }
 
         // Add translations from custom modules (but not during setup, as we have no database/modules)

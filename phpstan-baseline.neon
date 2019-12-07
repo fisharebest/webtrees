@@ -391,7 +391,7 @@ parameters:
 			path: app/GedcomTag.php
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between 'beta\\.5' and '' will always evaluate to false\\.$#"
+			message: "#^Strict comparison using \\=\\=\\= between 'dev' and '' will always evaluate to false\\.$#"
 			count: 1
 			path: app/Helpers/functions.php
 
@@ -4991,7 +4991,7 @@ parameters:
 			path: app/Webtrees.php
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between 'beta\\.5' and '' will always evaluate to false\\.$#"
+			message: "#^Strict comparison using \\=\\=\\= between 'dev' and '' will always evaluate to false\\.$#"
 			count: 1
 			path: app/Webtrees.php
 

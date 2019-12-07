@@ -54,7 +54,7 @@ class ComposerScripts
             $translations = $translation->asArray();
             $io->write($po_file . ': ' . count($translations));
             $php_file     = dirname($po_file) . '/' . basename($po_file, '.po') . '.php';
-            $php_code     = '<?php return ' . var_export($translations, true) . ';';
+            $php_code     = "<?php\n\nreturn " . var_export($translations, true) . ";\n";
 
             file_put_contents($php_file, $php_code);
         }
