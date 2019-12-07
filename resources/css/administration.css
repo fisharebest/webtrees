@@ -54,7 +54,7 @@ h4 {
 .wt-ajax-load:empty {
     height: 32px;
     width: 32px;
-    background: url(images/loading-32x32.gif) no-repeat;
+    background: url(images/loading.gif) no-repeat;
 }
 
 @media (min-device-pixel-ratio: 2) {

@@ -135,9 +135,11 @@ import "hideshowpassword";
 
 import "moment";
 
-import "jquery-colorbox";
-
-import "wheelzoom";
+import "lightGallery";
+import "lg-zoom";
+import "lg-thumbnail";
+import "lg-fullscreen";
+import "lg-autoplay";
 
 import "leaflet";
 import "leaflet-providers";

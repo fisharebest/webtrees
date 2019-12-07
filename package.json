@@ -14,6 +14,8 @@
     "resolve-url-loader": "^3.1.1",
     "sass": "^1.24.4",
     "sass-loader": "^8.0.1",
+    "node-sass": "^4.13.0",
+    "fibers": "^4.0.2",
     "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
@@ -27,7 +29,6 @@
     "dejavu-fonts-ttf": "^2.37.3",
     "hideshowpassword": "^2.2.0",
     "jquery": "^3.4.1",
-    "jquery-colorbox": "^1.6.4",
     "leaflet": "^1.6.0",
     "leaflet-geosearch": "^2.7.0",
     "leaflet-providers": "^1.9.1",
@@ -37,7 +38,11 @@
     "select2": "4.0.12",
     "sortablejs": "^1.10.2",
     "typeahead.js-bootstrap4-css": "^1.0.0",
-    "wheelzoom": "^4.0.1"
+    "lightgallery": "^1.6.12",
+    "lg-zoom": "^1.1.0",
+    "lg-thumbnail": "^1.1.0",
+    "lg-fullscreen": "^1.1.0",
+    "lg-autoplay": "^1.0.4"
   },
   "browserslist": [
     ">0.1% and not dead"

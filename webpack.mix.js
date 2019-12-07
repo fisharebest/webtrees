@@ -20,21 +20,17 @@ const postcss_image_inliner = require("postcss-image-inliner")({
 // Enable CSS variables in IE
 const postcss_custom_properties = require("postcss-custom-properties")();
 
-mix.styles([
-    "node_modules/bootstrap/dist/css/bootstrap.min.css",
-    "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css",
-    "resources/css/begin-ignore-rtl.css",
-    "node_modules/select2/dist/css/select2.min.css",
-    "resources/css/end-ignore-rtl.css",
-    "node_modules/typeahead.js-bootstrap4-css/typeaheadjs.css",
-    "node_modules/leaflet/dist/leaflet.css",
-    "node_modules/beautifymarker/leaflet-beautify-marker-icon.css",
-    "node_modules/leaflet-geosearch/dist/style.css",
-    "node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css",
-    "node_modules/leaflet.markercluster/dist/MarkerCluster.css",
-], "public/css/vendor.css");
+ /** 
+ *  When using the mix.styles[] lines in this file
+ *  along with compiling the lightgallery scss files meant that the the 
+ *  lightgallery.css file wasn't included in vendor.css as the sass compilation
+ *  occurred after mix.styles ran.
+ * 
+ * See resources/sass/vendor.scss
+ */
 
 mix
+    .sass('resources/sass/vendor.scss', "public/css/vendor.min.css")
     .autoload({
         jquery: ["$", "jQuery"],
     })
@@ -44,6 +40,7 @@ mix
     .babel(["resources/js/webtrees.js", "resources/js/statistics.js", "resources/js/treeview.js"], "public/js/webtrees.min.js")
     .copy("node_modules/leaflet/dist/images/*", "public/css/images/")
     .copy("node_modules/dejavu-fonts-ttf/ttf/DejaVuSans.ttf", "resources/fonts/")
+    .copy("node_modules/lightgallery/src/fonts/*", "resources/fonts/")
     .options({
             processCssUrls: false,
             postCss: [
@@ -76,5 +73,4 @@ mix
     .postCss("resources/css/fab.css", "public/css/fab.min.css")
     .postCss("resources/css/minimal.css", "public/css/minimal.min.css")
     .postCss("resources/css/webtrees.css", "public/css/webtrees.min.css")
-    .postCss("resources/css/xenea.css", "public/css/xenea.min.css")
-    .postCss("public/css/vendor.css", "public/css/vendor.min.css");
+    .postCss("resources/css/xenea.css", "public/css/xenea.min.css");

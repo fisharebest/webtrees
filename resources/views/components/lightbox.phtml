@@ -1,0 +1,43 @@
+<script>
+    "use strict";
+
+    window.WT_lightbox = (function() {
+
+        // Trigger an event when an image is clicked
+        $('body').on('click', 'a.gallery', function(e) {
+            e.preventDefault();
+
+            let collection = [];
+            let items      = <?= json_encode($gallery) ?> ? $('a.gallery[type^=image]') : $(this);
+
+            items.each(function() {
+                let that = $(this);
+                let img  = that.children('img');
+                let note = that.data('note');
+                collection.push({
+                    id:         that.data('id'),
+                    subHtml:    img.attr('alt') + (note ? `<div class="small">${note}</div>` : ''),
+                    thumb:      img.attr('src'),
+                    src:        that.attr('href'),
+                    downloadUrl:that.data('download'),
+                });
+            });
+
+            $(this).lightGallery({
+                dynamic:            true,
+                dynamicEl:          collection.filter((v, i, a) => a.findIndex(t => (t.id === v.id)) === i),  //Remove duplicates
+                fullScreen:         true,
+                zoom:               true,
+                thumbnail:          true,
+                showThumbByDefault: false,
+                loop:               false,
+                pause:              <?= $pause ?? 5000 ?>,
+                mode:               "<?= $transition ?? "lg-slide" ?>",
+                download:           true, // download controlled by downloadUrl setting(url or false)
+                index:              collection.findIndex((element) => element.id === this.dataset.id),
+            });
+        });
+
+        return "lightbox interface for webtrees 2.0";
+    })();
+</script>

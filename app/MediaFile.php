@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Illuminate\Support\Str;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\FileNotFoundException;
 use League\Flysystem\Filesystem;
@@ -222,10 +223,12 @@ class MediaFile
                     ]) . '>';
 
             $link_attributes = Html::attributes([
-                'class'      => 'gallery',
-                'type'       => $this->mimeType(),
-                'href'       => $this->imageUrl(0, 0, 'contain'),
-                'data-title' => strip_tags($this->media->fullName()),
+                'class'         => 'gallery',
+                'type'          => $this->mimeType(),
+                'href'          => $this->imageUrl(0, 0, $fit),
+                'data-id'       => $this->media->xref(),
+                'data-note'     => Str::limit($this->media->getNote(), 128, I18N::translate('…')),
+                'data-download' => Auth::isEditor($this->media->tree()) ? $this->downloadUrl('attachment') : json_encode(false),
             ]);
         } else {
             $image = view('icons/mime', ['type' => $this->mimeType()]);
