@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Individual;
@@ -77,15 +78,21 @@ class GedcomRecordPage implements RequestHandlerInterface
             return redirect($record->url());
         }
 
+        if (preg_match('/^0 @' . Gedcom::REGEX_XREF . '@ ([_A-Z0-9]+)/', $record->gedcom(), $match)) {
+            $record_type = $match[1];
+        } else {
+            $record_type = $record::RECORD_TYPE;
+        }
+
         return $this->viewResponse('gedcom-record-page', [
             'facts'         => $record->facts(),
-            'families'      => $record->linkedFamilies($record::RECORD_TYPE),
-            'individuals'   => $record->linkedIndividuals($record::RECORD_TYPE),
+            'families'      => $record->linkedFamilies($record_type),
+            'individuals'   => $record->linkedIndividuals($record_type),
             'meta_robots'   => 'index,follow',
-            'notes'         => $record->linkedNotes($record::RECORD_TYPE),
-            'media_objects' => $record->linkedMedia($record::RECORD_TYPE),
+            'notes'         => $record->linkedNotes($record_type),
+            'media_objects' => $record->linkedMedia($record_type),
             'record'        => $record,
-            'sources'       => $record->linkedSources($record::RECORD_TYPE),
+            'sources'       => $record->linkedSources($record_type),
             'title'         => $record->fullName(),
             'tree'          => $tree,
         ]);
