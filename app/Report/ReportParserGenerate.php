@@ -2804,7 +2804,7 @@ class ReportParserGenerate extends ReportParserBase
         $tags      = explode(':', $tag);
         $origlevel = $level;
         if ($level == 0) {
-            $level = $gedrec{0} + 1;
+            $level = $gedrec[0] + 1;
         }
 
         $subrec = $gedrec;

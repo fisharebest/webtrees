@@ -131,7 +131,7 @@ class FanchartController extends ChartController
         // last line
         if (!empty($line)) {
             $len = strlen($line);
-            if (in_array(ord($line{0}), $RTLOrd)) {
+            if (in_array(ord($line[0]), $RTLOrd)) {
                 $len /= 2;
             }
             $p    = max(0, (int) (($maxlen - $len) / 2));
