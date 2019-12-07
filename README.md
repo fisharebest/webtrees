@@ -95,75 +95,39 @@ the project even stronger and better.
 
 To install **webtrees**, you need:
 
-* A webserver. Apache, NGINX and IIS are the most common types. There are no
- requirements to use a specific type or version.
-* Approximately 65MB of disk space for the application files, plus whatever is
+* A webserver. Apache, NGINX and IIS are the most common types. To use “Pretty URLs”, you will need to configure URL rewriting"
+* A database.  MySQL is recommended, although PostgreSQL, SQL-Server and SQLite can be used.  Some features rely on MySQL for collation.  Other database might not sort names according to local rules.  **webtrees** uses a prefix for its table names, so you can install several instances of webtrees in the same database.
+* Approximately 100MB of disk space for the application files, plus whatever is
   needed for your media files, GEDCOM files and database.
-* PHP 7.0 or later.  Servers with PHP 5.3 - 5.6 should use **webtrees** 1.7.
-  Servers with PHP 5.2 should use **webtrees** 1.4.
-   * PHP should be configured with the following libraries:
-     * PDO and pdo_mysql to enable access to MySQL. These are enabled by default
-     on most hosts. See [http://php.net/pdo](http://php.net/pdo),
-     * php\_gd(2) for images
-     * PHP_XML for reports.
+* PHP 7.1 - 7.4.  Servers with PHP 5.3 - 7.0 can use **webtrees** 1.7.
    * PHP should be configured to allow sufficient server resources (memory and
      execution time) for the size of your system. Typical requirements are:
       * Small systems (500 individuals): 16–32 MB, 10–20 seconds
       * Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds
       * Large systems (50,000 individuals): 64–128 MB, 40–80 seconds
-* MySQL or MariaDB. Note that **webtrees** can share a single database
-  with other applications, by choosing a unique table prefix during setup.
-  If the number of databases is not restricted, you can set up a database purely
-  for use by **webtrees** and create a separate user and password for only
-  your genealogy.
 
-
-  ## Internet browser compatibility
+## Browser compatibility
   
-  **webtrees** supports the use of most current browsers such as Edge, Firefox,
-  Chrome, and Safari. We will do our best to support the current versions of others
-  such as Opera and Internet Explorer, however note that versions of Internet Explorer
-  prior to IE11 do not work with **webtrees**. We strongly recommend anyone using an
-  obsolete browser to upgrade as soon as possible. We are also aware that Internet
-  Explorer provides poor RTL language support generally, so cannot recommend it for
-  sites requiring RTL languages.
-* To view sites that contain both left-to-right and right-to-left text (e.g.
-  English data on Hebrew pages), you will need to use a browser that provides
-  support for the HTML5 **dir="auto"** attribute. At present, neither Edge
-  nor Internet Explorer support this.
-
+  **webtrees** is tested on recent versions of popular browsers such as Edge, Firefox,
+  Chrome, and Safari.  Support for other browsers and older versions is on a case-by-case basis.
 
 ## Installation
 
-Once the system requirements are met, perform the following steps
-
-1. Download the latest stable version from [github.com](https://github.com/fisharebest/webtrees/releases/latest)
-2. Unzip the files and upload them to an empty folder on your web server.
+1. Download the .ZIP file for latest stable version from [github.com](https://github.com/fisharebest/webtrees/releases/latest)
+2. Unzip the files and then upload them to an empty folder on your web server.
 3. Open your web browser and type the URL for your **webtrees** site (for example,
    ``http://www.yourserver.com/webtrees`` into the address bar.
-4. The **webtrees** setup wizard will start automatically. Simply follow the steps,
-   answering each question as you proceed.
+4. The **webtrees** setup wizard will start automatically.
 
-That's it!
+Your first task will be to create a family tree.
 
-However, before you can use **webtrees**, you need at least one GEDCOM
-(family tree) file. If you have been doing your research using a desktop program
-such as Family Tree Maker, you can use it's “save as GEDCOM” function to create
-a GEDCOM file. If you are starting from scratch, then **webtrees** can create a
-GEDCOM file for you.
+If you have a GEDCOM file, you can import it into the tree.  If not, just start
+entering your family tree. 
 
-On successful installation you will be taken to the
- ``Control panel`` -> ``Manage family trees``  page where you can:
- * UPLOAD a GEDCOM file from your local machine
- * ADD a GEDCOM file from your server, (if your GEDCOM file is too large to upload,
-   you can copy it to the webtrees/data folder, and load it from there)
- * CREATE a new, empty GEDCOM file
-
-There are *lots* of configuration options. You'll probably want to review the
+There are lots of configuration options. You'll probably want to review the
 privacy settings first. Don't worry too much about all the other options - the
-defaults are good for most people. If you get stuck, there's lots of built-in
-help and you can get friendly advice from the [help](https://webtrees.net/forums)
-forum.
+defaults are good for most people. If you get stuck, you can get friendly help
+and advice from the [help](https://webtrees.net/forums) forum.
 
 
 ## Upgrading
@@ -205,29 +169,6 @@ didn't you!). Further details and recommendations for suitable tools can be foun
 by searching [google.com](http://google.com).
 
 
-### Note for anyone using custom code (modules, themes, etc.).
-
-It is **very likely** that your custom code will not work when you upgrade
-**webtrees**.
-
-**We recommend that you disable all custom code before you apply the upgrade.**
-
-Disable custom modules, switch over to a standard theme, and remove any code “hacks”.
-Once the upgrade is complete and you are satisfied that your site is fully operational contact
-the source of those modules or themes for a new version.
-
-
-### General note
-
-Depending on the changes in the new files, your browser configuration
-and possibly other factors, it is always wise to clear both the **webtrees** cache
-and your browser cache immediately after the upgrade is completed. The **webtrees**
-cache can be cleared simply by going to ``Control Panel`` -> ``Family Trees`` ->
-``Clean-up data folder`` and deleting the cache.
-
-If you have any problems or questions, help is available on the
-[webtrees forum](https://www.webtrees.net/index.php/en/forum).
-
 ## Building and developing
 
 If you want to build webtrees from source, or modify the code, you'll need to install
@@ -248,7 +189,7 @@ You will need to re-run the second of these any time you modify the file `webtre
 
 ## Gedcom (family tree) files
 
-When you ADD or IMPORT a family tree (GEDCOM) file in **webtrees** the
+When you import a family tree (GEDCOM) file in **webtrees** the
 data from the file is transferred to the database tables. The file itself 
 remains in the **webtrees/data** folder and is no longer used or required
 by **webtrees**. Any subsequent editing of the **webtrees** data
