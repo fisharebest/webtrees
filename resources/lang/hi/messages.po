@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-07 09:01+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-10 11:59+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -2009,17 +2009,17 @@ msgstr "PHP ने फ़ाइल को इसके एक्सटेंश�
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:189
 msgid "himself"
-msgstr "वह-ख़ुद"
+msgstr "स्वयं"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:192
 msgid "herself"
-msgstr "वह-ख़ुद"
+msgstr "स्वयं"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:195
 msgid "themself"
-msgstr "वह-ख़ुद"
+msgstr "स्वयं"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:376
@@ -2454,7 +2454,7 @@ msgstr "साथी"
 
 #: app/Functions/Functions.php:686
 msgid "son"
-msgstr "बेटा"
+msgstr "बेटे"
 
 #: app/Functions/Functions.php:688
 msgid "daughter"
@@ -2470,7 +2470,7 @@ msgstr "जुड़वा भाई"
 
 #: app/Functions/Functions.php:702
 msgid "younger brother"
-msgstr "छोटा भाई"
+msgstr "छोटे भाई"
 
 #: app/Functions/Functions.php:706
 msgid "elder brother"
@@ -2670,7 +2670,7 @@ msgstr "ननद"
 #: app/Functions/Functions.php:819
 msgctxt "husband’s son"
 msgid "step-son"
-msgstr "सौतेला-बेटा"
+msgstr "सौतेले बेटे"
 
 #: app/Functions/Functions.php:821
 msgctxt "mother’s brother"
@@ -2865,7 +2865,7 @@ msgstr "ननद/साली"
 #: app/Functions/Functions.php:897
 msgctxt "spouse’s son"
 msgid "step-son"
-msgstr "सौतेला-बेटा"
+msgstr "सौतेले बेटे"
 
 #: app/Functions/Functions.php:899
 msgctxt "spouse’s parent"
@@ -2915,7 +2915,7 @@ msgstr "साली"
 #: app/Functions/Functions.php:917
 msgctxt "wife’s son"
 msgid "step-son"
-msgstr "सौतेला-बेटा"
+msgstr "सौतेले बेटे"
 
 #: app/Functions/Functions.php:922
 msgctxt "(a man’s) brother’s child’s child"
@@ -9521,7 +9521,7 @@ msgstr "फोटो"
 
 #: app/GedcomTag.php:2026
 msgid "by"
-msgstr "से"
+msgstr "द्वारा"
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:2029
@@ -16997,7 +16997,7 @@ msgstr "सभी रिकॉर्ड"
 
 #: resources/views/admin/trees-renumber.phtml:17
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr "आप एक फॅमिली ट्री में रिकॉर्ड को पुनः अंकित सकते हैं, ताकि इन आंतरिक संदर्भ संख्याओं को किसी अन्य फॅमिली ट्री में डुप्लिकेट न किया जाए।"
+msgstr "आप एक फॅमिली ट्री में रिकॉर्ड को पुनः अंकित कर सकते हैं, ताकि इन आंतरिक संदर्भ संख्याओं को किसी अन्य फॅमिली ट्री में डुप्लिकेट न किया जाए।"
 
 #: resources/views/admin/trees-renumber.phtml:21
 #, php-format
@@ -18919,11 +18919,11 @@ msgstr "विवाह विवरण जोड़ें"
 
 #: resources/views/modules/relatives/family.phtml:204
 msgid "Add a son or daughter"
-msgstr "बेटा या बेटी जोड़ें"
+msgstr "कोई बेटा या बेटी जोड़ें"
 
 #: resources/views/modules/relatives/family.phtml:206
 msgid "Add a brother or sister"
-msgstr "भाई या बहन को जोड़ें"
+msgstr "कोई भाई या बहन जोड़ें"
 
 #: resources/views/modules/relatives/tab.phtml:12
 msgid "Date differences"
