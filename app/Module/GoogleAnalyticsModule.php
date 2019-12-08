@@ -83,7 +83,7 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
     public function analyticsParameters(): array
     {
         return [
-            'GOOGLE_WEBMASTER_ID' => $this->getPreference('GOOGLE_WEBMASTER_ID'),
+            'GOOGLE_ANALYTICS_ID' => $this->getPreference('GOOGLE_ANALYTICS_ID'),
         ];
     }
 

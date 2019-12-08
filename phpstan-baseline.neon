@@ -156,11 +156,6 @@ parameters:
 			path: app/Functions/FunctionsEdit.php
 
 		-
-			message: "#^Array \\(array\\) does not accept key 0\\.$#"
-			count: 2
-			path: app/Functions/FunctionsEdit.php
-
-		-
 			message: "#^Strict comparison using \\=\\=\\= between 'UNKNOWN' and 'SOUR' will always evaluate to false\\.$#"
 			count: 1
 			path: app/Functions/FunctionsEdit.php
@@ -3862,11 +3857,6 @@ parameters:
 
 		-
 			message: "#^Cannot call method xref\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Array \\(array\\) does not accept key string\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
 
