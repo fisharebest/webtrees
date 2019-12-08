@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -198,7 +199,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      * @param BatchUpdateBasePlugin $plugin
      * @param Tree                  $tree
      *
-     * @return object[]
+     * @return stdClass[]
      */
     private function allData(BatchUpdateBasePlugin $plugin, Tree $tree): array
     {
@@ -288,6 +289,9 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
 
             case 'OBJE':
                 return Media::getInstance($record->xref, $tree, $record->gedcom);
+
+            case 'SUBM':
+                return Submitter::getInstance($record->xref, $tree, $record->gedcom);
 
             case 'NOTE':
                 return Note::getInstance($record->xref, $tree, $record->gedcom);

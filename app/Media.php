@@ -46,7 +46,10 @@ class Media extends GedcomRecord
     public static function rowMapper(Tree $tree): Closure
     {
         return static function (stdClass $row) use ($tree): Media {
-            return Media::getInstance($row->m_id, $tree, $row->m_gedcom);
+            $media = Media::getInstance($row->m_id, $tree, $row->m_gedcom);
+            assert($media instanceof Media);
+
+            return $media;
         };
     }
 
@@ -63,7 +66,7 @@ class Media extends GedcomRecord
      *
      * @return Media|null
      */
-    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?self
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Media
     {
         $record = parent::getInstance($xref, $tree, $gedcom);
 

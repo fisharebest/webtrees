@@ -21,18 +21,18 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Exception;
-use Fisharebest\Webtrees\Http\RequestHandlers\RepositoryPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SubmitterPage;
 use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
 
 /**
- * A GEDCOM repository (REPO) object.
+ * A GEDCOM submitter (SUBM) object.
  */
-class Repository extends GedcomRecord
+class Submitter extends GedcomRecord
 {
-    public const RECORD_TYPE = 'REPO';
+    public const RECORD_TYPE = 'SUBM';
 
-    protected const ROUTE_NAME = RepositoryPage::class;
+    protected const ROUTE_NAME = SubmitterPage::class;
 
     /**
      * A closure which will create a record from a database row.
@@ -43,11 +43,11 @@ class Repository extends GedcomRecord
      */
     public static function rowMapper(Tree $tree): Closure
     {
-        return static function (stdClass $row) use ($tree): Repository {
-            $repository = Repository::getInstance($row->o_id, $tree, $row->o_gedcom);
-            assert($repository instanceof Repository);
+        return static function (stdClass $row) use ($tree): Submitter {
+            $submitter = Submitter::getInstance($row->o_id, $tree, $row->o_gedcom);
+            assert($submitter instanceof Submitter);
 
-            return $repository;
+            return $submitter;
         };
     }
 
@@ -62,9 +62,9 @@ class Repository extends GedcomRecord
      *
      * @throws Exception
      *
-     * @return Repository|null
+     * @return Submitter|null
      */
-    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Repository
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Submitter
     {
         $record = parent::getInstance($xref, $tree, $gedcom);
 
@@ -101,7 +101,7 @@ class Repository extends GedcomRecord
      */
     protected function createPrivateGedcomRecord(int $access_level): string
     {
-        return '0 @' . $this->xref . "@ REPO\n1 NAME " . I18N::translate('Private');
+        return '0 @' . $this->xref . "@ SUBM\n1 NAME " . I18N::translate('Private');
     }
 
     /**

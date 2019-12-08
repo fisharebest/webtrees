@@ -45,7 +45,10 @@ class Note extends GedcomRecord
     public static function rowMapper(Tree $tree): Closure
     {
         return static function (stdClass $row) use ($tree): Note {
-            return Note::getInstance($row->o_id, $tree, $row->o_gedcom);
+            $note = Note::getInstance($row->o_id, $tree, $row->o_gedcom);
+            assert($note instanceof Note);
+
+            return $note;
         };
     }
 
@@ -62,7 +65,7 @@ class Note extends GedcomRecord
      *
      * @return Note|null
      */
-    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?self
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Note
     {
         $record = parent::getInstance($xref, $tree, $gedcom);
 

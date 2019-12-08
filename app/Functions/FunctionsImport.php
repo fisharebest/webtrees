@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
@@ -751,6 +752,20 @@ class FunctionsImport
                     'o_id'     => $xref,
                     'o_file'   => $tree_id,
                     'o_type'   => 'NOTE',
+                    'o_gedcom' => $gedrec,
+                ]);
+
+                // Update the cross-reference/index tables.
+                self::updateLinks($xref, $tree_id, $gedrec);
+                self::updateNames($xref, $tree_id, $record);
+                break;
+            case 'SUBM':
+                $record = new Submitter($xref, $gedrec, null, $tree);
+
+                DB::table('other')->insert([
+                    'o_id'     => $xref,
+                    'o_file'   => $tree_id,
+                    'o_type'   => 'SUBM',
                     'o_gedcom' => $gedrec,
                 ]);
 

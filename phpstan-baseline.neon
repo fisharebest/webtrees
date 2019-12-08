@@ -111,11 +111,6 @@ parameters:
 			path: app/Fact.php
 
 		-
-			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Family but returns Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
-			count: 1
-			path: app/Family.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Family\\:\\:spouses\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
 			count: 1
 			path: app/Family.php
@@ -314,11 +309,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\|false given\\.$#"
 			count: 2
 			path: app/Functions/FunctionsRtl.php
-
-		-
-			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
-			count: 2
-			path: app/GedcomRecord.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:linkedIndividuals\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
@@ -2286,11 +2276,6 @@ parameters:
 			path: app/Individual.php
 
 		-
-			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Media but returns Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
-			count: 1
-			path: app/Media.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Media\\:\\:mediaFiles\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
 			count: 1
 			path: app/Media.php
@@ -2356,11 +2341,6 @@ parameters:
 			path: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php
 
 		-
-			message: "#^Parameter \\#1 \\$record of method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:getRecord\\(\\) expects stdClass, object given\\.$#"
-			count: 3
-			path: app/Module/BatchUpdateModule.php
-
-		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
 			count: 1
 			path: app/Module/BatchUpdateModule.php
@@ -2392,6 +2372,11 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:getRecord\\(\\) should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Note\\|null\\.$#"
+			count: 1
+			path: app/Module/BatchUpdateModule.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:getRecord\\(\\) should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Submitter\\|null\\.$#"
 			count: 1
 			path: app/Module/BatchUpdateModule.php
 
@@ -3541,11 +3526,6 @@ parameters:
 			path: app/Module/UserJournalModule.php
 
 		-
-			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Note but returns Fisharebest\\\\Webtrees\\\\Note\\|null\\.$#"
-			count: 1
-			path: app/Note.php
-
-		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Place\\:\\:\\$parts type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
 			count: 1
 			path: app/Place.php
@@ -3974,11 +3954,6 @@ parameters:
 			message: "#^Return type \\(float\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\TcpdfWrapper\\:\\:getRemainingWidth\\(\\) should be compatible with return type \\(int\\) of method TCPDF\\:\\:getRemainingWidth\\(\\)$#"
 			count: 1
 			path: app/Report/TcpdfWrapper.php
-
-		-
-			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Repository but returns Fisharebest\\\\Webtrees\\\\Repository\\|null\\.$#"
-			count: 1
-			path: app/Repository.php
 
 		-
 			message: "#^Cannot call method facts\\(\\) on Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
@@ -4529,11 +4504,6 @@ parameters:
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Site\\:\\:\\$preferences type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Site.php
-
-		-
-			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Source but returns Fisharebest\\\\Webtrees\\\\Source\\|null\\.$#"
-			count: 1
-			path: app/Source.php
 
 		-
 			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\(\\$this\\(Fisharebest\\\\Webtrees\\\\Statistics\\), mixed\\) given\\.$#"

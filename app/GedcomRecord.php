@@ -92,7 +92,10 @@ class GedcomRecord
     public static function rowMapper(Tree $tree): Closure
     {
         return static function (stdClass $row) use ($tree): GedcomRecord {
-            return GedcomRecord::getInstance($row->o_id, $tree, $row->o_gedcom);
+            $record = GedcomRecord::getInstance($row->o_id, $tree, $row->o_gedcom);
+            assert($record instanceof GedcomRecord);
+
+            return $record;
         };
     }
 
@@ -155,7 +158,7 @@ class GedcomRecord
      * @param Tree        $tree
      * @param string|null $gedcom
      *
-     * @return GedcomRecord|Individual|Family|Source|Repository|Media|Note|null
+     * @return GedcomRecord|Individual|Family|Source|Repository|Media|Note|Submitter|null
      * @throws Exception
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
@@ -238,6 +241,9 @@ class GedcomRecord
             case 'NOTE':
                 $record = new Note($xref, $gedcom, $pending, $tree);
                 break;
+            case 'SUBM':
+                $record = new Submitter($xref, $gedcom, $pending, $tree);
+                break;
             default:
                 $record = new self($xref, $gedcom, $pending, $tree);
                 break;
@@ -281,6 +287,10 @@ class GedcomRecord
             return $data;
         }
         $data = Note::fetchGedcomRecord($xref, $tree_id);
+        if ($data !== null) {
+            return $data;
+        }
+        $data = Submitter::fetchGedcomRecord($xref, $tree_id);
         if ($data !== null) {
             return $data;
         }
@@ -1179,7 +1189,10 @@ class GedcomRecord
             ->pluck('l_from');
 
         return $xrefs->map(function (string $xref): GedcomRecord {
-            return GedcomRecord::getInstance($xref, $this->tree);
+            $record = GedcomRecord::getInstance($xref, $this->tree);
+            assert($record instanceof GedcomRecord);
+
+            return $record;
         })->all();
     }
 

@@ -223,13 +223,13 @@ class Auth
 
     /**
      * @param Family|null $family
-     * @param bool|null   $edit
+     * @param bool        $edit
      *
      * @return Family
      * @throws FamilyNotFoundException
      * @throws FamilyAccessDeniedException
      */
-    public static function checkFamilyAccess(Family $family = null, $edit = false): Family
+    public static function checkFamilyAccess(Family $family = null, bool $edit = false): Family
     {
         if ($family === null) {
             throw new FamilyNotFoundException();
@@ -248,13 +248,13 @@ class Auth
 
     /**
      * @param Individual|null $individual
-     * @param bool|null       $edit
+     * @param bool            $edit
      *
      * @return Individual
      * @throws IndividualNotFoundException
      * @throws IndividualAccessDeniedException
      */
-    public static function checkIndividualAccess(Individual $individual = null, $edit = false): Individual
+    public static function checkIndividualAccess(Individual $individual = null, bool $edit = false): Individual
     {
         if ($individual === null) {
             throw new IndividualNotFoundException();
@@ -273,13 +273,13 @@ class Auth
 
     /**
      * @param Media|null $media
-     * @param bool|null  $edit
+     * @param bool       $edit
      *
      * @return Media
      * @throws MediaNotFoundException
      * @throws MediaAccessDeniedException
      */
-    public static function checkMediaAccess(Media $media = null, $edit = false): Media
+    public static function checkMediaAccess(Media $media = null, bool $edit = false): Media
     {
         if ($media === null) {
             throw new MediaNotFoundException();
@@ -298,13 +298,13 @@ class Auth
 
     /**
      * @param Note|null $note
-     * @param bool|null $edit
+     * @param bool      $edit
      *
      * @return Note
      * @throws NoteNotFoundException
      * @throws NoteAccessDeniedException
      */
-    public static function checkNoteAccess(Note $note = null, $edit = false): Note
+    public static function checkNoteAccess(Note $note = null, bool $edit = false): Note
     {
         if ($note === null) {
             throw new NoteNotFoundException();
@@ -323,13 +323,13 @@ class Auth
 
     /**
      * @param GedcomRecord|null $record
-     * @param bool|null         $edit
+     * @param bool              $edit
      *
      * @return GedcomRecord
      * @throws RecordNotFoundException
      * @throws RecordAccessDeniedException
      */
-    public static function checkRecordAccess(GedcomRecord $record = null, $edit = false): GedcomRecord
+    public static function checkRecordAccess(GedcomRecord $record = null, bool $edit = false): GedcomRecord
     {
         if ($record === null) {
             throw new RecordNotFoundException();
@@ -348,13 +348,13 @@ class Auth
 
     /**
      * @param Repository|null $repository
-     * @param bool|null       $edit
+     * @param bool            $edit
      *
      * @return Repository
      * @throws RepositoryNotFoundException
      * @throws RepositoryAccessDeniedException
      */
-    public static function checkRepositoryAccess(Repository $repository = null, $edit = false): Repository
+    public static function checkRepositoryAccess(Repository $repository = null, bool $edit = false): Repository
     {
         if ($repository === null) {
             throw new RepositoryNotFoundException();
@@ -373,13 +373,13 @@ class Auth
 
     /**
      * @param Source|null $source
-     * @param bool|null   $edit
+     * @param bool        $edit
      *
      * @return Source
      * @throws SourceNotFoundException
      * @throws SourceAccessDeniedException
      */
-    public static function checkSourceAccess(Source $source = null, $edit = false): Source
+    public static function checkSourceAccess(Source $source = null, bool $edit = false): Source
     {
         if ($source === null) {
             throw new SourceNotFoundException();
@@ -394,5 +394,30 @@ class Auth
         }
 
         return $source;
+    }
+    
+    /*
+     * @param Submitter|null $submitter
+     * @param bool           $edit
+     *
+     * @return Submitter
+     * @throws RecordNotFoundException
+     * @throws RecordAccessDeniedException
+     */
+    public static function checkSubmitterAccess(Submitter $submitter = null, bool $edit = false): Submitter
+    {
+        if ($submitter === null) {
+            throw new RecordNotFoundException();
+        }
+
+        if (!$submitter->canShow()) {
+            throw new RecordAccessDeniedException();
+        }
+
+        if ($edit && !$submitter->canEdit()) {
+            throw new RecordAccessDeniedException();
+        }
+
+        return $submitter;
     }
 }

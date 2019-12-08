@@ -44,7 +44,10 @@ class Source extends GedcomRecord
     public static function rowMapper(Tree $tree): Closure
     {
         return static function (stdClass $row) use ($tree): Source {
-            return Source::getInstance($row->s_id, $tree, $row->s_gedcom);
+            $source = Source::getInstance($row->s_id, $tree, $row->s_gedcom);
+            assert($source instanceof Source);
+
+            return $source;
         };
     }
 
@@ -61,7 +64,7 @@ class Source extends GedcomRecord
      *
      * @return Source|null
      */
-    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?self
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Source
     {
         $record = parent::getInstance($xref, $tree, $gedcom);
 

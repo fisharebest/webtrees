@@ -108,7 +108,7 @@ class Individual extends GedcomRecord
      * @throws Exception
      * @return Individual|null
      */
-    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?self
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Individual
     {
         $record = parent::getInstance($xref, $tree, $gedcom);
 

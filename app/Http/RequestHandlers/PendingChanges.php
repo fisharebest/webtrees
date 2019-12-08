@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
@@ -109,6 +110,9 @@ class PendingChanges implements RequestHandlerInterface
                     break;
                 case 'NOTE':
                     $row->record = new Note($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
+                    break;
+                case 'SUBM':
+                    $row->record = new Submitter($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
                 default:
                     $row->record = new GedcomRecord($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);

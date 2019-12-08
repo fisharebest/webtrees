@@ -227,6 +227,8 @@ class Fact
                 return Repository::getInstance($xref, $this->record()->tree());
             case 'NOTE':
                 return Note::getInstance($xref, $this->record()->tree());
+            case 'SUBM':
+                return Submitter::getInstance($xref, $this->record()->tree());
             default:
                 return GedcomRecord::getInstance($xref, $this->record()->tree());
         }

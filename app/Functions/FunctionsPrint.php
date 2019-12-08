@@ -456,8 +456,8 @@ class FunctionsPrint
                 $quickfacts  = [];
                 break;
             case 'SUBM':
-                $addfacts    = ['EMAIL', 'LANG', 'PHON', 'WWW'];
-                $uniquefacts = ['ADDR', 'NAME'];
+                $addfacts    = ['LANG', 'OBJE', 'NOTE', 'SHARED_NOTE'];
+                $uniquefacts = ['ADDR', 'EMAIL', 'NAME', 'PHON', 'WWW'];
                 $quickfacts  = [];
                 break;
             case 'HEAD':

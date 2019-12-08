@@ -154,6 +154,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SubmitterPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UpdatePlacesAction;
@@ -488,6 +489,7 @@ class WebRoutes
             $router->post(Select2Submitter::class, '/select2-submitter', Select2Submitter::class);
             $router->post(Select2Repository::class, '/select2-repository', Select2Repository::class);
             $router->get(SourcePage::class, '/source/{xref}{/slug}', SourcePage::class);
+            $router->get(SubmitterPage::class, '/submitter/{xref}{/slug}', SubmitterPage::class);
             $router->get('tree-page-block', '/tree-page-block', 'HomePageController::treePageBlock');
             $router->get('example', '/…');
         });

@@ -77,7 +77,10 @@ class Family extends GedcomRecord
     public static function rowMapper(Tree $tree): Closure
     {
         return static function (stdClass $row) use ($tree): Family {
-            return Family::getInstance($row->f_id, $tree, $row->f_gedcom);
+            $family = Family::getInstance($row->f_id, $tree, $row->f_gedcom);
+            assert($family instanceof Family);
+
+            return $family;
         };
     }
 
@@ -106,7 +109,7 @@ class Family extends GedcomRecord
      *
      * @return Family|null
      */
-    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?self
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Family
     {
         $record = parent::getInstance($xref, $tree, $gedcom);
 

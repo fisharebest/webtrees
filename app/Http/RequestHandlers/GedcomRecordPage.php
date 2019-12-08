@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -53,6 +54,7 @@ class GedcomRecordPage implements RequestHandlerInterface
         Note::class,
         Repository::class,
         Source::class,
+        Submitter::class,
     ];
 
     /**
@@ -90,7 +92,6 @@ class GedcomRecordPage implements RequestHandlerInterface
             'facts'         => $record->facts(),
             'families'      => $record->linkedFamilies($record_type),
             'individuals'   => $record->linkedIndividuals($record_type),
-            'meta_robots'   => 'index,follow',
             'notes'         => $record->linkedNotes($record_type),
             'media_objects' => $record->linkedMedia($record_type),
             'record'        => $record,
