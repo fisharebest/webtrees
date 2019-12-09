@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Schema;
 
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Blueprint;
 
 /**
@@ -66,14 +67,14 @@ class Migration37 implements MigrationInterface
                 'multimedia_format',
                 'source_media_type',
                 'descriptive_title',
-            ], static function (Builder $query): void {
+            ], function (Builder $query): void {
                 $query->select([
                     'm_id',
                     'm_file',
-                    'm_filename',
-                    'm_ext',
-                    'm_type',
-                    'm_titl',
+                    $this->substring('m_filename', 1, 248),
+                    $this->substring('m_ext', 1, 4),
+                    $this->substring('m_type', 1, 15),
+                    $this->substring('m_titl', 1, 248),
                 ])->from('media');
             });
 
@@ -91,5 +92,23 @@ class Migration37 implements MigrationInterface
                 $table->dropColumn('m_titl');
             });
         }
+    }
+
+    /**
+     * @param string $expression
+     * @param int    $start
+     * @param int    $length
+     *
+     * @return Expression
+     */
+    private function substring(string $expression, int $start, int $length): Expression
+    {
+        // Non-standard
+        if (DB::connection()->getDriverName() === 'sqlite') {
+            return new Expression('SUBSTR(' . $expression . ',' . $start . ',' . $length . ')');
+        }
+
+        // SQL-92 standard
+        return new Expression('SUBSTRING(' . $expression . ' FROM ' . $start . ' FOR ' . $length . ')');
     }
 }
