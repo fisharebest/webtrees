@@ -47,7 +47,7 @@ class RedirectMediaViewerPhp implements RequestHandlerInterface
         $xref  = $request->getQueryParams()['mid'];
         assert(is_string($xref));
 
-        $route = route('media', ['tree' => $tree, 'xref' => $xref]);
+        $route = route(MediaPage::class, ['tree' => $tree, 'xref' => $xref]);
 
         return redirect($route, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
     }

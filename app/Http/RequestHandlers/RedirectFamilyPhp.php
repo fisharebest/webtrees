@@ -47,7 +47,7 @@ class RedirectFamilyPhp implements RequestHandlerInterface
         $xref = $request->getQueryParams()['famid'];
         assert(is_string($xref));
 
-        $url = route('family', ['tree' => $tree, 'xref' => $xref]);
+        $url = route(FamilyPage::class, ['tree' => $tree, 'xref' => $xref]);
 
         return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
     }

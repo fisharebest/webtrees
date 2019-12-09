@@ -47,7 +47,7 @@ class RedirectRepoPhp implements RequestHandlerInterface
         $xref = $request->getQueryParams()['rid'];
         assert(is_string($xref));
 
-        $url = route('repository', ['tree' => $tree, 'xref' => $xref]);
+        $url = route(RepositoryPage::class, ['tree' => $tree, 'xref' => $xref]);
 
         return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
     }

@@ -47,7 +47,7 @@ class RedirectIndividualPhp implements RequestHandlerInterface
         $xref = $request->getQueryParams()['pid'];
         assert(is_string($xref));
 
-        $url = route('individual', ['tree' => $tree, 'xref' => $xref]);
+        $url = route(IndividualPage::class, ['tree' => $tree, 'xref' => $xref]);
 
         return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
     }

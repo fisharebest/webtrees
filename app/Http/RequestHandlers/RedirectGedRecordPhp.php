@@ -47,7 +47,7 @@ class RedirectGedRecordPhp implements RequestHandlerInterface
         $xref = $request->getQueryParams()['pid'];
         assert(is_string($xref));
 
-        $url = route('record', ['tree' => $tree, 'xref' => $xref]);
+        $url = route(GedcomRecordPage::class, ['tree' => $tree, 'xref' => $xref]);
 
         return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
     }

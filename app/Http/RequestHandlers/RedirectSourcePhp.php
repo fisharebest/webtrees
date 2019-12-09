@@ -47,7 +47,7 @@ class RedirectSourcePhp implements RequestHandlerInterface
         $xref = $request->getQueryParams()['sid'];
         assert(is_string($xref));
 
-        $url = route('source', ['tree' => $tree, 'xref' => $xref]);
+        $url = route(SourcePage::class, ['tree' => $tree, 'xref' => $xref]);
 
         return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
     }

@@ -47,7 +47,7 @@ class RedirectNotePhp implements RequestHandlerInterface
         $xref = $request->getQueryParams()['nid'] ?? '';
         assert(is_string($xref));
 
-        $url = route('note', ['tree' => $tree, 'xref' => $xref]);
+        $url = route(NotePage::class, ['tree' => $tree, 'xref' => $xref]);
 
         return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
     }
