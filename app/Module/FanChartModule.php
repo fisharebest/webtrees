@@ -385,6 +385,13 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                         $ty -= $mr / 2;
                     }
 
+                    // If PHP is compiled with --enable-gd-jis-conv, then the function
+                    // imagettftext() is modified to expect EUC-JP encoding instead of UTF-8.
+                    // Attempt to detect and convert...
+                    if (gd_info()['JIS-mapped Japanese Font Support'] ?? false) {
+                        $text = mb_convert_encoding($text, 'EUC-JP', 'UTF-8');
+                    }
+
                     // print text
                     imagettftext(
                         $image,
