@@ -587,7 +587,7 @@ class FunctionsEdit
                 $html .= '>' . $typeValue . '</option>';
             }
             $html .= '</select>';
-        } elseif (($fact !== 'NAME' || $upperlevel === 'REPO' || $upperlevel === 'UNKNOWN') && $fact !== '_MARNM') {
+        } elseif (($fact !== 'NAME' || $upperlevel === 'REPO' || $upperlevel === 'SUBM' || $upperlevel === 'UNKNOWN') && $fact !== '_MARNM') {
             if ($fact === 'TEXT' || $fact === 'ADDR' || ($fact === 'NOTE' && !$islink)) {
                 $html .= '<div class="input-group">';
                 $html .= '<textarea class="form-control" id="' . $id . '" name="' . $name . '" rows="5" dir="auto">' . e($value) . '</textarea>';
