@@ -134,6 +134,10 @@ class EmailService
                 $smtp_pass = Site::getPreference('SMTP_AUTH_PASS');
                 $smtp_encr = Site::getPreference('SMTP_SSL');
 
+                if ($smtp_encr === 'none') {
+                    $smtp_encr = null;
+                }
+
                 $transport = new Swift_SmtpTransport($smtp_host, $smtp_port, $smtp_encr);
 
                 $transport->setLocalDomain($this->localDomain());
