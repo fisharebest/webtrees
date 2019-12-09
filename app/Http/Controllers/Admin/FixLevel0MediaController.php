@@ -150,6 +150,7 @@ class FixLevel0MediaController extends AbstractAdminController
             ->orderBy('individuals.i_file')
             ->orderBy('individuals.i_id')
             ->orderBy('media.m_id')
+            ->whereContains('descriptive_title', $request->getQueryParams()['search']['value'] ?? '')
             ->select(['media.m_file', 'media.m_id', 'media.m_gedcom', 'individuals.i_id', 'individuals.i_gedcom']);
 
         return $this->datatables_service->handleQuery($request, $query, [], [], function (stdClass $datum) use ($ignore_facts): array {
