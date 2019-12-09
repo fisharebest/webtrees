@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -78,6 +79,8 @@ class MergeRecordsPage implements RequestHandlerInterface
             'media2'      => $record2 instanceof Media ? $record2 : null,
             'note1'       => $record1 instanceof Note ? $record1 : null,
             'note2'       => $record2 instanceof Note ? $record2 : null,
+            'submitter1'  => $record1 instanceof Submitter ? $record1 : null,
+            'submitter2'  => $record2 instanceof Submitter ? $record2 : null,
             'title'       => $title,
             'tree'        => $tree,
         ]);

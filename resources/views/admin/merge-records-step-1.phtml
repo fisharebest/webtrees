@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\View;
                 <option value="repository"><?= I18N::translate('Repositories') ?></option>
                 <option value="note"><?= I18N::translate('Notes') ?></option>
                 <option value="media"><?= I18N::translate('Media objects') ?></option>
+                <option value="submitter"><?= I18N::translate('Submitters') ?></option>
             </select>
         </div>
     </div>
@@ -58,6 +59,10 @@ use Fisharebest\Webtrees\View;
         <span class="col-sm-9 select-record select-media d-none">
             <?= view('components/select-media', ['name' => 'xref1', 'id' => 'media-xref-1', 'media' => $media1, 'tree' => $tree, 'disabled' => true]) ?>
         </span>
+
+        <span class="col-sm-9 select-record select-submitter d-none">
+            <?= view('components/select-submitter', ['name' => 'xref1', 'id' => 'submitter-xref-1', 'submitter' => $submitter1, 'tree' => $tree, 'disabled' => true]) ?>
+        </span>
     </label>
 
     <label class="row form-group">
@@ -87,6 +92,10 @@ use Fisharebest\Webtrees\View;
 
         <span class="col-sm-9 select-record select-media d-none">
             <?= view('components/select-media', ['name' => 'xref2', 'id' => 'obje-xref-2', 'media' => $media2, 'tree' => $tree, 'disabled' => true]) ?>
+        </span>
+
+        <span class="col-sm-9 select-record select-submitter d-none">
+            <?= view('components/select-submitter', ['name' => 'xref2', 'id' => 'obje-xref-2', 'submitter' => $submitter2, 'tree' => $tree, 'disabled' => true]) ?>
         </span>
     </label>
 
