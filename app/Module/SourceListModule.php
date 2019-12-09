@@ -38,6 +38,9 @@ class SourceListModule extends AbstractModule implements ModuleListInterface
 {
     use ModuleListTrait;
 
+    /** @var int The default access level for this module.  It can be changed in the control panel. */
+    protected $access_level = Auth::PRIV_USER;
+
     /**
      * How should this module be identified in the control panel, etc.?
      *

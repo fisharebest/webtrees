@@ -39,12 +39,16 @@ use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\NoteListModule;
 use Fisharebest\Webtrees\Module\RepositoryListModule;
 use Fisharebest\Webtrees\Module\SourceListModule;
+use Fisharebest\Webtrees\Module\SubmitterListModule;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
@@ -138,12 +142,14 @@ class ControlPanel implements RequestHandlerInterface
             'media'                      => $this->totalMediaObjects(),
             'repositories'               => $this->totalRepositories(),
             'notes'                      => $this->totalNotes(),
+            'submitters'                 => $this->totalSubmitters(),
             'individual_list_module'     => $this->module_service->findByInterface(IndividualListModule::class)->first(),
             'family_list_module'         => $this->module_service->findByInterface(FamilyListModule::class)->first(),
             'media_list_module'          => $this->module_service->findByInterface(MediaListModule::class)->first(),
             'note_list_module'           => $this->module_service->findByInterface(NoteListModule::class)->first(),
             'repository_list_module'     => $this->module_service->findByInterface(RepositoryListModule::class)->first(),
             'source_list_module'         => $this->module_service->findByInterface(SourceListModule::class)->first(),
+            'submitter_list_module'      => $this->module_service->findByInterface(SubmitterListModule::class)->first(),
             'files_to_delete'            => $files_to_delete,
             'all_modules_disabled'       => $this->module_service->all(true),
             'all_modules_enabled'        => $this->module_service->all(),
@@ -197,7 +203,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of individuals in each tree.
      *
-     * @return Collection
+     * @return Collection<string,int>
      */
     private function totalIndividuals(): Collection
     {
@@ -213,7 +219,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of families in each tree.
      *
-     * @return Collection
+     * @return Collection<string,int>
      */
     private function totalFamilies(): Collection
     {
@@ -229,7 +235,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of sources in each tree.
      *
-     * @return Collection
+     * @return Collection<string,int>
      */
     private function totalSources(): Collection
     {
@@ -245,7 +251,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of media objects in each tree.
      *
-     * @return Collection
+     * @return Collection<string,int>
      */
     private function totalMediaObjects(): Collection
     {
@@ -261,7 +267,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of repositorie in each tree.
      *
-     * @return Collection
+     * @return Collection<string,int>
      */
     private function totalRepositories(): Collection
     {
@@ -269,7 +275,7 @@ class ControlPanel implements RequestHandlerInterface
             ->leftJoin('other', static function (JoinClause $join): void {
                 $join
                     ->on('o_file', '=', 'gedcom_id')
-                    ->where('o_type', '=', 'REPO');
+                    ->where('o_type', '=', Repository::RECORD_TYPE);
             })
             ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(o_id)'), 'gedcom_id')
@@ -281,7 +287,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of notes in each tree.
      *
-     * @return Collection
+     * @return Collection<string,int>
      */
     private function totalNotes(): Collection
     {
@@ -289,7 +295,27 @@ class ControlPanel implements RequestHandlerInterface
             ->leftJoin('other', static function (JoinClause $join): void {
                 $join
                     ->on('o_file', '=', 'gedcom_id')
-                    ->where('o_type', '=', 'NOTE');
+                    ->where('o_type', '=', Note::RECORD_TYPE);
+            })
+            ->groupBy(['gedcom_id'])
+            ->pluck(new Expression('COUNT(o_id)'), 'gedcom_id')
+            ->map(static function (string $count) {
+                return (int) $count;
+            });
+    }
+
+    /**
+     * Count the number of submitters in each tree.
+     *
+     * @return Collection<string,int>
+     */
+    private function totalSubmitters(): Collection
+    {
+        return DB::table('gedcom')
+            ->leftJoin('other', static function (JoinClause $join): void {
+                $join
+                    ->on('o_file', '=', 'gedcom_id')
+                    ->where('o_type', '=', Submitter::RECORD_TYPE);
             })
             ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(o_id)'), 'gedcom_id')

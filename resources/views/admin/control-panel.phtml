@@ -18,6 +18,7 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\NoteListModule;
 use Fisharebest\Webtrees\Module\RepositoryListModule;
 use Fisharebest\Webtrees\Module\SourceListModule;
+use Fisharebest\Webtrees\Module\SubmitterListModule;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
 
@@ -167,13 +168,14 @@ use Illuminate\Support\Collection;
             <thead>
                 <tr>
                     <th><?= I18N::translate('Family tree') ?></th>
-                    <th><?= I18N::translate('Pending changes') ?></th>
-                    <th class="d-none d-sm-table-cell"><?= I18N::translate('Individuals') ?></th>
-                    <th class="d-none d-lg-table-cell"><?= I18N::translate('Families') ?></th>
-                    <th class="d-none d-sm-table-cell"><?= I18N::translate('Sources') ?></th>
-                    <th class="d-none d-lg-table-cell"><?= I18N::translate('Repositories') ?></th>
-                    <th class="d-none d-sm-table-cell"><?= I18N::translate('Media') ?></th>
-                    <th class="d-none d-lg-table-cell"><?= I18N::translate('Notes') ?></th>
+                    <th class="align-digits"><?= I18N::translate('Pending changes') ?></th>
+                    <th class="d-none d-sm-table-cell align-digits"><?= I18N::translate('Individuals') ?></th>
+                    <th class="d-none d-lg-table-cell align-digits"><?= I18N::translate('Families') ?></th>
+                    <th class="d-none d-sm-table-cell align-digits"><?= I18N::translate('Sources') ?></th>
+                    <th class="d-none d-lg-table-cell align-digits"><?= I18N::translate('Repositories') ?></th>
+                    <th class="d-none d-sm-table-cell align-digits"><?= I18N::translate('Media') ?></th>
+                    <th class="d-none d-lg-table-cell align-digits"><?= I18N::translate('Notes') ?></th>
+                    <th class="d-none d-lg-table-cell align-digits"><?= I18N::translate('Submitters') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -258,6 +260,17 @@ use Illuminate\Support\Collection;
                                     <a href="<?= e($note_list_module->listUrl($tree)) ?>"><?= I18N::number($notes[$tree->id()]) ?></a>
                                 <?php else : ?>
                                     <?= I18N::number($notes[$tree->id()]) ?>
+                                <?php endif ?>
+                            <?php else : ?>
+                                -
+                            <?php endif ?>
+                        </td>
+                         <td class="d-none d-lg-table-cell align-digits">
+                            <?php if ($submitters[$tree->id()] > 0) : ?>
+                                <?php if ($submitter_list_module instanceof SubmitterListModule) : ?>
+                                    <a href="<?= e($submitter_list_module->listUrl($tree)) ?>"><?= I18N::number($submitters[$tree->id()]) ?></a>
+                                <?php else : ?>
+                                    <?= I18N::number($submitters[$tree->id()]) ?>
                                 <?php endif ?>
                             <?php else : ?>
                                 -

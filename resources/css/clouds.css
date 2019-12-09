@@ -321,6 +321,10 @@ table {
     content: url(clouds/menu/list-sour.png);
 }
 
+.menu-list-subm::before {
+    content: url(clouds/menu/list-indi.png);
+}
+
 .menu-calendar .nav-link::before {
     content: url(clouds/menu/calendar.png);
 }

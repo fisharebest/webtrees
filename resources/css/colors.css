@@ -323,6 +323,10 @@ table {
     content: url(colors/menu/list-sour.png);
 }
 
+.menu-list-subm::before {
+    content: url(colors/menu/list-indi.png);
+}
+
 .menu-calendar .nav-link::before {
     content: url(colors/menu/calendar.png);
 }

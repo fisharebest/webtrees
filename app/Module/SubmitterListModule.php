@@ -21,9 +21,9 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Http\Controllers\ListController;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Auth;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -33,14 +33,14 @@ use Psr\Http\Message\ServerRequestInterface;
 use function assert;
 
 /**
- * Class RepositoryListModule
+ * Class SubmitterListModule
  */
-class RepositoryListModule extends AbstractModule implements ModuleListInterface
+class SubmitterListModule extends AbstractModule implements ModuleListInterface
 {
     use ModuleListTrait;
 
     /** @var int The default access level for this module.  It can be changed in the control panel. */
-    protected $access_level = Auth::PRIV_USER;
+    protected $access_level = Auth::PRIV_NONE;
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -50,7 +50,7 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
     public function title(): string
     {
         /* I18N: Name of a module/list */
-        return I18N::translate('Repositories');
+        return I18N::translate('Submitters');
     }
 
     /**
@@ -60,8 +60,18 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
      */
     public function description(): string
     {
-        /* I18N: Description of the “Repositories” module */
-        return I18N::translate('A list of repositories.');
+        /* I18N: Description of the “Shared submitters” module */
+        return I18N::translate('A list of submitters.');
+    }
+
+    /**
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
+     */
+    public function isEnabledByDefault(): bool
+    {
+        return false;
     }
 
     /**
@@ -71,7 +81,7 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
      */
     public function listMenuClass(): string
     {
-        return 'menu-list-repo';
+        return 'menu-list-subm';
     }
 
     /**
@@ -89,7 +99,7 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
       
         $listController = new ListController(app(IndividualListService::class), app(LocalizationService::class));
-        return $listController->repositoryList($request);
+        return $listController->submitterList($request);
     }
 
     /**
@@ -109,7 +119,7 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
     {
         return !DB::table('other')
             ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Repository::RECORD_TYPE)
+            ->where('o_type', '=', Submitter::RECORD_TYPE)
             ->exists();
     }
 }

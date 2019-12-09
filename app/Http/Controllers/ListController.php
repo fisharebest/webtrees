@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -529,6 +530,27 @@ class ListController extends AbstractBaseController
     }
 
     /**
+     * Show a list of all submitter records.
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function submitterList(ServerRequestInterface $request): ResponseInterface
+    {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        $submitters = $this->allSubmitters($tree);
+
+        return $this->viewResponse('modules/submitter-list/page', [
+            'submitters'   => $submitters,
+            'title'        => I18N::translate('Submitters'),
+            'tree'         => $tree,
+        ]);
+    }
+
+    /**
      * Generate a list of all the folders in a current tree.
      *
      * @param Tree $tree
@@ -626,13 +648,13 @@ class ListController extends AbstractBaseController
      *
      * @param Tree $tree
      *
-     * @return Collection
+     * @return Collection<Note>
      */
     private function allNotes(Tree $tree): Collection
     {
         return DB::table('other')
             ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', 'NOTE')
+            ->where('o_type', '=', Note::RECORD_TYPE)
             ->get()
             ->map(Note::rowMapper($tree))
             ->filter(GedcomRecord::accessFilter());
@@ -643,13 +665,13 @@ class ListController extends AbstractBaseController
      *
      * @param Tree $tree
      *
-     * @return Collection
+     * @return Collection<Repository>
      */
     private function allRepositories(Tree $tree): Collection
     {
         return DB::table('other')
             ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', 'REPO')
+            ->where('o_type', '=', Repository::RECORD_TYPE)
             ->get()
             ->map(Repository::rowMapper($tree))
             ->filter(GedcomRecord::accessFilter());
@@ -660,7 +682,7 @@ class ListController extends AbstractBaseController
      *
      * @param Tree $tree
      *
-     * @return Collection
+     * @return Collection<Source>
      */
     private function allSources(Tree $tree): Collection
     {
@@ -668,6 +690,23 @@ class ListController extends AbstractBaseController
             ->where('s_file', '=', $tree->id())
             ->get()
             ->map(Source::rowMapper($tree))
+            ->filter(GedcomRecord::accessFilter());
+    }
+
+    /**
+     * Find all the submitter record in a tree.
+     *
+     * @param Tree $tree
+     *
+     * @return Collection<Submitter>
+     */
+    private function allSubmitters(Tree $tree): Collection
+    {
+        return DB::table('other')
+            ->where('o_file', '=', $tree->id())
+            ->where('o_type', '=', Submitter::RECORD_TYPE)
+            ->get()
+            ->map(Submitter::rowMapper($tree))
             ->filter(GedcomRecord::accessFilter());
     }
 

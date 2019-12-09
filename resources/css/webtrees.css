@@ -303,6 +303,10 @@ table {
     content: url(webtrees/menu/list-sour.png);
 }
 
+.menu-list-subm::before {
+    content: url(webtrees/menu/list-indi.png);
+}
+
 .menu-calendar .nav-link::before {
     content: url(webtrees/menu/calendar.png);
 }

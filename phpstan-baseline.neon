@@ -1341,21 +1341,6 @@ parameters:
 			path: app/Http/Controllers/ListController.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\ListController\\:\\:allNotes\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/Controllers/ListController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\ListController\\:\\:allRepositories\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/Controllers/ListController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\ListController\\:\\:allSources\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/Controllers/ListController.php
-
-		-
 			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, mixed\\> given\\.$#"
 			count: 1
 			path: app/Http/Controllers/MediaFileController.php
@@ -1589,36 +1574,6 @@ parameters:
 			message: "#^Cannot call method realName\\(\\) on Fisharebest\\\\Webtrees\\\\User\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ContactPage.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\ControlPanel\\:\\:totalIndividuals\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ControlPanel.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\ControlPanel\\:\\:totalFamilies\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ControlPanel.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\ControlPanel\\:\\:totalSources\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ControlPanel.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\ControlPanel\\:\\:totalMediaObjects\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ControlPanel.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\ControlPanel\\:\\:totalRepositories\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ControlPanel.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\ControlPanel\\:\\:totalNotes\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ControlPanel.php
 
 		-
 			message: "#^Cannot access offset 'media\\-note' on array\\|object\\|null\\.$#"

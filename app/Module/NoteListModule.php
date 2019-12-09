@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Http\Controllers\ListController;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
@@ -32,7 +33,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use function assert;
 
 /**
- * Class IndividualListModule
+ * Class NoteListModule
  */
 class NoteListModule extends AbstractModule implements ModuleListInterface
 {
@@ -105,7 +106,7 @@ class NoteListModule extends AbstractModule implements ModuleListInterface
     {
         return !DB::table('other')
             ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', 'NOTE')
+            ->where('o_type', '=', Note::RECORD_TYPE)
             ->exists();
     }
 }

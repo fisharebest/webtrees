@@ -191,6 +191,7 @@ use Fisharebest\Webtrees\Module\SourcesTabModule;
 use Fisharebest\Webtrees\Module\StatcounterModule;
 use Fisharebest\Webtrees\Module\StatisticsChartModule;
 use Fisharebest\Webtrees\Module\StoriesModule;
+use Fisharebest\Webtrees\Module\SubmitterListModule;
 use Fisharebest\Webtrees\Module\ThemeSelectModule;
 use Fisharebest\Webtrees\Module\TimelineChartModule;
 use Fisharebest\Webtrees\Module\TopGivenNamesModule;
@@ -410,6 +411,7 @@ class ModuleService
         'statcounter'             => StatcounterModule::class,
         'statistics_chart'        => StatisticsChartModule::class,
         'stories'                 => StoriesModule::class,
+        'submitter_list'          => SubmitterListModule::class,
         'theme_select'            => ThemeSelectModule::class,
         'timeline_chart'          => TimelineChartModule::class,
         'todays_events'           => OnThisDayModule::class,

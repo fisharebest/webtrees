@@ -28,7 +28,8 @@
 }
 
 /* rtl:ignore */
-.align-digits {
+td.align-digits,
+th.align-digits {
     text-align: right;
 }
 

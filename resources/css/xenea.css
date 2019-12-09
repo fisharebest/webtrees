@@ -303,6 +303,10 @@ table {
     content: url(xenea/menu/list-sour.png);
 }
 
+.menu-list-subm::before {
+    content: url(xenea/menu/list-indi.png);
+}
+
 .menu-calendar .nav-link::before {
     content: url(xenea/menu/calendar.png);
 }
