@@ -2676,31 +2676,6 @@ parameters:
 			path: modules_v4/example-server-configuration.disable/ExampleServerConfigurationModule.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\DescendancyModule\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/DescendancyModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FamilyNavigatorModule\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/FamilyNavigatorModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\AlbumModule\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/AlbumModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\InteractiveTreeModule\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/InteractiveTreeModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\StoriesModule\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/StoriesModule.php
-
-		-
 			message: "#^Cannot access offset 'xref' on array\\|object\\|null\\.$#"
 			count: 1
 			path: app/Module/StoriesModule.php

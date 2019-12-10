@@ -33,7 +33,6 @@
     "leaflet-providers": "^1.9.1",
     "leaflet.markercluster": "^1.4.1",
     "moment": "^2.24.0",
-    "npm-check-updates": "^3.2.2",
     "popper.js": "^1.16.0",
     "select2": "4.0.12",
     "sortablejs": "^1.10.1",
