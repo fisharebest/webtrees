@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
 
@@ -30,7 +31,7 @@ interface ModuleHistoricEventsInterface extends ModuleInterface
     /**
      * All events provided by this module.
      *
-     * @return Collection
+     * @return Collection<string>
      */
     public function historicEventsAll(): Collection;
 
@@ -39,7 +40,7 @@ interface ModuleHistoricEventsInterface extends ModuleInterface
      *
      * @param Individual $individual
      *
-     * @return Collection
+     * @return Collection<Fact>
      */
     public function historicEventsForIndividual(Individual $individual): Collection;
 }

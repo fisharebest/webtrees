@@ -57,7 +57,7 @@ trait ModuleHistoricEventsTrait
      *
      * @param Individual $individual
      *
-     * @return Collection
+     * @return Collection<Fact>
      */
     public function historicEventsForIndividual(Individual $individual): Collection
     {

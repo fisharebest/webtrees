@@ -114,7 +114,7 @@ class SourcePage implements RequestHandlerInterface
     /**
      * @param Source $record
      *
-     * @return Collection
+     * @return Collection<Fact>
      */
     private function facts(Source $record): Collection
     {

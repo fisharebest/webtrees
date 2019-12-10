@@ -675,7 +675,7 @@ class HomePageController extends AbstractBaseController
     /**
      * Get all the available blocks for a tree page.
      *
-     * @return Collection
+     * @return Collection<string,ModuleBlockInterface>
      */
     private function availableTreeBlocks(): Collection
     {
@@ -683,7 +683,7 @@ class HomePageController extends AbstractBaseController
             ->filter(static function (ModuleBlockInterface $block): bool {
                 return $block->isTreeBlock();
             })
-            ->mapWithKeys(static function (ModuleInterface $block): array {
+            ->mapWithKeys(static function (ModuleBlockInterface $block): array {
                 return [$block->name() => $block];
             });
     }
@@ -691,7 +691,7 @@ class HomePageController extends AbstractBaseController
     /**
      * Get all the available blocks for a user page.
      *
-     * @return Collection
+     * @return Collection<string,ModuleBlockInterface>
      */
     private function availableUserBlocks(): Collection
     {
@@ -699,7 +699,7 @@ class HomePageController extends AbstractBaseController
             ->filter(static function (ModuleBlockInterface $block): bool {
                 return $block->isUserBlock();
             })
-            ->mapWithKeys(static function (ModuleInterface $block): array {
+            ->mapWithKeys(static function (ModuleBlockInterface $block): array {
                 return [$block->name() => $block];
             });
     }
@@ -710,7 +710,7 @@ class HomePageController extends AbstractBaseController
      * @param int    $tree_id
      * @param string $location "main" or "side"
      *
-     * @return Collection
+     * @return Collection<string,ModuleBlockInterface>
      */
     private function treeBlocks(int $tree_id, string $location): Collection
     {
@@ -757,7 +757,7 @@ class HomePageController extends AbstractBaseController
      * @param int    $user_id
      * @param string $location "main" or "side"
      *
-     * @return Collection
+     * @return Collection<string,ModuleBlockInterface>
      */
     private function userBlocks(int $user_id, string $location): Collection
     {
@@ -801,9 +801,9 @@ class HomePageController extends AbstractBaseController
     /**
      * Save the updated blocks for a user.
      *
-     * @param int        $user_id
-     * @param Collection $main_block_ids
-     * @param Collection $side_block_ids
+     * @param int             $user_id
+     * @param Collection<int> $main_block_ids
+     * @param Collection<int> $side_block_ids
      *
      * @return void
      */
@@ -857,9 +857,9 @@ class HomePageController extends AbstractBaseController
     /**
      * Save the updated blocks for a tree.
      *
-     * @param int        $tree_id
-     * @param Collection $main_block_ids
-     * @param Collection $side_block_ids
+     * @param int             $tree_id
+     * @param Collection<int> $main_block_ids
+     * @param Collection<int> $side_block_ids
      *
      * @return void
      */
@@ -913,10 +913,10 @@ class HomePageController extends AbstractBaseController
     /**
      * Take a list of block names, and return block (module) objects.
      *
-     * @param Collection $blocks
-     * @param Collection $active_blocks
+     * @param Collection<string>                      $blocks
+     * @param Collection<string,ModuleBlockInterface> $active_blocks
      *
-     * @return Collection
+     * @return Collection<string,ModuleBlockInterface>
      */
     private function filterActiveBlocks(Collection $blocks, Collection $active_blocks): Collection
     {

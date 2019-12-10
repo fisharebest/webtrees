@@ -98,7 +98,7 @@ class MediaPage implements RequestHandlerInterface
     /**
      * @param Media $record
      *
-     * @return Collection
+     * @return Collection<Fact>
      */
     private function facts(Media $record): Collection
     {

@@ -106,7 +106,7 @@ class RepositoryPage implements RequestHandlerInterface
     /**
      * @param Repository $record
      *
-     * @return Collection
+     * @return Collection<Fact>
      */
     private function facts(Repository $record): Collection
     {

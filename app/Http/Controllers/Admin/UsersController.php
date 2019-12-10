@@ -426,7 +426,7 @@ class UsersController extends AbstractAdminController
     }
 
     /**
-     * @return Collection
+     * @return Collection<string>
      */
     private function themeOptions(): Collection
     {

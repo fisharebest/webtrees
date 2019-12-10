@@ -347,7 +347,7 @@ class IndividualPage implements RequestHandlerInterface
      *
      * @param Individual $individual
      *
-     * @return Collection
+     * @return Collection<ModuleSidebarInterface>
      */
     public function getSidebars(Individual $individual): Collection
     {
@@ -363,7 +363,7 @@ class IndividualPage implements RequestHandlerInterface
      *
      * @param Individual $individual
      *
-     * @return Collection
+     * @return Collection<ModuleTabInterface>
      */
     public function getTabs(Individual $individual): Collection
     {

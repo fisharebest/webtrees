@@ -65,6 +65,7 @@ use function route;
 use const UPLOAD_ERR_OK;
 
 /**
+/**
  * Controller for tree administration.
  */
 class AdminTreesController extends AbstractBaseController
@@ -1787,7 +1788,7 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @return Collection
+     * @return Collection<string>
      */
     private function themeOptions(): Collection
     {

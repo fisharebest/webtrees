@@ -36,7 +36,7 @@ class Select2Place extends AbstractSelect2Handler
      * @param int    $offset
      * @param int    $limit
      *
-     * @return Collection
+     * @return Collection<array<string,string>>
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
     {

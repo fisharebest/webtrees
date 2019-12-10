@@ -174,7 +174,7 @@ class MessageService
      *
      * @param string $to
      *
-     * @return Collection
+     * @return Collection<User>
      */
     public function recipientUsers(string $to): Collection
     {

@@ -801,7 +801,7 @@ class Individual extends GedcomRecord
      *
      * @param int|null $access_level
      *
-     * @return Collection
+     * @return Collection<Family>
      */
     public function spouseFamilies($access_level = null): Collection
     {
@@ -867,7 +867,7 @@ class Individual extends GedcomRecord
      *
      * @param int|null $access_level
      *
-     * @return Collection
+     * @return Collection<Family>
      */
     public function childFamilies($access_level = null): Collection
     {
@@ -892,7 +892,7 @@ class Individual extends GedcomRecord
     /**
      * Get a list of step-parent families.
      *
-     * @return Collection
+     * @return Collection<Family>
      */
     public function childStepFamilies(): Collection
     {
@@ -914,7 +914,7 @@ class Individual extends GedcomRecord
     /**
      * Get a list of step-parent families.
      *
-     * @return Collection
+     * @return Collection<Family>
      */
     public function spouseStepFamilies(): Collection
     {
@@ -924,7 +924,7 @@ class Individual extends GedcomRecord
         foreach ($families as $family) {
             $spouse = $family->spouse($this);
 
-            if ($spouse) {
+            if ($spouse instanceof Individual) {
                 foreach ($family->spouse($this)->spouseFamilies() as $step_family) {
                     if (!$families->containsStrict($step_family)) {
                         $step_families[] = $step_family;

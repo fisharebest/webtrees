@@ -86,7 +86,7 @@ class ClipboardService
      * @param GedcomRecord $record
      * @param Collection   $exclude_types
      *
-     * @return Collection
+     * @return Collection<Fact>
      */
     public function pastableFacts(GedcomRecord $record, Collection $exclude_types): Collection
     {
@@ -108,7 +108,7 @@ class ClipboardService
      * @param GedcomRecord $record
      * @param Collection   $types
      *
-     * @return Collection
+     * @return Collection<Fact>
      */
     public function pastableFactsOfType(GedcomRecord $record, Collection $types): Collection
     {

@@ -695,9 +695,9 @@ class Fact
      * using the compare type function
      * 3. Then merge the arrays back into the original array using the compare type function
      *
-     * @param Collection $unsorted
+     * @param Collection<Fact> $unsorted
      *
-     * @return Collection
+     * @return Collection<Fact>
      */
     public static function sortFacts(Collection $unsorted): Collection
     {

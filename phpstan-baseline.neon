@@ -21,6 +21,11 @@ parameters:
 			path: app/Census/Census.php
 
 		-
+			message: "#^Cannot call method getAllNames\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
+			count: 1
+			path: app/Census/CensusColumnFullName.php
+
+		-
 			message: "#^Parameter \\#1 \\$line of method Fisharebest\\\\Webtrees\\\\CommonMark\\\\CensusTableParser\\:\\:parseRow\\(\\) expects string, string\\|null given\\.$#"
 			count: 2
 			path: app/CommonMark/CensusTableParser.php
@@ -101,32 +106,22 @@ parameters:
 			path: app/Fact.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Fact\\:\\:sortFacts\\(\\) has parameter \\$unsorted with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Fact.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Fact\\:\\:sortFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Fact.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Family\\:\\:spouses\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Family.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Family\\:\\:children\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Family.php
-
-		-
 			message: "#^Parameter \\#1 \\$commonMark of method League\\\\CommonMark\\\\Converter\\:\\:convertToHtml\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Filter.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Functions\\\\Functions\\:\\:getRelationship\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Functions/Functions.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\:\\:childFamilies\\(\\)\\.$#"
+			count: 1
+			path: app/Functions/Functions.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\:\\:spouseFamilies\\(\\)\\.$#"
 			count: 1
 			path: app/Functions/Functions.php
 
@@ -311,43 +306,18 @@ parameters:
 			path: app/Functions/FunctionsRtl.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:linkedIndividuals\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:linkedFamilies\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:linkedSources\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:linkedMedia\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:linkedNotes\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:linkedRepositories\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:facts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
 			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
 			count: 2
+			path: app/GedcomRecord.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
+			count: 1
+			path: app/GedcomRecord.php
+
+		-
+			message: "#^Parameter \\#2 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateFact\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
 			path: app/GedcomRecord.php
 
 		-
@@ -846,7 +816,7 @@ parameters:
 			path: app/Http/Controllers/Admin/UsersController.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\Admin\\\\UsersController\\:\\:themeOptions\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\Admin\\\\UsersController\\:\\:themeOptions\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/UsersController.php
 
@@ -896,7 +866,7 @@ parameters:
 			path: app/Http/Controllers/AdminController.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminSiteController\\:\\:themeOptions\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminSiteController\\:\\:themeOptions\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Http/Controllers/AdminSiteController.php
 
@@ -1036,7 +1006,7 @@ parameters:
 			path: app/Http/Controllers/AdminTreesController.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminTreesController\\:\\:themeOptions\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminTreesController\\:\\:themeOptions\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Http/Controllers/AdminTreesController.php
 
@@ -1281,57 +1251,22 @@ parameters:
 			path: app/Http/Controllers/HomePageController.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\HomePageController\\:\\:availableTreeBlocks\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\HomePageController\\:\\:availableTreeBlocks\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Http/Controllers/HomePageController.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\HomePageController\\:\\:availableUserBlocks\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\HomePageController\\:\\:availableUserBlocks\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Http/Controllers/HomePageController.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\HomePageController\\:\\:treeBlocks\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
+			message: "#^Else branch is unreachable because previous condition is always true\\.$#"
+			count: 2
 			path: app/Http/Controllers/HomePageController.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\HomePageController\\:\\:userBlocks\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/Controllers/HomePageController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\HomePageController\\:\\:updateUserBlocks\\(\\) has parameter \\$main_block_ids with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/Controllers/HomePageController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\HomePageController\\:\\:updateUserBlocks\\(\\) has parameter \\$side_block_ids with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/Controllers/HomePageController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\HomePageController\\:\\:updateTreeBlocks\\(\\) has parameter \\$main_block_ids with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/Controllers/HomePageController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\HomePageController\\:\\:updateTreeBlocks\\(\\) has parameter \\$side_block_ids with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/Controllers/HomePageController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\HomePageController\\:\\:filterActiveBlocks\\(\\) has parameter \\$active_blocks with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/Controllers/HomePageController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\HomePageController\\:\\:filterActiveBlocks\\(\\) has parameter \\$blocks with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/Controllers/HomePageController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\HomePageController\\:\\:filterActiveBlocks\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\HomePageController\\:\\:filterActiveBlocks\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
 			count: 1
 			path: app/Http/Controllers/HomePageController.php
 
@@ -1341,13 +1276,13 @@ parameters:
 			path: app/Http/Controllers/ListController.php
 
 		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, mixed\\> given\\.$#"
-			count: 1
+			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
+			count: 3
 			path: app/Http/Controllers/MediaFileController.php
 
 		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 2
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
 			path: app/Http/Controllers/MediaFileController.php
 
 		-
@@ -1479,11 +1414,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\(mixed, string\\) given\\.$#"
 			count: 1
 			path: app/Http/Middleware/WrapHandler.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\AbstractSelect2Handler\\:\\:search\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AbstractSelect2Handler.php
 
 		-
 			message: "#^Cannot access offset 'contact\\-method' on array\\|object\\|null\\.$#"
@@ -1906,12 +1836,12 @@ parameters:
 			path: app/Http/RequestHandlers/IndividualPage.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\IndividualPage\\:\\:getSidebars\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\IndividualPage\\:\\:getSidebars\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleSidebarInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/IndividualPage.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\IndividualPage\\:\\:getTabs\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\IndividualPage\\:\\:getTabs\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleTabInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/IndividualPage.php
 
@@ -1929,11 +1859,6 @@ parameters:
 			message: "#^Cannot access offset 'url' on array\\|object\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/LoginAction.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\MediaPage\\:\\:facts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MediaPage.php
 
 		-
 			message: "#^Strict comparison using \\!\\=\\= between 'UNKNOWN' and 'UNKNOWN' will always evaluate to false\\.$#"
@@ -1979,11 +1904,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\) given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ModuleAction.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\NotePage\\:\\:facts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/NotePage.php
 
 		-
 			message: "#^Cannot access offset 'fact_id' on array\\|object\\|null\\.$#"
@@ -2041,11 +1961,6 @@ parameters:
 			path: app/Http/RequestHandlers/ReportSetupAction.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\RepositoryPage\\:\\:facts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/RepositoryPage.php
-
-		-
 			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/SearchGeneralPage.php
@@ -2076,44 +1991,9 @@ parameters:
 			path: app/Http/RequestHandlers/SearchReplaceAction.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\Select2Family\\:\\:search\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/Select2Family.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\Select2Individual\\:\\:search\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/Select2Individual.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\Select2MediaObject\\:\\:search\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/Select2MediaObject.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\Select2Note\\:\\:search\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/Select2Note.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\Select2Place\\:\\:search\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\Select2Place\\:\\:search\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<array\\<string, string\\>\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Place\\>\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/Select2Place.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\Select2Repository\\:\\:search\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/Select2Repository.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\Select2Source\\:\\:search\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/Select2Source.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\Select2Submitter\\:\\:search\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/Select2Submitter.php
 
 		-
 			message: "#^Cannot access offset 'fact' on array\\|object\\|null\\.$#"
@@ -2136,9 +2016,9 @@ parameters:
 			path: app/Http/RequestHandlers/SiteLogsPage.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\SourcePage\\:\\:facts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Parameter \\#2 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateFact\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
-			path: app/Http/RequestHandlers/SourcePage.php
+			path: app/Http/RequestHandlers/UpdatePlacesAction.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Routes\\\\ApiRoutes\\:\\:load\\(\\) has parameter \\$router with no value type specified in iterable type Aura\\\\Router\\\\Map\\.$#"
@@ -2166,22 +2046,7 @@ parameters:
 			path: app/Individual.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Individual\\:\\:spouseFamilies\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Individual.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Individual\\:\\:childFamilies\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Individual.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Individual\\:\\:childStepFamilies\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Individual.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Individual\\:\\:spouseStepFamilies\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Cannot call method spouseFamilies\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
 			count: 1
 			path: app/Individual.php
 
@@ -2231,12 +2096,7 @@ parameters:
 			path: app/Individual.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Media\\:\\:mediaFiles\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Media.php
-
-		-
-			message: "#^Strict comparison using \\=\\=\\= between array\\<int, mixed\\> and array\\(\\) will always evaluate to false\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Media\\:\\:mediaFiles\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\MediaFile\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Fact\\>\\.$#"
 			count: 1
 			path: app/Media.php
 
@@ -2326,12 +2186,12 @@ parameters:
 			path: app/Module/BatchUpdateModule.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:getRecord\\(\\) should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Note\\|null\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:getRecord\\(\\) should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Submitter\\|null\\.$#"
 			count: 1
 			path: app/Module/BatchUpdateModule.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:getRecord\\(\\) should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Submitter\\|null\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:getRecord\\(\\) should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Note\\|null\\.$#"
 			count: 1
 			path: app/Module/BatchUpdateModule.php
 
@@ -2359,36 +2219,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$parameters of function route expects array, array\\|object given\\.$#"
 			count: 1
 			path: app/Module/BatchUpdateModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BritishMonarchs\\:\\:historicEventsAll\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 2
-			path: app/Module/BritishMonarchs.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BritishMonarchs\\:\\:historicEventsForIndividual\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/BritishMonarchs.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BritishPrimeMinisters\\:\\:historicEventsAll\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 2
-			path: app/Module/BritishPrimeMinisters.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BritishPrimeMinisters\\:\\:historicEventsForIndividual\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/BritishPrimeMinisters.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BritishSocialHistory\\:\\:historicEventsAll\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 2
-			path: app/Module/BritishSocialHistory.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BritishSocialHistory\\:\\:historicEventsForIndividual\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/BritishSocialHistory.php
 
 		-
 			message: "#^Cannot access offset 'census' on array\\|object\\|null\\.$#"
@@ -2631,11 +2461,6 @@ parameters:
 			path: app/Module/FrequentlyAskedQuestionsModule.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FrequentlyAskedQuestionsModule\\:\\:faqsForTree\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/FrequentlyAskedQuestionsModule.php
-
-		-
 			message: "#^Cannot access offset 'xref' on array\\|object\\|null\\.$#"
 			count: 1
 			path: app/Module/HourglassChartModule.php
@@ -2666,18 +2491,13 @@ parameters:
 			path: app/Module/IndividualFactsTabModule.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\IndividualFactsTabModule\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 2
+			message: "#^Instanceof between Fisharebest\\\\Webtrees\\\\Individual and Fisharebest\\\\Webtrees\\\\Family will always evaluate to false\\.$#"
+			count: 1
 			path: app/Module/IndividualFactsTabModule.php
 
 		-
 			message: "#^Parameter \\#1 \\$str of function strip_tags expects string, string\\|false given\\.$#"
 			count: 1
-			path: app/Module/IndividualMetadataModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\IndividualMetadataModule\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 2
 			path: app/Module/IndividualMetadataModule.php
 
 		-
@@ -2718,16 +2538,6 @@ parameters:
 		-
 			message: "#^Negated boolean expression is always false\\.$#"
 			count: 1
-			path: app/Module/MediaTabModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\MediaTabModule\\:\\:getFactsWithMedia\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/MediaTabModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\MediaTabModule\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 2
 			path: app/Module/MediaTabModule.php
 
 		-
@@ -2788,51 +2598,6 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-middleware.disable/module.php
-
-		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 1
-			path: modules_v4/example-middleware.disable/module.php
-
-		-
-			message: "#^Binary operation \"\\-\" between 32 and string results in an error\\.$#"
-			count: 1
-			path: modules_v4/example-middleware.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-report.disable/module.php
-
-		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 1
-			path: modules_v4/example-report.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example.disable/module.php
-
-		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 1
-			path: modules_v4/example.disable/module.php
-
-		-
-			message: "#^Method class@anonymous/modules_v4/example\\.disable/module\\.php\\:17\\:\\:englishTranslations\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: modules_v4/example.disable/module.php
-
-		-
-			message: "#^Method class@anonymous/modules_v4/example\\.disable/module\\.php\\:17\\:\\:frenchTranslations\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: modules_v4/example.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
 			path: modules_v4/example-theme.disable/module.php
 
 		-
@@ -2858,37 +2623,57 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
+			path: modules_v4/example.disable/module.php
+
+		-
+			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
+			count: 1
+			path: modules_v4/example.disable/module.php
+
+		-
+			message: "#^Method class@anonymous/modules_v4/example\\.disable/module\\.php\\:17\\:\\:englishTranslations\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: modules_v4/example.disable/module.php
+
+		-
+			message: "#^Method class@anonymous/modules_v4/example\\.disable/module\\.php\\:17\\:\\:frenchTranslations\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: modules_v4/example.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example-report.disable/module.php
+
+		-
+			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
+			count: 1
+			path: modules_v4/example-report.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example-middleware.disable/module.php
+
+		-
+			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
+			count: 1
+			path: modules_v4/example-middleware.disable/module.php
+
+		-
+			message: "#^Binary operation \"\\-\" between 32 and string results in an error\\.$#"
+			count: 1
+			path: modules_v4/example-middleware.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
 			path: modules_v4/example-server-configuration.disable/ExampleServerConfigurationModule.php
 
 		-
 			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
 			count: 1
 			path: modules_v4/example-server-configuration.disable/ExampleServerConfigurationModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleHistoricEventsInterface\\:\\:historicEventsAll\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/ModuleHistoricEventsInterface.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleHistoricEventsInterface\\:\\:historicEventsForIndividual\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/ModuleHistoricEventsInterface.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\USPresidents\\:\\:historicEventsAll\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 2
-			path: app/Module/USPresidents.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\USPresidents\\:\\:historicEventsForIndividual\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/USPresidents.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleSidebarInterface\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/ModuleSidebarInterface.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\DescendancyModule\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
@@ -2901,11 +2686,6 @@ parameters:
 			path: app/Module/FamilyNavigatorModule.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleTabInterface\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/ModuleTabInterface.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\AlbumModule\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
 			count: 1
 			path: app/Module/AlbumModule.php
@@ -2914,51 +2694,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\InteractiveTreeModule\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
 			count: 1
 			path: app/Module/InteractiveTreeModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\NotesTabModule\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 2
-			path: app/Module/NotesTabModule.php
-
-		-
-			message: "#^Property Fisharebest\\\\Webtrees\\\\Module\\\\NotesTabModule\\:\\:\\$facts type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/NotesTabModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\NotesTabModule\\:\\:getFactsWithNotes\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/NotesTabModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\PlacesModule\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/PlacesModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\PlacesModule\\:\\:getPersonalFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/PlacesModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\RelativesTabModule\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 2
-			path: app/Module/RelativesTabModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\SourcesTabModule\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 2
-			path: app/Module/SourcesTabModule.php
-
-		-
-			message: "#^Property Fisharebest\\\\Webtrees\\\\Module\\\\SourcesTabModule\\:\\:\\$facts type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/SourcesTabModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\SourcesTabModule\\:\\:getFactsWithSources\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/SourcesTabModule.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\StoriesModule\\:\\:supportedFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
@@ -3106,6 +2841,11 @@ parameters:
 			path: app/Module/XeneaTheme.php
 
 		-
+			message: "#^Property Fisharebest\\\\Webtrees\\\\Module\\\\NotesTabModule\\:\\:\\$facts type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
+			count: 1
+			path: app/Module/NotesTabModule.php
+
+		-
 			message: "#^Cannot access offset 'filter' on array\\|object\\|null\\.$#"
 			count: 1
 			path: app/Module/OnThisDayModule.php
@@ -3166,7 +2906,7 @@ parameters:
 			path: app/Module/PedigreeMapModule.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\PrivacyPolicy\\:\\:analyticsModules\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\PrivacyPolicy\\:\\:analyticsModules\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleAnalyticsInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Module/PrivacyPolicy.php
 
@@ -3236,16 +2976,6 @@ parameters:
 			path: app/Module/ResearchTaskModule.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\ResearchTaskModule\\:\\:familiesWithTasks\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/ResearchTaskModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\ResearchTaskModule\\:\\:individualsWithTasks\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/ResearchTaskModule.php
-
-		-
 			message: "#^Cannot call method canShow\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
 			count: 1
 			path: app/Module/ReviewChangesModule.php
@@ -3271,36 +3001,6 @@ parameters:
 			path: app/Module/ReviewChangesModule.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\SiteMapModule\\:\\:sitemapRecords\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/SiteMapModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\SiteMapModule\\:\\:sitemapIndividuals\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/SiteMapModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\SiteMapModule\\:\\:sitemapMedia\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/SiteMapModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\SiteMapModule\\:\\:sitemapNotes\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/SiteMapModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\SiteMapModule\\:\\:sitemapRepositories\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/SiteMapModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\SiteMapModule\\:\\:sitemapSources\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/SiteMapModule.php
-
-		-
 			message: "#^Cannot access offset 'filter' on array\\|object\\|null\\.$#"
 			count: 1
 			path: app/Module/SlideShowModule.php
@@ -3314,6 +3014,11 @@ parameters:
 			message: "#^Cannot access offset 'start' on array\\|object\\|null\\.$#"
 			count: 1
 			path: app/Module/SlideShowModule.php
+
+		-
+			message: "#^Property Fisharebest\\\\Webtrees\\\\Module\\\\SourcesTabModule\\:\\:\\$facts type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
+			count: 1
+			path: app/Module/SourcesTabModule.php
 
 		-
 			message: "#^Cannot access offset 'x\\-as' on array\\|object\\|null\\.$#"
@@ -3479,21 +3184,6 @@ parameters:
 			message: "#^Cannot access offset 'body' on array\\|object\\|null\\.$#"
 			count: 1
 			path: app/Module/UserJournalModule.php
-
-		-
-			message: "#^Property Fisharebest\\\\Webtrees\\\\Place\\:\\:\\$parts type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Place.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Place\\:\\:firstParts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Place.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Place\\:\\:lastParts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Place.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\AbstractRenderer\\:\\:getStyle\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -3801,6 +3491,21 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
+			message: "#^If condition is always true\\.$#"
+			count: 1
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Parameter \\#1 \\$haystack of function strpos expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Parameter \\#1 \\$xref of static method Fisharebest\\\\Webtrees\\\\Individual\\:\\:getInstance\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Report/ReportParserGenerate.php
+
+		-
 			message: "#^Cannot call method childFamilies\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
@@ -3916,19 +3621,14 @@ parameters:
 			path: app/Services/CalendarService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ChartService\\:\\:sosaStradonitzAncestors\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ChartService.php
+			message: "#^Access to an undefined property Fisharebest\\\\Webtrees\\\\Fact\\:\\:\\$anniv\\.$#"
+			count: 2
+			path: app/Services/CalendarService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ChartService\\:\\:descendants\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Access to an undefined property Fisharebest\\\\Webtrees\\\\Fact\\:\\:\\$jd\\.$#"
 			count: 1
-			path: app/Services/ChartService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ChartService\\:\\:descendantFamilies\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ChartService.php
+			path: app/Services/CalendarService.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ClipboardService\\:\\:pastableFacts\\(\\) has parameter \\$exclude_types with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
@@ -3936,17 +3636,7 @@ parameters:
 			path: app/Services/ClipboardService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ClipboardService\\:\\:pastableFacts\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ClipboardService.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ClipboardService\\:\\:pastableFactsOfType\\(\\) has parameter \\$types with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ClipboardService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ClipboardService\\:\\:pastableFactsOfType\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
 			count: 1
 			path: app/Services/ClipboardService.php
 
@@ -4086,62 +3776,7 @@ parameters:
 			path: app/Services/MediaFileService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:allFilesOnDisk\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/MediaFileService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:allFilesInDatabase\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/MediaFileService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:allMediaFolders\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/MediaFileService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MessageService\\:\\:recipientUsers\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/MessageService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByComponent\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByInterface\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:all\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:coreModules\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:customModules\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:setupLanguages\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:otherModules\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:deletedModules\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:setupLanguages\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Services/ModuleService.php
 
@@ -4151,82 +3786,12 @@ parameters:
 			path: app/Services/PendingChangesService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchFamilies\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchFamilyNames\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchIndividuals\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchIndividualNames\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchMedia\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchNotes\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchRepositories\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchSources\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchSourcesByName\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchSubmitters\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchPlaces\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchIndividualsAdvanced\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
 			message: "#^Binary operation \"\\*\" between 365 and 0\\|string results in an error\\.$#"
 			count: 1
 			path: app/Services/SearchService.php
 
 		-
 			message: "#^Binary operation \"\\*\" between 365 and string results in an error\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchIndividualsPhonetic\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:paginateQuery\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
 			count: 1
 			path: app/Services/SearchService.php
 
@@ -4286,16 +3851,6 @@ parameters:
 			path: app/Services/SearchService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ServerCheckService\\:\\:serverErrors\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ServerCheckService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ServerCheckService\\:\\:serverWarnings\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ServerCheckService.php
-
-		-
 			message: "#^Parameter \\#2 \\$str of function explode expects string, string\\|false given\\.$#"
 			count: 2
 			path: app/Services/ServerCheckService.php
@@ -4321,34 +3876,9 @@ parameters:
 			path: app/Services/ServerCheckService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ServerCheckService\\:\\:databaseDriverErrors\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ServerCheckService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ServerCheckService\\:\\:databaseDriverWarnings\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ServerCheckService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ServerCheckService\\:\\:databaseEngineWarnings\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ServerCheckService.php
-
-		-
 			message: "#^Cannot call method addDay\\(\\) on Fisharebest\\\\Webtrees\\\\Carbon\\|null\\.$#"
 			count: 1
 			path: app/Services/SiteLogsService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService\\:\\:all\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/TreeService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UpgradeService\\:\\:webtreesZipContents\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/UpgradeService.php
 
 		-
 			message: "#^Parameter \\#1 \\$fp of function fwrite expects resource, resource\\|false given\\.$#"
@@ -4404,46 +3934,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UpgradeService\\:\\:serverParameters\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Services/UpgradeService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:findByIndividual\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/UserService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:all\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/UserService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:administrators\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/UserService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:managers\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/UserService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:moderators\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/UserService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:unapproved\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/UserService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:unverified\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/UserService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:allLoggedIn\\(\\) return type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/UserService.php
 
 		-
 			message: "#^Parameter \\#2 \\$str of function explode expects string, string\\|false given\\.$#"

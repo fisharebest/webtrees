@@ -54,7 +54,7 @@ class TreeService
     /**
      * All the trees that the current user has permission to access.
      *
-     * @return Collection
+     * @return Collection<Tree>
      */
     public function all(): Collection
     {

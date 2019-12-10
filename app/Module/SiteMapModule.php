@@ -241,7 +241,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int    $limit
      * @param int    $offset
      *
-     * @return Collection
+     * @return Collection<GedcomRecord>
      */
     private function sitemapRecords(Tree $tree, string $type, int $limit, int $offset): Collection
     {
@@ -281,7 +281,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection
+     * @return Collection<Individual>
      */
     private function sitemapIndividuals(Tree $tree, int $limit, int $offset): Collection
     {
@@ -299,7 +299,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection
+     * @return Collection<Media>
      */
     private function sitemapMedia(Tree $tree, int $limit, int $offset): Collection
     {
@@ -317,7 +317,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection
+     * @return Collection<Note>
      */
     private function sitemapNotes(Tree $tree, int $limit, int $offset): Collection
     {
@@ -336,7 +336,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection
+     * @return Collection<Repository>
      */
     private function sitemapRepositories(Tree $tree, int $limit, int $offset): Collection
     {
@@ -355,7 +355,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection
+     * @return Collection<Source>
      */
     private function sitemapSources(Tree $tree, int $limit, int $offset): Collection
     {

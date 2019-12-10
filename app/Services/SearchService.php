@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -65,7 +66,7 @@ class SearchService
      * @param Tree[]   $trees
      * @param string[] $search
      *
-     * @return Collection
+     * @return Collection<Family>
      */
     public function searchFamilies(array $trees, array $search): Collection
     {
@@ -90,7 +91,7 @@ class SearchService
      * @param int      $offset
      * @param int      $limit
      *
-     * @return Collection
+     * @return Collection<Family>
      */
     public function searchFamilyNames(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -127,7 +128,7 @@ class SearchService
      * @param Tree[]   $trees
      * @param string[] $search
      *
-     * @return Collection
+     * @return Collection<Individual>
      */
     public function searchIndividuals(array $trees, array $search): Collection
     {
@@ -152,7 +153,7 @@ class SearchService
      * @param int      $offset
      * @param int      $limit
      *
-     * @return Collection
+     * @return Collection<Individual>
      */
     public function searchIndividualNames(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -180,7 +181,7 @@ class SearchService
      * @param int      $offset
      * @param int      $limit
      *
-     * @return Collection
+     * @return Collection<Media>
      */
     public function searchMedia(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -200,7 +201,7 @@ class SearchService
      * @param int      $offset
      * @param int      $limit
      *
-     * @return Collection
+     * @return Collection<Note>
      */
     public function searchNotes(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -221,7 +222,7 @@ class SearchService
      * @param int      $offset
      * @param int      $limit
      *
-     * @return Collection
+     * @return Collection<Repository>
      */
     public function searchRepositories(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -242,7 +243,7 @@ class SearchService
      * @param int      $offset
      * @param int      $limit
      *
-     * @return Collection
+     * @return Collection<Source>
      */
     public function searchSources(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -262,7 +263,7 @@ class SearchService
      * @param int      $offset
      * @param int      $limit
      *
-     * @return Collection
+     * @return Collection<Source>
      */
     public function searchSourcesByName(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -283,7 +284,7 @@ class SearchService
      * @param int      $offset
      * @param int      $limit
      *
-     * @return Collection
+     * @return Collection<Submitter>
      */
     public function searchSubmitters(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -304,7 +305,7 @@ class SearchService
      * @param int    $offset
      * @param int    $limit
      *
-     * @return Collection
+     * @return Collection<Place>
      */
     public function searchPlaces(Tree $tree, string $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -362,7 +363,7 @@ class SearchService
      * @param string[] $fields
      * @param string[] $modifiers
      *
-     * @return Collection
+     * @return Collection<Individual>
      */
     public function searchIndividualsAdvanced(array $trees, array $fields, array $modifiers): Collection
     {
@@ -775,7 +776,7 @@ class SearchService
      * @param string $place
      * @param Tree[] $search_trees
      *
-     * @return Collection
+     * @return Collection<Individual>
      */
     public function searchIndividualsPhonetic(string $soundex, string $lastname, string $firstname, string $place, array $search_trees): Collection
     {
@@ -852,7 +853,7 @@ class SearchService
      * @param int     $offset     Skip this many rows.
      * @param int     $limit      Take this many rows.
      *
-     * @return Collection
+     * @return Collection<mixed>
      */
     private function paginateQuery(Builder $query, Closure $row_mapper, Closure $row_filter, int $offset, int $limit): Collection
     {

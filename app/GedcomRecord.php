@@ -693,7 +693,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection
+     * @return Collection<Individual>
      */
     public function linkedIndividuals(string $link): Collection
     {
@@ -717,7 +717,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection
+     * @return Collection<Family>
      */
     public function linkedFamilies(string $link): Collection
     {
@@ -741,7 +741,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection
+     * @return Collection<Source>
      */
     public function linkedSources(string $link): Collection
     {
@@ -765,7 +765,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection
+     * @return Collection<Media>
      */
     public function linkedMedia(string $link): Collection
     {
@@ -789,7 +789,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection
+     * @return Collection<Note>
      */
     public function linkedNotes(string $link): Collection
     {
@@ -814,7 +814,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection
+     * @return Collection<Repository>
      */
     public function linkedRepositories(string $link): Collection
     {
@@ -886,7 +886,7 @@ class GedcomRecord
      * @param int|null $access_level
      * @param bool     $override Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
      *
-     * @return Collection
+     * @return Collection<Fact>
      */
     public function facts(array $filter = [], bool $sort = false, int $access_level = null, bool $override = false): Collection
     {

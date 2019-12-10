@@ -96,7 +96,7 @@ class NotePage implements RequestHandlerInterface
     /**
      * @param Note $record
      *
-     * @return Collection
+     * @return Collection<Fact>
      */
     private function facts(Note $record): Collection
     {

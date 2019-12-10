@@ -290,7 +290,7 @@ class MediaFileService
      * @param string              $media_folder    Root folder
      * @param bool                $subfolders      Include subfolders
      *
-     * @return Collection
+     * @return Collection<string>
      */
     public function allFilesOnDisk(FilesystemInterface $data_filesystem, string $media_folder, bool $subfolders): Collection
     {
@@ -314,7 +314,7 @@ class MediaFileService
      * @param string $media_folder Root folder
      * @param bool   $subfolders   Include subfolders
      *
-     * @return Collection
+     * @return Collection<string>
      */
     public function allFilesInDatabase(string $media_folder, bool $subfolders): Collection
     {
@@ -340,7 +340,7 @@ class MediaFileService
      *
      * @param FilesystemInterface $data_filesystem
      *
-     * @return Collection
+     * @return Collection<string,string>
      */
     public function allMediaFolders(FilesystemInterface $data_filesystem): Collection
     {

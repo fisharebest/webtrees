@@ -101,7 +101,7 @@ class UpgradeService
      *
      * @param string $zip_file
      *
-     * @return Collection
+     * @return Collection<string>
      */
     public function webtreesZipContents(string $zip_file): Collection
     {

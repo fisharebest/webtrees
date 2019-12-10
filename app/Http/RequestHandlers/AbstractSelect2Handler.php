@@ -94,7 +94,7 @@ abstract class AbstractSelect2Handler implements RequestHandlerInterface
      * @param int    $offset
      * @param int    $limit
      *
-     * @return Collection
+     * @return Collection<array<string,string>>
      */
     abstract protected function search(Tree $tree, string $query, int $offset, int $limit): Collection;
 }

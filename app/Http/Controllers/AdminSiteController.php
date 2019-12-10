@@ -69,7 +69,7 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
-     * @return Collection
+     * @return Collection<string>
      */
     private function themeOptions(): Collection
     {
