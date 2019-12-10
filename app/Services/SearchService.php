@@ -164,7 +164,7 @@ class SearchService
             })
             ->orderBy('n_sort')
             ->distinct()
-            ->select(['individuals.*']);
+            ->select(['individuals.*', 'n_sort']);
 
         $this->whereTrees($query, 'i_file', $trees);
         $this->whereSearch($query, 'n_full', $search);
