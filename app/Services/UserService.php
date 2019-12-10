@@ -275,6 +275,7 @@ class UserService
             })
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
+            ->select(['user.*'])
             ->get()
             ->map(User::rowMapper());
     }
@@ -299,6 +300,7 @@ class UserService
             })
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
+            ->select(['user.*'])
             ->get()
             ->map(User::rowMapper());
     }
