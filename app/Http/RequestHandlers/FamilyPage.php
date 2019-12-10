@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -72,7 +73,7 @@ class FamilyPage implements RequestHandlerInterface
 
         // Redirect to correct xref/slug
         if ($family->xref() !== $xref || $request->getAttribute('slug') !== $family->slug()) {
-            return redirect($family->url());
+            return redirect($family->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         $clipboard_facts = $this->clipboard_service->pastableFacts($family, new Collection());

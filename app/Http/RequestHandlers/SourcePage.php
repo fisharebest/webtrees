@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -93,7 +94,7 @@ class SourcePage implements RequestHandlerInterface
 
         // Redirect to correct xref/slug
         if ($source->xref() !== $xref || $request->getAttribute('slug') !== $source->slug()) {
-            return redirect($source->url());
+            return redirect($source->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->viewResponse('source-page', [

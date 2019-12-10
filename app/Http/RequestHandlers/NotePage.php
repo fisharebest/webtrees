@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Filter;
@@ -73,7 +74,7 @@ class NotePage implements RequestHandlerInterface
 
         // Redirect to correct xref/slug
         if ($note->xref() !== $xref || $request->getAttribute('slug') !== $note->slug()) {
-            return redirect($note->url());
+            return redirect($note->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->viewResponse('note-page', [

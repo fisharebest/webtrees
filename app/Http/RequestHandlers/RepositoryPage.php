@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -88,7 +89,7 @@ class RepositoryPage implements RequestHandlerInterface
 
         // Redirect to correct xref/slug
         if ($repository->xref() !== $xref ||  $request->getAttribute('slug') !== $repository->slug()) {
-            return redirect($repository->url());
+            return redirect($repository->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->viewResponse('repository-page', [

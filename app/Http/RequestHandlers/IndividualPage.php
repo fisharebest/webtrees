@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
@@ -105,7 +106,7 @@ class IndividualPage implements RequestHandlerInterface
 
         // Redirect to correct xref/slug
         if ($individual->xref() !== $xref || $request->getAttribute('slug') !== $individual->slug()) {
-            return redirect($individual->url());
+            return redirect($individual->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         // What is (was) the age of the individual

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -76,7 +77,7 @@ class MediaPage implements RequestHandlerInterface
 
         // Redirect to correct xref/slug
         if ($media->xref() !== $xref || $request->getAttribute('slug') !== $media->slug()) {
-            return redirect($media->url());
+            return redirect($media->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->viewResponse('media-page', [
