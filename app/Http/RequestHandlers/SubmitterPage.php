@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -80,7 +81,7 @@ class SubmitterPage implements RequestHandlerInterface
 
         // Redirect to correct xref/slug
         if ($submitter->xref() !== $xref || $request->getAttribute('slug') !== $submitter->slug()) {
-            return redirect($submitter->url());
+            return redirect($submitter->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->viewResponse('submitter-page', [
