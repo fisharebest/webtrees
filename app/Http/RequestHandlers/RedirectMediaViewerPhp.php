@@ -20,20 +20,32 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function redirect;
-use function route;
 
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
  */
 class RedirectMediaViewerPhp implements RequestHandlerInterface
 {
+    /** @var TreeService */
+    private $tree_service;
+
+    /**
+     * @param TreeService $tree_service
+     */
+    public function __construct(TreeService $tree_service)
+    {
+        $this->tree_service = $tree_service;
+    }
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -41,14 +53,18 @@ class RedirectMediaViewerPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = $request->getQueryParams()['ged'];
-        assert(is_string($tree));
+        $ged  = $request->getQueryParams()['ged'] ?? null;
+        $tree = $this->tree_service->all()->get($ged);
 
-        $xref  = $request->getQueryParams()['mid'];
-        assert(is_string($xref));
+        if ($tree instanceof Tree) {
+            $xref  = $request->getQueryParams()['mid'] ?? '';
+            $media = Media::getInstance($xref, $tree);
 
-        $route = route(MediaPage::class, ['tree' => $tree, 'xref' => $xref]);
+            if ($media instanceof Media) {
+                return redirect($media->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            }
+        }
 
-        return redirect($route, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+        throw new MediaNotFoundException();
     }
 }
