@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -117,13 +118,10 @@ class FixLevel0MediaController extends AbstractAdminController
     public function fixLevel0MediaData(ServerRequestInterface $request): ResponseInterface
     {
         $ignore_facts = [
-            'FAMC',
-            'FAMS',
             'NAME',
             'SEX',
             'CHAN',
             'NOTE',
-            'OBJE',
             'SOUR',
             'RESN',
         ];
@@ -139,7 +137,8 @@ class FixLevel0MediaController extends AbstractAdminController
             ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('link.l_file', '=', 'media.m_file')
-                    ->on('link.l_to', '=', 'media.m_id');
+                    ->on('link.l_to', '=', 'media.m_id')
+                    ->where('link.l_type', '=', 'OBJE');
             })
             ->join('individuals', static function (JoinClause $join): void {
                 $join
@@ -160,7 +159,10 @@ class FixLevel0MediaController extends AbstractAdminController
 
             $facts = $individual->facts([], true)
                 ->filter(static function (Fact $fact) use ($ignore_facts): bool {
-                    return !$fact->isPendingDeletion() && !in_array($fact->getTag(), $ignore_facts, true);
+                    return
+                        !$fact->isPendingDeletion() &&
+                        !preg_match('/^@' . Gedcom::REGEX_XREF . '@$/', $fact->value()) &&
+                        !in_array($fact->getTag(), $ignore_facts, true);
                 });
 
             // The link to the media object may have been deleted in a pending change.
