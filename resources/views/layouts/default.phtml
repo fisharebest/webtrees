@@ -197,7 +197,7 @@ use Psr\Http\Message\ServerRequestInterface;
                         zoom:       true,
                         thumbnail:  true,
                         loop:       false,
-                        download:   <?= json_encode(Auth::isEditor($tree)) ?>,
+                        download:   <?= $tree instanceof Tree ? json_encode(Auth::isEditor($tree)) : json_encode(false) ?>,
                         mode:       'lg-slide-circular',
                         index:      collection.findIndex((element) => element.id === this.dataset.id),
                     });
