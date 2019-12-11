@@ -53,7 +53,7 @@ class UseCache implements MiddlewareInterface
      */
     public function __construct()
     {
-        $this->array_adapter = new ArrayAdapter();
+        $this->array_adapter = new ArrayAdapter(0, false);
         $this->files_adapter = new FilesystemAdapter('', self::FILES_TTL, self::FILES_DIR);
     }
 
