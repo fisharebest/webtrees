@@ -77,6 +77,9 @@ class MediaFileController extends AbstractBaseController
         $data_filesystem = $request->getAttribute('filesystem.data');
         assert($data_filesystem instanceof FilesystemInterface);
 
+        $disposition = $request->getQueryParams()['disposition'] ?? 'inline';
+        assert($disposition === 'inline' || $disposition === 'attachment');
+
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
         $fact_id = $params['fact_id'];
@@ -102,7 +105,7 @@ class MediaFileController extends AbstractBaseController
                     return response($data, StatusCodeInterface::STATUS_OK, [
                         'Content-Type'        => $media_file->mimeType(),
                         'Content-Lengt'       => strlen($data),
-                        'Content-Disposition' => 'attachment; filename="' . addcslashes($media_file->filename(), '"') . '"',
+                        'Content-Disposition' => $disposition . '; filename="' . addcslashes($media_file->filename(), '"') . '"',
                     ]);
                 }
             }

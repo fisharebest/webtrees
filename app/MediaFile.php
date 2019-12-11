@@ -231,7 +231,7 @@ class MediaFile
 
             $link_attributes = Html::attributes([
                 'type' => $this->mimeType(),
-                'href' => $this->downloadUrl(),
+                'href' => $this->downloadUrl('inline'),
             ]);
         }
 
@@ -315,14 +315,17 @@ class MediaFile
     /**
      * Generate a URL to download a non-image media file.
      *
+     * @param string $disposition How should the image be returned - "attachment" or "inline"
+     *
      * @return string
      */
-    public function downloadUrl(): string
+    public function downloadUrl(string $disposition): string
     {
         return route('media-download', [
-            'xref'    => $this->media->xref(),
-            'tree'    => $this->media->tree()->name(),
-            'fact_id' => $this->fact_id,
+            'xref'        => $this->media->xref(),
+            'tree'        => $this->media->tree()->name(),
+            'fact_id'     => $this->fact_id,
+            'disposition' => $disposition,
         ]);
     }
 
