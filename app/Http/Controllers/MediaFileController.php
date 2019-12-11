@@ -104,7 +104,7 @@ class MediaFileController extends AbstractBaseController
 
                     return response($data, StatusCodeInterface::STATUS_OK, [
                         'Content-Type'        => $media_file->mimeType(),
-                        'Content-Lengt'       => strlen($data),
+                        'Content-Length'      => strlen($data),
                         'Content-Disposition' => $disposition . '; filename="' . addcslashes($media_file->filename(), '"') . '"',
                     ]);
                 }
