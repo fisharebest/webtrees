@@ -47,6 +47,7 @@ class MediaFile
         'gif'  => 'image/gif',
         'html' => 'text/html',
         'htm'  => 'text/html',
+        'jpe'  => 'image/jpeg',
         'jpeg' => 'image/jpeg',
         'jpg'  => 'image/jpeg',
         'mov'  => 'video/quicktime',
