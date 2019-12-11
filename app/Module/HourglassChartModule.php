@@ -166,7 +166,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         assert(is_string($xref));
 
         $individual = Individual::getInstance($xref, $tree);
-        $individual = Auth::checkIndividualAccess($individual);
+        $individual = Auth::checkIndividualAccess($individual, false, true);
 
         $user        = $request->getAttribute('user');
         $generations = (int) $request->getAttribute('generations');
@@ -256,7 +256,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
 
         $spouses    = (bool) ($request->getQueryParams()['spouses'] ?? false);
         $individual = Individual::getInstance($xref, $tree);
-        $individual = Auth::checkIndividualAccess($individual);
+        $individual = Auth::checkIndividualAccess($individual, false, true);
 
         $children = $individual->spouseFamilies()->map(static function (Family $family): Collection {
             return $family->children();

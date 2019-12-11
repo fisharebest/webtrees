@@ -229,14 +229,12 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
         $recursion = min($recursion, $max_recursion);
 
-        if ($tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') !== '1') {
-            if ($individual1 instanceof Individual) {
-                $individual1 = Auth::checkIndividualAccess($individual1);
-            }
+        if ($individual1 instanceof Individual) {
+            $individual1 = Auth::checkIndividualAccess($individual1, false, true);
+        }
 
-            if ($individual2 instanceof Individual) {
-                $individual2 = Auth::checkIndividualAccess($individual2);
-            }
+        if ($individual2 instanceof Individual) {
+            $individual2 = Auth::checkIndividualAccess($individual2, false, true);
         }
 
         Auth::checkComponentAccess($this, 'chart', $tree, $user);

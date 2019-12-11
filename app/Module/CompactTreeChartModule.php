@@ -161,7 +161,7 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
         assert(is_string($xref));
 
         $individual = Individual::getInstance($xref, $tree);
-        $individual = Auth::checkIndividualAccess($individual);
+        $individual = Auth::checkIndividualAccess($individual, false, true);
 
         $user = $request->getAttribute('user');
         $ajax = $request->getQueryParams()['ajax'] ?? '';

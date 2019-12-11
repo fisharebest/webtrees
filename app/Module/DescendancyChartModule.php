@@ -184,7 +184,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
         assert(is_string($xref));
 
         $individual = Individual::getInstance($xref, $tree);
-        $individual = Auth::checkIndividualAccess($individual);
+        $individual = Auth::checkIndividualAccess($individual, false, true);
 
         $user        = $request->getAttribute('user');
         $style       = $request->getAttribute('style');

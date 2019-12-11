@@ -195,7 +195,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         assert(is_string($xref));
 
         $individual = Individual::getInstance($xref, $tree);
-        $individual = Auth::checkIndividualAccess($individual);
+        $individual = Auth::checkIndividualAccess($individual, false, true);
 
         $style       = $request->getAttribute('style');
         $generations = (int) $request->getAttribute('generations');

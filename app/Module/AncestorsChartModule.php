@@ -184,7 +184,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         assert(is_string($xref));
 
         $individual  = Individual::getInstance($xref, $tree);
-        $individual  = Auth::checkIndividualAccess($individual);
+        $individual  = Auth::checkIndividualAccess($individual, false, true);
 
         $ajax        = $request->getQueryParams()['ajax'] ?? '';
         $generations = (int) $request->getAttribute('generations');

@@ -229,46 +229,51 @@ class Auth
      * @throws FamilyNotFoundException
      * @throws FamilyAccessDeniedException
      */
-    public static function checkFamilyAccess(Family $family = null, bool $edit = false): Family
+    public static function checkFamilyAccess(?Family $family, bool $edit = false): Family
     {
         if ($family === null) {
             throw new FamilyNotFoundException();
         }
 
-        if (!$family->canShow()) {
-            throw new FamilyAccessDeniedException();
+        if ($edit && $family->canEdit()) {
+            return $family;
         }
 
-        if ($edit && !$family->canEdit()) {
-            throw new FamilyAccessDeniedException();
+        if ($family->canShow()) {
+            return $family;
         }
 
-        return $family;
+        throw new FamilyAccessDeniedException();
     }
 
     /**
      * @param Individual|null $individual
      * @param bool            $edit
+     * @param bool            $chart      For some charts, we can show private records
      *
      * @return Individual
      * @throws IndividualNotFoundException
      * @throws IndividualAccessDeniedException
      */
-    public static function checkIndividualAccess(Individual $individual = null, bool $edit = false): Individual
+    public static function checkIndividualAccess(?Individual $individual, bool $edit = false, $chart = false): Individual
     {
         if ($individual === null) {
             throw new IndividualNotFoundException();
         }
 
-        if (!$individual->canShow()) {
-            throw new IndividualAccessDeniedException();
+        if ($edit && $individual->canEdit()) {
+            return $individual;
         }
 
-        if ($edit && !$individual->canEdit()) {
-            throw new IndividualAccessDeniedException();
+        if ($chart && $individual->tree()->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
+            return $individual;
         }
 
-        return $individual;
+        if ($individual->canShow()) {
+            return $individual;
+        }
+
+        throw new IndividualAccessDeniedException();
     }
 
     /**
@@ -279,21 +284,21 @@ class Auth
      * @throws MediaNotFoundException
      * @throws MediaAccessDeniedException
      */
-    public static function checkMediaAccess(Media $media = null, bool $edit = false): Media
+    public static function checkMediaAccess(?Media $media, bool $edit = false): Media
     {
         if ($media === null) {
             throw new MediaNotFoundException();
         }
 
-        if (!$media->canShow()) {
-            throw new MediaAccessDeniedException();
+        if ($edit && $media->canEdit()) {
+            return $media;
         }
 
-        if ($edit && !$media->canEdit()) {
-            throw new MediaAccessDeniedException();
+        if ($media->canShow()) {
+            return $media;
         }
 
-        return $media;
+        throw new MediaAccessDeniedException();
     }
 
     /**
@@ -304,21 +309,21 @@ class Auth
      * @throws NoteNotFoundException
      * @throws NoteAccessDeniedException
      */
-    public static function checkNoteAccess(Note $note = null, bool $edit = false): Note
+    public static function checkNoteAccess(?Note $note, bool $edit = false): Note
     {
         if ($note === null) {
             throw new NoteNotFoundException();
         }
 
-        if (!$note->canShow()) {
-            throw new NoteAccessDeniedException();
+        if ($edit && $note->canEdit()) {
+            return $note;
         }
 
-        if ($edit && !$note->canEdit()) {
-            throw new NoteAccessDeniedException();
+        if ($note->canShow()) {
+            return $note;
         }
 
-        return $note;
+        throw new NoteAccessDeniedException();
     }
 
     /**
@@ -329,21 +334,21 @@ class Auth
      * @throws RecordNotFoundException
      * @throws RecordAccessDeniedException
      */
-    public static function checkRecordAccess(GedcomRecord $record = null, bool $edit = false): GedcomRecord
+    public static function checkRecordAccess(?GedcomRecord $record, bool $edit = false): GedcomRecord
     {
         if ($record === null) {
             throw new RecordNotFoundException();
         }
 
-        if (!$record->canShow()) {
-            throw new RecordAccessDeniedException();
+        if ($edit && $record->canEdit()) {
+            return $record;
         }
 
-        if ($edit && !$record->canEdit()) {
-            throw new RecordAccessDeniedException();
+        if ($record->canShow()) {
+            return $record;
         }
 
-        return $record;
+        throw new RecordAccessDeniedException();
     }
 
     /**
@@ -354,21 +359,21 @@ class Auth
      * @throws RepositoryNotFoundException
      * @throws RepositoryAccessDeniedException
      */
-    public static function checkRepositoryAccess(Repository $repository = null, bool $edit = false): Repository
+    public static function checkRepositoryAccess(?Repository $repository, bool $edit = false): Repository
     {
         if ($repository === null) {
             throw new RepositoryNotFoundException();
         }
 
-        if (!$repository->canShow()) {
-            throw new RepositoryAccessDeniedException();
+        if ($edit && $repository->canEdit()) {
+            return $repository;
         }
 
-        if ($edit && !$repository->canEdit()) {
-            throw new RepositoryAccessDeniedException();
+        if ($repository->canShow()) {
+            return $repository;
         }
 
-        return $repository;
+        throw new RepositoryAccessDeniedException();
     }
 
     /**
@@ -379,21 +384,21 @@ class Auth
      * @throws SourceNotFoundException
      * @throws SourceAccessDeniedException
      */
-    public static function checkSourceAccess(Source $source = null, bool $edit = false): Source
+    public static function checkSourceAccess(?Source $source, bool $edit = false): Source
     {
         if ($source === null) {
             throw new SourceNotFoundException();
         }
 
-        if (!$source->canShow()) {
-            throw new SourceAccessDeniedException();
+        if ($edit && $source->canEdit()) {
+            return $source;
         }
 
-        if ($edit && !$source->canEdit()) {
-            throw new SourceAccessDeniedException();
+        if ($source->canShow()) {
+            return $source;
         }
 
-        return $source;
+        throw new SourceAccessDeniedException();
     }
     
     /*
@@ -404,20 +409,20 @@ class Auth
      * @throws RecordNotFoundException
      * @throws RecordAccessDeniedException
      */
-    public static function checkSubmitterAccess(Submitter $submitter = null, bool $edit = false): Submitter
+    public static function checkSubmitterAccess(?Submitter $submitter, bool $edit = false): Submitter
     {
         if ($submitter === null) {
             throw new RecordNotFoundException();
         }
 
-        if (!$submitter->canShow()) {
-            throw new RecordAccessDeniedException();
+        if ($edit && $submitter->canEdit()) {
+            return $submitter;
         }
 
-        if ($edit && !$submitter->canEdit()) {
-            throw new RecordAccessDeniedException();
+        if ($submitter->canShow()) {
+            return $submitter;
         }
 
-        return $submitter;
+        throw new RecordAccessDeniedException();
     }
 }
