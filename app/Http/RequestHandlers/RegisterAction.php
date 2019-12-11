@@ -34,10 +34,11 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Ramsey\Uuid\Uuid;
 
+use function md5;
 use function view;
 
 /**
@@ -101,12 +102,14 @@ class RegisterAction extends AbstractBaseController
 
         Log::addAuthenticationLog('User registration requested for: ' . $username);
 
-        $user = $this->user_service->create($username, $realname, $email, $password);
+        $user  = $this->user_service->create($username, $realname, $email, $password);
+        $token = Str::random(32);
+
         $user->setPreference(User::PREF_LANGUAGE, I18N::languageTag());
         $user->setPreference(User::PREF_IS_EMAIL_VERIFIED, '');
         $user->setPreference(User::PREF_IS_ACCOUNT_APPROVED, '');
         $user->setPreference(User::PREF_TIMESTAMP_REGISTERED, date('U'));
-        $user->setPreference(User::PREF_VERIFICATION_TOKEN, md5(Uuid::uuid4()->toString()));
+        $user->setPreference(User::PREF_VERIFICATION_TOKEN, $token);
         $user->setPreference(User::PREF_CONTACT_METHOD, 'messaging2');
         $user->setPreference(User::PREF_NEW_ACCOUNT_COMMENT, $comments);
         $user->setPreference(User::PREF_IS_VISIBLE_ONLINE, '1');
@@ -119,7 +122,7 @@ class RegisterAction extends AbstractBaseController
 
         $verify_url = route(VerifyEmail::class, [
             'username' => $user->userName(),
-            'token' => $user->getPreference(User::PREF_VERIFICATION_TOKEN),
+            'token' => $token,
             'tree' => $tree instanceof Tree ? $tree->name() : null,
         ]);
 
