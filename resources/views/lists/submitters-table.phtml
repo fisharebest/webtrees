@@ -43,7 +43,6 @@ $count_families = DB::table('families')
 <table
     class="table table-bordered table-sm wt-table-submitter datatables d-none"
     <?= view('lists/datatables-attributes') ?>
-    data-auto-width="false"
     data-columns="<?= e(json_encode([
         null,
         ['visible' => array_sum($count_individuals) > 0],

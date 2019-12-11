@@ -76,11 +76,11 @@ use Fisharebest\Webtrees\View;
 <br>
 <br>
 
-<table class="table table-bordered table-sm datatables"
+<table
+    class="table table-bordered table-sm datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-ajax="<?= e(route('admin-media-data', ['files' => $files, 'media_folder' => $media_folder, 'subfolders' => $subfolders])) ?>"
     data-server-side="true"
-    data-auto-width="false"
 >
     <thead>
         <tr>

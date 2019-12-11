@@ -4,7 +4,14 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<table class="table table-bordered table-sm datatables wt-table-given-name" data-info="false" data-paging="false" data-searching="false" data-state-save="true" data-order="<?= e(json_encode($order ?? [[1, 'desc']])) ?>">
+<table
+    class="table table-bordered table-sm wt-table-given-name datatables d-none"
+    <?= view('lists/datatables-attributes') ?>
+    data-info="false"
+    data-paging="false"
+    data-searching="false"
+    data-order="<?= e(json_encode($order ?? [[1, 'desc']])) ?>"
+>
     <caption class="sr-only">
         <?= I18N::translate('Given names') ?>
     </caption>

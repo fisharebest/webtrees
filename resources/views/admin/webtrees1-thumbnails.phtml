@@ -20,12 +20,11 @@ use Fisharebest\Webtrees\View;
 </p>
 
 <table
-    class="table table-bordered table-sm table-hover datatables wt-fix-table"
+    class="table table-bordered table-sm table-hover wt-fix-table datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-ajax="<?= e(json_encode(['url' => route('admin-webtrees1-thumbs-data')])) ?>"
     data-server-side="true"
     data-sort="false"
-    data-auto-width="false"
 >
     <caption class="sr-only">
         <?= I18N::translate('Media objects') ?>

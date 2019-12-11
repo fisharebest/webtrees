@@ -6,7 +6,13 @@ use Fisharebest\Webtrees\I18N;
 <?php use Fisharebest\Webtrees\View; ?>
 
 <div class="table-responsive">
-    <table class="table table-sm datatables wt-table-changes" data-filter="false" data-info="false" data-paging="false">
+    <table
+        class="table table-sm wt-table-changes datatables d-none"
+        <?= view('lists/datatables-attributes') ?>
+        data-filter="false"
+        data-info="false"
+        data-paging="false"
+    >
         <thead>
             <tr>
                 <th class="wt-side-block-optional">

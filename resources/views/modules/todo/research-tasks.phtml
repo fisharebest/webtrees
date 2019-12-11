@@ -4,7 +4,14 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<table class="table table-bordered table-sm datatables wt-table-tasks" data-columns="[null, null, null, null]" data-info="false" data-paging="false" data-searching="false" data-state-save="true">
+<table
+    class="table table-bordered table-sm wt-table-tasks datatables d-none"
+    <?= view('lists/datatables-attributes') ?>
+    data-columns="[null, null, null, null]"
+    data-info="false"
+    data-paging="false"
+    data-searching="false"
+>
     <thead>
         <tr>
             <th class="d-none d-md-table-cell wt-side-block-optional">

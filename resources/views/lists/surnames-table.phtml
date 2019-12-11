@@ -6,7 +6,14 @@ use Fisharebest\Webtrees\Module\IndividualListModule;
 
 ?>
 
-<table class="table table-bordered table-sm datatables wt-table-surname" data-info="false" data-paging="false" data-searching="false" data-state-save="true" data-order="<?= e(json_encode($order ?? [[1, 'desc']])) ?>">
+<table
+    class="table table-bordered table-sm wt-table-surname datatables d-none"
+    <?= view('lists/datatables-attributes') ?>
+    data-info="false"
+    data-paging="false"
+    data-searching="false"
+    data-order="<?= e(json_encode($order ?? [[1, 'desc']])) ?>"
+>
     <caption class="sr-only">
         <?= I18N::translate('Surnames') ?>
     </caption>
