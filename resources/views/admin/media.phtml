@@ -4,6 +4,13 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
 
+/**
+ * @var string $title
+ * @var string $data_folder
+ * @var array $media_folders
+ * @var string $media_folder
+ * @var string $subfolders
+ */
 ?>
 
 <?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
@@ -48,9 +55,9 @@ use Fisharebest\Webtrees\View;
                                     <?= view('components/select', ['name' => 'media_folder', 'selected' => $media_folder, 'options' => $media_folders]) ?>
 
                                 <?php else : ?>
-                                    <input type="text" class="form-control" name="media_folder" value="<?= e($media_folder) ?>" readonly>
+                                    <input aria-label="<?= I18N::translate('Media folder') ?>"
+                                           type="text" class="form-control" name="media_folder" value="<?= e($media_folder) ?>" readonly>
                                 <?php endif ?>
-                            </div>
                         </div>
 
                         <label>
