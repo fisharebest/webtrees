@@ -446,6 +446,8 @@ foreach (glob(WT_DATA_DIR . 'cache/language-*') as $file) {
 
 echo '<p>', I18N::translate('The upgrade is complete.'), '</p>';
 
+echo '<p><a href="index.php" class="btn btn-primary">', I18N::translate('continue'), '</a></p>';
+
 /**
  * Reset the time limit, as timeouts in this script could leave the upgrade incomplete.
  */
