@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
@@ -76,20 +77,19 @@ class CreateMediaObjectAction implements RequestHandlerInterface
         $type  = trim(preg_replace('/\s+/', ' ', $type));
         $title = trim(preg_replace('/\s+/', ' ', $title));
 
-        // Convert line endings to GEDCOM continuations
-        $note = strtr($note, ["\r\n" => "\n"]);
-        $note = strtr($note, ["\n" => "\n2 CONT "]);
+        // Convert HTML line endings to GEDCOM continuations
+        $note = strtr($note, ["\r\n" => "\n2 CONT "]);
         
         $file = $this->media_file_service->uploadFile($request);
 
         if ($file === '') {
-            return response(['error_message' => I18N::translate('There was an error uploading your file.')], 406);
+            return response(['error_message' => I18N::translate('There was an error uploading your file.')], StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
         }
 
         $gedcom = "0 @@ OBJE\n" . $this->media_file_service->createMediaFileGedcom($file, $type, $title);
 
         if ($note !== '') {
-            $gedcom .= "\n1 NOTE " . preg_replace('/\r?\n/', "\n2 CONT ", $note);
+            $gedcom .= "\n1 NOTE " . $note;
         }
 
         if (in_array($privacy_restriction, $this->media_file_service::PRIVACY_RESTRICTIONS, true)) {

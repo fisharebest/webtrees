@@ -51,13 +51,6 @@ class CreateSubmitterAction implements RequestHandlerInterface
         // Fix whitespace
         $name = trim(preg_replace('/\s+/', ' ', $name));
 
-        // Convert line endings to GEDDCOM continuations
-        $address = str_replace([
-            "\r\n",
-            "\r",
-            "\n",
-        ], "\n1 CONT ", $address);
-
         $gedcom = "0 @@ SUBM\n1 NAME " . $name;
 
         if ($address !== '') {

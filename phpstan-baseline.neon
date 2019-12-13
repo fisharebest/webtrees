@@ -801,11 +801,6 @@ parameters:
 			path: app/Http/Controllers/CalendarController.php
 
 		-
-			message: "#^Binary operation \"\\.\" between '\n1 NOTE ' and array\\|string\\|null results in an error\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditMediaController.php
-
-		-
 			message: "#^Cannot call method createFact\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/EditMediaController.php
@@ -814,11 +809,6 @@ parameters:
 			message: "#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/EditMediaController.php
-
-		-
-			message: "#^Binary operation \"\\.\" between string and array\\|string\\|null results in an error\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditNoteController.php
 
 		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateRecord\\(\\) expects string, string\\|null given\\.$#"
@@ -1029,16 +1019,6 @@ parameters:
 			message: "#^Cannot call method realName\\(\\) on Fisharebest\\\\Webtrees\\\\User\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ContactPage.php
-
-		-
-			message: "#^Binary operation \"\\.\" between '\n1 NOTE ' and array\\|string\\|null results in an error\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateMediaObjectAction.php
-
-		-
-			message: "#^Binary operation \"\\.\" between '\n1 ADDR ' and array\\|string results in an error\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSubmitterAction.php
 
 		-
 			message: "#^Cannot access offset 'type' on array\\|false\\.$#"

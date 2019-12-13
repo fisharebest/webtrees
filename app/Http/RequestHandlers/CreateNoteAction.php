@@ -47,8 +47,8 @@ class CreateNoteAction implements RequestHandlerInterface
         $privacy_restriction = $params['privacy-restriction'];
         $edit_restriction    = $params['edit-restriction'];
 
-        // Convert line endings to GEDDCOM continuations
-        $note = preg_replace('/\r|\r\n|\n/', "\n1 CONT ", $note);
+        // Convert HTML line endings to GEDCOM continuations
+        $note = strtr($note, ["\r\n" => "\n1 CONT "]);
 
         $gedcom = '0 @@ NOTE ' . $note;
 

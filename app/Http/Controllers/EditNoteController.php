@@ -78,18 +78,15 @@ class EditNoteController extends AbstractEditController
 
         $NOTE = $params['NOTE'];
 
-        // "\" and "$" are signficant in replacement strings, so escape them.
-        $NOTE = str_replace([
-            '\\',
-            '$',
-        ], [
-            '\\\\',
-            '\\$',
-        ], $NOTE);
+        // Convert HTML line endings to GEDCOM continuations
+        $NOTE = strtr($NOTE, ["\r\n" => "\n1 CONT "]);
+
+        // "\" and "$" are significant in preg replacement strings, so escape them.
+        $NOTE = str_replace(['\\', '$'], ['\\\\', '\\$'], $NOTE);
 
         $gedrec = preg_replace(
             '/^0 @' . $note->xref() . '@ NOTE.*(\n1 CONT.*)*/',
-            '0 @' . $note->xref() . '@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", $NOTE),
+            '0 @' . $note->xref() . '@ NOTE ' . $NOTE,
             $note->gedcom()
         );
 

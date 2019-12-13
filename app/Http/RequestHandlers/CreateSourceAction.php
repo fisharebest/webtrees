@@ -61,9 +61,8 @@ class CreateSourceAction implements RequestHandlerInterface
         $repository   = trim(preg_replace('/\s+/', ' ', $repository));
         $call_number  = trim(preg_replace('/\s+/', ' ', $call_number));
 
-        // Convert line endings to GEDCOM continuations
-        $text = strtr($text, ["\r\n" => "\n"]);
-        $text = strtr($text, ["\n" => "\n2 CONT "]);
+        // Convert HTML line endings to GEDCOM continuations
+        $text = strtr($text, ["\r\n" => "\n2 CONT "]);
 
         $gedcom = "0 @@ SOUR\n\n1 TITL " . $title;
 

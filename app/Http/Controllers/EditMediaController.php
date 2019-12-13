@@ -351,8 +351,11 @@ class EditMediaController extends AbstractEditController
             $gedcom .= "\n2 TITL " . $title;
         }
 
+        // Convert HTML line endings to GEDCOM continuations
+        $note = strtr($note, ["\r\n" => "\n2 CONT "]);
+
         if ($note !== '') {
-            $gedcom .= "\n1 NOTE " . preg_replace('/\r?\n/', "\n2 CONT ", $note);
+            $gedcom .= "\n1 NOTE " . $note;
         }
 
         $media_object = $tree->createRecord($gedcom);
@@ -360,74 +363,6 @@ class EditMediaController extends AbstractEditController
         $this->pending_changes_service->acceptRecord($media_object);
 
         return redirect($media_object->url());
-    }
-
-    /**
-     * Process a form to create a new media object.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function createMediaObjectAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $params              = (array) $request->getParsedBody();
-        $note                = $params['media-note'];
-        $title               = $params['title'];
-        $type                = $params['type'];
-        $privacy_restriction = $params['privacy-restriction'];
-        $edit_restriction    = $params['edit-restriction'];
-
-        // Tidy whitespace
-        $type  = trim(preg_replace('/\s+/', ' ', $type));
-        $title = trim(preg_replace('/\s+/', ' ', $title));
-
-        // Convert line endings to GEDDCOM continuations
-        $note = str_replace([
-            "\r\n",
-            "\r",
-            "\n",
-        ], "\n1 CONT ", $note);
-
-        $file = $this->media_file_service->uploadFile($request);
-
-        if ($file === '') {
-            return response(['error_message' => I18N::translate('There was an error uploading your file.')], 406);
-        }
-
-        $gedcom = "0 @@ OBJE\n" . $this->media_file_service->createMediaFileGedcom($file, $type, $title);
-
-        if ($note !== '') {
-            $gedcom .= "\n1 NOTE " . preg_replace('/\r?\n/', "\n2 CONT ", $note);
-        }
-
-        if (in_array($privacy_restriction, $this->media_file_service::PRIVACY_RESTRICTIONS, true)) {
-            $gedcom .= "\n1 RESN " . $privacy_restriction;
-        }
-
-        if (in_array($edit_restriction, $this->media_file_service::EDIT_RESTRICTIONS, true)) {
-            $gedcom .= "\n1 RESN " . $edit_restriction;
-        }
-
-        $record = $tree->createMediaObject($gedcom);
-
-        // Accept the new record to keep the filesystem synchronized with the genealogy.
-        $this->pending_changes_service->acceptRecord($record);
-
-        return response([
-            'id'   => $record->xref(),
-            'text' => view('selects/media', [
-                'media' => $record,
-            ]),
-            'html' => view('modals/record-created', [
-                'title' => I18N::translate('The media object has been created'),
-                'name'  => $record->fullName(),
-                'url'   => $record->url(),
-            ]),
-        ]);
     }
 
     /**
