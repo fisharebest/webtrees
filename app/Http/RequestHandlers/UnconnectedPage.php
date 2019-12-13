@@ -60,11 +60,20 @@ class UnconnectedPage implements RequestHandlerInterface
             $links = ['FAMS', 'FAMC'];
         }
 
-        $rows = DB::table('link')
+        // select individuals with at least one link
+        $linked_individuals = DB::table('link')
             ->where('l_file', '=', $tree->id())
             ->whereIn('l_type', $links)
-            ->select(['l_from', 'l_to'])
-            ->get();
+            ->select(['l_from', 'l_to']);
+
+        // select all individuals without any links
+        $unlinked_individuals = DB::table('individuals')
+            ->where('i_file', '=', $tree->id())
+            ->whereNotIn('i_rin', DB::table('link')->pluck('l_from'))
+            ->whereNotIn('i_rin', DB::table('link')->pluck('l_to'))
+            ->select(['i_rin as l_from', 'i_rin as l_to']);
+
+        $rows = $linked_individuals->union($unlinked_individuals)->get();
 
         $graph = [];
 
