@@ -275,7 +275,7 @@ abstract class AbstractEditController extends AbstractBaseController
      */
     protected function addNewFact(ServerRequestInterface $request, Tree $tree, $fact): string
     {
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         $FACT = $params[$fact];
         $DATE = $params[$fact . '_DATE'] ?? '';
@@ -372,7 +372,9 @@ abstract class AbstractEditController extends AbstractBaseController
      */
     protected function addNewSex(ServerRequestInterface $request): string
     {
-        switch ($request->getParsedBody()['SEX']) {
+        $params = (array) $request->getParsedBody();
+
+        switch ($params['SEX']) {
             case 'M':
                 return "\n1 SEX M";
             case 'F':
@@ -392,7 +394,7 @@ abstract class AbstractEditController extends AbstractBaseController
      */
     protected function addNewName(ServerRequestInterface $request, Tree $tree): string
     {
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
         $gedrec = "\n1 NAME " . $params['NAME'];
 
         $tags = [

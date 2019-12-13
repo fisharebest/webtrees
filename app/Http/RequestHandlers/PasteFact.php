@@ -64,7 +64,9 @@ class PasteFact implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $fact_id = $request->getParsedBody()['fact_id'];
+        $params = (array) $request->getParsedBody();
+
+        $fact_id = $params['fact_id'];
         $record  = GedcomRecord::getInstance($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 

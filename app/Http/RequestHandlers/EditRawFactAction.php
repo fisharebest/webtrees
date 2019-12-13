@@ -53,7 +53,10 @@ class EditRawFactAction implements RequestHandlerInterface
         $record = GedcomRecord::getInstance($xref, $tree);
 
         $fact_id = $request->getAttribute('fact_id');
-        $gedcom  = $request->getParsedBody()['gedcom'];
+
+        $params = (array) $request->getParsedBody();
+
+        $gedcom = $params['gedcom'];
 
         // Cleanup the client’s bad editing?
         $gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom); // Empty lines

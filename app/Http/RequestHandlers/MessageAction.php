@@ -72,7 +72,7 @@ class MessageAction implements RequestHandlerInterface
         assert($tree instanceof Tree);
 
         $user    = $request->getAttribute('user');
-        $params  = $request->getParsedBody();
+        $params  = (array) $request->getParsedBody();
         $body    = $params['body'];
         $subject = $params['subject'];
         $to      = $params['to'];

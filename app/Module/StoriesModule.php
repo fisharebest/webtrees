@@ -264,10 +264,12 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
+        $params = (array) $request->getParsedBody();
+
         return redirect(route('module', [
             'module' => $this->name(),
             'action' => 'Admin',
-            'tree'   => $request->getParsedBody()['tree'] ?? '',
+            'tree'   => $params['tree'] ?? '',
         ]));
     }
 
@@ -331,7 +333,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
         $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
 
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         $xref        = $params['xref'];
         $story_body  = $params['story_body'];

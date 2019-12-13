@@ -176,10 +176,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
+        $params = (array) $request->getParsedBody();
+
         return redirect(route('module', [
             'module' => $this->name(),
             'action' => 'Admin',
-            'tree'   => $request->getParsedBody()['tree'] ?? '',
+            'tree'   => $params['tree'] ?? '',
         ]));
     }
 
@@ -338,7 +340,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     {
         $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
 
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         $body        = $params['body'];
         $header      = $params['header'];

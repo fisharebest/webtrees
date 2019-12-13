@@ -42,7 +42,7 @@ class CreateSourceAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params              = $request->getParsedBody();
+        $params              = (array) $request->getParsedBody();
         $title               = $params['source-title'];
         $abbreviation        = $params['source-abbreviation'];
         $author              = $params['source-author'];

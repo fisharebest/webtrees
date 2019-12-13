@@ -185,7 +185,7 @@ class MediaFileService
         $data_filesystem = $request->getAttribute('filesystem.data');
         assert($data_filesystem instanceof FilesystemInterface);
 
-        $params        = $request->getParsedBody();
+        $params        = (array) $request->getParsedBody();
         $file_location = $params['file_location'];
 
         switch ($file_location) {

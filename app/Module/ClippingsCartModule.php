@@ -206,8 +206,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $data_filesystem = $request->getAttribute('filesystem.data');
         assert($data_filesystem instanceof FilesystemInterface);
 
-        $privatize_export = $request->getParsedBody()['privatize_export'];
-        $convert          = (bool) ($request->getParsedBody()['convert'] ?? false);
+        $params = (array) $request->getParsedBody();
+
+        $privatize_export = $params['privatize_export'];
+        $convert          = (bool) ($params['convert'] ?? false);
 
         $cart = Session::get('cart', []);
 
@@ -474,8 +476,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getQueryParams()['xref'];
-        $option = $request->getParsedBody()['option'];
+        $params = (array) $request->getParsedBody();
+
+        $xref   = $params['xref'];
+        $option = $params['option'];
 
         $family = Family::getInstance($xref, $tree);
 
@@ -622,8 +626,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getQueryParams()['xref'];
-        $option = $request->getParsedBody()['option'];
+        $params = (array) $request->getParsedBody();
+
+        $xref   = $params['xref'];
+        $option = $params['option'];
 
         $individual = Individual::getInstance($xref, $tree);
 
@@ -957,8 +963,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getQueryParams()['xref'];
-        $option = $request->getParsedBody()['option'];
+        $params = (array) $request->getParsedBody();
+
+        $xref   = $params['xref'];
+        $option = $params['option'];
 
         $source = Source::getInstance($xref, $tree);
 

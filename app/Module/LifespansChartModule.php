@@ -134,11 +134,14 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         $user      = $request->getAttribute('user');
         $xrefs     = $request->getQueryParams()['xrefs'] ?? [];
         $ajax      = $request->getQueryParams()['ajax'] ?? '';
-        $addxref   = $request->getParsedBody()['addxref'] ?? '';
-        $addfam    = (bool) ($request->getParsedBody()['addfam'] ?? false);
-        $placename = $request->getParsedBody()['placename'] ?? '';
-        $start     = $request->getParsedBody()['start'] ?? '';
-        $end       = $request->getParsedBody()['end'] ?? '';
+
+        $params = (array) $request->getParsedBody();
+
+        $addxref   = $params['addxref'] ?? '';
+        $addfam    = (bool) ($params['addfam'] ?? false);
+        $placename = $params['placename'] ?? '';
+        $start     = $params['start'] ?? '';
+        $end       = $params['end'] ?? '';
 
         $place      = new Place($placename, $tree);
         $start_date = new Date($start);

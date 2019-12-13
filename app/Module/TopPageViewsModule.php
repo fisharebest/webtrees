@@ -151,7 +151,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         $this->setBlockSetting($block_id, 'num', $params['num']);
     }

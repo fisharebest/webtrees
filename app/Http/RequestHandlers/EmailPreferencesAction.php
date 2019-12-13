@@ -61,7 +61,7 @@ class EmailPreferencesAction implements RequestHandlerInterface
         $user = $request->getAttribute('user');
         assert($user instanceof User);
 
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         Site::setPreference('SMTP_ACTIVE', $params['SMTP_ACTIVE']);
         Site::setPreference('SMTP_FROM_NAME', $params['SMTP_FROM_NAME']);

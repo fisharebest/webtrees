@@ -81,10 +81,12 @@ class FixLevel0MediaController extends AbstractAdminController
      */
     public function fixLevel0MediaAction(ServerRequestInterface $request): ResponseInterface
     {
-        $fact_id   = $request->getParsedBody()['fact_id'];
-        $indi_xref = $request->getParsedBody()['indi_xref'];
-        $obje_xref = $request->getParsedBody()['obje_xref'];
-        $tree_id   = (int) $request->getParsedBody()['tree_id'];
+        $params = (array) $request->getParsedBody();
+
+        $fact_id   = $params['fact_id'];
+        $indi_xref = $params['indi_xref'];
+        $obje_xref = $params['obje_xref'];
+        $tree_id   = (int) $params['tree_id'];
 
         $tree       = $this->tree_service->find($tree_id);
         $individual = Individual::getInstance($indi_xref, $tree);

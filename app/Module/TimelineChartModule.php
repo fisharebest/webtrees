@@ -147,8 +147,12 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         $user  = $request->getAttribute('user');
         $scale = (int) $request->getAttribute('scale');
         $xrefs = $request->getQueryParams()['xrefs'] ?? [];
-        $add   = $request->getParsedBody()['add'] ?? '';
         $ajax  = $request->getQueryParams()['ajax'] ?? '';
+
+
+        $params = (array) $request->getParsedBody();
+
+        $add  = $params['add'] ?? '';
 
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 

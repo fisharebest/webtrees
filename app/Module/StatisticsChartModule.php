@@ -250,7 +250,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     {
         $statistics = app(Statistics::class);
 
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         $x_axis_type = (int) $params['x-as'];
         $y_axis_type = (int) $params['y-as'];

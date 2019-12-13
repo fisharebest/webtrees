@@ -56,8 +56,9 @@ class CreateTreeAction extends AbstractBaseController
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $name  = $request->getParsedBody()['name'];
-        $title = $request->getParsedBody()['title'];
+        $params = (array) $request->getParsedBody();
+        $name   = $params['name'];
+        $title  = $params['title'];
 
         if ($this->tree_service->all()->get($name) instanceof Tree) {
             FlashMessages::addMessage(I18N::translate('The family tree “%s” already exists.', e($name)), 'danger');

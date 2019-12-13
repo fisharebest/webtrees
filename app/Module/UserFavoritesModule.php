@@ -167,7 +167,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
         assert($tree instanceof Tree);
 
         $user   = $request->getAttribute('user');
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         $note  = $params['note'];
         $title = $params['title'];

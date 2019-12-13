@@ -146,8 +146,10 @@ trait ModuleAnalyticsTrait
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
+        $params = (array) $request->getParsedBody();
+
         foreach (array_keys($this->analyticsParameters()) as $parameter) {
-            $new_value = $request->getParsedBody()[$parameter];
+            $new_value = $params[$parameter];
 
             $this->setPreference($parameter, $new_value);
         }

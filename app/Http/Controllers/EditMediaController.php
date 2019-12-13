@@ -113,8 +113,11 @@ class EditMediaController extends AbstractEditController
 
         $xref  = $request->getQueryParams()['xref'];
         $media = Media::getInstance($xref, $tree);
-        $title = $request->getParsedBody()['title'];
-        $type  = $request->getParsedBody()['type'];
+
+        $params = (array) $request->getParsedBody();
+
+        $title = $params['title'];
+        $type  = $params['type'];
 
         // Tidy whitespace
         $type  = trim(preg_replace('/\s+/', ' ', $type));
@@ -208,13 +211,16 @@ class EditMediaController extends AbstractEditController
         $data_filesystem = $request->getAttribute('filesystem.data');
         assert($data_filesystem instanceof FilesystemInterface);
 
-        $xref     = $request->getQueryParams()['xref'];
-        $fact_id  = $request->getQueryParams()['fact_id'];
-        $folder   = $request->getParsedBody()['folder'];
-        $new_file = $request->getParsedBody()['new_file'];
-        $remote   = $request->getParsedBody()['remote'];
-        $title    = $request->getParsedBody()['title'];
-        $type     = $request->getParsedBody()['type'];
+        $xref    = $request->getQueryParams()['xref'];
+        $fact_id = $request->getQueryParams()['fact_id'];
+
+        $params = (array) $request->getParsedBody();
+
+        $folder   = $params['folder'];
+        $new_file = $params['new_file'];
+        $remote   = $params['remote'];
+        $title    = $params['title'];
+        $type     = $params['type'];
         $media    = Media::getInstance($xref, $tree);
 
         // Tidy whitespace
@@ -323,7 +329,7 @@ class EditMediaController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
         $file   = $params['file'];
         $type   = $params['type'];
         $title  = $params['title'];
@@ -368,7 +374,7 @@ class EditMediaController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params              = $request->getParsedBody();
+        $params              = (array) $request->getParsedBody();
         $note                = $params['media-note'];
         $title               = $params['title'];
         $type                = $params['type'];
@@ -496,7 +502,9 @@ class EditMediaController extends AbstractEditController
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $link = $request->getParsedBody()['link'];
+        $params = (array) $request->getParsedBody();
+
+        $link = $params['link'];
 
         $media  = Media::getInstance($xref, $tree);
         $record = GedcomRecord::getInstance($link, $tree);

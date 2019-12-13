@@ -35,15 +35,17 @@ class PendingChangesLogAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $params = (array) $request->getParsedBody();
+
         return redirect(route(PendingChangesLogPage::class, [
-            'tree'     => $request->getParsedBody()['tree'],
-            'from'     => $request->getParsedBody()['from'] ?? '',
-            'to'       => $request->getParsedBody()['to'] ?? '',
-            'type'     => $request->getParsedBody()['type'] ?? '',
-            'oldged'   => $request->getParsedBody()['oldged'] ?? '',
-            'newged'   => $request->getParsedBody()['newged'] ?? '',
-            'xref'     => $request->getParsedBody()['xref'] ?? '',
-            'username' => $request->getParsedBody()['username'] ?? '',
+            'tree'     => $params['tree'],
+            'from'     => $params['from'] ?? '',
+            'to'       => $params['to'] ?? '',
+            'type'     => $params['type'] ?? '',
+            'oldged'   => $params['oldged'] ?? '',
+            'newged'   => $params['newged'] ?? '',
+            'xref'     => $params['xref'] ?? '',
+            'username' => $params['username'] ?? '',
         ]));
     }
 }

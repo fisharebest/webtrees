@@ -214,28 +214,28 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $settings = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
-        $this->setBlockSetting($block_id, 'show_last_update', $settings['show_last_update'] ?? '');
-        $this->setBlockSetting($block_id, 'show_common_surnames', $settings['show_common_surnames'] ?? '');
-        $this->setBlockSetting($block_id, 'number_of_surnames', $settings['number_of_surnames']);
-        $this->setBlockSetting($block_id, 'stat_indi', $settings['stat_indi'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_fam', $settings['stat_fam'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_sour', $settings['stat_sour'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_other', $settings['stat_other'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_media', $settings['stat_media'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_repo', $settings['stat_repo'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_surname', $settings['stat_surname'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_events', $settings['stat_events'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_users', $settings['stat_users'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_first_birth', $settings['stat_first_birth'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_last_birth', $settings['stat_last_birth'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_first_death', $settings['stat_first_death'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_last_death', $settings['stat_last_death'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_long_life', $settings['stat_long_life'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_avg_life', $settings['stat_avg_life'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_most_chil', $settings['stat_most_chil'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_avg_chil', $settings['stat_avg_chil'] ?? '');
+        $this->setBlockSetting($block_id, 'show_last_update', $params['show_last_update'] ?? '');
+        $this->setBlockSetting($block_id, 'show_common_surnames', $params['show_common_surnames'] ?? '');
+        $this->setBlockSetting($block_id, 'number_of_surnames', $params['number_of_surnames']);
+        $this->setBlockSetting($block_id, 'stat_indi', $params['stat_indi'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_fam', $params['stat_fam'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_sour', $params['stat_sour'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_other', $params['stat_other'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_media', $params['stat_media'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_repo', $params['stat_repo'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_surname', $params['stat_surname'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_events', $params['stat_events'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_users', $params['stat_users'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_first_birth', $params['stat_first_birth'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_last_birth', $params['stat_last_birth'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_first_death', $params['stat_first_death'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_last_death', $params['stat_last_death'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_long_life', $params['stat_long_life'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_avg_life', $params['stat_avg_life'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_most_chil', $params['stat_most_chil'] ?? '');
+        $this->setBlockSetting($block_id, 'stat_avg_chil', $params['stat_avg_chil'] ?? '');
     }
 
     /**

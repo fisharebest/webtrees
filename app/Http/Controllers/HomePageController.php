@@ -385,8 +385,10 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageDefaultUpdate(ServerRequestInterface $request): ResponseInterface
     {
-        $main_blocks = new Collection($request->getParsedBody()[self::MAIN_BLOCKS] ?? []);
-        $side_blocks = new Collection($request->getParsedBody()[self::SIDE_BLOCKS] ?? []);
+        $params = (array) $request->getParsedBody();
+
+        $main_blocks = new Collection($params[self::MAIN_BLOCKS] ?? []);
+        $side_blocks = new Collection($params[self::SIDE_BLOCKS] ?? []);
 
         $this->updateTreeBlocks(-1, $main_blocks, $side_blocks);
 
@@ -437,7 +439,7 @@ class HomePageController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         $defaults = (bool) ($params['defaults'] ?? false);
 
@@ -570,8 +572,10 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageDefaultUpdate(ServerRequestInterface $request): ResponseInterface
     {
-        $main_blocks = new Collection($request->getParsedBody()[self::MAIN_BLOCKS] ?? []);
-        $side_blocks = new Collection($request->getParsedBody()[self::SIDE_BLOCKS] ?? []);
+        $params = (array) $request->getParsedBody();
+
+        $main_blocks = new Collection($params[self::MAIN_BLOCKS] ?? []);
+        $side_blocks = new Collection($params[self::SIDE_BLOCKS] ?? []);
 
         $this->updateUserBlocks(-1, $main_blocks, $side_blocks);
 
@@ -623,7 +627,7 @@ class HomePageController extends AbstractBaseController
         assert($tree instanceof Tree);
 
         $user     = $request->getAttribute('user');
-        $params   = $request->getParsedBody();
+        $params   = (array) $request->getParsedBody();
         $defaults = (bool) ($params['defaults'] ?? false);
 
         if ($defaults) {

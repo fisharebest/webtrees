@@ -351,7 +351,7 @@ class AdminTreesController extends AbstractBaseController
         $data_filesystem = $request->getAttribute('filesystem.data');
         assert($data_filesystem instanceof FilesystemInterface);
 
-        $params             = $request->getParsedBody();
+        $params             = (array) $request->getParsedBody();
         $source             = $params['source'];
         $keep_media         = (bool) ($params['keep_media'] ?? false);
         $WORD_WRAPPED_NOTES = (bool) ($params['WORD_WRAPPED_NOTES'] ?? false);
@@ -510,7 +510,7 @@ class AdminTreesController extends AbstractBaseController
      */
     public function mergeAction(ServerRequestInterface $request): ResponseInterface
     {
-        $params     = $request->getParsedBody();
+        $params     = (array) $request->getParsedBody();
         $tree1_name = $params['tree1_name'] ?? '';
         $tree2_name = $params['tree2_name'] ?? '';
 
@@ -870,70 +870,72 @@ class AdminTreesController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $tree->setPreference('ADVANCED_NAME_FACTS', implode(',', $request->getParsedBody()['ADVANCED_NAME_FACTS'] ?? []));
-        $tree->setPreference('ADVANCED_PLAC_FACTS', implode(',', $request->getParsedBody()['ADVANCED_PLAC_FACTS'] ?? []));
+        $params = (array) $request->getParsedBody();
+
+        $tree->setPreference('ADVANCED_NAME_FACTS', implode(',', $params['ADVANCED_NAME_FACTS'] ?? []));
+        $tree->setPreference('ADVANCED_PLAC_FACTS', implode(',', $params['ADVANCED_PLAC_FACTS'] ?? []));
         // For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
         // e.g. "gregorian_and_jewish"
         $tree->setPreference('CALENDAR_FORMAT', implode('_and_', array_unique([
-            $request->getParsedBody()['CALENDAR_FORMAT0'] ?? 'none',
-            $request->getParsedBody()['CALENDAR_FORMAT1'] ?? 'none',
+            $params['CALENDAR_FORMAT0'] ?? 'none',
+            $params['CALENDAR_FORMAT1'] ?? 'none',
         ])));
-        $tree->setPreference('CHART_BOX_TAGS', implode(',', $request->getParsedBody()['CHART_BOX_TAGS'] ?? []));
-        $tree->setPreference('CONTACT_USER_ID', $request->getParsedBody()['CONTACT_USER_ID'] ?? '');
-        $tree->setPreference('EXPAND_NOTES', $request->getParsedBody()['EXPAND_NOTES'] ?? '');
-        $tree->setPreference('EXPAND_SOURCES', $request->getParsedBody()['EXPAND_SOURCES'] ?? '');
-        $tree->setPreference('FAM_FACTS_ADD', implode(',', $request->getParsedBody()['FAM_FACTS_ADD'] ?? []));
-        $tree->setPreference('FAM_FACTS_QUICK', implode(',', $request->getParsedBody()['FAM_FACTS_QUICK'] ?? []));
-        $tree->setPreference('FAM_FACTS_UNIQUE', implode(',', $request->getParsedBody()['FAM_FACTS_UNIQUE'] ?? []));
-        $tree->setPreference('FULL_SOURCES', $request->getParsedBody()['FULL_SOURCES'] ?? '');
-        $tree->setPreference('FORMAT_TEXT', $request->getParsedBody()['FORMAT_TEXT'] ?? '');
-        $tree->setPreference('GENERATE_UIDS', $request->getParsedBody()['GENERATE_UIDS'] ?? '');
-        $tree->setPreference('HIDE_GEDCOM_ERRORS', $request->getParsedBody()['HIDE_GEDCOM_ERRORS'] ?? '');
-        $tree->setPreference('INDI_FACTS_ADD', implode(',', $request->getParsedBody()['INDI_FACTS_ADD'] ?? []));
-        $tree->setPreference('INDI_FACTS_QUICK', implode(',', $request->getParsedBody()['INDI_FACTS_QUICK'] ?? []));
-        $tree->setPreference('INDI_FACTS_UNIQUE', implode(',', $request->getParsedBody()['INDI_FACTS_UNIQUE'] ?? []));
-        $tree->setPreference('LANGUAGE', $request->getParsedBody()['LANGUAGE'] ?? '');
-        $tree->setPreference('MEDIA_UPLOAD', $request->getParsedBody()['MEDIA_UPLOAD'] ?? '');
-        $tree->setPreference('META_DESCRIPTION', $request->getParsedBody()['META_DESCRIPTION'] ?? '');
-        $tree->setPreference('META_TITLE', $request->getParsedBody()['META_TITLE'] ?? '');
-        $tree->setPreference('NO_UPDATE_CHAN', $request->getParsedBody()['NO_UPDATE_CHAN'] ?? '');
-        $tree->setPreference('PEDIGREE_ROOT_ID', $request->getParsedBody()['PEDIGREE_ROOT_ID'] ?? '');
-        $tree->setPreference('PREFER_LEVEL2_SOURCES', $request->getParsedBody()['PREFER_LEVEL2_SOURCES'] ?? '');
-        $tree->setPreference('QUICK_REQUIRED_FACTS', implode(',', $request->getParsedBody()['QUICK_REQUIRED_FACTS'] ?? []));
-        $tree->setPreference('QUICK_REQUIRED_FAMFACTS', implode(',', $request->getParsedBody()['QUICK_REQUIRED_FAMFACTS'] ?? []));
-        $tree->setPreference('REPO_FACTS_ADD', implode(',', $request->getParsedBody()['REPO_FACTS_ADD'] ?? []));
-        $tree->setPreference('REPO_FACTS_QUICK', implode(',', $request->getParsedBody()['REPO_FACTS_QUICK'] ?? []));
-        $tree->setPreference('REPO_FACTS_UNIQUE', implode(',', $request->getParsedBody()['REPO_FACTS_UNIQUE'] ?? []));
-        $tree->setPreference('SHOW_COUNTER', $request->getParsedBody()['SHOW_COUNTER'] ?? '');
-        $tree->setPreference('SHOW_EST_LIST_DATES', $request->getParsedBody()['SHOW_EST_LIST_DATES'] ?? '');
-        $tree->setPreference('SHOW_FACT_ICONS', $request->getParsedBody()['SHOW_FACT_ICONS'] ?? '');
-        $tree->setPreference('SHOW_GEDCOM_RECORD', $request->getParsedBody()['SHOW_GEDCOM_RECORD'] ?? '');
-        $tree->setPreference('SHOW_HIGHLIGHT_IMAGES', $request->getParsedBody()['SHOW_HIGHLIGHT_IMAGES'] ?? '');
-        $tree->setPreference('SHOW_LAST_CHANGE', $request->getParsedBody()['SHOW_LAST_CHANGE'] ?? '');
-        $tree->setPreference('SHOW_MEDIA_DOWNLOAD', $request->getParsedBody()['SHOW_MEDIA_DOWNLOAD'] ?? '');
-        $tree->setPreference('SHOW_NO_WATERMARK', $request->getParsedBody()['SHOW_NO_WATERMARK'] ?? '');
-        $tree->setPreference('SHOW_PARENTS_AGE', $request->getParsedBody()['SHOW_PARENTS_AGE'] ?? '');
-        $tree->setPreference('SHOW_PEDIGREE_PLACES', $request->getParsedBody()['SHOW_PEDIGREE_PLACES'] ?? '');
-        $tree->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', $request->getParsedBody()['SHOW_PEDIGREE_PLACES_SUFFIX'] ?? '');
-        $tree->setPreference('SHOW_RELATIVES_EVENTS', implode(',', $request->getParsedBody()['SHOW_RELATIVES_EVENTS'] ?? []));
-        $tree->setPreference('SOUR_FACTS_ADD', implode(',', $request->getParsedBody()['SOUR_FACTS_ADD'] ?? []));
-        $tree->setPreference('SOUR_FACTS_QUICK', implode(',', $request->getParsedBody()['SOUR_FACTS_QUICK'] ?? []));
-        $tree->setPreference('SOUR_FACTS_UNIQUE', implode(',', $request->getParsedBody()['SOUR_FACTS_UNIQUE'] ?? []));
-        $tree->setPreference('SUBLIST_TRIGGER_I', $request->getParsedBody()['SUBLIST_TRIGGER_I'] ?? '200');
-        $tree->setPreference('SURNAME_LIST_STYLE', $request->getParsedBody()['SURNAME_LIST_STYLE'] ?? '');
-        $tree->setPreference('SURNAME_TRADITION', $request->getParsedBody()['SURNAME_TRADITION'] ?? '');
-        $tree->setPreference('USE_SILHOUETTE', $request->getParsedBody()['USE_SILHOUETTE'] ?? '');
-        $tree->setPreference('WEBMASTER_USER_ID', $request->getParsedBody()['WEBMASTER_USER_ID'] ?? '');
-        $tree->setPreference('title', $request->getParsedBody()['title'] ?? '');
+        $tree->setPreference('CHART_BOX_TAGS', implode(',', $params['CHART_BOX_TAGS'] ?? []));
+        $tree->setPreference('CONTACT_USER_ID', $params['CONTACT_USER_ID'] ?? '');
+        $tree->setPreference('EXPAND_NOTES', $params['EXPAND_NOTES'] ?? '');
+        $tree->setPreference('EXPAND_SOURCES', $params['EXPAND_SOURCES'] ?? '');
+        $tree->setPreference('FAM_FACTS_ADD', implode(',', $params['FAM_FACTS_ADD'] ?? []));
+        $tree->setPreference('FAM_FACTS_QUICK', implode(',', $params['FAM_FACTS_QUICK'] ?? []));
+        $tree->setPreference('FAM_FACTS_UNIQUE', implode(',', $params['FAM_FACTS_UNIQUE'] ?? []));
+        $tree->setPreference('FULL_SOURCES', $params['FULL_SOURCES'] ?? '');
+        $tree->setPreference('FORMAT_TEXT', $params['FORMAT_TEXT'] ?? '');
+        $tree->setPreference('GENERATE_UIDS', $params['GENERATE_UIDS'] ?? '');
+        $tree->setPreference('HIDE_GEDCOM_ERRORS', $params['HIDE_GEDCOM_ERRORS'] ?? '');
+        $tree->setPreference('INDI_FACTS_ADD', implode(',', $params['INDI_FACTS_ADD'] ?? []));
+        $tree->setPreference('INDI_FACTS_QUICK', implode(',', $params['INDI_FACTS_QUICK'] ?? []));
+        $tree->setPreference('INDI_FACTS_UNIQUE', implode(',', $params['INDI_FACTS_UNIQUE'] ?? []));
+        $tree->setPreference('LANGUAGE', $params['LANGUAGE'] ?? '');
+        $tree->setPreference('MEDIA_UPLOAD', $params['MEDIA_UPLOAD'] ?? '');
+        $tree->setPreference('META_DESCRIPTION', $params['META_DESCRIPTION'] ?? '');
+        $tree->setPreference('META_TITLE', $params['META_TITLE'] ?? '');
+        $tree->setPreference('NO_UPDATE_CHAN', $params['NO_UPDATE_CHAN'] ?? '');
+        $tree->setPreference('PEDIGREE_ROOT_ID', $params['PEDIGREE_ROOT_ID'] ?? '');
+        $tree->setPreference('PREFER_LEVEL2_SOURCES', $params['PREFER_LEVEL2_SOURCES'] ?? '');
+        $tree->setPreference('QUICK_REQUIRED_FACTS', implode(',', $params['QUICK_REQUIRED_FACTS'] ?? []));
+        $tree->setPreference('QUICK_REQUIRED_FAMFACTS', implode(',', $params['QUICK_REQUIRED_FAMFACTS'] ?? []));
+        $tree->setPreference('REPO_FACTS_ADD', implode(',', $params['REPO_FACTS_ADD'] ?? []));
+        $tree->setPreference('REPO_FACTS_QUICK', implode(',', $params['REPO_FACTS_QUICK'] ?? []));
+        $tree->setPreference('REPO_FACTS_UNIQUE', implode(',', $params['REPO_FACTS_UNIQUE'] ?? []));
+        $tree->setPreference('SHOW_COUNTER', $params['SHOW_COUNTER'] ?? '');
+        $tree->setPreference('SHOW_EST_LIST_DATES', $params['SHOW_EST_LIST_DATES'] ?? '');
+        $tree->setPreference('SHOW_FACT_ICONS', $params['SHOW_FACT_ICONS'] ?? '');
+        $tree->setPreference('SHOW_GEDCOM_RECORD', $params['SHOW_GEDCOM_RECORD'] ?? '');
+        $tree->setPreference('SHOW_HIGHLIGHT_IMAGES', $params['SHOW_HIGHLIGHT_IMAGES'] ?? '');
+        $tree->setPreference('SHOW_LAST_CHANGE', $params['SHOW_LAST_CHANGE'] ?? '');
+        $tree->setPreference('SHOW_MEDIA_DOWNLOAD', $params['SHOW_MEDIA_DOWNLOAD'] ?? '');
+        $tree->setPreference('SHOW_NO_WATERMARK', $params['SHOW_NO_WATERMARK'] ?? '');
+        $tree->setPreference('SHOW_PARENTS_AGE', $params['SHOW_PARENTS_AGE'] ?? '');
+        $tree->setPreference('SHOW_PEDIGREE_PLACES', $params['SHOW_PEDIGREE_PLACES'] ?? '');
+        $tree->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', $params['SHOW_PEDIGREE_PLACES_SUFFIX'] ?? '');
+        $tree->setPreference('SHOW_RELATIVES_EVENTS', implode(',', $params['SHOW_RELATIVES_EVENTS'] ?? []));
+        $tree->setPreference('SOUR_FACTS_ADD', implode(',', $params['SOUR_FACTS_ADD'] ?? []));
+        $tree->setPreference('SOUR_FACTS_QUICK', implode(',', $params['SOUR_FACTS_QUICK'] ?? []));
+        $tree->setPreference('SOUR_FACTS_UNIQUE', implode(',', $params['SOUR_FACTS_UNIQUE'] ?? []));
+        $tree->setPreference('SUBLIST_TRIGGER_I', $params['SUBLIST_TRIGGER_I'] ?? '200');
+        $tree->setPreference('SURNAME_LIST_STYLE', $params['SURNAME_LIST_STYLE'] ?? '');
+        $tree->setPreference('SURNAME_TRADITION', $params['SURNAME_TRADITION'] ?? '');
+        $tree->setPreference('USE_SILHOUETTE', $params['USE_SILHOUETTE'] ?? '');
+        $tree->setPreference('WEBMASTER_USER_ID', $params['WEBMASTER_USER_ID'] ?? '');
+        $tree->setPreference('title', $params['title'] ?? '');
 
         // Only accept valid folders for MEDIA_DIRECTORY
-        $MEDIA_DIRECTORY = $request->getParsedBody()['MEDIA_DIRECTORY'] ?? '';
+        $MEDIA_DIRECTORY = $params['MEDIA_DIRECTORY'] ?? '';
         $MEDIA_DIRECTORY = preg_replace('/[:\/\\\\]+/', '/', $MEDIA_DIRECTORY);
         $MEDIA_DIRECTORY = trim($MEDIA_DIRECTORY, '/') . '/';
 
         $tree->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
 
-        $gedcom = $request->getParsedBody()['gedcom'] ?? '';
+        $gedcom = $params['gedcom'] ?? '';
 
         if ($gedcom !== '' && $gedcom !== $tree->name()) {
             try {
@@ -953,8 +955,8 @@ class AdminTreesController extends AbstractBaseController
         FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->title())), 'success');
 
         // Coming soon...
-        $all_trees = $request->getParsedBody()['all_trees'] ?? '';
-        $new_trees = $request->getParsedBody()['new_trees'] ?? '';
+        $all_trees = $params['all_trees'] ?? '';
+        $new_trees = $params['new_trees'] ?? '';
 
         if ($all_trees === 'on') {
             FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.'), 'success');

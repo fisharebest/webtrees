@@ -358,12 +358,12 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        $parameters = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
-        $tree = $this->tree_service->all()->get($parameters['tree' ?? '']);
+        $tree = $this->tree_service->all()->get($params['tree' ?? '']);
         assert($tree instanceof Tree);
 
-        $plugin = $parameters['plugin'] ?? '';
+        $plugin = $params['plugin'] ?? '';
 
         if ($plugin === '') {
             return redirect(route('module', [
@@ -373,8 +373,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
             ]));
         }
 
-        $xref   = $parameters['xref'] ?? '';
-        $update = $parameters['update'] ?? '';
+        $xref   = $params['xref'] ?? '';
+        $update = $params['update'] ?? '';
 
         $plugins = $this->getPluginList();
         $plugin  = $plugins[$plugin] ?? null;
@@ -386,10 +386,10 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
 
         $all_data = $this->allData($plugin, $tree);
 
-        unset($parameters['update']);
-        $parameters['tree']   = $tree->name();
-        $parameters['module'] = $this->name();
-        $parameters['action'] = 'Admin';
+        unset($params['update']);
+        $params['tree']   = $tree->name();
+        $params['module'] = $this->name();
+        $params['action'] = 'Admin';
 
         switch ($update) {
             case 'one':
@@ -401,14 +401,14 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
                     }
                 }
 
-                $parameters['xref'] = $this->findNextXref($plugin, $xref, $all_data, $tree);
+                $params['xref'] = $this->findNextXref($plugin, $xref, $all_data, $tree);
                 break;
 
             case 'all':
                 foreach ($all_data as $xref => $value) {
                     if ($this->timeout_service->isTimeNearlyUp()) {
                         FlashMessages::addMessage('The server’s time limit has been reached.');
-                        $parameters['xref'] = $xref;
+                        $params['xref'] = $xref;
                         break 2;
                     }
 
@@ -418,11 +418,11 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
                         $record->updateRecord($new_gedcom, false);
                     }
                 }
-                $parameters['xref'] = '';
+                $params['xref'] = '';
                 break;
         }
 
-        $url = route('module', $parameters);
+        $url = route('module', $params);
 
         return redirect($url);
     }

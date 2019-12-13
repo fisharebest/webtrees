@@ -132,10 +132,12 @@ class MediaController extends AbstractAdminController
      */
     public function select(ServerRequestInterface $request): ResponseInterface
     {
+        $params = (array) $request->getParsedBody();
+
         return redirect(route('admin-media', [
-            'files'        => $request->getParsedBody()['files'],
-            'media_folder' => $request->getParsedBody()['media_folder'] ?? '',
-            'subfolders'   => $request->getParsedBody()['subfolders'] ?? 'include',
+            'files'        => $params['files'],
+            'media_folder' => $params['media_folder'] ?? '',
+            'subfolders'   => $params['subfolders'] ?? 'include',
         ]));
     }
 
@@ -403,6 +405,8 @@ class MediaController extends AbstractAdminController
         $data_filesystem = $request->getAttribute('filesystem.data');
         assert($data_filesystem instanceof FilesystemInterface);
 
+        $params = (array) $request->getParsedBody();
+
         $all_folders = $this->media_file_service->allMediaFolders($data_filesystem);
 
         foreach ($request->getUploadedFiles() as $key => $uploaded_file) {
@@ -416,8 +420,8 @@ class MediaController extends AbstractAdminController
             }
             $key = substr($key, 9);
 
-            $folder   = $request->getParsedBody()['folder' . $key];
-            $filename = $request->getParsedBody()['filename' . $key];
+            $folder   = $params['folder' . $key];
+            $filename = $params['filename' . $key];
 
             // If no filename specified, use the original filename.
             if ($filename === '') {

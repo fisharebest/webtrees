@@ -77,7 +77,7 @@ class ReportSetupAction implements RequestHandlerInterface
 
         Auth::checkComponentAccess($module, 'report', $tree, $user);
 
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         $params['tree']   = $tree->name();
         $params['report'] = $report;

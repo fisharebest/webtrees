@@ -70,11 +70,13 @@ class ExportGedcomClient implements RequestHandlerInterface
         $data_filesystem = $request->getAttribute('filesystem.data');
         assert($data_filesystem instanceof FilesystemInterface);
 
-        $convert          = (bool) ($request->getParsedBody()['convert'] ?? false);
-        $zip              = (bool) ($request->getParsedBody()['zip'] ?? false);
-        $media            = (bool) ($request->getParsedBody()['media'] ?? false);
-        $media_path       = $request->getParsedBody()['media-path'] ?? '';
-        $privatize_export = $request->getParsedBody()['privatize_export'];
+        $params = (array) $request->getParsedBody();
+
+        $convert          = (bool) ($params['convert'] ?? false);
+        $zip              = (bool) ($params['zip'] ?? false);
+        $media            = (bool) ($params['media'] ?? false);
+        $media_path       = $params['media-path'] ?? '';
+        $privatize_export = $params['privatize_export'];
 
         $access_levels = [
             'gedadmin' => Auth::PRIV_NONE,

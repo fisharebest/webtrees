@@ -178,12 +178,14 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            $params = (array) $request->getParsedBody();
+
             return redirect(route(self::ROUTE_NAME, [
                 'tree'        => $tree->name(),
-                'xref'        => $request->getParsedBody()['xref'],
-                'book_size'   => $request->getParsedBody()['book_size'],
-                'generations' => $request->getParsedBody()['generations'],
-                'spouses'     => $request->getParsedBody()['spouses'] ?? false,
+                'xref'        => $params['xref'],
+                'book_size'   => $params['book_size'],
+                'generations' => $params['generations'],
+                'spouses'     => $params['spouses'] ?? false,
             ]));
         }
 

@@ -46,7 +46,9 @@ class SearchQuickAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $query = $request->getParsedBody()['query'] ?? '';
+        $params = (array) $request->getParsedBody();
+
+        $query = $params['query'] ?? '';
 
         // Was the search query an XREF in the current tree?
         // If so, go straight to it.

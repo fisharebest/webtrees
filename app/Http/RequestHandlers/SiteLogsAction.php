@@ -35,14 +35,16 @@ class SiteLogsAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $params = (array) $request->getParsedBody();
+
         return redirect(route(SiteLogsPage::class, [
-            'tree'     => $request->getParsedBody()['tree'],
-            'from'     => $request->getParsedBody()['from'] ?? '',
-            'to'       => $request->getParsedBody()['to'] ?? '',
-            'type'     => $request->getParsedBody()['type'] ?? '',
-            'text'     => $request->getParsedBody()['text'] ?? '',
-            'ip'       => $request->getParsedBody()['ip'] ?? '',
-            'username' => $request->getParsedBody()['username'] ?? '',
+            'tree'     => $params['tree'],
+            'from'     => $params['from'] ?? '',
+            'to'       => $params['to'] ?? '',
+            'type'     => $params['type'] ?? '',
+            'text'     => $params['text'] ?? '',
+            'ip'       => $params['ip'] ?? '',
+            'username' => $params['username'] ?? '',
         ]));
     }
 }

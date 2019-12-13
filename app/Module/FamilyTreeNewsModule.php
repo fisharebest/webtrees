@@ -203,8 +203,11 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         }
 
         $news_id = $request->getQueryParams()['news_id'] ?? '';
-        $subject = $request->getParsedBody()['subject'];
-        $body    = $request->getParsedBody()['body'];
+
+        $params = (array) $request->getParsedBody();
+
+        $subject = $params['subject'];
+        $body    = $params['body'];
 
         $subject = $this->html_service->sanitize($subject);
         $body    = $this->html_service->sanitize($body);

@@ -202,9 +202,11 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             throw new HttpAccessDeniedException();
         }
 
+        $params = (array) $request->getParsedBody();
+
         $news_id = $request->getQueryParams()['news_id'] ?? '';
-        $subject = $request->getParsedBody()['subject'];
-        $body    = $request->getParsedBody()['body'];
+        $subject = $params['subject'];
+        $body    = $params['body'];
 
         $subject = $this->html_service->sanitize($subject);
         $body    = $this->html_service->sanitize($body);

@@ -120,7 +120,8 @@ class SetupController extends AbstractBaseController
 
         $data = $this->userData($request);
 
-        $step = (int) ($request->getParsedBody()['step'] ?? '1');
+        $params = (array) $request->getParsedBody();
+        $step   = (int) ($params['step'] ?? '1');
 
         $locales = $this->module_service
             ->setupLanguages()
@@ -183,10 +184,12 @@ class SetupController extends AbstractBaseController
      */
     private function userData(ServerRequestInterface $request): array
     {
+        $params = (array) $request->getParsedBody();
+
         $data = [];
 
         foreach (self::DEFAULT_DATA as $key => $default) {
-            $data[$key] = $request->getParsedBody()[$key] ?? $default;
+            $data[$key] = $params[$key] ?? $default;
         }
 
         return $data;

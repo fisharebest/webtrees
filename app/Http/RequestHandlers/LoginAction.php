@@ -68,10 +68,13 @@ class LoginAction extends AbstractBaseController
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = $request->getAttribute('tree');
-        $username = $request->getParsedBody()['username'];
-        $password = $request->getParsedBody()['password'];
-        $url      = $request->getParsedBody()['url'];
+        $tree = $request->getAttribute('tree');
+
+        $params = (array) $request->getParsedBody();
+
+        $username = $params['username'];
+        $password = $params['password'];
+        $url      = $params['url'];
 
         try {
             $this->doLogin($username, $password);

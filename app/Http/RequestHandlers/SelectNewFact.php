@@ -46,7 +46,8 @@ class SelectNewFact implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $fact = $request->getParsedBody()['fact'];
+        $params = (array) $request->getParsedBody();
+        $fact   = $params['fact'];
 
         return redirect(route(AddNewFact::class, [
             'tree' => $tree->name(),

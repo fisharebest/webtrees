@@ -67,7 +67,9 @@ class ReportListAction implements RequestHandlerInterface
         $user = $request->getAttribute('user');
         assert($user instanceof UserInterface);
 
-        $report = $request->getParsedBody()['report'] ?? '';
+        $params = (array) $request->getParsedBody();
+
+        $report = $params['report'] ?? '';
         $module = $this->module_service->findByName($report);
 
         if ($module instanceof ModuleReportInterface) {

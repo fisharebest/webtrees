@@ -42,7 +42,7 @@ class CreateNoteAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params              = $request->getParsedBody();
+        $params              = (array) $request->getParsedBody();
         $note                = $params['note'];
         $privacy_restriction = $params['privacy-restriction'];
         $edit_restriction    = $params['edit-restriction'];

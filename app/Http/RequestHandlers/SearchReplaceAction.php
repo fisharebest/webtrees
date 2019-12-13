@@ -63,7 +63,7 @@ class SearchReplaceAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params  = $request->getParsedBody();
+        $params  = (array) $request->getParsedBody();
         $search  = $params['search'] ?? '';
         $replace = $params['replace'] ?? '';
         $context = $params['context'] ?? 'all';

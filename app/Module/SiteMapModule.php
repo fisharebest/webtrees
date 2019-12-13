@@ -132,7 +132,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         foreach ($this->tree_service->all() as $tree) {
             $include_in_sitemap = (bool) ($params['sitemap' . $tree->id()] ?? false);

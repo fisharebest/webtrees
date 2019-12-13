@@ -73,7 +73,9 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
     {
         $tree = $request->getAttribute('tree');
 
-        $email = $request->getParsedBody()['email'] ?? '';
+        $params = (array) $request->getParsedBody();
+
+        $email = $params['email'] ?? '';
         $user  = $this->user_service->findByEmail($email);
 
         if ($user instanceof User) {

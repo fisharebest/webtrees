@@ -63,7 +63,9 @@ class CensusAssistantModule extends AbstractModule
      */
     public function postCensusHeaderAction(ServerRequestInterface $request): ResponseInterface
     {
-        $census = $request->getParsedBody()['census'];
+        $params = (array) $request->getParsedBody();
+
+        $census = $params['census'];
 
         $html = $this->censusTableHeader(new $census());
 
@@ -80,7 +82,7 @@ class CensusAssistantModule extends AbstractModule
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params     = $request->getParsedBody();
+        $params     = (array) $request->getParsedBody();
         $individual = Individual::getInstance($params['xref'], $tree);
         $head       = Individual::getInstance($params['head'], $tree);
         $census     = $params['census'];
@@ -117,7 +119,7 @@ class CensusAssistantModule extends AbstractModule
      */
     public function updateCensusAssistant(ServerRequestInterface $request, Individual $individual, string $fact_id, string $newged, bool $keep_chan): string
     {
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         $ca_title       = $params['ca_title'] ?? '';
         $ca_place       = $params['ca_place'] ?? '';

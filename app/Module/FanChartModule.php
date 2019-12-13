@@ -204,12 +204,14 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            $params = (array) $request->getParsedBody();
+
             return redirect(route(self::ROUTE_NAME, [
                 'tree'        => $tree->name(),
-                'xref'        => $request->getParsedBody()['xref'],
-                'style'       => $request->getParsedBody()['style'],
-                'generations' => $request->getParsedBody()['generations'],
-                'width'       => $request->getParsedBody()['width'],
+                'xref'        => $params['xref'],
+                'style'       => $params['style'],
+                'generations' => $params['generations'],
+                'width'       => $params['width'],
             ]));
         }
 

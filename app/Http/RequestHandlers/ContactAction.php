@@ -76,7 +76,7 @@ class ContactAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params     = $request->getParsedBody();
+        $params     = (array) $request->getParsedBody();
         $body       = $params['body'];
         $from_email = $params['from_email'];
         $from_name  = $params['from_name'];

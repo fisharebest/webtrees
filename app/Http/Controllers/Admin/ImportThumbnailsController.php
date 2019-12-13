@@ -120,10 +120,12 @@ class ImportThumbnailsController extends AbstractAdminController
         $data_filesystem = $request->getAttribute('filesystem.data');
         assert($data_filesystem instanceof Filesystem);
 
-        $thumbnail = $request->getParsedBody()['thumbnail'];
-        $action    = $request->getParsedBody()['action'];
-        $xrefs     = $request->getParsedBody()['xref'];
-        $geds      = $request->getParsedBody()['ged'];
+        $params = (array) $request->getParsedBody();
+
+        $thumbnail = $params['thumbnail'];
+        $action    = $params['action'];
+        $xrefs     = $params['xref'];
+        $geds      = $params['ged'];
 
         if (!$data_filesystem->has($thumbnail)) {
             return response([]);

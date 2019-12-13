@@ -74,7 +74,9 @@ class EditNoteController extends AbstractEditController
         $note = Note::getInstance($xref, $tree);
         $note = Auth::checkNoteAccess($note, true);
 
-        $NOTE = $request->getParsedBody()['NOTE'];
+        $params = (array) $request->getParsedBody();
+
+        $NOTE = $params['NOTE'];
 
         // "\" and "$" are signficant in replacement strings, so escape them.
         $NOTE = str_replace([

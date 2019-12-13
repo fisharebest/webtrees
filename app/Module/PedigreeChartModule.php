@@ -204,11 +204,13 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            $params = (array) $request->getParsedBody();
+
             return redirect(route(self::ROUTE_NAME, [
                 'tree'        => $request->getAttribute('tree')->name(),
-                'xref'        => $request->getParsedBody()['xref'],
-                'style'       => $request->getParsedBody()['style'],
-                'generations' => $request->getParsedBody()['generations'],
+                'xref'        => $params['xref'],
+                'style'       => $params['style'],
+                'generations' => $params['generations'],
             ]));
         }
 

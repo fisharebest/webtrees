@@ -216,8 +216,10 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $this->setBlockSetting($block_id, 'type', $request->getParsedBody()['type'] ?? 'pedigree');
-        $this->setBlockSetting($block_id, 'pid', $request->getParsedBody()['xref'] ?? '');
+        $params = (array) $request->getParsedBody();
+
+        $this->setBlockSetting($block_id, 'type', $params['type'] ?? 'pedigree');
+        $this->setBlockSetting($block_id, 'pid', $params['xref'] ?? '');
     }
 
     /**

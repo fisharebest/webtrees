@@ -66,10 +66,12 @@ abstract class AbstractSelect2Handler implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $query = $request->getParsedBody()['q'] ?? '';
+        $params = (array) $request->getParsedBody();
+
+        $query = $params['q'] ?? '';
         assert(strlen($query) >= self::MINIMUM_INPUT_LENGTH);
 
-        $page = (int) ($request->getParsedBody()['page'] ?? 1);
+        $page = (int) ($params['page'] ?? 1);
 
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;

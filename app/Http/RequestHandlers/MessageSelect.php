@@ -39,12 +39,14 @@ class MessageSelect implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $params = (array) $request->getParsedBody();
+
         return redirect(route(MessagePage::class, [
-            'body'    => $request->getParsedBody()['body'] ?? '',
-            'subject' => $request->getParsedBody()['subject'] ?? '',
-            'to'      => $request->getParsedBody()['to'] ?? '',
+            'body'    => $params['body'] ?? '',
+            'subject' => $params['subject'] ?? '',
+            'to'      => $params['to'] ?? '',
             'tree'    => $tree->name(),
-            'url'     => $request->getParsedBody()['url'] ?? '',
+            'url'     => $params['url'] ?? '',
         ]));
     }
 }

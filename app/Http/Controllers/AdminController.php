@@ -88,7 +88,7 @@ class AdminController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         $delete_default_resn_id = $params['delete'] ?? [];
 
@@ -152,8 +152,8 @@ class AdminController extends AbstractBaseController
         FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->title()), 'success'));
 
         // Coming soon...
-        $all_trees = $request->getParsedBody()['all_trees'] ?? '';
-        $new_trees = $request->getParsedBody()['new_trees'] ?? '';
+        $all_trees = $params['all_trees'] ?? '';
+        $new_trees = $params['new_trees'] ?? '';
 
         if ($all_trees === 'on') {
             FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.', e($tree->title())), 'success');

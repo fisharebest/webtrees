@@ -65,7 +65,7 @@ class CreateMediaObjectAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params              = $request->getParsedBody();
+        $params              = (array) $request->getParsedBody();
         $note                = $params['media-note'];
         $title               = $params['title'];
         $type                = $params['type'];

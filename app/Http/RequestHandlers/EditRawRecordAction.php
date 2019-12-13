@@ -50,8 +50,10 @@ class EditRawRecordAction implements RequestHandlerInterface
         $record = GedcomRecord::getInstance($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
-        $facts    = $request->getParsedBody()['fact'] ?? [];
-        $fact_ids = $request->getParsedBody()['fact_id'] ?? [];
+        $params = (array) $request->getParsedBody();
+
+        $facts    = $params['fact'] ?? [];
+        $fact_ids = $params['fact_id'] ?? [];
 
         $gedcom = '0 @' . $record->xref() . '@ ' . $record::RECORD_TYPE;
 

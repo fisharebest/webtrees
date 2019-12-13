@@ -113,12 +113,14 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $params = (array) $request->getParsedBody();
+
         return redirect(route('module', [
             'module'      => $this->name(),
             'action'      => 'Page',
-            'surname'     => $request->getParsedBody()['surname'] ?? '',
-            'soundex_dm'  => $request->getParsedBody()['soundex_dm'] ?? '',
-            'soundex_std' => $request->getParsedBody()['soundex_std'] ?? '',
+            'surname'     => $params['surname'] ?? '',
+            'soundex_dm'  => $params['soundex_dm'] ?? '',
+            'soundex_std' => $params['soundex_std'] ?? '',
             'tree'        => $tree->name(),
         ]));
     }

@@ -262,10 +262,12 @@ class UsersController extends AbstractAdminController
      */
     public function save(ServerRequestInterface $request): ResponseInterface
     {
-        $username  = $request->getParsedBody()['username'];
-        $real_name = $request->getParsedBody()['real_name'];
-        $email     = $request->getParsedBody()['email'];
-        $password  = $request->getParsedBody()['password'];
+        $params = (array) $request->getParsedBody();
+
+        $username  = $params['username'];
+        $real_name = $params['real_name'];
+        $email     = $params['email'];
+        $password  = $params['password'];
 
         $errors = false;
         if ($this->user_service->findByUserName($username)) {
@@ -313,21 +315,23 @@ class UsersController extends AbstractAdminController
     {
         $user = $request->getAttribute('user');
 
-        $user_id        = (int) $request->getParsedBody()['user_id'];
-        $username       = $request->getParsedBody()['username'];
-        $real_name      = $request->getParsedBody()['real_name'];
-        $email          = $request->getParsedBody()['email'];
-        $password       = $request->getParsedBody()['password'];
-        $theme          = $request->getParsedBody()['theme'];
-        $language       = $request->getParsedBody()['language'];
-        $timezone       = $request->getParsedBody()['timezone'];
-        $contact_method = $request->getParsedBody()['contact-method'];
-        $comment        = $request->getParsedBody()['comment'];
-        $auto_accept    = (bool) ($request->getParsedBody()[User::PREF_AUTO_ACCEPT_EDITS] ?? '');
-        $canadmin       = (bool) ($request->getParsedBody()[User::PREF_IS_ADMINISTRATOR] ?? '');
-        $visible_online = (bool) ($request->getParsedBody()['visible-online'] ?? '');
-        $verified       = (bool) ($request->getParsedBody()[User::PREF_IS_EMAIL_VERIFIED] ?? '');
-        $approved       = (bool) ($request->getParsedBody()['approved'] ?? '');
+        $params = (array) $request->getParsedBody();
+
+        $user_id        = (int) $params['user_id'];
+        $username       = $params['username'];
+        $real_name      = $params['real_name'];
+        $email          = $params['email'];
+        $password       = $params['password'];
+        $theme          = $params['theme'];
+        $language       = $params['language'];
+        $timezone       = $params['timezone'];
+        $contact_method = $params['contact-method'];
+        $comment        = $params['comment'];
+        $auto_accept    = (bool) ($params[User::PREF_AUTO_ACCEPT_EDITS] ?? '');
+        $canadmin       = (bool) ($params[User::PREF_IS_ADMINISTRATOR] ?? '');
+        $visible_online = (bool) ($params['visible-online'] ?? '');
+        $verified       = (bool) ($params[User::PREF_IS_EMAIL_VERIFIED] ?? '');
+        $approved       = (bool) ($params['approved'] ?? '');
 
         $edit_user = $this->user_service->find($user_id);
 
@@ -373,9 +377,9 @@ class UsersController extends AbstractAdminController
         }
 
         foreach ($this->tree_service->all() as $tree) {
-            $path_length = (int) $request->getParsedBody()['RELATIONSHIP_PATH_LENGTH' . $tree->id()];
-            $gedcom_id   = $request->getParsedBody()['gedcomid' . $tree->id()] ?? '';
-            $can_edit    = $request->getParsedBody()['canedit' . $tree->id()] ?? '';
+            $path_length = (int) $params['RELATIONSHIP_PATH_LENGTH' . $tree->id()];
+            $gedcom_id   = $params['gedcomid' . $tree->id()] ?? '';
+            $can_edit    = $params['canedit' . $tree->id()] ?? '';
 
             // Do not allow a path length to be set if the individual ID is not
             if ($gedcom_id === '') {

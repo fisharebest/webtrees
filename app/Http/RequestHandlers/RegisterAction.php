@@ -81,11 +81,13 @@ class RegisterAction extends AbstractBaseController
 
         $this->checkRegistrationAllowed();
 
-        $comments  = $request->getParsedBody()['comments'] ?? '';
-        $email     = $request->getParsedBody()['email'] ?? '';
-        $password  = $request->getParsedBody()['password'] ?? '';
-        $realname  = $request->getParsedBody()['realname'] ?? '';
-        $username  = $request->getParsedBody()['username'] ?? '';
+        $params = (array) $request->getParsedBody();
+
+        $comments  = $params['comments'] ?? '';
+        $email     = $params['email'] ?? '';
+        $password  = $params['password'] ?? '';
+        $realname  = $params['realname'] ?? '';
+        $username  = $params['username'] ?? '';
 
         try {
             $this->doValidateRegistration($request, $username, $email, $realname, $comments, $password);

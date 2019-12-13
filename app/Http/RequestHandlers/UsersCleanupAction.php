@@ -55,7 +55,9 @@ class UsersCleanupAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $delete = $request->getParsedBody()['delete'] ?? [];
+        $params = (array) $request->getParsedBody();
+
+        $delete = $params['delete'] ?? [];
 
         foreach ($delete as $user_id) {
             $user = $this->user_service->find($user_id);

@@ -85,7 +85,7 @@ class AdminSiteController extends AbstractBaseController
      */
     public function preferencesSave(ServerRequestInterface $request): ResponseInterface
     {
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         $INDEX_DIRECTORY = $params['INDEX_DIRECTORY'];
         if (substr($INDEX_DIRECTORY, -1) !== '/') {
@@ -148,7 +148,7 @@ class AdminSiteController extends AbstractBaseController
      */
     public function registrationSave(ServerRequestInterface $request): ResponseInterface
     {
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         Site::setPreference('WELCOME_TEXT_AUTH_MODE', $params['WELCOME_TEXT_AUTH_MODE']);
         Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . I18N::languageTag(), $params['WELCOME_TEXT_AUTH_MODE_4']);

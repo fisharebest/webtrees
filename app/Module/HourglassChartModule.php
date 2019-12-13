@@ -175,11 +175,13 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            $params = (array) $request->getParsedBody();
+
             return redirect(route(self::ROUTE_NAME, [
                 'tree'        => $tree->name(),
-                'xref'        => $request->getParsedBody()['xref'],
-                'generations' => $request->getParsedBody()['generations'],
-                'spouses'     => $request->getParsedBody()['spouses'] ?? false,
+                'xref'        => $params['xref'],
+                'generations' => $params['generations'],
+                'spouses'     => $params['spouses'] ?? false,
             ]));
         }
 

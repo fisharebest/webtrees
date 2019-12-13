@@ -62,7 +62,9 @@ class PasswordResetAction implements RequestHandlerInterface, StatusCodeInterfac
         $user  = $this->user_service->findByToken($token);
 
         if ($user instanceof User) {
-            $password = $request->getParsedBody()['password'] ?? '';
+            $params = (array) $request->getParsedBody();
+
+            $password = $params['password'] ?? '';
 
             $user->setPreference('password-token', '');
             $user->setPreference('password-token-expire', '');

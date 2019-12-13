@@ -56,7 +56,8 @@ class ReorderNamesAction implements RequestHandlerInterface
         $individual = Individual::getInstance($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
-        $order = $request->getParsedBody()['order'];
+        $params = (array) $request->getParsedBody();
+        $order  = $params['order'];
         assert(is_array($order));
 
         $dummy_facts = ['0 @' . $individual->xref() . '@ INDI'];

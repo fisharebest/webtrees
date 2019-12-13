@@ -362,16 +362,18 @@ class LocationController extends AbstractAdminController
      */
     public function mapDataSave(ServerRequestInterface $request): ResponseInterface
     {
+        $params = (array) $request->getParsedBody();
+
         $parent_id = (int) $request->getQueryParams()['parent_id'];
         $place_id  = (int) $request->getQueryParams()['place_id'];
-        $lat       = round($request->getParsedBody()['new_place_lati'], 5); // 5 decimal places (locate to within about 1 metre)
+        $lat       = round($params['new_place_lati'], 5); // 5 decimal places (locate to within about 1 metre)
         $lat       = ($lat < 0 ? 'S' : 'N') . abs($lat);
-        $lng       = round($request->getParsedBody()['new_place_long'], 5);
+        $lng       = round($params['new_place_long'], 5);
         $lng       = ($lng < 0 ? 'W' : 'E') . abs($lng);
         $hierarchy = $this->getHierarchy($parent_id);
         $level     = count($hierarchy);
-        $icon      = $request->getParsedBody()['icon'];
-        $zoom      = (int) $request->getParsedBody()['new_zoom_factor'];
+        $icon      = $params['icon'];
+        $zoom      = (int) $params['new_zoom_factor'];
 
         if ($place_id === 0) {
             $place_id = 1 + (int) DB::table('placelocation')->max('pl_id');
@@ -380,7 +382,7 @@ class LocationController extends AbstractAdminController
                 'pl_id'        => $place_id,
                 'pl_parent_id' => $parent_id,
                 'pl_level'     => $level,
-                'pl_place'     => $request->getParsedBody()['new_place_name'],
+                'pl_place'     => $params['new_place_name'],
                 'pl_lati'      => $lat,
                 'pl_long'      => $lng,
                 'pl_zoom'      => $zoom,
@@ -390,7 +392,7 @@ class LocationController extends AbstractAdminController
             DB::table('placelocation')
                 ->where('pl_id', '=', $place_id)
                 ->update([
-                    'pl_place' => $request->getParsedBody()['new_place_name'],
+                    'pl_place' => $params['new_place_name'],
                     'pl_lati'  => $lat,
                     'pl_long'  => $lng,
                     'pl_zoom'  => $zoom,
@@ -401,7 +403,7 @@ class LocationController extends AbstractAdminController
         FlashMessages::addMessage(
             I18N::translate(
                 'The details for “%s” have been updated.',
-                $request->getParsedBody()['new_place_name']
+                $params['new_place_name']
             ),
             'success'
         );
@@ -644,9 +646,11 @@ class LocationController extends AbstractAdminController
         $data_filesystem = $request->getAttribute('filesystem.data');
         assert($data_filesystem instanceof FilesystemInterface);
 
-        $serverfile     = $request->getParsedBody()['serverfile'] ?? '';
-        $options        = $request->getParsedBody()['import-options'] ?? '';
-        $clear_database = (bool) ($request->getParsedBody()['cleardatabase'] ?? false);
+        $params = (array) $request->getParsedBody();
+
+        $serverfile     = $params['serverfile'] ?? '';
+        $options        = $params['import-options'] ?? '';
+        $clear_database = (bool) ($params['cleardatabase'] ?? false);
         $local_file     = $request->getUploadedFiles()['localfile'] ?? null;
 
         $places      = [];
@@ -766,7 +770,9 @@ class LocationController extends AbstractAdminController
      */
     public function importLocationsFromTree(ServerRequestInterface $request): ResponseInterface
     {
-        $ged  = $request->getParsedBody()['ged'] ?? '';
+        $params = (array) $request->getParsedBody();
+
+        $ged  = $params['ged'] ?? '';
         $tree = $this->tree_service->all()->get($ged);
         assert($tree instanceof Tree);
 

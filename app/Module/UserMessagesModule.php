@@ -96,7 +96,9 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $message_ids = $request->getParsedBody()['message_id'] ?? [];
+        $params = (array) $request->getParsedBody();
+
+        $message_ids = $params['message_id'] ?? [];
 
         DB::table('message')
             ->where('user_id', '=', Auth::id())

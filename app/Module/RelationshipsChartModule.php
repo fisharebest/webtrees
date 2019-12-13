@@ -212,12 +212,14 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            $params = (array) $request->getParsedBody();
+
             return redirect(route(self::ROUTE_NAME, [
-                'ancestors' => $request->getParsedBody()['ancestors'],
-                'recursion' => $request->getParsedBody()['recursion'],
+                'ancestors' => $params['ancestors'],
+                'recursion' => $params['recursion'],
                 'tree'      => $tree->name(),
-                'xref'      => $request->getParsedBody()['xref'],
-                'xref2'     => $request->getParsedBody()['xref2'],
+                'xref'      => $params['xref'],
+                'xref2'     => $params['xref2'],
             ]));
         }
 
@@ -416,9 +418,11 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
+        $params = (array) $request->getParsedBody();
+
         foreach ($this->tree_service->all() as $tree) {
-            $recursion = $request->getParsedBody()['relationship-recursion-' . $tree->id()] ?? '';
-            $ancestors = $request->getParsedBody()['relationship-ancestors-' . $tree->id()] ?? '';
+            $recursion = $params['relationship-recursion-' . $tree->id()] ?? '';
+            $ancestors = $params['relationship-ancestors-' . $tree->id()] ?? '';
 
             $tree->setPreference('RELATIONSHIP_RECURSION', $recursion);
             $tree->setPreference('RELATIONSHIP_ANCESTORS', $ancestors);

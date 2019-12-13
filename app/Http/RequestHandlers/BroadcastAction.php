@@ -59,7 +59,7 @@ class BroadcastAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $user    = $request->getAttribute('user');
-        $params  = $request->getParsedBody();
+        $params  = (array) $request->getParsedBody();
         $body    = $params['body'];
         $subject = $params['subject'];
         $to      = $params['to'];

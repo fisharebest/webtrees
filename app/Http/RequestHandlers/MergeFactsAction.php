@@ -54,11 +54,13 @@ class MergeFactsAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref1 = $request->getParsedBody()['xref1'] ?? '';
-        $xref2 = $request->getParsedBody()['xref2'] ?? '';
+        $params = (array) $request->getParsedBody();
 
-        $keep1 = $request->getParsedBody()['keep1'] ?? [];
-        $keep2 = $request->getParsedBody()['keep2'] ?? [];
+        $xref1 = $params['xref1'] ?? '';
+        $xref2 = $params['xref2'] ?? '';
+
+        $keep1 = $params['keep1'] ?? [];
+        $keep2 = $params['keep2'] ?? [];
 
         // Merge record2 into record1
         $record1 = GedcomRecord::getInstance($xref1, $tree);

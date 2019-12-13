@@ -53,9 +53,11 @@ class UpdatePlacesAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $replace = $request->getParsedBody()['replace'] ?? '';
-        $search  = $request->getParsedBody()['search'] ?? '';
-        $submit  = $request->getParsedBody()['submit'] ?? '';
+        $params = (array) $request->getParsedBody();
+
+        $replace = $params['replace'] ?? '';
+        $search  = $params['search'] ?? '';
+        $submit  = $params['submit'] ?? '';
 
         if ($search !== '' && $replace !== '' && $submit === 'update') {
             $individual_changes = DB::table('individuals')

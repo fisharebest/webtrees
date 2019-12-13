@@ -51,7 +51,7 @@ class MapProviderController extends AbstractAdminController
      */
     public function mapProviderSave(ServerRequestInterface $request): ResponseInterface
     {
-        $settings = $request->getParsedBody();
+        $settings = (array) $request->getParsedBody();
 
         Site::setPreference('map-provider', $settings['provider']);
         Site::setPreference('geonames', $settings['geonames']);

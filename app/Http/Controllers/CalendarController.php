@@ -187,16 +187,18 @@ class CalendarController extends AbstractBaseController
 
         $view = $request->getAttribute('view');
 
+        $params = (array) $request->getParsedBody();
+
         return redirect(route('calendar', [
-            'cal'      => $request->getParsedBody()['cal'],
-            'day'      => $request->getParsedBody()['day'],
-            'filterev' => $request->getParsedBody()['filterev'],
-            'filterof' => $request->getParsedBody()['filterof'],
-            'filtersx' => $request->getParsedBody()['filtersx'],
-            'month'    => $request->getParsedBody()['month'],
+            'cal'      => $params['cal'],
+            'day'      => $params['day'],
+            'filterev' => $params['filterev'],
+            'filterof' => $params['filterof'],
+            'filtersx' => $params['filtersx'],
+            'month'    => $params['month'],
             'tree'     => $tree->name(),
             'view'     => $view,
-            'year'     => $request->getParsedBody()['year'],
+            'year'     => $params['year'],
         ]));
     }
 

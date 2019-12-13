@@ -43,7 +43,7 @@ class SearchGeneralAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         return redirect(route(SearchGeneralPage::class, [
             'query'               => $params['query'] ?? '',

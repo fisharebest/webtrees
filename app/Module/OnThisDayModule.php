@@ -201,7 +201,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         $this->setBlockSetting($block_id, 'filter', $params['filter']);
         $this->setBlockSetting($block_id, 'infoStyle', $params['infoStyle']);

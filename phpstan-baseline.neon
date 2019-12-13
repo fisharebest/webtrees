@@ -366,46 +366,6 @@ parameters:
 			path: app/Http/Controllers/AbstractEditController.php
 
 		-
-			message: "#^Cannot access offset string on array\\|object\\|null\\.$#"
-			count: 4
-			path: app/Http/Controllers/AbstractEditController.php
-
-		-
-			message: "#^Cannot access offset 'SEX' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/AbstractEditController.php
-
-		-
-			message: "#^Cannot access offset 'NAME' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/AbstractEditController.php
-
-		-
-			message: "#^Cannot access offset mixed on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/AbstractEditController.php
-
-		-
-			message: "#^Cannot access offset 'fact_id' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/FixLevel0MediaController.php
-
-		-
-			message: "#^Cannot access offset 'indi_xref' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/FixLevel0MediaController.php
-
-		-
-			message: "#^Cannot access offset 'obje_xref' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/FixLevel0MediaController.php
-
-		-
-			message: "#^Cannot access offset 'tree_id' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/FixLevel0MediaController.php
-
-		-
 			message: "#^Cannot call method facts\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
 			count: 2
 			path: app/Http/Controllers/Admin/FixLevel0MediaController.php
@@ -434,26 +394,6 @@ parameters:
 			message: "#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/FixLevel0MediaController.php
-
-		-
-			message: "#^Cannot access offset 'thumbnail' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ImportThumbnailsController.php
-
-		-
-			message: "#^Cannot access offset 'action' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ImportThumbnailsController.php
-
-		-
-			message: "#^Cannot access offset 'xref' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ImportThumbnailsController.php
-
-		-
-			message: "#^Cannot access offset 'ged' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ImportThumbnailsController.php
 
 		-
 			message: "#^Parameter \\#1 \\$str of function sha1 expects string, string\\|false given\\.$#"
@@ -548,31 +488,6 @@ parameters:
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$pl_long\\.$#"
 			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Cannot access offset 'new_place_lati' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Cannot access offset 'new_place_long' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Cannot access offset 'icon' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Cannot access offset 'new_zoom_factor' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Cannot access offset 'new_place_name' on array\\|object\\|null\\.$#"
-			count: 3
 			path: app/Http/Controllers/Admin/LocationController.php
 
 		-
@@ -691,21 +606,6 @@ parameters:
 			path: app/Http/Controllers/Admin/LocationController.php
 
 		-
-			message: "#^Cannot access offset 'provider' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/MapProviderController.php
-
-		-
-			message: "#^Cannot access offset 'geonames' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/MapProviderController.php
-
-		-
-			message: "#^Cannot access offset 'files' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/MediaController.php
-
-		-
 			message: "#^Variable \\$media in PHPDoc tag @var does not match assigned variable \\$tree\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/MediaController.php
@@ -731,11 +631,6 @@ parameters:
 			path: app/Http/Controllers/Admin/MediaController.php
 
 		-
-			message: "#^Cannot access offset string on array\\|object\\|null\\.$#"
-			count: 2
-			path: app/Http/Controllers/Admin/MediaController.php
-
-		-
 			message: "#^Parameter \\#2 \\$resource of method League\\\\Flysystem\\\\FilesystemInterface\\:\\:writeStream\\(\\) expects resource, resource\\|null given\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/MediaController.php
@@ -756,104 +651,9 @@ parameters:
 			path: app/Http/Controllers/Admin/ModuleController.php
 
 		-
-			message: "#^Cannot access offset 'module_name' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ModuleController.php
-
-		-
-			message: "#^Cannot access offset 'username' on array\\|object\\|null\\.$#"
-			count: 2
-			path: app/Http/Controllers/Admin/UsersController.php
-
-		-
-			message: "#^Cannot access offset 'real_name' on array\\|object\\|null\\.$#"
-			count: 2
-			path: app/Http/Controllers/Admin/UsersController.php
-
-		-
-			message: "#^Cannot access offset 'email' on array\\|object\\|null\\.$#"
-			count: 2
-			path: app/Http/Controllers/Admin/UsersController.php
-
-		-
-			message: "#^Cannot access offset 'password' on array\\|object\\|null\\.$#"
-			count: 2
-			path: app/Http/Controllers/Admin/UsersController.php
-
-		-
-			message: "#^Cannot access offset 'user_id' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/UsersController.php
-
-		-
-			message: "#^Cannot access offset 'theme' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/UsersController.php
-
-		-
-			message: "#^Cannot access offset 'language' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/UsersController.php
-
-		-
-			message: "#^Cannot access offset 'timezone' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/UsersController.php
-
-		-
-			message: "#^Cannot access offset 'contact\\-method' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/UsersController.php
-
-		-
-			message: "#^Cannot access offset 'comment' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/UsersController.php
-
-		-
-			message: "#^Cannot access offset string on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/UsersController.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\Admin\\\\UsersController\\:\\:themeOptions\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/UsersController.php
-
-		-
-			message: "#^Cannot access offset 'HIDE_LIVE_PEOPLE' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminController.php
-
-		-
-			message: "#^Cannot access offset 'KEEP_ALIVE_YEARS…' on array\\|object\\|null\\.$#"
-			count: 2
-			path: app/Http/Controllers/AdminController.php
-
-		-
-			message: "#^Cannot access offset 'MAX_ALIVE_AGE' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminController.php
-
-		-
-			message: "#^Cannot access offset 'REQUIRE…' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminController.php
-
-		-
-			message: "#^Cannot access offset 'SHOW_DEAD_PEOPLE' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminController.php
-
-		-
-			message: "#^Cannot access offset 'SHOW_LIVING_NAMES' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminController.php
-
-		-
-			message: "#^Cannot access offset 'SHOW_PRIVATE…' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminController.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminController\\:\\:privacyConstants\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -867,41 +667,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminSiteController\\:\\:themeOptions\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminSiteController.php
-
-		-
-			message: "#^Cannot access offset 'INDEX_DIRECTORY' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminSiteController.php
-
-		-
-			message: "#^Cannot access offset 'THEME_DIR' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminSiteController.php
-
-		-
-			message: "#^Cannot access offset 'ALLOW_CHANGE_GEDCOM' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminSiteController.php
-
-		-
-			message: "#^Cannot access offset 'TIMEZONE' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminSiteController.php
-
-		-
-			message: "#^Cannot access offset 'WELCOME_TEXT_AUTH…' on array\\|object\\|null\\.$#"
-			count: 2
-			path: app/Http/Controllers/AdminSiteController.php
-
-		-
-			message: "#^Cannot access offset 'USE_REGISTRATION…' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminSiteController.php
-
-		-
-			message: "#^Cannot access offset 'SHOW_REGISTER…' on array\\|object\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/AdminSiteController.php
 
@@ -933,16 +698,6 @@ parameters:
 		-
 			message: "#^Parameter \\#4 \\$xref2 of method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminTreesController\\:\\:checkReverseLink\\(\\) expects string, int\\|string given\\.$#"
 			count: 5
-			path: app/Http/Controllers/AdminTreesController.php
-
-		-
-			message: "#^Cannot access offset 'source' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminTreesController.php
-
-		-
-			message: "#^Cannot access offset 'GEDCOM_MEDIA_PATH' on array\\|object\\|null\\.$#"
-			count: 1
 			path: app/Http/Controllers/AdminTreesController.php
 
 		-
@@ -1021,41 +776,6 @@ parameters:
 			path: app/Http/Controllers/BranchesController.php
 
 		-
-			message: "#^Cannot access offset 'cal' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/CalendarController.php
-
-		-
-			message: "#^Cannot access offset 'day' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/CalendarController.php
-
-		-
-			message: "#^Cannot access offset 'filterev' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/CalendarController.php
-
-		-
-			message: "#^Cannot access offset 'filterof' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/CalendarController.php
-
-		-
-			message: "#^Cannot access offset 'filtersx' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/CalendarController.php
-
-		-
-			message: "#^Cannot access offset 'month' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/CalendarController.php
-
-		-
-			message: "#^Cannot access offset 'year' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/CalendarController.php
-
-		-
 			message: "#^Parameter \\#1 \\$list of method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\CalendarController\\:\\:calendarListText\\(\\) expects array\\<Fisharebest\\\\Webtrees\\\\Fact\\>, array\\<int\\|string, string\\> given\\.$#"
 			count: 2
 			path: app/Http/Controllers/CalendarController.php
@@ -1081,112 +801,7 @@ parameters:
 			path: app/Http/Controllers/CalendarController.php
 
 		-
-			message: "#^Cannot access offset 'PEDI' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditFamilyController.php
-
-		-
-			message: "#^Cannot access offset 'xref' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditFamilyController.php
-
-		-
-			message: "#^Cannot access offset 'glevels' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditGedcomRecordController.php
-
-		-
-			message: "#^Cannot access offset 'tag' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditGedcomRecordController.php
-
-		-
-			message: "#^Cannot access offset 'text' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditGedcomRecordController.php
-
-		-
-			message: "#^Cannot access offset 'islink' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditGedcomRecordController.php
-
-		-
-			message: "#^Cannot access offset 'PEDI' on array\\|object\\|null\\.$#"
-			count: 2
-			path: app/Http/Controllers/EditIndividualController.php
-
-		-
-			message: "#^Cannot access offset 'SEX' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditIndividualController.php
-
-		-
-			message: "#^Cannot access offset 'famid' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditIndividualController.php
-
-		-
-			message: "#^Cannot access offset 'spid' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditIndividualController.php
-
-		-
-			message: "#^Cannot access offset 'title' on array\\|object\\|null\\.$#"
-			count: 4
-			path: app/Http/Controllers/EditMediaController.php
-
-		-
-			message: "#^Cannot access offset 'type' on array\\|object\\|null\\.$#"
-			count: 4
-			path: app/Http/Controllers/EditMediaController.php
-
-		-
-			message: "#^Cannot access offset 'folder' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditMediaController.php
-
-		-
-			message: "#^Cannot access offset 'new_file' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditMediaController.php
-
-		-
-			message: "#^Cannot access offset 'remote' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditMediaController.php
-
-		-
-			message: "#^Cannot access offset 'file' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditMediaController.php
-
-		-
-			message: "#^Cannot access offset 'note' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditMediaController.php
-
-		-
-			message: "#^Cannot access offset 'media\\-note' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditMediaController.php
-
-		-
-			message: "#^Cannot access offset 'privacy\\-restriction' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditMediaController.php
-
-		-
-			message: "#^Cannot access offset 'edit\\-restriction' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditMediaController.php
-
-		-
 			message: "#^Binary operation \"\\.\" between '\n1 NOTE ' and array\\|string\\|null results in an error\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditMediaController.php
-
-		-
-			message: "#^Cannot access offset 'link' on array\\|object\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/EditMediaController.php
 
@@ -1199,11 +814,6 @@ parameters:
 			message: "#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/EditMediaController.php
-
-		-
-			message: "#^Cannot access offset 'NOTE' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditNoteController.php
 
 		-
 			message: "#^Binary operation \"\\.\" between string and array\\|string\\|null results in an error\\.$#"
@@ -1416,119 +1026,9 @@ parameters:
 			path: app/Http/Middleware/WrapHandler.php
 
 		-
-			message: "#^Cannot access offset 'contact\\-method' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AccountUpdate.php
-
-		-
-			message: "#^Cannot access offset 'email' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AccountUpdate.php
-
-		-
-			message: "#^Cannot access offset 'language' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AccountUpdate.php
-
-		-
-			message: "#^Cannot access offset 'real_name' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AccountUpdate.php
-
-		-
-			message: "#^Cannot access offset 'password' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AccountUpdate.php
-
-		-
-			message: "#^Cannot access offset 'timezone' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AccountUpdate.php
-
-		-
-			message: "#^Cannot access offset 'user_name' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AccountUpdate.php
-
-		-
-			message: "#^Cannot access offset 'default\\-xref' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AccountUpdate.php
-
-		-
-			message: "#^Cannot access offset 'body' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/BroadcastAction.php
-
-		-
-			message: "#^Cannot access offset 'subject' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/BroadcastAction.php
-
-		-
-			message: "#^Cannot access offset 'to' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/BroadcastAction.php
-
-		-
-			message: "#^Cannot access offset 'body' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ContactAction.php
-
-		-
-			message: "#^Cannot access offset 'from_email' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ContactAction.php
-
-		-
-			message: "#^Cannot access offset 'from_name' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ContactAction.php
-
-		-
-			message: "#^Cannot access offset 'subject' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ContactAction.php
-
-		-
-			message: "#^Cannot access offset 'to' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ContactAction.php
-
-		-
-			message: "#^Cannot access offset 'url' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ContactAction.php
-
-		-
 			message: "#^Cannot call method realName\\(\\) on Fisharebest\\\\Webtrees\\\\User\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ContactPage.php
-
-		-
-			message: "#^Cannot access offset 'media\\-note' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateMediaObjectAction.php
-
-		-
-			message: "#^Cannot access offset 'title' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateMediaObjectAction.php
-
-		-
-			message: "#^Cannot access offset 'type' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateMediaObjectAction.php
-
-		-
-			message: "#^Cannot access offset 'privacy\\-restriction' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateMediaObjectAction.php
-
-		-
-			message: "#^Cannot access offset 'edit\\-restriction' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateMediaObjectAction.php
 
 		-
 			message: "#^Binary operation \"\\.\" between '\n1 NOTE ' and array\\|string\\|null results in an error\\.$#"
@@ -1536,129 +1036,9 @@ parameters:
 			path: app/Http/RequestHandlers/CreateMediaObjectAction.php
 
 		-
-			message: "#^Cannot access offset 'note' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateNoteAction.php
-
-		-
-			message: "#^Cannot access offset 'privacy\\-restriction' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateNoteAction.php
-
-		-
-			message: "#^Cannot access offset 'edit\\-restriction' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateNoteAction.php
-
-		-
-			message: "#^Cannot access offset 'repository\\-name' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateRepositoryAction.php
-
-		-
-			message: "#^Cannot access offset 'privacy\\-restriction' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateRepositoryAction.php
-
-		-
-			message: "#^Cannot access offset 'edit\\-restriction' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateRepositoryAction.php
-
-		-
-			message: "#^Cannot access offset 'repository\\-name' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateRepositoryModal.php
-
-		-
-			message: "#^Cannot access offset 'privacy\\-restriction' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateRepositoryModal.php
-
-		-
-			message: "#^Cannot access offset 'edit\\-restriction' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateRepositoryModal.php
-
-		-
-			message: "#^Cannot access offset 'source\\-title' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSourceAction.php
-
-		-
-			message: "#^Cannot access offset 'source\\-abbreviation' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSourceAction.php
-
-		-
-			message: "#^Cannot access offset 'source\\-author' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSourceAction.php
-
-		-
-			message: "#^Cannot access offset 'source\\-publication' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSourceAction.php
-
-		-
-			message: "#^Cannot access offset 'source\\-repository' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSourceAction.php
-
-		-
-			message: "#^Cannot access offset 'source\\-call\\-number' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSourceAction.php
-
-		-
-			message: "#^Cannot access offset 'source\\-text' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSourceAction.php
-
-		-
-			message: "#^Cannot access offset 'privacy\\-restriction' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSourceAction.php
-
-		-
-			message: "#^Cannot access offset 'edit\\-restriction' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSourceAction.php
-
-		-
-			message: "#^Cannot access offset 'submitter_name' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSubmitterAction.php
-
-		-
-			message: "#^Cannot access offset 'submitter_address' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSubmitterAction.php
-
-		-
-			message: "#^Cannot access offset 'privacy\\-restriction' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSubmitterAction.php
-
-		-
-			message: "#^Cannot access offset 'edit\\-restriction' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSubmitterAction.php
-
-		-
 			message: "#^Binary operation \"\\.\" between '\n1 ADDR ' and array\\|string results in an error\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/CreateSubmitterAction.php
-
-		-
-			message: "#^Cannot access offset 'name' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateTreeAction.php
-
-		-
-			message: "#^Cannot access offset 'title' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateTreeAction.php
 
 		-
 			message: "#^Cannot access offset 'type' on array\\|false\\.$#"
@@ -1701,79 +1081,9 @@ parameters:
 			path: app/Http/RequestHandlers/DeleteRecord.php
 
 		-
-			message: "#^Cannot access offset 'gedcom' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/EditRawFactAction.php
-
-		-
 			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/EditRawRecordAction.php
-
-		-
-			message: "#^Cannot access offset 'SMTP_ACTIVE' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/EmailPreferencesAction.php
-
-		-
-			message: "#^Cannot access offset 'SMTP_FROM_NAME' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/EmailPreferencesAction.php
-
-		-
-			message: "#^Cannot access offset 'SMTP_HOST' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/EmailPreferencesAction.php
-
-		-
-			message: "#^Cannot access offset 'SMTP_PORT' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/EmailPreferencesAction.php
-
-		-
-			message: "#^Cannot access offset 'SMTP_AUTH' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/EmailPreferencesAction.php
-
-		-
-			message: "#^Cannot access offset 'SMTP_AUTH_USER' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/EmailPreferencesAction.php
-
-		-
-			message: "#^Cannot access offset 'SMTP_SSL' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/EmailPreferencesAction.php
-
-		-
-			message: "#^Cannot access offset 'SMTP_HELO' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/EmailPreferencesAction.php
-
-		-
-			message: "#^Cannot access offset 'DKIM_DOMAIN' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/EmailPreferencesAction.php
-
-		-
-			message: "#^Cannot access offset 'DKIM_SELECTOR' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/EmailPreferencesAction.php
-
-		-
-			message: "#^Cannot access offset 'DKIM_KEY' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/EmailPreferencesAction.php
-
-		-
-			message: "#^Cannot access offset 'SMTP_AUTH_PASS' on array\\|object\\|null\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/EmailPreferencesAction.php
-
-		-
-			message: "#^Cannot access offset 'privatize_export' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ExportGedcomClient.php
 
 		-
 			message: "#^Parameter \\#2 \\$stream of static method Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsExport\\:\\:exportGedcom\\(\\) expects resource, resource\\|false given\\.$#"
@@ -1841,21 +1151,6 @@ parameters:
 			path: app/Http/RequestHandlers/IndividualPage.php
 
 		-
-			message: "#^Cannot access offset 'username' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/LoginAction.php
-
-		-
-			message: "#^Cannot access offset 'password' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/LoginAction.php
-
-		-
-			message: "#^Cannot access offset 'url' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/LoginAction.php
-
-		-
 			message: "#^Strict comparison using \\!\\=\\= between 'UNKNOWN' and 'UNKNOWN' will always evaluate to false\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MergeFactsAction.php
@@ -1876,39 +1171,9 @@ parameters:
 			path: app/Http/RequestHandlers/MergeRecordsAction.php
 
 		-
-			message: "#^Cannot access offset 'body' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MessageAction.php
-
-		-
-			message: "#^Cannot access offset 'subject' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MessageAction.php
-
-		-
-			message: "#^Cannot access offset 'to' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MessageAction.php
-
-		-
-			message: "#^Cannot access offset 'url' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MessageAction.php
-
-		-
 			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\) given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ModuleAction.php
-
-		-
-			message: "#^Cannot access offset 'fact_id' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/PasteFact.php
-
-		-
-			message: "#^Cannot access offset 'tree' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/PendingChangesLogAction.php
 
 		-
 			message: "#^Cannot call method local\\(\\) on Fisharebest\\\\Webtrees\\\\Carbon\\|null\\.$#"
@@ -1929,31 +1194,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/PhpInformation.php
-
-		-
-			message: "#^Cannot access offset 'order' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ReorderChildrenAction.php
-
-		-
-			message: "#^Cannot access offset 'order' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ReorderFamiliesAction.php
-
-		-
-			message: "#^Cannot access offset 'order' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ReorderMediaAction.php
-
-		-
-			message: "#^Cannot access offset 'order' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ReorderNamesAction.php
-
-		-
-			message: "#^Parameter \\#2 \\$parameters of function route expects array, array\\|object given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ReportSetupAction.php
 
 		-
 			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|null given\\.$#"
@@ -1989,16 +1229,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\Select2Place\\:\\:search\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<array\\<string, string\\>\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Place\\>\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/Select2Place.php
-
-		-
-			message: "#^Cannot access offset 'fact' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/SelectNewFact.php
-
-		-
-			message: "#^Cannot access offset 'tree' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/SiteLogsAction.php
 
 		-
 			message: "#^Cannot call method local\\(\\) on Fisharebest\\\\Webtrees\\\\Carbon\\|null\\.$#"
@@ -2106,21 +1336,6 @@ parameters:
 			path: app/MediaFile.php
 
 		-
-			message: "#^Cannot access offset 'xref' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/AncestorsChartModule.php
-
-		-
-			message: "#^Cannot access offset 'style' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/AncestorsChartModule.php
-
-		-
-			message: "#^Cannot access offset 'generations' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/AncestorsChartModule.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdate\\\\BatchUpdateBasePlugin\\:\\:createEditLinks\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
 			path: app/Module/BatchUpdate/BatchUpdateBasePlugin.php
@@ -2206,31 +1421,6 @@ parameters:
 			path: app/Module/BatchUpdateModule.php
 
 		-
-			message: "#^Cannot access offset 'tree' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/BatchUpdateModule.php
-
-		-
-			message: "#^Parameter \\#2 \\$parameters of function route expects array, array\\|object given\\.$#"
-			count: 1
-			path: app/Module/BatchUpdateModule.php
-
-		-
-			message: "#^Cannot access offset 'census' on array\\|object\\|null\\.$#"
-			count: 2
-			path: app/Module/CensusAssistantModule.php
-
-		-
-			message: "#^Cannot access offset 'xref' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/CensusAssistantModule.php
-
-		-
-			message: "#^Cannot access offset 'head' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/CensusAssistantModule.php
-
-		-
 			message: "#^Cannot call method updateFact\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
 			count: 1
 			path: app/Module/CensusAssistantModule.php
@@ -2241,89 +1431,14 @@ parameters:
 			path: app/Module/CensusAssistantModule.php
 
 		-
-			message: "#^Cannot access offset 'privatize_export' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/ClippingsCartModule.php
-
-		-
 			message: "#^Parameter \\#1 \\$xref of static method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:getInstance\\(\\) expects string, int\\|string given\\.$#"
 			count: 1
-			path: app/Module/ClippingsCartModule.php
-
-		-
-			message: "#^Cannot access offset 'option' on array\\|object\\|null\\.$#"
-			count: 3
 			path: app/Module/ClippingsCartModule.php
 
 		-
 			message: "#^Ternary operator condition is always false\\.$#"
 			count: 1
 			path: app/Module/ClippingsCartModule.php
-
-		-
-			message: "#^Cannot access offset 'xref' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/CompactTreeChartModule.php
-
-		-
-			message: "#^Cannot access offset 'body' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/CustomCssJsModule.php
-
-		-
-			message: "#^Cannot access offset 'head' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/CustomCssJsModule.php
-
-		-
-			message: "#^Cannot access offset 'xref' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/DescendancyChartModule.php
-
-		-
-			message: "#^Cannot access offset 'style' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/DescendancyChartModule.php
-
-		-
-			message: "#^Cannot access offset 'generations' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/DescendancyChartModule.php
-
-		-
-			message: "#^Cannot access offset 'xref' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FamilyBookChartModule.php
-
-		-
-			message: "#^Cannot access offset 'book_size' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FamilyBookChartModule.php
-
-		-
-			message: "#^Cannot access offset 'generations' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FamilyBookChartModule.php
-
-		-
-			message: "#^Cannot access offset 'note' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FamilyTreeFavoritesModule.php
-
-		-
-			message: "#^Cannot access offset 'title' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FamilyTreeFavoritesModule.php
-
-		-
-			message: "#^Cannot access offset 'url' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FamilyTreeFavoritesModule.php
-
-		-
-			message: "#^Cannot access offset 'type' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FamilyTreeFavoritesModule.php
 
 		-
 			message: "#^Cannot access property \\$body on object\\|null\\.$#"
@@ -2334,41 +1449,6 @@ parameters:
 			message: "#^Cannot access property \\$subject on object\\|null\\.$#"
 			count: 1
 			path: app/Module/FamilyTreeNewsModule.php
-
-		-
-			message: "#^Cannot access offset 'subject' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FamilyTreeNewsModule.php
-
-		-
-			message: "#^Cannot access offset 'body' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FamilyTreeNewsModule.php
-
-		-
-			message: "#^Cannot access offset 'number_of_surnames' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FamilyTreeStatisticsModule.php
-
-		-
-			message: "#^Cannot access offset 'xref' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FanChartModule.php
-
-		-
-			message: "#^Cannot access offset 'style' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FanChartModule.php
-
-		-
-			message: "#^Cannot access offset 'generations' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FanChartModule.php
-
-		-
-			message: "#^Cannot access offset 'width' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FanChartModule.php
 
 		-
 			message: "#^Parameter \\#1 \\$im of function imagecolorallocate expects resource, resource\\|false given\\.$#"
@@ -2436,51 +1516,6 @@ parameters:
 			path: app/Module/FrequentlyAskedQuestionsModule.php
 
 		-
-			message: "#^Cannot access offset 'body' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FrequentlyAskedQuestionsModule.php
-
-		-
-			message: "#^Cannot access offset 'header' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FrequentlyAskedQuestionsModule.php
-
-		-
-			message: "#^Cannot access offset 'gedcom_id' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FrequentlyAskedQuestionsModule.php
-
-		-
-			message: "#^Cannot access offset 'block_order' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/FrequentlyAskedQuestionsModule.php
-
-		-
-			message: "#^Cannot access offset 'xref' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/HourglassChartModule.php
-
-		-
-			message: "#^Cannot access offset 'generations' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/HourglassChartModule.php
-
-		-
-			message: "#^Cannot access offset 'title' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/HtmlBlockModule.php
-
-		-
-			message: "#^Cannot access offset 'html' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/HtmlBlockModule.php
-
-		-
-			message: "#^Cannot access offset 'show_timestamp' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/HtmlBlockModule.php
-
-		-
 			message: "#^Variable \\$associates in PHPDoc tag @var does not match assigned variable \\$asso1\\.$#"
 			count: 1
 			path: app/Module/IndividualFactsTabModule.php
@@ -2536,31 +1571,6 @@ parameters:
 			path: app/Module/MediaTabModule.php
 
 		-
-			message: "#^Cannot access offset \\(int\\|string\\) on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/BingWebmasterToolsModule.php
-
-		-
-			message: "#^Cannot access offset \\(int\\|string\\) on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/GoogleAnalyticsModule.php
-
-		-
-			message: "#^Cannot access offset \\(int\\|string\\) on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/GoogleWebmasterToolsModule.php
-
-		-
-			message: "#^Cannot access offset \\(int\\|string\\) on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/MatomoAnalyticsModule.php
-
-		-
-			message: "#^Cannot access offset \\(int\\|string\\) on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/StatcounterModule.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Module/ModuleBlockInterface.php
@@ -2571,41 +1581,6 @@ parameters:
 			path: app/Module/RecentChangesModule.php
 
 		-
-			message: "#^Cannot access offset 'days' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/RecentChangesModule.php
-
-		-
-			message: "#^Cannot access offset 'infoStyle' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/RecentChangesModule.php
-
-		-
-			message: "#^Cannot access offset 'sortStyle' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/RecentChangesModule.php
-
-		-
-			message: "#^Cannot access offset 'show_user' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/RecentChangesModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-theme.disable/module.php
-
-		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 1
-			path: modules_v4/example-theme.disable/module.php
-
-		-
-			message: "#^Method class@anonymous/modules_v4/example\\-theme\\.disable/module\\.php\\:17\\:\\:stylesheets\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: modules_v4/example-theme.disable/module.php
-
-		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
 			path: modules_v4/example-footer.disable/module.php
@@ -2614,6 +1589,16 @@ parameters:
 			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
 			count: 1
 			path: modules_v4/example-footer.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example-report.disable/module.php
+
+		-
+			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
+			count: 1
+			path: modules_v4/example-report.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -2638,16 +1623,6 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-report.disable/module.php
-
-		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 1
-			path: modules_v4/example-report.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
 			path: modules_v4/example-middleware.disable/module.php
 
 		-
@@ -2663,27 +1638,27 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
+			path: modules_v4/example-theme.disable/module.php
+
+		-
+			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
+			count: 1
+			path: modules_v4/example-theme.disable/module.php
+
+		-
+			message: "#^Method class@anonymous/modules_v4/example\\-theme\\.disable/module\\.php\\:17\\:\\:stylesheets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: modules_v4/example-theme.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
 			path: modules_v4/example-server-configuration.disable/ExampleServerConfigurationModule.php
 
 		-
 			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
 			count: 1
 			path: modules_v4/example-server-configuration.disable/ExampleServerConfigurationModule.php
-
-		-
-			message: "#^Cannot access offset 'xref' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/StoriesModule.php
-
-		-
-			message: "#^Cannot access offset 'story_body' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/StoriesModule.php
-
-		-
-			message: "#^Cannot access offset 'story_title' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/StoriesModule.php
 
 		-
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
@@ -2816,47 +1791,7 @@ parameters:
 			path: app/Module/NotesTabModule.php
 
 		-
-			message: "#^Cannot access offset 'filter' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/OnThisDayModule.php
-
-		-
-			message: "#^Cannot access offset 'infoStyle' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/OnThisDayModule.php
-
-		-
-			message: "#^Cannot access offset 'sortStyle' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/OnThisDayModule.php
-
-		-
-			message: "#^Cannot access offset 'xref' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/PedigreeChartModule.php
-
-		-
-			message: "#^Cannot access offset 'style' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/PedigreeChartModule.php
-
-		-
-			message: "#^Cannot access offset 'generations' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/PedigreeChartModule.php
-
-		-
 			message: "#^Parameter \\#1 \\$individual of method Fisharebest\\\\Webtrees\\\\Module\\\\PedigreeMapModule\\:\\:summaryData\\(\\) expects Fisharebest\\\\Webtrees\\\\Individual, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
-			count: 1
-			path: app/Module/PedigreeMapModule.php
-
-		-
-			message: "#^Cannot access offset 'xref' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/PedigreeMapModule.php
-
-		-
-			message: "#^Cannot access offset 'generations' on array\\|object\\|null\\.$#"
 			count: 1
 			path: app/Module/PedigreeMapModule.php
 
@@ -2879,26 +1814,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\PrivacyPolicy\\:\\:analyticsModules\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleAnalyticsInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Module/PrivacyPolicy.php
-
-		-
-			message: "#^Cannot access offset 'ancestors' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/RelationshipsChartModule.php
-
-		-
-			message: "#^Cannot access offset 'recursion' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/RelationshipsChartModule.php
-
-		-
-			message: "#^Cannot access offset 'xref' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/RelationshipsChartModule.php
-
-		-
-			message: "#^Cannot access offset 'xref2' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/RelationshipsChartModule.php
 
 		-
 			message: "#^Binary operation \"\\-\" between int\\<3, max\\>\\|string and 2 results in an error\\.$#"
@@ -2931,21 +1846,6 @@ parameters:
 			path: app/Module/RelationshipsChartModule.php
 
 		-
-			message: "#^Cannot access offset 'show_other' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/ResearchTaskModule.php
-
-		-
-			message: "#^Cannot access offset 'show_unassigned' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/ResearchTaskModule.php
-
-		-
-			message: "#^Cannot access offset 'show_future' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/ResearchTaskModule.php
-
-		-
 			message: "#^Cannot call method canShow\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
 			count: 1
 			path: app/Module/ReviewChangesModule.php
@@ -2961,74 +1861,9 @@ parameters:
 			path: app/Module/ReviewChangesModule.php
 
 		-
-			message: "#^Cannot access offset 'days' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/ReviewChangesModule.php
-
-		-
-			message: "#^Cannot access offset 'sendmail' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/ReviewChangesModule.php
-
-		-
-			message: "#^Cannot access offset 'filter' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/SlideShowModule.php
-
-		-
-			message: "#^Cannot access offset 'controls' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/SlideShowModule.php
-
-		-
-			message: "#^Cannot access offset 'start' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/SlideShowModule.php
-
-		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Module\\\\SourcesTabModule\\:\\:\\$facts type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
 			count: 1
 			path: app/Module/SourcesTabModule.php
-
-		-
-			message: "#^Cannot access offset 'x\\-as' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: "#^Cannot access offset 'y\\-as' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: "#^Cannot access offset 'z\\-as' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: "#^Cannot access offset 'chart_shows' on array\\|object\\|null\\.$#"
-			count: 4
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: "#^Cannot access offset 'chart_type' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: "#^Cannot access offset 'SURN' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: "#^Cannot access offset 'z\\-axis\\-boundaries…' on array\\|object\\|null\\.$#"
-			count: 9
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: "#^Cannot access offset 'x\\-axis\\-boundaries…' on array\\|object\\|null\\.$#"
-			count: 3
-			path: app/Module/StatisticsChartModule.php
 
 		-
 			message: "#^Unreachable statement \\- code above always terminates\\.$#"
@@ -3066,74 +1901,9 @@ parameters:
 			path: app/Module/TimelineChartModule.php
 
 		-
-			message: "#^Cannot access offset 'num' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/TopGivenNamesModule.php
-
-		-
-			message: "#^Cannot access offset 'infoStyle' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/TopGivenNamesModule.php
-
-		-
-			message: "#^Cannot access offset 'num' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/TopPageViewsModule.php
-
-		-
-			message: "#^Cannot access offset 'num' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/TopSurnamesModule.php
-
-		-
-			message: "#^Cannot access offset 'infoStyle' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/TopSurnamesModule.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\TopSurnamesModule\\:\\:surnameCountSort\\(\\) should return int but returns float\\|int\\.$#"
 			count: 1
 			path: app/Module/TopSurnamesModule.php
-
-		-
-			message: "#^Cannot access offset 'days' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/UpcomingAnniversariesModule.php
-
-		-
-			message: "#^Cannot access offset 'filter' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/UpcomingAnniversariesModule.php
-
-		-
-			message: "#^Cannot access offset 'infoStyle' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/UpcomingAnniversariesModule.php
-
-		-
-			message: "#^Cannot access offset 'sortStyle' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/UpcomingAnniversariesModule.php
-
-		-
-			message: "#^Cannot access offset 'note' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/UserFavoritesModule.php
-
-		-
-			message: "#^Cannot access offset 'title' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/UserFavoritesModule.php
-
-		-
-			message: "#^Cannot access offset 'url' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/UserFavoritesModule.php
-
-		-
-			message: "#^Cannot access offset 'type' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/UserFavoritesModule.php
 
 		-
 			message: "#^Cannot access property \\$body on object\\|null\\.$#"
@@ -3142,16 +1912,6 @@ parameters:
 
 		-
 			message: "#^Cannot access property \\$subject on object\\|null\\.$#"
-			count: 1
-			path: app/Module/UserJournalModule.php
-
-		-
-			message: "#^Cannot access offset 'subject' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Module/UserJournalModule.php
-
-		-
-			message: "#^Cannot access offset 'body' on array\\|object\\|null\\.$#"
 			count: 1
 			path: app/Module/UserJournalModule.php
 
@@ -3692,36 +2452,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:unusedFiles\\(\\) should return array but returns array\\|false\\.$#"
-			count: 1
-			path: app/Services/MediaFileService.php
-
-		-
-			message: "#^Cannot access offset 'file_location' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Services/MediaFileService.php
-
-		-
-			message: "#^Cannot access offset 'remote' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Services/MediaFileService.php
-
-		-
-			message: "#^Cannot access offset 'unused' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Services/MediaFileService.php
-
-		-
-			message: "#^Cannot access offset 'folder' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Services/MediaFileService.php
-
-		-
-			message: "#^Cannot access offset 'auto' on array\\|object\\|null\\.$#"
-			count: 1
-			path: app/Services/MediaFileService.php
-
-		-
-			message: "#^Cannot access offset 'new_file' on array\\|object\\|null\\.$#"
 			count: 1
 			path: app/Services/MediaFileService.php
 

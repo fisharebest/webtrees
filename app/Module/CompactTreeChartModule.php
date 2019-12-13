@@ -168,9 +168,11 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            $params = (array) $request->getParsedBody();
+
             return redirect(route(self::ROUTE_NAME, [
                 'tree' => $tree->name(),
-                'xref' => $request->getParsedBody()['xref'],
+                'xref' => $params['xref'],
             ]));
         }
 

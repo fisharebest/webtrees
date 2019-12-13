@@ -303,10 +303,12 @@ class ModuleController extends AbstractAdminController
      */
     public function update(ServerRequestInterface $request): ResponseInterface
     {
+        $params = (array) $request->getParsedBody();
+
         $modules = $this->module_service->all(true);
 
         foreach ($modules as $module) {
-            $new_status = (bool) ($request->getParsedBody()['status-' . $module->name()] ?? false);
+            $new_status = (bool) ($params['status-' . $module->name()] ?? false);
             $old_status = $module->isEnabled();
 
             if ($new_status !== $old_status) {
@@ -541,7 +543,9 @@ class ModuleController extends AbstractAdminController
      */
     private function updateOrder(Collection $modules, string $column, ServerRequestInterface $request): void
     {
-        $order = (array) ($request->getParsedBody()['order'] ?? []);
+        $params = (array) $request->getParsedBody();
+
+        $order = (array) ($params['order'] ?? []);
         $order = array_flip($order);
 
         foreach ($modules as $module) {
@@ -563,8 +567,10 @@ class ModuleController extends AbstractAdminController
      */
     private function updateStatus(Collection $modules, ServerRequestInterface $request): void
     {
+        $params = (array) $request->getParsedBody();
+
         foreach ($modules as $module) {
-            $enabled = (bool) ($request->getParsedBody()['status-' . $module->name()] ?? false);
+            $enabled = (bool) ($params['status-' . $module->name()] ?? false);
 
             if ($enabled !== $module->isEnabled()) {
                 DB::table('module')
@@ -593,12 +599,14 @@ class ModuleController extends AbstractAdminController
      */
     private function updateAccessLevel(Collection $modules, string $interface, ServerRequestInterface $request): void
     {
+        $params = (array) $request->getParsedBody();
+
         $trees = $this->tree_service->all();
 
         foreach ($modules as $module) {
             foreach ($trees as $tree) {
                 $key          = 'access-' . $module->name() . '-' . $tree->id();
-                $access_level = (int) ($request->getParsedBody()[$key] ?? 0);
+                $access_level = (int) ($params[$key] ?? 0);
 
                 if ($access_level !== $module->accessLevel($tree, $interface)) {
                     DB::table('module_privacy')->updateOrInsert([
@@ -622,7 +630,9 @@ class ModuleController extends AbstractAdminController
      */
     public function deleteModuleSettings(ServerRequestInterface $request): ResponseInterface
     {
-        $module_name = $request->getParsedBody()['module_name'];
+        $params = (array) $request->getParsedBody();
+
+        $module_name = $params['module_name'];
 
         DB::table('block_setting')
             ->join('block', 'block_setting.block_id', '=', 'block.block_id')

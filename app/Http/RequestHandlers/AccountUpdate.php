@@ -62,7 +62,7 @@ class AccountUpdate implements RequestHandlerInterface
         $user = $request->getAttribute('user');
         assert($user instanceof User);
 
-        $params = $request->getParsedBody();
+        $params = (array) $request->getParsedBody();
 
         $contact_method = $params['contact-method'];
         $email          = $params['email'];
