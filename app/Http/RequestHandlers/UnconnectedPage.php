@@ -71,9 +71,9 @@ class UnconnectedPage implements RequestHandlerInterface
             ->leftJoin('link', function ($join) {
                 $join
                     ->on('i_file', '=', 'l_file')
-                    ->on(function($condition) {
+                    ->on(function ($condition) {
                         $condition
-                            ->on  ('i_id', '=', 'l_from')
+                            ->on('i_id', '=', 'l_from')
                             ->orOn('i_id', '=', 'l_to');
                     });
             })
