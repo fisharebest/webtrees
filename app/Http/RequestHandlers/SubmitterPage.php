@@ -60,9 +60,6 @@ class SubmitterPage implements RequestHandlerInterface
         'CHAN',
     ];
 
-    /** @var ClipboardService */
-    private $clipboard_service;
-
     /**
      * @param ServerRequestInterface $request
      *
