@@ -1626,11 +1626,6 @@ parameters:
 			path: app/Http/RequestHandlers/CreateSourceAction.php
 
 		-
-			message: "#^Binary operation \"\\.\" between '\n1 TEXT ' and array\\|string results in an error\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSourceAction.php
-
-		-
 			message: "#^Cannot access offset 'submitter_name' on array\\|object\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/CreateSubmitterAction.php
