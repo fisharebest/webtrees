@@ -68,10 +68,18 @@ class UnconnectedPage implements RequestHandlerInterface
 
         // select all individuals without any links
         $unlinked_individuals = DB::table('individuals')
+            ->leftJoin('link', function ($join) {
+                $join
+                    ->on('i_file', '=', 'l_file')
+                    ->on(function($condition) {
+                        $condition
+                            ->on  ('i_id', '=', 'l_from')
+                            ->orOn('i_id', '=', 'l_to');
+                    });
+            })
             ->where('i_file', '=', $tree->id())
-            ->whereNotIn('i_rin', DB::table('link')->pluck('l_from'))
-            ->whereNotIn('i_rin', DB::table('link')->pluck('l_to'))
-            ->select(['i_rin as l_from', 'i_rin as l_to']);
+            ->whereNull('l_file')
+            ->select(['i_id as l_from', 'i_id as l_to']);
 
         $rows = $linked_individuals->union($unlinked_individuals)->get();
 
