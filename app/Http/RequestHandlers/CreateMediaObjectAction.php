@@ -76,13 +76,10 @@ class CreateMediaObjectAction implements RequestHandlerInterface
         $type  = trim(preg_replace('/\s+/', ' ', $type));
         $title = trim(preg_replace('/\s+/', ' ', $title));
 
-        // Convert line endings to GEDDCOM continuations
-        $note = str_replace([
-            "\r\n",
-            "\r",
-            "\n",
-        ], "\n1 CONT ", $note);
-
+        // Convert line endings to GEDCOM continuations
+        $note = strtr($note, ["\r\n" => "\n"]);
+        $note = strtr($note, ["\n" => "\n2 CONT "]);
+        
         $file = $this->media_file_service->uploadFile($request);
 
         if ($file === '') {
