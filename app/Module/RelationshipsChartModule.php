@@ -49,7 +49,7 @@ use function view;
 /**
  * Class RelationshipsChartModule
  */
-class RelationshipsChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
+class RelationshipsChartModule extends AbstractModule implements ModuleChartInterface, ModuleConfigInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;
     use ModuleConfigTrait;
