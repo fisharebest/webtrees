@@ -47,8 +47,8 @@ mix
     .options({
             processCssUrls: false,
             postCss: [
-                postcss_rtl,
                 postcss_import,
+                postcss_rtl,
                 postcss_autoprefixer,
                 postcss_image_inliner,
                 postcss_custom_properties,
