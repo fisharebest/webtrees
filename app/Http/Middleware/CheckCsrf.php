@@ -21,6 +21,9 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
+use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Session;
 use Psr\Http\Message\ResponseInterface;
@@ -36,8 +39,9 @@ use function in_array;
 class CheckCsrf implements MiddlewareInterface
 {
     private const EXCLUDE_ROUTES = [
-        'language',
-        'theme',
+        Logout::class,
+        SelectLanguage::class,
+        SelectTheme::class,
     ];
 
     /**

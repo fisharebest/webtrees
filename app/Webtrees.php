@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use ErrorException;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
-use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\ClientIp;
 use Fisharebest\Webtrees\Http\Middleware\DoHousekeeping;
@@ -116,7 +115,6 @@ class Webtrees
         CheckForMaintenanceMode::class,
         UseTheme::class,
         DoHousekeeping::class,
-        CheckCsrf::class,
         UseTransaction::class,
         LoadRoutes::class,
         BootModules::class,
