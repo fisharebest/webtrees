@@ -1544,6 +1544,10 @@ a > .wt-icon-arrow-up:hover {
     content: url(icons/repository.png);
 }
 
+.wt-icon-sex {
+    height: 1em;
+}
+
 .wt-icon-sex-f {
     content: url(icons/sex-female.png);
 }
