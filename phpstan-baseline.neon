@@ -2187,11 +2187,6 @@ parameters:
 
 		-
 			message: "#^Cannot call method privatizeGedcom\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
-			count: 3
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Cannot call method xref\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
 
