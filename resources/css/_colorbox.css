@@ -45,10 +45,15 @@
  *           +----#cboxBottomRight
  */
 
-#cboxOverlay,
+#cboxOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
 #cboxLoadingOverlay,
 #cboxLoadingGraphic {
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: 100%;
 }
