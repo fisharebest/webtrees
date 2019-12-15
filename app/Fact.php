@@ -25,7 +25,20 @@ use Fisharebest\Webtrees\Services\GedcomService;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
 
+use function array_flip;
+use function array_key_exists;
+use function count;
+use function e;
+use function implode;
+use function in_array;
+use function preg_match;
+use function preg_match_all;
+use function preg_replace;
 use function strpos;
+use function trim;
+use function usort;
+
+use const PREG_SET_ORDER;
 
 /**
  * A GEDCOM fact or event object.
@@ -747,6 +760,25 @@ class Fact
         }
 
         return new Collection($sorted);
+    }
+
+    /**
+     * Sort fact/event tags using the same order that we use for facts.
+     *
+     * @param Collection<string> $unsorted
+     *
+     * @return Collection<string>
+     */
+    public static function sortFactTags(Collection $unsorted): Collection
+    {
+        $tag_order = array_flip(self::FACT_ORDER);
+
+        return $unsorted->sort(static function (string $x, string $y) use ($tag_order): int {
+            $sort_x = $tag_order[$x] ?? $tag_order['_????_'];
+            $sort_y = $tag_order[$y] ?? $tag_order['_????_'];
+
+            return $sort_x - $sort_y;
+        });
     }
 
     /**
