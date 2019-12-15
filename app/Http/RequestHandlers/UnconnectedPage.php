@@ -66,7 +66,13 @@ class UnconnectedPage implements RequestHandlerInterface
             ->select(['l_from', 'l_to'])
             ->get();
 
-        $graph = [];
+        $graph = DB::table('individuals')
+            ->where('i_file', '=', $tree->id())
+            ->pluck('i_id')
+            ->mapWithKeys(static function (string $xref): array {
+                return [$xref => []];
+            })
+            ->all();
 
         foreach ($rows as $row) {
             $graph[$row->l_from][$row->l_to] = 1;
