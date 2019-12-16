@@ -56,9 +56,26 @@ use Psr\Http\Message\ServerRequestInterface;
 use Ramsey\Uuid\Uuid;
 
 use function app;
+use function array_key_exists;
+use function array_merge;
+use function array_slice;
+use function count;
+use function date;
+use function e;
 use function explode;
+use function implode;
 use function in_array;
+use function preg_match;
+use function preg_match_all;
+use function preg_replace;
+use function route;
+use function str_replace;
+use function strpos;
+use function strstr;
+use function strtolower;
+use function strtoupper;
 use function substr;
+use function trim;
 use function view;
 
 /**
@@ -741,7 +758,7 @@ class FunctionsEdit
                 'LONG',
             ],
         ];
-        
+
         if ($record::RECORD_TYPE !== 'SOUR') {
             //source citations within other records, i.e. n SOUR / +1 DATA / +2 TEXT
             $expected_subtags['DATA'][] = 'TEXT';
@@ -752,10 +769,10 @@ class FunctionsEdit
             $expected_subtags['EVEN'][] = 'DATE';
             $expected_subtags['EVEN'][] = 'PLAC';
         }
-        
+
         if ($record->tree()->getPreference('FULL_SOURCES')) {
             $expected_subtags['SOUR'][] = 'QUAY';
-            
+
             if ($record::RECORD_TYPE !== 'SOUR') {
                 //source citations within other records, i.e. n SOUR / +1 DATA / +2 DATE
                 $expected_subtags['DATA'][] = 'DATE';

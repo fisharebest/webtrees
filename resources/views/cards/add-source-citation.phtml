@@ -1,16 +1,18 @@
 <?php
 
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Illuminate\Support\Collection;
 
 ?>
-<?php use Fisharebest\Webtrees\GedcomTag; ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="card mb-4">
     <div class="card-header">
         <a href="#" data-toggle="collapse" data-target="#add-source-citation" aria-expanded="false" aria-controls="add-source-citation">
-            <?= I18N::translate('Add a source citation') ?>
+            <?= I18N::translate('Source') ?>
         </a>
     </div>
 
@@ -27,26 +29,11 @@ use Fisharebest\Webtrees\Gedcom;
                             <?= I18N::translate('Individual') ?>
                         </label>
                         <?php if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $quick_required_facts, $matches)) : ?>
-                            <?php foreach ($matches[1] as $match) : ?>
-                                <?php if (!in_array($match, Gedcom::DEATH_EVENTS, true)) : ?>
-                                    <label>
-                                        <input type="checkbox" name="SOUR_<?= $match ?>" <?= $prefer_level2_sources === '1' ? 'checked' : '' ?> value="1">
-                                        <?= GedcomTag::getLabel($match) ?>
-                                    </label>
-                                <?php endif ?>
-                            <?php endforeach ?>
-                        <?php endif ?>
-                    <?php endif ?>
-
-                    <?php if (strpos($bdm, 'D') !== false) : ?>
-                        <?php if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $quick_required_facts, $matches)) : ?>
-                            <?php foreach ($matches[1] as $match) : ?>
-                                <?php if (in_array($match, Gedcom::DEATH_EVENTS, true)) : ?>
-                                    <label>
-                                        <input type="checkbox" name="SOUR_<?= $match ?>" <?= $prefer_level2_sources === '1' ? 'checked' : '' ?> value="1">
-                                        <?= GedcomTag::getLabel($match) ?>
-                                    </label>
-                                <?php endif ?>
+                            <?php foreach (Fact::sortFactTags(new Collection($matches[1])) as $match) : ?>
+                                <label>
+                                    <input type="checkbox" name="SOUR_<?= $match ?>" <?= $prefer_level2_sources === '1' ? 'checked' : '' ?> value="1">
+                                    <?= GedcomTag::getLabel($match) ?>
+                                </label>
                             <?php endforeach ?>
                         <?php endif ?>
                     <?php endif ?>
@@ -57,7 +44,7 @@ use Fisharebest\Webtrees\Gedcom;
                             <?= I18N::translate('Family') ?>
                         </label>
                         <?php if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $quick_required_famfacts, $matches)) : ?>
-                            <?php foreach ($matches[1] as $match) : ?>
+                            <?php foreach (Fact::sortFactTags(new Collection($matches[1])) as $match) : ?>
                                 <label>
                                     <input type="checkbox" name="SOUR_<?= $match ?>" <?= $prefer_level2_sources === '1' ? 'checked' : '' ?> value="1">
                                     <?= GedcomTag::getLabel($match) ?>

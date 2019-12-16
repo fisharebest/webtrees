@@ -230,7 +230,6 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 
     // If we are adding a new individual, add the basic details
     if ($next_action !== 'add-name-action' && $next_action !== 'edit-name-action') {
-        echo '</table><br><table class="table wt-facts-table">';
         // 1 SEX
         if ($famtag === 'HUSB' || $gender === 'M') {
             echo FunctionsEdit::addSimpleTag($tree, '0 SEX M');
@@ -252,11 +251,13 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
         }
 
         foreach (Fact::sortFactTags($tags) as $tag) {
-            FunctionsEdit::addSimpleTags($tree, $tag);
+            echo view('cards/add-fact', [
+                'tag' => $tag,
+                'tree'  => $tree,
+            ]);
         }
     }
 
-    echo '</table>';
     if ($next_action === 'edit-name-action' || $next_action === 'add-name-action') {
         // GEDCOM 5.5.1 spec says NAME doesn’t get a OBJE
         echo view('cards/add-source-citation', [
