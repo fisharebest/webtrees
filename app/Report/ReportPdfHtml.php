@@ -47,7 +47,7 @@ class ReportPdfHtml extends ReportBaseHtml
                 $renderer->Footnotes();
             } elseif ($element === 'addpage') {
                 $renderer->newPage();
-            } elseif ($element instanceof ReportBaseHtml) {
+            } elseif ($element instanceof self) {
                 $element->render($renderer, true);
             } else {
                 $element->render($renderer);

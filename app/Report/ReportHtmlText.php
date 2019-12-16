@@ -33,12 +33,11 @@ class ReportHtmlText extends ReportBaseText
      * Render the elements.
      *
      * @param HtmlRenderer $renderer
-     * @param int          $curx
      * @param bool         $attrib Is is called from a different element?
      *
      * @return void
      */
-    public function render($renderer, $curx = 0, $attrib = true)
+    public function render($renderer, $attrib = true)
     {
         // Set up the style
         if ($renderer->getCurrentStyle() !== $this->styleName) {

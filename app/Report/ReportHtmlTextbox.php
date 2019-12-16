@@ -256,8 +256,10 @@ class ReportHtmlTextbox extends ReportBaseTextbox
 
         // Print the text elements
         foreach ($this->elements as $element) {
-            if ($element instanceof ReportBaseElement) {
-                $element->render($renderer, $cX, false);
+            if ($element instanceof ReportHtmlText) {
+                $element->render($renderer, false);
+            } elseif ($element instanceof ReportBaseElement) {
+                $element->render($renderer);
             } elseif ($element === 'footnotetexts') {
                 $renderer->footnotes();
             } elseif ($element === 'addpage') {
