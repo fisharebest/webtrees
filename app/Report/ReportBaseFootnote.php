@@ -74,24 +74,6 @@ class ReportBaseFootnote extends ReportBaseElement
     }
 
     /**
-     * Add text.
-     *
-     * @param $t
-     *
-     * @return int
-     */
-    public function addText($t)
-    {
-        $t = trim($t, "\r\n\t");
-        $t = str_replace(array("<br>", "&nbsp;"), array("\n", " "), $t);
-        $t = strip_tags($t);
-        $t = htmlspecialchars_decode($t);
-        $this->text .= $t;
-
-        return 0;
-    }
-
-    /**
      * Set the width to wrap text.
      *
      * @param $wrapwidth
