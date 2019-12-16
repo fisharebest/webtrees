@@ -16,11 +16,6 @@ parameters:
 			path: app/Census/AbstractCensusColumn.php
 
 		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
-			count: 1
-			path: app/Census/Census.php
-
-		-
 			message: "#^Cannot call method getAllNames\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
 			count: 1
 			path: app/Census/CensusColumnFullName.php
