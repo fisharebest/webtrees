@@ -10,11 +10,9 @@ use Illuminate\Support\Collection;
 ?>
 
 <div class="card mb-4">
-    <div class="card-header">
-        <a href="#" data-toggle="collapse" data-target="#add-source-citation" aria-expanded="false" aria-controls="add-source-citation">
-            <?= I18N::translate('Source') ?>
-        </a>
-    </div>
+    <a class="card-header" href="#" data-toggle="collapse" data-target="#add-source-citation" aria-expanded="false" aria-controls="add-source-citation">
+        <?= I18N::translate('Source') ?>
+    </a>
 
     <div class="card-body collapse" id="add-source-citation">
         <?= FunctionsEdit::addSimpleTag($tree, $level . ' SOUR') ?>
