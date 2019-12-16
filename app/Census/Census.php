@@ -81,7 +81,6 @@ class Census
                     new CensusOfUnitedStates(),
                     new CensusOfWales(),
                 ];
-                break;
 
             case 'da':
                 return [
