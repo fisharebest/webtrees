@@ -57,7 +57,7 @@ class Date
     /** @var AbstractCalendarDate|null Optional second date */
     private $date2 = null;
 
-    /** @var string ptional text, as included with an INTerpreted date */
+    /** @var string Optional text, as included with an INTerpreted date */
     private $text = '';
 
     /**
