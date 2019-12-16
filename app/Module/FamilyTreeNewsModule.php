@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
@@ -228,7 +229,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             ]);
         }
 
-        $url = route('tree-page', ['tree' => $tree->name()]);
+        $url = route(TreePage::class, ['tree' => $tree->name()]);
 
         return redirect($url);
     }
@@ -254,7 +255,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             ->where('gedcom_id', '=', $tree->id())
             ->delete();
 
-        $url = route('tree-page', ['tree' => $tree->name()]);
+        $url = route(TreePage::class, ['tree' => $tree->name()]);
 
         return redirect($url);
     }

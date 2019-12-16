@@ -8,6 +8,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\Http\RequestHandlers\PhpInformation;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePageDefaultEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserPageDefaultEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyListModule;
@@ -147,7 +149,7 @@ use Illuminate\Support\Collection;
             </li>
             <li>
                 <span class="fa-li"><?= view('icons/block') ?></span>
-                <a href="<?= e(route('tree-page-default-edit')) ?>">
+                <a href="<?= e(route(TreePageDefaultEdit::class)) ?>">
                     <?= I18N::translate('Set the default blocks for new family trees') ?>
                 </a>
             </li>
@@ -365,7 +367,7 @@ use Illuminate\Support\Collection;
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/block') ?></span>
-                        <a href="<?= e(route('user-page-default-edit')) ?>">
+                        <a href="<?= e(route(UserPageDefaultEdit::class)) ?>">
                             <?= I18N::translate('Set the default blocks for new users') ?>
                         </a>
                     </li>

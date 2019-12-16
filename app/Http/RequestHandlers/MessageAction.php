@@ -97,7 +97,7 @@ class MessageAction implements RequestHandlerInterface
         if ($this->message_service->deliverMessage($user, $to_user, $subject, $body, $url, $ip)) {
             FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->realName())), 'success');
 
-            $url = $url ?: route('tree-page', ['tree' => $tree->name()]);
+            $url = $url ?: route(TreePage::class, ['tree' => $tree->name()]);
 
             return redirect($url);
         }

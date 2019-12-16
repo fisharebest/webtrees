@@ -26,6 +26,8 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Http\Controllers\HomePageController;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessageSelect;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
@@ -106,9 +108,9 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             ->delete();
 
         if ($request->getQueryParams()['context'] === ModuleBlockInterface::CONTEXT_USER_PAGE) {
-            $url = route('user-page', ['tree' => $tree->name()]);
+            $url = route(UserPage::class, ['tree' => $tree->name()]);
         } else {
-            $url = route('tree-page', ['tree' => $tree->name()]);
+            $url = route(TreePage::class, ['tree' => $tree->name()]);
         }
 
         return redirect($url);
@@ -149,7 +151,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 
         $content = '';
         if ($users->isNotEmpty()) {
-            $url = route('user-page', ['tree' => $tree->name()]);
+            $url = route(UserPage::class, ['tree' => $tree->name()]);
 
             $content .= '<form method="post" action="' . e(route(MessageSelect::class, ['tree' => $tree->name()])) . '">';
             $content .= csrf_field();
@@ -211,7 +213,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                         'subject' => $message->subject,
                         'to'      => $user->userName(),
                         'tree'    => $tree->name(),
-                        'url'     => route('user-page', ['tree' => $tree->name()]),
+                        'url'     => route(UserPage::class, ['tree' => $tree->name()]),
                     ]);
 
                     $content .= '<a class="btn btn-primary" href="' . e($reply_url) . '" title="' . I18N::translate('Reply') . '">' . I18N::translate('Reply') . '</a> ';

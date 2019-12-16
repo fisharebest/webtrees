@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\I18N;
 
 ?>
@@ -41,7 +42,7 @@ use Fisharebest\Webtrees\I18N;
                     <?= I18N::translate('save') ?>
                 </button>
 
-                <a class="btn btn-secondary" href="<?= e(route('user-page', ['tree' => $tree->name()])) ?>">
+                <a class="btn btn-secondary" href="<?= e(route(UserPage::class, ['tree' => $tree->name()])) ?>">
                     <?= I18N::translate('cancel') ?>
                 </a>
             </td>

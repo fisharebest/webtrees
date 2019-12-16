@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -92,7 +93,7 @@ class TreesMenuModule extends AbstractModule implements ModuleMenuInterface
         $trees = $this->tree_service->all();
 
         if ($trees->count() === 1 || Site::getPreference('ALLOW_CHANGE_GEDCOM') !== '1') {
-            return new Menu(I18N::translate('Family tree'), route('tree-page', ['tree' => $tree->name()]), 'menu-tree');
+            return new Menu(I18N::translate('Family tree'), route(TreePage::class, ['tree' => $tree->name()]), 'menu-tree');
         }
 
         $submenus = [];
@@ -102,7 +103,7 @@ class TreesMenuModule extends AbstractModule implements ModuleMenuInterface
             } else {
                 $active = '';
             }
-            $submenus[] = new Menu(e($menu_tree->title()), route('tree-page', ['tree' => $menu_tree->name()]), $active . 'menu-tree-' . $menu_tree->id());
+            $submenus[] = new Menu(e($menu_tree->title()), route(TreePage::class, ['tree' => $menu_tree->name()]), $active . 'menu-tree-' . $menu_tree->id());
         }
 
         return new Menu(I18N::translate('Family trees'), '#', 'menu-tree', [], $submenus);

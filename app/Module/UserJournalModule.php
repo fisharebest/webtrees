@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
@@ -227,7 +228,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             ]);
         }
 
-        $url = route('user-page', ['tree' => $tree->name()]);
+        $url = route(UserPage::class, ['tree' => $tree->name()]);
 
         return redirect($url);
     }
@@ -249,7 +250,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             ->where('user_id', '=', Auth::id())
             ->delete();
 
-        $url = route('user-page', ['tree' => $tree->name()]);
+        $url = route(UserPage::class, ['tree' => $tree->name()]);
 
         return redirect($url);
     }

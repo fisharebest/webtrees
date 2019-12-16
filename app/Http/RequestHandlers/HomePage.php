@@ -67,11 +67,11 @@ class HomePage implements RequestHandlerInterface
             if ($tree->getPreference('imported') === '1') {
                 // Logged in?  Go to the user's page.
                 if ($user instanceof User) {
-                    return redirect(route('user-page', ['tree' => $tree->name()]));
+                    return redirect(route(UserPage::class, ['tree' => $tree->name()]));
                 }
 
                 // Not logged in?  Go to the tree's page.
-                return redirect(route('tree-page', ['tree' => $tree->name()]));
+                return redirect(route(TreePage::class, ['tree' => $tree->name()]));
             }
 
             if (Auth::isManager($tree, $user)) {

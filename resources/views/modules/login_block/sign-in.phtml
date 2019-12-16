@@ -3,6 +3,7 @@
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\PasswordRequestAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\RegisterPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
@@ -11,7 +12,7 @@ use Fisharebest\Webtrees\View;
 
 <form method="post" action="<?= route(LoginAction::class, ['tree' => $tree->name()]) ?>" name="login-form">
     <?= csrf_field() ?>
-    <input type="hidden" name="url" value="<?= e(route('user-page', ['tree' => $tree->name()])) ?>">
+    <input type="hidden" name="url" value="<?= e(route(UserPage::class, ['tree' => $tree->name()])) ?>">
 
     <div class="form-group">
         <label for="username">

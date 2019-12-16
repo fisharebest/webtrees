@@ -156,10 +156,26 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDownload;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SubmitterPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePageBlock;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePageBlockEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePageBlockUpdate;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePageDefaultEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePageDefaultUpdate;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePageEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePageUpdate;
 use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UpdatePlacesAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\UpdatePlacesPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserPageBlock;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserPageBlockEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserPageBlockUpdate;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserPageDefaultEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserPageDefaultUpdate;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserPageEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserPageUpdate;
 use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail;
@@ -267,15 +283,15 @@ class WebRoutes
                 $router->post('admin-site-preferences-update', '/admin-site-preferences', 'AdminSiteController::preferencesSave');
                 $router->get('admin-site-registration', '/admin-site-registration', 'AdminSiteController::registrationForm');
                 $router->post('admin-site-registration-update', '/admin-site-registration', 'AdminSiteController::registrationSave');
-                $router->get('tree-page-default-edit', '/trees/default-blocks', 'HomePageController::treePageDefaultEdit');
-                $router->post('tree-page-default-update', '/trees/default-blocks', 'HomePageController::treePageDefaultUpdate');
+                $router->get(TreePageDefaultEdit::class, '/trees/default-blocks', TreePageDefaultEdit::class);
+                $router->post(TreePageDefaultUpdate::class, '/trees/default-blocks', TreePageDefaultUpdate::class);
                 $router->get('admin-trees-merge', '/trees/merge', 'AdminTreesController::merge');
                 $router->post('admin-trees-merge-action', '/trees/merge', 'AdminTreesController::mergeAction');
                 $router->post('admin-trees-sync', '/trees/sync', 'AdminTreesController::synchronize');
                 $router->get('unused-media-thumbnail', '/unused-media-thumbnail', 'MediaFileController::unusedMediaThumbnail');
                 $router->post('delete-user', '/users/delete/{user_id}', DeleteUser::class);
-                $router->get('user-page-default-edit', '/user-page-default-edit', 'HomePageController::userPageDefaultEdit');
-                $router->post('user-page-default-update', '/user-page-default-update', 'HomePageController::userPageDefaultUpdate');
+                $router->get(UserPageDefaultEdit::class, '/user-page-default-edit', UserPageDefaultEdit::class);
+                $router->post(UserPageDefaultUpdate::class, '/user-page-default-update', UserPageDefaultUpdate::class);
             });
 
             // Manager routes (without a tree).
@@ -319,11 +335,11 @@ class WebRoutes
                 $router->post('admin-trees-preferences-update', '/preferences', 'AdminTreesController::preferencesUpdate');
                 $router->get('admin-trees-renumber', '/renumber', 'AdminTreesController::renumber');
                 $router->post('admin-trees-renumber-action', '/renumber', 'AdminTreesController::renumberAction');
-                $router->get('tree-page-edit', '/tree-page-edit', 'HomePageController::treePageEdit');
+                $router->get(TreePageEdit::class, '/tree-page-edit', TreePageEdit::class);
                 $router->post('import', '/load', 'GedcomFileController::import');
-                $router->post('tree-page-update', '/tree-page-update', 'HomePageController::treePageUpdate');
-                $router->get('tree-page-block-edit', '/tree-page-block-edit', 'HomePageController::treePageBlockEdit');
-                $router->post('tree-page-block-update', '/tree-page-block-edit', 'HomePageController::treePageBlockUpdate');
+                $router->post(TreePageUpdate::class, '/tree-page-update', TreePageUpdate::class);
+                $router->get(TreePageBlockEdit::class, '/tree-page-block-edit', TreePageBlockEdit::class);
+                $router->post(TreePageBlockUpdate::class, '/tree-page-block-edit', TreePageBlockUpdate::class);
                 $router->get('tree-preferences', '/preferences', 'AdminController::treePreferencesEdit');
                 $router->post('tree-preferences-update', '/preferences', 'AdminController::treePreferencesUpdate');
                 $router->get('tree-privacy', '/privacy', 'AdminController::treePrivacyEdit');
@@ -431,12 +447,12 @@ class WebRoutes
                     ],
                 ]);
 
-                $router->get('user-page', '/my-page', 'HomePageController::userPage');
-                $router->get('user-page-block', '/my-page-block', 'HomePageController::userPageBlock');
-                $router->get('user-page-edit', '/my-page-edit', 'HomePageController::userPageEdit');
-                $router->post('user-page-update', '/my-page-edit', 'HomePageController::userPageUpdate');
-                $router->get('user-page-block-edit', '/my-page-block-edit', 'HomePageController::userPageBlockEdit');
-                $router->post('user-page-block-update', '/my-page-block-edit', 'HomePageController::userPageBlockUpdate');
+                $router->get(UserPage::class, '/my-page', UserPage::class);
+                $router->get(UserPageBlock::class, '/my-page-block', UserPageBlock::class);
+                $router->get(UserPageEdit::class, '/my-page-edit', UserPageEdit::class);
+                $router->post(UserPageUpdate::class, '/my-page-edit', UserPageUpdate::class);
+                $router->get(UserPageBlockEdit::class, '/my-page-block-edit', UserPageBlockEdit::class);
+                $router->post(UserPageBlockUpdate::class, '/my-page-block-edit', UserPageBlockUpdate::class);
             });
 
             // User routes.
@@ -473,7 +489,7 @@ class WebRoutes
                     ],
                 ]);
 
-                $router->get('tree-page', '', 'HomePageController::treePage');
+                $router->get(TreePage::class, '', TreePage::class);
                 $router->get('autocomplete-folder', '/autocomplete-folder', 'AutocompleteController::folder');
                 $router->get('autocomplete-page', '/autocomplete-page', 'AutocompleteController::page');
                 $router->get('autocomplete-place', '/autocomplete-place', 'AutocompleteController::place');
@@ -514,7 +530,7 @@ class WebRoutes
                 $router->post(Select2Repository::class, '/select2-repository', Select2Repository::class);
                 $router->get(SourcePage::class, '/source/{xref}{/slug}', SourcePage::class);
                 $router->get(SubmitterPage::class, '/submitter/{xref}{/slug}', SubmitterPage::class);
-                $router->get('tree-page-block', '/tree-page-block', 'HomePageController::treePageBlock');
+                $router->get(TreePageBlock::class, '/tree-page-block', TreePageBlock::class);
                 $router->get('example', '/…');
             });
 

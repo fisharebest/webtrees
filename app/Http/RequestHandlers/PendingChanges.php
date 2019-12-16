@@ -72,7 +72,7 @@ class PendingChanges implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $url = $request->getQueryParams()['url'] ?? route('tree-page', ['tree' => $tree->name()]);
+        $url = $request->getQueryParams()['url'] ?? route(TreePage::class, ['tree' => $tree->name()]);
 
         $rows = DB::table('change')
             ->join('user', 'user.user_id', '=', 'change.user_id')

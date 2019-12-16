@@ -30,6 +30,10 @@ use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePageEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserPageEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -204,12 +208,12 @@ trait ModuleThemeTrait
 
         $route = $request->getAttribute('route');
 
-        if (Auth::check() && $route === 'user-page') {
-            return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['tree' => $tree->name()]), 'menu-change-blocks');
+        if (Auth::check() && $route === UserPage::class) {
+            return new Menu(I18N::translate('Customize this page'), route(UserPageEdit::class, ['tree' => $tree->name()]), 'menu-change-blocks');
         }
 
-        if (Auth::isManager($tree) && $route === 'tree-page') {
-            return new Menu(I18N::translate('Customize this page'), route('tree-page-edit', ['tree' => $tree->name()]), 'menu-change-blocks');
+        if (Auth::isManager($tree) && $route === TreePage::class) {
+            return new Menu(I18N::translate('Customize this page'), route(TreePageEdit::class, ['tree' => $tree->name()]), 'menu-change-blocks');
         }
 
         return null;
@@ -278,8 +282,8 @@ trait ModuleThemeTrait
         $tree = $request->getAttribute('tree');
 
         // ...but switch from the tree-page to the user-page
-        if ($request->getAttribute('route') === 'tree-page') {
-            $redirect = route('user-page', ['tree' => $tree instanceof Tree ? $tree->name() : null]);
+        if ($request->getAttribute('route') === TreePage::class) {
+            $redirect = route(UserPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]);
         }
 
         // Stay on the same tree page
@@ -347,7 +351,7 @@ trait ModuleThemeTrait
      */
     public function menuMyPage(Tree $tree): Menu
     {
-        return new Menu(I18N::translate('My page'), route('user-page', ['tree' => $tree->name()]), 'menu-mypage');
+        return new Menu(I18N::translate('My page'), route(UserPage::class, ['tree' => $tree->name()]), 'menu-mypage');
     }
 
     /**

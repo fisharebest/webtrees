@@ -32,6 +32,39 @@ interface ModuleBlockInterface extends ModuleInterface
     public const CONTEXT_TREE_PAGE = 'tree';
     public const CONTEXT_USER_PAGE = 'user';
 
+    // We show blocks in two columns on the tree/user pages.
+    public const MAIN_BLOCKS = 'main';
+    public const SIDE_BLOCKS = 'side';
+
+    public const DEFAULT_TREE_PAGE_BLOCKS = [
+        self::MAIN_BLOCKS => [
+            1 => FamilyTreeStatisticsModule::class,
+            2 => FamilyTreeNewsModule::class,
+            3 => FamilyTreeFavoritesModule::class,
+            4 => ReviewChangesModule::class,
+        ],
+        self::SIDE_BLOCKS => [
+            1 => WelcomeBlockModule::class,
+            2 => SlideShowModule::class,
+            3 => OnThisDayModule::class,
+            4 => LoggedInUsersModule::class,
+        ],
+    ];
+
+    public const DEFAULT_USER_PAGE_BLOCKS = [
+        self::MAIN_BLOCKS => [
+            1 => OnThisDayModule::class,
+            2 => UserMessagesModule::class,
+            3 => UserFavoritesModule::class,
+        ],
+        self::SIDE_BLOCKS => [
+            1 => UserWelcomeModule::class,
+            2 => SlideShowModule::class,
+            3 => UpcomingAnniversariesModule::class,
+            4 => LoggedInUsersModule::class,
+        ],
+    ];
+
     /**
      * Generate the HTML content of this block.
      *

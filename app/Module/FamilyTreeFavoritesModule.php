@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -185,7 +186,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
             }
         }
 
-        $url = route('tree-page', ['tree' => $tree->name()]);
+        $url = route(TreePage::class, ['tree' => $tree->name()]);
 
         return redirect($url);
     }
@@ -210,7 +211,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
                 ->delete();
         }
 
-        $url = route('tree-page', ['tree' => $tree->name()]);
+        $url = route(TreePage::class, ['tree' => $tree->name()]);
 
         return redirect($url);
     }

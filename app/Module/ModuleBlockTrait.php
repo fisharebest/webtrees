@@ -20,6 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePageBlockEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserPageBlockEdit;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -87,14 +89,14 @@ trait ModuleBlockTrait
     protected function configUrl(Tree $tree, string $context, int $block_id): string
     {
         if ($context === self::CONTEXT_TREE_PAGE && Auth::isManager($tree)) {
-            return route('tree-page-block-edit', [
+            return route(TreePageBlockEdit::class, [
                 'block_id' => $block_id,
                 'tree'     => $tree->name(),
             ]);
         }
 
         if ($context === self::CONTEXT_USER_PAGE && Auth::check()) {
-            return route('user-page-block-edit', [
+            return route(UserPageBlockEdit::class, [
                 'block_id' => $block_id,
                 'tree'     => $tree->name(),
             ]);

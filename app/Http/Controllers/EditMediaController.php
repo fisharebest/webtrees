@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Services\MediaFileService;
@@ -124,7 +125,7 @@ class EditMediaController extends AbstractEditController
         $title = trim(preg_replace('/\s+/', ' ', $title));
 
         if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
-            return redirect(route('tree-page', ['tree' => $tree->name()]));
+            return redirect(route(TreePage::class, ['tree' => $tree->name()]));
         }
 
         $file = $this->media_file_service->uploadFile($request);
@@ -229,7 +230,7 @@ class EditMediaController extends AbstractEditController
 
         // Media object oes not exist?  Media object is read-only?
         if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
-            return redirect(route('tree-page', ['tree' => $tree->name()]));
+            return redirect(route(TreePage::class, ['tree' => $tree->name()]));
         }
 
         // Find the fact we are editing.
@@ -242,7 +243,7 @@ class EditMediaController extends AbstractEditController
 
         // Media file does not exist?
         if ($media_file === null) {
-            return redirect(route('tree-page', ['tree' => $tree->name()]));
+            return redirect(route(TreePage::class, ['tree' => $tree->name()]));
         }
 
         // We can edit the file as either a URL or a folder/file
