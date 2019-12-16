@@ -1131,11 +1131,6 @@ parameters:
 			path: app/Http/RequestHandlers/PendingChangesLogData.php
 
 		-
-			message: "#^Cannot call method toDateString\\(\\) on Fisharebest\\\\Webtrees\\\\Carbon\\|null\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/PendingChangesLogPage.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\PendingChangesLogPage\\:\\:changeStatuses\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/PendingChangesLogPage.php
@@ -1184,11 +1179,6 @@ parameters:
 			message: "#^Cannot call method local\\(\\) on Fisharebest\\\\Webtrees\\\\Carbon\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/SiteLogsData.php
-
-		-
-			message: "#^Cannot call method toDateString\\(\\) on Fisharebest\\\\Webtrees\\\\Carbon\\|null\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/SiteLogsPage.php
 
 		-
 			message: "#^Parameter \\#2 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateFact\\(\\) expects string, string\\|null given\\.$#"

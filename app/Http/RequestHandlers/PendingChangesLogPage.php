@@ -77,8 +77,8 @@ class PendingChangesLogPage implements RequestHandlerInterface
         $earliest = DB::table('change')->min('change_time');
         $latest   = DB::table('change')->max('change_time');
 
-        $earliest = $earliest !== null ? Carbon::make($earliest) : Carbon::now();
-        $latest   = $latest !== null ? Carbon::make($latest) : Carbon::now();
+        $earliest = Carbon::make($earliest) ?? Carbon::now();
+        $latest   = Carbon::make($latest) ?? Carbon::now();
 
         $earliest = $earliest->toDateString();
         $latest   = $latest->toDateString();
