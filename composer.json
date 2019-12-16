@@ -101,7 +101,6 @@
         "webtrees:pre-commit-hook": [
             "@composer webtrees:phpcs",
             "@composer webtrees:phpstan",
-            "@composer webtrees:phan -- --minimum-severity=6",
             "@composer webtrees:test"
         ],
         "webtrees:check": [
@@ -109,8 +108,6 @@
             "@composer webtrees:phpcs",
             "### PHPSTAN",
             "@composer webtrees:phpstan",
-            "### PHAN",
-            "@composer webtrees:phan -- --minimum-severity=5",
             "### PSALM",
             "@composer webtrees:psalm"
         ],
@@ -119,12 +116,6 @@
             "~/.composer/vendor/bin/phpcs --standard=PSR12 --colors --extensions=php --exclude=Generic.Files.LineLength index.php app modules_v4 tests",
             "~/.composer/vendor/bin/phpcs --standard=PSR12 --colors --extensions=phtml -n --exclude=Generic.Files.LineLength resources/views",
             "~/.composer/vendor/bin/phpcs --colors --extensions=css resources/css"
-        ],
-        "webtrees:phan": [
-            "@composer global require phan/phan=*",
-            "@composer install --quiet",
-            "~/.composer/vendor/bin/phan --color --progress-bar --dead-code-detection --signature-compatibility --strict-type-checking --directory=app --directory=modules_v4 --directory=vendor --exclude-directory-list=vendor",
-            "@composer install --no-dev --quiet"
         ],
         "webtrees:phpstan": [
             "@composer global require --quiet phpstan/phpstan=*",
