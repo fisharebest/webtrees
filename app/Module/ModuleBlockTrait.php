@@ -88,14 +88,14 @@ trait ModuleBlockTrait
      */
     protected function configUrl(Tree $tree, string $context, int $block_id): string
     {
-        if ($context === self::CONTEXT_TREE_PAGE && Auth::isManager($tree)) {
+        if ($context === ModuleBlockInterface::CONTEXT_TREE_PAGE && Auth::isManager($tree)) {
             return route(TreePageBlockEdit::class, [
                 'block_id' => $block_id,
                 'tree'     => $tree->name(),
             ]);
         }
 
-        if ($context === self::CONTEXT_USER_PAGE && Auth::check()) {
+        if ($context === ModuleBlockInterface::CONTEXT_USER_PAGE && Auth::check()) {
             return route(UserPageBlockEdit::class, [
                 'block_id' => $block_id,
                 'tree'     => $tree->name(),
