@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use function htmlspecialchars_decode;
 use function str_replace;
 use function strip_tags;
 use function trim;
@@ -89,7 +88,6 @@ class ReportBaseElement
             ' ',
         ], $t);
         $t          = strip_tags($t);
-        $t          = htmlspecialchars_decode($t);
         $this->text .= $t;
     }
 

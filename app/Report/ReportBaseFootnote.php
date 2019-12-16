@@ -19,11 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use function htmlspecialchars_decode;
-use function str_replace;
-use function strip_tags;
 use function strpos;
-use function trim;
 
 /**
  * Class ReportBaseFootnote
@@ -81,28 +77,6 @@ class ReportBaseFootnote extends ReportBaseElement
         } else {
             $this->styleName = 'footnote';
         }
-    }
-
-    /**
-     * Add text.
-     *
-     * @param string $t
-     *
-     * @return void
-     */
-    public function addText(string $t): void
-    {
-        $t          = trim($t, "\r\n\t");
-        $t          = str_replace([
-            '<br>',
-            '&nbsp;',
-        ], [
-            "\n",
-            ' ',
-        ], $t);
-        $t          = strip_tags($t);
-        $t          = htmlspecialchars_decode($t);
-        $this->text .= $t;
     }
 
     /**

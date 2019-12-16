@@ -2486,16 +2486,6 @@ parameters:
 			path: app/Services/ServerCheckService.php
 
 		-
-			message: "#^Comparison operation \"\\<\\=\" between 1 and 0 is always false\\.$#"
-			count: 1
-			path: app/Services/ServerCheckService.php
-
-		-
-			message: "#^Result of && is always false\\.$#"
-			count: 1
-			path: app/Services/ServerCheckService.php
-
-		-
 			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string, string\\|false given\\.$#"
 			count: 1
 			path: app/Services/ServerCheckService.php
