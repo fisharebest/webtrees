@@ -30,7 +30,7 @@ use function redirect;
 use function route;
 
 /**
- * Controller for the user/tree's home page.
+ * Update block config options.
  */
 class UserPageBlockUpdate implements RequestHandlerInterface
 {
@@ -38,8 +38,6 @@ class UserPageBlockUpdate implements RequestHandlerInterface
     private $home_page_service;
 
     /**
-     * HomePageController constructor.
-     *
      * @param HomePageService $home_page_service
      */
     public function __construct(HomePageService $home_page_service)
@@ -48,8 +46,6 @@ class UserPageBlockUpdate implements RequestHandlerInterface
     }
 
     /**
-     * Update block config options.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface

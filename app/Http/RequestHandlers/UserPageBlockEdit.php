@@ -31,7 +31,7 @@ use function assert;
 use function route;
 
 /**
- * Controller for the user/tree's home page.
+ * Show a form to edit block config options.
  */
 class UserPageBlockEdit implements RequestHandlerInterface
 {
@@ -41,8 +41,6 @@ class UserPageBlockEdit implements RequestHandlerInterface
     private $home_page_service;
 
     /**
-     * HomePageController constructor.
-     *
      * @param HomePageService $home_page_service
      */
     public function __construct(HomePageService $home_page_service)
@@ -51,8 +49,6 @@ class UserPageBlockEdit implements RequestHandlerInterface
     }
 
     /**
-     * Show a form to edit block config options.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface

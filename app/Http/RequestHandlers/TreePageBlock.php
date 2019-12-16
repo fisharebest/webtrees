@@ -32,7 +32,7 @@ use function response;
 use function view;
 
 /**
- * Controller for the user/tree's home page.
+ * Load block asynchronously.
  */
 class TreePageBlock implements RequestHandlerInterface
 {
@@ -40,8 +40,6 @@ class TreePageBlock implements RequestHandlerInterface
     private $home_page_service;
 
     /**
-     * HomePageController constructor.
-     *
      * @param HomePageService $home_page_service
      */
     public function __construct(HomePageService $home_page_service)
@@ -50,8 +48,6 @@ class TreePageBlock implements RequestHandlerInterface
     }
 
     /**
-     * Load block asynchronously.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface

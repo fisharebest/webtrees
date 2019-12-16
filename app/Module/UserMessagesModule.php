@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Http\Controllers\HomePageController;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessageSelect;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;

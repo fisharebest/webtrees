@@ -34,7 +34,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function assert;
 
 /**
- * Controller for the user/tree's home page.
+ * Show a users's page.
  */
 class UserPage implements RequestHandlerInterface
 {
@@ -44,8 +44,6 @@ class UserPage implements RequestHandlerInterface
     private $home_page_service;
 
     /**
-     * HomePageController constructor.
-     *
      * @param HomePageService $home_page_service
      */
     public function __construct(HomePageService $home_page_service)
@@ -54,8 +52,6 @@ class UserPage implements RequestHandlerInterface
     }
 
     /**
-     * Show a users's page.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface

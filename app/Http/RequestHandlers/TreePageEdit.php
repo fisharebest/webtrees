@@ -32,7 +32,7 @@ use function assert;
 use function route;
 
 /**
- * Controller for the user/tree's home page.
+ * Show a form to edit the blocks on a tree's page.
  */
 class TreePageEdit implements RequestHandlerInterface
 {
@@ -42,8 +42,6 @@ class TreePageEdit implements RequestHandlerInterface
     private $home_page_service;
 
     /**
-     * HomePageController constructor.
-     *
      * @param HomePageService $home_page_service
      */
     public function __construct(HomePageService $home_page_service)
@@ -52,8 +50,6 @@ class TreePageEdit implements RequestHandlerInterface
     }
 
     /**
-     * Show a form to edit the blocks on a tree's page.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface

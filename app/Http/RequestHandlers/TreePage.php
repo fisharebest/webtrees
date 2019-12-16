@@ -34,7 +34,7 @@ use function assert;
 use function e;
 
 /**
- * Controller for the user/tree's home page.
+ * Show a tree's page.
  */
 class TreePage implements RequestHandlerInterface
 {
@@ -44,8 +44,6 @@ class TreePage implements RequestHandlerInterface
     private $home_page_service;
 
     /**
-     * HomePageController constructor.
-     *
      * @param HomePageService $home_page_service
      */
     public function __construct(HomePageService $home_page_service)
@@ -54,8 +52,6 @@ class TreePage implements RequestHandlerInterface
     }
 
     /**
-     * Show a tree's page.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface

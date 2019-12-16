@@ -30,7 +30,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function route;
 
 /**
- * Controller for the user/tree's home page.
+ * Show a form to edit the default blocks for new uesrs.
  */
 class UserPageDefaultEdit implements RequestHandlerInterface
 {
@@ -40,8 +40,6 @@ class UserPageDefaultEdit implements RequestHandlerInterface
     private $home_page_service;
 
     /**
-     * HomePageController constructor.
-     *
      * @param HomePageService $home_page_service
      */
     public function __construct(HomePageService $home_page_service)
@@ -50,8 +48,6 @@ class UserPageDefaultEdit implements RequestHandlerInterface
     }
 
     /**
-     * Show a form to edit the default blocks for new uesrs.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
