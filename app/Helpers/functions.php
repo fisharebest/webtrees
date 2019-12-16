@@ -21,7 +21,7 @@ use Aura\Router\RouterContainer;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Application;
 use Fisharebest\Webtrees\Html;
-use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Session as WebtreesSession;
 use Fisharebest\Webtrees\View as WebtreesView;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -75,7 +75,7 @@ function asset(string $path): string
  */
 function csrf_field()
 {
-    return '<input type="hidden" name="csrf" value="' . e(Session::getCsrfToken()) . '">';
+    return '<input type="hidden" name="csrf" value="' . e(WebtreesSession::getCsrfToken()) . '">';
 }
 
 /**
@@ -85,7 +85,7 @@ function csrf_field()
  */
 function csrf_token()
 {
-    return Session::getCsrfToken();
+    return WebtreesSession::getCsrfToken();
 }
 
 /**
