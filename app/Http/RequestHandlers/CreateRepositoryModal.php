@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -47,52 +46,5 @@ class CreateRepositoryModal implements RequestHandlerInterface
         return response(view('modals/create-repository', [
             'tree' => $tree,
         ]));
-    }
-
-    /**
-     * Process a form to create a new repository.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function createRepositoryAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $params              = (array) $request->getParsedBody();
-        $name                = $params['repository-name'];
-        $privacy_restriction = $params['privacy-restriction'];
-        $edit_restriction    = $params['edit-restriction'];
-
-        // Fix whitespace
-        $name = trim(preg_replace('/\s+/', ' ', $name));
-
-        $gedcom = "0 @@ REPO\n1 NAME " . $name;
-
-        if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'], true)) {
-            $gedcom .= "\n1 RESN " . $privacy_restriction;
-        }
-
-        if ($edit_restriction === 'locked') {
-            $gedcom .= "\n1 RESN " . $edit_restriction;
-        }
-
-        $record = $tree->createRecord($gedcom);
-
-        // id and text are for select2 / autocomplete
-        // html is for interactive modals
-        return response([
-            'id'   => $record->xref(),
-            'text' => view('selects/repository', [
-                'repository' => $record,
-            ]),
-            'html' => view('modals/record-created', [
-                'title' => I18N::translate('The repository has been created'),
-                'name'  => $record->fullName(),
-                'url'   => $record->url(),
-            ]),
-        ]);
     }
 }

@@ -26,6 +26,11 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function in_array;
+use function preg_replace;
+use function response;
+use function trim;
+use function view;
 
 /**
  * Process a form to create a new repository.
