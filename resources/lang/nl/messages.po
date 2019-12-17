@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-10 16:16+0000\n"
-"PO-Revision-Date: 2019-11-09 09:32+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Dutch <http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
-"Language: nl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-24 22:41+0000\nLast-Translator: Carmen <carmen@justcarmen.nl>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -233,8 +217,8 @@ msgstr[1] "%s dagen"
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s gezin"
+msgstr[1] "%s gezinnen"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
@@ -738,7 +722,7 @@ msgstr "Een welkomstbericht voor bezoekers van de site."
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:68
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "Een link naar het contactadres van de website beheerder."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
@@ -773,7 +757,7 @@ msgstr "Een lijst met personen."
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:62
 msgid "A list of media objects."
-msgstr ""
+msgstr "Een lijst met media objecten."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:62
@@ -783,17 +767,17 @@ msgstr "Een lijst van records die recent gewijzigd werden."
 #. I18N: Description of the “Repositories” module
 #: app/Module/RepositoryListModule.php:60
 msgid "A list of repositories."
-msgstr ""
+msgstr "Een lijst met opslagplaatsen."
 
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:60
 msgid "A list of shared notes."
-msgstr ""
+msgstr "Een lijst met gedeelde notities."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:60
 msgid "A list of sources."
-msgstr ""
+msgstr "Een lijst met bronnen."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:65
@@ -855,7 +839,7 @@ msgstr "Een nieuwe versie van webtrees is beschikbaar."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:95
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr ""
+msgstr "Een link om het wachtwoord te herstellen is gestuurd naar “%s”."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:64
@@ -1365,15 +1349,15 @@ msgstr "Voeg een nieuw gerelateerd persoon toe"
 
 #: resources/views/cards/add-sour-data-even.phtml:7
 msgid "Add an event"
-msgstr ""
+msgstr "Gebeurtenis toevoegen"
 
 #: resources/views/modules/custom-css-js/edit.phtml:28
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr ""
+msgstr "Voeg inhoud toe na <code>&lt;body&gt;</code> ."
 
 #: resources/views/modules/custom-css-js/edit.phtml:16
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr ""
+msgstr "Voeg inhoud toe na <code>&lt;head&gt;</code>."
 
 #: resources/views/edit/paste-fact-row.phtml:12
 msgid "Add from clipboard"
