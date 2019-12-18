@@ -24,70 +24,72 @@ use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Report\PdfRenderer;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
-use Fisharebest\Webtrees\Webtrees;
 use League\Flysystem\Adapter\NullAdapter;
 use League\Flysystem\Filesystem;
 
 /**
  * Test harness for the class PedigreeReportModule
- *
- * @covers \Fisharebest\Webtrees\Module\ModuleReportTrait
- * @covers \Fisharebest\Webtrees\Module\PedigreeReportModule
- * @covers \Fisharebest\Webtrees\Report\AbstractRenderer
- * @covers \Fisharebest\Webtrees\Report\ReportBaseCell
- * @covers \Fisharebest\Webtrees\Report\ReportBaseElement
- * @covers \Fisharebest\Webtrees\Report\ReportBaseFootnote
- * @covers \Fisharebest\Webtrees\Report\ReportBaseHtml
- * @covers \Fisharebest\Webtrees\Report\ReportBaseImage
- * @covers \Fisharebest\Webtrees\Report\ReportBaseLine
- * @covers \Fisharebest\Webtrees\Report\ReportBasePageHeader
- * @covers \Fisharebest\Webtrees\Report\ReportBaseText
- * @covers \Fisharebest\Webtrees\Report\ReportBaseTextbox
- * @covers \Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider
- * @covers \Fisharebest\Webtrees\Report\HtmlRenderer
- * @covers \Fisharebest\Webtrees\Report\ReportHtmlCell
- * @covers \Fisharebest\Webtrees\Report\ReportHtmlFootnote
- * @covers \Fisharebest\Webtrees\Report\ReportHtmlHtml
- * @covers \Fisharebest\Webtrees\Report\ReportHtmlImage
- * @covers \Fisharebest\Webtrees\Report\ReportHtmlLine
- * @covers \Fisharebest\Webtrees\Report\ReportHtmlPageHeader
- * @covers \Fisharebest\Webtrees\Report\ReportHtmlText
- * @covers \Fisharebest\Webtrees\Report\ReportHtmlTextbox
- * @covers \Fisharebest\Webtrees\Report\ReportParserBase
- * @covers \Fisharebest\Webtrees\Report\ReportParserGenerate
- * @covers \Fisharebest\Webtrees\Report\ReportParserSetup
- * @covers \Fisharebest\Webtrees\Report\PdfRenderer
- * @covers \Fisharebest\Webtrees\Report\ReportPdfCell
- * @covers \Fisharebest\Webtrees\Report\ReportPdfFootnote
- * @covers \Fisharebest\Webtrees\Report\ReportPdfHtml
- * @covers \Fisharebest\Webtrees\Report\ReportPdfImage
- * @covers \Fisharebest\Webtrees\Report\ReportPdfLine
- * @covers \Fisharebest\Webtrees\Report\ReportPdfPageHeader
- * @covers \Fisharebest\Webtrees\Report\ReportPdfText
- * @covers \Fisharebest\Webtrees\Report\ReportPdfTextBox
- * @covers \Fisharebest\Webtrees\Report\ReportTcpdf
  */
 class PedigreeReportModuleTest extends TestCase
 {
     protected static $uses_database = true;
 
     /**
+     * @covers \Fisharebest\Webtrees\Module\ModuleReportTrait
+     * @covers \Fisharebest\Webtrees\Module\PedigreeReportModule
+     * @covers \Fisharebest\Webtrees\Report\AbstractRenderer
+     * @covers \Fisharebest\Webtrees\Report\HtmlRenderer
+     * @covers \Fisharebest\Webtrees\Report\PdfRenderer
+     * @covers \Fisharebest\Webtrees\Report\ReportBaseCell
+     * @covers \Fisharebest\Webtrees\Report\ReportBaseElement
+     * @covers \Fisharebest\Webtrees\Report\ReportBaseFootnote
+     * @covers \Fisharebest\Webtrees\Report\ReportBaseHtml
+     * @covers \Fisharebest\Webtrees\Report\ReportBaseImage
+     * @covers \Fisharebest\Webtrees\Report\ReportBaseLine
+     * @covers \Fisharebest\Webtrees\Report\ReportBasePageHeader
+     * @covers \Fisharebest\Webtrees\Report\ReportBaseText
+     * @covers \Fisharebest\Webtrees\Report\ReportBaseTextbox
+     * @covers \Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider
+     * @covers \Fisharebest\Webtrees\Report\ReportHtmlCell
+     * @covers \Fisharebest\Webtrees\Report\ReportHtmlFootnote
+     * @covers \Fisharebest\Webtrees\Report\ReportHtmlHtml
+     * @covers \Fisharebest\Webtrees\Report\ReportHtmlImage
+     * @covers \Fisharebest\Webtrees\Report\ReportHtmlLine
+     * @covers \Fisharebest\Webtrees\Report\ReportHtmlPageHeader
+     * @covers \Fisharebest\Webtrees\Report\ReportHtmlText
+     * @covers \Fisharebest\Webtrees\Report\ReportHtmlTextbox
+     * @covers \Fisharebest\Webtrees\Report\ReportParserBase
+     * @covers \Fisharebest\Webtrees\Report\ReportParserGenerate
+     * @covers \Fisharebest\Webtrees\Report\ReportParserSetup
+     * @covers \Fisharebest\Webtrees\Report\ReportPdfCell
+     * @covers \Fisharebest\Webtrees\Report\ReportPdfFootnote
+     * @covers \Fisharebest\Webtrees\Report\ReportPdfHtml
+     * @covers \Fisharebest\Webtrees\Report\ReportPdfImage
+     * @covers \Fisharebest\Webtrees\Report\ReportPdfLine
+     * @covers \Fisharebest\Webtrees\Report\ReportPdfPageHeader
+     * @covers \Fisharebest\Webtrees\Report\ReportPdfText
+     * @covers \Fisharebest\Webtrees\Report\ReportPdfTextBox
+     * @covers \Fisharebest\Webtrees\Report\TcpdfWrapper
+     *
      * @return void
      */
     public function testReportRunsWithoutError(): void
     {
         $data_filesystem = new Filesystem(new NullAdapter());
+        $module_service  = new ModuleService();
 
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
-        $tree = $this->importTree('demo.ged');
-        $xml  = Webtrees::ROOT_DIR . 'resources/xml/reports/pedigree_report.xml';
-        $vars = [
+        $tree   = $this->importTree('demo.ged');
+        $module = $module_service->findByInterface(PedigreeReportModule::class)->first();
+        $xml    = 'resources/' . $module->xmlFilename();
+        $vars   = [
             'pid'         => ['id' => 'X1030'],
             'spouses'     => ['id' => 'on'],
             'orientation' => ['id' => 'portrait'],
