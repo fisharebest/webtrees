@@ -95,7 +95,7 @@ class UpgradeControllerTest extends TestCase
 
         $response = $controller->step($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        $this->assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 
     /**
@@ -311,7 +311,7 @@ class UpgradeControllerTest extends TestCase
     /**
      * @return void
      */
-    public function testStepCopy(): void
+    public function testStepCopyAndCleanUp(): void
     {
         $controller = new UpgradeController(
             new TreeService(),
@@ -319,25 +319,6 @@ class UpgradeControllerTest extends TestCase
         );
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Copy'])
-            ->withAttribute('filesystem.data', new Filesystem(new NullAdapter()))
-            ->withAttribute('filesystem.root', new Filesystem(new NullAdapter()));
-        $response = $controller->step($request);
-
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-    }
-
-    /**
-     * @return void
-     */
-    public function testStepCleanup(): void
-    {
-        $mock_upgrade_service = $this->createMock(UpgradeService::class);
-        $controller           = new UpgradeController(
-            new TreeService(),
-            $mock_upgrade_service
-        );
-
-        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Cleanup'])
             ->withAttribute('filesystem.data', new Filesystem(new NullAdapter()))
             ->withAttribute('filesystem.root', new Filesystem(new NullAdapter()));
         $response = $controller->step($request);
