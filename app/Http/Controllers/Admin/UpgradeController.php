@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
@@ -37,6 +38,19 @@ use RuntimeException;
 use Throwable;
 
 use function assert;
+use function basename;
+use function date;
+use function e;
+use function fclose;
+use function fopen;
+use function fseek;
+use function intdiv;
+use function microtime;
+use function redirect;
+use function response;
+use function route;
+use function version_compare;
+use function view;
 
 /**
  * Controller for upgrading to a new version of webtrees.
@@ -51,7 +65,6 @@ class UpgradeController extends AbstractAdminController
     private const STEP_DOWNLOAD = 'Download';
     private const STEP_UNZIP    = 'Unzip';
     private const STEP_COPY     = 'Copy';
-    private const STEP_CLEANUP  = 'Cleanup';
 
     // Where to store our temporary files.
     private const UPGRADE_FOLDER = 'data/tmp/upgrade/';
@@ -133,12 +146,18 @@ class UpgradeController extends AbstractAdminController
      */
     public function step(ServerRequestInterface $request): ResponseInterface
     {
-        // Installation folder.
         $root_filesystem = $request->getAttribute('filesystem.root');
         assert($root_filesystem instanceof FilesystemInterface);
 
+        $data_filesystem = $request->getAttribute('filesystem.data');
+        assert($data_filesystem instanceof FilesystemInterface);
+
         // Somewhere to unpack a .ZIP file
         $temporary_filesystem = new Filesystem(new ChrootAdapter($root_filesystem, self::UPGRADE_FOLDER));
+
+        $zip_file   = Webtrees::ROOT_DIR . self::ZIP_FILENAME;
+        $zip_folder = Webtrees::ROOT_DIR . self::UPGRADE_FOLDER;
+
 
         $step = $request->getQueryParams()['step'] ?? self::STEP_CHECK;
 
@@ -147,18 +166,12 @@ class UpgradeController extends AbstractAdminController
                 return $this->wizardStepCheck();
 
             case self::STEP_PREPARE:
-                $root_filesystem = $request->getAttribute('filesystem.root');
-                assert($root_filesystem instanceof FilesystemInterface);
-
                 return $this->wizardStepPrepare($root_filesystem);
 
             case self::STEP_PENDING:
                 return $this->wizardStepPending();
 
             case self::STEP_EXPORT:
-                $data_filesystem = $request->getAttribute('filesystem.data');
-                assert($data_filesystem instanceof FilesystemInterface);
-
                 $tree_name = $request->getQueryParams()['tree'] ?? '';
                 $tree      = $this->tree_service->all()[$tree_name];
                 assert($tree instanceof Tree);
@@ -169,21 +182,13 @@ class UpgradeController extends AbstractAdminController
                 return $this->wizardStepDownload($root_filesystem);
 
             case self::STEP_UNZIP:
-                $zip_file   = Webtrees::ROOT_DIR . self::ZIP_FILENAME;
-                $zip_folder = Webtrees::ROOT_DIR . self::UPGRADE_FOLDER;
-
                 return $this->wizardStepUnzip($zip_file, $zip_folder);
 
             case self::STEP_COPY:
-                return $this->wizardStepCopy($temporary_filesystem, $root_filesystem);
-
-            case self::STEP_CLEANUP:
-                $zip_file = Webtrees::ROOT_DIR . self::ZIP_FILENAME;
-
-                return $this->wizardStepCleanup($zip_file, $temporary_filesystem, $root_filesystem);
+                return $this->wizardStepCopyAndCleanUp($zip_file, $root_filesystem, $temporary_filesystem);
 
             default:
-                return response('???');
+                return response('', StatusCodeInterface::STATUS_NO_CONTENT);
         }
     }
 
@@ -213,7 +218,6 @@ class UpgradeController extends AbstractAdminController
                 route('upgrade', ['step' => self::STEP_DOWNLOAD]) => I18N::translate('Download %s…', e($download_url)),
                 route('upgrade', ['step' => self::STEP_UNZIP])    => I18N::translate('Unzip %s to a temporary folder…', e(basename($download_url))),
                 route('upgrade', ['step' => self::STEP_COPY])     => I18N::translate('Copy files…'),
-                route('upgrade', ['step' => self::STEP_CLEANUP])  => I18N::translate('Delete old files…'),
             ];
     }
 
@@ -355,14 +359,16 @@ class UpgradeController extends AbstractAdminController
     }
 
     /**
-     * @param FilesystemInterface $temporary_filesystem
+     * @param string              $zip_file
      * @param FilesystemInterface $root_filesystem
+     * @param FilesystemInterface $temporary_filesystem
      *
      * @return ResponseInterface
      */
-    private function wizardStepCopy(
-        FilesystemInterface $temporary_filesystem,
-        FilesystemInterface $root_filesystem
+    private function wizardStepCopyAndCleanUp(
+        string $zip_file,
+        FilesystemInterface $root_filesystem,
+        FilesystemInterface $temporary_filesystem
     ): ResponseInterface {
         $source_filesystem = new Filesystem(new ChrootAdapter($temporary_filesystem, self::ZIP_FILE_PREFIX));
 
@@ -370,35 +376,18 @@ class UpgradeController extends AbstractAdminController
         $this->upgrade_service->moveFiles($source_filesystem, $root_filesystem);
         $this->upgrade_service->endMaintenanceMode();
 
-        return response(view('components/alert-success', [
-            'alert' => I18N::translate('The upgrade is complete.'),
-        ]));
-    }
-
-    /**
-     * @param string              $zip_file
-     * @param FilesystemInterface $data_filesystem
-     * @param FilesystemInterface $root_filesystem
-     *
-     * @return ResponseInterface
-     */
-    private function wizardStepCleanup(
-        string $zip_file,
-        FilesystemInterface $data_filesystem,
-        FilesystemInterface $root_filesystem
-    ): ResponseInterface {
+        // While we have time, clean up any old files.
         $files_to_keep    = $this->upgrade_service->webtreesZipContents($zip_file);
         $folders_to_clean = new Collection(self::FOLDERS_TO_CLEAN);
 
         $this->upgrade_service->cleanFiles($root_filesystem, $folders_to_clean, $files_to_keep);
 
-        $data_filesystem->deleteDir(self::UPGRADE_FOLDER);
-
         $url    = route(ControlPanel::class);
+        $alert  =  I18N::translate('The upgrade is complete.');
         $button = '<a href="' . e($url) . '" class="btn btn-primary">' . I18N::translate('continue') . '</a>';
 
         return response(view('components/alert-success', [
-            'alert' => $button,
+            'alert' => $alert . ' ' . $button,
         ]));
     }
 }
