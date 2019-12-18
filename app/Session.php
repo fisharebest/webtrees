@@ -43,6 +43,7 @@ use const PHP_URL_SCHEME;
  */
 class Session
 {
+    private const SESSION_NAME = 'WT2_SESSION';
     /**
      * Start a session
      *
@@ -63,7 +64,7 @@ class Session
         // Paths containing UTF-8 characters need special handling.
         $path = implode('/', array_map('rawurlencode', explode('/', $path)));
 
-        session_name('WT_SESSION');
+        session_name(self::SESSION_NAME);
         session_register_shutdown();
         session_set_cookie_params(0, $path . '/', $domain, $secure, true);
         session_start();
