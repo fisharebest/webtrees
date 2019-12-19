@@ -90,7 +90,7 @@ abstract class AbstractRenderer
     /** @var float The default Report font size */
     public $default_font_size = 12.0;
 
-    /** @var string Header (H), Page header (PH), Body (B) or Footer (F) */
+    /** @var string Header (H), Body (B) or Footer (F) */
     public $processing = 'H';
 
     /** @var bool RTL Language (false=LTR, true=RTL) */
@@ -120,13 +120,6 @@ abstract class AbstractRenderer
      * @return void
      */
     abstract public function clearHeader(): void;
-
-    /**
-     * Create a new Page Header object
-     *
-     * @return ReportBasePageHeader
-     */
-    abstract public function createPageHeader(): ReportBasePageHeader;
 
     /**
      * Add an element.
@@ -301,9 +294,9 @@ abstract class AbstractRenderer
     }
 
     /**
-     * Process the Header , Page header, Body or Footer
+     * Process the Header, Body or Footer
      *
-     * @param string $p Header (H), Page header (PH), Body (B) or Footer (F)
+     * @param string $p Header (H), Body (B) or Footer (F)
      *
      * @return void
      */

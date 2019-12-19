@@ -133,9 +133,6 @@ class HtmlRenderer extends AbstractRenderer
     /** @var ReportBaseElement[] Array of elements in the header */
     public $headerElements = [];
 
-    /** @var ReportBaseElement[] Array of elements in the page header */
-    public $pageHeaderElements = [];
-
     /** @var ReportBaseElement[] Array of elements in the footer */
     public $footerElements = [];
 
@@ -194,24 +191,6 @@ class HtmlRenderer extends AbstractRenderer
             $this->headerElements[] = $element;
         } elseif ($this->processing === 'F') {
             $this->footerElements[] = $element;
-        }
-    }
-
-    /**
-     * Generate the page header
-     *
-     * @return void
-     */
-    private function runPageHeader(): void
-    {
-        foreach ($this->pageHeaderElements as $element) {
-            if ($element instanceof ReportBaseElement) {
-                $element->render($this);
-            } elseif ($element === 'footnotetexts') {
-                $this->footnotes();
-            } elseif ($element === 'addpage') {
-                $this->addPage();
-            }
         }
     }
 
@@ -282,7 +261,6 @@ class HtmlRenderer extends AbstractRenderer
         echo '<div id="bodydiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt; height: 100%;">';
         $this->Y    = 0;
         $this->maxY = 0;
-        $this->runPageHeader();
         foreach ($this->bodyElements as $element) {
             if ($element instanceof ReportBaseElement) {
                 $element->render($this);
@@ -397,16 +375,6 @@ class HtmlRenderer extends AbstractRenderer
     public function createFootnote($style): ReportBaseFootnote
     {
         return new ReportHtmlFootnote($style);
-    }
-
-    /**
-     * Create a new Page Header object
-     *
-     * @return ReportBasePageHeader
-     */
-    public function createPageHeader(): ReportBasePageHeader
-    {
-        return new ReportHtmlPageHeader();
     }
 
     /**
@@ -529,18 +497,6 @@ class HtmlRenderer extends AbstractRenderer
     }
 
     /**
-     * Add a page header.
-     *
-     * @param ReportBaseElement $element
-     *
-     * @return void
-     */
-    public function addPageHeader($element): void
-    {
-        $this->pageHeaderElements[] = $element;
-    }
-
-    /**
      * Checks the Footnote and numbers them - ReportHtml
      *
      * @param ReportHtmlFootnote $footnote
@@ -568,16 +524,6 @@ class HtmlRenderer extends AbstractRenderer
         $this->printedfootnotes[] = $footnote;
 
         return false;
-    }
-
-    /**
-     * Clear the Page Header - ReportHtml
-     *
-     * @return void
-     */
-    public function clearPageHeader(): void
-    {
-        $this->pageHeaderElements = [];
     }
 
     /**

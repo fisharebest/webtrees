@@ -1862,37 +1862,37 @@ parameters:
 
 		-
 			message: "#^Elseif branch is unreachable because previous condition is always true\\.$#"
-			count: 8
+			count: 6
 			path: app/Report/HtmlRenderer.php
 
 		-
 			message: "#^Strict comparison using \\=\\=\\= between \\*NEVER\\* and 'footnotetexts' will always evaluate to false\\.$#"
-			count: 4
+			count: 3
 			path: app/Report/HtmlRenderer.php
 
 		-
 			message: "#^Strict comparison using \\=\\=\\= between \\*NEVER\\* and 'addpage' will always evaluate to false\\.$#"
-			count: 4
+			count: 3
 			path: app/Report/HtmlRenderer.php
 
 		-
 			message: "#^Elseif branch is unreachable because previous condition is always true\\.$#"
-			count: 8
+			count: 6
 			path: app/Report/PdfRenderer.php
 
 		-
 			message: "#^Strict comparison using \\=\\=\\= between \\*NEVER\\* and 'footnotetexts' will always evaluate to false\\.$#"
-			count: 4
+			count: 3
 			path: app/Report/PdfRenderer.php
 
 		-
 			message: "#^Strict comparison using \\=\\=\\= between \\*NEVER\\* and 'addpage' will always evaluate to false\\.$#"
-			count: 4
+			count: 3
 			path: app/Report/PdfRenderer.php
 
 		-
 			message: "#^Array \\(array\\<Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\>\\) does not accept Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\|string\\.$#"
-			count: 4
+			count: 3
 			path: app/Report/PdfRenderer.php
 
 		-

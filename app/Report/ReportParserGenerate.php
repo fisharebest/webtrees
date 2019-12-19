@@ -2596,7 +2596,7 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <NewPage /> element handler
-     * Has to be placed in an element (header, pageheader, body or footer)
+     * Has to be placed in an element (header, body or footer)
      *
      * @return void
      */

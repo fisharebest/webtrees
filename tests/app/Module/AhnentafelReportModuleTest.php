@@ -54,7 +54,6 @@ class AhnentafelReportModuleTest extends TestCase
      * @covers \Fisharebest\Webtrees\Report\ReportBaseHtml
      * @covers \Fisharebest\Webtrees\Report\ReportBaseImage
      * @covers \Fisharebest\Webtrees\Report\ReportBaseLine
-     * @covers \Fisharebest\Webtrees\Report\ReportBasePageHeader
      * @covers \Fisharebest\Webtrees\Report\ReportBaseText
      * @covers \Fisharebest\Webtrees\Report\ReportBaseTextbox
      * @covers \Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider
@@ -63,7 +62,6 @@ class AhnentafelReportModuleTest extends TestCase
      * @covers \Fisharebest\Webtrees\Report\ReportHtmlHtml
      * @covers \Fisharebest\Webtrees\Report\ReportHtmlImage
      * @covers \Fisharebest\Webtrees\Report\ReportHtmlLine
-     * @covers \Fisharebest\Webtrees\Report\ReportHtmlPageHeader
      * @covers \Fisharebest\Webtrees\Report\ReportHtmlText
      * @covers \Fisharebest\Webtrees\Report\ReportHtmlTextbox
      * @covers \Fisharebest\Webtrees\Report\ReportParserBase
@@ -74,7 +72,6 @@ class AhnentafelReportModuleTest extends TestCase
      * @covers \Fisharebest\Webtrees\Report\ReportPdfHtml
      * @covers \Fisharebest\Webtrees\Report\ReportPdfImage
      * @covers \Fisharebest\Webtrees\Report\ReportPdfLine
-     * @covers \Fisharebest\Webtrees\Report\ReportPdfPageHeader
      * @covers \Fisharebest\Webtrees\Report\ReportPdfText
      * @covers \Fisharebest\Webtrees\Report\ReportPdfTextBox
      * @covers \Fisharebest\Webtrees\Report\TcpdfWrapper

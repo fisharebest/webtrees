@@ -67,9 +67,6 @@ class PdfRenderer extends AbstractRenderer
     /** @var ReportBaseElement[] Array of elements in the header */
     public $headerElements = [];
 
-    /** @var ReportBaseElement[] Array of elements in the page header */
-    public $pageHeaderElements = [];
-
     /** @var ReportBaseElement[] Array of elements in the footer */
     public $footerElements = [];
 
@@ -102,16 +99,6 @@ class PdfRenderer extends AbstractRenderer
     public function header(): void
     {
         foreach ($this->headerElements as $element) {
-            if ($element instanceof ReportBaseElement) {
-                $element->render($this);
-            } elseif ($element === 'footnotetexts') {
-                $this->footnotes();
-            } elseif ($element === 'addpage') {
-                $this->newPage();
-            }
-        }
-
-        foreach ($this->pageHeaderElements as $element) {
             if ($element instanceof ReportBaseElement) {
                 $element->render($this);
             } elseif ($element === 'footnotetexts') {
@@ -193,18 +180,6 @@ class PdfRenderer extends AbstractRenderer
     }
 
     /**
-     * Add an element to the Page Header -PDF
-     *
-     * @param ReportBaseElement|string $element
-     *
-     * @return void
-     */
-    public function addPageHeader($element): void
-    {
-        $this->pageHeaderElements[] = $element;
-    }
-
-    /**
      * Add an element to the Body -PDF
      *
      * @param ReportBaseElement|string $element
@@ -241,18 +216,6 @@ class PdfRenderer extends AbstractRenderer
     }
 
     /**
-     * Remove the page header.
-     *
-     * @param int $index
-     *
-     * @return void
-     */
-    public function removePageHeader(int $index): void
-    {
-        unset($this->pageHeaderElements[$index]);
-    }
-
-    /**
      * Remove the body.
      *
      * @param int $index
@@ -285,17 +248,6 @@ class PdfRenderer extends AbstractRenderer
     {
         unset($this->headerElements);
         $this->headerElements = [];
-    }
-
-    /**
-     * Clear the Page Header -PDF
-     *
-     * @return void
-     */
-    public function clearPageHeader(): void
-    {
-        unset($this->pageHeaderElements);
-        $this->pageHeaderElements = [];
     }
 
     /**
@@ -650,16 +602,6 @@ class PdfRenderer extends AbstractRenderer
     public function createFootnote($style): ReportBaseFootnote
     {
         return new ReportPdfFootnote($style);
-    }
-
-    /**
-     * Create a new Page Header object
-     *
-     * @return ReportBasePageHeader
-     */
-    public function createPageHeader(): ReportBasePageHeader
-    {
-        return new ReportPdfPageHeader();
     }
 
     /**
