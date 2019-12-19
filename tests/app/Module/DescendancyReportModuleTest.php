@@ -51,7 +51,6 @@ class DescendancyReportModuleTest extends TestCase
      * @covers \Fisharebest\Webtrees\Report\ReportBaseCell
      * @covers \Fisharebest\Webtrees\Report\ReportBaseElement
      * @covers \Fisharebest\Webtrees\Report\ReportBaseFootnote
-     * @covers \Fisharebest\Webtrees\Report\ReportBaseHtml
      * @covers \Fisharebest\Webtrees\Report\ReportBaseImage
      * @covers \Fisharebest\Webtrees\Report\ReportBaseLine
      * @covers \Fisharebest\Webtrees\Report\ReportBaseText
@@ -59,7 +58,6 @@ class DescendancyReportModuleTest extends TestCase
      * @covers \Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider
      * @covers \Fisharebest\Webtrees\Report\ReportHtmlCell
      * @covers \Fisharebest\Webtrees\Report\ReportHtmlFootnote
-     * @covers \Fisharebest\Webtrees\Report\ReportHtmlHtml
      * @covers \Fisharebest\Webtrees\Report\ReportHtmlImage
      * @covers \Fisharebest\Webtrees\Report\ReportHtmlLine
      * @covers \Fisharebest\Webtrees\Report\ReportHtmlText
@@ -69,7 +67,6 @@ class DescendancyReportModuleTest extends TestCase
      * @covers \Fisharebest\Webtrees\Report\ReportParserSetup
      * @covers \Fisharebest\Webtrees\Report\ReportPdfCell
      * @covers \Fisharebest\Webtrees\Report\ReportPdfFootnote
-     * @covers \Fisharebest\Webtrees\Report\ReportPdfHtml
      * @covers \Fisharebest\Webtrees\Report\ReportPdfImage
      * @covers \Fisharebest\Webtrees\Report\ReportPdfLine
      * @covers \Fisharebest\Webtrees\Report\ReportPdfText

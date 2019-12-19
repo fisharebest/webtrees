@@ -663,17 +663,4 @@ class PdfRenderer extends AbstractRenderer
     {
         return new ReportPdfLine($x1, $y1, $x2, $y2);
     }
-
-    /**
-     * Create an HTML element.
-     *
-     * @param string   $tag
-     * @param string[] $attrs
-     *
-     * @return ReportBaseHtml
-     */
-    public function createHTML(string $tag, array $attrs): ReportBaseHtml
-    {
-        return new ReportPdfHtml($tag, $attrs);
-    }
 }

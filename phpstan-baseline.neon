@@ -1941,21 +1941,6 @@ parameters:
 			path: app/Report/ReportHtmlFootnote.php
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement and 'footnotetexts' will always evaluate to false\\.$#"
-			count: 1
-			path: app/Report/ReportHtmlHtml.php
-
-		-
-			message: "#^Strict comparison using \\=\\=\\= between Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement and 'addpage' will always evaluate to false\\.$#"
-			count: 1
-			path: app/Report/ReportHtmlHtml.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlHtml\\:\\:render\\(\\) should return string\\|void but return statement is missing\\.$#"
-			count: 1
-			path: app/Report/ReportHtmlHtml.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlText\\:\\:getWidth\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Report/ReportHtmlText.php
@@ -2189,26 +2174,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:getWidth\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Report/ReportPdfFootnote.php
-
-		-
-			message: "#^Array \\(array\\<string\\>\\) does not accept float\\.$#"
-			count: 1
-			path: app/Report/ReportPdfHtml.php
-
-		-
-			message: "#^Strict comparison using \\=\\=\\= between Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement and 'footnotetexts' will always evaluate to false\\.$#"
-			count: 1
-			path: app/Report/ReportPdfHtml.php
-
-		-
-			message: "#^Strict comparison using \\=\\=\\= between Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement and 'addpage' will always evaluate to false\\.$#"
-			count: 1
-			path: app/Report/ReportPdfHtml.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfHtml\\:\\:render\\(\\) should return string\\|void but return statement is missing\\.$#"
-			count: 1
-			path: app/Report/ReportPdfHtml.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) return type has no value type specified in iterable type array\\.$#"

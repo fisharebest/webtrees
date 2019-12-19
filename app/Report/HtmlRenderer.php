@@ -438,19 +438,6 @@ class HtmlRenderer extends AbstractRenderer
     }
 
     /**
-     * Create an HTML element.
-     *
-     * @param string   $tag
-     * @param string[] $attrs
-     *
-     * @return ReportBaseHtml
-     */
-    public function createHTML(string $tag, array $attrs): ReportBaseHtml
-    {
-        return new ReportHtmlHtml($tag, $attrs);
-    }
-
-    /**
      * Clear the Header
      *
      * @return void

@@ -203,16 +203,6 @@ abstract class AbstractRenderer
     abstract public function createText(string $style, string $color): ReportBaseText;
 
     /**
-     * Create an HTML element.
-     *
-     * @param string   $tag
-     * @param string[] $attrs
-     *
-     * @return ReportBaseHtml
-     */
-    abstract public function createHTML(string $tag, array $attrs): ReportBaseHtml;
-
-    /**
      * Create a line.
      *
      * @param float $x1
