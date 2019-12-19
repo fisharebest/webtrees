@@ -284,9 +284,9 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <style>
+     * Handle <style>
      *
-     * @param string[]  $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs
      *
      * @return void
      */
@@ -325,10 +325,10 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <Doc>
+     * Handle <doc>
      * Sets up the basics of the document proparties
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs
      *
      * @return void
      */
@@ -420,7 +420,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML </Doc>
+     * Handle </doc>
      *
      * @return void
      */
@@ -430,7 +430,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <Header>
+     * Handle <header>
      *
      * @return void
      */
@@ -442,7 +442,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <bodyStartHandler>
+     * Handle <body>
      *
      * @return void
      */
@@ -452,7 +452,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <footerStartHandler>
+     * Handle <footer>
      *
      * @return void
      */
@@ -462,9 +462,9 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <Cell>
+     * Handle <cell>
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs
      *
      * @return void
      */
@@ -621,7 +621,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML </Cell>
+     * Handle </cell>
      *
      * @return void
      */
@@ -632,7 +632,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <Now /> element handler
+     * Handle <now />
      *
      * @return void
      */
@@ -642,7 +642,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <PageNum /> element handler
+     * Handle <pageNum />
      *
      * @return void
      */
@@ -652,7 +652,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <TotalPages /> element handler
+     * Handle <totalPages />
      *
      * @return void
      */
@@ -741,9 +741,9 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <textBoxStartHandler>
+     * Handle <textBox>
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs
      *
      * @return void
      */
@@ -869,7 +869,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <textBoxEndHandler>
+     * Handle <textBox>
      *
      * @return void
      */
@@ -914,7 +914,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML </Text>
+     * Handle </text>
      *
      * @return void
      */
@@ -925,7 +925,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <GetPersonName/>
+     * Handle <getPersonName />
      * Get the name
      * 1. id is empty - current GEDCOM record
      * 2. id is set with a record id
@@ -1009,9 +1009,9 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <GedcomValue/>
+     * Handle <gedcomValue />
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs
      *
      * @return void
      */
@@ -1085,9 +1085,9 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <RepeatTag>
+     * Handle <repeatTag>
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs
      *
      * @return void
      */
@@ -1156,7 +1156,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML </ RepeatTag>
+     * Handle </repeatTag>
      *
      * @return void
      */
@@ -1298,9 +1298,9 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <Facts>
+     * Handle <facts>
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs
      *
      * @return void
      */
@@ -1348,7 +1348,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML </Facts>
+     * Handle </facts>
      *
      * @return void
      */
@@ -1512,9 +1512,9 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <if > start element
+     * Handle <if>
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs
      *
      * @return void
      */
@@ -1583,7 +1583,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <if /> end element
+     * Handle </if>
      *
      * @return void
      */
@@ -1595,11 +1595,11 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <Footnote > start element
+     * Handle <footnote>
      * Collect the Footnote links
-     * GEDCOM Records that are protected by Privacy setting will be ignore
+     * GEDCOM Records that are protected by Privacy setting will be ignored
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs
      *
      * @return void
      */
@@ -1626,7 +1626,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <Footnote /> end element
+     * Handle </footnote>
      * Print the collected Footnote data
      *
      * @return void
@@ -1646,7 +1646,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <FootnoteTexts /> element
+     * Handle <footnoteTexts />
      *
      * @return void
      */
@@ -1669,7 +1669,8 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <sp />element Forced space handler
+     * Handle <sp />
+     * Forced space
      *
      * @return void
      */
@@ -1681,9 +1682,9 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <HighlightedImage/>
+     * Handle <highlightedImage />
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs
      *
      * @return void
      */
@@ -1733,9 +1734,9 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <Image/>
+     * Handle <image/>
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs
      *
      * @return void
      */
@@ -1803,9 +1804,9 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <Line> element handler
+     * Handle <line>
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs
      *
      * @return void
      */
@@ -1861,9 +1862,9 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <List>
+     * Handle <list>
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs
      *
      * @return void
      */
@@ -2267,7 +2268,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <List>
+     * Handle </list>
      *
      * @return void
      */
@@ -2359,10 +2360,9 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <ListTotal> element handler
+     * Handle <listTotal>
      * Prints the total number of records in a list
-     * The total number is collected from
-     * List and Relatives
+     * The total number is collected from <list> and <relatives>
      *
      * @return void
      */
@@ -2376,9 +2376,9 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <Relatives>
+     * Handle <relatives>
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs
      *
      * @return void
      */
@@ -2495,7 +2495,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML </ Relatives>
+     * Handle </relatives>
      *
      * @return void
      */
@@ -2584,7 +2584,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <Generation /> element handler
+     * Handle <generation />
      * Prints the number of generations
      *
      * @return void
@@ -2595,7 +2595,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <NewPage /> element handler
+     * Handle <newPage />
      * Has to be placed in an element (header, body or footer)
      *
      * @return void
@@ -2607,7 +2607,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML </titleEndHandler>
+     * Handle </title>
      *
      * @return void
      */
@@ -2617,7 +2617,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML </descriptionEndHandler>
+     * Handle </description>
      *
      * @return void
      */
