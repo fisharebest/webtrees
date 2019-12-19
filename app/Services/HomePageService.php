@@ -293,6 +293,7 @@ class HomePageService
     {
         $existing_block_ids = DB::table('block')
             ->where('user_id', '=', $user_id)
+            ->whereIn('location', [ModuleBlockInterface::MAIN_BLOCKS, ModuleBlockInterface::SIDE_BLOCKS])
             ->pluck('block_id');
 
         // Deleted blocks
@@ -349,6 +350,7 @@ class HomePageService
     {
         $existing_block_ids = DB::table('block')
             ->where('gedcom_id', '=', $tree_id)
+            ->whereIn('location', [ModuleBlockInterface::MAIN_BLOCKS, ModuleBlockInterface::SIDE_BLOCKS])
             ->pluck('block_id');
 
         // Deleted blocks
