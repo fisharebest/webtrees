@@ -1005,8 +1005,8 @@
     },
     {
         "name": "illuminate/container",
-        "version": "v5.8.35",
-        "version_normalized": "5.8.35.0",
+        "version": "v5.8.36",
+        "version_normalized": "5.8.36.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/container.git",
@@ -1052,8 +1052,8 @@
     },
     {
         "name": "illuminate/contracts",
-        "version": "v5.8.35",
-        "version_normalized": "5.8.35.0",
+        "version": "v5.8.36",
+        "version_normalized": "5.8.36.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/contracts.git",
@@ -1098,17 +1098,17 @@
     },
     {
         "name": "illuminate/database",
-        "version": "v5.8.35",
-        "version_normalized": "5.8.35.0",
+        "version": "v5.8.36",
+        "version_normalized": "5.8.36.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/database.git",
-            "reference": "56635c5e683a2e3c6c01a8a3bcad3683223d3cec"
+            "reference": "ac9ae2d82b8a6137400f17b3eea258be3518daa9"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/database/zipball/56635c5e683a2e3c6c01a8a3bcad3683223d3cec",
-            "reference": "56635c5e683a2e3c6c01a8a3bcad3683223d3cec",
+            "url": "https://api.github.com/repos/illuminate/database/zipball/ac9ae2d82b8a6137400f17b3eea258be3518daa9",
+            "reference": "ac9ae2d82b8a6137400f17b3eea258be3518daa9",
             "shasum": ""
         },
         "require": {
@@ -1126,7 +1126,7 @@
             "illuminate/filesystem": "Required to use the migrations (5.8.*).",
             "illuminate/pagination": "Required to paginate the result set (5.8.*)."
         },
-        "time": "2019-08-31T17:01:57+00:00",
+        "time": "2019-10-03T16:22:57+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1160,17 +1160,17 @@
     },
     {
         "name": "illuminate/support",
-        "version": "v5.8.35",
-        "version_normalized": "5.8.35.0",
+        "version": "v5.8.36",
+        "version_normalized": "5.8.36.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/support.git",
-            "reference": "e63a495d3bf01654f70def1046fb925c4bb56506"
+            "reference": "df4af6a32908f1d89d74348624b57e3233eea247"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/support/zipball/e63a495d3bf01654f70def1046fb925c4bb56506",
-            "reference": "e63a495d3bf01654f70def1046fb925c4bb56506",
+            "url": "https://api.github.com/repos/illuminate/support/zipball/df4af6a32908f1d89d74348624b57e3233eea247",
+            "reference": "df4af6a32908f1d89d74348624b57e3233eea247",
             "shasum": ""
         },
         "require": {
@@ -1192,7 +1192,7 @@
             "symfony/var-dumper": "Required to use the dd function (^4.2).",
             "vlucas/phpdotenv": "Required to use the env helper (^3.3)."
         },
-        "time": "2019-09-03T16:36:47+00:00",
+        "time": "2019-12-12T14:16:47+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1733,17 +1733,17 @@
     },
     {
         "name": "nesbot/carbon",
-        "version": "2.27.0",
-        "version_normalized": "2.27.0.0",
+        "version": "2.28.0",
+        "version_normalized": "2.28.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/briannesbitt/Carbon.git",
-            "reference": "13b8485a8690f103bf19cba64879c218b102b726"
+            "reference": "e2bcbcd43e67ee6101d321d5de916251d2870ca8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/13b8485a8690f103bf19cba64879c218b102b726",
-            "reference": "13b8485a8690f103bf19cba64879c218b102b726",
+            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e2bcbcd43e67ee6101d321d5de916251d2870ca8",
+            "reference": "e2bcbcd43e67ee6101d321d5de916251d2870ca8",
             "shasum": ""
         },
         "require": {
@@ -1759,7 +1759,7 @@
             "phpunit/phpunit": "^7.5 || ^8.0",
             "squizlabs/php_codesniffer": "^3.4"
         },
-        "time": "2019-11-20T06:59:06+00:00",
+        "time": "2019-12-16T16:30:25+00:00",
         "bin": [
             "bin/carbon"
         ],
@@ -2532,23 +2532,23 @@
     },
     {
         "name": "ramsey/uuid",
-        "version": "3.9.1",
-        "version_normalized": "3.9.1.0",
+        "version": "3.9.2",
+        "version_normalized": "3.9.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/ramsey/uuid.git",
-            "reference": "5ac2740e0c8c599d2bbe7f113a939f2b5b216c67"
+            "reference": "7779489a47d443f845271badbdcedfe4df8e06fb"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ramsey/uuid/zipball/5ac2740e0c8c599d2bbe7f113a939f2b5b216c67",
-            "reference": "5ac2740e0c8c599d2bbe7f113a939f2b5b216c67",
+            "url": "https://api.github.com/repos/ramsey/uuid/zipball/7779489a47d443f845271badbdcedfe4df8e06fb",
+            "reference": "7779489a47d443f845271badbdcedfe4df8e06fb",
             "shasum": ""
         },
         "require": {
             "ext-json": "*",
             "paragonie/random_compat": "^1 | ^2 | 9.99.99",
-            "php": "^5.4 | ^7",
+            "php": "^5.4 | ^7 | ^8",
             "symfony/polyfill-ctype": "^1.8"
         },
         "replace": {
@@ -2558,13 +2558,13 @@
             "codeception/aspect-mock": "^1 | ^2",
             "doctrine/annotations": "^1.2",
             "goaop/framework": "1.0.0-alpha.2 | ^1 | ^2.1",
-            "jakub-onderka/php-parallel-lint": "^0.9.0",
-            "mockery/mockery": "^0.9.9",
+            "jakub-onderka/php-parallel-lint": "^1",
+            "mockery/mockery": "^0.9.11 | ^1",
             "moontoast/math": "^1.1",
             "paragonie/random-lib": "^2",
             "php-mock/php-mock-phpunit": "^0.3 | ^1.1",
             "phpunit/phpunit": "^4.8 | ^5.4 | ^6.5",
-            "squizlabs/php_codesniffer": "^2.3"
+            "squizlabs/php_codesniffer": "^3.5"
         },
         "suggest": {
             "ext-ctype": "Provides support for PHP Ctype functions",
@@ -2576,7 +2576,7 @@
             "ramsey/uuid-console": "A console application for generating UUIDs with ramsey/uuid",
             "ramsey/uuid-doctrine": "Allows the use of Ramsey\\Uuid\\Uuid as Doctrine field type."
         },
-        "time": "2019-12-01T04:55:27+00:00",
+        "time": "2019-12-17T08:18:51+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
