@@ -48,20 +48,6 @@ class ReportParserSetup extends ReportParserBase
     }
 
     /**
-     * Handle <report>
-     *
-     * @param string[] $attrs
-     *
-     * @return void
-     */
-    protected function reportStartHandler(array $attrs): void
-    {
-        $this->data['access'] = $attrs['access'] ?? Auth::PRIV_PRIVATE;
-
-        $this->data['icon'] = $attrs['icon'] ?? '';
-    }
-
-    /**
      * Handle <var var="" />
      *
      * @param string[] $attrs
