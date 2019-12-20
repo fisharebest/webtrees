@@ -41,6 +41,7 @@
         "ext-xml": "*",
         "ext-zip": "*",
         "aura/router": "~3.1",
+        "cweagans/composer-patches": "~1.6",
         "doctrine/dbal": "~2.9",
         "ezyang/htmlpurifier": "~4.10",
         "fig/http-message-util": "^1.1",
@@ -166,8 +167,12 @@
         "webtrees:po": "Update the language (webtrees.pot, *.po)"
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "2.0-dev"
+        "composer-exit-on-patch-failure": true,
+        "enable-patching": true,
+        "patches": {
+            "tecnickcom/tcpdf": {
+                "PR #137": "https://github.com/tecnickcom/TCPDF/commit/0c73a9c580246b6f4e2eea196f0e4759f79ad632.patch"
+            }
         }
     }
 }

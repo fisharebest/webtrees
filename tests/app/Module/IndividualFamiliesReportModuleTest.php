@@ -109,16 +109,9 @@ class IndividualFamiliesReportModuleTest extends TestCase
         $this->assertStringEndsWith('>', $html);
 
         ob_start();
-        try {
-            if (PHP_VERSION_ID >= 70400) {
-                $this->expectException(Notice::class);
-                $this->expectExceptionMessage('Trying to access array offset on value of type int');
-            }
+        new ReportParserGenerate($xml, new PdfRenderer(), $vars, $tree, $data_filesystem);
+        $pdf = ob_get_clean();
 
-            new ReportParserGenerate($xml, new PdfRenderer(), $vars, $tree, $data_filesystem);
-        } finally {
-            $pdf = ob_get_clean();
-        }
         $this->assertStringStartsWith('%PDF', $pdf);
         $this->assertStringEndsWith("%%EOF\n", $pdf);
     }
