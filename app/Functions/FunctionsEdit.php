@@ -261,14 +261,12 @@ class FunctionsEdit
      */
     public static function optionsRestrictionsRule(): array
     {
-        $options = [
+        return [
             'none'         => I18N::translate('Show to visitors'),
             'privacy'      => I18N::translate('Show to members'),
             'confidential' => I18N::translate('Show to managers'),
             'hidden'       => I18N::translate('Hide from everyone'),
         ];
-
-        return $options;
     }
 
     /**

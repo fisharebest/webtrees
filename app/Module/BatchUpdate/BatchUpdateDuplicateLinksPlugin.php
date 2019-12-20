@@ -90,14 +90,10 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin
      */
     public function updateRecord(GedcomRecord $record): string
     {
-        $old_gedcom = $record->gedcom();
-
-        $new_gedcom = preg_replace([
+        return preg_replace([
             '/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
             '/(\n2.*@.+@.*(?:(?:\n[3-9].*)*))((?:\n2.*(?:\n[3-9].*)*)*\1)/',
             '/(\n3.*@.+@.*(?:(?:\n[4-9].*)*))((?:\n3.*(?:\n[4-9].*)*)*\1)/',
-        ], '$2', $old_gedcom);
-
-        return $new_gedcom;
+        ], '$2', $record->gedcom());
     }
 }

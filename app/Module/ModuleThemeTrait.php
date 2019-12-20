@@ -135,12 +135,10 @@ trait ModuleThemeTrait
      */
     public function individualBoxMenu(Individual $individual): array
     {
-        $menus = array_merge(
+        return array_merge(
             $this->individualBoxMenuCharts($individual),
             $this->individualBoxMenuFamilyLinks($individual)
         );
-
-        return $menus;
     }
 
     /**

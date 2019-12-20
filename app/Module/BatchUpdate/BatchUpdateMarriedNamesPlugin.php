@@ -106,9 +106,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
             }
         }
 
-        $new_gedcom = preg_replace('/(^1 NAME .*([\r\n]+[2-9].*)*)/m', '\\1' . implode('', $married_names), $old_gedcom, 1);
-
-        return $new_gedcom;
+        return preg_replace('/(^1 NAME .*([\r\n]+[2-9].*)*)/m', '\\1' . implode('', $married_names), $old_gedcom, 1);
     }
 
     /**

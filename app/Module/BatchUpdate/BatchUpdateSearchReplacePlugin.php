@@ -108,13 +108,13 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
      */
     public function updateRecord(GedcomRecord $record): string
     {
-        $old_gedcom = $record->gedcom();
-
         // Allow "\n" to indicate a line-feed in replacement text.
         // Back-references such as $1, $2 are handled automatically.
-        $new_gedcom = preg_replace('/' . $this->regex . '/mu' . $this->case, str_replace('\n', "\n", $this->replace), $old_gedcom);
-
-        return $new_gedcom;
+        return preg_replace(
+            '/' . $this->regex . '/mu' . $this->case,
+            str_replace('\n', "\n", $this->replace),
+            $record->gedcom()
+        );
     }
 
     /**
