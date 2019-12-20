@@ -429,17 +429,17 @@
     },
     {
         "name": "egulias/email-validator",
-        "version": "2.1.11",
-        "version_normalized": "2.1.11.0",
+        "version": "2.1.12",
+        "version_normalized": "2.1.12.0",
         "source": {
             "type": "git",
             "url": "https://github.com/egulias/EmailValidator.git",
-            "reference": "92dd169c32f6f55ba570c309d83f5209cefb5e23"
+            "reference": "a6255605af39f2db7f5cb62e672bd8a7bad8d208"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/92dd169c32f6f55ba570c309d83f5209cefb5e23",
-            "reference": "92dd169c32f6f55ba570c309d83f5209cefb5e23",
+            "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/a6255605af39f2db7f5cb62e672bd8a7bad8d208",
+            "reference": "a6255605af39f2db7f5cb62e672bd8a7bad8d208",
             "shasum": ""
         },
         "require": {
@@ -455,7 +455,7 @@
         "suggest": {
             "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
         },
-        "time": "2019-08-13T17:33:27+00:00",
+        "time": "2019-12-20T12:49:39+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2685,17 +2685,17 @@
     },
     {
         "name": "symfony/cache",
-        "version": "v4.4.1",
-        "version_normalized": "4.4.1.0",
+        "version": "v4.4.2",
+        "version_normalized": "4.4.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/cache.git",
-            "reference": "de737c81ea95018d11a3ef908ad2ebf203741b96"
+            "reference": "6af64bab165e588300378a87bcd2df3c7c31c144"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/cache/zipball/de737c81ea95018d11a3ef908ad2ebf203741b96",
-            "reference": "de737c81ea95018d11a3ef908ad2ebf203741b96",
+            "url": "https://api.github.com/repos/symfony/cache/zipball/6af64bab165e588300378a87bcd2df3c7c31c144",
+            "reference": "6af64bab165e588300378a87bcd2df3c7c31c144",
             "shasum": ""
         },
         "require": {
@@ -2727,7 +2727,7 @@
             "symfony/dependency-injection": "^3.4|^4.1|^5.0",
             "symfony/var-dumper": "^4.4|^5.0"
         },
-        "time": "2019-12-01T10:50:45+00:00",
+        "time": "2019-12-16T10:45:21+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2826,17 +2826,17 @@
     },
     {
         "name": "symfony/expression-language",
-        "version": "v4.4.1",
-        "version_normalized": "4.4.1.0",
+        "version": "v4.4.2",
+        "version_normalized": "4.4.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/expression-language.git",
-            "reference": "8a1028a65623a8f7bba582b60e4fd308e6f43001"
+            "reference": "539e7ff0b635c8b90d8127bc929da781a96eab2d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/expression-language/zipball/8a1028a65623a8f7bba582b60e4fd308e6f43001",
-            "reference": "8a1028a65623a8f7bba582b60e4fd308e6f43001",
+            "url": "https://api.github.com/repos/symfony/expression-language/zipball/539e7ff0b635c8b90d8127bc929da781a96eab2d",
+            "reference": "539e7ff0b635c8b90d8127bc929da781a96eab2d",
             "shasum": ""
         },
         "require": {
@@ -2844,7 +2844,7 @@
             "symfony/cache": "^3.4|^4.0|^5.0",
             "symfony/service-contracts": "^1.1|^2"
         },
-        "time": "2019-11-12T14:53:53+00:00",
+        "time": "2019-12-10T10:33:21+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3242,17 +3242,17 @@
     },
     {
         "name": "symfony/translation",
-        "version": "v4.4.1",
-        "version_normalized": "4.4.1.0",
+        "version": "v4.4.2",
+        "version_normalized": "4.4.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/translation.git",
-            "reference": "897fb68ee7933372517b551d6f08c6d4bb0b8c40"
+            "reference": "f7669f48a9633bf8139bc026c755e894b7206677"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/translation/zipball/897fb68ee7933372517b551d6f08c6d4bb0b8c40",
-            "reference": "897fb68ee7933372517b551d6f08c6d4bb0b8c40",
+            "url": "https://api.github.com/repos/symfony/translation/zipball/f7669f48a9633bf8139bc026c755e894b7206677",
+            "reference": "f7669f48a9633bf8139bc026c755e894b7206677",
             "shasum": ""
         },
         "require": {
@@ -3285,7 +3285,7 @@
             "symfony/config": "",
             "symfony/yaml": ""
         },
-        "time": "2019-11-12T17:18:47+00:00",
+        "time": "2019-12-12T12:53:52+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3379,8 +3379,8 @@
     },
     {
         "name": "symfony/var-exporter",
-        "version": "v4.4.1",
-        "version_normalized": "4.4.1.0",
+        "version": "v4.4.2",
+        "version_normalized": "4.4.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/var-exporter.git",
