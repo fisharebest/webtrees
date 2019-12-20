@@ -36,9 +36,13 @@ class AgeTest extends TestCase
 
     /**
      * @dataProvider ageProvider
-     * @covers \Fisharebest\Webtrees\Age::__construct
-     * @covers \Fisharebest\Webtrees\Age::asText
-     * @covers \Fisharebest\Webtrees\Age::extractNumber
+     * @covers       \Fisharebest\Webtrees\Age::__construct
+     * @covers       \Fisharebest\Webtrees\Age::asText
+     * @covers       \Fisharebest\Webtrees\Age::extractNumber
+     *
+     * @param $ageTest
+     * @param $ageAsText
+     *
      * @return void
      */
     public function testConstructor($ageTest, $ageAsText): void

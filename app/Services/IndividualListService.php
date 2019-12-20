@@ -352,10 +352,11 @@ class IndividualListService
      * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
      * To search for names with no surnames, use $salpha=","
      *
-     * @param string $surn   if set, only fetch people with this surname
-     * @param string $salpha if set, only fetch surnames starting with this letter
-     * @param string $galpha if set, only fetch given names starting with this letter
-     * @param bool   $marnm  if set, include married names
+     * @param string          $surn   if set, only fetch people with this surname
+     * @param string          $salpha if set, only fetch surnames starting with this letter
+     * @param string          $galpha if set, only fetch given names starting with this letter
+     * @param bool            $marnm  if set, include married names
+     * @param LocaleInterface $locale
      *
      * @return Family[]
      */

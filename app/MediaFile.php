@@ -333,6 +333,8 @@ class MediaFile
     /**
      * A list of image attributes
      *
+     * @param FilesystemInterface $data_filesystem
+     *
      * @return string[]
      */
     public function attributes(FilesystemInterface $data_filesystem): array
