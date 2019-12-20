@@ -197,17 +197,12 @@ class EmailService
      */
     public function isValidEmail(string $email): bool
     {
-        if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-            return false;
-        }
-
         $domain = substr(strrchr($email, '@'), 1);
 
-        if (filter_var($domain, FILTER_VALIDATE_DOMAIN) === false) {
-            return false;
-        }
+        $email_valid  = filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+        $domain_valid = filter_var($domain, FILTER_VALIDATE_DOMAIN) !== false;
 
-        return getmxrr($domain, $mxhosts);
+        return $email_valid && $domain_valid;
     }
 
     /**
