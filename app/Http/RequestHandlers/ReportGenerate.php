@@ -43,8 +43,6 @@ use function redirect;
 use function response;
 use function route;
 
-use const PHP_VERSION_ID;
-
 /**
  * Show all available reports.
  */

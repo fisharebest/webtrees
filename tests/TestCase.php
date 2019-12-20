@@ -45,8 +45,6 @@ use Symfony\Component\Cache\Adapter\NullAdapter;
 
 use function app;
 use function basename;
-use function define;
-use function defined;
 use function filesize;
 use function http_build_query;
 use function microtime;

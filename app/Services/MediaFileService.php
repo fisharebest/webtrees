@@ -40,8 +40,6 @@ use function assert;
 use function dirname;
 use function ini_get;
 use function intdiv;
-use function intval;
-use function ltrim;
 use function min;
 use function pathinfo;
 use function preg_match;
@@ -54,7 +52,6 @@ use function substr;
 use function trim;
 
 use const PATHINFO_EXTENSION;
-use const PHP_INT_MAX;
 use const UPLOAD_ERR_OK;
 
 /**

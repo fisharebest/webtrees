@@ -23,8 +23,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
-
 /**
  * Class GoogleAnalyticsModule - add support for Google analytics.
  */

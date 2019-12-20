@@ -38,7 +38,6 @@ use function function_exists;
 use function gethostbyaddr;
 use function gethostbyname;
 use function gethostname;
-use function getmxrr;
 use function str_replace;
 use function strrchr;
 use function substr;
