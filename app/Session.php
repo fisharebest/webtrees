@@ -90,6 +90,22 @@ class Session
     }
 
     /**
+     * Read a value from the session and remove it.
+     *
+     * @param string $name
+     * @param mixed  $default
+     *
+     * @return mixed
+     */
+    public static function pull(string $name, $default = null)
+    {
+        $value = self::get($name, $default);
+        self::forget($name);
+
+        return $value;
+    }
+
+    /**
      * After any change in authentication level, we should use a new session ID.
      *
      * @param bool $destroy
