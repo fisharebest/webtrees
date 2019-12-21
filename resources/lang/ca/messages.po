@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-11-24 08:49+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-24 22:41+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -1209,34 +1209,34 @@ msgstr "Posa %s al cistell"
 
 #: resources/views/modules/relatives/family.phtml:206
 msgid "Add a brother or sister"
-msgstr "Afegeix un nou germà o germana"
+msgstr "Afegiu un nou germà o germana"
 
 #: app/Http/Controllers/EditFamilyController.php:57
 #: resources/views/family-page-children.phtml:35
 #: resources/views/family-page-menu.phtml:39
 msgid "Add a child"
-msgstr "Afegeix un nou fill/a"
+msgstr "Afegiu un nou fill/a"
 
 #: app/Http/Controllers/EditIndividualController.php:57
 #: resources/views/modules/relatives/tab.phtml:133
 msgid "Add a child to create a one-parent family"
-msgstr "Afegeix un fill/a per crear una família monoparental"
+msgstr "Afegiu un fill/a per crear una família monoparental"
 
 #: resources/views/edit/raw-gedcom-record.phtml:48
 msgid "Add a fact"
-msgstr "Afegeix un fet"
+msgstr "Afegiu un esdeveniment"
 
 #: app/Http/Controllers/EditIndividualController.php:157
 #: resources/views/family-page-grandparents.phtml:24
 #: resources/views/family-page-grandparents.phtml:32
 #: resources/views/modules/relatives/tab.phtml:25
 msgid "Add a father"
-msgstr "Afegeix un nou pare"
+msgstr "Afegiu un pare"
 
 #: resources/views/modules/favorites/favorites.phtml:42
 #: resources/views/modules/favorites/favorites.phtml:52
 msgid "Add a favorite"
-msgstr "Afegeix un nou favorit"
+msgstr "Afegiu-hi un nou favorit"
 
 #: app/Http/Controllers/EditFamilyController.php:155
 #: app/Http/Controllers/EditIndividualController.php:252
@@ -1245,16 +1245,16 @@ msgstr "Afegeix un nou favorit"
 #: resources/views/modules/relatives/family.phtml:48
 #: resources/views/modules/relatives/tab.phtml:112
 msgid "Add a husband"
-msgstr "Afegeix-li un nou espòs"
+msgstr "Afegiu un espòs"
 
 #: app/Http/Controllers/EditIndividualController.php:596
 #: resources/views/modules/relatives/tab.phtml:124
 msgid "Add a husband using an existing individual"
-msgstr "Afegeix-li un espòs emprant algú existent"
+msgstr "Afegiu un espòs emprant algú existent"
 
 #: resources/views/modules/user_blog/list.phtml:48
 msgid "Add a journal entry"
-msgstr "Afegeix una nova entrada a l’Agenda"
+msgstr "Afegiu una nova entrada a l’Agenda"
 
 #: app/Http/Controllers/EditMediaController.php:87
 #: resources/views/media-page.phtml:187
@@ -1268,39 +1268,39 @@ msgstr "Afegeix un fitxer multimèdia"
 #: resources/views/individual-page.phtml:89
 #: resources/views/source-page.phtml:88
 msgid "Add a media object"
-msgstr "Afegeix un objecte multimèdia"
+msgstr "Afegiu un objecte multimèdia"
 
 #: app/Http/Controllers/EditIndividualController.php:154
 #: resources/views/family-page-grandparents.phtml:54
 #: resources/views/family-page-grandparents.phtml:62
 #: resources/views/modules/relatives/tab.phtml:32
 msgid "Add a mother"
-msgstr "Afegeix una nova mare"
+msgstr "Afegiu una mare"
 
 #: app/Http/Controllers/EditIndividualController.php:475
 #: resources/views/individual-page-menu.phtml:24
 msgid "Add a name"
-msgstr "Afegeix un altre nom"
+msgstr "Afegiu un nom"
 
 #: resources/views/modules/gedcom_news/list.phtml:51
 msgid "Add a news article"
-msgstr "Afegeix una Notícia"
+msgstr "Afegiu una notícia"
 
 #: resources/views/cards/add-note.phtml:7 resources/views/family-page.phtml:75
 #: resources/views/modules/notes/tab.phtml:45
 msgid "Add a note"
-msgstr "Afegeix una nova nota"
+msgstr "Afegiu una nota"
 
 #: resources/views/cards/add-restriction.phtml:7
 #: resources/views/media-page.phtml:177
 msgid "Add a restriction"
-msgstr "Afegeix una nova restricció"
+msgstr "Afegiu una restricció"
 
 #: resources/views/cards/add-shared-note.phtml:7
 #: resources/views/family-page.phtml:86 resources/views/media-page.phtml:167
 #: resources/views/modules/notes/tab.phtml:55
 msgid "Add a shared note"
-msgstr "Afegeix una nova nota compartida"
+msgstr "Afegiu una nota compartida"
 
 #: resources/views/modules/relatives/family.phtml:204
 msgid "Add a son or daughter"
@@ -1310,18 +1310,18 @@ msgstr "Afeugiu un nou fill o filla"
 #: resources/views/family-page.phtml:110 resources/views/media-page.phtml:157
 #: resources/views/modules/sources_tab/tab.phtml:43
 msgid "Add a source citation"
-msgstr "Afegeix una nova ressenya de font"
+msgstr "Afegiu una ressenya de font"
 
 #: app/Module/StoriesModule.php:300
 #: resources/views/modules/stories/config.phtml:28
 #: resources/views/modules/stories/tab.phtml:27
 msgid "Add a story"
-msgstr "Afegeix una història"
+msgstr "Afegiu una història"
 
 #: app/Http/Controllers/Admin/UsersController.php:214
 #: resources/views/admin/control-panel.phtml:342
 msgid "Add a user"
-msgstr "Afegeix un nou usuari"
+msgstr "Afegiu un usuari"
 
 #: app/Http/Controllers/EditFamilyController.php:152
 #: app/Http/Controllers/EditIndividualController.php:256
@@ -1330,22 +1330,22 @@ msgstr "Afegeix un nou usuari"
 #: resources/views/modules/relatives/family.phtml:85
 #: resources/views/modules/relatives/tab.phtml:110
 msgid "Add a wife"
-msgstr "Afegeix-li una nova muller"
+msgstr "Afegiu una muller"
 
 #: app/Http/Controllers/EditIndividualController.php:599
 #: resources/views/modules/relatives/tab.phtml:122
 msgid "Add a wife using an existing individual"
-msgstr "Afegeix-li una muller emprant algú existent"
+msgstr "Afegiu una muller emprant algú existent"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:303
 #: resources/views/modules/faq/config.phtml:34
 msgid "Add an FAQ"
-msgstr "Afegeix una PMF"
+msgstr "Afegiu una PMF"
 
 #: resources/views/cards/add-associate.phtml:11
 msgid "Add an associate"
-msgstr "Afegeix un nou associat"
+msgstr "Afegiu un associat"
 
 #: resources/views/cards/add-sour-data-even.phtml:7
 msgid "Add an event"
@@ -1369,11 +1369,11 @@ msgstr "Afegeix esdeveniments històrics a la pàgina d'una persona."
 
 #: resources/views/modules/lifespans-chart/page.phtml:20
 msgid "Add individuals"
-msgstr "Afegeix persones"
+msgstr "Afegiu persones"
 
 #: resources/views/modules/relatives/family.phtml:128
 msgid "Add marriage details"
-msgstr "Afegeix detalls del casament"
+msgstr "Afegiu detalls del casament"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:38
 msgid "Add missing death records"
@@ -1440,7 +1440,7 @@ msgstr "Afegiu els vostres propis textos i gràfics."
 
 #: app/Module/FamilyTreeNewsModule.php:180 app/Module/UserJournalModule.php:180
 msgid "Add/edit a journal/news entry"
-msgstr "Afegeix/edita entrades de l’Agenda"
+msgstr "Afegiu/editeu entrades de l’Agenda"
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:458 resources/views/modals/submitter-fields.phtml:11
@@ -8308,26 +8308,26 @@ msgstr "Enllaça el compte d'usuari a una persona."
 #: app/Http/Controllers/EditIndividualController.php:520
 #: resources/views/modules/relatives/tab.phtml:101
 msgid "Link this individual to an existing family as a child"
-msgstr "Vincula aquesta persona a una família existent com a fill/a"
+msgstr "Vinculeu aquesta persona a una família existent com a fill/a"
 
 #: resources/views/media-page-menu.phtml:24
 #: resources/views/modals/link-media-to-family.phtml:8
 msgid "Link this media object to a family"
-msgstr "Vincula aquest objecte multimèdia a una família"
+msgstr "Vinculeu aquest objecte multimèdia a una família"
 
 #: resources/views/media-page-menu.phtml:29
 #: resources/views/modals/link-media-to-source.phtml:8
 msgid "Link this media object to a source"
-msgstr "Vincula aquest objecte multimèdia a una font"
+msgstr "Vinculeu aquest objecte multimèdia a una font"
 
 #: resources/views/media-page-menu.phtml:19
 #: resources/views/modals/link-media-to-individual.phtml:8
 msgid "Link this media object to an individual"
-msgstr "Vincula aquest objecte multimèdia a una persona"
+msgstr "Vinculeu aquest objecte multimèdia a una persona"
 
 #: resources/views/admin/users-edit.phtml:293
 msgid "Link this user to an individual in the family tree."
-msgstr "Vincula aquest usuari a una persona de l'arbre genealògic."
+msgstr "Vinculeu aquest usuari a una persona de l'arbre genealògic."
 
 #. I18N: gedcom tag _DBID
 #: app/GedcomTag.php:1656
