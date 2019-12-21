@@ -30,6 +30,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function session_destroy;
 use function session_status;
+use function session_write_close;
 
 use const PHP_SESSION_ACTIVE;
 
@@ -70,6 +71,12 @@ class UseSession implements MiddlewareInterface
 
         $request = $request->withAttribute('user', $user);
 
-        return $handler->handle($request);
+        $response = $handler->handle($request);
+
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_write_close();
+        }
+
+        return $response;
     }
 }
