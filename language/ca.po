@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-24 08:49+0000\n"
+"PO-Revision-Date: 2019-12-24 22:42+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
@@ -1270,80 +1270,80 @@ msgstr "Afegeix files en blanc"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
-msgstr "Afegeix un nou germà o germana"
+msgstr "Afegiu un nou germà o germana"
 
 #: edit_interface.php:496
 msgid "Add a child"
-msgstr "Afegeix un nou fill/a"
+msgstr "Afegiu un nou fill/a"
 
 #: app/Module/RelativesTabModule.php:398 edit_interface.php:575
 msgid "Add a child to create a one-parent family"
-msgstr "Afegeix un fill/a per crear una família monoparental"
+msgstr "Afegiu un fill/a per crear una família monoparental"
 
 #: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
-msgstr "Afegeix un fill a aquesta família"
+msgstr "Afegiu un fill a aquesta família"
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr "Afegeix un fet"
+msgstr "Afegiu un esdeveniment"
 
 #: app/Module/RelativesTabModule.php:326 edit_interface.php:655 family.php:92
 msgid "Add a father"
-msgstr "Afegeix un nou pare"
+msgstr "Afegiu un pare"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
 msgid "Add a favorite"
-msgstr "Afegeix un nou favorit"
+msgstr "Afegiu-hi un nou favorit"
 
 #: app/Module/GoogleMapsModule.php:4016
 msgid "Add a geographic location"
-msgstr "Afegeix una nova ubicació geogràfica"
+msgstr "Afegiu una nova ubicació geogràfica"
 
 #: app/Module/RelativesTabModule.php:387 edit_interface.php:790
 #: edit_interface.php:880
 msgid "Add a husband"
-msgstr "Afegeix-li un nou espòs"
+msgstr "Afegiu un espòs"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
-msgstr "Afegeix un marit a aquesta família"
+msgstr "Afegiu un marit a aquesta família"
 
 #: app/Module/RelativesTabModule.php:392 edit_interface.php:1064
 #: edit_interface.php:1136
 msgid "Add a husband using an existing individual"
-msgstr "Afegeix-li un espòs emprant algú existent"
+msgstr "Afegiu un espòs emprant algú existent"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
-msgstr "Afegeix una nova entrada a l’Agenda"
+msgstr "Afegiu una nova entrada a l’Agenda"
 
 #: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1129
 #: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
 #: app/Module/MediaTabModule.php:87 source.php:168
 msgid "Add a media object"
-msgstr "Afegeix un objecte multimèdia"
+msgstr "Afegiu un objecte multimèdia"
 
 #: app/Module/RelativesTabModule.php:329 edit_interface.php:652 family.php:96
 msgid "Add a mother"
-msgstr "Afegeix una nova mare"
+msgstr "Afegiu una mare"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1635
 msgid "Add a name"
-msgstr "Afegeix un altre nom"
+msgstr "Afegiu un nom"
 
 #: app/Module/FamilyTreeNewsModule.php:130
 msgid "Add a news article"
-msgstr "Afegeix una Notícia"
+msgstr "Afegiu una notícia"
 
 #: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1108
 #: app/Module/NotesTabModule.php:102
 msgid "Add a note"
-msgstr "Afegeix una nova nota"
+msgstr "Afegiu una nota"
 
 #: app/Functions/FunctionsEdit.php:1139
 msgid "Add a restriction"
-msgstr "Afegeix una nova restricció"
+msgstr "Afegiu una restricció"
 
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
@@ -1357,7 +1357,7 @@ msgstr "Afegeix una barra de desplaçament quan el contingut del bloc creixi"
 #: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1118
 #: app/Module/NotesTabModule.php:112
 msgid "Add a shared note"
-msgstr "Afegeix una nova nota compartida"
+msgstr "Afegiu una nota compartida"
 
 #: app/Module/RelativesTabModule.php:271
 msgid "Add a son or daughter"
@@ -1366,49 +1366,49 @@ msgstr "Afeugiu un nou fill o filla"
 #: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1057
 #: app/Module/SourcesTabModule.php:95
 msgid "Add a source citation"
-msgstr "Afegeix una nova ressenya de font"
+msgstr "Afegiu una ressenya de font"
 
 #: edit_interface.php:817
 msgid "Add a spouse"
-msgstr "Afegeix un/a nou/nova cònjuge"
+msgstr "Afegiu un/a cònjuge"
 
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
 msgid "Add a story"
-msgstr "Afegeix una història"
+msgstr "Afegiu una història"
 
 #. I18N: Menu entry
 #: admin_users.php:264 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
-msgstr "Afegeix un nou usuari"
+msgstr "Afegiu un usuari"
 
 #: app/Module/RelativesTabModule.php:375 edit_interface.php:787
 #: edit_interface.php:877
 msgid "Add a wife"
-msgstr "Afegeix-li una nova muller"
+msgstr "Afegiu una muller"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
-msgstr "Afegeix una esposa a aquesta família"
+msgstr "Afegiu una esposa a aquesta família"
 
 #: app/Module/RelativesTabModule.php:380 edit_interface.php:1067
 #: edit_interface.php:1138
 msgid "Add a wife using an existing individual"
-msgstr "Afegeix-li una muller emprant algú existent"
+msgstr "Afegiu una muller emprant algú existent"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ"
-msgstr "Afegeix una PMF"
+msgstr "Afegiu una PMF"
 
 #: app/Functions/FunctionsEdit.php:1086 app/Functions/FunctionsEdit.php:1090
 msgid "Add an associate"
-msgstr "Afegeix un nou associat"
+msgstr "Afegiu un associat"
 
 #: timeline.php:299
 msgid "Add another individual to the chart"
-msgstr "Afegeix a una altra persona al gràfic"
+msgstr "Afegiu una altra persona al gràfic"
 
 #: app/Functions/FunctionsPrint.php:551
 msgid "Add from clipboard"
@@ -1416,15 +1416,15 @@ msgstr "Enganxa des del portapapers"
 
 #: lifespan.php:44 modules_v3/GEDFact_assistant/census/census-edit.php:82
 msgid "Add individuals"
-msgstr "Afegeix persones"
+msgstr "Afegiu persones"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:158
 msgid "Add links"
-msgstr "Afegeix enllaços"
+msgstr "Afegiu enllaços"
 
 #: app/Module/RelativesTabModule.php:226
 msgid "Add marriage details"
-msgstr "Afegeix detalls del casament"
+msgstr "Afegiu detalls del casament"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:31
 msgid "Add missing death records"
@@ -1493,7 +1493,7 @@ msgstr "Afegiu els vostres propis textos i gràfics."
 
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
-msgstr "Afegeix/edita entrades de l’Agenda"
+msgstr "Afegiu/editeu entrades de l’Agenda"
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
@@ -8257,26 +8257,26 @@ msgstr "Enllaça el compte d'usuari a una persona."
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:963
 #: edit_interface.php:1023
 msgid "Link this individual to an existing family as a child"
-msgstr "Vincula aquesta persona a una família existent com a fill/a"
+msgstr "Vinculeu aquesta persona a una família existent com a fill/a"
 
 #: admin_media.php:531 app/Controller/MediaController.php:57
 #: app/Controller/MediaController.php:127 app/Module/AlbumModule.php:178
 msgid "Link this media object to a family"
-msgstr "Vincula aquest objecte multimèdia a una família"
+msgstr "Vinculeu aquest objecte multimèdia a una família"
 
 #: admin_media.php:532 app/Controller/MediaController.php:61
 #: app/Controller/MediaController.php:130 app/Module/AlbumModule.php:184
 msgid "Link this media object to a source"
-msgstr "Vincula aquest objecte multimèdia a una font"
+msgstr "Vinculeu aquest objecte multimèdia a una font"
 
 #: admin_media.php:530 app/Controller/MediaController.php:53
 #: app/Controller/MediaController.php:124 app/Module/AlbumModule.php:172
 msgid "Link this media object to an individual"
-msgstr "Vincula aquest objecte multimèdia a una persona"
+msgstr "Vinculeu aquest objecte multimèdia a una persona"
 
 #: admin_users.php:594
 msgid "Link this user to an individual in the family tree."
-msgstr "Vincula aquest usuari a una persona de l'arbre genealògic."
+msgstr "Vinculeu aquest usuari a una persona de l'arbre genealògic."
 
 #: app/Controller/FamilyController.php:165 app/Module/AlbumModule.php:103
 #: app/Module/AlbumModule.php:104 app/Module/CensusAssistantModule.php:234
@@ -8284,7 +8284,7 @@ msgstr "Vincula aquest usuari a una persona de l'arbre genealògic."
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:73
 #: source.php:171
 msgid "Link to an existing media object"
-msgstr "Vincula-hi un objecte multimèdia existent"
+msgstr "Vinculeu-hi un objecte multimèdia existent"
 
 #. I18N: gedcom tag _DBID
 #: app/GedcomTag.php:1352
