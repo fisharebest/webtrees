@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\CaptchaService;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
@@ -40,6 +41,9 @@ class ContactPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
+    /** @var CaptchaService */
+    private $captcha_service;
+
     /** @var MessageService */
     private $message_service;
 
@@ -49,11 +53,16 @@ class ContactPage implements RequestHandlerInterface
     /**
      * MessagePage constructor.
      *
+     * @param CaptchaService $captcha_service
      * @param MessageService $message_service
      * @param UserService    $user_service
      */
-    public function __construct(MessageService $message_service, UserService $user_service)
-    {
+    public function __construct(
+        CaptchaService $captcha_service,
+        MessageService $message_service,
+        UserService $user_service
+    ) {
+        $this->captcha_service = $captcha_service;
         $this->user_service    = $user_service;
         $this->message_service = $message_service;
     }
@@ -88,6 +97,7 @@ class ContactPage implements RequestHandlerInterface
 
         return $this->viewResponse('contact-page', [
             'body'       => $body,
+            'captcha'    => $this->captcha_service->createCaptcha(),
             'from_email' => $from_email,
             'from_name'  => $from_name,
             'subject'    => $subject,

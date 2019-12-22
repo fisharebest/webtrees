@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\NoReplyUser;
+use Fisharebest\Webtrees\Services\CaptchaService;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
@@ -45,26 +46,30 @@ use function view;
  */
 class RegisterAction extends AbstractBaseController
 {
-    /**
-     * @var EmailService
-     */
+    /** @var CaptchaService */
+    private $captcha_service;
+
+    /** @var EmailService */
     private $email_service;
 
-    /**
-     * @var UserService
-     */
+    /** @var UserService */
     private $user_service;
 
     /**
      * RegisterController constructor.
      *
-     * @param EmailService $email_service
-     * @param UserService  $user_service
+     * @param CaptchaService $captcha_service
+     * @param EmailService   $email_service
+     * @param UserService    $user_service
      */
-    public function __construct(EmailService $email_service, UserService $user_service)
-    {
-        $this->email_service = $email_service;
-        $this->user_service  = $user_service;
+    public function __construct(
+        CaptchaService $captcha_service,
+        EmailService $email_service,
+        UserService $user_service
+    ) {
+        $this->captcha_service = $captcha_service;
+        $this->email_service   = $email_service;
+        $this->user_service    = $user_service;
     }
 
     /**
@@ -89,6 +94,10 @@ class RegisterAction extends AbstractBaseController
         $username  = $params['username'] ?? '';
 
         try {
+            if ($this->captcha_service->isRobot($request)) {
+                throw new Exception(I18N::translate('Please try again.'));
+            }
+
             $this->doValidateRegistration($request, $username, $email, $realname, $comments, $password);
         } catch (Exception $ex) {
             FlashMessages::addMessage($ex->getMessage(), 'danger');

@@ -20,17 +20,34 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\CaptchaService;
 use Fisharebest\Webtrees\Site;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * Show a registration page.
  */
-class RegisterPage extends AbstractBaseController
+class RegisterPage implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
+    /** @var CaptchaService */
+    private $captcha_service;
+
+    /**
+     * RegisterPage constructor.
+     *
+     * @param CaptchaService $captcha_service
+     */
+    public function __construct(CaptchaService $captcha_service)
+    {
+        $this->captcha_service = $captcha_service;
+    }
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -51,6 +68,7 @@ class RegisterPage extends AbstractBaseController
         $title = I18N::translate('Request a new user account');
 
         return $this->viewResponse('register-page', [
+            'captcha'      => $this->captcha_service->createCaptcha(),
             'comments'     => $comments,
             'email'        => $email,
             'realname'     => $realname,

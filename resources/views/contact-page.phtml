@@ -9,6 +9,7 @@ use Fisharebest\Webtrees\I18N;
 
 <form method="post" action="<?= e(route(ContactAction::class, ['tree' => $tree->name()])) ?>">
     <?= csrf_field() ?>
+    <?= $captcha ?>
     <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="url" value="<?= e($url) ?>">
 
