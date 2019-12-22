@@ -33,7 +33,9 @@ use function session_set_cookie_params;
 use function session_set_save_handler;
 use function session_start;
 use function session_status;
+use function session_write_close;
 
+use const PHP_SESSION_ACTIVE;
 use const PHP_URL_HOST;
 use const PHP_URL_PATH;
 use const PHP_URL_SCHEME;
@@ -44,6 +46,7 @@ use const PHP_URL_SCHEME;
 class Session
 {
     private const SESSION_NAME = 'WT2_SESSION';
+
     /**
      * Start a session
      *
@@ -73,6 +76,17 @@ class Session
         if (self::get('initiated') !== true) {
             self::regenerate(true);
             self::put('initiated', true);
+        }
+    }
+
+    /**
+     * Save/close the session.  This releases the session lock.
+     * Closing early can help concurrent connections.
+     */
+    public static function save(): void
+    {
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_write_close();
         }
     }
 
