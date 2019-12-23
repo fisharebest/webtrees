@@ -447,6 +447,9 @@ class WebRoutes
                     ],
                 ]);
 
+                $router->post(MessageSelect::class, '/message-select', MessageSelect::class);
+                $router->get(MessagePage::class, '/message-compose', MessagePage::class);
+                $router->post(MessageAction::class, '/message-send', MessageAction::class);
                 $router->get(UserPage::class, '/my-page', UserPage::class);
                 $router->get(UserPageBlock::class, '/my-page-block', UserPageBlock::class);
                 $router->get(UserPageEdit::class, '/my-page-edit', UserPageEdit::class);
@@ -503,9 +506,6 @@ class WebRoutes
                 $router->get('media-thumbnail', '/media-thumbnail', 'MediaFileController::mediaThumbnail');
                 $router->get('media-download', '/media-download', 'MediaFileController::mediaDownload');
                 $router->get(MediaPage::class, '/media/{xref}{/slug}', MediaPage::class);
-                $router->post(MessageSelect::class, '/message-select', MessageSelect::class);
-                $router->get(MessagePage::class, '/message-compose', MessagePage::class);
-                $router->post(MessageAction::class, '/message-send', MessageAction::class);
                 $router->get(NotePage::class, '/note/{xref}{/slug}', NotePage::class);
                 $router->get(GedcomRecordPage::class, '/record/{xref}{/slug}', GedcomRecordPage::class);
                 $router->get(RepositoryPage::class, '/repository/{xref}{/slug}', RepositoryPage::class);
