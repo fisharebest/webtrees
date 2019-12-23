@@ -426,11 +426,13 @@ class FunctionsPrintFacts
                     }
                     break;
                 case '_WT_USER':
-                    $user = (new UserService())->findByIdentifier($match[2]); // may not exist
-                    if ($user) {
-                        echo GedcomTag::getLabelValue('_WT_USER', '<span dir="auto">' . e($user->realName()) . '</span>');
-                    } else {
-                        echo GedcomTag::getLabelValue('_WT_USER', e($match[2]));
+                    if (Auth::check()) {
+                        $user = (new UserService())->findByIdentifier($match[2]); // may not exist
+                        if ($user) {
+                            echo GedcomTag::getLabelValue('_WT_USER', '<span dir="auto">' . e($user->realName()) . '</span>');
+                        } else {
+                            echo GedcomTag::getLabelValue('_WT_USER', e($match[2]));
+                        }
                     }
                     break;
                 case 'RESN':
