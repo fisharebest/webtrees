@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Schema\SeedGedcomTable;
 use Fisharebest\Webtrees\Schema\SeedSiteSettingTable;
 use Fisharebest\Webtrees\Schema\SeedUserTable;
 use Fisharebest\Webtrees\Site;
+use Illuminate\Database\Capsule\Manager as DB;
 use PDOException;
 
 /**
@@ -38,13 +39,19 @@ class MigrationService
      *
      * @param string $namespace      Where to find our MigrationXXX classes
      * @param string $schema_name    Which schema to update.
-     * @param int    $target_version Updade to this version
+     * @param int    $target_version Upgrade to this version
      *
      * @throws PDOException
      * @return bool  Were any updates applied
      */
     public function updateSchema($namespace, $schema_name, $target_version): bool
     {
+        try {
+            $this->transactionalTables();
+        } catch (PDOException $ex) {
+            // There is probably nothing we can do.
+        }
+
         try {
             $current_version = (int) Site::getPreference($schema_name);
         } catch (PDOException $ex) {
@@ -66,6 +73,38 @@ class MigrationService
         }
 
         return $updates_applied;
+    }
+
+    /**
+     * Upgrades from older installations may have MyISAM or other non-transactional tables.
+     * These could prevent us from creating foreign key constraints.
+     *
+     * @return void
+     * @throws PDOException
+     */
+    private function transactionalTables(): void
+    {
+        $connection = DB::connection();
+
+        if ($connection->getDriverName() !== 'mysql') {
+            return;
+        }
+
+        $sql = "SELECT table_name FROM information_schema.tables JOIN information_schema.engines USING (engine) WHERE table_schema = ? AND LEFT(table_name, ?) = ? AND transactions <> 'YES'";
+
+        $bindings = [
+            $connection->getDatabaseName(),
+            mb_strlen($connection->getTablePrefix()),
+            $connection->getTablePrefix(),
+        ];
+
+        $rows = DB::connection()->select($sql, $bindings);
+
+        foreach ($rows as $row) {
+            $table = $row->TABLE_NAME ?? $row->table_name;
+            $alter_sql = 'ALTER TABLE `' . $table . '` ENGINE=InnoDB';
+            DB::connection()->statement($alter_sql);
+        }
     }
 
     /**

@@ -20,12 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\I18N;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use SQLite3;
-use stdClass;
-use Throwable;
 
 use function array_map;
 use function class_exists;
@@ -99,7 +96,6 @@ class ServerCheckService
     {
         $warnings = Collection::make([
             $this->databaseDriverWarnings($driver),
-            $this->databaseEngineWarnings(),
             $this->checkPhpExtension('curl'),
             $this->checkPhpExtension('fileinfo'),
             $this->checkPhpExtension('gd'),
@@ -339,54 +335,5 @@ class ServerCheckService
             default:
                 return new Collection();
         }
-    }
-
-    /**
-     * @return Collection<string>
-     */
-    private function databaseEngineWarnings(): Collection
-    {
-        $warnings = new Collection();
-
-        try {
-            $connection = DB::connection();
-        } catch (Throwable $ex) {
-            // During setup, there won't be a connection.
-            return new Collection();
-        }
-
-        if ($connection->getDriverName() === 'mysql') {
-            $sql = "SELECT table_name FROM information_schema.tables JOIN information_schema.engines USING (engine) WHERE table_schema = ? AND LEFT(table_name, ?) = ? AND transactions <> 'YES'";
-
-            $bindings = [
-                $connection->getDatabaseName(),
-                mb_strlen($connection->getTablePrefix()),
-                $connection->getTablePrefix(),
-            ];
-
-            $rows = DB::connection()->select($sql, $bindings);
-
-            $rows = new Collection($rows);
-
-            $rows = $rows->map(static function (stdClass $row): string {
-                $table = $row->TABLE_NAME ?? $row->table_name;
-                return '<code>ALTER TABLE `' . $table . '` ENGINE=InnoDB;</code>';
-            });
-
-            if ($rows->isNotEmpty()) {
-                $warning =
-                    'The database uses non-transactional tables.' .
-                    ' ' .
-                    'You may get errors if more than one user updates data at the same time.' .
-                    ' ' .
-                    'To fix this, run the following SQL commands.' .
-                    '<br>' .
-                    $rows->implode('<br>');
-
-                $warnings->push($warning);
-            }
-        }
-
-        return $warnings;
     }
 }
