@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-24 22:41+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-28 11:56+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -8166,7 +8166,7 @@ msgstr "Darrer accés"
 #: resources/views/modules/html/template-statistics.phtml:67
 #: resources/views/statistics/individuals/total-events.phtml:54
 msgid "Latest birth"
-msgstr "Darrer neixement"
+msgstr "Darrer naixement"
 
 #: resources/views/modules/gedcom_stats/config.phtml:31
 #: resources/views/modules/gedcom_stats/statistics.phtml:173
@@ -18770,7 +18770,7 @@ msgstr "dies complementaris"
 #: resources/views/media-list-page.phtml:103
 #: resources/views/media-list-page.phtml:202
 msgid "last"
-msgstr "darrer"
+msgstr "última"
 
 #: resources/views/admin/trees-preferences.phtml:583
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -19257,7 +19257,7 @@ msgstr "Vista prèvia"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:101
 #: resources/views/setup/step-5-administrator.phtml:86
 msgid "previous"
-msgstr "previ"
+msgstr "prèvia"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/GedcomCode/GedcomCodeQuay.php:49
