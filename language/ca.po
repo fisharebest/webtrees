@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-12-24 22:42+0000\n"
+"PO-Revision-Date: 2019-12-28 11:56+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
@@ -8104,7 +8104,7 @@ msgstr "Darrer accés"
 
 #: statistics.php:137
 msgid "Latest birth"
-msgstr "Darrer neixement"
+msgstr "Darrer naixement"
 
 #: app/Module/FamilyTreeStatisticsModule.php:149
 #: app/Module/FamilyTreeStatisticsModule.php:334
@@ -18813,7 +18813,7 @@ msgstr "dies complementaris"
 #. I18N: A button label, last page
 #: admin_trees_config.php:1508 app/I18N.php:223
 msgid "last"
-msgstr "darrer"
+msgstr "última"
 
 #: admin_trees_config.php:1520
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -19210,7 +19210,7 @@ msgstr "Vista prèvia"
 #. I18N: A button label, previous page
 #: app/I18N.php:225 app/Module/BatchUpdateModule.php:246
 msgid "previous"
-msgstr "previ"
+msgstr "prèvia"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/GedcomCode/GedcomCodeQuay.php:39
