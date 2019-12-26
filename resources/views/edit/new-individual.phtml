@@ -310,7 +310,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
                 I18N::translate('save') ?>
             </button>
             <?php if (preg_match('/^add-(child|spouse|parent|unlinked-individual)/', $next_action)) : ?>
-                <button class="btn btn-primary" type="submit" name="goto" value="<?= $xref ?>">
+                <button class="btn btn-primary" type="submit" name="goto" value="new">
                     <?= view('icons/save') ?>
                     <?= /* I18N: A button label. */
                     I18N::translate('go to new individual') ?>
