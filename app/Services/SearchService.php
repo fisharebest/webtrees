@@ -696,7 +696,7 @@ class SearchService
             } elseif ($parts[0] === 'FAMS') {
                 // e.g. searches for occupation, religion, note, etc.
                 // Initial matching only.  Need PHP to apply filter.
-                $query->where('families.f_gedcom', 'LIKE', "%\n1 " . $parts[1] . ' %' . $field_value . '%');
+                $query->where('spouse_families.f_gedcom', 'LIKE', "%\n1 " . $parts[1] . ' %' . $field_value . '%');
             } elseif ($parts[1] === 'TYPE') {
                 // e.g. FACT:TYPE or EVEN:TYPE
                 // Initial matching only.  Need PHP to apply filter.
