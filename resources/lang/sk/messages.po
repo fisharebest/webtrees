@@ -1,22 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: Slovak (webtrees)\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-10 16:16+0000\n"
-"PO-Revision-Date: 2019-11-09 09:32+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Slovak <http://translate.webtrees.net/projects/webtrees/webtrees/sk/>\n"
-"Language: sk\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Slovak\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-28 11:56+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -88,7 +71,7 @@ msgstr "Bolo stiahnutých %1$s KB za %2$s sekúnd."
 #: app/Http/Controllers/Admin/UsersController.php:333
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s neexistuje"
 
 # I18N: placeholders are GEDCOM XREFs, such as R123
 #. I18N: placeholders are GEDCOM XREFs, such as R123
@@ -249,9 +232,9 @@ msgstr[2] "%s dní"
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s rodina"
+msgstr[1] "%s rodiny"
+msgstr[2] "%s rodín"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
@@ -295,17 +278,17 @@ msgstr[2] "%s osôb bolo zmenených."
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s osoba s udalosťami medzi  %s a %s"
+msgstr[1] "%s osoby s udalosťami medzi  %s a %s"
+msgstr[2] "%s osôb s udalosťami medzi  %s a %s"
 
 #: app/Module/LifespansChartModule.php:412
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s osoba s udalosťami v roku %s"
+msgstr[1] "%s osoby s udalosťami v roku %s"
+msgstr[2] "%s osôb s udalosťami v roku %s"
 
 #: app/Module/LifespansChartModule.php:400
 #, php-format
@@ -319,9 +302,9 @@ msgstr[2] ""
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Naimportovalo sa %s miesto."
+msgstr[1] "Naimportovali sa %s miesta."
+msgstr[2] "Naimportovalo sa %s miest."
 
 #: app/Module/UserMessagesModule.php:228
 #, php-format
@@ -365,9 +348,9 @@ msgstr "%s o generáciu nižšie"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Bol aktualizovaný %s archív."
+msgstr[1] "Boli aktualizované %s archívy."
+msgstr[2] "Bolo aktualizovaných %s archívov."
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:9
@@ -477,7 +460,7 @@ msgstr "%s&nbsp;n.l."
 #: app/Module/StatisticsChartModule.php:878
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s+"
 
 #: app/Module/ClippingsCartModule.php:601
 #, php-format
@@ -692,12 +675,12 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:19
 msgid "A URL"
-msgstr ""
+msgstr "URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:113
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "Schéma zobrazujúca vzťah medzi dvomi osobami."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:103
@@ -816,17 +799,17 @@ msgstr "Zoznam záznamov, ktoré boli nedávno zmenené."
 #. I18N: Description of the “Repositories” module
 #: app/Module/RepositoryListModule.php:60
 msgid "A list of repositories."
-msgstr ""
+msgstr "Zoznam archívov."
 
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:60
 msgid "A list of shared notes."
-msgstr ""
+msgstr "Zoznam zdieľaných poznámok."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:60
 msgid "A list of sources."
-msgstr ""
+msgstr "Zoznam zdrojov."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:65
@@ -1000,9 +983,8 @@ msgid "A report of vital records for a given date or place."
 msgstr "Výpis dôležitých záznamov pre dané miesto alebo dátum."
 
 #: resources/views/admin/users-edit.phtml:221
-#, fuzzy
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Rola je súbor prístupových práv, ktoré dávajú povolenie zobrazovať údaje, meniť konfiguračné nastavenia, atď. Prístupové práva sú pridelené jednotlivým roliam a užívateľom je pridelená príslušná rola. V každom rodokmeni môže byť priradený jednotlivej roli iný prístup a užívatelia môžu mať rôzne role v rôznych rodokmeňoch."
+msgstr "Rola je súbor prístupových práv, ktoré dávajú povolenie zobrazovať údaje, meniť nastavenia, atď. Prístupové práva sú pridelené jednotlivým roliam a užívateľom je pridelená príslušná rola. V každom rodokmeni môže byť priradený jednotlivej roli iný prístup a užívatelia môžu mať rôzne role v rôznych rodokmeňoch."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:51
@@ -1047,12 +1029,11 @@ msgstr "Záložka zobrazujúca zdroje pripojené k danej osobe."
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:108
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "Časová os zobrazujúca udalosti osoby."
 
 #: resources/views/admin/users-edit.phtml:99
-#, fuzzy
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Užívateľ nebude schopný sa prihlásiť do tej doby, dokedy nebude jeho „email overený“ a „schválený správcom“ (príslušné voľby označené)."
+msgstr "Užívateľ sa nebude môcť prihlásiť, pokiaľ nebudú zaškrtnuté voľby  „Email overený“ a „Schválené administrátorom“."
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -1796,7 +1777,7 @@ msgstr "Album"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:237
 msgid "Albuquerque, New Mexico, United States"
-msgstr "Albuquerque, New Mexico, United States"
+msgstr "Albuquerque, New Mexico, USA"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:167
@@ -2236,7 +2217,7 @@ msgstr "Na mori"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:252
 msgid "Atlanta, Georgia, United States"
-msgstr "Atlanta, Georgia, United States"
+msgstr "Atlanta, Georgia, USA"
 
 #: app/GedcomCode/GedcomCodeRela.php:96
 msgid "Attendant"
@@ -2564,7 +2545,7 @@ msgstr "Krst syna"
 #. I18N: gedcom tag BARM
 #: app/GedcomTag.php:517 resources/xml/reports/missing_facts_report.xml:17
 msgid "Bar mitzvah"
-msgstr "Bar mitzvah"
+msgstr "Bar micva"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:106
@@ -2574,7 +2555,7 @@ msgstr "Barbados"
 #. I18N: gedcom tag BASM
 #: app/GedcomTag.php:524 resources/xml/reports/missing_facts_report.xml:18
 msgid "Bat mitzvah"
-msgstr "Bat mitzvah"
+msgstr "Bat micva"
 
 #. I18N: Name of a module
 #: app/Module/BatchUpdateModule.php:78 app/Module/BatchUpdateModule.php:160
@@ -2585,7 +2566,7 @@ msgstr "Hromadné úpravy"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:285
 msgid "Baton Rouge, Louisiana, United States"
-msgstr "Baton Rouge, Louisiana, United States"
+msgstr "Baton Rouge, Louisiana, USA"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:225
 msgid "Begins with"
@@ -2643,7 +2624,7 @@ msgstr "Bibliografia"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:258
 msgid "Billings, Montana, United States"
-msgstr "Billings, Montana, United States"
+msgstr "Billings, Montana, USA"
 
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:545
@@ -2652,12 +2633,12 @@ msgstr "Binárny datový objekt"
 
 #: app/Functions/FunctionsPrint.php:375 app/Functions/FunctionsPrint.php:377
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Maps™"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:261
 msgid "Birmingham, Alabama, United States"
-msgstr "Birmingham, Alabama, United States"
+msgstr "Birmingham, Alabama, USA"
 
 #. I18N: gedcom tag BIRT
 #: app/GedcomTag.php:531 resources/views/calendar-page.phtml:156
@@ -2909,7 +2890,7 @@ msgstr "Narodených v storočí"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:264
 msgid "Bismarck, North Dakota, United States"
-msgstr "Bismarck, North Dakota, United States"
+msgstr "Bismarck, North Dakota, USA"
 
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:538
@@ -2945,7 +2926,7 @@ msgstr "Bogota, Kolumbia"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:270
 msgid "Boise, Idaho, United States"
-msgstr "Boise, Idaho, United States"
+msgstr "Boise, Idaho, USA"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:102
@@ -2970,7 +2951,7 @@ msgstr "Bosna a Hercegovina"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:273
 msgid "Boston, Massachusetts, United States"
-msgstr "Boston, Massachusetts, United States"
+msgstr "Boston, Massachusetts, USA"
 
 #: resources/views/lists/families-table.phtml:158
 msgid "Both alive"
@@ -2988,7 +2969,7 @@ msgstr "Botswana"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:276
 msgid "Bountiful, Utah, United States"
-msgstr "Bountiful, Utah, United States"
+msgstr "Bountiful, Utah, USA"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:112
@@ -3020,7 +3001,7 @@ msgstr "Družička"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Brigham City, Utah, United States"
-msgstr ""
+msgstr "Brigham City, Utah, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:282
@@ -3391,7 +3372,7 @@ msgstr "Príčina smrti"
 
 #: resources/views/modals/media-file-fields.phtml:92
 msgid "Caution!"
-msgstr ""
+msgstr "Pozor!"
 
 #: resources/views/admin/trees-renumber.phtml:37
 #: resources/views/admin/trees.phtml:336
@@ -3406,7 +3387,7 @@ msgstr "Kajmanské ostrovy"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:297
 msgid "Cebu City, Philippines"
-msgstr ""
+msgstr "Cebu City, Filipíny"
 
 #. I18N: gedcom tag CEME
 #: app/GedcomTag.php:564
@@ -3461,7 +3442,7 @@ msgstr "Stredoafrická republika"
 #: resources/views/lists/individuals-table.phtml:119
 #: resources/views/lists/individuals-table.phtml:134
 msgid "Century"
-msgstr ""
+msgstr "Storočie"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2363
@@ -3573,7 +3554,7 @@ msgstr "Kontrolovať konfiguráciu serveru"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:300
 msgid "Chicago, Illinois, United States"
-msgstr "Chicago, Illinois, United States"
+msgstr "Chicago, Illinois, USA"
 
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:41 app/GedcomTag.php:589
@@ -3849,17 +3830,17 @@ msgstr "Colonia Juarez, Mexiko"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:324
 msgid "Columbia River, Washington, United States"
-msgstr "Columbia River, Washington, United States"
+msgstr "Columbia River, Washington, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:312
 msgid "Columbia, South Carolina, United States"
-msgstr "Columbia, South Carolina, United States"
+msgstr "Columbia, South Carolina, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:315
 msgid "Columbus, Ohio, United States"
-msgstr "Columbus, Ohio, United States"
+msgstr "Columbus, Ohio, USA"
 
 #. I18N: gedcom tag COMM
 #: app/GedcomTag.php:608
@@ -4293,7 +4274,7 @@ msgstr "Kuba"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:327
 msgid "Curitiba, Brazil"
-msgstr ""
+msgstr "Curitiba, Brazília"
 
 #: app/Module/HtmlBlockModule.php:204 app/Module/StatisticsChartModule.php:169
 msgid "Custom"
@@ -4350,7 +4331,7 @@ msgstr "Daitch-Mokotoff"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:330
 msgid "Dallas, Texas, United States"
-msgstr "Dallas, Texas, United States"
+msgstr "Dallas, Texas, USA"
 
 #. I18N: gedcom tag DATA
 #: app/GedcomTag.php:643 resources/views/admin/changes-log.phtml:117
@@ -4426,17 +4407,17 @@ msgstr "Dátum LDS krstu"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:1011
 msgid "Date of LDS child sealing"
-msgstr "Date of LDS child sealing"
+msgstr ""
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:703
 msgid "Date of LDS endowment"
-msgstr "Date of LDS endowment"
+msgstr ""
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:754
 msgid "Date of LDS spouse sealing"
-msgstr "Date of LDS spouse sealing"
+msgstr ""
 
 #: app/GedcomTag.php:469
 msgid "Date of adoption"
@@ -5070,7 +5051,7 @@ msgstr "Dánsko"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:333
 msgid "Denver, Colorado, United States"
-msgstr "Denver, Colorado, United States"
+msgstr "Denver, Colorado, USA"
 
 #: resources/views/admin/upgrade/wizard.phtml:26
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
@@ -5144,7 +5125,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:336
 msgid "Detroit, Michigan, United States"
-msgstr "Detroit, Michigan, United States"
+msgstr "Detroit, Michigan, USA"
 
 #: app/Date/JalaliDate.php:268
 msgctxt "Abbreviation for Persian month: Dey"
@@ -5349,7 +5330,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:339
 msgid "Draper, Utah, United States"
-msgstr ""
+msgstr "Draper, Utah, USA"
 
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:289
@@ -5627,7 +5608,7 @@ msgstr "Konečný dátum rozsahu zmien"
 #. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
 #: app/GedcomCode/GedcomCodeTemp.php:345
 msgid "Endowment House"
-msgstr "Endowment House"
+msgstr ""
 
 #. I18N: gedcom tag ENGA
 #: app/GedcomTag.php:709 resources/xml/reports/missing_facts_report.xml:20
@@ -6570,7 +6551,7 @@ msgstr "Často kladené otázky"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:357
 msgid "Fresno, California, United States"
-msgstr "Fresno, California, United States"
+msgstr "Fresno, California, USA"
 
 #. I18N: abbreviation for Friday
 #: app/Date/AbstractCalendarDate.php:273
@@ -7003,7 +6984,7 @@ msgstr "Hamilton, Nový Zéland"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:384
 msgid "Hartford, Connecticut, United States"
-msgstr "Hartford, Connecticut, United States"
+msgstr "Hartford, Connecticut, USA"
 
 #: resources/xml/reports/descendancy_report.xml:428
 msgid "He "
@@ -8083,7 +8064,7 @@ msgstr "Kislev"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:417
 msgid "Kona, Hawaii, United States"
-msgstr "Kona, Hawaii, United States"
+msgstr "Kona, Hawaii, USA"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:286
@@ -8108,7 +8089,7 @@ msgstr "LDS krst"
 #. I18N: gedcom tag SLGC. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:1008
 msgid "LDS child sealing"
-msgstr "LDS child sealing"
+msgstr ""
 
 #. I18N: gedcom tag CONL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:624
@@ -8118,12 +8099,12 @@ msgstr "LDS birmovanie"
 #. I18N: gedcom tag ENDL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:700
 msgid "LDS endowment"
-msgstr "LDS endowment"
+msgstr ""
 
 #. I18N: gedcom tag SLGS. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:1017
 msgid "LDS spouse sealing"
-msgstr "LDS spouse sealing"
+msgstr ""
 
 #: app/Functions/FunctionsPrint.php:392
 msgid "LDS temple"
@@ -8132,7 +8113,7 @@ msgstr "Chrám LDS (Temple)"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:387
 msgid "Laie, Hawaii, United States"
-msgstr "Laie, Hawaii, United States"
+msgstr "Laie, Hawaii, USA"
 
 #. I18N: page orientation
 #: app/Http/Controllers/AdminTreesController.php:736
@@ -8488,7 +8469,7 @@ msgstr "Zemepisná dĺžka"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:423
 msgid "Los Angeles, California, United States"
-msgstr "Los Angeles, California, United States"
+msgstr "Los Angeles, California, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:435
@@ -9565,7 +9546,7 @@ msgstr "Matkina rodina s neznámou osobou"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:486
 msgid "Mount Timpanogos, Utah, United States"
-msgstr "Mount Timpanogos, Utah, United States"
+msgstr "Mount Timpanogos, Utah, USA"
 
 #: resources/views/admin/components.phtml:31
 #: resources/views/admin/components.phtml:127
@@ -9795,7 +9776,7 @@ msgstr "Nová Kaledónia"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:504
 msgid "New York, New York, United States"
-msgstr "New York, New York, United States"
+msgstr "New York, New York, USA"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:383
@@ -9822,7 +9803,7 @@ msgstr "Nové overenie na %s"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:498
 msgid "Newport Beach, California, United States"
-msgstr "Newport Beach, California, United States"
+msgstr "Newport Beach, California, USA"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeNewsModule.php:117
@@ -10254,7 +10235,7 @@ msgstr "Pestúnka"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:510
 msgid "Oakland, California, United States"
-msgstr "Oakland, California, United States"
+msgstr "Oakland, California, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:513
@@ -10319,7 +10300,7 @@ msgstr "Ogden, Utah, United States"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:519
 msgid "Oklahoma City, Oklahoma, United States"
-msgstr "Oklahoma City, Oklahoma, United States"
+msgstr "Oklahoma City, Oklahoma, USA"
 
 #: resources/views/admin/changes-log.phtml:52
 msgid "Old data"
@@ -10450,7 +10431,7 @@ msgstr "Orientácia"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:525
 msgid "Orlando, Florida, United States"
-msgstr "Orlando, Florida, United States"
+msgstr "Orlando, Florida, USA"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2405 app/Module/StatisticsChartModule.php:164
@@ -10566,7 +10547,7 @@ msgstr "Paleta"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:531
 msgid "Palmyra, New York, United States"
-msgstr "Palmyra, New York, United States"
+msgstr "Palmyra, New York, USA"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:389
@@ -10819,17 +10800,17 @@ msgstr "Miesto LDS krstu"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:1014
 msgid "Place of LDS child sealing"
-msgstr "Place of LDS child sealing"
+msgstr ""
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:706
 msgid "Place of LDS endowment"
-msgstr "Place of LDS endowment"
+msgstr ""
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:757
 msgid "Place of LDS spouse sealing"
-msgstr "Place of LDS spouse sealing"
+msgstr ""
 
 #: app/GedcomTag.php:471
 msgid "Place of adoption"
@@ -11178,7 +11159,7 @@ msgstr "Vlastníctvo"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:558
 msgid "Provo City Center, Utah, United States"
-msgstr ""
+msgstr "Provo City Center, Utah, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:561
@@ -11330,7 +11311,7 @@ msgstr "Rajab"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:567
 msgid "Raleigh, North Carolina, United States"
-msgstr "Raleigh, North Carolina, United States"
+msgstr "Raleigh, North Carolina, USA"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:144
@@ -11445,7 +11426,7 @@ msgstr "Záznam"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:573
 msgid "Redlands, California, United States"
-msgstr "Redlands, California, United States"
+msgstr "Redlands, California, USA"
 
 #. I18N: gedcom tag REFN
 #: app/GedcomTag.php:955
@@ -11769,7 +11750,7 @@ msgstr "Odchod do dôchodku"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:417
 msgid "Reunion"
-msgstr "Reunion"
+msgstr "Réunion"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:582
@@ -11826,7 +11807,7 @@ msgstr "Rwanda"
 
 #: resources/views/admin/site-mail.phtml:92
 msgid "SMTP mail server"
-msgstr "SMTP mail server"
+msgstr "Server SMTP"
 
 #: app/Services/ServerCheckService.php:324
 msgid "SQLite is only suitable for small sites, testing and evaluation."
@@ -11840,7 +11821,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:585
 msgid "Sacramento, California, United States"
-msgstr "Sacramento, California, United States"
+msgstr "Sacramento, California, USA"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:130
@@ -11918,7 +11899,7 @@ msgstr "San Antonio, Texas, United States"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:597
 msgid "San Diego, California, United States"
-msgstr "San Diego, California, United States"
+msgstr "San Diego, California, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:612
@@ -13496,7 +13477,7 @@ msgstr "Tadžikistan"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:648
 msgid "Tampico, Mexico"
-msgstr "Tampico, Mexico"
+msgstr "Tampico, Mexiko"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:215
@@ -13890,27 +13871,23 @@ msgstr ""
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:765
-#, fuzzy
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
-msgstr "Toto je krátky zoznam GEDCOM-tagov pre fakty rodiny, ktoré sa zobrazujú vedľa plného zoznamu a môžu byť pridané jedným kliknutím."
+msgstr "Najpoužívanejšie rodinné fakty a udalosti sú zobrazené separátne, aby sa dali jednoducho pridať."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:711
-#, fuzzy
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
-msgstr "Toto je krátky zoznam GEDCOM-tagov pre fakty osôb, ktoré sa zobrazujú vedľa plného zoznamu a môžu byť pridané jedným kliknutím."
+msgstr "Najpoužívanejšie fakty a udalosti osôb sú zobrazené separátne, aby sa dali jednoducho pridať."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:847
-#, fuzzy
 msgid "The most common repository facts are listed separately, so that they can be added more easily."
-msgstr "Toto je krátký zoznam GEDCOM-tagov faktov pre archívy, ktoré sa zobrazujú vedľa plného zoznamu a môžu byť pridané jedným kliknutím."
+msgstr "Najpoužívanejšie fakty o archívoch sú zobrazené separátne, aby sa dali jednoducho pridať."
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:806
-#, fuzzy
 msgid "The most common source facts are listed separately, so that they can be added more easily."
-msgstr "Toto je krátky zoznam GEDCOM-tagov faktov, ktoré sa objavia vedľa plného zoznamu a môžu byť pridané na jeden klik."
+msgstr "Najpoužívanejšie fakty o zdrojoch sú zobrazené separátne, aby sa dali jednoducho pridať."
 
 #: resources/views/admin/site-registration.phtml:50
 msgid "The new user will be asked to confirm their email address before the account is created."
@@ -14236,9 +14213,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Tento účet ešte nebol overený. Prekontrolujte, prosím, vašu e-mailovú schránku, či sa tam nenachádza správa, potrebná pre verifikáciu."
 
 #: resources/views/modules/review_changes/config.phtml:4
-#, fuzzy
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Tento blok zobrazí editorom zoznam záznamov so zmenami, ktoré musia byť schválené moderátorom. Zároveň generuje e-maily, ak existujú zmeny čakajúce na schválenie.."
+msgstr "Tento blok zobrazí editorom zoznam záznamov so zmenami, ktoré musia byť schválené moderátorom. Zároveň generuje denne e-maily moderátorom, ak existujú zmeny čakajúce na schválenie."
 
 #: resources/views/admin/users-create.phtml:63
 #: resources/views/admin/users-edit.phtml:68
@@ -14573,9 +14549,8 @@ msgstr "Táto voľba kontroluje, či sa majú zobrazovať odhadované dátumy na
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:275
-#, fuzzy
 msgid "This option will make it easier for users to download images."
-msgstr "Media Viewer môže zobraziť linky, kliknutím na ne môžete načítať súbory médií na lokálne PC.<br><br>Môžete ukryť linky z dôvodu ochrany."
+msgstr "Táto možnosť uľahčuje užívateľom stiahnuť obrázky."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:159
@@ -14663,18 +14638,16 @@ msgid "This research is a “legitimate interest” under article 6(f) of the EU
 msgstr ""
 
 #: resources/views/admin/users-edit.phtml:250
-#, fuzzy
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr "Táto rola má práva role „editor“, ako aj právo schvalovať/zamietať zmeny vykonané inými užívateľmi."
+msgstr "Táto rola má všetky práva role „editor“, plus  právo schvaľovať/zamietať zmeny vykonané inými užívateľmi."
 
 #: resources/views/admin/users-edit.phtml:264
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
 msgstr "Táto rola má všetky práva role „manažér“ vo všetkých rodokmeňoch, ako aj právo meniť konfiguráciu/nastavenia webu, užívateľov a modulov."
 
 #: resources/views/admin/users-edit.phtml:244
-#, fuzzy
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Táto rola má všetky práva role „člen“, ak aj právo pridávať/meniť/mazať údaje. Všetky zmeny musia byť schválené moderátorom, ak užívateľ nemá aktivované „automaticky prijať zmeny“."
+msgstr "Táto rola má všetky práva role „člen“, plus právo pridávať/meniť/mazať údaje. Všetky zmeny musia byť schválené moderátorom, ak užívateľ nemá aktivované „automaticky prijať zmeny“."
 
 #: resources/views/admin/users-edit.phtml:258
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -15216,7 +15189,7 @@ msgstr "Tuvalu"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:654
 msgid "Tuxtla Gutierrez, Mexico"
-msgstr "Tuxtla Gutierrez, Mexico"
+msgstr "Tuxtla Gutierrez, Mexiko"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:669
@@ -15291,9 +15264,8 @@ msgstr "Unikátne rodinné fakty"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:2065
-#, fuzzy
 msgid "Unique identifier"
-msgstr "Globálne unikátny identifikátor"
+msgstr "Jedinečný identifikátor"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: resources/views/admin/trees-preferences.phtml:137
@@ -15704,7 +15676,7 @@ msgstr "Zobraziť tento rok"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:681
 msgid "Villa Hermosa, Mexico"
-msgstr "Villa Hermosa, Mexico"
+msgstr "Villa Hermosa, Mexiko"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:155
