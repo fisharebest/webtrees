@@ -35,6 +35,7 @@ class Census
             case 'cs':
                 return [
                     new CensusOfCzechRepublic(),
+                    new CensusOfSlovakia(),
                     new CensusOfDenmark(),
                     new CensusOfDeutschland(),
                     new CensusOfEngland(),
@@ -55,6 +56,7 @@ class Census
                     new CensusOfDenmark(),
                     new CensusOfDeutschland(),
                     new CensusOfFrance(),
+                    new CensusOfSlovakia(),
                 ];
 
             case 'en-US':
@@ -66,6 +68,7 @@ class Census
                     new CensusOfEngland(),
                     new CensusOfFrance(),
                     new CensusOfScotland(),
+                    new CensusOfSlovakia(),
                     new CensusOfWales(),
                 ];
 
@@ -78,6 +81,7 @@ class Census
                     new CensusOfDeutschland(),
                     new CensusOfEngland(),
                     new CensusOfScotland(),
+                    new CensusOfSlovakia(),
                     new CensusOfUnitedStates(),
                     new CensusOfWales(),
                 ];
@@ -90,6 +94,7 @@ class Census
                     new CensusOfEngland(),
                     new CensusOfFrance(),
                     new CensusOfScotland(),
+                    new CensusOfSlovakia(),
                     new CensusOfUnitedStates(),
                     new CensusOfWales(),
                 ];
@@ -102,6 +107,7 @@ class Census
                     new CensusOfEngland(),
                     new CensusOfFrance(),
                     new CensusOfScotland(),
+                    new CensusOfSlovakia(),
                     new CensusOfUnitedStates(),
                     new CensusOfWales(),
                 ];
@@ -115,6 +121,7 @@ class Census
                     new CensusOfDeutschland(),
                     new CensusOfFrance(),
                     new CensusOfCzechRepublic(),
+                    new CensusOfSlovakia(),
                     new CensusOfDenmark(),
                 ];
         }
