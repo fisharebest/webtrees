@@ -63,9 +63,11 @@ use Ramsey\Uuid\Uuid;
             <input
                 class="form-control"
                 id="MAX_ALIVE_AGE"
-                maxlength="5"
+                min="1"
+                max="9999"
                 name="MAX_ALIVE_AGE"
-                type="text"
+                required
+                type="number"
                 value="<?= e($tree->getPreference('MAX_ALIVE_AGE')) ?>"
             >
             <p class="small text-muted">
