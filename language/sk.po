@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-12-28 11:56+0000\n"
+"PO-Revision-Date: 2020-01-03 08:31+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -359,9 +359,9 @@ msgstr[2] "%s osôb s udalosťami v roku %s"
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s osoba s udalosťami v %s medzi %s a %s"
+msgstr[1] "%s osoby s udalosťami v %s medzi %s a %s"
+msgstr[2] "%s osôb s udalosťami v %s medzi %s a %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:122
@@ -3342,7 +3342,7 @@ msgstr "CKEditor™"
 
 #: admin_trees_manage.php:367
 msgid "Calculating…"
-msgstr ""
+msgstr "Počítam…"
 
 #: app/Module/YahrzeitModule.php:280 app/Theme/AbstractTheme.php:1061
 #: lifespan.php:93
@@ -3358,7 +3358,7 @@ msgstr "Konverzia kalendára"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:123
 msgid "Calgary, Alberta, Canada"
-msgstr ""
+msgstr "Calgary, Alberata, Kanada"
 
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:234
@@ -3429,7 +3429,7 @@ msgstr "Príčina smrti"
 
 #: admin_trees_manage.php:767 admin_trees_renumber.php:286
 msgid "Caution! This may take a long time. Be patient."
-msgstr ""
+msgstr "Pozor! Môže to trvať dlho. Buďte trpezliví."
 
 #: admin_site_upgrade.php:138
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -3530,7 +3530,7 @@ msgstr ""
 #: app/Module/RecentChangesModule.php:261
 #, php-format
 msgid "Changed on %1$s"
-msgstr ""
+msgstr "Zmenené dňa %1$s"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Module/RecentChangesModule.php:258
@@ -4083,7 +4083,7 @@ msgstr "Copyright"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:145
 msgid "Cordoba, Argentina"
-msgstr ""
+msgstr "Cordoba, Argentína"
 
 #. I18N: gedcom tag CORP
 #: app/GedcomTag.php:326
