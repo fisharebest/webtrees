@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-10 16:16+0000\n"
-"PO-Revision-Date: 2019-10-17 14:09+0000\n"
-"Last-Translator: Suleyman <hsarslan@yahoo.com>\n"
-"Language-Team: Turkish <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/tr/>\n"
-"Language: tr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.10\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-28 21:10+0000\nLast-Translator: Suleyman <hsarslan@yahoo.com>\nLanguage-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\nLanguage: tr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -229,8 +217,8 @@ msgstr[1] "%s gün"
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s aile"
+msgstr[1] "%s aile"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
@@ -734,7 +722,7 @@ msgstr "Site ziyaretçileri için bir Karşılama mesajı."
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:68
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "Site kişilerine bağlantı."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
@@ -1369,7 +1357,7 @@ msgstr "<code>&lt;body&gt;</code> elemanının sonuna içerik ekleyin."
 
 #: resources/views/modules/custom-css-js/edit.phtml:16
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr ""
+msgstr "<code>&lt;head&gt;</code> elemanının sonuna içerik ekleyin."
 
 #: resources/views/edit/paste-fact-row.phtml:12
 msgid "Add from clipboard"
@@ -1377,7 +1365,7 @@ msgstr "Panodan ekle"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
-msgstr ""
+msgstr "Kişinin sayfasına geçmiş etkinlikler ekleyin."
 
 #: resources/views/modules/lifespans-chart/page.phtml:20
 msgid "Add individuals"
@@ -1397,7 +1385,7 @@ msgstr "Eksik evlilik adları ekle"
 
 #: resources/views/edit-blocks-page.phtml:30
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "Aşağıdaki listeden daha fazla blok ekleyin."
 
 #: resources/views/search-advanced-page.phtml:30
 msgid "Add more fields"
@@ -1726,7 +1714,7 @@ msgstr "Yaş aralığı"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:398
 msgid "Age of parents next to child’s birthdate"
-msgstr "çocukların doğum tarihinin yanında ebeyenlerin yaşı"
+msgstr "çocukların doğum tarihinin yanında ebeveynlerin yaşı"
 
 #: resources/views/lists/individuals-table.phtml:531
 #: resources/views/lists/individuals-table.phtml:573
@@ -4294,7 +4282,7 @@ msgstr "Çek Cumhuriyeti"
 #. I18N: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail
 #: resources/views/admin/site-mail.phtml:202
 msgid "DKIM digital signature"
-msgstr ""
+msgstr "DKIM Dijital imza"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1787
@@ -4319,7 +4307,7 @@ msgstr "Veri"
 
 #: resources/views/modules/privacy-policy/page.phtml:53
 msgid "Data controller"
-msgstr ""
+msgstr "Veri kontrolü"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
@@ -5272,7 +5260,7 @@ msgstr "Doküman"
 
 #: resources/views/admin/site-mail.phtml:207
 msgid "Domain name"
-msgstr ""
+msgstr "Domain adı"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:161
@@ -5304,7 +5292,7 @@ msgstr "Dosyayı İndir"
 
 #: resources/views/edit-blocks-page.phtml:11
 msgid "Drag the blocks to change their position."
-msgstr ""
+msgstr "Konumunu değiştirmek için blokları sürükleyin."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:339
@@ -5506,7 +5494,7 @@ msgstr "Elul"
 
 #: resources/views/password-request-page.phtml:20
 msgid "Email"
-msgstr ""
+msgstr "E-posta"
 
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag _EMAIL
@@ -6585,13 +6573,13 @@ msgstr "Frimaire"
 #: resources/views/message-page.phtml:13
 msgctxt "Email sender"
 msgid "From"
-msgstr ""
+msgstr "Gönderen"
 
 #: resources/views/admin/changes-log.phtml:22
 #: resources/views/admin/site-logs.phtml:23
 msgctxt "Start of date range"
 msgid "From"
-msgstr ""
+msgstr "Başlangıç tarihi"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
@@ -7299,11 +7287,11 @@ msgstr "Eğer soyadı bilinmiyor ise boş kesme işareti kullanın: <%s>Mary //<
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "Küçük resim özel bir resimse, medya nesnesine eklemelisiniz."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:18
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-msgstr ""
+msgstr "Küçük resim orijinal görüntü ile aynıysa, artık gerekli değildir ve silmeniz gerekir."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:78
@@ -7343,7 +7331,7 @@ msgstr "Eğer bu GEDCOM dosyasını oluşturduğunuz soy ağacı yazılımı uzu
 #: resources/views/emails/password-request-html.phtml:17
 #: resources/views/emails/password-request-text.phtml:9
 msgid "If you did not request a new password, please ignore this message."
-msgstr ""
+msgstr "Eğer yeni bir şifre talebinde bulunmadıysanız bu mesajı görmezden gelebilirsiniz."
 
 #: resources/views/emails/register-user-html.phtml:28
 #: resources/views/emails/register-user-text.phtml:16
@@ -7352,7 +7340,7 @@ msgstr "Eğer bu üyelik siz oluşturmadınız ise bu mesajı silip unutabilirsi
 
 #: resources/views/admin/site-mail.phtml:50
 msgid "If you do not use two-factor authentication, enable <a href=\"https://www.google.com/settings/security/lesssecureapps\">less secure applications</a> and use your Google password."
-msgstr ""
+msgstr "İki faktörlü kimlik doğrulama kullanmıyorsanız, <a href=\"https://www.google.com/settings/security/lesssecureapps\"> daha az güvenli uygulamalar </a> seçeneğini etkinleştirin ve Google şifrenizi kullanın."
 
 #: resources/views/modals/media-file-fields.phtml:62
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
@@ -7386,7 +7374,7 @@ msgstr "Aşağıdaki izleme ve analitik hizmetlerinden birini kullanıyorsanız,
 
 #: resources/views/admin/site-mail.phtml:48
 msgid "If you use two-factor authentication, create an <a href=\"https://myaccount.google.com/apppasswords\">app password</a>."
-msgstr ""
+msgstr "İki faktörlü kimlik doğrulaması kullanıyorsanız, bir <a href=\"https://myaccount.google.com/apppasswords\"> uygulama şifresi </a> oluşturun."
 
 #: app/GedcomTag.php:2103 app/Http/Controllers/Admin/MediaController.php:347
 msgid "Image dimensions"
@@ -7488,11 +7476,11 @@ msgstr "Alt-klasörler dahil"
 
 #: resources/views/modules/custom-css-js/edit.phtml:33
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr ""
+msgstr "<code>&lt;script&gt;&lt;/script&gt;</code> etiketlerini ekleyin."
 
 #: resources/views/modules/custom-css-js/edit.phtml:21
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
-msgstr ""
+msgstr "<code>&lt;style&gt;&lt;/style&gt;</code> etiketlerini ekleyin."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:24
@@ -7652,7 +7640,7 @@ msgstr "Bilgiveren"
 
 #: resources/views/admin/site-mail.phtml:34
 msgid "Instructions for Google mail"
-msgstr ""
+msgstr "Google gmail için talimatlar"
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:244 app/Module/InteractiveTreeModule.php:52
@@ -9452,16 +9440,16 @@ msgstr "En çok Ortak Soyadları"
 
 #: resources/views/admin/site-mail.phtml:194
 msgid "Most mail servers require a valid domain name."
-msgstr ""
+msgstr "Çoğu posta sunucusu geçerli bir etki alanı adı (Domain) gerektirir."
 
 #: resources/views/admin/site-mail.phtml:86
 msgid "Most mail servers require a valid email address."
-msgstr ""
+msgstr "Çoğu posta sunucusu geçerli bir e-posta adresi gerektirir."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:189
 msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
-msgstr ""
+msgstr "Çoğu posta sunucusu, gönderen sunucunun geçerli bir etki alanı adı kullanarak kendisini doğru şekilde tanımlamasını gerektirir."
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:175
@@ -10652,7 +10640,7 @@ msgstr "Bu kayıtlar kalıcı olarak silinsin mi?"
 
 #: resources/views/modules/privacy-policy/page.phtml:5
 msgid "Personal data"
-msgstr ""
+msgstr "Kişisel veri"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:543
@@ -10764,11 +10752,11 @@ msgstr "Konum isimleri genellikle grafik yada listelere sığamayacak kadar uzun
 
 #: resources/views/help/place.phtml:8
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr ""
+msgstr "Yer adları zaman içinde değişebilir. Şecere söz konusu olduğunda, bir kasaba veya ülke  adı için genellikle mevcut adı  kullanılır. Tarihi ad kaynaklarda, notlarda vb. Gösterilebilir."
 
 #: resources/views/help/place.phtml:4
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr ""
+msgstr "Yer adları, en küçük yerden başlayıp ülke ile biten, virgülle ayrılmış bir liste olarak girilmelidir. Örneğin, “Çankaya, Ankara, Türkiye”."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:507
@@ -10908,7 +10896,7 @@ msgstr "Lütfen geçerli bir email adresi girin."
 #: app/Http/RequestHandlers/PasswordResetAction.php:80
 #: app/Http/RequestHandlers/PasswordResetPage.php:76
 msgid "Please try again."
-msgstr ""
+msgstr "Lütfen tekrar deneyin."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:143
@@ -11122,7 +11110,7 @@ msgstr "Hususi"
 
 #: resources/views/admin/site-mail.phtml:225
 msgid "Private key"
-msgstr ""
+msgstr "Özel anahtar"
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:943
@@ -12074,7 +12062,7 @@ msgstr "Birleştirmek istediğiniz iki kaydı seçin."
 
 #: resources/views/admin/site-mail.phtml:216
 msgid "Selector"
-msgstr ""
+msgstr "Seçici"
 
 #: app/GedcomCode/GedcomCodeRela.php:313
 msgid "Seller"
@@ -12122,7 +12110,7 @@ msgstr "6 ay boyunca giriş yapmayan kullanıcılara mesaj gönder"
 
 #: resources/views/admin/site-mail.phtml:239
 msgid "Send a test email using these settings"
-msgstr ""
+msgstr "Bu ayarları kullanarak bir test e-postası gönderin"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:10
@@ -12226,7 +12214,7 @@ msgstr "Sunucu adı"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php:62
 msgid "Set a new password"
-msgstr ""
+msgstr "Yeni bir şifre belirleyin"
 
 #: resources/views/admin/trees.phtml:115 resources/views/admin/trees.phtml:122
 msgid "Set as default"
@@ -12458,7 +12446,7 @@ msgstr "Medya görüntüleyicide indirme linki göster"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
 msgid "Show a privacy policy."
-msgstr ""
+msgstr "Gizlilik politikasını göster."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:62
@@ -13745,7 +13733,7 @@ msgstr "Klasör yolu, tüm yol (örn: /home/kullanıcı_adı/webtrees_data/) vey
 #: app/Http/Controllers/AdminSiteController.php:109
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "“%s” klasörü mevcut değil."
 
 #: resources/views/admin/merge-records-step-2.phtml:26
 msgid "The following facts and events were found in both records."
@@ -13887,7 +13875,7 @@ msgstr "SMTP sunucudan kimlik doğrulaması için gerekli şifre."
 #: app/Http/RequestHandlers/PasswordResetAction.php:79
 #: app/Http/RequestHandlers/PasswordResetPage.php:75
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "Şifre sıfırlama bağlantısının süresi doldu."
 
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php:57
@@ -13959,7 +13947,7 @@ msgstr "Arama menüsü."
 
 #: app/Services/SearchService.php:961
 msgid "The search returned too many results."
-msgstr ""
+msgstr "Arama çok fazla sonuç döndürdü."
 
 #: resources/views/setup/step-2-server-checks.phtml:31
 msgid "The server configuration is OK."
@@ -13967,7 +13955,7 @@ msgstr "Sunucu yapılandırması Tamam."
 
 #: app/Services/ServerCheckService.php:249
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "Sunucunun geçici klasörüne erişilemiyor."
 
 #: app/Http/Controllers/AdminTreesController.php:1458
 #: app/Services/UpgradeService.php:150 app/Services/UpgradeService.php:183
@@ -14133,7 +14121,7 @@ msgstr[1] "Son %s günde hiç bir değişiklik yapılmadı."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:99
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr ""
+msgstr "“%s” e-postasına sahip kullanıcı hesabı yok."
 
 #: app/Http/Controllers/Admin/MediaController.php:451
 #: app/Http/Controllers/EditMediaController.php:128
@@ -14169,7 +14157,7 @@ msgstr "Thermidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:23
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "Bu çerezler “zorunludur” ve onay gerektirmez."
 
 #: resources/views/admin/trees-unconnected.phtml:32
 #, php-format
@@ -14178,7 +14166,7 @@ msgstr "Bu kişi grupları %s ile ilgili değildir."
 
 #: resources/views/modules/privacy-policy/page.phtml:44
 msgid "These services may use cookies or other tracking technology."
-msgstr ""
+msgstr "Bu hizmetler çerezleri veya diğer izleme teknolojilerini kullanabilir."
 
 #: app/Http/RequestHandlers/LoginAction.php:134
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -14321,7 +14309,7 @@ msgstr "Grafik ve raporlarda bu kişi varsayılan kişi olarak seçilecek."
 #: resources/views/statistics/other/places.phtml:54
 #: resources/views/statistics/other/top10-list.phtml:23
 msgid "This information is not available."
-msgstr ""
+msgstr "Bu bilgi mevcut değil."
 
 #: app/Statistics/Repository/EventRepository.php:252
 #: app/Statistics/Repository/FamilyDatesRepository.php:110
@@ -14434,7 +14422,7 @@ msgstr "Bu sizin ekranda göstermek isteyebileceğiniz gerçek adınızdır."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:96
 msgid "This link is valid for one hour."
-msgstr ""
+msgstr "Bu bağlantı bir saat geçerlidir."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -14560,7 +14548,7 @@ msgstr "Bu kayıt yok veya bunu görüntülemek için izniniz yok."
 
 #: resources/views/admin/trees-privacy.phtml:240
 msgid "This record does not exist."
-msgstr ""
+msgstr "Bu kayıt mevcut değil."
 
 #: resources/views/gedcom-record-page.phtml:12
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
@@ -14609,7 +14597,7 @@ msgstr "Bu depo düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s ve
 
 #: resources/views/modules/privacy-policy/page.phtml:12
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr ""
+msgstr "Bu araştırma, AB Genel Veri Koruma Yönetmeliği'nin 6 (f) maddesi uyarınca “meşru bir menfaat” dır."
 
 #: resources/views/admin/users-edit.phtml:250
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -14694,7 +14682,7 @@ msgstr "Bu sitede bakım yapılıyor. Birkaç dakika sonra <a href=\"index.php\"
 
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "This website is operated by the following individuals."
-msgstr ""
+msgstr "Bu web sitesi aşağıdaki kişiler tarafından işletilmektedir."
 
 #: resources/views/layouts/error.phtml:9 resources/views/layouts/error.phtml:26
 #: resources/views/layouts/offline.phtml:58
@@ -14703,11 +14691,11 @@ msgstr "Bu web sitesi geçici olarak kullanılamıyor"
 
 #: resources/views/modules/privacy-policy/page.phtml:9
 msgid "This website processes personal data for the purpose of historical and genealogical research."
-msgstr ""
+msgstr "Bu web sitesi kişisel verileri tarihsel ve soy araştırmaları için işler."
 
 #: resources/views/modules/privacy-policy/page.phtml:20
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
-msgstr ""
+msgstr "Bu web sitesi oturum açma oturumlarını etkinleştirmek ve seçtiğiniz dil gibi tercihleri hatırlamak için çerezleri kullanır."
 
 #: resources/views/modules/privacy-policy/footer.phtml:15
 msgid "This website uses cookies to learn about visitor behavior."
@@ -14715,7 +14703,7 @@ msgstr "Bu web sitesi, ziyaretçi davranışı hakkında bilgi edinmek için çe
 
 #: resources/views/modules/privacy-policy/page.phtml:32
 msgid "This website uses third-party services to learn about visitor behavior."
-msgstr ""
+msgstr "Bu web sitesi, ziyaretçi davranışı hakkında bilgi edinmek için üçüncü taraf hizmetleri kullanmaktadır."
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml:15
@@ -14856,13 +14844,13 @@ msgstr "İbranice Başlık"
 #: resources/views/contact-page.phtml:17 resources/views/message-page.phtml:22
 msgctxt "Email recipient"
 msgid "To"
-msgstr ""
+msgstr "Kime"
 
 #: resources/views/admin/changes-log.phtml:29
 #: resources/views/admin/site-logs.phtml:30
 msgctxt "End of date range"
 msgid "To"
-msgstr ""
+msgstr "Bitiş tarihi"
 
 #: resources/views/modules/html/config.phtml:25
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -14889,7 +14877,7 @@ msgstr "İndirilecek dosyanın boyutunu küçültmek için veriyi .ZIP dosyası 
 #: resources/views/emails/password-request-html.phtml:9
 #: resources/views/emails/password-request-text.phtml:5
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "Yeni bir şifre belirlemek için bu bağlantıyı takip edin."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:36
@@ -15106,7 +15094,7 @@ msgstr "Fragman"
 #: resources/views/emails/register-notify-html.phtml:25
 #: resources/views/emails/register-notify-text.phtml:15
 msgid "Tree"
-msgstr ""
+msgstr "Ağaç"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:291
@@ -15315,7 +15303,7 @@ msgstr "%s dosyasını geçici bir klasöre çıkar…"
 
 #: app/Module/PedigreeChartModule.php:380
 msgid "Up"
-msgstr ""
+msgstr "Yukarı"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:96
@@ -15404,7 +15392,7 @@ msgstr "Tam kaynak alıntıları kullan"
 #: resources/views/setup/step-4-database-sqlite.phtml:62
 #: resources/views/setup/step-4-database-sqlsvr.phtml:88
 msgid "Use letters A-Z, a-z, digits 0-9, or underscores"
-msgstr ""
+msgstr "A-Z, a-z, 0-9 arasındaki harf, rakam veya alt çizgileri kullanın"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:126
@@ -15622,7 +15610,7 @@ msgstr "Göster"
 #: resources/views/places-page.phtml:35
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "%s içinde meydana gelen olayları görüntüleme tablosu"
 
 #: resources/views/calendar-page.phtml:189
 msgid "View this day"
@@ -15965,7 +15953,7 @@ msgstr "Evli bir bayanın evlilik soyadını kaydederek aramalarda daha kolay bu
 
 #: resources/views/modules/privacy-policy/page.phtml:48
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
-msgstr ""
+msgstr "Tarayıcı tercihlerinizde \"Do Not Track/Takip Etme\" üst bilgisini ayarlayarak izlemeyi devre dışı bırakabilirsiniz."
 
 #: resources/views/admin/trees-renumber.phtml:17
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
@@ -16105,7 +16093,7 @@ msgstr "Adınız"
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:72
 msgid "Your password has been updated."
-msgstr ""
+msgstr "Şifreniz güncellenmiştir."
 
 #: app/Http/RequestHandlers/RegisterAction.php:131
 #, php-format
@@ -16201,7 +16189,7 @@ msgstr "ekle"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:101
 msgid "add place"
-msgstr ""
+msgstr "yer ekle"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:73
@@ -16657,7 +16645,7 @@ msgstr "öldü"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "down"
-msgstr ""
+msgstr "aşağı"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:91
@@ -16669,7 +16657,7 @@ msgstr "indir"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:17
 msgid "d’Aboville number"
-msgstr ""
+msgstr "d’Aboville numarası"
 
 #: resources/views/admin/components.phtml:114
 #: resources/views/family-page-menu.phtml:14
@@ -16776,7 +16764,7 @@ msgstr "eski-hanım"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:107
 msgid "export file"
-msgstr ""
+msgstr "dosyayı dışarı aktar"
 
 #: app/Http/Controllers/AdminTreesController.php:748
 #: resources/xml/reports/fact_sources.xml:6
@@ -18739,7 +18727,7 @@ msgstr "içeri aktar"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:120
 msgid "import file"
-msgstr ""
+msgstr "dosyayı içeri aktar"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:353
@@ -18791,7 +18779,7 @@ msgstr "son"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "left"
-msgstr ""
+msgstr "sol"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -18806,7 +18794,7 @@ msgstr "liste"
 #: app/Http/Controllers/Admin/LocationController.php:723
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "güncellenen konum: %s, eklenen konum: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:148
@@ -18927,17 +18915,17 @@ msgstr "yeğen"
 #: app/Functions/Functions.php:1113
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "erkek yeğen"
 
 #: app/Functions/Functions.php:1109
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "erkek yeğen"
 
 #: app/Functions/Functions.php:1111
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "erkek yeğen"
 
 #: app/Functions/Functions.php:865
 msgctxt "sibling’s son"
@@ -18952,17 +18940,17 @@ msgstr "erkek yeğen"
 #: app/Functions/Functions.php:1353
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "erkek yeğen"
 
 #: app/Functions/Functions.php:1349
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "erkek yeğen"
 
 #: app/Functions/Functions.php:1351
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "erkek yeğen"
 
 #: app/Functions/Functions.php:951
 msgctxt "brother’s daughter’s husband"
@@ -18987,17 +18975,17 @@ msgstr "yeğen"
 #: app/Functions/Functions.php:1101
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "yeğen"
 
 #: app/Functions/Functions.php:1097
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "yeğen"
 
 #: app/Functions/Functions.php:1099
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "yeğen"
 
 #: app/Functions/Functions.php:861
 msgctxt "sibling’s child"
@@ -19012,17 +19000,17 @@ msgstr "yeğen"
 #: app/Functions/Functions.php:1341
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "yeğen"
 
 #: app/Functions/Functions.php:1337
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "yeğen"
 
 #: app/Functions/Functions.php:1339
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "yeğen"
 
 #: app/Functions/FunctionsEdit.php:566
 msgid "never"
@@ -19054,17 +19042,17 @@ msgstr "yeğen"
 #: app/Functions/Functions.php:1107
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "kız yeğen"
 
 #: app/Functions/Functions.php:1103
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "kız yeğen"
 
 #: app/Functions/Functions.php:1105
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "kız yeğen"
 
 #: app/Functions/Functions.php:863
 msgctxt "sibling’s daughter"
@@ -19079,17 +19067,17 @@ msgstr "kız yeğen"
 #: app/Functions/Functions.php:1347
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "kız yeğen"
 
 #: app/Functions/Functions.php:1343
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "kız yeğen"
 
 #: app/Functions/Functions.php:1345
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "kız yeğen"
 
 #: app/Functions/Functions.php:977
 msgctxt "brother’s son’s wife"
@@ -19342,7 +19330,7 @@ msgstr "sıfırla"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "right"
-msgstr ""
+msgstr "sağ"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:31
@@ -20093,7 +20081,7 @@ msgstr "güvenilmez kanıt"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "up"
-msgstr ""
+msgstr "yukarı"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-places.phtml:58
@@ -20152,12 +20140,12 @@ msgstr "webtrees mesajı"
 
 #: resources/views/setup/step-3-database-type.phtml:25
 msgid "webtrees needs a database to store your genealogy data."
-msgstr ""
+msgstr "webtrees şecere verilerinizi saklamak için bir veritabanına ihtiyaç duyar."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:67
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr ""
+msgstr "webtrees'in şifre hatırlatıcıları ve web sitesi bildirimleri gibi e-postalar göndermesi gerekir."
 
 #: app/Functions/FunctionsEdit.php:145
 msgid "webtrees sends emails with no storage"
