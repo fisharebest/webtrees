@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-28 11:56+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-28 21:10+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -294,9 +294,9 @@ msgstr[2] "%s osôb s udalosťami v roku %s"
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s osoba s udalosťami v %s medzi %s a %s"
+msgstr[1] "%s osoby s udalosťami v %s medzi %s a %s"
+msgstr[2] "%s osôb s udalosťami v %s medzi %s a %s"
 
 #: app/Http/Controllers/Admin/LocationController.php:842
 #, php-format
@@ -754,12 +754,12 @@ msgstr "Uvítacia správa pre návštevníkov stránky."
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:68
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "Odkaz na kontakty k tejto webovej stránke."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "Odkaz na domovskú stránku webtrees."
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:60
@@ -774,7 +774,7 @@ msgstr "Zoznam zmien, ktoré vyžadujú schválenie moderátora a e-mailové upo
 #. I18N: Description of the “Families” module
 #: app/Module/FamilyListModule.php:59
 msgid "A list of families."
-msgstr ""
+msgstr "Zoznam rodín."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:85
@@ -784,7 +784,7 @@ msgstr "Zoznam častých otázok a odpovedí (FAQ)."
 #. I18N: Description of the “Individuals” module
 #: app/Module/IndividualListModule.php:59
 msgid "A list of individuals."
-msgstr ""
+msgstr "Zoznam osôb."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:62
@@ -1381,7 +1381,7 @@ msgstr "Pridať novú pridruženú osobu"
 
 #: resources/views/cards/add-sour-data-even.phtml:7
 msgid "Add an event"
-msgstr ""
+msgstr "Pridať udalosť"
 
 #: resources/views/modules/custom-css-js/edit.phtml:28
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
@@ -1844,7 +1844,7 @@ msgstr "Všetci ľudia"
 #: resources/views/admin/components.phtml:13
 #: resources/views/admin/control-panel.phtml:399
 msgid "All modules"
-msgstr ""
+msgstr "Všetky moduly"
 
 #: resources/views/admin/trees-privacy.phtml:244
 msgid "All records"
@@ -1956,7 +1956,7 @@ msgstr "Objavila sa neočakávaná chyba databáze."
 #: resources/views/modules/pedigree-map/chart.phtml:57
 #: resources/views/place-map.phtml:60
 msgid "An unknown error occurred"
-msgstr ""
+msgstr "Vyskytla sa neznáma chyba"
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -2357,7 +2357,7 @@ msgstr "Priemerný vek pri úmrtí"
 
 #: app/Statistics/Google/ChartMarriageAge.php:160
 msgid "Average age at marriage"
-msgstr ""
+msgstr "Priemerný vek pri sobáši"
 
 #: app/Statistics/Google/ChartMarriageAge.php:157
 msgid "Average age in century of marriage"
@@ -2369,7 +2369,7 @@ msgstr "Priemerný vek pri úmrtí v storočí"
 
 #: app/Statistics/Google/ChartChildren.php:94
 msgid "Average number"
-msgstr ""
+msgstr "Priemerný počet"
 
 #: app/Statistics/Google/ChartChildren.php:105
 #: resources/views/modules/gedcom_stats/config.phtml:35
@@ -3278,12 +3278,12 @@ msgstr "CKEditor™"
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:82
 msgid "CSS and JS"
-msgstr ""
+msgstr "CSS a JS"
 
 #: resources/views/admin/trees.phtml:54
 #: resources/views/lists/datatables-attributes.phtml:27
 msgid "Calculating…"
-msgstr ""
+msgstr "Počítam…"
 
 #. I18N: Name of a module
 #: app/Module/CalendarMenuModule.php:41 app/Module/CalendarMenuModule.php:80
@@ -3301,7 +3301,7 @@ msgstr "Konverzia kalendára"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:288
 msgid "Calgary, Alberta, Canada"
-msgstr ""
+msgstr "Calgary, Alberata, Kanada"
 
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:555 resources/views/modals/source-fields.phtml:41
@@ -3377,7 +3377,7 @@ msgstr "Pozor!"
 #: resources/views/admin/trees-renumber.phtml:37
 #: resources/views/admin/trees.phtml:336
 msgid "Caution! This may take a long time. Be patient."
-msgstr ""
+msgstr "Pozor! Môže to trvať dlho. Buďte trpezliví."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:151
@@ -3471,7 +3471,7 @@ msgstr ""
 #: resources/views/modules/recent_changes/changes-list.phtml:12
 #, php-format
 msgid "Changed on %1$s"
-msgstr ""
+msgstr "Zmenené dňa %1$s"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: resources/views/modules/recent_changes/changes-list.phtml:10
@@ -4033,7 +4033,7 @@ msgstr "Copyright"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:321
 msgid "Cordoba, Argentina"
-msgstr ""
+msgstr "Cordoba, Argentína"
 
 #. I18N: gedcom tag CORP
 #: app/GedcomTag.php:630
@@ -4074,7 +4074,7 @@ msgstr "Vytvoriť"
 
 #: app/Functions/FunctionsEdit.php:472
 msgid "Create a family"
-msgstr ""
+msgstr "Vytvoriť rodinu"
 
 #: app/Http/RequestHandlers/CreateTreePage.php:55
 #: resources/views/admin/control-panel.phtml:142
