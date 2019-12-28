@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-28 11:56+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-28 21:10+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -1361,7 +1361,7 @@ msgstr "Afegeix contingut al final de l'element <code>&lt;head&gt;</code>."
 
 #: resources/views/edit/paste-fact-row.phtml:12
 msgid "Add from clipboard"
-msgstr "Enganxa des del portapapers"
+msgstr "Enganxa des del porta-retalls"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
@@ -4484,7 +4484,7 @@ msgstr "Data de les amonestacions"
 
 #: app/GedcomTag.php:876
 msgid "Date of naturalization"
-msgstr "dATA DE Nacionalització"
+msgstr "Data de nacionalització"
 
 #: app/GedcomTag.php:914
 msgid "Date of ordination"
@@ -6573,7 +6573,7 @@ msgstr "Rufolari"
 #: resources/views/message-page.phtml:13
 msgctxt "Email sender"
 msgid "From"
-msgstr "Des de"
+msgstr "De"
 
 #: resources/views/admin/changes-log.phtml:22
 #: resources/views/admin/site-logs.phtml:23
@@ -10860,7 +10860,7 @@ msgstr "Indret de les amonestacions"
 
 #: app/GedcomTag.php:878
 msgid "Place of naturalization"
-msgstr "lLOC DE Nacionalització"
+msgstr "Lloc de nacionalització"
 
 #: app/GedcomTag.php:916
 msgid "Place of ordination"
@@ -11716,7 +11716,7 @@ msgstr "Jubilació"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:417
 msgid "Reunion"
-msgstr "Reunion"
+msgstr "La Reunió"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:582
@@ -16450,7 +16450,7 @@ msgstr "enterrament"
 
 #: app/GedcomTag.php:2026
 msgid "by"
-msgstr "Autor"
+msgstr "autor"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:345
@@ -16657,7 +16657,7 @@ msgstr "descarrega"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:17
 msgid "d’Aboville number"
-msgstr "Número d’Aboville"
+msgstr "número d’Aboville"
 
 #: resources/views/admin/components.phtml:114
 #: resources/views/family-page-menu.phtml:14
@@ -16952,122 +16952,122 @@ msgstr "cosí germà"
 #: app/Functions/Functions.php:1415
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "Oncle/tieta valencià/a"
+msgstr "oncle/tieta valencià/a"
 
 #: app/Functions/Functions.php:1411
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "Tieta valenciana"
+msgstr "tieta valenciana"
 
 #: app/Functions/Functions.php:1413
 msgctxt "father’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "Oncle valencià"
+msgstr "oncle valencià"
 
 #: app/Functions/Functions.php:1421
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "Oncle/tieta valencià/na"
+msgstr "oncle/tieta valencià/na"
 
 #: app/Functions/Functions.php:1417
 msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "Tieta valenciana"
+msgstr "tieta valenciana"
 
 #: app/Functions/Functions.php:1419
 msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "Oncle valencià"
+msgstr "oncle valencià"
 
 #: app/Functions/Functions.php:1427
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "Oncle/tieta valencià/na"
+msgstr "oncle/tieta valencià/na"
 
 #: app/Functions/Functions.php:1423
 msgctxt "father’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "Tieta valenciana"
+msgstr "tieta valenciana"
 
 #: app/Functions/Functions.php:1425
 msgctxt "father’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "Oncle valencià"
+msgstr "oncle valencià"
 
 #: app/Functions/Functions.php:1433
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "Oncle/tieta valencià/na"
+msgstr "oncle/tieta valencià/na"
 
 #: app/Functions/Functions.php:1429
 msgctxt "father’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "Tieta valenciana"
+msgstr "tieta valenciana"
 
 #: app/Functions/Functions.php:1431
 msgctxt "father’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "Oncle valencià"
+msgstr "oncle valencià"
 
 #: app/Functions/Functions.php:1439
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "Oncle/tieta valencià/na"
+msgstr "oncle/tieta valencià/na"
 
 #: app/Functions/Functions.php:1435
 msgctxt "mother’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "Tieta valenciana"
+msgstr "tieta valenciana"
 
 #: app/Functions/Functions.php:1437
 msgctxt "mother’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "Oncle valencià"
+msgstr "oncle valencià"
 
 #: app/Functions/Functions.php:1445
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "Oncle/tieta valencià/na"
+msgstr "oncle/tieta valencià/na"
 
 #: app/Functions/Functions.php:1441
 msgctxt "mother’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "Tieta valenciana"
+msgstr "tieta valenciana"
 
 #: app/Functions/Functions.php:1443
 msgctxt "mother’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "Oncle valencià"
+msgstr "oncle valencià"
 
 #: app/Functions/Functions.php:1451
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "Oncle/tieta valencià/na"
+msgstr "oncle/tieta valencià/na"
 
 #: app/Functions/Functions.php:1447
 msgctxt "mother’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "Tieta valenciana"
+msgstr "tieta valenciana"
 
 #: app/Functions/Functions.php:1449
 msgctxt "mother’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "Oncle valencià"
+msgstr "oncle valencià"
 
 #: app/Functions/Functions.php:1457
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "Oncle/tieta valencià/na"
+msgstr "oncle/tieta valencià/na"
 
 #: app/Functions/Functions.php:1453
 msgctxt "mother’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "Tieta valenciana"
+msgstr "tieta valenciana"
 
 #: app/Functions/Functions.php:1455
 msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "Oncle valencià"
+msgstr "oncle valencià"
 
 #: app/Functions/Functions.php:490
 msgid "fourteenth cousin"
@@ -17129,8 +17129,8 @@ msgstr "cosí quart"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] "Del %1$s interval %2$s any"
-msgstr[1] "Del %1$s interval %2$s anys"
+msgstr[0] "del %1$s interval %2$s any"
+msgstr[1] "del %1$s interval %2$s anys"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:365
@@ -18134,7 +18134,7 @@ msgstr "rebesoncle/rebestieta"
 
 #: app/Functions/Functions.php:2115
 msgid "great-great-grandchild"
-msgstr "Resbesnét/a"
+msgstr "resbesnét/a"
 
 #: app/Functions/Functions.php:2112
 msgid "great-great-granddaughter"
@@ -19240,7 +19240,7 @@ msgstr "percentatge"
 #. I18N: A button label.
 #: resources/views/admin/trees-places.phtml:36
 msgid "preview"
-msgstr "Vista prèvia"
+msgstr "vista prèvia"
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page.phtml:77
@@ -19784,7 +19784,7 @@ msgstr "cònjuge"
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: app/Services/EmailService.php:219
 msgid "ssl"
-msgstr "SSL"
+msgstr "ssl"
 
 #: app/Functions/Functions.php:1091
 msgctxt "father’s wife’s son"
@@ -19996,7 +19996,7 @@ msgstr "tres quarts de cercle"
 #. I18N: Transport Layer Security - a secure communications protocol
 #: app/Services/EmailService.php:221 resources/views/admin/site-mail.phtml:43
 msgid "tls"
-msgstr "TLS"
+msgstr "tls"
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:369
@@ -20087,7 +20087,7 @@ msgstr "amunt"
 #: resources/views/admin/trees-places.phtml:58
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "update"
-msgstr "Actualitza"
+msgstr "actualitza"
 
 #. I18N: A button label.
 #: resources/views/admin/media-upload.phtml:60
@@ -20136,7 +20136,7 @@ msgstr "webtrees"
 
 #: app/Services/MessageService.php:127
 msgid "webtrees message"
-msgstr "Missatge de webtrees"
+msgstr "missatge de webtrees"
 
 #: resources/views/setup/step-3-database-type.phtml:25
 msgid "webtrees needs a database to store your genealogy data."
