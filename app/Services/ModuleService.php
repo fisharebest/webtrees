@@ -110,6 +110,7 @@ use Fisharebest\Webtrees\Module\LanguageJapanese;
 use Fisharebest\Webtrees\Module\LanguageJavanese;
 use Fisharebest\Webtrees\Module\LanguageKazhak;
 use Fisharebest\Webtrees\Module\LanguageKorean;
+use Fisharebest\Webtrees\Module\LanguageKurdish;
 use Fisharebest\Webtrees\Module\LanguageLatvian;
 use Fisharebest\Webtrees\Module\LanguageLingala;
 use Fisharebest\Webtrees\Module\LanguageLithuanian;
@@ -341,6 +342,7 @@ class ModuleService
         'language-ka'             => LanguageGeorgian::class,
         'language-kk'             => LanguageKazhak::class,
         'language-ko'             => LanguageKorean::class,
+        'language-ku'             => LanguageKurdish::class,
         'language-ln'             => LanguageLingala::class,
         'language-lt'             => LanguageLithuanian::class,
         'language-lv'             => LanguageLatvian::class,
