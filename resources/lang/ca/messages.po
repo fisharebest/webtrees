@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-28 21:10+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-03 08:31+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -5206,7 +5206,7 @@ msgstr "Línia d’avantpassats directes i les seves famílies"
 #: resources/views/lists/datatables-attributes.phtml:25
 #, php-format
 msgid "Display %s"
-msgstr "Mostra %s"
+msgstr "Mostra'n %s"
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:65
@@ -5413,7 +5413,7 @@ msgstr "Edita el nom"
 #: resources/views/repository-page-menu.phtml:25
 #: resources/views/source-page-menu.phtml:25
 msgid "Edit the raw GEDCOM"
-msgstr "Edita el registre primari GEDCOM"
+msgstr "Editeu el registre primari GEDCOM"
 
 #: app/Http/Controllers/EditNoteController.php:55
 msgid "Edit the shared note"
@@ -19206,7 +19206,7 @@ msgstr "parella"
 #: app/SurnameTradition.php:77
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr "Paternal"
+msgstr "paternal"
 
 #: app/Functions/Functions.php:791
 msgctxt "father’s father"
