@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-30 20:11+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-30 20:11+0000\nLast-Translator: Victor Tiltay <vtiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -1909,7 +1909,7 @@ msgstr ""
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
 msgid "This family does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ev malbata tuneye anjî destûra te tuneye ku tu bibînî."
 
 #: app/Exceptions/GedcomErrorException.php:37
 msgid "Invalid GEDCOM record"
@@ -1918,32 +1918,32 @@ msgstr ""
 #: app/Exceptions/IndividualAccessDeniedException.php:35
 #: app/Exceptions/IndividualNotFoundException.php:35
 msgid "This individual does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ev kesa tuneye anjî destûra te tuneye ku tu bibînî."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
 msgid "This media object does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ev medyaya tuneye anjî destûra te tuneye ku tu bibînî."
 
 #: app/Exceptions/NoteAccessDeniedException.php:35
 #: app/Exceptions/NoteNotFoundException.php:35
 msgid "This note does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ev nota tuneye anjî destûra te tuneye ku tu bibînî."
 
 #: app/Exceptions/RecordAccessDeniedException.php:35
 #: app/Exceptions/RecordNotFoundException.php:35
 msgid "This record does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ev qeyda tuneye anjî destûra te tuneye ku tu bibînî."
 
 #: app/Exceptions/RepositoryAccessDeniedException.php:35
 #: app/Exceptions/RepositoryNotFoundException.php:35
 msgid "This repository does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ev cîha tuneye anjî destûra te tuneye ku tu bibînî."
 
 #: app/Exceptions/SourceAccessDeniedException.php:35
 #: app/Exceptions/SourceNotFoundException.php:35
 msgid "This source does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ev çavkanî tuneye anjî destûra te tuneye ku tu bibînî."
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:586 app/Functions/FunctionsPrintFacts.php:548
@@ -1965,26 +1965,26 @@ msgstr ""
 #: app/Http/Controllers/ListController.php:706 app/Individual.php:1264
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Functions/Functions.php:46
 msgid "File successfully uploaded"
-msgstr ""
+msgstr "Lê bar bû"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:50
 msgid "The uploaded file exceeds the allowed size."
-msgstr ""
+msgstr "Pir mezine."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:53
 msgid "The file was only partially uploaded. Please try again."
-msgstr ""
+msgstr "Çû lê nêvîşkan."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:56
 msgid "No file was received. Please try again."
-msgstr ""
+msgstr "Tu tiştek nehat. Carke din bişîne."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:59
@@ -2004,384 +2004,384 @@ msgstr ""
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:189
 msgid "himself"
-msgstr ""
+msgstr "ew bi xwe"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:192
 msgid "herself"
-msgstr ""
+msgstr "ew bu xwe"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:195
 msgid "themself"
-msgstr ""
+msgstr "ewna bi xwe"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:376
 msgctxt "MALE"
 msgid "first cousin"
-msgstr ""
+msgstr "Pismam"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:379
 msgctxt "MALE"
 msgid "second cousin"
-msgstr ""
+msgstr "Pismamê 2emin"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:382
 msgctxt "MALE"
 msgid "third cousin"
-msgstr ""
+msgstr "Pismamê sêemîn"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:385
 msgctxt "MALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "Pismamê çaremîn"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:388
 msgctxt "MALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "Pismamê pêncemîn"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:391
 msgctxt "MALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "Pismamê şeşemîn"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:394
 msgctxt "MALE"
 msgid "seventh cousin"
-msgstr ""
+msgstr "Pismamê Heftemîn"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:397
 msgctxt "MALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "Pismamê Heştemîn"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:400
 msgctxt "MALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "Pismamê nehemîn"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:403
 msgctxt "MALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "Pismamê dehemîn"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:406
 msgctxt "MALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "Pismamê yanzdemîn"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:409
 msgctxt "MALE"
 msgid "twelfth cousin"
-msgstr ""
+msgstr "Pismamê danzdemîn"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:412
 msgctxt "MALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "Pismamê sêzdemîn"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:415
 msgctxt "MALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "Pismamê çardemîn"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:418
 msgctxt "MALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "Pismamê panzdemîn"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:421
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s x pismam"
 
 #: app/Functions/Functions.php:428
 msgctxt "FEMALE"
 msgid "first cousin"
-msgstr ""
+msgstr "Pismama yekemîn"
 
 #: app/Functions/Functions.php:430
 msgctxt "FEMALE"
 msgid "second cousin"
-msgstr ""
+msgstr "Pismama duyemîn"
 
 #: app/Functions/Functions.php:432
 msgctxt "FEMALE"
 msgid "third cousin"
-msgstr ""
+msgstr "Pismama sêemîn"
 
 #: app/Functions/Functions.php:434
 msgctxt "FEMALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "Pismama çaremîn"
 
 #: app/Functions/Functions.php:436
 msgctxt "FEMALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "Pismama pêncemîn"
 
 #: app/Functions/Functions.php:438
 msgctxt "FEMALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "Pismama şeşemîn"
 
 #: app/Functions/Functions.php:440
 msgctxt "FEMALE"
 msgid "seventh cousin"
-msgstr ""
+msgstr "Pismama heftemîn"
 
 #: app/Functions/Functions.php:442
 msgctxt "FEMALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "Pismama heştemîn"
 
 #: app/Functions/Functions.php:444
 msgctxt "FEMALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "Pismama nehemîn"
 
 #: app/Functions/Functions.php:446
 msgctxt "FEMALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "pismama dehemîn"
 
 #: app/Functions/Functions.php:448
 msgctxt "FEMALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "pismama yanzdemîn"
 
 #: app/Functions/Functions.php:450
 msgctxt "FEMALE"
 msgid "twelfth cousin"
-msgstr ""
+msgstr "pismama danzdemîn"
 
 #: app/Functions/Functions.php:452
 msgctxt "FEMALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "pismama sêzdemîn"
 
 #: app/Functions/Functions.php:454
 msgctxt "FEMALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "pismama çardemîn"
 
 #: app/Functions/Functions.php:456
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "pismama panzdemîn"
 
 #: app/Functions/Functions.php:458
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × pismam"
 
 #: app/Functions/Functions.php:464
 msgid "first cousin"
-msgstr ""
+msgstr "pismamê yekemîn"
 
 #: app/Functions/Functions.php:466
 msgid "second cousin"
-msgstr ""
+msgstr "pismamê duyemîn"
 
 #: app/Functions/Functions.php:468
 msgid "third cousin"
-msgstr ""
+msgstr "pismamê sêemîn"
 
 #: app/Functions/Functions.php:470
 msgid "fourth cousin"
-msgstr ""
+msgstr "pismamê çardemîn"
 
 #: app/Functions/Functions.php:472
 msgid "fifth cousin"
-msgstr ""
+msgstr "pismamê pêncemîn"
 
 #: app/Functions/Functions.php:474
 msgid "sixth cousin"
-msgstr ""
+msgstr "pismamê şeşemîn"
 
 #: app/Functions/Functions.php:476
 msgid "seventh cousin"
-msgstr ""
+msgstr "pismamê heftemîn"
 
 #: app/Functions/Functions.php:478
 msgid "eighth cousin"
-msgstr ""
+msgstr "pismamê heştemîn"
 
 #: app/Functions/Functions.php:480
 msgid "ninth cousin"
-msgstr ""
+msgstr "pismamê nehemîn"
 
 #: app/Functions/Functions.php:482
 msgid "tenth cousin"
-msgstr ""
+msgstr "pismamê dehemîn"
 
 #: app/Functions/Functions.php:484
 msgid "eleventh cousin"
-msgstr ""
+msgstr "pismamê yanzdemîn"
 
 #: app/Functions/Functions.php:486
 msgid "twelfth cousin"
-msgstr ""
+msgstr "pismamê danzdemîn"
 
 #: app/Functions/Functions.php:488
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "pismamê sêzdemîn"
 
 #: app/Functions/Functions.php:490
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "pismamê çardemîn"
 
 #: app/Functions/Functions.php:492
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "pismamê panzdemîn"
 
 #: app/Functions/Functions.php:494
 #, php-format
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × pismam"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:514
 #, php-format
 msgctxt "MALE"
 msgid "first %s"
-msgstr ""
+msgstr "%s ê yekemîn"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:517
 #, php-format
 msgctxt "MALE"
 msgid "second %s"
-msgstr ""
+msgstr "%s ê duyemîn"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:520
 #, php-format
 msgctxt "MALE"
 msgid "third %s"
-msgstr ""
+msgstr "%s ê sêyemîn"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:523
 #, php-format
 msgctxt "MALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "%s ê yekemîn"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:526
 #, php-format
 msgctxt "MALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "%s ê pêncemîn"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:529
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s x %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:537
 #, php-format
 msgctxt "FEMALE"
 msgid "first %s"
-msgstr ""
+msgstr "%s a yekemîn"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:540
 #, php-format
 msgctxt "FEMALE"
 msgid "second %s"
-msgstr ""
+msgstr "%s a duyemîn"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:543
 #, php-format
 msgctxt "FEMALE"
 msgid "third %s"
-msgstr ""
+msgstr "%s a sêemîn"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:546
 #, php-format
 msgctxt "FEMALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "%s a çaremîn"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:549
 #, php-format
 msgctxt "FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "%s a pêncemîn"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:552
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s x %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:559
 #, php-format
 msgid "first %s"
-msgstr ""
+msgstr "%s ê yekemîn"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:562
 #, php-format
 msgid "second %s"
-msgstr ""
+msgstr "%s ê duyemîn"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:565
 #, php-format
 msgid "third %s"
-msgstr ""
+msgstr "%s ê sêyemîn"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:568
 #, php-format
 msgid "fourth %s"
-msgstr ""
+msgstr "%s ê çaremîn"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:571
 #, php-format
 msgid "fifth %s"
-msgstr ""
+msgstr "%s ê pêncemîn"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:574
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #: app/Functions/Functions.php:617
 msgid "self"
-msgstr ""
+msgstr "xwe"
 
 #: app/Functions/Functions.php:620
 msgid "mother"
@@ -2406,12 +2406,12 @@ msgstr "mêr"
 #: app/Functions/Functions.php:638
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "mêrê berîn"
 
 #: app/Functions/Functions.php:644
 msgctxt "MALE"
 msgid "partner"
-msgstr ""
+msgstr "mêr"
 
 #: app/Functions/Functions.php:651
 msgid "ex-wife"
@@ -2419,37 +2419,37 @@ msgstr "Jîna pêşîn"
 
 #: app/Functions/Functions.php:654
 msgid "wife"
-msgstr ""
+msgstr "jin"
 
 #: app/Functions/Functions.php:658
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "jina berîn"
 
 #: app/Functions/Functions.php:664
 msgctxt "FEMALE"
 msgid "partner"
-msgstr ""
+msgstr "jin"
 
 #: app/Functions/Functions.php:671
 msgid "ex-spouse"
-msgstr ""
+msgstr "jîna berîn"
 
 #: app/Functions/Functions.php:674
 msgid "spouse"
-msgstr ""
+msgstr "jin"
 
 #: app/Functions/Functions.php:678
 msgid "ex-partner"
-msgstr ""
+msgstr "jîna berîn"
 
 #: app/Functions/Functions.php:684
 msgid "partner"
-msgstr ""
+msgstr "heval"
 
 #: app/Functions/Functions.php:686
 msgid "son"
-msgstr ""
+msgstr "kur"
 
 #: app/Functions/Functions.php:688
 msgid "daughter"
@@ -2493,19 +2493,19 @@ msgstr "xûşk"
 
 #: app/Functions/Functions.php:740
 msgid "twin sibling"
-msgstr ""
+msgstr "cêwî"
 
 #: app/Functions/Functions.php:744
 msgid "younger sibling"
-msgstr ""
+msgstr "ê herî piçûk"
 
 #: app/Functions/Functions.php:748
 msgid "elder sibling"
-msgstr ""
+msgstr "ê herî mezin"
 
 #: app/Functions/Functions.php:753
 msgid "sibling"
-msgstr ""
+msgstr "xuşk bira"
 
 #: app/Functions/Functions.php:757
 msgctxt "brother’s child"
@@ -2525,137 +2525,137 @@ msgstr "xarzî/brazî"
 #: app/Functions/Functions.php:763
 msgctxt "brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "bûk"
 
 #: app/Functions/Functions.php:765
 msgctxt "child’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "neve"
 
 #: app/Functions/Functions.php:767
 msgctxt "child’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "neve"
 
 #: app/Functions/Functions.php:769
 msgctxt "child’s husband"
 msgid "son-in-law"
-msgstr ""
+msgstr "zava"
 
 #: app/Functions/Functions.php:771
 msgctxt "child’s son"
 msgid "grandson"
-msgstr ""
+msgstr "neve"
 
 #: app/Functions/Functions.php:773
 msgctxt "child’s spouse"
 msgid "son/daughter-in-law"
-msgstr ""
+msgstr "bûk"
 
 #: app/Functions/Functions.php:775
 msgctxt "child’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "bûk"
 
 #: app/Functions/Functions.php:777
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "neve"
 
 #: app/Functions/Functions.php:779
 msgctxt "daughter’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "neve"
 
 #: app/Functions/Functions.php:781
 msgctxt "daughter’s husband"
 msgid "son-in-law"
-msgstr ""
+msgstr "bûk"
 
 #: app/Functions/Functions.php:783
 msgctxt "daughter’s son"
 msgid "grandson"
-msgstr ""
+msgstr "neve"
 
 #: app/Functions/Functions.php:785
 msgctxt "father’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "ap"
 
 #: app/Functions/Functions.php:787
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "zara bavê"
 
 #: app/Functions/Functions.php:789
 msgctxt "father’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "qîza bav"
 
 #: app/Functions/Functions.php:791
 msgctxt "father’s father"
 msgid "paternal grandfather"
-msgstr ""
+msgstr "kalik"
 
 #: app/Functions/Functions.php:793
 msgctxt "father’s mother"
 msgid "paternal grandmother"
-msgstr ""
+msgstr "pîrik"
 
 #: app/Functions/Functions.php:795
 msgctxt "father’s parent"
 msgid "paternal grandparent"
-msgstr ""
+msgstr "kalpîr"
 
 #: app/Functions/Functions.php:797
 msgctxt "father’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "met/ap"
 
 #: app/Functions/Functions.php:799
 msgctxt "father’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "met"
 
 #: app/Functions/Functions.php:801
 msgctxt "father’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "kurbav"
 
 #: app/Functions/Functions.php:803
 msgctxt "father’s wife"
 msgid "step-mother"
-msgstr ""
+msgstr "jinbav"
 
 #: app/Functions/Functions.php:805
 msgctxt "husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "Tî"
 
 #: app/Functions/Functions.php:807
 msgctxt "husband’s child"
 msgid "step-child"
-msgstr ""
+msgstr "kuremêr"
 
 #: app/Functions/Functions.php:809
 msgctxt "husband’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "Qîzbav"
 
 #: app/Functions/Functions.php:811
 msgctxt "husband’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "Xezûr"
 
 #: app/Functions/Functions.php:813
 msgctxt "husband’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "Xesî"
 
 #: app/Functions/Functions.php:815
 msgctxt "husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "Xuşk û birayê ne rastî"
 
 #: app/Functions/Functions.php:817
 msgctxt "husband’s sister"
