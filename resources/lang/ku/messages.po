@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-10 16:16+0000\n"
-"PO-Revision-Date: 2019-11-10 16:16+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\n"
-"Language: ku\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-28 21:38+0000\nLast-Translator: Victor Tiltay <vtiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -36,8 +24,8 @@ msgstr ""
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s sal"
+msgstr[1] "%s salan"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:141 app/Functions/FunctionsDate.php:58
@@ -45,42 +33,42 @@ msgstr[1] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s meh"
+msgstr[1] "%s mehan"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:146 app/Functions/FunctionsDate.php:60
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s hefte"
+msgstr[1] "%s hefteyan"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:151 app/Functions/FunctionsDate.php:62
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s roj"
+msgstr[1] "%s rojan"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/Age.php:163
 #, php-format
 msgid "(aged less than %s)"
-msgstr ""
+msgstr "%s salan piçuktir bû"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
 #: app/Age.php:168
 #, php-format
 msgid "(aged more than %s)"
-msgstr ""
+msgstr "%s salan mezintir bû"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/Age.php:172
 #, php-format
 msgid "(aged %s)"
-msgstr ""
+msgstr "%s salî bû"
 
 #. I18N: The gregorian calendar
 #: app/Date.php:229 app/Module/YahrzeitModule.php:249
@@ -117,7 +105,7 @@ msgstr ""
 #: app/Date.php:341
 #, php-format
 msgid "about %s"
-msgstr ""
+msgstr "Dor berê %s "
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:345
@@ -129,7 +117,7 @@ msgstr ""
 #: app/Date.php:349
 #, php-format
 msgid "estimated %s"
-msgstr ""
+msgstr "Texmînî %s"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:353
@@ -141,7 +129,7 @@ msgstr ""
 #: app/Date.php:357
 #, php-format
 msgid "before %s"
-msgstr ""
+msgstr "Berya %s"
 
 #. I18N: Gedcom AFT dates
 #: app/Date.php:361
@@ -165,13 +153,13 @@ msgstr ""
 #: app/Date.php:373
 #, php-format
 msgid "between %s and %s"
-msgstr ""
+msgstr "Navbera %s  û %s"
 
 #. I18N: Gedcom FROM-TO dates
 #: app/Date.php:377
 #, php-format
 msgid "from %s to %s"
-msgstr ""
+msgstr "Ji %s  heya %s"
 
 #: app/Date.php:380
 msgid "Invalid date"
@@ -179,31 +167,31 @@ msgstr ""
 
 #: app/Date/AbstractCalendarDate.php:238
 msgid "Monday"
-msgstr ""
+msgstr "Duşem"
 
 #: app/Date/AbstractCalendarDate.php:239
 msgid "Tuesday"
-msgstr ""
+msgstr "Sêşem"
 
 #: app/Date/AbstractCalendarDate.php:240
 msgid "Wednesday"
-msgstr ""
+msgstr "Çarşem"
 
 #: app/Date/AbstractCalendarDate.php:241
 msgid "Thursday"
-msgstr ""
+msgstr "Pêncşem"
 
 #: app/Date/AbstractCalendarDate.php:242
 msgid "Friday"
-msgstr ""
+msgstr "În"
 
 #: app/Date/AbstractCalendarDate.php:243
 msgid "Saturday"
-msgstr ""
+msgstr "Şemî"
 
 #: app/Date/AbstractCalendarDate.php:244
 msgid "Sunday"
-msgstr ""
+msgstr "Yekşem"
 
 #. I18N: abbreviation for Monday
 #: app/Date/AbstractCalendarDate.php:265
@@ -2397,23 +2385,23 @@ msgstr ""
 
 #: app/Functions/Functions.php:620
 msgid "mother"
-msgstr ""
+msgstr "dayîk"
 
 #: app/Functions/Functions.php:622
 msgid "father"
-msgstr ""
+msgstr "bav"
 
 #: app/Functions/Functions.php:624
 msgid "parent"
-msgstr ""
+msgstr "dêbav"
 
 #: app/Functions/Functions.php:631
 msgid "ex-husband"
-msgstr ""
+msgstr "Mêrê pêşîn"
 
 #: app/Functions/Functions.php:634
 msgid "husband"
-msgstr ""
+msgstr "mêr"
 
 #: app/Functions/Functions.php:638
 msgctxt "MALE"
@@ -2427,7 +2415,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:651
 msgid "ex-wife"
-msgstr ""
+msgstr "Jîna pêşîn"
 
 #: app/Functions/Functions.php:654
 msgid "wife"
@@ -2465,43 +2453,43 @@ msgstr ""
 
 #: app/Functions/Functions.php:688
 msgid "daughter"
-msgstr ""
+msgstr "qîz"
 
 #: app/Functions/Functions.php:690
 msgid "child"
-msgstr ""
+msgstr "zar"
 
 #: app/Functions/Functions.php:698
 msgid "twin brother"
-msgstr ""
+msgstr "birayê cêwî"
 
 #: app/Functions/Functions.php:702
 msgid "younger brother"
-msgstr ""
+msgstr "Birayê piçûk"
 
 #: app/Functions/Functions.php:706
 msgid "elder brother"
-msgstr ""
+msgstr "birayê mezin"
 
 #: app/Functions/Functions.php:711
 msgid "brother"
-msgstr ""
+msgstr "bira"
 
 #: app/Functions/Functions.php:719
 msgid "twin sister"
-msgstr ""
+msgstr "xûşka cêwî"
 
 #: app/Functions/Functions.php:723
 msgid "younger sister"
-msgstr ""
+msgstr "xûşka piçûk"
 
 #: app/Functions/Functions.php:727
 msgid "elder sister"
-msgstr ""
+msgstr "xûşka mezin"
 
 #: app/Functions/Functions.php:732
 msgid "sister"
-msgstr ""
+msgstr "xûşk"
 
 #: app/Functions/Functions.php:740
 msgid "twin sibling"
@@ -2522,17 +2510,17 @@ msgstr ""
 #: app/Functions/Functions.php:757
 msgctxt "brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "xarzî/brazî"
 
 #: app/Functions/Functions.php:759
 msgctxt "brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "Xarzî/brazî"
 
 #: app/Functions/Functions.php:761
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "xarzî/brazî"
 
 #: app/Functions/Functions.php:763
 msgctxt "brother’s wife"
