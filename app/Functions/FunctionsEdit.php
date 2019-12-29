@@ -48,6 +48,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Source;
@@ -74,6 +75,7 @@ use function strpos;
 use function strstr;
 use function strtolower;
 use function strtoupper;
+use function strtr;
 use function substr;
 use function trim;
 use function view;
@@ -314,6 +316,8 @@ class FunctionsEdit
      */
     public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = ''): string
     {
+        $localization_service = new LocalizationService();
+
         $request = app(ServerRequestInterface::class);
         $xref    = $request->getAttribute('xref', '');
 
@@ -470,13 +474,7 @@ class FunctionsEdit
             }
         } elseif ($fact === 'DATE') {
             // Need to know if the user prefers DMY/MDY/YMD so we can validate dates properly.
-            $dmy = '"' . preg_replace('/[^DMY]/', '', str_replace([
-                    'j',
-                    'F',
-                ], [
-                    'D',
-                    'M',
-                ], I18N::dateFormat())) . '"';
+            $dmy = '"' . $localization_service->dateFormatToOrder(I18N::dateFormat()) . '"';
 
             $html .= '<div class="input-group">';
             $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" onchange="valid_date(this, ' . e($dmy) . ')" dir="ltr">';

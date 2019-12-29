@@ -27,6 +27,10 @@ use Fisharebest\ExtCalendar\PersianCalendar;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 
+use function preg_replace;
+use function strlen;
+use function substr_compare;
+
 /**
  * Utilities to support localization.
  */
@@ -171,5 +175,25 @@ class LocalizationService
 
         // No special rules - just take the first character
         return mb_substr($text, 0, 1);
+    }
+
+    /**
+     * Convert a PHP date format string into DMY, MDY or YMD
+     *
+     * @param string $format
+     *
+     * @return string
+     */
+    public function dateFormatToOrder(string $format): string
+    {
+        if (preg_match('/[yY].*[mnFM].*[dj]/', $format)) {
+            return 'YMD';
+        }
+
+        if (preg_match('/[mnFM].*[dj].*[yY]/', $format)) {
+            return 'MDY';
+        }
+
+        return 'DMY';
     }
 }
