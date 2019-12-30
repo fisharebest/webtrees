@@ -360,7 +360,10 @@ class GedcomRecord
      */
     public function slug(): string
     {
-        return strip_tags($this->fullName());
+        $text = strip_tags($this->fullName());
+        $text = strtr($text, '\\/?:;@=&<>#%{}|^~[]`"\'', '----------------------');
+
+        return trim($text, '-');
     }
 
     /**
