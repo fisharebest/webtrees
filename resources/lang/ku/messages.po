@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-30 21:08+0000\nLast-Translator: Herve Tiltay <hervetiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-30 21:08+0000\nLast-Translator: Victor Tiltay <vtiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -2630,7 +2630,7 @@ msgstr "jinbav"
 #: app/Functions/Functions.php:805
 msgctxt "husband’s brother"
 msgid "brother-in-law"
-msgstr "Tî"
+msgstr "tî"
 
 #: app/Functions/Functions.php:807
 msgctxt "husband’s child"
@@ -2670,7 +2670,7 @@ msgstr "kurê ne ji dê/bavê"
 #: app/Functions/Functions.php:821
 msgctxt "mother’s brother"
 msgid "uncle"
-msgstr "Apo"
+msgstr "xal"
 
 #: app/Functions/Functions.php:823
 msgctxt "mother’s child"
