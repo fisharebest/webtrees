@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-30 20:11+0000\nLast-Translator: Victor Tiltay <vtiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-30 20:11+0000\nLast-Translator: Herve Tiltay <hervetiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -2670,162 +2670,162 @@ msgstr ""
 #: app/Functions/Functions.php:821
 msgctxt "mother’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "Apo"
 
 #: app/Functions/Functions.php:823
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "brayê oge- xwîşka oge"
 
 #: app/Functions/Functions.php:825
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "xwîşka oge"
 
 #: app/Functions/Functions.php:827
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr ""
+msgstr "bapîr"
 
 #: app/Functions/Functions.php:829
 msgctxt "mother’s husband"
 msgid "step-father"
-msgstr ""
+msgstr "zirbav"
 
 #: app/Functions/Functions.php:831
 msgctxt "mother’s mother"
 msgid "maternal grandmother"
-msgstr ""
+msgstr "dapîr"
 
 #: app/Functions/Functions.php:833
 msgctxt "mother’s parent"
 msgid "maternal grandparent"
-msgstr ""
+msgstr "kalik û pîrikên ji dê"
 
 #: app/Functions/Functions.php:835
 msgctxt "mother’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "xatî/xal"
 
 #: app/Functions/Functions.php:837
 msgctxt "mother’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "xatî"
 
 #: app/Functions/Functions.php:839
 msgctxt "mother’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "brayê oge"
 
 #: app/Functions/Functions.php:841
 msgctxt "parent’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "Ap û xal"
 
 #: app/Functions/Functions.php:843
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "brayê oge/ xwîşka oge"
 
 #: app/Functions/Functions.php:845
 msgctxt "parent’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "xwîşka oge"
 
 #: app/Functions/Functions.php:847
 msgctxt "parent’s father"
 msgid "grandfather"
-msgstr ""
+msgstr "kalik"
 
 #: app/Functions/Functions.php:849
 msgctxt "parent’s mother"
 msgid "grandmother"
-msgstr ""
+msgstr "pîrik"
 
 #: app/Functions/Functions.php:851
 msgctxt "parent’s parent"
 msgid "grandparent"
-msgstr ""
+msgstr "kalik û pîrik"
 
 #: app/Functions/Functions.php:853
 msgctxt "parent’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "xatî/ap"
 
 #: app/Functions/Functions.php:855
 msgctxt "parent’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "xatî/met"
 
 #: app/Functions/Functions.php:857
 msgctxt "parent’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "brayê oge"
 
 #: app/Functions/Functions.php:859
 msgctxt "parent’s spouse"
 msgid "step-parent"
-msgstr ""
+msgstr "zirbav/damarî"
 
 #: app/Functions/Functions.php:861
 msgctxt "sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "xwarzî/brazî"
 
 #: app/Functions/Functions.php:863
 msgctxt "sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "xwarzî"
 
 #: app/Functions/Functions.php:865
 msgctxt "sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "brazî"
 
 #: app/Functions/Functions.php:867
 msgctxt "sibling’s spouse"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "zava/bûk"
 
 #: app/Functions/Functions.php:869
 msgctxt "sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "brazî/xwarzî"
 
 #: app/Functions/Functions.php:871
 msgctxt "sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "xwarzî"
 
 #: app/Functions/Functions.php:873
 msgctxt "sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "zava"
 
 #: app/Functions/Functions.php:875
 msgctxt "sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "brazî"
 
 #: app/Functions/Functions.php:877
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "nevo"
 
 #: app/Functions/Functions.php:879
 msgctxt "son’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "keçnevo/nevoya qîzîn"
 
 #: app/Functions/Functions.php:881
 msgctxt "son’s son"
 msgid "grandson"
-msgstr ""
+msgstr "kurnevo/nevoyê kur"
 
 #: app/Functions/Functions.php:883
 msgctxt "son’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "bûk"
 
 #: app/Functions/Functions.php:885
 msgctxt "spouse’s brother"
