@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-30 23:50+0000\nLast-Translator: Victor Tiltay <vtiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-30 23:50+0000\nLast-Translator: Herve Tiltay <hervetiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -73,45 +73,45 @@ msgstr "%s salî bû"
 #. I18N: The gregorian calendar
 #: app/Date.php:229 app/Module/YahrzeitModule.php:249
 msgid "Gregorian"
-msgstr ""
+msgstr "Gregorî"
 
 #. I18N: The julian calendar
 #: app/Date.php:231 resources/views/help/date.phtml:135
 msgid "Julian"
-msgstr ""
+msgstr "Rûmî/Jûlyan"
 
 #. I18N: The French calendar
 #: app/Date.php:233 resources/views/help/date.phtml:183
 msgid "French"
-msgstr ""
+msgstr "Fransî"
 
 #. I18N: The Hebrew/Jewish calendar
 #: app/Date.php:235 app/Module/YahrzeitModule.php:248
 #: resources/views/help/date.phtml:151
 msgid "Jewish"
-msgstr ""
+msgstr "Cihû"
 
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:237 resources/views/help/date.phtml:167
 msgid "Hijri"
-msgstr ""
+msgstr "Hîcrî"
 
 #. I18N: The Persian/Jalali calendar
 #: app/Date.php:239
 msgid "Jalali"
-msgstr ""
+msgstr "Şemsî"
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:341
 #, php-format
 msgid "about %s"
-msgstr "Dor berê %s"
+msgstr "Der dorê %s"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:345
 #, php-format
 msgid "calculated %s"
-msgstr ""
+msgstr "Çortik %s"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:349
@@ -123,31 +123,31 @@ msgstr "Texmînî %s"
 #: app/Date.php:353
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr ""
+msgstr "Şirovekirinî %s (%s)"
 
 #. I18N: Gedcom BEF dates
 #: app/Date.php:357
 #, php-format
 msgid "before %s"
-msgstr "Berya %s"
+msgstr "Berya/berê %s"
 
 #. I18N: Gedcom AFT dates
 #: app/Date.php:361
 #, php-format
 msgid "after %s"
-msgstr ""
+msgstr "paşê %s"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:365
 #, php-format
 msgid "from %s"
-msgstr ""
+msgstr "ji %s"
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:369
 #, php-format
 msgid "to %s"
-msgstr ""
+msgstr "heya/ ta %s"
 
 #. I18N: Gedcom BET-AND dates
 #: app/Date.php:373
