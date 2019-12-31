@@ -1,9 +1,24 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\BatchUpdate\BatchUpdateBasePlugin;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 
+/**
+ * @var string $title
+ * @var string $curr_xref
+ * @var Tree $tree
+ * @var string $trees
+ * @var array $plugins
+ * @var BatchUpdateBasePlugin $plugin
+ * @var GedcomRecord $record
+ * @var string $prev_xref
+ * @var string $next_xref
+ * @var bool $auto_accept
+ */
 ?>
 
 <?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route('modules') => I18N::translate('Module administration'), $title]]) ?>
@@ -24,7 +39,7 @@ use Fisharebest\Webtrees\View;
     <div class="row form-group">
         <label class="col-sm-3 col-form-label"><?= I18N::translate('Batch update') ?></label>
         <div class="col-sm-9">
-            <select class="form-control" name="plugin">
+            <select class="form-control" name="plugin" aria-label="plugin">
                 <?php if ($plugin === null) : ?>
                     <option value="" selected></option>
                 <?php endif ?>
@@ -51,7 +66,7 @@ use Fisharebest\Webtrees\View;
             <div class="row">
                 <div class="col-sm-3 d-flex flex-column justify-content-between">
                     <div>
-                        <?php if ($prev_xref === null) : ?>
+                        <?php if ($prev_xref === '') : ?>
                             <button class="btn btn-primary" type="submit" disabled>
                                 <?= I18N::translate('previous') ?>
                             </button>
@@ -61,7 +76,7 @@ use Fisharebest\Webtrees\View;
                             </button>
                         <?php endif ?>
 
-                        <?php if ($next_xref === null) : ?>
+                        <?php if ($next_xref === '') : ?>
                             <button class="btn btn-primary" type="submit" disabled>
                                 <?= I18N::translate('next') ?>
                             </button>

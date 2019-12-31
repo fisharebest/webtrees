@@ -151,8 +151,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
 
             // If we've found a record to update, get details and look for the next/prev
             if ($curr_xref !== '') {
-                $prev_xref = $this->findPrevXref($plugin, $xref, $all_data, $tree);
-                $next_xref = $this->findNextXref($plugin, $xref, $all_data, $tree);
+                $prev_xref = $this->findPrevXref($plugin, $curr_xref, $all_data, $tree);
+                $next_xref = $this->findNextXref($plugin, $curr_xref, $all_data, $tree);
             }
         }
 
@@ -261,7 +261,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
             $data[$value->xref] = $value;
         }
 
-        ksort($tmp);
+        ksort($data, SORT_NATURAL);
 
         return $data;
     }
@@ -305,16 +305,21 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      * Find the next record that needs to be updated.
      *
      * @param BatchUpdateBasePlugin $plugin
-     * @param string                $xref
-     * @param array                 $all_data
-     * @param Tree                  $tree
+     * @param string $xref
+     * @param array $all_data
+     * @param Tree $tree
      *
      * @return string
      */
     private function findNextXref(BatchUpdateBasePlugin $plugin, string $xref, array $all_data, Tree $tree): string
     {
-        foreach (array_keys($all_data) as $key) {
-            if ($key > $xref) {
+        $keys  = array_keys($all_data);
+        $index = array_search($xref, $keys);
+
+        if ($index !== false) {
+            $search_arr = array_slice($keys, (int)$index + 1);
+
+            foreach ($search_arr as $key) {
                 $record = $this->getRecord($all_data[$key], $tree);
                 if ($plugin->doesRecordNeedUpdate($record)) {
                     return $key;
@@ -329,16 +334,20 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      * Find the previous record that needs to be updated.
      *
      * @param BatchUpdateBasePlugin $plugin
-     * @param string                $xref
-     * @param array                 $all_data
-     * @param Tree                  $tree
+     * @param string $xref
+     * @param array $all_data
+     * @param Tree $tree
      *
      * @return string
      */
     private function findPrevXref(BatchUpdateBasePlugin $plugin, string $xref, array $all_data, Tree $tree): string
     {
-        foreach (array_reverse($all_data) as $key => $value) {
-            if ($key > $xref) {
+        $keys  = array_keys($all_data);
+        $index = array_search($xref, $keys);
+        if ($index !== false) {
+            $search_arr = array_reverse(array_slice($keys, 0, (int)$index));
+
+            foreach ($search_arr as $key) {
                 $record = $this->getRecord($all_data[$key], $tree);
                 if ($plugin->doesRecordNeedUpdate($record)) {
                     return $key;
