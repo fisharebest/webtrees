@@ -1,20 +1,20 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-30 23:50+0000\nLast-Translator: Herve Tiltay <hervetiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-01 20:01+0000\nLast-Translator: Victor Tiltay <vtiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
 msgid "(stillborn)"
-msgstr "mirî hat dinê"
+msgstr "(mirî hat dinê)"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (in infancy)
 #: app/Age.php:123
 msgid "(in infancy)"
-msgstr "di zaroktiyê da"
+msgstr "(di zaroktiyê da)"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (in childhood)
 #: app/Age.php:128
 msgid "(in childhood)"
-msgstr "zaroktayê da"
+msgstr "(zaroktayê da)"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:136 app/Functions/FunctionsDate.php:56
@@ -240,144 +240,144 @@ msgstr "Yekş"
 #: resources/views/edit/initialize-calendar-popup.phtml:7
 msgctxt "NOMINATIVE"
 msgid "January"
-msgstr ""
+msgstr "Adar"
 
 #: app/Date/AbstractGregorianJulianDate.php:64
 #: app/Module/StatisticsChartModule.php:804
 #: resources/views/edit/initialize-calendar-popup.phtml:8
 msgctxt "NOMINATIVE"
 msgid "February"
-msgstr ""
+msgstr "Avrêl"
 
 #: app/Date/AbstractGregorianJulianDate.php:65
 #: app/Module/StatisticsChartModule.php:805
 #: resources/views/edit/initialize-calendar-popup.phtml:9
 msgctxt "NOMINATIVE"
 msgid "March"
-msgstr ""
+msgstr "Gulan"
 
 #: app/Date/AbstractGregorianJulianDate.php:66
 #: app/Module/StatisticsChartModule.php:806
 #: resources/views/edit/initialize-calendar-popup.phtml:10
 msgctxt "NOMINATIVE"
 msgid "April"
-msgstr ""
+msgstr "Pûşper"
 
 #: app/Date/AbstractGregorianJulianDate.php:67
 #: app/Module/StatisticsChartModule.php:807
 #: resources/views/edit/initialize-calendar-popup.phtml:11
 msgctxt "NOMINATIVE"
 msgid "May"
-msgstr ""
+msgstr "Tîrmeh"
 
 #: app/Date/AbstractGregorianJulianDate.php:68
 #: app/Module/StatisticsChartModule.php:808
 #: resources/views/edit/initialize-calendar-popup.phtml:12
 msgctxt "NOMINATIVE"
 msgid "June"
-msgstr ""
+msgstr "Gelawêj"
 
 #: app/Date/AbstractGregorianJulianDate.php:69
 #: app/Module/StatisticsChartModule.php:809
 #: resources/views/edit/initialize-calendar-popup.phtml:13
 msgctxt "NOMINATIVE"
 msgid "July"
-msgstr ""
+msgstr "Rezber"
 
 #: app/Date/AbstractGregorianJulianDate.php:70
 #: app/Module/StatisticsChartModule.php:810
 #: resources/views/edit/initialize-calendar-popup.phtml:14
 msgctxt "NOMINATIVE"
 msgid "August"
-msgstr ""
+msgstr "Kewçêr"
 
 #: app/Date/AbstractGregorianJulianDate.php:71
 #: app/Module/StatisticsChartModule.php:811
 #: resources/views/edit/initialize-calendar-popup.phtml:15
 msgctxt "NOMINATIVE"
 msgid "September"
-msgstr ""
+msgstr "Sermawez"
 
 #: app/Date/AbstractGregorianJulianDate.php:72
 #: app/Module/StatisticsChartModule.php:812
 #: resources/views/edit/initialize-calendar-popup.phtml:16
 msgctxt "NOMINATIVE"
 msgid "October"
-msgstr ""
+msgstr "Berfanbar"
 
 #: app/Date/AbstractGregorianJulianDate.php:73
 #: app/Module/StatisticsChartModule.php:813
 #: resources/views/edit/initialize-calendar-popup.phtml:17
 msgctxt "NOMINATIVE"
 msgid "November"
-msgstr ""
+msgstr "Rêbendan"
 
 #: app/Date/AbstractGregorianJulianDate.php:74
 #: app/Module/StatisticsChartModule.php:814
 #: resources/views/edit/initialize-calendar-popup.phtml:18
 msgctxt "NOMINATIVE"
 msgid "December"
-msgstr ""
+msgstr "Reşemî"
 
 #: app/Date/AbstractGregorianJulianDate.php:98
 msgctxt "GENITIVE"
 msgid "January"
-msgstr ""
+msgstr "Adar"
 
 #: app/Date/AbstractGregorianJulianDate.php:99
 msgctxt "GENITIVE"
 msgid "February"
-msgstr ""
+msgstr "Avrêl"
 
 #: app/Date/AbstractGregorianJulianDate.php:100
 msgctxt "GENITIVE"
 msgid "March"
-msgstr ""
+msgstr "Gulan"
 
 #: app/Date/AbstractGregorianJulianDate.php:101
 msgctxt "GENITIVE"
 msgid "April"
-msgstr ""
+msgstr "Pûşper"
 
 #: app/Date/AbstractGregorianJulianDate.php:102
 msgctxt "GENITIVE"
 msgid "May"
-msgstr ""
+msgstr "Tîrmeh"
 
 #: app/Date/AbstractGregorianJulianDate.php:103
 msgctxt "GENITIVE"
 msgid "June"
-msgstr ""
+msgstr "Gelawêj"
 
 #: app/Date/AbstractGregorianJulianDate.php:104
 msgctxt "GENITIVE"
 msgid "July"
-msgstr ""
+msgstr "Rezber"
 
 #: app/Date/AbstractGregorianJulianDate.php:105
 msgctxt "GENITIVE"
 msgid "August"
-msgstr ""
+msgstr "Kewçêr"
 
 #: app/Date/AbstractGregorianJulianDate.php:106
 msgctxt "GENITIVE"
 msgid "September"
-msgstr ""
+msgstr "Sermawez"
 
 #: app/Date/AbstractGregorianJulianDate.php:107
 msgctxt "GENITIVE"
 msgid "October"
-msgstr ""
+msgstr "Berfanbar"
 
 #: app/Date/AbstractGregorianJulianDate.php:108
 msgctxt "GENITIVE"
 msgid "November"
-msgstr ""
+msgstr "Rêbendan"
 
 #: app/Date/AbstractGregorianJulianDate.php:109
 msgctxt "GENITIVE"
 msgid "December"
-msgstr ""
+msgstr "Reşemî"
 
 #: app/Date/AbstractGregorianJulianDate.php:133
 msgctxt "LOCATIVE"
@@ -437,7 +437,7 @@ msgstr ""
 #: app/Date/AbstractGregorianJulianDate.php:144
 msgctxt "LOCATIVE"
 msgid "December"
-msgstr ""
+msgstr "Reşemî"
 
 #: app/Date/AbstractGregorianJulianDate.php:168
 msgctxt "INSTRUMENTAL"
@@ -497,7 +497,7 @@ msgstr ""
 #: app/Date/AbstractGregorianJulianDate.php:179
 msgctxt "INSTRUMENTAL"
 msgid "December"
-msgstr ""
+msgstr "Reşemî"
 
 #: app/Date/AbstractGregorianJulianDate.php:201
 msgctxt "Abbreviation for January"
@@ -1511,88 +1511,88 @@ msgstr "Ord"
 #: app/Date/JalaliDate.php:261
 msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
-msgstr ""
+msgstr "Khor"
 
 #: app/Date/JalaliDate.php:262
 msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #: app/Date/JalaliDate.php:263
 msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
-msgstr ""
+msgstr "Mor"
 
 #: app/Date/JalaliDate.php:264
 msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
-msgstr ""
+msgstr "Shah"
 
 #: app/Date/JalaliDate.php:265
 msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #: app/Date/JalaliDate.php:266
 msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #: app/Date/JalaliDate.php:267
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #: app/Date/JalaliDate.php:268
 msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #: app/Date/JalaliDate.php:269
 msgctxt "Abbreviation for Persian month: Bahman"
 msgid "Bah"
-msgstr ""
+msgstr "Bah"
 
 #: app/Date/JalaliDate.php:270
 msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
-msgstr ""
+msgstr "Esf"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:140
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:142
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:144
 msgctxt "NOMINATIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:146
 msgctxt "NOMINATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:148
 msgctxt "NOMINATIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:150
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:152
@@ -1604,73 +1604,73 @@ msgstr ""
 #: app/Date/JewishDate.php:154
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:156
 msgctxt "NOMINATIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:158
 msgctxt "NOMINATIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:160
 msgctxt "NOMINATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:162
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:164
 msgctxt "NOMINATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:166
 msgctxt "NOMINATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:193
 msgctxt "GENITIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:195
 msgctxt "GENITIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:197
 msgctxt "GENITIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:199
 msgctxt "GENITIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:201
 msgctxt "GENITIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:203
@@ -1796,7 +1796,7 @@ msgstr "Sivan"
 #: app/Date/JewishDate.php:268
 msgctxt "LOCATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:270
@@ -3045,92 +3045,92 @@ msgstr "Neveçirk"
 #: app/Functions/Functions.php:991
 msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "Kurê qîza kur"
 
 #: app/Functions/Functions.php:993
 msgctxt "child’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "qîza qîza kur"
 
 #: app/Functions/Functions.php:995
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "mêrê qîza zar"
 
 #: app/Functions/Functions.php:997
 msgctxt "child’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "kurê qîza zar"
 
 #: app/Functions/Functions.php:999
 msgctxt "child’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "zara kurê zar"
 
 #: app/Functions/Functions.php:1001
 msgctxt "child’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "qîza kurê zar"
 
 #: app/Functions/Functions.php:1003
 msgctxt "child’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "kurê kurê zar"
 
 #: app/Functions/Functions.php:1005
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "jina kurê zar"
 
 #: app/Functions/Functions.php:1007
 msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "zara zara qîz"
 
 #: app/Functions/Functions.php:1009
 msgctxt "daughter’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "qîza zara qîz"
 
 #: app/Functions/Functions.php:1011
 msgctxt "daughter’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "kurê zara qîz"
 
 #: app/Functions/Functions.php:1013
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "zara qîza qîz"
 
 #: app/Functions/Functions.php:1015
 msgctxt "daughter’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "qîza qîza qîz"
 
 #: app/Functions/Functions.php:1017
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "mêrê qîza qîz"
 
 #: app/Functions/Functions.php:1019
 msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "kurê qîza qîz"
 
 #: app/Functions/Functions.php:1021
 msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
-msgstr ""
+msgstr "bavê mêrê qîz"
 
 #: app/Functions/Functions.php:1023
 msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
-msgstr ""
+msgstr "dîya mêrê qîz"
 
 #: app/Functions/Functions.php:1025
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr ""
+msgstr "dêbavên mêrê qîz"
 
 #: app/Functions/Functions.php:1027
 msgctxt "daughter’s son’s child"
@@ -19077,28 +19077,28 @@ msgstr ""
 #: resources/views/modules/timeline-chart/chart.phtml:133
 #: resources/views/modules/timeline-chart/chart.phtml:135
 msgid "Day:"
-msgstr ""
+msgstr "Roj:"
 
 #: resources/views/modules/timeline-chart/chart.phtml:133
 msgid "years"
-msgstr ""
+msgstr "sal"
 
 #: resources/views/modules/timeline-chart/chart.phtml:135
 #: resources/views/modules/timeline-chart/chart.phtml:403
 msgid "Year:"
-msgstr ""
+msgstr "Sal:"
 
 #: resources/views/modules/timeline-chart/chart.phtml:346
 msgid "Husband’s age"
-msgstr ""
+msgstr "Emrê mêr"
 
 #: resources/views/modules/timeline-chart/chart.phtml:346
 msgid "Wife’s age"
-msgstr ""
+msgstr "Emrê jinê"
 
 #: resources/views/modules/timeline-chart/page.phtml:58
 msgid "Remove individual"
-msgstr ""
+msgstr "Vî kesî jê bibe"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: resources/views/modules/timeline-chart/page.phtml:65
@@ -19112,36 +19112,36 @@ msgstr ""
 
 #: resources/views/modules/todays_events/empty.phtml:4
 msgid "No events exist for today."
-msgstr ""
+msgstr "Îro tu vûyerek nebûye."
 
 #: resources/views/modules/todo/config.phtml:4
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr ""
+msgstr "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
 
 #: resources/views/modules/todo/config.phtml:5
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr ""
+msgstr "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
 
 #: resources/views/modules/todo/config.phtml:6
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr ""
+msgstr "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
 
 #: resources/views/modules/todo/config.phtml:11
 msgid "Show research tasks that are assigned to other users"
-msgstr ""
+msgstr "Show research tasks that are assigned to other users"
 
 #: resources/views/modules/todo/config.phtml:21
 msgid "Show research tasks that are not assigned to any user"
-msgstr ""
+msgstr "Show research tasks that are not assigned to any user"
 
 #: resources/views/modules/todo/config.phtml:30
 msgid "Show research tasks that have a date in the future"
-msgstr ""
+msgstr "Show research tasks that have a date in the future"
 
 #. I18N: ... to show in a list
 #: resources/views/modules/top10_givnnames/config.phtml:5
 msgid "Number of given names"
-msgstr ""
+msgstr "Number of given names"
 
 #. I18N: ... to show in a list
 #: resources/views/modules/top10_pageviews/config.phtml:5
