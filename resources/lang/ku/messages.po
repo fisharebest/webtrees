@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-01 20:01+0000\nLast-Translator: Victor Tiltay <vtiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-01 20:01+0000\nLast-Translator: Herve Tiltay <hervetiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -2660,7 +2660,7 @@ msgstr "xwîşk/brayê oge"
 #: app/Functions/Functions.php:817
 msgctxt "husband’s sister"
 msgid "sister-in-law"
-msgstr "jinbir/bûk"
+msgstr "jinbir/bûk/amojin/xalojin"
 
 #: app/Functions/Functions.php:819
 msgctxt "husband’s son"
@@ -2750,7 +2750,7 @@ msgstr "kalik-pîrik"
 #: app/Functions/Functions.php:853
 msgctxt "parent’s sibling"
 msgid "aunt/uncle"
-msgstr "xatî/apo"
+msgstr "xatî/xalo\nap/met"
 
 #: app/Functions/Functions.php:855
 msgctxt "parent’s sister"
@@ -2775,7 +2775,7 @@ msgstr "xwarzî/brazî"
 #: app/Functions/Functions.php:863
 msgctxt "sibling’s daughter"
 msgid "niece"
-msgstr "xwarzî/brazî"
+msgstr "xwarzî"
 
 #: app/Functions/Functions.php:865
 msgctxt "sibling’s son"
@@ -2790,7 +2790,7 @@ msgstr "zava/bûk"
 #: app/Functions/Functions.php:869
 msgctxt "sister’s child"
 msgid "nephew/niece"
-msgstr "xwarzî"
+msgstr "xwarzî-brazî"
 
 #: app/Functions/Functions.php:871
 msgctxt "sister’s daughter"
@@ -2810,7 +2810,7 @@ msgstr "xwarzî"
 #: app/Functions/Functions.php:877
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr "neve"
+msgstr "neve-nevo"
 
 #: app/Functions/Functions.php:879
 msgctxt "son’s daughter"
@@ -2855,7 +2855,7 @@ msgstr "xesî/xesû"
 #: app/Functions/Functions.php:895
 msgctxt "spouse’s sister"
 msgid "sister-in-law"
-msgstr "jinbir"
+msgstr "baltûz"
 
 #: app/Functions/Functions.php:897
 msgctxt "spouse’s son"
@@ -2930,37 +2930,37 @@ msgstr "neva xwîşk/bra"
 #: app/Functions/Functions.php:931
 msgctxt "(a woman’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr "Qîza zara bira"
+msgstr "nevya zyarê -bra"
 
 #: app/Functions/Functions.php:934
 msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr "Kurê zara birê"
+msgstr "nevoyê birê"
 
 #: app/Functions/Functions.php:937
 msgctxt "(a woman’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr "Kurê zara bira"
+msgstr "nevoyê xwîşkê"
 
 #: app/Functions/Functions.php:940
 msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "Zara qîza bira"
+msgstr "nevoya birê"
 
 #: app/Functions/Functions.php:943
 msgctxt "(a woman’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "Zara qîza bira"
+msgstr "nevoyê bira"
 
 #: app/Functions/Functions.php:946
 msgctxt "(a man’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr "Qîza qîza bira"
+msgstr "nevoya birê"
 
 #: app/Functions/Functions.php:949
 msgctxt "(a woman’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr "Qîza qîza bira"
+msgstr "nevoya birê"
 
 #: app/Functions/Functions.php:951
 msgctxt "brother’s daughter’s husband"
@@ -2980,52 +2980,52 @@ msgstr "Kurê qîza bira"
 #: app/Functions/Functions.php:960
 msgctxt "(a man’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr "Zara kurê bira"
+msgstr "nevyê bira"
 
 #: app/Functions/Functions.php:963
 msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr "Zara kurê bira"
+msgstr "nevoya  bira"
 
 #: app/Functions/Functions.php:966
 msgctxt "(a man’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr "Qîza kurê bira"
+msgstr "Qîza kur-bira"
 
 #: app/Functions/Functions.php:969
 msgctxt "(a woman’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr "Qîza kurê bira"
+msgstr "Qîza kur-bira"
 
 #: app/Functions/Functions.php:972
 msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr "Kurê kurê bira"
+msgstr "Kurê kur-bira"
 
 #: app/Functions/Functions.php:975
 msgctxt "(a woman’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr "Kurê kurê bira"
+msgstr "keça kur-bira"
 
 #: app/Functions/Functions.php:977
 msgctxt "brother’s son’s wife"
 msgid "niece-in-law"
-msgstr "Jina kurê bira"
+msgstr "Jina kur-bira"
 
 #: app/Functions/Functions.php:979
 msgctxt "brother’s wife’s brother"
 msgid "brother-in-law"
-msgstr "Birê jina bira"
+msgstr "Birê jin-birê"
 
 #: app/Functions/Functions.php:981
 msgctxt "brother’s wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr "Xûşk birayê jina bira"
+msgstr "Xûşk birayên jin-birê"
 
 #: app/Functions/Functions.php:983
 msgctxt "brother’s wife’s sister"
 msgid "sister-in-law"
-msgstr "Xûşka jina bira"
+msgstr "Xûşka jin-birê"
 
 #: app/Functions/Functions.php:985
 msgctxt "child’s child’s child"
