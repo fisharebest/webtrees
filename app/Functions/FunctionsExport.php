@@ -101,7 +101,7 @@ class FunctionsExport
         $SUBM = "\n1 SUBM @SUBM@\n0 @SUBM@ SUBM\n1 NAME " . Auth::user()->userName(); // The SUBM record is mandatory
 
         // Preserve some values from the original header
-        $record = GedcomRecord::getInstance('HEAD', $tree);
+        $record = GedcomRecord::getInstance('HEAD', $tree) ?? new GedcomRecord('HEAD', '0 HEAD', null, $tree);
         $fact   = $record->facts(['COPR'])->first();
         if ($fact instanceof Fact) {
             $COPR = "\n1 COPR " . $fact->value();

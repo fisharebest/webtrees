@@ -151,11 +151,6 @@ parameters:
 			path: app/Functions/FunctionsExport.php
 
 		-
-			message: "#^Cannot call method facts\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
-			count: 2
-			path: app/Functions/FunctionsExport.php
-
-		-
 			message: "#^Parameter \\#2 \\$subject of function preg_match_all expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Functions/FunctionsImport.php
