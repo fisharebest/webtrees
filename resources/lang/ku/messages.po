@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-01 20:01+0000\nLast-Translator: Herve Tiltay <hervetiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-03 08:31+0000\nLast-Translator: Herve Tiltay <hervetiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -3045,537 +3045,537 @@ msgstr "Neveçirk"
 #: app/Functions/Functions.php:991
 msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
-msgstr "Kurê qîza kur"
+msgstr "kurê ji qîza kur"
 
 #: app/Functions/Functions.php:993
 msgctxt "child’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr "qîza qîza kur"
+msgstr "qîza ji qîza kur"
 
 #: app/Functions/Functions.php:995
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "mêrê qîza zar"
+msgstr "mêrê nevoyê"
 
 #: app/Functions/Functions.php:997
 msgctxt "child’s daughter’s son"
 msgid "great-grandson"
-msgstr "kurê qîza zar"
+msgstr "kurê nevoyê"
 
 #: app/Functions/Functions.php:999
 msgctxt "child’s son’s child"
 msgid "great-grandchild"
-msgstr "zara kurê zar"
+msgstr "Nevoçirk"
 
 #: app/Functions/Functions.php:1001
 msgctxt "child’s son’s daughter"
 msgid "great-granddaughter"
-msgstr "qîza kurê zar"
+msgstr "neveçirk"
 
 #: app/Functions/Functions.php:1003
 msgctxt "child’s son’s son"
 msgid "great-grandson"
-msgstr "kurê kurê zar"
+msgstr "nevoçirk"
 
 #: app/Functions/Functions.php:1005
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr "jina kurê zar"
+msgstr "jina nevo/bûk"
 
 #: app/Functions/Functions.php:1007
 msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
-msgstr "zara zara qîz"
+msgstr "neveçirk"
 
 #: app/Functions/Functions.php:1009
 msgctxt "daughter’s child’s daughter"
 msgid "great-granddaughter"
-msgstr "qîza zara qîz"
+msgstr "neveçirk"
 
 #: app/Functions/Functions.php:1011
 msgctxt "daughter’s child’s son"
 msgid "great-grandson"
-msgstr "kurê zara qîz"
+msgstr "nevoçirk"
 
 #: app/Functions/Functions.php:1013
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr "zara qîza qîz"
+msgstr "neveçirk"
 
 #: app/Functions/Functions.php:1015
 msgctxt "daughter’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr "qîza qîza qîz"
+msgstr "neveçirk"
 
 #: app/Functions/Functions.php:1017
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "mêrê qîza qîz"
+msgstr "mêrê neveçirkê"
 
 #: app/Functions/Functions.php:1019
 msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
-msgstr "kurê qîza qîz"
+msgstr "nevoçirk"
 
 #: app/Functions/Functions.php:1021
 msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
-msgstr "bavê mêrê qîz"
+msgstr "xinamî(bavê mêrê qîzê)"
 
 #: app/Functions/Functions.php:1023
 msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
-msgstr "dîya mêrê qîz"
+msgstr "xinamî(dîya mêrê qîzê)"
 
 #: app/Functions/Functions.php:1025
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr "dêbavên mêrê qîz"
+msgstr "dê-bavên mêrê qîzê"
 
 #: app/Functions/Functions.php:1027
 msgctxt "daughter’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "neveçirk"
 
 #: app/Functions/Functions.php:1029
 msgctxt "daughter’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "neveçirk"
 
 #: app/Functions/Functions.php:1031
 msgctxt "daughter’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "nevoçirk"
 
 #: app/Functions/Functions.php:1033
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "jina nevo"
 
 #: app/Functions/Functions.php:1035
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "pismam/dotmam"
 
 #: app/Functions/Functions.php:1037
 msgctxt "father’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "pismam/dotmam"
 
 #: app/Functions/Functions.php:1039
 msgctxt "father’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "pismam"
 
 #: app/Functions/Functions.php:1041
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "xatî"
 
 #: app/Functions/Functions.php:1043
 msgctxt "father’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "apê bavê"
 
 #: app/Functions/Functions.php:1045
 msgctxt "father’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "kalikê bavê"
 
 #: app/Functions/Functions.php:1047
 msgctxt "father’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "pîrika dê"
 
 #: app/Functions/Functions.php:1049
 msgctxt "father’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "kalikê dê"
 
 #: app/Functions/Functions.php:1051
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "birê kalik"
 
 #: app/Functions/Functions.php:1053
 msgctxt "father’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "meta bavê"
 
 #: app/Functions/Functions.php:1055
 msgctxt "father’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "xalê bavê"
 
 #: app/Functions/Functions.php:1057
 msgctxt "father’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "kalikê bavê"
 
 #: app/Functions/Functions.php:1059
 msgctxt "father’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "diya pîrikê"
 
 #: app/Functions/Functions.php:1061
 msgctxt "father’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "kalik û pîrikên dê û bavan"
 
 #: app/Functions/Functions.php:1063
 msgctxt "father’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "xal û xatiyên bavê"
 
 #: app/Functions/Functions.php:1065
 msgctxt "father’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "xatiya bavê"
 
 #: app/Functions/Functions.php:1067
 msgctxt "father’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "xal û apên bavê"
 
 #: app/Functions/Functions.php:1069
 msgctxt "father’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "kalikê bavê"
 
 #: app/Functions/Functions.php:1071
 msgctxt "father’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "pîrika bavê"
 
 #: app/Functions/Functions.php:1073
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "kalik û pîrikên dê û bavan"
 
 #: app/Functions/Functions.php:1075
 msgctxt "father’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "ap û metên bavê"
 
 #: app/Functions/Functions.php:1077
 msgctxt "father’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "xatiya bavê"
 
 #: app/Functions/Functions.php:1079
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "pismam"
 
 #: app/Functions/Functions.php:1081
 msgctxt "father’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "pismam/dotmam"
 
 #: app/Functions/Functions.php:1083
 msgctxt "father’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "ap"
 
 #: app/Functions/Functions.php:1085
 msgctxt "father’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "pismam/dotmam"
 
 #: app/Functions/Functions.php:1087
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "xwîşk/brayên jinbavê\nxwîşk/brayên zirbêv"
 
 #: app/Functions/Functions.php:1089
 msgctxt "father’s wife’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "xwîşka ji jin-bavê"
 
 #: app/Functions/Functions.php:1091
 msgctxt "father’s wife’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "brayê ji jin-bavê"
 
 #: app/Functions/Functions.php:1093
 msgctxt "husband’s brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "jin-bir"
 
 #: app/Functions/Functions.php:1095
 msgctxt "husband’s sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "zava"
 
 #: app/Functions/Functions.php:1097
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "xwarzî/brazî"
 
 #: app/Functions/Functions.php:1099
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "xwarzî/brazî"
 
 #: app/Functions/Functions.php:1101
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "xwarzî/brazî"
 
 #: app/Functions/Functions.php:1103
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "xwarzî"
 
 #: app/Functions/Functions.php:1105
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "xwarzî"
 
 #: app/Functions/Functions.php:1107
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "xwarzî"
 
 #: app/Functions/Functions.php:1109
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "brazî"
 
 #: app/Functions/Functions.php:1111
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "brazî"
 
 #: app/Functions/Functions.php:1113
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "brazî"
 
 #: app/Functions/Functions.php:1115
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "pismam/dotmam"
 
 #: app/Functions/Functions.php:1117
 msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "pismam/dotmam"
 
 #: app/Functions/Functions.php:1119
 msgctxt "mother’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "pismam/dotmam"
 
 #: app/Functions/Functions.php:1121
 msgctxt "mother’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "xatî"
 
 #: app/Functions/Functions.php:1123
 msgctxt "mother’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "apê dê"
 
 #: app/Functions/Functions.php:1125
 msgctxt "mother’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "kalikê dê"
 
 #: app/Functions/Functions.php:1127
 msgctxt "mother’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "pîrka bavê"
 
 #: app/Functions/Functions.php:1129
 msgctxt "mother’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "kalik û pîrikên dê û bavan"
 
 #: app/Functions/Functions.php:1131
 msgctxt "mother’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "ap û metên ji dê"
 
 #: app/Functions/Functions.php:1133
 msgctxt "mother’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "xatiya dê"
 
 #: app/Functions/Functions.php:1135
 msgctxt "mother’s husband’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "xwîşk/brayên ne ji dê/bavan"
 
 #: app/Functions/Functions.php:1137
 msgctxt "mother’s husband’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "xwîşka ji dê/bavê"
 
 #: app/Functions/Functions.php:1139
 msgctxt "mother’s husband’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "birayê ne ji dê/bavê"
 
 #: app/Functions/Functions.php:1141
 msgctxt "mother’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "xalê ji dê"
 
 #: app/Functions/Functions.php:1143
 msgctxt "mother’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "kalikê ji dê"
 
 #: app/Functions/Functions.php:1145
 msgctxt "mother’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "pîrika ji dê"
 
 #: app/Functions/Functions.php:1147
 msgctxt "mother’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "kalik û pîrikên ji dê û bavan"
 
 #: app/Functions/Functions.php:1149
 msgctxt "mother’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "xatî/xalên ji dê"
 
 #: app/Functions/Functions.php:1151
 msgctxt "mother’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "xatiya ji dê"
 
 #: app/Functions/Functions.php:1153
 msgctxt "mother’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "ap û xalên ji dê"
 
 #: app/Functions/Functions.php:1155
 msgctxt "mother’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "kalikê ji dê"
 
 #: app/Functions/Functions.php:1157
 msgctxt "mother’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "pîrika ji dê"
 
 #: app/Functions/Functions.php:1159
 msgctxt "mother’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "kalik û pîrikên ji dê"
 
 #: app/Functions/Functions.php:1161
 msgctxt "mother’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "xal û xatiyên ji dê"
 
 #: app/Functions/Functions.php:1163
 msgctxt "mother’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "xatî û metên ji dê"
 
 #: app/Functions/Functions.php:1165
 msgctxt "mother’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "pismam/kurmam"
 
 #: app/Functions/Functions.php:1167
 msgctxt "mother’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "keçxal/kurxal"
 
 #: app/Functions/Functions.php:1169
 msgctxt "mother’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "xal"
 
 #: app/Functions/Functions.php:1171
 msgctxt "mother’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "kurxatî/keçxatî"
 
 #: app/Functions/Functions.php:1173
 msgctxt "parent’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "amojin/xalojin"
 
 #: app/Functions/Functions.php:1175
 msgctxt "parent’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "apê ji bavê"
 
 #: app/Functions/Functions.php:1177
 msgctxt "parent’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "kalikê ji bavê"
 
 #: app/Functions/Functions.php:1179
 msgctxt "parent’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "pîrika ji bavê"
 
 #: app/Functions/Functions.php:1181
 msgctxt "parent’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "kalik û pîrikên ji dê û bavan"
 
 #: app/Functions/Functions.php:1183
 msgctxt "parent’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "ap û metên dê û bavan"
 
 #: app/Functions/Functions.php:1185
 msgctxt "parent’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "amojin û xalojinên dê û bavan"
 
 #: app/Functions/Functions.php:1187
 msgctxt "parent’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "birayê pîrika ji bavê/xalê ji bavê"
 
 #: app/Functions/Functions.php:1189
 msgctxt "parent’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "kalikê ji dê"
 
 #: app/Functions/Functions.php:1191
 msgctxt "parent’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "pîrika ji bavê"
 
 #: app/Functions/Functions.php:1193
 msgctxt "parent’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "kalik û pîrikên dê û bavav"
 
 #: app/Functions/Functions.php:1195
 msgctxt "parent’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "ap û metên dê û bavan"
 
 #: app/Functions/Functions.php:1197
 msgctxt "parent’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "amojin û xalojinên dê û bavan"
 
 #: app/Functions/Functions.php:1199
 msgctxt "parent’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "apê ji bavê"
 
 #: app/Functions/Functions.php:1201
 msgctxt "parent’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "kalikê ji dê"
 
 #: app/Functions/Functions.php:1203
 msgctxt "parent’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "pîrika ji dê"
 
 #: app/Functions/Functions.php:1205
 msgctxt "parent’s parent’s parent"
