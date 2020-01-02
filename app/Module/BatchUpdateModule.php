@@ -151,8 +151,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
 
             // If we've found a record to update, get details and look for the next/prev
             if ($curr_xref !== '') {
-                $prev_xref = $this->findPrevXref($plugin, $xref, $all_data, $tree);
-                $next_xref = $this->findNextXref($plugin, $xref, $all_data, $tree);
+                $prev_xref = $this->findPrevXref($plugin, $curr_xref, $all_data, $tree);
+                $next_xref = $this->findNextXref($plugin, $curr_xref, $all_data, $tree);
             }
         }
 
@@ -261,7 +261,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
             $data[$value->xref] = $value;
         }
 
-        ksort($tmp);
+        ksort($data, SORT_NATURAL);
 
         return $data;
     }
