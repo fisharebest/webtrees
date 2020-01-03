@@ -231,14 +231,14 @@ class IndividualPage implements RequestHandlerInterface
         }
 
         ob_start();
-        echo '<dl><dt class="label">', I18N::translate('Name'), '</dt>';
-        echo '<dd class="field">', $dummy->fullName(), '</dd>';
+        echo '<dl class="row mb-0"><dt class="col-md-4 col-lg-3">', I18N::translate('Name'), '</dt>';
+        echo '<dd class="col-md-8 col-lg-9">', $dummy->fullName(), '</dd>';
         $ct = preg_match_all('/\n2 (\w+) (.*)/', $fact->gedcom(), $nmatch, PREG_SET_ORDER);
         for ($i = 0; $i < $ct; $i++) {
             $tag = $nmatch[$i][1];
             if ($tag !== 'SOUR' && $tag !== 'NOTE' && $tag !== 'SPFX') {
-                echo '<dt class="label">', GedcomTag::getLabel($tag, $individual), '</dt>';
-                echo '<dd class="field">'; // Before using dir="auto" on this field, note that Gecko treats this as an inline element but WebKit treats it as a block element
+                echo '<dt class="col-md-4 col-lg-3">', GedcomTag::getLabel($tag, $individual), '</dt>';
+                echo '<dd class="col-md-8 col-lg-9">'; // Before using dir="auto" on this field, note that Gecko treats this as an inline element but WebKit treats it as a block element
                 if (isset($nmatch[$i][2])) {
                     $name = e($nmatch[$i][2]);
                     $name = str_replace('/', '', $name);
