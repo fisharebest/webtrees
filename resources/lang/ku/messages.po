@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-03 08:31+0000\nLast-Translator: Victor Tiltay <vtiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-03 17:33+0000\nLast-Translator: Victor Tiltay <vtiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -56,19 +56,19 @@ msgstr[1] "%s rojan"
 #: app/Age.php:163
 #, php-format
 msgid "(aged less than %s)"
-msgstr "%s salan piçuktir bû"
+msgstr "%s salan piçuktir bû'"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
 #: app/Age.php:168
 #, php-format
 msgid "(aged more than %s)"
-msgstr "%s salan mezintir bû"
+msgstr "%s salan mezintir bû'"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/Age.php:172
 #, php-format
 msgid "(aged %s)"
-msgstr "%s salî bû"
+msgstr "%s salî bû'"
 
 #. I18N: The gregorian calendar
 #: app/Date.php:229 app/Module/YahrzeitModule.php:249
@@ -2264,35 +2264,35 @@ msgstr "%s × pismam"
 #, php-format
 msgctxt "MALE"
 msgid "first %s"
-msgstr "%s ê yekemîn"
+msgstr "%s ê yekemîn'"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:517
 #, php-format
 msgctxt "MALE"
 msgid "second %s"
-msgstr "%s ê duyemîn"
+msgstr "%s ê duyemîn'"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:520
 #, php-format
 msgctxt "MALE"
 msgid "third %s"
-msgstr "%s ê sêyemîn"
+msgstr "%s ê sêyemîn'"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:523
 #, php-format
 msgctxt "MALE"
 msgid "fourth %s"
-msgstr "%s ê yekemîn"
+msgstr "%s ê yekemîn'"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:526
 #, php-format
 msgctxt "MALE"
 msgid "fifth %s"
-msgstr "%s ê pêncemîn"
+msgstr "%s ê pêncemîn'"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:529
@@ -2306,35 +2306,35 @@ msgstr "%1$s x %2$s"
 #, php-format
 msgctxt "FEMALE"
 msgid "first %s"
-msgstr "%s a yekemîn"
+msgstr "%s a yekemîn'"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:540
 #, php-format
 msgctxt "FEMALE"
 msgid "second %s"
-msgstr "%s a duyemîn"
+msgstr "%s a duyemîn'"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:543
 #, php-format
 msgctxt "FEMALE"
 msgid "third %s"
-msgstr "%s a sêemîn"
+msgstr "%s a sêemîn'"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:546
 #, php-format
 msgctxt "FEMALE"
 msgid "fourth %s"
-msgstr "%s a çaremîn"
+msgstr "%s a çaremîn'"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:549
 #, php-format
 msgctxt "FEMALE"
 msgid "fifth %s"
-msgstr "%s a pêncemîn"
+msgstr "%s a pêncemîn'"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:552
@@ -2347,31 +2347,31 @@ msgstr "%1$s x %2$s"
 #: app/Functions/Functions.php:559
 #, php-format
 msgid "first %s"
-msgstr "%s ê yekemîn"
+msgstr "%s ê yekemîn'"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:562
 #, php-format
 msgid "second %s"
-msgstr "%s ê duyemîn"
+msgstr "%s ê duyemîn'"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:565
 #, php-format
 msgid "third %s"
-msgstr "%s ê sêyemîn"
+msgstr "%s ê sêyemîn'"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:568
 #, php-format
 msgid "fourth %s"
-msgstr "%s ê çaremîn"
+msgstr "%s ê çaremîn'"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:571
 #, php-format
 msgid "fifth %s"
-msgstr "%s ê pêncemîn"
+msgstr "%s ê pêncemîn'"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:574
@@ -10850,7 +10850,7 @@ msgstr ""
 
 #: app/Http/Controllers/HomePageController.php:597
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Change the “My page” blocks"
 
 #: app/Http/Controllers/IndividualController.php:117
 #: app/Http/Controllers/IndividualController.php:120
@@ -10860,26 +10860,26 @@ msgstr ""
 #: app/Module/StatisticsChartModule.php:594
 #: app/Module/StatisticsChartModule.php:655
 msgid "age"
-msgstr ""
+msgstr "age"
 
 #: app/Http/Controllers/IndividualController.php:314
 #: app/Http/RequestHandlers/IndividualPage.php:279
 #: resources/views/edit/icon-fact-delete.phtml:8
 #: resources/views/media-page.phtml:99
 msgid "Are you sure you want to delete this fact?"
-msgstr ""
+msgstr "Are you sure you want to delete this fact?"
 
 #: app/Http/Controllers/IndividualController.php:314
 #: app/Http/RequestHandlers/IndividualPage.php:279
 msgid "Delete this name"
-msgstr ""
+msgstr "Delete this name"
 
 #: app/Http/Controllers/IndividualController.php:363
 #: app/Http/RequestHandlers/IndividualPage.php:328
 #: resources/views/individual-page-menu.phtml:44
 #: resources/views/individual-page-menu.phtml:52
 msgid "Edit the gender"
-msgstr ""
+msgstr "Edit the gender"
 
 #: app/Http/Controllers/ListController.php:217
 #: app/Http/Controllers/ListController.php:708
@@ -10890,30 +10890,30 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:11
 #: resources/xml/reports/individual_report.xml:8
 msgid "None"
-msgstr ""
+msgstr "None"
 
 #: app/Http/Controllers/ListController.php:273
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr ""
+msgstr "Exclude individuals with “%s” as a married name"
 
 #: app/Http/Controllers/ListController.php:279
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr ""
+msgstr "Include individuals with “%s” as a married name"
 
 #: app/Http/Controllers/ListController.php:288
 msgid "Show the list of individuals"
-msgstr ""
+msgstr "Show the list of individuals"
 
 #: app/Http/Controllers/ListController.php:294
 msgid "Show the list of surnames"
-msgstr ""
+msgstr "Show the list of surnames"
 
 #: app/Http/Controllers/ListController.php:342
 #, php-format
 msgid "Individuals with surname %s"
-msgstr ""
+msgstr "Individuals with surname %s"
 
 #. I18N: Name of a module
 #: app/Http/Controllers/ListController.php:464 app/Module/MediaTabModule.php:60
@@ -10923,22 +10923,22 @@ msgstr ""
 #: resources/views/lists/media-table.phtml:67
 #: resources/views/modules/recent_changes/changes-table.phtml:37
 msgid "Media"
-msgstr ""
+msgstr "Media"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/ListController.php:488 app/Module/NoteListModule.php:49
 #: resources/views/lists/sources-table.phtml:87
 #: resources/views/search-general-page.phtml:62
 msgid "Shared notes"
-msgstr ""
+msgstr "Shared notes"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:101
 msgid "Show place hierarchy"
-msgstr ""
+msgstr "Show place hierarchy"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:106
 msgid "Show all places in a list"
-msgstr ""
+msgstr "Show all places in a list"
 
 #. I18N: Name of a module
 #: app/Http/Controllers/PlaceHierarchyController.php:122
@@ -10947,39 +10947,39 @@ msgstr ""
 #: resources/views/search-replace-page.phtml:38
 #: resources/views/statistics/other/places.phtml:11
 msgid "Places"
-msgstr ""
+msgstr "Places"
 
 #: app/Http/Controllers/SetupController.php:143
 msgid "Oops! webtrees was unable to create files in this folder."
-msgstr ""
+msgstr "Oops! webtrees was unable to create files in this folder."
 
 #: app/Http/Controllers/SetupController.php:144
 msgid "This usually means that you need to change the folder permissions to 777."
-msgstr ""
+msgstr "This usually means that you need to change the folder permissions to 777."
 
 #: app/Http/Controllers/SetupController.php:368
 msgid "You must enter all the administrator account fields."
-msgstr ""
+msgstr "You must enter all the administrator account fields."
 
 #: app/Http/Controllers/SetupController.php:372
 msgid "The password needs to be at least six characters long."
-msgstr ""
+msgstr "The password needs to be at least six characters long."
 
 #: app/Http/Middleware/AuthAdministrator.php:57
 #: app/Http/Middleware/AuthEditor.php:62 app/Http/Middleware/AuthManager.php:65
 #: app/Http/Middleware/AuthMember.php:62
 #: app/Http/Middleware/AuthModerator.php:62
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "You do not have permission to view this page."
 
 #: app/Http/Middleware/CheckCsrf.php:59
 msgid "This form has expired. Try again."
-msgstr ""
+msgstr "This form has expired. Try again."
 
 #: app/Http/RequestHandlers/AccountEdit.php:66
 #: app/Module/ModuleThemeTrait.php:349 app/Module/UserWelcomeModule.php:114
 msgid "My account"
-msgstr ""
+msgstr "My account"
 
 #: app/Http/RequestHandlers/BroadcastAction.php:82
 #: app/Http/RequestHandlers/ContactAction.php:127
@@ -10987,35 +10987,35 @@ msgstr ""
 #: app/Http/RequestHandlers/MessageAction.php:98
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr ""
+msgstr "The message was successfully sent to %s."
 
 #: app/Http/RequestHandlers/BroadcastAction.php:89
 #: app/Http/RequestHandlers/ContactAction.php:134
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:92
 #: app/Http/RequestHandlers/MessageAction.php:105
 msgid "The message was not sent."
-msgstr ""
+msgstr "The message was not sent."
 
 #: app/Http/RequestHandlers/CleanDataFolder.php:95
 #: resources/views/admin/control-panel.phtml:106
 msgid "Clean up data folder"
-msgstr ""
+msgstr "Clean up data folder"
 
 #: app/Http/RequestHandlers/ContactAction.php:100
 msgid "Please enter a valid email address."
-msgstr ""
+msgstr "Please enter a valid email address."
 
 #: app/Http/RequestHandlers/ContactAction.php:107
 #: app/Http/RequestHandlers/RegisterAction.php:236
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "You are not allowed to send messages that contain external links."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: app/Http/RequestHandlers/ContactAction.php:108
 #: app/Http/RequestHandlers/RegisterAction.php:236
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr ""
+msgstr "You should delete the “%1$s” from “%2$s” and try again."
 
 #: app/Http/RequestHandlers/ContactPage.php:87
 #: app/Http/RequestHandlers/MessagePage.php:76
@@ -11023,81 +11023,81 @@ msgstr ""
 #: app/Statistics/Repository/UserRepository.php:127
 #: resources/views/pending-changes-page.phtml:83
 msgid "Send a message"
-msgstr ""
+msgstr "Send a message"
 
 #: app/Http/RequestHandlers/CopyFact.php:77
 msgid "The record has been copied to the clipboard."
-msgstr ""
+msgstr "The record has been copied to the clipboard."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:73
 msgid "The note has been created"
-msgstr ""
+msgstr "The note has been created"
 
 #: app/Http/RequestHandlers/CreateRepositoryAction.php:73
 #: app/Http/RequestHandlers/CreateRepositoryModal.php:92
 msgid "The repository has been created"
-msgstr ""
+msgstr "The repository has been created"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:115
 msgid "The source has been created"
-msgstr ""
+msgstr "The source has been created"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:83
 msgid "The submitter has been created"
-msgstr ""
+msgstr "The submitter has been created"
 
 #: app/Http/RequestHandlers/CreateTreeAction.php:63
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "The family tree “%s” already exists."
 
 #: app/Http/RequestHandlers/CreateTreeAction.php:70
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "The family tree “%s” has been created."
 
 #: app/Http/RequestHandlers/CreateTreePage.php:55
 #: resources/views/admin/control-panel.phtml:142
 msgid "Create a family tree"
-msgstr ""
+msgstr "Create a family tree"
 
 #: app/Http/RequestHandlers/CreateTreePage.php:57
 msgid "My family tree"
-msgstr ""
+msgstr "My family tree"
 
 #: app/Http/RequestHandlers/DeletePath.php:60
 #, php-format
 msgid "The file %s has been deleted."
-msgstr ""
+msgstr "The file %s has been deleted."
 
 #: app/Http/RequestHandlers/DeletePath.php:62
 #: app/Http/RequestHandlers/DeletePath.php:76
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr ""
+msgstr "The file %s could not be deleted."
 
 #: app/Http/RequestHandlers/DeletePath.php:69
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "The folder %s has been deleted."
 
 #: app/Http/RequestHandlers/DeletePath.php:71
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "The folder %s could not be deleted."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/RequestHandlers/DeleteRecord.php:73
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr ""
+msgstr "The family “%s” has been deleted because it only has one member."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: app/Http/RequestHandlers/DeleteRecord.php:82
 #: app/Http/RequestHandlers/DeleteRecord.php:87
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr ""
+msgstr "The link from “%1$s” to “%2$s” has been deleted."
 
 #: app/Http/RequestHandlers/EditRawFactPage.php:60
 #: app/Http/RequestHandlers/EditRawRecordPage.php:57
@@ -11111,25 +11111,25 @@ msgstr ""
 #: resources/views/repository-page-menu.phtml:25
 #: resources/views/source-page-menu.phtml:25
 msgid "Edit the raw GEDCOM"
-msgstr ""
+msgstr "Edit the raw GEDCOM"
 
 #: app/Http/RequestHandlers/EmailPreferencesPage.php:64
 #: resources/views/admin/control-panel.phtml:84
 msgid "Sending email"
-msgstr ""
+msgstr "Sending email"
 
 #: app/Http/RequestHandlers/ExportGedcomPage.php:49
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "Export a GEDCOM file"
 
 #: app/Http/RequestHandlers/ExportGedcomServer.php:82
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "The file %s could not be created."
 
 #: app/Http/RequestHandlers/HelpText.php:244
 msgid "Associate events with this source"
-msgstr ""
+msgstr "Associate events with this source"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/HelpText.php:249
@@ -11141,148 +11141,148 @@ msgstr ""
 #: resources/views/pending-changes-page.phtml:83
 #: resources/xml/reports/change_report.xml:52
 msgid "Pending changes"
-msgstr ""
+msgstr "Pending changes"
 
 #: app/Http/RequestHandlers/HelpText.php:256
 #: resources/views/admin/users-edit.phtml:282
 msgid "Restrict to immediate family"
-msgstr ""
+msgstr "Restrict to immediate family"
 
 #: app/Http/RequestHandlers/HelpText.php:261
 #: resources/views/admin/trees-export.phtml:66
 #: resources/views/modules/clippings/download.phtml:48
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr ""
+msgstr "Convert from UTF-8 to ISO-8859-1"
 
 #: app/Http/RequestHandlers/HelpText.php:266
 #: resources/views/admin/trees-export.phtml:51
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Compress the GEDCOM file"
 
 #: app/Http/RequestHandlers/HelpText.php:272
 msgid "The help text has not been written for this item."
-msgstr ""
+msgstr "The help text has not been written for this item."
 
 #: app/Http/RequestHandlers/LoginAction.php:80
 #: resources/views/admin/control-panel.phtml:62
 #: resources/views/admin/upgrade/wizard.phtml:22
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "A new version of webtrees is available."
 
 #: app/Http/RequestHandlers/LoginAction.php:112
 msgid "You cannot sign in because your browser does not accept cookies."
-msgstr ""
+msgstr "You cannot sign in because your browser does not accept cookies."
 
 #: app/Http/RequestHandlers/LoginAction.php:119
 #: app/Http/RequestHandlers/LoginAction.php:124
 msgid "The username or password is incorrect."
-msgstr ""
+msgstr "The username or password is incorrect."
 
 #: app/Http/RequestHandlers/LoginAction.php:129
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr ""
+msgstr "This account has not been verified. Please check your email for a verification message."
 
 #: app/Http/RequestHandlers/LoginAction.php:134
 msgid "This account has not been approved. Please wait for an administrator to approve it."
-msgstr ""
+msgstr "This account has not been approved. Please wait for an administrator to approve it."
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/LoginPage.php:84 app/Module/LoginBlockModule.php:43
 #: app/Module/LoginBlockModule.php:75 app/Module/ModuleThemeTrait.php:317
 msgid "Sign in"
-msgstr ""
+msgstr "Sign in"
 
 #: app/Http/RequestHandlers/LoginPage.php:89
 msgid "Anyone with a user account can access this website."
-msgstr ""
+msgstr "Anyone with a user account can access this website."
 
 #: app/Http/RequestHandlers/LoginPage.php:92
 msgid "You need to be an authorized user to access this website."
-msgstr ""
+msgstr "You need to be an authorized user to access this website."
 
 #: app/Http/RequestHandlers/LoginPage.php:95
 msgid "You need to be a family member to access this website."
-msgstr ""
+msgstr "You need to be a family member to access this website."
 
 #: app/Http/RequestHandlers/LoginPage.php:103
 msgid "You can apply for an account using the link below."
-msgstr ""
+msgstr "You can apply for an account using the link below."
 
 #: app/Http/RequestHandlers/Logout.php:51
 msgid "You have signed out."
-msgstr ""
+msgstr "You have signed out."
 
 #: app/Http/RequestHandlers/MergeFactsAction.php:96
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "The link from “%1$s” to “%2$s” has been updated."
 
 #: app/Http/RequestHandlers/MergeFactsAction.php:160
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "The records “%1$s” and “%2$s” have been merged."
 
 #: app/Http/RequestHandlers/MergeFactsPage.php:63
 #: app/Http/RequestHandlers/MergeRecordsPage.php:66
 #: resources/views/admin/trees.phtml:150
 msgid "Merge records"
-msgstr ""
+msgstr "Merge records"
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:88
 #: app/Http/RequestHandlers/PasswordRequestPage.php:55
 #: resources/views/modules/login_block/sign-in.phtml:49
 msgid "Request a new password"
-msgstr ""
+msgstr "Request a new password"
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:95
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr ""
+msgstr "A password reset link has been sent to “%s”."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:96
 msgid "This link is valid for one hour."
-msgstr ""
+msgstr "This link is valid for one hour."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:99
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr ""
+msgstr "There is no user account with the email “%s”."
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:72
 msgid "Your password has been updated."
-msgstr ""
+msgstr "Your password has been updated."
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:79
 #: app/Http/RequestHandlers/PasswordResetPage.php:75
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "The password reset link has expired."
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:80
 #: app/Http/RequestHandlers/PasswordResetPage.php:76
 msgid "Please try again."
-msgstr ""
+msgstr "Please try again."
 
 #: app/Http/RequestHandlers/PasswordResetPage.php:62
 msgid "Set a new password"
-msgstr ""
+msgstr "Set a new password"
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:66
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "“%s” has been deleted."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:69
 #: app/Http/RequestHandlers/PendingChangesAcceptTree.php:62
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr ""
+msgstr "The changes to “%s” have been accepted."
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:101
 #: resources/views/admin/trees.phtml:200
 msgid "Changes log"
-msgstr ""
+msgstr "Changes log"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:122
@@ -13265,69 +13265,69 @@ msgstr[1] ""
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:66
 msgid "Display and manage a user’s favorite pages."
-msgstr ""
+msgstr "Display and manage a user’s favorite pages."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:64
 msgid "A private area to record notes or keep a journal."
-msgstr ""
+msgstr "A private area to record notes or keep a journal."
 
 #. I18N: Name of a module
 #: app/Module/UserJournalModule.php:117
 msgid "Journal"
-msgstr ""
+msgstr "Journal"
 
 #. I18N: Name of a module
 #. I18N: A configuration setting
 #: app/Module/UserMessagesModule.php:72
 #: resources/views/admin/site-mail.phtml:61
 msgid "Messages"
-msgstr ""
+msgstr "Messages"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:83
 msgid "Communicate directly with other users, using private messages."
-msgstr ""
+msgstr "Communicate directly with other users, using private messages."
 
 #: app/Module/UserMessagesModule.php:156
 #: resources/views/edit/add-fact-row.phtml:23
 msgid "&lt;select&gt;"
-msgstr ""
+msgstr "&lt;select&gt;"
 
 #: app/Module/UserMessagesModule.php:161
 #: resources/views/admin/broadcast.phtml:57
 #: resources/views/admin/email-page.phtml:56
 #: resources/views/contact-page.phtml:64 resources/views/message-page.phtml:52
 msgid "Send"
-msgstr ""
+msgstr "Send"
 
 #: app/Module/UserMessagesModule.php:169 app/Module/UserMessagesModule.php:214
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
-msgstr ""
+msgstr "Are you sure you want to delete this message? It cannot be retrieved later."
 
 #: app/Module/UserMessagesModule.php:175
 #: resources/views/admin/broadcast.phtml:37
 #: resources/views/admin/email-page.phtml:36
 #: resources/views/contact-page.phtml:44 resources/views/message-page.phtml:32
 msgid "Subject"
-msgstr ""
+msgstr "Subject"
 
 #: app/Module/UserMessagesModule.php:176
 msgid "Date sent"
-msgstr ""
+msgstr "Date sent"
 
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: app/Module/UserMessagesModule.php:200 app/Module/UserMessagesModule.php:201
 msgid "RE: "
-msgstr ""
+msgstr "RE: "
 
 #: app/Module/UserMessagesModule.php:212
 msgid "Reply"
-msgstr ""
+msgstr "Reply"
 
 #: app/Module/UserMessagesModule.php:217
 msgid "Delete selected messages"
-msgstr ""
+msgstr "Delete selected messages"
 
 #: app/Module/UserMessagesModule.php:228
 #, php-format
@@ -13339,21 +13339,21 @@ msgstr[1] ""
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:72
 msgid "A greeting message and useful links for a user."
-msgstr ""
+msgstr "A greeting message and useful links for a user."
 
 #: app/Module/UserWelcomeModule.php:100 app/Module/WelcomeBlockModule.php:100
 msgid "Default chart"
-msgstr ""
+msgstr "Default chart"
 
 #. I18N: A %s is the user’s name
 #: app/Module/UserWelcomeModule.php:122
 #, php-format
 msgid "Welcome %s"
-msgstr ""
+msgstr "Welcome %s"
 
 #: app/Module/WebtreesTheme.php:38
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #. I18N: Name of a module
 #: app/Module/WelcomeBlockModule.php:60
@@ -13361,157 +13361,157 @@ msgstr ""
 #: resources/views/admin/modules.phtml:186
 #: resources/views/admin/modules.phtml:190 resources/views/admin/trees.phtml:72
 msgid "Home page"
-msgstr ""
+msgstr "Home page"
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:71
 msgid "A greeting message for site visitors."
-msgstr ""
+msgstr "A greeting message for site visitors."
 
 #. I18N: A configuration setting
 #: app/Module/WelcomeBlockModule.php:107
 #: resources/views/admin/trees-preferences.phtml:84
 #: resources/views/edit-account-page.phtml:63
 msgid "Default individual"
-msgstr ""
+msgstr "Default individual"
 
 #. I18N: Name of a theme.
 #: app/Module/XeneaTheme.php:39
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:56
 msgid "Yahrzeiten"
-msgstr ""
+msgstr "Yahrzeiten"
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:67
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr ""
+msgstr "A list of the Hebrew death anniversaries that will occur in the near future."
 
 #: app/Place.php:202
 msgid "unknown"
-msgstr ""
+msgstr "unknown"
 
 #. I18N: This is a report footer. %s is the name of the application.
 #: app/Report/AbstractReport.php:297
 #, php-format
 msgid "Generated by %s"
-msgstr ""
+msgstr "Generated by %s"
 
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: app/Services/EmailService.php:219
 msgid "ssl"
-msgstr ""
+msgstr "ssl"
 
 #. I18N: Transport Layer Security - a secure communications protocol
 #: app/Services/EmailService.php:221 resources/views/admin/site-mail.phtml:43
 msgid "tls"
-msgstr ""
+msgstr "tls"
 
 #. I18N: "sendmail" is the name of some mail software
 #: app/Services/EmailService.php:234
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Use sendmail to send messages"
 
 #: app/Services/EmailService.php:235
 msgid "Use SMTP to send messages"
-msgstr ""
+msgstr "Use SMTP to send messages"
 
 #: app/Services/MessageService.php:127
 msgid "webtrees message"
-msgstr ""
+msgstr "webtrees message"
 
 #: app/Services/MessageService.php:210
 #: resources/views/admin/control-panel.phtml:364
 msgid "Send a message to all users"
-msgstr ""
+msgstr "Send a message to all users"
 
 #: app/Services/MessageService.php:212
 #: resources/views/admin/control-panel.phtml:370
 msgid "Send a message to users who have never signed in"
-msgstr ""
+msgstr "Send a message to users who have never signed in"
 
 #: app/Services/MessageService.php:214
 #: resources/views/admin/control-panel.phtml:376
 msgid "Send a message to users who have not signed in for 6 months"
-msgstr ""
+msgstr "Send a message to users who have not signed in for 6 months"
 
 #: app/Services/SearchService.php:961
 msgid "The search returned too many results."
-msgstr ""
+msgstr "The search returned too many results."
 
 #: app/Services/ServerCheckService.php:126
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr ""
+msgstr "The PHP extension “%s” is not installed."
 
 #: app/Services/ServerCheckService.php:145
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr ""
+msgstr "The PHP.INI setting “%1$s” is disabled."
 
 #: app/Services/ServerCheckService.php:149
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr ""
+msgstr "The PHP.INI setting “%1$s” is enabled."
 
 #: app/Services/ServerCheckService.php:184
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr ""
+msgstr "The PHP function “%1$s” is disabled."
 
 #: app/Services/ServerCheckService.php:199
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
-msgstr ""
+msgstr "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 
 #: app/Services/ServerCheckService.php:217
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
-msgstr ""
+msgstr "SQLite version %s is installed. SQLite version %s or later is required."
 
 #: app/Services/ServerCheckService.php:249
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "The server’s temporary folder cannot be accessed."
 
 #: app/Services/ServerCheckService.php:324
 msgid "SQLite is only suitable for small sites, testing and evaluation."
-msgstr ""
+msgstr "SQLite is only suitable for small sites, testing and evaluation."
 
 #: app/Services/ServerCheckService.php:329
 msgid "Support for PostgreSQL is experimental."
-msgstr ""
+msgstr "Support for PostgreSQL is experimental."
 
 #: app/Services/ServerCheckService.php:334
 msgid "Support for SQL Server is experimental."
-msgstr ""
+msgstr "Support for SQL Server is experimental."
 
 #. I18N: This should be a common/default/placeholder name of an individual. Put slashes around the surname.
 #: app/Services/TreeService.php:207
 msgid "John /DOE/"
-msgstr ""
+msgstr "John /DOE/"
 
 #: app/Services/TreeService.php:208
 msgid "Edit this individual and replace their details with your own."
-msgstr ""
+msgstr "Edit this individual and replace their details with your own."
 
 #: app/Services/UpgradeService.php:254
 msgid "This website is being upgraded. Try again in a few minutes."
-msgstr ""
+msgstr "This website is being upgraded. Try again in a few minutes."
 
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:3491 resources/views/branches-page.phtml:29
 #: resources/views/search-phonetic-page.phtml:57
 msgid "Russell"
-msgstr ""
+msgstr "Russell"
 
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:3493 resources/views/branches-page.phtml:30
 #: resources/views/search-phonetic-page.phtml:63
 msgid "Daitch-Mokotoff"
-msgstr ""
+msgstr "Daitch-Mokotoff"
 
 #: app/Statistics/Google/ChartAge.php:114
 #: app/Statistics/Google/ChartMarriageAge.php:138
@@ -13558,20 +13558,20 @@ msgstr ""
 #: resources/views/lists/families-table.phtml:137
 #: resources/views/lists/individuals-table.phtml:151
 msgid "Average age"
-msgstr ""
+msgstr "Average age"
 
 #: app/Statistics/Google/ChartAge.php:133
 msgid "Average age related to death century"
-msgstr ""
+msgstr "Average age related to death century"
 
 #: app/Statistics/Google/ChartBirth.php:129
 #: resources/views/statistics/individuals/total-events.phtml:30
 msgid "Births by century"
-msgstr ""
+msgstr "Births by century"
 
 #: app/Statistics/Google/ChartChildren.php:94
 msgid "Average number"
-msgstr ""
+msgstr "Average number"
 
 #: app/Statistics/Google/ChartChildren.php:105
 #: resources/views/modules/gedcom_stats/config.phtml:35
@@ -13579,52 +13579,52 @@ msgstr ""
 #: resources/views/modules/html/template-statistics.phtml:91
 #: resources/views/statistics/families/children.phtml:19
 msgid "Average number of children per family"
-msgstr ""
+msgstr "Average number of children per family"
 
 #: app/Statistics/Google/ChartDeath.php:129
 #: resources/views/statistics/individuals/total-events.phtml:78
 msgid "Deaths by century"
-msgstr ""
+msgstr "Deaths by century"
 
 #: app/Statistics/Google/ChartDistribution.php:336
 msgid "Surname distribution chart"
-msgstr ""
+msgstr "Surname distribution chart"
 
 #: app/Statistics/Google/ChartDistribution.php:341
 msgid "Birth by country"
-msgstr ""
+msgstr "Birth by country"
 
 #: app/Statistics/Google/ChartDistribution.php:346
 msgid "Death by country"
-msgstr ""
+msgstr "Death by country"
 
 #: app/Statistics/Google/ChartDistribution.php:351
 msgid "Marriage by country"
-msgstr ""
+msgstr "Marriage by country"
 
 #: app/Statistics/Google/ChartDistribution.php:357
 msgid "Individual distribution chart"
-msgstr ""
+msgstr "Individual distribution chart"
 
 #: app/Statistics/Google/ChartDivorce.php:129
 #: resources/views/statistics/families/total-records.phtml:79
 msgid "Divorces by century"
-msgstr ""
+msgstr "Divorces by century"
 
 #: app/Statistics/Google/ChartFamilyLargest.php:129
 #: resources/views/statistics/families/children.phtml:45
 msgid "Largest families"
-msgstr ""
+msgstr "Largest families"
 
 #: app/Statistics/Google/ChartFamilyWithSources.php:86
 #: app/Statistics/Google/ChartIndividualWithSources.php:86
 msgid "Without sources"
-msgstr ""
+msgstr "Without sources"
 
 #: app/Statistics/Google/ChartFamilyWithSources.php:91
 #: app/Statistics/Google/ChartIndividualWithSources.php:91
 msgid "With sources"
-msgstr ""
+msgstr "With sources"
 
 #: app/Statistics/Google/ChartFamilyWithSources.php:102
 #: resources/views/statistics/other/chart-sources.phtml:31
@@ -13864,867 +13864,867 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:40
 msgid "Aruba"
-msgstr ""
+msgstr "Aruba"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:42
 msgid "Afghanistan"
-msgstr ""
+msgstr "Afghanistan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:44
 msgid "Angola"
-msgstr ""
+msgstr "Angola"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:46
 msgid "Anguilla"
-msgstr ""
+msgstr "Anguilla"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:48
 msgid "Aland Islands"
-msgstr ""
+msgstr "Aland Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:50
 msgid "Albania"
-msgstr ""
+msgstr "Albania"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:52
 msgid "Andorra"
-msgstr ""
+msgstr "Andorra"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:54
 msgid "United Arab Emirates"
-msgstr ""
+msgstr "United Arab Emirates"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:56
 msgid "Argentina"
-msgstr ""
+msgstr "Argentina"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:58
 msgid "Armenia"
-msgstr ""
+msgstr "Armenia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
 msgid "American Samoa"
-msgstr ""
+msgstr "American Samoa"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:62
 msgid "Antarctica"
-msgstr ""
+msgstr "Antarctica"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:64
 msgid "French Southern Territories"
-msgstr ""
+msgstr "French Southern Territories"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:66
 msgid "Antigua and Barbuda"
-msgstr ""
+msgstr "Antigua and Barbuda"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:68
 msgid "Australia"
-msgstr ""
+msgstr "Australia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:70
 msgid "Austria"
-msgstr ""
+msgstr "Austria"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:72
 msgid "Azerbaijan"
-msgstr ""
+msgstr "Azerbaijan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:74
 msgid "Azores"
-msgstr ""
+msgstr "Azores"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:76
 msgid "Burundi"
-msgstr ""
+msgstr "Burundi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:78
 msgid "Belgium"
-msgstr ""
+msgstr "Belgium"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:80
 msgid "Benin"
-msgstr ""
+msgstr "Benin"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:83
 msgid "Burkina Faso"
-msgstr ""
+msgstr "Burkina Faso"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:85
 msgid "Bangladesh"
-msgstr ""
+msgstr "Bangladesh"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:87
 msgid "Bulgaria"
-msgstr ""
+msgstr "Bulgaria"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:89
 msgid "Bahrain"
-msgstr ""
+msgstr "Bahrain"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:91
 msgid "Bahamas"
-msgstr ""
+msgstr "Bahamas"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:93
 msgid "Bosnia and Herzegovina"
-msgstr ""
+msgstr "Bosnia and Herzegovina"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:96
 msgid "Belarus"
-msgstr ""
+msgstr "Belarus"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:98
 msgid "Belize"
-msgstr ""
+msgstr "Belize"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:100
 msgid "Bermuda"
-msgstr ""
+msgstr "Bermuda"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:102
 msgid "Bolivia"
-msgstr ""
+msgstr "Bolivia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:104
 msgid "Brazil"
-msgstr ""
+msgstr "Brazil"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:106
 msgid "Barbados"
-msgstr ""
+msgstr "Barbados"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:108
 msgid "Brunei Darussalam"
-msgstr ""
+msgstr "Brunei Darussalam"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:110
 msgid "Bhutan"
-msgstr ""
+msgstr "Bhutan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:112
 msgid "Bouvet Island"
-msgstr ""
+msgstr "Bouvet Island"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:114
 msgid "Botswana"
-msgstr ""
+msgstr "Botswana"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:116
 msgid "Central African Republic"
-msgstr ""
+msgstr "Central African Republic"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:118
 msgid "Canada"
-msgstr ""
+msgstr "Canada"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:120
 msgid "Cocos (Keeling) Islands"
-msgstr ""
+msgstr "Cocos (Keeling) Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:122
 msgid "Switzerland"
-msgstr ""
+msgstr "Switzerland"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:124
 msgid "Chile"
-msgstr ""
+msgstr "Chile"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:126
 msgid "China"
-msgstr ""
+msgstr "China"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:128
 msgid "Cote d’Ivoire"
-msgstr ""
+msgstr "Cote d’Ivoire"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:130
 msgid "Cameroon"
-msgstr ""
+msgstr "Cameroon"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
 msgid "Democratic Republic of the Congo"
-msgstr ""
+msgstr "Democratic Republic of the Congo"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:134
 msgid "Republic of the Congo"
-msgstr ""
+msgstr "Republic of the Congo"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
 msgid "Cook Islands"
-msgstr ""
+msgstr "Cook Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:138
 msgid "Colombia"
-msgstr ""
+msgstr "Colombia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:140
 msgid "Comoros"
-msgstr ""
+msgstr "Comoros"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:142
 msgid "Cape Verde"
-msgstr ""
+msgstr "Cape Verde"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:144
 msgid "Costa Rica"
-msgstr ""
+msgstr "Costa Rica"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:146
 msgid "Cuba"
-msgstr ""
+msgstr "Cuba"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
 msgid "Christmas Island"
-msgstr ""
+msgstr "Christmas Island"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:151
 msgid "Cayman Islands"
-msgstr ""
+msgstr "Cayman Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:153
 msgid "Cyprus"
-msgstr ""
+msgstr "Cyprus"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:155
 msgid "Czech Republic"
-msgstr ""
+msgstr "Czech Republic"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:157
 msgid "Germany"
-msgstr ""
+msgstr "Germany"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:159
 msgid "Djibouti"
-msgstr ""
+msgstr "Djibouti"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:161
 msgid "Dominica"
-msgstr ""
+msgstr "Dominica"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:163
 msgid "Denmark"
-msgstr ""
+msgstr "Denmark"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:165
 msgid "Dominican Republic"
-msgstr ""
+msgstr "Dominican Republic"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:167
 msgid "Algeria"
-msgstr ""
+msgstr "Algeria"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:169
 msgid "Ecuador"
-msgstr ""
+msgstr "Ecuador"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:171
 msgid "Egypt"
-msgstr ""
+msgstr "Egypt"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:173
 msgid "England"
-msgstr ""
+msgstr "England"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:175
 msgid "Eritrea"
-msgstr ""
+msgstr "Eritrea"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:177
 msgid "Western Sahara"
-msgstr ""
+msgstr "Western Sahara"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:179
 msgid "Spain"
-msgstr ""
+msgstr "Spain"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:181
 msgid "Estonia"
-msgstr ""
+msgstr "Estonia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:183
 msgid "Ethiopia"
-msgstr ""
+msgstr "Ethiopia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:185
 msgid "Finland"
-msgstr ""
+msgstr "Finland"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:187
 msgid "Fiji"
-msgstr ""
+msgstr "Fiji"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:189
 msgid "Flanders"
-msgstr ""
+msgstr "Flanders"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:191
 msgid "Falkland Islands"
-msgstr ""
+msgstr "Falkland Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:193
 msgid "France"
-msgstr ""
+msgstr "France"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:195
 msgid "Faroe Islands"
-msgstr ""
+msgstr "Faroe Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:197
 msgid "Micronesia"
-msgstr ""
+msgstr "Micronesia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
 msgid "Gabon"
-msgstr ""
+msgstr "Gabon"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:201
 msgid "United Kingdom"
-msgstr ""
+msgstr "United Kingdom"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:203
 msgid "Georgia"
-msgstr ""
+msgstr "Georgia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:205
 msgid "Guernsey"
-msgstr ""
+msgstr "Guernsey"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:207
 msgid "Ghana"
-msgstr ""
+msgstr "Ghana"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:209
 msgid "Gibraltar"
-msgstr ""
+msgstr "Gibraltar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:211
 msgid "Guinea"
-msgstr ""
+msgstr "Guinea"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:213
 msgid "Guadeloupe"
-msgstr ""
+msgstr "Guadeloupe"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:215
 msgid "Gambia"
-msgstr ""
+msgstr "Gambia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:217
 msgid "Guinea-Bissau"
-msgstr ""
+msgstr "Guinea-Bissau"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:219
 msgid "Equatorial Guinea"
-msgstr ""
+msgstr "Equatorial Guinea"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:221
 msgid "Greece"
-msgstr ""
+msgstr "Greece"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:223
 msgid "Grenada"
-msgstr ""
+msgstr "Grenada"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:225
 msgid "Greenland"
-msgstr ""
+msgstr "Greenland"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:227
 msgid "Guatemala"
-msgstr ""
+msgstr "Guatemala"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:229
 msgid "French Guiana"
-msgstr ""
+msgstr "French Guiana"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:231
 msgid "Guam"
-msgstr ""
+msgstr "Guam"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:233
 msgid "Guyana"
-msgstr ""
+msgstr "Guyana"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:237
 msgid "Heard Island and McDonald Islands"
-msgstr ""
+msgstr "Heard Island and McDonald Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:239
 msgid "Honduras"
-msgstr ""
+msgstr "Honduras"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:241
 msgid "Croatia"
-msgstr ""
+msgstr "Croatia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:243
 msgid "Haiti"
-msgstr ""
+msgstr "Haiti"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:245
 msgid "Hungary"
-msgstr ""
+msgstr "Hungary"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:247
 msgid "Indonesia"
-msgstr ""
+msgstr "Indonesia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:249
 msgid "India"
-msgstr ""
+msgstr "India"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:251
 msgid "Isle of Man"
-msgstr ""
+msgstr "Isle of Man"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:253
 msgid "British Indian Ocean Territory"
-msgstr ""
+msgstr "British Indian Ocean Territory"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:255
 msgid "Ireland"
-msgstr ""
+msgstr "Ireland"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:257
 msgid "Iran"
-msgstr ""
+msgstr "Iran"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:259
 msgid "Iraq"
-msgstr ""
+msgstr "Iraq"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:261
 msgid "Iceland"
-msgstr ""
+msgstr "Iceland"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:263
 msgid "Israel"
-msgstr ""
+msgstr "Israel"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:265
 msgid "Italy"
-msgstr ""
+msgstr "Italy"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:267
 msgid "Jamaica"
-msgstr ""
+msgstr "Jamaica"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:270
 msgid "Jordan"
-msgstr ""
+msgstr "Jordan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:272
 msgid "Japan"
-msgstr ""
+msgstr "Japan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:274
 msgid "Kazakhstan"
-msgstr ""
+msgstr "Kazakhstan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:276
 msgid "Kenya"
-msgstr ""
+msgstr "Kenya"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:278
 msgid "Kyrgyzstan"
-msgstr ""
+msgstr "Kyrgyzstan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:280
 msgid "Cambodia"
-msgstr ""
+msgstr "Cambodia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:282
 msgid "Kiribati"
-msgstr ""
+msgstr "Kiribati"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:284
 msgid "Saint Kitts and Nevis"
-msgstr ""
+msgstr "Saint Kitts and Nevis"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:286
 msgid "Korea"
-msgstr ""
+msgstr "Korea"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:288
 msgid "Kuwait"
-msgstr ""
+msgstr "Kuwait"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:290
 msgid "Laos"
-msgstr ""
+msgstr "Laos"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:292
 msgid "Lebanon"
-msgstr ""
+msgstr "Lebanon"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:294
 msgid "Liberia"
-msgstr ""
+msgstr "Liberia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:296
 msgid "Libya"
-msgstr ""
+msgstr "Libya"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:298
 msgid "Saint Lucia"
-msgstr ""
+msgstr "Saint Lucia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:300
 msgid "Liechtenstein"
-msgstr ""
+msgstr "Liechtenstein"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:302
 msgid "Sri Lanka"
-msgstr ""
+msgstr "Sri Lanka"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:304
 msgid "Lesotho"
-msgstr ""
+msgstr "Lesotho"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:306
 msgid "Lithuania"
-msgstr ""
+msgstr "Lithuania"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:308
 msgid "Luxembourg"
-msgstr ""
+msgstr "Luxembourg"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:310
 msgid "Latvia"
-msgstr ""
+msgstr "Latvia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:312
 msgid "Macau"
-msgstr ""
+msgstr "Macau"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:315
 msgid "Morocco"
-msgstr ""
+msgstr "Morocco"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:317
 msgid "Monaco"
-msgstr ""
+msgstr "Monaco"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:319
 msgid "Moldova"
-msgstr ""
+msgstr "Moldova"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:321
 msgid "Madagascar"
-msgstr ""
+msgstr "Madagascar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:323
 msgid "Maldives"
-msgstr ""
+msgstr "Maldives"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:325
 msgid "Mexico"
-msgstr ""
+msgstr "Mexico"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:327
 msgid "Marshall Islands"
-msgstr ""
+msgstr "Marshall Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:329
 msgid "Macedonia"
-msgstr ""
+msgstr "Macedonia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:331
 msgid "Mali"
-msgstr ""
+msgstr "Mali"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:333
 msgid "Malta"
-msgstr ""
+msgstr "Malta"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:335
 msgid "Myanmar"
-msgstr ""
+msgstr "Myanmar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:337
 msgid "Mongolia"
-msgstr ""
+msgstr "Mongolia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:339
 msgid "Northern Mariana Islands"
-msgstr ""
+msgstr "Northern Mariana Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:341
 msgid "Montenegro"
-msgstr ""
+msgstr "Montenegro"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:343
 msgid "Mozambique"
-msgstr ""
+msgstr "Mozambique"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
 msgid "Mauritania"
-msgstr ""
+msgstr "Mauritania"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:347
 msgid "Montserrat"
-msgstr ""
+msgstr "Montserrat"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:349
 msgid "Martinique"
-msgstr ""
+msgstr "Martinique"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:351
 msgid "Mauritius"
-msgstr ""
+msgstr "Mauritius"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:353
 msgid "Malawi"
-msgstr ""
+msgstr "Malawi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:355
 msgid "Malaysia"
-msgstr ""
+msgstr "Malaysia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:357
 msgid "Mayotte"
-msgstr ""
+msgstr "Mayotte"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:359
 msgid "Namibia"
-msgstr ""
+msgstr "Namibia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:361
 msgid "New Caledonia"
-msgstr ""
+msgstr "New Caledonia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:363
 msgid "Niger"
-msgstr ""
+msgstr "Niger"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:365
 msgid "Norfolk Island"
-msgstr ""
+msgstr "Norfolk Island"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:367
 msgid "Nigeria"
-msgstr ""
+msgstr "Nigeria"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:369
 msgid "Nicaragua"
-msgstr ""
+msgstr "Nicaragua"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:371
 msgid "Northern Ireland"
-msgstr ""
+msgstr "Northern Ireland"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:373
 msgid "Niue"
-msgstr ""
+msgstr "Niue"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:375
 msgid "Netherlands"
-msgstr ""
+msgstr "Netherlands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:377
 msgid "Norway"
-msgstr ""
+msgstr "Norway"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:379
 msgid "Nepal"
-msgstr ""
+msgstr "Nepal"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:381
 msgid "Nauru"
-msgstr ""
+msgstr "Nauru"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:383
 msgid "New Zealand"
-msgstr ""
+msgstr "New Zealand"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:385
 msgid "Oman"
-msgstr ""
+msgstr "Oman"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:387
 msgid "Pakistan"
-msgstr ""
+msgstr "Pakistan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:389
 msgid "Panama"
-msgstr ""
+msgstr "Panama"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:391
 msgid "Pitcairn"
-msgstr ""
+msgstr "Pitcairn"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:393
@@ -14739,372 +14739,372 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:397
 msgid "Palau"
-msgstr ""
+msgstr "Palau"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:399
 msgid "Papua New Guinea"
-msgstr ""
+msgstr "Papua New Guinea"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:401
 msgid "Poland"
-msgstr ""
+msgstr "Poland"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:403
 msgid "Puerto Rico"
-msgstr ""
+msgstr "Puerto Rico"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:405
 msgid "North Korea"
-msgstr ""
+msgstr "North Korea"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:407
 msgid "Portugal"
-msgstr ""
+msgstr "Portugal"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:409
 msgid "Paraguay"
-msgstr ""
+msgstr "Paraguay"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:411
 msgid "Occupied Palestinian Territory"
-msgstr ""
+msgstr "Occupied Palestinian Territory"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:413
 msgid "French Polynesia"
-msgstr ""
+msgstr "French Polynesia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:415
 msgid "Qatar"
-msgstr ""
+msgstr "Qatar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:417
 msgid "Reunion"
-msgstr ""
+msgstr "Reunion"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:419
 msgid "Romania"
-msgstr ""
+msgstr "Romania"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:421
 msgid "Russia"
-msgstr ""
+msgstr "Russia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:423
 msgid "Rwanda"
-msgstr ""
+msgstr "Rwanda"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:425
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "Saudi Arabia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:427
 msgid "Scotland"
-msgstr ""
+msgstr "Scotland"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
 msgid "Sudan"
-msgstr ""
+msgstr "Sudan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:431
 msgid "At sea"
-msgstr ""
+msgstr "At sea"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:433
 msgid "Senegal"
-msgstr ""
+msgstr "Senegal"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:435
 msgid "Serbia"
-msgstr ""
+msgstr "Serbia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:437
 msgid "Singapore"
-msgstr ""
+msgstr "Singapore"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:439
 msgid "South Georgia and the South Sandwich Islands"
-msgstr ""
+msgstr "South Georgia and the South Sandwich Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:441
 msgid "Saint Helena"
-msgstr ""
+msgstr "Saint Helena"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:443
 msgid "Svalbard and Jan Mayen"
-msgstr ""
+msgstr "Svalbard and Jan Mayen"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:445
 msgid "Solomon Islands"
-msgstr ""
+msgstr "Solomon Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:447
 msgid "Sierra Leone"
-msgstr ""
+msgstr "Sierra Leone"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:449
 msgid "El Salvador"
-msgstr ""
+msgstr "El Salvador"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:451
 msgid "San Marino"
-msgstr ""
+msgstr "San Marino"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:453
 msgid "Somalia"
-msgstr ""
+msgstr "Somalia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:455
 msgid "Saint Pierre and Miquelon"
-msgstr ""
+msgstr "Saint Pierre and Miquelon"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:457
 msgid "South Sudan"
-msgstr ""
+msgstr "South Sudan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:459
 msgid "Sao Tome and Principe"
-msgstr ""
+msgstr "Sao Tome and Principe"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:461
 msgid "Suriname"
-msgstr ""
+msgstr "Suriname"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:463
 msgid "Slovakia"
-msgstr ""
+msgstr "Slovakia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:465
 msgid "Slovenia"
-msgstr ""
+msgstr "Slovenia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:467
 msgid "Sweden"
-msgstr ""
+msgstr "Sweden"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:469
 msgid "Swaziland"
-msgstr ""
+msgstr "Swaziland"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:472
 msgid "Seychelles"
-msgstr ""
+msgstr "Seychelles"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:474
 msgid "Syria"
-msgstr ""
+msgstr "Syria"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:476
 msgid "Turks and Caicos Islands"
-msgstr ""
+msgstr "Turks and Caicos Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
 msgid "Chad"
-msgstr ""
+msgstr "Chad"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:480
 msgid "Togo"
-msgstr ""
+msgstr "Togo"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:482
 msgid "Thailand"
-msgstr ""
+msgstr "Thailand"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:484
 msgid "Tajikistan"
-msgstr ""
+msgstr "Tajikistan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:486
 msgid "Tokelau"
-msgstr ""
+msgstr "Tokelau"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:488
 msgid "Turkmenistan"
-msgstr ""
+msgstr "Turkmenistan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:490
 msgid "Timor-Leste"
-msgstr ""
+msgstr "Timor-Leste"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:492
 msgid "Tonga"
-msgstr ""
+msgstr "Tonga"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:494
 msgid "Trinidad and Tobago"
-msgstr ""
+msgstr "Trinidad and Tobago"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:496
 msgid "Tunisia"
-msgstr ""
+msgstr "Tunisia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:498
 msgid "Turkey"
-msgstr ""
+msgstr "Turkey"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:500
 msgid "Tuvalu"
-msgstr ""
+msgstr "Tuvalu"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:502
 msgid "Taiwan"
-msgstr ""
+msgstr "Taiwan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:504
 msgid "Tanzania"
-msgstr ""
+msgstr "Tanzania"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:506
 msgid "Uganda"
-msgstr ""
+msgstr "Uganda"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:508
 msgid "Ukraine"
-msgstr ""
+msgstr "Ukraine"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:510
 msgid "US Minor Outlying Islands"
-msgstr ""
+msgstr "US Minor Outlying Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:512
 msgid "Uruguay"
-msgstr ""
+msgstr "Uruguay"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:514
 msgid "United States"
-msgstr ""
+msgstr "United States"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:516
 msgid "Uzbekistan"
-msgstr ""
+msgstr "Uzbekistan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:518
 msgid "Vatican City"
-msgstr ""
+msgstr "Vatican City"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:520
 msgid "Saint Vincent and the Grenadines"
-msgstr ""
+msgstr "Saint Vincent and the Grenadines"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:522
 msgid "Venezuela"
-msgstr ""
+msgstr "Venezuela"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:524
 msgid "British Virgin Islands"
-msgstr ""
+msgstr "British Virgin Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:526
 msgid "US Virgin Islands"
-msgstr ""
+msgstr "US Virgin Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:528
 msgid "Vietnam"
-msgstr ""
+msgstr "Vietnam"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:530
 msgid "Vanuatu"
-msgstr ""
+msgstr "Vanuatu"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:532
 msgid "Wallis and Futuna"
-msgstr ""
+msgstr "Wallis and Futuna"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:534
 msgid "Wales"
-msgstr ""
+msgstr "Wales"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:536
 msgid "Samoa"
-msgstr ""
+msgstr "Samoa"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:538
 msgid "Yemen"
-msgstr ""
+msgstr "Yemen"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:540
 msgid "South Africa"
-msgstr ""
+msgstr "South Africa"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
 msgid "Zambia"
-msgstr ""
+msgstr "Zambia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:544
 msgid "Zimbabwe"
-msgstr ""
+msgstr "Zimbabwe"
 
 #: app/SurnameTradition.php:77
 msgctxt "Surname tradition"
@@ -15971,108 +15971,108 @@ msgstr ""
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:183
 msgid "Sending server name"
-msgstr ""
+msgstr "Sending server name"
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:189
 msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
-msgstr ""
+msgstr "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
 
 #: resources/views/admin/site-mail.phtml:194
 msgid "Most mail servers require a valid domain name."
-msgstr ""
+msgstr "Most mail servers require a valid domain name."
 
 #. I18N: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail
 #: resources/views/admin/site-mail.phtml:202
 msgid "DKIM digital signature"
-msgstr ""
+msgstr "DKIM digital signature"
 
 #: resources/views/admin/site-mail.phtml:207
 msgid "Domain name"
-msgstr ""
+msgstr "Domain name"
 
 #: resources/views/admin/site-mail.phtml:216
 msgid "Selector"
-msgstr ""
+msgstr "Selector"
 
 #: resources/views/admin/site-mail.phtml:225
 msgid "Private key"
-msgstr ""
+msgstr "Private key"
 
 #: resources/views/admin/site-mail.phtml:239
 msgid "Send a test email using these settings"
-msgstr ""
+msgstr "Send a test email using these settings"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
 msgid "Data folder"
-msgstr ""
+msgstr "Data folder"
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:26
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
-msgstr ""
+msgstr "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
 
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:30
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr ""
+msgstr "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
 
 #: resources/views/admin/site-preferences.phtml:33
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
-msgstr ""
+msgstr "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 
 #: resources/views/admin/site-preferences.phtml:36
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
-msgstr ""
+msgstr "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:44
 #: resources/views/admin/users-edit.phtml:124
 #: resources/views/edit-account-page.phtml:99
 msgid "Time zone"
-msgstr ""
+msgstr "Time zone"
 
 #: resources/views/admin/site-preferences.phtml:49
 #: resources/views/admin/users-edit.phtml:129
 #: resources/views/edit-account-page.phtml:104
 msgid "The time zone is required for date calculations, such as knowing today’s date."
-msgstr ""
+msgstr "The time zone is required for date calculations, such as knowing today’s date."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:58
 msgid "Default theme"
-msgstr ""
+msgstr "Default theme"
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:64
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr ""
+msgstr "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:74
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Show list of family trees"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: resources/views/admin/site-preferences.phtml:80
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr ""
+msgstr "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:19
 msgid "Welcome text on sign-in page"
-msgstr ""
+msgstr "Welcome text on sign-in page"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:31
 msgid "Custom welcome text"
-msgstr ""
+msgstr "Custom welcome text"
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:36
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
-msgstr ""
+msgstr "To set this text for other languages, you must switch to that language, and visit this page again."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:45
@@ -17158,84 +17158,84 @@ msgstr ""
 
 #: resources/views/admin/users-edit.phtml:99
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr ""
+msgstr "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 
 #: resources/views/admin/users-edit.phtml:143
 msgid "Automatically accept changes made by this user"
-msgstr ""
+msgstr "Automatically accept changes made by this user"
 
 #: resources/views/admin/users-edit.phtml:146
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr ""
+msgstr "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:155
 #: resources/views/edit-account-page.phtml:136
 msgid "Visible online"
-msgstr ""
+msgstr "Visible online"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:161
 #: resources/views/edit-account-page.phtml:139
 msgid "Visible to other users when online"
-msgstr ""
+msgstr "Visible to other users when online"
 
 #: resources/views/admin/users-edit.phtml:164
 #: resources/views/edit-account-page.phtml:141
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr ""
+msgstr "You can choose whether to appear in the list of users who are currently signed-in."
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:173
 msgid "Preferred contact method"
-msgstr ""
+msgstr "Preferred contact method"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: resources/views/admin/users-edit.phtml:179
 #: resources/views/edit-account-page.phtml:128
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
 
 #: resources/views/admin/users-edit.phtml:197
 msgid "Administrator comments on user"
-msgstr ""
+msgstr "Administrator comments on user"
 
 #: resources/views/admin/users-edit.phtml:212
 #: resources/views/admin/users-edit.phtml:261
 msgid "Administrator"
-msgstr ""
+msgstr "Administrator"
 
 #: resources/views/admin/users-edit.phtml:218
 msgid "Access to family trees"
-msgstr ""
+msgstr "Access to family trees"
 
 #: resources/views/admin/users-edit.phtml:221
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr ""
+msgstr "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
 
 #: resources/views/admin/users-edit.phtml:230
 msgid "Everybody has this role, including visitors to the website and search engines."
-msgstr ""
+msgstr "Everybody has this role, including visitors to the website and search engines."
 
 #: resources/views/admin/users-edit.phtml:236
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
-msgstr ""
+msgstr "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
 
 #: resources/views/admin/users-edit.phtml:244
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr ""
+msgstr "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 
 #: resources/views/admin/users-edit.phtml:250
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr ""
+msgstr "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 
 #: resources/views/admin/users-edit.phtml:258
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
-msgstr ""
+msgstr "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
 
 #: resources/views/admin/users-edit.phtml:264
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
-msgstr ""
+msgstr "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
 
 #: resources/views/admin/users-edit.phtml:279
 #: resources/views/edit-account-page.phtml:45
@@ -17482,43 +17482,43 @@ msgstr ""
 #: resources/views/edit/icon-fact-copy.phtml:8
 #: resources/views/edit/icon-fact-copy.phtml:10
 msgid "Copy"
-msgstr ""
+msgstr "Copy"
 
 #: resources/views/edit/input-addon-keyboard.phtml:5
 #: resources/views/edit/input-addon-keyboard.phtml:8
 #: resources/views/edit/shared-note.phtml:16
 #: resources/views/edit/shared-note.phtml:18
 msgid "Find a special character"
-msgstr ""
+msgstr "Find a special character"
 
 #: resources/views/edit/link-child-to-family.phtml:25
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr ""
+msgstr "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:323
 msgid "go to new individual"
-msgstr ""
+msgstr "go to new individual"
 
 #: resources/views/edit/paste-fact-row.phtml:12
 msgid "Add from clipboard"
-msgstr ""
+msgstr "Add from clipboard"
 
 #: resources/views/edit/raw-gedcom-fact.phtml:14
 #: resources/views/edit/raw-gedcom-record.phtml:15
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
-msgstr ""
+msgstr "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
 
 #. I18N: %s is a URL
 #: resources/views/edit/raw-gedcom-fact.phtml:17
 #: resources/views/edit/raw-gedcom-record.phtml:18
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr ""
+msgstr "You can download a copy of the GEDCOM specification from %s."
 
 #: resources/views/edit/raw-gedcom-record.phtml:48
 msgid "Add a fact"
-msgstr ""
+msgstr "Add a fact"
 
 #. I18N: A button label.
 #: resources/views/edit/reorder-children.phtml:41
@@ -17530,13 +17530,13 @@ msgstr ""
 #: resources/xml/reports/occupation_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "sort by date of birth"
-msgstr ""
+msgstr "sort by date of birth"
 
 #. I18N: A button label.
 #: resources/views/edit/reorder-spouses.phtml:41
 #: resources/xml/reports/marriage_report.xml:9
 msgid "sort by date of marriage"
-msgstr ""
+msgstr "sort by date of marriage"
 
 #: resources/views/emails/approve-user-html.phtml:5
 #: resources/views/emails/message-copy-html.phtml:4
@@ -17551,25 +17551,25 @@ msgstr ""
 #: resources/views/emails/register-user-text.phtml:8
 #, php-format
 msgid "Hello %s…"
-msgstr ""
+msgstr "Hello %s…"
 
 #: resources/views/emails/approve-user-html.phtml:9
 #: resources/views/emails/approve-user-text.phtml:4
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
-msgstr ""
+msgstr "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
 
 #: resources/views/emails/message-copy-html.phtml:8
 #: resources/views/emails/message-copy-text.phtml:4
 msgid "You sent the following message to a webtrees user:"
-msgstr ""
+msgstr "You sent the following message to a webtrees user:"
 
 #: resources/views/emails/message-copy-html.phtml:21
 #: resources/views/emails/message-copy-text.phtml:11
 #: resources/views/emails/message-user-html.phtml:22
 #: resources/views/emails/message-user-text.phtml:12
 msgid "This message was sent while viewing the following URL: "
-msgstr ""
+msgstr "This message was sent while viewing the following URL: "
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:9
@@ -17581,130 +17581,130 @@ msgstr ""
 #: resources/views/emails/password-request-html.phtml:9
 #: resources/views/emails/password-request-text.phtml:5
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "To set a new password, follow this link."
 
 #: resources/views/emails/password-request-html.phtml:17
 #: resources/views/emails/password-request-text.phtml:9
 msgid "If you did not request a new password, please ignore this message."
-msgstr ""
+msgstr "If you did not request a new password, please ignore this message."
 
 #: resources/views/emails/register-notify-html.phtml:8
 #: resources/views/emails/register-notify-text.phtml:6
 #: resources/views/emails/verify-notify-html.phtml:4
 #: resources/views/emails/verify-notify-text.phtml:2
 msgid "Hello administrator…"
-msgstr ""
+msgstr "Hello administrator…"
 
 #. I18N: %s is a server name/URL
 #: resources/views/emails/register-notify-html.phtml:13
 #: resources/views/emails/register-notify-text.phtml:9
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr ""
+msgstr "A prospective user has registered with webtrees at %s."
 
 #: resources/views/emails/register-notify-html.phtml:23
 #: resources/views/emails/register-notify-text.phtml:14
 #: resources/views/register-page.phtml:82
 msgid "Comments"
-msgstr ""
+msgstr "Comments"
 
 #: resources/views/emails/register-notify-html.phtml:30
 #: resources/views/emails/register-notify-text.phtml:17
 msgid "The user has been sent an email with the information necessary to confirm the access request."
-msgstr ""
+msgstr "The user has been sent an email with the information necessary to confirm the access request."
 
 #: resources/views/emails/register-notify-html.phtml:34
 #: resources/views/emails/register-notify-text.phtml:19
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
-msgstr ""
+msgstr "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 
 #. I18N: %1$s is the site URL and %2$s is an email address
 #: resources/views/emails/register-user-html.phtml:14
 #: resources/views/emails/register-user-text.phtml:10
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr ""
+msgstr "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 
 #: resources/views/emails/register-user-html.phtml:18
 #: resources/views/emails/register-user-text.phtml:12
 msgid "Follow this link to verify your email address."
-msgstr ""
+msgstr "Follow this link to verify your email address."
 
 #: resources/views/emails/register-user-html.phtml:28
 #: resources/views/emails/register-user-text.phtml:16
 msgid "If you didn’t request an account, you can just delete this message."
-msgstr ""
+msgstr "If you didn’t request an account, you can just delete this message."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: resources/views/emails/verify-notify-html.phtml:10
 #: resources/views/emails/verify-notify-text.phtml:5
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr ""
+msgstr "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 
 #: resources/views/emails/verify-notify-html.phtml:18
 #: resources/views/emails/verify-notify-text.phtml:11
 msgid "You need to review the account details."
-msgstr ""
+msgstr "You need to review the account details."
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:27
 #: resources/views/emails/verify-notify-text.phtml:15
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "Set the status to “approved”."
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:29
 #: resources/views/emails/verify-notify-text.phtml:16
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "Set the access level for each tree."
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:31
 #: resources/views/emails/verify-notify-text.phtml:17
 msgid "Link the user account to an individual."
-msgstr ""
+msgstr "Link the user account to an individual."
 
 #: resources/views/errors/database-connection.phtml:5
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
-msgstr ""
+msgstr "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
 
 #: resources/views/errors/database-connection.phtml:12
 msgid "If you are the website administrator, you should check that:"
-msgstr ""
+msgstr "If you are the website administrator, you should check that:"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:16
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr ""
+msgstr "the database connection settings in the file “/data/config.ini.php” are still correct"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:19
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr ""
+msgstr "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:22
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr ""
+msgstr "you can connect to the database using other applications, such as phpmyadmin"
 
 #: resources/views/errors/database-connection.phtml:27
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
-msgstr ""
+msgstr "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
 
 #: resources/views/errors/database-error.phtml:4
 #: resources/views/setup/step-6-failed.phtml:4
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "An unexpected database error occurred."
 
 #: resources/views/errors/database-error.phtml:12
 #: resources/views/setup/step-6-failed.phtml:12
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr ""
+msgstr "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
 
 #: resources/views/errors/no-tree-access.phtml:4
 msgid "This user account does not have access to any tree."
-msgstr ""
+msgstr "This user account does not have access to any tree."
 
 #: resources/views/family-page-children.phtml:13
 #: resources/views/modules/ancestors-chart/tree.phtml:39
@@ -17719,7 +17719,7 @@ msgstr[1] ""
 
 #: resources/views/family-page-menu.phtml:51
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr ""
+msgstr "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:16
@@ -17729,7 +17729,7 @@ msgstr ""
 #: resources/views/source-page.phtml:15
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
-msgstr ""
+msgstr "accept"
 
 #: resources/views/family-page.phtml:16
 #: resources/views/gedcom-record-page.phtml:10
@@ -17738,17 +17738,17 @@ msgstr ""
 #: resources/views/source-page.phtml:15
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
-msgstr ""
+msgstr "reject"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:16
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
 
 #: resources/views/family-page.phtml:18
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "This family has been deleted. The deletion will need to be reviewed by a moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:22
@@ -17758,7 +17758,7 @@ msgstr ""
 #: resources/views/source-page.phtml:21
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr ""
+msgstr "accept"
 
 #: resources/views/family-page.phtml:22
 #: resources/views/gedcom-record-page.phtml:16
@@ -17767,202 +17767,202 @@ msgstr ""
 #: resources/views/source-page.phtml:21
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
-msgstr ""
+msgstr "reject"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:22
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "This family has been edited. You should review the changes and then %1$s or %2$s them."
 
 #: resources/views/family-page.phtml:24
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "This family has been edited. The changes need to be reviewed by a moderator."
 
 #: resources/views/family-page.phtml:56
 msgid "No facts exist for this family."
-msgstr ""
+msgstr "No facts exist for this family."
 
 #: resources/views/forgot-password-page.phtml:20
 #: resources/views/modules/login_block/sign-in.phtml:52
 msgid "Username or email address"
-msgstr ""
+msgstr "Username or email address"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/gedcom-record-page.phtml:10
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
 
 #: resources/views/gedcom-record-page.phtml:12
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "This record has been deleted. The deletion will need to be reviewed by a moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/gedcom-record-page.phtml:16
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "This record has been edited. You should review the changes and then %1$s or %2$s them."
 
 #: resources/views/gedcom-record-page.phtml:18
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "This record has been edited. The changes need to be reviewed by a moderator."
 
 #: resources/views/help/date.phtml:4
 msgid "Dates are stored using English abbreviations and keywords. Shortcuts are available as alternatives to these abbreviations and keywords."
-msgstr ""
+msgstr "Dates are stored using English abbreviations and keywords. Shortcuts are available as alternatives to these abbreviations and keywords."
 
 #: resources/views/help/date.phtml:17 resources/views/help/date.phtml:55
 #: resources/views/help/date.phtml:93
 msgid "Shortcut"
-msgstr ""
+msgstr "Shortcut"
 
 #: resources/views/help/date.phtml:42
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
-msgstr ""
+msgstr "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
 
 #: resources/views/help/date.phtml:49
 #: resources/views/modules/statistics-chart/custom.phtml:88
 msgid "Date range"
-msgstr ""
+msgstr "Date range"
 
 #: resources/views/help/date.phtml:80
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr ""
+msgstr "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
 
 #: resources/views/help/date.phtml:87
 msgid "Date period"
-msgstr ""
+msgstr "Date period"
 
 #: resources/views/help/date.phtml:118
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
-msgstr ""
+msgstr "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
 
 #: resources/views/help/hebrew.phtml:4
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr ""
+msgstr "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
 
 #: resources/views/help/iso-8859-1.phtml:4
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr ""
+msgstr "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 
 #: resources/views/help/media-object.phtml:4
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr ""
+msgstr "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 
 #: resources/views/help/name.phtml:4
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
-msgstr ""
+msgstr "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
 
 #: resources/views/help/name.phtml:9
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr ""
+msgstr "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
 
 #: resources/views/help/name.phtml:12
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
-msgstr ""
+msgstr "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
 
 #: resources/views/help/name.phtml:15
 #, php-format
 msgid "If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
-msgstr ""
+msgstr "If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
 
 #: resources/views/help/name.phtml:18
 #, php-format
 msgid "If an individual does not have a surname, no slashes are needed: <%s>Jón Einarsson<%s>"
-msgstr ""
+msgstr "If an individual does not have a surname, no slashes are needed: <%s>Jón Einarsson<%s>"
 
 #: resources/views/help/name.phtml:21
 #, php-format
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
-msgstr ""
+msgstr "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
 
 #: resources/views/help/name.phtml:24
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr ""
+msgstr "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
 
 #: resources/views/help/pending-changes.phtml:4
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr ""
+msgstr "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
 
 #: resources/views/help/pending-changes.phtml:8
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
-msgstr ""
+msgstr "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
 
 #: resources/views/help/pending-changes.phtml:12
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr ""
+msgstr "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
 
 #: resources/views/help/pending-changes.phtml:17
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr ""
+msgstr "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
 
 #: resources/views/help/place.phtml:4
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr ""
+msgstr "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
 
 #: resources/views/help/place.phtml:8
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr ""
+msgstr "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 
 #: resources/views/help/relationship-privacy.phtml:4
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr ""
+msgstr "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
 
 #: resources/views/help/relationship-privacy.phtml:8
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
-msgstr ""
+msgstr "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
 
 #: resources/views/help/relationship-privacy.phtml:12
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
-msgstr ""
+msgstr "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
 
 #: resources/views/help/restriction.phtml:4
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr ""
+msgstr "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
 
 #: resources/views/help/restriction.phtml:7
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
-msgstr ""
+msgstr "Note that if a user account is linked to a record, then that user will always be able to view that record."
 
 #: resources/views/help/romanized.phtml:4
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr ""
+msgstr "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
 
 #: resources/views/help/source-events.phtml:4
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr ""
+msgstr "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 
 #: resources/views/help/surname.phtml:4
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr ""
+msgstr "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 
 #: resources/views/help/zip-gedcom.phtml:4
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
-msgstr ""
+msgstr "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page.phtml:29
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
 
 #: resources/views/individual-page.phtml:32
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page.phtml:38
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 
 #: resources/views/individual-page.phtml:41
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "This individual has been edited. The changes need to be reviewed by a moderator."
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page.phtml:77
@@ -17979,7 +17979,7 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsvr.phtml:101
 #: resources/views/setup/step-5-administrator.phtml:86
 msgid "previous"
-msgstr ""
+msgstr "previous"
 
 #. I18N: A button label, next page
 #: resources/views/individual-page.phtml:81
@@ -17997,38 +17997,38 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsvr.phtml:97
 #: resources/views/setup/step-5-administrator.phtml:82
 msgid "next"
-msgstr ""
+msgstr "next"
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: resources/views/layouts/administration.phtml:47
 #: resources/views/layouts/default.phtml:82
 msgid "Skip to content"
-msgstr ""
+msgstr "Skip to content"
 
 #: resources/views/layouts/default.phtml:157
 #: resources/views/modules/random_media/slide-show.phtml:21
 #: resources/views/modules/random_media/slide-show.phtml:23
 msgid "Play"
-msgstr ""
+msgstr "Play"
 
 #: resources/views/layouts/default.phtml:158
 #: resources/views/modules/random_media/slide-show.phtml:25
 #: resources/views/modules/random_media/slide-show.phtml:27
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: resources/views/layouts/error.phtml:9 resources/views/layouts/error.phtml:26
 #: resources/views/layouts/offline.phtml:58
 msgid "This website is temporarily unavailable"
-msgstr ""
+msgstr "This website is temporarily unavailable"
 
 #: resources/views/layouts/offline.phtml:61
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
-msgstr ""
+msgstr "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
 
 #: resources/views/layouts/setup.phtml:8 resources/views/layouts/setup.phtml:16
 msgid "Setup wizard for webtrees"
-msgstr ""
+msgstr "Setup wizard for webtrees"
 
 #: resources/views/lists/anniversaries-table.phtml:16
 #: resources/views/lists/families-table.phtml:257
@@ -18036,7 +18036,7 @@ msgstr ""
 #: resources/views/lists/individuals-table.phtml:281
 #: resources/views/modules/yahrzeit/table.phtml:16
 msgid "Anniversary"
-msgstr ""
+msgstr "Anniversary"
 
 #: resources/views/lists/datatables-attributes.phtml:18
 #: resources/views/lists/datatables-attributes.phtml:29
@@ -20232,7 +20232,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:355
 #: resources/xml/reports/individual_report.xml:352
 msgid "Sister"
-msgstr ""
+msgstr "Xûşk"
 
 #: resources/xml/reports/individual_ext_report.xml:435
 #: resources/xml/reports/individual_report.xml:486
