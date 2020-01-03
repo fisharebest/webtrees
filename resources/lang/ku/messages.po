@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-03 17:33+0000\nLast-Translator: Victor Tiltay <vtiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-04 11:16+0000\nLast-Translator: Herve Tiltay <hervetiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -163,7 +163,7 @@ msgstr "Ji %s  heya %s"
 
 #: app/Date.php:380
 msgid "Invalid date"
-msgstr "Dîrok şaşe"
+msgstr "Dîrok şaş e"
 
 #: app/Date/AbstractCalendarDate.php:238
 msgid "Monday"
@@ -197,19 +197,19 @@ msgstr "Yekşem"
 #: app/Date/AbstractCalendarDate.php:265
 #: resources/views/edit/initialize-calendar-popup.phtml:23
 msgid "Mon"
-msgstr "Duş"
+msgstr "Dşm"
 
 #. I18N: abbreviation for Tuesday
 #: app/Date/AbstractCalendarDate.php:267
 #: resources/views/edit/initialize-calendar-popup.phtml:24
 msgid "Tue"
-msgstr "Sêş"
+msgstr "Sşm"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/AbstractCalendarDate.php:269
 #: resources/views/edit/initialize-calendar-popup.phtml:25
 msgid "Wed"
-msgstr "Çarş"
+msgstr "Çarşm"
 
 #. I18N: abbreviation for Thursday
 #: app/Date/AbstractCalendarDate.php:271
@@ -392,178 +392,178 @@ msgstr "Avrêl"
 #: app/Date/AbstractGregorianJulianDate.php:135
 msgctxt "LOCATIVE"
 msgid "March"
-msgstr ""
+msgstr "Adar"
 
 #: app/Date/AbstractGregorianJulianDate.php:136
 msgctxt "LOCATIVE"
 msgid "April"
-msgstr ""
+msgstr "Nîsan"
 
 #: app/Date/AbstractGregorianJulianDate.php:137
 msgctxt "LOCATIVE"
 msgid "May"
-msgstr ""
+msgstr "Gulan"
 
 #: app/Date/AbstractGregorianJulianDate.php:138
 msgctxt "LOCATIVE"
 msgid "June"
-msgstr ""
+msgstr "Pûşber"
 
 #: app/Date/AbstractGregorianJulianDate.php:139
 msgctxt "LOCATIVE"
 msgid "July"
-msgstr ""
+msgstr "Tîrmeh"
 
 #: app/Date/AbstractGregorianJulianDate.php:140
 msgctxt "LOCATIVE"
 msgid "August"
-msgstr ""
+msgstr "Gelawêj"
 
 #: app/Date/AbstractGregorianJulianDate.php:141
 msgctxt "LOCATIVE"
 msgid "September"
-msgstr ""
+msgstr "Îlon"
 
 #: app/Date/AbstractGregorianJulianDate.php:142
 msgctxt "LOCATIVE"
 msgid "October"
-msgstr ""
+msgstr "Cotmeh"
 
 #: app/Date/AbstractGregorianJulianDate.php:143
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr ""
+msgstr "Sermawez"
 
 #: app/Date/AbstractGregorianJulianDate.php:144
 msgctxt "LOCATIVE"
 msgid "December"
-msgstr "Reşemî"
+msgstr "Berfambar"
 
 #: app/Date/AbstractGregorianJulianDate.php:168
 msgctxt "INSTRUMENTAL"
 msgid "January"
-msgstr "Adar"
+msgstr "Rêbendan"
 
 #: app/Date/AbstractGregorianJulianDate.php:169
 msgctxt "INSTRUMENTAL"
 msgid "February"
-msgstr "Avrêl"
+msgstr "Rêşemî"
 
 #: app/Date/AbstractGregorianJulianDate.php:170
 msgctxt "INSTRUMENTAL"
 msgid "March"
-msgstr ""
+msgstr "Adar"
 
 #: app/Date/AbstractGregorianJulianDate.php:171
 msgctxt "INSTRUMENTAL"
 msgid "April"
-msgstr ""
+msgstr "Nîsan"
 
 #: app/Date/AbstractGregorianJulianDate.php:172
 msgctxt "INSTRUMENTAL"
 msgid "May"
-msgstr ""
+msgstr "Gulan"
 
 #: app/Date/AbstractGregorianJulianDate.php:173
 msgctxt "INSTRUMENTAL"
 msgid "June"
-msgstr ""
+msgstr "Pûşber"
 
 #: app/Date/AbstractGregorianJulianDate.php:174
 msgctxt "INSTRUMENTAL"
 msgid "July"
-msgstr ""
+msgstr "Tîrmeh"
 
 #: app/Date/AbstractGregorianJulianDate.php:175
 msgctxt "INSTRUMENTAL"
 msgid "August"
-msgstr ""
+msgstr "Gelawêj"
 
 #: app/Date/AbstractGregorianJulianDate.php:176
 msgctxt "INSTRUMENTAL"
 msgid "September"
-msgstr ""
+msgstr "Îlon"
 
 #: app/Date/AbstractGregorianJulianDate.php:177
 msgctxt "INSTRUMENTAL"
 msgid "October"
-msgstr ""
+msgstr "Cotmeh"
 
 #: app/Date/AbstractGregorianJulianDate.php:178
 msgctxt "INSTRUMENTAL"
 msgid "November"
-msgstr ""
+msgstr "Sermawez"
 
 #: app/Date/AbstractGregorianJulianDate.php:179
 msgctxt "INSTRUMENTAL"
 msgid "December"
-msgstr "Reşemî"
+msgstr "Berfambar"
 
 #: app/Date/AbstractGregorianJulianDate.php:201
 msgctxt "Abbreviation for January"
 msgid "Jan"
-msgstr "Adar"
+msgstr "Rêb"
 
 #: app/Date/AbstractGregorianJulianDate.php:202
 msgctxt "Abbreviation for February"
 msgid "Feb"
-msgstr ""
+msgstr "Rêş"
 
 #: app/Date/AbstractGregorianJulianDate.php:203
 msgctxt "Abbreviation for March"
 msgid "Mar"
-msgstr ""
+msgstr "Adar"
 
 #: app/Date/AbstractGregorianJulianDate.php:204
 msgctxt "Abbreviation for April"
 msgid "Apr"
-msgstr ""
+msgstr "Avr"
 
 #: app/Date/AbstractGregorianJulianDate.php:205
 msgctxt "Abbreviation for May"
 msgid "May"
-msgstr ""
+msgstr "Gul"
 
 #: app/Date/AbstractGregorianJulianDate.php:206
 msgctxt "Abbreviation for June"
 msgid "Jun"
-msgstr ""
+msgstr "Pûş"
 
 #: app/Date/AbstractGregorianJulianDate.php:207
 msgctxt "Abbreviation for July"
 msgid "Jul"
-msgstr ""
+msgstr "Tîr"
 
 #: app/Date/AbstractGregorianJulianDate.php:208
 msgctxt "Abbreviation for August"
 msgid "Aug"
-msgstr ""
+msgstr "Gel"
 
 #: app/Date/AbstractGregorianJulianDate.php:209
 msgctxt "Abbreviation for September"
 msgid "Sep"
-msgstr ""
+msgstr "Îlon"
 
 #: app/Date/AbstractGregorianJulianDate.php:210
 msgctxt "Abbreviation for October"
 msgid "Oct"
-msgstr ""
+msgstr "Cot"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
 msgid "Nov"
-msgstr ""
+msgstr "Ser"
 
 #: app/Date/AbstractGregorianJulianDate.php:212
 msgctxt "Abbreviation for December"
 msgid "Dec"
-msgstr ""
+msgstr "Berf"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:87
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
-msgstr "Vendemiaire"
+msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:89
@@ -581,19 +581,19 @@ msgstr "Frimaire"
 #: app/Date/FrenchDate.php:93
 msgctxt "NOMINATIVE"
 msgid "Nivose"
-msgstr "Nivose"
+msgstr "Nivôe"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:95
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
-msgstr "Pluviose"
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:97
 msgctxt "NOMINATIVE"
 msgid "Ventose"
-msgstr "Ventose"
+msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #. I18N: a month in the French republican calendar
@@ -606,7 +606,7 @@ msgstr "Germinal"
 #: app/Date/FrenchDate.php:102
 msgctxt "NOMINATIVE"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:104
@@ -636,7 +636,7 @@ msgstr "Fructidor"
 #: app/Date/FrenchDate.php:112
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
-msgstr "jours complementaires"
+msgstr "sertayê rojan"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:135
@@ -714,7 +714,7 @@ msgstr "Fructidor"
 #: app/Date/FrenchDate.php:159
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr "jours complementaires"
+msgstr "rojên zêde/ sertaya rojan/rojên serta"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:182
@@ -792,7 +792,7 @@ msgstr "Fructidor"
 #: app/Date/FrenchDate.php:206
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr "jours complementaires"
+msgstr "rojên zêde"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:229
@@ -870,7 +870,7 @@ msgstr "Fructidor"
 #: app/Date/FrenchDate.php:253
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr "jours complementaires"
+msgstr "rojên pêvek"
 
 #. I18N: The first day in the French republican calendar
 #: app/Date/FrenchDate.php:287
@@ -932,7 +932,7 @@ msgstr "Muharram"
 #: app/Date/HijriDate.php:85
 msgctxt "NOMINATIVE"
 msgid "Safar"
-msgstr "Safar"
+msgstr "Safer"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:87
@@ -1598,7 +1598,7 @@ msgstr "Adar I"
 #: app/Date/JewishDate.php:152
 msgctxt "NOMINATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:154
@@ -1898,52 +1898,52 @@ msgstr "Elul"
 #: app/Date/JulianDate.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;BCE"
+msgstr "%s&nbsp;BZ"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "%s&nbsp;CE"
+msgstr "%s&nbsp;PZ"
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
 msgid "This family does not exist or you do not have permission to view it."
-msgstr "Ev malbata tuneye anjî destûra te tuneye ku tu bibînî."
+msgstr "Ev malbat tuneye an jî destûra we tuneye ku hûn bibînin"
 
 #: app/Exceptions/GedcomErrorException.php:37
 msgid "Invalid GEDCOM record"
-msgstr "Invalid GEDCOM record"
+msgstr " GEDCOM pêknehat"
 
 #: app/Exceptions/IndividualAccessDeniedException.php:35
 #: app/Exceptions/IndividualNotFoundException.php:35
 msgid "This individual does not exist or you do not have permission to view it."
-msgstr "Ev kesa tuneye anjî destûra te tuneye ku tu bibînî."
+msgstr "Ev kes tuneye an jî destûra we tuneye ku hûn bibînin"
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
 msgid "This media object does not exist or you do not have permission to view it."
-msgstr "Ev medyaya tuneye anjî destûra te tuneye ku tu bibînî."
+msgstr "Ev medyaya tuneye anjî destûra we tuneye ku hûn bibînin"
 
 #: app/Exceptions/NoteAccessDeniedException.php:35
 #: app/Exceptions/NoteNotFoundException.php:35
 msgid "This note does not exist or you do not have permission to view it."
-msgstr "Ev nota tuneye anjî destûra te tuneye ku tu bibînî."
+msgstr "Ev not tuneye anjî destûra we tuneye ku hûn bibînin"
 
 #: app/Exceptions/RecordAccessDeniedException.php:35
 #: app/Exceptions/RecordNotFoundException.php:35
 msgid "This record does not exist or you do not have permission to view it."
-msgstr "Ev qeyda tuneye anjî destûra te tuneye ku tu bibînî."
+msgstr "Ev qeyda tuneye anjî destûra we tuneye ku hûn bibînin"
 
 #: app/Exceptions/RepositoryAccessDeniedException.php:35
 #: app/Exceptions/RepositoryNotFoundException.php:35
 msgid "This repository does not exist or you do not have permission to view it."
-msgstr "Ev cîha tuneye anjî destûra te tuneye ku tu bibînî."
+msgstr "Ev cî tuneye an jî destûra we tuneye ku hûn bibînin"
 
 #: app/Exceptions/SourceAccessDeniedException.php:35
 #: app/Exceptions/SourceNotFoundException.php:35
 msgid "This source does not exist or you do not have permission to view it."
-msgstr "Ev çavkanî tuneye anjî destûra te tuneye ku tu bibînî."
+msgstr "Ev çavkanî tuneye anjî destûra we tuneye ku hûn bibînin"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:586 app/Functions/FunctionsPrintFacts.php:548
@@ -1974,32 +1974,32 @@ msgstr "Lê bar bû"
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:50
 msgid "The uploaded file exceeds the allowed size."
-msgstr "Pir mezine."
+msgstr "Pêlê ku lê tê barkirin pir mezin e, nayê ragirtin."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:53
 msgid "The file was only partially uploaded. Please try again."
-msgstr "Çû lê nêvîşkan."
+msgstr "Pel bi temamî lêbarnebû, ji kerema xwe dîsa biceribînin"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:56
 msgid "No file was received. Please try again."
-msgstr "Tu tiştek nehat. Carke din bişîne."
+msgstr "Tu pel nehatin, ji kerema xwe dîsa biceribînin"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:59
 msgid "The PHP temporary folder is missing."
-msgstr "The PHP temporary folder is missing."
+msgstr "Peldanka demkî ya PHP windaye"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:62
 msgid "PHP failed to write to disk."
-msgstr "PHP failed to write to disk."
+msgstr "PHP nikare li ser diskê binivîse"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:65
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP blocked the file because of its extension."
+msgstr "Ji ber dirêjaya wê PHP pel asteng kir"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:189
@@ -2009,12 +2009,12 @@ msgstr "ew bi xwe"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:192
 msgid "herself"
-msgstr "ew bu xwe"
+msgstr "ew bi xwe"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:195
 msgid "themself"
-msgstr "ewna bi xwe"
+msgstr "ew bi xwe"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:376
@@ -2056,13 +2056,13 @@ msgstr "Pismamê şeşemîn"
 #: app/Functions/Functions.php:394
 msgctxt "MALE"
 msgid "seventh cousin"
-msgstr "Pismamê Heftemîn"
+msgstr "Pismamê heftemîn"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:397
 msgctxt "MALE"
 msgid "eighth cousin"
-msgstr "Pismamê Heştemîn"
+msgstr "Pismamê heştemîn"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:400
@@ -2406,34 +2406,34 @@ msgstr "mêr"
 #: app/Functions/Functions.php:638
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr "mêrê berîn"
+msgstr "hevserê berîn"
 
 #: app/Functions/Functions.php:644
 msgctxt "MALE"
 msgid "partner"
-msgstr "mêr"
+msgstr "hevser"
 
 #: app/Functions/Functions.php:651
 msgid "ex-wife"
-msgstr "Jîna pêşîn"
+msgstr "Jîna berîn"
 
 #: app/Functions/Functions.php:654
 msgid "wife"
-msgstr "jin"
+msgstr "xanim"
 
 #: app/Functions/Functions.php:658
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr "jina berîn"
+msgstr "xanima berîn"
 
 #: app/Functions/Functions.php:664
 msgctxt "FEMALE"
 msgid "partner"
-msgstr "jin"
+msgstr "hevjin"
 
 #: app/Functions/Functions.php:671
 msgid "ex-spouse"
-msgstr "jîna berîn"
+msgstr "jina berîn"
 
 #: app/Functions/Functions.php:674
 msgid "spouse"
@@ -2441,7 +2441,7 @@ msgstr "jin"
 
 #: app/Functions/Functions.php:678
 msgid "ex-partner"
-msgstr "jîna berîn"
+msgstr "hevjina berîn"
 
 #: app/Functions/Functions.php:684
 msgid "partner"
@@ -2453,7 +2453,7 @@ msgstr "kur"
 
 #: app/Functions/Functions.php:688
 msgid "daughter"
-msgstr "qîz"
+msgstr "qîz/keç"
 
 #: app/Functions/Functions.php:690
 msgid "child"
@@ -2481,15 +2481,15 @@ msgstr "xûşka cêwî"
 
 #: app/Functions/Functions.php:723
 msgid "younger sister"
-msgstr "xûşka piçûk"
+msgstr "xwîşka piçûk"
 
 #: app/Functions/Functions.php:727
 msgid "elder sister"
-msgstr "xûşka mezin"
+msgstr "xwîşka mezin"
 
 #: app/Functions/Functions.php:732
 msgid "sister"
-msgstr "xûşk"
+msgstr "xwîşk"
 
 #: app/Functions/Functions.php:740
 msgid "twin sibling"
@@ -2497,30 +2497,30 @@ msgstr "cêwî"
 
 #: app/Functions/Functions.php:744
 msgid "younger sibling"
-msgstr "ê herî piçûk"
+msgstr "Xwîşk/brayê herî piçûk"
 
 #: app/Functions/Functions.php:748
 msgid "elder sibling"
-msgstr "ê herî mezin"
+msgstr "Xwîşk/brayê herî mezin"
 
 #: app/Functions/Functions.php:753
 msgid "sibling"
-msgstr "xuşk bira"
+msgstr "xwîşk/ bira"
 
 #: app/Functions/Functions.php:757
 msgctxt "brother’s child"
 msgid "nephew/niece"
-msgstr "xarzî/brazî"
+msgstr "xwarzî/brazî"
 
 #: app/Functions/Functions.php:759
 msgctxt "brother’s daughter"
 msgid "niece"
-msgstr "Xarzî/brazî"
+msgstr "xwarzî/brazî"
 
 #: app/Functions/Functions.php:761
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr "xarzî/brazî"
+msgstr "xwarzî/brazî"
 
 #: app/Functions/Functions.php:763
 msgctxt "brother’s wife"
@@ -2530,12 +2530,12 @@ msgstr "bûk"
 #: app/Functions/Functions.php:765
 msgctxt "child’s child"
 msgid "grandchild"
-msgstr "neve"
+msgstr "neve/nevo"
 
 #: app/Functions/Functions.php:767
 msgctxt "child’s daughter"
 msgid "granddaughter"
-msgstr "neve"
+msgstr "neve/nevo"
 
 #: app/Functions/Functions.php:769
 msgctxt "child’s husband"
@@ -2545,7 +2545,7 @@ msgstr "zava"
 #: app/Functions/Functions.php:771
 msgctxt "child’s son"
 msgid "grandson"
-msgstr "neve"
+msgstr "nevo"
 
 #: app/Functions/Functions.php:773
 msgctxt "child’s spouse"
@@ -2560,22 +2560,22 @@ msgstr "bûk"
 #: app/Functions/Functions.php:777
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr "neve"
+msgstr "neve/nevo"
 
 #: app/Functions/Functions.php:779
 msgctxt "daughter’s daughter"
 msgid "granddaughter"
-msgstr "neve"
+msgstr "neve/nevo"
 
 #: app/Functions/Functions.php:781
 msgctxt "daughter’s husband"
 msgid "son-in-law"
-msgstr "bûk"
+msgstr "zava"
 
 #: app/Functions/Functions.php:783
 msgctxt "daughter’s son"
 msgid "grandson"
-msgstr "neve"
+msgstr "neve/nevo"
 
 #: app/Functions/Functions.php:785
 msgctxt "father’s brother"
@@ -2605,7 +2605,7 @@ msgstr "pîrik"
 #: app/Functions/Functions.php:795
 msgctxt "father’s parent"
 msgid "paternal grandparent"
-msgstr "kalpîr"
+msgstr "kal û pîr"
 
 #: app/Functions/Functions.php:797
 msgctxt "father’s sibling"
@@ -2930,12 +2930,12 @@ msgstr "neva xwîşk/bra"
 #: app/Functions/Functions.php:931
 msgctxt "(a woman’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr "nevya zyarê -bra"
+msgstr "nevoya birê"
 
 #: app/Functions/Functions.php:934
 msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr "nevoyê birê"
+msgstr "nevoyê xwîşkê"
 
 #: app/Functions/Functions.php:937
 msgctxt "(a woman’s) brother’s child’s son"
@@ -2945,7 +2945,7 @@ msgstr "nevoyê xwîşkê"
 #: app/Functions/Functions.php:940
 msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "nevoya birê"
+msgstr "nevoyê bira"
 
 #: app/Functions/Functions.php:943
 msgctxt "(a woman’s) brother’s daughter’s child"
@@ -2955,7 +2955,7 @@ msgstr "nevoyê bira"
 #: app/Functions/Functions.php:946
 msgctxt "(a man’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr "nevoya birê"
+msgstr "neva xwîşk/bra"
 
 #: app/Functions/Functions.php:949
 msgctxt "(a woman’s) brother’s daughter’s daughter"
@@ -2995,12 +2995,12 @@ msgstr "Qîza kur-bira"
 #: app/Functions/Functions.php:969
 msgctxt "(a woman’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr "Qîza kur-bira"
+msgstr "nevoya bira"
 
 #: app/Functions/Functions.php:972
 msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr "Kurê kur-bira"
+msgstr "nevoyê bira"
 
 #: app/Functions/Functions.php:975
 msgctxt "(a woman’s) brother’s son’s son"
@@ -3580,237 +3580,237 @@ msgstr "pîrika ji dê"
 #: app/Functions/Functions.php:1205
 msgctxt "parent’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "Kalik û pîikên dê û bav"
 
 #: app/Functions/Functions.php:1207
 msgctxt "parent’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "xwîşk /brayên kalik û pîrikan"
 
 #: app/Functions/Functions.php:1209
 msgctxt "parent’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "xwîşka kalik û pirikê"
 
 #: app/Functions/Functions.php:1211
 msgctxt "parent’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "ap"
 
 #: app/Functions/Functions.php:1213
 msgctxt "parent’s spouse’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "pimamê ne ji malbatê"
 
 #: app/Functions/Functions.php:1215
 msgctxt "parent’s spouse’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "dotmama ne ji malê"
 
 #: app/Functions/Functions.php:1217
 msgctxt "parent’s spouse’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "pismamê ne ji dê/bavê"
 
 #: app/Functions/Functions.php:1219
 msgctxt "sibling’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "nevoyên xwîşk/bra"
 
 #: app/Functions/Functions.php:1221
 msgctxt "sibling’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "nevên xwîşkê"
 
 #: app/Functions/Functions.php:1223
 msgctxt "sibling’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "nevoyê bira"
 
 #: app/Functions/Functions.php:1225
 msgctxt "sibling’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "nevoyên xwîşkê"
 
 #: app/Functions/Functions.php:1227
 msgctxt "sibling’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "nevoya xwîşkê"
 
 #: app/Functions/Functions.php:1229
 msgctxt "sibling’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "zavayê bira"
 
 #: app/Functions/Functions.php:1231
 msgctxt "sibling’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "nevoyê xwîşkê"
 
 #: app/Functions/Functions.php:1233
 msgctxt "sibling’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "nevoyê biraya"
 
 #: app/Functions/Functions.php:1235
 msgctxt "sibling’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "nevoyên xwîşkê"
 
 #: app/Functions/Functions.php:1237
 msgctxt "sibling’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "nevoyên birayan"
 
 #: app/Functions/Functions.php:1239
 msgctxt "sibling’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "bûka birag"
 
 #: app/Functions/Functions.php:1242
 msgctxt "(a man’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "nevoyên xwîşk/bira"
 
 #: app/Functions/Functions.php:1245
 msgctxt "(a woman’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "nevoyên xwîşkê"
 
 #: app/Functions/Functions.php:1248
 msgctxt "(a man’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "nevoya xwîşk/birayan"
 
 #: app/Functions/Functions.php:1251
 msgctxt "(a woman’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "nevoya xwîşkê"
 
 #: app/Functions/Functions.php:1254
 msgctxt "(a man’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "nevoyê xwîşkê"
 
 #: app/Functions/Functions.php:1257
 msgctxt "(a woman’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "nevoyê xwîşkê"
 
 #: app/Functions/Functions.php:1260
 msgctxt "(a man’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "nevoyên xwîşkê"
 
 #: app/Functions/Functions.php:1263
 msgctxt "(a woman’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "nevoyên xwîşkan"
 
 #: app/Functions/Functions.php:1266
 msgctxt "(a man’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "nevoya xwîşkê"
 
 #: app/Functions/Functions.php:1269
 msgctxt "(a woman’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "nevoya xwîşkê"
 
 #: app/Functions/Functions.php:1271
 msgctxt "sisters’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "zavayê xwîşkê"
 
 #: app/Functions/Functions.php:1274
 msgctxt "(a man’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "nevoyê xwîşkê"
 
 #: app/Functions/Functions.php:1277
 msgctxt "(a woman’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "nevoyê xwîşkê"
 
 #: app/Functions/Functions.php:1279
 msgctxt "sister’s husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "birangê zavê"
 
 #: app/Functions/Functions.php:1281
 msgctxt "sister’s husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "zava/ jinbir"
 
 #: app/Functions/Functions.php:1283
 msgctxt "sister’s husband’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "xwîşka bûkê\n\t"
 
 #: app/Functions/Functions.php:1286
 msgctxt "(a man’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "nevoyên xwîşk/bira"
 
 #: app/Functions/Functions.php:1289
 msgctxt "(a woman’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "nevoyên xwîşkê"
 
 #: app/Functions/Functions.php:1292
 msgctxt "(a man’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "nevoya xwîşkê"
 
 #: app/Functions/Functions.php:1295
 msgctxt "(a woman’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "nevoya bira"
 
 #: app/Functions/Functions.php:1298
 msgctxt "(a man’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "nevoyê xwîşkê"
 
 #: app/Functions/Functions.php:1301
 msgctxt "(a woman’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "nevoya xwîşkê"
 
 #: app/Functions/Functions.php:1303
 msgctxt "sisters’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "bûka xwîşkê"
 
 #: app/Functions/Functions.php:1305
 msgctxt "son’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "kur/nevoçirk"
 
 #: app/Functions/Functions.php:1307
 msgctxt "son’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "keç/ nevoçirk"
 
 #: app/Functions/Functions.php:1309
 msgctxt "son’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "kurê nevoçirk"
 
 #: app/Functions/Functions.php:1311
 msgctxt "son’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "zara vevoçirk"
 
 #: app/Functions/Functions.php:1313
 msgctxt "son’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "keça neveçirkê"
 
 #: app/Functions/Functions.php:1315
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "mêrê neveçirkê"
 
 #: app/Functions/Functions.php:1317
 msgctxt "son’s daughter’s son"
