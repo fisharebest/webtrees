@@ -196,7 +196,13 @@ class EmailService
      */
     public function isValidEmail(string $email): bool
     {
-        $domain = substr(strrchr($email, '@'), 1);
+        $at_domain = strrchr($email, '@');
+
+        if ($at_domain === false) {
+            return false;
+        }
+
+        $domain = substr($at_domain, 1);
 
         $email_valid  = filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
         $domain_valid = filter_var($domain, FILTER_VALIDATE_DOMAIN) !== false;

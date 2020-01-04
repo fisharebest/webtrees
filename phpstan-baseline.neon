@@ -2266,11 +2266,6 @@ parameters:
 			path: app/Services/EmailService.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function substr expects string, string\\|false given\\.$#"
-			count: 1
-			path: app/Services/EmailService.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\GedcomService\\:\\:readPlace\\(\\) should return array\\<string\\> but returns array\\<int, string\\>\\|false\\.$#"
 			count: 1
 			path: app/Services/GedcomService.php
