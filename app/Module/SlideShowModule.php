@@ -123,7 +123,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
                 $media = Media::getInstance($row->m_id, $tree, $row->m_gedcom);
                 assert($media instanceof Media);
 
-                if (!$media->canShow()) {
+                if (!$media->canShow() || $media->firstImageFile() === null) {
                     return false;
                 }
 
