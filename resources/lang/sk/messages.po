@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2019-12-28 21:10+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-05 13:56+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -3239,7 +3239,7 @@ msgstr "Miesto pohrebu obsahuje"
 #: resources/xml/reports/cemetery_report.xml:3
 #: resources/xml/reports/cemetery_report.xml:34
 msgid "Burials"
-msgstr ""
+msgstr "Pohreby"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:83
@@ -3461,11 +3461,11 @@ msgstr "Zmeniť členov rodiny"
 
 #: app/Http/Controllers/HomePageController.php:412
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Zmeniť bloky na domácej stránke"
 
 #: app/Http/Controllers/HomePageController.php:597
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Zmeniť bloky na „Mojej stránke“"
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:12
@@ -3896,7 +3896,7 @@ msgstr "Dokončené; dátum neznámy"
 #: app/Http/RequestHandlers/HelpText.php:266
 #: resources/views/admin/trees-export.phtml:51
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Komprimovať súbor GEDCOM"
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:611
@@ -4300,7 +4300,7 @@ msgstr "Uživateľský uvítací text"
 
 #: app/Module/ModuleThemeTrait.php:233 app/Module/ModuleThemeTrait.php:237
 msgid "Customize this page"
-msgstr "prispôsobiť stránku"
+msgstr "Prispôsobiť stránku"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:153
@@ -7338,24 +7338,24 @@ msgstr "Ak dva rodokmene používajú ten istý priečinok pre médiá, tak mô�
 
 #: resources/views/admin/trees-privacy.phtml:37
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
-msgstr ""
+msgstr "Pokiaľ návštevníci nemôžu prezerať rodokmeň, tak nemôžu ani požiadať o účet. V takomto prípade musíte pridať ich účet manuálne."
 
 #. I18N: Help text for the “Who can upload new media files” configuration setting
 #: resources/views/admin/trees-preferences.phtml:261
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
-msgstr "Pokiaľ si myslíte, že užívatelia by nahrávali nesprávne obrázky, môžete obmedziť nahrávanie obrázkov tak, že ich budú môcť nahrávať len administrátori."
+msgstr "Pokiaľ si myslíte, že užívatelia by nahrávali nesprávne obrázky, môžete obmedziť nahrávanie obrázkov tak, že ich budú môcť nahrávať len správcovia."
 
 #: resources/views/errors/database-connection.phtml:12
 msgid "If you are the website administrator, you should check that:"
-msgstr "Ak ste správca webu, mal by ste skontrolovať toto:"
+msgstr "Ak ste administrátor webu, mali by ste skontrolovať toto:"
 
 #: resources/views/errors/database-connection.phtml:27
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
-msgstr "Ak nedokážete vyriešiť problém sami, môžete sa spýtať na fóre <a href=\"https://webtrees.net\">webtrees.net</a>."
+msgstr "Ak nedokážete vyriešiť problém sami, môžete požiadať o pomoc na fóre <a href=\"https://webtrees.net\">webtrees.net</a>."
 
 #: resources/views/setup/step-4-database-mysql.phtml:36
 msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
-msgstr ""
+msgstr "Ak sa pripájate k databáze pomocou UNIX socket-u, zadajte tu cestu a číslo portu nechajte prázdne."
 
 #: resources/views/admin/trees-import.phtml:91
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -18821,7 +18821,7 @@ msgstr "posledný"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "left"
-msgstr ""
+msgstr "vľavo"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -18836,7 +18836,7 @@ msgstr "zoznam"
 #: app/Http/Controllers/Admin/LocationController.php:723
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "upravené miesta: %s, pridané miesta: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:148
@@ -18845,12 +18845,12 @@ msgstr "priezvisko za slobodna"
 
 #: resources/views/admin/trees-privacy.phtml:134
 msgid "managers"
-msgstr ""
+msgstr "správcovia"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: app/Http/Controllers/AdminTreesController.php:743
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: app/Statistics/Repository/EventRepository.php:325
 msgid "marriage"
@@ -18919,7 +18919,7 @@ msgstr[2] "maximum %s dní"
 #: resources/views/admin/trees-privacy.phtml:133
 #: resources/views/admin/trees-privacy.phtml:153
 msgid "members"
-msgstr ""
+msgstr "členovia"
 
 #. I18N: Name of a theme.
 #: app/Module/MinimalTheme.php:39
@@ -18958,17 +18958,17 @@ msgstr "synovec"
 #: app/Functions/Functions.php:1113
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "synovec"
 
 #: app/Functions/Functions.php:1109
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "synovec"
 
 #: app/Functions/Functions.php:1111
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "synovec"
 
 #: app/Functions/Functions.php:865
 msgctxt "sibling’s son"
@@ -18983,17 +18983,17 @@ msgstr "synovec"
 #: app/Functions/Functions.php:1353
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "synovec"
 
 #: app/Functions/Functions.php:1349
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "synovec"
 
 #: app/Functions/Functions.php:1351
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "synovec"
 
 #: app/Functions/Functions.php:951
 msgctxt "brother’s daughter’s husband"
@@ -19018,17 +19018,17 @@ msgstr "synovec/neter"
 #: app/Functions/Functions.php:1101
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "synovec/neter"
 
 #: app/Functions/Functions.php:1097
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "synovec/neter"
 
 #: app/Functions/Functions.php:1099
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "synovec/neter"
 
 #: app/Functions/Functions.php:861
 msgctxt "sibling’s child"
@@ -19043,17 +19043,17 @@ msgstr "synovec/neter"
 #: app/Functions/Functions.php:1341
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "synovec/neter"
 
 #: app/Functions/Functions.php:1337
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "synovec/neter"
 
 #: app/Functions/Functions.php:1339
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "synovec/neter"
 
 #: app/Functions/FunctionsEdit.php:566
 msgid "never"
@@ -19085,17 +19085,17 @@ msgstr "neter"
 #: app/Functions/Functions.php:1107
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "neter"
 
 #: app/Functions/Functions.php:1103
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "neter"
 
 #: app/Functions/Functions.php:1105
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "neter"
 
 #: app/Functions/Functions.php:863
 msgctxt "sibling’s daughter"
@@ -19110,17 +19110,17 @@ msgstr "neter"
 #: app/Functions/Functions.php:1347
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "neter"
 
 #: app/Functions/Functions.php:1343
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "neter"
 
 #: app/Functions/Functions.php:1345
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "neter"
 
 #: app/Functions/Functions.php:977
 msgctxt "brother’s son’s wife"
@@ -19373,7 +19373,7 @@ msgstr "Reset"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "right"
-msgstr ""
+msgstr "vpravo"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:31
@@ -19979,7 +19979,7 @@ msgstr "adresár „/data“ a súbor „/data/config.ini.php“ majú prístupo
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:195
 msgid "themself"
-msgstr ""
+msgstr "sami"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:565
@@ -20115,7 +20115,7 @@ msgstr "neznáma"
 
 #: app/Module/RelationshipsChartModule.php:459
 msgid "unlimited"
-msgstr ""
+msgstr "bez obmedzení"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:58
@@ -20124,7 +20124,7 @@ msgstr "nespoľahlivý zdroj"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "up"
-msgstr ""
+msgstr "hore"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-places.phtml:58
@@ -20183,12 +20183,12 @@ msgstr "webtrees správa"
 
 #: resources/views/setup/step-3-database-type.phtml:25
 msgid "webtrees needs a database to store your genealogy data."
-msgstr ""
+msgstr "webtrees vyžaduje databázu na ukladanie genealogických údajov."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:67
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr ""
+msgstr "webtrees vyžaduje zasielanie emailov napríklad pre pripomenutie hesla, alebo oznámenia z webovej stránky."
 
 #: app/Functions/FunctionsEdit.php:145
 msgid "webtrees sends emails with no storage"
@@ -20196,7 +20196,7 @@ msgstr "webtrees odosiela maily bez ukladania"
 
 #: resources/views/help/iso-8859-1.phtml:4
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr ""
+msgstr "webtrees používa pre písmená s diakritikou, špeciálne znaky a ne-latinské písma kódovanie UTF-8. Ak chcete použiť tento GEDCOM súbor v genealogickom programe, ktorý nepodporuje UTF-8, tak ho môžete vytvoriť v kódovaní ISO-8859-1."
 
 #: app/Functions/Functions.php:654
 msgid "wife"
@@ -20285,7 +20285,7 @@ msgstr "„%s“"
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:66
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "“%s” bolo zmazané."
 
 #: app/Functions/FunctionsPrint.php:90 app/Note.php:155
 #: app/Report/ReportParserGenerate.php:946
