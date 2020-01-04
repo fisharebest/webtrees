@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-01-03 08:31+0000\n"
+"PO-Revision-Date: 2020-01-05 13:56+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -3520,11 +3520,11 @@ msgstr ""
 
 #: admin_trees_manage.php:408 index_edit.php:50
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Zmeniť bloky na domácej stránke"
 
 #: index_edit.php:42
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Zmeniť bloky na „Mojej stránke“"
 
 #. I18N: [a record was] Changed on <date/time>
 #: app/Module/RecentChangesModule.php:261
@@ -3966,7 +3966,7 @@ msgstr "Dokončené; dátum neznámy"
 
 #: admin_trees_download.php:141
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Komprimovať súbor GEDCOM"
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:302
@@ -4363,7 +4363,7 @@ msgstr "Uživateľský uvítací text"
 
 #: app/Theme/AbstractTheme.php:1078 app/Theme/AbstractTheme.php:1080
 msgid "Customize this page"
-msgstr "prispôsobiť stránku"
+msgstr "Prispôsobiť stránku"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6729
@@ -7377,19 +7377,25 @@ msgstr "Ak dva rodokmene používajú ten istý priečinok pre médiá, tak mô�
 #: admin_trees_config.php:374
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
 msgstr ""
+"Pokiaľ návštevníci nemôžu prezerať rodokmeň, tak nemôžu ani požiadať o účet. "
+"V takomto prípade musíte pridať ich účet manuálne."
 
 #. I18N: Help text for the “Who can upload new media files” configuration setting
 #: admin_trees_config.php:1023
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
-msgstr "Pokiaľ si myslíte, že užívatelia by nahrávali nesprávne obrázky, môžete obmedziť nahrávanie obrázkov tak, že ich budú môcť nahrávať len administrátori."
+msgstr ""
+"Pokiaľ si myslíte, že užívatelia by nahrávali nesprávne obrázky, môžete "
+"obmedziť nahrávanie obrázkov tak, že ich budú môcť nahrávať len správcovia."
 
 #: site-unavailable.php:82
 msgid "If you are the website administrator, you should check that:"
-msgstr "Ak ste správca webu, mal by ste skontrolovať toto:"
+msgstr "Ak ste administrátor webu, mali by ste skontrolovať toto:"
 
 #: site-unavailable.php:95
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
-msgstr "Ak nedokážete vyriešiť problém sami, môžete sa spýtať na fóre <a href=\"https://webtrees.net\">webtrees.net</a>."
+msgstr ""
+"Ak nedokážete vyriešiť problém sami, môžete požiadať o pomoc na fóre <a href="
+"\"https://webtrees.net\">webtrees.net</a>."
 
 #: admin_trees_manage.php:285
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -18927,12 +18933,12 @@ msgstr "priezvisko za slobodna"
 
 #: admin_trees_config.php:469
 msgid "managers"
-msgstr ""
+msgstr "správcovia"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: app/Stats.php:2912
 msgid "marriage"
@@ -19003,7 +19009,7 @@ msgstr[2] "maximum %s dní"
 #: admin_trees_config.php:428 admin_trees_config.php:468
 #: admin_trees_config.php:488
 msgid "members"
-msgstr ""
+msgstr "členovia"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: app/Functions/FunctionsDate.php:81
@@ -19946,7 +19952,7 @@ msgstr "adresár „/data“ a súbor „/data/config.ini.php“ majú prístupo
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:281
 msgid "themself"
-msgstr ""
+msgstr "sami"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:639
@@ -20091,7 +20097,7 @@ msgstr "neznáma"
 
 #: app/Module/RelationshipsChartModule.php:148
 msgid "unlimited"
-msgstr ""
+msgstr "bez obmedzení"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
@@ -20169,6 +20175,10 @@ msgstr "webtrees odosiela maily bez ukladania"
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr ""
+"webtrees používa pre písmená s diakritikou, špeciálne znaky a ne-latinské "
+"písma kódovanie UTF-8. Ak chcete použiť tento GEDCOM súbor v genealogickom "
+"programe, ktorý nepodporuje UTF-8, tak ho môžete vytvoriť v kódovaní "
+"ISO-8859-1."
 
 #: app/Functions/FunctionsPrint.php:211
 msgid "webtrees wiki"
@@ -20254,7 +20264,7 @@ msgstr "„%s“ bolo pridané k vašim obľúbeným položkám."
 #: action.php:47
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "“%s” bolo zmazané."
 
 #: app/Functions/FunctionsPrint.php:120 app/Note.php:107
 msgid "…"
