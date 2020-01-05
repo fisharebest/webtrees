@@ -698,7 +698,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         foreach ($individual->childFamilies() as $family) {
             $this->addFamilyAndChildrenToCart($family);
             foreach ($family->spouses() as $parent) {
-                $this->addAncestorsToCart($parent);
+                $this->addAncestorFamiliesToCart($parent);
             }
         }
     }
