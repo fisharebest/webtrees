@@ -616,7 +616,9 @@ class LocationController extends AbstractAdminController
 
         $files = Collection::make($data_filesystem->listContents('places'))
             ->filter(static function (array $metadata): bool {
-                return $metadata['extension'] === 'csv' || $metadata['extension'] === 'geojson';
+                $extension = strtolower($metadata['extension'] ?? '');
+
+                return $extension === 'csv' || $extension === 'geojson';
             })
             ->map(static function (array $metadata): string {
                 return $metadata['basename'];
