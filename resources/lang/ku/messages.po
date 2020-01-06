@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-06 18:03+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-06 18:03+0000\nLast-Translator: Victor Tiltay <vtiltay@gmail.com>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/Age.php:118
@@ -4975,7 +4975,7 @@ msgstr ""
 
 #: app/Functions/FunctionsDate.php:45
 msgid "Stillborn"
-msgstr ""
+msgstr "Stillborn"
 
 #: app/Functions/FunctionsEdit.php:103 app/Functions/FunctionsEdit.php:226
 #: app/Functions/FunctionsEdit.php:247
@@ -4989,7 +4989,7 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:157
 #: resources/views/modals/restriction-fields.phtml:11
 msgid "Show to visitors"
-msgstr ""
+msgstr "Show to visitors"
 
 #: app/Functions/FunctionsEdit.php:104 app/Functions/FunctionsEdit.php:227
 #: app/Functions/FunctionsEdit.php:248
@@ -5003,7 +5003,7 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:96
 #: resources/views/modals/restriction-fields.phtml:14
 msgid "Show to members"
-msgstr ""
+msgstr "Show to members"
 
 #: app/Functions/FunctionsEdit.php:105 app/Functions/FunctionsEdit.php:228
 #: app/Functions/FunctionsEdit.php:249
@@ -5015,34 +5015,34 @@ msgstr ""
 #: app/Http/Controllers/AdminTreesController.php:756
 #: resources/views/modals/restriction-fields.phtml:17
 msgid "Show to managers"
-msgstr ""
+msgstr "Show to managers"
 
 #: app/Functions/FunctionsEdit.php:106 app/Functions/FunctionsEdit.php:250
 #: app/Http/Controllers/AdminController.php:187
 #: app/Http/Controllers/AdminTreesController.php:757
 #: resources/views/admin/trees-privacy.phtml:157
 msgid "Hide from everyone"
-msgstr ""
+msgstr "Hide from everyone"
 
 #: app/Functions/FunctionsEdit.php:132
 msgid "No calendar conversion"
-msgstr ""
+msgstr "No calendar conversion"
 
 #: app/Functions/FunctionsEdit.php:143
 msgid "Internal messaging"
-msgstr ""
+msgstr "Internal messaging"
 
 #: app/Functions/FunctionsEdit.php:144
 msgid "Internal messaging with emails"
-msgstr ""
+msgstr "Internal messaging with emails"
 
 #: app/Functions/FunctionsEdit.php:145
 msgid "webtrees sends emails with no storage"
-msgstr ""
+msgstr "webtrees sends emails with no storage"
 
 #: app/Functions/FunctionsEdit.php:146
 msgid "Mailto link"
-msgstr ""
+msgstr "Mailto link"
 
 #: app/Functions/FunctionsEdit.php:147
 msgid "No contact"
@@ -5147,7 +5147,7 @@ msgstr "erê"
 #: resources/xml/reports/missing_facts_report.xml:7
 #: resources/xml/reports/relative_ext_report.xml:6
 msgid "All"
-msgstr ""
+msgstr "All"
 
 #: app/Functions/FunctionsEdit.php:229
 #: app/Functions/FunctionsPrintFacts.php:264
@@ -5156,7 +5156,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:1065
 #: resources/views/modals/restriction-fields.phtml:28
 msgid "Only managers can edit"
-msgstr ""
+msgstr "Only managers can edit"
 
 #: app/Functions/FunctionsEdit.php:263
 msgid "No temple - living ordinance"
