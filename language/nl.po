@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-09 09:33+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Dutch <http://translate.webtrees.net/projects/webtrees/"
+"PO-Revision-Date: 2020-01-07 03:50+0000\n"
+"Last-Translator: Frans Weber <stamboom@bfle.nl>\n"
+"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -5752,7 +5752,7 @@ msgstr "Elke bezoeker heeft deze rol en de daarmee verbonden rechten, ook niet a
 #: search_advanced.php:157 search_advanced.php:219 search_advanced.php:234
 #: search_advanced.php:255 search_advanced.php:270
 msgid "Exact"
-msgstr "Exact"
+msgstr "Precies"
 
 #: search_advanced.php:103 search_advanced.php:168
 msgid "Exact date"
@@ -8965,7 +8965,7 @@ msgstr "Media mappen"
 #: admin_media.php:693 admin_trees_config.php:809 admin_trees_manage.php:577
 #: app/Controller/FamilyController.php:160 app/GedcomTag.php:650
 msgid "Media object"
-msgstr "Media object"
+msgstr "Mediaobject"
 
 #: admin.php:839 admin_trees_duplicates.php:144
 #: app/Functions/FunctionsPrintLists.php:1044
@@ -13942,7 +13942,7 @@ msgstr "De tijdzone is van belang voor het rekenen met datums. Bijvoorbeeld om t
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] "De twee stambomen hebben %1$s record met dezelfde “XREF”."
-msgstr[1] "De twee stambomen hebben %1$s record met dezelfde “XREF”."
+msgstr[1] "De twee stambomen hebben %1$s records met dezelfde “XREF”."
 
 #: admin_site_upgrade.php:447
 msgid "The upgrade is complete."
