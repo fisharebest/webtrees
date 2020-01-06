@@ -969,7 +969,7 @@ class SearchService
     {
         return static function (GedcomRecord $record) use ($search_terms): bool {
             // Ignore non-genealogy fields
-            $gedcom = preg_replace('/\n\d (?:_UID) .*/', '', $record->gedcom());
+            $gedcom = preg_replace('/\n\d (?:_UID|_WT_USER) .*/', '', $record->gedcom());
 
             // Ignore matches in links
             $gedcom = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . '( @' . Gedcom::REGEX_XREF . '@)?/', '', $gedcom);
