@@ -1,6 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -13,8 +14,7 @@ use Fisharebest\Webtrees\Tree;
  * @var bool $note
  * @var string $content
  * @var bool $showeventslink
- * @var string $place
- * @var array $parent
+ * @var Place $place
  * @var array $nextaction
  */
 
@@ -46,8 +46,8 @@ use Fisharebest\Webtrees\Tree;
 
         <div class="text-center">
             <?php if ($showeventslink) : ?>
-                <a class="formField" href= <?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name(), 'parent' => $parent, 'action2' => 'hierarchy-e'])) ?>>
-                    <?= I18N::translate('View table of events occurring in %s', $place) ?>
+                <a class="formField" href= <?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name(), 'parent' => $place->parent(), 'action2' => 'hierarchy-e'])) ?>>
+                    <?= I18N::translate('View table of events occurring in %s', $place->fullName()) ?>
                 </a>
                 |
             <?php endif ?>

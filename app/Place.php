@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
+use stdClass;
 
 /**
  * A GEDCOM place (PLAC) object.
@@ -57,6 +58,37 @@ class Place
         $this->place_name = $this->parts->implode(Gedcom::PLACE_SEPARATOR);
 
         $this->tree = $tree;
+    }
+
+    /**
+     * Find a place by its ID.
+     *
+     * @param int  $id
+     * @param Tree $tree
+     *
+     * @return Place
+     */
+    public static function find(int $id, Tree $tree): Place
+    {
+        $parts = new Collection();
+
+        while ($id !== 0) {
+            $row = DB::table('places')
+                ->where('p_file', '=', $tree->id())
+                ->where('p_id', '=', $id)
+                ->first();
+
+            if ($row instanceof stdClass) {
+                $id = (int) $row->p_parent_id;
+                $parts->add($row->p_place);
+            } else {
+                $id = 0;
+            }
+        }
+
+        $place_name = $parts->implode(Gedcom::PLACE_SEPARATOR);
+
+        return new Place($place_name, $tree);
     }
 
     /**
@@ -173,8 +205,8 @@ class Place
         
         if ($module instanceof PlaceHierarchyListModule) {
             return $module->listUrl($this->tree, [
-                'parent' => $this->parts->reverse()->all(),
-                'tree'   => $this->tree->name(),
+                'place_id' => $this->id(),
+                'tree'     => $this->tree->name(),
             ]);
         }
 

@@ -38,6 +38,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
+use function redirect;
 use function view;
 
 /**
@@ -73,20 +74,24 @@ class PlaceHierarchyController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $module  = $request->getAttribute('module');
-        $action  = $request->getAttribute('action');
-        $action2 = $request->getQueryParams()['action2'] ?? 'hierarchy';
-        $parent  = $request->getQueryParams()['parent'] ?? [];
+        $module   = $request->getAttribute('module');
+        $action   = $request->getAttribute('action');
+        $action2  = $request->getQueryParams()['action2'] ?? 'hierarchy';
+        $place_id = (int) ($request->getQueryParams()['place_id'] ?? 0);
+        $place    = Place::find($place_id, $tree);
 
-        $fqpn       = implode(Gedcom::PLACE_SEPARATOR, array_reverse($parent));
-        $place      = new Place($fqpn, $tree);
+        // Request for a non-existant place?
+        if ($place_id !== $place->id()) {
+            return redirect($place->url());
+        }
+
         $content    = '';
         $showmap    = Site::getPreference('map-provider') !== '';
         $data       = null;
 
         if ($showmap) {
             $content .= view('modules/place-hierarchy/map', [
-                'data'   => $this->mapData($tree, $fqpn),
+                'data'   => $this->mapData($place),
             ]);
         }
 
@@ -98,7 +103,7 @@ class PlaceHierarchyController extends AbstractBaseController
             case 'hierarchy':
             case 'hierarchy-e':
                 $nextaction = ['list' => I18N::translate('Show all places in a list')];
-                $data       = $this->getHierarchy($tree, $place, $parent);
+                $data       = $this->getHierarchy($tree, $place);
                 $content .= (null === $data || $showmap) ? '' : view('place-hierarchy', $data);
                 if (null === $data || $action2 === 'hierarchy-e') {
                     $content .= view('modules/place-hierarchy/events', $this->getEvents($tree, $place));
@@ -117,8 +122,7 @@ class PlaceHierarchyController extends AbstractBaseController
                 'tree'           => $tree,
                 'current'        => $breadcrumbs['current'],
                 'breadcrumbs'    => $breadcrumbs['breadcrumbs'],
-                'parent'         => $parent,
-                'place'          => $fqpn,
+                'place'          => $place,
                 'content'        => $content,
                 'showeventslink' => null !== $data && $place->gedcomName() !== '' && $action2 !== 'hierarchy-e',
                 'nextaction'     => $nextaction,
@@ -160,12 +164,11 @@ class PlaceHierarchyController extends AbstractBaseController
     /**
      * @param Tree     $tree
      * @param Place    $place
-     * @param string[] $parent
      *
      * @return array|null
      * @throws Exception
      */
-    private function getHierarchy(Tree $tree, Place $place, array $parent): ?array
+    private function getHierarchy(Tree $tree, Place $place): ?array
     {
         $child_places = $place->getChildPlaces();
         $numfound     = count($child_places);
@@ -179,7 +182,6 @@ class PlaceHierarchyController extends AbstractBaseController
                     'col_class' => 'w-' . ($divisor === 2 ? '25' : '50'),
                     'columns'   => array_chunk($child_places, (int) ceil($numfound / $divisor)),
                     'place'     => $place,
-                    'parent'    => $parent,
                 ];
         }
 
@@ -260,14 +262,12 @@ class PlaceHierarchyController extends AbstractBaseController
     }
 
     /**
-     * @param Tree   $tree
-     * @param string $reference
+     * @param Place $placeObj
      *
      * @return array
      */
-    protected function mapData(Tree $tree, $reference): array
+    protected function mapData(Place $placeObj): array
     {
-        $placeObj  = new Place($reference, $tree);
         $places    = $placeObj->getChildPlaces();
         $features  = [];
         $sidebar   = '';
