@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Add individuals') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select-individual', ['name' => 'addxref', 'tree' => $tree, 'required' => true]) ?>
+            <?= view('components/select-individual', ['name' => 'addxref', 'tree' => $tree]) ?>
             <?= view('components/checkbox', ['label' => /* I18N: Label for a configuration option */ I18N::translate('Include the individual’s immediate family'), 'name' => 'addfam']) ?>
         </div>
     </div>
@@ -32,11 +32,11 @@ use Fisharebest\Webtrees\I18N;
     </div>
 
     <div class="row form-group">
-        <label class="col-sm-3 col-form-label wt-page-options-label" for="placename">
+        <label class="col-sm-3 col-form-label wt-page-options-label" for="place_id">
             <?= I18N::translate('Place') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <input class="form-control" id="placename" name="placename" type="text" data-autocomplete-url="<?= e(route('autocomplete-place', ['tree' => $tree->name(), 'query' => 'QUERY'])) ?>">
+            <?= view('components/select-place', ['name' => 'place_id', 'tree' => $tree]) ?>
         </div>
     </div>
 

@@ -142,6 +142,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\Select2Family;
 use Fisharebest\Webtrees\Http\RequestHandlers\Select2Individual;
 use Fisharebest\Webtrees\Http\RequestHandlers\Select2MediaObject;
 use Fisharebest\Webtrees\Http\RequestHandlers\Select2Note;
+use Fisharebest\Webtrees\Http\RequestHandlers\Select2Place;
 use Fisharebest\Webtrees\Http\RequestHandlers\Select2Repository;
 use Fisharebest\Webtrees\Http\RequestHandlers\Select2Source;
 use Fisharebest\Webtrees\Http\RequestHandlers\Select2Submitter;
@@ -525,6 +526,7 @@ class WebRoutes
                 $router->post(Select2Individual::class, '/select2-individual', Select2Individual::class);
                 $router->post(Select2MediaObject::class, '/select2-media', Select2MediaObject::class);
                 $router->post(Select2Note::class, '/select2-note', Select2Note::class);
+                $router->post(Select2Place::class, '/select2-place', Select2Place::class);
                 $router->post(Select2Source::class, '/select2-source', Select2Source::class);
                 $router->post(Select2Submitter::class, '/select2-submitter', Select2Submitter::class);
                 $router->post(Select2Repository::class, '/select2-repository', Select2Repository::class);

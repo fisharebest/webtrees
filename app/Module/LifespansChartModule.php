@@ -139,11 +139,11 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
         $addxref   = $params['addxref'] ?? '';
         $addfam    = (bool) ($params['addfam'] ?? false);
-        $placename = $params['placename'] ?? '';
+        $place_id  = (int) ($params['place_id'] ?? 0);
         $start     = $params['start'] ?? '';
         $end       = $params['end'] ?? '';
 
-        $place      = new Place($placename, $tree);
+        $place      = Place::find($place_id, $tree);
         $start_date = new Date($start);
         $end_date   = new Date($end);
 
@@ -159,13 +159,13 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         }
 
         // Select by date and/or place.
-        if ($placename !== '' && $start_date->isOK() && $end_date->isOK()) {
+        if ($place_id !== 0 && $start_date->isOK() && $end_date->isOK()) {
             $date_xrefs  = $this->findIndividualsByDate($start_date, $end_date, $tree);
             $place_xrefs = $this->findIndividualsByPlace($place, $tree);
             $xrefs       = array_intersect($date_xrefs, $place_xrefs);
         } elseif ($start_date->isOK() && $end_date->isOK()) {
             $xrefs = $this->findIndividualsByDate($start_date, $end_date, $tree);
-        } elseif ($placename !== '') {
+        } elseif ($place_id !== 0) {
             $xrefs = $this->findIndividualsByPlace($place, $tree);
         }
 
@@ -190,9 +190,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         if ($ajax === '1') {
             $this->layout = 'layouts/ajax';
 
-            $subtitle = $this->subtitle(count($xrefs), $start_date, $end_date, $placename);
-
-            return $this->chart($tree, $xrefs, $subtitle);
+            return $this->chart($tree, $xrefs);
         }
 
         $reset_url = route(self::ROUTE_NAME, ['tree' => $tree->name()]);
@@ -214,13 +212,12 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * @param Tree   $tree
-     * @param array  $xrefs
-     * @param string $subtitle
+     * @param Tree  $tree
+     * @param array $xrefs
      *
      * @return ResponseInterface
      */
-    protected function chart(Tree $tree, array $xrefs, string $subtitle): ResponseInterface
+    protected function chart(Tree $tree, array $xrefs): ResponseInterface
     {
         /** @var Individual[] $individuals */
         $individuals = array_map(static function (string $xref) use ($tree): ?Individual {
@@ -244,6 +241,9 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             return max($carry, $item->row);
         }, 0);
 
+        $count    = count($xrefs);
+        $subtitle = I18N::plural('%s individual', '%s individuals', $count, I18N::number($count));
+        
         $html = view('modules/lifespans-chart/chart', [
             'dir'        => I18N::direction(),
             'end_year'   => $end_year,
@@ -385,54 +385,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         }
 
         return $xrefs;
-    }
-
-    /**
-     * Generate a subtitle, based on filter parameters
-     *
-     * @param int    $count
-     * @param Date   $start
-     * @param Date   $end
-     * @param string $placename
-     *
-     * @return string
-     */
-    protected function subtitle(int $count, Date $start, Date $end, string $placename): string
-    {
-        if ($placename !== '' && $start->isOK() && $end->isOK()) {
-            return I18N::plural(
-                '%s individual with events in %s between %s and %s',
-                '%s individuals with events in %s between %s and %s',
-                $count,
-                I18N::number($count),
-                $placename,
-                $start->display(false, '%Y'),
-                $end->display(false, '%Y')
-            );
-        }
-
-        if ($placename !== '') {
-            return I18N::plural(
-                '%s individual with events in %s',
-                '%s individuals with events in %s',
-                $count,
-                I18N::number($count),
-                $placename
-            );
-        }
-
-        if ($start->isOK() && $end->isOK()) {
-            return I18N::plural(
-                '%s individual with events between %s and %s',
-                '%s individuals with events between %s and %s',
-                $count,
-                I18N::number($count),
-                $start->display(false, '%Y'),
-                $end->display(false, '%Y')
-            );
-        }
-
-        return I18N::plural('%s individual', '%s individuals', $count, I18N::number($count));
     }
 
     /**

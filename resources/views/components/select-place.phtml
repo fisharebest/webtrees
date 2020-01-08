@@ -1,0 +1,38 @@
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\Select2Place;
+use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var Place|null  $place
+ * @var string|null $class
+ * @var string|null $id
+ * @var string      $name
+ * @var Tree        $tree
+ */
+
+?>
+
+<select
+autocomplete="off"
+class="form-control select2 <?= $class ?? '' ?>"
+data-ajax--delay="<?= e(Select2Place::AJAX_DELAY) ?>"
+data-minimum-input-length="<?= e(Select2Place::MINIMUM_INPUT_LENGTH) ?>"
+data-ajax--type="POST"
+data-ajax--url="<?= e(route(Select2Place::class, ['tree' => $tree->name()])) ?>"
+data-allow-clear="true"
+data-placeholder=""
+id="<?= e($id ?? $name) ?>"
+name="<?= e($name) ?>"
+    <?= ($disabled ?? false) ? 'disabled' : '' ?>
+    <?= ($required ?? false) ? 'required' : '' ?>
+>
+    <?php if (($place ?? null) instanceof Place) : ?>
+        <option value="<?= e($place->id()) ?>">
+            <?= view('selects/place', ['place' => $place]) ?>
+        </option>
+    <?php else : ?>
+        <option></option>
+    <?php endif ?>
+</select>

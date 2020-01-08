@@ -44,7 +44,7 @@ class Select2Place extends AbstractSelect2Handler
             ->searchPlaces($tree, $query, $offset, $limit)
             ->map(static function (Place $place): array {
                 return [
-                    'id'    => $place->gedcomName(),
+                    'id'    => $place->id(),
                     'text'  => $place->gedcomName(),
                     'title' => ' ',
                 ];
