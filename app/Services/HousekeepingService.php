@@ -405,12 +405,15 @@ class HousekeepingService
      */
     public function deleteOldFiles(FilesystemInterface $filesystem, string $path, int $max_age): void
     {
+        $threshold = Carbon::now()->unix() - $max_age;
+
         $list = $filesystem->listContents($path, true);
 
-        $timestamp = Carbon::now()->unix();
-
         foreach ($list as $metadata) {
-            if ($metadata['timestamp'] ?? $timestamp < $timestamp - $max_age) {
+            // The timestamp can be absent or false.
+            $timestamp = $metadata['timestamp'] ?? false;
+
+            if ($timestamp !== false && $timestamp < $threshold) {
                 $this->deleteFileOrFolder($filesystem, $metadata['path']);
             }
         }

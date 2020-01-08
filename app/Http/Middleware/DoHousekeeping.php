@@ -34,7 +34,8 @@ use function assert;
  */
 class DoHousekeeping implements MiddlewareInterface
 {
-    // Delete thumbnails after 90 days.
+    // Delete old thumbnails after 90 days.
+    private const THUMBNAIL_DIR     = 'thumbnail-cache';
     private const MAX_THUMBNAIL_AGE = 60 * 60 * 24 * 90;
 
     // Delete files in /data/tmp after 1 hour.
@@ -47,8 +48,8 @@ class DoHousekeeping implements MiddlewareInterface
     // Delete inactive sessions after 1 day.
     private const MAX_SESSION_AGE = 60 * 60 * 24;
 
-    // Run the cleanup every 100 requests.
-    private const PROBABILITY = 100;
+    // Run the cleanup every N requests.
+    private const PROBABILITY = 250;
 
     /** @var HousekeepingService */
     private $housekeeping_service;
@@ -98,7 +99,7 @@ class DoHousekeeping implements MiddlewareInterface
     private function runHousekeeping(FilesystemInterface $data_filesystem, FilesystemInterface $root_filesystem): void
     {
         // Clear old thumbnails
-        $this->housekeeping_service->deleteOldFiles($data_filesystem, 'thumbnail-cache', self::MAX_THUMBNAIL_AGE);
+        $this->housekeeping_service->deleteOldFiles($data_filesystem, self::THUMBNAIL_DIR, self::MAX_THUMBNAIL_AGE);
 
         // Clear temporary files
         $this->housekeeping_service->deleteOldFiles($root_filesystem, self::TMP_DIR, self::MAX_TMP_FILE_AGE);
