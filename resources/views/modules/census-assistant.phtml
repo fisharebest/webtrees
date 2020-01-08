@@ -112,7 +112,7 @@ use Fisharebest\Webtrees\View;
 
     let formData = new FormData();
     formData.append('census', census);
-    formData.append('csrf', document.querySelector('meta[name=csrf]').content);
+    formData.append('_csrf', document.querySelector('meta[name=csrf]').content);
 
     fetch(<?= json_encode(route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusHeader', 'tree' => $individual->tree()->name()])) ?>, {
         credentials: 'same-origin',
@@ -148,7 +148,7 @@ use Fisharebest\Webtrees\View;
 
     let formData = new FormData();
     formData.append('census', census);
-    formData.append('csrf', document.querySelector('meta[name=csrf]').content);
+    formData.append('_csrf', document.querySelector('meta[name=csrf]').content);
     formData.append('head', head);
     formData.append('xref', xref);
 
@@ -174,7 +174,7 @@ use Fisharebest\Webtrees\View;
 
     let formData = new FormData();
     formData.append('census', census);
-    formData.append('csrf', document.querySelector('meta[name=csrf]').content);
+    formData.append('_csrf', document.querySelector('meta[name=csrf]').content);
     formData.append('head', xref);
     formData.append('xref', xref);
 

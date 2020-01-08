@@ -58,7 +58,7 @@ class CheckCsrf implements MiddlewareInterface
             $route = $params['route'] ?? '';
 
             if (!in_array($route, self::EXCLUDE_ROUTES, true)) {
-                $client_token  = $params['csrf'] ?? $request->getHeaderLine('X-CSRF-TOKEN');
+                $client_token  = $params['_csrf'] ?? $request->getHeaderLine('X-CSRF-TOKEN');
                 $session_token = Session::get('CSRF_TOKEN');
 
                 if ($client_token !== $session_token) {
@@ -67,7 +67,7 @@ class CheckCsrf implements MiddlewareInterface
                     return redirect((string) $request->getUri());
                 }
 
-                unset($params['csrf']);
+                unset($params['_csrf']);
                 $request = $request->withParsedBody($params);
             }
         }

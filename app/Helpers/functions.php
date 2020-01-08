@@ -75,7 +75,7 @@ function asset(string $path): string
  */
 function csrf_field()
 {
-    return '<input type="hidden" name="csrf" value="' . e(WebtreesSession::getCsrfToken()) . '">';
+    return '<input type="hidden" name="_csrf" value="' . e(WebtreesSession::getCsrfToken()) . '">';
 }
 
 /**
