@@ -122,7 +122,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getQueryParams()['xref'] ?? '';
 
         $individual = Individual::getInstance($xref, $tree);
 

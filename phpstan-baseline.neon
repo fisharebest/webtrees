@@ -1513,6 +1513,21 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
+			path: modules_v4/example-theme.disable/module.php
+
+		-
+			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
+			count: 1
+			path: modules_v4/example-theme.disable/module.php
+
+		-
+			message: "#^Method class@anonymous/modules_v4/example\\-theme\\.disable/module\\.php\\:17\\:\\:stylesheets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: modules_v4/example-theme.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
 			path: modules_v4/example-middleware.disable/module.php
 
 		-
@@ -1564,21 +1579,6 @@ parameters:
 			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
 			count: 1
 			path: modules_v4/example-footer.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-theme.disable/module.php
-
-		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 1
-			path: modules_v4/example-theme.disable/module.php
-
-		-
-			message: "#^Method class@anonymous/modules_v4/example\\-theme\\.disable/module\\.php\\:17\\:\\:stylesheets\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: modules_v4/example-theme.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -2512,6 +2512,11 @@ parameters:
 
 		-
 			message: "#^Parameter \\#2 \\$str of function explode expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Session.php
+
+		-
+			message: "#^Parameter \\#1 \\$lifetime\\|options of function session_set_cookie_params expects array\\<string, bool\\|int\\|string\\|null\\>\\|int, array\\<string, bool\\|int\\|string\\|null\\> given\\.$#"
 			count: 1
 			path: app/Session.php
 
