@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-01-05 13:56+0000\n"
+"PO-Revision-Date: 2020-01-08 14:41+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -263,7 +263,7 @@ msgstr[2] "%s prihlásení anonymní užívatelia"
 msgid "%s child"
 msgid_plural "%s children"
 msgstr[0] "%s dieťa"
-msgstr[1] "%s detí"
+msgstr[1] "%s deti"
 msgstr[2] "%s detí"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
@@ -1797,7 +1797,7 @@ msgstr "Vek v roku svadby"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1311
 msgid "Age of parents next to child’s birthdate"
-msgstr "Zobraziť vek rodičov pri narodení detí"
+msgstr "Zobraziť vek rodičov pri dátume narodenia detí"
 
 #: statistics.php:535 statisticsplot.php:1132
 msgid "Age related to birth year"
