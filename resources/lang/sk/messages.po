@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-05 13:56+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-08 14:41+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -216,7 +216,7 @@ msgstr[2] "%s prihlásení anonymní užívatelia"
 msgid "%s child"
 msgid_plural "%s children"
 msgstr[0] "%s dieťa"
-msgstr[1] "%s detí"
+msgstr[1] "%s deti"
 msgstr[2] "%s detí"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
@@ -1741,12 +1741,12 @@ msgstr "Vek v roku svadby"
 #: resources/views/modules/statistics-chart/custom.phtml:131
 #: resources/views/modules/statistics-chart/custom.phtml:137
 msgid "Age interval"
-msgstr ""
+msgstr "Interval veku"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:398
 msgid "Age of parents next to child’s birthdate"
-msgstr "Zobraziť vek rodičov pri narodení detí"
+msgstr "Zobraziť vek rodičov pri dátume narodenia detí"
 
 #: resources/views/lists/individuals-table.phtml:531
 #: resources/views/lists/individuals-table.phtml:573
