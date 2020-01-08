@@ -29,6 +29,7 @@ use function connection_status;
 use function fastcgi_finish_request;
 use function function_exists;
 use function header;
+use function header_remove;
 use function headers_sent;
 use function http_response_code;
 use function ob_get_length;
@@ -55,6 +56,7 @@ class EmitResponse implements MiddlewareInterface
     {
         $response = $handler->handle($request);
 
+        $this->removeDefaultPhpHeaders();
         $this->assertHeadersNotEmitted();
         $this->assertBodyNotEmitted();
         $this->emitStatusLine($response);
@@ -63,6 +65,16 @@ class EmitResponse implements MiddlewareInterface
         $this->closeConnection();
 
         return $response;
+    }
+
+    /**
+     * Remove the default PHP header.
+     *
+     * @return void
+     */
+    private function removeDefaultPhpHeaders(): void
+    {
+        header_remove('X-Powered-By');
     }
 
     /**
