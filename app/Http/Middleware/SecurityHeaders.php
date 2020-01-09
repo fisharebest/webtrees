@@ -33,7 +33,7 @@ class SecurityHeaders implements MiddlewareInterface
         'Referrer-Policy'        => 'same-origin',
         'X-Content-Type-Options' => 'nosniff',
         'X-Frame-Options'        => 'SAMEORIGIN',
-        'X-XSS-Protection'       => '1;mode=block',
+        'X-XSS-Protection'       => '1; mode=block',
     ];
 
     /**
