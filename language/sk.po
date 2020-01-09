@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-01-08 14:41+0000\n"
+"PO-Revision-Date: 2020-01-10 11:01+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -5364,7 +5364,7 @@ msgstr ""
 
 #: mediaviewer.php:143
 msgid "Download file"
-msgstr "Načítanie súboru"
+msgstr "Stiahnuť súbor"
 
 #: app/Module/GoogleMapsModule.php:4075
 msgid "Download geographic data"
