@@ -1,15 +1,16 @@
 <?php
 
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
 
 /**
- * @var Collection $facts
+ * @var Collection<Fact> $facts
  */
 
 ?>
-<?php use Fisharebest\Webtrees\Individual; ?>
-<?php use Fisharebest\Webtrees\View;
-use Illuminate\Support\Collection; ?>
 
 <div class="table-responsive">
     <table class="table table-sm datatable wt-table-events" data-info="false" data-paging="false" data-searching="false" data-sorting="<?= e('[[1, "asc" ]]') ?>">
@@ -42,7 +43,7 @@ use Illuminate\Support\Collection; ?>
                             <small><?= view('icons/sex', ['sex' => $record->sex()]) ?></small>
                         <?php endif ?>
                     </td>
-                    <td data-sort="<?= $fact->date()->julianDay() ?>">
+                    <td data-sort="<?= $fact->jd ?>">
                         <?= $fact->date()->display(true) ?>
                     </td>
                     <td data-sort="<?= $fact->anniv ?>">

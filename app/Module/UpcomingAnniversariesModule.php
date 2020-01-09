@@ -145,7 +145,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
         $facts = $calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 
-        if ($facts === []) {
+        if ($facts->isEmpty()) {
             if ($endjd == $startjd) {
                 $content = view('modules/upcoming_events/empty', [
                     'message' => I18N::translate('No events exist for tomorrow.'),

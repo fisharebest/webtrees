@@ -172,12 +172,12 @@ class CalendarService
      * @param string $sort_by
      * @param Tree   $tree
      *
-     * @return Fact[]
+     * @return Collection<Fact>
      */
-    public function getEventsList(int $jd1, int $jd2, string $events, bool $only_living, string $sort_by, Tree $tree): array
+    public function getEventsList(int $jd1, int $jd2, string $events, bool $only_living, string $sort_by, Tree $tree): Collection
     {
         $found_facts = [];
-        $facts       = [];
+        $facts       = new Collection();
 
         foreach (range($jd1, $jd2) as $jd) {
             $found_facts = array_merge($found_facts, $this->getAnniversaryEvents($jd, $events, $tree));
@@ -201,16 +201,18 @@ class CalendarService
                     }
                 }
             }
-            $facts[] = $fact;
+            $facts->push($fact);
         }
 
         switch ($sort_by) {
             case 'anniv':
-                $facts = Fact::sortFacts(Collection::make($facts))->all();
+                $facts = $facts->sort(static function (Fact $x, Fact $y): int {
+                    return $x->jd <=> $y->jd;
+                });
                 break;
 
             case 'alpha':
-                uasort($facts, static function (Fact $x, Fact $y): int {
+                $facts = $facts->sort(static function (Fact $x, Fact $y): int {
                     return GedcomRecord::nameComparator()($x->record(), $y->record());
                 });
                 break;

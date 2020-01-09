@@ -2232,7 +2232,7 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property Fisharebest\\\\Webtrees\\\\Fact\\:\\:\\$jd\\.$#"
-			count: 1
+			count: 3
 			path: app/Services/CalendarService.php
 
 		-
