@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
 use Fisharebest\Webtrees\Http\Middleware\PhpEnvironment;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
 use Fisharebest\Webtrees\Http\Middleware\Router;
+use Fisharebest\Webtrees\Http\Middleware\SecurityHeaders;
 use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
 use Fisharebest\Webtrees\Http\Middleware\UseCache;
 use Fisharebest\Webtrees\Http\Middleware\UseDatabase;
@@ -101,6 +102,7 @@ class Webtrees
     private const MIDDLEWARE = [
         PhpEnvironment::class,
         EmitResponse::class,
+        SecurityHeaders::class,
         ReadConfigIni::class,
         BaseUrl::class,
         HandleExceptions::class,
