@@ -437,6 +437,10 @@ class FunctionsEdit
         if (in_array($fact, Config::emptyFacts(), true) && ($value === '' || $value === 'Y' || $value === 'y')) {
             $html .= '<input type="hidden" id="' . $id . '" name="' . $name . '" value="' . $value . '">';
 
+            $checked = $value === '' ? '' : 'checked';
+            $onchange = 'this.previousSibling.value=this.checked ? this.value : &quot;&quot;';
+            $html .= '<input type="checkbox" value="Y" ' . $checked . ' onchange="' . $onchange . '">';
+
             if ($fact === 'CENS' && $value === 'Y') {
                 $html .= view('modules/GEDFact_assistant/select-census', [
                     'census_places' => Census::censusPlaces(I18N::languageTag()),
