@@ -36,7 +36,9 @@ class Carbon extends CarbonImmutable
      */
     public function julianDay(): int
     {
-        return gregoriantojd($this->month, $this->day, $this->year);
+        $local = $this->local();
+
+        return gregoriantojd($local->month, $local->day, $local->year);
     }
 
     /**
