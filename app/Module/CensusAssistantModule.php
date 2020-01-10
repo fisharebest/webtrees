@@ -28,6 +28,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
+use function response;
 
 /**
  * Class CensusAssistantModule
@@ -82,18 +83,19 @@ class CensusAssistantModule extends AbstractModule
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params     = (array) $request->getParsedBody();
-        $individual = Individual::getInstance($params['xref'], $tree);
-        $head       = Individual::getInstance($params['head'], $tree);
-        $census     = $params['census'];
+        $params       = (array) $request->getParsedBody();
+        $individual   = Individual::getInstance($params['xref'], $tree);
+        $head         = Individual::getInstance($params['head'], $tree);
+        $census_class = $params['census'];
+        $census       = new $census_class();
 
         if ($individual instanceof Individual && $head instanceof Individual) {
-            $html = $this->censusTableRow(new $census(), $individual, $head);
-
-            return response($html);
+            $html = $this->censusTableRow($census, $individual, $head);
+        } else {
+            $html = $this->censusTableEmptyRow($census);
         }
 
-        throw new HttpNotFoundException();
+        return response($html);
     }
 
     /**
