@@ -675,12 +675,25 @@ class Tree
      * What is the most significant individual in this tree.
      *
      * @param UserInterface $user
+     * @param string        $xref
      *
      * @return Individual
      */
-    public function significantIndividual(UserInterface $user): Individual
+    public function significantIndividual(UserInterface $user, $xref = ''): Individual
     {
-        $individual = null;
+        if ($xref === '') {
+            $individual = null;
+        } else {
+            $individual = Individual::getInstance($xref, $this);
+
+            if ($individual === null) {
+                $family = Family::getInstance($xref, $this);
+
+                if ($family instanceof Family) {
+                    $individual = $family->spouses()->first() ?? $family->children()->first();
+                }
+            }
+        }
 
         if ($this->getUserPreference($user, User::PREF_TREE_DEFAULT_XREF) !== '') {
             $individual = Individual::getInstance($this->getUserPreference($user, User::PREF_TREE_DEFAULT_XREF), $this);
