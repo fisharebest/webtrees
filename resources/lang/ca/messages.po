@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-03 08:31+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-11 10:59+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -7278,7 +7278,7 @@ msgstr "Si un individu era conegut per un sobrenom que no és part del seu nom f
 #: resources/views/help/name.phtml:21
 #, php-format
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
-msgstr "Si un individu no era conegut pel seu nom de pila, el nom de preferència s’han d’indicar amb un asterisc:<%s>Joan Pau* /Smith/<%s>"
+msgstr "Si un individu no era conegut pel seu primer nom de pila, el nom de preferència s’han d’indicar amb un asterisc:<%s>Joan Pau* /Smith/<%s>"
 
 #: resources/views/help/name.phtml:12
 #, php-format
@@ -13336,12 +13336,12 @@ msgstr "Cognoms"
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:113
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
-msgstr "Els cognoms es declinen per indicar el gènere de la persona i llur estat matrimonial."
+msgstr "Els cognoms es flexionen per indicar el gènere de la persona i llur estat matrimonial."
 
 #. I18N: In the Polish surname tradition, ...
 #: app/SurnameTradition.php:106
 msgid "Surnames are inflected to indicate an individual’s gender."
-msgstr "Els cognoms es declinen per indicar el gènere de la persona."
+msgstr "Els cognoms es flexionen per indicar el gènere de la persona."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:636
@@ -13539,7 +13539,7 @@ msgstr "El <b>nom</b> conté el nom complet de la persona, com s’hauria d’es
 
 #: resources/views/help/surname.phtml:4
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr "El camp <b>cognom</b> conté un nom que s’utilitza per ordenar i agrupar. Pot diferir del cognom personal que sempre es pren del camp <b>nom</b>. Aquest camp s'utilitza per ordenar els cognoms, amb o sense prefix (Gogh / van Gogh) i per agrupar variacions ortogràfiques o inflexions (Kowalski / Kowalska). Si una persona cal ordenar-la sota més d’un cognom, cada un ha d’estar separat per una coma."
+msgstr "El camp <b>cognom</b> conté un nom que s’utilitza per ordenar i agrupar. Pot diferir del cognom personal que sempre es pren del camp <b>nom</b>. Aquest camp s'utilitza per ordenar els cognoms, amb o sense prefix (Gogh / van Gogh) i per agrupar variacions ortogràfiques o inflexions (Kowalski / Kowalska). Si una persona cal ordenar-la sota més d’un cognom, cada un ha d’estar separat per una coma (sense espai)."
 
 #: app/Http/Controllers/AdminTreesController.php:1493
 #, php-format
@@ -15841,7 +15841,7 @@ msgstr "El cognom de soltera de l’esposa es converteix en un nou nom de pila"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:200
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr "L’esposa adquireix el cognom del marit"
+msgstr "El cognom de l'esposa es substitueix pel del marit"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:200
 msgid "Wildcards"
@@ -15878,7 +15878,7 @@ msgstr "Testimoni"
 #: app/SurnameTradition.php:81 app/SurnameTradition.php:104
 #: app/SurnameTradition.php:111
 msgid "Wives take their husband’s surname."
-msgstr "Les esposes porten el cognom del marit."
+msgstr "Les esposes prenen el cognom del marit."
 
 #: resources/views/modules/statistics-chart/custom.phtml:171
 #: resources/views/places-page.phtml:11 resources/views/places-page.phtml:14
