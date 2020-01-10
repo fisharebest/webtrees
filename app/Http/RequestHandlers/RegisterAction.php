@@ -116,6 +116,7 @@ class RegisterAction extends AbstractBaseController
         $token = Str::random(32);
 
         $user->setPreference(User::PREF_LANGUAGE, I18N::languageTag());
+        $user->setPreference(User::PREF_TIME_ZONE, Site::getPreference('TIMEZONE', 'UTC'));
         $user->setPreference(User::PREF_IS_EMAIL_VERIFIED, '');
         $user->setPreference(User::PREF_IS_ACCOUNT_APPROVED, '');
         $user->setPreference(User::PREF_TIMESTAMP_REGISTERED, date('U'));
