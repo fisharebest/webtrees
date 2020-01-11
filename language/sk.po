@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-01-10 11:01+0000\n"
+"PO-Revision-Date: 2020-01-11 10:59+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -16770,7 +16770,7 @@ msgstr "stupne"
 #: admin_site_change.php:374 admin_site_clean.php:115 admin_site_logs.php:314
 #: admin_users.php:772
 msgid "delete"
-msgstr ""
+msgstr "zmazať"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:28 admin_site_access.php:35
@@ -16885,17 +16885,17 @@ msgstr "ex-manžel"
 
 #: app/Functions/Functions.php:734
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partner/ka"
 
 #: app/Functions/Functions.php:716
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partnerka"
 
 #: app/Functions/Functions.php:698
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partner"
 
 #: app/Functions/Functions.php:739
 msgid "ex-spouse"
@@ -18813,7 +18813,7 @@ msgstr ""
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:762
 msgid "hh:mm or hh:mm:ss"
-msgstr ""
+msgstr "hh:mm alebo hh:mm:ss"
 
 #: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:342
 msgid "hide"
