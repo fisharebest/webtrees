@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-10 11:01+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-11 10:59+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -16670,7 +16670,7 @@ msgstr "stupne"
 #: resources/views/admin/users-cleanup.phtml:65
 #: resources/views/admin/webtrees1-thumbnails-form.phtml:27
 msgid "delete"
-msgstr ""
+msgstr "zmazať"
 
 #: resources/xml/reports/descendancy_report.xml:137
 #: resources/xml/reports/descendancy_report.xml:365
@@ -16686,7 +16686,7 @@ msgstr "zomrel"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "down"
-msgstr ""
+msgstr "dolu"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:91
@@ -16782,17 +16782,17 @@ msgstr "ex-manžel"
 
 #: app/Functions/Functions.php:678
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partner/ka"
 
 #: app/Functions/Functions.php:658
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partnerka"
 
 #: app/Functions/Functions.php:638
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partner"
 
 #: app/Functions/Functions.php:671
 msgid "ex-spouse"
@@ -16805,7 +16805,7 @@ msgstr "ex-manželka"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:107
 msgid "export file"
-msgstr ""
+msgstr "exportovať súbor"
 
 #: app/Http/Controllers/AdminTreesController.php:748
 #: resources/xml/reports/fact_sources.xml:6
@@ -18723,7 +18723,7 @@ msgstr ""
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:562
 msgid "hh:mm or hh:mm:ss"
-msgstr ""
+msgstr "hh:mm alebo hh:mm:ss"
 
 #: resources/views/admin/trees-preferences.phtml:290
 #: resources/views/admin/trees-preferences.phtml:370
