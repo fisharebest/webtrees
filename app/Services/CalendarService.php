@@ -320,8 +320,13 @@ class CalendarService
 
                     $anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
 
-                    foreach ($record->facts() as $fact) {
-                        if (($fact->date()->minimumJulianDay() === $anniv_date->minimumJulianDay() || $fact->date()->maximumJulianDay() === $anniv_date->maximumJulianDay()) && $fact->getTag() === $row->d_fact) {
+                    // The record may have multiple facts of this type.
+                    // Find the ones that match the date.
+                    foreach ($record->facts([$row->d_fact]) as $fact) {
+                        $min_date = $fact->date()->minimumDate();
+                        $max_date = $fact->date()->maximumDate();
+
+                        if ($min_date->minimumJulianDay() === $anniv_date->minimumJulianDay() && $min_date::ESCAPE === $row->d_type || $max_date->maximumJulianDay() === $anniv_date->maximumJulianDay() && $max_date::ESCAPE === $row->d_type) {
                             $fact->anniv   = $row->d_year === '0' ? 0 : $anniv->year - $row->d_year;
                             $fact->jd      = $jd;
                             $found_facts[] = $fact;
