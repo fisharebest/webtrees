@@ -40,7 +40,7 @@ use Fisharebest\Webtrees\I18N;
 <div class="tab-content">
     <?php foreach ($changes as $tree_name => $gedcom_changes) : ?>
         <div class="tab-pane fade <?= $tree_name === $active_tree_name ? 'show active' : '' ?>" id="tree-<?= e(md5($tree_name)) ?>" role="tabpanel" aria-labelledby="tree-<?= e(md5($tree_name)) ?>-tab">
-            <?php foreach ($gedcom_changes as $xref => $record_changes) : ?>
+            <?php foreach ($gedcom_changes as $record_changes) : ?>
                 <h3 class="pt-2">
                     <a href="<?= e($record_changes[0]->record->url()) ?>"><?= $record_changes[0]->record->fullName() ?></a>
                 </h3>
