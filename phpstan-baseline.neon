@@ -1356,11 +1356,6 @@ parameters:
 			path: app/Module/CensusAssistantModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$xref of static method Fisharebest\\\\Webtrees\\\\Individual\\:\\:getInstance\\(\\) expects string, int\\|string given\\.$#"
-			count: 1
-			path: app/Module/CensusAssistantModule.php
-
-		-
 			message: "#^Parameter \\#1 \\$xref of static method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:getInstance\\(\\) expects string, int\\|string given\\.$#"
 			count: 1
 			path: app/Module/ClippingsCartModule.php

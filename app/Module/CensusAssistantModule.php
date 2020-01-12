@@ -141,6 +141,7 @@ class CensusAssistantModule extends AbstractModule
 
             // Add the census fact to the rest of the household
             foreach (array_keys($ca_individuals) as $xref) {
+                $xref = (string) $xref;
                 if ($xref !== $individual->xref()) {
                     Individual::getInstance($xref, $individual->tree())
                         ->updateFact($fact_id, $newged, !$keep_chan);
@@ -183,7 +184,7 @@ class CensusAssistantModule extends AbstractModule
             $text .= '-----';
         }
 
-        foreach ($ca_individuals as $xref => $columns) {
+        foreach ($ca_individuals as $columns) {
             $text .= "\n" . implode(' | ', $columns);
         }
 
