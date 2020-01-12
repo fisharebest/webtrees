@@ -14,5 +14,5 @@ phpstan-baseline.neon export-ignore
 tests/                export-ignore
 webpack.mix.js        export-ignore
 
-vendor/*/*/Tests      export-ignore
+vendor/*/*/tests      export-ignore
 vendor/*/*/Tests      export-ignore
