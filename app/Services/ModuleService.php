@@ -48,6 +48,7 @@ use Fisharebest\Webtrees\Module\ColorsTheme;
 use Fisharebest\Webtrees\Module\CompactTreeChartModule;
 use Fisharebest\Webtrees\Module\ContactsFooterModule;
 use Fisharebest\Webtrees\Module\CustomCssJsModule;
+use Fisharebest\Webtrees\Module\CzechMonarchsAndPresidents;
 use Fisharebest\Webtrees\Module\DeathReportModule;
 use Fisharebest\Webtrees\Module\DescendancyChartModule;
 use Fisharebest\Webtrees\Module\DescendancyModule;
@@ -283,6 +284,7 @@ class ModuleService
         'colors'                  => ColorsTheme::class,
         'compact-chart'           => CompactTreeChartModule::class,
         'contact-links'           => ContactsFooterModule::class,
+        'czech-leaders'           => CzechMonarchsAndPresidents::class,
         'custom-css-js'           => CustomCssJsModule::class,
         'death_report'            => DeathReportModule::class,
         'descendancy'             => DescendancyModule::class,
