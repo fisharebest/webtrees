@@ -22,9 +22,9 @@ namespace Fisharebest\Webtrees\Module;
 use Illuminate\Support\Collection;
 
 /**
- * Class CzechLeaders
+ * Class CzechMonarchsAndPresidents
  */
-class CzechLeaders extends AbstractModule implements ModuleHistoricEventsInterface
+class CzechMonarchsAndPresidents extends AbstractModule implements ModuleHistoricEventsInterface
 {
     use ModuleHistoricEventsTrait;
 
