@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-09 09:33+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Greek <http://translate.webtrees.net/projects/webtrees/"
+"PO-Revision-Date: 2020-01-13 06:50+0000\n"
+"Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
+"Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
@@ -6224,7 +6224,7 @@ msgstr "Φεβρουάριος"
 #: statisticsplot.php:1209 statisticsplot.php:1259 statisticsplot.php:1309
 #: statisticsplot.php:1359
 msgid "Female"
-msgstr "Θηλύς"
+msgstr "Θήλυ"
 
 #: app/Functions/FunctionsPrintLists.php:1880
 #: app/Module/FamilyTreeStatisticsModule.php:109
@@ -6234,7 +6234,7 @@ msgstr "Θηλύς"
 #: app/Stats.php:2599 app/Stats.php:3942 calendar.php:248 calendar.php:436
 #: statistics.php:151 statistics.php:167 statistics.php:180
 msgid "Females"
-msgstr "Θήλεις"
+msgstr "Θήλεα"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6746
