@@ -236,8 +236,9 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
         foreach ($stories as $story) {
             $block_id = (int) $story->block_id;
+            $xref     = (string) $story->xref;
 
-            $story->individual = Individual::getInstance($story->xref, $tree);
+            $story->individual = Individual::getInstance($xref, $tree);
             $story->title      = $this->getBlockSetting($block_id, 'title');
             $story->languages  = $this->getBlockSetting($block_id, 'languages');
         }
@@ -417,8 +418,9 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             ->get()
             ->map(function (stdClass $story) use ($tree): stdClass {
                 $block_id = (int) $story->block_id;
+                $xref     = (string) $story->xref;
 
-                $story->individual = Individual::getInstance($story->xref, $tree);
+                $story->individual = Individual::getInstance($xref, $tree);
                 $story->title      = $this->getBlockSetting($block_id, 'title');
                 $story->languages  = $this->getBlockSetting($block_id, 'languages');
 
