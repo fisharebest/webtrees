@@ -13,15 +13,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 declare(strict_types=1);
+
 namespace Fisharebest\Webtrees\Module;
+
 use Illuminate\Support\Collection;
+
 /**
  * Class FrenchHistory
  */
 class FrenchHistory extends AbstractModule implements ModuleHistoricEventsInterface
 {
     use ModuleHistoricEventsTrait;
+
     /**
      * How should this module be identified in the control panel, etc.?
      *
@@ -31,6 +36,7 @@ class FrenchHistory extends AbstractModule implements ModuleHistoricEventsInterf
     {
         return 'Faits historiques de France';
     }
+
     /**
      * Should this module be enabled when it is first installed?
      *
@@ -40,6 +46,7 @@ class FrenchHistory extends AbstractModule implements ModuleHistoricEventsInterf
     {
         return false;
     }
+
     /**
      * All events provided by this module.
      *
