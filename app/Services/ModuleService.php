@@ -63,6 +63,7 @@ use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\FamilyTreeNewsModule;
 use Fisharebest\Webtrees\Module\FamilyTreeStatisticsModule;
 use Fisharebest\Webtrees\Module\FanChartModule;
+use Fisharebest\Webtrees\Module\FrenchHistory;
 use Fisharebest\Webtrees\Module\FrequentlyAskedQuestionsModule;
 use Fisharebest\Webtrees\Module\GoogleAnalyticsModule;
 use Fisharebest\Webtrees\Module\GoogleWebmasterToolsModule;
@@ -299,6 +300,7 @@ class ModuleService
         'family_nav'              => FamilyNavigatorModule::class,
         'fan_chart'               => FanChartModule::class,
         'faq'                     => FrequentlyAskedQuestionsModule::class,
+        'french-history'          => FrenchHistory::class,
         'gedcom_block'            => WelcomeBlockModule::class,
         'gedcom_favorites'        => FamilyTreeFavoritesModule::class,
         'gedcom_news'             => FamilyTreeNewsModule::class,
