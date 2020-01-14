@@ -13,6 +13,8 @@
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Original source : http://www.lorand.org/spip.php?article194
  */
 
 declare(strict_types=1);
