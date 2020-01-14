@@ -35,7 +35,7 @@ class CzechMonarchsAndPresidents extends AbstractModule implements ModuleHistori
      */
     public function title(): string
     {
-        return 'British prime ministers';
+        return 'Čeští panovníci a prezidenti';
     }
 
     /**
