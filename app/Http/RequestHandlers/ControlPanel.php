@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Module\MediaListModule;
 use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
@@ -160,6 +161,8 @@ class ControlPanel implements RequestHandlerInterface
             'block_modules_enabled'      => $this->module_service->findByInterface(ModuleBlockInterface::class),
             'chart_modules_disabled'     => $this->module_service->findByInterface(ModuleChartInterface::class, true),
             'chart_modules_enabled'      => $this->module_service->findByInterface(ModuleChartInterface::class),
+            'data_fix_modules_disabled'  => $this->module_service->findByInterface(ModuleDataFixInterface::class, true),
+            'data_fix_modules_enabled'   => $this->module_service->findByInterface(ModuleDataFixInterface::class),
             'other_modules'              => $this->module_service->otherModules(true),
             'footer_modules_disabled'    => $this->module_service->findByInterface(ModuleFooterInterface::class, true),
             'footer_modules_enabled'     => $this->module_service->findByInterface(ModuleFooterInterface::class),

@@ -279,7 +279,8 @@ use Illuminate\Support\Collection;
                             <?php endif ?>
                         </td>
                     </tr>
-                <?php endforeach ?>            </tbody>
+                <?php endforeach ?>
+            </tbody>
             <tfoot>
                 <tr>
                     <th scope="row">
@@ -453,6 +454,13 @@ use Illuminate\Support\Collection;
                             <?= I18N::translate('Reports') ?>
                         </a>
                         <?= view('components/badge', ['count' => $report_modules_enabled->count(), 'total' => $report_modules_disabled->count(), 'context' => 'primary']) ?>
+                    </li>
+                    <li>
+                        <span class="fa-li"><?= view('icons/data-fix') ?></span>
+                        <a href="<?= e(route('data-fixes')) ?>">
+                            <?= I18N::translate('Data fixes') ?>
+                        </a>
+                        <?= view('components/badge', ['count' => $data_fix_modules_enabled->count(), 'total' => $data_fix_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                 </ul>
 

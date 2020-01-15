@@ -1,0 +1,67 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var string               $default_method
+ * @var string               $default_type
+ * @var array<string,string> $methods
+ * @var array<string,string> $types
+ */
+
+?>
+
+<div class="row form-group">
+    <label class="col-sm-3 col-form-label" for="search">
+        <?= I18N::translate('Search text/pattern') ?>
+    </label>
+
+    <div class="col-sm-9">
+        <input class="form-control" id="search" name="search">
+    </div>
+</div>
+
+<div class="row form-group">
+    <label class="col-sm-3 col-form-label" for="replace">
+        <?= I18N::translate('Replacement text') ?>
+    </label>
+
+    <div class="col-sm-9">
+        <input class="form-control" id="replace" name="replace">
+    </div>
+</div>
+
+<div class="row form-group">
+    <label class="col-sm-3 col-form-label">
+        <?= I18N::translate('Search method') ?>
+    </label>
+
+    <div class="col-sm-9">
+        <?= view('components/select', ['name' => 'method', 'options' => $methods, 'selected' => $default_method]) ?>
+    </div>
+</div>
+
+<div class="row form-group">
+    <label class="col-sm-3 col-form-label" for="case">
+        <?= I18N::translate('Case insensitive') ?>
+    </label>
+
+    <div class="col-sm-9">
+        <?= view('components/radios-inline', ['name' => 'case', 'selected' => '', 'options' => [''  => I18N::translate('no'), 'i' => I18N::translate('yes')]]) ?>
+        <p class="small text-muted">
+            <?= /* I18N: Help text for "Case insensitive" searches */ I18N::translate('Match both upper and lower case letters.') ?>
+        </p>
+    </div>
+</div>
+
+<div class="row form-group">
+    <label class="col-sm-3 col-form-label" for="type">
+        <?= I18N::translate('Records') ?>
+    </label>
+
+    <div class="col-sm-9">
+        <?= view('components/select', ['name' => 'type', 'options' => $types, 'selected' => $default_type]) ?>
+    </div>
+</div>

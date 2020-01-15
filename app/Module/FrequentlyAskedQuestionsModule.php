@@ -51,7 +51,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     private $tree_service;
 
     /**
-     * BatchUpdateModule constructor.
+     * FrequentlyAskedQuestionsModule constructor.
      *
      * @param HtmlService $html_service
      * @param TreeService $tree_service

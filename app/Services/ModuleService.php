@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\AhnentafelReportModule;
 use Fisharebest\Webtrees\Module\AlbumModule;
 use Fisharebest\Webtrees\Module\AncestorsChartModule;
-use Fisharebest\Webtrees\Module\BatchUpdateModule;
 use Fisharebest\Webtrees\Module\BingWebmasterToolsModule;
 use Fisharebest\Webtrees\Module\BirthDeathMarriageReportModule;
 use Fisharebest\Webtrees\Module\BirthReportModule;
@@ -64,6 +63,14 @@ use Fisharebest\Webtrees\Module\FamilyTreeNewsModule;
 use Fisharebest\Webtrees\Module\FamilyTreeStatisticsModule;
 use Fisharebest\Webtrees\Module\FanChartModule;
 use Fisharebest\Webtrees\Module\FrenchHistory;
+use Fisharebest\Webtrees\Module\FixCemeteryTag;
+use Fisharebest\Webtrees\Module\FixDuplicateLinks;
+use Fisharebest\Webtrees\Module\FixMissingDeaths;
+use Fisharebest\Webtrees\Module\FixMissingMarriedNames;
+use Fisharebest\Webtrees\Module\FixNameSlashesAndSpaces;
+use Fisharebest\Webtrees\Module\FixPlaceNames;
+use Fisharebest\Webtrees\Module\FixPrimaryTag;
+use Fisharebest\Webtrees\Module\FixSearchAndReplace;
 use Fisharebest\Webtrees\Module\FrequentlyAskedQuestionsModule;
 use Fisharebest\Webtrees\Module\GoogleAnalyticsModule;
 use Fisharebest\Webtrees\Module\GoogleWebmasterToolsModule;
@@ -157,6 +164,7 @@ use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
@@ -231,6 +239,7 @@ class ModuleService
         ModuleAnalyticsInterface::class,
         ModuleBlockInterface::class,
         ModuleChartInterface::class,
+        ModuleDataFixInterface::class,
         ModuleFooterInterface::class,
         ModuleHistoricEventsInterface::class,
         ModuleLanguageInterface::class,
@@ -266,7 +275,6 @@ class ModuleService
         'GEDFact_assistant'       => CensusAssistantModule::class,
         'ahnentafel_report'       => AhnentafelReportModule::class,
         'ancestors_chart'         => AncestorsChartModule::class,
-        'batch_update'            => BatchUpdateModule::class,
         'bdm_report'              => BirthDeathMarriageReportModule::class,
         'bing-webmaster-tools'    => BingWebmasterToolsModule::class,
         'birth_report'            => BirthReportModule::class,
@@ -301,6 +309,14 @@ class ModuleService
         'fan_chart'               => FanChartModule::class,
         'faq'                     => FrequentlyAskedQuestionsModule::class,
         'french-history'          => FrenchHistory::class,
+        'fix-add-death'           => FixMissingDeaths::class,
+        'fix-add-marr-names'      => FixMissingMarriedNames::class,
+         //'fix-ceme-tag'            => FixCemeteryTag::class,
+        'fix-duplicate-links'     => FixDuplicateLinks::class,
+        'fix-name-slashes-spaces' => FixNameSlashesAndSpaces::class,
+         //'fix-place-names'         => FixPlaceNames::class,
+        'fix-prim-tag'            => FixPrimaryTag::class,
+        'fix-search-and-replace'  => FixSearchAndReplace::class,
         'gedcom_block'            => WelcomeBlockModule::class,
         'gedcom_favorites'        => FamilyTreeFavoritesModule::class,
         'gedcom_news'             => FamilyTreeNewsModule::class,

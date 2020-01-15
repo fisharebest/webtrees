@@ -1,0 +1,22 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var array<string,string> $options
+ * @var string               $selected
+ */
+
+?>
+
+<div class="row form-group">
+    <label class="col-sm-3 col-form-label" for="surname">
+        <?= I18N::translate('Surname option') ?>
+    </label>
+
+    <div class="col-sm-9">
+        <?= view('components/select', ['name' => 'surname', 'options' => $options, 'selected' => $selected]) ?>
+    </div>
+</div>

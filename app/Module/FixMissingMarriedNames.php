@@ -17,65 +17,165 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Module\BatchUpdate;
+namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Psr\Http\Message\ServerRequestInterface;
+use Fisharebest\Webtrees\Services\DataFixService;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
+
+use function array_merge;
+use function array_unique;
+use function assert;
+use function implode;
+use function in_array;
+use function preg_match;
+use function preg_match_all;
+use function preg_replace;
+use function str_replace;
+use function view;
 
 /**
- * Class BatchUpdateMarriedNamesPlugin Batch Update plugin: add missing 2 _MARNM records
+ * Class FixMissingMarriedNames
  */
-class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
+class FixMissingMarriedNames extends AbstractModule implements ModuleDataFixInterface
 {
-    /** @var string User option: add or replace husband’s surname */
-    private $surname;
+    use ModuleDataFixTrait;
+
+    /** @var DataFixService */
+    private $data_fix_service;
 
     /**
-     * User-friendly name for this plugin.
+     * FixMissingDeaths constructor.
      *
-     * @return string
+     * @param DataFixService $data_fix_service
      */
-    public function getName(): string
+    public function __construct(DataFixService $data_fix_service)
     {
-        return I18N::translate('Add missing married names');
+        $this->data_fix_service = $data_fix_service;
     }
 
     /**
-     * Description / help-text for this plugin.
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    public function title(): string
+    {
+        /* I18N: Name of a module */
+        return I18N::translate('Add married names');
+    }
+
+    /**
+     * A sentence describing what this module does.
      *
      * @return string
      */
     public function description(): string
     {
+        /* I18N: Description of a “Data fix” module */
         return I18N::translate('You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database.');
     }
 
     /**
-     * Does this record need updating?
+     * Options form.
      *
-     * @param GedcomRecord $record
+     * @param Tree $tree
+     *
+     * @return string
+     */
+    public function fixOptions(Tree $tree): string
+    {
+        $options = [
+            'replace' => I18N::translate('Wife’s surname replaced by husband’s surname'),
+            'add'     => I18N::translate('Wife’s maiden surname becomes new given name'),
+        ];
+
+        $selected = 'replace';
+
+        return view('modules/fix-add-marr-names/options', [
+            'options'  => $options,
+            'selected' => $selected,
+        ]);
+    }
+
+    /**
+     * A list of all records that need examining.  This may include records
+     * that do not need updating, if we can't detect this quickly using SQL.
+     *
+     * @param Tree                 $tree
+     * @param array<string,string> $params
+     *
+     * @return Collection<string>|null
+     */
+    protected function individualsToFix(Tree $tree, array $params): ?Collection
+    {
+        // No DB querying possible?  Select all.
+        return DB::table('individuals')
+            ->where('i_file', '=', $tree->id())
+            ->where('i_sex', '=', 'F')
+            ->pluck('i_id');
+    }
+
+    /**
+     * Does a record need updating?
+     *
+     * @param GedcomRecord         $record
+     * @param array<string,string> $params
      *
      * @return bool
      */
-    public function doesRecordNeedUpdate(GedcomRecord $record): bool
+    public function doesRecordNeedUpdate(GedcomRecord $record, array $params): bool
     {
+        assert($record instanceof Individual);
         $gedcom = $record->gedcom();
 
         return preg_match('/^1 SEX F/m', $gedcom) && preg_match('/^1 NAME /m', $gedcom) && $this->surnamesToAdd($record);
     }
 
     /**
-     * Apply any updates to this record
+     * Show the changes we would make
      *
-     * @param GedcomRecord $record
+     * @param GedcomRecord         $record
+     * @param array<string,string> $params
      *
      * @return string
      */
-    public function updateRecord(GedcomRecord $record): string
+    public function previewUpdate(GedcomRecord $record, array $params): string
     {
+        $old = $record->gedcom();
+        $new = $this->updateGedcom($record, $params);
+
+        return $this->data_fix_service->gedcomDiff($record->tree(), $old, $new);
+    }
+
+    /**
+     * Fix a record
+     *
+     * @param GedcomRecord         $record
+     * @param array<string,string> $params
+     *
+     * @return void
+     */
+    public function updateRecord(GedcomRecord $record, array $params): void
+    {
+        $record->updateRecord($this->updateGedcom($record, $params), false);
+    }
+
+    /**
+     * @param GedcomRecord         $record
+     * @param array<string,string> $params
+     *
+     * @return string
+     */
+    private function updateGedcom(GedcomRecord $record, array $params): string
+    {
+        assert($record instanceof Individual);
+
         $old_gedcom = $record->gedcom();
         $tree       = $record->tree();
 
@@ -85,7 +185,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
         $wife_name     = $match[1];
         $married_names = [];
         foreach ($this->surnamesToAdd($record) as $surname) {
-            switch ($this->surname) {
+            switch ($params['surname']) {
                 case 'add':
                     $married_names[] = "\n2 _MARNM " . str_replace('/', '', $wife_name) . ' /' . $surname . '/';
                     break;
@@ -109,26 +209,23 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
         return preg_replace('/(^1 NAME .*([\r\n]+[2-9].*)*)/m', '\\1' . implode('', $married_names), $old_gedcom, 1);
     }
 
+
     /**
      * Generate a list of married surnames that are not already present.
      *
-     * @param GedcomRecord $record
+     * @param Individual $record
      *
      * @return string[]
      */
-    private function surnamesToAdd(GedcomRecord $record): array
+    private function surnamesToAdd(Individual $record): array
     {
-        $gedcom = $record->gedcom();
         $tree   = $record->tree();
 
         $wife_surnames    = $this->surnames($record);
         $husb_surnames    = [];
         $missing_surnames = [];
 
-        preg_match_all('/^1 FAMS @(.+)@/m', $gedcom, $fmatch);
-
-        foreach ($fmatch[1] as $famid) {
-            $family = Family::getInstance($famid, $tree);
+        foreach ($record->spouseFamilies() as $family) {
             $famrec = $family->gedcom();
 
             if (preg_match('/^1 MARR/m', $famrec) && preg_match('/^1 HUSB @(.+)@/m', $famrec, $hmatch)) {
@@ -165,41 +262,5 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
         }
 
         return [];
-    }
-
-    /**
-     * Process the user-supplied options.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return void
-     */
-    public function getOptions(ServerRequestInterface $request): void
-    {
-        parent::getOptions($request);
-
-        $this->surname = $request->getQueryParams()['surname'] ?? 'replace';
-    }
-
-    /**
-     * Generate a form to ask the user for options.
-     *
-     * @return string
-     */
-    public function getOptionsForm(): string
-    {
-        return
-            '<div class="row form-group">' .
-            '<label class="col-sm-3 col-form-label">' . I18N::translate('Surname option') . '</label>' .
-            '<div class="col-sm-9">' .
-            '<select class="form-control" name="surname">' .
-            '<option value="replace" ' .
-            ($this->surname === 'replace' ? 'selected' : '') .
-            '">' . I18N::translate('Wife’s surname replaced by husband’s surname') . '</option><option value="add" ' .
-            ($this->surname === 'add' ? 'selected' : '') .
-            '">' . I18N::translate('Wife’s maiden surname becomes new given name') . '</option>' .
-            '</select>' .
-            '</div></div>' .
-            parent::getOptionsForm();
     }
 }

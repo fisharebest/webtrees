@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
+use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
@@ -90,6 +91,7 @@ class ModuleServiceTest extends TestCase
         $this->assertNotEmpty($module_service->findByInterface(ModuleBlockInterface::class, true)->all());
         $this->assertNotEmpty($module_service->findByInterface(ModuleChartInterface::class, true)->all());
         $this->assertNotEmpty($module_service->findByInterface(ModuleConfigInterface::class, true)->all());
+        $this->assertNotEmpty($module_service->findByInterface(ModuleDataFixInterface::class, true)->all());
         $this->assertNotEmpty($module_service->findByInterface(ModuleMenuInterface::class, true)->all());
         $this->assertNotEmpty($module_service->findByInterface(ModuleInterface::class, true)->all());
         $this->assertNotEmpty($module_service->findByInterface(ModuleReportInterface::class, true)->all());
@@ -111,7 +113,7 @@ class ModuleServiceTest extends TestCase
 
         $module_service = new ModuleService();
 
-        $this->assertSame(3, $module_service->otherModules()->count());
+        $this->assertSame(2, $module_service->otherModules()->count());
     }
 
     /**

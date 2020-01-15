@@ -1266,91 +1266,6 @@ parameters:
 			path: app/MediaFile.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdate\\\\BatchUpdateBasePlugin\\:\\:createEditLinks\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: app/Module/BatchUpdate/BatchUpdateBasePlugin.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdate\\\\BatchUpdateDuplicateLinksPlugin\\:\\:updateRecord\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdate\\\\BatchUpdateMarriedNamesPlugin\\:\\:updateRecord\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php
-
-		-
-			message: "#^Cannot call method gedcom\\(\\) on Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
-			count: 1
-			path: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdate\\\\BatchUpdateNameFormatPlugin\\:\\:updateRecord\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdate\\\\BatchUpdateSearchReplacePlugin\\:\\:updateRecord\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php
-
-		-
-			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: app/Module/BatchUpdateModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:getRecord\\(\\) should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
-			count: 1
-			path: app/Module/BatchUpdateModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:getRecord\\(\\) should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
-			count: 1
-			path: app/Module/BatchUpdateModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:getRecord\\(\\) should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Source\\|null\\.$#"
-			count: 1
-			path: app/Module/BatchUpdateModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:getRecord\\(\\) should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Repository\\|null\\.$#"
-			count: 1
-			path: app/Module/BatchUpdateModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:getRecord\\(\\) should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
-			count: 1
-			path: app/Module/BatchUpdateModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:getRecord\\(\\) should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Submitter\\|null\\.$#"
-			count: 1
-			path: app/Module/BatchUpdateModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:getRecord\\(\\) should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Note\\|null\\.$#"
-			count: 1
-			path: app/Module/BatchUpdateModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:getRecord\\(\\) should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
-			count: 1
-			path: app/Module/BatchUpdateModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:findNextXref\\(\\) has parameter \\$all_data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Module/BatchUpdateModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\BatchUpdateModule\\:\\:findPrevXref\\(\\) has parameter \\$all_data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Module/BatchUpdateModule.php
-
-		-
 			message: "#^Cannot call method updateFact\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
 			count: 1
 			path: app/Module/CensusAssistantModule.php
@@ -1431,6 +1346,56 @@ parameters:
 			path: app/Module/FanChartModule.php
 
 		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixCemeteryTag\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Module/FixCemeteryTag.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixCemeteryTag\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
+			count: 1
+			path: app/Module/FixCemeteryTag.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Module/FixDuplicateLinks.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
+			count: 1
+			path: app/Module/FixDuplicateLinks.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixMissingMarriedNames\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Module/FixMissingMarriedNames.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixMissingMarriedNames\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
+			count: 1
+			path: app/Module/FixMissingMarriedNames.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameSlashesAndSpaces\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Module/FixNameSlashesAndSpaces.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameSlashesAndSpaces\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
+			count: 1
+			path: app/Module/FixNameSlashesAndSpaces.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Module/FixSearchAndReplace.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
+			count: 1
+			path: app/Module/FixSearchAndReplace.php
+
+		-
 			message: "#^Access to an undefined property object\\:\\:\\$block_order\\.$#"
 			count: 2
 			path: app/Module/FrequentlyAskedQuestionsModule.php
@@ -1508,6 +1473,16 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
+			path: modules_v4/example-report.disable/module.php
+
+		-
+			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
+			count: 1
+			path: modules_v4/example-report.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
 			path: modules_v4/example-theme.disable/module.php
 
 		-
@@ -1534,16 +1509,6 @@ parameters:
 			message: "#^Binary operation \"\\-\" between 32 and string results in an error\\.$#"
 			count: 1
 			path: modules_v4/example-middleware.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-report.disable/module.php
-
-		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 1
-			path: modules_v4/example-report.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1584,6 +1549,21 @@ parameters:
 			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
 			count: 1
 			path: modules_v4/example-server-configuration.disable/ExampleServerConfigurationModule.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixMissingDeaths\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
+			count: 1
+			path: app/Module/FixMissingDeaths.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPlaceNames\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
+			count: 1
+			path: app/Module/FixPlaceNames.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPrimaryTag\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
+			count: 1
+			path: app/Module/FixPrimaryTag.php
 
 		-
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"

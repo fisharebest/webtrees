@@ -25,7 +25,7 @@ use Psr\Http\Message\ServerRequestInterface;
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf" content="<?= e(csrf_token()) ?>">
 
-        <title><?= $title ?></title>
+        <title><?= strip_tags($title) ?></title>
 
         <link rel="icon" href="<?= e(asset('favicon.ico')) ?>" type="image/x-icon">
 

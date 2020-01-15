@@ -1,0 +1,203 @@
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\DataFixData;
+use Fisharebest\Webtrees\Http\RequestHandlers\DataFixPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\DataFixUpdateAll;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\View;
+
+/**
+ * @var ModuleDataFixInterface $data_fix
+ * @var string                 $latest_version
+ * @var string                 $title
+ * @var Tree                   $tree
+ * @var string                 $pending_url
+ */
+
+?>
+
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route('manage-trees', ['tree' => $tree->name()]) => I18N::translate('Manage family trees'), route(DataFixPage::class, ['tree' => $tree->name()]) => view('icons/data-fix') . I18N::translate('Data fixes'), $title]]) ?>
+
+<h1><?= $title ?></h1>
+
+<form action="#" id="data-fix-options">
+    <p>
+        <?= $data_fix->description() ?>
+    </p>
+
+    <?= $data_fix->fixOptions($tree) ?>
+
+    <div class="row form-group">
+        <div class="col-sm-3">
+        </div>
+
+        <div class="col-sm-9">
+            <button class="btn btn-primary" type="button" id="btn-search">
+                <?= view('icons/search') ?>
+                <?= I18N::translate('Search') ?>
+            </button>
+
+            <button class="btn btn-primary" type="button" id="btn-update-all">
+                <?= view('icons/data-fix') ?>
+                <?= I18N::translate('Update all') ?>
+            </button>
+        </div>
+    </div>
+</form>
+
+<div id="data-fix-table-container" class="d-none">
+    <table
+        id="data-fix-table"
+        class="table table-bordered table-sm table-hover wt-data-fix-table"
+        <?= view('lists/datatables-attributes') ?>
+        data-server-side="true"
+        data-filter="false"
+        data-sort="false"
+    >
+        <thead>
+            <tr>
+                <th class="w-75">
+                    <?= I18N::translate('Record') ?>
+                </th>
+                <th class="w-25">
+                    <?= view('icons/data-fix') ?>
+                    <?= I18N::translate('Data fix') ?>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<div id="data-fix-progress" class="d-none">
+    <div class="progress">
+        <div class="progress-bar" role="progressbar"></div>
+    </div>
+</div>
+
+<?= view('modals/ajax') ?>
+
+<?php View::push('javascript') ?>
+<script>
+    (function () {
+        let form        = document.getElementById("data-fix-options");
+        let container   = document.getElementById("data-fix-table-container");
+        let table       = document.getElementById("data-fix-table");
+        let progress    = document.getElementById("data-fix-progress");
+        let progressbar = progress.querySelector('.progress-bar');
+        let queue       = [];
+
+        function getParams() {
+            let formData = new FormData(form);
+            let params = {};
+            formData.forEach(function (value, key) {
+                params[key] = value;
+            });
+
+            return params;
+        }
+
+        function addParamsToUrl(u) {
+            let url      = new URL(u);
+            let formData = new FormData(form);
+            formData.forEach(function (value, key) {
+                url.searchParams.append(key, value);
+            });
+
+            return url.toString();
+
+        }
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+        });
+
+        container.addEventListener('click', function (event) {
+            if ('updateUrl' in event.target.dataset) {
+                event.preventDefault();
+
+                fetch(event.target.dataset.updateUrl, {
+                    body: getParams(),
+                    headers: new Headers({
+                        'X-CSRF-TOKEN': $('meta[name=csrf]').attr('content'),
+                        'X-Requested-with': 'XMLHttpRequest',
+                    }),
+                    method: 'POST',
+                }).then(function (response) {
+                    $(table).DataTable().ajax.reload(null, false);
+                }).catch(function (error) {
+                    alert(error);
+                });
+            }
+        });
+
+        document.getElementById('btn-search').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            // If we were in the middle of doing "update all", stop processing.
+            queue = [];
+
+            progress.classList.add('d-none');
+
+            if ($.fn.dataTable.isDataTable(table)) {
+                $(table).DataTable().ajax.reload();
+            } else {
+                $(table).DataTable({
+                    'ajax': {
+                        'url': <?= json_encode(route(DataFixData::class, ['tree' => $tree->name(), 'data_fix' => $data_fix->name()])) ?>,
+                        'data': function (data) {
+                            $.extend(data, getParams());
+                        }
+                    }
+                });
+            }
+
+            container.classList.remove('d-none');
+        });
+
+        document.getElementById('btn-update-all').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            progressbar.innerHTML = '';
+            progressbar.style.width = '0%';
+
+            container.classList.add('d-none');
+            progress.classList.remove('d-none');
+
+            let url = addParamsToUrl(<?= json_encode(route(DataFixUpdateAll::class, ['tree' => $tree->name(), 'data_fix' => $data_fix->name()])) ?>);
+
+            fetch(url, {
+                headers: new Headers({
+                    'X-CSRF-TOKEN': $('meta[name=csrf]').attr('content'),
+                    'X-Requested-with': 'XMLHttpRequest',
+                }),
+                method: 'POST',
+            }).then(function (response) {
+                return response.json();
+            }).then(async function (data) {
+                queue = data;
+                while (queue.length > 0) {
+                    let datum = queue.shift();
+                    await fetch(datum.url, {
+                        headers: new Headers({
+                            'X-CSRF-TOKEN': $('meta[name=csrf]').attr('content'),
+                            'X-Requested-with': 'XMLHttpRequest',
+                        }),
+                        method: 'POST',
+                    }).then(function () {
+                        let progressbar = progress.querySelector('.progress-bar');
+                        progressbar.innerHTML = datum.progress;
+                        progressbar.style.width = datum.percent;
+                    });
+                }
+            }).catch(function (error) {
+                progress.innerHTML = error;
+            });
+        });
+    })();
+</script>
+<?php View::endpush() ?>

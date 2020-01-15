@@ -887,16 +887,20 @@ class GedcomRecord
      * @param string[] $filter
      * @param bool     $sort
      * @param int|null $access_level
-     * @param bool     $override Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
+     * @param bool     $ignore_deleted
      *
      * @return Collection<Fact>
      */
-    public function facts(array $filter = [], bool $sort = false, int $access_level = null, bool $override = false): Collection
-    {
+    public function facts(
+        array $filter = [],
+        bool $sort = false,
+        int $access_level = null,
+        bool $ignore_deleted = false
+    ): Collection {
         $access_level = $access_level ?? Auth::accessLevel($this->tree);
 
         $facts = new Collection();
-        if ($this->canShow($access_level) || $override) {
+        if ($this->canShow($access_level)) {
             foreach ($this->facts as $fact) {
                 if (($filter === [] || in_array($fact->getTag(), $filter, true)) && $fact->canShow($access_level)) {
                     $facts->push($fact);
@@ -906,6 +910,12 @@ class GedcomRecord
 
         if ($sort) {
             $facts = Fact::sortFacts($facts);
+        }
+
+        if ($ignore_deleted) {
+            $facts = $facts->filter(static function (Fact $fact): bool {
+                return !$fact->isPendingDeletion();
+            });
         }
 
         return new Collection($facts);

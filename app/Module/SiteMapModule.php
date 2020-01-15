@@ -100,7 +100,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             'action' => 'Index',
         ]);
 
-        // This list comes from http://en.wikipedia.org/wiki/Sitemaps
+        // This list comes from https://en.wikipedia.org/wiki/Sitemaps
         $submit_urls = [
             'Bing/Yahoo' => Html::url('https://www.bing.com/webmaster/ping.aspx', ['siteMap' => $sitemap_url]),
             'Google'     => Html::url('https://www.google.com/webmasters/tools/ping', ['sitemap' => $sitemap_url]),

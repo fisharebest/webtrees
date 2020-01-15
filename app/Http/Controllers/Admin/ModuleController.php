@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
@@ -41,6 +42,12 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+
+use function array_flip;
+use function in_array;
+use function redirect;
+use function route;
+use function view;
 
 /**
  * Controller for configuring the modules.
@@ -104,7 +111,7 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleBlockInterface::class,
-            I18N::translate('Blocks'),
+            view('icons/block') . I18N::translate('Blocks'),
             ''
         );
     }
@@ -118,7 +125,21 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleChartInterface::class,
-            I18N::translate('Charts'),
+            view('icons/chart') . I18N::translate('Charts'),
+            ''
+        );
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function listDataFixes(ServerRequestInterface $request): ResponseInterface
+    {
+        return $this->listComponents(
+            ModuleDataFixInterface::class,
+            view('icons/data-fix') . I18N::translate('Data Fixes'),
             ''
         );
     }
@@ -132,7 +153,7 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleFooterInterface::class,
-            I18N::translate('Footers'),
+            view('icons/footer') . I18N::translate('Footers'),
             ''
         );
     }
@@ -146,7 +167,7 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleHistoricEventsInterface::class,
-            I18N::translate('Historic events'),
+            view('icons/history') . I18N::translate('Historic events'),
             ''
         );
     }
@@ -160,7 +181,7 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleLanguageInterface::class,
-            I18N::translate('Languages'),
+            view('icons/language') . I18N::translate('Languages'),
             ''
         );
     }
@@ -174,7 +195,7 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleListInterface::class,
-            I18N::translate('Lists'),
+            view('icons/list') . I18N::translate('Lists'),
             ''
         );
     }
@@ -188,7 +209,7 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleMenuInterface::class,
-            I18N::translate('Menus'),
+            view('icons/menu') . I18N::translate('Menus'),
             ''
         );
     }
@@ -202,7 +223,7 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleReportInterface::class,
-            I18N::translate('Reports'),
+            view('icons/report') . I18N::translate('Reports'),
             ''
         );
     }
@@ -216,7 +237,7 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleSidebarInterface::class,
-            I18N::translate('Sidebars'),
+            view('icons/sidebar') . I18N::translate('Sidebars'),
             ''
         );
     }
@@ -230,7 +251,7 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleTabInterface::class,
-            I18N::translate('Tabs'),
+            view('icons/tab') . I18N::translate('Tabs'),
             ''
         );
     }
@@ -244,7 +265,7 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleThemeInterface::class,
-            I18N::translate('Themes'),
+            view('icons/theme') . I18N::translate('Themes'),
             ''
         );
     }
@@ -377,6 +398,22 @@ class ModuleController extends AbstractAdminController
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 
         return redirect(route('charts'));
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function updateDataFixes(ServerRequestInterface $request): ResponseInterface
+    {
+        $modules = $this->module_service->findByInterface(ModuleDataFixInterface::class, true);
+
+        $this->updateStatus($modules, $request);
+
+        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
+
+        return redirect(route('languages'));
     }
 
     /**
