@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: Chinese (Traditional) (webtrees)\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2019-11-10 16:16+0000\n"
-"PO-Revision-Date: 2019-11-09 18:04+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Chinese (Traditional) <http://translate.webtrees.net/projects/webtrees/webtrees/zh_Hant/>\n"
-"Language: zh-Hant\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: Chinese (Traditional) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2019-11-10 16:16+0000\nPO-Revision-Date: 2020-01-16 23:23+0000\nLast-Translator: rui <xmlf@hotmail.com>\nLanguage-Team: Chinese (Traditional) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hant/>\nLanguage: zh-Hant\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -1396,7 +1380,7 @@ msgstr "添加母親"
 #: app/Http/Controllers/EditIndividualController.php:475
 #: resources/views/individual-page-menu.phtml:24
 msgid "Add a name"
-msgstr "添加名字"
+msgstr "添加姓名"
 
 #: resources/views/modules/gedcom_news/list.phtml:51
 msgid "Add a news article"
@@ -1761,7 +1745,7 @@ msgstr "高級事件設定"
 
 #: resources/views/admin/trees-preferences.phtml:857
 msgid "Advanced name facts"
-msgstr "高級名字事件"
+msgstr "高級姓名事件"
 
 #: resources/views/admin/trees-preferences.phtml:870
 msgid "Advanced place name facts"
@@ -5814,7 +5798,7 @@ msgstr "更改性別"
 #: app/Http/Controllers/IndividualController.php:315
 #: app/Http/RequestHandlers/IndividualPage.php:280
 msgid "Edit the name"
-msgstr "編輯名字"
+msgstr "編輯姓名"
 
 #: app/Http/RequestHandlers/EditRawFactPage.php:60
 #: app/Http/RequestHandlers/EditRawRecordPage.php:57
@@ -6795,7 +6779,7 @@ msgstr "第一條記錄"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:37
 msgid "Fix name slashes and spaces"
-msgstr "修復名字和空格斜杠"
+msgstr "修復姓名中的空格和斜杠"
 
 #: resources/views/admin/location-edit.phtml:31
 #: resources/views/admin/locations.phtml:19
@@ -9109,7 +9093,7 @@ msgstr "倫敦,英國"
 #. I18N: Help text for the “Maximum number of surnames on individual list” configuration setting
 #: resources/views/admin/trees-preferences.phtml:358
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
-msgstr "長列表擁有相同的姓氏的人可以根據個人的第一個字母的名字分解為更小的子列表。<br><br>這個選項決定姓氏子列表什麼時候生成。設定這個選項為零完全禁用子列表。"
+msgstr "擁有相同姓氏的人的長列表可以根據個人的第一個字母的名字分解為更小的子列表。<br><br>這個選項決定姓氏子列表什麼時候生成。設定這個選項為零完全禁用子列表。"
 
 #: resources/views/statistics/families/marriage-length.phtml:21
 msgid "Longest marriage"
@@ -10448,13 +10432,13 @@ msgstr "猶太名稱"
 #. I18N: gedcom tag NPFX
 #: app/GedcomTag.php:893
 msgid "Name prefix"
-msgstr "名字前綴"
+msgstr "姓名前綴"
 
 # I18N: gedcom tag NSFX
 #. I18N: gedcom tag NSFX
 #: app/GedcomTag.php:896
 msgid "Name suffix"
-msgstr "名字後綴"
+msgstr "姓名後綴"
 
 #: resources/views/search-replace-page.phtml:38
 #: resources/views/statistics/individuals/names.phtml:11
@@ -11025,7 +11009,7 @@ msgstr "沒有孩子的家庭數量"
 #. I18N: ... to show in a list
 #: resources/views/modules/top10_givnnames/config.phtml:5
 msgid "Number of given names"
-msgstr "給定名字的數量"
+msgstr "名字的數量"
 
 # I18N: gedcom tag NMR
 #. I18N: gedcom tag NMR
@@ -12303,7 +12287,7 @@ msgstr "重新排列多媒體"
 #: resources/views/individual-page-menu.phtml:30
 #: resources/views/individual-page-menu.phtml:35
 msgid "Re-order names"
-msgstr "重新排列名字順序"
+msgstr "重新排列姓名順序"
 
 #: resources/views/admin/users-create.phtml:19
 #: resources/views/admin/users-edit.phtml:24
@@ -12504,17 +12488,17 @@ msgstr "宗教婚姻"
 
 #: app/GedcomTag.php:2040
 msgid "Religious name"
-msgstr "宗教名字"
+msgstr "宗教名稱"
 
 #: app/GedcomTag.php:2037
 msgctxt "FEMALE"
 msgid "Religious name"
-msgstr "宗教名字"
+msgstr "宗教名稱"
 
 #: app/GedcomTag.php:2033
 msgctxt "MALE"
 msgid "Religious name"
-msgstr "宗教名字"
+msgstr "宗教名稱"
 
 #: resources/views/modules/review_changes/config.phtml:20
 msgid "Reminder email frequency (days)"
@@ -13559,7 +13543,7 @@ msgstr "顯示祖先的孩子"
 #. I18N: Label for a configuration option
 #: resources/views/modules/top10_pageviews/config.phtml:14
 msgid "Show counts before or after name"
-msgstr "放置計數在名字之前或之後"
+msgstr "在姓名之前或之後顯示計數"
 
 #: resources/views/lists/families-table.phtml:240
 msgid "Show couples where either partner married more than once."
@@ -14716,7 +14700,7 @@ msgstr "泰國"
 
 #: resources/views/help/name.phtml:4
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
-msgstr "<b>名稱</b>欄包含個人的全名，可能是拼寫或是記錄。如何將其顯示在屏幕上，決定于當地名字的結構。"
+msgstr "<b>姓名</b>欄包含個人的全名，可能是拼寫或是記錄。如何將其顯示在屏幕上，決定于當地姓名的結構。"
 
 #: resources/views/help/surname.phtml:4
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
@@ -15174,7 +15158,7 @@ msgstr "已達到伺服器的訪問限制。"
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:62
 msgid "The size of the family tree, earliest and latest events, common names, etc."
-msgstr "家譜的大小，最早、最新事件，常見的名字等。"
+msgstr "家譜的大小，最早、最新事件，常見的姓名等。"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:115
 msgid "The source has been created"
@@ -15599,25 +15583,25 @@ msgstr "這是 webtrees 的最新版本。 沒有可用的升級。"
 #. I18N: Help text for the “All family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:726
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "這是用戶可以添加到家庭中的GEDCOM事件清單。你可以通過刪除或添加這些事件名字，甚至可以自定義。在這個清單中的事件，不能同時出現在家庭事件<i>唯一事件</i> 列表中。"
+msgstr "這是用戶可以添加到家庭中的GEDCOM事件清單。你可以通過刪除或添加這些事件名稱，甚至可以自定義。在這個清單中的事件，不能同時出現在家庭事件<i>唯一事件</i> 列表中。"
 
 # I18N: Help text for the “All individual facts” configuration setting
 #. I18N: Help text for the “All individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:672
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "這是用戶可以添加到個人中的GEDCOM事件清單。你可以通過刪除或添加此清單上的事件名字，甚至可以自定義。在這個清單中的事件，不能同時出現在個人事件<i>唯一事件</i> 清單。"
+msgstr "這是用戶可以添加到個人中的GEDCOM事件清單。你可以通過刪除或添加此清單上的事件名稱，甚至可以自定義。在這個清單中的事件，不能同時出現在個人事件<i>唯一事件</i> 清單。"
 
 # I18N: Help text for the “All repository facts” configuration setting
 #. I18N: Help text for the “All repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:821
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr "用戶可以添加到庫中的GEDCOM事件清單。你可以通過刪除或添加此清單上的事件名字，甚至可以自定義。在這個清單中的事件，不能同時出現在庫事件<i>唯一事件</i> 列表。"
+msgstr "用戶可以添加到庫中的GEDCOM事件清單。你可以通過刪除或添加此清單上的事件名稱，甚至可以自定義。在這個清單中的事件，不能同時出現在庫事件<i>唯一事件</i> 列表。"
 
 # I18N: Help text for the “All source facts” configuration setting
 #. I18N: Help text for the “All source facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:780
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "用戶可以添加到來源中的GEDCOM事件清單。你可以通過刪除或添加此清單上的事件名字，甚至可以自定義。在這個清單中的事件，不能同時出現在來源事件<i>唯一事件</i> 列表。"
+msgstr "用戶可以添加到來源中的GEDCOM事件清單。你可以通過刪除或添加此清單上的事件名稱，甚至可以自定義。在這個清單中的事件，不能同時出現在來源事件<i>唯一事件</i> 列表。"
 
 # I18N: Help text for the “Unique family facts” configuration setting
 #. I18N: Help text for the “Unique family facts” configuration setting
@@ -15629,13 +15613,13 @@ msgstr "用戶只能在家庭添加<u>一次</u>的GEDCOM事件清單。例如�
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:685
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "這是用戶只能為個人添加<u>一次</u>的GEDCOM事件清單。例如，如果數據是在這個清單中，用戶將無法為一個人添加多個報表記錄。事件的名字在這個清單，就不能同時出現在個人事件<i>添加事件</i> 清單。"
+msgstr "這是用戶只能為個人添加<u>一次</u>的GEDCOM事件清單。例如，如果數據是在這個清單中，用戶將無法為一個人添加多個報表記錄。在這個清單上的事件名稱，就不能同時出現在個人事件<i>添加事件</i> 清單。"
 
 # I18N: Help text for the “Unique repository facts” configuration setting
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:834
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "用戶只能為庫添加<u>一次</u>的GEDCOM事件清單。例如，如果是在這個清單中，用戶將無法添加多個名稱記錄到一個庫。事件的名字在這個清單，就不能同時出現在庫事件<i>添加事件</i> 清單。"
+msgstr "用戶只能為庫添加<u>一次</u>的GEDCOM事件清單。例如，如果是在這個清單中，用戶將無法添加多個名稱記錄到一個庫。事件名稱在這個清單，就不能同時出現在庫事件<i>添加事件</i> 清單。"
 
 # I18N: Help text for the “Unique source facts” configuration setting
 #. I18N: Help text for the “Unique source facts” configuration setting
@@ -17393,7 +17377,7 @@ msgstr "只有家族成員才可以訪問網站。"
 
 #: app/Http/RequestHandlers/LoginPage.php:92
 msgid "You need to be an authorized user to access this website."
-msgstr "必須通過驗証才可以訪問網站。"
+msgstr "必須經過管理員批准后才可以訪問網站。"
 
 #: resources/views/admin/control-panel.phtml:134
 #: resources/views/admin/trees.phtml:32
@@ -18127,21 +18111,21 @@ msgstr "第十一代堂兄(妹)"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:129
 msgid "estate name"
-msgstr "居住時的名字"
+msgstr "居住時的姓名"
 
 # I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:125
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr "居住時的名字"
+msgstr "居住時的姓名"
 
 # I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:120
 msgctxt "MALE"
 msgid "estate name"
-msgstr "居住時的名字"
+msgstr "居住時的姓名"
 
 # I18N: Gedcom EST dates
 #. I18N: Gedcom EST dates
@@ -20777,21 +20761,21 @@ msgstr "拒絕"
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:176
 msgid "religious name"
-msgstr "宗教名字"
+msgstr "宗教名稱"
 
 # I18N: A name taken when entering a religion or a religious order
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:172
 msgctxt "FEMALE"
 msgid "religious name"
-msgstr "宗教名字"
+msgstr "宗教名稱"
 
 # I18N: A name taken when entering a religion or a religious order
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:167
 msgctxt "MALE"
 msgid "religious name"
-msgstr "宗教名字"
+msgstr "宗教名稱"
 
 # I18N: A button label.
 #. I18N: A button label.
