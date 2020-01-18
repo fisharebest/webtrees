@@ -314,7 +314,7 @@ class ModuleService
         'fix-ceme-tag'            => FixCemeteryTag::class,
         'fix-duplicate-links'     => FixDuplicateLinks::class,
         'fix-name-slashes-spaces' => FixNameSlashesAndSpaces::class,
-         //'fix-place-names'         => FixPlaceNames::class,
+        'fix-place-names'         => FixPlaceNames::class,
         'fix-prim-tag'            => FixPrimaryTag::class,
         'fix-search-and-replace'  => FixSearchAndReplace::class,
         'gedcom_block'            => WelcomeBlockModule::class,

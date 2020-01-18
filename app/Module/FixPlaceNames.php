@@ -19,10 +19,18 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use stdClass;
+
+use function addcslashes;
+use function preg_match;
+use function preg_quote;
+use function preg_replace;
+use function view;
 
 /**
  * Class FixPlaceNames
@@ -30,6 +38,19 @@ use stdClass;
 class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
 {
     use ModuleDataFixTrait;
+
+    /** @var DataFixService */
+    private $data_fix_service;
+
+    /**
+     * FixMissingDeaths constructor.
+     *
+     * @param DataFixService $data_fix_service
+     */
+    public function __construct(DataFixService $data_fix_service)
+    {
+        $this->data_fix_service = $data_fix_service;
+    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -54,16 +75,120 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
     }
 
     /**
+     * Options form.
+     *
+     * @param Tree $tree
+     *
+     * @return string
+     */
+    public function fixOptions(Tree $tree): string
+    {
+        return view('modules/fix-place-names/options', []);
+    }
+
+    /**
      * A list of all records that need examining.  This may include records
      * that do not need updating, if we can't detect this quickly using SQL.
      *
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<stdClass>
+     * @return Collection<string>|null
      */
-    public function recordsToExamine(Tree $tree, array $params): Collection
+    protected function familiesToFix(Tree $tree, array $params): ?Collection
     {
-        return new Collection();
+        if ($params['search'] === '' || $params['replace'] === '') {
+            return null;
+        }
+
+        $search = '%' . addcslashes($params['search'], '_%\\') . '%';
+
+        return  DB::table('families')
+            ->where('f_file', '=', $tree->id())
+            ->where('f_gedcom', 'LIKE', $search)
+            ->pluck('f_id');
+    }
+
+    /**
+     * A list of all records that need examining.  This may include records
+     * that do not need updating, if we can't detect this quickly using SQL.
+     *
+     * @param Tree                 $tree
+     * @param array<string,string> $params
+     *
+     * @return Collection<string>|null
+     */
+    protected function individualsToFix(Tree $tree, array $params): ?Collection
+    {
+        if ($params['search'] === '' || $params['replace'] === '') {
+            return null;
+        }
+
+        $search = '%' . addcslashes($params['search'], '_%\\') . '%';
+
+        return  DB::table('individuals')
+            ->where('i_file', '=', $tree->id())
+            ->where('i_gedcom', 'LIKE', $search)
+            ->pluck('i_id');
+    }
+
+    /**
+     * Does a record need updating?
+     *
+     * @param GedcomRecord         $record
+     * @param array<string,string> $params
+     *
+     * @return bool
+     */
+    public function doesRecordNeedUpdate(GedcomRecord $record, array $params): bool
+    {
+        $search = preg_quote($params['search'], '/');
+        $regex  = '/\n2 PLAC (?:.*, )?' . $search . '(\n|$)/';
+
+        return preg_match($regex, $record->gedcom()) === 1;
+    }
+
+    /**
+     * Show the changes we would make
+     *
+     * @param GedcomRecord         $record
+     * @param array<string,string> $params
+     *
+     * @return string
+     */
+    public function previewUpdate(GedcomRecord $record, array $params): string
+    {
+        $old = $record->gedcom();
+        $new = $this->updateGedcom($record, $params);
+
+        return $this->data_fix_service->gedcomDiff($record->tree(), $old, $new);
+    }
+
+    /**
+     * Fix a record
+     *
+     * @param GedcomRecord         $record
+     * @param array<string,string> $params
+     *
+     * @return void
+     */
+    public function updateRecord(GedcomRecord $record, array $params): void
+    {
+        $record->updateRecord($this->updateGedcom($record, $params), false);
+    }
+
+    /**
+     * @param GedcomRecord         $record
+     * @param array<string,string> $params
+     *
+     * @return string
+     */
+    private function updateGedcom(GedcomRecord $record, array $params): string
+    {
+        $search  = preg_quote($params['search'], '/');
+        $regex   = '/(\n2 PLAC (?:.*, )?)' . $search . '(\n|$)/';
+        $replace = '$1' . addcslashes($params['replace'], '$\\') . '$2';
+
+        return preg_replace($regex, $replace, $record->gedcom());
     }
 }

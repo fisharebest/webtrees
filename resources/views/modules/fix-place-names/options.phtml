@@ -1,0 +1,27 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<div class="row form-group">
+    <label class="col-sm-3 col-form-label" for="search">
+        <?= I18N::translate('Search') ?>
+    </label>
+
+    <div class="col-sm-9">
+        <input class="form-control" id="search" name="search">
+    </div>
+</div>
+
+<div class="row form-group">
+    <label class="col-sm-3 col-form-label" for="replace">
+        <?= I18N::translate('Replace') ?>
+    </label>
+
+    <div class="col-sm-9">
+        <input class="form-control" id="replace" name="replace">
+    </div>
+</div>

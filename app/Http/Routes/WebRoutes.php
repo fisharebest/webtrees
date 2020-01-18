@@ -174,8 +174,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePageEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePageUpdate;
 use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\UpdatePlacesAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\UpdatePlacesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPageBlock;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPageBlockEdit;
@@ -346,8 +344,6 @@ class WebRoutes
                 $router->post(MergeRecordsAction::class, '/merge-step1', MergeRecordsAction::class);
                 $router->get(MergeFactsPage::class, '/merge-step2', MergeFactsPage::class);
                 $router->post(MergeFactsAction::class, '/merge-step2', MergeFactsAction::class);
-                $router->get(UpdatePlacesPage::class, '/places', UpdatePlacesPage::class);
-                $router->post(UpdatePlacesAction::class, '/places', UpdatePlacesAction::class);
                 $router->get('admin-trees-preferences', '/preferences', 'AdminTreesController::preferences');
                 $router->post('admin-trees-preferences-update', '/preferences', 'AdminTreesController::preferencesUpdate');
                 $router->get('admin-trees-renumber', '/renumber', 'AdminTreesController::renumber');

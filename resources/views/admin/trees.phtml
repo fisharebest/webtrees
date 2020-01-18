@@ -15,7 +15,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectDefaultTree;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\UpdatePlacesPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\View;
@@ -155,14 +154,6 @@ use Illuminate\Database\Capsule\Manager as DB;
                                         <span class="fa-li"><?= view('icons/merge') ?></span>
                                         <a href="<?= e(route(MergeRecordsPage::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Merge records') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
-                                        </a>
-                                    </li>
-                                    <!-- UPDATE PLACE NAMES -->
-                                    <li>
-                                        <span class="fa-li"><?= view('icons/location') ?></span>
-                                        <a href="<?= e(route(UpdatePlacesPage::class, ['tree' => $managed_tree->name()])) ?>">
-                                            <?= I18N::translate('Update place names') ?>
                                             <span class="sr-only"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
