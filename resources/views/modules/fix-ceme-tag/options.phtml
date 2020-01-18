@@ -1,0 +1,22 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var array<string,string> $options
+ * @var string               $selected
+ */
+
+?>
+
+<div class="row form-group">
+    <label class="col-sm-3 col-form-label" for="convert">
+        <?= /* I18N: Label for option */ I18N::translate('Convert to') ?>
+    </label>
+
+    <div class="col-sm-9">
+        <?= view('components/select', ['name' => 'convert', 'options' => $options, 'selected' => $selected]) ?>
+    </div>
+</div>

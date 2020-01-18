@@ -29,7 +29,6 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 
 use function preg_match;
-use function preg_replace;
 
 /**
  * Class FixCemeteryTag
@@ -71,6 +70,28 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
     {
         /* I18N: Description of a “Data fix” module */
         return I18N::translate('Replace cemetery tags with burial places.');
+    }
+
+    /**
+     * Options form.
+     *
+     * @param Tree $tree
+     *
+     * @return string
+     */
+    public function fixOptions(Tree $tree): string
+    {
+        $options = [
+            'ADDR' => I18N::translate('Address'),
+            'PLAC' => I18N::translate('Place'),
+        ];
+
+        $selected = 'ADDR';
+
+        return view('modules/fix-ceme-tag/options', [
+            'options'  => $options,
+            'selected' => $selected,
+        ]);
     }
 
     /**
@@ -122,8 +143,16 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
      */
     public function previewUpdate(GedcomRecord $record, array $params): string
     {
-        $old = $record->gedcom();
-        $new = $this->updateGedcom($record);
+        $old = [];
+        $new = [];
+
+        foreach ($record->facts(['BURI'], false, null, false) as $fact) {
+            $old[] = $fact->gedcom();
+            $new[] = $this->updateGedcom($fact, $params);
+        }
+
+        $old = implode("\n", $old);
+        $new = implode("\n", $new);
 
         return $this->data_fix_service->gedcomDiff($record->tree(), $old, $new);
     }
@@ -138,22 +167,43 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
      */
     public function updateRecord(GedcomRecord $record, array $params): void
     {
-        $record->updateRecord($this->updateGedcom($record), false);
+        foreach ($record->facts(['BURI'], false, null, false) as $fact) {
+            $record->updateFact($fact->id(), $this->updateGedcom($fact, $params), false);
+        }
     }
 
     /**
-     * @param GedcomRecord $record
+     * @param Fact                 $fact
+     * @param array<string,string> $params
      *
      * @return string
      */
-    private function updateGedcom(GedcomRecord $record): string
+    private function updateGedcom(Fact $fact, array $params): string
     {
-        return preg_replace([
-            '/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*)$/m',
-            '/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ])(\/)/m',
-        ], [
-            '$1/',
-            '$1 $2',
-        ], $record->gedcom());
+        $gedcom = $fact->gedcom();
+
+        if (preg_match('/\n\d CEME ?(.+)(?:\n\d PLOT ?(.+))?/', $gedcom, $match)) {
+            $ceme = $match[1];
+            $plot = $match[2];
+
+            // Merge PLOT with CEME
+            if ($plot !== '') {
+                $ceme = $plot . ', ' . $ceme;
+            }
+
+            // Remove CEME/PLOT
+            $gedcom = strtr($gedcom, [$match[0] => '']);
+
+            // Add PLAC/ADDR
+            $convert = $params['convert'];
+
+            if (strpos($gedcom, "\n2 " . $convert . ' ') === false) {
+                $gedcom .= "\n2 " . $convert . ' ' . $ceme;
+            } else {
+                $gedcom = strtr($gedcom, ["\n2 " . $convert . ' ' => "\n2 " . $convert . ' ' . $ceme . ', ']);
+            }
+        }
+
+        return $gedcom;
     }
 }
