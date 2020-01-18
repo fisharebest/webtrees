@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -28,6 +29,8 @@ use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
@@ -41,10 +44,13 @@ use function curl_close;
 use function curl_exec;
 use function curl_init;
 use function curl_setopt;
+use function fclose;
 use function file_get_contents;
 use function function_exists;
+use function fwrite;
 use function ini_get;
 use function is_array;
+use function is_resource;
 use function json_decode;
 use function preg_match_all;
 use function preg_quote;
@@ -59,6 +65,13 @@ use const CURLOPT_URL;
  */
 class AutocompleteController extends AbstractBaseController
 {
+    // Options for fetching files using GuzzleHTTP
+    private const GUZZLE_OPTIONS = [
+        'connect_timeout' => 3,
+        'read_timeout'    => 3,
+        'timeout'         => 3,
+    ];
+
     /** @var SearchService */
     private $search_service;
 
@@ -204,31 +217,25 @@ class AutocompleteController extends AbstractBaseController
         if ($data === [] && $geonames !== '') {
             // No place found? Use an external gazetteer
             $url =
-                'http://api.geonames.org/searchJSON' .
+                'https://secure.geonames.org/searchJSON' .
                 '?name_startsWith=' . rawurlencode($query) .
                 '&lang=' . I18N::languageTag() .
                 '&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC' .
                 '&style=full' .
                 '&username=' . rawurlencode($geonames);
 
-            // try to use curl when file_get_contents not allowed
-            if (ini_get('allow_url_fopen')) {
-                $json = file_get_contents($url);
-            } elseif (function_exists('curl_init')) {
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $url);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                $json = curl_exec($ch);
-                curl_close($ch);
-            } else {
-                return response([]);
-            }
-
-            $places = json_decode($json, true);
-            if (isset($places['geonames']) && is_array($places['geonames'])) {
-                foreach ($places['geonames'] as $k => $place) {
-                    $data[] = ['value' => $place['name'] . ', ' . $place['adminName2'] . ', ' . $place['adminName1'] . ', ' . $place['countryName']];
+            // Read from the URL
+            $client = new Client();
+            try {
+                $json = $client->get($url, self::GUZZLE_OPTIONS)->getBody()->__toString();
+                $places = json_decode($json, true);
+                if (isset($places['geonames']) && is_array($places['geonames'])) {
+                    foreach ($places['geonames'] as $k => $place) {
+                        $data[] = ['value' => $place['name'] . ', ' . $place['adminName2'] . ', ' . $place['adminName1'] . ', ' . $place['countryName']];
+                    }
                 }
+            } catch (RequestException $ex) {
+                // Service down?  Quota exceeded?
             }
         }
 
