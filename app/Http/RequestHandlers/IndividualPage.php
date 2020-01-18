@@ -156,9 +156,6 @@ class IndividualPage implements RequestHandlerInterface
         return $this->viewResponse('individual-page', [
             'age'              => $age,
             'clipboard_facts'  => $this->clipboard_service->pastableFacts($individual, new Collection()),
-            'count_media'      => $this->countFacts($individual, ['OBJE']),
-            'count_names'      => $this->countFacts($individual, ['NAME']),
-            'count_sex'        => $this->countFacts($individual, ['SEX']),
             'individual'       => $individual,
             'individual_media' => $individual_media,
             'meta_robots'      => 'index,follow',
@@ -171,27 +168,6 @@ class IndividualPage implements RequestHandlerInterface
             'tree'             => $tree,
             'user_link'        => $user_link,
         ]);
-    }
-
-    /**
-     * Count the (non-pending-delete) name records for an individual.
-     *
-     * @param Individual $individual
-     * @param string[]   $tags
-     *
-     * @return int
-     */
-    private function countFacts(Individual $individual, array $tags): int
-    {
-        $count = 0;
-
-        foreach ($individual->facts($tags) as $fact) {
-            if (!$fact->isPendingDeletion()) {
-                $count++;
-            }
-        }
-
-        return $count;
     }
 
     /**

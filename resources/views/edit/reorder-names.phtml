@@ -14,7 +14,7 @@ use Fisharebest\Webtrees\View;
     <?= csrf_field() ?>
 
     <div class="wt-sortable-list">
-        <?php foreach ($individual->facts(['NAME']) as $fact) : ?>
+        <?php foreach ($individual->facts(['NAME'], false, null, true) as $fact) : ?>
             <div class="card mb-2 wt-sortable-item">
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                 <div class="card-header">

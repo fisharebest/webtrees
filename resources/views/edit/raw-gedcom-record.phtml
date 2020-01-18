@@ -28,19 +28,17 @@ use Fisharebest\Webtrees\View;
     </div>
 
     <div id="wt-sortable-list">
-        <?php foreach ($record->facts() as $fact) : ?>
-            <?php if (!$fact->isPendingDeletion()) : ?>
-                <div class="card my-2">
-                    <label class="card-header py-1 px-2 d-flex" for="fact-<?= e($fact->id()) ?>">
-                        <span class="drag-handle">
-                            <?= view('icons/drag-handle') ?>
-                        </span>
-                        <?= $fact->summary() ?>
-                    </label>
-                    <input type="hidden" name="fact_id[]" value="<?= e($fact->id()) ?>">
-                    <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-<?= e($fact->id()) ?>" name="fact[]" rows="<?= 1 + preg_match_all('/\n/', $fact->gedcom()) ?>"><?= e($fact->gedcom()) ?></textarea>
-                </div>
-            <?php endif ?>
+        <?php foreach ($record->facts([], false, null, true) as $fact) : ?>
+            <div class="card my-2">
+                <label class="card-header py-1 px-2 d-flex" for="fact-<?= e($fact->id()) ?>">
+                    <span class="drag-handle">
+                        <?= view('icons/drag-handle') ?>
+                    </span>
+                    <?= $fact->summary() ?>
+                </label>
+                <input type="hidden" name="fact_id[]" value="<?= e($fact->id()) ?>">
+                <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-<?= e($fact->id()) ?>" name="fact[]" rows="<?= 1 + preg_match_all('/\n/', $fact->gedcom()) ?>"><?= e($fact->gedcom()) ?></textarea>
+            </div>
         <?php endforeach ?>
 
         <div class="card my-2">
