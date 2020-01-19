@@ -756,11 +756,6 @@ parameters:
 			path: app/Http/Controllers/AdminTreesController.php
 
 		-
-			message: "#^Parameter \\#1 \\$json of function json_decode expects string, bool\\|string given\\.$#"
-			count: 1
-			path: app/Http/Controllers/AutocompleteController.php
-
-		-
 			message: "#^Binary operation \"\\*\" between int\\|string\\|null and 2 results in an error\\.$#"
 			count: 2
 			path: app/Http/Controllers/BranchesController.php
@@ -1468,21 +1463,6 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-theme.disable/module.php
-
-		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 1
-			path: modules_v4/example-theme.disable/module.php
-
-		-
-			message: "#^Method class@anonymous/modules_v4/example\\-theme\\.disable/module\\.php\\:17\\:\\:stylesheets\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: modules_v4/example-theme.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
 			path: modules_v4/example-middleware.disable/module.php
 
 		-
@@ -1534,6 +1514,31 @@ parameters:
 			message: "#^Method class@anonymous/modules_v4/example\\.disable/module\\.php\\:17\\:\\:frenchTranslations\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: modules_v4/example.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/carmen/module.php
+
+		-
+			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
+			count: 1
+			path: modules_v4/carmen/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example-theme.disable/module.php
+
+		-
+			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
+			count: 1
+			path: modules_v4/example-theme.disable/module.php
+
+		-
+			message: "#^Method class@anonymous/modules_v4/example\\-theme\\.disable/module\\.php\\:17\\:\\:stylesheets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: modules_v4/example-theme.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
