@@ -49,7 +49,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL  = '/tree/{tree}/fan-chart-{style}-{generations}-{width}/{xref}';
+    protected const ROUTE_URL = '/tree/{tree}/fan-chart-{style}-{generations}-{width}/{xref}';
 
     // Chart styles
     private const STYLE_HALF_CIRCLE          = '2';

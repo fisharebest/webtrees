@@ -52,7 +52,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL  = '/tree/{tree}/pedigree-map-{generations}/{xref}';
+    protected const ROUTE_URL = '/tree/{tree}/pedigree-map-{generations}/{xref}';
 
     // Defaults
     public const DEFAULT_GENERATIONS = '4';

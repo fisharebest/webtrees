@@ -45,7 +45,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL  = '/tree/{tree}/descendants-{style}-{generations}/{xref}';
+    protected const ROUTE_URL = '/tree/{tree}/descendants-{style}-{generations}/{xref}';
 
     // Chart styles
     public const CHART_STYLE_TREE        = 'tree';

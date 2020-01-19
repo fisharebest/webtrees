@@ -45,7 +45,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL  = '/tree/{tree}/timeline-{scale}';
+    protected const ROUTE_URL = '/tree/{tree}/timeline-{scale}';
 
     // Defaults
     protected const DEFAULT_SCALE      = 10;
@@ -66,7 +66,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         '_TODO',
         'CHAN',
     ];
-    protected const BHEIGHT   = 30;
+    protected const BHEIGHT = 30;
 
     // Box height
 
@@ -151,7 +151,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 
         $params = (array) $request->getParsedBody();
 
-        $add  = $params['add'] ?? '';
+        $add = $params['add'] ?? '';
 
         Auth::checkComponentAccess($this, 'chart', $tree, $user);
 

@@ -46,7 +46,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL  = '/tree/{tree}/lifespans';
+    protected const ROUTE_URL = '/tree/{tree}/lifespans';
 
     // Defaults
     protected const DEFAULT_PARAMETERS = [];

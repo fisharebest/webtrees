@@ -54,7 +54,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     use ModuleChartTrait;
     use ModuleConfigTrait;
 
-    protected const ROUTE_URL  = '/tree/{tree}/relationships-{ancestors}-{recursion}/{xref}{/xref2}';
+    protected const ROUTE_URL = '/tree/{tree}/relationships-{ancestors}-{recursion}/{xref}{/xref2}';
 
     /** It would be more correct to use PHP_INT_MAX, but this isn't friendly in URLs */
     public const UNLIMITED_RECURSION = 99;
@@ -332,14 +332,14 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                         case 'sis':
                         case 'sib':
                             $table[$x + 1][$y] = '<div style="background:url(' . e(asset('css/images/hline.png')) . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . view('icons/arrow-right') . '</div></div>';
-                            $x                 += 2;
+                            $x += 2;
                             break;
                         case 'son':
                         case 'dau':
                         case 'chi':
                             if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
                                 $table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: start;">' . view('icons/arrow-down') . '</div></div>';
-                                $x                     += 2;
+                                $x += 2;
                             } else {
                                 $table[$x][$y - 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . view('icons/arrow-down') . '</div></div>';
                             }
@@ -350,7 +350,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                         case 'par':
                             if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
                                 $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: end;">' . view('icons/arrow-down') . '</div></div>';
-                                $x                     += 2;
+                                $x += 2;
                             } else {
                                 $table[$x][$y + 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . view('icons/arrow-up') . '</div></div>';
                             }
@@ -648,17 +648,17 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     private function oldStyleRelationshipPath(Tree $tree, array $path): array
     {
-        $spouse_codes  = [
+        $spouse_codes = [
             'M' => 'hus',
             'F' => 'wif',
             'U' => 'spo',
         ];
-        $parent_codes  = [
+        $parent_codes = [
             'M' => 'fat',
             'F' => 'mot',
             'U' => 'par',
         ];
-        $child_codes   = [
+        $child_codes = [
             'M' => 'son',
             'F' => 'dau',
             'U' => 'chi',

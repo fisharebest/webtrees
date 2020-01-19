@@ -44,7 +44,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL  = '/tree/{tree}/family-book-{book_size}-{generations}-{spouses}/{xref}';
+    protected const ROUTE_URL = '/tree/{tree}/family-book-{book_size}-{generations}-{spouses}/{xref}';
 
     // Defaults
     public const    DEFAULT_GENERATIONS            = '2';

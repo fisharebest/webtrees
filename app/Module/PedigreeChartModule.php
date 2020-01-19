@@ -47,7 +47,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL  = '/tree/{tree}/pedigree-{style}-{generations}/{xref}';
+    protected const ROUTE_URL = '/tree/{tree}/pedigree-{style}-{generations}/{xref}';
 
     // Chart styles
     public const STYLE_LEFT  = 'left';
@@ -225,7 +225,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
 
             // Father’s ancestors link to the father’s pedigree
             // Mother’s ancestors link to the mother’s pedigree..
-            $links = $ancestors->map(function (?Individual $individual, $sosa) use ($ancestors, $style, $generations): string {
+            $links = $ancestors->map(function (?Individual $individual, $sosa) use ($ancestors, $style, $generations) : string {
                 if ($individual instanceof Individual && $sosa >= 2 ** $generations / 2 && $individual->childFamilies()->isNotEmpty()) {
                     // The last row/column, and there are more generations.
                     if ($sosa >= 2 ** $generations * 3 / 4) {

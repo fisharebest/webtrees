@@ -45,7 +45,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL  = '/tree/{tree}/ancestors-{style}-{generations}/{xref}';
+    protected const ROUTE_URL = '/tree/{tree}/ancestors-{style}-{generations}/{xref}';
 
     // Chart styles
     public const CHART_STYLE_TREE        = 'tree';
