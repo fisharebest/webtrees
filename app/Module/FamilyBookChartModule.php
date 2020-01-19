@@ -44,8 +44,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
 {
     use ModuleChartTrait;
 
-    private const ROUTE_NAME = 'family-book-chart';
-    private const ROUTE_URL  = '/tree/{tree}/family-book-{book_size}-{generations}-{spouses}/{xref}';
+    protected const ROUTE_URL  = '/tree/{tree}/family-book-{book_size}-{generations}-{spouses}/{xref}';
 
     // Defaults
     public const    DEFAULT_GENERATIONS            = '2';
@@ -72,7 +71,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
         assert($router_container instanceof RouterContainer);
 
         $router_container->getMap()
-            ->get(self::ROUTE_NAME, self::ROUTE_URL, $this)
+            ->get(static::class, static::ROUTE_URL, $this)
             ->allows(RequestMethodInterface::METHOD_POST)
             ->tokens([
                 'book_size'   => '\d+',
@@ -148,7 +147,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return route(self::ROUTE_NAME, [
+        return route(static::class, [
                 'xref' => $individual->xref(),
                 'tree' => $individual->tree()->name(),
             ] + $parameters + self::DEFAULT_PARAMETERS);
@@ -180,7 +179,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             $params = (array) $request->getParsedBody();
 
-            return redirect(route(self::ROUTE_NAME, [
+            return redirect(route(static::class, [
                 'tree'        => $tree->name(),
                 'xref'        => $params['xref'],
                 'book_size'   => $params['book_size'],

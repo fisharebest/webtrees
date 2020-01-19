@@ -46,8 +46,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 {
     use ModuleChartTrait;
 
-    private const ROUTE_NAME = 'lifespans-chart';
-    private const ROUTE_URL  = '/tree/{tree}/lifespans';
+    protected const ROUTE_URL  = '/tree/{tree}/lifespans';
 
     // Defaults
     protected const DEFAULT_PARAMETERS = [];
@@ -69,7 +68,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         assert($router_container instanceof RouterContainer);
 
         $router_container->getMap()
-            ->get(self::ROUTE_NAME, self::ROUTE_URL, $this)
+            ->get(static::class, static::ROUTE_URL, $this)
             ->allows(RequestMethodInterface::METHOD_POST);
     }
 
@@ -115,7 +114,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return route(self::ROUTE_NAME, [
+        return route(static::class, [
                 'tree'  => $individual->tree()->name(),
                 'xrefs' => [$individual->xref()],
             ] + $parameters + self::DEFAULT_PARAMETERS);
@@ -179,7 +178,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            return redirect(route(self::ROUTE_NAME, [
+            return redirect(route(static::class, [
                 'tree'  => $tree->name(),
                 'xrefs' => $xrefs,
             ]));
@@ -193,9 +192,9 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             return $this->chart($tree, $xrefs);
         }
 
-        $reset_url = route(self::ROUTE_NAME, ['tree' => $tree->name()]);
+        $reset_url = route(static::class, ['tree' => $tree->name()]);
 
-        $ajax_url = route(self::ROUTE_NAME, [
+        $ajax_url = route(static::class, [
             'ajax'  => true,
             'tree'  => $tree->name(),
             'xrefs' => $xrefs,

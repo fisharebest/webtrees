@@ -47,8 +47,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
-    private const ROUTE_NAME = 'pedigree-chart';
-    private const ROUTE_URL  = '/tree/{tree}/pedigree-{style}-{generations}/{xref}';
+    protected const ROUTE_URL  = '/tree/{tree}/pedigree-{style}-{generations}/{xref}';
 
     // Chart styles
     public const STYLE_LEFT  = 'left';
@@ -100,7 +99,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         assert($router_container instanceof RouterContainer);
 
         $router_container->getMap()
-            ->get(self::ROUTE_NAME, self::ROUTE_URL, $this)
+            ->get(static::class, static::ROUTE_URL, $this)
             ->allows(RequestMethodInterface::METHOD_POST)
             ->tokens([
                 'generations' => '\d+',
@@ -175,10 +174,10 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return route(self::ROUTE_NAME, [
+        return route(static::class, [
                 'xref' => $individual->xref(),
                 'tree' => $individual->tree()->name(),
-            ] + $parameters + self::DEFAULT_PARAMETERS);
+            ] + $parameters + static::DEFAULT_PARAMETERS);
     }
 
     /**
@@ -206,7 +205,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             $params = (array) $request->getParsedBody();
 
-            return redirect(route(self::ROUTE_NAME, [
+            return redirect(route(self::class, [
                 'tree'        => $request->getAttribute('tree')->name(),
                 'xref'        => $params['xref'],
                 'style'       => $params['style'],

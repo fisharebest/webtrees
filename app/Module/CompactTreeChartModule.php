@@ -43,8 +43,7 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
 {
     use ModuleChartTrait;
 
-    private const ROUTE_NAME = 'compact-chart';
-    private const ROUTE_URL  = '/tree/{tree}/compact/{xref}';
+    protected const ROUTE_URL  = '/tree/{tree}/compact/{xref}';
 
     /** @var ChartService */
     private $chart_service;
@@ -70,7 +69,7 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
         assert($router_container instanceof RouterContainer);
 
         $router_container->getMap()
-            ->get(self::ROUTE_NAME, self::ROUTE_URL, $this)
+            ->get(static::class, static::ROUTE_URL, $this)
             ->allows(RequestMethodInterface::METHOD_POST);
     }
 
@@ -141,7 +140,7 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return route(self::ROUTE_NAME, [
+        return route(static::class, [
                 'xref' => $individual->xref(),
                 'tree' => $individual->tree()->name(),
             ] + $parameters);
@@ -170,7 +169,7 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             $params = (array) $request->getParsedBody();
 
-            return redirect(route(self::ROUTE_NAME, [
+            return redirect(route(static::class, [
                 'tree' => $tree->name(),
                 'xref' => $params['xref'],
             ]));

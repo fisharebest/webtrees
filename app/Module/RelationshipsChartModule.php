@@ -54,8 +54,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     use ModuleChartTrait;
     use ModuleConfigTrait;
 
-    private const ROUTE_NAME = 'relationships';
-    private const ROUTE_URL  = '/tree/{tree}/relationships-{ancestors}-{recursion}/{xref}{/xref2}';
+    protected const ROUTE_URL  = '/tree/{tree}/relationships-{ancestors}-{recursion}/{xref}{/xref2}';
 
     /** It would be more correct to use PHP_INT_MAX, but this isn't friendly in URLs */
     public const UNLIMITED_RECURSION = 99;
@@ -94,7 +93,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         assert($router_container instanceof RouterContainer);
 
         $router_container->getMap()
-            ->get(self::ROUTE_NAME, self::ROUTE_URL, $this)
+            ->get(static::class, static::ROUTE_URL, $this)
             ->allows(RequestMethodInterface::METHOD_POST)
             ->tokens([
                 'ancestors' => '\d+',
@@ -184,7 +183,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return route(self::ROUTE_NAME, [
+        return route(static::class, [
                 'xref' => $individual->xref(),
                 'tree' => $individual->tree()->name(),
             ] + $parameters + self::DEFAULT_PARAMETERS);
@@ -214,7 +213,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             $params = (array) $request->getParsedBody();
 
-            return redirect(route(self::ROUTE_NAME, [
+            return redirect(route(static::class, [
                 'ancestors' => $params['ancestors'],
                 'recursion' => $params['recursion'],
                 'tree'      => $tree->name(),

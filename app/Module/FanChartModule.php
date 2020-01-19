@@ -49,8 +49,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
 {
     use ModuleChartTrait;
 
-    private const ROUTE_NAME = 'fan-chart';
-    private const ROUTE_URL  = '/tree/{tree}/fan-chart-{style}-{generations}-{width}/{xref}';
+    protected const ROUTE_URL  = '/tree/{tree}/fan-chart-{style}-{generations}-{width}/{xref}';
 
     // Chart styles
     private const STYLE_HALF_CIRCLE          = '2';
@@ -97,7 +96,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         assert($router_container instanceof RouterContainer);
 
         $router_container->getMap()
-            ->get(self::ROUTE_NAME, self::ROUTE_URL, $this)
+            ->get(static::class, static::ROUTE_URL, $this)
             ->allows(RequestMethodInterface::METHOD_POST)
             ->tokens([
                 'generations' => '\d+',
@@ -173,7 +172,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return route(self::ROUTE_NAME, [
+        return route(static::class, [
                 'xref' => $individual->xref(),
                 'tree' => $individual->tree()->name(),
             ] + $parameters + self::DEFAULT_PARAMETERS);
@@ -206,7 +205,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             $params = (array) $request->getParsedBody();
 
-            return redirect(route(self::ROUTE_NAME, [
+            return redirect(route(static::class, [
                 'tree'        => $tree->name(),
                 'xref'        => $params['xref'],
                 'style'       => $params['style'],
