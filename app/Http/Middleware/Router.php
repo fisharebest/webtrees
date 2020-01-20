@@ -90,7 +90,7 @@ class Router implements MiddlewareInterface
         }
 
         // Add the route as attribute of the request
-        $request = $request->withAttribute('route', $route->name);
+        $request = $request->withAttribute('route', $route);
 
         // Firstly, apply the route middleware
         $route_middleware = $route->extras['middleware'] ?? [];

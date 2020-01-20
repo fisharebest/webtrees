@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Aura\Router\Route;
 use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
@@ -35,6 +36,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+
+use function assert;
 
 /**
  * Class HitCountFooterModule - show the number of page hits in the footer.
@@ -120,13 +123,15 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $route = $request->getAttribute('route');
+        assert($route instanceof Route);
+
         $tree  = $request->getAttribute('tree');
         $user  = $request->getAttribute('user');
 
         if ($tree instanceof Tree && $tree->getPreference('SHOW_COUNTER')) {
-            $page_name = self::PAGE_NAMES[$route] ?? '';
+            $page_name = self::PAGE_NAMES[$route->name] ?? '';
 
-            switch ($route) {
+            switch ($route->name) {
                 case FamilyPage::class:
                 case IndividualPage::class:
                 case MediaPage::class:

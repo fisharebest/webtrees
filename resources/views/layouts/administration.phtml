@@ -40,7 +40,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
         <?= DebugBar::renderHead() ?>
     </head>
-    <body class="container wt-global wt-control-panel wt-route-<?= e(app(ServerRequestInterface::class)->getAttribute('route')) ?>">
+    <body class="container wt-global wt-control-panel wt-route-<?= e(app(ServerRequestInterface::class)->getAttribute('route')->name) ?>">
         <header>
             <div class="wt-accessibility-links position-fixed">
                 <a class="sr-only sr-only-focusable btn btn-info btn-sm" href="#content">

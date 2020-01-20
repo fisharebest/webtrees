@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Aura\Router\Route;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\FamilyNotFoundException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
@@ -152,6 +153,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $request = app(ServerRequestInterface::class);
 
         $route = $request->getAttribute('route');
+        assert($route instanceof Route);
 
         $submenus = [
             new Menu($this->title(), route('module', [
@@ -161,7 +163,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             ]), 'menu-clippings-cart', ['rel' => 'nofollow']),
         ];
 
-        $action = array_search($route, self::ROUTES_WITH_RECORDS);
+        $action = array_search($route->name, self::ROUTES_WITH_RECORDS);
         if ($action !== false) {
             $xref = $request->getAttribute('xref');
             assert(is_string($xref));
