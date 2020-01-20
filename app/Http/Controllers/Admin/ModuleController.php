@@ -139,7 +139,7 @@ class ModuleController extends AbstractAdminController
     {
         return $this->listComponents(
             ModuleDataFixInterface::class,
-            view('icons/data-fix') . I18N::translate('Data Fixes'),
+            view('icons/data-fix') . I18N::translate('Data fixes'),
             ''
         );
     }
