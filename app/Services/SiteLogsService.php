@@ -73,7 +73,7 @@ class SiteLogsService
         }
 
         if ($username !== '') {
-            $query->whereContains('user_name', $ip);
+            $query->where('user_name', '=', $username);
         }
 
         if ($tree !== '') {
