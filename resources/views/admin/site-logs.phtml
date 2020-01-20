@@ -98,6 +98,7 @@ use Fisharebest\Webtrees\View;
     <?= view('lists/datatables-attributes') ?>
     data-ajax="<?= e(route(SiteLogsData::class, ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'tree' => $tree])) ?>"
     data-server-side="true"
+    data-filter="false"
 >
     <thead>
         <tr>
