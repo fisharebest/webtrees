@@ -240,6 +240,11 @@ class HelpText extends AbstractBaseController
                 $text  = view('help/hebrew');
                 break;
 
+            case 'data-fixes':
+                $title = I18N::translate('Data fixes');
+                $text  = view('help/data-fixes');
+                break;
+
             case 'edit_SOUR_EVEN':
                 $title = I18N::translate('Associate events with this source');
                 $text  = view('help/source-events');
