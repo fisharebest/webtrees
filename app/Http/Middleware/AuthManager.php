@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -30,6 +30,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function assert;
 use function redirect;
 use function route;
 
@@ -47,11 +48,7 @@ class AuthManager implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
-
-        // We've matched a tree parameter in the route, but it is private or deleted.
-        if (!$tree instanceof Tree) {
-            throw new HttpNotFoundException();
-        }
+        assert($tree instanceof Tree);
 
         $user = $request->getAttribute('user');
 
@@ -61,7 +58,7 @@ class AuthManager implements MiddlewareInterface
         }
 
         // Logged in, but without the correct role?
-        if ($user instanceof User) {
+        if ($user instanceof User || $request->getMethod() === RequestMethodInterface::METHOD_POST) {
             throw new HttpAccessDeniedException();
         }
 

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
@@ -52,7 +53,7 @@ class AuthAdministrator implements MiddlewareInterface
         }
 
         // Logged in, but without the correct role?
-        if ($user instanceof User) {
+        if ($user instanceof User || $request->getMethod() === RequestMethodInterface::METHOD_POST) {
             throw new HttpAccessDeniedException();
         }
 

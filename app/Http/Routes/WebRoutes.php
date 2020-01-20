@@ -21,13 +21,13 @@ namespace Fisharebest\Webtrees\Http\Routes;
 
 use Aura\Router\Map;
 use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Http\Middleware\LoadRouteParameters;
 use Fisharebest\Webtrees\Http\Middleware\AuthAdministrator;
 use Fisharebest\Webtrees\Http\Middleware\AuthEditor;
 use Fisharebest\Webtrees\Http\Middleware\AuthLoggedIn;
 use Fisharebest\Webtrees\Http\Middleware\AuthManager;
 use Fisharebest\Webtrees\Http\Middleware\AuthMember;
 use Fisharebest\Webtrees\Http\Middleware\AuthModerator;
-use Fisharebest\Webtrees\Http\Middleware\AuthVisitor;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountDelete;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
@@ -196,6 +196,7 @@ class WebRoutes
         $router->attach('', '', static function (Map $router) {
             $router->extras([
                 'middleware' => [
+                    LoadRouteParameters::class,
                     CheckCsrf::class,
                 ],
             ]);
@@ -499,12 +500,6 @@ class WebRoutes
 
             // Visitor routes with a tree.
             $router->attach('', '/tree/{tree}', static function (Map $router) {
-                $router->extras([
-                    'middleware' => [
-                        AuthVisitor::class,
-                    ],
-                ]);
-
                 $router->get(TreePage::class, '', TreePage::class);
                 $router->get('autocomplete-folder', '/autocomplete-folder', 'AutocompleteController::folder');
                 $router->get('autocomplete-page', '/autocomplete-page', 'AutocompleteController::page');
