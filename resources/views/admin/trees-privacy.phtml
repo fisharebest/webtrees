@@ -165,6 +165,7 @@ use Ramsey\Uuid\Uuid;
         <tr>
             <td>
                 <select class="form-control record-type-selector">
+                    <option value=""><?= I18N::translate('All records') ?></option>
                     <option value="individual"><?= I18N::translate('Individual') ?></option>
                     <option value="family"><?= I18N::translate('Family') ?></option>
                     <option value="source"><?= I18N::translate('Source') ?></option>
@@ -172,24 +173,24 @@ use Ramsey\Uuid\Uuid;
                     <option value="note"><?= I18N::translate('Note') ?></option>
                     <option value="media"><?= I18N::translate('Media object') ?></option>
                 </select>
-                <span class="select-record select-individual">
-                    <?= view('components/select-individual', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree]) ?>
-                </span>
-                <span class="select-record select-family d-none">
+                <div class="select-record select-individual d-none">
+                    <?= view('components/select-individual', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
+                </div>
+                <div class="select-record select-family d-none">
                     <?= view('components/select-family', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
-                </span>
-                <span class="select-record select-source d-none">
+                </div>
+                <div class="select-record select-source d-none">
                     <?= view('components/select-source', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
-                </span>
-                <span class="select-record select-repository d-none">
+                </div>
+                <div class="select-record select-repository d-none">
                     <?= view('components/select-repository', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
-                </span>
-                <span class="select-record select-note d-none">
+                </div>
+                <div class="select-record select-note d-none">
                     <?= view('components/select-note', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
-                </span>
-                <span class="select-record select-media d-none">
+                </div>
+                <div class="select-record select-media d-none">
                     <?= view('components/select-media', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
-                </span>
+                </div>
             </td>
             <td>
                 <?= view('components/select', ['name' => 'tag_type[]', 'id' => Uuid::uuid4()->toString(), 'selected' => '', 'options' => $all_tags]) ?>

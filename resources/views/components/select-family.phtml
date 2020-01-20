@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Tree;
     name="<?= e($name) ?>"
     <?= ($disabled ?? false) ? 'disabled' : '' ?>
     <?= ($required ?? false) ? 'required' : '' ?>
+style="width:100%"
 >
     <?php if (($family ?? null) instanceof Family) : ?>
         <option value="<?= e($family->xref()) ?>">

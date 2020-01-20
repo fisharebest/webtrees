@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Tree;
     name="<?= e($name) ?>"
     <?= ($disabled ?? false) ? 'disabled' : '' ?>
     <?= ($required ?? false) ? 'required' : '' ?>
+    style="width:100%"
 >
     <?php if (($note ?? null) instanceof Note) : ?>
         <option value="<?= e($note->xref()) ?>">
