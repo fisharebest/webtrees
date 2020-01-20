@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Aura\Router\Route;
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Http\Controllers\GedcomFileController;
@@ -159,7 +160,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $server_request_factory = app(ServerRequestFactoryInterface::class);
 
         $uri = 'https://webtrees.test/index.php?' . http_build_query($query);
-
+        
         /** @var ServerRequestInterface $request */
         $request = $server_request_factory
             ->createServerRequest($method, $uri)
@@ -170,7 +171,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
             ->withAttribute('client-ip', '127.0.0.1')
             ->withAttribute('user', new GuestUser())
             ->withAttribute('filesystem.data', new Filesystem(new MemoryAdapter()))
-            ->withAttribute('filesystem.data.name', 'data/');
+            ->withAttribute('filesystem.data.name', 'data/')
+            ->withAttribute('route', new Route());
 
         foreach ($attributes as $key => $value) {
             $request = $request->withAttribute($key, $value);

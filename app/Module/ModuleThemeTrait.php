@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Aura\Router\Route;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Gedcom;
@@ -42,6 +43,7 @@ use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
+use function assert;
 use function route;
 
 /**
@@ -202,12 +204,13 @@ trait ModuleThemeTrait
         $request = app(ServerRequestInterface::class);
 
         $route = $request->getAttribute('route');
+        assert($route instanceof Route);
 
-        if (Auth::check() && $route === UserPage::class) {
+        if (Auth::check() && $route->name === UserPage::class) {
             return new Menu(I18N::translate('Customize this page'), route(UserPageEdit::class, ['tree' => $tree->name()]), 'menu-change-blocks');
         }
 
-        if (Auth::isManager($tree) && $route === TreePage::class) {
+        if (Auth::isManager($tree) && $route->name === TreePage::class) {
             return new Menu(I18N::translate('Customize this page'), route(TreePageEdit::class, ['tree' => $tree->name()]), 'menu-change-blocks');
         }
 
@@ -274,10 +277,12 @@ trait ModuleThemeTrait
         // Return to this page after login...
         $redirect = $request->getQueryParams()['url'] ?? (string) $request->getUri();
 
-        $tree = $request->getAttribute('tree');
+        $tree  = $request->getAttribute('tree');
+        $route = $request->getAttribute('route');
+        assert($route instanceof Route);
 
         // ...but switch from the tree-page to the user-page
-        if ($request->getAttribute('route') === TreePage::class) {
+        if ($route->name === TreePage::class) {
             $redirect = route(UserPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]);
         }
 
