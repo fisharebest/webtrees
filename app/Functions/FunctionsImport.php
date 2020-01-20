@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
@@ -646,7 +647,7 @@ class FunctionsImport
         }
 
         switch ($type) {
-            case 'INDI':
+            case Individual::RECORD_TYPE:
                 // Convert inline media into media objects
                 $gedrec = self::convertInlineMedia($tree, $gedrec);
 
@@ -671,7 +672,8 @@ class FunctionsImport
                 self::updateLinks($xref, $tree_id, $gedrec);
                 self::updateNames($xref, $tree_id, $record);
                 break;
-            case 'FAM':
+
+            case Family::RECORD_TYPE:
                 // Convert inline media into media objects
                 $gedrec = self::convertInlineMedia($tree, $gedrec);
 
@@ -704,7 +706,8 @@ class FunctionsImport
                 self::updateDates($xref, $tree_id, $gedrec);
                 self::updateLinks($xref, $tree_id, $gedrec);
                 break;
-            case 'SOUR':
+
+            case Source::RECORD_TYPE:
                 // Convert inline media into media objects
                 $gedrec = self::convertInlineMedia($tree, $gedrec);
 
@@ -728,7 +731,8 @@ class FunctionsImport
                 self::updateLinks($xref, $tree_id, $gedrec);
                 self::updateNames($xref, $tree_id, $record);
                 break;
-            case 'REPO':
+
+            case Repository::RECORD_TYPE:
                 // Convert inline media into media objects
                 $gedrec = self::convertInlineMedia($tree, $gedrec);
 
@@ -745,7 +749,8 @@ class FunctionsImport
                 self::updateLinks($xref, $tree_id, $gedrec);
                 self::updateNames($xref, $tree_id, $record);
                 break;
-            case 'NOTE':
+
+            case Note::RECORD_TYPE:
                 $record = new Note($xref, $gedrec, null, $tree);
 
                 DB::table('other')->insert([
@@ -759,7 +764,8 @@ class FunctionsImport
                 self::updateLinks($xref, $tree_id, $gedrec);
                 self::updateNames($xref, $tree_id, $record);
                 break;
-            case 'SUBM':
+
+            case Submitter::RECORD_TYPE:
                 $record = new Submitter($xref, $gedrec, null, $tree);
 
                 DB::table('other')->insert([
@@ -773,7 +779,8 @@ class FunctionsImport
                 self::updateLinks($xref, $tree_id, $gedrec);
                 self::updateNames($xref, $tree_id, $record);
                 break;
-            case 'OBJE':
+
+            case Media::RECORD_TYPE:
                 $record = new Media($xref, $gedrec, null, $tree);
 
                 DB::table('media')->insert([
@@ -797,7 +804,8 @@ class FunctionsImport
                 self::updateLinks($xref, $tree_id, $gedrec);
                 self::updateNames($xref, $tree_id, $record);
                 break;
-            default: // HEAD, TRLR, SUBM, SUBN, and custom record types.
+
+            default: // HEAD, TRLR, SUBN, and custom record types.
                 // Force HEAD records to have a creation date.
                 if ($type === 'HEAD' && strpos($gedrec, "\n1 DATE ") === false) {
                     $gedrec .= "\n1 DATE " . date('j M Y');
@@ -1141,28 +1149,28 @@ class FunctionsImport
             ->delete();
 
         switch ($type) {
-            case 'INDI':
+            case Individual::RECORD_TYPE:
                 DB::table('individuals')
                     ->where('i_id', '=', $gid)
                     ->where('i_file', '=', $tree->id())
                     ->delete();
                 break;
 
-            case 'FAM':
+            case Family::RECORD_TYPE:
                 DB::table('families')
                     ->where('f_id', '=', $gid)
                     ->where('f_file', '=', $tree->id())
                     ->delete();
                 break;
 
-            case 'SOUR':
+            case Source::RECORD_TYPE:
                 DB::table('sources')
                     ->where('s_id', '=', $gid)
                     ->where('s_file', '=', $tree->id())
                     ->delete();
                 break;
 
-            case 'OBJE':
+            case Media::RECORD_TYPE:
                 DB::table('media_file')
                     ->where('m_id', '=', $gid)
                     ->where('m_file', '=', $tree->id())

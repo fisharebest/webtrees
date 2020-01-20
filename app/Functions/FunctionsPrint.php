@@ -30,8 +30,12 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -424,41 +428,48 @@ class FunctionsPrint
 
         // -- Add from pick list
         switch ($type) {
-            case 'INDI':
+            case Individual::RECORD_TYPE:
                 $addfacts    = preg_split('/[, ;:]+/', $tree->getPreference('INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
                 $uniquefacts = preg_split('/[, ;:]+/', $tree->getPreference('INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
                 $quickfacts  = preg_split('/[, ;:]+/', $tree->getPreference('INDI_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
                 break;
-            case 'FAM':
+
+            case Family::RECORD_TYPE:
                 $addfacts    = preg_split('/[, ;:]+/', $tree->getPreference('FAM_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
                 $uniquefacts = preg_split('/[, ;:]+/', $tree->getPreference('FAM_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
                 $quickfacts  = preg_split('/[, ;:]+/', $tree->getPreference('FAM_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
                 break;
-            case 'SOUR':
+
+            case Source::RECORD_TYPE:
                 $addfacts    = preg_split('/[, ;:]+/', $tree->getPreference('SOUR_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
                 $uniquefacts = preg_split('/[, ;:]+/', $tree->getPreference('SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
                 $quickfacts  = preg_split('/[, ;:]+/', $tree->getPreference('SOUR_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
                 break;
-            case 'NOTE':
+
+            case Note::RECORD_TYPE:
                 $addfacts    = preg_split('/[, ;:]+/', $tree->getPreference('NOTE_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
                 $uniquefacts = preg_split('/[, ;:]+/', $tree->getPreference('NOTE_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
                 $quickfacts  = preg_split('/[, ;:]+/', $tree->getPreference('NOTE_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
                 break;
-            case 'REPO':
+
+            case Repository::RECORD_TYPE:
                 $addfacts    = preg_split('/[, ;:]+/', $tree->getPreference('REPO_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
                 $uniquefacts = preg_split('/[, ;:]+/', $tree->getPreference('REPO_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
                 $quickfacts  = preg_split('/[, ;:]+/', $tree->getPreference('REPO_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
                 break;
-            case 'OBJE':
+
+            case Media::RECORD_TYPE:
                 $addfacts    = ['NOTE'];
-                $uniquefacts = ['_PRIM'];
+                $uniquefacts = [];
                 $quickfacts  = [];
                 break;
-            case 'SUBM':
+
+            case Submitter::RECORD_TYPE:
                 $addfacts    = ['LANG', 'OBJE', 'NOTE', 'SHARED_NOTE'];
                 $uniquefacts = ['ADDR', 'EMAIL', 'NAME', 'PHON', 'WWW'];
                 $quickfacts  = [];
                 break;
+
             case 'HEAD':
                 $addfacts    = [];
                 $uniquefacts = ['COPR', 'LANG', 'SUBM'];
