@@ -81,16 +81,16 @@ class Router implements MiddlewareInterface
         // Match the request to a route.
         $route = $this->router_container->getMatcher()->match($pretty);
 
-        // No route matched?
-        if ($route === false) {
-            // Bind the request into the container
-            app()->instance(ServerRequestInterface::class, $request);
-
-            return $handler->handle($request);
-        }
-
         // Add the route as attribute of the request
         $request = $request->withAttribute('route', $route);
+
+        // Bind the request into the container
+        app()->instance(ServerRequestInterface::class, $request);
+
+        // No route matched?  Let the
+        if ($route === false) {
+            return $handler->handle($request);
+        }
 
         // Firstly, apply the route middleware
         $route_middleware = $route->extras['middleware'] ?? [];
@@ -103,18 +103,6 @@ class Router implements MiddlewareInterface
         $handler_middleware = [new WrapHandler($route->handler)];
 
         $middleware = array_merge($route_middleware, $module_middleware, $handler_middleware);
-
-        // Add the matched attributes to the request.
-        foreach ($route->attributes as $key => $value) {
-            if ($key === 'tree') {
-                $value = $this->tree_service->all()->get($value);
-                app()->instance(Tree::class, $value);
-            }
-            $request = $request->withAttribute($key, $value);
-        }
-
-        // Bind the request into the container
-        app()->instance(ServerRequestInterface::class, $request);
 
         $dispatcher = new Dispatcher($middleware, app());
 
