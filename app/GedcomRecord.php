@@ -223,27 +223,34 @@ class GedcomRecord
         }
 
         switch ($type) {
-            case 'INDI':
+            case Individual::RECORD_TYPE:
                 $record = new Individual($xref, $gedcom, $pending, $tree);
                 break;
-            case 'FAM':
+
+            case Family::RECORD_TYPE:
                 $record = new Family($xref, $gedcom, $pending, $tree);
                 break;
-            case 'SOUR':
+
+            case Source::RECORD_TYPE:
                 $record = new Source($xref, $gedcom, $pending, $tree);
                 break;
-            case 'OBJE':
+
+            case Media::RECORD_TYPE:
                 $record = new Media($xref, $gedcom, $pending, $tree);
                 break;
-            case 'REPO':
+
+            case Repository::RECORD_TYPE:
                 $record = new Repository($xref, $gedcom, $pending, $tree);
                 break;
-            case 'NOTE':
+
+            case Note::RECORD_TYPE:
                 $record = new Note($xref, $gedcom, $pending, $tree);
                 break;
-            case 'SUBM':
+
+            case Submitter::RECORD_TYPE:
                 $record = new Submitter($xref, $gedcom, $pending, $tree);
                 break;
+
             default:
                 $record = new self($xref, $gedcom, $pending, $tree);
                 break;

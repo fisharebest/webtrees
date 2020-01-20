@@ -33,6 +33,8 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -986,7 +988,7 @@ class AdminTreesController extends AbstractBaseController
         foreach ($xrefs as $old_xref => $type) {
             $new_xref = $tree->getNewXref();
             switch ($type) {
-                case 'INDI':
+                case Individual::RECORD_TYPE:
                     DB::table('individuals')
                         ->where('i_file', '=', $tree->id())
                         ->where('i_id', '=', $old_xref)
@@ -1066,7 +1068,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
                     break;
 
-                case 'FAM':
+                case Family::RECORD_TYPE:
                     DB::table('families')
                         ->where('f_file', '=', $tree->id())
                         ->where('f_id', '=', $old_xref)
@@ -1106,7 +1108,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
                     break;
 
-                case 'SOUR':
+                case Source::RECORD_TYPE:
                     DB::table('sources')
                         ->where('s_file', '=', $tree->id())
                         ->where('s_id', '=', $old_xref)
@@ -1167,7 +1169,8 @@ class AdminTreesController extends AbstractBaseController
                             'o_gedcom' => new Expression("REPLACE(o_gedcom, ' SOUR @$old_xref@', ' SOUR @$new_xref@')"),
                         ]);
                     break;
-                case 'REPO':
+
+                case Repository::RECORD_TYPE:
                     DB::table('other')
                         ->where('o_file', '=', $tree->id())
                         ->where('o_id', '=', $old_xref)
@@ -1191,7 +1194,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
                     break;
 
-                case 'NOTE':
+                case Note::RECORD_TYPE:
                     DB::table('other')
                         ->where('o_file', '=', $tree->id())
                         ->where('o_id', '=', $old_xref)
@@ -1267,7 +1270,7 @@ class AdminTreesController extends AbstractBaseController
                         ]);
                     break;
 
-                case 'OBJE':
+                case Media::RECORD_TYPE:
                     DB::table('media')
                         ->where('m_file', '=', $tree->id())
                         ->where('m_id', '=', $old_xref)

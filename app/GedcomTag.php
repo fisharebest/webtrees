@@ -2143,7 +2143,7 @@ class GedcomTag
     public static function getPicklistFacts($fact_type): array
     {
         switch ($fact_type) {
-            case 'INDI':
+            case Individual::RECORD_TYPE:
                 $tags = [
                     // Facts, attributes for individuals (no links to FAMs)
                     'RESN',
@@ -2230,7 +2230,8 @@ class GedcomTag
                     '_YART',
                 ];
                 break;
-            case 'FAM':
+
+            case Family::RECORD_TYPE:
                 $tags = [
                     // Facts for families, left out HUSB, WIFE & CHIL links
                     'RESN',
@@ -2269,7 +2270,8 @@ class GedcomTag
                     '_TODO',
                 ];
                 break;
-            case 'SOUR':
+
+            case Source::RECORD_TYPE:
                 $tags = [
                     // Facts for sources
                     'DATA',
@@ -2288,7 +2290,8 @@ class GedcomTag
                     'RESN',
                 ];
                 break;
-            case 'REPO':
+
+            case Repository::RECORD_TYPE:
                 $tags = [
                     // Facts for repositories
                     'NAME',
@@ -2305,6 +2308,7 @@ class GedcomTag
                     'RESN',
                 ];
                 break;
+
             case 'PLAC':
                 $tags = [
                     // Facts for places
@@ -2314,6 +2318,7 @@ class GedcomTag
                     '_HEB',
                 ];
                 break;
+
             case 'NAME':
                 $tags = [
                     // Facts subordinate to NAME
@@ -2325,6 +2330,7 @@ class GedcomTag
                     '_MARNM',
                 ];
                 break;
+
             default:
                 $tags = [];
                 break;

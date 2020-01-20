@@ -1,9 +1,11 @@
 <?php
 
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectNewFact;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 
 ?>
 
@@ -25,7 +27,7 @@ use Fisharebest\Webtrees\I18N;
                     <?php foreach ($add_facts as $fact => $fact_name) : ?>
                         <option value="<?= $fact ?>"><?= $fact_name ?></option>
                     <?php endforeach ?>
-                    <?php if ($record::RECORD_TYPE === 'INDI' || $record::RECORD_TYPE === 'FAM') : ?>
+                    <?php if ($record::RECORD_TYPE === Individual::RECORD_TYPE || $record::RECORD_TYPE === Family::RECORD_TYPE) : ?>
                         <option value="FACT">
                         <?= I18N::translate('Custom fact') ?>
                         </option>

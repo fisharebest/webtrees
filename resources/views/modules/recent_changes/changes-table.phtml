@@ -1,9 +1,16 @@
 <?php
 
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submitter;
+use Fisharebest\Webtrees\View;
 
 ?>
-<?php use Fisharebest\Webtrees\View; ?>
 
 <div class="table-responsive">
     <table
@@ -37,25 +44,25 @@ use Fisharebest\Webtrees\I18N;
             <?php foreach ($records as $record) : ?>
                 <tr>
                     <td data-sort="<?= $record::RECORD_TYPE ?>" class="text-centre wt-side-block-optional">
-                        <?php if ($record::RECORD_TYPE === 'INDI') : ?>
+                        <?php if ($record::RECORD_TYPE === Individual::RECORD_TYPE) : ?>
                             <?= view('icons/individual') ?>
                             <span class="sr-only"><?= I18N::translate('Individual') ?></span>
-                        <?php elseif ($record::RECORD_TYPE === 'FAM') : ?>
+                        <?php elseif ($record::RECORD_TYPE === Family::RECORD_TYPE) : ?>
                             <?= view('icons/family') ?>
                             <span class="sr-only"><?= I18N::translate('Family') ?></span>
-                        <?php elseif ($record::RECORD_TYPE === 'OBJE') : ?>
+                        <?php elseif ($record::RECORD_TYPE === Media::RECORD_TYPE) : ?>
                             <?= view('icons/media') ?>
                             <span class="sr-only"><?= I18N::translate('Media') ?></span>
-                        <?php elseif ($record::RECORD_TYPE === 'NOTE') : ?>
+                        <?php elseif ($record::RECORD_TYPE === Note::RECORD_TYPE) : ?>
                             <?= view('icons/note') ?>
                             <span class="sr-only"><?= I18N::translate('Note') ?></span>
-                        <?php elseif ($record::RECORD_TYPE === 'SOUR') : ?>
+                        <?php elseif ($record::RECORD_TYPE === Source::RECORD_TYPE) : ?>
                             <?= view('icons/source') ?>
                             <span class="sr-only"><?= I18N::translate('Source') ?></span>
-                        <?php elseif ($record::RECORD_TYPE === 'SUBM') : ?>
+                        <?php elseif ($record::RECORD_TYPE === Submitter::RECORD_TYPE) : ?>
                             <?= view('icons/submitter') ?>
                             <span class="sr-only"><?= I18N::translate('Submitter') ?></span>
-                        <?php elseif ($record::RECORD_TYPE === 'REPO') : ?>
+                        <?php elseif ($record::RECORD_TYPE === Repository::RECORD_TYPE) : ?>
                             <?= view('icons/repository') ?>
                             <span class="sr-only"><?= I18N::translate('Repository') ?></span>
                         <?php endif ?>
