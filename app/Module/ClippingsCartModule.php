@@ -163,9 +163,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             ]), 'menu-clippings-cart', ['rel' => 'nofollow']),
         ];
 
-        $action = array_search($route->name, self::ROUTES_WITH_RECORDS);
+        $action = array_search($route->name, self::ROUTES_WITH_RECORDS, true);
         if ($action !== false) {
-            $xref = $request->getAttribute('xref');
+            $xref = $route->attributes['xref'];
             assert(is_string($xref));
 
             $add_route = route('module', [
