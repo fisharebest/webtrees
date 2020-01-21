@@ -208,7 +208,7 @@ use Fisharebest\Webtrees\I18N;
                         if ($n++) {
                             echo ' | ';
                         }
-                        echo '<a ' . (get_class($tmp) === get_class($cal_date) ? 'class="error"' : '') . 'href="' . e(route('calendar', ['cal' => $tmp->format('%@'), 'day' => $tmp->day(), 'month' => $tmp->format('%O'), 'year' => $tmp->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => $view, 'tree' => $tree->name()])) . '" rel="nofollow">', $cal_name, '</a>';
+                        echo '<a ' . (get_class($tmp) === get_class($cal_date) ? 'class="error"' : '') . ' href="' . e(route('calendar', ['cal' => $tmp->format('%@'), 'day' => $tmp->day(), 'month' => $tmp->format('%O'), 'year' => $tmp->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => $view, 'tree' => $tree->name()])) . '" rel="nofollow">', $cal_name, '</a>';
                     }
                 } ?>
             </td>
