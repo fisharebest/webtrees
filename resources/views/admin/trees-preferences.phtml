@@ -149,7 +149,7 @@ use Fisharebest\Webtrees\I18N;
         </label>
         <div class="col-sm-9">
             <select id="CONTACT_USER_ID" name="CONTACT_USER_ID" class="form-control">
-                <option value=""></option>
+                <option value="">&nbsp;</option>
                 <?php foreach ($members as $member) : ?>
                     <option value="<?= $member->id() ?>" <?= (int) $tree->getPreference('CONTACT_USER_ID') === $member->id() ? 'selected' : '' ?>>
                         <?= e($member->realName()) ?> - <?= e($member->userName()) ?>
@@ -169,7 +169,7 @@ use Fisharebest\Webtrees\I18N;
         </label>
         <div class="col-sm-9">
             <select id="WEBMASTER_USER_ID" name="WEBMASTER_USER_ID" class="form-control">
-                <option value=""></option>
+                <option value="">&nbsp;</option>
                 <?php foreach ($members as $member) : ?>
                     <option value="<?= $member->id() ?>" <?= (int) $tree->getPreference('WEBMASTER_USER_ID') === $member->id() ? 'selected' : '' ?>>
                         <?= e($member->realName()) ?> - <?= e($member->userName()) ?>
