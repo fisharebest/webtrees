@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Aura\Router\RouterContainer;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
@@ -81,16 +82,17 @@ class Router implements MiddlewareInterface
         // Match the request to a route.
         $route = $this->router_container->getMatcher()->match($pretty);
 
-        // Add the route as attribute of the request
-        $request = $request->withAttribute('route', $route);
-
-        // Bind the request into the container
-        app()->instance(ServerRequestInterface::class, $request);
-
-        // No route matched?  Let the
+        // No route matched? Let the default handler take care of it
         if ($route === false) {
             return $handler->handle($request);
         }
+
+        // Add the route as attribute of the request
+        $request = $request->withAttribute('route', $route);
+
+        // This middleware needs cannot run until after the routing, as it needs to know the route.
+        $post_routing_middleware = [CheckCsrf::class];
+        $post_routing_middleware = array_map('app', $post_routing_middleware);
 
         // Firstly, apply the route middleware
         $route_middleware = $route->extras['middleware'] ?? [];
@@ -102,7 +104,30 @@ class Router implements MiddlewareInterface
         // Finally, run the handler using middleware
         $handler_middleware = [new WrapHandler($route->handler)];
 
-        $middleware = array_merge($route_middleware, $module_middleware, $handler_middleware);
+        $middleware = array_merge(
+            $post_routing_middleware,
+            $route_middleware,
+            $module_middleware,
+            $handler_middleware
+        );
+
+        // Add the matched attributes to the request.
+        foreach ($route->attributes as $key => $value) {
+            if ($key === 'tree') {
+                $value = $this->tree_service->all()->get($value);
+                app()->instance(Tree::class, $value);
+
+                // Missing mandatory parameter? Let the default handler take care of it.
+                if ($value === null && strpos($route->path, '{tree}') !== false) {
+                    return $handler->handle($request);
+                }
+            }
+
+            $request = $request->withAttribute((string) $key, $value);
+        }
+
+        // Bind the request into the container
+        app()->instance(ServerRequestInterface::class, $request);
 
         $dispatcher = new Dispatcher($middleware, app());
 

@@ -28,6 +28,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function app;
 use function redirect;
 use function route;
 
@@ -46,6 +47,9 @@ class NoRouteFound implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        // Bind the request into the container.  We'll need it to generate an error page.
+        app()->instance(ServerRequestInterface::class, $request);
+
         if ($request->getMethod() !== RequestMethodInterface::METHOD_GET) {
             throw new HttpNotFoundException();
         }

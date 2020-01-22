@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\Routes;
 
 use Aura\Router\Map;
 use Fig\Http\Message\RequestMethodInterface;
-use Fisharebest\Webtrees\Http\Middleware\LoadRouteParameters;
 use Fisharebest\Webtrees\Http\Middleware\AuthAdministrator;
 use Fisharebest\Webtrees\Http\Middleware\AuthEditor;
 use Fisharebest\Webtrees\Http\Middleware\AuthLoggedIn;
@@ -194,13 +193,6 @@ class WebRoutes
     public function load(Map $router): void
     {
         $router->attach('', '', static function (Map $router) {
-            $router->extras([
-                'middleware' => [
-                    LoadRouteParameters::class,
-                    CheckCsrf::class,
-                ],
-            ]);
-
             // Admin routes.
             $router->attach('', '/admin', static function (Map $router) {
                 $router->extras([

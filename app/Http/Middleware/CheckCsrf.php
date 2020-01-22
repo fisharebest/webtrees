@@ -53,22 +53,22 @@ class CheckCsrf implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            $params = (array) $request->getParsedBody();
+            $route = $request->getAttribute('route');
 
-            $route = $params['route'] ?? '';
-
-            if (!in_array($route, self::EXCLUDE_ROUTES, true)) {
+            if (!in_array($route->name, self::EXCLUDE_ROUTES, true)) {
+                $params        = (array) $request->getParsedBody();
                 $client_token  = $params['_csrf'] ?? $request->getHeaderLine('X-CSRF-TOKEN');
                 $session_token = Session::get('CSRF_TOKEN');
+
+                unset($params['_csrf']);
+
+                $request = $request->withParsedBody($params);
 
                 if ($client_token !== $session_token) {
                     FlashMessages::addMessage(I18N::translate('This form has expired. Try again.'));
 
                     return redirect((string) $request->getUri());
                 }
-
-                unset($params['_csrf']);
-                $request = $request->withParsedBody($params);
             }
         }
 
