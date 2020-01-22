@@ -285,13 +285,15 @@ class LocationController extends AbstractAdminController
             $lat = $location->latitude();
             $lng = $location->longitude();
             $id  = $place_id;
+            $title = e($location->locationName());
         } else {
-            $lat = '';
-            $lng = '';
-            $id  = $parent_id;
+            $lat       = '';
+            $lng       = '';
+            $id        = $parent_id;
+            $hierarchy = $this->getHierarchy($parent_id);
+            $loc       = new Location($hierarchy[0]->fqpn);
+            $title     = e($loc->locationName());
         }
-
-        $title = e($location->locationName());
 
         $breadcrumbs = [
             route(ControlPanel::class) => I18N::translate('Control panel'),
@@ -304,6 +306,7 @@ class LocationController extends AbstractAdminController
 
         if ($place_id === 0) {
             $breadcrumbs[] = I18N::translate('Add');
+            $title         .= ' — ' . I18N::translate('Add');
         } else {
             $breadcrumbs[] = I18N::translate('Edit');
             $title         .= ' — ' . I18N::translate('Edit');
