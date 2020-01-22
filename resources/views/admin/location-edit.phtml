@@ -18,7 +18,6 @@ use Fisharebest\Webtrees\View;
 <form method="post">
     <?= csrf_field() ?>
     <input type="hidden" name="place_id" value="<?= e($place_id) ?>">
-    <input type="hidden" name="level" value="<?= count($hierarchy) ?>">
     <input type="hidden" name="place_long" value="<?= e($lng) ?>">
     <input type="hidden" name="place_lati" value="<?= e($lat) ?>">
 
