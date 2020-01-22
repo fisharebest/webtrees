@@ -48,7 +48,7 @@ use Fisharebest\Webtrees\View;
                                 </span>
                             </div>
                             <select name="tree_name" class="form-control" dir="ltr" id="import-server-file">
-                                <option value=""></option>
+                                <option value="">&nbsp;</option>
                                 <?php foreach ($gedcom_files as $gedcom_file) : ?>
                                     <option value="<?= e($gedcom_file) ?>" <?= $gedcom_file === $default_gedcom_file ? 'selected' : '' ?>>
                                         <?= e($gedcom_file) ?>

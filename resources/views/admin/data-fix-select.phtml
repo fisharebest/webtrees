@@ -29,7 +29,7 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <select class="form-control" id="data_fix" name="data_fix" type="text" required>
-                <option></option>
+                <option value="">&nbsp;</option>
                 <?php foreach ($data_fixes as $data_fix) : ?>
                     <option value="<?= $data_fix->name() ?>">
                         <?= $data_fix->title() ?>
