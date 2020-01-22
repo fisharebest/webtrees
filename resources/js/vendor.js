@@ -118,6 +118,7 @@ import 'wheelzoom';
 import 'leaflet';
 import 'leaflet.markercluster';
 import 'beautifymarker';
+import 'leaflet-control-geocoder';
 
 window.$ = window.jQuery = $;
 
@@ -145,5 +146,3 @@ window.Bloodhound = require('corejs-typeahead/dist/bloodhound.min.js');
 // See https://github.com/RubaXa/Sortable/issues/1229
 // window.Sortable = require('sortablejs');
 window.Sortable = Sortable;
-
-window.GeoSearch = require('leaflet-geosearch');

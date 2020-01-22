@@ -29,7 +29,7 @@ mix.styles([
     "node_modules/typeahead.js-bootstrap4-css/typeaheadjs.css",
     "node_modules/leaflet/dist/leaflet.css",
     "node_modules/beautifymarker/leaflet-beautify-marker-icon.css",
-    "node_modules/leaflet-geosearch/dist/style.css",
+    "node_modules/leaflet-control-geocoder/dist/Control.Geocoder.css",
     "node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css",
     "node_modules/leaflet.markercluster/dist/MarkerCluster.css",
 ], "public/css/vendor.css");
@@ -43,6 +43,7 @@ mix
     .js("resources/js/vendor.js", "public/js/vendor.min.js")
     .babel(["resources/js/webtrees.js", "resources/js/statistics.js", "resources/js/treeview.js"], "public/js/webtrees.min.js")
     .copy("node_modules/leaflet/dist/images/*", "public/css/images/")
+    .copy("node_modules/leaflet-control-geocoder/dist/images/*", "public/css/images/")
     .copy("node_modules/dejavu-fonts-ttf/ttf/DejaVuSans.ttf", "resources/fonts/")
     .options({
             processCssUrls: false,
