@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
@@ -59,10 +60,13 @@ class TreePageEdit implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $main_blocks = $this->home_page_service->treeBlocks($tree->id(), ModuleBlockInterface::MAIN_BLOCKS);
-        $side_blocks = $this->home_page_service->treeBlocks($tree->id(), ModuleBlockInterface::SIDE_BLOCKS);
+        $user = $request->getAttribute('user');
+        assert($user instanceof UserInterface);
 
-        $all_blocks = $this->home_page_service->availableTreeBlocks();
+        $main_blocks = $this->home_page_service->treeBlocks($tree, $user, ModuleBlockInterface::MAIN_BLOCKS);
+        $side_blocks = $this->home_page_service->treeBlocks($tree, $user, ModuleBlockInterface::SIDE_BLOCKS);
+
+        $all_blocks = $this->home_page_service->availableTreeBlocks($tree, $user);
         $title      = I18N::translate('Change the “Home page” blocks');
         $url_cancel = route(TreePage::class, ['tree' => $tree->name()]);
         $url_save   = route(TreePageUpdate::class, ['tree' => $tree->name()]);

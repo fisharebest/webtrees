@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Services\HomePageService;
 use Fisharebest\Webtrees\Tree;
@@ -57,16 +58,21 @@ class TreePageUpdate implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $user = $request->getAttribute('user');
+        assert($user instanceof UserInterface);
+
         $params = (array) $request->getParsedBody();
 
         $defaults = (bool) ($params['defaults'] ?? false);
 
         if ($defaults) {
-            $main_blocks = $this->home_page_service->treeBlocks(-1, ModuleBlockInterface::MAIN_BLOCKS)
+            $default_tree = new Tree(-1, 'DEFAULT', 'DEFAULT');
+
+            $main_blocks = $this->home_page_service->treeBlocks($default_tree, $user, ModuleBlockInterface::MAIN_BLOCKS)
                 ->map(static function (ModuleBlockInterface $block) {
                     return $block->name();
                 });
-            $side_blocks = $this->home_page_service->treeBlocks(-1, ModuleBlockInterface::SIDE_BLOCKS)
+            $side_blocks = $this->home_page_service->treeBlocks($default_tree, $user, ModuleBlockInterface::SIDE_BLOCKS)
                 ->map(static function (ModuleBlockInterface $block) {
                     return $block->name();
                 });

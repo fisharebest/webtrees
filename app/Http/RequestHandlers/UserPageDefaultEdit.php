@@ -19,14 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Services\HomePageService;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function assert;
 use function route;
 
 /**
@@ -54,13 +57,21 @@ class UserPageDefaultEdit implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        $user = $request->getAttribute('user');
+        assert($user instanceof UserInterface);
+
         $this->layout = 'layouts/administration';
 
         $this->home_page_service->checkDefaultUserBlocksExist();
 
-        $main_blocks = $this->home_page_service->userBlocks(-1, ModuleBlockInterface::MAIN_BLOCKS);
-        $side_blocks = $this->home_page_service->userBlocks(-1, ModuleBlockInterface::SIDE_BLOCKS);
-        $all_blocks  = $this->home_page_service->availableUserBlocks();
+        $default_tree = new Tree(-1, 'DEFAULT', 'DEFAULT');
+
+        $main_blocks = $this->home_page_service->userBlocks($default_tree, $user, ModuleBlockInterface::MAIN_BLOCKS);
+        $side_blocks = $this->home_page_service->userBlocks($default_tree, $user, ModuleBlockInterface::SIDE_BLOCKS);
+        $all_blocks  = $this->home_page_service->availableUserBlocks($tree, $user);
         $title       = I18N::translate('Set the default blocks for new users');
         $url_cancel  = route('admin-users');
         $url_save    = route(UserPageDefaultUpdate::class);
