@@ -2658,7 +2658,7 @@ class Statistics implements
             $method = array_shift($params);
 
             if (method_exists($this, $method)) {
-                $tags[$match[0]] = call_user_func([$this, $method], ...$params);
+                $tags[$match[0] . '#'] = call_user_func([$this, $method], ...$params);
             }
         }
 
