@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2019-11-10 15:42+0000\n"
+"PO-Revision-Date: 2020-01-30 10:03+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Hebrew <http://translate.webtrees.net/projects/webtrees/"
+"Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -9875,7 +9875,7 @@ msgstr "לשוטו"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Letter"
-msgstr "Letter"
+msgstr "מכתבים"
 
 #: app/Module/GoogleMapsModule.php:384 app/Module/GoogleMapsModule.php:400
 #: app/Module/GoogleMapsModule.php:1438 app/Module/GoogleMapsModule.php:3444
