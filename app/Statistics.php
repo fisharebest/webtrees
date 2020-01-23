@@ -2651,7 +2651,7 @@ class Statistics implements
         $tags    = [];
         $matches = [];
 
-        preg_match_all('/#([^#]+)#/', $text, $matches, PREG_SET_ORDER);
+        preg_match_all('/#([^#\n]+)(?=#)/', $text, $matches, PREG_SET_ORDER);
 
         foreach ($matches as $match) {
             $params = explode(':', $match[1]);
