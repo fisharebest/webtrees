@@ -2,6 +2,7 @@
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 /**
@@ -9,6 +10,7 @@ use Illuminate\Support\Collection;
  * @var bool       $can_edit
  * @var Collection $favorites
  * @var string     $module_name
+ * @var Tree       $tree
  */
 ?>
 
@@ -55,87 +57,111 @@ use Illuminate\Support\Collection;
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body row">
-                        <div class="col-sm-4 col-md-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="type" value="indi" id="fav-indi-<?= e($block_id) ?>" checked>
-                                <label for="fav-indi-<?= e($block_id) ?>">
-                                    <?= I18N::translate('Individual') ?>
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="col-sm-4 col-md-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type" value="indi" id="fav-indi-<?= e($block_id) ?>" checked>
+                                    <label class="form-check-label" for="fav-indi-<?= e($block_id) ?>">
+                                        <?= I18N::translate('Individual') ?>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-md-9">
+                                <?= view('components/select-individual', ['name' => 'indi-xref', 'tree' => $tree]) ?>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-sm-4 col-md-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type" value="fam" id="fav-fam-<?= e($block_id) ?>">
+                                    <label class="form-check-label" for="fav-fam-<?= e($block_id) ?>">
+                                        <?= I18N::translate('Family') ?>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-md-9">
+                                <?= view('components/select-family', ['name' => 'fam-xref', 'tree' => $tree]) ?>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-sm-4 col-md-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type" value="obje" id="fav-obje-<?= e($block_id) ?>">
+                                    <label class="form-check-label" for="fav-obje-<?= e($block_id) ?>">
+                                        <?= I18N::translate('Media object') ?>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-md-9">
+                                <?= view('components/select-media', ['name' => 'obje-xref', 'tree' => $tree]) ?>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-sm-4 col-md-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type" value="sour" id="fav-sour-<?= e($block_id) ?>">
+                                    <label class="form-check-label" for="fav-sour-<?= e($block_id) ?>">
+                                        <?= I18N::translate('Source') ?>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-md-9">
+                                <?= view('components/select-source', ['name' => 'sour-xref', 'tree' => $tree]) ?>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-sm-4 col-md-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type" value="repo" id="fav-repo-<?= e($block_id) ?>">
+                                    <label class="form-check-label" for="fav-repo-<?= e($block_id) ?>">
+                                        <?= I18N::translate('Repository') ?>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-md-9">
+                                <?= view('components/select-repository', ['name' => 'repo-xref', 'tree' => $tree]) ?>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-sm-4 col-md-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type" value="url" id="fav-url-<?= e($block_id) ?>">
+                                    <label class="form-check-label" for="fav-url-<?= e($block_id) ?>">
+                                        <?= I18N::translate('URL') ?>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-md-9">
+                                <label>
+                                    <span class="sr-only">
+                                        <?= I18N::translate('URL') ?>
+                                    </span>
+                                    <input type="text" class="form-control" name="url" id="url" value="" placeholder="<?= I18N::translate('URL') ?>">
+                                </label>
+                                <label>
+                                    <span class="sr-only">
+                                        <?= I18N::translate('Title') ?>
+                                    </span>
+                                    <input type="text" class="form-control" name="title" id="title" value="" placeholder="<?= I18N::translate('Title') ?>">
                                 </label>
                             </div>
                         </div>
-                        <div class="col-sm-8 col-md-9">
-                            <?= view('components/select-individual', ['name' => 'indi-xref', 'tree' => $tree]) ?>
-                        </div>
 
-                        <div class="col-sm-4 col-md-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="type" value="fam" id="fav-fam-<?= e($block_id) ?>">
-                                <label for="fam-xref">
-                                    <?= I18N::translate('Family') ?>
+                        <div class="form-row">
+                            <div class="col-sm-4 col-md-3">
+                                <label for="fav-note-<?= e($block_id) ?>">
+                                    <?= I18N::translate('Note') ?>
                                 </label>
                             </div>
-                        </div>
-                        <div class="col-sm-8 col-md-9">
-                            <?= view('components/select-family', ['name' => 'fam-xref', 'tree' => $tree]) ?>
-                        </div>
-
-                        <div class="col-sm-4 col-md-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="type" value="obje" id="fav-obje-<?= e($block_id) ?>">
-                                <label for="fav-obje-<?= e($block_id) ?>">
-                                    <?= I18N::translate('Media object') ?>
-                                </label>
+                            <div class="col-sm-8 col-md-9">
+                                <textarea name="note" id="fav-note-<?= e($block_id) ?>" class="form-control" placeholder="<?= I18N::translate('Enter an optional note about this favorite') ?>" rows="3" dir="auto"></textarea>
                             </div>
-                        </div>
-                        <div class="col-sm-8 col-md-9">
-                            <?= view('components/select-media', ['name' => 'obje-xref', 'tree' => $tree]) ?>
-                        </div>
-
-                        <div class="col-sm-4 col-md-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="type" value="sour" id="fav-sour-<?= e($block_id) ?>">
-                                <label for="fav-sour-<?= e($block_id) ?>">
-                                    <?= I18N::translate('Source') ?>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-sm-8 col-md-9">
-                            <?= view('components/select-source', ['name' => 'sour-xref', 'tree' => $tree]) ?>
-                        </div>
-
-                        <div class="col-sm-4 col-md-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="type" value="repo" id="fav-repo-<?= e($block_id) ?>">
-                                <label for="fav-repo-<?= e($block_id) ?>">
-                                    <?= I18N::translate('Repository') ?>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-sm-8 col-md-9">
-                            <?= view('components/select-repository', ['name' => 'repo-xref', 'tree' => $tree]) ?>
-                        </div>
-
-                        <div class="col-sm-4 col-md-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="type" value="url" id="fav-url-<?= e($block_id) ?>">
-                                <label for="fav-url-<?= e($block_id) ?>">
-                                    <?= I18N::translate('URL') ?>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-sm-8 col-md-9">
-                            <input type="text" name="url" id="url" size="20" value="" placeholder="<?= I18N::translate('URL') ?>">
-                            <input type="text" name="title" id="title" size="20" value="" placeholder="<?= I18N::translate('Title') ?>">
-                        </div>
-
-                        <div class="col-sm-4 col-md-3">
-                            <label for="fav-note-<?= e($block_id) ?>">
-                                <?= I18N::translate('Note') ?>
-                            </label>
-                        </div>
-                        <div class="col-sm-8 col-md-9">
-                            <textarea name="note" id="fav-repo-<?= e($block_id) ?>" class="form-control" placeholder="<?= I18N::translate('Enter an optional note about this favorite') ?>" rows="3" dir="auto"></textarea>
                         </div>
                     </div>
 
