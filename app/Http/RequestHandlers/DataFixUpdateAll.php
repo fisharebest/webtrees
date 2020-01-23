@@ -50,24 +50,18 @@ class DataFixUpdateAll implements RequestHandlerInterface
     /** @var ModuleService */
     private $module_service;
 
-    /** @var TimeoutService */
-    private $timeout_service;
-
     /**
      * DataFix constructor.
      *
      * @param DataFixService $data_fix_service
      * @param ModuleService  $module_service
-     * @param TimeoutService $timeout_service
      */
     public function __construct(
         DataFixService $data_fix_service,
-        ModuleService $module_service,
-        TimeoutService $timeout_service
+        ModuleService $module_service
     ) {
         $this->data_fix_service = $data_fix_service;
         $this->module_service   = $module_service;
-        $this->timeout_service  = $timeout_service;
     }
 
     /**
