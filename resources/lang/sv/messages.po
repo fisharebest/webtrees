@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-01-20 17:57+0000\n"
-"PO-Revision-Date: 2019-11-15 08:42+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
-"Language: sv\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-01-20 17:57+0000\nPO-Revision-Date: 2020-01-23 14:00+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -273,8 +257,8 @@ msgstr[1] "%s personer har uppdaterats."
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] "%s plats har importerats."
-msgstr[1] "%s platser har importerats."
+msgstr[0] "%s lokalitet har importerats."
+msgstr[1] "%s lokaliteter har importerats."
 
 #: app/Module/UserMessagesModule.php:235
 #, php-format
@@ -777,7 +761,7 @@ msgstr "En lista över källor."
 #. I18N: Description of the “Shared submitters” module
 #: app/Module/SubmitterListModule.php:64
 msgid "A list of submitters."
-msgstr ""
+msgstr "En lista över avsändare."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:65
@@ -1371,7 +1355,7 @@ msgstr "Lägg till en vigsel"
 #. I18N: Name of a module
 #: app/Module/FixMissingMarriedNames.php:70
 msgid "Add married names"
-msgstr ""
+msgstr "Lägg till vigselnamn"
 
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:59
@@ -1909,7 +1893,7 @@ msgstr "Ett timglasdiagram av en persons förfäder och ättlingar."
 
 #: resources/views/edit/reorder-families.phtml:65
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr ""
+msgstr "En individ kan ha mer än en uppsättning föräldrar. Till exempel födelse och adoption."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:63
@@ -3955,12 +3939,12 @@ msgstr "Kontrollpanel"
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:61
 msgid "Convert CEME tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Konvertera CEME-taggar till GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:49
 msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Konvertera _PRIM-taggar till GEDCOM 5.5.1"
 
 #: app/Http/RequestHandlers/HelpText.php:266
 #: resources/views/admin/trees-export.phtml:65
@@ -3971,7 +3955,7 @@ msgstr "Konvertera från UTF-8 till ISO-8859-1"
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr ""
+msgstr "Konvertera till"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
@@ -4318,7 +4302,7 @@ msgstr "Data"
 
 #: app/Http/Controllers/Admin/ModuleController.php:142
 msgid "Data Fixes"
-msgstr ""
+msgstr "Datafixer"
 
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "Data controller"
@@ -4327,7 +4311,7 @@ msgstr "Datakontroll"
 #: resources/views/admin/data-fix-page.phtml:68
 #: resources/views/admin/data-fix-select.phtml:28
 msgid "Data fix"
-msgstr ""
+msgstr "Datafix"
 
 #: app/Http/RequestHandlers/DataFixChoose.php:69
 #: app/Http/RequestHandlers/DataFixPage.php:91
@@ -4336,11 +4320,11 @@ msgstr ""
 #: resources/views/admin/data-fix-page.phtml:23
 #: resources/views/admin/trees.phtml:132
 msgid "Data fixes"
-msgstr ""
+msgstr "Datafixer"
 
 #: resources/views/help/data-fixes.phtml:8
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
-msgstr ""
+msgstr "Datafixeringar kan kräva massor av långsamma beräkningar, så det är inte möjligt att skapa en exakt lista med poster som behöver uppdateras."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
@@ -5604,7 +5588,7 @@ msgstr "Sista datum för ändringar"
 #. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
 #: app/GedcomCode/GedcomCodeTemp.php:345
 msgid "Endowment House"
-msgstr "Endowment House"
+msgstr "Endowment Hus"
 
 #. I18N: gedcom tag ENGA
 #: app/GedcomTag.php:709 resources/xml/reports/missing_facts_report.xml:20
@@ -6433,7 +6417,7 @@ msgstr "Till exempel, om du anger en sökväg längd 2, kommer personen att kunn
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr ""
+msgstr "Till exempel kan vi snabbt hitta individer som inte har en dödshändelse, men det är mycket långsammare att beräkna om individen är död."
 
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
@@ -8291,7 +8275,7 @@ msgstr "Lesotho"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Letter"
-msgstr "Letter"
+msgstr "Brev"
 
 #: app/Http/Controllers/Admin/LocationController.php:488
 msgid "Level"
@@ -8417,11 +8401,11 @@ msgstr "Lokala filer"
 #. I18N: gedcom tag _LOC
 #: app/GedcomTag.php:822 app/GedcomTag.php:1864
 msgid "Location"
-msgstr "Plats"
+msgstr "Lokalitet"
 
 #: app/Http/Controllers/Admin/LocationController.php:432
 msgid "Location not removed: this location contains sub-locations"
-msgstr "Plats inte borttagen: denna plats innehåller underplatser"
+msgstr "Lokaliteten inte borttagen: denna lokalitet innehåller underlokaliteter"
 
 #: app/GedcomCode/GedcomCodeRela.php:257
 msgid "Lodger"
@@ -11589,7 +11573,7 @@ msgstr "Ta bort GEDCOM media sökvägen från filnamn"
 
 #: resources/views/admin/locations.phtml:79
 msgid "Remove this location?"
-msgstr "Ta bort denna plats?"
+msgstr "Ta bort denna lokalitet?"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:579
@@ -11608,14 +11592,13 @@ msgid "Renumber family tree"
 msgstr "Numrera om släktträdet"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
-#, fuzzy
 msgid "Replace"
-msgstr "Ersätt"
+msgstr "Byt ut"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:72
 msgid "Replace cemetery tags with burial places."
-msgstr ""
+msgstr "Byt ut kyrkogårdsetiketter med gravplatser."
 
 #: resources/views/search-replace-page.phtml:26
 msgid "Replace with"
@@ -11756,7 +11739,7 @@ msgstr "Pensionering"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:417
 msgid "Reunion"
-msgstr "Reunion"
+msgstr "Återträff"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:582
@@ -12725,7 +12708,7 @@ msgstr "Visa släktnamnslistan"
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:79
 msgid "Show the location of events on a map."
-msgstr "Visa platsen för händelser på en karta."
+msgstr "Visa lokaliteten för händelser på en karta."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:37
@@ -13302,7 +13285,7 @@ msgstr "Avsändare"
 
 #: resources/views/lists/submitters-table.phtml:60
 msgid "Submitter name"
-msgstr ""
+msgstr "Avsändarens namn"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/ListController.php:548
@@ -13311,7 +13294,7 @@ msgstr ""
 #: resources/views/admin/merge-records-step-1.phtml:29
 #: resources/views/lists/submitters-table.phtml:55
 msgid "Submitters"
-msgstr ""
+msgstr "Avsändare"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -13767,7 +13750,7 @@ msgstr "Filen ”%s” finns inte."
 
 #: resources/views/edit/reorder-families.phtml:67
 msgid "The first family in the list will be used in charts, lists, reports, etc."
-msgstr ""
+msgstr "Den första familjen i listan kommer att användas i diagram, listor, rapporter, etc."
 
 #: app/Http/RequestHandlers/DeletePath.php:71
 #, php-format
@@ -13841,7 +13824,7 @@ msgstr "Lista-menyn."
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:37
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "Lokaliteten för denna plats är inte känd."
 
 #: app/Http/Controllers/EditMediaController.php:284
 #, php-format
@@ -14473,7 +14456,7 @@ msgstr "Denna länk är giltig i en timme."
 
 #: resources/views/help/data-fixes.phtml:16
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
-msgstr ""
+msgstr "Denna lista skapas med en enkel (men snabb) sökning och innehåller därför poster som inte kommer att uppdateras."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -15374,7 +15357,7 @@ msgstr "Uppdatera ortsnamn"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:74
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
-msgstr ""
+msgstr "Uppdatera delar av platsnamn på högre nivå samtidigt som du håller delarna på lägre nivå."
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -15827,7 +15810,7 @@ msgstr "När du lägger till nya nära släktingar, kan du lägga till källhän
 
 #: resources/views/edit/reorder-families.phtml:24
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr ""
+msgstr "När en person har mer än en make ska du sortera familjerna i datumordning."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:892
@@ -15859,7 +15842,7 @@ msgstr "Vem är online"
 
 #: resources/views/admin/data-fix-page.phtml:80
 msgid "Why does this list include records that do not need to be updated?"
-msgstr ""
+msgstr "Varför innehåller denna lista poster som inte behöver uppdateras?"
 
 #: resources/views/lists/families-table.phtml:173
 msgid "Widow"
@@ -18844,7 +18827,7 @@ msgstr "lista"
 #: app/Http/Controllers/Admin/LocationController.php:761
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr "platser uppdaterade: %s, platser tillläggda: %s"
+msgstr "lokaliteter uppdaterade: %s, lokaliteter tillläggda: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:148
@@ -20292,7 +20275,7 @@ msgstr "”%s” har tagits bort."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:60
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "“Markerad bild” (_PRIM) taggar används av vissa släktforskningsprogram för att indikera den föredragna bilden för en individ. Ett alternativ är att ordna om bilderna så att den föredragna listas först."
 
 #: app/Functions/FunctionsPrint.php:89 app/Note.php:160
 #: app/Report/ReportParserGenerate.php:985
