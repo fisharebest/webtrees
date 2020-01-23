@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Services\HomePageService;
@@ -61,6 +62,9 @@ class TreePage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $user = $request->getAttribute('user');
+        assert($user instanceof UserInterface);
+
         $has_blocks = DB::table('block')
             ->where('gedcom_id', '=', $tree->id())
             ->exists();
@@ -81,8 +85,8 @@ class TreePage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('tree-page', [
-            'main_blocks' => $this->home_page_service->treeBlocks($tree->id(), ModuleBlockInterface::MAIN_BLOCKS),
-            'side_blocks' => $this->home_page_service->treeBlocks($tree->id(), ModuleBlockInterface::SIDE_BLOCKS),
+            'main_blocks' => $this->home_page_service->treeBlocks($tree, $user, ModuleBlockInterface::MAIN_BLOCKS),
+            'side_blocks' => $this->home_page_service->treeBlocks($tree, $user, ModuleBlockInterface::SIDE_BLOCKS),
             'title'       => e($tree->title()),
             'tree'        => $tree,
             'meta_robots' => 'index,follow',

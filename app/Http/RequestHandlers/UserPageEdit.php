@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
@@ -59,10 +60,13 @@ class UserPageEdit implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $user = $request->getAttribute('user');
+        assert($user instanceof UserInterface);
+
         $user        = $request->getAttribute('user');
-        $main_blocks = $this->home_page_service->userBlocks($user->id(), ModuleBlockInterface::MAIN_BLOCKS);
-        $side_blocks = $this->home_page_service->userBlocks($user->id(), ModuleBlockInterface::SIDE_BLOCKS);
-        $all_blocks  = $this->home_page_service->availableUserBlocks();
+        $main_blocks = $this->home_page_service->userBlocks($tree, $user, ModuleBlockInterface::MAIN_BLOCKS);
+        $side_blocks = $this->home_page_service->userBlocks($tree, $user, ModuleBlockInterface::SIDE_BLOCKS);
+        $all_blocks  = $this->home_page_service->availableUserBlocks($tree, $user);
         $title       = I18N::translate('Change the “My page” blocks');
         $url_cancel  = route(UserPage::class, ['tree' => $tree->name()]);
         $url_save    = route(UserPageUpdate::class, ['tree' => $tree->name()]);

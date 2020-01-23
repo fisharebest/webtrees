@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
@@ -62,6 +63,7 @@ class UserPage implements RequestHandlerInterface
         assert($tree instanceof Tree);
 
         $user = $request->getAttribute('user');
+        assert($user instanceof UserInterface);
 
         $has_blocks = DB::table('block')
             ->where('user_id', '=', $user->id())
@@ -83,8 +85,8 @@ class UserPage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('user-page', [
-            'main_blocks' => $this->home_page_service->userBlocks($user->id(), ModuleBlockInterface::MAIN_BLOCKS),
-            'side_blocks' => $this->home_page_service->userBlocks($user->id(), ModuleBlockInterface::SIDE_BLOCKS),
+            'main_blocks' => $this->home_page_service->userBlocks($tree, $user, ModuleBlockInterface::MAIN_BLOCKS),
+            'side_blocks' => $this->home_page_service->userBlocks($tree, $user, ModuleBlockInterface::SIDE_BLOCKS),
             'title'       => I18N::translate('My page'),
             'tree'        => $tree,
         ]);
