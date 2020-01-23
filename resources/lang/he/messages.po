@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-01-20 17:57+0000\n"
-"PO-Revision-Date: 2019-11-10 17:37+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Hebrew <http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
-"Language: he\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-01-20 17:57+0000\nPO-Revision-Date: 2020-01-23 14:00+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\nLanguage: he\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -777,7 +761,7 @@ msgstr "רשימת מקורות."
 #. I18N: Description of the “Shared submitters” module
 #: app/Module/SubmitterListModule.php:64
 msgid "A list of submitters."
-msgstr ""
+msgstr "רשימת מגישים."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:65
@@ -1371,7 +1355,7 @@ msgstr "הוסף פירטי נישואין"
 #. I18N: Name of a module
 #: app/Module/FixMissingMarriedNames.php:70
 msgid "Add married names"
-msgstr ""
+msgstr "הוסף שמות נשואין"
 
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:59
@@ -1909,7 +1893,7 @@ msgstr "תרשים שעון חול המציג אב-אבות וצאצאים של 
 
 #: resources/views/edit/reorder-families.phtml:65
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr ""
+msgstr "לאדם יכול להיות יותר ממערכת הורים אחת. למשל, לידה ואומצה."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:63
@@ -3955,12 +3939,12 @@ msgstr "לוח בקרה"
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:61
 msgid "Convert CEME tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "המר תגי CEME ל- GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:49
 msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "המר תגי _PRIM ל- GEDCOM 5.5.1"
 
 #: app/Http/RequestHandlers/HelpText.php:266
 #: resources/views/admin/trees-export.phtml:65
@@ -3971,7 +3955,7 @@ msgstr "הסב מ-UTF-8 ל-ISO-8859-1"
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr ""
+msgstr "המר"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
@@ -4318,7 +4302,7 @@ msgstr "נתונים"
 
 #: app/Http/Controllers/Admin/ModuleController.php:142
 msgid "Data Fixes"
-msgstr ""
+msgstr "תיקוני נתונים"
 
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "Data controller"
@@ -4327,7 +4311,7 @@ msgstr "בקר נתונים"
 #: resources/views/admin/data-fix-page.phtml:68
 #: resources/views/admin/data-fix-select.phtml:28
 msgid "Data fix"
-msgstr ""
+msgstr "תיקון נתונים"
 
 #: app/Http/RequestHandlers/DataFixChoose.php:69
 #: app/Http/RequestHandlers/DataFixPage.php:91
@@ -4336,11 +4320,11 @@ msgstr ""
 #: resources/views/admin/data-fix-page.phtml:23
 #: resources/views/admin/trees.phtml:132
 msgid "Data fixes"
-msgstr ""
+msgstr "תיקוני נתונים"
 
 #: resources/views/help/data-fixes.phtml:8
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
-msgstr ""
+msgstr "תיקוני נתונים יכולים לדרוש הרבה חישובים איטיים, כך שלא ניתן ליצור רשימה מדויקת של רשומות שצריך לעדכן."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
@@ -6433,7 +6417,7 @@ msgstr "לדוגמה, אם תציין אורך נתיב של 2, האדם יוכ�
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr ""
+msgstr "לדוגמה, אנו יכולים למצוא במהירות אנשים שאין להם אירוע מוות, אך הרבה יותר איטי לחשב אם האדם מת."
 
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
@@ -8291,7 +8275,7 @@ msgstr "לשוטו"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Letter"
-msgstr "Letter"
+msgstr "מכתבים"
 
 #: app/Http/Controllers/Admin/LocationController.php:488
 msgid "Level"
@@ -11615,7 +11599,7 @@ msgstr "החלף"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:72
 msgid "Replace cemetery tags with burial places."
-msgstr ""
+msgstr "החלף תגי בית קברות במקומות קבורה."
 
 #: resources/views/search-replace-page.phtml:26
 msgid "Replace with"
@@ -13302,7 +13286,7 @@ msgstr "מגיש"
 
 #: resources/views/lists/submitters-table.phtml:60
 msgid "Submitter name"
-msgstr ""
+msgstr "שם מגיש"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/ListController.php:548
@@ -13311,7 +13295,7 @@ msgstr ""
 #: resources/views/admin/merge-records-step-1.phtml:29
 #: resources/views/lists/submitters-table.phtml:55
 msgid "Submitters"
-msgstr ""
+msgstr "מגישים"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -13767,7 +13751,7 @@ msgstr "הקובץ \"%s\" אינו קיים."
 
 #: resources/views/edit/reorder-families.phtml:67
 msgid "The first family in the list will be used in charts, lists, reports, etc."
-msgstr ""
+msgstr "המשפחה הראשונה ברשימה תשמש בתרשימים, רשימות, דוחות, וכו '."
 
 #: app/Http/RequestHandlers/DeletePath.php:71
 #, php-format
@@ -13841,7 +13825,7 @@ msgstr "תפריט רשימות."
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:37
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "מיקומו של מקום זה אינו ידוע."
 
 #: app/Http/Controllers/EditMediaController.php:284
 #, php-format
@@ -14473,7 +14457,7 @@ msgstr "קישור זה תקף לשעה."
 
 #: resources/views/help/data-fixes.phtml:16
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
-msgstr ""
+msgstr "רשימה זו נוצרת באמצעות חיפוש פשוט (אך מהיר), ולכן כוללת רשומות שלא יעודכנו."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -15374,7 +15358,7 @@ msgstr "עדכון שמות מקומות"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:74
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
-msgstr ""
+msgstr "עדכן את החלקים ברמה הגבוהה ביותר של שמות המקום, תוך שמירה על החלקים ברמה התחתונה."
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -15827,7 +15811,7 @@ msgstr "בעת הוספה קרובי משפחה חדשים, אתה יכול לה
 
 #: resources/views/edit/reorder-families.phtml:24
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr ""
+msgstr "כאשר לאדם יש יותר מבן זוג אחד, עליך למיין את המשפחות לפי סדר תאריך."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:892
@@ -15859,7 +15843,7 @@ msgstr "מי מחובר"
 
 #: resources/views/admin/data-fix-page.phtml:80
 msgid "Why does this list include records that do not need to be updated?"
-msgstr ""
+msgstr "מדוע רשימה זו כוללת רשומות שאין צורך לעדכן אותן?"
 
 #: resources/views/lists/families-table.phtml:173
 msgid "Widow"
@@ -20292,7 +20276,7 @@ msgstr "\"%s\" נמחק."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:60
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "תגיות \"תמונה מודגשת\" (_PRIM) משמשות בחלק מיישומי גניאלוגיה כדי לציין את התמונה המועדפת של האדם. אלטרנטיבה היא למיין מחדש את התמונות כך שהמועדפת תופיע ראשונה."
 
 #: app/Functions/FunctionsPrint.php:89 app/Note.php:160
 #: app/Report/ReportParserGenerate.php:985
