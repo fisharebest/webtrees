@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-01-20 17:47+0000\n"
+"PO-Revision-Date: 2020-01-30 10:03+0000\n"
 "Last-Translator: Luca Bighi <luca74@email.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/it/>\n"
@@ -16244,6 +16244,7 @@ msgstr "Zoom -"
 #: app/Functions/Functions.php:852 app/Module/FamilyNavigatorModule.php:224
 msgid ""
 "_: app/Functions/Functions.php:852 app/Module/FamilyNavigatorModule.php:224\n"
+""
 msgstr ""
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
@@ -17423,41 +17424,41 @@ msgstr "pro ×%s pronipote (di zii)"
 #: app/Functions/Functions.php:1637 app/Functions/Functions.php:1665
 #, php-format
 msgid "great ×%s uncle"
-msgstr "zio di %s° grado"
+msgstr "pro-zio di %s° grado"
 
 #: app/Functions/Functions.php:1647
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr "pro ×%s zio"
+msgstr "pro-zio di (%s-1)° grado"
 
 #: app/Functions/Functions.php:1649
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr "pro ×%s zio"
+msgstr "pro-zio di (%s-1)° grado"
 
 #: app/Functions/Functions.php:1651
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr "pro ×%s zio"
+msgstr "pro-zio di (%s-1)° grado"
 
 #: app/Functions/Functions.php:1579
 msgid "great ×4 aunt"
-msgstr "pro-pro-prozia"
+msgstr "pro-zia di 5° grado"
 
 #: app/Functions/Functions.php:1581
 msgid "great ×4 aunt/uncle"
-msgstr "pro-pro-prozio/a"
+msgstr "pro-zia/o del 5° grado"
 
 #: app/Functions/Functions.php:1994
 msgid "great ×4 grandchild"
-msgstr "pro × 4 nipote (di nonni)"
+msgstr "pro nipote di 4° grado (di nonni)"
 
 #: app/Functions/Functions.php:1992
 msgid "great ×4 granddaughter"
-msgstr "pro × 4 nipote (di nonni)"
+msgstr "pro nipote di 4° grado (di nonni)"
 
 #: app/Functions/Functions.php:1870
 msgid "great ×4 grandfather"
