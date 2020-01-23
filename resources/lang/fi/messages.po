@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-01-20 17:57+0000\n"
-"PO-Revision-Date: 2019-11-11 08:34+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Finnish <http://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
-"Language: fi\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-01-20 17:57+0000\nPO-Revision-Date: 2020-01-23 14:00+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\nLanguage: fi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -773,7 +761,7 @@ msgstr "Luettelo lähteistä."
 #. I18N: Description of the “Shared submitters” module
 #: app/Module/SubmitterListModule.php:64
 msgid "A list of submitters."
-msgstr ""
+msgstr "Luettelo lähettäjistä."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:65
@@ -1367,7 +1355,7 @@ msgstr "Lisää avioliiton yksityiskohdat"
 #. I18N: Name of a module
 #: app/Module/FixMissingMarriedNames.php:70
 msgid "Add married names"
-msgstr ""
+msgstr "Lisää avionimet"
 
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:59
@@ -1905,7 +1893,7 @@ msgstr "Tiimalasikaavio henkilön esi-isistä ja jälkeläisistä."
 
 #: resources/views/edit/reorder-families.phtml:65
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr ""
+msgstr "Henkilöllä voi olla useat vanhemmat.  Esimerkiksi syntymä ja adoptio."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:63
@@ -3951,12 +3939,12 @@ msgstr "Ohjauspaneeli"
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:61
 msgid "Convert CEME tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Muunna CEME-tunnisteet GEDCOM 5.5.1:ksi"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:49
 msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Muunna _PRIM-tunnisteet GEDCOM 5.5.1:ksi"
 
 #: app/Http/RequestHandlers/HelpText.php:266
 #: resources/views/admin/trees-export.phtml:65
@@ -3967,7 +3955,7 @@ msgstr "Muunna tämä UTF-8-koodattu GEDCOM ISO-8859-1 muotoon"
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr ""
+msgstr "Muunna"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
@@ -4314,7 +4302,7 @@ msgstr "Tiedot"
 
 #: app/Http/Controllers/Admin/ModuleController.php:142
 msgid "Data Fixes"
-msgstr ""
+msgstr "Tietojen korjaukset"
 
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "Data controller"
@@ -4323,7 +4311,7 @@ msgstr "Tieto-ohjain"
 #: resources/views/admin/data-fix-page.phtml:68
 #: resources/views/admin/data-fix-select.phtml:28
 msgid "Data fix"
-msgstr ""
+msgstr "Tietojen korjaus"
 
 #: app/Http/RequestHandlers/DataFixChoose.php:69
 #: app/Http/RequestHandlers/DataFixPage.php:91
@@ -4332,11 +4320,11 @@ msgstr ""
 #: resources/views/admin/data-fix-page.phtml:23
 #: resources/views/admin/trees.phtml:132
 msgid "Data fixes"
-msgstr ""
+msgstr "Tietojen korjaukset"
 
 #: resources/views/help/data-fixes.phtml:8
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
-msgstr ""
+msgstr "Tietokorjaukset voivat vaatia paljon hitaita laskelmia, joten ei ole mahdollista luoda tarkkaa luetteloa päivitettävistä tietueista."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
@@ -6429,7 +6417,7 @@ msgstr "Esimerkki: kun asetat hyppyjen määräksi 2, niin henkilö näkee lapse
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr ""
+msgstr "Esimerkiksi, voimme nopeasti löytää henkilöt, joilla ei ole kuolemantapausta, mutta on paljon hitaampaa laskea, onko henkilö kuollut."
 
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
@@ -8287,7 +8275,7 @@ msgstr "Lesotho"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Letter"
-msgstr "Letter"
+msgstr "Kirje"
 
 #: app/Http/Controllers/Admin/LocationController.php:488
 msgid "Level"
@@ -10999,7 +10987,7 @@ msgstr "Postinumero"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:41
 msgid "Powered by webtrees™"
-msgstr "Powered by webtrees™"
+msgstr "webtrees™:n ylläpitämä"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:151
@@ -11220,7 +11208,7 @@ msgstr "VS: "
 
 #: app/GedcomCode/GedcomCodeRela.php:291
 msgid "Rabbi"
-msgstr "Rabbi"
+msgstr "Rabbiini"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:132
@@ -11604,14 +11592,13 @@ msgid "Renumber family tree"
 msgstr "Numeroi sukupuu uudelleen"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
-#, fuzzy
 msgid "Replace"
-msgstr "Korvaa"
+msgstr "Vaihda"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:72
 msgid "Replace cemetery tags with burial places."
-msgstr ""
+msgstr "Korvaa hautausmaatagit hautauspaikoilla."
 
 #: resources/views/search-replace-page.phtml:26
 msgid "Replace with"
@@ -13294,11 +13281,11 @@ msgstr "Esitetty, käsittely kesken"
 #: app/GedcomTag.php:1037 resources/views/admin/trees.phtml:247
 #: resources/views/modules/recent_changes/changes-table.phtml:57
 msgid "Submitter"
-msgstr "Lähettäjä/toimittaja"
+msgstr "Lähettäjä"
 
 #: resources/views/lists/submitters-table.phtml:60
 msgid "Submitter name"
-msgstr ""
+msgstr "Lähettäjän nimi"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/ListController.php:548
@@ -13307,7 +13294,7 @@ msgstr ""
 #: resources/views/admin/merge-records-step-1.phtml:29
 #: resources/views/lists/submitters-table.phtml:55
 msgid "Submitters"
-msgstr ""
+msgstr "Lähettäjät"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -13763,7 +13750,7 @@ msgstr "Tiedosto ”%s” ei ole olemassa."
 
 #: resources/views/edit/reorder-families.phtml:67
 msgid "The first family in the list will be used in charts, lists, reports, etc."
-msgstr ""
+msgstr "Luettelon ensimmäistä perhettä käytetään kaavioissa, luetteloissa, raporteissa, jne."
 
 #: app/Http/RequestHandlers/DeletePath.php:71
 #, php-format
@@ -13837,7 +13824,7 @@ msgstr "Luetteloiden valikko."
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:37
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "Tämän paikan sijainti ei ole tiedossa."
 
 #: app/Http/Controllers/EditMediaController.php:284
 #, php-format
@@ -14469,7 +14456,7 @@ msgstr "Tämä linkki on voimassa yhden tunnin."
 
 #: resources/views/help/data-fixes.phtml:16
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
-msgstr ""
+msgstr "Tämä luettelo luodaan käyttämällä yksinkertaista (mutta nopeaa) hakua, ja siksi se sisältää tietueita, joita ei päivitetä."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -15370,7 +15357,7 @@ msgstr "Päivitä paikannimet"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:74
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
-msgstr ""
+msgstr "Päivitä paikannimien korkeamman tason osat pitäen alhaisemman tason osat."
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -15823,7 +15810,7 @@ msgstr "Kun lisäät uusia lähisukulaisia, voit lisätä lähteitä tietueisiin
 
 #: resources/views/edit/reorder-families.phtml:24
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr ""
+msgstr "Kun henkilöllä on useampi kuin yksi puoliso, sinun tulee lajitella perheet päivämääräjärjestyksessä."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:892
@@ -15855,7 +15842,7 @@ msgstr "Kuka on online"
 
 #: resources/views/admin/data-fix-page.phtml:80
 msgid "Why does this list include records that do not need to be updated?"
-msgstr ""
+msgstr "Miksi tämä luettelo sisältää tietueita, joita ei tarvitse päivittää?"
 
 #: resources/views/lists/families-table.phtml:173
 msgid "Widow"
@@ -20288,7 +20275,7 @@ msgstr "“%s” on poistettu."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:60
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "Jotkut sukututkimussovellukset käyttävät ”korostetun kuvan” (_PRIM) -tageja osoittamaan yksilön ensisijaista kuvaa. Vaihtoehto on kuvien uudelleen järjestys siten, että ensisijainen kuva on ensimmäinen."
 
 #: app/Functions/FunctionsPrint.php:89 app/Note.php:160
 #: app/Report/ReportParserGenerate.php:985
