@@ -79,6 +79,7 @@ They *may* implement one or more of the following interfaces:
 * `ModuleAnalyticsInterface` - adds a tracking/analytics provider.
 * `ModuleBlockInterface` - adds a block to the home pages.
 * `ModuleChartInterface` - adds a chart to the chart menu.
+* `ModuleDataFixInterface` - adds a data fix to the manage-trees page.
 * `ModuleConfigInterface` - adds a configuration page to the control panel.
 * `ModuleGlobalInterface` - adds CSS and JS to all page.
 * `ModuleListInterface` - adds a list to the list menu.
