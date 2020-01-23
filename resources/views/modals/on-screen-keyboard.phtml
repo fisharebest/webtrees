@@ -10,24 +10,42 @@ use Fisharebest\Webtrees\I18N;
             <button type="button" class="btn btn-secondary wt-osk-shift-button" data-toggle="button" aria-pressed="false">a &harr; A</button>
 
             <div class="btn-group" role="group" data-toggle="buttons">
-                <button class="btn btn-secondary active" dir="ltr">
-                    <input type="radio" class="wt-osk-script-button" checked autocomplete="off" data-script="latn" name="osk-script"> Abcd
-                </button>
-                <button class="btn btn-secondary" dir="ltr">
-                    <input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="cyrl" name="osk-script"> &Acy;&bcy;&gcy;&dcy;
-                </button>
-                <button class="btn btn-secondary" dir="ltr">
-                    <input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="grek" name="osk-script"> &Alpha;&beta;&gamma;&delta;
-                </button>
-                <button class="btn btn-secondary" dir="ltr">
-                    <input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="viet" name="osk-script"> Ặềổự
-                </button>
-                <button class="btn btn-secondary" dir="rtl">
-                    <input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="arab" name="osk-script"> &#x627;&#x628;&#x629;&#x62a;
-                </button>
-                <button class="btn btn-secondary" dir="rtl">
-                    <input type="radio" class="wt-osk-script-button" autocomplete="off" data-script="hebr" name="osk-script"> &#x5d0;&#x5d1;&#x5d2;&#x5d3;
-                </button>
+                <div class="btn btn-secondary active" dir="ltr">
+                    <label class="m-0">
+                        <input type="radio" class="wt-osk-script-button" checked data-script="latn" name="osk-script">
+                        Abcd
+                    </label>
+                </div>
+                <div class="btn btn-secondary" dir="ltr">
+                    <label class="m-0">
+                        <input type="radio" class="wt-osk-script-button" data-script="cyrl" name="osk-script">
+                        &Acy;&bcy;&gcy;&dcy;
+                    <label>
+                </div>
+                <div class="btn btn-secondary" dir="ltr">
+                    <label class="m-0">
+                        <input type="radio" class="wt-osk-script-button" data-script="grek" name="osk-script">
+                        &Alpha;&beta;&gamma;&delta;
+                    <label>
+                </div>
+                <div class="btn btn-secondary" dir="ltr">
+                    <label class="m-0">
+                        <input type="radio" class="wt-osk-script-button" data-script="viet" name="osk-script">
+                        Ặềổự
+                    <label>
+                </div>
+                <div class="btn btn-secondary" dir="rtl">
+                    <label class="m-0">
+                        <input type="radio" class="wt-osk-script-button" data-script="arab" name="osk-script">
+                        &#x627;&#x628;&#x629;&#x62a;
+                    <label>
+                </div>
+                <div class="btn btn-secondary" dir="rtl">
+                    <label class="m-0">
+                        <input type="radio" class="wt-osk-script-button" data-script="hebr" name="osk-script">
+                        &#x5d0;&#x5d1;&#x5d2;&#x5d3;
+                    <label>
+                </div>
             </div>
 
             <button type="button" class="btn btn-secondary wt-osk-pin-button" data-toggle="button" aria-pressed="false" aria-label="<?= I18N::translate('Keep open') ?>"><?= view('icons/pin') ?></button>
@@ -137,7 +155,7 @@ use Fisharebest\Webtrees\I18N;
         <div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
             <span class="wt-osk-key">&scaron;<sup class="wt-osk-key-shift">&Scaron;</sup></span>
             <span class="wt-osk-key">&scedil;<sup class="wt-osk-key-shift">&Scedil;</sup></span>
-            <span class="wt-osk-key">&#x17F;</sup></span>
+            <span class="wt-osk-key">&#x17F;</span>
         </div>
         <!-- Letter U with diacritic -->
         <div class="wt-osk-group wt-osk-script wt-osk-script-latn" dir="ltr">
