@@ -1,23 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-01-20 17:57+0000\n"
-"PO-Revision-Date: 2020-01-20 17:47+0000\n"
-"Last-Translator: Luca Bighi <luca74@email.it>\n"
-"Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
-"Language: it\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Language: it_IT\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-Language: Italian\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-01-20 17:57+0000\nPO-Revision-Date: 2020-01-30 10:04+0000\nLast-Translator: Luca Bighi <luca74@email.it>\nLanguage-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\nLanguage: it\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Language: it_IT\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: .\nX-Poedit-Language: Italian\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -17427,41 +17409,41 @@ msgstr "pro ×%s pronipote (di zii)"
 #: app/Functions/Functions.php:1735 app/Functions/Functions.php:1750
 #, php-format
 msgid "great ×%s uncle"
-msgstr "zio di %s° grado"
+msgstr "pro-zio di %s° grado"
 
 #: app/Functions/Functions.php:1704
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr "pro ×%s zio"
+msgstr "pro-zio di (%s-1)° grado"
 
 #: app/Functions/Functions.php:1708
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr "pro ×%s zio"
+msgstr "pro-zio di (%s-1)° grado"
 
 #: app/Functions/Functions.php:1711
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr "pro ×%s zio"
+msgstr "pro-zio di (%s-1)° grado"
 
 #: app/Functions/Functions.php:1622
 msgid "great ×4 aunt"
-msgstr "pro-pro-prozia"
+msgstr "pro-zia di 5° grado"
 
 #: app/Functions/Functions.php:1625
 msgid "great ×4 aunt/uncle"
-msgstr "pro-pro-prozio/a"
+msgstr "pro-zia/o del 5° grado"
 
 #: app/Functions/Functions.php:2197
 msgid "great ×4 grandchild"
-msgstr "pro × 4 nipote (di nonni)"
+msgstr "pro nipote di 4° grado (di nonni)"
 
 #: app/Functions/Functions.php:2194
 msgid "great ×4 granddaughter"
-msgstr "pro × 4 nipote (di nonni)"
+msgstr "pro nipote di 4° grado (di nonni)"
 
 #: app/Functions/Functions.php:2044
 msgid "great ×4 grandfather"
@@ -19026,17 +19008,17 @@ msgstr "nipote (di zii)"
 #: app/Functions/Functions.php:1096
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nipote (di zii)"
 
 #: app/Functions/Functions.php:1092
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nipote (di zii)"
 
 #: app/Functions/Functions.php:1094
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nipote (di zii)"
 
 #: app/Functions/Functions.php:856
 msgctxt "sibling’s child"
@@ -19051,17 +19033,17 @@ msgstr "nipote (di zii)"
 #: app/Functions/Functions.php:1336
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nipote (di zii)"
 
 #: app/Functions/Functions.php:1332
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nipote (di zii)"
 
 #: app/Functions/Functions.php:1334
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nipote (di zii)"
 
 #: app/Functions/FunctionsEdit.php:587
 msgid "never"
@@ -19095,17 +19077,17 @@ msgstr "nipote (di zii)"
 #: app/Functions/Functions.php:1102
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "nipote (di zii)"
 
 #: app/Functions/Functions.php:1098
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "nipote (di zii)"
 
 #: app/Functions/Functions.php:1100
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "nipote (di zii)"
 
 #: app/Functions/Functions.php:858
 msgctxt "sibling’s daughter"
@@ -19120,17 +19102,17 @@ msgstr "nipote (di zii)"
 #: app/Functions/Functions.php:1342
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "nipote (di zii)"
 
 #: app/Functions/Functions.php:1338
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "nipote (di zii)"
 
 #: app/Functions/Functions.php:1340
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "nipote (di zii)"
 
 #: app/Functions/Functions.php:972
 msgctxt "brother’s son’s wife"
