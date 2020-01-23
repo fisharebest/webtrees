@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2020-01-20 17:47+0000\n"
+"PO-Revision-Date: 2020-01-30 10:03+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
@@ -16580,7 +16580,7 @@ msgstr "重新编号"
 #: app/Http/Controllers/AdminTreesController.php:1121,
 #: resources/views/admin/trees-merge.phtml:19,
 msgid "Renumber family tree"
-msgstr "重新编号家谱"
+msgstr "重新给家谱编号"
 
 #: admin_trees_places.php:105 search.php:162
 #: resources/views/admin/trees-places.phtml:23
