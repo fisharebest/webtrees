@@ -8,7 +8,7 @@ use Fisharebest\Webtrees\I18N;
 <div class="wt-search-results">
     <ul class="nav nav-tabs wt-search-results-tabs" role="tablist">
         <?php if ($search_individuals) : ?>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
                 <a class="nav-link <?= $individuals->isEmpty() ? 'text-muted' : '' ?>" id="individuals-tab" data-toggle="tab" href="#individuals" role="tab" aria-controls="individuals">
                     <?= I18N::translate('Individuals') ?>
                     <span class="badge badge-secondary">
@@ -19,7 +19,7 @@ use Fisharebest\Webtrees\I18N;
         <?php endif ?>
 
         <?php if ($search_families) : ?>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
                 <a class="nav-link <?= $families->isEmpty() ? 'text-muted' : '' ?>" id="families-tab" data-toggle="tab" href="#families" role="tab" aria-controls="families">
                     <?= I18N::translate('Families') ?>
                     <span class="badge badge-secondary">
@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\I18N;
         <?php endif ?>
 
         <?php if ($search_sources) : ?>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
                 <a class="nav-link <?= $sources->isEmpty() ? 'text-muted' : '' ?>" id="sources-tab" data-toggle="tab" href="#sources" role="tab" aria-controls="sources">
                     <?= I18N::translate('Sources') ?>
                     <span class="badge badge-secondary">
@@ -41,7 +41,7 @@ use Fisharebest\Webtrees\I18N;
         <?php endif ?>
 
         <?php if ($search_repositories) : ?>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
                 <a class="nav-link <?= $repositories->isEmpty() ? 'text-muted' : '' ?>" id="repositories-tab" data-toggle="tab" href="#repositories" role="tab" aria-controls="repositories">
                     <?= I18N::translate('Repositories') ?>
                     <span class="badge badge-secondary">
@@ -52,7 +52,7 @@ use Fisharebest\Webtrees\I18N;
         <?php endif ?>
 
         <?php if ($search_notes) : ?>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
                 <a class="nav-link <?= $notes->isEmpty() ? 'text-muted' : '' ?>" id="notes-tab" data-toggle="tab" href="#notes" role="tab" aria-controls="notes">
                     <?= I18N::translate('Notes') ?>
                     <span class="badge badge-secondary">

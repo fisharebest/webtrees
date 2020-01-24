@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\I18N;
 
 <ul class="nav nav-tabs" role="tablist">
     <?php foreach ($changes as $tree_name => $gedcom_changes) : ?>
-        <li class="nav-item">
+        <li class="nav-item" role="presentation">
             <a class="nav-link <?= $tree_name === $active_tree_name ? 'active' : '' ?>" data-toggle="tab" href="#tree-<?= e(md5($tree_name)) ?>" aria-controls="tree-<?= e(md5($tree_name)) ?>" id="tree-<?= e(md5($tree_name)) ?>-tab">
                 <?= e($trees[$tree_name]->title()) ?>
                 <span class="badge badge-secondary">
