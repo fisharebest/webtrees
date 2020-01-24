@@ -1,0 +1,47 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\Menu;
+
+/**
+ * @var Menu $menu
+ */
+
+?>
+
+<?php if ($menu->getSubMenus() !== []) : ?>
+    <li class="nav-item dropdown <?= $menu->getClass() ?>">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            <?= $menu->getLabel() ?>
+            <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu" role="menu">
+            <?php foreach ($menu->getSubmenus() as $submenu) : ?>
+                <a
+                    class="dropdown-item <?= $submenu->getClass() ?>"
+                    href="<?= e($submenu->getLink()) ?>"
+                    role="menuitem"
+                    <?php foreach ($submenu->getAttrs() as $key => $value) : ?>
+                        <?= e($key) ?>="<?= e($value) ?>"
+                    <?php endforeach ?>
+                >
+                    <?= $submenu->getLabel() ?>
+                </a>
+
+            <?php endforeach ?>
+        </div>
+    </li>
+<?php else : ?>
+    <li class="nav-item <?= $menu->getClass() ?>">
+        <a
+            class="nav-link"
+            href="<?= e($menu->getLink()) ?>"
+            <?php foreach ($menu->getAttrs() as $key => $value) : ?>
+                <?= e($key) ?>="<?= e($value) ?>"
+            <?php endforeach ?>
+        >
+            <?= $menu->getLabel() ?>
+        </a>
+    </li>
+<?php endif ?>

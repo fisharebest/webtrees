@@ -107,7 +107,7 @@ use Psr\Http\Message\ServerRequestInterface;
                     <div class="col wt-secondary-navigation">
                         <ul class="nav wt-user-menu">
                             <?php foreach (app(ModuleThemeInterface::class)->userMenu($tree) as $menu) : ?>
-                                <?= $menu->bootstrap4() ?>
+                                <?= view('components/menu-item', ['menu' => $menu]) ?>
                             <?php endforeach ?>
                         </ul>
                     </div>
@@ -116,7 +116,7 @@ use Psr\Http\Message\ServerRequestInterface;
                         <nav class="col wt-primary-navigation">
                             <ul class="nav wt-genealogy-menu">
                                 <?php foreach (app(ModuleThemeInterface::class)->genealogyMenu($tree) as $menu) : ?>
-                                    <?= $menu->bootstrap4() ?>
+                                    <?= view('components/menu-item', ['menu' => $menu]) ?>
                                 <?php endforeach ?>
                             </ul>
                         </nav>
