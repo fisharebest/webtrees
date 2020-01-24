@@ -104,15 +104,16 @@ use Illuminate\Support\Collection;
         </div>
 
         <div class="wt-tabs-individual" id="individual-tabs">
-            <ul class="nav nav-tabs flex-wrap">
+            <ul class="nav nav-tabs flex-wrap" role="tablist">
                 <?php foreach ($tabs as $tab) : ?>
-                    <li class="nav-item">
+                    <li class="nav-item" role="presentation">
                         <a class="nav-link<?= $tab->isGrayedOut($individual) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= e(route('module', ['module' => $tab->name(), 'action' => 'Tab', 'tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>" href="#<?= $tab->name() ?>">
                             <?= $tab->tabTitle() ?>
                         </a>
                     </li>
                 <?php endforeach ?>
             </ul>
+
             <div class="tab-content">
                 <?php foreach ($tabs as $tab) : ?>
                     <div id="<?= $tab->name() ?>" class="tab-pane fade wt-ajax-load" role="tabpanel"><?php if (!$tab->canLoadAjax()) :
@@ -133,6 +134,7 @@ use Illuminate\Support\Collection;
                         </a>
                     </div>
                 </div>
+
                 <div id="sidebar-content-<?= $sidebar->name() ?>" class="collapse<?= $sidebar->name() === 'family_nav' ? ' show' : '' ?>" role="tabpanel" aria-labelledby="sidebar-header-<?= $sidebar->name() ?>">
                     <div class="card-body">
                         <?= $sidebar->getSidebarContent($individual) ?></div>

@@ -5,13 +5,13 @@ use Fisharebest\Webtrees\I18N;
 ?>
 
 <ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item">
+    <li class="nav-item" role="presentation">
         <a class="nav-link active<?= $indilist === [] ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
             <?= I18N::translate('Individuals') ?>
             <?= view('components/badge', ['count' => count($indilist)]) ?>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" role="presentation">
         <a class="nav-link<?= $famlist === [] ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#families">
             <?= I18N::translate('Families') ?>
             <?= view('components/badge', ['count' => count($famlist)]) ?>
