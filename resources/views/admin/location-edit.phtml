@@ -18,9 +18,6 @@ use Fisharebest\Webtrees\View;
 <form method="post">
     <?= csrf_field() ?>
     <input type="hidden" name="place_id" value="<?= e($place_id) ?>">
-    <input type="hidden" name="level" value="<?= count($hierarchy) ?>">
-    <input type="hidden" name="place_long" value="<?= e($lng) ?>">
-    <input type="hidden" name="place_lati" value="<?= e($lat) ?>">
 
     <div class="form-group row">
         <label class="col-form-label col-sm-1" for="new_place_name">
@@ -87,37 +84,9 @@ use Fisharebest\Webtrees\View;
 
 <?php View::push('styles') ?>
 <style>
-    .osm-wrapper, .osm-user-map {
-        height: 45vh
-    }
-
     .osm-admin-map {
         height: 55vh;
         border: 1px solid darkGrey
-    }
-
-    .osm-sidebar {
-        height: 100%;
-        overflow-y: auto;
-        padding: 0;
-        margin: 0;
-        border: 0;
-        display: none;
-        font-size: small;
-    }
-
-    .osm-sidebar .gchart {
-        margin: 1px;
-        padding: 2px
-    }
-
-    .osm-sidebar .gchart img {
-        height: 15px;
-        width: 25px
-    }
-
-    .osm-sidebar .border-danger:hover {
-        cursor: not-allowed
     }
 </style>
 <?php View::endpush() ?>
@@ -127,23 +96,68 @@ use Fisharebest\Webtrees\View;
     "use strict";
 
     window.WT_OSM_ADMIN = (function () {
-        let baseData = {
-            minZoom:         2,
-            providerName:    "OpenStreetMap.Mapnik",
-            providerOptions: [],
-            I18N:            {
-                zoomInTitle: <?= json_encode(I18N::translate('Zoom in')) ?>,
-                zoomOutTitle: <?= json_encode(I18N::translate('Zoom out')) ?>,
-                reset: <?= json_encode(I18N::translate('Reset to initial map state')) ?>,
-                noData: <?= json_encode(I18N::translate('No mappable items')) ?>,
-                error: <?= json_encode(I18N::translate('An unknown error occurred')) ?>
-            },
-        };
+        const minZoom           = 2;
+        const providerName      = "OpenStreetMap.Mapnik";
+        const providerOptions   = [];
 
-        let map      = null;
+        let data        = <?= json_encode($data) ?>;
+        let map         = null;
+        let add_place   = <?= json_encode($place_id === 0) ?>;
+
+        // map components
         let marker   = L.marker([0, 0], {
             draggable: true,
         });
+
+        // postcss_image_inliner breaks the autodetection of image paths.
+        L.Icon.Default.imagePath = <?= json_encode(asset('css/images/')) ?>;
+
+        let resetControl = L.Control.extend({
+            options: {
+                position: 'topleft'
+            },
+
+            onAdd: function (map) {
+                let container     = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+                container.onclick = function () {
+                    map.setView(data.coordinates, data.zoom);
+                    marker.setLatLng(data.coordinates);
+                    $('form').trigger('reset');
+                    return false;
+                };
+                let reset    = <?= json_encode(I18N::translate('Reset to initial map state')) ?>;
+                let anchor   = L.DomUtil.create('a', 'leaflet-control-reset', container);
+                anchor.href  = '#';
+                anchor.title = reset;
+                anchor.role  = 'button';
+                $(anchor).attr('aria-label', 'reset');
+                let image    = L.DomUtil.create('i', 'fas fa-redo', anchor);
+                image.alt    = reset;
+
+                return container;
+            },
+        });
+
+        let zoomCtl = new L.control.zoom({ // Add zoom with localised text
+                zoomInTitle:  <?= json_encode(I18N::translate('Zoom in')) ?>,
+                zoomOutTitle: <?= json_encode(I18N::translate('Zoom out')) ?>,
+            });
+
+        let geocoder = new L.Control.geocoder({
+                defaultMarkGeocode: false
+            })
+            .on('markgeocode', function(result) {
+                let coords = result.geocode.center;
+                let place  = result.geocode.name.split(',', 1);
+                marker.setLatLng(coords);
+                map.panTo(coords);
+                _update_Controls({
+                    place:  place.shift(),
+                    coords: coords,
+                    zoom:   map.getZoom(),
+                });
+            });
+
         /**
          *
          * @private
@@ -151,18 +165,19 @@ use Fisharebest\Webtrees\View;
         let _drawMap = function () {
             map = L.map("osm-map", {
                     center:      [0, 0],
-                    minZoom:     baseData.minZoom, // maxZoom set by leaflet-providers.js
+                    minZoom:     minZoom, // maxZoom set by leaflet-providers.js
                     zoomControl: false, // remove default
-                },
-            );
-            L.tileLayer.provider(baseData.providerName, baseData.providerOptions).addTo(map);
-            L.control.zoom({ // Add zoom with localised text
-                zoomInTitle:  baseData.I18N.zoomInTitle,
-                zoomOutTitle: baseData.I18N.zoomOutTitle,
-            }).addTo(map);
+                }
+            )
+            .addControl(new resetControl())
+            .addControl(zoomCtl)
+            .addControl(geocoder)
+            .on("zoomend", function (e) {
+                $("#new_zoom_factor").val(map.getZoom());
+                map.panTo(marker.getLatLng());
+            });
 
-            // postcss_image_inliner breaks the autodetection of image paths.
-            L.Icon.Default.imagePath = <?= json_encode(asset('css/images/')) ?>;
+            L.tileLayer.provider(providerName, providerOptions).addTo(map);
 
             marker
                 .on("dragend", function (e) {
@@ -175,39 +190,8 @@ use Fisharebest\Webtrees\View;
                     });
                 })
                 .addTo(map);
-            let searchControl = new window.GeoSearch.GeoSearchControl({
-                provider:        new window.GeoSearch.OpenStreetMapProvider(),
-                retainZoomLevel: true,
-                autoClose:       true,
-                showMarker:      false,
-            });
 
-            map
-                .addControl(searchControl)
-                .on("geosearch/showlocation", function (result) {
-                    let lat   = result.location.y;
-                    let lng   = result.location.x;
-                    let place = result.location.label.split(",", 1);
-
-                    marker.setLatLng([lat, lng]);
-                    map.panTo([lat, lng]);
-
-                    _update_Controls({
-                        place:  place.shift(),
-                        coords: {
-                            "lat": lat,
-                            "lng": lng,
-                        },
-                        zoom:   map.getZoom(),
-                    });
-                })
-                .on("zoomend", function (e) {
-                    $("#new_zoom_factor").val(map.getZoom());
-                    map.panTo(marker.getLatLng());
-                });
         };
-
-        let data = <?= json_encode($data) ?>;
 
         /**
          *
@@ -215,9 +199,9 @@ use Fisharebest\Webtrees\View;
          * @private
          */
         let _update_Controls = function (newData) {
-            let placeEl = $("#new_place_name");
-            if (!placeEl.val().length && newData.place.length) {
-                placeEl.val(newData.place);
+
+            if (add_place) {
+                $("#new_place_name").val(newData.place);
             }
             $("#new_place_lati").val(Number(newData.coords.lat).toFixed(5)); // 5 decimal places (about 1 metre accuracy)
             $("#new_place_long").val(Number(newData.coords.lng).toFixed(5));
@@ -235,31 +219,18 @@ use Fisharebest\Webtrees\View;
 
         /**
          *
-         * @param id
+         *  @private
          */
-        let initialize = function (id) {
-            _drawMap();
+        _drawMap();
+        marker.setLatLng(data.coordinates);
+        if (data.coordinates[0] === 0 && data.coordinates[1] === 0) {
+            map.fitWorld();
+        } else {
+            map.setView(data.coordinates, data.zoom);
+        }
 
-            marker.setLatLng(data.coordinates);
-
-            if (data.coordinates[0] === 0 && data.coordinates[1] === 0) {
-                map.fitWorld();
-            } else {
-                map.setView(data.coordinates, data.zoom);
-            }
-        };
-
-        return {
-            /**
-             *
-             * @param id
-             */
-            drawMap: function (id) {
-                initialize(id);
-            },
-        };
+        return "Leaflet map interface for webtrees-2";
     })();
 
-    WT_OSM_ADMIN.drawMap(<?= json_encode($ref) ?>);
 </script>
 <?php View::endpush() ?>

@@ -282,20 +282,32 @@ class LocationController extends AbstractAdminController
         $location  = new Location($fqpn);
 
         if ($location->id() !== 0) {
-            $lat = $location->latitude();
-            $lng = $location->longitude();
-            $id  = $place_id;
+            $lat   = $location->latitude();
+            $lng   = $location->longitude();
+            $id    = $place_id;
+            $title = e($location->locationName());
         } else {
+            // Add a place
             $lat = '';
             $lng = '';
             $id  = $parent_id;
+            if ($parent_id === 0) {
+                // Create a dummy "place" for the top level
+                $title         =  I18N::translate('World');
+                $hierarchy     =  [(object) [
+                    'pl_id'    => 0,
+                    'pl_place' => $title,
+                ]];
+            } else {
+                $hierarchy = $this->getHierarchy($parent_id);
+                $tmp       = new Location($hierarchy[0]->fqpn);
+                $title     = e($tmp->locationName());
+            }
         }
-
-        $title = e($location->locationName());
 
         $breadcrumbs = [
             route(ControlPanel::class) => I18N::translate('Control panel'),
-            route('map-data')            => I18N::translate('Geographic data'),
+            route('map-data')          => I18N::translate('Geographic data'),
         ];
 
         foreach ($hierarchy as $row) {
@@ -304,6 +316,7 @@ class LocationController extends AbstractAdminController
 
         if ($place_id === 0) {
             $breadcrumbs[] = I18N::translate('Add');
+            $title         .= ' — ' . I18N::translate('Add');
         } else {
             $breadcrumbs[] = I18N::translate('Edit');
             $title         .= ' — ' . I18N::translate('Edit');
@@ -315,10 +328,8 @@ class LocationController extends AbstractAdminController
             'location'    => $location,
             'place_id'    => $place_id,
             'parent_id'   => $parent_id,
-            'hierarchy'   => $hierarchy,
             'lat'         => $lat,
             'lng'         => $lng,
-            'ref'         => $id,
             'data'        => $this->mapLocationData($id),
         ]);
     }
@@ -734,28 +745,26 @@ class LocationController extends AbstractAdminController
 
         foreach ($places as $place) {
             $location = new Location($place['fqpn']);
-            $exists   = $location->exists();
+            $new      = !$location->exists();
 
-            if ($options === 'update' && !$exists) {
+            if (($options === 'update' && $new) || ($options === 'add' && !$new)) {
                 continue;
             }
 
-            if (!$exists) {
+            if ($new) {
                 $added++;
-            }
-
-            if (!$exists || $options === 'update') {
-                DB::table('placelocation')
-                    ->where('pl_id', '=', $location->id())
-                    ->update([
-                        'pl_lati' => $place['pl_lati'],
-                        'pl_long' => $place['pl_long'],
-                        'pl_zoom' => $place['pl_zoom'] ?: null,
-                        'pl_icon' => $place['pl_icon'] ?: null,
-                    ]);
-
+            } else {
                 $updated++;
             }
+
+            DB::table('placelocation')
+                ->where('pl_id', '=', $location->id())
+                ->update([
+                    'pl_lati' => $place['pl_lati'],
+                    'pl_long' => $place['pl_long'],
+                    'pl_zoom' => $place['pl_zoom'] ?: null,
+                    'pl_icon' => $place['pl_icon'] ?: null,
+                ]);
         }
         FlashMessages::addMessage(
             I18N::translate('locations updated: %s, locations added: %s', I18N::number($updated), I18N::number($added)),

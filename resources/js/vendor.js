@@ -141,6 +141,6 @@ import "wheelzoom";
 
 import "leaflet";
 import "leaflet-providers";
-window.GeoSearch = require("leaflet-geosearch");
 import "leaflet.markercluster";
 import "beautifymarker";
+import "leaflet-control-geocoder";
