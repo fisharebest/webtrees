@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
+use League\Flysystem\NotSupportedException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -78,6 +79,11 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             $request = app(ServerRequestInterface::class) ?? $request;
 
             return $this->httpExceptionResponse($request, $exception);
+        } catch (NotSupportedException $exception) {
+            // The router added the tree attribute to the request, and we need it for the error response.
+            $request = app(ServerRequestInterface::class) ?? $request;
+
+            return $this->thirdPartyExceptionResponse($request, $exception);
         } catch (Throwable $exception) {
             // Exception thrown while buffering output?
             while (ob_get_level() > 0) {
@@ -142,6 +148,30 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             'title' => $exception->getMessage(),
             'tree'  => $tree,
         ], $exception->getCode());
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     * @param Throwable              $exception
+     *
+     * @return ResponseInterface
+     */
+    private function thirdPartyExceptionResponse(ServerRequestInterface $request, Throwable $exception): ResponseInterface
+    {
+        $tree = $request->getAttribute('tree');
+
+        $default = Site::getPreference('DEFAULT_GEDCOM');
+        $tree = $tree ?? $this->tree_service->all()[$default] ?? $this->tree_service->all()->first();
+
+        if ($request->getHeaderLine('X-Requested-With') !== '') {
+            $this->layout = 'layouts/ajax';
+        }
+
+        return $this->viewResponse('components/alert-danger', [
+            'alert' => $exception->getMessage(),
+            'title' => $exception->getMessage(),
+            'tree'  => $tree,
+        ], StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
     }
 
     /**
