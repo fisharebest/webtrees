@@ -20,8 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
+
+use function app;
+use function view;
 
 /**
  * Class ThemeSelectModule
@@ -66,8 +70,8 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
     {
         $menu = app(ModuleThemeInterface::class)->menuThemes();
 
-        if ($menu) {
-            $content = '<ul class="nav text-justify">' . $menu->bootstrap4() . '</ul>';
+        if ($menu instanceof Menu) {
+            $content = '<ul class="nav text-justify" role="menu">' . view('components/menu-item', ['menu' => $menu]) . '</ul>';
 
             if ($context !== self::CONTEXT_EMBED) {
                 return view('modules/block-template', [

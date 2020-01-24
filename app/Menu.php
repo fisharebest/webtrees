@@ -19,6 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use function trigger_error;
+
+use const E_USER_DEPRECATED;
+
 /**
  * System for generating menus.
  */
@@ -62,42 +66,17 @@ class Menu
      * Render this menu using Bootstrap4 markup
      *
      * @return string
+     *
+     * @deprecated since 2.0.2.  Will be removed in 2.1.0
      */
     public function bootstrap4(): string
     {
-        if ($this->submenus !== []) {
-            $submenus = '';
-            foreach ($this->submenus as $submenu) {
-                $attrs = '';
-                foreach ($submenu->attrs as $key => $value) {
-                    $attrs .= ' ' . $key . '="' . e($value) . '"';
-                }
+        trigger_error(
+            'Menu::bootstrap4() is deprecated.  Use the view(components/menu-item) instead',
+            E_USER_DEPRECATED
+        );
 
-                $class = trim('dropdown-item ' . $submenu->class);
-                $submenus .= '<a class="' . $class . '" href="' . e($submenu->link) . '"' . $attrs . '>' . $submenu->label . '</a>';
-            }
-
-            $class = trim('nav-item dropdown ' . $this->class);
-
-            return
-                '<li class="' . $class . '">' .
-                '<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' .
-                $this->label .
-                '<span class="caret"></span></a>' .
-                '<div class="dropdown-menu" role="menu">' .
-                $submenus .
-                '</div>' .
-                '</li>';
-        }
-
-        $attrs = '';
-        foreach ($this->attrs as $key => $value) {
-            $attrs .= ' ' . $key . '="' . e($value) . '"';
-        }
-
-        $class = trim('nav-item ' . $this->class);
-
-        return '<li class="' . $class . '"><a class="nav-link" href="' . e($this->link) . '"' . $attrs . '>' . $this->label . '</a></li>';
+        return view('components/menu-item', ['menu' => $this]);
     }
 
     /**

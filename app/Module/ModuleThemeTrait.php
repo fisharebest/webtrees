@@ -45,6 +45,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use function app;
 use function assert;
 use function route;
+use function view;
 
 /**
  * Trait ModuleThemeTrait - default implementation of ModuleThemeInterface
@@ -502,7 +503,7 @@ trait ModuleThemeTrait
     public function genealogyMenuContent(array $menus): string
     {
         return implode('', array_map(static function (Menu $menu): string {
-            return $menu->bootstrap4();
+            return view('components/menu-item', ['menu' => $menu]);
         }, $menus));
     }
 
