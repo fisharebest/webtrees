@@ -245,8 +245,8 @@ class WebRoutes
                 $router->post('blocks-update', '/blocks', 'Admin\ModuleController::updateBlocks');
                 $router->get('charts', '/charts', 'Admin\ModuleController::listCharts');
                 $router->post('charts-update', '/charts', 'Admin\ModuleController::updateCharts');
-                $router->get('data-fixes', '/lists', 'Admin\ModuleController::listDataFixes');
-                $router->post('data-fixes-update', '/lists', 'Admin\ModuleController::updateDataFixes');
+                $router->get('data-fixes', '/data-fixes', 'Admin\ModuleController::listDataFixes');
+                $router->post('data-fixes-update', '/data-fixes', 'Admin\ModuleController::updateDataFixes');
                 $router->get('lists', '/lists', 'Admin\ModuleController::listLists');
                 $router->post('lists-update', '/lists', 'Admin\ModuleController::updateLists');
                 $router->get('footers', '/footers', 'Admin\ModuleController::listFooters');
