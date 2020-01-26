@@ -1,22 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: Slovak (webtrees)\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-01-20 17:57+0000\n"
-"PO-Revision-Date: 2020-01-11 10:59+0000\n"
-"Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
-"Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\n"
-"Language: sk\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Slovak\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-01-20 17:57+0000\nPO-Revision-Date: 2020-01-30 10:04+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -109,7 +92,7 @@ msgstr "%1$s neexistuje. Mali ste na mysli %2$s?"
 #: app/Http/Controllers/AdminTreesController.php:306
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr "%1$s nemá sptné prepojenie na %2$s."
+msgstr "%1$s nemá spätné prepojenie na %2$s."
 
 # I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
@@ -492,7 +475,7 @@ msgstr "%s, jeho manželky a deti"
 #: app/Module/ClippingsCartModule.php:615
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr "%s, his manželky a potomkovia"
+msgstr "%s, jeho manželky a potomkovia"
 
 #: app/Module/UserMessagesModule.php:160
 #: resources/views/edit/add-fact-row.phtml:23
@@ -1866,7 +1849,7 @@ msgstr "Umožniť uživateľom prezerať čisté GEDCOM záznamy"
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:45
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "Povoliť  návštevníkom žiadať o nový užívateľský účet"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:1190
@@ -4126,7 +4109,7 @@ msgstr ""
 
 #: resources/views/modals/media-file-fields.phtml:71
 msgid "Create a unique filename"
-msgstr ""
+msgstr "Vytvoriť jedinečný názov súboru"
 
 #: app/Http/Controllers/EditIndividualController.php:362
 msgid "Create an individual"
@@ -6324,7 +6307,7 @@ msgstr ""
 #: app/Http/Controllers/AdminTreesController.php:332
 #: resources/views/admin/trees.phtml:148
 msgid "Find duplicates"
-msgstr ""
+msgstr "Nájsť duplikáty"
 
 #: app/Module/RelationshipsChartModule.php:713
 msgid "Find other relationships"
@@ -6361,7 +6344,7 @@ msgstr "Prvá udalosť"
 
 #: resources/views/admin/merge-records-step-1.phtml:36
 msgid "First record"
-msgstr ""
+msgstr "Prvý záznam"
 
 #. I18N: Name of a module
 #: app/Module/FixNameSlashesAndSpaces.php:60
@@ -9218,12 +9201,12 @@ msgstr "Mercury"
 
 #: resources/views/admin/trees-duplicates.phtml:30
 msgid "Merge"
-msgstr ""
+msgstr "Zlúčiť"
 
 #: app/Http/Controllers/AdminTreesController.php:495
 #: resources/views/admin/control-panel.phtml:160
 msgid "Merge family trees"
-msgstr ""
+msgstr "Zlúčiť rodokmene"
 
 #: app/Http/RequestHandlers/MergeFactsPage.php:57
 #: app/Http/RequestHandlers/MergeRecordsPage.php:67
@@ -9989,13 +9972,13 @@ msgstr "Žiadny súbor k načítaniu. Nahrajte ho znovu."
 
 #: app/Module/RelationshipsChartModule.php:386
 msgid "No link between the two individuals could be found."
-msgstr "Medzi týmito dvomi osobami nebol nájdený žiadny (ďalší) vzťah."
+msgstr "Medzi týmito dvomi osobami nebol nájdený žiaden) vzťah."
 
 #: resources/views/admin/location-edit.phtml:138
 #: resources/views/modules/pedigree-map/chart.phtml:167
 #: resources/views/modules/places/tab.phtml:140
 msgid "No mappable items"
-msgstr ""
+msgstr "Žiadne položky pre zobrazenie na mape"
 
 #: resources/views/admin/merge-records-step-2.phtml:62
 #: resources/views/admin/merge-records-step-2.phtml:109
@@ -10010,7 +9993,7 @@ msgstr "Žiadne články, novinky neboli pridané."
 
 #: app/Http/Controllers/AdminSiteController.php:136
 msgid "No predefined text"
-msgstr "Prednastavený text"
+msgstr "Žiaden prednastavený text"
 
 #: resources/views/lists/datatables-attributes.phtml:23
 #: resources/views/lists/datatables-attributes.phtml:34
@@ -11067,11 +11050,11 @@ msgstr "Prednastavený text, ktorý hovorí, že administrátor rozhodne v príp
 
 #: app/Http/Controllers/AdminSiteController.php:137
 msgid "Predefined text that states all users can request a user account"
-msgstr "Prednastavený text, ktorý hovorí, že všetci uživatelia môžu zažiadať o zriadenie uživateľského účtu"
+msgstr "Prednastavený text, ktorý hovorí, že všetci užívatelia môžu zažiadať o zriadenie užívateľského účtu"
 
 #: app/Http/Controllers/AdminSiteController.php:139
 msgid "Predefined text that states only family members can request a user account"
-msgstr "Prednastavený text, ktorý hovorí, že o zriadenie uživateľského účtu môžu žiadať iba členovia rodiny"
+msgstr "Prednastavený text, ktorý hovorí, že o zriadenie užívateľského účtu môžu žiadať iba členovia rodiny"
 
 #: app/Http/Controllers/AdminTreesController.php:808
 #: app/Http/RequestHandlers/TreePageBlockEdit.php:64
@@ -12078,7 +12061,7 @@ msgstr "Seattle, Washington, United States"
 
 #: resources/views/admin/merge-records-step-1.phtml:70
 msgid "Second record"
-msgstr ""
+msgstr "Druhý záznam"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:42
@@ -12871,7 +12854,7 @@ msgstr "Odhlásiť sa"
 #: app/Http/Controllers/AdminSiteController.php:117
 #: resources/views/admin/control-panel.phtml:95
 msgid "Sign-in and registration"
-msgstr ""
+msgstr "Prihlásenie a registrácia"
 
 #: resources/views/help/date.phtml:122
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -13746,7 +13729,7 @@ msgstr ""
 
 #: app/Http/Controllers/AdminTreesController.php:695
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "Rodokmene boli úspešne zlúčené."
 
 #. I18N: Description of the “Family trees” module
 #: app/Module/TreesMenuModule.php:71
@@ -13827,14 +13810,14 @@ msgstr ""
 
 #: resources/views/admin/merge-records-step-2.phtml:26
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "Nasledujúce fakty a udalosti sa nachádzajú v oboch záznamoch."
 
 #. I18N: the name of an individual, source, etc.
 #: resources/views/admin/merge-records-step-2.phtml:73
 #: resources/views/admin/merge-records-step-2.phtml:119
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "Nasledujúce fakty a udalosti sa nachádzajú iba v zázname %s."
 
 #: resources/views/setup/step-2-server-checks.phtml:45
 msgid "The following list shows typical requirements."
@@ -13864,7 +13847,7 @@ msgstr "Prepojenie medzi „%1$s“ a „%2$s“ bolo zrušené."
 #: app/Http/RequestHandlers/MergeFactsAction.php:98
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "Prepojenie medzi „%1$s“ a „%2$s“ bolo aktualizované."
 
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php:69
@@ -14008,7 +13991,7 @@ msgstr "Záznam bol skopírovaný do schránky."
 #: app/Http/RequestHandlers/MergeFactsAction.php:162
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "Záznamy „%1$s“ a „%2$s“ boli zlúčené."
 
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:74
@@ -14447,7 +14430,7 @@ msgstr "Rozlišuje veľké a malé písmena."
 #: resources/views/admin/control-panel.phtml:73
 #: resources/views/admin/upgrade/wizard.phtml:18
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr ""
+msgstr "Toto je aktuálna verzia webtrees. Nie je dostupná žiadna aktualizácia."
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:727
@@ -15803,17 +15786,17 @@ msgstr "Teraz vám zašleme na adresu <b>%s</b> e-mail na potvrdenie. Musíte po
 #: resources/views/admin/control-panel.phtml:468
 #: resources/views/admin/trees-preferences.phtml:185
 msgid "Website"
-msgstr ""
+msgstr "Webová stránka"
 
 #: app/Http/RequestHandlers/SiteLogsPage.php:102
 #: resources/views/admin/control-panel.phtml:105
 msgid "Website logs"
-msgstr ""
+msgstr "Logy stránky"
 
 #: app/Http/Controllers/AdminSiteController.php:62
 #: resources/views/admin/control-panel.phtml:83
 msgid "Website preferences"
-msgstr ""
+msgstr "Nastavenia webovej stránky"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/AbstractCalendarDate.php:286
@@ -15935,7 +15918,7 @@ msgstr "Manželkine rodné priezvisko sa stane súčasťou krstného mena a prev
 
 #: app/Module/FixMissingMarriedNames.php:94
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr "Priezvisko manželky prepísať priezviskom manžela"
+msgstr "Priezvisko manželky nahradené priezviskom manžela"
 
 #. I18N: gedcom tag WILL
 #: app/GedcomTag.php:1079
@@ -16108,11 +16091,11 @@ msgstr "Musíte definovať osobný záznam než obmedzíte uživateľa na jeho n
 
 #: app/Http/RequestHandlers/LoginPage.php:88
 msgid "You need to be a family member to access this website."
-msgstr ""
+msgstr "Prístup k tejto stránke je povolený len členom rodiny."
 
 #: app/Http/RequestHandlers/LoginPage.php:85
 msgid "You need to be an authorized user to access this website."
-msgstr ""
+msgstr "Prístup k tejto stránke je povolený len užívatelia s oprávnením."
 
 #: resources/views/admin/control-panel.phtml:139
 #: resources/views/admin/trees.phtml:33
