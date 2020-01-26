@@ -202,7 +202,7 @@ class FunctionsPrintFacts
 
         echo $label;
 
-        if ($fact->id() !== 'histo' && $fact->canEdit()) {
+        if ($fact->id() !== 'histo' && $fact->id() !== 'asso' && $fact->canEdit()) {
             echo '<div class="editfacts nowrap">';
             echo view('edit/icon-fact-edit', ['fact' => $fact]);
             echo view('edit/icon-fact-copy', ['fact' => $fact]);
