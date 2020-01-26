@@ -111,6 +111,10 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
                 ->groupBy(['surname'])
                 ->select([new Expression('n_surname /*! COLLATE utf8_bin */ AS surname'), new Expression('count(*) AS total')])
                 ->pluck('total', 'surname')
+                ->map(static function ($n): int {
+                    // Some database drivers return numeric columns strings.
+                    return (int) $n;
+                })
                 ->all();
 
             $all_surnames[$top_surname] = $variants;
