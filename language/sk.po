@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-01-11 10:59+0000\n"
+"PO-Revision-Date: 2020-01-30 10:03+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -121,7 +121,7 @@ msgstr "%1$s neexistuje. Mali ste na mysli %2$s?"
 #: admin_trees_check.php:204
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr "%1$s nemá sptné prepojenie na %2$s."
+msgstr "%1$s nemá spätné prepojenie na %2$s."
 
 # I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
@@ -591,7 +591,7 @@ msgstr "%s, jeho manželky a deti"
 #: app/Module/ClippingsCartModule.php:257
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr "%s, his manželky a potomkovia"
+msgstr "%s, jeho manželky a potomkovia"
 
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:619
 #: app/Module/UserMessagesModule.php:102
@@ -1930,7 +1930,7 @@ msgstr "Umožniť uživateľom vybrať si vlastný motív"
 #. I18N: A configuration setting
 #: admin_site_config.php:491
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "Povoliť  návštevníkom žiadať o nový užívateľský účet"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:967
@@ -6382,7 +6382,7 @@ msgstr ""
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
-msgstr ""
+msgstr "Nájsť duplikáty"
 
 #: relationship.php:134
 msgid "Find other relationships"
@@ -6418,7 +6418,7 @@ msgstr "Prvá udalosť"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:357
 msgid "First record"
-msgstr ""
+msgstr "Prvý záznam"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:30
 msgid "Fix name slashes and spaces"
@@ -9139,12 +9139,12 @@ msgstr "Mercury"
 
 #: admin_trees_duplicates.php:174
 msgid "Merge"
-msgstr ""
+msgstr "Zlúčiť"
 
 #. I18N: Menu entry
 #: admin_trees_merge.php:34 app/Theme/AdministrationTheme.php:137
 msgid "Merge family trees"
-msgstr ""
+msgstr "Zlúčiť rodokmene"
 
 #: admin_site_merge.php:35 admin_trees_manage.php:479
 msgid "Merge records"
@@ -9918,7 +9918,7 @@ msgstr "Žiadny súbor k načítaniu. Nahrajte ho znovu."
 
 #: relationship.php:242
 msgid "No link between the two individuals could be found."
-msgstr "Medzi týmito dvomi osobami nebol nájdený žiadny (ďalší) vzťah."
+msgstr "Medzi týmito dvomi osobami nebol nájdený žiaden) vzťah."
 
 #: app/Module/GoogleMapsModule.php:182
 msgid "No map data exists for this individual"
@@ -9946,7 +9946,7 @@ msgstr ""
 
 #: admin_site_config.php:127
 msgid "No predefined text"
-msgstr "Prednastavený text"
+msgstr "Žiaden prednastavený text"
 
 #: app/I18N.php:227 app/I18N.php:237
 msgid "No records to display"
@@ -11063,11 +11063,15 @@ msgstr "Prednastavený text, ktorý hovorí, že administrátor rozhodne v príp
 
 #: admin_site_config.php:128
 msgid "Predefined text that states all users can request a user account"
-msgstr "Prednastavený text, ktorý hovorí, že všetci uživatelia môžu zažiadať o zriadenie uživateľského účtu"
+msgstr ""
+"Prednastavený text, ktorý hovorí, že všetci užívatelia môžu zažiadať o "
+"zriadenie užívateľského účtu"
 
 #: admin_site_config.php:130
 msgid "Predefined text that states only family members can request a user account"
-msgstr "Prednastavený text, ktorý hovorí, že o zriadenie uživateľského účtu môžu žiadať iba členovia rodiny"
+msgstr ""
+"Prednastavený text, ktorý hovorí, že o zriadenie užívateľského účtu môžu "
+"žiadať iba členovia rodiny"
 
 #: admin_trees_config.php:325 admin_trees_manage.php:388
 #: app/Module/ChartsBlockModule.php:77
@@ -12017,7 +12021,7 @@ msgstr "Seattle, Washington, United States"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:374
 msgid "Second record"
-msgstr ""
+msgstr "Druhý záznam"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:415
@@ -12863,7 +12867,7 @@ msgstr "Prihlasovacie URL"
 #. I18N: Menu entry
 #: admin_site_config.php:147 app/Theme/AdministrationTheme.php:97
 msgid "Sign-in and registration"
-msgstr ""
+msgstr "Prihlásenie a registrácia"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -13670,7 +13674,7 @@ msgstr ""
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "Rodokmene boli úspešne zlúčené."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:144
@@ -13759,13 +13763,13 @@ msgstr "Priečinok môže byť zadaný buď úplne (napr. /home/user_name/webtre
 
 #: admin_site_merge.php:205
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "Nasledujúce fakty a udalosti sa nachádzajú v oboch záznamoch."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:252 admin_site_merge.php:298
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "Nasledujúce fakty a udalosti sa nachádzajú iba v zázname %s."
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
@@ -13808,7 +13812,7 @@ msgstr "Prepojenie medzi „%1$s“ a „%2$s“ bolo zrušené."
 #: admin_site_merge.php:113
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "Prepojenie medzi „%1$s“ a „%2$s“ bolo aktualizované."
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
@@ -13955,7 +13959,7 @@ msgstr "Záznam bol skopírovaný do schránky."
 #: admin_site_merge.php:172
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "Záznamy „%1$s“ a „%2$s“ boli zlúčené."
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
@@ -14386,7 +14390,7 @@ msgstr ""
 
 #: admin.php:629 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr ""
+msgstr "Toto je aktuálna verzia webtrees. Nie je dostupná žiadna aktualizácia."
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1757
@@ -15786,7 +15790,7 @@ msgstr "Teraz vám zašleme na adresu <b>%s</b> e-mail na potvrdenie. Musíte po
 #. I18N: Menu entry
 #: admin_trees_config.php:914 app/Theme/AdministrationTheme.php:94
 msgid "Website"
-msgstr ""
+msgstr "Webová stránka"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:305
@@ -15802,12 +15806,12 @@ msgstr "Pravidlá prístupu ku stránke"
 #. I18N: Menu entry
 #: admin_site_logs.php:35 app/Theme/AdministrationTheme.php:100
 msgid "Website logs"
-msgstr ""
+msgstr "Logy stránky"
 
 #. I18N: Menu entry
 #: admin_site_config.php:141 app/Theme/AdministrationTheme.php:95
 msgid "Website preferences"
-msgstr ""
+msgstr "Nastavenia webovej stránky"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/CalendarDate.php:378 app/Functions/FunctionsPrint.php:662
@@ -15942,7 +15946,7 @@ msgstr "Manželkine rodné priezvisko sa stane súčasťou krstného mena a prev
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr "Priezvisko manželky prepísať priezviskom manžela"
+msgstr "Priezvisko manželky nahradené priezviskom manžela"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:164
 msgid "Wildcards"
@@ -16176,11 +16180,11 @@ msgstr "Musíte definovať osobný záznam než obmedzíte uživateľa na jeho n
 
 #: login.php:176
 msgid "You need to be a family member to access this website."
-msgstr ""
+msgstr "Prístup k tejto stránke je povolený len členom rodiny."
 
 #: login.php:173
 msgid "You need to be an authorized user to access this website."
-msgstr ""
+msgstr "Prístup k tejto stránke je povolený len užívatelia s oprávnením."
 
 #: admin_trees_manage.php:320
 msgid "You need to create a family tree."
