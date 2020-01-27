@@ -3,6 +3,7 @@
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawRecordAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
+use Fisharebest\Webtrees\Webtrees;
 
 ?>
 
@@ -15,7 +16,7 @@ use Fisharebest\Webtrees\View;
         <?= I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix.') ?>
     </p>
     <p class="text-muted small">
-        <?= /* I18N: %s is a URL */ I18N::translate('You can download a copy of the GEDCOM specification from %s.', '<a href="https://wiki.webtrees.net/w/images-en/Ged551-5.pdf">https://wiki.webtrees.net/w/images-en/Ged551-5.pdf</a>') ?>
+        <?= /* I18N: %s is a URL */ I18N::translate('You can download a copy of the GEDCOM specification from %s.', '<a href="' . e(Webtrees::GEDCOM_PDF) . '">' . e(Webtrees::GEDCOM_PDF) . '</a>') ?>
     </p>
 
     <div class="card">

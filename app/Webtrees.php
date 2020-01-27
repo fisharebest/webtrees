@@ -99,6 +99,9 @@ class Webtrees
     // Project website.
     public const URL = 'https://www.webtrees.net/';
 
+    // Project website.
+    public const GEDCOM_PDF = 'https://webtrees.github.io/downloads/gedcom-551.pdf';
+
     private const MIDDLEWARE = [
         PhpEnvironment::class,
         EmitResponse::class,
