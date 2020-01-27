@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use LogicException;
+use PDO;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -61,6 +62,10 @@ class UseDatabase implements MiddlewareInterface
             'password'                => $request->getAttribute('dbpass'),
             'prefix'                  => $request->getAttribute('tblpfx'),
             'prefix_indexes'          => true,
+            'options'                 => [
+                // Some drivers do this and some don't.  Make them consistent.
+                PDO::ATTR_STRINGIFY_FETCHES => true,
+            ],
             // For MySQL
             'charset'                 => 'utf8',
             'collation'               => 'utf8_unicode_ci',
