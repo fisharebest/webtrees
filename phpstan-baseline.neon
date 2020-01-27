@@ -971,6 +971,11 @@ parameters:
 			path: app/Http/RequestHandlers/ContactPage.php
 
 		-
+			message: "#^Cannot access offset 'data_fix' on array\\|object\\|null\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/DataFixSelect.php
+
+		-
 			message: "#^Cannot access offset 'type' on array\\|false\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/DeletePath.php
@@ -1458,31 +1463,6 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-middleware.disable/module.php
-
-		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 1
-			path: modules_v4/example-middleware.disable/module.php
-
-		-
-			message: "#^Binary operation \"\\-\" between 32 and string results in an error\\.$#"
-			count: 1
-			path: modules_v4/example-middleware.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-footer.disable/module.php
-
-		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 1
-			path: modules_v4/example-footer.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
 			path: modules_v4/example-report.disable/module.php
 
 		-
@@ -1509,6 +1489,31 @@ parameters:
 			message: "#^Method class@anonymous/modules_v4/example\\.disable/module\\.php\\:17\\:\\:frenchTranslations\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: modules_v4/example.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example-middleware.disable/module.php
+
+		-
+			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
+			count: 1
+			path: modules_v4/example-middleware.disable/module.php
+
+		-
+			message: "#^Binary operation \"\\-\" between 32 and string results in an error\\.$#"
+			count: 1
+			path: modules_v4/example-middleware.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example-footer.disable/module.php
+
+		-
+			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
+			count: 1
+			path: modules_v4/example-footer.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1561,12 +1566,12 @@ parameters:
 			path: app/Module/CloudsTheme.php
 
 		-
-			message: "#^Cannot assign offset mixed to array\\<int, string\\>\\|false\\.$#"
+			message: "#^Cannot access offset mixed on array\\<int, string\\>\\|false\\.$#"
 			count: 1
 			path: app/Module/CloudsTheme.php
 
 		-
-			message: "#^Cannot assign offset int\\|false\\|null to array\\<int, string\\>\\|false\\.$#"
+			message: "#^Cannot access offset int\\|false\\|null on array\\<int, string\\>\\|false\\.$#"
 			count: 1
 			path: app/Module/CloudsTheme.php
 
@@ -1586,12 +1591,12 @@ parameters:
 			path: app/Module/FabTheme.php
 
 		-
-			message: "#^Cannot assign offset mixed to array\\<int, string\\>\\|false\\.$#"
+			message: "#^Cannot access offset mixed on array\\<int, string\\>\\|false\\.$#"
 			count: 1
 			path: app/Module/FabTheme.php
 
 		-
-			message: "#^Cannot assign offset int\\|false\\|null to array\\<int, string\\>\\|false\\.$#"
+			message: "#^Cannot access offset int\\|false\\|null on array\\<int, string\\>\\|false\\.$#"
 			count: 1
 			path: app/Module/FabTheme.php
 
@@ -1611,12 +1616,12 @@ parameters:
 			path: app/Module/MinimalTheme.php
 
 		-
-			message: "#^Cannot assign offset mixed to array\\<int, string\\>\\|false\\.$#"
+			message: "#^Cannot access offset mixed on array\\<int, string\\>\\|false\\.$#"
 			count: 1
 			path: app/Module/MinimalTheme.php
 
 		-
-			message: "#^Cannot assign offset int\\|false\\|null to array\\<int, string\\>\\|false\\.$#"
+			message: "#^Cannot access offset int\\|false\\|null on array\\<int, string\\>\\|false\\.$#"
 			count: 1
 			path: app/Module/MinimalTheme.php
 
@@ -1636,12 +1641,12 @@ parameters:
 			path: app/Module/WebtreesTheme.php
 
 		-
-			message: "#^Cannot assign offset mixed to array\\<int, string\\>\\|false\\.$#"
+			message: "#^Cannot access offset mixed on array\\<int, string\\>\\|false\\.$#"
 			count: 1
 			path: app/Module/WebtreesTheme.php
 
 		-
-			message: "#^Cannot assign offset int\\|false\\|null to array\\<int, string\\>\\|false\\.$#"
+			message: "#^Cannot access offset int\\|false\\|null on array\\<int, string\\>\\|false\\.$#"
 			count: 1
 			path: app/Module/WebtreesTheme.php
 
@@ -1661,12 +1666,12 @@ parameters:
 			path: app/Module/XeneaTheme.php
 
 		-
-			message: "#^Cannot assign offset mixed to array\\<int, string\\>\\|false\\.$#"
+			message: "#^Cannot access offset mixed on array\\<int, string\\>\\|false\\.$#"
 			count: 1
 			path: app/Module/XeneaTheme.php
 
 		-
-			message: "#^Cannot assign offset int\\|false\\|null to array\\<int, string\\>\\|false\\.$#"
+			message: "#^Cannot access offset int\\|false\\|null on array\\<int, string\\>\\|false\\.$#"
 			count: 1
 			path: app/Module/XeneaTheme.php
 
@@ -2194,6 +2199,11 @@ parameters:
 			message: "#^Access to an undefined property Fisharebest\\\\Webtrees\\\\Fact\\:\\:\\$jd\\.$#"
 			count: 3
 			path: app/Services/CalendarService.php
+
+		-
+			message: "#^Cannot access offset mixed on array\\|object\\|null\\.$#"
+			count: 2
+			path: app/Services/CaptchaService.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ClipboardService\\:\\:pastableFacts\\(\\) has parameter \\$exclude_types with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
