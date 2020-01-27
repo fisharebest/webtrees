@@ -242,7 +242,10 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
 
             $records = $this->sitemapRecords($tree, $match[2], self::RECORDS_PER_VOLUME, self::RECORDS_PER_VOLUME * $match[3]);
 
-            $content = view('modules/sitemap/sitemap-file.xml', ['records' => $records]);
+            $content = view('modules/sitemap/sitemap-file.xml', [
+                'records' => $records,
+                'tree'    => $tree,
+            ]);
 
             $this->setPreference('sitemap.xml', $content);
         }
