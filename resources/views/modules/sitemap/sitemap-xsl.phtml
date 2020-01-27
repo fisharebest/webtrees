@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="2.0"
+xmlns:html="http://www.w3.org/TR/REC-html40"
+xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:output method="html" version="1.0" encoding="UTF-8" indent="yes"/>
+    <xsl:template match="/">
+        <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+                <title>XML Sitemap</title>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <link rel="stylesheet" href="<?= asset('css/vendor.css') ?>" />
+            </head>
+            <body>
+                <div class="container">
+                    <h1>XML Sitemap</h1>
+                    <xsl:if test="count(sitemap:sitemapindex/sitemap:sitemap) &gt; 0">
+                        <p class="expl">
+                            This XML Sitemap Index file contains <xsl:value-of select="count(sitemap:sitemapindex/sitemap:sitemap)"/> sitemaps.
+                        </p>
+                        <table class="table table-sm table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="w-75">URL</th>
+                                    <th class="w-25">Updated</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <xsl:for-each select="sitemap:sitemapindex/sitemap:sitemap">
+                                    <xsl:variable name="sitemapURL">
+                                        <xsl:value-of select="sitemap:loc"/>
+                                    </xsl:variable>
+                                    <tr>
+                                        <td>
+                                            <a href="{$sitemapURL}"><xsl:value-of select="sitemap:loc"/></a>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="sitemap:lastmod"/>
+                                        </td>
+                                    </tr>
+                                </xsl:for-each>
+                            </tbody>
+                        </table>
+                    </xsl:if>
+                    <xsl:if test="count(sitemap:sitemapindex/sitemap:sitemap) &lt; 1">
+                        <p class="expl">
+                            This XML Sitemap contains <xsl:value-of select="count(sitemap:urlset/sitemap:url)"/> URLs.
+                        </p>
+                        <table class="table table-sm table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="w-75">URL</th>
+                                    <th class="w-25">Updated</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <xsl:for-each select="sitemap:urlset/sitemap:url">
+                                    <tr>
+                                        <td>
+                                            <xsl:variable name="itemURL">
+                                                <xsl:value-of select="sitemap:loc"/>
+                                            </xsl:variable>
+                                            <a href="{$itemURL}">
+                                                <xsl:value-of select="sitemap:loc"/>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="sitemap:lastmod"/>
+                                        </td>
+                                    </tr>
+                                </xsl:for-each>
+                            </tbody>
+                        </table>
+                    </xsl:if>
+                </div>
+            </body>
+        </html>
+    </xsl:template>
+</xsl:stylesheet>
