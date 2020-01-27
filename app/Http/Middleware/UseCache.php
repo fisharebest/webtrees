@@ -31,12 +31,12 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use function app;
 
 /**
- * Middleware to setup an in-memory cache.
+ * Middleware to setup an in-memory and file-system cache.
  */
 class UseCache implements MiddlewareInterface
 {
     // How frequently to perform garbage collection.
-    private const GC_PROBABILITY = 100;
+    private const GC_PROBABILITY = 1000;
 
     // Filesystem cache parameters.
     private const FILES_TTL = 8640000;
