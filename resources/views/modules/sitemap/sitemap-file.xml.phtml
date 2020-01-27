@@ -16,7 +16,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
         </url>
     <?php endforeach ?>
 
-    <?php if ($records->isNotEmpty()) : ?>
+    <?php if ($records->isEmpty()) : ?>
         <url>
             <loc><?= e(route(TreePage::class, ['tree' => $tree->name()])) ?></loc>
         </url>

@@ -74,10 +74,7 @@ class RobotsTxt implements RequestHandlerInterface
         $sitemap_module = $this->module_service->findByInterface(SiteMapModule::class)->first();
 
         if ($sitemap_module instanceof SiteMapModule) {
-            $data['sitemap_url'] = route('module', [
-                'module' => $sitemap_module->name(),
-                'action' => 'Index',
-            ]);
+            $data['sitemap_url'] = route('sitemap-index');
         }
 
         return response(view('robots-txt', $data))
