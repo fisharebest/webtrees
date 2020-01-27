@@ -42,7 +42,6 @@ use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
 use function app;
 use function assert;
 use function date;
@@ -83,6 +82,9 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     {
         $router_container = app(RouterContainer::class);
         assert($router_container instanceof RouterContainer);
+
+        $router_container->getMap()
+            ->get('sitemap-style', '/sitemap.xsl', $this);
 
         $router_container->getMap()
             ->get('sitemap-index', '/sitemap.xml', $this);
@@ -181,6 +183,14 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         $route = $request->getAttribute('route');
         assert($route instanceof Route);
 
+        if ($route->name === 'sitemap-style') {
+            $content = view('modules/sitemap/sitemap-xsl');
+
+            return response($content, StatusCodeInterface::STATUS_OK, [
+                'Content-Type' => 'application/xml',
+            ]);
+        }
+
         if ($route->name === 'sitemap-index') {
             return $this->siteMapIndex($request);
         }
@@ -248,7 +258,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
                 ->where('module_name', '=', $this->name())
                 ->delete();
 
-            return view('modules/sitemap/sitemap-index.xml', [
+            return view('modules/sitemap/sitemap-index-xml', [
                 'all_trees'          => $this->tree_service->all(),
                 'count_individuals'  => $count_individuals,
                 'count_media'        => $count_media,
@@ -257,6 +267,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
                 'count_sources'      => $count_sources,
                 'last_mod'           => date('Y-m-d'),
                 'records_per_volume' => self::RECORDS_PER_VOLUME,
+                'sitemap_xsl'        => route('sitemap-style'),
             ]);
         }, self::CACHE_LIFE);
 
@@ -290,9 +301,10 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         $content = $cache->remember($cache_key, function () use ($tree, $records, $page): string {
             $records = $this->sitemapRecords($tree, $records, self::RECORDS_PER_VOLUME, self::RECORDS_PER_VOLUME * $page);
 
-            return view('modules/sitemap/sitemap-file.xml', [
-                'records' => $records,
-                'tree'    => $tree,
+            return view('modules/sitemap/sitemap-file-xml', [
+                'records'     => $records,
+                'sitemap_xsl' => route('sitemap-style'),
+                'tree'        => $tree,
             ]);
         }, self::CACHE_LIFE);
 
