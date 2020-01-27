@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\FlashMessages;
@@ -153,32 +154,44 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     {
         $timestamp = (int) $this->getPreference('sitemap.timestamp');
 
+        // Which trees have sitemaps enabled?
+        $tree_ids = $this->tree_service->all()->filter(static function (Tree $tree): bool {
+            return $tree->getPreference('include_in_sitemap') === '1';
+        })->map(static function (Tree $tree): int {
+            return $tree->id();
+        });
+
         if ($timestamp > Carbon::now()->subSeconds(self::CACHE_LIFE)->unix()) {
             $content = $this->getPreference('sitemap.xml');
         } else {
             $count_individuals = DB::table('individuals')
+                ->whereIn('i_file', $tree_ids)
                 ->groupBy(['i_file'])
                 ->select([new Expression('COUNT(*) AS total'), 'i_file'])
                 ->pluck('total', 'i_file');
 
             $count_media = DB::table('media')
+                ->whereIn('m_file', $tree_ids)
                 ->groupBy(['m_file'])
                 ->select([new Expression('COUNT(*) AS total'), 'm_file'])
                 ->pluck('total', 'm_file');
 
             $count_notes = DB::table('other')
+                ->whereIn('o_file', $tree_ids)
                 ->where('o_type', '=', 'NOTE')
                 ->groupBy(['o_file'])
                 ->select([new Expression('COUNT(*) AS total'), 'o_file'])
                 ->pluck('total', 'o_file');
 
             $count_repositories = DB::table('other')
+                ->whereIn('o_file', $tree_ids)
                 ->where('o_type', '=', 'REPO')
                 ->groupBy(['o_file'])
                 ->select([new Expression('COUNT(*) AS total'), 'o_file'])
                 ->pluck('total', 'o_file');
 
             $count_sources = DB::table('sources')
+                ->whereIn('s_file', $tree_ids)
                 ->groupBy(['s_file'])
                 ->select([new Expression('COUNT(*) AS total'), 's_file'])
                 ->pluck('total', 's_file');
@@ -222,6 +235,10 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             $content = $this->getPreference('sitemap-' . $file . '.xml');
         } else {
             $tree = $this->tree_service->find((int) $match[1]);
+
+            if ($tree->getPreference('include_in_sitemap') !== '1') {
+                throw new HttpNotFoundException();
+            }
 
             $records = $this->sitemapRecords($tree, $match[2], self::RECORDS_PER_VOLUME, self::RECORDS_PER_VOLUME * $match[3]);
 
@@ -271,7 +288,9 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
         }
 
         // Skip private records.
-        $records = $records->filter(GedcomRecord::accessFilter());
+        $records = $records->filter(static function (GedcomRecord $record): bool {
+            return $record->canShow(Auth::PRIV_PRIVATE);
+        });
 
         return $records;
     }
