@@ -30,6 +30,7 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use stdClass;
+use Transliterator;
 
 use function app;
 
@@ -367,10 +368,13 @@ class GedcomRecord
      */
     public function slug(): string
     {
-        $text = strip_tags($this->fullName());
-        $text = strtr($text, '\\/?:;@=&<>#%{}|^~[]`"\'', '----------------------');
+        $transliterator = Transliterator::create('Any-Latin;Latin-ASCII');
 
-        return trim($text, '-');
+        $slug = strip_tags($this->fullName());
+        $slug = $transliterator->transliterate($slug);
+        $slug = preg_replace('/[^A-Za-z0-9]+/', '-', $slug);
+
+        return trim($slug, '-') ?: '-';
     }
 
     /**
