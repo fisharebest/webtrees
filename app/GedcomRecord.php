@@ -33,6 +33,29 @@ use stdClass;
 use Transliterator;
 
 use function app;
+use function array_shift;
+use function assert;
+use function class_exists;
+use function count;
+use function date;
+use function e;
+use function explode;
+use function in_array;
+use function md5;
+use function preg_match;
+use function preg_match_all;
+use function preg_replace;
+use function preg_replace_callback;
+use function preg_split;
+use function route;
+use function str_pad;
+use function strip_tags;
+use function strpos;
+use function strtoupper;
+use function trim;
+
+use const PREG_SET_ORDER;
+use const STR_PAD_LEFT;
 
 /**
  * A GEDCOM object.
@@ -368,10 +391,13 @@ class GedcomRecord
      */
     public function slug(): string
     {
-        $transliterator = Transliterator::create('Any-Latin;Latin-ASCII');
-
         $slug = strip_tags($this->fullName());
-        $slug = $transliterator->transliterate($slug);
+
+        if (class_exists(Transliterator::class)) {
+            $transliterator = Transliterator::create('Any-Latin;Latin-ASCII');
+            $slug           = $transliterator->transliterate($slug);
+        }
+
         $slug = preg_replace('/[^A-Za-z0-9]+/', '-', $slug);
 
         return trim($slug, '-') ?: '-';
