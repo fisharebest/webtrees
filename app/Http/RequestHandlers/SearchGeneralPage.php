@@ -86,8 +86,9 @@ class SearchGeneralPage implements RequestHandlerInterface
         $search_sources      = (bool) ($params['search_sources'] ?? false);
         $search_notes        = (bool) ($params['search_notes'] ?? false);
 
-        // Default to individuals only
+        // Default to families and individuals only
         if (!$search_individuals && !$search_families && !$search_repositories && !$search_sources && !$search_notes) {
+            $search_families    = true;
             $search_individuals = true;
         }
 
