@@ -1664,7 +1664,7 @@ class AdminTreesController extends AbstractBaseController
             ->whereIn('d_fact', ['BIRT', 'CHR', 'BAPM', 'DEAT', 'BURI'])
             ->groupBy(['d_year', 'd_month', 'd_day', 'd_type', 'd_fact', 'n_type', 'n_full'])
             ->having(new Expression('COUNT(DISTINCT d_gid)'), '>', '1')
-            ->select([new Expression('GROUP_CONCAT(d_gid) AS xrefs')])
+            ->select([new Expression('GROUP_CONCAT(DISTINCT d_gid) AS xrefs')])
             ->distinct()
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
