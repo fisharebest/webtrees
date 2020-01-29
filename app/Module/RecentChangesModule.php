@@ -22,10 +22,19 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
+use stdClass;
+
+use function extract;
+use function view;
+
+use const EXTR_OVERWRITE;
 
 /**
  * Class RecentChangesModule
@@ -39,6 +48,19 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     private const DEFAULT_SORT_STYLE = 'date_desc';
     private const DEFAULT_INFO_STYLE = 'table';
     private const MAX_DAYS           = 90;
+
+    /** @var UserService */
+    private $user_service;
+
+    /**
+     * RecentChangesModule constructor.
+     *
+     * @param UserService $user_service
+     */
+    public function __construct(UserService $user_service)
+    {
+        $this->user_service = $user_service;
+    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -72,31 +94,37 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
         extract($config, EXTR_OVERWRITE);
 
-        $records = $this->getRecentChanges($tree, $days);
+        $rows = $this->getRecentChanges($tree, $days);
 
         switch ($sortStyle) {
             case 'name':
-                uasort($records, GedcomRecord::nameComparator());
+                $rows = $rows->sort(static function (stdClass $x, stdClass $y) : int {
+                    return GedcomRecord::nameComparator()($x->record, $y->record);
+                });
                 break;
 
             case 'date_asc':
-                uasort($records, GedcomRecord::lastChangeComparator());
+                $rows = $rows->sort(static function (stdClass $x, stdClass $y) : int {
+                    return $x->time <=> $y->time;
+                });
                 break;
 
             case 'date_desc':
-                uasort($records, GedcomRecord::lastChangeComparator(-1));
+                $rows = $rows->sort(static function (stdClass $x, stdClass $y) : int {
+                    return $y->time <=> $x->time;
+                });
         }
 
-        if ($records === []) {
+        if ($rows->isEmpty()) {
             $content = I18N::plural('There have been no changes within the last %s day.', 'There have been no changes within the last %s days.', $days, I18N::number($days));
         } elseif ($infoStyle === 'list') {
             $content = view('modules/recent_changes/changes-list', [
-                'records'   => $records,
+                'rows'      => $rows,
                 'show_user' => $show_user,
             ]);
         } else {
             $content = view('modules/recent_changes/changes-table', [
-                'records'   => $records,
+                'rows'      => $rows,
                 'show_user' => $show_user,
             ]);
         }
@@ -212,23 +240,33 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree Changes for which tree
      * @param int  $days Number of days
      *
-     * @return GedcomRecord[] List of records with changes
+     * @return Collection<stdClass> List of records with changes
      */
-    private function getRecentChanges(Tree $tree, int $days): array
+    private function getRecentChanges(Tree $tree, int $days): Collection
     {
-        return DB::table('change')
+        $subquery = DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
             ->where('status', '=', 'accepted')
             ->where('new_gedcom', '<>', '')
             ->where('change_time', '>', Carbon::now()->subDays($days))
             ->groupBy(['xref'])
-            ->pluck('xref')
-            ->map(static function (string $xref) use ($tree): ?GedcomRecord {
-                return GedcomRecord::getInstance($xref, $tree);
+            ->select(new Expression('MAX(change_id) AS recent_change_id'));
+
+        $query = DB::table('change')
+            ->joinSub($subquery, 'recent', 'recent_change_id', '=', 'change_id')
+            ->select(['change.*']);
+
+        return $query
+            ->get()
+            ->map(function (stdClass $row) use ($tree): stdClass {
+                return (object) [
+                    'record' => GedcomRecord::getInstance($row->xref, $tree),
+                    'time'   => Carbon::create($row->change_time)->local(),
+                    'user'   => $this->user_service->find($row->user_id),
+                ];
             })
-            ->filter(static function (?GedcomRecord $record): bool {
-                return $record instanceof GedcomRecord && $record->canShow();
-            })
-            ->all();
+            ->filter(static function (stdClass $row): bool {
+                return $row->record instanceof GedcomRecord && $row->record->canShow();
+            });
     }
 }
