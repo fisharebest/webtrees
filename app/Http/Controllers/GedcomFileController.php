@@ -124,6 +124,7 @@ class GedcomFileController extends AbstractBaseController
                     if (!Str::startsWith($data->chunk_data, '0 HEAD')) {
                         return $this->viewResponse('admin/import-fail', [
                             'error' => I18N::translate('Invalid GEDCOM file - no header record found.'),
+                            'tree'  => $tree,
                         ]);
                     }
 
