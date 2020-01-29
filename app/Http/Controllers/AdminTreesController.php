@@ -1508,7 +1508,7 @@ class AdminTreesController extends AbstractBaseController
             }
         }
 
-        return redirect(route('manage-trees'));
+        return redirect(route('manage-trees', ['tree' => $this->tree_service->all()->first()->name()]));
     }
 
     /**
