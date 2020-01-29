@@ -35,6 +35,10 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
 
+    // Pagination
+    private const LIMIT_LOW  = 10;
+    private const LIMIT_HIGH = 20;
+
     // All standard GEDCOM 5.5.1 events except CENS, RESI and EVEN
     private const ALL_EVENTS = [
         'ADOP',
@@ -138,14 +142,16 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
             $content = view('modules/todays_events/empty');
         } elseif ($infoStyle === 'list') {
             $content = view('lists/anniversaries-list', [
-                'id'    => $block_id,
-                'facts' => $facts,
-                'limit' => 10,
+                'id'         => $block_id,
+                'facts'      => $facts,
+                'limit_low'  => self::LIMIT_LOW,
+                'limit_high' => self::LIMIT_HIGH,
             ]);
         } else {
             $content = view('lists/anniversaries-table', [
-                'facts' => $facts,
-                'limit' => 10,
+                'facts'      => $facts,
+                'limit_low'  => self::LIMIT_LOW,
+                'limit_high' => self::LIMIT_HIGH,
             ]);
         }
 

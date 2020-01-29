@@ -9,12 +9,14 @@ use Illuminate\Support\Collection;
 
 /**
  * @var Collection<Fact> $facts
+ * @var int              $limit_low
+ * @var int              $limit_high
  */
 
 ?>
 
 <?php foreach ($facts as $n => $fact) : ?>
-    <?php if ($n === $limit && $facts->count() > $limit) : ?>
+    <?php if ($n === $limit_low && $facts->count() > $limit_high) : ?>
         <div>
             <button class="btn btn-sm btn-secondary" id="show-more-<?= e($id) ?>">
                 <?= view('icons/add') ?>
@@ -23,7 +25,7 @@ use Illuminate\Support\Collection;
         </div>
     <?php endif ?>
 
-    <div class="<?= $n >= $limit ? 'd-none' : '' ?>">
+    <div class="<?= $n >= $limit_low && $facts->count() > $limit_high ? 'd-none' : '' ?>">
         <?php $record = $fact->record(); ?>
         <a href="<?= e($record->url()) ?>" class="list_item name2">
             <?= $record->fullName() ?>

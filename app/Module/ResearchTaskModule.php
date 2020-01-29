@@ -43,6 +43,10 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     private const DEFAULT_SHOW_UNASSIGNED = '1';
     private const DEFAULT_SHOW_FUTURE     = '1';
 
+    // Pagination
+    private const LIMIT_LOW  = 10;
+    private const LIMIT_HIGH = 20;
+
     /**
      * How should this module be identified in the control panel, etc.?
      *
@@ -112,8 +116,9 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             $content = '<p>' . I18N::translate('There are no research tasks in this family tree.') . '</p>';
         } else {
             $content = view('modules/todo/research-tasks', [
-                'limit' => 10,
-                'tasks' => $tasks,
+                'limit_low'  => self::LIMIT_LOW,
+                'limit_high' => self::LIMIT_HIGH,
+                'tasks'      => $tasks,
             ]);
         }
 

@@ -46,6 +46,10 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
     // Can show this number of days into the future.
     private const MAX_DAYS = 30;
 
+    // Pagination
+    private const LIMIT_LOW  = 10;
+    private const LIMIT_HIGH = 20;
+
     /**
      * How should this module be identified in the control panel, etc.?
      *
@@ -151,16 +155,18 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
         switch ($infoStyle) {
             case 'list':
                 $content = view('modules/yahrzeit/list', [
-                    'id'        => $block_id,
-                    'limit'     => 10,
-                    'yahrzeits' => $yahrzeits,
+                    'id'         => $block_id,
+                    'limit_low'  => self::LIMIT_LOW,
+                    'limit_high' => self::LIMIT_HIGH,
+                    'yahrzeits'  => $yahrzeits,
                 ]);
                 break;
             case 'table':
             default:
                 $content = view('modules/yahrzeit/table', [
-                    'limit'     => 10,
-                    'yahrzeits' => $yahrzeits,
+                    'limit_low'  => self::LIMIT_LOW,
+                    'limit_high' => self::LIMIT_HIGH,
+                    'yahrzeits'  => $yahrzeits,
                 ]);
                 break;
         }
