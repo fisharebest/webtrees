@@ -5,14 +5,15 @@ use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
- * @var int        $limit
+ * @var int        $limit_low
+ * @var int        $limit_high
  * @var Collection $yahrzeits
  */
 
 ?>
 
 <?php foreach ($yahrzeits as $n => $yahrzeit) : ?>
-    <?php if ($n === $limit && $yahrzeits->count() > $limit) : ?>
+    <?php if ($n === $limit_low && $yahrzeits->count() > $limit_high) : ?>
         <div>
             <button class="btn btn-sm btn-secondary" id="show-more-<?= e($id) ?>">
                 <?= view('icons/add') ?>
@@ -21,7 +22,7 @@ use Illuminate\Support\Collection;
         </div>
     <?php endif ?>
 
-    <div class="<?= $n >= $limit ? 'd-none' : '' ?>">
+    <div class="<?= $n >= $limit_low && $yahrzeits->count() > $limit_high ? 'd-none' : '' ?>">
         <a href="<?= e($yahrzeit->individual->url()) ?>" class="list_item name2">
             <?= $yahrzeit->individual->fullName() ?>
         </a>

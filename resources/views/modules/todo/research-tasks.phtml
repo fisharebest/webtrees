@@ -1,18 +1,27 @@
 <?php
 
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
+use Illuminate\Support\Collection;
+
+/**
+ * @var int              $limit_high
+ * @var int              $limit_low
+ * @var Collection<Fact> $tasks
+ */
 
 ?>
 
 <table
     class="table table-bordered table-sm wt-table-tasks datatables d-none"
     <?= view('lists/datatables-attributes') ?>
-    <?php if ($tasks->count() < $limit * 2) : ?>
+    <?php if ($tasks->count() < e($limit_high)) : ?>
         data-paging="false"
     <?php endif ?>
     data-filter="false"
     data-info="false"
     data-length-change="false"
+    data-page-length="<?= e($limit_low) ?>"
 >
     <thead>
         <tr>

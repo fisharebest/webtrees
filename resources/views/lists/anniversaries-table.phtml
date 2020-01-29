@@ -8,7 +8,8 @@ use Illuminate\Support\Collection;
 
 /**
  * @var Collection<Fact> $facts
- * @var int              $limit
+ * @var int              $limit_high
+ * @var int              $limit_low
  */
 
 ?>
@@ -17,12 +18,13 @@ use Illuminate\Support\Collection;
     <table
         class="table table-sm datatable wt-table-events"
         <?= view('lists/datatables-attributes') ?>
-        <?php if ($facts->count() < $limit * 2) : ?>
+        <?php if ($facts->count() < e($limit_high)) : ?>
             data-paging="false"
         <?php endif ?>
         data-filter="false"
         data-info="false"
         data-length-change="false"
+        data-page-length="<?= e($limit_low) ?>"
     >
         <thead>
             <tr>

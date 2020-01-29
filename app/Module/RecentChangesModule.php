@@ -49,6 +49,10 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     private const DEFAULT_INFO_STYLE = 'table';
     private const MAX_DAYS           = 90;
 
+    // Pagination
+    private const LIMIT_LOW  = 10;
+    private const LIMIT_HIGH = 20;
+
     /** @var UserService */
     private $user_service;
 
@@ -119,15 +123,18 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             $content = I18N::plural('There have been no changes within the last %s day.', 'There have been no changes within the last %s days.', $days, I18N::number($days));
         } elseif ($infoStyle === 'list') {
             $content = view('modules/recent_changes/changes-list', [
-                'id'        => $block_id,
-                'rows'      => $rows->values(),
-                'show_user' => $show_user,
+                'id'         => $block_id,
+                'limit_low'  => self::LIMIT_LOW,
+                'limit_high' => self::LIMIT_HIGH,
+                'rows'       => $rows->values(),
+                'show_user'  => $show_user,
             ]);
         } else {
             $content = view('modules/recent_changes/changes-table', [
-                'limit'     => 10,
-                'rows'      => $rows,
-                'show_user' => $show_user,
+                'limit_low'  => self::LIMIT_LOW,
+                'limit_high' => self::LIMIT_HIGH,
+                'rows'       => $rows,
+                'show_user'  => $show_user,
             ]);
         }
 
@@ -262,7 +269,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             ->get()
             ->map(function (stdClass $row) use ($tree): stdClass {
                 return (object) [
-                    'record' => GedcomRecord::getInstance($row->xref, $tree),
+                    'record' => GedcomRecord::getInstance($row->xref, $tree, $row->new_gedcom),
                     'time'   => Carbon::create($row->change_time)->local(),
                     'user'   => $this->user_service->find($row->user_id),
                 ];
