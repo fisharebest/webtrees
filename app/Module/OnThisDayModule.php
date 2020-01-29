@@ -138,11 +138,14 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
             $content = view('modules/todays_events/empty');
         } elseif ($infoStyle === 'list') {
             $content = view('lists/anniversaries-list', [
+                'id'    => $block_id,
                 'facts' => $facts,
+                'limit' => 10,
             ]);
         } else {
             $content = view('lists/anniversaries-table', [
                 'facts' => $facts,
+                'limit' => 10,
             ]);
         }
 

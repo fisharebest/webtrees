@@ -89,7 +89,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
         $records = $individuals->merge($families);
 
-        $tasks = [];
+        $tasks = new Collection();
 
         foreach ($records as $record) {
             foreach ($record->facts(['_TODO']) as $task) {
@@ -97,13 +97,13 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
                 if ($user_name === Auth::user()->userName()) {
                     // Tasks belonging to us.
-                    $tasks[] = $task;
+                    $tasks->add($task);
                 } elseif ($user_name === '' && $show_unassigned) {
                     // Tasks belonging to nobody.
-                    $tasks[] = $task;
+                    $tasks->add($task);
                 } elseif ($user_name !== '' && $show_other) {
                     // Tasks belonging to others.
-                    $tasks[] = $task;
+                    $tasks->add($task);
                 }
             }
         }
@@ -111,7 +111,10 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
         if ($records->isEmpty()) {
             $content = '<p>' . I18N::translate('There are no research tasks in this family tree.') . '</p>';
         } else {
-            $content = view('modules/todo/research-tasks', ['tasks' => $tasks]);
+            $content = view('modules/todo/research-tasks', [
+                'limit' => 10,
+                'tasks' => $tasks,
+            ]);
         }
 
         if ($context !== self::CONTEXT_EMBED) {

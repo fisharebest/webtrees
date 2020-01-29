@@ -218,7 +218,7 @@ class CalendarService
                 break;
         }
 
-        return $facts;
+        return $facts->values();
     }
 
     /**
