@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-01-20 17:57+0000\n"
-"PO-Revision-Date: 2020-01-03 08:31+0000\n"
-"Last-Translator: Victor Tiltay <vtiltay@gmail.com>\n"
-"Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
-"Language: fr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-01-20 17:57+0000\nPO-Revision-Date: 2020-01-30 10:04+0000\nLast-Translator: Andreas Rauhut <andreas@rauhut.eu>\nLanguage-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\nLanguage: fr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -777,7 +761,7 @@ msgstr "Liste des sources."
 #. I18N: Description of the “Shared submitters” module
 #: app/Module/SubmitterListModule.php:64
 msgid "A list of submitters."
-msgstr ""
+msgstr "Une liste de soumissionnaires."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:65
@@ -1371,7 +1355,7 @@ msgstr "Ajouter un nouveau mariage"
 #. I18N: Name of a module
 #: app/Module/FixMissingMarriedNames.php:70
 msgid "Add married names"
-msgstr ""
+msgstr "Ajouter des noms de mariés"
 
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:59
@@ -1909,7 +1893,7 @@ msgstr "Un diagramme de type sablier des ancêtres et des descendants d’un ind
 
 #: resources/views/edit/reorder-families.phtml:65
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr ""
+msgstr "Un individu peut avoir plusieurs parents. Par exemple, par naissance et par adoption."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:63
@@ -3955,12 +3939,12 @@ msgstr "Panneau de contrôle"
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:61
 msgid "Convert CEME tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Convertir des balises CEME en GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:49
 msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Convertir les balises _PRIM en GEDCOM 5.5.1"
 
 #: app/Http/RequestHandlers/HelpText.php:266
 #: resources/views/admin/trees-export.phtml:65
@@ -3971,7 +3955,7 @@ msgstr "Convertir du format UTF-8 au format ISO-8859-1"
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr ""
+msgstr "Convertir en"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
@@ -4318,7 +4302,7 @@ msgstr "Données"
 
 #: app/Http/Controllers/Admin/ModuleController.php:142
 msgid "Data Fixes"
-msgstr ""
+msgstr "Corrections de données"
 
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "Data controller"
@@ -4327,7 +4311,7 @@ msgstr "Contrôleur de données"
 #: resources/views/admin/data-fix-page.phtml:68
 #: resources/views/admin/data-fix-select.phtml:28
 msgid "Data fix"
-msgstr ""
+msgstr "Correction des données"
 
 #: app/Http/RequestHandlers/DataFixChoose.php:69
 #: app/Http/RequestHandlers/DataFixPage.php:91
@@ -4336,11 +4320,11 @@ msgstr ""
 #: resources/views/admin/data-fix-page.phtml:23
 #: resources/views/admin/trees.phtml:132
 msgid "Data fixes"
-msgstr ""
+msgstr "Corrections des données"
 
 #: resources/views/help/data-fixes.phtml:8
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
-msgstr ""
+msgstr "Les corrections de données peuvent nécessiter de nombreux calculs de longue durée, il n'est donc pas possible de créer une liste exacte des enregistrements qui doivent être mis à jour."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
@@ -6433,7 +6417,7 @@ msgstr "Par exemple, si vous spécifiez un degré de 2, la personne sera en mesu
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr ""
+msgstr "Par exemple, nous pouvons rapidement trouver des individus qui n'ont pas d'événement de décès, mais il est beaucoup plus lent de calculer si l'individu est mort."
 
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
@@ -11614,7 +11598,7 @@ msgstr "Remplacer"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:72
 msgid "Replace cemetery tags with burial places."
-msgstr ""
+msgstr "Remplacer les balises de cimetière par des lieux de sépulture."
 
 #: resources/views/search-replace-page.phtml:26
 msgid "Replace with"
@@ -13301,7 +13285,7 @@ msgstr "Fournisseur"
 
 #: resources/views/lists/submitters-table.phtml:60
 msgid "Submitter name"
-msgstr ""
+msgstr "Nom du soumissionnaire"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/ListController.php:548
@@ -13310,7 +13294,7 @@ msgstr ""
 #: resources/views/admin/merge-records-step-1.phtml:29
 #: resources/views/lists/submitters-table.phtml:55
 msgid "Submitters"
-msgstr ""
+msgstr "Soumissionnaire"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -13766,7 +13750,7 @@ msgstr "Le fichier « %s » n’existe pas."
 
 #: resources/views/edit/reorder-families.phtml:67
 msgid "The first family in the list will be used in charts, lists, reports, etc."
-msgstr ""
+msgstr "La première famille de la liste sera utilisée dans les graphiques, les listes, les rapports, etc."
 
 #: app/Http/RequestHandlers/DeletePath.php:71
 #, php-format
@@ -13840,7 +13824,7 @@ msgstr "Le menu Listes."
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:37
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "L'emplacement de ce lieu n'est pas connu."
 
 #: app/Http/Controllers/EditMediaController.php:284
 #, php-format
@@ -14472,7 +14456,7 @@ msgstr "Le lien est valable une heure."
 
 #: resources/views/help/data-fixes.phtml:16
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
-msgstr ""
+msgstr "Cette liste est créée à l'aide d'une recherche simple (mais rapide) et comprend donc des enregistrements qui ne seront pas mis à jour."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -15373,7 +15357,7 @@ msgstr "Mettre à jour les noms de lieux"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:74
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
-msgstr ""
+msgstr "Mettez à jour les parties de niveau supérieur des noms de lieux, tout en conservant les parties de niveau inférieur."
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -15826,7 +15810,7 @@ msgstr "Quand vous ajoutez de nouveaux proches parents, vous pouvez ajouter des 
 
 #: resources/views/edit/reorder-families.phtml:24
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr ""
+msgstr "Lorsqu'une personne a plus d'un conjoint, vous devez classer les familles dans l'ordre des dates de l'union."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:892
@@ -15858,7 +15842,7 @@ msgstr "Qui est en ligne"
 
 #: resources/views/admin/data-fix-page.phtml:80
 msgid "Why does this list include records that do not need to be updated?"
-msgstr ""
+msgstr "Pourquoi cette liste contient-elle des enregistrements qui n'ont pas besoin d'être mis à jour ?"
 
 #: resources/views/lists/families-table.phtml:173
 msgid "Widow"
@@ -20291,7 +20275,7 @@ msgstr "« %s » a été supprimé."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:60
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "Les balises «image mis en évidence» (_PRIM) sont utilisées par certaines applications de généalogie pour indiquer l'image préférée d'un individu. Une alternative consiste à réorganiser les images afin que l'image préférée soit répertoriée en premier."
 
 #: app/Functions/FunctionsPrint.php:89 app/Note.php:160
 #: app/Report/ReportParserGenerate.php:985
