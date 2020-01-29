@@ -1,27 +1,51 @@
 <?php
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
- * @var bool                 $show_user
+ * @var int                  $limit
  * @var Collection<stdClass> $rows
+ * @var bool                 $show_user
  */
 
 ?>
 
-<?php foreach ($rows as $row) : ?>
-    <a href="<?= e($row->record->url()) ?>" class="list_item name2">
-        <?= $row->record->fullName() ?>
-    </a>
+<?php foreach ($rows as $n => $row) : ?>
+    <?php if ($n === $limit && $rows->count() > $limit) : ?>
+        <div>
+            <button class="btn btn-sm btn-secondary" id="show-more-<?= e($id) ?>">
+                <?= view('icons/add') ?>
+                <?= /* I18N: button label */ I18N::translate('show more') ?>
+            </button>
+        </div>
+    <?php endif ?>
 
-    <div class="indent mb-1">
-        <?php if ($row->record->lastChangeTimestamp()->unix() !== 0) : ?>
-            <?php if ($show_user) : ?>
-                <?= /* I18N: [a record was] Changed on <date/time> by <user> */I18N::translate('Changed on %1$s by %2$s', view('components/datetime', ['timestamp' => $row->record->lastChangeTimestamp()]), e($row->record->lastChangeUser())) ?>
-            <?php else : ?>
-                <?= /* I18N: [a record was] Changed on <date/time> */ I18N::translate('Changed on %1$s', view('components/datetime', ['timestamp' => $row->record->lastChangeTimestamp()])) ?>
+    <div class="<?= $n >= $limit ? 'd-none' : '' ?>">
+        <a href="<?= e($row->record->url()) ?>">
+            <?= $row->record->fullName() ?>
+        </a>
+
+        <div class="indent mb-1">
+            <?php if ($row->record->lastChangeTimestamp()->unix() !== 0) : ?>
+                <?php if ($show_user) : ?>
+                    <?= /* I18N: [a record was] Changed on <date/time> by <user> */I18N::translate('Changed on %1$s by %2$s', view('components/datetime', ['timestamp' => $row->record->lastChangeTimestamp()]), e($row->record->lastChangeUser())) ?>
+                <?php else : ?>
+                    <?= /* I18N: [a record was] Changed on <date/time> */ I18N::translate('Changed on %1$s', view('components/datetime', ['timestamp' => $row->record->lastChangeTimestamp()])) ?>
+                <?php endif ?>
             <?php endif ?>
-        <?php endif ?>
+        </div>
     </div>
 <?php endforeach ?>
+
+<?php View::push('javascript') ?>
+<script>
+    document.getElementById("show-more-<?= e($id) ?>").addEventListener("click", function (ev) {
+        document.querySelectorAll("#block-<?= e($id) ?> .d-none").forEach(function (el) {
+            el.classList.remove("d-none");
+        });
+        ev.target.parentNode.removeChild(ev.target);
+    });
+</script>
+<?php View::endPush() ?>

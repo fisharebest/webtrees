@@ -1,17 +1,46 @@
 <?php
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
+
+/**
+ * @var int        $limit
+ * @var Collection $yahrzeits
+ */
 
 ?>
 
-<?php foreach ($yahrzeits as $yahrzeit) : ?>
-    <a href="<?= e($yahrzeit->individual->url()) ?>" class="list_item name2">
-        <?= $yahrzeit->individual->fullName() ?>
-    </a>
-    <small><?= view('icons/sex', ['sex' => $yahrzeit->individual->sex()]) ?></small>
-    <div class="indent">
-        <?= $yahrzeit->fact->date()->display(true, null, false) ?>,
-        <?= $yahrzeit->yahrzeit_date->display(true, null, false) ?>,
-        <?= I18N::translate('%s year anniversary', $yahrzeit->fact->anniv) ?>
+<?php foreach ($yahrzeits as $n => $yahrzeit) : ?>
+    <?php if ($n === $limit && $yahrzeits->count() > $limit) : ?>
+        <div>
+            <button class="btn btn-sm btn-secondary" id="show-more-<?= e($id) ?>">
+                <?= view('icons/add') ?>
+                <?= /* I18N: button label */ I18N::translate('show more') ?>
+            </button>
+        </div>
+    <?php endif ?>
+
+    <div class="<?= $n >= $limit ? 'd-none' : '' ?>">
+        <a href="<?= e($yahrzeit->individual->url()) ?>" class="list_item name2">
+            <?= $yahrzeit->individual->fullName() ?>
+        </a>
+        <small><?= view('icons/sex', ['sex' => $yahrzeit->individual->sex()]) ?></small>
+        <div class="indent">
+            <?= $yahrzeit->fact->date()->display(true, null, false) ?>,
+            <?= $yahrzeit->yahrzeit_date->display(true, null, false) ?>,
+            <?= I18N::translate('%s year anniversary', $yahrzeit->fact->anniv) ?>
+        </div>
     </div>
 <?php endforeach ?>
+
+<?php View::push('javascript') ?>
+<script>
+    document.getElementById("show-more-<?= e($id) ?>").addEventListener("click", function (ev) {
+        document.querySelectorAll("#block-<?= e($id) ?> .d-none").forEach(function (el) {
+            el.classList.remove("d-none");
+        });
+        ev.target.parentNode.removeChild(ev.target);
+    });
+</script>
+<?php View::endPush() ?>

@@ -2,7 +2,9 @@
 
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -11,21 +13,44 @@ use Illuminate\Support\Collection;
 
 ?>
 
-<?php foreach ($facts as $fact) : ?>
-    <?php $record = $fact->record(); ?>
-    <a href="<?= e($record->url()) ?>" class="list_item name2">
-        <?= $record->fullName() ?>
-    </a>
-    <?php if ($record instanceof Individual) : ?>
-        <?= view('icons/sex', ['sex' => $record->sex()]) ?>
+<?php foreach ($facts as $n => $fact) : ?>
+    <?php if ($n === $limit && $facts->count() > $limit) : ?>
+        <div>
+            <button class="btn btn-sm btn-secondary" id="show-more-<?= e($id) ?>">
+                <?= view('icons/add') ?>
+                <?= /* I18N: button label */ I18N::translate('show more') ?>
+            </button>
+        </div>
     <?php endif ?>
-    <div class="indent">
-        <?= $fact->label() . ' — ' . $fact->date()->display(true) ?>
-        (<?= Carbon::now()->subYears($fact->anniv)->local()->diffForHumans() ?>)
-        <?php if ($fact->place()->gedcomName() !== '') : ?>
-            — <a href="<?= e($fact->place()->url()) ?>" title="<?= strip_tags($fact->place()->fullName()) ?>">
-                <?= $fact->place()->shortName() ?>
-            </a>
+
+    <div class="<?= $n >= $limit ? 'd-none' : '' ?>">
+        <?php $record = $fact->record(); ?>
+        <a href="<?= e($record->url()) ?>" class="list_item name2">
+            <?= $record->fullName() ?>
+        </a>
+        <?php if ($record instanceof Individual) : ?>
+            <?= view('icons/sex', ['sex' => $record->sex()]) ?>
         <?php endif ?>
+        <div class="indent">
+            <?= $fact->label() . ' — ' . $fact->date()->display(true) ?>
+            (<?= Carbon::now()->subYears($fact->anniv)->local()->diffForHumans() ?>)
+            <?php if ($fact->place()->gedcomName() !== '') : ?>
+                — <a href="<?= e($fact->place()->url()) ?>" title="<?= strip_tags($fact->place()->fullName()) ?>">
+                    <?= $fact->place()->shortName() ?>
+                </a>
+            <?php endif ?>
+        </div>
     </div>
 <?php endforeach ?>
+
+
+<?php View::push('javascript') ?>
+<script>
+    document.getElementById("show-more-<?= e($id) ?>").addEventListener("click", function (ev) {
+        document.querySelectorAll("#block-<?= e($id) ?> .d-none").forEach(function (el) {
+            el.classList.remove("d-none");
+        });
+        ev.target.parentNode.removeChild(ev.target);
+    });
+</script>
+<?php View::endPush() ?>

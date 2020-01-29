@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -94,7 +95,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
         // The standard anniversary rules cover most of the Yahrzeit rules, we just
         // need to handle a few special cases.
         // Fetch normal anniversaries, with an extra day before/after
-        $yahrzeits = [];
+        $yahrzeits = new Collection();
         for ($jd = $startjd - 1; $jd <= $endjd + $days; ++$jd) {
             foreach ($calendar_service->getAnniversaryEvents($jd, 'DEAT _YART', $tree) as $fact) {
                 // Exact hebrew dates only
@@ -135,13 +136,13 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                         }
                         $yahrzeit_date = new Date($yahrzeit_date->format('%@ %A %O %E'));
 
-                        $yahrzeits[] = (object) [
+                        $yahrzeits->add((object) [
                             'individual'    => $fact->record(),
                             'fact_date'     => $fact->date(),
                             'fact'          => $fact,
                             'jd'            => $jd,
                             'yahrzeit_date' => $yahrzeit_date,
-                        ];
+                        ]);
                     }
                 }
             }
@@ -150,12 +151,15 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
         switch ($infoStyle) {
             case 'list':
                 $content = view('modules/yahrzeit/list', [
+                    'id'        => $block_id,
+                    'limit'     => 10,
                     'yahrzeits' => $yahrzeits,
                 ]);
                 break;
             case 'table':
             default:
                 $content = view('modules/yahrzeit/table', [
+                    'limit'     => 10,
                     'yahrzeits' => $yahrzeits,
                 ]);
                 break;

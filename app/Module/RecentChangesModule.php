@@ -98,19 +98,19 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
         switch ($sortStyle) {
             case 'name':
-                $rows = $rows->sort(static function (stdClass $x, stdClass $y) : int {
+                $rows = $rows->sort(static function (stdClass $x, stdClass $y): int {
                     return GedcomRecord::nameComparator()($x->record, $y->record);
                 });
                 break;
 
             case 'date_asc':
-                $rows = $rows->sort(static function (stdClass $x, stdClass $y) : int {
+                $rows = $rows->sort(static function (stdClass $x, stdClass $y): int {
                     return $x->time <=> $y->time;
                 });
                 break;
 
             case 'date_desc':
-                $rows = $rows->sort(static function (stdClass $x, stdClass $y) : int {
+                $rows = $rows->sort(static function (stdClass $x, stdClass $y): int {
                     return $y->time <=> $x->time;
                 });
         }
@@ -119,11 +119,13 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             $content = I18N::plural('There have been no changes within the last %s day.', 'There have been no changes within the last %s days.', $days, I18N::number($days));
         } elseif ($infoStyle === 'list') {
             $content = view('modules/recent_changes/changes-list', [
-                'rows'      => $rows,
+                'id'        => $block_id,
+                'rows'      => $rows->values(),
                 'show_user' => $show_user,
             ]);
         } else {
             $content = view('modules/recent_changes/changes-table', [
+                'limit'     => 10,
                 'rows'      => $rows,
                 'show_user' => $show_user,
             ]);
