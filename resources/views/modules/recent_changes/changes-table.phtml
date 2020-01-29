@@ -9,7 +9,12 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
 
+/**
+ * @var bool                 $show_user
+ * @var Collection<stdClass> $rows
+ */
 ?>
 
 <div class="table-responsive">
@@ -41,44 +46,44 @@ use Fisharebest\Webtrees\View;
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($records as $record) : ?>
+            <?php foreach ($rows as $row) : ?>
                 <tr>
-                    <td data-sort="<?= $record::RECORD_TYPE ?>" class="text-centre wt-side-block-optional">
-                        <?php if ($record::RECORD_TYPE === Individual::RECORD_TYPE) : ?>
+                    <td data-sort="<?= $row->record::RECORD_TYPE ?>" class="text-centre wt-side-block-optional">
+                        <?php if ($row->record::RECORD_TYPE === Individual::RECORD_TYPE) : ?>
                             <?= view('icons/individual') ?>
                             <span class="sr-only"><?= I18N::translate('Individual') ?></span>
-                        <?php elseif ($record::RECORD_TYPE === Family::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record::RECORD_TYPE === Family::RECORD_TYPE) : ?>
                             <?= view('icons/family') ?>
                             <span class="sr-only"><?= I18N::translate('Family') ?></span>
-                        <?php elseif ($record::RECORD_TYPE === Media::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record::RECORD_TYPE === Media::RECORD_TYPE) : ?>
                             <?= view('icons/media') ?>
                             <span class="sr-only"><?= I18N::translate('Media') ?></span>
-                        <?php elseif ($record::RECORD_TYPE === Note::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record::RECORD_TYPE === Note::RECORD_TYPE) : ?>
                             <?= view('icons/note') ?>
                             <span class="sr-only"><?= I18N::translate('Note') ?></span>
-                        <?php elseif ($record::RECORD_TYPE === Source::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record::RECORD_TYPE === Source::RECORD_TYPE) : ?>
                             <?= view('icons/source') ?>
                             <span class="sr-only"><?= I18N::translate('Source') ?></span>
-                        <?php elseif ($record::RECORD_TYPE === Submitter::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record::RECORD_TYPE === Submitter::RECORD_TYPE) : ?>
                             <?= view('icons/submitter') ?>
                             <span class="sr-only"><?= I18N::translate('Submitter') ?></span>
-                        <?php elseif ($record::RECORD_TYPE === Repository::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record::RECORD_TYPE === Repository::RECORD_TYPE) : ?>
                             <?= view('icons/repository') ?>
                             <span class="sr-only"><?= I18N::translate('Repository') ?></span>
                         <?php endif ?>
                     </td>
 
-                    <td data-sort="<?= e($record->sortName()) ?>">
-                        <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
+                    <td data-sort="<?= e($row->record->sortName()) ?>">
+                        <a href="<?= e($row->record->url()) ?>"><?= $row->record->fullName() ?></a>
                     </td>
 
-                    <td data-sort="<?= $record->lastChangeTimestamp()->unix() ?>">
-                        <?= view('components/datetime', ['timestamp' => $record->lastChangeTimestamp()]) ?>
+                    <td data-sort="<?= $row->time->timestamp ?>">
+                        <?= view('components/datetime', ['timestamp' => $row->time]) ?>
                     </td>
 
                     <?php if ($show_user) : ?>
                         <td>
-                            <?= e($record->lastChangeUser()) ?>
+                            <?= e($row->user->userName()) ?>
                         </td>
                     <?php endif ?>
                 </tr>
