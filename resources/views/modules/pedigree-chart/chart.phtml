@@ -7,10 +7,11 @@ use Illuminate\Support\Collection;
  * @var Collection|Individual[] $ancestors
  * @var int                     $generations
  * @var Collection|string[]     $links
+ * @var string                  $spacer
  * @var string                  $style
  */
 ?>
 
 <div class="wt-chart-pedigree-<?= e($style) ?>">
-    <?= view('modules/pedigree-chart/chart-' . $style, ['ancestors' => $ancestors, 'sosa' => 1, 'generation' => 1, 'generations' => $generations, 'links' => $links]) ?>
+    <?= view('modules/pedigree-chart/chart-' . $style, ['ancestors' => $ancestors, 'sosa' => 1, 'generation' => 1, 'generations' => $generations, 'links' => $links, 'spacer' => $spacer]) ?>
 </div>

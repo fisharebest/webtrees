@@ -9,22 +9,23 @@ use Illuminate\Support\Collection;
  * @var int                     $generations Final generation to draw
  * @var Collection|string[]     $links       Links to extend the tree
  * @var int                     $sosa        Draw this individual
+ * @var string                  $spacer
  */
 ?>
 
 <div class="d-flex flex-column">
     <?php if ($generation < $generations) : ?>
         <div class="d-flex">
-            <?= view('modules/pedigree-chart/chart-up', ['ancestors' => $ancestors, 'sosa' => $sosa * 2, 'generation' => $generation + 1, 'generations' => $generations, 'links' => $links]) ?>
+            <?= view('modules/pedigree-chart/chart-up', ['ancestors' => $ancestors, 'sosa' => $sosa * 2, 'generation' => $generation + 1, 'generations' => $generations, 'links' => $links, 'spacer' => $spacer]) ?>
 
-            <?= view('modules/pedigree-chart/chart-up', ['ancestors' => $ancestors, 'sosa' => $sosa * 2 + 1, 'generation' => $generation + 1, 'generations' => $generations, 'links' => $links]) ?>
+            <?= view('modules/pedigree-chart/chart-up', ['ancestors' => $ancestors, 'sosa' => $sosa * 2 + 1, 'generation' => $generation + 1, 'generations' => $generations, 'links' => $links, 'spacer' => $spacer]) ?>
         </div>
     <?php endif ?>
 
     <div class="position-relative d-flex justify-content-center wt-pedigree-generation wt-generation-fwd-<?= $generation ?> wt-generation-rev-<?= 1 + $generations - $generation ?>">
         <div class="d-flex flex-column align-items-center">
-            <?php if ($generation === $generations && $links->get($sosa)) : ?>
-                <?= $links->get($sosa) ?>
+            <?php if ($generation === $generations) : ?>
+                <?= $links->get($sosa, $spacer) ?>
             <?php endif ?>
 
             <?= view('chart-box', ['individual' => $ancestors->get($sosa)]) ?>
