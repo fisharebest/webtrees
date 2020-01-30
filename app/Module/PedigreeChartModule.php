@@ -248,6 +248,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
                 'style'       => $style,
                 'layout'      => 'right',
                 'links'       => $links,
+                'spacer'      => $this->spacer(),
             ]);
         }
 
@@ -269,6 +270,16 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
             'title'              => $this->chartTitle($individual),
             'tree'               => $tree,
         ]);
+    }
+
+    /**
+     * A link-sized spacer, to maintain the chart layout
+     *
+     * @return string
+     */
+    public function spacer(): string
+    {
+        return '<span class="px-2">' . view('icons/spacer') . '</span>';
     }
 
     /**
