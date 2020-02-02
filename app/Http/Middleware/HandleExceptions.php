@@ -188,6 +188,8 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
         $base_path = dirname(__DIR__, 3);
         $trace     = $exception->getMessage() . ' ' . $exception->getFile() . ':' . $exception->getLine() . PHP_EOL . $exception->getTraceAsString();
         $trace     = str_replace($base_path, '…', $trace);
+        // User data may contain non UTF-8 characters.
+        $trace     = mb_convert_encoding($trace, 'UTF-8', 'UTF-8');
         $trace     = e($trace);
         $trace     = preg_replace('/^.*modules_v4.*$/m', '<b>$0</b>', $trace);
 
