@@ -777,7 +777,7 @@ msgstr "Een lijst met bronnen."
 #. I18N: Description of the “Shared submitters” module
 #: app/Module/SubmitterListModule.php:64
 msgid "A list of submitters."
-msgstr ""
+msgstr "Een lijst met indieners."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:69
@@ -1385,7 +1385,7 @@ msgstr "Voeg huwelijksdetails toe"
 #. I18N: Name of a module
 #: app/Module/FixMissingMarriedNames.php:70
 msgid "Add married names"
-msgstr ""
+msgstr "Voeg huwelijksnaam toe"
 
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:59
@@ -1923,7 +1923,7 @@ msgstr "Een zandloper diagram met de voorouders en nakomelingen van een persoon.
 
 #: resources/views/edit/reorder-families.phtml:65
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr ""
+msgstr "Een persoon kan meerdere ouders hebben. Bijvoorbeeld biologische en adoptie ouders."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:63
@@ -3970,12 +3970,12 @@ msgstr "Controlepaneel"
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:61
 msgid "Convert CEME tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Converteer CEME label naar GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:49
 msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Converteer  _PRIM labels naar GEDCOM 5.5.1"
 
 #: app/Http/RequestHandlers/HelpText.php:266
 #: resources/views/admin/trees-export.phtml:65
@@ -3986,7 +3986,7 @@ msgstr "Converteer van UTF-8 naar ISO-8859-1"
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr ""
+msgstr "Converteer naar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
@@ -4331,6 +4331,10 @@ msgstr "Dallas, Texas, Verenigde Staten"
 msgid "Data"
 msgstr "Gegevens"
 
+#: app/Http/Controllers/Admin/ModuleController.php:142
+msgid "Data Fixes"
+msgstr "Gegevens correcties"
+
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "Data controller"
 msgstr "Verantwoordelijke"
@@ -4338,7 +4342,7 @@ msgstr "Verantwoordelijke"
 #: resources/views/admin/data-fix-page.phtml:68
 #: resources/views/admin/data-fix-select.phtml:28
 msgid "Data fix"
-msgstr ""
+msgstr "Gegevens correctie"
 
 #: app/Http/Controllers/Admin/ModuleController.php:142
 #: app/Http/RequestHandlers/DataFixChoose.php:69
@@ -4348,11 +4352,11 @@ msgstr ""
 #: resources/views/admin/data-fix-page.phtml:23
 #: resources/views/admin/trees.phtml:132
 msgid "Data fixes"
-msgstr ""
+msgstr "Gegevens correcties"
 
 #: resources/views/help/data-fixes.phtml:8
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
-msgstr ""
+msgstr "Voor gegevens correcties zijn veel langdurige berekeningen nodig, het is daarom niet mogelijk om een lijst met de te corrigeren gegevens te genereren."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
@@ -6445,7 +6449,7 @@ msgstr "Als u als padlengte b.v. 2 opgeeft, dan kan die persoon zijn kleinkind (
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr ""
+msgstr "We kunnen bijvoorbeeld snel personen vinden die geen overlijdensgegevens hebben, maar het is veel langzamer om te berekenen of personen overleden zijn."
 
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
@@ -11626,7 +11630,7 @@ msgstr "Vervang"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:72
 msgid "Replace cemetery tags with burial places."
-msgstr ""
+msgstr "Vervang begraafplaats door plaatsnaam waar begrafenis plaats vond."
 
 #: resources/views/search-replace-page.phtml:26
 msgid "Replace with"
@@ -13313,7 +13317,7 @@ msgstr "Inzender"
 
 #: resources/views/lists/submitters-table.phtml:60
 msgid "Submitter name"
-msgstr ""
+msgstr "Naam van indiener"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/ListController.php:548
@@ -13322,7 +13326,7 @@ msgstr ""
 #: resources/views/admin/merge-records-step-1.phtml:29
 #: resources/views/lists/submitters-table.phtml:55
 msgid "Submitters"
-msgstr ""
+msgstr "Indieners"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -13778,7 +13782,7 @@ msgstr "Het bestand ‘%s’ bestaat niet."
 
 #: resources/views/edit/reorder-families.phtml:67
 msgid "The first family in the list will be used in charts, lists, reports, etc."
-msgstr ""
+msgstr "De eerste familie in deze lijst zal worden gebruikt in diagrammen, lijsten, rapporten, enz."
 
 #: app/Http/RequestHandlers/DeletePath.php:71
 #, php-format
@@ -13852,7 +13856,7 @@ msgstr "Het lijsten menu."
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:37
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "De locatie van deze plaats is niet bekend."
 
 #: app/Http/Controllers/EditMediaController.php:284
 #, php-format
@@ -14484,7 +14488,7 @@ msgstr "Deze link is een uur geldig."
 
 #: resources/views/help/data-fixes.phtml:16
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
-msgstr ""
+msgstr "Deze lijst is gemaakt met een eenvoudige (maar snelle) zoekopdracht en bevat daarom records die niet worden bijgewerkt."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -15387,7 +15391,7 @@ msgstr "Plaatsnamen bijwerken"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:74
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
-msgstr ""
+msgstr "De plaatsnamen gedeeltes van een hoger niveau worden bijgewerkt, de delen van een lager niveau blijven behouden."
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -15840,7 +15844,7 @@ msgstr "Wanneer u nieuwe naaste familieleden toevoegt, kunt u bronvermeldingen a
 
 #: resources/views/edit/reorder-families.phtml:24
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr ""
+msgstr "Wanneer een persoon meer dan één echtgenoot heeft, moet u de families op datum sorteren."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:892
@@ -15872,7 +15876,7 @@ msgstr "Wie is online"
 
 #: resources/views/admin/data-fix-page.phtml:80
 msgid "Why does this list include records that do not need to be updated?"
-msgstr ""
+msgstr "Waarom bevat deze lijst records die niet die niet bijgewerkt dienen te worden?"
 
 #: resources/views/lists/families-table.phtml:173
 msgid "Widow"
@@ -20313,7 +20317,7 @@ msgstr "“%s” is verwijderd."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:60
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "\"Gemarkeerde afbeelding\" (_PRIM) -tags worden door sommige programma's gebruikt om de gewenste afbeelding voor een persoon aan te geven. Een alternatief is om de afbeeldingen opnieuw te ordenen, zodat de gewenste afbeelding eerst wordt vermeld."
 
 #: app/Functions/FunctionsPrint.php:93 app/Note.php:160
 #: app/Report/ReportParserGenerate.php:985
