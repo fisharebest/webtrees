@@ -21,6 +21,17 @@ use Illuminate\Support\Collection;
                 <?= /* I18N: button label */ I18N::translate('show more') ?>
             </button>
         </div>
+
+        <?php View::push('javascript') ?>
+        <script>
+            document.getElementById("show-more-<?= e($id) ?>").addEventListener("click", function (ev) {
+                document.querySelectorAll("#block-<?= e($id) ?> .d-none").forEach(function (el) {
+                    el.classList.remove("d-none");
+                });
+                ev.target.parentNode.removeChild(ev.target);
+            });
+        </script>
+        <?php View::endPush() ?>
     <?php endif ?>
 
     <div class="<?= $n >= $limit_low && $rows->count() > $limit_high ? 'd-none' : '' ?>">
@@ -39,14 +50,3 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 <?php endforeach ?>
-
-<?php View::push('javascript') ?>
-<script>
-    document.getElementById("show-more-<?= e($id) ?>").addEventListener("click", function (ev) {
-        document.querySelectorAll("#block-<?= e($id) ?> .d-none").forEach(function (el) {
-            el.classList.remove("d-none");
-        });
-        ev.target.parentNode.removeChild(ev.target);
-    });
-</script>
-<?php View::endPush() ?>
