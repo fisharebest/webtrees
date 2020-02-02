@@ -734,28 +734,26 @@ class LocationController extends AbstractAdminController
 
         foreach ($places as $place) {
             $location = new Location($place['fqpn']);
-            $exists   = $location->exists();
+            $new   = !$location->exists();
 
-            if ($options === 'update' && !$exists) {
+            if (($options === 'update' && $new) || ($options === 'add' && !$new)) {
                 continue;
             }
 
-            if (!$exists) {
+            if ($new) {
                 $added++;
-            }
-
-            if (!$exists || $options === 'update') {
-                DB::table('placelocation')
-                    ->where('pl_id', '=', $location->id())
-                    ->update([
-                        'pl_lati' => $place['pl_lati'],
-                        'pl_long' => $place['pl_long'],
-                        'pl_zoom' => $place['pl_zoom'] ?: null,
-                        'pl_icon' => $place['pl_icon'] ?: null,
-                    ]);
-
+            } else {
                 $updated++;
             }
+
+            DB::table('placelocation')
+                ->where('pl_id', '=', $location->id())
+                ->update([
+                    'pl_lati' => $place['pl_lati'],
+                    'pl_long' => $place['pl_long'],
+                    'pl_zoom' => $place['pl_zoom'] ?: null,
+                    'pl_icon' => $place['pl_icon'] ?: null,
+                ]);
         }
         FlashMessages::addMessage(
             I18N::translate('locations updated: %s, locations added: %s', I18N::number($updated), I18N::number($added)),
