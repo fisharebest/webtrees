@@ -57,9 +57,6 @@ class TreePageDefaultEdit implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
         $user = $request->getAttribute('user');
         assert($user instanceof UserInterface);
 
@@ -72,7 +69,7 @@ class TreePageDefaultEdit implements RequestHandlerInterface
         $main_blocks = $this->home_page_service->treeBlocks($default_tree, $user, ModuleBlockInterface::MAIN_BLOCKS);
         $side_blocks = $this->home_page_service->treeBlocks($default_tree, $user, ModuleBlockInterface::SIDE_BLOCKS);
 
-        $all_blocks = $this->home_page_service->availableTreeBlocks($tree, $user);
+        $all_blocks = $this->home_page_service->availableTreeBlocks($default_tree, $user);
         $title      = I18N::translate('Set the default blocks for new family trees');
         $url_cancel = route(ControlPanel::class);
         $url_save   = route(TreePageDefaultUpdate::class);
