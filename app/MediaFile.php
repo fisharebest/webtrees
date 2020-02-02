@@ -282,7 +282,7 @@ class MediaFile
             'markh'     => '100h',
             'markw'     => '100w',
             'markalpha' => 25,
-            'or'        => 0,
+            'or'        => 'auto',
         ];
 
         $signature = SignatureFactory::create($glide_key)->generateSignature('', $params);
