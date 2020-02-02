@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\GedcomTag;
 
 <div>
     <?php if ($addtag) : ?>
-        <?= GedcomTag::getLabel('BIRT') ?>:
+        <?= GedcomTag::getLabel($etag) ?>:
     <?php endif ?>
     <?= $date ?>
 </div>
