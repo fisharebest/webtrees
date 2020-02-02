@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -325,7 +326,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $facts       = [];
         foreach ($ancestors as $sosa => $person) {
             if ($person->canShow()) {
-                $birth = $person->facts(['BIRT'])->first();
+                $birth = $person->facts(Gedcom::BIRTH_EVENTS, true)->first();
                 if ($birth instanceof Fact && $birth->place()->gedcomName() !== '') {
                     $facts[$sosa] = $birth;
                 }
@@ -377,6 +378,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
             'date'   => $fact->date()->display(true),
             'place'  => $fact->place(),
             'addtag' => $addbirthtag,
+            'etag'   => $fact->getTag()
         ];
     }
 
