@@ -728,25 +728,28 @@ class LocationController extends AbstractAdminController
             DB::table('placelocation')->delete();
         }
 
-        //process places
         $added   = 0;
         $updated = 0;
 
         foreach ($places as $place) {
             $location = new Location($place['fqpn']);
-            $new   = !$location->exists();
+            $exists   = $location->exists();
 
-            if (($options === 'update' && $new) || ($options === 'add' && !$new)) {
+            // Only update existing records
+            if ($options === 'update' && !$exists) {
                 continue;
             }
 
-            if ($new) {
-                $added++;
-            } else {
-                $updated++;
+            // Only add new records
+            if ($options === 'add' && $exists) {
+                continue;
             }
 
-            DB::table('placelocation')
+            if (!$exists) {
+                $added++;
+            }
+
+            $updated += DB::table('placelocation')
                 ->where('pl_id', '=', $location->id())
                 ->update([
                     'pl_lati' => $place['pl_lati'],
@@ -757,7 +760,7 @@ class LocationController extends AbstractAdminController
         }
         FlashMessages::addMessage(
             I18N::translate('locations updated: %s, locations added: %s', I18N::number($updated), I18N::number($added)),
-            $added + $updated === 0 ? 'info' : 'success'
+            'info'
         );
 
         return redirect($url);
