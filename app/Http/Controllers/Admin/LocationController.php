@@ -285,7 +285,7 @@ class LocationController extends AbstractAdminController
             $lat   = $location->latitude();
             $lng   = $location->longitude();
             $id    = $place_id;
-            $title = $location->locationName();
+            $title = e($location->locationName());
         } else {
             // Add a place
             $lat       = '';
@@ -295,14 +295,11 @@ class LocationController extends AbstractAdminController
                 // We're at the global level so create a minimal
                 // place for the page title and breadcrumbs
                 $title         =  I18N::translate('World');
-                $hierarchy     =  [(object) [
-                    'pl_id'    => 0,
-                    'pl_place' => $title,
-                ]];
+                $hierarchy     =  [];
             } else {
                 $hierarchy = $this->getHierarchy($parent_id);
                 $tmp       = new Location($hierarchy[0]->fqpn);
-                $title     = $tmp->locationName();
+                $title     = e($tmp->locationName());
             }
         }
 
@@ -312,7 +309,7 @@ class LocationController extends AbstractAdminController
         ];
 
         foreach ($hierarchy as $row) {
-            $breadcrumbs[route('map-data', ['parent_id' => $row->pl_id])] = $row->pl_place;
+            $breadcrumbs[route('map-data', ['parent_id' => $row->pl_id])] = e($row->pl_place);
         }
 
         if ($place_id === 0) {
@@ -325,7 +322,7 @@ class LocationController extends AbstractAdminController
 
         return $this->viewResponse('admin/location-edit', [
             'breadcrumbs' => $breadcrumbs,
-            'title'       => e($title),
+            'title'       => $title,
             'location'    => $location,
             'place_id'    => $place_id,
             'parent_id'   => $parent_id,
@@ -416,7 +413,7 @@ class LocationController extends AbstractAdminController
         FlashMessages::addMessage(
             I18N::translate(
                 'The details for “%s” have been updated.',
-                $params['new_place_name']
+                e($params['new_place_name'])
             ),
             'success'
         );
