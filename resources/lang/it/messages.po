@@ -12179,7 +12179,7 @@ msgstr "Nome mittente"
 #: app/Http/RequestHandlers/EmailPreferencesPage.php:64
 #: resources/views/admin/control-panel.phtml:89
 msgid "Sending email"
-msgstr ""
+msgstr "Inviare mail"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:183
@@ -12852,7 +12852,7 @@ msgstr "Esci"
 #: app/Http/Controllers/AdminSiteController.php:117
 #: resources/views/admin/control-panel.phtml:95
 msgid "Sign-in and registration"
-msgstr ""
+msgstr "Accesso e registrazione"
 
 #: resources/views/help/date.phtml:122
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -14948,7 +14948,7 @@ msgstr ""
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:36
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
-msgstr ""
+msgstr "Per impostare questo testo in altre lingue, devi cambiare la lingua del sito, e visitare nuovamente questa pagina."
 
 #: resources/views/modules/sitemap/config.phtml:44
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -20214,7 +20214,7 @@ msgstr "webtrees ha bisogno di un database per memorizzare i dati genealogici."
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:67
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr ""
+msgstr "webtrees ha la necessità di inviare email, come reminder della password e notifiche del sito."
 
 #: app/Functions/FunctionsEdit.php:165
 msgid "webtrees sends emails with no storage"
