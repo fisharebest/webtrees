@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-01-20 17:57+0000\n"
+"POT-Creation-Date: 2020-02-03 09:12+0000\n"
 "PO-Revision-Date: 2019-12-10 11:59+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\n"
@@ -51,7 +51,7 @@ msgstr " में "
 msgid "#%s"
 msgstr "#%s"
 
-#: app/Http/Controllers/AdminTreesController.php:1541
+#: app/Http/Controllers/AdminTreesController.php:1544
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
 msgstr "%1$s %2$s में %4$s के लिए %3$s लिंक है।"
@@ -86,19 +86,19 @@ msgstr "%1$s उपलब्ध नहीं है"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/Admin/UsersController.php:236
-#: app/Http/Controllers/AdminTreesController.php:276
+#: app/Http/Controllers/AdminTreesController.php:278
 #, php-format
 msgid "%1$s does not exist."
 msgstr "%1$s उपलब्ध नहीं है।"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
-#: app/Http/Controllers/AdminTreesController.php:273
+#: app/Http/Controllers/AdminTreesController.php:275
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
 msgstr "%1$s मौजूद नहीं है। क्या आपका मतलब %2$s है?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
-#: app/Http/Controllers/AdminTreesController.php:306
+#: app/Http/Controllers/AdminTreesController.php:308
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
 msgstr "%1$s में वापसी के लिए %2$s तक कोई लिंक नहीं है।"
@@ -112,7 +112,7 @@ msgstr[0] "%2$s सेकंड में %1$s फ़ाइल बाहर ल�
 msgstr[1] "%2$s सेकंड में %1$s फ़ाइलें बाहर लाई गई।"
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
-#: app/Http/Controllers/AdminTreesController.php:297
+#: app/Http/Controllers/AdminTreesController.php:299
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
 msgstr "%1$s एक %2$s है लेकिन एक %3$s अपेक्षित है।"
@@ -176,29 +176,29 @@ msgstr "%s आम युग"
 msgid "%s KB"
 msgstr "%s के.बी"
 
-#: app/Module/ClippingsCartModule.php:603
+#: app/Module/ClippingsCartModule.php:605
 #, php-format
 msgid "%s and her ancestors"
 msgstr "%s और इनके पूर्वज"
 
-#: app/Module/ClippingsCartModule.php:613
+#: app/Module/ClippingsCartModule.php:615
 #, php-format
 msgid "%s and his ancestors"
 msgstr "%s और इनके पूर्वज"
 
-#: app/Module/ClippingsCartModule.php:952
+#: app/Module/ClippingsCartModule.php:954
 #, php-format
 msgid "%s and the individuals that reference it."
 msgstr "%s और इनसे ताल्लुक रखने वाले व्यक्ति।"
 
 #. I18N: %s is a family (husband + wife)
-#: app/Module/ClippingsCartModule.php:463
+#: app/Module/ClippingsCartModule.php:465
 #, php-format
 msgid "%s and their children"
 msgstr "%s और इनके बच्चे"
 
 #. I18N: %s is a family (husband + wife)
-#: app/Module/ClippingsCartModule.php:465
+#: app/Module/ClippingsCartModule.php:467
 #, php-format
 msgid "%s and their descendants"
 msgstr "%s और इनके वंशज"
@@ -270,7 +270,7 @@ msgid_plural "%s individuals have been updated."
 msgstr[0] "%s व्यक्ति को अपडेट कर दिया गया।"
 msgstr[1] "%s व्यक्तियों को अपडेट कर दिया गया।"
 
-#: app/Http/Controllers/Admin/LocationController.php:879
+#: app/Http/Controllers/Admin/LocationController.php:890
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
@@ -286,7 +286,7 @@ msgstr[1] "%s संदेश"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:141 app/Functions/FunctionsDate.php:58
-#: resources/views/modules/relatives/family.phtml:179
+#: resources/views/modules/relatives/family.phtml:183
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
@@ -374,7 +374,7 @@ msgstr[1] "%s हफ्ते"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:136 app/Functions/FunctionsDate.php:56
-#: resources/views/modules/relatives/family.phtml:177
+#: resources/views/modules/relatives/family.phtml:181
 #: resources/views/modules/statistics-chart/custom.phtml:133
 #: resources/views/modules/statistics-chart/custom.phtml:142
 #, php-format
@@ -384,7 +384,7 @@ msgstr[0] "%s साल"
 msgstr[1] "%s साल"
 
 #: app/Http/Controllers/CalendarController.php:537
-#: resources/views/modules/yahrzeit/list.phtml:15
+#: resources/views/modules/yahrzeit/list.phtml:44
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s वर्षी सालगिरह"
@@ -425,48 +425,48 @@ msgstr "%s&nbsp;सीई"
 msgid "%s+"
 msgstr "%s+"
 
-#: app/Module/ClippingsCartModule.php:604
+#: app/Module/ClippingsCartModule.php:606
 #, php-format
 msgid "%s, her ancestors and their families"
 msgstr "%s, इनके पूर्वज और उनके परिवार"
 
-#: app/Module/ClippingsCartModule.php:601
+#: app/Module/ClippingsCartModule.php:603
 #, php-format
 msgid "%s, her parents and siblings"
 msgstr "%s, इनके माता-पिता और भाई-बहन"
 
-#: app/Module/ClippingsCartModule.php:602
+#: app/Module/ClippingsCartModule.php:604
 #, php-format
 msgid "%s, her spouses and children"
 msgstr "%s, इनके पति और बच्चे"
 
-#: app/Module/ClippingsCartModule.php:605
+#: app/Module/ClippingsCartModule.php:607
 #, php-format
 msgid "%s, her spouses and descendants"
 msgstr "%s, इनके पति और वंशज"
 
-#: app/Module/ClippingsCartModule.php:614
+#: app/Module/ClippingsCartModule.php:616
 #, php-format
 msgid "%s, his ancestors and their families"
 msgstr "%s, इनके पूर्वज और उनके परिवार"
 
-#: app/Module/ClippingsCartModule.php:611
+#: app/Module/ClippingsCartModule.php:613
 #, php-format
 msgid "%s, his parents and siblings"
 msgstr "%s, इनके माता-पिता और भाई-बहन"
 
-#: app/Module/ClippingsCartModule.php:612
+#: app/Module/ClippingsCartModule.php:614
 #, php-format
 msgid "%s, his spouses and children"
 msgstr "%s, इनकी पत्नी और बच्चे"
 
-#: app/Module/ClippingsCartModule.php:615
+#: app/Module/ClippingsCartModule.php:617
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s, इनकी पत्नी और वंशज"
 
 #: app/Module/UserMessagesModule.php:160
-#: resources/views/edit/add-fact-row.phtml:23
+#: resources/views/edit/add-fact-row.phtml:25
 msgid "&lt;select&gt;"
 msgstr "&lt;चुनें&gt;"
 
@@ -620,7 +620,7 @@ msgid "9th"
 msgstr "9वीं"
 
 #: app/Http/Controllers/Admin/UsersController.php:440
-#: app/Http/Controllers/AdminTreesController.php:1800
+#: app/Http/Controllers/AdminTreesController.php:1803
 msgid "<default theme>"
 msgstr "<डिफॉल्ट थीम>"
 
@@ -756,7 +756,7 @@ msgid "A list of media objects."
 msgstr "मीडिया ऑब्जेक्ट की लिस्ट।"
 
 #. I18N: Description of the “Recent changes” module
-#: app/Module/RecentChangesModule.php:62
+#: app/Module/RecentChangesModule.php:88
 msgid "A list of records that have been updated recently."
 msgstr "रिकॉर्ड्स की एक लिस्ट जिन्हें हाल ही में अपडेट किया गया है।"
 
@@ -781,22 +781,22 @@ msgid "A list of submitters."
 msgstr ""
 
 #. I18N: Description of “Research tasks” module
-#: app/Module/ResearchTaskModule.php:65
+#: app/Module/ResearchTaskModule.php:69
 msgid "A list of tasks and activities that are linked to the family tree."
 msgstr "फॅमिली ट्री से जुड़ी हुए कार्यों और गतिविधियों की लिस्ट।"
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
-#: app/Module/YahrzeitModule.php:67
+#: app/Module/YahrzeitModule.php:72
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
 msgstr "हिब्रू मृत्यु वर्षगांठ की एक लिस्ट जो निकट भविष्य में घटित होगी।"
 
 #. I18N: Description of the “On this day” module
-#: app/Module/OnThisDayModule.php:97
+#: app/Module/OnThisDayModule.php:101
 msgid "A list of the anniversaries that occur today."
 msgstr "आज के दिन आने वाली सालगिरहों की लिस्ट।"
 
 #. I18N: Description of the “Upcoming events” module
-#: app/Module/UpcomingAnniversariesModule.php:107
+#: app/Module/UpcomingAnniversariesModule.php:111
 msgid "A list of the anniversaries that will occur in the near future."
 msgstr "निकट भविष्य में आने वाली सालगिरहों की लिस्ट।"
 
@@ -1194,27 +1194,29 @@ msgctxt "NOMINATIVE"
 msgid "Adar II"
 msgstr "अदार दुवम"
 
-#: app/Http/Controllers/Admin/LocationController.php:306
+#: app/Http/Controllers/Admin/LocationController.php:316
+#: app/Http/Controllers/Admin/LocationController.php:317
 msgid "Add"
 msgstr "जोड़ें"
 
-#: app/Module/ClippingsCartModule.php:440
-#: app/Module/ClippingsCartModule.php:578
-#: app/Module/ClippingsCartModule.php:726
-#: app/Module/ClippingsCartModule.php:794
-#: app/Module/ClippingsCartModule.php:862
-#: app/Module/ClippingsCartModule.php:930
+#: app/Module/ClippingsCartModule.php:442
+#: app/Module/ClippingsCartModule.php:580
+#: app/Module/ClippingsCartModule.php:728
+#: app/Module/ClippingsCartModule.php:796
+#: app/Module/ClippingsCartModule.php:864
+#: app/Module/ClippingsCartModule.php:932
 #, php-format
 msgid "Add %s to the clippings cart"
 msgstr "क्लिपिंग कार्ट में %s जोड़ें"
 
-#: resources/views/modules/relatives/family.phtml:210
-msgid "Add a brother or sister"
-msgstr "कोई भाई या बहन जोड़ें"
+#: resources/views/modules/relatives/family.phtml:207
+msgid "Add a brother"
+msgstr ""
 
 #: app/Http/Controllers/EditFamilyController.php:57
 #: resources/views/family-page-children.phtml:35
 #: resources/views/family-page-menu.phtml:39
+#: resources/views/modules/relatives/family.phtml:215
 msgid "Add a child"
 msgstr "एक संतान जोड़ें"
 
@@ -1223,7 +1225,11 @@ msgstr "एक संतान जोड़ें"
 msgid "Add a child to create a one-parent family"
 msgstr "एकल अभिभावक परिवार बनाने के लिए एक संतान को जोड़ें"
 
-#: resources/views/edit/raw-gedcom-record.phtml:46
+#: resources/views/modules/relatives/family.phtml:211
+msgid "Add a daughter"
+msgstr ""
+
+#: resources/views/edit/raw-gedcom-record.phtml:47
 msgid "Add a fact"
 msgstr "तथ्य जोड़ें"
 
@@ -1234,8 +1240,8 @@ msgstr "तथ्य जोड़ें"
 msgid "Add a father"
 msgstr "एक पिता जोड़ें"
 
-#: resources/views/modules/favorites/favorites.phtml:42
-#: resources/views/modules/favorites/favorites.phtml:52
+#: resources/views/modules/favorites/favorites.phtml:44
+#: resources/views/modules/favorites/favorites.phtml:54
 msgid "Add a favorite"
 msgstr "एक पसंदीदा जोड़ें"
 
@@ -1258,7 +1264,7 @@ msgid "Add a journal entry"
 msgstr "एक पत्रिका की एंट्री जोड़ें"
 
 #: app/Http/Controllers/EditMediaController.php:89
-#: resources/views/media-page.phtml:187
+#: resources/views/media-page.phtml:191
 #: resources/views/modals/add-media-file.phtml:10
 msgid "Add a media file"
 msgstr "एक मीडिया फाइल जोड़े"
@@ -1267,7 +1273,7 @@ msgstr "एक मीडिया फाइल जोड़े"
 #: resources/views/family-page.phtml:98
 #: resources/views/individual-page-menu.phtml:75
 #: resources/views/individual-page.phtml:87
-#: resources/views/source-page.phtml:88
+#: resources/views/source-page.phtml:92
 msgid "Add a media object"
 msgstr "मीडिया ऑब्जेक्ट जोड़ें"
 
@@ -1292,20 +1298,28 @@ msgstr "एक समाचार लेख जोड़ें"
 msgid "Add a note"
 msgstr "नोट जोड़ें"
 
-#: resources/views/media-page.phtml:177
+#: resources/views/media-page.phtml:181
 msgid "Add a restriction"
 msgstr "एक प्रतिबंध जोड़ें"
 
-#: resources/views/family-page.phtml:86 resources/views/media-page.phtml:167
+#: resources/views/family-page.phtml:86 resources/views/media-page.phtml:171
 #: resources/views/modules/notes/tab.phtml:55
 msgid "Add a shared note"
 msgstr "एक आम नोट जोड़ें"
 
-#: resources/views/modules/relatives/family.phtml:208
-msgid "Add a son or daughter"
-msgstr "कोई बेटा या बेटी जोड़ें"
+#: resources/views/modules/relatives/family.phtml:215
+msgid "Add a sibling"
+msgstr ""
 
-#: resources/views/family-page.phtml:110 resources/views/media-page.phtml:157
+#: resources/views/modules/relatives/family.phtml:211
+msgid "Add a sister"
+msgstr ""
+
+#: resources/views/modules/relatives/family.phtml:207
+msgid "Add a son"
+msgstr ""
+
+#: resources/views/family-page.phtml:110 resources/views/media-page.phtml:161
 #: resources/views/modules/sources_tab/tab.phtml:43
 msgid "Add a source citation"
 msgstr "एक स्रोत प्रमाण जोड़ें"
@@ -1365,7 +1379,7 @@ msgstr "किसी व्यक्ती के पेज पर एतिह�
 msgid "Add individuals"
 msgstr "व्यक्तियों को जोड़ें"
 
-#: resources/views/modules/relatives/family.phtml:132
+#: resources/views/modules/relatives/family.phtml:136
 msgid "Add marriage details"
 msgstr "विवाह विवरण जोड़ें"
 
@@ -1415,7 +1429,7 @@ msgstr "फ़ाइलों के नाम के साथ लिए GEDCOM
 msgid "Add to TITLE header tag"
 msgstr "हेडर टैग TITLE में जोड़ें"
 
-#: app/Module/ClippingsCartModule.php:176
+#: app/Module/ClippingsCartModule.php:178
 #: resources/views/modules/clippings/add-options.phtml:15
 msgid "Add to the clippings cart"
 msgstr "क्लिपिंग कार्ट में जोड़ें"
@@ -1648,9 +1662,9 @@ msgid "After creating the family tree, you will be able to import data from a GE
 msgstr "फैमिली ट्री बनाने के बाद, आप किसी GEDCOM फ़ाइल से डेटा आयात कर पाएंगे।"
 
 #. I18N: gedcom tag AGE
-#: app/Functions/FunctionsPrint.php:259 app/Functions/FunctionsPrint.php:261
 #: app/Functions/FunctionsPrint.php:263 app/Functions/FunctionsPrint.php:265
-#: app/Functions/FunctionsPrint.php:292 app/GedcomTag.php:477
+#: app/Functions/FunctionsPrint.php:267 app/Functions/FunctionsPrint.php:269
+#: app/Functions/FunctionsPrint.php:296 app/GedcomTag.php:477
 #: app/Statistics/Google/ChartAge.php:134
 #: app/Statistics/Google/ChartMarriageAge.php:157
 #: resources/views/lists/chart-by-age.phtml:27
@@ -1886,7 +1900,7 @@ msgid "An alternative way to enter census transcripts and link them to individua
 msgstr "जनगणना प्रतिलिपि में प्रवेश करने और उन्हें व्यक्तियों से जोड़ने का एक वैकल्पिक तरीका।"
 
 #. I18N: Description of the “Theme change” module
-#: app/Module/ThemeSelectModule.php:52
+#: app/Module/ThemeSelectModule.php:56
 msgid "An alternative way to select a new theme."
 msgstr "नई थीम चुनने का एक वैकल्पिक तरीका।"
 
@@ -1922,7 +1936,7 @@ msgstr "एक इंटरैक्टिव ट्री, जो किसी 
 msgid "An unexpected database error occurred."
 msgstr "एक अनपेक्षित डेटाबेस ग़लती हुई है।"
 
-#: resources/views/admin/location-edit.phtml:139
+#: resources/views/admin/location-edit.phtml:138
 #: resources/views/modules/pedigree-map/chart.phtml:171
 msgid "An unknown error occurred"
 msgstr "कोई अज्ञात चूक हुई"
@@ -1975,11 +1989,11 @@ msgstr "अंगोला"
 msgid "Anguilla"
 msgstr "एंगुइला"
 
-#: resources/views/lists/anniversaries-table.phtml:27
+#: resources/views/lists/anniversaries-table.phtml:39
 #: resources/views/lists/families-table.phtml:256
 #: resources/views/lists/individuals-table.phtml:270
 #: resources/views/lists/individuals-table.phtml:280
-#: resources/views/modules/yahrzeit/table.phtml:26
+#: resources/views/modules/yahrzeit/table.phtml:30
 msgid "Anniversary"
 msgstr "सालगिरह"
 
@@ -2075,7 +2089,7 @@ msgstr "एक्वा मरीन"
 
 #: app/Http/RequestHandlers/IndividualPage.php:256
 #: resources/views/edit/icon-fact-delete.phtml:8
-#: resources/views/media-page.phtml:99
+#: resources/views/media-page.phtml:103
 msgid "Are you sure you want to delete this fact?"
 msgstr "क्या आप वाकई इस तथ्य को हटाना चाहते हैं?"
 
@@ -2106,7 +2120,7 @@ msgstr "क्या आप वाकई “%s” को हटाना चा�
 msgid "Are you sure you want to reject all the changes to this family tree?"
 msgstr "क्या आप वाकई इस फॅमिली ट्री के सभी परिवर्तनों को अस्वीकार करना चाहते हैं?"
 
-#: resources/views/modules/favorites/favorites.phtml:33
+#: resources/views/modules/favorites/favorites.phtml:35
 msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "क्या आप वाकई इस आइटम को अपनी पसंदीदा सूची से निकालना चाहते हैं?"
 
@@ -2213,7 +2227,7 @@ msgid "Attending"
 msgstr "उपस्थित"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2354
+#: app/GedcomTag.php:2360
 msgid "Audio"
 msgstr "ऑडियो"
 
@@ -2594,7 +2608,7 @@ msgstr "बिलिंग्स, मोंटाना, संयुक्त �
 msgid "Binary data object"
 msgstr "बाइनरी डेटा ऑब्जेक्ट"
 
-#: app/Functions/FunctionsPrint.php:358 app/Functions/FunctionsPrint.php:360
+#: app/Functions/FunctionsPrint.php:362 app/Functions/FunctionsPrint.php:364
 msgid "Bing Maps™"
 msgstr "Bing Maps™"
 
@@ -2897,7 +2911,7 @@ msgid "Bolivia"
 msgstr "बोलिविया"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2357
+#: app/GedcomTag.php:2363
 msgid "Book"
 msgstr "किताब"
 
@@ -3302,7 +3316,7 @@ msgid "Caracas, Venezuela"
 msgstr "कारकास, वेनेज़ुएला"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2360
+#: app/GedcomTag.php:2366
 msgid "Card"
 msgstr "कार्ड"
 
@@ -3408,7 +3422,7 @@ msgid "Century"
 msgstr "सदी"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2363
+#: app/GedcomTag.php:2369
 msgid "Certificate"
 msgstr "प्रमाणपत्र"
 
@@ -3422,22 +3436,22 @@ msgstr "चाड"
 msgid "Change family members"
 msgstr "परिवार के सदस्य बदलें"
 
-#: app/Http/RequestHandlers/TreePageEdit.php:66
+#: app/Http/RequestHandlers/TreePageEdit.php:70
 msgid "Change the “Home page” blocks"
 msgstr "“होम पेज” के ब्लॉक बदलें"
 
-#: app/Http/RequestHandlers/UserPageEdit.php:66
+#: app/Http/RequestHandlers/UserPageEdit.php:70
 msgid "Change the “My page” blocks"
 msgstr "“मेरा पेज” के ब्लॉक बदलें"
 
 #. I18N: [a record was] Changed on <date/time>
-#: resources/views/modules/recent_changes/changes-list.phtml:16
+#: resources/views/modules/recent_changes/changes-list.phtml:47
 #, php-format
 msgid "Changed on %1$s"
 msgstr "%1$s पर बदला गया"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
-#: resources/views/modules/recent_changes/changes-list.phtml:14
+#: resources/views/modules/recent_changes/changes-list.phtml:45
 #, php-format
 msgid "Changed on %1$s by %2$s"
 msgstr "%2$s द्वारा %1$s को परिवर्तित किया गया"
@@ -3451,7 +3465,7 @@ msgstr "%2$s द्वारा %1$s को परिवर्तित कि�
 msgid "Changes"
 msgstr "परिवर्तन"
 
-#: app/Module/RecentChangesModule.php:109
+#: app/Module/RecentChangesModule.php:146
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
@@ -3496,7 +3510,7 @@ msgstr "चार्ट प्रकार"
 msgid "Charts"
 msgstr "चार्ट"
 
-#: app/Http/Controllers/AdminTreesController.php:311
+#: app/Http/Controllers/AdminTreesController.php:313
 #: resources/views/admin/trees.phtml:164
 msgid "Check for errors"
 msgstr "बाधाओं की जाँच करें"
@@ -3542,6 +3556,7 @@ msgstr "%s की संतान"
 #: resources/views/lists/families-table.phtml:261
 #: resources/views/lists/individuals-table.phtml:276
 #: resources/views/modules/pedigree-chart/previous.phtml:38
+#: resources/views/modules/relatives/family.phtml:202
 #: resources/xml/reports/family_group_report.xml:761
 #: resources/xml/reports/relative_ext_report.xml:115
 msgid "Children"
@@ -3750,12 +3765,12 @@ msgid "Cleared but not yet completed"
 msgstr "साफ हो गया लेकिन पूरा नहीं हुआ"
 
 #. I18N: Name of a module
-#: app/Module/ClippingsCartModule.php:118
+#: app/Module/ClippingsCartModule.php:119
 msgid "Clippings cart"
 msgstr "क्लिपिंग कार्ट"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2366
+#: app/GedcomTag.php:2372
 msgid "Coat of arms"
 msgstr "राज्य-चिह्न"
 
@@ -3900,9 +3915,9 @@ msgid "Continued"
 msgstr "निरंतर"
 
 #: app/Http/Controllers/Admin/LocationController.php:115
-#: app/Http/Controllers/Admin/LocationController.php:297
+#: app/Http/Controllers/Admin/LocationController.php:307
 #: app/Http/RequestHandlers/ControlPanel.php:128
-#: app/Module/ModuleThemeTrait.php:227 app/Module/ModuleThemeTrait.php:231
+#: app/Module/ModuleThemeTrait.php:231 app/Module/ModuleThemeTrait.php:235
 #: resources/views/admin/analytics-edit.phtml:8
 #: resources/views/admin/broadcast.phtml:10
 #: resources/views/admin/changes-log.phtml:12
@@ -4038,7 +4053,7 @@ msgid "Could not verify the information you entered. Please try again or contact
 msgstr "आपके द्वारा दर्ज की गई जानकारी को सत्यापित नहीं हो सकी।  कृपया पुन: प्रयास करें या अधिक जानकारी के लिए साइट एडमिनिस्ट्रेटर से संपर्क करें।"
 
 #. I18N: Description of the “Hit counters” module
-#: app/Module/HitCountFooterModule.php:81
+#: app/Module/HitCountFooterModule.php:84
 msgid "Count the visits to each page"
 msgstr "प्रत्येक पेज के दौरों की गिनती करें"
 
@@ -4260,11 +4275,11 @@ msgid "Custom"
 msgstr "कस्टम"
 
 #: resources/views/calendar-page.phtml:179
-#: resources/views/edit/add-fact-row.phtml:33
+#: resources/views/edit/add-fact-row.phtml:35
 msgid "Custom event"
 msgstr "कस्टम घटना"
 
-#: resources/views/edit/add-fact-row.phtml:30
+#: resources/views/edit/add-fact-row.phtml:32
 msgid "Custom fact"
 msgstr "कस्टम तथ्य"
 
@@ -4277,7 +4292,7 @@ msgstr "कस्टम मॉड्यूल"
 msgid "Custom welcome text"
 msgstr "कस्टम स्वागत लेख"
 
-#: app/Module/ModuleThemeTrait.php:207 app/Module/ModuleThemeTrait.php:211
+#: app/Module/ModuleThemeTrait.php:211 app/Module/ModuleThemeTrait.php:215
 msgid "Customize this page"
 msgstr "इस पेज को मनचाहा बनाएं"
 
@@ -4317,10 +4332,6 @@ msgstr "डलास, टेक्सास, संयुक्त राज्�
 msgid "Data"
 msgstr "डेटा"
 
-#: app/Http/Controllers/Admin/ModuleController.php:142
-msgid "Data Fixes"
-msgstr ""
-
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "Data controller"
 msgstr "डेटा नियंत्रक"
@@ -4330,6 +4341,7 @@ msgstr "डेटा नियंत्रक"
 msgid "Data fix"
 msgstr ""
 
+#: app/Http/Controllers/Admin/ModuleController.php:142
 #: app/Http/RequestHandlers/DataFixChoose.php:69
 #: app/Http/RequestHandlers/DataFixPage.php:91
 #: app/Http/RequestHandlers/HelpText.php:244
@@ -4381,8 +4393,8 @@ msgstr "डेटाबेस युज़र अकाउंट"
 #. I18N: gedcom tag DATE
 #: app/GedcomTag.php:651 app/Http/RequestHandlers/HelpText.php:193
 #: resources/views/help/date.phtml:15 resources/views/help/date.phtml:129
-#: resources/views/lists/anniversaries-table.phtml:23
-#: resources/views/modules/todo/research-tasks.phtml:18
+#: resources/views/lists/anniversaries-table.phtml:35
+#: resources/views/modules/todo/research-tasks.phtml:29
 #: resources/views/pending-changes-page.phtml:54
 #: resources/xml/reports/bdm_report.xml:132
 #: resources/xml/reports/bdm_report.xml:158
@@ -4600,7 +4612,7 @@ msgstr "मृत"
 #: resources/views/lists/individuals-table.phtml:213
 #: resources/views/lists/individuals-table.phtml:221
 #: resources/views/lists/individuals-table.phtml:278
-#: resources/views/modules/yahrzeit/table.phtml:24
+#: resources/views/modules/yahrzeit/table.phtml:28
 #: resources/xml/reports/ahnentafel_report.xml:458
 #: resources/xml/reports/bdm_report.xml:87
 #: resources/xml/reports/change_report.xml:102
@@ -4993,8 +5005,8 @@ msgstr "डेजावू"
 #: resources/views/family-page-menu.phtml:53
 #: resources/views/gedcom-record-page-menu.phtml:19
 #: resources/views/individual-page-menu.phtml:94
-#: resources/views/media-page-menu.phtml:36 resources/views/media-page.phtml:99
-#: resources/views/media-page.phtml:102
+#: resources/views/media-page-menu.phtml:36
+#: resources/views/media-page.phtml:103 resources/views/media-page.phtml:106
 #: resources/views/modules/faq/config.phtml:47
 #: resources/views/modules/gedcom_news/list.phtml:35
 #: resources/views/modules/stories/config.phtml:38
@@ -5285,7 +5297,7 @@ msgid "Do not use maps"
 msgstr "कोई नक्शे का उपयोग नहीं"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2369
+#: app/GedcomTag.php:2375
 msgid "Document"
 msgstr "दस्तावेज़"
 
@@ -5303,12 +5315,12 @@ msgstr "डोमिनिका"
 msgid "Dominican Republic"
 msgstr "डोमिनिकन गणराज्य"
 
-#: app/Module/PedigreeChartModule.php:382
+#: app/Module/PedigreeChartModule.php:393
 msgid "Down"
 msgstr "नीचे"
 
-#: app/Module/ClippingsCartModule.php:186
-#: app/Module/ClippingsCartModule.php:344
+#: app/Module/ClippingsCartModule.php:188
+#: app/Module/ClippingsCartModule.php:346
 msgid "Download"
 msgstr "डाउनलोड"
 
@@ -5317,7 +5329,7 @@ msgstr "डाउनलोड"
 msgid "Download %s…"
 msgstr "डाउनलोड %s…"
 
-#: resources/views/media-page.phtml:134
+#: resources/views/media-page.phtml:138
 msgid "Download file"
 msgstr "डाउनलोड फाइल"
 
@@ -5385,8 +5397,8 @@ msgid "Ecuador"
 msgstr "ईक्वाडोर"
 
 #: app/Functions/FunctionsPrintFacts.php:795
-#: app/Http/Controllers/Admin/LocationController.php:308
-#: app/Http/Controllers/Admin/LocationController.php:309
+#: app/Http/Controllers/Admin/LocationController.php:319
+#: app/Http/Controllers/Admin/LocationController.php:320
 #: resources/views/admin/locations.phtml:20
 #: resources/views/admin/locations.phtml:68
 #: resources/views/admin/locations.phtml:71
@@ -5394,13 +5406,13 @@ msgstr "ईक्वाडोर"
 #: resources/views/admin/users.phtml:18
 #: resources/views/edit/icon-fact-edit.phtml:8
 #: resources/views/edit/icon-fact-edit.phtml:10
-#: resources/views/media-page.phtml:91 resources/views/media-page.phtml:94
+#: resources/views/media-page.phtml:95 resources/views/media-page.phtml:98
 #: resources/views/modules/faq/config.phtml:46
 #: resources/views/modules/gedcom_news/list.phtml:31
 #: resources/views/modules/stories/config.phtml:37
 #: resources/views/modules/stories/config.phtml:59
 #: resources/views/modules/user_blog/list.phtml:31
-#: resources/views/note-page.phtml:82 resources/views/note-page.phtml:85
+#: resources/views/note-page.phtml:87 resources/views/note-page.phtml:90
 msgid "Edit"
 msgstr "एडिट"
 
@@ -5494,7 +5506,7 @@ msgid "El Salvador"
 msgstr "एल साल्वाडोर"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2372
+#: app/GedcomTag.php:2378
 msgid "Electronic"
 msgstr "इलेक्ट्रोनिक"
 
@@ -5579,7 +5591,7 @@ msgctxt "MALE"
 msgid "Employer"
 msgstr "मालिक"
 
-#: app/Module/ClippingsCartModule.php:180
+#: app/Module/ClippingsCartModule.php:182
 msgid "Empty the clippings cart"
 msgstr "क्लिपिंग कार्ट खाली करें"
 
@@ -5617,7 +5629,7 @@ msgstr "सगाई"
 msgid "England"
 msgstr "इंगलैंड"
 
-#: resources/views/modules/favorites/favorites.phtml:138
+#: resources/views/modules/favorites/favorites.phtml:163
 msgid "Enter an optional note about this favorite"
 msgstr "इस पसंदीदा के बारे में एक वैकल्पिक नोट दर्ज करें"
 
@@ -5635,7 +5647,7 @@ msgstr "भूमध्यवर्ती गिनी"
 msgid "Eritrea"
 msgstr "इरिट्रिया"
 
-#: app/Http/Controllers/GedcomFileController.php:189
+#: app/Http/Controllers/GedcomFileController.php:190
 #, php-format
 msgid "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
 msgstr "बाधा: GEDCOM फ़ाइलों को %s एन्कोडिंग से UTF-8 एन्कोडिंग में परिवर्तित करना वर्तमान में समर्थित नहीं है।"
@@ -5689,7 +5701,7 @@ msgid "Europe"
 msgstr "यूरोप"
 
 #. I18N: gedcom tag EVEN
-#: app/GedcomTag.php:716 resources/views/lists/anniversaries-table.phtml:30
+#: app/GedcomTag.php:716 resources/views/lists/anniversaries-table.phtml:42
 #: resources/xml/reports/fact_sources.xml:70
 #: resources/xml/reports/fact_sources.xml:157
 #: resources/xml/reports/missing_facts_report.xml:55
@@ -5861,7 +5873,7 @@ msgid "Fact icons"
 msgstr "तथ्य चिह्न"
 
 #: resources/views/admin/trees-privacy.phtml:216
-#: resources/views/edit/add-fact-row.phtml:13
+#: resources/views/edit/add-fact-row.phtml:15
 msgid "Fact or event"
 msgstr "तथ्य या घटना"
 
@@ -5906,7 +5918,7 @@ msgstr "फ़ॉकलैंड द्वीपसमूह"
 
 #. I18N: Name of a module/list
 #. I18N: Name of a module
-#: app/Http/Controllers/AdminTreesController.php:1706
+#: app/Http/Controllers/AdminTreesController.php:1709
 #: app/Http/Controllers/ListController.php:239
 #: app/Module/AncestorsChartModule.php:277
 #: app/Module/DescendancyChartModule.php:266 app/Module/FamilyListModule.php:48
@@ -5917,21 +5929,21 @@ msgstr "फ़ॉकलैंड द्वीपसमूह"
 #: app/Module/StatisticsChartModule.php:732
 #: resources/views/admin/control-panel.phtml:175
 #: resources/views/admin/merge-records-step-1.phtml:24
-#: resources/views/gedcom-record-page.phtml:50
+#: resources/views/gedcom-record-page.phtml:52
 #: resources/views/lists/media-table.phtml:72
 #: resources/views/lists/notes-table.phtml:83
 #: resources/views/lists/sources-table.phtml:86
 #: resources/views/lists/submitters-table.phtml:62
-#: resources/views/media-page.phtml:64
+#: resources/views/media-page.phtml:66
 #: resources/views/modules/gedcom_stats/config.phtml:26
 #: resources/views/modules/gedcom_stats/statistics.phtml:67
 #: resources/views/modules/html/template-statistics.phtml:35
 #: resources/views/modules/place-hierarchy/events.phtml:16
 #: resources/views/modules/place-hierarchy/sidebar.phtml:48
-#: resources/views/note-page.phtml:50
+#: resources/views/note-page.phtml:52
 #: resources/views/search-general-page.phtml:41
-#: resources/views/search-results.phtml:24 resources/views/source-page.phtml:51
-#: resources/views/submitter-page.phtml:50
+#: resources/views/search-results.phtml:24 resources/views/source-page.phtml:53
+#: resources/views/submitter-page.phtml:52
 #: resources/xml/reports/fact_sources.xml:152
 #: resources/xml/reports/fact_sources.xml:314
 msgid "Families"
@@ -5950,9 +5962,9 @@ msgstr "स्रोत वाले परिवार"
 #: resources/views/edit/link-child-to-family.phtml:15
 #: resources/views/modals/link-media-to-family.phtml:15
 #: resources/views/modules/family_nav/sidebar-family.phtml:76
-#: resources/views/modules/favorites/favorites.phtml:75
+#: resources/views/modules/favorites/favorites.phtml:80
 #: resources/views/modules/random_media/slide-show.phtml:61
-#: resources/views/modules/recent_changes/changes-table.phtml:45
+#: resources/views/modules/recent_changes/changes-table.phtml:63
 #: resources/views/modules/statistics-chart/custom.phtml:39
 #: resources/xml/reports/family_group_report.xml:3
 #: resources/xml/reports/family_group_report.xml:6
@@ -6018,8 +6030,8 @@ msgstr "%s का परिवार"
 msgid "Family tree"
 msgstr "फॅमिली ट्री"
 
-#: app/Module/ClippingsCartModule.php:344
-#: app/Module/ClippingsCartModule.php:415
+#: app/Module/ClippingsCartModule.php:346
+#: app/Module/ClippingsCartModule.php:417
 msgid "Family tree clippings cart"
 msgstr "फॅमिली ट्री क्लिपिंग कार्ट"
 
@@ -6072,7 +6084,7 @@ msgstr "रज़ाई माँ-बाप के साथ परिवार"
 msgid "Family with sealing parents"
 msgstr "सीलिंग माँ-बाप के साथ परिवार"
 
-#: app/Module/ModuleThemeTrait.php:177 resources/views/chart-box.phtml:35
+#: app/Module/ModuleThemeTrait.php:180 resources/views/chart-box.phtml:35
 msgid "Family with spouse"
 msgstr "जीवनसाथी के साथ परिवार"
 
@@ -6147,7 +6159,7 @@ msgstr "पिता"
 msgid "Father: %s"
 msgstr "पिता: %s"
 
-#: app/Functions/FunctionsPrint.php:178
+#: app/Functions/FunctionsPrint.php:182
 msgid "Father’s age"
 msgstr "पिता की उम्र"
 
@@ -6291,7 +6303,7 @@ msgstr "हरएक मुमकिन संबंध खोजें"
 msgid "Find any relationship"
 msgstr "कोई भी संबंध खोजें"
 
-#: app/Http/Controllers/AdminTreesController.php:332
+#: app/Http/Controllers/AdminTreesController.php:334
 #: resources/views/admin/trees.phtml:148
 msgid "Find duplicates"
 msgstr "डुप्लिकेट खोजें"
@@ -6338,7 +6350,7 @@ msgstr "पहला रिकार्ड"
 msgid "Fix name slashes and spaces"
 msgstr "नाम के “स्लैश” और “स्पेस” को ठीक करें"
 
-#: resources/views/admin/location-edit.phtml:34
+#: resources/views/admin/location-edit.phtml:33
 #: resources/views/admin/locations.phtml:19
 msgid "Flag"
 msgstr "झंडा"
@@ -6699,13 +6711,13 @@ msgstr "वंशावली डेटा"
 msgid "General"
 msgstr "सामान्य"
 
-#: app/Http/RequestHandlers/SearchGeneralPage.php:163
+#: app/Http/RequestHandlers/SearchGeneralPage.php:164
 #: app/Module/SearchMenuModule.php:100
 msgid "General search"
 msgstr "जनरल सर्च"
 
 #. I18N: Description of the “Sitemaps” module
-#: app/Module/SiteMapModule.php:76
+#: app/Module/SiteMapModule.php:109
 msgid "Generate sitemap files for search engines."
 msgstr "सर्च इंजन के लिए साइटमैप फ़ाइलें बनाएँ।"
 
@@ -6749,7 +6761,7 @@ msgid "Geographic area"
 msgstr "भौगोलिक क्षेत्र"
 
 #: app/Http/Controllers/Admin/LocationController.php:113
-#: app/Http/Controllers/Admin/LocationController.php:298
+#: app/Http/Controllers/Admin/LocationController.php:308
 #: resources/views/admin/control-panel.phtml:643
 #: resources/views/admin/map-import-form.phtml:9
 msgid "Geographic data"
@@ -6848,7 +6860,7 @@ msgstr "धर्म-माता/पिता"
 msgid "Godson"
 msgstr "धर्म-पुत्र"
 
-#: app/Functions/FunctionsPrint.php:353 app/Functions/FunctionsPrint.php:355
+#: app/Functions/FunctionsPrint.php:357 app/Functions/FunctionsPrint.php:359
 msgid "Google Maps™"
 msgstr "Google Maps™"
 
@@ -6881,7 +6893,7 @@ msgid "Greenland"
 msgstr "ग्रीनलैंड"
 
 #. I18N: The gregorian calendar
-#: app/Date.php:229 app/Module/YahrzeitModule.php:249
+#: app/Date.php:229 app/Module/YahrzeitModule.php:259
 msgid "Gregorian"
 msgstr "ग्रेगोरियन"
 
@@ -7138,7 +7150,7 @@ msgstr "चेशवन"
 
 #: app/Functions/FunctionsEdit.php:126 app/Functions/FunctionsEdit.php:270
 #: app/Http/Controllers/AdminController.php:179
-#: app/Http/Controllers/AdminTreesController.php:759
+#: app/Http/Controllers/AdminTreesController.php:761
 #: resources/views/admin/trees-privacy.phtml:153
 msgid "Hide from everyone"
 msgstr "सभी से छुपाएं"
@@ -7170,7 +7182,7 @@ msgstr "ऐतिहासिक घटनाएँ"
 
 #. I18N: Name of a module
 #. I18N: A configuration setting
-#: app/Module/HitCountFooterModule.php:70
+#: app/Module/HitCountFooterModule.php:73
 #: resources/views/admin/trees-preferences.phtml:650
 msgid "Hit counters"
 msgstr "हिट काउंटर"
@@ -7231,7 +7243,7 @@ msgid "Hungary"
 msgstr "हंगरी"
 
 #. I18N: gedcom tag HUSB
-#: app/Functions/FunctionsPrint.php:293 app/GedcomTag.php:791
+#: app/Functions/FunctionsPrint.php:297 app/GedcomTag.php:791
 #: app/Http/Controllers/EditIndividualController.php:607
 #: resources/views/edit/change-family-members.phtml:18
 #: resources/views/edit/change-family-members.phtml:33
@@ -7421,7 +7433,7 @@ msgstr "आप्रवासन"
 msgid "Import"
 msgstr "आयात"
 
-#: app/Http/Controllers/AdminTreesController.php:416
+#: app/Http/Controllers/AdminTreesController.php:418
 msgid "Import a GEDCOM file"
 msgstr "GEDCOM फ़ाइल आयात करें"
 
@@ -7434,7 +7446,7 @@ msgstr "एक फॅमिली ट्री से सारे स्था�
 msgid "Import custom thumbnails from webtrees version 1"
 msgstr "webtrees version 1 से कस्टम थंबनेल आयात करें"
 
-#: app/Http/Controllers/Admin/LocationController.php:630
+#: app/Http/Controllers/Admin/LocationController.php:640
 msgid "Import geographic data"
 msgstr "भौगोलिक डेटा आयात करें"
 
@@ -7538,13 +7550,13 @@ msgstr "इंडियानापोलिस, इंडियाना, स�
 #: resources/views/modules/descendancy_chart/page.phtml:16
 #: resources/views/modules/family-book-chart/page.phtml:17
 #: resources/views/modules/fanchart/page.phtml:17
-#: resources/views/modules/favorites/favorites.phtml:63
+#: resources/views/modules/favorites/favorites.phtml:66
 #: resources/views/modules/hourglass-chart/page.phtml:17
 #: resources/views/modules/interactive-tree/page.phtml:17
 #: resources/views/modules/pedigree-chart/page.phtml:16
 #: resources/views/modules/pedigree-map/page.phtml:15
 #: resources/views/modules/random_media/slide-show.phtml:52
-#: resources/views/modules/recent_changes/changes-table.phtml:42
+#: resources/views/modules/recent_changes/changes-table.phtml:60
 #: resources/views/modules/statistics-chart/custom.phtml:23
 #: resources/views/modules/stories/config.phtml:35
 #: resources/views/modules/stories/edit.phtml:22
@@ -7595,7 +7607,7 @@ msgid "Individual who lived the longest"
 msgstr "व्यक्ती जो सबसे लंबे समय तक जिये"
 
 #. I18N: Name of a module/list
-#: app/Http/Controllers/AdminTreesController.php:1705
+#: app/Http/Controllers/AdminTreesController.php:1708
 #: app/Http/Controllers/ListController.php:241
 #: app/Module/AncestorsChartModule.php:276
 #: app/Module/DescendancyChartModule.php:265
@@ -7609,14 +7621,14 @@ msgstr "व्यक्ती जो सबसे लंबे समय तक 
 #: app/Module/StatisticsChartModule.php:660
 #: resources/views/admin/control-panel.phtml:174
 #: resources/views/admin/merge-records-step-1.phtml:23
-#: resources/views/gedcom-record-page.phtml:44
+#: resources/views/gedcom-record-page.phtml:45
 #: resources/views/lists/given-names-table.phtml:24
 #: resources/views/lists/media-table.phtml:71
 #: resources/views/lists/notes-table.phtml:82
 #: resources/views/lists/sources-table.phtml:85
 #: resources/views/lists/submitters-table.phtml:61
 #: resources/views/lists/surnames-table.phtml:29
-#: resources/views/media-page.phtml:58
+#: resources/views/media-page.phtml:59
 #: resources/views/modules/census-assistant.phtml:55
 #: resources/views/modules/gedcom_stats/config.phtml:24
 #: resources/views/modules/gedcom_stats/statistics.phtml:23
@@ -7626,10 +7638,10 @@ msgstr "व्यक्ती जो सबसे लंबे समय तक 
 #: resources/views/modules/random_media/config.phtml:12
 #: resources/views/modules/statistics-chart/custom.phtml:56
 #: resources/views/modules/statistics-chart/custom.phtml:152
-#: resources/views/note-page.phtml:44
+#: resources/views/note-page.phtml:45
 #: resources/views/search-general-page.phtml:34
-#: resources/views/search-results.phtml:13 resources/views/source-page.phtml:45
-#: resources/views/submitter-page.phtml:44
+#: resources/views/search-results.phtml:13 resources/views/source-page.phtml:46
+#: resources/views/submitter-page.phtml:45
 #: resources/xml/reports/fact_sources.xml:54
 #: resources/xml/reports/fact_sources.xml:258
 msgid "Individuals"
@@ -7824,7 +7836,7 @@ msgid "Japan"
 msgstr "जापान"
 
 #. I18N: The Hebrew/Jewish calendar
-#: app/Date.php:235 app/Module/YahrzeitModule.php:248
+#: app/Date.php:235 app/Module/YahrzeitModule.php:258
 #: resources/views/help/date.phtml:155
 msgid "Jewish"
 msgstr "यहूदी"
@@ -7976,7 +7988,7 @@ msgstr "कजाखस्तान"
 msgid "Keep media objects"
 msgstr "मीडिया ऑब्जेक्ट रखें"
 
-#: resources/views/modals/on-screen-keyboard.phtml:33
+#: resources/views/modals/on-screen-keyboard.phtml:51
 msgid "Keep open"
 msgstr "खुला रखें"
 
@@ -8104,7 +8116,7 @@ msgstr "LDS दान"
 msgid "LDS spouse sealing"
 msgstr "LDS जीवनसाथी सीलिंग"
 
-#: app/Functions/FunctionsPrint.php:375
+#: app/Functions/FunctionsPrint.php:379
 msgid "LDS temple"
 msgstr "लैटर डे संत मंदिर"
 
@@ -8114,7 +8126,7 @@ msgid "Laie, Hawaii, United States"
 msgstr "लाई, हवाई, संयुक्त राज्य"
 
 #. I18N: page orientation
-#: app/Http/Controllers/AdminTreesController.php:738
+#: app/Http/Controllers/AdminTreesController.php:740
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
 msgid "Landscape"
@@ -8123,7 +8135,7 @@ msgstr "लैंडस्केप"
 #. I18N: gedcom tag LANG
 #. I18N: A configuration setting
 #: app/GedcomTag.php:810 app/Module/ModuleLanguageTrait.php:48
-#: app/Module/ModuleThemeTrait.php:244 resources/views/admin/modules.phtml:253
+#: app/Module/ModuleThemeTrait.php:248 resources/views/admin/modules.phtml:253
 #: resources/views/admin/modules.phtml:256
 #: resources/views/admin/trees-preferences.phtml:65
 #: resources/views/admin/users-edit.phtml:107
@@ -8175,7 +8187,7 @@ msgstr "लास वेगास, नेवादा, संयुक्त र
 #: resources/views/lists/sources-table.phtml:89
 #: resources/views/lists/submitters-table.phtml:63
 #: resources/views/modules/gedcom_stats/config.phtml:10
-#: resources/views/modules/recent_changes/changes-table.phtml:27
+#: resources/views/modules/recent_changes/changes-table.phtml:45
 #: resources/xml/reports/change_report.xml:66
 #: resources/xml/reports/change_report.xml:108
 msgid "Last change"
@@ -8216,8 +8228,8 @@ msgid "Latest marriage"
 msgstr "सबसे नई शादी"
 
 #. I18N: gedcom tag LATI
-#: app/Functions/FunctionsPrint.php:341 app/GedcomTag.php:813
-#: resources/views/admin/location-edit.phtml:45
+#: app/Functions/FunctionsPrint.php:345 app/GedcomTag.php:813
+#: resources/views/admin/location-edit.phtml:44
 #: resources/views/admin/locations.phtml:16
 #: resources/views/edit/input-addon-coordinates.phtml:9
 #: resources/views/edit/input-addon-coordinates.phtml:12
@@ -8256,7 +8268,7 @@ msgstr "पत्ते"
 msgid "Lebanon"
 msgstr "लेबनान"
 
-#: app/Module/PedigreeChartModule.php:379
+#: app/Module/PedigreeChartModule.php:390
 msgid "Left"
 msgstr "बाएं"
 
@@ -8294,7 +8306,7 @@ msgctxt "paper size"
 msgid "Letter"
 msgstr "लेटर"
 
-#: app/Http/Controllers/Admin/LocationController.php:488
+#: app/Http/Controllers/Admin/LocationController.php:498
 msgid "Level"
 msgstr "स्तर"
 
@@ -8420,7 +8432,7 @@ msgstr "लोकल फ़ाइलें"
 msgid "Location"
 msgstr "स्थान"
 
-#: app/Http/Controllers/Admin/LocationController.php:432
+#: app/Http/Controllers/Admin/LocationController.php:442
 msgid "Location not removed: this location contains sub-locations"
 msgstr "स्थान नहीं हटाया गया: इस स्थान में उप-स्थान शामिल हैं"
 
@@ -8458,8 +8470,8 @@ msgid "Longest marriage"
 msgstr "सबसे लंबी शादी"
 
 #. I18N: gedcom tag LONG
-#: app/Functions/FunctionsPrint.php:347 app/GedcomTag.php:819
-#: resources/views/admin/location-edit.phtml:56
+#: app/Functions/FunctionsPrint.php:351 app/GedcomTag.php:819
+#: resources/views/admin/location-edit.phtml:55
 #: resources/views/admin/locations.phtml:17
 #: resources/views/edit/input-addon-coordinates.phtml:9
 #: resources/views/edit/input-addon-coordinates.phtml:12
@@ -8508,7 +8520,7 @@ msgid "Madrid, Spain"
 msgstr "मैड्रिड, स्पेन"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2381
+#: app/GedcomTag.php:2387
 msgid "Magazine"
 msgstr "मैगजीन"
 
@@ -8572,7 +8584,7 @@ msgstr "माली"
 msgid "Malta"
 msgstr "माल्टा"
 
-#: app/Http/Controllers/AdminTreesController.php:461
+#: app/Http/Controllers/AdminTreesController.php:463
 #: resources/views/admin/changes-log.phtml:12
 #: resources/views/admin/data-fix-page.phtml:23
 #: resources/views/admin/data-fix-select.phtml:19
@@ -8587,7 +8599,6 @@ msgstr "माल्टा"
 msgid "Manage family trees"
 msgstr "फॅमिली ट्री मैनेज करें"
 
-#: resources/views/admin/trees-merge.phtml:8
 #: resources/views/admin/trees-renumber.phtml:8
 #: resources/views/admin/trees-unconnected.phtml:19
 msgid "Manage family trees "
@@ -8632,7 +8643,7 @@ msgid "Manti, Utah, United States"
 msgstr "मेंटी, यूटा, संयुक्त राज्य अमेरिका"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2384
+#: app/GedcomTag.php:2390
 msgid "Manuscript"
 msgstr "हस्तलिपि"
 
@@ -8642,7 +8653,7 @@ msgid "Many genealogy programs create GEDCOM files with custom tags, and webtree
 msgstr "कई “वंशावली प्रोग्राम” कस्टम टैग के साथ GEDCOM फाइलें बनाते हैं, और webtrees उनमें से ज्यादातर को समझती है। जब कोई गैर-मान्यता प्राप्त टैग मिलते हैं, तो यह विकल्प आपको यह चुनने देता है कि, उन्हें अनदेखा करना है या कोई चेतावनी संदेश प्रदर्शित करना है।"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2387 resources/views/admin/control-panel.phtml:633
+#: app/GedcomTag.php:2393 resources/views/admin/control-panel.phtml:633
 #: resources/views/modules/statistics-chart/custom.phtml:52
 msgid "Map"
 msgstr "नक्शा"
@@ -8692,6 +8703,7 @@ msgstr "मार्कडाउन प्रारूपण की एक स�
 #: resources/views/lists/families-table.phtml:217
 #: resources/views/lists/families-table.phtml:225
 #: resources/views/lists/families-table.phtml:254
+#: resources/views/modules/relatives/family.phtml:131
 #: resources/xml/reports/ahnentafel_report.xml:450
 #: resources/xml/reports/bdm_report.xml:78
 #: resources/xml/reports/descendancy_report.xml:575
@@ -9015,14 +9027,14 @@ msgstr "मेडफोर्ड, ओरेगन, संयुक्त रा�
 #: resources/views/admin/control-panel.phtml:596
 #: resources/views/admin/media.phtml:99
 #: resources/views/lists/media-table.phtml:69
-#: resources/views/modules/recent_changes/changes-table.phtml:48
+#: resources/views/modules/recent_changes/changes-table.phtml:66
 msgid "Media"
 msgstr "मीडिया"
 
 #: resources/views/admin/media-upload.phtml:21
 #: resources/views/admin/media.phtml:95
 #: resources/views/admin/webtrees1-thumbnails.phtml:35
-#: resources/views/media-page.phtml:88 resources/views/media-page.phtml:183
+#: resources/views/media-page.phtml:92 resources/views/media-page.phtml:187
 #: resources/views/modals/create-media-from-file.phtml:24
 #: resources/views/modals/media-file-fields.phtml:10
 msgid "Media file"
@@ -9062,25 +9074,25 @@ msgstr "मीडिया फ़ोल्डर"
 #: resources/views/admin/trees.phtml:231
 #: resources/views/admin/webtrees1-thumbnails.phtml:36
 #: resources/views/family-page.phtml:94
-#: resources/views/modules/favorites/favorites.phtml:87
-#: resources/views/source-page.phtml:84
+#: resources/views/modules/favorites/favorites.phtml:94
+#: resources/views/source-page.phtml:88
 msgid "Media object"
 msgstr "मीडिया ऑब्जेक्ट"
 
 #. I18N: Name of a module/list
-#: app/Http/Controllers/AdminTreesController.php:1707
+#: app/Http/Controllers/AdminTreesController.php:1710
 #: app/Module/FixSearchAndReplace.php:111 app/Module/MediaListModule.php:51
 #: resources/views/admin/fix-level-0-media.phtml:24
 #: resources/views/admin/merge-records-step-1.phtml:28
 #: resources/views/admin/webtrees1-thumbnails.phtml:30
-#: resources/views/gedcom-record-page.phtml:56
+#: resources/views/gedcom-record-page.phtml:59
 #: resources/views/lists/media-table.phtml:64
 #: resources/views/lists/notes-table.phtml:84
 #: resources/views/lists/sources-table.phtml:87
 #: resources/views/modules/gedcom_stats/config.phtml:28
 #: resources/views/modules/gedcom_stats/statistics.phtml:90
 #: resources/views/modules/html/template-statistics.phtml:43
-#: resources/views/note-page.phtml:56 resources/views/source-page.phtml:57
+#: resources/views/note-page.phtml:59 resources/views/source-page.phtml:60
 #: resources/views/statistics/other/chart-objects.phtml:12
 #: resources/views/statistics/other/total-records.phtml:21
 msgid "Media objects"
@@ -9190,7 +9202,7 @@ msgstr "मर्करी"
 msgid "Merge"
 msgstr "मर्ज"
 
-#: app/Http/Controllers/AdminTreesController.php:495
+#: app/Http/Controllers/AdminTreesController.php:497
 #: resources/views/admin/control-panel.phtml:160
 msgid "Merge family trees"
 msgstr "दो फॅमिली ट्री को मिलाएँ"
@@ -9261,12 +9273,12 @@ msgid "Mexico City, Mexico"
 msgstr "मेक्सिको सिटी मेक्सिको"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2375
+#: app/GedcomTag.php:2381
 msgid "Microfiche"
 msgstr "माइक्रोफीच"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2378
+#: app/GedcomTag.php:2384
 msgid "Microfilm"
 msgstr "माइक्रोफिल्म"
 
@@ -9529,7 +9541,7 @@ msgstr "माँ"
 msgid "Mother: %s"
 msgstr "माँ: %s"
 
-#: app/Functions/FunctionsPrint.php:170
+#: app/Functions/FunctionsPrint.php:174
 msgid "Mother’s age"
 msgstr "माँ की उम्र"
 
@@ -9599,7 +9611,7 @@ msgid "Multiple marriages"
 msgstr "एक से अधिक शादियां"
 
 #: app/Http/RequestHandlers/AccountEdit.php:88
-#: app/Module/ModuleThemeTrait.php:319 app/Module/UserWelcomeModule.php:114
+#: app/Module/ModuleThemeTrait.php:325 app/Module/UserWelcomeModule.php:114
 msgid "My account"
 msgstr "मेरा अकाउंट"
 
@@ -9607,23 +9619,23 @@ msgstr "मेरा अकाउंट"
 msgid "My family tree"
 msgstr "मेरी फॅमिली ट्री"
 
-#: app/Module/ModuleThemeTrait.php:334 app/Module/UserWelcomeModule.php:107
+#: app/Module/ModuleThemeTrait.php:340 app/Module/UserWelcomeModule.php:107
 msgid "My individual record"
 msgstr "मेरा व्यक्तिगत रिकॉर्ड"
 
 #. I18N: Name of a module
-#: app/Http/RequestHandlers/UserPage.php:88 app/Module/ModuleThemeTrait.php:349
+#: app/Http/RequestHandlers/UserPage.php:90 app/Module/ModuleThemeTrait.php:355
 #: app/Module/UserWelcomeModule.php:61 resources/views/admin/modules.phtml:177
 #: resources/views/admin/modules.phtml:181
 #: resources/views/layouts/administration.phtml:54
 msgid "My page"
 msgstr "मेरा पेज"
 
-#: app/Module/ModuleThemeTrait.php:363
+#: app/Module/ModuleThemeTrait.php:369
 msgid "My pages"
 msgstr "मेरे पेज"
 
-#: app/Module/ModuleThemeTrait.php:397
+#: app/Module/ModuleThemeTrait.php:403
 msgid "My pedigree"
 msgstr "मेरी वंशावली"
 
@@ -9638,7 +9650,7 @@ msgstr "म्यांमार"
 #: app/Statistics/Google/ChartCommonGiven.php:81
 #: app/Statistics/Google/ChartCommonSurname.php:140
 #: resources/views/modals/submitter-fields.phtml:9
-#: resources/views/modules/yahrzeit/table.phtml:23
+#: resources/views/modules/yahrzeit/table.phtml:27
 #: resources/xml/reports/bdm_report.xml:5
 #: resources/xml/reports/bdm_report.xml:49
 #: resources/xml/reports/birth_report.xml:5
@@ -9810,7 +9822,7 @@ msgid "News"
 msgstr "समाचार"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2390
+#: app/GedcomTag.php:2396
 msgid "Newspaper"
 msgstr "अख़बार"
 
@@ -9901,8 +9913,8 @@ msgstr "निवोस"
 msgid "No"
 msgstr "नहीं"
 
-#: app/Http/Controllers/AdminTreesController.php:375
-#: app/Http/Controllers/AdminTreesController.php:387
+#: app/Http/Controllers/AdminTreesController.php:377
+#: app/Http/Controllers/AdminTreesController.php:389
 msgid "No GEDCOM file was received."
 msgstr "कोई GEDCOM फ़ाइल प्राप्त नहीं हुई।"
 
@@ -9932,7 +9944,7 @@ msgid "No errors have been found."
 msgstr "कोई एरर नहीं मिला।"
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
-#: app/Module/UpcomingAnniversariesModule.php:155
+#: app/Module/UpcomingAnniversariesModule.php:159
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
@@ -9943,7 +9955,7 @@ msgstr[1] "अगले %s दिनों के लिए कोई कार�
 msgid "No events exist for today."
 msgstr "कोई घटना आज के लिए मौजूद नहीं है।"
 
-#: app/Module/UpcomingAnniversariesModule.php:151
+#: app/Module/UpcomingAnniversariesModule.php:155
 msgid "No events exist for tomorrow."
 msgstr "कल के लिए कोई के कार्यक्रम मौजूद नहीं है।"
 
@@ -9960,7 +9972,7 @@ msgstr "कोई फाइल नहीं मिली।  कृपया प
 msgid "No link between the two individuals could be found."
 msgstr "दोनों व्यक्तियों के बीच कोई संबंध नहीं मिल सका।"
 
-#: resources/views/admin/location-edit.phtml:138
+#: resources/views/admin/location-edit.phtml:137
 #: resources/views/modules/pedigree-map/chart.phtml:167
 #: resources/views/modules/places/tab.phtml:140
 msgid "No mappable items"
@@ -10093,15 +10105,15 @@ msgid "Not verified by the user"
 msgstr "यूज़र द्वारा वेरिफाइड नहीं है"
 
 #. I18N: gedcom tag NOTE
-#: app/Functions/FunctionsPrint.php:136 app/GedcomTag.php:890
+#: app/Functions/FunctionsPrint.php:140 app/GedcomTag.php:890
 #: resources/views/admin/trees-privacy.phtml:173
 #: resources/views/cards/add-note.phtml:10 resources/views/family-page.phtml:71
 #: resources/views/modals/create-media-from-file.phtml:48
 #: resources/views/modals/media-object-fields.phtml:11
 #: resources/views/modals/note-object-fields.phtml:9
-#: resources/views/modules/favorites/favorites.phtml:134
+#: resources/views/modules/favorites/favorites.phtml:159
 #: resources/views/modules/notes/tab.phtml:41
-#: resources/views/modules/recent_changes/changes-table.phtml:51
+#: resources/views/modules/recent_changes/changes-table.phtml:69
 #: resources/xml/reports/cemetery_report.xml:56
 #: resources/xml/reports/family_group_report.xml:485
 #: resources/xml/reports/family_group_report.xml:749
@@ -10122,11 +10134,11 @@ msgstr "नोट: लंबी पथ लंबाई के लिए बह�
 #: app/Module/FixSearchAndReplace.php:112 app/Module/NotesTabModule.php:59
 #: resources/views/admin/control-panel.phtml:179
 #: resources/views/admin/merge-records-step-1.phtml:27
-#: resources/views/gedcom-record-page.phtml:68
-#: resources/views/media-page.phtml:76
+#: resources/views/gedcom-record-page.phtml:73
+#: resources/views/media-page.phtml:80
 #: resources/views/modules/census-assistant.phtml:84
-#: resources/views/note-page.phtml:68 resources/views/search-results.phtml:57
-#: resources/views/source-page.phtml:63
+#: resources/views/note-page.phtml:73 resources/views/search-results.phtml:57
+#: resources/views/source-page.phtml:67
 #: resources/views/statistics/other/total-records.phtml:39
 #: resources/xml/reports/individual_ext_report.xml:229
 #: resources/xml/reports/individual_report.xml:226
@@ -10335,7 +10347,7 @@ msgid "Oman"
 msgstr "ओमान"
 
 #. I18N: Name of a module
-#: app/Module/OnThisDayModule.php:86
+#: app/Module/OnThisDayModule.php:90
 msgid "On this day"
 msgstr "आज के दिन"
 
@@ -10368,7 +10380,7 @@ msgstr "उफ़! वेबसर्वर डेटाबेस सर्व�
 msgid "Oops! webtrees was unable to create files in this folder."
 msgstr "उफ़! webtrees इस फ़ोल्डर में फाइल बनाने में असमर्थ रही।"
 
-#: app/Functions/FunctionsPrint.php:363 app/Functions/FunctionsPrint.php:365
+#: app/Functions/FunctionsPrint.php:367 app/Functions/FunctionsPrint.php:369
 #: resources/views/admin/map-provider.phtml:21
 msgid "OpenStreetMap™"
 msgstr "OpenStreetMap™"
@@ -10428,7 +10440,7 @@ msgid "Orlando, Florida, United States"
 msgstr "ऑरलैंडो, फ्लोरिडा, संयुक्त राज्य अमेरिका"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2405 app/Module/StatisticsChartModule.php:163
+#: app/GedcomTag.php:2411 app/Module/StatisticsChartModule.php:163
 #: app/Statistics/Google/ChartCommonGiven.php:91
 #: app/Statistics/Google/ChartCommonSurname.php:150
 #: resources/views/admin/control-panel.phtml:553
@@ -10519,7 +10531,7 @@ msgid "Page size"
 msgstr "पेज साइज़"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2402
+#: app/GedcomTag.php:2408
 msgid "Painting"
 msgstr "चित्रकारी"
 
@@ -10579,7 +10591,7 @@ msgstr "माता-पिता"
 msgid "Parents and siblings"
 msgstr "माता-पिता और भाई-बहन"
 
-#: app/Functions/FunctionsPrint.php:182
+#: app/Functions/FunctionsPrint.php:186
 msgid "Parent’s age"
 msgstr "माँ-बाप की उम्र"
 
@@ -10644,7 +10656,7 @@ msgstr "%s की वंशावली ट्री"
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/HelpText.php:254
 #: app/Http/RequestHandlers/PendingChanges.php:125
-#: app/Module/ModuleThemeTrait.php:424 app/Module/ReviewChangesModule.php:80
+#: app/Module/ModuleThemeTrait.php:430 app/Module/ReviewChangesModule.php:80
 #: app/Module/ReviewChangesModule.php:134
 #: resources/views/admin/control-panel.phtml:173
 #: resources/views/admin/control-panel.phtml:198
@@ -10724,7 +10736,7 @@ msgid "Phonetic title"
 msgstr "ध्वन्यात्मक शीर्षक"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2024 app/GedcomTag.php:2393
+#: app/GedcomTag.php:2024 app/GedcomTag.php:2399
 msgid "Photo"
 msgstr "फोटो"
 
@@ -10741,7 +10753,7 @@ msgstr "पिटकेर्न द्वीपसमूह"
 #. I18N: gedcom tag PLAC
 #: app/GedcomTag.php:931 app/Http/RequestHandlers/HelpText.php:224
 #: app/Module/FixCemeteryTag.php:86
-#: resources/views/admin/location-edit.phtml:27
+#: resources/views/admin/location-edit.phtml:26
 #: resources/views/admin/locations.phtml:15
 #: resources/views/lists/families-table.phtml:260
 #: resources/views/lists/individuals-table.phtml:274
@@ -10980,7 +10992,7 @@ msgid "Porto Alegre, Brazil"
 msgstr "पोर्टो एलेग्रे, ब्राजील"
 
 #. I18N: page orientation
-#: app/Http/Controllers/AdminTreesController.php:736
+#: app/Http/Controllers/AdminTreesController.php:738
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
 msgid "Portrait"
@@ -11042,7 +11054,7 @@ msgstr "पूर्वनिर्धारित लेख, जो बता�
 msgid "Predefined text that states only family members can request a user account"
 msgstr "पूर्वनिर्धारित लेख, जो बताता है केवल परिवार के सदस्य ही यूज़र अकाउंट के लिए अनुरोध कर सकते हैं"
 
-#: app/Http/Controllers/AdminTreesController.php:808
+#: app/Http/Controllers/AdminTreesController.php:810
 #: app/Http/RequestHandlers/TreePageBlockEdit.php:64
 #: app/Http/RequestHandlers/UserPageBlockEdit.php:64
 #: resources/views/admin/components.phtml:45
@@ -11131,7 +11143,7 @@ msgstr "गोपनीयता प्रतिबंध"
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr "गोपनीयता प्रतिबंध - ये उन रिकॉर्ड्स और तथ्यों पर लागू होते हैं जिनमें GEDCOM का RESN टैग नहीं है"
 
-#: app/GedcomRecord.php:498 app/GedcomRecord.php:606 app/GedcomRecord.php:1241
+#: app/GedcomRecord.php:535 app/GedcomRecord.php:643 app/GedcomRecord.php:1278
 #: app/Note.php:128 app/Report/ReportParserGenerate.php:967
 #: app/Repository.php:104 app/Source.php:109
 #: app/Statistics/Repository/EventRepository.php:415 app/Submitter.php:104
@@ -11341,7 +11353,7 @@ msgstr "वर्तमान फॅमिली ट्री से अनि�
 #: app/Http/RequestHandlers/ReorderChildrenPage.php:57
 #: resources/views/family-page-children.phtml:40
 #: resources/views/family-page-menu.phtml:45
-#: resources/views/modules/relatives/family.phtml:201
+#: resources/views/modules/relatives/family.phtml:221
 msgid "Re-order children"
 msgstr "बच्चों को पुनः अंकित करें"
 
@@ -11381,7 +11393,7 @@ msgid "Really delete all geographic data?"
 msgstr "वाक़ई सारा भौगोलिक डेटा हटाना है?"
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:51
+#: app/Module/RecentChangesModule.php:77
 #: resources/xml/reports/change_report.xml:92
 msgid "Recent changes"
 msgstr "हालिया बदलाव"
@@ -11399,10 +11411,10 @@ msgstr "रेसिफ़, ब्राज़ील"
 #: resources/views/admin/changes-log.phtml:117
 #: resources/views/admin/data-fix-page.phtml:64
 #: resources/views/admin/trees-privacy.phtml:213
-#: resources/views/lists/anniversaries-table.phtml:20
+#: resources/views/lists/anniversaries-table.phtml:32
 #: resources/views/modules/clippings/show.phtml:21
-#: resources/views/modules/recent_changes/changes-table.phtml:24
-#: resources/views/modules/todo/research-tasks.phtml:21
+#: resources/views/modules/recent_changes/changes-table.phtml:42
+#: resources/views/modules/todo/research-tasks.phtml:32
 msgid "Record"
 msgstr "रिकार्ड"
 
@@ -11570,7 +11582,7 @@ msgstr "रिमोट सर्वर"
 #: app/Module/CensusAssistantModule.php:245
 #: resources/views/modules/clippings/show.phtml:22
 #: resources/views/modules/clippings/show.phtml:38
-#: resources/views/modules/favorites/favorites.phtml:34
+#: resources/views/modules/favorites/favorites.phtml:36
 msgid "Remove"
 msgstr "हटाएं"
 
@@ -11602,7 +11614,7 @@ msgid "Renumber"
 msgstr "पुनः अंकित"
 
 #. I18N: Renumber the records in a family tree
-#: app/Http/Controllers/AdminTreesController.php:854
+#: app/Http/Controllers/AdminTreesController.php:856
 #: resources/views/admin/trees-merge.phtml:24
 #: resources/views/admin/trees-merge.phtml:29
 msgid "Renumber family tree"
@@ -11646,7 +11658,7 @@ msgid "Reports"
 msgstr "विवरण"
 
 #. I18N: Name of a module/list
-#: app/Http/Controllers/AdminTreesController.php:1703
+#: app/Http/Controllers/AdminTreesController.php:1706
 #: app/Http/Controllers/ListController.php:506
 #: app/Module/FixSearchAndReplace.php:113
 #: app/Module/RepositoryListModule.php:53
@@ -11666,8 +11678,8 @@ msgstr "संग्रह स्थान"
 #: app/GedcomTag.php:964 resources/views/admin/trees-privacy.phtml:172
 #: resources/views/admin/trees.phtml:222
 #: resources/views/modals/source-fields.phtml:39
-#: resources/views/modules/favorites/favorites.phtml:111
-#: resources/views/modules/recent_changes/changes-table.phtml:60
+#: resources/views/modules/favorites/favorites.phtml:122
+#: resources/views/modules/recent_changes/changes-table.phtml:78
 msgid "Repository"
 msgstr "संग्रह"
 
@@ -11694,12 +11706,12 @@ msgid "Request a new user account"
 msgstr "नए अकाउंट का अनुरोध करें"
 
 #. I18N: gedcom tag _TODO
-#: app/GedcomTag.php:2059 resources/views/modules/todo/research-tasks.phtml:27
+#: app/GedcomTag.php:2059 resources/views/modules/todo/research-tasks.phtml:38
 msgid "Research task"
 msgstr "शोधकार्य"
 
 #. I18N: Name of a module. Tasks that need further research.
-#: app/Module/ResearchTaskModule.php:54
+#: app/Module/ResearchTaskModule.php:58
 msgid "Research tasks"
 msgstr "अनुसंधान कार्य"
 
@@ -11711,7 +11723,7 @@ msgstr "रिसर्च टास्क विशेष घटनाएँ �
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
 msgstr "शोध कार्य (रिसर्च टास्क) कस्टम GEDCOM टैग “_TODO” का उपयोग करके संग्रहीत किए जाते हैं। अन्य वंशावली एप्लीकेशन इस टैग को नहीं पहचान सकते हैं।"
 
-#: resources/views/admin/location-edit.phtml:137
+#: resources/views/admin/location-edit.phtml:136
 #: resources/views/modules/pedigree-map/chart.phtml:71
 #: resources/views/modules/place-hierarchy/map.phtml:72
 #: resources/views/modules/places/tab.phtml:61
@@ -11736,7 +11748,7 @@ msgstr "सगे परिवार तक प्रतिबंधित क�
 #. I18N: gedcom tag RESN
 #: app/GedcomTag.php:974 app/Http/RequestHandlers/HelpText.php:229
 #: resources/views/cards/add-restriction.phtml:10
-#: resources/views/media-page.phtml:173
+#: resources/views/media-page.phtml:177
 msgid "Restriction"
 msgstr "रोक"
 
@@ -11763,7 +11775,7 @@ msgstr "रीयूनियन"
 msgid "Rexburg, Idaho, United States"
 msgstr "रेक्सबर्ग, इडाहो, संयुक्त राज्य अमेरिका"
 
-#: app/Module/PedigreeChartModule.php:380
+#: app/Module/PedigreeChartModule.php:391
 msgid "Right"
 msgstr "दाएं"
 
@@ -11815,11 +11827,11 @@ msgstr "रवांडा"
 msgid "SMTP mail server"
 msgstr "SMTP मेल सर्वर"
 
-#: app/Services/ServerCheckService.php:322
+#: app/Services/ServerCheckService.php:323
 msgid "SQLite is only suitable for small sites, testing and evaluation."
 msgstr "SQLite केवल छोटी साइटों, परीक्षण और मूल्यांकन के लिए उपयुक्त है।"
 
-#: app/Services/ServerCheckService.php:215
+#: app/Services/ServerCheckService.php:216
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr "SQLite version %s इंस्टाल किया हुआ है। SQLite version %s या इससे नया आवश्यक है।"
@@ -12085,7 +12097,7 @@ msgid "Select individuals by place or date"
 msgstr "स्थान या दिनांक के अनुसार व्यक्तियों का चयन करें"
 
 #. I18N: Description of the “Clippings cart” module
-#: app/Module/ClippingsCartModule.php:129
+#: app/Module/ClippingsCartModule.php:130
 msgid "Select records from your family tree and save them as a GEDCOM file."
 msgstr "अपनी फॅमिली ट्री से रिकॉर्ड का चयन करें और उन्हें GEDCOM फ़ाइल के रूप में सुरक्षित करें।"
 
@@ -12267,12 +12279,12 @@ msgstr "डिफॉल्ट के रूप में सेट करें"
 msgid "Set the access level for each tree."
 msgstr "प्रत्येक ट्री के लिए एक्सेस लेवल सेट करें।"
 
-#: app/Http/RequestHandlers/TreePageDefaultEdit.php:65
+#: app/Http/RequestHandlers/TreePageDefaultEdit.php:73
 #: resources/views/admin/control-panel.phtml:153
 msgid "Set the default blocks for new family trees"
 msgstr "नए फॅमिली ट्री के लिए डिफ़ॉल्ट ब्लॉक सेट करें"
 
-#: app/Http/RequestHandlers/UserPageDefaultEdit.php:64
+#: app/Http/RequestHandlers/UserPageDefaultEdit.php:75
 #: resources/views/admin/control-panel.phtml:372
 msgid "Set the default blocks for new users"
 msgstr "नए यूज़र के लिए डिफ़ॉल्ट ब्लॉक सेट करें"
@@ -12340,9 +12352,9 @@ msgstr "शहरीवर"
 #: app/GedcomTag.php:1005 resources/views/admin/trees.phtml:239
 #: resources/views/cards/add-shared-note.phtml:10
 #: resources/views/edit/shared-note.phtml:14
-#: resources/views/family-page.phtml:82 resources/views/media-page.phtml:163
+#: resources/views/family-page.phtml:82 resources/views/media-page.phtml:167
 #: resources/views/modules/notes/tab.phtml:51
-#: resources/views/note-page.phtml:79
+#: resources/views/note-page.phtml:84
 msgid "Shared note"
 msgstr "आम नोट"
 
@@ -12750,7 +12762,7 @@ msgstr "चार्ट और परिवार ग्रुप्स मे�
 #: app/Functions/FunctionsPrintFacts.php:832
 #: app/Functions/FunctionsPrintFacts.php:1070
 #: app/Http/Controllers/AdminController.php:178
-#: app/Http/Controllers/AdminTreesController.php:758
+#: app/Http/Controllers/AdminTreesController.php:760
 #: resources/views/modals/restriction-fields.phtml:21
 msgid "Show to managers"
 msgstr "मैनेजर्स को दिखाएं"
@@ -12762,7 +12774,7 @@ msgstr "मैनेजर्स को दिखाएं"
 #: app/Functions/FunctionsPrintFacts.php:829
 #: app/Functions/FunctionsPrintFacts.php:1067
 #: app/Http/Controllers/AdminController.php:177
-#: app/Http/Controllers/AdminTreesController.php:757
+#: app/Http/Controllers/AdminTreesController.php:759
 #: resources/views/admin/trees-privacy.phtml:30
 #: resources/views/admin/trees-privacy.phtml:92
 #: resources/views/modals/restriction-fields.phtml:18
@@ -12827,11 +12839,11 @@ msgstr "सियरा लिओन"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/LoginPage.php:77 app/Module/LoginBlockModule.php:43
-#: app/Module/LoginBlockModule.php:75 app/Module/ModuleThemeTrait.php:287
+#: app/Module/LoginBlockModule.php:75 app/Module/ModuleThemeTrait.php:293
 msgid "Sign in"
 msgstr "साइन इन करें"
 
-#: app/Module/LoginBlockModule.php:70 app/Module/ModuleThemeTrait.php:302
+#: app/Module/LoginBlockModule.php:70 app/Module/ModuleThemeTrait.php:308
 #: resources/views/layouts/administration.phtml:67
 msgid "Sign out"
 msgstr "साइन आउट"
@@ -12880,7 +12892,7 @@ msgid "Site verification codes do not work when webtrees is installed in a subfo
 msgstr "जब webtrees किसी सबफ़ोल्डर में इंस्टाल की गई हो तो साइट वेरीफिकेशन कोड काम नहीं करते।"
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
-#: app/Module/SiteMapModule.php:125
+#: app/Module/SiteMapModule.php:155
 msgid "Sitemaps"
 msgstr "साइटमैप"
 
@@ -13040,11 +13052,11 @@ msgstr "मिलता जुलता"
 #: resources/views/admin/trees-privacy.phtml:171
 #: resources/views/admin/trees.phtml:214
 #: resources/views/cards/add-source-citation.phtml:14
-#: resources/views/family-page.phtml:106 resources/views/media-page.phtml:153
+#: resources/views/family-page.phtml:106 resources/views/media-page.phtml:157
 #: resources/views/modals/link-media-to-source.phtml:15
-#: resources/views/modules/favorites/favorites.phtml:99
+#: resources/views/modules/favorites/favorites.phtml:108
 #: resources/views/modules/random_media/slide-show.phtml:70
-#: resources/views/modules/recent_changes/changes-table.phtml:54
+#: resources/views/modules/recent_changes/changes-table.phtml:72
 #: resources/views/modules/sources_tab/tab.phtml:39
 #: resources/xml/reports/bdm_report.xml:136
 #: resources/xml/reports/bdm_report.xml:162
@@ -13082,23 +13094,23 @@ msgstr "स्रोत प्रकार"
 
 #. I18N: Name of a module/list
 #. I18N: Name of a module
-#: app/Http/Controllers/AdminTreesController.php:1704
+#: app/Http/Controllers/AdminTreesController.php:1707
 #: app/Http/Controllers/ListController.php:527
 #: app/Module/FixSearchAndReplace.php:114 app/Module/SourceListModule.php:52
 #: app/Module/SourcesTabModule.php:59
 #: resources/views/admin/control-panel.phtml:176
 #: resources/views/admin/merge-records-step-1.phtml:25
-#: resources/views/gedcom-record-page.phtml:62
+#: resources/views/gedcom-record-page.phtml:66
 #: resources/views/lists/media-table.phtml:73
 #: resources/views/lists/notes-table.phtml:76
 #: resources/views/lists/notes-table.phtml:85
 #: resources/views/lists/repositories-table.phtml:43
 #: resources/views/lists/sources-table.phtml:78
-#: resources/views/media-page.phtml:70
+#: resources/views/media-page.phtml:73
 #: resources/views/modules/gedcom_stats/config.phtml:27
 #: resources/views/modules/gedcom_stats/statistics.phtml:79
 #: resources/views/modules/html/template-statistics.phtml:39
-#: resources/views/note-page.phtml:62 resources/views/repository-page.phtml:44
+#: resources/views/note-page.phtml:66 resources/views/repository-page.phtml:45
 #: resources/views/search-general-page.phtml:48
 #: resources/views/search-results.phtml:35
 #: resources/views/statistics/other/chart-sources.phtml:12
@@ -13231,7 +13243,7 @@ msgid "Statistics"
 msgstr "आंकड़े"
 
 #. I18N: gedcom tag STAT
-#: app/Functions/FunctionsPrint.php:378 app/GedcomTag.php:1032
+#: app/Functions/FunctionsPrint.php:382 app/GedcomTag.php:1032
 #: resources/views/admin/changes-log.phtml:36
 #: resources/views/admin/changes-log.phtml:116
 msgid "Status"
@@ -13296,7 +13308,7 @@ msgstr "प्रस्तुत है मगर अब तक साफ़ न
 
 #. I18N: gedcom tag SUBM
 #: app/GedcomTag.php:1037 resources/views/admin/trees.phtml:247
-#: resources/views/modules/recent_changes/changes-table.phtml:57
+#: resources/views/modules/recent_changes/changes-table.phtml:75
 msgid "Submitter"
 msgstr "जमाकर्ता"
 
@@ -13334,11 +13346,11 @@ msgstr "रविवार"
 msgid "Support and documentation can be found at %s."
 msgstr "मदद और प्रलेखन %s पर पाए जा सकते हैं।"
 
-#: app/Services/ServerCheckService.php:327
+#: app/Services/ServerCheckService.php:328
 msgid "Support for PostgreSQL is experimental."
 msgstr "PostgreSQL के लिए सपोर्ट आज़माइशी है।"
 
-#: app/Services/ServerCheckService.php:332
+#: app/Services/ServerCheckService.php:333
 msgid "Support for SQL Server is experimental."
 msgstr "SQL सर्वर के लिए सपोर्ट आज़माइशी है।"
 
@@ -13595,7 +13607,7 @@ msgstr "<b>नाम</b> फ़ील्ड में व्यक्ति क�
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 msgstr "<b>कुलनाम</b> फ़ील्ड में एक नाम होता है जो सॉर्टिंग और ग्रुपिंग के लिए उपयोग किया जाता है। यह व्यक्ति के वास्तविक कुलनाम से भिन्न हो सकता है जिसे हमेशा <b>नाम</b> फ़ील्ड से लिया जाता है। इस फ़ील्ड का उपयोग कुलनाम के साथ या बिना उपसर्ग (Gogh / van Gogh) और समूह वर्तनी भिन्नताओं या विभक्तियों (Kowalski / Kowalska) के लिए किया जा सकता है। यदि किसी व्यक्ति को एक से अधिक उपनामों के तहत सूचीबद्ध करने की आवश्यकता होती है, तो प्रत्येक नाम को कोमा द्वारा अलग किया जाना चाहिए।"
 
-#: app/Http/Controllers/AdminTreesController.php:1497
+#: app/Http/Controllers/AdminTreesController.php:1500
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
 msgstr "GEDCOM फ़ाइल “%s” आयात कर ली गई।"
@@ -13609,12 +13621,12 @@ msgstr "GEDCOM मानक मीडिया ऑब्जेक्ट्स �
 msgid "The Hague, Netherlands"
 msgstr "द हेग, नीदरलैंड"
 
-#: app/Services/ServerCheckService.php:124
+#: app/Services/ServerCheckService.php:125
 #, php-format
 msgid "The PHP extension “%s” is not installed."
 msgstr "PHP एक्सटेंशन “%s” इंस्टाल नहीं है।"
 
-#: app/Services/ServerCheckService.php:182
+#: app/Services/ServerCheckService.php:183
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
 msgstr "PHP फ़ंक्शन “%1$s” बंद है।"
@@ -13624,12 +13636,12 @@ msgstr "PHP फ़ंक्शन “%1$s” बंद है।"
 msgid "The PHP temporary folder is missing."
 msgstr "PHP टेम्पररी फ़ोल्डर गायब है।"
 
-#: app/Services/ServerCheckService.php:143
+#: app/Services/ServerCheckService.php:144
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
 msgstr "PHP.INI सेटिंग “%1$s” बंद है।"
 
-#: app/Services/ServerCheckService.php:147
+#: app/Services/ServerCheckService.php:148
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
 msgstr "PHP.INI सेटिंग “%1$s” चालू है।"
@@ -13676,7 +13688,7 @@ msgstr "क्लिपिंग कार्ट आपको इस फॅम�
 msgid "The date and time of the last update"
 msgstr "आख़िरी अपडेट की तारीख और समय"
 
-#: app/Http/Controllers/Admin/LocationController.php:405
+#: app/Http/Controllers/Admin/LocationController.php:415
 #: app/Http/RequestHandlers/AccountUpdate.php:113
 #, php-format
 msgid "The details for “%s” have been updated."
@@ -13700,7 +13712,7 @@ msgid "The family tree “%s” has been created."
 msgstr "%s फॅमिली ट्री बना दी गई।"
 
 #. I18N: %s is the name of a family tree
-#: app/Http/Controllers/AdminTreesController.php:1504
+#: app/Http/Controllers/AdminTreesController.php:1507
 #: app/Http/RequestHandlers/DeleteTreeAction.php:65
 #, php-format
 msgid "The family tree “%s” has been deleted."
@@ -13712,7 +13724,7 @@ msgstr "फॅमिली ट्री “%s” को हटा दिया �
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
 msgstr "इस वेबसाइट पर आने वाले दर्शकों को पहले “%s” फॅमिली ट्री दिखाया जाएगा।"
 
-#: app/Http/Controllers/AdminTreesController.php:695
+#: app/Http/Controllers/AdminTreesController.php:697
 msgid "The family trees have been merged successfully."
 msgstr "फॅमिली ट्री को सफलतापूर्वक मिला दिया गया है।"
 
@@ -13759,7 +13771,7 @@ msgid "The file was only partially uploaded. Please try again."
 msgstr "फ़ाइल केवल टुकड़ों में अपलोड की गई थी।  कृपया पुन: प्रयास करें।"
 
 #. I18N: %s is a filename
-#: resources/views/media-page.phtml:117
+#: resources/views/media-page.phtml:121
 #: resources/views/modules/media-list/page.phtml:145
 #, php-format
 msgid "The file “%s” does not exist."
@@ -13936,17 +13948,17 @@ msgid "The place hierarchy."
 msgstr "स्थान श्रेणी।"
 
 #: app/Http/Controllers/AdminController.php:159
-#: app/Http/Controllers/AdminTreesController.php:962
+#: app/Http/Controllers/AdminTreesController.php:964
 msgid "The preferences for all family trees have been updated."
 msgstr "सारी फैमिली ट्री की प्राथमिकताएं अपडेट की गई हैं।"
 
 #: app/Http/Controllers/AdminController.php:162
-#: app/Http/Controllers/AdminTreesController.php:966
+#: app/Http/Controllers/AdminTreesController.php:968
 msgid "The preferences for new family trees have been updated."
 msgstr "नई फैमिली ट्री के लिए प्राथमिकताएं अपडेट की गई हैं।"
 
 #: app/Http/Controllers/AdminController.php:152
-#: app/Http/Controllers/AdminTreesController.php:955
+#: app/Http/Controllers/AdminTreesController.php:957
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "फॅमिली ट्री “%s” की प्राथमिकताएं अपडेट की गई हैं।"
@@ -13957,7 +13969,7 @@ msgid "The preferences for the module “%s” have been deleted."
 msgstr "मॉड्यूल “%s” की प्राथमिकताएं हटा दी गई हैं।"
 
 #: app/Module/CustomCssJsModule.php:99
-#: app/Module/RelationshipsChartModule.php:430 app/Module/SiteMapModule.php:142
+#: app/Module/RelationshipsChartModule.php:430 app/Module/SiteMapModule.php:172
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
 msgstr "मॉड्यूल “%s” के लिए प्राथमिकताएं अपडेट की गई हैं।"
@@ -14000,11 +14012,11 @@ msgstr "सर्च ने कई सारे परिणाम लौटा�
 msgid "The server configuration is OK."
 msgstr "सर्वर कॉन्फ़िगरेशन ठीक है।"
 
-#: app/Services/ServerCheckService.php:247
+#: app/Services/ServerCheckService.php:248
 msgid "The server’s temporary folder cannot be accessed."
 msgstr "सर्वर के टेम्पररी फ़ोल्डर तक पहुँचा नहीं जा सकता।"
 
-#: app/Http/Controllers/AdminTreesController.php:1462
+#: app/Http/Controllers/AdminTreesController.php:1465
 #: app/Services/UpgradeService.php:150 app/Services/UpgradeService.php:183
 msgid "The server’s time limit has been reached."
 msgstr "सर्वर की समय सीमा पूरी हो गई है।"
@@ -14105,7 +14117,7 @@ msgstr "वेबसाइट www.geonames.org जगह के नामों 
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
 msgstr "इस खामी के बारे में जानने के लिए वेब्ट्रीज़ डेवलपर्स को बहुत दिलचस्पी होगी। यदि आप उनसे संपर्क करते हैं, तो वे समस्या को हल करने में आपकी मदद करेंगे।"
 
-#: app/Module/ModuleThemeTrait.php:69 app/Module/ModuleThemeTrait.php:451
+#: app/Module/ModuleThemeTrait.php:72 app/Module/ModuleThemeTrait.php:457
 #: resources/views/admin/modules.phtml:245
 #: resources/views/admin/modules.phtml:248
 #: resources/views/admin/users-edit.phtml:180
@@ -14113,7 +14125,7 @@ msgid "Theme"
 msgstr "थीम"
 
 #. I18N: Name of a module
-#: app/Module/ThemeSelectModule.php:41
+#: app/Module/ThemeSelectModule.php:45
 msgid "Theme change"
 msgstr "थीम परिवर्तन"
 
@@ -14145,7 +14157,7 @@ msgstr "इस व्यक्ति के लिए कोई नोट नह
 msgid "There are no pending changes."
 msgstr "कोई लंबित परिवर्तन नहीं हैं।"
 
-#: app/Module/ResearchTaskModule.php:112
+#: app/Module/ResearchTaskModule.php:116
 msgid "There are no research tasks in this family tree."
 msgstr "इस फॅमिली ट्री में कोई रिसर्च टास्क नहीं हैं।"
 
@@ -14159,7 +14171,7 @@ msgstr "इस व्यक्ति के लिए कोई भी स्र
 msgid "There are pending changes for you to moderate."
 msgstr "आपके मॉडरेट करने के लिए कुछ लंबित परिवर्तन हैं।"
 
-#: app/Module/RecentChangesModule.php:91
+#: app/Module/RecentChangesModule.php:123
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
@@ -14292,7 +14304,7 @@ msgstr "इस फ़ोल्डर का उपयोग webtrees द्व�
 msgid "This folder will be used to store the media files for this family tree."
 msgstr "इस फ़ोल्डर का उपयोग इस फॅमिली ट्री के लिए मीडिया फ़ाइलों को संग्रहीत करने के लिए किया जाएगा।"
 
-#: app/Http/Middleware/CheckCsrf.php:65
+#: app/Http/Middleware/CheckCsrf.php:68
 msgid "This form has expired. Try again."
 msgstr "इस फॉर्म की समय सीमा समाप्त। दोबारा कोशिश करें।"
 
@@ -14576,12 +14588,12 @@ msgstr "यह विकल्प निजी लिंक में पार�
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
 msgstr "यह विकल्प प्राइवेट व्यक्तियों के नाम (लेकिन कोई अन्य विवरण) नहीं दिखाएगा। यदि वे अभी जीवित हैं या उनके व्यक्तिगत रिकॉर्ड में कोई गोपनीयता प्रतिबंध जोड़ा गया हो, तो वे व्यक्ति प्राइवेट हैं। कोई एक विशिष्ट नाम छिपाने के लिए, उस नाम रिकॉर्ड में गोपनीयता प्रतिबंध जोड़ें।"
 
-#: resources/views/edit/raw-gedcom-fact.phtml:14
-#: resources/views/edit/raw-gedcom-record.phtml:15
+#: resources/views/edit/raw-gedcom-fact.phtml:15
+#: resources/views/edit/raw-gedcom-record.phtml:16
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
 msgstr "यह पेज आपको सामान्य फॉर्म से बचाकर कर सीधे मूल डेटा को एडिट करने की अनुमति देता है। यह एक एडवांस्ड विकल्प है, और जब तक आप GEDCOM फॉर्मेट को नहीं समझते, तब तक आपको इसका उपयोग नहीं करना चाहिए। अगर आप यहां  कोई गलती करते हैं, तो इसे ठीक करना मुश्किल हो सकता है।"
 
-#: app/Module/HitCountFooterModule.php:110
+#: app/Module/HitCountFooterModule.php:113
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
@@ -14714,8 +14726,8 @@ msgstr "यह स्रोत संपादित किया गया ह�
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
 msgstr "यह लेख हर एक पेज के टाइटल से जोड़ा जाएगा। इसे ब्राउज़र के टाइटल बार, बुकमार्क आदि में दिखाया जाएगा।"
 
-#: app/Http/Controllers/AdminTreesController.php:286
-#: app/Http/Controllers/AdminTreesController.php:291
+#: app/Http/Controllers/AdminTreesController.php:288
+#: app/Http/Controllers/AdminTreesController.php:293
 msgid "This type of link is not allowed here."
 msgstr "इस प्रकार की लिंक की यहाँ अनुमति नहीं है।"
 
@@ -14880,7 +14892,8 @@ msgstr "तिशरी"
 #: resources/views/modals/media-file-fields.phtml:106
 #: resources/views/modals/source-fields.phtml:9
 #: resources/views/modules/census-assistant.phtml:20
-#: resources/views/modules/favorites/favorites.phtml:129
+#: resources/views/modules/favorites/favorites.phtml:149
+#: resources/views/modules/favorites/favorites.phtml:151
 #: resources/views/modules/gedcom_news/edit.phtml:17
 #: resources/views/modules/html/config.phtml:11
 #: resources/views/modules/user_blog/edit.phtml:17
@@ -14960,7 +14973,7 @@ msgid "Tokyo, Japan"
 msgstr "टोक्यो, जापान"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2396
+#: app/GedcomTag.php:2402
 msgid "Tombstone"
 msgstr "कब्र का पत्थर"
 
@@ -14978,7 +14991,7 @@ msgstr[0] "%s सर्वोच्च दिया गया नाम"
 msgstr[1] "%s सर्वोच्च दिए गए नाम"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
-#: app/Module/TopSurnamesModule.php:157
+#: app/Module/TopSurnamesModule.php:161
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
@@ -14997,7 +15010,7 @@ msgid "Top given names"
 msgstr "सर्वोच्च दिए गए नाम"
 
 #. I18N: i.e. most popular surname.
-#: app/Module/TopSurnamesModule.php:154
+#: app/Module/TopSurnamesModule.php:158
 msgid "Top surname"
 msgstr "सर्वोच्च कुलनाम"
 
@@ -15213,7 +15226,7 @@ msgstr "ट्विन फॉल्स, इडाहो, संयुक्त 
 #: resources/views/admin/site-logs.phtml:107
 #: resources/views/modules/media-list/page.phtml:38
 #: resources/views/modules/random_media/config.phtml:19
-#: resources/views/modules/recent_changes/changes-table.phtml:20
+#: resources/views/modules/recent_changes/changes-table.phtml:38
 msgid "Type"
 msgstr "प्रकार"
 
@@ -15233,8 +15246,9 @@ msgstr "तथ्य का प्रकार"
 #: resources/views/admin/trees-create.phtml:26
 #: resources/views/admin/trees-preferences.phtml:40
 #: resources/views/modals/media-file-fields.phtml:90
-#: resources/views/modules/favorites/favorites.phtml:123
-#: resources/views/modules/favorites/favorites.phtml:128
+#: resources/views/modules/favorites/favorites.phtml:136
+#: resources/views/modules/favorites/favorites.phtml:143
+#: resources/views/modules/favorites/favorites.phtml:145
 #: resources/views/modules/matomo-analytics/form.phtml:18
 msgid "URL"
 msgstr "URL"
@@ -15306,7 +15320,7 @@ msgid "United States"
 msgstr "संयुक्त राज्य"
 
 #. I18N: Name of a country or state
-#: app/GedcomRecord.php:963 app/GedcomRecord.php:968
+#: app/GedcomRecord.php:1000 app/GedcomRecord.php:1005
 #: app/Statistics/Google/ChartSex.php:72
 #: app/Statistics/Service/CountryService.php:38
 msgid "Unknown"
@@ -15346,12 +15360,12 @@ msgstr "अप्रयुक्त फ़ाइलें"
 msgid "Unzip %s to a temporary folder…"
 msgstr "%s को एक टेम्पररी फ़ोल्डर में अनज़िप करें…"
 
-#: app/Module/PedigreeChartModule.php:381
+#: app/Module/PedigreeChartModule.php:392
 msgid "Up"
 msgstr "ऊपर"
 
 #. I18N: Name of a module
-#: app/Module/UpcomingAnniversariesModule.php:96
+#: app/Module/UpcomingAnniversariesModule.php:100
 msgid "Upcoming events"
 msgstr "आने वाले कार्यक्रम"
 
@@ -15481,7 +15495,7 @@ msgstr "इस इमेज को चार्ट के लिए और व�
 #: resources/views/admin/changes-log.phtml:119
 #: resources/views/admin/site-logs.phtml:60
 #: resources/views/admin/site-logs.phtml:110
-#: resources/views/modules/recent_changes/changes-table.phtml:31
+#: resources/views/modules/recent_changes/changes-table.phtml:49
 #: resources/views/pending-changes-page.phtml:53
 msgid "User"
 msgstr "यूज़र"
@@ -15518,7 +15532,7 @@ msgstr "यूज़र वेरिफिकेशन"
 #: resources/views/emails/register-notify-text.phtml:11
 #: resources/views/login-page.phtml:34
 #: resources/views/modules/login_block/sign-in.phtml:19
-#: resources/views/modules/todo/research-tasks.phtml:24
+#: resources/views/modules/todo/research-tasks.phtml:35
 #: resources/views/password-reset-page.phtml:25
 #: resources/views/register-page.phtml:58
 #: resources/views/setup/step-5-administrator.phtml:48
@@ -15645,7 +15659,7 @@ msgid "Version"
 msgstr "वर्शन"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:2399
+#: app/GedcomTag.php:2405
 msgid "Video"
 msgstr "वीडियो"
 
@@ -15870,7 +15884,7 @@ msgid "Widower"
 msgstr "विधुर"
 
 #. I18N: gedcom tag WIFE
-#: app/Functions/FunctionsPrint.php:294 app/GedcomTag.php:1076
+#: app/Functions/FunctionsPrint.php:298 app/GedcomTag.php:1076
 #: app/Http/Controllers/EditIndividualController.php:610
 #: resources/views/edit/change-family-members.phtml:20
 #: resources/views/edit/change-family-members.phtml:35
@@ -15931,6 +15945,7 @@ msgstr "गवाह"
 msgid "Wives take their husband’s surname."
 msgstr "पत्नियाँ अपने पति का कुलनाम अपनाती हैं।"
 
+#: app/Http/Controllers/Admin/LocationController.php:297
 #: resources/views/modules/place-hierarchy/page.phtml:29
 #: resources/views/modules/place-hierarchy/page.phtml:32
 #: resources/views/modules/statistics-chart/custom.phtml:171
@@ -15938,12 +15953,12 @@ msgid "World"
 msgstr "विश्व"
 
 #. I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
-#: app/GedcomTag.php:2080 resources/views/modules/yahrzeit/table.phtml:31
+#: app/GedcomTag.php:2080 resources/views/modules/yahrzeit/table.phtml:35
 msgid "Yahrzeit"
 msgstr "बरसी"
 
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
-#: app/Module/YahrzeitModule.php:56
+#: app/Module/YahrzeitModule.php:61
 msgid "Yahrzeiten"
 msgstr "यह्रज़ेंटेन"
 
@@ -15993,8 +16008,8 @@ msgid "You can choose whether to appear in the list of users who are currently s
 msgstr "आप चुन सकते हैं कि वर्तमान में साइन-इन करने वाले यूज़र्स की लिस्ट में प्रकट होना है या नहीं।"
 
 #. I18N: %s is a URL
-#: resources/views/edit/raw-gedcom-fact.phtml:17
-#: resources/views/edit/raw-gedcom-record.phtml:18
+#: resources/views/edit/raw-gedcom-fact.phtml:18
+#: resources/views/edit/raw-gedcom-record.phtml:19
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "%s से आप GEDCOM विनिर्देश की एक कॉपी डाउनलोड कर सकते हैं।"
@@ -16156,7 +16171,7 @@ msgstr "%s पर आपका रजिस्ट्रैशन"
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "आपके यूज़र अकाउंट में “स्वचालित रूप से परिवर्तनों का स्वीकार” सक्षम नहीं है। आप केवल एक बार में एक रिकॉर्ड बदल पाएंगे।"
 
-#: app/Services/ServerCheckService.php:197
+#: app/Services/ServerCheckService.php:198
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr "आपका वेब सर्वर PHP version %s का उपयोग कर रहा है, जिसे अब सिक्युरिटी अपडेट नहीं मिल रहे हैं। आपको जल्द से जल्द किसी नए वर्शन में अपग्रेड करना चाहिए।"
@@ -16171,12 +16186,12 @@ msgstr "जाम्बिया"
 msgid "Zimbabwe"
 msgstr "जिम्बाब्वे"
 
-#: resources/views/admin/location-edit.phtml:66
+#: resources/views/admin/location-edit.phtml:65
 #: resources/views/modules/fanchart/page.phtml:44
 msgid "Zoom"
 msgstr "ज़ूम"
 
-#: resources/views/admin/location-edit.phtml:135
+#: resources/views/admin/location-edit.phtml:134
 #: resources/views/modules/pedigree-map/chart.phtml:95
 #: resources/views/modules/place-hierarchy/map.phtml:92
 #: resources/views/modules/places/tab.phtml:85
@@ -16188,7 +16203,7 @@ msgstr "ज़ूम इन"
 msgid "Zoom level"
 msgstr "ज़ूम लेवल"
 
-#: resources/views/admin/location-edit.phtml:136
+#: resources/views/admin/location-edit.phtml:135
 #: resources/views/modules/pedigree-map/chart.phtml:96
 #: resources/views/modules/place-hierarchy/map.phtml:93
 #: resources/views/modules/places/tab.phtml:86
@@ -16230,7 +16245,7 @@ msgstr "स्वीकृत"
 #. I18N: A button label.
 #: resources/views/admin/trees-privacy.phtml:224
 #: resources/views/admin/webtrees1-thumbnails-form.phtml:18
-#: resources/views/edit/add-fact-row.phtml:39
+#: resources/views/edit/add-fact-row.phtml:41
 #: resources/views/edit/paste-fact-row.phtml:40
 #: resources/views/modules/census-assistant.phtml:60
 #: resources/views/modules/lifespans-chart/page.phtml:66
@@ -16270,7 +16285,7 @@ msgstr "दत्तक"
 msgid "after %s"
 msgstr "%s के बाद"
 
-#: app/Functions/FunctionsPrint.php:276
+#: app/Functions/FunctionsPrint.php:280
 msgid "after death"
 msgstr "मृत्यु के बाद"
 
@@ -16480,7 +16495,7 @@ msgid "brother/sister-in-law"
 msgstr "साले/साली"
 
 #. I18N: An option in a list-box
-#: app/Module/TopSurnamesModule.php:235
+#: app/Module/TopSurnamesModule.php:239
 msgid "bullet list"
 msgstr "गोली लिस्ट"
 
@@ -16503,7 +16518,7 @@ msgstr "परिकलित %s"
 #: resources/views/admin/broadcast.phtml:61
 #: resources/views/admin/components.phtml:144
 #: resources/views/admin/email-page.phtml:59
-#: resources/views/admin/location-edit.phtml:82
+#: resources/views/admin/location-edit.phtml:81
 #: resources/views/admin/site-mail.phtml:250
 #: resources/views/admin/site-preferences.phtml:95
 #: resources/views/admin/site-registration.phtml:81
@@ -16517,8 +16532,8 @@ msgstr "परिकलित %s"
 #: resources/views/edit/link-child-to-family.phtml:44
 #: resources/views/edit/link-spouse-to-individual.phtml:36
 #: resources/views/edit/new-individual.phtml:322
-#: resources/views/edit/raw-gedcom-fact.phtml:35
-#: resources/views/edit/raw-gedcom-record.phtml:61
+#: resources/views/edit/raw-gedcom-fact.phtml:36
+#: resources/views/edit/raw-gedcom-record.phtml:62
 #: resources/views/edit/reorder-children.phtml:46
 #: resources/views/edit/reorder-families.phtml:100
 #: resources/views/edit/reorder-media.phtml:39
@@ -16531,7 +16546,7 @@ msgstr "परिकलित %s"
 #: resources/views/modules/clippings/download.phtml:65
 #: resources/views/modules/custom-css-js/edit.phtml:45
 #: resources/views/modules/edit-block-config.phtml:29
-#: resources/views/modules/favorites/favorites.phtml:145
+#: resources/views/modules/favorites/favorites.phtml:171
 #: resources/views/modules/gedcom_news/edit.phtml:46
 #: resources/views/modules/stories/edit.phtml:65
 #: resources/views/modules/user_blog/edit.phtml:46
@@ -16585,7 +16600,7 @@ msgid "colors"
 msgstr "कलर्स"
 
 #. I18N: An option in a list-box
-#: app/Module/TopSurnamesModule.php:237
+#: app/Module/TopSurnamesModule.php:241
 msgid "compact list"
 msgstr "ठोस लिस्ट"
 
@@ -16658,8 +16673,8 @@ msgstr "समधी/समधन"
 msgid "death"
 msgstr "मृत्यु"
 
-#: resources/views/admin/location-edit.phtml:50
-#: resources/views/admin/location-edit.phtml:61
+#: resources/views/admin/location-edit.phtml:49
+#: resources/views/admin/location-edit.phtml:60
 msgid "degrees"
 msgstr "डिग्री"
 
@@ -16808,7 +16823,7 @@ msgstr "पिछली-पत्नी"
 msgid "export file"
 msgstr "फ़ाइल निर्यात करें"
 
-#: app/Http/Controllers/AdminTreesController.php:750
+#: app/Http/Controllers/AdminTreesController.php:752
 #: resources/xml/reports/fact_sources.xml:6
 msgid "facts"
 msgstr "तथ्य"
@@ -18833,15 +18848,15 @@ msgstr "बाएं"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
-#: app/Http/Controllers/AdminTreesController.php:727
-#: app/Module/OnThisDayModule.php:238 app/Module/RecentChangesModule.php:184
+#: app/Http/Controllers/AdminTreesController.php:729
+#: app/Module/OnThisDayModule.php:247 app/Module/RecentChangesModule.php:221
 #: app/Module/TopGivenNamesModule.php:182
-#: app/Module/UpcomingAnniversariesModule.php:259
-#: app/Module/YahrzeitModule.php:242
+#: app/Module/UpcomingAnniversariesModule.php:268
+#: app/Module/YahrzeitModule.php:252
 msgid "list"
 msgstr "लिस्ट"
 
-#: app/Http/Controllers/Admin/LocationController.php:761
+#: app/Http/Controllers/Admin/LocationController.php:772
 #, php-format
 msgid "locations updated: %s, locations added: %s"
 msgstr "स्थान अपडेट किए गए: %s, स्थान जोड़े गए: %s"
@@ -18856,7 +18871,7 @@ msgid "managers"
 msgstr "मैनेजर्स"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
-#: app/Http/Controllers/AdminTreesController.php:745
+#: app/Http/Controllers/AdminTreesController.php:747
 msgid "markdown"
 msgstr "मार्कडाउन"
 
@@ -19200,8 +19215,8 @@ msgid "no"
 msgstr "नहीं"
 
 #. I18N: None of the other options
-#: app/Http/Controllers/AdminTreesController.php:743
-#: app/Http/Controllers/AdminTreesController.php:749
+#: app/Http/Controllers/AdminTreesController.php:745
+#: app/Http/Controllers/AdminTreesController.php:751
 #: app/Module/RelationshipsChartModule.php:456
 #: app/Services/EmailService.php:221
 #: resources/views/modules/statistics-chart/custom.phtml:75
@@ -19233,7 +19248,7 @@ msgstr "संख्या"
 msgid "of"
 msgstr ""
 
-#: app/Functions/FunctionsPrint.php:274
+#: app/Functions/FunctionsPrint.php:278
 msgid "on the date of death"
 msgstr "मृत्यु के समय"
 
@@ -19317,7 +19332,7 @@ msgstr "मुख्य सबूत"
 msgid "questionable evidence"
 msgstr "संदिग्ध सबूत"
 
-#: app/Http/Controllers/AdminTreesController.php:751
+#: app/Http/Controllers/AdminTreesController.php:753
 #: resources/xml/reports/fact_sources.xml:6
 msgid "records"
 msgstr "रिकार्ड"
@@ -19383,7 +19398,7 @@ msgstr "दाएं"
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:31
 #: resources/views/admin/components.phtml:139
-#: resources/views/admin/location-edit.phtml:78
+#: resources/views/admin/location-edit.phtml:77
 #: resources/views/admin/map-provider.phtml:55
 #: resources/views/admin/merge-records-step-2.phtml:165
 #: resources/views/admin/modules.phtml:267
@@ -19402,8 +19417,8 @@ msgstr "दाएं"
 #: resources/views/edit/link-child-to-family.phtml:39
 #: resources/views/edit/link-spouse-to-individual.phtml:31
 #: resources/views/edit/new-individual.phtml:310
-#: resources/views/edit/raw-gedcom-fact.phtml:31
-#: resources/views/edit/raw-gedcom-record.phtml:57
+#: resources/views/edit/raw-gedcom-fact.phtml:32
+#: resources/views/edit/raw-gedcom-record.phtml:58
 #: resources/views/edit/reorder-children.phtml:36
 #: resources/views/edit/reorder-families.phtml:95
 #: resources/views/edit/reorder-media.phtml:34
@@ -19414,7 +19429,7 @@ msgstr "दाएं"
 #: resources/views/modules/custom-css-js/edit.phtml:40
 #: resources/views/modules/edit-block-config.phtml:25
 #: resources/views/modules/faq/edit.phtml:77
-#: resources/views/modules/favorites/favorites.phtml:149
+#: resources/views/modules/favorites/favorites.phtml:175
 #: resources/views/modules/gedcom_news/edit.phtml:42
 #: resources/views/modules/relationships-chart/config.phtml:46
 #: resources/views/modules/sitemap/config.phtml:28
@@ -19651,6 +19666,13 @@ msgstr "सातवें कज़िन"
 msgid "show"
 msgstr "दिखाएं"
 
+#. I18N: button label
+#: resources/views/lists/anniversaries-list.phtml:23
+#: resources/views/modules/recent_changes/changes-list.phtml:21
+#: resources/views/modules/yahrzeit/list.phtml:20
+msgid "show more"
+msgstr ""
+
 #: resources/views/modules/statistics-chart/custom.phtml:200
 msgid "show the chart"
 msgstr "चार्ट दिखाएं"
@@ -19768,8 +19790,8 @@ msgid "son/daughter-in-law"
 msgstr "दामाद/बहू"
 
 #. I18N: An option in a list-box
-#: app/Module/OnThisDayModule.php:247
-#: app/Module/UpcomingAnniversariesModule.php:268
+#: app/Module/OnThisDayModule.php:256
+#: app/Module/UpcomingAnniversariesModule.php:277
 #: resources/xml/reports/change_report.xml:7
 msgid "sort by date"
 msgstr "तारीख द्वारा तरतीब"
@@ -19800,18 +19822,18 @@ msgid "sort by date of marriage"
 msgstr "विवाह तिथि के अनुसार रखें"
 
 #. I18N: An option in a list-box
-#: app/Module/RecentChangesModule.php:195
+#: app/Module/RecentChangesModule.php:232
 msgid "sort by date, newest first"
 msgstr "दिनांक अनुसार, नया सब से पहले"
 
 #. I18N: An option in a list-box
-#: app/Module/RecentChangesModule.php:193
+#: app/Module/RecentChangesModule.php:230
 msgid "sort by date, oldest first"
 msgstr "दिनांक अनुसार, पुराना सब से पहले"
 
 #. I18N: An option in a list-box
-#: app/Module/OnThisDayModule.php:245 app/Module/RecentChangesModule.php:191
-#: app/Module/UpcomingAnniversariesModule.php:266
+#: app/Module/OnThisDayModule.php:254 app/Module/RecentChangesModule.php:228
+#: app/Module/UpcomingAnniversariesModule.php:275
 #: resources/xml/reports/bdm_report.xml:11
 #: resources/xml/reports/birth_report.xml:9
 #: resources/xml/reports/cemetery_report.xml:6
@@ -19941,18 +19963,18 @@ msgstr "सौतेले बेटे"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
-#: app/Http/Controllers/AdminTreesController.php:729
-#: app/Module/OnThisDayModule.php:240 app/Module/RecentChangesModule.php:186
-#: app/Module/TopGivenNamesModule.php:184 app/Module/TopSurnamesModule.php:239
-#: app/Module/UpcomingAnniversariesModule.php:261
-#: app/Module/YahrzeitModule.php:244
+#: app/Http/Controllers/AdminTreesController.php:731
+#: app/Module/OnThisDayModule.php:249 app/Module/RecentChangesModule.php:223
+#: app/Module/TopGivenNamesModule.php:184 app/Module/TopSurnamesModule.php:243
+#: app/Module/UpcomingAnniversariesModule.php:270
+#: app/Module/YahrzeitModule.php:254
 msgid "table"
 msgstr "टेबल"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
-#: app/Http/Controllers/AdminTreesController.php:731
-#: app/Module/TopSurnamesModule.php:241
+#: app/Http/Controllers/AdminTreesController.php:733
+#: app/Module/TopSurnamesModule.php:245
 msgid "tag cloud"
 msgstr "टैग क्लाउड"
 
@@ -20294,7 +20316,7 @@ msgstr "“%s” को हटा दिया गया है।"
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
 
-#: app/Functions/FunctionsPrint.php:89 app/Note.php:160
+#: app/Functions/FunctionsPrint.php:93 app/Note.php:160
 #: app/Report/ReportParserGenerate.php:985
 #: app/Report/ReportParserGenerate.php:1080
 msgid "…"
@@ -20332,6 +20354,12 @@ msgstr "…"
 #~ msgid_plural "%s individuals with events in %s between %s and %s"
 #~ msgstr[0] "%s व्यक्ती %s में घटनाओं वाले, %s और %s के बीच"
 #~ msgstr[1] "%s व्यक्ती %s में घटनाओं वाले, %s और %s के बीच"
+
+#~ msgid "Add a brother or sister"
+#~ msgstr "कोई भाई या बहन जोड़ें"
+
+#~ msgid "Add a son or daughter"
+#~ msgstr "कोई बेटा या बेटी जोड़ें"
 
 #~ msgid "Add an associate"
 #~ msgstr "एक सहयोगी जोड़ें"

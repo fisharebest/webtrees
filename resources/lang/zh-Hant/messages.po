@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Chinese (Traditional) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-01-20 17:57+0000\n"
+"POT-Creation-Date: 2020-02-03 09:12+0000\n"
 "PO-Revision-Date: 2020-01-16 23:23+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hant/>\n"
@@ -51,7 +51,7 @@ msgstr " 在 "
 msgid "#%s"
 msgstr "#%s"
 
-#: app/Http/Controllers/AdminTreesController.php:1541
+#: app/Http/Controllers/AdminTreesController.php:1544
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
 msgstr "%1$s %2$s 有一個 %3$s 聯繫 %4$s。"
@@ -89,21 +89,21 @@ msgstr "不存在 %1$s"
 # I18N: placeholders are GEDCOM XREFs, such as R123
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/Admin/UsersController.php:236
-#: app/Http/Controllers/AdminTreesController.php:276
+#: app/Http/Controllers/AdminTreesController.php:278
 #, php-format
 msgid "%1$s does not exist."
 msgstr "%1$s 不存在。"
 
 # I18N: placeholders are GEDCOM XREFs, such as R123
 #. I18N: placeholders are GEDCOM XREFs, such as R123
-#: app/Http/Controllers/AdminTreesController.php:273
+#: app/Http/Controllers/AdminTreesController.php:275
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
 msgstr "%1$s 不存在。你是想 %2$s?"
 
 # I18N: %1$s and %2$s are internal ID numbers such as R123
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
-#: app/Http/Controllers/AdminTreesController.php:306
+#: app/Http/Controllers/AdminTreesController.php:308
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
 msgstr "%1$s 沒有反向鏈接到 %2$s ."
@@ -118,7 +118,7 @@ msgstr[0] "%1$s 文件將在 %2$s 秒提取完成。"
 
 # I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
-#: app/Http/Controllers/AdminTreesController.php:297
+#: app/Http/Controllers/AdminTreesController.php:299
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
 msgstr "%1$s 是 %2$s 而不是預計的 %3$s 。"
@@ -190,31 +190,31 @@ msgstr "公元前 %s"
 msgid "%s KB"
 msgstr "%s KB"
 
-#: app/Module/ClippingsCartModule.php:603
+#: app/Module/ClippingsCartModule.php:605
 #, php-format
 msgid "%s and her ancestors"
 msgstr "%s 和她的祖先"
 
-#: app/Module/ClippingsCartModule.php:613
+#: app/Module/ClippingsCartModule.php:615
 #, php-format
 msgid "%s and his ancestors"
 msgstr "%s和他的祖先"
 
-#: app/Module/ClippingsCartModule.php:952
+#: app/Module/ClippingsCartModule.php:954
 #, php-format
 msgid "%s and the individuals that reference it."
 msgstr "%s和引用它的個人。"
 
 # I18N: %s is a family (husband + wife)
 #. I18N: %s is a family (husband + wife)
-#: app/Module/ClippingsCartModule.php:463
+#: app/Module/ClippingsCartModule.php:465
 #, php-format
 msgid "%s and their children"
 msgstr "%s和她的孩子們"
 
 # I18N: %s is a family (husband + wife)
 #. I18N: %s is a family (husband + wife)
-#: app/Module/ClippingsCartModule.php:465
+#: app/Module/ClippingsCartModule.php:467
 #, php-format
 msgid "%s and their descendants"
 msgstr "%s和他們的後代"
@@ -279,7 +279,7 @@ msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
 msgstr[0] "%s的個人信息已經更新完畢。"
 
-#: app/Http/Controllers/Admin/LocationController.php:879
+#: app/Http/Controllers/Admin/LocationController.php:890
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
@@ -294,7 +294,7 @@ msgstr[0] "%s 信息"
 # I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:141 app/Functions/FunctionsDate.php:58
-#: resources/views/modules/relatives/family.phtml:179
+#: resources/views/modules/relatives/family.phtml:183
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
@@ -385,7 +385,7 @@ msgstr[0] "%s 週"
 # I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:136 app/Functions/FunctionsDate.php:56
-#: resources/views/modules/relatives/family.phtml:177
+#: resources/views/modules/relatives/family.phtml:181
 #: resources/views/modules/statistics-chart/custom.phtml:133
 #: resources/views/modules/statistics-chart/custom.phtml:142
 #, php-format
@@ -394,7 +394,7 @@ msgid_plural "%s years"
 msgstr[0] "%s 歲"
 
 #: app/Http/Controllers/CalendarController.php:537
-#: resources/views/modules/yahrzeit/list.phtml:15
+#: resources/views/modules/yahrzeit/list.phtml:44
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s 週年紀念"
@@ -439,48 +439,48 @@ msgstr "AD&nbsp;%s"
 msgid "%s+"
 msgstr "%s+"
 
-#: app/Module/ClippingsCartModule.php:604
+#: app/Module/ClippingsCartModule.php:606
 #, php-format
 msgid "%s, her ancestors and their families"
 msgstr "%s，她的祖先和他們的家人"
 
-#: app/Module/ClippingsCartModule.php:601
+#: app/Module/ClippingsCartModule.php:603
 #, php-format
 msgid "%s, her parents and siblings"
 msgstr "%s，她的父母和兄弟姐妹"
 
-#: app/Module/ClippingsCartModule.php:602
+#: app/Module/ClippingsCartModule.php:604
 #, php-format
 msgid "%s, her spouses and children"
 msgstr "%s，她的配偶及子女"
 
-#: app/Module/ClippingsCartModule.php:605
+#: app/Module/ClippingsCartModule.php:607
 #, php-format
 msgid "%s, her spouses and descendants"
 msgstr "%s，她的配偶和後代"
 
-#: app/Module/ClippingsCartModule.php:614
+#: app/Module/ClippingsCartModule.php:616
 #, php-format
 msgid "%s, his ancestors and their families"
 msgstr "%s，他的祖先和他們的家庭"
 
-#: app/Module/ClippingsCartModule.php:611
+#: app/Module/ClippingsCartModule.php:613
 #, php-format
 msgid "%s, his parents and siblings"
 msgstr "%s，他的父母和兄弟姐妹"
 
-#: app/Module/ClippingsCartModule.php:612
+#: app/Module/ClippingsCartModule.php:614
 #, php-format
 msgid "%s, his spouses and children"
 msgstr "%s，他的配偶和子女"
 
-#: app/Module/ClippingsCartModule.php:615
+#: app/Module/ClippingsCartModule.php:617
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s，他的配偶和後代"
 
 #: app/Module/UserMessagesModule.php:160
-#: resources/views/edit/add-fact-row.phtml:23
+#: resources/views/edit/add-fact-row.phtml:25
 msgid "&lt;select&gt;"
 msgstr "&lt; 選擇 &gt;"
 
@@ -642,7 +642,7 @@ msgid "9th"
 msgstr "九世紀"
 
 #: app/Http/Controllers/Admin/UsersController.php:440
-#: app/Http/Controllers/AdminTreesController.php:1800
+#: app/Http/Controllers/AdminTreesController.php:1803
 msgid "<default theme>"
 msgstr "<默認主題>"
 
@@ -799,7 +799,7 @@ msgstr "媒體對象列表。"
 
 # I18N: Description of the “Recent changes” module
 #. I18N: Description of the “Recent changes” module
-#: app/Module/RecentChangesModule.php:62
+#: app/Module/RecentChangesModule.php:88
 msgid "A list of records that have been updated recently."
 msgstr "已更新的最近記錄表。"
 
@@ -828,25 +828,25 @@ msgstr ""
 
 # I18N: Description of “Research tasks” module
 #. I18N: Description of “Research tasks” module
-#: app/Module/ResearchTaskModule.php:65
+#: app/Module/ResearchTaskModule.php:69
 msgid "A list of tasks and activities that are linked to the family tree."
 msgstr "與家譜有關的任務和活動清單。"
 
 # I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
-#: app/Module/YahrzeitModule.php:67
+#: app/Module/YahrzeitModule.php:72
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
 msgstr "即將到來的紀念日。"
 
 # I18N: Description of the “On this day” module
 #. I18N: Description of the “On this day” module
-#: app/Module/OnThisDayModule.php:97
+#: app/Module/OnThisDayModule.php:101
 msgid "A list of the anniversaries that occur today."
 msgstr "列出每年的今日事件。"
 
 # I18N: Description of the “Upcoming events” module
 #. I18N: Description of the “Upcoming events” module
-#: app/Module/UpcomingAnniversariesModule.php:107
+#: app/Module/UpcomingAnniversariesModule.php:111
 msgid "A list of the anniversaries that will occur in the near future."
 msgstr "列出即將到來的紀念日。"
 
@@ -1296,27 +1296,29 @@ msgctxt "NOMINATIVE"
 msgid "Adar II"
 msgstr "第六月"
 
-#: app/Http/Controllers/Admin/LocationController.php:306
+#: app/Http/Controllers/Admin/LocationController.php:316
+#: app/Http/Controllers/Admin/LocationController.php:317
 msgid "Add"
 msgstr "添加"
 
-#: app/Module/ClippingsCartModule.php:440
-#: app/Module/ClippingsCartModule.php:578
-#: app/Module/ClippingsCartModule.php:726
-#: app/Module/ClippingsCartModule.php:794
-#: app/Module/ClippingsCartModule.php:862
-#: app/Module/ClippingsCartModule.php:930
+#: app/Module/ClippingsCartModule.php:442
+#: app/Module/ClippingsCartModule.php:580
+#: app/Module/ClippingsCartModule.php:728
+#: app/Module/ClippingsCartModule.php:796
+#: app/Module/ClippingsCartModule.php:864
+#: app/Module/ClippingsCartModule.php:932
 #, php-format
 msgid "Add %s to the clippings cart"
 msgstr "添加 %s 到收集箱"
 
-#: resources/views/modules/relatives/family.phtml:210
-msgid "Add a brother or sister"
-msgstr "添加一個兄弟或姐妹"
+#: resources/views/modules/relatives/family.phtml:207
+msgid "Add a brother"
+msgstr ""
 
 #: app/Http/Controllers/EditFamilyController.php:57
 #: resources/views/family-page-children.phtml:35
 #: resources/views/family-page-menu.phtml:39
+#: resources/views/modules/relatives/family.phtml:215
 msgid "Add a child"
 msgstr "添加一個子女"
 
@@ -1325,7 +1327,11 @@ msgstr "添加一個子女"
 msgid "Add a child to create a one-parent family"
 msgstr "添加一個子女創建一個單親家庭"
 
-#: resources/views/edit/raw-gedcom-record.phtml:46
+#: resources/views/modules/relatives/family.phtml:211
+msgid "Add a daughter"
+msgstr ""
+
+#: resources/views/edit/raw-gedcom-record.phtml:47
 msgid "Add a fact"
 msgstr "添加一個事實"
 
@@ -1336,8 +1342,8 @@ msgstr "添加一個事實"
 msgid "Add a father"
 msgstr "添加父親"
 
-#: resources/views/modules/favorites/favorites.phtml:42
-#: resources/views/modules/favorites/favorites.phtml:52
+#: resources/views/modules/favorites/favorites.phtml:44
+#: resources/views/modules/favorites/favorites.phtml:54
 msgid "Add a favorite"
 msgstr "添加一個收藏"
 
@@ -1360,7 +1366,7 @@ msgid "Add a journal entry"
 msgstr "添加日記或新聞"
 
 #: app/Http/Controllers/EditMediaController.php:89
-#: resources/views/media-page.phtml:187
+#: resources/views/media-page.phtml:191
 #: resources/views/modals/add-media-file.phtml:10
 msgid "Add a media file"
 msgstr "添加多媒體"
@@ -1369,7 +1375,7 @@ msgstr "添加多媒體"
 #: resources/views/family-page.phtml:98
 #: resources/views/individual-page-menu.phtml:75
 #: resources/views/individual-page.phtml:87
-#: resources/views/source-page.phtml:88
+#: resources/views/source-page.phtml:92
 msgid "Add a media object"
 msgstr "添加新的多媒體"
 
@@ -1394,20 +1400,28 @@ msgstr "添加一個新聞文章"
 msgid "Add a note"
 msgstr "添加記錄"
 
-#: resources/views/media-page.phtml:177
+#: resources/views/media-page.phtml:181
 msgid "Add a restriction"
 msgstr "添加一個新的限制"
 
-#: resources/views/family-page.phtml:86 resources/views/media-page.phtml:167
+#: resources/views/family-page.phtml:86 resources/views/media-page.phtml:171
 #: resources/views/modules/notes/tab.phtml:55
 msgid "Add a shared note"
 msgstr "添加一個新的共享記錄"
 
-#: resources/views/modules/relatives/family.phtml:208
-msgid "Add a son or daughter"
-msgstr "添加一個兒子或女兒"
+#: resources/views/modules/relatives/family.phtml:215
+msgid "Add a sibling"
+msgstr ""
 
-#: resources/views/family-page.phtml:110 resources/views/media-page.phtml:157
+#: resources/views/modules/relatives/family.phtml:211
+msgid "Add a sister"
+msgstr ""
+
+#: resources/views/modules/relatives/family.phtml:207
+msgid "Add a son"
+msgstr ""
+
+#: resources/views/family-page.phtml:110 resources/views/media-page.phtml:161
 #: resources/views/modules/sources_tab/tab.phtml:43
 msgid "Add a source citation"
 msgstr "添加來源中源文"
@@ -1468,7 +1482,7 @@ msgstr ""
 msgid "Add individuals"
 msgstr "增加人"
 
-#: resources/views/modules/relatives/family.phtml:132
+#: resources/views/modules/relatives/family.phtml:136
 msgid "Add marriage details"
 msgstr "增加婚姻細節"
 
@@ -1522,7 +1536,7 @@ msgstr "添加GEDCOM多媒體路徑到文件名中"
 msgid "Add to TITLE header tag"
 msgstr "添加到標題頭部標籤"
 
-#: app/Module/ClippingsCartModule.php:176
+#: app/Module/ClippingsCartModule.php:178
 #: resources/views/modules/clippings/add-options.phtml:15
 msgid "Add to the clippings cart"
 msgstr "添加到收集箱"
@@ -1771,9 +1785,9 @@ msgstr "創建家譜後，您可以通過GEDCOM文件導入數據。"
 
 # I18N: gedcom tag AGE
 #. I18N: gedcom tag AGE
-#: app/Functions/FunctionsPrint.php:259 app/Functions/FunctionsPrint.php:261
 #: app/Functions/FunctionsPrint.php:263 app/Functions/FunctionsPrint.php:265
-#: app/Functions/FunctionsPrint.php:292 app/GedcomTag.php:477
+#: app/Functions/FunctionsPrint.php:267 app/Functions/FunctionsPrint.php:269
+#: app/Functions/FunctionsPrint.php:296 app/GedcomTag.php:477
 #: app/Statistics/Google/ChartAge.php:134
 #: app/Statistics/Google/ChartMarriageAge.php:157
 #: resources/views/lists/chart-by-age.phtml:27
@@ -2030,7 +2044,7 @@ msgstr "輸入普查的筆錄和鏈接到個人的另一種方式。"
 
 # I18N: Description of the “Theme change” module
 #. I18N: Description of the “Theme change” module
-#: app/Module/ThemeSelectModule.php:52
+#: app/Module/ThemeSelectModule.php:56
 msgid "An alternative way to select a new theme."
 msgstr "選擇一個新的主題的另一種方式。"
 
@@ -2069,7 +2083,7 @@ msgstr "顯示一個人所有的祖先和後代的互動樹。"
 msgid "An unexpected database error occurred."
 msgstr "數據庫發生意外錯誤。"
 
-#: resources/views/admin/location-edit.phtml:139
+#: resources/views/admin/location-edit.phtml:138
 #: resources/views/modules/pedigree-map/chart.phtml:171
 msgid "An unknown error occurred"
 msgstr "發生未知錯誤"
@@ -2131,11 +2145,11 @@ msgstr "安哥拉"
 msgid "Anguilla"
 msgstr "安圭拉島"
 
-#: resources/views/lists/anniversaries-table.phtml:27
+#: resources/views/lists/anniversaries-table.phtml:39
 #: resources/views/lists/families-table.phtml:256
 #: resources/views/lists/individuals-table.phtml:270
 #: resources/views/lists/individuals-table.phtml:280
-#: resources/views/modules/yahrzeit/table.phtml:26
+#: resources/views/modules/yahrzeit/table.phtml:30
 msgid "Anniversary"
 msgstr "紀念日"
 
@@ -2238,7 +2252,7 @@ msgstr "碧海藍天"
 
 #: app/Http/RequestHandlers/IndividualPage.php:256
 #: resources/views/edit/icon-fact-delete.phtml:8
-#: resources/views/media-page.phtml:99
+#: resources/views/media-page.phtml:103
 msgid "Are you sure you want to delete this fact?"
 msgstr "您確定要刪除這個事實？"
 
@@ -2269,7 +2283,7 @@ msgstr "確定要刪除“%s”嗎？"
 msgid "Are you sure you want to reject all the changes to this family tree?"
 msgstr "確定要撤銷對這個家譜所有的更改？"
 
-#: resources/views/modules/favorites/favorites.phtml:33
+#: resources/views/modules/favorites/favorites.phtml:35
 msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "你確定你想從你的名單收藏中刪除該項目嗎？"
 
@@ -2386,7 +2400,7 @@ msgstr "男隨從"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2354
+#: app/GedcomTag.php:2360
 msgid "Audio"
 msgstr "錄音"
 
@@ -2808,7 +2822,7 @@ msgstr "比林斯，蒙大納"
 msgid "Binary data object"
 msgstr "數碼資料"
 
-#: app/Functions/FunctionsPrint.php:358 app/Functions/FunctionsPrint.php:360
+#: app/Functions/FunctionsPrint.php:362 app/Functions/FunctionsPrint.php:364
 msgid "Bing Maps™"
 msgstr "㣲軟地圖服務"
 
@@ -3122,7 +3136,7 @@ msgstr "玻利維亞"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2357
+#: app/GedcomTag.php:2363
 msgid "Book"
 msgstr "書"
 
@@ -3564,7 +3578,7 @@ msgstr "加拉加斯，委內瑞拉"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2360
+#: app/GedcomTag.php:2366
 msgid "Card"
 msgstr "卡片"
 
@@ -3679,7 +3693,7 @@ msgstr "世紀"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2363
+#: app/GedcomTag.php:2369
 msgid "Certificate"
 msgstr "證書"
 
@@ -3694,24 +3708,24 @@ msgstr "乍得"
 msgid "Change family members"
 msgstr "改變家庭成員"
 
-#: app/Http/RequestHandlers/TreePageEdit.php:66
+#: app/Http/RequestHandlers/TreePageEdit.php:70
 msgid "Change the “Home page” blocks"
 msgstr "更改“主頁”塊"
 
-#: app/Http/RequestHandlers/UserPageEdit.php:66
+#: app/Http/RequestHandlers/UserPageEdit.php:70
 msgid "Change the “My page” blocks"
 msgstr "更改“我的網頁”塊"
 
 # I18N: [a record was] Changed on <date/time>
 #. I18N: [a record was] Changed on <date/time>
-#: resources/views/modules/recent_changes/changes-list.phtml:16
+#: resources/views/modules/recent_changes/changes-list.phtml:47
 #, php-format
 msgid "Changed on %1$s"
 msgstr "%1$s 發生改變"
 
 # I18N: [a record was] Changed on <date/time> by <user>
 #. I18N: [a record was] Changed on <date/time> by <user>
-#: resources/views/modules/recent_changes/changes-list.phtml:14
+#: resources/views/modules/recent_changes/changes-list.phtml:45
 #, php-format
 msgid "Changed on %1$s by %2$s"
 msgstr "由 %2$s 修改 %1$s"
@@ -3726,7 +3740,7 @@ msgstr "由 %2$s 修改 %1$s"
 msgid "Changes"
 msgstr "變化"
 
-#: app/Module/RecentChangesModule.php:109
+#: app/Module/RecentChangesModule.php:146
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
@@ -3773,7 +3787,7 @@ msgstr "圖表類型"
 msgid "Charts"
 msgstr "圖表"
 
-#: app/Http/Controllers/AdminTreesController.php:311
+#: app/Http/Controllers/AdminTreesController.php:313
 #: resources/views/admin/trees.phtml:164
 msgid "Check for errors"
 msgstr "檢查錯誤"
@@ -3822,6 +3836,7 @@ msgstr "%s 孩子"
 #: resources/views/lists/families-table.phtml:261
 #: resources/views/lists/individuals-table.phtml:276
 #: resources/views/modules/pedigree-chart/previous.phtml:38
+#: resources/views/modules/relatives/family.phtml:202
 #: resources/xml/reports/family_group_report.xml:761
 #: resources/xml/reports/relative_ext_report.xml:115
 msgid "Children"
@@ -4048,13 +4063,13 @@ msgstr "清除，但尚未完成的"
 
 # I18N: Name of a module
 #. I18N: Name of a module
-#: app/Module/ClippingsCartModule.php:118
+#: app/Module/ClippingsCartModule.php:119
 msgid "Clippings cart"
 msgstr "收集箱"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2366
+#: app/GedcomTag.php:2372
 msgid "Coat of arms"
 msgstr "紋章"
 
@@ -4220,9 +4235,9 @@ msgid "Continued"
 msgstr "繼續"
 
 #: app/Http/Controllers/Admin/LocationController.php:115
-#: app/Http/Controllers/Admin/LocationController.php:297
+#: app/Http/Controllers/Admin/LocationController.php:307
 #: app/Http/RequestHandlers/ControlPanel.php:128
-#: app/Module/ModuleThemeTrait.php:227 app/Module/ModuleThemeTrait.php:231
+#: app/Module/ModuleThemeTrait.php:231 app/Module/ModuleThemeTrait.php:235
 #: resources/views/admin/analytics-edit.phtml:8
 #: resources/views/admin/broadcast.phtml:10
 #: resources/views/admin/changes-log.phtml:12
@@ -4367,7 +4382,7 @@ msgstr "無法驗證您輸入的信息。請確認後再試一次。"
 
 # I18N: Description of the “Hit counters” module
 #. I18N: Description of the “Hit counters” module
-#: app/Module/HitCountFooterModule.php:81
+#: app/Module/HitCountFooterModule.php:84
 msgid "Count the visits to each page"
 msgstr "每個頁面的訪問計數"
 
@@ -4594,11 +4609,11 @@ msgid "Custom"
 msgstr "定制"
 
 #: resources/views/calendar-page.phtml:179
-#: resources/views/edit/add-fact-row.phtml:33
+#: resources/views/edit/add-fact-row.phtml:35
 msgid "Custom event"
 msgstr "自定義事件"
 
-#: resources/views/edit/add-fact-row.phtml:30
+#: resources/views/edit/add-fact-row.phtml:32
 msgid "Custom fact"
 msgstr "自定義事實"
 
@@ -4612,7 +4627,7 @@ msgstr "自定義模塊"
 msgid "Custom welcome text"
 msgstr "自定義歡迎文本"
 
-#: app/Module/ModuleThemeTrait.php:207 app/Module/ModuleThemeTrait.php:211
+#: app/Module/ModuleThemeTrait.php:211 app/Module/ModuleThemeTrait.php:215
 msgid "Customize this page"
 msgstr "自定義此頁"
 
@@ -4658,10 +4673,6 @@ msgstr "達拉斯德克薩斯"
 msgid "Data"
 msgstr "資料"
 
-#: app/Http/Controllers/Admin/ModuleController.php:142
-msgid "Data Fixes"
-msgstr ""
-
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "Data controller"
 msgstr ""
@@ -4671,6 +4682,7 @@ msgstr ""
 msgid "Data fix"
 msgstr ""
 
+#: app/Http/Controllers/Admin/ModuleController.php:142
 #: app/Http/RequestHandlers/DataFixChoose.php:69
 #: app/Http/RequestHandlers/DataFixPage.php:91
 #: app/Http/RequestHandlers/HelpText.php:244
@@ -4724,8 +4736,8 @@ msgstr "數據庫用戶賬戶"
 #. I18N: gedcom tag DATE
 #: app/GedcomTag.php:651 app/Http/RequestHandlers/HelpText.php:193
 #: resources/views/help/date.phtml:15 resources/views/help/date.phtml:129
-#: resources/views/lists/anniversaries-table.phtml:23
-#: resources/views/modules/todo/research-tasks.phtml:18
+#: resources/views/lists/anniversaries-table.phtml:35
+#: resources/views/modules/todo/research-tasks.phtml:29
 #: resources/views/pending-changes-page.phtml:54
 #: resources/xml/reports/bdm_report.xml:132
 #: resources/xml/reports/bdm_report.xml:158
@@ -4951,7 +4963,7 @@ msgstr "去世的"
 #: resources/views/lists/individuals-table.phtml:213
 #: resources/views/lists/individuals-table.phtml:221
 #: resources/views/lists/individuals-table.phtml:278
-#: resources/views/modules/yahrzeit/table.phtml:24
+#: resources/views/modules/yahrzeit/table.phtml:28
 #: resources/xml/reports/ahnentafel_report.xml:458
 #: resources/xml/reports/bdm_report.xml:87
 #: resources/xml/reports/change_report.xml:102
@@ -5350,8 +5362,8 @@ msgstr "既視"
 #: resources/views/family-page-menu.phtml:53
 #: resources/views/gedcom-record-page-menu.phtml:19
 #: resources/views/individual-page-menu.phtml:94
-#: resources/views/media-page-menu.phtml:36 resources/views/media-page.phtml:99
-#: resources/views/media-page.phtml:102
+#: resources/views/media-page-menu.phtml:36
+#: resources/views/media-page.phtml:103 resources/views/media-page.phtml:106
 #: resources/views/modules/faq/config.phtml:47
 #: resources/views/modules/gedcom_news/list.phtml:35
 #: resources/views/modules/stories/config.phtml:38
@@ -5679,7 +5691,7 @@ msgstr "不用地圖"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2369
+#: app/GedcomTag.php:2375
 msgid "Document"
 msgstr "文件"
 
@@ -5699,12 +5711,12 @@ msgstr "多米尼加"
 msgid "Dominican Republic"
 msgstr "多米尼加共和國"
 
-#: app/Module/PedigreeChartModule.php:382
+#: app/Module/PedigreeChartModule.php:393
 msgid "Down"
 msgstr "長輩在下"
 
-#: app/Module/ClippingsCartModule.php:186
-#: app/Module/ClippingsCartModule.php:344
+#: app/Module/ClippingsCartModule.php:188
+#: app/Module/ClippingsCartModule.php:346
 msgid "Download"
 msgstr "下載"
 
@@ -5713,7 +5725,7 @@ msgstr "下載"
 msgid "Download %s…"
 msgstr "下載 %s…"
 
-#: resources/views/media-page.phtml:134
+#: resources/views/media-page.phtml:138
 msgid "Download file"
 msgstr "下載文件"
 
@@ -5784,8 +5796,8 @@ msgid "Ecuador"
 msgstr "厄瓜多爾"
 
 #: app/Functions/FunctionsPrintFacts.php:795
-#: app/Http/Controllers/Admin/LocationController.php:308
-#: app/Http/Controllers/Admin/LocationController.php:309
+#: app/Http/Controllers/Admin/LocationController.php:319
+#: app/Http/Controllers/Admin/LocationController.php:320
 #: resources/views/admin/locations.phtml:20
 #: resources/views/admin/locations.phtml:68
 #: resources/views/admin/locations.phtml:71
@@ -5793,13 +5805,13 @@ msgstr "厄瓜多爾"
 #: resources/views/admin/users.phtml:18
 #: resources/views/edit/icon-fact-edit.phtml:8
 #: resources/views/edit/icon-fact-edit.phtml:10
-#: resources/views/media-page.phtml:91 resources/views/media-page.phtml:94
+#: resources/views/media-page.phtml:95 resources/views/media-page.phtml:98
 #: resources/views/modules/faq/config.phtml:46
 #: resources/views/modules/gedcom_news/list.phtml:31
 #: resources/views/modules/stories/config.phtml:37
 #: resources/views/modules/stories/config.phtml:59
 #: resources/views/modules/user_blog/list.phtml:31
-#: resources/views/note-page.phtml:82 resources/views/note-page.phtml:85
+#: resources/views/note-page.phtml:87 resources/views/note-page.phtml:90
 msgid "Edit"
 msgstr "編輯"
 
@@ -5901,7 +5913,7 @@ msgstr "薩爾瓦多"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2372
+#: app/GedcomTag.php:2378
 msgid "Electronic"
 msgstr "電子文件"
 
@@ -5993,7 +6005,7 @@ msgctxt "MALE"
 msgid "Employer"
 msgstr "男雇主"
 
-#: app/Module/ClippingsCartModule.php:180
+#: app/Module/ClippingsCartModule.php:182
 msgid "Empty the clippings cart"
 msgstr "清空收集箱"
 
@@ -6035,7 +6047,7 @@ msgstr "訂婚"
 msgid "England"
 msgstr "英格蘭"
 
-#: resources/views/modules/favorites/favorites.phtml:138
+#: resources/views/modules/favorites/favorites.phtml:163
 msgid "Enter an optional note about this favorite"
 msgstr "輸入這個收藏的備註"
 
@@ -6055,7 +6067,7 @@ msgstr "赤道幾內亞"
 msgid "Eritrea"
 msgstr "厄立特里亞"
 
-#: app/Http/Controllers/GedcomFileController.php:189
+#: app/Http/Controllers/GedcomFileController.php:190
 #, php-format
 msgid "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
 msgstr "錯誤: GEDCOM轉換文件從編碼 %s 到utf-8編碼目前不支持。"
@@ -6117,7 +6129,7 @@ msgstr "歐洲"
 
 # I18N: gedcom tag EVEN
 #. I18N: gedcom tag EVEN
-#: app/GedcomTag.php:716 resources/views/lists/anniversaries-table.phtml:30
+#: app/GedcomTag.php:716 resources/views/lists/anniversaries-table.phtml:42
 #: resources/xml/reports/fact_sources.xml:70
 #: resources/xml/reports/fact_sources.xml:157
 #: resources/xml/reports/missing_facts_report.xml:55
@@ -6300,7 +6312,7 @@ msgid "Fact icons"
 msgstr "事件圖標"
 
 #: resources/views/admin/trees-privacy.phtml:216
-#: resources/views/edit/add-fact-row.phtml:13
+#: resources/views/edit/add-fact-row.phtml:15
 msgid "Fact or event"
 msgstr "事實或事件"
 
@@ -6349,7 +6361,7 @@ msgstr "福克蘭群島"
 # I18N: Name of a module
 #. I18N: Name of a module/list
 #. I18N: Name of a module
-#: app/Http/Controllers/AdminTreesController.php:1706
+#: app/Http/Controllers/AdminTreesController.php:1709
 #: app/Http/Controllers/ListController.php:239
 #: app/Module/AncestorsChartModule.php:277
 #: app/Module/DescendancyChartModule.php:266 app/Module/FamilyListModule.php:48
@@ -6360,21 +6372,21 @@ msgstr "福克蘭群島"
 #: app/Module/StatisticsChartModule.php:732
 #: resources/views/admin/control-panel.phtml:175
 #: resources/views/admin/merge-records-step-1.phtml:24
-#: resources/views/gedcom-record-page.phtml:50
+#: resources/views/gedcom-record-page.phtml:52
 #: resources/views/lists/media-table.phtml:72
 #: resources/views/lists/notes-table.phtml:83
 #: resources/views/lists/sources-table.phtml:86
 #: resources/views/lists/submitters-table.phtml:62
-#: resources/views/media-page.phtml:64
+#: resources/views/media-page.phtml:66
 #: resources/views/modules/gedcom_stats/config.phtml:26
 #: resources/views/modules/gedcom_stats/statistics.phtml:67
 #: resources/views/modules/html/template-statistics.phtml:35
 #: resources/views/modules/place-hierarchy/events.phtml:16
 #: resources/views/modules/place-hierarchy/sidebar.phtml:48
-#: resources/views/note-page.phtml:50
+#: resources/views/note-page.phtml:52
 #: resources/views/search-general-page.phtml:41
-#: resources/views/search-results.phtml:24 resources/views/source-page.phtml:51
-#: resources/views/submitter-page.phtml:50
+#: resources/views/search-results.phtml:24 resources/views/source-page.phtml:53
+#: resources/views/submitter-page.phtml:52
 #: resources/xml/reports/fact_sources.xml:152
 #: resources/xml/reports/fact_sources.xml:314
 msgid "Families"
@@ -6395,9 +6407,9 @@ msgstr "家庭來源"
 #: resources/views/edit/link-child-to-family.phtml:15
 #: resources/views/modals/link-media-to-family.phtml:15
 #: resources/views/modules/family_nav/sidebar-family.phtml:76
-#: resources/views/modules/favorites/favorites.phtml:75
+#: resources/views/modules/favorites/favorites.phtml:80
 #: resources/views/modules/random_media/slide-show.phtml:61
-#: resources/views/modules/recent_changes/changes-table.phtml:45
+#: resources/views/modules/recent_changes/changes-table.phtml:63
 #: resources/views/modules/statistics-chart/custom.phtml:39
 #: resources/xml/reports/family_group_report.xml:3
 #: resources/xml/reports/family_group_report.xml:6
@@ -6470,8 +6482,8 @@ msgstr "%s 的家庭"
 msgid "Family tree"
 msgstr "家譜"
 
-#: app/Module/ClippingsCartModule.php:344
-#: app/Module/ClippingsCartModule.php:415
+#: app/Module/ClippingsCartModule.php:346
+#: app/Module/ClippingsCartModule.php:417
 msgid "Family tree clippings cart"
 msgstr "家譜收集箱功能"
 
@@ -6528,7 +6540,7 @@ msgstr "撫育父母家庭"
 msgid "Family with sealing parents"
 msgstr "密封父母家庭"
 
-#: app/Module/ModuleThemeTrait.php:177 resources/views/chart-box.phtml:35
+#: app/Module/ModuleThemeTrait.php:180 resources/views/chart-box.phtml:35
 msgid "Family with spouse"
 msgstr "配偶家庭"
 
@@ -6611,7 +6623,7 @@ msgstr "父親"
 msgid "Father: %s"
 msgstr "父親: %s"
 
-#: app/Functions/FunctionsPrint.php:178
+#: app/Functions/FunctionsPrint.php:182
 msgid "Father’s age"
 msgstr "父親的年齡"
 
@@ -6761,7 +6773,7 @@ msgstr "找到所有可能的關係"
 msgid "Find any relationship"
 msgstr "查找任何可能的關係"
 
-#: app/Http/Controllers/AdminTreesController.php:332
+#: app/Http/Controllers/AdminTreesController.php:334
 #: resources/views/admin/trees.phtml:148
 msgid "Find duplicates"
 msgstr "查找重複"
@@ -6810,7 +6822,7 @@ msgstr "第一條記錄"
 msgid "Fix name slashes and spaces"
 msgstr "修復姓名中的空格和斜杠"
 
-#: resources/views/admin/location-edit.phtml:34
+#: resources/views/admin/location-edit.phtml:33
 #: resources/views/admin/locations.phtml:19
 msgid "Flag"
 msgstr "標誌"
@@ -7208,14 +7220,14 @@ msgstr "家譜數據"
 msgid "General"
 msgstr "常規"
 
-#: app/Http/RequestHandlers/SearchGeneralPage.php:163
+#: app/Http/RequestHandlers/SearchGeneralPage.php:164
 #: app/Module/SearchMenuModule.php:100
 msgid "General search"
 msgstr "一般搜索"
 
 # I18N: Description of the “Sitemaps” module
 #. I18N: Description of the “Sitemaps” module
-#: app/Module/SiteMapModule.php:76
+#: app/Module/SiteMapModule.php:109
 msgid "Generate sitemap files for search engines."
 msgstr "為搜索引擎生成網站地圖文件。"
 
@@ -7261,7 +7273,7 @@ msgid "Geographic area"
 msgstr "地理區域"
 
 #: app/Http/Controllers/Admin/LocationController.php:113
-#: app/Http/Controllers/Admin/LocationController.php:298
+#: app/Http/Controllers/Admin/LocationController.php:308
 #: resources/views/admin/control-panel.phtml:643
 #: resources/views/admin/map-import-form.phtml:9
 msgid "Geographic data"
@@ -7372,7 +7384,7 @@ msgstr "教父母"
 msgid "Godson"
 msgstr "教子"
 
-#: app/Functions/FunctionsPrint.php:353 app/Functions/FunctionsPrint.php:355
+#: app/Functions/FunctionsPrint.php:357 app/Functions/FunctionsPrint.php:359
 msgid "Google Maps™"
 msgstr "谷歌地圖™"
 
@@ -7410,7 +7422,7 @@ msgstr "格陵蘭"
 
 # I18N: The gregorian calendar
 #. I18N: The gregorian calendar
-#: app/Date.php:229 app/Module/YahrzeitModule.php:249
+#: app/Date.php:229 app/Module/YahrzeitModule.php:259
 msgid "Gregorian"
 msgstr "陽曆"
 
@@ -7695,7 +7707,7 @@ msgstr "第二月"
 
 #: app/Functions/FunctionsEdit.php:126 app/Functions/FunctionsEdit.php:270
 #: app/Http/Controllers/AdminController.php:179
-#: app/Http/Controllers/AdminTreesController.php:759
+#: app/Http/Controllers/AdminTreesController.php:761
 #: resources/views/admin/trees-privacy.phtml:153
 msgid "Hide from everyone"
 msgstr "對所有人隱藏"
@@ -7731,7 +7743,7 @@ msgstr "歷史事實"
 # I18N: A configuration setting
 #. I18N: Name of a module
 #. I18N: A configuration setting
-#: app/Module/HitCountFooterModule.php:70
+#: app/Module/HitCountFooterModule.php:73
 #: resources/views/admin/trees-preferences.phtml:650
 msgid "Hit counters"
 msgstr "點擊數"
@@ -7802,7 +7814,7 @@ msgstr "匈牙利"
 
 # I18N: gedcom tag HUSB
 #. I18N: gedcom tag HUSB
-#: app/Functions/FunctionsPrint.php:293 app/GedcomTag.php:791
+#: app/Functions/FunctionsPrint.php:297 app/GedcomTag.php:791
 #: app/Http/Controllers/EditIndividualController.php:607
 #: resources/views/edit/change-family-members.phtml:18
 #: resources/views/edit/change-family-members.phtml:33
@@ -8002,7 +8014,7 @@ msgstr "遷入"
 msgid "Import"
 msgstr "導入"
 
-#: app/Http/Controllers/AdminTreesController.php:416
+#: app/Http/Controllers/AdminTreesController.php:418
 msgid "Import a GEDCOM file"
 msgstr "導入GEDCOM文件"
 
@@ -8015,7 +8027,7 @@ msgstr "導入家譜中的所有地點"
 msgid "Import custom thumbnails from webtrees version 1"
 msgstr "從webtrees版本1導入自定義縮略圖"
 
-#: app/Http/Controllers/Admin/LocationController.php:630
+#: app/Http/Controllers/Admin/LocationController.php:640
 msgid "Import geographic data"
 msgstr "導入地理數據"
 
@@ -8128,13 +8140,13 @@ msgstr "美國印第安納州印第安納波利斯"
 #: resources/views/modules/descendancy_chart/page.phtml:16
 #: resources/views/modules/family-book-chart/page.phtml:17
 #: resources/views/modules/fanchart/page.phtml:17
-#: resources/views/modules/favorites/favorites.phtml:63
+#: resources/views/modules/favorites/favorites.phtml:66
 #: resources/views/modules/hourglass-chart/page.phtml:17
 #: resources/views/modules/interactive-tree/page.phtml:17
 #: resources/views/modules/pedigree-chart/page.phtml:16
 #: resources/views/modules/pedigree-map/page.phtml:15
 #: resources/views/modules/random_media/slide-show.phtml:52
-#: resources/views/modules/recent_changes/changes-table.phtml:42
+#: resources/views/modules/recent_changes/changes-table.phtml:60
 #: resources/views/modules/statistics-chart/custom.phtml:23
 #: resources/views/modules/stories/config.phtml:35
 #: resources/views/modules/stories/edit.phtml:22
@@ -8186,7 +8198,7 @@ msgstr "最長壽"
 
 # I18N: Name of a module/list
 #. I18N: Name of a module/list
-#: app/Http/Controllers/AdminTreesController.php:1705
+#: app/Http/Controllers/AdminTreesController.php:1708
 #: app/Http/Controllers/ListController.php:241
 #: app/Module/AncestorsChartModule.php:276
 #: app/Module/DescendancyChartModule.php:265
@@ -8200,14 +8212,14 @@ msgstr "最長壽"
 #: app/Module/StatisticsChartModule.php:660
 #: resources/views/admin/control-panel.phtml:174
 #: resources/views/admin/merge-records-step-1.phtml:23
-#: resources/views/gedcom-record-page.phtml:44
+#: resources/views/gedcom-record-page.phtml:45
 #: resources/views/lists/given-names-table.phtml:24
 #: resources/views/lists/media-table.phtml:71
 #: resources/views/lists/notes-table.phtml:82
 #: resources/views/lists/sources-table.phtml:85
 #: resources/views/lists/submitters-table.phtml:61
 #: resources/views/lists/surnames-table.phtml:29
-#: resources/views/media-page.phtml:58
+#: resources/views/media-page.phtml:59
 #: resources/views/modules/census-assistant.phtml:55
 #: resources/views/modules/gedcom_stats/config.phtml:24
 #: resources/views/modules/gedcom_stats/statistics.phtml:23
@@ -8217,10 +8229,10 @@ msgstr "最長壽"
 #: resources/views/modules/random_media/config.phtml:12
 #: resources/views/modules/statistics-chart/custom.phtml:56
 #: resources/views/modules/statistics-chart/custom.phtml:152
-#: resources/views/note-page.phtml:44
+#: resources/views/note-page.phtml:45
 #: resources/views/search-general-page.phtml:34
-#: resources/views/search-results.phtml:13 resources/views/source-page.phtml:45
-#: resources/views/submitter-page.phtml:44
+#: resources/views/search-results.phtml:13 resources/views/source-page.phtml:46
+#: resources/views/submitter-page.phtml:45
 #: resources/xml/reports/fact_sources.xml:54
 #: resources/xml/reports/fact_sources.xml:258
 msgid "Individuals"
@@ -8436,7 +8448,7 @@ msgstr "日本"
 
 # I18N: The Hebrew/Jewish calendar
 #. I18N: The Hebrew/Jewish calendar
-#: app/Date.php:235 app/Module/YahrzeitModule.php:248
+#: app/Date.php:235 app/Module/YahrzeitModule.php:258
 #: resources/views/help/date.phtml:155
 msgid "Jewish"
 msgstr "猶太歷"
@@ -8604,7 +8616,7 @@ msgstr "哈薩克斯坦"
 msgid "Keep media objects"
 msgstr "保持多媒體對象"
 
-#: resources/views/modals/on-screen-keyboard.phtml:33
+#: resources/views/modals/on-screen-keyboard.phtml:51
 msgid "Keep open"
 msgstr "保持打開"
 
@@ -8753,7 +8765,7 @@ msgstr "LDS 捐贈"
 msgid "LDS spouse sealing"
 msgstr "LDS 配偶密封"
 
-#: app/Functions/FunctionsPrint.php:375
+#: app/Functions/FunctionsPrint.php:379
 msgid "LDS temple"
 msgstr "LDS 寺廟"
 
@@ -8765,7 +8777,7 @@ msgstr "Laie,夏威夷"
 
 # I18N: page orientation
 #. I18N: page orientation
-#: app/Http/Controllers/AdminTreesController.php:738
+#: app/Http/Controllers/AdminTreesController.php:740
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
 msgid "Landscape"
@@ -8776,7 +8788,7 @@ msgstr "橫圖表"
 #. I18N: gedcom tag LANG
 #. I18N: A configuration setting
 #: app/GedcomTag.php:810 app/Module/ModuleLanguageTrait.php:48
-#: app/Module/ModuleThemeTrait.php:244 resources/views/admin/modules.phtml:253
+#: app/Module/ModuleThemeTrait.php:248 resources/views/admin/modules.phtml:253
 #: resources/views/admin/modules.phtml:256
 #: resources/views/admin/trees-preferences.phtml:65
 #: resources/views/admin/users-edit.phtml:107
@@ -8831,7 +8843,7 @@ msgstr "拉斯維加斯,內華達州"
 #: resources/views/lists/sources-table.phtml:89
 #: resources/views/lists/submitters-table.phtml:63
 #: resources/views/modules/gedcom_stats/config.phtml:10
-#: resources/views/modules/recent_changes/changes-table.phtml:27
+#: resources/views/modules/recent_changes/changes-table.phtml:45
 #: resources/xml/reports/change_report.xml:66
 #: resources/xml/reports/change_report.xml:108
 msgid "Last change"
@@ -8873,8 +8885,8 @@ msgstr "最近婚姻"
 
 # I18N: gedcom tag LATI
 #. I18N: gedcom tag LATI
-#: app/Functions/FunctionsPrint.php:341 app/GedcomTag.php:813
-#: resources/views/admin/location-edit.phtml:45
+#: app/Functions/FunctionsPrint.php:345 app/GedcomTag.php:813
+#: resources/views/admin/location-edit.phtml:44
 #: resources/views/admin/locations.phtml:16
 #: resources/views/edit/input-addon-coordinates.phtml:9
 #: resources/views/edit/input-addon-coordinates.phtml:12
@@ -8915,7 +8927,7 @@ msgstr "未錄入孩子的"
 msgid "Lebanon"
 msgstr "黎巴嫩"
 
-#: app/Module/PedigreeChartModule.php:379
+#: app/Module/PedigreeChartModule.php:390
 msgid "Left"
 msgstr "自左向右"
 
@@ -8955,7 +8967,7 @@ msgctxt "paper size"
 msgid "Letter"
 msgstr "紙張大小"
 
-#: app/Http/Controllers/Admin/LocationController.php:488
+#: app/Http/Controllers/Admin/LocationController.php:498
 msgid "Level"
 msgstr "層次"
 
@@ -9093,7 +9105,7 @@ msgstr "本地文件"
 msgid "Location"
 msgstr "位置"
 
-#: app/Http/Controllers/Admin/LocationController.php:432
+#: app/Http/Controllers/Admin/LocationController.php:442
 msgid "Location not removed: this location contains sub-locations"
 msgstr "位置不能移除:這個位置包含子位置"
 
@@ -9135,8 +9147,8 @@ msgstr "最長久的婚姻"
 
 # I18N: gedcom tag LONG
 #. I18N: gedcom tag LONG
-#: app/Functions/FunctionsPrint.php:347 app/GedcomTag.php:819
-#: resources/views/admin/location-edit.phtml:56
+#: app/Functions/FunctionsPrint.php:351 app/GedcomTag.php:819
+#: resources/views/admin/location-edit.phtml:55
 #: resources/views/admin/locations.phtml:17
 #: resources/views/edit/input-addon-coordinates.phtml:9
 #: resources/views/edit/input-addon-coordinates.phtml:12
@@ -9194,7 +9206,7 @@ msgstr "馬德里,西班牙"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2381
+#: app/GedcomTag.php:2387
 msgid "Magazine"
 msgstr "雜誌"
 
@@ -9264,7 +9276,7 @@ msgstr "馬里"
 msgid "Malta"
 msgstr "馬耳他"
 
-#: app/Http/Controllers/AdminTreesController.php:461
+#: app/Http/Controllers/AdminTreesController.php:463
 #: resources/views/admin/changes-log.phtml:12
 #: resources/views/admin/data-fix-page.phtml:23
 #: resources/views/admin/data-fix-select.phtml:19
@@ -9279,7 +9291,6 @@ msgstr "馬耳他"
 msgid "Manage family trees"
 msgstr "管理家譜"
 
-#: resources/views/admin/trees-merge.phtml:8
 #: resources/views/admin/trees-renumber.phtml:8
 #: resources/views/admin/trees-unconnected.phtml:19
 msgid "Manage family trees "
@@ -9330,7 +9341,7 @@ msgstr "曼泰,猶他州"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2384
+#: app/GedcomTag.php:2390
 msgid "Manuscript"
 msgstr "原文"
 
@@ -9342,7 +9353,7 @@ msgstr "許多家譜程式創建自定義標籤的GEDCOM文件，webtrees最了�
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2387 resources/views/admin/control-panel.phtml:633
+#: app/GedcomTag.php:2393 resources/views/admin/control-panel.phtml:633
 #: resources/views/modules/statistics-chart/custom.phtml:52
 msgid "Map"
 msgstr "地圖"
@@ -9394,6 +9405,7 @@ msgstr "Markdown是一個簡單格式化系統，就如維基百科網站就在�
 #: resources/views/lists/families-table.phtml:217
 #: resources/views/lists/families-table.phtml:225
 #: resources/views/lists/families-table.phtml:254
+#: resources/views/modules/relatives/family.phtml:131
 #: resources/xml/reports/ahnentafel_report.xml:450
 #: resources/xml/reports/bdm_report.xml:78
 #: resources/xml/reports/descendancy_report.xml:575
@@ -9741,14 +9753,14 @@ msgstr "梅德福,俄勒岡州"
 #: resources/views/admin/control-panel.phtml:596
 #: resources/views/admin/media.phtml:99
 #: resources/views/lists/media-table.phtml:69
-#: resources/views/modules/recent_changes/changes-table.phtml:48
+#: resources/views/modules/recent_changes/changes-table.phtml:66
 msgid "Media"
 msgstr "多媒體"
 
 #: resources/views/admin/media-upload.phtml:21
 #: resources/views/admin/media.phtml:95
 #: resources/views/admin/webtrees1-thumbnails.phtml:35
-#: resources/views/media-page.phtml:88 resources/views/media-page.phtml:183
+#: resources/views/media-page.phtml:92 resources/views/media-page.phtml:187
 #: resources/views/modals/create-media-from-file.phtml:24
 #: resources/views/modals/media-file-fields.phtml:10
 msgid "Media file"
@@ -9791,26 +9803,26 @@ msgstr "多媒體文件夾"
 #: resources/views/admin/trees.phtml:231
 #: resources/views/admin/webtrees1-thumbnails.phtml:36
 #: resources/views/family-page.phtml:94
-#: resources/views/modules/favorites/favorites.phtml:87
-#: resources/views/source-page.phtml:84
+#: resources/views/modules/favorites/favorites.phtml:94
+#: resources/views/source-page.phtml:88
 msgid "Media object"
 msgstr "多媒體對象"
 
 # I18N: Name of a module/list
 #. I18N: Name of a module/list
-#: app/Http/Controllers/AdminTreesController.php:1707
+#: app/Http/Controllers/AdminTreesController.php:1710
 #: app/Module/FixSearchAndReplace.php:111 app/Module/MediaListModule.php:51
 #: resources/views/admin/fix-level-0-media.phtml:24
 #: resources/views/admin/merge-records-step-1.phtml:28
 #: resources/views/admin/webtrees1-thumbnails.phtml:30
-#: resources/views/gedcom-record-page.phtml:56
+#: resources/views/gedcom-record-page.phtml:59
 #: resources/views/lists/media-table.phtml:64
 #: resources/views/lists/notes-table.phtml:84
 #: resources/views/lists/sources-table.phtml:87
 #: resources/views/modules/gedcom_stats/config.phtml:28
 #: resources/views/modules/gedcom_stats/statistics.phtml:90
 #: resources/views/modules/html/template-statistics.phtml:43
-#: resources/views/note-page.phtml:56 resources/views/source-page.phtml:57
+#: resources/views/note-page.phtml:59 resources/views/source-page.phtml:60
 #: resources/views/statistics/other/chart-objects.phtml:12
 #: resources/views/statistics/other/total-records.phtml:21
 msgid "Media objects"
@@ -9933,7 +9945,7 @@ msgstr "水星"
 msgid "Merge"
 msgstr "合併"
 
-#: app/Http/Controllers/AdminTreesController.php:495
+#: app/Http/Controllers/AdminTreesController.php:497
 #: resources/views/admin/control-panel.phtml:160
 msgid "Merge family trees"
 msgstr "合併家譜"
@@ -10015,13 +10027,13 @@ msgstr "墨西哥的墨西哥城"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2375
+#: app/GedcomTag.php:2381
 msgid "Microfiche"
 msgstr "微縮膠片"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2378
+#: app/GedcomTag.php:2384
 msgid "Microfilm"
 msgstr "微電影"
 
@@ -10308,7 +10320,7 @@ msgstr "母親"
 msgid "Mother: %s"
 msgstr "母親: %s"
 
-#: app/Functions/FunctionsPrint.php:170
+#: app/Functions/FunctionsPrint.php:174
 msgid "Mother’s age"
 msgstr "母親的年齡"
 
@@ -10386,7 +10398,7 @@ msgid "Multiple marriages"
 msgstr "多次婚姻"
 
 #: app/Http/RequestHandlers/AccountEdit.php:88
-#: app/Module/ModuleThemeTrait.php:319 app/Module/UserWelcomeModule.php:114
+#: app/Module/ModuleThemeTrait.php:325 app/Module/UserWelcomeModule.php:114
 msgid "My account"
 msgstr "我的賬戶"
 
@@ -10394,24 +10406,24 @@ msgstr "我的賬戶"
 msgid "My family tree"
 msgstr "我的家譜"
 
-#: app/Module/ModuleThemeTrait.php:334 app/Module/UserWelcomeModule.php:107
+#: app/Module/ModuleThemeTrait.php:340 app/Module/UserWelcomeModule.php:107
 msgid "My individual record"
 msgstr "個人檔案"
 
 # I18N: Name of a module
 #. I18N: Name of a module
-#: app/Http/RequestHandlers/UserPage.php:88 app/Module/ModuleThemeTrait.php:349
+#: app/Http/RequestHandlers/UserPage.php:90 app/Module/ModuleThemeTrait.php:355
 #: app/Module/UserWelcomeModule.php:61 resources/views/admin/modules.phtml:177
 #: resources/views/admin/modules.phtml:181
 #: resources/views/layouts/administration.phtml:54
 msgid "My page"
 msgstr "我的頁面"
 
-#: app/Module/ModuleThemeTrait.php:363
+#: app/Module/ModuleThemeTrait.php:369
 msgid "My pages"
 msgstr "我的網頁"
 
-#: app/Module/ModuleThemeTrait.php:397
+#: app/Module/ModuleThemeTrait.php:403
 msgid "My pedigree"
 msgstr "我的家譜"
 
@@ -10428,7 +10440,7 @@ msgstr "緬甸"
 #: app/Statistics/Google/ChartCommonGiven.php:81
 #: app/Statistics/Google/ChartCommonSurname.php:140
 #: resources/views/modals/submitter-fields.phtml:9
-#: resources/views/modules/yahrzeit/table.phtml:23
+#: resources/views/modules/yahrzeit/table.phtml:27
 #: resources/xml/reports/bdm_report.xml:5
 #: resources/xml/reports/bdm_report.xml:49
 #: resources/xml/reports/birth_report.xml:5
@@ -10624,7 +10636,7 @@ msgstr "新聞"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2390
+#: app/GedcomTag.php:2396
 msgid "Newspaper"
 msgstr "報紙"
 
@@ -10728,8 +10740,8 @@ msgstr "第四月"
 msgid "No"
 msgstr "不"
 
-#: app/Http/Controllers/AdminTreesController.php:375
-#: app/Http/Controllers/AdminTreesController.php:387
+#: app/Http/Controllers/AdminTreesController.php:377
+#: app/Http/Controllers/AdminTreesController.php:389
 msgid "No GEDCOM file was received."
 msgstr "沒有收到GEDCOM文件。"
 
@@ -10760,7 +10772,7 @@ msgstr "沒有發現錯誤。"
 
 # I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
-#: app/Module/UpcomingAnniversariesModule.php:155
+#: app/Module/UpcomingAnniversariesModule.php:159
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
@@ -10770,7 +10782,7 @@ msgstr[0] "在接下來的%s天沒有的事件。"
 msgid "No events exist for today."
 msgstr "今天沒有事件。"
 
-#: app/Module/UpcomingAnniversariesModule.php:151
+#: app/Module/UpcomingAnniversariesModule.php:155
 msgid "No events exist for tomorrow."
 msgstr "明天沒有事件。"
 
@@ -10788,7 +10800,7 @@ msgstr "沒有接收到的文件。請重新上傳。"
 msgid "No link between the two individuals could be found."
 msgstr "兩個人之間沒有發現有聯系。"
 
-#: resources/views/admin/location-edit.phtml:138
+#: resources/views/admin/location-edit.phtml:137
 #: resources/views/modules/pedigree-map/chart.phtml:167
 #: resources/views/modules/places/tab.phtml:140
 msgid "No mappable items"
@@ -10933,15 +10945,15 @@ msgstr "用戶沒有確認"
 
 # I18N: gedcom tag NOTE
 #. I18N: gedcom tag NOTE
-#: app/Functions/FunctionsPrint.php:136 app/GedcomTag.php:890
+#: app/Functions/FunctionsPrint.php:140 app/GedcomTag.php:890
 #: resources/views/admin/trees-privacy.phtml:173
 #: resources/views/cards/add-note.phtml:10 resources/views/family-page.phtml:71
 #: resources/views/modals/create-media-from-file.phtml:48
 #: resources/views/modals/media-object-fields.phtml:11
 #: resources/views/modals/note-object-fields.phtml:9
-#: resources/views/modules/favorites/favorites.phtml:134
+#: resources/views/modules/favorites/favorites.phtml:159
 #: resources/views/modules/notes/tab.phtml:41
-#: resources/views/modules/recent_changes/changes-table.phtml:51
+#: resources/views/modules/recent_changes/changes-table.phtml:69
 #: resources/xml/reports/cemetery_report.xml:56
 #: resources/xml/reports/family_group_report.xml:485
 #: resources/xml/reports/family_group_report.xml:749
@@ -10963,11 +10975,11 @@ msgstr "注意:長路徑長度需要大量的計算,這些用戶可能使你的�
 #: app/Module/FixSearchAndReplace.php:112 app/Module/NotesTabModule.php:59
 #: resources/views/admin/control-panel.phtml:179
 #: resources/views/admin/merge-records-step-1.phtml:27
-#: resources/views/gedcom-record-page.phtml:68
-#: resources/views/media-page.phtml:76
+#: resources/views/gedcom-record-page.phtml:73
+#: resources/views/media-page.phtml:80
 #: resources/views/modules/census-assistant.phtml:84
-#: resources/views/note-page.phtml:68 resources/views/search-results.phtml:57
-#: resources/views/source-page.phtml:63
+#: resources/views/note-page.phtml:73 resources/views/search-results.phtml:57
+#: resources/views/source-page.phtml:67
 #: resources/views/statistics/other/total-records.phtml:39
 #: resources/xml/reports/individual_ext_report.xml:229
 #: resources/xml/reports/individual_report.xml:226
@@ -11193,7 +11205,7 @@ msgstr "阿曼"
 
 # I18N: Name of a module
 #. I18N: Name of a module
-#: app/Module/OnThisDayModule.php:86
+#: app/Module/OnThisDayModule.php:90
 msgid "On this day"
 msgstr "在這一天"
 
@@ -11226,7 +11238,7 @@ msgstr "哎呀！伺服器無法連接到數據庫伺服器。它可能是忙碌
 msgid "Oops! webtrees was unable to create files in this folder."
 msgstr "注意！webtrees 不能在這個目錄創建文件。"
 
-#: app/Functions/FunctionsPrint.php:363 app/Functions/FunctionsPrint.php:365
+#: app/Functions/FunctionsPrint.php:367 app/Functions/FunctionsPrint.php:369
 #: resources/views/admin/map-provider.phtml:21
 msgid "OpenStreetMap™"
 msgstr "OpenStreetMap™"
@@ -11294,7 +11306,7 @@ msgstr "奧蘭多,佛羅里達"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2405 app/Module/StatisticsChartModule.php:163
+#: app/GedcomTag.php:2411 app/Module/StatisticsChartModule.php:163
 #: app/Statistics/Google/ChartCommonGiven.php:91
 #: app/Statistics/Google/ChartCommonSurname.php:150
 #: resources/views/admin/control-panel.phtml:553
@@ -11388,7 +11400,7 @@ msgstr "頁面大小"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2402
+#: app/GedcomTag.php:2408
 msgid "Painting"
 msgstr "繪畫"
 
@@ -11457,7 +11469,7 @@ msgstr "父母"
 msgid "Parents and siblings"
 msgstr "父母和兄弟姐妹"
 
-#: app/Functions/FunctionsPrint.php:182
+#: app/Functions/FunctionsPrint.php:186
 msgid "Parent’s age"
 msgstr "父母的年齡"
 
@@ -11529,7 +11541,7 @@ msgstr "%s 的世系圖"
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/HelpText.php:254
 #: app/Http/RequestHandlers/PendingChanges.php:125
-#: app/Module/ModuleThemeTrait.php:424 app/Module/ReviewChangesModule.php:80
+#: app/Module/ModuleThemeTrait.php:430 app/Module/ReviewChangesModule.php:80
 #: app/Module/ReviewChangesModule.php:134
 #: resources/views/admin/control-panel.phtml:173
 #: resources/views/admin/control-panel.phtml:198
@@ -11617,7 +11629,7 @@ msgstr "語音標題"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2024 app/GedcomTag.php:2393
+#: app/GedcomTag.php:2024 app/GedcomTag.php:2399
 msgid "Photo"
 msgstr "照片"
 
@@ -11637,7 +11649,7 @@ msgstr "皮特克恩"
 #. I18N: gedcom tag PLAC
 #: app/GedcomTag.php:931 app/Http/RequestHandlers/HelpText.php:224
 #: app/Module/FixCemeteryTag.php:86
-#: resources/views/admin/location-edit.phtml:27
+#: resources/views/admin/location-edit.phtml:26
 #: resources/views/admin/locations.phtml:15
 #: resources/views/lists/families-table.phtml:260
 #: resources/views/lists/individuals-table.phtml:274
@@ -11892,7 +11904,7 @@ msgstr "在巴西阿雷格里港"
 
 # I18N: page orientation
 #. I18N: page orientation
-#: app/Http/Controllers/AdminTreesController.php:736
+#: app/Http/Controllers/AdminTreesController.php:738
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
 msgid "Portrait"
@@ -11960,7 +11972,7 @@ msgstr "所有用戶申請用戶賬戶的預定義的文本"
 msgid "Predefined text that states only family members can request a user account"
 msgstr "預定義的文本聲明僅家庭成員可以申請用戶賬戶"
 
-#: app/Http/Controllers/AdminTreesController.php:808
+#: app/Http/Controllers/AdminTreesController.php:810
 #: app/Http/RequestHandlers/TreePageBlockEdit.php:64
 #: app/Http/RequestHandlers/UserPageBlockEdit.php:64
 #: resources/views/admin/components.phtml:45
@@ -12056,7 +12068,7 @@ msgstr "隱私限制"
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr "隱私限制—這些適用于不包含一個標記RESN GEDCOM的記錄和事實"
 
-#: app/GedcomRecord.php:498 app/GedcomRecord.php:606 app/GedcomRecord.php:1241
+#: app/GedcomRecord.php:535 app/GedcomRecord.php:643 app/GedcomRecord.php:1278
 #: app/Note.php:128 app/Report/ReportParserGenerate.php:967
 #: app/Repository.php:104 app/Source.php:109
 #: app/Statistics/Repository/EventRepository.php:415 app/Submitter.php:104
@@ -12295,7 +12307,7 @@ msgstr "從當前的家譜隨機圖像。"
 #: app/Http/RequestHandlers/ReorderChildrenPage.php:57
 #: resources/views/family-page-children.phtml:40
 #: resources/views/family-page-menu.phtml:45
-#: resources/views/modules/relatives/family.phtml:201
+#: resources/views/modules/relatives/family.phtml:221
 msgid "Re-order children"
 msgstr "調整子女順序"
 
@@ -12337,7 +12349,7 @@ msgstr "確定刪除所有地理數據？"
 
 # I18N: Name of a module
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:51
+#: app/Module/RecentChangesModule.php:77
 #: resources/xml/reports/change_report.xml:92
 msgid "Recent changes"
 msgstr "最近更改"
@@ -12356,10 +12368,10 @@ msgstr "累西腓,巴西"
 #: resources/views/admin/changes-log.phtml:117
 #: resources/views/admin/data-fix-page.phtml:64
 #: resources/views/admin/trees-privacy.phtml:213
-#: resources/views/lists/anniversaries-table.phtml:20
+#: resources/views/lists/anniversaries-table.phtml:32
 #: resources/views/modules/clippings/show.phtml:21
-#: resources/views/modules/recent_changes/changes-table.phtml:24
-#: resources/views/modules/todo/research-tasks.phtml:21
+#: resources/views/modules/recent_changes/changes-table.phtml:42
+#: resources/views/modules/todo/research-tasks.phtml:32
 msgid "Record"
 msgstr "記錄"
 
@@ -12544,7 +12556,7 @@ msgstr "遠程伺服器"
 #: app/Module/CensusAssistantModule.php:245
 #: resources/views/modules/clippings/show.phtml:22
 #: resources/views/modules/clippings/show.phtml:38
-#: resources/views/modules/favorites/favorites.phtml:34
+#: resources/views/modules/favorites/favorites.phtml:36
 msgid "Remove"
 msgstr "刪除"
 
@@ -12579,7 +12591,7 @@ msgstr "重新編號"
 
 # I18N: Renumber the records in a family tree
 #. I18N: Renumber the records in a family tree
-#: app/Http/Controllers/AdminTreesController.php:854
+#: app/Http/Controllers/AdminTreesController.php:856
 #: resources/views/admin/trees-merge.phtml:24
 #: resources/views/admin/trees-merge.phtml:29
 msgid "Renumber family tree"
@@ -12625,7 +12637,7 @@ msgstr "報告"
 
 # I18N: Name of a module/list
 #. I18N: Name of a module/list
-#: app/Http/Controllers/AdminTreesController.php:1703
+#: app/Http/Controllers/AdminTreesController.php:1706
 #: app/Http/Controllers/ListController.php:506
 #: app/Module/FixSearchAndReplace.php:113
 #: app/Module/RepositoryListModule.php:53
@@ -12646,8 +12658,8 @@ msgstr "存儲庫"
 #: app/GedcomTag.php:964 resources/views/admin/trees-privacy.phtml:172
 #: resources/views/admin/trees.phtml:222
 #: resources/views/modals/source-fields.phtml:39
-#: resources/views/modules/favorites/favorites.phtml:111
-#: resources/views/modules/recent_changes/changes-table.phtml:60
+#: resources/views/modules/favorites/favorites.phtml:122
+#: resources/views/modules/recent_changes/changes-table.phtml:78
 msgid "Repository"
 msgstr "庫"
 
@@ -12676,13 +12688,13 @@ msgstr "註冊賬戶"
 
 # I18N: gedcom tag _TODO
 #. I18N: gedcom tag _TODO
-#: app/GedcomTag.php:2059 resources/views/modules/todo/research-tasks.phtml:27
+#: app/GedcomTag.php:2059 resources/views/modules/todo/research-tasks.phtml:38
 msgid "Research task"
 msgstr "考証任務"
 
 # I18N: Name of a module. Tasks that need further research.
 #. I18N: Name of a module. Tasks that need further research.
-#: app/Module/ResearchTaskModule.php:54
+#: app/Module/ResearchTaskModule.php:58
 msgid "Research tasks"
 msgstr "考証任務"
 
@@ -12694,7 +12706,7 @@ msgstr "考証任務是特殊事件,添加到個人在你的家譜,確定需要�
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
 msgstr "考証任務存儲使用自定義GEDCOM 標記 “_TODO”。其他應用程式可能無法識別這個譜系標記。"
 
-#: resources/views/admin/location-edit.phtml:137
+#: resources/views/admin/location-edit.phtml:136
 #: resources/views/modules/pedigree-map/chart.phtml:71
 #: resources/views/modules/place-hierarchy/map.phtml:72
 #: resources/views/modules/places/tab.phtml:61
@@ -12721,7 +12733,7 @@ msgstr "直系親屬限制"
 #. I18N: gedcom tag RESN
 #: app/GedcomTag.php:974 app/Http/RequestHandlers/HelpText.php:229
 #: resources/views/cards/add-restriction.phtml:10
-#: resources/views/media-page.phtml:173
+#: resources/views/media-page.phtml:177
 msgid "Restriction"
 msgstr "隱私限制"
 
@@ -12750,7 +12762,7 @@ msgstr "留尼旺島"
 msgid "Rexburg, Idaho, United States"
 msgstr "美國愛達荷州雷克斯堡"
 
-#: app/Module/PedigreeChartModule.php:380
+#: app/Module/PedigreeChartModule.php:391
 msgid "Right"
 msgstr "高度"
 
@@ -12808,11 +12820,11 @@ msgstr "盧旺達"
 msgid "SMTP mail server"
 msgstr "SMTP郵件伺服器"
 
-#: app/Services/ServerCheckService.php:322
+#: app/Services/ServerCheckService.php:323
 msgid "SQLite is only suitable for small sites, testing and evaluation."
 msgstr "SQLite僅適用於小型網站，測試和評估。"
 
-#: app/Services/ServerCheckService.php:215
+#: app/Services/ServerCheckService.php:216
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr "已安裝SQLite版本%s。 但需要SQLite版本%s或更高版本。"
@@ -13114,7 +13126,7 @@ msgstr "按地點或日期選擇個人"
 
 # I18N: Description of the “Clippings cart” module
 #. I18N: Description of the “Clippings cart” module
-#: app/Module/ClippingsCartModule.php:129
+#: app/Module/ClippingsCartModule.php:130
 msgid "Select records from your family tree and save them as a GEDCOM file."
 msgstr "從你的家譜選擇記錄並保存他們為GEDCOM文件。"
 
@@ -13306,12 +13318,12 @@ msgstr "設為默認值"
 msgid "Set the access level for each tree."
 msgstr "設定每個家譜的訪問級別。"
 
-#: app/Http/RequestHandlers/TreePageDefaultEdit.php:65
+#: app/Http/RequestHandlers/TreePageDefaultEdit.php:73
 #: resources/views/admin/control-panel.phtml:153
 msgid "Set the default blocks for new family trees"
 msgstr "為新家譜設定默認塊"
 
-#: app/Http/RequestHandlers/UserPageDefaultEdit.php:64
+#: app/Http/RequestHandlers/UserPageDefaultEdit.php:75
 #: resources/views/admin/control-panel.phtml:372
 msgid "Set the default blocks for new users"
 msgstr "為新用戶設定默認塊"
@@ -13388,9 +13400,9 @@ msgstr "第六月"
 #: app/GedcomTag.php:1005 resources/views/admin/trees.phtml:239
 #: resources/views/cards/add-shared-note.phtml:10
 #: resources/views/edit/shared-note.phtml:14
-#: resources/views/family-page.phtml:82 resources/views/media-page.phtml:163
+#: resources/views/family-page.phtml:82 resources/views/media-page.phtml:167
 #: resources/views/modules/notes/tab.phtml:51
-#: resources/views/note-page.phtml:79
+#: resources/views/note-page.phtml:84
 msgid "Shared note"
 msgstr "共享記錄"
 
@@ -13828,7 +13840,7 @@ msgstr "在個人信息中顯示縮略圖。"
 #: app/Functions/FunctionsPrintFacts.php:832
 #: app/Functions/FunctionsPrintFacts.php:1070
 #: app/Http/Controllers/AdminController.php:178
-#: app/Http/Controllers/AdminTreesController.php:758
+#: app/Http/Controllers/AdminTreesController.php:760
 #: resources/views/modals/restriction-fields.phtml:21
 msgid "Show to managers"
 msgstr "顯示給管理員"
@@ -13840,7 +13852,7 @@ msgstr "顯示給管理員"
 #: app/Functions/FunctionsPrintFacts.php:829
 #: app/Functions/FunctionsPrintFacts.php:1067
 #: app/Http/Controllers/AdminController.php:177
-#: app/Http/Controllers/AdminTreesController.php:757
+#: app/Http/Controllers/AdminTreesController.php:759
 #: resources/views/admin/trees-privacy.phtml:30
 #: resources/views/admin/trees-privacy.phtml:92
 #: resources/views/modals/restriction-fields.phtml:18
@@ -13908,11 +13920,11 @@ msgstr "塞拉利昂"
 # I18N: Name of a module
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/LoginPage.php:77 app/Module/LoginBlockModule.php:43
-#: app/Module/LoginBlockModule.php:75 app/Module/ModuleThemeTrait.php:287
+#: app/Module/LoginBlockModule.php:75 app/Module/ModuleThemeTrait.php:293
 msgid "Sign in"
 msgstr "登入"
 
-#: app/Module/LoginBlockModule.php:70 app/Module/ModuleThemeTrait.php:302
+#: app/Module/LoginBlockModule.php:70 app/Module/ModuleThemeTrait.php:308
 #: resources/views/layouts/administration.phtml:67
 msgid "Sign out"
 msgstr "登出"
@@ -13966,7 +13978,7 @@ msgstr "webtrees 安裝在子文件夾中時網站驗証碼不能工作。"
 
 # I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
-#: app/Module/SiteMapModule.php:125
+#: app/Module/SiteMapModule.php:155
 msgid "Sitemaps"
 msgstr "網站地圖"
 
@@ -14148,11 +14160,11 @@ msgstr "聽起來像"
 #: resources/views/admin/trees-privacy.phtml:171
 #: resources/views/admin/trees.phtml:214
 #: resources/views/cards/add-source-citation.phtml:14
-#: resources/views/family-page.phtml:106 resources/views/media-page.phtml:153
+#: resources/views/family-page.phtml:106 resources/views/media-page.phtml:157
 #: resources/views/modals/link-media-to-source.phtml:15
-#: resources/views/modules/favorites/favorites.phtml:99
+#: resources/views/modules/favorites/favorites.phtml:108
 #: resources/views/modules/random_media/slide-show.phtml:70
-#: resources/views/modules/recent_changes/changes-table.phtml:54
+#: resources/views/modules/recent_changes/changes-table.phtml:72
 #: resources/views/modules/sources_tab/tab.phtml:39
 #: resources/xml/reports/bdm_report.xml:136
 #: resources/xml/reports/bdm_report.xml:162
@@ -14194,23 +14206,23 @@ msgstr "來源類型"
 # I18N: Name of a module
 #. I18N: Name of a module/list
 #. I18N: Name of a module
-#: app/Http/Controllers/AdminTreesController.php:1704
+#: app/Http/Controllers/AdminTreesController.php:1707
 #: app/Http/Controllers/ListController.php:527
 #: app/Module/FixSearchAndReplace.php:114 app/Module/SourceListModule.php:52
 #: app/Module/SourcesTabModule.php:59
 #: resources/views/admin/control-panel.phtml:176
 #: resources/views/admin/merge-records-step-1.phtml:25
-#: resources/views/gedcom-record-page.phtml:62
+#: resources/views/gedcom-record-page.phtml:66
 #: resources/views/lists/media-table.phtml:73
 #: resources/views/lists/notes-table.phtml:76
 #: resources/views/lists/notes-table.phtml:85
 #: resources/views/lists/repositories-table.phtml:43
 #: resources/views/lists/sources-table.phtml:78
-#: resources/views/media-page.phtml:70
+#: resources/views/media-page.phtml:73
 #: resources/views/modules/gedcom_stats/config.phtml:27
 #: resources/views/modules/gedcom_stats/statistics.phtml:79
 #: resources/views/modules/html/template-statistics.phtml:39
-#: resources/views/note-page.phtml:62 resources/views/repository-page.phtml:44
+#: resources/views/note-page.phtml:66 resources/views/repository-page.phtml:45
 #: resources/views/search-general-page.phtml:48
 #: resources/views/search-results.phtml:35
 #: resources/views/statistics/other/chart-sources.phtml:12
@@ -14356,7 +14368,7 @@ msgstr "統計表"
 
 # I18N: gedcom tag STAT
 #. I18N: gedcom tag STAT
-#: app/Functions/FunctionsPrint.php:378 app/GedcomTag.php:1032
+#: app/Functions/FunctionsPrint.php:382 app/GedcomTag.php:1032
 #: resources/views/admin/changes-log.phtml:36
 #: resources/views/admin/changes-log.phtml:116
 msgid "Status"
@@ -14427,7 +14439,7 @@ msgstr "提交但尚未清理"
 # I18N: gedcom tag SUBM
 #. I18N: gedcom tag SUBM
 #: app/GedcomTag.php:1037 resources/views/admin/trees.phtml:247
-#: resources/views/modules/recent_changes/changes-table.phtml:57
+#: resources/views/modules/recent_changes/changes-table.phtml:75
 msgid "Submitter"
 msgstr "提交者"
 
@@ -14468,11 +14480,11 @@ msgstr "星期天"
 msgid "Support and documentation can be found at %s."
 msgstr "在%s可以找到支持文檔."
 
-#: app/Services/ServerCheckService.php:327
+#: app/Services/ServerCheckService.php:328
 msgid "Support for PostgreSQL is experimental."
 msgstr "對PostgreSQL的支持處在實驗階段。"
 
-#: app/Services/ServerCheckService.php:332
+#: app/Services/ServerCheckService.php:333
 msgid "Support for SQL Server is experimental."
 msgstr "對SQL Server的支持處在實驗階段。"
 
@@ -14760,7 +14772,7 @@ msgstr "<b>姓名</b>欄包含個人的全名，可能是拼寫或是記錄。�
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 msgstr "<b>姓</b>欄包含用于排序和分組的名稱。它可以是不同的，以個人的實際姓氏，總是從<b>名稱</b>欄。可以使用此資料欄進行排序的姓氏帶或不帶前綴的（梵高/梵高）和組拼寫變體或的語調（科瓦爾斯基/ Kowalska）。如果一個人需要被列在姓氏超過一個，每個名字應以逗號分隔。"
 
-#: app/Http/Controllers/AdminTreesController.php:1497
+#: app/Http/Controllers/AdminTreesController.php:1500
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
 msgstr "GEDCOM 文件“%s”已被導入。"
@@ -14775,12 +14787,12 @@ msgstr "GEDCOM標准不允許多媒體中存在網址。"
 msgid "The Hague, Netherlands"
 msgstr "海牙，荷蘭"
 
-#: app/Services/ServerCheckService.php:124
+#: app/Services/ServerCheckService.php:125
 #, php-format
 msgid "The PHP extension “%s” is not installed."
 msgstr "文件“%s”不存在。"
 
-#: app/Services/ServerCheckService.php:182
+#: app/Services/ServerCheckService.php:183
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
 msgstr "模塊“%1$s”已被禁用。"
@@ -14791,12 +14803,12 @@ msgstr "模塊“%1$s”已被禁用。"
 msgid "The PHP temporary folder is missing."
 msgstr "PHP臨時目錄不存在。"
 
-#: app/Services/ServerCheckService.php:143
+#: app/Services/ServerCheckService.php:144
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
 msgstr "模塊“%1$s”已被禁用。"
 
-#: app/Services/ServerCheckService.php:147
+#: app/Services/ServerCheckService.php:148
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
 msgstr "模塊“%1$s”已被啟用。"
@@ -14847,7 +14859,7 @@ msgstr "收集箱允許您從該家譜中提取並將其下載為GEDCOM文件。
 msgid "The date and time of the last update"
 msgstr "最後更新的時間和日期"
 
-#: app/Http/Controllers/Admin/LocationController.php:405
+#: app/Http/Controllers/Admin/LocationController.php:415
 #: app/Http/RequestHandlers/AccountUpdate.php:113
 #, php-format
 msgid "The details for “%s” have been updated."
@@ -14873,7 +14885,7 @@ msgstr "該家譜“%s”已創建。"
 
 # I18N: %s is the name of a family tree
 #. I18N: %s is the name of a family tree
-#: app/Http/Controllers/AdminTreesController.php:1504
+#: app/Http/Controllers/AdminTreesController.php:1507
 #: app/Http/RequestHandlers/DeleteTreeAction.php:65
 #, php-format
 msgid "The family tree “%s” has been deleted."
@@ -14886,7 +14898,7 @@ msgstr "家譜“%s”已被刪除。"
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
 msgstr "家譜“%s”將游客第一次訪問時顯示。"
 
-#: app/Http/Controllers/AdminTreesController.php:695
+#: app/Http/Controllers/AdminTreesController.php:697
 msgid "The family trees have been merged successfully."
 msgstr "已經成功合併家譜。"
 
@@ -14937,7 +14949,7 @@ msgstr "文件只是部分上傳,請重新上傳。"
 
 # I18N: %s is a filename
 #. I18N: %s is a filename
-#: resources/views/media-page.phtml:117
+#: resources/views/media-page.phtml:121
 #: resources/views/modules/media-list/page.phtml:145
 #, php-format
 msgid "The file “%s” does not exist."
@@ -15125,17 +15137,17 @@ msgid "The place hierarchy."
 msgstr "地點層次結構。"
 
 #: app/Http/Controllers/AdminController.php:159
-#: app/Http/Controllers/AdminTreesController.php:962
+#: app/Http/Controllers/AdminTreesController.php:964
 msgid "The preferences for all family trees have been updated."
 msgstr "所有的家譜的首選項已更新。"
 
 #: app/Http/Controllers/AdminController.php:162
-#: app/Http/Controllers/AdminTreesController.php:966
+#: app/Http/Controllers/AdminTreesController.php:968
 msgid "The preferences for new family trees have been updated."
 msgstr "新家譜的首選項已更新。"
 
 #: app/Http/Controllers/AdminController.php:152
-#: app/Http/Controllers/AdminTreesController.php:955
+#: app/Http/Controllers/AdminTreesController.php:957
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "已更新家譜“%s”的首選項。"
@@ -15146,7 +15158,7 @@ msgid "The preferences for the module “%s” have been deleted."
 msgstr "模塊“%s”的首選項已被刪除。"
 
 #: app/Module/CustomCssJsModule.php:99
-#: app/Module/RelationshipsChartModule.php:430 app/Module/SiteMapModule.php:142
+#: app/Module/RelationshipsChartModule.php:430 app/Module/SiteMapModule.php:172
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
 msgstr "已更新模塊“%s”的首選項。"
@@ -15191,11 +15203,11 @@ msgstr "搜索返回結果數超出限制。"
 msgid "The server configuration is OK."
 msgstr "伺服器配置正常。"
 
-#: app/Services/ServerCheckService.php:247
+#: app/Services/ServerCheckService.php:248
 msgid "The server’s temporary folder cannot be accessed."
 msgstr "已達到伺服器的訪問限制。"
 
-#: app/Http/Controllers/AdminTreesController.php:1462
+#: app/Http/Controllers/AdminTreesController.php:1465
 #: app/Services/UpgradeService.php:150 app/Services/UpgradeService.php:183
 msgid "The server’s time limit has been reached."
 msgstr "已達到伺服器的訪問限制。"
@@ -15301,7 +15313,7 @@ msgstr "網站 www.geonames.org 提供大型數據庫的地名。 可以輸入�
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
 msgstr "webtrees開發者對這個錯誤很感興趣。如果你和他們聯系，他們會幫助你解決問題。"
 
-#: app/Module/ModuleThemeTrait.php:69 app/Module/ModuleThemeTrait.php:451
+#: app/Module/ModuleThemeTrait.php:72 app/Module/ModuleThemeTrait.php:457
 #: resources/views/admin/modules.phtml:245
 #: resources/views/admin/modules.phtml:248
 #: resources/views/admin/users-edit.phtml:180
@@ -15310,7 +15322,7 @@ msgstr "主題"
 
 # I18N: Name of a module
 #. I18N: Name of a module
-#: app/Module/ThemeSelectModule.php:41
+#: app/Module/ThemeSelectModule.php:45
 msgid "Theme change"
 msgstr "改變主題"
 
@@ -15342,7 +15354,7 @@ msgstr "這有個人沒有記錄。"
 msgid "There are no pending changes."
 msgstr "沒有待定的更改。"
 
-#: app/Module/ResearchTaskModule.php:112
+#: app/Module/ResearchTaskModule.php:116
 msgid "There are no research tasks in this family tree."
 msgstr "這個家庭里沒有考証任務。"
 
@@ -15356,7 +15368,7 @@ msgstr "這個人沒有來源引用。"
 msgid "There are pending changes for you to moderate."
 msgstr "有待定的更改需你確認。"
 
-#: app/Module/RecentChangesModule.php:91
+#: app/Module/RecentChangesModule.php:123
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
@@ -15496,7 +15508,7 @@ msgstr "此文件夾將被用來存儲多媒體文件，GEDCOM文件，臨時文
 msgid "This folder will be used to store the media files for this family tree."
 msgstr "此文件夾將用于存儲多媒體文件。"
 
-#: app/Http/Middleware/CheckCsrf.php:65
+#: app/Http/Middleware/CheckCsrf.php:68
 msgid "This form has expired. Try again."
 msgstr "表單已過期。 再試一次。"
 
@@ -15808,12 +15820,12 @@ msgstr "此選項將保留在私人家庭的聯系記錄。這意味着你將看
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
 msgstr "此選項將顯示名稱（但沒有其他私人細節）。如果他們還在世，或者如果一個隱私的限制已被添加到他們的個人私有記錄。隱藏一個特定的名稱，添加一個隱私限制到這個記錄名稱。"
 
-#: resources/views/edit/raw-gedcom-fact.phtml:14
-#: resources/views/edit/raw-gedcom-record.phtml:15
+#: resources/views/edit/raw-gedcom-fact.phtml:15
+#: resources/views/edit/raw-gedcom-record.phtml:16
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
 msgstr "這個頁面允許你繞過通常的形式，直接編輯基礎數據。它是一種高級的選項，你不應該使用它，除非你了解GEDCOM格式。如果你作了錯誤修改，很難修復。"
 
-#: app/Module/HitCountFooterModule.php:110
+#: app/Module/HitCountFooterModule.php:113
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
@@ -15953,8 +15965,8 @@ msgstr "這個來源已被編輯。你應該檢查更改，然後決定是 %1$s 
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
 msgstr "本文將追加到每個頁面標題。它將顯示在瀏覽器的標題欄、書簽等。"
 
-#: app/Http/Controllers/AdminTreesController.php:286
-#: app/Http/Controllers/AdminTreesController.php:291
+#: app/Http/Controllers/AdminTreesController.php:288
+#: app/Http/Controllers/AdminTreesController.php:293
 msgid "This type of link is not allowed here."
 msgstr "這種類型的鏈接在這里是不允許的。"
 
@@ -16134,7 +16146,8 @@ msgstr "第一月"
 #: resources/views/modals/media-file-fields.phtml:106
 #: resources/views/modals/source-fields.phtml:9
 #: resources/views/modules/census-assistant.phtml:20
-#: resources/views/modules/favorites/favorites.phtml:129
+#: resources/views/modules/favorites/favorites.phtml:149
+#: resources/views/modules/favorites/favorites.phtml:151
 #: resources/views/modules/gedcom_news/edit.phtml:17
 #: resources/views/modules/html/config.phtml:11
 #: resources/views/modules/user_blog/edit.phtml:17
@@ -16221,7 +16234,7 @@ msgstr "東京，日本"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2396
+#: app/GedcomTag.php:2402
 msgid "Tombstone"
 msgstr "墓碑"
 
@@ -16241,7 +16254,7 @@ msgstr[0] "最普及的 %s 個名字"
 
 # I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
-#: app/Module/TopSurnamesModule.php:157
+#: app/Module/TopSurnamesModule.php:161
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
@@ -16262,7 +16275,7 @@ msgstr "最普及的名字"
 
 # I18N: i.e. most popular surname.
 #. I18N: i.e. most popular surname.
-#: app/Module/TopSurnamesModule.php:154
+#: app/Module/TopSurnamesModule.php:158
 msgid "Top surname"
 msgstr "最常用的姓氏"
 
@@ -16491,7 +16504,7 @@ msgstr "美國愛達荷州雙子瀑布城"
 #: resources/views/admin/site-logs.phtml:107
 #: resources/views/modules/media-list/page.phtml:38
 #: resources/views/modules/random_media/config.phtml:19
-#: resources/views/modules/recent_changes/changes-table.phtml:20
+#: resources/views/modules/recent_changes/changes-table.phtml:38
 msgid "Type"
 msgstr "類型"
 
@@ -16515,8 +16528,9 @@ msgstr "事實類型"
 #: resources/views/admin/trees-create.phtml:26
 #: resources/views/admin/trees-preferences.phtml:40
 #: resources/views/modals/media-file-fields.phtml:90
-#: resources/views/modules/favorites/favorites.phtml:123
-#: resources/views/modules/favorites/favorites.phtml:128
+#: resources/views/modules/favorites/favorites.phtml:136
+#: resources/views/modules/favorites/favorites.phtml:143
+#: resources/views/modules/favorites/favorites.phtml:145
 #: resources/views/modules/matomo-analytics/form.phtml:18
 msgid "URL"
 msgstr "URL"
@@ -16599,7 +16613,7 @@ msgstr "美國"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
-#: app/GedcomRecord.php:963 app/GedcomRecord.php:968
+#: app/GedcomRecord.php:1000 app/GedcomRecord.php:1005
 #: app/Statistics/Google/ChartSex.php:72
 #: app/Statistics/Service/CountryService.php:38
 msgid "Unknown"
@@ -16639,13 +16653,13 @@ msgstr "未使用的文件"
 msgid "Unzip %s to a temporary folder…"
 msgstr "解壓縮 %s 到一個臨時文件夾…"
 
-#: app/Module/PedigreeChartModule.php:381
+#: app/Module/PedigreeChartModule.php:392
 msgid "Up"
 msgstr "上"
 
 # I18N: Name of a module
 #. I18N: Name of a module
-#: app/Module/UpcomingAnniversariesModule.php:96
+#: app/Module/UpcomingAnniversariesModule.php:100
 msgid "Upcoming events"
 msgstr "即將到來的事件"
 
@@ -16784,7 +16798,7 @@ msgstr "使這個圖像顯示在圖表和個人的頁面上。"
 #: resources/views/admin/changes-log.phtml:119
 #: resources/views/admin/site-logs.phtml:60
 #: resources/views/admin/site-logs.phtml:110
-#: resources/views/modules/recent_changes/changes-table.phtml:31
+#: resources/views/modules/recent_changes/changes-table.phtml:49
 #: resources/views/pending-changes-page.phtml:53
 msgid "User"
 msgstr "用戶"
@@ -16822,7 +16836,7 @@ msgstr "用戶驗証"
 #: resources/views/emails/register-notify-text.phtml:11
 #: resources/views/login-page.phtml:34
 #: resources/views/modules/login_block/sign-in.phtml:19
-#: resources/views/modules/todo/research-tasks.phtml:24
+#: resources/views/modules/todo/research-tasks.phtml:35
 #: resources/views/password-reset-page.phtml:25
 #: resources/views/register-page.phtml:58
 #: resources/views/setup/step-5-administrator.phtml:48
@@ -16965,7 +16979,7 @@ msgstr "版本"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/GedcomTag.php:2399
+#: app/GedcomTag.php:2405
 msgid "Video"
 msgstr "錄像"
 
@@ -17212,7 +17226,7 @@ msgstr "鰥夫"
 
 # I18N: gedcom tag WIFE
 #. I18N: gedcom tag WIFE
-#: app/Functions/FunctionsPrint.php:294 app/GedcomTag.php:1076
+#: app/Functions/FunctionsPrint.php:298 app/GedcomTag.php:1076
 #: app/Http/Controllers/EditIndividualController.php:610
 #: resources/views/edit/change-family-members.phtml:20
 #: resources/views/edit/change-family-members.phtml:35
@@ -17279,6 +17293,7 @@ msgstr "見証"
 msgid "Wives take their husband’s surname."
 msgstr "妻子隨丈夫的姓。"
 
+#: app/Http/Controllers/Admin/LocationController.php:297
 #: resources/views/modules/place-hierarchy/page.phtml:29
 #: resources/views/modules/place-hierarchy/page.phtml:32
 #: resources/views/modules/statistics-chart/custom.phtml:171
@@ -17286,13 +17301,13 @@ msgid "World"
 msgstr "世界"
 
 #. I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
-#: app/GedcomTag.php:2080 resources/views/modules/yahrzeit/table.phtml:31
+#: app/GedcomTag.php:2080 resources/views/modules/yahrzeit/table.phtml:35
 msgid "Yahrzeit"
 msgstr "先人忌日"
 
 # I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
-#: app/Module/YahrzeitModule.php:56
+#: app/Module/YahrzeitModule.php:61
 msgid "Yahrzeiten"
 msgstr "忌日"
 
@@ -17347,8 +17362,8 @@ msgstr "這選框控制你在線是其它用戶的可見與否。它也控制你
 
 # I18N: %s is a URL
 #. I18N: %s is a URL
-#: resources/views/edit/raw-gedcom-fact.phtml:17
-#: resources/views/edit/raw-gedcom-record.phtml:18
+#: resources/views/edit/raw-gedcom-fact.phtml:18
+#: resources/views/edit/raw-gedcom-record.phtml:19
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "您可以從%s下載GEDCOM規範的副本。"
@@ -17512,7 +17527,7 @@ msgstr "您在 %s 的註冊"
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "您的用戶賬戶沒有啟用“自動批准變化”。你只能一次一條地改變記錄。"
 
-#: app/Services/ServerCheckService.php:197
+#: app/Services/ServerCheckService.php:198
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr "您的Web伺服器使用的PHP版本 %s ，它不再接收安全更新。你應該盡快升級到更高版本。"
@@ -17529,12 +17544,12 @@ msgstr "贊比亞"
 msgid "Zimbabwe"
 msgstr "津巴布韋"
 
-#: resources/views/admin/location-edit.phtml:66
+#: resources/views/admin/location-edit.phtml:65
 #: resources/views/modules/fanchart/page.phtml:44
 msgid "Zoom"
 msgstr "放大"
 
-#: resources/views/admin/location-edit.phtml:135
+#: resources/views/admin/location-edit.phtml:134
 #: resources/views/modules/pedigree-map/chart.phtml:95
 #: resources/views/modules/place-hierarchy/map.phtml:92
 #: resources/views/modules/places/tab.phtml:85
@@ -17546,7 +17561,7 @@ msgstr "放大"
 msgid "Zoom level"
 msgstr "變焦倍數"
 
-#: resources/views/admin/location-edit.phtml:136
+#: resources/views/admin/location-edit.phtml:135
 #: resources/views/modules/pedigree-map/chart.phtml:96
 #: resources/views/modules/place-hierarchy/map.phtml:93
 #: resources/views/modules/places/tab.phtml:86
@@ -17593,7 +17608,7 @@ msgstr "接受"
 #. I18N: A button label.
 #: resources/views/admin/trees-privacy.phtml:224
 #: resources/views/admin/webtrees1-thumbnails-form.phtml:18
-#: resources/views/edit/add-fact-row.phtml:39
+#: resources/views/edit/add-fact-row.phtml:41
 #: resources/views/edit/paste-fact-row.phtml:40
 #: resources/views/modules/census-assistant.phtml:60
 #: resources/views/modules/lifespans-chart/page.phtml:66
@@ -17638,7 +17653,7 @@ msgstr "過繼/收養儿女"
 msgid "after %s"
 msgstr "在 %s 之後"
 
-#: app/Functions/FunctionsPrint.php:276
+#: app/Functions/FunctionsPrint.php:280
 msgid "after death"
 msgstr "去世後"
 
@@ -17858,7 +17873,7 @@ msgstr "舅子/姨子"
 
 # I18N: An option in a list-box
 #. I18N: An option in a list-box
-#: app/Module/TopSurnamesModule.php:235
+#: app/Module/TopSurnamesModule.php:239
 msgid "bullet list"
 msgstr "項目符號列表"
 
@@ -17883,7 +17898,7 @@ msgstr "計算出 %s"
 #: resources/views/admin/broadcast.phtml:61
 #: resources/views/admin/components.phtml:144
 #: resources/views/admin/email-page.phtml:59
-#: resources/views/admin/location-edit.phtml:82
+#: resources/views/admin/location-edit.phtml:81
 #: resources/views/admin/site-mail.phtml:250
 #: resources/views/admin/site-preferences.phtml:95
 #: resources/views/admin/site-registration.phtml:81
@@ -17897,8 +17912,8 @@ msgstr "計算出 %s"
 #: resources/views/edit/link-child-to-family.phtml:44
 #: resources/views/edit/link-spouse-to-individual.phtml:36
 #: resources/views/edit/new-individual.phtml:322
-#: resources/views/edit/raw-gedcom-fact.phtml:35
-#: resources/views/edit/raw-gedcom-record.phtml:61
+#: resources/views/edit/raw-gedcom-fact.phtml:36
+#: resources/views/edit/raw-gedcom-record.phtml:62
 #: resources/views/edit/reorder-children.phtml:46
 #: resources/views/edit/reorder-families.phtml:100
 #: resources/views/edit/reorder-media.phtml:39
@@ -17911,7 +17926,7 @@ msgstr "計算出 %s"
 #: resources/views/modules/clippings/download.phtml:65
 #: resources/views/modules/custom-css-js/edit.phtml:45
 #: resources/views/modules/edit-block-config.phtml:29
-#: resources/views/modules/favorites/favorites.phtml:145
+#: resources/views/modules/favorites/favorites.phtml:171
 #: resources/views/modules/gedcom_news/edit.phtml:46
 #: resources/views/modules/stories/edit.phtml:65
 #: resources/views/modules/user_blog/edit.phtml:46
@@ -17971,7 +17986,7 @@ msgstr "顔色"
 
 # I18N: An option in a list-box
 #. I18N: An option in a list-box
-#: app/Module/TopSurnamesModule.php:237
+#: app/Module/TopSurnamesModule.php:241
 msgid "compact list"
 msgstr "緊湊列表"
 
@@ -18046,8 +18061,8 @@ msgstr "親家"
 msgid "death"
 msgstr "去世"
 
-#: resources/views/admin/location-edit.phtml:50
-#: resources/views/admin/location-edit.phtml:61
+#: resources/views/admin/location-edit.phtml:49
+#: resources/views/admin/location-edit.phtml:60
 msgid "degrees"
 msgstr "度數"
 
@@ -18205,7 +18220,7 @@ msgstr "前妻"
 msgid "export file"
 msgstr "導出文件"
 
-#: app/Http/Controllers/AdminTreesController.php:750
+#: app/Http/Controllers/AdminTreesController.php:752
 #: resources/xml/reports/fact_sources.xml:6
 msgid "facts"
 msgstr "事實"
@@ -20275,15 +20290,15 @@ msgstr "長輩在左"
 # I18N: An option in a list-box
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
-#: app/Http/Controllers/AdminTreesController.php:727
-#: app/Module/OnThisDayModule.php:238 app/Module/RecentChangesModule.php:184
+#: app/Http/Controllers/AdminTreesController.php:729
+#: app/Module/OnThisDayModule.php:247 app/Module/RecentChangesModule.php:221
 #: app/Module/TopGivenNamesModule.php:182
-#: app/Module/UpcomingAnniversariesModule.php:259
-#: app/Module/YahrzeitModule.php:242
+#: app/Module/UpcomingAnniversariesModule.php:268
+#: app/Module/YahrzeitModule.php:252
 msgid "list"
 msgstr "列表"
 
-#: app/Http/Controllers/Admin/LocationController.php:761
+#: app/Http/Controllers/Admin/LocationController.php:772
 #, php-format
 msgid "locations updated: %s, locations added: %s"
 msgstr "地點 %s 已更新, 地點 %s 已添加"
@@ -20299,7 +20314,7 @@ msgid "managers"
 msgstr "管理員"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
-#: app/Http/Controllers/AdminTreesController.php:745
+#: app/Http/Controllers/AdminTreesController.php:747
 msgid "markdown"
 msgstr "Markdown"
 
@@ -20650,8 +20665,8 @@ msgstr "不"
 
 # I18N: None of the other options
 #. I18N: None of the other options
-#: app/Http/Controllers/AdminTreesController.php:743
-#: app/Http/Controllers/AdminTreesController.php:749
+#: app/Http/Controllers/AdminTreesController.php:745
+#: app/Http/Controllers/AdminTreesController.php:751
 #: app/Module/RelationshipsChartModule.php:456
 #: app/Services/EmailService.php:221
 #: resources/views/modules/statistics-chart/custom.phtml:75
@@ -20683,7 +20698,7 @@ msgstr "數字"
 msgid "of"
 msgstr "從"
 
-#: app/Functions/FunctionsPrint.php:274
+#: app/Functions/FunctionsPrint.php:278
 msgid "on the date of death"
 msgstr "去世日期"
 
@@ -20772,7 +20787,7 @@ msgstr "主要証據"
 msgid "questionable evidence"
 msgstr "可疑的証據"
 
-#: app/Http/Controllers/AdminTreesController.php:751
+#: app/Http/Controllers/AdminTreesController.php:753
 #: resources/xml/reports/fact_sources.xml:6
 msgid "records"
 msgstr "記錄"
@@ -20845,7 +20860,7 @@ msgstr "長輩在右"
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:31
 #: resources/views/admin/components.phtml:139
-#: resources/views/admin/location-edit.phtml:78
+#: resources/views/admin/location-edit.phtml:77
 #: resources/views/admin/map-provider.phtml:55
 #: resources/views/admin/merge-records-step-2.phtml:165
 #: resources/views/admin/modules.phtml:267
@@ -20864,8 +20879,8 @@ msgstr "長輩在右"
 #: resources/views/edit/link-child-to-family.phtml:39
 #: resources/views/edit/link-spouse-to-individual.phtml:31
 #: resources/views/edit/new-individual.phtml:310
-#: resources/views/edit/raw-gedcom-fact.phtml:31
-#: resources/views/edit/raw-gedcom-record.phtml:57
+#: resources/views/edit/raw-gedcom-fact.phtml:32
+#: resources/views/edit/raw-gedcom-record.phtml:58
 #: resources/views/edit/reorder-children.phtml:36
 #: resources/views/edit/reorder-families.phtml:95
 #: resources/views/edit/reorder-media.phtml:34
@@ -20876,7 +20891,7 @@ msgstr "長輩在右"
 #: resources/views/modules/custom-css-js/edit.phtml:40
 #: resources/views/modules/edit-block-config.phtml:25
 #: resources/views/modules/faq/edit.phtml:77
-#: resources/views/modules/favorites/favorites.phtml:149
+#: resources/views/modules/favorites/favorites.phtml:175
 #: resources/views/modules/gedcom_news/edit.phtml:42
 #: resources/views/modules/relationships-chart/config.phtml:46
 #: resources/views/modules/sitemap/config.phtml:28
@@ -21122,6 +21137,13 @@ msgstr "第七代堂兄(妹)"
 msgid "show"
 msgstr "顯示"
 
+#. I18N: button label
+#: resources/views/lists/anniversaries-list.phtml:23
+#: resources/views/modules/recent_changes/changes-list.phtml:21
+#: resources/views/modules/yahrzeit/list.phtml:20
+msgid "show more"
+msgstr ""
+
 #: resources/views/modules/statistics-chart/custom.phtml:200
 msgid "show the chart"
 msgstr "顯示圖形"
@@ -21243,8 +21265,8 @@ msgstr "儿子/儿媳"
 
 # I18N: An option in a list-box
 #. I18N: An option in a list-box
-#: app/Module/OnThisDayModule.php:247
-#: app/Module/UpcomingAnniversariesModule.php:268
+#: app/Module/OnThisDayModule.php:256
+#: app/Module/UpcomingAnniversariesModule.php:277
 #: resources/xml/reports/change_report.xml:7
 msgid "sort by date"
 msgstr "按日期排序"
@@ -21278,20 +21300,20 @@ msgstr "按結婚日期排序"
 
 # I18N: An option in a list-box
 #. I18N: An option in a list-box
-#: app/Module/RecentChangesModule.php:195
+#: app/Module/RecentChangesModule.php:232
 msgid "sort by date, newest first"
 msgstr "按日期排序，最新的優先"
 
 # I18N: An option in a list-box
 #. I18N: An option in a list-box
-#: app/Module/RecentChangesModule.php:193
+#: app/Module/RecentChangesModule.php:230
 msgid "sort by date, oldest first"
 msgstr "按日期排序，最老的優先"
 
 # I18N: An option in a list-box
 #. I18N: An option in a list-box
-#: app/Module/OnThisDayModule.php:245 app/Module/RecentChangesModule.php:191
-#: app/Module/UpcomingAnniversariesModule.php:266
+#: app/Module/OnThisDayModule.php:254 app/Module/RecentChangesModule.php:228
+#: app/Module/UpcomingAnniversariesModule.php:275
 #: resources/xml/reports/bdm_report.xml:11
 #: resources/xml/reports/birth_report.xml:9
 #: resources/xml/reports/cemetery_report.xml:6
@@ -21423,11 +21445,11 @@ msgstr "繼子"
 # I18N: An option in a list-box
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
-#: app/Http/Controllers/AdminTreesController.php:729
-#: app/Module/OnThisDayModule.php:240 app/Module/RecentChangesModule.php:186
-#: app/Module/TopGivenNamesModule.php:184 app/Module/TopSurnamesModule.php:239
-#: app/Module/UpcomingAnniversariesModule.php:261
-#: app/Module/YahrzeitModule.php:244
+#: app/Http/Controllers/AdminTreesController.php:731
+#: app/Module/OnThisDayModule.php:249 app/Module/RecentChangesModule.php:223
+#: app/Module/TopGivenNamesModule.php:184 app/Module/TopSurnamesModule.php:243
+#: app/Module/UpcomingAnniversariesModule.php:270
+#: app/Module/YahrzeitModule.php:254
 msgid "table"
 msgstr "表"
 
@@ -21435,8 +21457,8 @@ msgstr "表"
 # I18N: An option in a list-box
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
-#: app/Http/Controllers/AdminTreesController.php:731
-#: app/Module/TopSurnamesModule.php:241
+#: app/Http/Controllers/AdminTreesController.php:733
+#: app/Module/TopSurnamesModule.php:245
 msgid "tag cloud"
 msgstr "標簽云"
 
@@ -21795,7 +21817,7 @@ msgstr "“%s” 已被刪除。"
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
 
-#: app/Functions/FunctionsPrint.php:89 app/Note.php:160
+#: app/Functions/FunctionsPrint.php:93 app/Note.php:160
 #: app/Report/ReportParserGenerate.php:985
 #: app/Report/ReportParserGenerate.php:1080
 msgid "…"
@@ -21847,6 +21869,12 @@ msgstr "…"
 
 #~ msgid "A new password has been requested for your username."
 #~ msgstr "需要為這個用戶名輸入新的密碼。"
+
+#~ msgid "Add a brother or sister"
+#~ msgstr "添加一個兄弟或姐妹"
+
+#~ msgid "Add a son or daughter"
+#~ msgstr "添加一個兒子或女兒"
 
 #~ msgid "Add an associate"
 #~ msgstr "添加相關人員"
