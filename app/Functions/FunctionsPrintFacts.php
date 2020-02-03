@@ -236,7 +236,7 @@ class FunctionsPrintFacts
                 echo $fact->value();
                 break;
             case 'AFN':
-                echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->value()), '">', e($fact->value()), '</a></div>';
+                echo '<div class="field"><a href="https://www.familysearch.org/search/family-trees/results#count=20&query=afn:', rawurlencode($fact->value()), '">', e($fact->value()), '</a></div>';
                 break;
             case 'ASSO':
                 // we handle this later, in format_asso_rela_record()
