@@ -134,7 +134,11 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     public function getTabContent(Individual $individual): string
     {
         return view('modules/places/tab', [
-            'data' => $this->getMapData($individual),
+            'data'     => $this->getMapData($individual),
+            'provider' => [
+                'name'    => 'OpenStreetMap.Mapnik',
+                'options' => []
+            ]
         ]);
     }
 
