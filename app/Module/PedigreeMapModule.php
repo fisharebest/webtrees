@@ -62,6 +62,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
     // Limits
     public const MAXIMUM_GENERATIONS = 10;
+    private const MINZOOM            = 2;
 
     private const COLORS = [
         'Red',
@@ -185,85 +186,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
      *
      * @return ResponseInterface
      */
-    public function getMapDataAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref        = $request->getQueryParams()['xref'];
-        $individual  = Individual::getInstance($xref, $tree);
-        $color_count = count(self::COLORS);
-
-        $facts = $this->getPedigreeMapFacts($request, $this->chart_service);
-
-        $geojson = [
-            'type'     => 'FeatureCollection',
-            'features' => [],
-        ];
-
-        $sosa_points = [];
-
-        foreach ($facts as $id => $fact) {
-            $location = new Location($fact->place()->gedcomName());
-
-            // Use the co-ordinates from the fact (if they exist).
-            $latitude  = $fact->latitude();
-            $longitude = $fact->longitude();
-
-            // Use the co-ordinates from the location otherwise.
-            if ($latitude === 0.0 && $longitude === 0.0) {
-                $latitude  = $location->latitude();
-                $longitude = $location->longitude();
-            }
-
-            if ($latitude !== 0.0 || $longitude !== 0.0) {
-                $polyline         = null;
-                $sosa_points[$id] = [$latitude, $longitude];
-                $sosa_child       = intdiv($id, 2);
-                $color            = self::COLORS[$sosa_child % $color_count];
-
-                if (array_key_exists($sosa_child, $sosa_points)) {
-                    // Would like to use a GeometryCollection to hold LineStrings
-                    // rather than generate polylines but the MarkerCluster library
-                    // doesn't seem to like them
-                    $polyline = [
-                        'points'  => [
-                            $sosa_points[$sosa_child],
-                            [$latitude, $longitude],
-                        ],
-                        'options' => [
-                            'color' => $color,
-                        ],
-                    ];
-                }
-                $geojson['features'][] = [
-                    'type'       => 'Feature',
-                    'id'         => $id,
-                    'geometry'   => [
-                        'type'        => 'Point',
-                        'coordinates' => [$longitude, $latitude],
-                    ],
-                    'properties' => [
-                        'polyline'  => $polyline,
-                        'iconcolor' => $color,
-                        'tooltip'   => strip_tags($fact->place()->fullName()),
-                        'summary'   => view('modules/pedigree-map/events', $this->summaryData($individual, $fact, $id)),
-                        'zoom'      => $location->zoom() ?: 2,
-                    ],
-                ];
-            }
-        }
-
-        $code = $facts === [] ? StatusCodeInterface::STATUS_NO_CONTENT : StatusCodeInterface::STATUS_OK;
-
-        return response($geojson, $code);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
@@ -291,8 +213,11 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         }
 
         $map = view('modules/pedigree-map/chart', [
-            'individual'  => $individual,
-            'generations' => $generations,
+            'data'     => $this->getMapData($request),
+            'provider' => [
+                'name'    => "OpenStreetMap.Mapnik",
+                'options' => []
+            ]
         ]);
 
         return $this->viewResponse('modules/pedigree-map/page', [
@@ -309,6 +234,84 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
     /**
      * @param ServerRequestInterface $request
+     *
+     * @return array $geojson
+     *
+     */
+    private function getMapData(ServerRequestInterface $request): array
+    {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        $xref        = $request->getAttribute('xref');
+        $individual  = Individual::getInstance($xref, $tree);
+        $color_count = count(self::COLORS);
+
+        $facts = $this->getPedigreeMapFacts($request, $this->chart_service);
+
+        $geojson = [
+              'type'     => 'FeatureCollection',
+              'features' => [],
+          ];
+
+        $sosa_points = [];
+
+        foreach ($facts as $id => $fact) {
+            $location = new Location($fact->place()->gedcomName());
+
+            // Use the co-ordinates from the fact (if they exist).
+            $latitude  = $fact->latitude();
+            $longitude = $fact->longitude();
+
+            // Use the co-ordinates from the location otherwise.
+            if ($latitude === 0.0 && $longitude === 0.0) {
+                $latitude  = $location->latitude();
+                $longitude = $location->longitude();
+            }
+
+            if ($latitude !== 0.0 || $longitude !== 0.0) {
+                $polyline         = null;
+                $sosa_points[$id] = [$latitude, $longitude];
+                $sosa_child       = intdiv($id, 2);
+                $color            = self::COLORS[$sosa_child % $color_count];
+
+                if (array_key_exists($sosa_child, $sosa_points)) {
+                    // Would like to use a GeometryCollection to hold LineStrings
+                    // rather than generate polylines but the MarkerCluster library
+                    // doesn't seem to like them
+                    $polyline = [
+                          'points'  => [
+                              $sosa_points[$sosa_child],
+                              [$latitude, $longitude],
+                          ],
+                          'options' => [
+                              'color' => $color,
+                          ],
+                      ];
+                }
+                $geojson['features'][] = [
+                      'type'       => 'Feature',
+                      'id'         => $id,
+                      'geometry'   => [
+                          'type'        => 'Point',
+                          'coordinates' => [$longitude, $latitude],
+                      ],
+                      'properties' => [
+                          'polyline'  => $polyline,
+                          'iconcolor' => $color,
+                          'tooltip'   => strip_tags($fact->record()->fullName()) .  "\n"  . ucfirst($this->getSosaName($id)),
+                          'summary'   => view('modules/pedigree-map/events', $this->summaryData($individual, $fact, $id)),
+                          'zoom'      => $location->zoom() ?: self::MINZOOM,
+                      ],
+                  ];
+            }
+        }
+
+        return $geojson;
+    }
+
+    /**
+     * @param ServerRequestInterface $request
      * @param ChartService           $chart_service
      *
      * @return array
@@ -318,8 +321,8 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $generations = (int) $request->getQueryParams()['generations'];
-        $xref        = $request->getQueryParams()['xref'];
+        $generations = (int) $request->getAttribute('generations');
+        $xref        = $request->getAttribute('xref');
         $individual  = Individual::getInstance($xref, $tree);
         $ancestors   = $chart_service->sosaStradonitzAncestors($individual, $generations);
         $facts       = [];
