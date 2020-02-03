@@ -91,7 +91,11 @@ class PlaceHierarchyController extends AbstractBaseController
 
         if ($showmap) {
             $content .= view('modules/place-hierarchy/map', [
-                'data'   => $this->mapData($place),
+                'data'     => $this->mapData($place),
+                'provider' => [
+                    'name'    => 'OpenStreetMap.Mapnik',
+                    'options' => []
+                ]
             ]);
         }
 
