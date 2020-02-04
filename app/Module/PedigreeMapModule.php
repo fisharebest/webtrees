@@ -24,9 +24,7 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
@@ -38,11 +36,16 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
+use function array_key_exists;
 use function assert;
+use function count;
 use function intdiv;
 use function is_string;
 use function redirect;
+use function response;
 use function route;
+use function strip_tags;
+use function ucfirst;
 use function view;
 
 /**
@@ -63,6 +66,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     // Limits
     public const MAXIMUM_GENERATIONS = 10;
 
+    // CSS colors for each generation
     private const COLORS = [
         'Red',
         'Green',
@@ -75,7 +79,8 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         'Magenta',
         'Brown',
     ];
-    private const MINZOOM = 2;
+
+    private const DEFAULT_ZOOM = 2;
 
     /** @var ChartService */
     private $chart_service;
@@ -249,7 +254,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                         'iconcolor' => $color,
                         'tooltip'   => strip_tags($fact->place()->fullName()),
                         'summary'   => view('modules/pedigree-map/events', $this->summaryData($fact, $id)),
-                        'zoom'      => $location->zoom() ?: self::MINZOOM,
+                        'zoom'      => $location->zoom() ?: self::DEFAULT_ZOOM,
                     ],
                 ];
             }
@@ -337,29 +342,17 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     }
 
     /**
-     * @param Fact  $fact
-     * @param int   $sosa
+     * @param Fact $fact
+     * @param int  $sosa
      *
      * @return array
      */
     private function summaryData(Fact $fact, int $sosa): array
     {
-        if ($sosa === 1) {
-            $url    = '';
-            $name   = '';
-        } else {
-            $record = $fact->record();
-            $url    = $record->url();
-            $name   = $record->fullName();
-        }
-
         return [
-            'tag'   => ucfirst($this->getSosaName($sosa)),
-            'url'   => $url,
-            'name'  => $name,
-            'date'  => $fact->date()->display(true),
-            'place' => $fact->place(),
-            'etag'  => $fact->getTag()
+            'fact'         => $fact,
+            'relationship' => ucfirst($this->getSosaName($sosa)),
+            'sosa'         => $sosa,
         ];
     }
 
