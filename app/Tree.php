@@ -695,7 +695,7 @@ class Tree
             }
         }
 
-        if ($this->getUserPreference($user, User::PREF_TREE_DEFAULT_XREF) !== '') {
+        if ($individual === null && $this->getUserPreference($user, User::PREF_TREE_DEFAULT_XREF) !== '') {
             $individual = Individual::getInstance($this->getUserPreference($user, User::PREF_TREE_DEFAULT_XREF), $this);
         }
 
