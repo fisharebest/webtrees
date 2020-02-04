@@ -15,7 +15,7 @@ jobs:
       - uses: shivammathur/setup-php@master
         with:
           php-version: 7.4
-          extension-csv: gd,intl,sqlite,zip
+          extensions: gd,intl,mbstring,sqlite,zip
           coverage: disable
 
       - run: composer global require phpstan/phpstan phpstan/extension-installer phpstan/phpstan-deprecation-rules phpstan/phpstan-strict-rules phpstan/phpstan-phpunit
