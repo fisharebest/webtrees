@@ -242,8 +242,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     /**
      * @param ServerRequestInterface $request
      *
-     * @return array $geojson
-     *
+     * @return array<mixed> $geojson
      */
     private function getMapData(ServerRequestInterface $request): array
     {
@@ -255,9 +254,9 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $facts = $this->getPedigreeMapFacts($request, $this->chart_service);
 
         $geojson = [
-              'type'     => 'FeatureCollection',
-              'features' => [],
-          ];
+            'type'     => 'FeatureCollection',
+            'features' => [],
+        ];
 
         $sosa_points = [];
 
@@ -285,14 +284,14 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                     // rather than generate polylines but the MarkerCluster library
                     // doesn't seem to like them
                     $polyline = [
-                          'points'  => [
-                              $sosa_points[$sosa_child],
-                              [$latitude, $longitude],
-                          ],
-                          'options' => [
-                              'color' => $color,
-                          ],
-                      ];
+                        'points'  => [
+                            $sosa_points[$sosa_child],
+                            [$latitude, $longitude],
+                        ],
+                        'options' => [
+                            'color' => $color,
+                        ],
+                    ];
                 }
                 $geojson['features'][] = [
                     'type'       => 'Feature',
