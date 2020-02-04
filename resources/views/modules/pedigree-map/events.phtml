@@ -13,23 +13,12 @@ use Fisharebest\Webtrees\GedcomTag;
     </a>
 <?php endif ?>
 
-<?php if ($value) : ?>
-    <span>
-        <?= $value ?>
-    </span>
-<?php endif ?>
-
 <div>
-    <?php if ($addtag) : ?>
-        <?= GedcomTag::getLabel('BIRT') ?>:
-    <?php endif ?>
-    <?= $date ?>
+    <?= GedcomTag::getLabel($etag) ?>: <?= $date ?>
 </div>
 
-<?php if ($place->gedcomName() !== '') : ?>
-    <div>
-        <a href="<?= e($place->url()) ?>">
-            <?= $place->fullName() ?>
-        </a>
-    </div>
-<?php endif ?>
+<div>
+    <a href="<?= e($place->url()) ?>">
+        <?= $place->fullName() ?>
+    </a>
+</div>

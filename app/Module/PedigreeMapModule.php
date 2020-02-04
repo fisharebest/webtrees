@@ -75,6 +75,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         'Magenta',
         'Brown',
     ];
+    private const MINZOOM = 2;
 
     /** @var ChartService */
     private $chart_service;
@@ -247,8 +248,8 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                         'polyline'  => $polyline,
                         'iconcolor' => $color,
                         'tooltip'   => strip_tags($fact->place()->fullName()),
-                        'summary'   => view('modules/pedigree-map/events', $this->summaryData($individual, $fact, $id)),
-                        'zoom'      => $location->zoom() ?: 2,
+                        'summary'   => view('modules/pedigree-map/events', $this->summaryData($fact, $id)),
+                        'zoom'      => $location->zoom() ?: self::MINZOOM,
                     ],
                 ];
             }
@@ -336,47 +337,29 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     }
 
     /**
-     * @param Individual $individual
-     * @param Fact       $fact
-     * @param int        $sosa
+     * @param Fact  $fact
+     * @param int   $sosa
      *
      * @return array
      */
-    private function summaryData(Individual $individual, Fact $fact, int $sosa): array
+    private function summaryData(Fact $fact, int $sosa): array
     {
-        $record      = $fact->record();
-        $name        = '';
-        $url         = '';
-        $tag         = $fact->label();
-        $addbirthtag = false;
-
-        if ($record instanceof Family) {
-            // Marriage
-            $spouse = $record->spouse($individual);
-            if ($spouse) {
-                $url  = $spouse->url();
-                $name = $spouse->fullName();
-            }
-        } elseif ($record !== $individual) {
-            // Birth of a child
-            $url  = $record->url();
-            $name = $record->fullName();
-            $tag  = GedcomTag::getLabel('_BIRT_CHIL', $record);
-        }
-
-        if ($sosa > 1) {
-            $addbirthtag = true;
-            $tag         = ucfirst($this->getSosaName($sosa));
+        if ($sosa === 1) {
+            $url    = '';
+            $name   = '';
+        } else {
+            $record = $fact->record();
+            $url    = $record->url();
+            $name   = $record->fullName();
         }
 
         return [
-            'tag'    => $tag,
-            'url'    => $url,
-            'name'   => $name,
-            'value'  => $fact->value(),
-            'date'   => $fact->date()->display(true),
-            'place'  => $fact->place(),
-            'addtag' => $addbirthtag,
+            'tag'   => ucfirst($this->getSosaName($sosa)),
+            'url'   => $url,
+            'name'  => $name,
+            'date'  => $fact->date()->display(true),
+            'place' => $fact->place(),
+            'etag'  => $fact->getTag()
         ];
     }
 
