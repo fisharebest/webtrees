@@ -1,35 +1,30 @@
 <?php
 
-use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Fact;
+
+/**
+ * @var Fact   $fact
+ * @var string $relationship
+ * @var int    $sosa
+ */
 
 ?>
 <div class="label">
-    <?= $tag ?>
+    <?= $relationship ?>
 </div>
 
-<?php if ($url) : ?>
-    <a href="<?= e($url) ?>">
-        <?= $name ?>
+<?php if ($sosa !== 1) : ?>
+    <a href="<?= e($fact->record()->url()) ?>">
+        <?= $fact->record()->fullName() ?>
     </a>
 <?php endif ?>
 
-<?php if ($value) : ?>
-    <span>
-        <?= $value ?>
-    </span>
-<?php endif ?>
-
 <div>
-    <?php if ($addtag) : ?>
-        <?= GedcomTag::getLabel('BIRT') ?>:
-    <?php endif ?>
-    <?= $date ?>
+    <?= $fact->label() ?>: <?= $fact->date()->display(true) ?>
 </div>
 
-<?php if ($place->gedcomName() !== '') : ?>
-    <div>
-        <a href="<?= e($place->url()) ?>">
-            <?= $place->fullName() ?>
-        </a>
-    </div>
-<?php endif ?>
+<div>
+    <a href="<?= e($fact->place()->url()) ?>">
+        <?= $fact->place()->fullName() ?>
+    </a>
+</div>

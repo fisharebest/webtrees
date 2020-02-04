@@ -24,9 +24,8 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
@@ -38,11 +37,16 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
+use function array_key_exists;
 use function assert;
+use function count;
 use function intdiv;
 use function is_string;
 use function redirect;
+use function response;
 use function route;
+use function strip_tags;
+use function ucfirst;
 use function view;
 
 /**
@@ -64,6 +68,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     public const MAXIMUM_GENERATIONS = 10;
     private const MINZOOM            = 2;
 
+    // CSS colors for each generation
     private const COLORS = [
         'Red',
         'Green',
@@ -76,6 +81,8 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         'Magenta',
         'Brown',
     ];
+
+    private const DEFAULT_ZOOM = 2;
 
     /** @var ChartService */
     private $chart_service;
@@ -243,8 +250,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref        = $request->getAttribute('xref');
-        $individual  = Individual::getInstance($xref, $tree);
         $color_count = count(self::COLORS);
 
         $facts = $this->getPedigreeMapFacts($request, $this->chart_service);
@@ -256,7 +261,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
         $sosa_points = [];
 
-        foreach ($facts as $id => $fact) {
+        foreach ($facts as $sosa => $fact) {
             $location = new Location($fact->place()->gedcomName());
 
             // Use the co-ordinates from the fact (if they exist).
@@ -270,10 +275,10 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
             }
 
             if ($latitude !== 0.0 || $longitude !== 0.0) {
-                $polyline         = null;
-                $sosa_points[$id] = [$latitude, $longitude];
-                $sosa_child       = intdiv($id, 2);
-                $color            = self::COLORS[$sosa_child % $color_count];
+                $polyline           = null;
+                $sosa_points[$sosa] = [$latitude, $longitude];
+                $sosa_child         = intdiv($sosa, 2);
+                $color              = self::COLORS[$sosa_child % $color_count];
 
                 if (array_key_exists($sosa_child, $sosa_points)) {
                     // Would like to use a GeometryCollection to hold LineStrings
@@ -290,20 +295,24 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                       ];
                 }
                 $geojson['features'][] = [
-                      'type'       => 'Feature',
-                      'id'         => $id,
-                      'geometry'   => [
-                          'type'        => 'Point',
-                          'coordinates' => [$longitude, $latitude],
-                      ],
-                      'properties' => [
-                          'polyline'  => $polyline,
-                          'iconcolor' => $color,
-                          'tooltip'   => strip_tags($fact->record()->fullName()) .  "\n"  . ucfirst($this->getSosaName($id)),
-                          'summary'   => view('modules/pedigree-map/events', $this->summaryData($individual, $fact, $id)),
-                          'zoom'      => $location->zoom() ?: self::MINZOOM,
-                      ],
-                  ];
+                    'type'       => 'Feature',
+                    'id'         => $sosa,
+                    'geometry'   => [
+                        'type'        => 'Point',
+                        'coordinates' => [$longitude, $latitude],
+                    ],
+                    'properties' => [
+                        'polyline'  => $polyline,
+                        'iconcolor' => $color,
+                        'tooltip'   => strip_tags($fact->place()->fullName()),
+                        'summary'   => view('modules/pedigree-map/events', [
+                            'fact'         => $fact,
+                            'relationship' => ucfirst($this->getSosaName($sosa)),
+                            'sosa'         => $sosa,
+                        ]),
+                        'zoom'      => $location->zoom() ?: self::DEFAULT_ZOOM,
+                    ],
+                ];
             }
         }
 
@@ -328,59 +337,19 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $facts       = [];
         foreach ($ancestors as $sosa => $person) {
             if ($person->canShow()) {
-                $birth = $person->facts(['BIRT'])->first();
-                if ($birth instanceof Fact && $birth->place()->gedcomName() !== '') {
+                $birth = $person->facts(Gedcom::BIRTH_EVENTS, true)
+                    ->filter(static function (Fact $fact): bool {
+                        return $fact->place()->gedcomName() !== '';
+                    })
+                    ->first();
+
+                if ($birth instanceof Fact) {
                     $facts[$sosa] = $birth;
                 }
             }
         }
 
         return $facts;
-    }
-
-    /**
-     * @param Individual $individual
-     * @param Fact       $fact
-     * @param int        $sosa
-     *
-     * @return array
-     */
-    private function summaryData(Individual $individual, Fact $fact, int $sosa): array
-    {
-        $record      = $fact->record();
-        $name        = '';
-        $url         = '';
-        $tag         = $fact->label();
-        $addbirthtag = false;
-
-        if ($record instanceof Family) {
-            // Marriage
-            $spouse = $record->spouse($individual);
-            if ($spouse) {
-                $url  = $spouse->url();
-                $name = $spouse->fullName();
-            }
-        } elseif ($record !== $individual) {
-            // Birth of a child
-            $url  = $record->url();
-            $name = $record->fullName();
-            $tag  = GedcomTag::getLabel('_BIRT_CHIL', $record);
-        }
-
-        if ($sosa > 1) {
-            $addbirthtag = true;
-            $tag         = ucfirst($this->getSosaName($sosa));
-        }
-
-        return [
-            'tag'    => $tag,
-            'url'    => $url,
-            'name'   => $name,
-            'value'  => $fact->value(),
-            'date'   => $fact->date()->display(true),
-            'place'  => $fact->place(),
-            'addtag' => $addbirthtag,
-        ];
     }
 
     /**

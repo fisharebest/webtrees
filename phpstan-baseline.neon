@@ -1696,22 +1696,12 @@ parameters:
 			path: app/Module/NotesTabModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$individual of method Fisharebest\\\\Webtrees\\\\Module\\\\PedigreeMapModule\\:\\:summaryData\\(\\) expects Fisharebest\\\\Webtrees\\\\Individual, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
-			count: 1
-			path: app/Module/PedigreeMapModule.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\PedigreeMapModule\\:\\:getPedigreeMapFacts\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Module/PedigreeMapModule.php
 
 		-
 			message: "#^Parameter \\#1 \\$individual of method Fisharebest\\\\Webtrees\\\\Services\\\\ChartService\\:\\:sosaStradonitzAncestors\\(\\) expects Fisharebest\\\\Webtrees\\\\Individual, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
-			count: 1
-			path: app/Module/PedigreeMapModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\PedigreeMapModule\\:\\:summaryData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Module/PedigreeMapModule.php
 
