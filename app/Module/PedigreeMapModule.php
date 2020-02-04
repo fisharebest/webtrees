@@ -25,6 +25,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
@@ -34,6 +35,7 @@ use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+
 use function app;
 use function array_key_exists;
 use function assert;
@@ -195,8 +197,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref        = $request->getQueryParams()['xref'];
-        $individual  = Individual::getInstance($xref, $tree);
         $color_count = count(self::COLORS);
 
         $facts = $this->getPedigreeMapFacts($request, $this->chart_service);
@@ -334,8 +334,13 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $facts       = [];
         foreach ($ancestors as $sosa => $person) {
             if ($person->canShow()) {
-                $birth = $person->facts(['BIRT'])->first();
-                if ($birth instanceof Fact && $birth->place()->gedcomName() !== '') {
+                $birth = $person->facts(Gedcom::BIRTH_EVENTS, true)
+                    ->filter(static function (Fact $fact): bool {
+                        return $fact->place()->gedcomName() !== '';
+                    })
+                    ->first();
+
+                if ($birth instanceof Fact) {
                     $facts[$sosa] = $birth;
                 }
             }
