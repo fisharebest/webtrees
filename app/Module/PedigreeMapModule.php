@@ -34,7 +34,6 @@ use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
 use function app;
 use function array_key_exists;
 use function assert;
@@ -209,7 +208,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
         $sosa_points = [];
 
-        foreach ($facts as $id => $fact) {
+        foreach ($facts as $sosa => $fact) {
             $location = new Location($fact->place()->gedcomName());
 
             // Use the co-ordinates from the fact (if they exist).
@@ -223,10 +222,10 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
             }
 
             if ($latitude !== 0.0 || $longitude !== 0.0) {
-                $polyline         = null;
-                $sosa_points[$id] = [$latitude, $longitude];
-                $sosa_child       = intdiv($id, 2);
-                $color            = self::COLORS[$sosa_child % $color_count];
+                $polyline           = null;
+                $sosa_points[$sosa] = [$latitude, $longitude];
+                $sosa_child         = intdiv($sosa, 2);
+                $color              = self::COLORS[$sosa_child % $color_count];
 
                 if (array_key_exists($sosa_child, $sosa_points)) {
                     // Would like to use a GeometryCollection to hold LineStrings
@@ -244,7 +243,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                 }
                 $geojson['features'][] = [
                     'type'       => 'Feature',
-                    'id'         => $id,
+                    'id'         => $sosa,
                     'geometry'   => [
                         'type'        => 'Point',
                         'coordinates' => [$longitude, $latitude],
@@ -253,7 +252,11 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                         'polyline'  => $polyline,
                         'iconcolor' => $color,
                         'tooltip'   => strip_tags($fact->place()->fullName()),
-                        'summary'   => view('modules/pedigree-map/events', $this->summaryData($fact, $id)),
+                        'summary'   => view('modules/pedigree-map/events', [
+                            'fact'         => $fact,
+                            'relationship' => ucfirst($this->getSosaName($sosa)),
+                            'sosa'         => $sosa,
+                        ]),
                         'zoom'      => $location->zoom() ?: self::DEFAULT_ZOOM,
                     ],
                 ];
@@ -339,21 +342,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         }
 
         return $facts;
-    }
-
-    /**
-     * @param Fact $fact
-     * @param int  $sosa
-     *
-     * @return array
-     */
-    private function summaryData(Fact $fact, int $sosa): array
-    {
-        return [
-            'fact'         => $fact,
-            'relationship' => ucfirst($this->getSosaName($sosa)),
-            'sosa'         => $sosa,
-        ];
     }
 
     /**
