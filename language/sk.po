@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-01-30 10:03+0000\n"
+"PO-Revision-Date: 2020-02-05 13:24+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -7471,7 +7471,7 @@ msgstr "Import"
 
 #: admin_trees_manage.php:178
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "Importovať  GEDCOM-súbor"
 
 #: app/Module/GoogleMapsModule.php:4036
 msgid "Import all places from a family tree"
@@ -8555,12 +8555,12 @@ msgstr "Malta"
 #: admin_trees_places.php:91 admin_trees_unconnected.php:74
 #: app/Theme/AdministrationTheme.php:127
 msgid "Manage family trees"
-msgstr ""
+msgstr "Správa rodokmeňov"
 
 #. I18N: Menu entry
 #: admin_media.php:588 app/Theme/AdministrationTheme.php:178
 msgid "Manage media"
-msgstr ""
+msgstr "Spravovať média"
 
 #: admin_media.php:535 app/Controller/MediaController.php:49
 #: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
@@ -16288,6 +16288,9 @@ msgstr "Váš uživatelský účet nemá povolené „automaticky schvaľovať z
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr ""
+"Váš webový server používa PHP verziu %s, pre ktorú sa už dlhšiu dobu "
+"nevydávajú bezpečnostné aktualizácie. Mali by ste  čím skôr spraviť upgrade "
+"na vyššiu verziu."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6925
