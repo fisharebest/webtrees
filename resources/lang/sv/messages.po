@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-02-03 09:12+0000\n"
-"PO-Revision-Date: 2020-01-23 14:00+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
-"Language: sv\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-05 13:24+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -1210,14 +1194,14 @@ msgstr "Lägg %s till i urklippskorgen"
 
 #: resources/views/modules/relatives/family.phtml:207
 msgid "Add a brother"
-msgstr ""
+msgstr "Lägg till en bror"
 
 #: app/Http/Controllers/EditFamilyController.php:57
 #: resources/views/family-page-children.phtml:35
 #: resources/views/family-page-menu.phtml:39
 #: resources/views/modules/relatives/family.phtml:215
 msgid "Add a child"
-msgstr "Lägg till barn"
+msgstr "Lägg till ett barn"
 
 #: app/Http/Controllers/EditIndividualController.php:57
 #: resources/views/modules/relatives/tab.phtml:137
@@ -1226,11 +1210,11 @@ msgstr "Lägg till ett barn för att skapa en enföräldersfamilj"
 
 #: resources/views/modules/relatives/family.phtml:211
 msgid "Add a daughter"
-msgstr ""
+msgstr "Lägg till en dotter"
 
 #: resources/views/edit/raw-gedcom-record.phtml:47
 msgid "Add a fact"
-msgstr "Lägg till faktum"
+msgstr "Lägg till ett faktum"
 
 #: app/Http/Controllers/EditIndividualController.php:159
 #: resources/views/family-page-grandparents.phtml:24
@@ -1308,15 +1292,15 @@ msgstr "Lägg till en delad anteckning"
 
 #: resources/views/modules/relatives/family.phtml:215
 msgid "Add a sibling"
-msgstr ""
+msgstr "Lägg till ett syskon"
 
 #: resources/views/modules/relatives/family.phtml:211
 msgid "Add a sister"
-msgstr ""
+msgstr "Lägg till en syster"
 
 #: resources/views/modules/relatives/family.phtml:207
 msgid "Add a son"
-msgstr ""
+msgstr "Lägg till en son"
 
 #: resources/views/family-page.phtml:110 resources/views/media-page.phtml:161
 #: resources/views/modules/sources_tab/tab.phtml:43
@@ -19670,7 +19654,7 @@ msgstr "visa"
 #: resources/views/modules/recent_changes/changes-list.phtml:21
 #: resources/views/modules/yahrzeit/list.phtml:20
 msgid "show more"
-msgstr ""
+msgstr "visa mer"
 
 #: resources/views/modules/statistics-chart/custom.phtml:200
 msgid "show the chart"
