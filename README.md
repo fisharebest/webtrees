@@ -62,6 +62,8 @@ webtrees follows the [PHP Standards Recommendations](https://www.php-fig.org/psr
 
 We do not currently use [PSR-3 (logging)](https://www.php-fig.org/psr/psr-3) - but we plan to do so in the future.
 
+For JavaScript, we use [semistandard](https://github.com/standard/semistandard).
+
 ## Introduction
 
 **webtrees** is the web's leading online collaborative genealogy application.
