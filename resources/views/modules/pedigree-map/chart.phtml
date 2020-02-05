@@ -28,6 +28,15 @@ use Fisharebest\Webtrees\View;
         font-size: small;
     }
 
+    /* used in sidebar */
+    .dot {
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: white;
+        display: inline-block;
+    }
+
 </style>
 <?php View::endpush() ?>
 
@@ -168,31 +177,27 @@ window.WT_OSM = (function () {
     return this;
   };
 
-// Activate marker popup when sidebar entry clicked
-  $(function () {
-    sidebar
-    // open marker popup if sidebar event is clicked
-    .on('click', '.gchart', function (e) {
-      // first close any existing
-      map.closePopup();
-      let eventId  = $(this).data('id');
-      //find the marker corresponding to the clicked event
-      let mkrLayer = markers.getLayers().filter(function (v) {
-        return typeof (v.feature) !== 'undefined' && v.feature.id === eventId;
-      });
-      let mkr      = mkrLayer.pop();
-      // Unfortunately zoomToShowLayer zooms to maxZoom
-      // when all marker in a cluster have exactly the
-      // same co-ordinates
-      markers.zoomToShowLayer(mkr, function (e) {
-        mkr.openPopup();
-      });
-
-      return false;
-    })
-    .on('click', 'a', function (e) { // stop click on a person also opening the popup
-      e.stopPropagation();
+  // open marker popup if sidebar event is clicked
+  $('body').on('click', '.open-popup', function (e) {
+    // first close any existing
+    map.closePopup();
+    let eventId  = $(this).parents('.gchart').data('id');
+    //find the marker corresponding to the clicked event
+    let mkrLayer = markers.getLayers().filter(function (v) {
+      return typeof (v.feature) !== 'undefined' && v.feature.id === eventId;
     });
+    let mkr = mkrLayer.pop();
+    // Unfortunately zoomToShowLayer zooms to maxZoom
+    // when all marker in a cluster have exactly the
+    // same co-ordinates
+    markers.zoomToShowLayer(mkr, function (e) {
+      mkr.openPopup();
+    });
+
+    return false;
+  })
+  .on('click', '.open-popup a', function (e) { // stop click on a person also opening the popup
+    e.stopPropagation();
   });
 
   _drawMap();
