@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-01-30 10:03+0000\n"
+"PO-Revision-Date: 2020-02-05 13:24+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sv/>\n"
@@ -1274,7 +1274,7 @@ msgstr "Lägg till en bror eller syster"
 
 #: edit_interface.php:496
 msgid "Add a child"
-msgstr "Lägg till barn"
+msgstr "Lägg till ett barn"
 
 #: app/Module/RelativesTabModule.php:398 edit_interface.php:575
 msgid "Add a child to create a one-parent family"
@@ -1286,7 +1286,7 @@ msgstr "Lägg till barn till denna familj"
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr "Lägg till faktum"
+msgstr "Lägg till ett faktum"
 
 #: app/Module/RelativesTabModule.php:326 edit_interface.php:655 family.php:92
 msgid "Add a father"
