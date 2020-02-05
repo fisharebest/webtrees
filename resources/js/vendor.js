@@ -13,136 +13,138 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import $ from "jquery";
-window.$ = window.jQuery = $;
+import $ from 'jquery';
 
-import "popper.js";
-import "bootstrap";
-import "datatables.net";
+import 'popper.js';
+import 'bootstrap';
+import 'datatables.net';
 
 // Just import the subset of icons that we use in resources/views/icons/
-import { dom, library } from "@fortawesome/fontawesome-svg-core";
+import { dom, library } from '@fortawesome/fontawesome-svg-core';
 import {
-    // For resources/views/icons/*
-    faBell, faCopy, faEnvelope, faFile, faFileAlt, faFileImage, faFolder, faKeyboard,
-    faMinusSquare, faPlusSquare, faStar, faStickyNote, faTrashAlt, faUser,
-} from "@fortawesome/free-regular-svg-icons";
+  // For resources/views/icons/*
+  faBell, faCopy, faEnvelope, faFile, faFileAlt, faFileImage, faFolder, faKeyboard,
+  faMinusSquare, faPlusSquare, faStar, faStickyNote, faTrashAlt, faUser
+} from '@fortawesome/free-regular-svg-icons';
+import {
+  // For resources/views/icons/*
+  faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
+  faCalendar, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
+  faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
+  faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faPaintBrush, faPause, faPencilAlt,
+  faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchMinus, faSearchPlus,
+  faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faThList, faThumbtack,
+  faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench,
+  // For the BeautifyMarker library
+  faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater
+} from '@fortawesome/free-solid-svg-icons';
+import 'corejs-typeahead';
+
+import 'datatables.net-bs4';
+
+import Sortable from 'sortablejs';
+
+import 'select2';
+// import "select2/dist/js/i18n/*.js";
+
+import 'select2/dist/js/i18n/af.js';
+import 'select2/dist/js/i18n/ar.js';
+import 'select2/dist/js/i18n/az.js';
+import 'select2/dist/js/i18n/bg.js';
+import 'select2/dist/js/i18n/bn.js';
+import 'select2/dist/js/i18n/bs.js';
+import 'select2/dist/js/i18n/ca.js';
+import 'select2/dist/js/i18n/cs.js';
+import 'select2/dist/js/i18n/da.js';
+import 'select2/dist/js/i18n/de.js';
+import 'select2/dist/js/i18n/dsb.js';
+import 'select2/dist/js/i18n/el.js';
+import 'select2/dist/js/i18n/en.js';
+import 'select2/dist/js/i18n/es.js';
+import 'select2/dist/js/i18n/et.js';
+import 'select2/dist/js/i18n/eu.js';
+import 'select2/dist/js/i18n/fa.js';
+import 'select2/dist/js/i18n/fi.js';
+import 'select2/dist/js/i18n/fr.js';
+import 'select2/dist/js/i18n/gl.js';
+import 'select2/dist/js/i18n/he.js';
+import 'select2/dist/js/i18n/hi.js';
+import 'select2/dist/js/i18n/hr.js';
+import 'select2/dist/js/i18n/hsb.js';
+import 'select2/dist/js/i18n/hu.js';
+import 'select2/dist/js/i18n/hy.js';
+import 'select2/dist/js/i18n/id.js';
+import 'select2/dist/js/i18n/is.js';
+import 'select2/dist/js/i18n/it.js';
+import 'select2/dist/js/i18n/ja.js';
+import 'select2/dist/js/i18n/ka.js';
+import 'select2/dist/js/i18n/km.js';
+import 'select2/dist/js/i18n/ko.js';
+import 'select2/dist/js/i18n/lt.js';
+import 'select2/dist/js/i18n/lv.js';
+import 'select2/dist/js/i18n/mk.js';
+import 'select2/dist/js/i18n/ms.js';
+import 'select2/dist/js/i18n/nb.js';
+import 'select2/dist/js/i18n/ne.js';
+import 'select2/dist/js/i18n/nl.js';
+import 'select2/dist/js/i18n/pl.js';
+import 'select2/dist/js/i18n/ps.js';
+import 'select2/dist/js/i18n/pt-BR.js';
+import 'select2/dist/js/i18n/pt.js';
+import 'select2/dist/js/i18n/ro.js';
+import 'select2/dist/js/i18n/ru.js';
+import 'select2/dist/js/i18n/sk.js';
+import 'select2/dist/js/i18n/sl.js';
+import 'select2/dist/js/i18n/sq.js';
+import 'select2/dist/js/i18n/sr-Cyrl.js';
+import 'select2/dist/js/i18n/sr.js';
+import 'select2/dist/js/i18n/sv.js';
+import 'select2/dist/js/i18n/th.js';
+import 'select2/dist/js/i18n/tk.js';
+import 'select2/dist/js/i18n/tr.js';
+import 'select2/dist/js/i18n/uk.js';
+import 'select2/dist/js/i18n/vi.js';
+import 'select2/dist/js/i18n/zh-CN.js';
+import 'select2/dist/js/i18n/zh-TW.js';
+
+import 'hideshowpassword';
+
+import 'moment';
+
+import 'jquery-colorbox';
+
+import 'wheelzoom';
+
+import 'leaflet';
+import 'leaflet-providers';
+import 'leaflet.markercluster';
+import 'beautifymarker';
+
+window.$ = window.jQuery = $;
+
 library.add(
-    // For resources/views/icons/*
-    faBell, faCopy, faEnvelope, faFile, faFileAlt, faFileImage, faFolder, faKeyboard,
-    faMap, faMinusSquare, faPlusSquare, faStar, faStickyNote, faTrashAlt, faUser,
+  // For resources/views/icons/*
+  faBell, faCopy, faEnvelope, faFile, faFileAlt, faFileImage, faFolder, faKeyboard,
+  faMap, faMinusSquare, faPlusSquare, faStar, faStickyNote, faTrashAlt, faUser
 );
-import {
-    // For resources/views/icons/*
-    faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
-    faCalendar, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
-    faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
-    faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faPaintBrush, faPause, faPencilAlt,
-    faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchMinus, faSearchPlus,
-    faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faThList, faThumbtack,
-    faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench,
-    // For the BeautifyMarker library
-    faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater,
-} from "@fortawesome/free-solid-svg-icons";
 library.add(
-    // For resources/views/icons/*
-    faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
-    faCalendar, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
-    faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
-    faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faPaintBrush, faPause, faPencilAlt,
-    faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchMinus, faSearchPlus,
-    faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faThList, faThumbtack,
-    faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench,
-    // For the BeautifyMarker library
-    faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater,
+  // For resources/views/icons/*
+  faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
+  faCalendar, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
+  faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
+  faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faPaintBrush, faPause, faPencilAlt,
+  faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchMinus, faSearchPlus,
+  faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faThList, faThumbtack,
+  faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench,
+  // For the BeautifyMarker library
+  faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater
 );
 dom.watch();
 
-window.Bloodhound = require("corejs-typeahead/dist/bloodhound.min.js");
-import "corejs-typeahead";
-
-import "datatables.net-bs4";
+window.Bloodhound = require('corejs-typeahead/dist/bloodhound.min.js');
 
 // See https://github.com/RubaXa/Sortable/issues/1229
-//window.Sortable = require('sortablejs');
-import Sortable from 'sortablejs';
+// window.Sortable = require('sortablejs');
 window.Sortable = Sortable;
 
-import "select2";
-//import "select2/dist/js/i18n/*.js";
-
-import "select2/dist/js/i18n/af.js";
-import "select2/dist/js/i18n/ar.js";
-import "select2/dist/js/i18n/az.js";
-import "select2/dist/js/i18n/bg.js";
-import "select2/dist/js/i18n/bn.js";
-import "select2/dist/js/i18n/bs.js";
-import "select2/dist/js/i18n/ca.js";
-import "select2/dist/js/i18n/cs.js";
-import "select2/dist/js/i18n/da.js";
-import "select2/dist/js/i18n/de.js";
-import "select2/dist/js/i18n/dsb.js";
-import "select2/dist/js/i18n/el.js";
-import "select2/dist/js/i18n/en.js";
-import "select2/dist/js/i18n/es.js";
-import "select2/dist/js/i18n/et.js";
-import "select2/dist/js/i18n/eu.js";
-import "select2/dist/js/i18n/fa.js";
-import "select2/dist/js/i18n/fi.js";
-import "select2/dist/js/i18n/fr.js";
-import "select2/dist/js/i18n/gl.js";
-import "select2/dist/js/i18n/he.js";
-import "select2/dist/js/i18n/hi.js";
-import "select2/dist/js/i18n/hr.js";
-import "select2/dist/js/i18n/hsb.js";
-import "select2/dist/js/i18n/hu.js";
-import "select2/dist/js/i18n/hy.js";
-import "select2/dist/js/i18n/id.js";
-import "select2/dist/js/i18n/is.js";
-import "select2/dist/js/i18n/it.js";
-import "select2/dist/js/i18n/ja.js";
-import "select2/dist/js/i18n/ka.js";
-import "select2/dist/js/i18n/km.js";
-import "select2/dist/js/i18n/ko.js";
-import "select2/dist/js/i18n/lt.js";
-import "select2/dist/js/i18n/lv.js";
-import "select2/dist/js/i18n/mk.js";
-import "select2/dist/js/i18n/ms.js";
-import "select2/dist/js/i18n/nb.js";
-import "select2/dist/js/i18n/ne.js";
-import "select2/dist/js/i18n/nl.js";
-import "select2/dist/js/i18n/pl.js";
-import "select2/dist/js/i18n/ps.js";
-import "select2/dist/js/i18n/pt-BR.js";
-import "select2/dist/js/i18n/pt.js";
-import "select2/dist/js/i18n/ro.js";
-import "select2/dist/js/i18n/ru.js";
-import "select2/dist/js/i18n/sk.js";
-import "select2/dist/js/i18n/sl.js";
-import "select2/dist/js/i18n/sq.js";
-import "select2/dist/js/i18n/sr-Cyrl.js";
-import "select2/dist/js/i18n/sr.js";
-import "select2/dist/js/i18n/sv.js";
-import "select2/dist/js/i18n/th.js";
-import "select2/dist/js/i18n/tk.js";
-import "select2/dist/js/i18n/tr.js";
-import "select2/dist/js/i18n/uk.js";
-import "select2/dist/js/i18n/vi.js";
-import "select2/dist/js/i18n/zh-CN.js";
-import "select2/dist/js/i18n/zh-TW.js";
-
-import "hideshowpassword";
-
-import "moment";
-
-import "lightGallery";
-import "lg-zoom";
-import "lg-thumbnail";
-import "lg-fullscreen";
-import "lg-autoplay";
-
-import "leaflet";
-import "leaflet-providers";
-window.GeoSearch = require("leaflet-geosearch");
-import "leaflet.markercluster";
-import "beautifymarker";
+window.GeoSearch = require('leaflet-geosearch');
