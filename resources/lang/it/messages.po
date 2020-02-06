@@ -1,23 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-02-03 09:12+0000\n"
-"PO-Revision-Date: 2020-01-30 10:04+0000\n"
-"Last-Translator: Luca Bighi <luca74@email.it>\n"
-"Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
-"Language: it\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Language: it_IT\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-Language: Italian\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-10 09:01+0000\nLast-Translator: Luca Bighi <luca74@email.it>\nLanguage-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\nLanguage: it\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Language: it_IT\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: .\nX-Poedit-Language: Italian\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -1212,23 +1194,23 @@ msgstr "Aggiungi %s al carrello ritagli"
 
 #: resources/views/modules/relatives/family.phtml:207
 msgid "Add a brother"
-msgstr ""
+msgstr "Aggiungi un fratello"
 
 #: app/Http/Controllers/EditFamilyController.php:57
 #: resources/views/family-page-children.phtml:35
 #: resources/views/family-page-menu.phtml:39
 #: resources/views/modules/relatives/family.phtml:215
 msgid "Add a child"
-msgstr "Aggiungi un figlio"
+msgstr "Aggiungi un/a figlio/a"
 
 #: app/Http/Controllers/EditIndividualController.php:57
 #: resources/views/modules/relatives/tab.phtml:137
 msgid "Add a child to create a one-parent family"
-msgstr "Aggiungi un figlio per creare una famiglia monoparentale"
+msgstr "Aggiungi un/a figlio/a per creare una famiglia monoparentale"
 
 #: resources/views/modules/relatives/family.phtml:211
 msgid "Add a daughter"
-msgstr ""
+msgstr "Aggiungi una figlia"
 
 #: resources/views/edit/raw-gedcom-record.phtml:47
 msgid "Add a fact"
@@ -1310,15 +1292,15 @@ msgstr "Aggiungi una nota condivisa"
 
 #: resources/views/modules/relatives/family.phtml:215
 msgid "Add a sibling"
-msgstr ""
+msgstr "Aggiungi un fratello di genere ignoto"
 
 #: resources/views/modules/relatives/family.phtml:211
 msgid "Add a sister"
-msgstr ""
+msgstr "Aggiungi una sorella"
 
 #: resources/views/modules/relatives/family.phtml:207
 msgid "Add a son"
-msgstr ""
+msgstr "Aggiungi un figlio"
 
 #: resources/views/family-page.phtml:110 resources/views/media-page.phtml:161
 #: resources/views/modules/sources_tab/tab.phtml:43
@@ -1387,7 +1369,7 @@ msgstr "Aggiungi dettagli matrimonio"
 #. I18N: Name of a module
 #: app/Module/FixMissingMarriedNames.php:70
 msgid "Add married names"
-msgstr ""
+msgstr "Aggiungi nomi coniugali"
 
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:59
@@ -1925,7 +1907,7 @@ msgstr "Un grafico a clessidra contenente antenati e discendenti di una persona.
 
 #: resources/views/edit/reorder-families.phtml:65
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr ""
+msgstr "Un individuo può avere più coppie di genitori. Per esempio, naturali e adottivi."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:63
@@ -3972,12 +3954,12 @@ msgstr "Pannello di controllo"
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:61
 msgid "Convert CEME tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Converte i tag CEME a GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:49
 msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Converte i tag _PRIM a GEDCOM 5.5.1"
 
 #: app/Http/RequestHandlers/HelpText.php:266
 #: resources/views/admin/trees-export.phtml:65
@@ -3988,7 +3970,7 @@ msgstr "Converti da UTF-8 ad ISO-8859-1"
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr ""
+msgstr "Converte in"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
@@ -4340,7 +4322,7 @@ msgstr "Controllo delle date"
 #: resources/views/admin/data-fix-page.phtml:68
 #: resources/views/admin/data-fix-select.phtml:28
 msgid "Data fix"
-msgstr ""
+msgstr "Correzione delle date"
 
 #: app/Http/Controllers/Admin/ModuleController.php:142
 #: app/Http/RequestHandlers/DataFixChoose.php:69
@@ -4350,11 +4332,11 @@ msgstr ""
 #: resources/views/admin/data-fix-page.phtml:23
 #: resources/views/admin/trees.phtml:132
 msgid "Data fixes"
-msgstr ""
+msgstr "Correzioni delle date"
 
 #: resources/views/help/data-fixes.phtml:8
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
-msgstr ""
+msgstr "La correzione delle date richiede molti calcoli complessi, perciò non è possibile creare una lista esatta dei record che devono essere aggiornati."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
@@ -6447,7 +6429,7 @@ msgstr "Ad esempio, se si specifica una lunghezza di percorso pari a 2, la perso
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr ""
+msgstr "Ad esempio, si possono individuare facilmente gli individui che non hanno un evento \"decesso\", ma è più lento calcolare se l'individuo potrebbe essere defunto."
 
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
@@ -10937,7 +10919,7 @@ msgstr "Inserire un indirizzo email corretto."
 #: app/Http/RequestHandlers/PasswordResetPage.php:77
 #: app/Http/RequestHandlers/RegisterAction.php:98
 msgid "Please try again."
-msgstr ""
+msgstr "Riprovare."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:143
@@ -11017,7 +10999,7 @@ msgstr "Codice postale"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:41
 msgid "Powered by webtrees™"
-msgstr ""
+msgstr "Basato su webtrees™"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:151
@@ -11128,12 +11110,12 @@ msgstr "Privacy"
 #: app/Module/PrivacyPolicy.php:67 app/Module/PrivacyPolicy.php:128
 #: resources/views/modules/privacy-policy/footer.phtml:10
 msgid "Privacy policy"
-msgstr ""
+msgstr "Informativa sulla privacy"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.phtml:9
 msgid "Privacy restriction"
-msgstr ""
+msgstr "Restrizioni per privacy"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:159
@@ -11153,7 +11135,7 @@ msgstr "Confidenziale"
 
 #: resources/views/admin/site-mail.phtml:225
 msgid "Private key"
-msgstr ""
+msgstr "Chiave privata"
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:943
@@ -11377,7 +11359,7 @@ msgstr "Riordina oggetti multimediali"
 #: resources/views/individual-page-menu.phtml:30
 #: resources/views/individual-page-menu.phtml:35
 msgid "Re-order names"
-msgstr ""
+msgstr "Riordina i nomi"
 
 #: resources/views/admin/users-create.phtml:19
 #: resources/views/admin/users-edit.phtml:23
@@ -11391,7 +11373,7 @@ msgstr "Nome reale"
 
 #: resources/views/admin/map-import-form.phtml:91
 msgid "Really delete all geographic data?"
-msgstr ""
+msgstr "Vuoi veramente cancellare tutti i dati geografici?"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:77
@@ -11623,12 +11605,12 @@ msgstr "Ricrea numerazione albero genealogico"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
-msgstr ""
+msgstr "Sostituisci"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:72
 msgid "Replace cemetery tags with burial places."
-msgstr ""
+msgstr "Sostituisci il tag cimitero con il luogo di sepoltura."
 
 #: resources/views/search-replace-page.phtml:26
 msgid "Replace with"
@@ -11729,7 +11711,7 @@ msgstr "I compiti di ricerca vengono memorizzati con il tag GEDCOM personalizzat
 #: resources/views/modules/place-hierarchy/map.phtml:72
 #: resources/views/modules/places/tab.phtml:61
 msgid "Reset to initial map state"
-msgstr ""
+msgstr "Ripristina lo stato iniziale della mappa"
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:967
@@ -11778,7 +11760,7 @@ msgstr "Rexburg, Idaho, Stati Uniti d'America"
 
 #: app/Module/PedigreeChartModule.php:391
 msgid "Right"
-msgstr ""
+msgstr "Destra"
 
 #. I18N: gedcom tag ROLE
 #: app/GedcomTag.php:994 resources/views/admin/users-edit.phtml:269
@@ -11830,7 +11812,7 @@ msgstr "Server di posta SMTP"
 
 #: app/Services/ServerCheckService.php:323
 msgid "SQLite is only suitable for small sites, testing and evaluation."
-msgstr ""
+msgstr "SQLite è utilizzabile per piccoli siti, test e valutazione."
 
 #: app/Services/ServerCheckService.php:216
 #, php-format
@@ -12081,7 +12063,7 @@ msgstr "Vedere %s per ulteriori informazioni."
 #: resources/views/admin/merge-records-step-2.phtml:82
 #: resources/views/admin/merge-records-step-2.phtml:128
 msgid "Select"
-msgstr ""
+msgstr "Scegli"
 
 #: resources/views/admin/trees-import.phtml:24
 msgid "Select a GEDCOM file to import"
@@ -12095,7 +12077,7 @@ msgstr "Selezionare una data"
 
 #: resources/views/modules/lifespans-chart/page.phtml:30
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Scegli individui in base al posto o alla data"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:130
