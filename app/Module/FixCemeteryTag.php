@@ -126,7 +126,7 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
      */
     public function doesRecordNeedUpdate(GedcomRecord $record, array $params): bool
     {
-        return $record->facts(['BURI'], false, null, false)
+        return $record->facts(['BURI'], false, null, true)
             ->filter(static function (Fact $fact): bool {
                 return preg_match('/\n[23] CEME/', $fact->gedcom()) === 1;
             })
@@ -146,7 +146,7 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
         $old = [];
         $new = [];
 
-        foreach ($record->facts(['BURI'], false, null, false) as $fact) {
+        foreach ($record->facts(['BURI'], false, null, true) as $fact) {
             $old[] = $fact->gedcom();
             $new[] = $this->updateGedcom($fact, $params);
         }
@@ -167,7 +167,7 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
      */
     public function updateRecord(GedcomRecord $record, array $params): void
     {
-        foreach ($record->facts(['BURI'], false, null, false) as $fact) {
+        foreach ($record->facts(['BURI'], false, null, true) as $fact) {
             $record->updateFact($fact->id(), $this->updateGedcom($fact, $params), false);
         }
     }
@@ -184,7 +184,7 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
 
         if (preg_match('/\n\d CEME ?(.+)(?:\n\d PLOT ?(.+))?/', $gedcom, $match)) {
             $ceme = $match[1];
-            $plot = $match[2];
+            $plot = $match[2] ?? '';
 
             // Merge PLOT with CEME
             if ($plot !== '') {
