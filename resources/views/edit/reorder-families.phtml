@@ -104,18 +104,25 @@ use Fisharebest\Webtrees\View;
 
 <?php View::push('javascript') ?>
 <script>
-    new Sortable(document.querySelector(".wt-sortable-list-famc"), {
-        handle: ".drag-handle",
-    });
+    const famc_list = document.querySelector(".wt-sortable-list-famc");
+    const fams_list = document.querySelector(".wt-sortable-list-fams");
 
-    new Sortable(document.querySelector(".wt-sortable-list-fams"), {
+    if (famc_list !== null) {
+      new Sortable(famc_list, {
         handle: ".drag-handle",
-    });
+      });
+    }
 
-    $("#btn-default-order").on("click", function() {
+    if (fams_list !== null) {
+      new Sortable(fams_list, {
+        handle: ".drag-handle",
+      });
+
+      $("#btn-default-order").on("click", function() {
         $(".wt-sortable-list-fams .wt-sortable-item").sort(function(x, y) {
-            return Math.sign(x.dataset.sortbydate - y.dataset.sortbydate);
+          return Math.sign(x.dataset.sortbydate - y.dataset.sortbydate);
         }).appendTo(".wt-sortable-list-fams");
-    });
+      });
+    }
 </script>
 <?php View::endpush() ?>
