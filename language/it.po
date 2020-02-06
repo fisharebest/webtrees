@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-02-05 13:24+0000\n"
+"PO-Revision-Date: 2020-02-10 09:01+0000\n"
 "Last-Translator: Luca Bighi <luca74@email.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/it/>\n"
@@ -1279,11 +1279,11 @@ msgstr "Aggiungi un fratello o una sorella"
 
 #: edit_interface.php:496
 msgid "Add a child"
-msgstr "Aggiungi un figlio"
+msgstr "Aggiungi un/a figlio/a"
 
 #: app/Module/RelativesTabModule.php:398 edit_interface.php:575
 msgid "Add a child to create a one-parent family"
-msgstr "Aggiungi un figlio per creare una famiglia monoparentale"
+msgstr "Aggiungi un/a figlio/a per creare una famiglia monoparentale"
 
 #: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
@@ -11983,7 +11983,7 @@ msgstr "Vedere %s per ulteriori informazioni."
 
 #: admin_site_merge.php:214 admin_site_merge.php:261 admin_site_merge.php:307
 msgid "Select"
-msgstr ""
+msgstr "Scegli"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:208
@@ -12008,7 +12008,7 @@ msgstr "Selezionare la bandiera"
 
 #: lifespan.php:41
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Scegli individui in base al posto o alla data"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:44
