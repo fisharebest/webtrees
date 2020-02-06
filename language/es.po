@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-09 18:04+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Spanish <http://translate.webtrees.net/projects/webtrees/"
+"PO-Revision-Date: 2020-02-10 09:01+0000\n"
+"Last-Translator: Jorge Ruiz Calpe <loquiyoz@gmail.com>\n"
+"Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -77,7 +77,7 @@ msgstr "%1$s %2$s tiene un enlace %3$s a %4$s."
 #: app/Functions/Functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s %2$s times removed ascending"
+msgstr "%1$s %2$s grado"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2135
@@ -6420,7 +6420,9 @@ msgstr "Nombre de carpeta en el servidor"
 
 #: login.php:342
 msgid "Follow this link to verify your email address."
-msgstr "Haga clic en el vínculo siguiente y verifiquesu dirección de correo electrónico."
+msgstr ""
+"Haga clic en el vínculo siguiente y verifique su dirección de correo "
+"electrónico."
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
