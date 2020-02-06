@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-09 09:33+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: German <http://translate.webtrees.net/projects/webtrees/"
+"PO-Revision-Date: 2020-02-10 09:01+0000\n"
+"Last-Translator: Martin <der@bauschaffen.de>\n"
+"Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -11924,7 +11924,7 @@ msgstr "Suchfilter"
 
 #: admin_trees_places.php:103 search.php:76 search.php:156
 msgid "Search for"
-msgstr "Suche aus"
+msgstr "Suchen nach"
 
 #: app/Module/GoogleMapsModule.php:3351
 msgid "Search globally"
