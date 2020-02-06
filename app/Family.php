@@ -54,15 +54,18 @@ class Family extends GedcomRecord
     {
         parent::__construct($xref, $gedcom, $pending, $tree);
 
+        // Make sure we find records in pending records.
+        $gedcom_pending = $gedcom . "\n" . $pending;
+
         // Fetch family members
-        if (preg_match_all('/^1 (?:HUSB|WIFE|CHIL) @(.+)@/m', $gedcom . $pending, $match)) {
+        if (preg_match_all('/\n1 (?:HUSB|WIFE|CHIL) @(.+)@/', $gedcom_pending, $match)) {
             Individual::load($tree, $match[1]);
         }
 
-        if (preg_match('/^1 HUSB @(.+)@/m', $gedcom . $pending, $match)) {
+        if (preg_match('/\n1 HUSB @(.+)@/', $gedcom_pending, $match)) {
             $this->husb = Individual::getInstance($match[1], $tree);
         }
-        if (preg_match('/^1 WIFE @(.+)@/m', $gedcom . $pending, $match)) {
+        if (preg_match('/\n1 WIFE @(.+)@/', $gedcom_pending, $match)) {
             $this->wife = Individual::getInstance($match[1], $tree);
         }
     }
