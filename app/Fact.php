@@ -588,9 +588,9 @@ class Fact
 
         $class = 'fact_' . $this->getTag();
         if ($this->isPendingAddition()) {
-            $class .= ' new';
+            $class .= ' wt-new';
         } elseif ($this->isPendingDeletion()) {
-            $class .= ' old';
+            $class .= ' wt-old';
         }
 
         return

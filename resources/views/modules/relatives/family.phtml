@@ -26,9 +26,9 @@ use Fisharebest\Webtrees\I18N; ?>
             if ($person instanceof Individual) {
                 $row_class = 'wt-gender-' . $person->sex();
                 if ($fact->isPendingAddition()) {
-                    $row_class .= ' new';
+                    $row_class .= ' wt-new';
                 } elseif ($fact->isPendingDeletion()) {
-                    $row_class .= ' old';
+                    $row_class .= ' wt-old';
                 }
                 ?>
                 <tr class="<?= $row_class ?>">
@@ -63,9 +63,9 @@ use Fisharebest\Webtrees\I18N; ?>
                 $found |= !$fact->isPendingDeletion();
                 $row_class = 'wt-gender-' . $person->sex();
                 if ($fact->isPendingAddition()) {
-                    $row_class .= ' new';
+                    $row_class .= ' wt-new';
                 } elseif ($fact->isPendingDeletion()) {
-                    $row_class .= ' old';
+                    $row_class .= ' wt-old';
                 }
                 ?>
 

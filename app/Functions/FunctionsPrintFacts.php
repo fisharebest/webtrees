@@ -968,10 +968,10 @@ class FunctionsPrintFacts
         $tree    = $parent->tree();
 
         if ($fact->isPendingAddition()) {
-            $styleadd = ' new';
+            $styleadd = ' wt-new';
             $can_edit = $level === 1 && $fact->canEdit();
         } elseif ($fact->isPendingDeletion()) {
-            $styleadd = ' old';
+            $styleadd = ' wt-old';
             $can_edit = false;
         } else {
             $styleadd = '';
