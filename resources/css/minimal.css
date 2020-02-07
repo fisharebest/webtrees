@@ -737,7 +737,7 @@ div.faq_body {
  */
 .wt-ajax-load:empty {
     height: 32px;
-    background: url(images/loading-32x32.gif) no-repeat 50% 50%;
+    background: url(images/loading.gif) no-repeat 50% 50%;
 }
 
 /*
@@ -887,7 +887,7 @@ a > .wt-icon-arrow-up:hover {
 }
 
 .icon-loading-large {
-    content: url(images/loading-32x32.gif);
+    content: url(images/loading.gif);
 }
 
 .icon-minus {

@@ -26,11 +26,13 @@ mix
     })
     .setPublicPath('./public')
     .sourceMaps()
+    .sass('resources/sass/vendor.scss', 'public/css/vendor.min.css')
     .js("resources/js/vendor.js", "public/js/vendor.min.js")
     .babel(["resources/js/webtrees.js", "resources/js/statistics.js", "resources/js/treeview.js"], "public/js/webtrees.min.js")
     .copy("node_modules/leaflet/dist/images/*", "public/css/images/")
     .copy("node_modules/leaflet-control-geocoder/dist/images/*", "public/css/images/")
     .copy("node_modules/dejavu-fonts-ttf/ttf/DejaVuSans.ttf", "resources/fonts/")
+    .copy("node_modules/lightgallery/dist/fonts/*", "public/css/fonts/")
     .options({
             processCssUrls: false,
             postCss: [
@@ -63,5 +65,4 @@ mix
     .postCss("resources/css/fab.css", "public/css/fab.min.css")
     .postCss("resources/css/minimal.css", "public/css/minimal.min.css")
     .postCss("resources/css/webtrees.css", "public/css/webtrees.min.css")
-    .postCss("resources/css/xenea.css", "public/css/xenea.min.css")
-    .postCss("resources/css/vendor.css", "public/css/vendor.min.css");
+    .postCss("resources/css/xenea.css", "public/css/xenea.min.css");

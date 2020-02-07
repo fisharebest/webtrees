@@ -1,0 +1,60 @@
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2020 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../../node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css";
+@import '../css/begin-ignore-rtl.css';
+@import "../../node_modules/select2/dist/css/select2.min.css";
+@import "../css/end-ignore-rtl.css";
+@import "../../node_modules/typeahead.js-bootstrap4-css/typeaheadjs.css";
+@import "../../node_modules/leaflet/dist/leaflet.css";
+@import "../../node_modules/beautifymarker/leaflet-beautify-marker-icon.css";
+@import "../../node_modules/leaflet-control-geocoder/dist/Control.Geocoder.css";
+@import "../../node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css";
+@import "../../node_modules/leaflet.markercluster/dist/MarkerCluster.css";
+@import "../css/_vendor-patches.css";
+
+/*  lightGallery
+    Over-ride some default sass variables & styles
+    Initially tried to place the font files in resources/fonts
+    but the recommended server configuration bars access
+    to urls, so put them in public/css/fonts instead
+*/
+ $lg-path-fonts   : 'fonts'!default;
+ $lg-path-images  : 'images'!default;
+ $backdrop-opacity: 0.6 !default;
+ $lg-thumb-bg: #F4F0EC!default;
+
+ @import '../../node_modules/lightGallery/src/sass/lg-variables';
+ @import '../../node_modules/lightGallery/src/sass/lg-mixins';
+ @import '../../node_modules/lightGallery/src/sass/lg-fonts';
+ @import '../../node_modules/lightGallery/src/sass/lg-theme-default';
+ @import '../../node_modules/lightGallery/src/sass/lg-thumbnail';
+ @import '../../node_modules/lightGallery/src/sass/lg-autoplay';
+ @import '../../node_modules/lightGallery/src/sass/lg-zoom';
+ @import '../../node_modules/lightGallery/src/sass/lg-transitions';
+ @import '../../node_modules/lightGallery/src/sass/lg-fullscreen';
+ @import '../../node_modules/lightGallery/src/sass/lg-share';
+ @import '../../node_modules/lightGallery/src/sass/lg-core';
+
+  .lg-thumb-item {
+    border: 2px solid transparent!important;
+    &.active, &:hover {
+        border-color: $lg-theme-highlight!important;
+    }
+    img {
+        object-fit: scale-down!important;
+    }
+ }

@@ -111,8 +111,13 @@ import 'hideshowpassword';
 
 import 'moment';
 
-import 'jquery-colorbox';
-import 'pinch-zoom-element';
+import 'lightGallery';
+import 'lg-zoom';
+import 'lg-thumbnail';
+import 'lg-fullscreen';
+import 'lg-autoplay';
+import 'lg-hash';
+import 'lg-share';
 
 import 'leaflet';
 import 'leaflet.markercluster';

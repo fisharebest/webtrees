@@ -1,0 +1,76 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+View::push('javascript')
+?>
+
+<script>
+'use strict';
+
+window.WT_lightbox = (function() {
+
+  // Trigger an event when an image is clicked
+  $('body').on('click', 'a.gallery', function(e) {
+    e.preventDefault();
+
+    let collection = [];
+    let items      = <?= json_encode($gallery) ?> ? $('a.gallery[type^=image]') : $(this);
+
+    items.each(function() {
+      let that = $(this);
+      let img  = that.children('img');
+      let note = that.data('note');
+      collection.push({
+        id         : that.data('id'),
+        subHtml    : img.attr('alt') + (note ? `<div class="small">${note}</div>`: ''),
+        thumb      : that.data('thumbnail'),
+        src        : that.attr('href'),
+        downloadUrl: that.data('download')
+      });
+    });
+
+    //Remove duplicates
+    collection = collection.filter((v, i, a) => a.findIndex(t => (t.id === v.id)) === i);
+
+    $(this).lightGallery({
+      dynamic:            true,
+      dynamicEl:          collection,
+      fullScreen:         true,
+      zoom:               true,
+      thumbnail:          true,
+      showThumbByDefault: false,
+      loop:               false,
+      pause:              <?= json_encode($pause ?? 5000) ?>,
+      mode:               <?= json_encode($transition ?? "lg-slide") ?>,
+      download:           true, // download controlled by downloadUrl setting(url or false)
+      index:              collection.findIndex((element) => element.id === this.dataset.id)
+    });
+  });
+
+  // Add translatable tooltips to the controls
+  $('body').on('onAfterOpen.lg',function(event) {
+    $.each([
+      {element: '.lg-close',           text: <?= json_encode(I18N::translate('Close')) ?>},
+      {element: '.lg-download',        text: <?= json_encode(I18N::translate('Download')) ?>},
+      {element: '#lg-zoom-in',         text: <?= json_encode(I18N::translate('Zoom in')) ?>},
+      {element: '#lg-zoom-out',        text: <?= json_encode(I18N::translate('Zoom out')) ?>},
+      {element: '#lg-actual-size',     text: <?= json_encode(I18N::translate('Actual size')) ?>},
+      {element: '#lg-share',           text: <?= json_encode(I18N::translate('Share on social media')) ?>},
+      {element: '.lg-fullscreen',      text: <?= json_encode(I18N::translate('Toggle fullscreen')) ?>},
+      {element: '.lg-autoplay-button', text: <?= json_encode(I18N::translate('Toggle autoplay')) ?>},
+      {element: '.lg-prev',            text: <?= json_encode(I18N::translate('Previous image')) ?>},
+      {element: '.lg-next',            text: <?= json_encode(I18N::translate('Next image')) ?>},
+      {element: '.lg-toogle-thumb',    text: <?= json_encode(I18N::translate('Toggle thumbnails')) ?>},
+    ], function(index, item) {
+        $(item.element)
+        .attr('title', item.text)
+        .attr('aria-label', item.text);
+    });
+  });
+
+  return "lightbox interface for webtrees 2.0";
+})();
+</script>
+<?php View::endpush() ?>

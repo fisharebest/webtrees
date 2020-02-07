@@ -1334,7 +1334,7 @@ footer .error {
  */
 .wt-ajax-load:empty {
     height: 32px;
-    background: url(images/loading-32x32.gif) no-repeat 50% 50%;
+    background: url(images/loading.gif) no-repeat 50% 50%;
 }
 
 /*
