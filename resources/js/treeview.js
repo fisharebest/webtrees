@@ -263,7 +263,7 @@ TreeViewHandler.prototype.centerOnRoot = function () {
   var tv = this;
   var tvc = this.container;
   var tvc_width = tvc.innerWidth() / 2;
-  if (isNaN(tvc_width)) {
+  if (Number.isNaN(tvc_width)) {
     return false;
   }
   var tvc_height = tvc.innerHeight() / 2;

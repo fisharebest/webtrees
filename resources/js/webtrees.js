@@ -129,11 +129,11 @@ function valid_date (datefield, dmy) {
   // Gedcom dates are upper case
   datestr = datestr.toUpperCase();
   // Gedcom dates have no leading/trailing/repeated whitespace
-  datestr = datestr.replace(/\s+/, ' ');
+  datestr = datestr.replace(/\s+/g, ' ');
   datestr = datestr.replace(/(^\s)|(\s$)/, '');
   // Gedcom dates have spaces between letters and digits, e.g. "01JAN2000" => "01 JAN 2000"
-  datestr = datestr.replace(/(\d)([A-Z])/, '$1 $2');
-  datestr = datestr.replace(/([A-Z])(\d)/, '$1 $2');
+  datestr = datestr.replace(/(\d)([A-Z])/g, '$1 $2');
+  datestr = datestr.replace(/([A-Z])(\d)/g, '$1 $2');
 
   // Shortcut for quarter format, "Q1 1900" => "BET JAN 1900 AND MAR 1900". See [ 1509083 ]
   if (datestr.match(/^Q ([1-4]) (\d\d\d\d)$/)) {
@@ -607,13 +607,9 @@ $(function () {
 
   // Select2 - format entries in the select list
   function templateOptionForSelect2 (data) {
-    if (data.loading) {
-      // If we're waiting for the server, this will be a "waiting..." message
-      return data.text;
-    } else {
-      // The response from the server is already in HTML, so no need to format it here.
-      return data.text;
-    }
+    // This could be a "waiting..." message (data.loading is true) or a response from the server.
+    // Both are already HTML, so no need to reformat it.
+    return data.text;
   }
 
   // Autocomplete
