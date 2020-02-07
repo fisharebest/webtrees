@@ -22,9 +22,9 @@ const GOOGLE_CHARTS_LIB = 'https://www.gstatic.com/charts/loader.js';
  */
 class Statistics {
   /**
-     * Constructor.
-     *
-     * @returns {Statistics}
+   * Constructor.
+   *
+   * @returns {Statistics}
      */
   constructor () {
     // Create singleton instance
@@ -40,10 +40,10 @@ class Statistics {
   }
 
   /**
-     * Initializes the google chart engine. Loads the chart lib only once.
-     *
-     * @param {String} locale Locale, e.g. en, de, ...
-     */
+   * Initializes the google chart engine. Loads the chart lib only once.
+   *
+   * @param {String} locale - Locale, e.g. en, de, ...
+   */
   init (locale) {
     if (this.loading || this.initialized) {
       return;
@@ -82,12 +82,11 @@ class Statistics {
   }
 
   /**
-     * Dynamically loads a script by the given URL.
-     *
-     * @param {String} url
-     *
-     * @returns {Promise}
-     */
+   * Dynamically loads a script by the given URL.
+   *
+   * @param   {String} url
+   * @returns {Promise}
+   */
   load (url) {
     if (this.loading) {
       return;
@@ -112,11 +111,11 @@ class Statistics {
   }
 
   /**
-     * Adds the given callback method to the callback stack or add it directly to
-     * the google charts interface once the chart engine is up and running.
-     *
-     * @param {Function} callback
-     */
+   * Adds the given callback method to the callback stack or add it directly to
+   * the google charts interface once the chart engine is up and running.
+   *
+   * @param {Function} callback
+   */
   addCallback (callback) {
     if (this.initialized) {
       google.charts.setOnLoadCallback(callback);
@@ -130,13 +129,13 @@ class Statistics {
   }
 
   /**
-     * Draws a google chart.
-     *
-     * @param {String} containerId
-     * @param {String} chartType
-     * @param {Array}  dataTable
-     * @param {Object} options
-     */
+   * Draws a google chart.
+   *
+   * @param {String} containerId
+   * @param {String} chartType
+   * @param {Array}  data
+   * @param {Object} options
+   */
   drawChart (containerId, chartType, data, options) {
     const dataTable = google.visualization.arrayToDataTable(data);
 
@@ -151,12 +150,12 @@ class Statistics {
   }
 
   /**
-     * Draws a pie chart.
-     *
-     * @param {String} elementId The element id of the HTML element the chart is rendered too
-     * @param {Array}  data      The chart data array
-     * @param {Object} options   The chart specific options to overwrite the default ones
-     */
+   * Draws a pie chart.
+   *
+   * @param {String} elementId - The element id of the HTML element the chart is rendered too
+   * @param {Array}  data      - The chart data array
+   * @param {Object} options   - The chart specific options to overwrite the default ones
+   */
   drawPieChart (elementId, data, options) {
     // Default chart options
     const defaults = {
@@ -198,12 +197,12 @@ class Statistics {
   }
 
   /**
-     * Draws a column chart.
-     *
-     * @param {String} elementId The element id of the HTML element the chart is rendered too
-     * @param {Array}  data      The chart data array
-     * @param {Object} options   The chart specific options to overwrite the default ones
-     */
+   * Draws a column chart.
+   *
+   * @param {String} elementId - The element id of the HTML element the chart is rendered too
+   * @param {Array}  data      - The chart data array
+   * @param {Object} options   - The chart specific options to overwrite the default ones
+   */
   drawColumnChart (elementId, data, options) {
     // Default chart options
     const defaults = {
@@ -238,12 +237,12 @@ class Statistics {
   }
 
   /**
-     * Draws a combo chart.
-     *
-     * @param {String} elementId The element id of the HTML element the chart is rendered too
-     * @param {Array}  data      The chart data array
-     * @param {Object} options   The chart specific options to overwrite the default ones
-     */
+   * Draws a combo chart.
+   *
+   * @param {String} elementId - The element id of the HTML element the chart is rendered too
+   * @param {Array}  data      - The chart data array
+   * @param {Object} options   - The chart specific options to overwrite the default ones
+   */
   drawComboChart (elementId, data, options) {
     // Default chart options
     const defaults = {
@@ -287,9 +286,9 @@ class Statistics {
   /**
      * Draws a geo chart.
      *
-     * @param {String} elementId The element id of the HTML element the chart is rendered too
-     * @param {Array}  data      The chart data array
-     * @param {Object} options   The chart specific options to overwrite the default ones
+     * @param {String} elementId - The element id of the HTML element the chart is rendered too
+     * @param {Array}  data      - The chart data array
+     * @param {Object} options   - The chart specific options to overwrite the default ones
      */
   drawGeoChart (elementId, data, options) {
     // Default chart options

@@ -277,11 +277,9 @@ TreeViewHandler.prototype.centerOnRoot = function () {
 
 /**
  * Class TreeView expandBox method
- * param string @box the person box element
- * param string @event the call event
- * param string @pid the person id
- *
- * called ONLY for elements which have NOT the class tv_link to avoid unuseful requests to the server
+ * Called ONLY for elements which have NOT the class tv_link to avoid un-useful requests to the server
+ * @param {string} box   - the person box element
+ * @param {string} event - the call event
  */
 TreeViewHandler.prototype.expandBox = function (box, event) {
   var t = $(event.target);
@@ -336,6 +334,11 @@ TreeViewHandler.prototype.expandBox = function (box, event) {
   return false;
 };
 
+/**
+ * @param {string} name
+ * @param {string} value
+ * @param {number} days
+ */
 function createCookie (name, value, days) {
   if (days) {
     var date = new Date();
@@ -346,6 +349,10 @@ function createCookie (name, value, days) {
   }
 }
 
+/**
+ * @param   {string} name
+ * @returns {string|null}
+ */
 function readCookie (name) {
   var name_equals = name + '=';
   var ca = document.cookie.split(';');
