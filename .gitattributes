@@ -16,3 +16,5 @@ webpack.mix.js        export-ignore
 
 vendor/*/*/tests      export-ignore
 vendor/*/*/Tests      export-ignore
+
+resources/lang/*/messages.po export-ignore
