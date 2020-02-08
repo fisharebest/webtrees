@@ -8,6 +8,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 /**
+ * @var float                    $priority
  * @var Collection<GedcomRecord> $records
  * @var string                   $sitemap_xsl
  * @var Tree                     $tree
@@ -17,20 +18,19 @@ use Illuminate\Support\Collection;
 <<?php /* Beware short open tags in PHP <8.0 */ ?>?xml version="1.0" encoding="UTF-8"?>
 <<?php /* Beware short open tags in PHP <8.0 */ ?>?xml-stylesheet type="text/xsl" href="<?= e($sitemap_xsl) ?>"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    <url>
+        <loc><?= e(route(TreePage::class, ['tree' => $tree->name()])) ?></loc>
+        <priority>1.0</priority>
+    </url>
     <?php foreach ($records as $record) : ?>
         <url>
             <loc><?= e($record->url()) ?></loc>
+            <priority><?= e($priority) ?></priority>
             <?php if ($record->facts(['CHAN'])->isNotEmpty()) : ?>
                 <lastmod><?= $record->facts(['CHAN'])->first()->date()->minimumDate()->Format('%Y-%m-%d') ?></lastmod>
             <?php endif ?>
         </url>
     <?php endforeach ?>
-
-    <?php if ($records->isEmpty()) : ?>
-        <url>
-            <loc><?= e(route(TreePage::class, ['tree' => $tree->name()])) ?></loc>
-        </url>
-    <?php endif ?>
 </urlset>
 
 

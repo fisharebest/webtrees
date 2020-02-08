@@ -22,8 +22,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                         <table class="table table-sm table-bordered table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th class="w-75">URL</th>
-                                    <th class="w-25">Updated</th>
+                                    <th>URL</th>
+                                    <th>Updated</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,8 +50,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                         <table class="table table-sm table-bordered table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th class="w-75">URL</th>
-                                    <th class="w-25">Updated</th>
+                                    <th>URL</th>
+                                    <th>Priority</th>
+                                    <th>Updated</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,6 +65,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                                             <a href="{$itemURL}">
                                                 <xsl:value-of select="sitemap:loc"/>
                                             </a>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="sitemap:priority"/>
                                         </td>
                                         <td>
                                             <xsl:value-of select="sitemap:lastmod"/>

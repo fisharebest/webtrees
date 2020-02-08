@@ -1,11 +1,13 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submitter;
 
 /**
  * @var string $sitemap_xsl
@@ -16,68 +18,94 @@ use Fisharebest\Webtrees\Repository;
 <<?php /* Beware short open tags in PHP <8.0 */ ?>?xml-stylesheet type="text/xsl" href="<?= e($sitemap_xsl) ?>"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-    <?php foreach ($count_individuals as $tree_name => $count) : ?>
-        <?php for ($i = 0; $i <= $count / $records_per_volume; ++$i) : ?>
+    <?php foreach ($count_families as $tree_name => $count) : ?>
+    <?php for ($i = 0; $i <= $count / $records_per_volume; ++$i) : ?>
     <sitemap>
         <loc>
-            <?= e(route('sitemap-file', ['tree' => $tree_name, 'records' => Individual::RECORD_TYPE, 'page' => $i])) ?>
+            <?= e(route('sitemap-file', ['tree' => $tree_name, 'type' => Family::RECORD_TYPE, 'page' => $i])) ?>
         </loc>
         <lastmod>
             <?= $last_mod ?>
         </lastmod>
     </sitemap>
-        <?php endfor ?>
+    <?php endfor ?>
     <?php endforeach ?>
-    
-    <?php foreach ($count_media as $tree_name => $count) : ?>
-        <?php for ($i = 0; $i <= $count / $records_per_volume; ++$i) : ?>
+
+    <?php foreach ($count_individuals as $tree_name => $count) : ?>
+    <?php for ($i = 0; $i <= $count / $records_per_volume; ++$i) : ?>
     <sitemap>
         <loc>
-            <?= e(route('sitemap-file', ['tree' => $tree_name, 'records' => Media::RECORD_TYPE, 'page' => $i])) ?>
+            <?= e(route('sitemap-file', ['tree' => $tree_name, 'type' => Individual::RECORD_TYPE, 'page' => $i])) ?>
         </loc>
         <lastmod>
             <?= $last_mod ?>
         </lastmod>
     </sitemap>
-        <?php endfor ?>
+    <?php endfor ?>
+    <?php endforeach ?>
+
+    <?php foreach ($count_media as $tree_name => $count) : ?>
+    <?php for ($i = 0; $i <= $count / $records_per_volume; ++$i) : ?>
+    <sitemap>
+        <loc>
+            <?= e(route('sitemap-file', ['tree' => $tree_name, 'type' => Media::RECORD_TYPE, 'page' => $i])) ?>
+        </loc>
+        <lastmod>
+            <?= $last_mod ?>
+        </lastmod>
+    </sitemap>
+    <?php endfor ?>
     <?php endforeach ?>
 
     <?php foreach ($count_notes as $tree_name => $count) : ?>
-        <?php for ($i = 0; $i <= $count / $records_per_volume; ++$i) : ?>
+    <?php for ($i = 0; $i <= $count / $records_per_volume; ++$i) : ?>
     <sitemap>
         <loc>
-            <?= e(route('sitemap-file', ['tree' => $tree_name, 'records' => Note::RECORD_TYPE, 'page' => $i])) ?>
+            <?= e(route('sitemap-file', ['tree' => $tree_name, 'type' => Note::RECORD_TYPE, 'page' => $i])) ?>
         </loc>
         <lastmod>
             <?= $last_mod ?>
         </lastmod>
     </sitemap>
-        <?php endfor ?>
+    <?php endfor ?>
     <?php endforeach ?>
-    
+
     <?php foreach ($count_repositories as $tree_name => $count) : ?>
-        <?php for ($i = 0; $i <= $count / $records_per_volume; ++$i) : ?>
+    <?php for ($i = 0; $i <= $count / $records_per_volume; ++$i) : ?>
     <sitemap>
         <loc>
-            <?= e(route('sitemap-file', ['tree' => $tree_name, 'records' => Repository::RECORD_TYPE, 'page' => $i])) ?>
+            <?= e(route('sitemap-file', ['tree' => $tree_name, 'type' => Repository::RECORD_TYPE, 'page' => $i])) ?>
         </loc>
         <lastmod>
             <?= $last_mod ?>
         </lastmod>
     </sitemap>
-        <?php endfor ?>
+    <?php endfor ?>
     <?php endforeach ?>
 
     <?php foreach ($count_sources as $tree_name => $count) : ?>
-        <?php for ($i = 0; $i <= $count / $records_per_volume; ++$i) : ?>
+    <?php for ($i = 0; $i <= $count / $records_per_volume; ++$i) : ?>
     <sitemap>
         <loc>
-            <?= e(route('sitemap-file', ['tree' => $tree_name, 'records' => SOURCE::RECORD_TYPE, 'page' => $i])) ?>
+            <?= e(route('sitemap-file', ['tree' => $tree_name, 'type' => Source::RECORD_TYPE, 'page' => $i])) ?>
         </loc>
         <lastmod>
             <?= $last_mod ?>
         </lastmod>
     </sitemap>
-        <?php endfor ?>
+    <?php endfor ?>
+    <?php endforeach ?>
+
+    <?php foreach ($count_submitters as $tree_name => $count) : ?>
+    <?php for ($i = 0; $i <= $count / $records_per_volume; ++$i) : ?>
+    <sitemap>
+        <loc>
+            <?= e(route('sitemap-file', ['tree' => $tree_name, 'type' => Submitter::RECORD_TYPE, 'page' => $i])) ?>
+        </loc>
+        <lastmod>
+            <?= $last_mod ?>
+        </lastmod>
+    </sitemap>
+    <?php endfor ?>
     <?php endforeach ?>
 </sitemapindex>
