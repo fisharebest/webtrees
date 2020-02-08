@@ -30,6 +30,7 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use stdClass;
+use Throwable;
 use Transliterator;
 
 use function app;
@@ -393,9 +394,12 @@ class GedcomRecord
     {
         $slug = strip_tags($this->fullName());
 
-        if (class_exists(Transliterator::class)) {
+        try {
             $transliterator = Transliterator::create('Any-Latin;Latin-ASCII');
             $slug           = $transliterator->transliterate($slug);
+        } catch (Throwable $ex) {
+            // ext-intl not installed?
+            // Transliteration algorithms not present in lib-icu?
         }
 
         $slug = preg_replace('/[^A-Za-z0-9]+/', '-', $slug);
