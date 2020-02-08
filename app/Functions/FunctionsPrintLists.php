@@ -141,15 +141,13 @@ class FunctionsPrintLists
                     $col = 1;
                 }
                 $newcol = (int) ceil($count / $col);
-                $html2  = '<table class="list_table"><tr>';
-                $html2 .= '<td class="list_value" style="padding: 14px;">';
+                $html2  = '<table class="table list_table"><tr>';
+                $html2 .= '<td class="list_value">';
 
-                foreach ($html as $surns) {
+                foreach ($html as $i => $surns) {
                     $html2 .= $surns . '<br>';
-                    $i++;
-                    if ($i === $newcol && $i < $count) {
-                        $html2 .= '</td><td class="list_value" style="padding: 14px;">';
-                        $newcol = $i + ceil($count / $col);
+                    if (($i + 1) % $newcol === 0) {
+                        $html2 .= '</td><td class="list_value">';
                     }
                 }
                 $html2 .= '</td></tr></table>';
