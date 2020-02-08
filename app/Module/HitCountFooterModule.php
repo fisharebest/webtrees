@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\RepositoryPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SubmitterPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\I18N;
@@ -55,6 +56,7 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
         NotePage::class       => 'note.php',
         RepositoryPage::class => 'repo.php',
         SourcePage::class     => 'source.php',
+        SubmitterPage::class  => 'submitter',
         TreePage::class       => 'index.php',
         UserPage::class       => 'index.php',
     ];
@@ -138,7 +140,8 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
                 case NotePage::class:
                 case RepositoryPage::class:
                 case SourcePage::class:
-                    $this->page_hits = $this->countHit($tree, $page_name, $request->getQueryParams()['xref'] ?? '');
+                case SubmitterPage::class:
+                    $this->page_hits = $this->countHit($tree, $page_name, $request->getAttribute('xref', ''));
                     break;
 
                 case TreePage::class:
