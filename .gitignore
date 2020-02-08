@@ -2,6 +2,14 @@
 /public/js/*.map
 /public/js/*.LICENSE
 /public/robots.txt
+
 /node_modules/
+
+/resources/lang/webtees.pot
+/resources/lang/*/messages.php
+!/resources/lang/en-US/messages.php
+
 /robots.txt
+
+/tests/clover.xml
 /tests/coverage
