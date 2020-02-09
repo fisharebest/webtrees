@@ -4,10 +4,10 @@ use Fisharebest\Webtrees\Http\RequestHandlers\BroadcastPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\CleanDataFolder;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
+use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\Http\RequestHandlers\PhpInformation;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePageDefaultEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPageDefaultEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupPage;
@@ -25,10 +25,11 @@ use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
 
 /**
- * @var string     $latest_version
- * @var string     $title
- * @var Collection $server_errors
- * @var Collection $server_warnings
+ * @var Collection<ModuleCustomInterface> $custom_updates
+ * @var string                            $latest_version
+ * @var string                            $title
+ * @var Collection<string>                $server_errors
+ * @var Collection<string>                $server_warnings
  */
 
 ?>
@@ -73,6 +74,15 @@ use Illuminate\Support\Collection;
                 <?= I18N::translate('This is the latest version of webtrees. No upgrade is available.') ?>
             <?php endif ?>
         </p>
+
+        <?php foreach ($custom_updates as $module) : ?>
+        <div class="alert alert-info">
+            <?= view('icons/information') ?>
+            <?= I18N::translate('An upgrade is available.') ?>
+            <br>
+            <?= $module->title() ?> — <?= e($module->customModuleVersion()) ?> — <?= e($module->customModuleLatestVersion()) ?>
+        </div>
+        <?php endforeach ?>
 
         <div class="row">
             <div class="col-sm-6">

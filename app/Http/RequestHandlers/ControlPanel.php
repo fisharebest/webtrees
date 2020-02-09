@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Module\MediaListModule;
 use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
@@ -124,6 +125,12 @@ class ControlPanel implements RequestHandlerInterface
         $filesystem      = new Filesystem(new Local(Webtrees::ROOT_DIR));
         $files_to_delete = $this->housekeeping_service->deleteOldWebtreesFiles($filesystem);
 
+        $custom_updates = $this->module_service
+            ->findByInterface(ModuleCustomInterface::class)
+            ->filter(static function (ModuleCustomInterface $module): bool {
+                return version_compare($module->customModuleLatestVersion(), $module->customModuleVersion()) > 0;
+            });
+
         return $this->viewResponse('admin/control-panel', [
             'title'                      => I18N::translate('Control panel'),
             'server_errors'              => $this->server_check_service->serverErrors(),
@@ -161,6 +168,7 @@ class ControlPanel implements RequestHandlerInterface
             'block_modules_enabled'      => $this->module_service->findByInterface(ModuleBlockInterface::class),
             'chart_modules_disabled'     => $this->module_service->findByInterface(ModuleChartInterface::class, true),
             'chart_modules_enabled'      => $this->module_service->findByInterface(ModuleChartInterface::class),
+            'custom_updates'             => $custom_updates,
             'data_fix_modules_disabled'  => $this->module_service->findByInterface(ModuleDataFixInterface::class, true),
             'data_fix_modules_enabled'   => $this->module_service->findByInterface(ModuleDataFixInterface::class),
             'other_modules'              => $this->module_service->otherModules(true),

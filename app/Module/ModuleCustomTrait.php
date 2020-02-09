@@ -20,13 +20,19 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Site;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function app;
+use function assert;
 use function strlen;
 
 /**
@@ -79,7 +85,46 @@ trait ModuleCustomTrait
     }
 
     /**
-     * Where to get support for this module.  Perhaps a github respository?
+     * Fetch the latest version of this module.
+     *
+     * @return string
+     */
+    public function customModuleLatestVersion(): string
+    {
+        // No update URL provided.
+        if ($this->customModuleLatestVersionUrl() === '') {
+            return $this->customModuleVersion();
+        }
+
+        $cache = app('cache.files');
+        assert($cache instanceof Cache);
+
+        return $cache->remember($this->name() . '-latest-version', function () {
+            try {
+                $client = new Client([
+                    'timeout' => 3,
+                ]);
+
+                $response = $client->get($this->customModuleLatestVersionUrl());
+
+                if ($response->getStatusCode() === StatusCodeInterface::STATUS_OK) {
+                    $version = $response->getBody()->getContents();
+
+                    // Does the response look like a version?
+                    if (preg_match('/^\d+\.\d+\.\d+/', $version)) {
+                        return $version;
+                    }
+                }
+            } catch (RequestException $ex) {
+                // Can't connect to the server?
+            }
+
+            return $this->customModuleVersion();
+        }, 86400);
+    }
+
+    /**
+     * Where to get support for this module.  Perhaps a github repository?
      *
      * @return string
      */

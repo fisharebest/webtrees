@@ -91,7 +91,7 @@ return new class extends AbstractModule implements ModuleCustomInterface {
     }
 
     /**
-     * Where to get support for this module.  Perhaps a github respository?
+     * Where to get support for this module.  Perhaps a github repository?
      *
      * @return string
      */

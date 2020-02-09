@@ -46,7 +46,14 @@ interface ModuleCustomInterface extends ModuleInterface
     public function customModuleLatestVersionUrl(): string;
 
     /**
-     * Where to get support for this module.  Perhaps a github respository?
+     * Fetch the latest version of this module.
+     *
+     * @return string
+     */
+    public function customModuleLatestVersion(): string;
+
+    /**
+     * Where to get support for this module.  Perhaps a github repository?
      *
      * @return string
      */
