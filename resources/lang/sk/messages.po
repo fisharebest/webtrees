@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-10 09:01+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-16 09:07+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -790,7 +790,7 @@ msgstr "Zoznam zdrojov."
 #. I18N: Description of the “Shared submitters” module
 #: app/Module/SubmitterListModule.php:64
 msgid "A list of submitters."
-msgstr "Zoznam predkladateľov."
+msgstr "Zoznam zasielateľov."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:69
@@ -1407,7 +1407,7 @@ msgstr "Pridať chýbajúce záznamy o úmrtí"
 
 #: resources/views/edit-blocks-page.phtml:34
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "Pridajte ďalšie bloky z nasledujúcich."
 
 #: resources/views/search-advanced-page.phtml:30
 msgid "Add more fields"
@@ -1420,16 +1420,16 @@ msgstr "Pridať príbeh ku konkrétnej osobe v rodokmeni."
 
 #: resources/views/admin/map-import-form.phtml:69
 msgid "Add new, and update existing records"
-msgstr ""
+msgstr "Pridá nové a aktualizuje existujúce záznamy"
 
 #: resources/views/admin/trees-import.phtml:87
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Pridať medzery na miestach, kde boli zalomené dlhé riadky"
 
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:43
 msgid "Add styling and scripts to every page."
-msgstr ""
+msgstr "Pridať na každú stránku CSS-štýl a Java-skript."
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: resources/views/admin/trees-export.phtml:76
@@ -3984,12 +3984,12 @@ msgstr "Riadiaci panel"
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:61
 msgid "Convert CEME tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Konvertovať tagy CEME na GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:49
 msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Konvertovať -PRIM tagy na GEDCOM 5.5.1"
 
 #: app/Http/RequestHandlers/HelpText.php:266
 #: resources/views/admin/trees-export.phtml:65
@@ -4000,7 +4000,7 @@ msgstr "Konvertovať z UTF-8 na ISO-8859-1"
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr ""
+msgstr "Konvertovať na"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
@@ -4116,7 +4116,7 @@ msgstr "Vytvoriť nový zdroj"
 #: app/Functions/FunctionsEdit.php:576
 #: resources/views/modals/create-submitter.phtml:11
 msgid "Create a submitter"
-msgstr "Vytvoriť predkladateľa"
+msgstr "Vytvoriť zasielateľa"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:215
 msgid "Create a temporary folder…"
@@ -4447,7 +4447,7 @@ msgstr ""
 
 #: app/GedcomTag.php:469
 msgid "Date of adoption"
-msgstr "Dátu adopcie"
+msgstr "Dátum adopcie"
 
 #: app/GedcomTag.php:512 resources/xml/reports/missing_facts_report.xml:129
 msgid "Date of baptism"
@@ -5348,7 +5348,7 @@ msgstr "Stiahnuť súbor"
 
 #: resources/views/edit-blocks-page.phtml:11
 msgid "Drag the blocks to change their position."
-msgstr ""
+msgstr "Presunutím blokov zmeníte ich pozíciu."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:339
@@ -5376,7 +5376,7 @@ msgstr "Duplicitné meno užívateľa. Užívateľ s týmto užívateľským men
 
 #: resources/views/help/source-events.phtml:8
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Každý zdroj zaznamenává určité udalosti, všeobecne pre daný časový interval a miesto (mestský obvod, farnosť). Napríklad Sčítanie zaznamenáva sčítacie udalosti a církevné záznamy uchovávajú dáta o narodeniach, svadbách a úmrtiach.<br><br>Vyberte udalosti, ktoré sú zaznamenané týmto zdrojom z poskytnutého zoznamu udalostí. Dátum by malo byť v špecifikovanom v rozsahu, napr. <i>FROM 1900 TO 1910</i>. Miesto je meno najnižšej jurisdikcie, ktorá zahrňuje všetky miesta vymenované v tomto zdroji. Napríklad „Oneida, Idaho, USA“ by bola použitá ako zdrojové miesto pre udalosti, ktoré sa staly v rôzných mestách v kraji Oneida. „Idaho, USA“ by bolo zdrojové miesto, ak by sa udalosti stali nie len v kraji Oneida, ale i v ostatných krajoch štátu Idaho."
+msgstr "Každý zdroj zaznamenáva určité udalosti, všeobecne pre daný časový interval a miesto (mestský obvod, farnosť). Napríklad Sčítanie zaznamenáva sčítacie udalosti a cirkevné záznamy uchovávajú dáta o narodeniach, svadbách a úmrtiach.<br><br>Vyberte udalosti, ktoré sú zaznamenané týmto zdrojom z poskytnutého zoznamu udalostí. Dátum by mal byť v špecifikovanom v rozsahu, napr. <i>FROM 1900 TO 1910</i>. Miesto je meno najnižšej jurisdikcie, ktorá zahrňuje všetky miesta vymenované v tomto zdroji. Napríklad „Oneida, Idaho, USA“ by bola použitá ako zdrojové miesto pre udalosti, ktoré sa stali v rôznych mestách v kraji Oneida. „Idaho, USA“ by bolo zdrojové miesto, ak by sa udalosti stali nie len v kraji Oneida, ale i v ostatných krajoch štátu Idaho."
 
 #: resources/views/help/pending-changes.phtml:21
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -6722,7 +6722,7 @@ msgstr "Genealogické údaje"
 #: resources/views/admin/trees-preferences.phtml:16
 #: resources/views/admin/trees-preferences.phtml:614
 msgid "General"
-msgstr "Hlavný"
+msgstr "Všeobecné"
 
 #: app/Http/RequestHandlers/SearchGeneralPage.php:164
 #: app/Module/SearchMenuModule.php:100
@@ -7999,7 +7999,7 @@ msgstr "Kazachstan"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-import.phtml:80
 msgid "Keep media objects"
-msgstr ""
+msgstr "Zachovať objekty médií"
 
 #: resources/views/modals/on-screen-keyboard.phtml:51
 msgid "Keep open"
@@ -8010,7 +8010,7 @@ msgstr ""
 #: resources/views/edit/add-fact.phtml:74
 #: resources/views/edit/edit-fact.phtml:103
 msgid "Keep the existing “last change” information"
-msgstr "Zachovať pôvodnú informáciu „poslednej zmeny“"
+msgstr "Ponechať pôvodnú informáciu o „poslednej zmeny“"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:276
@@ -8265,11 +8265,11 @@ msgstr "Rozvrhnutie"
 
 #: resources/views/edit-account-page.phtml:83
 msgid "Leave the password blank if you want to keep the current password."
-msgstr "Ponechajte pole heslo prázdne, ak chcte zachovať aktuálne heslo."
+msgstr "Ponechajte pole heslo prázdne, ak chcete zachovať aktuálne heslo."
 
 #: resources/views/admin/media-upload.phtml:41
 msgid "Leave this entry blank to keep the original filename"
-msgstr ""
+msgstr "Ponechajte toto pole prázdne, ak chcete zachovať pôvodné meno súboru"
 
 #: resources/views/lists/families-table.phtml:199
 #: resources/views/lists/individuals-table.phtml:257
@@ -11641,7 +11641,7 @@ msgstr "Nahradiť"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:72
 msgid "Replace cemetery tags with burial places."
-msgstr ""
+msgstr "Nahradiť tagy cintorínov miestami pochovania."
 
 #: resources/views/search-replace-page.phtml:26
 msgid "Replace with"
@@ -11752,7 +11752,7 @@ msgstr "Sídlo"
 #: resources/views/edit-blocks-page.phtml:57
 #: resources/views/edit-blocks-page.phtml:58
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Obnoviť  východzie nastavenie blokov"
 
 #: app/Http/RequestHandlers/HelpText.php:261
 #: resources/views/admin/users-edit.phtml:275
@@ -12121,7 +12121,7 @@ msgstr "Vyberte požadovaný interval veku"
 
 #: resources/views/admin/merge-records-step-2.phtml:21
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "Vyberte fakty a udalosti, ktoré chcete zachovať z oboch záznamov."
 
 #: resources/views/admin/merge-records-step-1.phtml:19
 msgid "Select two records to merge."
@@ -13318,17 +13318,17 @@ msgstr "Rezignácia"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:139
 msgid "Submitted but not yet cleared"
-msgstr "Potvrdené, ale ešte nevyjasnené"
+msgstr "Zaslané, ale ešte nevyjasnené"
 
 #. I18N: gedcom tag SUBM
 #: app/GedcomTag.php:1037 resources/views/admin/trees.phtml:247
 #: resources/views/modules/recent_changes/changes-table.phtml:75
 msgid "Submitter"
-msgstr "Predkladateľ"
+msgstr "Zasielateľ"
 
 #: resources/views/lists/submitters-table.phtml:60
 msgid "Submitter name"
-msgstr "Meno predkladateľa"
+msgstr "Meno zasielateľa"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/ListController.php:548
@@ -13337,7 +13337,7 @@ msgstr "Meno predkladateľa"
 #: resources/views/admin/merge-records-step-1.phtml:29
 #: resources/views/lists/submitters-table.phtml:55
 msgid "Submitters"
-msgstr "Predkladatelia"
+msgstr "Zasielatelia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -14046,7 +14046,7 @@ msgstr "Zdroj bol vytvorený"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:76
 msgid "The submitter has been created"
-msgstr "Predkladateľ bol vytvorený"
+msgstr "Zasielateľ bol vytvorený"
 
 #: resources/views/help/name.phtml:13
 #, php-format
@@ -14466,7 +14466,7 @@ msgstr "Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pri
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:740
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridať k rodinám <u>práve raz</u>. Napríklad ak MARR je v tomto zozname, užívatelia nebudú môcť pridať tento záznam k rodine viackrát než raz. Názvy faktov, ktoré sa zobrazia v zozname sa nesmú objaviť v zozname <i>Fakty pridávané k rodinám</i>."
+msgstr "Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridať k rodinám <u>len raz</u>. Napríklad ak MARR je v tomto zozname, užívatelia nebudú môcť pridať tento záznam k rodine viackrát než raz. Názvy faktov, ktoré sa zobrazia v zozname sa nesmú objaviť v zozname <i>Všetky rodinné fakty</i>."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:686
@@ -14682,7 +14682,7 @@ msgstr "Tento archív bol upravený. Mali by ste úpravu zrevidovať a potom %1$
 
 #: resources/views/modules/privacy-policy/page.phtml:16
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr ""
+msgstr "Tento výskum je „oprávnený záujem“ v zmysle článku 6, písm. f Nariadenia Európskeho parlamentu a Rady (EÚ) 2016/679 z 27. apríla 2016 o ochrane fyzických osôb pri spracúvaní osobných údajov a o voľnom pohybe takýchto údajov (GDPR)."
 
 #: resources/views/admin/users-edit.phtml:243
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -15408,7 +15408,7 @@ msgstr ""
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:74
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
-msgstr ""
+msgstr "Zmeniť  vyššiu úroveň názvov miest, pri zachovaní nižšej úrovne."
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -15849,7 +15849,7 @@ msgstr "Západná Sahara"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml:937
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr ""
+msgstr "Pri úprave záznamu sa zaznamenáva užívateľ a časová značka. Niekedy je vhodné zachovať existujúcu informáciu o „poslednej zmeny“, napríklad ak sa vykonávajú malé úpravy. Toto nastaveniu určuje, či sa nastaví táto možnosť ako predvolená."
 
 #: resources/views/admin/users-edit.phtml:89
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
