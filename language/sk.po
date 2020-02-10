@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-02-10 09:01+0000\n"
+"PO-Revision-Date: 2020-02-16 09:07+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -1498,7 +1498,7 @@ msgstr "Pridať príbeh ku konkrétnej osobe v rodokmeni."
 
 #: admin_trees_manage.php:282
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Pridať medzery na miestach, kde boli zalomené dlhé riadky"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:435
@@ -4474,7 +4474,7 @@ msgstr ""
 
 #: app/GedcomTag.php:132
 msgid "Date of adoption"
-msgstr "Dátu adopcie"
+msgstr "Dátum adopcie"
 
 #: app/GedcomTag.php:184 modules_v3/missing_facts_report/report.xml:129
 msgid "Date of baptism"
@@ -5402,7 +5402,18 @@ msgstr "Duplicitné meno užívateľa. Užívateľ s týmto užívateľským men
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Každý zdroj zaznamenává určité udalosti, všeobecne pre daný časový interval a miesto (mestský obvod, farnosť). Napríklad Sčítanie zaznamenáva sčítacie udalosti a církevné záznamy uchovávajú dáta o narodeniach, svadbách a úmrtiach.<br><br>Vyberte udalosti, ktoré sú zaznamenané týmto zdrojom z poskytnutého zoznamu udalostí. Dátum by malo byť v špecifikovanom v rozsahu, napr. <i>FROM 1900 TO 1910</i>. Miesto je meno najnižšej jurisdikcie, ktorá zahrňuje všetky miesta vymenované v tomto zdroji. Napríklad „Oneida, Idaho, USA“ by bola použitá ako zdrojové miesto pre udalosti, ktoré sa staly v rôzných mestách v kraji Oneida. „Idaho, USA“ by bolo zdrojové miesto, ak by sa udalosti stali nie len v kraji Oneida, ale i v ostatných krajoch štátu Idaho."
+msgstr ""
+"Každý zdroj zaznamenáva určité udalosti, všeobecne pre daný časový interval "
+"a miesto (mestský obvod, farnosť). Napríklad Sčítanie zaznamenáva sčítacie "
+"udalosti a cirkevné záznamy uchovávajú dáta o narodeniach, svadbách a "
+"úmrtiach.<br><br>Vyberte udalosti, ktoré sú zaznamenané týmto zdrojom z "
+"poskytnutého zoznamu udalostí. Dátum by mal byť v špecifikovanom v rozsahu, "
+"napr. <i>FROM 1900 TO 1910</i>. Miesto je meno najnižšej jurisdikcie, ktorá "
+"zahrňuje všetky miesta vymenované v tomto zdroji. Napríklad „Oneida, Idaho, "
+"USA“ by bola použitá ako zdrojové miesto pre udalosti, ktoré sa stali v "
+"rôznych mestách v kraji Oneida. „Idaho, USA“ by bolo zdrojové miesto, ak by "
+"sa udalosti stali nie len v kraji Oneida, ale i v ostatných krajoch štátu "
+"Idaho."
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -6760,7 +6771,7 @@ msgstr "Genealogické údaje"
 
 #: admin_trees_config.php:585 admin_trees_config.php:1570
 msgid "General"
-msgstr "Hlavný"
+msgstr "Všeobecné"
 
 #: app/Controller/SearchController.php:188
 #: app/Controller/SearchController.php:192 app/Theme/AbstractTheme.php:1724
@@ -8010,14 +8021,14 @@ msgstr "Ponechať odkaz v zozname"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:275
 msgid "Keep media objects"
-msgstr ""
+msgstr "Zachovať objekty médií"
 
 #. I18N: A configuration setting
 #: addmedia.php:705 admin_trees_config.php:2131
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2256
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:545
 msgid "Keep the existing “last change” information"
-msgstr "Zachovať pôvodnú informáciu „poslednej zmeny“"
+msgstr "Ponechať pôvodnú informáciu o „poslednej zmeny“"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6791
@@ -8254,7 +8265,7 @@ msgstr "Rozvrhnutie"
 
 #: edituser.php:220
 msgid "Leave the password blank if you want to keep the current password."
-msgstr "Ponechajte pole heslo prázdne, ak chcte zachovať aktuálne heslo."
+msgstr "Ponechajte pole heslo prázdne, ak chcete zachovať aktuálne heslo."
 
 #: admin_site_config.php:210 admin_site_config.php:229
 #: admin_site_config.php:297 admin_site_config.php:311
@@ -11748,7 +11759,7 @@ msgstr "Sídlo"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Obnoviť  východzie nastavenie blokov"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
@@ -12143,7 +12154,7 @@ msgstr "Vyberte požadovaný interval počtu"
 
 #: admin_site_merge.php:200
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "Vyberte fakty a udalosti, ktoré chcete zachovať z oboch záznamov."
 
 #: admin_site_config.php:634
 msgid "Select the languages that will be shown in menus."
@@ -13399,12 +13410,12 @@ msgstr "Rezignácia"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:108
 msgid "Submitted but not yet cleared"
-msgstr "Potvrdené, ale ešte nevyjasnené"
+msgstr "Zaslané, ale ešte nevyjasnené"
 
 #. I18N: gedcom tag SUBM
 #: app/GedcomTag.php:810
 msgid "Submitter"
-msgstr "Predkladateľ"
+msgstr "Zasielateľ"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6868
@@ -14516,7 +14527,12 @@ msgstr "Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pri
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1786
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridať k rodinám <u>práve raz</u>. Napríklad ak MARR je v tomto zozname, užívatelia nebudú môcť pridať tento záznam k rodine viackrát než raz. Názvy faktov, ktoré sa zobrazia v zozname sa nesmú objaviť v zozname <i>Fakty pridávané k rodinám</i>."
+msgstr ""
+"Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridať k "
+"rodinám <u>len raz</u>. Napríklad ak MARR je v tomto zozname, užívatelia "
+"nebudú môcť pridať tento záznam k rodine viackrát než raz. Názvy faktov, "
+"ktoré sa zobrazia v zozname sa nesmú objaviť v zozname <i>Všetky rodinné "
+"fakty</i>."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1668
@@ -15980,6 +15996,10 @@ msgstr "Západná Sahara"
 #: admin_trees_config.php:2136
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
 msgstr ""
+"Pri úprave záznamu sa zaznamenáva užívateľ a časová značka. Niekedy je "
+"vhodné zachovať existujúcu informáciu o „poslednej zmeny“, napríklad ak sa "
+"vykonávajú malé úpravy. Toto nastaveniu určuje, či sa nastaví táto možnosť "
+"ako predvolená."
 
 #: admin_users.php:388
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
