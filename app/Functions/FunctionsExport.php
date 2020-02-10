@@ -97,8 +97,6 @@ class FunctionsExport
         $FILE = "\n1 FILE " . $tree->name();
         $COPR = '';
         $LANG = '';
-        $SUBN = '';
-        $SUBM = "\n1 SUBM @SUBM@\n0 @SUBM@ SUBM\n1 NAME " . Auth::user()->userName(); // The SUBM record is mandatory
 
         // Preserve some values from the original header
         $record = GedcomRecord::getInstance('HEAD', $tree) ?? new GedcomRecord('HEAD', '0 HEAD', null, $tree);
@@ -117,16 +115,24 @@ class FunctionsExport
             ->value('o_id');
         if ($subn !== null) {
             $SUBN = "\n1 SUBN @{$subn}@";
+        } else {
+            $SUBN = '';
         }
+
         $subm = DB::table('other')
             ->where('o_type', '=', 'SUBM')
             ->where('o_file', '=', $tree->id())
             ->value('o_id');
         if ($subm !== null) {
-            $SUBM = "\n1 SUBM @{$subm}@";
+            $SUBM          = "\n1 SUBM @{$subm}@";
+            $new_submitter = '';
+        } else {
+            // The SUBM record is mandatory
+            $SUBM          = "\n1 SUBM @SUBM@";
+            $new_submitter = "\n0 @SUBM@ SUBM\n1 NAME " . Auth::user()->userName(); // The SUBM record is mandatory
         }
 
-        return $HEAD . $SOUR . $DEST . $DATE . $SUBM . $SUBN . $FILE . $COPR . $GEDC . $CHAR . $LANG . "\n";
+        return $HEAD . $SOUR . $DEST . $DATE . $SUBM . $SUBN . $FILE . $COPR . $GEDC . $CHAR . $LANG . $new_submitter . "\n";
     }
 
     /**
