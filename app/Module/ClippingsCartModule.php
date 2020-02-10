@@ -308,7 +308,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $filetext .= "0 TRLR\n";
 
         // Make sure the preferred line endings are used
-        $filetext = str_replace('\n', Gedcom::EOL, $filetext);
+        $filetext = strtr($filetext, ["\n" => Gedcom::EOL]);
 
         if ($convert) {
             $filetext = utf8_decode($filetext);
