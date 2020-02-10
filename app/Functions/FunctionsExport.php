@@ -32,6 +32,21 @@ use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 
+use function date;
+use function explode;
+use function fwrite;
+use function pathinfo;
+use function preg_match;
+use function preg_replace;
+use function preg_split;
+use function str_replace;
+use function strpos;
+use function strtolower;
+use function strtoupper;
+
+use const PATHINFO_EXTENSION;
+use const PREG_SPLIT_NO_EMPTY;
+
 /**
  * Class FunctionsExport - common functions
  */
@@ -87,6 +102,13 @@ class FunctionsExport
      */
     public static function gedcomHeader(Tree $tree, string $char): string
     {
+        // Force a ".ged" suffix
+        $filename = $tree->name();
+
+        if (strtolower(pathinfo($filename, PATHINFO_EXTENSION)) !== 'ged') {
+            $filename .= '.ged';
+        }
+
         // Default values for a new header
         $HEAD = '0 HEAD';
         $SOUR = "\n1 SOUR " . Webtrees::NAME . "\n2 NAME " . Webtrees::NAME . "\n2 VERS " . Webtrees::VERSION;
@@ -94,7 +116,7 @@ class FunctionsExport
         $DATE = "\n1 DATE " . strtoupper(date('d M Y')) . "\n2 TIME " . date('H:i:s');
         $GEDC = "\n1 GEDC\n2 VERS 5.5.1\n2 FORM Lineage-Linked";
         $CHAR = "\n1 CHAR " . $char;
-        $FILE = "\n1 FILE " . $tree->name();
+        $FILE = "\n1 FILE " . $filename;
         $COPR = '';
         $LANG = '';
 
