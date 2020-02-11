@@ -20,14 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CommonMark;
 
 use League\CommonMark\ConfigurableEnvironmentInterface;
-use League\CommonMark\Ext\Table\Table;
-use League\CommonMark\Ext\Table\TableCell;
-use League\CommonMark\Ext\Table\TableCellRenderer;
-use League\CommonMark\Ext\Table\TableRenderer;
-use League\CommonMark\Ext\Table\TableRow;
-use League\CommonMark\Ext\Table\TableRowRenderer;
-use League\CommonMark\Ext\Table\TableSection;
-use League\CommonMark\Ext\Table\TableSectionRenderer;
+use League\CommonMark\Extension\Table\Table;
+use League\CommonMark\Extension\Table\TableCell;
+use League\CommonMark\Extension\Table\TableCellRenderer;
+use League\CommonMark\Extension\Table\TableRenderer;
+use League\CommonMark\Extension\Table\TableRow;
+use League\CommonMark\Extension\Table\TableRowRenderer;
+use League\CommonMark\Extension\Table\TableSection;
+use League\CommonMark\Extension\Table\TableSectionRenderer;
 use League\CommonMark\Extension\ExtensionInterface;
 
 /**

@@ -25,10 +25,11 @@ use League\CommonMark\Block\Element\Document;
 use League\CommonMark\Block\Element\Paragraph;
 use League\CommonMark\Block\Renderer\DocumentRenderer;
 use League\CommonMark\Block\Renderer\ParagraphRenderer;
+use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Converter;
 use League\CommonMark\DocParser;
 use League\CommonMark\Environment;
-use League\CommonMark\Ext\Table\TableExtension;
+use League\CommonMark\Extension\Table\TableExtension;
 use League\CommonMark\HtmlRenderer;
 use League\CommonMark\Inline\Element\Link;
 use League\CommonMark\Inline\Element\Text;
@@ -116,13 +117,16 @@ class Filter
     public static function markdown(string $text, Tree $tree): string
     {
         $environment = Environment::createCommonMarkEnvironment();
-        $environment->mergeConfig(['html_input' => Environment::HTML_INPUT_ESCAPE]);
-        $environment
-            ->addExtension(new TableExtension())
-            ->addExtension(new CensusTableExtension())
-            ->addExtension(new XrefExtension($tree));
+        $environment->addExtension(new TableExtension());
+        $environment->addExtension(new CensusTableExtension());
+        $environment->addExtension(new XrefExtension($tree));
 
-        $converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
+        $config = [
+            'allow_unsafe_links' => false,
+            'html_input'         => Environment::HTML_INPUT_ESCAPE,
+        ];
+
+        $converter = new CommonMarkConverter($config, $environment);
 
         return $converter->convertToHtml($text);
     }

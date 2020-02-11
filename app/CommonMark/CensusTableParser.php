@@ -23,9 +23,9 @@ use League\CommonMark\Block\Element\Paragraph;
 use League\CommonMark\Block\Parser\BlockParserInterface;
 use League\CommonMark\ContextInterface;
 use League\CommonMark\Cursor;
-use League\CommonMark\Ext\Table\Table;
-use League\CommonMark\Ext\Table\TableCell;
-use League\CommonMark\Ext\Table\TableRow;
+use League\CommonMark\Extension\Table\Table;
+use League\CommonMark\Extension\Table\TableCell;
+use League\CommonMark\Extension\Table\TableRow;
 
 use function array_shift;
 use function explode;

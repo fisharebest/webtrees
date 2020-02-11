@@ -37,10 +37,6 @@ final class EscapableParser implements InlineParserInterface
     public function parse(InlineParserContext $inlineContext): bool
     {
         $cursor = $inlineContext->getCursor();
-        if ($cursor->getCharacter() !== '\\') {
-            return false;
-        }
-
         $nextChar = $cursor->peek();
 
         if ($nextChar === "\n") {
@@ -55,7 +51,7 @@ final class EscapableParser implements InlineParserInterface
             return true;
         }
 
-        $cursor->advance();
+        $cursor->advanceBy(1);
         $inlineContext->getContainer()->appendChild(new Text('\\'));
 
         return true;

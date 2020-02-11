@@ -12,11 +12,11 @@
 
 ![league/commonmark](commonmark-banner.png)
 
-**league/commonmark** is a highly-extensible PHP Markdown parser created by [Colin O'Dell][@colinodell] which supports the full [CommonMark] spec.  It is based on the [CommonMark JS reference implementation][commonmark.js] by [John MacFarlane] \([@jgm]\).
+**league/commonmark** is a highly-extensible PHP Markdown parser created by [Colin O'Dell][@colinodell] which supports the full [CommonMark] spec and [Github-Flavored Markdown].  It is based on the [CommonMark JS reference implementation][commonmark.js] by [John MacFarlane] \([@jgm]\).
 
 ## 📦 Installation & Basic Usage
 
-This project can be installed via [Composer]:
+This project requires PHP 7.1 or higher with the `mbstring` extension.  To install it via [Composer] simply run:
 
 ``` bash
 $ composer require league/commonmark
@@ -28,6 +28,21 @@ The `CommonMarkConverter` class provides a simple wrapper for converting CommonM
 use League\CommonMark\CommonMarkConverter;
 
 $converter = new CommonMarkConverter([
+    'html_input' => 'strip',
+    'allow_unsafe_links' => false,
+]);
+
+echo $converter->convertToHtml('# Hello World!');
+
+// <h1>Hello World!</h1>
+```
+
+Or if you want Github-Flavored Markdown, use the `GithubFlavoredMarkdownConverter` class instead:
+
+```php
+use League\CommonMark\GithubFlavoredMarkdownConverter;
+
+$converter = new GithubFlavoredMarkdownConverter([
     'html_input' => 'strip',
     'allow_unsafe_links' => false,
 ]);
@@ -49,6 +64,18 @@ Full documentation on advanced usage, configuration, and customization can be fo
 
 Information on how to upgrade to newer versions of this library can be found at <https://commonmark.thephpleague.com/releases>.
 
+## 💻 Github-Flavored Markdown
+
+The `GithubFlavoredMarkdownConverter` shown earlier is a drop-in replacement for the `CommonMarkConverter` which adds additional features found in the GFM spec:
+
+ - Autolinks
+ - Disallowed raw HTML
+ - Strikethrough
+ - Tables
+ - Task Lists
+
+See the [Extensions documentation](https://commonmark.thephpleague.com/1.0/customization/extensions/) for more details on how to include only certain GFM features if you don't want them all.
+
 ## 🗃️ Related Packages
 
 ### Integrations
@@ -62,24 +89,9 @@ Information on how to upgrade to newer versions of this library can be found at 
 - [Twig Markdown extension](https://github.com/twigphp/markdown-extension)
 - [Twig filter and tag](https://github.com/aptoma/twig-markdown)
 
-### GFM Extensions
+### Included Extensions
 
-You can easily add support for Github-Flavored Markdown by installing the [`league/commonmark-extras`](https://github.com/thephpleague/commonmark-extras) package, which includes bundles all of the extensions listed below:
-
-| Feature | Package Name | Description |
-| ------- | ------------ | ----------- |
-| Autolinks | [`league/commonmark-ext-autolink`](https://github.com/thephpleague/commonmark-ext-autolink) | Automatically links URLs, emails, and (optionally) @-mentions without needing to use `<...>` |
-| Smart Punctuation | [`league/commonmark-ext-smartpunct`](https://github.com/thephpleague/commonmark-ext-smartpunct) | Intelligently converts ASCII quotes, dashes, and ellipses to their Unicode equivalents |
-| Strikethrough | [`league/commonmark-ext-strikethrough`](https://github.com/thephpleague/commonmark-ext-strikethrough) | Adds support for `~~strikethrough~~` syntax |
-| Task Lists | [`league/commonmark-ext-task-list`](https://github.com/thephpleague/commonmark-ext-task-list) | Support for Github-style task lists |
-| Tables | [`league/commonmark-ext-table`](https://github.com/thephpleague/commonmark-ext-table) | GFM-style tables |
-
-### Other PHP League Extensions
-
- - [`league/commonmark-ext-inlines-only`](https://github.com/thephpleague/commonmark-ext-inlines-only) - Renders inline text without paragraph tags or other block-level elements
- - [`league/commonmark-ext-external-link`](https://github.com/thephpleague/commonmark-ext-external-link) - Mark external links, make them open in new windows, etc.
-
-You can add them to your project or use them as examples to [develop your own custom features](https://commonmark.thephpleague.com/customization/overview/).
+See [our extension documentation](https://commonmark.thephpleague.com/1.0/customization/extensions/#included-extensions) for a full list of extensions bundled with this library.
 
 ### Community Extensions
 
@@ -174,6 +186,10 @@ Are you interested in sponsoring development of this project? [Make a pledge](ht
 
 This project is primarily maintained by [Colin O'Dell][@colinodell].  Members of the [PHP League] Leadership Team may occasionally assist with some of these duties.
 
+## 🗺️  Who Uses It?
+
+This project is used by [Laravel Framework](https://laravel.com/), [Cachet](https://cachethq.io/), [Firefly III](https://firefly-iii.org/), [Neos](https://www.neos.io/), [Daux.io](https://daux.io/), and [more](https://packagist.org/packages/league/commonmark/dependents)!
+
 ---
 
 <div align="center">
@@ -189,6 +205,7 @@ This project is primarily maintained by [Colin O'Dell][@colinodell].  Members of
 [CommonMark]: http://commonmark.org/
 [CommonMark spec]: http://spec.commonmark.org/
 [commonmark.js]: https://github.com/jgm/commonmark.js
+[Github-Flavored Markdown]: https://github.github.com/gfm/
 [John MacFarlane]: http://johnmacfarlane.net
 [docs]: https://commonmark.thephpleague.com/
 [docs-examples]: https://commonmark.thephpleague.com/customization/overview/#examples
