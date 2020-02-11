@@ -98,7 +98,8 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
      */
     public function hasTabContent(Individual $individual): bool
     {
-        return Site::getPreference('map-provider') !== '';
+        return Site::getPreference('map-provider') !== '' &&
+            $this->getMapData($individual)->features !== [];
     }
 
     /**

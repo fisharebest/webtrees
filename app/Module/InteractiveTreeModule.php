@@ -101,7 +101,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
      */
     public function hasTabContent(Individual $individual): bool
     {
-        return true;
+        return $individual->facts(['FAMC', 'FAMS'])->isNotEmpty();
     }
 
     /**

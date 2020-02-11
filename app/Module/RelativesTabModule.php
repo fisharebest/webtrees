@@ -99,7 +99,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
      */
     public function hasTabContent(Individual $individual): bool
     {
-        return true;
+        return $individual->canEdit() || $individual->facts(['FAMC', 'FAMS'], false, null, true)->isNotEmpty();
     }
 
     /**
