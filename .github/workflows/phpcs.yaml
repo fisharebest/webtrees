@@ -17,8 +17,5 @@ jobs:
       - name: PHP
         run: ~/.composer/vendor/bin/phpcs --colors --standard=PSR12 --exclude=Generic.Files.LineLength --extensions=php index.php app modules_v4 tests
 
-      - name: Templates
-        run: ~/.composer/vendor/bin/phpcs --colors --standard=PSR12 -n --exclude=Generic.Files.LineLength --extensions=phtml resources/views
-
       - name: Style sheets
         run: ~/.composer/vendor/bin/phpcs --colors --extensions=css resources/css
