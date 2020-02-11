@@ -1050,6 +1050,9 @@ class GedcomRecord
      */
     public function updateFact(string $fact_id, string $gedcom, bool $update_chan): void
     {
+        // Not all record types allow a CHAN event.
+        $update_chan = $update_chan && in_array(static::RECORD_TYPE, Gedcom::RECORDS_WITH_CHAN, true);
+
         // MSDOS line endings will break things in horrible ways
         $gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom);
         $gedcom = trim($gedcom);
@@ -1123,6 +1126,9 @@ class GedcomRecord
      */
     public function updateRecord(string $gedcom, bool $update_chan): void
     {
+        // Not all record types allow a CHAN event.
+        $update_chan = $update_chan && in_array(static::RECORD_TYPE, Gedcom::RECORDS_WITH_CHAN, true);
+
         // MSDOS line endings will break things in horrible ways
         $gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom);
         $gedcom = trim($gedcom);

@@ -56,4 +56,15 @@ class Gedcom
 
     // Regex to match a (badly formed) GEDCOM place separator.
     public const PLACE_SEPARATOR_REGEX = ' *, *';
+
+    // Not all record types allow a CHAN event.
+    public const RECORDS_WITH_CHAN = [
+        Family::RECORD_TYPE,
+        Individual::RECORD_TYPE,
+        Media::RECORD_TYPE,
+        Note::RECORD_TYPE,
+        Repository::RECORD_TYPE,
+        Source::RECORD_TYPE,
+        Submitter::RECORD_TYPE,
+    ];
 }
