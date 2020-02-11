@@ -691,6 +691,7 @@ class AdminTreesController extends AbstractBaseController
                     'l_type',
                     'l_to',
                 ])->from('link')
+                    ->whereNotIn('l_from', ['HEAD', 'TRLR'])
                     ->where('l_file', '=', $tree1->id());
             });
 
