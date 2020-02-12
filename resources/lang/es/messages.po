@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-10 09:01+0000\nLast-Translator: Jorge Ruiz Calpe <loquiyoz@gmail.com>\nLanguage-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Spanish\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-15 17:01+0000\nLast-Translator: Jorge Ruiz Calpe <loquiyoz@gmail.com>\nLanguage-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Spanish\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -9479,7 +9479,7 @@ msgstr "Muchos servidores de correo requieren una dirección válida."
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:189
 msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
-msgstr ""
+msgstr "Muchos servidores de correo requieren que el servidor remitente se identifique correctamente, usando un nombre de dominio válido."
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:175
@@ -10777,11 +10777,11 @@ msgstr "Los nombres de lugares son a menudo demasiado largo para caber en las ca
 
 #: resources/views/help/place.phtml:12
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr ""
+msgstr "El nombre de los lugares pueden variar en el tiempo. En genealogía es usual utilizar el nombre actual. El nombre histórico puede mostrarse en fuentes, notas, etc."
 
 #: resources/views/help/place.phtml:8
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr ""
+msgstr "El nombre de los lugares debe introducirse en una lista separada por comas, comenzando en la entidad más pequeña, y acabando en el país. Por ejemplo, \"Pinto, Madrid, C. de Madrid, España\"."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:507
@@ -10919,7 +10919,7 @@ msgstr "Por favor introduzca una dirección de correo válida."
 #: app/Http/RequestHandlers/PasswordResetPage.php:77
 #: app/Http/RequestHandlers/RegisterAction.php:98
 msgid "Please try again."
-msgstr ""
+msgstr "Por favor, inténtelo de nuevo."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:143
@@ -11135,7 +11135,7 @@ msgstr "Privado"
 
 #: resources/views/admin/site-mail.phtml:225
 msgid "Private key"
-msgstr ""
+msgstr "Clave privada"
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:943
@@ -11610,7 +11610,7 @@ msgstr "Reemplace"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:72
 msgid "Replace cemetery tags with burial places."
-msgstr ""
+msgstr "Sustituya la etiqueta de cementerio con el lugar de sepultura."
 
 #: resources/views/search-replace-page.phtml:26
 msgid "Replace with"
@@ -12097,8 +12097,9 @@ msgid "Select two records to merge."
 msgstr "Seleccione dos registros a combinar."
 
 #: resources/views/admin/site-mail.phtml:216
+#, fuzzy
 msgid "Selector"
-msgstr ""
+msgstr "Selector"
 
 #: app/GedcomCode/GedcomCodeRela.php:313
 msgid "Seller"
@@ -12146,7 +12147,7 @@ msgstr "Enviar mensaje a los usuarios que no se han conectado los últimos seis 
 
 #: resources/views/admin/site-mail.phtml:239
 msgid "Send a test email using these settings"
-msgstr ""
+msgstr "Enviar un correo electrónico usando estos ajustes"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:14
@@ -13762,7 +13763,7 @@ msgstr "El archivo «%s» no existe."
 
 #: resources/views/edit/reorder-families.phtml:67
 msgid "The first family in the list will be used in charts, lists, reports, etc."
-msgstr ""
+msgstr "La primera familia en la lista será usada en diagramas, listas, reportes, etc."
 
 #: app/Http/RequestHandlers/DeletePath.php:71
 #, php-format
@@ -13786,7 +13787,7 @@ msgstr "La carpeta se puede especificar en su totalidad (por ejemplo, /home/user
 #: app/Http/Controllers/AdminSiteController.php:97
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "La carpeta “%s” no existe."
 
 #: resources/views/admin/merge-records-step-2.phtml:26
 msgid "The following facts and events were found in both records."
@@ -13836,7 +13837,7 @@ msgstr "El menú de listas."
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:37
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "La localización de este lugar no es conocida."
 
 #: app/Http/Controllers/EditMediaController.php:284
 #, php-format
@@ -13923,7 +13924,7 @@ msgstr "La contraseña requerida para la autenticación con el servidor SMTP."
 #: app/Http/RequestHandlers/PasswordResetAction.php:84
 #: app/Http/RequestHandlers/PasswordResetPage.php:76
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "El enlace para restablecer la contraseña ha caducado."
 
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php:57
@@ -14468,7 +14469,7 @@ msgstr "Este enlace es válido por una hora."
 
 #: resources/views/help/data-fixes.phtml:16
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
-msgstr ""
+msgstr "Esta lista se crea mediante una búsqueda simple (pero rápida) y, por lo tanto, incluye registros que no se actualizarán."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -15371,7 +15372,7 @@ msgstr "Actualizar nombres de lugares"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:74
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
-msgstr ""
+msgstr "Actualiza las partes de nivel superior de los nombres de lugares, manteniendo las de nivel inferior."
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -15824,7 +15825,7 @@ msgstr "Al agregar nuevos parientes cercanos, puede agregar citas de las fuentes
 
 #: resources/views/edit/reorder-families.phtml:24
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr ""
+msgstr "Cuando un individuo tuvo mas de un cónyuge, debe ordenar las familias por orden de fechas."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:892
@@ -15856,7 +15857,7 @@ msgstr "Usuarios conectados"
 
 #: resources/views/admin/data-fix-page.phtml:80
 msgid "Why does this list include records that do not need to be updated?"
-msgstr ""
+msgstr "¿Por qué esta lista incluye registros que no es necesario actualizar?"
 
 #: resources/views/lists/families-table.phtml:173
 msgid "Widow"
@@ -19654,7 +19655,7 @@ msgstr "mostrar"
 #: resources/views/modules/recent_changes/changes-list.phtml:21
 #: resources/views/modules/yahrzeit/list.phtml:20
 msgid "show more"
-msgstr ""
+msgstr "Mostrar mas"
 
 #: resources/views/modules/statistics-chart/custom.phtml:200
 msgid "show the chart"
@@ -20297,7 +20298,7 @@ msgstr "«%s» fue eliminado."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:60
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "Algunas aplicaciones de genealogía utilizan las etiquetas \"Imagen resaltada\" (_PRIM) para indicar la imagen preferida para un individuo. Una alternativa es reordenar las imágenes para que la preferida aparezca en primer lugar."
 
 #: app/Functions/FunctionsPrint.php:93 app/Note.php:160
 #: app/Report/ReportParserGenerate.php:985
