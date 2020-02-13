@@ -39,6 +39,10 @@ final class Grapheme
 
     public static function grapheme_extract($s, $size, $type = GRAPHEME_EXTR_COUNT, $start = 0, &$next = 0)
     {
+        if (\PHP_VERSION_ID >= 70100 && 0 > $start) {
+            $start = \strlen($s) + $start;
+        }
+
         if (!\is_scalar($s)) {
             $hasError = false;
             set_error_handler(function () use (&$hasError) { $hasError = true; });
@@ -181,8 +185,17 @@ final class Grapheme
         } elseif ($offset < 0) {
             if (\PHP_VERSION_ID < 50535 || (50600 <= \PHP_VERSION_ID && \PHP_VERSION_ID < 50621) || (70000 <= \PHP_VERSION_ID && \PHP_VERSION_ID < 70006)) {
                 $offset = 0;
+            } elseif (2 > $mode) {
+                $offset += self::grapheme_strlen($s);
+                $s = self::grapheme_substr($s, $offset);
+                if (0 > $offset) {
+                    $offset = 0;
+                }
+            } elseif (0 > $offset += self::grapheme_strlen($needle)) {
+                $s = self::grapheme_substr($s, 0, $offset);
+                $offset = 0;
             } else {
-                return false;
+                $offset = 0;
             }
         }
 
@@ -193,6 +206,6 @@ final class Grapheme
             default: $needle = mb_strripos($s, $needle, 0, 'UTF-8'); break;
         }
 
-        return $needle ? self::grapheme_strlen(iconv_substr($s, 0, $needle, 'UTF-8')) + $offset : $needle;
+        return false !== $needle ? self::grapheme_strlen(iconv_substr($s, 0, $needle, 'UTF-8')) + $offset : false;
     }
 }

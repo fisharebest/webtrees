@@ -14,10 +14,10 @@ matrix:
 sudo: false
 
 install:
-  - composer update --no-interaction --prefer-lowest
+  - composer update --no-interaction
 
 script:
-  - phpunit --coverage-clover build/logs/clover.xml
+  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
 after_script:
   - php vendor/bin/coveralls --verbose

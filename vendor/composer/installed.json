@@ -220,40 +220,41 @@
     },
     {
         "name": "fisharebest/php-polyfill",
-        "version": "1.6.0",
-        "version_normalized": "1.6.0.0",
+        "version": "1.7.0",
+        "version_normalized": "1.7.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/fisharebest/php-polyfill.git",
-            "reference": "10777ab7a8080424c1f54d5b8fa8976938ee7bc0"
+            "reference": "47d18c1b2dcd8caf7bb1917bfc9f2ed11fb8b1c7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/php-polyfill/zipball/10777ab7a8080424c1f54d5b8fa8976938ee7bc0",
-            "reference": "10777ab7a8080424c1f54d5b8fa8976938ee7bc0",
+            "url": "https://api.github.com/repos/fisharebest/php-polyfill/zipball/47d18c1b2dcd8caf7bb1917bfc9f2ed11fb8b1c7",
+            "reference": "47d18c1b2dcd8caf7bb1917bfc9f2ed11fb8b1c7",
             "shasum": ""
         },
         "require": {
-            "fisharebest/ext-calendar": "~2.4",
+            "fisharebest/ext-calendar": "~2.5",
             "jakeasmith/http_build_url": "~1.0",
-            "symfony/polyfill-apcu": "~1.9",
-            "symfony/polyfill-iconv": "~1.9",
-            "symfony/polyfill-intl-grapheme": "~1.9",
-            "symfony/polyfill-intl-icu": "~1.9",
-            "symfony/polyfill-intl-normalizer": "~1.9",
-            "symfony/polyfill-mbstring": "~1.9",
-            "symfony/polyfill-php54": "~1.9",
-            "symfony/polyfill-php55": "~1.9",
-            "symfony/polyfill-php56": "~1.9",
-            "symfony/polyfill-php70": "~1.9",
-            "symfony/polyfill-util": "~1.9",
-            "symfony/polyfill-xml": "~1.9"
+            "symfony/polyfill-apcu": "~1.14",
+            "symfony/polyfill-iconv": "~1.14",
+            "symfony/polyfill-intl-grapheme": "~1.14",
+            "symfony/polyfill-intl-icu": "~1.14",
+            "symfony/polyfill-intl-normalizer": "~1.14",
+            "symfony/polyfill-mbstring": "~1.14",
+            "symfony/polyfill-php54": "~1.14",
+            "symfony/polyfill-php55": "~1.14",
+            "symfony/polyfill-php56": "~1.14",
+            "symfony/polyfill-php70": "~1.14",
+            "symfony/polyfill-php71": "~1.14",
+            "symfony/polyfill-php72": "~1.14",
+            "symfony/polyfill-util": "~1.14"
         },
         "require-dev": {
             "php-coveralls/php-coveralls": "*",
-            "phpunit/phpunit": "*"
+            "phpunit/phpunit": "<6.0"
         },
-        "time": "2018-09-09T17:30:52+00:00",
+        "time": "2020-02-13T11:24:38+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -407,23 +408,26 @@
     },
     {
         "name": "michelf/php-markdown",
-        "version": "1.8.0",
-        "version_normalized": "1.8.0.0",
+        "version": "1.9.0",
+        "version_normalized": "1.9.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/michelf/php-markdown.git",
-            "reference": "01ab082b355bf188d907b9929cd99b2923053495"
+            "reference": "c83178d49e372ca967d1a8c77ae4e051b3a3c75c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/michelf/php-markdown/zipball/01ab082b355bf188d907b9929cd99b2923053495",
-            "reference": "01ab082b355bf188d907b9929cd99b2923053495",
+            "url": "https://api.github.com/repos/michelf/php-markdown/zipball/c83178d49e372ca967d1a8c77ae4e051b3a3c75c",
+            "reference": "c83178d49e372ca967d1a8c77ae4e051b3a3c75c",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2018-01-15T00:49:33+00:00",
+        "require-dev": {
+            "phpunit/phpunit": ">=4.3 <5.8"
+        },
+        "time": "2019-12-02T02:32:27+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -631,17 +635,17 @@
     },
     {
         "name": "symfony/http-foundation",
-        "version": "v2.8.50",
-        "version_normalized": "2.8.50.0",
+        "version": "v2.8.52",
+        "version_normalized": "2.8.52.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/http-foundation.git",
-            "reference": "746f8d3638bf46ee8b202e62f2b214c3d61fb06a"
+            "reference": "3929d9fe8148d17819ad0178c748b8d339420709"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/http-foundation/zipball/746f8d3638bf46ee8b202e62f2b214c3d61fb06a",
-            "reference": "746f8d3638bf46ee8b202e62f2b214c3d61fb06a",
+            "url": "https://api.github.com/repos/symfony/http-foundation/zipball/3929d9fe8148d17819ad0178c748b8d339420709",
+            "reference": "3929d9fe8148d17819ad0178c748b8d339420709",
             "shasum": ""
         },
         "require": {
@@ -653,7 +657,7 @@
         "require-dev": {
             "symfony/expression-language": "~2.4|~3.0.0"
         },
-        "time": "2019-04-16T10:00:53+00:00",
+        "time": "2019-11-12T12:34:41+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -688,8 +692,8 @@
     },
     {
         "name": "symfony/intl",
-        "version": "v2.8.50",
-        "version_normalized": "2.8.50.0",
+        "version": "v2.8.52",
+        "version_normalized": "2.8.52.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/intl.git",
@@ -766,27 +770,27 @@
     },
     {
         "name": "symfony/polyfill-apcu",
-        "version": "v1.12.0",
-        "version_normalized": "1.12.0.0",
+        "version": "v1.14.0",
+        "version_normalized": "1.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-apcu.git",
-            "reference": "71ce80635d5dcd67772b4dda00b86068595f64d5"
+            "reference": "f5a6efd9d9f68790120734f80f8fda972981edab"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-apcu/zipball/71ce80635d5dcd67772b4dda00b86068595f64d5",
-            "reference": "71ce80635d5dcd67772b4dda00b86068595f64d5",
+            "url": "https://api.github.com/repos/symfony/polyfill-apcu/zipball/f5a6efd9d9f68790120734f80f8fda972981edab",
+            "reference": "f5a6efd9d9f68790120734f80f8fda972981edab",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2019-08-06T08:03:45+00:00",
+        "time": "2020-01-13T11:15:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.12-dev"
+                "dev-master": "1.14-dev"
             }
         },
         "installation-source": "dist",
@@ -824,17 +828,17 @@
     },
     {
         "name": "symfony/polyfill-iconv",
-        "version": "v1.12.0",
-        "version_normalized": "1.12.0.0",
+        "version": "v1.14.0",
+        "version_normalized": "1.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-iconv.git",
-            "reference": "685968b11e61a347c18bf25db32effa478be610f"
+            "reference": "926832ce51059bb58211b7b2080a88e0c3b5328e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-iconv/zipball/685968b11e61a347c18bf25db32effa478be610f",
-            "reference": "685968b11e61a347c18bf25db32effa478be610f",
+            "url": "https://api.github.com/repos/symfony/polyfill-iconv/zipball/926832ce51059bb58211b7b2080a88e0c3b5328e",
+            "reference": "926832ce51059bb58211b7b2080a88e0c3b5328e",
             "shasum": ""
         },
         "require": {
@@ -843,11 +847,11 @@
         "suggest": {
             "ext-iconv": "For best performance"
         },
-        "time": "2019-08-06T08:03:45+00:00",
+        "time": "2020-01-13T11:15:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.12-dev"
+                "dev-master": "1.14-dev"
             }
         },
         "installation-source": "dist",
@@ -885,17 +889,17 @@
     },
     {
         "name": "symfony/polyfill-intl-grapheme",
-        "version": "v1.12.0",
-        "version_normalized": "1.12.0.0",
+        "version": "v1.14.0",
+        "version_normalized": "1.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
-            "reference": "f6d623160da72288a9b704d324e5a0e4b385331a"
+            "reference": "699871accfb394eb6f34ba1210df437f79b14d58"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/f6d623160da72288a9b704d324e5a0e4b385331a",
-            "reference": "f6d623160da72288a9b704d324e5a0e4b385331a",
+            "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/699871accfb394eb6f34ba1210df437f79b14d58",
+            "reference": "699871accfb394eb6f34ba1210df437f79b14d58",
             "shasum": ""
         },
         "require": {
@@ -904,11 +908,11 @@
         "suggest": {
             "ext-intl": "For best performance"
         },
-        "time": "2019-08-06T08:03:45+00:00",
+        "time": "2020-01-13T11:15:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.12-dev"
+                "dev-master": "1.14-dev"
             }
         },
         "installation-source": "dist",
@@ -947,17 +951,17 @@
     },
     {
         "name": "symfony/polyfill-intl-icu",
-        "version": "v1.12.0",
-        "version_normalized": "1.12.0.0",
+        "version": "v1.14.0",
+        "version_normalized": "1.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-intl-icu.git",
-            "reference": "66810b9d6eb4af54d543867909d65ab9af654d7e"
+            "reference": "727b3bb5bfa7ca9eeb86416784cf1c08a6289b86"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/66810b9d6eb4af54d543867909d65ab9af654d7e",
-            "reference": "66810b9d6eb4af54d543867909d65ab9af654d7e",
+            "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/727b3bb5bfa7ca9eeb86416784cf1c08a6289b86",
+            "reference": "727b3bb5bfa7ca9eeb86416784cf1c08a6289b86",
             "shasum": ""
         },
         "require": {
@@ -967,11 +971,11 @@
         "suggest": {
             "ext-intl": "For best performance"
         },
-        "time": "2019-08-06T08:03:45+00:00",
+        "time": "2020-01-13T11:15:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.12-dev"
+                "dev-master": "1.14-dev"
             }
         },
         "installation-source": "dist",
@@ -1007,17 +1011,17 @@
     },
     {
         "name": "symfony/polyfill-intl-normalizer",
-        "version": "v1.12.0",
-        "version_normalized": "1.12.0.0",
+        "version": "v1.14.0",
+        "version_normalized": "1.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
-            "reference": "c7fcec8e5cd3fc87f91120b0b5d3cb1b7d44f7a9"
+            "reference": "e62b4845992282d14037950542fc8e8650ae2a65"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/c7fcec8e5cd3fc87f91120b0b5d3cb1b7d44f7a9",
-            "reference": "c7fcec8e5cd3fc87f91120b0b5d3cb1b7d44f7a9",
+            "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/e62b4845992282d14037950542fc8e8650ae2a65",
+            "reference": "e62b4845992282d14037950542fc8e8650ae2a65",
             "shasum": ""
         },
         "require": {
@@ -1026,11 +1030,11 @@
         "suggest": {
             "ext-intl": "For best performance"
         },
-        "time": "2019-08-06T08:03:45+00:00",
+        "time": "2020-01-13T11:15:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.12-dev"
+                "dev-master": "1.14-dev"
             }
         },
         "installation-source": "dist",
@@ -1072,17 +1076,17 @@
     },
     {
         "name": "symfony/polyfill-mbstring",
-        "version": "v1.12.0",
-        "version_normalized": "1.12.0.0",
+        "version": "v1.14.0",
+        "version_normalized": "1.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "b42a2f66e8f1b15ccf25652c3424265923eb4f17"
+            "reference": "34094cfa9abe1f0f14f48f490772db7a775559f2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/b42a2f66e8f1b15ccf25652c3424265923eb4f17",
-            "reference": "b42a2f66e8f1b15ccf25652c3424265923eb4f17",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/34094cfa9abe1f0f14f48f490772db7a775559f2",
+            "reference": "34094cfa9abe1f0f14f48f490772db7a775559f2",
             "shasum": ""
         },
         "require": {
@@ -1091,11 +1095,11 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2019-08-06T08:03:45+00:00",
+        "time": "2020-01-13T11:15:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.12-dev"
+                "dev-master": "1.14-dev"
             }
         },
         "installation-source": "dist",
@@ -1133,27 +1137,27 @@
     },
     {
         "name": "symfony/polyfill-php54",
-        "version": "v1.12.0",
-        "version_normalized": "1.12.0.0",
+        "version": "v1.14.0",
+        "version_normalized": "1.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-php54.git",
-            "reference": "a043bcced870214922fbb4bf22679d431ec0296a"
+            "reference": "a8076ba7fd176d773d0e4aadb5b3cc7680a1c0a6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-php54/zipball/a043bcced870214922fbb4bf22679d431ec0296a",
-            "reference": "a043bcced870214922fbb4bf22679d431ec0296a",
+            "url": "https://api.github.com/repos/symfony/polyfill-php54/zipball/a8076ba7fd176d773d0e4aadb5b3cc7680a1c0a6",
+            "reference": "a8076ba7fd176d773d0e4aadb5b3cc7680a1c0a6",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2019-08-06T08:03:45+00:00",
+        "time": "2020-01-13T11:15:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.12-dev"
+                "dev-master": "1.14-dev"
             }
         },
         "installation-source": "dist",
@@ -1193,28 +1197,28 @@
     },
     {
         "name": "symfony/polyfill-php55",
-        "version": "v1.12.0",
-        "version_normalized": "1.12.0.0",
+        "version": "v1.14.0",
+        "version_normalized": "1.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-php55.git",
-            "reference": "548bb39407e78e54f785b4e18c7e0d5d9e493265"
+            "reference": "58a98ed90b40a15a1a76c59417386395d5b1ec76"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-php55/zipball/548bb39407e78e54f785b4e18c7e0d5d9e493265",
-            "reference": "548bb39407e78e54f785b4e18c7e0d5d9e493265",
+            "url": "https://api.github.com/repos/symfony/polyfill-php55/zipball/58a98ed90b40a15a1a76c59417386395d5b1ec76",
+            "reference": "58a98ed90b40a15a1a76c59417386395d5b1ec76",
             "shasum": ""
         },
         "require": {
             "ircmaxell/password-compat": "~1.0",
             "php": ">=5.3.3"
         },
-        "time": "2019-08-06T08:03:45+00:00",
+        "time": "2020-01-13T11:15:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.12-dev"
+                "dev-master": "1.14-dev"
             }
         },
         "installation-source": "dist",
@@ -1251,28 +1255,28 @@
     },
     {
         "name": "symfony/polyfill-php56",
-        "version": "v1.12.0",
-        "version_normalized": "1.12.0.0",
+        "version": "v1.14.0",
+        "version_normalized": "1.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-php56.git",
-            "reference": "0e3b212e96a51338639d8ce175c046d7729c3403"
+            "reference": "16ec91cb06998b609501b55b7177b7d7c02badb3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/0e3b212e96a51338639d8ce175c046d7729c3403",
-            "reference": "0e3b212e96a51338639d8ce175c046d7729c3403",
+            "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/16ec91cb06998b609501b55b7177b7d7c02badb3",
+            "reference": "16ec91cb06998b609501b55b7177b7d7c02badb3",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.3",
             "symfony/polyfill-util": "~1.0"
         },
-        "time": "2019-08-06T08:03:45+00:00",
+        "time": "2020-01-13T11:15:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.12-dev"
+                "dev-master": "1.14-dev"
             }
         },
         "installation-source": "dist",
@@ -1309,28 +1313,28 @@
     },
     {
         "name": "symfony/polyfill-php70",
-        "version": "v1.12.0",
-        "version_normalized": "1.12.0.0",
+        "version": "v1.14.0",
+        "version_normalized": "1.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-php70.git",
-            "reference": "54b4c428a0054e254223797d2713c31e08610831"
+            "reference": "419c4940024c30ccc033650373a1fe13890d3255"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/54b4c428a0054e254223797d2713c31e08610831",
-            "reference": "54b4c428a0054e254223797d2713c31e08610831",
+            "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/419c4940024c30ccc033650373a1fe13890d3255",
+            "reference": "419c4940024c30ccc033650373a1fe13890d3255",
             "shasum": ""
         },
         "require": {
             "paragonie/random_compat": "~1.0|~2.0|~9.99",
             "php": ">=5.3.3"
         },
-        "time": "2019-08-06T08:03:45+00:00",
+        "time": "2020-01-13T11:15:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.12-dev"
+                "dev-master": "1.14-dev"
             }
         },
         "installation-source": "dist",
@@ -1369,28 +1373,85 @@
         ]
     },
     {
-        "name": "symfony/polyfill-php72",
-        "version": "v1.12.0",
-        "version_normalized": "1.12.0.0",
+        "name": "symfony/polyfill-php71",
+        "version": "v1.14.0",
+        "version_normalized": "1.14.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/polyfill-php72.git",
-            "reference": "04ce3335667451138df4307d6a9b61565560199e"
+            "url": "https://github.com/symfony/polyfill-php71.git",
+            "reference": "9a181bae42e5f15f7ba17ab213854b15188f5a5a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/04ce3335667451138df4307d6a9b61565560199e",
-            "reference": "04ce3335667451138df4307d6a9b61565560199e",
+            "url": "https://api.github.com/repos/symfony/polyfill-php71/zipball/9a181bae42e5f15f7ba17ab213854b15188f5a5a",
+            "reference": "9a181bae42e5f15f7ba17ab213854b15188f5a5a",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2019-08-06T08:03:45+00:00",
+        "time": "2020-01-13T11:15:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.12-dev"
+                "dev-master": "1.14-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Polyfill\\Php71\\": ""
+            },
+            "files": [
+                "bootstrap.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony polyfill backporting some PHP 7.1+ features to lower PHP versions",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "compatibility",
+            "polyfill",
+            "portable",
+            "shim"
+        ]
+    },
+    {
+        "name": "symfony/polyfill-php72",
+        "version": "v1.14.0",
+        "version_normalized": "1.14.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/polyfill-php72.git",
+            "reference": "46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf",
+            "reference": "46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "time": "2020-01-13T11:15:53+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.14-dev"
             }
         },
         "installation-source": "dist",
@@ -1427,27 +1488,27 @@
     },
     {
         "name": "symfony/polyfill-util",
-        "version": "v1.12.0",
-        "version_normalized": "1.12.0.0",
+        "version": "v1.14.0",
+        "version_normalized": "1.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-util.git",
-            "reference": "4317de1386717b4c22caed7725350a8887ab205c"
+            "reference": "ba3cfcea6d0192cae46c62041f61cbb704b526d3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/4317de1386717b4c22caed7725350a8887ab205c",
-            "reference": "4317de1386717b4c22caed7725350a8887ab205c",
+            "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/ba3cfcea6d0192cae46c62041f61cbb704b526d3",
+            "reference": "ba3cfcea6d0192cae46c62041f61cbb704b526d3",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2019-08-06T08:03:45+00:00",
+        "time": "2020-01-13T11:15:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.12-dev"
+                "dev-master": "1.14-dev"
             }
         },
         "installation-source": "dist",
@@ -1480,73 +1541,24 @@
         ]
     },
     {
-        "name": "symfony/polyfill-xml",
-        "version": "v1.12.0",
-        "version_normalized": "1.12.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/polyfill-xml.git",
-            "reference": "e48d7bcd5b6d0aec5884ee351a3ea4d3abb58f13"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-xml/zipball/e48d7bcd5b6d0aec5884ee351a3ea4d3abb58f13",
-            "reference": "e48d7bcd5b6d0aec5884ee351a3ea4d3abb58f13",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3",
-            "symfony/polyfill-php72": "~1.4"
-        },
-        "time": "2019-08-06T08:03:45+00:00",
-        "type": "metapackage",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.12-dev"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony polyfill for xml's utf8_encode and utf8_decode functions",
-        "homepage": "https://symfony.com",
-        "keywords": [
-            "compatibility",
-            "polyfill",
-            "portable",
-            "shim"
-        ]
-    },
-    {
         "name": "tecnickcom/tcpdf",
-        "version": "6.3.2",
-        "version_normalized": "6.3.2.0",
+        "version": "6.3.4",
+        "version_normalized": "6.3.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/tecnickcom/TCPDF.git",
-            "reference": "9fde7bb9b404b945e7ea88fb7eccd23d9a4e324b"
+            "reference": "510070b5e068e10d97b8cb0e25295e54755ec09d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/9fde7bb9b404b945e7ea88fb7eccd23d9a4e324b",
-            "reference": "9fde7bb9b404b945e7ea88fb7eccd23d9a4e324b",
+            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/510070b5e068e10d97b8cb0e25295e54755ec09d",
+            "reference": "510070b5e068e10d97b8cb0e25295e54755ec09d",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2019-09-20T09:35:01+00:00",
+        "time": "2020-02-12T13:26:24+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1571,7 +1583,7 @@
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "LGPL-3.0"
+            "LGPL-3.0-only"
         ],
         "authors": [
             {

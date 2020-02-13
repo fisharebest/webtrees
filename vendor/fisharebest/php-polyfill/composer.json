@@ -18,23 +18,24 @@
 		}
 	],
 	"require": {
-		"fisharebest/ext-calendar": "~2.4",
+		"fisharebest/ext-calendar": "~2.5",
 		"jakeasmith/http_build_url": "~1.0",
-		"symfony/polyfill-apcu": "~1.9",
-		"symfony/polyfill-php54": "~1.9",
-		"symfony/polyfill-php55": "~1.9",
-		"symfony/polyfill-php56": "~1.9",
-		"symfony/polyfill-php70": "~1.9",
-		"symfony/polyfill-iconv": "~1.9",
-		"symfony/polyfill-intl-grapheme": "~1.9",
-		"symfony/polyfill-intl-icu": "~1.9",
-		"symfony/polyfill-intl-normalizer": "~1.9",
-		"symfony/polyfill-mbstring": "~1.9",
-		"symfony/polyfill-util": "~1.9",
-		"symfony/polyfill-xml": "~1.9"
+		"symfony/polyfill-apcu": "~1.14",
+		"symfony/polyfill-php54": "~1.14",
+		"symfony/polyfill-php55": "~1.14",
+		"symfony/polyfill-php56": "~1.14",
+		"symfony/polyfill-php70": "~1.14",
+		"symfony/polyfill-php71": "~1.14",
+		"symfony/polyfill-php72": "~1.14",
+		"symfony/polyfill-iconv": "~1.14",
+		"symfony/polyfill-intl-grapheme": "~1.14",
+		"symfony/polyfill-intl-icu": "~1.14",
+		"symfony/polyfill-intl-normalizer": "~1.14",
+		"symfony/polyfill-mbstring": "~1.14",
+		"symfony/polyfill-util": "~1.14"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "*",
+		"phpunit/phpunit": "<6.0",
 		"php-coveralls/php-coveralls": "*"
 	},
 	"autoload": {

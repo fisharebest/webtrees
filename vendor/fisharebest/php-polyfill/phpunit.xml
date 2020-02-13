@@ -2,7 +2,6 @@
 <phpunit
 	beStrictAboutOutputDuringTests="true"
 	beStrictAboutTestsThatDoNotTestAnything="true"
-	beStrictAboutTestSize="true"
 	bootstrap="vendor/autoload.php"
 	colors="true"
 	processIsolation="false"

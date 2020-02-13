@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 1.7.0 (2020-02-13)
+ - symfony/polyfill-xml now part of symfony/polyfill-php72
+
 ## 1.6.0 (2018-09-09)
  - Update dependencies
 
