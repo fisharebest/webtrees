@@ -1,23 +1,31 @@
 language: php
 
+cache:
+  directories:
+    - ~/.composer/cache
+
 sudo: false
 
 matrix:
   include:
-    - php: 7.3
-    - php: 7.2
-    - php: 7.1
-    - php: 7.0
-    - php: 5.6
-    - php: 5.5
-      dist: trusty
+    - php: 5.3
+      dist: precise
     - php: 5.4
       dist: trusty
+    - php: 5.5
+      dist: trusty
+    - php: 5.6
+      dist: xenial
+    - php: 7.0
+      dist: xenial
+    - php: 7.1
+    - php: 7.2
+    - php: 7.3
 
 before_script:
   - phpenv config-rm xdebug.ini
   - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
-  - travis_retry composer update
+  - COMPOSER_MEMORY_LIMIT=-1 composer update --no-interaction
 
 script:
   - vendor/bin/phpunit
