@@ -57,7 +57,7 @@ use Fisharebest\Webtrees\Functions\Functions;
 
         <?php foreach ($family->children() as $child) : ?>
             <tr class="text-center wt-family-navigator-child wt-gender-<?= $child->sex() ?>">
-                <th class="text-nowrap align-middle" scope="row">
+                <th class="align-middle wt-family-navigator-label" scope="row">
                     <?php if ($child === $individual) : ?>
                         <?= Functions::getCloseRelationshipName($individual, $child) ?>
                         <i class="icon-selected"></i>
