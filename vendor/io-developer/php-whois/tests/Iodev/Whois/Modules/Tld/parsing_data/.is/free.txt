@@ -1,0 +1,7 @@
+% This is the ISNIC Whois server.
+%
+% Rights restricted by copyright.
+% See https://www.isnic.is/en/about/copyright
+
+%
+% No entries found for query "free.is".

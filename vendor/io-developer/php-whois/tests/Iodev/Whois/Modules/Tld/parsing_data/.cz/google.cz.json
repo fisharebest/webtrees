@@ -1,0 +1,15 @@
+{
+  "domainName": "google.cz",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2000-07-21T15:21:00",
+  "expirationDate": "2018-07-22T00:00:00",
+  "states": [],
+  "owner": "Google Inc.",
+  "registrar": "MarkMonitor, Inc."
+}

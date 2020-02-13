@@ -1,0 +1,19 @@
+{
+  "domainName": "google.com.sb",
+  "whoisServer": "whois.nic.net.sb",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2007-11-14T21:18:38.814Z",
+  "expirationDate": "2018-04-26T07:00:00.0Z",
+  "states": [
+    "clientupdateprohibited",
+    "clienttransferprohibited",
+    "clientdeleteprohibited"
+  ],
+  "owner": "DNS Admin",
+  "registrar": "MarkMonitor"
+}

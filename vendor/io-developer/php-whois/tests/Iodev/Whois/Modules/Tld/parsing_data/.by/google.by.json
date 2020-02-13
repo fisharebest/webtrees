@@ -1,0 +1,15 @@
+{
+  "domainName": "google.by",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2004-05-14T00:00:00",
+  "expirationDate": "2018-02-09T00:00:00",
+  "states": [],
+  "owner": "MarkMonitor Inc.",
+  "registrar": "Open Contact, Ltd"
+}

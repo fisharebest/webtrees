@@ -1,0 +1,52 @@
+Domain Name: google.ci
+Domain ID: 3802-CoCCA
+WHOIS Server: whois.nic.ci
+Referral URL: 
+Updated Date: 2017-01-25T22:26:22.657Z
+Creation Date: 2013-02-14T00:00:00.0Z
+Registry Expiry Date: 2018-02-13T00:00:00.0Z
+Sponsoring Registrar: AFRIREGISTER
+Domain Status: ok
+Registrant ID: 54329-CoCCA
+Registrant Name: Artci
+Registrant Street: 18 BP 2203 Abidjan 18
+Registrant Street: 18 BP 2203 Abidjan 18
+Registrant City: Abidjan
+Registrant State/Province: 
+Registrant Postal Code: 
+Registrant Country: CI
+Registrant Phone: +225.2034433153
+Registrant Phone Ext: 
+Registrant Email: registrant@nic.ci
+Admin ID: 54328-CoCCA
+Admin Name: Artci
+Admin Street: 18 BP 2203 Abidjan 18
+Admin City: Abidjan
+Admin State/Province: 
+Admin Postal Code: 
+Admin Country: CI
+Admin Phone: +225.20344373
+Admin Phone Ext: 
+Admin Email: registrant@nic.ci
+Tech ID: 54328-CoCCA
+Tech Name: Artci
+Tech Street: 18 BP 2203 Abidjan 18
+Tech City: Abidjan
+Tech State/Province: 
+Tech Postal Code: 
+Tech Country: CI
+Tech Phone: +225.20344373
+Tech Phone Ext: 
+Tech Email: registrant@nic.ci
+Name Server: ns2.google.com
+Name Server: ns1.google.com
+Name Server: ns3.google.com
+Name Server: ns4.google.com
+DNSSEC: unsigned
+Additional Section
+Redemption Expiry Date:
+>>> Last update of WHOIS database: 2017-11-18T18:43:07.585Z <<<
+
+TERMS OF USE: You are not authorized to access or query our WHOIS database through the use of electronic processes that are high-volume and automated.  THis WHOIS database is provided by as a service to the internet community.
+
+The data is for information purposes only. We do not guarantee its accuracy. By submitting a WHOIS query, you agree to abide by the following terms of use: You agree that you may use this Data only for lawful purposes and that under no circumstances will you use this Data to: (1) allow, enable, or otherwise support the transmission of mass unsolicited, commercial advertising or solicitations via e-mail, telephone, or facsimile; or (2) enable high volume, automated, electronic processes that apply to CoCCA it's members (or CoCCA or member computer systems). The compilation, repackaging, dissemination or other use of this Data is expressly prohibited.

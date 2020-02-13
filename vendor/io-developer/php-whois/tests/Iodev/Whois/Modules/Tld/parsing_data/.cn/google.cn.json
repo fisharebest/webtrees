@@ -1,0 +1,22 @@
+{
+  "domainName": "google.cn",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2003-03-17T12:20:05",
+  "expirationDate": "2018-03-17T12:48:36",
+  "states": [
+    "clientdeleteprohibited",
+    "serverdeleteprohibited",
+    "clientupdateprohibited",
+    "serverupdateprohibited",
+    "clienttransferprohibited",
+    "servertransferprohibited"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "MarkMonitor Inc."
+}

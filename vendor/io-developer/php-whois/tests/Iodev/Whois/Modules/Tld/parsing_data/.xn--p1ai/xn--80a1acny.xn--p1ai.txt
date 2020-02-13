@@ -1,0 +1,19 @@
+% By submitting a query to RIPN's Whois Service
+% you agree to abide by the following terms of use:
+% http://www.ripn.net/about/servpol.html#3.2 (in Russian) 
+% http://www.ripn.net/about/en/servpol.html#3.2 (in English).
+
+domain:        XN--80A1ACNY.XN--P1AI
+nserver:       dc-ns1.russianpost.ru.
+nserver:       ns2.russianpost.ru.
+state:         REGISTERED, DELEGATED, VERIFIED
+org:           FSUE "Russian Post"
+registrar:     RUCENTER-RF
+admin-contact: https://www.nic.ru/whois
+created:       2010-08-23T10:32:37Z
+paid-till:     2018-08-23T11:32:37Z
+free-date:     2018-09-23
+source:        TCI
+
+Last updated on 2017-11-05T18:16:31Z
+

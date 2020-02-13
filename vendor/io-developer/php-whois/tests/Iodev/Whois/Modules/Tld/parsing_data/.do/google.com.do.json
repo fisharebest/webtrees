@@ -1,0 +1,15 @@
+{
+  "domainName": "google.com.do",
+  "whoisServer": "whois.nic.do",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "creationDate": "2003-04-11T04:00:00.0Z",
+  "expirationDate": "2018-04-11T04:00:00.0Z",
+  "states": [
+    "ok"
+  ],
+  "owner": "GOOGLE INC.",
+  "registrar": "Registrar NIC .DO (midominio.do)"
+}

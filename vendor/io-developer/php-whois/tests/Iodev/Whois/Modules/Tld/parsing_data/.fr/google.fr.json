@@ -1,0 +1,17 @@
+{
+  "domainName": "google.fr",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2000-07-27T00:00:00",
+  "expirationDate": "2017-12-30T00:00:00",
+  "states": [
+    "active"
+  ],
+  "owner": "Google Ireland Holdings",
+  "registrar": "MARKMONITOR Inc."
+}

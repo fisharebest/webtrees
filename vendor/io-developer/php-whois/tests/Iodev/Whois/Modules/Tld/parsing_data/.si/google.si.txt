@@ -1,0 +1,50 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is ARNES whois database
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Rights restricted by copyright.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The WHOIS service offered by Arnes, .si Registry, is
+% provided for information purposes only. It allows persons
+% to check whether a specific domain name is still available
+% or not and to obtain information related to the registration
+% records of existing domain names.
+%
+% This WHOIS service accepts and displays only ASCII characters.
+% Arnes cannot be held liable should the stored information
+% prove to be wrong, incomplete or inaccurate in any sense.
+%
+% By submitting a query you agree not to use the information
+% made available to:
+%      o Allow, enable or otherwise support the transmission
+%        of unsolicited, commercial advertising or other solicitations
+%        whether via email or otherwise;
+%      o Target advertising in any possible way;
+%      o Cause nuisance in any possible way to the registrants
+%        by sending (whether by automated, electronic processes
+%        capable of enabling high volumes or other possible
+%        means) messages to them;
+%      o copy, extract and/or publish contents of the WHOIS database.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+domain:		google.si
+registrar:	MarkMonitor
+registrar-url:	http://www.markmonitor.com
+nameserver:	ns1.google.com
+nameserver:	ns2.google.com
+nameserver:	ns3.google.com
+nameserver:	ns4.google.com
+registrant:	G561850
+status:		client_update_prohibited
+created:	2005-04-04
+expire:		2018-07-19
+source:		ARNES
+
+Domain holder:
+NOT DISCLOSED
+
+Tech:
+NOT DISCLOSED
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Full domain details are available here https://www.registry.si
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

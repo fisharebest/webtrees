@@ -1,0 +1,7 @@
+%
+%AM TLD whois server #1
+% Please see 'whois -h whois.amnic.net help' for usage.
+%
+
+No match
+

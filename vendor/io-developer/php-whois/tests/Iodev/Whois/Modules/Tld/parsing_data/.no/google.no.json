@@ -1,0 +1,15 @@
+{
+  "domainName": "google.no",
+  "whoisServer": "",
+  "nameServers": [
+    "nsgo26h-norid",
+    "nsgo27h-norid",
+    "nsgo28h-norid",
+    "nsgo29h-norid"
+  ],
+  "creationDate": "2001-02-26T00:00:00",
+  "expirationDate": "",
+  "states": [],
+  "owner": "Google Norway AS",
+  "registrar": "REG466-NORID"
+}

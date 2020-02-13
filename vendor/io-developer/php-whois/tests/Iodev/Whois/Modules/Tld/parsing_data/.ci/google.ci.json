@@ -1,0 +1,17 @@
+{
+  "domainName": "google.ci",
+  "whoisServer": "whois.nic.ci",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2013-02-14T00:00:00.0Z",
+  "expirationDate": "2018-02-13T00:00:00.0Z",
+  "states": [
+    "ok"
+  ],
+  "owner": "Artci",
+  "registrar": "AFRIREGISTER"
+}

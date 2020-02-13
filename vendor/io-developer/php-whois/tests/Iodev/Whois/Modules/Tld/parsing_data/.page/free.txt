@@ -1,0 +1,22 @@
+Domain not found.
+>>> Last update of WHOIS database: 2019-10-25T14:18:04Z <<<
+
+Please query the WHOIS server of the owning registrar identified in this
+output for information on how to contact the Registrant, Admin, or Tech
+contact of the queried domain name.
+
+WHOIS information is provided by Charleston Road Registry Inc. (CRR) solely
+for query-based, informational purposes. By querying our WHOIS database, you
+are agreeing to comply with these terms
+(https://www.registry.google/about/whois-disclaimer.html) and acknowledge
+that your information will be used in accordance with CRR's Privacy Policy
+(https://www.registry.google/about/privacy.html), so please read those
+documents carefully.  Any information provided is "as is" without any
+guarantee of accuracy. You may not use such information to (a) allow,
+enable, or otherwise support the transmission of mass unsolicited,
+commercial advertising or solicitations; (b) enable high volume, automated,
+electronic processes that access the systems of CRR or any ICANN-Accredited
+Registrar, except as reasonably necessary to register domain names or modify
+existing registrations; or (c) engage in or support unlawful behavior. CRR
+reserves the right to restrict or deny your access to the Whois database,
+and may modify these terms at any time.

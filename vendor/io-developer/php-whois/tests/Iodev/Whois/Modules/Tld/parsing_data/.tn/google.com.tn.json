@@ -1,0 +1,17 @@
+{
+  "domainName": "google.com.tn",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2016-08-30T13:54:12",
+  "expirationDate": "",
+  "states": [
+    "active"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "ELB"
+}

@@ -1,0 +1,79 @@
+Domain Name: GOOGLE.LA
+Registry Domain ID: D471480-LANIC
+Registrar WHOIS Server: whois.nic.la
+Registrar URL:
+Updated Date: 2016-07-13T18:43:33.0Z
+Creation Date: 2002-07-18T01:00:00.0Z
+Registry Expiry Date: 2018-07-18T23:59:59.0Z
+Registrar: TLD Registrar Solutions Ltd
+Registrar IANA ID:
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Registry Registrant ID: C282895-LANIC
+Registrant Name: Google Inc
+Registrant Organization: Google Inc
+Registrant Street: 1600 Amphitheatre Parkway
+Registrant City: Mountain View
+Registrant State/Province: Ca
+Registrant Postal Code: 94043
+Registrant Country: US
+Registrant Phone: +1.6502530000
+Registrant Fax: +1.65067188571
+Registrant Email: dns-admin@google.com
+Registry Admin ID: C282895-LANIC
+Admin Name: Google Inc
+Admin Organization: Google Inc
+Admin Street: 1600 Amphitheatre Parkway
+Admin City: Mountain View
+Admin State/Province: Ca
+Admin Postal Code: 94043
+Admin Country: US
+Admin Phone: +1.6502530000
+Admin Fax: +1.65067188571
+Admin Email: dns-admin@google.com
+Registry Tech ID: C282895-LANIC
+Tech Name: Google Inc
+Tech Organization: Google Inc
+Tech Street: 1600 Amphitheatre Parkway
+Tech City: Mountain View
+Tech State/Province: Ca
+Tech Postal Code: 94043
+Tech Country: US
+Tech Phone: +1.6502530000
+Tech Fax: +1.65067188571
+Tech Email: dns-admin@google.com
+Name Server: NS1.GOOGLE.COM
+Name Server: NS2.GOOGLE.COM
+Name Server: NS3.GOOGLE.COM
+Name Server: NS4.GOOGLE.COM
+DNSSEC: unsigned
+Registry Billing ID: C2423204-LANIC
+Billing Name: MarkMonitor, Inc.
+Billing Organization: MarkMonitor, Inc.
+Billing Street: 391 N Ancestor Place
+Billing City: Boise
+Billing State/Province: ID
+Billing Postal Code: 83704
+Billing Country: US
+Billing Phone: +1.2083895740
+Billing Fax: +1.2083895771
+Billing Email: ccopsbilling@markmonitor.com
+Registrar Abuse Contact Email: support@registry.la
+Registrar Abuse Contact Phone: +44.2033880600
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2017-11-18T21:15:19.0Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+This whois service is provided by LANIC and only contains
+information pertaining to Internet domain names registered by our
+our customers. By using this service you are agreeing (1) not to use any
+information presented here for any purpose other than determining
+ownership of domain names, (2) not to store or reproduce this data in
+any way, (3) not to use any high-volume, automated, electronic processes
+to obtain data from this service. Abuse of this service is monitored and
+actions in contravention of these terms will result in being permanently
+blacklisted. All data is (c) LANIC https://www.lanic.gov.la/
+
+Access to the whois service is rate limited. For more information, please
+see https://registrar-console.lanic.la/pub/whois_guidance.
+

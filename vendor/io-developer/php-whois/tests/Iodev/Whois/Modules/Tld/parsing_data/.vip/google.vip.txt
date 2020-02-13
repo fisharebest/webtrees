@@ -1,0 +1,78 @@
+Domain Name: GOOGLE.VIP
+Registry Domain ID: 2165757_MMd1-VIP
+Registrar WHOIS Server:
+Registrar URL:
+Updated Date: 2019-02-14T19:53:10Z
+Creation Date: 2016-03-12T00:40:52Z
+Registry Expiry Date: 2020-03-12T00:40:52Z
+Registrar: MarkMonitor Inc.
+Registrar IANA ID: 292
+Registrar Abuse Contact Email: abusecomplaints@markmonitor.com
+Registrar Abuse Contact Phone: +1.2083895740
+Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Domain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited
+Registry Registrant ID: REDACTED FOR PRIVACY
+Registrant Name: REDACTED FOR PRIVACY
+Registrant Organization: REDACTED FOR PRIVACY
+Registrant Street: REDACTED FOR PRIVACY
+Registrant Street: REDACTED FOR PRIVACY
+Registrant Street: REDACTED FOR PRIVACY
+Registrant City: REDACTED FOR PRIVACY
+Registrant State/Province: CA
+Registrant Postal Code: REDACTED FOR PRIVACY
+Registrant Country: US
+Registrant Phone: REDACTED FOR PRIVACY
+Registrant Fax: REDACTED FOR PRIVACY
+Registrant Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registry Admin ID: REDACTED FOR PRIVACY
+Admin Name: REDACTED FOR PRIVACY
+Admin Organization: REDACTED FOR PRIVACY
+Admin Street: REDACTED FOR PRIVACY
+Admin Street: REDACTED FOR PRIVACY
+Admin Street: REDACTED FOR PRIVACY
+Admin City: REDACTED FOR PRIVACY
+Admin State/Province: REDACTED FOR PRIVACY
+Admin Postal Code: REDACTED FOR PRIVACY
+Admin Country: REDACTED FOR PRIVACY
+Admin Phone: REDACTED FOR PRIVACY
+Admin Fax: REDACTED FOR PRIVACY
+Admin Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registry Tech ID: REDACTED FOR PRIVACY
+Tech Name: REDACTED FOR PRIVACY
+Tech Organization: REDACTED FOR PRIVACY
+Tech Street: REDACTED FOR PRIVACY
+Tech Street: REDACTED FOR PRIVACY
+Tech Street: REDACTED FOR PRIVACY
+Tech City: REDACTED FOR PRIVACY
+Tech State/Province: REDACTED FOR PRIVACY
+Tech Postal Code: REDACTED FOR PRIVACY
+Tech Country: REDACTED FOR PRIVACY
+Tech Phone: REDACTED FOR PRIVACY
+Tech Fax: REDACTED FOR PRIVACY
+Tech Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registry Billing ID: REDACTED FOR PRIVACY
+Billing Name: REDACTED FOR PRIVACY
+Billing Organization: REDACTED FOR PRIVACY
+Billing Street: REDACTED FOR PRIVACY
+Billing Street: REDACTED FOR PRIVACY
+Billing Street: REDACTED FOR PRIVACY
+Billing City: REDACTED FOR PRIVACY
+Billing State/Province: REDACTED FOR PRIVACY
+Billing Postal Code: REDACTED FOR PRIVACY
+Billing Country: REDACTED FOR PRIVACY
+Billing Phone: REDACTED FOR PRIVACY
+Billing Fax: REDACTED FOR PRIVACY
+Billing Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Name Server: ns3.googledomains.com.
+Name Server: ns4.googledomains.com.
+Name Server: ns1.googledomains.com.
+Name Server: ns2.googledomains.com.
+DNSSEC: unsigned
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2020-01-29T15:32:47Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+Terms and Conditions
+The whois information provided on this site is intended to provide you with the relevant contact information for a domain name registrant and the identity of certain administrative and technical contacts associated with that domain name. The data in this record is provided by Minds + Machines Registry, a subsidiary of Minds + Machines Group Limited, formerly Top Level Domain Holdings Limited ("the Company"), for informational purposes only. Accuracy is not guaranteed. The Company is the authoritative source for whois information in top-level domains it operates under contract with the Internet Corporation for Assigned Names and Numbers. This service is intended only for query-based access. Note that the lack of a whois record for a particular domain does not indicate that the name is available for registration. By using this service, you agree that you will use any data presented for lawful purposes only and that under no circumstances will you use (a) data acquired for the purpose of allowing, enabling, or otherwise supporting the transmission by email, telephone, facsimile, or other communications mechanisms mass unsolicited, commercial, advertising, or solicitations to entities other than your existing customers; or (b) this service to enable high volume, automated, electronic processes that send queries or data to the systems of any registrar or any registry except as reasonably necessary to register domain names or to modify existing domain name registrations. The Company reserves the right to modify these terms at any time. By submitting this query, you agree to abide by this policy. All rights reserved.

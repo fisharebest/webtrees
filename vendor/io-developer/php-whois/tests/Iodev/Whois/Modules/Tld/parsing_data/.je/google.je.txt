@@ -1,0 +1,52 @@
+Domain:
+     google.je
+
+Domain Status:
+     Active
+     Delete Prohibited by Registry
+     Transfer Prohibited by Registry
+     Update Prohibited by Registry
+
+Registrant:
+     Google Inc.
+     Google Inc.
+
+Registrar:
+     MarkMonitor Inc. (http://www.markmonitor.com)
+
+Relevant dates:
+     Registered on 31st October 2002
+     Registry fee due on 31st October each year
+
+Registration status:
+     Registered until cancelled
+
+Name servers:
+     ns1.google.com
+     ns2.google.com
+     ns3.google.com
+     ns4.google.com
+     
+
+WHOIS lookup made on Sat, 18 Nov 2017 at 21:14:51 UTC
+
+This WHOIS information is provided for free by CIDR, operator of
+the backend registry for domain names ending in GG, JE, and AS.
+
+Copyright (c) and database right Island Networks (Jersey) 1996 - 2017.
+
+You may not access this WHOIS server or use any data from it except
+as permitted by our Terms and Conditions which are published
+at http://www.channelisles.net/legal/whoisterms
+
+They include restrictions and prohibitions on
+
+- using or re-using the data for advertising;
+- using or re-using the service for commercial purposes without a licence;
+- repackaging, recompilation, redistribution or reuse;
+- obscuring, removing or hiding any or all of this notice;
+- exceeding query rate or volume limits.
+
+The data is provided on an 'as-is' basis and may lag behind the
+register. Access may be withdrawn or restricted at any time. 
+

@@ -1,0 +1,15 @@
+{
+  "domainName": "google.tg",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "creationDate": "2016-08-01T00:00:00",
+  "expirationDate": "2017-08-12T00:00:00",
+  "states": [
+    "activ&eacute;"
+  ],
+  "owner": "Keren",
+  "registrar": "CAFE INFORMATIQUE ET TELECOMMUNICATION"
+}

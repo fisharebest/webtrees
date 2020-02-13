@@ -1,0 +1,20 @@
+query : free.kr
+
+
+# KOREAN(UTF8)
+
+상기 도메인이름은 등록되어 있지 않습니다.
+상기 도메인이름의 사용을 원하실 경우 도메인이름 등록대행자를 통해 
+등록 신청하시기 바랍니다.
+
+
+
+# ENGLISH
+
+The requested domain was not found in the Registry or Registrar’s WHOIS Server.
+
+
+
+
+- KISA/KRNIC WHOIS Service -
+

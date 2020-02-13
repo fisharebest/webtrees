@@ -1,0 +1,15 @@
+{
+  "domainName": "google.com.bn",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "creationDate": "2006-11-10T00:00:00",
+  "expirationDate": "2018-11-13T00:00:00",
+  "states": [
+    "ok"
+  ],
+  "owner": "INTEGRICITY CORPORATION SDN BHD (BNC304T)",
+  "registrar": "TELEKOM BRUNEI BERHAD"
+}

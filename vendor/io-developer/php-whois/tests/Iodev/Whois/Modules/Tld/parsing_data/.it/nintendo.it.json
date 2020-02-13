@@ -1,0 +1,17 @@
+{
+  "domainName": "nintendo.it",
+  "whoisServer": "",
+  "nameServers": [
+    "ns-1655.awsdns-14.co.uk",
+    "ns-1149.awsdns-15.org",
+    "ns-708.awsdns-24.net",
+    "ns-353.awsdns-44.com"
+  ],
+  "creationDate": "2002-03-18T00:00:00",
+  "expirationDate": "2018-10-26T00:00:00",
+  "states": [
+    "ok"
+  ],
+  "owner": "Nintendo of Europe GmbH",
+  "registrar": "IP Mirror Pte Ltd"
+}

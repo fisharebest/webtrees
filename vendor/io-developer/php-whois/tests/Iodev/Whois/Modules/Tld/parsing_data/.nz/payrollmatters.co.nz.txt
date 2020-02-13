@@ -1,0 +1,52 @@
+% Terms of Use
+%
+% By submitting a WHOIS query you are entering into an agreement with Domain
+% Name Commission Ltd on the following terms and conditions, and subject to
+% all relevant .nz Policies and procedures as found at https://dnc.org.nz/.
+%
+% It is prohibited to:
+% - Send high volume WHOIS queries with the effect of downloading part of or
+%   all of the .nz Register or collecting register data or records;
+% - Access the .nz Register in bulk through the WHOIS service (ie. where a
+%   user is able to access WHOIS data other than by sending individual queries
+%   to the database);
+% - Use WHOIS data to allow, enable, or otherwise support mass unsolicited
+%   commercial advertising, or mass solicitations to registrants or to
+%   undertake market research via direct mail, electronic mail, SMS, telephone
+%   or any other medium;
+% - Use WHOIS data in contravention of any applicable data and privacy laws,
+%   including the Unsolicited Electronic Messages Act 2007;
+% - Store or compile WHOIS data to build up a secondary register of
+%   information;
+% - Publish historical or non-current versions of WHOIS data; and
+% - Publish any WHOIS data in bulk.
+%
+% Copyright Domain Name Commission Limited (a company wholly-owned by Internet
+% New Zealand Incorporated) which may enforce its rights against any person or
+% entity that undertakes any prohibited activity without its written
+% permission.
+%
+% The WHOIS service is provided by NZRS Limited.
+%
+version: 8.0
+query_datetime: 2018-12-10T13:26:21+13:00
+domain_name: payrollmatters.co.nz
+query_status: 200 Active
+domain_datelastmodified: 2018-10-10T13:30:44+13:00
+domain_delegaterequested: yes
+domain_signed: no
+%
+registrar_name: 1API GmbH
+registrar_address1: Talstrasse 27
+registrar_city: Homburg
+registrar_postalcode: 66424
+registrar_country: DE (GERMANY)
+registrar_phone: +49 6841 6984 200
+registrar_fax: +49 6841 66984 299
+registrar_email: info@1api.net
+%
+ns_name_01: ns1.hostpapa.com
+ns_name_02: ns2.hostpapa.com
+%
+% Additional information may be available at https://www.dnc.org.nz/whois/search?domain_name=payrollmatters.co.nz
+%

@@ -1,0 +1,22 @@
+{
+  "domainName": "google.ki",
+  "whoisServer": "whois.nic.ki",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2006-05-15T12:00:00.0Z",
+  "expirationDate": "2018-11-27T11:00:00.0Z",
+  "states": [
+    "serverupdateprohibited",
+    "servertransferprohibited",
+    "serverdeleteprohibited",
+    "clientupdateprohibited",
+    "clienttransferprohibited",
+    "clientdeleteprohibited"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "MarkMonitor"
+}

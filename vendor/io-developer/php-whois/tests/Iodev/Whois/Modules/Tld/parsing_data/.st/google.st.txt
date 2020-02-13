@@ -1,0 +1,90 @@
+Whois Server Version 3.2.2
+
+.ST domains can now be registered with many different competing registrars. Go to http://www.registry.st/registrars for detailed information.
+
+Domain Name: google.st
+Registrar: MarkMonitor Inc.
+Name Server: ns3.google.com
+Name Server: ns1.google.com
+Name Server: ns4.google.com
+Name Server: ns2.google.com
+Status: clientUpdateProhibited
+Updated Date: 2017-05-14
+Creation Date: 2004-06-15
+Expiration Date: 2018-06-15
+
+>>> Last update of whois database: Sat Nov 18 21:22:05 2017 UTC <<<
+
+The data in the ST Registry WHOIS database is provided by The Domain Council of
+Sao Tome and Principe for information purposes.
+
+The ST Registry does not guarantee its accuracy.
+
+The data in the WHOIS database is protected by copyright.
+
+By submitting a WHOIS query, you agree that you will use this data according with
+the terms and policy that is publicly available on http://www.nic.st/terms_of_service
+and that you under no circumstances will use this data to allow, enable, or
+otherwise support the transmission of mass unsolicited commercial advertising or
+solicitations via e-mail (spam).
+
+The Domain Council of Sao Tome reserves the right to modify these terms at any time.
+
+DOMAIN: google.st
+
+REGISTRATION-SERVICE-PROVIDER: MarkMonitor Inc.
+URL: www.markmonitor.com
+
+created-date:    2004-06-15 18:24:45
+updated-date:    2017-05-14 09:28:07
+expiration-date: 2018-06-15 18:24:45
+
+registrant-organization: Google Inc.
+registrant-name:         DNS Admin (mm-87489)
+registrant-street:       1600 Amphitheatre Parkway
+registrant-city:         Mountain View
+registrant-state:        CA
+registrant-zip:          94043
+registrant-country:      US
+registrant-phone:        +1.6502530000
+registrant-fax:          +1.6502530001
+registrant-email:        dns-admin@google.com
+
+admin-organization: Google Inc.
+admin-name:         DNS Admin (mm-87489)
+admin-street:       1600 Amphitheatre Parkway
+admin-city:         Mountain View
+admin-state:        CA
+admin-zip:          94043
+admin-country:      US
+admin-phone:        +1.6502530000
+admin-fax:          +1.6502530001
+admin-email:        dns-admin@google.com
+
+tech-organization: Google Inc.
+tech-name:         DNS Admin (mm-87489)
+tech-street:       1600 Amphitheatre Parkway
+tech-city:         Mountain View
+tech-state:        CA
+tech-zip:          94043
+tech-country:      US
+tech-phone:        +1.6502530000
+tech-fax:          +1.6502530001
+tech-email:        dns-admin@google.com
+
+billing-organization: Mark Monitor
+billing-name:         Domain Provisioning (MAR52541B369EEFE)
+billing-street:       10400 Overland Road
+billing-city:         Boise
+billing-state:        
+billing-zip:          83709
+billing-country:      US
+billing-phone:        
+billing-fax:          
+billing-email:        ccops@markmonitor.com
+
+nameserver: ns3.google.com
+nameserver: ns1.google.com
+nameserver: ns4.google.com
+nameserver: ns2.google.com
+

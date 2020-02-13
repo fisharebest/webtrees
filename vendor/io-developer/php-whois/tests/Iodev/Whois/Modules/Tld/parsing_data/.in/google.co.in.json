@@ -1,0 +1,19 @@
+{
+  "domainName": "google.co.in",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.net",
+    "ns2.google.net",
+    "ns3.google.net",
+    "ns4.google.net"
+  ],
+  "creationDate": "2003-06-23T14:02:33",
+  "expirationDate": "2018-06-23T14:02:33",
+  "states": [
+    "client delete prohibited",
+    "client transfer prohibited",
+    "client update prohibited"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "MarkMonitor Inc. (R84-AFIN)"
+}

@@ -1,0 +1,15 @@
+{
+  "domainName": "google.com.om",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "creationDate": "",
+  "expirationDate": "",
+  "states": [
+    "ok"
+  ],
+  "owner": "Google Inc",
+  "registrar": "Abu Ghazaleh Intellectual Property (AGIP)"
+}

@@ -1,0 +1,82 @@
+Domain Name: google.co.bw
+Domain ID: 3486-bwnic
+WHOIS Server: whois.nic.net.bw
+Referral URL: 
+Updated Date: 2016-11-28T10:30:45.578Z
+Creation Date: 2012-11-12T22:00:00.0Z
+Registry Expiry Date: 2017-12-31T05:00:00.0Z
+Sponsoring Registrar: MarkMonitor Inc
+Sponsoring Registrar IANA ID: 
+Sponsoring Registrar Abuse Phone: +1.2083895740
+Sponsoring Registrar Abuse Email: ccops@markmonitor.com
+Domain Status: ok
+Registrant Name: DNS Admin
+Registrant Organization: Google Inc.
+Registrant Street: 1600 Amphitheatre Parkway
+Registrant City: Mountain View
+Registrant State/Province: CA
+Registrant Postal Code: 94043
+Registrant Country: US
+Registrant Phone: +1.6502530000
+Registrant Phone Ext: 
+Registrant Fax: +1.6502530001
+Registrant Fax Ext: 
+Registrant Email: dns-admin@google.com
+Admin Name: DNS Admin
+Admin Organization: Google Inc.
+Admin Street: 1600 Amphitheatre Parkway
+Admin City: Mountain View
+Admin State/Province: CA
+Admin Postal Code: 94043
+Admin Country: US
+Admin Phone: +1.6502530000
+Admin Phone Ext: 
+Admin Fax: +1.6502530001
+Admin Fax Ext: 
+Admin Email: dns-admin@google.com
+Billing Name: CCOPS Billing
+Billing Organization: MarkMonitor Inc.
+Billing Street: 3540 East Longwing Lane
+Billing Street: Suite 300
+Billing City: Meridian
+Billing State/Province: Idaho
+Billing Postal Code: 83646
+Billing Country: US
+Billing Phone: +1.2083895740
+Billing Phone Ext: 
+Billing Fax: +1.2083895771
+Billing Fax Ext: 
+Billing Email: ccopsbilling@markmonitor.com
+Tech Name: DNS Admin
+Tech Organization: Google Inc.
+Tech Street: 1600 Amphitheatre Parkway
+Tech City: Mountain View
+Tech State/Province: CA
+Tech Postal Code: 94043
+Tech Country: US
+Tech Phone: +1.6502530000
+Tech Phone Ext: 
+Tech Fax: +1.6502530001
+Tech Fax Ext: 
+Tech Email: dns-admin@google.com
+Name Server: ns1.google.com
+Name Server: ns2.google.com
+Name Server: ns3.google.com
+Name Server: ns4.google.com
+DNSSEC: unsigned
+Additional Section
+Redemption Expiry Date: 
+Sponsoring Registrar URL: 
+Sponsoring Registrar Address: 3540 East Longwing Lane  Suite 300  Meridian, Idaho 83646
+Sponsoring Registrar Country: US
+Sponsoring Registrar Phone: +1.2083895740
+Sponsoring Registrar Fax: +1.2083895771
+Sponsoring Registrar Customer Service Contact: Domain Admin
+Sponsoring Registrar Customer Service Email: ccops@markmonitor.com
+Sponsoring Registrar Admin Contact: Domain Admin
+Sponsoring Registrar Admin Email: ccops@markmonitor.com
+>>> Last update of WHOIS database: 2017-11-18T21:00:02.209Z <<<
+
+TERMS OF USE: You are NOT authorized to access or query the Botswana ccTLD WHOIS database through the use of electronic processes that are high-volume and automated.  This WHOIS database is provided by as a service to the internet community.
+
+The data is for information purposes only. We do not guarantee its accuracy. By submitting a WHOIS query, you agree to abide by the following terms of use: You agree that you may use this Data only for lawful purposes and that under no circumstances will you use this WHOIS data to: (1) allow, enable, or otherwise support the transmission of mass unsolicited, commercial advertising or solicitations via e-mail, telephone, or facsimile; or (2) compilation, repackaging, dissemination or other use of this Data is expressly prohibited.

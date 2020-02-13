@@ -1,0 +1,34 @@
+This is JWhoisServer serving ccTLD dz
+Java Whois Server 0.4.1.3    (c) 2006 - 2015 Klaus Zerwes zero-sys.net
+#########################################################################
+# All data copyright of the organization unit running this server!
+# By querying this server, you agree that you :
+#	-may use this data only for lawful purposes;
+#	-will not re-use data for any kind of support
+#	  for the transmission of unsolicited advertising
+#	  via e-mail, telephone, or facsimile;
+#	-will not reproduce and/or store any part of the data
+#	  without prior permission of the copyright holders;
+#	-are aware of and agree to the fact that all access to the
+#	  server is under constant monitoring and will be logged
+#	  for the purpose of prosecution in case of missuse!
+#########################################################################
+
+DOMAIN NAME:                   google.dz
+REGISTERED:                    2007-01-10
+EXPIRES:                       
+REGISTRAR:                     cerist
+HOLDER:                        Google Inc
+ADMINISTRATIVE CONTACT:        Google INC
+ADMINISTRATIVE CONTACT PERSON: Domain Administrator
+ADMINISTRATIVE ADDRESS:        1600 Amphitheatre Parkway, Mountain View, CA 94043 US
+ADMINISTRATIVE PHONE:          +16503300100
+ADMINISTRATIVE FAX:            +16506188571
+ADMINISTRATIVE EMAIL:          dns-admin@google.com
+TECHNICAL CONTACT:             MARKMONITOR, Inc
+TECHNICAL CONTACT PERSON:      Domain Administrator
+TECHNICAL ADDRESS:             391 N Ancestor Place Boise, ID 83704 US
+TECHNICAL PHONE:               +12083895740
+TECHNICAL FAX:                 +12083895771
+TECHICAL EMAIL:                ccops@markmonitor.com
+

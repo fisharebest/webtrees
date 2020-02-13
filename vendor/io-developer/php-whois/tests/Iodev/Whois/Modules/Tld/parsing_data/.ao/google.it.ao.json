@@ -1,0 +1,15 @@
+{
+  "domainName": "google.it.ao",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2008-11-07T22:02:11",
+  "expirationDate": "2018-05-02T00:00:00",
+  "states": [],
+  "owner": "Google Inc",
+  "registrar": "MarkMonitor Inc."
+}

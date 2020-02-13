@@ -1,0 +1,13 @@
+{
+  "domainName": "google.co.tz",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "creationDate": "2009-07-27T11:09:55",
+  "expirationDate": "2018-07-27T00:00:00",
+  "states": [],
+  "owner": "Google Inc.",
+  "registrar": "google inc"
+}

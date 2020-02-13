@@ -1,0 +1,14 @@
+#
+# -- /usr/local/bin/mywhois --
+#
+First Name:     DNS
+Last Name:      Admin
+Adress:          PMB 155   10400 Overland Road
+City:            Boise
+Country:         US
+Date Created:   Thu Aug 2003 09:32:17
+Expiry date:    Sun Sep 2018 23:59:59
+DNS servers1:    ns4.google.com : 216.239.38.10
+DNS servers2:    ns3.google.com : 216.239.36.10
+DNS servers3:    ns2.google.com : 216.239.34.10
+DNS servers4:    ns1.google.com : 216.239.32.10

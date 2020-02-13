@@ -1,0 +1,85 @@
+%  
+%  TZNIC WHOIS data and services are subject to the Terms of Use
+%  available at: https://www.tznic.or.tz/Whois_tou.pdf
+% 
+%  You may also use our WHOIS Web service available at:
+%  https://whois.tznic.or.tz/whois
+% 
+% 
+% 
+% Whoisd Server Version: 3.10.1
+% Timestamp: Sun Nov 19 00:23:23 2017
+
+domain:       google.co.tz
+registrant:   GDA-ITFARM
+admin-c:      KP1-ITFARM
+admin-c:      GLK-ITFARM
+nsset:        NS-GOOGLE.CO.TZ
+registrar:    REG-ITFARM
+registered:   27.07.2009 11:09:55
+changed:      18.05.2011 12:23:11
+expire:       27.07.2018
+
+contact:      GDA-ITFARM
+org:          Google Inc.
+name:         DNS Admin
+address:      1600 Amphitheatre Parkway
+address:      Mountain View
+address:      CA
+address:      94043
+address:      CA
+address:      US
+phone:        +1.6502530000
+e-mail:       dns-admin@google.com
+registrar:    REG-ITFARM
+created:      18.05.2011 12:22:33
+
+contact:      KP1-ITFARM
+org:          MarkMonitor Inc.
+name:         Domain Administration
+address:      3540 N Longwing Lane Suite 300
+address:      Meridian
+address:      83646
+address:      ID
+address:      US
+phone:        +1.2083895740
+fax-no:       +1.2083895771
+e-mail:       ccops@markmonitor.com
+registrar:    REG-ITFARM
+created:      10.07.2010 11:26:44
+changed:      03.03.2017 10:57:29
+
+contact:      GLK-ITFARM
+org:          ITFARM Limited
+name:         ITFARM SUPPORT
+address:      Sam Nujoma Road Plot 113/114
+address:      Dar-es-salaam
+address:      35638
+address:      TZ
+phone:        +255.784800419
+e-mail:       support@itfarm.co.tz
+registrar:    REG-ITFARM
+created:      26.02.2010 20:57:29
+changed:      03.07.2015 12:42:07
+
+nsset:        NS-GOOGLE.CO.TZ
+nserver:      ns1.google.com 
+nserver:      ns2.google.com 
+tech-c:       GI1-TZNIC
+registrar:    REG-TZNIC
+created:      27.07.2009 09:20:47
+changed:      08.02.2010 12:59:58
+
+contact:      GI1-TZNIC
+org:          google inc
+name:         google,inc
+address:      1600 amphitheatre parkway
+address:      mountain view
+address:      US
+address:      US
+phone:        +1.6502530000
+e-mail:       dns-admin@google.com
+registrar:    REG-TZNIC
+created:      08.02.2010 12:59:26
+
+

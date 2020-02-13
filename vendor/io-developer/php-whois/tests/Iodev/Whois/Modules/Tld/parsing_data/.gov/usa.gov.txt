@@ -1,0 +1,8 @@
+% DOTGOV WHOIS Server ready
+   Domain Name: USA.GOV
+   Status: ACTIVE
+
+>>> Last update of whois database: 2017-11-05T18:24:54Z <<<
+Please be advised that this whois server only contains information pertaining
+to the .GOV domain. For information for other domains please use the whois
+server at RS.INTERNIC.NET. 

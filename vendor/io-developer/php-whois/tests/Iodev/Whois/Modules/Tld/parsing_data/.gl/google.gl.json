@@ -1,0 +1,18 @@
+{
+  "domainName": "google.gl",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "creationDate": "2003-03-11T03:00:00.0Z",
+  "expirationDate": "2018-01-01T03:00:00.0Z",
+  "states": [
+    "clientrenewprohibited",
+    "clienttransferprohibited",
+    "clientdeleteprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "MarkMonitor"
+}

@@ -1,0 +1,22 @@
+{
+  "domainName": "google.com.af",
+  "whoisServer": "whois.nic.af",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2009-10-05T20:10:06.616Z",
+  "expirationDate": "2018-05-05T20:10:06.611Z",
+  "states": [
+    "serverupdateprohibited",
+    "servertransferprohibited",
+    "serverdeleteprohibited",
+    "clientupdateprohibited",
+    "clienttransferprohibited",
+    "clientdeleteprohibited"
+  ],
+  "owner": "",
+  "registrar": "MarkMonitor"
+}

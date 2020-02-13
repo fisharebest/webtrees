@@ -1,0 +1,19 @@
+{
+  "domainName": "microsoft.xin",
+  "whoisServer": "",
+  "nameServers": [
+    "ns2-04.azure-dns.net",
+    "ns3-04.azure-dns.org",
+    "ns1-04.azure-dns.com",
+    "ns4-04.azure-dns.info"
+  ],
+  "creationDate": "2015-08-31T17:52:30",
+  "expirationDate": "2020-08-31T17:52:30",
+  "states": [
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "Microsoft China Co.,Ltd",
+  "registrar": "MarkMonitor Inc."
+}

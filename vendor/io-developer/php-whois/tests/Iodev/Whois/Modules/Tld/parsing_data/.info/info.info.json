@@ -1,0 +1,19 @@
+{
+  "domainName": "info.info",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.ams1.afilias-nst.info",
+    "ns1.mia1.afilias-nst.info",
+    "ns1.sea1.afilias-nst.info",
+    "ns1.yyz1.afilias-nst.info",
+    "ns1.hkg1.afilias-nst.info"
+  ],
+  "creationDate": "2001-10-08T16:33:16Z",
+  "expirationDate": "2018-10-08T16:33:16Z",
+  "states": [
+    "servertransferprohibited",
+    "autorenewperiod"
+  ],
+  "owner": "Afilias",
+  "registrar": "Afilias"
+}

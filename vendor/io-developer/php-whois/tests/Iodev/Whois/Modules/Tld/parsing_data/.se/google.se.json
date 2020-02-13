@@ -1,0 +1,19 @@
+{
+  "domainName": "google.se",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2008-10-20T00:00:00",
+  "expirationDate": "2018-10-20T00:00:00",
+  "states": [
+    "servertransferprohibited",
+    "serverupdateprohibited",
+    "serverdeleteprohibited"
+  ],
+  "owner": "mmr8008-53808",
+  "registrar": "MarkMonitor Inc"
+}

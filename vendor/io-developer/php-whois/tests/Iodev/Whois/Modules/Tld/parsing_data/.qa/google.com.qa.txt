@@ -1,0 +1,21 @@
+Domain Name:                     google.com.qa
+Registrar ID:                    agip_epp
+Registrar Name:                  AGIP dba Tag-Domains.com
+Status:                          ok
+
+Registrant:                      T.M.P. AGENTS
+Eligibility Type:                Trademark
+Eligibility ID:                  Legacy Domain Name
+
+Registrant Contact ID:           AGIPQA1090
+Registrant Contact Name:         Sami S. Younis
+Registrant Contact Email:        Visit www.domains.qa
+
+Tech Contact ID:                 AGIPQA1090
+Tech Contact Name:               Sami S. Younis
+Tech Contact Email:              Visit www.domains.qa
+
+Name Server:                     ns3.google.net
+Name Server:                     ns4.google.net
+Name Server:                     ns1.google.net
+Name Server:                     ns2.google.net

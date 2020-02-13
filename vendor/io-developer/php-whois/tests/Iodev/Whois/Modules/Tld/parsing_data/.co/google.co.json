@@ -1,0 +1,19 @@
+{
+  "domainName": "google.co",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2010-02-25T01:04:59Z",
+  "expirationDate": "2018-02-24T23:59:59Z",
+  "states": [
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "MARKMONITOR, INC."
+}

@@ -1,0 +1,20 @@
+Domain Name:                     google.com.om
+Last Modified:                   12-Mar-2017 06:24:33 UTC
+Registrar Name:                  Abu Ghazaleh Intellectual Property (AGIP)
+Status:                          ok
+
+Registrant Contact ID:           1391408182GOOG_R
+Registrant Contact Name:         Google Inc
+Registrant Contact Email:        agip.oman@tagi.com
+Registrant Contact Organisation: Google Inc
+Registrant Contact City:         Unites States
+Registrant Contact Country:      us
+
+Tech Contact ID:                 1391408182TALA_T
+Tech Contact Name:               Talal Abu Ghazaleh & Co
+Tech Contact Email:              agip.oman@tagi.com
+Tech Contact City:               Muscat
+Tech Contact Country:            om
+
+Name Server:                     ns1.google.com
+Name Server:                     ns2.google.com

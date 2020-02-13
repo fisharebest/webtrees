@@ -1,0 +1,17 @@
+{
+  "domainName": "google.am",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "1999-06-05T00:00",
+  "expirationDate": "2018-04-15T00:00",
+  "states": [
+    "active"
+  ],
+  "owner": "Google, Inc.",
+  "registrar": "abcdomain (ABCDomain LLC)"
+}

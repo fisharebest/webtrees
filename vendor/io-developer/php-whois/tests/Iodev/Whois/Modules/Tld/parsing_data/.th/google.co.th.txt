@@ -1,0 +1,31 @@
+
+Whois Server Version 2.1.3
+
+Domain: GOOGLE.CO.TH
+Registrar: T.H.NIC Co., Ltd.
+Name Server: NS1.GOOGLE.NET
+Name Server: NS2.GOOGLE.NET
+Name Server: NS3.GOOGLE.NET
+Name Server: NS4.GOOGLE.NET
+Status: ACTIVE
+Updated date: 27 Sep 2017
+Created date: 8 Oct 2004
+Exp date: 7 Oct 2018
+Domain Holder: Google Inc.
+1600 Amphitheatre Parkway
+Mountain View, CA 94043
+94043
+US
+
+Tech Contact: 491182
+Markmonitor
+3540 East Longwing Lane, Suite 300, Meridian ID
+83646
+US
+
+
+
+>>> Last update of whois data: Sun, 19 Nov 2017 03:06:32 UTC+7 <<<
+
+For more information please visit: https://www.thnic.co.th/whois
+

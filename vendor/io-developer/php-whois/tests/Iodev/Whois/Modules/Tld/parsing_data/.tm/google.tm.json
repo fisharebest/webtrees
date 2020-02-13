@@ -1,0 +1,17 @@
+{
+  "domainName": "google.tm",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "",
+  "expirationDate": "2018-01-30T00:00:00",
+  "states": [
+    "client updt lock"
+  ],
+  "owner": "Google Inc.",
+  "registrar": ""
+}

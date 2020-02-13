@@ -1,0 +1,19 @@
+{
+  "domainName": "google.ru",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.net",
+    "ns2.google.net",
+    "ns3.google.net",
+    "ns4.google.net"
+  ],
+  "creationDate": "2004-03-03T21:00:00Z",
+  "expirationDate": "2018-03-04T21:00:00Z",
+  "states": [
+    "registered",
+    "delegated",
+    "verified"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "RU-CENTER-RU"
+}

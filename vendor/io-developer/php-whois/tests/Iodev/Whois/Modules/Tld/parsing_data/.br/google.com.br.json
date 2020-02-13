@@ -1,0 +1,17 @@
+{
+  "domainName": "google.com.br",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "1999-05-18T00:00:00",
+  "expirationDate": "2018-05-18T00:00:00",
+  "states": [
+    "published"
+  ],
+  "owner": "Google Brasil Internet Ltda",
+  "registrar": "NameAction do Brasil"
+}

@@ -1,0 +1,17 @@
+{
+  "domainName": "google.nu",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "1999-06-07T00:00:00",
+  "expirationDate": "2018-06-07T00:00:00",
+  "states": [
+    "ok"
+  ],
+  "owner": "mmr-142621",
+  "registrar": "MarkMonitor Inc."
+}

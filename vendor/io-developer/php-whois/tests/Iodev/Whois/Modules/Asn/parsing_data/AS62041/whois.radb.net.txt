@@ -1,0 +1,102 @@
+Warning: RIPE flags used with a traditional server.
+route:          149.154.160.0/20
+descr:          Telegram Messenger LLP
+origin:         AS62041
+mnt-by:         MNT-TELEGRAM
+changed:        unread@ripe.net 20000101
+source:         RIPE
+remarks:        ****************************
+remarks:        * THIS OBJECT IS MODIFIED
+remarks:        * Please note that all data that is generally regarded as personal
+remarks:        * data has been removed from this object.
+remarks:        * To view the original object, please query the RIPE Database at:
+remarks:        * http://www.ripe.net/whois
+remarks:        ****************************
+
+route:          149.154.164.0/22
+descr:          Telegram Messenger Amsterdam Network
+origin:         AS62041
+mnt-by:         MNT-TELEGRAM
+changed:        unread@ripe.net 20000101
+source:         RIPE
+remarks:        ****************************
+remarks:        * THIS OBJECT IS MODIFIED
+remarks:        * Please note that all data that is generally regarded as personal
+remarks:        * data has been removed from this object.
+remarks:        * To view the original object, please query the RIPE Database at:
+remarks:        * http://www.ripe.net/whois
+remarks:        ****************************
+
+route:          91.108.56.0/22
+descr:          Telegram_Messenger_Network
+origin:         AS62041
+mnt-by:         MNT-TELEGRAM
+changed:        unread@ripe.net 20000101
+created:        2015-05-31T20:46:38Z
+last-modified:  2015-05-31T20:46:38Z
+source:         RIPE
+remarks:        ****************************
+remarks:        * THIS OBJECT IS MODIFIED
+remarks:        * Please note that all data that is generally regarded as personal
+remarks:        * data has been removed from this object.
+remarks:        * To view the original object, please query the RIPE Database at:
+remarks:        * http://www.ripe.net/whois
+remarks:        ****************************
+
+route:          91.108.4.0/22
+descr:          Telegram_Messenger_Network
+origin:         AS62041
+mnt-by:         MNT-TELEGRAM
+changed:        unread@ripe.net 20000101
+created:        2015-05-31T20:48:30Z
+last-modified:  2015-05-31T20:48:30Z
+source:         RIPE
+remarks:        ****************************
+remarks:        * THIS OBJECT IS MODIFIED
+remarks:        * Please note that all data that is generally regarded as personal
+remarks:        * data has been removed from this object.
+remarks:        * To view the original object, please query the RIPE Database at:
+remarks:        * http://www.ripe.net/whois
+remarks:        ****************************
+
+route:          91.108.8.0/22
+origin:         AS62041
+mnt-by:         MNT-TELEGRAM
+created:        2016-10-04T03:10:55Z
+last-modified:  2016-10-04T03:10:55Z
+source:         RIPE
+remarks:        ****************************
+remarks:        * THIS OBJECT IS MODIFIED
+remarks:        * Please note that all data that is generally regarded as personal
+remarks:        * data has been removed from this object.
+remarks:        * To view the original object, please query the RIPE Database at:
+remarks:        * http://www.ripe.net/whois
+remarks:        ****************************
+
+route6:         2001:67c:4e8::/48
+descr:          Telegram IPv6 Network
+origin:         AS62041
+mnt-by:         MNT-TELEGRAM
+changed:        unread@ripe.net 20000101
+source:         RIPE
+remarks:        ****************************
+remarks:        * THIS OBJECT IS MODIFIED
+remarks:        * Please note that all data that is generally regarded as personal
+remarks:        * data has been removed from this object.
+remarks:        * To view the original object, please query the RIPE Database at:
+remarks:        * http://www.ripe.net/whois
+remarks:        ****************************
+
+route6:         2001:b28:f23f::/48
+descr:          Telegram Messenger DC4 Network
+origin:         AS62041
+mnt-by:         MNT-TELEGRAM
+changed:        unread@ripe.net 20000101
+source:         RIPE
+remarks:        ****************************
+remarks:        * THIS OBJECT IS MODIFIED
+remarks:        * Please note that all data that is generally regarded as personal
+remarks:        * data has been removed from this object.
+remarks:        * To view the original object, please query the RIPE Database at:
+remarks:        * http://www.ripe.net/whois
+remarks:        ****************************

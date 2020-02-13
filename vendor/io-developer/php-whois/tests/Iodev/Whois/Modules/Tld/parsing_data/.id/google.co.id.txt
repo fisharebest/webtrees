@@ -1,0 +1,65 @@
+Domain ID:PANDI-DO246796
+Domain Name:GOOGLE.CO.ID
+Created On:18-Dec-2004 13:33:21 UTC
+Last Updated On:13-Aug-2017 17:27:08 UTC
+Expiration Date:01-Sep-2018 23:59:59 UTC
+Status:clientTransferProhibited
+Status:serverTransferProhibited
+Registrant ID:011624172jld
+Registrant Name:DNS Admin
+Registrant Organization:Google Inc.
+Registrant Street1:1600 Amphitheatre Parkway
+Registrant City:Mountain View
+Registrant State/Province:CA
+Registrant Postal Code:94043
+Registrant Country:ID
+Registrant Phone:+1.6502530000
+Registrant FAX:+1.6502530001
+Registrant Email:dns-admin@google.com
+Admin ID:01162448slsc
+Admin Name:Krishna Erlangga Zulkarnain
+Admin Organization:PT Google Indonesia
+Admin Street1:Menara BCA Grand Indonesia
+Admin Street2:Regus Grand Indonesia
+Admin City:Jakarta
+Admin State/Province:Jakarta
+Admin Postal Code:10310
+Admin Country:ID
+Admin Phone:+62.2123584400
+Admin FAX:+62.2123584400
+Admin Email:dns-admin@google.com
+Tech ID:011624172jld
+Tech Name:DNS Admin
+Tech Organization:Google Inc.
+Tech Street1:1600 Amphitheatre Parkway
+Tech City:Mountain View
+Tech State/Province:CA
+Tech Postal Code:94043
+Tech Country:ID
+Tech Phone:+1.6502530000
+Tech FAX:+1.6502530001
+Tech Email:dns-admin@google.com
+Billing ID:01162419gk6j
+Billing Name:CCOPS Billing
+Billing Organization:MarkMonitor Inc.
+Billing Street1:391 N. Ancestor Place
+Billing City:CCOPS Billing
+Billing State/Province:Boise
+Billing Postal Code:ID
+Billing Country:US
+Billing Phone:+1.2083895741
+Billing FAX:+1.2083895771
+Billing Email:ccopsbilling@markmonitor.com
+Sponsoring Registrar ID:digitalreg
+Sponsoring Registrar Organization:Digital Registra
+Sponsoring Registrar Postal Code:55281
+Sponsoring Registrar Country:ID
+Sponsoring Registrar Phone:0274882257
+Name Server:NS4.GOOGLE.NET
+Name Server:NS1.GOOGLE.NET
+Name Server:NS3.GOOGLE.NET
+Name Server:NS2.GOOGLE.NET
+DNSSEC:Unsigned
+
+
+

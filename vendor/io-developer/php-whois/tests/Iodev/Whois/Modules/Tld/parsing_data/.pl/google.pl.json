@@ -1,0 +1,15 @@
+{
+  "domainName": "google.pl",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.net",
+    "ns2.google.net",
+    "ns3.google.net",
+    "ns4.google.net"
+  ],
+  "creationDate": "2002-09-19T13:00:00",
+  "expirationDate": "2018-09-18T14:00:00",
+  "states": [],
+  "owner": "",
+  "registrar": "Markmonitor, Inc."
+}

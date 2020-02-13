@@ -1,0 +1,17 @@
+{
+  "domainName": "microsoft.page",
+  "whoisServer": "whois.cscglobal.com",
+  "nameServers": [
+    "ns1-09.azure-dns.com",
+    "ns2-09.azure-dns.net",
+    "ns3-09.azure-dns.org",
+    "ns4-09.azure-dns.info"
+  ],
+  "creationDate": "2018-09-12T10:52:40Z",
+  "expirationDate": "2020-09-12T10:52:40Z",
+  "states": [
+    "ok"
+  ],
+  "owner": "Microsoft Corporation",
+  "registrar": "CSC Corporate Domains, Inc."
+}

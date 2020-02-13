@@ -1,0 +1,80 @@
+% request from 178.141.108.218
+% This is the Ukrainian Whois query server #F.
+% The Whois is subject to Terms of use
+% See https://hostmaster.ua/services/
+%
+
+domain:           google.com.ua
+dom-public:       NO
+registrant:       mm-87489
+admin-c:          mm-87489
+mnt-by:           ua.markmonitor
+nserver:          ns3.google.com
+nserver:          ns1.google.com
+nserver:          ns4.google.com
+nserver:          ns2.google.com
+status:           clientDeleteProhibited
+status:           clientTransferProhibited
+status:           clientUpdateProhibited
+created:          2002-12-04 00:00:00+02
+modified:         2017-11-02 11:25:57+02
+expires:          2018-12-04 00:00:00+02
+source:           UAEPP
+
+% Registrar:
+% ==========
+registrar:        ua.markmonitor
+organization:     MarkMonitor Inc.
+organization-loc: MarkMonitor Inc.
+url:              http://markmonitor.com
+city:             Meridian
+country:          US
+source:           UAEPP
+
+% Registrant:
+% ===========
+contact-id:       mm-87489
+person:           n/a
+person-loc:       DNS Admin
+organization-loc: Google Inc.
+e-mail:           dns-admin@google.com
+address:          n/a
+address-loc:      1600 Amphitheatre Parkway
+address-loc:      CA
+address-loc:      Mountain View
+postal-code-loc:  94043
+country-loc:      US
+phone:            +1.6502530000
+fax:              +1.6502530001
+mnt-by:           ua.markmonitor
+status:           ok
+status:           linked
+created:          2017-07-28 23:53:31+03
+source:           UAEPP
+
+
+% Administrative Contacts:
+% =======================
+contact-id:       mm-87489
+person:           n/a
+person-loc:       DNS Admin
+organization-loc: Google Inc.
+e-mail:           dns-admin@google.com
+address:          n/a
+address-loc:      1600 Amphitheatre Parkway
+address-loc:      CA
+address-loc:      Mountain View
+postal-code-loc:  94043
+country-loc:      US
+phone:            +1.6502530000
+fax:              +1.6502530001
+mnt-by:           ua.markmonitor
+status:           ok
+status:           linked
+created:          2017-07-28 23:53:31+03
+source:           UAEPP
+
+
+
+% Query time:     5 msec
+

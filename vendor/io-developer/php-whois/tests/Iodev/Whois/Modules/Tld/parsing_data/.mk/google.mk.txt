@@ -1,0 +1,49 @@
+% Domain Information over Whois protocol
+% 
+% Whoisd Server Version: 3.9.0
+% Timestamp: Sat Nov 18 22:17:31 2017
+
+domain:       google.mk
+registrant:   UNET-R11
+admin-c:      UNET-C12
+nsset:        UNET-NS191
+registrar:    UNET-REG
+registered:   13.05.2008 14:00:00
+changed:      17.04.2014 12:50:32
+expire:       13.05.2018
+
+contact:      UNET-R11
+org:          Google Inc.
+name:         Google
+address:      Amphiteatre Parkway 1600
+address:      Mountain View
+address:      94043
+address:      US
+phone:        +1.6502530000
+fax-no:       +1.6502530000
+e-mail:       ccops@markmonitor.com
+registrar:    UNET-REG
+created:      25.03.2014 11:48:02
+changed:      09.09.2015 11:44:59
+
+contact:      UNET-C12
+name:         Mark Monitor Inc.
+address:      3540 East Longwing Lane Suite 300
+address:      Boise
+address:      83704
+address:      US
+phone:        +1.2083895740
+e-mail:       ccops@markmonitor.com
+registrar:    UNET-REG
+created:      25.03.2014 11:48:00
+changed:      03.06.2016 11:08:54
+
+nsset:        UNET-NS191
+nserver:      ns2.google.com 
+nserver:      ns1.google.com 
+tech-c:       UNET-C12
+registrar:    UNET-REG
+created:      17.04.2014 12:50:22
+changed:      17.04.2014 21:02:14
+
+

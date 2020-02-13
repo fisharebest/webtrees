@@ -1,0 +1,19 @@
+{
+  "domainName": "google.ac",
+  "whoisServer": "whois.markmonitor.com",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2006-04-03T13:38:02Z",
+  "expirationDate": "2018-04-03T13:38:02Z",
+  "states": [
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "",
+  "registrar": "MarkMonitor Inc."
+}

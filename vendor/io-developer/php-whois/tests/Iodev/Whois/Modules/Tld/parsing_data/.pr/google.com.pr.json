@@ -1,0 +1,13 @@
+{
+  "domainName": "google.com.pr",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "creationDate": "2003-01-25T00:00:00",
+  "expirationDate": "2018-01-25T00:00:00",
+  "states": [],
+  "owner": "Google Inc.",
+  "registrar": "MarkMonitor Inc."
+}

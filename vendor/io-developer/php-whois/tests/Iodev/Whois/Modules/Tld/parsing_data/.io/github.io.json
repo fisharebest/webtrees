@@ -1,0 +1,20 @@
+{
+  "domainName": "github.io",
+  "whoisServer": "whois.markmonitor.com",
+  "nameServers": [
+    "ns1.p16.dynect.net",
+    "ns2.p16.dynect.net",
+    "ns-1622.awsdns-10.co.uk",
+    "ns-692.awsdns-22.net",
+    "ns-1339.awsdns-39.org"
+  ],
+  "creationDate": "2013-03-08T19:12:48Z",
+  "expirationDate": "2018-03-08T19:12:48Z",
+  "states": [
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "",
+  "registrar": "MarkMonitor Inc."
+}

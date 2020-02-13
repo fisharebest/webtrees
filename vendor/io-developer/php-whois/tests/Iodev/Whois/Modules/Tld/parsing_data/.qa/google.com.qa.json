@@ -1,0 +1,17 @@
+{
+  "domainName": "google.com.qa",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.net",
+    "ns2.google.net",
+    "ns3.google.net",
+    "ns4.google.net"
+  ],
+  "creationDate": "",
+  "expirationDate": "",
+  "states": [
+    "ok"
+  ],
+  "owner": "T.M.P. AGENTS",
+  "registrar": "AGIP dba Tag-Domains.com"
+}

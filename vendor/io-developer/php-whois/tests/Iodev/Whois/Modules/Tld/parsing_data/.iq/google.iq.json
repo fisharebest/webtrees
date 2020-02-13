@@ -1,0 +1,17 @@
+{
+  "domainName": "google.iq",
+  "whoisServer": "whois.cmc.iq",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2015-03-22T11:43:29.991Z",
+  "expirationDate": "2017-10-02T21:00:00.0Z",
+  "states": [
+    "ok"
+  ],
+  "owner": "Google INC.",
+  "registrar": "CMC Registrar"
+}

@@ -1,0 +1,19 @@
+{
+  "domainName": "google.com.ua",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2002-12-04 00:00:00+02",
+  "expirationDate": "2018-12-04 00:00:00+02",
+  "states": [
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "ua.markmonitor"
+}

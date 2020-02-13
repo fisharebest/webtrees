@@ -1,0 +1,17 @@
+{
+  "domainName": "google.cm",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2009-10-07T10:02:00+0100",
+  "expirationDate": "2018-10-07T10:02:00+0100",
+  "states": [
+    "delegated"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "MarkMonitor Inc."
+}

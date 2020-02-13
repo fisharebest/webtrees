@@ -1,0 +1,17 @@
+{
+  "domainName": "google.co.jp",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.net",
+    "ns2.google.net",
+    "ns3.google.net",
+    "ns4.google.net"
+  ],
+  "creationDate": "2001-03-22T00:00:00Z",
+  "expirationDate": "",
+  "states": [
+    "connected"
+  ],
+  "owner": "Google Japan",
+  "registrar": ""
+}

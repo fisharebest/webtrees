@@ -1,0 +1,70 @@
+Domain Name: BERMUDANIC.BM
+Registry Domain ID: D425500000000526281-AGRS
+Registrar WHOIS Server:
+Registrar URL:
+Updated Date: 2019-11-05T21:11:52Z
+Creation Date: 2003-01-07T00:00:00Z
+Registry Expiry Date: 2021-01-07T00:00:00Z
+Registrar Registration Expiration Date:
+Registrar: The Registry General, Government of Bermuda
+Registrar IANA ID: 801154
+Registrar Abuse Contact Email:
+Registrar Abuse Contact Phone:
+Reseller:
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Registry Registrant ID: C19884567-AGRS
+Registrant Name: Registrar General
+Registrant Organization: Registry General
+Registrant Street: Government Administration Building, 4th Floor
+Registrant Street: 30 Parliament Street, Hamilton HM12 Bermuda
+Registrant Street: 30 Parliament Street, Hamilton HM12 Bermuda
+Registrant City: Hamilton
+Registrant State/Province:
+Registrant Postal Code: -
+Registrant Country: BM
+Registrant Phone: +1.2977706
+Registrant Phone Ext:
+Registrant Fax: +1.2924568
+Registrant Fax Ext:
+Registrant Email: apennyman@gov.bm
+Registry Admin ID: C19884568-AGRS
+Admin Name: Thelma Trott
+Admin Organization: Registry General
+Admin Street: Government Administration Building, 4th Floor
+Admin Street: 30 Parliament Street, Hamilton HM12 Bermuda
+Admin Street: 30 Parliament Street, Hamilton HM12 Bermuda
+Admin City: Hamilton
+Admin State/Province:
+Admin Postal Code: -
+Admin Country: BM
+Admin Phone: +1.2977706
+Admin Phone Ext:
+Admin Fax: +1.2924568
+Admin Fax Ext:
+Admin Email: tetrott@gov.bm
+Registry Tech ID: C19884569-AGRS
+Tech Name: Thelma Trott
+Tech Organization: Registry General
+Tech Street: Government Administration Building, 4th Floor
+Tech Street: 30 Parliament Street, Hamilton HM12 Bermuda
+Tech Street: 30 Parliament Street, Hamilton HM12 Bermuda
+Tech City: Hamilton
+Tech State/Province:
+Tech Postal Code: -
+Tech Country: BM
+Tech Phone: +1.2977706
+Tech Phone Ext:
+Tech Fax: +1.2924568
+Tech Fax Ext:
+Tech Email: tetrott@gov.bm
+Name Server: DNS1.GOV.BM
+Name Server: DNS2.GOV.BM
+DNSSEC: unsigned
+
+>>> Last update of WHOIS database: 2019-11-29T12:08:22Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+Access to WHOIS information is provided to assist persons in determining the contents of a domain name registration record in the registry database. The data in this record is provided by The Registry Operator for informational purposes only, and accuracy is not guaranteed.  This service is intended only for query-based access. You agree that you will use this data only for lawful purposes and that, under no circumstances will you use this data to (a) allow, enable, or otherwise support the transmission by e-mail, telephone, or facsimile of mass unsolicited, commercial advertising or solicitations to entities other than the data recipient's own existing customers; or (b) enable high volume, automated, electronic processes that send queries or data to the systems of Registry Operator, a Registrar, or Afilias except as reasonably necessary to register domain names or modify existing registrations. All rights reserved. Registry Operator reserves the right to modify these terms at any time. By submitting this query, you agree to abide by this policy.
+
+The Registrar of Record identified in this output may have an RDDS service that can be queried for additional information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.

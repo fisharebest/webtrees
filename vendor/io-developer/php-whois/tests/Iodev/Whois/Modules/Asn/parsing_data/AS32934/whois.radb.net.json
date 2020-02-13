@@ -1,0 +1,2777 @@
+{
+    "asn": "AS32934",
+    "routes": [
+        {
+            "route": "204.15.20.0\/22",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "callahan@facebook.com 20090608  #00:40:18Z",
+            "source": "RADB"
+        },
+        {
+            "route": "69.63.176.0\/20",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "callahan@facebook.com 20090608  #00:41:39Z",
+            "source": "RADB"
+        },
+        {
+            "route": "66.220.144.0\/20",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "callahan@facebook.com 20090608  #00:55:54Z",
+            "source": "RADB"
+        },
+        {
+            "route": "66.220.144.0\/21",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "rpimentel@facebook.com 20090820  #06:38:28Z",
+            "source": "RADB"
+        },
+        {
+            "route": "69.63.184.0\/21",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "rpimentel@facebook.com 20090820  #06:41:02Z",
+            "source": "RADB"
+        },
+        {
+            "route": "69.63.176.0\/21",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "rpimentel@facebook.com 20090820  #06:41:02Z",
+            "source": "RADB"
+        },
+        {
+            "route": "74.119.76.0\/22",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "rpimentel@facebook.com 20091103  #01:49:02Z",
+            "source": "RADB"
+        },
+        {
+            "route": "69.171.255.0\/24",
+            "route6": "",
+            "descr": "adding route",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20101123  #21:46:40Z",
+            "source": "RADB"
+        },
+        {
+            "route": "173.252.64.0\/18",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20110228  #00:51:36Z",
+            "source": "RADB"
+        },
+        {
+            "route": "69.171.224.0\/19",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20110530  #01:29:16Z",
+            "source": "RADB"
+        },
+        {
+            "route": "69.171.224.0\/20",
+            "route6": "",
+            "descr": "Facebook, Inc",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20110530  #01:29:45Z",
+            "source": "RADB"
+        },
+        {
+            "route": "103.4.96.0\/22",
+            "route6": "",
+            "descr": "Facebook, inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "phoose@fb.com 20110822  #18:55:27Z",
+            "source": "RADB"
+        },
+        {
+            "route": "69.63.176.0\/24",
+            "route6": "",
+            "descr": "facebook, inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "phoose@fb.com 20111006  #17:54:18Z",
+            "source": "RADB"
+        },
+        {
+            "route": "173.252.64.0\/19",
+            "route6": "",
+            "descr": "facebook, inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "phoose@fb.com 20111006  #17:54:39Z",
+            "source": "RADB"
+        },
+        {
+            "route": "173.252.70.0\/24",
+            "route6": "",
+            "descr": "facebook, inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "phoose@fb.com 20111006  #17:56:26Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.64.0\/18",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "phoose@fb.com 20111006  #18:05:29Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.24.0\/21",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "phoose@fb.com 20111006  #18:06:00Z",
+            "source": "RADB"
+        },
+        {
+            "route": "66.220.152.0\/21",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "phoose@fb.com 20111006  #18:06:30Z",
+            "source": "RADB"
+        },
+        {
+            "route": "66.220.159.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "phoose@fb.com 20111006  #18:06:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "69.171.239.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "phoose@fb.com 20111006  #18:07:02Z",
+            "source": "RADB"
+        },
+        {
+            "route": "69.171.240.0\/20",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "phoose@fb.com 20111006  #18:07:13Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.64.0\/19",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20111025",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.64.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20111025",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.65.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20111025",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.67.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20111025",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.68.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20111025",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.69.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20111025",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.70.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20111025",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.71.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20111025",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.72.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20111025",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.73.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20111025",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.74.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20111025",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.75.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20111025",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.76.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20111025",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.77.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20111025",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.96.0\/19",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20111025",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.66.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20111025",
+            "source": "RADB"
+        },
+        {
+            "route": "173.252.96.0\/19",
+            "route6": "",
+            "descr": "facebook, inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw38@fb.com 20120403  #00:32:07Z",
+            "source": "RADB"
+        },
+        {
+            "route": "69.63.178.0\/24",
+            "route6": "",
+            "descr": "Prolexic Technologies, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32787",
+            "changed": "hostmaster@prolexic.com 20120420",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.78.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:09:37Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.79.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:11:57Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.80.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:12:23Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.82.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:15:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.83.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:15:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.84.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:15:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.85.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:15:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.86.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:15:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.87.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:15:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.88.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:15:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.89.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:15:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.90.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:15:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.91.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:15:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.92.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:15:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.93.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:15:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.94.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:15:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.95.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw@fb.com 20120423  #20:15:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "69.171.253.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "callahan@fb.com 20121116  #18:34:06Z",
+            "source": "RADB"
+        },
+        {
+            "route": "69.63.186.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "callahan@fb.com 20121116  #18:34:46Z",
+            "source": "RADB"
+        },
+        {
+            "route": "31.13.81.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:13:55Z",
+            "source": "RADB"
+        },
+        {
+            "route": "179.60.192.0\/22",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "rodrigoc@fb.com 20140603  #23:39:49Z",
+            "source": "RADB"
+        },
+        {
+            "route": "179.60.192.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "rodrigoc@fb.com 20140603  #23:46:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "179.60.193.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "rodrigoc@fb.com 20140603  #23:46:51Z",
+            "source": "RADB"
+        },
+        {
+            "route": "179.60.194.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "rodrigoc@fb.com 20140603  #23:54:18Z",
+            "source": "RADB"
+        },
+        {
+            "route": "179.60.195.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "rodrigoc@fb.com 20140603  #23:55:14Z",
+            "source": "RADB"
+        },
+        {
+            "route": "185.60.216.0\/22",
+            "route6": "",
+            "descr": "Facebook Ireland Ltd",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "callahan@fb.com 20140612  #18:01:54Z",
+            "source": "RADB"
+        },
+        {
+            "route": "45.64.40.0\/22",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "zero@fb.com 20140612  #23:01:58Z",
+            "source": "RADB"
+        },
+        {
+            "route": "185.60.216.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150320  #23:03:30Z",
+            "source": "RADB"
+        },
+        {
+            "route": "185.60.217.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150320  #23:03:30Z",
+            "source": "RADB"
+        },
+        {
+            "route": "185.60.218.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150320  #23:03:30Z",
+            "source": "RADB"
+        },
+        {
+            "route": "185.60.219.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150320  #23:03:30Z",
+            "source": "RADB"
+        },
+        {
+            "route": "129.134.0.0\/16",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "callahan@fb.com 20150515  #17:07:29Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.0.0\/16",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "callahan@fb.com 20150515  #17:08:07Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.8.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20161101  #18:24:09Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.0.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20161102  #04:04:58Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.1.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20161102  #04:06:11Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.2.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20161102  #04:06:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.3.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20161102  #04:07:07Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.4.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20161102  #04:07:38Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.5.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20161102  #04:07:58Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.6.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20161102  #04:08:19Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.7.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20161102  #04:08:42Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.9.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20161107  #01:45:33Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.10.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20161116  #02:40:36Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.16.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "mja@fb.com 20170623  #05:16:43Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.19.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20171003  #02:38:13Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.11.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20171003  #02:39:44Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.12.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20171003  #02:42:13Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.13.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20171003  #02:43:44Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.14.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20171003  #02:44:25Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.15.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20171003  #02:45:27Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.17.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20171003  #02:46:42Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.18.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20171003  #02:47:56Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.20.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20171003  #02:48:53Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.21.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20171003  #02:50:57Z",
+            "source": "RADB"
+        },
+        {
+            "route": "157.240.22.0\/24",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20171112  #06:08:17Z",
+            "source": "RADB"
+        },
+        {
+            "route": "204.15.20.0\/22",
+            "route6": "",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "taner@facebook.com 20050809",
+            "source": "ALTDB"
+        },
+        {
+            "route": "69.63.176.0\/20",
+            "route6": "",
+            "descr": "Facebook",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dwilliams@facebook.com 20070222",
+            "source": "ALTDB"
+        },
+        {
+            "route": "69.63.176.0\/21",
+            "route6": "",
+            "descr": "Facebook",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dwilliams@facebook.com 20070322",
+            "source": "ALTDB"
+        },
+        {
+            "route": "69.63.184.0\/21",
+            "route6": "",
+            "descr": "Facebook",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dwilliams@facebook.com 20071026",
+            "source": "ALTDB"
+        },
+        {
+            "route": "66.220.144.0\/20",
+            "route6": "",
+            "descr": "Facebook",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "danw@facebook.com 20090214",
+            "source": "ALTDB"
+        },
+        {
+            "route": "69.63.176.0\/20",
+            "route6": "",
+            "descr": "Facebook",
+            "origin": "AS32934",
+            "mntBy": "MNT-THEFA-3",
+            "changed": "dwilliams@facebook.com 20070221",
+            "source": "ARIN"
+        },
+        {
+            "route": "",
+            "route6": "2620:0:1c00::\/40",
+            "descr": "ipv6 prefix from ARIN",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "callahan@fb.com 20110511  #21:57:35Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880::\/32",
+            "descr": "v6 space from RIPE",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "shaw38@fb.com 20110822  #18:52:19Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:fffe::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20120607",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:ffff::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20120607",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2620:0:1cff::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "jj@fb.com 20120621",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f000::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f001::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f002::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f003::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f004::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f005::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f006::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f007::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f008::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f009::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f00a::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f00b::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f00c::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f00d::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f00e::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f00f::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f010::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f011::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f012::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f013::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f014::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f015::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f016::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f017::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f018::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f019::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f01a::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f01b::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f01c::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f01d::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f01e::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f01f::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20130911  #03:09:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:1000::\/36",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20131121  #02:39:24Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:2000::\/36",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20131121  #02:39:24Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:3000::\/36",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20131121  #02:39:24Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:4000::\/36",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20131121  #02:39:24Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:5000::\/36",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20131125  #22:43:56Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:6000::\/36",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20131125  #22:43:56Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:7000::\/36",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20131125  #22:43:56Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f020::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f021::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f022::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f023::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f024::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f025::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f026::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f027::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f028::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f029::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f02b::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f02c::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f02d::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f02e::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f02f::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f030::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f031::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f032::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f033::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f034::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f035::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f036::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f037::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f038::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f039::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f03a::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f03b::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f03c::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f03d::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f03e::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f03f::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:24:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2401:db00::\/32",
+            "descr": "v6 space from APNIC",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:40:20Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880::\/36",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:46:22Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2803:6080::\/32",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "dsp@fb.com 20150616  #02:48:27Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f100::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #19:43:42Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f200::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #19:56:25Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f101::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #19:57:01Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f201::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #19:57:37Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f102::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #19:59:20Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f202::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #19:59:46Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f103::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:00:08Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f203::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:00:36Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f104::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:00:58Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f204::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:01:20Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f107::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:01:42Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f207::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:02:06Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f108::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:02:34Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f208::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:02:54Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f109::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:03:21Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f209::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:03:41Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f10a::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:04:05Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f20a::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:04:48Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f10b::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:05:21Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f20b::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:05:46Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f10d::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:06:10Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f20d::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:06:32Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f10e::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:06:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f20e::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:07:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f10f::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:07:33Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f20f::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:07:54Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f110::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:08:14Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f210::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:08:35Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f111::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:08:54Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f211::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:09:17Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f112::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:09:38Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f212::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:09:58Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f114::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:10:19Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f214::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:10:47Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f115::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:11:07Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f215::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:11:27Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f116::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:11:44Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f216::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:12:01Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f117::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:12:21Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f217::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:12:39Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f118::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:12:56Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f218::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:13:20Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f119::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:13:37Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f219::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:13:56Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f11a::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:14:19Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f21a::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:14:39Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f11f::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:15:00Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f21f::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:15:18Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f121::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:15:37Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f221::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:15:59Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f122::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:16:16Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f222::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:16:35Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f123::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:16:54Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f223::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:17:13Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f10c::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:17:56Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f20c::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:18:14Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f126::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:18:33Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f226::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:18:53Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f105::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:19:11Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f205::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:19:29Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f125::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:19:46Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f225::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:20:04Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f106::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:20:22Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f206::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:20:37Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f11b::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:20:57Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f21b::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:21:16Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f113::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:21:42Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f213::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:22:05Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f11c::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:22:25Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f21c::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20160627  #20:22:45Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f128::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20161107  #01:47:49Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f228::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20161107  #01:48:21Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f02a::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20161116  #02:42:04Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f12a::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20161116  #02:43:38Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f22a::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20161116  #02:44:15Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f12f::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "mja@fb.com 20170623  #05:20:22Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f22f::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "mja@fb.com 20170623  #05:42:00Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f11d::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:43:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f11e::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:45:25Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f120::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:49:52Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f124::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:50:23Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f127::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:50:44Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f129::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:51:08Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f12b::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:51:35Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f12c::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:52:03Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f12d::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:52:31Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f12e::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:52:58Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f130::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:53:26Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f131::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:53:55Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f132::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:54:21Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f133::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:54:53Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f134::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:55:18Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f135::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:55:42Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f136::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:56:08Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f137::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:56:35Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f138::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:57:02Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f139::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:57:26Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f13a::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:57:50Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f13b::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:58:14Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f13c::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #22:58:40Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f13d::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:01:17Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f13e::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:01:46Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f13f::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:02:18Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f21d::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:04:11Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f21e::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:04:43Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f220::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:06:03Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f224::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:09:54Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f227::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:10:21Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f229::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:10:49Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f22b::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:11:12Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f22c::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:11:39Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f22d::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:12:04Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f22e::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:13:38Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f230::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:14:06Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f231::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:14:29Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f232::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:14:50Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f233::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:15:15Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f234::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:15:37Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f235::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:16:03Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f236::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:16:30Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f237::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:16:53Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f238::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:17:21Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f239::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:17:45Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f23a::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:18:11Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f23b::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:18:47Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f23c::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:20:20Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f23d::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:20:45Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f23e::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:21:07Z",
+            "source": "RADB"
+        },
+        {
+            "route": "",
+            "route6": "2a03:2880:f23f::\/48",
+            "descr": "Facebook, Inc.",
+            "origin": "AS32934",
+            "mntBy": "MAINT-AS32934",
+            "changed": "vvasilev@fb.com 20170623  #23:21:28Z",
+            "source": "RADB"
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+
+----------------------------------------------------------------------  
+ BNNIC WHOIS Server
+---------------------------------------------------------------------- 
+
+The following data is provided for information purposes only.
+
+Registrar:   TELEKOM BRUNEI BERHAD
+
+    Domain Name:		GOOGLE.COM.BN 
+    Creation Date:		10-Nov-2006 00:00:00
+    Modified Date:		17-Dec-2014 18:07:42
+    Expiration Date:		13-Nov-2018 00:00:00
+    Domain Status:		ok
+
+
+    Registrant:
+
+        Name:           INTEGRICITY CORPORATION SDN BHD (BNC304T)        
+        
+
+
+    Administrative Contact:
+          
+        Name:           INTEGRICITY CORPORATION SDN BHD (BNC304T)        
+        
+
+
+    Technical Contact:
+        
+        Name:           INTEGRICITY CORPORATION SDN BHD (BNC304T)        
+        Email:          jason.ong@intergricity.com
+        
+
+
+    Name Servers:
+        NS1.GOOGLE.COM  (216.239.32.10)
+        NS2.GOOGLE.COM  (216.239.34.10)
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+{
+  "domainName": "google.co.id",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.net",
+    "ns2.google.net",
+    "ns3.google.net",
+    "ns4.google.net"
+  ],
+  "creationDate": "2004-12-18T13:33:21",
+  "expirationDate": "2018-09-01T23:59:59",
+  "states": [
+    "clienttransferprohibited",
+    "servertransferprohibited"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "Digital Registra"
+}

@@ -1,0 +1,47 @@
+Dominio: google.com.bo
+
+TITULAR:
+Organizacion: Google Inc.
+Nombre: Google Inc
+Email: mail en nameaction.com
+Pais: Estados Unidos de America
+Ciudad: Mountain View
+Direccion: 1600 Amphitheatre Parkway Mountain View
+Telefono: 16502530000
+
+
+CONTACTO ADMINISTRATIVO:
+Organizacion: Google Inc.
+Nombre: DNS Admin
+Email: dns-admin en google.com
+Pais: Estados Unidos de America
+Ciudad: Mountain View
+Direccion: 1600 Amphitheatre Parkway
+Telefono: 16502530000
+
+
+CONTACTO TECNICO:
+Organizacion: Markmonitor
+Nombre: Matt Serlin
+Email: ccops en markmonitor.com
+Pais: Estados Unidos de America
+Ciudad: Boise
+Direccion: 391 N. Ancestor Place
+Telefono: 12083895740
+
+
+CONTACTO FINANCIERO:
+Organizacion: MarkMonitor Inc. 
+Nombre: Domain Administrator 
+Email: ccopsbilling en markmonitor.com
+Pais: Estados Unidos de America
+Ciudad: Boise 
+Direccion: 391 N. Ancestor pl. 
+Telefono: 12083895740
+
+
+Fecha de registro: 2004-10-01
+Fecha de vencimiento: 2018-10-01
+
+
+whois.nic.bo solo acepta consultas con dominios .bo

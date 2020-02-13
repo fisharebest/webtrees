@@ -1,0 +1,23 @@
+Domain Name: google.co.ma
+Updated Date: 2017-04-24T15:44:03.368Z
+Creation Date: 2003-01-29T00:00:00.000Z
+Registry Expiry Date: 2018-01-29T00:00:00.000Z
+Sponsoring Registrar: GENIOUS COMMUNICATION
+Domain Status: ok
+Domain Status: clientTransferProhibited
+Registrant Name: Google Inc
+Admin Name: Genious Communications
+Admin Phone: +212.524291141
+Admin Phone Ext: 
+Admin Email: support@genious.net
+Tech Name: Domain Admin
+Tech Phone: +1.2083895740
+Tech Phone Ext: 
+Tech Email: ccopsbilling@markmonitor.com
+Name Server: ns1.google.com
+Name Server: ns2.google.com
+Name Server: ns3.google.com
+Name Server: ns4.google.com
+>>> Last update of WHOIS database: 2017-11-18T21:16:08.862Z <<<
+
+Le service Whois permet la v?rification de la disponibilit? d?un nom de domaine ? .ma ? et l?identification de son titulaire. La base de donn?es Whois est maintenue ? jour par les prestataires, ? chaque fois qu?une modification sur les donn?es enregistr?es leur est communiqu?e par le titulaire. Tout usage abusif du service WHOIS et des donn?es d?identification qu?il publie engage la responsabilit? des personnes concern?es.

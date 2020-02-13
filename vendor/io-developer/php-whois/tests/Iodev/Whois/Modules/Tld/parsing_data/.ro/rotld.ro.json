@@ -1,0 +1,15 @@
+{
+  "domainName": "rotld.ro",
+  "whoisServer": "",
+  "nameServers": [
+    "ns-a.rnc.ro",
+    "ns.rnc.ro"
+  ],
+  "creationDate": "",
+  "expirationDate": "2027-05-30T00:00:00",
+  "states": [
+    "ok"
+  ],
+  "owner": "",
+  "registrar": "ICI - Registrar"
+}

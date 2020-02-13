@@ -1,0 +1,60 @@
+NIC Whois server for cTLDs : .tn , .ØªÙˆÙ†Ø³
+All right reserverd
+Copyright "Tunisian Internet Agency - http://whois.tn
+Supported ccTLDs : .tn , .ØªÙˆÙ†Ø³
+
+Domain name.........: ati.tn
+Details:
+Creation date.......: 07-01-1998 00:00:00 GMT+1
+Domain status.......: Active
+Registrar...........: FSI-ATI
+
+Owner Contact
+Name................: ATI
+First name..........: 
+Address.............: 13, Avenue Jughurta, Mutuelleville, 1002 Tunis BelvÃ©dÃ¨re
+address2............: 
+City................: 
+stateProvince.......: 
+Zip code............: 
+Country.............: 
+Phone...............: (+216) 71 84 61 00
+Fax.................: (+216) 71 84 66 00
+Email...............: webadmin@ati.tn
+
+Administrativ contact
+Name................: ATI
+First name..........: 
+Address.............: 13, Avenue Jughurta, Mutuelleville, 1002 Tunis BelvÃ©dÃ¨re
+address2............: 
+City................: 
+stateProvince.......: 
+Zip code............: 
+Country.............: 
+Phone...............: (+216) 71 84 61 00
+Fax.................: (+216) 71 84 66 00
+Email...............: webadmin@ati.tn
+
+Technical contact
+Name................: ATI
+First name..........: 
+Address.............: 13, Avenue Jughurta, Mutuelleville, 1002 Tunis BelvÃ©dÃ¨re
+address2............: 
+City................: 
+stateProvince.......: 
+Zip code............: 
+Country.............: 
+Phone...............: (+216) 71 84 61 00
+Fax.................: (+216) 71 84 66 00
+Email...............: webadmin@ati.tn
+
+DNS servers
+Name................: ns4.ati.tn.
+IP address
+IP nÂ° 1 : 2c0f:fab0:ffff:4:41:228:62:61
+IP nÂ° 2 : 41.228.62.61
+Name................: ns6.ati.tn.
+IP address
+IP nÂ° 1 : 2c0f:fab0:ffff:5:41:228:63:61
+IP nÂ° 2 : 41.228.63.61
+

@@ -1,0 +1,13 @@
+{
+  "domainName": "google.is",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "creationDate": "2002-05-22T00:00:00",
+  "expirationDate": "2018-05-22T00:00:00",
+  "states": [],
+  "owner": "Google Inc",
+  "registrar": "Markmonitor Tech Contact"
+}

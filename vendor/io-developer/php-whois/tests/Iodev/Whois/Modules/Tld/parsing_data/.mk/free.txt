@@ -1,0 +1,9 @@
+% Domain Information over Whois protocol
+% 
+% Whoisd Server Version: 3.9.0
+
+%ERROR:101: no entries found
+% 
+% No entries found.
+
+

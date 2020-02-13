@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use ErrorException;
+use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\ClientIp;
@@ -110,10 +111,11 @@ class Webtrees
         BaseUrl::class,
         HandleExceptions::class,
         ClientIp::class,
+        UseCache::class,
+        BadBotBlocker::class,
         UseDatabase::class,
         UseDebugbar::class,
         UpdateDatabaseSchema::class,
-        UseCache::class,
         UseFilesystem::class,
         UseSession::class,
         UseLanguage::class,

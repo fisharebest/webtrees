@@ -1,0 +1,17 @@
+{
+  "domainName": "google.sh",
+  "whoisServer": "whois.markmonitor.com",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "creationDate": "1999-06-07T17:23:46Z",
+  "expirationDate": "2018-06-06T17:23:46Z",
+  "states": [
+    "clienttransferprohibited",
+    "clientdeleteprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "",
+  "registrar": "MarkMonitor Inc."
+}

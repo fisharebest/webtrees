@@ -1,0 +1,17 @@
+{
+  "domainName": "xn--80a1acny.xn--p1ai",
+  "whoisServer": "",
+  "nameServers": [
+    "dc-ns1.russianpost.ru",
+    "ns2.russianpost.ru"
+  ],
+  "creationDate": "2010-08-23T10:32:37Z",
+  "expirationDate": "2018-08-23T11:32:37Z",
+  "states": [
+    "registered",
+    "delegated",
+    "verified"
+  ],
+  "owner": "FSUE \"Russian Post\"",
+  "registrar": "RUCENTER-RF"
+}

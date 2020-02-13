@@ -1,0 +1,42 @@
+% This is the IRNIC Whois server v1.6.2.
+% Available on web at http://whois.nic.ir/
+% Find the terms and conditions of use on http://www.nic.ir/
+% 
+% This server uses UTF-8 as the encoding for requests and responses.
+
+% NOTE: This output has been filtered.
+
+% Information related to 'mhf.ir'
+
+
+domain:		mhf.ir
+ascii:		mhf.ir
+remarks:	(Domain Holder) Muhammad Hussein Fattahizadeh
+remarks:	(Domain Holder Address) No. 125, 4 West St, Janbazan Av., Semnan, Semnan, IR
+holder-c:	mf233-irnic
+admin-c:	no297-irnic
+tech-c:		no297-irnic
+bill-c:		no297-irnic
+nserver:	ns1.aasaam.net
+nserver:	ns2.aasaam.net
+nserver:	ns3.aasaam.net
+nserver:	ns4.aasaam.net
+last-updated:	2018-04-27
+expire-date:	2020-09-23
+source:		IRNIC # Filtered
+
+nic-hdl:	mf233-irnic
+person:		Muhammad Hussein Fattahizadeh
+e-mail:		semnanweb@gmail.com
+address:	No. 125, 4 West St, Janbazan Av., Semnan, Semnan, IR
+phone:		+98 231 3583834
+source:		IRNIC # Filtered
+
+nic-hdl:	no297-irnic
+org:		Noavaran Shabake Sabz Mehregan (HostIran Networks)
+e-mail:		esmailian@hostiran.com
+address:	#16, 2nd block , 1000 Building , Seydkhandan Bridge , Shariati st., Tehran, Tehran, IR
+phone:		+982122880312
+fax-no:		+982122880311
+source:		IRNIC # Filtered
+

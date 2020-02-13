@@ -1,0 +1,32 @@
+Domain Name: google.gl
+Domain ID: Imp669-GL
+WHOIS Server: 
+Referral URL: 
+Updated Date: 2016-12-09T17:11:21.252Z
+Creation Date: 2003-03-11T03:00:00.0Z
+Registry Expiry Date: 2018-01-01T03:00:00.0Z
+Sponsoring Registrar: MarkMonitor
+Domain Status: clientRenewProhibited
+Domain Status: clientTransferProhibited
+Domain Status: clientDeleteProhibited
+Domain Status: clientUpdateProhibited
+Registrant ID: 4738-GL
+Registrant Name: Google Inc.
+Registrant Street: 1600 Amphitheatre Parkway
+Registrant City: Mountain View
+Registrant State/Province: CA
+Registrant Postal Code: 94043
+Registrant Country: US
+Registrant Phone: +1.6303300100
+Registrant Phone Ext: 
+Registrant Fax: +1.6506188571
+Registrant Fax Ext: 
+Registrant Email: dns-admin@google.com
+Name Server: ns1.google.com
+Name Server: ns2.google.com
+DNSSEC: unsigned
+Additional Section
+Redemption Expiry Date:
+>>> Last update of WHOIS database: 2017-11-18T21:00:09.150Z <<<
+
+

@@ -1,0 +1,51 @@
+
+Servidor Whois del Centro de Información de Red de Venezuela (NIC.VE)
+
+Este servidor contiene información autoritativa exclusivamente de dominios .VE
+Cualquier consulta sobre este servicio, puede hacerla al correo electrónico whois@nic.ve
+
+Titular: 
+Google Inc. 		dns-admin@google.com
+   Google Inc
+   1600 Amphitheatre Parkway
+   Mountain View, CA  US
+   +1.6502530000
+
+   Nombre de Dominio: google.co.ve
+
+   Contacto Administrativo: 
+      DNS Admin 		dns-admin@google.com
+      Google Inc.
+      1600 Amphitheatre Parkway
+      Mountain View, CA, CA  UNITED STATES
+      +1.6502530000 (FAX) +16506181499
+   
+   Contacto Técnico: 
+      DNS Admin 		dns-admin@google.com
+      Google Inc.
+      1600 Amphitheatre Parkway
+      Mountain View, CA, CA  UNITED STATES
+      +1.6502530000 (FAX) +16506181499
+   
+   Contacto de Cobranza: 
+      Domain Administrator		Venezueladomains2@markmonitor.com
+      Markmonitor, Inc.
+      391 N. Ancestor Place
+      Boise ID  US
+      1-1 - 2083895740 (FAX) 1 - 2083895740
+
+   Fecha de Vencimiento: 2018-03-06 00:00:00
+   Ultima Actualización: 2005-11-17 20:35:01
+   Fecha de Creación: 2003-03-06 00:00:00
+
+   Estatus del dominio: ACTIVO
+
+   Servidor(es) de Nombres de Dominio:
+
+   - ns1.google.com
+   - ns2.google.com
+   - ns3.google.com
+   - ns4.google.com
+
+NIC-Venezuela - CONATEL
+http://www.nic.ve

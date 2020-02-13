@@ -1,0 +1,34 @@
+% La información a la que estás accediendo se provee exclusivamente para
+% fines relacionados con operaciones sobre nombres de dominios y DNS,
+% quedando absolutamente prohibido su uso para otros fines.
+%
+% La DIRECCIÓN NACIONAL DEL REGISTRO DE DOMINIOS DE INTERNET es depositaria
+% de la información que los usuarios declaran con la sola finalidad de
+% registrar nombres de dominio en ‘.ar’, para ser publicada en el sitio web
+% de NIC Argentina.
+%
+% La información personal que consta en la base de datos generada a partir
+% del sistema de registro de nombres de dominios se encuentra amparada por
+% la Ley N° 25326 “Protección de Datos Personales” y el Decreto
+% Reglamentario 1558/01.
+
+domain:         google.com.ar
+registrant:     50037928906
+registrar:      nicar
+registered:     1999-06-08 00:00:00
+changed:        2019-06-10 12:24:16.665400
+expire:         2020-07-08 00:00:00
+
+contact:        50037928906
+name:           GOOGLE INC.
+registrar:      nicar
+created:        2013-10-29 00:00:00
+changed:        2019-10-08 13:41:57.147735
+
+nserver:        ns1.google.com ()
+nserver:        ns2.google.com ()
+nserver:        ns3.google.com ()
+nserver:        ns4.google.com ()
+registrar:      nicar
+created:        2016-07-01 00:46:15.070731
+

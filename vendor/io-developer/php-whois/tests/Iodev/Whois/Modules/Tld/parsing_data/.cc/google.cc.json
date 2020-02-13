@@ -1,0 +1,22 @@
+{
+  "domainName": "google.cc",
+  "whoisServer": "whois.markmonitor.com",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "1999-06-07T04:00:00Z",
+  "expirationDate": "2018-06-07T04:00:00Z",
+  "states": [
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "clientupdateprohibited",
+    "serverdeleteprohibited",
+    "servertransferprohibited",
+    "serverupdateprohibited"
+  ],
+  "owner": "",
+  "registrar": "MARKMONITOR INC."
+}

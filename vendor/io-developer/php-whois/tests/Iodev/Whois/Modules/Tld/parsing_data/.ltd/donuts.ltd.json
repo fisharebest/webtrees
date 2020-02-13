@@ -1,0 +1,15 @@
+{
+  "domainName": "donuts.ltd",
+  "whoisServer": "whois.west.cn",
+  "nameServers": [
+    "ns1.myhostadmin.net",
+    "ns2.myhostadmin.net"
+  ],
+  "creationDate": "2016-03-17T18:38:40.0Z",
+  "expirationDate": "2027-03-17T18:38:40.0Z",
+  "states": [
+    "ok"
+  ],
+  "owner": "Du Neng Wang Luo Ji Shu Shang Hai You Xian Gong Si",
+  "registrar": "Chengdu West Dimension Digital Technology Co., Ltd."
+}

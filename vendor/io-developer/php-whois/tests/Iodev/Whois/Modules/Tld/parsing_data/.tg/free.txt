@@ -1,0 +1,9 @@
+This is JWhoisServer serving ccTLD tg
+Java Whois Server 0.4.1.3    (c) 2006 - 2015 Klaus Zerwes zero-sys.net
+All rights reserved.
+Copyright "NICTogo - http://www.whois.tg"
+
+NO OBJECT FOUND!
+object:.............free.tg
+type:...............domain
+

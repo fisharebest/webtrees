@@ -1,0 +1,63 @@
+
+   Domain name:
+      GOOGLE.GA is Active
+
+   Owner contact:
+      Organization: Google Inc
+      Name:         Mr DNS Admin
+      Address:      1600 Amphitheatre  Parkway
+      Zipcode:      94043
+      City:         Mountain View
+      State:        California
+      Country:      U.S.A.
+      Phone:        +1-650-6234000
+      Fax:          +1-650-6188571
+      E-mail:       google@domainthenet.net
+
+   Admin contact:
+      Organization: Google Inc
+      Name:         Mr DNS Admin
+      Address:      1600 Amphitheatre  Parkway
+      Zipcode:      94043
+      City:         Mountain View
+      State:        California
+      Country:      U.S.A.
+      Phone:        +1-650-6234000
+      Fax:          +1-650-6188571
+      E-mail:       google@domainthenet.net
+
+   Billing contact:
+      Organization: Google Inc
+      Name:         Mr DNS Admin
+      Address:      1600 Amphitheatre  Parkway
+      Zipcode:      94043
+      City:         Mountain View
+      State:        California
+      Country:      U.S.A.
+      Phone:        +1-650-6234000
+      Fax:          +1-650-6188571
+      E-mail:       google@domainthenet.net
+
+   Tech contact:
+      Organization: Google Inc
+      Name:         Mr DNS Admin
+      Address:      1600 Amphitheatre  Parkway
+      Zipcode:      94043
+      City:         Mountain View
+      State:        California
+      Country:      U.S.A.
+      Phone:        +1-650-6234000
+      Fax:          +1-650-6188571
+      E-mail:       google@domainthenet.net
+
+   Domain Nameservers:
+      NS2.GOOGLE.COM
+      NS4.GOOGLE.COM
+      NS1.GOOGLE.COM
+      NS3.GOOGLE.COM
+
+
+   Domain registered: 06/11/2013
+   Record will expire on: 01/31/2018
+   Record maintained by: My GA Domain Registry
+

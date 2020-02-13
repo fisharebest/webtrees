@@ -1,0 +1,17 @@
+{
+  "domainName": "google.bj",
+  "whoisServer": "whois.nic.bj",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2015-01-29T11:16:22.808Z",
+  "expirationDate": "2016-01-29T11:16:22.854Z",
+  "states": [
+    "ok"
+  ],
+  "owner": "GOOGLE INC",
+  "registrar": "kanakoo-REG"
+}

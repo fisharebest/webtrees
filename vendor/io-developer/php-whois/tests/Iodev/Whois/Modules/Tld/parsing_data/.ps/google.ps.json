@@ -1,0 +1,16 @@
+{
+  "domainName": "google.ps",
+  "whoisServer": "138.201.122.95",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com"
+  ],
+  "creationDate": "2004-05-18T22:00:00.0Z",
+  "expirationDate": "2018-05-18T22:00:00.0Z",
+  "states": [
+    "ok"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "MarkMonitor Inc."
+}

@@ -1,0 +1,28 @@
+Domain Name: google.sm
+Registration date: 03/04/2003
+Status: Active
+
+Owner:
+Google, Inc.
+1600 Amphitheatre Parkway
+94043 Mountain View, CA
+US
+Phone: +1.6502530000
+Fax: +1.6502530001
+Email: dns-admin@google.com
+
+Technical Contact:
+Matt Serlin
+MarkMonitor Inc.
+391 N. Ancestor Place
+83704 Bise, ID
+US
+Phone: +1.2083895740
+Fax: +1.2083895799
+Email: ccops@markmonitor.com
+
+DNS Servers:
+ns1.google.com
+ns2.google.com
+ns3.google.com
+ns4.google.com

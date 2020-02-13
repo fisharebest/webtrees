@@ -1,0 +1,35 @@
+
+domain.............: sisäministeriö.fi
+domain:   xn--sisministeri-icb5x.fi
+status.............: Registered
+created............: 5.1.2018 10:46:30
+expires............: 5.1.2023 10:46:30
+available..........: 5.2.2023 10:46:30
+RegistryLock.......: no
+
+Nameservers
+
+nserver............: ns2.inet.intermin.fi [194.89.205.199] [OK]
+nserver............: ns1.inet.intermin.fi [194.89.205.198] [OK]
+dnssec.............: unsigned delegation
+
+Holder
+
+name...............: Sisäministeriö
+register number....: 0245992-3
+address............: Kirkkokatu 12
+address............: 00023
+address............: Valtioneuvosto
+country............: Finland
+phone..............: +358295488234
+holder email.......: 
+
+Registrar
+
+registrar..........: Valtion tieto- ja viestintäkeskus, Tuve-yksikkö
+
+>>> Last update of WHOIS database: 22.7.2018 2:17:35 (EET) <<<
+
+
+Copyright (c) Finnish Communications Regulatory Authority
+

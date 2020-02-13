@@ -1,0 +1,47 @@
+
+Servidor Whois de NIC-Uruguay (.UY)
+
+Este servidor contiene informacion autoritativa exclusivamente de dominios bajo .UY, EDU.UY, ORG.UY, NET.UY, GUB.UY y MIL.UY
+Cualquier consulta sobre este servicio, puede hacerla al correo electronico dns-adm@seciu.edu.uy
+
+Por informacion sobre dominios bajo COM.UY dirigirse a https://nic.anteldata.com.uy/dns/consultaWhois/whois.action
+
+Titular: 
+Google Inc  (436-netgate)		mail@nameaction.com.uy
+   21 de Setiembre 2840
+   Mountain View California, Mountain View California 94043  US
+   +001.+1.6502530000 (FAX) +001.+1.6502530001
+
+   Nombre de Dominio: google.uy
+   Registrado por: NetGate (http://netgate.uy)
+
+   Contacto Administrativo: 
+      Comintur S.A  (1-netgate)		dominios@netgate.com.uy
+      21 de setiembre 2840
+      Montevideo, Montevideo 11300  UY
+      +598.27126666 (FAX) +598.271266668
+   
+   Contacto Tecnico: 
+      MarkMonitor Inc - Domain Administrator  (316-netgate)		ccops@markmonitor.com
+      3540 East Longwing Lane Suite 300
+      Idaho, Meridian 83646  US
+      +001.208 3895740 (FAX) +001.208 3895740
+   
+   Contacto de Cobranza: 
+      Comintur S.A  (1-netgate)		dominios@netgate.com.uy
+      21 de setiembre 2840
+      Montevideo, Montevideo 11300  UY
+      +598.27126666 (FAX) +598.271266668
+
+   Ultima Actualizacion: 2016-07-11 19:37:37
+   Fecha de Creacion: 2016-07-11 19:37:37
+
+   Estatus del dominio: ACTIVO
+
+   Servidor(es) de Nombres de Dominio:
+
+   - ns1.markmonitor.com
+   - ns3.markmonitor.com
+
+NIC-Uruguay - SeCIU - UdelaR
+https://www.nic.uy

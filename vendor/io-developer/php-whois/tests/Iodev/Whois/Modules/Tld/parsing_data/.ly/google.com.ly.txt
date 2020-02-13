@@ -1,0 +1,65 @@
+Registrant:
+   Google Inc.
+   DNS Admin
+   1600 Amphitheatre Parkway
+   Mountain View
+   CA
+   US
+   Zip/Postal code: 94043
+   Phone: +1.6502530000
+   Fax: +1.6502530001
+   dns-admin@google.com
+
+Domain Name:   google.com.ly
+
+Administrative Contact:
+   Google Inc.
+   DNS Admin
+   1600 Amphitheatre Parkway
+   Mountain View
+   CA
+   United States
+   Zip/Postal code: 94043
+   Phone: +1.6502530000
+   Fax: +1.6502530001
+   dns-admin@google.com
+
+Technical Contact:
+   Google Inc.
+   DNS Admin
+   1600 Amphitheatre Parkway
+   Mountain View
+   CA
+   US
+   Zip/Postal code: 94043
+   Phone: +1.6502530000
+   Fax: +1.6502660100
+   dns-admin@google.com
+
+Billing Contact:
+   MarkMonitor Inc.
+   Domain Admin
+   3540 East Longwing Lane, Suite 300\r\n
+   Meridian
+   Idaho
+   United States
+   Zip/Postal code: 83646
+   Phone: +1.2086851774
+   Fax: +1.2086851774
+   ccopsbilling@markmonitor.com
+
+Created: 2003-07-17 01:12:25
+Updated: 2016-12-07 22:35:50
+Expired: 2018-01-01 00:00:00
+
+Domain servers in listed order:
+   NS2.GOOGLE.COM
+   NS1.GOOGLE.COM
+
+Domain Status: ACTIVE
+--
+Whois information provided by:
+LY Registry
+whois.nic.ly
+-For Whois usage policy please check:
+ http://whois.nic.ly/policy.php

@@ -1,0 +1,89 @@
+Domain Name: microsoft.page
+Registry Domain ID: 2D74AFD20-PAGE
+Registrar WHOIS Server: whois.cscglobal.com
+Registrar URL: http://www.cscglobal.com
+Updated Date: 2019-09-06T05:02:41Z
+Creation Date: 2018-09-12T10:52:40Z
+Registry Expiry Date: 2020-09-12T10:52:40Z
+Registrar: CSC Corporate Domains, Inc.
+Registrar IANA ID: 299
+Registrar Abuse Contact Email: domainabuse@cscglobal.com
+Registrar Abuse Contact Phone: +1.8887802723
+Domain Status: ok https://icann.org/epp#ok
+Registry Registrant ID: REDACTED FOR PRIVACY
+Registrant Name: REDACTED FOR PRIVACY
+Registrant Organization: Microsoft Corporation
+Registrant Street: REDACTED FOR PRIVACY
+Registrant Street:
+Registrant City: REDACTED FOR PRIVACY
+Registrant State/Province: WA
+Registrant Postal Code: REDACTED FOR PRIVACY
+Registrant Country: US
+Registrant Phone: REDACTED FOR PRIVACY
+Registrant Fax: REDACTED FOR PRIVACY
+Registrant Email: Please query the WHOIS server of the owning registrar identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registry Admin ID: REDACTED FOR PRIVACY
+Admin Name: REDACTED FOR PRIVACY
+Admin Organization: REDACTED FOR PRIVACY
+Admin Street: REDACTED FOR PRIVACY
+Admin Street:
+Admin City: REDACTED FOR PRIVACY
+Admin State/Province: REDACTED FOR PRIVACY
+Admin Postal Code: REDACTED FOR PRIVACY
+Admin Country: REDACTED FOR PRIVACY
+Admin Phone: REDACTED FOR PRIVACY
+Admin Fax: REDACTED FOR PRIVACY
+Admin Email: Please query the WHOIS server of the owning registrar identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registry Tech ID: REDACTED FOR PRIVACY
+Tech Name: REDACTED FOR PRIVACY
+Tech Organization: REDACTED FOR PRIVACY
+Tech Street: REDACTED FOR PRIVACY
+Tech Street:
+Tech City: REDACTED FOR PRIVACY
+Tech State/Province: REDACTED FOR PRIVACY
+Tech Postal Code: REDACTED FOR PRIVACY
+Tech Country: REDACTED FOR PRIVACY
+Tech Phone: REDACTED FOR PRIVACY
+Tech Fax: REDACTED FOR PRIVACY
+Tech Email: Please query the WHOIS server of the owning registrar identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registry Billing ID: REDACTED FOR PRIVACY
+Billing Name: REDACTED FOR PRIVACY
+Billing Organization: REDACTED FOR PRIVACY
+Billing Street: REDACTED FOR PRIVACY
+Billing Street:
+Billing City: REDACTED FOR PRIVACY
+Billing State/Province: REDACTED FOR PRIVACY
+Billing Postal Code: REDACTED FOR PRIVACY
+Billing Country: REDACTED FOR PRIVACY
+Billing Phone: REDACTED FOR PRIVACY
+Billing Fax: REDACTED FOR PRIVACY
+Billing Email: Please query the WHOIS server of the owning registrar identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Name Server: ns1-09.azure-dns.com
+Name Server: ns2-09.azure-dns.net
+Name Server: ns3-09.azure-dns.org
+Name Server: ns4-09.azure-dns.info
+DNSSEC: unsigned
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2019-10-25T14:41:28Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+Please query the WHOIS server of the owning registrar identified in this
+output for information on how to contact the Registrant, Admin, or Tech
+contact of the queried domain name.
+
+WHOIS information is provided by Charleston Road Registry Inc. (CRR) solely
+for query-based, informational purposes. By querying our WHOIS database, you
+are agreeing to comply with these terms
+(https://www.registry.google/about/whois-disclaimer.html) and acknowledge
+that your information will be used in accordance with CRR's Privacy Policy
+(https://www.registry.google/about/privacy.html), so please read those
+documents carefully.  Any information provided is "as is" without any
+guarantee of accuracy. You may not use such information to (a) allow,
+enable, or otherwise support the transmission of mass unsolicited,
+commercial advertising or solicitations; (b) enable high volume, automated,
+electronic processes that access the systems of CRR or any ICANN-Accredited
+Registrar, except as reasonably necessary to register domain names or modify
+existing registrations; or (c) engage in or support unlawful behavior. CRR
+reserves the right to restrict or deny your access to the Whois database,
+and may modify these terms at any time.

@@ -1,0 +1,15 @@
+{
+  "domainName": "google.com.sl",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "creationDate": "2008-09-15T21:00:00.0Z",
+  "expirationDate": "2018-09-15T21:00:00.0Z",
+  "states": [
+    "ok"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "nicsl"
+}

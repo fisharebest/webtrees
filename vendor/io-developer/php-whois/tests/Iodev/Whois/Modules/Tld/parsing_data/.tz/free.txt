@@ -1,0 +1,16 @@
+%  
+%  TZNIC WHOIS data and services are subject to the Terms of Use
+%  available at: https://www.tznic.or.tz/Whois_tou.pdf
+% 
+%  You may also use our WHOIS Web service available at:
+%  https://whois.tznic.or.tz/whois
+% 
+% 
+% 
+% Whoisd Server Version: 3.10.1
+
+%ERROR:101: no entries found
+% 
+% No entries found.
+
+

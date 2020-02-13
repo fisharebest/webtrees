@@ -1,0 +1,45 @@
+% Domain Information over Whois protocol
+% 
+% Whoisd Server Version: 3.10.2
+% Timestamp: Sat Nov 18 15:13:47 2017
+
+domain:       google.co.cr
+registrant:   CCOPS_AT_MARKMONITOR.COM
+admin-c:      CCOPS_AT_MARKMONITOR.COM
+nsset:        GOOGLE_CO_CR
+registrar:    NIC-REG1
+status:       Deletion forbidden
+status:       Sponsoring registrar change forbidden
+status:       Update forbidden
+status:       Domain blocked
+status:       Registrant change forbidden
+registered:   18.04.2002 18:00:00
+changed:      28.02.2017 06:39:42
+expire:       17.04.2018
+
+contact:      CCOPS_AT_MARKMONITOR.COM
+org:          MarkMonitor Inc.
+name:         MarkMonitor Inc
+address:      3540 East Longwing Lane, Suite 300
+address:      Meridian
+address:      83646
+address:      Idaho
+address:      US
+phone:        +1.2083895740
+fax-no:       +1.2083895771
+e-mail:       ccops@markmonitor.com
+registrar:    NIC-REG1
+created:      03.06.2011 10:22:36
+changed:      12.09.2017 05:47:06
+
+nsset:        GOOGLE_CO_CR
+nserver:      ns1.google.com 
+nserver:      ns2.google.com 
+nserver:      ns3.google.com 
+nserver:      ns4.google.com 
+tech-c:       CCOPS_AT_MARKMONITOR.COM
+registrar:    NIC-REG1
+created:      03.06.2011 12:51:41
+changed:      30.03.2016 10:37:14
+
+

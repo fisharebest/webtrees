@@ -1,0 +1,39 @@
+
+DOMAIN NAME:           google.pl
+registrant type:       organization
+nameservers:           ns1.google.net. 
+                       ns2.google.net. 
+                       ns3.google.net. 
+                       ns4.google.net. 
+created:               2002.09.19 13:00:00
+last modified:         2017.09.27 01:29:47
+renewal date:          2018.09.18 14:00:00
+
+option created:        2017.10.14 09:30:46
+option expiration date:       2020.10.14 09:30:46
+
+dnssec:                Unsigned
+
+TECHNICAL CONTACT:
+company: DNS Admin
+        Google Inc.
+street: 1600 Amphitheatre Parkway
+city: 94043 Mountain View
+location: US
+phone:  +1.6503300100
+fax:  +1.6506188571
+last modified: 2010.02.24
+
+
+REGISTRAR:
+Markmonitor, Inc.
+3540 East Longwing Lane, Suite 300
+Meridian, Idaho 83646
+United States
++1.2083895740
+ccops@markmonitor.com
+
+WHOIS database responses: http://www.dns.pl/english/opiskomunikatow_en.html
+
+WHOIS displays data with a delay not exceeding 15 minutes in relation to the .pl Registry system
+Registrant data available at http://dns.pl/cgi-bin/en_whois.pl

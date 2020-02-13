@@ -1,0 +1,77 @@
+Whois Server Version 1.0
+Domain Name (PUNYCODE): xn--d1abbgf6aiiy.xn--j1amh
+Domain name (UTF8): президент.укр
+
+Registry Domain ID: D00012128-ukr
+
+Updated Date: 22-Aug-2013 13:13:25 UTC
+Creation Date: 20-Aug-2013 20:15:44 UTC
+Expiration Date: 20-Aug-2023 20:15:44 UTC
+
+Registry Status: ok
+
+Registrar: Технічна група УМІЦ (Technical group of UANIC)
+Registrar URL: http://uanic.net
+Registrar ID: REGISTRY
+Registrar Abuse Contact Email: abuse@uanic.net
+Registrar Abuse Contact Phone: +380442309344
+
+Registry Registrant ID: C00348782-UKR
+Registrant Name (Organization): Президент України (President of Ukraine)
+Registrant Street: Банкова, 11 (Bankova, 11)
+Registrant City: Київ (Kyiv)
+Registrant Postal Code: 01220 (01220)
+Registrant Country: UA (UA)
+Registrant Phone: +380442556159
+Registrant Phone Ext: 
+Registrant Fax: 
+Registrant Fax Ext: 
+Registrant Email: apu_admin@apu.gov.ua
+
+Registry Admin ID: C00348788-UKR
+Admin Name: Адміністрація Президента України (Presidential Administration)
+Admin Organization: Адміністрація Президента України (Presidential Administration)
+Admin Street: Банкова, 11 (Bankova, 11)
+Admin City: Київ (Kyiv)
+Admin Postal Code: 01220 (01220)
+Admin Country: UA (UA)
+Admin Phone: +380442556159
+Admin Phone Ext: 
+Admin Fax: 
+Admin Fax Ext: 
+Admin Email: apu_admin@apu.gov.ua
+
+Registry Tech ID: C00348788-UKR
+Tech Name: Адміністрація Президента України (Presidential Administration)
+Tech Organization: Адміністрація Президента України (Presidential Administration)
+Tech Street: Банкова, 11 (Bankova, 11)
+Tech City: Київ (Kyiv)
+Tech Postal Code: 01220 (01220)
+Tech Country: UA (UA)
+Tech Phone: +380442556159
+Tech Phone Ext: 
+Tech Fax: 
+Tech Fax Ext: 
+Tech Email: apu_admin@apu.gov.ua
+
+Registry Billing ID: C00348788-UKR
+Billing Name: Адміністрація Президента України (Presidential Administration)
+Billing Organization: Адміністрація Президента України (Presidential Administration)
+Billing Street: Банкова, 11 (Bankova, 11)
+Billing City: Київ (Kyiv)
+Billing Postal Code: 01220 (01220)
+Billing Country: UA (UA)
+Billing Phone: +380442556159
+Billing Phone Ext: 
+Billing Fax: 
+Billing Fax Ext: 
+Billing Email: apu_admin@apu.gov.ua
+
+Domain servers in listed order:
+ns1.ukrnames.com
+ns2.ukrnames.com
+ns3.ukrnames.com
+
+
+URL of the ICANN WHOIS Data Problem Reporting System: http://wdprs.internic.net/
+>>> Last update of WHOIS database: 21-Jul-2018 22:59:09 UTC <<<

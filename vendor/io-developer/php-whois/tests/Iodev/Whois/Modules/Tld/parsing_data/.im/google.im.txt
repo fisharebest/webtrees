@@ -1,0 +1,46 @@
+Domain Name:	google.im
+Domain Managers
+Name: Reseller - MarkMonitor Inc.
+Address
+3540 East Longwing Lane Suite 300
+Meridian, Idaho
+83646
+United States
+Domain Owners / Registrant
+Name: DNS Admin
+Address
+1600 Amphitheatre Parkway
+Mountain View
+CA
+94043
+United States
+Administrative Contact
+Name:  DNS Admin
+Address
+1600 Amphitheatre Parkway
+Mountain View
+CA
+94043
+United States
+Billing Contact
+Name: Mr Domain Administrator
+Address
+Emerald Tech Center
+391 N. Ancestor Pl
+Boise, ID
+83704
+United States
+Technical Contact
+Name:  DNS Admin
+Address
+1600 Amphitheatre Parkway
+Mountain View
+CA
+94043
+United States
+Domain Details
+Expiry Date: 07/08/2018 23:59:48
+Name Server: ns1.google.com.
+Name Server: ns2.google.com.
+Name Server: ns3.google.com.
+Name Server: ns4.google.com.

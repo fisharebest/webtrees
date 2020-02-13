@@ -1,0 +1,36 @@
+[Domain]
+Domain: google.lv
+Status: active
+
+[Holder]
+Type: Legal person
+Name: Google, Inc.
+Email: dns-admin@google.com
+Fax: +1.6502530001
+Phone: +1.6502530000
+Address: 1600 Amphitheatre Parkway, Mountain View, CA, 94043, USA
+RegNr: None
+
+[Tech]
+Type: Natural person
+Email: ccops@markmonitor.com
+Fax: +12083895799
+Phone: +12083895740
+
+[Registrar]
+Type: Legal person
+Name: MarkMonitor Inc.
+Email: ccops@markmonitor.com
+Fax: +12083895771
+Phone: +12083895740
+Address: 3540 East Longwing Lane, Suite 300, Meridian ID, 83646, USA
+RegNr: 82-0513468
+
+[Nservers]
+Nserver: ns1.google.com
+Nserver: ns2.google.com
+Nserver: ns3.google.com
+Nserver: ns4.google.com
+
+[Whois]
+Updated: 2017-11-18T18:12:31.726496+00:00

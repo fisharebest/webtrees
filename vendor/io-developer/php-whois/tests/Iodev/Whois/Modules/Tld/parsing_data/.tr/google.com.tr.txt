@@ -1,0 +1,42 @@
+** Registrant:
+   Google Inc.
+   1600 Amphitheatre Parkway
+   Mountain View CA
+   Out of Turkey,
+     United States of America
+   dns-admin@google.com
+   + 1-650-2530000-
+   + 1-650-2530001-
+
+
+** Administrative Contact:
+NIC Handle		: mi154-metu
+Organization Name	: MarkMonitor, Inc
+Address			: Hidden upon user request
+Phone			: Hidden upon user request
+Fax			: Hidden upon user request
+
+
+** Technical Contact:
+NIC Handle		: btl1-metu
+Organization Name	: Beril Teknoloji Bilişim Yayıncılık Ticaret A.Ş.
+Address			: Hidden upon user request
+Phone			: Hidden upon user request
+Fax			: Hidden upon user request
+
+
+** Billing Contact:
+NIC Handle		: btl1-metu
+Organization Name	: Beril Teknoloji Bilişim Yayıncılık Ticaret A.Ş.
+Address			: Hidden upon user request
+Phone			: Hidden upon user request
+Fax			: Hidden upon user request
+
+
+** Domain Servers:
+ns1.google.com
+ns2.google.com
+ns3.google.com
+ns4.google.com
+
+** Additional Info:

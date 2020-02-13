@@ -1,0 +1,54 @@
+
+*********************************************************************
+* Please note that the following result could be a subgroup of      *
+* the data contained in the database.                               *
+*                                                                   *
+* Additional information can be visualized at:                      *
+* http://web-whois.nic.it                                           *
+* Privacy Information: http://web-whois.nic.it/privacy              *
+*********************************************************************
+
+Domain:             nintendo.it
+Status:             ok
+Created:            2002-03-18 00:00:00
+Last Update:        2018-04-30 20:51:10
+Expire Date:        2018-10-26
+
+Registrant
+  Organization:     Nintendo of Europe GmbH
+
+Admin Contact
+  Name:             Robert Viebahn
+  Organization:     Nintendo of Europe GmbH
+  Address:          Herriotstr. 4
+                    Frankfurt am Main
+                    Frankfurt
+                    60528
+                    HE
+                    DE
+  Created:          2018-04-30 20:51:08
+  Last Update:      2018-04-30 20:51:08
+
+Technical Contacts
+  Name:             NOE IT Infrastructure & Operations
+  Organization:     Nintendo of Europe GmbH
+  Address:          Herriotstr. 4
+                    Frankfurt am Main
+                    Frankfurt
+                    60528
+                    HE
+                    DE
+  Created:          2018-04-30 20:50:25
+  Last Update:      2018-04-30 20:50:25
+
+Registrar
+  Organization:     IP Mirror Pte Ltd
+  Name:             IPMIRROR-REG
+  Web:              http://www.ipmirror.com
+
+Nameservers
+  ns-1655.awsdns-14.co.uk
+  ns-1149.awsdns-15.org
+  ns-708.awsdns-24.net
+  ns-353.awsdns-44.com
+

@@ -1,0 +1,17 @@
+{
+  "domainName": "google.it",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.net",
+    "ns2.google.net",
+    "ns3.google.net",
+    "ns4.google.net"
+  ],
+  "creationDate": "1999-12-10T00:00:00",
+  "expirationDate": "2018-04-21T00:00:00",
+  "states": [
+    "ok"
+  ],
+  "owner": "Google Ireland Holdings",
+  "registrar": "MarkMonitor International Limited"
+}

@@ -1,0 +1,31 @@
+[ JPRS database provides information on network administration. Its use is    ]
+[ restricted to network administration purposes. For further information,     ]
+[ use 'whois -h whois.jprs.jp help'. To suppress Japanese output, add'/e'     ]
+[ at the end of command, e.g. 'whois -h whois.jprs.jp xxx/e'.                 ]
+
+Domain Information:
+[Domain Name]                   SHOP.JP
+
+[Registrant]                    ISHARE .INC
+
+[Name Server]                   ns01.kikakuya.com
+[Name Server]                   ns02.kikakuya.net
+[Name Server]                   ns03.kikakuya.ne.jp
+[Signing Key]
+
+[Created on]                    2001/03/26
+[Expires on]                    2020/03/31
+[Status]                        Active
+[Last Updated]                  2019/04/01 01:12:57 (JST)
+
+Contact Information:
+[Name]                          ISHARE .INC
+[Email]                         jpnic@j5don.com
+[Web Page]
+[Postal code]                   108-0074
+[Postal Address]                4-18-12, Takanawa
+                                Minato-ku, Tokyo
+                                108-0074, Japan
+[Phone]                         -
+[Fax]                           03-6740-1030
+

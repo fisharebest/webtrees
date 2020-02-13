@@ -1,0 +1,7 @@
+% DOTGOV WHOIS Server ready
+No match for "FREE.GOV".
+
+>>> Last update of whois database: 2017-11-18T20:24:16Z <<<
+Please be advised that this whois server only contains information pertaining
+to the .GOV domain. For information for other domains please use the whois
+server at RS.INTERNIC.NET. 

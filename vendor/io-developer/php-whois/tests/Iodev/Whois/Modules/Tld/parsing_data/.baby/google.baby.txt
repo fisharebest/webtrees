@@ -1,0 +1,46 @@
+Domain Name: GOOGLE.BABY
+Registry Domain ID: D98582324-CNIC
+Registrar WHOIS Server: whois.markmonitor.com
+Registrar URL:
+Updated Date: 2019-09-13T10:46:21.0Z
+Creation Date: 2017-09-13T15:25:09.0Z
+Registry Expiry Date: 2020-09-13T23:59:59.0Z
+Registrar: MarkMonitor, Inc (TLDs)
+Registrar IANA ID: 292
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Domain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited
+Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+Registrant Organization: Google LLC
+Registrant State/Province: CA
+Registrant Country: US
+Registrant Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Admin Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Tech Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Name Server: NS3.GOOGLEDOMAINS.COM
+Name Server: NS1.GOOGLEDOMAINS.COM
+Name Server: NS2.GOOGLEDOMAINS.COM
+Name Server: NS4.GOOGLEDOMAINS.COM
+DNSSEC: unsigned
+Billing Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registrar Abuse Contact Email: ccops@markmonitor.com
+Registrar Abuse Contact Phone: +1.2083895740
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2019-11-06T14:11:58.0Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+>>> IMPORTANT INFORMATION ABOUT THE DEPLOYMENT OF RDAP: please visit
+https://www.centralnic.com/support/rdap <<<
+
+The Whois and RDAP services are provided by CentralNic, and contain
+information pertaining to Internet domain names registered by our
+our customers. By using this service you are agreeing (1) not to use any
+information presented here for any purpose other than determining
+ownership of domain names, (2) not to store or reproduce this data in
+any way, (3) not to use any high-volume, automated, electronic processes
+to obtain data from this service. Abuse of this service is monitored and
+actions in contravention of these terms will result in being permanently
+blacklisted. All data is (c) CentralNic Ltd (https://www.centralnic.com)
+
+Access to the Whois and RDAP services is rate limited. For more
+information, visit https://registrar-console.centralnic.com/pub/whois_guidance.

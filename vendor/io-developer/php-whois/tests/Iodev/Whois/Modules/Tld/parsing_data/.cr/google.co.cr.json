@@ -1,0 +1,21 @@
+{
+  "domainName": "google.co.cr",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2002-04-18T18:00:00",
+  "expirationDate": "2018-04-17T00:00:00",
+  "states": [
+    "deletion forbidden",
+    "sponsoring registrar change forbidden",
+    "update forbidden",
+    "domain blocked",
+    "registrant change forbidden"
+  ],
+  "owner": "MarkMonitor Inc.",
+  "registrar": "NIC-REG1"
+}

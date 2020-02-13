@@ -1,0 +1,86 @@
+TERMS OF USE: You are not authorized to access or query our Whois
+database through the use of electronic processes that are high-volume and
+automated.  Whois database is provided by ANTIC as a service to the internet
+community on behalf of ANTIC accredited registrars and resellers.
+
+The data is for information purposes only. ANTIC does not
+guarantee its accuracy. By submitting a Whois query, you agree to abide
+by the following terms of use: You agree that you may use this Data only
+for lawful purposes and that under no circumstances will you use this Data
+to: (1) allow, enable, or otherwise support the transmission of mass
+unsolicited, commercial advertising or solicitations via e-mail, telephone,
+or facsimile; or (2) enable high volume, automated, electronic processes
+that apply to ANTIC members (or their computer systems). The
+compilation, repackaging, dissemination or other use of this Data is prohibited.
+
+Domain Information
+Query: google.cm
+Status: Delegated
+Created: 07 Oct 2009 10:02 WAT
+Modified: 12 Sep 2017 17:03 WAT
+Expires: 07 Oct 2018 10:02 WAT
+Name Servers:
+    ns1.google.com
+    ns2.google.com
+    ns3.google.com
+    ns4.google.com
+
+Registrar Information
+Registrar Name: MarkMonitor Inc.
+Registration URL: http://www.markmonitor.com
+
+
+
+
+Registrant:
+Email Address: dns-admin@google.com
+Phone Number: +1.6506234000
+
+International Name: DNS Admin
+International Organisation: Google Inc.
+International Address:
+	2400 E. Bayshore Pkwy
+	Mountain View, CA 94043
+	US
+
+
+
+Admin Contact:
+Email Address: dns-admin@google.com
+Phone Number: +1.6506234000
+
+International Name: DNS Admin
+International Organisation: Google Inc.
+International Address:
+	2400 E. Bayshore Pkwy
+	Mountain View, CA 94043
+	US
+
+
+
+Technical Contact:
+Email Address: dns-admin@google.com
+Phone Number: +1.6506234000
+
+International Name: DNS Admin
+International Organisation: Google Inc.
+International Address:
+	2400 E. Bayshore Pkwy
+	Mountain View, CA 94043
+	US
+
+
+
+Billing Contact:
+Email Address: ccopsbilling@markmonitor.com
+Phone Number: +1.2083895740
+
+International Name: MarkMonitor Inc.
+International Organisation: MarkMonitor Inc.
+International Address:
+	3540 East Longwing Lane
+	Suite 300
+	Meridian, Idaho 83646
+	US
+
+

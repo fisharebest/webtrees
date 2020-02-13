@@ -1,0 +1,17 @@
+{
+  "domainName": "google.sk",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2003-07-24T00:00:00",
+  "expirationDate": "2018-07-24T00:00:00",
+  "states": [
+    "ok"
+  ],
+  "owner": "FAJN-0002",
+  "registrar": "FAJN-0002"
+}

@@ -1,0 +1,18 @@
+{
+  "domainName": "google.co.ma",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2003-01-29T00:00:00.000Z",
+  "expirationDate": "2018-01-29T00:00:00.000Z",
+  "states": [
+    "ok",
+    "clienttransferprohibited"
+  ],
+  "owner": "Google Inc",
+  "registrar": "GENIOUS COMMUNICATION"
+}

@@ -1,0 +1,17 @@
+{
+  "domainName": "google.la",
+  "whoisServer": "whois.nic.la",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2002-07-18T01:00:00.0Z",
+  "expirationDate": "2018-07-18T23:59:59.0Z",
+  "states": [
+    "clienttransferprohibited"
+  ],
+  "owner": "Google Inc",
+  "registrar": "TLD Registrar Solutions Ltd"
+}

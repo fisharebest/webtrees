@@ -1,0 +1,41 @@
+% This is the .kg ccTLD Whois server
+% Register your own domain at http://www.domain.kg
+% Use @cctld_kg_bot telegram bot for whois service
+
+Domain GOOGLE.KG 
+
+Administrative Contact:
+   PID: 8386-KG
+   Name: Google Inc.
+   Email: ccops@markmonitor.com
+   Address: 1600 Amphitheatre Parkway
+   phone: +1.6502530000
+   fax: +1.6506188571
+
+Technical Contact:
+   PID: 5935-KG
+   Name: Markmonitor
+   Email: ccops@markmonitor.com
+   Address: 3540 East Longwing Lane, Suite 300, Meridian Idaho 83646 USA
+   phone: +12083895740
+   fax: +12083895771
+
+Billing Contact:
+   PID: 5935-KG
+   Name: Markmonitor
+   Email: ccops@markmonitor.com
+   Address: 3540 East Longwing Lane, Suite 300, Meridian Idaho 83646 USA
+   phone: +12083895740
+   fax: +12083895771
+
+Domain support: ISP AsiaInfo (+996 312 964488)
+
+Record created: Tue Feb 10 09:42:42 2004
+Record last updated on:  Mon Apr 19 21:47:14 2010
+Record expires on: Sat Mar 30 23:59:00 2019
+
+Name servers in the listed order:
+
+NS1.GOOGLE.COM 
+NS2.GOOGLE.COM 
+NS4.GOOGLE.COM 

@@ -1,0 +1,3 @@
+Tonic whoisd V1.1
+google ns1.google.com
+google ns2.google.com

@@ -1,0 +1,18 @@
+
+Domain : google.tm
+Status : Client Updt Lock
+Expiry : 2018-01-30
+
+NS 1   : ns1.google.com
+NS 2   : ns2.google.com
+NS 3   : ns3.google.com
+NS 4   : ns4.google.com
+
+Owner Name    : DNS Admin
+Owner OrgName : Google Inc.
+Owner Addr    : 1600 Amphitheatre Parkway
+Owner Addr    : Mountain View
+Owner Addr    : CA
+Owner Addr    : US
+
+

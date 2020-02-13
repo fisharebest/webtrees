@@ -1,0 +1,20 @@
+{
+  "domainName": "google.com.au",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "",
+  "expirationDate": "",
+  "states": [
+    "clientdeleteprohibited",
+    "clientupdateprohibited",
+    "serverdeleteprohibited",
+    "serverupdateprohibited"
+  ],
+  "owner": "Google INC",
+  "registrar": "MarkMonitor Inc."
+}

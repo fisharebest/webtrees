@@ -1,0 +1,17 @@
+{
+  "domainName": "google.co.th",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.net",
+    "ns2.google.net",
+    "ns3.google.net",
+    "ns4.google.net"
+  ],
+  "creationDate": "2004-10-08T00:00:00",
+  "expirationDate": "2018-10-07T00:00:00",
+  "states": [
+    "active"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "T.H.NIC Co., Ltd."
+}

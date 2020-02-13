@@ -1,0 +1,16 @@
+% For more information on Whois status codes, please visit https://icann.org/epp
+% 
+% This WHOIS service is provided by SK-NIC and only contains
+% information pertaining to Internet domain names registered by our
+% our customers. By using this service you are agreeing (1) not to use any
+% information presented here for any purpose other than determining
+% ownership of domain names, (2) not to store or reproduce this data in
+% any way without SK-NIC's approval, (3) not to use any high-volume, automated, electronic processes
+% to obtain data from this service. Abuse of this service is monitored and
+% actions in contravention of these terms will result in being permanently
+% blacklisted.
+% 
+% Access to the whois service is rate limited.
+
+Domain not found.
+

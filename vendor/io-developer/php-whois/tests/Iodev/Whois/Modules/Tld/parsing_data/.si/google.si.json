@@ -1,0 +1,17 @@
+{
+  "domainName": "google.si",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2005-04-04T00:00:00",
+  "expirationDate": "2018-07-19T00:00:00",
+  "states": [
+    "client_update_prohibited"
+  ],
+  "owner": "G561850",
+  "registrar": "MarkMonitor"
+}

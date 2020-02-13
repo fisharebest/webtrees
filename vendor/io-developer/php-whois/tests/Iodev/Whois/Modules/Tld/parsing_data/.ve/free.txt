@@ -1,0 +1,10 @@
+
+Servidor Whois del Centro de Información de Red de Venezuela (NIC.VE)
+
+Este servidor contiene información autoritativa exclusivamente de dominios .VE
+Cualquier consulta sobre este servicio, puede hacerla al correo electrónico whois@nic.ve
+
+No match for "free.ve".
+
+NIC-Venezuela - CONATEL
+http://www.nic.ve

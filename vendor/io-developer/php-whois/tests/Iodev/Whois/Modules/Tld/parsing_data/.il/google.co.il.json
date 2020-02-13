@@ -1,0 +1,17 @@
+{
+  "domainName": "google.co.il",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "",
+  "expirationDate": "2018-06-05T00:00:00",
+  "states": [
+    "transfer locked"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "MarkMonitor Inc."
+}

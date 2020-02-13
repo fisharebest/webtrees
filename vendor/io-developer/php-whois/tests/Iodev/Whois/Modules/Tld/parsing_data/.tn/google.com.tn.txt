@@ -1,0 +1,72 @@
+This is JWhoisServer serving ccTLD tn;ØªÙˆÙ†Ø³
+Java Whois Server 0.4.1.3    (c) 2006 - 2015 Klaus Zerwes zero-sys.net
+All rights reserved.
+Copyright "Tunisian Internet Agency - http://whois.tn"
+
+Domain:.............google.com.tn
+Registrar:..........ELB
+Activation:.........2016-08-30 13:54:12
+Status:.............ACTIVE
+Contact Type:.......owner
+Last Name:..........Google Inc.
+First Name:.........
+Address:............1600 Amphitheatre Parkway, Mountain View, CA 94043 US
+Tel:................0016502530000
+Fax:................0016502530001
+e-mail:.............dns-admin@google.com
+Address 2:..........
+State/Province:.....
+Zip Code:...........
+City:...............
+County:.............
+Name Server (DB):...ns4.google.com.
+Name Server (DB):...ns1.google.com.
+Name Server (DB):...ns3.google.com.
+Name Server (DB):...ns2.google.com.
+
+----------------------------------------
+
+Domain:.............google.com.tn
+Registrar:..........ELB
+Activation:.........2016-08-30 13:54:12
+Status:.............ACTIVE
+Contact Type:.......administrative
+Last Name:..........Abu Ghazaleh Intellectual Property
+First Name:.........
+Address:............Appt. B. 3.2, 7 Rue Chott Errommen, Montplaisir, Tunis
+Tel:................71 90 3141
+Fax:................71 90 9426
+e-mail:.............tunisia@agip.com
+Address 2:..........
+State/Province:.....
+Zip Code:...........
+City:...............
+County:.............
+Name Server (DB):...ns4.google.com.
+Name Server (DB):...ns1.google.com.
+Name Server (DB):...ns3.google.com.
+Name Server (DB):...ns2.google.com.
+
+----------------------------------------
+
+Domain:.............google.com.tn
+Registrar:..........ELB
+Activation:.........2016-08-30 13:54:12
+Status:.............ACTIVE
+Contact Type:.......technical
+Last Name:..........MarkMonitor Inc.
+First Name:.........
+Address:............3540 East Longwing Lane, Suite 300, Meridian, Idaho 83646
+Tel:................0012083895740
+Fax:................0012083895771
+e-mail:.............ccops@markmonitor.com
+Address 2:..........
+State/Province:.....
+Zip Code:...........
+City:...............
+County:.............
+Name Server (DB):...ns4.google.com.
+Name Server (DB):...ns1.google.com.
+Name Server (DB):...ns3.google.com.
+Name Server (DB):...ns2.google.com.
+

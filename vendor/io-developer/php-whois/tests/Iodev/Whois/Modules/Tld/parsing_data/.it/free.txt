@@ -1,0 +1,2 @@
+Domain:             free.it
+Status:             AVAILABLE

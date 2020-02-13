@@ -1,0 +1,23 @@
+% Restricted rights.
+%
+% Terms and Conditions of Use
+%
+% The above data may only be used within the scope of technical or
+% administrative necessities of Internet operation or to remedy legal
+% problems.
+% The use for other purposes, in particular for advertising, is not permitted.
+%
+% The DENIC whois service on port 43 doesn't disclose any information concerning
+% the domain holder, general request and abuse contact.
+% This information can be obtained through use of our web-based whois service
+% available at the DENIC website:
+% http://www.denic.de/en/domains/whois-service/web-whois.html
+%
+%
+
+Domain: fäw.de
+Domain-Ace: xn--fw-via.de
+Nserver: ns1.evanzo.com
+Nserver: ns2.evanzo.com
+Status: connect
+Changed: 2012-11-14T11:44:02+01:00

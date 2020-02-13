@@ -1,0 +1,7 @@
+Domain name: google.md
+Created: 2006-05-02
+Expiration date: 2018-05-02
+Registrant: Google Inc.
+Email: ccops@markmonitor.com
+Name server: ns1.google.com  216.239.32.10
+Name server: ns2.google.com  216.239.34.10

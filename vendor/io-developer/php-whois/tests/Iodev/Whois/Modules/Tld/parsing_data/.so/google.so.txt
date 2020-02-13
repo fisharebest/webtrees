@@ -1,0 +1,63 @@
+Whois Results for "google.so".
+
+Domain Name: google.so
+Creation Date: 2011-01-24T02:22:24.0Z
+Last Updated On: 2017-01-25T00:00:20.0Z
+Expiration Date: 2018-01-24T23:59:59.0Z
+Sponsoring Registrar: MarkMonitor Inc.
+Status: clientTransferProhibited
+Status: clientDeleteProhibited
+Registry Registrant ID: mm-google
+Registrant Internationalized Name: DNS Admin
+Registrant Internationalized Organization: Google Inc.
+Registrant Internationalized Street: 1600 Amphitheatre Parkway
+Registrant Internationalized City: Mountain View
+Registrant Internationalized State: CA
+Registrant Internationalized Postal Code: 94043
+Registrant Internationalized Country: US
+Registrant Voice Number: +1.6502530000 
+Registrant Fax Number: +1.6502530001 
+Registrant Email: dns-admin@google.com
+Registry Admin ID: mm-google
+Admin Internationalized Name: DNS Admin
+Admin Internationalized Organization: Google Inc.
+Admin Internationalized Street: 1600 Amphitheatre Parkway
+Admin Internationalized City: Mountain View
+Admin Internationalized State: CA
+Admin Internationalized Postal Code: 94043
+Admin Internationalized Country: US
+Admin Voice Number: +1.6502530000 
+Admin Fax Number: +1.6502530001 
+Admin Email: dns-admin@google.com
+Registry Billing ID: so-mm-billing
+Billing Internationalized Name: Domain Administrator
+Billing Internationalized Organization: MarkMonitor Inc.
+Billing Internationalized Street: 3540 East Longwing Lane
+Billing Internationalized Street: Suite 300
+Billing Internationalized City: Meridian
+Billing Internationalized State: ID
+Billing Internationalized Postal Code: 83646
+Billing Internationalized Country: US
+Billing Voice Number: +1.2083895740 
+Billing Fax Number: +1.2083895771 
+Billing Email: ccopsbilling@markmonitor.com
+Registry Tech ID: mm-google
+Tech Internationalized Name: DNS Admin
+Tech Internationalized Organization: Google Inc.
+Tech Internationalized Street: 1600 Amphitheatre Parkway
+Tech Internationalized City: Mountain View
+Tech Internationalized State: CA
+Tech Internationalized Postal Code: 94043
+Tech Internationalized Country: US
+Tech Voice Number: +1.6502530000 
+Tech Fax Number: +1.6502530001 
+Tech Email: dns-admin@google.com
+Name Server: ns1.google.com
+Name Server: ns2.google.com
+Name Server: ns3.google.com
+Name Server: ns4.google.com
+
+Access to WHOIS information is provided to assist persons in determining 
+the contents of a domain name registration record in the registry database.
+The data in this record is provided for informational purposes only without
+any accuracy guarantee.

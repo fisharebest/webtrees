@@ -1,0 +1,19 @@
+{
+  "domainName": "google.com.pe",
+  "whoisServer": "nic.pe",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "",
+  "expirationDate": "",
+  "states": [
+    "clienttransferprohibited",
+    "clientdeleteprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "MarkMonitor Inc."
+}

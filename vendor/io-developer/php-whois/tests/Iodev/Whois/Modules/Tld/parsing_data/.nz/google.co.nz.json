@@ -1,0 +1,17 @@
+{
+  "domainName": "google.co.nz",
+  "whoisServer": "",
+  "nameServers": [
+    "ns2.google.com",
+    "ns4.google.com",
+    "ns1.google.com",
+    "ns3.google.com"
+  ],
+  "creationDate": "",
+  "expirationDate": "",
+  "states": [
+    "200 active"
+  ],
+  "owner": "",
+  "registrar": "MarkMonitor"
+}

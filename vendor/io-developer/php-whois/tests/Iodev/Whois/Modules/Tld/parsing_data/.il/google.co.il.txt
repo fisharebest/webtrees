@@ -1,0 +1,74 @@
+
+% The data in the WHOIS database of the .il registry is provided
+% by ISOC-IL for information purposes, and to assist persons in 
+% obtaining information about or related to a domain name 
+% registration record. ISOC-IL does not guarantee its accuracy.
+% By submitting a WHOIS query, you agree that you will use this
+% Data only for lawful purposes and that, under no circumstances
+% will you use this Data to: (1) allow, enable, or otherwise 
+% support the transmission of mass unsolicited, commercial 
+% advertising or solicitations via e-mail (spam); 
+% or  (2) enable high volume, automated, electronic processes that 
+% apply to ISOC-IL (or its systems).
+% ISOC-IL reserves the right to modify these terms at any time.
+% By submitting this query, you agree to abide by this policy.
+ 
+query:        google.co.il
+
+reg-name:     google
+domain:       google.co.il
+
+descr:        Google Inc.
+descr:        1600 Amphitheatre Parkway
+descr:        Mountain View, CA
+descr:        94043
+descr:        USA
+phone:        16503300100
+fax-no:       16506188571
+e-mail:       dns-admin AT google.com
+admin-c:      DT-DA20915-IL
+tech-c:       DT-DA19919-IL
+zone-c:       DT-DA19919-IL
+nserver:      ns1.google.com 
+nserver:      ns2.google.com 
+nserver:      ns3.google.com 
+nserver:      ns4.google.com 
+validity:     05-06-2018
+DNSSEC:       unsigned
+status:       Transfer Locked
+changed:      registrar AT ns.il 19990605 (Assigned)
+changed:      domain-registrar AT isoc.org.il 20020926 (Changed)
+changed:      domain-registrar AT isoc.org.il 20050706 (Changed)
+changed:      domain-registrar AT isoc.org.il 20070118 (Changed)
+changed:      domain-registrar AT isoc.org.il 20170517 (Transferred)
+changed:      domain-registrar AT isoc.org.il 20170517 (Changed)
+
+person:       Domain admin
+address:      Google Inc.
+address:      1600 Amphitheatre Parkway
+address:      Mountain View CA
+address:      94043
+address:      USA
+phone:        +1 650 3300100
+fax-no:       +1 650 6188571
+e-mail:       ccops AT markmonitor.com
+nic-hdl:      DT-DA20915-IL
+changed:      Managing Registrar 20170329
+
+person:       Domain Admin
+address:      MarkMonitor Inc.
+address:      3540 E Longwing Lane Suite 300
+address:      Meridian ID
+address:      83646
+address:      USA
+phone:        +1 208 3895740
+fax-no:       +1 208 3895771
+e-mail:       ccops AT markmonitor.com
+nic-hdl:      DT-DA19919-IL
+changed:      Managing Registrar 20161005
+changed:      Managing Registrar 20170816
+
+registrar name: Domain The Net Technologies Ltd
+registrar info: http://www.domainthenet.com
+
+% Rights to the data above are restricted by copyright.

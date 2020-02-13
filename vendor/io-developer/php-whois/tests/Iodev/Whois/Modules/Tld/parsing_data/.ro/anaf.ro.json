@@ -1,0 +1,15 @@
+{
+  "domainName": "anaf.ro",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.mfinante.ro",
+    "ns2.mfinante.ro"
+  ],
+  "creationDate": "2008-04-16T00:00:00",
+  "expirationDate": "2028-07-13T00:00:00",
+  "states": [
+    "ok"
+  ],
+  "owner": "",
+  "registrar": "ICI - Registrar"
+}

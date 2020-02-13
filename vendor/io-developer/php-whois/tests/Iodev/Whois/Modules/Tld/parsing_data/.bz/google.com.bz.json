@@ -1,0 +1,19 @@
+{
+  "domainName": "google.com.bz",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2003-03-05T05:00:00Z",
+  "expirationDate": "2018-03-05T00:00:00Z",
+  "states": [
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "",
+  "registrar": "MarkMonitor Inc."
+}

@@ -1,0 +1,17 @@
+{
+  "domainName": "google.com.ng",
+  "whoisServer": "whois.nic.net.ng",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2009-05-13T14:34:19.587Z",
+  "expirationDate": "2018-06-13T14:34:24.110Z",
+  "states": [
+    "ok"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "markmonitor"
+}

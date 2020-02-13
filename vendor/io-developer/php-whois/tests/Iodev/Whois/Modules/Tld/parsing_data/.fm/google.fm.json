@@ -1,0 +1,17 @@
+{
+  "domainName": "google.fm",
+  "whoisServer": "whois.markmonitor.com",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com"
+  ],
+  "creationDate": "2000-09-05T23:59:59.0Z",
+  "expirationDate": "2018-09-04T23:59:59.0Z",
+  "states": [
+    "clienttransferprohibited",
+    "clientdeleteprohibited"
+  ],
+  "owner": "Google, Inc.",
+  "registrar": "MarkMonitor, Inc."
+}

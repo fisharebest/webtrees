@@ -1,0 +1,20 @@
+{
+  "domainName": "google.mu",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "2000-12-20T13:00:00.000Z",
+  "expirationDate": "2018-12-19T13:00:00.000Z",
+  "states": [
+    "clienttransferprohibited",
+    "clientupdateprohibited",
+    "ok",
+    "clientdeleteprohibited"
+  ],
+  "owner": "Google Inc.",
+  "registrar": "MarkMonitor"
+}

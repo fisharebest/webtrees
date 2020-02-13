@@ -1,0 +1,33 @@
+% SaudiNIC Whois server.
+% Rights restricted by copyright.
+% http://nic.sa/en/view/whois-cmd-copyright
+
+Domain Name: google.com.sa
+
+ Registrant:
+ Google Inc. قوقل انك
+ Address: 1600 Amphitheatre Parkway 
+ 94043 Mountain View
+ United States
+
+ Administrative Contact:
+  Maan Al Khen (59ed8d4bde3df-sa)
+  Address: Riyadh Olia 
+  11423 Riyadh
+  Saudi Arabia
+
+ Technical Contact:
+  Domain Administrator (59ed8d4bdff7b-sa)
+  Address: Riyadh Olia 
+  83646 Idaho
+  United States
+
+ Name Servers:
+  ns4.google.net
+  ns1.google.net
+  ns3.google.net
+  ns2.google.net
+
+Created on: 2004-01-11
+Last Updated on: 2017-10-23
+

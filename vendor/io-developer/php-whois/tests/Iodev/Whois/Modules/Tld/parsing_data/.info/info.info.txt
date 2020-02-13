@@ -1,0 +1,81 @@
+Domain Name: INFO.INFO
+Registry Domain ID: D1050774-LRMS
+Registrar WHOIS Server:
+Registrar URL:
+Updated Date: 2017-10-08T22:24:48Z
+Creation Date: 2001-10-08T16:33:16Z
+Registry Expiry Date: 2018-10-08T16:33:16Z
+Registrar Registration Expiration Date:
+Registrar: Afilias
+Registrar IANA ID: 700023
+Registrar Abuse Contact Email:
+Registrar Abuse Contact Phone:
+Reseller:
+Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited
+Domain Status: autoRenewPeriod https://icann.org/epp#autoRenewPeriod
+Registry Registrant ID: C2283145-LRMS
+Registrant Name: Afilias
+Registrant Organization: Afilias
+Registrant Street: 4th Floor, International House
+Registrant Street: 3 Harbourmaster Place
+Registrant Street: IFSC
+Registrant City: Dublin
+Registrant State/Province:
+Registrant Postal Code: D01 K8F1
+Registrant Country: IE
+Registrant Phone: +353.18541100
+Registrant Phone Ext:
+Registrant Fax: +353.17918569
+Registrant Fax Ext:
+Registrant Email: domainadmin@afilias.info
+Registry Admin ID: C11926586-LRMS
+Admin Name: Duplicate Registrar ID
+Admin Organization: Afilias plc
+Admin Street: duplicate Registrar ID
+Admin City: Test City
+Admin State/Province:
+Admin Postal Code: M4M4M4
+Admin Country: ME
+Admin Phone: +1.4166463306
+Admin Phone Ext:
+Admin Fax:
+Admin Fax Ext:
+Admin Email: techsupport@ca.afilias.info
+Registry Tech ID: C11926586-LRMS
+Tech Name: Duplicate Registrar ID
+Tech Organization: Afilias plc
+Tech Street: duplicate Registrar ID
+Tech City: Test City
+Tech State/Province:
+Tech Postal Code: M4M4M4
+Tech Country: ME
+Tech Phone: +1.4166463306
+Tech Phone Ext:
+Tech Fax:
+Tech Fax Ext:
+Tech Email: techsupport@ca.afilias.info
+Registry Billing ID: C11926586-LRMS
+Billing Name: Duplicate Registrar ID
+Billing Organization: Afilias plc
+Billing Street: duplicate Registrar ID
+Billing City: Test City
+Billing State/Province:
+Billing Postal Code: M4M4M4
+Billing Country: ME
+Billing Phone: +1.4166463306
+Billing Phone Ext:
+Billing Fax:
+Billing Fax Ext:
+Billing Email: techsupport@ca.afilias.info
+Name Server: NS1.AMS1.AFILIAS-NST.INFO
+Name Server: NS1.MIA1.AFILIAS-NST.INFO
+Name Server: NS1.SEA1.AFILIAS-NST.INFO
+Name Server: NS1.YYZ1.AFILIAS-NST.INFO
+Name Server: NS1.HKG1.AFILIAS-NST.INFO
+DNSSEC: signedDelegation
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2017-11-05T18:23:35Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+Access to AFILIAS WHOIS information is provided to assist persons in determining the contents of a domain name registration record in the Afilias registry database. The data in this record is provided by Afilias Limited for informational purposes only, and Afilias does not guarantee its accuracy.  This service is intended only for query-based access. You agree that you will use this data only for lawful purposes and that, under no circumstances will you use this data to(a) allow, enable, or otherwise support the transmission by e-mail, telephone, or facsimile of mass unsolicited, commercial advertising or solicitations to entities other than the data recipient's own existing customers; or (b) enable high volume, automated, electronic processes that send queries or data to the systems of Registry Operator, a Registrar, or Afilias except as reasonably necessary to register domain names or modify existing registrations. All rights reserved. Afilias reserves the right to modify these terms at any time. By submitting this query, you agree to abide by this policy.

@@ -1,0 +1,19 @@
+{
+  "domainName": "google.news",
+  "whoisServer": "whois.markmonitor.com",
+  "nameServers": [
+    "ns4.googledomains.com",
+    "ns2.googledomains.com",
+    "ns1.googledomains.com",
+    "ns3.googledomains.com"
+  ],
+  "creationDate": "2015-07-06T08:21:49",
+  "expirationDate": "2020-07-06T08:21:49",
+  "states": [
+    "clientupdateprohibited",
+    "clienttransferprohibited",
+    "clientdeleteprohibited"
+  ],
+  "owner": "Google LLC",
+  "registrar": "MarkMonitor Inc."
+}

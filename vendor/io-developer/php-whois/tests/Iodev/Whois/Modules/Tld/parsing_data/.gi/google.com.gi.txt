@@ -1,0 +1,64 @@
+Domain Name: GOOGLE.COM.GI
+Registry Domain ID: D105800000000046416-AGRS
+Registrar WHOIS Server:
+Registrar URL:
+Updated Date: 2017-09-09T00:24:50Z
+Creation Date: 2003-03-21T05:00:00Z
+Registry Expiry Date: 2018-03-21T20:06:52Z
+Registrar Registration Expiration Date:
+Registrar: GibNet Registrar
+Registrar IANA ID: 800072
+Registrar Abuse Contact Email:
+Registrar Abuse Contact Phone:
+Reseller:
+Domain Status: ok https://icann.org/epp#ok
+Registry Registrant ID: C19743880-AGRS
+Registrant Name: Google Inc.
+Registrant Organization: Google Inc.
+Registrant Street: 1600 Amphitheatre Parkway
+Registrant City: Mountain View
+Registrant State/Province: California
+Registrant Postal Code: 94043
+Registrant Country: US
+Registrant Phone: +1.6502530000
+Registrant Phone Ext:
+Registrant Fax: +1.6502530001
+Registrant Fax Ext:
+Registrant Email: ccops@markmonitor.com
+Registry Admin ID: C19743882-AGRS
+Admin Name: Google Inc.
+Admin Organization: Google Inc.
+Admin Street: 1600 Amphitheatre Parkway
+Admin City: Mountain View
+Admin State/Province: California
+Admin Postal Code: 94043
+Admin Country: US
+Admin Phone: +1.6502530000
+Admin Phone Ext:
+Admin Fax: +1.6502530001
+Admin Fax Ext:
+Admin Email: ccops@markmonitor.com
+Registry Tech ID: C19692820-AGRS
+Tech Name: DNS Admin
+Tech Organization: Google Inc.
+Tech Street: 1600 Amphitheatre Parkway Mountain View
+Tech City: NA
+Tech State/Province: CA
+Tech Postal Code: 94043
+Tech Country: US
+Tech Phone: +1.6502530000
+Tech Phone Ext:
+Tech Fax: +1.6502530001
+Tech Fax Ext:
+Tech Email: dns-admin@google.com
+Name Server: NS1.GOOGLE.COM
+Name Server: NS2.GOOGLE.COM
+Name Server: NS4.GOOGLE.COM
+Name Server: NS3.GOOGLE.COM
+DNSSEC: unsigned
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2017-11-18T21:13:08Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+Access to WHOIS information is provided to assist persons in determining the contents of a domain name registration record in the registry database. The data in this record is provided by The Registry Operator for informational purposes only, and accuracy is not guaranteed.  This service is intended only for query-based access. You agree that you will use this data only for lawful purposes and that, under no circumstances will you use this data to: (a) allow, enable, or otherwise support the transmission by e-mail, telephone, or facsimile of mass unsolicited, commercial advertising or solicitations to entities other than the data recipient's own existing customers; or (b) enable high volume, automated, electronic processes that send queries or data to the systems of Registry Operator, a Registrar, or Afilias except as reasonably necessary to register domain names or modify existing registrations. All rights reserved. Registry Operator reserves the right to modify these terms at any time. By submitting this query, you agree to abide by this policy.

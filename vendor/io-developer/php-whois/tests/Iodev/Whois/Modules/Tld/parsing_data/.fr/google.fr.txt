@@ -1,0 +1,108 @@
+%%
+%% This is the AFNIC Whois server.
+%%
+%% complete date format : DD/MM/YYYY
+%% short date format    : DD/MM
+%% version              : FRNIC-2.5
+%%
+%% Rights restricted by copyright.
+%% See https://www.afnic.fr/en/products-and-services/services/whois/whois-special-notice/
+%%
+%% Use '-h' option to obtain more information about this service.
+%%
+%% [178.141.108.218 REQUEST] >> -V Md5.2 google.fr
+%%
+%% RL Net [##########] - RL IP [#########.]
+%%
+
+domain:      google.fr
+status:      ACTIVE
+hold:        NO
+holder-c:    GIH6-FRNIC
+admin-c:     GIH5-FRNIC
+tech-c:      CP4370-FRNIC
+zone-c:      NFC1-FRNIC
+nsl-id:      NSL4386-FRNIC
+registrar:   MARKMONITOR Inc.
+Expiry Date: 30/12/2017
+created:     27/07/2000
+last-update: 30/12/2016
+source:      FRNIC
+
+ns-list:     NSL4386-FRNIC
+nserver:     ns1.google.com
+nserver:     ns2.google.com
+nserver:     ns3.google.com
+nserver:     ns4.google.com
+source:      FRNIC
+
+registrar:   MARKMONITOR Inc.
+type:        Isp Option 1
+address:     3540 East Longwing Lane
+address:     
+address:     ID 83646 MERIDIAN
+country:     US
+phone:       +1 208 389 5740
+fax-no:      +1 208 389 5771
+e-mail:      registry.admin@markmonitor.com
+website:     http://www.markmonitor.com
+anonymous:   NO
+registered:  10/01/2002
+source:      FRNIC
+
+nic-hdl:     GIH6-FRNIC
+type:        ORGANIZATION
+contact:     Google Ireland Holdings
+address:     70 Sir John Rogersons Quay
+address:     2 Dublin
+country:     IE
+phone:       +353 14361000
+e-mail:      dns-admin@google.com
+registrar:   MARKMONITOR Inc.
+changed:     20/03/2015 nic@nic.fr
+anonymous:   NO
+obsoleted:   NO
+eligstatus:  ok
+eligsource:  REGISTRAR
+eligdate:    30/12/2011 18:15:32
+reachmedia:  email
+reachstatus: ok
+reachsource: REGISTRAR
+reachdate:   20/03/2015 22:13:41
+source:      FRNIC
+
+nic-hdl:     GIH5-FRNIC
+type:        ORGANIZATION
+contact:     Google Ireland Holdings
+address:     70 Sir John Rogersons Quay
+address:     2 Dublin
+country:     IE
+phone:       +353 14361000
+e-mail:      dns-admin@google.com
+registrar:   MARKMONITOR Inc.
+changed:     06/12/2011 nic@nic.fr
+anonymous:   NO
+obsoleted:   NO
+reachmedia:  email
+reachstatus: ok
+reachsource: REGISTRAR
+reachdate:   06/12/2011 10:28:50
+source:      FRNIC
+
+nic-hdl:     CP4370-FRNIC
+type:        PERSON
+contact:     Ccops Provisioning
+address:     MarkMonitor
+address:     10400 Overland Rd.
+address:     PMB 155
+address:     83709 Boise
+country:     US
+phone:       +1 2083895740
+fax-no:      +1 2083895771
+e-mail:      ccops@markmonitor.com
+registrar:   MARKMONITOR Inc.
+changed:     14/06/2011 nic@nic.fr
+anonymous:   NO
+obsoleted:   NO
+source:      FRNIC
+

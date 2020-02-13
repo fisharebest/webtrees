@@ -1,0 +1,24 @@
+  Domain Name: GOOGLE.WS
+  Registry Domain ID: D865CD29234E835CE040010AAB015FFF
+  Registrar WHOIS Server: whois.markmonitor.com
+  Registrar URL: http://www.markmonitor.com/whois.asp
+  Updated Date: 2017-01-31
+  Creation Date: 2002-03-03
+  Registrar Registration Expiration Date: 2018-03-03
+  Registrar: MarkMonitor Inc.
+  Registrar IANA ID: 292
+  Registrar Abuse Contact Email: ccops@markmonitor.com
+  Registrar Abuse Contact Phone: 2083895740
+  Domain Status: clientTransferProhibited
+  Domain Status: clientDeleteProhibited
+  Domain Status: clientUpdateProhibited
+  Name Server: ns1.google.com
+  Name Server: ns2.google.com
+  Name Server: ns3.google.com
+  Name Server: ns4.google.com
+  DNSSEC: unsigned
+  URL of the ICANN WHOIS Data Problem Reporting System: http://wdprs.internic.net/
+>>> Last update of WHOIS database: 2017-11-18 <<<
+
+
+

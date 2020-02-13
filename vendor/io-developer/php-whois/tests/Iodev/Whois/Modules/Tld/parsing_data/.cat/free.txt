@@ -1,0 +1,30 @@
+The queried object does not exist: no matching objects found
+>>> Last update of Whois database: 2017-11-18T21:12:43.544Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+Terms and Conditions of Use
+
+The data in this record is provided by puntCAT for informational
+purposes only. puntCAT does not guarantee its accuracy and cannot,
+under any circumstances, be held liable in case the stored information would
+prove to be wrong, incomplete or not accurate in any sense.
+
+All the domain data that is visible in the Whois service is protected by
+law. It is not permitted to use it for any purpose other than technical or
+administrative requirements associated with the operation of the Internet.
+It is explicitly forbidden to extract, copy and/or use or re-utilise in any
+form and by any means (electronically or not) the whole or a quantitatively
+or qualitatively substantial part of the contents of the Whois database
+without prior and explicit written permission by puntCAT It is
+prohibited, in particular, to use it for transmission of unsolicited and/or
+commercial and/or advertising by phone, fax, e-mail or for any similar
+purposes.
+
+By maintaining the connection you assure that you have a legitimate interest
+in the data and that you will only use it for the stated purposes. You are
+aware that puntCAT maintains the right to initiate legal
+proceedings against you in the event of any breach of this assurance and to
+bar you from using its Whois service.
+
+End of Whois record.

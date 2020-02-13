@@ -73,11 +73,13 @@ class ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99
         ),
         'I' => 
         array (
+            'Iodev\\' => 6,
             'Intervention\\Image\\' => 19,
             'Illuminate\\Support\\' => 19,
             'Illuminate\\Database\\' => 20,
             'Illuminate\\Contracts\\' => 21,
             'Illuminate\\Container\\' => 21,
+            'IPLib\\' => 6,
         ),
         'H' => 
         array (
@@ -235,6 +237,10 @@ class ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99
         array (
             0 => __DIR__ . '/..' . '/league/commonmark/src',
         ),
+        'Iodev\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/io-developer/php-whois/src/Iodev',
+        ),
         'Intervention\\Image\\' => 
         array (
             0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
@@ -254,6 +260,10 @@ class ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99
         'Illuminate\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/container',
+        ),
+        'IPLib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mlocati/ip-lib/src',
         ),
         'Http\\Message\\' => 
         array (

@@ -1,0 +1,15 @@
+{
+  "domainName": "ati.tn",
+  "whoisServer": "",
+  "nameServers": [
+    "ns4.ati.tn",
+    "ns6.ati.tn"
+  ],
+  "creationDate": "1998-01-07T00:00:00+0100",
+  "expirationDate": "",
+  "states": [
+    "active"
+  ],
+  "owner": "ATI",
+  "registrar": "FSI-ATI"
+}

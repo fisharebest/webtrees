@@ -1,0 +1,17 @@
+{
+  "domainName": "google.co.uk",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "creationDate": "1999-02-14T00:00:00",
+  "expirationDate": "2018-02-14T00:00:00",
+  "states": [
+    "registered until expiry date."
+  ],
+  "owner": "Google Inc.",
+  "registrar": "Markmonitor Inc. t/a MarkMonitor Inc. [Tag = MARKMONITOR]"
+}

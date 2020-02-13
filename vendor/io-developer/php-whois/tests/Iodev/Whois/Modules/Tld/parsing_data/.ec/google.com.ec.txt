@@ -1,0 +1,91 @@
+
+
+Los datos detallados a continuación por NIC.EC es información pública cuyo propósito es
+únicamente informativo que sirve para la obtención de la información acerca de o
+relacionado con los registros de un Nombre de Dominio. Los datos se muestran de acuerdo
+a los datos de NIC.EC en la última actualización de su base de datos. Al realizar una
+búsqueda de WHOIS de un dominio, usted declara y acepta que los datos serán utilizados
+solo para fines legales y que no utilizara los datos para envíos masivos no solicitados
+de correo electrónico o para publicidad o fines comerciales no solicitados.
+
+
+Domain Information
+Query: google.com.ec
+Status: Delegated
+Created: 11 Mar 2003
+Modified: 07 Feb 2017
+Expires: 11 Mar 2018
+Name Servers:
+    ns1.google.com
+    ns2.google.com
+    ns3.google.com
+    ns4.google.com
+
+Registrar Information
+Registrar Name: MarkMonitor Inc.
+Address: 3540 East Longwing Lane
+Suite 300
+Meridian, Idaho 83646
+Country: US
+Phone: 1.2083895740
+
+
+
+
+Registrant:
+Email Address: dns-admin@google.com
+Phone Number: +1.6502530000
+Fax Number: +1.6502530001
+
+Local Name: DNS Admin
+Local Organisation: Google Inc.
+Local Address:
+	1600 Amphitheatre Parkway
+	Mountain View, CA 94043
+	US
+
+
+
+Admin Contact:
+Email Address: dns-admin@google.com
+Phone Number: +1.6502530000
+Fax Number: +1.6502530001
+
+Local Name: DNS Admin
+Local Organisation: Google Inc.
+Local Address:
+	1600 Amphitheatre Parkway
+	Mountain View, CA 94043
+	US
+
+
+
+Technical Contact:
+Email Address: dns-admin@google.com
+Phone Number: +1.6502530000
+Fax Number: +1.6502530001
+
+Local Name: DNS Admin
+Local Organisation: Google Inc.
+Local Address:
+	1600 Amphitheatre Parkway
+	Mountain View, CA 94043
+	US
+
+
+
+Billing Contact:
+Email Address: ccopsbilling@markmonitor.com
+Phone Number: +1.2083895740
+Fax Number: +1.2083895771
+
+Local Name: CCOPS Billing
+Local Organisation: MarkMonitor Inc.
+Local Address:
+	3540 East Longwing Lane
+	Suite 300
+	Meridian, Idaho 83646
+	US
+
+
+

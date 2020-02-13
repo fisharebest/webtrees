@@ -1,0 +1,57 @@
+
+============================================================================
+============================================================================
+Whois du Registre SN
+Les informations fournies par ce service ne sont qu'a titre informatif et 
+NIC SENEGAL n'en garantit pas l'exactitude. Tous droit reservs
+============================================================================
+============================================================================
+
+Domain ID:1195
+Nom de domaine:GOOGLE
+Extension:.SN
+Date de creation:22-Mar-2003 00:00:00 UTC
+Derniere modification:16-Dec-2016 11:20:27 UTC
+Date d'expiration:31-Dec-2017 00:00:00 UTC
+Registrar:Markmonitor
+Etat:actif
+============================================================================
+
+Cod Registrant:S01200
+Nom Registrant:Google Inc
+Adresse Registrant:1600 Amphitheatre Parkway
+Ville Registrant:Mountain View,CA
+Pays Registrant:USA
+Telephone Registrant:+16502530000
+Fax Registrant:+16506188571
+Courriel Registrant.:dns-admin@google.com
+============================================================================
+
+ID Contact Admin:C03058
+Nom Contact Admin:Dns Admin
+Prenoms Contact Admin:Dns Admin
+Telephone Contact Admin:+12083895740
+Fax Contact Admin:+16506188571
+Courriel Contact Admin.:dns-admin@google.com
+============================================================================
+
+ID Contact Tech1:C03058
+Nom Contact Tech1:Dns Admin
+Prenoms Contact Tech1:Dns Admin
+Telephone Contact Tech1:+12083895740
+Fax Contact Tech1:+16506188571
+Courriel Contact Tech1:dns-admin@google.com
+
+ID Contact Tech2:C03058
+Nom Contact Tech2:Dns Admin
+Prenoms Contact Tech2:Dns Admin
+Telephone Contact Tech2:+12083895740
+Fax Contact Tech2:+16506188571
+Courriel Contact Tech2:dns-admin@google.com
+============================================================================
+
+Serveur1 :ns1.google.com
+Serveur2 :ns2.google.com
+Serveur3 :ns3.google.com
+Serveur4 :
+
