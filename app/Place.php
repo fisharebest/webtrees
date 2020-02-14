@@ -142,6 +142,14 @@ class Place
     }
 
     /**
+     * @return Tree
+     */
+    public function tree(): Tree
+    {
+        return $this->tree;
+    }
+
+    /**
      * Extract the locality (first parts) of a place name.
      *
      * @param int $n

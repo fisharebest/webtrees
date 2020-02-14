@@ -125,6 +125,28 @@ class SearchService
     }
 
     /**
+     * @param Place $place
+     *
+     * @return Collection<Family>
+     */
+    public function searchFamiliesInPlace(Place $place): Collection
+    {
+        return DB::table('families')
+            ->join('placelinks', static function (JoinClause $query) {
+                $query
+                    ->on('families.f_file', '=', 'placelinks.pl_file')
+                    ->on('families.f_id', '=', 'placelinks.pl_gid');
+            })
+            ->where('f_file', '=', $place->tree()->id())
+            ->where('pl_p_id', '=', $place->id())
+            ->select(['families.*'])
+            ->get()
+            ->each($this->rowLimiter())
+            ->map($this->familyRowMapper())
+            ->filter(GedcomRecord::accessFilter());
+    }
+
+    /**
      * @param Tree[]   $trees
      * @param string[] $search
      *
@@ -171,6 +193,28 @@ class SearchService
         $this->whereSearch($query, 'n_full', $search);
 
         return $this->paginateQuery($query, $this->individualRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
+    }
+
+    /**
+     * @param Place $place
+     *
+     * @return Collection<Individual>
+     */
+    public function searchIndividualsInPlace(Place $place): Collection
+    {
+        return DB::table('individuals')
+            ->join('placelinks', static function (JoinClause $join) {
+                $join
+                    ->on('i_file', '=', 'pl_file')
+                    ->on('i_id', '=', 'pl_gid');
+            })
+            ->where('i_file', '=', $place->tree()->id())
+            ->where('pl_p_id', '=', $place->id())
+            ->select(['individuals.*'])
+            ->get()
+            ->each($this->rowLimiter())
+            ->map($this->individualRowMapper())
+            ->filter(GedcomRecord::accessFilter());
     }
 
     /**
@@ -932,7 +976,6 @@ class SearchService
 
         $query->whereIn($tree_id_field, $tree_ids);
     }
-
 
     /**
      * Find the media object that uses a particular media file.

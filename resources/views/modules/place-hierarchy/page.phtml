@@ -46,7 +46,7 @@ use Fisharebest\Webtrees\Tree;
 
         <div class="text-center">
             <?php if ($showeventslink) : ?>
-                <a class="formField" href= <?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name(), 'parent' => $place->parent(), 'action2' => 'hierarchy-e'])) ?>>
+                <a class="formField" href= <?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name(), 'place_id' => $place->id(), 'action2' => 'hierarchy-e'])) ?>>
                     <?= I18N::translate('View table of events occurring in %s', $place->fullName()) ?>
                 </a>
                 |

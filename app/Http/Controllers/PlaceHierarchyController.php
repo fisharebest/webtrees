@@ -21,10 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Exception;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Services\SearchService;
@@ -32,12 +29,16 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function array_chunk;
+use function array_pop;
+use function array_reverse;
 use function assert;
+use function ceil;
+use function count;
+use function is_file;
 use function redirect;
 use function view;
 
@@ -80,7 +81,7 @@ class PlaceHierarchyController extends AbstractBaseController
         $place_id = (int) ($request->getQueryParams()['place_id'] ?? 0);
         $place    = Place::find($place_id, $tree);
 
-        // Request for a non-existant place?
+        // Request for a non-existent place?
         if ($place_id !== $place->id()) {
             return redirect($place->url());
         }
@@ -102,15 +103,19 @@ class PlaceHierarchyController extends AbstractBaseController
         switch ($action2) {
             case 'list':
                 $nextaction = ['hierarchy' => I18N::translate('Show place hierarchy')];
-                $content .= view('modules/place-hierarchy/list', $this->getList($tree, $this->search_service));
+                $content .= view('modules/place-hierarchy/list', $this->getList($tree));
                 break;
             case 'hierarchy':
             case 'hierarchy-e':
                 $nextaction = ['list' => I18N::translate('Show all places in a list')];
-                $data       = $this->getHierarchy($tree, $place);
+                $data       = $this->getHierarchy($place);
                 $content .= (null === $data || $showmap) ? '' : view('place-hierarchy', $data);
                 if (null === $data || $action2 === 'hierarchy-e') {
-                    $content .= view('modules/place-hierarchy/events', $this->getEvents($tree, $place));
+                    $content .= view('modules/place-hierarchy/events', [
+                        'indilist' => $this->search_service->searchIndividualsInPlace($place),
+                        'famlist'  => $this->search_service->searchFamiliesInPlace($place),
+                        'tree'     => $place->tree(),
+                    ]);
                 }
                 break;
             default:
@@ -137,14 +142,13 @@ class PlaceHierarchyController extends AbstractBaseController
     }
 
     /**
-     * @param Tree          $tree
-     * @param SearchService $search_service
+     * @param Tree $tree
      *
      * @return Place[][]
      */
-    private function getList(Tree $tree, SearchService $search_service): array
+    private function getList(Tree $tree): array
     {
-        $places = $search_service->searchPlaces($tree, '')
+        $places = $this->search_service->searchPlaces($tree, '')
             ->sort(static function (Place $x, Place $y): int {
                 return $x->gedcomName() <=> $y->gedcomName();
             })
@@ -166,13 +170,12 @@ class PlaceHierarchyController extends AbstractBaseController
 
 
     /**
-     * @param Tree     $tree
-     * @param Place    $place
+     * @param Place $place
      *
      * @return array|null
      * @throws Exception
      */
-    private function getHierarchy(Tree $tree, Place $place): ?array
+    private function getHierarchy(Place $place): ?array
     {
         $child_places = $place->getChildPlaces();
         $numfound     = count($child_places);
@@ -182,7 +185,7 @@ class PlaceHierarchyController extends AbstractBaseController
 
             return
                 [
-                    'tree'      => $tree,
+                    'tree'      => $place->tree(),
                     'col_class' => 'w-' . ($divisor === 2 ? '25' : '50'),
                     'columns'   => array_chunk($child_places, (int) ceil($numfound / $divisor)),
                     'place'     => $place,
@@ -190,52 +193,6 @@ class PlaceHierarchyController extends AbstractBaseController
         }
 
         return null;
-    }
-
-    /**
-     * @param Tree  $tree
-     * @param Place $place
-     *
-     * @return array
-     * @throws Exception
-     */
-    private function getEvents($tree, $place): array
-    {
-        $indilist = DB::table('individuals')
-            ->join('placelinks', static function (JoinClause $join): void {
-                $join
-                    ->on('pl_file', '=', 'i_file')
-                    ->on('pl_gid', '=', 'i_id');
-            })
-            ->where('i_file', '=', $tree->id())
-            ->where('pl_p_id', '=', $place->id())
-            ->select(['individuals.*'])
-            ->distinct()
-            ->get()
-            ->map(Individual::rowMapper($tree))
-            ->filter(Individual::accessFilter())
-            ->all();
-
-        $famlist = DB::table('families')
-            ->join('placelinks', static function (JoinClause $join): void {
-                $join
-                    ->on('pl_file', '=', 'f_file')
-                    ->on('pl_gid', '=', 'f_id');
-            })
-            ->where('f_file', '=', $tree->id())
-            ->where('pl_p_id', '=', $place->id())
-            ->select(['families.*'])
-            ->distinct()
-            ->get()
-            ->map(Family::rowMapper($tree))
-            ->filter(Family::accessFilter())
-            ->all();
-
-        return [
-            'indilist' => $indilist,
-            'famlist'  => $famlist,
-            'tree'     => $tree,
-        ];
     }
 
     /**
@@ -276,19 +233,22 @@ class PlaceHierarchyController extends AbstractBaseController
         $features  = [];
         $sidebar   = '';
         $flag_path = Webtrees::MODULES_DIR . 'openstreetmap/';
-        $showlink  = true;
+        $show_link = true;
+
         if ($places === []) {
             $places[] = $placeObj;
-            $showlink = false;
+            $show_link = false;
         }
+
         foreach ($places as $id => $place) {
             $location = new Location($place->gedcomName());
-            //Flag
+
             if ($location->icon() !== '' && is_file($flag_path . $location->icon())) {
                 $flag = $flag_path . $location->icon();
             } else {
                 $flag = '';
             }
+
             if ($location->latitude() === 0.0 && $location->longitude() === 0.0) {
                 $sidebar_class = 'unmapped';
             } else {
@@ -303,7 +263,7 @@ class PlaceHierarchyController extends AbstractBaseController
                     'properties' => [
                         'tooltip' => $place->gedcomName(),
                         'popup'   => view('modules/place-hierarchy/popup', [
-                            'showlink'  => $showlink,
+                            'showlink'  => $show_link,
                             'flag'      => $flag,
                             'place'     => $place,
                             'latitude'  => $location->latitude(),
@@ -321,7 +281,7 @@ class PlaceHierarchyController extends AbstractBaseController
                 $placeStats[$type] = $tmp === [] ? 0 : $tmp[0]->tot;
             }
             $sidebar .= view('modules/place-hierarchy/sidebar', [
-                'showlink'      => $showlink,
+                'showlink'      => $show_link,
                 'flag'          => $flag,
                 'id'            => $id,
                 'place'         => $place,
