@@ -23,7 +23,7 @@ use Illuminate\Support\Collection;
     <?php endif ?>
 
     <div class="position-relative d-flex justify-content-center wt-pedigree-generation wt-generation-fwd-<?= $generation ?> wt-generation-rev-<?= 1 + $generations - $generation ?>">
-        <div class="d-flex flex-column align-items-center">
+        <div class="d-flex flex-column align-items-center position-relative">
             <?php if ($generation === $generations) : ?>
                 <?= $links->get($sosa, $spacer) ?>
             <?php endif ?>

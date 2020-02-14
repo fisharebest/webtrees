@@ -47,7 +47,6 @@
     border-radius: var(--chart-line-radius) 0 0 var(--chart-line-radius);
     width: 25%;
     height: 50%;
-    z-index: -1;
 }
 
 .wt-chart-pedigree-right .wt-generation-rev-2 > .wt-pedigree-lines {
@@ -66,7 +65,6 @@
     border-radius: 0 var(--chart-line-radius) var(--chart-line-radius) 0;
     width: 25%;
     height: 50%;
-    z-index: -1;
 }
 
 .wt-chart-pedigree-left .wt-generation-rev-2 > .wt-pedigree-lines {
@@ -89,7 +87,6 @@
     border-radius: var(--chart-line-radius) var(--chart-line-radius) 0 0;
     width: 50%;
     height: 25%;
-    z-index: -1;
 }
 
 .wt-chart-pedigree-down .wt-generation-rev-2 > .wt-pedigree-lines {
@@ -112,7 +109,6 @@
     border-radius: 0 0 var(--chart-line-radius) var(--chart-line-radius);
     width: 50%;
     height: 25%;
-    z-index: -1;
 }
 
 .wt-chart-pedigree-up .wt-generation-rev-2 > .wt-pedigree-lines {
