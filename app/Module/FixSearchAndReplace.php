@@ -102,7 +102,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
             'words'     => I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
             'wildcards' => I18N::translate('Use a “?” to match a single character, use “*” to match zero or more characters.'),
             /* I18N: http://en.wikipedia.org/wiki/Regular_expression */
-            'regex'     => I18N::translate('Regular expressions are an advanced pattern matching technique.') . '<br>' . I18N::translate('See %s for more information.', '<a href="http://php.net/manual/regexp.reference.php">php.net/manual/regexp.reference.php</a>'),
+            'regex'     => I18N::translate('Regular expression'),
         ];
 
         $types = [
@@ -339,7 +339,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
     {
         // Allow "\n" to indicate a line-feed in replacement text.
         // Back-references such as $1, $2 are handled automatically.
-        $replace = strtr($params['replace'], ['\\n', "\n"]);
+        $replace = strtr($params['replace'], ['\n', "\n"]);
 
         $regex = $this->createRegex($params);
 
@@ -404,12 +404,12 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
         switch ($method) {
             case 'exact':
             case 'words':
-                $query->where($column, 'LIKE', '%' . $like . '$');
+                $query->where($column, 'LIKE', '%' . $like . '%');
                 break;
 
             case 'wildcards':
                 $like = strtr($like, ['?' => '_', '*' => '%']);
-                $query->where($column, 'LIKE', '%' . $like . '$');
+                $query->where($column, 'LIKE', '%' . $like . '%');
                 break;
 
             case 'regex':
