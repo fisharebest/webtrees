@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-15 17:01+0000\nLast-Translator: Michael Rapp <mike_jpr@outlook.com>\nLanguage-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Spanish\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-16 09:07+0000\nLast-Translator: Michael Rapp <mike_jpr@outlook.com>\nLanguage-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Spanish\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -43,13 +43,13 @@ msgstr "%1$s %2$s tiene un enlace %3$s a %4$s."
 #: app/Functions/Functions.php:2358
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s %2$s grado"
+msgstr "%1$s %2$s grados en orden ascendente"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2362
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr "%1$s %2$s times removed descending"
+msgstr "%1$s %2$s grados en orden descendente"
 
 #: app/Functions/FunctionsPrintLists.php:70
 #: app/Http/RequestHandlers/IndividualPage.php:234
@@ -287,13 +287,13 @@ msgstr[1] "%s notas han sido actualizadas."
 #: app/Functions/Functions.php:2334
 #, php-format
 msgid "%s once removed ascending"
-msgstr "%s once removed ascending"
+msgstr "%s 1° grado en orden ascendente"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2338
 #, php-format
 msgid "%s once removed descending"
-msgstr "%s once removed descending"
+msgstr "%s 1° grado en orden descendente"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:83
 #, php-format
@@ -327,19 +327,19 @@ msgstr[1] "%s fuentes han sido actualizadas."
 #: app/Functions/Functions.php:2350
 #, php-format
 msgid "%s three times removed ascending"
-msgstr "%s three times removed ascending"
+msgstr "%s 3° grado en orden ascendente"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2354
 #, php-format
 msgid "%s three times removed descending"
-msgstr "%s three times removed descending"
+msgstr "%s 3° grado en orden descendente"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2342
 #, php-format
 msgid "%s twice removed ascending"
-msgstr "%s twice removed ascending"
+msgstr "%s 2° grado en orden ascendente"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2346
@@ -1344,11 +1344,11 @@ msgstr "Añadir un evento"
 
 #: resources/views/modules/custom-css-js/edit.phtml:28
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr "Add content to the end of the <code>&lt;body&gt;</code> element."
+msgstr "Añadir contenido al final del elemento <code>&lt;body&gt;</code>."
 
 #: resources/views/modules/custom-css-js/edit.phtml:16
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr "Add content to the end of the <code>&lt;head&gt;</code> element."
+msgstr "Añadir contenido <code>&lt;head&gt;</code> al final del elemento."
 
 #: resources/views/edit/paste-fact-row.phtml:12
 msgid "Add from clipboard"
@@ -5600,7 +5600,7 @@ msgstr "Fechas de cambio a"
 #. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
 #: app/GedcomCode/GedcomCodeTemp.php:345
 msgid "Endowment House"
-msgstr "Endowment House"
+msgstr "Casa de la Dotación"
 
 #. I18N: gedcom tag ENGA
 #: app/GedcomTag.php:709 resources/xml/reports/missing_facts_report.xml:20
@@ -7498,11 +7498,11 @@ msgstr "Incluir subcarpetas"
 
 #: resources/views/modules/custom-css-js/edit.phtml:33
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
+msgstr "Incluya las balizas <code>&lt;script&gt;&lt;/script&gt;</code>."
 
 #: resources/views/modules/custom-css-js/edit.phtml:21
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
-msgstr "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
+msgstr "Incluya las balizas <code>&lt;style&gt;&lt;/style&gt;</code>."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:24
@@ -10999,7 +10999,7 @@ msgstr "Código postal"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:41
 msgid "Powered by webtrees™"
-msgstr "Powered by webtrees™"
+msgstr "Funciona con webtrees™"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:151
@@ -12097,7 +12097,6 @@ msgid "Select two records to merge."
 msgstr "Seleccione dos registros a combinar."
 
 #: resources/views/admin/site-mail.phtml:216
-#, fuzzy
 msgid "Selector"
 msgstr "Selector"
 
@@ -12878,7 +12877,7 @@ msgstr "Códigos de verificación del sitio no funcionan cuando webtrees está i
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:155
 msgid "Sitemaps"
-msgstr "Sitemaps"
+msgstr "Mapas del sitio"
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml:13
