@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-15 17:01+0000\nLast-Translator: Jorge Ruiz Calpe <loquiyoz@gmail.com>\nLanguage-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Spanish\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-15 17:01+0000\nLast-Translator: Michael Rapp <mike_jpr@outlook.com>\nLanguage-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Spanish\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -1378,7 +1378,7 @@ msgstr "Agregar registros ausentes de defunción"
 
 #: resources/views/edit-blocks-page.phtml:34
 msgid "Add more blocks from the following list."
-msgstr "Añadir mas bloques de la siguiente lista:"
+msgstr "Añadir mas bloques de la siguiente lista."
 
 #: resources/views/search-advanced-page.phtml:30
 msgid "Add more fields"
@@ -12251,7 +12251,7 @@ msgstr "Nombre del servidor"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php:64
 msgid "Set a new password"
-msgstr ""
+msgstr "Establecer una nueva contraseña"
 
 #: resources/views/admin/trees.phtml:112 resources/views/admin/trees.phtml:119
 msgid "Set as default"
@@ -12485,7 +12485,7 @@ msgstr "Mostrar vínculo de descargar en el visor de objetos audiovisuales"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
 msgid "Show a privacy policy."
-msgstr ""
+msgstr "Mostrar la política de privacidad."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:62
@@ -13298,7 +13298,7 @@ msgstr "Remitente"
 
 #: resources/views/lists/submitters-table.phtml:60
 msgid "Submitter name"
-msgstr ""
+msgstr "Nombre del remitente"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/ListController.php:548
@@ -13307,7 +13307,7 @@ msgstr ""
 #: resources/views/admin/merge-records-step-1.phtml:29
 #: resources/views/lists/submitters-table.phtml:55
 msgid "Submitters"
-msgstr ""
+msgstr "Remitentes"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -14165,7 +14165,7 @@ msgstr[1] "No se han producido cambios en los últimos %s días."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:107
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr ""
+msgstr "No hay cuenta de usuario con el correo “%s”."
 
 #: app/Http/Controllers/Admin/MediaController.php:465
 #: app/Http/Controllers/EditMediaController.php:134
@@ -14733,7 +14733,7 @@ msgstr "Este sitio está desactivado por mantenimiento. Debe <a href=\"index.php
 
 #: resources/views/modules/privacy-policy/page.phtml:61
 msgid "This website is operated by the following individuals."
-msgstr "Este sitio web está operado por las siguientes personas:"
+msgstr "Este sitio web está operado por las siguientes personas."
 
 #: resources/views/layouts/error.phtml:13
 #: resources/views/layouts/error.phtml:30
@@ -14743,7 +14743,7 @@ msgstr "Este sitio web no está disponible en este momento"
 
 #: resources/views/modules/privacy-policy/page.phtml:13
 msgid "This website processes personal data for the purpose of historical and genealogical research."
-msgstr "Este sitio web procesa datos personales con la finalidad de realizar investigaciones históricas y genealógicas. "
+msgstr "Este sitio web procesa datos personales con la finalidad de realizar investigaciones históricas y genealógicas."
 
 #: resources/views/modules/privacy-policy/page.phtml:24
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
