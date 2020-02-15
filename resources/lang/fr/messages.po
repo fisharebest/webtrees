@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-02-03 09:12+0000\n"
-"PO-Revision-Date: 2020-01-30 10:04+0000\n"
-"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
-"Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
-"Language: fr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-16 09:07+0000\nLast-Translator: Michael Rapp <mike_jpr@outlook.com>\nLanguage-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\nLanguage: fr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -1210,7 +1194,7 @@ msgstr "Ajouter %s au panier"
 
 #: resources/views/modules/relatives/family.phtml:207
 msgid "Add a brother"
-msgstr ""
+msgstr "Ajouter un frère"
 
 #: app/Http/Controllers/EditFamilyController.php:57
 #: resources/views/family-page-children.phtml:35
@@ -1226,7 +1210,7 @@ msgstr "Ajouter un enfant pour obtenir une famille monoparentale"
 
 #: resources/views/modules/relatives/family.phtml:211
 msgid "Add a daughter"
-msgstr ""
+msgstr "Ajouter une fille"
 
 #: resources/views/edit/raw-gedcom-record.phtml:47
 msgid "Add a fact"
@@ -1308,15 +1292,15 @@ msgstr "Associer une note partagée"
 
 #: resources/views/modules/relatives/family.phtml:215
 msgid "Add a sibling"
-msgstr ""
+msgstr "Ajouter un frère ou une sœur"
 
 #: resources/views/modules/relatives/family.phtml:211
 msgid "Add a sister"
-msgstr ""
+msgstr "Ajouter une sœur"
 
 #: resources/views/modules/relatives/family.phtml:207
 msgid "Add a son"
-msgstr ""
+msgstr "Ajouter un fils"
 
 #: resources/views/family-page.phtml:110 resources/views/media-page.phtml:161
 #: resources/views/modules/sources_tab/tab.phtml:43
@@ -1385,7 +1369,7 @@ msgstr "Ajouter un nouveau mariage"
 #. I18N: Name of a module
 #: app/Module/FixMissingMarriedNames.php:70
 msgid "Add married names"
-msgstr "Ajouter des noms de mariés"
+msgstr "Ajouter le nom d'usage (après mariage)"
 
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:59
@@ -2032,7 +2016,7 @@ msgstr "Apia, Samoa"
 #: resources/views/modules/clippings/download.phtml:15
 #: resources/views/modules/clippings/download.phtml:34
 msgid "Apply privacy settings"
-msgstr "Appliquer les règles de restrictions d’accès"
+msgstr "Appliquer les paramètres de confidentialité"
 
 #. I18N: Label for checkbox
 #: resources/views/admin/trees-preferences.phtml:958
@@ -4054,7 +4038,7 @@ msgstr "Impossible de vérifier les identifiants. Réessayez ou contactez l'admi
 #. I18N: Description of the “Hit counters” module
 #: app/Module/HitCountFooterModule.php:84
 msgid "Count the visits to each page"
-msgstr "Compter les visites à chaque page"
+msgstr "Compter les visites sur chaque page"
 
 #. I18N: gedcom tag CTRY
 #: app/GedcomTag.php:640 app/Statistics/Google/ChartDistribution.php:127
@@ -5738,7 +5722,7 @@ msgstr "Date exacte"
 #: app/Http/Controllers/ListController.php:270
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Exclure les personnes avec des « %s » comme un nom de femme mariée"
+msgstr "Exclure les personnes avec « %s » comme nom d'usage"
 
 #: resources/views/admin/media.phtml:70
 msgid "Exclude subfolders"
@@ -8930,7 +8914,7 @@ msgstr "Mariages par siècle"
 #: app/GedcomTag.php:1870 resources/xml/reports/cemetery_report.xml:7
 #: resources/xml/reports/death_report.xml:10
 msgid "Married name"
-msgstr "Nom après mariage"
+msgstr "Nom d'usage (après mariage)"
 
 #: app/GedcomTag.php:1875
 msgid "Married surname"
@@ -12500,7 +12484,7 @@ msgstr "Afficher le lien de téléchargement dans Media Viewer"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
 msgid "Show a privacy policy."
-msgstr "Montrer des règles de confidentialité."
+msgstr "Voir la politique de confidentialité."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:62
@@ -13038,7 +13022,7 @@ msgstr "Sosa"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:18
 msgid "Sosa-Stradonitz number"
-msgstr "numéro Sosa-Stradonitz"
+msgstr "Numéro Sosa-Stradonitz"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:228
 msgid "Sounds like"
@@ -13313,7 +13297,7 @@ msgstr "Fournisseur"
 
 #: resources/views/lists/submitters-table.phtml:60
 msgid "Submitter name"
-msgstr "Nom du soumissionnaire"
+msgstr "Nom du fournisseur"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/ListController.php:548
@@ -13322,7 +13306,7 @@ msgstr "Nom du soumissionnaire"
 #: resources/views/admin/merge-records-step-1.phtml:29
 #: resources/views/lists/submitters-table.phtml:55
 msgid "Submitters"
-msgstr "Soumissionnaire"
+msgstr "Fournisseurs"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -13481,7 +13465,7 @@ msgstr "Préfixe des tables"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Tabloid"
-msgstr "Tabloîd"
+msgstr "Tabloïde"
 
 #: app/Http/Controllers/Admin/ModuleController.php:254
 #: resources/views/admin/control-panel.phtml:528
@@ -13802,7 +13786,7 @@ msgstr "Le dossier peut être spécifié par une URL complète (ex. /home/user_n
 #: app/Http/Controllers/AdminSiteController.php:97
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr "Le dossier “%s”  n'existe pas."
+msgstr "Le dossier “%s” n'existe pas."
 
 #: resources/views/admin/merge-records-step-2.phtml:26
 msgid "The following facts and events were found in both records."
@@ -13978,7 +13962,7 @@ msgstr "Les préférences pour le module « %s » ont été mises à jour."
 #: resources/views/setup/step-4-database-sqlite.phtml:65
 #: resources/views/setup/step-4-database-sqlsvr.phtml:91
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
-msgstr "Le préfixe est facultatif mais recommandé. En donnant aux tables webtrees un même préfixe, on peut avoir plusieurs applications dans la même base de données."
+msgstr "Le préfixe est facultatif mais recommandé. En donnant aux noms de tables un préfixe unique, on peut avoir plusieurs applications dans la même base de données."
 
 #: app/Http/RequestHandlers/CopyFact.php:77
 msgid "The record has been copied to the clipboard."
@@ -14215,7 +14199,7 @@ msgstr "thermidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:27
 msgid "These cookies are “essential”, and do not require consent."
-msgstr "Ces cookies sont «essentiels» et ne nécessitent pas de consentement."
+msgstr "Ces cookies sont absolument nécessaires pour le bon fonctionnement du site web et donc ne nécessitent pas de consentement."
 
 #: resources/views/admin/trees-unconnected.phtml:32
 #, php-format
@@ -16712,7 +16696,7 @@ msgstr "télécharger"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:17
 msgid "d’Aboville number"
-msgstr "numéro d’Aboville"
+msgstr "Numéro d’Aboville"
 
 #: resources/views/admin/components.phtml:114
 #: resources/views/family-page-menu.phtml:14
@@ -16777,13 +16761,13 @@ msgstr "Nom de la ferme"
 #: app/GedcomCode/GedcomCodeName.php:125
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr "nom de la ferme"
+msgstr "Nom de la ferme"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:120
 msgctxt "MALE"
 msgid "estate name"
-msgstr "nom de la ferme"
+msgstr "Nom de la ferme"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:349
@@ -18891,19 +18875,19 @@ msgstr "marié"
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:162
 msgid "married name"
-msgstr "nom après mariage"
+msgstr "Nom d'usage (après mariage)"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:158
 msgctxt "FEMALE"
 msgid "married name"
-msgstr "nom après mariage"
+msgstr "Nom d'usage (après mariage)"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:153
 msgctxt "MALE"
 msgid "married name"
-msgstr "nom après mariage"
+msgstr "Nom d'usage (après mariage)"
 
 #: app/Functions/Functions.php:822
 msgctxt "mother’s father"
@@ -19663,14 +19647,14 @@ msgstr "cousin au septième degré"
 #: resources/views/modules/faq/config.phtml:26
 #: resources/views/modules/stories/config.phtml:21
 msgid "show"
-msgstr "afficher"
+msgstr "Afficher"
 
 #. I18N: button label
 #: resources/views/lists/anniversaries-list.phtml:23
 #: resources/views/modules/recent_changes/changes-list.phtml:21
 #: resources/views/modules/yahrzeit/list.phtml:20
 msgid "show more"
-msgstr ""
+msgstr "Afficher plus"
 
 #: resources/views/modules/statistics-chart/custom.phtml:200
 msgid "show the chart"
