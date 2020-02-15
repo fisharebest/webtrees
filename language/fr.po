@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-09 09:33+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: French <http://translate.webtrees.net/projects/webtrees/"
+"PO-Revision-Date: 2020-02-16 09:07+0000\n"
+"Last-Translator: Michael Rapp <mike_jpr@outlook.com>\n"
+"Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -2084,7 +2084,7 @@ msgstr "Appliquer des corrections automatiques à vos données généalogiques."
 #: app/Module/ClippingsCartModule.php:777
 #: app/Module/ClippingsCartModule.php:786
 msgid "Apply privacy settings"
-msgstr "Appliquer les règles de restrictions d’accès"
+msgstr "Appliquer les paramètres de confidentialité"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2154
@@ -5806,7 +5806,7 @@ msgstr "Texte exact"
 #: famlist.php:176 indilist.php:176
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Exclure les personnes avec des « %s » comme un nom de femme mariée"
+msgstr "Exclure les personnes avec « %s » comme nom d'usage"
 
 #: admin_media.php:671
 msgid "Exclude subfolders"
@@ -8895,7 +8895,7 @@ msgstr "Mariages par siècle"
 #: app/GedcomTag.php:1560 modules_v3/cemetery_report/report.xml:7
 #: modules_v3/death_report/report.xml:10
 msgid "Married name"
-msgstr "Nom après mariage"
+msgstr "Nom d'usage (après mariage)"
 
 #: app/GedcomTag.php:1566
 msgid "Married surname"
@@ -16948,13 +16948,13 @@ msgstr "Nom de la ferme"
 #: app/GedcomCode/GedcomCodeName.php:100
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr "nom de la ferme"
+msgstr "Nom de la ferme"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:97
 msgctxt "MALE"
 msgid "estate name"
-msgstr "nom de la ferme"
+msgstr "Nom de la ferme"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:304
@@ -19038,19 +19038,19 @@ msgstr "marié"
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:132
 msgid "married name"
-msgstr "nom après mariage"
+msgstr "Nom d'usage (après mariage)"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:129
 msgctxt "FEMALE"
 msgid "married name"
-msgstr "nom après mariage"
+msgstr "Nom d'usage (après mariage)"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:126
 msgctxt "MALE"
 msgid "married name"
-msgstr "nom après mariage"
+msgstr "Nom d'usage (après mariage)"
 
 #: app/Functions/Functions.php:876
 msgctxt "mother’s father"
@@ -19693,7 +19693,7 @@ msgstr "cousin au septième degré"
 #: admin_trees_config.php:43 app/Module/FrequentlyAskedQuestionsModule.php:456
 #: app/Module/GoogleMapsModule.php:342 app/Module/StoriesModule.php:361
 msgid "show"
-msgstr "afficher"
+msgstr "Afficher"
 
 #: statistics.php:765
 msgid "show the chart"
