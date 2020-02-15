@@ -107,18 +107,18 @@ class ChartNoChildrenFamilies
         $total = 0;
 
         foreach ($this->queryRecords($year1, $year2) as $record) {
-            $total += $record->total;
+            $total += (int) $record->total;
 
             $data[] = [
                 $this->century_service->centuryName((int) $record->century),
-                $record->total
+                (int) $record->total
             ];
         }
 
         if ($total) {
             $data[] = [
                 I18N::translateContext('unknown century', 'Unknown'),
-                $no_child_fam - $total
+                $total - $no_child_fam
             ];
         }
 
