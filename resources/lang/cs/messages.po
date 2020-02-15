@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-05 13:24+0000\nLast-Translator: Josef Prause <josef.prause@gmail.com>\nLanguage-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\nLanguage: cs\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Czech\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Language: cs_CZ\nX-Source-Language: C\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-16 09:07+0000\nLast-Translator: Josef Prause <josef.prause@gmail.com>\nLanguage-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\nLanguage: cs\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Czech\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Language: cs_CZ\nX-Source-Language: C\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -3328,7 +3328,7 @@ msgstr "Cardston, Alberta, Kanada"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:48
 msgid "Case insensitive"
-msgstr "Nerozlišovat velikost písmen"
+msgstr "Bez ohledu na velikost písmen"
 
 #. I18N: gedcom tag CAST
 #: app/GedcomTag.php:558
