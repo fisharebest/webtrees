@@ -339,7 +339,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
     {
         // Allow "\n" to indicate a line-feed in replacement text.
         // Back-references such as $1, $2 are handled automatically.
-        $replace = strtr($params['replace'], ['\n', "\n"]);
+        $replace = strtr($params['replace'], ['\n' => "\n"]);
 
         $regex = $this->createRegex($params);
 
