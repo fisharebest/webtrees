@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-02-10 09:01+0000\n"
-"Last-Translator: Jorge Ruiz Calpe <loquiyoz@gmail.com>\n"
+"PO-Revision-Date: 2020-02-16 09:07+0000\n"
+"Last-Translator: Michael Rapp <mike_jpr@outlook.com>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/es/>\n"
 "Language: es\n"
@@ -77,13 +77,13 @@ msgstr "%1$s %2$s tiene un enlace %3$s a %4$s."
 #: app/Functions/Functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s %2$s grado"
+msgstr "%1$s %2$s grados en orden ascendente"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2135
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr "%1$s %2$s times removed descending"
+msgstr "%1$s %2$s grados en orden descendente"
 
 #: app/Controller/IndividualController.php:195 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1518
@@ -381,13 +381,13 @@ msgstr[1] "%s notas han sido actualizadas."
 #: app/Functions/Functions.php:2108
 #, php-format
 msgid "%s once removed ascending"
-msgstr "%s once removed ascending"
+msgstr "%s 1° grado en orden ascendente"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2111
 #, php-format
 msgid "%s once removed descending"
-msgstr "%s once removed descending"
+msgstr "%s 1° grado en orden descendente"
 
 #: app/I18N.php:812
 #, php-format
@@ -420,19 +420,19 @@ msgstr[1] "%s fuentes han sido actualizadas."
 #: app/Functions/Functions.php:2124
 #, php-format
 msgid "%s three times removed ascending"
-msgstr "%s three times removed ascending"
+msgstr "%s 3° grado en orden ascendente"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2127
 #, php-format
 msgid "%s three times removed descending"
-msgstr "%s three times removed descending"
+msgstr "%s 3° grado en orden descendente"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2116
 #, php-format
 msgid "%s twice removed ascending"
-msgstr "%s twice removed ascending"
+msgstr "%s 2° grado en orden ascendente"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2119
@@ -5635,7 +5635,7 @@ msgstr "Fechas de cambio a"
 #. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
 #: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "Endowment House"
-msgstr "Endowment House"
+msgstr "Casa de la Dotación"
 
 #. I18N: gedcom tag ENGA
 #: app/GedcomTag.php:420 modules_v3/missing_facts_report/report.xml:20
@@ -12847,7 +12847,7 @@ msgstr "Códigos de verificación del sitio no funcionan cuando webtrees está i
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
 msgid "Sitemaps"
-msgstr "Sitemaps"
+msgstr "Mapas del sitio"
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: app/Module/SiteMapModule.php:306
