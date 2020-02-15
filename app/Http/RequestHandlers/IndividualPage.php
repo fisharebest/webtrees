@@ -45,9 +45,12 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use stdClass;
 
+use function array_map;
 use function assert;
+use function date;
 use function e;
 use function explode;
+use function implode;
 use function is_string;
 use function ob_get_clean;
 use function ob_start;
@@ -57,6 +60,10 @@ use function redirect;
 use function route;
 use function str_replace;
 use function strpos;
+use function strtoupper;
+use function view;
+
+use const PREG_SET_ORDER;
 
 /**
  * Show an individual's page.
@@ -158,6 +165,7 @@ class IndividualPage implements RequestHandlerInterface
             'clipboard_facts'  => $this->clipboard_service->pastableFacts($individual, new Collection()),
             'individual'       => $individual,
             'individual_media' => $individual_media,
+            'meta_description' => $this->metaDescription($individual),
             'meta_robots'      => 'index,follow',
             'name_records'     => $name_records,
             'sex_records'      => $sex_records,
@@ -168,6 +176,59 @@ class IndividualPage implements RequestHandlerInterface
             'tree'             => $tree,
             'user_link'        => $user_link,
         ]);
+    }
+
+    /**
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    private function metaDescription(Individual $individual): string
+    {
+        $meta_facts = [];
+
+        $birth_date  = $individual->getBirthDate();
+        $birth_place = $individual->getBirthPlace();
+
+        if ($birth_date->isOK() || $birth_place->id() !== 0) {
+            $meta_facts[] = I18N::translate('Birth') . ' ' .
+                $birth_date->display(false, null, false) . ' ' .
+                $birth_place->placeName();
+        }
+
+        $death_date  = $individual->getDeathDate();
+        $death_place = $individual->getDeathPlace();
+
+        if ($death_date->isOK() || $death_place->id() !== 0) {
+            $meta_facts[] = I18N::translate('Death') . ' ' .
+                $death_date->display(false, null, false) . ' ' .
+                $death_place->placeName();
+        }
+
+        foreach ($individual->childFamilies() as $family) {
+            $meta_facts[] = I18N::translate('Parents') . ' ' . $family->fullName();
+        }
+
+        foreach ($individual->spouseFamilies() as $family) {
+            $spouse = $family->spouse($individual);
+            if ($spouse instanceof Individual) {
+                $meta_facts[] = I18N::translate('Spouse') . ' ' . $spouse->fullName();
+            }
+
+            $child_names = $family->children()->map(static function (Individual $individual): string {
+                return e($individual->getAllNames()[0]['givn']);
+            })->implode(', ');
+
+
+            if ($child_names !== '') {
+                $meta_facts[] = I18N::translate('Children') . ' ' . $child_names;
+            }
+        }
+
+        $meta_facts = array_map('strip_tags', $meta_facts);
+        $meta_facts = array_map('trim', $meta_facts);
+
+        return implode(', ', $meta_facts);
     }
 
     /**

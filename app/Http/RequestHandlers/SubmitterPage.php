@@ -81,12 +81,14 @@ class SubmitterPage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('submitter-page', [
-            'facts'       => $this->facts($submitter),
-            'submitter'   => $submitter,
-            'families'    => $submitter->linkedFamilies('SUBM'),
-            'individuals' => $submitter->linkedIndividuals('SUBM'),
-            'title'       => $submitter->fullName(),
-            'tree'        => $tree,
+            'facts'            => $this->facts($submitter),
+            'submitter'        => $submitter,
+            'families'         => $submitter->linkedFamilies('SUBM'),
+            'individuals'      => $submitter->linkedIndividuals('SUBM'),
+            'meta_description' => '',
+            'meta_robots'      => 'index,follow',
+            'title'            => $submitter->fullName(),
+            'tree'             => $tree,
         ]);
     }
 

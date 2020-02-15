@@ -27,9 +27,7 @@ use Psr\Http\Message\ServerRequestInterface;
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="<?= e($meta_robots ?? 'noindex') ?>">
         <meta name="generator" content="<?= e(Webtrees::NAME) ?> <?= e(Webtrees::VERSION) ?>">
-        <?php if ($tree !== null) : ?>
-            <meta name="description" content="<?= e($tree->getPreference('META_DESCRIPTION')) ?>">
-        <?php endif ?>
+        <meta name="description" content="<?= $meta_description ?? '' ?>">
 
         <title>
             <?= strip_tags($title) ?>

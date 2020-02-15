@@ -93,13 +93,14 @@ class RepositoryPage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('repository-page', [
-            'clipboard_facts' => $this->clipboard_service->pastableFacts($repository, new Collection()),
-            'facts'           => $this->facts($repository),
-            'meta_robots'     => 'index,follow',
-            'repository'      => $repository,
-            'sources'         => $repository->linkedSources('REPO'),
-            'title'           => $repository->fullName(),
-            'tree'            => $tree,
+            'clipboard_facts'  => $this->clipboard_service->pastableFacts($repository, new Collection()),
+            'facts'            => $this->facts($repository),
+            'meta_description' => '',
+            'meta_robots'      => 'index,follow',
+            'repository'       => $repository,
+            'sources'          => $repository->linkedSources('REPO'),
+            'title'            => $repository->fullName(),
+            'tree'             => $tree,
         ]);
     }
 

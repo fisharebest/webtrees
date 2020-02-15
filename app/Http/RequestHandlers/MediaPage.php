@@ -81,17 +81,18 @@ class MediaPage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('media-page', [
-            'clipboard_facts' => $this->clipboard_service->pastableFacts($media, new Collection()),
-            'data_filesystem' => $data_filesystem,
-            'families'        => $media->linkedFamilies('OBJE'),
-            'facts'           => $this->facts($media),
-            'individuals'     => $media->linkedIndividuals('OBJE'),
-            'media'           => $media,
-            'meta_robots'     => 'index,follow',
-            'notes'           => $media->linkedNotes('OBJE'),
-            'sources'         => $media->linkedSources('OBJE'),
-            'title'           => $media->fullName(),
-            'tree'            => $tree,
+            'clipboard_facts'  => $this->clipboard_service->pastableFacts($media, new Collection()),
+            'data_filesystem'  => $data_filesystem,
+            'families'         => $media->linkedFamilies('OBJE'),
+            'facts'            => $this->facts($media),
+            'individuals'      => $media->linkedIndividuals('OBJE'),
+            'media'            => $media,
+            'meta_description' => '',
+            'meta_robots'      => 'index,follow',
+            'notes'            => $media->linkedNotes('OBJE'),
+            'sources'          => $media->linkedSources('OBJE'),
+            'title'            => $media->fullName(),
+            'tree'             => $tree,
         ]);
     }
 

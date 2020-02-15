@@ -78,18 +78,19 @@ class NotePage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('note-page', [
-            'clipboard_facts' => $this->clipboard_service->pastableFacts($note, new Collection()),
-            'facts'           => $this->facts($note),
-            'families'        => $note->linkedFamilies('NOTE'),
-            'individuals'     => $note->linkedIndividuals('NOTE'),
-            'note'            => $note,
-            'notes'           => new Collection(),
-            'media_objects'   => $note->linkedMedia('NOTE'),
-            'meta_robots'     => 'index,follow',
-            'sources'         => $note->linkedSources('NOTE'),
-            'text'            => Filter::formatText($note->getNote(), $tree),
-            'title'           => $note->fullName(),
-            'tree'            => $tree,
+            'clipboard_facts'  => $this->clipboard_service->pastableFacts($note, new Collection()),
+            'facts'            => $this->facts($note),
+            'families'         => $note->linkedFamilies('NOTE'),
+            'individuals'      => $note->linkedIndividuals('NOTE'),
+            'note'             => $note,
+            'notes'            => new Collection(),
+            'media_objects'    => $note->linkedMedia('NOTE'),
+            'meta_description' => '',
+            'meta_robots'      => 'index,follow',
+            'sources'          => $note->linkedSources('NOTE'),
+            'text'             => Filter::formatText($note->getNote(), $tree),
+            'title'            => $note->fullName(),
+            'tree'             => $tree,
         ]);
     }
 

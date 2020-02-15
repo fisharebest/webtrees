@@ -79,13 +79,14 @@ class FamilyPage implements RequestHandlerInterface
         $clipboard_facts = $this->clipboard_service->pastableFacts($family, new Collection());
 
         return $this->viewResponse('family-page', [
-            'facts'           => $family->facts([], true),
-            'meta_robots'     => 'index,follow',
-            'clipboard_facts' => $clipboard_facts,
-            'record'          => $family,
-            'significant'     => $this->significant($family),
-            'title'           => $family->fullName(),
-            'tree'            => $tree,
+            'clipboard_facts'  => $clipboard_facts,
+            'facts'            => $family->facts([], true),
+            'meta_description' => '',
+            'meta_robots'      => 'index,follow',
+            'record'           => $family,
+            'significant'      => $this->significant($family),
+            'title'            => $family->fullName(),
+            'tree'             => $tree,
         ]);
     }
 

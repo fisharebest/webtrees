@@ -98,16 +98,17 @@ class SourcePage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('source-page', [
-            'clipboard_facts' => $this->clipboard_service->pastableFacts($source, new Collection()),
-            'facts'           => $this->facts($source),
-            'families'        => $source->linkedFamilies('SOUR'),
-            'individuals'     => $source->linkedIndividuals('SOUR'),
-            'meta_robots'     => 'index,follow',
-            'notes'           => $source->linkedNotes('SOUR'),
-            'media_objects'   => $source->linkedMedia('SOUR'),
-            'source'          => $source,
-            'title'           => $source->fullName(),
-            'tree'            => $tree,
+            'clipboard_facts'  => $this->clipboard_service->pastableFacts($source, new Collection()),
+            'facts'            => $this->facts($source),
+            'families'         => $source->linkedFamilies('SOUR'),
+            'individuals'      => $source->linkedIndividuals('SOUR'),
+            'meta_description' => '',
+            'meta_robots'      => 'index,follow',
+            'notes'            => $source->linkedNotes('SOUR'),
+            'media_objects'    => $source->linkedMedia('SOUR'),
+            'source'           => $source,
+            'title'            => $source->fullName(),
+            'tree'             => $tree,
         ]);
     }
 
