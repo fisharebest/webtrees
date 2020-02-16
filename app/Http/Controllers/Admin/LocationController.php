@@ -253,7 +253,7 @@ class LocationController extends AbstractAdminController
 
         $query = DB::table('places AS p0')
             ->where('p0.p_place', '=', $places[0])
-            ->select(['pl0.*']);
+            ->select(['p0.*']);
 
         array_shift($places);
 
