@@ -105,18 +105,23 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
                 $rows = $rows->sort(static function (stdClass $x, stdClass $y): int {
                     return GedcomRecord::nameComparator()($x->record, $y->record);
                 });
+                $order = [[1, 'asc']];
                 break;
 
             case 'date_asc':
                 $rows = $rows->sort(static function (stdClass $x, stdClass $y): int {
                     return $x->time <=> $y->time;
                 });
+                $order = [[2, 'asc']];
                 break;
 
+            default:
             case 'date_desc':
                 $rows = $rows->sort(static function (stdClass $x, stdClass $y): int {
                     return $y->time <=> $x->time;
                 });
+                $order = [[2, 'asc']];
+                break;
         }
 
         if ($rows->isEmpty()) {
@@ -135,6 +140,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
                 'limit_high' => self::LIMIT_HIGH,
                 'rows'       => $rows,
                 'show_user'  => $show_user,
+                'order'      => $order,
             ]);
         }
 
