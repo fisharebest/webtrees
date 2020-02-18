@@ -222,8 +222,11 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $map = view('modules/pedigree-map/chart', [
             'data'     => $this->getMapData($request),
             'provider' => [
-                'name'    => "OpenStreetMap.Mapnik",
-                'options' => []
+                'url'    => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                'options' => [
+                    'attribution' => '<a href="https://www.openstreetmap.org/copyright">&copy; OpenStreetMap</a> contributors',
+                    'max_zoom'    => 19
+                ]
             ]
         ]);
 

@@ -126,11 +126,13 @@ use Fisharebest\Webtrees\View;
     "use strict";
 
     window.WT_OSM_ADMIN = (function () {
-        let baseData = {
+
+
+            let provider = <?= json_encode($provider) ?>;
+
+            let baseData = {
             minZoom:         2,
-            providerName:    "OpenStreetMap.Mapnik",
-            providerOptions: [],
-            I18N:            {
+            I18N: {
                 zoomInTitle: <?= json_encode(I18N::translate('Zoom in')) ?>,
                 zoomOutTitle: <?= json_encode(I18N::translate('Zoom out')) ?>,
                 reset: <?= json_encode(I18N::translate('Reset to initial map state')) ?>,
@@ -154,7 +156,7 @@ use Fisharebest\Webtrees\View;
                     zoomControl: false, // remove default
                 },
             );
-            L.tileLayer.provider(baseData.providerName, baseData.providerOptions).addTo(map);
+            L.tileLayer(provider.url, provider.options).addTo(map);
             L.control.zoom({ // Add zoom with localised text
                 zoomInTitle:  baseData.I18N.zoomInTitle,
                 zoomOutTitle: baseData.I18N.zoomOutTitle,

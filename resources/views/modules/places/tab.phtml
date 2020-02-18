@@ -86,7 +86,7 @@ use Fisharebest\Webtrees\I18N;
                 })
                 .addControl(new resetControl())
                 .addControl(newZoomControl)
-                .addLayer(L.tileLayer.provider(provider.name, provider.options))
+                .addLayer(L.tileLayer(provider.url, provider.options));
         };
 
         /**

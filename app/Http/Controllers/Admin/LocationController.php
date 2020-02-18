@@ -330,6 +330,13 @@ class LocationController extends AbstractAdminController
             'lng'         => $lng,
             'ref'         => $id,
             'data'        => $this->mapLocationData($id),
+            'provider'    => [
+                'url'     => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                'options' => [
+                    'attribution' => '<a href="https://www.openstreetmap.org/copyright">&copy; OpenStreetMap</a> contributors',
+                    'max_zoom'    => 19
+                ]
+            ],
         ]);
     }
 
