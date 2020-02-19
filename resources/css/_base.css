@@ -92,3 +92,9 @@ th.align-digits {
     /* Any wide content will have its own horizontal scrollbar */
     overflow-x: hidden;
 }
+
+/* Browsers only understand US English */
+[lang=en-AU] q,
+[lang=en-GB] q {
+    quotes: "‘" "’" "“" "”";
+}
