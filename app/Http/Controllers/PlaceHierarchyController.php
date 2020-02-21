@@ -94,8 +94,11 @@ class PlaceHierarchyController extends AbstractBaseController
             $content .= view('modules/place-hierarchy/map', [
                 'data'     => $this->mapData($place),
                 'provider' => [
-                    'name'    => 'OpenStreetMap.Mapnik',
-                    'options' => []
+                    'url'    => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    'options' => [
+                        'attribution' => '<a href="https://www.openstreetmap.org/copyright">&copy; OpenStreetMap</a> contributors',
+                        'max_zoom'    => 19
+                    ]
                 ]
             ]);
         }

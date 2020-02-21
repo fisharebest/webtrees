@@ -116,7 +116,6 @@ import 'jquery-colorbox';
 import 'wheelzoom';
 
 import 'leaflet';
-import 'leaflet-providers';
 import 'leaflet.markercluster';
 import 'beautifymarker';
 
