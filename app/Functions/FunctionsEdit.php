@@ -34,7 +34,6 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodeQuay;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeRela;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
-use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateMediaObjectModal;
@@ -52,6 +51,7 @@ use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ServerRequestInterface;
 use Ramsey\Uuid\Uuid;
@@ -68,14 +68,11 @@ use function implode;
 use function in_array;
 use function preg_match;
 use function preg_match_all;
-use function preg_replace;
 use function route;
-use function str_replace;
 use function strpos;
 use function strstr;
 use function strtolower;
 use function strtoupper;
-use function strtr;
 use function substr;
 use function trim;
 use function view;
@@ -574,7 +571,7 @@ class FunctionsEdit
             $html .=
                 '<div class="input-group">' .
                 '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route(CreateSubmitterModal::class, ['tree' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a submitter') . '">' . view('icons/add') . '</button></div>' .
-                view('components/select-submitter', ['id' => $id, 'name' => $name, 'submitter' => GedcomRecord::getInstance($value, $tree), 'tree' => $tree]) .
+                view('components/select-submitter', ['id' => $id, 'name' => $name, 'submitter' => Submitter::getInstance($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'TEMP') {
             $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => self::optionsTemples()]);

@@ -219,19 +219,30 @@ class Fact
     /**
      * Get the record to which this fact links
      *
-     * @return Individual|Family|Source|Repository|Media|Note|GedcomRecord|null
+     * @return Individual|Family|Source|Submitter|Repository|Media|Note|GedcomRecord|null
      */
     public function target()
     {
-        $xref = trim($this->value(), '@');
+        if (!preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $this->value(), $match)) {
+            return null;
+        }
+
+        $xref = $match[1];
+
         switch ($this->tag) {
             case 'FAMC':
             case 'FAMS':
                 return Family::getInstance($xref, $this->record()->tree());
             case 'HUSB':
             case 'WIFE':
+            case 'ALIA':
             case 'CHIL':
+            case '_ASSO':
                 return Individual::getInstance($xref, $this->record()->tree());
+            case 'ASSO':
+                return
+                    Individual::getInstance($xref, $this->record()->tree()) ??
+                    Submitter::getInstance($xref, $this->record()->tree());
             case 'SOUR':
                 return Source::getInstance($xref, $this->record()->tree());
             case 'OBJE':
@@ -240,6 +251,8 @@ class Fact
                 return Repository::getInstance($xref, $this->record()->tree());
             case 'NOTE':
                 return Note::getInstance($xref, $this->record()->tree());
+            case 'ANCI':
+            case 'DESI':
             case 'SUBM':
                 return Submitter::getInstance($xref, $this->record()->tree());
             default:

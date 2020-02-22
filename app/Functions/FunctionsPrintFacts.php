@@ -315,8 +315,8 @@ class FunctionsPrintFacts
                         break;
                     default:
                         if (preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $fact->value(), $match)) {
-                            $target = GedcomRecord::getInstance($match[1], $tree);
-                            if ($target) {
+                            $target = $fact->target();
+                            if ($target instanceof GedcomRecord) {
                                 echo '<div><a href="', e($target->url()), '">', $target->fullName(), '</a></div>';
                             } else {
                                 echo '<div class="error">', e($fact->value()), '</div>';
