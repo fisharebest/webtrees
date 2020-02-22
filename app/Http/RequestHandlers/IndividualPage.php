@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
@@ -245,11 +246,10 @@ class IndividualPage implements RequestHandlerInterface
         $individual = $fact->record();
 
         // Create a dummy record, so we can extract the formatted NAME value from it.
-        $dummy = new Individual(
+        $dummy = GedcomRecord::getInstance(
             'xref',
-            "0 @xref@ INDI\n1 DEAT Y\n" . $fact->gedcom(),
-            null,
-            $individual->tree()
+            $individual->tree(),
+            "0 @xref@ INDI\n1 DEAT Y\n" . $fact->gedcom()
         );
         $dummy->setPrimaryName(0); // Make sure we use the name from "1 NAME"
 

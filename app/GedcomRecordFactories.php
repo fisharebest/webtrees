@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submitter;
 use stdClass;
 
 class GedcomRecordFactories implements GedcomRecordFactoriesInterface {
@@ -134,24 +135,34 @@ class GedcomRecordFactories implements GedcomRecordFactoriesInterface {
     }
 
     switch ($type) {
-      case 'INDI':
-        $record = new Individual($xref, $gedcom, $pending, $tree);
-        break;
-      case 'FAM':
-        $record = new Family($xref, $gedcom, $pending, $tree);
-        break;
-      case 'SOUR':
-        $record = new Source($xref, $gedcom, $pending, $tree);
-        break;
-      case 'OBJE':
-        $record = new Media($xref, $gedcom, $pending, $tree);
-        break;
-      case 'REPO':
-        $record = new Repository($xref, $gedcom, $pending, $tree);
-        break;
-      case 'NOTE':
-        $record = new Note($xref, $gedcom, $pending, $tree);
-        break;
+      case Individual::RECORD_TYPE:
+          $record = new Individual($xref, $gedcom, $pending, $tree);
+          break;
+
+      case Family::RECORD_TYPE:
+          $record = new Family($xref, $gedcom, $pending, $tree);
+          break;
+
+      case Source::RECORD_TYPE:
+          $record = new Source($xref, $gedcom, $pending, $tree);
+          break;
+
+      case Media::RECORD_TYPE:
+          $record = new Media($xref, $gedcom, $pending, $tree);
+          break;
+
+      case Repository::RECORD_TYPE:
+          $record = new Repository($xref, $gedcom, $pending, $tree);
+          break;
+
+      case Note::RECORD_TYPE:
+          $record = new Note($xref, $gedcom, $pending, $tree);
+          break;
+
+      case Submitter::RECORD_TYPE:
+          $record = new Submitter($xref, $gedcom, $pending, $tree);
+          break;
+        
       default:
         $record = new GedcomRecord($xref, $gedcom, $pending, $tree);
         break;
