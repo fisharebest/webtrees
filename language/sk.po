@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-02-16 09:07+0000\n"
+"PO-Revision-Date: 2020-03-01 16:18+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -100,7 +100,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:255
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "Bolo stiahnutých %1$s KB za %2$s sekúnd."
+msgstr "Stiahlo sa %1$s KB za %2$s sekúnd."
 
 # I18N: placeholders are GEDCOM XREFs, such as R123
 #. I18N: placeholders are GEDCOM XREFs, such as R123
@@ -321,7 +321,7 @@ msgid "%s individual"
 msgid_plural "%s individuals"
 msgstr[0] "%s osoba"
 msgstr[1] "%s osoby"
-msgstr[2] "%s osoby"
+msgstr[2] "%s osôb"
 
 #: app/Controller/SearchController.php:349
 #, php-format
@@ -435,7 +435,7 @@ msgstr[2] "pred %s sekundami"
 #: message.php:300 message.php:303 message.php:305
 #, php-format
 msgid "%s sent you the following message."
-msgstr "%s vám zaslal následujúcu správu."
+msgstr "%s vám poslal/a nasledujúcu správu."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5914
 #, php-format
@@ -758,11 +758,17 @@ msgstr "<b>Upozornenie:</b> Súkromné informácie žijúcich osôb budú poskyt
 #. I18N: default option in list of themes
 #: admin_trees_config.php:976 admin_users.php:488 edituser.php:278
 msgid "<default theme>"
-msgstr "<prednastavená téma>"
+msgstr "<prednastavený motív>"
 
 #: login.php:409
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr "<div class=\"largeError\">Upozornenie:</div><div class=\"error\">Vyplnením a odoslaním formulára súhlasíte, že:<ul><li>budete chrániť súkromie žijúcich ľudí zobrazených na tomto webe</li><li>v dole uvedenom rámčeku vysvetlíte, ku ktorej osobe z rodokmeňa ste v akom príbuzenskom vzťahu alebo nám poskytnete informácie o niekom, kto by mal byť uvedený na našom webe.</li></ul></div>"
+msgstr ""
+"<div class=\"largeError\">Upozornenie:</div><div class=\"error\">Vyplnením a "
+"odoslaním tohoto formulára súhlasíte, že:<ul><li>budete chrániť súkromie "
+"žijúcich ľudí zobrazených na tomto webe</li><li>v dole uvedenom rámčeku "
+"vysvetlíte, ku ktorej osobe z rodokmeňa ste v akom príbuzenskom vzťahu alebo "
+"nám poskytnete informácie o niekom, kto by mal byť uvedený na tomto "
+"webe.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:413 app/Functions/FunctionsPrintFacts.php:545
@@ -866,7 +872,7 @@ msgstr "Zoznam úloh a aktivít, ktoré sú spojené s rodokmeňom."
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "Zoznam Židovských výročí úmrtí, ktoré nastanú v nejbližšej dobe."
+msgstr "Zoznam Židovských výročí úmrtí, ktoré nastanú v najbližšej dobe."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
@@ -896,16 +902,16 @@ msgstr "Zoznam stránok, ktoré boli zobrazované najčastejšie."
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
 msgid "A list of users and visitors who are currently online."
-msgstr "Zoznam uživateľov a návštevníkov ktorý sú pripojený."
+msgstr "Zoznam aktuálne pripojených užívateľov a návštevníkov."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 msgstr ""
-"Objekt multimédia je záznam v rodokmeni, ktorý obsahuje informácie o "
-"mediálnom súbore. Medzi takéto informácie môže patriť názov, poznámka o "
-"autorských právach, prepis, obmedzenia prístupu a podobne. Mediálny súbor, "
-"ako napr. fotografia alebo video, môžu byť uložené na tomto webserveri "
-"(lokálne) alebo na inom webserveri (vzdialene)."
+"Objekt média je záznam v rodokmeni, ktorý obsahuje informácie o mediálnom "
+"súbore. Medzi takéto informácie môže patriť názov, poznámka o autorských "
+"právach, prepis, obmedzenia prístupu a podobne. Mediálny súbor, ako napr. "
+"fotografia alebo video, môžu byť uložené na tomto serveri (lokálne) alebo na "
+"inom serveri (vzdialene)."
 
 #: login.php:264
 #, php-format
@@ -920,7 +926,9 @@ msgstr "Bolo zažiadané o nové heslo pre vaše uživateľské meno."
 #: login.php:561
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "Nový uživateľ (%1$s) požiadal o vytvorenie účtu (%2$s) a potvrdil svoju emailovú adresu (%3$s)."
+msgstr ""
+"Nový užívateľ (%1$s) požiadal o vytvorenie účtu (%2$s) a potvrdil svoju "
+"emailovú adresu (%3$s)."
 
 #: admin.php:624 admin_site_upgrade.php:79 login.php:116
 msgid "A new version of webtrees is available."
@@ -935,103 +943,105 @@ msgstr "Súkromná oblasť pre poznámky, alebo denník."
 #: login.php:322
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr "Potenciálny uživateľ sa zaregistroval na webtrees na %s."
+msgstr "Potenciálny užívateľ sa zaregistroval na webtrees na %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "Správa o predkoch konkrétnej osoby vo formáte stromu."
+msgstr "Protokol o predkoch konkrétnej osoby vo formáte stromu."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "Správa o predkoch konkrétnej osoby v popisnom štýle."
+msgstr "Protokol o predkoch konkrétnej osoby v popisnom štýle."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr "Správa o potomkoch konkrétnej osoby v popisnom štýle."
+msgstr "Protokol o potomkoch konkrétnej osoby v popisnom štýle."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:35
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr "Správa o podrobnostiach konkrétnej osoby."
+msgstr "Protokol o podrobnostiach konkrétnej osoby."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "Výpis faktov, ktoré sú v danom zdroji."
+msgstr "Protokol o faktoch, ktoré sú v doložené konkrétnym zdrojom."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr "Zoznam členov rodiny a podrobnosti o nich."
+msgstr "Protokol o členoch rodiny a ich údajoch."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr "Zoznam osôb, ktoré zomreli v danom čase, alebo mieste."
+msgstr "Protokol osôb, ktoré zomreli v danom čase, alebo mieste."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:35
 #: modules_v3/occupation_report/report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr "Zoznam osôb, ktoré majú zadané povolanie."
+msgstr "Protokol osôb, ktoré majú určité povolanie."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:35 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "Zoznam osôb, ktoré sa narodili v danom čase, alebo mieste."
+msgstr "Protokol osôb, ktoré sa narodili v danom čase, alebo mieste."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:35
 #: modules_v3/cemetery_report/report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr "Zoznam osôb, ktoré boli pochované v danom mieste."
+msgstr "Protokol osôb, ktoré boli pochované v danom mieste."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:35
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr "Zoznam osôb, ktoré sa zosobášili v danom čase, alebo mieste."
+msgstr "Protokol osôb, ktoré sa zosobášili v danom čase, alebo mieste."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr "Report nedávnych a čakajúcich zmien."
+msgstr "Protokol nedávnych a čakajúcich zmien."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:35
 #: modules_v3/individual_ext_report/report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr "Zoznam rodín, ktoré sú v blízkom príbuzenskom vzťahu ku konkrétnej osobe."
+msgstr ""
+"Protokol rodín, ktoré sú v blízkom príbuzenskom vzťahu ku konkrétnej osobe."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:35
 #: modules_v3/relative_ext_report/report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr "Zoznam osôb, ktoré sú v blízkom príbuzenskom vzťahu ku konkrétnej osobe."
+msgstr ""
+"Protokol osôb, ktoré sú v blízkom príbuzenskom vzťahu ku konkrétnej osobe."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:35
 msgid "A report of the information provided by a source."
-msgstr "Správa o informáciach, ktoré pochádzajú z konkrétneho zdroja."
+msgstr "Protokol o informáciach, ktoré pochádzajú z konkrétneho zdroja."
 
 #. I18N: Description of the “Missing data”
 #: app/Module/MissingFactsReportModule.php:35
 #: modules_v3/missing_facts_report/report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr "Zoznam chýbajúcich informácií osoby a jej príbuzných."
+msgstr "Protokol o chýbajúcich informáciách osoby a jej príbuzných."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:43
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr "Výpis dôležitých záznamov pre dané miesto alebo dátum."
+msgstr "Protokol základných životných údajov pre dané miesto alebo dátum."
 
 #: admin_users.php:523
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -1055,17 +1065,17 @@ msgstr "Lišta zobrazujúca abecedný zoznam všetkých osôb z rodokmeňa."
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr "Lišta zobrazuje najbližšiu rodinu a príbuzných osoby."
+msgstr "Bočný panel zobrazujúci blízke rodiny a príbuzných."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/ExtraInformationModule.php:34
 msgid "A sidebar showing non-genealogy information about an individual."
-msgstr "Lišta zobrazuje negenealogické údaje o osobe."
+msgstr "Bočný panel zobrazujúci negenealogické údaje o osobe."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:38
 msgid "A sidebar showing the descendants of an individual."
-msgstr "Lišta zobrazuje potomkov osoby."
+msgstr "Bočný panel zobrazujúci potomkov osoby."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
@@ -1107,6 +1117,8 @@ msgstr ""
 #: admin_trees_config.php:1105
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
 msgstr ""
+"Vodoznak je text, ktorý sa vkladá do obrázka, aby odradil od kopírovania bez "
+"povolenia."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:100
@@ -1160,7 +1172,7 @@ msgstr "ALPHABET_upper=AÁÄBCČDĎEÉFGHIÍJKLĽĹMNŇOÓÔPQRŔSŠTŤUÚVWXYÝ
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:307
 msgid "API key"
-msgstr ""
+msgstr "API-kľúč"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:81
@@ -1209,7 +1221,7 @@ msgstr "Skratka"
 
 #: edit_changes.php:181 edit_changes.php:189
 msgid "Accept"
-msgstr "Prijať"
+msgstr "Schváliť"
 
 #: edit_changes.php:214 edit_changes.php:225
 msgid "Accept all changes"
@@ -1410,7 +1422,7 @@ msgstr "Pridať rolovacie tlačítko ak je obsah veľký"
 #: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1118
 #: app/Module/NotesTabModule.php:112
 msgid "Add a shared note"
-msgstr "Pridať novú zdieľanú poznámku"
+msgstr "Pridať zdieľanú poznámku"
 
 #: app/Module/RelativesTabModule.php:271
 msgid "Add a son or daughter"
@@ -1494,7 +1506,7 @@ msgstr "Pridať ďalšie polia"
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
 msgid "Add narrative stories to individuals in the family tree."
-msgstr "Pridať príbeh ku konkrétnej osobe v rodokmeni."
+msgstr "Záložka, ktorá môže pridať príbeh ku konkrétnej osobe v rodokmeni."
 
 #: admin_trees_manage.php:282
 msgid "Add spaces where long lines were wrapped"
@@ -1504,7 +1516,7 @@ msgstr "Pridať medzery na miestach, kde boli zalomené dlhé riadky"
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:435
 #: app/Module/ClippingsCartModule.php:798
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Pridať k názvom súborov GEDCOM cestu médií"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:919
@@ -1528,11 +1540,11 @@ msgstr "Pridať k schránke výstrižkov"
 #. I18N: A configuration setting
 #: admin_trees_config.php:720
 msgid "Add unique identifiers"
-msgstr ""
+msgstr "Pridať jedinečné identifikátory"
 
 #: admin_trees_manage.php:540
 msgid "Add unlinked records"
-msgstr "Pridať nezávislé záznamy"
+msgstr "Pridať neprepojené záznamy"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1100
@@ -1576,7 +1588,7 @@ msgstr "Administrátorský účet"
 
 #: admin_users.php:495
 msgid "Administrator comments on user"
-msgstr "Poznámky admina k uživateľovi"
+msgstr "Poznámky administrátora k užívateľovi"
 
 #: admin.php:666
 msgid "Administrators"
@@ -1585,17 +1597,17 @@ msgstr "Administrátori"
 #: app/GedcomCode/GedcomCodePedi.php:59
 msgctxt "Female pedigree"
 msgid "Adopted"
-msgstr "Adoptovaný(a)"
+msgstr "Adoptovaná"
 
 #: app/GedcomCode/GedcomCodePedi.php:57
 msgctxt "Male pedigree"
 msgid "Adopted"
-msgstr "Adoptovaný(a)"
+msgstr "Adoptovaný"
 
 #: app/GedcomCode/GedcomCodePedi.php:61
 msgctxt "Pedigree"
 msgid "Adopted"
-msgstr "Adoptovaný(a)"
+msgstr "Adoptovaný(á)"
 
 #: app/GedcomCode/GedcomCodeAdop.php:52
 msgid "Adopted by both parents"
@@ -1772,7 +1784,7 @@ msgstr "Vek pri narodení dieťaťa"
 
 #: admin_trees_config.php:403
 msgid "Age at which to assume an individual is dead"
-msgstr "Vek, od ktorého je možno osobu považovať za mŕtvu"
+msgstr "Vek, od ktorého je možné považovať osobu za mŕtvu"
 
 #: statistics.php:338
 msgid "Age between husband and wife"
@@ -1887,7 +1899,7 @@ msgstr "Všetky fakty a udalosti"
 
 #: admin_trees_config.php:1736
 msgid "All family facts"
-msgstr "Všetky rodinné fakty"
+msgstr "Všetky fakty rodiny"
 
 #: login.php:415
 msgid "All fields must be completed."
@@ -1911,11 +1923,11 @@ msgstr "Všetky záznamy"
 
 #: admin_trees_config.php:1943
 msgid "All repository facts"
-msgstr ""
+msgstr "Všetky fakty archívu"
 
 #: admin_trees_config.php:1854
 msgid "All source facts"
-msgstr ""
+msgstr "Všetky fakty zdroja"
 
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:32
@@ -1925,7 +1937,7 @@ msgstr "Povoľuje iným modulom písať text pomocou „WYSIWYG“ editora namie
 #. I18N: A configuration setting
 #: admin_trees_config.php:1575
 msgid "Allow users to see raw GEDCOM records"
-msgstr "Umožniť uživateľom prezerať čisté GEDCOM záznamy"
+msgstr "Umožniť užívateľom prezerať neupravené GEDCOM záznamy"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:266
@@ -1967,6 +1979,8 @@ msgstr "Položka FAQ môže byť zobrazovaná buď len v jednom rodokmeni, alebo
 #: admin_site_config.php:498
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
 msgstr ""
+"Skôr, než sa užívateľ môže prihlásiť, musí administrátor potvrdiť nový "
+"užívateľský účet a nastaviť úroveň prístupu."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
@@ -1976,7 +1990,7 @@ msgstr "Alternatíva k záložke „média“, ako aj pokročilejší prehliada�
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:39
 msgid "An alternative way to display charts."
-msgstr "Alternatívna cesta pre zobrazenie grafov."
+msgstr "Alternatívny spôsob zobrazenia schém."
 
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:44
@@ -1988,12 +2002,12 @@ msgstr ""
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:32
 msgid "An alternative way to select a new theme."
-msgstr "Alternatívna cesta pre výber novej témy."
+msgstr "Alternatívny spôsob pre výber motívu."
 
 #. I18N: Description of the “Sign in” module
 #: app/Module/LoginBlockModule.php:34
 msgid "An alternative way to sign in and sign out."
-msgstr "Alternatívna cesta pre prihlásenie a odhlásenie."
+msgstr "Alternatívny spôsob prihlásenia a odhlásenia."
 
 #: app/Functions/FunctionsEdit.php:910
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
@@ -2011,17 +2025,19 @@ msgstr "Menu pre úpravu údajov o osobách, rodinách, zdrojoch a podobne."
 #: admin_site_upgrade.php:282 admin_site_upgrade.php:304
 #: admin_site_upgrade.php:314 admin_site_upgrade.php:398
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "Nastala chyba pri rozbaľovaní súboru."
 
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr ""
+msgstr "Schéma predkov a potomkov osoby vo forme presýpacích hodín."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr "Interaktívny strom zobrazí všetkých predkov a potomkov osoby."
+msgstr ""
+"Záložka obsahujúca interaktívny strom, ktorý zobrazuje všetkých predkov a "
+"potomkov osoby."
 
 #: setup.php:507
 msgid "An unexpected database error occurred."
@@ -2110,6 +2126,7 @@ msgstr "Antigua a Barbuda"
 #: login.php:170
 msgid "Anyone with a user account can access this website."
 msgstr ""
+"K tejto webovej stránke má prístup každý, kto má vytvorený užívateľský účet."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:93
@@ -2126,17 +2143,17 @@ msgstr "Použiť automatické úpravy na vaše genealogické údaje."
 #: app/Module/ClippingsCartModule.php:777
 #: app/Module/ClippingsCartModule.php:786
 msgid "Apply privacy settings"
-msgstr "Použiť nastavenie utajenia"
+msgstr "Použiť nastavenia obmedzenia prístupu"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2154
 msgid "Apply these preferences to all family trees"
-msgstr "Použiť tieto predvoľby vo všetkých rodokmeňoch"
+msgstr "Použiť tieto nastavenia vo všetkých rodokmeňoch"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2161
 msgid "Apply these preferences to new family trees"
-msgstr "Použiť tieto predvoľby v nových rodokmeňoch"
+msgstr "Použiť tieto nastavenia v nových rodokmeňoch"
 
 #: admin_users.php:100
 #, php-format
@@ -2179,7 +2196,7 @@ msgstr "apríl"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:76
 msgid "Aqua Marine"
-msgstr "Aqua Marine"
+msgstr "Akvamarín"
 
 #: app/Controller/IndividualController.php:167
 #: app/Functions/FunctionsPrintFacts.php:201
@@ -2191,7 +2208,9 @@ msgstr "Ste si istý, že chcete zmazať tento fakt?"
 
 #: app/Module/UserMessagesModule.php:96 app/Module/UserMessagesModule.php:139
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
-msgstr "Ste si istý, že chcete zmazať túto správu? Nebude možné ju neskôr získať späť."
+msgstr ""
+"Ste si istý, že chcete zmazať túto správu? Neskôr ju nebude možné získať "
+"späť."
 
 #: admin_media.php:318 admin_media.php:529 admin_site_access.php:193
 #: admin_trees_manage.php:417 admin_trees_manage.php:428 admin_users.php:210
@@ -2209,15 +2228,16 @@ msgstr "Ste si istý, že chcete zmazať túto správu? Nebude možné ju neskô
 #: edituser.php:320
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "Určite chcete odstrániť „%s“?"
+msgstr "Naozaj chcete odstrániť „%s“?"
 
 #: edit_changes.php:236
 msgid "Are you sure you want to reject all the changes to this family tree?"
 msgstr ""
+"Ste si istý, že chcete zamietnuť všetky zmeny vykonané v tomto rodokmeni?"
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "Ste si istý, že chcete odstrániť prepojenia k tomuto objektu médií?"
 
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
@@ -2268,7 +2288,7 @@ msgstr ""
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:77
 msgid "Ash"
-msgstr "Ash"
+msgstr "Popol"
 
 #: statistics.php:691
 msgid "Asia"
@@ -2383,7 +2403,7 @@ msgstr "Autor poslednej zmeny"
 
 #: admin_users.php:441
 msgid "Automatically accept changes made by this user"
-msgstr "Automaticky schváliť zmeny vykonané týmto uživateľom"
+msgstr "Automaticky schváliť zmeny vykonané týmto užívateľom"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1474
@@ -2452,6 +2472,8 @@ msgstr "Priemerný počet detí na rodinu"
 #: admin_trees_config.php:627 admin_trees_manage.php:680
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
 msgstr ""
+"Vyhnite sa medzerám a interpunkčným znamienkam. Dobrou voľbou je napr. "
+"priezvisko."
 
 #: app/Date/JalaliDate.php:191
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2653,7 +2675,7 @@ msgstr "Bielorusko"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:78
 msgid "Belgian Chocolate"
-msgstr "Belgian Chocolate"
+msgstr "Belgická čokoláda"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6690
@@ -2839,17 +2861,17 @@ msgstr "Narodenie"
 #: app/GedcomCode/GedcomCodePedi.php:50
 msgctxt "Female pedigree"
 msgid "Birth"
-msgstr "Narodenie"
+msgstr "Biologická"
 
 #: app/GedcomCode/GedcomCodePedi.php:48
 msgctxt "Male pedigree"
 msgid "Birth"
-msgstr "Narodenie"
+msgstr "Biologický"
 
 #: app/GedcomCode/GedcomCodePedi.php:52
 msgctxt "Pedigree"
 msgid "Birth"
-msgstr "Narodenie"
+msgstr "Biologický"
 
 #: app/Stats.php:1658 statistics.php:565
 msgid "Birth by country"
@@ -2972,12 +2994,12 @@ msgstr "Bloky"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:79
 msgid "Blue Lagoon"
-msgstr "Blue Lagoon"
+msgstr "Modrá lagúna"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:80
 msgid "Blue Marine"
-msgstr "Blue Marine"
+msgstr "Námornícka modrá"
 
 #: message.php:127
 msgid "Body"
@@ -3441,15 +3463,19 @@ msgstr "Príčina smrti"
 
 #: admin_trees_manage.php:767 admin_trees_renumber.php:286
 msgid "Caution! This may take a long time. Be patient."
-msgstr "Pozor! Môže to trvať dlho. Buďte trpezliví."
+msgstr "Pozor! Môže to trvať dlho. Prosím, buďte trpezliví."
 
 #: admin_site_upgrade.php:138
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
 msgstr ""
+"Pozor: staré moduly nemusia fungovať, alebo dokonca môžu spôsobiť "
+"nefunkčnosť webtrees."
 
 #: admin_site_upgrade.php:202
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
 msgstr ""
+"Pozor: staré motívy nemusia fungovať, dokonca môžu obmedziť funkčnosť "
+"webtrees."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6728
@@ -3528,7 +3554,7 @@ msgstr "Zmeniť vlajku"
 
 #: admin_users.php:216
 msgid "Change the blocks on this user’s “My page”"
-msgstr ""
+msgstr "Zmeniť bloky na tejto užívateľskej „Mojej stránke“"
 
 #: admin_trees_manage.php:408 index_edit.php:50
 msgid "Change the “Home page” blocks"
@@ -3568,7 +3594,7 @@ msgstr[2] "Zmenené za posledných %s dní"
 
 #: admin_trees_manage.php:529
 msgid "Changes log"
-msgstr "Vykonané zmeny"
+msgstr "Protokol zmien"
 
 #. I18N: gedcom tag CHAR
 #: app/GedcomTag.php:270
@@ -3598,17 +3624,17 @@ msgstr "Schémy"
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:327
 msgid "Check file permissions…"
-msgstr ""
+msgstr "Preverovanie oprávnení pre súbory…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:114
 msgid "Check for custom modules…"
-msgstr ""
+msgstr "Preverovanie užívateľských modulov…"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:155
 msgid "Check for custom themes…"
-msgstr ""
+msgstr "Preverovanie užívateľských motívov…"
 
 #: admin_trees_check.php:33 admin_trees_manage.php:499
 msgid "Check for errors"
@@ -3617,7 +3643,7 @@ msgstr "Vyhľadať chyby"
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:94
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "Kontrolujem čakajúce zmeny…"
 
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 msgid "Check the access rights on this folder."
@@ -3633,7 +3659,7 @@ msgstr "Kontrola kapacity servera"
 
 #: setup.php:114
 msgid "Checking server configuration"
-msgstr "Kontrolovať konfiguráciu serveru"
+msgstr "Kontroluje sa konfigurácia servera"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:131
@@ -3713,7 +3739,7 @@ msgstr "Čína"
 
 #: reportengine.php:116 reportengine.php:120
 msgid "Choose a report to run"
-msgstr "Vybrať správu, ktorá sa má vytvoriť"
+msgstr "Vybrať protokol, ktorý sa má vytvoriť"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
@@ -3727,7 +3753,7 @@ msgstr "Vyberte obrázok náhľadu, ktorý chcete nahrať. I keď sú náhľady 
 
 #: admin_site_config.php:131
 msgid "Choose user defined welcome text typed below"
-msgstr "Vybrať uživateľom definovaný text uložený pod týmto políčkom"
+msgstr "Vybrať užívateľom definovaný text uložený nižšie"
 
 #: addmedia.php:522
 msgid "Choose: "
@@ -3893,12 +3919,12 @@ msgstr "Kokosové ostrovy"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:81
 msgid "Coffee and Cream"
-msgstr "Coffee and Cream"
+msgstr "Káva a šľahačka"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:82
 msgid "Cold Day"
-msgstr "Cold Day"
+msgstr "Chladný deň"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6721
@@ -3946,7 +3972,7 @@ msgstr "Civilný sobáš"
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:38
 msgid "Communicate directly with other users, using private messages."
-msgstr "Komunikujte priamo s ďalšími uživateľmi pomocou súkromných správ."
+msgstr "Komunikujte priamo s ďalšími užívateľmi pomocou súkromných správ."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6722
@@ -4004,7 +4030,7 @@ msgstr "Kontaktné informácie"
 
 #: edituser.php:294
 msgid "Contact method"
-msgstr ""
+msgstr "Spôsob kontaktu"
 
 #: search_advanced.php:159 search_advanced.php:221 search_advanced.php:236
 #: search_advanced.php:257 search_advanced.php:272
@@ -4056,7 +4082,7 @@ msgstr "Cookove ostrovy"
 
 #: app/Theme/AbstractTheme.php:345
 msgid "Cookies"
-msgstr ""
+msgstr "Koláčiky (cookies)"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:143
@@ -4086,6 +4112,8 @@ msgstr "Súbory sa kopírujú …"
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
 msgstr ""
+"Kopírujú sa tieto súbory do priečinka %s, kde nahradia tie, ktoré majú "
+"rovnaký názov."
 
 #. I18N: gedcom tag COPR
 #: app/GedcomTag.php:322
@@ -4104,7 +4132,9 @@ msgstr "Firma"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:39
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "Opraviť záznamy NAME v tvare 'Ján/FERKO/' alebo 'Ján /FERKO', ktoré boli vytvorené staršími genealogickými programami."
+msgstr ""
+"Opravuje záznamy NAME v tvare 'Ján/FERKO/' alebo 'Ján /FERKO', ktoré boli "
+"vytvorené staršími genealogickými programami."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6724
@@ -4166,13 +4196,13 @@ msgstr "Vytvoriť archív"
 #: app/Functions/FunctionsEdit.php:439 edit_interface.php:1328
 #: edit_interface.php:1364
 msgid "Create a shared note"
-msgstr "Založiť novú zdieľanú poznámku"
+msgstr "Vytvoriť zdieľanú poznámku"
 
 #: app/Functions/FunctionsEdit.php:628
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
 msgid "Create a shared note using the census assistant"
-msgstr "Vytvoriť novú zdieľanú poznámku pomocou asistenta"
+msgstr "Vytvoriť zdieľanú poznámku pomocou asistenta sčítania"
 
 #: app/Functions/FunctionsEdit.php:461 edit_interface.php:1176
 #: edit_interface.php:1259
@@ -4181,7 +4211,7 @@ msgstr "Vytvoriť nový zdroj"
 
 #: admin_site_access.php:218
 msgid "Create a website access rule"
-msgstr ""
+msgstr "Vytvoriť pravidlo prístupu ku stránke"
 
 #: edit_interface.php:730
 msgid "Create an individual"
@@ -4194,6 +4224,8 @@ msgstr "Vytvorte vlastnú schému"
 #: admin_trees_manage.php:757
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
 msgstr ""
+"Vytvoriť, aktualizovať a zmazať rodokmeň pre každý GEDCOM súbor v priečinku "
+"data."
 
 #. I18N: gedcom tag CREM
 #: app/GedcomTag.php:330 modules_v3/family_group_report/report.xml:315
@@ -4346,7 +4378,7 @@ msgstr "Aktuálny"
 
 #: app/Module/HtmlBlockModule.php:285
 msgid "Custom"
-msgstr "Uživateľský"
+msgstr "Vlastná"
 
 #: app/Functions/FunctionsPrint.php:625 calendar.php:281
 msgid "Custom event"
@@ -4354,11 +4386,11 @@ msgstr "Vlastná udalosť"
 
 #: app/Functions/FunctionsPrint.php:624
 msgid "Custom fact"
-msgstr ""
+msgstr "Užívateľský fakt"
 
 #: admin_modules.php:191 admin_site_upgrade.php:126 admin_site_upgrade.php:129
 msgid "Custom module"
-msgstr ""
+msgstr "Užívateľský modul"
 
 #: find.php:533
 msgid "Custom tags"
@@ -4366,12 +4398,12 @@ msgstr "Užívateľské tagy"
 
 #: admin_site_upgrade.php:187 admin_site_upgrade.php:190
 msgid "Custom theme"
-msgstr ""
+msgstr "Užívateľský motív"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:478
 msgid "Custom welcome text"
-msgstr "Uživateľský uvítací text"
+msgstr "Vlastný uvítací text"
 
 #: app/Theme/AbstractTheme.php:1078 app/Theme/AbstractTheme.php:1080
 msgid "Customize this page"
@@ -4405,12 +4437,12 @@ msgstr "Dallas, Texas, USA"
 #. I18N: A summary of the system status
 #: admin.php:482
 msgid "Dashboard"
-msgstr ""
+msgstr "Prehľad"
 
 #. I18N: gedcom tag DATA
 #: admin_site_change.php:390 app/GedcomTag.php:342
 msgid "Data"
-msgstr "Dáta"
+msgstr "Údaje"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:181
@@ -4455,22 +4487,22 @@ msgstr "Rozdiely dátumov"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:176
 msgid "Date of LDS baptism"
-msgstr "Dátum LDS krstu"
+msgstr "Dátum mormónskeho krstu (LDS baptism)"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:778
 msgid "Date of LDS child sealing"
-msgstr ""
+msgstr "Dátum pečatenia dieťaťa (LDS child sealing)"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:414
 msgid "Date of LDS endowment"
-msgstr ""
+msgstr "Dátum obdarovania (LDS endowment)"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:470
 msgid "Date of LDS spouse sealing"
-msgstr ""
+msgstr "Dátum pečatenia partnera (LDS spouse sealing)"
 
 #: app/GedcomTag.php:132
 msgid "Date of adoption"
@@ -4974,13 +5006,13 @@ msgstr "Implicitná schéma"
 
 #: admin_trees_manage.php:438
 msgid "Default family tree"
-msgstr "Implicitný rodokmeň"
+msgstr "Predvolený rodokmeň"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:654 app/Module/WelcomeBlockModule.php:58
 #: edituser.php:196
 msgid "Default individual"
-msgstr "Implicitná osoba"
+msgstr "Východzia osoba"
 
 #: app/Module/GoogleMapsModule.php:321
 msgid "Default map type"
@@ -4999,7 +5031,7 @@ msgstr "Implicitné generácie vývodu"
 #. I18N: A configuration setting
 #: admin_site_config.php:250 admin_trees_config.php:973
 msgid "Default theme"
-msgstr "Úvodná téma"
+msgstr "Prednastavený motív"
 
 #. I18N: gedcom tag _DEG
 #: app/GedcomTag.php:1455
@@ -5055,7 +5087,7 @@ msgstr "Zmazať"
 
 #: app/Module/GoogleMapsModule.php:3677
 msgid "Delete all existing geographic data before importing the file."
-msgstr "Zmazať všetky existujúce geiografické údaje pred importovaním súboru."
+msgstr "Zmazať všetky existujúce geografické údaje pred importovaním súboru."
 
 #. I18N: Menu entry
 #: admin_users.php:664 app/Theme/AdministrationTheme.php:166
@@ -5069,7 +5101,7 @@ msgstr "Zmazať vybrané správy"
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:424
 msgid "Delete temporary files…"
-msgstr ""
+msgstr "Mažú sa dočasné súbory…"
 
 #: admin_modules.php:103
 msgid "Delete the preferences for this module."
@@ -5081,11 +5113,13 @@ msgstr "Zmazať meno"
 
 #: edituser.php:321
 msgid "Delete your account"
-msgstr ""
+msgstr "Zmazať svoj účet"
 
 #: app/Controller/FamilyController.php:95
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr "Zmazanie rodiny spôsobí zrušenie spojenia medzi osobami, ktoré sú členmi rodiny, ale nezruší ich záznamy. Ste si istý, že chcete zmazať túto rodinu?"
+msgstr ""
+"Zmazanie rodiny spôsobí zrušenie prepojenia medzi osobami, ktoré sú členmi "
+"rodiny, ale nezruší ich záznamy. Ste si istý, že chcete zmazať túto rodinu?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6718
@@ -5105,6 +5139,8 @@ msgstr "Denver, Colorado, USA"
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
 msgstr ""
+"V závislosti na konfigurácii vášho servera, bude možné vykonať aktualizáciu "
+"automaticky."
 
 #: familybook.php:90
 msgid "Descendant generations"
@@ -5156,7 +5192,7 @@ msgstr "META tag s popisom"
 
 #: app/Module/CensusAssistantModule.php:316
 msgid "Description unavailable"
-msgstr ""
+msgstr "Popis nie je k dispozícii"
 
 #. I18N: gedcom tag DEST
 #: app/GedcomTag.php:370
@@ -5172,6 +5208,8 @@ msgstr "Detaily"
 #: admin_site_config.php:497
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr ""
+"Detaily o novom užívateľovi sa zašlú genealogickému kontaktu príslušného "
+"kontaktu."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:155
@@ -5272,7 +5310,13 @@ msgstr "Rozdiely"
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:706
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past. Where possible, you should enter dates using the calendar in which the event was originally recorded. You can then specify a conversion, to show these dates in a more familiar calendar. If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
-msgstr "Rôzne kalendárne systémy sú použité v rôznych častiach sveta a hodne ich bolo používané v minulosti. Ak je to možné, mali by ste zadávať údaje do takého kalendára, v ktorom sa udalosť pôvodne zaznamenala. Môžete určiť konverziu, aby ste údaje zobrazili vo vhodnejšom kalendári. Ak pravidelne používate dva kalendáre, môžete určiť dve konverzie a údaje sa prevedú na oba vybrané kalendáre."
+msgstr ""
+"V rôznych častiach sveta sa používajú rôzne kalendáre a aj v minulosti sa "
+"používali rôzne systémy kalendáru. Ak je to možné, mali by ste zadávať údaje "
+"v takom kalendári, v ktorom bola udalosť pôvodne zaznamenaná. Môžete určiť "
+"konverziu, aby sa údaje zobrazili vo vhodnejšom kalendári. Ak pravidelne "
+"používate dva kalendáre, môžete určiť dve konverzie a údaje sa prevedú na "
+"oba vybrané kalendáre."
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
@@ -5288,11 +5332,11 @@ msgstr "Predkovia po priamej línii a ich rodiny"
 
 #: admin_site_upgrade.php:137
 msgid "Disable these modules"
-msgstr ""
+msgstr "Deaktivovať tieto moduy"
 
 #: admin_site_upgrade.php:201
 msgid "Disable these themes"
-msgstr ""
+msgstr "Deaktivovať tieto motívy"
 
 #. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #: app/I18N.php:183
@@ -5308,7 +5352,7 @@ msgstr "Zobraziť a spravovať obľúbené stránky rodokmeňa."
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:34
 msgid "Display and manage a user’s favorite pages."
-msgstr "Zobraziť a spravovať uživateľove obľúbené stránky."
+msgstr "Zobraziť a spravovať užívateľove obľúbené stránky."
 
 #. I18N: gedcom tag DIV
 #: app/GedcomTag.php:374
@@ -5340,12 +5384,12 @@ msgstr "Nevytvárajte nové lokality, ale naimportujte koordináty existujúcich
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
 msgid "Do not seal, previous sealing canceled"
-msgstr "Do not seal, previous sealing canceled (LDS)"
+msgstr "Nepečatiť, predchádzajúce pečatenie bolo zrušené (LDS)"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:84
 msgid "Do not seal: unauthorized"
-msgstr "Do not seal: unauthorized (LDS)"
+msgstr "Nepečatiť: neautorizované (LDS)"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1920
@@ -5372,7 +5416,7 @@ msgstr "Stiahnúť"
 #: admin_site_upgrade.php:243
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "Sťahujem %s…"
 
 #: mediaviewer.php:143
 msgid "Download file"
@@ -5394,7 +5438,7 @@ msgstr "Duodi"
 
 #: admin_users.php:73 edituser.php:60 login.php:289
 msgid "Duplicate email address. A user with that email already exists."
-msgstr "Duplicitná adresa. Uživateľ s touto adresou už existuje."
+msgstr "Duplicitná e-mailová adresa. Užívateľ s týmto e-mailom už existuje."
 
 #: admin_users.php:71 edituser.php:58 login.php:287
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
@@ -5404,8 +5448,8 @@ msgstr "Duplicitné meno užívateľa. Užívateľ s týmto užívateľským men
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr ""
 "Každý zdroj zaznamenáva určité udalosti, všeobecne pre daný časový interval "
-"a miesto (mestský obvod, farnosť). Napríklad Sčítanie zaznamenáva sčítacie "
-"udalosti a cirkevné záznamy uchovávajú dáta o narodeniach, svadbách a "
+"a miesto (mestský obvod, farnosť). Napríklad Sčítanie zaznamenáva udalosti "
+"sčítania a cirkevné záznamy uchovávajú dáta o narodeniach, svadbách a "
 "úmrtiach.<br><br>Vyberte udalosti, ktoré sú zaznamenané týmto zdrojom z "
 "poskytnutého zoznamu udalostí. Dátum by mal byť v špecifikovanom v rozsahu, "
 "napr. <i>FROM 1900 TO 1910</i>. Miesto je meno najnižšej jurisdikcie, ktorá "
@@ -5417,7 +5461,10 @@ msgstr ""
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "V každom uživateľskom účete môžete zapnúť možnosť „automaticky prijať zmeny“. V takomto prípade sa všetky zmeny vykonané uživateľom ihneď uložia. Mnoho administrátorov toto povoľuje pre svoj vlastný účet."
+msgstr ""
+"V každom užívateľskom účte môžete zapnúť možnosť „automaticky prijať zmeny“. "
+"V takomto prípade sa všetky zmeny vykonané užívateľom ihneď uložia. Mnoho "
+"administrátorov toto povoľuje pre svoj vlastný účet."
 
 #: statistics.php:129
 msgid "Earliest birth"
@@ -5485,7 +5532,7 @@ msgstr "Upraviť"
 
 #: admin_site_access.php:216
 msgid "Edit a website access rule"
-msgstr ""
+msgstr "Upraviť pravidlá prístupu ku stránke"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1611
@@ -5688,7 +5735,9 @@ msgstr "Povolené"
 #. I18N: Help text for the “Family tree” configuration setting
 #: admin_trees_config.php:370
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
-msgstr "Zapnutie tejto voľby donúti všetkých uživateľov prihlásiť sa do systému, aby si mohli zobraziť údaje na tejto stránke."
+msgstr ""
+"Zapnutím tejto voľby budú akékoľvek údaje na tejto stránke prístupné iba "
+"prihláseným užívateľom."
 
 #. I18N …of a range of addresses
 #: admin_site_access.php:264 admin_site_access.php:362
@@ -5707,7 +5756,7 @@ msgstr "Konečný dátum rozsahu zmien"
 #. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
 #: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "Endowment House"
-msgstr ""
+msgstr "Dom obdarovania (Endowment House)"
 
 #. I18N: gedcom tag ENGA
 #: app/GedcomTag.php:420 modules_v3/missing_facts_report/report.xml:20
@@ -5860,7 +5909,7 @@ msgstr "Export"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "Exportovať súbor GEDCOM"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:219
@@ -5874,7 +5923,7 @@ msgstr "Nastavenie exportu"
 #. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: admin_trees_config.php:443
 msgid "Extend privacy to dead individuals"
-msgstr "Rozšíriť utajenie na zomrelé osoby"
+msgstr "Rozšíriť obmedzenie prístupu na zomrelé osoby"
 
 #. I18N: “External files” are stored on other computers
 #: admin_media.php:637
@@ -5898,7 +5947,7 @@ msgstr "Farba očí"
 #. I18N: Name of a theme.
 #: app/Theme/FabTheme.php:172
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:34
@@ -5909,6 +5958,11 @@ msgstr "Často kladené otázky"
 #: app/Module/FrequentlyAskedQuestionsModule.php:444
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
 msgstr ""
+"Často kladené otázky (FAQ) sú zoznamom otázok a odpovedí, ktoré vám umožňujú "
+"vysvetliť vašim návštevníkom a užívateľom pravidlá, politiky a postupy na  "
+"tejto stránke. Otázky sa spravidla týkajú ochrany osobných údajov, "
+"autorských práv, užívateľských účtov, nevhodného obsahu, požiadaviek a "
+"dokladanie zdrojov, a pod."
 
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:438
@@ -6141,7 +6195,7 @@ msgstr "Rodina s adoptívnymi rodičmi"
 
 #: app/GedcomCode/GedcomCodePedi.php:131
 msgid "Family with foster parents"
-msgstr "Rodina s pestúnskymi rodičmi"
+msgstr "Rodina s pestúnmi"
 
 #: modules_v3/individual_ext_report/report.xml:441
 #: modules_v3/individual_report/report.xml:446
@@ -6157,12 +6211,12 @@ msgstr "Rodina s rodičmi"
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:139
 msgid "Family with rada parents"
-msgstr "Rodina s rodičmi „rada“ (vyskytuje sa len v arabskej kultúre)"
+msgstr "Rodina s rodičmi „radāʿ“ (vyskytuje sa len v arabskej kultúre)"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #: app/GedcomCode/GedcomCodePedi.php:135
 msgid "Family with sealing parents"
-msgstr "Family with sealing parents (LDS)"
+msgstr "Rodina s pečatiacimi rodičmi (LDS)"
 
 #: app/Theme/AbstractTheme.php:994
 msgid "Family with spouse"
@@ -6390,7 +6444,7 @@ msgstr "Nájsť špeciálny znak"
 
 #: relationship.php:132
 msgid "Find all possible relationships"
-msgstr ""
+msgstr "Nájsť všetky možné vzťahy"
 
 #: app/Functions/FunctionsPrint.php:687 app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
@@ -6401,7 +6455,7 @@ msgstr "Nájsť osobu"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr ""
+msgstr "Nájsť akýkoľvek vzťah"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6409,20 +6463,20 @@ msgstr "Nájsť duplikáty"
 
 #: relationship.php:134
 msgid "Find other relationships"
-msgstr ""
+msgstr "Nájsť iné vzťahy"
 
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Nájsť vzťahy cez predkov"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
-msgstr ""
+msgstr "Nájsť najbližšie vzťahy"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr ""
+msgstr "Nájsť neprepojené osoby"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
@@ -6516,6 +6570,8 @@ msgstr "Font"
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
+"Napríklad ak GEDCOM súbor obsahuje %1$s a webtrees očakáva %2$s v priečinku "
+"médií, potom musíte odstrániť %3$s."
 
 #: admin_users.php:600
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -6529,13 +6585,12 @@ msgstr "S otázkami k rodokmeňu sa obracajte na %s."
 #: app/Theme/AbstractTheme.php:307
 #, php-format
 msgid "For technical support and information contact %s."
-msgstr "Pre technickú podporu a ďalšie informácie kontaktujte: %s."
+msgstr "Pre technickú podporu a informácie kontaktujte: %s."
 
 #: app/Theme/AbstractTheme.php:285
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr ""
-"Pre technickú podporu, alebo s otázkami k rodokmeňu prosím kontaktujte: %s."
+msgstr "Pre technickú podporu, alebo s otázkami k rodokmeňu kontaktujte: %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:283
@@ -6557,27 +6612,27 @@ msgstr "Formát"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1557
 msgid "Format text and notes"
-msgstr ""
+msgstr "Formát textu a poznámok"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:163
 msgid "Fort Lauderdale, Florida, United States"
-msgstr ""
+msgstr "Fort Lauderdale, Florida, USA"
 
 #: app/GedcomCode/GedcomCodePedi.php:68
 msgctxt "Female pedigree"
 msgid "Foster"
-msgstr "Pestún"
+msgstr "V pestúnskej starostlivosti"
 
 #: app/GedcomCode/GedcomCodePedi.php:66
 msgctxt "Male pedigree"
 msgid "Foster"
-msgstr "Pestún"
+msgstr "V pestúnskej starostlivosti"
 
 #: app/GedcomCode/GedcomCodePedi.php:70
 msgctxt "Pedigree"
 msgid "Foster"
-msgstr "Pestún"
+msgstr "V pestúnskej starostlivosti"
 
 #: app/GedcomCode/GedcomCodeRela.php:120
 msgid "Foster child"
@@ -6688,7 +6743,7 @@ msgstr "Frimaire"
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:301 admin_site_logs.php:248
 msgid "From"
-msgstr ""
+msgstr "Od"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:99
@@ -6733,7 +6788,7 @@ msgstr "Chyby GEDCOM"
 #. I18N: gedcom tag _GEDF
 #: admin_trees_manage.php:597 app/GedcomTag.php:500 app/GedcomTag.php:1509
 msgid "GEDCOM file"
-msgstr "Súbory GEDCOM"
+msgstr "Súbor GEDCOM"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6752
@@ -6762,7 +6817,7 @@ msgstr "Ikona pohlavia v schémach"
 #. I18N: A configuration setting
 #: admin_trees_config.php:873
 msgid "Genealogy contact"
-msgstr "Kontaktný uživateľ pre tento rodokmeň"
+msgstr "Kontaktná osoba pre genealogické otázky"
 
 #. I18N: Individuals, sources, dates, places, etc.
 #: admin_trees_manage.php:462
@@ -6862,7 +6917,7 @@ msgstr "Germinal"
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:313
 msgid "Get an API key from Google."
-msgstr ""
+msgstr "Získajte API-kľúč od Google."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6756
@@ -6877,12 +6932,12 @@ msgstr "Džibraltar"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:173
 msgid "Gila Valley, Arizona, United States"
-msgstr ""
+msgstr "Gila Valley, Arizona, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:175
 msgid "Gilbert, Arizona, United States"
-msgstr ""
+msgstr "Gilbert, Arizona, USA"
 
 #: search.php:230
 msgid "Given name"
@@ -6942,6 +6997,8 @@ msgstr "Google Street View™"
 #: app/Module/GoogleMapsModule.php:311
 msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
 msgstr ""
+"Google povoľuje malý počet anonymných požiadaviek na mapu za deň. Ak "
+"potrebuje viac, potrebujete účet Google a API kľúč."
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:508
@@ -6968,7 +7025,7 @@ msgstr "Grécko"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:83
 msgid "Green Beam"
-msgstr "Green Beam"
+msgstr "Zelený lúč"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6765
@@ -7282,7 +7339,7 @@ msgstr "Schéma presýpacích hodín"
 #: app/Module/ChartsBlockModule.php:111
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr "Graf presýpacích hodín %s"
+msgstr "Schéma presýpacích hodín osoby %s"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:143
 msgid "Household"
@@ -7296,7 +7353,7 @@ msgstr "Houston, Texas, United States"
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:188
 msgid "How much recursion to use when searching for relationships"
-msgstr ""
+msgstr "Koľko rekurzie sa má použiť pri vyhľadávaní vzťahu medzi osobami"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6775
@@ -7365,7 +7422,9 @@ msgstr ""
 
 #: admin_users.php:391
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
-msgstr "Ak uživateľský účet správca vytvára, overovací e-mail sa neodošle a preto e-mailová adresa musí byť overená manuálne."
+msgstr ""
+"Ak vytvára užívateľský účet administrátor, overovací e-mail sa neodošle a "
+"preto sa musí overiť e-mailová adresa manuálne."
 
 #: help_text.php:228
 #, php-format
@@ -7395,7 +7454,10 @@ msgstr "Ak jepriezvisko neznáme použite prázdne lomky: <%s>Mary //<%s>"
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:415
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "Ak má táto osoba nejaké iné udalosti než úmrtie, pohreb alebo kremáciu v dobe, ktorá je dlhšia ako tento počet rokov, je považovaná za „žijúcu“. V tomto prípade sa za takéto udalosti pvoažujú ja zadané dátumy narodenia dieťaťa."
+msgstr ""
+"Ak má osoba nejaké udalosti (s výnimkou úmrtia, pohrebu alebo kremácie) za "
+"tu zadaných ostatných rokov, považuje sa „žijúcu“. Za takéto udalosti sa "
+"považujú aj narodenia detí."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1008
@@ -7431,10 +7493,14 @@ msgstr ""
 #: admin_trees_manage.php:285
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
 msgstr ""
+"Pokiaľ ste vytvorili tento GEDCOM súbor v genealogickom softvéri, ktorý "
+"vynecháva medzery pri zalamovaní dlhých riadkov, tak zvoľte túto možnosť, "
+"aby ste vsunuli späť chýbajúce medzery."
 
 #: login.php:349
 msgid "If you didn’t request an account, you can just delete this message."
-msgstr "Ak by ste tieto údaje nevyžadovali, môžete túto správu kľudne zmazať."
+msgstr ""
+"Ak ste nepožiadali o užívateľský účet, tak jednoducho zmažte túto správu."
 
 #: app/Module/GoogleMapsModule.php:3956
 msgid "If you have a large number of inactive places, it can be slow to generate the list."
@@ -7462,12 +7528,17 @@ msgstr "Ak zvolíte iný priečinok, tak musíte presunúť aj všetky súbory (
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1007
 msgid "If you select a different folder, you must also move any media files from the existing folder to the new one."
-msgstr "Keď zvolíte iný priečinok, musíte premiestniť všetky mediálne súbory z trejšieho umiestnenia do nového priečinka."
+msgstr ""
+"Keď zvolíte iný priečinok, musíte premiestniť všetky mediálne súbory zo "
+"súčasného umiestnenia do nového priečinka."
 
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: admin_trees_config.php:434
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
 msgstr ""
+"Keď povolíte zobraziť žijúce osoby návštevníkom, tak všetky ostatné "
+"obmedzenia prístupu sa ignorujú. Povoľte len v prípade, že všetky údaje vo "
+"vašom rodokmeni sú verejné."
 
 #: setup.php:185
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -7476,6 +7547,8 @@ msgstr "Ak sa pokúsite presiahnúť tieto limity, môžou sa vám zobraziť pr�
 #: admin_site_config.php:519
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
+"Ak používate jeden z nasledujúcich nástrojov pre sledovanie a analýzu, "
+"webtrees môže automaticky pridať sledovacie kódy (Tracking Codes)."
 
 #: setup.php:187
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
@@ -7492,7 +7565,7 @@ msgstr "Rozmery obrázka"
 
 #: admin_trees_config.php:1136
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Obrázky bez vodoznaku"
 
 #. I18N: gedcom tag IMMI
 #: app/GedcomTag.php:524
@@ -7559,9 +7632,9 @@ msgstr ""
 #: admin_trees_config.php:455
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 msgstr ""
-"V niektorých krajinách sa zákony o ochrane osobných údajov nevzťahujú iba na "
-"žijúce osoby, ale aj na nedávno zosnulé. Táto voľba vám umožní rozšíriť "
-"pravidlá utajenia na tých, ktorý sa narodili alebo zomreli v priebehu "
+"V niektorých krajinách sa zákony o ochrane osobných údajov vzťahujú nielen "
+"na žijúce, ale aj na nedávno zosnulé osoby. Táto voľba vám umožní rozšíriť "
+"obmedzenie prístupu aj na tých, ktorí sa narodili alebo zomreli v priebehu "
 "určitých rokov. Nechajte tieto hodnoty prázdne, ak nechcete používať túto "
 "funkcionalitu."
 
@@ -7734,11 +7807,11 @@ msgstr "Interaktívny strom %s"
 
 #: app/Functions/FunctionsEdit.php:247
 msgid "Internal messaging"
-msgstr "Interné správy"
+msgstr "Interné zasielanie odkazov"
 
 #: app/Functions/FunctionsEdit.php:248
 msgid "Internal messaging with emails"
-msgstr "Interné správy s e-mailami"
+msgstr "Interné odkazy spolu s e-mailami"
 
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1547
@@ -7797,6 +7870,8 @@ msgstr "Izrael"
 #: admin_site_upgrade.php:77 admin_site_upgrade.php:81
 msgid "It can take several minutes to download and install the upgrade. Be patient."
 msgstr ""
+"Stiahnutie a inštalácia aktualizácie môže trvať niekoľko minút. Buďte, "
+"prosím, trpezlivý."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6785
@@ -8003,7 +8078,7 @@ msgstr "jún"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:207
 msgid "Kansas City, Missouri, United States"
-msgstr ""
+msgstr "Kansas City, Missouri, USA"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6790
@@ -8130,17 +8205,17 @@ msgstr "LDS krst"
 #. I18N: gedcom tag SLGC. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:776
 msgid "LDS child sealing"
-msgstr ""
+msgstr "Pečatenie dieťaťa (LDS child sealing)"
 
 #. I18N: gedcom tag CONL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:318
 msgid "LDS confirmation"
-msgstr "LDS birmovanie"
+msgstr "LDS konfirmácia"
 
 #. I18N: gedcom tag ENDL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:412
 msgid "LDS endowment"
-msgstr ""
+msgstr "Obdarovanie LDS"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1324
@@ -8150,11 +8225,11 @@ msgstr "Zobraziť kód LDS obradu v schémach"
 #. I18N: gedcom tag SLGS. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:784
 msgid "LDS spouse sealing"
-msgstr ""
+msgstr "Pečatenie partnera (LDS spouse sealing)"
 
 #: app/Functions/FunctionsPrint.php:480
 msgid "LDS temple"
-msgstr "Chrám LDS (Temple)"
+msgstr "Chrám (LDS temple)"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:189
@@ -8330,7 +8405,7 @@ msgstr "Lesoto"
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "Letter"
-msgstr "List"
+msgstr "Letter (215,9 × 279,4 mm)"
 
 #: app/Module/GoogleMapsModule.php:384 app/Module/GoogleMapsModule.php:400
 #: app/Module/GoogleMapsModule.php:1438 app/Module/GoogleMapsModule.php:3444
@@ -8429,7 +8504,7 @@ msgstr "Litva"
 #: app/SurnameTradition.php:95
 msgctxt "Surname tradition"
 msgid "Lithuanian"
-msgstr "litovčina"
+msgstr "Litovská"
 
 #: app/Stats.php:1068 app/Stats.php:1070
 msgid "Living"
@@ -8451,11 +8526,11 @@ msgstr "Lokálne súbory"
 #. I18N: gedcom tag _LOC
 #: app/GedcomTag.php:1552
 msgid "Location"
-msgstr ""
+msgstr "Lokalita"
 
 #: app/Module/GoogleMapsModule.php:3896
 msgid "Location not removed: this location contains sub-locations"
-msgstr "Umiestnenie nebolo odstránené: toto umiestnenie obsahuje vnorené umiestnenie"
+msgstr "Miesto nebolo odstránené: toto miesto obsahuje vnorené miesto"
 
 #: app/GedcomCode/GedcomCodeRela.php:191
 msgid "Lodger"
@@ -8642,12 +8717,12 @@ msgstr "Manažéri"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:229
 msgid "Manaus, Brazil"
-msgstr ""
+msgstr "Manaus, Brazília"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:231
 msgid "Manhattan, New York, United States"
-msgstr ""
+msgstr "Manhattan, New York, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:233
@@ -8676,6 +8751,8 @@ msgstr ""
 #: admin_site_config.php:433
 msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
 msgstr ""
+"Mnohé servery vyžadujú, aby odosielajúci server sa identifikoval korektne, "
+"použitím platného doménového mena."
 
 #. I18N: gedcom tag MAP
 #. I18N: Type of media object
@@ -8713,6 +8790,9 @@ msgstr "marec"
 #: admin_trees_config.php:1565
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
 msgstr ""
+"Markdown je jednoduchý systém formátovania, ktorý sa používa na webových "
+"stránkach ako napr. Wikipedia. Používa nerušivé značky na vytváranie "
+"nadpisov, podnadpisov, zvýraznenia, kurzívy, zoznamov, tabuliek, atď."
 
 #. I18N: gedcom tag MARR
 #: app/GedcomTag.php:576 modules_v3/ahnentafel_report/report.xml:449
@@ -9067,7 +9147,7 @@ msgstr "Súbory médií k načítaniu"
 #: admin_trees_download.php:163
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "Pred názov mediálneho súboru bude pripojené %s."
 
 #: admin_media.php:623 admin_trees_config.php:1013
 msgid "Media files"
@@ -9086,7 +9166,7 @@ msgstr "Priečinky médií"
 #: admin_media.php:693 admin_trees_config.php:809 admin_trees_manage.php:577
 #: app/Controller/FamilyController.php:160 app/GedcomTag.php:650
 msgid "Media object"
-msgstr "Multimediálny objekt"
+msgstr "Mediálny objekt"
 
 #: admin.php:839 admin_trees_duplicates.php:144
 #: app/Functions/FunctionsPrintLists.php:1044
@@ -9127,7 +9207,7 @@ msgstr "Zdravotný stav"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:84
 msgid "Mediterranio"
-msgstr "Mediterranio"
+msgstr "Meditranská"
 
 #: setup.php:178
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
@@ -9199,7 +9279,7 @@ msgstr "Menu"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:85
 msgid "Mercury"
-msgstr "Mercury"
+msgstr "Ortuť"
 
 #: admin_trees_duplicates.php:174
 msgid "Merge"
@@ -9463,7 +9543,7 @@ msgstr "Mordad"
 
 #: app/Module/FamilyTreeNewsModule.php:137
 msgid "More news articles"
-msgstr ""
+msgstr "Viac článkov"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6811
@@ -9473,7 +9553,7 @@ msgstr "Maroko"
 #. I18N: Help text for the “Use password” site configuration setting
 #: admin_site_config.php:381
 msgid "Most SMTP servers require a password."
-msgstr "Veľa SMTP serverov vyžaduje heslo."
+msgstr "Väčšina SMTP serverov vyžaduje heslo."
 
 #: app/Module/FamilyTreeStatisticsModule.php:213
 #: app/Module/FamilyTreeStatisticsModule.php:429
@@ -9484,7 +9564,7 @@ msgstr "Najčastejšie priezviská"
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: admin_site_config.php:420
 msgid "Most servers do not use secure connections."
-msgstr "Veľa serverov nevyužíva zabezpečené pripojenie."
+msgstr "Väčšina serverov nevyužíva zabezpečené pripojenie."
 
 #: setup.php:282
 msgid "Most sites are configured to use localhost. This means that your database runs on the same computer as your web server."
@@ -9492,7 +9572,7 @@ msgstr "Väčšina stránok je nastavená na použitie localhostu. To znamená, 
 
 #: setup.php:286
 msgid "Most sites are configured to use the default value of 3306."
-msgstr "Väčšina stránok používa implicitné nastavenie 3306."
+msgstr "Väčšina stránok používa implicitnú hodnotu 3306."
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:36
@@ -9621,7 +9701,7 @@ msgstr "MySQL vrátil chybu: %s"
 
 #: admin_site_info.php:68
 msgid "MySQL variables"
-msgstr ""
+msgstr "Premenné MySQL"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6821
@@ -9892,11 +9972,11 @@ msgstr "Nie"
 
 #: admin_trees_manage.php:104 admin_trees_manage.php:125
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "Nebol prijatý žiaden súbor GEDCOM."
 
 #: admin_trees_manage.php:256
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "Nenašli sa žiadne súbory GEDCOM."
 
 #: app/Module/GoogleMapsModule.php:849
 msgid "No ancestors in the database."
@@ -9917,11 +9997,11 @@ msgstr "Bez kontaktu"
 
 #: admin_site_upgrade.php:144
 msgid "No custom modules are enabled."
-msgstr ""
+msgstr "Nie sú povolené žiadne užívateľské moduly."
 
 #: admin_site_upgrade.php:208
 msgid "No custom themes are enabled."
-msgstr ""
+msgstr "Nie sú povolené žiadne užívateľské motívy."
 
 #: admin_trees_duplicates.php:181
 msgid "No duplicates have been found."
@@ -9967,9 +10047,9 @@ msgstr "Neexistujú žiadne udalosti žijúcich osôb pre zajtrajšok."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Neexistujú žiadne udalosti pre žijúce osoby pre nasledujúci deň."
+msgstr[1] "Neexistujú žiadne udalosti pre žijúce osoby pre nasledujúce %s dni."
+msgstr[2] "Neexistujú žiadne udalosti pre žijúce osoby pre nasledujúcich %s dní."
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts exist for this family."
@@ -10006,7 +10086,7 @@ msgstr "Miesto nebolo nájdené"
 
 #: admin_trees_places.php:128
 msgid "No places have been found."
-msgstr ""
+msgstr "Nenašli sa žiadne miesta."
 
 #: admin_site_config.php:127
 msgid "No predefined text"
@@ -10031,11 +10111,11 @@ msgstr "Žiadni prihlásení ani anonymní užívatelia"
 
 #: app/Functions/FunctionsEdit.php:634
 msgid "No temple - living ordinance"
-msgstr "No LDS temple - Living Ordinance"
+msgstr "Bez chrámu - ordinácia zaživa"
 
 #: admin.php:622 admin_site_upgrade.php:61
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "Nie je k dispozícii informácia o aktualizácii."
 
 #: app/Stats.php:1739
 msgid "Nobody at all"
@@ -10044,7 +10124,7 @@ msgstr "nikdo"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:86
 msgid "Nocturnal"
-msgstr "Nocturnal"
+msgstr "Noc"
 
 #: admin_trees_download.php:178 app/Module/ClippingsCartModule.php:400
 #: app/Module/ClippingsCartModule.php:779
@@ -10075,7 +10155,10 @@ msgstr "Norfolk"
 
 #: admin_users.php:444
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr "Normálne musia byť všetky zmeny v rodokmeni schválené moderátorom. Táto voľba umožní užívateľovi urobiť zmeny bez nutnosti schválenia moderátorom."
+msgstr ""
+"Bežný postup je taký, že všetky zmeny v rodokmeni musia byť schválené "
+"moderátorom. Táto voľba umožní užívateľovi urobiť zmeny bez nutnosti "
+"schválenia moderátorom."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6856
@@ -10150,7 +10233,9 @@ msgstr ""
 
 #: admin_users.php:601
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
-msgstr "Poznámka: dlhšie cesty požadujú veľa výpočtov, ktoré môžu spomaliť web pre týchto uživateľov."
+msgstr ""
+"Poznámka: dlhšie cesty vyžadujú veľa výpočtov, ktoré môžu spôsobiť "
+"spomalenie webu pre týchto užívateľov."
 
 #. I18N: Name of a module
 #: app/Controller/SearchController.php:528 app/Module/NotesTabModule.php:34
@@ -10225,7 +10310,7 @@ msgstr "Počet generácií"
 #. I18N: ... to show in a list
 #: app/Module/TopGivenNamesModule.php:146
 msgid "Number of given names"
-msgstr ""
+msgstr "Počet krstných mien"
 
 #. I18N: gedcom tag NMR
 #: app/GedcomTag.php:634
@@ -10239,13 +10324,13 @@ msgstr "Počet mesiacov od posledného prihlásenia aby bol účet považovaný 
 #. I18N: ... to show in a list
 #: app/Module/TopPageViewsModule.php:159
 msgid "Number of pages"
-msgstr ""
+msgstr "Počet stránok"
 
 #. I18N: ... to show in a list
 #: app/Module/FamilyTreeStatisticsModule.php:439
 #: app/Module/TopSurnamesModule.php:157
 msgid "Number of surnames"
-msgstr ""
+msgstr "Počet priezvisk"
 
 #: app/GedcomCode/GedcomCodeRela.php:203
 msgid "Nurse"
@@ -10368,7 +10453,7 @@ msgstr "Najstaršia matka"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:87
 msgid "Olivia"
-msgstr "Olivia"
+msgstr "Oliva"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6846
@@ -10411,7 +10496,7 @@ msgstr "Voliteľné predpony a prípony"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Oquirrh Mountain, Utah, United States"
-msgstr ""
+msgstr "Oquirrh Mountain, Utah, USA"
 
 #: app/Date/JalaliDate.php:184
 msgctxt "Abbreviation for Persian month: Ordibehesht"
@@ -10620,7 +10705,7 @@ msgstr "Panama"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "Panama City, Panama"
-msgstr ""
+msgstr "Panama City, Panama"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:289
@@ -10670,7 +10755,7 @@ msgstr "Heslo musí obsahovať aspoň 6 znakov."
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
 msgid "Payson, Utah, United States"
-msgstr ""
+msgstr "Payson, Utah, USA"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report
@@ -10717,7 +10802,11 @@ msgstr "Čakajúce zmeny"
 
 #: help_text.php:309
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr "Čakajúce zmeny sa zobrazia iba vtedy, ak váš účet má oprávnenie upraviť dané údaje. Ak sa odhlásite, nebudú sa Vám viac zobrazovať. Čakajúce zmeny sa zobrazia iba na určitých stránkach. Nezobrazujú sa napríklad v zoznamoch, výpisoch alebo výsledkoch vyhľadávaní."
+msgstr ""
+"Čakajúce zmeny sa zobrazia iba vtedy, ak váš účet má oprávnenie upraviť dané "
+"údaje. Ak sa odhlásite, nebudú sa Vám viac zobrazovať. Čakajúce zmeny sa "
+"zobrazia iba na určitých stránkach. Nezobrazujú sa napríklad v zoznamoch, "
+"protokoloch alebo výsledkoch vyhľadávaní."
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1719
@@ -10746,7 +10835,7 @@ msgstr "Filipíny"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:295
 msgid "Phoenix, Arizona, United States"
-msgstr ""
+msgstr "Phoenix, Arizona, USA"
 
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:682
@@ -10788,6 +10877,7 @@ msgstr "Fotografia"
 #: admin_pgv_to_wt.php:151
 msgid "PhpGedView might be installed in one of these folders:"
 msgstr ""
+"PhpGedView by mohol byť nainštalovaný v jednom z nasledujúcich priečinkov:"
 
 #. I18N: %s is a number
 #: admin_trees_manage.php:721
@@ -10806,7 +10896,7 @@ msgstr "Pomocník prevodu PhpGedView do webtrees"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:88
 msgid "Pink Plastic"
-msgstr "Pink Plastic"
+msgstr "Plastiková ružová"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6849
@@ -10870,17 +10960,17 @@ msgstr "Miesto LDS krstu"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:780
 msgid "Place of LDS child sealing"
-msgstr ""
+msgstr "Miesto pečatenia dieťaťa (LDS child sealing)"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:416
 msgid "Place of LDS endowment"
-msgstr ""
+msgstr "Miesto obdarovania (LDS endowment)"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:472
 msgid "Place of LDS spouse sealing"
-msgstr ""
+msgstr "Miesto pečatenia partnera (LDS spouse sealing)"
 
 #: app/GedcomTag.php:134
 msgid "Place of adoption"
@@ -10977,12 +11067,12 @@ msgstr "Miesto bydliska"
 #: admin_site_upgrade.php:354
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Webová stránka sa dáva do režimu offline, vytvorením súboru %s…"
 
 #: admin_site_upgrade.php:410
 #, php-format
 msgid "Place the website online, by deleting the file %s…"
-msgstr ""
+msgstr "Webová stránka sa dáva do režimu online, zmazaním súboru %s…"
 
 #: admin_trees_config.php:1500 search.php:204 statistics.php:408
 msgid "Places"
@@ -11095,7 +11185,7 @@ msgstr "Portugalsko"
 #: app/SurnameTradition.php:84
 msgctxt "Surname tradition"
 msgid "Portuguese"
-msgstr "Portugalské"
+msgstr "Portugalská"
 
 #. I18N: gedcom tag POST
 #: app/GedcomTag.php:696
@@ -11163,7 +11253,7 @@ msgstr "Existujú nastavenia pre modul „%s“, ale tento modul už neexistuje.
 #. I18N: A configuration setting
 #: admin_users.php:471
 msgid "Preferred contact method"
-msgstr "Uprednostňovaná kontaktná metóda"
+msgstr "Uprednostňovaný spôsob kontaktu"
 
 #: app/Module/GoogleMapsModule.php:378
 msgid "Prefixes"
@@ -11202,16 +11292,18 @@ msgstr "Tlačiť základné údaje, i keď sú prázdne"
 
 #: admin_trees_config.php:310 admin_trees_manage.php:398
 msgid "Privacy"
-msgstr "Utajenie"
+msgstr "Ochrana osobných údajov"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: admin_trees_config.php:498
 msgid "Privacy restrictions"
-msgstr "Obmedzenie utajenia"
+msgstr "Obmedzenia prístupu"
 
 #: admin_trees_config.php:521
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "Obmedzenie utajenia - uplatní sa v záznamoch a faktoch, ktoré neobsahujú GEDCOM tag RESN"
+msgstr ""
+"Obmedzenia prístupu  - uplatnia sa v záznamoch a faktoch, ktoré neobsahujú "
+"GEDCOM tag RESN"
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:531
 #: app/GedcomRecord.php:609 app/GedcomRecord.php:734 app/Individual.php:1309
@@ -11273,7 +11365,7 @@ msgstr "Otázka"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:307
 msgid "Quetzaltenango, Guatemala"
-msgstr ""
+msgstr "Quetzaltenango, Guatemala"
 
 #: admin_trees_config.php:1823
 msgid "Quick family facts"
@@ -11361,7 +11453,7 @@ msgstr "Rabi' al-thani"
 #. I18N: This is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:93
 msgid "Rada"
-msgstr "Rada"
+msgstr "radāʿ"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:96
@@ -11424,7 +11516,7 @@ msgstr "Náhodné obrázky z aktuálneho rodokmeňa."
 #: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
 #: edit_interface.php:1779 edit_interface.php:1849
 msgid "Re-order children"
-msgstr "Zotriediť deti"
+msgstr "Zoradiť deti"
 
 #: app/Controller/IndividualController.php:297
 #: app/Module/RelativesTabModule.php:363 edit_interface.php:2154
@@ -11437,7 +11529,7 @@ msgstr "Zoradiť rodiny"
 #: app/Module/AlbumModule.php:111 edit_interface.php:1651
 #: edit_interface.php:1698 edit_interface.php:1744
 msgid "Re-order media"
-msgstr "Zotriediť média"
+msgstr "Zoradiť média"
 
 #: admin_users.php:312 admin_users.php:846 edituser.php:170 login.php:324
 #: login.php:420
@@ -11525,7 +11617,7 @@ msgstr "Regulárny výraz"
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "Regulárne výrazy sú pokročilým spôsobom vyhľadávania v textoch."
 
 #: edit_changes.php:186 edit_changes.php:206
 msgid "Reject"
@@ -11649,11 +11741,11 @@ msgstr "Odstrániť odkaz zo zoznamu"
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:288
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "Odstrániť z názvov súborov cestu k médiám v GEDCOMe"
 
 #: app/Module/GoogleMapsModule.php:3917
 msgid "Remove this location?"
-msgstr "Odstrániť toto umiesto?"
+msgstr "Odstrániť toto miesto?"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:317
@@ -11685,13 +11777,13 @@ msgstr "Odpovedať"
 #: admin_module_reports.php:66 admin_modules.php:244 reportengine.php:125
 #: reportengine.php:153
 msgid "Report"
-msgstr "Report"
+msgstr "Protokol"
 
 #. I18N: Menu entry
 #: admin_module_reports.php:28 admin_modules.php:164
 #: app/Theme/AbstractTheme.php:1698 app/Theme/AdministrationTheme.php:196
 msgid "Reports"
-msgstr "Správy"
+msgstr "Protokoly"
 
 #: admin.php:771 admin.php:829 admin_trees_duplicates.php:140
 #: app/Module/FamilyTreeStatisticsModule.php:124
@@ -11727,12 +11819,12 @@ msgstr "Kongo (Brazzaville)"
 
 #: app/Module/LoginBlockModule.php:99 login.php:222
 msgid "Request a new password"
-msgstr "Zažiadať o nové heslo"
+msgstr "Vyžiadať nové heslo"
 
 #: app/Module/LoginBlockModule.php:90 app/Module/WelcomeBlockModule.php:60
 #: login.php:213 login.php:280
 msgid "Request a new user account"
-msgstr "Zažiadať o nový uživateľský účet"
+msgstr "Vyžiadať nový užívateľský účet"
 
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:1743
@@ -11777,7 +11869,9 @@ msgstr "Zákaz"
 
 #: help_text.php:259
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr "K záznamom a/alebo faktom môžu byť pridané obmedzenia. Určujú, kto si môže dáta prezerať a kto upravovať."
+msgstr ""
+"K záznamom a/alebo faktom môžu byť pridané obmedzenia. Určujú, kto si môže "
+"údaje prezerať a kto upravovať."
 
 #: app/Stats.php:87
 msgid "Resulting value"
@@ -11800,7 +11894,7 @@ msgstr "Réunion"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:319
 msgid "Rexburg, Idaho, United States"
-msgstr ""
+msgstr "Rexburg, Idaho, USA"
 
 #: index_edit.php:304
 msgid "Right section blocks"
@@ -11891,7 +11985,7 @@ msgstr "Safar"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:89
 msgid "Sage"
-msgstr "Sage"
+msgstr "Šedozelená"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6874
@@ -11951,7 +12045,7 @@ msgstr "San Marino"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:323
 msgid "San Salvador, El Salvador"
-msgstr ""
+msgstr "San Salvador, El Salvador"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:325
@@ -12009,19 +12103,19 @@ msgstr "Album"
 #: app/GedcomCode/GedcomCodePedi.php:81
 msgctxt "Female pedigree"
 msgid "Sealing"
-msgstr "LDS Sealing"
+msgstr "Pečatenie (Sealing)"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:77
 msgctxt "Male pedigree"
 msgid "Sealing"
-msgstr "LDS Sealing"
+msgstr "Pečatenie (Sealing)"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:85
 msgctxt "Pedigree"
 msgid "Sealing"
-msgstr "LDS Sealing"
+msgstr "Pečatenie (Sealing)"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:67
@@ -12049,6 +12143,8 @@ msgstr "Nájsť a nahradiť"
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:59
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr ""
+"Hľadať a nahradiť text použitím jednoduchého vyhľadávania alebo pokročilého "
+"vyhľadávania pomocou regulárnych výrazov."
 
 #: includes/session.php:491
 msgid "Search engine"
@@ -12102,13 +12198,13 @@ msgstr "Zabezpečené pripojenie"
 #. I18N: A configuration setting
 #: admin_site_config.php:620
 msgid "Security code"
-msgstr ""
+msgstr "Bezpečnostný kód"
 
 #. I18N: %s is a URL
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "Pozri %s pre ďalšie informácie."
 
 #: admin_site_merge.php:214 admin_site_merge.php:261 admin_site_merge.php:307
 msgid "Select"
@@ -12137,7 +12233,7 @@ msgstr "Vybrať vlajku"
 
 #: lifespan.php:41
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Vybrať osoby podľa miesta alebo dátumu"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:44
@@ -12158,7 +12254,7 @@ msgstr "Vyberte fakty a udalosti, ktoré chcete zachovať z oboch záznamov."
 
 #: admin_site_config.php:634
 msgid "Select the languages that will be shown in menus."
-msgstr ""
+msgstr "Vyberte jazyky, ktoré sa majú zobraziť v menu."
 
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:352
@@ -12225,7 +12321,7 @@ msgstr "Poslanie emailu"
 #. I18N: A configuration setting
 #: admin_site_config.php:428
 msgid "Sending server name"
-msgstr ""
+msgstr "Meno odosielajúceho servera"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6870
@@ -12299,7 +12395,7 @@ msgstr "Informácie o serveri"
 #. I18N: A configuration setting
 #: admin_site_config.php:350 setup.php:280
 msgid "Server name"
-msgstr "Meno serveru"
+msgstr "Meno servera"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:291
@@ -12308,12 +12404,12 @@ msgstr "Vypršanie platnosti session"
 
 #: admin_trees_manage.php:441 admin_trees_manage.php:452
 msgid "Set as default"
-msgstr ""
+msgstr "Nastaviť ako predvolený"
 
 #. I18N: You need to:
 #: login.php:573
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "Nastavte úroveň prístupu pre každý strom."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
@@ -12343,24 +12439,24 @@ msgstr "Nastavte maximálny počet generácií, ktorý sa môže zobraziť vo v�
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: admin_trees_config.php:394
 msgid "Set the privacy access level for all dead individuals."
-msgstr "Nastaviť úroveň utajenia všetkým mŕtvym osobám."
+msgstr "Nastaviť stupeň obmedzenia prístupu pre všetky zomrelé osoby."
 
 #. I18N: You need to:
 #: login.php:571
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "Nastaviť  status na „schválené“."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1580
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
 msgstr ""
 "Ak nastavíte <b>Áno</b>, budú na stránky osôb, prameňov a rodín pridané "
-"odkazy, ktoré umožnia užívateľom otvoriť ďalšie okno s holými dátami, tak "
+"odkazy, ktoré umožnia užívateľom otvoriť ďalšie okno so surovými údajmi, tak "
 "ako sú zapísané v súbore GEDCOM."
 
 #: setup.php:93
 msgid "Setup wizard for webtrees"
-msgstr "Pomocník nastavenia pre webtrees"
+msgstr "Sprievodca nastavením pre webtrees"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:202
@@ -12405,7 +12501,7 @@ msgstr "Shahrivar"
 #: app/GedcomTag.php:772 edit_interface.php:1344 edit_interface.php:1437
 #: inverselink.php:141 note.php:152 note.php:162
 msgid "Shared note"
-msgstr "Zdieľané poznámky"
+msgstr "Zdieľaná poznámka"
 
 #. I18N: Label for search field
 #: find.php:239
@@ -12529,7 +12625,7 @@ msgstr "Shevat"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:90
 msgid "Shiny Tomato"
-msgstr "Shiny Tomato"
+msgstr "Žiarivý rajčiak"
 
 #. I18N: gedcom tag _SUBQ
 #: app/GedcomTag.php:1739
@@ -12560,7 +12656,8 @@ msgstr "Zobraziť odkaz na stiahnutie v prehliadači médií"
 #. I18N: A configuration setting
 #: admin_site_config.php:506
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "Zobraziť dohodu o používaní na stránke «Request a new user account»"
+msgstr ""
+"Zobraziť dohodu o používaní na stránke „Zažiadať o nový užívateľský účet“"
 
 #: app/Module/NotesTabModule.php:74
 msgid "Show all notes"
@@ -12568,7 +12665,7 @@ msgstr "Zobraziť všetky poznámky"
 
 #: placelist.php:212
 msgid "Show all places in a list"
-msgstr "Zobraziť zoznam všetkych miest"
+msgstr "Zobraziť všetky miesta v jednom zozname"
 
 #: app/Module/SourcesTabModule.php:70
 msgid "Show all sources"
@@ -12590,7 +12687,7 @@ msgstr "Zobraziť indikátor veku"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
 msgid "Show chart details by default"
-msgstr ""
+msgstr "Zobraziť detaily v schémach"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
@@ -12607,11 +12704,11 @@ msgstr "Ukázať páry, kde aspoň jeden partner aml viac ako jedno manželstvo.
 
 #: app/Functions/FunctionsPrintLists.php:626
 msgid "Show couples where only the female partner is dead."
-msgstr "Zobraziť páry kde zomrela manželka."
+msgstr "Zobraziť páry, kde zomrela len manželka."
 
 #: app/Functions/FunctionsPrintLists.php:635
 msgid "Show couples where only the male partner is dead."
-msgstr "Zobraziť iba páry kde zomrel manžel."
+msgstr "Zobraziť páry, kde zomrel iba manžel."
 
 #: app/Functions/FunctionsPrintLists.php:684
 msgid "Show couples who married more than 100 years ago."
@@ -12637,7 +12734,7 @@ msgstr "Zobraziť dátum poslednej aktualizácie"
 #. I18N: A configuration setting
 #: admin_trees_config.php:384
 msgid "Show dead individuals"
-msgstr "Zobraziť mená zomrelých osôb"
+msgstr "Zobraziť zomrelé osoby"
 
 #: ancestry.php:115 app/Module/ChartsBlockModule.php:206 descendancy.php:84
 #: familybook.php:55 hourglass.php:56 pedigree.php:166 relationship.php:83
@@ -12650,7 +12747,7 @@ msgstr "Zobraziť rozvedené páry."
 
 #: compact.php:60
 msgid "Show images"
-msgstr ""
+msgstr "zobraziť obrázky"
 
 #: app/Module/GoogleMapsModule.php:3951
 msgid "Show inactive places"
@@ -12690,12 +12787,12 @@ msgstr "Zobraziť zoznam rodokmeňov"
 #. I18N: A configuration setting
 #: admin_trees_config.php:424
 msgid "Show living individuals"
-msgstr ""
+msgstr "Zobraziť žijúce osoby"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:464
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Zobraziť mená utajených osôb"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12729,7 +12826,7 @@ msgstr "Zobraziť iba osoby, ktorých pohlavie nie je známe."
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Zobraziť iba osoby a udalosti alebo všetko"
+msgstr "Zobraziť iba osoby, udalosti alebo všetko"
 
 #: app/Functions/FunctionsPrintLists.php:177
 msgid "Show only males."
@@ -12782,7 +12879,7 @@ msgstr "Zobraziť úlohy na preskúmanie, ktoré majú dátum v budúcnosti"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Zobraziť sídlo"
+msgstr "Zobraziť sídla"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:409
@@ -12823,7 +12920,7 @@ msgstr "Zobraziť udalosti blízkych príbuzných na stránke osoby"
 #. I18N: A configuration setting
 #: admin_trees_config.php:360
 msgid "Show the family tree"
-msgstr ""
+msgstr "Zobraziť rodokmeň"
 
 #: famlist.php:183 indilist.php:183
 msgid "Show the list of individuals"
@@ -12841,17 +12938,17 @@ msgstr "Zobrazenie polohy miest a udalostí pomocou služby Google Maps™."
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "Ukázať užívateľa, ktorý vykonal zmenu"
 
 #. I18N: Label for a configuration option
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "Zobraziť tento blok pre všetky jazyky"
+msgstr "Zobraziť tento blok pre určené jazyky"
 
 #: admin_trees_config.php:1051
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Zobraziť náhľady obrázkov v diagramoch a rodinných skupinách."
+msgstr "Zobraziť náhľady obrázkov v schémach a rodinných skupinách."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:207
@@ -12883,19 +12980,21 @@ msgstr "Zobraziť členom"
 #: app/Functions/FunctionsPrintFacts.php:830
 #: app/Functions/FunctionsPrintFacts.php:1096
 msgid "Show to visitors"
-msgstr "Zobraziť návštevám"
+msgstr "Zobraziť návštevníkom"
 
 #: app/Functions/FunctionsPrintLists.php:273
 #: app/Functions/FunctionsPrintLists.php:664
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
 msgstr ""
-"Zobraziť «listové» páry alebo osoby. To sú také, ktoré žijú, ale nemajú "
+"Zobraziť „listové“ páry alebo osoby. To sú také, ktoré žijú, ale nemajú "
 "zaznamenané žiadne deti v databáze."
 
 #: app/Functions/FunctionsPrintLists.php:264
 #: app/Functions/FunctionsPrintLists.php:655
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "Zobraziť «koreňové» osoby alebo páry. Tieto osoby sa tiež nazývajú «patriarchami». Sú to osoby ktoré nemajú záznam o rodičoch v tejto databázi."
+msgstr ""
+"Zobraziť „koreňové“ osoby alebo páry. Tieto osoby sa tiež nazývajú "
+"„patriarchami“. Sú to osoby ktoré nemajú záznam o rodičoch."
 
 #. I18N: %s are placeholders for numbers
 #: app/I18N.php:228 app/I18N.php:229
@@ -12921,7 +13020,7 @@ msgstr "Bočná lišta"
 #: admin_module_sidebar.php:28 admin_modules.php:161
 #: app/Theme/AdministrationTheme.php:194
 msgid "Sidebars"
-msgstr ""
+msgstr "Bočné panely"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6877
@@ -12966,24 +13065,26 @@ msgstr "Sestra"
 #: admin_site_config.php:569 admin_site_config.php:585
 #: admin_site_config.php:610
 msgid "Site identification code"
-msgstr ""
+msgstr "Identifikačný kód webovej stránky"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:477 edituser.php:300
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
 msgstr ""
 "Registrovaní užívatelia si môžu posielať správy. Môžete vybrať, či a ako sa "
-"vám budú správy doručovať."
+"vám budú tieto správy doručovať."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:527 admin_site_config.php:548
 msgid "Site verification code"
-msgstr ""
+msgstr "Overovací kód webovej stránky"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:538 admin_site_config.php:559
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr ""
+"Overovacie kódy webovej stránky nefungujú, keď je webtrees nainštalovaný v "
+"podpriečinku."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
@@ -13026,7 +13127,7 @@ msgstr "Veľkosť mapy (v pixeloch)"
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: app/Theme/AbstractTheme.php:84
 msgid "Skip to content"
-msgstr ""
+msgstr "Preskočiť na obsah"
 
 #: app/GedcomCode/GedcomCodeRela.php:254
 msgid "Slave"
@@ -13086,11 +13187,14 @@ msgstr "Somálsko"
 #: admin_trees_manage.php:300
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
 msgstr ""
+"Niektoré genealogické softvéri vytvárajú GEDCOM súbory tak, že súbory médií "
+"obsahujú úplnú cestu. Tieto cesty na webovom serveri nebudú existovať. Aby "
+"webtrees mohol nájsť tieto súbory, musí byť prvá časť cesty odstránená."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1606
 msgid "Some pages can display the number of times that they have been visited."
-msgstr ""
+msgstr "Niektoré stránky môžu zobraziť počet návštev na stránke."
 
 #: app/Module/GoogleMapsModule.php:410
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
@@ -13105,7 +13209,7 @@ msgstr ""
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1465
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr ""
+msgstr "Niektoré motívy môžu zobrazovať ikony na záložke „Fakty a udalosti“."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:526
@@ -13175,7 +13279,11 @@ msgstr "Zdroj"
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: admin_trees_config.php:2110
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-msgstr "Citácie zdrojov môžou obsahovať pole, ktoré značí kvalitu získaných dát (primárne, sekundárne atd.) a dátum udalosti získanej zo zdroja. Ak nepoužívate tieto polia, môžete ich deaktivovať, keď vytvárate nové citácie zdrojov."
+msgstr ""
+"Citácie zdrojov môžu obsahovať polia, ktoré zaznamenávajú kvalitu údajov ("
+"primárne, sekundárne atd.) a dátum, kedy bola udalosť zaznamenaná v zdroji. "
+"Ak nepoužívate tieto polia, môžete ich pri vytváraní nových citácií "
+"deaktivovať."
 
 #. I18N: Label for search field
 #: find.php:257
@@ -13238,7 +13346,7 @@ msgstr "Španielsko"
 #: app/SurnameTradition.php:81
 msgctxt "Surname tradition"
 msgid "Spanish"
-msgstr "Španielske"
+msgstr "Španielska"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:351
@@ -13495,7 +13603,7 @@ msgstr "Svalbard a Jan Mayen"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:100
 msgid "Swap individuals"
-msgstr ""
+msgstr "Vymeniť osoby"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6888
@@ -13519,7 +13627,7 @@ msgstr "Sydney, Austrália"
 
 #: admin_trees_manage.php:750
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "Synchronizovať rodokmene s GEDCOM súbormi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6891
@@ -13596,17 +13704,17 @@ msgstr "Tanzánia"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:91
 msgid "Teal Top"
-msgstr "Teal Top"
+msgstr "Tyrkysová"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:895
 msgid "Technical help contact"
-msgstr "Kontakt na technickú pomoc"
+msgstr "Kontakt pre technickú pomoc"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:365
 msgid "Tegucigalpa, Honduras"
-msgstr ""
+msgstr "Tegucigalpa, Honduras"
 
 #: app/Module/HtmlBlockModule.php:276
 msgid "Templates"
@@ -13661,12 +13769,18 @@ msgstr "Pole <b>name</b> obsahuje plné meno osoby, tak ako ho používala, aleb
 
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr "Pole <b>priezvisko</b> obsahuje meno, ktoré sa používa na triedenie a združovanie. Môže byť odlišné od aktuálneho priezviska osoby, ktoré sa vždy preberá z poľa <b>meno</b>. Toto pole sa môže použiť na triedenie priezvisk s, alebo bez prefixu (Gogh / van Gogh) a združovať sôzne variácie mena, alebo prechýlenie (Kowalski/Kowalska). Ak má byť osoba uvedená pod viacerými menami, každé meno musí byť oddelené čiarkou."
+msgstr ""
+"Pole <b>priezvisko</b> obsahuje meno, ktoré sa používa na triedenie a "
+"združovanie. Môže byť odlišné od aktuálneho priezviska osoby, ktoré sa vždy "
+"preberá z poľa <b>meno</b>. Toto pole sa môže použiť na triedenie priezvisk "
+"s, alebo bez prefixu (Gogh / van Gogh) a združovať rôzne variácie mena, "
+"alebo prechýlenie (Kowalski/Kowalska). Ak má byť osoba uvedená pod viacerými "
+"menami, každé meno musí byť oddelené čiarkou."
 
 #: admin_trees_manage.php:148
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "GEDCOM súbor „%s“ bol importovaný."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13735,7 +13849,7 @@ msgstr "Rodokmeň bol exportovaný do %s."
 #: admin_trees_manage.php:77
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "Rodokmeň „%s“ už existuje."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:80
@@ -13747,13 +13861,15 @@ msgstr "Bol vytvorený rodokmeň „%s“."
 #: admin_trees_manage.php:57 admin_trees_manage.php:154
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "Rodokmeň „%s“ bol zmazaný."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:66
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
 msgstr ""
+"Rodokmeň „%s“ sa zobrazí návštevníkom pri ich prvej návšteve tejto webovej "
+"stránky."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
@@ -13786,12 +13902,12 @@ msgstr "Súbor %s nemohol byť zmazaný."
 #: admin_site_upgrade.php:335
 #, php-format
 msgid "The file %s could not be updated."
-msgstr ""
+msgstr "Súbor %s sa nepodarilo aktualizovať."
 
 #: admin_site_upgrade.php:358
 #, php-format
 msgid "The file %s has been created."
-msgstr ""
+msgstr "Súbor %s bol vytvorený."
 
 #: admin_media.php:61 admin_media.php:70 admin_site_clean.php:32
 #: admin_site_upgrade.php:413 admin_site_upgrade.php:434
@@ -13818,7 +13934,7 @@ msgstr "Súbor „%s“ neexistuje."
 #: admin_site_clean.php:36 admin_site_upgrade.php:430
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "Nepodarilo sa zmazať priečinok %s."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
@@ -13838,7 +13954,7 @@ msgstr "Priečinok %s bol úspešne vytvorený."
 #: admin_site_clean.php:30 admin_site_upgrade.php:428
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "Priečinok %s bol zmazaný."
 
 #: admin_site_config.php:195
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -13860,11 +13976,11 @@ msgstr "Nasledujúci zoznam zobrazuje typické požiadavky."
 
 #: admin_trees_places.php:115
 msgid "The following places have been changed:"
-msgstr ""
+msgstr "Nasledujúce miesta boli zmenené:"
 
 #: admin_trees_places.php:115
 msgid "The following places would be changed:"
-msgstr ""
+msgstr "Nasledujúce miesta by sa zmenili:"
 
 #: admin_site_access.php:355
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
@@ -13877,12 +13993,16 @@ msgstr "Pre túto položku zatiaľ nie je nápoveda."
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: admin_trees_config.php:909
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
-msgstr "Uživateľ, ktorého by návštevníci mali kontaktovať v prípade, že narazia na vašich stránkach na problémy technického rázu."
+msgstr ""
+"Užívateľ, ktorého by návštevníci mali kontaktovať v prípade, že narazia na "
+"vašich stránkach na chyby, alebo problémy technického rázu."
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:887
 msgid "The individual to contact about the genealogy data on this website."
-msgstr "Uživateľ, ktorého môžu návštevníci kontaktovať v súvislosti s rodokmeňom."
+msgstr ""
+"Užívateľ, ktorého môžu návštevníci kontaktovať v súvislosti s genealogickými "
+"údajmi."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: action.php:152 action.php:156 app/Controller/GedcomRecordController.php:57
@@ -13931,17 +14051,17 @@ msgstr "Správa nebola odoslaná."
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "Správa bola úspešne odoslaná na %s."
+msgstr "Správa bola úspešne odoslaná užívateľovi %s."
 
 #: admin_modules.php:54
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "Modul „%s“ bol deaktivovaný."
 
 #: admin_modules.php:56
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "Modul „%s“ bol aktivovaný."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1844
@@ -13974,7 +14094,7 @@ msgstr ""
 #: admin_site_upgrade.php:338
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr ""
+msgstr "Nové súbory sú aktuálne uložené v priečinku %s."
 
 #: admin_site_config.php:496
 msgid "The new user will be asked to confirm their email address before the account is created."
@@ -14005,27 +14125,27 @@ msgstr "Nastavenia pre všetky rodokmene boli upravené."
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Nastavenia pre nové rodokmene boli aktualizované."
 
 #: app/Module/RelationshipsChartModule.php:218
 #, php-format
 msgid "The preferences for the chart “%s” have been updated."
-msgstr ""
+msgstr "Nastavenia pre schému „%s“ sa aktualizovali."
 
 #: admin_trees_config.php:178 admin_trees_config.php:301
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "Nastavenia pre rodokmeň „%s“ boli aktualizované."
 
 #: admin_modules.php:86
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "Nastavenia modulu „%s“ boli zmazané."
 
 #: app/Module/GoogleMapsModule.php:266
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "Nastavenia modulu „%s“ boli aktualizované."
 
 #: setup.php:381
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
@@ -14034,7 +14154,7 @@ msgstr "Predpona je voliteľná, ale doporučená. Nastavením unikátnej predpo
 #: admin_trees_renumber.php:242
 #, php-format
 msgid "The record %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "Záznam %1$s bol premenovaný na %2$s."
 
 #: action.php:92
 msgid "The record has been copied to the clipboard."
@@ -14057,12 +14177,13 @@ msgstr "Konfigurácia servera je OK."
 
 #: admin_trees_renumber.php:257
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "Bol dosiahnutý časový limit servera."
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:42
 msgid "The size of the family tree, earliest and latest events, common names, etc."
-msgstr "Veľkosť rodokmeňa, najstaršie a najnovšie udalosti, najčastejšie mená, a pod."
+msgstr ""
+"Veľkosť rodokmeňa, najstaršie a najnovšie udalosti, najčastejšie mená a pod."
 
 #: help_text.php:222
 #, php-format
@@ -14107,9 +14228,9 @@ msgstr ""
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Tieto dva rodokmene majú %1$s záznam, ktorý používa rovnaké „XREF“."
+msgstr[1] "Tieto dva rodokmene majú %1$s záznamy, ktoré používajú rovnaké „XREF“."
+msgstr[2] "Tieto dva rodokmene majú %1$s záznamov, ktoré používajú rovnaké „XREF“."
 
 #: admin_site_upgrade.php:447
 msgid "The upgrade is complete."
@@ -14123,25 +14244,29 @@ msgstr "Nahraný súbor presiahol povolenú veľkosť."
 #: admin_users.php:786
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "Užívateľ %s bol vymazaný."
 
 #: login.php:327
 msgid "The user has been sent an email with the information necessary to confirm the access request."
-msgstr "Uživateľovi bol odoslaný email s informáciami potrebnými pre potvrdenie žiadosti o prístup."
+msgstr ""
+"Užívateľovi bol odoslaný email s informáciami potrebnými pre potvrdenie "
+"žiadosti o prístup."
 
 #: login.php:82 login.php:87
 msgid "The username or password is incorrect."
-msgstr "Uživateľské meno alebo heslo je nesprávne."
+msgstr "Užívateľské meno alebo heslo je nesprávne."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:394
 msgid "The username required for authentication with the SMTP server."
-msgstr "Užívateľské meno vyžadované pre prihlásenie k SMTP serveru."
+msgstr "Užívateľské meno potrebné pre prihlásenie k SMTP serveru."
 
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:951
 msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
 msgstr ""
+"Údaj, ktorý sa uvedie v tagu  „meta description“ v hlavičke HTML-stránky. Ak "
+"necháte pole voľné, použije sa názov rodokmeňa."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
@@ -14155,43 +14280,51 @@ msgstr "Verzia %s je príliš stará."
 
 #: admin_site_access.php:77
 msgid "The website access rule has been created."
-msgstr ""
+msgstr "Prístupové pravidlo k stránke bolo vytvorené."
 
 #: admin_site_access.php:105
 msgid "The website access rule has been deleted."
-msgstr ""
+msgstr "Prístupové pravidlo k stránke bolo zmazané."
 
 #: admin_site_access.php:89
 msgid "The website access rule has been updated."
-msgstr ""
+msgstr "Prístupové pravidlo k stránke bolo aktualizované."
 
 #: admin_site_config.php:47 admin_site_config.php:66 admin_site_config.php:78
 #: admin_site_config.php:93 admin_site_config.php:102
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "Nastavenia webovej stránky boli aktualizované."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:1547
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
 msgstr ""
+"Webová stránka www.geonames.org poskytuje rozsiahlu databázu miest. Môžete "
+"ju prehľadávať pri zadávaní nového miesta. Aby ste mohli využívať túto "
+"funkcionalitu, musíte sa zaregistrovať (bezplatne) na www.geonames.org a "
+"zadať užívateľské meno."
 
 #: setup.php:509
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr "Vývojári aplikácie webtrees by sa radi dozvedeli o tejto chybe. Ak ich zkontaktujete, pomôžu vám vyriešiť tento problém."
+msgstr ""
+"Vývojári aplikácie webtrees by sa radi dozvedeli o tejto chybe. Ak sa s nimi "
+"skontaktujete, pomôžu vám vyriešiť tento problém."
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
 msgstr ""
+"Znak „%“ je zástupný a môže nahradzovať prázdny reťazec, alebo rôzny počet "
+"ľubovoľných znakov."
 
 #: admin_modules.php:251 admin_users.php:485 app/Theme/AbstractTheme.php:1778
 #: edituser.php:272
 msgid "Theme"
-msgstr "Téma"
+msgstr "Motív"
 
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:27
 msgid "Theme change"
-msgstr "Zmeniť tému"
+msgstr "Zmeniť motív"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:960
@@ -14200,11 +14333,15 @@ msgstr "Menu tém"
 
 #: admin_modules.php:165
 msgid "Themes"
-msgstr ""
+msgstr "Motívy"
 
 #: admin_site_config.php:258
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
 msgstr ""
+"Motíva sa môžu vybrať na troch úrovniach: užívateľ, rodokmeň a webová "
+"stránka. Užívateľské nastavenie má prednosť pred nastavením rodokmeňa, ktoré "
+"zas má prednosť pred nastavením webovej stránky.  Voľba „prednastavený motív“"
+" na niektorej úrovni použije voľbu z nasledujúcej."
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:148
@@ -14221,7 +14358,7 @@ msgstr "K tejto osobe nie sú žiadne poznámky."
 
 #: admin_site_upgrade.php:105
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Nie sú žiadne čakajúce zmeny."
 
 #: app/Module/ResearchTaskModule.php:151
 msgid "There are no research tasks in this family tree."
@@ -14240,14 +14377,14 @@ msgstr "Boli vykonané zmeny, ktoré vyžadujú vaše potvrdenie."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "V priebehu posledného dňa neboli žiadne zmeny."
+msgstr[1] "V priebehu posledných %s dní neboli žiadne zmeny."
+msgstr[2] "V priebehu posledných %s dní neboli žiadne zmeny."
 
 #: login.php:266
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr ""
+msgstr "Účet s užívateľským menom, alebo e-mailom „%s“ neexistuje."
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."
@@ -14280,7 +14417,7 @@ msgstr "Thermidor"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Tieto skupiny osôb nie sú prepojené s %s."
 
 #: admin.php:578
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -14294,7 +14431,8 @@ msgstr "Tento GEDCOM je kódovaný v %1$s. Asi je treba %2$s."
 
 #: login.php:97
 msgid "This account has not been approved. Please wait for an administrator to approve it."
-msgstr "Tento účet nie je ešte potvrdený. Počkajte, pokým niektorí z administrátorov nepotvrdí."
+msgstr ""
+"Tento účet nie je ešte potvrdený. Počkajte, pokým ho administrátor nepotvrdí."
 
 #: login.php:92
 msgid "This account has not been verified. Please check your email for a verification message."
@@ -14378,9 +14516,9 @@ msgstr ""
 "Tento rodokmeň bol naposledy aktualizovaný dňa #gedcomUpdated#. V tomto "
 "rodokmeni je celkove #totalSurnames# priezvisk. Najstaršia zaznamenaná "
 "udalosť je #firstEventType# #firstEventName# v roku #firstEventYear#. "
-"Posledná udalosť je #lastEventType# #lastEventName# v roku "
-"#lastEventYear#.<br><br>Ak máte nejaký komentár, prosím kontaktujte "
-"#contactWebmaster#."
+"Najaktuálnejšia udalosť je #lastEventType# #lastEventName# v roku "
+"#lastEventYear#.<br><br>Ak máte nejaký komentár, alebo pripomienku, "
+"kontaktujte prosím #contactWebmaster#."
 
 #. I18N: %s is a date
 #: app/Module/FamilyTreeStatisticsModule.php:101
@@ -14401,11 +14539,13 @@ msgstr "Tento priečinok používa webtrees na uloženie mediálnych súborov, G
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1006
 msgid "This folder will be used to store the media files for this family tree."
-msgstr "Tento pričinok sa bude používať na ukladanie mediálnych súborov pre tento rodokmeň."
+msgstr ""
+"Tento priečinok sa bude používať na ukladanie mediálnych súborov tohto "
+"rodokmeňa."
 
 #: app/Filter.php:480
 msgid "This form has expired. Try again."
-msgstr ""
+msgstr "Vypršala platnosť tohoto formulára. Skúste znovu."
 
 #: app/Controller/ChartController.php:57 individual.php:80
 msgid "This individual does not exist or you do not have permission to view it."
@@ -14436,7 +14576,7 @@ msgstr ""
 #. I18N: Help text for the “Default individual” configuration setting
 #: admin_trees_config.php:680 edituser.php:207
 msgid "This individual will be selected by default when viewing charts and reports."
-msgstr "Táto osoba sa automaticky zvolí pri prezeraní schém a správ."
+msgstr "Táto osoba sa automaticky zvolí pri prezeraní schém a protokolov."
 
 #: app/Stats.php:1452 app/Stats.php:2267 app/Stats.php:2375 app/Stats.php:2950
 #: app/Stats.php:3124 app/Stats.php:3422 app/Stats.php:4405 app/Stats.php:4537
@@ -14486,6 +14626,10 @@ msgstr ""
 #: admin_trees_config.php:1329
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
 msgstr ""
+"Toto je zhrnutie  <abbr title=\"Cirkev Ježiša Krista svätých neskorších dní "
+"\">LDS</abbr> obradov pre osobu. „B“ označuje LDS krst, „E“ označuje LDS "
+"obdarovanie, „S“ označuje LDS pečatenie, „P“ označuje LDS pečatenie dieťaťa "
+"k rodičom."
 
 #: setup.php:290 setup.php:294
 msgid "This is case sensitive."
@@ -14498,7 +14642,7 @@ msgstr "Rozlišujte malé a veľké písmena. Ak databáza s týmto menom ešte 
 #. I18N: Help text for the “Show chart details by default” configuration setting
 #: admin_trees_config.php:1290
 msgid "This is the initial value for the “show details” option on the charts."
-msgstr ""
+msgstr "Toto je prednastavená hodnota pre „ukázať detaily“ na schémach."
 
 #: admin.php:629 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
@@ -14507,32 +14651,47 @@ msgstr "Toto je aktuálna verzia webtrees. Nie je dostupná žiadna aktualizáci
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1757
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "Toto je zoznam GEDCOM faktov, ktoré vaši užívatelia môžu pridávať k rodinám. Môžete ho upraviť pridaním alebo odstránením názvov faktov, dokonca aj vytvorením vlastných. Názvy údajov, ktoré sa objavia v zozname, sa nesmú objaviť v zozname <i>Unikátnych rodinných faktov</i>."
+msgstr ""
+"Toto je zoznam GEDCOM faktov, ktoré vaši užívatelia môžu pridávať k rodinám. "
+"Môžete ho upraviť pridaním alebo odstránením faktov, prípadne tiež "
+"vytvorením vlastných. Názvy faktov, ktoré sa objavia v zozname sa nesmú "
+"objaviť v zozname „Unikátne fakty rodiny“."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1639
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridávať k osobám. Môžete ho upraviť pridaním alebo odstránením tagov faktov, prípadne tiež vytvorením vlastných. Názvy faktov, ktoré sa objavia v zozname sa nesmú objaviť v zozname <i>Unikátnych osobných faktov</i>."
+msgstr ""
+"Toto je zoznam GEDCOM faktov, ktoré môžu užívatelia pridávať k osobám. "
+"Môžete ho upraviť pridaním alebo odstránením faktov, prípadne tiež "
+"vytvorením vlastných. Názvy faktov, ktoré sa objavia v zozname sa nesmú "
+"objaviť v zozname „Unikátne fakty osoby“."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:1964
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr "Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridávať k archívom. Môžete ho upraviť pridaním alebo odstránením názvov faktov, prípadne tiež vytvorením vlastných. Názvy faktov, ktoré sa zobrazia v zozname sa nesmú objaviť v zozname <i> Unikátne fakty archívov</i>."
+msgstr ""
+"Toto je zoznam GEDCOM faktov, ktoré môžu užívatelia pridávať k archívom. "
+"Môžete ho upraviť pridaním alebo odstránením názvov faktov, prípadne tiež "
+"vytvorením vlastných. Názvy faktov, ktoré sa zobrazia v zozname sa nesmú "
+"objaviť v zozname „Unikátne fakty archívu“."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1875
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridávať k zdrojom. Môžete ho upraviť pridaním alebo odstránením názvov faktov, dokonca aj vytvorením vlastných. Názvy faktov, ktoré sa objavia v zozname, sa nesmie objaviť v zozname <i>Unikátnych faktov o zdrojoch</i>."
+msgstr ""
+"Toto je zoznam GEDCOM faktov, ktoré môžu užívatelia pridávať k zdrojom. "
+"Môžete ho upraviť pridaním alebo odstránením faktov, prípadne tiež "
+"vytvorením vlastných. Názvy faktov, ktoré sa objavia v zozname sa nesmú "
+"objaviť v zozname „Unikátne fakty zdroja“."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1786
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
 msgstr ""
-"Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridať k "
-"rodinám <u>len raz</u>. Napríklad ak MARR je v tomto zozname, užívatelia "
-"nebudú môcť pridať tento záznam k rodine viackrát než raz. Názvy faktov, "
-"ktoré sa zobrazia v zozname sa nesmú objaviť v zozname <i>Všetky rodinné "
-"fakty</i>."
+"Toto je zoznam GEDCOM faktov, ktoré môžu užívatelia pridať k rodine len raz. "
+"Napríklad ak je MARR v tomto zozname, užívatelia nebudú môcť pridať tento "
+"záznam k rodine viackrát. Názvy faktov, ktoré sa zobrazia v zozname sa nesmú "
+"objaviť v zozname „Všetky fakty rodiny“."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1668
@@ -14552,7 +14711,9 @@ msgstr "Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pri
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:355
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "Toto je méno SMTP serveru. 'localhost' znamená, že mailová služba beží na rovnakom počítači ako webový server."
+msgstr ""
+"Toto je meno SMTP servera. „localhost“ znamená, že mailová služba beží na "
+"rovnakom počítači ako webový server."
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1090
@@ -14639,6 +14800,8 @@ msgstr ""
 #: admin_site_config.php:340
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
 msgstr ""
+"Toto meno sa použije v políčku „Od“ pri posielaní automatických e-mailov z "
+"tohoto servera."
 
 #: note.php:61
 msgid "This note does not exist or you do not have permission to view it."
@@ -14688,7 +14851,10 @@ msgstr "Toto nastavenie určuje, či sa v schémach zobrazí vek rodičov pri na
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: admin_trees_config.php:1189
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "Táto voľba kontroluje, či sa majú zobrazovať odhadované dátumy narodenia a úmrtia miesto zanechávania prázdnych polí na zoznamoch a schémach pre osoby, ktorých dáta nie sú známe."
+msgstr ""
+"Táto voľba kontroluje, či sa majú zobrazovať odhadované dátumy narodenia a "
+"úmrtia miesto zanechávania prázdnych polí na zoznamoch a schémach pre osoby, "
+"ktorých údaje nie sú známe."
 
 #. I18N: Help text for the “Gender icon on charts” configuration setting
 #: admin_trees_config.php:1303
@@ -14709,7 +14875,7 @@ msgstr "Táto možnosť uľahčuje užívateľom stiahnuť obrázky."
 #: admin_trees_config.php:494
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
 msgstr ""
-"Táto voľba nechá rodinné spojenia v súkromných záznamoch. To znamená, že "
+"Táto voľba ponechá rodinné spojenia v súkromných záznamoch. To znamená, že "
 "uvidíte prázdne „súkromné“ rámčeky vo vývode a ďalších schémach."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
@@ -14717,9 +14883,9 @@ msgstr ""
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
 msgstr ""
 "Táto voľba zobrazí mená (avšak žiadne ďalšie detaily) utajených osôb. Osoby "
-"sú utajené keď ešte žijú, prípadne majú nastavené utajenie v osobných "
-"záznamoch. Ak chcete skryť konkrétne meno je potrebné pridať obmedzenie "
-"utajenia k záznamu toho mena."
+"sú utajené keď ešte žijú, alebo ak bolo k záznamu osoby pridané obmedzenie "
+"prístupu. Ak chcete skryť konkrétne meno je potrebné pridať obmedzenie "
+"prístupu k záznamu tohto mena."
 
 #: help_text.php:286
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
@@ -14732,9 +14898,9 @@ msgstr ""
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] "Táto stránka bola prehliadnutá %s krát."
-msgstr[1] "Táto stránka bola prehliadnutá %s krát."
-msgstr[2] "Táto stránka bola prehliadnutá %s krát."
+msgstr[0] "Táto stránka bola zobrazená %s krát."
+msgstr[1] "Táto stránka bola zobrazená %s krát."
+msgstr[2] "Táto stránka bola zobrazená %s krát."
 
 #: app/Module/GoogleMapsModule.php:2417
 msgid "This place has no coordinates"
@@ -14746,27 +14912,31 @@ msgstr "Tento proces dovoľuje vlastníkovi webu sa uistiť, že nové informác
 
 #: gedrecord.php:72
 msgid "This record does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Tento záznam neexistuje, alebo nemáte oprávnenie na jeho zobrazenie."
 
 #: gedrecord.php:57
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Tento záznam bol zmazaný. Jeho zmazanie musí potvrdiť moderátor."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: gedrecord.php:52
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Tento záznam bol zmazaný. Musíte skontrolovať jeho zmazanie a následne ho %1$"
+"s  alebo %2$s."
 
 #: gedrecord.php:67
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Tento záznam bol upravený. Zmeny musí potvrdiť moderátor."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: gedrecord.php:62
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Tento záznam bol upravený. Musíte skontrolovať zmeny  a následne ich %1$s "
+"alebo %2$s."
 
 #: repo.php:60
 msgid "This repository does not exist or you do not have permission to view it."
@@ -14820,7 +14990,7 @@ msgstr "Táto rola má všetky práva role „návštevník“, ako aj ďalšie 
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:262
 msgid "This server does not support secure downloads using HTTPS."
-msgstr ""
+msgstr "Tento server nepodporuje bezpečné sťahovanie použitím HTTPS."
 
 #: setup.php:183
 #, php-format
@@ -14867,7 +15037,7 @@ msgstr "Tento druh prepojenia nie je povolený na tomto mieste."
 
 #: includes/session.php:435
 msgid "This user account does not have access to any tree."
-msgstr ""
+msgstr "Tento užívateľský účet nemá prístup k žiadnemu rodokmeňu."
 
 #: setup.php:214
 msgid "This usually means that you need to change the folder permissions to 777."
@@ -14875,7 +15045,7 @@ msgstr "Toto obvykle znamená, že musíte zmeniť atribúty priečinku na 777."
 
 #: admin_site_upgrade.php:41
 msgid "This website is being upgraded. Try again in a few minutes."
-msgstr ""
+msgstr "Táto webová stránka sa práve aktualizuje. Skúste znova o pár minút."
 
 #: site-offline.php:71
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
@@ -14888,16 +15058,22 @@ msgstr "Táto stránka je dočasne nedostupná"
 #: app/Theme/AbstractTheme.php:346
 msgid "This website uses cookies to learn about visitor behaviour."
 msgstr ""
+"Táto webová stránka používa koláčiky (cookies) pre zisťovanie správania sa "
+"užívateľa."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:199
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Toto zmaže všetky genealogické dáta z „%s“ a prepíše ich dátami z iného GEDCOMu."
+msgstr ""
+"Zmaže všetky genealogické údaje z „%s“ a nahradí ich ich údajmi z GEDCOM-"
+"súboru."
 
 #: admin_trees_places.php:98
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
 msgstr ""
+"Toto aktualizuje najvyššiu úroveň názvu miesta. Napríklad „Mexico“ bude "
+"zodpovedať „Quintana Roo, Mexico“, ale nie „Santa Fe, New Mexico“."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/CalendarDate.php:379 app/Functions/FunctionsPrint.php:663
@@ -14923,7 +15099,7 @@ msgstr "štvrtok"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:369
 msgid "Tijuana, Mexico"
-msgstr ""
+msgstr "Tijuana, Mexiko"
 
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:830
@@ -15016,7 +15192,7 @@ msgstr "Titul hebrejsky"
 #. I18N: label for the end of a date range (from x to y)
 #: admin_site_change.php:311 admin_site_logs.php:258
 msgid "To"
-msgstr ""
+msgstr "Do"
 
 #: app/Module/HtmlBlockModule.php:291
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -15024,7 +15200,7 @@ msgstr "Pre pomoc pri práci s týmto blokom sme vytvorili niekoľko štandardn�
 
 #: admin_site_upgrade.php:337
 msgid "To complete the upgrade, you should install the files manually."
-msgstr ""
+msgstr "Pre dokončenie aktualizácie musíte nainštalovať súbory manuálne."
 
 #: app/Module/ResearchTaskModule.php:202
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15034,6 +15210,10 @@ msgstr "Aby ste vytvorili nové úlohy na preskúmanie, musíte najskôr pridať
 #: admin_trees_config.php:1562
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
 msgstr ""
+"Pre zabezpečenie kompatibility s inými genealogickými aplikáciami by sa mali "
+"poznámky, texty a prepisy zadávať vo forme jednoduchého, neformátovaného "
+"textu. Na druhej strane, formátovanie je často vhodné na podporu "
+"prezentácie, pochopenia významu a pod."
 
 #: admin_site_upgrade.php:340
 #, php-format
@@ -15043,16 +15223,25 @@ msgstr ""
 #. I18N: “Apache” is a software program.
 #: admin_site_config.php:189
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr "Na ochranu osobných údajov webtrees používa konfiguračný súbor serveru Apache (.htaccess), ktorý blokuje prístup k tomuto priečinku. Pokiaľ váš web-server nepodporuje súbory .htaccess a nemôžete obmedziť prístup k tomuto priečinku, potom môžete zvoliť priečinok ktorý bude mimo verejného webového priestoru."
+msgstr ""
+"Na ochranu osobných údajov webtrees používa konfiguračný súbor servera "
+"Apache (.htaccess), ktorý blokuje prístup k tomuto priečinku. Pokiaľ váš "
+"webový server nepodporuje súbory .htaccess a nemôžete obmedziť prístup k "
+"tomuto priečinku, potom môžete zvoliť priečinok ktorý bude mimo verejného "
+"webového priestoru."
 
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:377
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
 msgstr ""
+"Aby ste znížili objem sťahovania, môžete skomprimovať údaje od .ZIP súboru. "
+"Pred použitím musíte .ZIP súbor rozbaliť."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:483
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
 msgstr ""
+"Aby ste preložili tento text do iného jazyka, musíte sa prepnúť do tohoto "
+"jazyka a znova navštíviť túto stránku."
 
 #: app/Module/SiteMapModule.php:331
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -15252,13 +15441,13 @@ msgstr "Celkove priezvísk"
 #: app/Module/FamilyTreeStatisticsModule.php:412
 #: app/Module/HtmlBlockModule.php:207
 msgid "Total users"
-msgstr "Celkove uživateľov"
+msgstr "Počet užívateľov"
 
 #. I18N: e.g. http://www.google.com/analytics
 #. I18N: Menu entry
 #: admin_site_config.php:150 app/Theme/AdministrationTheme.php:99
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Sledovanie a analýza"
 
 #: admin_site_config.php:575 admin_site_config.php:600
 #: admin_site_config.php:625
@@ -15283,7 +15472,7 @@ msgstr "Trinidad a Tobago"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:375
 msgid "Trujillo, Peru"
-msgstr ""
+msgstr "Trujillo, Peru"
 
 #. I18N: abbreviation for Tuesday
 #: app/Date/CalendarDate.php:377 app/Functions/FunctionsPrint.php:661
@@ -15327,7 +15516,7 @@ msgstr "Tuxtla Gutierrez, Mexiko"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:377
 msgid "Twin Falls, Idaho, United States"
-msgstr ""
+msgstr "Twin Falls, Idaho, USA"
 
 #. I18N: gedcom tag TYPE
 #: admin_site_logs.php:268 admin_site_logs.php:328
@@ -15338,11 +15527,11 @@ msgstr "Typ"
 
 #: app/GedcomTag.php:434
 msgid "Type of event"
-msgstr ""
+msgstr "Typ udalosti"
 
 #: app/GedcomTag.php:440
 msgid "Type of fact"
-msgstr ""
+msgstr "Druh faktu"
 
 #: app/Module/GoogleMapsModule.php:452
 msgid "Type of place markers in the place hierarchy"
@@ -15384,7 +15573,7 @@ msgstr "US Panenské ostrovy"
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: admin_site_upgrade.php:41
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6907
@@ -15411,7 +15600,7 @@ msgstr "Nevyjasnené: nedostatok údajov"
 
 #: admin_trees_config.php:1765
 msgid "Unique family facts"
-msgstr "Unikátne rodinné fakty"
+msgstr "Unikátne fakty rodiny"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
@@ -15422,18 +15611,22 @@ msgstr "Jedinečný identifikátor"
 #: admin_trees_config.php:725
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
 msgstr ""
+"Jedinečné identifikátory umožňujú nájsť rovnaký záznam v rôznych rodokmeňoch "
+"a v rôznych systémoch. Pridáva sa vždy, keď sa vytvára, alebo aktualizuje "
+"záznam. Ak nechcete zobrazovať jedinečný identifikátor, môžete ho skryť "
+"použitím obmedzenia prístupu."
 
 #: admin_trees_config.php:1647
 msgid "Unique individual facts"
-msgstr "Unikátne osobné fakty"
+msgstr "Unikátne fakty osoby"
 
 #: admin_trees_config.php:1972
 msgid "Unique repository facts"
-msgstr "Unikátne fakty o archívoch"
+msgstr "Unikátne fakty archívu"
 
 #: admin_trees_config.php:1883
 msgid "Unique source facts"
-msgstr "Unikátne fakty o zdrojoch"
+msgstr "Unikátne fakty zdroja"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6678
@@ -15448,7 +15641,7 @@ msgstr "Spojené kráľovstvo"
 #. I18N: Name of a country or state
 #: app/Stats.php:6911 statistics.php:685
 msgid "United States"
-msgstr ""
+msgstr "USA"
 
 #. I18N: Name of a country or state
 #: app/GedcomRecord.php:1158 app/GedcomRecord.php:1162 app/Stats.php:6670
@@ -15493,7 +15686,7 @@ msgstr "Nepoužité súbory"
 #: admin_site_upgrade.php:273
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "Rozbaľujem %s do dočasného priečinka…"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:35
@@ -15507,31 +15700,31 @@ msgstr "Potvrdiť zmenu"
 
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:79
 msgid "Update all"
-msgstr "Potvrdiť všetky zmeny"
+msgstr "Aktualizovať všetko"
 
 #: admin_trees_places.php:84
 msgid "Update all the place names in a family tree"
-msgstr ""
+msgstr "Aktualizovať všetky názvy miest v rodokmeni"
 
 #: admin_trees_manage.php:489 app/Module/GoogleMapsModule.php:2297
 msgid "Update place names"
-msgstr ""
+msgstr "Aktualizovať názvy miest"
 
 #. I18N: Ignore the warnings, and…
 #: admin_site_upgrade.php:138 admin_site_upgrade.php:202
 msgid "Upgrade anyway"
-msgstr ""
+msgstr "Napriek tomu aktualizovať"
 
 #. I18N: %s is a version number
 #. I18N: %s is a version number, such as 1.2.3
 #: admin.php:626 admin_site_upgrade.php:82 login.php:118
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "Upgrade na webtrees verziu %s."
+msgstr "Aktualizácia na webtrees verziu %s."
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Sprievodca aktualizáciou"
 
 #: app/Module/GoogleMapsModule.php:3630 app/Module/GoogleMapsModule.php:4056
 msgid "Upload geographic data"
@@ -15561,7 +15754,7 @@ msgstr "Použiť PHP mail k odosielaní správ"
 
 #: admin_site_config.php:119
 msgid "Use SMTP to send messages"
-msgstr "Použiť SMTP mail k odosielaní správ"
+msgstr "Použiť SMTP na posielanie správ"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
@@ -15600,12 +15793,14 @@ msgstr "Použite heslo"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Použiť sendmail na posielanie správ"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
 msgstr ""
+"Použiť obrázky siluety keď nie je pre osobu definovaný žiaden zvýraznený "
+"obrázok. Siluety zodpovedajú pohlaviu konkrétnej osoby."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1059
@@ -15640,7 +15835,7 @@ msgstr "Užívateľ"
 #: admin_users.php:298 admin_users.php:670 admin_users.php:794
 #: admin_users_bulk.php:33 app/Theme/AdministrationTheme.php:163
 msgid "User administration"
-msgstr "Správa uživateľov"
+msgstr "Správa užívateľov"
 
 #: admin_users.php:735
 msgid "User didn’t verify within 7 days."
@@ -15656,7 +15851,7 @@ msgstr "Uživateľské nastavenia"
 
 #: login.php:518 login.php:524 login.php:582 login.php:586
 msgid "User verification"
-msgstr "Overenie uživateľa"
+msgstr "Overenie užívateľa"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent_string
 #: admin_site_access.php:274 admin_site_access.php:364
@@ -15669,11 +15864,11 @@ msgstr "User-agent string"
 #: edituser.php:158 login.php:192 login.php:258 login.php:323 login.php:347
 #: login.php:440 login.php:526 setup.php:432
 msgid "Username"
-msgstr "Uživateľské meno"
+msgstr "Užívateľské meno"
 
 #: app/Module/LoginBlockModule.php:101 login.php:224
 msgid "Username or email address"
-msgstr "Uživateľ alebo e-mail"
+msgstr "Užívateľské meno alebo e-mailová adresa"
 
 #: admin_users.php:330 edituser.php:164 login.php:444
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
@@ -15690,7 +15885,7 @@ msgstr "Prihlásení uživatelia"
 
 #: admin_users.php:711
 msgid "User’s account has been inactive too long: "
-msgstr "Uživateľský účet bol neaktívny príliš dlho: "
+msgstr "Užívateľský účet bol neaktívny príliš dlho: "
 
 #: app/Module/GoogleMapsModule.php:599
 msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
@@ -15704,7 +15899,7 @@ msgstr "Uzbekistan"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:379
 msgid "Vancouver, British Columbia, Canada"
-msgstr ""
+msgstr "Vancouver, British Columbia, Kanada"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6919
@@ -15714,7 +15909,7 @@ msgstr "Vanuatu"
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:42
 msgid "Various statistics charts."
-msgstr ""
+msgstr "Rôzne štatistické diagramy."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6913
@@ -15862,12 +16057,12 @@ msgstr "Villa Hermosa, Mexiko"
 #. I18N: A configuration setting
 #: admin_users.php:453
 msgid "Visible online"
-msgstr "Viditeľný priamo"
+msgstr "Viditeľný, keď je online"
 
 #. I18N: A configuration setting
 #: admin_users.php:459 edituser.php:306
 msgid "Visible to other users when online"
-msgstr "Viditeľný pre iných uživateľov, keď je online"
+msgstr "Viditeľný pre iných užívateľov, keď je online"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:193 admin_users.php:39 admin_users.php:529
@@ -15920,7 +16115,7 @@ msgstr "Vodoznak"
 #. I18N: Help text for the “Images without watermarks” configuration setting
 #: admin_trees_config.php:1141
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Vodoznak je voliteľný a bežne sa zobrazuje len návštevníkom."
 
 #. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1118
@@ -15985,7 +16180,7 @@ msgstr "Uvítací text v prihlasovacej obrazovke"
 
 #: login.php:166
 msgid "Welcome to this genealogy website"
-msgstr "Vitajte na týchto rodopisných stránkách"
+msgstr "Vitajte na tejto stránke venovanej genealogickému bádaniu"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6741
@@ -16016,6 +16211,10 @@ msgstr "Ak pridáte odkaz, pole ID nesmie zostať prázdne."
 #: admin_trees_config.php:2123
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
 msgstr ""
+"Keď pridávate nových blízkych príbuzných, môžete pridať citáciu zdroja k "
+"záznamu (osoby, alebo rodiny), alebo k faktom a udalostiam (narodenie, "
+"sobáš, ...). Toto nastavenie určuje, či bude zvolený celý záznam, alebo "
+"fakty a udalosti."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2097
@@ -16179,7 +16378,7 @@ msgstr "Požiadali ste (alebo niekto, kto tvrdí, že jste vy) o vytvorenie úč
 
 #: login.php:292 message.php:57
 msgid "You are not allowed to send messages that contain external links."
-msgstr "Nemáte oprávnenie posielať správy, ktoré obsahujú externé odkazy."
+msgstr "Nemáte oprávnenie posielať správu, ktoré obsahujú externé odkazy."
 
 #: app/Module/LoginBlockModule.php:64
 #, php-format
@@ -16195,7 +16394,9 @@ msgstr "Môžete požiadať o prístup pomocou doleuvedeného odkazu."
 #. I18N: Help text for the "Default theme" site configuration setting
 #: admin_site_config.php:255 admin_trees_config.php:978 edituser.php:287
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr "Vzhľad webtrees je možné meniť pomocou „motívov“. Každý motív má iný štýl, rozloženie, farebnú schému atd."
+msgstr ""
+"Vzhľad webtrees je možné meniť pomocou „motívov“. Každý motív má iný štýl, "
+"rozloženie, farebnú schému atď."
 
 #. I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14.
 #: admin_trees_config.php:842
@@ -16247,10 +16448,16 @@ msgstr "Môžete požadovať vyšší či nižší limit, ale server to môže i
 #: admin_trees_config.php:500
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
 msgstr ""
+"Môžete nastaviť prístup ku konkrétnemu záznamu, faktu, alebo udalosti "
+"pridaním obmedzenia prístupu. Ak záznam, fakt, alebo udalosť nemajú "
+"obmedzenie prístupu, tak sa použijú nasledovné prednastavené obmedzenia."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Môžete zrýchliť výpočet chránených osobných údajov pridaním údaju o úmrtí osôb, ktorých úmrtie sa dá odvodiť z iných údajov, ale nemajú záznam o úmrtí, pohrebe, kremácie a pod."
+msgstr ""
+"Môžete zrýchliť zisťovanie obmedzenia prístupu pridaním údaju o úmrtí osôb, "
+"ktorých úmrtie sa dá odvodiť z iných údajov, ale nemajú záznam o úmrtí, "
+"pohrebe, kremácie a pod."
 
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
@@ -16296,7 +16503,7 @@ msgstr ""
 
 #: admin_site_config.php:441
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr ""
+msgstr "Taktiež musíte povoliť „menej bezpečné aplikácie“ vo vašom účte Google."
 
 #: setup.php:215
 msgid "You must change this before you can continue."
@@ -16330,6 +16537,7 @@ msgstr "Musíte zadať názov zdroja"
 #: admin_trees_merge.php:96
 msgid "You must renumber the records in one of the trees before you can merge them."
 msgstr ""
+"Musíte prečíslovať záznamy v jednom z rodokmeňov skôr, než ich môžete zlúčiť."
 
 #: app/Module/ChartsBlockModule.php:138
 msgid "You must select an individual and a chart type in the block preferences"
@@ -16337,7 +16545,9 @@ msgstr "Musíte vybrať osobu a typ grafu v nastaveniach bloku"
 
 #: admin_users.php:286
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
-msgstr "Musíte definovať osobný záznam než obmedzíte uživateľa na jeho najbližšiu rodinu."
+msgstr ""
+"Musíte definovať osobný záznam než obmedzíte užívateľa na jeho najbližšiu "
+"rodinu."
 
 #: login.php:176
 msgid "You need to be a family member to access this website."
@@ -16345,7 +16555,7 @@ msgstr "Prístup k tejto stránke je povolený len členom rodiny."
 
 #: login.php:173
 msgid "You need to be an authorized user to access this website."
-msgstr "Prístup k tejto stránke je povolený len užívatelia s oprávnením."
+msgstr "Prístup k tejto stránke je povolený len užívateľom s oprávnením."
 
 #: admin_trees_manage.php:320
 msgid "You need to create a family tree."
@@ -16353,7 +16563,7 @@ msgstr "Musíte vytvoriť rodokmeň."
 
 #: login.php:567
 msgid "You need to review the account details."
-msgstr ""
+msgstr "Musíte skontrolovať podrobnosti účtu."
 
 #: setup.php:425
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
@@ -16374,11 +16584,12 @@ msgstr "Túto správu ste poslali administrátorovi webtrees:"
 
 #: message.php:244
 msgid "You sent the following message to a webtrees user:"
-msgstr "Túto správu ste poslali na webtrees uživateľský účet:"
+msgstr "Poslali ste nasledovnú správu jednému z užívateľov webtrees:"
 
 #: admin_site_upgrade.php:99
 msgid "You should accept or reject all pending changes before upgrading."
 msgstr ""
+"Pred aktualizáciou je potrebné prijať, alebo zamietnuť všetky čakajúce zmeny."
 
 #: admin_site_upgrade.php:136
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
@@ -16400,7 +16611,10 @@ msgstr "Nemal byste schvalovať účet, ak neviete, že je emailová adresa spr�
 
 #: login.php:328
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
-msgstr "Budete informovaný mailom keď tento užívateľ potvrdí požiadavku. Potom môžete dokončiť proces aktiváciou uživateľa. Nový užívateľ sa bude môcť prihlásiť až keď mu aktivujete jeho účet."
+msgstr ""
+"Budete informovaný emailom keď tento užívateľ potvrdí požiadavku. Potom "
+"môžete dokončiť proces aktiváciou užívateľského účtu. Nový užívateľ sa bude "
+"môcť prihlásiť až keď mu aktivujete jeho účet."
 
 #: setup.php:434
 msgid "You will use this to sign in to webtrees."
@@ -16443,7 +16657,9 @@ msgstr "Váš správca serveru vám poskytne podrobnosti pripojenia."
 
 #: app/Module/BatchUpdateModule.php:228
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "Váš uživatelský účet nemá povolené „automaticky schvaľovať zmeny“. Iba jeden záznam môžete meniť súčasne."
+msgstr ""
+"Váš uživatelský účet nemá povolené „Automaticky schváliť zmeny“. Môžete "
+"zmeniť vždy iba jeden záznam."
 
 #: admin.php:571
 #, php-format
@@ -16962,7 +17178,7 @@ msgstr "zomrel"
 #: app/Module/ClippingsCartModule.php:445
 #: app/Module/ClippingsCartModule.php:810 app/Module/GoogleMapsModule.php:4083
 msgid "download"
-msgstr "stiahnúť"
+msgstr "stiahnuť"
 
 #: app/Module/GoogleMapsModule.php:3372
 msgid "east"
@@ -16980,7 +17196,7 @@ msgstr "východ"
 #: admin_trees_config.php:2077
 #: app/Module/FrequentlyAskedQuestionsModule.php:365
 msgid "edit"
-msgstr ""
+msgstr "upraviť"
 
 #: app/Functions/Functions.php:569
 msgid "eighth cousin"
@@ -17027,19 +17243,19 @@ msgstr "bratranec z 11. kolena"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:103
 msgid "estate name"
-msgstr ""
+msgstr "meno podľa domu"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:100
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "meno podľa domu"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:97
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "meno podľa domu"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:304
@@ -19187,7 +19403,7 @@ msgstr "polnoc"
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:167
 msgid "minimal"
-msgstr ""
+msgstr "minimálny"
 
 #: app/Module/GoogleMapsModule.php:355
 msgid "minimum"
@@ -19356,7 +19572,7 @@ msgstr "žiadne"
 #: app/SurnameTradition.php:100
 msgctxt "Surname tradition"
 msgid "none"
-msgstr "žiadne"
+msgstr "žiadna"
 
 #. I18N: time format “%a” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:87
@@ -19533,7 +19749,7 @@ msgstr "nahradiť"
 #. I18N: a program feature
 #: setup.php:136 setup.php:137
 msgid "reporting"
-msgstr "reporting"
+msgstr "vytváranie protokolov"
 
 #. I18N: A button label.
 #: app/Module/GoogleMapsModule.php:4343 lifespan.php:109 medialist.php:196
@@ -19785,7 +20001,7 @@ msgstr "ukázať"
 
 #: statistics.php:765
 msgid "show the chart"
-msgstr "Zobraziť graf"
+msgstr "Zobraziť schému"
 
 #: app/Functions/Functions.php:802
 msgid "sibling"
@@ -20182,7 +20398,7 @@ msgstr "trojštvrtinový kruh"
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:113
 msgid "tls"
-msgstr "tsl"
+msgstr "TLS"
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:319
