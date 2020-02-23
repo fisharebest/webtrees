@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\SearchService;
@@ -128,7 +129,9 @@ class SearchGeneralPage implements RequestHandlerInterface
                 $tmp1 = $this->search_service->searchFamilies($search_trees, $search_terms);
                 $tmp2 = $this->search_service->searchFamilyNames($search_trees, $search_terms);
 
-                $families = $tmp1->merge($tmp2)->unique();
+                $families = $tmp1->merge($tmp2)->unique(static function (Family $family): string {
+                    return $family->xref() . '@' . $family->tree()->id();
+                });
             }
 
             if ($search_repositories) {

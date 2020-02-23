@@ -568,7 +568,7 @@ class ListController extends AbstractBaseController
             ->map(static function (string $path): string {
                 return dirname($path);
             })
-            ->unique()
+            ->uniqueStrict()
             ->sort()
             ->all();
 

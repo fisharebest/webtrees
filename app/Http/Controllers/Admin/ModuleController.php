@@ -292,7 +292,7 @@ class ModuleController extends AbstractAdminController
                     ->map(static function ($tree) use ($interface, $module): int {
                         return $module->accessLevel($tree, $interface);
                     })
-                    ->unique()
+                    ->uniqueStrict()
                     ->values()
                     ->map(static function (int $level) use ($level_text): string {
                         return $level_text[$level];

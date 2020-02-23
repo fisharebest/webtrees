@@ -183,7 +183,7 @@ class AutocompleteController extends AbstractBaseController
         }
 
         $pages = $pages
-            ->unique()
+            ->uniqueStrict()
             ->map(static function (string $page): array {
                 return ['value' => $page];
             })

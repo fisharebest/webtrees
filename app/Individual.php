@@ -908,7 +908,9 @@ class Individual extends GedcomRecord
             }
         }
 
-        return $step_families->unique();
+        return $step_families->uniqueStrict(static function (Family $family): string {
+            return $family->xref();
+        });
     }
 
     /**

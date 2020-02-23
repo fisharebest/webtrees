@@ -172,7 +172,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 
         // Find the requested individuals.
         $individuals = (new Collection($xrefs))
-            ->unique()
+            ->uniqueStrict()
             ->map(static function (string $xref) use ($tree): ?Individual {
                 return Individual::getInstance($xref, $tree);
             })
@@ -315,7 +315,9 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         }
 
         // do not add the same fact twice (prevents marriages from being added multiple times)
-        $indifacts = $indifacts->unique();
+        $indifacts = $indifacts->uniqueStrict(static function (Fact $fact): string {
+            return $fact->id();
+        });
 
         if ($scale === 0) {
             $scale = (int) (($topyear - $baseyear) / 20 * $indifacts->count() / 4);
