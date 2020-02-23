@@ -59,25 +59,6 @@ use Fisharebest\Webtrees\I18N;
         </div>
     </div>
 
-    <!-- LANGUAGE -->
-    <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="LANGUAGE">
-            <?= /* I18N: A configuration setting */ I18N::translate('Language') ?>
-        </label>
-        <div class="col-sm-9">
-            <select id="LANGUAGE" name="LANGUAGE" class="form-control">
-                <?php foreach (I18N::activeLocales() as $active_locale) : ?>
-                    <option value="<?= $active_locale->languageTag() ?>" <?= $tree->getPreference('LANGUAGE') === $active_locale->languageTag() ? 'selected' : '' ?>>
-                        <?= $active_locale->endonym() ?>
-                    </option>
-                <?php endforeach ?>
-            </select>
-            <p class="small text-muted">
-                <?= /* I18N: Help text for the “Language” configuration setting */ I18N::translate('If a visitor to the website has not selected a preferred language in their browser preferences, or they have selected an unsupported language, then this language will be used. Typically this applies to search engines.') ?>
-            </p>
-        </div>
-    </div>
-
     <!-- PEDIGREE_ROOT_ID -->
     <div class="row form-group">
         <label class="col-sm-3 col-form-label" for="PEDIGREE_ROOT_ID">

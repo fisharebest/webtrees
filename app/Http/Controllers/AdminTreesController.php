@@ -897,7 +897,6 @@ class AdminTreesController extends AbstractBaseController
         $tree->setPreference('INDI_FACTS_ADD', implode(',', $params['INDI_FACTS_ADD'] ?? []));
         $tree->setPreference('INDI_FACTS_QUICK', implode(',', $params['INDI_FACTS_QUICK'] ?? []));
         $tree->setPreference('INDI_FACTS_UNIQUE', implode(',', $params['INDI_FACTS_UNIQUE'] ?? []));
-        $tree->setPreference('LANGUAGE', $params['LANGUAGE'] ?? '');
         $tree->setPreference('MEDIA_UPLOAD', $params['MEDIA_UPLOAD'] ?? '');
         $tree->setPreference('META_DESCRIPTION', $params['META_DESCRIPTION'] ?? '');
         $tree->setPreference('META_TITLE', $params['META_TITLE'] ?? '');

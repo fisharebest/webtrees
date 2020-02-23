@@ -89,7 +89,7 @@ class Webtrees
     public const NAME = 'webtrees';
 
     // Required version of database tables/columns/indexes/etc.
-    public const SCHEMA_VERSION = 43;
+    public const SCHEMA_VERSION = 44;
 
     // e.g. "dev", "alpha", "beta", etc.
     public const STABILITY = 'dev';

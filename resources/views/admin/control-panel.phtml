@@ -8,6 +8,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\Http\RequestHandlers\PhpInformation;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SitePreferencesPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SiteRegistrationPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePageDefaultEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPageDefaultEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupPage;
@@ -89,7 +91,7 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/preferences') ?></span>
-                        <a href="<?= e(route('admin-site-preferences')) ?>">
+                        <a href="<?= e(route(SitePreferencesPage::class)) ?>">
                             <?= I18N::translate('Website preferences') ?>
                         </a>
                     </li>
@@ -101,7 +103,7 @@ use Illuminate\Support\Collection;
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/user') ?></span>
-                        <a href="<?= e(route('admin-site-registration')) ?>">
+                        <a href="<?= e(route(SiteRegistrationPage::class)) ?>">
                             <?= I18N::translate('Sign-in and registration') ?>
                         </a>
                     </li>
