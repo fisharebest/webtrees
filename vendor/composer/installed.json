@@ -2587,17 +2587,17 @@
     },
     {
         "name": "ramsey/uuid",
-        "version": "3.9.2",
-        "version_normalized": "3.9.2.0",
+        "version": "3.9.3",
+        "version_normalized": "3.9.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/ramsey/uuid.git",
-            "reference": "7779489a47d443f845271badbdcedfe4df8e06fb"
+            "reference": "7e1633a6964b48589b142d60542f9ed31bd37a92"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ramsey/uuid/zipball/7779489a47d443f845271badbdcedfe4df8e06fb",
-            "reference": "7779489a47d443f845271badbdcedfe4df8e06fb",
+            "url": "https://api.github.com/repos/ramsey/uuid/zipball/7e1633a6964b48589b142d60542f9ed31bd37a92",
+            "reference": "7e1633a6964b48589b142d60542f9ed31bd37a92",
             "shasum": ""
         },
         "require": {
@@ -2631,7 +2631,7 @@
             "ramsey/uuid-console": "A console application for generating UUIDs with ramsey/uuid",
             "ramsey/uuid-doctrine": "Allows the use of Ramsey\\Uuid\\Uuid as Doctrine field type."
         },
-        "time": "2019-12-17T08:18:51+00:00",
+        "time": "2020-02-21T04:36:14+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3496,23 +3496,23 @@
     },
     {
         "name": "tecnickcom/tcpdf",
-        "version": "6.3.4",
-        "version_normalized": "6.3.4.0",
+        "version": "6.3.5",
+        "version_normalized": "6.3.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/tecnickcom/TCPDF.git",
-            "reference": "510070b5e068e10d97b8cb0e25295e54755ec09d"
+            "reference": "19a535eaa7fb1c1cac499109deeb1a7a201b4549"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/510070b5e068e10d97b8cb0e25295e54755ec09d",
-            "reference": "510070b5e068e10d97b8cb0e25295e54755ec09d",
+            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/19a535eaa7fb1c1cac499109deeb1a7a201b4549",
+            "reference": "19a535eaa7fb1c1cac499109deeb1a7a201b4549",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2020-02-12T13:26:24+00:00",
+        "time": "2020-02-14T14:20:12+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
