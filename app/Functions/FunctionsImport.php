@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -646,11 +645,11 @@ class FunctionsImport
             }
         }
 
+        // Convert inline media into media objects
+        $gedrec = self::convertInlineMedia($tree, $gedrec);
+
         switch ($type) {
             case Individual::RECORD_TYPE:
-                // Convert inline media into media objects
-                $gedrec = self::convertInlineMedia($tree, $gedrec);
-
                 $record = new Individual($xref, $gedrec, null, $tree);
                 if (preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
                     $rin = $match[1];
@@ -669,14 +668,10 @@ class FunctionsImport
                 // Update the cross-reference/index tables.
                 self::updatePlaces($xref, $tree, $gedrec);
                 self::updateDates($xref, $tree_id, $gedrec);
-                self::updateLinks($xref, $tree_id, $gedrec);
                 self::updateNames($xref, $tree_id, $record);
                 break;
 
             case Family::RECORD_TYPE:
-                // Convert inline media into media objects
-                $gedrec = self::convertInlineMedia($tree, $gedrec);
-
                 if (preg_match('/\n1 HUSB @(' . Gedcom::REGEX_XREF . ')@/', $gedrec, $match)) {
                     $husb = $match[1];
                 } else {
@@ -704,14 +699,9 @@ class FunctionsImport
                 // Update the cross-reference/index tables.
                 self::updatePlaces($xref, $tree, $gedrec);
                 self::updateDates($xref, $tree_id, $gedrec);
-                self::updateLinks($xref, $tree_id, $gedrec);
                 break;
 
             case Source::RECORD_TYPE:
-                // Convert inline media into media objects
-                $gedrec = self::convertInlineMedia($tree, $gedrec);
-
-                $record = new Source($xref, $gedrec, null, $tree);
                 if (preg_match('/\n1 TITL (.+)/', $gedrec, $match)) {
                     $name = $match[1];
                 } elseif (preg_match('/\n1 ABBR (.+)/', $gedrec, $match)) {
@@ -726,58 +716,17 @@ class FunctionsImport
                     's_name'   => mb_substr($name, 0, 255),
                     's_gedcom' => $gedrec,
                 ]);
-
-                // Update the cross-reference/index tables.
-                self::updateLinks($xref, $tree_id, $gedrec);
-                self::updateNames($xref, $tree_id, $record);
                 break;
 
             case Repository::RECORD_TYPE:
-                // Convert inline media into media objects
-                $gedrec = self::convertInlineMedia($tree, $gedrec);
-
-                $record = new Repository($xref, $gedrec, null, $tree);
-
-                DB::table('other')->insert([
-                    'o_id'     => $xref,
-                    'o_file'   => $tree_id,
-                    'o_type'   => 'REPO',
-                    'o_gedcom' => $gedrec,
-                ]);
-
-                // Update the cross-reference/index tables.
-                self::updateLinks($xref, $tree_id, $gedrec);
-                self::updateNames($xref, $tree_id, $record);
-                break;
-
             case Note::RECORD_TYPE:
-                $record = new Note($xref, $gedrec, null, $tree);
-
-                DB::table('other')->insert([
-                    'o_id'     => $xref,
-                    'o_file'   => $tree_id,
-                    'o_type'   => 'NOTE',
-                    'o_gedcom' => $gedrec,
-                ]);
-
-                // Update the cross-reference/index tables.
-                self::updateLinks($xref, $tree_id, $gedrec);
-                self::updateNames($xref, $tree_id, $record);
-                break;
-
             case Submitter::RECORD_TYPE:
-                $record = new Submitter($xref, $gedrec, null, $tree);
-
                 DB::table('other')->insert([
                     'o_id'     => $xref,
                     'o_file'   => $tree_id,
-                    'o_type'   => 'SUBM',
+                    'o_type'   => $type,
                     'o_gedcom' => $gedrec,
                 ]);
-
-                // Update the cross-reference/index tables.
-                self::updateLinks($xref, $tree_id, $gedrec);
-                self::updateNames($xref, $tree_id, $record);
                 break;
 
             case Media::RECORD_TYPE:
@@ -799,10 +748,6 @@ class FunctionsImport
                         'descriptive_title'    => mb_substr($media_file->title(), 0, 248),
                     ]);
                 }
-
-                // Update the cross-reference/index tables.
-                self::updateLinks($xref, $tree_id, $gedrec);
-                self::updateNames($xref, $tree_id, $record);
                 break;
 
             default: // HEAD, TRLR, SUBN, and custom record types.
@@ -817,11 +762,11 @@ class FunctionsImport
                     'o_type'   => mb_substr($type, 0, 15),
                     'o_gedcom' => $gedrec,
                 ]);
-
-                // Update the cross-reference/index tables.
-                self::updateLinks($xref, $tree_id, $gedrec);
                 break;
         }
+
+        // Update the cross-reference/index tables.
+        self::updateLinks($xref, $tree_id, $gedrec);
     }
 
     /**
@@ -945,55 +890,46 @@ class FunctionsImport
     /**
      * Extract all the names from the given record and insert them into the database.
      *
-     * @param string       $xref
-     * @param int          $ged_id
-     * @param GedcomRecord $record
+     * @param string     $xref
+     * @param int        $ged_id
+     * @param Individual $record
      *
      * @return void
      */
-    public static function updateNames($xref, $ged_id, GedcomRecord $record): void
+    public static function updateNames($xref, $ged_id, Individual $record): void
     {
         foreach ($record->getAllNames() as $n => $name) {
-            if ($record instanceof Individual) {
-                if ($name['givn'] === '@P.N.') {
-                    $soundex_givn_std = null;
-                    $soundex_givn_dm  = null;
-                } else {
-                    $soundex_givn_std = Soundex::russell($name['givn']);
-                    $soundex_givn_dm  = Soundex::daitchMokotoff($name['givn']);
-                }
-                if ($name['surn'] === '@N.N.') {
-                    $soundex_surn_std = null;
-                    $soundex_surn_dm  = null;
-                } else {
-                    $soundex_surn_std = Soundex::russell($name['surname']);
-                    $soundex_surn_dm  = Soundex::daitchMokotoff($name['surname']);
-                }
-                DB::table('name')->insert([
-                    'n_file'             => $ged_id,
-                    'n_id'               => $xref,
-                    'n_num'              => $n,
-                    'n_type'             => $name['type'],
-                    'n_sort'             => mb_substr($name['sort'], 0, 255),
-                    'n_full'             => mb_substr($name['fullNN'], 0, 255),
-                    'n_surname'          => mb_substr($name['surname'], 0, 255),
-                    'n_surn'             => mb_substr($name['surn'], 0, 255),
-                    'n_givn'             => mb_substr($name['givn'], 0, 255),
-                    'n_soundex_givn_std' => $soundex_givn_std,
-                    'n_soundex_surn_std' => $soundex_surn_std,
-                    'n_soundex_givn_dm'  => $soundex_givn_dm,
-                    'n_soundex_surn_dm'  => $soundex_surn_dm,
-                ]);
+            if ($name['givn'] === '@P.N.') {
+                $soundex_givn_std = null;
+                $soundex_givn_dm  = null;
             } else {
-                DB::table('name')->insert([
-                    'n_file' => $ged_id,
-                    'n_id'   => $xref,
-                    'n_num'  => $n,
-                    'n_type' => $name['type'],
-                    'n_sort' => mb_substr($name['sort'], 0, 255),
-                    'n_full' => mb_substr($name['fullNN'], 0, 255),
-                ]);
+                $soundex_givn_std = Soundex::russell($name['givn']);
+                $soundex_givn_dm  = Soundex::daitchMokotoff($name['givn']);
             }
+
+            if ($name['surn'] === '@N.N.') {
+                $soundex_surn_std = null;
+                $soundex_surn_dm  = null;
+            } else {
+                $soundex_surn_std = Soundex::russell($name['surname']);
+                $soundex_surn_dm  = Soundex::daitchMokotoff($name['surname']);
+            }
+
+            DB::table('name')->insert([
+                'n_file'             => $ged_id,
+                'n_id'               => $xref,
+                'n_num'              => $n,
+                'n_type'             => $name['type'],
+                'n_sort'             => mb_substr($name['sort'], 0, 255),
+                'n_full'             => mb_substr($name['fullNN'], 0, 255),
+                'n_surname'          => mb_substr($name['surname'], 0, 255),
+                'n_surn'             => mb_substr($name['surn'], 0, 255),
+                'n_givn'             => mb_substr($name['givn'], 0, 255),
+                'n_soundex_givn_std' => $soundex_givn_std,
+                'n_soundex_surn_std' => $soundex_surn_std,
+                'n_soundex_givn_dm'  => $soundex_givn_dm,
+                'n_soundex_surn_dm'  => $soundex_surn_dm,
+            ]);
         }
     }
 

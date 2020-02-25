@@ -666,11 +666,6 @@ parameters:
 			path: app/Http/Controllers/AdminController.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminSiteController\\:\\:themeOptions\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminSiteController.php
-
-		-
 			message: "#^Parameter \\#1 \\$str of function strtoupper expects string, int\\|string given\\.$#"
 			count: 2
 			path: app/Http/Controllers/AdminTreesController.php
