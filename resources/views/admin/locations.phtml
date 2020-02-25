@@ -7,9 +7,15 @@ use Fisharebest\Webtrees\Webtrees;
 
 <?= view('components/breadcrumbs', ['links' => $breadcrumbs]) ?>
 
-<h1><?= $title ?></h1>
-
-<table class="table table-bordered table-striped table-sm table-hover">
+  <h1><?= $title ?></h1>
+  <div class='m-2'>
+    <span class="font-weight-bold"><?= I18N::translate('Key') ?>:</span>
+    <span class="mx-2 badge badge-pill badge-danger">0</span><?= I18N::translate('Place not in tree') ?>
+    |<span class="mx-2 badge badge-pill badge-secondary">0</span><?= I18N::translate('No child places') ?>
+    |<span class="mx-2 badge badge-pill badge-info">n</span><?= I18N::translate('Number of child places') ?>
+    |<span class="mx-2 badge badge-pill badge-warning">n</span><?= I18N::translate('Number of child places, color indicates some have no co-ordinates') ?>
+  </div>
+  <table class="table table-bordered table-striped table-sm table-hover">
     <thead class="thead-dark">
     <tr>
         <th><?= I18N::translate('Place') ?></th>
