@@ -472,7 +472,7 @@ class Tree
      *
      * @param string $gedcom
      *
-     * @return GedcomRecord|Individual|Family|Note|Source|Repository|Media
+     * @return GedcomRecord|Individual|Family|Note|Source|Repository|Media|Submitter
      * @throws InvalidArgumentException
      */
     public function createRecord(string $gedcom): GedcomRecord
@@ -499,13 +499,13 @@ class Tree
         // Accept this pending change
         if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS)) {
             $record = new GedcomRecord($xref, $gedcom, null, $this);
-            
+
             app(PendingChangesService::class)->acceptRecord($record);
 
             return $record;
         }
 
-        return GedcomRecord::getInstance($xref, $this, $gedcom);
+        return new GedcomRecord($xref, '', $gedcom, $this);
     }
 
     /**
