@@ -29,7 +29,7 @@
     "jquery": "^3.4.1",
     "jquery-colorbox": "^1.6.4",
     "leaflet": "^1.6.0",
-    "leaflet-geosearch": "^2.7.0",
+    "leaflet-control-geocoder": "^1.11.0",
     "leaflet.markercluster": "^1.4.1",
     "moment": "^2.24.0",
     "popper.js": "^1.16.1",

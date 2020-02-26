@@ -328,7 +328,6 @@ class LocationController extends AbstractAdminController
             'parent_id'   => $parent_id,
             'lat'         => $lat,
             'lng'         => $lng,
-            'ref'         => $id,
             'data'        => $this->mapLocationData($id),
             'provider'    => [
                 'url'     => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
