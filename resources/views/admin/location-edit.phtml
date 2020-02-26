@@ -157,6 +157,7 @@ window.WT_OSM_ADMIN = (function () {
   // Geocoder (place lookup)
   let geocoder = new L.Control.geocoder({
     defaultMarkGeocode: false,
+    expand:             'click',
     showResultIcons:    true,
     query:              '<?= e($location->locationName()) ?>',
     placeholder: <?= json_encode(I18N::translate('Place')) ?>,
