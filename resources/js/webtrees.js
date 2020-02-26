@@ -28,15 +28,19 @@
   };
 
   /**
-     * Tidy the whitespace in a string.
-     */
+   * Tidy the whitespace in a string.
+   * @param {string} str
+   * @returns {string}
+   */
   function trim (str) {
     return str.replace(/\s+/g, ' ').trim();
   }
 
   /**
-     * Look for non-latin characters in a string.
-     */
+   * Look for non-latin characters in a string.
+   * @param {string} str
+   * @returns {string}
+   */
   webtrees.detectScript = function (str) {
     for (const script in scriptRegexes) {
       if (str.match(scriptRegexes[script])) {
@@ -48,8 +52,11 @@
   };
 
   /**
-     * In some languages, the SURN uses a male/default form, but NAME uses a gender-inflected form.
-     */
+   * In some languages, the SURN uses a male/default form, but NAME uses a gender-inflected form.
+   * @param {string} surname
+   * @param {string} sex
+   * @returns {string}
+   */
   function inflectSurname (surname, sex) {
     if (lang === 'pl' && sex === 'F') {
       return surname
@@ -63,10 +70,16 @@
   }
 
   /**
-     * Build a NAME from a NPFX, GIVN, SPFX, SURN and NSFX parts.
-     *
-     * Assumes the language of the document is the same as the language of the name.
-     */
+   * Build a NAME from a NPFX, GIVN, SPFX, SURN and NSFX parts.
+   * Assumes the language of the document is the same as the language of the name.
+   * @param {string} npfx
+   * @param {string} givn
+   * @param {string} spfx
+   * @param {string} surn
+   * @param {string} nsfx
+   * @param {string} sex
+   * @returns {string}
+   */
   webtrees.buildNameFromParts = function (npfx, givn, spfx, surn, nsfx, sex) {
     const usesCJK = webtrees.detectScript(npfx + givn + spfx + givn + surn + nsfx) === 'Han';
     const separator = usesCJK ? '' : ' ';
@@ -101,6 +114,10 @@
   };
 }(window.webtrees = window.webtrees || {}));
 
+/**
+ * @param {string} sid
+ * @returns {boolean}
+ */
 function expand_layer (sid) {
   $('#' + sid + '_img').toggleClass('icon-plus icon-minus');
   $('#' + sid).slideToggle('fast');
@@ -110,6 +127,10 @@ function expand_layer (sid) {
 
 var pastefield;
 
+/**
+ * @param {string} datefield
+ * @param {string} dmy
+ */
 function valid_date (datefield, dmy) {
   var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
   var hijri_months = ['MUHAR', 'SAFAR', 'RABIA', 'RABIT', 'JUMAA', 'JUMAT', 'RAJAB', 'SHAAB', 'RAMAD', 'SHAWW', 'DHUAQ', 'DHUAH'];
@@ -258,6 +279,20 @@ daysOfWeek[6] = 'S';
 
 var weekStart = 0;
 
+/**
+ * @param {string} jan
+ * @param {string} feb
+ * @param {string} mar
+ * @param {string} apr
+ * @param {string} may
+ * @param {string} jun
+ * @param {string} jul
+ * @param {string} aug
+ * @param {string} sep
+ * @param {string} oct
+ * @param {string} nov
+ * @param {string} dec
+ */
 function cal_setMonthNames (jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec) {
   monthLabels[1] = jan;
   monthLabels[2] = feb;
@@ -273,6 +308,15 @@ function cal_setMonthNames (jan, feb, mar, apr, may, jun, jul, aug, sep, oct, no
   monthLabels[12] = dec;
 }
 
+/**
+ * @param {string} sun
+ * @param {string} mon
+ * @param {string} tue
+ * @param {string} wed
+ * @param {string} thu
+ * @param {string} fri
+ * @param {string} sat
+ */
 function cal_setDayHeaders (sun, mon, tue, wed, thu, fri, sat) {
   daysOfWeek[0] = sun;
   daysOfWeek[1] = mon;
@@ -283,12 +327,20 @@ function cal_setDayHeaders (sun, mon, tue, wed, thu, fri, sat) {
   daysOfWeek[6] = sat;
 }
 
+/**
+ * @param {number} day
+ */
 function cal_setWeekStart (day) {
   if (day >= 0 && day < 7) {
     weekStart = day;
   }
 }
 
+/**
+ * @param {string} dateDivId
+ * @param {string} dateFieldId
+ * @returns {boolean}
+ */
 function calendarWidget (dateDivId, dateFieldId) {
   var dateDiv = document.getElementById(dateDivId);
   var dateField = document.getElementById(dateFieldId);
@@ -324,6 +376,12 @@ function calendarWidget (dateDivId, dateFieldId) {
   return false;
 }
 
+/**
+ * @param {string} dateFieldId
+ * @param {string} dateDivId
+ * @param {Date} date
+ * @returns {string}
+ */
 function cal_generateSelectorContent (dateFieldId, dateDivId, date) {
   var i, j;
   var content = '<table border="1"><tr>';
@@ -398,6 +456,13 @@ function cal_generateSelectorContent (dateFieldId, dateDivId, date) {
   return content;
 }
 
+/**
+ * @param {string} dateFieldId
+ * @param {number} year
+ * @param {number} month
+ * @param {number} day
+ * @returns {boolean}
+ */
 function cal_setDateField (dateFieldId, year, month, day) {
   var dateField = document.getElementById(dateFieldId);
   if (!dateField) {
@@ -410,6 +475,11 @@ function cal_setDateField (dateFieldId, year, month, day) {
   return false;
 }
 
+/**
+ * @param {string} dateFieldId
+ * @param {string} dateDivId
+ * @returns {boolean}
+ */
 function cal_updateCalendar (dateFieldId, dateDivId) {
   var dateSel = document.getElementById(dateFieldId + '_daySelect');
   if (!dateSel) {
@@ -440,12 +510,23 @@ function cal_updateCalendar (dateFieldId, dateDivId) {
   return false;
 }
 
+/**
+ * @param {string} dateFieldId
+ * @param {string} dateDivId
+ * @param {number} year
+ * @param {number} month
+ * @param {number} day
+ * @returns {boolean}
+ */
 function cal_dateClicked (dateFieldId, dateDivId, year, month, day) {
   cal_setDateField(dateFieldId, year, month, day);
   calendarWidget(dateDivId, dateFieldId);
   return false;
 }
 
+/**
+ * @param {string} id
+ */
 function openerpasteid (id) {
   if (window.opener.paste_id) {
     window.opener.paste_id(id);
@@ -453,10 +534,16 @@ function openerpasteid (id) {
   window.close();
 }
 
+/**
+ * @param {string} value
+ */
 function paste_id (value) {
   pastefield.value = value;
 }
 
+/**
+ * @param {string} name
+ */
 function pastename (name) {
   if (nameElement) {
     nameElement.innerHTML = name;
@@ -466,6 +553,9 @@ function pastename (name) {
   }
 }
 
+/**
+ * @param {string} value
+ */
 function paste_char (value) {
   if (document.selection) {
     // IE
@@ -490,7 +580,6 @@ function paste_char (value) {
 
 /**
  * Persistant checkbox options to hide/show extra data.
-
  * @param element_id
  */
 function persistent_toggle (element_id) {
@@ -507,6 +596,11 @@ function persistent_toggle (element_id) {
   $(element).on('change', function () { localStorage.setItem(key, element.checked); });
 }
 
+/**
+ * @param {string} field
+ * @param {string} pos
+ * @param {string} neg
+ */
 function valid_lati_long (field, pos, neg) {
   // valid LATI or LONG according to Gedcom standard
   // pos (+) : N or E
@@ -544,7 +638,10 @@ function valid_lati_long (field, pos, neg) {
   field.value = txt;
 }
 
-// Initialize autocomplete elements.
+/**
+ * Initialize autocomplete elements.
+ * @param {string} selector
+ */
 function autocomplete (selector) {
   // Use typeahead/bloodhound for autocomplete
   $(selector).each(function () {
@@ -574,9 +671,8 @@ function autocomplete (selector) {
 
 /**
  * Insert text at the current cursor position in an input field.
- *
- * @param e The input element.
- * @param t The text to insert.
+ * @param {Element} e The input element.
+ * @param {string} t The text to insert.
  */
 function insertTextAtCursor (e, t) {
   var scrollTop = e.scrollTop;
@@ -597,7 +693,9 @@ $.ajaxSetup({
   }
 });
 
-// Initialisation
+/**
+ * Initialisation
+ */
 $(function () {
   // Page elements that load automaticaly via AJAX.
   // This prevents bad robots from crawling resource-intensive pages.
@@ -605,7 +703,11 @@ $(function () {
     $(this).load($(this).data('ajaxUrl'));
   });
 
-  // Select2 - format entries in the select list
+  /**
+   * Select2 - format entries in the select list
+   * @param {Object} data
+   * @returns {string}
+   */
   function templateOptionForSelect2 (data) {
     // This could be a "waiting..." message (data.loading is true) or a response from the server.
     // Both are already HTML, so no need to reformat it.
