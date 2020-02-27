@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
@@ -28,6 +29,20 @@ use Illuminate\Support\Collection;
  */
 class Select2Place extends AbstractSelect2Handler
 {
+    /** @var SearchService */
+    protected $search_service;
+
+    /**
+     * AutocompleteController constructor.
+     *
+     * @param SearchService $search_service
+     */
+    public function __construct(
+        SearchService $search_service
+    ) {
+        $this->search_service = $search_service;
+    }
+
     /**
      * Perform the search
      *

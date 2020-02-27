@@ -43,19 +43,6 @@ abstract class AbstractSelect2Handler implements RequestHandlerInterface
     // Wait for the user to pause typing before sending request.
     public const AJAX_DELAY = 350;
 
-    /** @var SearchService */
-    protected $search_service;
-
-    /**
-     * AutocompleteController constructor.
-     *
-     * @param SearchService $search_service
-     */
-    public function __construct(SearchService $search_service)
-    {
-        $this->search_service = $search_service;
-    }
-
     /**
      * @param ServerRequestInterface $request
      *

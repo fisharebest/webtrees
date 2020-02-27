@@ -19,7 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
@@ -30,6 +31,20 @@ use function view;
  */
 class Select2Submitter extends AbstractSelect2Handler
 {
+    /** @var SearchService */
+    protected $search_service;
+
+    /**
+     * AutocompleteController constructor.
+     *
+     * @param SearchService $search_service
+     */
+    public function __construct(
+        SearchService $search_service
+    ) {
+        $this->search_service = $search_service;
+    }
+
     /**
      * Perform the search
      *
@@ -43,15 +58,15 @@ class Select2Submitter extends AbstractSelect2Handler
     protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
     {
         // Search by XREF
-        $submitter = GedcomRecord::getInstance($query, $tree);
+        $submitter = Submitter::getInstance($query, $tree);
 
-        if ($submitter instanceof GedcomRecord && $submitter::RECORD_TYPE === 'UNKNOWN') {
+        if ($submitter instanceof Submitter) {
             $results = new Collection([$submitter]);
         } else {
             $results = $this->search_service->searchSubmitters([$tree], [$query], $offset, $limit);
         }
 
-        return $results->map(static function (GedcomRecord $submitter): array {
+        return $results->map(static function (Submitter $submitter): array {
             return [
                 'id'    => $submitter->xref(),
                 'text'  => view('selects/submitter', ['submitter' => $submitter]),

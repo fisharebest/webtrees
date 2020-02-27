@@ -115,7 +115,8 @@ class BranchesController extends AbstractBaseController
         $soundex_dm  = (bool) ($params['soundex_dm'] ?? false);
 
         // Highlight direct-line ancestors of this individual.
-        $self = Individual::getInstance($tree->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF), $tree);
+        $xref = $tree->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF);
+        $self = Individual::getInstance($xref, $tree);
 
         if ($surname !== '') {
             $individuals = $this->loadIndividuals($tree, $surname, $soundex_dm, $soundex_std);
@@ -123,7 +124,7 @@ class BranchesController extends AbstractBaseController
             $individuals = [];
         }
 
-        if ($self !== null) {
+        if ($self instanceof Individual) {
             $ancestors = $this->allAncestors($self);
         } else {
             $ancestors = [];

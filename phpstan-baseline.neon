@@ -2371,41 +2371,6 @@ parameters:
 			path: app/Services/SearchService.php
 
 		-
-			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Family but returns Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Individual but returns Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Media but returns Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Note but returns Fisharebest\\\\Webtrees\\\\Note\\|null\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Repository but returns Fisharebest\\\\Webtrees\\\\Repository\\|null\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Source but returns Fisharebest\\\\Webtrees\\\\Source\\|null\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
 			message: "#^Parameter \\#2 \\$str of function explode expects string, string\\|false given\\.$#"
 			count: 2
 			path: app/Services/ServerCheckService.php
@@ -2924,11 +2889,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\SurnameTradition\\\\PatrilinealSurnameTradition\\:\\:inflect\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
 			path: app/SurnameTradition/PatrilinealSurnameTradition.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Tree\\:\\:createRecord\\(\\) should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
-			count: 1
-			path: app/Tree.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\View\\:\\:__construct\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
