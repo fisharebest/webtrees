@@ -1032,6 +1032,48 @@ class Individual extends GedcomRecord
     }
 
     /**
+     * Returns the given name.
+     *
+     * @return string
+     */
+    public function givenName(): string
+    {
+        if ($this->canShowName()) {
+            return $this->getAllNames()[$this->getPrimaryName()]['givn'];
+        }
+
+        return I18N::translate('Private');
+    }
+
+    /**
+     * Returns the surname.
+     *
+     * @return string
+     */
+    public function surname(): string
+    {
+        if ($this->canShowName()) {
+            return $this->getAllNames()[$this->getPrimaryName()]['surn'];
+        }
+
+        return I18N::translate('Private');
+    }
+
+    /**
+     * Returns the starred name.
+     *
+     * @return string
+     */
+    public function starredName(): string
+    {
+        if ($this->canShowName()) {
+            return $this->getAllNames()[$this->getPrimaryName()]['starred'];
+        }
+
+        return I18N::translate('Private');
+    }
+
+    /**
      * Convert a name record into ‘full’ and ‘sort’ versions.
      * Use the NAME field to generate the ‘full’ version, as the
      * gedcom spec says that this is the individual’s name, as they would write it.
@@ -1171,6 +1213,9 @@ class Individual extends GedcomRecord
         }, $full);
 
         // A suffix of “*” indicates a preferred name
+        $starred = [];
+        preg_match('/([^ >]*)\*/', (string) $full, $starred);
+
         $full = preg_replace('/([^ >]*)\*/', '<span class="starredname">\\1</span>', $full);
 
         // Remove prefered-name indicater - they don’t go in the database
@@ -1198,6 +1243,7 @@ class Individual extends GedcomRecord
                 // This goes into the database
                 'surn'    => $SURN,
                 // This goes into the database
+                'starred' => $starred[0] ?? '',
             ];
         }
     }

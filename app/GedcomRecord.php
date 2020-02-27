@@ -631,7 +631,6 @@ class GedcomRecord
     }
 
     /**
-     * /**
      * Get variants of the name
      *
      * @return string
