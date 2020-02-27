@@ -52,7 +52,7 @@ class Submitter extends GedcomRecord
     }
 
     /**
-     * Get an instance of a repository object. For single records,
+     * Get an instance of a submitter object. For single records,
      * we just receive the XREF. For bulk records (such as lists
      * and search results) we can receive the GEDCOM data as well.
      *
