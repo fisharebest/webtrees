@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2020-01-30 10:03+0000\n"
+"PO-Revision-Date: 2020-03-01 16:18+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
@@ -11928,7 +11928,7 @@ msgstr "列表"
 #: resources/views/admin/modules.phtml:83,
 #: resources/views/admin/modules.phtml:85,
 msgid "Lists"
-msgstr "名录清单"
+msgstr "列表"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
