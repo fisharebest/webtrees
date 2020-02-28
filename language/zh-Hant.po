@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Traditional) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-09-22 16:28+0100\n"
-"PO-Revision-Date: 2020-01-20 17:47+0000\n"
+"PO-Revision-Date: 2020-03-01 16:18+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.webtrees.net/"
 "projects/webtrees/webtrees-17/zh_Hant/>\n"
@@ -12050,7 +12050,7 @@ msgstr "列表"
 #: resources/views/admin/modules.phtml:85
 #: resources/views/admin/trees-preferences.phtml:340
 msgid "Lists"
-msgstr "名錄清單"
+msgstr "列表"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
