@@ -298,7 +298,7 @@ class FunctionsPrintFacts
                 echo '<div class="field"><a href="', e($fact->value()), '">', e($fact->value()), '</a></div>';
                 break;
             case 'TEXT': // 0 SOUR / 1 TEXT
-                echo '<div class="field">', nl2br(e($fact->value()), false), '</div>';
+                echo Filter::formatText($fact->value(), $tree);
                 break;
             default:
                 // Display the value for all other facts/events
