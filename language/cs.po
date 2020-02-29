@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-02-16 09:06+0000\n"
+"PO-Revision-Date: 2020-03-01 16:17+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/cs/>\n"
@@ -3346,7 +3346,7 @@ msgstr "Calgary, Alberata, Kanada"
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:234
 msgid "Call number"
-msgstr "Telefon"
+msgstr "Signatura"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6793
