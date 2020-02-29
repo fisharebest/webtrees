@@ -120,7 +120,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
                 $rows = $rows->sort(static function (stdClass $x, stdClass $y): int {
                     return $y->time <=> $x->time;
                 });
-                $order = [[2, 'asc']];
+                $order = [[2, 'desc']];
                 break;
         }
 
