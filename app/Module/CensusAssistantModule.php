@@ -140,9 +140,8 @@ class CensusAssistantModule extends AbstractModule
             $newged .= "\n2 NOTE @" . $note->xref() . '@';
 
             // Add the census fact to the rest of the household
-            foreach (array_keys($ca_individuals) as $xref) {
-                $xref = (string) $xref;
-                if ($xref !== $individual->xref()) {
+            foreach ($ca_individuals['xref'] ?? [] as $xref) {
+                if ($xref !== '' && $xref !== $individual->xref()) {
                     Individual::getInstance($xref, $individual->tree())
                         ->updateFact($fact_id, $newged, !$keep_chan);
                 }
@@ -184,8 +183,15 @@ class CensusAssistantModule extends AbstractModule
             $text .= '-----';
         }
 
-        foreach ($ca_individuals as $columns) {
-            $text .= "\n" . implode(' | ', $columns);
+        foreach (array_keys($ca_individuals['xref'] ?? []) as $key) {
+            foreach ($census->columns() as $n => $column) {
+                if ($n === 0) {
+                    $text .= "\n";
+                } else {
+                    $text .= ' | ';
+                }
+                $text .= $ca_individuals[$n][$key];
+            }
         }
 
         return $text . "\n\n" . $ca_notes;
@@ -221,7 +227,15 @@ class CensusAssistantModule extends AbstractModule
      */
     public function censusTableEmptyRow(CensusInterface $census): string
     {
-        return '<tr class="wt-census-assistant-row"><td hidden></td>' . str_repeat('<td class="wt-census-assistant-field p-0"><input type="text" class="form-control wt-census-assistant-form-control p-0"></td>', count($census->columns())) . '<td><a href="#" title="' . I18N::translate('Remove') . '">' . view('icons/delete') . '</a></td></tr>';
+        $html = '<td class="wt-census-assistant-field" hidden><input type="hidden" name="ca_individuals[xref][]"></td>';
+
+        foreach ($census->columns() as $n => $column) {
+            $html .= '<td class="wt-census-assistant-field p-0"><input class="form-control wt-census-assistant-form-control p-0" type="text" name="ca_individuals[' . $n . '][]"></td>';
+        }
+
+        $html .= '<td class="wt-census-assistant-field"><a href="#" title="' . I18N::translate('Remove') . '">' . view('icons/delete') . '</a></td>';
+
+        return '<tr class="wt-census-assistant-row">' . $html . '</tr>';
     }
 
     /**
@@ -237,11 +251,14 @@ class CensusAssistantModule extends AbstractModule
      */
     public function censusTableRow(CensusInterface $census, Individual $individual, Individual $head): string
     {
-        $html = '';
-        foreach ($census->columns() as $column) {
-            $html .= '<td class="wt-census-assistant-field p-0"><input class="form-control wt-census-assistant-form-control p-0" type="text" value="' . $column->generate($individual, $head) . '" name="ca_individuals[' . $individual->xref() . '][]"></td>';
+        $html = '<td class="wt-census-assistant-field" hidden><input type="hidden" name="ca_individuals[xref][]" value="' . e($individual->xref()) . '"></td>';
+
+        foreach ($census->columns() as $n => $column) {
+            $html .= '<td class="wt-census-assistant-field p-0"><input class="form-control wt-census-assistant-form-control p-0" type="text" value="' . $column->generate($individual, $head) . '" name="ca_individuals[' . $n . '][]"></td>';
         }
 
-        return '<tr class="wt-census-assistant-row"><td class="wt-census-assistant-field" hidden>' . $individual->xref() . '</td>' . $html . '<td class="wt-census-assistant-field"><a href="#" title="' . I18N::translate('Remove') . '">' . view('icons/delete') . '</a></td></tr>';
+        $html .= '<td class="wt-census-assistant-field"><a href="#" title="' . I18N::translate('Remove') . '">' . view('icons/delete') . '</a></td>';
+
+        return '<tr class="wt-census-assistant-row">' . $html . '</tr>';
     }
 }

@@ -143,8 +143,8 @@ use Fisharebest\Webtrees\View;
     var census         = censusSelector.options[censusSelector.selectedIndex].dataset.census;
     var indi_selector  = document.querySelector('#census-assistant-individual');
     var xref           = indi_selector.options[indi_selector.selectedIndex].value;
-    var headTd         = document.querySelector('#census-assistant-table td');
-    var head           = headTd === null ? xref : headTd.innerHTML;
+    var headInput      = document.querySelector('#census-assistant-table td input');
+    var head           = headInput === null ? xref : headInput.value;
 
     let formData = new FormData();
     formData.append('census', census);
