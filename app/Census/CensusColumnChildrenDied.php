@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -37,25 +38,21 @@ class CensusColumnChildrenDied extends AbstractCensusColumn implements CensusCol
      */
     public function generate(Individual $individual, Individual $head): string
     {
-        if ($individual->sex() !== 'F') {
+        $family = $this->spouseFamily($individual);
+
+        if ($family === null || $individual->sex() !== 'F') {
             return '';
         }
 
-        $count = 0;
-        foreach ($individual->spouseFamilies() as $family) {
-            foreach ($family->children() as $child) {
-                if (
+        return (string) $family->children()
+            ->filter(function (Individual $child): bool {
+                return
                     $child->getBirthDate()->isOK() &&
                     Date::compare($child->getBirthDate(), $this->date()) < 0 &&
-                    $child->getBirthDate() != $child->getDeathDate() &&
+                    $child->getBirthDate()->minimumJulianDay() !== $child->getDeathDate()->minimumJulianDay() &&
                     $child->getDeathDate()->isOK() &&
-                    Date::compare($child->getDeathDate(), $this->date()) < 0
-                ) {
-                    $count++;
-                }
-            }
-        }
-
-        return (string) $count;
+                    Date::compare($child->getDeathDate(), $this->date()) < 0;
+            })
+            ->count();
     }
 }

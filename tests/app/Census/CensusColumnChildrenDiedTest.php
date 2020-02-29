@@ -40,6 +40,7 @@ class CensusColumnChildrenDiedTest extends TestCase
     {
         $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('M');
+        $individual->method('spouseFamilies')->willReturn(new Collection([]));
 
         $census = $this->createMock(CensusInterface::class);
 
