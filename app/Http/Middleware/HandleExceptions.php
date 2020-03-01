@@ -139,15 +139,23 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
         $default = Site::getPreference('DEFAULT_GEDCOM');
         $tree = $tree ?? $this->tree_service->all()[$default] ?? $this->tree_service->all()->first();
 
-        if ($request->getHeaderLine('X-Requested-With') !== '') {
+        $status_code = $exception->getCode();
+
+        // If this was a GET request, then we were probably fetching HTML to display, for
+        // example a chart or tab.
+        if (
+            $request->getHeaderLine('X-Requested-With') !== '' &&
+            $request->getMethod() === RequestMethodInterface::METHOD_GET
+        ) {
             $this->layout = 'layouts/ajax';
+            $status_code = StatusCodeInterface::STATUS_OK;
         }
 
         return $this->viewResponse('components/alert-danger', [
             'alert' => $exception->getMessage(),
             'title' => $exception->getMessage(),
             'tree'  => $tree,
-        ], $exception->getCode());
+        ], $status_code);
     }
 
     /**

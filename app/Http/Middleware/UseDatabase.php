@@ -19,11 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fisharebest\Webtrees\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use LogicException;
 use PDO;
+use PDOException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -34,6 +36,14 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class UseDatabase implements MiddlewareInterface
 {
+    // The following errors are likely to be caused by server issues, not by webtrees.
+    private const SERVER_ERRORS = [
+        'mysql'  => [1203],
+        'pgsql'  => [],
+        'sqlite' => [],
+        'sqlsvr' => [],
+    ];
+
     /**
      * @param ServerRequestInterface  $request
      * @param RequestHandlerInterface $handler
@@ -92,6 +102,17 @@ class UseDatabase implements MiddlewareInterface
             return $this->where($column, 'LIKE', '%' . $search . '%', $boolean);
         });
 
-        return $handler->handle($request);
+        try {
+            return $handler->handle($request);
+        } catch (PDOException $exception) {
+            if (in_array($exception->errorInfo[1], self::SERVER_ERRORS[$driver], true)) {
+                $message = 'A database error occurred.  This is most likely caused by an issue with your server.' . PHP_EOL . PHP_EOL;
+                $message .= $exception->getMessage() . PHP_EOL . PHP_EOL;
+                $message .= $exception->getFile() . ':' . $exception->getLine();
+                throw new HttpServerErrorException($message);
+            }
+
+            throw $exception;
+        }
     }
 }
