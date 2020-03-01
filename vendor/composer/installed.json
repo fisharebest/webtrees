@@ -1356,17 +1356,17 @@
     },
     {
         "name": "league/commonmark",
-        "version": "1.3.0",
-        "version_normalized": "1.3.0.0",
+        "version": "1.3.1",
+        "version_normalized": "1.3.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/commonmark.git",
-            "reference": "4f30be7a2cbf3bfa5788abab71384713e48f451f"
+            "reference": "8015f806173c6ee54de25a87c2d69736696e88db"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/4f30be7a2cbf3bfa5788abab71384713e48f451f",
-            "reference": "4f30be7a2cbf3bfa5788abab71384713e48f451f",
+            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/8015f806173c6ee54de25a87c2d69736696e88db",
+            "reference": "8015f806173c6ee54de25a87c2d69736696e88db",
             "shasum": ""
         },
         "require": {
@@ -1389,7 +1389,7 @@
             "scrutinizer/ocular": "^1.5",
             "symfony/finder": "^4.2"
         },
-        "time": "2020-02-08T23:42:03+00:00",
+        "time": "2020-02-28T18:53:50+00:00",
         "bin": [
             "bin/commonmark"
         ],
@@ -2740,17 +2740,17 @@
     },
     {
         "name": "symfony/cache",
-        "version": "v4.4.4",
-        "version_normalized": "4.4.4.0",
+        "version": "v4.4.5",
+        "version_normalized": "4.4.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/cache.git",
-            "reference": "0198a01c8d918d6d717f96dfdcba9582bc5f6468"
+            "reference": "28511cbd8c760a19f4b4b70961d2cd957733b3d9"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/cache/zipball/0198a01c8d918d6d717f96dfdcba9582bc5f6468",
-            "reference": "0198a01c8d918d6d717f96dfdcba9582bc5f6468",
+            "url": "https://api.github.com/repos/symfony/cache/zipball/28511cbd8c760a19f4b4b70961d2cd957733b3d9",
+            "reference": "28511cbd8c760a19f4b4b70961d2cd957733b3d9",
             "shasum": ""
         },
         "require": {
@@ -2782,7 +2782,7 @@
             "symfony/dependency-injection": "^3.4|^4.1|^5.0",
             "symfony/var-dumper": "^4.4|^5.0"
         },
-        "time": "2020-01-29T14:35:06+00:00",
+        "time": "2020-02-20T16:31:44+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2881,17 +2881,17 @@
     },
     {
         "name": "symfony/expression-language",
-        "version": "v4.4.4",
-        "version_normalized": "4.4.4.0",
+        "version": "v4.4.5",
+        "version_normalized": "4.4.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/expression-language.git",
-            "reference": "8b145496d7e2e7103b1a1b8f1fce81c6e084b380"
+            "reference": "70649e0abcac6ad1109f6243886bca0445e278b9"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/expression-language/zipball/8b145496d7e2e7103b1a1b8f1fce81c6e084b380",
-            "reference": "8b145496d7e2e7103b1a1b8f1fce81c6e084b380",
+            "url": "https://api.github.com/repos/symfony/expression-language/zipball/70649e0abcac6ad1109f6243886bca0445e278b9",
+            "reference": "70649e0abcac6ad1109f6243886bca0445e278b9",
             "shasum": ""
         },
         "require": {
@@ -2899,7 +2899,7 @@
             "symfony/cache": "^3.4|^4.0|^5.0",
             "symfony/service-contracts": "^1.1|^2"
         },
-        "time": "2020-01-04T13:00:46+00:00",
+        "time": "2020-02-24T13:10:00+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3297,17 +3297,17 @@
     },
     {
         "name": "symfony/translation",
-        "version": "v4.4.4",
-        "version_normalized": "4.4.4.0",
+        "version": "v4.4.5",
+        "version_normalized": "4.4.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/translation.git",
-            "reference": "f5d2ac46930238b30a9c2f1b17c905f3697d808c"
+            "reference": "0a19a77fba20818a969ef03fdaf1602de0546353"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/translation/zipball/f5d2ac46930238b30a9c2f1b17c905f3697d808c",
-            "reference": "f5d2ac46930238b30a9c2f1b17c905f3697d808c",
+            "url": "https://api.github.com/repos/symfony/translation/zipball/0a19a77fba20818a969ef03fdaf1602de0546353",
+            "reference": "0a19a77fba20818a969ef03fdaf1602de0546353",
             "shasum": ""
         },
         "require": {
@@ -3340,7 +3340,7 @@
             "symfony/config": "",
             "symfony/yaml": ""
         },
-        "time": "2020-01-15T13:29:06+00:00",
+        "time": "2020-02-04T09:32:40+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3434,8 +3434,8 @@
     },
     {
         "name": "symfony/var-exporter",
-        "version": "v4.4.4",
-        "version_normalized": "4.4.4.0",
+        "version": "v4.4.5",
+        "version_normalized": "4.4.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/var-exporter.git",
