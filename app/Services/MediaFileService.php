@@ -354,6 +354,7 @@ class MediaFileService
 
         $media_roots = DB::table('gedcom_setting')
             ->where('setting_name', '=', 'MEDIA_DIRECTORY')
+            ->where('gedcom_id', '>', '0')
             ->pluck('setting_value')
             ->uniqueStrict();
 

@@ -109,9 +109,9 @@ class MediaController extends AbstractAdminController
         assert(is_string($data_filesystem_name));
 
         $files         = $request->getQueryParams()['files'] ?? 'local'; // local|unused|external
-        $media_folder  = $request->getQueryParams()['media_folder'] ?? '';
         $subfolders    = $request->getQueryParams()['subfolders'] ?? 'include'; // include|exclude
         $media_folders = $this->media_file_service->allMediaFolders($data_filesystem);
+        $media_folder  = $request->getQueryParams()['media_folder'] ?? $media_folders->first() ?? '';
 
         $title = I18N::translate('Manage media');
 
