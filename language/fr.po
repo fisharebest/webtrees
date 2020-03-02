@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-02-16 09:07+0000\n"
+"PO-Revision-Date: 2020-03-03 12:33+0000\n"
 "Last-Translator: Michael Rapp <mike_jpr@outlook.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fr/>\n"
@@ -3778,7 +3778,7 @@ msgstr "Circonciseur"
 #: modules_v3/fact_sources/report.xml:277
 #: modules_v3/fact_sources/report.xml:323
 msgid "Citation details"
-msgstr "Cote du document"
+msgstr "Détails de la citation"
 
 #. I18N: gedcom tag CITN
 #: app/GedcomTag.php:290
@@ -17490,14 +17490,14 @@ msgstr "arrière-petite-fille au %s<sup>e</sup> degré"
 #: app/Functions/Functions.php:1954
 #, php-format
 msgid "great ×%s grandfather"
-msgstr "grand-père au %s<sup>e</sup> degré"
+msgstr "arrière-grand-père au %s<sup>e</sup> degré"
 
 #: app/Functions/Functions.php:1914 app/Functions/Functions.php:1924
 #: app/Functions/Functions.php:1934 app/Functions/Functions.php:1944
 #: app/Functions/Functions.php:1956
 #, php-format
 msgid "great ×%s grandmother"
-msgstr "grand-mère au %s<sup>e</sup> degré"
+msgstr "arrière-grand-mère au %s<sup>e</sup> degré"
 
 #: app/Functions/Functions.php:1916 app/Functions/Functions.php:1926
 #: app/Functions/Functions.php:1936 app/Functions/Functions.php:1946
