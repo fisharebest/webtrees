@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-03-02 14:24+0000\n"
+"PO-Revision-Date: 2020-03-03 12:33+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -15455,7 +15455,7 @@ msgstr "Sledovanie a analýza"
 #: admin_site_config.php:575 admin_site_config.php:600
 #: admin_site_config.php:625
 msgid "Tracking and analytics are not added to the control panel."
-msgstr ""
+msgstr "Sledovanie a analýza neboli pridané ku riadiacemu panelu."
 
 #. I18N: gedcom tag TRLR
 #: app/GedcomTag.php:844
@@ -16124,6 +16124,9 @@ msgstr "Vodoznak je voliteľný a bežne sa zobrazuje len návštevníkom."
 #: admin_trees_config.php:1118
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
 msgstr ""
+"Pri veľkých obrázkoch môže byť  generovanie vodoznaku veľmi pomalé. Pri "
+"často navštevovaných webových stránkach mže byť vhodnejšie ich vygenerovať "
+"raz a uložiť obrázok s vodoznakom na serveri."
 
 #: login.php:390
 #, php-format
@@ -16404,7 +16407,7 @@ msgstr ""
 #. I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14.
 #: admin_trees_config.php:842
 msgid "You can choose the prefix that will be used whenever new XREFs are created."
-msgstr ""
+msgstr "Môžete zvoliť prefix, ktorý sa použije pri vytváraní nových XREF."
 
 #: admin_users.php:462 edituser.php:312
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
@@ -16427,11 +16430,11 @@ msgstr ""
 
 #: admin_site_upgrade.php:137
 msgid "You can re-enable these modules after the upgrade."
-msgstr ""
+msgstr "Tieto moduly môžete opäť povoliť po aktualizácii."
 
 #: admin_site_upgrade.php:201
 msgid "You can re-enable these themes after the upgrade."
-msgstr ""
+msgstr "Tieto motívy môžete opäť povoliť po aktualizácii."
 
 #: admin_trees_renumber.php:266
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
@@ -16464,7 +16467,7 @@ msgstr ""
 
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
-msgstr ""
+msgstr "Nemôžete vytvoriť pravidlo, ktoré by bránilo vám v prístupe ku stránke."
 
 #: login.php:75
 msgid "You cannot sign in because your browser does not accept cookies."
@@ -16597,10 +16600,14 @@ msgstr ""
 #: admin_site_upgrade.php:136
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
 msgstr ""
+"Mali by ste prediskutovať s autorom kompatibilitu jeho modulu s touto "
+"verziou webtrees."
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
 msgstr ""
+"Mali by ste prediskutovať s autorom kompatibilitu jeho motívu s touto "
+"verziou webtrees."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:293 message.php:58
