@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-03-01 16:18+0000\n"
+"PO-Revision-Date: 2020-03-02 14:24+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -15219,6 +15219,9 @@ msgstr ""
 #, php-format
 msgid "To prevent visitors from accessing the website while you are in the middle of copying files, you can temporarily create a file %s on the server. If it contains a message, it will be displayed to visitors."
 msgstr ""
+"Aby ste zabránili k prístupu ku vašej stránke počas kopírovania súborov "
+"môžete vytvoriť súbor %s na serveri. Ak obsahuje nejaký text, tak ho zobrazí "
+"návštevníkom."
 
 #. I18N: “Apache” is a software program.
 #: admin_site_config.php:189
