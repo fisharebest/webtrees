@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-16 09:07+0000\nLast-Translator: Michael Rapp <mike_jpr@outlook.com>\nLanguage-Team: French (Canada) <https://translate.webtrees.net/projects/webtrees/webtrees/fr_CA/>\nLanguage: fr-CA\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Country: CANADA\nX-Poedit-Language: French\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-03 12:33+0000\nLast-Translator: Michael Rapp <mike_jpr@outlook.com>\nLanguage-Team: French (Canada) <https://translate.webtrees.net/projects/webtrees/webtrees/fr_CA/>\nLanguage: fr-CA\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Country: CANADA\nX-Poedit-Language: French\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -3702,7 +3702,7 @@ msgstr "Cote"
 #: resources/xml/reports/fact_sources.xml:277
 #: resources/xml/reports/fact_sources.xml:323
 msgid "Citation details"
-msgstr "Cote du document"
+msgstr "Détails de la citation"
 
 #. I18N: gedcom tag CITN
 #: app/GedcomTag.php:602
@@ -17321,7 +17321,7 @@ msgstr "arrière-petite-fille au %s<sup>e</sup> degré"
 #: app/Functions/Functions.php:2149
 #, php-format
 msgid "great ×%s grandfather"
-msgstr "grand-père au %s<sup>e</sup> degré"
+msgstr "arrière-grand-père au %s<sup>e</sup> degré"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2098 app/Functions/Functions.php:2112
@@ -17329,7 +17329,7 @@ msgstr "grand-père au %s<sup>e</sup> degré"
 #: app/Functions/Functions.php:2154
 #, php-format
 msgid "great ×%s grandmother"
-msgstr "grand-mère au %s<sup>e</sup> degré"
+msgstr "arrière-grand-mère au %s<sup>e</sup> degré"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2101 app/Functions/Functions.php:2115
