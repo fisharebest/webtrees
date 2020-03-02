@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-02-10 09:01+0000\n"
-"Last-Translator: Martin <der@bauschaffen.de>\n"
+"PO-Revision-Date: 2020-03-03 12:33+0000\n"
+"Last-Translator: Michael Rapp <mike_jpr@outlook.com>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
 "Language: de\n"
@@ -3758,7 +3758,7 @@ msgstr "Beschneider"
 #: modules_v3/fact_sources/report.xml:277
 #: modules_v3/fact_sources/report.xml:323
 msgid "Citation details"
-msgstr "Zitat Einzelheiten"
+msgstr "Details zur Zitierung"
 
 #. I18N: gedcom tag CITN
 #: app/GedcomTag.php:290
