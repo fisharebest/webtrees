@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-03-03 12:33+0000\n"
+"PO-Revision-Date: 2020-03-04 09:49+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -236,7 +236,7 @@ msgstr "%s a jeho predkovia"
 #: app/Module/ClippingsCartModule.php:305
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr "%s je názov zdroja."
+msgstr "%s a osoby, ktoré odkazujú na tento zdroj."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:134
@@ -4407,7 +4407,7 @@ msgstr "Vlastný uvítací text"
 
 #: app/Theme/AbstractTheme.php:1078 app/Theme/AbstractTheme.php:1080
 msgid "Customize this page"
-msgstr "Prispôsobiť stránku"
+msgstr "Prispôsobiť túto stránku"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6729
@@ -6580,17 +6580,18 @@ msgstr "Napríklad ak zadáte cestu o veľkosti 2, osoba bude môcť vidieť svo
 #: app/Theme/AbstractTheme.php:296
 #, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "S otázkami k rodokmeňu sa obracajte na %s."
+msgstr "Ak máte otázky ohľadom genealógie, kontaktujte, prosím, %s."
 
 #: app/Theme/AbstractTheme.php:307
 #, php-format
 msgid "For technical support and information contact %s."
-msgstr "Pre technickú podporu a informácie kontaktujte: %s."
+msgstr "Ak máte otázky technického charakteru, kontaktujte, prosím, %s."
 
 #: app/Theme/AbstractTheme.php:285
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Pre technickú podporu, alebo s otázkami k rodokmeňu kontaktujte: %s."
+msgstr ""
+"Pre technickú podporu, alebo genealogické otázky, kontaktujte, prosím,  %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:283
@@ -11288,7 +11289,7 @@ msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Tlačiť základné údaje, i keď sú prázdne"
+msgstr "Tlačiť základné údaje aj keď sú prázdne"
 
 #: admin_trees_config.php:310 admin_trees_manage.php:398
 msgid "Privacy"
@@ -12682,7 +12683,7 @@ msgstr "Zobraziť všetky tagy"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "Zobraziť indikátor veku"
+msgstr "Zobraziť kurzor veku"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
@@ -12799,11 +12800,11 @@ msgstr "Zobraziť mená utajených osôb"
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Zobrazit poznámky"
+msgstr "Zobraziť poznámky"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Zobraziť povolanie"
+msgstr "Zobraziť povolania"
 
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
@@ -12884,7 +12885,7 @@ msgstr "Zobraziť sídla"
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:409
 msgid "Show slide show controls"
-msgstr "Zobraziť ovládanie prezentácie"
+msgstr "Zobraziť ovládacie prvky prezentácie"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12944,7 +12945,7 @@ msgstr "Ukázať užívateľa, ktorý vykonal zmenu"
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "Zobraziť tento blok pre určené jazyky"
+msgstr "Zobraziť tento blok len pre vybrané jazyky"
 
 #: admin_trees_config.php:1051
 msgid "Show thumbnail images in charts and family groups."
