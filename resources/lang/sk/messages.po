@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-01 16:18+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-04 09:50+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -184,7 +184,7 @@ msgstr "%s a jeho predkovia"
 #: app/Module/ClippingsCartModule.php:954
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr "%s je názov zdroja."
+msgstr "%s a osoby, ktoré odkazujú na tento zdroj."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:465
@@ -4307,7 +4307,7 @@ msgstr "Vlastný uvítací text"
 
 #: app/Module/ModuleThemeTrait.php:211 app/Module/ModuleThemeTrait.php:215
 msgid "Customize this page"
-msgstr "Prispôsobiť stránku"
+msgstr "Prispôsobiť túto stránku"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:153
@@ -6464,17 +6464,17 @@ msgstr "Napríklad vieme veľmi rýchlo nájsť osoby, ktoré nemajú zaznamenan
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "S otázkami k rodokmeňu sa obracajte na %s."
+msgstr "Ak máte otázky ohľadom genealógie, kontaktujte, prosím, %s."
 
 #: app/Module/ContactsFooterModule.php:162
 #, php-format
 msgid "For technical support and information contact %s."
-msgstr "Pre technickú podporu a informácie kontaktujte: %s."
+msgstr "Ak máte otázky technického charakteru, kontaktujte, prosím, %s."
 
 #: app/Module/ContactsFooterModule.php:136
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Pre technickú podporu, alebo s otázkami k rodokmeňu kontaktujte: %s."
+msgstr "Pre technickú podporu, alebo genealogické otázky, kontaktujte, prosím,  %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: resources/views/admin/site-preferences.phtml:80
@@ -11130,7 +11130,7 @@ msgstr "Primidi"
 
 #: resources/xml/reports/family_group_report.xml:10
 msgid "Print basic events when blank"
-msgstr "Tlačiť základné údaje, i keď sú prázdne"
+msgstr "Tlačiť základné údaje aj keď sú prázdne"
 
 #: app/Http/Controllers/AdminController.php:66
 #: resources/views/admin/trees.phtml:90
@@ -12537,7 +12537,7 @@ msgstr "Zobraziť všetky zdroje"
 #. I18N: an age indicator, which can be dragged around the screen
 #: resources/views/modules/timeline-chart/page.phtml:67
 msgid "Show an age cursor"
-msgstr "Zobraziť indikátor veku"
+msgstr "Zobraziť kurzor veku"
 
 #: resources/xml/reports/ahnentafel_report.xml:12
 msgid "Show children of ancestors"
@@ -12626,11 +12626,11 @@ msgstr "Zobraziť mená utajených osôb"
 #: resources/xml/reports/individual_ext_report.xml:10
 #: resources/xml/reports/individual_report.xml:7
 msgid "Show notes"
-msgstr "Zobrazit poznámky"
+msgstr "Zobraziť poznámky"
 
 #: resources/xml/reports/ahnentafel_report.xml:10
 msgid "Show occupations"
-msgstr "Zobraziť povolanie"
+msgstr "Zobraziť povolania"
 
 #: resources/views/modules/todays_events/config.phtml:9
 #: resources/views/modules/upcoming_events/config.phtml:19
@@ -12695,7 +12695,7 @@ msgstr "Zobraziť sídla"
 
 #: resources/views/modules/random_media/config.phtml:31
 msgid "Show slide show controls"
-msgstr "Zobraziť ovládanie prezentácie"
+msgstr "Zobraziť ovládacie prvky prezentácie"
 
 #: resources/xml/reports/ahnentafel_report.xml:8
 #: resources/xml/reports/descendancy_report.xml:7
@@ -12763,7 +12763,7 @@ msgstr "Ukázať užívateľa, ktorý vykonal zmenu"
 #: resources/views/modules/html/config.phtml:56
 #: resources/views/modules/stories/edit.phtml:49
 msgid "Show this block for which languages"
-msgstr "Zobraziť tento blok pre určené jazyky"
+msgstr "Zobraziť tento blok len pre vybrané jazyky"
 
 #: resources/views/admin/trees-preferences.phtml:292
 msgid "Show thumbnail images in charts and family groups."
