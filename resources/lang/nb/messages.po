@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-16 09:07+0000\nLast-Translator: HRN <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb_NO/>\nLanguage: nb\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-04 12:28+0000\nLast-Translator: HRN <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb_NO/>\nLanguage: nb\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -761,7 +761,7 @@ msgstr "En liste over kilder."
 #. I18N: Description of the “Shared submitters” module
 #: app/Module/SubmitterListModule.php:64
 msgid "A list of submitters."
-msgstr ""
+msgstr "En liste over bidragsytere."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:69
@@ -1194,7 +1194,7 @@ msgstr "Legg %s i utklippsmappen"
 
 #: resources/views/modules/relatives/family.phtml:207
 msgid "Add a brother"
-msgstr ""
+msgstr "Legg til en bror"
 
 #: app/Http/Controllers/EditFamilyController.php:57
 #: resources/views/family-page-children.phtml:35
@@ -1210,7 +1210,7 @@ msgstr "Legg til et barn for å opprette en aleneforeldrefamilie"
 
 #: resources/views/modules/relatives/family.phtml:211
 msgid "Add a daughter"
-msgstr ""
+msgstr "Legg til en datter"
 
 #: resources/views/edit/raw-gedcom-record.phtml:47
 msgid "Add a fact"
@@ -1292,15 +1292,15 @@ msgstr "Legg til et nytt delt notat"
 
 #: resources/views/modules/relatives/family.phtml:215
 msgid "Add a sibling"
-msgstr ""
+msgstr "Legg til et søsken"
 
 #: resources/views/modules/relatives/family.phtml:211
 msgid "Add a sister"
-msgstr ""
+msgstr "Legg til en søster"
 
 #: resources/views/modules/relatives/family.phtml:207
 msgid "Add a son"
-msgstr ""
+msgstr "Legg til en sønn"
 
 #: resources/views/family-page.phtml:110 resources/views/media-page.phtml:161
 #: resources/views/modules/sources_tab/tab.phtml:43
@@ -1369,7 +1369,7 @@ msgstr "Legg til detaljer om vielsen"
 #. I18N: Name of a module
 #: app/Module/FixMissingMarriedNames.php:70
 msgid "Add married names"
-msgstr ""
+msgstr "Legg til navn som gift"
 
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:59
@@ -1907,7 +1907,7 @@ msgstr "Et timeglassdiagram over en persons aner og etterkommere."
 
 #: resources/views/edit/reorder-families.phtml:65
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr ""
+msgstr "En person kan ha mer enn ett sett foreldre.  For eksempel ved adopsjon."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:63
@@ -3954,12 +3954,12 @@ msgstr "Kontrollpanel"
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:61
 msgid "Convert CEME tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Endre CEME tag til GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:49
 msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Endre _PRIM tag til GEDCOM 5.5.1"
 
 #: app/Http/RequestHandlers/HelpText.php:266
 #: resources/views/admin/trees-export.phtml:65
@@ -3970,7 +3970,7 @@ msgstr "Konvertere fra UTF-8 til ISO-8859-1"
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr ""
+msgstr "Endre til"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
@@ -11604,14 +11604,13 @@ msgid "Renumber family tree"
 msgstr "Gi postene i slektstreet nye referansenumre"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
-#, fuzzy
 msgid "Replace"
 msgstr "Erstatt"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:72
 msgid "Replace cemetery tags with burial places."
-msgstr ""
+msgstr "Erstatt gravsted-tag med sted for begravelse."
 
 #: resources/views/search-replace-page.phtml:26
 msgid "Replace with"
@@ -13298,7 +13297,7 @@ msgstr "Bidragsgiver/Avsender"
 
 #: resources/views/lists/submitters-table.phtml:60
 msgid "Submitter name"
-msgstr ""
+msgstr "Navn på bidragsyter"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/ListController.php:548
@@ -13307,7 +13306,7 @@ msgstr ""
 #: resources/views/admin/merge-records-step-1.phtml:29
 #: resources/views/lists/submitters-table.phtml:55
 msgid "Submitters"
-msgstr ""
+msgstr "Bidragsytere"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -13763,7 +13762,7 @@ msgstr "Filen «%s» finnes ikke."
 
 #: resources/views/edit/reorder-families.phtml:67
 msgid "The first family in the list will be used in charts, lists, reports, etc."
-msgstr ""
+msgstr "Den første familien i listen vil bli benyttet i diagrammer, lister, rapporter, osv."
 
 #: app/Http/RequestHandlers/DeletePath.php:71
 #, php-format
@@ -13837,7 +13836,7 @@ msgstr "Listemeny."
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:37
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "Lokasjonen til dette stedet er ikke kjent."
 
 #: app/Http/Controllers/EditMediaController.php:284
 #, php-format
@@ -14469,7 +14468,7 @@ msgstr "Denne lenken er aktiv i en time."
 
 #: resources/views/help/data-fixes.phtml:16
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
-msgstr ""
+msgstr "Denne listen er generert ved enkelt (men raskt) søk, og inneholder derfor poster som ikke vil bli oppdatert."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -15825,7 +15824,7 @@ msgstr "Når nye nære slektninger innføres, kan kildesitater føyes til poster
 
 #: resources/views/edit/reorder-families.phtml:24
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr ""
+msgstr "Når en person har mer enn en partner, bør familiene sorteres etter dato."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:892
@@ -15857,7 +15856,7 @@ msgstr "Hvem er pålogget"
 
 #: resources/views/admin/data-fix-page.phtml:80
 msgid "Why does this list include records that do not need to be updated?"
-msgstr ""
+msgstr "Hvorfor inneholder denne listen poster som ikke trenger oppdatering?"
 
 #: resources/views/lists/families-table.phtml:173
 msgid "Widow"
@@ -19655,7 +19654,7 @@ msgstr "vis"
 #: resources/views/modules/recent_changes/changes-list.phtml:21
 #: resources/views/modules/yahrzeit/list.phtml:20
 msgid "show more"
-msgstr ""
+msgstr "vis mer"
 
 #: resources/views/modules/statistics-chart/custom.phtml:200
 msgid "show the chart"
