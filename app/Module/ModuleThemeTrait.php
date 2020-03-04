@@ -322,7 +322,7 @@ trait ModuleThemeTrait
     {
         $url = route(AccountEdit::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]);
 
-        return new Menu(I18N::translate('My account'), $url);
+        return new Menu(I18N::translate('My account'), $url, 'menu-myaccount');
     }
 
     /**
