@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2020-03-01 16:18+0000\n"
+"PO-Revision-Date: 2020-03-07 12:25+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
@@ -20669,14 +20669,14 @@ msgstr "此选项控制是否将附源引用的事实在记事和源标签在个
 #: admin_trees_config.php:1480
 #: resources/views/admin/trees-preferences.phtml:556
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
-msgstr "这个选项控制是否在个人页面自动显示一个<i>记录</i>。"
+msgstr "这个选项控制是否在个人页面上自动显示<i>记录</i>的内容。"
 
 # I18N: Help text for the “Automatically expand sources” configuration setting
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: admin_trees_config.php:1495
 #: resources/views/admin/trees-preferences.phtml:572
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
-msgstr "这个选项控制是否在个人页面自动显示一个<i>来源</i>。"
+msgstr "这个选项控制是否在个人页面自动显示<i>来源</i>的内容。"
 
 # I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
