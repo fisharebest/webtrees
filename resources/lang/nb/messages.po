@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-05 12:08+0000\nLast-Translator: HRN <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb_NO/>\nLanguage: nb\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-09 15:19+0000\nLast-Translator: HRN <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb_NO/>\nLanguage: nb\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -4322,7 +4322,7 @@ msgstr "Dataadministrasjon"
 #: resources/views/admin/data-fix-page.phtml:68
 #: resources/views/admin/data-fix-select.phtml:28
 msgid "Data fix"
-msgstr "Data feiloppretting"
+msgstr "Feilretting"
 
 #: app/Http/Controllers/Admin/ModuleController.php:142
 #: app/Http/RequestHandlers/DataFixChoose.php:69
@@ -4332,11 +4332,11 @@ msgstr "Data feiloppretting"
 #: resources/views/admin/data-fix-page.phtml:23
 #: resources/views/admin/trees.phtml:132
 msgid "Data fixes"
-msgstr "Data feilopprettinger"
+msgstr "Feilretting av data"
 
 #: resources/views/help/data-fixes.phtml:8
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
-msgstr "Feiloppretting av data krever mange kalkuleringer, så det er ikke mulig å opprette en eksakt liste over poster som må oppdateres."
+msgstr "Feilretting av data krever mange kalkuleringer, så det er ikke mulig å opprette en eksakt liste over poster som må oppdateres."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
@@ -9826,7 +9826,7 @@ msgstr "Nicaragua"
 #. I18N: gedcom tag NICK
 #: app/GedcomTag.php:884
 msgid "Nickname"
-msgstr "Klengenavn"
+msgstr "Kallenavn"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:363
@@ -15371,7 +15371,7 @@ msgstr "Oppdater stedsnavn"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:74
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
-msgstr ""
+msgstr "Oppdater høyeste nivå av stednavn, men samtidig beholde de lavere nivåer."
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
