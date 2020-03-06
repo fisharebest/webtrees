@@ -56,10 +56,12 @@ class BadBotBlocker implements MiddlewareInterface
     private const BAD_ROBOTS = [
         'admantx',
         'AhrefsBot',
+        'AspiegelBot',
         'DotBot',
         'Grapeshot',
         'ia_archiver',
         'MJ12bot',
+        'panscient',
         'proximic',
         'SemrushBot',
         'XoviBot',
