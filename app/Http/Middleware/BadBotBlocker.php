@@ -91,9 +91,13 @@ class BadBotBlocker implements MiddlewareInterface
     /**
      * Some search engines operate from designated IP addresses.
      *
+     * @see http://www.apple.com/go/applebot
      * @see https://help.duckduckgo.com/duckduckgo-help-pages/results/duckduckbot
      */
     private const ROBOT_IPS = [
+        'AppleBot'    => [
+            '17.0.0.0/8',
+        ],
         'Ask Jeeves'  => [
             '65.214.45.143',
             '65.214.45.148',
@@ -167,7 +171,15 @@ class BadBotBlocker implements MiddlewareInterface
         }
 
         foreach (self::ROBOT_IPS as $robot => $valid_ips) {
-            if (Str::contains($ua, $robot) && !in_array($ip, $valid_ips, true)) {
+            if (Str::contains($ua, $robot)) {
+                foreach ($valid_ips as $ip) {
+                    $range = Factory::rangeFromString($ip);
+
+                    if ($range instanceof RangeInterface && $range->contains($address)) {
+                        continue 2;
+                    }
+                }
+
                 return $this->response();
             }
         }
