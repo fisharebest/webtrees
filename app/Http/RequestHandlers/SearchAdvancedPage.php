@@ -29,6 +29,13 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_fill_keys;
+use function array_filter;
+use function array_keys;
+use function assert;
+use function explode;
+use function in_array;
+
 /**
  * Search for genealogy data
  */
@@ -118,9 +125,6 @@ class SearchAdvancedPage implements RequestHandlerInterface
         'SLGC:DATE',
         'SLGC:PLAC',
         'TITL',
-        '_BRTM:DATE',
-        '_BRTM:PLAC',
-        '_MILI',
     ];
 
     /** @var SearchService */
@@ -155,7 +159,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
         $fields      = $params['fields'] ?? $default_fields;
         $modifiers   = $params['modifiers'] ?? [];
 
-        $other_fields = $this->otherFields($fields);
+        $other_fields = $this->otherFields($tree, array_keys($fields));
         $date_options = $this->dateOptions();
         $name_options = $this->nameOptions();
 
@@ -182,21 +186,31 @@ class SearchAdvancedPage implements RequestHandlerInterface
     /**
      * Extra search fields to add to the advanced search
      *
+     * @param Tree     $tree
      * @param string[] $fields
      *
-     * @return string[]
+     * @return array<string,string>
      */
-    private function otherFields(array $fields): array
+    private function otherFields(Tree $tree, array $fields): array
     {
-        $unused = array_diff(self::OTHER_ADVANCED_FIELDS, array_keys($fields));
+        $default_facts     = new Collection(self::OTHER_ADVANCED_FIELDS);
+        $indi_facts_add    = new Collection(explode(',', $tree->getPreference('INDI_FACTS_ADD')));
+        $indi_facts_unique = new Collection(explode(',', $tree->getPreference('INDI_FACTS_UNIQUE')));
 
-        $other_fields = [];
-
-        foreach ($unused as $tag) {
-            $other_fields[$tag] = GedcomTag::getLabel($tag);
-        }
-
-        return $other_fields;
+        return $default_facts
+            ->merge($indi_facts_add)
+            ->merge($indi_facts_unique)
+            ->unique()
+            ->reject(static function (string $field) use ($fields): bool {
+                return
+                    in_array($field, $fields, true) ||
+                    in_array($field . ':DATE', $fields, true) ||
+                    in_array($field . ':PLAC', $fields, true);
+            })
+            ->mapWithKeys(static function (string $fact): array {
+                return [$fact => GedcomTag::getLabel($fact)];
+            })
+            ->all();
     }
 
     /**
