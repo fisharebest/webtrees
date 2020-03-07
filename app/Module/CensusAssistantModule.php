@@ -94,6 +94,9 @@ class CensusAssistantModule extends AbstractModule
         $census_class = $params['census'];
         $census       = new $census_class();
 
+        // No head of household?  Create a dummy one.
+        $head = $head ?? new Individual('X', '0 @X@ INDI', null, $tree);
+
         if ($individual instanceof Individual && $head instanceof Individual) {
             $html = $this->censusTableRow($census, $individual, $head);
         } else {

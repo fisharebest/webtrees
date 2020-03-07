@@ -61,11 +61,6 @@ use Fisharebest\Webtrees\View;
                     <?= view('icons/add') ?>
                 </button>
             </div>
-            <div class="input-group-append">
-                <button type="button" class="btn btn-primary" id="census-assistant-head" title="<?= I18N::translate('Head of household') ?>">
-                    <?= view('icons/individual') ?>
-                </button>
-            </div>
         </div>
     </div>
 
@@ -165,36 +160,9 @@ use Fisharebest\Webtrees\View;
     return false;
   }
 
-  // Set the currently selected individual as the head of household
-  function censusAssistantHead() {
-    var censusSelector = document.querySelector('#census-selector');
-    var census         = censusSelector.options[censusSelector.selectedIndex].dataset.census;
-    var indi_selector  = document.querySelector('#census-assistant-individual');
-    var xref           = indi_selector.options[indi_selector.selectedIndex].value;
-
-    let formData = new FormData();
-    formData.append('census', census);
-    formData.append('_csrf', document.querySelector('meta[name=csrf]').content);
-    formData.append('head', xref);
-    formData.append('xref', xref);
-
-    fetch(<?= json_encode(route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual', 'tree' => $individual->tree()->name()])) ?> , {
-        credentials: 'same-origin',
-        body: formData,
-        method: 'POST',
-    })
-    .then(response => response.text())
-    .then(function (text) {
-        document.querySelector('#census-assistant-table tbody').innerHTML = text;
-    });
-
-    return false;
-  }
-
   $('#census-selector').on('change', censusAssistantSelect);
   $('#census-assistant-link').on('click', censusAssistantLink);
   $('#census-assistant-add').on('click', censusAssistantAdd);
-  $('#census-assistant-head').on('click', censusAssistantHead);
 
   $('#census-assistant-table').on('click', '.wt-icon-delete', function() {
     $(this).closest('tr').remove();
