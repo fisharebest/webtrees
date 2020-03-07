@@ -54,7 +54,15 @@ class EditFamilyController extends AbstractEditController
 
         $gender = $request->getQueryParams()['gender'];
 
-        $title = $family->fullName() . ' - ' . I18N::translate('Add a child');
+        $subtitles = [
+            'M' => I18N::translate('Add a son'),
+            'F' => I18N::translate('Add a daughter'),
+            'U' => I18N::translate('Add a child'),
+        ];
+
+        $subtitle = $subtitles[$gender] ?? $subtitles['U'];
+
+        $title = $family->fullName() . ' - ' . $subtitle;
 
         return $this->viewResponse('edit/new-individual', [
             'next_action' => 'add-child-to-family-action',

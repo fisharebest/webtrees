@@ -31,8 +31,12 @@ use Fisharebest\Webtrees\I18N;
     <?php endforeach ?>
     <?php if ($family->canEdit()) : ?>
         <div class="wt-chart-box">
-            <a class="btn btn-link" href="<?= e(route('add-child-to-family', ['gender' => 'U', 'tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
-                <?= I18N::translate('Add a child') ?>
+            <a class="btn btn-link" href="<?= e(route('add-child-to-family', ['gender' => 'M', 'tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
+                <?= I18N::translate('Add a son') ?>
+            </a>
+            |
+            <a class="btn btn-link" href="<?= e(route('add-child-to-family', ['gender' => 'F', 'tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
+                <?= I18N::translate('Add a daughter') ?>
             </a>
             <br>
             <?php if ($family->numberOfChildren() > 1) : ?>
