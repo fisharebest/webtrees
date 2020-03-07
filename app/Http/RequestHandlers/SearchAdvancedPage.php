@@ -31,7 +31,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_fill_keys;
 use function array_filter;
-use function array_keys;
+use function array_key_exists;
 use function assert;
 use function explode;
 use function in_array;
@@ -159,7 +159,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
         $fields      = $params['fields'] ?? $default_fields;
         $modifiers   = $params['modifiers'] ?? [];
 
-        $other_fields = $this->otherFields($tree, array_keys($fields));
+        $other_fields = $this->otherFields($tree, $fields);
         $date_options = $this->dateOptions();
         $name_options = $this->nameOptions();
 
@@ -203,9 +203,9 @@ class SearchAdvancedPage implements RequestHandlerInterface
             ->unique()
             ->reject(static function (string $field) use ($fields): bool {
                 return
-                    in_array($field, $fields, true) ||
-                    in_array($field . ':DATE', $fields, true) ||
-                    in_array($field . ':PLAC', $fields, true);
+                    array_key_exists($field, $fields) ||
+                    array_key_exists($field . ':DATE', $fields) ||
+                    array_key_exists($field . ':PLAC', $fields);
             })
             ->mapWithKeys(static function (string $fact): array {
                 return [$fact => GedcomTag::getLabel($fact)];
