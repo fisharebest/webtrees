@@ -112,6 +112,19 @@ class Census
                     new CensusOfWales(),
                 ];
 
+            case 'sk':
+                return [
+                    new CensusOfSlovakia(),
+                    new CensusOfCzechRepublic(),
+                    new CensusOfDenmark(),
+                    new CensusOfDeutschland(),
+                    new CensusOfEngland(),
+                    new CensusOfFrance(),
+                    new CensusOfScotland(),
+                    new CensusOfUnitedStates(),
+                    new CensusOfWales(),
+                ];
+
             default:
                 return [
                     new CensusOfUnitedStates(),
