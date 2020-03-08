@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-03-04 09:49+0000\n"
+"PO-Revision-Date: 2020-03-09 15:19+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -1521,7 +1521,7 @@ msgstr "Pridať k názvom súborov GEDCOM cestu médií"
 #. I18N: A configuration setting
 #: admin_trees_config.php:919
 msgid "Add to TITLE header tag"
-msgstr "Pridať do hlavičkového tagu TITLE (nadpis)"
+msgstr "Pridať do tagu TITLE v hlavičke (sekcia HEAD) HTML-stránky"
 
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:71 app/Theme/AbstractTheme.php:1367
@@ -7440,7 +7440,10 @@ msgstr "Ak má osoba dve priezviská, obe musia byť uzatvorené lomkami: <%s>Jo
 #: help_text.php:232
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Ak bola osoba známa pod prezývkou, ktoré nie je súčasťou jej formálneho mena, malo by byť uvedené v uvodzovkách. Napríklad, <%s>John &quot;Nobby&quot; /Clark/<%s>."
+msgstr ""
+"Ak bola osoba známa pod prezývkou, ktoré nie je súčasťou jej formálneho "
+"mena, malo by byť uvedené v úvodzovkách. Napríklad, <%s>John "
+"&quot;Nobby&quot; /Clark/<%s>."
 
 #: help_text.php:230
 #, php-format
@@ -7450,7 +7453,7 @@ msgstr "Pokiaľ osoba nebola známa pod svojim prvým krstným menom, tak prefer
 #: help_text.php:224
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
-msgstr "Ak jepriezvisko neznáme použite prázdne lomky: <%s>Mary //<%s>"
+msgstr "Ak je priezvisko neznáme, použite prázdne lomky: <%s>Mária //<%s>"
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:415
@@ -13766,7 +13769,10 @@ msgstr "Thajsko"
 
 #: help_text.php:219
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
-msgstr "Pole <b>name</b> obsahuje plné meno osoby, tak ako ho používala, alebo ako bolo zapísané. Takto bude meno zobrazené na obrazovke. Používa štandardné genealogické označenie na identifikovanie rôznych častí mena."
+msgstr ""
+"Pole <b>Meno</b> obsahuje plné meno osoby, tak ako ho používala, alebo ako "
+"bolo zapísané. Takto bude zobrazované na obrazovke. Používa štandardné "
+"genealogické označenie na identifikovanie rôznych častí mena."
 
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
@@ -14189,7 +14195,7 @@ msgstr ""
 #: help_text.php:222
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr "Priezvisko je uzatvorené medzi lomkami: <%s>John Paul /Smith/<%s>"
+msgstr "Priezvisko je uzatvorené medzi lomkami: <%s>Ján Pavol /Kováč/<%s>"
 
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:965
