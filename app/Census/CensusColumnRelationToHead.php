@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Individual;
 
 /**
- * Relationshiop to head of household.
+ * Relationship to head of household.
  */
 class CensusColumnRelationToHead extends AbstractCensusColumn implements CensusColumnInterface
 {
