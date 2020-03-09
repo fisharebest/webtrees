@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-02-03 09:12+0000\n"
-"PO-Revision-Date: 2016-04-19 10:23+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\n"
-"Language: ko\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.5\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-09 15:19+0000\nLast-Translator: Jeongwan Nam <jeongwann@gmail.com>\nLanguage-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\nLanguage: ko\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -20,7 +8,7 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml:334
 #: resources/xml/reports/ahnentafel_report.xml:359
 msgid " but the details are unknown"
-msgstr ""
+msgstr " 그러나 세부 사항은 알 수 없습니다"
 
 #: resources/xml/reports/ahnentafel_report.xml:159
 #: resources/xml/reports/ahnentafel_report.xml:187
@@ -37,7 +25,7 @@ msgstr ""
 #: resources/xml/reports/descendancy_report.xml:423
 #: resources/xml/reports/descendancy_report.xml:454
 msgid " in "
-msgstr ""
+msgstr " 안에 "
 
 #. I18N: Abbreviation for "number %s"
 #: app/Functions/FunctionsPrintFacts.php:192
@@ -49,159 +37,159 @@ msgstr ""
 #: app/Http/Controllers/AdminTreesController.php:1544
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s 에 %4$s 에 대한 %3$s 링크가 있습니다."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2358
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "%1$s %2$s  오름차순으로 삭제 된 횟수"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2362
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "%1$s %2$s 내림차순 제거"
 
 #: app/Functions/FunctionsPrintLists.php:70
 #: app/Http/RequestHandlers/IndividualPage.php:234
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:333
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$s KB 를 다운로드 하는데 %2$s 초 걸렸습니다."
 
 #: app/Http/Controllers/Admin/UsersController.php:339
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s 존재하지 않음"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/Admin/UsersController.php:236
 #: app/Http/Controllers/AdminTreesController.php:278
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s 존재하지 않음"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:275
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s 존재하지 않음. %2$s 을(를) 의미 했습니까?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: app/Http/Controllers/AdminTreesController.php:308
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s 에 %2$s 에 대한 링크가 없습니다."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: app/Http/Controllers/Admin/UpgradeController.php:354
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
+msgstr[0] "%1$s 파일이 %2$s 초 안에 압축이 풀렸습니다."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: app/Http/Controllers/AdminTreesController.php:299
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s 은(는)  %2$s 이지만 %3$s 이(가) 예상됩니다."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:572
 #, php-format
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s x %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:550
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s x %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:527
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s x %2$s"
 
 #. I18N: image dimensions, width × height
 #: app/Http/Controllers/Admin/MediaController.php:363 app/MediaFile.php:361
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s 픽셀"
 
 #. I18N: A range of numbers
 #: app/Individual.php:578 app/Module/StatisticsChartModule.php:872
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s-%2$s"
 
 #: app/Functions/Functions.php:2380
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s's%2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:600
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:257
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j %F %Y"
 
 #: app/Statistics/Service/CenturyService.php:39
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s BCE"
 
 #. I18N: size of file in KB
 #: app/Http/Controllers/Admin/MediaController.php:353 app/MediaFile.php:348
 #: app/Services/MediaFileService.php:83
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s KB"
 
 #: app/Module/ClippingsCartModule.php:605
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s 와 그녀의 조상"
 
 #: app/Module/ClippingsCartModule.php:615
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s 와 그의 조상"
 
 #: app/Module/ClippingsCartModule.php:954
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s 및 이를 참조하는 개인."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:465
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s 와 그들의 아이"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:467
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s 와 그들의 자손"
 
 #: app/Statistics/Repository/UserRepository.php:88
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] ""
+msgstr[0] "익명으로 로그인 한 사용자들은 %s 명"
 
 #: resources/views/family-page-children.phtml:13
 #: resources/views/modules/ancestors-chart/tree.phtml:39
@@ -211,34 +199,34 @@ msgstr[0] ""
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
+msgstr[0] "%s 자녀"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:151 app/Functions/FunctionsDate.php:62
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
+msgstr[0] "%s 일"
 
 #: resources/views/calendar-list.phtml:18
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
+msgstr[0] "%s 가족"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
+msgstr[0] "%s 가족이 업데이트 되었습니다."
 
 #: resources/views/statistics/families/top10-list-grand.phtml:19
 #: resources/views/statistics/families/top10-nolist-grand.phtml:15
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
+msgstr[0] "%s 손자"
 
 #: app/Module/LifespansChartModule.php:244
 #: resources/views/admin/trees-unconnected.phtml:35
@@ -246,7 +234,7 @@ msgstr[0] ""
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr[0] ""
+msgstr[0] "%s 개인"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:75
 #: app/Http/RequestHandlers/SearchReplaceAction.php:109
@@ -254,19 +242,19 @@ msgstr[0] ""
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
+msgstr[0] "%s 개인정보가 업데이트 되었습니다."
 
 #: app/Http/Controllers/Admin/LocationController.php:890
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
+msgstr[0] "%s 위치를 가져 왔습니다."
 
 #: app/Module/UserMessagesModule.php:235
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
+msgstr[0] "%s 메세지"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:141 app/Functions/FunctionsDate.php:58
@@ -274,38 +262,38 @@ msgstr[0] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
+msgstr[0] "%s 월"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:91
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
+msgstr[0] "%s 의 notes가 업데이트 되었습니다."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2334
 #, php-format
 msgid "%s once removed ascending"
-msgstr ""
+msgstr "%s 의 한 단계 오름차순 제거"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2338
 #, php-format
 msgid "%s once removed descending"
-msgstr ""
+msgstr "%s 의 한단계 내림차순으로 제거"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:83
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
+msgstr[0] "%s 의 repositories 가 업데이트 되었습니다."
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:13
 #: resources/views/emails/message-user-text.phtml:8
 #, php-format
 msgid "%s sent you the following message."
-msgstr ""
+msgstr "%s 가 다음 메시지를 보냈습니다."
 
 #: app/Statistics/Repository/UserRepository.php:99
 #, php-format
@@ -790,7 +778,7 @@ msgstr ""
 #. I18N: Description of the “Most viewed pages” module
 #: app/Module/TopPageViewsModule.php:57
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr "시대의 가장 번호를 조회 된 페이지의 목록입니다."
+msgstr "가장 많이 본 페이지 목록입니다."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:53
@@ -960,7 +948,7 @@ msgstr ""
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:71
 msgid "A tab showing the media objects linked to an individual."
-msgstr "미디어 개체를 보여주는 탭은 개인에 연결."
+msgstr "개인에 연결된 미디어 개체를 보여주는 탭."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:70
