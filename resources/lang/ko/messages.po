@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-09 15:19+0000\nLast-Translator: Jeongwan Nam <jeongwann@gmail.com>\nLanguage-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\nLanguage: ko\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-12 11:54+0000\nLast-Translator: Jeongwan Nam <jeongwann@gmail.com>\nLanguage-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\nLanguage: ko\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -32,7 +32,7 @@ msgstr " 안에 "
 #: app/Functions/FunctionsPrintFacts.php:199
 #, php-format
 msgid "#%s"
-msgstr ""
+msgstr "#%s"
 
 #: app/Http/Controllers/AdminTreesController.php:1544
 #, php-format
@@ -91,7 +91,7 @@ msgstr "%1$s 에 %2$s 에 대한 링크가 없습니다."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "%1$s 파일이 %2$s 초 안에 압축이 풀렸습니다."
+msgstr[0] "%1$s 파일들이 %2$s 초 안에 압축이 풀렸습니다."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: app/Http/Controllers/AdminTreesController.php:299
