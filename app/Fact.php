@@ -219,7 +219,7 @@ class Fact
     /**
      * Get the record to which this fact links
      *
-     * @return Individual|Family|Source|Submitter|Repository|Media|Note|GedcomRecord|null
+     * @return Individual|Family|Source|Submitter|Submission|Repository|Media|Note|GedcomRecord|null
      */
     public function target()
     {
@@ -255,6 +255,8 @@ class Fact
             case 'DESI':
             case 'SUBM':
                 return Submitter::getInstance($xref, $this->record()->tree());
+            case 'SUBN':
+                return Submission::getInstance($xref, $this->record()->tree());
             default:
                 return GedcomRecord::getInstance($xref, $this->record()->tree());
         }

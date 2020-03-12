@@ -1,11 +1,31 @@
 <?php
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Collection<Fact>       $facts
+ * @var Collection<Family>     $families
+ * @var Collection<Individual> $individuals
+ * @var Collection<Media>      $media_objects
+ * @var Collection<Note>       $notes
+ * @var GedcomRecord           $record
+ * @var Collection<Source>     $sources
+ * @var Tree                   $tree
+ */
 
 ?>
 
@@ -40,40 +60,50 @@ use Fisharebest\Webtrees\I18N;
             </a>
         </li>
 
-        <li class="nav-item" role="presentation">
-            <a class="nav-link<?= $individuals->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
-                <?= I18N::translate('Individuals') ?>
-                <?= view('components/badge', ['count' => $individuals->count()]) ?>
-            </a>
-        </li>
+        <?php if ($individuals->isNotEmpty()) : ?>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" data-toggle="tab" role="tab" href="#individuals">
+                    <?= I18N::translate('Individuals') ?>
+                    <?= view('components/badge', ['count' => $individuals->count()]) ?>
+                </a>
+            </li>
+        <?php endif ?>
 
-        <li class="nav-item" role="presentation">
-            <a class="nav-link<?= $families->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#families">
-                <?= I18N::translate('Families') ?>
-                <?= view('components/badge', ['count' => $families->count()]) ?>
-            </a>
-        </li>
+        <?php if ($families->isNotEmpty()) : ?>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" data-toggle="tab" role="tab" href="#families">
+                    <?= I18N::translate('Families') ?>
+                    <?= view('components/badge', ['count' => $families->count()]) ?>
+                </a>
+            </li>
+        <?php endif ?>
 
-        <li class="nav-item" role="presentation">
-            <a class="nav-link<?= $media_objects->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#media">
-                <?= I18N::translate('Media objects') ?>
-                <?= view('components/badge', ['count' => $media_objects->count()]) ?>
-            </a>
-        </li>
+        <?php if ($media_objects->isNotEmpty()) : ?>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" data-toggle="tab" role="tab" href="#media">
+                    <?= I18N::translate('Media objects') ?>
+                    <?= view('components/badge', ['count' => $media_objects->count()]) ?>
+                </a>
+            </li>
+        <?php endif ?>
 
-        <li class="nav-item" role="presentation">
-            <a class="nav-link<?= $sources->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#sources">
-                <?= I18N::translate('Sources') ?>
-                <?= view('components/badge', ['count' => $sources->count()]) ?>
-            </a>
-        </li>
+        <?php if ($sources->isNotEmpty()) : ?>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" data-toggle="tab" role="tab" href="#sources">
+                    <?= I18N::translate('Sources') ?>
+                    <?= view('components/badge', ['count' => $sources->count()]) ?>
+                </a>
+            </li>
+        <?php endif ?>
 
-        <li class="nav-item" role="presentation">
-            <a class="nav-link<?= $notes->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#notes">
-                <?= I18N::translate('Notes') ?>
-                <?= view('components/badge', ['count' => $notes->count()]) ?>
-            </a>
-        </li>
+        <?php if ($notes->isNotEmpty()) : ?>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" data-toggle="tab" role="tab" href="#notes">
+                    <?= I18N::translate('Notes') ?>
+                    <?= view('components/badge', ['count' => $notes->count()]) ?>
+                </a>
+            </li>
+        <?php endif ?>
     </ul>
 
     <div class="tab-content">
@@ -84,30 +114,40 @@ use Fisharebest\Webtrees\I18N;
                 <?php endforeach ?>
 
                 <?php if ($record->canEdit()) : ?>
-                    <?php FunctionsPrint::printAddNewFact($record, $facts, $record_type) ?>
+                    <?php FunctionsPrint::printAddNewFact($record, $facts, $record::RECORD_TYPE) ?>
                 <?php endif ?>
             </table>
         </div>
 
-        <div class="tab-pane fade" role="tabpanel" id="individuals">
-            <?= view('lists/individuals-table', ['individuals' => $individuals, 'sosa' => false, 'tree' => $tree]) ?>
-        </div>
+        <?php if ($individuals->isNotEmpty()) : ?>
+            <div class="tab-pane fade" role="tabpanel" id="individuals">
+                <?= view('lists/individuals-table', ['individuals' => $individuals, 'sosa' => false, 'tree' => $tree]) ?>
+            </div>
+        <?php endif ?>
 
-        <div class="tab-pane fade" role="tabpanel" id="families">
-            <?= view('lists/families-table', ['families' => $families, 'tree' => $tree]) ?>
-        </div>
+        <?php if ($families->isNotEmpty()) : ?>
+            <div class="tab-pane fade" role="tabpanel" id="families">
+                <?= view('lists/families-table', ['families' => $families, 'tree' => $tree]) ?>
+            </div>
+        <?php endif ?>
 
-        <div class="tab-pane fade" role="tabpanel" id="media">
-            <?= view('lists/media-table', ['media_objects' => $media_objects, 'tree' => $tree]) ?>
-        </div>
+        <?php if ($media_objects->isNotEmpty()) : ?>
+            <div class="tab-pane fade" role="tabpanel" id="media">
+                <?= view('lists/media-table', ['media_objects' => $media_objects, 'tree' => $tree]) ?>
+            </div>
+        <?php endif ?>
 
-        <div class="tab-pane fade" role="tabpanel" id="sources">
-            <?= view('lists/sources-table', ['sources' => $sources, 'tree' => $tree]) ?>
-        </div>
+        <?php if ($sources->isNotEmpty()) : ?>
+            <div class="tab-pane fade" role="tabpanel" id="sources">
+                <?= view('lists/sources-table', ['sources' => $sources, 'tree' => $tree]) ?>
+            </div>
+        <?php endif ?>
 
-        <div class="tab-pane fade" role="tabpanel" id="notes">
-            <?= view('lists/notes-table', ['notes' => $notes, 'tree' => $tree]) ?>
-        </div>
+        <?php if ($notes->isNotEmpty()) : ?>
+            <div class="tab-pane fade" role="tabpanel" id="notes">
+                <?= view('lists/notes-table', ['notes' => $notes, 'tree' => $tree]) ?>
+            </div>
+        <?php endif ?>
     </div>
 </div>
 

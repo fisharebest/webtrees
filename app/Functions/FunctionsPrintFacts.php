@@ -43,6 +43,7 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Ramsey\Uuid\Uuid;
@@ -288,6 +289,14 @@ class FunctionsPrintFacts
                 $submitter = $fact->target();
                 if ($submitter instanceof Submitter) {
                     echo '<div><a class="field" href="', e($submitter->url()), '">', $submitter->fullName(), '</a></div>';
+                } else {
+                    echo '<div class="error">', e($fact->value()), '</div>';
+                }
+                break;
+            case 'SUBN':
+                $submission = $fact->target();
+                if ($submission instanceof Submission) {
+                    echo '<div><a class="field" href="', e($submission->url()), '">', $submission->fullName(), '</a></div>';
                 } else {
                     echo '<div class="error">', e($fact->value()), '</div>';
                 }

@@ -23,12 +23,14 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -49,11 +51,13 @@ class GedcomRecordPage implements RequestHandlerInterface
     // These standard genealogy record types have their own pages.
     private const STANDARD_RECORDS = [
         Family::class,
+        Header::class,
         Individual::class,
         Media::class,
         Note::class,
         Repository::class,
         Source::class,
+        Submission::class,
         Submitter::class,
     ];
 
@@ -95,7 +99,6 @@ class GedcomRecordPage implements RequestHandlerInterface
             'notes'         => $record->linkedNotes($record_type),
             'media_objects' => $record->linkedMedia($record_type),
             'record'        => $record,
-            'record_type'   => $record_type,
             'sources'       => $record->linkedSources($record_type),
             'title'         => $record->fullName(),
             'tree'          => $tree,

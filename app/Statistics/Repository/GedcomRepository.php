@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\GedcomRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -58,9 +59,9 @@ class GedcomRepository implements GedcomRepositoryInterface
         $version = '';
         $source  = '';
 
-        $head = GedcomRecord::getInstance('HEAD', $this->tree);
+        $head = Header::getInstance('HEAD', $this->tree);
 
-        if ($head instanceof GedcomRecord) {
+        if ($head instanceof Header) {
             $sour = $head->facts(['SOUR'])->first();
 
             if ($sour instanceof Fact) {
@@ -140,9 +141,9 @@ class GedcomRepository implements GedcomRepositoryInterface
      */
     public function gedcomDate(): string
     {
-        $head = GedcomRecord::getInstance('HEAD', $this->tree);
+        $head = Header::getInstance('HEAD', $this->tree);
 
-        if ($head instanceof GedcomRecord) {
+        if ($head instanceof Header) {
             $fact = $head->facts(['DATE'])->first();
 
             if ($fact instanceof Fact) {

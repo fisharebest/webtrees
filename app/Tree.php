@@ -390,7 +390,7 @@ class Tree
 
         $union_other = DB::table('other')
             ->where('o_file', '=', $this->id)
-            ->whereNotIn('o_type', ['HEAD', 'TRLR'])
+            ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
             ->select(['o_gedcom AS gedcom', 'o_id AS xref', new Expression('LENGTH(o_id) AS len'), new Expression('4 AS n')]);
 
         $union_media = DB::table('media')
@@ -472,7 +472,7 @@ class Tree
      *
      * @param string $gedcom
      *
-     * @return GedcomRecord|Individual|Family|Note|Source|Repository|Media|Submitter
+     * @return GedcomRecord|Individual|Family|Note|Source|Repository|Media|Submitter|Submission
      * @throws InvalidArgumentException
      */
     public function createRecord(string $gedcom): GedcomRecord

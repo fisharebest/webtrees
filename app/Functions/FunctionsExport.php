@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Source;
@@ -121,15 +122,20 @@ class FunctionsExport
         $LANG = '';
 
         // Preserve some values from the original header
-        $record = GedcomRecord::getInstance('HEAD', $tree) ?? new GedcomRecord('HEAD', '0 HEAD', null, $tree);
-        $fact   = $record->facts(['COPR'])->first();
+        $header = Header::getInstance('HEAD', $tree) ?? new Header('HEAD', '0 HEAD', null, $tree);
+
+        $fact   = $header->facts(['COPR'])->first();
+
         if ($fact instanceof Fact) {
             $COPR = "\n1 COPR " . $fact->value();
         }
-        $fact = $record->facts(['LANG'])->first();
+
+        $fact = $header->facts(['LANG'])->first();
+
         if ($fact instanceof Fact) {
             $LANG = "\n1 LANG " . $fact->value();
         }
+
         // Link to actual SUBM/SUBN records, if they exist
         $subn = DB::table('other')
             ->where('o_type', '=', 'SUBN')
@@ -228,7 +234,7 @@ class FunctionsExport
 
         $other = DB::table('other')
             ->where('o_file', '=', $tree->id())
-            ->whereNotIn('o_type', ['HEAD', 'TRLR'])
+            ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
             ->orderBy('o_id')
             ->get()
             ->map(GedcomRecord::rowMapper($tree))

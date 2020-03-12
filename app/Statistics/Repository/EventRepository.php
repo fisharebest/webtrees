@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\EventRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
@@ -223,7 +224,7 @@ class EventRepository implements EventRepositoryInterface
         return DB::table('dates')
             ->select(['d_gid as id', 'd_year as year', 'd_fact AS fact', 'd_type AS type'])
             ->where('d_file', '=', $this->tree->id())
-            ->where('d_gid', '<>', 'HEAD')
+            ->where('d_gid', '<>', Header::RECORD_TYPE)
             ->whereIn('d_fact', $this->getCommonFacts())
             ->where('d_julianday1', '<>', 0)
             ->orderBy('d_julianday1', $direction)

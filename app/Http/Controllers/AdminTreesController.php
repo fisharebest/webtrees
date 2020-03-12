@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -137,7 +138,7 @@ class AdminTreesController extends AbstractBaseController
             ->select(['s_id AS xref', 's_gedcom AS gedcom', new Expression("'SOUR' AS type")]);
         $q5 = DB::table('other')
             ->where('o_file', '=', $tree->id())
-            ->whereNotIn('o_type', ['HEAD', 'TRLR'])
+            ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
             ->select(['o_id AS xref', 'o_gedcom AS gedcom', 'o_type']);
         $q6 = DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
@@ -615,7 +616,7 @@ class AdminTreesController extends AbstractBaseController
                     'o_type',
                     'o_gedcom',
                 ])->from('other')
-                    ->whereNotIn('o_type', ['HEAD', 'TRLR'])
+                    ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
                     ->where('o_file', '=', $tree1->id());
             });
 
@@ -691,7 +692,7 @@ class AdminTreesController extends AbstractBaseController
                     'l_type',
                     'l_to',
                 ])->from('link')
-                    ->whereNotIn('l_from', ['HEAD', 'TRLR'])
+                    ->whereNotIn('l_from', [Header::RECORD_TYPE, 'TRLR'])
                     ->where('l_file', '=', $tree1->id());
             });
 
@@ -1601,7 +1602,7 @@ class AdminTreesController extends AbstractBaseController
                 ->select(['m_id AS xref']))
             ->union(DB::table('other')
                 ->where('o_file', '=', $tree1->id())
-                ->whereNotIn('o_type', ['HEAD', 'TRLR'])
+                ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
                 ->select(['o_id AS xref']));
 
         $subquery2 = DB::table('change')
@@ -1621,7 +1622,7 @@ class AdminTreesController extends AbstractBaseController
                 ->select(['m_id AS xref']))
             ->union(DB::table('other')
                 ->where('o_file', '=', $tree2->id())
-                ->whereNotIn('o_type', ['HEAD', 'TRLR'])
+                ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
                 ->select(['o_id AS xref']));
 
         return DB::table(new Expression('(' . $subquery1->toSql() . ') AS sub1'))
@@ -1734,7 +1735,7 @@ class AdminTreesController extends AbstractBaseController
                 ->select(['m_id AS xref', new Expression("'OBJE' AS type")]))
             ->union(DB::table('other')
                 ->where('o_file', '=', $tree->id())
-                ->whereNotIn('o_type', ['HEAD', 'TRLR'])
+                ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
                 ->select(['o_id AS xref', 'o_type AS type']));
 
         $subquery2 = DB::table('change')
@@ -1754,7 +1755,7 @@ class AdminTreesController extends AbstractBaseController
                 ->select(['m_id AS xref']))
             ->union(DB::table('other')
                 ->where('o_file', '<>', $tree->id())
-                ->whereNotIn('o_type', ['HEAD', 'TRLR'])
+                ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
                 ->select(['o_id AS xref']));
 
         return DB::table(new Expression('(' . $subquery1->toSql() . ') AS sub1'))

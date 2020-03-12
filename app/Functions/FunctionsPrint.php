@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -35,6 +36,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
@@ -470,7 +472,13 @@ class FunctionsPrint
                 $quickfacts  = [];
                 break;
 
-            case 'HEAD':
+            case Submission::RECORD_TYPE:
+                $addfacts    = ['NOTE', 'SHARED_NOTE'];
+                $uniquefacts = ['FAMF', 'TEMP', 'ANCE', 'DESC', 'ORDI', 'SUBM'];
+                $quickfacts  = [];
+                break;
+
+            case Header::RECORD_TYPE:
                 $addfacts    = [];
                 $uniquefacts = ['COPR', 'LANG', 'SUBM'];
                 $quickfacts  = [];

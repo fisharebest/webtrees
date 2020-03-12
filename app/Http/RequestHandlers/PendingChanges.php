@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -31,6 +32,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -93,26 +95,32 @@ class PendingChanges implements RequestHandlerInterface
             preg_match('/^0 (?:@' . Gedcom::REGEX_XREF . '@ )?(' . Gedcom::REGEX_TAG . ')/', $row->old_gedcom . $row->new_gedcom, $match);
 
             switch ($match[1]) {
-                case 'INDI':
+                case Individual::RECORD_TYPE:
                     $row->record = new Individual($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
-                case 'FAM':
+                case Family::RECORD_TYPE:
                     $row->record = new Family($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
-                case 'SOUR':
+                case Source::RECORD_TYPE:
                     $row->record = new Source($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
-                case 'REPO':
+                case Repository::RECORD_TYPE:
                     $row->record = new Repository($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
-                case 'OBJE':
+                case Media::RECORD_TYPE:
                     $row->record = new Media($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
-                case 'NOTE':
+                case Note::RECORD_TYPE:
                     $row->record = new Note($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
-                case 'SUBM':
+                case Submitter::RECORD_TYPE:
                     $row->record = new Submitter($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
+                    break;
+                case Submission::RECORD_TYPE:
+                    $row->record = new Submission($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
+                    break;
+                case Header::RECORD_TYPE:
+                    $row->record = new Header($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
                 default:
                     $row->record = new GedcomRecord($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);

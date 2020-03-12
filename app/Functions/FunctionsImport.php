@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
@@ -31,11 +32,15 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use PDOException;
+
+use function date;
+use function strpos;
 
 /**
  * Class FunctionsImport - common functions
@@ -651,6 +656,7 @@ class FunctionsImport
         switch ($type) {
             case Individual::RECORD_TYPE:
                 $record = new Individual($xref, $gedrec, null, $tree);
+
                 if (preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
                     $rin = $match[1];
                 } else {
@@ -720,6 +726,7 @@ class FunctionsImport
 
             case Repository::RECORD_TYPE:
             case Note::RECORD_TYPE:
+            case Submission::RECORD_TYPE:
             case Submitter::RECORD_TYPE:
                 DB::table('other')->insert([
                     'o_id'     => $xref,
@@ -728,6 +735,21 @@ class FunctionsImport
                     'o_gedcom' => $gedrec,
                 ]);
                 break;
+
+            case Header::RECORD_TYPE:
+                // Force HEAD records to have a creation date.
+                if (strpos($gedrec, "\n1 DATE ") === false) {
+                    $gedrec .= "\n1 DATE " . date('j M Y');
+                }
+
+                DB::table('other')->insert([
+                    'o_id'     => $xref,
+                    'o_file'   => $tree_id,
+                    'o_type'   => Header::RECORD_TYPE,
+                    'o_gedcom' => $gedrec,
+                ]);
+                break;
+
 
             case Media::RECORD_TYPE:
                 $record = new Media($xref, $gedrec, null, $tree);
@@ -750,12 +772,7 @@ class FunctionsImport
                 }
                 break;
 
-            default: // HEAD, TRLR, SUBN, and custom record types.
-                // Force HEAD records to have a creation date.
-                if ($type === 'HEAD' && strpos($gedrec, "\n1 DATE ") === false) {
-                    $gedrec .= "\n1 DATE " . date('j M Y');
-                }
-
+            default: // Custom record types.
                 DB::table('other')->insert([
                     'o_id'     => $xref,
                     'o_file'   => $tree_id,

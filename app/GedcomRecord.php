@@ -36,7 +36,6 @@ use Transliterator;
 use function app;
 use function array_shift;
 use function assert;
-use function class_exists;
 use function count;
 use function date;
 use function e;
@@ -276,6 +275,14 @@ class GedcomRecord
                 $record = new Submitter($xref, $gedcom, $pending, $tree);
                 break;
 
+            case Submission::RECORD_TYPE:
+                $record = new Submission($xref, $gedcom, $pending, $tree);
+                break;
+
+            case Header::RECORD_TYPE:
+                $record = new Header($xref, $gedcom, $pending, $tree);
+                break;
+
             default:
                 $record = new self($xref, $gedcom, $pending, $tree);
                 break;
@@ -298,37 +305,17 @@ class GedcomRecord
     protected static function fetchGedcomRecord(string $xref, int $tree_id): ?string
     {
         // We don't know what type of object this is. Try each one in turn.
-        $data = Individual::fetchGedcomRecord($xref, $tree_id);
-        if ($data !== null) {
-            return $data;
-        }
-        $data = Family::fetchGedcomRecord($xref, $tree_id);
-        if ($data !== null) {
-            return $data;
-        }
-        $data = Source::fetchGedcomRecord($xref, $tree_id);
-        if ($data !== null) {
-            return $data;
-        }
-        $data = Repository::fetchGedcomRecord($xref, $tree_id);
-        if ($data !== null) {
-            return $data;
-        }
-        $data = Media::fetchGedcomRecord($xref, $tree_id);
-        if ($data !== null) {
-            return $data;
-        }
-        $data = Note::fetchGedcomRecord($xref, $tree_id);
-        if ($data !== null) {
-            return $data;
-        }
-        $data = Submitter::fetchGedcomRecord($xref, $tree_id);
-        if ($data !== null) {
-            return $data;
-        }
-
-        // Some other type of record...
-        return DB::table('other')
+        return
+            Individual::fetchGedcomRecord($xref, $tree_id) ??
+            Family::fetchGedcomRecord($xref, $tree_id) ??
+            Source::fetchGedcomRecord($xref, $tree_id) ??
+            Repository::fetchGedcomRecord($xref, $tree_id) ??
+            Media::fetchGedcomRecord($xref, $tree_id) ??
+            Note::fetchGedcomRecord($xref, $tree_id) ??
+            Submitter::fetchGedcomRecord($xref, $tree_id) ??
+            Submission::fetchGedcomRecord($xref, $tree_id) ??
+            Header::fetchGedcomRecord($xref, $tree_id) ??
+            DB::table('other')
             ->where('o_file', '=', $tree_id)
             ->where('o_id', '=', $xref)
             ->value('o_gedcom');
