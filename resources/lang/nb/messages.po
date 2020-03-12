@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-09 15:19+0000\nLast-Translator: HRN <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb_NO/>\nLanguage: nb\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-12 11:54+0000\nLast-Translator: HRN <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb_NO/>\nLanguage: nb\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -4322,7 +4322,7 @@ msgstr "Dataadministrasjon"
 #: resources/views/admin/data-fix-page.phtml:68
 #: resources/views/admin/data-fix-select.phtml:28
 msgid "Data fix"
-msgstr "Feilretting"
+msgstr "Dataretting"
 
 #: app/Http/Controllers/Admin/ModuleController.php:142
 #: app/Http/RequestHandlers/DataFixChoose.php:69
@@ -4332,11 +4332,11 @@ msgstr "Feilretting"
 #: resources/views/admin/data-fix-page.phtml:23
 #: resources/views/admin/trees.phtml:132
 msgid "Data fixes"
-msgstr "Feilretting av data"
+msgstr "Datarettinger"
 
 #: resources/views/help/data-fixes.phtml:8
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
-msgstr "Feilretting av data krever mange kalkuleringer, så det er ikke mulig å opprette en eksakt liste over poster som må oppdateres."
+msgstr "Dataretting krever mange kalkulasjoner, så det er ikke mulig å opprette en eksakt liste over poster som må oppdateres."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
@@ -6429,7 +6429,7 @@ msgstr "Hvis du f.eks. angir en stilengde på 2, vil personen kunne se sitt barn
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr ""
+msgstr "For eksempel vil det gå raskt å finne alle personer der det mangler data om død, men mye langsommere å beregne om en person er død."
 
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
@@ -20297,7 +20297,7 @@ msgstr "“%s 1” er slettet."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:60
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "\"Uthevet bilde\" (_PRIM) benyttes av enkelte slektsprogrammer for å bestemme ønsket bilde for en person. Et alternativ er å reorganisere bildene, slik at ønsket bilde er øverst på listen."
 
 #: app/Functions/FunctionsPrint.php:93 app/Note.php:160
 #: app/Report/ReportParserGenerate.php:985
