@@ -640,11 +640,6 @@ class FunctionsPrintFacts
                         $data .= ' style="display:block"';
                     }
                     $data .= ' class="source_citations">';
-                    // PUBL
-                    $publ = $source->facts(['PUBL'])->first();
-                    if ($publ instanceof Fact) {
-                        $data .= GedcomTag::getLabelValue('PUBL', $publ->value());
-                    }
                     $data .= self::printSourceStructure($tree, self::getSourceStructure($srec));
                     $data .= '<div class="indent">';
                     ob_start();
@@ -819,11 +814,6 @@ class FunctionsPrintFacts
                 echo '<td class="', $styleadd, '">';
                 if ($source) {
                     echo '<a href="', e($source->url()), '">', $source->fullName(), '</a>';
-                    // PUBL
-                    $publ = $source->facts(['PUBL'])->first();
-                    if ($publ instanceof Fact) {
-                        echo GedcomTag::getLabelValue('PUBL', $publ->value());
-                    }
                     // 2 RESN tags. Note, there can be more than one, such as "privacy" and "locked"
                     if (preg_match_all("/\n2 RESN (.+)/", $factrec, $rmatches)) {
                         foreach ($rmatches[1] as $rmatch) {
