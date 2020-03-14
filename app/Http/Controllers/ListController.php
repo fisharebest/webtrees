@@ -621,7 +621,6 @@ class ListController extends AbstractBaseController
                     ->where('multimedia_file_refn', 'NOT LIKE', 'http:%')
                     ->where('multimedia_file_refn', 'NOT LIKE', 'https:%');
             }
-
         });
 
         // Apply search terms
