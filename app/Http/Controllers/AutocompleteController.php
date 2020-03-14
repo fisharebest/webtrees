@@ -20,12 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
@@ -35,36 +35,29 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use JsonException;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
-use function curl_close;
-use function curl_exec;
-use function curl_init;
-use function curl_setopt;
-use function fclose;
-use function file_get_contents;
-use function function_exists;
-use function fwrite;
-use function ini_get;
-use function is_array;
-use function is_resource;
 use function json_decode;
 use function preg_match_all;
 use function preg_quote;
 use function rawurlencode;
+use function urlencode;
 use function response;
-
-use const CURLOPT_RETURNTRANSFER;
-use const CURLOPT_URL;
 
 /**
  * Controller for the autocomplete callbacks
  */
 class AutocompleteController extends AbstractBaseController
 {
+
+    // Gazetteer urls
+    private const NOMINATIM_URL = 'https://nominatim.openstreetmap.org/search';
+    private const OPENCAGE_URL  = 'https://api.opencagedata.com/geocode/v1/json';
+
     // Options for fetching files using GuzzleHTTP
     private const GUZZLE_OPTIONS = [
         'connect_timeout' => 3,
@@ -74,15 +67,19 @@ class AutocompleteController extends AbstractBaseController
 
     /** @var SearchService */
     private $search_service;
+    /** @var UserService */
+    private $user_service;
 
     /**
      * AutocompleteController constructor.
      *
      * @param SearchService $search_service
+     * @param UserService $user_service
      */
-    public function __construct(SearchService $search_service)
+    public function __construct(SearchService $search_service, UserService $user_service)
     {
         $this->search_service = $search_service;
+        $this->user_service   = $user_service;
     }
 
     /**
@@ -212,33 +209,66 @@ class AutocompleteController extends AbstractBaseController
             $data[] = ['value' => $place->gedcomName()];
         }
 
-        $geonames = Site::getPreference('geonames');
-
-        if ($data === [] && $geonames !== '') {
+        if ($data === [] && (bool) Site::getPreference('use_gazetteer')) {
             // No place found? Use an external gazetteer
-            $url =
-                'https://secure.geonames.org/searchJSON' .
-                '?name_startsWith=' . rawurlencode($query) .
-                '&lang=' . I18N::languageTag() .
-                '&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC' .
-                '&style=full' .
-                '&username=' . rawurlencode($geonames);
-
-            // Read from the URL
-            $client = new Client();
-            try {
-                $json = $client->get($url, self::GUZZLE_OPTIONS)->getBody()->__toString();
-                $places = json_decode($json, true);
-                if (isset($places['geonames']) && is_array($places['geonames'])) {
-                    foreach ($places['geonames'] as $k => $place) {
-                        $data[] = ['value' => $place['name'] . ', ' . $place['adminName2'] . ', ' . $place['adminName1'] . ', ' . $place['countryName']];
-                    }
-                }
-            } catch (RequestException $ex) {
-                // Service down?  Quota exceeded?
-            }
+            $data = $this->searchGazetteer($query, 5);
         }
 
         return response($data);
+    }
+
+    /**
+     *
+     * @param string $query
+     * @param int $limit
+     *
+     * @return mixed[]
+     */
+    private function searchGazetteer($query, $limit = 10): array
+    {
+        $key          = Site::getPreference('opencage');
+        $use_opencage = $key !== '';
+        $data         = [];
+
+        if ($use_opencage) {
+            $url   = self::OPENCAGE_URL;
+            $query = [
+                'q'              => urlencode($query), // don't use rawurlencode - it breaks things
+                'format'         => 'json',
+                'limit'          => $limit,
+                'language'       => I18N::languageTag(),
+                'key'            => $key,
+                'no_annotations' => 1,
+                // 'min_confidence' => 4,
+            ];
+        } else {
+            $url   = self::NOMINATIM_URL;
+            $query = [
+                'q'               => rawurlencode($query),
+                'format'          => 'jsonv2',
+                'limit'           => $limit,
+                'accept-language' => I18N::languageTag(),
+                'featuretype'     => 'settlement',
+                'email'           => rawurlencode($this->user_service->administrators()->first()->email()),
+            ];
+        }
+        // Read from the URL
+        $client = new Client();
+        try {
+            $json     = $client->get($url, self::GUZZLE_OPTIONS + ['query' => $query])->getBody()->__toString();
+            $results  = json_decode($json, false, 512, JSON_THROW_ON_ERROR);
+            if ($use_opencage) {
+                $results = $results->results;
+            }
+            foreach ($results as $result) {
+                $data[] = [
+                    'value' => isset($result->display_name) ? $result->display_name : $result->formatted
+                ];
+            }
+        } catch (JsonException | RequestException $ex) {
+            // Json error? Service down?  Quota exceeded?
+        }
+
+        return $data;
     }
 }

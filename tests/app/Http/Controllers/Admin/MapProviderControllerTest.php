@@ -50,7 +50,7 @@ class MapProviderControllerTest extends TestCase
     public function testMapProviderSave(): void
     {
         $controller = new MapProviderController();
-        $request    = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['provider' => '', 'geonames' => '']);
+        $request    = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['provider' => '', 'use_gazetteer' => '', 'opencage' => '']);
         $response   = $controller->mapProviderSave($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());

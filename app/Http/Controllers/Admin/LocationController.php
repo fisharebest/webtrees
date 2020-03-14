@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Services\GedcomService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Eloquent\Collection;
@@ -321,15 +322,16 @@ class LocationController extends AbstractAdminController
         }
 
         return $this->viewResponse('admin/location-edit', [
-            'breadcrumbs' => $breadcrumbs,
-            'title'       => $title,
-            'location'    => $location,
-            'place_id'    => $place_id,
-            'parent_id'   => $parent_id,
-            'lat'         => $lat,
-            'lng'         => $lng,
-            'data'        => $this->mapLocationData($id),
-            'provider'    => [
+            'breadcrumbs'  => $breadcrumbs,
+            'title'        => $title,
+            'location'     => $location,
+            'place_id'     => $place_id,
+            'parent_id'    => $parent_id,
+            'lat'          => $lat,
+            'lng'          => $lng,
+            'data'         => $this->mapLocationData($id),
+            'opencage_key' => Site::getPreference('opencage'),
+            'provider'     => [
                 'url'     => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                 'options' => [
                     'attribution' => '<a href="https://www.openstreetmap.org/copyright">&copy; OpenStreetMap</a> contributors',

@@ -155,7 +155,10 @@ window.WT_OSM_ADMIN = (function () {
   });
 
   // Geocoder (place lookup)
+  let opencage_key = <?= json_encode($opencage_key) ?>;
+
   let geocoder = new L.Control.geocoder({
+    geocoder:           (opencage_key === '') ? new L.Control.Geocoder.Nominatim() : new L.Control.Geocoder.OpenCage(opencage_key),
     defaultMarkGeocode: false,
     expand:             'click',
     showResultIcons:    true,
