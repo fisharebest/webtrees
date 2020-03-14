@@ -41,6 +41,20 @@ class CensusOfUnitedStatesTest extends TestCase
     }
 
     /**
+     * Test the census language
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic
+     *
+     * @return void
+     */
+    public function testLanguage(): void
+    {
+        $census = new CensusOfUnitedStates();
+
+        $this->assertSame('en-US', $census->censusLanguage());
+    }
+
+    /**
      * Test the census dates
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfUnitedStates

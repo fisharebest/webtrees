@@ -41,6 +41,20 @@ class CensusOfWalesTest extends TestCase
     }
 
     /**
+     * Test the census language
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic
+     *
+     * @return void
+     */
+    public function testLanguage(): void
+    {
+        $census = new CensusOfWales();
+
+        $this->assertSame('en-GB', $census->censusLanguage());
+    }
+
+    /**
      * Test the census dates
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfWales

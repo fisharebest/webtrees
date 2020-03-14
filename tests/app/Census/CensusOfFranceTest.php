@@ -41,6 +41,20 @@ class CensusOfFranceTest extends TestCase
     }
 
     /**
+     * Test the census language
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic
+     *
+     * @return void
+     */
+    public function testLanguage(): void
+    {
+        $census = new CensusOfFrance();
+
+        $this->assertSame('fr', $census->censusLanguage());
+    }
+
+    /**
      * Test the census dates
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfFrance

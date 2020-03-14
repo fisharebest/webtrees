@@ -37,4 +37,11 @@ interface CensusPlaceInterface
      * @return string
      */
     public function censusPlace(): string;
+
+    /**
+     * In which language was this census written.
+     *
+     * @return string
+     */
+    public function censusLanguage(): string;
 }

@@ -19,28 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\TestCase;
-
 /**
- * Test harness for the class CensusColumnRelationToHead
+ * Relationship to head of household.
  */
-class CensusColumnRelationToHeadTest extends TestCase
+class CensusColumnRelationToHeadEnglish extends CensusColumnRelationToHead
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnRelationToHead
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
-     */
-    public function testNull(): void
-    {
-        $individual = $this->createMock(Individual::class);
-
-        $census = $this->createMock(CensusInterface::class);
-
-        $column = new CensusColumnRelationToHead($census, '', '');
-
-        $this->assertSame('-', $column->generate($individual, $individual));
-    }
+    /** @var string */
+    protected $head_of_household = 'head';
 }

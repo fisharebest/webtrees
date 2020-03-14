@@ -56,7 +56,7 @@ class CensusOfEngland1901Test extends TestCase
 
         $this->assertCount(10, $columns);
         $this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-        $this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[1]);
+        $this->assertInstanceOf(CensusColumnRelationToHeadEnglish::class, $columns[1]);
         $this->assertInstanceOf(CensusColumnConditionEnglish::class, $columns[2]);
         $this->assertInstanceOf(CensusColumnAgeMale::class, $columns[3]);
         $this->assertInstanceOf(CensusColumnAgeFemale::class, $columns[4]);

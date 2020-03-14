@@ -19,28 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\Individual;
-
 /**
  * Relationship to head of household.
  */
-class CensusColumnRelationToHeadGerman extends AbstractCensusColumn implements CensusColumnInterface
+class CensusColumnRelationToHeadGerman extends CensusColumnRelationToHead
 {
-    /**
-     * Generate the likely value of this census column, based on available information.
-     *
-     * @param Individual $individual
-     * @param Individual $head
-     *
-     * @return string
-     */
-    public function generate(Individual $individual, Individual $head): string
-    {
-        if ($individual === $head) {
-            return 'Haushaltungsvorstand';
-        }
-
-        return Functions::getCloseRelationshipName($head, $individual);
-    }
+    /** @var string */
+    protected $head_of_household = 'Haushaltungsvorstand';
 }

@@ -53,4 +53,14 @@ class CensusOfWales extends Census implements CensusPlaceInterface
     {
         return 'Wales';
     }
+
+    /**
+     * In which language was this census written.
+     *
+     * @return string
+     */
+    public function censusLanguage(): string
+    {
+        return 'en-GB';
+    }
 }

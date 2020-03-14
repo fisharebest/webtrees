@@ -19,44 +19,29 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\TestCase;
+
 /**
- * Definitions for a census
+ * Test harness for the class CensusColumnRelationToHead
  */
-class CensusOfDeutschland extends Census implements CensusPlaceInterface
+class CensusColumnRelationToHeadEnglishTest extends TestCase
 {
     /**
-     * All available censuses for this census place.
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnRelationToHeadEnglish
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnRelationToHead
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
      *
-     * @return CensusInterface[]
+     * @return void
      */
-    public function allCensusDates(): array
+    public function testNull(): void
     {
-        return [
-            new CensusOfDeutschland1819(),
-            new CensusOfDeutschland1867(),
-            new CensusOfDeutschlandNL1867(),
-            new CensusOfDeutschland1900(),
-            new CensusOfDeutschland1919(),
-        ];
-    }
+        $individual = $this->createMock(Individual::class);
 
-    /**
-     * Where did this census occur, in GEDCOM format.
-     *
-     * @return string
-     */
-    public function censusPlace(): string
-    {
-        return 'Deutschland';
-    }
+        $census = $this->createMock(CensusInterface::class);
 
-    /**
-     * In which language was this census written.
-     *
-     * @return string
-     */
-    public function censusLanguage(): string
-    {
-        return 'de';
+        $column = new CensusColumnRelationToHeadEnglish($census, '', '');
+
+        $this->assertSame('head', $column->generate($individual, $individual));
     }
 }

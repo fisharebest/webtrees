@@ -66,4 +66,14 @@ class CensusOfFrance extends Census implements CensusPlaceInterface
     {
         return 'France';
     }
+
+    /**
+     * In which language was this census written.
+     *
+     * @return string
+     */
+    public function censusLanguage(): string
+    {
+        return 'fr';
+    }
 }

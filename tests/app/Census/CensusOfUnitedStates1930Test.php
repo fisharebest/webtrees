@@ -56,7 +56,7 @@ class CensusOfUnitedStates1930Test extends TestCase
 
         $this->assertCount(28, $columns);
         $this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-        $this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[1]);
+        $this->assertInstanceOf(CensusColumnRelationToHeadEnglish::class, $columns[1]);
         $this->assertInstanceOf(CensusColumnNull::class, $columns[2]);
         $this->assertInstanceOf(CensusColumnNull::class, $columns[3]);
         $this->assertInstanceOf(CensusColumnNull::class, $columns[4]);

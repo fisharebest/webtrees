@@ -53,4 +53,14 @@ class CensusOfEngland extends Census implements CensusPlaceInterface
     {
         return 'England';
     }
+
+    /**
+     * In which language was this census written.
+     *
+     * @return string
+     */
+    public function censusLanguage(): string
+    {
+        return 'en-GB';
+    }
 }

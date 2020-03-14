@@ -43,7 +43,7 @@ class CensusOfUnitedStates1900 extends CensusOfUnitedStates implements CensusInt
     {
         return [
             new CensusColumnFullName($this, 'Name', 'Name'),
-            new CensusColumnRelationToHead($this, 'Relation', 'Relationship of each person to the head of the family'),
+            new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relationship of each person to the head of the family'),
             new CensusColumnNull($this, 'Race', 'Color or race'),
             new CensusColumnSexMF($this, 'Sex', 'Sex'),
             new CensusColumnBirthMonth($this, 'Month', 'Month of birth'),

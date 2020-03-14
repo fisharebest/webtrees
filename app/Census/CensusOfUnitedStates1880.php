@@ -46,7 +46,7 @@ class CensusOfUnitedStates1880 extends CensusOfUnitedStates implements CensusInt
             new CensusColumnAge($this, 'Age', 'Age'),
             new CensusColumnSexMF($this, 'Sex', 'Sex'),
             new CensusColumnMonthIfBornWithinYear($this, 'Mon', 'If born within the year, state month'),
-            new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
+            new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relation to head of household'),
             new CensusColumnNull($this, 'S', 'Single'),
             new CensusColumnNull($this, 'M', 'Married'),
             new CensusColumnNull($this, 'W/D', 'Widowed, Divorced'),

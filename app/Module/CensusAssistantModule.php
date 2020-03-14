@@ -97,6 +97,9 @@ class CensusAssistantModule extends AbstractModule
         // No head of household?  Create a dummy one.
         $head = $head ?? new Individual('X', '0 @X@ INDI', null, $tree);
 
+        // Generate columns (e.g. relationship name) using the correct language.
+        I18N::init($census->censusLanguage());
+
         if ($individual instanceof Individual && $head instanceof Individual) {
             $html = $this->censusTableRow($census, $individual, $head);
         } else {

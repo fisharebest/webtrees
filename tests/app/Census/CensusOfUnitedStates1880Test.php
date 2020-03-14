@@ -59,7 +59,7 @@ class CensusOfUnitedStates1880Test extends TestCase
         $this->assertInstanceOf(CensusColumnAge::class, $columns[1]);
         $this->assertInstanceOf(CensusColumnSexMF::class, $columns[2]);
         $this->assertInstanceOf(CensusColumnMonthIfBornWithinYear::class, $columns[3]);
-        $this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[4]);
+        $this->assertInstanceOf(CensusColumnRelationToHeadEnglish::class, $columns[4]);
         $this->assertInstanceOf(CensusColumnNull::class, $columns[5]);
         $this->assertInstanceOf(CensusColumnNull::class, $columns[6]);
         $this->assertInstanceOf(CensusColumnNull::class, $columns[7]);

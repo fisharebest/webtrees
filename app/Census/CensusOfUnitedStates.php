@@ -60,4 +60,14 @@ class CensusOfUnitedStates extends Census implements CensusPlaceInterface
     {
         return 'United States';
     }
+
+    /**
+     * In which language was this census written.
+     *
+     * @return string
+     */
+    public function censusLanguage(): string
+    {
+        return 'en-US';
+    }
 }

@@ -43,7 +43,7 @@ class CensusOfScotland1911 extends CensusOfScotland implements CensusInterface
     {
         return [
             new CensusColumnFullName($this, 'Name', 'Name and surname'),
-            new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
+            new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relation to head of household'),
             new CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
             new CensusColumnAgeFemale($this, 'AgeF', 'Age (females)'),
             new CensusColumnNull($this, 'Lang', 'Language spoken'),
