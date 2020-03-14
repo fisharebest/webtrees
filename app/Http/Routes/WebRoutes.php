@@ -21,14 +21,12 @@ namespace Fisharebest\Webtrees\Http\Routes;
 
 use Aura\Router\Map;
 use Fig\Http\Message\RequestMethodInterface;
-use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Http\Middleware\AuthAdministrator;
 use Fisharebest\Webtrees\Http\Middleware\AuthEditor;
 use Fisharebest\Webtrees\Http\Middleware\AuthLoggedIn;
 use Fisharebest\Webtrees\Http\Middleware\AuthManager;
 use Fisharebest\Webtrees\Http\Middleware\AuthMember;
 use Fisharebest\Webtrees\Http\Middleware\AuthModerator;
-use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountDelete;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountUpdate;

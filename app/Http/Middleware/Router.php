@@ -90,7 +90,7 @@ class Router implements MiddlewareInterface
         // Add the route as attribute of the request
         $request = $request->withAttribute('route', $route);
 
-        // This middleware needs cannot run until after the routing, as it needs to know the route.
+        // This middleware cannot run until after the routing, as it needs to know the route.
         $post_routing_middleware = [CheckCsrf::class];
         $post_routing_middleware = array_map('app', $post_routing_middleware);
 
