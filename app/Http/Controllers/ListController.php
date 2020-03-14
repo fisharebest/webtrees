@@ -604,14 +604,24 @@ class ListController extends AbstractBaseController
         // Match all external files, and whatever folders were specified
         $query->where(static function (Builder $query) use ($folder, $subfolders): void {
             $query
-                ->where('multimedia_file_refn', 'LIKE', 'http:%')
-                ->orWhere('multimedia_file_refn', 'LIKE', 'https:%')
-                ->orWhere(static function (Builder $query) use ($folder, $subfolders): void {
+                ->where(static function (Builder $query) use ($folder, $subfolders): void {
                     $query->where('multimedia_file_refn', 'LIKE', $folder . '%');
                     if ($subfolders === 'exclude') {
                         $query->where('multimedia_file_refn', 'NOT LIKE', $folder . '/%/%');
                     }
                 });
+
+            // External media is included on the root folder, excluded on sub-folders.
+            if ($folder === '') {
+                $query
+                    ->orWhere('multimedia_file_refn', 'LIKE', 'http:%')
+                    ->orWhere('multimedia_file_refn', 'LIKE', 'https:%');
+            } else {
+                $query
+                    ->where('multimedia_file_refn', 'NOT LIKE', 'http:%')
+                    ->where('multimedia_file_refn', 'NOT LIKE', 'https:%');
+            }
+
         });
 
         // Apply search terms
