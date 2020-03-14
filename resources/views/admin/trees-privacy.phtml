@@ -4,7 +4,6 @@ use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
-use Ramsey\Uuid\Uuid;
 
 ?>
 
@@ -165,7 +164,7 @@ use Ramsey\Uuid\Uuid;
         <tr>
             <td>
                 <select class="form-control record-type-selector">
-                    <option value=""><?= I18N::translate('All records') ?></option>
+                    <option value="all"><?= I18N::translate('All records') ?></option>
                     <option value="individual"><?= I18N::translate('Individual') ?></option>
                     <option value="family"><?= I18N::translate('Family') ?></option>
                     <option value="source"><?= I18N::translate('Source') ?></option>
@@ -173,31 +172,44 @@ use Ramsey\Uuid\Uuid;
                     <option value="note"><?= I18N::translate('Note') ?></option>
                     <option value="media"><?= I18N::translate('Media object') ?></option>
                 </select>
+
+                <div class="select-record select-all">
+                    <input type="hidden" name="xref[]">
+                </div>
+
                 <div class="select-record select-individual d-none">
-                    <?= view('components/select-individual', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
+                    <?= view('components/select-individual', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true]) ?>
                 </div>
+
                 <div class="select-record select-family d-none">
-                    <?= view('components/select-family', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
+                    <?= view('components/select-family', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true]) ?>
                 </div>
+
                 <div class="select-record select-source d-none">
-                    <?= view('components/select-source', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
+                    <?= view('components/select-source', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true]) ?>
                 </div>
+
                 <div class="select-record select-repository d-none">
-                    <?= view('components/select-repository', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
+                    <?= view('components/select-repository', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true]) ?>
                 </div>
+
                 <div class="select-record select-note d-none">
-                    <?= view('components/select-note', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
+                    <?= view('components/select-note', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true]) ?>
                 </div>
+
                 <div class="select-record select-media d-none">
-                    <?= view('components/select-media', ['name' => 'xref[]', 'id' => Uuid::uuid4()->toString(), 'tree' => $tree, 'disabled' => true]) ?>
+                    <?= view('components/select-media', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true]) ?>
                 </div>
             </td>
+
             <td>
-                <?= view('components/select', ['name' => 'tag_type[]', 'id' => Uuid::uuid4()->toString(), 'selected' => '', 'options' => $all_tags]) ?>
+                <?= view('components/select', ['name' => 'tag_type[]', 'id' => '', 'selected' => '', 'options' => $all_tags]) ?>
             </td>
+
             <td>
-                <?= view('components/select', ['name' => 'resn[]', 'id' => Uuid::uuid4()->toString(), 'selected' => 'privacy', 'options' => $privacy_constants]) ?>
+                <?= view('components/select', ['name' => 'resn[]', 'id' => '', 'selected' => 'privacy', 'options' => $privacy_constants]) ?>
             </td>
+
             <td>
             </td>
         </tr>
@@ -367,7 +379,8 @@ use Ramsey\Uuid\Uuid;
         $("#default-resn tbody").prepend($("#new-resn-template").html());
 
         // Select2 - same as webtrees.js
-        $("select.select2").select2({
+        $("#default-resn tbody tr:first select.select2").select2({
+            width: '100%',
             escapeMarkup: function (x) {
                 return x;
             },
@@ -378,10 +391,13 @@ use Ramsey\Uuid\Uuid;
 
         // Record type selector
         $(".record-type-selector").change(function () {
-            $(".select-record", $(this).parent()).addClass('d-none');
-            $(".select-record select", $(this).parent()).prop( "disabled", true);
-            $(".select-" + $(this).val(), $(this).parent()).removeClass('d-none');
-            $(".select-" + $(this).val() + " select", $(this).parent()).prop( "disabled", false);
+            const container = $(this).closest("td");
+            $(".select-record", container).addClass('d-none');
+            $(".select-record select", container).prop( "disabled", true);
+            $(".select-record input", container).prop( "disabled", true);
+            $(".select-" + $(this).val(), container).removeClass('d-none');
+            $(".select-" + $(this).val() + " select", container).prop( "disabled", false);
+            $(".select-" + $(this).val() + " input", container).prop( "disabled", false);
         });
     });
 </script>
