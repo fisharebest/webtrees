@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2020-03-07 12:25+0000\n"
+"PO-Revision-Date: 2020-03-16 08:33+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
@@ -10992,21 +10992,21 @@ msgstr "内部消息和电子邮件"
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1547 app/GedcomTag.php:1858
 msgid "Interred"
-msgstr "下墓"
+msgstr "下葬"
 
 # I18N: gedcom tag _INTE
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1543 app/GedcomTag.php:1854
 msgctxt "FEMALE"
 msgid "Interred"
-msgstr "下墓"
+msgstr "下葬"
 
 # I18N: gedcom tag _INTE
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1539 app/GedcomTag.php:1849
 msgctxt "MALE"
 msgid "Interred"
-msgstr "下墓"
+msgstr "下葬"
 
 #: import.php:114 app/Http/Controllers/GedcomFileController.php:106
 msgid "Invalid GEDCOM file - no header record found."
