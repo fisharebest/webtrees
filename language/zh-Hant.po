@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Traditional) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-09-22 16:28+0100\n"
-"PO-Revision-Date: 2020-03-01 16:18+0000\n"
+"PO-Revision-Date: 2020-03-16 08:33+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.webtrees.net/"
 "projects/webtrees/webtrees-17/zh_Hant/>\n"
@@ -11113,21 +11113,21 @@ msgstr "內部消息和電子郵件"
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1547 app/GedcomTag.php:1858
 msgid "Interred"
-msgstr "下墓"
+msgstr "下葬"
 
 # I18N: gedcom tag _INTE
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1543 app/GedcomTag.php:1854
 msgctxt "FEMALE"
 msgid "Interred"
-msgstr "下墓"
+msgstr "下葬"
 
 # I18N: gedcom tag _INTE
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1539 app/GedcomTag.php:1849
 msgctxt "MALE"
 msgid "Interred"
-msgstr "下墓"
+msgstr "下葬"
 
 #: import.php:114 app/Http/Controllers/GedcomFileController.php:102
 #: app/Http/Controllers/GedcomFileController.php:106
