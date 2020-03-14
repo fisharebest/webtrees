@@ -41,7 +41,21 @@ use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function array_combine;
+use function array_keys;
+use function array_slice;
+use function array_unshift;
 use function assert;
+use function count;
+use function dirname;
+use function e;
+use function implode;
+use function max;
+use function min;
+use function ob_get_clean;
+use function ob_start;
+use function route;
+use function view;
 
 /**
  * Controller for lists of GEDCOM records.
@@ -53,8 +67,8 @@ class ListController extends AbstractBaseController
 
     /** @var LocalizationService */
     private $localization_service;
-    
-            
+
+
     /**
      * ListController constructor.
      *
@@ -111,7 +125,7 @@ class ListController extends AbstractBaseController
         //route is assumed to be 'module'
         $module = $request->getAttribute('module');
         $action = $request->getAttribute('action');
-        
+
         ob_start();
 
         // We show three different lists: initials, surnames and individuals
@@ -598,30 +612,29 @@ class ListController extends AbstractBaseController
                     ->on('media_file.m_file', '=', 'media.m_file')
                     ->on('media_file.m_id', '=', 'media.m_id');
             })
-            ->where('media.m_file', '=', $tree->id())
-            ->distinct();
+            ->where('media.m_file', '=', $tree->id());
 
-        // Match all external files, and whatever folders were specified
-        $query->where(static function (Builder $query) use ($folder, $subfolders): void {
-            $query
-                ->where(static function (Builder $query) use ($folder, $subfolders): void {
-                    $query->where('multimedia_file_refn', 'LIKE', $folder . '%');
-                    if ($subfolders === 'exclude') {
-                        $query->where('multimedia_file_refn', 'NOT LIKE', $folder . '/%/%');
-                    }
+        if ($folder === '') {
+            // Include external URLs in the root folder.
+            if ($subfolders === 'exclude') {
+                $query->where(static function (Builder $query): void {
+                    $query
+                        ->where('multimedia_file_refn', 'NOT LIKE', '%/%')
+                        ->orWhere('multimedia_file_refn', 'LIKE', 'http:%')
+                        ->orWhere('multimedia_file_refn', 'LIKE', 'https:%');
                 });
-
-            // External media is included on the root folder, excluded on sub-folders.
-            if ($folder === '') {
-                $query
-                    ->orWhere('multimedia_file_refn', 'LIKE', 'http:%')
-                    ->orWhere('multimedia_file_refn', 'LIKE', 'https:%');
-            } else {
-                $query
-                    ->where('multimedia_file_refn', 'NOT LIKE', 'http:%')
-                    ->where('multimedia_file_refn', 'NOT LIKE', 'https:%');
             }
-        });
+        } else {
+            // Exclude external URLs from the root folder.
+            $query
+                ->where('multimedia_file_refn', 'LIKE', $folder . '/%')
+                ->where('multimedia_file_refn', 'NOT LIKE', 'http:%')
+                ->where('multimedia_file_refn', 'NOT LIKE', 'https:%');
+
+            if ($subfolders === 'exclude') {
+                $query->where('multimedia_file_refn', 'NOT LIKE', $folder .'/%/%');
+            }
+        }
 
         // Apply search terms
         if ($filter !== '') {
