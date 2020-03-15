@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-03-03 12:33+0000\n"
-"Last-Translator: Michael Rapp <mike_jpr@outlook.com>\n"
+"PO-Revision-Date: 2020-03-16 08:33+0000\n"
+"Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
 "Language: de\n"
@@ -4938,7 +4938,7 @@ msgstr "Standardthema"
 #. I18N: gedcom tag _DEG
 #: app/GedcomTag.php:1455
 msgid "Degree"
-msgstr "Akademischer Grad"
+msgstr "Abschluss"
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
