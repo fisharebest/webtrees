@@ -632,7 +632,7 @@ class ListController extends AbstractBaseController
                 ->where('multimedia_file_refn', 'NOT LIKE', 'https:%');
 
             if ($subfolders === 'exclude') {
-                $query->where('multimedia_file_refn', 'NOT LIKE', $folder .'/%/%');
+                $query->where('multimedia_file_refn', 'NOT LIKE', $folder . '/%/%');
             }
         }
 

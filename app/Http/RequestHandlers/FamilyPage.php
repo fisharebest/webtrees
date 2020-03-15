@@ -21,8 +21,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
@@ -32,6 +34,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 use stdClass;
 
 use function assert;
+use function explode;
+use function in_array;
 use function is_string;
 use function redirect;
 
@@ -78,9 +82,14 @@ class FamilyPage implements RequestHandlerInterface
 
         $clipboard_facts = $this->clipboard_service->pastableFacts($family, new Collection());
 
+        $facts = $family->facts([], true)
+            ->filter(static function (Fact $fact): bool {
+                return !in_array($fact->getTag(), ['HUSB', 'WIFE', 'CHIL'], true);
+            });
+
         return $this->viewResponse('family-page', [
             'clipboard_facts'  => $clipboard_facts,
-            'facts'            => $family->facts([], true),
+            'facts'            => $facts,
             'meta_description' => '',
             'meta_robots'      => 'index,follow',
             'record'           => $family,
@@ -106,10 +115,11 @@ class FamilyPage implements RequestHandlerInterface
             'surname'    => '',
         ];
 
-        foreach ($family->spouses()->merge($family->children()) as $individual) {
+        $individual = $family->spouses()->merge($family->children())->first();
+
+        if ($individual instanceof Individual) {
             $significant->individual = $individual;
             [$significant->surname] = explode(',', $individual->sortName());
-            break;
         }
 
         return $significant;
