@@ -11,18 +11,18 @@ use Fisharebest\Webtrees\Webtrees;
 
 <table class="table table-bordered table-striped table-sm table-hover">
     <thead class="thead-dark">
-    <tr>
-        <th><?= I18N::translate('Place') ?></th>
-        <th><?= I18N::translate('Latitude') ?></th>
-        <th><?= I18N::translate('Longitude') ?></th>
-        <th><?= I18N::translate('Zoom level') ?></th>
-        <th><?= I18N::translate('Flag') ?> </th>
-        <th><?= I18N::translate('Edit') ?></th>
-        <th><?= I18N::translate('Delete') ?></th>
-    </tr>
+        <tr>
+            <th><?= I18N::translate('Place') ?></th>
+            <th><?= I18N::translate('Latitude') ?></th>
+            <th><?= I18N::translate('Longitude') ?></th>
+            <th><?= I18N::translate('Zoom level') ?></th>
+            <th><?= I18N::translate('Flag') ?> </th>
+            <th><?= I18N::translate('Edit') ?></th>
+            <th><?= I18N::translate('Delete') ?></th>
+        </tr>
     </thead>
-    <tbody>
 
+    <tbody>
     <?php foreach ($placelist as $place) : ?>
         <tr>
             <th scope="row">
@@ -92,35 +92,36 @@ use Fisharebest\Webtrees\Webtrees;
         </tr>
     <?php endforeach ?>
     </tbody>
+
     <tfoot>
-    <tr>
-        <td colspan="7">
-            <a class="btn btn-primary" href="<?= e(route('map-data-edit', ['place_id' => '0', 'parent_id' => $parent_id])) ?>">
-                <?= view('icons/add') ?>
-                <?= /* I18N: A button label. */
-                I18N::translate('add place') ?>
-            </a>
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <?= view('icons/download') ?>
-                <?= /* I18N: A button label. */
-                I18N::translate('export file') ?>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="<?= e(route('locations-export', ['parent_id' => $parent_id, 'format' => 'csv'])) ?>">
-                    csv
+        <tr>
+            <td colspan="7">
+                <a class="btn btn-primary" href="<?= e(route('map-data-edit', ['place_id' => '0', 'parent_id' => $parent_id])) ?>">
+                    <?= view('icons/add') ?>
+                    <?= /* I18N: A button label. */
+                    I18N::translate('add place') ?>
                 </a>
-                <a class="dropdown-item" href="<?= e(route('locations-export', ['parent_id' => $parent_id, 'format' => 'geojson'])) ?>">
-                    geoJSON
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?= view('icons/download') ?>
+                    <?= /* I18N: A button label. */
+                    I18N::translate('export file') ?>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="<?= e(route('locations-export', ['parent_id' => $parent_id, 'format' => 'csv'])) ?>">
+                        csv
+                    </a>
+                    <a class="dropdown-item" href="<?= e(route('locations-export', ['parent_id' => $parent_id, 'format' => 'geojson'])) ?>">
+                        geoJSON
+                    </a>
+                </div>
+                <a class="btn btn-primary" href="<?= e(route('locations-import', ['parent_id' => $parent_id])) ?>">
+                    <?= view('icons/upload') ?>
+                    <?= /* I18N: A button label. */
+                    I18N::translate('import file') ?>
                 </a>
-            </div>
-            <a class="btn btn-primary" href="<?= e(route('locations-import', ['parent_id' => $parent_id])) ?>">
-                <?= view('icons/upload') ?>
-                <?= /* I18N: A button label. */
-                I18N::translate('import file') ?>
-            </a>
-        </td>
-    </tr>
+            </td>
+        </tr>
     </tfoot>
 </table>
 

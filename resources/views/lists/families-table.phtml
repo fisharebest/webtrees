@@ -266,22 +266,7 @@ $marriageAgeData = [
             </tr>
         </thead>
 
-        <tfoot>
-            <tr>
-                <th colspan="14">
-                    <div class="btn-group m-1">
-                        <button id="btn-toggle-parents" class="btn btn-secondary" data-toggle="button" data-persist="show-parents">
-                            <?= I18N::translate('Show parents') ?>
-                        </button>
-                        <button id="btn-toggle-statistics" class="btn btn-secondary" data-toggle="button" data-persist="show-statistics">
-                            <?= I18N::translate('Show statistics charts') ?>
-                        </button>
-                    </div>
-                </th>
-            </tr>
-        </tfoot>
         <tbody>
-
         <?php foreach ($families as $family) : ?>
             <?php $husb = $family->husband() ?? new Individual('H', '0 @H@ INDI', null, $family->tree()) ?>
             <?php $wife = $family->wife() ?? new Individual('W', '0 @W@ INDI', null, $family->tree()) ?>
@@ -455,6 +440,21 @@ $marriageAgeData = [
             </tr>
         <?php endforeach ?>
         </tbody>
+
+        <tfoot>
+            <tr>
+                <th colspan="14">
+                    <div class="btn-group m-1">
+                        <button id="btn-toggle-parents" class="btn btn-secondary" data-toggle="button" data-persist="show-parents">
+                            <?= I18N::translate('Show parents') ?>
+                        </button>
+                        <button id="btn-toggle-statistics" class="btn btn-secondary" data-toggle="button" data-persist="show-statistics">
+                            <?= I18N::translate('Show statistics charts') ?>
+                        </button>
+                    </div>
+                </th>
+            </tr>
+        </tfoot>
     </table>
 </div>
 
