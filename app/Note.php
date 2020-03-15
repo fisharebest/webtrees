@@ -147,16 +147,17 @@ class Note extends GedcomRecord
 
     /**
      * Create a name for this note - apply (and remove) markup, then take
-     * a maximum of 100 characters from the first line.
+     * a maximum of 100 characters from the first non-empty line.
      *
      * @return void
      */
     public function extractNames(): void
     {
-        $text = $this->getNote();
+        $text = trim($this->getNote());
 
-        if ($text) {
-            [$text] = explode("\n", $text);
+        [$text] = explode("\n", $text);
+
+        if ($text !== '') {
             $this->addName('NOTE', Str::limit($text, 100, I18N::translate('…')), $this->gedcom());
         }
     }
