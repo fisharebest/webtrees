@@ -967,10 +967,10 @@ class FunctionsPrintFacts
         $tree    = $parent->tree();
 
         if ($fact->isPendingAddition()) {
-            $styleadd = ' wt-new';
+            $styleadd = 'wt-new ';
             $can_edit = $level === 1 && $fact->canEdit();
         } elseif ($fact->isPendingDeletion()) {
-            $styleadd = ' wt-old';
+            $styleadd = 'wt-old ';
             $can_edit = false;
         } else {
             $styleadd = '';
@@ -1049,7 +1049,7 @@ class FunctionsPrintFacts
                 $text = Filter::formatText($text, $tree);
             }
 
-            echo '<td class="optionbox', $styleadd, ' wrap">';
+            echo '<td class="', $styleadd, ' wrap">';
             echo $text;
 
             // 2 RESN tags. Note, there can be more than one, such as "privacy" and "locked"

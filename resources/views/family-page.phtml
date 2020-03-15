@@ -81,7 +81,7 @@ use Fisharebest\Webtrees\View;
                 <th scope="row">
                     <?= I18N::translate('Shared note') ?>
                 </th>
-                <td class="optionbox">
+                <td>
                     <a href="<?= e(route(AddNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact' => 'SHARED_NOTE'])) ?>">
                         <?= I18N::translate('Add a shared note') ?>
                     </a>
@@ -93,7 +93,7 @@ use Fisharebest\Webtrees\View;
                     <th scope="row">
                         <?= I18N::translate('Media object') ?>
                     </th>
-                    <td class="optionbox">
+                    <td>
                         <a href="<?= e(route(AddNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact' => 'OBJE'])) ?>">
                             <?= I18N::translate('Add a media object') ?>
                         </a>
