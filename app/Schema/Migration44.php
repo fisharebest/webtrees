@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Schema;
 use Illuminate\Database\Capsule\Manager as DB;
 
 /**
- * Upgrade the database schema from version 43 to version 44.
+ * Upgrade the database schema from version 44 to version 45.
  */
 class Migration44 implements MigrationInterface
 {
