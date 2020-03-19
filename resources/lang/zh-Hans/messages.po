@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-19 07:18+0000\nLast-Translator: rui <xmlf@hotmail.com>\nLanguage-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-19 07:53+0000\nLast-Translator: rui <xmlf@hotmail.com>\nLanguage-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -4349,7 +4349,7 @@ msgstr "公司"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameSlashesAndSpaces.php:71
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "修正由老家谱程序产生的名字记录表单 ‘Joe/BLOGGS/’ or ‘Joe /BLOGGS’。"
+msgstr "修正由旧的家谱程序产生的姓名记录格式 ‘Joe/BLOGGS/’ 或 ‘Joe /BLOGGS’。"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -9668,11 +9668,11 @@ msgstr "勾选此框匹配大小写字母。"
 
 #: app/Module/FixSearchAndReplace.php:101
 msgid "Match the exact text, even if it occurs in the middle of a word."
-msgstr "精确匹配的文本,即使有关键字。"
+msgstr "模糊匹配。"
 
 #: app/Module/FixSearchAndReplace.php:102
 msgid "Match the exact text, unless it occurs in the middle of a word."
-msgstr "精确匹配的文本,除非有关键字。"
+msgstr "全字匹配。"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -12601,7 +12601,7 @@ msgstr "替换为"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:72
 msgid "Replace cemetery tags with burial places."
-msgstr "将墓地标签替换为葬礼地点。"
+msgstr "将墓地标签替换为埋葬地。"
 
 #: resources/views/search-replace-page.phtml:26
 msgid "Replace with"
@@ -17249,11 +17249,11 @@ msgstr "妻子的年龄"
 
 #: app/Module/FixMissingMarriedNames.php:95
 msgid "Wife’s maiden surname becomes new given name"
-msgstr "妻子的娘家姓成为新的姓"
+msgstr "妻子的娘家姓成为新的名字"
 
 #: app/Module/FixMissingMarriedNames.php:94
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr "妻子的姓由丈夫的姓代替"
+msgstr "妻子的姓氏被丈夫的姓氏所取代"
 
 # I18N: gedcom tag WILL
 #. I18N: gedcom tag WILL
@@ -17373,7 +17373,7 @@ msgstr "您可以从%s下载GEDCOM规范的副本。"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingMarriedNames.php:81
 msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-msgstr "您可以更容易地搜索已婚妇女如果记录他们的婚姻名。但是不是所有的女人需要随丈夫的姓，所以要当心输入不正确的信息到你的数据库中。"
+msgstr "通过记录已婚女性的姓名，可以更容易地搜索她们。然而，并不是所有的女人都用丈夫的姓，所以要小心不要把不正确的信息写入你的数据库。"
 
 #: resources/views/modules/privacy-policy/page.phtml:52
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
@@ -17396,7 +17396,7 @@ msgstr "您可以为特定的记录、事实或事件添加限制访问权限。
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:70
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "虽然没有去世，埋葬，火化等记录，你仍然可以通过添加其他可以推断个人去世日期的信息，来加快隐私计算。"
+msgstr "虽然没有去世，埋葬，火化等记录，你可以从其他日期中推断出其已死亡并添加死亡记录来加快隐私计算。"
 
 #: app/Http/RequestHandlers/LoginAction.php:115
 msgid "You cannot sign in because your browser does not accept cookies."
