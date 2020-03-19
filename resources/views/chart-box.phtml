@@ -133,7 +133,11 @@ $id = Uuid::uuid4()->toString();
     <?php endif ?>
 
     <div class="wt-chart-box-name font-weight-bold">
-        <a href="<?= e($individual->url()) ?>" class="wt-chart-box-name"><?= $individual->fullName() ?></a>
+        <?php if ($individual->canShow()) : ?>
+            <a href="<?= e($individual->url()) ?>" class="wt-chart-box-name"><?= $individual->fullName() ?></a>
+        <?php else : ?>
+            <span class="wt-chart-box-name"><?= $individual->fullName() ?></span>
+        <?php endif ?>
     </div>
 
     <div class="wt-chart-box-name font-weight-bold">
