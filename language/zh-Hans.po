@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2020-03-16 08:33+0000\n"
+"PO-Revision-Date: 2020-03-20 12:08+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
@@ -1671,7 +1671,7 @@ msgstr "添加一个兄弟或姐妹"
 #: app/Http/Controllers/EditFamilyController.php:112,
 #: resources/views/family-page-children.phtml:34,
 msgid "Add a child"
-msgstr "添加一个子女"
+msgstr "添加子女"
 
 #: app/Module/RelativesTabModule.php:398 edit_interface.php:575
 #: app/Http/Controllers/EditIndividualController.php:233
@@ -4213,7 +4213,7 @@ msgstr "伴娘"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:117
 msgid "Brigham City, Utah, United States"
-msgstr ""
+msgstr "布里格姆城, 犹他州, 美国"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -5636,7 +5636,7 @@ msgstr "公司"
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:39
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:45
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "修正由老家谱程序产生的名字记录表单 ‘Joe/BLOGGS/’ or ‘Joe /BLOGGS’。"
+msgstr "修正由旧的家谱程序产生的姓名记录格式 ‘Joe/BLOGGS/’ 或 ‘Joe /BLOGGS’。"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -12769,12 +12769,12 @@ msgstr "日曆"
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:139
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:174
 msgid "Match the exact text, even if it occurs in the middle of a word."
-msgstr "精确匹配的文本,即使有关键字。"
+msgstr "模糊匹配。"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:140
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:175
 msgid "Match the exact text, unless it occurs in the middle of a word."
-msgstr "精确匹配的文本,除非有关键字。"
+msgstr "全字匹配。"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -16038,7 +16038,7 @@ msgstr "问题"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:307
 msgid "Quetzaltenango, Guatemala"
-msgstr ""
+msgstr "克萨尔特南戈, 危地马拉"
 
 #: admin_trees_config.php:1823
 #: resources/views/admin/trees-preferences.phtml:772
@@ -16587,7 +16587,7 @@ msgstr "重新给家谱编号"
 #: resources/views/search-replace-page.phtml:21
 #: resources/views/admin/trees-places.phtml:23,
 msgid "Replace with"
-msgstr "替换"
+msgstr "替换为"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:153
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:188
@@ -16800,7 +16800,7 @@ msgstr "留尼旺岛"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:319
 msgid "Rexburg, Idaho, United States"
-msgstr ""
+msgstr "雷克斯堡, 爱达荷州, 美国"
 
 #: index_edit.php:304
 msgid "Right section blocks"
@@ -21508,7 +21508,7 @@ msgstr "特立尼达和多巴哥"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:375
 msgid "Trujillo, Peru"
-msgstr ""
+msgstr "特鲁希略, 秘鲁"
 
 # I18N: abbreviation for Tuesday
 #. I18N: abbreviation for Tuesday
@@ -21562,7 +21562,7 @@ msgstr "图斯特拉-古铁雷斯,墨西哥"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:377
 msgid "Twin Falls, Idaho, United States"
-msgstr ""
+msgstr "双子瀑布, 爱达荷州, 美国"
 
 # I18N: gedcom tag TYPE
 #. I18N: gedcom tag TYPE
@@ -22125,7 +22125,7 @@ msgstr "乌兹别克斯坦"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:379
 msgid "Vancouver, British Columbia, Canada"
-msgstr ""
+msgstr "温哥华, 不列颠哥伦比亚省, 加拿大"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -22638,12 +22638,12 @@ msgstr "妻子的年龄"
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:200
 msgid "Wife’s maiden surname becomes new given name"
-msgstr "妻子的娘家姓成为新的姓"
+msgstr "妻子的娘家姓成为新的名字"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:198
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr "妻子的姓由丈夫的姓代替"
+msgstr "妻子的姓氏被丈夫的姓氏所取代"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:164
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:198
@@ -22808,7 +22808,7 @@ msgstr "您可以从%s下载GEDCOM规范的副本。"
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:44
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:51
 msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-msgstr "您可以更容易地搜索已婚妇女如果记录他们的婚姻名。但是不是所有的女人需要随丈夫的姓，所以要当心输入不正确的信息到你的数据库中。"
+msgstr "通过记录已婚女性的姓名，可以更容易地搜索她们。然而，并不是所有的女人都用丈夫的姓，所以要小心不要把不正确的信息写入你的数据库。"
 
 #: admin_site_upgrade.php:137
 msgid "You can re-enable these modules after the upgrade."
@@ -22839,7 +22839,7 @@ msgstr "您可以为特定的记录、事实或事件添加限制访问权限。
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:46
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "虽然没有去世，埋葬，火化等记录，你仍然可以通过添加其他可以推断个人去世日期的信息，来加快隐私计算。"
+msgstr "虽然没有去世，埋葬，火化等记录，你可以从其他日期中推断出其已死亡并添加死亡记录来加快隐私计算。"
 
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
@@ -28064,7 +28064,7 @@ msgstr "…"
 #: indilist.php:230
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Family.php:353 app/Family.php:369 app/Individual.php:1213
 #: app/Individual.php:1303 app/Module/FamiliesSidebarModule.php:153
@@ -28073,4 +28073,4 @@ msgstr ""
 #: famlist.php:140 indilist.php:83 indilist.php:108 indilist.php:140
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
