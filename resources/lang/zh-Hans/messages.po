@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-16 08:33+0000\nLast-Translator: rui <xmlf@hotmail.com>\nLanguage-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-19 07:18+0000\nLast-Translator: rui <xmlf@hotmail.com>\nLanguage-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -231,7 +231,7 @@ msgstr[0] "%s 天"
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
+msgstr[0] "%s 家庭"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
@@ -808,7 +808,7 @@ msgstr "来源清单。"
 #. I18N: Description of the “Shared submitters” module
 #: app/Module/SubmitterListModule.php:64
 msgid "A list of submitters."
-msgstr ""
+msgstr "提交者列表。"
 
 # I18N: Description of “Research tasks” module
 #. I18N: Description of “Research tasks” module
@@ -1297,7 +1297,7 @@ msgstr "添加 %s 到收集箱"
 
 #: resources/views/modules/relatives/family.phtml:207
 msgid "Add a brother"
-msgstr ""
+msgstr "添加兄弟"
 
 #: app/Http/Controllers/EditFamilyController.php:57
 #: resources/views/family-page-children.phtml:35
@@ -1313,7 +1313,7 @@ msgstr "添加一个子女创建一个单亲家庭"
 
 #: resources/views/modules/relatives/family.phtml:211
 msgid "Add a daughter"
-msgstr ""
+msgstr "添加女儿"
 
 #: resources/views/edit/raw-gedcom-record.phtml:47
 msgid "Add a fact"
@@ -1395,15 +1395,15 @@ msgstr "添加一个新的共享记录"
 
 #: resources/views/modules/relatives/family.phtml:215
 msgid "Add a sibling"
-msgstr ""
+msgstr "添加兄弟姐妹"
 
 #: resources/views/modules/relatives/family.phtml:211
 msgid "Add a sister"
-msgstr ""
+msgstr "添加姐妹"
 
 #: resources/views/modules/relatives/family.phtml:207
 msgid "Add a son"
-msgstr ""
+msgstr "添加儿子"
 
 #: resources/views/family-page.phtml:110 resources/views/media-page.phtml:161
 #: resources/views/modules/sources_tab/tab.phtml:43
@@ -1460,7 +1460,7 @@ msgstr "从剪贴板添加"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
-msgstr ""
+msgstr "添加历史事件到个体页面。"
 
 #: resources/views/modules/lifespans-chart/page.phtml:20
 msgid "Add individuals"
@@ -1473,7 +1473,7 @@ msgstr "增加婚姻细节"
 #. I18N: Name of a module
 #: app/Module/FixMissingMarriedNames.php:70
 msgid "Add married names"
-msgstr ""
+msgstr "添加婚后姓名"
 
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:59
@@ -2054,7 +2054,7 @@ msgstr "同时显示个人祖先和后代的类似沙漏形状的图表。"
 
 #: resources/views/edit/reorder-families.phtml:65
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr ""
+msgstr "一个人可以具有不止一对父母：例如，出生和过继。"
 
 # I18N: Description of the “Interactive tree” module
 #. I18N: Description of the “Interactive tree” module
@@ -3197,7 +3197,7 @@ msgstr "伴娘"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Brigham City, Utah, United States"
-msgstr ""
+msgstr "布里格姆城, 犹他州, 美国"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -4278,12 +4278,12 @@ msgstr "控制面板"
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:61
 msgid "Convert CEME tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "转换CEME标签到GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:49
 msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "转换 _PRIM标签到GEDCOM 5.5.1"
 
 #: app/Http/RequestHandlers/HelpText.php:266
 #: resources/views/admin/trees-export.phtml:65
@@ -4294,7 +4294,7 @@ msgstr "从UTF-8转换为ANSI(ISO-8859-1)"
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr ""
+msgstr "转换到"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -4663,12 +4663,12 @@ msgstr "资料"
 
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "Data controller"
-msgstr ""
+msgstr "数据控制器"
 
 #: resources/views/admin/data-fix-page.phtml:68
 #: resources/views/admin/data-fix-select.phtml:28
 msgid "Data fix"
-msgstr ""
+msgstr "数据修复"
 
 #: app/Http/Controllers/Admin/ModuleController.php:142
 #: app/Http/RequestHandlers/DataFixChoose.php:69
@@ -4678,11 +4678,11 @@ msgstr ""
 #: resources/views/admin/data-fix-page.phtml:23
 #: resources/views/admin/trees.phtml:132
 msgid "Data fixes"
-msgstr ""
+msgstr "数据修复"
 
 #: resources/views/help/data-fixes.phtml:8
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
-msgstr ""
+msgstr "数据修复可能需要进行许多缓慢的计算，因此无法创建需要更新的确切的记录列表。"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
@@ -6913,7 +6913,7 @@ msgstr "例如,如果您指定一个路径长度的2,人将能够看到自己的
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr ""
+msgstr "例如，我们可以快速找到没有死亡事件的个人，但是如果确定该人是否死亡，则计算起来要慢得多。"
 
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
@@ -7101,13 +7101,13 @@ msgstr "第三月"
 #: resources/views/message-page.phtml:17
 msgctxt "Email sender"
 msgid "From"
-msgstr ""
+msgstr "来自"
 
 #: resources/views/admin/changes-log.phtml:22
 #: resources/views/admin/site-logs.phtml:23
 msgctxt "Start of date range"
 msgid "From"
-msgstr ""
+msgstr "从"
 
 # I18N: a month in the French republican calendar
 #. I18N: a month in the French republican calendar
@@ -7894,11 +7894,11 @@ msgstr "假如不知道姓氏，用斜线空出: <%s>// 五<%s>"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "如果缩略图是自定义图像，则应将其添加到媒体对象。"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:18
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-msgstr ""
+msgstr "如果缩略图与原始图像相同，则不再需要它，您应该将其删除。"
 
 # I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
@@ -7946,7 +7946,7 @@ msgstr "如果你没有申请这个账户,您只需删除此消息。"
 
 #: resources/views/admin/site-mail.phtml:50
 msgid "If you do not use two-factor authentication, enable <a href=\"https://www.google.com/settings/security/lesssecureapps\">less secure applications</a> and use your Google password."
-msgstr ""
+msgstr "如果您不使用双重身份验证，请启用<a href=\"https://www.google.com/settings/security/lesssecureapps\">安全性较低的应用程序</a>，然后使用您的Google密码。"
 
 #: resources/views/modals/media-file-fields.phtml:66
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
@@ -7982,7 +7982,7 @@ msgstr "如果您使用下面的跟踪和分析服务之一，webtrees可以自�
 
 #: resources/views/admin/site-mail.phtml:48
 msgid "If you use two-factor authentication, create an <a href=\"https://myaccount.google.com/apppasswords\">app password</a>."
-msgstr ""
+msgstr "如果您使用双重身份验证，请创建一个<a href=\"https://myaccount.google.com/apppasswords\">应用密码</a>。"
 
 #: app/GedcomTag.php:2103 app/Http/Controllers/Admin/MediaController.php:361
 msgid "Image dimensions"
@@ -8265,7 +8265,7 @@ msgstr "男线人"
 
 #: resources/views/admin/site-mail.phtml:34
 msgid "Instructions for Google mail"
-msgstr ""
+msgstr "Google邮件说明"
 
 # I18N: Name of a module
 #. I18N: Name of a module
@@ -11561,7 +11561,7 @@ msgstr "永久删除这些记录吗？"
 
 #: resources/views/modules/privacy-policy/page.phtml:9
 msgid "Personal data"
-msgstr ""
+msgstr "个人资料"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -12137,7 +12137,7 @@ msgstr "问题"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:564
 msgid "Quetzaltenango, Guatemala"
-msgstr ""
+msgstr "克萨尔特南戈, 危地马拉"
 
 #: resources/views/admin/trees-preferences.phtml:761
 msgid "Quick family facts"
@@ -12596,16 +12596,16 @@ msgstr "重新给家谱编号"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
-msgstr ""
+msgstr "替换为"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:72
 msgid "Replace cemetery tags with burial places."
-msgstr ""
+msgstr "将墓地标签替换为葬礼地点。"
 
 #: resources/views/search-replace-page.phtml:26
 msgid "Replace with"
-msgstr "替换"
+msgstr "替换为"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:28
 msgid "Replacement text"
@@ -12757,7 +12757,7 @@ msgstr "留尼旺岛"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:582
 msgid "Rexburg, Idaho, United States"
-msgstr ""
+msgstr "雷克斯堡, 爱达荷州, 美国"
 
 #: app/Module/PedigreeChartModule.php:391
 msgid "Right"
@@ -13190,7 +13190,7 @@ msgstr "发送消息给6个月没有登录的用户"
 
 #: resources/views/admin/site-mail.phtml:239
 msgid "Send a test email using these settings"
-msgstr ""
+msgstr "使用这些设置发送测试电子邮件"
 
 # I18N: Label for a configuration option
 #. I18N: Label for a configuration option
@@ -13563,7 +13563,7 @@ msgstr "显示多媒体展示的下载链接"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
 msgid "Show a privacy policy."
-msgstr ""
+msgstr "显示隐私政策。"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
@@ -14443,7 +14443,7 @@ msgstr "提交者"
 
 #: resources/views/lists/submitters-table.phtml:60
 msgid "Submitter name"
-msgstr ""
+msgstr "提交者姓名"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/ListController.php:548
@@ -14452,7 +14452,7 @@ msgstr ""
 #: resources/views/admin/merge-records-step-1.phtml:29
 #: resources/views/lists/submitters-table.phtml:55
 msgid "Submitters"
-msgstr ""
+msgstr "提交者"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -14956,7 +14956,7 @@ msgstr "文件“%s”不存在。"
 
 #: resources/views/edit/reorder-families.phtml:67
 msgid "The first family in the list will be used in charts, lists, reports, etc."
-msgstr ""
+msgstr "列表中的第一个家庭将用于图表，列表，报告等。"
 
 #: app/Http/RequestHandlers/DeletePath.php:71
 #, php-format
@@ -14980,7 +14980,7 @@ msgstr "文件夹可以全路径（例如/home/user_name/webtrees_data/）或相
 #: app/Http/Controllers/AdminSiteController.php:97
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "文件夹“%s”不存在。"
 
 #: resources/views/admin/merge-records-step-2.phtml:26
 msgid "The following facts and events were found in both records."
@@ -15035,7 +15035,7 @@ msgstr "列表菜单。"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:37
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "这个地方的位置尚未可知。"
 
 #: app/Http/Controllers/EditMediaController.php:284
 #, php-format
@@ -15415,7 +15415,7 @@ msgstr "第十一月"
 
 #: resources/views/modules/privacy-policy/page.phtml:27
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "这些cookie是“必需的”，不需要征得同意。"
 
 #: resources/views/admin/trees-unconnected.phtml:32
 #, php-format
@@ -15424,7 +15424,7 @@ msgstr "这些人与 %s 无关。"
 
 #: resources/views/modules/privacy-policy/page.phtml:48
 msgid "These services may use cookies or other tracking technology."
-msgstr ""
+msgstr "这些服务可能使用cookie或其他跟踪技术。"
 
 #: app/Http/RequestHandlers/LoginAction.php:137
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -15704,7 +15704,7 @@ msgstr "此链接的有效期为一小时。"
 
 #: resources/views/help/data-fixes.phtml:16
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
-msgstr ""
+msgstr "此列表是使用简单（但快速）的搜索创建的，因此包含不会更新的记录。"
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -15898,7 +15898,7 @@ msgstr "这个存储库已经被编辑。你应该检查此操作,然后决定�
 
 #: resources/views/modules/privacy-policy/page.phtml:16
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr ""
+msgstr "根据欧盟通用数据保护条例第6（f）条，此研究是“合法权益”。"
 
 #: resources/views/admin/users-edit.phtml:243
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -15987,7 +15987,7 @@ msgstr "网站正在维护。你可以过几分钟 <a href=\"index.php\">再试<
 
 #: resources/views/modules/privacy-policy/page.phtml:61
 msgid "This website is operated by the following individuals."
-msgstr ""
+msgstr "本网站由以下人员运营。"
 
 #: resources/views/layouts/error.phtml:13
 #: resources/views/layouts/error.phtml:30
@@ -15997,11 +15997,11 @@ msgstr "该网站暂时不可用"
 
 #: resources/views/modules/privacy-policy/page.phtml:13
 msgid "This website processes personal data for the purpose of historical and genealogical research."
-msgstr ""
+msgstr "该网站处理个人数据是为了进行历史和族谱研究。"
 
 #: resources/views/modules/privacy-policy/page.phtml:24
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
-msgstr ""
+msgstr "该网站使用cookie来启用登录会话，并记住一些设置，例如记住您选择的语言。"
 
 #: resources/views/modules/privacy-policy/footer.phtml:15
 msgid "This website uses cookies to learn about visitor behavior."
@@ -16009,7 +16009,7 @@ msgstr "网站通过使用cookies来了解访客的行为。"
 
 #: resources/views/modules/privacy-policy/page.phtml:36
 msgid "This website uses third-party services to learn about visitor behavior."
-msgstr ""
+msgstr "该网站使用第三方服务来了解访问者的行为。"
 
 # I18N: %s is the name of a family tree
 #. I18N: %s is the name of a family tree
@@ -16163,13 +16163,13 @@ msgstr "犹太标题"
 #: resources/views/contact-page.phtml:18 resources/views/message-page.phtml:26
 msgctxt "Email recipient"
 msgid "To"
-msgstr ""
+msgstr "发送给"
 
 #: resources/views/admin/changes-log.phtml:29
 #: resources/views/admin/site-logs.phtml:30
 msgctxt "End of date range"
 msgid "To"
-msgstr ""
+msgstr "到"
 
 #: resources/views/modules/html/config.phtml:25
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -16438,7 +16438,7 @@ msgstr "特立尼达和多巴哥"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:666
 msgid "Trujillo, Peru"
-msgstr ""
+msgstr "特鲁希略, 秘鲁"
 
 # I18N: abbreviation for Tuesday
 #. I18N: abbreviation for Tuesday
@@ -16490,7 +16490,7 @@ msgstr "图斯特拉-古铁雷斯,墨西哥"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:669
 msgid "Twin Falls, Idaho, United States"
-msgstr ""
+msgstr "双子瀑布, 爱达荷州, 美国"
 
 # I18N: gedcom tag TYPE
 #. I18N: gedcom tag TYPE
@@ -16683,7 +16683,7 @@ msgstr "更新地名"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:74
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
-msgstr ""
+msgstr "更新地名的级别较高部分，同时保留级别较低部分。"
 
 # I18N: %s is a version number, such as 1.2.3
 # I18N: %s is a version number
@@ -16874,7 +16874,7 @@ msgstr "乌兹别克斯坦"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:672
 msgid "Vancouver, British Columbia, Canada"
-msgstr ""
+msgstr "温哥华, 不列颠哥伦比亚省, 加拿大"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -17179,7 +17179,7 @@ msgstr "当添加新的近亲属，你可以添加来源引用到记录 (个人�
 
 #: resources/views/edit/reorder-families.phtml:24
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr ""
+msgstr "如果一个人有多个配偶，则应按日期顺序对家庭进行排序。"
 
 # I18N: Help text for the “Surname tradition” configuration setting
 #. I18N: Help text for the “Surname tradition” configuration setting
@@ -17215,7 +17215,7 @@ msgstr "在线用户"
 
 #: resources/views/admin/data-fix-page.phtml:80
 msgid "Why does this list include records that do not need to be updated?"
-msgstr ""
+msgstr "为什么此列表包含不需要更新的记录？"
 
 #: resources/views/lists/families-table.phtml:173
 msgid "Widow"
@@ -17377,7 +17377,7 @@ msgstr "您可以更容易地搜索已婚妇女如果记录他们的婚姻名。
 
 #: resources/views/modules/privacy-policy/page.phtml:52
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
-msgstr ""
+msgstr "您可以通过在浏览器首选项中设置“不跟踪”来选择不跟踪。"
 
 #: resources/views/admin/trees-renumber.phtml:17
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
@@ -21145,7 +21145,7 @@ msgstr "显示"
 #: resources/views/modules/recent_changes/changes-list.phtml:21
 #: resources/views/modules/yahrzeit/list.phtml:20
 msgid "show more"
-msgstr ""
+msgstr "显示更多"
 
 #: resources/views/modules/statistics-chart/custom.phtml:200
 msgid "show the chart"
@@ -21822,7 +21822,7 @@ msgstr "“%s” 已被删除。"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:60
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "一些家谱应用程序使用“突出显示的图像”（_PRIM）标签来指示个人的首选图像。另一种方法是对图像重新排序，以便优先列出首选图像。"
 
 #: app/Functions/FunctionsPrint.php:93 app/Note.php:160
 #: app/Report/ReportParserGenerate.php:985
@@ -21835,7 +21835,7 @@ msgstr "…"
 #: app/Http/Controllers/ListController.php:724 app/Individual.php:1163
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Family.php:424 app/Family.php:442
 #: app/Http/Controllers/ListController.php:182
@@ -21843,7 +21843,7 @@ msgstr ""
 #: app/Http/Controllers/ListController.php:741 app/Individual.php:1162
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #, php-format
 #~ msgid "%s individual with events between %s and %s"
