@@ -1,6 +1,6 @@
 /public/mix-manifest.json
 /public/js/*.map
-/public/js/*.LICENSE
+/public/js/*.js.LICENSE.txt
 /public/robots.txt
 
 /node_modules/
