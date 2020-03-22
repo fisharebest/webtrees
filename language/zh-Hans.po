@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2020-03-20 12:08+0000\n"
+"PO-Revision-Date: 2020-03-22 11:51+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
@@ -8495,7 +8495,7 @@ msgstr "福克兰群岛"
 #: resources/views/source-page.phtml:44,
 #: resources/xml/reports/fact_sources.xml:152,
 msgid "Families"
-msgstr "家庭名录"
+msgstr "家庭信息"
 
 #: app/Stats.php:520 statistics.php:395
 #: app/Statistics/Google/ChartFamilyWithSources.php:94
@@ -10908,7 +10908,7 @@ msgstr "最长寿"
 #: resources/views/source-page.phtml:38,
 #: resources/xml/reports/fact_sources.xml:54,
 msgid "Individuals"
-msgstr "族人列表"
+msgstr "族人信息"
 
 #: app/Stats.php:422 statistics.php:394
 #: app/Statistics/Google/ChartIndividualWithSources.php:94
