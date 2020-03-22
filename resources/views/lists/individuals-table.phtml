@@ -33,16 +33,13 @@ $module = app(ModuleService::class)
 
 <?php View::push('javascript') ?>
 <script>
-
-$("#<?= e($table_id) ?>").dataTable({
-    dom: '<"H"<"filtersH_<?= e($table_id) ?>">T<"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_<?= e($table_id) ?>">>',
-    autoWidth: false,
+$("#<?= e($table_id) ?> > .wt-table-individual").dataTable({
     processing: true,
     retrieve: true,
     columns: [
         /* Given names  */ { type: "text" },
         /* Surnames     */ { type: "text" },
-        /* SOSA numnber */ { type: "num", visible: <?= json_encode($sosa) ?> },
+        /* SOSA number  */ { type: "num", visible: <?= json_encode($sosa) ?> },
         /* Birth date   */ { type: "num" },
         /* Anniversary  */ { type: "num" },
         /* Birthplace   */ { type: "text" },
@@ -86,7 +83,7 @@ $("#<?= e($table_id) ?>")
         // Apply (or clear) this filter
         let checked = checkbox.prop("checked");
         let filter  = checked ? checkbox.data("filter-value") : "";
-        let column  = $("#<?= e($table_id) ?>").DataTable().column(checkbox.data("filter-column"));
+        let column  = $("#<?= e($table_id) ?> .wt-table-individual").DataTable().column(checkbox.data("filter-column"));
         column.search(filter).draw();
     });
 </script>
@@ -154,8 +151,8 @@ $deathAgeData = [
 
 ?>
 
-<div class="indi-list">
-    <table id="<?= e($table_id) ?>" class="table table-bordered table-sm"
+<div id="<?= e($table_id) ?>">
+    <table class="table table-bordered table-sm wt-table-individual"
         <?= view('lists/datatables-attributes') ?>
     >
         <thead>

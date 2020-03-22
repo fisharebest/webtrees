@@ -19,10 +19,7 @@ $hundred_years_ago = Carbon::now()->subYears(100)->julianDay();
 
 <?php View::push('javascript') ?>
 <script>
-
-$("#<?= e($table_id) ?>").dataTable({
-    dom: '<"H"<"filtersH_<?= e($table_id) ?>"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_<?= e($table_id) ?>">>',
-    autoWidth: false,
+$("#<?= e($table_id) ?> > .wt-table-family").dataTable({
     processing: true,
     retrieve: true,
     columns: [
@@ -72,7 +69,7 @@ $("#<?= e($table_id) ?>")
         // Apply (or clear) this filter
         let checked = checkbox.prop("checked");
         let filter  = checked ? checkbox.data("filter-value") : "";
-        let column  = $("#<?= e($table_id) ?>").DataTable().column(checkbox.data("filter-column"));
+        let column  = $("#<?= e($table_id) ?> .wt-table-family").DataTable().column(checkbox.data("filter-column"));
         column.search(filter).draw();
     });
 </script>
@@ -140,8 +137,8 @@ $marriageAgeData = [
 
 ?>
 
-<div class="fam-list">
-    <table id="<?= e($table_id) ?>" class="table table-bordered table-sm"
+<div id="<?= e($table_id) ?>">
+    <table class="table table-bordered table-sm wt-table-family"
         <?= view('lists/datatables-attributes') ?>
     >
         <thead>
