@@ -33,6 +33,7 @@ use Swift_SmtpTransport;
 use Swift_Transport;
 use Throwable;
 
+use function checkdnsrr;
 use function filter_var;
 use function function_exists;
 use function gethostbyaddr;
@@ -206,6 +207,11 @@ class EmailService
 
         $email_valid  = filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
         $domain_valid = filter_var($domain, FILTER_VALIDATE_DOMAIN) !== false;
+
+        // Some web hosts disable checkdnsrr.
+        if ($domain_valid && function_exists('checkdnsrr')) {
+            $domain_valid = checkdnsrr($domain);
+        }
 
         return $email_valid && $domain_valid;
     }

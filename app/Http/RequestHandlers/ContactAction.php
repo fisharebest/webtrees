@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\CaptchaService;
+use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
@@ -34,7 +35,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
-use function checkdnsrr;
 use function e;
 use function in_array;
 use function preg_match;
@@ -52,6 +52,9 @@ class ContactAction implements RequestHandlerInterface
     /** @var CaptchaService */
     private $captcha_service;
 
+    /** @var EmailService */
+    private $email_service;
+
     /** @var MessageService */
     private $message_service;
 
@@ -62,15 +65,18 @@ class ContactAction implements RequestHandlerInterface
      * MessagePage constructor.
      *
      * @param CaptchaService $captcha_service
+     * @param EmailService   $email_service
      * @param MessageService $message_service
      * @param UserService    $user_service
      */
     public function __construct(
         CaptchaService $captcha_service,
+        EmailService $email_service,
         MessageService $message_service,
         UserService $user_service
     ) {
         $this->captcha_service = $captcha_service;
+        $this->email_service   = $email_service;
         $this->user_service    = $user_service;
         $this->message_service = $message_service;
     }
@@ -110,7 +116,7 @@ class ContactAction implements RequestHandlerInterface
             $errors = true;
         }
 
-        if (!preg_match('/^[^@]+@([^@]+)$/', $from_email, $match) || !checkdnsrr($match[1])) {
+        if (!$this->email_service->isValidEmail($from_email)) {
             FlashMessages::addMessage(I18N::translate('Please enter a valid email address.'), 'danger');
             $errors = true;
         }
