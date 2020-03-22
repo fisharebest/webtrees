@@ -41,6 +41,12 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
     private const DEFAULT_SORT   = 'alpha';
     private const DEFAULT_STYLE  = 'table';
 
+    // Initial sorting for datatables
+    private const DATATABLES_ORDER = [
+        'alpha' => [[0, 'asc']],
+        'anniv' => [[1, 'asc']],
+    ];
+
     // Can show this number of days into the future.
     private const MIN_DAYS = 1;
     private const MAX_DAYS = 30;
@@ -171,6 +177,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
                 'facts'      => $facts,
                 'limit_low'  => self::LIMIT_LOW,
                 'limit_high' => self::LIMIT_HIGH,
+                'order'      => self::DATATABLES_ORDER[$sortStyle],
             ]);
         }
 

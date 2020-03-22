@@ -39,6 +39,12 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
     private const LIMIT_LOW  = 10;
     private const LIMIT_HIGH = 20;
 
+    // Initial sorting for datatables
+    private const DATATABLES_ORDER = [
+        'alpha' => [[0, 'asc']],
+        'anniv' => [[2, 'asc']],
+    ];
+
     // All standard GEDCOM 5.5.1 events except CENS, RESI and EVEN
     private const ALL_EVENTS = [
         'ADOP',
@@ -152,6 +158,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
                 'facts'      => $facts,
                 'limit_low'  => self::LIMIT_LOW,
                 'limit_high' => self::LIMIT_HIGH,
+                'order'      => self::DATATABLES_ORDER[$sortStyle],
             ]);
         }
 
