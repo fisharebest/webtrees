@@ -67,6 +67,8 @@ $count_notes = DB::table('other')
     data-columns="<?= e(json_encode([
         null,
         null,
+        null,
+        null,
         ['visible' => array_sum($count_individuals) > 0],
         ['visible' => array_sum($count_families) > 0],
         ['visible' => array_sum($count_media) > 0],
@@ -81,7 +83,9 @@ $count_notes = DB::table('other')
     <thead>
         <tr>
             <th><?= I18N::translate('Title') ?></th>
-            <th><?= I18N::translate('Author') ?></th>
+            <th class="d-none d-md-table-cell"><?= I18N::translate('Abbreviation') ?></th>
+            <th class="d-none d-md-table-cell"><?= I18N::translate('Author') ?></th>
+            <th class="d-none d-md-table-cell"><?= I18N::translate('Publisher') ?></th>
             <th><?= I18N::translate('Individuals') ?></th>
             <th><?= I18N::translate('Families') ?></th>
             <th><?= I18N::translate('Media objects') ?></th>
@@ -100,9 +104,19 @@ $count_notes = DB::table('other')
                     </a>
                 </td>
 
+                <!-- Abbreviation -->
+                <td class="d-none d-md-table-cell">
+                    <?= e($source->facts(['ABBR'])->isNotEmpty() ? $source->facts(['ABBR'])->first()->value() : '') ?>
+                </td>
+
                 <!-- Author -->
-                <td>
+                <td class="d-none d-md-table-cell">
                     <?= e($source->facts(['AUTH'])->isNotEmpty() ? $source->facts(['AUTH'])->first()->value() : '') ?>
+                </td>
+
+                <!-- Publisher -->
+                <td class="d-none d-md-table-cell">
+                    <?= e($source->facts(['PUBL'])->isNotEmpty() ? $source->facts(['PUBL'])->first()->value() : '') ?>
                 </td>
 
                 <!-- Count of linked individuals -->
