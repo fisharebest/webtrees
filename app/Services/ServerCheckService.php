@@ -97,6 +97,7 @@ class ServerCheckService
         $warnings = Collection::make([
             $this->databaseDriverWarnings($driver),
             $this->checkPhpExtension('curl'),
+            $this->checkPhpExtension('exif'),
             $this->checkPhpExtension('fileinfo'),
             $this->checkPhpExtension('gd'),
             $this->checkPhpExtension('intl'),

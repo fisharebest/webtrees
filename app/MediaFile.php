@@ -25,6 +25,7 @@ use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
 use League\Glide\Signatures\SignatureFactory;
 
+use function extension_loaded;
 use function getimagesize;
 use function intdiv;
 use function pathinfo;
@@ -271,6 +272,9 @@ class MediaFile
             $mark = '';
         }
 
+        // Automatic rotation only works when the php-exif library is loaded.
+        $orientation = extension_loaded('exif') ? 'or' : 0;
+
         $params = [
             'xref'      => $this->media->xref(),
             'tree'      => $this->media->tree()->name(),
@@ -282,7 +286,7 @@ class MediaFile
             'markh'     => '100h',
             'markw'     => '100w',
             'markalpha' => 25,
-            'or'        => 'auto',
+            'or'        => $orientation,
         ];
 
         $signature = SignatureFactory::create($glide_key)->generateSignature('', $params);
