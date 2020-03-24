@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2020-03-22 11:51+0000\n"
+"PO-Revision-Date: 2020-03-25 12:14+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
@@ -970,7 +970,7 @@ msgstr "文件位于服务器"
 #: resources/views/admin/trees-import.phtml:26,
 #: resources/views/modals/media-file-fields.phtml:11,
 msgid "A file on your computer"
-msgstr "文件位于您的计算机"
+msgstr "文件在您的设备上"
 
 # I18N: Description of the “My page” module
 #. I18N: Description of the “My page” module
@@ -1055,7 +1055,8 @@ msgstr "当前在线用户和访客名单。"
 
 #: help_text.php:247 resources/views/help/media-object.phtml:4
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "家谱中的媒体对象记录包括标题、版权声明、副本、隐私限制等。多媒体文件，例如照片或视频，可以在存储在本地（在这个服务器）或远程（在另外一个服务器）。"
+msgstr ""
+"家谱中的媒体对象记录包括标题、版权声明、副本、隐私限制等。媒体文件，例如照片或视频，可以在存储在本地（在这个服务器）或远程（在另外一个服务器）。"
 
 #: login.php:264
 #, php-format
@@ -1307,7 +1308,7 @@ msgstr "标签显示的一个人的事迹和事件。"
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40 app/Module/MediaTabModule.php:69
 msgid "A tab showing the media objects linked to an individual."
-msgstr "这个标签显示连接到个人的多媒体文件。"
+msgstr "这个标签显示连接到个人的媒体文件。"
 
 # I18N: Description of the “Notes” module
 #. I18N: Description of the “Notes” module
@@ -2035,7 +2036,7 @@ msgstr "管理员帐号"
 
 #: admin_users.php:495 resources/views/admin/users-edit.phtml:195
 msgid "Administrator comments on user"
-msgstr "管理员对用户的评论"
+msgstr "管理员对用户的注释"
 
 #: admin.php:666 resources/views/admin/control-panel.phtml:222
 msgid "Administrators"
@@ -5319,7 +5320,7 @@ msgstr "主頁"
 #: admin_site_access.php:297 admin_site_access.php:366 app/GedcomTag.php:298
 #: app/GedcomTag.php:606
 msgid "Comment"
-msgstr "评论"
+msgstr "注释"
 
 #: login.php:326 login.php:348 login.php:483
 #: resources/views/emails/register-notify-html.phtml:19
@@ -5328,7 +5329,7 @@ msgstr "评论"
 #: resources/views/emails/register-notify-html.phtml:19,
 #: resources/views/emails/register-notify-text.phtml:9,
 msgid "Comments"
-msgstr "备注"
+msgstr "注释"
 
 # I18N: gedcom tag _COML
 #. I18N: gedcom tag _COML
@@ -5698,7 +5699,7 @@ msgstr "新建一个家谱"
 #: app/Functions/FunctionsEdit.php:473,
 #: resources/views/modals/create-media-from-file.phtml:12,
 msgid "Create a media object"
-msgstr "新建多媒体文件"
+msgstr "新建媒体文件"
 
 #: app/Functions/FunctionsEdit.php:428 edit_interface.php:1492
 #: edit_interface.php:1555 app/Functions/FunctionsEdit.php:518
@@ -8256,7 +8257,7 @@ msgstr "外部文件"
 
 #: admin_media.php:676 resources/views/admin/media.phtml:62
 msgid "External media files have a URL instead of a filename."
-msgstr "外部多媒体文件是URL，而不是一个文件名。"
+msgstr "外部媒体文件是URL，而不是一个文件名。"
 
 # I18N: Name of a module/sidebar
 #. I18N: Name of a module/sidebar
@@ -8990,7 +8991,7 @@ msgstr "文件名"
 #: resources/views/modals/media-file-fields.phtml:40
 #: resources/views/admin/media-upload.phtml:30,
 msgid "Filename on server"
-msgstr "在服务器上的文件名"
+msgstr "服务器上的文件名"
 
 #: addmedia.php:161 addmedia.php:295 admin_media_upload.php:117
 #: app/Http/Controllers/Admin/MediaController.php:546
@@ -9249,7 +9250,7 @@ msgstr "字体"
 #: admin_trees_manage.php:301 resources/views/admin/trees-import.phtml:102
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
-msgstr "例如，如果 GEDCOM 文件包含 %1$s，webtrees 希望在多媒体文件夹中找到 %2$s，然后你将需要删除 %3$s。"
+msgstr "例如，如果 GEDCOM 文件包含 %1$s，webtrees 希望在媒体文件夹中找到 %2$s，然后你将需要删除 %3$s。"
 
 #: admin_users.php:600 resources/views/help/relationship-privacy.phtml:8
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -10487,7 +10488,7 @@ msgstr "如果这个人在最近这么多年内没有去世、埋葬或火化事
 #: admin_trees_config.php:1008
 #: resources/views/admin/trees-preferences.phtml:258
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
-msgstr "如果两个家谱使用相同的多媒体文件夹，那么他们将能够共享多媒体文件。如果他们使用不同的多媒体文件夹，那么将他们的多媒体文件分开存放。"
+msgstr "如果两个家谱使用相同的媒体文件夹，那么他们将能够共享媒体文件。如果他们使用不同的媒体文件夹，那么将他们的媒体文件分开存放。"
 
 #: admin_trees_config.php:374 resources/views/admin/trees-privacy.phtml:38
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -10525,11 +10526,11 @@ msgstr "如果你有大量的多媒體文件，你可以將它們放置到文件
 #: addmedia.php:545 admin_media_upload.php:254
 #: resources/views/modals/media-file-fields.phtml:63
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr "如果你有大量的多媒体文件，你可以将它们放置到文件夹和子文件夹中。"
+msgstr "若您有大量的媒体文件，您可以将它们放到一个单独文件夹中。"
 
 #: admin_trees_manage.php:278 resources/views/admin/trees-import.phtml:79
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
-msgstr "如果您之前已经创建了多媒体文件,并离线使用一个删除多媒体文件的GEDCOM程序编辑你的gedcom文件。在导入合并多媒体文件前，你要勾选这个选项。"
+msgstr "如果您之前已经创建了媒体文件,并离线使用一个删除媒体文件的GEDCOM程序编辑你的gedcom文件。在导入合并媒体文件前，你要勾选这个选项。"
 
 #: app/Module/RecentChangesModule.php:186
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
@@ -10544,7 +10545,7 @@ msgstr "如果你选择一个不同的文件夹，你还必须将所有文件（
 #: admin_trees_config.php:1007
 #: resources/views/admin/trees-preferences.phtml:257
 msgid "If you select a different folder, you must also move any media files from the existing folder to the new one."
-msgstr "如果你选择一个不同的文件夹，你还必须将所有多媒体文件，从现有的文件夹移到新的文件夹。"
+msgstr "如果你选择一个不同的文件夹，你还必须将所有媒体文件，从现有的文件夹移到新的文件夹。"
 
 # I18N: Help text for the “Show living individuals” configuration setting
 #. I18N: Help text for the “Show living individuals” configuration setting
@@ -11323,7 +11324,7 @@ msgstr "保持链接列表"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:275 resources/views/admin/trees-import.phtml:76
 msgid "Keep media objects"
-msgstr "保留多媒体文件"
+msgstr "保留媒体文件"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
@@ -11864,7 +11865,7 @@ msgstr "将这个人作为子女加到现有家庭里"
 #: resources/views/modals/link-media-to-family.phtml:8
 #: resources/views/media-page-menu.phtml:23,
 msgid "Link this media object to a family"
-msgstr "链接此多媒体文件到家庭"
+msgstr "链接此媒体文件到家庭"
 
 #: admin_media.php:532 app/Controller/MediaController.php:61
 #: app/Controller/MediaController.php:130 app/Module/AlbumModule.php:184
@@ -11872,7 +11873,7 @@ msgstr "链接此多媒体文件到家庭"
 #: resources/views/modals/link-media-to-source.phtml:8
 #: resources/views/media-page-menu.phtml:27,
 msgid "Link this media object to a source"
-msgstr "链接此多媒体文件到源"
+msgstr "链接此媒体文件到源"
 
 #: admin_media.php:530 app/Controller/MediaController.php:53
 #: app/Controller/MediaController.php:124 app/Module/AlbumModule.php:172
@@ -11880,7 +11881,7 @@ msgstr "链接此多媒体文件到源"
 #: resources/views/modals/link-media-to-individual.phtml:8
 #: resources/views/media-page-menu.phtml:19,
 msgid "Link this media object to an individual"
-msgstr "链接此多媒体文件到个人"
+msgstr "链接此媒体文件到个人"
 
 #: admin_users.php:594 resources/views/admin/users-edit.phtml:291
 msgid "Link this user to an individual in the family tree."
@@ -12897,39 +12898,39 @@ msgstr "健康情況"
 #: resources/views/media-page.phtml:84, resources/views/media-page.phtml:179,
 #: resources/views/modals/create-media-from-file.phtml:20,
 msgid "Media file"
-msgstr "多媒体文件"
+msgstr "媒体文件"
 
 #: addmedia.php:455 admin_media_upload.php:202
 #: resources/views/admin/media-upload.phtml:20
 msgid "Media file to upload"
-msgstr "多媒体文件上传"
+msgstr "上传媒体文件"
 
 # I18N: %s is the name of a folder.
 #. I18N: %s is the name of a folder.
 #: admin_trees_download.php:163 resources/views/admin/trees-export.phtml:58
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr "多媒体文件名的前缀将为 %s。"
+msgstr "媒体文件名的前缀将为 %s。"
 
 #: admin_media.php:623 admin_trees_config.php:1013
 #: resources/views/admin/media.phtml:13
 #: resources/views/admin/trees-preferences.phtml:263
 #: resources/views/admin/media.phtml:13,
 msgid "Media files"
-msgstr "多媒体文件"
+msgstr "媒体文件"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
 #: admin_trees_config.php:988 resources/views/admin/trees-preferences.phtml:244
 msgid "Media folder"
-msgstr "多媒体文件夹"
+msgstr "媒体文件夹"
 
 #: admin_media.php:624 admin_trees_config.php:983
 #: resources/views/admin/media.phtml:14
 #: resources/views/admin/trees-preferences.phtml:239
 #: resources/views/admin/media.phtml:14,
 msgid "Media folders"
-msgstr "多媒体文件夹"
+msgstr "媒体文件夹"
 
 # I18N: gedcom tag OBJE
 #. I18N: gedcom tag OBJE
@@ -12953,7 +12954,7 @@ msgstr "多媒体文件夹"
 #: resources/views/family-page.phtml:91,
 #: resources/views/modules/favorites/favorites.phtml:87,
 msgid "Media object"
-msgstr "多媒体文件"
+msgstr "媒体文件"
 
 # I18N: Name of a module/list
 #. I18N: Name of a module/list
@@ -12995,15 +12996,15 @@ msgstr "多媒体文件"
 #: resources/views/note-page.phtml:50, resources/views/source-page.phtml:50,
 #: resources/views/statistics/other/chart-objects.phtml:10,
 msgid "Media objects"
-msgstr "多媒体文件"
+msgstr "媒体文件"
 
 #: medialist.php:233 resources/views/media-list-page.phtml:74
 msgid "Media objects found"
-msgstr "多媒体文件找到了"
+msgstr "媒体文件找到了"
 
 #: medialist.php:129 resources/views/media-list-page.phtml:30
 msgid "Media objects per page"
-msgstr "每页几个多媒体文件"
+msgstr "每页几个媒体文件"
 
 # I18N: gedcom tag MEDI
 # I18N: gedcom tag _TYPE
@@ -18530,7 +18531,9 @@ msgstr "索马里"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:300 resources/views/admin/trees-import.phtml:101
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "一些家谱软件创建 GEDCOM 文件，其中包含多媒体文件名的完整路径。 这些路径将在 web 服务器上不存在。 若要允许 webtrees，找到该文件，必须删除路径的第一部分。"
+msgstr ""
+"一些家谱软件创建 GEDCOM 文件，其中包含媒体文件名的完整路径。 这些路径将在 web 服务器上不存在。 若要允许 "
+"webtrees，找到该文件，必须删除路径的第一部分。"
 
 # I18N: Help text for the “Hit counters” configuration setting
 #. I18N: Help text for the “Hit counters” configuration setting
@@ -19730,12 +19733,12 @@ msgstr "已更新“%1$s”到“%2$s”的链接。"
 #: app/Http/Controllers/EditMediaController.php:250,
 #, php-format
 msgid "The media file %1$s could not be renamed to %2$s."
-msgstr "多媒体文件 %1$s 不能被重命名为 %2$s。"
+msgstr "媒体文件 %1$s 不能被重命名为 %2$s。"
 
 #: addmedia.php:342 app/Http/Controllers/EditMediaController.php:260
 #, php-format
 msgid "The media file %1$s has been renamed to %2$s."
-msgstr "多媒体文件 %1$s 成功重命名为 %2$s。"
+msgstr "媒体文件 %1$s 成功重命名为 %2$s。"
 
 #: addmedia.php:349
 msgid "The media file %s does not exist."
@@ -20096,7 +20099,7 @@ msgstr "这有个人没有事件。"
 
 #: app/Module/MediaTabModule.php:76 resources/views/modules/media/tab.phtml:16
 msgid "There are no media objects for this individual."
-msgstr "这个人没有多媒体文件。"
+msgstr "这个人没有媒体文件。"
 
 #: app/Module/NotesTabModule.php:90 resources/views/modules/notes/tab.phtml:26
 msgid "There are no notes for this individual."
@@ -20299,14 +20302,14 @@ msgstr "本文件被服务器上的另一个家谱数据库调用。它不能被
 #. I18N: Help text for the "Data folder" site configuration setting
 #: admin_site_config.php:186 resources/views/admin/site-preferences.phtml:21
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
-msgstr "此文件夹将被用来存储多媒体文件，GEDCOM文件，临时文件等等。这些文件可能包含私人数据，并且不应该在互联网上提供。"
+msgstr "此文件夹将被用来存储媒体文件，GEDCOM文件，临时文件等等。这些文件可能包含私人数据，并且不应该在互联网上提供。"
 
 # I18N: Help text for the “Media folder” configuration setting
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1006
 #: resources/views/admin/trees-preferences.phtml:256
 msgid "This folder will be used to store the media files for this family tree."
-msgstr "此文件夹将用于存储多媒体文件。"
+msgstr "此文件夹将用于存储媒体文件。"
 
 #: app/Filter.php:480 app/Http/Middleware/CheckCsrf.php:56
 msgid "This form has expired. Try again."
@@ -20580,29 +20583,29 @@ msgstr "这是私人信息,不能显示。"
 #: app/Exceptions/MediaNotFoundException.php:33
 #: app/Exceptions/MediaAccessDeniedException.php:33,
 msgid "This media object does not exist or you do not have permission to view it."
-msgstr "该多媒体文件不存在，或者您没有权限查看它。"
+msgstr "该媒体文件不存在，或者您没有权限查看它。"
 
 #: mediaviewer.php:45 resources/views/media-page.phtml:26
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "这个多媒体文件已被删除。删除需要主编审批后，方可生效。"
+msgstr "这个媒体文件已被删除。删除需要主编审批后，方可生效。"
 
 # I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: mediaviewer.php:40 resources/views/media-page.phtml:24
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "这个多媒体文件已被删除。你应该检查此操作，然后决定是 %1$s 或 %2$s。"
+msgstr "这个媒体文件已被删除。你应该检查此操作，然后决定是 %1$s 或 %2$s。"
 
 #: mediaviewer.php:55 resources/views/media-page.phtml:32
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
-msgstr "这个多媒体文件已经被编辑。更改需要主编审批后，方可生效。"
+msgstr "这个媒体文件已经被编辑。更改需要主编审批后，方可生效。"
 
 # I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: mediaviewer.php:50 resources/views/media-page.phtml:30
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "这个多媒体文件已被删除。你应该检查此操作，然后决定是 %1$s 或 %2$s。"
+msgstr "这个媒体文件已被删除。你应该检查此操作，然后决定是 %1$s 或 %2$s。"
 
 #: admin_media.php:570 find.php:634
 msgid "This media object is not linked to any other record."
@@ -20707,7 +20710,7 @@ msgstr "此选项定义谱系图应该产生横向还是纵向模式。"
 #: admin_trees_config.php:1036
 #: resources/views/admin/trees-preferences.phtml:287
 msgid "This option will make it easier for users to download images."
-msgstr "多媒体查看器可以显示一个链接，点击后，将下载的多媒体文件到本地电脑。<br><br>因为安全原因你可能想要隐藏下载链接。"
+msgstr "多媒体查看器可以显示一个链接，点击后，将下载的媒体文件到本地电脑。<br><br>因为安全原因你可能想要隐藏下载链接。"
 
 # I18N: Help text for the “Show private relationships” configuration setting
 #. I18N: Help text for the “Show private relationships” configuration setting
@@ -21877,11 +21880,11 @@ msgstr "導入地理數據"
 #: resources/views/admin/control-panel.phtml:494
 #: app/Http/Controllers/Admin/MediaController.php:496,
 msgid "Upload media files"
-msgstr "上传多媒体文件"
+msgstr "上传媒体文件"
 
 #: admin_media_upload.php:187 resources/views/admin/media-upload.phtml:8
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
-msgstr "从您的本地计算机上上传一个或多个多媒体文件。多媒体文件可以是图片，视频，音频，或其他格式。"
+msgstr "从您的本地计算机上上传一个或多个媒体文件。媒体文件可以是图片，视频，音频，或其他格式。"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -22556,7 +22559,7 @@ msgstr "网站地图中将包含哪个家谱"
 #: admin_trees_config.php:1018
 #: resources/views/admin/trees-preferences.phtml:268
 msgid "Who can upload new media files"
-msgstr "谁可以上传新的多媒体文件"
+msgstr "谁可以上传新的媒体文件"
 
 # I18N: Name of a module. (A list of users who are online now)
 #. I18N: Name of a module. (A list of users who are online now)
