@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-03-09 15:19+0000\n"
+"PO-Revision-Date: 2020-03-28 09:59+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -14484,7 +14484,9 @@ msgstr "Táto rodina bola zmazaná. Výmaz musí byť potvrdený moderátorom."
 #: family.php:39
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Táto rodina bola zmazaná. Mali by ste to zrevidovať, a potom to %1$s alebo %2$s."
+msgstr ""
+"Táto rodina bola zmazaná. Mali by ste to skontrolovať, a potom to %1$s alebo "
+"%2$s."
 
 #: family.php:54
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
@@ -14560,13 +14562,15 @@ msgstr "Táto osoba neexistuje, alebo nemáte oprávnenie na jej zobrazenie."
 
 #: individual.php:58
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Táto osoba bola zmazaná. Výmaz musí potvrdiť moderátor."
+msgstr "Táto osoba bola zmazaná. Zmazanie musí potvrdiť moderátor."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: individual.php:53
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Táto osoba bola zmazaná. Mali by ste to zrevidovať, a potom %1$s alebo %2$s."
+msgstr ""
+"Táto osoba bola zmazaná. Mali by ste to skontrolovať, a potom %1$s alebo "
+"%2$s."
 
 #: individual.php:68
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
