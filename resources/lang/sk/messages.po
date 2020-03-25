@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-09 15:19+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-28 09:41+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -14276,7 +14276,7 @@ msgstr "Táto rodina bola zmazaná. Výmaz musí byť potvrdený moderátorom."
 #: resources/views/family-page.phtml:16
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Táto rodina bola zmazaná. Mali by ste to zrevidovať, a potom to %1$s alebo %2$s."
+msgstr "Táto rodina bola zmazaná. Mali by ste to skontrolovať, a potom to %1$s alebo %2$s."
 
 #: resources/views/family-page.phtml:24
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
@@ -14332,13 +14332,13 @@ msgstr "Táto osoba neexistuje, alebo nemáte oprávnenie na jej zobrazenie."
 
 #: resources/views/individual-page.phtml:30
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Táto osoba bola zmazaná. Výmaz musí potvrdiť moderátor."
+msgstr "Táto osoba bola zmazaná. Zmazanie musí potvrdiť moderátor."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page.phtml:27
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Táto osoba bola zmazaná. Mali by ste to zrevidovať, a potom %1$s alebo %2$s."
+msgstr "Táto osoba bola zmazaná. Mali by ste to skontrolovať, a potom %1$s alebo %2$s."
 
 #: resources/views/individual-page.phtml:39
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
