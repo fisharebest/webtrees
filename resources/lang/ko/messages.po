@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-12 11:54+0000\nLast-Translator: Jeongwan Nam <jeongwann@gmail.com>\nLanguage-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\nLanguage: ko\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-28 09:41+0000\nLast-Translator: Jeongwan Nam <jeongwann@gmail.com>\nLanguage-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\nLanguage: ko\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -91,13 +91,13 @@ msgstr "%1$s 에 %2$s 에 대한 링크가 없습니다."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "%1$s 파일들이 %2$s 초 안에 압축이 풀렸습니다."
+msgstr[0] "%1$s 파일들이 %2$s 초 안에 추출되었습니다."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: app/Http/Controllers/AdminTreesController.php:299
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s 은(는)  %2$s 이지만 %3$s 이(가) 예상됩니다."
+msgstr "%1$s 는  %2$s 이지만 %3$s 이 예상됩니다."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:572
@@ -177,7 +177,7 @@ msgstr "%s 및 이를 참조하는 인물."
 #: app/Module/ClippingsCartModule.php:465
 #, php-format
 msgid "%s and their children"
-msgstr "%s 와 그들의 아이"
+msgstr "%s 와 그들의 자녀"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:467
@@ -189,7 +189,7 @@ msgstr "%s 와 그들의 자손"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] "익명으로 로그인 한 사용자들은 %s 명"
+msgstr[0] "익명으로 로그인 한 사용자 %s 명"
 
 #: resources/views/family-page-children.phtml:13
 #: resources/views/modules/ancestors-chart/tree.phtml:39
@@ -433,7 +433,7 @@ msgstr "%s, 그의 배우자와 후손"
 #: app/Module/UserMessagesModule.php:160
 #: resources/views/edit/add-fact-row.phtml:25
 msgid "&lt;select&gt;"
-msgstr "&lt;select&gt;"
+msgstr "&lt;선택&gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/Age.php:172
@@ -457,7 +457,11 @@ msgstr "%s 이상의 나이"
 #: resources/views/lists/datatables-attributes.phtml:28
 #, php-format
 msgid "(filtered from %s total entries)"
+<<<<<<< HEAD
 msgstr "전체 항목 %s에서 필터링"
+=======
+msgstr "(전체 항목 %s에서 필터링)"
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
 
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (in childhood)
 #: app/Age.php:128
@@ -613,17 +617,29 @@ msgstr "두 인물의 관계를 보여주는 차트."
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:102
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
+<<<<<<< HEAD
 msgstr "패밀리북 모양으로 인물 조상과 후손을 보여주는 차트."
+=======
+msgstr "Family Book 모양으로 인물 조상과 후손을 보여주는 차트."
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:95
 msgid "A chart of an individual’s ancestors, as a compact tree."
+<<<<<<< HEAD
 msgstr "컴팩트 트리 차트로 보여주는 인물의 조상"
+=======
+msgstr "compact tree 차트로 보여주는 인물의 조상."
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:129
 msgid "A chart of an individual’s ancestors, formatted as a tree."
+<<<<<<< HEAD
 msgstr "가계도화 된 인물의 조상 차트"
+=======
+msgstr "가계도화 된 인물의 조상 차트."
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:118
@@ -642,7 +658,7 @@ msgstr "인물의 수명 차트."
 
 #: resources/views/edit/link-child-to-family.phtml:29
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "자녀는 둘 이상의 부모 세트를 가질 수 있습니다. 자녀와 부모 사이의 관계는 생물학적, 법적 또는 현지 문화와 전통을 기반으로 할 수 있습니다. 가계도가 지정되지 않으면 생물학적 관계가 가정됩니다"
+msgstr "자녀는 둘 이상의 부모 세트를 가질 수 있습니다. 자녀와 부모 사이의 관계는 생물학적, 법적 또는 현지 문화와 전통을 기반으로 할 수 있습니다. 가계도가 지정되지 않으면 생물학적 관계가 가정됩니다."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixDuplicateLinks.php:74
@@ -652,7 +668,11 @@ msgstr "일반적인 오류는 같은 레코드에 여러 개의 링크가있는
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:127
 msgid "A fan chart of an individual’s ancestors."
+<<<<<<< HEAD
 msgstr "인물 조상의 Fan Chart"
+=======
+msgstr "인물 조상의 Fan Chart."
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
 
 #: resources/views/admin/map-import-form.phtml:19
 #: resources/views/admin/trees-export.phtml:18
@@ -728,7 +748,11 @@ msgstr "최근에 업데이트 된 레코드 목록."
 #. I18N: Description of the “Repositories” module
 #: app/Module/RepositoryListModule.php:64
 msgid "A list of repositories."
+<<<<<<< HEAD
 msgstr "저장소 목록"
+=======
+msgstr "저장소 목록."
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
 
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:61
@@ -758,12 +782,12 @@ msgstr ""
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:101
 msgid "A list of the anniversaries that occur today."
-msgstr "오늘의 주요 기념일"
+msgstr "오늘의 주요 기념일."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:111
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr "며칠 뒤에 있을 주요 기념일"
+msgstr "며칠 뒤에 있을 주요 기념일."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:58
@@ -823,7 +847,11 @@ msgstr "사용자가 %s 에서 Webtree에 등록했습니다."
 #: app/Module/PedigreeReportModule.php:52
 #: resources/xml/reports/pedigree_report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
+<<<<<<< HEAD
 msgstr "인물 조상 가계도"
+=======
+msgstr "인물 조상 가계도 형식의 보고서."
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:52
@@ -835,7 +863,11 @@ msgstr "인물의 조상에 관한 대화체의 보고서."
 #: app/Module/DescendancyReportModule.php:52
 #: resources/xml/reports/descendancy_report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
+<<<<<<< HEAD
 msgstr "인물의 자손에 대한 대화체의 보고서"
+=======
+msgstr "인물의 자손에 대한 이야기체의 보고서."
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:52
@@ -862,12 +894,20 @@ msgstr "죽은 시간이나 장소에 관한 인물에 대한 보고서."
 #: app/Module/OccupationReportModule.php:56
 #: resources/xml/reports/occupation_report.xml:4
 msgid "A report of individuals who had a given occupation."
+<<<<<<< HEAD
 msgstr "인물의 직업에 관한 보고서"
+=======
+msgstr "인물의 직업에 관한 보고서."
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:52 resources/xml/reports/birth_report.xml:4
 msgid "A report of individuals who were born in a given time or place."
+<<<<<<< HEAD
 msgstr " 태어난 시간이나 장소에 관한 인물에 대한 보고서."
+=======
+msgstr "태어난 시간이나 장소에 관한 인물에 대한 보고서."
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:52
@@ -879,7 +919,11 @@ msgstr "특정 장소에 매장 된 인물에 대한 보고서."
 #: app/Module/MarriageReportModule.php:52
 #: resources/xml/reports/marriage_report.xml:4
 msgid "A report of individuals who were married in a given time or place."
+<<<<<<< HEAD
 msgstr "결혼한 시간이나 장소에 관한 인물에 대한 보고서"
+=======
+msgstr "결혼한 시간이나 장소에 관한 인물에 대한 보고서."
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:56
@@ -1012,7 +1056,11 @@ msgstr "A4"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:225
 msgid "Aba, Nigeria"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "나이지리아 아바"
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
 
 #: app/Date/JalaliDate.php:266
 msgctxt "Abbreviation for Persian month: Aban"
@@ -1041,14 +1089,14 @@ msgstr ""
 #: app/Date/JalaliDate.php:94
 msgctxt "NOMINATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:572
 #: resources/views/admin/trees-preferences.phtml:574
 #: resources/views/admin/trees-preferences.phtml:578
 msgid "Abbreviate place names"
-msgstr "장소 이름을 축약"
+msgstr "약칭 장소 이름"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:455 resources/views/modals/source-fields.phtml:17
@@ -1085,7 +1133,11 @@ msgstr ""
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:38
 msgid "Action"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "동작"
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:191
@@ -1097,7 +1149,7 @@ msgstr ""
 #: app/Date/JewishDate.php:297
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:244
@@ -1274,7 +1326,11 @@ msgstr "공유 노트 추가"
 
 #: resources/views/modules/relatives/family.phtml:215
 msgid "Add a sibling"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "형제 추가"
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
 
 #: resources/views/modules/relatives/family.phtml:211
 msgid "Add a sister"
@@ -1293,7 +1349,7 @@ msgstr "출처 인용 추가"
 #: resources/views/modules/stories/config.phtml:28
 #: resources/views/modules/stories/tab.phtml:27
 msgid "Add a story"
-msgstr "이야기 추가"
+msgstr "스토리 추가"
 
 #: app/Http/Controllers/Admin/UsersController.php:215
 #: resources/views/admin/control-panel.phtml:360
@@ -1334,11 +1390,15 @@ msgstr "<code>&lt;head&gt;</code> 요소 끝에 내용을 추가하십시오."
 
 #: resources/views/edit/paste-fact-row.phtml:12
 msgid "Add from clipboard"
-msgstr "클립보드에 추가"
+msgstr "클립보드에서 추가"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
+<<<<<<< HEAD
 msgstr "인물 페이지에 역사적인 이벤트를 추가"
+=======
+msgstr "인물 페이지에 역사적인 이벤트를 추가."
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
 
 #: resources/views/modules/lifespans-chart/page.phtml:20
 msgid "Add individuals"
@@ -1369,11 +1429,19 @@ msgstr "더 많은 필드 추가"
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:77
 msgid "Add narrative stories to individuals in the family tree."
+<<<<<<< HEAD
 msgstr "가계도의 인물에게 대화체의 이야기를 추가하십시오."
 
 #: resources/views/admin/map-import-form.phtml:69
 msgid "Add new, and update existing records"
 msgstr "새로운 레코드 추가 및 기존 레코드 업데이트"
+=======
+msgstr "가계도의 인물에게 이야기체의 스토리를 추가하십시오."
+
+#: resources/views/admin/map-import-form.phtml:69
+msgid "Add new, and update existing records"
+msgstr "가계도의 인물에게 스토리를 추가"
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
 
 #: resources/views/admin/trees-import.phtml:87
 msgid "Add spaces where long lines were wrapped"
@@ -1392,7 +1460,7 @@ msgstr "파일 이름에 GEDCOM 미디어 경로 추가"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:190
 msgid "Add to TITLE header tag"
-msgstr "TITLE 헤더 태그에 추가"
+msgstr "TITLE header tag에 추가"
 
 #: app/Module/ClippingsCartModule.php:178
 #: resources/views/modules/clippings/add-options.phtml:15
@@ -1406,7 +1474,7 @@ msgstr "고유 식별자 추가"
 
 #: resources/views/admin/trees.phtml:199
 msgid "Add unlinked records"
-msgstr "연결되지 않은 레코드 추가"
+msgstr "연결되지 않은 기록 추가"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:75
@@ -1671,6 +1739,7 @@ msgstr "나이 차이"
 #: app/Module/StatisticsChartModule.php:653
 #: resources/views/modules/statistics-chart/custom.phtml:32
 msgid "Age in year of first marriage"
+<<<<<<< HEAD
 msgstr 첫번째 결혼 연도"
 
 #: app/Module/StatisticsChartModule.php:592
@@ -20324,3 +20393,6 @@ msgstr ""
 
 #~ msgid "before"
 #~ msgstr "이전"
+=======
+msgstr ""
+>>>>>>> Translation: Korean - 100.0% - 304 of 304 strings
