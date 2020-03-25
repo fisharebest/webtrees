@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-03-25 19:13+0000\n"
+"PO-Revision-Date: 2020-03-28 09:59+0000\n"
 "Last-Translator: Jeongwan Nam <jeongwann@gmail.com>\n"
 "Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ko/>\n"
@@ -115,7 +115,7 @@ msgstr "%1$s 에 %2$s 에 대한 링크가 없습니다."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "%1$s 파일이 %2$s 초 안에 압축이 풀렸습니다."
+msgstr[0] "%1$s 파일들이 %2$s 초 안에 추출되었습니다."
 
 #: app/Module/GoogleMapsModule.php:838
 #, php-format
@@ -134,7 +134,7 @@ msgstr[0] "%1$s 개인의 출생지 지도 좌표가 없습니다 : %2$s."
 #: admin_trees_check.php:192
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s 은(는)  %2$s 이지만 %3$s 이(가) 예상됩니다."
+msgstr "%1$s 는  %2$s 이지만 %3$s 이 예상됩니다."
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:645
@@ -219,7 +219,7 @@ msgstr "%s 및 이를 참조하는 개인."
 #: app/Module/ClippingsCartModule.php:134
 #, php-format
 msgid "%s and their children"
-msgstr "%s 와 그들의 아이"
+msgstr "%s 와 그들의 자녀"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:141
@@ -231,7 +231,7 @@ msgstr "%s 와 그들의 자손"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] "익명으로 로그인 한 사용자는 %s 명"
+msgstr[0] "익명으로 로그인 한 사용자 %s 명"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4454 app/Stats.php:4458
 #, php-format
@@ -256,7 +256,7 @@ msgstr[0] "%s 일 전"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] "%s 일족이 업데이트 되었습니다."
+msgstr[0] "%s 가족이 업데이트 되었습니다."
 
 #: admin.php:853
 #, php-format
@@ -547,7 +547,7 @@ msgstr "(%s 이상의 나이)"
 #: app/I18N.php:230
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr "(전체 항목 %s 에서 필터링)"
+msgstr "(전체 항목 %s에서 필터링)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in childhood)
 #: app/I18N.php:294
@@ -716,7 +716,7 @@ msgstr "패밀리북 모양으로 인물 조상과 후손을 보여주는 차트
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "컴팩트 트리 차트로 보여주는 인물의 조상."
+msgstr "compact tree 차트로 보여주는 인물의 조상."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
@@ -873,7 +873,7 @@ msgstr "사용자가 %s 에서 Webtree에 등록했습니다."
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "가계도화 된 인물의 조상에 대한 보고서."
+msgstr "인물 조상 가계도 형식의 보고서."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
@@ -885,7 +885,7 @@ msgstr "인물의 조상에 관한 이야기."
 #: app/Module/DescendancyReportModule.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr "인물의 자손에 대한 이야기체 보고서."
+msgstr "인물의 자손에 대한 이야기체의 보고서."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:35
@@ -917,7 +917,7 @@ msgstr "인물의 직업에 관한 보고서."
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:35 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "태어난 시간이나 장소에 관한 개인에 대한 보고서."
+msgstr "태어난 시간이나 장소에 관한 인물에 대한 보고서."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:35
@@ -1093,7 +1093,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:81
 msgid "Aba, Nigeria"
-msgstr "Aba, Nigeria"
+msgstr "나이지리아 아바"
 
 #: app/Date/JalaliDate.php:190
 msgctxt "Abbreviation for Persian month: Aban"
@@ -1128,7 +1128,7 @@ msgstr "Aban"
 #: admin_trees_config.php:1505 admin_trees_config.php:1507
 #: admin_trees_config.php:1511
 msgid "Abbreviate place names"
-msgstr "장소 이름을 축약"
+msgstr "약칭 장소 이름"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:118
@@ -1148,7 +1148,7 @@ msgstr "모든 변경사항 승인"
 #: admin_module_sidebar.php:90 admin_module_tabs.php:90
 #: admin_trees_config.php:532
 msgid "Access level"
-msgstr "접근 레벨"
+msgstr "엑서스 레벨"
 
 #: admin_users.php:520
 msgid "Access to family trees"
@@ -1338,7 +1338,7 @@ msgstr "블록의 내용이 성장할 때 스크롤바를 추가"
 #: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1118
 #: app/Module/NotesTabModule.php:112
 msgid "Add a shared note"
-msgstr "공유 노트 추가"
+msgstr "공유노트 추가"
 
 #: app/Module/RelativesTabModule.php:271
 msgid "Add a son or daughter"
@@ -1422,7 +1422,7 @@ msgstr "더 많은 필드 추가"
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
 msgid "Add narrative stories to individuals in the family tree."
-msgstr "가계도의 인물에게 이야기체의 스토리 추가."
+msgstr "가계도의 인물에게 이야기체의 스토리를 추가하십시오."
 
 #: admin_trees_manage.php:282
 msgid "Add spaces where long lines were wrapped"
@@ -1437,7 +1437,7 @@ msgstr "파일 이름에 GEDCOM 미디어 경로 추가"
 #. I18N: A configuration setting
 #: admin_trees_config.php:919
 msgid "Add to TITLE header tag"
-msgstr "제목 헤더 태그에 추가"
+msgstr "TITLE header tag에 추가"
 
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:71 app/Theme/AbstractTheme.php:1367
