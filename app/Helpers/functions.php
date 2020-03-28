@@ -126,7 +126,7 @@ function response($content = '', $code = StatusCodeInterface::STATUS_OK, $header
                 'Content-Length' => strlen($content),
             ];
         } else {
-            $content = json_encode($content, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
+            $content = json_encode($content, JSON_UNESCAPED_UNICODE);
             $headers = [
                 'Content-Type'   => 'application/json',
                 'Content-Length' => strlen($content),
