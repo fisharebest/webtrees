@@ -218,7 +218,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $xrefs = array_keys($cart[$tree->name()] ?? []);
 
         // Create a new/empty .ZIP file
-        $temp_zip_file  = tempnam(sys_get_temp_dir(), 'webtrees-zip-');
+        $temp_zip_file  = stream_get_meta_data(tmpfile())['uri'];
         $zip_adapter    = new ZipArchiveAdapter($temp_zip_file);
         $zip_filesystem = new Filesystem($zip_adapter);
 
