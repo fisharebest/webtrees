@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-03-28 09:59+0000\n"
+"PO-Revision-Date: 2020-03-28 10:32+0000\n"
 "Last-Translator: Robert Eržen <erzen.robert@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sl/>\n"
@@ -1091,7 +1091,7 @@ msgstr ""
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
 msgid "A tab showing the facts and events of an individual."
-msgstr ""
+msgstr "Ta zavihek vsebuje ključna dejstva in dogodke te osebe."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
@@ -2035,7 +2035,7 @@ msgstr ""
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr ""
+msgstr "Interaktivno drevo prikazuje prednike in potomce posameznika."
 
 #: setup.php:507
 msgid "An unexpected database error occurred."
@@ -5982,7 +5982,7 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:153
 #: modules_v3/individual_report/report.xml:149
 msgid "Facts and events"
-msgstr ""
+msgstr "Dejstva in dogodki"
 
 #: admin_trees_config.php:1731
 msgid "Facts for family records"
@@ -6029,7 +6029,7 @@ msgstr "Falklandy"
 #: repo.php:127 search.php:93 source.php:131 statistics.php:71
 #: statisticsplot.php:990 statisticsplot.php:1094 statisticsplot.php:1344
 msgid "Families"
-msgstr "družin"
+msgstr "Družine"
 
 #: app/Stats.php:520 statistics.php:395
 msgid "Families with sources"
@@ -7677,7 +7677,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:188 app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
-msgstr ""
+msgstr "Interaktivno drevo"
 
 #: app/Module/ChartsBlockModule.php:128
 #: app/Module/InteractiveTree/TreeView.php:69
@@ -7685,7 +7685,7 @@ msgstr ""
 #: app/Module/InteractiveTreeModule.php:135
 #, php-format
 msgid "Interactive tree of %s"
-msgstr ""
+msgstr "Interaktivno drevo za %s"
 
 #: app/Functions/FunctionsEdit.php:247
 msgid "Internal messaging"
@@ -13136,7 +13136,7 @@ msgstr "Raje uporabi dejstva virov"
 #: search.php:98 source.php:144 sourcelist.php:33 sourcelist.php:37
 #: statistics.php:354 statistics.php:391
 msgid "Sources"
-msgstr "virov"
+msgstr "Viri"
 
 #: modules_v3/missing_facts_report/report.xml:14
 msgid "Sources to the events"
