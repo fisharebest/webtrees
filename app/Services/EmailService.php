@@ -123,7 +123,15 @@ class EmailService
         switch (Site::getPreference('SMTP_ACTIVE')) {
             case 'sendmail':
                 // Local sendmail (requires PHP proc_* functions)
-                return new Swift_SendmailTransport();
+                $sendmail_command = Site::getPreference('SENDMAIL_COMMAND');
+
+                $transport = new Swift_SendmailTransport();
+
+                if ($sendmail_command) {
+                    $transport->setCommand($sendmail_command);
+                }
+
+                return $transport;
 
             case 'external':
                 // SMTP

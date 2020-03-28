@@ -63,6 +63,7 @@ class EmailPreferencesAction implements RequestHandlerInterface
 
         $params = (array) $request->getParsedBody();
 
+        Site::setPreference('SENDMAIL_COMMAND', $params['SENDMAIL_COMMAND']);
         Site::setPreference('SMTP_ACTIVE', $params['SMTP_ACTIVE']);
         Site::setPreference('SMTP_FROM_NAME', $params['SMTP_FROM_NAME']);
         Site::setPreference('SMTP_HOST', $params['SMTP_HOST']);

@@ -63,17 +63,18 @@ class EmailPreferencesPage implements RequestHandlerInterface
 
         $title = I18N::translate('Sending email');
 
-        $SMTP_ACTIVE    = Site::getPreference('SMTP_ACTIVE');
-        $SMTP_AUTH      = Site::getPreference('SMTP_AUTH');
-        $SMTP_AUTH_USER = Site::getPreference('SMTP_AUTH_USER');
-        $SMTP_FROM_NAME = $this->email_service->senderEmail();
-        $SMTP_HELO      = $this->email_service->localDomain();
-        $SMTP_HOST      = Site::getPreference('SMTP_HOST');
-        $SMTP_PORT      = Site::getPreference('SMTP_PORT');
-        $SMTP_SSL       = Site::getPreference('SMTP_SSL');
-        $DKIM_DOMAIN    = Site::getPreference('DKIM_DOMAIN');
-        $DKIM_SELECTOR  = Site::getPreference('DKIM_SELECTOR');
-        $DKIM_KEY       = Site::getPreference('DKIM_KEY');
+        $SENDMAIL_COMMAND = Site::getPreference('SENDMAIL_COMMAND');
+        $SMTP_ACTIVE      = Site::getPreference('SMTP_ACTIVE');
+        $SMTP_AUTH        = Site::getPreference('SMTP_AUTH');
+        $SMTP_AUTH_USER   = Site::getPreference('SMTP_AUTH_USER');
+        $SMTP_FROM_NAME   = $this->email_service->senderEmail();
+        $SMTP_HELO        = $this->email_service->localDomain();
+        $SMTP_HOST        = Site::getPreference('SMTP_HOST');
+        $SMTP_PORT        = Site::getPreference('SMTP_PORT');
+        $SMTP_SSL         = Site::getPreference('SMTP_SSL');
+        $DKIM_DOMAIN      = Site::getPreference('DKIM_DOMAIN');
+        $DKIM_SELECTOR    = Site::getPreference('DKIM_SELECTOR');
+        $DKIM_KEY         = Site::getPreference('DKIM_KEY');
 
         $smtp_from_name_valid = $this->email_service->isValidEmail($SMTP_FROM_NAME);
         $smtp_helo_valid      = filter_var($SMTP_HELO, FILTER_VALIDATE_DOMAIN);
@@ -86,6 +87,7 @@ class EmailPreferencesPage implements RequestHandlerInterface
             'title'                  => $title,
             'smtp_helo_valid'        => $smtp_helo_valid,
             'smtp_from_name_valid'   => $smtp_from_name_valid,
+            'SENDMAIL_COMMAND'       => $SENDMAIL_COMMAND,
             'SMTP_ACTIVE'            => $SMTP_ACTIVE,
             'SMTP_AUTH'              => $SMTP_AUTH,
             'SMTP_AUTH_USER'         => $SMTP_AUTH_USER,

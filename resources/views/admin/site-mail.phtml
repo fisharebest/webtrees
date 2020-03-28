@@ -9,6 +9,7 @@ use Fisharebest\Webtrees\View;
  * @var string   $DKIM_DOMAIN
  * @var string   $DKIM_KEY
  * @var string   $DKIM_SELECTOR
+ * @var string   $SENDMAIL_COMMAND
  * @var string   $SMTP_ACTIVE
  * @var string   $SMTP_AUTH
  * @var string   $SMTP_AUTH_USER
@@ -86,6 +87,22 @@ use Fisharebest\Webtrees\View;
                     <?= I18N::translate('Most mail servers require a valid email address.') ?>
                 </p>
             <?php endif ?>
+        </div>
+    </div>
+
+    <h2><?= I18N::translate('Sendmail') ?></h2>
+
+    <div class="row form-group">
+        <label for="SENDMAIL_COMMAND" class="col-sm-3 col-form-label">
+            <?= /* I18N: A configuration setting */
+            I18N::translate('Sendmail command') ?>
+        </label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="SENDMAIL_COMMAND" name="SENDMAIL_COMMAND" value="<?= e($SENDMAIL_COMMAND) ?>" placeholder="/usr/sbin/sendmail -bs" maxlength="255">
+            <p class="small text-muted">
+                <?= /* I18N: Help text for the “Server name” site configuration setting */
+                I18N::translate('The path to the sendmail command on your web server, including any additional flags.') ?>
+            </p>
         </div>
     </div>
 
