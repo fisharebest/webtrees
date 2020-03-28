@@ -13,6 +13,7 @@ use Ramsey\Uuid\Uuid;
 
 $table_id = 'table-fam-' . Uuid::uuid4()->toString(); // lists requires a unique ID in case there are multiple lists per page
 
+$today_jd          = Carbon::now()->julianDay();
 $hundred_years_ago = Carbon::now()->subYears(100)->julianDay();
 
 ?>
@@ -178,7 +179,7 @@ $marriageAgeData = [
                         <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
                             <label class="btn btn-secondary" title="<?= I18N::translate('Show couples with an unknown marriage date.') ?>">
                                 <input type="checkbox" data-filter-column="11" data-filter-value="U">
-                                <?= I18N::translate('Marriage') ?>
+                                <?= I18N::translate('Not married') ?>
                             </label>
                             <label class="btn btn-secondary" title="<?= I18N::translate('Show couples who married more than 100 years ago.') ?>">
                                 <input type="checkbox" data-filter-column="11" data-filter-value="YES">
@@ -344,14 +345,14 @@ $marriageAgeData = [
 
                 <!-- Filter by marriage date -->
                 <td hidden>
-                    <?php if (!$family->canShow() || !$mdate->isOK()) : ?>
-                        U
-                    <?php elseif ($mdate->maximumJulianDay() > $hundred_years_ago) : ?>
+                    <?php if ($mdate->maximumJulianDay() > $hundred_years_ago && $mdate->maximumJulianDay() <= $today_jd) : ?>
                         Y100
-                    <?php else : ?>
+                    <?php elseif ($family->facts(['MARR'])->isNotEmpty()) : ?>
                         YES
+                    <?php else : ?>
+                        U
                     <?php endif ?>
-                    <?php if ($family->facts(Gedcom::DIVORCE_EVENTS)->isNotEmpty()) : ?>
+                    <?php if ($family->facts(['DIV'])->isNotEmpty()) : ?>
                         D
                     <?php endif ?>
                     <?php if (count($husb->spouseFamilies()) > 1 || count($wife->spouseFamilies()) > 1) : ?>

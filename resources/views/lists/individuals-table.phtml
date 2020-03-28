@@ -11,17 +11,22 @@ use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 use Ramsey\Uuid\Uuid;
+
+/**
+ * @var Tree $tree
+ */
 
 // lists requires a unique ID in case there are multiple lists per page
 $table_id = 'table-indi-' . Uuid::uuid4()->toString();
 
+$today_jd          = Carbon::now()->julianDay();
 $hundred_years_ago = Carbon::now()->subYears(100)->julianDay();
 
 $unique_indis = []; // Don't double-count indis with multiple names.
 
-$today_jd             = unixtojd();
 $show_estimated_dates = (bool) $tree->getPreference('SHOW_EST_LIST_DATES');
 
 $module = app(ModuleService::class)
@@ -376,7 +381,7 @@ $deathAgeData = [
 
                 <!-- Filter by birth date -->
                 <td hidden>
-                    <?php if (!$individual->canShow() || $individual->getEstimatedBirthDate()->maximumJulianDay() > $hundred_years_ago) : ?>
+                    <?php if ($individual->getEstimatedBirthDate()->maximumJulianDay() > $hundred_years_ago && $individual->getEstimatedBirthDate()->maximumJulianDay() <= $today_jd) : ?>
                         Y100
                     <?php else : ?>
                         YES
@@ -385,7 +390,7 @@ $deathAgeData = [
 
                 <!-- Filter by death date -->
                 <td hidden>
-                    <?php if ($individual->getEstimatedDeathDate()->maximumJulianDay() > $hundred_years_ago) : ?>
+                    <?php if ($individual->getEstimatedDeathDate()->maximumJulianDay() > $hundred_years_ago && $individual->getEstimatedDeathDate()->maximumJulianDay() <= $today_jd) : ?>
                         Y100
                     <?php elseif ($individual->isDead()) : ?>
                         YES
