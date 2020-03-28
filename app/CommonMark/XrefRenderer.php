@@ -19,32 +19,27 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\CommonMark;
 
-use Fisharebest\Webtrees\Tree;
-use League\CommonMark\ConfigurableEnvironmentInterface;
-use League\CommonMark\Extension\ExtensionInterface;
+use League\CommonMark\ElementRendererInterface;
+use League\CommonMark\Inline\Element\AbstractInline;
+use League\CommonMark\Inline\Renderer\InlineRendererInterface;
+
+use function e;
 
 /**
  * Convert XREFs within markdown text to links
  */
-class XrefExtension implements ExtensionInterface
+class XrefRenderer implements InlineRendererInterface
 {
-    /** @var Tree - match XREFs in this tree */
-    private $tree;
-
     /**
-     * MarkdownXrefParser constructor.
+     * @param AbstractInline           $inline
+     * @param ElementRendererInterface $htmlRenderer
      *
-     * @param Tree $tree
+     * @return string
      */
-    public function __construct(Tree $tree)
+    public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer): string
     {
-        $this->tree = $tree;
-    }
+        assert($inline instanceof XrefNode);
 
-    public function register(ConfigurableEnvironmentInterface $environment): void
-    {
-        $environment
-            ->addInlineParser(new XrefParser($this->tree))
-            ->addInlineRenderer(XrefNode::class, new XrefRenderer());
+        return '<a href="' . e($inline->record()->url()) . '">' . $inline->record()->fullName() . '</a>';
     }
 }

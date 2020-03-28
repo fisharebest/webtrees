@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CommonMark;
 
 use League\CommonMark\ConfigurableEnvironmentInterface;
+use League\CommonMark\Extension\ExtensionInterface;
 use League\CommonMark\Extension\Table\Table;
 use League\CommonMark\Extension\Table\TableCell;
 use League\CommonMark\Extension\Table\TableCellRenderer;
@@ -28,7 +29,6 @@ use League\CommonMark\Extension\Table\TableRow;
 use League\CommonMark\Extension\Table\TableRowRenderer;
 use League\CommonMark\Extension\Table\TableSection;
 use League\CommonMark\Extension\Table\TableSectionRenderer;
-use League\CommonMark\Extension\ExtensionInterface;
 
 /**
  * Convert webtrees 1.x census-assistant markup into tables.

@@ -19,32 +19,26 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\CommonMark;
 
-use Fisharebest\Webtrees\Tree;
-use League\CommonMark\ConfigurableEnvironmentInterface;
-use League\CommonMark\Extension\ExtensionInterface;
+use Fisharebest\Webtrees\GedcomRecord;
+use League\CommonMark\Inline\Element\AbstractStringContainer;
 
 /**
  * Convert XREFs within markdown text to links
  */
-class XrefExtension implements ExtensionInterface
+class XrefNode extends AbstractStringContainer
 {
-    /** @var Tree - match XREFs in this tree */
-    private $tree;
+    /** @var GedcomRecord */
+    private $record;
 
-    /**
-     * MarkdownXrefParser constructor.
-     *
-     * @param Tree $tree
-     */
-    public function __construct(Tree $tree)
+    public function __construct(GedcomRecord $record)
     {
-        $this->tree = $tree;
+        parent::__construct();
+
+        $this->record = $record;
     }
 
-    public function register(ConfigurableEnvironmentInterface $environment): void
+    public function record(): GedcomRecord
     {
-        $environment
-            ->addInlineParser(new XrefParser($this->tree))
-            ->addInlineRenderer(XrefNode::class, new XrefRenderer());
+        return $this->record;
     }
 }
