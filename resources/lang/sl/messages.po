@@ -1,22 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-02-03 09:12+0000\n"
-"PO-Revision-Date: 2016-05-13 13:13+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/webtrees/sl/>\n"
-"Language: sl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 2.5\n"
-"X-Poedit-Language: Slovenian\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-28 09:41+0000\nLast-Translator: Robert Eržen <erzen.robert@gmail.com>\nLanguage-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/webtrees/sl/>\nLanguage: sl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovenian\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -42,19 +25,19 @@ msgstr ""
 #: resources/xml/reports/descendancy_report.xml:423
 #: resources/xml/reports/descendancy_report.xml:454
 msgid " in "
-msgstr ""
+msgstr " v "
 
 #. I18N: Abbreviation for "number %s"
 #: app/Functions/FunctionsPrintFacts.php:192
 #: app/Functions/FunctionsPrintFacts.php:199
 #, php-format
 msgid "#%s"
-msgstr ""
+msgstr "#%s"
 
 #: app/Http/Controllers/AdminTreesController.php:1544
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s ima %3$s povezavo na %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2358
@@ -350,9 +333,9 @@ msgstr[3] ""
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:13
 #: resources/views/emails/message-user-text.phtml:8
-#, fuzzy, php-format
+#, php-format
 msgid "%s sent you the following message."
-msgstr "Naslednje sporočilo je bilo poslano na vaš webtrees uporabniški račun od upravitelja %s"
+msgstr "%s vam je poslal sporočilo."
 
 #: app/Statistics/Repository/UserRepository.php:99
 #, php-format
@@ -1388,9 +1371,8 @@ msgstr "Dodaj ženo izmed obstoječih oseb"
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:301
 #: resources/views/modules/faq/config.phtml:34
-#, fuzzy
 msgid "Add an FAQ"
-msgstr "Dodaj FAQ enoto"
+msgstr "Dodaj FAQ (pogosto zastavljeno vprašanje)"
 
 #: resources/views/cards/add-sour-data-even.phtml:10
 msgid "Add an event"
@@ -1845,7 +1827,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/RegisterAction.php:234
 msgid "All fields must be completed."
-msgstr ""
+msgstr "Izpolniti je potrebno vsa polja."
 
 #: resources/views/admin/trees-preferences.phtml:668
 msgid "All individual facts"
@@ -5391,7 +5373,7 @@ msgstr ""
 #: app/Http/RequestHandlers/AccountUpdate.php:95
 #: app/Http/RequestHandlers/RegisterAction.php:244
 msgid "Duplicate email address. A user with that email already exists."
-msgstr ""
+msgstr "Podvojeni e-naslov. Uporabnik s tem e-naslovom že obstaja."
 
 #: app/Http/Controllers/Admin/UsersController.php:274
 #: app/Http/Controllers/Admin/UsersController.php:401
@@ -5466,9 +5448,8 @@ msgid "Edit preferences"
 msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:311
-#, fuzzy
 msgid "Edit the FAQ"
-msgstr "Uredi FAQ enoto"
+msgstr "Uredi FAQ (Pogosto zastavljena vprašanja)"
 
 #: app/Http/RequestHandlers/IndividualPage.php:305
 #: resources/views/individual-page-menu.phtml:44
@@ -5591,7 +5572,7 @@ msgstr ""
 #: resources/views/register-page.phtml:46
 #: resources/views/setup/step-5-administrator.phtml:72
 msgid "Email address"
-msgstr ""
+msgstr "E-naslov"
 
 #: resources/views/admin/users-edit.phtml:82
 msgid "Email verified"
@@ -6440,9 +6421,8 @@ msgstr "Predalček na strežniku"
 
 #: resources/views/emails/register-user-html.phtml:17
 #: resources/views/emails/register-user-text.phtml:11
-#, fuzzy
 msgid "Follow this link to verify your email address."
-msgstr "Kliknite na naslednjo povezavo in vpišite zahtevane podatke za potrditev zahtevka in elektronskega naslova."
+msgstr "Kliknite na povezavo za potrditev vašega e-naslova."
 
 #: resources/xml/reports/ahnentafel_report.xml:15
 #: resources/xml/reports/bdm_report.xml:14
@@ -6490,19 +6470,19 @@ msgid "For example, we can quickly find individuals that do not have a death eve
 msgstr ""
 
 #: app/Module/ContactsFooterModule.php:149
-#, fuzzy, php-format
+#, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "Na rodoslovna vprašanja vam odgovarja %s"
+msgstr "Na rodoslovna vprašanja vam odgovarja %s."
 
 #: app/Module/ContactsFooterModule.php:162
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support and information contact %s."
-msgstr "Tehnična pomoč in informacije %s"
+msgstr "Tehnična pomoč in informacije %s."
 
 #: app/Module/ContactsFooterModule.php:136
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Tehnična pomoč ali rodoslovna vprašanja %s"
+msgstr "Za tehnično podporo ali rodoslovna vprašanja se lahko obrnete na %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: resources/views/admin/site-preferences.phtml:80
@@ -11429,7 +11409,7 @@ msgstr ""
 #: resources/views/emails/register-notify-text.phtml:12
 #: resources/views/register-page.phtml:34
 msgid "Real name"
-msgstr ""
+msgstr "Ime"
 
 #: resources/views/admin/map-import-form.phtml:91
 msgid "Really delete all geographic data?"
@@ -11517,14 +11497,12 @@ msgstr ""
 
 #: resources/views/pending-changes-page.phtml:55
 #: resources/views/pending-changes-page.phtml:93
-#, fuzzy
 msgid "Reject"
-msgstr "Razveljavi"
+msgstr "Zavrni"
 
 #: resources/views/pending-changes-page.phtml:108
-#, fuzzy
 msgid "Reject all changes"
-msgstr "Razveljavi vse spreembe"
+msgstr "Zavrni vse spremembe"
 
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:44
@@ -11748,7 +11726,7 @@ msgstr "Zahtevaj novo geslo"
 #: app/Module/WelcomeBlockModule.php:114 resources/views/login-page.phtml:65
 #: resources/views/modules/login_block/sign-in.phtml:44
 msgid "Request a new user account"
-msgstr "Zahtevajte nov uporabniški račun"
+msgstr "Oddajte vlogo za nov uporabniški račun"
 
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:2059 resources/views/modules/todo/research-tasks.phtml:38
@@ -12199,12 +12177,12 @@ msgstr "Pošlji sporočilo vsem uporabnikom"
 #: app/Services/MessageService.php:212
 #: resources/views/admin/control-panel.phtml:388
 msgid "Send a message to users who have never signed in"
-msgstr "Pošilji sporočilo uporabnikom, ki se sploh še niso logirali"
+msgstr "Pošlji sporočilo uporabnikom, ki se še nikoli niso prijavili"
 
 #: app/Services/MessageService.php:214
 #: resources/views/admin/control-panel.phtml:394
 msgid "Send a message to users who have not signed in for 6 months"
-msgstr "Pošlji sporočilo uporabnikom, ki se že šest mesecev niso logirali"
+msgstr "Pošlji sporočilo uporabnikom, ki se že šest mesecev niso prijavili"
 
 #: resources/views/admin/site-mail.phtml:239
 msgid "Send a test email using these settings"
@@ -12797,9 +12775,8 @@ msgid "Show this block for which languages"
 msgstr ""
 
 #: resources/views/admin/trees-preferences.phtml:292
-#, fuzzy
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Pokaži želene slike v okvirčkih oseb"
+msgstr "Pokaži želene slike v okvirčkih oseb."
 
 #: app/Functions/FunctionsEdit.php:125 app/Functions/FunctionsEdit.php:248
 #: app/Functions/FunctionsEdit.php:269
@@ -12886,20 +12863,18 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/LoginPage.php:77 app/Module/LoginBlockModule.php:43
 #: app/Module/LoginBlockModule.php:75 app/Module/ModuleThemeTrait.php:293
-#, fuzzy
 msgid "Sign in"
 msgstr "Prijava"
 
 #: app/Module/LoginBlockModule.php:70 app/Module/ModuleThemeTrait.php:308
 #: resources/views/layouts/administration.phtml:67
-#, fuzzy
 msgid "Sign out"
 msgstr "Odjava"
 
 #: app/Http/Controllers/AdminSiteController.php:117
 #: resources/views/admin/control-panel.phtml:95
 msgid "Sign-in and registration"
-msgstr ""
+msgstr "Prijava in registracija"
 
 #: resources/views/help/date.phtml:122
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -13698,11 +13673,11 @@ msgstr ""
 #: resources/views/emails/approve-user-text.phtml:8
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
-msgstr ""
+msgstr "Upravitelj rodoslovnega spletišča %s je odobril vašo vlogo za novi račun. Zdaj se lahko prijavite s klikom na naslednjo povezavo: %s"
 
 #: resources/views/verify-success-page.phtml:16
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
-msgstr "Upravitelj je prejel obvestilo. Ko vam bo dal dovoljenje za prijavo, se boste lahko prijavljali sami s svojim uporabniškim imenom in geslom."
+msgstr "Upravitelj je bil obveščen. Ko bo odobril vašo vlogo, se boste lahko prijavljali sami s svojim uporabniškim imenom in geslom."
 
 #. I18N: Description of the “Calendar” module
 #: app/Module/CalendarMenuModule.php:52
@@ -14187,9 +14162,8 @@ msgid "Themes"
 msgstr ""
 
 #: resources/views/modules/personal_facts/tab.phtml:35
-#, fuzzy
 msgid "There are no facts for this individual."
-msgstr "Za to osebo ni dejstev."
+msgstr "Za to osebo ni znanih dejstev."
 
 #: app/Http/Controllers/Admin/MediaController.php:329
 msgid "There are no links to this media object."
@@ -14298,7 +14272,7 @@ msgstr ""
 #: resources/views/register-page.phtml:51
 #: resources/views/setup/step-5-administrator.phtml:77
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr ""
+msgstr "Ta e-naslov bomo uporabili za opomnike, sporočila s spletne strani in sporočila, ki vam jih bodo poslali drugi uporabniki spletišča."
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
@@ -14347,7 +14321,7 @@ msgstr ""
 #: resources/views/modules/html/template-statistics.phtml:13
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr ""
+msgstr "Zadnji narejen popravek na %s."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:26
@@ -14532,7 +14506,7 @@ msgstr ""
 #: resources/views/register-page.phtml:39
 #: resources/views/setup/step-5-administrator.phtml:41
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr ""
+msgstr "Tu vnesite vaše pravo ime, s katerim boste vidni drugim obiskovalcem strani."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:104
 msgid "This link is valid for one hour."
@@ -15548,7 +15522,7 @@ msgstr ""
 
 #: resources/views/register-page.phtml:89
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
-msgstr ""
+msgstr "V to polje vnesite sporočilo za upravitelja spletišča. Dodate lahko, v kakšnem odnosu ste s katero od oseb, ki je že vnesena v družinsko drevo."
 
 #: app/Functions/FunctionsEdit.php:588
 msgid "Use this image for charts and on the individual’s page."
@@ -15612,7 +15586,7 @@ msgstr ""
 #: resources/views/edit-account-page.phtml:25
 #: resources/views/register-page.phtml:63
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr ""
+msgstr "Pri uporabniških imenih je vseeno ali jih zapišete z velikimi ali malimi črkami. Prav tako je vseeno ali uporabite naglase ali ne.  Primer: Jože, Joze ali joze so enaka uporabniška imena."
 
 #: resources/views/admin/control-panel.phtml:320
 #: resources/views/modules/gedcom_stats/statistics.phtml:123
@@ -15741,7 +15715,6 @@ msgid "View table of events occurring in %s"
 msgstr ""
 
 #: resources/views/calendar-page.phtml:191
-#, fuzzy
 msgid "View this day"
 msgstr "Pokaži dan"
 
@@ -15750,7 +15723,6 @@ msgstr "Pokaži dan"
 #: app/Statistics/Repository/FamilyRepository.php:467
 #: resources/views/statistics/families/top10-list-age.phtml:25
 #: resources/views/statistics/families/top10-nolist-age.phtml:25
-#, fuzzy
 msgid "View this family"
 msgstr "Poglej družino"
 
@@ -15759,7 +15731,6 @@ msgid "View this month"
 msgstr ""
 
 #: resources/views/calendar-page.phtml:199
-#, fuzzy
 msgid "View this year"
 msgstr "Pokaži leto"
 
@@ -16109,7 +16080,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/LoginAction.php:115
 msgid "You cannot sign in because your browser does not accept cookies."
-msgstr ""
+msgstr "Ne morete se prijaviti, ker vaš brskalnik ne sprejema piškotkov."
 
 #: app/Exceptions/HttpAccessDeniedException.php:34
 #: app/Exceptions/HttpNotFoundException.php:34
@@ -16126,7 +16097,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/Logout.php:51
 msgid "You have signed out."
-msgstr ""
+msgstr "Odjavili ste se."
 
 #: resources/views/modules/faq/config.phtml:15
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -16616,7 +16587,6 @@ msgstr ""
 #: resources/views/modules/gedcom_news/edit.phtml:46
 #: resources/views/modules/stories/edit.phtml:65
 #: resources/views/modules/user_blog/edit.phtml:46
-#, fuzzy
 msgid "cancel"
 msgstr "Prekini"
 
@@ -16692,7 +16662,7 @@ msgstr ""
 #: resources/views/register-page.phtml:99
 #: resources/views/report-select-page.phtml:32
 msgid "continue"
-msgstr ""
+msgstr "naprej"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:52
@@ -16775,7 +16745,6 @@ msgstr ""
 #: resources/views/admin/site-logs.phtml:86
 #: resources/views/modules/clippings/download.phtml:61
 #: resources/views/report-setup-page.phtml:70
-#, fuzzy
 msgid "download"
 msgstr "prenos"
 
@@ -18856,7 +18825,6 @@ msgstr ""
 
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:141
-#, fuzzy
 msgid "import"
 msgstr "uvoz"
 
@@ -19758,13 +19726,12 @@ msgstr ""
 #: resources/views/login-page.phtml:56
 #: resources/views/modules/login_block/sign-in.phtml:33
 msgid "sign in"
-msgstr "prijava"
+msgstr "Prijava"
 
 #. I18N: A button label.
 #: resources/views/modules/login_block/sign-out.phtml:14
-#, fuzzy
 msgid "sign out"
-msgstr "odjava"
+msgstr "Odjava"
 
 #: app/Functions/Functions.php:727
 msgid "sister"
@@ -20233,7 +20200,6 @@ msgstr ""
 
 #. I18N: A button label.
 #: resources/views/admin/media-upload.phtml:64
-#, fuzzy
 msgid "upload"
 msgstr "naloži"
 
@@ -20250,7 +20216,6 @@ msgstr "naloži"
 #: resources/views/modules/pedigree-map/page.phtml:35
 #: resources/views/modules/relationships-chart/page.phtml:67
 #: resources/views/report-setup-page.phtml:66
-#, fuzzy
 msgid "view"
 msgstr "poglej"
 
