@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-28 09:41+0000\nLast-Translator: Robert Eržen <erzen.robert@gmail.com>\nLanguage-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/webtrees/sl/>\nLanguage: sl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovenian\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-29 16:29+0000\nLast-Translator: Robert Eržen <erzen.robert@gmail.com>\nLanguage-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/webtrees/sl/>\nLanguage: sl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovenian\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -8,7 +8,7 @@ msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nP
 #: resources/xml/reports/ahnentafel_report.xml:334
 #: resources/xml/reports/ahnentafel_report.xml:359
 msgid " but the details are unknown"
-msgstr ""
+msgstr " toda podrobnosti niso znane"
 
 #: resources/xml/reports/ahnentafel_report.xml:159
 #: resources/xml/reports/ahnentafel_report.xml:187
@@ -192,10 +192,10 @@ msgstr ""
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "%s anonimni prijavljeni uporabnik"
+msgstr[1] "%s anonimna prijavljena uporabnika"
+msgstr[2] "%s anonimnih prijavljenih uporabnikov"
+msgstr[3] "%s anonimnih prijavljenih uporabnikov"
 
 #: resources/views/family-page-children.phtml:13
 #: resources/views/modules/ancestors-chart/tree.phtml:39
@@ -284,10 +284,10 @@ msgstr[3] ""
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "%s sporočilo"
+msgstr[1] "%s sporočili"
+msgstr[2] "%s sporočil"
+msgstr[3] "%s sporočil"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:141 app/Functions/FunctionsDate.php:58
@@ -341,10 +341,10 @@ msgstr "%s vam je poslal sporočilo."
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "%s prijavljeni uporabnik"
+msgstr[1] "%s prijavljena uporabnika"
+msgstr[2] "%s prijavljenih uporabnikov"
+msgstr[3] "%s prijavljenih uporabnikov"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:87
 #, php-format
@@ -487,7 +487,7 @@ msgstr ""
 #: app/Module/UserMessagesModule.php:160
 #: resources/views/edit/add-fact-row.phtml:25
 msgid "&lt;select&gt;"
-msgstr ""
+msgstr "&lt;izberi&gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/Age.php:172
@@ -997,7 +997,7 @@ msgstr ""
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:77
 msgid "A tab showing the facts and events of an individual."
-msgstr ""
+msgstr "Ta zavihek vsebuje ključna dejstva in dogodke te osebe."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:71
@@ -1948,7 +1948,7 @@ msgstr ""
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:63
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr ""
+msgstr "Interaktivno drevo prikazuje prednike in potomce posameznika."
 
 #: resources/views/errors/database-error.phtml:8
 #: resources/views/setup/step-6-failed.phtml:8
@@ -2296,7 +2296,7 @@ msgstr "Avtor"
 #. I18N: gedcom tag CHAN:_WT_USER
 #: app/GedcomTag.php:583
 msgid "Author of last change"
-msgstr ""
+msgstr "Avtor zadnje spremembe"
 
 #: resources/views/admin/users-edit.phtml:136
 msgid "Automatically accept changes made by this user"
@@ -3461,7 +3461,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/UserPageEdit.php:70
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Spremeni bloke na \"Moja stran\""
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:47
@@ -3473,7 +3473,7 @@ msgstr ""
 #: resources/views/modules/recent_changes/changes-list.phtml:45
 #, php-format
 msgid "Changed on %1$s by %2$s"
-msgstr ""
+msgstr "Spremenil %2$s na %1$s"
 
 #. I18N: Name of a module/report
 #: app/Module/ChangeReportModule.php:44
@@ -3488,10 +3488,10 @@ msgstr ""
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Spremembe v zadnjem %s dnevu"
+msgstr[1] "Spremembe v zadnjih %s dneh"
+msgstr[2] "Spremembe v zadnjih %s dneh"
+msgstr[3] "Spremembe v zadnjih %s dneh"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:101
 #: resources/views/admin/trees.phtml:190
@@ -4315,7 +4315,7 @@ msgstr ""
 
 #: app/Module/ModuleThemeTrait.php:211 app/Module/ModuleThemeTrait.php:215
 msgid "Customize this page"
-msgstr ""
+msgstr "Preuredi to stran"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:153
@@ -4537,7 +4537,7 @@ msgstr ""
 #. I18N: gedcom tag CHAN:DATE
 #: app/GedcomTag.php:580
 msgid "Date of last change"
-msgstr ""
+msgstr "Datum zadnje spremembe"
 
 #: app/GedcomTag.php:747 app/GedcomTag.php:840
 #: resources/xml/reports/fact_sources.xml:319
@@ -4970,7 +4970,7 @@ msgstr ""
 
 #: app/Module/UserWelcomeModule.php:100 app/Module/WelcomeBlockModule.php:100
 msgid "Default chart"
-msgstr ""
+msgstr "Privzeti graf"
 
 #: resources/views/admin/trees.phtml:109
 msgid "Default family tree"
@@ -4981,7 +4981,7 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml:84
 #: resources/views/edit-account-page.phtml:63
 msgid "Default individual"
-msgstr ""
+msgstr "Privzeti posameznik"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:58
@@ -5906,7 +5906,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:153
 #: resources/xml/reports/individual_report.xml:149
 msgid "Facts and events"
-msgstr ""
+msgstr "Dejstva in dogodki"
 
 #: resources/views/admin/trees-preferences.phtml:717
 msgid "Facts for family records"
@@ -5968,7 +5968,7 @@ msgstr "Falklandy"
 #: resources/xml/reports/fact_sources.xml:152
 #: resources/xml/reports/fact_sources.xml:314
 msgid "Families"
-msgstr "družin"
+msgstr "Družine"
 
 #: app/Statistics/Google/ChartFamilyWithSources.php:96
 #: resources/views/statistics/other/chart-sources.phtml:32
@@ -6237,7 +6237,7 @@ msgstr "februar"
 #: app/Http/RequestHandlers/IndividualPage.php:290
 #: app/Module/StatisticsChartModule.php:790
 msgid "Female"
-msgstr "ženska"
+msgstr "Žensko"
 
 #: app/Statistics/Google/ChartAge.php:111
 #: app/Statistics/Google/ChartMarriageAge.php:134
@@ -6846,7 +6846,7 @@ msgstr ""
 #: resources/views/lists/given-names-table.phtml:21
 #: resources/views/search-phonetic-page.phtml:17
 msgid "Given name"
-msgstr "osebno ime"
+msgstr "Osebno ime"
 
 #. I18N: gedcom tag GIVN
 #: app/GedcomTag.php:782 resources/views/lists/families-table.phtml:248
@@ -7666,7 +7666,7 @@ msgstr "Oseba z najdaljšo življenjsko dobo"
 #: resources/xml/reports/fact_sources.xml:54
 #: resources/xml/reports/fact_sources.xml:258
 msgid "Individuals"
-msgstr "oseb"
+msgstr "Osebe"
 
 #: app/Statistics/Google/ChartIndividualWithSources.php:96
 #: resources/views/statistics/other/chart-sources.phtml:20
@@ -7709,7 +7709,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:246 app/Module/InteractiveTreeModule.php:52
 msgid "Interactive tree"
-msgstr ""
+msgstr "Interaktivno drevo"
 
 #. I18N: %s is an individual’s name
 #: app/Module/ChartsBlockModule.php:154
@@ -7717,7 +7717,7 @@ msgstr ""
 #: app/Module/InteractiveTreeModule.php:162
 #, php-format
 msgid "Interactive tree of %s"
-msgstr ""
+msgstr "Interaktivno drevo za %s"
 
 #: app/Functions/FunctionsEdit.php:163
 msgid "Internal messaging"
@@ -8212,7 +8212,7 @@ msgstr ""
 #: resources/xml/reports/change_report.xml:66
 #: resources/xml/reports/change_report.xml:108
 msgid "Last change"
-msgstr ""
+msgstr "Zadnja sprememba"
 
 #: app/Module/ReviewChangesModule.php:161
 msgid "Last email reminder was sent "
@@ -8573,7 +8573,7 @@ msgstr "Maldivy"
 #: app/Http/RequestHandlers/IndividualPage.php:287
 #: app/Module/StatisticsChartModule.php:789
 msgid "Male"
-msgstr "moški"
+msgstr "Moško"
 
 #: app/Statistics/Google/ChartAge.php:110
 #: app/Statistics/Google/ChartMarriageAge.php:133
@@ -9545,7 +9545,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:46
 msgid "Most viewed pages"
-msgstr ""
+msgstr "Največkrat ogledane strani"
 
 #: resources/views/search-advanced-page.phtml:59
 #: resources/xml/reports/bdm_report.xml:120
@@ -9634,7 +9634,7 @@ msgstr ""
 #: app/Http/RequestHandlers/AccountEdit.php:88
 #: app/Module/ModuleThemeTrait.php:325 app/Module/UserWelcomeModule.php:114
 msgid "My account"
-msgstr ""
+msgstr "Moj račun"
 
 #: app/Http/RequestHandlers/CreateTreePage.php:57
 msgid "My family tree"
@@ -9642,7 +9642,7 @@ msgstr ""
 
 #: app/Module/ModuleThemeTrait.php:340 app/Module/UserWelcomeModule.php:107
 msgid "My individual record"
-msgstr ""
+msgstr "Moj osebni zapis"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/UserPage.php:90 app/Module/ModuleThemeTrait.php:355
@@ -9650,15 +9650,15 @@ msgstr ""
 #: resources/views/admin/modules.phtml:181
 #: resources/views/layouts/administration.phtml:54
 msgid "My page"
-msgstr ""
+msgstr "Moja stran"
 
 #: app/Module/ModuleThemeTrait.php:369
 msgid "My pages"
-msgstr ""
+msgstr "Moje strani"
 
 #: app/Module/ModuleThemeTrait.php:403
 msgid "My pedigree"
-msgstr ""
+msgstr "Moj rodovnik"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:335
@@ -10099,7 +10099,7 @@ msgstr "Nórsko"
 
 #: resources/views/admin/control-panel.phtml:328
 msgid "Not approved by an administrator"
-msgstr "Nepreverjeno s strani upravitelja"
+msgstr "Upravitelj ni odobril"
 
 #. I18N: gedcom tag _NLIV
 #: app/GedcomTag.php:1993
@@ -10372,7 +10372,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/OnThisDayModule.php:90
 msgid "On this day"
-msgstr ""
+msgstr "Na današnji dan"
 
 #: app/Http/Controllers/CalendarController.php:148
 msgid "On this day…"
@@ -12972,7 +12972,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/GedcomTag.php:2050 app/Module/SlideShowModule.php:187
 msgid "Slide show"
-msgstr ""
+msgstr "Galerija slik"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:463
@@ -13144,7 +13144,7 @@ msgstr "Raje uporabi dejstva virov"
 #: resources/xml/reports/individual_ext_report.xml:644
 #: resources/xml/reports/individual_report.xml:646
 msgid "Sources"
-msgstr "virov"
+msgstr "Viri"
 
 #: resources/xml/reports/missing_facts_report.xml:14
 msgid "Sources to the events"
@@ -14147,12 +14147,12 @@ msgstr ""
 #: resources/views/admin/modules.phtml:248
 #: resources/views/admin/users-edit.phtml:180
 msgid "Theme"
-msgstr ""
+msgstr "Videz"
 
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:45
 msgid "Theme change"
-msgstr ""
+msgstr "Sprememba videza"
 
 #: app/Http/Controllers/Admin/ModuleController.php:268
 #: resources/views/admin/control-panel.phtml:489
@@ -14200,10 +14200,10 @@ msgstr ""
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "V zadnjem %s dnevu ni bilo sprememb."
+msgstr[1] "V zadnjih %s dneh ni bilo sprememb."
+msgstr[2] "V zadnjih %s dneh ni bilo sprememb."
+msgstr[3] "V zadnjih %s dneh ni bilo sprememb."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:107
 #, php-format
@@ -14310,7 +14310,7 @@ msgstr[3] ""
 
 #: app/Module/SlideShowModule.php:163
 msgid "This family tree has no images to display."
-msgstr ""
+msgstr "Ta družina še nima slik za prikaz."
 
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:7
@@ -14626,10 +14626,10 @@ msgstr ""
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "To stran so si obiskovalci in uporabniki ogledali %s krat."
+msgstr[1] "To stran so si obiskovalci in uporabniki ogledali %s krat."
+msgstr[2] "To stran so si obiskovalci in uporabniki ogledali %s krat."
+msgstr[3] "To stran so si obiskovalci in uporabniki ogledali %s krat."
 
 #: resources/views/help/pending-changes.phtml:12
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
@@ -15018,20 +15018,20 @@ msgstr ""
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Najpogostejše %s osebno ime"
+msgstr[1] "Najpogostejši %s osebni imeni"
+msgstr[2] "Najpogostejših %s osebnih imen"
+msgstr[3] "Najpogostejših %s osebnih imen"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:161
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Najpogostejši %s priimek"
+msgstr[1] "Najpogostejša %s priimka"
+msgstr[2] "Najpogostejših %s priimkov"
+msgstr[3] "Najpogostejših %s priimkov"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:101
@@ -15402,7 +15402,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:100
 msgid "Upcoming events"
-msgstr ""
+msgstr "Prihajajoče obletnice"
 
 #: app/Http/RequestHandlers/DataFixData.php:108
 #: resources/views/modules/batch_update/admin.phtml:77
@@ -15552,7 +15552,7 @@ msgstr "Uporabnik se ni potrdil v tednu dni."
 
 #: resources/views/admin/users-cleanup.phtml:50
 msgid "User not verified by administrator."
-msgstr "Uporabnika ni potrdil upravitelj."
+msgstr "Upravitelj ni potrdil uporabnika."
 
 #: app/Http/RequestHandlers/VerifyEmail.php:73
 msgid "User verification"
@@ -15846,7 +15846,7 @@ msgstr "Teža"
 #: app/Module/UserWelcomeModule.php:122
 #, php-format
 msgid "Welcome %s"
-msgstr ""
+msgstr "Dobrodošli %s"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:19
@@ -15906,7 +15906,7 @@ msgstr ""
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:42
 msgid "Who is online"
-msgstr ""
+msgstr "Kdo je prijavljen"
 
 #: resources/views/admin/data-fix-page.phtml:80
 msgid "Why does this list include records that do not need to be updated?"
@@ -16042,7 +16042,7 @@ msgstr ""
 #: resources/views/admin/users-edit.phtml:157
 #: resources/views/edit-account-page.phtml:141
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr ""
+msgstr "Ali želite biti vidni drugim uporabnikom medtem, ko boste prijavljeni."
 
 #. I18N: %s is a URL
 #: resources/views/edit/raw-gedcom-fact.phtml:18
@@ -16542,7 +16542,7 @@ msgstr "pogreb"
 
 #: app/GedcomTag.php:2026
 msgid "by"
-msgstr ""
+msgstr "od"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:345
@@ -19835,7 +19835,7 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:277
 #: resources/xml/reports/change_report.xml:7
 msgid "sort by date"
-msgstr ""
+msgstr "razvrsti po datumu"
 
 #. I18N: A button label.
 #: resources/views/edit/reorder-children.phtml:41
