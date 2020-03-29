@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-28 14:08+0000\nLast-Translator: Jeongwan Nam <jeongwann@gmail.com>\nLanguage-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\nLanguage: ko\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-29 16:29+0000\nLast-Translator: Jeongwan Nam <jeongwann@gmail.com>\nLanguage-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\nLanguage: ko\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -43,7 +43,7 @@ msgstr "%1$s %2$s 에 %4$s 에 대한 %3$s 링크가 있습니다."
 #: app/Functions/Functions.php:2358
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s %2$s  오름차순으로 삭제 된 횟수"
+msgstr "%1$s %2$s  오름차순으로 제거"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2362
@@ -103,21 +103,21 @@ msgstr "%1$s 은(는)  %2$s 이지만 %3$s 이(가) 예상됩니다."
 #: app/Functions/Functions.php:572
 #, php-format
 msgid "%1$s × %2$s"
-msgstr "%1$s x %2$s"
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:550
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr "%1$s x %2$s"
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:527
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr "%1$s x %2$s"
+msgstr "%1$s ×  %2$s"
 
 #. I18N: image dimensions, width × height
 #: app/Http/Controllers/Admin/MediaController.php:363 app/MediaFile.php:361
@@ -129,12 +129,12 @@ msgstr "%1$s × %2$s 픽셀"
 #: app/Individual.php:578 app/Module/StatisticsChartModule.php:872
 #, php-format
 msgid "%1$s–%2$s"
-msgstr "%1$s-%2$s"
+msgstr "%1$s–%2$s"
 
 #: app/Functions/Functions.php:2380
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr "%1$s's%2$s"
+msgstr "%1$s's %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:600
@@ -305,7 +305,7 @@ msgstr[0] "로그인 한 사용자 %s"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] "%s 출처가 업데이트되었습니다."
+msgstr[0] "%s 출처가 업데이트 되었습니다."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2350
@@ -439,19 +439,19 @@ msgstr "&lt;선택&gt;"
 #: app/Age.php:172
 #, php-format
 msgid "(aged %s)"
-msgstr "나이 %s"
+msgstr "(나이 %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/Age.php:163
 #, php-format
 msgid "(aged less than %s)"
-msgstr "%s 이하의 나이"
+msgstr "(%s 이하의 나이)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
 #: app/Age.php:168
 #, php-format
 msgid "(aged more than %s)"
-msgstr "%s 이상의 나이"
+msgstr "(%s 이상의 나이)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:28
