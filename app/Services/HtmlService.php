@@ -44,13 +44,16 @@ class HtmlService
 
         $config->set('HTML.TidyLevel', 'none'); // Only XSS cleaning now
 
-        $def = $config->getHTMLDefinition(true);
+        // Remove the default maximum width/height for images.  This enables percentage values.
+        $config->set('CSS.MaxImgLength', null);
 
-        // Allow image maps.
-        $def->addAttribute('img', 'usemap', 'CDATA');
+        $def = $config->getHTMLDefinition(true);
 
         // Allow link targets.
         $def->addAttribute('a', 'target', new HTMLPurifier_AttrDef_Enum(['_blank', '_self', '_target', '_top']));
+
+        // Allow image maps.
+        $def->addAttribute('img', 'usemap', 'CDATA');
 
         $map = $def->addElement('map', 'Block', 'Flow', 'Common', [
             'name'  => 'CDATA',
