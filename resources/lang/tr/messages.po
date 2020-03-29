@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-02-03 09:12+0000\n"
-"PO-Revision-Date: 2019-12-28 21:10+0000\n"
-"Last-Translator: Suleyman <hsarslan@yahoo.com>\n"
-"Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
-"Language: tr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-29 16:29+0000\nLast-Translator: Suleyman <hsarslan@yahoo.com>\nLanguage-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\nLanguage: tr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -621,7 +609,7 @@ msgstr "<varsayılan tema>"
 
 #: resources/views/register-page.phtml:24
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr "<div class=\"largeError\">Uyarı:</div><div class=\"error\">Bu formu doldurup göndererek sitemizde listelenen yaşayan kişilerin mahremiyetini korumayı kabul etmiş sayılırsınız.<ul><li>Aşağıdaki metin kutusuna kendiniz hakkında detaylı açıklama yapın veya sitemizde kayıtlı, sizin hakkınızda bilgi alabileceğimiz referans kişiyi giriniz.</li></ul></div>"
+msgstr "<div class=\"largeError\">Uyarı:</div><div class=\"error\">Bu formu doldurup göndererek: <ul><li>sitemizde listelenen yaşayan kişilerin mahremiyetini korumayı kabul etmiş sayılırsınız;</li><li>Aşağıdaki metin kutusuna kendiniz hakkında detaylı açıklama yapın veya sitemizde kayıtlı, sizin hakkınızda bilgi alabileceğimiz referans kişiyi giriniz.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:599 app/Functions/FunctionsPrintFacts.php:562
@@ -773,7 +761,7 @@ msgstr "Kaynakların listesi."
 #. I18N: Description of the “Shared submitters” module
 #: app/Module/SubmitterListModule.php:64
 msgid "A list of submitters."
-msgstr ""
+msgstr "Gönderenlerin listesi."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:69
@@ -1206,7 +1194,7 @@ msgstr "%s sepete ekle"
 
 #: resources/views/modules/relatives/family.phtml:207
 msgid "Add a brother"
-msgstr ""
+msgstr "Erkek kardeş ekle"
 
 #: app/Http/Controllers/EditFamilyController.php:57
 #: resources/views/family-page-children.phtml:35
@@ -1222,7 +1210,7 @@ msgstr "Tek ebeveyn 'li bir aile oluşturmak için bir çocuk ekle"
 
 #: resources/views/modules/relatives/family.phtml:211
 msgid "Add a daughter"
-msgstr ""
+msgstr "Kız kardeş ekle"
 
 #: resources/views/edit/raw-gedcom-record.phtml:47
 msgid "Add a fact"
@@ -1304,15 +1292,15 @@ msgstr "Yeni bir paylaşılan not ekle"
 
 #: resources/views/modules/relatives/family.phtml:215
 msgid "Add a sibling"
-msgstr ""
+msgstr "Kardeş ekle"
 
 #: resources/views/modules/relatives/family.phtml:211
 msgid "Add a sister"
-msgstr ""
+msgstr "Kız kardeş ekle"
 
 #: resources/views/modules/relatives/family.phtml:207
 msgid "Add a son"
-msgstr ""
+msgstr "Oğul ekle"
 
 #: resources/views/family-page.phtml:110 resources/views/media-page.phtml:161
 #: resources/views/modules/sources_tab/tab.phtml:43
@@ -1381,7 +1369,7 @@ msgstr "Evlilik detayları ekle"
 #. I18N: Name of a module
 #: app/Module/FixMissingMarriedNames.php:70
 msgid "Add married names"
-msgstr ""
+msgstr "Evli isimler ekle"
 
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:59
@@ -1919,7 +1907,7 @@ msgstr "Bireylerin atalarını ve soyunu gösteren kum saati çizelgesi."
 
 #: resources/views/edit/reorder-families.phtml:65
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr ""
+msgstr "Bir birey birden fazla ebeveyn grubuna sahip olabilir. Örneğin, doğum ve evlat edinme."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:63
@@ -3966,12 +3954,12 @@ msgstr "Kontrol paneli"
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:61
 msgid "Convert CEME tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "CEME etiketlerini GEDCOM 5.5.1'e dönüştür"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:49
 msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "_PRIM etiketlerini GEDCOM 5.5.1'e dönüştürme"
 
 #: app/Http/RequestHandlers/HelpText.php:266
 #: resources/views/admin/trees-export.phtml:65
@@ -3982,7 +3970,7 @@ msgstr "UTF-8 den ISO-8859-1 dönüştür"
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr ""
+msgstr "Şuna Dönüştür"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
@@ -4334,7 +4322,7 @@ msgstr "Veri kontrolü"
 #: resources/views/admin/data-fix-page.phtml:68
 #: resources/views/admin/data-fix-select.phtml:28
 msgid "Data fix"
-msgstr ""
+msgstr "Veri düzeltme"
 
 #: app/Http/Controllers/Admin/ModuleController.php:142
 #: app/Http/RequestHandlers/DataFixChoose.php:69
@@ -4344,11 +4332,11 @@ msgstr ""
 #: resources/views/admin/data-fix-page.phtml:23
 #: resources/views/admin/trees.phtml:132
 msgid "Data fixes"
-msgstr ""
+msgstr "Veri düzeltmeleri"
 
 #: resources/views/help/data-fixes.phtml:8
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
-msgstr ""
+msgstr "Veri düzeltmeleri çok sayıda yavaş hesaplama gerektirebilir, bu nedenle güncellenmesi gereken kayıtların tam bir listesini oluşturmak mümkün değildir."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
@@ -6441,7 +6429,7 @@ msgstr "Örneğin, yol uzaklğını 2 olarak belirtirseniz, şahıs torununu(ço
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr ""
+msgstr "Örneğin, ölüm olayı olmayan kişileri hızlı bir şekilde bulabiliriz, ancak bireyin öldüğünü hesaplamak çok daha yavaştır."
 
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
@@ -11622,7 +11610,7 @@ msgstr "Değiştir"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:72
 msgid "Replace cemetery tags with burial places."
-msgstr ""
+msgstr "Mezarlık etiketlerini mezar yerleri ile değiştirin."
 
 #: resources/views/search-replace-page.phtml:26
 msgid "Replace with"
@@ -13309,7 +13297,7 @@ msgstr "Gönderiler"
 
 #: resources/views/lists/submitters-table.phtml:60
 msgid "Submitter name"
-msgstr ""
+msgstr "Gönderen adı"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/ListController.php:548
@@ -13318,7 +13306,7 @@ msgstr ""
 #: resources/views/admin/merge-records-step-1.phtml:29
 #: resources/views/lists/submitters-table.phtml:55
 msgid "Submitters"
-msgstr ""
+msgstr "Gönderenler"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -13774,7 +13762,7 @@ msgstr "Dosya “%s” mevcut değil."
 
 #: resources/views/edit/reorder-families.phtml:67
 msgid "The first family in the list will be used in charts, lists, reports, etc."
-msgstr ""
+msgstr "Listedeki ilk aile grafiklerde, raporlarda vb. listelerde Kullanılacaktır."
 
 #: app/Http/RequestHandlers/DeletePath.php:71
 #, php-format
@@ -13848,7 +13836,7 @@ msgstr "Listeler menüsü."
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:37
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "Bu yerin konumu bilinmiyor."
 
 #: app/Http/Controllers/EditMediaController.php:284
 #, php-format
@@ -14480,7 +14468,7 @@ msgstr "Bu bağlantı bir saat geçerlidir."
 
 #: resources/views/help/data-fixes.phtml:16
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
-msgstr ""
+msgstr "Bu liste basit (ancak hızlı) bir arama kullanılarak oluşturulur ve bu nedenle güncellenmeyecek kayıtlar içerir."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -15383,7 +15371,7 @@ msgstr "Yer isimlerini güncelle"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:74
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
-msgstr ""
+msgstr "Yer adlarının üst düzey bölümlerini alt düzey parçaları tutarak güncelleyin."
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -15836,7 +15824,7 @@ msgstr "Yeni yakın akraba kaydı eklerken, kaynak kayıtlarına (birey ve aile)
 
 #: resources/views/edit/reorder-families.phtml:24
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr ""
+msgstr "Bir birey birden fazla eşe sahipse, aileleri tarih sırasına göre sıralamanız gerekir."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:892
@@ -15868,7 +15856,7 @@ msgstr "Kimler çevrimiçi"
 
 #: resources/views/admin/data-fix-page.phtml:80
 msgid "Why does this list include records that do not need to be updated?"
-msgstr ""
+msgstr "Bu liste neden güncellenmesi gerekmeyen kayıtları içeriyor?"
 
 #: resources/views/lists/families-table.phtml:173
 msgid "Widow"
@@ -19666,7 +19654,7 @@ msgstr "göster"
 #: resources/views/modules/recent_changes/changes-list.phtml:21
 #: resources/views/modules/yahrzeit/list.phtml:20
 msgid "show more"
-msgstr ""
+msgstr "Daha fazla göster"
 
 #: resources/views/modules/statistics-chart/custom.phtml:200
 msgid "show the chart"
@@ -20309,7 +20297,7 @@ msgstr "“%s” silindi."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:60
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "“Vurgulanan görüntü” (_PRIM) etiketleri, bazı şecere uygulamaları tarafından bir kişinin tercih ettiği görüntüyü belirtmek için kullanılır. Alternatif olarak, görüntüleri tercih edilen görüntü ilk sırada listelenecek şekilde yeniden sıralanabilir."
 
 #: app/Functions/FunctionsPrint.php:93 app/Note.php:160
 #: app/Report/ReportParserGenerate.php:985
