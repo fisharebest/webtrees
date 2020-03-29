@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-01-03 08:31+0000\n"
+"PO-Revision-Date: 2020-03-31 19:04+0000\n"
 "Last-Translator: Suleyman <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/tr/>\n"
@@ -717,7 +717,12 @@ msgstr "<varsayılan tema>"
 
 #: login.php:409
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr "<div class=\"largeError\">Uyarı:</div><div class=\"error\">Bu formu doldurup göndererek sitemizde listelenen yaşayan kişilerin mahremiyetini korumayı kabul etmiş sayılırsınız.<ul><li>Aşağıdaki metin kutusuna kendiniz hakkında detaylı açıklama yapın veya sitemizde kayıtlı, sizin hakkınızda bilgi alabileceğimiz referans kişiyi giriniz.</li></ul></div>"
+msgstr ""
+"<div class=\"largeError\">Uyarı:</div><div class=\"error\">Bu formu doldurup "
+"göndererek: <ul><li>sitemizde listelenen yaşayan kişilerin mahremiyetini "
+"korumayı kabul etmiş sayılırsınız;</li><li>Aşağıdaki metin kutusuna kendiniz "
+"hakkında detaylı açıklama yapın veya sitemizde kayıtlı, sizin hakkınızda "
+"bilgi alabileceğimiz referans kişiyi giriniz.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:413 app/Functions/FunctionsPrintFacts.php:545
