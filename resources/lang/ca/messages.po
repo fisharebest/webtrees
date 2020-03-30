@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-02-03 09:12+0000\n"
-"PO-Revision-Date: 2020-01-11 10:59+0000\n"
-"Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
-"Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
-"Language: ca\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-31 19:05+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -777,7 +761,7 @@ msgstr "Llistat de fonts."
 #. I18N: Description of the “Shared submitters” module
 #: app/Module/SubmitterListModule.php:64
 msgid "A list of submitters."
-msgstr ""
+msgstr "Una llista de remitents."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:69
@@ -1210,7 +1194,7 @@ msgstr "Posa %s al cistell"
 
 #: resources/views/modules/relatives/family.phtml:207
 msgid "Add a brother"
-msgstr ""
+msgstr "Afegiu un germà"
 
 #: app/Http/Controllers/EditFamilyController.php:57
 #: resources/views/family-page-children.phtml:35
@@ -1226,7 +1210,7 @@ msgstr "Afegiu un fill/a per crear una família monoparental"
 
 #: resources/views/modules/relatives/family.phtml:211
 msgid "Add a daughter"
-msgstr ""
+msgstr "Afegiu una filla"
 
 #: resources/views/edit/raw-gedcom-record.phtml:47
 msgid "Add a fact"
@@ -1266,7 +1250,7 @@ msgstr "Afegiu una nova entrada a l’Agenda"
 #: resources/views/media-page.phtml:191
 #: resources/views/modals/add-media-file.phtml:10
 msgid "Add a media file"
-msgstr "Afegeix un fitxer multimèdia"
+msgstr "Afegiu un fitxer multimèdia"
 
 #: resources/views/cards/add-media-object.phtml:10
 #: resources/views/family-page.phtml:98
@@ -1308,15 +1292,15 @@ msgstr "Afegiu una nota compartida"
 
 #: resources/views/modules/relatives/family.phtml:215
 msgid "Add a sibling"
-msgstr ""
+msgstr "Afegiu un/a germà/na"
 
 #: resources/views/modules/relatives/family.phtml:211
 msgid "Add a sister"
-msgstr ""
+msgstr "Afegiu una germana"
 
 #: resources/views/modules/relatives/family.phtml:207
 msgid "Add a son"
-msgstr ""
+msgstr "Afegiu un fill"
 
 #: resources/views/family-page.phtml:110 resources/views/media-page.phtml:161
 #: resources/views/modules/sources_tab/tab.phtml:43
@@ -1385,7 +1369,7 @@ msgstr "Afegiu detalls del casament"
 #. I18N: Name of a module
 #: app/Module/FixMissingMarriedNames.php:70
 msgid "Add married names"
-msgstr ""
+msgstr "Afegiu noms de casada"
 
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:59
@@ -1923,7 +1907,7 @@ msgstr "Gràfic de rellotge de sorra dels ascendents i descendents d'una persona
 
 #: resources/views/edit/reorder-families.phtml:65
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr ""
+msgstr "Una persona pot tenir més d’una parella de pares.  Per exemple de naixement i d'adopció."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:63
@@ -3970,12 +3954,12 @@ msgstr "Panell de control"
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:61
 msgid "Convert CEME tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Converteix etiquetes CEME a GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:49
 msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Converteix etiquetes _PRIM a GEDCOM 5.5.1"
 
 #: app/Http/RequestHandlers/HelpText.php:266
 #: resources/views/admin/trees-export.phtml:65
@@ -3986,7 +3970,7 @@ msgstr "Converteix d’UTF-8 a ISO-8859-1"
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr ""
+msgstr "Converteix a"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
@@ -4102,7 +4086,7 @@ msgstr "Crea una nova font"
 #: app/Functions/FunctionsEdit.php:576
 #: resources/views/modals/create-submitter.phtml:11
 msgid "Create a submitter"
-msgstr "Crea un peticionari"
+msgstr "Crea un remitent"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:215
 msgid "Create a temporary folder…"
@@ -4338,7 +4322,7 @@ msgstr "Controlador de dades"
 #: resources/views/admin/data-fix-page.phtml:68
 #: resources/views/admin/data-fix-select.phtml:28
 msgid "Data fix"
-msgstr ""
+msgstr "Correcció de dades"
 
 #: app/Http/Controllers/Admin/ModuleController.php:142
 #: app/Http/RequestHandlers/DataFixChoose.php:69
@@ -4348,11 +4332,11 @@ msgstr ""
 #: resources/views/admin/data-fix-page.phtml:23
 #: resources/views/admin/trees.phtml:132
 msgid "Data fixes"
-msgstr ""
+msgstr "Correccions de dades"
 
 #: resources/views/help/data-fixes.phtml:8
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
-msgstr ""
+msgstr "Les correccions de dades poden requerir molts càlculs lents, de manera que no és possible crear una llista exacta de registres que calin actualitzar."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:20
@@ -6445,7 +6429,7 @@ msgstr "Per exemple, si s’especifica una longitud de recorregut de 2, l’usua
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr ""
+msgstr "Per exemple, podem trobar ràpidament persones de les qui no hi ha l'esdeveniment de defunció, però és molt més lent calcular si l’individu és mort."
 
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
@@ -11626,7 +11610,7 @@ msgstr "Substitueix"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:72
 msgid "Replace cemetery tags with burial places."
-msgstr ""
+msgstr "Substituïu les etiquetes de cementiri per llocs d'enterrament."
 
 #: resources/views/search-replace-page.phtml:26
 msgid "Replace with"
@@ -13309,11 +13293,11 @@ msgstr "Presentat però pendent d’aprovació"
 #: app/GedcomTag.php:1037 resources/views/admin/trees.phtml:247
 #: resources/views/modules/recent_changes/changes-table.phtml:75
 msgid "Submitter"
-msgstr "Presentador"
+msgstr "Remitent"
 
 #: resources/views/lists/submitters-table.phtml:60
 msgid "Submitter name"
-msgstr ""
+msgstr "Nom del remitent"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/ListController.php:548
@@ -13322,7 +13306,7 @@ msgstr ""
 #: resources/views/admin/merge-records-step-1.phtml:29
 #: resources/views/lists/submitters-table.phtml:55
 msgid "Submitters"
-msgstr ""
+msgstr "Remitents"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -13778,7 +13762,7 @@ msgstr "El fitxer «%s» no existeix."
 
 #: resources/views/edit/reorder-families.phtml:67
 msgid "The first family in the list will be used in charts, lists, reports, etc."
-msgstr ""
+msgstr "La primera família de la llista s'utilitzarà en gràfics, llistes, informes, etc."
 
 #: app/Http/RequestHandlers/DeletePath.php:71
 #, php-format
@@ -13852,7 +13836,7 @@ msgstr "Menú de llistats."
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:37
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "Es desconeix la ubicació d’aquest indret."
 
 #: app/Http/Controllers/EditMediaController.php:284
 #, php-format
@@ -14031,7 +14015,7 @@ msgstr "S'ha creat la font"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:76
 msgid "The submitter has been created"
-msgstr "S'ha creat el presentador"
+msgstr "S'ha creat el remitent"
 
 #: resources/views/help/name.phtml:13
 #, php-format
@@ -14484,7 +14468,7 @@ msgstr "Aquest enllaç serà vàlid durant una hora."
 
 #: resources/views/help/data-fixes.phtml:16
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
-msgstr ""
+msgstr "Aquesta llista es crea mitjançant una cerca senzilla (però ràpida) i, per tant, inclou registres que no s’actualitzaran."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -15387,7 +15371,7 @@ msgstr "Actualització dels noms d’indret"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:74
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
-msgstr ""
+msgstr "Actualitza les parts dels noms d'indret de nivell superior, mantenint les parts de nivell inferior."
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -15840,7 +15824,7 @@ msgstr "A l'agregar nous parents directes, podeu afegir als registres cites de f
 
 #: resources/views/edit/reorder-families.phtml:24
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr ""
+msgstr "Quan una persona té més d’un cònjuge, hauríeu d’ordenar les famílies cronològicament."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:892
@@ -15872,7 +15856,7 @@ msgstr "Qui hi ha en línia"
 
 #: resources/views/admin/data-fix-page.phtml:80
 msgid "Why does this list include records that do not need to be updated?"
-msgstr ""
+msgstr "Per què aquesta llista inclou els registres que no han de ser actualitzats?"
 
 #: resources/views/lists/families-table.phtml:173
 msgid "Widow"
@@ -19670,7 +19654,7 @@ msgstr "mostra"
 #: resources/views/modules/recent_changes/changes-list.phtml:21
 #: resources/views/modules/yahrzeit/list.phtml:20
 msgid "show more"
-msgstr ""
+msgstr "mostra'n més"
 
 #: resources/views/modules/statistics-chart/custom.phtml:200
 msgid "show the chart"
@@ -19853,7 +19837,7 @@ msgstr "cònjuge"
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: app/Services/EmailService.php:223
 msgid "ssl"
-msgstr "ssl"
+msgstr "SSL"
 
 #: app/Functions/Functions.php:1086
 msgctxt "father’s wife’s son"
@@ -20065,7 +20049,7 @@ msgstr "tres quarts de cercle"
 #. I18N: Transport Layer Security - a secure communications protocol
 #: app/Services/EmailService.php:225 resources/views/admin/site-mail.phtml:43
 msgid "tls"
-msgstr "tls"
+msgstr "TLS"
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:369
@@ -20313,7 +20297,7 @@ msgstr "%s ha estat eliminat."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:60
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "Algunes aplicacions genealògiques utilitzen les etiquetes \"Imatge destacada\" (_PRIM) per indicar la imatge preferida per a una persona. Una alternativa és tornar a ordenar les imatges de manera que es mostri primer la preferida."
 
 #: app/Functions/FunctionsPrint.php:93 app/Note.php:160
 #: app/Report/ReportParserGenerate.php:985
