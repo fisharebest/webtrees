@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-01-11 10:59+0000\n"
+"PO-Revision-Date: 2020-03-31 19:04+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
@@ -13267,7 +13267,7 @@ msgstr "Presentat però pendent d’aprovació"
 #. I18N: gedcom tag SUBM
 #: app/GedcomTag.php:810
 msgid "Submitter"
-msgstr "Presentador"
+msgstr "Remitent"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6868
@@ -19720,7 +19720,7 @@ msgstr "cònjuge"
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: admin_site_config.php:112
 msgid "ssl"
-msgstr "ssl"
+msgstr "SSL"
 
 #: app/Functions/Functions.php:1142
 msgctxt "father’s wife’s son"
@@ -19931,7 +19931,7 @@ msgstr "tres quarts de cercle"
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:113
 msgid "tls"
-msgstr "tls"
+msgstr "TLS"
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:319
