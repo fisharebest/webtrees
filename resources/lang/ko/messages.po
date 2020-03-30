@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-29 16:29+0000\nLast-Translator: Jeongwan Nam <jeongwann@gmail.com>\nLanguage-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\nLanguage: ko\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-03-31 19:05+0000\nLast-Translator: Jeongwan Nam <jeongwann@gmail.com>\nLanguage-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\nLanguage: ko\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -43,7 +43,7 @@ msgstr "%1$s %2$s 에 %4$s 에 대한 %3$s 링크가 있습니다."
 #: app/Functions/Functions.php:2358
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s %2$s  오름차순으로 제거"
+msgstr "%1$s %2$s  오름차순으로 삭제 된 횟수"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2362
@@ -72,7 +72,7 @@ msgstr "%1$s 존재하지 않음"
 #: app/Http/Controllers/AdminTreesController.php:278
 #, php-format
 msgid "%1$s does not exist."
-msgstr "%1$s 존재하지 않음"
+msgstr "%1$s 존재하지 않음."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:275
@@ -91,7 +91,7 @@ msgstr "%1$s 에 %2$s 에 대한 링크가 없습니다."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "%1$s 파일이 %2$s 초 안에 압축이 풀렸습니다."
+msgstr[0] "%1$s 파일들이 %2$s 초 안에 압축이 풀렸습니다."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: app/Http/Controllers/AdminTreesController.php:299
@@ -110,14 +110,14 @@ msgstr "%1$s × %2$s"
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr "%1$s × %2$s"
+msgstr "%1$s x %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:527
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr "%1$s ×  %2$s"
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: app/Http/Controllers/Admin/MediaController.php:363 app/MediaFile.php:361
@@ -177,7 +177,7 @@ msgstr "%s 및 이를 참조하는 인물."
 #: app/Module/ClippingsCartModule.php:465
 #, php-format
 msgid "%s and their children"
-msgstr "%s 와 그들의 자녀"
+msgstr "%s 와 그들의 아이"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:467
@@ -189,7 +189,7 @@ msgstr "%s 와 그들의 자손"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] "익명으로 로그인 한 사용자 %s 명"
+msgstr[0] "익명으로 로그인 한 사용자들은 %s 명"
 
 #: resources/views/family-page-children.phtml:13
 #: resources/views/modules/ancestors-chart/tree.phtml:39
@@ -305,7 +305,7 @@ msgstr[0] "로그인 한 사용자 %s"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] "%s 출처가 업데이트 되었습니다."
+msgstr[0] "%s 출처가 업데이트되었습니다."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2350
@@ -336,7 +336,7 @@ msgstr "%s 가 내림차순으로 두 번 제거"
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] "%s 주"
+msgstr[0] "$%s 주"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Age.php:136 app/Functions/FunctionsDate.php:56
@@ -433,7 +433,7 @@ msgstr "%s, 그의 배우자와 후손"
 #: app/Module/UserMessagesModule.php:160
 #: resources/views/edit/add-fact-row.phtml:25
 msgid "&lt;select&gt;"
-msgstr "&lt;선택&gt;"
+msgstr "<선택&gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/Age.php:172
@@ -451,7 +451,7 @@ msgstr "(%s 이하의 나이)"
 #: app/Age.php:168
 #, php-format
 msgid "(aged more than %s)"
-msgstr "(%s 이상의 나이)"
+msgstr "%s 이상의 나이"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:28
