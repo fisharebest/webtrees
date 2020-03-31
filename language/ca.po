@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-03-31 19:04+0000\n"
+"PO-Revision-Date: 2020-04-01 15:09+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
@@ -5897,7 +5897,7 @@ msgstr "Fet 9"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1459
 msgid "Fact icons"
-msgstr "Icones de fets"
+msgstr "Icones d'esdeveniments"
 
 #: admin_trees_config.php:529 app/Functions/FunctionsPrint.php:614
 msgid "Fact or event"
