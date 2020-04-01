@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-21 05:51+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-04-01 15:09+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -17730,67 +17730,67 @@ msgstr "पर ×6 दादा/नाना"
 #: app/Functions/Functions.php:1352
 msgctxt "father’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr "दादी"
+msgstr "पिता की चाची"
 
 #: app/Functions/Functions.php:1048
 msgctxt "father’s father’s sister"
 msgid "great-aunt"
-msgstr "दादी"
+msgstr "पिता की बुआ"
 
 #: app/Functions/Functions.php:1358
 msgctxt "father’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr "दादी"
+msgstr "पिता की मामी"
 
 #: app/Functions/Functions.php:1060
 msgctxt "father’s mother’s sister"
 msgid "great-aunt"
-msgstr "दादी"
+msgstr "पिता की मासी"
 
 #: app/Functions/Functions.php:1364
 msgctxt "father’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr "दादी"
+msgstr "पिता की चाची/मामी"
 
 #: app/Functions/Functions.php:1072
 msgctxt "father’s parent’s sister"
 msgid "great-aunt"
-msgstr "दादी"
+msgstr "पिता की बुआ/मासी"
 
 #: app/Functions/Functions.php:1370
 msgctxt "mother’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr "नानी"
+msgstr "माँ की चाची"
 
 #: app/Functions/Functions.php:1128
 msgctxt "mother’s father’s sister"
 msgid "great-aunt"
-msgstr "नानी"
+msgstr "माँ की बुआ"
 
 #: app/Functions/Functions.php:1376
 msgctxt "mother’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr "नानी"
+msgstr "माँ की मामी"
 
 #: app/Functions/Functions.php:1146
 msgctxt "mother’s mother’s sister"
 msgid "great-aunt"
-msgstr "नानी"
+msgstr "माँ की मासी"
 
 #: app/Functions/Functions.php:1382
 msgctxt "mother’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr "नानी"
+msgstr "माँ की चाची/मामी"
 
 #: app/Functions/Functions.php:1158
 msgctxt "mother’s parent’s sister"
 msgid "great-aunt"
-msgstr "नानी"
+msgstr "माँ की बुआ/मासी"
 
 #: app/Functions/Functions.php:1388
 msgctxt "parent’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr "नानी/दादी"
+msgstr "माता/पिता की चाची"
 
 #: app/Functions/Functions.php:1180
 msgctxt "parent’s father’s sister"
