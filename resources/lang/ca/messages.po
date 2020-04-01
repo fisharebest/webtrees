@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-04-01 15:09+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-04-03 10:47+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -10349,7 +10349,7 @@ msgstr "Afegeix només els registres nous"
 #: app/Functions/FunctionsPrintFacts.php:1073
 #: resources/views/modals/restriction-fields.phtml:32
 msgid "Only managers can edit"
-msgstr "Solament els gestros poden editar"
+msgstr "Solament els gestors poden editar"
 
 #: resources/views/admin/map-import-form.phtml:69
 msgid "Only update existing records"
@@ -11686,7 +11686,7 @@ msgstr "Demaneu-ne una de nova"
 #: app/Module/WelcomeBlockModule.php:114 resources/views/login-page.phtml:65
 #: resources/views/modules/login_block/sign-in.phtml:44
 msgid "Request a new user account"
-msgstr "Sol·licitud d’accés"
+msgstr "Sol·liciteu un compte d'usuari"
 
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:2059 resources/views/modules/todo/research-tasks.phtml:38
@@ -12489,7 +12489,7 @@ msgstr "Mostra una política de privadesa."
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:62
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "Mostrar la conformitat amb les Normes d’Ús a la pàgina «Sol·licitud d’accés»"
+msgstr "Mostrar la conformitat amb les normes d’ús a la pàgina «Sol·liciteu un compte d'usuari»"
 
 #: resources/views/modules/notes/tab.phtml:16
 msgid "Show all notes"
@@ -12748,7 +12748,7 @@ msgstr "Mostra imatges en miniatura en els gràfics i grups familiars."
 #: app/Http/Controllers/AdminTreesController.php:760
 #: resources/views/modals/restriction-fields.phtml:21
 msgid "Show to managers"
-msgstr "Mostra-ho als gestrors"
+msgstr "Mostra-ho als gestors"
 
 #: app/Functions/FunctionsEdit.php:124 app/Functions/FunctionsEdit.php:247
 #: app/Functions/FunctionsEdit.php:268
@@ -15978,7 +15978,7 @@ msgstr "Heu iniciat la sessió com a %s."
 
 #: app/Http/RequestHandlers/LoginPage.php:96
 msgid "You can apply for an account using the link below."
-msgstr "Podeu sol·licitar accés utilitzant el següent enllaç."
+msgstr "Podeu sol·licitar un compte mitjançant l’enllaç següent."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:64
@@ -16067,7 +16067,7 @@ msgstr "Heu d’especificar un registre personal per poder restringir l’usuari
 
 #: app/Http/RequestHandlers/LoginPage.php:88
 msgid "You need to be a family member to access this website."
-msgstr "Per accedir a aquest lloc web heu de ser un membre de la família."
+msgstr "Per accedir-hi cal ser membre de la família."
 
 #: app/Http/RequestHandlers/LoginPage.php:85
 msgid "You need to be an authorized user to access this website."
@@ -16608,7 +16608,7 @@ msgstr "llista compacta"
 #: resources/views/register-page.phtml:99
 #: resources/views/report-select-page.phtml:32
 msgid "continue"
-msgstr "continua"
+msgstr "continueu"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:52
