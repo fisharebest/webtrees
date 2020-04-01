@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-04-01 15:09+0000\n"
+"PO-Revision-Date: 2020-04-03 10:47+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
@@ -10267,7 +10267,7 @@ msgstr "En tal dia com avui…"
 #: app/Functions/FunctionsPrintFacts.php:839
 #: app/Functions/FunctionsPrintFacts.php:1105
 msgid "Only managers can edit"
-msgstr "Solament els gestros poden editar"
+msgstr "Solament els gestors poden editar"
 
 #: site-unavailable.php:79
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -11602,7 +11602,7 @@ msgstr "Demaneu-ne una de nova"
 #: app/Module/LoginBlockModule.php:90 app/Module/WelcomeBlockModule.php:60
 #: login.php:213 login.php:280
 msgid "Request a new user account"
-msgstr "Sol·licitud d’accés"
+msgstr "Sol·liciteu un compte d'usuari"
 
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:1743
@@ -12423,7 +12423,9 @@ msgstr "Al visor multimèdia mostra l'enllaç per descarregar"
 #. I18N: A configuration setting
 #: admin_site_config.php:506
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "Mostrar la conformitat amb les Normes d’Ús a la pàgina «Sol·licitud d’accés»"
+msgstr ""
+"Mostrar la conformitat amb les normes d’ús a la pàgina «Sol·liciteu un "
+"compte d'usuari»"
 
 #: app/Module/NotesTabModule.php:74
 msgid "Show all notes"
@@ -12723,7 +12725,7 @@ msgstr "Mostra imatges en miniatura en els gràfics i grups familiars."
 #: app/Functions/FunctionsPrintFacts.php:836
 #: app/Functions/FunctionsPrintFacts.php:1102
 msgid "Show to managers"
-msgstr "Mostra-ho als gestrors"
+msgstr "Mostra-ho als gestors"
 
 #: admin_trees_config.php:80 admin_trees_config.php:87
 #: admin_trees_config.php:368 admin_trees_config.php:432
@@ -15952,7 +15954,7 @@ msgstr "Heu iniciat la sessió com a %s."
 
 #: login.php:170 login.php:173 login.php:176
 msgid "You can apply for an account using the link below."
-msgstr "Podeu sol·licitar accés utilitzant el següent enllaç."
+msgstr "Podeu sol·licitar un compte mitjançant l’enllaç següent."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
@@ -16096,7 +16098,7 @@ msgstr "Heu d’especificar un registre personal per poder restringir l’usuari
 
 #: login.php:176
 msgid "You need to be a family member to access this website."
-msgstr "Per accedir a aquest lloc web heu de ser un membre de la família."
+msgstr "Per accedir-hi cal ser membre de la família."
 
 #: login.php:173
 msgid "You need to be an authorized user to access this website."
@@ -16627,7 +16629,7 @@ msgstr "llista compacta"
 #: login.php:228 login.php:498 reportengine.php:131 reportengine.php:265
 #: setup.php:190 setup.php:216 setup.php:298 setup.php:384 setup.php:449
 msgid "continue"
-msgstr "continua"
+msgstr "continueu"
 
 #. I18N: A button label.
 #: admin_trees_manage.php:688
