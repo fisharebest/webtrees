@@ -481,7 +481,7 @@ class GedcomRecord
             // The record is not private, but the individual facts may be.
 
             // Include the entire first line (for NOTE records)
-            [$gedrec] = explode("\n", $this->gedcom, 2);
+            [$gedrec] = explode("\n", $this->gedcom . $this->pending, 2);
 
             // Check each of the facts for access
             foreach ($this->facts([], false, $access_level) as $fact) {
