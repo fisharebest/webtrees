@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-03-20 12:08+0000\n"
+"PO-Revision-Date: 2020-04-20 14:19+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nb_NO/>\n"
@@ -3289,7 +3289,7 @@ msgstr "CKEditor™"
 
 #: admin_trees_manage.php:367
 msgid "Calculating…"
-msgstr "Beregner…"
+msgstr "Behandler…"
 
 #: app/Module/YahrzeitModule.php:280 app/Theme/AbstractTheme.php:1061
 #: lifespan.php:93
@@ -10654,7 +10654,7 @@ msgstr "Tittel (fonetisk)"
 #. I18N: Type of media object
 #: app/GedcomTag.php:1936
 msgid "Photo"
-msgstr "Bilde"
+msgstr "Fotografi"
 
 #: admin_pgv_to_wt.php:151
 msgid "PhpGedView might be installed in one of these folders:"
