@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-04-01 15:09+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-04-20 14:19+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -641,7 +641,7 @@ msgstr "किसी व्यक्ति के पूर्वजों औ�
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:95
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "एक व्यक्ति के पूर्वजों का चार्ट, एक कॉम्पैक्ट ट्री के रूप में।"
+msgstr "किसी व्यक्ति के पूर्वजों का चार्ट, एक कॉम्पैक्ट ट्री के रूप में।"
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:129
@@ -651,12 +651,12 @@ msgstr "किसी व्यक्ति के पूर्वजों क�
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:118
 msgid "A chart of an individual’s ancestors."
-msgstr "एक व्यक्ति के पूर्वजों का एक चार्ट।"
+msgstr "किसी व्यक्ति के पूर्वजों का एक चार्ट।"
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:118
 msgid "A chart of an individual’s descendants."
-msgstr "एक व्यक्ति के वंशजों का चार्ट।"
+msgstr "किसी व्यक्ति के वंशजों का चार्ट।"
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:94
@@ -852,19 +852,19 @@ msgstr "किसी व्यक्ति के पूर्वजों क�
 #: app/Module/AhnentafelReportModule.php:52
 #: resources/xml/reports/ahnentafel_report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "कहानी के अंदाज़ में एक व्यक्ति के पूर्वजों की एक रिपोर्ट।"
+msgstr "कथात्मक रुप में किसी व्यक्ति के पूर्वजों की एक रिपोर्ट।"
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:52
 #: resources/xml/reports/descendancy_report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr "कथा शैली में एक व्यक्ति के वंशजों की रिपोर्ट।"
+msgstr "कथा शैली में किसी व्यक्ति के वंशजों की रिपोर्ट।"
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:52
 #: resources/xml/reports/individual_report.xml:4
 msgid "A report of an individual’s details."
-msgstr "एक व्यक्ति के विवरण की रिपोर्ट।"
+msgstr "किसी व्यक्ति के विवरण की रिपोर्ट।"
 
 #: resources/xml/reports/fact_sources.xml:4
 msgid "A report of facts which are supported by a given source."
@@ -946,7 +946,7 @@ msgstr "एक भूमिका प्रवेश अधिकारों �
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:51
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr "एक व्यक्ति के करीबी परिवार और रिश्तेदारों को दर्शाने वाली साइडबार।"
+msgstr "किसी व्यक्ति के करीबी परिवार और रिश्तेदारों को दर्शाने वाली साइडबार।"
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/IndividualMetadataModule.php:67
@@ -1885,7 +1885,7 @@ msgstr "चार्ट प्रदर्शित करने का एक �
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:57
 msgid "An alternative way to enter census transcripts and link them to individuals."
-msgstr "जनगणना प्रतिलिपि में प्रवेश करने और उन्हें व्यक्तियों से जोड़ने का एक वैकल्पिक तरीका।"
+msgstr "जनगणना प्रतिलिपि में प्रवेश करने और उन्हें व्यक्तियों से जोड़ने का एक वैकल्पिक मार्ग।"
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:56
@@ -1899,11 +1899,11 @@ msgstr "साइन इन और साइन आउट करने का �
 
 #: app/Functions/FunctionsEdit.php:477
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr "एक सहयोगी एक अन्य व्यक्ति हैं जो इस तथ्य या वाक़या के साथ शामिल रहे, जैसे कि एक साक्षी या पुरोहित।"
+msgstr "कोई सहयोगी एक अन्य व्यक्ति हैं जो इस तथ्य या घटना के साथ शामिल रह चुके हैं, जैसे कि कोई साक्षी या पुरोहित।"
 
 #: app/Functions/FunctionsEdit.php:475
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-msgstr "एक सहयोगी एक अन्य व्यक्ति हैं जो इस व्यक्ति के साथ शामिल रहे, जैसे कि एक दोस्त या एक नियोक्ता।"
+msgstr "कोई सहयोगी एक अन्य व्यक्ति हैं जो इस व्यक्ति के साथ शामिल रह चुके हैं, जैसे कि कोई दोस्त या एक नियोक्ता।"
 
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:100
@@ -2010,7 +2010,7 @@ msgstr "अण्टीगुआ और बारबूडा"
 
 #: app/Http/RequestHandlers/LoginPage.php:82
 msgid "Anyone with a user account can access this website."
-msgstr "कोई भी यूज़र अकाउंट वाला व्यक्ति इस वेबसाइट को एक्सेस कर सकता है।"
+msgstr "यूज़र अकाउंट के साथ हर कोई व्यक्ति इस वेबसाइट को एक्सेस कर सकता है।"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:243
@@ -5034,7 +5034,7 @@ msgstr "अपना अकाउंट हटाएं"
 
 #: resources/views/family-page-menu.phtml:51
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr "परिवार को हटाना सभी व्यक्तियों को एक-दूसरे से अलग कर देगा लेकिन व्यक्तियों को उनकी जगह छोड़ देगा। क्या आप वाकई इस परिवार को हटाना चाहते हैं?"
+msgstr "परिवार को हटाने का कार्य सभी व्यक्तियों को एक-दूसरे से अलग कर देगा लेकिन व्यक्तियों को उनकी जगह पर ही छोड़ देगा। क्या आप वाकई इस परिवार को हटाना चाहते हैं?"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -7463,7 +7463,7 @@ msgstr "कुछ कैलेंडर में, दिन आधी रात
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:115
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
-msgstr "कुछ देशों में, गोपनीयता कानून न केवल जीवित व्यक्तियों पर लागू होते हैं, बल्कि उन लोगों पर भी लागू होते हैं जिनकी हाल ही में मृत्यु हुई हो। यह विकल्प आपको जीवित व्यक्तियों के लिए गोपनीयता नियमों का विस्तार करने की अनुमति देगा जो वर्षों की एक खास संख्या के भीतर जन्मे या मृत हुए। इस सुविधा को अक्षम करने के लिए इन मानों को खाली छोड़ दें।"
+msgstr "कुछ देशों में, गोपनीयता कानून न केवल जीवित व्यक्तियों पर लागू होते हैं, बल्कि उन लोगों पर भी लागू होते हैं जिनकी हाल ही में मृत्यु हुई हो। यह विकल्प आपको उन जीवित व्यक्तियों के लिए गोपनीयता नियमों का विस्तार करने की अनुमति देगा जो वर्षों की एक खास संख्या के भीतर जन्मे या मृत हुए। इस सुविधा को अक्षम करने के लिए इन मानों को खाली छोड़ दें।"
 
 #: app/Http/Controllers/CalendarController.php:151
 msgid "In this month…"
@@ -8341,7 +8341,7 @@ msgstr "युज़र अकाउंट को किसी व्यक्�
 #: app/Http/Controllers/EditIndividualController.php:528
 #: resources/views/modules/relatives/tab.phtml:105
 msgid "Link this individual to an existing family as a child"
-msgstr "इस व्यक्ति को एक बच्चे के रूप में किसी मौजूदा परिवार से जोड़ें"
+msgstr "इस व्यक्ति को एक सन्तान के रूप में किसी मौजूदा परिवार से जोड़ें"
 
 #: resources/views/media-page-menu.phtml:24
 #: resources/views/modals/link-media-to-family.phtml:10
@@ -8360,7 +8360,7 @@ msgstr "इस मीडिया ऑब्जेक्ट को किसी �
 
 #: resources/views/admin/users-edit.phtml:286
 msgid "Link this user to an individual in the family tree."
-msgstr "इस युज़र को फॅमिली ट्री में एक व्यक्ति से लिंक करें।"
+msgstr "इस युज़र को फॅमिली ट्री में किसी व्यक्ति से लिंक करें।"
 
 #. I18N: gedcom tag _DBID
 #: app/GedcomTag.php:1656
@@ -14303,7 +14303,7 @@ msgstr "यह व्यक्ति मौजूद नहीं है या 
 
 #: resources/views/individual-page.phtml:30
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "इस व्यक्ति को हटा दिया गया है। विलोपन की समीक्षा एक मॉडरेटर द्वारा की जानी चाहिए।"
+msgstr "इस व्यक्ति को हटा दिया गया है। विलोपन की समीक्षा किसी मॉडरेटर द्वारा की जानी चाहिए।"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page.phtml:27
@@ -14313,7 +14313,7 @@ msgstr "इस व्यक्ति को हटा दिया गया ह
 
 #: resources/views/individual-page.phtml:39
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
-msgstr "इस व्यक्ति को एडिट किया गया है। बदलाव की समीक्षा एक मॉडरेटर द्वारा की जानी चाहिए।"
+msgstr "इस व्यक्ति को एडिट किया गया है। बदलाव की समीक्षा किसी मॉडरेटर द्वारा की जानी चाहिए।"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page.phtml:36
@@ -15842,7 +15842,7 @@ msgstr "जब आप जानकारी जोड़ते हैं, एड
 
 #: resources/views/help/relationship-privacy.phtml:8
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr "जहां एक यूज़र एक फॅमिली ट्री में किसी व्यक्तिगत रिकॉर्ड से जुड़ा होता है और इसमें सदस्य, एडिटर या मॉडरेटर की भूमिका होती है, वहां आप उसके दूर दराज के जीवित रिश्तेदारों के विवरण तक पहुंचने पर रोक लगा सकते हैं। आप उन रिश्तेदारी की स्टेप्स की संख्या तय कर सकते हैं जो यूज़र को देखने की अनुमति होगी।"
+msgstr "जहां कोई यूज़र एक फॅमिली ट्री में किसी व्यक्तिगत रिकॉर्ड से जुड़ा होता है और इसमें सदस्य, एडिटर या मॉडरेटर की भूमिका होती है, वहां आप उसके दूर दराज के जीवित रिश्तेदारों के विवरण तक पहुंचने पर रोक लगा सकते हैं। आप उन रिश्तेदारी की स्टेप्स की संख्या तय कर सकते हैं जो यूज़र को देखने की अनुमति होगी।"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:17
@@ -17795,17 +17795,17 @@ msgstr "माता/पिता की चाची"
 #: app/Functions/Functions.php:1180
 msgctxt "parent’s father’s sister"
 msgid "great-aunt"
-msgstr "नानी/दादी"
+msgstr "माता/पिता की बुआ"
 
 #: app/Functions/Functions.php:1394
 msgctxt "parent’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr "नानी/दादी"
+msgstr "माता/पिता की मामी"
 
 #: app/Functions/Functions.php:1192
 msgctxt "parent’s mother’s sister"
 msgid "great-aunt"
-msgstr "नानी/दादी"
+msgstr "माता/पिता की मासी"
 
 #: app/Functions/Functions.php:1400
 msgctxt "parent’s parent’s brother’s wife"
