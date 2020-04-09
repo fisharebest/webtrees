@@ -42,12 +42,13 @@ use function ini_get;
 use function intdiv;
 use function min;
 use function pathinfo;
-use function preg_match;
+use function preg_replace;
 use function sha1;
 use function sort;
 use function str_replace;
 use function strpos;
 use function strtolower;
+use function strtr;
 use function substr;
 use function trim;
 
@@ -67,6 +68,11 @@ class MediaFileService
         'none',
         'privacy',
         'confidential',
+    ];
+
+    public const EXTENSION_TO_FORM = [
+        'jpg' => 'jpeg',
+        'tif' => 'tiff',
     ];
 
     /**
@@ -256,25 +262,38 @@ class MediaFileService
      * @param string $file
      * @param string $type
      * @param string $title
+     * @param string $note
      *
      * @return string
      */
-    public function createMediaFileGedcom(string $file, string $type, string $title): string
+    public function createMediaFileGedcom(string $file, string $type, string $title, string $note): string
     {
-        if (preg_match('/\.([a-z0-9]+)/i', $file, $match)) {
-            $extension = strtolower($match[1]);
-            $extension = str_replace('jpg', 'jpeg', $extension);
-            $extension = ' ' . $extension;
-        } else {
-            $extension = '';
-        }
+        // Tidy whitespace
+        $type  = trim(preg_replace('/\s+/', ' ', $type));
+        $title = trim(preg_replace('/\s+/', ' ', $title));
 
         $gedcom = '1 FILE ' . $file;
-        if ($type !== '') {
-            $gedcom .= "\n2 FORM" . $extension . "\n3 TYPE " . $type;
+
+        $format = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+        $format = self::EXTENSION_TO_FORM[$format] ?? $format;
+
+        if ($format !== '') {
+            $gedcom .= "\n2 FORM " . $format;
+        } elseif ($type !== '') {
+            $gedcom .= "\n2 FORM";
         }
+
+        if ($type !== '') {
+            $gedcom .= "\n3 TYPE " . $type;
+        }
+
         if ($title !== '') {
             $gedcom .= "\n2 TITL " . $title;
+        }
+
+        if ($note !== '') {
+            // Convert HTML line endings to GEDCOM continuations
+            $gedcom .= "\n1 NOTE " . strtr($note, ["\r\n" => "\n2 CONT "]);
         }
 
         return $gedcom;

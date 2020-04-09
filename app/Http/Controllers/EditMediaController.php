@@ -120,10 +120,6 @@ class EditMediaController extends AbstractEditController
         $title = $params['title'];
         $type  = $params['type'];
 
-        // Tidy whitespace
-        $type  = trim(preg_replace('/\s+/', ' ', $type));
-        $title = trim(preg_replace('/\s+/', ' ', $title));
-
         if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
             return redirect(route(TreePage::class, ['tree' => $tree->name()]));
         }
@@ -136,13 +132,7 @@ class EditMediaController extends AbstractEditController
             return redirect($media->url());
         }
 
-        $gedcom = '1 FILE ' . $file;
-        if ($type !== '') {
-            $gedcom .= "\n2 FORM\n3 TYPE " . $type;
-        }
-        if ($title !== '') {
-            $gedcom .= "\n2 TITL " . $title;
-        }
+        $gedcom = $this->media_file_service->createMediaFileGedcom($file, $type, $title, '');
 
         $media->createFact($gedcom, true);
 
@@ -336,30 +326,10 @@ class EditMediaController extends AbstractEditController
         $title  = $params['title'];
         $note   = $params['note'];
 
-        if (preg_match('/\.([a-zA-Z0-9]+)$/', $file, $match)) {
-            $format = ' ' . $match[1];
-        } else {
-            $format = '';
-        }
-
-        $gedcom = "0 @@ OBJE\n1 FILE " . $file . "\n2 FORM " . $format;
-
-        if ($type !== '') {
-            $gedcom .= "\n3 TYPE " . $type;
-        }
-
-        if ($title !== '') {
-            $gedcom .= "\n2 TITL " . $title;
-        }
-
-        // Convert HTML line endings to GEDCOM continuations
-        $note = strtr($note, ["\r\n" => "\n2 CONT "]);
-
-        if ($note !== '') {
-            $gedcom .= "\n1 NOTE " . $note;
-        }
+        $gedcom = "0 @@ OBJE\n" . $this->media_file_service->createMediaFileGedcom($file, $type, $title, $note);
 
         $media_object = $tree->createRecord($gedcom);
+
         // Accept the new record.  Rejecting it would leave the filesystem out-of-sync with the genealogy
         $this->pending_changes_service->acceptRecord($media_object);
 
