@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-02-21 05:51+0000\nLast-Translator: Jorge Ruiz Calpe <loquiyoz@gmail.com>\nLanguage-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Spanish\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-04-20 14:19+0000\nLast-Translator: Jorge Ruiz Calpe <loquiyoz@gmail.com>\nLanguage-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Spanish\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -15978,7 +15978,7 @@ msgstr "Está firmado como %s."
 
 #: app/Http/RequestHandlers/LoginPage.php:96
 msgid "You can apply for an account using the link below."
-msgstr "Puede aplicar para una cuenta de usuario utilizando la liga abajo."
+msgstr "Puede solicitar una cuenta de usuario utilizando el enlace de abajo."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:64
