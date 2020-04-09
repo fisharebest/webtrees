@@ -814,16 +814,24 @@ document.addEventListener('click', (event) => {
   }
 
   if ('postUrl' in target.dataset) {
-    const request = new XMLHttpRequest();
     const token = document.querySelector('meta[name=csrf]').content;
-    request.open('POST', target.dataset.postUrl, true);
-    request.setRequestHeader('X-CSRF-TOKEN', token);
-    request.onreadystatechange = () => {
-      if (request.readyState === request.DONE) {
+
+    fetch(target.dataset.postUrl, {
+      method: 'POST',
+      headers: {
+        'X-CSRF-TOKEN': token,
+        'X-Requested-with': 'XMLHttpRequest',
+      },
+    }).then((response) => {
+      if ('reloadUrl' in target.dataset) {
+        // Go somewhere else.  e.g. home page after logout.
+        document.location = target.dataset.reloadUrl;
+      } else {
+        // Reload the current page. e.g. change language.
         document.location.reload();
       }
-    };
-    request.send();
-    event.preventDefault();
+    }).catch(function (error) {
+      alert(error);
+    });
   }
 });
