@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-02-16 09:07+0000\n"
-"Last-Translator: Michael Rapp <mike_jpr@outlook.com>\n"
+"PO-Revision-Date: 2020-04-20 14:19+0000\n"
+"Last-Translator: Jorge Ruiz Calpe <loquiyoz@gmail.com>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/es/>\n"
 "Language: es\n"
@@ -15945,7 +15945,7 @@ msgstr "Está firmado como %s."
 
 #: login.php:170 login.php:173 login.php:176
 msgid "You can apply for an account using the link below."
-msgstr "Puede aplicar para una cuenta de usuario utilizando la liga abajo."
+msgstr "Puede solicitar una cuenta de usuario utilizando el enlace de abajo."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
