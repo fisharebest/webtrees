@@ -286,7 +286,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                     foreach ($object->mediaFiles() as $media_file) {
                         $from = 'media://' . $media_file->filename();
                         $to   = 'zip://' . $path . $media_file->filename();
-                        if (!$media_file->isExternal() && $manager->has($from)) {
+                        if (!$media_file->isExternal() && $manager->has($from) && !$manager->has($to)) {
                             $manager->copy($from, $to);
                         }
                     }
