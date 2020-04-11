@@ -188,6 +188,7 @@ class GedcomFileController extends AbstractBaseController
                         default:
                             return $this->viewResponse('admin/import-fail', [
                                 'error' => I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', $charset),
+                                'tree'  => $tree,
                             ]);
                     }
                     $first_time = false;
