@@ -100,13 +100,13 @@ class FunctionsEdit
             $html .= '<div class="form-check">';
             $html .= '<label title="' . $locale->languageTag() . '">';
             $html .= '<input type="checkbox" name="' . $parameter_name . '[]" value="' . $locale->languageTag() . '"';
-            $html .= in_array($locale->languageTag(), $accepted_languages, true) ? ' checked>' : '>';
+            $html .= in_array($locale->languageTag(), $accepted_languages, true) ? ' checked>' : '> ';
             $html .= $locale->endonym();
             $html .= '</label>';
             $html .= '</div>';
         }
 
-        return $html;
+        return '<div style="columns: auto 12rem">' . $html . '</div>';
     }
 
     /**
