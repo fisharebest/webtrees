@@ -92,7 +92,7 @@ class BadBotBlocker implements MiddlewareInterface
      * @see https://help.baidu.com/question?prod_id=99&class=0&id=3001
      */
     private const ROBOT_REV_ONLY_DNS = [
-        'Baidu' => ['.baidu.com', '.baidu.jp'],
+        'Baiduspider' => ['.baidu.com', '.baidu.jp'],
     ];
 
     /**
