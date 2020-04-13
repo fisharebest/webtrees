@@ -36,14 +36,6 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class UseDatabase implements MiddlewareInterface
 {
-    // The following errors are likely to be caused by server issues, not by webtrees.
-    private const SERVER_ERRORS = [
-        'mysql'  => [1203],
-        'pgsql'  => [],
-        'sqlite' => [],
-        'sqlsvr' => [],
-    ];
-
     /**
      * @param ServerRequestInterface  $request
      * @param RequestHandlerInterface $handler
@@ -103,16 +95,12 @@ class UseDatabase implements MiddlewareInterface
         });
 
         try {
-            return $handler->handle($request);
+            // Eager-load the connection, to prevent database credentials appearing in error logs.
+            DB::connection()->getPdo();
         } catch (PDOException $exception) {
-            if (in_array($exception->errorInfo[1], self::SERVER_ERRORS[$driver], true)) {
-                $message = 'A database error occurred.  This is most likely caused by an issue with your server.' . PHP_EOL . PHP_EOL;
-                $message .= $exception->getMessage() . PHP_EOL . PHP_EOL;
-                $message .= $exception->getFile() . ':' . $exception->getLine();
-                throw new HttpServerErrorException($message);
-            }
-
-            throw $exception;
+            throw new HttpServerErrorException($exception->getMessage());
         }
+
+        return $handler->handle($request);
     }
 }

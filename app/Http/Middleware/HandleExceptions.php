@@ -95,7 +95,9 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             return $handler->handle($request);
         } catch (HttpException $exception) {
             // The router added the tree attribute to the request, and we need it for the error response.
-            $request = app(ServerRequestInterface::class) ?? $request;
+            if (app()->has(ServerRequestInterface::class)) {
+                $request = app(ServerRequestInterface::class) ?? $request;
+            }
 
             return $this->httpExceptionResponse($request, $exception);
         } catch (NotSupportedException $exception) {
