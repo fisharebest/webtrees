@@ -211,7 +211,20 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $params = (array) $request->getParsedBody();
 
         $privatize_export = $params['privatize_export'];
-        $convert          = (bool) ($params['convert'] ?? false);
+
+        if ($privatize_export === 'none' && !Auth::isManager($tree)) {
+            $privatize_export = 'member';
+        }
+
+        if ($privatize_export === 'gedadmin' && !Auth::isManager($tree)) {
+            $privatize_export = 'member';
+        }
+
+        if ($privatize_export === 'user' && !Auth::isMember($tree)) {
+            $privatize_export = 'visitor';
+        }
+
+        $convert = (bool) ($params['convert'] ?? false);
 
         $cart = Session::get('cart', []);
 
