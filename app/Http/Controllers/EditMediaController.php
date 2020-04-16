@@ -276,7 +276,7 @@ class EditMediaController extends AbstractEditController
             }
         }
 
-        $gedcom = $this->media_file_service->createMediaFileGedcom($file, $type, $title);
+        $gedcom = $this->media_file_service->createMediaFileGedcom($file, $type, $title, '');
 
         $media->updateFact($fact_id, $gedcom, true);
 
