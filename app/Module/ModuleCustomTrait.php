@@ -34,6 +34,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use function app;
 use function assert;
 use function strlen;
+use function strtolower;
 
 /**
  * Trait ModuleCustomTrait - default implementation of ModuleCustomInterface
@@ -186,15 +187,15 @@ trait ModuleCustomTrait
 
         // Find the file for this asset.
         // Note that we could also generate CSS files using views/templates.
-        // e.g. $file = view(....
+        // e.g. $file = view(....)
         $file = $this->resourcesFolder() . $asset;
 
         if (!file_exists($file)) {
-            throw new HttpNotFoundException($file);
+            throw new HttpNotFoundException(e($file));
         }
 
         $content   = file_get_contents($file);
-        $extension = pathinfo($asset, PATHINFO_EXTENSION);
+        $extension = strtolower(pathinfo($asset, PATHINFO_EXTENSION));
 
         $mime_types = [
             'css'  => 'text/css',
@@ -203,19 +204,17 @@ trait ModuleCustomTrait
             'jpg'  => 'image/jpeg',
             'jpeg' => 'image/jpeg',
             'json' => 'application/json',
+            'ico'  => 'image/x-icon',
             'png'  => 'image/png',
             'txt'  => 'text/plain',
+            'xml'  => 'application/xml'
         ];
 
         $mime_type = $mime_types[$extension] ?? 'application/octet-stream';
 
-        $headers = [
-            'Content-Type'   => $mime_type,
-            'Cache-Control'  => 'max-age=31536000, public',
-            'Content-Length' => strlen($content),
-            'Expires'        => Carbon::now()->addYears(10)->toRfc7231String(),
-        ];
-
-        return response($content, StatusCodeInterface::STATUS_OK, $headers);
+        return response($content, StatusCodeInterface::STATUS_OK)
+            ->withHeader('Cache-Control', 'max-age=31536000, public')
+            ->withHeader('Content-Length', strlen($content))
+            ->withHeader('Content-Type', $mime_type);
     }
 }
