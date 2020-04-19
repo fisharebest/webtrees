@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-03-31 19:04+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2020-04-19 11:38+0000\n"
+"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/da/>\n"
 "Language: da\n"
@@ -11420,7 +11420,7 @@ msgstr "Relaterede individer"
 #. I18N: gedcom tag RELA
 #: app/GedcomTag.php:720
 msgid "Relationship"
-msgstr "Slægtskab"
+msgstr "Forhold"
 
 #. I18N: gedcom tag _FREL
 #: app/GedcomTag.php:1505
