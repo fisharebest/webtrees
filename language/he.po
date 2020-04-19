@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2020-01-30 10:03+0000\n"
+"PO-Revision-Date: 2020-04-19 11:39+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/he/>\n"
@@ -13707,7 +13707,7 @@ msgstr "אנשים קרובים"
 #. I18N: gedcom tag RELA
 #: app/GedcomTag.php:720 app/GedcomTag.php:956
 msgid "Relationship"
-msgstr "קשר משפחתי"
+msgstr "קשר"
 
 #. I18N: gedcom tag _FREL
 #: app/GedcomTag.php:1505 app/GedcomTag.php:1823
@@ -13727,7 +13727,7 @@ msgstr "קשר אל אם"
 #. I18N: gedcom tag PEDI
 #: app/GedcomTag.php:678 app/GedcomTag.php:920
 msgid "Relationship to parents"
-msgstr "היחס אל ההורים"
+msgstr "הקירבה אל ההורים"
 
 #: relationship.php:166 app/Module/RelationshipsChartModule.php:299
 #, php-format
