@@ -98,10 +98,10 @@ class Webtrees
     public const VERSION = '2.0.4' . (self::STABILITY === '' ? '' : '-') . self::STABILITY;
 
     // Project website.
-    public const URL = 'https://www.webtrees.net/';
+    public const URL = 'https://webtrees.net/';
 
     // Project website.
-    public const GEDCOM_PDF = 'https://webtrees.github.io/downloads/gedcom-551.pdf';
+    public const GEDCOM_PDF = 'https://webtrees.net/downloads/gedcom-551.pdf';
 
     private const MIDDLEWARE = [
         PhpEnvironment::class,
