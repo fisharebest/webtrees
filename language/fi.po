@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-01-30 10:03+0000\n"
+"PO-Revision-Date: 2020-04-19 11:39+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fi/>\n"
@@ -11416,7 +11416,7 @@ msgstr "Sukulaiset"
 #. I18N: gedcom tag RELA
 #: app/GedcomTag.php:720
 msgid "Relationship"
-msgstr "Sukulaisuussuhde"
+msgstr "Yhteys"
 
 #. I18N: gedcom tag _FREL
 #: app/GedcomTag.php:1505
