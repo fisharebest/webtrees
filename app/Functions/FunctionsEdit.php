@@ -555,9 +555,6 @@ class FunctionsEdit
             $html .= '</span>';
             $html .= '</div>';
         } elseif ($fact === 'SEX') {
-            if ($value !== 'M' && $value !== 'F') {
-                $value = 'U';
-            }
             $html .= view('components/radios-inline', ['name' => $name, 'options' => ['M' => I18N::translate('Male'), 'F' => I18N::translate('Female'), 'U' => I18N::translateContext('unknown gender', 'Unknown')], 'selected' => $value]);
         } elseif ($fact === 'SOUR') {
             $html .=

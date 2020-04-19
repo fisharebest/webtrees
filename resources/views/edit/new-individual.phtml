@@ -146,7 +146,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
         } elseif ($famtag === 'WIFE' || $gender === 'F') {
             echo FunctionsEdit::addSimpleTag($tree, '0 SEX F');
         } else {
-            echo FunctionsEdit::addSimpleTag($tree, '0 SEX U');
+            echo FunctionsEdit::addSimpleTag($tree, '0 SEX');
         }
     }
     ?>
