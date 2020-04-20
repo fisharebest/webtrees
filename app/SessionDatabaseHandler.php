@@ -82,32 +82,36 @@ class SessionDatabaseHandler implements SessionHandlerInterface
      */
     public function write($id, $data): bool
     {
+        $ip_address   = $this->request->getAttribute('client-ip');
+        $session_time = Carbon::now();
+        $user_id      = (int) Auth::id();
+
         if ($this->row === null) {
             DB::table('session')->insert([
                 'session_id' => $id,
-                'session_time' => Carbon::now(),
-                'user_id'      => (int) Auth::id(),
-                'ip_address'   => $this->request->getAttribute('client-ip'),
+                'session_time' => $session_time,
+                'user_id'      => $user_id,
+                'ip_address'   => $ip_address,
                 'session_data' => $data,
             ]);
         } else {
             $updates = [];
 
             // The user ID can change if we masquerade as another user.
-            if ((int) $this->row->user_id !== (int) Auth::id()) {
-                $updates['user_id'] = (int) Auth::id();
+            if ((int) $this->row->user_id !== $user_id) {
+                $updates['user_id'] = $user_id;
             }
 
-            if ($this->row->ip_address !== $this->request->getAttribute('client-ip')) {
-                $updates['ip_address'] = $this->request->getAttribute('client-ip');
+            if ($this->row->ip_address !== $ip_address) {
+                $updates['ip_address'] = $ip_address;
             }
 
             if ($this->row->session_data !== $data) {
                 $updates['session_data'] = $data;
             }
 
-            if (Carbon::now()->subMinute()->gt($this->row->session_time)) {
-                $updates['session_time'] = Carbon::now();
+            if ($session_time->subMinute()->gt($this->row->session_time)) {
+                $updates['session_time'] = $session_time;
             }
 
             if ($updates !== []) {
