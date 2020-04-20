@@ -202,7 +202,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         assert(is_string($xref));
 
         $individual  = Individual::getInstance($xref, $tree);
-        $individual  = Auth::checkIndividualAccess($individual);
+        $individual  = Auth::checkIndividualAccess($individual, false, true);
 
         $user        = $request->getAttribute('user');
         $generations = (int) $request->getAttribute('generations');
