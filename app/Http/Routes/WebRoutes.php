@@ -544,8 +544,13 @@ class WebRoutes
                 $router->get('example', '/…');
             });
 
-            $router->get('module', '/module/{module}/{action}{/tree}', ModuleAction::class)
+            // Match module routes, with and without a tree.
+            $router->get('module-tree', '/module/{module}/{action}/{tree}', ModuleAction::class)
                 ->allows(RequestMethodInterface::METHOD_POST);
+            $router->get('module-no-tree', '/module/{module}/{action}', ModuleAction::class)
+                ->allows(RequestMethodInterface::METHOD_POST);
+            // Generate module routes only. The router cannot distinguish a private tree from no tree.
+            $router->get('module', '/module/{module}/{action}{/tree}', null);
 
             $router->get(HelpText::class, '/help/{topic}', HelpText::class);
             $router->post(SelectLanguage::class, '/language/{language}', SelectLanguage::class);
