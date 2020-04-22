@@ -431,7 +431,7 @@ switch ($action) {
         $newged = '';
         if (!empty($_POST['NAME'])) {
             $newged .= "\n1 NAME " . $_POST['NAME'];
-            $name_facts = array('TYPE', 'NPFX', 'GIVN', 'NICK', 'SPFX', 'SURN', 'NSFX');
+            $name_facts = array('TYPE', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX');
             foreach ($name_facts as $name_fact) {
                 if (!empty($_POST[$name_fact])) {
                     $newged .= "\n2 " . $name_fact . ' ' . $_POST[$name_fact];
