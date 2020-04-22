@@ -69,8 +69,6 @@ use function redirect;
 use function route;
 use function str_replace;
 use function strip_tags;
-use function sys_get_temp_dir;
-use function tempnam;
 use function utf8_decode;
 
 /**
@@ -82,12 +80,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
     // Routes that have a record which can be added to the clipboard
     private const ROUTES_WITH_RECORDS = [
-        'Family' => FamilyPage::class,
+        'Family'     => FamilyPage::class,
         'Individual' => IndividualPage::class,
-        'Media' => MediaPage::class,
-        'Note' => NotePage::class,
+        'Media'      => MediaPage::class,
+        'Note'       => NotePage::class,
         'Repository' => RepositoryPage::class,
-        'Source' => SourcePage::class,
+        'Source'     => SourcePage::class,
     ];
 
     /** @var int The default access level for this module.  It can be changed in the control panel. */
@@ -697,6 +695,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $this->addRecordToCart($individual);
 
         foreach ($individual->childFamilies() as $family) {
+            $this->addRecordToCart($family);
+
             foreach ($family->spouses() as $parent) {
                 $this->addAncestorsToCart($parent);
             }
@@ -712,6 +712,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     {
         foreach ($individual->childFamilies() as $family) {
             $this->addFamilyAndChildrenToCart($family);
+
             foreach ($family->spouses() as $parent) {
                 $this->addAncestorFamiliesToCart($parent);
             }
