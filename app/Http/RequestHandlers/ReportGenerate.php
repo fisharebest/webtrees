@@ -105,6 +105,9 @@ class ReportGenerate implements RequestHandlerInterface
         $format      = $request->getQueryParams()['format'] ?? '';
         $destination = $request->getQueryParams()['destination'] ?? '';
 
+        $user->setPreference('default-report-destination', $destination);
+        $user->setPreference('default-report-format', $format);
+
         switch ($format) {
             default:
             case 'HTML':
