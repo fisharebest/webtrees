@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2020-03-25 12:14+0000\n"
+"PO-Revision-Date: 2020-04-26 13:52+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
@@ -19055,7 +19055,7 @@ msgstr "水印缩略图存储服务器"
 #: resources/views/modules/stories/edit.phtml:4
 #: app/Module/StoriesModule.php:195,
 msgid "Stories"
-msgstr "传记"
+msgstr "人物传记"
 
 #: app/Module/StoriesModule.php:237
 #: resources/views/modules/stories/edit.phtml:31
