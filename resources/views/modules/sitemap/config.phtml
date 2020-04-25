@@ -33,12 +33,8 @@ use Fisharebest\Webtrees\I18N;
 <hr>
 
 <p>
-    <?= I18N::translate('To tell search engines that sitemaps are available, you should add the following line to your robots.txt file.') ?>
+    <?= I18N::translate('URL') ?> — <a href="<?= e($sitemap_url) ?>"><?= e($sitemap_url) ?></a>
 </p>
-
-<code>Sitemap: <?= e($sitemap_url) ?></code>
-
-<hr>
 
 <p>
     <?= I18N::translate('To tell search engines that sitemaps are available, you can use the following links.') ?>
