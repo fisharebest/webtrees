@@ -100,6 +100,9 @@ class Webtrees
     // Project website.
     public const URL = 'https://webtrees.net/';
 
+    // FAQ linnks
+    public const URL_FAQ_EMAIL = 'https://webtrees.net/faq/email';
+
     // Project website.
     public const GEDCOM_PDF = 'https://webtrees.net/downloads/gedcom-551.pdf';
 
