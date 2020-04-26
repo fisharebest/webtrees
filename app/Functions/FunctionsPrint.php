@@ -106,8 +106,8 @@ class FunctionsPrint
      * Print all of the notes in this fact record
      *
      * @param Tree   $tree
-     * @param string $factrec The factrecord to print the notes from
-     * @param int    $level   The level of the factrecord
+     * @param string $factrec The fact to print the notes from
+     * @param int    $level   The level of the notes
      *
      * @return string HTML
      */
@@ -136,7 +136,7 @@ class FunctionsPrint
                     if ($note->canShow()) {
                         $noterec = $note->gedcom();
                         $nt      = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
-                        $data    .= self::printNoteRecord($tree, ($nt > 0) ? $n1match[1] : '', 1, $noterec);
+                        $data    .= self::printNoteRecord($tree, $nt > 0 ? $n1match[1] : '', 1, $noterec);
                     }
                 } else {
                     $data = '<div class="fact_NOTE"><span class="label">' . I18N::translate('Note') . '</span>: <span class="field error">' . $nmatch[1] . '</span></div>';
@@ -300,10 +300,8 @@ class FunctionsPrint
             I18N::translate('Wife')    => $wife_age,
         ];
 
-        foreach ($age_labels as $label => $age) {
-            if ($age !== '') {
-                $html .= ' <span class="label">' . $label . ':</span> <span class="age">' . FunctionsDate::getAgeAtEvent($age) . '</span>';
-            }
+        foreach (array_filter($age_labels) as $label => $age) {
+            $html .= ' <span class="label">' . $label . ':</span> <span class="age">' . $age . '</span>';
         }
 
         return $html;

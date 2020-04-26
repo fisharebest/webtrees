@@ -930,7 +930,7 @@ abstract class AbstractCalendarDate
     {
         return [
             $this->month === $this->calendar->monthsInYear() ? $this->nextYear($this->year) : $this->year,
-            ($this->month % $this->calendar->monthsInYear()) + 1,
+            $this->month % $this->calendar->monthsInYear() + 1,
         ];
     }
 
