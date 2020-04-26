@@ -123,12 +123,11 @@ class IndividualListService
         }
 
         $rows = $query2
-            ->select([new Expression('SUBSTR(n_surn, 1, 1) AS initial'), new Expression('COUNT(*) AS count')])
             ->groupBy(['initial'])
             ->orderBy(new Expression("CASE initial WHEN '' THEN 1 ELSE 0 END"))
             ->orderBy(new Expression("CASE initial WHEN '@' THEN 1 ELSE 0 END"))
             ->orderBy('initial')
-            ->pluck('count', 'initial');
+            ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression('SUBSTR(n_surn, 1, 1) AS initial'));
 
         foreach ($rows as $alpha => $count) {
             $alphas[$alpha] = (int) $count;
@@ -193,12 +192,11 @@ class IndividualListService
         }
 
         $rows = $query
-            ->select([new Expression('UPPER(SUBSTR(n_givn, 1, 1)) AS initial'), new Expression('COUNT(*) AS count')])
             ->groupBy(['initial'])
             ->orderBy(new Expression("CASE initial WHEN '' THEN 1 ELSE 0 END"))
             ->orderBy(new Expression("CASE initial WHEN '@' THEN 1 ELSE 0 END"))
             ->orderBy('initial')
-            ->pluck('count', 'initial');
+            ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression('UPPER(SUBSTR(n_givn, 1, 1)) AS initial'));
 
         foreach ($rows as $alpha => $count) {
             $alphas[$alpha] = (int) $count;
