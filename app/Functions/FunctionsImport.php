@@ -41,6 +41,7 @@ use PDOException;
 
 use function date;
 use function strpos;
+use function strtoupper;
 
 /**
  * Class FunctionsImport - common functions
@@ -739,7 +740,7 @@ class FunctionsImport
             case Header::RECORD_TYPE:
                 // Force HEAD records to have a creation date.
                 if (strpos($gedrec, "\n1 DATE ") === false) {
-                    $gedrec .= "\n1 DATE " . date('j M Y');
+                    $gedrec .= "\n1 DATE " . strtoupper(date('d M Y'));
                 }
 
                 DB::table('other')->insert([
