@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
+use PhpParser\Node\Expr\AssignOp\Mod;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
@@ -275,14 +276,16 @@ class HomePageService
         if (!$has_blocks) {
             foreach ([ModuleBlockInterface::MAIN_BLOCKS, ModuleBlockInterface::SIDE_BLOCKS] as $location) {
                 foreach (ModuleBlockInterface::DEFAULT_USER_PAGE_BLOCKS[$location] as $block_order => $class) {
-                    $module_name = $this->module_service->findByInterface($class)->first()->name();
+                    $module = $this->module_service->findByInterface($class)->first();
 
-                    DB::table('block')->insert([
-                        'user_id'     => -1,
-                        'location'    => $location,
-                        'block_order' => $block_order,
-                        'module_name' => $module_name,
-                    ]);
+                    if ($module instanceof ModuleBlockInterface) {
+                        DB::table('block')->insert([
+                            'user_id'     => -1,
+                            'location'    => $location,
+                            'block_order' => $block_order,
+                            'module_name' => $module->name(),
+                        ]);
+                    }
                 }
             }
         }
