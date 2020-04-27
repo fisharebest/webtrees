@@ -216,7 +216,7 @@ class FunctionsPrintFacts
         }
 
         echo '</th>';
-        echo '<td class="', $styleadd, '">';
+        echo '<td>';
 
         // Event from another record?
         if ($parent !== $record) {
