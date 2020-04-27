@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2020-04-19 11:39+0000\n"
+"PO-Revision-Date: 2020-05-01 09:45+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/he/>\n"
@@ -680,7 +680,7 @@ msgstr "(בינקות)"
 #. I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
 #: app/I18N.php:288 app/Age.php:116
 msgid "(stillborn)"
-msgstr "(נולד מת)"
+msgstr "(לידה שקטה)"
 
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:443 app/I18N.php:383
