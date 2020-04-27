@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -89,9 +89,9 @@
 
     // GIVN and SURN may be a comma-separated lists.
     npfx = trim(npfx);
-    givn = trim(givn.replace(',', separator));
+    givn = trim(givn.replace(/,/g, separator));
     spfx = trim(spfx);
-    surn = inflectSurname(trim(surn.replace(',', separator)), sex);
+    surn = inflectSurname(trim(surn.replace(/,/g, separator)), sex);
     nsfx = trim(nsfx);
 
     const surname = trim(spfx + separator + surn);
