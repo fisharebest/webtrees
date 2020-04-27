@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Functions;
 
+use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
@@ -41,9 +42,31 @@ use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use LogicException;
 use Ramsey\Uuid\Uuid;
 
+use function array_filter;
+use function array_intersect;
+use function array_merge;
+use function array_search;
+use function e;
+use function explode;
+use function in_array;
+use function preg_match;
+use function preg_match_all;
+use function preg_replace_callback;
+use function preg_split;
+use function strip_tags;
+use function strlen;
+use function strpos;
+use function strtoupper;
+use function substr;
+use function trim;
+use function uasort;
 use function view;
+
+use const PREG_SET_ORDER;
+use const PREG_SPLIT_NO_EMPTY;
 
 /**
  * Class FunctionsPrint - common functions
@@ -165,27 +188,27 @@ class FunctionsPrint
             foreach ($family->spouses() as $parent) {
                 if ($parent->getBirthDate()->isOK()) {
                     $sex      = '<small>' . view('icons/sex', ['sex' => $parent->sex()]) . '</small>';
-                    $age      = Date::getAge($parent->getBirthDate(), $birth_date);
+                    $age      = new Age($parent->getBirthDate(), $birth_date);
                     $deatdate = $parent->getDeathDate();
                     switch ($parent->sex()) {
                         case 'F':
                             // Highlight mothers who die in childbirth or shortly afterwards
                             if ($deatdate->isOK() && $deatdate->maximumJulianDay() < $birth_date->minimumJulianDay() + 90) {
-                                $html .= ' <span title="' . GedcomTag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . $age . '</span>';
+                                $html .= ' <span title="' . GedcomTag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . I18N::number($age->ageYears()) . '</span>';
                             } else {
-                                $html .= ' <span title="' . I18N::translate('Mother’s age') . '">' . $sex . $age . '</span>';
+                                $html .= ' <span title="' . I18N::translate('Mother’s age') . '">' . $sex . I18N::number($age->ageYears()) . '</span>';
                             }
                             break;
                         case 'M':
                             // Highlight fathers who die before the birth
                             if ($deatdate->isOK() && $deatdate->maximumJulianDay() < $birth_date->minimumJulianDay()) {
-                                $html .= ' <span title="' . GedcomTag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . $age . '</span>';
+                                $html .= ' <span title="' . GedcomTag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . I18N::number($age->ageYears()) . '</span>';
                             } else {
-                                $html .= ' <span title="' . I18N::translate('Father’s age') . '">' . $sex . $age . '</span>';
+                                $html .= ' <span title="' . I18N::translate('Father’s age') . '">' . $sex . I18N::number($age->ageYears()) . '</span>';
                             }
                             break;
                         default:
-                            $html .= ' <span title="' . I18N::translate('Parent’s age') . '">' . $sex . $age . '</span>';
+                            $html .= ' <span title="' . I18N::translate('Parent’s age') . '">' . $sex . I18N::number($age->ageYears()) . '</span>';
                             break;
                     }
                 }
@@ -196,6 +219,48 @@ class FunctionsPrint
         }
 
         return $html;
+    }
+
+    /**
+     * Convert a GEDCOM age string to localized text.
+     *
+     * @param string $age_string
+     *
+     * @return string
+     */
+    public static function formatGedcomAge(string $age_string): string
+    {
+        switch (strtoupper($age_string)) {
+            case 'CHILD':
+                return I18N::translate('Child');
+            case 'INFANT':
+                return I18N::translate('Infant');
+            case 'STILLBORN':
+                return I18N::translate('Stillborn');
+            default:
+                return preg_replace_callback(
+                    [
+                        '/(\d+)([ymwd])/',
+                    ],
+                    static function (array $match): string {
+                        $num = (int) $match[1];
+
+                        switch ($match[2]) {
+                            case 'y':
+                                return I18N::plural('%s year', '%s years', $num, I18N::number($num));
+                            case 'm':
+                                return I18N::plural('%s month', '%s months', $num, I18N::number($num));
+                            case 'w':
+                                return I18N::plural('%s week', '%s weeks', $num, I18N::number($num));
+                            case 'd':
+                                return I18N::plural('%s day', '%s days', $num, I18N::number($num));
+                            default:
+                                throw new LogicException('Should never get here');
+                        }
+                    },
+                    $age_string
+                ) ;
+        }
     }
 
     /**
@@ -214,17 +279,17 @@ class FunctionsPrint
         $html    = '';
         // Recorded age
         if (preg_match('/\n2 AGE (.+)/', $factrec, $match)) {
-            $fact_age = $match[1];
+            $fact_age = self::formatGedcomAge($match[1]);
         } else {
             $fact_age = '';
         }
         if (preg_match('/\n2 HUSB\n3 AGE (.+)/', $factrec, $match)) {
-            $husb_age = $match[1];
+            $husb_age = self::formatGedcomAge($match[1]);
         } else {
             $husb_age = '';
         }
         if (preg_match('/\n2 WIFE\n3 AGE (.+)/', $factrec, $match)) {
-            $wife_age = $match[1];
+            $wife_age = self::formatGedcomAge($match[1]);
         } else {
             $wife_age = '';
         }
@@ -256,35 +321,28 @@ class FunctionsPrint
                         $death_date = new Date('');
                     }
                     $ageText = '';
-                    if ($fact === 'DEAT' || (Date::compare($date, $death_date) <= 0 || !$record->isDead())) {
+                    if ($fact === 'DEAT' || Date::compare($date, $death_date) <= 0 || !$record->isDead()) {
                         // Before death, print age
-                        $age = Date::getAgeGedcom($birth_date, $date);
+                        $age = (new Age($birth_date, $date))->ageAtEvent(false);
                         // Only show calculated age if it differs from recorded age
-                        if ($age !== '' && $age !== '0d') {
+                        if ($age !== '') {
                             if ($fact_age !== '' && $fact_age !== $age) {
-                                $ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
+                                $ageText = $age;
                             } elseif ($fact_age === '' && $husb_age === '' && $wife_age === '') {
-                                $ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
+                                $ageText = $age;
                             } elseif ($husb_age !== '' && $husb_age !== $age && $record->sex() === 'M') {
-                                $ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
+                                $ageText = $age;
                             } elseif ($wife_age !== '' && $wife_age !== $age && $record->sex() === 'F') {
-                                $ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
+                                $ageText = $age;
                             }
                         }
                     }
-                    if ($fact !== 'DEAT' && Date::compare($date, $death_date) >= 0) {
+                    if ($fact !== 'DEAT' && Date::compare($death_date, $date) <= 0) {
                         // After death, print time since death
-                        $age = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($death_date, $date));
-                        if ($age !== '') {
-                            if (Date::getAgeGedcom($death_date, $date) === '0d') {
-                                $ageText = '(' . I18N::translate('on the date of death') . ')';
-                            } else {
-                                $ageText = '(' . $age . ' ' . I18N::translate('after death') . ')';
-                                // Family events which occur after death are probably errors
-                                if ($event->record() instanceof Family) {
-                                    $ageText .= view('icons/warning');
-                                }
-                            }
+                        $ageText = (new Age($death_date, $date))->timeAfterDeath();
+                        // Family events which occur after death are probably errors
+                        if ($event->record() instanceof Family) {
+                            $ageText .= view('icons/warning');
                         }
                     }
                     if ($ageText) {

@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Exception;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -337,15 +336,19 @@ class FamilyRepository
      */
     private function calculateAge(int $age): string
     {
-        if ((int) ($age / 365.25) > 0) {
-            $result = (int) ($age / 365.25) . 'y';
-        } elseif ((int) ($age / 30.4375) > 0) {
-            $result = (int) ($age / 30.4375) . 'm';
-        } else {
-            $result = $age . 'd';
+        if ($age < 31) {
+            return I18N::plural('%s day', '%s days', $age, I18N::number($age));
         }
 
-        return FunctionsDate::getAgeAtEvent($result);
+        if ($age < 365) {
+            $months = (int) ($age / 30.5);
+
+            return I18N::plural('%s months', '%s months', $months, I18N::number($months));
+        }
+
+        $years = (int) ($age / 365.25);
+
+        return I18N::plural('%s year', '%s years', $years, I18N::number($years));
     }
 
     /**

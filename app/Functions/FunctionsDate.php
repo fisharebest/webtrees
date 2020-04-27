@@ -22,8 +22,14 @@ namespace Fisharebest\Webtrees\Functions;
 use Fisharebest\Webtrees\I18N;
 use LogicException;
 
+use function trigger_error;
+
+use const E_USER_DEPRECATED;
+
 /**
  * Class FunctionsDate - common functions
+ *
+ * @deprecated since 2.0.4.  Will be removed in 2.1.0
  */
 class FunctionsDate
 {
@@ -33,9 +39,13 @@ class FunctionsDate
      * @param string $age_string
      *
      * @return string
+     *
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0
      */
     public static function getAgeAtEvent(string $age_string): string
     {
+        trigger_error('FunctionsDate::getAgeAtEvent() is deprecated. Use FunctionsPrint::formatGedcomAge() instead', E_USER_DEPRECATED);
+
         switch (strtoupper($age_string)) {
             case 'CHILD':
                 return I18N::translate('Child');

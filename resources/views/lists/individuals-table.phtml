@@ -2,21 +2,26 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
 use Ramsey\Uuid\Uuid;
 
 /**
- * @var Tree $tree
+ * @var Collection<Individual> $individuals
+ * @var bool                   $sosa
+ * @var Tree                   $tree
  */
 
 // lists requires a unique ID in case there are multiple lists per page
@@ -28,6 +33,8 @@ $hundred_years_ago = Carbon::now()->subYears(100)->julianDay();
 $unique_indis = []; // Don't double-count indis with multiple names.
 
 $show_estimated_dates = (bool) $tree->getPreference('SHOW_EST_LIST_DATES');
+
+$today = new Date(strtoupper(date('d M Y')));
 
 $module = app(ModuleService::class)
     ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
@@ -284,7 +291,9 @@ $deathAgeData = [
                 </td>
 
                 <!-- Birth date -->
-                <td data-sort="<?= $individual->getEstimatedBirthDate()->julianDay() ?>">
+                <?php $estimated_birth_date = $individual->getEstimatedBirthDate(); ?>
+
+                <td data-sort="<?= $estimated_birth_date->julianDay() ?>">
                     <?php $birth_dates = $individual->getAllBirthDates(); ?>
 
                     <?php foreach ($birth_dates as $n => $birth_date) : ?>
@@ -293,17 +302,17 @@ $deathAgeData = [
                     <?php endforeach ?>
 
                     <?php if (empty($birth_dates) && $show_estimated_dates) : ?>
-                        <?= $individual->getEstimatedBirthDate()->display(true) ?>
+                        <?= $estimated_birth_date->display(true) ?>
                     <?php endif ?>
                 </td>
 
                 <!-- Birth anniversary -->
-                <td class="text-center" data-sort="<?= - $individual->getEstimatedBirthDate()->julianDay() ?>">
+                <td class="text-center" data-sort="<?= - $estimated_birth_date->julianDay() ?>">
                     <?php if (isset($birth_dates[0]) && $birth_dates[0]->gregorianYear() >= 1550 && $birth_dates[0]->gregorianYear() < 2030 && !isset($unique_indis[$individual->xref()])) : ?>
                         <?php
                             ++$birt_by_decade[(int) ($birth_dates[0]->gregorianYear() / 10) * 10][$individual->sex()];
                         ?>
-                        <?= Date::getAge($birth_dates[0]) ?>
+                        <?= I18N::number((new Age($birth_dates[0], $today))->ageYears()) ?>
                     <?php endif ?>
                 </td>
 
@@ -339,15 +348,16 @@ $deathAgeData = [
                         <?php
                             ++$deat_by_decade[(int) ($death_dates[0]->gregorianYear() / 10) * 10][$individual->sex()];
                         ?>
-                        <?= Date::getAge($death_dates[0]) ?>
+                        <?= I18N::number((new Age($death_dates[0], $today))->ageYears()) ?>
                     <?php endif ?>
                 </td>
 
                 <!-- Age at death -->
                 <?php if (isset($birth_dates[0], $death_dates[0])) : ?>
-                    <?php $age_at_death_years = Date::getAgeYears($birth_dates[0], $death_dates[0]); ?>
-                    <?php $age_at_death_sort = Date::getAge($birth_dates[0], $death_dates[0]); ?>
-                    <?php $age_at_death_display = I18N::number($age_at_death_years); ?>
+                    <?php $age_at_death = new Age($birth_dates[0], $death_dates[0]); ?>
+                    <?php $age_at_death_sort = $age_at_death->ageDays(); ?>
+                    <?php $age_at_death_years = $age_at_death->ageYears(); ?>
+                    <?php $age_at_death_display = I18N::number($age_at_death->ageYears()); ?>
                     <?php if (!isset($unique_indis[$individual->xref()]) && $age_at_death_years >= 0 && $age_at_death_years <= $max_age) : ?>
                         <?php
                             ++$deat_by_age[$age_at_death_years][$individual->sex()];
@@ -357,8 +367,8 @@ $deathAgeData = [
                     <?php $age_at_death_display = ''; ?>
                     <?php $age_at_death_sort = PHP_INT_MAX; ?>
                 <?php endif ?>
-                <td class="text-center" data-sort="<?= e($age_at_death_sort) ?>">
-                    <?= e($age_at_death_display) ?>
+                <td class="text-center" data-sort="<?= $age_at_death_sort ?>">
+                    <?= $age_at_death_display ?>
                 </td>
 
                 <!-- Death place -->
@@ -381,7 +391,7 @@ $deathAgeData = [
 
                 <!-- Filter by birth date -->
                 <td hidden>
-                    <?php if ($individual->getEstimatedBirthDate()->maximumJulianDay() > $hundred_years_ago && $individual->getEstimatedBirthDate()->maximumJulianDay() <= $today_jd) : ?>
+                    <?php if ($estimated_birth_date->maximumJulianDay() > $hundred_years_ago && $estimated_birth_date->maximumJulianDay() <= $today_jd) : ?>
                         Y100
                     <?php else : ?>
                         YES

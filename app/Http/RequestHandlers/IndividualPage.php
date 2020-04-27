@@ -20,10 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
@@ -119,14 +119,13 @@ class IndividualPage implements RequestHandlerInterface
         // What is (was) the age of the individual
         $bdate = $individual->getBirthDate();
         $ddate = $individual->getDeathDate();
-        if ($bdate->isOK() && !$individual->isDead()) {
-            // If living display age
-            $age = ' (' . I18N::translate('age') . ' ' . FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($bdate, new Date(strtoupper(date('d M Y'))))) . ')';
-        } elseif ($bdate->isOK() && $ddate->isOK()) {
+
+        if ($individual->isDead()) {
             // If dead, show age at death
-            $age = ' (' . I18N::translate('age') . ' ' . FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($bdate, $ddate)) . ')';
+            $age = (new Age($bdate, $ddate))->ageAtEvent(false);
         } else {
-            $age = '';
+            // If living, show age today
+            $age = (new Age($bdate, new Date(strtoupper(date('d M Y')))))->ageAtEvent(true);
         }
 
         // What images are linked to this individual

@@ -2,19 +2,27 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
 use Ramsey\Uuid\Uuid;
 
 $table_id = 'table-fam-' . Uuid::uuid4()->toString(); // lists requires a unique ID in case there are multiple lists per page
 
 $today_jd          = Carbon::now()->julianDay();
 $hundred_years_ago = Carbon::now()->subYears(100)->julianDay();
+
+/**
+ * @var Tree               $tree
+ * @var Collection<Family> $families
+ */
 
 ?>
 
@@ -251,18 +259,29 @@ $marriageAgeData = [
                 <?php
                 $mdate = $family->getMarriageDate();
                 $hdate = $husb->getBirthDate();
+
                 if ($hdate->isOK() && $mdate->isOK()) {
-                    if ($hdate->gregorianYear() >= 1550 && $hdate->gregorianYear() < 2030) {
-                        ++$birt_by_decade[(int) ($hdate->gregorianYear() / 10) * 10][$husb->sex()];
+                    $gregorian_year = $hdate->gregorianYear();
+
+                    if ($gregorian_year >= 1550 && $gregorian_year < 2030) {
+                        ++$birt_by_decade[(int) ($gregorian_year / 10) * 10][$husb->sex()];
                     }
-                    $hage = Date::getAgeYears($hdate, $mdate);
-                    if ($hage >= 0 && $hage <= $max_age) {
-                        ++$marr_by_age[$hage][$husb->sex()];
+
+                    $husband_age         = new Age($hdate, $mdate);
+                    $husband_age_sort    = $husband_age->agedays();
+                    $husband_age_years   = $husband_age->ageYears();
+                    $husband_age_display = I18N::number($husband_age_years);
+
+                    if ($husband_age_years >= 0 && $husband_age_years <= $max_age) {
+                        ++$marr_by_age[$husband_age_years][$husb->sex()];
                     }
+                } else {
+                    $husband_age_sort    = 0;
+                    $husband_age_display = '';
                 }
                 ?>
-                <td class="text-center" data-sort="<?= Date::getAgeDays($hdate, $mdate) ?>">
-                    <?= Date::getAge($hdate, $mdate) ?>
+                <td class="text-center" data-sort="<?= $husband_age_sort ?>">
+                    <?= $husband_age_display ?>
                 </td>
 
                 <!-- Wife name -->
@@ -287,18 +306,27 @@ $marriageAgeData = [
                 <?php
                 $wdate = $wife->getBirthDate();
                 if ($wdate->isOK() && $mdate->isOK()) {
-                    if ($wdate->gregorianYear() >= 1550 && $wdate->gregorianYear() < 2030) {
-                        ++$birt_by_decade[(int) ($wdate->gregorianYear() / 10) * 10][$wife->sex()];
+                    $gregorian_year = $wdate->gregorianYear();
+
+                    if ($gregorian_year >= 1550 && $gregorian_year < 2030) {
+                        ++$birt_by_decade[(int) ($gregorian_year / 10) * 10][$husb->sex()];
                     }
-                    $wage = Date::getAgeYears($wdate, $mdate);
-                    if ($wage >= 0 && $wage <= $max_age) {
-                        ++$marr_by_age[$wage][$wife->sex()];
+
+                    $wife_age         = new Age($wdate, $mdate);
+                    $wife_age_sort    = $wife_age->ageDays();
+                    $wife_age_years   = $wife_age->ageYears();
+                    $wife_age_display = I18N::number($wife_age_years);
+
+                    if ($wife_age_years >= 0 && $wife_age_years <= $max_age) {
+                        ++$marr_by_age[$wife_age_years][$husb->sex()];
                     }
+                } else {
+                    $wife_age_sort    = 0;
+                    $wife_age_display = '';
                 }
                 ?>
-
-                <td class="text-center" data-sort="<?= Date::getAgeDays($wdate, $mdate) ?>">
-                    <?= Date::getAge($wdate, $mdate) ?>
+                <td class="text-center" data-sort="<?= $wife_age_sort ?>">
+                    <?= $wife_age_display ?>
                 </td>
 
                 <!-- Marriage date -->
@@ -321,8 +349,19 @@ $marriageAgeData = [
                 </td>
 
                 <!-- Marriage anniversary -->
-                <td class="text-center" data-sort="<?= - $family->getMarriageDate()->julianDay() ?>">
-                    <?= Date::getAge($family->getMarriageDate(), null) ?>
+                <?php
+                    $marriage_date = $family->getMarriageDate();
+                    if ($marriage_date->isOK()) {
+                        $marriage_anniversary         = new Age($marriage_date, new Date(strtoupper(date('d M Y'))));
+                        $marriage_anniversary_sort    = $marriage_anniversary->ageDays();
+                        $marriage_anniversary_display = I18N::number($marriage_anniversary->ageYears());
+                    } else {
+                        $marriage_anniversary_sort    = 0;
+                        $marriage_anniversary_display = '';
+                    }
+                ?>
+                <td class="text-center" data-sort="<?= $marriage_anniversary_sort ?>">
+                    <?= $marriage_anniversary_display ?>
                 </td>
 
                 <!-- Marriage place -->

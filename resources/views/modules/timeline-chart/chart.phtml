@@ -1,8 +1,8 @@
 <?php
 
-use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Age;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -343,22 +343,16 @@ use Fisharebest\Webtrees\Individual;
             echo FunctionsPrint::formatFactDate($event, $record, false, false);
         } elseif ($record instanceof Family) {
             echo $gdate->display();
-            if ($record->husband() && $record->husband()->getBirthDate()->isOK()) {
-                $ageh = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->husband()->getBirthDate(), $gdate));
-            } else {
-                $ageh = null;
-            }
-            if ($record->wife() && $record->wife()->getBirthDate()->isOK()) {
-                $agew = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->wife()->getBirthDate(), $gdate));
-            } else {
-                $agew = null;
-            }
-            if ($ageh && $agew) {
-                echo '<span class="age"> ', I18N::translate('Husband’s age'), ' ', $ageh, ' ', I18N::translate('Wife’s age'), ' ', $agew, '</span>';
-            } elseif ($ageh) {
-                echo '<span class="age"> ', I18N::translate('Age'), ' ', $ageh, '</span>';
-            } elseif ($agew) {
-                echo '<span class="age"> ', I18N::translate('Age'), ' ', $ageh, '</span>';
+
+            foreach ($record->spouses() as $spouse) {
+                if ($spouse->getBirthDate()->isOK()) {
+                    $age = new Age($spouse->getBirthDate(), $gdate);
+                    if ($spouse->sex() === 'F') {
+                        echo '<span class="age"> ', I18N::translate('Wife’s age'), ' ', $age->ageString(), '</span>';
+                    } else {
+                        echo '<span class="age"> ', I18N::translate('Husband’s age'), ' ', $age->ageString(), '</span>';
+                    }
+                }
             }
         }
         echo ' ' . e($desc);

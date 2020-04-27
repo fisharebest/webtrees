@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
-use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -942,21 +941,24 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Returns the calculated age the time of event.
      *
-     * @param int $age The age from the database record
+     * @param int $days The age from the database record
      *
      * @return string
      */
-    private function calculateAge(int $age): string
+    private function calculateAge(int $days): string
     {
-        if ((int) ($age / 365.25) > 0) {
-            $result = (int) ($age / 365.25) . 'y';
-        } elseif ((int) ($age / 30.4375) > 0) {
-            $result = (int) ($age / 30.4375) . 'm';
-        } else {
-            $result = $age . 'd';
+        if ($days < 31) {
+            return I18N::plural('%s day', '%s days', $days, I18N::number($days));
         }
 
-        return FunctionsDate::getAgeAtEvent($result);
+        if ($days < 365) {
+            $months = (int) ($days / 30.5);
+            return I18N::plural('%s months', '%s months', $months, I18N::number($months));
+        }
+
+        $years = (int) ($days / 365.25);
+
+        return I18N::plural('%s year', '%s years', $years, I18N::number($years));
     }
 
     /**
