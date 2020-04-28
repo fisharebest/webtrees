@@ -488,7 +488,7 @@ class LocationController extends AbstractAdminController
         foreach ($hierarchy as $level => $record) {
             $startfqpn[$level] = $record->pl_place;
         }
-        $startfqpn = array_pad($startfqpn, $maxlevel + 1, '');
+        $startfqpn = array_pad($startfqpn, $maxlevel, '');
 
         // Generate an array containing the data to output
         $places = [];
@@ -504,8 +504,8 @@ class LocationController extends AbstractAdminController
                 I18N::translate('Level'),
             ];
 
-            for ($i = 0; $i <= $maxlevel; $i++) {
-                $header[] = 'Place' . ($i + 1);
+            for ($i = 0; $i < $maxlevel; $i++) {
+                $header[] = 'PlacePart' . $i;
             }
 
             $header[] = 'Longitude';
@@ -539,7 +539,7 @@ class LocationController extends AbstractAdminController
         foreach ($rows as $row) {
             $index             = (int) $row->pl_id;
             $placename[$level] = $row->pl_place;
-            $places[]          = array_merge(['pl_level' => $row->pl_level], $placename, ['pl_long' => $row->pl_long, 'pl_lati' => $row->pl_lati, 'pl_zoom' => $row->pl_zoom, 'pl_icon' => $row->pl_icon]);
+            $places[]          = array_merge(['pl_level' => $row->pl_level - 1], $placename, ['pl_long' => $row->pl_long, 'pl_lati' => $row->pl_lati, 'pl_zoom' => $row->pl_zoom, 'pl_icon' => $row->pl_icon]);
             $this->buildLevel($index, $placename, $places);
         }
     }
@@ -548,13 +548,12 @@ class LocationController extends AbstractAdminController
      * @param string     $filename
      * @param string[]   $columns
      * @param string[][] $places
-     *
      * @return ResponseInterface
+     * @throws Exception
      */
     private function exportCSV(string $filename, array $columns, array $places): ResponseInterface
     {
         $resource = fopen('php://temp', 'rb+');
-
         fputcsv($resource, $columns, ';');
 
         foreach ($places as $place) {
@@ -562,10 +561,15 @@ class LocationController extends AbstractAdminController
         }
 
         rewind($resource);
+        $result = stream_get_contents($resource);
 
+        if ($result === false) {
+            throw new Exception('Failed to collect location data');
+        }
+        $result = str_replace('"', '', $result); // remove enclosure char so output same as webtrees 1.7
         $filename = addcslashes($filename, '"');
 
-        return response(stream_get_contents($resource))
+        return response($result)
             ->withHeader('Content-Type', 'text/csv; charset=utf-8')
             ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
     }
