@@ -285,6 +285,7 @@ class MediaFile
             'mark'      => $mark,
             'markh'     => '100h',
             'markw'     => '100w',
+            'markpos'   => 'center',
             'markalpha' => 25,
             'or'        => $orientation,
         ];
