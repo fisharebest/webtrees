@@ -59,7 +59,7 @@ class UseSession implements MiddlewareInterface
 
         // Update the last-login time no more than once a minute.
         if (Session::get('masquerade') === null) {
-            $last = Carbon::createFromTimestamp($user->getPreference(User::PREF_TIMESTAMP_ACTIVE));
+            $last = Carbon::createFromTimestamp((int) $user->getPreference(User::PREF_TIMESTAMP_ACTIVE));
 
             if (Carbon::now()->subMinute()->gt($last)) {
                 $user->setPreference(User::PREF_TIMESTAMP_ACTIVE, (string) Carbon::now()->unix());

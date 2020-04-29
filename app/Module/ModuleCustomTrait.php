@@ -214,7 +214,7 @@ trait ModuleCustomTrait
 
         return response($content, StatusCodeInterface::STATUS_OK)
             ->withHeader('Cache-Control', 'max-age=31536000, public')
-            ->withHeader('Content-Length', strlen($content))
+            ->withHeader('Content-Length', (string) strlen($content))
             ->withHeader('Content-Type', $mime_type);
     }
 }
