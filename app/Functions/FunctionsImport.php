@@ -740,7 +740,9 @@ class FunctionsImport
             case Header::RECORD_TYPE:
                 // Force HEAD records to have a creation date.
                 if (strpos($gedrec, "\n1 DATE ") === false) {
-                    $gedrec .= "\n1 DATE " . strtoupper(date('d M Y'));
+                    $today = strtoupper(date('d M Y'));
+                    $now   = date('H:i:s');
+                    $gedrec .= "\n1 DATE " . $today;
                 }
 
                 DB::table('other')->insert([

@@ -1,5 +1,5 @@
-msgid ""
-msgstr ""
+msgid "()"
+msgstr "()"
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2020-02-03 09:12+0000\n"
@@ -16313,8 +16313,8 @@ msgid "after %s"
 msgstr "po %s"
 
 #: app/Functions/FunctionsPrint.php:280
-msgid "after death"
-msgstr "po śmierci"
+msgid "(%s after death)"
+msgstr "(%s po śmierci)"
 
 #: app/Http/RequestHandlers/IndividualPage.php:117
 #: app/Http/RequestHandlers/IndividualPage.php:120
@@ -19278,8 +19278,8 @@ msgid "of"
 msgstr "z"
 
 #: app/Functions/FunctionsPrint.php:278
-msgid "on the date of death"
-msgstr "w dniu śmierci"
+msgid "(on the date of death)"
+msgstr "(w dniu śmierci)"
 
 #: app/Functions/Functions.php:619
 msgid "parent"

@@ -16286,8 +16286,8 @@ msgid "after %s"
 msgstr "depois de %s"
 
 #: app/Functions/FunctionsPrint.php:280
-msgid "after death"
-msgstr "depois do falecimento"
+msgid "(%s after death)"
+msgstr "(%s depois do falecimento)"
 
 #: app/Http/RequestHandlers/IndividualPage.php:117
 #: app/Http/RequestHandlers/IndividualPage.php:120
@@ -19249,8 +19249,8 @@ msgid "of"
 msgstr "de"
 
 #: app/Functions/FunctionsPrint.php:278
-msgid "on the date of death"
-msgstr "na data do falecimento"
+msgid "(on the date of death)"
+msgstr "(na data do falecimento)"
 
 #: app/Functions/Functions.php:619
 msgid "parent"

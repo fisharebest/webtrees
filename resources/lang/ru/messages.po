@@ -16318,8 +16318,8 @@ msgid "after %s"
 msgstr "после %s"
 
 #: app/Functions/FunctionsPrint.php:280
-msgid "after death"
-msgstr "после смерти"
+msgid "(%s after death)"
+msgstr "(%s после смерти)"
 
 #: app/Http/RequestHandlers/IndividualPage.php:117
 #: app/Http/RequestHandlers/IndividualPage.php:120
@@ -19283,8 +19283,8 @@ msgid "of"
 msgstr "из"
 
 #: app/Functions/FunctionsPrint.php:278
-msgid "on the date of death"
-msgstr "на день смерти"
+msgid "(on the date of death)"
+msgstr "(на день смерти)"
 
 #: app/Functions/Functions.php:619
 msgid "parent"

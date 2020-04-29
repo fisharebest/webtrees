@@ -1074,7 +1074,9 @@ class GedcomRecord
             }
         }
         if ($update_chan) {
-            $new_gedcom .= "\n1 CHAN\n2 DATE " . strtoupper(date('d M Y')) . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->userName();
+            $today = strtoupper(date('d M Y'));
+            $now   = date('H:i:s');
+            $new_gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
         }
 
         // Adding a new fact
@@ -1123,7 +1125,9 @@ class GedcomRecord
         // Update the CHAN record
         if ($update_chan) {
             $gedcom = preg_replace('/\n1 CHAN(\n[2-9].*)*/', '', $gedcom);
-            $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->userName();
+            $today = strtoupper(date('d M Y'));
+            $now   = date('H:i:s');
+            $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
         }
 
         // Create a pending change

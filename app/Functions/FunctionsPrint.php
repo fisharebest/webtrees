@@ -238,7 +238,7 @@ class FunctionsPrint
             case 'STILLBORN':
                 return I18N::translate('Stillborn');
             default:
-                return preg_replace_callback(
+                return (string) preg_replace_callback(
                     [
                         '/(\d+)([ymwd])/',
                     ],
@@ -337,7 +337,7 @@ class FunctionsPrint
                             }
                         }
                     }
-                    if ($fact !== 'DEAT' && Date::compare($death_date, $date) <= 0) {
+                    if ($fact !== 'DEAT' && Date::compare($death_date, $date) < 0) {
                         // After death, print time since death
                         $ageText = (new Age($death_date, $date))->timeAfterDeath();
                         // Family events which occur after death are probably errors

@@ -19249,8 +19249,8 @@ msgid "of"
 msgstr "από"
 
 #: app/Functions/FunctionsPrint.php:278
-msgid "on the date of death"
-msgstr "την ημέρα του θανάτου"
+msgid "(on the date of death)"
+msgstr "(την ημέρα του θανάτου)"
 
 #: app/Functions/Functions.php:619
 msgid "parent"

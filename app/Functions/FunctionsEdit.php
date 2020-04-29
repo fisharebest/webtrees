@@ -893,7 +893,8 @@ class FunctionsEdit
                 if ($key === 'TYPE') {
                     echo self::addSimpleTag($tree, '2 TYPE ' . $type_val, $level1tag);
                 } elseif ($level1tag === '_TODO' && $key === 'DATE') {
-                    echo self::addSimpleTag($tree, '2 ' . $key . ' ' . strtoupper(date('d M Y')), $level1tag);
+                    $today = strtoupper(date('d M Y'));
+                    echo self::addSimpleTag($tree, '2 ' . $key . ' ' . $today, $level1tag);
                 } elseif ($level1tag === '_TODO' && $key === '_WT_USER') {
                     echo self::addSimpleTag($tree, '2 ' . $key . ' ' . Auth::user()->userName(), $level1tag);
                 } elseif ($level1tag === 'NAME' && strstr($tree->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {

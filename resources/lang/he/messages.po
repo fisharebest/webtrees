@@ -16270,8 +16270,8 @@ msgid "after %s"
 msgstr "אחרי %s"
 
 #: app/Functions/FunctionsPrint.php:280
-msgid "after death"
-msgstr "לאחר הפטירה"
+msgid "(%s after death)"
+msgstr "(%s לאחר הפטירה)"
 
 #: app/Http/RequestHandlers/IndividualPage.php:117
 #: app/Http/RequestHandlers/IndividualPage.php:120
@@ -19233,8 +19233,8 @@ msgid "of"
 msgstr "מתוך"
 
 #: app/Functions/FunctionsPrint.php:278
-msgid "on the date of death"
-msgstr "ביום הפטירה"
+msgid "(on the date of death)"
+msgstr "(ביום הפטירה)"
 
 #: app/Functions/Functions.php:619
 msgid "parent"

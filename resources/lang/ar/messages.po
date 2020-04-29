@@ -19365,8 +19365,8 @@ msgid "of"
 msgstr "من"
 
 #: app/Functions/FunctionsPrint.php:278
-msgid "on the date of death"
-msgstr "في تأريخ يوم الوفاة"
+msgid "(on the date of death)"
+msgstr "(في تأريخ يوم الوفاة)"
 
 #: app/Functions/Functions.php:619
 msgid "parent"

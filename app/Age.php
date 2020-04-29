@@ -126,7 +126,7 @@ class Age
 
     /**
      * How many years between two events?
-     * If either date is invalid return -1.
+     * Return -1 for invalid or reversed dates.
      *
      * @return int
      */
@@ -137,6 +137,26 @@ class Age
         }
 
         return -1;
+    }
+
+    /**
+     * How many years between two events?
+     * If either date is invalid return -1.
+     *
+     * @return string
+     */
+    public function ageYearsString(): string
+    {
+        if (!$this->is_valid) {
+            return '';
+        }
+
+        if ($this->years < 0) {
+            return view('icons/warning');
+        }
+
+
+        return I18N::number($this->years);
     }
 
     /**
@@ -162,7 +182,7 @@ class Age
     }
 
     /**
-     * Similar to age-at-event, but for events such as burial, cremation, etc.
+     * Similar to ageAtEvent, but for events such as burial, cremation, etc.
      *
      * @return string
      */
@@ -174,12 +194,12 @@ class Age
 
         if ($this->years === 0 && $this->months === 0 && $this->days === 0) {
             if ($this->is_exact) {
-                return '(' . I18N::translate('on the date of death') . ')';
+                return I18N::translate('(on the date of death)');
             }
 
             return '';
         }
 
-        return '(' . $this->ageString() . ' ' . I18N::translate('after death') . ')';
+        return I18N::translate('(%s after death)', $this->ageString());
     }
 }

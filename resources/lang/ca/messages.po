@@ -19232,8 +19232,8 @@ msgid "of"
 msgstr "de"
 
 #: app/Functions/FunctionsPrint.php:278
-msgid "on the date of death"
-msgstr "el dia de la defunció"
+msgid "(on the date of death)"
+msgstr "(el dia de la defunció)"
 
 #: app/Functions/Functions.php:619
 msgid "parent"

@@ -54,7 +54,7 @@ class FunctionsDate
             case 'STILLBORN':
                 return I18N::translate('Stillborn');
             default:
-                return preg_replace_callback(
+                return (string) preg_replace_callback(
                     [
                         '/(\d+)([ymwd])/',
                     ],

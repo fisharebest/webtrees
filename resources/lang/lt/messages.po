@@ -16313,8 +16313,8 @@ msgid "after %s"
 msgstr "po %s"
 
 #: app/Functions/FunctionsPrint.php:280
-msgid "after death"
-msgstr "po mirties"
+msgid "(%s after death)"
+msgstr "(%s po mirties)"
 
 #: app/Http/RequestHandlers/IndividualPage.php:117
 #: app/Http/RequestHandlers/IndividualPage.php:120
@@ -19278,8 +19278,8 @@ msgid "of"
 msgstr "iš"
 
 #: app/Functions/FunctionsPrint.php:278
-msgid "on the date of death"
-msgstr "mirties metu"
+msgid "(on the date of death)"
+msgstr "(mirties metu)"
 
 #: app/Functions/Functions.php:619
 msgid "parent"

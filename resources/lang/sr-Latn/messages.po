@@ -16313,7 +16313,7 @@ msgid "after %s"
 msgstr "posle %s"
 
 #: app/Functions/FunctionsPrint.php:280
-msgid "after death"
+msgid "(%s after death)"
 msgstr ""
 
 #: app/Http/RequestHandlers/IndividualPage.php:117
@@ -19278,7 +19278,7 @@ msgid "of"
 msgstr ""
 
 #: app/Functions/FunctionsPrint.php:278
-msgid "on the date of death"
+msgid "(on the date of death)"
 msgstr ""
 
 #: app/Functions/Functions.php:619

@@ -16322,8 +16322,8 @@ msgid "after %s"
 msgstr "eftir %s"
 
 #: app/Functions/FunctionsPrint.php:280
-msgid "after death"
-msgstr "eftir andlát"
+msgid "(%s after death)"
+msgstr "(%s eftir andlát)"
 
 #: app/Http/RequestHandlers/IndividualPage.php:117
 #: app/Http/RequestHandlers/IndividualPage.php:120
@@ -19288,8 +19288,8 @@ msgid "of"
 msgstr "af"
 
 #: app/Functions/FunctionsPrint.php:278
-msgid "on the date of death"
-msgstr "á degi andláts"
+msgid "(on the date of death)"
+msgstr "(á degi andláts)"
 
 #: app/Functions/Functions.php:619
 msgid "parent"

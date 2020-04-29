@@ -16303,8 +16303,8 @@ msgid "after %s"
 msgstr ""
 
 #: app/Functions/FunctionsPrint.php:280
-msgid "after death"
-msgstr "baada ya kifo"
+msgid "(%s after death)"
+msgstr "(%s baada ya kifo)"
 
 #: app/Http/RequestHandlers/IndividualPage.php:117
 #: app/Http/RequestHandlers/IndividualPage.php:120
@@ -19267,8 +19267,8 @@ msgid "of"
 msgstr ""
 
 #: app/Functions/FunctionsPrint.php:278
-msgid "on the date of death"
-msgstr "tarehe ya kifo"
+msgid "(on the date of death)"
+msgstr "(tarehe ya kifo)"
 
 #: app/Functions/Functions.php:619
 msgid "parent"

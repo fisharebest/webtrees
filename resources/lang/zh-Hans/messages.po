@@ -17656,8 +17656,8 @@ msgid "after %s"
 msgstr "在 %s 之后"
 
 #: app/Functions/FunctionsPrint.php:280
-msgid "after death"
-msgstr "去世后"
+msgid "(%s after death)"
+msgstr "(%s 去世后)"
 
 #: app/Http/RequestHandlers/IndividualPage.php:117
 #: app/Http/RequestHandlers/IndividualPage.php:120
@@ -20702,8 +20702,8 @@ msgid "of"
 msgstr "从"
 
 #: app/Functions/FunctionsPrint.php:278
-msgid "on the date of death"
-msgstr "去世日期"
+msgid "(on the date of death)"
+msgstr "(去世日期)"
 
 #: app/Functions/Functions.php:619
 msgid "parent"
