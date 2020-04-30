@@ -337,7 +337,7 @@ class FunctionsPrint
                             }
                         }
                     }
-                    if ($fact !== 'DEAT' && Date::compare($death_date, $date) < 0) {
+                    if ($fact !== 'DEAT' && $death_date->isOK() && Date::compare($death_date, $date) < 0) {
                         // After death, print time since death
                         $ageText = (new Age($death_date, $date))->timeAfterDeath();
                         // Family events which occur after death are probably errors
