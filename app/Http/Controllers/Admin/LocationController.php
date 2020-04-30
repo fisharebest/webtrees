@@ -47,7 +47,6 @@ use function array_merge;
 use function array_pad;
 use function array_pop;
 use function array_reverse;
-use function array_search;
 use function array_shift;
 use function array_slice;
 use function assert;
@@ -474,8 +473,6 @@ class LocationController extends AbstractAdminController
     {
         $parent_id = (int) $request->getQueryParams()['parent_id'];
         $format    = $request->getQueryParams()['format'];
-        $maxlevel  = (int) DB::table('placelocation')->max('pl_level');
-        $startfqpn = [];
         $hierarchy = $this->getHierarchy($parent_id);
 
         // Create the file name
@@ -485,18 +482,31 @@ class LocationController extends AbstractAdminController
         $filename   = 'Places-' . preg_replace('/[^a-zA-Z0-9.-]/', '', $place_name);
 
         // Fill in the place names for the starting conditions
-        foreach ($hierarchy as $level => $record) {
-            $startfqpn[$level] = $record->pl_place;
+        $startfqpn = [];
+        foreach ($hierarchy as $record) {
+            $startfqpn[] = $record->pl_place;
         }
-        $startfqpn = array_pad($startfqpn, $maxlevel + 1, '');
 
-        // Generate an array containing the data to output
+        // Generate an array containing the data to output.
         $places = [];
-        $this->buildLevel($parent_id, $startfqpn, $places);
+        $this->buildExport($parent_id, $startfqpn, $places);
 
-        $places = array_filter($places, static function (array $place): bool {
-            return $place['pl_long'] !== 0.0 && $place['pl_lati'] !== 0.0;
-        });
+        // Pad all locations to the length of the longest.
+        $max_level = 0;
+        foreach ($places as $place) {
+            $max_level = max($max_level, count($place->fqpn));
+        }
+
+        $places = array_map(static function (stdClass $place) use ($max_level): array {
+            return array_merge(
+                [count($place->fqpn) - 1],
+                array_pad($place->fqpn, $max_level, ''),
+                [$place->pl_long],
+                [$place->pl_lati],
+                [$place->pl_zoom],
+                [$place->pl_icon]
+            );
+        }, $places);
 
         if ($format === 'csv') {
             // Create the header line for the output file (always English)
@@ -504,8 +514,8 @@ class LocationController extends AbstractAdminController
                 I18N::translate('Level'),
             ];
 
-            for ($i = 0; $i <= $maxlevel; $i++) {
-                $header[] = 'Place' . ($i + 1);
+            for ($i = 0; $i < $max_level; $i++) {
+                $header[] = 'Place' . $i;
             }
 
             $header[] = 'Longitude';
@@ -520,27 +530,38 @@ class LocationController extends AbstractAdminController
     }
 
     /**
-     * @param int   $parent_id
-     * @param array $placename
-     * @param array $places
+     * @param int             $parent_id
+     * @param array<string>   $fqpn
+     * @param array<stdClass> $places
      *
      * @return void
      * @throws Exception
      */
-    private function buildLevel(int $parent_id, array $placename, array &$places): void
+    private function buildExport(int $parent_id, array $fqpn, array &$places): void
     {
-        $level = array_search('', $placename, true);
+        // Current number of levels.
+        $level = count($fqpn);
 
+        // Data for the next level.
         $rows = DB::table('placelocation')
             ->where('pl_parent_id', '=', $parent_id)
             ->orderBy('pl_place')
             ->get();
 
         foreach ($rows as $row) {
-            $index             = (int) $row->pl_id;
-            $placename[$level] = $row->pl_place;
-            $places[]          = array_merge(['pl_level' => $row->pl_level], $placename, ['pl_long' => $row->pl_long, 'pl_lati' => $row->pl_lati, 'pl_zoom' => $row->pl_zoom, 'pl_icon' => $row->pl_icon]);
-            $this->buildLevel($index, $placename, $places);
+            $fqpn[$level] = $row->pl_place;
+
+            $row->fqpn    = $fqpn;
+            $row->pl_long = $row->pl_long ?? 'E0';
+            $row->pl_lati = $row->pl_lati ?? 'N0';
+            $row->pl_zoom = (int) $row->pl_zoom;
+            $row->pl_icon = (string) $row->pl_icon;
+
+            if ($row->pl_long !== 'E0' || $row->pl_lati !== 'N0') {
+                $places[] = $row;
+            }
+
+            $this->buildExport((int) $row->pl_id, $fqpn, $places);
         }
     }
 
