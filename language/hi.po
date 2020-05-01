@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-04-19 17:42+0000\n"
+"PO-Revision-Date: 2020-05-03 11:49+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
@@ -3624,7 +3624,7 @@ msgstr ""
 
 #: admin_trees_check.php:33 admin_trees_manage.php:499
 msgid "Check for errors"
-msgstr "बाधाओं की जाँच करें"
+msgstr "एरर देखें"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:94
@@ -4133,8 +4133,8 @@ msgstr "कोत दिव्वार"
 #: login.php:619
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
 msgstr ""
-"आपके द्वारा दर्ज की गई जानकारी को सत्यापित नहीं हो सकी।  कृपया पुन: प्रयास "
-"करें या अधिक जानकारी के लिए साइट एडमिनिस्ट्रेटर से संपर्क करें।"
+"आपके द्वारा दर्ज की गई जानकारी सत्यापित नहीं हो सकी।  कृपया पुन: प्रयास करें "
+"या अधिक जानकारी के लिए साइट एडमिनिस्ट्रेटर से संपर्क करें।"
 
 #: app/Stats.php:5579
 msgid "Count"
@@ -6589,17 +6589,18 @@ msgstr ""
 #: app/Theme/AbstractTheme.php:296
 #, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "वंशावली के प्रश्नों के साथ मदद के लिए %s से संपर्क करें।"
+msgstr "वंशावली से संबंधित प्रश्नों अथवा मदद के लिए %s से संपर्क करें।"
 
 #: app/Theme/AbstractTheme.php:307
 #, php-format
 msgid "For technical support and information contact %s."
-msgstr "तकनीकी सहायता और जानकारी के लिए %s से संपर्क करें।"
+msgstr "तकनीकी सहायता अथवा जानकारी के लिए %s से संपर्क करें।"
 
 #: app/Theme/AbstractTheme.php:285
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "तकनीकी सहायता या वंशावली के प्रश्नों के लिए %s से संपर्क करें।"
+msgstr ""
+"तकनीकी सहायता अथवा वंशावली से संबंधित प्रश्नों के लिए %s से संपर्क करें।"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:283
@@ -14358,10 +14359,10 @@ msgstr "वेबसाइट की वरीयताओं को अपड�
 #: admin_trees_config.php:1547
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
 msgstr ""
-"वेबसाइट www.geonames.org जगह के नामों का एक बड़ा डेटाबेस प्रदान करती है। नए "
-"स्थानों में प्रवेश करते समय इसे खोजा जा सकता है। इस सुविधा का उपयोग करने के "
-"लिए, आपको www.geonames.org पर एक निशुल्क खाते के लिए पंजीकरण करना होगा और "
-"यूज़रनेम प्रदान करना होगा।"
+"वेबसाइट www.geonames.org स्थानों के नाम का एक बड़ा डेटाबेस प्रदान करती है। "
+"नए स्थान जोड़ते समय इसे खोजा जा सकता है। इस सुविधा का उपयोग करने के लिए, आपको"
+" www.geonames.org पर एक निशुल्क खाते के लिए पंजीकरण करना होगा और यूज़रनेम "
+"प्रदान करना होगा।"
 
 #: setup.php:509
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
@@ -14573,8 +14574,8 @@ msgstr "इस फॅमिली ट्री में प्रदर्श�
 #: app/Module/HtmlBlockModule.php:160
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
 msgstr ""
-"इस फॅमिली ट्री को आखिरी बार #gedcomUpdated# को अपडेट किया गया था। इस फॅमिली "
-"ट्री में टोटल #totalSurnames# कुलनाम हैं। सबसे पुरानी दर्ज की गई घटना "
+"यह फॅमिली ट्री आखिरी बार #gedcomUpdated# को अपडेट किया गई।  इस फॅमिली ट्री "
+"में टोटल #totalSurnames# कुलनाम हैं।  इसमे सबसे पुरानी दर्ज की गई घटना "
 "#firstEventName# के #firstEventType# #firstEventYear# की है। और सबसे हाल की "
 "घटना है #lastEventName# के #lastEventType# की #lastEventYear# में। "
 "<br><br>यदि आपकी कोई टिप्पणी या प्रतिक्रिया है तो कृपया #contactWebmaster# से"
@@ -14696,8 +14697,8 @@ msgstr ""
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
 msgstr ""
-"यह फॅमिली ट्री में खुद आपके अपने के रिकॉर्ड की लिंक है।  अगर यह गलत व्यक्ति "
-"है, तो किसी एडमिनिस्ट्रेटर से संपर्क करें।"
+"यह फॅमिली ट्री में खुद आपके अपने के रिकॉर्ड की लिंक है।  यदि यह गलत व्यक्ति "
+"हैं तो, किसी एडमिनिस्ट्रेटर से संपर्क करें।"
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: admin_trees_config.php:1329
@@ -15954,7 +15955,8 @@ msgstr "छाया-आकृति इस्तेमाल करें"
 
 #: admin_trees_config.php:1534
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr "स्थानों पर स्वतः पूर्ण के लिए GeoNames डेटाबेस का उपयोग करें"
+msgstr ""
+"स्थानों के नाम स्वतः पूर्ण प्राप्त करने के लिए GeoNames डेटाबेस का उपयोग करें"
 
 #: login.php:491
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
