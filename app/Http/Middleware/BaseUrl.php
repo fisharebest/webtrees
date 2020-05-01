@@ -66,10 +66,6 @@ class BaseUrl implements MiddlewareInterface
             $base_host   = parse_url($base_url, PHP_URL_HOST) ?? 'localhost';
             $base_port   = parse_url($base_url, PHP_URL_PORT);
 
-            if ($base_port !== null) {
-                $base_port = (string) $base_port;
-            }
-
             $request_url = $request_url
                 ->withScheme($base_scheme)
                 ->withHost($base_host)
