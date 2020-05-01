@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -340,10 +340,9 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         foreach ($ancestors as $sosa => $person) {
             if ($person->canShow()) {
                 $birth = $person->facts(Gedcom::BIRTH_EVENTS, true)
-                    ->filter(static function (Fact $fact): bool {
+                    ->first(static function (Fact $fact): bool {
                         return $fact->place()->gedcomName() !== '';
-                    })
-                    ->first();
+                    });
 
                 if ($birth instanceof Fact) {
                     $facts[$sosa] = $birth;

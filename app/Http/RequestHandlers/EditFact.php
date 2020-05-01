@@ -57,10 +57,9 @@ class EditFact implements RequestHandlerInterface
 
         // Find the fact to edit
         $fact = $record->facts()
-            ->filter(static function (Fact $fact) use ($fact_id): bool {
+            ->first(static function (Fact $fact) use ($fact_id): bool {
                 return $fact->id() === $fact_id && $fact->canEdit();
-            })
-            ->first();
+            });
 
 
         if ($fact === null) {

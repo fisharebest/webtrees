@@ -226,10 +226,9 @@ class EditMediaController extends AbstractEditController
 
         // Find the fact to edit
         $media_file = $media->mediaFiles()
-            ->filter(static function (MediaFile $media_file) use ($fact_id): bool {
+            ->first(static function (MediaFile $media_file) use ($fact_id): bool {
                 return $media_file->factId() === $fact_id;
-            })
-            ->first();
+            });
 
         // Media file does not exist?
         if ($media_file === null) {

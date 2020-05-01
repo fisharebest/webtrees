@@ -433,10 +433,9 @@ class EditIndividualController extends AbstractEditController
 
         // Find the fact to edit
         $fact = $individual->facts()
-            ->filter(static function (Fact $fact) use ($fact_id): bool {
+            ->first(static function (Fact $fact) use ($fact_id): bool {
                 return $fact->id() === $fact_id && $fact->canEdit();
-            })
-            ->first();
+            });
 
         if ($fact instanceof Fact) {
             return $this->viewResponse('edit/new-individual', [
