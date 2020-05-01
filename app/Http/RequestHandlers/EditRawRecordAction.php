@@ -20,14 +20,18 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function explode;
 use function is_string;
+use function preg_match;
 
 /**
  * Edit the raw GEDCOM of a record.
@@ -55,7 +59,18 @@ class EditRawRecordAction implements RequestHandlerInterface
         $facts    = $params['fact'] ?? [];
         $fact_ids = $params['fact_id'] ?? [];
 
-        $gedcom = '0 @' . $record->xref() . '@ ' . $record::RECORD_TYPE;
+        // Generate the level-0 line for the record.
+        switch ($record::RECORD_TYPE) {
+            case GedcomRecord::RECORD_TYPE:
+                // Unknown type? - copy the existing data.
+                $gedcom = explode("\n", $record->gedcom(),2)[0];
+                break;
+            case Header::RECORD_TYPE:
+                $gedcom = '0 HEAD';
+                break;
+            default:
+                $gedcom = '0 @' . $xref . '@ ' . $record::RECORD_TYPE;
+        }
 
         // Retain any private facts
         foreach ($record->facts([], false, Auth::PRIV_HIDE) as $fact) {

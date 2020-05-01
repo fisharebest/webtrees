@@ -29,6 +29,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function explode;
 use function is_string;
 
 /**
@@ -54,9 +55,13 @@ class EditRawRecordPage implements RequestHandlerInterface
         $record = GedcomRecord::getInstance($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
+        // Do not allow users to edit the first line.  Changing the type will break things.
+        $level0 = explode("\n", $record->gedcom(),2)[0];
+
         $title = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->fullName();
 
         return $this->viewResponse('edit/raw-gedcom-record', [
+            'level0' => $level0,
             'record' => $record,
             'title'  => $title,
             'tree'   => $tree,
