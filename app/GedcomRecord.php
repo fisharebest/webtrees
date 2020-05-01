@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -1061,27 +1061,26 @@ class GedcomRecord
         [$new_gedcom] = explode("\n", $old_gedcom, 2);
 
         // Replacing (or deleting) an existing fact
-        foreach ($this->facts([], false, Auth::PRIV_HIDE) as $fact) {
-            if (!$fact->isPendingDeletion()) {
-                if ($fact->id() === $fact_id) {
-                    if ($gedcom !== '') {
-                        $new_gedcom .= "\n" . $gedcom;
-                    }
-                    $fact_id = 'NOT A VALID FACT ID'; // Only replace/delete one copy of a duplicate fact
-                } elseif ($fact->getTag() !== 'CHAN' || !$update_chan) {
-                    $new_gedcom .= "\n" . $fact->gedcom();
+        foreach ($this->facts([], false, Auth::PRIV_HIDE, true) as $fact) {
+            if ($fact->id() === $fact_id) {
+                if ($gedcom !== '') {
+                    $new_gedcom .= "\n" . $gedcom;
                 }
+                $fact_id = 'NOT A VALID FACT ID'; // Only replace/delete one copy of a duplicate fact
+            } elseif ($fact->getTag() !== 'CHAN' || !$update_chan) {
+                $new_gedcom .= "\n" . $fact->gedcom();
             }
-        }
-        if ($update_chan) {
-            $today = strtoupper(date('d M Y'));
-            $now   = date('H:i:s');
-            $new_gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
         }
 
         // Adding a new fact
         if ($fact_id === '') {
             $new_gedcom .= "\n" . $gedcom;
+        }
+
+        if ($update_chan && strpos($new_gedcom, "\n1 CHAN") === false) {
+            $today = strtoupper(date('d M Y'));
+            $now   = date('H:i:s');
+            $new_gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
         }
 
         if ($new_gedcom !== $old_gedcom) {

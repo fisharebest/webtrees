@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -73,8 +73,8 @@ class EditRawRecordAction implements RequestHandlerInterface
         }
 
         // Retain any private facts
-        foreach ($record->facts([], false, Auth::PRIV_HIDE) as $fact) {
-            if (!in_array($fact->id(), $fact_ids, true) && !$fact->isPendingDeletion()) {
+        foreach ($record->facts([], false, Auth::PRIV_HIDE, true) as $fact) {
+            if (!in_array($fact->id(), $fact_ids, true)) {
                 $gedcom .= "\n" . $fact->gedcom();
             }
         }
