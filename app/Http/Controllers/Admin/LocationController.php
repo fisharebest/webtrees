@@ -526,7 +526,7 @@ class LocationController extends AbstractAdminController
             return $this->exportCSV($filename . '.csv', $header, $places);
         }
 
-        return $this->exportGeoJSON($filename . '.geojson', $places, $maxlevel);
+        return $this->exportGeoJSON($filename . '.geojson', $places, $max_level);
     }
 
     /**
