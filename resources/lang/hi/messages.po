@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-04-20 14:19+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-02-03 09:12+0000\nPO-Revision-Date: 2020-05-03 11:49+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -3501,7 +3501,7 @@ msgstr "चार्ट"
 #: app/Http/Controllers/AdminTreesController.php:313
 #: resources/views/admin/trees.phtml:164
 msgid "Check for errors"
-msgstr "बाधाओं की जाँच करें"
+msgstr "एरर देखें"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:216
 msgid "Check for pending changes…"
@@ -4038,7 +4038,7 @@ msgstr "कोत दिव्वार"
 
 #: resources/views/verify-failure-page.phtml:13
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
-msgstr "आपके द्वारा दर्ज की गई जानकारी को सत्यापित नहीं हो सकी।  कृपया पुन: प्रयास करें या अधिक जानकारी के लिए साइट एडमिनिस्ट्रेटर से संपर्क करें।"
+msgstr "आपके द्वारा दर्ज की गई जानकारी सत्यापित नहीं हो सकी।  कृपया पुन: प्रयास करें या अधिक जानकारी के लिए साइट एडमिनिस्ट्रेटर से संपर्क करें।"
 
 #. I18N: Description of the “Hit counters” module
 #: app/Module/HitCountFooterModule.php:84
@@ -6439,17 +6439,17 @@ msgstr "उदाहरण के लिए, हम उन व्यक्ति
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "वंशावली के प्रश्नों के साथ मदद के लिए %s से संपर्क करें।"
+msgstr "वंशावली से संबंधित प्रश्नों अथवा मदद के लिए %s से संपर्क करें।"
 
 #: app/Module/ContactsFooterModule.php:162
 #, php-format
 msgid "For technical support and information contact %s."
-msgstr "तकनीकी सहायता और जानकारी के लिए %s से संपर्क करें।"
+msgstr "तकनीकी सहायता अथवा जानकारी के लिए %s से संपर्क करें।"
 
 #: app/Module/ContactsFooterModule.php:136
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "तकनीकी सहायता या वंशावली के प्रश्नों के लिए %s से संपर्क करें।"
+msgstr "तकनीकी सहायता अथवा वंशावली से संबंधित प्रश्नों के लिए %s से संपर्क करें।"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: resources/views/admin/site-preferences.phtml:80
@@ -14098,7 +14098,7 @@ msgstr "वेबसाइट की वरीयताओं को अपड�
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: resources/views/admin/map-provider.phtml:44
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr "वेबसाइट www.geonames.org जगह के नामों का एक बड़ा डेटाबेस प्रदान करती है। नए स्थानों में प्रवेश करते समय इसे खोजा जा सकता है। इस सुविधा का उपयोग करने के लिए, आपको www.geonames.org पर एक निशुल्क खाते के लिए पंजीकरण करना होगा और यूज़रनेम प्रदान करना होगा।"
+msgstr "वेबसाइट www.geonames.org स्थानों के नाम का एक बड़ा डेटाबेस प्रदान करती है। नए स्थान जोड़ते समय इसे खोजा जा सकता है। इस सुविधा का उपयोग करने के लिए, आपको www.geonames.org पर एक निशुल्क खाते के लिए पंजीकरण करना होगा और यूज़रनेम प्रदान करना होगा।"
 
 #: resources/views/errors/database-error.phtml:16
 #: resources/views/setup/step-6-failed.phtml:16
@@ -14274,7 +14274,7 @@ msgstr "इस फॅमिली ट्री में प्रदर्श�
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:7
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "इस फॅमिली ट्री को आखिरी बार #gedcomUpdated# को अपडेट किया गया था। इस फॅमिली ट्री में टोटल #totalSurnames# कुलनाम हैं। सबसे पुरानी दर्ज की गई घटना #firstEventName# के #firstEventType# #firstEventYear# की है। और सबसे हाल की घटना है #lastEventName# के #lastEventType# की #lastEventYear# में। <br><br>यदि आपकी कोई टिप्पणी या प्रतिक्रिया है तो कृपया #contactWebmaster# से संपर्क करें।"
+msgstr "यह फॅमिली ट्री आखिरी बार #gedcomUpdated# को अपडेट किया गई।  इस फॅमिली ट्री में टोटल #totalSurnames# कुलनाम हैं।  इसमे सबसे पुरानी दर्ज की गई घटना #firstEventName# के #firstEventType# #firstEventYear# की है। और सबसे हाल की घटना है #lastEventName# के #lastEventType# की #lastEventYear# में। <br><br>यदि आपकी कोई टिप्पणी या प्रतिक्रिया है तो कृपया #contactWebmaster# से संपर्क करें।"
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:9
 #: resources/views/modules/html/template-statistics.phtml:13
@@ -14397,7 +14397,7 @@ msgstr "यह कोमा द्वारा अलग की गई GEDCOM �
 
 #: resources/views/edit-account-page.phtml:56
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
-msgstr "यह फॅमिली ट्री में खुद आपके अपने के रिकॉर्ड की लिंक है।  अगर यह गलत व्यक्ति है, तो किसी एडमिनिस्ट्रेटर से संपर्क करें।"
+msgstr "यह फॅमिली ट्री में खुद आपके अपने के रिकॉर्ड की लिंक है।  यदि यह गलत व्यक्ति हैं तो, किसी एडमिनिस्ट्रेटर से संपर्क करें।"
 
 #: resources/views/setup/step-4-database-mysql.phtml:68
 #: resources/views/setup/step-4-database-mysql.phtml:82
@@ -15469,7 +15469,7 @@ msgstr "छाया-आकृति इस्तेमाल करें"
 
 #: resources/views/admin/map-provider.phtml:31
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr "स्थानों पर स्वतः पूर्ण के लिए GeoNames डेटाबेस का उपयोग करें"
+msgstr "स्थानों के नाम स्वतः पूर्ण प्राप्त करने के लिए GeoNames डेटाबेस का उपयोग करें"
 
 #: resources/views/register-page.phtml:89
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
