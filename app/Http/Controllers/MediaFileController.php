@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
+use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Intervention\Image\Exception\NotReadableException;
@@ -52,10 +53,13 @@ use function explode;
 use function extension_loaded;
 use function implode;
 use function md5;
+use function pathinfo;
 use function redirect;
 use function response;
 use function strlen;
 use function strtolower;
+
+use const PATHINFO_EXTENSION;
 
 /**
  * Controller for the media page and displaying images.
@@ -152,7 +156,7 @@ class MediaFileController extends AbstractBaseController
                     return $this->generateImage($media_file, $data_filesystem, $request->getQueryParams());
                 }
 
-                return $this->fileExtensionAsImage($media_file->extension());
+                return $this->fileExtensionAsImage($media_file->filename());
             }
         }
 
@@ -215,7 +219,7 @@ class MediaFileController extends AbstractBaseController
             $path = $server->makeImage($file, $params);
 
             return response($server->getCache()->read($path), StatusCodeInterface::STATUS_OK, [
-                'Content-Type'   => $server->getCache()->getMimetype($path) ?: 'application/octet-stream',
+                'Content-Type'   => $server->getCache()->getMimetype($path) ?: Mime::DEFAULT_TYPE,
                 'Content-Length' => (string) $server->getCache()->getSize($path),
                 'Cache-Control'  => 'max-age=31536000, public',
                 'Expires'        => Carbon::now()->addYears(10)->toRfc7231String(),
@@ -264,13 +268,13 @@ class MediaFileController extends AbstractBaseController
     /**
      * Send a dummy image, to replace a non-image file.
      *
-     * @param string $extension
+     * @param string $filename
      *
      * @return ResponseInterface
      */
-    private function fileExtensionAsImage(string $extension): ResponseInterface
+    private function fileExtensionAsImage(string $filename): ResponseInterface
     {
-        $extension = '.' . strtolower($extension);
+        $extension = '.' . strtolower(pathinfo($filename, PATHINFO_EXTENSION));
 
         $svg = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="#88F" /><text x="5" y="60" font-family="Verdana" font-size="30">' . $extension . '</text></svg>';
 
@@ -317,7 +321,7 @@ class MediaFileController extends AbstractBaseController
             $cache     = $server->getCache();
 
             return response($cache->read($thumbnail), StatusCodeInterface::STATUS_OK, [
-                'Content-Type'   => $cache->getMimetype($thumbnail) ?: 'application/octet-stream',
+                'Content-Type'   => $cache->getMimetype($thumbnail) ?: Mime::DEFAULT_TYPE,
                 'Content-Length' => (string) $cache->getSize($thumbnail),
                 'Cache-Control'  => 'max-age=31536000, public',
                 'Expires'        => Carbon::now()->addYears(10)->toRfc7231String(),

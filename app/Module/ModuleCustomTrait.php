@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Site;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -196,21 +197,7 @@ trait ModuleCustomTrait
 
         $content   = file_get_contents($file);
         $extension = strtolower(pathinfo($asset, PATHINFO_EXTENSION));
-
-        $mime_types = [
-            'css'  => 'text/css',
-            'gif'  => 'image/gif',
-            'js'   => 'application/javascript',
-            'jpg'  => 'image/jpeg',
-            'jpeg' => 'image/jpeg',
-            'json' => 'application/json',
-            'ico'  => 'image/x-icon',
-            'png'  => 'image/png',
-            'txt'  => 'text/plain',
-            'xml'  => 'application/xml'
-        ];
-
-        $mime_type = $mime_types[$extension] ?? 'application/octet-stream';
+        $mime_type = Mime::TYPES[$extension] ?? Mime::DEFAULT_TYPE;
 
         return response($content, StatusCodeInterface::STATUS_OK)
             ->withHeader('Cache-Control', 'max-age=31536000, public')
