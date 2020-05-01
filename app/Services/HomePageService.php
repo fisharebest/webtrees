@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use PhpParser\Node\Expr\AssignOp\Mod;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
