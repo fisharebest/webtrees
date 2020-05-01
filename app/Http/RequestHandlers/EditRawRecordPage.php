@@ -56,7 +56,7 @@ class EditRawRecordPage implements RequestHandlerInterface
         $record = Auth::checkRecordAccess($record, true);
 
         // Do not allow users to edit the first line.  Changing the type will break things.
-        $level0 = explode("\n", $record->gedcom(),2)[0];
+        $level0 = explode("\n", $record->gedcom(), 2)[0];
 
         $title = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->fullName();
 

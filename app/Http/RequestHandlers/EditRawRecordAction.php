@@ -63,7 +63,7 @@ class EditRawRecordAction implements RequestHandlerInterface
         switch ($record::RECORD_TYPE) {
             case GedcomRecord::RECORD_TYPE:
                 // Unknown type? - copy the existing data.
-                $gedcom = explode("\n", $record->gedcom(),2)[0];
+                $gedcom = explode("\n", $record->gedcom(), 2)[0];
                 break;
             case Header::RECORD_TYPE:
                 $gedcom = '0 HEAD';
