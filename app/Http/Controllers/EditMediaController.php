@@ -224,7 +224,7 @@ class EditMediaController extends AbstractEditController
             return redirect(route(TreePage::class, ['tree' => $tree->name()]));
         }
 
-        // Find the fact we are editing.
+        // Find the fact to edit
         $media_file = $media->mediaFiles()
             ->filter(static function (MediaFile $media_file) use ($fact_id): bool {
                 return $media_file->factId() === $fact_id;

@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
@@ -431,19 +432,23 @@ class EditIndividualController extends AbstractEditController
         $individual = Auth::checkIndividualAccess($individual, true);
 
         // Find the fact to edit
-        foreach ($individual->facts() as $fact) {
-            if ($fact->id() === $fact_id && $fact->canEdit()) {
-                return $this->viewResponse('edit/new-individual', [
-                    'next_action' => 'edit-name-action',
-                    'tree'        => $tree,
-                    'title'       => I18N::translate('Edit the name'),
-                    'individual'  => $individual,
-                    'family'      => null,
-                    'name_fact'   => $fact,
-                    'famtag'      => '',
-                    'gender'      => $individual->sex(),
-                ]);
-            }
+        $fact = $individual->facts()
+            ->filter(static function (Fact $fact) use ($fact_id): bool {
+                return $fact->id() === $fact_id && $fact->canEdit();
+            })
+            ->first();
+
+        if ($fact instanceof Fact) {
+            return $this->viewResponse('edit/new-individual', [
+                'next_action' => 'edit-name-action',
+                'tree'        => $tree,
+                'title'       => I18N::translate('Edit the name'),
+                'individual'  => $individual,
+                'family'      => null,
+                'name_fact'   => $fact,
+                'famtag'      => '',
+                'gender'      => $individual->sex(),
+            ]);
         }
 
         throw new HttpNotFoundException();
