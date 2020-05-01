@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Tree;
@@ -224,12 +225,11 @@ class EditMediaController extends AbstractEditController
         }
 
         // Find the fact we are editing.
-        $media_file = null;
-        foreach ($media->mediaFiles() as $tmp) {
-            if ($tmp->factId() === $fact_id) {
-                $media_file = $tmp;
-            }
-        }
+        $media_file = $media->mediaFiles()
+            ->filter(static function (MediaFile $media_file) use ($fact_id): bool {
+                return $media_file->factId() === $fact_id;
+            })
+            ->first();
 
         // Media file does not exist?
         if ($media_file === null) {

@@ -46,7 +46,6 @@ use Throwable;
 
 use function assert;
 use function e;
-use function explode;
 use function getimagesize;
 use function ini_get;
 use function intdiv;
@@ -56,6 +55,7 @@ use function redirect;
 use function route;
 use function str_replace;
 use function strlen;
+use function strpos;
 use function substr;
 use function trim;
 
@@ -251,7 +251,7 @@ class MediaController extends AbstractAdminController
                 $callback = function (array $row) use ($data_filesystem, $media_trees): array {
                     $mime_type = $data_filesystem->getMimeType($row[0]);
 
-                    if (explode('/', $mime_type)[0] === 'image') {
+                    if (strpos($mime_type, 'image/') === 0) {
                         $url = route('unused-media-thumbnail', [
                             'path' => $row[0],
                             'w'    => 100,

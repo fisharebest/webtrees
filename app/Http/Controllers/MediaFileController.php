@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -104,7 +104,7 @@ class MediaFileController extends AbstractBaseController
 
                     return response($data, StatusCodeInterface::STATUS_OK, [
                         'Content-Type'        => $media_file->mimeType(),
-                        'Content-Length'      => strlen($data),
+                        'Content-Length'      => (string) strlen($data),
                         'Content-Disposition' => $disposition . '; filename="' . addcslashes($media_file->filename(), '"') . '"',
                     ]);
                 }
@@ -173,7 +173,7 @@ class MediaFileController extends AbstractBaseController
         // We can't use the actual status code, as browsers won't show images with 4xx/5xx
         return response($svg, StatusCodeInterface::STATUS_OK, [
             'Content-Type'   => 'image/svg+xml',
-            'Content-Length' => strlen($svg),
+            'Content-Length' => (string) strlen($svg),
         ]);
     }
 
@@ -215,8 +215,8 @@ class MediaFileController extends AbstractBaseController
             $path = $server->makeImage($file, $params);
 
             return response($server->getCache()->read($path), StatusCodeInterface::STATUS_OK, [
-                'Content-Type'   => $server->getCache()->getMimetype($path),
-                'Content-Length' => $server->getCache()->getSize($path),
+                'Content-Type'   => $server->getCache()->getMimetype($path) ?: 'application/octet-stream',
+                'Content-Length' => (string) $server->getCache()->getSize($path),
                 'Cache-Control'  => 'max-age=31536000, public',
                 'Expires'        => Carbon::now()->addYears(10)->toRfc7231String(),
             ]);
@@ -276,7 +276,7 @@ class MediaFileController extends AbstractBaseController
 
         return response($svg, StatusCodeInterface::STATUS_OK, [
             'Content-Type'   => 'image/svg+xml',
-            'Content-Length' => strlen($svg),
+            'Content-Length' => (string) strlen($svg),
         ]);
     }
 
@@ -317,8 +317,8 @@ class MediaFileController extends AbstractBaseController
             $cache     = $server->getCache();
 
             return response($cache->read($thumbnail), StatusCodeInterface::STATUS_OK, [
-                'Content-Type'   => $cache->getMimetype($thumbnail),
-                'Content-Length' => $cache->getSize($thumbnail),
+                'Content-Type'   => $cache->getMimetype($thumbnail) ?: 'application/octet-stream',
+                'Content-Length' => (string) $cache->getSize($thumbnail),
                 'Cache-Control'  => 'max-age=31536000, public',
                 'Expires'        => Carbon::now()->addYears(10)->toRfc7231String(),
             ]);

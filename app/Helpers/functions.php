@@ -123,13 +123,13 @@ function response($content = '', $code = StatusCodeInterface::STATUS_OK, $header
         if (is_string($content)) {
             $headers = [
                 'Content-Type'   => 'text/html; charset=utf-8',
-                'Content-Length' => strlen($content),
+                'Content-Length' => (string) strlen($content),
             ];
         } else {
             $content = json_encode($content, JSON_UNESCAPED_UNICODE);
             $headers = [
                 'Content-Type'   => 'application/json',
-                'Content-Length' => strlen($content),
+                'Content-Length' => (string) strlen($content),
             ];
         }
     }
