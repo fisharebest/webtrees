@@ -741,7 +741,6 @@ class FunctionsImport
                 // Force HEAD records to have a creation date.
                 if (strpos($gedrec, "\n1 DATE ") === false) {
                     $today = strtoupper(date('d M Y'));
-                    $now   = date('H:i:s');
                     $gedrec .= "\n1 DATE " . $today;
                 }
 

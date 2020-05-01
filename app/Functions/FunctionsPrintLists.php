@@ -129,7 +129,6 @@ class FunctionsPrintLists
             case 2:
                 return implode(I18N::$list_separator, $html);
             case 3:
-                $i     = 0;
                 $count = count($html);
                 if ($count > 36) {
                     $col = 4;
