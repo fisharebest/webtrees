@@ -3486,7 +3486,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
             $outputFileName = preg_replace('/[:;\/\\\(\)\{\}\[\] $]/', '_', implode('-', $tmp)) . '.csv';
             header('Content-Type: application/octet-stream');
             header('Content-Disposition: attachment; filename="' . $outputFileName . '"');
-            $columns = [I18N::translate('Level'), I18N::translate('Country')];
+            $columns = array(I18N::translate('Level'), I18N::translate('Country'));
             if ($maxLevel > 0) {
                 $columns[] = I18N::translate('State');
             }
