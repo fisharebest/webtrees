@@ -3785,7 +3785,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
             $fieldrec = fgetcsv($fp, 0, ';');
             $fields   = count($fieldrec);
-            var_dump($fields,$fieldrec);
             $set_icon = true;
             if (!is_dir(WT_MODULES_DIR . 'googlemap/places/flags/')) {
                 $set_icon = false;
