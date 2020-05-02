@@ -2765,30 +2765,30 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
     /**
      * Set the output level.
      *
-     * @param int $parent_id
+     * @param int      $parent_id
+     * @param int      $maxLevel
+     * @param resource $fp
      */
-    private function outputLevel($parent_id)
+    private function outputLevel($parent_id, $maxLevel, $fp)
     {
-        $tmp      = $this->placeIdToHierarchy($parent_id);
-        $maxLevel = $this->getHighestLevel();
-        if ($maxLevel > 8) {
-            $maxLevel = 8;
-        }
-        $prefix = implode(';', $tmp);
-        if ($prefix != '') {
-            $prefix .= ';';
-        }
-        $suffix = str_repeat(';', $maxLevel - count($tmp));
-        $level  = count($tmp);
+        $tmp   = $this->placeIdToHierarchy($parent_id);
+        $level = count($tmp);
+        $tmp   = array_pad($tmp, $maxLevel + 1, '');
 
         $rows = Database::prepare(
             "SELECT pl_id, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place"
         )->execute(array($parent_id))->fetchAll();
 
         foreach ($rows as $row) {
-            echo $level, ';', $prefix, $row->pl_place, $suffix, ';', $row->pl_long, ';', $row->pl_lati, ';', $row->pl_zoom, ';', $row->pl_icon, "\r\n";
+            $tmp[$level] = $row->pl_place;
+            $columns = array_merge(
+                array($level),
+                $tmp,
+                array($row->pl_long, $row->pl_lati, $row->pl_zoom, $row->pl_icon)
+            );
+            fputcsv($fp, $columns, ';');
             if ($level < $maxLevel) {
-                $this->outputLevel($row->pl_id);
+                $this->outputLevel($row->pl_id, $maxLevel, $fp);
             }
         }
     }
@@ -3486,34 +3486,38 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
             $outputFileName = preg_replace('/[:;\/\\\(\)\{\}\[\] $]/', '_', implode('-', $tmp)) . '.csv';
             header('Content-Type: application/octet-stream');
             header('Content-Disposition: attachment; filename="' . $outputFileName . '"');
-            echo '"', I18N::translate('Level'), '";"', I18N::translate('Country'), '";';
+            $columns = [I18N::translate('Level'), I18N::translate('Country')];
             if ($maxLevel > 0) {
-                echo '"', I18N::translate('State'), '";';
+                $columns[] = I18N::translate('State');
             }
             if ($maxLevel > 1) {
-                echo '"', I18N::translate('County'), '";';
+                $columns[] = I18N::translate('County');
             }
             if ($maxLevel > 2) {
-                echo '"', I18N::translate('City'), '";';
+                $columns[] = I18N::translate('City');
             }
             if ($maxLevel > 3) {
-                echo '"', I18N::translate('Place'), '";';
+                $columns[] = I18N::translate('Place');
             }
             if ($maxLevel > 4) {
-                echo '"', I18N::translate('Place'), '";';
+                $columns[] = I18N::translate('Place');
             }
             if ($maxLevel > 5) {
-                echo '"', I18N::translate('Place'), '";';
+                $columns[] = I18N::translate('Place');
             }
             if ($maxLevel > 6) {
-                echo '"', I18N::translate('Place'), '";';
+                $columns[] = I18N::translate('Place');
             }
             if ($maxLevel > 7) {
-                echo '"', I18N::translate('Place'), '";';
+                $columns[] = I18N::translate('Place');
             }
-            echo '"', I18N::translate('Longitude'), '";"', I18N::translate('Latitude'), '";';
-            echo '"', I18N::translate('Zoom level'), '";"', I18N::translate('Icon'), '";', WT_EOL;
-            $this->outputLevel($parent);
+            $columns[] = I18N::translate('Longitude');
+            $columns[] = I18N::translate('Latitude');
+            $columns[] = I18N::translate('Zoom level');
+            $columns[] = I18N::translate('Icon');
+            $fp = fopen('php://output', 'wb');
+            fputcsv($fp, $columns, ';');
+            $this->outputLevel($parent, $maxLevel, $fp);
 
             return;
         }
@@ -3771,58 +3775,47 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
                 Database::exec("DELETE FROM `##placelocation` WHERE 1=1");
             }
             if (!empty($_FILES['placesfile']['tmp_name'])) {
-                $lines = file($_FILES['placesfile']['tmp_name']);
+                $fp = fopen($_FILES['placesfile']['tmp_name'], 'rb');
             } elseif (!empty($_REQUEST['localfile'])) {
-                $lines = file(WT_MODULES_DIR . 'googlemap/extra' . $_REQUEST['localfile']);
+                $fp = fopen(WT_MODULES_DIR . 'googlemap/extra' . $_REQUEST['localfile'], 'rb');
             }
-            // Strip BYTE-ORDER-MARK, if present
-            if (!empty($lines[0]) && substr($lines[0], 0, 3) === WT_UTF8_BOM) {
-                $lines[0] = substr($lines[0], 3);
-            }
-            asort($lines);
             $highestIndex = $this->getHighestIndex();
             $placelist    = array();
             $j            = 0;
-            $maxLevel     = 0;
-            foreach ($lines as $p => $placerec) {
-                $fieldrec = explode(';', $placerec);
-                if ($fieldrec[0] > $maxLevel) {
-                    $maxLevel = $fieldrec[0];
-                }
-            }
+
+            $fieldrec = fgetcsv($fp, 0, ';');
             $fields   = count($fieldrec);
+            var_dump($fields,$fieldrec);
             $set_icon = true;
             if (!is_dir(WT_MODULES_DIR . 'googlemap/places/flags/')) {
                 $set_icon = false;
             }
-            foreach ($lines as $p => $placerec) {
-                $fieldrec = explode(';', $placerec);
-                if (is_numeric($fieldrec[0]) && $fieldrec[0] <= $maxLevel) {
-                    $placelist[$j]          = array();
-                    $placelist[$j]['place'] = '';
-                    for ($ii = $fields - 4; $ii > 1; $ii--) {
-                        if ($fieldrec[0] > $ii - 2) {
-                            $placelist[$j]['place'] .= $fieldrec[$ii] . ',';
-                        }
+            while ($fieldrec = fgetcsv($fp, 0, ';')) {
+                $placelist[$j]          = array();
+                $placelist[$j]['place'] = '';
+                for ($ii = $fields - 4; $ii > 1; $ii--) {
+                    if ($fieldrec[0] > $ii - 2) {
+                        $placelist[$j]['place'] .= $fieldrec[$ii] . ',';
                     }
-                    foreach ($country_names as $countrycode => $countryname) {
-                        if ($countrycode == strtoupper($fieldrec[1])) {
-                            $fieldrec[1] = $countryname;
-                            break;
-                        }
-                    }
-                    $placelist[$j]['place'] .= $fieldrec[1];
-                    $placelist[$j]['long'] = $fieldrec[$fields - 4];
-                    $placelist[$j]['lati'] = $fieldrec[$fields - 3];
-                    $placelist[$j]['zoom'] = $fieldrec[$fields - 2];
-                    if ($set_icon) {
-                        $placelist[$j]['icon'] = trim($fieldrec[$fields - 1]);
-                    } else {
-                        $placelist[$j]['icon'] = '';
-                    }
-                    $j = $j + 1;
                 }
+                foreach ($country_names as $countrycode => $countryname) {
+                    if ($countrycode == strtoupper($fieldrec[1])) {
+                        $fieldrec[1] = $countryname;
+                        break;
+                    }
+                }
+                $placelist[$j]['place'] .= $fieldrec[1];
+                $placelist[$j]['long'] = $fieldrec[$fields - 4];
+                $placelist[$j]['lati'] = $fieldrec[$fields - 3];
+                $placelist[$j]['zoom'] = $fieldrec[$fields - 2];
+                if ($set_icon) {
+                    $placelist[$j]['icon'] = trim($fieldrec[$fields - 1]);
+                } else {
+                    $placelist[$j]['icon'] = '';
+                }
+                $j = $j + 1;
             }
+            fclose($fp);
 
             $prevPlace     = '';
             $prevLati      = '';
