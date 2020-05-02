@@ -3783,13 +3783,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
             $placelist    = array();
             $j            = 0;
 
-            $fieldrec = fgetcsv($fp, 0, ';');
-            $fields   = count($fieldrec);
+            // Skip the header row.  Note that older versions of webtrees may have added a
+            // trailing semicolon, so we can't rely on this row for an accurate count of columns.
+            fgetcsv($fp, 0, ';');
             $set_icon = true;
             if (!is_dir(WT_MODULES_DIR . 'googlemap/places/flags/')) {
                 $set_icon = false;
             }
             while ($fieldrec = fgetcsv($fp, 0, ';')) {
+                $fields                 = count($fieldrec);
                 $placelist[$j]          = array();
                 $placelist[$j]['place'] = '';
                 for ($ii = $fields - 4; $ii > 1; $ii--) {
