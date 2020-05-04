@@ -46,8 +46,13 @@ class UnconnectedAction implements RequestHandlerInterface
 
         $params = (array) $request->getParsedBody();
 
+        $aliases    = $params['aliases'] ?? '';
         $associates = $params['associates'] ?? '';
 
-        return redirect(route(UnconnectedPage::class, ['tree' => $tree->name(), 'associates' => $associates]));
+        return redirect(route(UnconnectedPage::class, [
+            'aliases'    => $aliases,
+            'associates' => $associates,
+            'tree'       => $tree->name(),
+        ]));
     }
 }

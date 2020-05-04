@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -51,6 +53,8 @@ class CensusColumnYearsMarried extends AbstractCensusColumn implements CensusCol
             return '';
         }
 
-        return (string) Date::getAgeYears($marriage_date, $this->date());
+        $age = new Age($marriage_date, $this->date());
+
+        return I18N::number($age->ageYears());
     }
 }

@@ -18,6 +18,7 @@
     value="<?= e($value) ?>"
         <?= $checked ?? false ? 'checked' : '' ?>
         <?= $disabled ?? false ? 'disabled' : '' ?>
+        required
     >
     <label class="form-check-label" for="<?= e($id ?? $name . '-' . $value) ?>">
         <?= $label ?>

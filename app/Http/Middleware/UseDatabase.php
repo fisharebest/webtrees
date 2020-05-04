@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fisharebest\Webtrees\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -30,20 +29,13 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use RuntimeException;
 
 /**
  * Middleware to connect to the database.
  */
 class UseDatabase implements MiddlewareInterface
 {
-    // The following errors are likely to be caused by server issues, not by webtrees.
-    private const SERVER_ERRORS = [
-        'mysql'  => [1203],
-        'pgsql'  => [],
-        'sqlite' => [],
-        'sqlsvr' => [],
-    ];
-
     /**
      * @param ServerRequestInterface  $request
      * @param RequestHandlerInterface $handler
@@ -103,16 +95,12 @@ class UseDatabase implements MiddlewareInterface
         });
 
         try {
-            return $handler->handle($request);
+            // Eager-load the connection, to prevent database credentials appearing in error logs.
+            DB::connection()->getPdo();
         } catch (PDOException $exception) {
-            if (in_array($exception->errorInfo[1], self::SERVER_ERRORS[$driver], true)) {
-                $message = 'A database error occurred.  This is most likely caused by an issue with your server.' . PHP_EOL . PHP_EOL;
-                $message .= $exception->getMessage() . PHP_EOL . PHP_EOL;
-                $message .= $exception->getFile() . ':' . $exception->getLine();
-                throw new HttpServerErrorException($message);
-            }
-
-            throw $exception;
+            throw new RuntimeException($exception->getMessage());
         }
+
+        return $handler->handle($request);
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -55,24 +56,23 @@ class EditFact implements RequestHandlerInterface
         $record  = Auth::checkRecordAccess($record, true);
 
         // Find the fact to edit
-        $edit_fact = null;
-        foreach ($record->facts() as $fact) {
-            if ($fact->id() === $fact_id && $fact->canEdit()) {
-                $edit_fact = $fact;
-                break;
-            }
-        }
-        if ($edit_fact === null) {
+        $fact = $record->facts()
+            ->first(static function (Fact $fact) use ($fact_id): bool {
+                return $fact->id() === $fact_id && $fact->canEdit();
+            });
+
+
+        if ($fact === null) {
             throw new HttpNotFoundException();
         }
 
         $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');
 
-        $title = $record->fullName() . ' - ' . GedcomTag::getLabel($edit_fact->getTag());
+        $title = $record->fullName() . ' - ' . GedcomTag::getLabel($fact->getTag());
 
         return $this->viewResponse('edit/edit-fact', [
             'can_edit_raw' => $can_edit_raw,
-            'edit_fact'    => $edit_fact,
+            'edit_fact'    => $fact,
             'record'       => $record,
             'title'        => $title,
             'tree'         => $tree,

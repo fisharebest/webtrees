@@ -1,0 +1,67 @@
+Domain Name: google.xn--ses554g
+Internationalized Domain Name: google.网址
+Registry Domain ID: D20191011G10001G_20997132-wangzhi
+Registrar WHOIS Server: whois.knetreg.cn
+Registrar URL: http://knetreg.cn
+Updated Date:
+Creation Date: 2019-10-11T03:10:19Z
+Registry Expiry Date: 2029-10-11T03:10:19Z
+Registrar: Knet Registrar Co.,Ltd.
+Registrar IANA ID: 3225
+Registrar Abuse Contact Email: abuse@knetreg.cn
+Registrar Abuse Contact Phone: +86.4000800066
+Domain Status: inactive https://icann.org/epp#inactive
+Registry Registrant ID:
+Registrant Name:
+Registrant Organization: 上海那兰陀投资有限公司
+Registrant Street:
+Registrant City:
+Registrant State/Province: 上海
+Registrant Postal Code:
+Registrant Country: CN
+Registrant Phone:
+Registrant Phone Ext:
+Registrant Fax:
+Registrant Fax Ext:
+Registrant Email: Please query the RDDS service of the Registrar of Record  identified in this output for information on                                                                                          how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registry Admin ID:
+Admin Name:
+Admin Organization:
+Admin Street:
+Admin City:
+Admin State/Province:
+Admin Postal Code:
+Admin Country:
+Admin Phone:
+Admin Phone Ext:
+Admin Fax:
+Admin Fax Ext:
+Admin Email: Please query the RDDS service of the Registrar of Record  identified in this output for information on how                                                                                          to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registry Tech ID:
+Tech Name:
+Tech Organization:
+Tech Street:
+Tech City:
+Tech State/Province:
+Tech Postal Code:
+Tech Country:
+Tech Phone:
+Tech Phone Ext:
+Tech Fax:
+Tech Fax Ext:
+Tech Email: Please query the RDDS service of the Registrar of Record  identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Name Server:
+DNSSEC: unsigned
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2020-02-25T07:55:23Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+NOTICE: The expiration date displayed in this record is the date the
+registrar's sponsorship of the domain name registration in the registry is
+currently set to expire. This date does not necessarily reflect the expiration
+date of the domain name registrant's agreement with the sponsoring
+registrar.  Users may consult the sponsoring registrar's Whois database to
+view the registrar's reported date of expiration for this registration.
+
+TERMS OF USE: .网址(.xn--ses554g) Registry Operator， has collected this information for the WHOIS database through an ICANN-Accredited Registrar and do not guarantee its accuracy or completeness. This information is provided to you only for lawful purposes， and under no circumstances should be used: (1) to allow， enable， or otherwise support the transmission of mass unsolicited， commercial advertising or solicitations via direct mail， electronic mail， or by telephone; (2) in contravention of any applicable data and privacy protection acts; or (3) to enable high volume， automated， electronic processes that apply to the registry (or its systems). Compilation， repackaging， dissemination， or other use of the WHOIS database in its entirety， or of a substantial portion thereof， is not allowed without .网址 registrys prior written permission. .网址 registry reserves the right to modify or change these conditions at any time without prior or subsequent notification of any kind. By executing this query， in any manner whatsoever， you agree to abide by these terms.

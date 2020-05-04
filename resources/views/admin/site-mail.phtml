@@ -4,6 +4,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
+use Fisharebest\Webtrees\Webtrees;
 
 /**
  * @var string   $DKIM_DOMAIN
@@ -30,26 +31,7 @@ use Fisharebest\Webtrees\View;
 <h1><?= $title ?></h1>
 
 <div class="alert alert-info">
-    <a class="alert-link" data-toggle="collapse" href="#gmail-instructions" role="button" aria-expanded="false" aria-controls="gmail-instructions">
-        <?= I18N::translate('Instructions for Google mail') ?>
-    </a>
-
-    <dl class="collapse" id="gmail-instructions">
-        <dt><?= I18N::translate('Server name') ?></dt>
-        <dd>smtp.gmail.com</dd>
-        <dt><?= I18N::translate('Port number') ?></dt>
-        <dd>587</dd>
-        <dt><?= I18N::translate('Secure connection') ?></dt>
-        <dd><?= I18N::translate('tls') ?></dd>
-        <dt><?= I18N::translate('Username') ?></dt>
-        <dd>xxxxx@gmail.com</dd>
-        <dt><?= I18N::translate('Password') ?></dt>
-        <dd>
-            <?= I18N::translate('If you use two-factor authentication, create an <a href="https://myaccount.google.com/apppasswords">app password</a>.') ?>
-            <br>
-            <?= I18N::translate('If you do not use two-factor authentication, enable <a href="https://www.google.com/settings/security/lesssecureapps">less secure applications</a> and use your Google password.') ?>
-        </dd>
-    </dl>
+    <?= I18N::translate('See %s for more information.', '<a class="alert-link" href="' . e(Webtrees::URL_FAQ_EMAIL) . '">' . e(Webtrees::URL_FAQ_EMAIL) . '</a>') ?>
 </div>
 
 <form method="post" action="<?= e(route(EmailPreferencesAction::class)) ?>" class="form-horizontal">
@@ -155,7 +137,7 @@ use Fisharebest\Webtrees\View;
             I18N::translate('Password') ?>
         </label>
         <div class="col-sm-9">
-            <input type="password" class="form-control" id="SMTP_AUTH_PASS" name="SMTP_AUTH_PASS" value="" autocomplete="off">
+            <input type="password" class="form-control" id="SMTP_AUTH_PASS" name="SMTP_AUTH_PASS" value="" autocomplete="new-password">
             <p class="small text-muted">
                 <?= /* I18N: Help text for the "Password" site configuration setting */
                 I18N::translate('The password required for authentication with the SMTP server.') ?>

@@ -44,6 +44,7 @@ class XrefExtension implements ExtensionInterface
     public function register(ConfigurableEnvironmentInterface $environment): void
     {
         $environment
-            ->addInlineParser(new XrefParser($this->tree));
+            ->addInlineParser(new XrefParser($this->tree))
+            ->addInlineRenderer(XrefNode::class, new XrefRenderer());
     }
 }

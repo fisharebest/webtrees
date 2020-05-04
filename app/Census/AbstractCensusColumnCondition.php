@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 
@@ -102,9 +103,9 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      */
     private function isChild(Individual $individual): bool
     {
-        $age = Date::getAgeYears($individual->getEstimatedBirthDate(), $this->date());
+        $age = new Age($individual->getEstimatedBirthDate(), $this->date());
 
-        return $age < static::AGE_ADULT;
+        return $age->ageYears() < static::AGE_ADULT;
     }
 
     /**

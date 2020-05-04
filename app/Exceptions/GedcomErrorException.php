@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\I18N;
 class GedcomErrorException extends Exception
 {
     /**
-     * InternalServerErrorException constructor.
+     * GedcomErrorException constructor.
      *
      * @param string $gedcom
      */

@@ -35,6 +35,8 @@ use Psr\Http\Message\StreamInterface;
 use stdClass;
 
 use function app;
+use function date;
+use function strtoupper;
 
 /**
  * Provide an interface to the wt_gedcom table.
@@ -485,7 +487,9 @@ class Tree
         $gedcom = '0 @' . $xref . '@ ' . Str::after($gedcom, '0 @@ ');
 
         // Create a change record
-        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->userName();
+        $today = strtoupper(date('d M Y'));
+        $now   = date('H:i:s');
+        $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
         DB::table('change')->insert([
@@ -566,7 +570,9 @@ class Tree
         $gedcom = '0 @' . $xref . '@ FAM' . Str::after($gedcom, '0 @@ FAM');
 
         // Create a change record
-        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->userName();
+        $today = strtoupper(date('d M Y'));
+        $now   = date('H:i:s');
+        $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
         DB::table('change')->insert([
@@ -607,7 +613,9 @@ class Tree
         $gedcom = '0 @' . $xref . '@ INDI' . Str::after($gedcom, '0 @@ INDI');
 
         // Create a change record
-        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->userName();
+        $today = strtoupper(date('d M Y'));
+        $now   = date('H:i:s');
+        $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
         DB::table('change')->insert([
@@ -648,7 +656,9 @@ class Tree
         $gedcom = '0 @' . $xref . '@ OBJE' . Str::after($gedcom, '0 @@ OBJE');
 
         // Create a change record
-        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->userName();
+        $today = strtoupper(date('d M Y'));
+        $now   = date('H:i:s');
+        $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
         DB::table('change')->insert([

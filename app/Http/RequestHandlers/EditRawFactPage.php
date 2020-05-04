@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
@@ -59,14 +60,17 @@ class EditRawFactPage implements RequestHandlerInterface
 
         $title = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->fullName();
 
-        foreach ($record->facts() as $fact) {
-            if (!$fact->isPendingDeletion() && $fact->id() === $fact_id) {
-                return $this->viewResponse('edit/raw-gedcom-fact', [
-                    'fact'    => $fact,
-                    'title'   => $title,
-                    'tree'    => $tree,
-                ]);
-            }
+        $fact = $record->facts([], false, null, true)
+            ->first(static function (Fact $fact) use ($fact_id): bool {
+                return $fact->id() === $fact_id;
+            });
+
+        if ($fact instanceof Fact) {
+            return $this->viewResponse('edit/raw-gedcom-fact', [
+                'fact'    => $fact,
+                'title'   => $title,
+                'tree'    => $tree,
+            ]);
         }
 
         return redirect($record->url());

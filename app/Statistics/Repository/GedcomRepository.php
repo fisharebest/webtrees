@@ -117,10 +117,6 @@ class GedcomRepository implements GedcomRepositoryInterface
     {
         $head = $this->gedcomHead();
 
-        if ($head === null) {
-            return '';
-        }
-
         // Fix broken version string in Family Tree Maker
         if (strpos($head[1], 'Family Tree Maker ') !== false) {
             $p       = strpos($head[1], '(') + 1;
