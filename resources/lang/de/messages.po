@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-04 18:25+0100\n"
-"PO-Revision-Date: 2020-03-16 08:33+0000\n"
-"Last-Translator: Martin <der@bauschaffen.de>\n"
-"Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
-"Language: de\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-04 18:25+0100\nPO-Revision-Date: 2020-05-04 19:46+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -474,13 +462,13 @@ msgstr "&lt;auswählen&gt;"
 #: app/Age.php:203
 #, php-format
 msgid "(%s after death)"
-msgstr ""
+msgstr "(%s nach dem Tod)"
 
 #. I18N: The current age of a living individual
 #: app/Age.php:177
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(Alter %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:181
@@ -1927,7 +1915,7 @@ msgstr "Ein unerwarteter Datenbankfehler ist aufgetreten."
 
 #: resources/views/admin/control-panel.phtml:83
 msgid "An upgrade is available."
-msgstr ""
+msgstr "Es ist eine Aktualisierung verfügbar."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -7476,7 +7464,7 @@ msgstr "In webtrees 2 werden benutzerdefinierte Vorschaubilder als eine zweite M
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include aliases"
-msgstr ""
+msgstr "Alias-Namen einschließen"
 
 #: resources/views/admin/trees-unconnected.phtml:27
 msgid "Include associates"
@@ -10127,7 +10115,7 @@ msgstr "Nichts gefunden."
 #: resources/views/modules/pedigree-map/chart.phtml:110
 #: resources/views/modules/places/tab.phtml:102
 msgid "Nothing to show"
-msgstr ""
+msgstr "Nichts zum Anzeigen"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
@@ -11158,7 +11146,7 @@ msgstr "Veröffentlichung"
 
 #: resources/views/lists/sources-table.phtml:88
 msgid "Publisher"
-msgstr ""
+msgstr "Herausgeber"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:403
@@ -11558,7 +11546,7 @@ msgstr "Kirchlicher Name"
 #: resources/views/modules/place-hierarchy/map.phtml:71
 #: resources/views/modules/places/tab.phtml:58
 msgid "Reload map"
-msgstr ""
+msgstr "Karte neu laden"
 
 #: resources/views/modules/review_changes/config.phtml:24
 msgid "Reminder email frequency (days)"
@@ -12023,7 +12011,7 @@ msgstr "Suchen und Ersetzen von Text unter Verwendung einer einfachen Suche oder
 #. I18N: Help text for the “Description META tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:203
 msgid "Search engines may use this description of your site in their search results."
-msgstr ""
+msgstr "Suchmaschinen können diese Beschreibung Ihrer Website in ihren Suchergebnissen verwenden."
 
 #: resources/views/modules/media-list/page.phtml:52
 msgid "Search filters"
