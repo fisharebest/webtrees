@@ -52,12 +52,19 @@ class UnconnectedPage implements RequestHandlerInterface
         $user       = $request->getAttribute('user');
         assert($user instanceof User);
 
+        $aliases    = (bool) ($request->getQueryParams()['aliases'] ?? false);
         $associates = (bool) ($request->getQueryParams()['associates'] ?? false);
 
+        // Connect individuals using these links.
+        $links = ['FAMS', 'FAMC'];
+
+        if ($aliases) {
+            $links[] = 'ALIA';
+        }
+
         if ($associates) {
-            $links = ['FAMS', 'FAMC', 'ASSO', '_ASSO'];
-        } else {
-            $links = ['FAMS', 'FAMC'];
+            $links[] = 'ASSO';
+            $links[] = '_ASSO';
         }
 
         $rows = DB::table('link')
@@ -103,6 +110,7 @@ class UnconnectedPage implements RequestHandlerInterface
         $this->layout = 'layouts/administration';
 
         return $this->viewResponse('admin/trees-unconnected', [
+            'aliases'           => $aliases,
             'associates'        => $associates,
             'root'              => $root,
             'individual_groups' => $individual_groups,

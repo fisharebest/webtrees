@@ -26,11 +26,8 @@ use League\CommonMark\Block\Element\Paragraph;
 use League\CommonMark\Block\Renderer\DocumentRenderer;
 use League\CommonMark\Block\Renderer\ParagraphRenderer;
 use League\CommonMark\CommonMarkConverter;
-use League\CommonMark\Converter;
-use League\CommonMark\DocParser;
 use League\CommonMark\Environment;
 use League\CommonMark\Extension\Table\TableExtension;
-use League\CommonMark\HtmlRenderer;
 use League\CommonMark\Inline\Element\Link;
 use League\CommonMark\Inline\Element\Text;
 use League\CommonMark\Inline\Parser\AutolinkParser;
@@ -101,7 +98,7 @@ class Filter
             ->addExtension(new CensusTableExtension())
             ->addExtension(new XrefExtension($tree));
 
-        $converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
+        $converter = new CommonMarkConverter();
 
         return $converter->convertToHtml($text);
     }

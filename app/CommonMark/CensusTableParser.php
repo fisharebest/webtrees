@@ -91,7 +91,7 @@ class CensusTableParser implements BlockParserInterface
         // Subsequent lines are the table body.
         while ($lines !== []) {
             $line = array_shift($lines);
-            $row = $this->parseRow($line, TableCell::TYPE_BODY);
+            $row  = $this->parseRow($line, TableCell::TYPE_BODY);
             $table->getHead()->appendChild($row);
         }
 

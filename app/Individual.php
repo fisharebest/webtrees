@@ -436,15 +436,15 @@ class Individual extends GedcomRecord
      */
     public function findHighlightedMediaFile(): ?MediaFile
     {
-        foreach ($this->facts(['OBJE']) as $fact) {
-            $media = $fact->target();
-            if ($media instanceof Media) {
-                foreach ($media->mediaFiles() as $media_file) {
-                    if ($media_file->isImage() && !$media_file->isExternal()) {
-                        return $media_file;
-                    }
-                }
-            }
+        $fact = $this->facts(['OBJE'])
+            ->first(static function (Fact $fact): bool {
+                $media = $fact->target();
+
+                return $media instanceof Media && $media->firstImageFile() instanceof MediaFile;
+            });
+
+        if ($fact instanceof Fact && $fact->target() instanceof Media) {
+            return $fact->target()->firstImageFile();
         }
 
         return null;

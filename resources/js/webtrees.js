@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -89,9 +89,9 @@
 
     // GIVN and SURN may be a comma-separated lists.
     npfx = trim(npfx);
-    givn = trim(givn.replace(',', separator));
+    givn = trim(givn.replace(/,/g, separator));
     spfx = trim(spfx);
-    surn = inflectSurname(trim(surn.replace(',', separator)), sex);
+    surn = inflectSurname(trim(surn.replace(/,/g, separator)), sex);
     nsfx = trim(nsfx);
 
     const surname = trim(spfx + separator + surn);
@@ -814,16 +814,24 @@ document.addEventListener('click', (event) => {
   }
 
   if ('postUrl' in target.dataset) {
-    const request = new XMLHttpRequest();
     const token = document.querySelector('meta[name=csrf]').content;
-    request.open('POST', target.dataset.postUrl, true);
-    request.setRequestHeader('X-CSRF-TOKEN', token);
-    request.onreadystatechange = () => {
-      if (request.readyState === request.DONE) {
+
+    fetch(target.dataset.postUrl, {
+      method: 'POST',
+      headers: {
+        'X-CSRF-TOKEN': token,
+        'X-Requested-with': 'XMLHttpRequest',
+      },
+    }).then((response) => {
+      if ('reloadUrl' in target.dataset) {
+        // Go somewhere else.  e.g. home page after logout.
+        document.location = target.dataset.reloadUrl;
+      } else {
+        // Reload the current page. e.g. change language.
         document.location.reload();
       }
-    };
-    request.send();
-    event.preventDefault();
+    }).catch(function (error) {
+      alert(error);
+    });
   }
 });

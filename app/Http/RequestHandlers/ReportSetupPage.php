@@ -188,8 +188,13 @@ class ReportSetupPage implements RequestHandlerInterface
             $inputs[] = $input;
         }
 
+        $destination = $user->getPreference('default-report-destination', 'view');
+        $format = $user->getPreference('default-report-format', 'PDF');
+
         return $this->viewResponse('report-setup-page', [
             'description' => $description,
+            'destination' => $destination,
+            'format'      => $format,
             'inputs'      => $inputs,
             'report'      => $report,
             'title'       => $title,

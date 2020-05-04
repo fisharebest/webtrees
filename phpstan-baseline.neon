@@ -131,11 +131,6 @@ parameters:
 			path: app/Functions/Functions.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsDate\\:\\:getAgeAtEvent\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: app/Functions/FunctionsDate.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsEdit\\:\\:editLanguageCheckboxes\\(\\) has parameter \\$accepted_languages with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Functions/FunctionsEdit.php

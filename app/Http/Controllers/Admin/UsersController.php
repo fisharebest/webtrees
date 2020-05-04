@@ -175,9 +175,10 @@ class UsersController extends AbstractAdminController
         $search_columns = ['user_name', 'real_name', 'email'];
         $sort_columns   = [];
 
-        $callback = static function (stdClass $row) use ($languages, $user): array {
+        $callback = function (stdClass $row) use ($languages, $user): array {
+            $row_user = $this->user_service->find($row->user_id);
             $datum = [
-                view('admin/users-table-options', ['row' => $row, 'user' => $user]),
+                view('admin/users-table-options', ['row' => $row, 'self' => $user, 'user' => $row_user]),
                 $row->user_id,
                 '<span dir="auto">' . e($row->user_name) . '</span>',
                 '<span dir="auto">' . e($row->real_name) . '</span>',

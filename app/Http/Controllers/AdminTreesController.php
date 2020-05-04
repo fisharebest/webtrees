@@ -265,8 +265,14 @@ class AdminTreesController extends AbstractBaseController
         }
 
         foreach ($all_links as $xref1 => $links) {
+            // PHP converts array keys to integers.
+            $xref1 = (string) $xref1;
+
             $type1 = $records[$xref1]->type;
             foreach ($links as $xref2 => $type2) {
+                // PHP converts array keys to integers.
+                $xref2 = (string) $xref2;
+
                 $type3 = isset($records[$xref2]) ? $records[$xref2]->type : '';
                 if (!array_key_exists($xref2, $all_links)) {
                     if (array_key_exists(strtoupper($xref2), $upper_links)) {

@@ -39,6 +39,8 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
+use function array_merge;
+use function in_array;
 use function preg_match_all;
 use function range;
 
@@ -295,7 +297,7 @@ class CalendarService
 
             $query
                 ->orderBy('d_day')
-                ->orderBy('d_year');
+                ->orderBy('d_year', 'DESC');
 
             $ind_query = (clone $query)
                 ->join('individuals', static function (JoinClause $join): void {

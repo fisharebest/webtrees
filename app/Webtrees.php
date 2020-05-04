@@ -55,6 +55,8 @@ use function app;
 use function error_reporting;
 use function set_error_handler;
 
+use const E_USER_DEPRECATED;
+
 /**
  * Definitions for the webtrees application.
  */
@@ -83,7 +85,7 @@ class Webtrees
     public const DEBUG = self::STABILITY !== '';
 
     // We want to know about all PHP errors during development, and fewer in production.
-    public const ERROR_REPORTING = self::DEBUG ? E_ALL | E_STRICT | E_NOTICE | E_DEPRECATED : E_ALL;
+    public const ERROR_REPORTING = self::DEBUG ? E_ALL | E_STRICT : E_ALL & !E_USER_DEPRECATED & !E_USER_DEPRECATED;
 
     // The name of the application.
     public const NAME = 'webtrees';
@@ -98,10 +100,13 @@ class Webtrees
     public const VERSION = '2.0.4' . (self::STABILITY === '' ? '' : '-') . self::STABILITY;
 
     // Project website.
-    public const URL = 'https://www.webtrees.net/';
+    public const URL = 'https://webtrees.net/';
+
+    // FAQ linnks
+    public const URL_FAQ_EMAIL = 'https://webtrees.net/faq/email';
 
     // Project website.
-    public const GEDCOM_PDF = 'https://webtrees.github.io/downloads/gedcom-551.pdf';
+    public const GEDCOM_PDF = 'https://webtrees.net/downloads/gedcom-551.pdf';
 
     private const MIDDLEWARE = [
         PhpEnvironment::class,

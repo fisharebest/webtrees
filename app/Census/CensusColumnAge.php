@@ -19,7 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Age;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -37,6 +38,8 @@ class CensusColumnAge extends AbstractCensusColumn implements CensusColumnInterf
      */
     public function generate(Individual $individual, Individual $head): string
     {
-        return (string) Date::getAgeYears($individual->getEstimatedBirthDate(), $this->date());
+        $age = new Age($individual->getEstimatedBirthDate(), $this->date());
+
+        return I18N::number($age->ageYears());
     }
 }
