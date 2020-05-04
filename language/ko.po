@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-03-31 19:04+0000\n"
-"Last-Translator: Jeongwan Nam <jeongwann@gmail.com>\n"
+"PO-Revision-Date: 2020-05-04 15:39+0000\n"
+"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
 "Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ko/>\n"
 "Language: ko\n"
@@ -154,7 +154,7 @@ msgstr "%1$s × %2$s"
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr "%1$s ×  %2$s"
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:497 app/Media.php:387
@@ -716,7 +716,7 @@ msgstr "패밀리북 모양으로 인물 조상과 후손을 보여주는 차트
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "컴팩트 트리 차트로 보여주는 인물의 조상."
+msgstr "차트로 보여주는 인물의 조상."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
@@ -755,7 +755,7 @@ msgstr ""
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr "인물 조상의 Fan Chart."
+msgstr "인물 조상의."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:225
 #: app/Module/GoogleMapsModule.php:3651
@@ -873,7 +873,7 @@ msgstr "사용자가 %s 에서 Webtree에 등록했습니다."
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "인물 조상 가계도"
+msgstr "인물 조상 가계도."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
@@ -885,7 +885,7 @@ msgstr "인물의 조상에 관한 대화체의 보고서."
 #: app/Module/DescendancyReportModule.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr "인물의 자손에 대한 대화체의 보고서"
+msgstr "인물의 자손에 대한 대화체의 보고서."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:35
@@ -912,12 +912,12 @@ msgstr "죽은 시간이나 장소에 관한 인물에 대한 보고서."
 #: app/Module/OccupationReportModule.php:35
 #: modules_v3/occupation_report/report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr "인물의 직업에 관한 보고서"
+msgstr "인물의 직업에 관한 보고서."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:35 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr " 태어난 시간이나 장소에 관한 인물에 대한 보고서."
+msgstr "태어난 시간이나 장소에 관한 인물에 대한 보고서."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:35
@@ -929,7 +929,7 @@ msgstr "특정 장소에 매장 된 인물에 대한 보고서."
 #: app/Module/MarriageReportModule.php:35
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr "결혼한 시간이나 장소에 관한 인물에 대한 보고서"
+msgstr "결혼한 시간이나 장소에 관한 인물에 대한 보고서."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
@@ -1421,7 +1421,7 @@ msgstr "더 많은 필드 추가"
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
 msgid "Add narrative stories to individuals in the family tree."
-msgstr "가계도의 인물에게 대화체의 이야기를 추가하십시오."
+msgstr "가계도의 인물에게 대화체의 이야기를 추가."
 
 #: admin_trees_manage.php:282
 msgid "Add spaces where long lines were wrapped"
@@ -1946,7 +1946,7 @@ msgstr ""
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr ""
+msgstr "인물의 모든 조상과 후손을 보여주는 범위형 가계도."
 
 #: setup.php:507
 msgid "An unexpected database error occurred."
@@ -3586,7 +3586,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:391
 #: modules_v3/descendancy_report/report.xml:483
 msgid "Children of "
-msgstr ""
+msgstr "의 자녀 "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:88
@@ -3912,7 +3912,7 @@ msgstr ""
 
 #: setup.php:275
 msgid "Connection to database server"
-msgstr ""
+msgstr "데이터베이스 서버와"
 
 #: admin_trees_config.php:847
 msgid "Contact information"
@@ -5319,6 +5319,8 @@ msgstr ""
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr ""
+"각 출처는 일반적으로 특정 날짜 범위 및 장소 관할 구역에 대한 특정 사건을 기록합니다. 예를 들어 인구 조사는 인구 조사 사건을 "
+"기록하고 교회 기록은 출생, 결혼 및 사망 사건을 기록합니다. <br><br> 기록 된 사건을 선택하십시오."
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -7285,6 +7287,7 @@ msgstr ""
 #, php-format
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
 msgstr ""
+"인물이 첫 번째 이름으로 알려지지 않은 경우 선호하는 이름은 별표 (<%s>John Paul* /Smith/<%s>)로 표시해야합니다"
 
 #: help_text.php:224
 #, php-format
@@ -13035,7 +13038,7 @@ msgstr ""
 
 #: modules_v3/missing_facts_report/report.xml:14
 msgid "Sources to the events"
-msgstr ""
+msgstr "이벤트"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6924
@@ -13236,7 +13239,7 @@ msgstr ""
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:108
 msgid "Submitted but not yet cleared"
-msgstr ""
+msgstr "제출했지만 아직 지워지지 않았습니다"
 
 #. I18N: gedcom tag SUBM
 #: app/GedcomTag.php:810
@@ -13876,7 +13879,7 @@ msgstr ""
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:42
 msgid "The size of the family tree, earliest and latest events, common names, etc."
-msgstr ""
+msgstr "가계도의 크기, 가장 빠른 최신 이벤트, 일반적인 이름 등."
 
 #: help_text.php:222
 #, php-format
@@ -14388,7 +14391,7 @@ msgstr ""
 
 #: message.php:239 message.php:280
 msgid "This message was sent while viewing the following URL: "
-msgstr ""
+msgstr "이 메시지는 다음 URL을 보면서 전송되었습니다: "
 
 #: message.php:113
 #, php-format
@@ -16088,7 +16091,7 @@ msgstr ""
 
 #: message.php:244
 msgid "You sent the following message to a webtrees user:"
-msgstr ""
+msgstr "웹 트리 사용자에게 다음 메시지를 보냈습니다:"
 
 #: admin_site_upgrade.php:99
 msgid "You should accept or reject all pending changes before upgrading."
