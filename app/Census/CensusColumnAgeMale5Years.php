@@ -19,7 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Age;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -41,11 +42,13 @@ class CensusColumnAgeMale5Years extends AbstractCensusColumn implements CensusCo
             return '';
         }
 
-        $years = Date::getAgeYears($individual->getEstimatedBirthDate(), $this->date());
+        $age   = new Age($individual->getEstimatedBirthDate(), $this->date());
+        $years = $age->ageYears();
+
         if ($years > 15) {
             $years -= $years % 5;
         }
 
-        return (string) $years;
+        return I18N::number($years);
     }
 }

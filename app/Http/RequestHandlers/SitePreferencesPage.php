@@ -57,7 +57,7 @@ class SitePreferencesPage implements RequestHandlerInterface
         $this->layout = 'layouts/administration';
 
         $all_themes = $this->module_service
-            ->findByInterface(ModuleThemeInterface::class)
+            ->findByInterface(ModuleThemeInterface::class, true, true)
             ->map($this->module_service->titleMapper());
 
         $max_execution_time = (int) get_cfg_var('max_execution_time');

@@ -110,11 +110,14 @@ class FunctionsExport
             $filename .= '.ged';
         }
 
+        $today = strtoupper(date('d M Y'));
+        $now   = date('H:i:s');
+
         // Default values for a new header
         $HEAD = '0 HEAD';
         $SOUR = "\n1 SOUR " . Webtrees::NAME . "\n2 NAME " . Webtrees::NAME . "\n2 VERS " . Webtrees::VERSION;
         $DEST = "\n1 DEST DISKETTE";
-        $DATE = "\n1 DATE " . strtoupper(date('d M Y')) . "\n2 TIME " . date('H:i:s');
+        $DATE = "\n1 DATE " . $today . "\n2 TIME " . $now;
         $GEDC = "\n1 GEDC\n2 VERS 5.5.1\n2 FORM Lineage-Linked";
         $CHAR = "\n1 CHAR " . $char;
         $FILE = "\n1 FILE " . $filename;

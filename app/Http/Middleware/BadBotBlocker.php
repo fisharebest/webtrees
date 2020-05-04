@@ -68,16 +68,14 @@ class BadBotBlocker implements MiddlewareInterface
     ];
 
     /**
-     * Some search engines provide reverse DNS to verify the IP address.
+     * Some search engines use reverse/forward DNS to verify the IP address.
      *
      * @see https://support.google.com/webmasters/answer/80553?hl=en
      * @see https://www.bing.com/webmaster/help/which-crawlers-does-bing-use-8c184ec0
      * @see https://www.bing.com/webmaster/help/how-to-verify-bingbot-3905dc26
      * @see https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.html
-     * @see https://help.baidu.com/question?prod_id=99&class=0&id=3001
      */
-    private const ROBOT_DNS = [
-        'Baidu'       => ['.baidu.com', '.baidu.jp'],
+    private const ROBOT_REV_FWD_DNS = [
         'bingbot'     => ['.search.msn.com'],
         'BingPreview' => ['.search.msn.com'],
         'Google'      => ['.google.com', '.googlebot.com'],
@@ -86,6 +84,15 @@ class BadBotBlocker implements MiddlewareInterface
         'Sogou'       => ['.crawl.sogou.com'],
         'Yahoo'       => ['.crawl.yahoo.net'],
         'Yandex'      => ['.yandex.ru', '.yandex.net', '.yandex.com'],
+    ];
+
+    /**
+     * Some search engines only use reverse DNS to verify the IP address.
+     *
+     * @see https://help.baidu.com/question?prod_id=99&class=0&id=3001
+     */
+    private const ROBOT_REV_ONLY_DNS = [
+        'Baiduspider' => ['.baidu.com', '.baidu.jp'],
     ];
 
     /**
@@ -164,8 +171,14 @@ class BadBotBlocker implements MiddlewareInterface
             return $this->response();
         }
 
-        foreach (self::ROBOT_DNS as $robot => $valid_domains) {
-            if (Str::contains($ua, $robot) && !$this->checkReverseDNS($ip, $valid_domains)) {
+        foreach (self::ROBOT_REV_FWD_DNS as $robot => $valid_domains) {
+            if (Str::contains($ua, $robot) && !$this->checkRobotDNS($ip, $valid_domains, false)) {
+                return $this->response();
+            }
+        }
+
+        foreach (self::ROBOT_REV_ONLY_DNS as $robot => $valid_domains) {
+            if (Str::contains($ua, $robot) && !$this->checkRobotDNS($ip, $valid_domains, true)) {
                 return $this->response();
             }
         }
@@ -213,10 +226,11 @@ class BadBotBlocker implements MiddlewareInterface
      *
      * @param string        $ip
      * @param array<string> $valid_domains
+     * @param bool          $reverse_only
      *
      * @return bool
      */
-    private function checkReverseDNS(string $ip, array $valid_domains): bool
+    private function checkRobotDNS(string $ip, array $valid_domains, bool $reverse_only): bool
     {
         $host = gethostbyaddr($ip);
 
@@ -224,7 +238,7 @@ class BadBotBlocker implements MiddlewareInterface
             return false;
         }
 
-        return $ip === gethostbyname($host);
+        return $reverse_only || $ip === gethostbyname($host);
     }
 
     /**

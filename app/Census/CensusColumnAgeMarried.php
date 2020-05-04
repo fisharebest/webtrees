@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -41,7 +43,9 @@ class CensusColumnAgeMarried extends AbstractCensusColumn implements CensusColum
             foreach ($individual->spouseFamilies() as $family) {
                 foreach ($family->facts(['MARR'], true) as $fact) {
                     if ($fact->date()->isOK()) {
-                        return (string) Date::getAgeYears($individual->getBirthDate(), $fact->date());
+                        $age = new Age($individual->getBirthDate(), $fact->date());
+
+                        return I18N::number($age->ageYears());
                     }
                 }
             }

@@ -55,7 +55,11 @@ use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
 use Fisharebest\Webtrees\Statistics\Repository\ServerRepository;
 use Fisharebest\Webtrees\Statistics\Repository\UserRepository;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Collection;
+use ReflectionClass;
+use ReflectionException;
 use ReflectionMethod;
+use ReflectionType;
 
 use function call_user_func;
 use function count;
@@ -83,23 +87,6 @@ class Statistics implements
     FamilyDatesRepositoryInterface,
     PlaceRepositoryInterface
 {
-    /**
-     * All public functions are available as keywords - except these ones
-     *
-     * @var string[]
-     */
-    private static $public_but_not_allowed = [
-        '__construct',
-        'embedTags',
-        'iso3166',
-        'getAllCountries',
-        'getAllTagsTable',
-        'getAllTagsText',
-        'statsPlaces',
-        'statsAgeQuery',
-        'statsChildrenQuery',
-        'statsMarrAgeQuery',
-    ];
     /**
      * Generate statistics for a specified tree.
      *
@@ -230,45 +217,33 @@ class Statistics implements
      */
     public function getAllTagsTable(): string
     {
-        $examples = [];
+        try {
+            $class = new ReflectionClass($this);
 
-        foreach (get_class_methods($this) as $method) {
-            $reflection = new ReflectionMethod($this, $method);
-            if ($reflection->isPublic() && !in_array($method, self::$public_but_not_allowed, true) && (string) $reflection->getReturnType() !== Builder::class) {
-                $examples[$method] = call_user_func([$this, $method]);
-            }
+            $public_methods = $class->getMethods(ReflectionMethod::IS_PUBLIC);
+
+            $examples = Collection::make($public_methods)
+                ->filter(static function (ReflectionMethod $method): bool {
+                    return !in_array($method->getName(), ['embedTags', 'getAllTagsTable'], true);
+                })
+                ->filter(static function (ReflectionMethod $method): bool {
+                    $type = $method->getReturnType();
+
+                    return $type instanceof ReflectionType && $type->getName() === 'string';
+                })
+                ->sort(static function (ReflectionMethod $x, ReflectionMethod $y): int {
+                    return $x->getName() <=> $y->getName();
+                })
+                ->map(function (ReflectionMethod $method): string {
+                    $tag = $method->getName();
+
+                    return '<dt>#' . $tag . '#</dt><dd>' . call_user_func([$this, $tag]) . '</dd>';
+                });
+
+            return '<dl>' . $examples->implode('') . '</dl>';
+        } catch (ReflectionException $ex) {
+            return $ex->getMessage();
         }
-
-        ksort($examples);
-
-        $html = '';
-        foreach ($examples as $tag => $value) {
-            $html .= '<dt>#' . $tag . '#</dt>';
-            $html .= '<dd>' . $value . '</dd>';
-        }
-
-        return '<dl>' . $html . '</dl>';
-    }
-
-    /**
-     * Return a string of all supported tags in plain text.
-     *
-     * @return string
-     */
-    public function getAllTagsText(): string
-    {
-        $examples = [];
-
-        foreach (get_class_methods($this) as $method) {
-            $reflection = new ReflectionMethod($this, $method);
-            if ($reflection->isPublic() && !in_array($method, self::$public_but_not_allowed, true) && (string) $reflection->getReturnType() !== Builder::class) {
-                $examples[$method] = $method;
-            }
-        }
-
-        ksort($examples);
-
-        return implode('<br>', $examples);
     }
 
     /**

@@ -100,13 +100,13 @@ class FunctionsEdit
             $html .= '<div class="form-check">';
             $html .= '<label title="' . $locale->languageTag() . '">';
             $html .= '<input type="checkbox" name="' . $parameter_name . '[]" value="' . $locale->languageTag() . '"';
-            $html .= in_array($locale->languageTag(), $accepted_languages, true) ? ' checked>' : '>';
+            $html .= in_array($locale->languageTag(), $accepted_languages, true) ? ' checked>' : '> ';
             $html .= $locale->endonym();
             $html .= '</label>';
             $html .= '</div>';
         }
 
-        return $html;
+        return '<div style="columns: auto 12rem">' . $html . '</div>';
     }
 
     /**
@@ -555,9 +555,6 @@ class FunctionsEdit
             $html .= '</span>';
             $html .= '</div>';
         } elseif ($fact === 'SEX') {
-            if ($value !== 'M' && $value !== 'F') {
-                $value = 'U';
-            }
             $html .= view('components/radios-inline', ['name' => $name, 'options' => ['M' => I18N::translate('Male'), 'F' => I18N::translate('Female'), 'U' => I18N::translateContext('unknown gender', 'Unknown')], 'selected' => $value]);
         } elseif ($fact === 'SOUR') {
             $html .=
@@ -896,7 +893,8 @@ class FunctionsEdit
                 if ($key === 'TYPE') {
                     echo self::addSimpleTag($tree, '2 TYPE ' . $type_val, $level1tag);
                 } elseif ($level1tag === '_TODO' && $key === 'DATE') {
-                    echo self::addSimpleTag($tree, '2 ' . $key . ' ' . strtoupper(date('d M Y')), $level1tag);
+                    $today = strtoupper(date('d M Y'));
+                    echo self::addSimpleTag($tree, '2 ' . $key . ' ' . $today, $level1tag);
                 } elseif ($level1tag === '_TODO' && $key === '_WT_USER') {
                     echo self::addSimpleTag($tree, '2 ' . $key . ' ' . Auth::user()->userName(), $level1tag);
                 } elseif ($level1tag === 'NAME' && strstr($tree->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
