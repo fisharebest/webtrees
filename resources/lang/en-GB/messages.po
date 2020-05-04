@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-04 15:57+0100\nPO-Revision-Date: 2020-05-04 17:32+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en_GB/>\nLanguage: en-GB\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-04 15:57+0100\nPO-Revision-Date: 2020-05-04 17:36+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en_GB/>\nLanguage: en-GB\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -11146,7 +11146,7 @@ msgstr "Publication"
 
 #: resources/views/lists/sources-table.phtml:88
 msgid "Publisher"
-msgstr ""
+msgstr "Publisher"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:403
