@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fisharebest\Webtrees\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -30,6 +29,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use RuntimeException;
 
 /**
  * Middleware to connect to the database.
@@ -98,7 +98,7 @@ class UseDatabase implements MiddlewareInterface
             // Eager-load the connection, to prevent database credentials appearing in error logs.
             DB::connection()->getPdo();
         } catch (PDOException $exception) {
-            throw new HttpServerErrorException($exception->getMessage());
+            throw new RuntimeException($exception->getMessage());
         }
 
         return $handler->handle($request);
