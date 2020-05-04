@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -139,13 +139,10 @@ class Media extends GedcomRecord
      */
     public function firstImageFile(): ?MediaFile
     {
-        foreach ($this->mediaFiles() as $media_file) {
-            if ($media_file->isImage()) {
-                return $media_file;
-            }
-        }
-
-        return null;
+        return $this->mediaFiles()
+            ->first(static function (MediaFile $media_file): bool {
+                return $media_file->isImage() && !$media_file->isExternal();
+            });
     }
 
     /**
@@ -230,7 +227,9 @@ class Media extends GedcomRecord
         }
 
         // Display the first file of any type
-        foreach ($this->mediaFiles() as $media_file) {
+        $media_file = $this->mediaFiles()->first();
+
+        if ($media_file instanceof MediaFile) {
             return $media_file->displayImage($width, $height, $fit, $attributes);
         }
 

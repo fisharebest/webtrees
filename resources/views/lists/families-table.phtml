@@ -2,18 +2,28 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
 use Ramsey\Uuid\Uuid;
 
 $table_id = 'table-fam-' . Uuid::uuid4()->toString(); // lists requires a unique ID in case there are multiple lists per page
 
+$today             = new Date(strtoupper(date('d M Y')));
+$today_jd          = Carbon::now()->julianDay();
 $hundred_years_ago = Carbon::now()->subYears(100)->julianDay();
+
+/**
+ * @var Tree               $tree
+ * @var Collection<Family> $families
+ */
 
 ?>
 
@@ -146,53 +156,53 @@ $marriageAgeData = [
                 <th colspan="14">
                     <div class="btn-toolbar d-flex justify-content-between mb-2">
                         <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
-                            <label class="btn btn-secondary btn-sm" title="' . I18N::translate('Show individuals who are alive or couples where both partners are alive.') ?>">
+                            <label class="btn btn-outline-secondary btn-sm" title="' . I18N::translate('Show individuals who are alive or couples where both partners are alive.') ?>">
                                 <input type="checkbox" data-filter-column="12" data-filter-value="N">
                                 <?= I18N::translate('Both alive') ?>
                             </label>
-                            <label class="btn btn-secondary" title="<?= I18N::translate('Show couples where only the female partner is dead.') ?>">
+                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples where only the female partner is dead.') ?>">
                                 <input type="checkbox" data-filter-column="12" data-filter-value="W">
                                 <?= I18N::translate('Widower') ?>
                             </label>
-                            <label class="btn btn-secondary" title="<?= I18N::translate('Show couples where only the male partner is dead.') ?>">
+                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples where only the male partner is dead.') ?>">
                                 <input type="checkbox" data-filter-column="12" data-filter-value="H">
                                 <?= I18N::translate('Widow') ?>
                             </label>
-                            <label class="btn btn-secondary" title="<?= I18N::translate('Show individuals who are dead or couples where both partners are dead.') ?>">
+                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals who are dead or couples where both partners are dead.') ?>">
                                 <input type="checkbox" data-filter-column="12" data-filter-value="Y">
                                 <?= I18N::translate('Both dead') ?>
                             </label>
                         </div>
 
                         <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
-                            <label class="btn btn-secondary" title="<?= I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') ?>">
+                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') ?>">
                                 <input type="checkbox" data-filter-column="13" data-filter-value="R">
                                 <?= I18N::translate('Roots') ?>
                             </label>
-                            <label class="btn btn-secondary" title="<?= I18N::translate('Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database.') ?>">
+                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database.') ?>">
                                 <input type="checkbox" data-filter-column="13" data-filter-value="L">
                                 <?= I18N::translate('Leaves') ?>
                             </label>
                         </div>
 
                         <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
-                            <label class="btn btn-secondary" title="<?= I18N::translate('Show couples with an unknown marriage date.') ?>">
+                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples with an unknown marriage date.') ?>">
                                 <input type="checkbox" data-filter-column="11" data-filter-value="U">
-                                <?= I18N::translate('Marriage') ?>
+                                <?= I18N::translate('Not married') ?>
                             </label>
-                            <label class="btn btn-secondary" title="<?= I18N::translate('Show couples who married more than 100 years ago.') ?>">
+                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples who married more than 100 years ago.') ?>">
                                 <input type="checkbox" data-filter-column="11" data-filter-value="YES">
                                 <?= I18N::translate('Marriage') ?>&gt;100
                             </label>
-                            <label class="btn btn-secondary" title="<?= I18N::translate('Show couples who married within the last 100 years.') ?>">
+                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples who married within the last 100 years.') ?>">
                                 <input type="checkbox" data-filter-column="11" data-filter-value="Y100">
                                 <?= I18N::translate('Marriage') ?>&lt;=100
                             </label>
-                            <label class="btn btn-secondary" title="<?= I18N::translate('Show divorced couples.') ?>">
+                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show divorced couples.') ?>">
                                 <input type="checkbox" data-filter-column="11" data-filter-value="D">
                                 <?= I18N::translate('Divorce') ?>
                             </label>
-                            <label class="btn btn-secondary" title="<?= I18N::translate('Show couples where either partner married more than once.') ?>">
+                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples where either partner married more than once.') ?>">
                                 <input type="checkbox" data-filter-column="11" data-filter-value="M">
                                 <?= I18N::translate('Multiple marriages') ?>
                             </label>
@@ -248,20 +258,19 @@ $marriageAgeData = [
 
                 <!-- Husband age -->
                 <?php
-                $mdate = $family->getMarriageDate();
-                $hdate = $husb->getBirthDate();
-                if ($hdate->isOK() && $mdate->isOK()) {
-                    if ($hdate->gregorianYear() >= 1550 && $hdate->gregorianYear() < 2030) {
-                        ++$birt_by_decade[(int) ($hdate->gregorianYear() / 10) * 10][$husb->sex()];
-                    }
-                    $hage = Date::getAgeYears($hdate, $mdate);
-                    if ($hage >= 0 && $hage <= $max_age) {
-                        ++$marr_by_age[$hage][$husb->sex()];
-                    }
+                $age  = new Age($husb->getBirthDate(), $family->getMarriageDate());
+                $year = $wife->getBirthDate()->gregorianYear();
+
+                if ($year >= 1550 && $year < 2030) {
+                    ++$birt_by_decade[(int) ($year / 10) * 10][$husb->sex()];
+                }
+
+                if ($age->ageYears() >= 0 && $age->ageYears() <= $max_age) {
+                    ++$marr_by_age[$age->ageYears()][$husb->sex()];
                 }
                 ?>
-                <td class="text-center" data-sort="<?= Date::getAgeDays($hdate, $mdate) ?>">
-                    <?= Date::getAge($hdate, $mdate) ?>
+                <td class="text-center" data-sort="<?= $age->ageDays() ?>">
+                    <?= $age->ageYearsString() ?>
                 </td>
 
                 <!-- Wife name -->
@@ -284,20 +293,19 @@ $marriageAgeData = [
 
                 <!-- Wife age -->
                 <?php
-                $wdate = $wife->getBirthDate();
-                if ($wdate->isOK() && $mdate->isOK()) {
-                    if ($wdate->gregorianYear() >= 1550 && $wdate->gregorianYear() < 2030) {
-                        ++$birt_by_decade[(int) ($wdate->gregorianYear() / 10) * 10][$wife->sex()];
-                    }
-                    $wage = Date::getAgeYears($wdate, $mdate);
-                    if ($wage >= 0 && $wage <= $max_age) {
-                        ++$marr_by_age[$wage][$wife->sex()];
-                    }
+                $age  = new Age($wife->getBirthDate(), $family->getMarriageDate());
+                $year = $wife->getBirthDate()->gregorianYear();
+
+                if ($year >= 1550 && $year < 2030) {
+                    ++$birt_by_decade[(int) ($year / 10) * 10][$wife->sex()];
+                }
+
+                if ($age->ageYears() >= 0 && $age->ageYears() <= $max_age) {
+                    ++$marr_by_age[$age->ageYears()][$wife->sex()];
                 }
                 ?>
-
-                <td class="text-center" data-sort="<?= Date::getAgeDays($wdate, $mdate) ?>">
-                    <?= Date::getAge($wdate, $mdate) ?>
+                <td class="text-center" data-sort="<?= $age->ageDays() ?>">
+                    <?= $age->ageYearsString() ?>
                 </td>
 
                 <!-- Marriage date -->
@@ -320,8 +328,9 @@ $marriageAgeData = [
                 </td>
 
                 <!-- Marriage anniversary -->
-                <td class="text-center" data-sort="<?= - $family->getMarriageDate()->julianDay() ?>">
-                    <?= Date::getAge($family->getMarriageDate(), null) ?>
+                <?php $age = new Age($family->getMarriageDate(), $today) ?>
+                <td class="text-center" data-sort="<?= $age->ageDays() ?>">
+                    <?= $age->ageYearsString() ?>
                 </td>
 
                 <!-- Marriage place -->
@@ -344,14 +353,14 @@ $marriageAgeData = [
 
                 <!-- Filter by marriage date -->
                 <td hidden>
-                    <?php if (!$family->canShow() || !$mdate->isOK()) : ?>
-                        U
-                    <?php elseif ($mdate->maximumJulianDay() > $hundred_years_ago) : ?>
+                    <?php if ($family->getMarriageDate()->maximumJulianDay() > $hundred_years_ago && $family->getMarriageDate()->maximumJulianDay() <= $today_jd) : ?>
                         Y100
-                    <?php else : ?>
+                    <?php elseif ($family->facts(['MARR'])->isNotEmpty()) : ?>
                         YES
+                    <?php else : ?>
+                        U
                     <?php endif ?>
-                    <?php if ($family->facts(Gedcom::DIVORCE_EVENTS)->isNotEmpty()) : ?>
+                    <?php if ($family->facts(['DIV'])->isNotEmpty()) : ?>
                         D
                     <?php endif ?>
                     <?php if (count($husb->spouseFamilies()) > 1 || count($wife->spouseFamilies()) > 1) : ?>
@@ -401,10 +410,10 @@ $marriageAgeData = [
             <tr>
                 <th colspan="14">
                     <div class="btn-group btn-group-sm">
-                        <button id="btn-toggle-parents" class="btn btn-secondary" data-toggle="button" data-persist="show-parents">
+                        <button id="btn-toggle-parents" class="btn btn-outline-secondary" data-toggle="button" data-persist="show-parents">
                             <?= I18N::translate('Show parents') ?>
                         </button>
-                        <button id="btn-toggle-statistics" class="btn btn-secondary" data-toggle="button" data-persist="show-statistics">
+                        <button id="btn-toggle-statistics" class="btn btn-outline-secondary" data-toggle="button" data-persist="show-statistics">
                             <?= I18N::translate('Show statistics charts') ?>
                         </button>
                     </div>

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,173 +19,187 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use function implode;
-use function preg_match;
-use function strtolower;
-use function substr;
-use function trim;
+use function view;
 
 /**
- * Representation of a GEDCOM age.
- *
- * Ages may be a keyword (stillborn, infant, child) or a number of years,
- * months and/or days such as "6y 3m".
+ * The different between to GEDCOM dates.
  */
 class Age
 {
-    // GEDCOM keyword: died just prior, at, or near birth, 0 years
-    private const KEYWORD_STILLBORN = 'stillborn';
-
-    // GEDCOM keyword: age < 1 year
-    private const KEYWORD_INFANT = 'infant';
-
-    // GEDCOM keyword: age < 8 years
-    private const KEYWORD_CHILD = 'child';
-
-    // GEDCOM symbol: aged less than
-    private const SYMBOL_LESS_THAN = '<';
-
-    // GEDCOM symbol: aged more than
-    private const SYMBOL_MORE_THAN = '>';
-
-    // GEDCOM symbol: number of years
-    private const SYMBOL_YEARS = 'y';
-
-    // GEDCOM symbol: number of months
-    private const SYMBOL_MONTHS = 'm';
-
-    // GEDCOM symbol: number of weeks (this is a non-standard extension)
-    private const SYMBOL_WEEKS = 'w';
-
-    // GEDCOM symbol: number of days
-    private const SYMBOL_DAYS = 'd';
-
-    /** @var string */
-    private $keyword = '';
-
-    /** @var string */
-    private $qualifier = '';
+    /** @var int */
+    private $years;
 
     /** @var int */
-    private $years = 0;
+    private $months;
 
     /** @var int */
-    private $months = 0;
+    private $days;
 
     /** @var int */
-    private $weeks = 0;
+    private $total_days;
 
-    /** @var int */
-    private $days = 0;
+    /** @var bool */
+    private $is_exact;
+
+    /** @var bool */
+    private $is_valid;
 
     /**
      * Age constructor.
      *
-     * @param string $age
+     * @param Date $x - The first date
+     * @param Date $y - The second date
      */
-    public function __construct(string $age)
+    public function __construct(Date $x, Date $y)
     {
-        $age = strtolower(trim($age));
+        // If the dates are ranges, use the start/end calendar dates.
+        $start = $x->minimumDate();
+        $end   = $y->maximumDate();
 
-        // Keywords
-        if ($age === self::KEYWORD_STILLBORN || $age === self::KEYWORD_INFANT || $age === self::KEYWORD_CHILD) {
-            $this->keyword = $age;
+        [$this->years, $this->months, $this->days] = $start->ageDifference($end);
 
-            return;
+        $this->total_days = $end->minimumJulianDay() - $start->minimumJulianDay();
+
+        // Use the same precision as found in the dates.
+        if ($start->day() === 0 || $end->day() === 0) {
+            $this->days = 0;
         }
 
-        // Qualifier
-        $qualifier = substr($age, 0, 1);
-
-        if ($qualifier === self::SYMBOL_LESS_THAN || $qualifier === self::SYMBOL_MORE_THAN) {
-            $this->qualifier = $qualifier;
+        if ($start->month() === 0 || $end->month() === 0) {
+            $this->months = 0;
         }
 
-        // Number of years, months, weeks and days.
-        $this->years  = $this->extractNumber($age, self::SYMBOL_YEARS);
-        $this->months = $this->extractNumber($age, self::SYMBOL_MONTHS);
-        $this->weeks  = $this->extractNumber($age, self::SYMBOL_WEEKS);
-        $this->days   = $this->extractNumber($age, self::SYMBOL_DAYS);
+        // Are the dates exact?
+        $this->is_exact = $start->day() !== 0 && $end->day() !== 0;
+
+        // Are the dates valid?
+        $this->is_valid = $x->isOK() && $y->isOK();
     }
 
     /**
-     * Convert an age to localised text.
+     * Show an age in a human-friendly form, such as "34 years", "8 months", "20 days".
+     * Show an empty string for invalid/missing dates.
+     * Show a warning icon for negative ages.
+     * Show zero ages without any units.
+     *
+     * @return string
      */
-    public function asText(): string
+    public function ageString(): string
     {
-        if ($this->keyword === self::KEYWORD_STILLBORN) {
-            // I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (stillborn)
-            return I18N::translate('(stillborn)');
+        if (!$this->is_valid) {
+            return '';
         }
 
-        if ($this->keyword === self::KEYWORD_INFANT) {
-            // I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (in infancy)
-            return I18N::translate('(in infancy)');
+        if ($this->years < 0) {
+            return view('icons/warning');
         }
 
-        if ($this->keyword === self::KEYWORD_CHILD) {
-            // I18N: An individual’s age at an event. e.g. Died 14 Jan 1900 (in childhood)
-            return I18N::translate('(in childhood)');
-        }
-
-        $age = [];
-
-        // Show a zero age as "0 years", not "0 days"
-        if ($this->years > 0 || $this->months === 0 && $this->weeks === 0 && $this->days === 0) {
-            // I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-            $age[] = I18N::plural('%s year', '%s years', $this->years, I18N::number($this->years));
+        if ($this->years > 0) {
+            return I18N::plural('%s year', '%s years', $this->years, I18N::number($this->years));
         }
 
         if ($this->months > 0) {
-            // I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-            $age[] = I18N::plural('%s month', '%s months', $this->months, I18N::number($this->months));
+            return I18N::plural('%s month', '%s months', $this->months, I18N::number($this->months));
         }
 
-        if ($this->weeks > 0) {
-            // I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-            $age[] = I18N::plural('%s week', '%s weeks', $this->weeks, I18N::number($this->weeks));
+        if ($this->days > 0 || $this->is_exact) {
+            return I18N::plural('%s day', '%s days', $this->days, I18N::number($this->days));
         }
 
-        if ($this->days > 0) {
-            // I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-            $age[] = I18N::plural('%s day', '%s days', $this->days, I18N::number($this->days));
-        }
-
-        // If an age is just a number of years, only show the number
-        if ($this->years > 0 && $this->months === 0 && $this->weeks === 0 && $this->days === 0) {
-            $age = [I18N::number($this->years)];
-        }
-
-        $age_string = implode(I18N::$list_separator, $age);
-
-        if ($this->qualifier === self::SYMBOL_LESS_THAN) {
-            // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
-            return I18N::translate('(aged less than %s)', $age_string);
-        }
-
-        if ($this->qualifier === self::SYMBOL_MORE_THAN) {
-            // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
-            return I18N::translate('(aged more than %s)', $age_string);
-        }
-
-        // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
-        return I18N::translate('(aged %s)', $age_string);
+        return I18N::number(0);
     }
 
     /**
-     * Extract a number of days/weeks/months/years from the age string.
-     *
-     * @param string $age
-     * @param string $suffix
+     * How many days between two events?
+     * If either date is invalid return -1.
      *
      * @return int
      */
-    private function extractNumber(string $age, string $suffix): int
+    public function ageDays(): int
     {
-        if (preg_match('/(\d+) *' . $suffix . '/', $age, $match)) {
-            return (int) $match[1];
+        if ($this->is_valid) {
+            return $this->total_days;
         }
 
-        return 0;
+        return -1;
+    }
+
+    /**
+     * How many years between two events?
+     * Return -1 for invalid or reversed dates.
+     *
+     * @return int
+     */
+    public function ageYears(): int
+    {
+        if ($this->is_valid) {
+            return $this->years;
+        }
+
+        return -1;
+    }
+
+    /**
+     * How many years between two events?
+     * If either date is invalid return -1.
+     *
+     * @return string
+     */
+    public function ageYearsString(): string
+    {
+        if (!$this->is_valid) {
+            return '';
+        }
+
+        if ($this->years < 0) {
+            return view('icons/warning');
+        }
+
+
+        return I18N::number($this->years);
+    }
+
+    /**
+     * @param bool $living
+     *
+     * @return string
+     */
+    public function ageAtEvent(bool $living): string
+    {
+        $age = $this->ageString();
+
+        if ($age === '') {
+            return '';
+        }
+
+        if ($living) {
+            /* I18N: The current age of a living individual */
+            return I18N::translate('(age %s)', $age);
+        }
+
+        /* I18N: The age of an individual at a given date */
+        return I18N::translate('(aged %s)', $age);
+    }
+
+    /**
+     * Similar to ageAtEvent, but for events such as burial, cremation, etc.
+     *
+     * @return string
+     */
+    public function timeAfterDeath(): string
+    {
+        if (!$this->is_valid) {
+            return '';
+        }
+
+        if ($this->years === 0 && $this->months === 0 && $this->days === 0) {
+            if ($this->is_exact) {
+                return I18N::translate('(on the date of death)');
+            }
+
+            return '';
+        }
+
+        return I18N::translate('(%s after death)', $this->ageString());
     }
 }

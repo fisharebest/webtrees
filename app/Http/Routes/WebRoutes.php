@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\AccountDelete;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountUpdate;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
+use Fisharebest\Webtrees\Http\RequestHandlers\AppleTouchIconPng;
 use Fisharebest\Webtrees\Http\RequestHandlers\BroadcastAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\BroadcastPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\CleanDataFolder;
@@ -73,6 +74,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ExportGedcomClient;
 use Fisharebest\Webtrees\Http\RequestHandlers\ExportGedcomPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ExportGedcomServer;
 use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\FaviconIco;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\HeaderPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\HelpText;
@@ -542,8 +544,13 @@ class WebRoutes
                 $router->get('example', '/…');
             });
 
-            $router->get('module', '/module/{module}/{action}{/tree}', ModuleAction::class)
+            // Match module routes, with and without a tree.
+            $router->get('module-tree', '/module/{module}/{action}/{tree}', ModuleAction::class)
                 ->allows(RequestMethodInterface::METHOD_POST);
+            $router->get('module-no-tree', '/module/{module}/{action}', ModuleAction::class)
+                ->allows(RequestMethodInterface::METHOD_POST);
+            // Generate module routes only. The router cannot distinguish a private tree from no tree.
+            $router->get('module', '/module/{module}/{action}{/tree}', null);
 
             $router->get(HelpText::class, '/help/{topic}', HelpText::class);
             $router->post(SelectLanguage::class, '/language/{language}', SelectLanguage::class);
@@ -552,6 +559,10 @@ class WebRoutes
             $router->get(RobotsTxt::class, '/robots.txt', RobotsTxt::class);
             $router->post(SelectTheme::class, '/theme/{theme}', SelectTheme::class);
             $router->get(HomePage::class, '/', HomePage::class);
+
+            // Some URL rewrite configurations will pass everything not in /public to index.php
+            $router->get(AppleTouchIconPng::class, '/apple-touch-icon.png', AppleTouchIconPng::class);
+            $router->get(FaviconIco::class, '/favicon.ico', FaviconIco::class);
 
             // Legacy URLs from older software.
             $router->get(RedirectFamilyPhp::class, '/family.php', RedirectFamilyPhp::class);

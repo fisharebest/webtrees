@@ -87,7 +87,7 @@ class RegisterAction extends AbstractBaseController
 
         $params = (array) $request->getParsedBody();
 
-        $comments  = $params['comments'] ?? '';
+        $comment   = $params['comment'] ?? '';
         $email     = $params['email'] ?? '';
         $password  = $params['password'] ?? '';
         $realname  = $params['realname'] ?? '';
@@ -98,12 +98,12 @@ class RegisterAction extends AbstractBaseController
                 throw new Exception(I18N::translate('Please try again.'));
             }
 
-            $this->doValidateRegistration($request, $username, $email, $realname, $comments, $password);
+            $this->doValidateRegistration($request, $username, $email, $realname, $comment, $password);
         } catch (Exception $ex) {
             FlashMessages::addMessage($ex->getMessage(), 'danger');
 
             return redirect(route(RegisterPage::class, [
-                'comments' => $comments,
+                'comment'  => $comment,
                 'email'    => $email,
                 'realname' => $realname,
                 'username' => $username,
@@ -122,7 +122,7 @@ class RegisterAction extends AbstractBaseController
         $user->setPreference(User::PREF_TIMESTAMP_REGISTERED, date('U'));
         $user->setPreference(User::PREF_VERIFICATION_TOKEN, $token);
         $user->setPreference(User::PREF_CONTACT_METHOD, 'messaging2');
-        $user->setPreference(User::PREF_NEW_ACCOUNT_COMMENT, $comments);
+        $user->setPreference(User::PREF_NEW_ACCOUNT_COMMENT, $comment);
         $user->setPreference(User::PREF_IS_VISIBLE_ONLINE, '1');
         $user->setPreference(User::PREF_AUTO_ACCEPT_EDITS, '');
         $user->setPreference(User::PREF_IS_ADMINISTRATOR, '');
@@ -157,14 +157,14 @@ class RegisterAction extends AbstractBaseController
 
             $body_text = view('emails/register-notify-text', [
                 'user'     => $user,
-                'comments' => $comments,
+                'comments' => $comment,
                 'base_url' => $base_url,
                 'tree'     => $tree,
             ]);
 
             $body_html = view('emails/register-notify-html', [
                 'user'     => $user,
-                'comments' => $comments,
+                'comments' => $comment,
                 'base_url' => $base_url,
                 'tree'     => $tree,
             ]);

@@ -1,7 +1,9 @@
 {
   "headerKey": "__HEADER__",
   "reservedDomainKeys": [
-    "reserved name"
+    "reserved name",
+    "blocking",
+    "stop-list"
   ],
   "domainKeys": [
     "domain",
@@ -150,7 +152,9 @@
     "440 request denied": 1
   },
   "reservedDomainSubsets": [
-    {"reserved name": ""}
+    {"reserved name": ""},
+    {"blocking": ""},
+    {"stop-list": ""}
   ],
   "domainSubsets": [
     {"__HEADER__": "domain", "name": "$domain"},

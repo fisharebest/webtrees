@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
@@ -29,6 +30,7 @@ use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function app;
 use function assert;
 use function is_string;
 
@@ -430,19 +432,22 @@ class EditIndividualController extends AbstractEditController
         $individual = Auth::checkIndividualAccess($individual, true);
 
         // Find the fact to edit
-        foreach ($individual->facts() as $fact) {
-            if ($fact->id() === $fact_id && $fact->canEdit()) {
-                return $this->viewResponse('edit/new-individual', [
-                    'next_action' => 'edit-name-action',
-                    'tree'        => $tree,
-                    'title'       => I18N::translate('Edit the name'),
-                    'individual'  => $individual,
-                    'family'      => null,
-                    'name_fact'   => $fact,
-                    'famtag'      => '',
-                    'gender'      => $individual->sex(),
-                ]);
-            }
+        $fact = $individual->facts()
+            ->first(static function (Fact $fact) use ($fact_id): bool {
+                return $fact->id() === $fact_id && $fact->canEdit();
+            });
+
+        if ($fact instanceof Fact) {
+            return $this->viewResponse('edit/new-individual', [
+                'next_action' => 'edit-name-action',
+                'tree'        => $tree,
+                'title'       => I18N::translate('Edit the name'),
+                'individual'  => $individual,
+                'family'      => null,
+                'name_fact'   => $fact,
+                'famtag'      => '',
+                'gender'      => $individual->sex(),
+            ]);
         }
 
         throw new HttpNotFoundException();
@@ -455,12 +460,11 @@ class EditIndividualController extends AbstractEditController
      */
     public function editNameAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
         // Move the name-specific code to this function?
+        $edit_gedcom_record_controller = app(EditGedcomRecordController::class);
+        assert($edit_gedcom_record_controller instanceof EditGedcomRecordController);
 
-        return app(EditGedcomRecordController::class)->updateFact($request, $tree);
+        return $edit_gedcom_record_controller->updateFact($request);
     }
 
     /**
@@ -501,12 +505,11 @@ class EditIndividualController extends AbstractEditController
      */
     public function addNameAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
         // Move the name-specific code to this function?
+        $edit_gedcom_record_controller = app(EditGedcomRecordController::class);
+        assert($edit_gedcom_record_controller instanceof EditGedcomRecordController);
 
-        return app(EditGedcomRecordController::class)->updateFact($request, $tree);
+        return $edit_gedcom_record_controller->updateFact($request);
     }
 
     /**

@@ -40,8 +40,11 @@ use function route;
 use function sprintf;
 use function str_replace;
 use function strpbrk;
+use function trigger_error;
 use function trim;
 use function view;
+
+use const E_USER_DEPRECATED;
 
 /**
  * Classes for Gedcom Date/Calendar functionality.
@@ -393,9 +396,13 @@ abstract class AbstractCalendarDate
      * @param int $jd date for calculation
      *
      * @return int
+     *
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0
      */
     public function getAge(int $jd): int
     {
+        trigger_error('AbstractCalendarDate::getAge() is deprecated. Use class Age instead.', E_USER_DEPRECATED);
+
         if ($this->year === 0 || $jd === 0) {
             return 0;
         }
@@ -427,9 +434,13 @@ abstract class AbstractCalendarDate
      * @param int $jd date for calculation
      *
      * @return string
+     *
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0
      */
     public function getAgeFull(int $jd): string
     {
+        trigger_error('AbstractCalendarDate::getAge() is deprecated. Use class Age instead.', E_USER_DEPRECATED);
+
         if ($this->year === 0 || $jd === 0) {
             return '';
         }
@@ -930,7 +941,7 @@ abstract class AbstractCalendarDate
     {
         return [
             $this->month === $this->calendar->monthsInYear() ? $this->nextYear($this->year) : $this->year,
-            ($this->month % $this->calendar->monthsInYear()) + 1,
+            $this->month % $this->calendar->monthsInYear() + 1,
         ];
     }
 

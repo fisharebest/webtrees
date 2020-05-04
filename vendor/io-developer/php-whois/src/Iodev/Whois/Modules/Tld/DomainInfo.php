@@ -56,7 +56,7 @@ class DomainInfo
      */
     public function getDomainName()
     {
-        return $this->getval("domainName", "");
+        return $this->get("domainName", "");
     }
 
     /**
@@ -72,7 +72,7 @@ class DomainInfo
      */
     public function getWhoisServer()
     {
-        return $this->getval("whoisServer", "");
+        return $this->get("whoisServer", "");
     }
 
     /**
@@ -80,7 +80,7 @@ class DomainInfo
      */
     public function getNameServers()
     {
-        return $this->getval("nameServers", []);
+        return $this->get("nameServers", []);
     }
 
     /**
@@ -88,7 +88,7 @@ class DomainInfo
      */
     public function getCreationDate()
     {
-        return $this->getval("creationDate", 0);
+        return $this->get("creationDate", 0);
     }
 
     /**
@@ -96,7 +96,7 @@ class DomainInfo
      */
     public function getExpirationDate()
     {
-        return $this->getval("expirationDate", 0);
+        return $this->get("expirationDate", 0);
     }
 
     /**
@@ -104,7 +104,7 @@ class DomainInfo
      */
     public function getStates()
     {
-        return $this->getval("states", []);
+        return $this->get("states", []);
     }
 
     /**
@@ -112,7 +112,7 @@ class DomainInfo
      */
     public function getOwner()
     {
-        return $this->getval("owner", "");
+        return $this->get("owner", "");
     }
 
     /**
@@ -120,7 +120,7 @@ class DomainInfo
      */
     public function getRegistrar()
     {
-        return $this->getval("registrar", "");
+        return $this->get("registrar", "");
     }
 
     /**
@@ -128,10 +128,19 @@ class DomainInfo
      * @param mixed $default
      * @return mixed
      */
-    private function getval($key, $default = "")
+    public function get($key, $default = "")
     {
         return isset($this->data[$key]) ? $this->data[$key] : $default;
     }
+
+    /**
+     * @return array
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
 
     /**
      * @param array|null $keys

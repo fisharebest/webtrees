@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
@@ -302,7 +303,8 @@ trait ModuleThemeTrait
     {
         if (Auth::check()) {
             $parameters = [
-                'data-post-url' => route(Logout::class),
+                'data-post-url'   => route(Logout::class),
+                'data-reload-url' => route(HomePage::class)
             ];
 
             return new Menu(I18N::translate('Sign out'), '#', 'menu-logout', $parameters);

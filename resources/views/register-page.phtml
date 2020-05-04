@@ -79,12 +79,12 @@ use Fisharebest\Webtrees\View;
     </div>
 
     <div class="form-group row">
-        <label class="col-sm-3 col-form-label wt-page-options-label" for="comments">
+        <label class="col-sm-3 col-form-label wt-page-options-label" for="comment">
             <?= I18N::translate('Comments') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <textarea class="form-control" id="comments" name="comments" placeholder="<?php /* I18N: placeholder text for registration-comments field */
-            I18N::translate('Explain why you are requesting an account.') ?>" rows="4" dir="auto" required><?= e($comments) ?></textarea>
+            <textarea class="form-control" id="comment" name="comment" placeholder="<?php /* I18N: placeholder text for registration-comments field */
+            I18N::translate('Explain why you are requesting an account.') ?>" rows="4" maxlength="255" dir="auto" required><?= e($comments) ?></textarea>
             <p class="small text-muted">
                 <?= I18N::translate('Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator.') ?>
             </p>

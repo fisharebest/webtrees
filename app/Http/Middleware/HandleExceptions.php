@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -84,10 +84,6 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
                 if (ini_get('display_errors') !== '1') {
                     echo error_get_last()['message'], '<br><br>', error_get_last()['file'] , ': ', error_get_last()['line'];
                 }
-                // Not our fault?
-                if (strpos(error_get_last()['file'], '/modules_v4/') !== false) {
-                    echo '<br><br>This is an error in a webtrees module.  Upgrade it or disable it.';
-                }
             }
         });
 
@@ -95,7 +91,11 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             return $handler->handle($request);
         } catch (HttpException $exception) {
             // The router added the tree attribute to the request, and we need it for the error response.
-            $request = app(ServerRequestInterface::class) ?? $request;
+            if (app()->has(ServerRequestInterface::class)) {
+                $request = app(ServerRequestInterface::class);
+            } else {
+                app()->instance(ServerRequestInterface::class, $request);
+            }
 
             return $this->httpExceptionResponse($request, $exception);
         } catch (NotSupportedException $exception) {
@@ -118,7 +118,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             // Show the exception in a standard webtrees page (if we can).
             try {
                 return $this->unhandledExceptionResponse($request, $exception);
-            } catch (Throwable $e) {
+            } catch (Throwable $ignore) {
                 // That didn't work.  Try something else.
             }
 
@@ -127,7 +127,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
                 $request = $request->withAttribute('tree', null);
 
                 return $this->unhandledExceptionResponse($request, $exception);
-            } catch (Throwable $e) {
+            } catch (Throwable $ignore) {
                 // That didn't work.  Try something else.
             }
 
@@ -136,7 +136,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
                 $this->layout = 'layouts/error';
 
                 return $this->unhandledExceptionResponse($request, $exception);
-            } catch (Throwable $e) {
+            } catch (Throwable $ignore) {
                 // That didn't work.  Try something else.
             }
 
@@ -222,7 +222,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
 
         try {
             Log::addErrorLog($trace);
-        } catch (Throwable $exception) {
+        } catch (Throwable $ignore) {
             // Must have been a problem with the database.  Nothing we can do here.
         }
 
@@ -246,7 +246,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
                 'request' => $request,
                 'tree'    => $request->getAttribute('tree'),
             ], StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
-        } catch (Throwable $ex) {
+        } catch (Throwable $ignore) {
             // Try with a minimal header/menu
             return $this->viewResponse('errors/unhandled-exception', [
                 'title'   => 'Error',

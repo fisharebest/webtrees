@@ -1280,9 +1280,30 @@ class CarbonInterval extends DateInterval
         return $this;
     }
 
+    protected function getForHumansInitialVariables($syntax, $short)
+    {
+        if (is_array($syntax)) {
+            return $syntax;
+        }
+
+        if (is_int($short)) {
+            return [
+                'parts' => $short,
+                'short' => false,
+            ];
+        }
+
+        if (is_bool($syntax)) {
+            return [
+                'short' => $syntax,
+                'syntax' => CarbonInterface::DIFF_ABSOLUTE,
+            ];
+        }
+
+        return [];
+    }
+
     /**
-     * @SuppressWarnings(PHPMD.ElseExpression)
-     *
      * @param mixed $syntax
      * @param mixed $short
      * @param mixed $parts
@@ -1297,20 +1318,8 @@ class CarbonInterval extends DateInterval
         $join = $default === '' ? '' : ' ';
         $altNumbers = false;
         $aUnit = false;
-
-        if (is_array($syntax)) {
-            extract($syntax);
-        } else {
-            if (is_int($short)) {
-                $parts = $short;
-                $short = false;
-            }
-
-            if (is_bool($syntax)) {
-                $short = $syntax;
-                $syntax = CarbonInterface::DIFF_ABSOLUTE;
-            }
-        }
+        $minimumUnit = 's';
+        extract($this->getForHumansInitialVariables($syntax, $short));
 
         if (is_null($syntax)) {
             $syntax = CarbonInterface::DIFF_ABSOLUTE;
@@ -1373,7 +1382,7 @@ class CarbonInterval extends DateInterval
             ':optional-space' => $optionalSpace,
         ];
 
-        return [$syntax, $short, $parts, $options, $join, $aUnit, $altNumbers, $interpolations];
+        return [$syntax, $short, $parts, $options, $join, $aUnit, $altNumbers, $interpolations, $minimumUnit];
     }
 
     protected static function getRoundingMethodFromOptions(int $options): ?string
@@ -1469,6 +1478,7 @@ class CarbonInterval extends DateInterval
      * echo CarbonInterval::fromString('4d 3h 40m')->forHumans(['parts' => 3, 'join' => true]) . "\n";
      * echo CarbonInterval::fromString('4d 3h 40m')->forHumans(['short' => true]) . "\n";
      * echo CarbonInterval::fromString('1d 24h')->forHumans(['join' => ' or ']) . "\n";
+     * echo CarbonInterval::fromString('1d 24h')->forHumans(['minimumUnit' => 'hour']) . "\n";
      * ```
      *
      * @param int|array $syntax  if array passed, parameters will be extracted from it, the array may contains:
@@ -1484,6 +1494,8 @@ class CarbonInterval extends DateInterval
      *                           `    will be used instead of the glue for the last item
      *                           `  - if $join is true, it will be guessed from the locale ('list' translation file entry)
      *                           `  - if $join is missing, a space will be used as glue
+     *                           - 'minimumUnit' entry determines the smallest unit of time to display can be long or
+     *                           `  short form of the units, e.g. 'hour' or 'h' (default value: s)
      *                           if int passed, it add modifiers:
      *                           Possible values:
      *                           - CarbonInterface::DIFF_ABSOLUTE          no modifiers
@@ -1498,7 +1510,7 @@ class CarbonInterval extends DateInterval
      */
     public function forHumans($syntax = null, $short = false, $parts = -1, $options = null)
     {
-        [$syntax, $short, $parts, $options, $join, $aUnit, $altNumbers, $interpolations] = $this->getForHumansParameters($syntax, $short, $parts, $options);
+        [$syntax, $short, $parts, $options, $join, $aUnit, $altNumbers, $interpolations, $minimumUnit] = $this->getForHumansParameters($syntax, $short, $parts, $options);
 
         $interval = [];
 
@@ -1513,13 +1525,15 @@ class CarbonInterval extends DateInterval
         /** @var \Symfony\Component\Translation\Translator $translator */
         $translator = $this->getLocalTranslator();
 
-        $handleDeclensions = function ($unit, $count) use ($interpolations, $transId, $translator, $altNumbers) {
-            // Some languages have special pluralization for past and future tense.
-            $key = $unit.'_'.$transId;
-            $result = $this->translate($key, $interpolations, $count, $translator, $altNumbers);
+        $handleDeclensions = function ($unit, $count) use ($interpolations, $transId, $translator, $altNumbers, $absolute) {
+            if (!$absolute) {
+                // Some languages have special pluralization for past and future tense.
+                $key = $unit.'_'.$transId;
+                $result = $this->translate($key, $interpolations, $count, $translator, $altNumbers);
 
-            if ($result !== $key) {
-                return $result;
+                if ($result !== $key) {
+                    return $result;
+                }
             }
 
             $result = $this->translate($unit, $interpolations, $count, $translator, $altNumbers);
@@ -1544,16 +1558,17 @@ class CarbonInterval extends DateInterval
         }
 
         $diffIntervalArray = [
-            ['value' => $intervalValues->years,            'unit' => 'year',   'unitShort' => 'y'],
-            ['value' => $intervalValues->months,           'unit' => 'month',  'unitShort' => 'm'],
-            ['value' => $intervalValues->weeks,            'unit' => 'week',   'unitShort' => 'w'],
-            ['value' => $intervalValues->daysExcludeWeeks, 'unit' => 'day',    'unitShort' => 'd'],
-            ['value' => $intervalValues->hours,            'unit' => 'hour',   'unitShort' => 'h'],
-            ['value' => $intervalValues->minutes,          'unit' => 'minute', 'unitShort' => 'min'],
-            ['value' => $intervalValues->seconds,          'unit' => 'second', 'unitShort' => 's'],
+            ['value' => $intervalValues->years,            'unit' => 'year',        'unitShort' => 'y'],
+            ['value' => $intervalValues->months,           'unit' => 'month',       'unitShort' => 'm'],
+            ['value' => $intervalValues->weeks,            'unit' => 'week',        'unitShort' => 'w'],
+            ['value' => $intervalValues->daysExcludeWeeks, 'unit' => 'day',         'unitShort' => 'd'],
+            ['value' => $intervalValues->hours,            'unit' => 'hour',        'unitShort' => 'h'],
+            ['value' => $intervalValues->minutes,          'unit' => 'minute',      'unitShort' => 'min'],
+            ['value' => $intervalValues->seconds,          'unit' => 'second',      'unitShort' => 's'],
+            ['value' => $intervalValues->milliseconds,     'unit' => 'millisecond', 'unitShort' => 'ms'],
         ];
 
-        $transChoice = function ($short, $unitData) use ($handleDeclensions, $translator, $aUnit, $altNumbers, $interpolations) {
+        $transChoice = function ($short, $unitData) use ($absolute, $handleDeclensions, $translator, $aUnit, $altNumbers, $interpolations) {
             $count = $unitData['value'];
 
             if ($short) {
@@ -1570,9 +1585,14 @@ class CarbonInterval extends DateInterval
                 }
             }
 
+            if (!$absolute) {
+                return $handleDeclensions($unitData['unit'], $count);
+            }
+
             return $this->translate($unitData['unit'], $interpolations, $count, $translator, $altNumbers);
         };
 
+        $fallbackUnit = ['second', 's'];
         foreach ($diffIntervalArray as $diffIntervalData) {
             if ($diffIntervalData['value'] > 0) {
                 $unit = $short ? $diffIntervalData['unitShort'] : $diffIntervalData['unit'];
@@ -1584,6 +1604,13 @@ class CarbonInterval extends DateInterval
 
             // break the loop after we get the required number of parts in array
             if (count($interval) >= $parts) {
+                break;
+            }
+
+            // break the loop after we have reached the minimum unit
+            if (in_array($minimumUnit, [$diffIntervalData['unit'], $diffIntervalData['unitShort']])) {
+                $fallbackUnit = [$diffIntervalData['unit'], $diffIntervalData['unitShort']];
+
                 break;
             }
         }
@@ -1599,7 +1626,7 @@ class CarbonInterval extends DateInterval
             }
 
             $count = $options & CarbonInterface::NO_ZERO_DIFF ? 1 : 0;
-            $unit = $short ? 's' : 'second';
+            $unit = $fallbackUnit[$short ? 1 : 0];
             $interval[] = $this->translate($unit, $interpolations, $count, $translator, $altNumbers);
         }
 
@@ -1637,9 +1664,9 @@ class CarbonInterval extends DateInterval
                 }
             }
 
-            $aTime = $aUnit ? $handleDeclensions('a_'.$unit.'_'.$transId, $count) : null;
+            $aTime = $aUnit ? $handleDeclensions('a_'.$unit, $count) : null;
 
-            $time = $aTime ?: $handleDeclensions($unit.'_'.$transId, $count) ?: $time;
+            $time = $aTime ?: $handleDeclensions($unit, $count) ?: $time;
         }
 
         $time = [':time' => $time];
@@ -2267,6 +2294,10 @@ class CarbonInterval extends DateInterval
     /**
      * Determines if the instance is between two others.
      *
+     * The third argument allow you to specify if bounds are included or not (true by default)
+     * but for when you including/excluding bounds may produce different results in your application,
+     * we recommend to use the explicit methods ->betweenIncluded() or ->betweenExcluded() instead.
+     *
      * @example
      * ```
      * CarbonInterval::hours(48)->between(CarbonInterval::day(), CarbonInterval::days(3)); // true
@@ -2286,6 +2317,26 @@ class CarbonInterval extends DateInterval
         return $equal
             ? $this->greaterThanOrEqualTo($interval1) && $this->lessThanOrEqualTo($interval2)
             : $this->greaterThan($interval1) && $this->lessThan($interval2);
+    }
+
+    /**
+     * Determines if the instance is between two others, bounds excluded.
+     *
+     * @example
+     * ```
+     * CarbonInterval::hours(48)->betweenExcluded(CarbonInterval::day(), CarbonInterval::days(3)); // true
+     * CarbonInterval::hours(48)->betweenExcluded(CarbonInterval::day(), CarbonInterval::hours(36)); // false
+     * CarbonInterval::hours(48)->betweenExcluded(CarbonInterval::day(), CarbonInterval::days(2)); // true
+     * ```
+     *
+     * @param \Carbon\CarbonInterval|\DateInterval|mixed $interval1
+     * @param \Carbon\CarbonInterval|\DateInterval|mixed $interval2
+     *
+     * @return bool
+     */
+    public function betweenIncluded($interval1, $interval2): bool
+    {
+        return $this->between($interval1, $interval2, true);
     }
 
     /**
