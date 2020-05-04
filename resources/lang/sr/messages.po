@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-04 15:57+0100\n"
+"POT-Creation-Date: 2020-05-04 18:25+0100\n"
 "PO-Revision-Date: 2019-11-09 18:04+0000\n"
 "Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
 "Language-Team: Serbian <http://translate.webtrees.net/projects/webtrees/webtrees/sr/>\n"
@@ -299,18 +299,11 @@ msgstr[2] ""
 
 #: app/Age.php:102 app/Functions/FunctionsDate.php:68
 #: app/Functions/FunctionsPrint.php:252
+#: app/Statistics/Repository/FamilyRepository.php:346
+#: app/Statistics/Repository/IndividualRepository.php:956
 #: resources/views/modules/relatives/family.phtml:183
 #, php-format
 msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-#: app/Statistics/Repository/FamilyRepository.php:346
-#: app/Statistics/Repository/IndividualRepository.php:956
-#, php-format
-msgid "%s months"
 msgid_plural "%s months"
 msgstr[0] ""
 msgstr[1] ""

@@ -343,7 +343,7 @@ class FamilyRepository
         if ($age < 365) {
             $months = (int) ($age / 30.5);
 
-            return I18N::plural('%s months', '%s months', $months, I18N::number($months));
+            return I18N::plural('%s month', '%s months', $months, I18N::number($months));
         }
 
         $years = (int) ($age / 365.25);

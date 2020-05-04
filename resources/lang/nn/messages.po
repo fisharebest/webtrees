@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-04 15:57+0100\n"
+"POT-Creation-Date: 2020-05-04 18:25+0100\n"
 "PO-Revision-Date: 2020-04-20 14:19+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees/nn/>\n"
@@ -287,20 +287,14 @@ msgstr[1] "%s meldingar"
 
 #: app/Age.php:102 app/Functions/FunctionsDate.php:68
 #: app/Functions/FunctionsPrint.php:252
+#: app/Statistics/Repository/FamilyRepository.php:346
+#: app/Statistics/Repository/IndividualRepository.php:956
 #: resources/views/modules/relatives/family.phtml:183
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
 msgstr[0] "%s månad"
 msgstr[1] "%s månader"
-
-#: app/Statistics/Repository/FamilyRepository.php:346
-#: app/Statistics/Repository/IndividualRepository.php:956
-#, php-format
-msgid "%s months"
-msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:91
 #, php-format

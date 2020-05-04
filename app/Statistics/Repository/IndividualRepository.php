@@ -953,7 +953,7 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         if ($days < 365) {
             $months = (int) ($days / 30.5);
-            return I18N::plural('%s months', '%s months', $months, I18N::number($months));
+            return I18N::plural('%s month', '%s months', $months, I18N::number($months));
         }
 
         $years = (int) ($days / 365.25);
