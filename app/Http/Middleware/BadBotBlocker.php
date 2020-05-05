@@ -144,17 +144,6 @@ class BadBotBlocker implements MiddlewareInterface
     ];
 
     /**
-     * These ASNs belong to server farms.
-     */
-    private const BLOCK_ASN = [
-        'hetzner'   => 'AS24920',
-        'hostdime'  => 'AS33182',
-        'linode'    => 'AS63949',
-        'ovh'       => 'AS16276',
-        'rackspace' => 'AS15395',
-    ];
-
-    /**
      * @param ServerRequestInterface  $request
      * @param RequestHandlerInterface $handler
      *
@@ -209,14 +198,15 @@ class BadBotBlocker implements MiddlewareInterface
             }
         }
 
-        // This is potentially controversial, and whois lookups may be slow.
-        //foreach (self::BLOCK_ASN as $host => $asn) {
-        //    foreach ($this->fetchIpRangesForAsn($asn) as $range) {
-        //        if ($range->contains($address)) {
-        //            return $this->response();
-        //        }
-        //    }
-        //}
+        // Allow sites to block access from entire networks.
+        preg_match_all('/(AS\d+)/', $request->getAttribute('block_asn', ''), $matches);
+        foreach ($matches[1] as $asn) {
+            foreach ($this->fetchIpRangesForAsn($asn) as $range) {
+                if ($range->contains($address)) {
+                    return $this->response();
+                }
+            }
+        }
 
         return $handler->handle($request);
     }
