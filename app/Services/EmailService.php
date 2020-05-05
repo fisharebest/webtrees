@@ -34,7 +34,7 @@ use Swift_SmtpTransport;
 use Swift_Transport;
 use Throwable;
 
-use function asset;
+use function assert;
 use function checkdnsrr;
 use function filter_var;
 use function function_exists;
