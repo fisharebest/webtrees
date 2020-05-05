@@ -4,18 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-04 18:25+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: ur\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-04 18:25+0100\nPO-Revision-Date: 2020-05-05 19:25+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Urdu <https://translate.webtrees.net/projects/webtrees/webtrees/ur/>\nLanguage: ur\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: app/Age.php:98 app/Functions/FunctionsDate.php:66
 #: app/Functions/FunctionsPrint.php:250
@@ -27,8 +16,8 @@ msgstr ""
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s سال"
+msgstr[1] "%s سال"
 
 #: app/Age.php:102 app/Functions/FunctionsDate.php:68
 #: app/Functions/FunctionsPrint.php:252
@@ -38,8 +27,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s مہینہ"
+msgstr[1] "%s مہینے"
 
 #: app/Age.php:106 app/Functions/FunctionsDate.php:72
 #: app/Functions/FunctionsPrint.php:256
@@ -48,152 +37,152 @@ msgstr[1] ""
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s دن"
+msgstr[1] "%s دن"
 
 #. I18N: The current age of a living individual
 #: app/Age.php:177
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(عمر %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:181
 #, php-format
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s سال کی عمر)"
 
 #: app/Age.php:197
 msgid "(on the date of death)"
-msgstr ""
+msgstr "(موت کی تاریخ پر)"
 
 #: app/Age.php:203
 #, php-format
 msgid "(%s after death)"
-msgstr ""
+msgstr "(موت کے بعد %s)"
 
 #. I18N: The gregorian calendar
 #: app/Date.php:232 app/Module/YahrzeitModule.php:264
 msgid "Gregorian"
-msgstr ""
+msgstr "گریگوریئن"
 
 #. I18N: The julian calendar
 #: app/Date.php:234 resources/views/help/date.phtml:139
 msgid "Julian"
-msgstr ""
+msgstr "جولین"
 
 #. I18N: The French calendar
 #: app/Date.php:236 resources/views/help/date.phtml:187
 msgid "French"
-msgstr ""
+msgstr "فرانسیسی"
 
 #. I18N: The Hebrew/Jewish calendar
 #: app/Date.php:238 app/Module/YahrzeitModule.php:263
 #: resources/views/help/date.phtml:155
 msgid "Jewish"
-msgstr ""
+msgstr "یہودی"
 
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:240 resources/views/help/date.phtml:171
 msgid "Hijri"
-msgstr ""
+msgstr "ہجری"
 
 #. I18N: The Persian/Jalali calendar
 #: app/Date.php:242
 msgid "Jalali"
-msgstr ""
+msgstr "جلالی"
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:344
 #, php-format
 msgid "about %s"
-msgstr ""
+msgstr "تقریباً %s"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:348
 #, php-format
 msgid "calculated %s"
-msgstr ""
+msgstr "بالحساب %s"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:352
 #, php-format
 msgid "estimated %s"
-msgstr ""
+msgstr "اندازاً %s"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:356
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr ""
+msgstr "تشریحی %s (%s)"
 
 #. I18N: Gedcom BEF dates
 #: app/Date.php:360
 #, php-format
 msgid "before %s"
-msgstr ""
+msgstr "قبل از %s"
 
 #. I18N: Gedcom AFT dates
 #: app/Date.php:364
 #, php-format
 msgid "after %s"
-msgstr ""
+msgstr "بعد از %s"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:368
 #, php-format
 msgid "from %s"
-msgstr ""
+msgstr "%s سے"
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:372
 #, php-format
 msgid "to %s"
-msgstr ""
+msgstr "%s تک"
 
 #. I18N: Gedcom BET-AND dates
 #: app/Date.php:376
 #, php-format
 msgid "between %s and %s"
-msgstr ""
+msgstr "%s اور %s کے درمیان"
 
 #. I18N: Gedcom FROM-TO dates
 #: app/Date.php:380
 #, php-format
 msgid "from %s to %s"
-msgstr ""
+msgstr "%s سے %s تک"
 
 #: app/Date.php:383
 msgid "Invalid date"
-msgstr ""
+msgstr "غلط تاریخ"
 
 #: app/Date/AbstractCalendarDate.php:258
 msgid "Monday"
-msgstr ""
+msgstr "پیر"
 
 #: app/Date/AbstractCalendarDate.php:259
 msgid "Tuesday"
-msgstr ""
+msgstr "منگل"
 
 #: app/Date/AbstractCalendarDate.php:260
 msgid "Wednesday"
-msgstr ""
+msgstr "بدھ"
 
 #: app/Date/AbstractCalendarDate.php:261
 msgid "Thursday"
-msgstr ""
+msgstr "جمعرات"
 
 #: app/Date/AbstractCalendarDate.php:262
 msgid "Friday"
-msgstr ""
+msgstr "جمعہ"
 
 #: app/Date/AbstractCalendarDate.php:263
 msgid "Saturday"
-msgstr ""
+msgstr "سنیچر"
 
 #: app/Date/AbstractCalendarDate.php:264
 msgid "Sunday"
-msgstr ""
+msgstr "اتوار"
 
 #. I18N: abbreviation for Monday
 #: app/Date/AbstractCalendarDate.php:285
