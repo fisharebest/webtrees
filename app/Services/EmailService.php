@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Site;
+use Psr\Http\Message\ServerRequestInterface;
 use Swift_Mailer;
 use Swift_Message;
 use Swift_NullTransport;
@@ -33,6 +34,7 @@ use Swift_SmtpTransport;
 use Swift_Transport;
 use Throwable;
 
+use function asset;
 use function checkdnsrr;
 use function filter_var;
 use function function_exists;
@@ -123,7 +125,12 @@ class EmailService
         switch (Site::getPreference('SMTP_ACTIVE')) {
             case 'sendmail':
                 // Local sendmail (requires PHP proc_* functions)
-                return new Swift_SendmailTransport();
+                $request = app(ServerRequestInterface::class);
+                assert($request instanceof ServerRequestInterface);
+
+                $sendmail_command = $request->getAttribute('sendmail_command');
+
+                return new Swift_SendmailTransport($sendmail_command);
 
             case 'external':
                 // SMTP
