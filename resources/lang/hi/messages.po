@@ -4,19 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-04 18:25+0100\n"
-"PO-Revision-Date: 2020-05-03 11:49+0000\n"
-"Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
-"Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\n"
-"Language: hi\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-04 18:25+0100\nPO-Revision-Date: 2020-05-08 11:40+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -167,7 +155,7 @@ msgstr "%j %F %Y"
 #: app/Statistics/Service/CenturyService.php:39
 #, php-format
 msgid "%s BCE"
-msgstr "%s आम युग"
+msgstr "%s ईसा पूर्व"
 
 #. I18N: size of file in KB
 #: app/Http/Controllers/Admin/MediaController.php:353 app/MediaFile.php:325
@@ -416,7 +404,7 @@ msgstr "%sवें कज़िन"
 #: app/Date/JulianDate.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;बीसीई"
+msgstr "%s&nbsp;ईसा पूर्व"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
@@ -485,7 +473,7 @@ msgstr "(%s मृत्यु के बाद)"
 #: app/Age.php:177
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(उम्र %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:181
@@ -1932,7 +1920,7 @@ msgstr "एक अनपेक्षित डेटाबेस ग़लती
 
 #: resources/views/admin/control-panel.phtml:83
 msgid "An upgrade is available."
-msgstr ""
+msgstr "एक उन्नयन (अपग्रेड) उपलब्ध है।"
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -3982,7 +3970,7 @@ msgstr "UTF-8 से ISO-8859-1 में परिवर्तित करे�
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr ""
+msgstr "रूपांतरण >>"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
@@ -7481,7 +7469,7 @@ msgstr "webtrees version 2 में, कस्टम थंबनेल को 
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include aliases"
-msgstr ""
+msgstr "उपनाम शामिल करें"
 
 #: resources/views/admin/trees-unconnected.phtml:27
 msgid "Include associates"
@@ -10132,7 +10120,7 @@ msgstr "कुछ नहीं मिला।"
 #: resources/views/modules/pedigree-map/chart.phtml:110
 #: resources/views/modules/places/tab.phtml:102
 msgid "Nothing to show"
-msgstr ""
+msgstr "दिखाने के लिए कुछ भी नहीं"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
@@ -11163,7 +11151,7 @@ msgstr "प्रकाशन"
 
 #: resources/views/lists/sources-table.phtml:88
 msgid "Publisher"
-msgstr ""
+msgstr "प्रकाशक"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:403
@@ -11563,7 +11551,7 @@ msgstr "धार्मिक नाम"
 #: resources/views/modules/place-hierarchy/map.phtml:71
 #: resources/views/modules/places/tab.phtml:58
 msgid "Reload map"
-msgstr ""
+msgstr "नक्शा दोबारा लोड करें"
 
 #: resources/views/modules/review_changes/config.phtml:24
 msgid "Reminder email frequency (days)"
@@ -12028,7 +12016,7 @@ msgstr "साधारण “सर्च” या “एडवांस्ड
 #. I18N: Help text for the “Description META tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:203
 msgid "Search engines may use this description of your site in their search results."
-msgstr ""
+msgstr "सर्च इंजन अपने खोज परिणामों में आपकी साइट के इस विवरण का उपयोग कर सकते हैं।"
 
 #: resources/views/modules/media-list/page.phtml:52
 msgid "Search filters"
