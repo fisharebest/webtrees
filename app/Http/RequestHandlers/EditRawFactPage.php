@@ -67,9 +67,9 @@ class EditRawFactPage implements RequestHandlerInterface
 
         if ($fact instanceof Fact) {
             return $this->viewResponse('edit/raw-gedcom-fact', [
-                'fact'    => $fact,
-                'title'   => $title,
-                'tree'    => $tree,
+                'fact'  => $fact,
+                'title' => $title,
+                'tree'  => $tree,
             ]);
         }
 

@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Tree;
@@ -31,7 +30,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function assert;
 use function explode;
 use function is_string;
-use function preg_match;
 
 /**
  * Edit the raw GEDCOM of a record.

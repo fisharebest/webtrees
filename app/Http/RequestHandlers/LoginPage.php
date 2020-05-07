@@ -67,7 +67,7 @@ class LoginPage extends AbstractBaseController
         // No tree?  perhaps we came here from a page without one.
         if ($tree === null) {
             $default = Site::getPreference('DEFAULT_GEDCOM');
-            $tree = $this->tree_service->all()->get($default) ?? $this->tree_service->all()->first();
+            $tree    = $this->tree_service->all()->get($default) ?? $this->tree_service->all()->first();
 
             if ($tree instanceof Tree) {
                 return redirect(route(self::class, ['tree' => $tree->name(), 'url' => $url]));

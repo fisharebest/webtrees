@@ -52,8 +52,8 @@ class EditFact implements RequestHandlerInterface
         $xref    = $request->getQueryParams()['xref'];
         $fact_id = $request->getQueryParams()['fact_id'];
 
-        $record  = GedcomRecord::getInstance($xref, $tree);
-        $record  = Auth::checkRecordAccess($record, true);
+        $record = GedcomRecord::getInstance($xref, $tree);
+        $record = Auth::checkRecordAccess($record, true);
 
         // Find the fact to edit
         $fact = $record->facts()

@@ -88,7 +88,7 @@ class RepositoryPage implements RequestHandlerInterface
         $repository = Auth::checkRepositoryAccess($repository, false);
 
         // Redirect to correct xref/slug
-        if ($repository->xref() !== $xref ||  $request->getAttribute('slug') !== $repository->slug()) {
+        if ($repository->xref() !== $xref || $request->getAttribute('slug') !== $repository->slug()) {
             return redirect($repository->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 

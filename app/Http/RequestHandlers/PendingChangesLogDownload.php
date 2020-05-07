@@ -56,7 +56,7 @@ class PendingChangesLogDownload implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params = $request->getQueryParams();
+        $params         = $request->getQueryParams();
         $params['tree'] = $tree->name();
 
         $content = $this->pending_changes_service->changesQuery($params)

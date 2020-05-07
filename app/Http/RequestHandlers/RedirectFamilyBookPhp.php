@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,9 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Exceptions\RepositoryNotFoundException;
-use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\FamilyBookChartModule;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -33,16 +36,21 @@ use function redirect;
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
  */
-class RedirectRepoPhp implements RequestHandlerInterface
+class RedirectFamilyBookPhp implements RequestHandlerInterface
 {
     /** @var TreeService */
     private $tree_service;
 
+    /** @var FamilyBookChartModule */
+    private $chart;
+
     /**
-     * @param TreeService $tree_service
+     * @param FamilyBookChartModule $chart
+     * @param TreeService           $tree_service
      */
-    public function __construct(TreeService $tree_service)
+    public function __construct(FamilyBookChartModule $chart, TreeService $tree_service)
     {
+        $this->chart        = $chart;
         $this->tree_service = $tree_service;
     }
 
@@ -53,18 +61,25 @@ class RedirectRepoPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $ged  = $request->getQueryParams()['ged'] ?? null;
+        $query       = $request->getQueryParams();
+        $ged         = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
+        $root_id     = $query['root_id'] ?? '';
+        $generations = $query['generations'] ?? '2';
+        $descent     = $query['descent'] ?? '5';
+
         $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $xref       = $request->getQueryParams()['rid'] ?? '';
-            $repository = Repository::getInstance($xref, $tree);
+            $individual = Individual::getInstance($root_id, $tree) ?? $tree->significantIndividual(Auth::user());
 
-            if ($repository instanceof Repository) {
-                return redirect($repository->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
-            }
+            $url = $this->chart->chartUrl($individual, [
+                'book_size'   => $generations,
+                'generations' => $descent,
+            ]);
+
+            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
-        throw new RepositoryNotFoundException();
+        throw new HttpNotFoundException();
     }
 }

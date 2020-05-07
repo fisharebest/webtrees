@@ -20,10 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
+use Fisharebest\Webtrees\Exceptions\RepositoryNotFoundException;
+use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -34,7 +34,7 @@ use function redirect;
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
  */
-class RedirectSourcePhp implements RequestHandlerInterface
+class RedirectRepositoryPhp implements RequestHandlerInterface
 {
     /** @var TreeService */
     private $tree_service;
@@ -56,17 +56,17 @@ class RedirectSourcePhp implements RequestHandlerInterface
     {
         $query = $request->getQueryParams();
         $ged   = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $sid   = $query['sid'] ?? '';
+        $rid   = $query['rid'] ?? '';
         $tree  = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $source = Source::getInstance($sid, $tree);
+            $repository = Repository::getInstance($rid, $tree);
 
-            if ($source instanceof Source) {
-                return redirect($source->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            if ($repository instanceof Repository) {
+                return redirect($repository->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
             }
         }
 
-        throw new SourceNotFoundException();
+        throw new RepositoryNotFoundException();
     }
 }

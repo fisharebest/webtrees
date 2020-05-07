@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -87,11 +87,11 @@ class RegisterAction extends AbstractBaseController
 
         $params = (array) $request->getParsedBody();
 
-        $comment   = $params['comment'] ?? '';
-        $email     = $params['email'] ?? '';
-        $password  = $params['password'] ?? '';
-        $realname  = $params['realname'] ?? '';
-        $username  = $params['username'] ?? '';
+        $comment  = $params['comment'] ?? '';
+        $email    = $params['email'] ?? '';
+        $password = $params['password'] ?? '';
+        $realname = $params['realname'] ?? '';
+        $username = $params['username'] ?? '';
 
         try {
             if ($this->captcha_service->isRobot($request)) {
@@ -133,8 +133,8 @@ class RegisterAction extends AbstractBaseController
 
         $verify_url = route(VerifyEmail::class, [
             'username' => $user->userName(),
-            'token' => $token,
-            'tree' => $tree instanceof Tree ? $tree->name() : null,
+            'token'    => $token,
+            'tree'     => $tree instanceof Tree ? $tree->name() : null,
         ]);
 
         // Send a verification message to the user.

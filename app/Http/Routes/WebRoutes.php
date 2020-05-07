@@ -113,13 +113,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectTree;
 use Fisharebest\Webtrees\Http\RequestHandlers\PhpInformation;
 use Fisharebest\Webtrees\Http\RequestHandlers\Ping;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectFamilyPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectGedRecordPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectIndividualPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectMediaViewerPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectNotePhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectRepoPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectSourcePhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RegisterAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\RegisterPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenAction;
@@ -563,15 +556,6 @@ class WebRoutes
             // Some URL rewrite configurations will pass everything not in /public to index.php
             $router->get(AppleTouchIconPng::class, '/apple-touch-icon.png', AppleTouchIconPng::class);
             $router->get(FaviconIco::class, '/favicon.ico', FaviconIco::class);
-
-            // Legacy URLs from older software.
-            $router->get(RedirectFamilyPhp::class, '/family.php', RedirectFamilyPhp::class);
-            $router->get(RedirectGedRecordPhp::class, '/gedrecord.php', RedirectGedRecordPhp::class);
-            $router->get(RedirectIndividualPhp::class, '/individual.php', RedirectIndividualPhp::class);
-            $router->get(RedirectMediaViewerPhp::class, '/mediaviewer.php', RedirectMediaViewerPhp::class);
-            $router->get(RedirectNotePhp::class, '/note.php', RedirectNotePhp::class);
-            $router->get(RedirectRepoPhp::class, '/repository.php', RedirectRepoPhp::class);
-            $router->get(RedirectSourcePhp::class, '/source.php', RedirectSourcePhp::class);
         });
     }
 }

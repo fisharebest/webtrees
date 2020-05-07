@@ -76,7 +76,7 @@ class DataFixPage implements RequestHandlerInterface
         $this->layout = 'layouts/administration';
 
         if ($module instanceof ModuleDataFixInterface) {
-            $title = $module->title() . ' — ' . e($tree->title());
+            $title       = $module->title() . ' — ' . e($tree->title());
             $page_url    = route(self::class, ['data_fix' => $data_fix, 'tree' => $tree->name()]);
             $pending_url = route(PendingChanges::class, ['tree' => $tree->name(), 'url' => $page_url]);
 

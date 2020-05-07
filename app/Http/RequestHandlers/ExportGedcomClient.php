@@ -44,8 +44,6 @@ use function fopen;
 use function pathinfo;
 use function rewind;
 use function strtolower;
-use function sys_get_temp_dir;
-use function tempnam;
 use function tmpfile;
 
 use const PATHINFO_EXTENSION;

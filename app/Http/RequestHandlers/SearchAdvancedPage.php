@@ -34,7 +34,6 @@ use function array_filter;
 use function array_key_exists;
 use function assert;
 use function explode;
-use function in_array;
 
 /**
  * Search for genealogy data
@@ -156,8 +155,8 @@ class SearchAdvancedPage implements RequestHandlerInterface
 
         $params = $request->getQueryParams();
 
-        $fields      = $params['fields'] ?? $default_fields;
-        $modifiers   = $params['modifiers'] ?? [];
+        $fields    = $params['fields'] ?? $default_fields;
+        $modifiers = $params['modifiers'] ?? [];
 
         $other_fields = $this->otherFields($tree, $fields);
         $date_options = $this->dateOptions();

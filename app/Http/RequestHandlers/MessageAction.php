@@ -57,7 +57,7 @@ class MessageAction implements RequestHandlerInterface
      */
     public function __construct(MessageService $message_service, UserService $user_service)
     {
-        $this->user_service = $user_service;
+        $this->user_service    = $user_service;
         $this->message_service = $message_service;
     }
 

@@ -51,8 +51,8 @@ class MergeFactsPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref1  = $request->getQueryParams()['xref1'] ?? '';
-        $xref2  = $request->getQueryParams()['xref2'] ?? '';
+        $xref1 = $request->getQueryParams()['xref1'] ?? '';
+        $xref2 = $request->getQueryParams()['xref2'] ?? '';
 
         $title = I18N::translate('Merge records') . ' — ' . e($tree->title());
 

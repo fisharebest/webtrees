@@ -152,6 +152,7 @@ use Fisharebest\Webtrees\Module\LanguageTurkish;
 use Fisharebest\Webtrees\Module\LanguageUkranian;
 use Fisharebest\Webtrees\Module\LanguageVietnamese;
 use Fisharebest\Webtrees\Module\LanguageYiddish;
+use Fisharebest\Webtrees\Module\RedirectLegacyUrlsModule;
 use Fisharebest\Webtrees\Module\LifespansChartModule;
 use Fisharebest\Webtrees\Module\ListsMenuModule;
 use Fisharebest\Webtrees\Module\LoggedInUsersModule;
@@ -400,6 +401,7 @@ class ModuleService
         'language-yi'             => LanguageYiddish::class,
         'language-zh-Hans'        => LanguageChineseSimplified::class,
         'language-zh-Hant'        => LanguageChineseTraditional::class,
+        'legacy-urls'             => RedirectLegacyUrlsModule::class,
         'lifespans_chart'         => LifespansChartModule::class,
         'lightbox'                => AlbumModule::class,
         'lists-menu'              => ListsMenuModule::class,

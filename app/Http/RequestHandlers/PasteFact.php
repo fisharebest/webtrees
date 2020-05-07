@@ -68,7 +68,7 @@ class PasteFact implements RequestHandlerInterface
 
         $fact_id = $params['fact_id'];
         $record  = GedcomRecord::getInstance($xref, $tree);
-        $record = Auth::checkRecordAccess($record, true);
+        $record  = Auth::checkRecordAccess($record, true);
 
         $this->clipboard_service->pasteFact($fact_id, $record);
 

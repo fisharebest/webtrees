@@ -20,10 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -34,7 +35,7 @@ use function redirect;
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
  */
-class RedirectSourcePhp implements RequestHandlerInterface
+class RedirectPlaceListPhp implements RequestHandlerInterface
 {
     /** @var TreeService */
     private $tree_service;
@@ -54,19 +55,28 @@ class RedirectSourcePhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query = $request->getQueryParams();
-        $ged   = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $sid   = $query['sid'] ?? '';
-        $tree  = $this->tree_service->all()->get($ged);
+        $query   = $request->getQueryParams();
+        $ged     = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
+        $parent  = $query['parent'] ?? [];
+        $display = $query['display'] ?? null;
+
+        $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $source = Source::getInstance($sid, $tree);
+            $place_name = implode(Gedcom::PLACE_SEPARATOR, array_reverse($parent));
+            $place      = new Place($place_name, $tree);
 
-            if ($source instanceof Source) {
-                return redirect($source->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
-            }
+            $url = route('module', [
+                'module'   => 'places_list',
+                'action'   => 'List',
+                'action2'  => $display,
+                'place_id' => $place->id(),
+                'tree'     => $tree->name(),
+            ]);
+
+            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
-        throw new SourceNotFoundException();
+        throw new HttpNotFoundException();
     }
 }

@@ -19,18 +19,33 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function file_get_contents;
-use function response;
+use function redirect;
 
 /**
- * Respond to /apple-touch-icon.png.
+ * Redirect URLs created by webtrees 1.x (and PhpGedView).
  */
-class AppleTouchIconPng implements RequestHandlerInterface
+class RedirectSourceListPhp implements RequestHandlerInterface
 {
+    /** @var TreeService */
+    private $tree_service;
+
+    /**
+     * @param TreeService $tree_service
+     */
+    public function __construct(TreeService $tree_service)
+    {
+        $this->tree_service = $tree_service;
+    }
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -38,10 +53,21 @@ class AppleTouchIconPng implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $content = file_get_contents(__DIR__ . '/../../../apple-touch-icon.png');
+        $query = $request->getQueryParams();
+        $ged   = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
 
-        return response($content)
-            ->withHeader('Content-Type', 'image/png')
-            ->withHeader('Cache-Control', 'max-age=2592000');
+        $tree = $this->tree_service->all()->get($ged);
+
+        if ($tree instanceof Tree) {
+            $url = route('module', [
+                'module' => 'source_list',
+                'action' => 'List',
+                'tree'   => $tree->name(),
+            ]);
+
+            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+        }
+
+        throw new HttpNotFoundException();
     }
 }

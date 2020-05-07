@@ -117,13 +117,13 @@ class VerifyEmail implements RequestHandlerInterface
 
             return $this->viewResponse('verify-success-page', [
                 'title' => $title,
-                'tree' => $tree,
+                'tree'  => $tree,
             ]);
         }
 
         return $this->viewResponse('verify-failure-page', [
             'title' => $title,
-            'tree' => $tree,
+            'tree'  => $tree,
         ]);
     }
 }

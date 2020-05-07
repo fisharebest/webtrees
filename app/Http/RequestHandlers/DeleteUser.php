@@ -39,7 +39,7 @@ class DeleteUser implements RequestHandlerInterface
     private $user_service;
 
     /**
-     * @param UserService   $user_service
+     * @param UserService $user_service
      */
     public function __construct(UserService $user_service)
     {

@@ -138,7 +138,7 @@ class ReportSetupPage implements RequestHandlerInterface
                     break;
 
                 case 'DATE':
-                    $attributes += [
+                    $attributes       += [
                         'type'  => 'text',
                         'value' => $input['default'],
                         'dir'   => 'ltr',
@@ -151,7 +151,7 @@ class ReportSetupPage implements RequestHandlerInterface
                 default:
                     switch ($input['type']) {
                         case 'text':
-                            $attributes += [
+                            $attributes       += [
                                 'type'  => 'text',
                                 'value' => $input['default'],
                             ];
@@ -159,7 +159,7 @@ class ReportSetupPage implements RequestHandlerInterface
                             break;
 
                         case 'checkbox':
-                            $attributes += [
+                            $attributes       += [
                                 'type'    => 'checkbox',
                                 'checked' => (bool) $input['default'],
                             ];
@@ -189,7 +189,7 @@ class ReportSetupPage implements RequestHandlerInterface
         }
 
         $destination = $user->getPreference('default-report-destination', 'view');
-        $format = $user->getPreference('default-report-format', 'PDF');
+        $format      = $user->getPreference('default-report-format', 'PDF');
 
         return $this->viewResponse('report-setup-page', [
             'description' => $description,

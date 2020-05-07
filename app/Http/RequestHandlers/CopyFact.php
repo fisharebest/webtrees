@@ -68,7 +68,7 @@ class CopyFact implements RequestHandlerInterface
 
         $fact_id = $request->getAttribute('fact_id');
         $record  = GedcomRecord::getInstance($xref, $tree);
-        $record = Auth::checkRecordAccess($record, true);
+        $record  = Auth::checkRecordAccess($record, true);
 
         foreach ($record->facts() as $fact) {
             if ($fact->id() === $fact_id) {

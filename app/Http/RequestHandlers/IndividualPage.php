@@ -126,7 +126,7 @@ class IndividualPage implements RequestHandlerInterface
         } else {
             // If living, show age today
             $today = strtoupper(date('d M Y'));
-            $age = (new Age($bdate, new Date($today)))->ageAtEvent(true);
+            $age   = (new Age($bdate, new Date($today)))->ageAtEvent(true);
         }
 
         // What images are linked to this individual

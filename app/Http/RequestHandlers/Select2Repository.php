@@ -41,7 +41,8 @@ class Select2Repository extends AbstractSelect2Handler
      */
     public function __construct(
         SearchService $search_service
-    ) {
+    )
+    {
         $this->search_service = $search_service;
     }
 

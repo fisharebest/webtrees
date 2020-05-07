@@ -20,21 +20,22 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function basename;
+use function dirname;
 use function redirect;
 
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
  */
-class RedirectSourcePhp implements RequestHandlerInterface
+class RedirectReportEnginePhp implements RequestHandlerInterface
 {
     /** @var TreeService */
     private $tree_service;
@@ -54,19 +55,21 @@ class RedirectSourcePhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query = $request->getQueryParams();
-        $ged   = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $sid   = $query['sid'] ?? '';
-        $tree  = $this->tree_service->all()->get($ged);
+        $query  = $request->getQueryParams();
+        $ged    = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
+        $action = $query['action'] ?? '';
 
-        if ($tree instanceof Tree) {
-            $source = Source::getInstance($sid, $tree);
+        $tree = $this->tree_service->all()->get($ged);
 
-            if ($source instanceof Source) {
-                return redirect($source->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
-            }
+        if ($tree instanceof Tree && $action === 'run') {
+            $query['report'] = basename(dirname($query['report'] ?? ''));
+            $query['tree']   = $tree->name();
+
+            $url = route(ReportGenerate::class, $query);
+
+            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
-        throw new SourceNotFoundException();
+        throw new HttpNotFoundException();
     }
 }

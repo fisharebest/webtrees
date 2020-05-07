@@ -20,10 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -34,7 +33,7 @@ use function redirect;
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
  */
-class RedirectSourcePhp implements RequestHandlerInterface
+class RedirectFamListPhp implements RequestHandlerInterface
 {
     /** @var TreeService */
     private $tree_service;
@@ -54,19 +53,35 @@ class RedirectSourcePhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query = $request->getQueryParams();
-        $ged   = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $sid   = $query['sid'] ?? '';
-        $tree  = $this->tree_service->all()->get($ged);
+        $query               = $request->getQueryParams();
+        $ged                 = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
+        $alpha               = $query['alpha'] ?? null;
+        $falpha              = $query['falpha'] ?? null;
+        $show                = $query['show'] ?? null;
+        $show_all            = $query['show_all'] ?? null;
+        $show_all_firstnames = $query['show_all_firstnames'] ?? null;
+        $show_marnm          = $query['show_marnm'] ?? null;
+        $surname             = $query['surname'] ?? null;
+
+        $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $source = Source::getInstance($sid, $tree);
+            $url = route('module', [
+                'module'              => 'family_list',
+                'action'              => 'List',
+                'alpha'               => $alpha,
+                'falpha'              => $falpha,
+                'show'                => $show,
+                'show_all'            => $show_all,
+                'show_all_firstnames' => $show_all_firstnames,
+                'show_marnm'          => $show_marnm,
+                'surname'             => $surname,
+                'tree'                => $tree->name(),
+            ]);
 
-            if ($source instanceof Source) {
-                return redirect($source->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
-            }
+            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
-        throw new SourceNotFoundException();
+        throw new HttpNotFoundException();
     }
 }

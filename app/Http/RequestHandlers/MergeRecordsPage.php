@@ -58,8 +58,8 @@ class MergeRecordsPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref1  = $request->getQueryParams()['xref1'] ?? '';
-        $xref2  = $request->getQueryParams()['xref2'] ?? '';
+        $xref1 = $request->getQueryParams()['xref1'] ?? '';
+        $xref2 = $request->getQueryParams()['xref2'] ?? '';
 
         $record1 = GedcomRecord::getInstance($xref1, $tree);
         $record2 = GedcomRecord::getInstance($xref2, $tree);

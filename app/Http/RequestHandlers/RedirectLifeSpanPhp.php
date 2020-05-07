@@ -20,10 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Module\LifespansChartModule;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -34,16 +35,21 @@ use function redirect;
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
  */
-class RedirectSourcePhp implements RequestHandlerInterface
+class RedirectLifeSpanPhp implements RequestHandlerInterface
 {
     /** @var TreeService */
     private $tree_service;
 
+    /** @var LifespansChartModule */
+    private $chart;
+
     /**
-     * @param TreeService $tree_service
+     * @param LifespansChartModule $chart
+     * @param TreeService          $tree_service
      */
-    public function __construct(TreeService $tree_service)
+    public function __construct(LifespansChartModule $chart, TreeService $tree_service)
     {
+        $this->chart        = $chart;
         $this->tree_service = $tree_service;
     }
 
@@ -56,17 +62,18 @@ class RedirectSourcePhp implements RequestHandlerInterface
     {
         $query = $request->getQueryParams();
         $ged   = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $sid   = $query['sid'] ?? '';
-        $tree  = $this->tree_service->all()->get($ged);
+
+        $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $source = Source::getInstance($sid, $tree);
+            $individual = $tree->significantIndividual(Auth::user());
 
-            if ($source instanceof Source) {
-                return redirect($source->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
-            }
+            // This chart stored a list of individuals in the session, which we won't have.
+            $url = $this->chart->chartUrl($individual, []);
+
+            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
-        throw new SourceNotFoundException();
+        throw new HttpNotFoundException();
     }
 }

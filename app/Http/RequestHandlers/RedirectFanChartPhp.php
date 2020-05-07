@@ -20,10 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\FanChartModule;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -34,16 +36,21 @@ use function redirect;
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
  */
-class RedirectSourcePhp implements RequestHandlerInterface
+class RedirectFanChartPhp implements RequestHandlerInterface
 {
     /** @var TreeService */
     private $tree_service;
 
+    /** @var FanChartModule */
+    private $chart;
+
     /**
-     * @param TreeService $tree_service
+     * @param FanChartModule $chart
+     * @param TreeService    $tree_service
      */
-    public function __construct(TreeService $tree_service)
+    public function __construct(FanChartModule $chart, TreeService $tree_service)
     {
+        $this->chart        = $chart;
         $this->tree_service = $tree_service;
     }
 
@@ -54,19 +61,27 @@ class RedirectSourcePhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query = $request->getQueryParams();
-        $ged   = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $sid   = $query['sid'] ?? '';
-        $tree  = $this->tree_service->all()->get($ged);
+        $query       = $request->getQueryParams();
+        $ged         = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
+        $root_id     = $query['root_id'] ?? '';
+        $generations = $query['generations'] ?? '4';
+        $style       = $query['style'] ?? '4';
+        $width       = $query['width'] ?? '100';
+
+        $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $source = Source::getInstance($sid, $tree);
+            $individual = Individual::getInstance($root_id, $tree) ?? $tree->significantIndividual(Auth::user());
 
-            if ($source instanceof Source) {
-                return redirect($source->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
-            }
+            $url = $this->chart->chartUrl($individual, [
+                'generations' => $generations,
+                'style'       => $style,
+                'width'       => $width,
+            ]);
+
+            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
-        throw new SourceNotFoundException();
+        throw new HttpNotFoundException();
     }
 }

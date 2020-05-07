@@ -59,7 +59,7 @@ class PasswordResetAction implements RequestHandlerInterface, StatusCodeInterfac
         $tree  = $request->getAttribute('tree');
         $token = $request->getAttribute('token');
 
-        $user  = $this->user_service->findByToken($token);
+        $user = $this->user_service->findByToken($token);
 
         if ($user instanceof User) {
             $params = (array) $request->getParsedBody();

@@ -69,7 +69,7 @@ class PendingChangesLogPage implements RequestHandlerInterface
 
         $users = ['' => ''];
         foreach ($this->user_service->all() as $user) {
-            $user_name             = $user->userName();
+            $user_name         = $user->userName();
             $users[$user_name] = $user_name;
         }
 
@@ -92,20 +92,20 @@ class PendingChangesLogPage implements RequestHandlerInterface
         $username = $request->getQueryParams()['username'] ?? '';
 
         return $this->viewResponse('admin/changes-log', [
-            'earliest'  => $earliest,
-            'from'      => $from,
-            'latest'    => $latest,
-            'newged'    => $newged,
-            'oldged'    => $oldged,
-            'statuses'  => $this->changeStatuses(),
-            'title'     => I18N::translate('Changes log'),
-            'to'        => $to,
-            'tree'      => $tree,
-            'trees'     => $trees,
-            'type'      => $type,
-            'username'  => $username,
-            'users'     => $users,
-            'xref'      => $xref,
+            'earliest' => $earliest,
+            'from'     => $from,
+            'latest'   => $latest,
+            'newged'   => $newged,
+            'oldged'   => $oldged,
+            'statuses' => $this->changeStatuses(),
+            'title'    => I18N::translate('Changes log'),
+            'to'       => $to,
+            'tree'     => $tree,
+            'trees'    => $trees,
+            'type'     => $type,
+            'username' => $username,
+            'users'    => $users,
+            'xref'     => $xref,
         ]);
     }
 

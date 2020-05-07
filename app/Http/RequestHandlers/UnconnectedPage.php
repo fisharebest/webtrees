@@ -49,7 +49,7 @@ class UnconnectedPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $user       = $request->getAttribute('user');
+        $user = $request->getAttribute('user');
         assert($user instanceof User);
 
         $aliases    = (bool) ($request->getQueryParams()['aliases'] ?? false);
