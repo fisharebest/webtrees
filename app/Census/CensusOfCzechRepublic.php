@@ -57,6 +57,6 @@ class CensusOfCzechRepublic extends Census implements CensusPlaceInterface
      */
     public function censusLanguage(): string
     {
-        return 'cz';
+        return 'cs';
     }
 }
