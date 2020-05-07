@@ -1356,17 +1356,17 @@
     },
     {
         "name": "league/commonmark",
-        "version": "1.4.2",
-        "version_normalized": "1.4.2.0",
+        "version": "1.4.3",
+        "version_normalized": "1.4.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/commonmark.git",
-            "reference": "9e780d972185e4f737a03bade0fd34a9e67bbf31"
+            "reference": "412639f7cfbc0b31ad2455b2fe965095f66ae505"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/9e780d972185e4f737a03bade0fd34a9e67bbf31",
-            "reference": "9e780d972185e4f737a03bade0fd34a9e67bbf31",
+            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/412639f7cfbc0b31ad2455b2fe965095f66ae505",
+            "reference": "412639f7cfbc0b31ad2455b2fe965095f66ae505",
             "shasum": ""
         },
         "require": {
@@ -1389,7 +1389,7 @@
             "scrutinizer/ocular": "^1.5",
             "symfony/finder": "^4.2"
         },
-        "time": "2020-04-24T13:39:56+00:00",
+        "time": "2020-05-04T22:15:21+00:00",
         "bin": [
             "bin/commonmark"
         ],
