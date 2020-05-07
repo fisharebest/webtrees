@@ -213,7 +213,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					</if>
 					<if condition="@BARM:PLAC==''">
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<if condition="$printname=='on'">
+						<if condition="$printname=='1'">
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
@@ -226,7 +226,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						<SetVar name="nrevent" value="$nrevent + 1" />
 						<if condition="@BARM:SOUR==''">
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<if condition="$printname=='on'">
+							<if condition="$printname=='1'">
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
