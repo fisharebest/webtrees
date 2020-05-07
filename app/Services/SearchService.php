@@ -599,13 +599,25 @@ class SearchService
                     case 'SURN':
                         switch ($modifiers[$field_name]) {
                             case 'EXACT':
-                                $query->where('individual_name.n_surn', '=', $field_value);
+                                $query->where(function (Builder $query) use ($field_value): void {
+                                    $query
+                                        ->where('individual_name.n_surn', '=', $field_value)
+                                        ->orWhere('individual_name.n_surname', '=', $field_value);
+                                });
                                 break;
                             case 'BEGINS':
-                                $query->where('individual_name.n_surn', 'LIKE', $field_value . '%');
+                                $query->where(function (Builder $query) use ($field_value): void {
+                                    $query
+                                        ->where('individual_name.n_surn', 'LIKE', $field_value . '%')
+                                        ->orWhere('individual_name.n_surn', 'LIKE', $field_value . '%');
+                                });
                                 break;
                             case 'CONTAINS':
-                                $query->where('individual_name.n_surn', 'LIKE', '%' . $field_value . '%');
+                                $query->where(function (Builder $query) use ($field_value): void {
+                                    $query
+                                        ->where('individual_name.n_surn', 'LIKE', '%' . $field_value . '%')
+                                        ->orWhere('individual_name.n_surn', 'LIKE', '%' . $field_value . '%');
+                                });
                                 break;
                             case 'SDX_STD':
                                 $sdx = Soundex::russell($field_value);
@@ -613,7 +625,11 @@ class SearchService
                                     $this->wherePhonetic($query, 'individual_name.n_soundex_surn_std', $sdx);
                                 } else {
                                     // No phonetic content? Use a substring match
-                                    $query->where('individual_name.n_surn', 'LIKE', '%' . $field_value . '%');
+                                    $query->where(function (Builder $query) use ($field_value): void {
+                                        $query
+                                            ->where('individual_name.n_surn', 'LIKE', '%' . $field_value . '%')
+                                            ->orWhere('individual_name.n_surn', 'LIKE', '%' . $field_value . '%');
+                                    });
                                 }
                                 break;
                             case 'SDX': // SDX uses DM by default.
