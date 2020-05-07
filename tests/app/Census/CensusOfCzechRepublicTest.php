@@ -51,7 +51,7 @@ class CensusOfCzechRepublicTest extends TestCase
     {
         $census = new CensusOfCzechRepublic();
 
-        $this->assertSame('cz', $census->censusLanguage());
+        $this->assertSame('cs', $census->censusLanguage());
     }
 
     /**
