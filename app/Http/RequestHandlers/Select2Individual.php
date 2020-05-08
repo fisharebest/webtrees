@@ -41,8 +41,7 @@ class Select2Individual extends AbstractSelect2Handler
      */
     public function __construct(
         SearchService $search_service
-    )
-    {
+    ) {
         $this->search_service = $search_service;
     }
 
