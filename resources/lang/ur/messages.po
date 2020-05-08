@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-04 18:25+0100\nPO-Revision-Date: 2020-05-08 11:40+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Urdu <https://translate.webtrees.net/projects/webtrees/webtrees/ur/>\nLanguage: ur\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-04 18:25+0100\nPO-Revision-Date: 2020-05-08 22:12+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Urdu <https://translate.webtrees.net/projects/webtrees/webtrees/ur/>\nLanguage: ur\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: app/Age.php:98 app/Functions/FunctionsDate.php:66
 #: app/Functions/FunctionsPrint.php:250
@@ -2631,87 +2631,87 @@ msgstr "دیور"
 #: app/Functions/Functions.php:802
 msgctxt "husband’s child"
 msgid "step-child"
-msgstr ""
+msgstr "سوتیلے بچے"
 
 #: app/Functions/Functions.php:804
 msgctxt "husband’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "سوتیلی بیٹی"
 
 #: app/Functions/Functions.php:806
 msgctxt "husband’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "سسر"
 
 #: app/Functions/Functions.php:808
 msgctxt "husband’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "ساس"
 
 #: app/Functions/Functions.php:810
 msgctxt "husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "دیور/نند"
 
 #: app/Functions/Functions.php:812
 msgctxt "husband’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "نند"
 
 #: app/Functions/Functions.php:814
 msgctxt "husband’s son"
 msgid "step-son"
-msgstr ""
+msgstr "سوتیلے بیٹے"
 
 #: app/Functions/Functions.php:816
 msgctxt "mother’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "ماموں"
 
 #: app/Functions/Functions.php:818
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "نصف-بھائی/بہن"
 
 #: app/Functions/Functions.php:820
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "نصف-بہن"
 
 #: app/Functions/Functions.php:822
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr ""
+msgstr "نانا"
 
 #: app/Functions/Functions.php:824
 msgctxt "mother’s husband"
 msgid "step-father"
-msgstr ""
+msgstr "سوتیل والد"
 
 #: app/Functions/Functions.php:826
 msgctxt "mother’s mother"
 msgid "maternal grandmother"
-msgstr ""
+msgstr "نانی"
 
 #: app/Functions/Functions.php:828
 msgctxt "mother’s parent"
 msgid "maternal grandparent"
-msgstr ""
+msgstr "نانا/نانی"
 
 #: app/Functions/Functions.php:830
 msgctxt "mother’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "ماموں/خالہ"
 
 #: app/Functions/Functions.php:832
 msgctxt "mother’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "خالہ"
 
 #: app/Functions/Functions.php:834
 msgctxt "mother’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "نصف-بھائی"
 
 #: app/Functions/Functions.php:836
 msgctxt "parent’s brother"
