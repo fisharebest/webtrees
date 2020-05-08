@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-04 18:25+0100\nPO-Revision-Date: 2020-05-08 11:40+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-04 18:25+0100\nPO-Revision-Date: 2020-05-08 22:12+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -7478,7 +7478,7 @@ msgstr "सहयोगियों को शामिल करें"
 #: app/Http/Controllers/ListController.php:290
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "विवाहित नाम %s वाले व्यक्तियों को शामिल करें"
+msgstr "विवाहित नाम के रूप में “%s” विवाहित नाम वाले व्यक्तियों को शामिल करें"
 
 #: resources/views/admin/trees-export.phtml:58
 msgid "Include media (automatically zips files)"
