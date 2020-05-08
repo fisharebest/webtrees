@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-08 21:40+0000\n"
+"PO-Revision-Date: 2020-05-08 22:12+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Urdu <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ur/>\n"
@@ -16368,7 +16368,7 @@ msgstr ""
 #: app/Functions/Functions.php:886
 msgctxt "mother’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "خالہ"
 
 #: app/Functions/Functions.php:1206
 msgctxt "parent’s brother’s wife"
@@ -16388,7 +16388,7 @@ msgstr "چچا/پھوپھی"
 #: app/Functions/Functions.php:884
 msgctxt "mother’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "ماموں/خالہ"
 
 #: app/Functions/Functions.php:902
 msgctxt "parent’s sibling"
@@ -16494,7 +16494,7 @@ msgstr ""
 #: app/Functions/Functions.php:864
 msgctxt "husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "دیور/نند"
 
 #: app/Functions/Functions.php:916
 msgctxt "sibling’s spouse"
@@ -16824,7 +16824,7 @@ msgstr "والد"
 #: app/Functions/Functions.php:860
 msgctxt "husband’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "سسر"
 
 #: app/Functions/Functions.php:940
 msgctxt "spouse’s father"
@@ -18671,7 +18671,7 @@ msgstr "نصف-بھائی"
 #: app/Functions/Functions.php:888
 msgctxt "mother’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "نصف-بھائی"
 
 #: app/Functions/Functions.php:906
 msgctxt "parent’s son"
@@ -18686,7 +18686,7 @@ msgstr "نصف-بھائی/بہن"
 #: app/Functions/Functions.php:872
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "نصف-بھائی/بہن"
 
 #: app/Functions/Functions.php:892
 msgctxt "parent’s child"
@@ -18701,7 +18701,7 @@ msgstr "نصف-بہن"
 #: app/Functions/Functions.php:874
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "نصف-بہن"
 
 #: app/Functions/Functions.php:894
 msgctxt "parent’s daughter"
@@ -18880,17 +18880,17 @@ msgstr ""
 #: app/Functions/Functions.php:876
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr ""
+msgstr "نانا"
 
 #: app/Functions/Functions.php:880
 msgctxt "mother’s mother"
 msgid "maternal grandmother"
-msgstr ""
+msgstr "نانی"
 
 #: app/Functions/Functions.php:882
 msgctxt "mother’s parent"
 msgid "maternal grandparent"
-msgstr ""
+msgstr "نانا/نانی"
 
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition.php:78
@@ -18950,7 +18950,7 @@ msgstr "والدہ"
 #: app/Functions/Functions.php:862
 msgctxt "husband’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "ساس"
 
 #: app/Functions/Functions.php:942
 msgctxt "spouse’s mother"
@@ -19560,7 +19560,7 @@ msgstr ""
 #: app/Functions/Functions.php:866
 msgctxt "husband’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "نند"
 
 #: app/Functions/Functions.php:1316
 msgctxt "sister’s husband’s sister"
@@ -19728,7 +19728,7 @@ msgstr ""
 #: app/Functions/Functions.php:856
 msgctxt "husband’s child"
 msgid "step-child"
-msgstr ""
+msgstr "سوتیلے بچے"
 
 #: app/Functions/Functions.php:936
 msgctxt "spouse’s child"
@@ -19743,7 +19743,7 @@ msgstr ""
 #: app/Functions/Functions.php:858
 msgctxt "husband’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "سوتیلی بیٹی"
 
 #: app/Functions/Functions.php:938
 msgctxt "spouse’s daughter"
@@ -19758,7 +19758,7 @@ msgstr ""
 #: app/Functions/Functions.php:878 app/Module/FamilyNavigatorModule.php:224
 msgctxt "mother’s husband"
 msgid "step-father"
-msgstr ""
+msgstr "سوتیل والد"
 
 #: app/Functions/Functions.php:852 app/Module/FamilyNavigatorModule.php:224
 msgctxt "father’s wife"
@@ -19803,7 +19803,7 @@ msgstr ""
 #: app/Functions/Functions.php:868
 msgctxt "husband’s son"
 msgid "step-son"
-msgstr ""
+msgstr "سوتیلے بیٹے"
 
 #: app/Functions/Functions.php:946
 msgctxt "spouse’s son"
@@ -19967,7 +19967,7 @@ msgstr ""
 #: app/Functions/Functions.php:870
 msgctxt "mother’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "ماموں"
 
 #: app/Functions/Functions.php:1202
 msgctxt "mother’s sister’s husband"
