@@ -12,7 +12,7 @@ use Fisharebest\Webtrees\I18N;
     </div>
     <div class="row">
         <?php foreach ($columns as $column) : ?>
-            <ul class="col list_value_wrap mr-1">
+            <ul class="col list_value_wrap mr-1 list-unstyled">
                 <?php foreach ($column as $item) : ?>
                     <li>
                         <a href="<?= e($item->url()) ?>"><?= $item->placeName() ?></a>

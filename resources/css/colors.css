@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -1113,38 +1113,6 @@ div.faq_body {
     white-space: nowrap;
 }
 
-/* Extra info */
-#sb_content_extra_info {
-    font-size: 80%;
-    font-weight: bold;
-    margin-top: 1px;
-    overflow: hidden;
-    padding: 5px;
-}
-
-#sb_content_extra_info .editfacts {
-    float: right;
-    margin-top: -30px;
-}
-
-#sb_content_extra_info a {
-    display: block;
-}
-
-#sb_content_extra_info span {
-    font-weight: normal;
-}
-
-#sb_content_extra_info span a {
-    display: inline;
-}
-
-#sb_content_extra_info #hitcounter {
-    border-top: 1px solid #b2c7d7;
-    font-weight: bold;
-    padding-top: 5px;
-}
-
 /* Stories module */
 .story_title {
     padding-top: 12px;
@@ -1498,20 +1466,6 @@ a > .wt-icon-arrow-up:hover {
 
 .select2-selection--single .NAME {
     padding-left: 4px;
-}
-
-/*
- * Place hierarchy
- *
- * wt-place-hierarchy-page
- */
-
-#place-hierarchy ul {
-    list-style-type: none;
-}
-
-.d-table-cell {
-    padding-right: 5px;
 }
 
 /* Some menus (e.g. languages) can be longer than a page */

@@ -156,16 +156,6 @@ class GedcomRepository implements GedcomRepositoryInterface
      */
     public function gedcomUpdated(): string
     {
-        $row = DB::table('dates')
-            ->select(['d_year', 'd_month', 'd_day'])
-            ->where('d_julianday1', '=', function (Builder $query): void {
-                $query->selectRaw('MAX(d_julianday1)')
-                    ->from('dates')
-                    ->where('d_file', '=', $this->tree->id())
-                    ->where('d_fact', '=', 'CHAN');
-            })
-            ->first();
-
         $row = DB::table('change')
             ->where('gedcom_id', '=', $this->tree->id())
             ->where('status', '=', 'accepted')
