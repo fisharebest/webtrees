@@ -4554,7 +4554,7 @@ msgstr "दिनांक सीमाओं का उपयोग यह स�
 
 #: resources/views/admin/users.phtml:25
 msgid "Date registered"
-msgstr "तारीख दर्ज की गई"
+msgstr "पंजीकरण की तिथि"
 
 #: app/Module/UserMessagesModule.php:181
 msgid "Date sent"
