@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-08 22:12+0000\n"
+"PO-Revision-Date: 2020-05-10 11:20+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Urdu <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ur/>\n"
@@ -440,8 +440,8 @@ msgstr ""
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ہفتہ"
+msgstr[1] "%s ہفتے"
 
 #: app/Functions/FunctionsDate.php:48 app/I18N.php:300
 #: app/Module/RelativesTabModule.php:83
@@ -455,14 +455,14 @@ msgstr[1] "%s سال"
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s سال پہلے"
+msgstr[1] "%s سال پہلے"
 
 #: app/Functions/FunctionsPrintLists.php:1805 app/Module/YahrzeitModule.php:129
 #: calendar.php:601
 #, php-format
 msgid "%s year anniversary"
-msgstr ""
+msgstr "%s سالہ سالگرہ"
 
 #: app/Functions/Functions.php:585
 #, php-format
@@ -498,43 +498,43 @@ msgstr "%s&nbsp;عیسوی"
 #: statisticsplot.php:788
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "+%s"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:235
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s، کے آباؤ اجداد اور ان کے کنبے"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:184
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s، کے والدین اور بھائی بہن"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:200
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s، کے شریک حیات اور بچے"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:254
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s، کے شریک حیات اور آل اولاد"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:238
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s، کے آباؤ اجداد اور ان کے کنبے"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s، کے والدین اور بھائی بہن"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:203
