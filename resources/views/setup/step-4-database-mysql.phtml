@@ -13,7 +13,7 @@ use Fisharebest\Webtrees\I18N;
     <input name="wtemail" type="hidden" value="<?= e($wtemail) ?>">
 
     <h2>
-        <?= I18N::translate('Database connection') ?> – MySQL
+        <?= I18N::translate('Database connection') ?> – MySQL / MariaDB / Percona
     </h2>
 
     <?php foreach ($errors as $error) : ?>
@@ -36,9 +36,11 @@ use Fisharebest\Webtrees\I18N;
                 <?= I18N::translate('Most sites are configured to use localhost. This means that your database runs on the same computer as your web server.') ?>
             </p>
 
+            <!--
             <p class="small text-muted">
                 <?= I18N::translate('If you connect to the database using a UNIX socket, enter the path here and leave the port number empty.') ?>
             </p>
+            -->
         </div>
     </div>
 
