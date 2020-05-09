@@ -227,6 +227,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $cart = Session::get('cart', []);
 
         $xrefs = array_keys($cart[$tree->name()] ?? []);
+        $xrefs = array_map('strval', $xrefs); // PHP converts numeric keys to integers.
 
         // Create a new/empty .ZIP file
         $temp_zip_file  = stream_get_meta_data(tmpfile())['uri'];
@@ -1016,6 +1017,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $cart = Session::get('cart', []);
 
         $xrefs = array_keys($cart[$tree->name()] ?? []);
+        $xrefs = array_map('strval', $xrefs); // PHP converts numeric keys to integers.
 
         // Fetch all the records in the cart.
         $records = array_map(static function (string $xref) use ($tree): ?GedcomRecord {
