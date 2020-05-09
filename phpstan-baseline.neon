@@ -2446,11 +2446,6 @@ parameters:
 			path: app/Session.php
 
 		-
-			message: "#^Parameter \\#1 \\$lifetime\\|options of function session_set_cookie_params expects array\\<string, bool\\|int\\|string\\|null\\>\\|int, array\\<string, bool\\|int\\|string\\|null\\> given\\.$#"
-			count: 1
-			path: app/Session.php
-
-		-
 			message: "#^Parameter \\#3 \\$domain of function session_set_cookie_params expects string\\|null, string\\|false\\|null given\\.$#"
 			count: 1
 			path: app/Session.php

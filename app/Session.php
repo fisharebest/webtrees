@@ -62,8 +62,8 @@ class Session
 
         $url    = $request->getAttribute('base_url');
         $secure = parse_url($url, PHP_URL_SCHEME) === 'https';
-        $domain = parse_url($url, PHP_URL_HOST);
-        $path   = parse_url($url, PHP_URL_PATH) ?? '';
+        $domain = (string) parse_url($url, PHP_URL_HOST);
+        $path   = (string) parse_url($url, PHP_URL_PATH);
 
         // Paths containing UTF-8 characters need special handling.
         $path = implode('/', array_map('rawurlencode', explode('/', $path)));
