@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -143,7 +144,7 @@ class GedcomRepository implements GedcomRepositoryInterface
             $fact = $head->facts(['DATE'])->first();
 
             if ($fact instanceof Fact) {
-                return (new Date($fact->value()))->display();
+                return Carbon::make($fact->value())->local()->isoFormat('LL');
             }
         }
 
@@ -165,12 +166,18 @@ class GedcomRepository implements GedcomRepositoryInterface
             })
             ->first();
 
-        if ($row) {
-            $date = new Date("{$row->d_day} {$row->d_month} {$row->d_year}");
-            return $date->display();
+        $row = DB::table('change')
+            ->where('gedcom_id', '=', $this->tree->id())
+            ->where('status', '=', 'accepted')
+            ->orderBy('change_id', 'DESC')
+            ->select(['change_time'])
+            ->first();
+
+        if ($row === null) {
+            return $this->gedcomDate();
         }
 
-        return $this->gedcomDate();
+        return Carbon::make($row->change_time)->local()->isoFormat('LL');
     }
 
     /**
