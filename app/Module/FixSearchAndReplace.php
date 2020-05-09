@@ -399,17 +399,17 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
     {
         $search = $params['search'];
         $method = $params['method'];
-        $like   = addcslashes($search, '_%\\');
+        $like   = '%' . addcslashes($search, '\\%_') . '%';
 
         switch ($method) {
             case 'exact':
             case 'words':
-                $query->where($column, 'LIKE', '%' . $like . '%');
+                $query->where($column, 'LIKE', $like);
                 break;
 
             case 'wildcards':
                 $like = strtr($like, ['?' => '_', '*' => '%']);
-                $query->where($column, 'LIKE', '%' . $like . '%');
+                $query->where($column, 'LIKE', $like);
                 break;
 
             case 'regex':

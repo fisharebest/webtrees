@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -1944,7 +1944,7 @@ class ReportParserGenerate extends ReportParserBase
                             // Search the DB only if there is any name supplied
                             $names = explode(' ', $match[1]);
                             foreach ($names as $n => $name) {
-                                $query->whereContains($attr . '.n_full', $name);
+                                $query->where($attr . '.n_full', 'LIKE', '%' . addcslashes($name, '\\%_') . '%');
                             }
 
                             // This filter has been fully processed
@@ -1970,7 +1970,7 @@ class ReportParserGenerate extends ReportParserBase
                                         ->on($attr . 'b.p_file', '=', $attr . 'a.pl_file')
                                         ->on($attr . 'b.p_id', '=', $attr . 'a.pl_p_id');
                                 })
-                                ->whereContains($attr . 'b.p_place', $match[1]);
+                                ->where($attr . 'b.p_place', '%' . addcslashes($match[1], '\\%_') . '%');
                         } elseif (preg_match('/^(\w*):(\w+) CONTAINS (.+)$/', $value, $match)) {
                             // Don't unset this filter. This is just initial filtering for performance
                             $match[3] = strtr($match[3], ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);
@@ -2044,7 +2044,7 @@ class ReportParserGenerate extends ReportParserBase
                                 if ($match[1] != '') {
                                     $names = explode(' ', $match[1]);
                                     foreach ($names as $n => $name) {
-                                        $query->whereContains($attr . '.n_full', $name);
+                                        $query->where($attr . '.n_full', 'LIKE', '%' . addcslashes($name, '\\%_') . '%');
                                     }
                                 }
                             }
@@ -2064,7 +2064,7 @@ class ReportParserGenerate extends ReportParserBase
                                         ->on($attr . 'b.p_file', '=', $attr . 'a.pl_file')
                                         ->on($attr . 'b.p_id', '=', $attr . 'a.pl_p_id');
                                 })
-                                ->whereContains($attr . 'b.p_place', $match[1]);
+                                ->where($attr . 'b.p_place', 'LIKE', '%' . addcslashes($match[1], '\\%_') . '%');
                         } elseif (preg_match('/^(\w*):(\w+) CONTAINS (.+)$/', $value, $match)) {
                             // Don't unset this filter. This is just initial filtering for performance
                             $match[3] = strtr($match[3], ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);

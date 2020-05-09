@@ -31,6 +31,11 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use RuntimeException;
 
+use function addcslashes;
+use function trigger_error;
+
+use const E_USER_DEPRECATED;
+
 /**
  * Middleware to connect to the database.
  */
@@ -55,6 +60,15 @@ class UseDatabase implements MiddlewareInterface
 
         $capsule = new DB();
 
+        // Newer versions of webtrees support utf8mb4.  Older ones only support 3-byte utf8
+        if ($driver === 'mysql' && $request->getAttribute('mysql_utf8mb4') === '1') {
+            $charset   = 'utf8mb4';
+            $collation = 'utf8mb4_unicode_ci';
+        } else {
+            $charset   = 'utf8';
+            $collation = 'utf8_unicode_ci';
+        }
+
         $capsule->addConnection([
             'driver'                  => $driver,
             'host'                    => $request->getAttribute('dbhost'),
@@ -69,8 +83,8 @@ class UseDatabase implements MiddlewareInterface
                 PDO::ATTR_STRINGIFY_FETCHES => true,
             ],
             // For MySQL
-            'charset'                 => 'utf8',
-            'collation'               => 'utf8_unicode_ci',
+            'charset'                 => $charset,
+            'collation'               => $collation,
             'timezone'                => '+00:00',
             'engine'                  => 'InnoDB',
             'modes'                   => [
@@ -89,9 +103,9 @@ class UseDatabase implements MiddlewareInterface
             // Assertion helps static analysis tools understand where we will be using this closure.
             assert($this instanceof Builder, new LogicException());
 
-            $search = strtr($search, ['\\' => '\\\\', '%' => '\\%', '_' => '\\_', ' ' => '%']);
+            trigger_error('Builder::whereContains() is deprecated. Use LIKE.', E_USER_DEPRECATED);
 
-            return $this->where($column, 'LIKE', '%' . $search . '%', $boolean);
+            return $this->where($column, 'LIKE', '%' . addcslashes($search, '\\%_') . '%', $boolean);
         });
 
         try {

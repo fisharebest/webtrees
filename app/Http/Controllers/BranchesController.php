@@ -198,7 +198,7 @@ class BranchesController extends AbstractBaseController
                     $sdx = Soundex::russell($surname);
                     if ($sdx !== '') {
                         foreach (explode(':', $sdx) as $value) {
-                            $query->whereContains('n_soundex_surn_std', $value, 'or');
+                            $query->orWhere('n_soundex_surn_std', 'LIKE', '%' . $value . '%');
                         }
                     }
                 }
@@ -207,7 +207,7 @@ class BranchesController extends AbstractBaseController
                     $sdx = Soundex::daitchMokotoff($surname);
                     if ($sdx !== '') {
                         foreach (explode(':', $sdx) as $value) {
-                            $query->whereContains('n_soundex_surn_dm', $value, 'or');
+                            $query->orWhere('n_soundex_surn_dm', 'LIKE', '%' . $value . '%');
                         }
                     }
                 }

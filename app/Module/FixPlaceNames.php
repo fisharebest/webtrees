@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -101,7 +101,7 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
             return null;
         }
 
-        $search = '%' . addcslashes($params['search'], '_%\\') . '%';
+        $search = '%' . addcslashes($params['search'], '\\%_') . '%';
 
         return  DB::table('families')
             ->where('f_file', '=', $tree->id())
@@ -124,7 +124,7 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
             return null;
         }
 
-        $search = '%' . addcslashes($params['search'], '_%\\') . '%';
+        $search = '%' . addcslashes($params['search'], '\\%_') . '%';
 
         return  DB::table('individuals')
             ->where('i_file', '=', $tree->id())

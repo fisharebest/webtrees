@@ -33,6 +33,7 @@ use stdClass;
 use Throwable;
 use Transliterator;
 
+use function addcslashes;
 use function app;
 use function array_shift;
 use function assert;
@@ -1218,10 +1219,12 @@ class GedcomRecord
      */
     public function linkingRecords(): array
     {
+        $like = addcslashes($this->xref(), '\\%_');
+
         $union = DB::table('change')
             ->where('gedcom_id', '=', $this->tree()->id())
-            ->whereContains('new_gedcom', '@' . $this->xref() . '@')
-            ->where('new_gedcom', 'NOT LIKE', '0 @' . $this->xref() . '@%')
+            ->where('new_gedcom', 'LIKE', '%@' . $like . '@%')
+            ->where('new_gedcom', 'NOT LIKE', '0 @' . $like . '@%')
             ->whereIn('change_id', function (Builder $query): void {
                 $query->select(new Expression('MAX(change_id)'))
                     ->from('change')

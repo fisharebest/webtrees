@@ -41,6 +41,7 @@ use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function addcslashes;
 use function array_combine;
 use function array_keys;
 use function array_slice;
@@ -639,9 +640,10 @@ class ListController extends AbstractBaseController
         // Apply search terms
         if ($filter !== '') {
             $query->where(static function (Builder $query) use ($filter): void {
+                $like = '%' . addcslashes($filter, '\\%_') . '%';
                 $query
-                    ->whereContains('multimedia_file_refn', $filter)
-                    ->whereContains('descriptive_title', $filter, 'or');
+                    ->where('multimedia_file_refn', 'LIKE', $like)
+                    ->orWhere('descriptive_title', 'LIKE', $like);
             });
         }
 

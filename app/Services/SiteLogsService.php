@@ -24,6 +24,8 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 
+use function addcslashes;
+
 /**
  * Manage site logs
  */
@@ -65,11 +67,11 @@ class SiteLogsService
         }
 
         if ($text !== '') {
-            $query->whereContains('log_message', $text);
+            $query->where('log_message', 'LIKE', '%' . addcslashes($text, '\\%_') . '%');
         }
 
         if ($ip !== '') {
-            $query->whereContains('ip_address', $ip);
+            $query->where('ip_address', 'LIKE', addcslashes($ip, '\\%_') . '%');
         }
 
         if ($username !== '') {

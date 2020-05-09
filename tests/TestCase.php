@@ -121,12 +121,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         ]);
         $capsule->setAsGlobal();
 
-        Builder::macro('whereContains', function ($column, string $search, string $boolean = 'and'): Builder {
-            $search = strtr($search, ['\\' => '\\\\', '%' => '\\%', '_' => '\\_', ' ' => '%']);
-
-            return $this->where($column, 'LIKE', '%' . $search . '%', $boolean);
-        });
-
         // Migrations create logs, which requires an IP address, which requires a request
         self::createRequest();
 

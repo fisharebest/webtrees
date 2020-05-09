@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,6 +26,8 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
+
+use function addcslashes;
 
 /**
  * Manage pending changes
@@ -203,10 +205,10 @@ class PendingChangesService
         }
 
         if ($oldged !== '') {
-            $query->whereContains('old_gedcom', $oldged);
+            $query->where('old_gedcom', 'LIKE', '%' . addcslashes($oldged, '\\%_') . '%');
         }
         if ($newged !== '') {
-            $query->whereContains('new_gedcom', $oldged);
+            $query->where('new_gedcom', 'LIKE', '%' . addcslashes($newged, '\\%_') . '%');
         }
 
         if ($xref !== '') {
@@ -214,7 +216,7 @@ class PendingChangesService
         }
 
         if ($username !== '') {
-            $query->whereContains('user_name', $username);
+            $query->where('user_name', 'LIKE', '%' . addcslashes($username, '\\%_') . '%');
         }
 
         return $query;

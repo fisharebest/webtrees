@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,6 +42,7 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use stdClass;
 
+use function addcslashes;
 use function mb_stripos;
 
 /**
@@ -387,7 +388,7 @@ class SearchService
 
         // Filter each level of the hierarchy.
         foreach (explode(',', $search, 9) as $level => $string) {
-            $query->whereContains('p' . $level . '.p_place', $string);
+            $query->where('p' . $level . '.p_place', 'LIKE', '%' . addcslashes($string, '\\%_') . '%');
         }
 
         $row_mapper = static function (stdClass $row) use ($tree): Place {
@@ -962,7 +963,7 @@ class SearchService
         }
 
         foreach ($search_terms as $search_term) {
-            $query->whereContains(new Expression($field), $search_term);
+            $query->where(new Expression($field), 'LIKE', '%' . addcslashes($search_term, '\\%_') . '%');
         }
     }
 

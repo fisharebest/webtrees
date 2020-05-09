@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,6 +33,13 @@ use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
+
+use function addcslashes;
+use function e;
+use function in_array;
+use function preg_match;
+use function response;
+use function view;
 
 /**
  * Controller for fixing media links.
@@ -151,7 +158,7 @@ class FixLevel0MediaController extends AbstractAdminController
             ->orderBy('individuals.i_file')
             ->orderBy('individuals.i_id')
             ->orderBy('media.m_id')
-            ->whereContains('descriptive_title', $request->getQueryParams()['search']['value'] ?? '')
+            ->where('descriptive_title', 'LIKE', '%' . addcslashes($request->getQueryParams()['search']['value'] ?? '', '\\%_') . '%')
             ->select(['media.m_file', 'media.m_id', 'media.m_gedcom', 'individuals.i_id', 'individuals.i_gedcom']);
 
         return $this->datatables_service->handleQuery($request, $query, [], [], function (stdClass $datum) use ($ignore_facts): array {
