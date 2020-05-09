@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees;
 use function view;
 
 /**
- * The different between to GEDCOM dates.
+ * The different between two GEDCOM dates.
  */
 class Age
 {
@@ -184,9 +184,11 @@ class Age
     /**
      * Similar to ageAtEvent, but for events such as burial, cremation, etc.
      *
+     * @param string $tag
+     *
      * @return string
      */
-    public function timeAfterDeath(): string
+    public function timeAfterDeath($tag = ''): string
     {
         if (!$this->is_valid) {
             return '';
@@ -200,6 +202,16 @@ class Age
             return '';
         }
 
-        return I18N::translate('(%s after death)', $this->ageString());
+        // could receive $fact->label() instead of the tag and build the string like
+        // return I18N::translate('(%s after %s)', $this->ageString(), $label);
+        // but not sure whether the grammar would be correct for all languages
+        switch ($tag) {
+            case 'BURI':
+                return I18N::translate('(%s after burial)', $this->ageString());
+            case 'CREM':
+                return I18N::translate('(%s after cremation)', $this->ageString());
+            default:
+                return I18N::translate('(%s after death)', $this->ageString());
+        }
     }
 }

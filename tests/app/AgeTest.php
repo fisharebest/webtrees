@@ -49,7 +49,7 @@ class AgeTest extends TestCase
         $this->assertSame('0 days', $age->ageString());
         $this->assertSame('(aged 0 days)', $age->ageAtEvent(false));
         $this->assertSame('(age 0 days)', $age->ageAtEvent(true));
-        $this->assertSame('(on the date of death)', $age->timeAfterDeath());
+        $this->assertSame('(on the date of death)', $age->timeAfterDeath(''));
     }
 
     /**
@@ -75,7 +75,7 @@ class AgeTest extends TestCase
         $this->assertSame('0', $age->ageString());
         $this->assertSame('(aged 0)', $age->ageAtEvent(false));
         $this->assertSame('(age 0)', $age->ageAtEvent(true));
-        $this->assertSame('', $age->timeAfterDeath());
+        $this->assertSame('', $age->timeAfterDeath(''));
     }
 
     /**
@@ -101,7 +101,7 @@ class AgeTest extends TestCase
         $this->assertSame('0', $age->ageString());
         $this->assertSame('(aged 0)', $age->ageAtEvent(false));
         $this->assertSame('(age 0)', $age->ageAtEvent(true));
-        $this->assertSame('', $age->timeAfterDeath());
+        $this->assertSame('', $age->timeAfterDeath(''));
     }
 
     /**
@@ -127,7 +127,7 @@ class AgeTest extends TestCase
         $this->assertSame(view('icons/warning'), $age->ageString());
         $this->assertSame('(aged ' . view('icons/warning') . ')', $age->ageAtEvent(false));
         $this->assertSame('(age ' . view('icons/warning') . ')', $age->ageAtEvent(true));
-        $this->assertSame('(' . view('icons/warning') . ' after death)', $age->timeAfterDeath());
+        $this->assertSame('(' . view('icons/warning') . ' after death)', $age->timeAfterDeath(''));
     }
 
     /**
@@ -153,7 +153,7 @@ class AgeTest extends TestCase
         $this->assertSame('', $age->ageString());
         $this->assertSame('', $age->ageAtEvent(false));
         $this->assertSame('', $age->ageAtEvent(true));
-        $this->assertSame('', $age->timeAfterDeath());
+        $this->assertSame('', $age->timeAfterDeath(''));
     }
 
     /**
@@ -179,7 +179,7 @@ class AgeTest extends TestCase
         $this->assertSame('', $age->ageString());
         $this->assertSame('', $age->ageAtEvent(false));
         $this->assertSame('', $age->ageAtEvent(true));
-        $this->assertSame('', $age->timeAfterDeath());
+        $this->assertSame('', $age->timeAfterDeath(''));
     }
 
     /**
@@ -205,7 +205,7 @@ class AgeTest extends TestCase
         $this->assertSame('0', $age->ageString());
         $this->assertSame('(aged 0)', $age->ageAtEvent(false));
         $this->assertSame('(age 0)', $age->ageAtEvent(true));
-        $this->assertSame('', $age->timeAfterDeath());
+        $this->assertSame('', $age->timeAfterDeath(''));
     }
 
     /**
@@ -231,7 +231,7 @@ class AgeTest extends TestCase
         $this->assertSame('0', $age->ageString());
         $this->assertSame('(aged 0)', $age->ageAtEvent(false));
         $this->assertSame('(age 0)', $age->ageAtEvent(true));
-        $this->assertSame('', $age->timeAfterDeath());
+        $this->assertSame('', $age->timeAfterDeath(''));
     }
 
     /**
@@ -257,7 +257,9 @@ class AgeTest extends TestCase
         $this->assertSame('14 days', $age->ageString());
         $this->assertSame('(aged 14 days)', $age->ageAtEvent(false));
         $this->assertSame('(age 14 days)', $age->ageAtEvent(true));
-        $this->assertSame('(14 days after death)', $age->timeAfterDeath());
+        $this->assertSame('(14 days after death)', $age->timeAfterDeath('DEAT'));
+        $this->assertSame('(14 days after burial)', $age->timeAfterDeath('BURI'));
+        $this->assertSame('(14 days after cremation)', $age->timeAfterDeath('CREM'));
     }
 
     /**
@@ -283,7 +285,9 @@ class AgeTest extends TestCase
         $this->assertSame('2 months', $age->ageString());
         $this->assertSame('(aged 2 months)', $age->ageAtEvent(false));
         $this->assertSame('(age 2 months)', $age->ageAtEvent(true));
-        $this->assertSame('(2 months after death)', $age->timeAfterDeath());
+        $this->assertSame('(2 months after death)', $age->timeAfterDeath('DEAT'));
+        $this->assertSame('(2 months after burial)', $age->timeAfterDeath('BURI'));
+        $this->assertSame('(2 months after cremation)', $age->timeAfterDeath('CREM'));
     }
 
     /**
@@ -309,6 +313,8 @@ class AgeTest extends TestCase
         $this->assertSame('7 years', $age->ageString());
         $this->assertSame('(aged 7 years)', $age->ageAtEvent(false));
         $this->assertSame('(age 7 years)', $age->ageAtEvent(true));
-        $this->assertSame('(7 years after death)', $age->timeAfterDeath());
+        $this->assertSame('(7 years after death)', $age->timeAfterDeath('DEAT'));
+        $this->assertSame('(7 years after burial)', $age->timeAfterDeath('BURI'));
+        $this->assertSame('(7 years after cremation)', $age->timeAfterDeath('CREM'));
     }
 }

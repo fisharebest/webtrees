@@ -304,24 +304,37 @@ class FunctionsPrint
                 $html .= ' – <span class="date">' . $match[1] . '</span>';
             }
             if ($record instanceof Individual) {
-                if (in_array($fact, Gedcom::BIRTH_EVENTS, true) && $record->tree()->getPreference('SHOW_PARENTS_AGE')) {
-                    // age of parents at child birth
-                    $html .= self::formatParentsAges($record, $date);
-                }
-                if ($fact !== 'BIRT' && $fact !== 'CHAN' && $fact !== '_TODO') {
-                    // age at event
-                    $birth_date = $record->getBirthDate();
-                    // Can't use getDeathDate(), as this also gives BURI/CREM events, which
-                    // wouldn't give the correct "days after death" result for people with
-                    // no DEAT.
-                    $death_event = $record->facts(['DEAT'])->first();
-                    if ($death_event instanceof Fact) {
-                        $death_date = $death_event->date();
-                    } else {
-                        $death_date = new Date('');
+                $birth_tag  = '';
+                $birth_date = null;
+                // Find 1st birth event with a valid date
+                foreach ($record->facts(Gedcom::BIRTH_EVENTS, true) as $birth_event) {
+                    if ($birth_event instanceof Fact && $birth_event->date()->isOK()) {
+                        $birth_date = $birth_event->date();
+                        $birth_tag  = $birth_event->getTag();
+                        if ($fact === $birth_tag && $record->tree()->getPreference('SHOW_PARENTS_AGE')) {
+                            // age of parents at child birth
+                            $html .= self::formatParentsAges($record, $date);
+                        }
+                        break;
                     }
+                }
+                $birth_date = $birth_date ?? new Date('');
+
+                if ($fact !== $birth_tag && $fact !== 'CHAN' && $fact !== '_TODO') {
+                    $death_tag  = '';
+                    $death_date = null;
+                    // Find 1st death event with a valid date
+                    foreach ($record->facts(Gedcom::DEATH_EVENTS, true) as $death_event) {
+                        if ($death_event instanceof Fact && $death_event->date()->isOK()) {
+                            $death_date = $death_event->date();
+                            $death_tag  = $death_event->getTag();
+                            break;
+                        }
+                    }
+                    $death_date = $death_date ?? new Date('');
+
                     $ageText = '';
-                    if ($fact === 'DEAT' || Date::compare($date, $death_date) <= 0 || !$record->isDead()) {
+                    if ($fact === $death_tag || Date::compare($date, $death_date) <= 0 || !$record->isDead()) {
                         // Before death, print age
                         $age = (new Age($birth_date, $date))->ageAtEvent(false);
                         // Only show calculated age if it differs from recorded age
@@ -337,9 +350,9 @@ class FunctionsPrint
                             }
                         }
                     }
-                    if ($fact !== 'DEAT' && $death_date->isOK() && Date::compare($death_date, $date) < 0) {
+                    if ($fact !== $death_tag && $death_date->isOK() && Date::compare($death_date, $date) < 0) {
                         // After death, print time since death
-                        $ageText = (new Age($death_date, $date))->timeAfterDeath();
+                        $ageText = (new Age($death_date, $date))->timeAfterDeath($death_tag);
                         // Family events which occur after death are probably errors
                         if ($event->record() instanceof Family) {
                             $ageText .= view('icons/warning');
