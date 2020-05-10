@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Exception;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -618,39 +619,46 @@ class Functions
             case 'par':
                 return I18N::translate('parent');
             case 'hus':
-                if ($person1 && $person2) {
+                if ($person1 instanceof Individual && $person2 instanceof Individual) {
+                    // We had the linking family earlier, but lost it.  Find it again.
                     foreach ($person1->spouseFamilies() as $family) {
                         if ($person2 === $family->spouse($person1)) {
-                            if ($family->facts(['MARR'], false, Auth::PRIV_HIDE)->isNotEmpty()) {
-                                if ($family->facts(Gedcom::DIVORCE_EVENTS, false, Auth::PRIV_HIDE)->isNotEmpty()) {
-                                    return I18N::translate('ex-husband');
+                            $event = $family->facts(['ANUL', 'DIV', 'ENGA', 'MARR'], true, Auth::PRIV_HIDE, true)->last();
+
+                            if ($event instanceof Fact) {
+                                switch ($event->getTag()) {
+                                    case 'ANUL':
+                                    case 'DIV':
+                                        return I18N::translate('ex-husband');
+                                    case 'MARR':
+                                        return I18N::translate('husband');
+                                    case 'ENGA':
+                                        return I18N::translate('fiancé');
                                 }
-
-                                return I18N::translate('husband');
-                            }
-
-                            if ($family->facts(Gedcom::DIVORCE_EVENTS, false, Auth::PRIV_HIDE)->isNotEmpty()) {
-                                return I18N::translateContext('MALE', 'ex-partner');
                             }
                         }
                     }
                 }
 
                 return I18N::translateContext('MALE', 'partner');
+
             case 'wif':
-                if ($person1 && $person2) {
+                if ($person1 instanceof Individual && $person2 instanceof Individual) {
+                    // We had the linking family earlier, but lost it.  Find it again.
                     foreach ($person1->spouseFamilies() as $family) {
                         if ($person2 === $family->spouse($person1)) {
-                            if ($family->facts(['MARR'], false, Auth::PRIV_HIDE)->isNotEmpty()) {
-                                if ($family->facts(Gedcom::DIVORCE_EVENTS, false, Auth::PRIV_HIDE)->isNotEmpty()) {
-                                    return I18N::translate('ex-wife');
+                            $event = $family->facts(['ANUL', 'DIV', 'ENGA', 'MARR'], true, Auth::PRIV_HIDE, true)->last();
+
+                            if ($event instanceof Fact) {
+                                switch ($event->getTag()) {
+                                    case 'ANUL':
+                                    case 'DIV':
+                                        return I18N::translate('ex-wife');
+                                    case 'MARR':
+                                        return I18N::translate('wife');
+                                    case 'ENGA':
+                                        return I18N::translate('fiancée');
                                 }
-
-                                return I18N::translate('wife');
-                            }
-
-                            if ($family->facts(Gedcom::DIVORCE_EVENTS, false, Auth::PRIV_HIDE)->isNotEmpty()) {
-                                return I18N::translateContext('FEMALE', 'ex-partner');
                             }
                         }
                     }
@@ -658,25 +666,29 @@ class Functions
 
                 return I18N::translateContext('FEMALE', 'partner');
             case 'spo':
-                if ($person1 && $person2) {
+                if ($person1 instanceof Individual && $person2 instanceof Individual) {
+                    // We had the linking family earlier, but lost it.  Find it again.
                     foreach ($person1->spouseFamilies() as $family) {
                         if ($person2 === $family->spouse($person1)) {
-                            if ($family->facts(['MARR'], false, Auth::PRIV_HIDE)->isNotEmpty()) {
-                                if ($family->facts(Gedcom::DIVORCE_EVENTS, false, Auth::PRIV_HIDE)->isNotEmpty()) {
-                                    return I18N::translate('ex-spouse');
+                            $event = $family->facts(['ANUL', 'DIV', 'ENGA', 'MARR'], true, Auth::PRIV_HIDE, true)->last();
+
+                            if ($event instanceof Fact) {
+                                switch ($event->getTag()) {
+                                    case 'ANUL':
+                                    case 'DIV':
+                                        return I18N::translate('ex-spouse');
+                                    case 'MARR':
+                                        return I18N::translate('spouse');
+                                    case 'ENGA':
+                                        return I18N::translate('fiancé(e)');
                                 }
-
-                                return I18N::translate('spouse');
-                            }
-
-                            if ($family->facts(Gedcom::DIVORCE_EVENTS, false, Auth::PRIV_HIDE)->isNotEmpty()) {
-                                return I18N::translate('ex-partner');
                             }
                         }
                     }
                 }
 
                 return I18N::translate('partner');
+
             case 'son':
                 return I18N::translate('son');
             case 'dau':
