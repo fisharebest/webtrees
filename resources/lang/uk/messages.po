@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-10 12:00+0100\n"
+"POT-Creation-Date: 2020-05-10 20:40+0100\n"
 "PO-Revision-Date: 2018-10-19 17:57+0000\n"
 "Last-Translator: Vitalii Oleshkevych <mar2008m@gmail.com>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
@@ -230,7 +230,7 @@ msgstr[0] "%s день"
 msgstr[1] "%s дні"
 msgstr[2] "%s днів"
 
-#: resources/views/calendar-list.phtml:18
+#: resources/views/calendar-list.phtml:22
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
@@ -258,7 +258,7 @@ msgstr[2] "%s онуків/онучок"
 
 #: app/Module/LifespansChartModule.php:244
 #: resources/views/admin/trees-unconnected.phtml:37
-#: resources/views/calendar-list.phtml:13
+#: resources/views/calendar-list.phtml:17
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
@@ -401,7 +401,7 @@ msgstr[0] "%s рік"
 msgstr[1] "%s роки"
 msgstr[2] "%s років"
 
-#: app/Http/Controllers/CalendarController.php:537
+#: app/Http/Controllers/CalendarController.php:348
 #: resources/views/modules/yahrzeit/list.phtml:44
 #, php-format
 msgid "%s year anniversary"
@@ -1238,7 +1238,7 @@ msgstr "Додати дитину у неповну сім'ю"
 msgid "Add a daughter"
 msgstr ""
 
-#: resources/views/edit/raw-gedcom-record.phtml:47
+#: resources/views/edit/raw-gedcom-record.phtml:46
 msgid "Add a fact"
 msgstr "Додати факт"
 
@@ -1929,7 +1929,7 @@ msgstr "Інша людина, який був пов'язаний з цією �
 msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Діаграма - пісочний кодинник предків та нащадків особи."
 
-#: resources/views/edit/reorder-families.phtml:65
+#: resources/views/edit/reorder-families.phtml:63
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
 msgstr ""
 
@@ -2003,7 +2003,7 @@ msgstr "Ангілья"
 msgid "Anniversary"
 msgstr "Річниця"
 
-#: app/Http/Controllers/CalendarController.php:144
+#: app/Http/Controllers/CalendarController.php:145
 msgid "Anniversary calendar"
 msgstr "Календар ювілеїв"
 
@@ -2551,7 +2551,7 @@ msgstr "Пакетне оновлення"
 msgid "Baton Rouge, Louisiana, United States"
 msgstr "Батон-Руж, Луїзіана"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:239
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:241
 msgid "Begins with"
 msgstr "Починається з"
 
@@ -2617,6 +2617,10 @@ msgstr "Бінарний об'єкт даних"
 #: app/Functions/FunctionsPrint.php:420 app/Functions/FunctionsPrint.php:422
 msgid "Bing Maps™"
 msgstr "Bing Maps™"
+
+#: app/Module/BingWebmasterToolsModule.php:41
+msgid "Bing™ webmaster tools"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:261
@@ -3908,7 +3912,7 @@ msgstr "Інформація про контакт"
 msgid "Contact method"
 msgstr "Контактний метод"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:240
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:242
 msgid "Contains"
 msgstr "Містить"
 
@@ -4601,7 +4605,7 @@ msgstr "Дочка від %s"
 msgid "Day"
 msgstr "День"
 
-#: app/Http/Controllers/CalendarController.php:411
+#: app/Http/Controllers/CalendarController.php:397
 msgid "Day not set"
 msgstr "День не встановлено"
 
@@ -5738,7 +5742,7 @@ msgstr "Події близьких родичів"
 msgid "Everybody has this role, including visitors to the website and search engines."
 msgstr "Кожен має свою роль, у тому числі відвідувачі сайту або пошукових систем."
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:238
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:240
 msgid "Exact"
 msgstr "У точності"
 
@@ -6874,6 +6878,14 @@ msgstr "Хрещеник"
 msgid "Google Maps™"
 msgstr "Google Maps™"
 
+#: app/Module/GoogleAnalyticsModule.php:44
+msgid "Google™ analytics"
+msgstr ""
+
+#: app/Module/GoogleWebmasterToolsModule.php:41
+msgid "Google™ webmaster tools"
+msgstr ""
+
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:785
 msgid "Graduation"
@@ -7478,11 +7490,11 @@ msgstr "В деяких календарях дні починаються о п
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 msgstr "В деяких країнах, закони про конфіденційність застосовуються не тільки до живих людей, а й до тих, хто нещодавно помер. Цей параметр дозволить вам поширити політику конфіденційності для живих людей на тих, хто народився чи помер в межах вказаної кількості років. Залиште ці значеня порожніми, щоб відключити даний функціонал."
 
-#: app/Http/Controllers/CalendarController.php:151
+#: app/Http/Controllers/CalendarController.php:152
 msgid "In this month…"
 msgstr "В цьому місяці, в минулому …"
 
-#: app/Http/Controllers/CalendarController.php:154
+#: app/Http/Controllers/CalendarController.php:155
 msgid "In this year…"
 msgstr "В цьому році, в минулому …"
 
@@ -8970,6 +8982,10 @@ msgstr "Пошук точного тексту, навіть якщо він з�
 msgid "Match the exact text, unless it occurs in the middle of a word."
 msgstr "Пошук точного тексту, якщо він не знаходиться в середині слова."
 
+#: app/Module/MatomoAnalyticsModule.php:42
+msgid "Matomo™ / Piwik™ analytics"
+msgstr ""
+
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
 msgid "Mauritania"
@@ -10355,7 +10371,7 @@ msgstr "Оман"
 msgid "On this day"
 msgstr "В цей день"
 
-#: app/Http/Controllers/CalendarController.php:148
+#: app/Http/Controllers/CalendarController.php:149
 msgid "On this day…"
 msgstr "В цей день, в минулому …"
 
@@ -10585,7 +10601,7 @@ msgid "Paraguay"
 msgstr "Парагвай"
 
 #: app/Http/RequestHandlers/IndividualPage.php:209
-#: resources/views/edit/reorder-families.phtml:62
+#: resources/views/edit/reorder-families.phtml:60
 #: resources/views/modules/family_nav/sidebar-family.phtml:43
 msgid "Parents"
 msgstr "Батьки"
@@ -13066,7 +13082,7 @@ msgstr "Sosa"
 msgid "Sosa-Stradonitz number"
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:241
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:243
 msgid "Sounds like"
 msgstr "Звучить як"
 
@@ -13252,6 +13268,10 @@ msgstr "Рік початку"
 #: resources/xml/reports/change_report.xml:5
 msgid "Starting range of change dates"
 msgstr "Початок діапазону дат зміни"
+
+#: app/Module/StatcounterModule.php:41
+msgid "Statcounter™"
+msgstr ""
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:1029
@@ -13806,7 +13826,7 @@ msgstr "Файл вивантажений частково. Спробуйте �
 msgid "The file “%s” does not exist."
 msgstr "Файл «%s» не існує."
 
-#: resources/views/edit/reorder-families.phtml:67
+#: resources/views/edit/reorder-families.phtml:65
 msgid "The first family in the list will be used in charts, lists, reports, etc."
 msgstr ""
 
@@ -14037,7 +14057,7 @@ msgstr "Репозиторій був створений"
 msgid "The search menu."
 msgstr ""
 
-#: app/Services/SearchService.php:1066
+#: app/Services/SearchService.php:1075
 msgid "The search returned too many results."
 msgstr ""
 
@@ -16562,11 +16582,11 @@ msgstr "обчислено %s"
 #: resources/views/edit/link-spouse-to-individual.phtml:36
 #: resources/views/edit/new-individual.phtml:327
 #: resources/views/edit/raw-gedcom-fact.phtml:36
-#: resources/views/edit/raw-gedcom-record.phtml:62
-#: resources/views/edit/reorder-children.phtml:46
-#: resources/views/edit/reorder-families.phtml:100
-#: resources/views/edit/reorder-media.phtml:39
-#: resources/views/edit/reorder-names.phtml:41
+#: resources/views/edit/raw-gedcom-record.phtml:61
+#: resources/views/edit/reorder-children.phtml:44
+#: resources/views/edit/reorder-families.phtml:92
+#: resources/views/edit/reorder-media.phtml:37
+#: resources/views/edit/reorder-names.phtml:39
 #: resources/views/edit/shared-note.phtml:37
 #: resources/views/message-page.phtml:59
 #: resources/views/modals/create-media-from-file.phtml:62
@@ -16728,6 +16748,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr "помер"
 
+#: resources/views/edit/reorder-card-header.phtml:30
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "down"
 msgstr ""
@@ -16927,6 +16948,7 @@ msgstr "двоюрідний брат (5-го коліна)"
 
 #. I18N: A button label, first page
 #: resources/views/admin/trees-preferences.phtml:556
+#: resources/views/edit/reorder-card-header.phtml:22
 #: resources/views/lists/datatables-attributes.phtml:14
 #: resources/views/modules/media-list/page.phtml:79
 #: resources/views/modules/media-list/page.phtml:178
@@ -18860,6 +18882,7 @@ msgstr "додаткові дні"
 
 #. I18N: A button label, last page
 #: resources/views/admin/trees-preferences.phtml:556
+#: resources/views/edit/reorder-card-header.phtml:34
 #: resources/views/lists/datatables-attributes.phtml:16
 #: resources/views/modules/media-list/page.phtml:103
 #: resources/views/modules/media-list/page.phtml:202
@@ -19444,11 +19467,11 @@ msgstr ""
 #: resources/views/edit/link-spouse-to-individual.phtml:31
 #: resources/views/edit/new-individual.phtml:315
 #: resources/views/edit/raw-gedcom-fact.phtml:32
-#: resources/views/edit/raw-gedcom-record.phtml:58
-#: resources/views/edit/reorder-children.phtml:36
-#: resources/views/edit/reorder-families.phtml:95
-#: resources/views/edit/reorder-media.phtml:34
-#: resources/views/edit/reorder-names.phtml:36
+#: resources/views/edit/raw-gedcom-record.phtml:57
+#: resources/views/edit/reorder-children.phtml:34
+#: resources/views/edit/reorder-families.phtml:87
+#: resources/views/edit/reorder-media.phtml:32
+#: resources/views/edit/reorder-names.phtml:34
 #: resources/views/edit/shared-note.phtml:32
 #: resources/views/modals/create-media-from-file.phtml:58
 #: resources/views/modals/footer-save-cancel.phtml:10
@@ -19825,7 +19848,7 @@ msgid "sort by date"
 msgstr "сортувати по даті"
 
 #. I18N: A button label.
-#: resources/views/edit/reorder-children.phtml:41
+#: resources/views/edit/reorder-children.phtml:39
 #: resources/xml/reports/bdm_report.xml:11
 #: resources/xml/reports/birth_report.xml:9
 #: resources/xml/reports/change_report.xml:7
@@ -20177,6 +20200,7 @@ msgstr "необмежений"
 msgid "unreliable evidence"
 msgstr "ненадійні докази"
 
+#: resources/views/edit/reorder-card-header.phtml:26
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "up"
 msgstr ""
@@ -20323,6 +20347,8 @@ msgstr "молодша сестра"
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:224
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:225
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:226
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:227
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:228
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"

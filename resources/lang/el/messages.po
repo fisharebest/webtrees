@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-10 12:00+0100\n"
+"POT-Creation-Date: 2020-05-10 20:40+0100\n"
 "PO-Revision-Date: 2020-01-13 19:15+0000\n"
 "Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
@@ -230,7 +230,7 @@ msgid_plural "%s days"
 msgstr[0] "%s ημέρα"
 msgstr[1] "%s ημέρες"
 
-#: resources/views/calendar-list.phtml:18
+#: resources/views/calendar-list.phtml:22
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
@@ -255,7 +255,7 @@ msgstr[1] "%s εγγόνια"
 
 #: app/Module/LifespansChartModule.php:244
 #: resources/views/admin/trees-unconnected.phtml:37
-#: resources/views/calendar-list.phtml:13
+#: resources/views/calendar-list.phtml:17
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
@@ -387,7 +387,7 @@ msgid_plural "%s years"
 msgstr[0] "%s χρόνος"
 msgstr[1] "%s χρόνια"
 
-#: app/Http/Controllers/CalendarController.php:537
+#: app/Http/Controllers/CalendarController.php:348
 #: resources/views/modules/yahrzeit/list.phtml:44
 #, php-format
 msgid "%s year anniversary"
@@ -1224,7 +1224,7 @@ msgstr "Προσθήκη τέκνου για την δημιουργία μον�
 msgid "Add a daughter"
 msgstr ""
 
-#: resources/views/edit/raw-gedcom-record.phtml:47
+#: resources/views/edit/raw-gedcom-record.phtml:46
 msgid "Add a fact"
 msgstr "Προσθήκη γεγονότος"
 
@@ -1915,7 +1915,7 @@ msgstr ""
 msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr ""
 
-#: resources/views/edit/reorder-families.phtml:65
+#: resources/views/edit/reorder-families.phtml:63
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
 msgstr ""
 
@@ -1989,7 +1989,7 @@ msgstr ""
 msgid "Anniversary"
 msgstr "Επέτειος"
 
-#: app/Http/Controllers/CalendarController.php:144
+#: app/Http/Controllers/CalendarController.php:145
 msgid "Anniversary calendar"
 msgstr "Ημερολόγιο επετείων"
 
@@ -2537,7 +2537,7 @@ msgstr "Μαζική ενημέρωση"
 msgid "Baton Rouge, Louisiana, United States"
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:239
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:241
 msgid "Begins with"
 msgstr "Ξεκινάει με"
 
@@ -2602,6 +2602,10 @@ msgstr ""
 
 #: app/Functions/FunctionsPrint.php:420 app/Functions/FunctionsPrint.php:422
 msgid "Bing Maps™"
+msgstr ""
+
+#: app/Module/BingWebmasterToolsModule.php:41
+msgid "Bing™ webmaster tools"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -3893,7 +3897,7 @@ msgstr "Πληροφορίες επικοινωνίας"
 msgid "Contact method"
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:240
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:242
 msgid "Contains"
 msgstr "Περιέχει"
 
@@ -4586,7 +4590,7 @@ msgstr "κόρη των %s"
 msgid "Day"
 msgstr "Ημέρα"
 
-#: app/Http/Controllers/CalendarController.php:411
+#: app/Http/Controllers/CalendarController.php:397
 msgid "Day not set"
 msgstr "Δεν ορίστηκε ημέρα"
 
@@ -5723,7 +5727,7 @@ msgstr "Συμβάντα στενών συγγενών"
 msgid "Everybody has this role, including visitors to the website and search engines."
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:238
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:240
 msgid "Exact"
 msgstr "Ακριβής"
 
@@ -6859,6 +6863,14 @@ msgstr "Βαφτισιμιός"
 msgid "Google Maps™"
 msgstr "Google Maps™"
 
+#: app/Module/GoogleAnalyticsModule.php:44
+msgid "Google™ analytics"
+msgstr ""
+
+#: app/Module/GoogleWebmasterToolsModule.php:41
+msgid "Google™ webmaster tools"
+msgstr ""
+
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:785
 msgid "Graduation"
@@ -7461,11 +7473,11 @@ msgstr ""
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 msgstr ""
 
-#: app/Http/Controllers/CalendarController.php:151
+#: app/Http/Controllers/CalendarController.php:152
 msgid "In this month…"
 msgstr "Στο μήνα αυτό, στην ιστορία μας…"
 
-#: app/Http/Controllers/CalendarController.php:154
+#: app/Http/Controllers/CalendarController.php:155
 msgid "In this year…"
 msgstr "Στο έτος αυτό, στην ιστορία μας…"
 
@@ -8953,6 +8965,10 @@ msgstr ""
 msgid "Match the exact text, unless it occurs in the middle of a word."
 msgstr ""
 
+#: app/Module/MatomoAnalyticsModule.php:42
+msgid "Matomo™ / Piwik™ analytics"
+msgstr ""
+
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
 msgid "Mauritania"
@@ -10336,7 +10352,7 @@ msgstr ""
 msgid "On this day"
 msgstr "Σήμερα"
 
-#: app/Http/Controllers/CalendarController.php:148
+#: app/Http/Controllers/CalendarController.php:149
 msgid "On this day…"
 msgstr "Σαν σήμερα, στην ιστορία μας…"
 
@@ -10566,7 +10582,7 @@ msgid "Paraguay"
 msgstr "Παραγουάη"
 
 #: app/Http/RequestHandlers/IndividualPage.php:209
-#: resources/views/edit/reorder-families.phtml:62
+#: resources/views/edit/reorder-families.phtml:60
 #: resources/views/modules/family_nav/sidebar-family.phtml:43
 msgid "Parents"
 msgstr "Γονείς"
@@ -13046,7 +13062,7 @@ msgstr "Sosa"
 msgid "Sosa-Stradonitz number"
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:241
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:243
 msgid "Sounds like"
 msgstr "Ακούγεται σαν"
 
@@ -13231,6 +13247,10 @@ msgstr "Έτος αρχής"
 
 #: resources/xml/reports/change_report.xml:5
 msgid "Starting range of change dates"
+msgstr ""
+
+#: app/Module/StatcounterModule.php:41
+msgid "Statcounter™"
 msgstr ""
 
 #. I18N: gedcom tag STAE
@@ -13784,7 +13804,7 @@ msgstr "Το αρχείο ανανεώθηκε τμηματικά. Παρακα�
 msgid "The file “%s” does not exist."
 msgstr "Το αρχείο «%s» δεν υπάρχει."
 
-#: resources/views/edit/reorder-families.phtml:67
+#: resources/views/edit/reorder-families.phtml:65
 msgid "The first family in the list will be used in charts, lists, reports, etc."
 msgstr ""
 
@@ -14011,7 +14031,7 @@ msgstr ""
 msgid "The search menu."
 msgstr ""
 
-#: app/Services/SearchService.php:1066
+#: app/Services/SearchService.php:1075
 msgid "The search returned too many results."
 msgstr ""
 
@@ -16526,11 +16546,11 @@ msgstr "υπολογίστηκε %s"
 #: resources/views/edit/link-spouse-to-individual.phtml:36
 #: resources/views/edit/new-individual.phtml:327
 #: resources/views/edit/raw-gedcom-fact.phtml:36
-#: resources/views/edit/raw-gedcom-record.phtml:62
-#: resources/views/edit/reorder-children.phtml:46
-#: resources/views/edit/reorder-families.phtml:100
-#: resources/views/edit/reorder-media.phtml:39
-#: resources/views/edit/reorder-names.phtml:41
+#: resources/views/edit/raw-gedcom-record.phtml:61
+#: resources/views/edit/reorder-children.phtml:44
+#: resources/views/edit/reorder-families.phtml:92
+#: resources/views/edit/reorder-media.phtml:37
+#: resources/views/edit/reorder-names.phtml:39
 #: resources/views/edit/shared-note.phtml:37
 #: resources/views/message-page.phtml:59
 #: resources/views/modals/create-media-from-file.phtml:62
@@ -16692,6 +16712,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr ""
 
+#: resources/views/edit/reorder-card-header.phtml:30
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "down"
 msgstr ""
@@ -16891,6 +16912,7 @@ msgstr "5ος ξάδερφος"
 
 #. I18N: A button label, first page
 #: resources/views/admin/trees-preferences.phtml:556
+#: resources/views/edit/reorder-card-header.phtml:22
 #: resources/views/lists/datatables-attributes.phtml:14
 #: resources/views/modules/media-list/page.phtml:79
 #: resources/views/modules/media-list/page.phtml:178
@@ -18823,6 +18845,7 @@ msgstr ""
 
 #. I18N: A button label, last page
 #: resources/views/admin/trees-preferences.phtml:556
+#: resources/views/edit/reorder-card-header.phtml:34
 #: resources/views/lists/datatables-attributes.phtml:16
 #: resources/views/modules/media-list/page.phtml:103
 #: resources/views/modules/media-list/page.phtml:202
@@ -19406,11 +19429,11 @@ msgstr ""
 #: resources/views/edit/link-spouse-to-individual.phtml:31
 #: resources/views/edit/new-individual.phtml:315
 #: resources/views/edit/raw-gedcom-fact.phtml:32
-#: resources/views/edit/raw-gedcom-record.phtml:58
-#: resources/views/edit/reorder-children.phtml:36
-#: resources/views/edit/reorder-families.phtml:95
-#: resources/views/edit/reorder-media.phtml:34
-#: resources/views/edit/reorder-names.phtml:36
+#: resources/views/edit/raw-gedcom-record.phtml:57
+#: resources/views/edit/reorder-children.phtml:34
+#: resources/views/edit/reorder-families.phtml:87
+#: resources/views/edit/reorder-media.phtml:32
+#: resources/views/edit/reorder-names.phtml:34
 #: resources/views/edit/shared-note.phtml:32
 #: resources/views/modals/create-media-from-file.phtml:58
 #: resources/views/modals/footer-save-cancel.phtml:10
@@ -19787,7 +19810,7 @@ msgid "sort by date"
 msgstr "Ταξινόμηση ανά ημερομηνία"
 
 #. I18N: A button label.
-#: resources/views/edit/reorder-children.phtml:41
+#: resources/views/edit/reorder-children.phtml:39
 #: resources/xml/reports/bdm_report.xml:11
 #: resources/xml/reports/birth_report.xml:9
 #: resources/xml/reports/change_report.xml:7
@@ -20139,6 +20162,7 @@ msgstr "απεριόριστο"
 msgid "unreliable evidence"
 msgstr "αναξιόπιστα στοιχεία"
 
+#: resources/views/edit/reorder-card-header.phtml:26
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "up"
 msgstr ""
@@ -20285,6 +20309,8 @@ msgstr "μικρότερη αδερφή"
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:224
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:225
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:226
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:227
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:228
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-10 12:00+0100\n"
+"POT-Creation-Date: 2020-05-10 20:40+0100\n"
 "PO-Revision-Date: 2020-05-04 15:39+0000\n"
 "Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
 "Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\n"
@@ -222,7 +222,7 @@ msgid "%s day"
 msgid_plural "%s days"
 msgstr[0] "%s 일"
 
-#: resources/views/calendar-list.phtml:18
+#: resources/views/calendar-list.phtml:22
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
@@ -244,7 +244,7 @@ msgstr[0] "%s 손주"
 
 #: app/Module/LifespansChartModule.php:244
 #: resources/views/admin/trees-unconnected.phtml:37
-#: resources/views/calendar-list.phtml:13
+#: resources/views/calendar-list.phtml:17
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
@@ -365,7 +365,7 @@ msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s 세"
 
-#: app/Http/Controllers/CalendarController.php:537
+#: app/Http/Controllers/CalendarController.php:348
 #: resources/views/modules/yahrzeit/list.phtml:44
 #, php-format
 msgid "%s year anniversary"
@@ -1202,7 +1202,7 @@ msgstr "한 부모 자녀 추가"
 msgid "Add a daughter"
 msgstr ""
 
-#: resources/views/edit/raw-gedcom-record.phtml:47
+#: resources/views/edit/raw-gedcom-record.phtml:46
 msgid "Add a fact"
 msgstr "정보 추가"
 
@@ -1893,7 +1893,7 @@ msgstr "동료는 친구 나 고용주와 같이 인물과 관련된 다른 인�
 msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "인물의 조상과 자손의 모래 시계 차트."
 
-#: resources/views/edit/reorder-families.phtml:65
+#: resources/views/edit/reorder-families.phtml:63
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
 msgstr "인물은 둘 이상의 부모 세트를 가질 수 있습니다. 예를 들어, 출생 및 입양."
 
@@ -1967,7 +1967,7 @@ msgstr ""
 msgid "Anniversary"
 msgstr ""
 
-#: app/Http/Controllers/CalendarController.php:144
+#: app/Http/Controllers/CalendarController.php:145
 msgid "Anniversary calendar"
 msgstr ""
 
@@ -2515,7 +2515,7 @@ msgstr ""
 msgid "Baton Rouge, Louisiana, United States"
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:239
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:241
 msgid "Begins with"
 msgstr ""
 
@@ -2580,6 +2580,10 @@ msgstr ""
 
 #: app/Functions/FunctionsPrint.php:420 app/Functions/FunctionsPrint.php:422
 msgid "Bing Maps™"
+msgstr ""
+
+#: app/Module/BingWebmasterToolsModule.php:41
+msgid "Bing™ webmaster tools"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -3870,7 +3874,7 @@ msgstr ""
 msgid "Contact method"
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:240
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:242
 msgid "Contains"
 msgstr ""
 
@@ -4563,7 +4567,7 @@ msgstr ""
 msgid "Day"
 msgstr ""
 
-#: app/Http/Controllers/CalendarController.php:411
+#: app/Http/Controllers/CalendarController.php:397
 msgid "Day not set"
 msgstr ""
 
@@ -5700,7 +5704,7 @@ msgstr ""
 msgid "Everybody has this role, including visitors to the website and search engines."
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:238
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:240
 msgid "Exact"
 msgstr ""
 
@@ -6836,6 +6840,14 @@ msgstr ""
 msgid "Google Maps™"
 msgstr ""
 
+#: app/Module/GoogleAnalyticsModule.php:44
+msgid "Google™ analytics"
+msgstr ""
+
+#: app/Module/GoogleWebmasterToolsModule.php:41
+msgid "Google™ webmaster tools"
+msgstr ""
+
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:785
 msgid "Graduation"
@@ -7438,11 +7450,11 @@ msgstr ""
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 msgstr ""
 
-#: app/Http/Controllers/CalendarController.php:151
+#: app/Http/Controllers/CalendarController.php:152
 msgid "In this month…"
 msgstr ""
 
-#: app/Http/Controllers/CalendarController.php:154
+#: app/Http/Controllers/CalendarController.php:155
 msgid "In this year…"
 msgstr ""
 
@@ -8930,6 +8942,10 @@ msgstr ""
 msgid "Match the exact text, unless it occurs in the middle of a word."
 msgstr ""
 
+#: app/Module/MatomoAnalyticsModule.php:42
+msgid "Matomo™ / Piwik™ analytics"
+msgstr ""
+
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
 msgid "Mauritania"
@@ -10312,7 +10328,7 @@ msgstr ""
 msgid "On this day"
 msgstr ""
 
-#: app/Http/Controllers/CalendarController.php:148
+#: app/Http/Controllers/CalendarController.php:149
 msgid "On this day…"
 msgstr ""
 
@@ -10542,7 +10558,7 @@ msgid "Paraguay"
 msgstr ""
 
 #: app/Http/RequestHandlers/IndividualPage.php:209
-#: resources/views/edit/reorder-families.phtml:62
+#: resources/views/edit/reorder-families.phtml:60
 #: resources/views/modules/family_nav/sidebar-family.phtml:43
 msgid "Parents"
 msgstr ""
@@ -13022,7 +13038,7 @@ msgstr ""
 msgid "Sosa-Stradonitz number"
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:241
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:243
 msgid "Sounds like"
 msgstr "처럼 들린다"
 
@@ -13208,6 +13224,10 @@ msgstr "시작년도"
 #: resources/xml/reports/change_report.xml:5
 msgid "Starting range of change dates"
 msgstr "변경 날짜의 시작 범위"
+
+#: app/Module/StatcounterModule.php:41
+msgid "Statcounter™"
+msgstr ""
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:1029
@@ -13760,7 +13780,7 @@ msgstr "파일이 부분적으로 만 업로드되었습니다. 다시 시도하
 msgid "The file “%s” does not exist."
 msgstr "“%s”파일이 없습니다."
 
-#: resources/views/edit/reorder-families.phtml:67
+#: resources/views/edit/reorder-families.phtml:65
 msgid "The first family in the list will be used in charts, lists, reports, etc."
 msgstr "목록의 첫 번째 가족은 차트, 목록, 보고서 등에 사용됩니다."
 
@@ -13987,7 +14007,7 @@ msgstr "저장소가 작성되었습니다"
 msgid "The search menu."
 msgstr "검색 메뉴."
 
-#: app/Services/SearchService.php:1066
+#: app/Services/SearchService.php:1075
 msgid "The search returned too many results."
 msgstr "검색 결과가 너무 많습니다."
 
@@ -16494,11 +16514,11 @@ msgstr "계산 된 %s"
 #: resources/views/edit/link-spouse-to-individual.phtml:36
 #: resources/views/edit/new-individual.phtml:327
 #: resources/views/edit/raw-gedcom-fact.phtml:36
-#: resources/views/edit/raw-gedcom-record.phtml:62
-#: resources/views/edit/reorder-children.phtml:46
-#: resources/views/edit/reorder-families.phtml:100
-#: resources/views/edit/reorder-media.phtml:39
-#: resources/views/edit/reorder-names.phtml:41
+#: resources/views/edit/raw-gedcom-record.phtml:61
+#: resources/views/edit/reorder-children.phtml:44
+#: resources/views/edit/reorder-families.phtml:92
+#: resources/views/edit/reorder-media.phtml:37
+#: resources/views/edit/reorder-names.phtml:39
 #: resources/views/edit/shared-note.phtml:37
 #: resources/views/message-page.phtml:59
 #: resources/views/modals/create-media-from-file.phtml:62
@@ -16660,6 +16680,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr "사망"
 
+#: resources/views/edit/reorder-card-header.phtml:30
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "down"
 msgstr "아래"
@@ -16859,6 +16880,7 @@ msgstr "다섯 번째 사촌"
 
 #. I18N: A button label, first page
 #: resources/views/admin/trees-preferences.phtml:556
+#: resources/views/edit/reorder-card-header.phtml:22
 #: resources/views/lists/datatables-attributes.phtml:14
 #: resources/views/modules/media-list/page.phtml:79
 #: resources/views/modules/media-list/page.phtml:178
@@ -18790,6 +18812,7 @@ msgstr ""
 
 #. I18N: A button label, last page
 #: resources/views/admin/trees-preferences.phtml:556
+#: resources/views/edit/reorder-card-header.phtml:34
 #: resources/views/lists/datatables-attributes.phtml:16
 #: resources/views/modules/media-list/page.phtml:103
 #: resources/views/modules/media-list/page.phtml:202
@@ -19372,11 +19395,11 @@ msgstr ""
 #: resources/views/edit/link-spouse-to-individual.phtml:31
 #: resources/views/edit/new-individual.phtml:315
 #: resources/views/edit/raw-gedcom-fact.phtml:32
-#: resources/views/edit/raw-gedcom-record.phtml:58
-#: resources/views/edit/reorder-children.phtml:36
-#: resources/views/edit/reorder-families.phtml:95
-#: resources/views/edit/reorder-media.phtml:34
-#: resources/views/edit/reorder-names.phtml:36
+#: resources/views/edit/raw-gedcom-record.phtml:57
+#: resources/views/edit/reorder-children.phtml:34
+#: resources/views/edit/reorder-families.phtml:87
+#: resources/views/edit/reorder-media.phtml:32
+#: resources/views/edit/reorder-names.phtml:34
 #: resources/views/edit/shared-note.phtml:32
 #: resources/views/modals/create-media-from-file.phtml:58
 #: resources/views/modals/footer-save-cancel.phtml:10
@@ -19753,7 +19776,7 @@ msgid "sort by date"
 msgstr ""
 
 #. I18N: A button label.
-#: resources/views/edit/reorder-children.phtml:41
+#: resources/views/edit/reorder-children.phtml:39
 #: resources/xml/reports/bdm_report.xml:11
 #: resources/xml/reports/birth_report.xml:9
 #: resources/xml/reports/change_report.xml:7
@@ -20105,6 +20128,7 @@ msgstr ""
 msgid "unreliable evidence"
 msgstr ""
 
+#: resources/views/edit/reorder-card-header.phtml:26
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "up"
 msgstr ""
@@ -20251,6 +20275,8 @@ msgstr ""
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:224
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:225
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:226
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:227
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:228
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"

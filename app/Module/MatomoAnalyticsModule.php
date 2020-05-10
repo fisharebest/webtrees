@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\I18N;
 
 /**
  * Class MatomoAnalyticsModule - add support for Matomo analytics.
@@ -38,7 +39,7 @@ class MatomoAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
      */
     public function title(): string
     {
-        return 'Matomo™ / Piwik™ analytics';
+        return I18N::translate('Matomo™ / Piwik™ analytics');
     }
 
     /**

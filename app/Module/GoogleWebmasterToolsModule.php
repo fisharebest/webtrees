@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\I18N;
+
 /**
  * Class GoogleWebmasterToolsModule - add support for Google webmaster tools.
  */
@@ -36,7 +38,7 @@ class GoogleWebmasterToolsModule extends AbstractModule implements ModuleAnalyti
      */
     public function title(): string
     {
-        return 'Google™ webmaster tools';
+        return I18N::translate('Google™ webmaster tools');
     }
 
     /**

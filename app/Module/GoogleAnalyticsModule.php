@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -40,7 +41,7 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
      */
     public function title(): string
     {
-        return 'Google™ analytics';
+        return I18N::translate('Google™ analytics');
     }
 
     /**

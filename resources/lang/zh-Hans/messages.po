@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-10 12:00+0100\n"
+"POT-Creation-Date: 2020-05-10 20:40+0100\n"
 "PO-Revision-Date: 2020-04-26 13:52+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\n"
@@ -245,7 +245,7 @@ msgid "%s day"
 msgid_plural "%s days"
 msgstr[0] "%s 天"
 
-#: resources/views/calendar-list.phtml:18
+#: resources/views/calendar-list.phtml:22
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
@@ -267,7 +267,7 @@ msgstr[0] "%s 孙子"
 
 #: app/Module/LifespansChartModule.php:244
 #: resources/views/admin/trees-unconnected.phtml:37
-#: resources/views/calendar-list.phtml:13
+#: resources/views/calendar-list.phtml:17
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
@@ -398,7 +398,7 @@ msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s 岁"
 
-#: app/Http/Controllers/CalendarController.php:537
+#: app/Http/Controllers/CalendarController.php:348
 #: resources/views/modules/yahrzeit/list.phtml:44
 #, php-format
 msgid "%s year anniversary"
@@ -1322,7 +1322,7 @@ msgstr "添加一个子女创建一个单亲家庭"
 msgid "Add a daughter"
 msgstr "添加女儿"
 
-#: resources/views/edit/raw-gedcom-record.phtml:47
+#: resources/views/edit/raw-gedcom-record.phtml:46
 msgid "Add a fact"
 msgstr "添加一个事实"
 
@@ -2057,7 +2057,7 @@ msgstr "相关人员是一个和这个个体有关系（如朋友或老板）个
 msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "同时显示个人祖先和后代的类似沙漏形状的图表。"
 
-#: resources/views/edit/reorder-families.phtml:65
+#: resources/views/edit/reorder-families.phtml:63
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
 msgstr "一个人可以具有不止一对父母：例如，出生和过继。"
 
@@ -2141,7 +2141,7 @@ msgstr "安圭拉岛"
 msgid "Anniversary"
 msgstr "纪念日"
 
-#: app/Http/Controllers/CalendarController.php:144
+#: app/Http/Controllers/CalendarController.php:145
 msgid "Anniversary calendar"
 msgstr "周年纪念日历"
 
@@ -2736,7 +2736,7 @@ msgstr "批量更新"
 msgid "Baton Rouge, Louisiana, United States"
 msgstr "巴吞鲁日路易斯安那"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:239
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:241
 msgid "Begins with"
 msgstr "以其开头"
 
@@ -2813,6 +2813,10 @@ msgstr "数码资料"
 #: app/Functions/FunctionsPrint.php:420 app/Functions/FunctionsPrint.php:422
 msgid "Bing Maps™"
 msgstr "Bing Maps™"
+
+#: app/Module/BingWebmasterToolsModule.php:41
+msgid "Bing™ webmaster tools"
+msgstr ""
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -4211,7 +4215,7 @@ msgstr "联系信息"
 msgid "Contact method"
 msgstr "联系方式"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:240
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:242
 msgid "Contains"
 msgstr "包含"
 
@@ -4936,7 +4940,7 @@ msgstr "%s 的女儿"
 msgid "Day"
 msgstr "日"
 
-#: app/Http/Controllers/CalendarController.php:411
+#: app/Http/Controllers/CalendarController.php:397
 msgid "Day not set"
 msgstr "没有设置日期"
 
@@ -6152,7 +6156,7 @@ msgstr "近亲的事件"
 msgid "Everybody has this role, including visitors to the website and search engines."
 msgstr "每个人都有这个角色,包括网站的访问者和搜索引擎。"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:238
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:240
 msgid "Exact"
 msgstr "精确"
 
@@ -7384,6 +7388,14 @@ msgstr "教子"
 msgid "Google Maps™"
 msgstr "谷歌地图™"
 
+#: app/Module/GoogleAnalyticsModule.php:44
+msgid "Google™ analytics"
+msgstr ""
+
+#: app/Module/GoogleWebmasterToolsModule.php:41
+msgid "Google™ webmaster tools"
+msgstr ""
+
 # I18N: gedcom tag GRAD
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:785
@@ -8045,11 +8057,11 @@ msgstr "一些日历,一天开始在午夜。其他的日历,一天开始在日�
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 msgstr "在一些国家,隐私法不仅适用于在世的人,而且适用于那些最近死去的人。这个选项将允许你扩展在世人员隐私规则到那些在指定年数出生或去世的人。这个值留空表示禁用这个功能。"
 
-#: app/Http/Controllers/CalendarController.php:151
+#: app/Http/Controllers/CalendarController.php:152
 msgid "In this month…"
 msgstr "在这个月…"
 
-#: app/Http/Controllers/CalendarController.php:154
+#: app/Http/Controllers/CalendarController.php:155
 msgid "In this year…"
 msgstr "在这一年…"
 
@@ -9675,6 +9687,10 @@ msgstr "模糊匹配。"
 msgid "Match the exact text, unless it occurs in the middle of a word."
 msgstr "全字匹配。"
 
+#: app/Module/MatomoAnalyticsModule.php:42
+msgid "Matomo™ / Piwik™ analytics"
+msgstr ""
+
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -11198,7 +11214,7 @@ msgstr "阿曼"
 msgid "On this day"
 msgstr "在这一天"
 
-#: app/Http/Controllers/CalendarController.php:148
+#: app/Http/Controllers/CalendarController.php:149
 msgid "On this day…"
 msgstr "在这天…"
 
@@ -11449,7 +11465,7 @@ msgid "Paraguay"
 msgstr "巴拉圭"
 
 #: app/Http/RequestHandlers/IndividualPage.php:209
-#: resources/views/edit/reorder-families.phtml:62
+#: resources/views/edit/reorder-families.phtml:60
 #: resources/views/modules/family_nav/sidebar-family.phtml:43
 msgid "Parents"
 msgstr "父母"
@@ -14162,7 +14178,7 @@ msgstr "索萨"
 msgid "Sosa-Stradonitz number"
 msgstr "端口号"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:241
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:243
 msgid "Sounds like"
 msgstr "听起来像"
 
@@ -14363,6 +14379,10 @@ msgstr "开始年"
 #: resources/xml/reports/change_report.xml:5
 msgid "Starting range of change dates"
 msgstr "变更日期范围的开始"
+
+#: app/Module/StatcounterModule.php:41
+msgid "Statcounter™"
+msgstr ""
 
 # I18N: gedcom tag STAE
 #. I18N: gedcom tag STAE
@@ -14973,7 +14993,7 @@ msgstr "文件只是部分上传,请重新上传。"
 msgid "The file “%s” does not exist."
 msgstr "文件“%s”不存在。"
 
-#: resources/views/edit/reorder-families.phtml:67
+#: resources/views/edit/reorder-families.phtml:65
 msgid "The first family in the list will be used in charts, lists, reports, etc."
 msgstr "列表中的第一个家庭将用于图表，列表，报告等。"
 
@@ -15213,7 +15233,7 @@ msgstr "存储库已被创建"
 msgid "The search menu."
 msgstr "搜索菜单。"
 
-#: app/Services/SearchService.php:1066
+#: app/Services/SearchService.php:1075
 msgid "The search returned too many results."
 msgstr "搜索返回结果数超出限制。"
 
@@ -17918,11 +17938,11 @@ msgstr "计算出 %s"
 #: resources/views/edit/link-spouse-to-individual.phtml:36
 #: resources/views/edit/new-individual.phtml:327
 #: resources/views/edit/raw-gedcom-fact.phtml:36
-#: resources/views/edit/raw-gedcom-record.phtml:62
-#: resources/views/edit/reorder-children.phtml:46
-#: resources/views/edit/reorder-families.phtml:100
-#: resources/views/edit/reorder-media.phtml:39
-#: resources/views/edit/reorder-names.phtml:41
+#: resources/views/edit/raw-gedcom-record.phtml:61
+#: resources/views/edit/reorder-children.phtml:44
+#: resources/views/edit/reorder-families.phtml:92
+#: resources/views/edit/reorder-media.phtml:37
+#: resources/views/edit/reorder-names.phtml:39
 #: resources/views/edit/shared-note.phtml:37
 #: resources/views/message-page.phtml:59
 #: resources/views/modals/create-media-from-file.phtml:62
@@ -18093,6 +18113,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr "去世"
 
+#: resources/views/edit/reorder-card-header.phtml:30
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "down"
 msgstr "长辈在下"
@@ -18306,6 +18327,7 @@ msgstr "第五代堂兄(妹)"
 # I18N: A button label, first page
 #. I18N: A button label, first page
 #: resources/views/admin/trees-preferences.phtml:556
+#: resources/views/edit/reorder-card-header.phtml:22
 #: resources/views/lists/datatables-attributes.phtml:14
 #: resources/views/modules/media-list/page.phtml:79
 #: resources/views/modules/media-list/page.phtml:178
@@ -20275,6 +20297,7 @@ msgstr "额外天数"
 # I18N: A button label, last page
 #. I18N: A button label, last page
 #: resources/views/admin/trees-preferences.phtml:556
+#: resources/views/edit/reorder-card-header.phtml:34
 #: resources/views/lists/datatables-attributes.phtml:16
 #: resources/views/modules/media-list/page.phtml:103
 #: resources/views/modules/media-list/page.phtml:202
@@ -20881,11 +20904,11 @@ msgstr "长辈在右"
 #: resources/views/edit/link-spouse-to-individual.phtml:31
 #: resources/views/edit/new-individual.phtml:315
 #: resources/views/edit/raw-gedcom-fact.phtml:32
-#: resources/views/edit/raw-gedcom-record.phtml:58
-#: resources/views/edit/reorder-children.phtml:36
-#: resources/views/edit/reorder-families.phtml:95
-#: resources/views/edit/reorder-media.phtml:34
-#: resources/views/edit/reorder-names.phtml:36
+#: resources/views/edit/raw-gedcom-record.phtml:57
+#: resources/views/edit/reorder-children.phtml:34
+#: resources/views/edit/reorder-families.phtml:87
+#: resources/views/edit/reorder-media.phtml:32
+#: resources/views/edit/reorder-names.phtml:34
 #: resources/views/edit/shared-note.phtml:32
 #: resources/views/modals/create-media-from-file.phtml:58
 #: resources/views/modals/footer-save-cancel.phtml:10
@@ -21276,7 +21299,7 @@ msgstr "按日期排序"
 
 # I18N: A button label.
 #. I18N: A button label.
-#: resources/views/edit/reorder-children.phtml:41
+#: resources/views/edit/reorder-children.phtml:39
 #: resources/xml/reports/bdm_report.xml:11
 #: resources/xml/reports/birth_report.xml:9
 #: resources/xml/reports/change_report.xml:7
@@ -21651,6 +21674,7 @@ msgstr "无限制"
 msgid "unreliable evidence"
 msgstr "不可靠的证据"
 
+#: resources/views/edit/reorder-card-header.phtml:26
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "up"
 msgstr "长辈在上"
@@ -21803,6 +21827,8 @@ msgstr "妹妹"
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:224
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:225
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:226
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:227
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:228
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"

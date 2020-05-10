@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-10 12:00+0100\n"
+"POT-Creation-Date: 2020-05-10 20:40+0100\n"
 "PO-Revision-Date: 2020-05-08 11:40+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb_NO/>\n"
@@ -226,7 +226,7 @@ msgid_plural "%s days"
 msgstr[0] "%s dag"
 msgstr[1] "%s dager"
 
-#: resources/views/calendar-list.phtml:18
+#: resources/views/calendar-list.phtml:22
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
@@ -251,7 +251,7 @@ msgstr[1] "%s barnebarn"
 
 #: app/Module/LifespansChartModule.php:244
 #: resources/views/admin/trees-unconnected.phtml:37
-#: resources/views/calendar-list.phtml:13
+#: resources/views/calendar-list.phtml:17
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
@@ -383,7 +383,7 @@ msgid_plural "%s years"
 msgstr[0] "%s år"
 msgstr[1] "%s år"
 
-#: app/Http/Controllers/CalendarController.php:537
+#: app/Http/Controllers/CalendarController.php:348
 #: resources/views/modules/yahrzeit/list.phtml:44
 #, php-format
 msgid "%s year anniversary"
@@ -1220,7 +1220,7 @@ msgstr "Legg til et barn for å opprette en aleneforeldrefamilie"
 msgid "Add a daughter"
 msgstr "Legg til en datter"
 
-#: resources/views/edit/raw-gedcom-record.phtml:47
+#: resources/views/edit/raw-gedcom-record.phtml:46
 msgid "Add a fact"
 msgstr "Tilføy faktum"
 
@@ -1911,7 +1911,7 @@ msgstr "En forbindelse er en annen person som har vært tilknyttet denne persone
 msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Et timeglassdiagram over en persons aner og etterkommere."
 
-#: resources/views/edit/reorder-families.phtml:65
+#: resources/views/edit/reorder-families.phtml:63
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
 msgstr "En person kan ha mer enn ett sett foreldre.  For eksempel ved adopsjon."
 
@@ -1985,7 +1985,7 @@ msgstr "Anguilla"
 msgid "Anniversary"
 msgstr "Merkedag"
 
-#: app/Http/Controllers/CalendarController.php:144
+#: app/Http/Controllers/CalendarController.php:145
 msgid "Anniversary calendar"
 msgstr "Årsdagskalender"
 
@@ -2533,7 +2533,7 @@ msgstr "Masseoppdatering"
 msgid "Baton Rouge, Louisiana, United States"
 msgstr "Baton Rouge, Louisiana, USA"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:239
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:241
 msgid "Begins with"
 msgstr "Begynner med"
 
@@ -2599,6 +2599,10 @@ msgstr "Binært dataobjekt"
 #: app/Functions/FunctionsPrint.php:420 app/Functions/FunctionsPrint.php:422
 msgid "Bing Maps™"
 msgstr "Bing Kart™"
+
+#: app/Module/BingWebmasterToolsModule.php:41
+msgid "Bing™ webmaster tools"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:261
@@ -3889,7 +3893,7 @@ msgstr "Kontaktinformasjon"
 msgid "Contact method"
 msgstr "Kontaktmetode"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:240
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:242
 msgid "Contains"
 msgstr "Inneholder"
 
@@ -4582,7 +4586,7 @@ msgstr "%ss datter"
 msgid "Day"
 msgstr "Dag"
 
-#: app/Http/Controllers/CalendarController.php:411
+#: app/Http/Controllers/CalendarController.php:397
 msgid "Day not set"
 msgstr "Dag ikke angitt"
 
@@ -5719,7 +5723,7 @@ msgstr "Hendelser for nære slektninger"
 msgid "Everybody has this role, including visitors to the website and search engines."
 msgstr "Alle har denne rollen, inkludert besøkende på nettstedet, og søkemotorer."
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:238
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:240
 msgid "Exact"
 msgstr "Eksakt"
 
@@ -6855,6 +6859,14 @@ msgstr "Gudsønn"
 msgid "Google Maps™"
 msgstr "Google Maps™"
 
+#: app/Module/GoogleAnalyticsModule.php:44
+msgid "Google™ analytics"
+msgstr ""
+
+#: app/Module/GoogleWebmasterToolsModule.php:41
+msgid "Google™ webmaster tools"
+msgstr ""
+
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:785
 msgid "Graduation"
@@ -7457,11 +7469,11 @@ msgstr "I noen kalendre begynner dagen ved midnatt, i andre ved solnedgang. Konv
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 msgstr "I noen land gjelder personvernslovene ikke bare for nålevende personer, men også for nylig avdøde. Dette valget lar deg utvide personvernet til også å gjelde personer som er født eller døde innefor et angitt antall år. Hvis feltene står tomme, brukes ikke funksjonen."
 
-#: app/Http/Controllers/CalendarController.php:151
+#: app/Http/Controllers/CalendarController.php:152
 msgid "In this month…"
 msgstr "I denne måned…"
 
-#: app/Http/Controllers/CalendarController.php:154
+#: app/Http/Controllers/CalendarController.php:155
 msgid "In this year…"
 msgstr "Familiehendelser i år…"
 
@@ -8949,6 +8961,10 @@ msgstr "Match eksakt tekst, selv om den er i midten av et ord."
 msgid "Match the exact text, unless it occurs in the middle of a word."
 msgstr "Match eksakt tekst, unntatt hvis den er i midten av et ord."
 
+#: app/Module/MatomoAnalyticsModule.php:42
+msgid "Matomo™ / Piwik™ analytics"
+msgstr ""
+
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
 msgid "Mauritania"
@@ -10332,7 +10348,7 @@ msgstr "Oman"
 msgid "On this day"
 msgstr "På denne dag"
 
-#: app/Http/Controllers/CalendarController.php:148
+#: app/Http/Controllers/CalendarController.php:149
 msgid "On this day…"
 msgstr "Årsdag for familiehendelser…"
 
@@ -10562,7 +10578,7 @@ msgid "Paraguay"
 msgstr "Paraguay"
 
 #: app/Http/RequestHandlers/IndividualPage.php:209
-#: resources/views/edit/reorder-families.phtml:62
+#: resources/views/edit/reorder-families.phtml:60
 #: resources/views/modules/family_nav/sidebar-family.phtml:43
 msgid "Parents"
 msgstr "Foreldre"
@@ -13042,7 +13058,7 @@ msgstr "Sosa-nummer"
 msgid "Sosa-Stradonitz number"
 msgstr "Sosa-Stradonitz nummer"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:241
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:243
 msgid "Sounds like"
 msgstr "Høres ut som"
 
@@ -13228,6 +13244,10 @@ msgstr "Start år"
 #: resources/xml/reports/change_report.xml:5
 msgid "Starting range of change dates"
 msgstr "Vis endringer gjort fra og med"
+
+#: app/Module/StatcounterModule.php:41
+msgid "Statcounter™"
+msgstr ""
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:1029
@@ -13780,7 +13800,7 @@ msgstr "Filen ble bare delvis opplastet. Vennligst prøv igjen."
 msgid "The file “%s” does not exist."
 msgstr "Filen «%s» finnes ikke."
 
-#: resources/views/edit/reorder-families.phtml:67
+#: resources/views/edit/reorder-families.phtml:65
 msgid "The first family in the list will be used in charts, lists, reports, etc."
 msgstr "Den første familien i listen vil bli benyttet i diagrammer, lister, rapporter, osv."
 
@@ -14007,7 +14027,7 @@ msgstr "Arkivet er blitt opprettet"
 msgid "The search menu."
 msgstr "Søkemeny."
 
-#: app/Services/SearchService.php:1066
+#: app/Services/SearchService.php:1075
 msgid "The search returned too many results."
 msgstr "Søket ga for mange resultater."
 
@@ -16521,11 +16541,11 @@ msgstr "beregnet %s"
 #: resources/views/edit/link-spouse-to-individual.phtml:36
 #: resources/views/edit/new-individual.phtml:327
 #: resources/views/edit/raw-gedcom-fact.phtml:36
-#: resources/views/edit/raw-gedcom-record.phtml:62
-#: resources/views/edit/reorder-children.phtml:46
-#: resources/views/edit/reorder-families.phtml:100
-#: resources/views/edit/reorder-media.phtml:39
-#: resources/views/edit/reorder-names.phtml:41
+#: resources/views/edit/raw-gedcom-record.phtml:61
+#: resources/views/edit/reorder-children.phtml:44
+#: resources/views/edit/reorder-families.phtml:92
+#: resources/views/edit/reorder-media.phtml:37
+#: resources/views/edit/reorder-names.phtml:39
 #: resources/views/edit/shared-note.phtml:37
 #: resources/views/message-page.phtml:59
 #: resources/views/modals/create-media-from-file.phtml:62
@@ -16687,6 +16707,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr "døde"
 
+#: resources/views/edit/reorder-card-header.phtml:30
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "down"
 msgstr "ned"
@@ -16886,6 +16907,7 @@ msgstr "seksmenning"
 
 #. I18N: A button label, first page
 #: resources/views/admin/trees-preferences.phtml:556
+#: resources/views/edit/reorder-card-header.phtml:22
 #: resources/views/lists/datatables-attributes.phtml:14
 #: resources/views/modules/media-list/page.phtml:79
 #: resources/views/modules/media-list/page.phtml:178
@@ -18818,6 +18840,7 @@ msgstr "jours complémentaires"
 
 #. I18N: A button label, last page
 #: resources/views/admin/trees-preferences.phtml:556
+#: resources/views/edit/reorder-card-header.phtml:34
 #: resources/views/lists/datatables-attributes.phtml:16
 #: resources/views/modules/media-list/page.phtml:103
 #: resources/views/modules/media-list/page.phtml:202
@@ -19401,11 +19424,11 @@ msgstr "høyre"
 #: resources/views/edit/link-spouse-to-individual.phtml:31
 #: resources/views/edit/new-individual.phtml:315
 #: resources/views/edit/raw-gedcom-fact.phtml:32
-#: resources/views/edit/raw-gedcom-record.phtml:58
-#: resources/views/edit/reorder-children.phtml:36
-#: resources/views/edit/reorder-families.phtml:95
-#: resources/views/edit/reorder-media.phtml:34
-#: resources/views/edit/reorder-names.phtml:36
+#: resources/views/edit/raw-gedcom-record.phtml:57
+#: resources/views/edit/reorder-children.phtml:34
+#: resources/views/edit/reorder-families.phtml:87
+#: resources/views/edit/reorder-media.phtml:32
+#: resources/views/edit/reorder-names.phtml:34
 #: resources/views/edit/shared-note.phtml:32
 #: resources/views/modals/create-media-from-file.phtml:58
 #: resources/views/modals/footer-save-cancel.phtml:10
@@ -19782,7 +19805,7 @@ msgid "sort by date"
 msgstr "sorter etter dato"
 
 #. I18N: A button label.
-#: resources/views/edit/reorder-children.phtml:41
+#: resources/views/edit/reorder-children.phtml:39
 #: resources/xml/reports/bdm_report.xml:11
 #: resources/xml/reports/birth_report.xml:9
 #: resources/xml/reports/change_report.xml:7
@@ -20134,6 +20157,7 @@ msgstr "ubegrenset"
 msgid "unreliable evidence"
 msgstr "upålitelig kilde"
 
+#: resources/views/edit/reorder-card-header.phtml:26
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "up"
 msgstr "opp"
@@ -20280,6 +20304,8 @@ msgstr "yngre søster"
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:224
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:225
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:226
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:227
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:228
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"

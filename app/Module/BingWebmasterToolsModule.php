@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\I18N;
+
 /**
  * Class BingWebmasterToolsModule - add support for Bing webmaster tools
  */
@@ -36,7 +38,7 @@ class BingWebmasterToolsModule extends AbstractModule implements ModuleAnalytics
      */
     public function title(): string
     {
-        return 'Bing™ webmaster tools';
+        return I18N::translate('Bing™ webmaster tools');
     }
 
     /**
