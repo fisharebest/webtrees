@@ -4,19 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-10 20:40+0100\n"
-"PO-Revision-Date: 2020-05-08 22:12+0000\n"
-"Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
-"Language-Team: Urdu <https://translate.webtrees.net/projects/webtrees/webtrees/ur/>\n"
-"Language: ur\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-05-10 18:08+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Urdu <https://translate.webtrees.net/projects/webtrees/webtrees/ur/>\nLanguage: ur\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -25,7 +13,7 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml:334
 #: resources/xml/reports/ahnentafel_report.xml:359
 msgid " but the details are unknown"
-msgstr ""
+msgstr " لیکن تفصیلات معلوم نہیں ہیں"
 
 #: resources/xml/reports/ahnentafel_report.xml:159
 #: resources/xml/reports/ahnentafel_report.xml:187
@@ -42,14 +30,14 @@ msgstr ""
 #: resources/xml/reports/descendancy_report.xml:423
 #: resources/xml/reports/descendancy_report.xml:454
 msgid " in "
-msgstr ""
+msgstr " میں "
 
 #. I18N: Abbreviation for "number %s"
 #: app/Functions/FunctionsPrintFacts.php:193
 #: app/Functions/FunctionsPrintFacts.php:200
 #, php-format
 msgid "#%s"
-msgstr ""
+msgstr "%s#"
 
 #: app/Http/Controllers/AdminTreesController.php:1551
 #, php-format
@@ -72,30 +60,30 @@ msgstr ""
 #: app/Http/RequestHandlers/IndividualPage.php:295
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:333
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%2$s سیکنڈ میں %1$s کے بی ڈاؤنلوڈ ہوئی۔"
 
 #: app/Http/Controllers/Admin/UsersController.php:340
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s موجود نہیں ہے"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/Admin/UsersController.php:237
 #: app/Http/Controllers/AdminTreesController.php:285
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s موجود نہیں ہے۔"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:282
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s موجود نہیں ہے۔ کیا آپ کا مطلب %2$s ہے؟"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: app/Http/Controllers/AdminTreesController.php:315
@@ -372,8 +360,8 @@ msgstr ""
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ہفتہ"
+msgstr[1] "%s ہفتے"
 
 #: app/Age.php:98 app/Functions/FunctionsDate.php:66
 #: app/Functions/FunctionsPrint.php:250
@@ -392,7 +380,7 @@ msgstr[1] "%s سال"
 #: resources/views/modules/yahrzeit/list.phtml:44
 #, php-format
 msgid "%s year anniversary"
-msgstr ""
+msgstr "%s سالہ سالگرہ"
 
 #: app/Functions/Functions.php:493
 #, php-format
@@ -428,37 +416,37 @@ msgstr "%s&nbsp;عیسوی"
 #: app/Module/StatisticsChartModule.php:877
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "+%s"
 
 #: app/Module/ClippingsCartModule.php:618
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s، کے آباؤ اجداد اور ان کے کنبے"
 
 #: app/Module/ClippingsCartModule.php:615
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s، کے والدین اور بھائی بہن"
 
 #: app/Module/ClippingsCartModule.php:616
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s، کے شریک حیات اور بچے"
 
 #: app/Module/ClippingsCartModule.php:619
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s، کے شریک حیات اور آل اولاد"
 
 #: app/Module/ClippingsCartModule.php:628
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s، کے آباؤ اجداد اور ان کے کنبے"
 
 #: app/Module/ClippingsCartModule.php:625
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s، کے والدین اور بھائی بہن"
 
 #: app/Module/ClippingsCartModule.php:626
 #, php-format
