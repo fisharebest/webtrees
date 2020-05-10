@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-10 18:08+0000\n"
+"PO-Revision-Date: 2020-05-10 19:46+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Urdu <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ur/>\n"
@@ -66,7 +66,7 @@ msgstr "%s#"
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s میں %4$s کے لیے %3$s کی لنک موجود ہے۔"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
@@ -108,15 +108,15 @@ msgstr "%1$s موجود نہیں ہے۔ کیا آپ کا مطلب %2$s ہے؟"
 #: admin_trees_check.php:204
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s میں واپس %2$s کے لیے کوئی لنک موجود نہیں ہے۔"
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:312 admin_site_upgrade.php:396
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2$s سیکنڈ میں %1$s فائل نکالی گئی۔"
+msgstr[1] "%2$s سیکنڈ میں %1$s فائلیں نکالی گئیں۔"
 
 #: app/Module/GoogleMapsModule.php:838
 #, php-format
@@ -137,33 +137,33 @@ msgstr[1] ""
 #: admin_trees_check.php:192
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s ایک %2$s ہے لیکن %3$s کی توقع ہے۔"
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:645
 #, php-format
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:630
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:615
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:497 app/Media.php:387
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s پکسلز"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #. I18N: A range of numbers
@@ -455,8 +455,8 @@ msgstr[1] "%s سال"
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] "%s سال پہلے"
-msgstr[1] "%s سال پہلے"
+msgstr[0] "%s سال قبل"
+msgstr[1] "%s سال قبل"
 
 #: app/Functions/FunctionsPrintLists.php:1805 app/Module/YahrzeitModule.php:129
 #: calendar.php:601
