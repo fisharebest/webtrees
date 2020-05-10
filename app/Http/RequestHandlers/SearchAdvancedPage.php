@@ -221,9 +221,11 @@ class SearchAdvancedPage implements RequestHandlerInterface
     {
         return [
             0  => I18N::translate('Exact date'),
+            1  => I18N::plural('±%s year', '±%s years', 1, I18N::number(1)),
             2  => I18N::plural('±%s year', '±%s years', 2, I18N::number(2)),
             5  => I18N::plural('±%s year', '±%s years', 5, I18N::number(5)),
             10 => I18N::plural('±%s year', '±%s years', 10, I18N::number(10)),
+            20 => I18N::plural('±%s year', '±%s years', 20, I18N::number(20)),
         ];
     }
 
