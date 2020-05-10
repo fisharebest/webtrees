@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-05-10 19:46+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Urdu <https://translate.webtrees.net/projects/webtrees/webtrees/ur/>\nLanguage: ur\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-05-10 21:45+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Urdu <https://translate.webtrees.net/projects/webtrees/webtrees/ur/>\nLanguage: ur\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -135,44 +135,44 @@ msgstr "%1$s × %2$s پکسلز"
 #: app/Individual.php:578 app/Module/StatisticsChartModule.php:872
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #: app/Functions/Functions.php:2392
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s کے %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:600
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:257
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j %F %Y"
 
 #: app/Statistics/Service/CenturyService.php:39
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s عام دور سے پہلے"
 
 #. I18N: size of file in KB
 #: app/Http/Controllers/Admin/MediaController.php:353 app/MediaFile.php:325
 #: app/Services/MediaFileService.php:89
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s کے بی"
 
 #: app/Module/ClippingsCartModule.php:617
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s اور ان کے آباؤ اجداد"
 
 #: app/Module/ClippingsCartModule.php:627
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s اور ان کے آباؤ اجداد"
 
 #: app/Module/ClippingsCartModule.php:969
 #, php-format
