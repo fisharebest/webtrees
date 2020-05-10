@@ -1,8 +1,12 @@
 <?php
 
-use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
+
+/**
+ * @var array<Fact> $family_anniversaries
+ * @var array<Fact> $individual_anniversaries
+ */
 
 ?>
 
@@ -10,38 +14,48 @@ use Fisharebest\Webtrees\Individual;
     <tr>
         <td class="wt-page-options-label text-center w-50">
             <?= view('icons/individual') ?>
-            <?= I18N::plural('%s individual', '%s individuals', count($individuals), I18N::number(count($individuals))) ?>
+            <?= I18N::plural('%s individual', '%s individuals', $individual_anniversaries->count(), I18N::number($individual_anniversaries->count())) ?>
         </td>
 
         <td class="wt-page-options-label text-center w-50">
             <?= view('icons/family') ?>
-            <?= I18N::plural('%s family', '%s families', count($families), I18N::number(count($families))) ?>
+            <?= I18N::plural('%s family', '%s families', $family_anniversaries->count(), I18N::number($family_anniversaries->count())) ?>
         </td>
     </tr>
 
     <tr>
         <td class="wt-page-options-value align-top">
             <ul class="list-unstyled">
-                <?php foreach ($individuals as $xref => $facts) : ?>
+                <?php foreach ($individual_anniversaries as $fact) : ?>
                     <li>
-                        <a href="<?= e(Individual::getInstance((string) $xref, $tree)->url()) ?>">
-                            <?= Individual::getInstance($xref, $tree)->fullName() ?>
+                        <a href="<?= e($fact->record()->url()) ?>">
+                            <?= $fact->record()->fullName() ?>
                         </a>
 
-                        <div class="indent"><?= $facts ?></div>
+                        <div class="indent">
+                            <?= $fact->label() ?> — <?= $fact->date()->display(true, null, false) ?>
+                            <?php if ($fact->attribute('PLAC') !== '') : ?>
+                                — <?=  $fact->attribute('PLAC') ?>
+                            <?php endif ?>
+                        </div>
                     </li>
                 <?php endforeach ?>
             </ul>
         </td>
         <td class="wt-page-options-value align-top">
             <ul class="list-unstyled">
-                <?php foreach ($families as $xref => $facts) : ?>
+                <?php foreach ($family_anniversaries as $fact) : ?>
                     <li>
-                        <a href="<?= e(Family::getInstance((string) $xref, $tree)->url()) ?>">
-                            <?= Family::getInstance($xref, $tree)->fullName() ?>
+                        <a href="<?= e($fact->record()->url()) ?>">
+                            <?= $fact->record()->fullName() ?>
                         </a>
 
-                        <div class="indent"><?= $facts ?></div>
+                        <div class="indent">
+                            <?= $fact->label() ?> — <?= $fact->date()->display(true, null, false) ?>
+                            <?php if ($fact->attribute('PLAC') !== '') : ?>
+                                — <?=  $fact->attribute('PLAC') ?>
+                            <?php endif ?>
+                        </div>
                     </li>
                 <?php endforeach ?>
             </ul>

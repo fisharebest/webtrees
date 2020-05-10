@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,10 +35,10 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function array_unique;
 use function assert;
 use function count;
 use function e;
@@ -54,6 +54,7 @@ use function route;
 use function str_replace;
 use function strlen;
 use function substr;
+use function view;
 
 /**
  * Show anniveraries for events in a given day/month/year.
@@ -281,197 +282,178 @@ class CalendarController extends AbstractBaseController
             $view = 'month';
         }
 
-        /** @var Fact[]|Fact[][] $found_facts */
-        $found_facts = [];
+        // Day and year share the same layout.
+        if ($view === 'day' || $view === 'year') {
+            if ($view === 'day') {
+                $anniversary_facts = $this->calendar_service->getAnniversaryEvents($cal_date->minimumJulianDay(), $filterev, $tree);
+            } else {
+                $ged_year = new Date($cal . ' ' . $year);
+                $anniversary_facts = $this->calendar_service->getCalendarEvents($ged_year->minimumJulianDay(), $ged_year->maximumJulianDay(), $filterev, $tree);
+            }
 
-        switch ($view) {
-            case 'day':
-                $found_facts = $this->applyFilter($this->calendar_service->getAnniversaryEvents($cal_date->minimumJulianDay(), $filterev, $tree), $filterof, $filtersx);
-                break;
-            case 'month':
-                $cal_date->day = 0;
-                $cal_date->setJdFromYmd();
-                // Make a separate list for each day. Unspecified/invalid days go in day 0.
-                for ($d = 0; $d <= $days_in_month; ++$d) {
-                    $found_facts[$d] = [];
-                }
-                // Fetch events for each day
-                $jds = range($cal_date->minimumJulianDay(), $cal_date->maximumJulianDay());
+            $anniversary_facts   = $this->applyFilter($anniversary_facts, $filterof, $filtersx);
+            $anniversaries = Collection::make($anniversary_facts)
+                ->unique()
+                ->sort(static function (Fact $x, Fact $y): int {
+                    return $x->date()->minimumJulianDay() <=> $y->date()->minimumJulianDay();
+                });
 
-                foreach ($jds as $jd) {
-                    foreach ($this->applyFilter($this->calendar_service->getAnniversaryEvents($jd, $filterev, $tree), $filterof, $filtersx) as $fact) {
-                        $tmp = $fact->date()->minimumDate();
-                        if ($tmp->day >= 1 && $tmp->day <= $tmp->daysInMonth()) {
-                            // If the day is valid (for its own calendar), display it in the
-                            // anniversary day (for the display calendar).
-                            $found_facts[$jd - $cal_date->minimumJulianDay() + 1][] = $fact;
-                        } else {
-                            // Otherwise, display it in the "Day not set" box.
-                            $found_facts[0][] = $fact;
-                        }
-                    }
-                }
-                break;
-            case 'year':
-                $cal_date->month = 0;
-                $cal_date->setJdFromYmd();
-                $found_facts = $this->applyFilter($this->calendar_service->getCalendarEvents($ged_date->minimumJulianDay(), $ged_date->maximumJulianDay(), $filterev, $tree), $filterof, $filtersx);
-                // Eliminate duplicates (e.g. BET JUL 1900 AND SEP 1900 will appear twice in 1900)
-                $found_facts = array_unique($found_facts);
-                break;
+            $family_anniversaries = $anniversaries->filter(static function (Fact $f): bool {
+                return $f->record() instanceof Family;
+            });
+
+            $individual_anniversaries = $anniversaries->filter(static function (Fact $f): bool {
+                return $f->record() instanceof Individual;
+            });
+
+            return response(view('calendar-list', [
+                'family_anniversaries'     => $family_anniversaries,
+                'individual_anniversaries' => $individual_anniversaries,
+            ]));
         }
 
-        // Group the facts by family/individual
-        $indis     = [];
-        $fams      = [];
+        $found_facts = [];
+
+        $cal_date->day = 0;
+        $cal_date->setJdFromYmd();
+        // Make a separate list for each day. Unspecified/invalid days go in day 0.
+        for ($d = 0; $d <= $days_in_month; ++$d) {
+            $found_facts[$d] = [];
+        }
+        // Fetch events for each day
+        $jds = range($cal_date->minimumJulianDay(), $cal_date->maximumJulianDay());
+
+        foreach ($jds as $jd) {
+            foreach ($this->applyFilter($this->calendar_service->getAnniversaryEvents($jd, $filterev, $tree), $filterof, $filtersx) as $fact) {
+                $tmp = $fact->date()->minimumDate();
+                if ($tmp->day >= 1 && $tmp->day <= $tmp->daysInMonth()) {
+                    // If the day is valid (for its own calendar), display it in the
+                    // anniversary day (for the display calendar).
+                    $found_facts[$jd - $cal_date->minimumJulianDay() + 1][] = $fact;
+                } else {
+                    // Otherwise, display it in the "Day not set" box.
+                    $found_facts[0][] = $fact;
+                }
+            }
+        }
+
         $cal_facts = [];
 
-        switch ($view) {
-            case 'year':
-            case 'day':
-                foreach ($found_facts as $fact) {
-                    $record = $fact->record();
-                    $xref   = $record->xref();
-                    if ($record instanceof Individual) {
-                        if (empty($indis[$xref])) {
-                            $indis[$xref] = $this->calendarFactText($fact, true);
-                        } else {
-                            $indis[$xref] .= '<br>' . $this->calendarFactText($fact, true);
-                        }
-                    } elseif ($record instanceof Family) {
-                        if (empty($indis[$xref])) {
-                            $fams[$xref] = $this->calendarFactText($fact, true);
-                        } else {
-                            $fams[$xref] .= '<br>' . $this->calendarFactText($fact, true);
-                        }
-                    }
+        foreach ($found_facts as $d => $facts) {
+            $cal_facts[$d] = [];
+            foreach ($facts as $fact) {
+                $xref = $fact->record()->xref();
+                $text = $text = $fact->label() . ' — ' . $fact->date()->display(true, null, false);
+                if ($fact->anniv > 0) {
+                    $text .= ' (' . I18N::translate('%s year anniversary', $fact->anniv) . ')';
                 }
-                break;
-            case 'month':
-                foreach ($found_facts as $d => $facts) {
-                    $cal_facts[$d] = [];
-                    foreach ($facts as $fact) {
-                        $xref = $fact->record()->xref();
-                        if (empty($cal_facts[$d][$xref])) {
-                            $cal_facts[$d][$xref] = $this->calendarFactText($fact, false);
-                        } else {
-                            $cal_facts[$d][$xref] .= '<br>' . $this->calendarFactText($fact, false);
-                        }
-                    }
+                if (empty($cal_facts[$d][$xref])) {
+                    $cal_facts[$d][$xref] = $text;
+                } else {
+                    $cal_facts[$d][$xref] .= '<br>' . $text;
                 }
-                break;
+            }
+        }
+        // We use JD%7 = 0/Mon…6/Sun. Standard definitions use 0/Sun…6/Sat.
+        $week_start    = (I18N::locale()->territory()->firstDay() + 6) % 7;
+        $weekend_start = (I18N::locale()->territory()->weekendStart() + 6) % 7;
+        $weekend_end   = (I18N::locale()->territory()->weekendEnd() + 6) % 7;
+        // The french  calendar has a 10-day week, which starts on primidi
+        if ($days_in_week === 10) {
+            $week_start    = 0;
+            $weekend_start = -1;
+            $weekend_end   = -1;
         }
 
         ob_start();
 
-        switch ($view) {
-            case 'year':
-            case 'day':
-                echo view('calendar-list', ['families' => $fams, 'individuals' => $indis, 'tree' => $tree]);
-                break;
-
-            case 'month':
-                // We use JD%7 = 0/Mon…6/Sun. Standard definitions use 0/Sun…6/Sat.
-                $week_start    = (I18N::locale()->territory()->firstDay() + 6) % 7;
-                $weekend_start = (I18N::locale()->territory()->weekendStart() + 6) % 7;
-                $weekend_end   = (I18N::locale()->territory()->weekendEnd() + 6) % 7;
-                // The french  calendar has a 10-day week, which starts on primidi
-                if ($days_in_week === 10) {
-                    $week_start    = 0;
-                    $weekend_start = -1;
-                    $weekend_end   = -1;
-                }
-                echo '<table class="w-100"><thead><tr>';
-                for ($week_day = 0; $week_day < $days_in_week; ++$week_day) {
-                    $day_name = $cal_date->dayNames(($week_day + $week_start) % $days_in_week);
-                    if ($week_day == $weekend_start || $week_day == $weekend_end) {
-                        echo '<th class="wt-page-options-label weekend" width="' . (100 / $days_in_week) . '%">', $day_name, '</th>';
-                    } else {
-                        echo '<th class="wt-page-options-label" width="' . (100 / $days_in_week) . '%">', $day_name, '</th>';
-                    }
-                }
-                echo '</tr>';
-                echo '</thead>';
-                echo '<tbody>';
-                // Print days 1 to n of the month, but extend to cover "empty" days before/after the month to make whole weeks.
-                // e.g. instead of 1 -> 30 (=30 days), we might have -1 -> 33 (=35 days)
-                $start_d = 1 - ($cal_date->minimumJulianDay() - $week_start) % $days_in_week;
-                $end_d   = $days_in_month + ($days_in_week - ($cal_date->maximumJulianDay() - $week_start + 1) % $days_in_week) % $days_in_week;
-                // Make sure that there is an empty box for any leap/missing days
-                if ($start_d === 1 && $end_d === $days_in_month && count($found_facts[0]) > 0) {
-                    $end_d += $days_in_week;
-                }
-                for ($d = $start_d; $d <= $end_d; ++$d) {
-                    if (($d + $cal_date->minimumJulianDay() - $week_start) % $days_in_week === 1) {
-                        echo '<tr>';
-                    }
-                    echo '<td class="wt-page-options-value">';
-                    if ($d < 1 || $d > $days_in_month) {
-                        if (count($cal_facts[0]) > 0) {
-                            echo '<span class="cal_day">', I18N::translate('Day not set'), '</span><br style="clear: both;">';
-                            echo '<div class="small" style="height: 180px; overflow: auto;">';
-                            echo $this->calendarListText($cal_facts[0], '', '', $tree);
-                            echo '</div>';
-                            $cal_facts[0] = [];
-                        }
-                    } else {
-                        // Format the day number using the calendar
-                        $tmp   = new Date($cal_date->format("%@ {$d} %O %E"));
-                        $d_fmt = $tmp->minimumDate()->format('%j');
-                        if ($d === $today->day && $cal_date->month === $today->month) {
-                            echo '<span class="cal_day current_day">', $d_fmt, '</span>';
-                        } else {
-                            echo '<span class="cal_day">', $d_fmt, '</span>';
-                        }
-                        // Show a converted date
-                        foreach (explode('_and_', $CALENDAR_FORMAT) as $convcal) {
-                            switch ($convcal) {
-                                case 'french':
-                                    $alt_date = new FrenchDate($cal_date->minimumJulianDay() + $d - 1);
-                                    break;
-                                case 'gregorian':
-                                    $alt_date = new GregorianDate($cal_date->minimumJulianDay() + $d - 1);
-                                    break;
-                                case 'jewish':
-                                    $alt_date = new JewishDate($cal_date->minimumJulianDay() + $d - 1);
-                                    break;
-                                case 'julian':
-                                    $alt_date = new JulianDate($cal_date->minimumJulianDay() + $d - 1);
-                                    break;
-                                case 'hijri':
-                                    $alt_date = new HijriDate($cal_date->minimumJulianDay() + $d - 1);
-                                    break;
-                                case 'jalali':
-                                    $alt_date = new JalaliDate($cal_date->minimumJulianDay() + $d - 1);
-                                    break;
-                                case 'none':
-                                default:
-                                    $alt_date = $cal_date;
-                                    break;
-                            }
-                            if (get_class($alt_date) !== get_class($cal_date) && $alt_date->inValidRange()) {
-                                echo '<span class="rtl_cal_day">' . $alt_date->format('%j %M') . '</span>';
-                                // Just show the first conversion
-                                break;
-                            }
-                        }
-                        echo '<br style="clear: both;"><div class="small" style="height: 180px; overflow: auto;">';
-                        echo $this->calendarListText($cal_facts[$d], '', '', $tree);
-                        echo '</div>';
-                    }
-                    echo '</td>';
-                    if (($d + $cal_date->minimumJulianDay() - $week_start) % $days_in_week === 0) {
-                        echo '</tr>';
-                    }
-                }
-                echo '</tbody>';
-                echo '</table>';
-                break;
+        echo '<table class="w-100"><thead><tr>';
+        for ($week_day = 0; $week_day < $days_in_week; ++$week_day) {
+            $day_name = $cal_date->dayNames(($week_day + $week_start) % $days_in_week);
+            if ($week_day == $weekend_start || $week_day == $weekend_end) {
+                echo '<th class="wt-page-options-label weekend" width="' . (100 / $days_in_week) . '%">', $day_name, '</th>';
+            } else {
+                echo '<th class="wt-page-options-label" width="' . (100 / $days_in_week) . '%">', $day_name, '</th>';
+            }
         }
+        echo '</tr>';
+        echo '</thead>';
+        echo '<tbody>';
+        // Print days 1 to n of the month, but extend to cover "empty" days before/after the month to make whole weeks.
+        // e.g. instead of 1 -> 30 (=30 days), we might have -1 -> 33 (=35 days)
+        $start_d   = 1 - ($cal_date->minimumJulianDay() - $week_start) % $days_in_week;
+        $end_d     = $days_in_month + ($days_in_week - ($cal_date->maximumJulianDay() - $week_start + 1) % $days_in_week) % $days_in_week;
+        // Make sure that there is an empty box for any leap/missing days
+        if ($start_d === 1 && $end_d === $days_in_month && count($found_facts[0]) > 0) {
+            $end_d += $days_in_week;
+        }
+        for ($d = $start_d; $d <= $end_d; ++$d) {
+            if (($d + $cal_date->minimumJulianDay() - $week_start) % $days_in_week === 1) {
+                echo '<tr>';
+            }
+            echo '<td class="wt-page-options-value">';
+            if ($d < 1 || $d > $days_in_month) {
+                if (count($cal_facts[0]) > 0) {
+                    echo '<span class="cal_day">', I18N::translate('Day not set'), '</span><br style="clear: both;">';
+                    echo '<div class="small" style="height: 180px; overflow: auto;">';
+                    echo $this->calendarListText($cal_facts[0], '', '', $tree);
+                    echo '</div>';
+                    $cal_facts[0] = [];
+                }
+            } else {
+                // Format the day number using the calendar
+                $tmp   = new Date($cal_date->format("%@ {$d} %O %E"));
+                $d_fmt = $tmp->minimumDate()->format('%j');
+                if ($d === $today->day && $cal_date->month === $today->month) {
+                    echo '<span class="cal_day current_day">', $d_fmt, '</span>';
+                } else {
+                    echo '<span class="cal_day">', $d_fmt, '</span>';
+                }
+                // Show a converted date
+                foreach (explode('_and_', $CALENDAR_FORMAT) as $convcal) {
+                    switch ($convcal) {
+                        case 'french':
+                            $alt_date = new FrenchDate($cal_date->minimumJulianDay() + $d - 1);
+                            break;
+                        case 'gregorian':
+                            $alt_date = new GregorianDate($cal_date->minimumJulianDay() + $d - 1);
+                            break;
+                        case 'jewish':
+                            $alt_date = new JewishDate($cal_date->minimumJulianDay() + $d - 1);
+                            break;
+                        case 'julian':
+                            $alt_date = new JulianDate($cal_date->minimumJulianDay() + $d - 1);
+                            break;
+                        case 'hijri':
+                            $alt_date = new HijriDate($cal_date->minimumJulianDay() + $d - 1);
+                            break;
+                        case 'jalali':
+                            $alt_date = new JalaliDate($cal_date->minimumJulianDay() + $d - 1);
+                            break;
+                        case 'none':
+                        default:
+                            $alt_date = $cal_date;
+                            break;
+                    }
+                    if (get_class($alt_date) !== get_class($cal_date) && $alt_date->inValidRange()) {
+                        echo '<span class="rtl_cal_day">' . $alt_date->format('%j %M') . '</span>';
+                        // Just show the first conversion
+                        break;
+                    }
+                }
+                echo '<br style="clear: both;"><div class="small" style="height: 180px; overflow: auto;">';
+                echo $this->calendarListText($cal_facts[$d], '', '', $tree);
+                echo '</div>';
+            }
+            echo '</td>';
+            if (($d + $cal_date->minimumJulianDay() - $week_start) % $days_in_week === 0) {
+                echo '</tr>';
+            }
+        }
+        echo '</tbody>';
+        echo '</table>';
 
-        $html = ob_get_clean();
-
-        return response($html);
+        return response(ob_get_clean());
     }
 
     /**
@@ -520,27 +502,6 @@ class CalendarController extends AbstractBaseController
         }
 
         return $filtered;
-    }
-
-    /**
-     * Format an anniversary display.
-     *
-     * @param Fact $fact
-     * @param bool $show_places
-     *
-     * @return string
-     */
-    private function calendarFactText(Fact $fact, bool $show_places): string
-    {
-        $text = $fact->label() . ' — ' . $fact->date()->display(true, null, false);
-        if ($fact->anniv) {
-            $text .= ' (' . I18N::translate('%s year anniversary', $fact->anniv) . ')';
-        }
-        if ($show_places && $fact->attribute('PLAC')) {
-            $text .= ' — ' . $fact->attribute('PLAC');
-        }
-
-        return $text;
     }
 
     /**
