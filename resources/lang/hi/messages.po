@@ -4,19 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-10 20:40+0100\n"
-"PO-Revision-Date: 2020-05-08 22:12+0000\n"
-"Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
-"Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\n"
-"Language: hi\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-05-10 18:08+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -101,7 +89,7 @@ msgstr "%1$s मौजूद नहीं है। क्या आपका �
 #: app/Http/Controllers/AdminTreesController.php:315
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr "%1$s में वापसी के लिए %2$s तक कोई लिंक नहीं है।"
+msgstr "%1$s में वापस %2$s के लिए कोई लिंक नहीं है।"
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: app/Http/Controllers/Admin/UpgradeController.php:354
@@ -109,7 +97,7 @@ msgstr "%1$s में वापसी के लिए %2$s तक कोई �
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
 msgstr[0] "%2$s सेकंड में %1$s फ़ाइल बाहर लाई गई।"
-msgstr[1] "%2$s सेकंड में %1$s फ़ाइलें बाहर लाई गई।"
+msgstr[1] "%2$s सेकंड में %1$s फ़ाइलें बाहर लाई गईं।"
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: app/Http/Controllers/AdminTreesController.php:306
@@ -1644,7 +1632,7 @@ msgstr "एडवांस्ड स्थान नाम तथ्य"
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:171
 #: app/Module/SearchMenuModule.php:125
 msgid "Advanced search"
-msgstr "एडवांस्ड सर्च"
+msgstr "एडवांस्ड खोज"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:42
@@ -5726,7 +5714,7 @@ msgstr "निकट संबंधियों के कार्यक्र
 
 #: resources/views/admin/users-edit.phtml:223
 msgid "Everybody has this role, including visitors to the website and search engines."
-msgstr "प्रत्येक व्यक्ति की यह भूमिका है, जिसमें वेबसाइट के दर्शक और सर्च इंजन भी शामिल हैं।"
+msgstr "प्रत्येक व्यक्ति की यह भूमिका है, जिसमें वेबसाइट के दर्शक और खोज इंजन भी शामिल हैं।"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:240
 msgid "Exact"
@@ -6466,7 +6454,7 @@ msgstr "तकनीकी सहायता अथवा वंशावली
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: resources/views/admin/site-preferences.phtml:105
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr "एक से अधिक फॅमिली ट्री वाली वेबसाइटों के लिए, यह विकल्प मुख्य मेनू, सर्च पेज, वगैरह में फॅमिली ट्री की सूची दिखाएगा।"
+msgstr "एक से अधिक फॅमिली ट्री वाली वेबसाइटों के लिए, यह विकल्प मुख्य मेनू, खोज पेज, वगैरह में फॅमिली ट्री की सूची दिखाएगा।"
 
 #: resources/views/login-page.phtml:60
 #: resources/views/modules/login_block/sign-in.phtml:37
@@ -6714,12 +6702,12 @@ msgstr "सामान्य"
 #: app/Http/RequestHandlers/SearchGeneralPage.php:167
 #: app/Module/SearchMenuModule.php:100
 msgid "General search"
-msgstr "जनरल सर्च"
+msgstr "जनरल खोज"
 
 #. I18N: Description of the “Sitemaps” module
 #: app/Module/SiteMapModule.php:117
 msgid "Generate sitemap files for search engines."
-msgstr "सर्च इंजन के लिए साइटमैप फ़ाइलें बनाएँ।"
+msgstr "खोज इंजन के लिए साइटमैप फ़ाइलें बनाएँ।"
 
 #. I18N: This is a report footer. %s is the name of the application.
 #: app/Report/AbstractRenderer.php:280
@@ -7302,7 +7290,7 @@ msgstr "यदि एक मीडिया ऑब्जेक्ट किस�
 #. I18N: Help text for the “Language” configuration setting
 #: resources/views/admin/site-preferences.phtml:89
 msgid "If a visitor to the website has not selected a preferred language in their browser preferences, or they have selected an unsupported language, then this language will be used. Typically this applies to search engines."
-msgstr "यदि वेबसाइट पर आने वाले किसी विज़िटर ने अपनी ब्राउज़र प्राथमिकताओं में पसंदीदा भाषा का चयन नहीं किया है, या उन्होंने किसी असमर्थित भाषा का चयन किया हुआ है, तो इस भाषा का उपयोग किया जाएगा। आमतौर पर यह सर्च इंजन पर लागू होता है।"
+msgstr "यदि वेबसाइट पर आने वाले किसी विज़िटर ने अपनी ब्राउज़र प्राथमिकताओं में पसंदीदा भाषा का चयन नहीं किया है, या उन्होंने किसी असमर्थित भाषा का चयन किया हुआ है, तो इस भाषा का उपयोग किया जाएगा। आमतौर पर यह खोज इंजन पर लागू होता है।"
 
 #: resources/views/admin/users-edit.phtml:92
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -8273,7 +8261,7 @@ msgstr "बाएं"
 #. I18N: Name of a module - historic/obsolete URLs.
 #: app/Module/RedirectLegacyUrlsModule.php:118
 msgid "Legacy URLs"
-msgstr ""
+msgstr "विरासत URLs"
 
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:816
@@ -10669,7 +10657,7 @@ msgstr "रुके हुए परिवर्तन"
 
 #: resources/views/help/pending-changes.phtml:16
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr "लंबित परिवर्तन केवल तभी दिखाए जाते हैं जब आपके खाते को एडिट करने की अनुमति हो। जब आप साइन आउट करते हैं, तो आप उन्हें देख नहीं पाएंगे। इसके अलावा, लंबित परिवर्तन केवल कुछ पेजों पर दिखाए जाते हैं। उदाहरण के लिए, उन्हें सूची , रिपोर्ट या सर्च रिज़ल्ट में नहीं दिखाया जाता।"
+msgstr "लंबित परिवर्तन केवल तभी दिखाए जाते हैं जब आपके खाते को एडिट करने की अनुमति हो। जब आप साइन आउट करते हैं, तो आप उन्हें देख नहीं पाएंगे। इसके अलावा, लंबित परिवर्तन केवल कुछ पेजों पर दिखाए जाते हैं। उदाहरण के लिए, उन्हें सूची , रिपोर्ट या खोज परिणाम में नहीं दिखाया जाता।"
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:2029
@@ -10731,7 +10719,7 @@ msgstr "ध्वन्यात्मक स्थान"
 #: app/Http/RequestHandlers/SearchPhoneticPage.php:103
 #: app/Module/SearchMenuModule.php:113 resources/views/branches-page.phtml:26
 msgid "Phonetic search"
-msgstr "मिलता-जुलता सर्च"
+msgstr "मिलता-जुलता खोज"
 
 #: app/GedcomTag.php:1057
 msgid "Phonetic title"
@@ -11441,7 +11429,7 @@ msgstr "रिकार्ड्स"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:112
 msgid "Redirect old URLs from webtrees version 1."
-msgstr ""
+msgstr "पुराने URL को webtrees संस्करण 1 से पुनर्निर्देशित करें।"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:573
@@ -11736,11 +11724,11 @@ msgstr "अनुसंधान कार्य"
 
 #: resources/views/modules/todo/config.phtml:8
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr "रिसर्च टास्क विशेष घटनाएँ हैं, जिन्हें आपके फॅमिली ट्री में व्यक्तियों को जोड़ा जाता है, जो आगे के शोध की आवश्यकता की पहचान करते हैं। आप उन्हें अधिक विश्वसनीय स्रोतों के खिलाफ तथ्यों की जांच करने, दस्तावेजों या तस्वीरों को प्राप्त करने, परस्पर विरोधी जानकारी को हल करने, आदि के लिए अनुस्मारक के रूप में उपयोग कर सकते हैं।"
+msgstr "रिखोज टास्क विशेष घटनाएँ हैं, जिन्हें आपके फॅमिली ट्री में व्यक्तियों को जोड़ा जाता है, जो आगे के शोध की आवश्यकता की पहचान करते हैं। आप उन्हें अधिक विश्वसनीय स्रोतों के खिलाफ तथ्यों की जांच करने, दस्तावेजों या तस्वीरों को प्राप्त करने, परस्पर विरोधी जानकारी को हल करने, आदि के लिए अनुस्मारक के रूप में उपयोग कर सकते हैं।"
 
 #: resources/views/modules/todo/config.phtml:10
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "शोध कार्य (रिसर्च टास्क) कस्टम GEDCOM टैग “_TODO” का उपयोग करके संग्रहीत किए जाते हैं। अन्य वंशावली एप्लीकेशन इस टैग को नहीं पहचान सकते हैं।"
+msgstr "शोध कार्य (अनुसंधान कार्य) कस्टम GEDCOM टैग “_TODO” का उपयोग करके संग्रहीत किए जाते हैं। अन्य वंशावली एप्लीकेशन इस टैग को नहीं पहचान सकते हैं।"
 
 #: resources/views/admin/location-edit.phtml:138
 msgid "Reset to initial map state"
@@ -11766,7 +11754,7 @@ msgstr "सगे परिवार तक प्रतिबंधित क�
 #: resources/views/cards/add-restriction.phtml:10
 #: resources/views/media-page.phtml:177
 msgid "Restriction"
-msgstr "रोक"
+msgstr "प्रतिबंध"
 
 #: resources/views/help/restriction.phtml:8
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
@@ -12035,7 +12023,7 @@ msgstr "रद्द सीलिंग (तलाक़)"
 #: resources/views/modules/fix-place-names/options.phtml:11
 #: resources/views/search-replace-page.phtml:35
 msgid "Search"
-msgstr "सर्च"
+msgstr "खोजें"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/SearchReplacePage.php:52
@@ -12046,21 +12034,21 @@ msgstr "खोजें और बदलें"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixSearchAndReplace.php:88
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr "साधारण “सर्च” या “एडवांस्ड पैटर्न मैचिंग” का उपयोग करके कोई लेख खोजें और बदलें।"
+msgstr "साधारण “खोज” या “एडवांस्ड पैटर्न मैचिंग” का उपयोग करके कोई लेख खोजें और बदलें।"
 
 #. I18N: Help text for the “Description META tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:203
 msgid "Search engines may use this description of your site in their search results."
-msgstr "सर्च इंजन अपने खोज परिणामों में आपकी साइट के इस विवरण का उपयोग कर सकते हैं।"
+msgstr "खोज इंजन अपने खोज परिणामों में आपकी साइट के इस विवरण का उपयोग कर सकते हैं।"
 
 #: resources/views/modules/media-list/page.phtml:52
 msgid "Search filters"
-msgstr "सर्च फिल्टर"
+msgstr "खोज फिल्टर"
 
 #: resources/views/search-general-page.phtml:16
 #: resources/views/search-replace-page.phtml:17
 msgid "Search for"
-msgstr "सर्च"
+msgstr "खोज"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:38
 msgid "Search method"
@@ -12068,7 +12056,7 @@ msgstr "खोज विधि"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:18
 msgid "Search text/pattern"
-msgstr "सर्च लेख/पैटर्न"
+msgstr "खोज लेख/पैटर्न"
 
 #: resources/views/modules/relationships-chart/config.phtml:12
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
@@ -12691,11 +12679,11 @@ msgstr "अन्य उपयोगकर्ताओं को असाइन
 
 #: resources/views/modules/todo/config.phtml:25
 msgid "Show research tasks that are not assigned to any user"
-msgstr "ऐसे अनुसंधान कार्य (रिसर्च टास्क) दिखाएं जो किसी भी उपयोगकर्ता को नहीं दिए गए हैं"
+msgstr "ऐसे अनुसंधान कार्य (अनुसंधान कार्य) दिखाएं जो किसी भी उपयोगकर्ता को नहीं दिए गए हैं"
 
 #: resources/views/modules/todo/config.phtml:34
 msgid "Show research tasks that have a date in the future"
-msgstr "भविष्य में किसी तारीख वाले रिसर्च टास्क दिखाएं"
+msgstr "भविष्य में किसी तारीख वाले अनुसंधान कार्य दिखाएं"
 
 #: resources/xml/reports/ahnentafel_report.xml:11
 msgid "Show residences"
@@ -12921,7 +12909,7 @@ msgstr "साइटमैप"
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml:13
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "साइटमैप वेबमास्टर्स के लिए सर्च इंजन को उन पेजों के बारे में बताने का एक तरीका है जो वेबसाइट पर क्रॉलिंग के लिए उपलब्ध हैं। सभी प्रमुख सर्च इंजन साइटमैप का समर्थन करते हैं। अधिक जानकारी के लिए, <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a> देखें।"
+msgstr "साइटमैप वेबमास्टर्स के लिए खोज इंजन को उन पेजों के बारे में बताने का एक तरीका है जो वेबसाइट पर क्रॉलिंग के लिए उपलब्ध हैं। सभी प्रमुख खोज इंजन साइटमैप का समर्थन करते हैं। अधिक जानकारी के लिए, <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a> देखें।"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:199
@@ -14030,11 +14018,11 @@ msgstr "संग्रह बना दिया गया है"
 #. I18N: Description of the “Search” module
 #: app/Module/SearchMenuModule.php:59
 msgid "The search menu."
-msgstr "सर्च मेनू।"
+msgstr "खोज मेनू।"
 
 #: app/Services/SearchService.php:1075
 msgid "The search returned too many results."
-msgstr "सर्च ने कई सारे परिणाम लौटाए।"
+msgstr "खोज ने कई सारे परिणाम लौटाए।"
 
 #: resources/views/setup/step-2-server-checks.phtml:35
 msgid "The server configuration is OK."
@@ -14182,7 +14170,7 @@ msgstr "कोई लंबित परिवर्तन नहीं है�
 
 #: app/Module/ResearchTaskModule.php:116
 msgid "There are no research tasks in this family tree."
-msgstr "इस फॅमिली ट्री में कोई रिसर्च टास्क नहीं हैं।"
+msgstr "इस फॅमिली ट्री में कोई अनुसंधान कार्य नहीं हैं।"
 
 #: resources/views/modules/sources_tab/tab.phtml:29
 msgid "There are no source citations for this individual."
@@ -14946,7 +14934,7 @@ msgstr "इस ब्लॉक के साथ आरंभ करने मे
 
 #: resources/views/modules/todo/config.phtml:9
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "नए शोध कार्य बनाने के लिए, आपको पहले फॅमिली ट्री की प्राथमिकताओं में तथ्यों और घटनाओं की सूची में “रिसर्च टास्क” जोड़ना होगा।"
+msgstr "नए शोध कार्य बनाने के लिए, आपको पहले फॅमिली ट्री की प्राथमिकताओं में तथ्यों और घटनाओं की सूची में “अनुसंधान कार्य” जोड़ना होगा।"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:586
@@ -14974,7 +14962,7 @@ msgstr "इस लेख को अन्य भाषाओं के लिए
 
 #: resources/views/modules/sitemap/config.phtml:40
 msgid "To tell search engines that sitemaps are available, you can use the following links."
-msgstr "सर्च इंजन को बताने के लिए कि साइटमैप उपलब्ध हैं, इन लिंक का उपयोग कर सकते हैं।"
+msgstr "खोज इंजन को बताने के लिए कि साइटमैप उपलब्ध हैं, इन लिंक का उपयोग कर सकते हैं।"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:480
@@ -15873,7 +15861,7 @@ msgstr "जब आप जानकारी जोड़ते हैं, एड
 
 #: resources/views/help/relationship-privacy.phtml:8
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr "जहां कोई उपयोगकर्ता एक फॅमिली ट्री में किसी व्यक्तिगत रिकॉर्ड से जुड़ा होता है और इसमें सदस्य, एडिटर या मॉडरेटर की भूमिका होती है, वहां आप उसके दूर दराज के जीवित रिश्तेदारों के विवरण तक पहुंचने पर रोक लगा सकते हैं। आप उन रिश्तेदारी की स्टेप्स की संख्या तय कर सकते हैं जो उपयोगकर्ता को देखने की अनुमति होगी।"
+msgstr "जहां कोई उपयोगकर्ता एक फॅमिली ट्री में किसी व्यक्तिगत रिकॉर्ड से जुड़ा होता है और इसमें सदस्य, एडिटर या मॉडरेटर की भूमिका होती है, वहां आप उसके दूर दराज के जीवित रिश्तेदारों के विवरण तक पहुंचने पर प्रतिबंध लगा सकते हैं। आप उन रिश्तेदारी की स्टेप्स की संख्या तय कर सकते हैं जो उपयोगकर्ता को देखने की अनुमति होगी।"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:17
@@ -16850,15 +16838,15 @@ msgstr "ससुर"
 
 #: app/Functions/Functions.php:636
 msgid "fiancé"
-msgstr ""
+msgstr "मंगेतर"
 
 #: app/Functions/Functions.php:683
 msgid "fiancé(e)"
-msgstr ""
+msgstr "मंगेतर"
 
 #: app/Functions/Functions.php:660
 msgid "fiancée"
-msgstr ""
+msgstr "मंगेतर"
 
 #: app/Functions/Functions.php:491
 msgid "fifteenth cousin"
@@ -19457,7 +19445,7 @@ msgstr "सुरक्षित"
 #: resources/views/search-general-page.phtml:105
 #: resources/views/search-phonetic-page.phtml:106
 msgid "search"
-msgstr "सर्च"
+msgstr "खोज"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:561
@@ -20205,13 +20193,13 @@ msgstr "दर्शक"
 #: resources/xml/reports/descendancy_report.xml:105
 msgctxt "FEMALE"
 msgid "was born"
-msgstr "जन्मे"
+msgstr "जन्म हुआ"
 
 #: resources/xml/reports/ahnentafel_report.xml:140
 #: resources/xml/reports/descendancy_report.xml:102
 msgctxt "MALE"
 msgid "was born"
-msgstr "जन्मे"
+msgstr "जन्म हुआ"
 
 #: app/Module/WebtreesTheme.php:38
 msgid "webtrees"
