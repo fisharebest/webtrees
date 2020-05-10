@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-10 19:46+0000\n"
+"PO-Revision-Date: 2020-05-10 21:45+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Urdu <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ur/>\n"
@@ -170,47 +170,47 @@ msgstr "%1$s × %2$s پکسلز"
 #: app/Individual.php:550 statisticsplot.php:806
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: app/Functions/Functions.php:2154
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s کے %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:822
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:160
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6940
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s عام دور سے پہلے"
 
 #. I18N: size of file in KB
 #: admin_media.php:489 app/Media.php:277
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s کے بی"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:216
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s اور ان کے آباؤ اجداد"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:219
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s اور ان کے آباؤ اجداد"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:305
