@@ -43,6 +43,8 @@ use Illuminate\Support\Collection;
 use stdClass;
 
 use function addcslashes;
+use function array_unique;
+use function explode;
 use function mb_stripos;
 
 /**
@@ -426,35 +428,42 @@ class SearchService
         $mother_name   = false;
         $spouse_family = false;
         $indi_name     = false;
-        $indi_date     = false;
-        $fam_date      = false;
+        $indi_dates    = [];
+        $fam_dates     = [];
         $indi_plac     = false;
         $fam_plac      = false;
 
         foreach ($fields as $field_name => $field_value) {
             if ($field_value !== '') {
-                if (substr($field_name, 0, 14) === 'FAMC:HUSB:NAME') {
-                    $father_name = true;
-                } elseif (substr($field_name, 0, 14) === 'FAMC:WIFE:NAME') {
-                    $mother_name = true;
-                } elseif (substr($field_name, 0, 4) === 'NAME') {
-                    $indi_name = true;
-                } elseif (strpos($field_name, ':DATE') !== false) {
-                    if (substr($field_name, 0, 4) === 'FAMS') {
-                        $fam_date      = true;
-                        $spouse_family = true;
-                    } else {
-                        $indi_date = true;
+                // Fields can have up to 4 parts, but we only need the first 3 to identify
+                // which tables to select
+                $field_parts = explode(':', $field_name . '::');
+
+                if ($field_parts[0] === 'FAMC') {
+                    // Parent name - FAMC:[HUSB|WIFE]:NAME:[GIVN|SURN]
+                    if ($field_parts[1] === 'HUSB') {
+                        $father_name = true;
+                    } {
+                        $mother_name = true;
                     }
-                } elseif (strpos($field_name, ':PLAC') !== false) {
-                    if (substr($field_name, 0, 4) === 'FAMS') {
-                        $fam_plac      = true;
-                        $spouse_family = true;
-                    } else {
+                } elseif ($field_parts[0] === 'NAME') {
+                    // Individual name - NAME:[GIVN|SURN]
+                    $indi_name = true;
+                } elseif ($field_parts[0] === 'FAMS') {
+                    // Family facts - FAMS:NOTE or FAMS:[FACT]:[DATE|PLAC]
+                    $spouse_family = true;
+                    if ($field_parts[2] === 'DATE') {
+                        $fam_dates[] = $field_parts[1];
+                    } else if ($field_parts[2] === 'PLAC') {
+                        $fam_plac = true;
+                    }
+                } else {
+                    // Individual facts - [FACT] or [FACT]:[DATE|PLAC]
+                    if ($field_parts[1] === 'DATE') {
+                        $indi_dates[] = $field_parts[0];
+                    } else if ($field_parts[1] === 'PLAC') {
                         $indi_plac = true;
                     }
-                } elseif ($field_name === 'FAMS:NOTE') {
-                    $spouse_family = true;
                 }
             }
         }
@@ -518,19 +527,19 @@ class SearchService
             });
         }
 
-        if ($indi_date) {
-            $query->join('dates AS individual_dates', static function (JoinClause $join): void {
+        foreach (array_unique($indi_dates) as $indi_date) {
+            $query->join('dates AS date_' . $indi_date, static function (JoinClause $join) use ($indi_date): void {
                 $join
-                    ->on('individual_dates.d_file', '=', 'individuals.i_file')
-                    ->on('individual_dates.d_gid', '=', 'individuals.i_id');
+                    ->on('date_' . $indi_date . '.d_file', '=', 'individuals.i_file')
+                    ->on('date_' . $indi_date . '.d_gid', '=', 'individuals.i_id');
             });
         }
 
-        if ($fam_date) {
-            $query->join('dates AS family_dates', static function (JoinClause $join): void {
+        foreach (array_unique($fam_dates) as $fam_date) {
+            $query->join('dates AS date_' . $fam_date, static function (JoinClause $join) use ($fam_date): void {
                 $join
-                    ->on('family_dates.d_file', '=', 'spouse_families.f_file')
-                    ->on('family_dates.d_gid', '=', 'spouse_families.f_id');
+                    ->on('date_' . $fam_date . '.d_file', '=', 'spouse_families.i_file')
+                    ->on('date_' . $fam_date . '.d_gid', '=', 'spouse_families.i_id');
             });
         }
 
@@ -561,7 +570,7 @@ class SearchService
         }
 
         foreach ($fields as $field_name => $field_value) {
-            $parts = explode(':', $field_name . '::::');
+            $parts = explode(':', $field_name . ':::');
             if ($parts[0] === 'NAME') {
                 // NAME:*
                 switch ($parts[1]) {
@@ -665,9 +674,9 @@ class SearchService
                 if ($date->isOK()) {
                     $delta = 365 * ($modifiers[$field_name] ?? 0);
                     $query
-                        ->where('individual_dates.d_fact', '=', $parts[0])
-                        ->where('individual_dates.d_julianday1', '>=', $date->minimumJulianDay() - $delta)
-                        ->where('individual_dates.d_julianday2', '<=', $date->minimumJulianDay() + $delta);
+                        ->where('date_' . $parts[0] . '.d_fact', '=', $parts[0])
+                        ->where('date_' . $parts[0] . '.d_julianday1', '>=', $date->minimumJulianDay() - $delta)
+                        ->where('date_' . $parts[0] . '.d_julianday2', '<=', $date->maximumJulianDay() + $delta);
                 }
                 unset($fields[$field_name]);
             } elseif ($parts[0] === 'FAMS' && $parts[2] === 'DATE') {
@@ -676,9 +685,9 @@ class SearchService
                 if ($date->isOK()) {
                     $delta = 365 * $modifiers[$field_name];
                     $query
-                        ->where('family_dates.d_fact', '=', $parts[1])
-                        ->where('family_dates.d_julianday1', '>=', $date->minimumJulianDay() - $delta)
-                        ->where('family_dates.d_julianday2', '<=', $date->minimumJulianDay() + $delta);
+                        ->where('date_' . $parts[1] . '.d_fact', '=', $parts[1])
+                        ->where('date_' . $parts[1] . '.d_julianday1', '>=', $date->minimumJulianDay() - $delta)
+                        ->where('date_' . $parts[1] . '.d_julianday2', '<=', $date->maximumJulianDay() + $delta);
                 }
                 unset($fields[$field_name]);
             } elseif ($parts[1] === 'PLAC') {
