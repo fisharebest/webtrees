@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-05-10 18:08+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-05-10 19:46+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -42,7 +42,7 @@ msgstr "#%s"
 #: app/Http/Controllers/AdminTreesController.php:1551
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s %2$s में %4$s के लिए %3$s लिंक है।"
+msgstr "%1$s %2$s में %4$s के लिए %3$s की लिंक है।"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2370
@@ -1911,7 +1911,7 @@ msgstr "किसी व्यक्ती के माता-पिता ए�
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:63
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr "एक इंटरैक्टिव ट्री, जो किसी व्यक्ति के सभी पूर्वजों और वंशजों को दर्शाता है।"
+msgstr "एक इंटरएक्टिव ट्री, जो किसी व्यक्ति के सभी पूर्वजों और वंशजों को दर्शाता है।"
 
 #: resources/views/errors/database-error.phtml:8
 #: resources/views/setup/step-6-failed.phtml:8
@@ -2258,7 +2258,7 @@ msgstr "लेखक"
 #. I18N: gedcom tag CHAN:_WT_USER
 #: app/GedcomTag.php:583
 msgid "Author of last change"
-msgstr "आखिरी परिवर्तन के लेखक"
+msgstr "अंतिम परिवर्तन के लेखक"
 
 #: resources/views/admin/users-edit.phtml:136
 msgid "Automatically accept changes made by this user"
@@ -4503,7 +4503,7 @@ msgstr "आप्रवासन तिथि"
 #. I18N: gedcom tag CHAN:DATE
 #: app/GedcomTag.php:580
 msgid "Date of last change"
-msgstr "आखिरी परिवर्तन की तिथि"
+msgstr "अंतिम परिवर्तन की तिथि"
 
 #: app/GedcomTag.php:747 app/GedcomTag.php:840
 #: resources/xml/reports/fact_sources.xml:319
@@ -7674,7 +7674,7 @@ msgstr "सूचक"
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:246 app/Module/InteractiveTreeModule.php:52
 msgid "Interactive tree"
-msgstr "इंटरैक्टिव ट्री"
+msgstr "इंटरएक्टिव ट्री"
 
 #. I18N: %s is an individual’s name
 #: app/Module/ChartsBlockModule.php:154
@@ -8177,11 +8177,11 @@ msgstr "लास वेगास, नेवादा, संयुक्त र
 #: resources/xml/reports/change_report.xml:66
 #: resources/xml/reports/change_report.xml:108
 msgid "Last change"
-msgstr "आखिरी परिवर्तन"
+msgstr "अंतिम परिवर्तन"
 
 #: app/Module/ReviewChangesModule.php:161
 msgid "Last email reminder was sent "
-msgstr "आखिरी ईमेल रिमाइंडर भेजा गया "
+msgstr "अंतिम ईमेल रिमाइंडर भेजा गया "
 
 #: resources/views/statistics/other/total-events.phtml:39
 msgid "Last event"
@@ -14297,7 +14297,7 @@ msgstr "इस फॅमिली ट्री में प्रदर्श�
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:7
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "यह फॅमिली ट्री आखिरी बार #gedcomUpdated# को अपडेट किया गई।  इस फॅमिली ट्री में टोटल #totalSurnames# कुलनाम हैं।  इसमे सबसे पुरानी दर्ज की गई घटना #firstEventName# के #firstEventType# #firstEventYear# की है। और सबसे हाल की घटना है #lastEventName# के #lastEventType# की #lastEventYear# में। <br><br>यदि आपकी कोई टिप्पणी या प्रतिक्रिया है तो कृपया #contactWebmaster# से संपर्क करें।"
+msgstr "यह फॅमिली ट्री अंतिम बार #gedcomUpdated# को अपडेट किया गई।  इस फॅमिली ट्री में टोटल #totalSurnames# कुलनाम हैं।  इसमे सबसे पुरानी दर्ज की गई घटना #firstEventName# के #firstEventType# #firstEventYear# की है। और सबसे हाल की घटना है #lastEventName# के #lastEventType# की #lastEventYear# में। <br><br>यदि आपकी कोई टिप्पणी या प्रतिक्रिया है तो कृपया #contactWebmaster# से संपर्क करें।"
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:9
 #: resources/views/modules/html/template-statistics.phtml:13
