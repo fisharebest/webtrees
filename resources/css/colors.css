@@ -1428,15 +1428,6 @@ a > .wt-icon-arrow-up:hover {
 .wt-census-assistant-form-control:focus {
 }
 
-/*
- * Drag and drop sortable lists
- */
-.wt-sortable-list {
-}
-
-.wt-sortable-item {
-}
-
 /* Some blocks show a reduced version on the right-hand side. */
 .wt-side-blocks .wt-side-block-optional {
     display: none !important;

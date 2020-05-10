@@ -1,0 +1,63 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+/**
+ * @var string $title
+ */
+
+?>
+<div class="d-flex">
+    <button class="btn btn-outline-secondary btn-sm drag-handle">
+        <?= view('icons/drag-handle') ?>
+    </button>
+
+    <div class="ml-2 mr-auto">
+        <?= $title ?>
+    </div>
+
+    <div class="btn-group">
+        <button class="btn btn-outline-secondary btn-sm wt-btn-reorder wt-btn-reorder-first" type="button">
+            <?= I18N::translate('first') ?>
+        </button>
+
+        <button class="btn btn-outline-secondary btn-sm wt-btn-reorder wt-btn-reorder-previous" type="button">
+            <?= I18N::translate('up') ?>
+        </button>
+
+        <button class="btn btn-outline-secondary btn-sm wt-btn-reorder wt-btn-reorder-next" type="button">
+            <?= I18N::translate('down') ?>
+        </button>
+
+        <button class="btn btn-outline-secondary btn-sm wt-btn-reorder wt-btn-reorder-last" type="button">
+            <?= I18N::translate('last') ?>
+        </button>
+    </div>
+</div>
+
+<?php View::pushunique('javascript') ?>
+<script>
+    document.body.addEventListener('click', function(event) {
+        let target = event.target;
+
+        if (target.matches('.wt-btn-reorder')) {
+            let item = target.closest('.wt-sortable-item');
+            let list = target.closest('.wt-sortable-list');
+
+            if (target.matches('.wt-btn-reorder-first')) {
+                list.insertBefore(item, list.childNodes[0]);
+            }
+            if (target.matches('.wt-btn-reorder-previous') && item.previousElementSibling) {
+                list.insertBefore(item, item.previousElementSibling);
+            }
+            if (target.matches('.wt-btn-reorder-next') && item.nextElementSibling) {
+                list.insertBefore(item.nextElementSibling, item);
+            }
+            if (target.matches('.wt-btn-reorder-last')) {
+                list.insertBefore(item, null);
+            }
+        }
+    });
+</script>
+<?php View::endpushunique() ?>

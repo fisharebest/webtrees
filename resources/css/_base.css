@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -14,8 +14,17 @@
  */
 
 /*
- * Base formatting, resets, workarounds, etc.
+ * Common formatting for all themes.
  */
+
+@import "_block-charts.css";
+@import "_charts.css";
+@import "_colorbox.css";
+@import "_lists.css";
+@import "_mime-type-icons.css";
+@import "_on-screen-keyboard.css";
+@import "_sortable.css";
+@import "_tab-relatives.css";
 
 /* Some icons need to be reversed on right-to-left pages */
 [dir=rtl] .wt-icon-flip-rtl,

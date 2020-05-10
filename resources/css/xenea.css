@@ -15,13 +15,6 @@
 
 /* The xenea theme */
 @import "_base.css";
-@import "_block-charts.css";
-@import "_charts.css";
-@import "_colorbox.css";
-@import "_lists.css";
-@import "_mime-type-icons.css";
-@import "_on-screen-keyboard.css";
-@import "_tab-relatives.css";
 
 /* Colors for chart boxes, etc. */
 :root {
@@ -1636,16 +1629,6 @@ a > .wt-icon-arrow-up:hover {
 /* Census assistant */
 .wt-census-assistant-form-control:focus {
     min-width: 12rem;
-}
-
-/*
- * Drag and drop sortable lists
- */
-.wt-sortable-list {
-}
-
-.wt-sortable-item {
-    cursor: move;
 }
 
 /* Some blocks show a reduced version on the right-hand side. */

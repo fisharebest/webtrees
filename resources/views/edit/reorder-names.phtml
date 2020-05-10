@@ -15,14 +15,12 @@ use Fisharebest\Webtrees\View;
 
     <div class="wt-sortable-list">
         <?php foreach ($individual->facts(['NAME'], false, null, true) as $fact) : ?>
-            <div class="card mb-2 wt-sortable-item">
+            <div class="card my-2 wt-sortable-item">
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                 <div class="card-header">
-                    <span class="drag-handle">
-                        <?= view('icons/drag-handle') ?>
-                    </span>
-                    <?= $fact->value() ?>
+                    <?= view('edit/reorder-card-header', ['title' => e($fact->value())]) ?>
                 </div>
+
                 <div class="card-body">
                     <?= GedcomTag::getLabelValue('TYPE', GedcomCodeName::getValue($fact->attribute('TYPE'), $fact->record())) ?>
                 </div>
@@ -46,7 +44,7 @@ use Fisharebest\Webtrees\View;
 <?php View::push('javascript') ?>
 <script>
     new Sortable(document.querySelector(".wt-sortable-list"), {
-        handle: ".drag-handle",
+        handle: ".card-header",
     });
 </script>
 <?php View::endpush() ?>

@@ -36,11 +36,9 @@ use Fisharebest\Webtrees\View;
                 <div class="card mb-2 wt-sortable-item" data-sortbydate="<?= $fact->target()->getMarriageDate()->julianDay() ?>">
                     <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                     <div class="card-header">
-                    <span class="drag-handle">
-                        <?= view('icons/drag-handle') ?>
-                    </span>
-                        <?= $fact->target()->fullName() ?>
+                        <?= view('edit/reorder-card-header', ['title' => $fact->target()->fullName()]) ?>
                     </div>
+
                     <div class="card-body">
                         <?= $fact->target()->formatFirstMajorFact(Gedcom::MARRIAGE_EVENTS, 2) ?>
                         <?= $fact->target()->formatFirstMajorFact(Gedcom::DIVORCE_EVENTS, 2) ?>
@@ -69,16 +67,10 @@ use Fisharebest\Webtrees\View;
 
         <div class="wt-sortable-list-famc">
             <?php foreach ($famc_facts as $fact) : ?>
-                <div class="card mb-2 wt-sortable-item" data-sortbydate="<?= $fact->target()->getMarriageDate()->julianDay() ?>">
+                <div class="card my-2 wt-sortable-item" data-sortbydate="<?= $fact->target()->getMarriageDate()->julianDay() ?>">
                     <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                     <div class="card-header">
-                    <span class="drag-handle">
-                        <?= view('icons/drag-handle') ?>
-                    </span>
-                        <?= $fact->target()->fullName() ?>
-                        <?php if ($fact->attribute('PEDI') !== '') : ?>
-                        — <?= GedcomCodePedi::getValue($fact->attribute('PEDI'), $individual) ?>
-                        <?php endif ?>
+                        <?= view('edit/reorder-card-header', ['title' => $fact->target()->fullName() . ($fact->attribute('PEDI') === '' ? '' : ' — ' . GedcomCodePedi::getValue($fact->attribute('PEDI'), $individual))]) ?>
                     </div>
                     <div class="card-body">
                         <?= $fact->target()->formatFirstMajorFact(Gedcom::MARRIAGE_EVENTS, 2) ?>
@@ -108,21 +100,21 @@ use Fisharebest\Webtrees\View;
     const fams_list = document.querySelector(".wt-sortable-list-fams");
 
     if (famc_list !== null) {
-      new Sortable(famc_list, {
-        handle: ".drag-handle",
-      });
+        new Sortable(famc_list, {
+            handle: ".card-header",
+        });
     }
 
     if (fams_list !== null) {
-      new Sortable(fams_list, {
-        handle: ".drag-handle",
-      });
+        new Sortable(fams_list, {
+            handle: ".card-header",
+        });
 
-      $("#btn-default-order").on("click", function() {
-        $(".wt-sortable-list-fams .wt-sortable-item").sort(function(x, y) {
-          return Math.sign(x.dataset.sortbydate - y.dataset.sortbydate);
-        }).appendTo(".wt-sortable-list-fams");
-      });
+        $("#btn-default-order").on("click", function () {
+            $(".wt-sortable-list-fams .wt-sortable-item").sort(function (x, y) {
+                return Math.sign(x.dataset.sortbydate - y.dataset.sortbydate);
+            }).appendTo(".wt-sortable-list-fams");
+        });
     }
 </script>
 <?php View::endpush() ?>

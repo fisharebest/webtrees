@@ -14,14 +14,12 @@ use Fisharebest\Webtrees\View;
 
     <div class="wt-sortable-list">
         <?php foreach ($family->facts(['CHIL']) as $fact) : ?>
-            <div class="card mb-2 wt-sortable-item" data-sortbydate="<?= $fact->target()->getBirthDate()->julianDay() ?>">
+            <div class="card my-2 wt-sortable-item" data-sortbydate="<?= $fact->target()->getBirthDate()->julianDay() ?>">
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                 <div class="card-header">
-                    <span class="drag-handle">
-                        <?= view('icons/drag-handle') ?>
-                    </span>
-                    <?= $fact->target()->fullName() ?>
+                    <?= view('edit/reorder-card-header', ['title' => $fact->target()->fullName()]) ?>
                 </div>
+
                 <div class="card-body">
                     <?= $fact->target()->formatFirstMajorFact(Gedcom::BIRTH_EVENTS, 2) ?>
                     <?= $fact->target()->formatFirstMajorFact(Gedcom::DEATH_EVENTS, 2) ?>
@@ -51,13 +49,13 @@ use Fisharebest\Webtrees\View;
 <?php View::push('javascript') ?>
 <script>
     new Sortable(document.querySelector(".wt-sortable-list"), {
-        handle: ".drag-handle",
+        handle: ".card-header",
     });
 
-  $("#btn-default-order").on("click", function() {
-    $(".wt-sortable-list .wt-sortable-item").sort(function(x, y) {
-      return Math.sign(x.dataset.sortbydate - y.dataset.sortbydate);
-    }).appendTo(".wt-sortable-list");
-  });
+    $("#btn-default-order").on("click", function () {
+        $(".wt-sortable-list .wt-sortable-item").sort(function (x, y) {
+            return Math.sign(x.dataset.sortbydate - y.dataset.sortbydate);
+        }).appendTo(".wt-sortable-list");
+    });
 </script>
 <?php View::endpush() ?>

@@ -28,16 +28,15 @@ use Fisharebest\Webtrees\Webtrees;
         </div>
     </div>
 
-    <div id="wt-sortable-list">
+    <div class="wt-sortable-list">
         <?php foreach ($record->facts([], false, null, true) as $fact) : ?>
-            <div class="card my-2">
-                <label class="card-header py-1 px-2 d-flex" for="fact-<?= e($fact->id()) ?>">
-                    <span class="drag-handle">
-                        <?= view('icons/drag-handle') ?>
-                    </span>
-                    <?= $fact->summary() ?>
-                </label>
+            <div class="card my-2 wt-sortable-item">
                 <input type="hidden" name="fact_id[]" value="<?= e($fact->id()) ?>">
+                <div class="card-header">
+                    <?= view('edit/reorder-card-header', ['title' => $fact->summary()]) ?>
+                </div>
+                <label class="sr-only" for="fact-<?= e($fact->id()) ?>"><?= $fact->summary() ?></label>
+
                 <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-<?= e($fact->id()) ?>" name="fact[]" rows="<?= 1 + preg_match_all('/\n/', $fact->gedcom()) ?>"><?= e($fact->gedcom()) ?></textarea>
             </div>
         <?php endforeach ?>
@@ -67,8 +66,8 @@ use Fisharebest\Webtrees\Webtrees;
 
 <?php View::push('javascript') ?>
 <script>
-    new Sortable(document.getElementById("wt-sortable-list"), {
-        handle: ".drag-handle",
+    new Sortable(document.querySelector(".wt-sortable-list"), {
+        handle: ".card-header",
     });
 </script>
 <?php View::endpush() ?>
