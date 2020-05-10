@@ -454,14 +454,14 @@ class SearchService
                     $spouse_family = true;
                     if ($field_parts[2] === 'DATE') {
                         $fam_dates[] = $field_parts[1];
-                    } else if ($field_parts[2] === 'PLAC') {
+                    } elseif ($field_parts[2] === 'PLAC') {
                         $fam_plac = true;
                     }
                 } else {
                     // Individual facts - [FACT] or [FACT]:[DATE|PLAC]
                     if ($field_parts[1] === 'DATE') {
                         $indi_dates[] = $field_parts[0];
-                    } else if ($field_parts[1] === 'PLAC') {
+                    } elseif ($field_parts[1] === 'PLAC') {
                         $indi_plac = true;
                     }
                 }
