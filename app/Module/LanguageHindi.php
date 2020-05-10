@@ -36,7 +36,7 @@ class LanguageHindi extends AbstractModule implements ModuleLanguageInterface
      */
     public function isEnabledByDefault(): bool
     {
-        return false;
+        return true;
     }
 
     /**
