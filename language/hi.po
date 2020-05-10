@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-10 18:08+0000\n"
+"PO-Revision-Date: 2020-05-10 19:46+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
@@ -66,7 +66,7 @@ msgstr "#%s"
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s %2$s में %4$s के लिए %3$s लिंक है।"
+msgstr "%1$s %2$s में %4$s के लिए %3$s की लिंक है।"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
@@ -2030,7 +2030,7 @@ msgstr "किसी व्यक्ति के पूर्वजों औ�
 #: app/Module/InteractiveTreeModule.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
 msgstr ""
-"एक इंटरैक्टिव ट्री, जो किसी व्यक्ति के सभी पूर्वजों और वंशजों को दर्शाता है।"
+"एक इंटरएक्टिव ट्री, जो किसी व्यक्ति के सभी पूर्वजों और वंशजों को दर्शाता है।"
 
 #: setup.php:507
 msgid "An unexpected database error occurred."
@@ -2391,7 +2391,7 @@ msgstr "लेखक"
 #. I18N: gedcom tag CHAN:_WT_USER
 #: app/GedcomTag.php:266
 msgid "Author of last change"
-msgstr "आखिरी परिवर्तन के लेखक"
+msgstr "अंतिम परिवर्तन के लेखक"
 
 #: admin_users.php:441
 msgid "Automatically accept changes made by this user"
@@ -4574,7 +4574,7 @@ msgstr "आप्रवासन तिथि"
 #. I18N: gedcom tag CHAN:DATE
 #: app/GedcomTag.php:262
 msgid "Date of last change"
-msgstr "आखिरी परिवर्तन की तिथि"
+msgstr "अंतिम परिवर्तन की तिथि"
 
 #: app/GedcomTag.php:464 app/GedcomTag.php:578
 #: modules_v3/fact_sources/report.xml:319
@@ -7823,7 +7823,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:188 app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
-msgstr "इंटरैक्टिव ट्री"
+msgstr "इंटरएक्टिव ट्री"
 
 #: app/Module/ChartsBlockModule.php:128
 #: app/Module/InteractiveTree/TreeView.php:69
@@ -8308,11 +8308,11 @@ msgstr "लास वेगास, नेवादा, संयुक्त र
 #: app/GedcomTag.php:258 modules_v3/change_report/report.xml:66
 #: modules_v3/change_report/report.xml:108
 msgid "Last change"
-msgstr "आखिरी परिवर्तन"
+msgstr "अंतिम परिवर्तन"
 
 #: app/Module/ReviewChangesModule.php:114
 msgid "Last email reminder was sent "
-msgstr "आखिरी ईमेल रिमाइंडर भेजा गया "
+msgstr "अंतिम ईमेल रिमाइंडर भेजा गया "
 
 #: statistics.php:371
 msgid "Last event"
@@ -14575,7 +14575,7 @@ msgstr "इस फॅमिली ट्री में प्रदर्श�
 #: app/Module/HtmlBlockModule.php:160
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
 msgstr ""
-"यह फॅमिली ट्री आखिरी बार #gedcomUpdated# को अपडेट किया गई।  इस फॅमिली ट्री "
+"यह फॅमिली ट्री अंतिम बार #gedcomUpdated# को अपडेट किया गई।  इस फॅमिली ट्री "
 "में टोटल #totalSurnames# कुलनाम हैं।  इसमे सबसे पुरानी दर्ज की गई घटना "
 "#firstEventName# के #firstEventType# #firstEventYear# की है। और सबसे हाल की "
 "घटना है #lastEventName# के #lastEventType# की #lastEventYear# में। "
