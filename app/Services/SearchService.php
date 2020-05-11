@@ -443,7 +443,7 @@ class SearchService
                     // Parent name - FAMC:[HUSB|WIFE]:NAME:[GIVN|SURN]
                     if ($field_parts[1] === 'HUSB') {
                         $father_name = true;
-                    } {
+                    } else {
                         $mother_name = true;
                     }
                 } elseif ($field_parts[0] === 'NAME') {
