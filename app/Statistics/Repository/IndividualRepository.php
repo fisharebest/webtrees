@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -1527,7 +1527,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalRecords(): string
     {
@@ -1535,7 +1535,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalIndividuals(): string
     {
@@ -1563,7 +1563,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalSexMales(): string
     {
@@ -1571,7 +1571,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalSexFemales(): string
     {
@@ -1579,7 +1579,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalSexUnknown(): string
     {
@@ -1587,7 +1587,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalFamilies(): string
     {
@@ -1615,7 +1615,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalRepositories(): string
     {
@@ -1623,7 +1623,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalSources(): string
     {
@@ -1631,7 +1631,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalNotes(): string
     {
@@ -1639,7 +1639,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalIndividualsPercentage(): string
     {
@@ -1650,7 +1650,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalFamiliesPercentage(): string
     {
@@ -1661,7 +1661,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalRepositoriesPercentage(): string
     {
@@ -1672,7 +1672,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalSourcesPercentage(): string
     {
@@ -1683,7 +1683,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalNotesPercentage(): string
     {
@@ -1694,7 +1694,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalLivingPercentage(): string
     {
@@ -1705,7 +1705,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalDeceasedPercentage(): string
     {
@@ -1716,7 +1716,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalSexMalesPercentage(): string
     {
@@ -1727,7 +1727,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalSexFemalesPercentage(): string
     {
@@ -1738,7 +1738,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalSexUnknownPercentage(): string
     {
@@ -1854,7 +1854,11 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $color_female
+     * @param string|null $color_male
+     * @param string|null $color_unknown
+     *
+     * @return string
      */
     public function chartSex(
         string $color_female = null,

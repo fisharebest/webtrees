@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ServerRepositoryInterf
 class ServerRepository implements ServerRepositoryInterface
 {
     /**
-     * @inheritDoc
+     * @return string
      */
     public function serverDate(): string
     {
@@ -41,7 +41,7 @@ class ServerRepository implements ServerRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function serverTime(): string
     {
@@ -52,7 +52,7 @@ class ServerRepository implements ServerRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function serverTime24(): string
     {
@@ -62,7 +62,7 @@ class ServerRepository implements ServerRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function serverTimezone(): string
     {

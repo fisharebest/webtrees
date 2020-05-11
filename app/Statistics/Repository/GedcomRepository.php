@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -80,7 +80,7 @@ class GedcomRepository implements GedcomRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function gedcomFilename(): string
     {
@@ -88,7 +88,7 @@ class GedcomRepository implements GedcomRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return int
      */
     public function gedcomId(): int
     {
@@ -96,7 +96,7 @@ class GedcomRepository implements GedcomRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function gedcomTitle(): string
     {
@@ -104,7 +104,7 @@ class GedcomRepository implements GedcomRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function gedcomCreatedSoftware(): string
     {
@@ -112,7 +112,7 @@ class GedcomRepository implements GedcomRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function gedcomCreatedVersion(): string
     {
@@ -134,7 +134,8 @@ class GedcomRepository implements GedcomRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
+     * @throws \Exception
      */
     public function gedcomDate(): string
     {
@@ -152,7 +153,7 @@ class GedcomRepository implements GedcomRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function gedcomUpdated(): string
     {
@@ -171,7 +172,7 @@ class GedcomRepository implements GedcomRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function gedcomRootId(): string
     {

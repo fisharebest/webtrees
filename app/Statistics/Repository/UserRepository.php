@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -141,7 +141,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function usersLoggedIn(): string
     {
@@ -149,7 +149,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function usersLoggedInList(): string
     {
@@ -169,7 +169,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return int
      */
     public function usersLoggedInTotal(): int
     {
@@ -177,7 +177,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return int
      */
     public function usersLoggedInTotalAnon(): int
     {
@@ -193,7 +193,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return int
      */
     public function usersLoggedInTotalVisible(): int
     {
@@ -209,7 +209,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function userId(): string
     {
@@ -217,7 +217,9 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @param string $visitor_text
+     *
+     * @return string
      */
     public function userName(string $visitor_text = ''): string
     {
@@ -230,7 +232,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function userFullName(): string
     {
@@ -258,7 +260,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalUsers(): string
     {
@@ -266,7 +268,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalAdmins(): string
     {
@@ -274,7 +276,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalNonAdmins(): string
     {

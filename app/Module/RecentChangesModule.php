@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -88,7 +88,14 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
         return I18N::translate('A list of records that have been updated recently.');
     }
 
-    /** {@inheritdoc} */
+    /**
+     * @param Tree   $tree
+     * @param int    $block_id
+     * @param string $context
+     * @param array  $config
+     *
+     * @return string
+     */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
         $days      = (int) $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);

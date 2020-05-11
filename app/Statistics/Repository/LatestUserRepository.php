@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -51,7 +51,7 @@ class LatestUserRepository implements LatestUserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function latestUserId(): string
     {
@@ -90,7 +90,7 @@ class LatestUserRepository implements LatestUserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function latestUserName(): string
     {
@@ -98,7 +98,7 @@ class LatestUserRepository implements LatestUserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function latestUserFullName(): string
     {
@@ -106,7 +106,9 @@ class LatestUserRepository implements LatestUserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $format
+     *
+     * @return string
      */
     public function latestUserRegDate(string $format = null): string
     {
@@ -118,7 +120,9 @@ class LatestUserRepository implements LatestUserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $format
+     *
+     * @return string
      */
     public function latestUserRegTime(string $format = null): string
     {
@@ -129,7 +133,10 @@ class LatestUserRepository implements LatestUserRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $yes
+     * @param string|null $no
+     *
+     * @return string
      */
     public function latestUserLoggedin(string $yes = null, string $no = null): string
     {

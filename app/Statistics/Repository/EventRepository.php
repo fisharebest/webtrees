@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -108,7 +108,9 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @param array $events
+     *
+     * @return string
      */
     public function totalEvents(array $events = []): string
     {
@@ -118,7 +120,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalEventsBirth(): string
     {
@@ -126,7 +128,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalBirths(): string
     {
@@ -134,7 +136,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalEventsDeath(): string
     {
@@ -142,7 +144,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalDeaths(): string
     {
@@ -150,7 +152,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalEventsMarriage(): string
     {
@@ -158,7 +160,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMarriages(): string
     {
@@ -166,7 +168,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalEventsDivorce(): string
     {
@@ -174,7 +176,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalDivorces(): string
     {
@@ -198,7 +200,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalEventsOther(): string
     {
@@ -258,7 +260,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstEvent(): string
     {
@@ -266,7 +268,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastEvent(): string
     {
@@ -293,7 +295,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstEventYear(): string
     {
@@ -301,7 +303,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastEventYear(): string
     {
@@ -336,7 +338,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstEventType(): string
     {
@@ -344,7 +346,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastEventType(): string
     {
@@ -374,7 +376,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstEventName(): string
     {
@@ -382,7 +384,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastEventName(): string
     {
@@ -417,7 +419,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstEventPlace(): string
     {
@@ -425,7 +427,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastEventPlace(): string
     {

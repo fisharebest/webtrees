@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -263,7 +263,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function gedcomFilename(): string
     {
@@ -271,7 +271,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return int
      */
     public function gedcomId(): int
     {
@@ -279,7 +279,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function gedcomTitle(): string
     {
@@ -287,7 +287,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function gedcomCreatedSoftware(): string
     {
@@ -295,7 +295,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function gedcomCreatedVersion(): string
     {
@@ -303,7 +303,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function gedcomDate(): string
     {
@@ -311,7 +311,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function gedcomUpdated(): string
     {
@@ -319,7 +319,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function gedcomRootId(): string
     {
@@ -327,7 +327,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalRecords(): string
     {
@@ -335,7 +335,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalIndividuals(): string
     {
@@ -343,7 +343,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalIndisWithSources(): string
     {
@@ -351,7 +351,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $color_from
+     * @param string|null $color_to
+     *
+     * @return string
      */
     public function chartIndisWithSources(
         string $color_from = null,
@@ -361,7 +364,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalIndividualsPercentage(): string
     {
@@ -369,7 +372,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalFamilies(): string
     {
@@ -377,7 +380,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalFamiliesPercentage(): string
     {
@@ -385,7 +388,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalFamsWithSources(): string
     {
@@ -393,7 +396,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $color_from
+     * @param string|null $color_to
+     *
+     * @return string
      */
     public function chartFamsWithSources(
         string $color_from = null,
@@ -403,7 +409,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalSources(): string
     {
@@ -411,7 +417,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalSourcesPercentage(): string
     {
@@ -419,7 +425,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalNotes(): string
     {
@@ -427,7 +433,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalNotesPercentage(): string
     {
@@ -435,7 +441,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalRepositories(): string
     {
@@ -443,7 +449,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalRepositoriesPercentage(): string
     {
@@ -471,7 +477,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param array $events
+     *
+     * @return string
      */
     public function totalEvents(array $events = []): string
     {
@@ -479,7 +487,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalEventsBirth(): string
     {
@@ -487,7 +495,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalBirths(): string
     {
@@ -495,7 +503,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalEventsDeath(): string
     {
@@ -503,7 +511,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalDeaths(): string
     {
@@ -511,7 +519,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalEventsMarriage(): string
     {
@@ -519,7 +527,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMarriages(): string
     {
@@ -527,7 +535,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalEventsDivorce(): string
     {
@@ -535,7 +543,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalDivorces(): string
     {
@@ -543,7 +551,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalEventsOther(): string
     {
@@ -551,7 +559,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalSexMales(): string
     {
@@ -559,7 +567,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalSexMalesPercentage(): string
     {
@@ -567,7 +575,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalSexFemales(): string
     {
@@ -575,7 +583,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalSexFemalesPercentage(): string
     {
@@ -583,7 +591,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalSexUnknown(): string
     {
@@ -591,7 +599,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalSexUnknownPercentage(): string
     {
@@ -599,7 +607,11 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $color_female
+     * @param string|null $color_male
+     * @param string|null $color_unknown
+     *
+     * @return string
      */
     public function chartSex(
         string $color_female = null,
@@ -610,7 +622,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalLiving(): string
     {
@@ -618,7 +630,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalLivingPercentage(): string
     {
@@ -626,7 +638,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalDeceased(): string
     {
@@ -634,7 +646,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalDeceasedPercentage(): string
     {
@@ -642,7 +654,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $color_living
+     * @param string|null $color_dead
+     *
+     * @return string
      */
     public function chartMortality(string $color_living = null, string $color_dead = null): string
     {
@@ -650,7 +665,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMedia(): string
     {
@@ -658,7 +673,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaAudio(): string
     {
@@ -666,7 +681,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaBook(): string
     {
@@ -674,7 +689,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaCard(): string
     {
@@ -682,7 +697,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaCertificate(): string
     {
@@ -690,7 +705,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaCoatOfArms(): string
     {
@@ -698,7 +713,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaDocument(): string
     {
@@ -706,7 +721,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaElectronic(): string
     {
@@ -714,7 +729,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaMagazine(): string
     {
@@ -722,7 +737,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaManuscript(): string
     {
@@ -730,7 +745,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaMap(): string
     {
@@ -738,7 +753,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaFiche(): string
     {
@@ -746,7 +761,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaFilm(): string
     {
@@ -754,7 +769,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaNewspaper(): string
     {
@@ -762,7 +777,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaPainting(): string
     {
@@ -770,7 +785,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaPhoto(): string
     {
@@ -778,7 +793,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaTombstone(): string
     {
@@ -786,7 +801,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaVideo(): string
     {
@@ -794,7 +809,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaOther(): string
     {
@@ -802,7 +817,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaUnknown(): string
     {
@@ -810,7 +825,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $color_from
+     * @param string|null $color_to
+     *
+     * @return string
      */
     public function chartMedia(string $color_from = null, string $color_to = null): string
     {
@@ -818,7 +836,12 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $what
+     * @param string $fact
+     * @param int    $parent
+     * @param bool   $country
+     *
+     * @return array
      */
     public function statsPlaces(string $what = 'ALL', string $fact = '', int $parent = 0, bool $country = false): array
     {
@@ -826,7 +849,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalPlaces(): string
     {
@@ -834,7 +857,11 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $chart_shows
+     * @param string $chart_type
+     * @param string $surname
+     *
+     * @return string
      */
     public function chartDistribution(
         string $chart_shows = 'world',
@@ -845,7 +872,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function commonCountriesList(): string
     {
@@ -853,7 +880,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function commonBirthPlacesList(): string
     {
@@ -861,7 +888,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function commonDeathPlacesList(): string
     {
@@ -869,7 +896,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function commonMarriagePlacesList(): string
     {
@@ -877,7 +904,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstBirth(): string
     {
@@ -885,7 +912,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstBirthYear(): string
     {
@@ -893,7 +920,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstBirthName(): string
     {
@@ -901,7 +928,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstBirthPlace(): string
     {
@@ -909,7 +936,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastBirth(): string
     {
@@ -917,7 +944,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastBirthYear(): string
     {
@@ -925,7 +952,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastBirthName(): string
     {
@@ -933,7 +960,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastBirthPlace(): string
     {
@@ -941,7 +968,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param int $year1
+     * @param int $year2
+     *
+     * @return Builder
      */
     public function statsBirthQuery(int $year1 = -1, int $year2 = -1): Builder
     {
@@ -949,7 +979,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param int $year1
+     * @param int $year2
+     *
+     * @return Builder
      */
     public function statsBirthBySexQuery(int $year1 = -1, int $year2 = -1): Builder
     {
@@ -957,7 +990,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $color_from
+     * @param string|null $color_to
+     *
+     * @return string
      */
     public function statsBirth(string $color_from = null, string $color_to = null): string
     {
@@ -965,7 +1001,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstDeath(): string
     {
@@ -973,7 +1009,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstDeathYear(): string
     {
@@ -981,7 +1017,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstDeathName(): string
     {
@@ -989,7 +1025,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstDeathPlace(): string
     {
@@ -997,7 +1033,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastDeath(): string
     {
@@ -1005,7 +1041,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastDeathYear(): string
     {
@@ -1013,7 +1049,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastDeathName(): string
     {
@@ -1021,7 +1057,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastDeathPlace(): string
     {
@@ -1029,7 +1065,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param int $year1
+     * @param int $year2
+     *
+     * @return Builder
      */
     public function statsDeathQuery(int $year1 = -1, int $year2 = -1): Builder
     {
@@ -1037,7 +1076,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param int $year1
+     * @param int $year2
+     *
+     * @return Builder
      */
     public function statsDeathBySexQuery(int $year1 = -1, int $year2 = -1): Builder
     {
@@ -1045,7 +1087,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $color_from
+     * @param string|null $color_to
+     *
+     * @return string
      */
     public function statsDeath(string $color_from = null, string $color_to = null): string
     {
@@ -1068,7 +1113,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function statsAge(): string
     {
@@ -1076,7 +1121,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function longestLife(): string
     {
@@ -1084,7 +1129,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function longestLifeAge(): string
     {
@@ -1092,7 +1137,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function longestLifeName(): string
     {
@@ -1100,7 +1145,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function longestLifeFemale(): string
     {
@@ -1108,7 +1153,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function longestLifeFemaleAge(): string
     {
@@ -1116,7 +1161,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function longestLifeFemaleName(): string
     {
@@ -1124,7 +1169,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function longestLifeMale(): string
     {
@@ -1132,7 +1177,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function longestLifeMaleAge(): string
     {
@@ -1140,7 +1185,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function longestLifeMaleName(): string
     {
@@ -1148,7 +1193,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topTenOldest(string $total = '10'): string
     {
@@ -1156,7 +1203,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topTenOldestList(string $total = '10'): string
     {
@@ -1164,7 +1213,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topTenOldestFemale(string $total = '10'): string
     {
@@ -1172,7 +1223,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topTenOldestFemaleList(string $total = '10'): string
     {
@@ -1180,7 +1233,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topTenOldestMale(string $total = '10'): string
     {
@@ -1188,7 +1243,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topTenOldestMaleList(string $total = '10'): string
     {
@@ -1196,7 +1253,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topTenOldestAlive(string $total = '10'): string
     {
@@ -1204,7 +1263,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topTenOldestListAlive(string $total = '10'): string
     {
@@ -1212,7 +1273,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topTenOldestFemaleAlive(string $total = '10'): string
     {
@@ -1220,7 +1283,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topTenOldestFemaleListAlive(string $total = '10'): string
     {
@@ -1228,7 +1293,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topTenOldestMaleAlive(string $total = '10'): string
     {
@@ -1236,7 +1303,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topTenOldestMaleListAlive(string $total = '10'): string
     {
@@ -1244,7 +1313,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param bool $show_years
+     *
+     * @return string
      */
     public function averageLifespan(bool $show_years = false): string
     {
@@ -1252,7 +1323,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param bool $show_years
+     *
+     * @return string
      */
     public function averageLifespanFemale(bool $show_years = false): string
     {
@@ -1260,7 +1333,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param bool $show_years
+     *
+     * @return string
      */
     public function averageLifespanMale(bool $show_years = false): string
     {
@@ -1268,7 +1343,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstEvent(): string
     {
@@ -1276,7 +1351,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstEventYear(): string
     {
@@ -1284,7 +1359,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstEventType(): string
     {
@@ -1292,7 +1367,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstEventName(): string
     {
@@ -1300,7 +1375,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstEventPlace(): string
     {
@@ -1308,7 +1383,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastEvent(): string
     {
@@ -1316,7 +1391,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastEventYear(): string
     {
@@ -1324,7 +1399,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastEventType(): string
     {
@@ -1332,7 +1407,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastEventName(): string
     {
@@ -1340,7 +1415,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastEventPlace(): string
     {
@@ -1348,7 +1423,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstMarriage(): string
     {
@@ -1356,7 +1431,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstMarriageYear(): string
     {
@@ -1364,7 +1439,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstMarriageName(): string
     {
@@ -1372,7 +1447,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstMarriagePlace(): string
     {
@@ -1380,7 +1455,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastMarriage(): string
     {
@@ -1388,7 +1463,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastMarriageYear(): string
     {
@@ -1396,7 +1471,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastMarriageName(): string
     {
@@ -1404,7 +1479,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastMarriagePlace(): string
     {
@@ -1412,7 +1487,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param int $year1
+     * @param int $year2
+     *
+     * @return Builder
      */
     public function statsMarriageQuery(int $year1 = -1, int $year2 = -1): Builder
     {
@@ -1420,7 +1498,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param int $year1
+     * @param int $year2
+     *
+     * @return Builder
      */
     public function statsFirstMarriageQuery(int $year1 = -1, int $year2 = -1): Builder
     {
@@ -1428,7 +1509,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $color_from
+     * @param string|null $color_to
+     *
+     * @return string
      */
     public function statsMarr(string $color_from = null, string $color_to = null): string
     {
@@ -1436,7 +1520,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstDivorce(): string
     {
@@ -1444,7 +1528,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstDivorceYear(): string
     {
@@ -1452,7 +1536,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstDivorceName(): string
     {
@@ -1460,7 +1544,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstDivorcePlace(): string
     {
@@ -1468,7 +1552,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastDivorce(): string
     {
@@ -1476,7 +1560,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastDivorceYear(): string
     {
@@ -1484,7 +1568,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastDivorceName(): string
     {
@@ -1492,7 +1576,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastDivorcePlace(): string
     {
@@ -1500,7 +1584,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $color_from
+     * @param string|null $color_to
+     *
+     * @return string
      */
     public function statsDiv(string $color_from = null, string $color_to = null): string
     {
@@ -1508,7 +1595,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function youngestMarriageFemale(): string
     {
@@ -1516,7 +1603,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function youngestMarriageFemaleName(): string
     {
@@ -1524,7 +1611,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $show_years
+     *
+     * @return string
      */
     public function youngestMarriageFemaleAge(string $show_years = ''): string
     {
@@ -1532,7 +1621,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function oldestMarriageFemale(): string
     {
@@ -1540,7 +1629,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function oldestMarriageFemaleName(): string
     {
@@ -1548,7 +1637,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $show_years
+     *
+     * @return string
      */
     public function oldestMarriageFemaleAge(string $show_years = ''): string
     {
@@ -1556,7 +1647,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function youngestMarriageMale(): string
     {
@@ -1564,7 +1655,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function youngestMarriageMaleName(): string
     {
@@ -1572,7 +1663,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $show_years
+     *
+     * @return string
      */
     public function youngestMarriageMaleAge(string $show_years = ''): string
     {
@@ -1580,7 +1673,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function oldestMarriageMale(): string
     {
@@ -1588,7 +1681,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function oldestMarriageMaleName(): string
     {
@@ -1596,7 +1689,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $show_years
+     *
+     * @return string
      */
     public function oldestMarriageMaleAge(string $show_years = ''): string
     {
@@ -1604,7 +1699,11 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $sex
+     * @param int    $year1
+     * @param int    $year2
+     *
+     * @return array
      */
     public function statsMarrAgeQuery(string $sex, int $year1 = -1, int $year2 = -1): array
     {
@@ -1612,7 +1711,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function statsMarrAge(): string
     {
@@ -1620,7 +1719,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function ageBetweenSpousesMF(string $total = '10'): string
     {
@@ -1628,7 +1729,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function ageBetweenSpousesMFList(string $total = '10'): string
     {
@@ -1636,7 +1739,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function ageBetweenSpousesFM(string $total = '10'): string
     {
@@ -1644,7 +1749,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function ageBetweenSpousesFMList(string $total = '10'): string
     {
@@ -1652,7 +1759,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function topAgeOfMarriageFamily(): string
     {
@@ -1660,7 +1767,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function topAgeOfMarriage(): string
     {
@@ -1668,7 +1775,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topAgeOfMarriageFamilies(string $total = '10'): string
     {
@@ -1676,7 +1785,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topAgeOfMarriageFamiliesList(string $total = '10'): string
     {
@@ -1684,7 +1795,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function minAgeOfMarriageFamily(): string
     {
@@ -1692,7 +1803,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function minAgeOfMarriage(): string
     {
@@ -1700,7 +1811,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function minAgeOfMarriageFamilies(string $total = '10'): string
     {
@@ -1708,7 +1821,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function minAgeOfMarriageFamiliesList(string $total = '10'): string
     {
@@ -1716,7 +1831,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function youngestMother(): string
     {
@@ -1724,7 +1839,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function youngestMotherName(): string
     {
@@ -1732,7 +1847,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $show_years
+     *
+     * @return string
      */
     public function youngestMotherAge(string $show_years = ''): string
     {
@@ -1740,7 +1857,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function oldestMother(): string
     {
@@ -1748,7 +1865,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function oldestMotherName(): string
     {
@@ -1756,7 +1873,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $show_years
+     *
+     * @return string
      */
     public function oldestMotherAge(string $show_years = ''): string
     {
@@ -1764,7 +1883,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function youngestFather(): string
     {
@@ -1772,7 +1891,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function youngestFatherName(): string
     {
@@ -1780,7 +1899,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $show_years
+     *
+     * @return string
      */
     public function youngestFatherAge(string $show_years = ''): string
     {
@@ -1788,7 +1909,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function oldestFather(): string
     {
@@ -1796,7 +1917,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function oldestFatherName(): string
     {
@@ -1804,7 +1925,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $show_years
+     *
+     * @return string
      */
     public function oldestFatherAge(string $show_years = ''): string
     {
@@ -1812,7 +1935,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMarriedMales(): string
     {
@@ -1820,7 +1943,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMarriedFemales(): string
     {
@@ -1828,7 +1951,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param int $year1
+     * @param int $year2
+     *
+     * @return Builder
      */
     public function monthFirstChildQuery(int $year1 = -1, int $year2 = -1): Builder
     {
@@ -1836,7 +1962,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param int $year1
+     * @param int $year2
+     *
+     * @return Builder
      */
     public function monthFirstChildBySexQuery(int $year1 = -1, int $year2 = -1): Builder
     {
@@ -1844,7 +1973,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function largestFamily(): string
     {
@@ -1852,7 +1981,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function largestFamilySize(): string
     {
@@ -1860,7 +1989,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function largestFamilyName(): string
     {
@@ -1868,7 +1997,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topTenLargestFamily(string $total = '10'): string
     {
@@ -1876,7 +2007,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topTenLargestFamilyList(string $total = '10'): string
     {
@@ -1884,7 +2017,11 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $color_from
+     * @param string|null $color_to
+     * @param string      $total
+     *
+     * @return string
      */
     public function chartLargestFamilies(
         string $color_from = null,
@@ -1895,7 +2032,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalChildren(): string
     {
@@ -1903,7 +2040,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function averageChildren(): string
     {
@@ -1911,7 +2048,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param int $year1
+     * @param int $year2
+     *
+     * @return array
      */
     public function statsChildrenQuery(int $year1 = -1, int $year2 = -1): array
     {
@@ -1919,7 +2059,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function statsChildren(): string
     {
@@ -1927,7 +2067,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topAgeBetweenSiblingsName(string $total = '10'): string
     {
@@ -1935,7 +2077,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topAgeBetweenSiblings(string $total = '10'): string
     {
@@ -1943,7 +2087,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topAgeBetweenSiblingsFullName(string $total = '10'): string
     {
@@ -1951,7 +2097,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     * @param string $one
+     *
+     * @return string
      */
     public function topAgeBetweenSiblingsList(string $total = '10', string $one = ''): string
     {
@@ -1959,7 +2108,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function noChildrenFamilies(): string
     {
@@ -1967,7 +2116,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $type
+     *
+     * @return string
      */
     public function noChildrenFamiliesList(string $type = 'list'): string
     {
@@ -1975,7 +2126,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $year1
+     * @param string $year2
+     *
+     * @return string
      */
     public function chartNoChildrenFamilies(
         string $year1 = '-1',
@@ -1985,7 +2139,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topTenLargestGrandFamily(string $total = '10'): string
     {
@@ -1993,7 +2149,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $total
+     *
+     * @return string
      */
     public function topTenLargestGrandFamilyList(string $total = '10'): string
     {
@@ -2001,7 +2159,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function getCommonSurname(): string
     {
@@ -2009,7 +2167,11 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $number_of_surnames
+     * @param string $sorting
+     *
+     * @return string
      */
     public function commonSurnames(
         string $threshold = '1',
@@ -2020,7 +2182,11 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $number_of_surnames
+     * @param string $sorting
+     *
+     * @return string
      */
     public function commonSurnamesTotals(
         string $threshold = '1',
@@ -2031,7 +2197,11 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $number_of_surnames
+     * @param string $sorting
+     *
+     * @return string
      */
     public function commonSurnamesList(
         string $threshold = '1',
@@ -2042,7 +2212,11 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $number_of_surnames
+     * @param string $sorting
+     *
+     * @return string
      */
     public function commonSurnamesListTotals(
         string $threshold = '1',
@@ -2054,7 +2228,11 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $color_from
+     * @param string|null $color_to
+     * @param string      $number_of_surnames
+     *
+     * @return string
      */
     public function chartCommonSurnames(
         string $color_from = null,
@@ -2066,7 +2244,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGiven(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2074,7 +2255,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2082,7 +2266,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenList(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2090,7 +2277,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2098,7 +2288,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2106,7 +2299,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenFemale(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2114,7 +2310,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenFemaleTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2122,7 +2321,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenFemaleList(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2130,7 +2332,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenFemaleListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2138,7 +2343,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenFemaleTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2146,7 +2354,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenMale(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2154,7 +2365,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenMaleTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2162,7 +2376,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenMaleList(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2170,7 +2387,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenMaleListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2178,7 +2398,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenMaleTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2186,7 +2409,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenUnknown(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2194,7 +2420,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenUnknownTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2202,7 +2431,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenUnknownList(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2210,7 +2442,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenUnknownListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2218,7 +2453,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $threshold
+     * @param string $maxtoshow
+     *
+     * @return string
      */
     public function commonGivenUnknownTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2226,7 +2464,11 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $color_from
+     * @param string|null $color_to
+     * @param string      $maxtoshow
+     *
+     * @return string
      */
     public function chartCommonGiven(
         string $color_from = null,
@@ -2237,7 +2479,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function usersLoggedIn(): string
     {
@@ -2245,7 +2487,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function usersLoggedInList(): string
     {
@@ -2253,7 +2495,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return int
      */
     public function usersLoggedInTotal(): int
     {
@@ -2261,7 +2503,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return int
      */
     public function usersLoggedInTotalAnon(): int
     {
@@ -2269,7 +2511,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return int
      */
     public function usersLoggedInTotalVisible(): int
     {
@@ -2277,7 +2519,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function userId(): string
     {
@@ -2285,7 +2527,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $visitor_text
+     *
+     * @return string
      */
     public function userName(string $visitor_text = ''): string
     {
@@ -2293,7 +2537,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function userFullName(): string
     {
@@ -2301,7 +2545,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalUsers(): string
     {
@@ -2309,7 +2553,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalAdmins(): string
     {
@@ -2317,7 +2561,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalNonAdmins(): string
     {
@@ -2325,7 +2569,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function latestUserId(): string
     {
@@ -2333,7 +2577,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function latestUserName(): string
     {
@@ -2341,7 +2585,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function latestUserFullName(): string
     {
@@ -2349,7 +2593,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $format
+     *
+     * @return string
      */
     public function latestUserRegDate(string $format = null): string
     {
@@ -2357,7 +2603,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $format
+     *
+     * @return string
      */
     public function latestUserRegTime(string $format = null): string
     {
@@ -2365,7 +2613,10 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $yes
+     * @param string|null $no
+     *
+     * @return string
      */
     public function latestUserLoggedin(string $yes = null, string $no = null): string
     {
@@ -2373,7 +2624,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function contactWebmaster(): string
     {
@@ -2381,7 +2632,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function contactGedcom(): string
     {
@@ -2389,7 +2640,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function serverDate(): string
     {
@@ -2397,7 +2648,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function serverTime(): string
     {
@@ -2405,7 +2656,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function serverTime24(): string
     {
@@ -2423,7 +2674,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function browserDate(): string
     {
@@ -2431,7 +2682,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function browserTime(): string
     {
@@ -2439,7 +2690,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function browserTimezone(): string
     {
@@ -2447,7 +2698,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $page_parameter
+     *
+     * @return string
      */
     public function hitCount(string $page_parameter = ''): string
     {
@@ -2455,7 +2708,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $page_parameter
+     *
+     * @return string
      */
     public function hitCountUser(string $page_parameter = ''): string
     {
@@ -2463,7 +2718,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $page_parameter
+     *
+     * @return string
      */
     public function hitCountIndi(string $page_parameter = ''): string
     {
@@ -2471,7 +2728,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $page_parameter
+     *
+     * @return string
      */
     public function hitCountFam(string $page_parameter = ''): string
     {
@@ -2479,7 +2738,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $page_parameter
+     *
+     * @return string
      */
     public function hitCountSour(string $page_parameter = ''): string
     {
@@ -2487,7 +2748,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $page_parameter
+     *
+     * @return string
      */
     public function hitCountRepo(string $page_parameter = ''): string
     {
@@ -2495,7 +2758,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $page_parameter
+     *
+     * @return string
      */
     public function hitCountNote(string $page_parameter = ''): string
     {
@@ -2503,7 +2768,9 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @param string $page_parameter
+     *
+     * @return string
      */
     public function hitCountObje(string $page_parameter = ''): string
     {
@@ -2511,7 +2778,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function gedcomFavorites(): string
     {
@@ -2519,7 +2786,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function userFavorites(): string
     {
@@ -2527,7 +2794,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalGedcomFavorites(): string
     {
@@ -2535,7 +2802,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalUserFavorites(): string
     {
@@ -2543,7 +2810,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalUserMessages(): string
     {
@@ -2551,7 +2818,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalUserJournal(): string
     {
@@ -2559,7 +2826,7 @@ class Statistics implements
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalGedcomNews(): string
     {

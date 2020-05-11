@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -115,7 +115,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstBirth(): string
     {
@@ -123,7 +123,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastBirth(): string
     {
@@ -131,7 +131,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstDeath(): string
     {
@@ -139,7 +139,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastDeath(): string
     {
@@ -147,7 +147,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstMarriage(): string
     {
@@ -155,7 +155,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastMarriage(): string
     {
@@ -163,7 +163,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstDivorce(): string
     {
@@ -171,7 +171,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastDivorce(): string
     {
@@ -203,7 +203,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstBirthYear(): string
     {
@@ -211,7 +211,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastBirthYear(): string
     {
@@ -219,7 +219,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstDeathYear(): string
     {
@@ -227,7 +227,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastDeathYear(): string
     {
@@ -235,7 +235,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstMarriageYear(): string
     {
@@ -243,7 +243,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastMarriageYear(): string
     {
@@ -251,7 +251,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstDivorceYear(): string
     {
@@ -259,7 +259,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastDivorceYear(): string
     {
@@ -290,7 +290,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstBirthName(): string
     {
@@ -298,7 +298,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastBirthName(): string
     {
@@ -306,7 +306,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstDeathName(): string
     {
@@ -314,7 +314,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastDeathName(): string
     {
@@ -322,7 +322,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstMarriageName(): string
     {
@@ -330,7 +330,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastMarriageName(): string
     {
@@ -338,7 +338,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstDivorceName(): string
     {
@@ -346,7 +346,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastDivorceName(): string
     {
@@ -382,7 +382,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstBirthPlace(): string
     {
@@ -390,7 +390,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastBirthPlace(): string
     {
@@ -398,7 +398,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstDeathPlace(): string
     {
@@ -406,7 +406,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastDeathPlace(): string
     {
@@ -414,7 +414,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstMarriagePlace(): string
     {
@@ -422,7 +422,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastMarriagePlace(): string
     {
@@ -430,7 +430,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function firstDivorcePlace(): string
     {
@@ -438,7 +438,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function lastDivorcePlace(): string
     {

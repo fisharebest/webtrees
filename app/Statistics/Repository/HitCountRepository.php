@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -86,7 +86,9 @@ class HitCountRepository implements HitCountRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @param string $page_parameter
+     *
+     * @return string
      */
     public function hitCount(string $page_parameter = ''): string
     {
@@ -94,7 +96,9 @@ class HitCountRepository implements HitCountRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @param string $page_parameter
+     *
+     * @return string
      */
     public function hitCountUser(string $page_parameter = ''): string
     {
@@ -102,7 +106,9 @@ class HitCountRepository implements HitCountRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @param string $page_parameter
+     *
+     * @return string
      */
     public function hitCountIndi(string $page_parameter = ''): string
     {
@@ -110,7 +116,9 @@ class HitCountRepository implements HitCountRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @param string $page_parameter
+     *
+     * @return string
      */
     public function hitCountFam(string $page_parameter = ''): string
     {
@@ -118,7 +126,9 @@ class HitCountRepository implements HitCountRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @param string $page_parameter
+     *
+     * @return string
      */
     public function hitCountSour(string $page_parameter = ''): string
     {
@@ -126,7 +136,9 @@ class HitCountRepository implements HitCountRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @param string $page_parameter
+     *
+     * @return string
      */
     public function hitCountRepo(string $page_parameter = ''): string
     {
@@ -134,7 +146,9 @@ class HitCountRepository implements HitCountRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @param string $page_parameter
+     *
+     * @return string
      */
     public function hitCountNote(string $page_parameter = ''): string
     {
@@ -142,7 +156,9 @@ class HitCountRepository implements HitCountRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @param string $page_parameter
+     *
+     * @return string
      */
     public function hitCountObje(string $page_parameter = ''): string
     {

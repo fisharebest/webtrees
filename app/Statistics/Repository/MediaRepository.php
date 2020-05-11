@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -139,7 +139,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMedia(): string
     {
@@ -147,7 +147,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaAudio(): string
     {
@@ -155,7 +155,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaBook(): string
     {
@@ -163,7 +163,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaCard(): string
     {
@@ -171,7 +171,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaCertificate(): string
     {
@@ -179,7 +179,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaCoatOfArms(): string
     {
@@ -187,7 +187,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaDocument(): string
     {
@@ -195,7 +195,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaElectronic(): string
     {
@@ -203,7 +203,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaFiche(): string
     {
@@ -211,7 +211,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaFilm(): string
     {
@@ -219,7 +219,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaMagazine(): string
     {
@@ -227,7 +227,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaManuscript(): string
     {
@@ -235,7 +235,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaMap(): string
     {
@@ -243,7 +243,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaNewspaper(): string
     {
@@ -251,7 +251,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaPainting(): string
     {
@@ -259,7 +259,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaPhoto(): string
     {
@@ -267,7 +267,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaTombstone(): string
     {
@@ -275,7 +275,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaVideo(): string
     {
@@ -283,7 +283,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaOther(): string
     {
@@ -291,7 +291,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
     public function totalMediaUnknown(): string
     {
@@ -355,7 +355,10 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $color_from
+     * @param string|null $color_to
+     *
+     * @return string
      */
     public function chartMedia(string $color_from = null, string $color_to = null): string
     {
