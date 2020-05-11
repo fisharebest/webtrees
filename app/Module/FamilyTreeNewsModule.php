@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -220,6 +221,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
                 ->update([
                     'body'    => $body,
                     'subject' => $subject,
+                    'updated' => new Expression('updated'), // See issue #3208
                 ]);
         } else {
             DB::table('news')->insert([
