@@ -55,7 +55,7 @@ class File
             $response = fread($fp, 65536);
 
             // The file has moved? Follow it.
-            if (preg_match('/^HTTP\/1.[01] 30[123].+\nLocation: ([^\r\n]+)/s', $response, $match)) {
+            if (preg_match('/^HTTP\/1.[01] 30[123].+\n[Ll]ocation: ([^\r\n]+)/s', $response, $match)) {
                 fclose($fp);
 
                 return self::fetchUrl($match[1], $stream);
