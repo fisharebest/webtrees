@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,16 +28,6 @@ use Fisharebest\Localization\Locale\LocaleHi;
 class LanguageHindi extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
-
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
-    public function isEnabledByDefault(): bool
-    {
-        return true;
-    }
 
     /**
      * @return LocaleInterface

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -58,7 +58,7 @@ class Date
     public $qual2 = '';
 
     /** @var AbstractCalendarDate|null Optional second date */
-    private $date2 = null;
+    private $date2;
 
     /** @var string Optional text, as included with an INTerpreted date */
     private $text = '';

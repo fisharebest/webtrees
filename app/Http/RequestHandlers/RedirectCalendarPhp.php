@@ -39,17 +39,12 @@ class RedirectCalendarPhp implements RequestHandlerInterface
     /** @var TreeService */
     private $tree_service;
 
-    /** @var CalendarController */
-    private $calendar_controller;
-
     /**
-     * @param CalendarController $calendar_controller
-     * @param TreeService        $tree_service
+     * @param TreeService $tree_service
      */
-    public function __construct(CalendarController $calendar_controller, TreeService $tree_service)
+    public function __construct(TreeService $tree_service)
     {
-        $this->calendar_controller = $calendar_controller;
-        $this->tree_service        = $tree_service;
+        $this->tree_service = $tree_service;
     }
 
     /**
