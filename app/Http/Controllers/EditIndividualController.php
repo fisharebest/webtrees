@@ -22,10 +22,9 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -53,7 +52,7 @@ class EditIndividualController extends AbstractEditController
 
         $xref = $request->getQueryParams()['xref'];
 
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
         $title = $individual->fullName() . ' - ' . I18N::translate('Add a child to create a one-parent family');
@@ -82,7 +81,7 @@ class EditIndividualController extends AbstractEditController
 
         $xref = $request->getQueryParams()['xref'];
 
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
         $params = (array) $request->getParsedBody();
@@ -149,7 +148,7 @@ class EditIndividualController extends AbstractEditController
 
         $xref = $request->getQueryParams()['xref'];
 
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
         $gender = $request->getQueryParams()['gender'];
@@ -186,7 +185,7 @@ class EditIndividualController extends AbstractEditController
 
         $xref = $request->getQueryParams()['xref'];
 
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
         $params = (array) $request->getParsedBody();
@@ -251,7 +250,7 @@ class EditIndividualController extends AbstractEditController
 
         $xref = $request->getQueryParams()['xref'];
 
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
         if ($individual->sex() === 'F') {
@@ -288,7 +287,7 @@ class EditIndividualController extends AbstractEditController
 
         $xref = $request->getQueryParams()['xref'];
 
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
         $params = (array) $request->getParsedBody();
@@ -428,7 +427,7 @@ class EditIndividualController extends AbstractEditController
 
         $fact_id = $request->getAttribute('fact_id') ?? '';
 
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
         // Find the fact to edit
@@ -481,7 +480,7 @@ class EditIndividualController extends AbstractEditController
 
         $xref = $request->getQueryParams()['xref'];
 
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
         $title = $individual->fullName() . ' — ' . I18N::translate('Add a name');
@@ -524,7 +523,7 @@ class EditIndividualController extends AbstractEditController
 
         $xref = $request->getQueryParams()['xref'];
 
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
 
         $individual = Auth::checkIndividualAccess($individual, true);
 
@@ -550,14 +549,14 @@ class EditIndividualController extends AbstractEditController
 
         $xref  = $request->getQueryParams()['xref'];
 
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
         $params = (array) $request->getParsedBody();
 
         $famid = $params['famid'];
 
-        $family = Family::getInstance($famid, $tree);
+        $family = Factory::family()->make($famid, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
         $PEDI  = $params['PEDI'];
@@ -602,7 +601,7 @@ class EditIndividualController extends AbstractEditController
 
         $xref = $request->getQueryParams()['xref'];
 
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
         if ($individual->sex() === 'F') {
@@ -634,13 +633,13 @@ class EditIndividualController extends AbstractEditController
 
         $xref   = $request->getQueryParams()['xref'];
 
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
         $params = (array) $request->getParsedBody();
         $spid = $params['spid'];
 
-        $spouse = Individual::getInstance($spid, $tree);
+        $spouse = Factory::individual()->make($spid, $tree);
         $spouse = Auth::checkIndividualAccess($spouse, true);
 
         if ($individual->sex() === 'M') {

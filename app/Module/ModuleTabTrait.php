@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
@@ -127,7 +128,7 @@ trait ModuleTabTrait
 
         $xref = $request->getQueryParams()['xref'];
 
-        $record = Individual::getInstance($xref, $tree);
+        $record = Factory::individual()->make($xref, $tree);
         $record = Auth::checkIndividualAccess($record);
 
         $user = $request->getAttribute('user');

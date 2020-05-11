@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -50,7 +50,7 @@ class EditRawFactAction implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $record = GedcomRecord::getInstance($xref, $tree);
+        $record = Factory::gedcomRecord()->make($xref, $tree);
 
         $fact_id = $request->getAttribute('fact_id');
 

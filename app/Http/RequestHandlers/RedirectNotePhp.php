@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\NoteNotFoundException;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
@@ -60,7 +61,7 @@ class RedirectNotePhp implements RequestHandlerInterface
         $tree  = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $note = Note::getInstance($nid, $tree);
+            $note = Factory::note()->make($nid, $tree);
 
             if ($note instanceof Note) {
                 return redirect($note->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);

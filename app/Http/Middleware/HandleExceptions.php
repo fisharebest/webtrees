@@ -42,7 +42,6 @@ use function ob_get_level;
 use function register_shutdown_function;
 use function response;
 use function str_replace;
-use function strpos;
 use function view;
 
 use const E_ERROR;

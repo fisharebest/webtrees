@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Exception;
-use Fisharebest\Webtrees\Factories\GedcomRecordFactory;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\Services\PendingChangesService;
@@ -609,7 +608,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['individuals.*'])
             ->get()
-            ->map(Individual::rowMapper($this->tree))
+            ->map(Factory::individual()->mapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -633,7 +632,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['families.*'])
             ->get()
-            ->map(Family::rowMapper($this->tree))
+            ->map(Factory::family()->mapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -657,7 +656,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['sources.*'])
             ->get()
-            ->map(Source::rowMapper($this->tree))
+            ->map(Factory::source()->mapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -681,7 +680,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['media.*'])
             ->get()
-            ->map(Media::rowMapper($this->tree))
+            ->map(Factory::media()->mapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -706,7 +705,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['other.*'])
             ->get()
-            ->map(Note::rowMapper($this->tree))
+            ->map(Factory::note()->mapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -731,7 +730,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['other.*'])
             ->get()
-            ->map(Repository::rowMapper($this->tree))
+            ->map(Factory::repository()->mapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -1107,7 +1106,7 @@ class GedcomRecord
             ->pluck('l_from');
 
         return $xrefs->map(function (string $xref): GedcomRecord {
-            $record = GedcomRecord::getInstance($xref, $this->tree);
+            $record = Factory::gedcomRecord()->make($xref, $this->tree);
             assert($record instanceof GedcomRecord);
 
             return $record;

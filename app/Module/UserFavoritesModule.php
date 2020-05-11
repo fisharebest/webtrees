@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,14 +21,10 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Repository;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
@@ -147,7 +143,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
             ->get()
             ->map(static function (stdClass $row) use ($tree): stdClass {
                 if ($row->xref !== null) {
-                    $row->record = GedcomRecord::getInstance($row->xref, $tree);
+                    $row->record = Factory::gedcomRecord()->make($row->xref, $tree);
                 } else {
                     $row->record = null;
                 }
@@ -271,19 +267,19 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     {
         switch ($type) {
             case 'indi':
-                return Individual::getInstance($xref, $tree);
+                return Factory::individual()->make($xref, $tree);
 
             case 'fam':
-                return Family::getInstance($xref, $tree);
+                return Factory::family()->make($xref, $tree);
 
             case 'sour':
-                return Source::getInstance($xref, $tree);
+                return Factory::source()->make($xref, $tree);
 
             case 'repo':
-                return Repository::getInstance($xref, $tree);
+                return Factory::repository()->make($xref, $tree);
 
             case 'obje':
-                return Media::getInstance($xref, $tree);
+                return Factory::media()->make($xref, $tree);
 
             default:
                 return null;

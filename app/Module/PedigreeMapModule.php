@@ -21,9 +21,9 @@ namespace Fisharebest\Webtrees\Module;
 
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
-use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
@@ -43,7 +43,6 @@ use function count;
 use function intdiv;
 use function is_string;
 use function redirect;
-use function response;
 use function route;
 use function strip_tags;
 use function ucfirst;
@@ -201,7 +200,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $individual  = Individual::getInstance($xref, $tree);
+        $individual  = Factory::individual()->make($xref, $tree);
         $individual  = Auth::checkIndividualAccess($individual, false, true);
 
         $user        = $request->getAttribute('user');
@@ -334,7 +333,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
         $generations = (int) $request->getAttribute('generations');
         $xref        = $request->getAttribute('xref');
-        $individual  = Individual::getInstance($xref, $tree);
+        $individual  = Factory::individual()->make($xref, $tree);
         $ancestors   = $chart_service->sosaStradonitzAncestors($individual, $generations);
         $facts       = [];
         foreach ($ancestors as $sosa => $person) {

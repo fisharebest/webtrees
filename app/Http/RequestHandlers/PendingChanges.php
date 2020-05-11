@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,9 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
@@ -96,34 +96,34 @@ class PendingChanges implements RequestHandlerInterface
 
             switch ($match[1]) {
                 case Individual::RECORD_TYPE:
-                    $row->record = new Individual($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
+                    $row->record = Factory::individual()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
                 case Family::RECORD_TYPE:
-                    $row->record = new Family($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
+                    $row->record = Factory::family()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
                 case Source::RECORD_TYPE:
-                    $row->record = new Source($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
+                    $row->record = Factory::source()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
                 case Repository::RECORD_TYPE:
-                    $row->record = new Repository($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
+                    $row->record = Factory::repository()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
                 case Media::RECORD_TYPE:
-                    $row->record = new Media($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
+                    $row->record = Factory::media()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
                 case Note::RECORD_TYPE:
-                    $row->record = new Note($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
+                    $row->record = Factory::note()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
                 case Submitter::RECORD_TYPE:
-                    $row->record = new Submitter($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
+                    $row->record = Factory::submitter()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
                 case Submission::RECORD_TYPE:
-                    $row->record = new Submission($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
+                    $row->record = Factory::submission()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
                 case Header::RECORD_TYPE:
-                    $row->record = new Header($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
+                    $row->record = Factory::header()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
                 default:
-                    $row->record = new GedcomRecord($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
+                    $row->record = Factory::gedcomRecord()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
             }
 

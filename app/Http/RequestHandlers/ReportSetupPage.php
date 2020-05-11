@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,15 +21,13 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -111,7 +109,7 @@ class ReportSetupPage implements RequestHandlerInterface
                     $input['control'] = view('components/select-individual', [
                         'id'         => 'input-' . $n,
                         'name'       => 'vars[' . $input['name'] . ']',
-                        'individual' => Individual::getInstance($xref, $tree),
+                        'individual' => Factory::individual()->make($xref, $tree),
                         'tree'       => $tree,
                         'required'   => true,
                     ]);
@@ -121,7 +119,7 @@ class ReportSetupPage implements RequestHandlerInterface
                     $input['control'] = view('components/select-family', [
                         'id'       => 'input-' . $n,
                         'name'     => 'vars[' . $input['name'] . ']',
-                        'family'   => Family::getInstance($xref, $tree),
+                        'family'   => Factory::family()->make($xref, $tree),
                         'tree'     => $tree,
                         'required' => true,
                     ]);
@@ -131,7 +129,7 @@ class ReportSetupPage implements RequestHandlerInterface
                     $input['control'] = view('components/select-source', [
                         'id'       => 'input-' . $n,
                         'name'     => 'vars[' . $input['name'] . ']',
-                        'family'   => Source::getInstance($xref, $tree),
+                        'family'   => Factory::source()->make($xref, $tree),
                         'tree'     => $tree,
                         'required' => true,
                     ]);

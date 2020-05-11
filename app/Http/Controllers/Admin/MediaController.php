@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Html;
@@ -170,7 +171,7 @@ class MediaController extends AbstractAdminController
         $callback = function (stdClass $row): array {
             /** @var Media $media */
             $tree = $this->tree_service->find((int) $row->m_file);
-            $media = Media::getInstance($row->m_id, $tree, $row->m_gedcom);
+            $media = Factory::media()->make($row->m_id, $tree, $row->m_gedcom);
             assert($media instanceof Media);
 
             $media_files = $media->mediaFiles()

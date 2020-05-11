@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -164,7 +165,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, false, true);
 
         $user        = $request->getAttribute('user');
@@ -232,7 +233,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
-        $family = Family::getInstance($xref, $tree);
+        $family = Factory::family()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family);
 
         return response(view('modules/hourglass-chart/parents', [
@@ -256,7 +257,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         $xref = $request->getQueryParams()['xref'] ?? '';
 
         $spouses    = (bool) ($request->getQueryParams()['spouses'] ?? false);
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, false, true);
 
         $children = $individual->spouseFamilies()->map(static function (Family $family): Collection {

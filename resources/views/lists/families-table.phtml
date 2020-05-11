@@ -5,10 +5,10 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
@@ -234,8 +234,8 @@ $marriageAgeData = [
 
         <tbody>
         <?php foreach ($families as $family) : ?>
-            <?php $husb = $family->husband() ?? new Individual('H', '0 @H@ INDI', null, $family->tree()) ?>
-            <?php $wife = $family->wife() ?? new Individual('W', '0 @W@ INDI', null, $family->tree()) ?>
+            <?php $husb = $family->husband() ?? Factory::individual()->new('H', '0 @H@ INDI', null, $family->tree()) ?>
+            <?php $wife = $family->wife() ?? Factory::individual()->new('W', '0 @W@ INDI', null, $family->tree()) ?>
 
             <tr class="<?= $family->isPendingDeletion() ? 'wt-old' : ($family->isPendingAddition() ? 'wt-new' : '') ?>">
                 <!-- Husband name -->

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Algorithm\ConnectedComponent;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -98,7 +99,7 @@ class UnconnectedPage implements RequestHandlerInterface
             if (!in_array($xref, $component, true)) {
                 $individuals = [];
                 foreach ($component as $xref) {
-                    $individuals[] = Individual::getInstance($xref, $tree);
+                    $individuals[] = Factory::individual()->make($xref, $tree);
                 }
                 // The database query may return pending additions/deletions, which may not exist.
                 $individual_groups[] = array_filter($individuals);

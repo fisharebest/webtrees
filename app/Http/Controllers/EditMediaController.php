@@ -22,12 +22,11 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Exception;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
@@ -81,7 +80,7 @@ class EditMediaController extends AbstractEditController
         assert($data_filesystem instanceof FilesystemInterface);
 
         $xref  = $request->getQueryParams()['xref'];
-        $media = Media::getInstance($xref, $tree);
+        $media = Factory::media()->make($xref, $tree);
 
         try {
             $media = Auth::checkMediaAccess($media);
@@ -114,7 +113,7 @@ class EditMediaController extends AbstractEditController
         assert($tree instanceof Tree);
 
         $xref  = $request->getQueryParams()['xref'];
-        $media = Media::getInstance($xref, $tree);
+        $media = Factory::media()->make($xref, $tree);
 
         $params = (array) $request->getParsedBody();
 
@@ -161,7 +160,7 @@ class EditMediaController extends AbstractEditController
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
         $fact_id = $params['fact_id'];
-        $media   = Media::getInstance($xref, $tree);
+        $media   = Factory::media()->make($xref, $tree);
 
         try {
             $media = Auth::checkMediaAccess($media);
@@ -213,7 +212,7 @@ class EditMediaController extends AbstractEditController
         $remote   = $params['remote'];
         $title    = $params['title'];
         $type     = $params['type'];
-        $media    = Media::getInstance($xref, $tree);
+        $media    = Factory::media()->make($xref, $tree);
 
         // Tidy whitespace
         $type  = trim(preg_replace('/\s+/', ' ', $type));
@@ -346,7 +345,7 @@ class EditMediaController extends AbstractEditController
         assert($tree instanceof Tree);
 
         $xref = $request->getQueryParams()['xref'];
-        $media = Media::getInstance($xref, $tree);
+        $media = Factory::media()->make($xref, $tree);
 
         return response(view('modals/link-media-to-individual', [
             'media' => $media,
@@ -366,7 +365,7 @@ class EditMediaController extends AbstractEditController
 
         $xref = $request->getQueryParams()['xref'];
 
-        $media = Media::getInstance($xref, $tree);
+        $media = Factory::media()->make($xref, $tree);
 
         return response(view('modals/link-media-to-family', [
             'media' => $media,
@@ -386,7 +385,7 @@ class EditMediaController extends AbstractEditController
 
         $xref = $request->getQueryParams()['xref'];
 
-        $media = Media::getInstance($xref, $tree);
+        $media = Factory::media()->make($xref, $tree);
 
         return response(view('modals/link-media-to-source', [
             'media' => $media,
@@ -411,8 +410,8 @@ class EditMediaController extends AbstractEditController
 
         $link = $params['link'];
 
-        $media  = Media::getInstance($xref, $tree);
-        $record = GedcomRecord::getInstance($link, $tree);
+        $media  = Factory::media()->make($xref, $tree);
+        $record = Factory::gedcomRecord()->make($link, $tree);
 
         $record->createFact('1 OBJE @' . $xref . '@', true);
 

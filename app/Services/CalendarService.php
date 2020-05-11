@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Date\JalaliDate;
 use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\Date\JulianDate;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
@@ -144,9 +145,9 @@ class CalendarService
         foreach (['INDI' => $ind_query, 'FAM' => $fam_query] as $type => $record_query) {
             foreach ($record_query->get() as $row) {
                 if ($type === 'INDI') {
-                    $record = Individual::getInstance($row->xref, $tree, $row->gedcom);
+                    $record = Factory::individual()->make($row->xref, $tree, $row->gedcom);
                 } else {
-                    $record = Family::getInstance($row->xref, $tree, $row->gedcom);
+                    $record = Factory::family()->make($row->xref, $tree, $row->gedcom);
                 }
 
                 $anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
@@ -315,9 +316,9 @@ class CalendarService
             foreach (['INDI' => $ind_query, 'FAM' => $fam_query] as $type => $record_query) {
                 foreach ($record_query->get() as $row) {
                     if ($type === 'INDI') {
-                        $record = Individual::getInstance($row->xref, $tree, $row->gedcom);
+                        $record = Factory::individual()->make($row->xref, $tree, $row->gedcom);
                     } else {
-                        $record = Family::getInstance($row->xref, $tree, $row->gedcom);
+                        $record = Factory::family()->make($row->xref, $tree, $row->gedcom);
                     }
 
                     $anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);

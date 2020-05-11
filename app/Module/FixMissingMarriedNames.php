@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -229,7 +229,7 @@ class FixMissingMarriedNames extends AbstractModule implements ModuleDataFixInte
             $famrec = $family->gedcom();
 
             if (preg_match('/^1 MARR/m', $famrec) && preg_match('/^1 HUSB @(.+)@/m', $famrec, $hmatch)) {
-                $spouse = Individual::getInstance($hmatch[1], $tree);
+                $spouse = Factory::individual()->make($hmatch[1], $tree);
 
                 if ($spouse instanceof Individual) {
                     $husb_surnames = array_unique(array_merge($husb_surnames, $this->surnames($spouse)));

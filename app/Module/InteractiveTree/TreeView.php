@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module\InteractiveTree;
 
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
@@ -88,7 +89,7 @@ class TreeView
                 case 'c':
                     $families = Collection::make(explode(',', $json_request))
                         ->map(static function (string $xref) use ($tree): ?Family {
-                            return Family::getInstance($xref, $tree);
+                            return Factory::family()->make($xref, $tree);
                         })
                         ->filter();
 
@@ -98,7 +99,7 @@ class TreeView
                 case 'p':
                     [$xref, $order] = explode('@', $json_request);
 
-                    $family = Family::getInstance($xref, $tree);
+                    $family = Factory::family()->make($xref, $tree);
                     if ($family instanceof Family) {
                         // Prefer the paternal line
                         $parent = $family->husband() ?? $family->wife();

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
@@ -57,7 +58,7 @@ class Select2Individual extends AbstractSelect2Handler
     protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
     {
         // Search by XREF
-        $individual = Individual::getInstance($query, $tree);
+        $individual = Factory::individual()->make($query, $tree);
 
         if ($individual instanceof Individual) {
             $results = new Collection([$individual]);

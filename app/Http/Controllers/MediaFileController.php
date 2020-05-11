@@ -25,8 +25,8 @@ use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Log;
-use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Site;
@@ -87,7 +87,7 @@ class MediaFileController extends AbstractBaseController
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
         $fact_id = $params['fact_id'];
-        $media   = Media::getInstance($xref, $tree);
+        $media   = Factory::media()->make($xref, $tree);
 
         if ($media === null) {
             throw new MediaNotFoundException();
@@ -136,7 +136,7 @@ class MediaFileController extends AbstractBaseController
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
         $fact_id = $params['fact_id'];
-        $media   = Media::getInstance($xref, $tree);
+        $media   = Factory::media()->make($xref, $tree);
 
         if ($media === null) {
             return $this->httpStatusAsImage(StatusCodeInterface::STATUS_NOT_FOUND);

@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Functions;
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Gedcom;
@@ -89,7 +90,7 @@ class FunctionsPrint
 
         // Check if shared note (we have already checked that it exists)
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
-            $note  = Note::getInstance($match[1], $tree);
+            $note  = Factory::note()->make($match[1], $tree);
             $label = 'SHARED_NOTE';
             $html  = Filter::formatText($note->getNote(), $tree);
         } else {
@@ -154,7 +155,7 @@ class FunctionsPrint
             if (!preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $match[$j][1], $nmatch)) {
                 $data .= self::printNoteRecord($tree, $match[$j][1], $nlevel, $nrec);
             } else {
-                $note = Note::getInstance($nmatch[1], $tree);
+                $note = Factory::note()->make($nmatch[1], $tree);
                 if ($note) {
                     if ($note->canShow()) {
                         $noterec = $note->gedcom();

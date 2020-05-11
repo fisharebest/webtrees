@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -66,7 +66,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $fact_id = $params['fact_id'] ?? '';
 
-        $record = GedcomRecord::getInstance($xref, $tree);
+        $record = Factory::gedcomRecord()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
         $keep_chan = (bool) ($params['keep_chan'] ?? false);
@@ -138,7 +138,7 @@ class EditGedcomRecordController extends AbstractEditController
         if ($pid_array !== '') {
             foreach (explode(',', $pid_array) as $pid) {
                 if ($pid !== $xref) {
-                    $indi = Individual::getInstance($pid, $tree);
+                    $indi = Factory::individual()->make($pid, $tree);
                     if ($indi && $indi->canEdit()) {
                         $indi->updateFact($fact_id, $newged, !$keep_chan);
                     }

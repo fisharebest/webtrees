@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,7 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -174,7 +175,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         $individuals = (new Collection($xrefs))
             ->uniqueStrict()
             ->map(static function (string $xref) use ($tree): ?Individual {
-                return Individual::getInstance($xref, $tree);
+                return Factory::individual()->make($xref, $tree);
             })
             ->filter()
             ->filter(GedcomRecord::accessFilter());
@@ -199,7 +200,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         }
 
         $individuals = array_map(static function (string $xref) use ($tree): ?Individual {
-            return Individual::getInstance($xref, $tree);
+            return Factory::individual()->make($xref, $tree);
         }, $xrefs);
 
         $individuals = array_filter($individuals, static function (?Individual $individual): bool {
@@ -263,7 +264,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
     {
         /** @var Individual[] $individuals */
         $individuals = array_map(static function (string $xref) use ($tree): ?Individual {
-            return Individual::getInstance($xref, $tree);
+            return Factory::individual()->make($xref, $tree);
         }, $xrefs);
 
         $individuals = array_filter($individuals, static function (?Individual $individual): bool {

@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\RecordNotFoundException;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
@@ -60,7 +61,7 @@ class RedirectGedRecordPhp implements RequestHandlerInterface
         $tree  = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $record = GedcomRecord::getInstance($pid, $tree);
+            $record = Factory::gedcomRecord()->make($pid, $tree);
 
             if ($record instanceof GedcomRecord) {
                 return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);

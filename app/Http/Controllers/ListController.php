@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
@@ -662,7 +663,7 @@ class ListController extends AbstractBaseController
 
         return $query
             ->get()
-            ->map(Media::rowMapper($tree))
+            ->map(Factory::media()->mapper($tree))
             ->filter(GedcomRecord::accessFilter())
             ->all();
     }
@@ -680,7 +681,7 @@ class ListController extends AbstractBaseController
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Note::RECORD_TYPE)
             ->get()
-            ->map(Note::rowMapper($tree))
+            ->map(Factory::note()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -697,7 +698,7 @@ class ListController extends AbstractBaseController
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Repository::RECORD_TYPE)
             ->get()
-            ->map(Repository::rowMapper($tree))
+            ->map(Factory::repository()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -713,7 +714,7 @@ class ListController extends AbstractBaseController
         return DB::table('sources')
             ->where('s_file', '=', $tree->id())
             ->get()
-            ->map(Source::rowMapper($tree))
+            ->map(Factory::source()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -730,7 +731,7 @@ class ListController extends AbstractBaseController
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Submitter::RECORD_TYPE)
             ->get()
-            ->map(Submitter::rowMapper($tree))
+            ->map(Factory::submitter()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
     }
 

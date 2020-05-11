@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\FamilyNotFoundException;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
@@ -60,7 +61,7 @@ class RedirectFamilyPhp implements RequestHandlerInterface
         $tree  = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $family = Family::getInstance($famid, $tree);
+            $family = Factory::family()->make($famid, $tree);
 
             if ($family instanceof Family) {
                 return redirect($family->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);

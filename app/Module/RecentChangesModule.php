@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
@@ -282,7 +283,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             ->get()
             ->map(function (stdClass $row) use ($tree): stdClass {
                 return (object) [
-                    'record' => GedcomRecord::getInstance($row->xref, $tree, $row->new_gedcom),
+                    'record' => Factory::gedcomRecord()->make($row->xref, $tree, $row->new_gedcom),
                     'time'   => Carbon::create($row->change_time)->local(),
                     'user'   => $this->user_service->find($row->user_id),
                 ];

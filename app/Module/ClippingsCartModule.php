@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
 use Fisharebest\Webtrees\Exceptions\NoteNotFoundException;
 use Fisharebest\Webtrees\Exceptions\RepositoryNotFoundException;
 use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Gedcom;
@@ -262,7 +263,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         }
 
         foreach ($xrefs as $xref) {
-            $object = GedcomRecord::getInstance($xref, $tree);
+            $object = Factory::gedcomRecord()->make($xref, $tree);
             // The object may have been deleted since we added it to the cart....
             if ($object instanceof  GedcomRecord) {
                 $record = $object->privatizeGedcom($access_level);
@@ -443,7 +444,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $family = Family::getInstance($xref, $tree);
+        $family = Factory::family()->make($xref, $tree);
 
         if ($family === null) {
             throw new FamilyNotFoundException();
@@ -495,7 +496,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $xref   = $params['xref'];
         $option = $params['option'];
 
-        $family = Family::getInstance($xref, $tree);
+        $family = Factory::family()->make($xref, $tree);
 
         if ($family === null) {
             throw new FamilyNotFoundException();
@@ -581,7 +582,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
 
         if ($individual === null) {
             throw new IndividualNotFoundException();
@@ -645,7 +646,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $xref   = $params['xref'];
         $option = $params['option'];
 
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
 
         if ($individual === null) {
             throw new IndividualNotFoundException();
@@ -732,7 +733,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $media = Media::getInstance($xref, $tree);
+        $media = Factory::media()->make($xref, $tree);
 
         if ($media === null) {
             throw new MediaNotFoundException();
@@ -777,7 +778,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $media = Media::getInstance($xref, $tree);
+        $media = Factory::media()->make($xref, $tree);
 
         if ($media === null) {
             throw new MediaNotFoundException();
@@ -800,7 +801,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $note = Note::getInstance($xref, $tree);
+        $note = Factory::note()->make($xref, $tree);
 
         if ($note === null) {
             throw new NoteNotFoundException();
@@ -845,7 +846,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $note = Note::getInstance($xref, $tree);
+        $note = Factory::note()->make($xref, $tree);
 
         if ($note === null) {
             throw new NoteNotFoundException();
@@ -868,7 +869,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $repository = Repository::getInstance($xref, $tree);
+        $repository = Factory::repository()->make($xref, $tree);
 
         if ($repository === null) {
             throw new RepositoryNotFoundException();
@@ -913,7 +914,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $repository = Repository::getInstance($xref, $tree);
+        $repository = Factory::repository()->make($xref, $tree);
 
         if ($repository === null) {
             throw new RepositoryNotFoundException();
@@ -936,7 +937,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $source = Source::getInstance($xref, $tree);
+        $source = Factory::source()->make($xref, $tree);
 
         if ($source === null) {
             throw new SourceNotFoundException();
@@ -985,7 +986,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $xref   = $params['xref'];
         $option = $params['option'];
 
-        $source = Source::getInstance($xref, $tree);
+        $source = Factory::source()->make($xref, $tree);
 
         if ($source === null) {
             throw new SourceNotFoundException();
@@ -1021,7 +1022,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         // Fetch all the records in the cart.
         $records = array_map(static function (string $xref) use ($tree): ?GedcomRecord {
-            return GedcomRecord::getInstance($xref, $tree);
+            return Factory::gedcomRecord()->make($xref, $tree);
         }, $xrefs);
 
         // Some records may have been deleted after they were added to the cart.

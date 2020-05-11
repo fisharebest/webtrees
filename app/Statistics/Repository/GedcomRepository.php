@@ -20,14 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Carbon;
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\GedcomRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\Builder;
 
 /**
  * A repository providing methods for GEDCOM related statistics.
@@ -60,7 +58,7 @@ class GedcomRepository implements GedcomRepositoryInterface
         $version = '';
         $source  = '';
 
-        $head = Header::getInstance('HEAD', $this->tree);
+        $head = Factory::header()->make('HEAD', $this->tree);
 
         if ($head instanceof Header) {
             $sour = $head->facts(['SOUR'])->first();
@@ -139,7 +137,7 @@ class GedcomRepository implements GedcomRepositoryInterface
      */
     public function gedcomDate(): string
     {
-        $head = Header::getInstance('HEAD', $this->tree);
+        $head = Factory::header()->make('HEAD', $this->tree);
 
         if ($head instanceof Header) {
             $fact = $head->facts(['DATE'])->first();

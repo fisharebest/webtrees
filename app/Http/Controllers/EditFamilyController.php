@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -49,7 +49,7 @@ class EditFamilyController extends AbstractEditController
 
         $xref = $request->getQueryParams()['xref'];
 
-        $family = Family::getInstance($xref, $tree);
+        $family = Factory::family()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
         $gender = $request->getQueryParams()['gender'];
@@ -88,7 +88,7 @@ class EditFamilyController extends AbstractEditController
 
         $xref = $request->getQueryParams()['xref'];
 
-        $family = Family::getInstance($xref, $tree);
+        $family = Factory::family()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
         $params = (array) $request->getParsedBody();
@@ -155,7 +155,7 @@ class EditFamilyController extends AbstractEditController
 
         $xref   = $request->getQueryParams()['xref'];
         $famtag = $request->getQueryParams()['famtag'];
-        $family = Family::getInstance($xref, $tree);
+        $family = Factory::family()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
         if ($famtag === 'WIFE') {
@@ -189,7 +189,7 @@ class EditFamilyController extends AbstractEditController
         assert($tree instanceof Tree);
 
         $xref   = $request->getQueryParams()['xref'];
-        $family = Family::getInstance($xref, $tree);
+        $family = Factory::family()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
         $params = (array) $request->getParsedBody();
@@ -256,7 +256,7 @@ class EditFamilyController extends AbstractEditController
         assert($tree instanceof Tree);
 
         $xref   = $request->getQueryParams()['xref'];
-        $family = Family::getInstance($xref, $tree);
+        $family = Factory::family()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
         $title = I18N::translate('Change family members') . ' – ' . $family->fullName();
@@ -284,7 +284,7 @@ class EditFamilyController extends AbstractEditController
         $params = (array) $request->getParsedBody();
 
         $xref   = $params['xref'];
-        $family = Family::getInstance($xref, $tree);
+        $family = Factory::family()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
         $params = (array) $request->getParsedBody();
@@ -299,11 +299,11 @@ class EditFamilyController extends AbstractEditController
         $old_children = $family->children();
 
         // New family members
-        $new_father   = Individual::getInstance($HUSB, $tree);
-        $new_mother   = Individual::getInstance($WIFE, $tree);
+        $new_father   = Factory::individual()->make($HUSB, $tree);
+        $new_mother   = Factory::individual()->make($WIFE, $tree);
         $new_children = [];
         foreach ($CHIL as $child) {
-            $new_children[] = Individual::getInstance($child, $tree);
+            $new_children[] = Factory::individual()->make($child, $tree);
         }
 
         if ($old_father !== $new_father) {

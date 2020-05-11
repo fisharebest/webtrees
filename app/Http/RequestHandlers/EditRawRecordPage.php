@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
@@ -52,7 +52,7 @@ class EditRawRecordPage implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $record = GedcomRecord::getInstance($xref, $tree);
+        $record = Factory::gedcomRecord()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
         // Do not allow users to edit the first line.  Changing the type will break things.

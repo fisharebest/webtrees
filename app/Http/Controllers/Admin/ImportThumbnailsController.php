@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Cache;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Services\PendingChangesService;
@@ -129,7 +130,7 @@ class ImportThumbnailsController extends AbstractAdminController
 
         foreach ($xrefs as $key => $xref) {
             $tree            = $this->tree_service->all()->get($geds[$key]);
-            $media_objects[] = Media::getInstance($xref, $tree);
+            $media_objects[] = Factory::media()->make($xref, $tree);
         }
 
         switch ($action) {

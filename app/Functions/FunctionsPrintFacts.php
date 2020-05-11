@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Functions;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Gedcom;
@@ -34,7 +35,6 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditFact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
@@ -42,7 +42,6 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
@@ -424,7 +423,7 @@ class FunctionsPrintFacts
                     
                     break;
                 case 'FAMC': // 0 INDI / 1 ADOP / 2 FAMC / 3 ADOP
-                    $family = Family::getInstance(str_replace('@', '', $match[2]), $tree);
+                    $family = Factory::family()->make(str_replace('@', '', $match[2]), $tree);
                     if ($family) {
                         echo GedcomTag::getLabelValue('FAM', '<a href="' . e($family->url()) . '">' . $family->fullName() . '</a>');
                         if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $fact->gedcom(), $adop_match)) {
@@ -484,7 +483,7 @@ class FunctionsPrintFacts
                     if ($tree->getPreference('HIDE_GEDCOM_ERRORS') === '1' || GedcomTag::isTag($match[1])) {
                         if (preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $match[2], $xmatch)) {
                             // Links
-                            $linked_record = GedcomRecord::getInstance($xmatch[1], $tree);
+                            $linked_record = Factory::gedcomRecord()->make($xmatch[1], $tree);
                             if ($linked_record) {
                                 $link = '<a href="' . e($linked_record->url()) . '">' . $linked_record->fullName() . '</a>';
                                 echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
@@ -533,7 +532,7 @@ class FunctionsPrintFacts
         $html = '';
         // For each ASSO record
         foreach (array_merge($amatches1, $amatches2) as $amatch) {
-            $person = Individual::getInstance($amatch[1], $event->record()->tree());
+            $person = Factory::individual()->make($amatch[1], $event->record()->tree());
             if ($person && $person->canShowName()) {
                 // Is there a "RELA" tag
                 if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
@@ -612,7 +611,7 @@ class FunctionsPrintFacts
         $spos2 = 0;
         for ($j = 0; $j < $ct; $j++) {
             $sid    = $match[$j][1];
-            $source = Source::getInstance($sid, $tree);
+            $source = Factory::source()->make($sid, $tree);
             if ($source) {
                 if ($source->canShow()) {
                     $spos1 = strpos($factrec, "$level SOUR @" . $sid . '@', $spos2);
@@ -675,7 +674,7 @@ class FunctionsPrintFacts
         $objectNum = 0;
         while ($objectNum < count($omatch)) {
             $media_id = $omatch[$objectNum][1];
-            $media    = Media::getInstance($media_id, $tree);
+            $media    = Factory::media()->make($media_id, $tree);
             if ($media) {
                 if ($media->canShow()) {
                     if ($objectNum > 0) {
@@ -699,7 +698,7 @@ class FunctionsPrintFacts
                     //-- print spouse name for marriage events
                     $ct = preg_match('/WT_SPOUSE: (.*)/', $factrec, $match);
                     if ($ct > 0) {
-                        $spouse = Individual::getInstance($match[1], $tree);
+                        $spouse = Factory::individual()->make($match[1], $tree);
                         if ($spouse) {
                             echo '<a href="', e($spouse->url()), '">';
                             echo $spouse->fullName();
@@ -708,7 +707,7 @@ class FunctionsPrintFacts
                         $ct = preg_match('/WT_FAMILY_ID: (.*)/', $factrec, $match);
                         if ($ct > 0) {
                             $famid  = trim($match[1]);
-                            $family = Family::getInstance($famid, $tree);
+                            $family = Factory::family()->make($famid, $tree);
                             if ($family) {
                                 if ($spouse) {
                                     echo ' - ';
@@ -766,7 +765,7 @@ class FunctionsPrintFacts
                 $spos2 = strlen($factrec);
             }
             $srec   = substr($factrec, $spos1, $spos2 - $spos1);
-            $source = Source::getInstance($sid, $tree);
+            $source = Factory::source()->make($sid, $tree);
             // Allow access to "1 SOUR @non_existent_source@", so it can be corrected/deleted
             if (!$source || $source->canShow()) {
                 if ($level > 1) {
@@ -981,7 +980,7 @@ class FunctionsPrintFacts
         for ($j = 0; $j < $ct; $j++) {
             // Note object, or inline note?
             if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
-                $note = Note::getInstance($nmatch[1], $tree);
+                $note = Factory::note()->make($nmatch[1], $tree);
                 if ($note && !$note->canShow()) {
                     continue;
                 }
@@ -1110,7 +1109,7 @@ class FunctionsPrintFacts
         // -- find source for each fact
         preg_match_all('/(?:^|\n)' . $level . ' OBJE @(.*)@/', $factrec, $matches);
         foreach ($matches[1] as $xref) {
-            $media = Media::getInstance($xref, $tree);
+            $media = Factory::media()->make($xref, $tree);
             // Allow access to "1 OBJE @non_existent_source@", so it can be corrected/deleted
             if (!$media || $media->canShow()) {
                 echo '<tr>';

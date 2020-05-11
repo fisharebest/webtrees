@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
@@ -80,7 +81,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
 
         $results = [];
         foreach ($query->cursor() as $row) {
-            $record = GedcomRecord::getInstance($row->page_parameter, $tree);
+            $record = Factory::gedcomRecord()->make($row->page_parameter, $tree);
 
             if ($record instanceof GedcomRecord && $record->canShow()) {
                 $results[] = [

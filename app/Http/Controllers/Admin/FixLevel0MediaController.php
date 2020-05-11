@@ -20,10 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -96,8 +95,8 @@ class FixLevel0MediaController extends AbstractAdminController
         $tree_id   = (int) $params['tree_id'];
 
         $tree       = $this->tree_service->find($tree_id);
-        $individual = Individual::getInstance($indi_xref, $tree);
-        $media      = Media::getInstance($obje_xref, $tree);
+        $individual = Factory::individual()->make($indi_xref, $tree);
+        $media      = Factory::media()->make($obje_xref, $tree);
 
         if ($individual !== null && $media !== null) {
             foreach ($individual->facts() as $fact1) {
@@ -163,8 +162,8 @@ class FixLevel0MediaController extends AbstractAdminController
 
         return $this->datatables_service->handleQuery($request, $query, [], [], function (stdClass $datum) use ($ignore_facts): array {
             $tree       = $this->tree_service->find((int) $datum->m_file);
-            $media      = Media::getInstance($datum->m_id, $tree, $datum->m_gedcom);
-            $individual = Individual::getInstance($datum->i_id, $tree, $datum->i_gedcom);
+            $media      = Factory::media()->make($datum->m_id, $tree, $datum->m_gedcom);
+            $individual = Factory::individual()->make($datum->i_id, $tree, $datum->i_gedcom);
 
             $facts = $individual->facts([], true)
                 ->filter(static function (Fact $fact) use ($ignore_facts): bool {

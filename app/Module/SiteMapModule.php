@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,6 +25,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -406,7 +407,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Family::rowMapper($tree));
+            ->map(Factory::family()->mapper($tree));
     }
 
     /**
@@ -424,7 +425,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Individual::rowMapper($tree));
+            ->map(Factory::individual()->mapper($tree));
     }
 
     /**
@@ -442,7 +443,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Media::rowMapper($tree));
+            ->map(Factory::media()->mapper($tree));
     }
 
     /**
@@ -461,7 +462,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Note::rowMapper($tree));
+            ->map(Factory::note()->mapper($tree));
     }
 
     /**
@@ -480,7 +481,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Repository::rowMapper($tree));
+            ->map(Factory::repository()->mapper($tree));
     }
 
     /**
@@ -498,7 +499,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Source::rowMapper($tree));
+            ->map(Factory::source()->mapper($tree));
     }
 
     /**
@@ -517,6 +518,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Submitter::rowMapper($tree));
+            ->map(Factory::submitter()->mapper($tree));
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
-use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\EmailService;
@@ -170,7 +170,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                 ->get();
 
             foreach ($changes as $change) {
-                $record = GedcomRecord::getInstance($change->xref, $tree);
+                $record = Factory::gedcomRecord()->make($change->xref, $tree);
                 if ($record->canShow()) {
                     $content .= '<li><a href="' . e($record->url()) . '">' . $record->fullName() . '</a></li>';
                 }

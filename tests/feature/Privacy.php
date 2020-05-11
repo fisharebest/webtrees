@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,19 +38,19 @@ class Privacy extends TestCase
         $tree = $this->importTree('demo.ged');
 
         // Identify some individuals in the tree
-        $queen_elizabeth = Individual::getInstance('X1030', $tree);
+        $queen_elizabeth = Factory::individual()->make('X1030', $tree);
         $this->assertInstanceOf(Individual::class, $queen_elizabeth);
         $this->assertSame('Queen Elizabeth II', strip_tags($queen_elizabeth->fullName()));
 
-        $prince_charles = Individual::getInstance('X1052', $tree);
+        $prince_charles = Factory::individual()->make('X1052', $tree);
         $this->assertInstanceOf(Individual::class, $prince_charles);
         $this->assertSame('Charles, Prince of Wales', strip_tags($prince_charles->fullName()));
 
-        $savannah = Individual::getInstance('X1044', $tree);
+        $savannah = Factory::individual()->make('X1044', $tree);
         $this->assertInstanceOf(Individual::class, $savannah);
         $this->assertSame('Savannah Anne Kathleen Phillips', strip_tags($savannah->fullName()));
 
-        $beatrice = Individual::getInstance('X1047', $tree);
+        $beatrice = Factory::individual()->make('X1047', $tree);
         $this->assertInstanceOf(Individual::class, $beatrice);
         $this->assertSame('Princess Beatrice of York', strip_tags($beatrice->fullName()));
 

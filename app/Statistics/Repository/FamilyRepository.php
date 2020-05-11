@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,10 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Exception;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Statistics\Google\ChartChildren;
 use Fisharebest\Webtrees\Statistics\Google\ChartDivorce;
 use Fisharebest\Webtrees\Statistics\Google\ChartFamilyLargest;
@@ -78,7 +78,7 @@ class FamilyRepository
         }
 
         /** @var Family $family */
-        $family = Family::rowMapper($this->tree)($row);
+        $family = Factory::family()->mapper($this->tree)($row);
 
         if (!$family->canShow()) {
             return I18N::translate('This information is private and cannot be shown.');
@@ -159,7 +159,7 @@ class FamilyRepository
             ->select(['families.*'])
             ->limit($total)
             ->get()
-            ->map(Family::rowMapper($this->tree))
+            ->map(Factory::family()->mapper($this->tree))
             ->filter(GedcomRecord::accessFilter())
             ->map(static function (Family $family): array {
                 $count = 0;
@@ -241,7 +241,7 @@ class FamilyRepository
             ->where('f_file', '=', $this->tree->id())
             ->where('f_numchil', '=', 0)
             ->get()
-            ->map(Family::rowMapper($this->tree))
+            ->map(Factory::family()->mapper($this->tree))
             ->filter(GedcomRecord::accessFilter());
 
         $top10 = [];
@@ -364,9 +364,9 @@ class FamilyRepository
         $rows = $this->ageBetweenSiblingsQuery($total);
 
         foreach ($rows as $fam) {
-            $family = Family::getInstance($fam->family, $this->tree);
-            $child1 = Individual::getInstance($fam->ch1, $this->tree);
-            $child2 = Individual::getInstance($fam->ch2, $this->tree);
+            $family = Factory::family()->make($fam->family, $this->tree);
+            $child1 = Factory::individual()->make($fam->ch1, $this->tree);
+            $child2 = Factory::individual()->make($fam->ch2, $this->tree);
 
             if ($child1->canShow() && $child2->canShow()) {
                 // ! Single array (no list)
@@ -398,9 +398,9 @@ class FamilyRepository
         $dist  = [];
 
         foreach ($rows as $fam) {
-            $family = Family::getInstance($fam->family, $this->tree);
-            $child1 = Individual::getInstance($fam->ch1, $this->tree);
-            $child2 = Individual::getInstance($fam->ch2, $this->tree);
+            $family = Factory::family()->make($fam->family, $this->tree);
+            $child1 = Factory::individual()->make($fam->ch1, $this->tree);
+            $child2 = Factory::individual()->make($fam->ch2, $this->tree);
 
             $age = $this->calculateAge((int) $fam->age);
 
@@ -459,9 +459,9 @@ class FamilyRepository
         $rows = $this->ageBetweenSiblingsQuery($total);
 
         foreach ($rows as $fam) {
-            $family = Family::getInstance($fam->family, $this->tree);
-            $child1 = Individual::getInstance($fam->ch1, $this->tree);
-            $child2 = Individual::getInstance($fam->ch2, $this->tree);
+            $family = Factory::family()->make($fam->family, $this->tree);
+            $child1 = Factory::individual()->make($fam->ch1, $this->tree);
+            $child2 = Factory::individual()->make($fam->ch2, $this->tree);
 
             if ($child1->canShow() && $child2->canShow()) {
                 $return = '<a href="' . e($child2->url()) . '">' . $child2->fullName() . '</a> ';
@@ -622,7 +622,7 @@ class FamilyRepository
             ->orderBy('f_numchil', 'DESC')
             ->limit($total)
             ->get()
-            ->map(Family::rowMapper($this->tree))
+            ->map(Factory::family()->mapper($this->tree))
             ->filter(GedcomRecord::accessFilter())
             ->map(static function (Family $family): array {
                 return [
@@ -838,7 +838,7 @@ class FamilyRepository
             return '';
         }
 
-        $person = Individual::getInstance($row->id, $this->tree);
+        $person = Factory::individual()->make($row->id, $this->tree);
 
         switch ($type) {
             default:
@@ -1101,7 +1101,7 @@ class FamilyRepository
         $top10 = [];
         $i     = 0;
         foreach ($rows as $xref => $age) {
-            $family = Family::getInstance((string) $xref, $this->tree);
+            $family = Factory::family()->make((string) $xref, $this->tree);
             if ($type === 'name') {
                 return $family->formatList();
             }
@@ -1290,7 +1290,7 @@ class FamilyRepository
             ->select(['families.*'])
             ->take($total)
             ->get()
-            ->map(Family::rowMapper($this->tree))
+            ->map(Factory::family()->mapper($this->tree))
             ->filter(GedcomRecord::accessFilter())
             ->map(function (Family $family) use ($age_dir): array {
                 $husb_birt_jd = $family->husband()->getBirthDate()->minimumJulianDay();
@@ -1488,8 +1488,8 @@ class FamilyRepository
             return '';
         }
 
-        $family = Family::getInstance($row->famid, $this->tree);
-        $person = Individual::getInstance($row->i_id, $this->tree);
+        $family = Factory::family()->make($row->famid, $this->tree);
+        $person = Factory::individual()->make($row->i_id, $this->tree);
 
         switch ($type) {
             default:

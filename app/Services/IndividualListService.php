@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
@@ -328,7 +329,7 @@ class IndividualListService
         $rows = $query->get();
 
         foreach ($rows as $row) {
-            $person = Individual::getInstance($row->xref, $this->tree, $row->gedcom);
+            $person = Factory::individual()->make($row->xref, $this->tree, $row->gedcom);
             // The name from the database may be private - check the filtered list...
             foreach ($person->getAllNames() as $n => $name) {
                 if ($name['fullNN'] == $row->n_full) {

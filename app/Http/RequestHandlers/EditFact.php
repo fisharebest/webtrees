@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Tree;
@@ -52,7 +52,7 @@ class EditFact implements RequestHandlerInterface
         $xref    = $request->getQueryParams()['xref'];
         $fact_id = $request->getQueryParams()['fact_id'];
 
-        $record = GedcomRecord::getInstance($xref, $tree);
+        $record = Factory::gedcomRecord()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
         // Find the fact to edit

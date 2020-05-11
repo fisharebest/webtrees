@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
@@ -58,7 +59,7 @@ class Select2Note extends AbstractSelect2Handler
     protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
     {
         // Search by XREF
-        $note = Note::getInstance($query, $tree);
+        $note = Factory::note()->make($query, $tree);
 
         if ($note instanceof Note) {
             $results = new Collection([$note]);

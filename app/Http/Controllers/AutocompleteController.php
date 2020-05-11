@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,14 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Exceptions\HttpServerErrorException;
-use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -40,25 +37,12 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
-use function curl_close;
-use function curl_exec;
-use function curl_init;
-use function curl_setopt;
-use function fclose;
-use function file_get_contents;
-use function function_exists;
-use function fwrite;
-use function ini_get;
 use function is_array;
-use function is_resource;
 use function json_decode;
 use function preg_match_all;
 use function preg_quote;
 use function rawurlencode;
 use function response;
-
-use const CURLOPT_RETURNTRANSFER;
-use const CURLOPT_URL;
 
 /**
  * Controller for the autocomplete callbacks
@@ -133,7 +117,7 @@ class AutocompleteController extends AbstractBaseController
         $query = $request->getQueryParams()['query'] ?? '';
         $xref  = $request->getQueryParams()['extra'] ?? '';
 
-        $source = Source::getInstance($xref, $tree);
+        $source = Factory::source()->make($xref, $tree);
         $source = Auth::checkSourceAccess($source);
 
         $regex_query = preg_quote(strtr($query, [' ' => '.+']), '/');
@@ -151,7 +135,7 @@ class AutocompleteController extends AbstractBaseController
             ->distinct()
             ->select(['individuals.*'])
             ->get()
-            ->map(Individual::rowMapper($tree))
+            ->map(Factory::individual()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
 
         $families = DB::table('families')
@@ -167,7 +151,7 @@ class AutocompleteController extends AbstractBaseController
             ->distinct()
             ->select(['families.*'])
             ->get()
-            ->map(Family::rowMapper($tree))
+            ->map(Factory::family()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
 
         $pages = new Collection();

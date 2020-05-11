@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -502,14 +502,14 @@ class Tree
 
         // Accept this pending change
         if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS)) {
-            $record = new GedcomRecord($xref, $gedcom, null, $this);
+            $record = Factory::gedcomRecord()->new($xref, $gedcom, null, $this);
 
             app(PendingChangesService::class)->acceptRecord($record);
 
             return $record;
         }
 
-        return new GedcomRecord($xref, '', $gedcom, $this);
+        return Factory::gedcomRecord()->new($xref, '', $gedcom, $this);
     }
 
     /**
@@ -585,14 +585,14 @@ class Tree
 
         // Accept this pending change
         if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
-            $record = new Family($xref, $gedcom, null, $this);
+            $record = Factory::family()->new($xref, $gedcom, null, $this);
 
             app(PendingChangesService::class)->acceptRecord($record);
 
             return $record;
         }
 
-        return new Family($xref, '', $gedcom, $this);
+        return Factory::family()->new($xref, '', $gedcom, $this);
     }
 
     /**
@@ -628,14 +628,14 @@ class Tree
 
         // Accept this pending change
         if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
-            $record = new Individual($xref, $gedcom, null, $this);
+            $record = Factory::individual()->new($xref, $gedcom, null, $this);
 
             app(PendingChangesService::class)->acceptRecord($record);
 
             return $record;
         }
 
-        return new Individual($xref, '', $gedcom, $this);
+        return Factory::individual()->new($xref, '', $gedcom, $this);
     }
 
     /**
@@ -671,14 +671,14 @@ class Tree
 
         // Accept this pending change
         if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
-            $record = new Media($xref, $gedcom, null, $this);
+            $record = Factory::media()->new($xref, $gedcom, null, $this);
 
             app(PendingChangesService::class)->acceptRecord($record);
 
             return $record;
         }
 
-        return new Media($xref, '', $gedcom, $this);
+        return Factory::media()->new($xref, '', $gedcom, $this);
     }
 
     /**
@@ -694,10 +694,10 @@ class Tree
         if ($xref === '') {
             $individual = null;
         } else {
-            $individual = Individual::getInstance($xref, $this);
+            $individual = Factory::individual()->make($xref, $this);
 
             if ($individual === null) {
-                $family = Family::getInstance($xref, $this);
+                $family = Factory::family()->make($xref, $this);
 
                 if ($family instanceof Family) {
                     $individual = $family->spouses()->first() ?? $family->children()->first();
@@ -706,26 +706,26 @@ class Tree
         }
 
         if ($individual === null && $this->getUserPreference($user, User::PREF_TREE_DEFAULT_XREF) !== '') {
-            $individual = Individual::getInstance($this->getUserPreference($user, User::PREF_TREE_DEFAULT_XREF), $this);
+            $individual = Factory::individual()->make($this->getUserPreference($user, User::PREF_TREE_DEFAULT_XREF), $this);
         }
 
         if ($individual === null && $this->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF) !== '') {
-            $individual = Individual::getInstance($this->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF), $this);
+            $individual = Factory::individual()->make($this->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF), $this);
         }
 
         if ($individual === null && $this->getPreference('PEDIGREE_ROOT_ID') !== '') {
-            $individual = Individual::getInstance($this->getPreference('PEDIGREE_ROOT_ID'), $this);
+            $individual = Factory::individual()->make($this->getPreference('PEDIGREE_ROOT_ID'), $this);
         }
         if ($individual === null) {
             $xref = (string) DB::table('individuals')
                 ->where('i_file', '=', $this->id())
                 ->min('i_id');
 
-            $individual = Individual::getInstance($xref, $this);
+            $individual = Factory::individual()->make($xref, $this);
         }
         if ($individual === null) {
             // always return a record
-            $individual = new Individual('I', '0 @I@ INDI', null, $this);
+            $individual = Factory::individual()->new('I', '0 @I@ INDI', null, $this);
         }
 
         return $individual;

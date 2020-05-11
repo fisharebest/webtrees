@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
@@ -120,7 +121,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             ->get()
             ->shuffle()
             ->first(static function (stdClass $row) use ($filter_links, $tree): bool {
-                $media = Media::getInstance($row->m_id, $tree, $row->m_gedcom);
+                $media = Factory::media()->make($row->m_id, $tree, $row->m_gedcom);
                 assert($media instanceof Media);
 
                 if (!$media->canShow() || $media->firstImageFile() === null) {
@@ -146,7 +147,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         $random_media = null;
 
         if ($random_row !== null) {
-            $random_media = Media::getInstance($random_row->m_id, $tree, $random_row->m_gedcom);
+            $random_media = Factory::media()->make($random_row->m_id, $tree, $random_row->m_gedcom);
         }
 
         if ($random_media instanceof Media) {

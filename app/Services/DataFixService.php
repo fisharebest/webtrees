@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Algorithm\MyersDiff;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -43,7 +44,7 @@ use function strip_tags;
 class DataFixService
 {
     /**
-     * Since we know the type, this is quicker than calling GedcomRecord::getInstance().
+     * Since we know the type, this is quicker than calling Factory::gedcomRecord()->make().
      *
      * @param string $xref
      * @param Tree   $tree
@@ -55,28 +56,28 @@ class DataFixService
     {
         switch ($type) {
             case Family::RECORD_TYPE:
-                return Family::getInstance($xref, $tree);
+                return Factory::family()->make($xref, $tree);
 
             case Individual::RECORD_TYPE:
-                return Individual::getInstance($xref, $tree);
+                return Factory::individual()->make($xref, $tree);
 
             case Note::RECORD_TYPE:
-                return Note::getInstance($xref, $tree);
+                return Factory::note()->make($xref, $tree);
 
             case Media::RECORD_TYPE:
-                return Media::getInstance($xref, $tree);
+                return Factory::media()->make($xref, $tree);
 
             case Repository::RECORD_TYPE:
-                return Repository::getInstance($xref, $tree);
+                return Factory::repository()->make($xref, $tree);
 
             case Source::RECORD_TYPE:
-                return Source::getInstance($xref, $tree);
+                return Factory::source()->make($xref, $tree);
 
             case Submitter::RECORD_TYPE:
-                return Submitter::getInstance($xref, $tree);
+                return Factory::submitter()->make($xref, $tree);
 
             default:
-                return GedcomRecord::getInstance($xref, $tree);
+                return Factory::gedcomRecord()->make($xref, $tree);
         }
     }
 
@@ -114,7 +115,7 @@ class DataFixService
         $html = implode('', $diff_lines);
 
         $html = preg_replace_callback('/@(' . Gedcom::REGEX_XREF . ')@/', static function (array $match) use ($tree): string {
-            $record = GedcomRecord::getInstance($match[0], $tree);
+            $record = Factory::gedcomRecord()->make($match[0], $tree);
 
             if ($record instanceof GedcomRecord) {
                 $title = strip_tags($record->fullName());

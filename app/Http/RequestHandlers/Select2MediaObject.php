@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
@@ -58,7 +59,7 @@ class Select2MediaObject extends AbstractSelect2Handler
     protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
     {
         // Search by XREF
-        $media = Media::getInstance($query, $tree);
+        $media = Factory::media()->make($query, $tree);
 
         if ($media instanceof Media) {
             $results = new Collection([$media]);

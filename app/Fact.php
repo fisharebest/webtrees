@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,7 +35,6 @@ use function preg_match;
 use function preg_match_all;
 use function preg_replace;
 use function strpos;
-use function trim;
 use function usort;
 
 use const PREG_SET_ORDER;
@@ -232,33 +231,33 @@ class Fact
         switch ($this->tag) {
             case 'FAMC':
             case 'FAMS':
-                return Family::getInstance($xref, $this->record()->tree());
+                return Factory::family()->make($xref, $this->record()->tree());
             case 'HUSB':
             case 'WIFE':
             case 'ALIA':
             case 'CHIL':
             case '_ASSO':
-                return Individual::getInstance($xref, $this->record()->tree());
+                return Factory::individual()->make($xref, $this->record()->tree());
             case 'ASSO':
                 return
-                    Individual::getInstance($xref, $this->record()->tree()) ??
-                    Submitter::getInstance($xref, $this->record()->tree());
+                    Factory::individual()->make($xref, $this->record()->tree()) ??
+                    Factory::submitter()->make($xref, $this->record()->tree());
             case 'SOUR':
-                return Source::getInstance($xref, $this->record()->tree());
+                return Factory::source()->make($xref, $this->record()->tree());
             case 'OBJE':
-                return Media::getInstance($xref, $this->record()->tree());
+                return Factory::media()->make($xref, $this->record()->tree());
             case 'REPO':
-                return Repository::getInstance($xref, $this->record()->tree());
+                return Factory::repository()->make($xref, $this->record()->tree());
             case 'NOTE':
-                return Note::getInstance($xref, $this->record()->tree());
+                return Factory::note()->make($xref, $this->record()->tree());
             case 'ANCI':
             case 'DESI':
             case 'SUBM':
-                return Submitter::getInstance($xref, $this->record()->tree());
+                return Factory::submitter()->make($xref, $this->record()->tree());
             case 'SUBN':
-                return Submission::getInstance($xref, $this->record()->tree());
+                return Factory::submission()->make($xref, $this->record()->tree());
             default:
-                return GedcomRecord::getInstance($xref, $this->record()->tree());
+                return Factory::gedcomRecord()->make($xref, $this->record()->tree());
         }
     }
 
@@ -515,7 +514,7 @@ class Fact
         preg_match_all('/\n(2 SOUR @(' . Gedcom::REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $this->gedcom(), $matches, PREG_SET_ORDER);
         $citations = [];
         foreach ($matches as $match) {
-            $source = Source::getInstance($match[2], $this->record()->tree());
+            $source = Factory::source()->make($match[2], $this->record()->tree());
             if ($source && $source->canShow()) {
                 $citations[] = $match[1];
             }
@@ -536,7 +535,7 @@ class Fact
         foreach ($matches[1] as $match) {
             $note = preg_replace("/\n3 CONT ?/", "\n", $match);
             if (preg_match('/@(' . Gedcom::REGEX_XREF . ')@/', $note, $nmatch)) {
-                $note = Note::getInstance($nmatch[1], $this->record()->tree());
+                $note = Factory::note()->make($nmatch[1], $this->record()->tree());
                 if ($note && $note->canShow()) {
                     // A note object
                     $notes[] = $note;
@@ -560,7 +559,7 @@ class Fact
         $media = [];
         preg_match_all('/\n2 OBJE @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom(), $matches);
         foreach ($matches[1] as $match) {
-            $obje = Media::getInstance($match, $this->record()->tree());
+            $obje = Factory::media()->make($match, $this->record()->tree());
             if ($obje && $obje->canShow()) {
                 $media[] = $obje;
             }

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
@@ -58,7 +59,7 @@ class Select2Repository extends AbstractSelect2Handler
     protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
     {
         // Search by XREF
-        $repository = Repository::getInstance($query, $tree);
+        $repository = Factory::repository()->make($query, $tree);
 
         if ($repository instanceof Repository) {
             $results = new Collection([$repository]);

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Census\CensusInterface;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -89,13 +90,13 @@ class CensusAssistantModule extends AbstractModule
         assert($tree instanceof Tree);
 
         $params       = (array) $request->getParsedBody();
-        $individual   = Individual::getInstance($params['xref'], $tree);
-        $head         = Individual::getInstance($params['head'], $tree);
+        $individual   = Factory::individual()->make($params['xref'], $tree);
+        $head         = Factory::individual()->make($params['head'], $tree);
         $census_class = $params['census'];
         $census       = new $census_class();
 
         // No head of household?  Create a dummy one.
-        $head = $head ?? new Individual('X', '0 @X@ INDI', null, $tree);
+        $head = $head ?? Factory::individual()->new('X', '0 @X@ INDI', null, $tree);
 
         // Generate columns (e.g. relationship name) using the correct language.
         I18N::init($census->censusLanguage());
@@ -153,7 +154,7 @@ class CensusAssistantModule extends AbstractModule
             // Add the census fact to the rest of the household
             foreach ($ca_individuals['xref'] ?? [] as $xref) {
                 if ($xref !== '' && $xref !== $individual->xref()) {
-                    Individual::getInstance($xref, $individual->tree())
+                    Factory::individual()->make($xref, $individual->tree())
                         ->updateFact($fact_id, $newged, !$keep_chan);
                 }
             }

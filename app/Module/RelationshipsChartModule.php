@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,7 +24,7 @@ use Closure;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Algorithm\Dijkstra;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
@@ -222,8 +222,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             ]));
         }
 
-        $individual1 = Individual::getInstance($xref, $tree);
-        $individual2 = Individual::getInstance($xref2, $tree);
+        $individual1 = Factory::individual()->make($xref, $tree);
+        $individual2 = Factory::individual()->make($xref2, $tree);
 
         $ancestors_only = (int) $tree->getPreference('RELATIONSHIP_ANCESTORS', static::DEFAULT_ANCESTORS);
         $max_recursion  = (int) $tree->getPreference('RELATIONSHIP_RECURSION', static::DEFAULT_RECURSION);
@@ -331,17 +331,17 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                         case 'bro':
                         case 'sis':
                         case 'sib':
-                            $table[$x + 1][$y] = '<div style="background:url(' . e(asset('css/images/hline.png')) . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . view('icons/arrow-right') . '</div></div>';
+                            $table[$x + 1][$y] = '<div style="background:url(' . e(asset('css/images/hline.png')) . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Factory::individual()->make($path[$n - 1], $tree), Factory::individual()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . view('icons/arrow-right') . '</div></div>';
                             $x                 += 2;
                             break;
                         case 'son':
                         case 'dau':
                         case 'chi':
                             if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
-                                $table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: start;">' . view('icons/arrow-down') . '</div></div>';
+                                $table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . Functions::getRelationshipNameFromPath($relationships[$n], Factory::individual()->make($path[$n - 1], $tree), Factory::individual()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: start;">' . view('icons/arrow-down') . '</div></div>';
                                 $x                     += 2;
                             } else {
-                                $table[$x][$y - 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . view('icons/arrow-down') . '</div></div>';
+                                $table[$x][$y - 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Factory::individual()->make($path[$n - 1], $tree), Factory::individual()->make($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . view('icons/arrow-down') . '</div></div>';
                             }
                             $y -= 2;
                             break;
@@ -349,10 +349,10 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                         case 'mot':
                         case 'par':
                             if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
-                                $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: end;">' . view('icons/arrow-down') . '</div></div>';
+                                $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . Functions::getRelationshipNameFromPath($relationships[$n], Factory::individual()->make($path[$n - 1], $tree), Factory::individual()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: end;">' . view('icons/arrow-down') . '</div></div>';
                                 $x                     += 2;
                             } else {
-                                $table[$x][$y + 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . view('icons/arrow-up') . '</div></div>';
+                                $table[$x][$y + 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Factory::individual()->make($path[$n - 1], $tree), Factory::individual()->make($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . view('icons/arrow-up') . '</div></div>';
                             }
                             $y += 2;
                             break;
@@ -361,7 +361,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                     $min_y = min($min_y, $y);
                     $max_y = max($max_y, $y);
                 } else {
-                    $individual    = Individual::getInstance($xref, $tree);
+                    $individual    = Factory::individual()->make($xref, $tree);
                     $table[$x][$y] = view('chart-box', ['individual' => $individual]);
                 }
             }
@@ -671,9 +671,9 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         $relationships = [];
 
         for ($i = 1, $count = count($path); $i < $count; $i += 2) {
-            $family = Family::getInstance($path[$i], $tree);
-            $prev   = Individual::getInstance($path[$i - 1], $tree);
-            $next   = Individual::getInstance($path[$i + 1], $tree);
+            $family = Factory::family()->make($path[$i], $tree);
+            $prev   = Factory::individual()->make($path[$i - 1], $tree);
+            $next   = Factory::individual()->make($path[$i + 1], $tree);
             if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $prev->xref() . '@/', $family->gedcom(), $match)) {
                 $rel1 = $match[1];
             } else {

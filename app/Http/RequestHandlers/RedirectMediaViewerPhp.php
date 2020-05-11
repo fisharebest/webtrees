@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
@@ -60,7 +61,7 @@ class RedirectMediaViewerPhp implements RequestHandlerInterface
         $tree  = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $media = Media::getInstance($mid, $tree);
+            $media = Factory::media()->make($mid, $tree);
 
             if ($media instanceof Media) {
                 return redirect($media->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -238,7 +239,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             $block_id = (int) $story->block_id;
             $xref     = (string) $story->xref;
 
-            $story->individual = Individual::getInstance($xref, $tree);
+            $story->individual = Factory::individual()->make($xref, $tree);
             $story->title      = $this->getBlockSetting($block_id, 'title');
             $story->languages  = $this->getBlockSetting($block_id, 'languages');
         }
@@ -307,7 +308,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             $title = I18N::translate('Edit the story') . ' — ' . e($tree->title());
         }
 
-        $individual  = Individual::getInstance($xref, $tree);
+        $individual  = Factory::individual()->make($xref, $tree);
 
         return $this->viewResponse('modules/stories/edit', [
             'block_id'    => $block_id,
@@ -420,7 +421,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
                 $block_id = (int) $story->block_id;
                 $xref     = (string) $story->xref;
 
-                $story->individual = Individual::getInstance($xref, $tree);
+                $story->individual = Factory::individual()->make($xref, $tree);
                 $story->title      = $this->getBlockSetting($block_id, 'title');
                 $story->languages  = $this->getBlockSetting($block_id, 'languages');
 

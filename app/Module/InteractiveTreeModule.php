@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -192,7 +193,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
 
         $xref = $request->getQueryParams()['xref'];
 
-        $individual = Individual::getInstance($xref, $tree);
+        $individual = Factory::individual()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, false, true);
 
         $user = $request->getAttribute('user');
@@ -245,7 +246,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
         assert($tree instanceof Tree);
 
         $pid        = $request->getQueryParams()['pid'];
-        $individual = Individual::getInstance($pid, $tree);
+        $individual = Factory::individual()->make($pid, $tree);
 
         if ($individual === null) {
             throw new IndividualNotFoundException();

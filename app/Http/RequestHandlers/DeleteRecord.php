@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,9 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -56,7 +56,7 @@ class DeleteRecord implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $record = GedcomRecord::getInstance($xref, $tree);
+        $record = Factory::gedcomRecord()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
         if ($record && Auth::isEditor($record->tree()) && $record->canShow() && $record->canEdit()) {
@@ -68,13 +68,13 @@ class DeleteRecord implements RequestHandlerInterface
                     // If we have removed a link from a family to an individual, and it has only one member
                     if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ FAM/', $new_gedcom, $fmatch) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . Gedcom::REGEX_XREF . ')@/', $new_gedcom, $match) === 1) {
                         // Delete the family
-                        $family = GedcomRecord::getInstance($fmatch[1], $tree);
+                        $family = Factory::gedcomRecord()->make($fmatch[1], $tree);
                         /* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */
                         FlashMessages::addMessage(I18N::translate('The family “%s” has been deleted because it only has one member.', $family->fullName()));
                         $family->deleteRecord();
                         // Delete any remaining link to this family
                         if ($match) {
-                            $relict     = GedcomRecord::getInstance($match[2][0], $tree);
+                            $relict     = Factory::gedcomRecord()->make($match[2][0], $tree);
                             $new_gedcom = $relict->gedcom();
                             $new_gedcom = $this->removeLinks($new_gedcom, $linker->xref());
                             $relict->updateRecord($new_gedcom, false);
