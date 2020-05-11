@@ -161,11 +161,6 @@ parameters:
 			path: app/Functions/FunctionsImport.php
 
 		-
-			message: "#^Parameter \\#2 \\$gedcom of class Fisharebest\\\\Webtrees\\\\Media constructor expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsImport.php
-
-		-
 			message: "#^Cannot call method getNote\\(\\) on Fisharebest\\\\Webtrees\\\\Note\\|null\\.$#"
 			count: 1
 			path: app/Functions/FunctionsPrint.php

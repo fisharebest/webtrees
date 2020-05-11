@@ -23,13 +23,8 @@ use Closure;
 use Exception;
 use Fisharebest\Webtrees\Http\RequestHandlers\HeaderPage;
 use Illuminate\Database\Capsule\Manager as DB;
-use stdClass;
 
-use function e;
-use function preg_replace_callback;
-use function str_pad;
-
-use const STR_PAD_LEFT;
+use function app;
 
 /**
  * A GEDCOM header (HEAD) object.
@@ -43,18 +38,15 @@ class Header extends GedcomRecord
     /**
      * A closure which will create a record from a database row.
      *
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Factory::header()
+     *
      * @param Tree $tree
      *
      * @return Closure
      */
     public static function rowMapper(Tree $tree): Closure
     {
-        return static function (stdClass $row) use ($tree): Header {
-            $header = Header::getInstance($row->o_id, $tree, $row->o_gedcom);
-            assert($header instanceof Header);
-
-            return $header;
-        };
+        return Factory::header()->mapper($tree);
     }
 
     /**
@@ -62,40 +54,17 @@ class Header extends GedcomRecord
      * we just receive the XREF. For bulk records (such as lists
      * and search results) we can receive the GEDCOM data as well.
      *
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Factory::header()
+     *
      * @param string      $xref
      * @param Tree        $tree
      * @param string|null $gedcom
-     *
-     * @throws Exception
      *
      * @return Header|null
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Header
     {
-        $record = parent::getInstance($xref, $tree, $gedcom);
-
-        if ($record instanceof self) {
-            return $record;
-        }
-
-        return null;
-    }
-
-    /**
-     * Fetch data from the database
-     *
-     * @param string $xref
-     * @param int    $tree_id
-     *
-     * @return string|null
-     */
-    protected static function fetchGedcomRecord(string $xref, int $tree_id): ?string
-    {
-        return DB::table('other')
-            ->where('o_id', '=', $xref)
-            ->where('o_file', '=', $tree_id)
-            ->where('o_type', '=', self::RECORD_TYPE)
-            ->value('o_gedcom');
+        return Factory::header()->make($xref, $tree, $gedcom);
     }
 
     /**
@@ -107,7 +76,7 @@ class Header extends GedcomRecord
      */
     protected function createPrivateGedcomRecord(int $access_level): string
     {
-        return '0 @' . $this->xref . "@ SUBM\n1 NAME " . I18N::translate('Private');
+        return '0 HEAD' . $this->xref . "@ SUBM\n1 NAME " . I18N::translate('Private');
     }
 
     /**

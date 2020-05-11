@@ -20,11 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
-use Exception;
 use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
-use stdClass;
 
 /**
  * A GEDCOM note (NOTE) object.
@@ -38,18 +36,15 @@ class Note extends GedcomRecord
     /**
      * A closure which will create a record from a database row.
      *
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Factory::note()
+     *
      * @param Tree $tree
      *
      * @return Closure
      */
     public static function rowMapper(Tree $tree): Closure
     {
-        return static function (stdClass $row) use ($tree): Note {
-            $note = Note::getInstance($row->o_id, $tree, $row->o_gedcom);
-            assert($note instanceof Note);
-
-            return $note;
-        };
+        return Factory::note()->mapper($tree);
     }
 
     /**
@@ -57,23 +52,17 @@ class Note extends GedcomRecord
      * we just receive the XREF. For bulk records (such as lists
      * and search results) we can receive the GEDCOM data as well.
      *
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Factory::note()
+     *
      * @param string      $xref
      * @param Tree        $tree
      * @param string|null $gedcom
-     *
-     * @throws Exception
      *
      * @return Note|null
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Note
     {
-        $record = parent::getInstance($xref, $tree, $gedcom);
-
-        if ($record instanceof self) {
-            return $record;
-        }
-
-        return null;
+        return Factory::note()->make($xref, $tree, $gedcom);
     }
 
     /**
@@ -106,8 +95,8 @@ class Note extends GedcomRecord
             ->pluck('l_from');
 
         foreach ($linked_ids as $linked_id) {
-            $linked_record = GedcomRecord::getInstance($linked_id, $this->tree);
-            if ($linked_record && !$linked_record->canShow($access_level)) {
+            $linked_record = Factory::gedcomRecord()->make($linked_id, $this->tree);
+            if ($linked_record instanceof GedcomRecord && !$linked_record->canShow($access_level)) {
                 return false;
             }
         }
@@ -126,23 +115,6 @@ class Note extends GedcomRecord
     protected function createPrivateGedcomRecord(int $access_level): string
     {
         return '0 @' . $this->xref . '@ NOTE ' . I18N::translate('Private');
-    }
-
-    /**
-     * Fetch data from the database
-     *
-     * @param string $xref
-     * @param int    $tree_id
-     *
-     * @return string|null
-     */
-    protected static function fetchGedcomRecord(string $xref, int $tree_id): ?string
-    {
-        return DB::table('other')
-            ->where('o_id', '=', $xref)
-            ->where('o_file', '=', $tree_id)
-            ->where('o_type', '=', self::RECORD_TYPE)
-            ->value('o_gedcom');
     }
 
     /**

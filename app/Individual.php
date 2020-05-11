@@ -20,13 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
-use Exception;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use stdClass;
 
 /**
  * A GEDCOM individual (INDI) object.
@@ -49,27 +47,15 @@ class Individual extends GedcomRecord
     /**
      * A closure which will create a record from a database row.
      *
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Factory::individual()
+     *
      * @param Tree $tree
      *
      * @return Closure
      */
     public static function rowMapper(Tree $tree): Closure
     {
-        return static function (stdClass $row) use ($tree): Individual {
-            $individual = Individual::getInstance($row->i_id, $tree, $row->i_gedcom);
-            assert($individual instanceof Individual);
-
-            // Some queries include the names table.
-            // For these we must select the specified name.
-            if (($row->n_num ?? null) !== null) {
-                $individual = clone $individual;
-                $individual->setPrimaryName($row->n_num);
-
-                return $individual;
-            }
-
-            return $individual;
-        };
+        return Factory::individual()->mapper($tree);
     }
 
     /**
@@ -101,22 +87,17 @@ class Individual extends GedcomRecord
      * we just receive the XREF. For bulk records (such as lists
      * and search results) we can receive the GEDCOM data as well.
      *
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Factory::individual()
+     *
      * @param string      $xref
      * @param Tree        $tree
      * @param string|null $gedcom
      *
-     * @throws Exception
      * @return Individual|null
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Individual
     {
-        $record = parent::getInstance($xref, $tree, $gedcom);
-
-        if ($record instanceof self) {
-            return $record;
-        }
-
-        return null;
+        return Factory::individual()->make($xref, $tree, $gedcom);
     }
 
     /**
@@ -137,7 +118,7 @@ class Individual extends GedcomRecord
             ->get();
 
         foreach ($rows as $row) {
-            self::getInstance($row->xref, $tree, $row->gedcom);
+            Factory::individual()->make($row->xref, $tree, $row->gedcom);
         }
     }
 
@@ -217,7 +198,7 @@ class Individual extends GedcomRecord
     {
         static $cache = null;
 
-        $user_individual = self::getInstance($target->tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF), $target->tree);
+        $user_individual = Factory::individual()->make($target->tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF), $target->tree);
         if ($user_individual) {
             if (!$cache) {
                 $cache = [
@@ -302,7 +283,7 @@ class Individual extends GedcomRecord
         // Just show the 1 FAMC/FAMS tag, not any subtags, which may contain private data
         preg_match_all('/\n1 (?:FAMC|FAMS) @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom, $matches, PREG_SET_ORDER);
         foreach ($matches as $match) {
-            $rela = Family::getInstance($match[1], $this->tree);
+            $rela = Factory::family()->make($match[1], $this->tree);
             if ($rela && ($SHOW_PRIVATE_RELATIONSHIPS || $rela->canShow($access_level))) {
                 $rec .= $match[0];
             }
@@ -313,22 +294,6 @@ class Individual extends GedcomRecord
         }
 
         return $rec;
-    }
-
-    /**
-     * Fetch data from the database
-     *
-     * @param string $xref
-     * @param int    $tree_id
-     *
-     * @return string|null
-     */
-    protected static function fetchGedcomRecord(string $xref, int $tree_id): ?string
-    {
-        return DB::table('individuals')
-            ->where('i_id', '=', $xref)
-            ->where('i_file', '=', $tree_id)
-            ->value('i_gedcom');
     }
 
     /**

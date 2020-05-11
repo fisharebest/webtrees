@@ -23,7 +23,6 @@ use Closure;
 use Exception;
 use Fisharebest\Webtrees\Http\RequestHandlers\SubmissionPage;
 use Illuminate\Database\Capsule\Manager as DB;
-use stdClass;
 
 /**
  * A GEDCOM submission (SUBN) object.
@@ -39,18 +38,15 @@ class Submission extends GedcomRecord
     /**
      * A closure which will create a record from a database row.
      *
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Factory::submission()
+     *
      * @param Tree $tree
      *
      * @return Closure
      */
     public static function rowMapper(Tree $tree): Closure
     {
-        return static function (stdClass $row) use ($tree): Submission {
-            $submission = Submission::getInstance($row->o_id, $tree, $row->o_gedcom);
-            assert($submission instanceof Submission);
-
-            return $submission;
-        };
+        return Factory::submission()->mapper($tree);
     }
 
     /**
@@ -62,19 +58,13 @@ class Submission extends GedcomRecord
      * @param Tree        $tree
      * @param string|null $gedcom
      *
-     * @throws Exception
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Factory::submission()
      *
      * @return Submission|null
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Submission
     {
-        $record = parent::getInstance($xref, $tree, $gedcom);
-
-        if ($record instanceof self) {
-            return $record;
-        }
-
-        return null;
+        return Factory::submission()->make($xref, $tree, $gedcom);
     }
 
     /**

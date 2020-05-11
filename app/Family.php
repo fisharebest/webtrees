@@ -20,11 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
-use Exception;
 use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use stdClass;
 
 /**
  * A GEDCOM family (FAM) object.
@@ -57,21 +54,18 @@ class Family extends GedcomRecord
         // Make sure we find records in pending records.
         $gedcom_pending = $gedcom . "\n" . $pending;
 
-        // Fetch family members
-        if (preg_match_all('/\n1 (?:HUSB|WIFE|CHIL) @(.+)@/', $gedcom_pending, $match)) {
-            Individual::load($tree, $match[1]);
-        }
-
         if (preg_match('/\n1 HUSB @(.+)@/', $gedcom_pending, $match)) {
-            $this->husb = Individual::getInstance($match[1], $tree);
+            $this->husb = Factory::individual()->make($match[1], $tree);
         }
         if (preg_match('/\n1 WIFE @(.+)@/', $gedcom_pending, $match)) {
-            $this->wife = Individual::getInstance($match[1], $tree);
+            $this->wife = Factory::individual()->make($match[1], $tree);
         }
     }
 
     /**
      * A closure which will create a record from a database row.
+     *
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Factory::family()
      *
      * @param Tree $tree
      *
@@ -79,12 +73,7 @@ class Family extends GedcomRecord
      */
     public static function rowMapper(Tree $tree): Closure
     {
-        return static function (stdClass $row) use ($tree): Family {
-            $family = Family::getInstance($row->f_id, $tree, $row->f_gedcom);
-            assert($family instanceof Family);
-
-            return $family;
-        };
+        return Factory::family()->mapper($tree);
     }
 
     /**
@@ -104,23 +93,17 @@ class Family extends GedcomRecord
      * we just receive the XREF. For bulk records (such as lists
      * and search results) we can receive the GEDCOM data as well.
      *
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Factory::family()
+     *
      * @param string      $xref
      * @param Tree        $tree
      * @param string|null $gedcom
-     *
-     * @throws Exception
      *
      * @return Family|null
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Family
     {
-        $record = parent::getInstance($xref, $tree, $gedcom);
-
-        if ($record instanceof self) {
-            return $record;
-        }
-
-        return null;
+        return Factory::family()->make($xref, $tree, $gedcom);
     }
 
     /**
@@ -140,29 +123,13 @@ class Family extends GedcomRecord
         // Just show the 1 CHIL/HUSB/WIFE tag, not any subtags, which may contain private data
         preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom, $matches, PREG_SET_ORDER);
         foreach ($matches as $match) {
-            $rela = Individual::getInstance($match[1], $this->tree);
+            $rela = Factory::individual()->make($match[1], $this->tree);
             if ($rela instanceof Individual && $rela->canShow($access_level)) {
                 $rec .= $match[0];
             }
         }
 
         return $rec;
-    }
-
-    /**
-     * Fetch data from the database
-     *
-     * @param string $xref
-     * @param int    $tree_id
-     *
-     * @return string|null
-     */
-    protected static function fetchGedcomRecord(string $xref, int $tree_id): ?string
-    {
-        return DB::table('families')
-            ->where('f_id', '=', $xref)
-            ->where('f_file', '=', $tree_id)
-            ->value('f_gedcom');
     }
 
     /**
@@ -217,7 +184,7 @@ class Family extends GedcomRecord
         // Hide a family if any member is private
         preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom, $matches);
         foreach ($matches[1] as $match) {
-            $person = Individual::getInstance($match, $this->tree);
+            $person = Factory::individual()->make($match, $this->tree);
             if ($person && !$person->canShow($access_level)) {
                 return false;
             }

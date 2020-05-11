@@ -20,12 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
-use Exception;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use stdClass;
 
 /**
  * A GEDCOM media (OBJE) object.
@@ -39,18 +37,15 @@ class Media extends GedcomRecord
     /**
      * A closure which will create a record from a database row.
      *
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Factory::media()
+     *
      * @param Tree $tree
      *
      * @return Closure
      */
     public static function rowMapper(Tree $tree): Closure
     {
-        return static function (stdClass $row) use ($tree): Media {
-            $media = Media::getInstance($row->m_id, $tree, $row->m_gedcom);
-            assert($media instanceof Media);
-
-            return $media;
-        };
+        return Factory::media()->mapper($tree);
     }
 
     /**
@@ -58,23 +53,17 @@ class Media extends GedcomRecord
      * we just receive the XREF. For bulk records (such as lists
      * and search results) we can receive the GEDCOM data as well.
      *
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Factory::media()
+     *
      * @param string      $xref
      * @param Tree        $tree
      * @param string|null $gedcom
-     *
-     * @throws Exception
      *
      * @return Media|null
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Media
     {
-        $record = parent::getInstance($xref, $tree, $gedcom);
-
-        if ($record instanceof self) {
-            return $record;
-        }
-
-        return null;
+        return Factory::media()->make($xref, $tree, $gedcom);
     }
 
     /**
@@ -93,30 +82,14 @@ class Media extends GedcomRecord
             ->pluck('l_from');
 
         foreach ($linked_ids as $linked_id) {
-            $linked_record = GedcomRecord::getInstance($linked_id, $this->tree);
-            if ($linked_record && !$linked_record->canShow($access_level)) {
+            $linked_record = Factory::gedcomRecord()->make($linked_id, $this->tree);
+            if ($linked_record instanceof GedcomRecord && !$linked_record->canShow($access_level)) {
                 return false;
             }
         }
 
         // ... otherwise apply default behavior
         return parent::canShowByType($access_level);
-    }
-
-    /**
-     * Fetch data from the database
-     *
-     * @param string $xref
-     * @param int    $tree_id
-     *
-     * @return string|null
-     */
-    protected static function fetchGedcomRecord(string $xref, int $tree_id): ?string
-    {
-        return DB::table('media')
-            ->where('m_id', '=', $xref)
-            ->where('m_file', '=', $tree_id)
-            ->value('m_gedcom');
     }
 
     /**

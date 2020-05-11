@@ -53,7 +53,7 @@ class BranchesController extends AbstractBaseController
     /**
      * BranchesController constructor.
      *
-     * @param ModuleService $module_service
+     * @param ModuleService     $module_service
      */
     public function __construct(ModuleService $module_service)
     {

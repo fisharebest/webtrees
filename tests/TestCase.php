@@ -22,6 +22,16 @@ namespace Fisharebest\Webtrees;
 use Aura\Router\Route;
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Factories\FamilyFactory;
+use Fisharebest\Webtrees\Factories\GedcomRecordFactory;
+use Fisharebest\Webtrees\Factories\HeaderFactory;
+use Fisharebest\Webtrees\Factories\IndividualFactory;
+use Fisharebest\Webtrees\Factories\MediaFactory;
+use Fisharebest\Webtrees\Factories\NoteFactory;
+use Fisharebest\Webtrees\Factories\RepositoryFactory;
+use Fisharebest\Webtrees\Factories\SourceFactory;
+use Fisharebest\Webtrees\Factories\SubmissionFactory;
+use Fisharebest\Webtrees\Factories\SubmitterFactory;
 use Fisharebest\Webtrees\Http\Controllers\GedcomFileController;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -77,7 +87,20 @@ class TestCase extends \PHPUnit\Framework\TestCase
         app()->bind(UriFactoryInterface::class, Psr17Factory::class);
 
         // Disable the cache.
-        app()->instance('cache.array', new Cache(new NullAdapter()));
+        $cache = new Cache(new NullAdapter());
+        app()->instance('cache.array', $cache);
+
+        // Register the factories
+        Factory::family(new FamilyFactory($cache));
+        Factory::gedcomRecord(new GedcomRecordFactory($cache));
+        Factory::header(new HeaderFactory($cache));
+        Factory::individual(new IndividualFactory($cache));
+        Factory::media(new MediaFactory($cache));
+        Factory::note(new NoteFactory($cache));
+        Factory::repository(new RepositoryFactory($cache));
+        Factory::source(new SourceFactory($cache));
+        Factory::submission(new SubmissionFactory($cache));
+        Factory::submitter(new SubmitterFactory($cache));
 
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
 
@@ -202,9 +225,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             DB::connection()->rollBack();
         }
 
-        Site::$preferences                  = [];
-        GedcomRecord::$gedcom_record_cache  = null;
-        GedcomRecord::$pending_record_cache = null;
+        Site::$preferences = [];
 
         Auth::logout();
     }

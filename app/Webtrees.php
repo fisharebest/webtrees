@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Http\Middleware\LoadRoutes;
 use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
 use Fisharebest\Webtrees\Http\Middleware\PhpEnvironment;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
+use Fisharebest\Webtrees\Http\Middleware\RegisterFactories;
 use Fisharebest\Webtrees\Http\Middleware\Router;
 use Fisharebest\Webtrees\Http\Middleware\SecurityHeaders;
 use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
@@ -119,6 +120,7 @@ class Webtrees
         UseCache::class,
         BadBotBlocker::class,
         UseDatabase::class,
+        RegisterFactories::class,
         UseDebugbar::class,
         UpdateDatabaseSchema::class,
         UseFilesystem::class,
