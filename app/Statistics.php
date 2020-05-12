@@ -477,7 +477,7 @@ class Statistics implements
     }
 
     /**
-     * @param array $events
+     * @param string[] $events
      *
      * @return string
      */

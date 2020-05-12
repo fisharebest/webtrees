@@ -507,10 +507,10 @@ class CalendarController extends AbstractBaseController
     /**
      * Format a list of facts for display
      *
-     * @param Fact[] $list
-     * @param string $tag1
-     * @param string $tag2
-     * @param Tree   $tree
+     * @param string[] $list
+     * @param string   $tag1
+     * @param string   $tag2
+     * @param Tree     $tree
      *
      * @return string
      */

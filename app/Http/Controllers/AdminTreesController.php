@@ -1519,12 +1519,12 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param string        $type
-     * @param array<string> $links
-     * @param string        $xref1
-     * @param string        $xref2
-     * @param string        $link
-     * @param array<string> $reciprocal
+     * @param string     $type
+     * @param string[][] $links
+     * @param string     $xref1
+     * @param string     $xref2
+     * @param string     $link
+     * @param string[]   $reciprocal
      *
      * @return bool
      */
