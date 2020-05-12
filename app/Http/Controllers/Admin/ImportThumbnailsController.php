@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -139,7 +140,7 @@ class ImportThumbnailsController extends AbstractAdminController
                 break;
 
             case 'add':
-                $mime_type = $data_filesystem->getMimetype($thumbnail);
+                $mime_type = $data_filesystem->getMimetype($thumbnail) ?: Mime::DEFAULT_TYPE;
                 $directory = dirname($thumbnail, 2);
                 $sha1      = sha1($data_filesystem->read($thumbnail));
                 $extension = explode('/', $mime_type)[1];
@@ -299,8 +300,8 @@ class ImportThumbnailsController extends AbstractAdminController
             return 100;
         }
 
-        $thumbnail_type = explode('/', $data_filesystem->getMimetype($thumbnail))[0];
-        $original_type  = explode('/', $data_filesystem->getMimetype($original))[0];
+        $thumbnail_type = explode('/', $data_filesystem->getMimetype($thumbnail) ?: Mime::DEFAULT_TYPE)[0];
+        $original_type  = explode('/', $data_filesystem->getMimetype($original) ?: Mime::DEFAULT_TYPE)[0];
 
         if ($thumbnail_type !== 'image') {
             // If the thumbnail file is not an image then similarity is unimportant.

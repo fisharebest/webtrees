@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
+use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -250,7 +251,7 @@ class MediaController extends AbstractAdminController
                 $sort_columns = [0 => 0];
 
                 $callback = function (array $row) use ($data_filesystem, $media_trees): array {
-                    $mime_type = $data_filesystem->getMimeType($row[0]);
+                    $mime_type = $data_filesystem->getMimeType($row[0]) ?: Mime::DEFAULT_TYPE;
 
                     if (strpos($mime_type, 'image/') === 0) {
                         $url = route('unused-media-thumbnail', [

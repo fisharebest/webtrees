@@ -6,11 +6,6 @@ parameters:
 			path: app/Application.php
 
 		-
-			message: "#^Cannot call method setTimezone\\(\\) on \\$this\\(Fisharebest\\\\Webtrees\\\\Carbon\\)\\|string\\.$#"
-			count: 1
-			path: app/Carbon.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Census\\\\AbstractCensusColumn\\:\\:lastPartOfPlace\\(\\) should return string but returns string\\|false\\.$#"
 			count: 1
 			path: app/Census/AbstractCensusColumn.php
@@ -343,11 +338,6 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 2
-			path: app/Helpers/functions.php
-
-		-
-			message: "#^Parameter \\#2 \\$value of method Psr\\\\Http\\\\Message\\\\MessageInterface\\:\\:withHeader\\(\\) expects array\\<string\\>\\|string, int\\|string given\\.$#"
-			count: 1
 			path: app/Helpers/functions.php
 
 		-
@@ -771,11 +761,6 @@ parameters:
 			path: app/Http/Controllers/MediaFileController.php
 
 		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\|false\\> given\\.$#"
-			count: 2
-			path: app/Http/Controllers/MediaFileController.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\PlaceHierarchyController\\:\\:getList\\(\\) should return array\\<array\\<Fisharebest\\\\Webtrees\\\\Place\\>\\> but returns array\\<string, array\\<array\\>\\>\\.$#"
 			count: 1
 			path: app/Http/Controllers/PlaceHierarchyController.php
@@ -792,11 +777,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\PlaceHierarchyController\\:\\:mapData\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Controllers/PlaceHierarchyController.php
-
-		-
-			message: "#^Cannot access property \\$tot on int\\|stdClass\\.$#"
 			count: 1
 			path: app/Http/Controllers/PlaceHierarchyController.php
 
@@ -1181,11 +1161,6 @@ parameters:
 			path: app/Module/CensusAssistantModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$xref of static method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:getInstance\\(\\) expects string, int\\|string given\\.$#"
-			count: 1
-			path: app/Module/ClippingsCartModule.php
-
-		-
 			message: "#^Ternary operator condition is always false\\.$#"
 			count: 1
 			path: app/Module/ClippingsCartModule.php
@@ -1386,27 +1361,12 @@ parameters:
 			path: modules_v4/example-report.disable/module.php
 
 		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 1
-			path: modules_v4/example-report.disable/module.php
-
-		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
 			path: modules_v4/example-footer.disable/module.php
 
 		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 1
-			path: modules_v4/example-footer.disable/module.php
-
-		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example.disable/module.php
-
-		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
 			count: 1
 			path: modules_v4/example.disable/module.php
 
@@ -1426,11 +1386,6 @@ parameters:
 			path: modules_v4/example-theme.disable/module.php
 
 		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 1
-			path: modules_v4/example-theme.disable/module.php
-
-		-
 			message: "#^Method class@anonymous/modules_v4/example\\-theme\\.disable/module\\.php\\:17\\:\\:stylesheets\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: modules_v4/example-theme.disable/module.php
@@ -1441,22 +1396,12 @@ parameters:
 			path: modules_v4/example-middleware.disable/module.php
 
 		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 1
-			path: modules_v4/example-middleware.disable/module.php
-
-		-
 			message: "#^Binary operation \"\\-\" between 32 and string results in an error\\.$#"
 			count: 1
 			path: modules_v4/example-middleware.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-server-configuration.disable/ExampleServerConfigurationModule.php
-
-		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
 			count: 1
 			path: modules_v4/example-server-configuration.disable/ExampleServerConfigurationModule.php
 
@@ -1801,11 +1746,6 @@ parameters:
 			path: app/Report/ReportBaseLine.php
 
 		-
-			message: "#^Default value of the parameter \\#2 \\$cellWidth \\(0\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlFootnote\\:\\:getFootnoteHeight\\(\\) is incompatible with type float\\.$#"
-			count: 1
-			path: app/Report/ReportHtmlFootnote.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlFootnote\\:\\:getWidth\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Report/ReportHtmlFootnote.php
@@ -2002,11 +1942,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$haystack of function strpos expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Parameter \\#1 \\$xref of static method Fisharebest\\\\Webtrees\\\\Individual\\:\\:getInstance\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
 
@@ -2366,24 +2301,9 @@ parameters:
 			path: app/Services/UpgradeService.php
 
 		-
-			message: "#^Parameter \\#2 \\$str of function explode expects string, string\\|false given\\.$#"
-			count: 1
-			path: app/Session.php
-
-		-
-			message: "#^Parameter \\#3 \\$domain of function session_set_cookie_params expects string\\|null, string\\|false\\|null given\\.$#"
-			count: 1
-			path: app/Session.php
-
-		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Site\\:\\:\\$preferences type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Site.php
-
-		-
-			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\(\\$this\\(Fisharebest\\\\Webtrees\\\\Statistics\\), mixed\\) given\\.$#"
-			count: 1
-			path: app/Statistics.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\:\\:statsAgeQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -2609,26 +2529,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\FamilyRepository\\:\\:statsMarrAgeQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: "#^Strict comparison using \\=\\=\\= between array\\<string\\> and null will always evaluate to false\\.$#"
-			count: 1
-			path: app/Statistics/Repository/GedcomRepository.php
-
-		-
-			message: "#^Access to an undefined property object\\:\\:\\$d_day\\.$#"
-			count: 1
-			path: app/Statistics/Repository/GedcomRepository.php
-
-		-
-			message: "#^Access to an undefined property object\\:\\:\\$d_month\\.$#"
-			count: 1
-			path: app/Statistics/Repository/GedcomRepository.php
-
-		-
-			message: "#^Access to an undefined property object\\:\\:\\$d_year\\.$#"
-			count: 1
-			path: app/Statistics/Repository/GedcomRepository.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\IndividualRepository\\:\\:commonGiven\\(\\) should return string but returns array\\<int\\>\\|string\\.$#"
