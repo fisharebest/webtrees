@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-05-10 21:45+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Urdu <https://translate.webtrees.net/projects/webtrees/webtrees/ur/>\nLanguage: ur\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-05-18 23:29+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Urdu <https://translate.webtrees.net/projects/webtrees/webtrees/ur/>\nLanguage: ur\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -177,26 +177,26 @@ msgstr "%s اور ان کے آباؤ اجداد"
 #: app/Module/ClippingsCartModule.php:969
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s اور افراد جو ان کا حوالہ دیتے ہیں۔"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:477
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s اور ان کے بچے"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:479
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s اور ان کی نسلیں"
 
 #: app/Statistics/Repository/UserRepository.php:88
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s گمنام سائن ان صارف"
+msgstr[1] "%s گمنام سائن ان صارفین"
 
 #: resources/views/family-page-children.phtml:13
 #: resources/views/modules/ancestors-chart/tree.phtml:39
@@ -9597,20 +9597,20 @@ msgstr "محرم"
 
 #: resources/views/lists/families-table.phtml:207
 msgid "Multiple marriages"
-msgstr ""
+msgstr "متعدد شادیاں"
 
 #: app/Http/RequestHandlers/AccountEdit.php:88
 #: app/Module/ModuleThemeTrait.php:327 app/Module/UserWelcomeModule.php:114
 msgid "My account"
-msgstr ""
+msgstr "میرا کھاتا"
 
 #: app/Http/RequestHandlers/CreateTreePage.php:57
 msgid "My family tree"
-msgstr ""
+msgstr "میرا شجرہ نسب"
 
 #: app/Module/ModuleThemeTrait.php:342 app/Module/UserWelcomeModule.php:107
 msgid "My individual record"
-msgstr ""
+msgstr "میرا انفرادی ریکارڈ"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/UserPage.php:90 app/Module/ModuleThemeTrait.php:357
@@ -9618,20 +9618,20 @@ msgstr ""
 #: resources/views/admin/modules.phtml:181
 #: resources/views/layouts/administration.phtml:54
 msgid "My page"
-msgstr ""
+msgstr "میرا صفحہ"
 
 #: app/Module/ModuleThemeTrait.php:371
 msgid "My pages"
-msgstr ""
+msgstr "میرے صفحات"
 
 #: app/Module/ModuleThemeTrait.php:405
 msgid "My pedigree"
-msgstr ""
+msgstr "میرا نسب"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:335
 msgid "Myanmar"
-msgstr ""
+msgstr "میانمار"
 
 #. I18N: gedcom tag NAME
 #: app/GedcomTag.php:864 app/Http/RequestHandlers/HelpText.php:209
@@ -9659,17 +9659,17 @@ msgstr ""
 #: resources/xml/reports/occupation_report.xml:43
 #: resources/xml/reports/relative_ext_report.xml:50
 msgid "Name"
-msgstr ""
+msgstr "نام"
 
 #. I18N: gedcom tag REPO:NAME
 #: app/GedcomTag.php:860 resources/views/modals/repository-fields.phtml:9
 msgctxt "Repository"
 msgid "Name"
-msgstr ""
+msgstr "نام"
 
 #: app/GedcomTag.php:868
 msgid "Name in Hebrew"
-msgstr ""
+msgstr "عبرانی زبان میں نام"
 
 #. I18N: gedcom tag NPFX
 #: app/GedcomTag.php:893
@@ -20228,7 +20228,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:658
 msgid "wife"
-msgstr "اہلیہ"
+msgstr "بیوی"
 
 #. I18N: Name of a theme.
 #: app/Module/XeneaTheme.php:39
