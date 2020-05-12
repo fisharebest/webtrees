@@ -56,7 +56,7 @@ class FunctionsImport
      *
      * @return string
      */
-    public static function reformatRecord($rec, Tree $tree): string
+    public static function reformatRecord(string $rec, Tree $tree): string
     {
         // Strip out mac/msdos line endings
         $rec = preg_replace("/[\r\n]+/", "\n", $rec);
@@ -610,7 +610,7 @@ class FunctionsImport
      * @return void
      * @throws GedcomErrorException
      */
-    public static function importRecord($gedrec, Tree $tree, $update): void
+    public static function importRecord(string $gedrec, Tree $tree, bool $update): void
     {
         $tree_id = $tree->id();
 
@@ -840,7 +840,7 @@ class FunctionsImport
      *
      * @return void
      */
-    public static function updateDates($xref, $ged_id, $gedrec): void
+    public static function updateDates(string $xref, int $ged_id, string $gedrec): void
     {
         if (strpos($gedrec, '2 DATE ') && preg_match_all("/\n1 (\w+).*(?:\n[2-9].*)*(?:\n2 DATE (.+))(?:\n[2-9].*)*/", $gedrec, $matches, PREG_SET_ORDER)) {
             foreach ($matches as $match) {
@@ -889,7 +889,7 @@ class FunctionsImport
      *
      * @return void
      */
-    public static function updateLinks($xref, $ged_id, $gedrec): void
+    public static function updateLinks(string $xref, int $ged_id, string $gedrec): void
     {
         if (preg_match_all('/^\d+ (' . Gedcom::REGEX_TAG . ') @(' . Gedcom::REGEX_XREF . ')@/m', $gedrec, $matches, PREG_SET_ORDER)) {
             $data = [];
@@ -921,7 +921,7 @@ class FunctionsImport
      *
      * @return void
      */
-    public static function updateNames($xref, $ged_id, Individual $record): void
+    public static function updateNames(string $xref, int $ged_id, Individual $record): void
     {
         foreach ($record->getAllNames() as $n => $name) {
             if ($name['givn'] === '@P.N.') {
@@ -966,7 +966,7 @@ class FunctionsImport
      *
      * @return string
      */
-    public static function convertInlineMedia(Tree $tree, $gedrec): string
+    public static function convertInlineMedia(Tree $tree, string $gedrec): string
     {
         while (preg_match('/\n1 OBJE(?:\n[2-9].+)+/', $gedrec, $match)) {
             $gedrec = str_replace($match[0], self::createMediaObject(1, $match[0], $tree), $gedrec);
@@ -990,7 +990,7 @@ class FunctionsImport
      *
      * @return string
      */
-    public static function createMediaObject($level, $gedrec, Tree $tree): string
+    public static function createMediaObject(int $level, string $gedrec, Tree $tree): string
     {
         if (preg_match('/\n\d FILE (.+)/', $gedrec, $file_match)) {
             $file = $file_match[1];
@@ -1063,7 +1063,7 @@ class FunctionsImport
      * @return void
      * @throws GedcomErrorException
      */
-    public static function updateRecord($gedrec, Tree $tree, bool $delete): void
+    public static function updateRecord(string $gedrec, Tree $tree, bool $delete): void
     {
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ (' . Gedcom::REGEX_TAG . ')/', $gedrec, $match)) {
             [, $gid, $type] = $match;

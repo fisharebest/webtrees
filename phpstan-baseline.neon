@@ -491,16 +491,6 @@ parameters:
 			path: app/Http/Controllers/Admin/LocationController.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\Admin\\\\LocationController\\:\\:buildLevel\\(\\) has parameter \\$placename with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\Admin\\\\LocationController\\:\\:buildLevel\\(\\) has parameter \\$places with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
 			message: "#^Parameter \\#1 \\$fp of function fputcsv expects resource, resource\\|false given\\.$#"
 			count: 2
 			path: app/Http/Controllers/Admin/LocationController.php
@@ -611,11 +601,6 @@ parameters:
 			path: app/Http/Controllers/Admin/MediaController.php
 
 		-
-			message: "#^Parameter \\#2 \\$str of function explode expects string, string\\|false given\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/MediaController.php
-
-		-
 			message: "#^Cannot access offset '0' on array\\|false\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/MediaController.php
@@ -661,47 +646,7 @@ parameters:
 			path: app/Http/Controllers/AdminController.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function strtoupper expects string, int\\|string given\\.$#"
-			count: 2
-			path: app/Http/Controllers/AdminTreesController.php
-
-		-
-			message: "#^Parameter \\#3 \\$xref1 of method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminTreesController\\:\\:checkLinkMessage\\(\\) expects string, int\\|string given\\.$#"
-			count: 6
-			path: app/Http/Controllers/AdminTreesController.php
-
-		-
-			message: "#^Parameter \\#5 \\$xref2 of method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminTreesController\\:\\:checkLinkMessage\\(\\) expects string, int\\|string given\\.$#"
-			count: 6
-			path: app/Http/Controllers/AdminTreesController.php
-
-		-
-			message: "#^Parameter \\#2 \\$xref of method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminTreesController\\:\\:checkLink\\(\\) expects string, int\\|string given\\.$#"
-			count: 5
-			path: app/Http/Controllers/AdminTreesController.php
-
-		-
-			message: "#^Parameter \\#3 \\$xref1 of method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminTreesController\\:\\:checkReverseLink\\(\\) expects string, int\\|string given\\.$#"
-			count: 5
-			path: app/Http/Controllers/AdminTreesController.php
-
-		-
-			message: "#^Parameter \\#4 \\$xref2 of method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminTreesController\\:\\:checkReverseLink\\(\\) expects string, int\\|string given\\.$#"
-			count: 5
-			path: app/Http/Controllers/AdminTreesController.php
-
-		-
 			message: "#^Parameter \\#1 \\$path of function basename expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminTreesController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminTreesController\\:\\:checkReverseLink\\(\\) has parameter \\$links with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminTreesController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminTreesController\\:\\:checkReverseLink\\(\\) has parameter \\$reciprocal with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Http/Controllers/AdminTreesController.php
 
@@ -754,16 +699,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminTreesController\\:\\:themeOptions\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Http/Controllers/AdminTreesController.php
-
-		-
-			message: "#^Binary operation \"\\*\" between int\\|string\\|null and 2 results in an error\\.$#"
-			count: 2
-			path: app/Http/Controllers/BranchesController.php
-
-		-
-			message: "#^Parameter \\#1 \\$list of method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\CalendarController\\:\\:calendarListText\\(\\) expects array\\<Fisharebest\\\\Webtrees\\\\Fact\\>, array\\<int\\|string, string\\> given\\.$#"
-			count: 2
-			path: app/Http/Controllers/CalendarController.php
 
 		-
 			message: "#^Call to an undefined method Carbon\\\\CarbonImmutable\\:\\:julianDay\\(\\)\\.$#"
@@ -829,11 +764,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\ListController\\:\\:allFolders\\(\\) should return array\\<string\\> but returns array\\|false\\.$#"
 			count: 1
 			path: app/Http/Controllers/ListController.php
-
-		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 3
-			path: app/Http/Controllers/MediaFileController.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
