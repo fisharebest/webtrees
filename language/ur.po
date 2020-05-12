@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-10 21:45+0000\n"
+"PO-Revision-Date: 2020-05-30 07:30+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Urdu <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ur/>\n"
@@ -216,26 +216,26 @@ msgstr "%s اور ان کے آباؤ اجداد"
 #: app/Module/ClippingsCartModule.php:305
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s اور افراد جو ان کا حوالہ دیتے ہیں۔"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:134
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s اور ان کے بچے"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:141
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s اور ان کی نسلیں"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5904
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s گمنام سائن ان صارف"
+msgstr[1] "%s گمنام سائن ان صارفین"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4454 app/Stats.php:4458
 #, php-format
@@ -3868,58 +3868,58 @@ msgstr ""
 #. I18N: gedcom tag COMM
 #: admin_site_access.php:297 admin_site_access.php:366 app/GedcomTag.php:298
 msgid "Comment"
-msgstr ""
+msgstr "تبصرہ"
 
 #: login.php:326 login.php:348 login.php:483
 msgid "Comments"
-msgstr ""
+msgstr "تبصرے"
 
 #. I18N: gedcom tag _COML
 #: app/GedcomTag.php:1249
 msgid "Common law marriage"
-msgstr ""
+msgstr "عام قانون شادی"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:38
 msgid "Communicate directly with other users, using private messages."
-msgstr ""
+msgstr "نجی پیغامات کے ذریعے دوسرے صارفین کے ساتھ براہ راست بات چیت کریں۔"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6722
 msgid "Comoros"
-msgstr ""
+msgstr "کوموروس"
 
 #. I18N: Name of a module/chart
 #: app/Controller/CompactController.php:46
 #: app/Module/CompactTreeChartModule.php:33
 msgid "Compact tree"
-msgstr ""
+msgstr "ٹھوس شجرہ"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/CompactController.php:43
 #: app/Controller/CompactController.php:125
 #, php-format
 msgid "Compact tree of %s"
-msgstr ""
+msgstr "%s کا ٹھوس شجرہ"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
 msgid "Completed before 1970; date not available"
-msgstr ""
+msgstr "١٩٧٠ سے پہلے مکمل؛  تاریخ موجود نہیں"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:80
 msgid "Completed; date unknown"
-msgstr ""
+msgstr "مکمل؛  تاریخ نامعلوم"
 
 #: admin_trees_download.php:141
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "GEDCOM فائل کو سکیڑیں"
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:302
 msgid "Concatenation"
-msgstr ""
+msgstr "تسلسل"
 
 #: admin_users.php:351 edituser.php:226 login.php:467
 msgid "Confirm password"
@@ -3928,33 +3928,33 @@ msgstr ""
 #. I18N: gedcom tag CONF
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
 msgid "Confirmation"
-msgstr ""
+msgstr "تصدیق"
 
 #: setup.php:275
 msgid "Connection to database server"
-msgstr ""
+msgstr "ڈیٹا بیس سرور سے رابطہ"
 
 #: admin_trees_config.php:847
 msgid "Contact information"
-msgstr ""
+msgstr "رابطے کی معلومات"
 
 #: edituser.php:294
 msgid "Contact method"
-msgstr ""
+msgstr "رابطہ کا طریقہ"
 
 #: search_advanced.php:159 search_advanced.php:221 search_advanced.php:236
 #: search_advanced.php:257 search_advanced.php:272
 msgid "Contains"
-msgstr ""
+msgstr "مشتمل"
 
 #: app/Module/HtmlBlockModule.php:314 editnews.php:70
 msgid "Content"
-msgstr ""
+msgstr "مواد"
 
 #. I18N: gedcom tag CONT
 #: app/GedcomTag.php:306
 msgid "Continued"
-msgstr ""
+msgstr "مسلسل"
 
 #: admin.php:482 admin_media.php:613 admin_media_upload.php:180
 #: admin_module_blocks.php:60 admin_module_charts.php:53
@@ -3978,26 +3978,26 @@ msgstr ""
 #: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
 #: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
-msgstr ""
+msgstr "کنٹرول پینل"
 
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:426
 #: app/Module/ClippingsCartModule.php:794
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr ""
+msgstr "”UTF-8“ سے ”ISO-8859-1“ میں تبدیل کریں"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6720
 msgid "Cook Islands"
-msgstr ""
+msgstr "کوک جزیرے"
 
 #: app/Theme/AbstractTheme.php:345
 msgid "Cookies"
-msgstr ""
+msgstr "کوکیز"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:143
 msgid "Copenhagen, Denmark"
-msgstr ""
+msgstr "کوپن ہیگن ، ڈنمارک"
 
 #: app/Functions/FunctionsPrintFacts.php:191
 #: app/Functions/FunctionsPrintFacts.php:194
@@ -4005,18 +4005,18 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:1025
 #: app/Functions/FunctionsPrintFacts.php:1173
 msgid "Copy"
-msgstr ""
+msgstr "نقل"
 
 #. I18N: Copy all the records from [family tree 1] into [family tree 2]
 #: admin_trees_merge.php:195
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "”%1$s“ میں سے تمام ریکارڈز کی ”%2$s“ میں نقل کریں۔"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:369
 msgid "Copy files…"
-msgstr ""
+msgstr "فائلوں کی نقل کریں…"
 
 #: admin_site_upgrade.php:339
 #, php-format
@@ -4026,35 +4026,39 @@ msgstr ""
 #. I18N: gedcom tag COPR
 #: app/GedcomTag.php:322
 msgid "Copyright"
-msgstr ""
+msgstr "حقوق نسخہ"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:145
 msgid "Cordoba, Argentina"
-msgstr ""
+msgstr "قرطبہ ، ارجنٹائن"
 
 #. I18N: gedcom tag CORP
 #: app/GedcomTag.php:326
 msgid "Corporation"
-msgstr ""
+msgstr "کارپوریشن"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:39
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
 msgstr ""
+"پرانے جینیالوجی پروگراموں کے ذریعہ بنائی گئی ترتیب ”فلاں/ فلانے/“ یا ”فلاں/ "
+"فلانے“ نام کے ریکارڈ کو درست کریں۔"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6724
 msgid "Costa Rica"
-msgstr ""
+msgstr "کوسٹا ریکا"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6716
 msgid "Cote d’Ivoire"
-msgstr ""
+msgstr "کوٹ ڈیئوار"
 
 #: login.php:619
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
 msgstr ""
+"آپ نے جو معلومات درج کی ہے اس کی تصدیق نہیں ہوسکی۔  براہ کرم دوبارہ کوشش "
+"کریں یا مزید معلومات کے لئے سائٹ ایڈمنسٹریٹر سے رابطہ کریں۔"
 
 #: app/Stats.php:5579
 msgid "Count"
@@ -4069,7 +4073,7 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:398 app/Module/GoogleMapsModule.php:1331
 #: app/Module/GoogleMapsModule.php:1436 app/Module/GoogleMapsModule.php:3444
 msgid "Country"
-msgstr ""
+msgstr "ملک"
 
 #: statisticsplot.php:914 statisticsplot.php:964 statisticsplot.php:1018
 #: statisticsplot.php:1068 statisticsplot.php:1122 statisticsplot.php:1172
@@ -4084,36 +4088,36 @@ msgstr ""
 
 #: admin_media.php:314
 msgid "Create"
-msgstr ""
+msgstr "بنائیں"
 
 #: admin_trees_manage.php:634
 msgid "Create a family tree"
-msgstr ""
+msgstr "ایک شجرہ بنائیں"
 
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:417
 msgid "Create a media object"
-msgstr ""
+msgstr "میڈیا آبجیکٹ بنائیں"
 
 #: app/Functions/FunctionsEdit.php:428 edit_interface.php:1492
 #: edit_interface.php:1555
 msgid "Create a repository"
-msgstr ""
+msgstr "ایک ذخیرہ بنائیں"
 
 #: app/Functions/FunctionsEdit.php:439 edit_interface.php:1328
 #: edit_interface.php:1364
 msgid "Create a shared note"
-msgstr ""
+msgstr "مشترکہ نوٹ بنائیں"
 
 #: app/Functions/FunctionsEdit.php:628
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
 msgid "Create a shared note using the census assistant"
-msgstr ""
+msgstr "مردم شماری کے معاون کا استعمال کرتے ہوئے ایک مشترکہ نوٹ بنائیں"
 
 #: app/Functions/FunctionsEdit.php:461 edit_interface.php:1176
 #: edit_interface.php:1259
 msgid "Create a source"
-msgstr ""
+msgstr "ایک ماخذ بنائیں"
 
 #: admin_site_access.php:218
 msgid "Create a website access rule"
@@ -4121,15 +4125,17 @@ msgstr ""
 
 #: edit_interface.php:730
 msgid "Create an individual"
-msgstr ""
+msgstr "فرد بنائیں"
 
 #: statistics.php:497
 msgid "Create your own chart"
-msgstr ""
+msgstr "اپنا چارٹ بنائیں"
 
 #: admin_trees_manage.php:757
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
 msgstr ""
+"ڈیٹا فولڈر میں ہر GEDCOM فائل کے لئے ایک شجرہ نسب بنائیں یا اپڈیٹ اور حذف "
+"کریں۔"
 
 #. I18N: gedcom tag CREM
 #: app/GedcomTag.php:330 modules_v3/family_group_report/report.xml:315
@@ -4139,142 +4145,142 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:1013
 #: modules_v3/family_group_report/report.xml:1040
 msgid "Cremation"
-msgstr ""
+msgstr "احراق"
 
 #: app/GedcomTag.php:1334
 msgid "Cremation of a brother"
-msgstr ""
+msgstr "ایک بھائی کا احراق"
 
 #: app/GedcomTag.php:1257
 msgid "Cremation of a child"
-msgstr ""
+msgstr "ایک بچے کا احراق"
 
 #: app/GedcomTag.php:1255
 msgid "Cremation of a daughter"
-msgstr ""
+msgstr "ایک بیٹی کا احراق"
 
 #: app/GedcomTag.php:1325
 msgid "Cremation of a father"
-msgstr ""
+msgstr "باپ کا احراق"
 
 #: app/GedcomTag.php:1293 app/GedcomTag.php:1302 app/GedcomTag.php:1311
 msgid "Cremation of a grand-parent"
-msgstr ""
+msgstr "دادا/دادی کا احراق"
 
 #: app/GedcomTag.php:1266 app/GedcomTag.php:1275 app/GedcomTag.php:1284
 msgid "Cremation of a grandchild"
-msgstr ""
+msgstr "ناتی پوتے کا احراق"
 
 #: app/GedcomTag.php:1264
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "ناتن/پوتی کا احراق"
 
 #: app/GedcomTag.php:1273
 msgctxt "daughter’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "نواسی کا احراق"
 
 #: app/GedcomTag.php:1282
 msgctxt "son’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "پوتی کا احراق"
 
 #: app/GedcomTag.php:1289
 msgid "Cremation of a grandfather"
-msgstr ""
+msgstr "نانا/دادا کا احراق"
 
 #: app/GedcomTag.php:1291
 msgid "Cremation of a grandmother"
-msgstr ""
+msgstr "نانی/دادی کا احراق"
 
 #: app/GedcomTag.php:1262
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "پوتے/نواسے کا احراق"
 
 #: app/GedcomTag.php:1271
 msgctxt "daughter’s son"
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "نواسے کا احراق"
 
 #: app/GedcomTag.php:1280
 msgctxt "son’s son"
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "پوتے کا احراق"
 
 #: app/GedcomTag.php:1316
 msgid "Cremation of a half-brother"
-msgstr ""
+msgstr "سوتیلے بھائی کا احراق"
 
 #: app/GedcomTag.php:1320
 msgid "Cremation of a half-sibling"
-msgstr ""
+msgstr "سوتیلے بھائی/بہن کا احراق"
 
 #: app/GedcomTag.php:1318
 msgid "Cremation of a half-sister"
-msgstr ""
+msgstr "سوتیلی بہن کا احراق"
 
 #: app/GedcomTag.php:1343
 msgid "Cremation of a husband"
-msgstr ""
+msgstr "شوہر کا احراق"
 
 #: app/GedcomTag.php:1307
 msgid "Cremation of a maternal grandfather"
-msgstr ""
+msgstr "نانا کا احراق"
 
 #: app/GedcomTag.php:1309
 msgid "Cremation of a maternal grandmother"
-msgstr ""
+msgstr "نانی کا احراق"
 
 #: app/GedcomTag.php:1327
 msgid "Cremation of a mother"
-msgstr ""
+msgstr "ماں کا احراق"
 
 #: app/GedcomTag.php:1329
 msgid "Cremation of a parent"
-msgstr ""
+msgstr "ماں/باپ کا احراق"
 
 #: app/GedcomTag.php:1298
 msgid "Cremation of a paternal grandfather"
-msgstr ""
+msgstr "دادا کا احراق"
 
 #: app/GedcomTag.php:1300
 msgid "Cremation of a paternal grandmother"
-msgstr ""
+msgstr "دادی کا احراق"
 
 #: app/GedcomTag.php:1338
 msgid "Cremation of a sibling"
-msgstr ""
+msgstr "بھائی/بہن کا احراق"
 
 #: app/GedcomTag.php:1336
 msgid "Cremation of a sister"
-msgstr ""
+msgstr "بہن کا احراق"
 
 #: app/GedcomTag.php:1253
 msgid "Cremation of a son"
-msgstr ""
+msgstr "بیٹے کا احراق"
 
 #: app/GedcomTag.php:1347
 msgid "Cremation of a spouse"
-msgstr ""
+msgstr "شریک حیات کا احراق"
 
 #: app/GedcomTag.php:1345
 msgid "Cremation of a wife"
-msgstr ""
+msgstr "بیوی کا احراق"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6773
 msgid "Croatia"
-msgstr ""
+msgstr "کروشیا"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6725
 msgid "Cuba"
-msgstr ""
+msgstr "کیوبا"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:149
 msgid "Curitiba, Brazil"
-msgstr ""
+msgstr "کریٹیبا ، برازیل"
 
 #: app/Module/HtmlBlockModule.php:302
 msgid "Current"
@@ -4282,19 +4288,19 @@ msgstr ""
 
 #: app/Module/HtmlBlockModule.php:285
 msgid "Custom"
-msgstr ""
+msgstr "حسب ضرورت"
 
 #: app/Functions/FunctionsPrint.php:625 calendar.php:281
 msgid "Custom event"
-msgstr ""
+msgstr "حسب ضرورت واقعہ"
 
 #: app/Functions/FunctionsPrint.php:624
 msgid "Custom fact"
-msgstr ""
+msgstr "حسب ضرورت حقیقت"
 
 #: admin_modules.php:191 admin_site_upgrade.php:126 admin_site_upgrade.php:129
 msgid "Custom module"
-msgstr ""
+msgstr "کسٹم ماڈیول"
 
 #: find.php:533
 msgid "Custom tags"
@@ -4307,21 +4313,21 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_site_config.php:478
 msgid "Custom welcome text"
-msgstr ""
+msgstr "حسب ضرورت خیرمقدم متن"
 
 #: app/Theme/AbstractTheme.php:1078 app/Theme/AbstractTheme.php:1080
 msgid "Customize this page"
-msgstr ""
+msgstr "اس صفحے کو اپنی مرضی کے مطابق بنائیں"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6729
 msgid "Cyprus"
-msgstr ""
+msgstr "قبرص"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6730
 msgid "Czech Republic"
-msgstr ""
+msgstr "جمہوریہ چیک"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1463
@@ -9460,35 +9466,35 @@ msgstr "محرم"
 
 #: app/Functions/FunctionsPrintLists.php:713
 msgid "Multiple marriages"
-msgstr ""
+msgstr "متعدد شادیاں"
 
 #: app/Module/UserWelcomeModule.php:53 app/Theme/AbstractTheme.php:1599
 #: edituser.php:111
 msgid "My account"
-msgstr ""
+msgstr "میرا کھاتا"
 
 #. I18N: Default name for a new tree
 #: admin_trees_manage.php:165
 msgid "My family tree"
-msgstr ""
+msgstr "میرا شجرہ نسب"
 
 #: app/Module/UserWelcomeModule.php:61 app/Theme/AbstractTheme.php:1614
 msgid "My individual record"
-msgstr ""
+msgstr "میرا انفرادی ریکارڈ"
 
 #. I18N: Name of a module
 #: admin_modules.php:226 app/Module/UserWelcomeModule.php:29
 #: app/Theme/AbstractTheme.php:1626 index.php:88 index.php:96
 msgid "My page"
-msgstr ""
+msgstr "میرا صفحہ"
 
 #: app/Theme/AbstractTheme.php:1636
 msgid "My pages"
-msgstr ""
+msgstr "میرے صفحات"
 
 #: app/Module/UserWelcomeModule.php:59 app/Theme/AbstractTheme.php:1662
 msgid "My pedigree"
-msgstr ""
+msgstr "میرا نسب"
 
 #. I18N: %s is an error message
 #: admin_pgv_to_wt.php:113
@@ -9503,7 +9509,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6821
 msgid "Myanmar"
-msgstr ""
+msgstr "میانمار"
 
 #. I18N: gedcom tag NAME
 #: app/Controller/IndividualController.php:155 app/GedcomTag.php:605
@@ -9525,13 +9531,13 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:43
 #: modules_v3/relative_ext_report/report.xml:50
 msgid "Name"
-msgstr ""
+msgstr "نام"
 
 #. I18N: gedcom tag REPO:NAME
 #: app/GedcomTag.php:601
 msgctxt "Repository"
 msgid "Name"
-msgstr ""
+msgstr "نام"
 
 #. I18N: Label for search field
 #: find.php:148 find.php:165
@@ -9540,7 +9546,7 @@ msgstr ""
 
 #: app/GedcomTag.php:610
 msgid "Name in Hebrew"
-msgstr ""
+msgstr "عبرانی زبان میں نام"
 
 #. I18N: gedcom tag NPFX
 #: app/GedcomTag.php:642
@@ -20096,7 +20102,7 @@ msgstr ""
 #: app/Functions/Functions.php:727 edit_interface.php:1909
 #: edit_interface.php:1944
 msgid "wife"
-msgstr "اہلیہ"
+msgstr "بیوی"
 
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:149
