@@ -97,12 +97,12 @@ class UnconnectedPage implements RequestHandlerInterface
 
         foreach ($components as $component) {
             if (!in_array($xref, $component, true)) {
-                $individuals = [];
-                foreach ($component as $xref) {
-                    $individuals[] = Factory::individual()->make($xref, $tree);
-                }
-                // The database query may return pending additions/deletions, which may not exist.
-                $individual_groups[] = array_filter($individuals);
+                $individual_groups[] = DB::table('individuals')
+                    ->where('i_file', '=', $tree->id())
+                    ->whereIn('i_id', $component)
+                    ->get()
+                    ->map(Factory::individual()->mapper($tree))
+                    ->filter();
             }
         }
 
