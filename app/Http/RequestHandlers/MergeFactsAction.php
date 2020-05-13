@@ -127,6 +127,7 @@ class MergeFactsAction implements RequestHandlerInterface
             DB::table('hit_counter')
                 ->where('gedcom_id', '=', $tree->id())
                 ->where('page_name', '=', $page_name)
+                ->where('page_parameter', '=', $xref1)
                 ->update(['page_count' => $page_count]);
         }
 
