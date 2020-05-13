@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Location;
+use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Services\GedcomService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
@@ -278,7 +278,7 @@ class LocationController extends AbstractAdminController
         $place_id  = (int) $request->getQueryParams()['place_id'];
         $hierarchy = $this->getHierarchy($place_id);
         $fqpn      = $hierarchy === [] ? '' : $hierarchy[0]->fqpn;
-        $location  = new Location($fqpn);
+        $location  = new PlaceLocation($fqpn);
 
         if ($location->id() !== 0) {
             $lat   = $location->latitude();
@@ -297,7 +297,7 @@ class LocationController extends AbstractAdminController
                 $hierarchy     =  [];
             } else {
                 $hierarchy = $this->getHierarchy($parent_id);
-                $tmp       = new Location($hierarchy[0]->fqpn);
+                $tmp       = new PlaceLocation($hierarchy[0]->fqpn);
                 $title     = e($tmp->locationName());
             }
         }
@@ -769,7 +769,7 @@ class LocationController extends AbstractAdminController
         $updated = 0;
 
         foreach ($places as $place) {
-            $location = new Location($place['fqpn']);
+            $location = new PlaceLocation($place['fqpn']);
             $exists   = $location->exists();
 
             // Only update existing records

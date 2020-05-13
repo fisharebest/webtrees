@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Location;
+use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
@@ -263,7 +263,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $sosa_points = [];
 
         foreach ($facts as $sosa => $fact) {
-            $location = new Location($fact->place()->gedcomName());
+            $location = new PlaceLocation($fact->place()->gedcomName());
 
             // Use the co-ordinates from the fact (if they exist).
             $latitude  = $fact->latitude();

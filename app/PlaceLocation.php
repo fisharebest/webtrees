@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,9 +25,9 @@ use Illuminate\Support\Collection;
 use stdClass;
 
 /**
- * Class Location
+ * Class PlaceLocation
  */
-class Location
+class PlaceLocation
 {
     /** @var string e.g. "Westminster, London, England" */
     private $location_name;
@@ -36,7 +36,7 @@ class Location
     private $parts;
 
     /**
-     * Create a location.
+     * Create a place-location.
      *
      * @param string $location_name
      */
@@ -53,9 +53,9 @@ class Location
     /**
      * Get the higher level location.
      *
-     * @return Location
+     * @return PlaceLocation
      */
-    public function parent(): Location
+    public function parent(): PlaceLocation
     {
         return new self($this->parts->slice(1)->implode(Gedcom::PLACE_SEPARATOR));
     }
@@ -103,8 +103,8 @@ class Location
     }
 
     /**
-     * Does this location exist in the database?  Note that calls to Location::id() will
-     * create the row, so this function is only meaningful when called before a call to Location::id().
+     * Does this location exist in the database?  Note that calls to PlaceLocation::id() will
+     * create the row, so this function is only meaningful when called before a call to PlaceLocation::id().
      *
      * @return bool
      */
