@@ -36,40 +36,45 @@ function TreeViewHandler (treeview_instance, ged) {
     tv.compact();
   }
 
-  /// ////////////////////////////////////////////
-  // Based on https://codepen.io/chriscoyier/pen/zdsty
-  (function ($) {
-    $.fn.drags = function (opt) {
-      var $el = this;
+  // Drag handlers for the treeview canvas
+  (function () {
+    let dragging = false;
+    let drag_start_x;
+    let drag_start_y;
 
-      return $el.css('cursor', 'move').on('mousedown', function (e) {
-        var $drag = $(this);
-        var drg_h = $drag.outerHeight();
-        var drg_w = $drag.outerWidth();
-        var pos_y = $drag.offset().top + drg_h - e.pageY;
-        var pos_x = $drag.offset().left + drg_w - e.pageX;
+    tv.treeview.on('mousedown touchstart', function (event) {
+      event.preventDefault();
 
-        $drag.addClass('draggable');
+      let pageX = (event.type === 'touchstart') ? event.touches[0].pageX : event.pageX;
+      let pageY = (event.type === 'touchstart') ? event.touches[0].pageY : event.pageY;
 
-        $(document)
-          .on('mousemove', function (e) {
-            $('.draggable').offset({
-              top: e.pageY + pos_y - drg_h,
-              left: e.pageX + pos_x - drg_w
-            }).on('mouseup', function () {
-              $drag.removeClass('draggable');
-            });
-          }).on('mouseup', function () {
-            $drag.removeClass('draggable');
-            tv.updateTree();
-          });
-        e.preventDefault();
-      });
-    };
-  })(jQuery);
+      drag_start_x = tv.treeview.offset().left - pageX;
+      drag_start_y = tv.treeview.offset().top - pageY;
+      dragging = true;
+    });
 
-  tv.treeview.drags();
-  /// ////////////////////////////////////////////
+    $(document).on('mousemove touchmove', function (event) {
+      if (dragging) {
+        event.preventDefault();
+
+        let pageX = (event.type === 'touchmove') ? event.touches[0].pageX : event.pageX;
+        let pageY = (event.type === 'touchmove') ? event.touches[0].pageY : event.pageY;
+
+        tv.treeview.offset({
+          left: pageX + drag_start_x,
+          top: pageY + drag_start_y,
+        });
+      }
+    });
+
+    $(document).on('mouseup touchend', function (event) {
+      if (dragging) {
+        event.preventDefault();
+        dragging = false;
+        tv.updateTree();
+      }
+    });
+  })();
 
   // Add click handlers to buttons
   tv.toolbox.find('#tvbCompact').each(function (index, tvCompact) {
