@@ -131,17 +131,17 @@ use Illuminate\Support\Collection;
 
                             <div>
                                 <?php if (!$media_file->isExternal()) : ?>
-                                    <?php if (explode('/', $media_file->mimeType())[0] === 'audio') : ?></php>
+                                    <?php if (explode('/', $media_file->mimeType())[0] === 'audio') : ?>
                                     <audio controls>
                                         <source src="<?= e($media_file->downloadUrl('inline')) ?>" type="<?= $media_file->mimeType() ?>">
                                     </audio>
-                                    <?php elseif (explode('/', $media_file->mimeType())[0] === 'video') : ?></php>
+                                    <?php elseif (explode('/', $media_file->mimeType())[0] === 'video') : ?>
                                         <video controls width="300">
                                             <source src="<?= e($media_file->downloadUrl('inline')) ?>" type="<?= $media_file->mimeType() ?>">
                                         </video>
-                                    <?php else : ?></php>
+                                    <?php else : ?>
                                         <?= $media_file->displayImage(200, 150, 'contain', []) ?>
-                                    <?php endif ?></php>
+                                    <?php endif ?>
                                     <?php if ($media->tree()->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($media->tree()) && $media_file->fileExists($data_filesystem)) : ?>
                                         <br>
                                         <a href="<?= e($media_file->downloadUrl('attachment')) ?>">
