@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Factories\FamilyFactory;
 use Fisharebest\Webtrees\Factories\GedcomRecordFactory;
 use Fisharebest\Webtrees\Factories\HeaderFactory;
 use Fisharebest\Webtrees\Factories\IndividualFactory;
+use Fisharebest\Webtrees\Factories\LocationFactory;
 use Fisharebest\Webtrees\Factories\MediaFactory;
 use Fisharebest\Webtrees\Factories\NoteFactory;
 use Fisharebest\Webtrees\Factories\RepositoryFactory;
@@ -94,6 +95,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         Factory::gedcomRecord(new GedcomRecordFactory($cache));
         Factory::header(new HeaderFactory($cache));
         Factory::individual(new IndividualFactory($cache));
+        Factory::location(new LocationFactory($cache));
         Factory::media(new MediaFactory($cache));
         Factory::note(new NoteFactory($cache));
         Factory::repository(new RepositoryFactory($cache));
