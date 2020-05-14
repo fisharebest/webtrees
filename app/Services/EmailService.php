@@ -128,7 +128,7 @@ class EmailService
                 $request = app(ServerRequestInterface::class);
                 assert($request instanceof ServerRequestInterface);
 
-                $sendmail_command = $request->getAttribute('sendmail_command');
+                $sendmail_command = $request->getAttribute('sendmail_command', '/usr/sbin/sendmail -bs');
 
                 return new Swift_SendmailTransport($sendmail_command);
 
