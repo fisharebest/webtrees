@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
@@ -730,6 +731,7 @@ class FunctionsImport
             case Note::RECORD_TYPE:
             case Submission::RECORD_TYPE:
             case Submitter::RECORD_TYPE:
+            case Location::RECORD_TYPE:
                 DB::table('other')->insert([
                     'o_id'     => $xref,
                     'o_file'   => $tree_id,

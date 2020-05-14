@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -1829,6 +1829,9 @@ class GedcomTag
             case '_GODP':
                 /* I18N: gedcom tag _GODP */
                 return I18N::translate('Godparent');
+            case '_GOV':
+                /* I18N: gedcom tag _GOV - see https://gov.genealogy.net */
+                return I18N::translate('GOV identifier');
             case '_HAIR':
                 /* I18N: gedcom tag _HAIR */
                 return I18N::translate('Hair color');

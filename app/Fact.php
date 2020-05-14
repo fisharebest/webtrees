@@ -218,7 +218,7 @@ class Fact
     /**
      * Get the record to which this fact links
      *
-     * @return Individual|Family|Source|Submitter|Submission|Repository|Media|Note|GedcomRecord|null
+     * @return Family|GedcomRecord|Individual|Location|Media|Note|Repository|Source|Submission|Submitter|null
      */
     public function target()
     {
@@ -256,6 +256,8 @@ class Fact
                 return Factory::submitter()->make($xref, $this->record()->tree());
             case 'SUBN':
                 return Factory::submission()->make($xref, $this->record()->tree());
+            case '_LOC':
+                return Factory::location()->make($xref, $this->record()->tree());
             default:
                 return Factory::gedcomRecord()->make($xref, $this->record()->tree());
         }

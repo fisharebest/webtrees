@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Factories\FamilyFactory;
 use Fisharebest\Webtrees\Factories\GedcomRecordFactory;
 use Fisharebest\Webtrees\Factories\HeaderFactory;
 use Fisharebest\Webtrees\Factories\IndividualFactory;
+use Fisharebest\Webtrees\Factories\LocationFactory;
 use Fisharebest\Webtrees\Factories\MediaFactory;
 use Fisharebest\Webtrees\Factories\NoteFactory;
 use Fisharebest\Webtrees\Factories\RepositoryFactory;
@@ -59,6 +60,7 @@ class RegisterFactories implements MiddlewareInterface
         Factory::gedcomRecord(new GedcomRecordFactory($cache));
         Factory::header(new HeaderFactory($cache));
         Factory::individual(new IndividualFactory($cache));
+        Factory::location(new LocationFactory($cache));
         Factory::media(new MediaFactory($cache));
         Factory::note(new NoteFactory($cache));
         Factory::repository(new RepositoryFactory($cache));

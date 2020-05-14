@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
@@ -118,6 +119,9 @@ class PendingChanges implements RequestHandlerInterface
                     break;
                 case Submission::RECORD_TYPE:
                     $row->record = Factory::submission()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
+                    break;
+                case Location::RECORD_TYPE:
+                    $row->record = Factory::location()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
                     break;
                 case Header::RECORD_TYPE:
                     $row->record = Factory::header()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);

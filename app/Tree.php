@@ -474,7 +474,7 @@ class Tree
      *
      * @param string $gedcom
      *
-     * @return GedcomRecord|Individual|Family|Note|Source|Repository|Media|Submitter|Submission
+     * @return GedcomRecord|Individual|Family|Location|Note|Source|Repository|Media|Submitter|Submission
      * @throws InvalidArgumentException
      */
     public function createRecord(string $gedcom): GedcomRecord

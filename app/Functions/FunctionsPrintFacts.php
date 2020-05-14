@@ -308,6 +308,9 @@ class FunctionsPrintFacts
             case 'TEXT': // 0 SOUR / 1 TEXT
                 echo Filter::formatText($fact->value(), $tree);
                 break;
+            case '_GOV':
+                echo '<div class="field"><a href="https://gov.genealogy.net/item/show/', e($fact->value()), '">', e($fact->value()), '</a></div>';
+                break;
             default:
                 // Display the value for all other facts/events
                 switch ($fact->value()) {

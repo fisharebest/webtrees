@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Contracts\FamilyFactoryInterface;
 use Fisharebest\Webtrees\Contracts\GedcomRecordFactoryInterface;
 use Fisharebest\Webtrees\Contracts\HeaderFactoryInterface;
 use Fisharebest\Webtrees\Contracts\IndividualFactoryInterface;
+use Fisharebest\Webtrees\Contracts\LocationFactoryInterface;
 use Fisharebest\Webtrees\Contracts\MediaFactoryInterface;
 use Fisharebest\Webtrees\Contracts\NoteFactoryInterface;
 use Fisharebest\Webtrees\Contracts\RepositoryFactoryInterface;
@@ -46,6 +47,9 @@ class Factory
 
     /** @var IndividualFactoryInterface */
     private static $individual_factory;
+
+    /** @var LocationFactoryInterface */
+    private static $location_factory;
 
     /** @var MediaFactoryInterface */
     private static $media_factory;
@@ -127,6 +131,22 @@ class Factory
         }
 
         return self::$individual_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param LocationFactoryInterface|null $factory
+     *
+     * @return LocationFactoryInterface
+     */
+    public static function location(LocationFactoryInterface $factory = null): LocationFactoryInterface
+    {
+        if ($factory instanceof LocationFactoryInterface) {
+            self::$location_factory = $factory;
+        }
+
+        return self::$location_factory;
     }
 
     /**
