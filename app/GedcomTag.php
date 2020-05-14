@@ -341,6 +341,7 @@ class GedcomTag
         '_FREL',
         '_GEDF',
         '_GODP',
+        '_GOV',
         '_HAIR',
         '_HEB',
         '_HEIG',
@@ -2318,6 +2319,7 @@ class GedcomTag
                     'FONE',
                     'ROMN',
                     // non standard tags
+                    '_GOV',
                     '_HEB',
                 ];
                 break;

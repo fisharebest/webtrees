@@ -347,7 +347,7 @@ class FunctionsEdit
             $value = trim($value, '@');
         }
 
-        if ($fact === 'REPO' || $fact === 'SOUR' || $fact === 'OBJE' || $fact === 'FAMC' || $fact === 'SUBM' || $fact === 'ASSO' || $fact === '_ASSO') {
+        if ($fact === 'REPO' || $fact === 'SOUR' || $fact === 'OBJE' || $fact === 'FAMC' || $fact === 'SUBM' || $fact === 'ASSO' || $fact === '_ASSO' || $fact === '_GOV') {
             $islink = true;
         }
 
