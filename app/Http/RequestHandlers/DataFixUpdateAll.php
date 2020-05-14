@@ -81,7 +81,7 @@ class DataFixUpdateAll implements RequestHandlerInterface
         $rows   = $module->recordsToFix($tree, $params);
 
         if ($rows->isEmpty()) {
-            return response('Nothing to do.');
+            return response([]);
         }
 
         $start = $request->getQueryParams()['start'] ?? '';
@@ -104,7 +104,7 @@ class DataFixUpdateAll implements RequestHandlerInterface
             $module->updateRecord($record, $params);
         }
 
-        return response('');
+        return response();
     }
 
     /**
