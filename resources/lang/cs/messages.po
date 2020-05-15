@@ -1,24 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-10 20:40+0100\n"
-"PO-Revision-Date: 2020-03-01 16:18+0000\n"
-"Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
-"Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
-"Language: cs\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Czech\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Language: cs_CZ\n"
-"X-Source-Language: C\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-05-30 07:30+0000\nLast-Translator: Josef Prause <josef.prause@gmail.com>\nLanguage-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\nLanguage: cs\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Czech\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Language: cs_CZ\nX-Source-Language: C\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -499,19 +480,19 @@ msgstr "&lt;vyberte&gt;"
 #: app/Age.php:203
 #, php-format
 msgid "(%s after death)"
-msgstr ""
+msgstr "(%s po smrti)"
 
 #. I18N: The current age of a living individual
 #: app/Age.php:177
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(věk %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:181
 #, php-format
 msgid "(aged %s)"
-msgstr "(ve věku %s let)"
+msgstr "(ve věku %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -1952,7 +1933,7 @@ msgstr "Objevila se neočekávaná chyba databáze."
 
 #: resources/views/admin/control-panel.phtml:83
 msgid "An upgrade is available."
-msgstr ""
+msgstr "Je dostupná aktualizace."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -2627,7 +2608,7 @@ msgstr "Bing Mapy™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
-msgstr ""
+msgstr "Správcovské nástroje Bing™"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:261
@@ -6887,11 +6868,11 @@ msgstr "Google Maps™"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
-msgstr ""
+msgstr "Analytika Google™"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
-msgstr ""
+msgstr "Správcovské nástroje Google™"
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:785
@@ -7514,7 +7495,7 @@ msgstr "Ve webtrees verse 2 se náhledové obrázky ukládají jako druhý medi�
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include aliases"
-msgstr ""
+msgstr "Zahrnout aliasy"
 
 #: resources/views/admin/trees-unconnected.phtml:27
 msgid "Include associates"
@@ -8294,7 +8275,7 @@ msgstr "Levý"
 #. I18N: Name of a module - historic/obsolete URLs.
 #: app/Module/RedirectLegacyUrlsModule.php:118
 msgid "Legacy URLs"
-msgstr ""
+msgstr "Historické URL"
 
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:816
@@ -8989,7 +8970,7 @@ msgstr "Musí se shodovat přesný text, pokud se neobjeví uprostřed slova."
 
 #: app/Module/MatomoAnalyticsModule.php:42
 msgid "Matomo™ / Piwik™ analytics"
-msgstr ""
+msgstr "Analytika Matomo™ / Piwik™"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -10175,7 +10156,7 @@ msgstr "Nic nenalezeno."
 #: resources/views/modules/pedigree-map/chart.phtml:110
 #: resources/views/modules/places/tab.phtml:102
 msgid "Nothing to show"
-msgstr ""
+msgstr "Není co zobrazit"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
@@ -11463,7 +11444,7 @@ msgstr "Záznamy"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:112
 msgid "Redirect old URLs from webtrees version 1."
-msgstr ""
+msgstr "Přesměrovat staré URL z webtrees verse 1."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:573
@@ -11608,7 +11589,7 @@ msgstr "Náboženské jméno"
 #: resources/views/modules/place-hierarchy/map.phtml:71
 #: resources/views/modules/places/tab.phtml:58
 msgid "Reload map"
-msgstr ""
+msgstr "Znovu nahrát mapu"
 
 #: resources/views/modules/review_changes/config.phtml:24
 msgid "Reminder email frequency (days)"
@@ -12073,7 +12054,7 @@ msgstr "Vyhledat a nahradit text použitím jednoduchého řetězce nebo regulá
 #. I18N: Help text for the “Description META tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:203
 msgid "Search engines may use this description of your site in their search results."
-msgstr ""
+msgstr "Tohoto popisu vašeho webu mohou použít vyhledávače."
 
 #: resources/views/modules/media-list/page.phtml:52
 msgid "Search filters"
@@ -13274,7 +13255,7 @@ msgstr "Počáteční rozmezí dat změn"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:1029
@@ -16879,15 +16860,15 @@ msgstr "tchán"
 
 #: app/Functions/Functions.php:636
 msgid "fiancé"
-msgstr ""
+msgstr "snoubenec"
 
 #: app/Functions/Functions.php:683
 msgid "fiancé(e)"
-msgstr ""
+msgstr "snoubenec(ka)"
 
 #: app/Functions/Functions.php:660
 msgid "fiancée"
-msgstr ""
+msgstr "snoubenka"
 
 #: app/Functions/Functions.php:491
 msgid "fifteenth cousin"
