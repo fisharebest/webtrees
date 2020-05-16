@@ -321,6 +321,9 @@ class MediaController extends AbstractAdminController
             // Invalid GEDCOM - you cannot link a REPO to an OBJE
             $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
+        foreach ($media->linkedLocations('OBJE') as $link) {
+            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
+        }
         if ($linked !== []) {
             $html .= '<ul>';
             foreach ($linked as $link) {
