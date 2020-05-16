@@ -735,6 +735,31 @@ class GedcomRecord
     }
 
     /**
+     * Find locations linked to this record.
+     *
+     * @param string $link
+     *
+     * @return Collection<Location>
+     */
+    public function linkedLocations(string $link): Collection
+    {
+        return DB::table('other')
+            ->join('link', static function (JoinClause $join): void {
+                $join
+                    ->on('l_file', '=', 'o_file')
+                    ->on('l_from', '=', 'o_id');
+            })
+            ->where('o_file', '=', $this->tree->id())
+            ->where('o_type', '=', '_LOC')
+            ->where('l_type', '=', $link)
+            ->where('l_to', '=', $this->xref)
+            ->select(['other.*'])
+            ->get()
+            ->map(Factory::location()->mapper($this->tree))
+            ->filter(self::accessFilter());
+    }
+    
+    /**
      * Get all attributes (e.g. DATE or PLAC) from an event (e.g. BIRT or MARR).
      * This is used to display multiple events on the individual/family lists.
      * Multiple events can exist because of uncertainty in dates, dates in different
