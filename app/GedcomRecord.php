@@ -700,7 +700,7 @@ class GedcomRecord
                     ->on('l_from', '=', 'o_id');
             })
             ->where('o_file', '=', $this->tree->id())
-            ->where('o_type', '=', 'NOTE')
+            ->where('o_type', '=', Note::RECORD_TYPE)
             ->where('l_type', '=', $link)
             ->where('l_to', '=', $this->xref)
             ->select(['other.*'])
@@ -725,7 +725,7 @@ class GedcomRecord
                     ->on('l_from', '=', 'o_id');
             })
             ->where('o_file', '=', $this->tree->id())
-            ->where('o_type', '=', 'REPO')
+            ->where('o_type', '=', Repository::RECORD_TYPE)
             ->where('l_type', '=', $link)
             ->where('l_to', '=', $this->xref)
             ->select(['other.*'])
@@ -750,7 +750,7 @@ class GedcomRecord
                     ->on('l_from', '=', 'o_id');
             })
             ->where('o_file', '=', $this->tree->id())
-            ->where('o_type', '=', '_LOC')
+            ->where('o_type', '=', Location::RECORD_TYPE)
             ->where('l_type', '=', $link)
             ->where('l_to', '=', $this->xref)
             ->select(['other.*'])
