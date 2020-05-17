@@ -142,7 +142,8 @@ table {
 
 .wt-site-title {
     order: 1;
-    flex: 1 1 content;
+    flex: 1 1 auto;
+    width: auto;
     font-size: 1.5rem;
     padding: 0.75rem 0.75rem 0;
 }
@@ -160,12 +161,6 @@ table {
 }
 
 .wt-header-search-button {
-}
-
-.wt-secondary-navigation {
-    order: 2;
-    flex: 0 0 content;
-    white-space: nowrap;
 }
 
 .wt-user-menu {

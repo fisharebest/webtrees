@@ -99,7 +99,8 @@ table {
 
 .wt-site-title {
     order: 1;
-    flex: 1 1 content;
+    flex: 1 1 auto;
+    width: auto;
     font-size: 1.5rem;
     color: #888;
 }
@@ -120,7 +121,8 @@ table {
 
 .wt-secondary-navigation {
     order: 2;
-    flex: 0 0 content;
+    flex: 0 0 auto;
+    width: auto;
     white-space: nowrap;
 }
 
