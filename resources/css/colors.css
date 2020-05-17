@@ -16,10 +16,6 @@
 /* The colors theme is based on the clouds theme */
 @import "clouds.css";
 
-/* Colors for chart boxes, etc. */
-:root {
-}
-
 /* Override Bootstrap formatting */
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
@@ -27,12 +23,7 @@
     color: #000;
 }
 
-.table-given-name {
-    overflow-x: hidden;
-}
-
 .btn-link {
-    padding: 0 .25rem;
     color: #333;
 }
 
@@ -63,15 +54,6 @@
 .form-control:focus{
     border-color:#ccc;
     box-shadow:0 0 0 .2rem rgba(128,128,128,.25);
-}
-
-.container-fluid {
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-table {
-    border-collapse: separate;
 }
 
 /* fit primary and secondary menus on mobile devices */
@@ -122,63 +104,16 @@ table {
     background: #acf none;
 }
 
-.wt-header-wrapper .dropdown-item.active {
-    background-color: inherit;
-    color: inherit;
-    font-weight: bold;
-}
-
-.wt-header-container {
-}
-
-.wt-header-content {
-}
-
-.wt-accessibility-links {
-}
-
-.wt-site-logo {
-}
-
 .wt-site-title {
-    order: 1;
-    flex: 1 1 auto;
-    width: auto;
-    font-size: 1.5rem;
     padding: 0.75rem 0.75rem 0;
 }
 
 .wt-header-search {
-    order: 3;
-    flex: 0 0 15rem;
     padding-bottom: 0.5rem;
 }
 
-.wt-header-search-form {
-}
-
-.wt-header-search-field {
-}
-
-.wt-header-search-button {
-}
-
-.wt-user-menu {
-    flex-wrap: nowrap;
-}
-
 .wt-user-menu .nav-link {
-    display: inline-block;
-    padding: 0.5rem;
     color: inherit; /* Inherit from wt-header-container */
-}
-
-.wt-user-menu .nav-item + .nav-item::before {
-    content: "|";
-}
-
-.wt-user-menu .dropdown-toggle:after {
-    display: none;
 }
 
 .wt-user-menu .menu-color .dropdown-menu {
@@ -200,10 +135,6 @@ table {
 
 .wt-genealogy-menu .dropdown-menu {
     max-height: 60rem;
-}
-
-.wt-genealogy-menu .nav-item {
-    padding: 0 0.75rem;
 }
 
 .wt-genealogy-menu .nav-link {
@@ -362,12 +293,6 @@ table {
     content: url(colors/menu/clippings.png);
 }
 
-.menu-clippings-add::before {
-}
-
-.menu-clippings-cart::before {
-}
-
 .menu-clippings-download::before {
     content: url(colors/menu/edit-gedcom.png);
 }
@@ -380,52 +305,12 @@ table {
     content: url(colors/menu/story.png);
 }
 
-.wt-main-container {
-    /* Space between the header/footer and the main content. */
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-.wt-main {
-}
-
-.wt-messages {
-}
-
-.wt-page-title {
-    text-align: center;
-}
-
-.wt-page-options {
-}
-
 .wt-page-options-value {
     color: #333;
 }
 
-.wt-page-content {
-    margin-top: 1rem;
-}
-
-.wt-footers {
-}
-
-.wt-footer {
-}
-
-.wt-footer-contact {
-}
-
 .wt-footer-cookies {
     background: #aaa;
-    color: #fff;
-    transition: height 0.5s;
-}
-
-.wt-footer-page-views {
-}
-
-.wt-footer-powered-by {
 }
 
 .wt-footer-powered-by-webtrees {
@@ -451,17 +336,8 @@ table {
  * +---wt-block-content, wt-block-content-XXX
  */
 
-.wt-block {
-}
-
-.wt-block-header {
-}
-
 .wt-block-header::before {
     content: url(colors/images/block-header-disk.png);
-}
-
-.wt-block-content {
 }
 
 /*
@@ -471,17 +347,9 @@ table {
  * +---wt-header-wrapper
  */
 
-.wt-individual-silhouette {
-}
-
-.wt-individual-silhouette-f {
-}
-
-.wt-individual-silhouette-m {
-}
-
 /*
  * Chart-boxes are used to build the various charts.
+ * Each type of chart will set its own size and hide/show content.
  *
  * wt-chart-box
  * +--- wt-chart-box-thumbnail
@@ -497,20 +365,6 @@ table {
  * +--- wt-chart-box-facts
  *     +--- wt-chart-box-fact
  */
-.wt-chart-box,
-.wt-chart-box-menu {
-}
-
-.wt-chart-box {
-}
-
-.wt-chart-box-f,
-.wt-chart-box-f .wt-chart-box-dropdown {
-}
-
-.wt-chart-box-m,
-.wt-chart-box-m .wt-chart-box-dropdown {
-}
 
 .wt-chart-box-name {
     color: #555555;
@@ -519,49 +373,10 @@ table {
 /* ios on click workaround */
 a {
     color: #333;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #f00;
-    text-decoration: none;
-}
-
-:focus {
-    outline-style: none;
-}
-
-.flash-messages {
-    clear: both;
-    text-align: center;
-}
-
-img {
-    border: 0;
-}
-
-legend img {
-    height: 20px;
-    vertical-align: middle;
-    width: 20px;
-}
-
-img.block {
-    border: 0;
-    height: 25px;
-    vertical-align: middle;
 }
 
 .topbottombar {
     color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 4px;
-    text-align: center;
-}
-
-.button {
-    width: 60px;
 }
 
 .btn-primary.focus, .btn-primary:focus {
@@ -569,186 +384,35 @@ img.block {
     border: 0;
 }
 
-.alpha_index {
-    color: #999;
-}
-
-hr {
-    margin-top: 5px;
-}
-
 table.center {
     margin-left: auto;
     margin-right: auto;
 }
 
-.list_table {
-    margin: 0 auto;
-}
-
 .list_label,
 .list_label_wrap {
-    color: #fff;
     background-color: #81a9cb;
     border: 1px solid #ddd;
-    font-weight: bold;
-    text-align: center;
 }
 
 .list_value,
 .list_value_wrap {
-    background-color: #edf7f9;
     border: solid #ddd 1px;
-    vertical-align: top;
     padding: 4px;
 }
 
-.list_label,
-.list_value {
-    white-space: nowrap;
-}
-
-.list_label_wrap,
-.list_value_wrap {
-    white-space: normal;
-}
-
-div.fact_SHARED_NOTE {
-    clear: both;
-}
-
 /* Table of genealogical facts */
-.wt-facts-table {
-    border-collapse: separate;
-}
-
-.wt-facts-table caption {
-    caption-side: top;
-}
 
 .wt-facts-table th {
     border: 1px solid #ccc;
-    border-radius: 3px;
-    text-align: center;
-    min-width: 20%;
-}
-
-.wt-facts-table td {
-    border: solid #999 1px;
-    border-radius: 3px;
-}
-
-.wt-facts-table .wt-gender-M td {
-    background-color: #ddf;
-}
-
-.wt-facts-table .wt-gender-F td {
-    background-color: #fdd;
-}
-
-.name1 {
-}
-
-.name2 {
-}
-
-a:hover .name1, a:hover .name2 {
-    color: #f00;
-    font-weight: bold;
-    font-size: 12px;
-}
-
-.details_label {
-    font-weight: bold;
 }
 
 .date {
     color: #333;
 }
 
-.label {
-    font-weight: bold;
-}
-
-.error {
-    font-weight: bold;
-}
-
-.largeError {
-    color: #d00;
-    font-size: large;
-    font-weight: bold;
-}
-
-.warning {
-    color: #f00;
-    font-weight: bold;
-}
-
-.indent {
-    padding-left: 7px;
-}
-
-.thumbnail {
-    height: auto;
-    padding: 3px;
-}
-
-.icon {
-    border: 0;
-    padding: 0 5px;
-}
-
-.subheaders {
-    font-weight: bold;
-    font-size: 15px;
-    margin-top: 15px;
-    vertical-align: bottom;
-}
-
-.parentdeath {
-    border: thin solid #888;
-    padding: 1px;
-}
-
-.source_citations {
-    display: none;
-}
-
 .selected-option {
     background-color: #edf7fd;
-}
-
-.border1 {
-    border: solid #000 1px;
-}
-
-.journal_box {
-    padding: 3pt;
-    border: thin solid #aaa;
-    overflow: visible;
-}
-
-.news_box {
-    border-top: solid #ccc 1px;
-}
-
-.news_title {
-    font-weight: bold;
-}
-
-.news_date {
-    margin-bottom: 12px;
-}
-
-.current_day {
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.cal_day {
-    float: left;
-    font-weight: bold;
 }
 
 .rtl_cal_day {
@@ -758,93 +422,15 @@ a:hover .name1, a:hover .name2 {
     font-weight: bold;
 }
 
-#user-page h1 {
-    margin: 0.25em auto 0.6em;
-}
-
-.tvertline {
-    vertical-align: bottom;
-}
-
-#childbox {
-    padding: 5px;
-    position: absolute;
-    display: none;
-    text-align: start;
-    white-space: nowrap;
-    top: 20px;
-    left: 0;
-}
-
-.layout3 #childbox {
-    top: auto;
-    bottom: 20px;
-}
-
-#childbox a.name1 {
-    display: block;
-    margin-left: 5px;
-}
-
-.person0 {
-    background-color: #ddf;
-    border: outset #999 1px;
-    vertical-align: top;
-}
-
-.person1 {
-    background-color: #afa;
-    border: outset #afa 1px;
-    vertical-align: top;
-}
-
-.person2 {
-    background-color: #faa;
-    border: outset #faa 1px;
-    vertical-align: top;
-}
-
-.person3 {
-    background-color: #aad;
-    border: outset #55f 1px;
-    vertical-align: top;
-}
-
-.person4 {
-    background-color: #f55;
-    border: outset #f55 1px;
-    vertical-align: top;
-}
-
-.person5 {
-    background-color: #5f5;
-    border: outset #5f5 1px;
-    vertical-align: top;
-}
-
-.starredname {
-    text-decoration: underline;
-}
-
-.search_hit {
-    background-color: #ff0;
-}
-
 .descriptionbox {
     font-size: 1rem;
     color: #333;
     border: 1px solid #999;
-    vertical-align: top;
-    padding: 3px;
 }
 
 .optionbox {
-    font-size: 1rem;
     color: #333;
     border: 1px solid #999;
-    vertical-align: top;
-    white-space: nowrap;
-    padding: 3px;
 }
 
 .optionbox .list_value {
@@ -853,85 +439,11 @@ a:hover .name1, a:hover .name2 {
     border-radius: 3px;
 }
 
-.red {
-    color: #f00;
-}
-
-.wt-relation-fact,
-.wt-historic-fact {
-    opacity: 0.8;
-}
-
-.messagebox {
-    background-color: #c2ceef;
-    border: solid #ccc 1px;
-}
-
 /* ---Pending edits--- */
-.wt-new {
-}
-
-.wt-old {
-}
-
-.tag_cloud {
-    text-align: center;
-}
-
-.tag_cloud a {
-    white-space: nowrap;
-}
-
-.nowrap {
-    white-space: nowrap;
-}
-
-.wrap {
-    white-space: normal;
-}
-
-.statistics-page {
-    text-align: center;
-}
-
-.gchart {
-    border: solid #999 1px;
-}
-
-#facts_content dd {
-    float: left;
-    width: 70%;
-}
-
-/* this keeps the tag color the same when it is a link as when not */
-
-.place {
-    padding-top: 5px;
-}
-
-.filtersH,
-.filtersF {
-    margin: 4px;
-}
-
-.filtersH img {
-    margin-bottom: 2px;
-}
-
-.list-charts {
-    text-align: center;
-}
-
-#place-hierarchy h2,
-#place-hierarchy h4 {
-    text-align: center;
-}
 
 /* ==== FAQ table styles ===== */
 table.faq {
     background-color: #e0e0e0;
-    margin: 5px 0 50px 5px;
-    width: 98%;
 }
 
 table.faq tr:nth-child(odd) td {
@@ -940,137 +452,11 @@ table.faq tr:nth-child(odd) td {
 
 div.faq_title {
     background-color: #e0e0e0;
-    margin: 1em 0;
-    padding: .25em;
-    font-weight: bold;
-    width: 98%;
-}
-
-div.faq_body {
-    clear: both;
-    padding: 0 1em;
-}
-
-.faq_top {
-    float: right;
-}
-
-/* === Positioning edit, copy, delete links === */
-/* General use */
-.editfacts {
-    clear: left;
-    padding-top: 15px;
-}
-
-#indi_note {
-    margin: 0 0 5px;
-}
-
-.indi_table {
-    clear: left;
-}
-
-#sex {
-    float: right;
-}
-
-#dates {
-    float: right;
-}
-
-#individual-names .wt-icon-edit,
-#individual-names .wt-icon-delete {
-    float: right;
-}
-
-#indi_note .fact_NOTE {
-    float: left;
-    margin: 0 5px 0 0;
-}
-
-#indi_note .fact_SOUR {
-    margin: 3px 0;
-}
-
-#indi_note .fact_SOUR a {
-    font-size: 100%;
-}
-
-#indi_note .fact_NOTE,
-#indi_note .fact_SOUR {
-    clear: both;
-}
-
-/* markdown formatting */
-
-.markdown {
-    /* Tables and pre-formatted text can break the layout. */
-    overflow-x: auto;
-}
-
-.markdown p {
-    margin: 0 0 0.5em;
-    white-space: pre-wrap;
-}
-
-.markdown table {
-    border-collapse: collapse;
-    margin-bottom: 5px;
-}
-
-.markdown th {
-    font-weight: bold;
-}
-
-.markdown td,
-.markdown th {
-    border: solid thin #000;
-    padding: 3px;
-}
-
-.odometer {
-    font-family: courier, monospace;
-    font-weight: bold;
-    background: #000;
-    color: #fff;
-}
-
-/* ======== Indi tabs ======== */
-/* Facts & Events tab */
-.media-display-image {
-    float: left;
-}
-
-.media-display-title {
-    float: left;
-    font-style: italic;
-    margin: 10px;
-}
-
-/* Sidebar - Family navigator */
-.wt-family-navigator-dropdown-heading {
-    font-weight: bold;
-    font-size: inherit;
-    color: inherit;
 }
 
 /* Sidebar - Descendants */
 #sb_content_descendancy {
     margin-top: 2px;
-}
-
-#sb_desc_content {
-    margin-left: 3px;
-    font-size: 0.8em;
-}
-
-#sb_desc_content ul {
-    padding: 0;
-    margin: 0;
-}
-
-.sb_desc_indi_li {
-    list-style-type: none;
 }
 
 /* Individuals and Families */
@@ -1079,126 +465,10 @@ div.faq_body {
     margin-top: 2px;
 }
 
-.sb_indi_surname_li,
-.sb_fam_surname_li {
-    list-style-image: url(icons/plus.png);
-}
-
-.name_tree_div ul {
-    padding: 0;
-    margin: 0;
-}
-
-.name_tree_div li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-/* Clippings */
-#sb_clippings_content ul {
-    padding: 0;
-    margin: 0;
-}
-
-#sb_clippings_content li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    white-space: nowrap;
-}
-
-/* Stories module */
-.story_title {
-    padding-top: 12px;
-    font-size: 13px;
-    height: 32px;
-    font-weight: bold;
-}
-
-.story_body {
-    padding: 20px;
-    white-space: normal;
-}
-
-.story_edit {
-    padding: 12px;
-}
-
 /*-- Fan chart ---- */
-.fan_chart_menu {
-    background: #fff;
-    position: absolute;
-    display: none;
-    z-index: 100;
-}
-
-#fan_chart ul {
-    list-style-type: none;
-    margin: 0;
-}
-
-/* Lifespans chart */
-.wt-lifespans-subtitle {
-    text-align: center;
-}
-
-.wt-lifespans-scale {
-    white-space: nowrap;
-}
-
-.wt-lifespans-decade {
-    width: 70px;
-    height: 60px;
-    display: inline-block;
-    background-image: url(images/lifespan-decade.png);
-    background-position-y: bottom;
-    background-repeat: no-repeat;
-    background-size: 70px 37px;
-}
-
-.wt-lifespans-individuals {
-    background: #fafafa;
-}
-
-.wt-lifespans-individual {
-
-}
-
-.wt-lifespans-summary {
-    background: #ffffff;
-    border: thin solid #000;
-    z-index: 1;
-}
-
-.wt-lifespans-summary-link {
-    font-weight: bold;
-}
-
-/*-- timeline  --*/
-#timeline_chart {
-    position: relative;
-    top: 0;
-    left: 0;
-}
-
-[class^="icon-"],
-[class*=" icon-"] {
-    display: inline-block;
-    vertical-align: middle;
-    background-repeat: no-repeat;
-}
 
 .icon-cfamily {
     content: url(colors/images/cfamily.png);
-}
-
-.icon-childless {
-    content: url(images/childless.png);
-}
-
-.icon-children {
-    content: url(images/children.png);
 }
 
 .icon-edit_indi {
@@ -1213,40 +483,8 @@ div.faq_body {
     content: url(colors/images/indis.png);
 }
 
-.icon-loading-small {
-    content: url(images/indicator.gif);
-}
-
-.icon-minus {
-    content: url(icons/minus.png);
-}
-
 .icon-mypage {
     content: url(colors/images/mypage.png);
-}
-
-.icon-plus {
-    content: url(icons/plus.png);
-}
-
-.icon-resn-confidential {
-    content: url(images/resn_confidential.png);
-}
-
-.icon-resn-locked {
-    content: url(images/resn_locked.png);
-}
-
-.icon-resn-none {
-    content: url(images/resn_none.png);
-}
-
-.icon-resn-privacy {
-    content: url(images/resn_privacy.png);
-}
-
-.icon-rings {
-    content: url(images/rings.png);
 }
 
 .icon-selected {
@@ -1267,17 +505,8 @@ div.faq_body {
 }
 
 /*
- * Any element that is loaded dynamically has the class wt-ajax-load.
- * We can provide a "loading" placeholder for empty elements with this class.
- */
-.wt-ajax-load:empty {
-}
-
-/*
  * Default icons are provided by FontAwesome.
  */
-.wt-icon-anniversary {
-}
 
 .wt-icon-arrow-down {
     content: url(colors/icons/arrow-down.png);
@@ -1311,83 +540,8 @@ a > .wt-icon-arrow-up:hover {
     content: url(colors/icons/arrow-up-hover.png);
 }
 
-.wt-icon-bing-maps {
-}
-
-.wt-icon-calendar {
-}
-
-.wt-icon-collapse {
-}
-
-.wt-icon-coordinates {
-}
-
-.wt-icon-copy {
-}
-
-.wt-icon-delete {
-}
-
-.wt-icon-edit {
-}
-
-.wt-icon-expand {
-}
-
-.wt-icon-family {
-}
-
-.wt-icon-google-maps {
-}
-
 .wt-icon-help {
     content: url(colors/icons/help.png);
-}
-
-.wt-icon-individual {
-}
-
-.wt-icon-keyboard {
-}
-
-.wt-icon-media {
-}
-
-.wt-icon-note {
-}
-
-.wt-icon-openstreetmap {
-}
-
-.wt-icon-preferences {
-}
-
-.wt-icon-reorder {
-}
-
-.wt-icon-repository {
-}
-
-.wt-icon-sex-f {
-}
-
-.wt-icon-sex-m {
-}
-
-.wt-icon-sex-u {
-}
-
-.wt-icon-sex-x {
-}
-
-.wt-icon-source {
-}
-
-.wt-icon-submitter {
-}
-
-.wt-icon-warning {
 }
 
 .wt-icon-zoom-in {
@@ -1417,50 +571,4 @@ a > .wt-icon-arrow-up:hover {
 
 .icon-user_add {
     content: url(colors/images/user_add.png);
-}
-
-/* Census assistant */
-.wt-census-assistant-form-control:focus {
-}
-
-/* Some blocks show a reduced version on the right-hand side. */
-.wt-side-blocks .wt-side-block-optional {
-    display: none !important;
-}
-
-/* my page chart enhancements */
-.wt-block-content-charts {
-    overflow: auto;
-}
-
-/* Some charts are wider than the page. */
-.wt-chart {
-    overflow-x: auto;
-    overflow-y: hidden;
-}
-
-/* Fit thumbnail into parent on charts */
-.select2-selection.select2-selection--single {
-    min-height: 36px;
-    height: auto;
-    padding: 2px 0;
-}
-
-.select2-container .select2-selection--single .select2-selection__rendered {
-    padding-left: 2px;
-}
-
-.select2-selection--single .NAME {
-    padding-left: 4px;
-}
-
-/* Some menus (e.g. languages) can be longer than a page */
-.dropdown-menu {
-    max-height: 30rem;
-    overflow-x: hidden;
-}
-
-/* Forms */
-.col-form-label {
-    font-weight: bold;
 }
