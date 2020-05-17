@@ -128,7 +128,7 @@ table {
 
 .wt-secondary-navigation {
     order: 2;
-    flex: 0 0 auto;
+    flex: 1 0 auto;
     width: auto;
     white-space: nowrap;
     margin-bottom: 15px;
