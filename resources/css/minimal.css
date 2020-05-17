@@ -101,7 +101,7 @@ table {
 
 .wt-site-title {
     order: 1;
-    flex: 1 1 0;
+    flex: 1 1 content;
     font-size: 1.75rem;
 }
 
@@ -121,7 +121,7 @@ table {
 
 .wt-secondary-navigation {
     order: 2;
-    flex: 0 0 0;
+    flex: 0 0 content;
     white-space: nowrap;
 }
 
