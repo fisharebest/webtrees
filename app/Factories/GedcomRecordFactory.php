@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
@@ -56,6 +57,32 @@ class GedcomRecordFactory extends AbstractGedcomRecordFactory implements GedcomR
      */
     public function make(string $xref, Tree $tree, string $gedcom = null): ?GedcomRecord
     {
+        // We know the type of the record.  Return it directly.
+        if ($gedcom !== null && preg_match('/^0(?: @[^@]+@)? ([A-Z_]+)/', $gedcom, $match)) {
+            switch ($match[1]) {
+                case Family::RECORD_TYPE:
+                    return Factory::family()->make($xref, $tree, $gedcom);
+                case Header::RECORD_TYPE:
+                    return Factory::header()->make($xref, $tree, $gedcom);
+                case Individual::RECORD_TYPE:
+                    return Factory::individual()->make($xref, $tree, $gedcom);
+                case Location::RECORD_TYPE:
+                    return Factory::location()->make($xref, $tree, $gedcom);
+                case Media::RECORD_TYPE:
+                    return Factory::media()->make($xref, $tree, $gedcom);
+                case Note::RECORD_TYPE:
+                    return Factory::note()->make($xref, $tree, $gedcom);
+                case Repository::RECORD_TYPE:
+                    return Factory::repository()->make($xref, $tree, $gedcom);
+                case Source::RECORD_TYPE:
+                    return Factory::source()->make($xref, $tree, $gedcom);
+                case Submitter::RECORD_TYPE:
+                    return Factory::submitter()->make($xref, $tree, $gedcom);
+                case Submission::RECORD_TYPE:
+                    return Factory::submission()->make($xref, $tree, $gedcom);
+            }
+        }
+
         // We do not know the type of the record.  Try them all in turn.
         return
             Factory::family()->make($xref, $tree, $gedcom) ??
