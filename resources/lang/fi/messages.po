@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-05-18 13:46+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\nLanguage: fi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-05-18 17:51+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\nLanguage: fi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -474,7 +474,7 @@ msgstr "(ikä %s)"
 #: app/Age.php:181
 #, php-format
 msgid "(aged %s)"
-msgstr "(%s vuotias)"
+msgstr "(ikä %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -1915,7 +1915,7 @@ msgstr "Virhe tietokannassa."
 
 #: resources/views/admin/control-panel.phtml:83
 msgid "An upgrade is available."
-msgstr "Päivitys on saatavilla."
+msgstr "Päivitys on saatavana."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -7173,7 +7173,7 @@ msgstr "Historialliset tapahtumat"
 #: app/Module/HitCountFooterModule.php:75
 #: resources/views/admin/trees-preferences.phtml:631
 msgid "Hit counters"
-msgstr "Luettu laskurit"
+msgstr "Osumalaskurit"
 
 #. I18N: gedcom tag _HOL
 #: app/GedcomTag.php:1846
@@ -15861,7 +15861,7 @@ msgstr "Kun käyttäjätunnus on liitetty tiettyyn sukupuussa olevaan henkilöö
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:17
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Mitkä sukupuut pitäisi sisältää sivustokarttaan"
+msgstr "Mitkä sukupuut tulisi sisällyttää sivustokarttoihin\n"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:237
