@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-04-19 11:39+0000\n"
+"PO-Revision-Date: 2020-05-30 07:30+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fi/>\n"
@@ -7169,7 +7169,7 @@ msgstr "Historialliset faktat"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1601
 msgid "Hit counters"
-msgstr "Luettu laskurit"
+msgstr "Osumalaskurit"
 
 #. I18N: gedcom tag _HOL
 #: app/GedcomTag.php:1533
@@ -15791,7 +15791,7 @@ msgstr "Mihin on asennettu PhpGedView aineistosi?"
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Mitkä sukupuut pitäisi sisältää sivustokarttaan"
+msgstr "Mitkä sukupuut tulisi sisällyttää sivustokarttoihin\n"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1018
