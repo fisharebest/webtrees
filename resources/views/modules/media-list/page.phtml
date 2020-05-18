@@ -69,8 +69,8 @@ use Fisharebest\Webtrees\I18N;
 </form>
 
 <div class="wt-page-content">
+    <p class="text-center mt-4"><?= I18N::translate('Media objects found') ?> <?= I18N::number($count) ?></p>
     <?php if ($media_objects->isNotEmpty()) : ?>
-        <p class="text-center mt-4"><?= I18N::translate('Media objects found') ?> <?= I18N::number($count) ?></p>
 
         <div class="row text-center">
             <div class="col">
