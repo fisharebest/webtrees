@@ -150,6 +150,7 @@ use Fisharebest\Webtrees\Module\LanguageTatar;
 use Fisharebest\Webtrees\Module\LanguageThai;
 use Fisharebest\Webtrees\Module\LanguageTurkish;
 use Fisharebest\Webtrees\Module\LanguageUkranian;
+use Fisharebest\Webtrees\Module\LanguageUrdu;
 use Fisharebest\Webtrees\Module\LanguageVietnamese;
 use Fisharebest\Webtrees\Module\LanguageYiddish;
 use Fisharebest\Webtrees\Module\RedirectLegacyUrlsModule;
@@ -397,6 +398,7 @@ class ModuleService
         'language-tr'             => LanguageTurkish::class,
         'language-tt'             => LanguageTatar::class,
         'language-uk'             => LanguageUkranian::class,
+        'language-ur'             => LanguageUrdu::class,
         'language-vi'             => LanguageVietnamese::class,
         'language-yi'             => LanguageYiddish::class,
         'language-zh-Hans'        => LanguageChineseSimplified::class,
