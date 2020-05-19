@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-03-16 08:33+0000\n"
-"Last-Translator: Martin <der@bauschaffen.de>\n"
+"PO-Revision-Date: 2020-05-20 08:39+0000\n"
+"Last-Translator: Markus <markusl@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
 "Language: de\n"
@@ -7581,12 +7581,12 @@ msgstr "Kleinkind"
 
 #: app/GedcomCode/GedcomCodeRela.php:182
 msgid "Informant"
-msgstr "Informant"
+msgstr "Anzeigender"
 
 #: app/GedcomCode/GedcomCodeRela.php:180
 msgctxt "FEMALE"
 msgid "Informant"
-msgstr "Informantin"
+msgstr "Informationsgeber"
 
 #: app/GedcomCode/GedcomCodeRela.php:178
 msgctxt "MALE"
@@ -14569,7 +14569,11 @@ msgstr "Diese Rolle verfügt über alle Berechtigungen der Bearbeiter-Rolle, zuz
 
 #: admin_users.php:566
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
-msgstr "Diese Rolle verfügt über alle Berechtigungen der Manager-Rolle in allen Stammbäumen, zuzüglich die Erlaubnis, die Einstellungen/Konfiguration für die ganze Webseite, alle Benutzer und die funktionalen Module betreffend zu ändern."
+msgstr ""
+"Diese Rolle verfügt über alle Berechtigungen der Verwalter-Rolle in allen "
+"Stammbäumen, zuzüglich die Erlaubnis, die Einstellungen/Konfiguration für "
+"die ganze Webseite, alle Benutzer und die funktionalen Module betreffend zu "
+"ändern."
 
 #: admin_users.php:546
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
