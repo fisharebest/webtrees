@@ -63,7 +63,7 @@ class RedirectCompactPhp implements RequestHandlerInterface
     {
         $query   = $request->getQueryParams();
         $ged     = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $root_id = $query['root_id'] ?? '';
+        $root_id = $query['rootid'] ?? '';
 
         $tree = $this->tree_service->all()->get($ged);
 

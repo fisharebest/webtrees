@@ -70,7 +70,7 @@ class RedirectAncestryPhp implements RequestHandlerInterface
     {
         $query       = $request->getQueryParams();
         $ged         = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $root_id     = $query['root_id'] ?? '';
+        $root_id     = $query['rootid'] ?? '';
         $generations = $query['PEDIGREE_GENERATIONS'] ?? '4';
         $chart_style = $query['chart_style'] ?? '';
 

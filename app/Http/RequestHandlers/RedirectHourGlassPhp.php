@@ -63,7 +63,7 @@ class RedirectHourGlassPhp implements RequestHandlerInterface
     {
         $query       = $request->getQueryParams();
         $ged         = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $root_id     = $query['root_id'] ?? '';
+        $root_id     = $query['rootid'] ?? '';
         $generations = $query['generations'] ?? '3';
 
         $tree = $this->tree_service->all()->get($ged);

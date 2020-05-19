@@ -63,7 +63,7 @@ class RedirectFamilyBookPhp implements RequestHandlerInterface
     {
         $query       = $request->getQueryParams();
         $ged         = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $root_id     = $query['root_id'] ?? '';
+        $root_id     = $query['rootid'] ?? '';
         $generations = $query['generations'] ?? '2';
         $descent     = $query['descent'] ?? '5';
 
