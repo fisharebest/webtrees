@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-05-11 12:23+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-05-20 08:39+0000\nLast-Translator: Markus <markusl@gmx.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -7654,12 +7654,12 @@ msgstr "Kleinkind"
 
 #: app/GedcomCode/GedcomCodeRela.php:246
 msgid "Informant"
-msgstr "Informant"
+msgstr "Anzeigender"
 
 #: app/GedcomCode/GedcomCodeRela.php:243
 msgctxt "FEMALE"
 msgid "Informant"
-msgstr "Informantin"
+msgstr "Informationsgeber"
 
 #: app/GedcomCode/GedcomCodeRela.php:239
 msgctxt "MALE"
@@ -14678,7 +14678,7 @@ msgstr "Diese Rolle verfügt über alle Berechtigungen der Bearbeiter-Rolle, zuz
 
 #: resources/views/admin/users-edit.phtml:257
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
-msgstr "Diese Rolle verfügt über alle Berechtigungen der Manager-Rolle in allen Stammbäumen, zuzüglich die Erlaubnis, die Einstellungen/Konfiguration für die ganze Webseite, alle Benutzer und die funktionalen Module betreffend zu ändern."
+msgstr "Diese Rolle verfügt über alle Berechtigungen der Verwalter-Rolle in allen Stammbäumen, zuzüglich die Erlaubnis, die Einstellungen/Konfiguration für die ganze Webseite, alle Benutzer und die funktionalen Module betreffend zu ändern."
 
 #: resources/views/admin/users-edit.phtml:237
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
