@@ -107,3 +107,17 @@ th.align-digits {
 [lang=en-GB] q {
     quotes: "‘" "’" "“" "”";
 }
+
+/* Fix for https://github.com/DataTables/DataTablesSrc/issues/165 */
+table.dataTable.table-sm > thead > tr > th :not(.sorting_disabled) {
+    /* Most of the children were initially zero... */
+    padding-right: 0;
+}
+table.dataTable.table-sm > thead > tr > th .btn-group-sm > .btn {
+    /* ...except this one */
+    padding-right: 0.5rem;
+}
+table.dataTable.table-sm > thead > tr > th:not(.sorting_disabled) {
+    /* What the rule should have been! */
+    padding-right: 20px;
+}
