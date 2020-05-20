@@ -179,14 +179,14 @@ class HelpText extends AbstractBaseController
             case 'DATE':
                 switch ($this->dmyOrder()) {
                     case 'YMD':
-                        $date_shortcuts = array_merge(self::DATE_SHORTCUTS, self::YMD_SHORTCUTS);
+                        $date_shortcuts = self::DATE_SHORTCUTS + self::YMD_SHORTCUTS;
                         break;
                     case 'MDY':
-                        $date_shortcuts = array_merge(self::DATE_SHORTCUTS, self::MDY_SHORTCUTS);
+                        $date_shortcuts = self::DATE_SHORTCUTS + self::MDY_SHORTCUTS;
                         break;
                     case 'DMY':
                     default:
-                        $date_shortcuts = array_merge(self::DATE_SHORTCUTS, self::DMY_SHORTCUTS);
+                        $date_shortcuts = self::DATE_SHORTCUTS + self::DMY_SHORTCUTS;
                         break;
                 }
 
