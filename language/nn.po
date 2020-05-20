@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-04-20 14:19+0000\n"
+"PO-Revision-Date: 2020-05-30 07:30+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nn/>\n"
@@ -3329,7 +3329,7 @@ msgstr "Kamerun"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:125
 msgid "Campinas, Brazil"
-msgstr "Campinas, Brazil"
+msgstr "Campinas, Brasil"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6711
@@ -12594,7 +12594,7 @@ msgstr "Syne kun personar, hendingar, eller alle"
 
 #: app/Functions/FunctionsPrintLists.php:177
 msgid "Show only males."
-msgstr "Sun kun menn."
+msgstr "Syn kun menn."
 
 #: find.php:527
 msgid "Show only the selected tags"
