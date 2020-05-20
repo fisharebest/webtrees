@@ -14,12 +14,12 @@ use Fisharebest\Webtrees\I18N;
     <?= $form_fields ?>
 
     <div class="row form-group">
-        <div class="col-sm-3">
+        <label class="col-sm-3" for="preview">
             <?= I18N::translate('Preview') ?>
-        </div>
+        </label>
 
         <div class="col-sm-9">
-            <pre><code><?= e($preview) ?></code></pre>
+            <textarea id="preview" class="form-control" rows="10" dir="ltr" disabled><?= e($preview) ?></textarea>
         </div>
     </div>
 
