@@ -23,9 +23,7 @@ use Fisharebest\Webtrees\Webtrees;
         <label class="card-header py-1 px-2" for="fact0">
             <?= $record->fullName() ?>
         </label>
-        <div class="card-body form-control py-1 px-2">
-            <textarea class="card-body form-control py-1 px-2" id="fact0" rows="1" dir="ltr" readonly><?= e($level0) ?></textarea>
-        </div>
+        <textarea class="card-body form-control py-1 px-2" id="fact0" rows="1" dir="ltr" readonly disabled><?= e($level0) ?></textarea>
     </div>
 
     <div class="wt-sortable-list">
