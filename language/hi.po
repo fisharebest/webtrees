@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-10 19:46+0000\n"
+"PO-Revision-Date: 2020-05-30 07:30+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
@@ -3184,131 +3184,131 @@ msgstr "दफ़न"
 
 #: app/GedcomTag.php:1177
 msgid "Burial of a brother"
-msgstr "भाई की तदफ़ीन"
+msgstr "भाई का दफ़्न"
 
 #: app/GedcomTag.php:1100
 msgid "Burial of a child"
-msgstr "बच्चे की तदफ़ीन"
+msgstr "बच्चे का दफ़्न"
 
 #: app/GedcomTag.php:1098
 msgid "Burial of a daughter"
-msgstr "बेटी की तदफ़ीन"
+msgstr "बेटी का दफ़्न"
 
 #: app/GedcomTag.php:1168
 msgid "Burial of a father"
-msgstr "पिता की तदफ़ीन"
+msgstr "पिता का दफ़्न"
 
 #: app/GedcomTag.php:1109 app/GedcomTag.php:1118 app/GedcomTag.php:1127
 msgid "Burial of a grandchild"
-msgstr "नाती/पोते की तदफ़ीन"
+msgstr "नाती/पोते का दफ़्न"
 
 #: app/GedcomTag.php:1107
 msgid "Burial of a granddaughter"
-msgstr "पोती/नवासी की तदफ़ीन"
+msgstr "पोती/नवासी का दफ़्न"
 
 #: app/GedcomTag.php:1116
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "नवासी की तदफ़ीन"
+msgstr "नवासी का दफ़्न"
 
 #: app/GedcomTag.php:1125
 msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "पोती की तदफ़ीन"
+msgstr "पोती का दफ़्न"
 
 #: app/GedcomTag.php:1132
 msgid "Burial of a grandfather"
-msgstr "नाना/दादा की तदफ़ीन"
+msgstr "नाना/दादा का दफ़्न"
 
 #: app/GedcomTag.php:1134
 msgid "Burial of a grandmother"
-msgstr "नानी/दादी की तदफ़ीन"
+msgstr "नानी/दादी का दफ़्न"
 
 #: app/GedcomTag.php:1136
 msgid "Burial of a grandparent"
-msgstr "दादा/दादी/नाना/नानी की तदफ़ीन"
+msgstr "दादा/दादी/नाना/नानी का दफ़्न"
 
 #: app/GedcomTag.php:1105
 msgid "Burial of a grandson"
-msgstr "पोते/नवासे की तदफ़ीन"
+msgstr "पोते/नवासे का दफ़्न"
 
 #: app/GedcomTag.php:1114
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr "नवासे की तदफ़ीन"
+msgstr "नवासे का दफ़्न"
 
 #: app/GedcomTag.php:1123
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr "पोते की तदफ़ीन"
+msgstr "पोते का दफ़्न"
 
 #: app/GedcomTag.php:1159
 msgid "Burial of a half-brother"
-msgstr "सौतेले भाई की तदफ़ीन"
+msgstr "सौतेले भाई का दफ़्न"
 
 #: app/GedcomTag.php:1163
 msgid "Burial of a half-sibling"
-msgstr "सौतेले भाई/बहन की तदफ़ीन"
+msgstr "सौतेले भाई/बहन का दफ़्न"
 
 #: app/GedcomTag.php:1161
 msgid "Burial of a half-sister"
-msgstr "सौतेली बहन की तदफ़ीन"
+msgstr "सौतेली बहन का दफ़्न"
 
 #: app/GedcomTag.php:1186
 msgid "Burial of a husband"
-msgstr "पति की तदफ़ीन"
+msgstr "पति का दफ़्न"
 
 #: app/GedcomTag.php:1150
 msgid "Burial of a maternal grandfather"
-msgstr "नाना की तदफ़ीन"
+msgstr "नाना का दफ़्न"
 
 #: app/GedcomTag.php:1152
 msgid "Burial of a maternal grandmother"
-msgstr "नानी की तदफ़ीन"
+msgstr "नानी का दफ़्न"
 
 #: app/GedcomTag.php:1154
 msgid "Burial of a maternal grandparent"
-msgstr "नाना/नानी की तदफ़ीन"
+msgstr "नाना/नानी का दफ़्न"
 
 #: app/GedcomTag.php:1170
 msgid "Burial of a mother"
-msgstr "माँ की तदफ़ीन"
+msgstr "माँ का दफ़्न"
 
 #: app/GedcomTag.php:1172
 msgid "Burial of a parent"
-msgstr "माँ/बाप की तदफ़ीन"
+msgstr "माँ/बाप का दफ़्न"
 
 #: app/GedcomTag.php:1141
 msgid "Burial of a paternal grandfather"
-msgstr "दादा की तदफ़ीन"
+msgstr "दादा का दफ़्न"
 
 #: app/GedcomTag.php:1143
 msgid "Burial of a paternal grandmother"
-msgstr "दादी की तदफ़ीन"
+msgstr "दादी का दफ़्न"
 
 #: app/GedcomTag.php:1145
 msgid "Burial of a paternal grandparent"
-msgstr "दादा/दादी की तदफ़ीन"
+msgstr "दादा/दादी का दफ़्न"
 
 #: app/GedcomTag.php:1181
 msgid "Burial of a sibling"
-msgstr "भाई/बहन की तदफ़ीन"
+msgstr "भाई/बहन का दफ़्न"
 
 #: app/GedcomTag.php:1179
 msgid "Burial of a sister"
-msgstr "बहन की तदफ़ीन"
+msgstr "बहन का दफ़्न"
 
 #: app/GedcomTag.php:1096
 msgid "Burial of a son"
-msgstr "बेटे की तदफ़ीन"
+msgstr "बेटे का दफ़्न"
 
 #: app/GedcomTag.php:1190
 msgid "Burial of a spouse"
-msgstr "जीवनसाथी की तदफ़ीन"
+msgstr "जीवनसाथी का दफ़्न"
 
 #: app/GedcomTag.php:1188
 msgid "Burial of a wife"
-msgstr "पत्नी की तदफ़ीन"
+msgstr "पत्नी का दफ़्न"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
@@ -14587,7 +14587,7 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:165
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "यह फॅमिली ट्री अंतिम बार %s को अपडेट किया गया था।"
+msgstr "इस फॅमिली ट्री को अंतिम बार %s को अपडेट किया गया था।"
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
