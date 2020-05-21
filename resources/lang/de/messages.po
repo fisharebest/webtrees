@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-05-20 08:39+0000\nLast-Translator: Markus <markusl@gmx.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-05-30 07:30+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -474,7 +474,7 @@ msgstr "(Alter %s)"
 #: app/Age.php:181
 #, php-format
 msgid "(aged %s)"
-msgstr "(im Alter von %s)"
+msgstr "(%s alt)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -7659,12 +7659,12 @@ msgstr "Anzeigender"
 #: app/GedcomCode/GedcomCodeRela.php:243
 msgctxt "FEMALE"
 msgid "Informant"
-msgstr "Informationsgeber"
+msgstr "Anzeigende"
 
 #: app/GedcomCode/GedcomCodeRela.php:239
 msgctxt "MALE"
 msgid "Informant"
-msgstr "Informant"
+msgstr "Anzeigender"
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:246 app/Module/InteractiveTreeModule.php:52
@@ -8754,7 +8754,7 @@ msgstr "Familienstand seit"
 #. I18N: gedcom tag _MBON
 #: app/GedcomTag.php:1963
 msgid "Marriage bond"
-msgstr "Verlobung"
+msgstr "Heiratsverpflichtung"
 
 #: app/Statistics/Google/ChartDistribution.php:348
 msgid "Marriage by country"
