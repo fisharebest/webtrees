@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: Chinese (Simplified) (webtrees)\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-10 20:40+0100\n"
-"PO-Revision-Date: 2020-04-26 13:52+0000\n"
-"Last-Translator: rui <xmlf@hotmail.com>\n"
-"Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\n"
-"Language: zh-Hans\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-05-30 07:30+0000\nLast-Translator: rui <xmlf@hotmail.com>\nLanguage-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -3909,7 +3893,7 @@ msgstr "选择亲戚"
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:51
 msgid "Choose user defined welcome text typed below"
-msgstr "选择用户定义的文本在下面输入欢迎文本"
+msgstr "在下面输入用户定义的欢迎文本"
 
 # I18N: gedcom tag CHR
 #. I18N: gedcom tag CHR
@@ -10412,7 +10396,7 @@ msgstr "我的家谱"
 
 #: app/Module/ModuleThemeTrait.php:342 app/Module/UserWelcomeModule.php:107
 msgid "My individual record"
-msgstr "个人档案"
+msgstr "家谱中的我"
 
 # I18N: Name of a module
 #. I18N: Name of a module
@@ -17172,7 +17156,7 @@ msgstr "体重"
 #: app/Module/UserWelcomeModule.php:122
 #, php-format
 msgid "Welcome %s"
-msgstr "%s 欢迎光临"
+msgstr "%s 欢迎您的光临"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
