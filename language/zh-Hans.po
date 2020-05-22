@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2020-04-26 13:52+0000\n"
+"PO-Revision-Date: 2020-05-30 07:30+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
@@ -5058,7 +5058,7 @@ msgstr "选择你想上传的缩略图。虽然可以自动生成缩略图的图
 
 #: admin_site_config.php:131 app/Http/Controllers/AdminSiteController.php:492
 msgid "Choose user defined welcome text typed below"
-msgstr "选择用户定义的文本在下面输入欢迎文本"
+msgstr "在下面输入用户定义的欢迎文本"
 
 #: addmedia.php:522
 msgid "Choose: "
@@ -13703,7 +13703,7 @@ msgstr "我的家谱"
 #: app/Module/ModuleThemeTrait.php:325 app/Module/UserWelcomeModule.php:103
 #: app/Module/ModuleThemeTrait.php:325,
 msgid "My individual record"
-msgstr "个人档案"
+msgstr "家谱中的我"
 
 # I18N: Name of a module
 #. I18N: Name of a module
@@ -22481,7 +22481,7 @@ msgstr "体重"
 #: app/Module/UserWelcomeModule.php:51 app/Module/UserWelcomeModule.php:118
 #, php-format
 msgid "Welcome %s"
-msgstr "%s 欢迎光临"
+msgstr "%s 欢迎您的光临"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
