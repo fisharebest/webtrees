@@ -40,6 +40,7 @@ use function route;
 use function strtolower;
 
 use const PATHINFO_EXTENSION;
+use const PATHINFO_FILENAME;
 
 /**
  * Save a GEDCOM file on the server.
@@ -67,6 +68,9 @@ class ExportGedcomServer implements RequestHandlerInterface
         if (strtolower(pathinfo($filename, PATHINFO_EXTENSION)) !== 'ged') {
             $filename .= '.ged';
         }
+        
+        // Add a timestamp between filename and suffix
+        $filename = pathinfo($filename, PATHINFO_FILENAME) . date("_Y-m-d_His") . '.' . pathinfo($filename, PATHINFO_EXTENSION);
 
         try {
             $stream = fopen('php://temp', 'wb+');
