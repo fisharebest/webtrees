@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-02-10 09:01+0000\n"
+"PO-Revision-Date: 2020-05-30 07:30+0000\n"
 "Last-Translator: Luca Bighi <luca74@email.it>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/it/>\n"
@@ -12706,7 +12706,7 @@ msgstr "Mostra la posizione di luoghi ed eventi utilizzando il servizio Google M
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "Mostra l'utente che ha effettuato la modifica"
 
 #. I18N: Label for a configuration option
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
@@ -12829,22 +12829,26 @@ msgstr "Sorella"
 #: admin_site_config.php:569 admin_site_config.php:585
 #: admin_site_config.php:610
 msgid "Site identification code"
-msgstr ""
+msgstr "Codice d'identificazione del sito"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:477 edituser.php:300
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
 msgstr ""
+"I membri del sito posso mandarsi messaggi tra loro. Puoi scegliere come "
+"ricevere questi messaggi, o scegliere di non riceverli."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:527 admin_site_config.php:548
 msgid "Site verification code"
-msgstr ""
+msgstr "Codice di verifica del sito"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:538 admin_site_config.php:559
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr ""
+"Il codice di verifica del sito non funziona quando webtrees è installato in "
+"una sottocartella."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
@@ -12887,7 +12891,7 @@ msgstr "Dimensioni della mappa (in pixel)"
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: app/Theme/AbstractTheme.php:84
 msgid "Skip to content"
-msgstr ""
+msgstr "Passa al contenuto"
 
 #: app/GedcomCode/GedcomCodeRela.php:254
 msgid "Slave"
@@ -12951,7 +12955,7 @@ msgstr "Alcuni programmi creano file GEDCOM contenenti i percorsi completi dei f
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1606
 msgid "Some pages can display the number of times that they have been visited."
-msgstr ""
+msgstr "Alcune pagine possono mostrare il numero di visite ricevute."
 
 #: app/Module/GoogleMapsModule.php:410
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
@@ -12961,6 +12965,7 @@ msgstr "Alcuni nomi di luogo possono essere scritti con prefissi e suffissi opzi
 #: admin_trees_config.php:1465
 msgid "Some themes can display icons on the “Facts and events” tab."
 msgstr ""
+"Qualche tema può mostrare delle icone nella sezione \"Fatti ed eventi\"."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:526
@@ -13588,25 +13593,26 @@ msgstr "Albero genealogico esportato in %s."
 #: admin_trees_manage.php:77
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "L'albero \"%s\" esiste già."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:80
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "L'albero \"%s\" è stato creato."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:57 admin_trees_manage.php:154
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "L'albero \"%s\" è stato cancellato."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:66
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
 msgstr ""
+"L'albero \"%s\" sarà mostrato ai visitatori al primo accesso a questo sito."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
@@ -13748,7 +13754,7 @@ msgstr "Il collegamento da «%1$s» a «%2$s» è stato rimosso."
 #: admin_site_merge.php:113
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "Il collegamento tra \"%1$s\" e \"%2$s\" è stato aggiornato."
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
@@ -13789,12 +13795,12 @@ msgstr "Messaggio inviato correttamente a %s."
 #: admin_modules.php:54
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "Il modulo \"%s\" è stato disabilitato."
 
 #: admin_modules.php:56
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "Il modulo \"%s\" è stato abilitato."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1844
@@ -13940,6 +13946,8 @@ msgstr "Il tempo (in secondi) che una sessione di webtrees rimane attiva prima c
 #: admin_site_config.php:242 admin_users.php:427 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr ""
+"Il fuso orario è necessario per il calcolo della data, per esempio per "
+"conoscere qual'è il giorno di oggi."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
@@ -13961,7 +13969,7 @@ msgstr "I file caricati superano la dimensione massima consentita."
 #: admin_users.php:786
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "L'utente %s è stato cancellato."
 
 #: login.php:327
 msgid "The user has been sent an email with the information necessary to confirm the access request."
@@ -14038,7 +14046,7 @@ msgstr "Menu del tema"
 
 #: admin_modules.php:165
 msgid "Themes"
-msgstr ""
+msgstr "Temi"
 
 #: admin_site_config.php:258
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
@@ -14078,8 +14086,8 @@ msgstr "Ci sono aggiornamenti in sospeso da verificare."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Non ci sono modifiche nell'ultimo giorno."
+msgstr[1] "Non ci sono modifiche negli ultimi %s giorni."
 
 #: login.php:266
 #, php-format
@@ -14117,7 +14125,7 @@ msgstr "Termidoro"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Questo gruppo di persone non è imparentato con %s."
 
 #: admin.php:578
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -14642,7 +14650,7 @@ msgstr "Questo tipo di collegamento non è permesso qui."
 
 #: includes/session.php:435
 msgid "This user account does not have access to any tree."
-msgstr ""
+msgstr "Questo utente non ha accesso a nessun albero genealogico."
 
 #: setup.php:214
 msgid "This usually means that you need to change the folder permissions to 777."
@@ -14708,7 +14716,7 @@ msgstr "Ora"
 #. I18N: A configuration setting
 #: admin_site_config.php:237 admin_users.php:422 edituser.php:247
 msgid "Time zone"
-msgstr ""
+msgstr "Fuso orario"
 
 #. I18N: Name of a module/chart
 #: app/Controller/TimelineController.php:74
@@ -14823,6 +14831,8 @@ msgstr "Per proteggere questi dati sensibili webtrees utilizza un file di config
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:377
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
 msgstr ""
+"Per ridurre le dimensioni del download, puoi comprimere i dati in un file "
+".ZIP. Dovrai scomprimere il file .ZIP prima di poterli usare."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:483
@@ -14916,7 +14926,7 @@ msgstr "Toronto, Ontario, Canada"
 
 #: admin.php:851
 msgid "Total"
-msgstr ""
+msgstr "Totale"
 
 #: modules_v3/change_report/report.xml:127
 msgid "Total accepted changes: "
@@ -15111,11 +15121,11 @@ msgstr "Tipo"
 
 #: app/GedcomTag.php:434
 msgid "Type of event"
-msgstr ""
+msgstr "Tipo di evento"
 
 #: app/GedcomTag.php:440
 msgid "Type of fact"
-msgstr ""
+msgstr "Tipo di fatto"
 
 #: app/Module/GoogleMapsModule.php:452
 msgid "Type of place markers in the place hierarchy"
