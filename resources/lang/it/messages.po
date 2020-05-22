@@ -1,23 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-10 20:40+0100\n"
-"PO-Revision-Date: 2020-02-10 09:01+0000\n"
-"Last-Translator: Luca Bighi <luca74@email.it>\n"
-"Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
-"Language: it\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Language: it_IT\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-Language: Italian\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-05-30 07:30+0000\nLast-Translator: Luca Bighi <luca74@email.it>\nLanguage-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\nLanguage: it\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Language: it_IT\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: .\nX-Poedit-Language: Italian\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -486,7 +468,7 @@ msgstr "(%s dopo la morte)"
 #: app/Age.php:177
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(%s anni)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:181
@@ -1933,7 +1915,7 @@ msgstr "Si è verificato un errore di database imprevisto."
 
 #: resources/views/admin/control-panel.phtml:83
 msgid "An upgrade is available."
-msgstr ""
+msgstr "Un aggiornamento è disponibile."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -2608,7 +2590,7 @@ msgstr "Bing Mappe™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
-msgstr ""
+msgstr "Strumenti Bing™ per webmaster"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:261
@@ -4349,7 +4331,7 @@ msgstr "Correzione delle date"
 #: resources/views/admin/data-fix-page.phtml:23
 #: resources/views/admin/trees.phtml:132
 msgid "Data fixes"
-msgstr "Correzioni delle date"
+msgstr "Correzione dei dati"
 
 #: resources/views/help/data-fixes.phtml:8
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
@@ -6867,11 +6849,11 @@ msgstr "Google Maps™"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
-msgstr ""
+msgstr "Google™ analytics"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
-msgstr ""
+msgstr "Strumenti Google™ per webmaster"
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:785
@@ -7494,7 +7476,7 @@ msgstr "In webtrees versione 2, le miniature personalizzate sono memorizzate com
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include aliases"
-msgstr ""
+msgstr "includi gli alias"
 
 #: resources/views/admin/trees-unconnected.phtml:27
 msgid "Include associates"
@@ -8274,7 +8256,7 @@ msgstr "Sinistra"
 #. I18N: Name of a module - historic/obsolete URLs.
 #: app/Module/RedirectLegacyUrlsModule.php:118
 msgid "Legacy URLs"
-msgstr ""
+msgstr "URL obsoleti"
 
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:816
@@ -8969,7 +8951,7 @@ msgstr "Corrispondenza esatta del testo, a meno che non sia a metà di una parol
 
 #: app/Module/MatomoAnalyticsModule.php:42
 msgid "Matomo™ / Piwik™ analytics"
-msgstr ""
+msgstr "Matomo™ / Piwik™ analytics"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -10154,7 +10136,7 @@ msgstr "Nessun risultato trovato."
 #: resources/views/modules/pedigree-map/chart.phtml:110
 #: resources/views/modules/places/tab.phtml:102
 msgid "Nothing to show"
-msgstr ""
+msgstr "Nulla da mostrare"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
@@ -11442,7 +11424,7 @@ msgstr "Record"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:112
 msgid "Redirect old URLs from webtrees version 1."
-msgstr ""
+msgstr "Redireziona i vecchi URL della versione 1 di webtrees."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:573
@@ -11587,7 +11569,7 @@ msgstr "Nome religioso"
 #: resources/views/modules/place-hierarchy/map.phtml:71
 #: resources/views/modules/places/tab.phtml:58
 msgid "Reload map"
-msgstr ""
+msgstr "Ricarica la mappa"
 
 #: resources/views/modules/review_changes/config.phtml:24
 msgid "Reminder email frequency (days)"
@@ -11851,7 +11833,7 @@ msgstr "SQLite è utilizzabile per piccoli siti, test e valutazione."
 #: app/Services/ServerCheckService.php:217
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
-msgstr ""
+msgstr "La versione installata di SQLite è %s. È richiesta almeno la versione %s o successive."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:585
@@ -12052,7 +12034,7 @@ msgstr "Ricerca e sostituzione di testo, utilizzando una ricerca semplice o avan
 #. I18N: Help text for the “Description META tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:203
 msgid "Search engines may use this description of your site in their search results."
-msgstr ""
+msgstr "I motori di ricerca possono usare questa descrizione del tuo sito per i risultati della ricerca."
 
 #: resources/views/modules/media-list/page.phtml:52
 msgid "Search filters"
@@ -12139,7 +12121,7 @@ msgstr "Selezionare due record da unire."
 
 #: resources/views/admin/site-mail.phtml:198
 msgid "Selector"
-msgstr ""
+msgstr "Selettore"
 
 #: app/GedcomCode/GedcomCodeRela.php:313
 msgid "Seller"
@@ -12187,7 +12169,7 @@ msgstr "Invia messaggio agli utenti che non hanno effettuato l’accesso per 6 m
 
 #: resources/views/admin/site-mail.phtml:221
 msgid "Send a test email using these settings"
-msgstr ""
+msgstr "Invia una email di prova con queste impostazioni"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:14
@@ -12290,7 +12272,7 @@ msgstr "Nome del server"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php:64
 msgid "Set a new password"
-msgstr ""
+msgstr "Imposta una nuova password"
 
 #: resources/views/admin/trees.phtml:112 resources/views/admin/trees.phtml:119
 msgid "Set as default"
@@ -12524,7 +12506,7 @@ msgstr "Mostra collegamento per scaricare nel visualizzatore multimediale"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
 msgid "Show a privacy policy."
-msgstr ""
+msgstr "Mostra l'informativa della privacy."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:69
@@ -12679,7 +12661,7 @@ msgstr "Mostra le foto"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:108
 msgid "Show place hierarchy"
-msgstr ""
+msgstr "Mostra la gerarchia dei luoghi"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:144
@@ -12734,7 +12716,7 @@ msgstr "Mostra le %1$s %2$s parti del nome dei luoghi."
 #. I18N: Description of the “Pedigree map” module
 #: app/Module/PedigreeMapModule.php:137
 msgid "Show the birthplace of ancestors on a map."
-msgstr ""
+msgstr "Mostra i luoghi di nascita degli antenati sulla mappa."
 
 #: resources/views/modules/html/config.phtml:45
 msgid "Show the date and time of update"
@@ -12765,7 +12747,7 @@ msgstr "Mostra la posizione degli eventi su una mappa."
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:37
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "Mostra l'utente che ha effettuato la modifica"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/edit.phtml:41
@@ -12895,24 +12877,24 @@ msgstr "Sorella"
 #: resources/views/modules/matomo-analytics/form.phtml:9
 #: resources/views/modules/statcounter/form.phtml:9
 msgid "Site identification code"
-msgstr ""
+msgstr "Codice d'identificazione del sito"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: resources/views/admin/users-edit.phtml:172
 #: resources/views/edit-account-page.phtml:128
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "I membri del sito posso mandarsi messaggi tra loro. Puoi scegliere come ricevere questi messaggi, o scegliere di non riceverli."
 
 #. I18N: A configuration setting
 #: resources/views/modules/bing-webmaster-tools/form.phtml:9
 #: resources/views/modules/google-webmaster-tools/form.phtml:9
 msgid "Site verification code"
-msgstr ""
+msgstr "Codice di verifica del sito"
 
 #: resources/views/modules/bing-webmaster-tools/form.phtml:18
 #: resources/views/modules/google-webmaster-tools/form.phtml:18
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr ""
+msgstr "Il codice di verifica del sito non funziona quando webtrees è installato in una sottocartella."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:163
@@ -12952,7 +12934,7 @@ msgstr "Sivan"
 #: resources/views/layouts/administration.phtml:48
 #: resources/views/layouts/default.phtml:75
 msgid "Skip to content"
-msgstr ""
+msgstr "Passa al contenuto"
 
 #: app/GedcomCode/GedcomCodeRela.php:335
 msgid "Slave"
@@ -13016,12 +12998,12 @@ msgstr "Alcuni programmi creano file GEDCOM contenenti i percorsi completi dei f
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:636
 msgid "Some pages can display the number of times that they have been visited."
-msgstr ""
+msgstr "Alcune pagine possono mostrare il numero di visite ricevute."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml:509
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr ""
+msgstr "Qualche tema può mostrare delle icone nella sezione \"Fatti ed eventi\"."
 
 #: resources/views/edit/change-family-members.phtml:49
 #: resources/xml/reports/family_group_report.xml:774
@@ -13062,7 +13044,7 @@ msgstr "Sosa"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:18
 msgid "Sosa-Stradonitz number"
-msgstr ""
+msgstr "Numero Sosa-Stradonitz"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:243
 msgid "Sounds like"
@@ -13253,7 +13235,7 @@ msgstr "Includi gli aggiornamenti effettuati dal"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:1029
@@ -13343,7 +13325,7 @@ msgstr "Fornito da"
 
 #: resources/views/lists/submitters-table.phtml:60
 msgid "Submitter name"
-msgstr ""
+msgstr "Nome del contributore"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/ListController.php:563
@@ -13352,7 +13334,7 @@ msgstr ""
 #: resources/views/admin/merge-records-step-1.phtml:29
 #: resources/views/lists/submitters-table.phtml:55
 msgid "Submitters"
-msgstr ""
+msgstr "Contributori"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -13377,11 +13359,11 @@ msgstr "Supporto e documentazione sono disponibili sul sito %s."
 
 #: app/Services/ServerCheckService.php:329
 msgid "Support for PostgreSQL is experimental."
-msgstr ""
+msgstr "Il supporto per PostgreSQL è sperimentale."
 
 #: app/Services/ServerCheckService.php:334
 msgid "Support for SQL Server is experimental."
-msgstr ""
+msgstr "Il supporto per SQL Server è sperimentale."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:461
@@ -13511,7 +13493,7 @@ msgstr "Prefisso delle tabelle"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Tabloid"
-msgstr ""
+msgstr "Tabloid"
 
 #: app/Http/Controllers/Admin/ModuleController.php:254
 #: resources/views/admin/control-panel.phtml:543
@@ -13653,12 +13635,12 @@ msgstr "L’Aia, Paesi Bassi"
 #: app/Services/ServerCheckService.php:126
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr ""
+msgstr "L'estensione PHP \"%s\" non è installata."
 
 #: app/Services/ServerCheckService.php:184
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr ""
+msgstr "La funzione PHP \"%1$s\" è disabilitata."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:58
@@ -13668,12 +13650,12 @@ msgstr "Cartella temporanea PHP non trovata."
 #: app/Services/ServerCheckService.php:145
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr ""
+msgstr "L'opzione “%1$s” è disattivata in PHP.INI."
 
 #: app/Services/ServerCheckService.php:149
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr ""
+msgstr "L'opzione “%1$s” è attivata in PHP.INI."
 
 #: resources/views/emails/approve-user-html.phtml:13
 #: resources/views/emails/approve-user-text.phtml:8
@@ -13707,7 +13689,7 @@ msgstr "Le modifiche a «%s» sono state rifiutate."
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php:71
 msgid "The charts menu."
-msgstr ""
+msgstr "Il menù grafici."
 
 #: resources/views/modules/clippings/show.phtml:10
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -13721,7 +13703,7 @@ msgstr "Data e ora ultimo aggiornamento"
 #: app/Http/RequestHandlers/AccountUpdate.php:113
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr ""
+msgstr "I dettagli per \"%s\" sono stati aggiornati."
 
 #. I18N: %s is a filename
 #: app/Http/Controllers/Admin/UpgradeController.php:308
@@ -13733,25 +13715,25 @@ msgstr "Albero genealogico esportato in %s."
 #: app/Http/RequestHandlers/CreateTreeAction.php:64
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "L'albero \"%s\" esiste già."
 
 #: app/Http/RequestHandlers/CreateTreeAction.php:71
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "L'albero \"%s\" è stato creato."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/Controllers/AdminTreesController.php:1514
 #: app/Http/RequestHandlers/DeleteTreeAction.php:65
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "L'albero \"%s\" è stato cancellato."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/SelectDefaultTree.php:54
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr ""
+msgstr "L'albero \"%s\" sarà mostrato ai visitatori al primo accesso a questo sito."
 
 #: app/Http/Controllers/AdminTreesController.php:705
 msgid "The family trees have been merged successfully."
@@ -13760,7 +13742,7 @@ msgstr "Gli alberi genealogici sono stati riuniti correttamente."
 #. I18N: Description of the “Family trees” module
 #: app/Module/TreesMenuModule.php:71
 msgid "The family trees menu."
-msgstr ""
+msgstr "Il menù degli alberi genealogici."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/RequestHandlers/DeleteRecord.php:73
@@ -13808,7 +13790,7 @@ msgstr "Il file «%s» non esiste."
 
 #: resources/views/edit/reorder-families.phtml:65
 msgid "The first family in the list will be used in charts, lists, reports, etc."
-msgstr ""
+msgstr "La prima famiglia nella lista verrà usata nei grafici, nelle liste, nei report, ecc."
 
 #: app/Http/RequestHandlers/DeletePath.php:71
 #, php-format
@@ -13832,7 +13814,7 @@ msgstr "È possibile specificare il percorso assoluto della cartella (es. /home/
 #: app/Http/RequestHandlers/SitePreferencesAction.php:55
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "La cartella \"%s\" non esiste."
 
 #: resources/views/admin/merge-records-step-2.phtml:26
 msgid "The following facts and events were found in both records."
@@ -13873,16 +13855,16 @@ msgstr "Il collegamento da «%1$s» a «%2$s» è stato rimosso."
 #: app/Http/RequestHandlers/MergeFactsAction.php:98
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "Il collegamento tra \"%1$s\" e \"%2$s\" è stato aggiornato."
 
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php:69
 msgid "The lists menu."
-msgstr ""
+msgstr "Il menù liste."
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:37
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "La posizione di questo luogo non è conosciuta."
 
 #: app/Http/Controllers/EditMediaController.php:273
 #, php-format
@@ -13921,13 +13903,13 @@ msgstr "Messaggio inviato correttamente a %s."
 #: app/Http/Controllers/Admin/ModuleController.php:620
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "Il modulo \"%s\" è stato disabilitato."
 
 #: app/Http/Controllers/Admin/ModuleController.php:341
 #: app/Http/Controllers/Admin/ModuleController.php:618
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "Il modulo \"%s\" è stato abilitato."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:747
@@ -13955,7 +13937,7 @@ msgstr "Ai nuovi utenti sarà richiesto di confermare i loro indirizzi email pri
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:73
 msgid "The note has been created"
-msgstr ""
+msgstr "La nota è stata creata"
 
 #: app/Http/Controllers/SetupController.php:370
 msgid "The password needs to be at least six characters long."
@@ -13969,12 +13951,12 @@ msgstr "La password richiesta per l’autenticazione sul server SMTP."
 #: app/Http/RequestHandlers/PasswordResetAction.php:84
 #: app/Http/RequestHandlers/PasswordResetPage.php:76
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "Il link per resettare la password è scaduto."
 
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php:57
 msgid "The place hierarchy."
-msgstr ""
+msgstr "La pagina contenente la gerarchia dei luoghi."
 
 #: app/Http/Controllers/AdminController.php:159
 #: app/Http/Controllers/AdminTreesController.php:971
@@ -14008,7 +13990,7 @@ msgstr "Le impostazioni per il modulo <i>%s</i> sono state aggiornate."
 #: resources/views/setup/step-4-database-sqlite.phtml:65
 #: resources/views/setup/step-4-database-sqlsvr.phtml:91
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
-msgstr ""
+msgstr "Il prefisso è opzionale ma raccomandato. Usando un prefisso per il nome delle tabella è possibile usare lo stesso database per differenti applicazioni."
 
 #: app/Http/RequestHandlers/CopyFact.php:77
 msgid "The record has been copied to the clipboard."
@@ -14022,7 +14004,7 @@ msgstr "I record <i>%1$s</i> e <i>%2$s</i> sono stati uniti."
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:74
 msgid "The reports menu."
-msgstr ""
+msgstr "Il menù dei Report."
 
 #: app/Http/RequestHandlers/CreateRepositoryAction.php:78
 msgid "The repository has been created"
@@ -14031,11 +14013,11 @@ msgstr "L'archivio è stato creato"
 #. I18N: Description of the “Search” module
 #: app/Module/SearchMenuModule.php:59
 msgid "The search menu."
-msgstr ""
+msgstr "Il menù di ricerca."
 
 #: app/Services/SearchService.php:1075
 msgid "The search returned too many results."
-msgstr ""
+msgstr "La ricerca ha restituito troppi risultati."
 
 #: resources/views/setup/step-2-server-checks.phtml:35
 msgid "The server configuration is OK."
@@ -14057,7 +14039,7 @@ msgstr "Dimensione dell’albero genealogico, eventi più antichi e più recenti
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:111
 msgid "The source has been created"
-msgstr ""
+msgstr "La fonte è stata creata"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:76
 msgid "The submitter has been created"
@@ -14072,7 +14054,7 @@ msgstr "Il cognome è racchiuso tre barre: <%s>Mario Paolo /Rossi/<%s>"
 #: resources/views/admin/users-edit.phtml:122
 #: resources/views/edit-account-page.phtml:104
 msgid "The time zone is required for date calculations, such as knowing today’s date."
-msgstr ""
+msgstr "Il fuso orario è necessario per il calcolo della data, per esempio per conoscere qual'è il giorno di oggi."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: resources/views/admin/trees-merge.phtml:17
@@ -14094,7 +14076,7 @@ msgstr "I file caricati superano la dimensione massima consentita."
 #: app/Http/RequestHandlers/UsersCleanupAction.php:69
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "L'utente %s è stato cancellato."
 
 #: resources/views/emails/register-notify-html.phtml:30
 #: resources/views/emails/register-notify-text.phtml:17
@@ -14158,7 +14140,7 @@ msgstr "Modifica tema"
 #: resources/views/admin/modules.phtml:107
 #: resources/views/admin/modules.phtml:109
 msgid "Themes"
-msgstr ""
+msgstr "Temi"
 
 #: resources/views/modules/personal_facts/tab.phtml:35
 msgid "There are no facts for this individual."
@@ -14199,13 +14181,13 @@ msgstr "Ci sono aggiornamenti in sospeso da verificare."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Non ci sono modifiche nell'ultimo giorno."
+msgstr[1] "Non ci sono modifiche negli ultimi %s giorni."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:107
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr ""
+msgstr "Non ci sono account associati al'indirizzo email \"%s\"."
 
 #: app/Http/Controllers/Admin/MediaController.php:465
 #: app/Http/Controllers/EditMediaController.php:131
@@ -14240,16 +14222,16 @@ msgstr "Termidoro"
 
 #: resources/views/modules/privacy-policy/page.phtml:27
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "Questi cookies sono necessari per il funzionamento del sito e non richiedono consenso."
 
 #: resources/views/admin/trees-unconnected.phtml:34
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Questo gruppo di persone non è imparentato con %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:48
 msgid "These services may use cookies or other tracking technology."
-msgstr ""
+msgstr "Questi servizi potrebbero usare cookies o altre tecnologie di tracciamento."
 
 #: app/Http/RequestHandlers/LoginAction.php:137
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -14392,7 +14374,7 @@ msgstr "Questa persona sarà selezionata come impostazione predefinita durante l
 #: resources/views/statistics/other/places.phtml:55
 #: resources/views/statistics/other/top10-list.phtml:24
 msgid "This information is not available."
-msgstr ""
+msgstr "Questa informazione non è disponibile."
 
 #: app/Statistics/Repository/EventRepository.php:253
 #: app/Statistics/Repository/FamilyDatesRepository.php:110
@@ -14505,11 +14487,11 @@ msgstr "Questo è il proprio nome reale, come si desidera venga mostrato a video
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:104
 msgid "This link is valid for one hour."
-msgstr ""
+msgstr "Questo link è valido per un ora."
 
 #: resources/views/help/data-fixes.phtml:16
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
-msgstr ""
+msgstr "Questa lista è creata una ricerca semplificata (ma veloce) e potrebbe includere dei record che non saranno aggiornati."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -14688,7 +14670,7 @@ msgstr "Questo archivio è stato modificato. È necessario verificare le modific
 
 #: resources/views/modules/privacy-policy/page.phtml:16
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr ""
+msgstr "Questa ricerca è un \"legittimo interesse\" ai sensi dell'articolo 6 comma f del Regolamento (UE) Generale sulla protezione dei dati."
 
 #: resources/views/admin/users-edit.phtml:243
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -14757,7 +14739,7 @@ msgstr "Questo tipo di collegamento non è permesso qui."
 
 #: resources/views/errors/no-tree-access.phtml:8
 msgid "This user account does not have access to any tree."
-msgstr ""
+msgstr "Questo utente non ha accesso a nessun albero genealogico."
 
 #: app/Http/Controllers/SetupController.php:159
 msgid "This usually means that you need to change the folder permissions to 777."
@@ -14773,7 +14755,7 @@ msgstr "Il sito è in manutenzione. <a href=\"index.php\">Riprovare nuovamente</
 
 #: resources/views/modules/privacy-policy/page.phtml:61
 msgid "This website is operated by the following individuals."
-msgstr ""
+msgstr "Questo sito web è gestito delle seguenti persone."
 
 #: resources/views/layouts/error.phtml:13
 #: resources/views/layouts/error.phtml:30
@@ -14783,19 +14765,19 @@ msgstr "Questo sito è temporaneamente non disponibile"
 
 #: resources/views/modules/privacy-policy/page.phtml:13
 msgid "This website processes personal data for the purpose of historical and genealogical research."
-msgstr ""
+msgstr "Questo sito web gestisce dati personale con lo scopo di ricerca storica e genealogica."
 
 #: resources/views/modules/privacy-policy/page.phtml:24
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
-msgstr ""
+msgstr "Questo sito web usa i cookie per gestire le sessioni di login e ricordare le preferenze come la lingua scelta."
 
 #: resources/views/modules/privacy-policy/footer.phtml:15
 msgid "This website uses cookies to learn about visitor behavior."
-msgstr ""
+msgstr "Questo sito web usa i cookies per conoscere il comportamento dei visitatori."
 
 #: resources/views/modules/privacy-policy/page.phtml:36
 msgid "This website uses third-party services to learn about visitor behavior."
-msgstr ""
+msgstr "Questo sito web usa servizi di terzi per conoscere il comportamento dei visitatori."
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml:14
@@ -14837,7 +14819,7 @@ msgstr "Ora"
 #: resources/views/admin/users-edit.phtml:117
 #: resources/views/edit-account-page.phtml:99
 msgid "Time zone"
-msgstr ""
+msgstr "Fuso orario"
 
 #. I18N: Name of a module/chart
 #: app/Module/TimelineChartModule.php:96
@@ -14933,13 +14915,13 @@ msgstr "Titolo in ebraico"
 #: resources/views/contact-page.phtml:18 resources/views/message-page.phtml:26
 msgctxt "Email recipient"
 msgid "To"
-msgstr ""
+msgstr "a"
 
 #: resources/views/admin/changes-log.phtml:29
 #: resources/views/admin/site-logs.phtml:30
 msgctxt "End of date range"
 msgid "To"
-msgstr ""
+msgstr "a"
 
 #: resources/views/modules/html/config.phtml:25
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -14961,12 +14943,12 @@ msgstr "Per proteggere questi dati sensibili webtrees utilizza un file di config
 
 #: resources/views/help/zip-gedcom.phtml:8
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
-msgstr ""
+msgstr "Per ridurre le dimensioni del download, puoi comprimere i dati in un file .ZIP. Dovrai scomprimere il file .ZIP prima di poterli usare."
 
 #: resources/views/emails/password-request-html.phtml:12
 #: resources/views/emails/password-request-text.phtml:8
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "Per impostare una nuova password, segui questo link."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:43
@@ -15064,7 +15046,7 @@ msgstr "Toronto, Ontario, Canada"
 #: resources/views/lists/chart-by-age.phtml:24
 #: resources/views/lists/chart-by-decade.phtml:16
 msgid "Total"
-msgstr ""
+msgstr "Totale"
 
 #: resources/xml/reports/change_report.xml:127
 msgid "Total accepted changes: "
@@ -15173,7 +15155,7 @@ msgstr "Terminatore"
 #: resources/views/emails/register-notify-html.phtml:25
 #: resources/views/emails/register-notify-text.phtml:15
 msgid "Tree"
-msgstr ""
+msgstr "Albero genealogico"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:291
@@ -15252,11 +15234,11 @@ msgstr "Tipo"
 
 #: app/GedcomTag.php:722
 msgid "Type of event"
-msgstr ""
+msgstr "Tipo di evento"
 
 #: app/GedcomTag.php:727
 msgid "Type of fact"
-msgstr ""
+msgstr "Tipo di fatto"
 
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
