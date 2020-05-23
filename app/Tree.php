@@ -380,46 +380,46 @@ class Tree
      */
     public function exportGedcom($stream): void
     {
-        $buffer = FunctionsExport::reformatRecord(FunctionsExport::gedcomHeader($this, 'UTF-8'));
+        $individual_query = DB::table('individuals')
+            ->where('i_file', '=', $this->id)
+            ->select(['i_gedcom AS gedcom']);
 
-        $union_families = DB::table('families')
+        $family_query = DB::table('families')
             ->where('f_file', '=', $this->id)
-            ->select(['f_gedcom AS gedcom', 'f_id AS xref', new Expression('LENGTH(f_id) AS len'), new Expression('2 AS n')]);
+            ->select(['f_gedcom AS gedcom']);
 
-        $union_sources = DB::table('sources')
+        $sources_query = DB::table('sources')
             ->where('s_file', '=', $this->id)
-            ->select(['s_gedcom AS gedcom', 's_id AS xref', new Expression('LENGTH(s_id) AS len'), new Expression('3 AS n')]);
+            ->select(['s_gedcom AS gedcom']);
 
-        $union_other = DB::table('other')
+        $other_query = DB::table('other')
             ->where('o_file', '=', $this->id)
             ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
-            ->select(['o_gedcom AS gedcom', 'o_id AS xref', new Expression('LENGTH(o_id) AS len'), new Expression('4 AS n')]);
+            ->select(['o_gedcom AS gedcom']);
 
-        $union_media = DB::table('media')
+        $media_query = DB::table('media')
             ->where('m_file', '=', $this->id)
-            ->select(['m_gedcom AS gedcom', 'm_id AS xref', new Expression('LENGTH(m_id) AS len'), new Expression('5 AS n')]);
+            ->select(['m_gedcom AS gedcom']);
 
-        DB::table('individuals')
-            ->where('i_file', '=', $this->id)
-            ->select(['i_gedcom AS gedcom', 'i_id AS xref', new Expression('LENGTH(i_id) AS len'), new Expression('1 AS n')])
-            ->union($union_families)
-            ->union($union_sources)
-            ->union($union_other)
-            ->union($union_media)
-            ->orderBy('n')
-            ->orderBy('len')
-            ->orderBy('xref')
-            ->chunk(1000, static function (Collection $rows) use ($stream, &$buffer): void {
-                foreach ($rows as $row) {
-                    $buffer .= FunctionsExport::reformatRecord($row->gedcom);
-                    if (strlen($buffer) > 65535) {
-                        fwrite($stream, $buffer);
-                        $buffer = '';
-                    }
-                }
-            });
+        $queries = [
+            $individual_query,
+            $family_query,
+            $sources_query,
+            $other_query,
+            $media_query,
+        ];
 
-        fwrite($stream, $buffer . '0 TRLR' . Gedcom::EOL);
+        $header = FunctionsExport::gedcomHeader($this, 'UTF-8');
+
+        fwrite($stream, FunctionsExport::reformatRecord($header));
+
+        foreach ($queries as $query) {
+            foreach ($query->cursor() as $row) {
+                fwrite($stream, FunctionsExport::reformatRecord($row->gedcom));
+            }
+        }
+
+        fwrite($stream, '0 TRLR' . Gedcom::EOL);
     }
 
     /**
