@@ -16,7 +16,7 @@ $count_individuals = DB::table('individuals')
         $join->on('l_from', '=', 'i_id');
         $join->on('l_file', '=', 'i_file');
     })
-    ->where('l_type', '=', 'NOTE')
+    ->where('l_type', '=', 'OBJE')
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
     ->select(['l_to', new Expression('COUNT(*) AS total')])
@@ -28,7 +28,7 @@ $count_families = DB::table('families')
         $join->on('l_from', '=', 'f_id');
         $join->on('l_file', '=', 'f_file');
     })
-    ->where('l_type', '=', 'NOTE')
+    ->where('l_type', '=', 'OBJE')
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
     ->select(['l_to', new Expression('COUNT(*) AS total')])
@@ -40,7 +40,7 @@ $count_sources = DB::table('sources')
         $join->on('l_from', '=', 's_id');
         $join->on('l_file', '=', 's_file');
     })
-    ->where('l_type', '=', 'NOTE')
+    ->where('l_type', '=', 'OBJE')
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
     ->select(['l_to', new Expression('COUNT(*) AS total')])
