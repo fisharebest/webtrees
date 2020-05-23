@@ -53,6 +53,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Ramsey\Uuid\Uuid;
 
 use function app;
+use function array_diff;
 use function array_key_exists;
 use function array_merge;
 use function array_slice;
@@ -941,7 +942,12 @@ class FunctionsEdit
         }
         // Do something (anything!) with unrecognized custom tags
         if (substr($level1tag, 0, 1) === '_' && $level1tag !== '_UID' && $level1tag !== '_PRIM' && $level1tag !== '_TODO') {
-            foreach (['DATE', 'PLAC', 'ADDR', 'AGNC', 'TYPE', 'AGE'] as $tag) {
+            $defaultTags = Config::defaultTags();
+            // omit date tag if it was already added above
+            if ($add_date) {
+                $defaultTags = array_diff($defaultTags, ['DATE']);
+            }
+            foreach ($defaultTags as $tag) {
                 if (!in_array($tag, self::$tags, true)) {
                     echo self::addSimpleTag($tree, '2 ' . $tag);
                     if ($tag === 'PLAC') {
