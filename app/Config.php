@@ -443,4 +443,22 @@ class Config
             'MARR',
         ];
     }
+    
+    /**
+     * A list of facts that are provided in the create / edit form
+     * for all unrecognised custom tags
+     *
+     * @return string[]
+     */
+    public static function defaultTags(): array
+    {
+        return [
+            'DATE',
+            'PLAC',
+            'ADDR',
+            'AGNC',
+            'TYPE',
+            'AGE'
+        ];
+    }
 }
