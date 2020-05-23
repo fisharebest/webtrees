@@ -24,6 +24,7 @@ use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
@@ -82,6 +83,9 @@ class UpgradeController extends AbstractAdminController
         'vendor',
     ];
 
+    /** @var GedcomExportService */
+    private $gedcom_export_service;
+
     /** @var UpgradeService */
     private $upgrade_service;
 
@@ -91,15 +95,18 @@ class UpgradeController extends AbstractAdminController
     /**
      * UpgradeController constructor.
      *
-     * @param TreeService    $tree_service
-     * @param UpgradeService $upgrade_service
+     * @param GedcomExportService $gedcom_export_service
+     * @param TreeService         $tree_service
+     * @param UpgradeService      $upgrade_service
      */
     public function __construct(
+        GedcomExportService $gedcom_export_service,
         TreeService $tree_service,
         UpgradeService $upgrade_service
     ) {
-        $this->tree_service    = $tree_service;
-        $this->upgrade_service = $upgrade_service;
+        $this->gedcom_export_service = $gedcom_export_service;
+        $this->tree_service          = $tree_service;
+        $this->upgrade_service       = $upgrade_service;
     }
 
     /**
@@ -295,13 +302,10 @@ class UpgradeController extends AbstractAdminController
 
         $filename = $tree->name() . date('-Y-m-d') . '.ged';
 
-        if ($data_filesystem->has($filename)) {
-            $data_filesystem->delete($filename);
-        }
+        $this->gedcom_export_service->export($tree, $stream);
 
-        $tree->exportGedcom($stream);
         fseek($stream, 0);
-        $data_filesystem->writeStream($tree->name() . date('-Y-m-d') . '.ged', $stream);
+        $data_filesystem->putStream($tree->name() . date('-Y-m-d') . '.ged', $stream);
         fclose($stream);
 
         return response(view('components/alert-success', [

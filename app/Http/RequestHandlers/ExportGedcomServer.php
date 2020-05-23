@@ -23,11 +23,13 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Tree;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use RuntimeException;
 use Throwable;
 
 use function assert;
@@ -47,6 +49,19 @@ use const PATHINFO_EXTENSION;
 class ExportGedcomServer implements RequestHandlerInterface
 {
     use ViewResponseTrait;
+
+    /** @var GedcomExportService */
+    private $gedcom_export_service;
+
+    /**
+     * ExportGedcomServer constructor.
+     *
+     * @param GedcomExportService $gedcom_export_service
+     */
+    public function __construct(GedcomExportService $gedcom_export_service)
+    {
+        $this->gedcom_export_service = $gedcom_export_service;
+    }
 
     /**
      * @param ServerRequestInterface $request
@@ -70,7 +85,12 @@ class ExportGedcomServer implements RequestHandlerInterface
 
         try {
             $stream = fopen('php://temp', 'wb+');
-            $tree->exportGedcom($stream);
+
+            if ($stream === false) {
+                throw new RuntimeException('Failed to create temporary stream');
+            }
+
+            $this->gedcom_export_service->export($tree, $stream, true);
             rewind($stream);
             $data_filesystem->putStream($filename, $stream);
             fclose($stream);

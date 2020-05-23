@@ -37,6 +37,7 @@ use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
+use RuntimeException;
 use stdClass;
 
 use function abs;
@@ -574,7 +575,11 @@ class LocationController extends AbstractAdminController
      */
     private function exportCSV(string $filename, array $columns, array $places): ResponseInterface
     {
-        $resource = fopen('php://temp', 'rb+');
+        $resource = fopen('php://temp', 'wb+');
+
+        if ($resource === false) {
+            throw new RuntimeException('Failed to create temporary stream');
+        }
 
         fputcsv($resource, $columns, ';');
 

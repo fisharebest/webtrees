@@ -51,6 +51,7 @@ abstract class AbstractGedcomRecordFactory
      */
     protected function pendingChanges(Tree $tree): Collection
     {
+        // Caution - this cache can be overwritten by GedcomExportService
         return $this->cache->remember(__CLASS__ . $tree->id(), static function () use ($tree): Collection {
             return DB::table('change')
                 ->where('gedcom_id', '=', $tree->id())

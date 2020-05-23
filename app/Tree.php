@@ -23,6 +23,7 @@ use Closure;
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
+use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
@@ -377,49 +378,14 @@ class Tree
      * @param resource $stream
      *
      * @return void
+     *
+     * @deprecated since 2.0.5.  Will be removed in 2.1.0
      */
     public function exportGedcom($stream): void
     {
-        $individual_query = DB::table('individuals')
-            ->where('i_file', '=', $this->id)
-            ->select(['i_gedcom AS gedcom']);
+        $gedcom_export_service = new GedcomExportService();
 
-        $family_query = DB::table('families')
-            ->where('f_file', '=', $this->id)
-            ->select(['f_gedcom AS gedcom']);
-
-        $sources_query = DB::table('sources')
-            ->where('s_file', '=', $this->id)
-            ->select(['s_gedcom AS gedcom']);
-
-        $other_query = DB::table('other')
-            ->where('o_file', '=', $this->id)
-            ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
-            ->select(['o_gedcom AS gedcom']);
-
-        $media_query = DB::table('media')
-            ->where('m_file', '=', $this->id)
-            ->select(['m_gedcom AS gedcom']);
-
-        $queries = [
-            $individual_query,
-            $family_query,
-            $sources_query,
-            $other_query,
-            $media_query,
-        ];
-
-        $header = FunctionsExport::gedcomHeader($this, 'UTF-8');
-
-        fwrite($stream, FunctionsExport::reformatRecord($header));
-
-        foreach ($queries as $query) {
-            foreach ($query->cursor() as $row) {
-                fwrite($stream, FunctionsExport::reformatRecord($row->gedcom));
-            }
-        }
-
-        fwrite($stream, '0 TRLR' . Gedcom::EOL);
+        $gedcom_export_service->export($this, $stream);
     }
 
     /**
