@@ -245,7 +245,7 @@ class MediaFileService
                 }
 
                 try {
-                    $tree->mediaFilesystem($data_filesystem)->writeStream($folder . $file, $uploaded_file->getStream()->detach());
+                    $tree->mediaFilesystem($data_filesystem)->putStream($folder . $file, $uploaded_file->getStream()->detach());
 
                     return $folder . $file;
                 } catch (RuntimeException | InvalidArgumentException $ex) {
