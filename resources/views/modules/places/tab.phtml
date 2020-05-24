@@ -187,7 +187,11 @@ use Fisharebest\Webtrees\I18N;
         });
 
         _drawMap();
-        $('a[href="#places"]').on('shown.bs.tab', _buildMapData);
+        if ( ! $('#osm-map').prop('clientWidth') ) {
+                $('a[href="#places"]').on('shown.bs.tab', _buildMapData);
+        } else {
+                _buildMapData();
+        }
 
         return "Leaflet map interface for webtrees-2";
     })();
