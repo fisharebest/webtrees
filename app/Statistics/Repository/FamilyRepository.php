@@ -614,7 +614,7 @@ class FamilyRepository
      *
      * @param int $total
      *
-     * @return array
+     * @return array<array<string,mixed>>
      */
     private function topTenFamilyQuery(int $total): array
     {
@@ -1253,7 +1253,7 @@ class FamilyRepository
      * @param string $age_dir
      * @param int    $total
      *
-     * @return array
+     * @return array<array<string,mixed>>
      */
     private function ageBetweenSpousesQuery(string $age_dir, int $total): array
     {
@@ -1382,7 +1382,7 @@ class FamilyRepository
      * @param int    $year1
      * @param int    $year2
      *
-     * @return array
+     * @return array<stdClass>
      */
     public function statsMarrAgeQuery($sex, $year1 = -1, $year2 = -1): array
     {
