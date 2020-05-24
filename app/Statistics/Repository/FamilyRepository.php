@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Statistics\Google\ChartChildren;
 use Fisharebest\Webtrees\Statistics\Google\ChartDivorce;
 use Fisharebest\Webtrees\Statistics\Google\ChartFamilyLargest;
@@ -132,7 +133,7 @@ class FamilyRepository
      *
      * @param int $total
      *
-     * @return array
+     * @return array<stdClass>
      */
     private function topTenGrandFamilyQuery(int $total): array
     {
@@ -290,7 +291,7 @@ class FamilyRepository
      *
      * @param int $total The total number of records to query
      *
-     * @return array
+     * @return array<stdClass>
      */
     private function ageBetweenSiblingsQuery(int $total): array
     {
@@ -356,7 +357,7 @@ class FamilyRepository
      *
      * @param int $total The total number of records to query
      *
-     * @return array
+     * @return array<mixed>
      * @throws Exception
      */
     private function ageBetweenSiblingsNoList(int $total): array
@@ -388,7 +389,7 @@ class FamilyRepository
      * @param int  $total The total number of records to query
      * @param bool $one   Include each family only once if true
      *
-     * @return array
+     * @return array<string,array>
      * @throws Exception
      */
     private function ageBetweenSiblingsList(int $total, bool $one): array
