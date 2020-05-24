@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-05-30 07:30+0000\nLast-Translator: Frans Weber <stamboom@bfle.nl>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-05-30 07:30+0000\nLast-Translator: Carmen <carmen@justcarmen.nl>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -474,7 +474,7 @@ msgstr "(Leeftijd %s)"
 #: app/Age.php:181
 #, php-format
 msgid "(aged %s)"
-msgstr "(ouderdom %s)"
+msgstr "(leeftijd %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -7294,12 +7294,12 @@ msgstr "Als een beheerder een gebruikersaccount aanmaakt wordt er geen verificat
 #: resources/views/help/name.phtml:22
 #, php-format
 msgid "If an individual does not have a surname, no slashes are needed: <%s>Jón Einarsson<%s>"
-msgstr "Als een persoon geen achternaam heeft zijn, geen schuine strepen benodigd:<%s>Jón Einarsson<%s>"
+msgstr "Als een persoon geen achternaam heeft zijn, geen schuine strepen benodigd: <%s>Jón Einarsson<%s>"
 
 #: resources/views/help/name.phtml:19
 #, php-format
 msgid "If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
-msgstr "Als een persoon twee afzonderlijke achternamen heeft, moeten beiden ingesloten worden door schuine strepen:<%s>José Antonio/Gómez/ /Iglesias/<%s>"
+msgstr "Als een persoon twee afzonderlijke achternamen heeft, moeten beiden ingesloten worden door schuine strepen: <%s>José Antonio/Gómez/ /Iglesias/<%s>"
 
 #: resources/views/help/name.phtml:28
 #, php-format
@@ -7309,12 +7309,12 @@ msgstr "Als een persoon bekend was onder zijn roepnaam welke geen deel is van zi
 #: resources/views/help/name.phtml:25
 #, php-format
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
-msgstr "Als een persoon niet bekend was met zijn eerste voornaam, moet de verkozen naam getoond worden met een asterisk:<%s>John Paul* /Smith/<%s>"
+msgstr "Als een persoon niet bekend was met zijn eerste voornaam, moet de voorkeursnaam getoond worden met een asterisk: <%s>John Paul* /Smith/<%s>"
 
 #: resources/views/help/name.phtml:16
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
-msgstr "Als de achternaam onbekend is, gebruik dan lege schuine strepen:<%s>Marie//<%s>"
+msgstr "Als de achternaam onbekend is, gebruik dan lege schuine strepen: <%s>Marie //<%s>"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
@@ -13616,7 +13616,7 @@ msgstr "Het <b>naam</b> veld bevat de volledige naam van de persoon, zoals zij d
 
 #: resources/views/help/surname.phtml:8
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr "Het <b>achternaam</b> veld bevat een naam die gebruikt owrdt voor het sorteren en groeperen. Het kan verschillen van de echte achternaam die altijd uit het <b>naam</b> veld wordt gehaald. Dit veld kan gebruikt worden om achternamen te sorteren met of zonder voorvoegsel (Gogh / van Gogh) en om spellings variaties en inflecties te groeperen (Kowalski / Kowalska). Als het noodzakelijk is een persoon te sorteren onder méér dan één achternaam, moet iedere naam gescheiden worden door een komma."
+msgstr "Het <b>achternaam</b> veld bevat een naam die gebruikt wordt voor het sorteren en groeperen. Het kan verschillen van de echte achternaam die altijd uit het <b>naam</b> veld wordt gehaald. Dit veld kan gebruikt worden om achternamen te sorteren met of zonder voorvoegsel (Gogh / van Gogh) en om spellingvariaties en verbuigingen te groeperen (Kowalski / Kowalska). Als het noodzakelijk is een persoon te sorteren onder meer dan een achternaam, moet iedere naam gescheiden worden door een komma."
 
 #: app/Http/Controllers/AdminTreesController.php:1507
 #, php-format
@@ -14048,7 +14048,7 @@ msgstr "De inzender is aangemaakt"
 #: resources/views/help/name.phtml:13
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr "De achternaam staat tussen schuine strepen:<%s>Jan Pieter /Smid/<%s>"
+msgstr "De achternaam staat tussen schuine strepen: <%s>Jan Pieter /Smid/<%s>"
 
 #: resources/views/admin/site-preferences.phtml:55
 #: resources/views/admin/users-edit.phtml:122
@@ -14747,7 +14747,7 @@ msgstr "Dit betekent normalerwijze dat u de permissies voor de map moet verander
 
 #: app/Services/UpgradeService.php:254
 msgid "This website is being upgraded. Try again in a few minutes."
-msgstr "Deze website wordt geupdate. Probeer het over een paar minuten opnieuw."
+msgstr "Deze website wordt geüpdatet. Probeer het over een paar minuten opnieuw."
 
 #: resources/views/layouts/offline.phtml:65
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
@@ -20206,7 +20206,7 @@ msgstr "webtrees bericht"
 
 #: resources/views/setup/step-3-database-type.phtml:29
 msgid "webtrees needs a database to store your genealogy data."
-msgstr "webtrees heeft een database nodig om uw genealogiegegevens op te slaan."
+msgstr "webtrees heeft een database nodig om uw genealogische gegevens op te slaan."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:49
