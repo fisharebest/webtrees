@@ -2605,7 +2605,7 @@ class ReportParserGenerate extends ReportParserBase
     }
 
         /**
-     * Handle <kekule_number />
+     * Handle <kekuleNumber />
      * Prints the kekule order number
      *
      * @return void
@@ -2730,7 +2730,7 @@ class ReportParserGenerate extends ReportParserBase
         $list[$pid]->kekule_number = 1;
         while (count($genlist) > 0) {
             $id = array_shift($genlist);
-            $kekule_number = array_shift($kekulelist);
+            $kekule_number = array_shift($kekulelist) + 1;
             if (strpos($id, 'empty') === 0) {
                 continue; // id can be something like “empty7”
             }
@@ -2743,7 +2743,6 @@ class ReportParserGenerate extends ReportParserBase
                     $list[$husband->xref()]->generation    = $list[$id]->generation + 1;
                     $list[$husband->xref()]->kekule_number = $kekule_number;
                 }
-                $list[$husband->xref()]->generation = $list[$id]->generation + 1;
                 if ($wife) {
                     $list[$wife->xref()]                = $wife;
                     $list[$wife->xref()]->generation    = $list[$id]->generation + 1;
@@ -2752,11 +2751,11 @@ class ReportParserGenerate extends ReportParserBase
                 if ($generations == -1 || $list[$id]->generation + 1 < $generations) {
                     if ($husband) {
                         $genlist[]    = $husband->xref();
-                        $kekulelist[] = $kekule_number * 2;
+                        $kekulelist[] = ($kekule_number) * 2 - 1;
                     }
                     if ($wife) {
                         $genlist[] = $wife->xref();
-                        $kekulelist[] = ($kekule_number + 1) * 2;
+                        $kekulelist[] = ($kekule_number + 1) * 2 - 1;
                     }
                 }
                 if ($children) {
