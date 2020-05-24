@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-01-07 03:50+0000\n"
-"Last-Translator: Frans Weber <stamboom@bfle.nl>\n"
+"PO-Revision-Date: 2020-05-30 07:30+0000\n"
+"Last-Translator: Carmen <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
 "Language: nl\n"
@@ -561,19 +561,19 @@ msgstr "&lt;selecteer&gt;"
 #: app/I18N.php:329 app/I18N.php:333
 #, php-format
 msgid "(aged %s)"
-msgstr "(ouderdom %s)"
+msgstr "(leeftijd %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:323
 #, php-format
 msgid "(aged less than %s)"
-msgstr "(ouderdom minder dan %s)"
+msgstr "(leeftijd minder dan %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
 #: app/I18N.php:326
 #, php-format
 msgid "(aged more than %s)"
-msgstr "(ouderdom meer dan %s)"
+msgstr "(leeftijd meer dan %s)"
 
 #. I18N: %s is a placeholder for a number
 #: app/I18N.php:230
@@ -7291,12 +7291,17 @@ msgstr "Als een beheerder een gebruikersaccount aanmaakt wordt er geen verificat
 #: help_text.php:228
 #, php-format
 msgid "If an individual does not have a surname, no slashes are needed: <%s>Jón Einarsson<%s>"
-msgstr "Als een persoon geen achternaam heeft zijn, geen schuine strepen benodigd:<%s>Jón Einarsson<%s>"
+msgstr ""
+"Als een persoon geen achternaam heeft zijn, geen schuine strepen benodigd: "
+"<%s>Jón Einarsson<%s>"
 
 #: help_text.php:226
 #, php-format
 msgid "If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
-msgstr "Als een persoon twee afzonderlijke achternamen heeft, moeten beiden ingesloten worden door schuine strepen:<%s>José Antonio/Gómez/ /Iglesias/<%s>"
+msgstr ""
+"Als een persoon twee afzonderlijke achternamen heeft, moeten beiden "
+"ingesloten worden door schuine strepen: <%s>José Antonio/Gómez/ /Iglesias/"
+"<%s>"
 
 #: help_text.php:232
 #, php-format
@@ -7306,12 +7311,16 @@ msgstr "Als een persoon bekend was onder zijn roepnaam welke geen deel is van zi
 #: help_text.php:230
 #, php-format
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
-msgstr "Als een persoon niet bekend was met zijn eerste voornaam, moet de verkozen naam getoond worden met een asterisk:<%s>John Paul* /Smith/<%s>"
+msgstr ""
+"Als een persoon niet bekend was met zijn eerste voornaam, moet de "
+"voorkeursnaam getoond worden met een asterisk: <%s>John Paul* /Smith/<%s>"
 
 #: help_text.php:224
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
-msgstr "Als de achternaam onbekend is, gebruik dan lege schuine strepen:<%s>Marie//<%s>"
+msgstr ""
+"Als de achternaam onbekend is, gebruik dan lege schuine strepen: <%s>Marie "
+"//<%s>"
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:415
@@ -13511,7 +13520,14 @@ msgstr "Het <b>naam</b> veld bevat de volledige naam van de persoon, zoals zij d
 
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr "Het <b>achternaam</b> veld bevat een naam die gebruikt owrdt voor het sorteren en groeperen. Het kan verschillen van de echte achternaam die altijd uit het <b>naam</b> veld wordt gehaald. Dit veld kan gebruikt worden om achternamen te sorteren met of zonder voorvoegsel (Gogh / van Gogh) en om spellings variaties en inflecties te groeperen (Kowalski / Kowalska). Als het noodzakelijk is een persoon te sorteren onder méér dan één achternaam, moet iedere naam gescheiden worden door een komma."
+msgstr ""
+"Het <b>achternaam</b> veld bevat een naam die gebruikt wordt voor het "
+"sorteren en groeperen. Het kan verschillen van de echte achternaam die "
+"altijd uit het <b>naam</b> veld wordt gehaald. Dit veld kan gebruikt worden "
+"om achternamen te sorteren met of zonder voorvoegsel (Gogh / van Gogh) en om "
+"spellingvariaties en verbuigingen te groeperen (Kowalski / Kowalska). Als "
+"het noodzakelijk is een persoon te sorteren onder meer dan een achternaam, "
+"moet iedere naam gescheiden worden door een komma."
 
 #: admin_trees_manage.php:148
 #, php-format
@@ -13905,7 +13921,7 @@ msgstr "De grootte van de stamboom, vroegste en laatste gebeurtenissen, gemeensc
 #: help_text.php:222
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr "De achternaam staat tussen schuine strepen:<%s>Jan Pieter /Smid/<%s>"
+msgstr "De achternaam staat tussen schuine strepen: <%s>Jan Pieter /Smid/<%s>"
 
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:965
@@ -14645,7 +14661,8 @@ msgstr "Dit betekent normalerwijze dat u de permissies voor de map moet verander
 
 #: admin_site_upgrade.php:41
 msgid "This website is being upgraded. Try again in a few minutes."
-msgstr "Deze website wordt geupdate. Probeer het over een paar minuten opnieuw."
+msgstr ""
+"Deze website wordt geüpdatet. Probeer het over een paar minuten opnieuw."
 
 #: site-offline.php:71
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
