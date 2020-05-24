@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-09 18:04+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Occitan <http://translate.webtrees.net/projects/webtrees/"
+"PO-Revision-Date: 2020-05-30 07:30+0000\n"
+"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
+"Language-Team: Occitan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/oc/>\n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
@@ -557,7 +557,7 @@ msgstr "&lt;selecciona&gt;"
 #: app/I18N.php:329 app/I18N.php:333
 #, php-format
 msgid "(aged %s)"
-msgstr "(edat %s ans)"
+msgstr "(edat %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:323
