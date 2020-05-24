@@ -1,22 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-10 20:40+0100\n"
-"PO-Revision-Date: 2020-04-20 14:19+0000\n"
-"Last-Translator: Jorge Ruiz Calpe <loquiyoz@gmail.com>\n"
-"Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\n"
-"Language: es\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Spanish\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-05-30 07:30+0000\nLast-Translator: Jonathan Jaubart <dev@jaubart.com>\nLanguage-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Spanish\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -491,7 +474,7 @@ msgstr ""
 #: app/Age.php:181
 #, php-format
 msgid "(aged %s)"
-msgstr "(%s años de edad)"
+msgstr "(%s de edad)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
