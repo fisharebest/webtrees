@@ -1226,18 +1226,8 @@ class GedcomTag
                 return I18N::translate('Holocaust');
 
             case '_INTE':
-                if ($sex === 'M') {
-                    /* I18N: gedcom tag _INTE */
-                    return I18N::translateContext('MALE', 'Interred');
-                }
-
-                if ($sex === 'F') {
-                    /* I18N: gedcom tag _INTE */
-                    return I18N::translateContext('FEMALE', 'Interred');
-                }
-
                 /* I18N: gedcom tag _INTE */
-                return I18N::translate('Interred');
+                return I18N::translate('Interment');
 
             case '_LOC':
                 /* I18N: gedcom tag _LOC */
@@ -1340,7 +1330,7 @@ class GedcomTag
                 return I18N::translate('Scrapbook');
             case '_SEPR':
                 /* I18N: gedcom tag _SEPR */
-                return I18N::translate('Separated');
+                return I18N::translate('Separation');
             case '_SSHOW':
                 /* I18N: gedcom tag _SSHOW */
                 return I18N::translate('Slide show');
