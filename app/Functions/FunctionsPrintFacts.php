@@ -129,7 +129,7 @@ class FunctionsPrintFacts
         }
 
         // Event of close relative
-        if (preg_match('/^_[A-Z_]{3,5}_[A-Z0-9]{4}$/', $fact->getTag())) {
+        if ($fact->getTag() === 'EVEN' && $fact->value() === 'CLOSE_RELATIVE') {
             $styleadd = trim($styleadd . ' wt-relation-fact collapse');
         }
 
@@ -157,7 +157,7 @@ class FunctionsPrintFacts
                     // Some users (just Meliza?) use "1 EVEN/2 TYPE BIRT". Translate the TYPE.
                     $label = GedcomTag::getLabel($type, $label_person);
                     $type  = ''; // Do not print this again
-                } elseif ($type) {
+                } elseif ($type !== '') {
                     // We don't have a translation for $type - but a custom translation might exist.
                     $label = I18N::translate(e($type));
                     $type  = ''; // Do not print this again
@@ -315,6 +315,7 @@ class FunctionsPrintFacts
                 // Display the value for all other facts/events
                 switch ($fact->value()) {
                     case '':
+                    case 'CLOSE_RELATIVE':
                         // Nothing to display
                         break;
                     case 'N':

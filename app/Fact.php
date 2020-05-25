@@ -442,7 +442,7 @@ class Fact
     /**
      * The Person/Family record where this Fact came from
      *
-     * @return Individual|Family|Source|Repository|Media|Note|GedcomRecord
+     * @return Individual|Family|Source|Repository|Media|Note|Submitter|Submission|Location|Header|GedcomRecord
      */
     public function record()
     {
