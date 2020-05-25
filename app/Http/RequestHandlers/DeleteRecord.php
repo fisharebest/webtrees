@@ -79,12 +79,12 @@ class DeleteRecord implements RequestHandlerInterface
                             $new_gedcom = $this->removeLinks($new_gedcom, $linker->xref());
                             $relict->updateRecord($new_gedcom, false);
                             /* I18N: %s are names of records, such as sources, repositories or individuals */
-                            FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $relict->fullName(), $family->fullName()));
+                            FlashMessages::addMessage(I18N::translate('The link from “<a href="%1$s">%2$s</a>” to “%3$s” has been deleted.', $relict->url(), $relict->fullName(), $family->fullName()));
                         }
                     } else {
                         // Remove links from $linker to $record
                         /* I18N: %s are names of records, such as sources, repositories or individuals */
-                        FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $linker->fullName(), $record->fullName()));
+                        FlashMessages::addMessage(I18N::translate('The link from “<a href="%1$s">%2$s</a>” to “%3$s” has been deleted.', $linker->url(), $linker->fullName(), $record->fullName()));
                         $linker->updateRecord($new_gedcom, false);
                     }
                 }
