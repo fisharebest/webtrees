@@ -444,12 +444,6 @@ class GedcomTag
      */
     public static function getLabel($tag, GedcomRecord $record = null): string
     {
-        if ($record instanceof Individual) {
-            $sex = $record->sex();
-        } else {
-            $sex = 'U';
-        }
-
         switch ($tag) {
             case 'ABBR':
                 /* I18N: gedcom tag ABBR */
@@ -463,6 +457,9 @@ class GedcomTag
             case 'ADR2':
                 /* I18N: gedcom tag ADD2 */
                 return I18N::translate('Address line 2');
+            case 'ADR3':
+                /* I18N: gedcom tag ADD2 */
+                return I18N::translate('Address line 3');
             case 'ADOP':
                 /* I18N: gedcom tag ADOP */
                 return I18N::translate('Adoption');
@@ -1083,45 +1080,15 @@ class GedcomTag
                 return I18N::translate('URL');
 
             case '_ADPF':
-                if ($sex === 'M') {
-                    /* I18N: gedcom tag _ADPF */
-                    return I18N::translateContext('MALE', 'Adopted by father');
-                }
-
-                if ($sex === 'F') {
-                    /* I18N: gedcom tag _ADPF */
-                    return I18N::translateContext('FEMALE', 'Adopted by father');
-                }
-
                 /* I18N: gedcom tag _ADPF */
                 return I18N::translate('Adopted by father');
 
             case '_ADPM':
-                if ($sex === 'M') {
-                    /* I18N: gedcom tag _ADPM */
-                    return I18N::translateContext('MALE', 'Adopted by mother');
-                }
-
-                if ($sex === 'F') {
-                    /* I18N: gedcom tag _ADPM */
-                    return I18N::translateContext('FEMALE', 'Adopted by mother');
-                }
-
                 /* I18N: gedcom tag _ADPM */
                 return I18N::translate('Adopted by mother');
 
             case '_AKA':
             case '_AKAN':
-                if ($sex === 'M') {
-                    /* I18N: gedcom tag _AKA */
-                    return I18N::translateContext('MALE', 'Also known as');
-                }
-
-                if ($sex === 'F') {
-                    /* I18N: gedcom tag _AKA */
-                    return I18N::translateContext('FEMALE', 'Also known as');
-                }
-
                 /* I18N: gedcom tag _AKA */
                 return I18N::translate('Also known as');
 
@@ -1278,30 +1245,10 @@ class GedcomTag
                 /* I18N: gedcom tag _NLIV */
                 return I18N::translate('Not living');
             case '_NMAR':
-                if ($sex === 'M') {
-                    /* I18N: gedcom tag _NMAR */
-                    return I18N::translateContext('MALE', 'Never married');
-                }
-
-                if ($sex === 'F') {
-                    /* I18N: gedcom tag _NMAR */
-                    return I18N::translateContext('FEMALE', 'Never married');
-                }
-
                 /* I18N: gedcom tag _NMAR */
                 return I18N::translate('Never married');
 
             case '_NMR':
-                if ($sex === 'M') {
-                    /* I18N: gedcom tag _NMR */
-                    return I18N::translateContext('MALE', 'Not married');
-                }
-
-                if ($sex === 'F') {
-                    /* I18N: gedcom tag _NMR */
-                    return I18N::translateContext('FEMALE', 'Not married');
-                }
-
                 /* I18N: gedcom tag _NMR */
                 return I18N::translate('Not married');
 
@@ -1314,15 +1261,6 @@ class GedcomTag
                 /* I18N: gedcom tag _PRMN */
                 return I18N::translate('Permanent number');
             case '_RNAME':
-                // Family Tree Builder user "1 NAME / 2 _RNAME"
-                if ($sex === 'M') {
-                    return I18N::translateContext('MALE', 'Religious name');
-                }
-
-                if ($sex === 'F') {
-                    return I18N::translateContext('FEMALE', 'Religious name');
-                }
-
                 return I18N::translate('Religious name');
 
             case '_SCBK':
