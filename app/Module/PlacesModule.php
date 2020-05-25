@@ -246,7 +246,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
             // Birth of a child
             $url  = $record->url();
             $name = $record->fullName();
-            $tag  = GedcomTag::getLabel('_BIRT_CHIL', $record);
+            $tag  = GedcomTag::getLabel('_BIRT_CHIL');
         }
 
         return [

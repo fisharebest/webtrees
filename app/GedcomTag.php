@@ -437,12 +437,11 @@ class GedcomTag
     /**
      * Translate a tag, for an (optional) record
      *
-     * @param string            $tag
-     * @param GedcomRecord|null $record
+     * @param string $tag
      *
      * @return string
      */
-    public static function getLabel($tag, GedcomRecord $record = null): string
+    public static function getLabel($tag): string
     {
         switch ($tag) {
             case 'ABBR':
@@ -1316,7 +1315,7 @@ class GedcomTag
                 if (strpos($tag, ':') !== false) {
                     [, $tag] = explode(':', $tag, 2);
 
-                    return self::getLabel($tag, $record);
+                    return self::getLabel($tag);
                 }
 
                 // Still no translation? Highlight this as an error
@@ -1339,7 +1338,7 @@ class GedcomTag
         return
             '<' . $element . ' class="fact_' . $tag . '">' .
             /* I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation. */
-            I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', self::getLabel($tag, $record), $value) .
+            I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', self::getLabel($tag), $value) .
             '</' . $element . '>';
     }
 
@@ -1549,7 +1548,7 @@ class GedcomTag
 
         $facts = [];
         foreach ($tags as $tag) {
-            $facts[$tag] = self::getLabel($tag, null);
+            $facts[$tag] = self::getLabel($tag);
         }
         uasort($facts, '\Fisharebest\Webtrees\I18N::strcasecmp');
 

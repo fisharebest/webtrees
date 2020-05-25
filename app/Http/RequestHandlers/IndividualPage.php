@@ -275,7 +275,7 @@ class IndividualPage implements RequestHandlerInterface
         for ($i = 0; $i < $ct; $i++) {
             $tag = $nmatch[$i][1];
             if ($tag !== 'SOUR' && $tag !== 'NOTE' && $tag !== 'SPFX') {
-                echo '<dt class="col-md-4 col-lg-3">', GedcomTag::getLabel($tag, $individual), '</dt>';
+                echo '<dt class="col-md-4 col-lg-3">', GedcomTag::getLabel($tag), '</dt>';
                 echo '<dd class="col-md-8 col-lg-9">'; // Before using dir="auto" on this field, note that Gecko treats this as an inline element but WebKit treats it as a block element
                 if (isset($nmatch[$i][2])) {
                     $name = e($nmatch[$i][2]);

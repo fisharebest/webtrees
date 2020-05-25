@@ -178,7 +178,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
         // Edit existing tags, grouped together
         if (preg_match_all('/2 ' . $tag . ' (.+)/', $namerec, $match)) {
             foreach ($match[1] as $value) {
-                echo FunctionsEdit::addSimpleTag($tree, '2 ' . $tag . ' ' . $value, '', GedcomTag::getLabel('NAME:' . $tag, $individual));
+                echo FunctionsEdit::addSimpleTag($tree, '2 ' . $tag . ' ' . $value, '', GedcomTag::getLabel('NAME:' . $tag));
                 if ($tag === '_MARNM') {
                     preg_match_all('/\/([^\/]*)\//', $value, $matches);
                     echo FunctionsEdit::addSimpleTag($tree, '2 _MARNM_SURN ' . implode(',', $matches[1]));
@@ -187,7 +187,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
         }
         // Allow a new tag to be entered
         if (!array_key_exists($tag, $name_fields)) {
-            echo FunctionsEdit::addSimpleTag($tree, '0 ' . $tag, '', GedcomTag::getLabel('NAME:' . $tag, $individual));
+            echo FunctionsEdit::addSimpleTag($tree, '0 ' . $tag, '', GedcomTag::getLabel('NAME:' . $tag));
             if ($tag === '_MARNM') {
                 echo FunctionsEdit::addSimpleTag($tree, '0 _MARNM_SURN');
             }

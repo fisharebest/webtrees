@@ -820,17 +820,17 @@ class FunctionsEdit
 
             // Dates need different labels, depending on whether they are inside sources.
             if ($inSource && $type === 'DATE') {
-                echo self::addSimpleTag($tree, $subrecord, '', GedcomTag::getLabel($label, $record));
+                echo self::addSimpleTag($tree, $subrecord, '', GedcomTag::getLabel($label));
             } elseif (!$inSource && $type === 'DATE') {
-                echo self::addSimpleTag($tree, $subrecord, $level1type, GedcomTag::getLabel($label, $record));
+                echo self::addSimpleTag($tree, $subrecord, $level1type, GedcomTag::getLabel($label));
                 if ($level === 2) {
                     // We already have a date - no need to add one.
                     $add_date = false;
                 }
             } elseif ($type === 'STAT') {
-                echo self::addSimpleTag($tree, $subrecord, $level1type, GedcomTag::getLabel($label, $record));
+                echo self::addSimpleTag($tree, $subrecord, $level1type, GedcomTag::getLabel($label));
             } else {
-                echo self::addSimpleTag($tree, $subrecord, $level0type, GedcomTag::getLabel($label, $record));
+                echo self::addSimpleTag($tree, $subrecord, $level0type, GedcomTag::getLabel($label));
             }
 
             // Get a list of tags present at the next level

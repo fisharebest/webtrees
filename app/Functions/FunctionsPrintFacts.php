@@ -155,7 +155,7 @@ class FunctionsPrintFacts
             case 'FACT':
                 if (GedcomTag::isTag($type)) {
                     // Some users (just Meliza?) use "1 EVEN/2 TYPE BIRT". Translate the TYPE.
-                    $label = GedcomTag::getLabel($type, $label_person);
+                    $label = GedcomTag::getLabel($type);
                     $type  = ''; // Do not print this again
                 } elseif ($type !== '') {
                     // We don't have a translation for $type - but a custom translation might exist.
@@ -170,7 +170,7 @@ class FunctionsPrintFacts
                 // This is a hack for a proprietory extension. Is it still used/needed?
                 $utype = strtoupper($type);
                 if ($utype === 'CIVIL' || $utype === 'PARTNERS' || $utype === 'RELIGIOUS') {
-                    $label = GedcomTag::getLabel('MARR_' . $utype, $label_person);
+                    $label = GedcomTag::getLabel('MARR_' . $utype);
                     $type  = ''; // Do not print this again
                 } else {
                     $label = $fact->label();
@@ -544,7 +544,7 @@ class FunctionsPrintFacts
                     $label = GedcomCodeRela::getValue($rmatch[1], $person);
                 } else {
                     // Use a default label
-                    $label = GedcomTag::getLabel('ASSO', $person);
+                    $label = GedcomTag::getLabel('ASSO');
                 }
 
                 $values = ['<a href="' . e($person->url()) . '">' . $person->fullName() . '</a>'];
@@ -792,7 +792,7 @@ class FunctionsPrintFacts
                         $factname = trim($ematch[1]);
                         echo $factname;
                     } else {
-                        echo GedcomTag::getLabel($factname, $parent);
+                        echo GedcomTag::getLabel($factname);
                     }
                 } elseif ($can_edit) {
                     echo '<a href="' . e(route(EditFact::class, [
@@ -800,7 +800,7 @@ class FunctionsPrintFacts
                             'fact_id' => $fact->id(),
                             'tree'    => $tree->name(),
                         ])) . '" title="', I18N::translate('Edit'), '">';
-                    echo GedcomTag::getLabel($factname, $parent), '</a>';
+                    echo GedcomTag::getLabel($factname), '</a>';
                     echo '<div class="editfacts nowrap">';
                     if (preg_match('/^@.+@$/', $match[$j][2])) {
                         // Inline sources can't be edited. Attempting to save one will convert it
@@ -811,7 +811,7 @@ class FunctionsPrintFacts
                     }
                     echo view('edit/icon-fact-delete', ['fact' => $fact]);
                 } else {
-                    echo GedcomTag::getLabel($factname, $parent);
+                    echo GedcomTag::getLabel($factname);
                 }
                 echo '</th>';
                 echo '<td class="', $styleadd, '">';
@@ -1031,11 +1031,11 @@ class FunctionsPrintFacts
                         $factname = trim($ematch[1]);
                         echo $factname;
                     } else {
-                        echo GedcomTag::getLabel($factname, $parent);
+                        echo GedcomTag::getLabel($factname);
                     }
                 } elseif ($factname !== 'NOTE') {
                     // Note is already printed
-                    echo GedcomTag::getLabel($factname, $parent);
+                    echo GedcomTag::getLabel($factname);
                     if ($note) {
                         echo '<a class="btn btn-link" href="' . e($note->url()) . '" title="' . I18N::translate('View') . '"><span class="sr-only">' . I18N::translate('View') . '</span></a>';
                     }
@@ -1133,16 +1133,16 @@ class FunctionsPrintFacts
                         $factname = $ematch[1];
                         echo $factname;
                     } else {
-                        echo GedcomTag::getLabel($factname, $parent);
+                        echo GedcomTag::getLabel($factname);
                     }
                 } elseif ($can_edit) {
-                    echo GedcomTag::getLabel($factname, $parent);
+                    echo GedcomTag::getLabel($factname);
                     echo '<div class="editfacts nowrap">';
                     echo view('edit/icon-fact-copy', ['fact' => $fact]);
                     echo view('edit/icon-fact-delete', ['fact' => $fact]);
                     echo '</div>';
                 } else {
-                    echo GedcomTag::getLabel($factname, $parent);
+                    echo GedcomTag::getLabel($factname);
                 }
                 echo '</th>';
                 echo '<td class="', $styleadd, '">';
