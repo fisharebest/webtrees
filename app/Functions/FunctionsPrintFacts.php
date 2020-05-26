@@ -48,6 +48,7 @@ use Fisharebest\Webtrees\Tree;
 use Ramsey\Uuid\Uuid;
 
 use function e;
+use function strtoupper;
 use function view;
 
 use const PREG_SET_ORDER;
@@ -151,34 +152,29 @@ class FunctionsPrintFacts
         }
 
         switch ($fact->tag()) {
-            case 'EVEN':
-            case 'FACT':
-                if (GedcomTag::isTag($type)) {
-                    // Some users (just Meliza?) use "1 EVEN/2 TYPE BIRT". Translate the TYPE.
-                    $label = GedcomTag::getLabel($type);
-                    $type  = ''; // Do not print this again
-                } elseif ($type !== '') {
-                    // We don't have a translation for $type - but a custom translation might exist.
-                    $label = I18N::translate(e($type));
-                    $type  = ''; // Do not print this again
-                } else {
-                    // An unspecified fact/event
-                    $label = $fact->label();
-                }
-                break;
+            // Special handling for marriage labels.
             case 'MARR':
-                // This is a hack for a proprietory extension. Is it still used/needed?
-                $utype = strtoupper($type);
-                if ($utype === 'CIVIL' || $utype === 'PARTNERS' || $utype === 'RELIGIOUS') {
-                    $label = GedcomTag::getLabel('MARR_' . $utype);
-                    $type  = ''; // Do not print this again
-                } else {
-                    $label = $fact->label();
+                switch (strtoupper($type)) {
+                    case 'CIVIL':
+                        $label = I18N::translate('Civil marriage');
+                        $type  = ''; // Do not print this again
+                        break;
+                    case 'PARTNERS':
+                        $label = I18N::translate('Registered partnership');
+                        $type  = ''; // Do not print this again
+                        break;
+                    case 'RELIGIOUS':
+                        $label = I18N::translate('Religious marriage');
+                        $type  = ''; // Do not print this again
+                        break;
+                    default:
+                        $label = $fact->label();
                 }
                 break;
+
             default:
                 // Normal fact/event
-                $label = GedcomTag::getLabel($fact->record()::RECORD_TYPE . ':' . $fact->tag());
+                $label = $fact->label();
                 break;
         }
 
@@ -342,16 +338,9 @@ class FunctionsPrintFacts
         }
 
         // Print the type of this fact/event
-        if ($type) {
-            $utype = strtoupper($type);
-            // Events of close relatives, e.g. _MARR_CHIL
-            if (substr($fact->tag(), 0, 6) === '_MARR_' && ($utype === 'CIVIL' || $utype === 'PARTNERS' || $utype === 'RELIGIOUS')) {
-                // Translate MARR/TYPE using the code that supports MARR_CIVIL, etc. tags
-                $type = GedcomTag::getLabel('MARR_' . $utype);
-            } else {
-                // Allow (custom) translations for other types
-                $type = I18N::translate($type);
-            }
+        if ($type !== '' && $fact->tag() !== 'EVEN' && $fact->tag() !== 'FACT') {
+            // Allow (custom) translations for other types
+            $type = I18N::translate($type);
             echo GedcomTag::getLabelValue('TYPE', e($type));
         }
 

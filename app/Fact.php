@@ -75,10 +75,6 @@ class Fact
         '_MARI',
         '_MBON',
         'MARR',
-        'MARR_CIVIL',
-        'MARR_RELIGIOUS',
-        'MARR_PARTNERS',
-        'MARR_UNKNOWN',
         '_COML',
         '_STAT',
         '_SEPR',
@@ -466,11 +462,22 @@ class Fact
     public function label(): string
     {
         // Custom FACT/EVEN - with a TYPE
-        if (($this->tag === 'FACT' || $this->tag === 'EVEN') && $this->attribute('TYPE') !== '') {
-            return I18N::translate(e($this->attribute('TYPE')));
+        if ($this->tag === 'FACT' || $this->tag === 'EVEN') {
+            $type = $this->attribute('TYPE');
+
+            if ($type !== '') {
+                // Allow user-translations of custom types.
+                $translated = I18N::translate($type);
+
+                if ($translated !== $type) {
+                    return $translated;
+                }
+
+                return e($type);
+            }
         }
 
-        return GedcomTag::getLabel($this->tag);
+        return GedcomTag::getLabel($this->record::RECORD_TYPE . ':' . $this->tag);
     }
 
     /**

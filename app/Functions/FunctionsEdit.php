@@ -65,12 +65,12 @@ use function in_array;
 use function preg_match;
 use function preg_match_all;
 use function route;
-use function strpos;
 use function strstr;
 use function strtolower;
 use function strtoupper;
 use function substr;
 use function trim;
+use function ucfirst;
 use function view;
 
 /**
@@ -615,18 +615,17 @@ class FunctionsEdit
             $html .= 'document.getElementById(\'' . $id . '\').style.display=\'none\'';
             $html .= '</script>';
             $html .= '<select id="' . $id . '_sel" oninput="document.getElementById(\'' . $id . '\').value=this.value" >';
-            foreach (['Unknown', 'Civil', 'Religious', 'Partners'] as $key) {
-                if ($key === 'Unknown') {
-                    $html .= '<option value="" ';
-                } else {
-                    $html .= '<option value="' . $key . '" ';
-                }
-                $a = strtolower($key);
-                $b = strtolower($value);
-                if ($b !== '' && strpos($a, $b) !== false || strpos($b, $a) !== false) {
+            foreach ([
+                '' => '',
+                'Civil' => I18N::translate('Civil marriage'),
+                'Religious' => I18N::translate('Religious marriage'),
+                'Partners' => I18N::translate('Registered partnership'),
+            ] as $key => $type_label) {
+                $html .= '<option value="' . $key . '" ';
+                if (strtolower($key) === strtolower($value)) {
                     $html .= 'selected';
                 }
-                $html .= '>' . GedcomTag::getLabel('MARR_' . strtoupper($key)) . '</option>';
+                $html .= '>' . $type_label . '</option>';
             }
             $html .= '</select>';
         }
@@ -877,7 +876,7 @@ class FunctionsEdit
         // handle  MARRiage TYPE
         $type_val = '';
         if (substr($level1tag, 0, 5) === 'MARR_') {
-            $type_val  = substr($level1tag, 5);
+            $type_val  = ucfirst(strtolower(substr($level1tag, 5)));
             $level1tag = 'MARR';
         }
 
