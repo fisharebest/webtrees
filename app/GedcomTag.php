@@ -852,12 +852,6 @@ class GedcomTag
                 /* I18N: gedcom tag MEDI */
                 return I18N::translate('Media type');
             case 'NAME':
-                if ($record instanceof Repository) {
-                    /* I18N: gedcom tag REPO:NAME */
-                    return I18N::translateContext('Repository', 'Name');
-                }
-
-                /* I18N: gedcom tag NAME */
                 return I18N::translate('Name');
             case 'NAME:FONE':
                 return I18N::translate('Phonetic name');
