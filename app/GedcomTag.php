@@ -852,6 +852,7 @@ class GedcomTag
                 /* I18N: gedcom tag MEDI */
                 return I18N::translate('Media type');
             case 'NAME':
+                /* I18N: gedcom tag NAME */
                 return I18N::translate('Name');
             case 'NAME:FONE':
                 return I18N::translate('Phonetic name');
@@ -953,6 +954,8 @@ class GedcomTag
             case 'REPO':
                 /* I18N: gedcom tag REPO */
                 return I18N::translate('Repository');
+            case 'REPO:NAME':
+                return I18N::translateContext('Repository', 'Name');
             case 'RESI':
                 /* I18N: gedcom tag RESI */
                 return I18N::translate('Residence');
