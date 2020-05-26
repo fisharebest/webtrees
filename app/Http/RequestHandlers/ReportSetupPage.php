@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
+use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -34,6 +35,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function e;
 use function redirect;
 use function route;
 
@@ -44,18 +46,21 @@ class ReportSetupPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /**
-     * @var ModuleService
-     */
+    /** @var LocalizationService */
+    private $localization_service;
+
+    /** @var ModuleService */
     private $module_service;
 
     /**
      * ReportEngineController constructor.
      *
-     * @param ModuleService $module_service
+     * @param LocalizationService $localization_service
+     * @param ModuleService       $module_service
      */
-    public function __construct(ModuleService $module_service)
+    public function __construct(LocalizationService $localization_service, ModuleService $module_service)
     {
+        $this->localization_service = $localization_service;
         $this->module_service = $module_service;
     }
 
@@ -136,10 +141,14 @@ class ReportSetupPage implements RequestHandlerInterface
                     break;
 
                 case 'DATE':
+                    // Need to know if the user prefers DMY/MDY/YMD so we can validate dates properly.
+                    $dmy = $this->localization_service->dateFormatToOrder(I18N::dateFormat());
+
                     $attributes       += [
-                        'type'  => 'text',
-                        'value' => $input['default'],
-                        'dir'   => 'ltr',
+                        'type'     => 'text',
+                        'value'    => $input['default'],
+                        'dir'      => 'ltr',
+                        'onchange' => 'valid_date(this, "' . $dmy . '")'
                     ];
                     $input['control'] = '<input ' . Html::attributes($attributes) . '>';
                     $input['extra']   = '<a href="#" title="' . I18N::translate('Select a date') . '" class ="btn btn-link" onclick="' . e('return calendarWidget("calendar-widget-' . $n . '", "input-' . $n . '");') . '">' . view('icons/calendar') . '</a>' .
