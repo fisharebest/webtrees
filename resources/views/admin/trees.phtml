@@ -17,8 +17,17 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 use Illuminate\Database\Capsule\Manager as DB;
+
+/**
+ * @var array<Tree>   $all_trees
+ * @var array<string> $gedcom_files
+ * @var int           $multiple_tree_threshold
+ * @var string        $title
+ * @var Tree          $tree
+ */
 
 ?>
 
