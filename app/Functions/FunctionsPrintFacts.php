@@ -178,7 +178,7 @@ class FunctionsPrintFacts
                 break;
             default:
                 // Normal fact/event
-                $label = $fact->label();
+                $label = GedcomTag::getLabel($fact->record()::RECORD_TYPE . ':' . $fact->tag());
                 break;
         }
 
