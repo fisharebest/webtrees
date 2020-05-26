@@ -1334,13 +1334,13 @@ class ReportParserGenerate extends ReportParserBase
             $this->repeats = [];
             $nonfacts      = explode(',', $tag);
             foreach ($facts as $fact) {
-                if (!in_array($fact->getTag(), $nonfacts, true)) {
+                if (!in_array($fact->tag(), $nonfacts, true)) {
                     $this->repeats[] = $fact->gedcom();
                 }
             }
         } else {
             foreach ($record->facts() as $fact) {
-                if (($fact->isPendingAddition() || $fact->isPendingDeletion()) && $fact->getTag() !== 'CHAN') {
+                if (($fact->isPendingAddition() || $fact->isPendingDeletion()) && $fact->tag() !== 'CHAN') {
                     $this->repeats[] = $fact->gedcom();
                 }
             }

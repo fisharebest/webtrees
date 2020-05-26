@@ -48,7 +48,7 @@ class ClipboardService
 
         $clipboard[$record_type][$fact_id] = [
             'factrec' => $fact->gedcom(),
-            'fact'    => $fact->getTag(),
+            'fact'    => $fact->tag(),
         ];
 
         // The clipboard only holds a limited number of facts.
@@ -98,7 +98,7 @@ class ClipboardService
             ->map(static function (array $clipping) use ($record): Fact {
                 return new Fact($clipping['factrec'], $record, md5($clipping['factrec']));
             })->filter(static function (Fact $fact) use ($exclude_types): bool {
-                return $exclude_types->isEmpty() || !$exclude_types->contains($fact->getTag());
+                return $exclude_types->isEmpty() || !$exclude_types->contains($fact->tag());
             });
     }
 
@@ -120,7 +120,7 @@ class ClipboardService
                 return new Fact($clipping['factrec'], $record, md5($clipping['factrec']));
             })
             ->filter(static function (Fact $fact) use ($types): bool {
-                return $types->contains($fact->getTag());
+                return $types->contains($fact->tag());
             });
     }
 }

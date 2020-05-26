@@ -79,7 +79,7 @@ class FunctionsPrintFacts
         $tree   = $parent->tree();
 
         // Some facts don't get printed here ...
-        switch ($fact->getTag()) {
+        switch ($fact->tag()) {
             case 'NOTE':
                 self::printMainNotes($fact, 1);
 
@@ -104,7 +104,7 @@ class FunctionsPrintFacts
                 return;
             default:
                 // Hide unrecognized/custom tags?
-                if ($tree->getPreference('HIDE_GEDCOM_ERRORS') === '0' && !GedcomTag::isTag($fact->getTag())) {
+                if ($tree->getPreference('HIDE_GEDCOM_ERRORS') === '0' && !GedcomTag::isTag($fact->tag())) {
                     return;
                 }
                 break;
@@ -129,7 +129,7 @@ class FunctionsPrintFacts
         }
 
         // Event of close relative
-        if ($fact->getTag() === 'EVEN' && $fact->value() === 'CLOSE_RELATIVE') {
+        if ($fact->tag() === 'EVEN' && $fact->value() === 'CLOSE_RELATIVE') {
             $styleadd = trim($styleadd . ' wt-relation-fact collapse');
         }
 
@@ -150,7 +150,7 @@ class FunctionsPrintFacts
             $type = '';
         }
 
-        switch ($fact->getTag()) {
+        switch ($fact->tag()) {
             case 'EVEN':
             case 'FACT':
                 if (GedcomTag::isTag($type)) {
@@ -185,7 +185,7 @@ class FunctionsPrintFacts
         echo '<tr class="', $styleadd, '">';
         echo '<th scope="row">';
 
-        switch ($fact->getTag()) {
+        switch ($fact->tag()) {
             case '_BIRT_CHIL':
                 $children[$fact->record()->xref()] = true;
                 /* I18N: Abbreviation for "number %s" */
@@ -211,7 +211,7 @@ class FunctionsPrintFacts
         }
 
         if ($tree->getPreference('SHOW_FACT_ICONS')) {
-            echo '<span class="wt-fact-icon wt-fact-icon-' . $fact->getTag() . '" title="' . strip_tags(GedcomTag::getLabel($fact->getTag())) . '"></span>';
+            echo '<span class="wt-fact-icon wt-fact-icon-' . $fact->tag() . '" title="' . strip_tags(GedcomTag::getLabel($fact->tag())) . '"></span>';
         }
 
         echo '</th>';
@@ -232,7 +232,7 @@ class FunctionsPrintFacts
         }
 
         // Print the value of this fact/event
-        switch ($fact->getTag()) {
+        switch ($fact->tag()) {
             case 'ADDR':
                 echo $fact->value();
                 break;
@@ -345,7 +345,7 @@ class FunctionsPrintFacts
         if ($type) {
             $utype = strtoupper($type);
             // Events of close relatives, e.g. _MARR_CHIL
-            if (substr($fact->getTag(), 0, 6) === '_MARR_' && ($utype === 'CIVIL' || $utype === 'PARTNERS' || $utype === 'RELIGIOUS')) {
+            if (substr($fact->tag(), 0, 6) === '_MARR_' && ($utype === 'CIVIL' || $utype === 'PARTNERS' || $utype === 'RELIGIOUS')) {
                 // Translate MARR/TYPE using the code that supports MARR_CIVIL, etc. tags
                 $type = GedcomTag::getLabel('MARR_' . $utype);
             } else {
@@ -481,7 +481,7 @@ class FunctionsPrintFacts
                 case '_URL':
                 case 'WWW':
                     $link = '<a href="' . e($match[2]) . '">' . e($match[2]) . '</a>';
-                    echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
+                    echo GedcomTag::getLabelValue($fact->tag() . ':' . $match[1], $link);
                     break;
                 default:
                     if ($tree->getPreference('HIDE_GEDCOM_ERRORS') === '1' || GedcomTag::isTag($match[1])) {
@@ -490,13 +490,13 @@ class FunctionsPrintFacts
                             $linked_record = Factory::gedcomRecord()->make($xmatch[1], $tree);
                             if ($linked_record) {
                                 $link = '<a href="' . e($linked_record->url()) . '">' . $linked_record->fullName() . '</a>';
-                                echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
+                                echo GedcomTag::getLabelValue($fact->tag() . ':' . $match[1], $link);
                             } else {
-                                echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], e($match[2]));
+                                echo GedcomTag::getLabelValue($fact->tag() . ':' . $match[1], e($match[2]));
                             }
                         } else {
                             // Non links
-                            echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], e($match[2]));
+                            echo GedcomTag::getLabelValue($fact->tag() . ':' . $match[1], e($match[2]));
                         }
                     }
                     break;

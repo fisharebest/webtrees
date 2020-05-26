@@ -19,7 +19,7 @@ use Ramsey\Uuid\Uuid;
     <?php FunctionsEdit::createEditForm($edit_fact) ?>
 
     <?php
-    $level1type = $edit_fact->getTag();
+    $level1type = $edit_fact->tag();
     switch ($record::RECORD_TYPE) {
         case 'SOUR':
             if ($level1type === 'DATA') {

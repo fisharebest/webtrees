@@ -625,7 +625,7 @@ class Functions
                             $event = $family->facts(['ANUL', 'DIV', 'ENGA', 'MARR'], true, Auth::PRIV_HIDE, true)->last();
 
                             if ($event instanceof Fact) {
-                                switch ($event->getTag()) {
+                                switch ($event->tag()) {
                                     case 'ANUL':
                                     case 'DIV':
                                         return I18N::translate('ex-husband');
@@ -649,7 +649,7 @@ class Functions
                             $event = $family->facts(['ANUL', 'DIV', 'ENGA', 'MARR'], true, Auth::PRIV_HIDE, true)->last();
 
                             if ($event instanceof Fact) {
-                                switch ($event->getTag()) {
+                                switch ($event->tag()) {
                                     case 'ANUL':
                                     case 'DIV':
                                         return I18N::translate('ex-wife');
@@ -672,7 +672,7 @@ class Functions
                             $event = $family->facts(['ANUL', 'DIV', 'ENGA', 'MARR'], true, Auth::PRIV_HIDE, true)->last();
 
                             if ($event instanceof Fact) {
-                                switch ($event->getTag()) {
+                                switch ($event->tag()) {
                                     case 'ANUL':
                                     case 'DIV':
                                         return I18N::translate('ex-spouse');

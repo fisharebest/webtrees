@@ -155,7 +155,7 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
         $facts4 = new Collection();
 
         foreach ($facts as $fact) {
-            if ($fact->getTag() !== 'OBJE') {
+            if ($fact->tag() !== 'OBJE') {
                 $facts1->push($fact);
             } elseif ($fact->value() !== '@' . $xref . '@') {
                 $facts3->push($fact);

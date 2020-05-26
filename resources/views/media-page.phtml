@@ -154,7 +154,7 @@ use Illuminate\Support\Collection;
                     </tr>
                 <?php endforeach ?>
                 <?php foreach ($facts as $fact) : ?>
-                    <?php if ($fact->getTag() !== 'FILE') : ?>
+                    <?php if ($fact->tag() !== 'FILE') : ?>
                         <?php FunctionsPrintFacts::printFact($fact, $media) ?>
                     <?php endif ?>
                 <?php endforeach ?>

@@ -364,7 +364,7 @@ class Fact
         }
 
         // Members cannot edit RESN, CHAN and locked records
-        return Auth::isEditor($this->record->tree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() !== 'RESN' && $this->getTag() !== 'CHAN';
+        return Auth::isEditor($this->record->tree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->tag() !== 'RESN' && $this->tag() !== 'CHAN';
     }
 
     /**
@@ -422,9 +422,21 @@ class Fact
      *
      * @return string
      */
-    public function getTag(): string
+    public function tag(): string
     {
         return $this->tag;
+    }
+
+    /**
+     * What is the tag (type) of this fact, such as BIRT, MARR or DEAT.
+     *
+     * @return string
+     *
+     * @deprecated since 2.0.5.  Will be removed in 2.1.0
+     */
+    public function getTag(): string
+    {
+        return $this->tag();
     }
 
     /**
@@ -433,6 +445,8 @@ class Fact
      * @param string $tag
      *
      * @return void
+     *
+     * @deprecated since 2.0.5.  Will be removed in 2.1.0
      */
     public function setTag($tag): void
     {
@@ -590,7 +604,7 @@ class Fact
             // Fact date
             $date = $this->date();
             if ($date->isOK()) {
-                if ($this->record() instanceof Individual && in_array($this->getTag(), Gedcom::BIRTH_EVENTS, true) && $this->record()->tree()->getPreference('SHOW_PARENTS_AGE')) {
+                if ($this->record() instanceof Individual && in_array($this->tag(), Gedcom::BIRTH_EVENTS, true) && $this->record()->tree()->getPreference('SHOW_PARENTS_AGE')) {
                     $attributes[] = $date->display() . FunctionsPrint::formatParentsAges($this->record(), $date);
                 } else {
                     $attributes[] = $date->display();
@@ -602,7 +616,7 @@ class Fact
             }
         }
 
-        $class = 'fact_' . $this->getTag();
+        $class = 'fact_' . $this->tag();
         if ($this->isPendingAddition()) {
             $class .= ' wt-new';
         } elseif ($this->isPendingDeletion()) {
@@ -667,8 +681,8 @@ class Fact
                 return $a->sortOrder - $b->sortOrder;
             }
 
-            $atag = $a->getTag();
-            $btag = $b->getTag();
+            $atag = $a->tag();
+            $btag = $b->tag();
 
             // Events not in the above list get mapped onto one that is.
             if (!array_key_exists($atag, $factsort)) {
