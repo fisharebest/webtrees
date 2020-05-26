@@ -144,7 +144,7 @@ class ReportSetupPage implements RequestHandlerInterface
                     // Need to know if the user prefers DMY/MDY/YMD so we can validate dates properly.
                     $dmy = $this->localization_service->dateFormatToOrder(I18N::dateFormat());
 
-                    $attributes       += [
+                    $attributes += [
                         'type'     => 'text',
                         'value'    => $input['default'],
                         'dir'      => 'ltr',
@@ -158,7 +158,7 @@ class ReportSetupPage implements RequestHandlerInterface
                 default:
                     switch ($input['type']) {
                         case 'text':
-                            $attributes       += [
+                            $attributes += [
                                 'type'  => 'text',
                                 'value' => $input['default'],
                             ];
@@ -166,7 +166,7 @@ class ReportSetupPage implements RequestHandlerInterface
                             break;
 
                         case 'checkbox':
-                            $attributes       += [
+                            $attributes += [
                                 'type'    => 'checkbox',
                                 'checked' => (bool) $input['default'],
                             ];
