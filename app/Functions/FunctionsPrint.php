@@ -195,7 +195,7 @@ class FunctionsPrint
                         case 'F':
                             // Highlight mothers who die in childbirth or shortly afterwards
                             if ($deatdate->isOK() && $deatdate->maximumJulianDay() < $birth_date->minimumJulianDay() + 90) {
-                                $html .= ' <span title="' . GedcomTag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . I18N::number($age->ageYears()) . '</span>';
+                                $html .= ' <span title="' . I18N::translate('Death of a mother') . '" class="parentdeath">' . $sex . I18N::number($age->ageYears()) . '</span>';
                             } else {
                                 $html .= ' <span title="' . I18N::translate('Mother’s age') . '">' . $sex . I18N::number($age->ageYears()) . '</span>';
                             }
@@ -203,7 +203,7 @@ class FunctionsPrint
                         case 'M':
                             // Highlight fathers who die before the birth
                             if ($deatdate->isOK() && $deatdate->maximumJulianDay() < $birth_date->minimumJulianDay()) {
-                                $html .= ' <span title="' . GedcomTag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . I18N::number($age->ageYears()) . '</span>';
+                                $html .= ' <span title="' . I18N::translate('Death of a father') . '" class="parentdeath">' . $sex . I18N::number($age->ageYears()) . '</span>';
                             } else {
                                 $html .= ' <span title="' . I18N::translate('Father’s age') . '">' . $sex . I18N::number($age->ageYears()) . '</span>';
                             }

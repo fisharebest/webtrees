@@ -470,7 +470,7 @@ class Fact
             return I18N::translate(e($this->attribute('TYPE')));
         }
 
-        return GedcomTag::getLabel($this->tag, $this->record);
+        return GedcomTag::getLabel($this->tag);
     }
 
     /**

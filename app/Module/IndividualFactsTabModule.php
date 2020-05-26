@@ -215,12 +215,12 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     /**
      * Convert an event into a special "event of a close relative".
      *
-     * @param Fact $fact
-     * @param      $type
+     * @param Fact   $fact
+     * @param string $type
      *
      * @return Fact
      */
-    private function convertEvent(Fact $fact, $type): Fact
+    private function convertEvent(Fact $fact, string $type): Fact
     {
         $gedcom = $fact->gedcom();
         $gedcom = preg_replace('/\n2 TYPE .*/', '', $gedcom);
