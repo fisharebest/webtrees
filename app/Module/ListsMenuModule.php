@@ -92,7 +92,6 @@ class ListsMenuModule extends AbstractModule implements ModuleMenuInterface
             ->map(static function (ModuleListInterface $module) use ($tree): ?Menu {
                 return $module->listMenu($tree);
             })
-            ->filter()
             ->sort(static function (Menu $x, Menu $y): int {
                 return $x->getLabel() <=> $y->getLabel();
             });
