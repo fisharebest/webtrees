@@ -35,6 +35,7 @@ use function preg_match;
 use function preg_match_all;
 use function preg_replace;
 use function response;
+use function sprintf;
 
 /**
  * Controller for edit forms and responses.
@@ -79,12 +80,12 @@ class DeleteRecord implements RequestHandlerInterface
                             $new_gedcom = $this->removeLinks($new_gedcom, $linker->xref());
                             $relict->updateRecord($new_gedcom, false);
                             /* I18N: %s are names of records, such as sources, repositories or individuals */
-                            FlashMessages::addMessage(I18N::translate('The link from “<a href="%1$s">%2$s</a>” to “%3$s” has been deleted.', $relict->url(), $relict->fullName(), $family->fullName()));
+                            FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', sprintf('<a href="%1$s" class="alert-link">%2$s</a>', e($relict->url()), $relict->fullName()), $family->fullName()));
                         }
                     } else {
                         // Remove links from $linker to $record
                         /* I18N: %s are names of records, such as sources, repositories or individuals */
-                        FlashMessages::addMessage(I18N::translate('The link from “<a href="%1$s">%2$s</a>” to “%3$s” has been deleted.', $linker->url(), $linker->fullName(), $record->fullName()));
+                        FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', sprintf('<a href="%1$s" class="alert-link">%2$s</a>', e($linker->url()), $linker->fullName()), $record->fullName()));
                         $linker->updateRecord($new_gedcom, false);
                     }
                 }
