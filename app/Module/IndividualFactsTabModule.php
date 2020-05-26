@@ -220,7 +220,8 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Fact
      */
-    private function convertEvent(Fact $fact, $type): Fact {
+    private function convertEvent(Fact $fact, $type): Fact
+    {
         $gedcom = $fact->gedcom();
         $gedcom = preg_replace('/\n2 TYPE .*/', '', $gedcom);
         $gedcom = preg_replace('/^1 .*/', "1 EVEN CLOSE_RELATIVE\n2 TYPE " . $type, $gedcom);
