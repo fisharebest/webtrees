@@ -166,6 +166,10 @@ class GedcomTag
         'MARB',
         'MARB:DATE',
         'MARB:PLAC',
+        'MARR_CIVIL',
+        'MARR_PARTNERS',
+        'MARR_RELIGIOUS',
+        'MARR_UNKNOWN',
         'MARC',
         'MARL',
         'MARR',
@@ -833,6 +837,14 @@ class GedcomTag
                 return I18N::translate('Date of marriage');
             case 'MARR:PLAC':
                 return I18N::translate('Place of marriage');
+            case 'MARR_CIVIL':
+                return I18N::translate('Civil marriage');
+            case 'MARR_PARTNERS':
+                return I18N::translate('Registered partnership');
+            case 'MARR_RELIGIOUS':
+                return I18N::translate('Religious marriage');
+            case 'MARR_UNKNOWN':
+                return I18N::translate('Marriage type unknown');
             case 'MARS':
                 /* I18N: gedcom tag MARS */
                 return I18N::translate('Marriage settlement');

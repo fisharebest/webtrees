@@ -73,9 +73,6 @@ class FunctionsPrintFacts
      */
     public static function printFact(Fact $fact, GedcomRecord $record): void
     {
-        // Keep a track of children and grandchildren, so we can display their birth order "#1", "#2", etc.
-        static $children = [], $grandchildren = [];
-
         $parent = $fact->record();
         $tree   = $parent->tree();
 
@@ -111,15 +108,6 @@ class FunctionsPrintFacts
                 break;
         }
 
-        // Who is this fact about? Need it to translate fact label correctly
-        if ($parent instanceof Family && $record instanceof Individual) {
-            // Family event
-            $label_person = $parent->spouse($record);
-        } else {
-            // Individual event
-            $label_person = $parent;
-        }
-
         // New or deleted facts need different styling
         $styleadd = '';
         if ($fact->isPendingAddition()) {
@@ -145,11 +133,7 @@ class FunctionsPrintFacts
         }
 
         // Does this fact have a type?
-        if (preg_match('/\n2 TYPE (.+)/', $fact->gedcom(), $match)) {
-            $type = $match[1];
-        } else {
-            $type = '';
-        }
+        $type = $fact->attribute('TYPE');
 
         switch ($fact->tag()) {
             // Special handling for marriage labels.
@@ -180,22 +164,6 @@ class FunctionsPrintFacts
 
         echo '<tr class="', $styleadd, '">';
         echo '<th scope="row">';
-
-        switch ($fact->tag()) {
-            case '_BIRT_CHIL':
-                $children[$fact->record()->xref()] = true;
-                /* I18N: Abbreviation for "number %s" */
-                $label .= '<br>' . I18N::translate('#%s', I18N::number(count($children)));
-                break;
-            case '_BIRT_GCHI':
-            case '_BIRT_GCH1':
-            case '_BIRT_GCH2':
-                $grandchildren[$fact->record()->xref()] = true;
-                /* I18N: Abbreviation for "number %s" */
-                $label .= '<br>' . I18N::translate('#%s', I18N::number(count($grandchildren)));
-                break;
-        }
-
         echo $label;
 
         if ($fact->id() !== 'histo' && $fact->id() !== 'asso' && $fact->canEdit()) {
@@ -230,7 +198,7 @@ class FunctionsPrintFacts
         // Print the value of this fact/event
         switch ($fact->tag()) {
             case 'ADDR':
-                echo $fact->value();
+                echo e($fact->value());
                 break;
             case 'AFN':
                 echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->value()), '">', e($fact->value()), '</a></div>';
@@ -420,7 +388,7 @@ class FunctionsPrintFacts
                     if ($family) {
                         echo GedcomTag::getLabelValue('FAM', '<a href="' . e($family->url()) . '">' . $family->fullName() . '</a>');
                         if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $fact->gedcom(), $adop_match)) {
-                            echo GedcomTag::getLabelValue('ADOP', GedcomCodeAdop::getValue($adop_match[1], $label_person));
+                            echo GedcomTag::getLabelValue('ADOP', GedcomCodeAdop::getValue($adop_match[1]));
                         }
                     } else {
                         echo GedcomTag::getLabelValue('FAM', '<span class="error">' . $match[2] . '</span>');
