@@ -97,6 +97,9 @@ class ReportsMenuModule extends AbstractModule implements ModuleMenuInterface
         $submenus   = $this->module_service->findByComponent(ModuleReportInterface::class, $tree, Auth::user())
             ->map(static function (ModuleReportInterface $module) use ($individual): Menu {
                 return $module->getReportMenu($individual);
+            })
+            ->sort(static function (Menu $x, Menu $y): int {
+                return $x->getLabel() <=> $y->getLabel();
             });
 
         if ($submenus->isEmpty()) {
