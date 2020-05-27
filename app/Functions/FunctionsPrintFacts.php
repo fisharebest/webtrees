@@ -240,7 +240,7 @@ class FunctionsPrintFacts
         // Print the value of this fact/event
         switch ($fact->getTag()) {
             case 'ADDR':
-                echo $fact->getValue();
+                echo Filter::escapeUrl($fact->getValue());
                 break;
             case 'AFN':
                 echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', Filter::escapeUrl($fact->getValue()), '">', Filter::escapeHtml($fact->getValue()), '</a></div>';
