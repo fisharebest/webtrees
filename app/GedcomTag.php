@@ -134,12 +134,6 @@ class GedcomTag
         'FAMC',
         'FAMF',
         'FAMS',
-        'FAMS:CENS:DATE',
-        'FAMS:CENS:PLAC',
-        'FAMS:DIV:DATE',
-        'FAMS:MARR:DATE',
-        'FAMS:MARR:PLAC',
-        'FAMS:NOTE',
         'FAX',
         'FCOM',
         'FCOM:DATE',
@@ -734,24 +728,6 @@ class GedcomTag
             case 'FAMS':
                 /* I18N: gedcom tag FAMS */
                 return I18N::translate('Family as a spouse');
-            case 'FAMS:CENS:DATE':
-                return I18N::translate('Spouse census date');
-            case 'FAMS:CENS:PLAC':
-                return I18N::translate('Spouse census place');
-            case 'FAMS:DIV:DATE':
-                return I18N::translate('Date of divorce');
-            case 'FAMS:MARR:DATE':
-                return I18N::translate('Date of marriage');
-            case 'FAMS:MARR:PLAC':
-                return I18N::translate('Place of marriage');
-            case 'FAMS:NOTE':
-                return I18N::translate('Spouse note');
-            case 'FAMS:SLGS:DATE':
-                /* I18N: LDS = Church of Latter Day Saints. */
-                return I18N::translate('Date of LDS spouse sealing');
-            case 'FAMS:SLGS:PLAC':
-                /* I18N: LDS = Church of Latter Day Saints. */
-                return I18N::translate('Place of LDS spouse sealing');
             case 'FAX':
                 /* I18N: gedcom tag FAX */
                 return I18N::translate('Fax');
