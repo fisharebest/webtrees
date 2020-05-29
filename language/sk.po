@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-03-28 09:59+0000\n"
+"PO-Revision-Date: 2020-05-30 07:30+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -602,7 +602,7 @@ msgstr "&lt;vyberte&gt;"
 #: app/I18N.php:329 app/I18N.php:333
 #, php-format
 msgid "(aged %s)"
-msgstr "(vo veku %s rokov)"
+msgstr "(vo veku %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:323
@@ -4575,7 +4575,7 @@ msgstr "Dátum vloženia orginálneho zdroja"
 
 #: app/GedcomTag.php:430
 msgid "Date of event"
-msgstr "Dátum události"
+msgstr "Dátum udalosti"
 
 #: app/GedcomTag.php:482 modules_v3/missing_facts_report/report.xml:378
 msgid "Date of first communion"
@@ -5853,7 +5853,7 @@ msgstr "Európa"
 #: modules_v3/fact_sources/report.xml:157
 #: modules_v3/missing_facts_report/report.xml:55
 msgid "Event"
-msgstr "Udalosti"
+msgstr "Udalosť"
 
 #: app/Module/GoogleMapsModule.php:2080 statistics.php:110 statistics.php:212
 msgid "Events"
