@@ -994,7 +994,7 @@ class AdminTreesController extends AbstractBaseController
         $xrefs = $this->duplicateXrefs($tree);
 
         foreach ($xrefs as $old_xref => $type) {
-            $new_xref = $tree->getNewXref();
+            $new_xref = $tree->getNewXref($type);
             switch ($type) {
                 case Individual::RECORD_TYPE:
                     DB::table('individuals')

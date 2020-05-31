@@ -446,10 +446,16 @@ class Tree
     public function createRecord(string $gedcom): GedcomRecord
     {
         if (!Str::startsWith($gedcom, '0 @@ ')) {
-            throw new InvalidArgumentException('GedcomRecord::createRecord(' . $gedcom . ') does not begin 0 @@');
+            throw new InvalidArgumentException('Tree::createRecord(' . $gedcom . ') does not begin 0 @@');
         }
 
-        $xref   = $this->getNewXref();
+        if (preg_match('/^0 @@ (' . Gedcom::REGEX_TAG . ')/', $gedcom, $match)) {
+          $type = $match[1];
+        } else {
+          throw new Exception('Invalid argument to Tree::createRecord(' . $gedcom . ')');
+        }
+      
+        $xref   = $this->getNewXref($type);
         $gedcom = '0 @' . $xref . '@ ' . Str::after($gedcom, '0 @@ ');
 
         // Create a change record
@@ -480,10 +486,11 @@ class Tree
 
     /**
      * Generate a new XREF, unique across all family trees
-     *
+     * 
+     * @param string|null $type may be evaluated by subclasses in order to provide custom XREFs
      * @return string
      */
-    public function getNewXref(): string
+    public function getNewXref(?string $type = null): string
     {
         // Lock the row, so that only one new XREF may be generated at a time.
         DB::table('site_setting')
@@ -529,10 +536,10 @@ class Tree
     public function createFamily(string $gedcom): GedcomRecord
     {
         if (!Str::startsWith($gedcom, '0 @@ FAM')) {
-            throw new InvalidArgumentException('GedcomRecord::createFamily(' . $gedcom . ') does not begin 0 @@ FAM');
+            throw new InvalidArgumentException('Tree::createFamily(' . $gedcom . ') does not begin 0 @@ FAM');
         }
 
-        $xref   = $this->getNewXref();
+        $xref   = $this->getNewXref('FAM');
         $gedcom = '0 @' . $xref . '@ FAM' . Str::after($gedcom, '0 @@ FAM');
 
         // Create a change record
@@ -572,10 +579,10 @@ class Tree
     public function createIndividual(string $gedcom): GedcomRecord
     {
         if (!Str::startsWith($gedcom, '0 @@ INDI')) {
-            throw new InvalidArgumentException('GedcomRecord::createIndividual(' . $gedcom . ') does not begin 0 @@ INDI');
+            throw new InvalidArgumentException('Tree::createIndividual(' . $gedcom . ') does not begin 0 @@ INDI');
         }
 
-        $xref   = $this->getNewXref();
+        $xref   = $this->getNewXref('INDI');
         $gedcom = '0 @' . $xref . '@ INDI' . Str::after($gedcom, '0 @@ INDI');
 
         // Create a change record
@@ -615,10 +622,10 @@ class Tree
     public function createMediaObject(string $gedcom): Media
     {
         if (!Str::startsWith($gedcom, '0 @@ OBJE')) {
-            throw new InvalidArgumentException('GedcomRecord::createIndividual(' . $gedcom . ') does not begin 0 @@ OBJE');
+            throw new InvalidArgumentException('Tree::createMediaObject(' . $gedcom . ') does not begin 0 @@ OBJE');
         }
 
-        $xref   = $this->getNewXref();
+        $xref   = $this->getNewXref('OBJE');
         $gedcom = '0 @' . $xref . '@ OBJE' . Str::after($gedcom, '0 @@ OBJE');
 
         // Create a change record
