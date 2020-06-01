@@ -472,9 +472,7 @@ class FunctionsImport
         // array_unique doesn't work with arrays of arrays
         $rows = array_intersect_key($rows, array_unique(array_map('serialize', $rows)));
 
-        if ($rows !== []) {
-            DB::table('placelinks')->insert($rows);
-        }
+        DB::table('placelinks')->insert($rows);
     }
 
     /**
@@ -526,9 +524,7 @@ class FunctionsImport
         // array_unique doesn't work with arrays of arrays
         $rows = array_intersect_key($rows, array_unique(array_map('serialize', $rows)));
 
-        if ($rows !== []) {
-            DB::table('dates')->insert($rows);
-        }
+        DB::table('dates')->insert($rows);
     }
 
     /**
@@ -557,9 +553,7 @@ class FunctionsImport
             ];
         }
 
-        if ($rows !== []) {
-            DB::table('link')->insert($rows);
-        }
+        DB::table('link')->insert($rows);
     }
 
     /**
@@ -610,9 +604,7 @@ class FunctionsImport
             ];
         }
 
-        if ($rows !== []) {
-            DB::table('name')->insert($rows);
-        }
+        DB::table('name')->insert($rows);
     }
 
     /**
