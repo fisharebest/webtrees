@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
-use League\Flysystem\MountManager;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -130,10 +129,7 @@ class ExportGedcomClient implements RequestHandlerInterface
             fclose($tmp_stream);
 
             if ($media) {
-                $manager = new MountManager([
-                    'media' => $tree->mediaFilesystem($data_filesystem),
-                    'zip'   => $zip_filesystem,
-                ]);
+                $media_filesystem = $tree->mediaFilesystem($data_filesystem);
 
                 $records = DB::table('media')
                     ->where('m_file', '=', $tree->id())
@@ -143,10 +139,10 @@ class ExportGedcomClient implements RequestHandlerInterface
 
                 foreach ($records as $record) {
                     foreach ($record->mediaFiles() as $media_file) {
-                        $from = 'media://' . $media_file->filename();
-                        $to   = 'zip://' . $path . $media_file->filename();
-                        if (!$media_file->isExternal() && $manager->has($from)) {
-                            $manager->copy($from, $to);
+                        $from = $media_file->filename();
+                        $to   = $path . $media_file->filename();
+                        if (!$media_file->isExternal() && $media_filesystem->has($from) && !$zip_filesystem->has($to)) {
+                            $zip_filesystem->writeStream($to, $media_filesystem->readStream($from));
                         }
                     }
                 }

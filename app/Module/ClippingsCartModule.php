@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Exceptions\RepositoryNotFoundException;
 use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
 use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
@@ -52,19 +51,18 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
-use League\Flysystem\MountManager;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use RuntimeException;
-use stdClass;
 
 use function app;
 use function array_filter;
 use function array_keys;
 use function array_map;
+use function array_search;
 use function assert;
 use function fopen;
 use function in_array;
@@ -75,8 +73,12 @@ use function redirect;
 use function rewind;
 use function route;
 use function str_replace;
+use function stream_get_meta_data;
 use function strip_tags;
-use function utf8_decode;
+use function tmpfile;
+use function uasort;
+
+use const PREG_SET_ORDER;
 
 /**
  * Class ClippingsCartModule
@@ -244,10 +246,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $zip_adapter    = new ZipArchiveAdapter($temp_zip_file);
         $zip_filesystem = new Filesystem($zip_adapter);
 
-        $manager = new MountManager([
-            'media' => $tree->mediaFilesystem($data_filesystem),
-            'zip'   => $zip_filesystem,
-        ]);
+        $media_filesystem = $tree->mediaFilesystem($data_filesystem);
 
         // Media file prefix
         $path = $tree->getPreference('MEDIA_DIRECTORY');
@@ -304,10 +303,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 } elseif ($object instanceof Media) {
                     // Add the media files to the archive
                     foreach ($object->mediaFiles() as $media_file) {
-                        $from = 'media://' . $media_file->filename();
-                        $to   = 'zip://' . $path . $media_file->filename();
-                        if (!$media_file->isExternal() && $manager->has($from) && !$manager->has($to)) {
-                            $manager->copy($from, $to);
+                        $from = $media_file->filename();
+                        $to   = $path . $media_file->filename();
+                        if (!$media_file->isExternal() && $media_filesystem->has($from) && !$zip_filesystem->has($to)) {
+                            $zip_filesystem->writeStream($to, $media_filesystem->readStream($from));
                         }
                     }
                     $records->add($record);
