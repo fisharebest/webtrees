@@ -1036,7 +1036,6 @@ class Individual extends GedcomRecord
         $sublevel = 1 + (int) substr($gedcom, 0, 1);
         $GIVN     = preg_match("/\n{$sublevel} GIVN (.+)/", $gedcom, $match) ? $match[1] : '';
         $SURN     = preg_match("/\n{$sublevel} SURN (.+)/", $gedcom, $match) ? $match[1] : '';
-        $NICK     = preg_match("/\n{$sublevel} NICK (.+)/", $gedcom, $match) ? $match[1] : '';
 
         // SURN is an comma-separated list of surnames...
         if ($SURN !== '') {
@@ -1111,13 +1110,6 @@ class Individual extends GedcomRecord
             $GIVN = '@P.N.';
             $pos  = (int) strpos($full, '/');
             $full = substr($full, 0, $pos) . '@P.N. ' . substr($full, $pos);
-        }
-
-        // GEDCOM 5.5.1 nicknames should be specificied in a NICK field
-        // GEDCOM 5.5   nicknames should be specified in the NAME field, surrounded by quotes
-        if ($NICK && strpos($full, '"' . $NICK . '"') === false) {
-            // A NICK field is present, but not included in the NAME.  Show it at the end.
-            $full .= ' "' . $NICK . '"';
         }
 
         // Remove slashes - they don’t get displayed
