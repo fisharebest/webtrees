@@ -194,7 +194,13 @@ trait PdoTrait
         }
         $stmt->execute();
 
-        while ($row = $stmt->fetch(\PDO::FETCH_NUM)) {
+        if (method_exists($stmt, 'iterateNumeric')) {
+            $stmt = $stmt->iterateNumeric();
+        } else {
+            $stmt->setFetchMode(\PDO::FETCH_NUM);
+        }
+
+        foreach ($stmt as $row) {
             if (null === $row[1]) {
                 $expired[] = $row[0];
             } else {
@@ -226,7 +232,7 @@ trait PdoTrait
         $stmt->bindValue(':time', time(), \PDO::PARAM_INT);
         $stmt->execute();
 
-        return (bool) $stmt->fetchColumn();
+        return (bool) (method_exists($stmt, 'fetchOne') ? $stmt->fetchOne() : $stmt->fetchColumn());
     }
 
     /**
@@ -275,7 +281,7 @@ trait PdoTrait
     /**
      * {@inheritdoc}
      */
-    protected function doSave(array $values, $lifetime)
+    protected function doSave(array $values, int $lifetime)
     {
         if (!$values = $this->marshaller->marshall($values, $failed)) {
             return $failed;
