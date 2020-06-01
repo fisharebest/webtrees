@@ -40,11 +40,16 @@ use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
-use PDOException;
 
+use function array_intersect_key;
+use function array_map;
+use function array_unique;
 use function date;
+use function preg_match_all;
 use function strpos;
 use function strtoupper;
+
+use const PREG_SET_ORDER;
 
 /**
  * Class FunctionsImport - common functions
@@ -442,6 +447,9 @@ class FunctionsImport
      */
     public static function updatePlaces(string $xref, Tree $tree, string $gedrec): void
     {
+        // Insert all new rows together
+        $rows = [];
+
         preg_match_all('/^[2-9] PLAC (.+)/m', $gedrec, $matches);
 
         $places = array_unique($matches[1]);
@@ -450,27 +458,22 @@ class FunctionsImport
             $place = new Place($place_name, $tree);
 
             // Calling Place::id() will create the entry in the database, if it doesn't already exist.
-            // Link the place to the record
             while ($place->id() !== 0) {
-                $exists = DB::table('placelinks')
-                    ->where('pl_p_id', '=', $place->id())
-                    ->where('pl_gid', '=', $xref)
-                    ->where('pl_file', '=', $tree->id())
-                    ->exists();
-
-                if ($exists) {
-                    // Already linked this place - so presumably also any parent places.
-                    break;
-                }
-
-                DB::table('placelinks')->insert([
+                $rows[] = [
                     'pl_p_id' => $place->id(),
                     'pl_gid'  => $xref,
                     'pl_file' => $tree->id(),
-                ]);
+                ];
 
                 $place = $place->parent();
             }
+        }
+
+        // array_unique doesn't work with arrays of arrays
+        $rows = array_intersect_key($rows, array_unique(array_map('serialize', $rows)));
+
+        if ($rows !== []) {
+            DB::table('placelinks')->insert($rows);
         }
     }
 
@@ -485,41 +488,46 @@ class FunctionsImport
      */
     public static function updateDates(string $xref, int $ged_id, string $gedrec): void
     {
-        if (strpos($gedrec, '2 DATE ') && preg_match_all("/\n1 (\w+).*(?:\n[2-9].*)*(?:\n2 DATE (.+))(?:\n[2-9].*)*/", $gedrec, $matches, PREG_SET_ORDER)) {
-            foreach ($matches as $match) {
-                $fact = $match[1];
-                if (($fact === 'FACT' || $fact === 'EVEN') && preg_match("/\n2 TYPE ([A-Z]{3,5})/", $match[0], $tmatch)) {
-                    $fact = $tmatch[1];
-                }
-                $date = new Date($match[2]);
-                DB::table('dates')->insert([
-                    'd_day'        => $date->minimumDate()->day,
-                    'd_month'      => $date->minimumDate()->format('%O'),
-                    'd_mon'        => $date->minimumDate()->month,
-                    'd_year'       => $date->minimumDate()->year,
-                    'd_julianday1' => $date->minimumDate()->minimumJulianDay(),
-                    'd_julianday2' => $date->minimumDate()->maximumJulianDay(),
-                    'd_fact'       => $fact,
-                    'd_gid'        => $xref,
-                    'd_file'       => $ged_id,
-                    'd_type'       => $date->minimumDate()->format('%@'),
-                ]);
+        // Insert all new rows together
+        $rows = [];
 
-                if ($date->minimumDate() !== $date->maximumDate()) {
-                    DB::table('dates')->insert([
-                        'd_day'        => $date->maximumDate()->day,
-                        'd_month'      => $date->maximumDate()->format('%O'),
-                        'd_mon'        => $date->maximumDate()->month,
-                        'd_year'       => $date->maximumDate()->year,
-                        'd_julianday1' => $date->maximumDate()->minimumJulianDay(),
-                        'd_julianday2' => $date->maximumDate()->maximumJulianDay(),
-                        'd_fact'       => $fact,
-                        'd_gid'        => $xref,
-                        'd_file'       => $ged_id,
-                        'd_type'       => $date->minimumDate()->format('%@'),
-                    ]);
-                }
-            }
+        preg_match_all("/\n1 (\w+).*(?:\n[2-9].*)*(?:\n2 DATE (.+))(?:\n[2-9].*)*/", $gedrec, $matches, PREG_SET_ORDER);
+
+        foreach ($matches as $match) {
+            $fact = $match[1];
+            $date = new Date($match[2]);
+            $rows[] = [
+                'd_day'        => $date->minimumDate()->day,
+                'd_month'      => $date->minimumDate()->format('%O'),
+                'd_mon'        => $date->minimumDate()->month,
+                'd_year'       => $date->minimumDate()->year,
+                'd_julianday1' => $date->minimumDate()->minimumJulianDay(),
+                'd_julianday2' => $date->minimumDate()->maximumJulianDay(),
+                'd_fact'       => $fact,
+                'd_gid'        => $xref,
+                'd_file'       => $ged_id,
+                'd_type'       => $date->minimumDate()->format('%@'),
+            ];
+
+            $rows[] = [
+                'd_day'        => $date->maximumDate()->day,
+                'd_month'      => $date->maximumDate()->format('%O'),
+                'd_mon'        => $date->maximumDate()->month,
+                'd_year'       => $date->maximumDate()->year,
+                'd_julianday1' => $date->maximumDate()->minimumJulianDay(),
+                'd_julianday2' => $date->maximumDate()->maximumJulianDay(),
+                'd_fact'       => $fact,
+                'd_gid'        => $xref,
+                'd_file'       => $ged_id,
+                'd_type'       => $date->minimumDate()->format('%@'),
+            ];
+        }
+
+        // array_unique doesn't work with arrays of arrays
+        $rows = array_intersect_key($rows, array_unique(array_map('serialize', $rows)));
+
+        if ($rows !== []) {
+            DB::table('dates')->insert($rows);
         }
     }
 
@@ -534,24 +542,23 @@ class FunctionsImport
      */
     public static function updateLinks(string $xref, int $ged_id, string $gedrec): void
     {
-        if (preg_match_all('/^\d+ (' . Gedcom::REGEX_TAG . ') @(' . Gedcom::REGEX_XREF . ')@/m', $gedrec, $matches, PREG_SET_ORDER)) {
-            $data = [];
-            foreach ($matches as $match) {
-                // Include each link once only.
-                if (!in_array($match[1] . $match[2], $data, true)) {
-                    $data[] = $match[1] . $match[2];
-                    try {
-                        DB::table('link')->insert([
-                            'l_from' => $xref,
-                            'l_to'   => $match[2],
-                            'l_type' => $match[1],
-                            'l_file' => $ged_id,
-                        ]);
-                    } catch (PDOException $ex) {
-                        // Ignore any errors, which may be caused by "duplicates" that differ on case/collation, e.g. "S1" and "s1"
-                    }
-                }
-            }
+        // Insert all new rows together
+        $rows = [];
+
+        preg_match_all('/^\d+ (' . Gedcom::REGEX_TAG . ') @(' . Gedcom::REGEX_XREF . ')@/m', $gedrec, $matches, PREG_SET_ORDER);
+
+        foreach ($matches as $match) {
+            // Take care of "duplicates" that differ on case/collation, e.g. "SOUR @S1@" and "SOUR @s1@"
+            $rows[$match[1] . strtoupper($match[2])] = [
+                'l_from' => $xref,
+                'l_to'   => $match[2],
+                'l_type' => $match[1],
+                'l_file' => $ged_id,
+            ];
+        }
+
+        if ($rows !== []) {
+            DB::table('link')->insert($rows);
         }
     }
 
@@ -566,6 +573,9 @@ class FunctionsImport
      */
     public static function updateNames(string $xref, int $ged_id, Individual $record): void
     {
+        // Insert all new rows together
+        $rows = [];
+
         foreach ($record->getAllNames() as $n => $name) {
             if ($name['givn'] === '@P.N.') {
                 $soundex_givn_std = null;
@@ -583,7 +593,7 @@ class FunctionsImport
                 $soundex_surn_dm  = Soundex::daitchMokotoff($name['surname']);
             }
 
-            DB::table('name')->insert([
+            $rows[] = [
                 'n_file'             => $ged_id,
                 'n_id'               => $xref,
                 'n_num'              => $n,
@@ -597,7 +607,11 @@ class FunctionsImport
                 'n_soundex_surn_std' => $soundex_surn_std,
                 'n_soundex_givn_dm'  => $soundex_givn_dm,
                 'n_soundex_surn_dm'  => $soundex_surn_dm,
-            ]);
+            ];
+        }
+
+        if ($rows !== []) {
+            DB::table('name')->insert($rows);
         }
     }
 
