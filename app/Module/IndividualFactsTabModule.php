@@ -407,23 +407,23 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         $birth_of_a_grandchild2 = [
             'BIRT' => [
-                'M' => I18N::translateContext('son‘s son', 'Birth of a grandson'),
-                'F' => I18N::translateContext('son‘s daughter', 'Birth of a granddaughter'),
+                'M' => I18N::translateContext('son’s son', 'Birth of a grandson'),
+                'F' => I18N::translateContext('son’s daughter', 'Birth of a granddaughter'),
                 'U' => I18N::translate('Birth of a grandchild'),
             ],
             'CHR' => [
-                'M' => I18N::translateContext('son‘s son', 'Christening of a grandson'),
-                'F' => I18N::translateContext('son‘s daughter', 'Christening of a granddaughter'),
+                'M' => I18N::translateContext('son’s son', 'Christening of a grandson'),
+                'F' => I18N::translateContext('son’s daughter', 'Christening of a granddaughter'),
                 'U' => I18N::translate('Christening of a grandchild'),
             ],
             'BAPM' => [
-                'M' => I18N::translateContext('son‘s son', 'Baptism of a grandson'),
-                'F' => I18N::translateContext('son‘s daughter', 'Baptism of a granddaughter'),
+                'M' => I18N::translateContext('son’s son', 'Baptism of a grandson'),
+                'F' => I18N::translateContext('son’s daughter', 'Baptism of a granddaughter'),
                 'U' => I18N::translate('Baptism of a grandchild'),
             ],
             'ADOP' => [
-                'M' => I18N::translateContext('son‘s son', 'Adoption of a grandson'),
-                'F' => I18N::translateContext('son‘s daughter', 'Adoption of a granddaughter'),
+                'M' => I18N::translateContext('son’s son', 'Adoption of a grandson'),
+                'F' => I18N::translateContext('son’s daughter', 'Adoption of a granddaughter'),
                 'U' => I18N::translate('Adoption of a grandchild'),
             ],
         ];
@@ -520,18 +520,18 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         $death_of_a_grandchild2 = [
             'DEAT' => [
-                'M' => I18N::translateContext('son‘s son', 'Death of a grandson'),
-                'F' => I18N::translateContext('son‘s daughter', 'Death of a granddaughter'),
+                'M' => I18N::translateContext('son’s son', 'Death of a grandson'),
+                'F' => I18N::translateContext('son’s daughter', 'Death of a granddaughter'),
                 'U' => I18N::translate('Death of a grandchild'),
             ],
             'BURI' => [
-                'M' => I18N::translateContext('son‘s son', 'Burial of a grandson'),
-                'F' => I18N::translateContext('son‘s daughter', 'Burial of a granddaughter'),
+                'M' => I18N::translateContext('son’s son', 'Burial of a grandson'),
+                'F' => I18N::translateContext('son’s daughter', 'Burial of a granddaughter'),
                 'U' => I18N::translate('Burial of a grandchild'),
             ],
             'CREM' => [
-                'M' => I18N::translateContext('son‘s son', 'Cremation of a grandson'),
-                'F' => I18N::translateContext('son‘s daughter', 'Cremation of a granddaughter'),
+                'M' => I18N::translateContext('son’s son', 'Cremation of a grandson'),
+                'F' => I18N::translateContext('son’s daughter', 'Cremation of a granddaughter'),
                 'U' => I18N::translate('Cremation of a grandchild'),
             ],
         ];
@@ -555,8 +555,8 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         ];
 
         $marriage_of_a_grandchild2 = [
-            'M' => I18N::translateContext('son‘s son', 'Marriage of a grandson'),
-            'F' => I18N::translateContext('son‘s daughter', 'Marriage of a granddaughter'),
+            'M' => I18N::translateContext('son’s son', 'Marriage of a grandson'),
+            'F' => I18N::translateContext('son’s daughter', 'Marriage of a granddaughter'),
             'U' => I18N::translate('Marriage of a grandchild'),
         ];
 
