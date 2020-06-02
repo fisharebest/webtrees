@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-04-19 11:40+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
+"PO-Revision-Date: 2020-06-04 17:16+0000\n"
+"Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sv/>\n"
 "Language: sv\n"
@@ -1723,15 +1723,15 @@ msgstr "Åldersgräns då person antas vara död"
 
 #: statistics.php:338
 msgid "Age between husband and wife"
-msgstr "Årskillnad mellan man och hustru"
+msgstr "Åldersskillnad mellan man och hustru"
 
 #: statistics.php:330
 msgid "Age between siblings"
-msgstr "Årskillnad mellan syskon"
+msgstr "Åldersskillnad mellan syskon"
 
 #: statistics.php:339
 msgid "Age between wife and husband"
-msgstr "Årskillnad mellan hustru och man"
+msgstr "Åldersskillnad mellan hustru och man"
 
 #: statistics.php:327
 msgid "Age difference"
@@ -4412,7 +4412,7 @@ msgstr "LDS Makes/makas beseglingsdatum"
 
 #: app/GedcomTag.php:132
 msgid "Date of adoption"
-msgstr "Adoptions datum"
+msgstr "Adoptionsdatum"
 
 #: app/GedcomTag.php:184 modules_v3/missing_facts_report/report.xml:129
 msgid "Date of baptism"
@@ -4455,7 +4455,7 @@ msgstr "Konfirmationsdatum"
 
 #: app/GedcomTag.php:332
 msgid "Date of cremation"
-msgstr "Kremerings datum"
+msgstr "Kremeringsdatum"
 
 #: app/GedcomTag.php:356 modules_v3/cemetery_report/report.xml:47
 #: modules_v3/fact_sources/report.xml:274
@@ -4465,7 +4465,7 @@ msgstr "Dödsdatum"
 
 #: app/GedcomTag.php:462
 msgid "Date of divorce"
-msgstr "Skilsmässa datum"
+msgstr "Skilsmässodatum"
 
 #: app/GedcomTag.php:406
 msgid "Date of emigration"
@@ -4477,7 +4477,7 @@ msgstr "Förlovningsdatum"
 
 #: app/GedcomTag.php:344
 msgid "Date of entry in original source"
-msgstr "Inläggsdatum i original källa"
+msgstr "Inläggsdatum i originalkälla"
 
 #: app/GedcomTag.php:430
 msgid "Date of event"
@@ -4494,7 +4494,7 @@ msgstr "Datum för invandring"
 #. I18N: gedcom tag CHAN:DATE
 #: app/GedcomTag.php:262
 msgid "Date of last change"
-msgstr "Datum för senast ändring"
+msgstr "Datum för senaste ändring"
 
 #: app/GedcomTag.php:464 app/GedcomTag.php:578
 #: modules_v3/fact_sources/report.xml:319
@@ -6882,7 +6882,7 @@ msgstr "Högsta ålder vid dödsfall"
 
 #: statistics.php:331
 msgid "Greatest age between siblings"
-msgstr "Största årskillnad mellan syskon"
+msgstr "Största åldersskillnad mellan syskon"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6763
