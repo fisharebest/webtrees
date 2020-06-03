@@ -90,7 +90,7 @@ abstract class AbstractCalendarDate
      * day/month/year strings from a GEDCOM date
      * another CalendarDate object
      *
-     * @param array|int|AbstractCalendarDate $date
+     * @param array<string>|int|AbstractCalendarDate $date
      */
     protected function __construct($date)
     {

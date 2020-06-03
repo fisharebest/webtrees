@@ -138,7 +138,7 @@ trait ModuleCustomTrait
      *
      * @param string $language
      *
-     * @return string[]
+     * @return array<string,string>
      */
     public function customTranslations(string $language): array
     {

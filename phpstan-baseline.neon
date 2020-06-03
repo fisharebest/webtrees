@@ -16,19 +16,9 @@ parameters:
 			path: app/CommonMark/CensusTableParser.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Config\\:\\:emptyFacts\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Config.php
-
-		-
 			message: "#^Cannot call method calendarUrl\\(\\) on Fisharebest\\\\Webtrees\\\\Date\\\\AbstractCalendarDate\\|null\\.$#"
 			count: 1
 			path: app/Date.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Date\\\\AbstractCalendarDate\\:\\:__construct\\(\\) has parameter \\$date with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Date/AbstractCalendarDate.php
 
 		-
 			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#"
@@ -41,36 +31,6 @@ parameters:
 			path: app/Date/AbstractCalendarDate.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Date\\\\FrenchDate\\:\\:__construct\\(\\) has parameter \\$date with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Date/FrenchDate.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Date\\\\GregorianDate\\:\\:__construct\\(\\) has parameter \\$date with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Date/GregorianDate.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Date\\\\HijriDate\\:\\:__construct\\(\\) has parameter \\$date with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Date/HijriDate.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Date\\\\JalaliDate\\:\\:__construct\\(\\) has parameter \\$date with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Date/JalaliDate.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Date\\\\JewishDate\\:\\:__construct\\(\\) has parameter \\$date with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Date/JewishDate.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Date\\\\JulianDate\\:\\:__construct\\(\\) has parameter \\$date with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Date/JulianDate.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Fact\\:\\:getNotes\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Note\\|string\\> but returns array\\<int, array\\|Fisharebest\\\\Webtrees\\\\Note\\|string\\|null\\>\\.$#"
 			count: 1
 			path: app/Fact.php
@@ -79,11 +39,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$commonMark of method League\\\\CommonMark\\\\Converter\\:\\:convertToHtml\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Filter.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Functions\\\\Functions\\:\\:getRelationship\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Functions/Functions.php
 
 		-
 			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\:\\:childFamilies\\(\\)\\.$#"
@@ -1293,47 +1248,27 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
+			path: modules_v4/example-middleware.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
 			path: modules_v4/example-footer.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-middleware.disable/module.php
+			path: modules_v4/example-theme.disable/module.php
 
 		-
-			message: "#^Binary operation \"\\-\" between 32 and string results in an error\\.$#"
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-middleware.disable/module.php
+			path: modules_v4/example.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
 			path: modules_v4/example-report.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example.disable/module.php
-
-		-
-			message: "#^Method class@anonymous/modules_v4/example\\.disable/module\\.php\\:17\\:\\:englishTranslations\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: modules_v4/example.disable/module.php
-
-		-
-			message: "#^Method class@anonymous/modules_v4/example\\.disable/module\\.php\\:17\\:\\:frenchTranslations\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: modules_v4/example.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-theme.disable/module.php
-
-		-
-			message: "#^Method class@anonymous/modules_v4/example\\-theme\\.disable/module\\.php\\:17\\:\\:stylesheets\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: modules_v4/example-theme.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"

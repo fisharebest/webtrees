@@ -28,7 +28,7 @@ class Config
     /**
      * NPFX tags - name prefixes
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function namePrefixes(): array
     {
@@ -74,7 +74,7 @@ class Config
     /**
      * FILE:FORM tags - file formats
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function fileFormats(): array
     {
@@ -95,7 +95,7 @@ class Config
     /**
      * Facts and events that don't normally have a value
      *
-     * return string[]
+     * @return array<string>
      */
     public static function emptyFacts(): array
     {
@@ -152,7 +152,7 @@ class Config
     /**
      * Tags that don't require a PLAC subtag
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function nonPlaceFacts(): array
     {
@@ -168,7 +168,7 @@ class Config
     /**
      * Tags that don't require a DATE subtag
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function nonDateFacts(): array
     {
@@ -206,7 +206,7 @@ class Config
     /**
      * Tags that require a DATE:TIME as well as a DATE
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function dateAndTime(): array
     {
@@ -220,7 +220,7 @@ class Config
      * Level 2 tags that apply to specific Level 1 tags
      * Tags are applied in the order they appear here.
      *
-     * @return string[][]
+     * @return array<string,array<string>>
      */
     public static function levelTwoTags(): array
     {
@@ -433,7 +433,7 @@ class Config
      * A list of facts/events that generally have two associates
      * (two witnesses, two godparents, etc.)
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function twoAssociates(): array
     {
