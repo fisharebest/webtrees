@@ -1891,11 +1891,6 @@ parameters:
 			path: app/Services/ClipboardService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\DatatablesService\\:\\:handleCollection\\(\\) has parameter \\$collection with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/DatatablesService.php
-
-		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:orderBy\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression\\|string given\\.$#"
 			count: 1
 			path: app/Services/DatatablesService.php
@@ -1936,11 +1931,6 @@ parameters:
 			path: app/Services/HomePageService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\HousekeepingService\\:\\:deleteOldWebtreesFiles\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Services/HousekeepingService.php
-
-		-
 			message: "#^Cannot access offset 'type' on array\\|false\\.$#"
 			count: 2
 			path: app/Services/HousekeepingService.php
@@ -1971,27 +1961,12 @@ parameters:
 			path: app/Services/IndividualListService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\LocalizationService\\:\\:alphabet\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Services/LocalizationService.php
-
-		-
 			message: "#^Parameter \\#1 \\$size of method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:parseIniFileSize\\(\\) expects string, string\\|false given\\.$#"
 			count: 2
 			path: app/Services/MediaFileService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:mediaTypes\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Services/MediaFileService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:unusedFiles\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Services/MediaFileService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:unusedFiles\\(\\) should return array but returns array\\|false\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:unusedFiles\\(\\) should return array<string> but returns array\\|false\\.$#"
 			count: 1
 			path: app/Services/MediaFileService.php
 
@@ -2229,11 +2204,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartDistribution\\:\\:getIndivdualChartData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Statistics/Google/ChartDistribution.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartMedia\\:\\:chartMedia\\(\\) has parameter \\$media with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Statistics/Google/ChartMedia.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\EventRepository\\:\\:eventQuery\\(\\) should return stdClass\\|null but returns object\\|null\\.$#"

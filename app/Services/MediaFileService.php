@@ -123,7 +123,7 @@ class MediaFileService
      *
      * @param string $current
      *
-     * @return array
+     * @return array<string,string>
      */
     public function mediaTypes($current = ''): array
     {
@@ -140,7 +140,7 @@ class MediaFileService
      * @param Tree                $tree
      * @param FilesystemInterface $data_filesystem
      *
-     * @return array
+     * @return array<string>
      */
     public function unusedFiles(Tree $tree, FilesystemInterface $data_filesystem): array
     {

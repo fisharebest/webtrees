@@ -101,7 +101,7 @@ class LocalizationService
      *
      * @param LocaleInterface $locale
      *
-     * @return array
+     * @return array<string>
      */
     public function alphabet(LocaleInterface $locale): array
     {
