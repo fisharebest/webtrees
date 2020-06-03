@@ -1036,7 +1036,7 @@ class SearchService
     /**
      * A closure to filter records by privacy-filtered GEDCOM data.
      *
-     * @param array $search_terms
+     * @param array<string> $search_terms
      *
      * @return Closure
      */

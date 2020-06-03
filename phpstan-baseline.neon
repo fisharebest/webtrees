@@ -2046,11 +2046,6 @@ parameters:
 			path: app/Services/SearchService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:rawGedcomFilter\\(\\) has parameter \\$search_terms with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
 			count: 1
 			path: app/Services/SearchService.php
@@ -2121,21 +2116,6 @@ parameters:
 			path: app/Services/UpgradeService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UpgradeService\\:\\:cleanFiles\\(\\) has parameter \\$files_to_keep with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/UpgradeService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UpgradeService\\:\\:cleanFiles\\(\\) has parameter \\$folders_to_clean with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/UpgradeService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UpgradeService\\:\\:serverParameters\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Services/UpgradeService.php
-
-		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\SessionDatabaseHandler\\:\\:\\$row \\(stdClass\\|null\\) does not accept object\\|null\\.$#"
 			count: 1
 			path: app/SessionDatabaseHandler.php
@@ -2144,11 +2124,6 @@ parameters:
 			message: "#^Access to an undefined property object\\:\\:\\$session_data\\.$#"
 			count: 1
 			path: app/SessionDatabaseHandler.php
-
-		-
-			message: "#^Property Fisharebest\\\\Webtrees\\\\Site\\:\\:\\$preferences type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Site.php
 
 		-
 			message: "#^Call to an undefined method ReflectionType\\:\\:getName\\(\\)\\.$#"
@@ -2451,16 +2426,6 @@ parameters:
 			path: app/Statistics/Repository/PlaceRepository.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Service\\\\ColorService\\:\\:interpolateRgb\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Statistics/Service/ColorService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Service\\\\ColorService\\:\\:hexToRgb\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Statistics/Service/ColorService.php
-
-		-
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
 			count: 1
 			path: app/SurnameTradition/PatrilinealSurnameTradition.php
@@ -2469,11 +2434,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\SurnameTradition\\\\PatrilinealSurnameTradition\\:\\:inflect\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
 			path: app/SurnameTradition/PatrilinealSurnameTradition.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\View\\:\\:__construct\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/View.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\View\\:\\:render\\(\\) should return string but returns string\\|false\\.$#"

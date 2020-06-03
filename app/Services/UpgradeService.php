@@ -190,8 +190,8 @@ class UpgradeService
      * Delete files in $destination that aren't in $source.
      *
      * @param FilesystemInterface $filesystem
-     * @param Collection          $folders_to_clean
-     * @param Collection          $files_to_keep
+     * @param Collection<string>  $folders_to_clean
+     * @param Collection<string>  $files_to_keep
      *
      * @return void
      */
@@ -303,6 +303,8 @@ class UpgradeService
 
     /**
      * The upgrade server needs to know a little about this server.
+     *
+     * @return array<string,string>
      */
     private function serverParameters(): array
     {

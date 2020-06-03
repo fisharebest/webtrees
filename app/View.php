@@ -83,8 +83,8 @@ class View
     /**
      * Createa view from a template name and optional data.
      *
-     * @param string $name
-     * @param array  $data
+     * @param string       $name
+     * @param array<mixed> $data
      */
     public function __construct(string $name, $data = [])
     {
