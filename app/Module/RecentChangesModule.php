@@ -21,12 +21,15 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
@@ -44,10 +47,16 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
 
+    // Where do we look for change information
+    private const SOURCE_DATABASE = 'database';
+    private const SOURCE_GEDCOM   = 'gedcom';
+
     private const DEFAULT_DAYS       = '7';
     private const DEFAULT_SHOW_USER  = '1';
+    private const DEFAULT_SHOW_DATE  = '1';
     private const DEFAULT_SORT_STYLE = 'date_desc';
     private const DEFAULT_INFO_STYLE = 'table';
+    private const DEFAULT_SOURCE     = self::SOURCE_DATABASE;
     private const MAX_DAYS           = 90;
 
     // Pagination
@@ -103,21 +112,27 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_INFO_STYLE);
         $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT_STYLE);
         $show_user = (bool) $this->getBlockSetting($block_id, 'show_user', self::DEFAULT_SHOW_USER);
+        $show_date = (bool) $this->getBlockSetting($block_id, 'show_date', self::DEFAULT_SHOW_DATE);
+        $source    = $this->getBlockSetting($block_id, 'source', self::DEFAULT_SOURCE);
 
         extract($config, EXTR_OVERWRITE);
 
-        $rows = $this->getRecentChanges($tree, $days);
+        if ($source === self::SOURCE_DATABASE) {
+            $rows = $this->getRecentChangesFromDatabase($tree, $days);
+        } else {
+            $rows = $this->getRecentChangesFromGenealogy($tree, $days);
+        }
 
         switch ($sortStyle) {
             case 'name':
-                $rows = $rows->sort(static function (stdClass $x, stdClass $y): int {
+                $rows  = $rows->sort(static function (stdClass $x, stdClass $y): int {
                     return GedcomRecord::nameComparator()($x->record, $y->record);
                 });
                 $order = [[1, 'asc']];
                 break;
 
             case 'date_asc':
-                $rows = $rows->sort(static function (stdClass $x, stdClass $y): int {
+                $rows  = $rows->sort(static function (stdClass $x, stdClass $y): int {
                     return $x->time <=> $y->time;
                 });
                 $order = [[2, 'asc']];
@@ -125,7 +140,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
             default:
             case 'date_desc':
-                $rows = $rows->sort(static function (stdClass $x, stdClass $y): int {
+                $rows  = $rows->sort(static function (stdClass $x, stdClass $y): int {
                     return $y->time <=> $x->time;
                 });
                 $order = [[2, 'desc']];
@@ -140,6 +155,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
                 'limit_low'  => self::LIMIT_LOW,
                 'limit_high' => self::LIMIT_HIGH,
                 'rows'       => $rows->values(),
+                'show_date'  => $show_date,
                 'show_user'  => $show_user,
             ]);
         } else {
@@ -147,6 +163,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
                 'limit_low'  => self::LIMIT_LOW,
                 'limit_high' => self::LIMIT_HIGH,
                 'rows'       => $rows,
+                'show_date'  => $show_date,
                 'show_user'  => $show_user,
                 'order'      => $order,
             ]);
@@ -201,7 +218,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * Update the configuration for a block.
      *
      * @param ServerRequestInterface $request
-     * @param int     $block_id
+     * @param int                    $block_id
      *
      * @return void
      */
@@ -212,7 +229,9 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
         $this->setBlockSetting($block_id, 'days', $params['days']);
         $this->setBlockSetting($block_id, 'infoStyle', $params['infoStyle']);
         $this->setBlockSetting($block_id, 'sortStyle', $params['sortStyle']);
+        $this->setBlockSetting($block_id, 'show_date', $params['show_date']);
         $this->setBlockSetting($block_id, 'show_user', $params['show_user']);
+        $this->setBlockSetting($block_id, 'source', $params['source']);
     }
 
     /**
@@ -228,7 +247,9 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
         $days      = (int) $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_INFO_STYLE);
         $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT_STYLE);
+        $show_date = $this->getBlockSetting($block_id, 'show_date', self::DEFAULT_SHOW_DATE);
         $show_user = $this->getBlockSetting($block_id, 'show_user', self::DEFAULT_SHOW_USER);
+        $source    = $this->getBlockSetting($block_id, 'source', self::DEFAULT_SOURCE);
 
         $info_styles = [
             /* I18N: An option in a list-box */
@@ -246,6 +267,13 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             'date_desc' => I18N::translate('sort by date, newest first'),
         ];
 
+        $sources = [
+            /* I18N: An option in a list-box */
+            self::SOURCE_DATABASE => I18N::translate('show changes made in webtrees'),
+            /* I18N: An option in a list-box */
+            self::SOURCE_GEDCOM   => I18N::translate('show changes recorded in the genealogy data'),
+        ];
+
         return view('modules/recent_changes/config', [
             'days'        => $days,
             'infoStyle'   => $infoStyle,
@@ -253,6 +281,9 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             'max_days'    => self::MAX_DAYS,
             'sortStyle'   => $sortStyle,
             'sort_styles' => $sort_styles,
+            'source'      => $source,
+            'sources'     => $sources,
+            'show_date'   => $show_date,
             'show_user'   => $show_user,
         ]);
     }
@@ -265,7 +296,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return Collection<stdClass> List of records with changes
      */
-    private function getRecentChanges(Tree $tree, int $days): Collection
+    private function getRecentChangesFromDatabase(Tree $tree, int $days): Collection
     {
         $subquery = DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
@@ -290,6 +321,56 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             })
             ->filter(static function (stdClass $row): bool {
                 return $row->record instanceof GedcomRecord && $row->record->canShow();
+            });
+    }
+
+    /**
+     * Find records that have changed since a given julian day
+     *
+     * @param Tree $tree Changes for which tree
+     * @param int  $days Number of days
+     *
+     * @return Collection<stdClass> List of records with changes
+     */
+    private function getRecentChangesFromGenealogy(Tree $tree, int $days): Collection
+    {
+        $julian_day = Carbon::now()->julianDay() - $days;
+
+        $individuals = DB::table('dates')
+            ->where('d_file', '=', $tree->id())
+            ->where('d_julianday1', '>=', $julian_day)
+            ->where('d_fact', '=', 'CHAN')
+            ->join('individuals', static function (JoinClause $join): void {
+                $join
+                    ->on('d_file', '=', 'i_file')
+                    ->on('d_gid', '=', 'i_id');
+            })
+            ->select(['individuals.*'])
+            ->get()
+            ->map(Factory::individual()->mapper($tree))
+            ->filter(Individual::accessFilter());
+
+        $families = DB::table('dates')
+            ->where('d_file', '=', $tree->id())
+            ->where('d_julianday1', '>=', $julian_day)
+            ->where('d_fact', '=', 'CHAN')
+            ->join('families', static function (JoinClause $join): void {
+                $join
+                    ->on('d_file', '=', 'f_file')
+                    ->on('d_gid', '=', 'f_id');
+            })
+            ->select(['families.*'])
+            ->get()
+            ->map(Factory::family()->mapper($tree))
+            ->filter(Family::accessFilter());
+
+        return $individuals->merge($families)
+            ->map(function (GedcomRecord $record): stdClass {
+                return (object) [
+                    'record' => $record,
+                    'time'   => $record->lastChangeTimestamp(),
+                    'user'   => $this->user_service->findByUserName($record->lastChangeUser()),
+                ];
             });
     }
 }
