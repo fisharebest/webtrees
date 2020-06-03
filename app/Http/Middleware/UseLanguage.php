@@ -79,7 +79,7 @@ class UseLanguage implements MiddlewareInterface
      *
      * @param ServerRequestInterface $request
      *
-     * @return Generator
+     * @return Generator<ModuleLanguageInterface|null>
      */
     private function languages(ServerRequestInterface $request): Generator
     {

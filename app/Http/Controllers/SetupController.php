@@ -41,8 +41,17 @@ use Symfony\Component\Cache\Adapter\NullAdapter;
 use Throwable;
 
 use function app;
+use function e;
+use function file_get_contents;
+use function file_put_contents;
+use function ini_get;
 use function random_bytes;
+use function realpath;
+use function redirect;
+use function substr;
 use function touch;
+use function unlink;
+use function view;
 
 /**
  * Controller for the installation wizard
@@ -131,7 +140,7 @@ class SetupController extends AbstractBaseController
 
         if ($data['lang'] === '') {
             $default = new LocaleEnUs();
-            
+
             $locale  = Locale::httpAcceptLanguage($request->getServerParams(), $locales->all(), $default);
 
             $data['lang'] = $locale->languageTag();
@@ -180,7 +189,7 @@ class SetupController extends AbstractBaseController
     /**
      * @param ServerRequestInterface $request
      *
-     * @return mixed[]
+     * @return array<string,string|Collection<string>>
      */
     private function userData(ServerRequestInterface $request): array
     {
@@ -214,28 +223,21 @@ class SetupController extends AbstractBaseController
     {
         $memory_limit = ini_get('memory_limit');
 
+        $number = (int) $memory_limit;
+
         switch (substr($memory_limit, -1)) {
-            case 'k':
-            case 'K':
-                $memory_limit = substr($memory_limit, 0, -1) / 1024;
-                break;
-            case 'm':
-            case 'M':
-                $memory_limit = substr($memory_limit, 0, -1);
-                break;
             case 'g':
             case 'G':
-                $memory_limit = substr($memory_limit, 0, -1) * 1024;
-                break;
-            case 't':
-            case 'T':
-                $memory_limit = substr($memory_limit, 0, -1) * 1024 * 1024;
-                break;
+                return $number * 1024;
+            case 'm':
+            case 'M':
+                return $number;
+            case 'k':
+            case 'K':
+                return (int) ($number / 1024);
             default:
-                $memory_limit = $memory_limit / 1024 / 1024;
+                return (int) ($number / 1048576);
         }
-
-        return (int) $memory_limit;
     }
 
     /**
@@ -261,7 +263,7 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param mixed[] $data
+     * @param array<string,string|Collection<string>> $data
      *
      * @return ResponseInterface
      */
@@ -271,7 +273,7 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param mixed[] $data
+     * @param array<string,string|Collection<string>> $data
      *
      * @return ResponseInterface
      */
@@ -281,7 +283,7 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param mixed[] $data
+     * @param array<string,string|Collection<string>> $data
      *
      * @return ResponseInterface
      */
@@ -295,7 +297,7 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param mixed[] $data
+     * @param array<string,string|Collection<string>> $data
      *
      * @return ResponseInterface
      */
@@ -309,7 +311,7 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param mixed[] $data
+     * @param array<string,string|Collection<string>> $data
      *
      * @return ResponseInterface
      */
@@ -328,7 +330,7 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param mixed[] $data
+     * @param array<string,string|Collection<string>> $data
      *
      * @return ResponseInterface
      */
@@ -374,7 +376,7 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param string[] $data
+     * @param array<string,string|Collection<string>> $data
      *
      * @return void
      */
@@ -419,6 +421,11 @@ class SetupController extends AbstractBaseController
         Session::put('language', $data['lang']);
     }
 
+    /**
+     * @param array<string,string|Collection<string>> $data
+     *
+     * @return void
+     */
     private function connectToDatabase(array $data): void
     {
         $capsule = new DB();

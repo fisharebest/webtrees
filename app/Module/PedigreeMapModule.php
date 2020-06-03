@@ -324,7 +324,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
      * @param ServerRequestInterface $request
      * @param ChartService           $chart_service
      *
-     * @return array
+     * @return array<Fact>
      */
     private function getPedigreeMapFacts(ServerRequestInterface $request, ChartService $chart_service): array
     {

@@ -201,9 +201,9 @@ class PlaceHierarchyController extends AbstractBaseController
     /**
      * @param Place $place
      *
-     * @return array
+     * @return array{'breadcrumbs':array<Place>,'current':Place|null}
      */
-    private function breadcrumbs($place): array
+    private function breadcrumbs(Place $place): array
     {
         $breadcrumbs = [];
         if ($place->gedcomName() !== '') {
@@ -216,7 +216,7 @@ class PlaceHierarchyController extends AbstractBaseController
             $breadcrumbs = array_reverse($breadcrumbs);
             $current     = array_pop($breadcrumbs);
         } else {
-            $current = '';
+            $current = null;
         }
 
         return [

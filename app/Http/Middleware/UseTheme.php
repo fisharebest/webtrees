@@ -73,7 +73,7 @@ class UseTheme implements MiddlewareInterface
     /**
      * The theme can be chosen in various ways.
      *
-     * @return Generator
+     * @return Generator<ModuleThemeInterface|null>
      */
     private function themes(): Generator
     {

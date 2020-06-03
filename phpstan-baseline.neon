@@ -491,22 +491,7 @@ parameters:
 			path: app/Http/Controllers/Admin/UsersController.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminController\\:\\:privacyConstants\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminController\\:\\:privacyRestrictions\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminController.php
-
-		-
 			message: "#^Parameter \\#1 \\$path of function basename expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminTreesController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminTreesController\\:\\:duplicateRecords\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Http/Controllers/AdminTreesController.php
 
@@ -527,11 +512,6 @@ parameters:
 
 		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Media but returns Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/AdminTreesController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AdminTreesController\\:\\:gedcomFiles\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Http/Controllers/AdminTreesController.php
 
@@ -636,11 +616,6 @@ parameters:
 			path: app/Http/Controllers/PlaceHierarchyController.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\PlaceHierarchyController\\:\\:breadcrumbs\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Controllers/PlaceHierarchyController.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\PlaceHierarchyController\\:\\:mapData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Http/Controllers/PlaceHierarchyController.php
@@ -652,16 +627,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$str of function substr expects string, string\\|false given\\.$#"
-			count: 5
-			path: app/Http/Controllers/SetupController.php
-
-		-
-			message: "#^Binary operation \"\\*\" between string and 1024 results in an error\\.$#"
-			count: 2
-			path: app/Http/Controllers/SetupController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\SetupController\\:\\:connectToDatabase\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Http/Controllers/SetupController.php
 
@@ -709,16 +674,6 @@ parameters:
 			message: "#^Instanceof between \\$this\\(Fisharebest\\\\Webtrees\\\\Http\\\\Middleware\\\\UseDatabase\\) and Illuminate\\\\Database\\\\Query\\\\Builder will always evaluate to false\\.$#"
 			count: 1
 			path: app/Http/Middleware/UseDatabase.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Middleware\\\\UseLanguage\\:\\:languages\\(\\) return type has no value type specified in iterable type Generator\\.$#"
-			count: 1
-			path: app/Http/Middleware/UseLanguage.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Middleware\\\\UseTheme\\:\\:themes\\(\\) return type has no value type specified in iterable type Generator\\.$#"
-			count: 1
-			path: app/Http/Middleware/UseTheme.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Middleware\\\\UseTransaction\\:\\:process\\(\\) should return Psr\\\\Http\\\\Message\\\\ResponseInterface but returns Psr\\\\Http\\\\Message\\\\ResponseInterface\\|null\\.$#"
@@ -1046,11 +1001,6 @@ parameters:
 			path: app/Module/FanChartModule.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule\\:\\:styles\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Module/FanChartModule.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
 			path: app/Module/FixDuplicateLinks.php
@@ -1366,11 +1316,6 @@ parameters:
 			path: app/Module/NotesTabModule.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\PedigreeMapModule\\:\\:getPedigreeMapFacts\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Module/PedigreeMapModule.php
-
-		-
 			message: "#^Parameter \\#1 \\$individual of method Fisharebest\\\\Webtrees\\\\Services\\\\ChartService\\:\\:sosaStradonitzAncestors\\(\\) expects Fisharebest\\\\Webtrees\\\\Individual, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
 			count: 1
 			path: app/Module/PedigreeMapModule.php
@@ -1438,11 +1383,6 @@ parameters:
 		-
 			message: "#^Binary operation \"\\-\" between string and 1 results in an error\\.$#"
 			count: 2
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\StatisticsChartModule\\:\\:axisNumbers\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
 			path: app/Module/StatisticsChartModule.php
 
 		-
@@ -2147,11 +2087,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartCommonSurname\\:\\:getTopNameAndCount\\(\\) has parameter \\$surns with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Statistics/Google/ChartCommonSurname.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartCommonSurname\\:\\:getTopNameAndCount\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Statistics/Google/ChartCommonSurname.php
 

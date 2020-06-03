@@ -101,15 +101,12 @@ class MediaFileService
         $number = (int) $size;
 
         switch (substr($size, -1)) {
-            case 't':
-            case 'T':
-                return $number * 1024 ** 4;
             case 'g':
             case 'G':
-                return $number * 1024 ** 3;
+                return $number * 1073741824;
             case 'm':
             case 'M':
-                return $number * 1024 ** 2;
+                return $number * 1048576;
             case 'k':
             case 'K':
                 return $number * 1024;

@@ -65,7 +65,7 @@ class ChartCommonSurname
      *
      * @param array $surns
      *
-     * @return array [ name, count ]
+     * @return array{string,int}
      */
     private function getTopNameAndCount(array $surns): array
     {
@@ -104,8 +104,8 @@ class ChartCommonSurname
         }
 
         return [
-            $top_name,
-            $count_per
+            (string) $top_name,
+            (int) $count_per
         ];
     }
 

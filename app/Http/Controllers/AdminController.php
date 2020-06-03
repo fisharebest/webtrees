@@ -168,7 +168,7 @@ class AdminController extends AbstractBaseController
     /**
      * Names of our privacy levels
      *
-     * @return array
+     * @return array<string,string>
      */
     private function privacyConstants(): array
     {
@@ -185,7 +185,7 @@ class AdminController extends AbstractBaseController
      *
      * @param Tree $tree
      *
-     * @return array
+     * @return array<string,string>
      */
     private function privacyRestrictions(Tree $tree): array
     {

@@ -567,7 +567,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
     /**
      * This chart can display its output in a number of styles
      *
-     * @return array
+     * @return array<string>
      */
     protected function styles(): array
     {
