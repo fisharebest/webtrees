@@ -1203,9 +1203,9 @@ class GedcomRecord
      * ['full'] = the name as specified in the record, e.g. 'Vincent van Gogh' or 'John Unknown'
      * ['sort'] = a sortable version of the name (not for display), e.g. 'Gogh, Vincent' or '@N.N., John'
      *
-     * @param int        $level
-     * @param string     $fact_type
-     * @param Collection $facts
+     * @param int              $level
+     * @param string           $fact_type
+     * @param Collection<Fact> $facts
      *
      * @return void
      */

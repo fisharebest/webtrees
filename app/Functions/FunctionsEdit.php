@@ -84,8 +84,8 @@ class FunctionsEdit
     /**
      * Function edit_language_checkboxes
      *
-     * @param string $parameter_name
-     * @param array  $accepted_languages
+     * @param string        $parameter_name
+     * @param array<string> $accepted_languages
      *
      * @return string
      */

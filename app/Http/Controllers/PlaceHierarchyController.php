@@ -175,7 +175,7 @@ class PlaceHierarchyController extends AbstractBaseController
     /**
      * @param Place $place
      *
-     * @return array|null
+     * @return array{'tree':Tree,'col_class':string,'columns':array<array<Place>>,'place':Place}|null
      * @throws Exception
      */
     private function getHierarchy(Place $place): ?array

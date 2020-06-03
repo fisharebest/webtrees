@@ -133,7 +133,7 @@ class LocationController extends AbstractAdminController
     /**
      * @param int $id
      *
-     * @return array
+     * @return array<stdClass>
      */
     private function getHierarchy(int $id): array
     {
@@ -144,6 +144,9 @@ class LocationController extends AbstractAdminController
             $row = DB::table('placelocation')
                 ->where('pl_id', '=', $id)
                 ->first();
+
+            // For static analysis tools.
+            assert($row instanceof stdClass);
 
             $fqpn[]    = $row->pl_place;
             $row->fqpn = implode(Gedcom::PLACE_SEPARATOR, $fqpn);
@@ -342,7 +345,7 @@ class LocationController extends AbstractAdminController
     /**
      * @param int $id
      *
-     * @return array
+     * @return array{'zoom':int,'coordinates':array<float>}
      */
     private function mapLocationData(int $id): array
     {

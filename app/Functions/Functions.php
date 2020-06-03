@@ -204,7 +204,7 @@ class Functions
      * @param Individual $individual2 The person to compute the relatiohip to
      * @param int        $maxlength   The maximum length of path
      *
-     * @return array{'path':array<Individual|Family>,"relations":array<string>} An array of nodes on the relationship path
+     * @return array{'path':array<Individual|Family>,'relations':array<string>} An array of nodes on the relationship path
      * @throws Exception If no relationship exists
      */
     public static function getRelationship(Individual $individual1, Individual $individual2, int $maxlength = 4): array
@@ -326,7 +326,7 @@ class Functions
     /**
      * Convert the result of get_relationship() into a relationship name.
      *
-     * @param array{'path':array<Individual|Family>,"relations":array<string>} $nodes
+     * @param array{'path':array<Individual|Family>,'relations':array<string>} $nodes
      *
      * @return string
      */

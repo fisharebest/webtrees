@@ -176,7 +176,7 @@ class Place
     /**
      * Get the lower level places.
      *
-     * @return Place[]
+     * @return array<Place>
      */
     public function getChildPlaces(): array
     {
