@@ -891,6 +891,11 @@ parameters:
 			path: app/Http/RequestHandlers/ExportGedcomClient.php
 
 		-
+			message: "#^Parameter \\#2 \\$resource of method League\\\\Flysystem\\\\Filesystem\\:\\:writeStream\\(\\) expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ExportGedcomClient.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\HelpText\\:\\:dmyOrder\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/HelpText.php
@@ -1091,6 +1096,11 @@ parameters:
 			path: app/Module/ClippingsCartModule.php
 
 		-
+			message: "#^Parameter \\#2 \\$resource of method League\\\\Flysystem\\\\Filesystem\\:\\:writeStream\\(\\) expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: app/Module/ClippingsCartModule.php
+
+		-
 			message: "#^Ternary operator condition is always false\\.$#"
 			count: 1
 			path: app/Module/ClippingsCartModule.php
@@ -1219,6 +1229,21 @@ parameters:
 			message: "#^Access to an undefined property object\\:\\:\\$block_id\\.$#"
 			count: 2
 			path: app/Module/FrequentlyAskedQuestionsModule.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
+			count: 1
+			path: app/Module/IndividualFactsTabModule.php
+
+		-
+			message: "#^Parameter \\#1 \\$gedcom of class Fisharebest\\\\Webtrees\\\\Fact constructor expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Module/IndividualFactsTabModule.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:sex\\(\\)\\.$#"
+			count: 17
+			path: app/Module/IndividualFactsTabModule.php
 
 		-
 			message: "#^Variable \\$associates in PHPDoc tag @var does not match assigned variable \\$asso1\\.$#"

@@ -615,12 +615,15 @@ class FunctionsEdit
             $html .= 'document.getElementById(\'' . $id . '\').style.display=\'none\'';
             $html .= '</script>';
             $html .= '<select id="' . $id . '_sel" oninput="document.getElementById(\'' . $id . '\').value=this.value" >';
-            foreach ([
+
+            $marriage_types = [
                 '' => '',
                 'Civil' => I18N::translate('Civil marriage'),
                 'Religious' => I18N::translate('Religious marriage'),
                 'Partners' => I18N::translate('Registered partnership'),
-            ] as $key => $type_label) {
+            ];
+
+            foreach ($marriage_types as $key => $type_label) {
                 $html .= '<option value="' . $key . '" ';
                 if (strtolower($key) === strtolower($value)) {
                     $html .= 'selected';
