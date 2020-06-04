@@ -79,7 +79,6 @@ class GedcomService
         'DIVORCE_FILED'     => 'DIVF',
         'PHY_DESCRIPTION'   => 'DSCR',
         'EDUCATION'         => 'EDUC',
-        'EMAIL'             => 'EMAI',
         'EMIGRATION'        => 'EMIG',
         'ENDOWMENT'         => 'ENDL',
         'ENGAGEMENT'        => 'ENGA',
