@@ -63,9 +63,9 @@ class ChartCommonSurname
      * Count up the different versions of a name and returns the one with the most matches. Takes
      * different surname traditions into account.
      *
-     * @param array $surns
+     * @param array<string,int> $surns
      *
-     * @return array{string,int}
+     * @return array{0:string,1:int}
      */
     private function getTopNameAndCount(array $surns): array
     {

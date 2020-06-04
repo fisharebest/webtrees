@@ -189,7 +189,7 @@ class SetupController extends AbstractBaseController
     /**
      * @param ServerRequestInterface $request
      *
-     * @return array<string,string|Collection<string>>
+     * @return array<string,mixed>
      */
     private function userData(ServerRequestInterface $request): array
     {
@@ -263,7 +263,7 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param array<string,string|Collection<string>> $data
+     * @param array<string,mixed> $data
      *
      * @return ResponseInterface
      */
@@ -273,7 +273,7 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param array<string,string|Collection<string>> $data
+     * @param array<string,mixed> $data
      *
      * @return ResponseInterface
      */
@@ -283,7 +283,7 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param array<string,string|Collection<string>> $data
+     * @param array<string,mixed> $data
      *
      * @return ResponseInterface
      */
@@ -297,7 +297,7 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param array<string,string|Collection<string>> $data
+     * @param array<string,mixed> $data
      *
      * @return ResponseInterface
      */
@@ -311,7 +311,7 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param array<string,string|Collection<string>> $data
+     * @param array<string,mixed> $data
      *
      * @return ResponseInterface
      */
@@ -330,7 +330,7 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param array<string,string|Collection<string>> $data
+     * @param array<string,mixed> $data
      *
      * @return ResponseInterface
      */
@@ -376,7 +376,7 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param array<string,string|Collection<string>> $data
+     * @param array<string,mixed> $data
      *
      * @return void
      */
@@ -422,7 +422,7 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param array<string,string|Collection<string>> $data
+     * @param array<string,mixed> $data
      *
      * @return void
      */

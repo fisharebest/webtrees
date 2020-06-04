@@ -446,11 +446,6 @@ parameters:
 			path: app/Http/Controllers/Admin/LocationController.php
 
 		-
-			message: "#^Variable \\$media in PHPDoc tag @var does not match assigned variable \\$tree\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/MediaController.php
-
-		-
 			message: "#^Parameter \\#4 \\$sort_columns of method Fisharebest\\\\Webtrees\\\\Services\\\\DatatablesService\\:\\:handleQuery\\(\\) expects array\\<string\\>, array\\<int, Illuminate\\\\Database\\\\Query\\\\Expression\\|string\\> given\\.$#"
 			count: 2
 			path: app/Http/Controllers/Admin/MediaController.php
@@ -666,7 +661,7 @@ parameters:
 			path: app/Http/Middleware/ReadConfigIni.php
 
 		-
-			message: "#^Call to function assert\\(\\) with false and LogicException will always evaluate to false\\.$#"
+			message: "#^Call to function assert\\(\\) with false will always evaluate to false\\.$#"
 			count: 1
 			path: app/Http/Middleware/UseDatabase.php
 
@@ -1906,7 +1901,7 @@ parameters:
 			path: app/Services/MediaFileService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:unusedFiles\\(\\) should return array<string> but returns array\\|false\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:unusedFiles\\(\\) should return array\\<string\\> but returns array\\|false\\.$#"
 			count: 1
 			path: app/Services/MediaFileService.php
 
@@ -2084,11 +2079,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartCommonGiven\\:\\:chartCommonGiven\\(\\) has parameter \\$given with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Statistics/Google/ChartCommonGiven.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartCommonSurname\\:\\:getTopNameAndCount\\(\\) has parameter \\$surns with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Statistics/Google/ChartCommonSurname.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartCommonSurname\\:\\:chartCommonSurnames\\(\\) has parameter \\$all_surnames with no value type specified in iterable type array\\.$#"

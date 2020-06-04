@@ -101,7 +101,7 @@ class UseDatabase implements MiddlewareInterface
 
         Builder::macro('whereContains', function ($column, string $search, string $boolean = 'and'): Builder {
             // Assertion helps static analysis tools understand where we will be using this closure.
-            assert($this instanceof Builder, new LogicException());
+            assert($this instanceof Builder);
 
             trigger_error('Builder::whereContains() is deprecated. Use LIKE.', E_USER_DEPRECATED);
 
