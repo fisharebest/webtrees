@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -95,10 +95,10 @@ class Webtrees
     public const SCHEMA_VERSION = 44;
 
     // e.g. "dev", "alpha", "beta", etc.
-    public const STABILITY = '';
+    public const STABILITY = 'dev';
 
     // Version number
-    public const VERSION = '2.0.5' . (self::STABILITY === '' ? '' : '-') . self::STABILITY;
+    public const VERSION = '2.0.6' . (self::STABILITY === '' ? '' : '-') . self::STABILITY;
 
     // Project website.
     public const URL = 'https://webtrees.net/';
