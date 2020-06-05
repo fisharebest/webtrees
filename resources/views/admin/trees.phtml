@@ -106,7 +106,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                     <?php if (count($all_trees) > 1 && Auth::isAdmin()) : ?>
                                         <li>
                                             <span class="fa-li"><?= view('icons/delete') ?></span>
-                                            <a href="#" data-post-url="<?= e(route(DeleteTreeAction::class, ['tree' => $managed_tree->name()])) ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($managed_tree->title())) ?>">
+                                            <a href="#" data-post-url="<?= e(route(DeleteTreeAction::class, ['tree' => $managed_tree->name()])) ?>" data-reload-url="<?= e(route(ControlPanel::class)) ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($managed_tree->title())) ?>">
                                                 <?= I18N::translate('Delete') ?>
                                             </a>
                                         </li>
