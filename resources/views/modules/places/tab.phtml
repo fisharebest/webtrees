@@ -94,8 +94,6 @@ use Fisharebest\Webtrees\I18N;
          * @private
          */
         let _buildMapData = function() {
-            $('a[href="#places"]').unbind('shown.bs.tab', _buildMapData);
-
             let sidebar_content = "";
             let data            = <?= json_encode($data) ?>;
 
@@ -187,11 +185,7 @@ use Fisharebest\Webtrees\I18N;
         });
 
         _drawMap();
-        if ( ! $('#osm-map').prop('clientWidth') ) {
-                $('a[href="#places"]').on('shown.bs.tab', _buildMapData);
-        } else {
-                _buildMapData();
-        }
+        _buildMapData();
 
         return "Leaflet map interface for webtrees-2";
     })();
