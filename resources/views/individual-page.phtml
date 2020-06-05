@@ -153,7 +153,10 @@ use Illuminate\Support\Collection;
   "use strict";
 
   // Bootstrap tabs - load content dynamically using AJAX
-  $('a[data-toggle="tab"][data-href]').on('show.bs.tab', function () {
+  $('a[data-toggle="tab"][data-href][href!="#places"]').on('show.bs.tab', function () {
+    $(this.getAttribute('href') + ':empty').load($(this).data('href'));
+  });
+  $('a[href="#places"]').on('shown.bs.tab', function () {
     $(this.getAttribute('href') + ':empty').load($(this).data('href'));
   });
 
