@@ -154,7 +154,18 @@ use Illuminate\Support\Collection;
 
   // Bootstrap tabs - load content dynamically using AJAX
   $('a[data-toggle="tab"][data-href]').on('show.bs.tab', function () {
-    $(this.getAttribute('href') + ':empty').load($(this).data('href'));
+      let target = $(this.hash + ':empty');
+      if (target) {
+          // Start the download immediately...
+          let download = fetch(this.dataset.href);
+
+          // ...but don't insert it until the tab is ready.
+          $(this).one('shown.bs.tab', () => {
+              download
+                  .then(data => data.text())
+                  .then(data => target.html(data));
+          });
+      }
   });
 
   // If the URL contains a fragment, then activate the corresponding tab.
