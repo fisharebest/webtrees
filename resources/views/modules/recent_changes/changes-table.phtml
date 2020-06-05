@@ -87,7 +87,7 @@ use Illuminate\Support\Collection;
                     </td>
 
                     <td class="<?= $show_user ? '' : 'd-none' ?>">
-                        <?= e($row->record->lastChangeUser()) ?>
+                        <?= e($row->user->userName()) ?>
                     </td>
                 </tr>
             <?php endforeach ?>

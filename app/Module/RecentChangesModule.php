@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
@@ -366,10 +367,12 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
         return $individuals->merge($families)
             ->map(function (GedcomRecord $record): stdClass {
+                $user = $this->user_service->findByUserName($record->lastChangeUser());
+
                 return (object) [
                     'record' => $record,
                     'time'   => $record->lastChangeTimestamp(),
-                    'user'   => $this->user_service->findByUserName($record->lastChangeUser()),
+                    'user'   => $user ?? new User(0, '…', '…', ''),
                 ];
             });
     }
