@@ -295,7 +295,6 @@ class PlaceHierarchyController extends AbstractBaseController
         $parent = new PlaceLocation($placeObj->gedcomName());
 
         return [
-            'bounds'  => $parent->boundingRectangle(),
             'sidebar' => $sidebar,
             'markers' => [
                 'type'     => 'FeatureCollection',
