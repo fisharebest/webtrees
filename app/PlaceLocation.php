@@ -24,6 +24,11 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use stdClass;
 
+use function app;
+use function max;
+use function min;
+use function preg_split;
+
 /**
  * Class PlaceLocation
  */
@@ -201,5 +206,50 @@ class PlaceLocation
     public function locationName(): string
     {
         return (string) $this->parts->first();
+    }
+
+    /**
+     * Find a rectangle that (approximately) encloses this place.
+     *
+     * @return array<array<float>>
+     */
+    public function boundingRectangle(): array
+    {
+        $latitude  = $this->latitude();
+        $longitude = $this->longitude();
+
+        // No co-ordinates for this place? Try the parent place.
+        $tmp = $this;
+        while ($latitude === 0.0 && $longitude === 0.0 && $tmp->id() !== 0) {
+            $tmp       = $tmp->parent();
+            $latitude  = $tmp->latitude();
+            $longitude = $tmp->longitude();
+        }
+
+        // Show this number of degrees around the centre.
+        if ($latitude === 0.0 && $longitude === 0.0 || $this->id() === 0) {
+            // World
+            $degrees = 180.0;
+        } elseif ($this->parts->count() === 1) {
+            // Countries
+            $degrees = 10.0;
+        } elseif ($this->parts->count() === 2) {
+            // Regions
+            $degrees = 3.0;
+        } else {
+            // Towns, cities and villages
+            $degrees = 1.0;
+        }
+
+        return [
+            [
+                max($latitude - $degrees, -90.0),
+                max($longitude - $degrees, -180.0),
+            ],
+            [
+                min($latitude + $degrees, 90.0),
+                min($longitude + $degrees, 180.0),
+            ],
+        ];
     }
 }

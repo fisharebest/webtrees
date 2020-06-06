@@ -272,7 +272,6 @@ class PlaceHierarchyController extends AbstractBaseController
                             'latitude'  => $location->latitude(),
                             'longitude' => $location->longitude(),
                         ]),
-                        'zoom'    => $location->zoom() ?: 2,
                     ],
                 ];
             }
@@ -294,6 +293,7 @@ class PlaceHierarchyController extends AbstractBaseController
         }
 
         return [
+            'bounds'  => (new PlaceLocation($placeObj->gedcomName()))->boundingRectangle(),
             'sidebar' => $sidebar,
             'markers' => [
                 'type'     => 'FeatureCollection',

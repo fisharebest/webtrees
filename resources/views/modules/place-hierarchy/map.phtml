@@ -108,9 +108,6 @@ use Fisharebest\Webtrees\View;
         let _buildMapData = function () {
             let data = <?= json_encode($data['markers']) ?>;
 
-            if (data.features.length === 1) {
-                zoom = data.features[0].properties.zoom;
-            }
             let geoJsonLayer = L.geoJson(data, {
                 pointToLayer: function (feature, latlng) {
                     return new L.Marker(latlng, {
@@ -143,15 +140,9 @@ use Fisharebest\Webtrees\View;
             if (data.features.length > 0) {
                 markers.addLayer(geoJsonLayer);
                 map.addLayer(markers)
-
-                if (zoom) {
-                    map.setView(markers.getBounds().getCenter(), zoom);
-                } else {
-                    map.fitBounds(markers.getBounds().pad(0.2));
-                }
-            } else {
-                map.fitWorld();
             }
+
+            map.fitBounds(<?= json_encode($data['bounds']) ?>);
             sidebar.append(<?= json_encode($data['sidebar']) ?>);
         };
 
