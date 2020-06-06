@@ -307,7 +307,7 @@ class PlaceHierarchyController extends AbstractBaseController
                 'latitude'  => $parent->latitude(),
                 'longitude' => $parent->longitude(),
                 'bounds'    => $parent->boundingRectangle(),
-                'children'  => ( $show_link && $is_mapped ),
+                'children'  => ($show_link && $is_mapped),
             ]
         ];
     }
