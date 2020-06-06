@@ -292,12 +292,20 @@ class PlaceHierarchyController extends AbstractBaseController
             ]);
         }
 
+        $parent = new PlaceLocation($placeObj->gedcomName());
+
         return [
-            'bounds'  => (new PlaceLocation($placeObj->gedcomName()))->boundingRectangle(),
+            'bounds'  => $parent->boundingRectangle(),
             'sidebar' => $sidebar,
             'markers' => [
                 'type'     => 'FeatureCollection',
                 'features' => $features,
+            ],
+            'parent' => [
+                'zoom'     => $parent->zoom(),
+                'latitude' => $parent->latitude(),
+                'longitude'=> $parent->longitude(),
+                'bounds'   => $parent->boundingRectangle(),
             ]
         ];
     }
