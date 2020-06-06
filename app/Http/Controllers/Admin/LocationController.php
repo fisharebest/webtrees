@@ -353,7 +353,12 @@ class LocationController extends AbstractAdminController
             ->where('pl_id', '=', $id)
             ->first();
 
-        if ($row === null) {
+        $valid = $row !== null;
+        if ($valid) {
+            $valid = ($row->pl_lati !== null) && ($row->pl_long !== null);
+        }
+
+        if (!$valid) {
             $json = [
                 'zoom'        => 2,
                 'coordinates' => [
