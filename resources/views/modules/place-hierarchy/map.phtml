@@ -144,7 +144,11 @@ use Fisharebest\Webtrees\View;
             }
 
             if (parent.zoom > 0 && parent.latitude != 0 && parent.longitude != 0) {
-                map.setView([parent.latitude, parent.longitude], parent.zoom);
+                if (parent.children) {
+                    map.fitBounds(markers.getBounds().pad(0.2), {maxZoom:parent.zoom});
+                } else {
+                    map.setView([parent.latitude, parent.longitude], parent.zoom);
+                }
             } else {
                 map.fitBounds(parent.bounds);
             }
