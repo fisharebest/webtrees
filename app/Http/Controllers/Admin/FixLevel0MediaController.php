@@ -170,7 +170,7 @@ class FixLevel0MediaController extends AbstractAdminController
                     return
                         !$fact->isPendingDeletion() &&
                         !preg_match('/^@' . Gedcom::REGEX_XREF . '@$/', $fact->value()) &&
-                        !in_array($fact->tag(), $ignore_facts, true);
+                        !in_array($fact->getTag(), $ignore_facts, true);
                 });
 
             // The link to the media object may have been deleted in a pending change.

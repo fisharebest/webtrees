@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -111,7 +111,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                 $date = $fact->date();
                 if ($date->minimumDate() instanceof JewishDate && $date->minimumJulianDay() === $date->maximumJulianDay()) {
                     // ...then adjust DEAT dates (but not _YART)
-                    if ($fact->tag() === 'DEAT') {
+                    if ($fact->getTag() === 'DEAT') {
                         $today     = new JewishDate($jd);
                         $hd        = $fact->date()->minimumDate();
                         $hd1       = new JewishDate($hd);

@@ -76,7 +76,7 @@ class FunctionsPrintFacts
     {
         $parent = $fact->record();
         $tree   = $parent->tree();
-        $tag    = $fact->tag();
+        $tag    = $fact->getTag();
         $label  = $fact->label();
         $value  = $fact->value();
         $type   = $fact->attribute('TYPE');

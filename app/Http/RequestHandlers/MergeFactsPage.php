@@ -82,13 +82,13 @@ class MergeFactsPage implements RequestHandlerInterface
         $facts2 = [];
 
         foreach ($record1->facts() as $fact) {
-            if (!$fact->isPendingDeletion() && $fact->tag() !== 'CHAN') {
+            if (!$fact->isPendingDeletion() && $fact->getTag() !== 'CHAN') {
                 $facts1[$fact->id()] = $fact;
             }
         }
 
         foreach ($record2->facts() as $fact) {
-            if (!$fact->isPendingDeletion() && $fact->tag() !== 'CHAN') {
+            if (!$fact->isPendingDeletion() && $fact->getTag() !== 'CHAN') {
                 $facts2[$fact->id()] = $fact;
             }
         }

@@ -154,7 +154,7 @@ class CalendarService
 
                 foreach ($record->facts() as $fact) {
                     // For date ranges, we need a match on either the start/end.
-                    if (($fact->date()->minimumJulianDay() === $anniv_date->minimumJulianDay() || $fact->date()->maximumJulianDay() === $anniv_date->maximumJulianDay()) && $fact->tag() === $row->d_fact) {
+                    if (($fact->date()->minimumJulianDay() === $anniv_date->minimumJulianDay() || $fact->date()->maximumJulianDay() === $anniv_date->maximumJulianDay()) && $fact->getTag() === $row->d_fact) {
                         $fact->anniv   = 0;
                         $found_facts[] = $fact;
                     }

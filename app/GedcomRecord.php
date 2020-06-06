@@ -824,7 +824,7 @@ class GedcomRecord
         $facts = new Collection();
         if ($this->canShow($access_level)) {
             foreach ($this->facts as $fact) {
-                if (($filter === [] || in_array($fact->tag(), $filter, true)) && $fact->canShow($access_level)) {
+                if (($filter === [] || in_array($fact->getTag(), $filter, true)) && $fact->canShow($access_level)) {
                     $facts->push($fact);
                 }
             }
@@ -961,7 +961,7 @@ class GedcomRecord
                     $new_gedcom .= "\n" . $gedcom;
                 }
                 $fact_id = 'NOT A VALID FACT ID'; // Only replace/delete one copy of a duplicate fact
-            } elseif ($fact->tag() !== 'CHAN' || !$update_chan) {
+            } elseif ($fact->getTag() !== 'CHAN' || !$update_chan) {
                 $new_gedcom .= "\n" . $fact->gedcom();
             }
         }

@@ -85,7 +85,7 @@ class FamilyPage implements RequestHandlerInterface
 
         $facts = $family->facts([], true)
             ->filter(static function (Fact $fact): bool {
-                return !in_array($fact->tag(), ['HUSB', 'WIFE', 'CHIL'], true);
+                return !in_array($fact->getTag(), ['HUSB', 'WIFE', 'CHIL'], true);
             });
 
         return $this->viewResponse('family-page', [

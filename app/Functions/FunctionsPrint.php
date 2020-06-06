@@ -296,7 +296,7 @@ class FunctionsPrint
         }
 
         // Calculated age
-        $fact = $event->tag();
+        $fact = $event->getTag();
         if (preg_match('/\n2 DATE (.+)/', $factrec, $match)) {
             $date = new Date($match[1]);
             $html .= ' ' . $date->display($anchor);
@@ -461,7 +461,7 @@ class FunctionsPrint
     public static function checkFactUnique(array $uniquefacts, Collection $recfacts): array
     {
         foreach ($recfacts as $factarray) {
-            $fact = $factarray->tag();
+            $fact = $factarray->getTag();
 
             $key = array_search($fact, $uniquefacts, true);
             if ($key !== false) {

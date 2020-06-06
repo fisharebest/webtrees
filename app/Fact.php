@@ -355,7 +355,7 @@ class Fact
         }
 
         // Members cannot edit RESN, CHAN and locked records
-        return Auth::isEditor($this->record->tree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->tag() !== 'RESN' && $this->tag() !== 'CHAN';
+        return Auth::isEditor($this->record->tree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->tag !== 'RESN' && $this->tag !== 'CHAN';
     }
 
     /**
@@ -415,7 +415,7 @@ class Fact
      */
     public function tag(): string
     {
-        return $this->tag;
+        return $this->record::RECORD_TYPE . ':' . $this->tag;
     }
 
     /**
@@ -427,7 +427,7 @@ class Fact
      */
     public function getTag(): string
     {
-        return $this->tag();
+        return $this->tag;
     }
 
     /**
@@ -606,7 +606,7 @@ class Fact
             // Fact date
             $date = $this->date();
             if ($date->isOK()) {
-                if ($this->record() instanceof Individual && in_array($this->tag(), Gedcom::BIRTH_EVENTS, true) && $this->record()->tree()->getPreference('SHOW_PARENTS_AGE')) {
+                if ($this->record() instanceof Individual && in_array($this->tag, Gedcom::BIRTH_EVENTS, true) && $this->record()->tree()->getPreference('SHOW_PARENTS_AGE')) {
                     $attributes[] = $date->display() . FunctionsPrint::formatParentsAges($this->record(), $date);
                 } else {
                     $attributes[] = $date->display();
@@ -618,7 +618,7 @@ class Fact
             }
         }
 
-        $class = 'fact_' . $this->tag();
+        $class = 'fact_' . $this->tag;
         if ($this->isPendingAddition()) {
             $class .= ' wt-new';
         } elseif ($this->isPendingDeletion()) {
@@ -683,8 +683,8 @@ class Fact
                 return $a->sortOrder - $b->sortOrder;
             }
 
-            $atag = $a->tag();
-            $btag = $b->tag();
+            $atag = $a->tag;
+            $btag = $b->tag;
 
             // Events not in the above list get mapped onto one that is.
             if (!array_key_exists($atag, $factsort)) {

@@ -182,7 +182,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                         'coordinates' => [$longitude, $latitude],
                     ],
                     'properties' => [
-                        'icon'     => static::ICONS[$fact->tag()] ?? static::DEFAULT_ICON,
+                        'icon'     => static::ICONS[$fact->getTag()] ?? static::DEFAULT_ICON,
                         'tooltip'  => strip_tags($fact->place()->fullName()),
                         'summary'  => view('modules/places/event-sidebar', $this->summaryData($indi, $fact)),
                         'zoom'     => $location->zoom(),

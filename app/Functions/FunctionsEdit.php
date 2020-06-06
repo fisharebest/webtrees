@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2017 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -733,7 +733,7 @@ class FunctionsEdit
         self::$tags = [];
 
         $level0type = $record::RECORD_TYPE;
-        $level1type = $fact->tag();
+        $level1type = $fact->getTag();
 
         // List of tags we would expect at the next level
         // NB insertMissingSubtags() already takes care of the simple cases

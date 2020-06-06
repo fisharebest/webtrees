@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -155,7 +155,7 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
         $facts4 = new Collection();
 
         foreach ($facts as $fact) {
-            if ($fact->tag() !== 'OBJE') {
+            if ($fact->getTag() !== 'OBJE') {
                 $facts1->push($fact);
             } elseif ($fact->value() !== '@' . $xref . '@') {
                 $facts3->push($fact);

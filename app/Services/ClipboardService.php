@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -48,7 +48,7 @@ class ClipboardService
 
         $clipboard[$record_type][$fact_id] = [
             'factrec' => $fact->gedcom(),
-            'fact'    => $fact->tag(),
+            'fact'    => $fact->getTag(),
         ];
 
         // The clipboard only holds a limited number of facts.
@@ -98,7 +98,7 @@ class ClipboardService
             ->map(static function (array $clipping) use ($record): Fact {
                 return new Fact($clipping['factrec'], $record, md5($clipping['factrec']));
             })->filter(static function (Fact $fact) use ($exclude_types): bool {
-                return $exclude_types->isEmpty() || !$exclude_types->contains($fact->tag());
+                return $exclude_types->isEmpty() || !$exclude_types->contains($fact->getTag());
             });
     }
 
@@ -120,7 +120,7 @@ class ClipboardService
                 return new Fact($clipping['factrec'], $record, md5($clipping['factrec']));
             })
             ->filter(static function (Fact $fact) use ($types): bool {
-                return $types->contains($fact->tag());
+                return $types->contains($fact->getTag());
             });
     }
 }

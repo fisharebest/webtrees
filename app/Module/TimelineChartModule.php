@@ -296,7 +296,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             }
             foreach ($facts as $event) {
                 // get the fact type
-                $fact = $event->tag();
+                $fact = $event->getTag();
                 if (!in_array($fact, self::NON_FACTS, true)) {
                     // check for a date
                     $date = $event->date();

@@ -68,7 +68,7 @@ class EditFact implements RequestHandlerInterface
 
         $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');
 
-        $title = $record->fullName() . ' - ' . GedcomTag::getLabel($fact->tag());
+        $title = $record->fullName() . ' - ' . GedcomTag::getLabel($fact->getTag());
 
         return $this->viewResponse('edit/edit-fact', [
             'can_edit_raw' => $can_edit_raw,
