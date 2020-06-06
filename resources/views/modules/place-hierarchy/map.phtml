@@ -107,6 +107,7 @@ use Fisharebest\Webtrees\View;
         */
         let _buildMapData = function () {
             let data = <?= json_encode($data['markers']) ?>;
+            let parent = <?= json_encode($data['parent']) ?>;
 
             let geoJsonLayer = L.geoJson(data, {
                 pointToLayer: function (feature, latlng) {
@@ -142,7 +143,12 @@ use Fisharebest\Webtrees\View;
                 map.addLayer(markers)
             }
 
-            map.fitBounds(<?= json_encode($data['bounds']) ?>);
+            if (parent.zoom > 0 && parent.latitude != 0 && parent.longitude != 0) {
+                map.setView([parent.latitude, parent.longitude], parent.zoom);
+            } else {
+                map.fitBounds(parent.bounds);
+            }
+
             sidebar.append(<?= json_encode($data['sidebar']) ?>);
         };
 
