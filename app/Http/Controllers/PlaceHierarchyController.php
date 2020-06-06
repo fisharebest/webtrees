@@ -301,10 +301,10 @@ class PlaceHierarchyController extends AbstractBaseController
                 'features' => $features,
             ],
             'parent' => [
-                'zoom'     => $parent->zoom(),
-                'latitude' => $parent->latitude(),
-                'longitude'=> $parent->longitude(),
-                'bounds'   => $parent->boundingRectangle(),
+                'zoom'      => $parent->zoom(),
+                'latitude'  => $parent->latitude(),
+                'longitude' => $parent->longitude(),
+                'bounds'    => $parent->boundingRectangle(),
             ]
         ];
     }
