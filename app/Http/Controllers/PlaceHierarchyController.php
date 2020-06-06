@@ -236,16 +236,17 @@ class PlaceHierarchyController extends AbstractBaseController
         $features  = [];
         $sidebar   = '';
         $flag_path = Webtrees::MODULES_DIR . 'openstreetmap/';
-        $show_link = true;
+        $has_child = $places !== [];
         $is_mapped = false;
 
-        if ($places === []) {
-            $places[] = $placeObj;
-            $show_link = false;
-        }
+        // Include parent with its child list so we can see it even if they are in separate locations.
+        $places[] = $placeObj;
 
         foreach ($places as $id => $place) {
             $location = new PlaceLocation($place->gedcomName());
+
+            // Careful, $id != $placeObj->id()
+            $is_child = $place->id() != $placeObj->id();
 
             if ($location->icon() !== '' && is_file($flag_path . $location->icon())) {
                 $flag = $flag_path . $location->icon();
@@ -257,7 +258,9 @@ class PlaceHierarchyController extends AbstractBaseController
                 $sidebar_class = 'unmapped';
             } else {
                 $sidebar_class = 'mapped';
-                $is_mapped = true;
+                if ($is_child) {
+                    $is_mapped = true;
+                }
                 $features[]    = [
                     'type'       => 'Feature',
                     'id'         => $id,
@@ -268,7 +271,7 @@ class PlaceHierarchyController extends AbstractBaseController
                     'properties' => [
                         'tooltip' => $place->gedcomName(),
                         'popup'   => view('modules/place-hierarchy/popup', [
-                            'showlink'  => $show_link,
+                            'showlink'  => $is_child,
                             'flag'      => $flag,
                             'place'     => $place,
                             'latitude'  => $location->latitude(),
@@ -279,19 +282,21 @@ class PlaceHierarchyController extends AbstractBaseController
             }
 
             //Stats
-            $placeStats = [];
-            foreach (['INDI', 'FAM'] as $type) {
-                $tmp               = $this->statistics->statsPlaces($type, '', $place->id());
-                $placeStats[$type] = $tmp === [] ? 0 : $tmp[0]->tot;
+            if ($is_child || !$has_child) {
+                $placeStats = [];
+                foreach (['INDI', 'FAM'] as $type) {
+                    $tmp               = $this->statistics->statsPlaces($type, '', $place->id());
+                    $placeStats[$type] = $tmp === [] ? 0 : $tmp[0]->tot;
+                }
+                $sidebar .= view('modules/place-hierarchy/sidebar', [
+                    'showlink'      => $is_child,
+                    'flag'          => $flag,
+                    'id'            => $id,
+                    'place'         => $place,
+                    'sidebar_class' => $sidebar_class,
+                    'stats'         => $placeStats,
+                ]);
             }
-            $sidebar .= view('modules/place-hierarchy/sidebar', [
-                'showlink'      => $show_link,
-                'flag'          => $flag,
-                'id'            => $id,
-                'place'         => $place,
-                'sidebar_class' => $sidebar_class,
-                'stats'         => $placeStats,
-            ]);
         }
 
         $parent = new PlaceLocation($placeObj->gedcomName());
@@ -307,7 +312,7 @@ class PlaceHierarchyController extends AbstractBaseController
                 'latitude'  => $parent->latitude(),
                 'longitude' => $parent->longitude(),
                 'bounds'    => $parent->boundingRectangle(),
-                'children'  => ($show_link && $is_mapped),
+                'children'  => ($has_child && $is_mapped),
             ]
         ];
     }
