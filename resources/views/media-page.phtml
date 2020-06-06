@@ -154,9 +154,7 @@ use Illuminate\Support\Collection;
                     </tr>
                 <?php endforeach ?>
                 <?php foreach ($facts as $fact) : ?>
-                    <?php if ($fact->getTag() !== 'FILE') : ?>
-                        <?php FunctionsPrintFacts::printFact($fact, $media) ?>
-                    <?php endif ?>
+                    <?php FunctionsPrintFacts::printFact($fact, $media) ?>
                 <?php endforeach ?>
                 <?php if ($media->canEdit()) : ?>
                     <?= view('edit/paste-fact-row', ['record' => $media, 'facts' => $clipboard_facts]) ?>
