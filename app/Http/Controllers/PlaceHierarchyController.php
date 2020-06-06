@@ -244,9 +244,7 @@ class PlaceHierarchyController extends AbstractBaseController
 
         foreach ($places as $id => $place) {
             $location = new PlaceLocation($place->gedcomName());
-
-            // Careful, $id != $placeObj->id()
-            $is_child = $place->id() != $placeObj->id();
+            $is_child = $place->gedcomName() != $placeObj->gedcomName();
 
             if ($location->icon() !== '' && is_file($flag_path . $location->icon())) {
                 $flag = $flag_path . $location->icon();
