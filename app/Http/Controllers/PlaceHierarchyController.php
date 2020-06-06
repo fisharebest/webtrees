@@ -237,6 +237,7 @@ class PlaceHierarchyController extends AbstractBaseController
         $sidebar   = '';
         $flag_path = Webtrees::MODULES_DIR . 'openstreetmap/';
         $show_link = true;
+        $is_mapped = false;
 
         if ($places === []) {
             $places[] = $placeObj;
@@ -256,6 +257,7 @@ class PlaceHierarchyController extends AbstractBaseController
                 $sidebar_class = 'unmapped';
             } else {
                 $sidebar_class = 'mapped';
+                $is_mapped = true;
                 $features[]    = [
                     'type'       => 'Feature',
                     'id'         => $id,
@@ -305,6 +307,7 @@ class PlaceHierarchyController extends AbstractBaseController
                 'latitude'  => $parent->latitude(),
                 'longitude' => $parent->longitude(),
                 'bounds'    => $parent->boundingRectangle(),
+                'children'  => ( $show_link && $is_mapped ),
             ]
         ];
     }
