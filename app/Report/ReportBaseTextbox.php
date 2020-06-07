@@ -85,16 +85,6 @@ class ReportBaseTextbox extends ReportBaseElement
     public $style;
 
     /**
-     * @var array Border style of rectangle. Array with keys among the following:
-     * <ul>
-     * <li>all: Line style of all borders. Array like for {@link SetLineStyle SetLineStyle}.</li>
-     * <li>L, T, R, B or combinations: Line style of left, top, right or bottom border. Array like for {@link SetLineStyle SetLineStyle}.</li>
-     * </ul>
-     * Not yet in use
-     * var $borderstyle;
-     */
-
-    /**
      * The starting height of this cell. If the text wraps the height will automatically be adjusted
      *
      * @var float

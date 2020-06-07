@@ -41,30 +41,6 @@ trait ModuleTabTrait
     protected $tab_order;
 
     /**
-     * @return string
-     */
-    abstract public function title(): string;
-
-    /**
-     * Get a the current access level for a module
-     *
-     * @param Tree   $tree
-     * @param string $interface
-     *
-     * @return int
-     */
-    abstract public function accessLevel(Tree $tree, string $interface): int;
-
-    /**
-     * Generate the HTML content of this tab.
-     *
-     * @param Individual $individual
-     *
-     * @return string
-     */
-    abstract public function getTabContent(Individual $individual): string;
-
-    /**
      * The text that appears on the tab.
      *
      * @return string

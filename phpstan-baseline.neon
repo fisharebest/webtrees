@@ -1127,7 +1127,7 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\RecentChangesModule\\:\\:getBlock\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
-			count: 2
+			count: 1
 			path: app/Module/RecentChangesModule.php
 
 		-

@@ -75,7 +75,7 @@ class ReorderChildrenAction implements RequestHandlerInterface
 
         // Sort the facts
         uksort($sort_facts, static function ($x, $y) use ($order) {
-            return array_search($x, $order, true) - array_search($y, $order, true);
+            return array_search($x, $order, true) <=> array_search($y, $order, true);
         });
 
         // Merge the facts

@@ -28,16 +28,6 @@ use Fisharebest\Webtrees\Tree;
 trait ModuleListTrait
 {
     /**
-     * @return string
-     */
-    abstract public function name(): string;
-
-    /**
-     * @return string
-     */
-    abstract public function title(): string;
-
-    /**
      * A main menu item for this list, or null if the list is empty.
      *
      * @param Tree $tree

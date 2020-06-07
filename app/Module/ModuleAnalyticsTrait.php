@@ -34,11 +34,6 @@ trait ModuleAnalyticsTrait
     use ViewResponseTrait;
 
     /**
-     * @return string
-     */
-    abstract public function name(): string;
-
-    /**
      * Should we add this tracker?
      *
      * @return bool
@@ -123,13 +118,6 @@ trait ModuleAnalyticsTrait
     }
 
     /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
-    abstract public function title(): string;
-
-    /**
      * Is this a tracker, as opposed to just a site-verification.
      *
      * @return bool
@@ -156,16 +144,4 @@ trait ModuleAnalyticsTrait
 
         return redirect(route('analytics'));
     }
-
-    /**
-     * Set a module setting.
-     * Since module settings are NOT NULL, setting a value to NULL will cause
-     * it to be deleted.
-     *
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return void
-     */
-    abstract public function setPreference(string $setting_name, string $setting_value): void;
 }
