@@ -358,7 +358,7 @@ class LocationController extends AbstractAdminController
             $valid = $row !== null;
         }
         if ($valid) {
-            if ($row->pl_lati === null || $row->pl_long === null) {
+            if ($row->pl_lati === null || $row->pl_long === null || $row->pl_lati === '' || $row->pl_long === '') {
                 // No data here.  Try to fallback to parent.
                 if ($row->pl_parent_id === 0) {
                     $valid = false;
