@@ -86,7 +86,7 @@ class Webtrees
     public const DEBUG = self::STABILITY !== '';
 
     // We want to know about all PHP errors during development, and fewer in production.
-    public const ERROR_REPORTING = self::DEBUG ? E_ALL | E_STRICT : E_ALL & !E_USER_DEPRECATED & !E_USER_DEPRECATED;
+    public const ERROR_REPORTING = self::DEBUG ? E_ALL | E_STRICT : E_ALL & ~E_USER_DEPRECATED & ~E_USER_DEPRECATED;
 
     // The name of the application.
     public const NAME = 'webtrees';
