@@ -1121,11 +1121,6 @@ parameters:
 			path: app/Module/MediaTabModule.php
 
 		-
-			message: "#^Negated boolean expression is always false\\.$#"
-			count: 1
-			path: app/Module/MediaTabModule.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Module/ModuleBlockInterface.php

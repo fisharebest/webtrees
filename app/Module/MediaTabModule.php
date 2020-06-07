@@ -103,7 +103,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
      */
     public function isGrayedOut(Individual $individual): bool
     {
-        return !$this->getFactsWithMedia($individual);
+        return $this->getFactsWithMedia($individual)->isEmpty();
     }
 
     /**
