@@ -142,7 +142,7 @@ use Fisharebest\Webtrees\I18N;
                                         }
                                     }
                                 } else {
-                                    echo '<p class="alert alert-danger">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', $media_file->filename()), '</p>';
+                                    echo '<p class="alert alert-danger">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', e($media_file->filename())), '</p>';
                                 }
                                 ?>
                             </p>
