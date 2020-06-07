@@ -205,13 +205,6 @@ class WebRoutes
                 $router->get(BroadcastPage::class, '/broadcast', BroadcastPage::class);
                 $router->post(BroadcastAction::class, '/broadcast', BroadcastAction::class);
                 $router->get(CleanDataFolder::class, '/clean', CleanDataFolder::class);
-                $router->get(DataFixChoose::class, '/data-fix/{tree}', DataFixChoose::class);
-                $router->post(DataFixSelect::class, '/data-fix/{tree}', DataFixSelect::class);
-                $router->get(DataFixPage::class, '/data-fix/{tree}/{data_fix}', DataFixPage::class);
-                $router->post(DataFixUpdate::class, '/data-fix/{tree}/{data_fix}/update', DataFixUpdate::class);
-                $router->post(DataFixUpdateAll::class, '/data-fix/{tree}/{data_fix}/update-all', DataFixUpdateAll::class);
-                $router->get(DataFixData::class, '/data-fix/{tree}/{data_fix}/data', DataFixData::class);
-                $router->get(DataFixPreview::class, '/data-fix/{tree}/{data_fix}/preview', DataFixPreview::class);
                 $router->post(DeletePath::class, '/delete-path', DeletePath::class);
                 $router->get(EmailPreferencesPage::class, '/email', EmailPreferencesPage::class);
                 $router->post(EmailPreferencesAction::class, '/email', EmailPreferencesAction::class);
@@ -327,6 +320,13 @@ class WebRoutes
                 $router->post(PendingChangesLogDelete::class, '/changes-delete', PendingChangesLogDelete::class);
                 $router->get(PendingChangesLogDownload::class, '/changes-download', PendingChangesLogDownload::class);
                 $router->get('admin-trees-check', '/check', 'AdminTreesController::check');
+                $router->get(DataFixChoose::class, '/data-fix', DataFixChoose::class);
+                $router->post(DataFixSelect::class, '/data-fix', DataFixSelect::class);
+                $router->get(DataFixPage::class, '/data-fix/{data_fix}', DataFixPage::class);
+                $router->post(DataFixUpdate::class, '/data-fix/{data_fix}/update', DataFixUpdate::class);
+                $router->post(DataFixUpdateAll::class, '/data-fix/{data_fix}/update-all', DataFixUpdateAll::class);
+                $router->get(DataFixData::class, '/data-fix/{data_fix}/data', DataFixData::class);
+                $router->get(DataFixPreview::class, '/data-fix/{data_fix}/preview', DataFixPreview::class);
                 $router->get('admin-trees-duplicates', '/duplicates', 'AdminTreesController::duplicates');
                 $router->get(ExportGedcomPage::class, '/export', ExportGedcomPage::class);
                 $router->post(ExportGedcomClient::class, '/export-client', ExportGedcomClient::class);
