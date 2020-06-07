@@ -539,8 +539,8 @@ class SearchService
         foreach (array_unique($fam_dates) as $fam_date) {
             $query->join('dates AS date_' . $fam_date, static function (JoinClause $join) use ($fam_date): void {
                 $join
-                    ->on('date_' . $fam_date . '.d_file', '=', 'spouse_families.i_file')
-                    ->on('date_' . $fam_date . '.d_gid', '=', 'spouse_families.i_id');
+                    ->on('date_' . $fam_date . '.d_file', '=', 'spouse_families.f_file')
+                    ->on('date_' . $fam_date . '.d_gid', '=', 'spouse_families.f_id');
             });
         }
 
