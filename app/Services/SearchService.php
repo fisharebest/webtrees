@@ -44,9 +44,17 @@ use Illuminate\Support\Collection;
 use stdClass;
 
 use function addcslashes;
+use function array_filter;
+use function array_map;
 use function array_unique;
 use function explode;
+use function implode;
 use function mb_stripos;
+use function preg_match;
+use function preg_quote;
+use function preg_replace;
+
+use const PHP_INT_MAX;
 
 /**
  * Search trees for genealogy records.
@@ -658,17 +666,16 @@ class SearchService
                                 }
                                 break;
                         }
+                        unset($fields[$field_name]);
                         break;
                     case 'NICK':
                     case '_MARNM':
                     case '_HEB':
                     case '_AKA':
-                        $query
-                            ->where('individual_name', '=', $parts[1])
-                            ->where('individual_name', 'LIKE', '%' . $field_value . '%');
+                        $like = "%\n1 " . $parts[0] . "%\n2 " . $parts[1] . ' %' . preg_quote($field_value, '/') . '%';
+                        $query->where('individuals.i_gedcom', 'LIKE', $like);
                         break;
                 }
-                unset($fields[$field_name]);
             } elseif ($parts[1] === 'DATE') {
                 // *:DATE
                 $date = new Date($field_value);
@@ -776,13 +783,14 @@ class SearchService
             } elseif ($parts[1] === 'TYPE') {
                 // e.g. FACT:TYPE or EVEN:TYPE
                 // Initial matching only.  Need PHP to apply filter.
-                $query->where('individuals.i_gedcom', 'LIKE', "%\n1 " . $parts[0] . '%\n2 TYPE %' . $field_value . '%');
+                $query->where('individuals.i_gedcom', 'LIKE', "%\n1 " . $parts[0] . "%\n2 TYPE %" . $field_value . '%');
             } else {
                 // e.g. searches for occupation, religion, note, etc.
                 // Initial matching only.  Need PHP to apply filter.
                 $query->where('individuals.i_gedcom', 'LIKE', "%\n1 " . $parts[0] . '%' . $parts[1] . '%' . $field_value . '%');
             }
         }
+
         return $query
             ->get()
             ->each($this->rowLimiter())
@@ -791,9 +799,20 @@ class SearchService
             ->filter(static function (Individual $individual) use ($fields): bool {
                 // Check for searches which were only partially matched by SQL
                 foreach ($fields as $field_name => $field_value) {
-                    $regex = '/' . preg_quote($field_value, '/') . '/i';
-
                     $parts = explode(':', $field_name . '::::');
+
+                    // NAME:*
+                    if ($parts[0] === 'NAME') {
+                        $regex = '/\n1 NAME.*(?:\n2.*)*\n2 ' . $parts[1] . ' .*' . preg_quote($field_value, '/') . '/i';
+
+                        if (preg_match($regex, $individual->gedcom())) {
+                            continue;
+                        }
+
+                        return false;
+                    }
+
+                    $regex = '/' . preg_quote($field_value, '/') . '/i';
 
                     // *:PLAC
                     if ($parts[1] === 'PLAC') {
