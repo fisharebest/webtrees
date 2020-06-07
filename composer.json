@@ -62,7 +62,7 @@
         "mlocati/ip-lib": "~1.9",
         "nesbot/carbon": "~2.34",
         "nyholm/psr7": "~1.2",
-        "nyholm/psr7-server": "~0.4",
+        "nyholm/psr7-server": "~1.0",
         "oscarotero/middleland": "~1.0",
         "psr/cache": "~1.0",
         "psr/http-message": "~1.0",

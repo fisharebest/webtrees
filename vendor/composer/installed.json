@@ -1994,17 +1994,17 @@
     },
     {
         "name": "nyholm/psr7-server",
-        "version": "0.4.1",
-        "version_normalized": "0.4.1.0",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/Nyholm/psr7-server.git",
-            "reference": "e6a526e9170e6e33a13efc2b61703ca476b7ea68"
+            "reference": "862529918766fb3825116d39e96feabf1e4bee4e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Nyholm/psr7-server/zipball/e6a526e9170e6e33a13efc2b61703ca476b7ea68",
-            "reference": "e6a526e9170e6e33a13efc2b61703ca476b7ea68",
+            "url": "https://api.github.com/repos/Nyholm/psr7-server/zipball/862529918766fb3825116d39e96feabf1e4bee4e",
+            "reference": "862529918766fb3825116d39e96feabf1e4bee4e",
             "shasum": ""
         },
         "require": {
@@ -2014,10 +2014,10 @@
         },
         "require-dev": {
             "nyholm/nsa": "^1.1",
-            "nyholm/psr7": "^1.0",
+            "nyholm/psr7": "^1.3",
             "phpunit/phpunit": "^7.0"
         },
-        "time": "2019-11-05T20:36:33+00:00",
+        "time": "2020-06-06T12:17:00+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -2044,6 +2044,16 @@
         "keywords": [
             "psr-17",
             "psr-7"
+        ],
+        "funding": [
+            {
+                "url": "https://github.com/Zegnat",
+                "type": "github"
+            },
+            {
+                "url": "https://github.com/nyholm",
+                "type": "github"
+            }
         ]
     },
     {
