@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-05-30 07:30+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-06-11 23:07+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -7059,19 +7059,19 @@ msgstr "Höhe"
 #: resources/views/emails/register-user-text.phtml:7
 #, php-format
 msgid "Hello %s…"
-msgstr "Hallo %s…"
+msgstr "Hallo %s!"
 
 #: resources/views/register-success-page.phtml:13
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Hallo %s …<br>Danke für Ihre Anfrage."
+msgstr "Hallo %s!<br>Danke für Ihre Anfrage."
 
 #: resources/views/emails/register-notify-html.phtml:8
 #: resources/views/emails/register-notify-text.phtml:6
 #: resources/views/emails/verify-notify-html.phtml:8
 #: resources/views/emails/verify-notify-text.phtml:6
 msgid "Hello administrator…"
-msgstr "Hallo Verwalter…"
+msgstr "Hallo Verwalter!"
 
 #: app/Http/RequestHandlers/HelpText.php:276 resources/views/help/link.phtml:7
 #: resources/views/help/link.phtml:9
