@@ -9011,7 +9011,7 @@ msgid "Cremation of a grandmother"
 msgstr ""
 
 #: app/GedcomTag.php:1586 app/GedcomTag.php:1597 app/GedcomTag.php:1608
-msgid "Cremation of a grand-parent"
+msgid "Cremation of a grandparent"
 msgstr ""
 
 #: app/GedcomTag.php:1590
@@ -9138,7 +9138,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1711 app/GedcomTag.php:1722 app/GedcomTag.php:1733
 #: resources/views/admin/trees-preferences.phtml:493
-msgid "Death of a grand-parent"
+msgid "Death of a grandparent"
 msgstr ""
 
 #: app/GedcomTag.php:1715

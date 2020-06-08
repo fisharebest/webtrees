@@ -756,42 +756,42 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             'CREM' => [
                 'M' => I18N::translate('Cremation of a grandfather'),
                 'F' => I18N::translate('Cremation of a grandmother'),
-                'U' => I18N::translate('Baptism of a grandparent'),
+                'U' => I18N::translate('Cremation of a grandparent'),
             ],
         ];
 
         $death_of_a_maternal_grandparent = [
             'DEAT' => [
-                'M' => I18N::translateContext('mother’s father', 'Death of a grandfather'),
-                'F' => I18N::translateContext('mother’s mother', 'Death of a grandmother'),
+                'M' => I18N::translate('Death of a maternal grandfather'),
+                'F' => I18N::translate('Death of a maternal grandmother'),
                 'U' => I18N::translate('Death of a grandparent'),
             ],
             'BURI' => [
-                'M' => I18N::translateContext('mother’s father', 'Burial of a grandfather'),
-                'F' => I18N::translateContext('mother’s mother', 'Burial of a grandmother'),
+                'M' => I18N::translate('Burial of a maternal grandfather'),
+                'F' => I18N::translate('Burial of a maternal grandmother'),
                 'U' => I18N::translate('Burial of a grandparent'),
             ],
             'CREM' => [
-                'M' => I18N::translateContext('mother’s father', 'Cremation of a grandfather'),
-                'F' => I18N::translateContext('mother’s mother', 'Cremation of a grandmother'),
-                'U' => I18N::translate('Baptism of a grandparent'),
+                'M' => I18N::translate('Cremation of a maternal grandfather'),
+                'F' => I18N::translate('Cremation of a maternal grandmother'),
+                'U' => I18N::translate('Cremation of a grandparent'),
             ],
         ];
 
         $death_of_a_paternal_grandparent = [
             'DEAT' => [
-                'M' => I18N::translateContext('father‘s father', 'Death of a grandfather'),
-                'F' => I18N::translateContext('father‘s mother', 'Death of a grandmother'),
+                'M' => I18N::translate('Death of a paternal grandfather'),
+                'F' => I18N::translate('Death of a paternal grandmother'),
                 'U' => I18N::translate('Death of a grandparent'),
             ],
             'BURI' => [
-                'M' => I18N::translateContext('father‘s father', 'Burial of a grandfather'),
-                'F' => I18N::translateContext('father‘s mother', 'Burial of a grandmother'),
+                'M' => I18N::translate('Burial of a paternal grandfather'),
+                'F' => I18N::translate('Burial of a paternal grandmother'),
                 'U' => I18N::translate('Burial of a grandparent'),
             ],
             'CREM' => [
-                'M' => I18N::translateContext('father‘s father', 'Cremation of a grandfather'),
-                'F' => I18N::translateContext('father‘s mother', 'Cremation of a grandmother'),
+                'M' => I18N::translate('Cremation of a paternal grandfather'),
+                'F' => I18N::translate('Cremation of a paternal grandmother'),
                 'U' => I18N::translate('Cremation of a grandparent'),
             ],
         ];
@@ -804,7 +804,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         $facts = [];
 
-        if ($sosa == 1) {
+        if ($sosa === 1) {
             foreach ($person->childFamilies() as $family) {
                 // Add siblings
                 foreach ($this->childFacts($person, $family, '_SIBL', '', $min_date, $max_date) as $fact) {
