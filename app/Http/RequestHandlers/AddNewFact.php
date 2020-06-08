@@ -56,7 +56,7 @@ class AddNewFact implements RequestHandlerInterface
         $record = Factory::gedcomRecord()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
-        $title = $record->fullName() . ' - ' . GedcomTag::getLabel($fact);
+        $title = $record->fullName() . ' - ' . GedcomTag::getLabel($record::RECORD_TYPE . ':' . $fact);
 
         return $this->viewResponse('edit/add-fact', [
             'fact'   => $fact,
