@@ -720,7 +720,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Fact[]
      */
-    private function parentFacts(Individual $person, $sosa, Date $min_date, Date $max_date): array
+    private function parentFacts(Individual $person, int $sosa, Date $min_date, Date $max_date): array
     {
         $SHOW_RELATIVES_EVENTS = $person->tree()->getPreference('SHOW_RELATIVES_EVENTS');
 
