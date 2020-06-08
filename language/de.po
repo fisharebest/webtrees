@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-30 07:30+0000\n"
+"PO-Revision-Date: 2020-06-11 23:07+0000\n"
 "Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
@@ -7066,16 +7066,16 @@ msgstr "Höhe"
 #: login.php:256 login.php:337
 #, php-format
 msgid "Hello %s…"
-msgstr "Hallo %s…"
+msgstr "Hallo %s!"
 
 #: login.php:389
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Hallo %s …<br>Danke für Ihre Anfrage."
+msgstr "Hallo %s!<br>Danke für Ihre Anfrage."
 
 #: login.php:320 login.php:558
 msgid "Hello administrator…"
-msgstr "Hallo Verwalter…"
+msgstr "Hallo Verwalter!"
 
 #: help_text.php:320
 msgid "Help"
