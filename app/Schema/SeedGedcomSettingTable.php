@@ -38,7 +38,7 @@ class SeedGedcomSettingTable implements SeedInterface
         'COMMON_NAMES_THRESHOLD'       => '40',
         'EXPAND_RELATIVES_EVENTS'      => '0',
         'EXPAND_SOURCES'               => '0',
-        'FAM_FACTS_ADD'                => 'CENS,MARR,RESI,SLGS,MARR_CIVIL,MARR_RELIGIOUS,MARR_PARTNERS,RESN',
+        'FAM_FACTS_ADD'                => 'CENS,MARR,RESI,SLGS,RESN',
         'FAM_FACTS_QUICK'              => 'MARR,DIV,_NMR',
         'FAM_FACTS_UNIQUE'             => 'NCHI,MARL,DIV,ANUL,DIVF,ENGA,MARB,MARC,MARS,_NMR',
         'FAM_ID_PREFIX'                => 'F',
