@@ -183,7 +183,7 @@ window.WT_OSM_ADMIN = (function () {
    */
   let _update_Controls = function (newData) {
 
-    if (add_place) {
+    if (add_place && newData.place != '') {
       $('#new_place_name').val(newData.place);
     }
     $('#new_place_lati').val(Number(newData.coords.lat).toFixed(5)); // 5 decimal places (about 1 metre accuracy)
