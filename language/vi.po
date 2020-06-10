@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-30 07:30+0000\n"
+"PO-Revision-Date: 2020-06-11 23:07+0000\n"
 "Last-Translator: De Tran <trande@gmail.com>\n"
 "Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/vi/>\n"
@@ -4245,7 +4245,6 @@ msgstr "Cuba"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:149
-#, fuzzy
 msgid "Curitiba, Brazil"
 msgstr "Curitiba, Brazil"
 
@@ -5392,9 +5391,8 @@ msgstr "Chỉnh sửa tùy thích"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
-#, fuzzy
 msgid "Edit the FAQ"
-msgstr "Sửa mục FAQ"
+msgstr "Chỉnh sửa mục FAQ"
 
 #: app/Controller/MediaController.php:116
 #: modules_v3/GEDFact_assistant/census/census-edit.php:130
@@ -5767,7 +5765,6 @@ msgid "Export all the family trees to GEDCOM files…"
 msgstr "Xuất tất cả cây gia đình sang tập tin GEDCOM…"
 
 #: admin_trees_download.php:134
-#, fuzzy
 msgid "Export preferences"
 msgstr "Các tùy chọn xuất"
 
@@ -5807,9 +5804,12 @@ msgstr "Câu hỏi thông thường"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:444
-#, fuzzy
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
-msgstr "FAQs là danh sách câu hỏi và trả lời, cho phép bạn giải thích qui luật của site, chính sách, qui trình cho khách thăm của bạn. Câu hỏi điển hình liên quan đến tính riêng tư, bản quyền, tài khoản người dùng, nội dung không phù hợp, yêu cầu nêu nguồn gốc v.v…"
+msgstr ""
+"FAQs là danh sách câu hỏi và trả lời, cho phép bạn giải thích qui luật của "
+"site, chính sách, qui trình cho khách thăm của bạn. Câu hỏi điển hình liên "
+"quan đến tính riêng tư, bản quyền, tài khoản người dùng, nội dung không phù "
+"hợp, yêu cầu nêu nguồn gốc v.v."
 
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:438
@@ -7341,9 +7341,11 @@ msgid "If you hide an empty block, you will not be able to change its configurat
 msgstr "Nếu bạn cho khối rỗng, bạn sẽ không thể thay đổi cấu hình cho tới khi nó trở thành thấy được do không còn trống nữa."
 
 #: admin_site_config.php:192
-#, fuzzy
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
-msgstr "Nếu bạn chọn một thư mục khác, bạn cũng phải di chuyển tất cả các tập tin (trừ config.ini.php, index.php và .htaccess) ra khỏi thư mục hiện tại sang thư mục mới."
+msgstr ""
+"Nếu bạn chọn một thư mục khác, bạn cũng phải di chuyển tất cả các tập tin ("
+"trừ config.ini.php, index.php và .htaccess) ra khỏi thư mục hiện tại sang "
+"thư mục mới."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1007
@@ -8500,15 +8502,13 @@ msgstr "Những người quản lý"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:229
-#, fuzzy
 msgid "Manaus, Brazil"
 msgstr "Manaus, Brazil"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:231
-#, fuzzy
 msgid "Manhattan, New York, United States"
-msgstr "Manhattan, New York, United States"
+msgstr "Manhattan, New York, Hoa Kỳ"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:233
@@ -8820,9 +8820,8 @@ msgstr "Giả vai người dùng này"
 
 #. I18N: Help text for "Case insensitive" searches
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
-#, fuzzy
 msgid "Match both upper and lower case letters."
-msgstr "Đánh dấu vào hộp kiểm để so khớp cả chữ hoa và chữ thường."
+msgstr "So khớp cả chữ hoa và chữ thường."
 
 #: lifespan.php:104
 msgid "Match calendar"
@@ -9929,9 +9928,11 @@ msgid "Norfolk Island"
 msgstr "Norfolk Adaları"
 
 #: admin_users.php:444
-#, fuzzy
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr "Thường thường các thay đổi thực hiện cho cây gia đình cần được biên tập viên chấp thuận. Lựa chọn này cho phép người dùng thay đổi không cần phải có chấp thuận của biên tập viên."
+msgstr ""
+"Thường thường các thay đổi thực hiện cho cây gia đình cần được biên tập viên "
+"chấp thuận. Lựa chọn này cho phép người dùng thay đổi không cần phải có chấp "
+"thuận của biên tập viên."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6856
@@ -10264,9 +10265,8 @@ msgstr "Các tiến và hậu tố tùy chọn"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:279
-#, fuzzy
 msgid "Oquirrh Mountain, Utah, United States"
-msgstr "Oquirrh Mountain, Utah, United States"
+msgstr "Oquirrh Mountain, Utah, Hoa Kỳ"
 
 #: app/Date/JalaliDate.php:184
 msgctxt "Abbreviation for Persian month: Ordibehesht"
