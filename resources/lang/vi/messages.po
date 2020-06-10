@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees vietnamese Version 1.5.3\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-05-30 07:30+0000\nLast-Translator: De Tran <trande@gmail.com>\nLanguage-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees/vi/>\nLanguage: vi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees vietnamese Version 1.5.3\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-06-11 23:07+0000\nLast-Translator: De Tran <trande@gmail.com>\nLanguage-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees/vi/>\nLanguage: vi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -4230,7 +4230,6 @@ msgstr "Cuba"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:327
-#, fuzzy
 msgid "Curitiba, Brazil"
 msgstr "Curitiba, Brazil"
 
@@ -5392,9 +5391,8 @@ msgid "Edit preferences"
 msgstr "Chỉnh sửa tùy thích"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:311
-#, fuzzy
 msgid "Edit the FAQ"
-msgstr "Sửa mục FAQ"
+msgstr "Chỉnh sửa mục FAQ"
 
 #: app/Http/RequestHandlers/IndividualPage.php:366
 #: resources/views/individual-page-menu.phtml:44
@@ -5734,7 +5732,6 @@ msgid "Export all the family trees to GEDCOM files…"
 msgstr "Xuất tất cả cây gia đình sang tập tin GEDCOM…"
 
 #: resources/views/admin/trees-export.phtml:44
-#, fuzzy
 msgid "Export preferences"
 msgstr "Các tùy chọn xuất"
 
@@ -5774,9 +5771,8 @@ msgstr "Câu hỏi thông thường"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/config.phtml:14
-#, fuzzy
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
-msgstr "FAQs là danh sách câu hỏi và trả lời, cho phép bạn giải thích qui luật của site, chính sách, qui trình cho khách thăm của bạn. Câu hỏi điển hình liên quan đến tính riêng tư, bản quyền, tài khoản người dùng, nội dung không phù hợp, yêu cầu nêu nguồn gốc v.v…"
+msgstr "FAQs là danh sách câu hỏi và trả lời, cho phép bạn giải thích qui luật của site, chính sách, qui trình cho khách thăm của bạn. Câu hỏi điển hình liên quan đến tính riêng tư, bản quyền, tài khoản người dùng, nội dung không phù hợp, yêu cầu nêu nguồn gốc v.v."
 
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:725
@@ -7359,7 +7355,6 @@ msgid "If you have created media objects in webtrees, and have subsequently edit
 msgstr "Nếu bạn tạo ra một đối tượng hình/phim ở webtrees, và đã sửa chữa file GEDCOM không trực tuyền thì hãy dùng chương trình này để xóa đối tượng hình/phim, rồi kiểm hộp này để hòa đối tượng đó vào GEDCOM mới."
 
 #: resources/views/admin/site-preferences.phtml:39
-#, fuzzy
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr "Nếu bạn chọn một thư mục khác, bạn cũng phải di chuyển tất cả các tập tin (trừ config.ini.php, index.php và .htaccess) ra khỏi thư mục hiện tại sang thư mục mới."
 
@@ -7957,7 +7952,7 @@ msgstr "Giữ các đối tượng đa phương tiện"
 
 #: resources/views/modals/on-screen-keyboard.phtml:51
 msgid "Keep open"
-msgstr ""
+msgstr "Tiếp tục mở"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:913
@@ -8223,7 +8218,7 @@ msgstr "Để trống ô mật khẩu nếu bạn giữ nguyên mật khẩu hi�
 
 #: resources/views/admin/media-upload.phtml:41
 msgid "Leave this entry blank to keep the original filename"
-msgstr ""
+msgstr "Để trống mục này để giữ nguyên tên gốc tập tin"
 
 #: resources/views/lists/families-table.phtml:184
 #: resources/views/lists/individuals-table.phtml:226
@@ -8237,12 +8232,12 @@ msgstr "Lebanon"
 
 #: app/Module/PedigreeChartModule.php:390
 msgid "Left"
-msgstr ""
+msgstr "Trái"
 
 #. I18N: Name of a module - historic/obsolete URLs.
 #: app/Module/RedirectLegacyUrlsModule.php:118
 msgid "Legacy URLs"
-msgstr ""
+msgstr "URLs di sản"
 
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:816
@@ -8314,7 +8309,7 @@ msgstr "Lima, Pê ru"
 #: app/Http/Controllers/Admin/FixLevel0MediaController.php:78
 #: resources/views/admin/control-panel.phtml:631
 msgid "Link media objects to facts and events"
-msgstr ""
+msgstr "Liên kết đối tượng ĐPT đến sự kiện"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:35
@@ -8574,7 +8569,7 @@ msgstr "Quản lý các cây gia đình"
 #: resources/views/admin/trees-renumber.phtml:8
 #: resources/views/admin/trees-unconnected.phtml:20
 msgid "Manage family trees "
-msgstr ""
+msgstr "Quản lý cây gia đình "
 
 #: app/Http/Controllers/Admin/MediaController.php:116
 #: resources/views/admin/control-panel.phtml:619
@@ -8596,15 +8591,13 @@ msgstr "Những người quản lý"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:447
-#, fuzzy
 msgid "Manaus, Brazil"
 msgstr "Manaus, Brazil"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:450
-#, fuzzy
 msgid "Manhattan, New York, United States"
-msgstr "Manhattan, New York, United States"
+msgstr "Manhattan, New York, Hoa Kỳ"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:453
@@ -8636,7 +8629,7 @@ msgstr "Bản Đồ"
 #: resources/views/admin/control-panel.phtml:668
 #: resources/views/admin/map-provider.phtml:16
 msgid "Map provider"
-msgstr ""
+msgstr "Nhà cung cấp bản đồ"
 
 #: app/Date/AbstractGregorianJulianDate.php:203
 msgctxt "Abbreviation for March"
@@ -8926,9 +8919,8 @@ msgstr "Giả vai người dùng này"
 
 #. I18N: Help text for "Case insensitive" searches
 #: resources/views/modules/fix-search-and-replace/options.phtml:58
-#, fuzzy
 msgid "Match both upper and lower case letters."
-msgstr "Đánh dấu vào hộp kiểm để so khớp cả chữ hoa và chữ thường."
+msgstr "So khớp cả chữ hoa và chữ thường."
 
 #: app/Module/FixSearchAndReplace.php:101
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -8940,7 +8932,7 @@ msgstr "Khớp toàn bộ văn bản, trừ phi nó hiện ra ở giữa từ."
 
 #: app/Module/MatomoAnalyticsModule.php:42
 msgid "Matomo™ / Piwik™ analytics"
-msgstr ""
+msgstr "Phân tích Matomo™ / Piwik™"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -9460,16 +9452,16 @@ msgstr "Tên họ thông thường nhất"
 
 #: resources/views/admin/site-mail.phtml:176
 msgid "Most mail servers require a valid domain name."
-msgstr ""
+msgstr "Phần lớn máy chủ mail yêu cầu phải có một tên miền."
 
 #: resources/views/admin/site-mail.phtml:68
 msgid "Most mail servers require a valid email address."
-msgstr ""
+msgstr "Phần lớn máy chủ mail yêu cầu phải có một địa chỉ email đúng."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:171
 msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
-msgstr ""
+msgstr "Phần lớn máy chủ mail yêu cầu máy chủ gửi mail phải nhận ra nó chính xác, bằng cách dùng một tên miền đúng."
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:157
@@ -9484,7 +9476,7 @@ msgstr "Phần lớn các site được cấu hình dùng tên localhost. Điề
 
 #: resources/views/setup/step-4-database-sqlsvr.phtml:46
 msgid "Most sites are configured to use the default value of 1433."
-msgstr ""
+msgstr "Phần lớn sites được đặt cấu hình sử dụng giá trị mặc định là 1433."
 
 #: resources/views/setup/step-4-database-mysql.phtml:56
 msgid "Most sites are configured to use the default value of 3306."
@@ -9492,7 +9484,7 @@ msgstr "Phần lớn các site được đặt cấu hình dùng giá trị mặ
 
 #: resources/views/setup/step-4-database-pgsql.phtml:46
 msgid "Most sites are configured to use the default value of 5432."
-msgstr ""
+msgstr "Phần lớn sites được đặt cấu hình sử dụng giá trị mặc định là 5432."
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:46
@@ -9542,7 +9534,7 @@ msgstr "Chuyển xuống"
 
 #: resources/views/admin/fix-level-0-media-action.phtml:17
 msgid "Move the media object?"
-msgstr ""
+msgstr "Chuyển đối tượng ĐPT đi?"
 
 #: resources/views/admin/components.phtml:30
 #: resources/views/admin/components.phtml:121
@@ -10013,7 +10005,6 @@ msgid "Norfolk Island"
 msgstr "Norfolk Adaları"
 
 #: resources/views/admin/users-edit.phtml:139
-#, fuzzy
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr "Thường thường các thay đổi thực hiện cho cây gia đình cần được biên tập viên chấp thuận. Lựa chọn này cho phép người dùng thay đổi không cần phải có chấp thuận của biên tập viên."
 
@@ -10024,7 +10015,7 @@ msgstr "North Korea"
 
 #: resources/views/modules/statistics-chart/custom.phtml:177
 msgid "Northern America"
-msgstr ""
+msgstr "Bắc Mỹ"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:371
@@ -10125,7 +10116,7 @@ msgstr "Không thấy gì cả."
 #: resources/views/modules/pedigree-map/chart.phtml:110
 #: resources/views/modules/places/tab.phtml:102
 msgid "Nothing to show"
-msgstr ""
+msgstr "Chẳng có gì để hiển thị"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
@@ -10331,7 +10322,7 @@ msgstr "Vào ngày này…"
 
 #: resources/views/admin/map-import-form.phtml:69
 msgid "Only add new records"
-msgstr ""
+msgstr "Chỉ thêm những bản ghi mới"
 
 #: app/Functions/FunctionsEdit.php:246
 #: app/Functions/FunctionsPrintFacts.php:269
@@ -10344,7 +10335,7 @@ msgstr "Chỉ người quản lý có thể sửa"
 
 #: resources/views/admin/map-import-form.phtml:69
 msgid "Only update existing records"
-msgstr ""
+msgstr "Chỉ cập nhật các bản ghi đang có"
 
 #: resources/views/errors/database-connection.phtml:9
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -10361,9 +10352,8 @@ msgstr "OpenStreetMap™"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:522
-#, fuzzy
 msgid "Oquirrh Mountain, Utah, United States"
-msgstr "Oquirrh Mountain, Utah, United States"
+msgstr "Oquirrh Mountain, Utah, Hoa Kỳ"
 
 #: app/Date/JalaliDate.php:260
 msgctxt "Abbreviation for Persian month: Ordibehesht"
