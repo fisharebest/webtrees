@@ -115,11 +115,9 @@ window.WT_OSM_ADMIN = (function () {
     .on('dragend', function (e) {
       let coords = marker.getLatLng();
       map.panTo(coords);
-      _update_Controls({
-        place:  '',
-        coords: coords,
-        zoom:   map.getZoom(),
-      });
+        $('#new_place_lati').val(Number(coords.lat).toFixed(5));
+        $('#new_place_long').val(Number(coords.lng).toFixed(5));
+        $('#new_zoom_factor').val(Number(map.getZoom()));
     });
 
   //reset map to initial state
@@ -169,27 +167,13 @@ window.WT_OSM_ADMIN = (function () {
       let place = result.geocode.name.split(',', 1);
       marker.setLatLng(coords);
       map.panTo(coords);
-      _update_Controls({
-        place:  place.shift(),
-        coords: coords,
-        zoom:   map.getZoom(),
-      });
+        if (add_place) {
+            $('#new_place_name').val(place.shift());
+        }
+        $('#new_place_lati').val(Number(coords.lat).toFixed(5));
+        $('#new_place_long').val(Number(coords.lng).toFixed(5));
+        $('#new_zoom_factor').val(Number(map.getZoom()));
     });
-
-  /**
-   *
-   * @param newData
-   * @private
-   */
-  let _update_Controls = function (newData) {
-
-    if (add_place && newData.place != '') {
-      $('#new_place_name').val(newData.place);
-    }
-    $('#new_place_lati').val(Number(newData.coords.lat).toFixed(5)); // 5 decimal places (about 1 metre accuracy)
-    $('#new_place_long').val(Number(newData.coords.lng).toFixed(5));
-    $('#new_zoom_factor').val(Number(newData.zoom));
-  };
 
   /**
    *
