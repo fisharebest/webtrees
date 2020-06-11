@@ -260,7 +260,7 @@ class MediaFile
             'markpos'   => 'center',
             'markalpha' => 25,
             'or'        => $orientation,
-            'q'         => 35,
+            'q'         => 45,
         ];
 
         $signature = SignatureFactory::create($glide_key)->generateSignature('', $params);
