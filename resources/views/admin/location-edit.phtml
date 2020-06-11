@@ -189,7 +189,7 @@ use Fisharebest\Webtrees\View;
             .addControl(geocoder)
             .addLayer(marker)
             .addLayer(L.tileLayer(provider.url, provider.options))
-            .fitBounds(<?= json_encode($location->boundingRectangle()) ?>)
+            .setView(<?= json_encode([$location->latitude(), $location->longitude()]) ?>, <?= e($location->zoom()) ?>)
             .on('zoomend', function (e) {
                 $('#new_zoom_factor').val(map.getZoom());
                 map.panTo(marker.getLatLng());
