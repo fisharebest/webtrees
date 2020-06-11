@@ -61,6 +61,9 @@ use const PHP_INT_MAX;
  */
 class SearchService
 {
+    // Do not attempt to show search results larger than this/
+    protected const MAX_SEARCH_RESULTS = 5000;
+
     /** @var TreeService */
     private $tree_service;
 
@@ -1086,7 +1089,7 @@ class SearchService
      *
      * @return Closure
      */
-    private function rowLimiter(int $limit = 1000): Closure
+    private function rowLimiter(int $limit = self::MAX_SEARCH_RESULTS): Closure
     {
         return static function () use ($limit): void {
             static $n = 0;
