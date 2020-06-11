@@ -349,30 +349,27 @@ class LocationController extends AbstractAdminController
      */
     private function mapLocationData(int $id): array
     {
-        $valid = $id !== 0;
-        if ($valid) {
+        if ($id !== 0) {
             $row = DB::table('placelocation')
                 ->where('pl_id', '=', $id)
                 ->first();
 
-            $valid = $row !== null;
-        }
-        if ($valid) {
-            if ($row->pl_lati === null || $row->pl_long === null || $row->pl_lati === '' || $row->pl_long === '') {
+            if (empty($row->pl_lati) || empty($row->pl_long)) {
                 // No data here.  Try to fallback to parent.
-                if ($row->pl_parent_id === 0) {
+                if (empty($row->pl_parent_id)) {
                     $valid = false;
                 } else {
                     $row = DB::table('placelocation')
                         ->where('pl_id', '=', $row->pl_parent_id)
                         ->first();
 
-                    $valid = $row !== null;
-                    if ($valid) {
-                        $valid = ($row->pl_lati !== null) && ($row->pl_long !== null);
-                    }
+                    $valid = !empty($row->pl_lati) && !empty($row->pl_long);
                 }
+            } else {
+                $valid = true;
             }
+        } else {
+            $valid = false;
         }
 
         if (!$valid) {
