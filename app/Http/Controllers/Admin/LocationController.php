@@ -295,8 +295,8 @@ class LocationController extends AbstractAdminController
                 $hierarchy     =  [];
             } else {
                 $hierarchy = $this->getHierarchy($parent_id);
-                $tmp       = new PlaceLocation($hierarchy[0]->fqpn);
-                $title     = e($tmp->locationName());
+                $location  = new PlaceLocation($hierarchy[0]->fqpn);
+                $title     = e($location->locationName());
             }
         }
 
