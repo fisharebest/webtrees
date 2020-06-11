@@ -285,15 +285,9 @@ class LocationController extends AbstractAdminController
         $location  = new PlaceLocation($fqpn);
 
         if ($location->id() !== 0) {
-            $lat   = $location->latitude();
-            $lng   = $location->longitude();
-            $id    = $place_id;
             $title = e($location->locationName());
         } else {
             // Add a place
-            $lat       = '';
-            $lng       = '';
-            $id        = $parent_id;
             if ($parent_id === 0) {
                 // We're at the global level so create a minimal
                 // place for the page title and breadcrumbs
@@ -329,9 +323,6 @@ class LocationController extends AbstractAdminController
             'location'    => $location,
             'place_id'    => $place_id,
             'parent_id'   => $parent_id,
-            'lat'         => $lat,
-            'lng'         => $lng,
-            'data'        => $this->mapLocationData($id),
             'provider'    => [
                 'url'     => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                 'options' => [
@@ -340,38 +331,6 @@ class LocationController extends AbstractAdminController
                 ]
             ],
         ]);
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return array{'zoom':int,'coordinates':array<float>}
-     */
-    private function mapLocationData(int $id): array
-    {
-        $row = DB::table('placelocation')
-            ->where('pl_id', '=', $id)
-            ->first();
-
-        if ($row === null) {
-            $json = [
-                'zoom'        => 2,
-                'coordinates' => [
-                    0.0,
-                    0.0,
-                ],
-            ];
-        } else {
-            $json = [
-                'zoom'        => (int) $row->pl_zoom ?: 2,
-                'coordinates' => [
-                    (float) strtr($row->pl_lati ?? '0', ['N' => '', 'S' => '-', ',' => '.']),
-                    (float) strtr($row->pl_long ?? '0', ['E' => '', 'W' => '-', ',' => '.']),
-                ],
-            ];
-        }
-
-        return $json;
     }
 
     /**

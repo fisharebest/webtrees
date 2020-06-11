@@ -165,7 +165,13 @@ class PlaceLocation
     {
         $gedcom_service = new GedcomService();
 
-        return $gedcom_service->readLatitude($this->details()->pl_lati ?? '');
+        $tmp = $this;
+        do {
+            $pl_lati = (string) $tmp->details()->pl_lati;
+            $tmp = $tmp->parent();
+        } while ($pl_lati === '' && $tmp->id() !== 0);
+
+        return $gedcom_service->readLatitude($pl_lati);
     }
 
     /**
@@ -177,7 +183,13 @@ class PlaceLocation
     {
         $gedcom_service = new GedcomService();
 
-        return $gedcom_service->readLongitude($this->details()->pl_long ?? '');
+        $tmp = $this;
+        do {
+            $pl_long = (string) $tmp->details()->pl_long;
+            $tmp = $tmp->parent();
+        } while ($pl_long === '' && $tmp->id() !== 0);
+
+        return $gedcom_service->readLongitude($pl_long);
     }
 
     /**
@@ -197,7 +209,7 @@ class PlaceLocation
      */
     public function zoom(): int
     {
-        return (int) $this->details()->pl_zoom;
+        return (int) $this->details()->pl_zoom ?: 2;
     }
 
     /**
