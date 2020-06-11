@@ -36,7 +36,7 @@ use Fisharebest\Webtrees\Webtrees;
             </th>
 
             <td dir="ltr">
-                <?php if ($place->pl_lati === null) : ?>
+                <?php if ((string) $place->pl_lati === '') : ?>
                     <?= view('icons/warning') ?>
                 <?php else : ?>
                     <?= strtr($place->pl_lati, ['N' => '', 'S' => '-', ',' => '.']) ?>
@@ -44,7 +44,7 @@ use Fisharebest\Webtrees\Webtrees;
             </td>
 
             <td dir="ltr">
-                <?php if ($place->pl_long === null) : ?>
+                <?php if ((string) $place->pl_long === '') : ?>
                     <?= view('icons/warning') ?>
                 <?php else : ?>
                     <?= strtr($place->pl_long, ['E' => '', 'W' => '-', ',' => '.']) ?>

@@ -217,16 +217,16 @@ class LocationController extends AbstractAdminController
         $prefix = DB::connection()->getTablePrefix();
 
         $expression =
-            $prefix . 'p0.pl_place IS NOT NULL AND ' . $prefix . 'p0.pl_lati IS NULL OR ' .
-            $prefix . 'p1.pl_place IS NOT NULL AND ' . $prefix . 'p1.pl_lati IS NULL OR ' .
-            $prefix . 'p2.pl_place IS NOT NULL AND ' . $prefix . 'p2.pl_lati IS NULL OR ' .
-            $prefix . 'p3.pl_place IS NOT NULL AND ' . $prefix . 'p3.pl_lati IS NULL OR ' .
-            $prefix . 'p4.pl_place IS NOT NULL AND ' . $prefix . 'p4.pl_lati IS NULL OR ' .
-            $prefix . 'p5.pl_place IS NOT NULL AND ' . $prefix . 'p5.pl_lati IS NULL OR ' .
-            $prefix . 'p6.pl_place IS NOT NULL AND ' . $prefix . 'p6.pl_lati IS NULL OR ' .
-            $prefix . 'p7.pl_place IS NOT NULL AND ' . $prefix . 'p7.pl_lati IS NULL OR ' .
-            $prefix . 'p8.pl_place IS NOT NULL AND ' . $prefix . 'p8.pl_lati IS NULL OR ' .
-            $prefix . 'p9.pl_place IS NOT NULL AND ' . $prefix . 'p9.pl_lati IS NULL';
+            $prefix . 'p0.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p0.pl_lati, '') = '' OR " .
+            $prefix . 'p1.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p1.pl_lati, '') = '' OR " .
+            $prefix . 'p2.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p2.pl_lati, '') = '' OR " .
+            $prefix . 'p3.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p3.pl_lati, '') = '' OR " .
+            $prefix . 'p4.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p4.pl_lati, '') = '' OR " .
+            $prefix . 'p5.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p5.pl_lati, '') = '' OR " .
+            $prefix . 'p6.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p6.pl_lati, '') = '' OR " .
+            $prefix . 'p7.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p7.pl_lati, '') = '' OR " .
+            $prefix . 'p8.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p8.pl_lati, '') = '' OR " .
+            $prefix . 'p9.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p9.pl_lati, '') = ''";
 
         return DB::table('placelocation AS p0')
             ->leftJoin('placelocation AS p1', 'p1.pl_parent_id', '=', 'p0.pl_id')
