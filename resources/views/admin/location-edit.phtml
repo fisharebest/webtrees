@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\View;
             <?= I18N::translate('Place') ?>
         </label>
         <div class="col-sm-3">
-            <input type="text" id="new_place_name" name="new_place_name" value="<?= e($location->locationName()) ?>" class="form-control" required>
+            <input type="text" id="new_place_name" name="new_place_name" value="<?= ($place_id == $location->id()) ? e($location->locationName()) : '' ?>" class="form-control" required>
         </div>
 
         <input type="hidden" name="icon" id="icon" class="form-control" value="<?= e($location->icon()) ?>">
