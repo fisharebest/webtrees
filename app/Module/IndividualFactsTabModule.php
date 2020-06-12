@@ -858,7 +858,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                                     break;
                                 case 2:
                                 case 3:
-                                    switch ($parent->sex()) {
+                                    switch ($person->sex()) {
                                         case 'M':
                                             $facts[] = $this->convertEvent($fact, $death_of_a_paternal_grandparent[$fact->getTag()][$fact->record()->sex()]);
                                             break;
