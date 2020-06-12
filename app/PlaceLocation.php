@@ -163,16 +163,13 @@ class PlaceLocation
      */
     public function getValidData()
     {
-        $tmp = $this;
-        $parent = $tmp->parent();
-        $pl_lati = (string) $tmp->details()->pl_lati;
-        $pl_long = (string) $tmp->details()->pl_long;
-        while (($pl_lati === '' || $pl_long === '') && $parent->id() !== 0) {
+        $parent = $this;
+        do {
             $tmp = $parent;
             $parent = $tmp->parent();
             $pl_lati = (string) $tmp->details()->pl_lati;
             $pl_long = (string) $tmp->details()->pl_long;
-        }
+        } while (($pl_lati === '' || $pl_long === '') && $parent->id() !== 0);
 
         return $tmp;
     }
