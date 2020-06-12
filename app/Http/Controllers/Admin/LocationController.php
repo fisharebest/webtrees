@@ -113,7 +113,7 @@ class LocationController extends AbstractAdminController
         $title       = I18N::translate('Geographic data');
         $breadcrumbs = [
             route(ControlPanel::class) => I18N::translate('Control panel'),
-            route('map-data')            => $title,
+            route('map-data')          => $title,
         ];
 
         foreach ($hierarchy as $row) {
@@ -279,6 +279,10 @@ class LocationController extends AbstractAdminController
     public function mapDataEdit(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id = (int) $request->getQueryParams()['parent_id'];
+        $hierarchy = $this->getHierarchy($parent_id);
+        $fqpn      = $hierarchy === [] ? '' : $hierarchy[0]->fqpn;
+        $parent    = new PlaceLocation($fqpn);
+
         $place_id  = (int) $request->getQueryParams()['place_id'];
         $hierarchy = $this->getHierarchy($place_id);
         $fqpn      = $hierarchy === [] ? '' : $hierarchy[0]->fqpn;
@@ -291,8 +295,8 @@ class LocationController extends AbstractAdminController
             if ($parent_id === 0) {
                 // We're at the global level so create a minimal
                 // place for the page title and breadcrumbs
-                $title         =  I18N::translate('World');
-                $hierarchy     =  [];
+                $title     = I18N::translate('World');
+                $hierarchy = [];
             } else {
                 $hierarchy = $this->getHierarchy($parent_id);
                 $tmp       = new PlaceLocation($hierarchy[0]->fqpn);
@@ -310,20 +314,31 @@ class LocationController extends AbstractAdminController
         }
 
         if ($place_id === 0) {
-            $breadcrumbs[] = I18N::translate('Add');
-            $title         .= ' — ' . I18N::translate('Add');
+            $breadcrumbs[]   = I18N::translate('Add');
+            $title           .= ' — ' . I18N::translate('Add');
+            $latitude        = '';
+            $longitude       = '';
+            $map_bounds      = $parent->boundingRectangle();
+            $marker_position = [$parent->latitude(), $parent->longitude()];
         } else {
-            $breadcrumbs[] = I18N::translate('Edit');
-            $title         .= ' — ' . I18N::translate('Edit');
+            $breadcrumbs[]   = I18N::translate('Edit');
+            $title           .= ' — ' . I18N::translate('Edit');
+            $latitude        = $location->latitude();
+            $longitude       = $location->latitude();
+            $map_bounds      = $location->boundingRectangle();
+            $marker_position = [$location->latitude(), $location->longitude()];
         }
 
         return $this->viewResponse('admin/location-edit', [
-            'breadcrumbs' => $breadcrumbs,
-            'title'       => $title,
-            'location'    => $location,
-            'place_id'    => $place_id,
-            'parent_id'   => $parent_id,
-            'provider'    => [
+            'breadcrumbs'     => $breadcrumbs,
+            'title'           => $title,
+            'location'        => $location,
+            'latitude'        => $latitude,
+            'longitude'       => $longitude,
+            'map_bounds'      => $map_bounds,
+            'marker_position' => $marker_position,
+            'parent'          => $parent,
+            'provider'        => [
                 'url'     => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                 'options' => [
                     'attribution' => '<a href="https://www.openstreetmap.org/copyright">&copy; OpenStreetMap</a> contributors',

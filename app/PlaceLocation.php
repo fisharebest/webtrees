@@ -227,41 +227,33 @@ class PlaceLocation
      */
     public function boundingRectangle(): array
     {
-        $latitude  = $this->latitude();
-        $longitude = $this->longitude();
-
-        // No co-ordinates for this place? Try the parent place.
-        $tmp = $this;
-        while ($latitude === 0.0 && $longitude === 0.0 && $tmp->id() !== 0) {
-            $tmp       = $tmp->parent();
-            $latitude  = $tmp->latitude();
-            $longitude = $tmp->longitude();
+        if ($this->id() === 0) {
+            return [[-180.0, -90.0], [180.0, 90.0]];
         }
 
-        // Show this number of degrees around the centre.
-        if ($latitude === 0.0 && $longitude === 0.0 || $this->id() === 0) {
-            // World
-            $degrees = 180.0;
-        } elseif ($this->parts->count() === 1) {
-            // Countries
-            $degrees = 10.0;
-        } elseif ($this->parts->count() === 2) {
-            // Regions
-            $degrees = 3.0;
-        } else {
-            // Towns, cities and villages
-            $degrees = 1.0;
+        // Find our own co-ordinates and those of any child places
+        $latitudes = DB::table('placelocation')
+            ->where('pl_parent_id', '=', $this->id())
+            ->orWhere('pl_id', '=', $this->id())
+            ->pluck('pl_lati')
+            ->filter()
+            ->map(static function (string $x): float {
+                return (new GedcomService())->readLatitude($x);
+            });
+
+        $longitudes = DB::table('placelocation')
+            ->where('pl_parent_id', '=', $this->id())
+            ->orWhere('pl_id', '=', $this->id())
+            ->pluck('pl_long')
+            ->filter()
+            ->map(static function (string $x): float {
+                return (new GedcomService())->readLongitude($x);
+            });
+
+        if ($latitudes->count() > 1 || $longitudes->count() > 1) {
+            return [[$latitudes->min(), $longitudes->min()], [$latitudes->max(), $longitudes->max()]];
         }
 
-        return [
-            [
-                max($latitude - $degrees, -90.0),
-                max($longitude - $degrees, -180.0),
-            ],
-            [
-                min($latitude + $degrees, 90.0),
-                min($longitude + $degrees, 180.0),
-            ],
-        ];
+        return $this->parent()->boundingRectangle();
     }
 }
