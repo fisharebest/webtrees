@@ -157,6 +157,18 @@ class PlaceLocation
     }
 
     /**
+     * Does this PlaceLocation have its own coordinates?
+     *
+     * @return bool
+     */
+    public function isMapped(): bool
+    {
+        $pl_lati = (string) $this->details()->pl_lati;
+        $pl_long = (string) $this->details()->pl_long;
+        return ($pl_lati !== '' && $pl_long !== '');
+    }
+
+    /**
      * Latitude of the location.
      *
      * @return float
