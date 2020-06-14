@@ -17,52 +17,61 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function array_merge;
+use function array_unique;
+use function assert;
+use function count;
+use function preg_match_all;
+use function str_replace;
+use function substr;
+use function trim;
+
 /**
- * Common logic for edit controllers.
+ * Utilities to edit/save GEDCOM data.
  */
-abstract class AbstractEditController extends AbstractBaseController
+class GedcomEditService
 {
     /** @var string[] */
-    protected $glevels = [];
+    public $glevels = [];
 
     /** @var string[] */
-    protected $tag     = [];
+    public $tag = [];
 
     /** @var string[] */
-    protected $islink  = [];
+    public $islink = [];
 
     /** @var string[] */
-    protected $text    = [];
+    public $text = [];
 
     /** @var string[] */
     protected $glevelsSOUR = [];
 
     /** @var string[] */
-    protected $tagSOUR     = [];
+    protected $tagSOUR = [];
 
     /** @var string[] */
-    protected $islinkSOUR  = [];
+    protected $islinkSOUR = [];
 
     /** @var string[] */
-    protected $textSOUR    = [];
+    protected $textSOUR = [];
 
     /** @var string[] */
     protected $glevelsRest = [];
 
     /** @var string[] */
-    protected $tagRest     = [];
+    protected $tagRest = [];
 
     /** @var string[] */
-    protected $islinkRest  = [];
+    protected $islinkRest = [];
 
     /** @var string[] */
-    protected $textRest    = [];
+    protected $textRest = [];
 
     /**
      * This function splits the $glevels, $tag, $islink, and $text arrays so that the
@@ -88,7 +97,7 @@ abstract class AbstractEditController extends AbstractBaseController
      *
      * @return void
      */
-    protected function splitSource(): void
+    public function splitSource(): void
     {
         $this->glevelsSOUR = [];
         $this->tagSOUR     = [];
@@ -145,7 +154,7 @@ abstract class AbstractEditController extends AbstractBaseController
      *
      * @return string
      */
-    protected function updateRest(string $inputRec): string
+    public function updateRest(string $inputRec): string
     {
         if (count($this->tagRest) === 0) {
             return $inputRec; // No update required
@@ -198,7 +207,7 @@ abstract class AbstractEditController extends AbstractBaseController
      *
      * @return string The updated gedcom record
      */
-    protected function handleUpdates(string $newged, $levelOverride = 'no'): string
+    public function handleUpdates(string $newged, $levelOverride = 'no'): string
     {
         if ($levelOverride === 'no') {
             $levelAdjust = 0;
@@ -257,7 +266,9 @@ abstract class AbstractEditController extends AbstractBaseController
                         $newline .= ' ' . $this->text[$j];
                     }
                 }
-                $newged .= "\n" . str_replace("\n", "\n" . (1 + substr($newline, 0, 1)) . ' CONT ', $newline);
+                $next_level = 1 + (int) $this->glevels[$j] + $levelAdjust;
+
+                $newged .= "\n" . str_replace("\n", "\n" . $next_level . ' CONT ', $newline);
             }
         }
 
@@ -268,12 +279,12 @@ abstract class AbstractEditController extends AbstractBaseController
      * Create a form to add a new fact.
      *
      * @param ServerRequestInterface $request
-     * @param Tree    $tree
-     * @param string  $fact
+     * @param Tree                   $tree
+     * @param string                 $fact
      *
      * @return string
      */
-    protected function addNewFact(ServerRequestInterface $request, Tree $tree, $fact): string
+    public function addNewFact(ServerRequestInterface $request, Tree $tree, $fact): string
     {
         $params = (array) $request->getParsedBody();
 
@@ -335,7 +346,7 @@ abstract class AbstractEditController extends AbstractBaseController
      *
      * @return string
      */
-    protected function updateSource(string $inputRec, string $levelOverride = 'no'): string
+    public function updateSource(string $inputRec, string $levelOverride = 'no'): string
     {
         if (count($this->tagSOUR) === 0) {
             return $inputRec; // No update required
@@ -370,7 +381,7 @@ abstract class AbstractEditController extends AbstractBaseController
      *
      * @return string
      */
-    protected function addNewSex(ServerRequestInterface $request): string
+    public function addNewSex(ServerRequestInterface $request): string
     {
         $params = (array) $request->getParsedBody();
 
@@ -388,11 +399,11 @@ abstract class AbstractEditController extends AbstractBaseController
      * Assemble the pieces of a newly created record into gedcom
      *
      * @param ServerRequestInterface $request
-     * @param Tree    $tree
+     * @param Tree                   $tree
      *
      * @return string
      */
-    protected function addNewName(ServerRequestInterface $request, Tree $tree): string
+    public function addNewName(ServerRequestInterface $request, Tree $tree): string
     {
         $params = (array) $request->getParsedBody();
         $gedrec = "\n1 NAME " . $params['NAME'];

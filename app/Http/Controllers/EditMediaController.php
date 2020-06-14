@@ -44,7 +44,7 @@ use function is_string;
 /**
  * Controller for edit forms and responses.
  */
-class EditMediaController extends AbstractEditController
+class EditMediaController extends AbstractBaseController
 {
     /** @var MediaFileService */
     private $media_file_service;
@@ -344,7 +344,7 @@ class EditMediaController extends AbstractEditController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref  = $request->getQueryParams()['xref'];
         $media = Factory::media()->make($xref, $tree);
 
         return response(view('modals/link-media-to-individual', [

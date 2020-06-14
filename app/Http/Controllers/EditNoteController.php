@@ -31,7 +31,7 @@ use function assert;
 /**
  * Controller for edit forms and responses.
  */
-class EditNoteController extends AbstractEditController
+class EditNoteController extends AbstractBaseController
 {
     /**
      * Show a form to create a new note object.

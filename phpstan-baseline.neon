@@ -256,11 +256,6 @@ parameters:
 			path: app/Helpers/functions.php
 
 		-
-			message: "#^Binary operation \"\\+\" between 1 and string results in an error\\.$#"
-			count: 1
-			path: app/Http/Controllers/AbstractEditController.php
-
-		-
 			message: "#^Cannot call method facts\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
 			count: 2
 			path: app/Http/Controllers/Admin/FixLevel0MediaController.php

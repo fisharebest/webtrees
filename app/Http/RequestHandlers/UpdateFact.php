@@ -17,35 +17,49 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
+use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_merge;
+use function array_unique;
 use function assert;
+use function explode;
+use function in_array;
 use function is_string;
+use function preg_match_all;
+use function redirect;
+use function trim;
 
 /**
- * Controller for edit forms and responses.
+ * Save an updated GEDCOM fact.
  */
-class EditGedcomRecordController extends AbstractEditController
+class UpdateFact implements RequestHandlerInterface
 {
+    /** @var GedcomEditService */
+    private $gedcom_edit_service;
+
     /** @var ModuleService */
     private $module_service;
 
     /**
      * EditGedcomRecordController constructor.
      *
-     * @param ModuleService $module_service
+     * @param GedcomEditService $gedcom_edit_service
+     * @param ModuleService     $module_service
      */
-    public function __construct(ModuleService $module_service)
+    public function __construct(GedcomEditService $gedcom_edit_service, ModuleService $module_service)
     {
+        $this->gedcom_edit_service = $gedcom_edit_service;
         $this->module_service = $module_service;
     }
 
@@ -54,7 +68,7 @@ class EditGedcomRecordController extends AbstractEditController
      *
      * @return ResponseInterface
      */
-    public function updateFact(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
@@ -71,16 +85,16 @@ class EditGedcomRecordController extends AbstractEditController
 
         $keep_chan = (bool) ($params['keep_chan'] ?? false);
 
-        $this->glevels = $params['glevels'];
-        $this->tag     = $params['tag'];
-        $this->text    = $params['text'];
-        $this->islink  = $params['islink'];
+        $this->gedcom_edit_service->glevels = $params['glevels'];
+        $this->gedcom_edit_service->tag     = $params['tag'];
+        $this->gedcom_edit_service->text    = $params['text'];
+        $this->gedcom_edit_service->islink  = $params['islink'];
 
         // If the fact has a DATE or PLAC, then delete any value of Y
-        if ($this->text[0] === 'Y') {
-            foreach ($this->tag as $n => $value) {
-                if ($this->glevels[$n] == 2 && ($value === 'DATE' || $value === 'PLAC') && $this->text[$n] !== '') {
-                    $this->text[0] = '';
+        if ($this->gedcom_edit_service->text[0] === 'Y') {
+            foreach ($this->gedcom_edit_service->tag as $n => $value) {
+                if ($this->gedcom_edit_service->glevels[$n] == 2 && ($value === 'DATE' || $value === 'PLAC') && $this->gedcom_edit_service->text[$n] !== '') {
+                    $this->gedcom_edit_service->text[0] = '';
                     break;
                 }
             }
@@ -109,7 +123,7 @@ class EditGedcomRecordController extends AbstractEditController
             }
         }
 
-        $newged = $this->handleUpdates($newged);
+        $newged = $this->gedcom_edit_service->handleUpdates($newged);
 
         // Add new names after existing names
         if ($NAME !== '') {
