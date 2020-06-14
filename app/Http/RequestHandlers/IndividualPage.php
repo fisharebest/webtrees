@@ -323,14 +323,14 @@ class IndividualPage implements RequestHandlerInterface
 
         return '
 			<div class="' . $container_class . '">
-        <div class="card-header" role="tab" id="name-header-' . $n . '">
-		        <a data-toggle="collapse" data-parent="#individual-names" href="#name-content-' . $n . '" aria-expanded="' . $aria . '" aria-controls="name-content-' . $n . '">' . $dummy->fullName() . '</a>
+                <div class="card-header" role="tab" id="name-header-' . $n . '">
+		            <a data-toggle="collapse" href="#name-content-' . $n . '" aria-expanded="' . $aria . '" aria-controls="name-content-' . $n . '">' . $dummy->fullName() . '</a>
 		      ' . $edit_links . '
-        </div>
-		    <div id="name-content-' . $n . '" class="' . $content_class . '" role="tabpanel" aria-labelledby="name-header-' . $n . '">
-		      <div class="card-body">' . $content . '</div>
-        </div>
-      </div>';
+                    </div>
+		            <div id="name-content-' . $n . '" class="' . $content_class . '" data-parent="#individual-names" aria-labelledby="name-header-' . $n . '">
+		            <div class="card-body">' . $content . '</div>
+                </div>
+            </div>';
     }
 
     /**
