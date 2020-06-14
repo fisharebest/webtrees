@@ -424,7 +424,8 @@ class WebRoutes
                 $router->post(CreateSubmitterAction::class, '/create-submitter', CreateSubmitterAction::class);
                 $router->post(DeleteRecord::class, '/delete/{xref}', DeleteRecord::class);
                 $router->post(DeleteFact::class, '/delete/{xref}/{fact_id}', DeleteFact::class);
-                $router->get(EditFactPage::class, '/edit-fact', EditFactPage::class);
+                $router->get(EditFactPage::class, '/edit-fact/{xref}/{fact_id}', EditFactPage::class);
+                $router->post(EditFactAction::class, '/update-fact/{xref}{/fact_id}', EditFactAction::class);
                 $router->get('edit-media-file', '/edit-media-file', 'EditMediaController::editMediaFile');
                 $router->post('edit-media-file-update', '/edit-media-file', 'EditMediaController::editMediaFileAction');
                 $router->get('edit-note-object', '/edit-note-object/{xref}', 'EditNoteController::editNoteObject');
@@ -461,7 +462,6 @@ class WebRoutes
                 $router->get(LinkSpouseToIndividualPage::class, '/link-spouse-to-individual', LinkSpouseToIndividualPage::class);
                 $router->post(LinkSpouseToIndividualAction::class, '/link-spouse-to-individual', LinkSpouseToIndividualAction::class);
                 $router->get(EditName::class, '/edit-name/{xref}/{fact_id}', EditName::class);
-                $router->post(EditFactAction::class, '/update-fact/{xref}{/fact_id}', EditFactAction::class);
             });
 
             // Member routes.

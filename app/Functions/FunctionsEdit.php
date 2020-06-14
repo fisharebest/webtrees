@@ -75,6 +75,8 @@ use function view;
 
 /**
  * Class FunctionsEdit - common functions for editing
+ *
+ * @deprecated since 2.0.6.  Will be removed in 2.1.0
  */
 class FunctionsEdit
 {

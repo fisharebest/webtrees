@@ -31,6 +31,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function is_string;
 
 /**
  * Edit a fact.
@@ -49,8 +50,11 @@ class EditFactPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref    = $request->getQueryParams()['xref'];
-        $fact_id = $request->getQueryParams()['fact_id'];
+        $xref    = $request->getAttribute('xref');
+        assert(is_string($xref));
+
+        $fact_id = $request->getAttribute('fact_id');
+        assert(is_string($fact_id));
 
         $record = Factory::gedcomRecord()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);

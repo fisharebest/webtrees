@@ -71,6 +71,8 @@ use const PREG_SPLIT_NO_EMPTY;
 
 /**
  * Class FunctionsPrint - common functions
+ *
+ * @deprecated since 2.0.6.  Will be removed in 2.1.0
  */
 class FunctionsPrint
 {
