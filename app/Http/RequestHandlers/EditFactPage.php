@@ -35,7 +35,7 @@ use function assert;
 /**
  * Edit a fact.
  */
-class EditFact implements RequestHandlerInterface
+class EditFactPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 

@@ -78,7 +78,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\DeletePath;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteTreeAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditFact;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditFactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditName;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage;
@@ -424,7 +424,7 @@ class WebRoutes
                 $router->post(CreateSubmitterAction::class, '/create-submitter', CreateSubmitterAction::class);
                 $router->post(DeleteRecord::class, '/delete/{xref}', DeleteRecord::class);
                 $router->post(DeleteFact::class, '/delete/{xref}/{fact_id}', DeleteFact::class);
-                $router->get(EditFact::class, '/edit-fact', EditFact::class);
+                $router->get(EditFactPage::class, '/edit-fact', EditFactPage::class);
                 $router->get('edit-media-file', '/edit-media-file', 'EditMediaController::editMediaFile');
                 $router->post('edit-media-file-update', '/edit-media-file', 'EditMediaController::editMediaFileAction');
                 $router->get('edit-note-object', '/edit-note-object/{xref}', 'EditNoteController::editNoteObject');
