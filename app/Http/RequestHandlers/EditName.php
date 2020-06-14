@@ -66,7 +66,7 @@ class EditName implements RequestHandlerInterface
 
         if ($fact instanceof Fact) {
             return $this->viewResponse('edit/new-individual', [
-                'next_action' => UpdateFact::class,
+                'next_action' => EditFactAction::class,
                 'tree'        => $tree,
                 'title'       => I18N::translate('Edit the name'),
                 'individual'  => $individual,

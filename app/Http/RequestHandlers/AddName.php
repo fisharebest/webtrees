@@ -55,7 +55,7 @@ class AddName implements RequestHandlerInterface
         $title = $individual->fullName() . ' — ' . I18N::translate('Add a name');
 
         return $this->viewResponse('edit/new-individual', [
-            'next_action' => UpdateFact::class,
+            'next_action' => EditFactAction::class,
             'tree'        => $tree,
             'title'       => $title,
             'individual'  => $individual,

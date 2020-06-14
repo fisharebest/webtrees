@@ -12,7 +12,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToFamilyAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToIndividualAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\UpdateFact;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditFactAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\SurnameTradition;
@@ -121,7 +121,7 @@ if ($name_fact instanceof Fact) {
             $name_fields = array_merge($name_fields, $surname_tradition->newSpouseNames($indi_name, $gender));
             break;
         case AddUnlinkedAction::class:
-        case UpdateFact::class:
+        case EditFactAction::class:
             if ($surname_tradition->hasSurnames()) {
                 $name_fields['NAME'] = '//';
             }
@@ -146,7 +146,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 
     <?php
     // If we are adding a new individual, choose the sex.
-    if ($next_action !== UpdateFact::class) {
+    if ($next_action !== EditFactAction::class) {
         if ($famtag === 'HUSB' || $gender === 'M') {
             echo FunctionsEdit::addSimpleTag($tree, '0 SEX M');
         } elseif ($famtag === 'WIFE' || $gender === 'F') {
@@ -248,7 +248,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
     }
 
     // If we are adding a new individual, add the basic details
-    if ($next_action !== UpdateFact::class) {
+    if ($next_action !== EditFactAction::class) {
         $bdm = 'BD';
         $tags = new Collection();
         preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches);
@@ -269,7 +269,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
         }
     }
 
-    if ($next_action === UpdateFact::class ) {
+    if ($next_action === EditFactAction::class ) {
         // GEDCOM 5.5.1 spec says NAME doesn’t get a OBJE
         echo view('cards/add-source-citation', [
             'level'          => 2,

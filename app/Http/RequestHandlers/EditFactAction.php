@@ -43,7 +43,7 @@ use function trim;
 /**
  * Save an updated GEDCOM fact.
  */
-class UpdateFact implements RequestHandlerInterface
+class EditFactAction implements RequestHandlerInterface
 {
     /** @var GedcomEditService */
     private $gedcom_edit_service;
