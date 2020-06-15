@@ -107,3 +107,10 @@ th.align-digits {
 [lang=en-GB] q {
     quotes: "‘" "’" "“" "”";
 }
+
+/* Expand/collapse icons on accordions, etc. */
+[data-toggle=collapse][aria-expanded=true] > .wt-icon-expand {
+    display: none;
+}[data-toggle=collapse][aria-expanded=false] > .wt-icon-collapse {
+    display: none;
+}
