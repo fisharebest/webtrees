@@ -265,7 +265,7 @@ class MediaFileService
      */
     public function createMediaFileGedcom(string $file, string $type, string $title, string $note): string
     {
-        // Tidy whitespace
+        // Tidy non-printing characters
         $type  = trim(preg_replace('/\s+/', ' ', $type));
         $title = trim(preg_replace('/\s+/', ' ', $title));
 

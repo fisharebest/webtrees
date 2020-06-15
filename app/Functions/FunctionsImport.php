@@ -145,7 +145,7 @@ class FunctionsImport
                     }
                     break;
                 case 'NAME':
-                    // Tidy up whitespace
+                    // Tidy up non-printing characters
                     $data = preg_replace('/  +/', ' ', trim($data));
                     break;
                 case 'PEDI':
