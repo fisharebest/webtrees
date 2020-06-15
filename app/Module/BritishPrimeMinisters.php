@@ -63,7 +63,7 @@ class BritishPrimeMinisters extends AbstractModule implements ModuleHistoricEven
             "1 EVEN William Cavendish\n2 TYPE Prime Minister\n2 DATE FROM 16 NOV 1756 TO 29 JUN 1757",
             "1 EVEN Thomas Pelham-Holles\n2 TYPE Prime Minister\n2 DATE FROM 29 JUN 1757 TO 26 MAY 1762",
             "1 EVEN John Stuart\n2 TYPE Prime Minister\n2 DATE FROM 26 MAY 1762 TO 26 MAY 1762",
-            "1 EVEN George Grenville\n2 TYPE Prime Minister\n2 DATE FROM26 MAY 1762 TO 13 JUL 1765",
+            "1 EVEN George Grenville\n2 TYPE Prime Minister\n2 DATE FROM 26 MAY 1762 TO 13 JUL 1765",
             "1 EVEN Charles Watson-Wentworth\n2 TYPE Prime Minister\n2 DATE FROM 13 JUL 1765 TO 30 JUL 1766",
             "1 EVEN William Pitt\n2 TYPE Prime Minister\n2 DATE FROM 30 JUL 1766 TO 14 OCT 1768",
             "1 EVEN Augustus FitzRoy\n2 TYPE Prime Minister\n2 DATE FROM 14 OCT 1768 TO 28 JAN 1770",
@@ -128,7 +128,8 @@ class BritishPrimeMinisters extends AbstractModule implements ModuleHistoricEven
             "1 EVEN Tony Blair\n2 TYPE Prime Minister\n2 DATE FROM 02 MAY 1997 TO 27 JUN 2007",
             "1 EVEN Gordon Brown\n2 TYPE Prime Minister\n2 DATE FROM 27 JUN 2007 TO 11 MAY 2010",
             "1 EVEN David Cameron\n2 TYPE Prime Minister\n2 DATE FROM 11 MAY 2010 TO 13 JUL 2016",
-            "1 EVEN Theresa May\n2 TYPE Prime Minister\n2 DATE FROM 13 JUL 2016",
+            "1 EVEN Theresa May\n2 TYPE Prime Minister\n2 DATE FROM 13 JUL 2016 TO 24 JUL 2019",
+            "1 EVEN Boris Johnson\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 24 JUL 2019",
         ]);
     }
 }

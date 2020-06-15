@@ -56,7 +56,8 @@ class BritishSocialHistory extends AbstractModule implements ModuleHistoricEvent
     public function historicEventsAll(): Collection
     {
         return new Collection([
-            "1 EVEN Plague kills half the population.\n2 TYPE Black Death\n2 DATE FROM 1348 TO 1350",
+            "1 EVEN Bubonic plague kills half the population.\n2 TYPE Plague\n2 DATE FROM 1348 TO 1350",
+            "1 EVEN Bubonic plague returns and kills 20% the population.\n2 TYPE Plague\n2 DATE FROM 1361 TO 1362",
             "1 EVEN Uprising against serfdom and taxation, led by Wat Tyler.\n2 TYPE Peasants Revolt\n2 DATE FROM 30 MAY 1381 TO NOV 1381",
             "1 EVEN Royalists and parliamentarians battle for control of the country.\n2 TYPE English Civil War\n2 DATE FROM 22 AUG 1642 TO 03 SEP 1651",
             "1 EVEN Most of London was destroyed by fire.\n2 TYPE Great Fire of London\n2 DATE FROM 02 SEP 1666 TO 06 SEP 1666",
