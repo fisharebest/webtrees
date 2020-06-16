@@ -53,10 +53,11 @@ class Select2Family extends AbstractSelect2Handler
      * @param string $query
      * @param int    $offset
      * @param int    $limit
+     * @param string $at
      *
      * @return Collection<array<string,string>>
      */
-    protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
+    protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
         // Search by XREF
         $family = Factory::family()->make($query, $tree);
@@ -67,9 +68,9 @@ class Select2Family extends AbstractSelect2Handler
             $results = $this->search_service->searchFamilyNames([$tree], [$query], $offset, $limit);
         }
 
-        return $results->map(static function (Family $family): array {
+        return $results->map(static function (Family $family) use ($at): array {
             return [
-                'id'    => $family->xref(),
+                'id'    => $at . $family->xref() . $at,
                 'text'  => view('selects/family', ['family' => $family]),
                 'title' => ' ',
             ];

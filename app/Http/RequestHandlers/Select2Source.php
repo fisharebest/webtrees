@@ -53,10 +53,11 @@ class Select2Source extends AbstractSelect2Handler
      * @param string $query
      * @param int    $offset
      * @param int    $limit
+     * @param string $at
      *
      * @return Collection<array<string,string>>
      */
-    protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
+    protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
         // Search by XREF
         $source = Factory::source()->make($query, $tree);
@@ -67,9 +68,9 @@ class Select2Source extends AbstractSelect2Handler
             $results = $this->search_service->searchSourcesByName([$tree], [$query], $offset, $limit);
         }
 
-        return $results->map(static function (Source $source): array {
+        return $results->map(static function (Source $source) use ($at): array {
             return [
-                'id'    => $source->xref(),
+                'id'    => $at . $source->xref() . $at,
                 'text'  => view('selects/source', ['source' => $source]),
                 'title' => ' ',
             ];

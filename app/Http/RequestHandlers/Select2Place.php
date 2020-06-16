@@ -50,10 +50,11 @@ class Select2Place extends AbstractSelect2Handler
      * @param string $query
      * @param int    $offset
      * @param int    $limit
+     * @param string $at
      *
      * @return Collection<array<string,string>>
      */
-    protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
+    protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
         return $this->search_service
             ->searchPlaces($tree, $query, $offset, $limit)

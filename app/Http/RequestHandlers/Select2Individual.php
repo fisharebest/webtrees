@@ -52,10 +52,11 @@ class Select2Individual extends AbstractSelect2Handler
      * @param string $query
      * @param int    $offset
      * @param int    $limit
+     * @param string $at
      *
      * @return Collection<array<string,string>>
      */
-    protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
+    protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
         // Search by XREF
         $individual = Factory::individual()->make($query, $tree);
@@ -66,9 +67,9 @@ class Select2Individual extends AbstractSelect2Handler
             $results = $this->search_service->searchIndividualNames([$tree], [$query], $offset, $limit);
         }
 
-        return $results->map(static function (Individual $individual): array {
+        return $results->map(static function (Individual $individual) use ($at): array {
             return [
-                'id'    => $individual->xref(),
+                'id'    => $at . $individual->xref() . $at,
                 'text'  => view('selects/individual', ['individual' => $individual]),
                 'title' => ' ',
             ];
