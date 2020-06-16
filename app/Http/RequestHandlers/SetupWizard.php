@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Exception;
 use Fisharebest\Localization\Locale;
@@ -25,6 +25,7 @@ use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Cache;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\MigrationService;
@@ -37,6 +38,7 @@ use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 use Throwable;
 
@@ -56,8 +58,10 @@ use function view;
 /**
  * Controller for the installation wizard
  */
-class SetupController extends AbstractBaseController
+class SetupWizard implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
     private const DEFAULT_DBTYPE = 'mysql';
     private const DEFAULT_PREFIX = 'wt_';
     private const DEFAULT_DATA   = [
@@ -76,9 +80,6 @@ class SetupController extends AbstractBaseController
         'wtemail' => '',
     ];
 
-    /** @var string */
-    protected $layout = 'layouts/setup';
-
     /** @var MigrationService */
     private $migration_service;
 
@@ -92,7 +93,7 @@ class SetupController extends AbstractBaseController
     private $user_service;
 
     /**
-     * SetupController constructor.
+     * SetupWizard constructor.
      *
      * @param MigrationService   $migration_service
      * @param ModuleService      $module_service
@@ -118,8 +119,10 @@ class SetupController extends AbstractBaseController
      *
      * @return ResponseInterface
      */
-    public function setup(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $this->layout = 'layouts/setup';
+
         // We will need an IP address for the logs.
         $ip_address  = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
         $request     = $request->withAttribute('client-ip', $ip_address);
