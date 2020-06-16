@@ -286,12 +286,19 @@ class FunctionsImport
         // If the user has downloaded their GEDCOM data (containing media objects) and edited it
         // using an application which does not support (and deletes) media objects, then add them
         // back in.
-        if ($tree->getPreference('keep_media') && $xref) {
+        if ($tree->getPreference('keep_media')) {
             $old_linked_media = DB::table('link')
                 ->where('l_from', '=', $xref)
                 ->where('l_file', '=', $tree_id)
                 ->where('l_type', '=', 'OBJE')
                 ->pluck('l_to');
+
+            // Delete these links - so that we do not insert them again in updateLinks()
+            DB::table('link')
+                ->where('l_from', '=', $xref)
+                ->where('l_file', '=', $tree_id)
+                ->where('l_type', '=', 'OBJE')
+                ->delete();
 
             foreach ($old_linked_media as $media_id) {
                 $gedrec .= "\n1 OBJE @" . $media_id . '@';
