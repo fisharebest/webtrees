@@ -312,8 +312,8 @@ class GedcomEditService
                         }
                     }
                 }
-                $LATI = $params[$fact . '_LATI'];
-                $LONG = $params[$fact . '_LONG'];
+                $LATI = $params[$fact . '_LATI'] ?? '';
+                $LONG = $params[$fact . '_LONG'] ?? '';
                 if ($LATI !== '' || $LONG !== '') {
                     $gedrec .= "\n3 MAP\n4 LATI " . $LATI . "\n4 LONG " . $LONG;
                 }
