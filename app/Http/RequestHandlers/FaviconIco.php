@@ -42,6 +42,6 @@ class FaviconIco implements RequestHandlerInterface
 
         return response($content)
             ->withHeader('Content-Type', 'image/x-icon')
-            ->withHeader('Cache-Control', 'max-age=2592000');
+            ->withHeader('Cache-Control', 'public,max-age=31536000');
     }
 }

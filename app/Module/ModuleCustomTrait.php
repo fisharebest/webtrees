@@ -184,7 +184,7 @@ trait ModuleCustomTrait
         $mime_type = Mime::TYPES[$extension] ?? Mime::DEFAULT_TYPE;
 
         return response($content, StatusCodeInterface::STATUS_OK)
-            ->withHeader('Cache-Control', 'max-age=31536000, public')
+            ->withHeader('Cache-Control', 'public,max-age=31536000')
             ->withHeader('Content-Length', (string) strlen($content))
             ->withHeader('Content-Type', $mime_type);
     }
