@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-06-11 23:07+0000\n"
+"PO-Revision-Date: 2020-06-22 15:24+0000\n"
 "Last-Translator: De Tran <trande@gmail.com>\n"
 "Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/vi/>\n"
@@ -5084,7 +5084,7 @@ msgstr "Chi tiết của người dùng mới này sẽ được gửi cho ngư�
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:155
 msgid "Detroit, Michigan, United States"
-msgstr "Detroit, Michigan, United States"
+msgstr "Detroit, Michigan, Hoa Kỳ"
 
 #: app/Date/JalaliDate.php:192
 msgctxt "Abbreviation for Persian month: Dey"
@@ -10320,7 +10320,7 @@ msgstr "Phương Hướng"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:281
 msgid "Orlando, Florida, United States"
-msgstr "Orlando, Florida, United States"
+msgstr "Orlando, Florida, Hoa Kỳ"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1944 app/Stats.php:5453 app/Stats.php:5872
@@ -10336,9 +10336,8 @@ msgid "Other folder… please type in"
 msgstr "Thư mục khác… xin nhập vào"
 
 #: admin_trees_config.php:2087
-#, fuzzy
 msgid "Other preferences"
-msgstr "Các thiết đặt khắc"
+msgstr "Các lựa chọn tùy thích khác"
 
 #: statistics.php:73
 msgid "Others"
@@ -10374,7 +10373,7 @@ msgstr "Chiều"
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:88
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP khóa file bằng đuôi."
+msgstr "PHP khóa tập tin vì đuôi của nó."
 
 #: setup.php:140
 #, php-format
@@ -10461,12 +10460,12 @@ msgstr "Palau"
 #. I18N: A colour scheme
 #: app/Theme/ColorsTheme.php:149
 msgid "Palette"
-msgstr "Palette"
+msgstr "Mẫu thang màu"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:285
 msgid "Palmyra, New York, United States"
-msgstr "Palmyra, New York, United States"
+msgstr "Palmyra, New York, Hoa Kỳ"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6848
@@ -10475,9 +10474,8 @@ msgstr "Panama"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:287
-#, fuzzy
 msgid "Panama City, Panama"
-msgstr "Panama City, Panama"
+msgstr "TP. Panama, Panama"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:289
@@ -10526,9 +10524,8 @@ msgstr "Mật khẩu phải có tối thiểu 6 kí tự."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
-#, fuzzy
 msgid "Payson, Utah, United States"
-msgstr "Payson, Utah, United States"
+msgstr "Payson, Utah, Hoa Kỳ"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report
@@ -10571,7 +10568,7 @@ msgstr "Cây phả hệ cua %s"
 #: app/Theme/AbstractTheme.php:1678 edit_changes.php:35 edit_changes.php:49
 #: help_text.php:302 modules_v3/change_report/report.xml:52
 msgid "Pending changes"
-msgstr "Những chuyện đang chờ đổi"
+msgstr "Những thay đổi chờ duyệt"
 
 #: help_text.php:309
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
@@ -10603,9 +10600,8 @@ msgstr "Philippines"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:295
-#, fuzzy
 msgid "Phoenix, Arizona, United States"
-msgstr "Phoenix, Arizona, United States"
+msgstr "Phoenix, Arizona, Hoa Kỳ"
 
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:682
