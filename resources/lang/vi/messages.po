@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees vietnamese Version 1.5.3\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-06-11 23:07+0000\nLast-Translator: De Tran <trande@gmail.com>\nLanguage-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees/vi/>\nLanguage: vi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees vietnamese Version 1.5.3\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-06-22 15:24+0000\nLast-Translator: De Tran <trande@gmail.com>\nLanguage-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees/vi/>\nLanguage: vi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -5099,7 +5099,7 @@ msgstr "Chi tiết của người dùng mới này sẽ được gửi cho ngư�
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:336
 msgid "Detroit, Michigan, United States"
-msgstr "Detroit, Michigan, United States"
+msgstr "Detroit, Michigan, Hoa Kỳ"
 
 #: app/Date/JalaliDate.php:268
 msgctxt "Abbreviation for Persian month: Dey"
@@ -10402,7 +10402,7 @@ msgstr "Phương Hướng"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:525
 msgid "Orlando, Florida, United States"
-msgstr "Orlando, Florida, United States"
+msgstr "Orlando, Florida, Hoa Kỳ"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2411 app/Module/StatisticsChartModule.php:163
@@ -10418,12 +10418,11 @@ msgstr "Các sự kiện khác hiện trên biểu đồ"
 
 #: resources/views/modals/media-file-fields.phtml:99
 msgid "Other genealogy applications might not recognize this data."
-msgstr ""
+msgstr "Các ứng dụng gia phả khác có thể không nhận ra dữ kiện này."
 
 #: resources/views/admin/trees-preferences.phtml:862
-#, fuzzy
 msgid "Other preferences"
-msgstr "Các thiết đặt khắc"
+msgstr "Các lựa chọn tùy thích khác"
 
 #: app/GedcomCode/GedcomCodeRela.php:283
 msgid "Owner"
@@ -10442,7 +10441,7 @@ msgstr "Chủ"
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:64
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP khóa file bằng đuôi."
+msgstr "PHP khóa tập tin vì đuôi của nó."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:61
@@ -10514,12 +10513,12 @@ msgstr "Palau"
 #. I18N: A colour scheme
 #: app/Module/ColorsTheme.php:124
 msgid "Palette"
-msgstr "Palette"
+msgstr "Mẫu thang màu"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:531
 msgid "Palmyra, New York, United States"
-msgstr "Palmyra, New York, United States"
+msgstr "Palmyra, New York, Hoa Kỳ"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:389
@@ -10528,9 +10527,8 @@ msgstr "Panama"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:534
-#, fuzzy
 msgid "Panama City, Panama"
-msgstr "Panama City, Panama"
+msgstr "TP. Panama, Panama"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:537
@@ -10586,9 +10584,8 @@ msgstr "Mật khẩu phải dài ít nhất 8 ký tự và phân biệt chữ ho
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:540
-#, fuzzy
 msgid "Payson, Utah, United States"
-msgstr "Payson, Utah, United States"
+msgstr "Payson, Utah, Hoa Kỳ"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report
@@ -10631,7 +10628,7 @@ msgstr "Cây phả hệ cua %s"
 #: resources/views/pending-changes-page.phtml:82
 #: resources/xml/reports/change_report.xml:52
 msgid "Pending changes"
-msgstr "Những chuyện đang chờ đổi"
+msgstr "Những thay đổi chờ duyệt"
 
 #: resources/views/help/pending-changes.phtml:16
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
@@ -10649,7 +10646,7 @@ msgstr "Xóa vĩnh viễn các bản ghi này?"
 
 #: resources/views/modules/privacy-policy/page.phtml:9
 msgid "Personal data"
-msgstr ""
+msgstr "Dữ kiện cá nhân"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:543
@@ -10668,9 +10665,8 @@ msgstr "Philippines"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:546
-#, fuzzy
 msgid "Phoenix, Arizona, United States"
-msgstr "Phoenix, Arizona, United States"
+msgstr "Phoenix, Arizona, Hoa Kỳ"
 
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:925
@@ -10764,11 +10760,11 @@ msgstr "Tên địa điểm thường quá dài để đưa vào biểu đồ, d
 
 #: resources/views/help/place.phtml:12
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr ""
+msgstr "Tên địa điểm có thể thay đổi qua thời gian. Trong gia phả học, người ta thường dùng tên hiện tại cho thành phố hay nước. Tên lịch sử thường hiện ra ở nguổn, ghi chú v.v..."
 
 #: resources/views/help/place.phtml:8
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr ""
+msgstr "Tên địa điểm phải được nhập danh sách tách biệt bằng dấu phẩy, bắt đầu từ đơn vị nhỏ nhất, kết thúc là quốc gia. Thí dụ, \"Westminster, Luân Đôn, Anh”."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:507
@@ -10906,7 +10902,7 @@ msgstr "Xin cho vào một địa chỉ thư điện tử hợp lệ."
 #: app/Http/RequestHandlers/PasswordResetPage.php:77
 #: app/Http/RequestHandlers/RegisterAction.php:98
 msgid "Please try again."
-msgstr ""
+msgstr "Xin vui lòng thử lại."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:143
@@ -10985,7 +10981,7 @@ msgstr "Mã bưu điện"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:41
 msgid "Powered by webtrees™"
-msgstr ""
+msgstr "Được vận hành bởi  webtrees™"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:151
@@ -11072,7 +11068,7 @@ msgstr "Preston, Anh Quốc"
 #: app/Http/RequestHandlers/DataFixPreview.php:85
 #: resources/views/admin/analytics-edit.phtml:18
 msgid "Preview"
-msgstr ""
+msgstr "Xem trước"
 
 #: app/GedcomCode/GedcomCodeRela.php:287
 msgid "Priest"
@@ -11096,12 +11092,12 @@ msgstr "Không được bộc lộ"
 #: app/Module/PrivacyPolicy.php:67 app/Module/PrivacyPolicy.php:128
 #: resources/views/modules/privacy-policy/footer.phtml:10
 msgid "Privacy policy"
-msgstr ""
+msgstr "Chính sách về riêng tư"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.phtml:9
 msgid "Privacy restriction"
-msgstr ""
+msgstr "Hạn chế riêng tư"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:158
@@ -11122,7 +11118,7 @@ msgstr "Riêng tư"
 
 #: resources/views/admin/site-mail.phtml:207
 msgid "Private key"
-msgstr ""
+msgstr "Khóa riêng"
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:943
@@ -11348,7 +11344,7 @@ msgstr "Sắp xếp lại file nghe nhìn"
 #: resources/views/individual-page-menu.phtml:30
 #: resources/views/individual-page-menu.phtml:35
 msgid "Re-order names"
-msgstr ""
+msgstr "Sắp xếp lại tên"
 
 #: resources/views/admin/users-create.phtml:19
 #: resources/views/admin/users-edit.phtml:23
@@ -11362,7 +11358,7 @@ msgstr "Tên thật"
 
 #: resources/views/admin/map-import-form.phtml:91
 msgid "Really delete all geographic data?"
-msgstr ""
+msgstr "Thực sự bạn muốn xóa tất cả số liệu địa lý?"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:77
@@ -11409,7 +11405,7 @@ msgstr "Hồ sơ"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:112
 msgid "Redirect old URLs from webtrees version 1."
-msgstr ""
+msgstr "Chuyển hướng URLs cũ từ webtrees phiên bản 1."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:573
@@ -11556,7 +11552,7 @@ msgstr "Tên đạo"
 #: resources/views/modules/place-hierarchy/map.phtml:71
 #: resources/views/modules/places/tab.phtml:58
 msgid "Reload map"
-msgstr ""
+msgstr "Nạp lại bản đồ"
 
 #: resources/views/modules/review_changes/config.phtml:24
 msgid "Reminder email frequency (days)"
@@ -11617,7 +11613,7 @@ msgstr "Thay thế"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:72
 msgid "Replace cemetery tags with burial places."
-msgstr ""
+msgstr "Thay thẻ nghĩa trang bằng nơi chôn cất."
 
 #: resources/views/search-replace-page.phtml:26
 msgid "Replace with"
@@ -11715,7 +11711,7 @@ msgstr "Các tác vụ nghiên cứu được lưu trữ trong thẻ riêng “_
 
 #: resources/views/admin/location-edit.phtml:138
 msgid "Reset to initial map state"
-msgstr ""
+msgstr "Đặt lại tình trạng bản đồ ban đầu"
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:967
@@ -11765,7 +11761,7 @@ msgstr "Rexburg, Idaho, United States"
 
 #: app/Module/PedigreeChartModule.php:391
 msgid "Right"
-msgstr ""
+msgstr "Phải"
 
 #. I18N: gedcom tag ROLE
 #: app/GedcomTag.php:994 resources/views/admin/users-edit.phtml:269
@@ -11817,12 +11813,12 @@ msgstr "Máy chủ mail SMTP"
 
 #: app/Services/ServerCheckService.php:324
 msgid "SQLite is only suitable for small sites, testing and evaluation."
-msgstr ""
+msgstr "SQLite chỉ phù hợp cho site nhỏ, để thử nghiệm hay để đánh giá."
 
 #: app/Services/ServerCheckService.php:217
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
-msgstr ""
+msgstr "SQLite phiên bản %s được cài. Cần SQLite phiên bản %s hay mới hơn."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:585
@@ -11890,7 +11886,7 @@ msgstr "Salt Lake City, Utah, United States"
 
 #: resources/views/modals/media-file-fields.phtml:62
 msgid "Same as uploaded file"
-msgstr ""
+msgstr "Giống tập tin đã tải lên"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:536
@@ -12025,7 +12021,7 @@ msgstr "Truy tìm và thay đổi văn bản, sử dụng tìm kiềm đơn gi�
 #. I18N: Help text for the “Description META tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:203
 msgid "Search engines may use this description of your site in their search results."
-msgstr ""
+msgstr "Máy truy tìm có thể dùng mô tả này của site của bạn trong kết quả tìm kiếm của chúng."
 
 #: resources/views/modules/media-list/page.phtml:52
 msgid "Search filters"
@@ -12112,7 +12108,7 @@ msgstr "Chọn hai bản ghi để hợp nhất."
 
 #: resources/views/admin/site-mail.phtml:198
 msgid "Selector"
-msgstr ""
+msgstr "Bộ chọn lọc"
 
 #: app/GedcomCode/GedcomCodeRela.php:313
 msgid "Seller"
@@ -12160,7 +12156,7 @@ msgstr "Gửi bức điện cho thành viên chưa hề truy nhập trong vòng 
 
 #: resources/views/admin/site-mail.phtml:221
 msgid "Send a test email using these settings"
-msgstr ""
+msgstr "Gửi một email thử sử dụng các thiết đặt này"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:14
@@ -12263,7 +12259,7 @@ msgstr "Tên máy phục vụ"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php:64
 msgid "Set a new password"
-msgstr ""
+msgstr "Đặt mật khẩu mới"
 
 #: resources/views/admin/trees.phtml:112 resources/views/admin/trees.phtml:119
 msgid "Set as default"
@@ -12497,7 +12493,7 @@ msgstr "Hiện liên kết tải ở trình xem file nghe nhìn"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
 msgid "Show a privacy policy."
-msgstr ""
+msgstr "Hiện chính sách riêng tư."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:69
@@ -12652,7 +12648,7 @@ msgstr "Hiển thị hình"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:108
 msgid "Show place hierarchy"
-msgstr ""
+msgstr "Hiện thứ cấp địa điểm"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:144
@@ -12707,7 +12703,7 @@ msgstr "Hiện phần %1$s %2$s của tên địa điểm."
 #. I18N: Description of the “Pedigree map” module
 #: app/Module/PedigreeMapModule.php:137
 msgid "Show the birthplace of ancestors on a map."
-msgstr ""
+msgstr "Hiện nơi sinh của tổ tiên ở bản đồ."
 
 #: resources/views/modules/html/config.phtml:45
 msgid "Show the date and time of update"
@@ -12733,7 +12729,7 @@ msgstr "Hiển thị danh sách họ"
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:79
 msgid "Show the location of events on a map."
-msgstr ""
+msgstr "Hiện vị trí sự kiện ở bản đồ."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:37
@@ -13038,7 +13034,7 @@ msgstr "Sosa"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:18
 msgid "Sosa-Stradonitz number"
-msgstr ""
+msgstr "Số Sosa-Stradonitz"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:243
 msgid "Sounds like"
@@ -13228,8 +13224,9 @@ msgid "Starting range of change dates"
 msgstr "Bắt đầu khoản thời gian thay đổi"
 
 #: app/Module/StatcounterModule.php:41
+#, fuzzy
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:1029
@@ -13319,7 +13316,7 @@ msgstr "Người Đệ Trình"
 
 #: resources/views/lists/submitters-table.phtml:60
 msgid "Submitter name"
-msgstr ""
+msgstr "Tên người gửi"
 
 #. I18N: Name of a module/list
 #: app/Http/Controllers/ListController.php:563
@@ -13328,7 +13325,7 @@ msgstr ""
 #: resources/views/admin/merge-records-step-1.phtml:29
 #: resources/views/lists/submitters-table.phtml:55
 msgid "Submitters"
-msgstr ""
+msgstr "Người gửi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -13353,11 +13350,11 @@ msgstr "Hỗ trợ và tài liệu có thể tìm thấy tại %s."
 
 #: app/Services/ServerCheckService.php:329
 msgid "Support for PostgreSQL is experimental."
-msgstr ""
+msgstr "Hỗ trợ cho PostgreSQL chỉ ở giai đoạn thí nghiệm."
 
 #: app/Services/ServerCheckService.php:334
 msgid "Support for SQL Server is experimental."
-msgstr ""
+msgstr "Hỗ trợ cho SQL Server chỉ ở bước thí nghiệm."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:461
@@ -13402,7 +13399,7 @@ msgstr "Truyền thống về tên họ"
 #: resources/views/modules/gedcom_stats/statistics.phtml:56
 #: resources/views/modules/statistics-chart/custom.phtml:155
 msgid "Surnames"
-msgstr ""
+msgstr "Họ"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:113
