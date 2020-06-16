@@ -177,7 +177,7 @@ class LocationController extends AbstractAdminController
 
         $rows = DB::table('placelocation')
             ->where('pl_parent_id', '=', $id)
-            ->orderBy('pl_place')
+            ->orderBy(new Expression('pl_place /*! COLLATE ' . I18N::collation() . ' */'))
             ->get();
 
         $list = [];
@@ -523,7 +523,7 @@ class LocationController extends AbstractAdminController
         // Data for the next level.
         $rows = DB::table('placelocation')
             ->where('pl_parent_id', '=', $parent_id)
-            ->orderBy('pl_place')
+            ->orderBy(new Expression('pl_place /*! COLLATE ' . I18N::collation() . ' */'))
             ->get();
 
         foreach ($rows as $row) {
