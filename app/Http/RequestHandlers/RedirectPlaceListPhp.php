@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -63,14 +64,22 @@ class RedirectPlaceListPhp implements RequestHandlerInterface
         $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $place_name = implode(Gedcom::PLACE_SEPARATOR, array_reverse($parent));
-            $place      = new Place($place_name, $tree);
+            // Check the place exists in the database, to avoid creating new places.
+            $place_id = 0;
+
+            foreach ($parent as $place_name) {
+                $place_id = (int) DB::table('places')
+                    ->where('p_file', '=', $tree->id())
+                    ->where('p_place', '=', $place_name)
+                    ->where('p_parent_id', '=', $place_id)
+                    ->value('p_id');
+            }
 
             $url = route('module', [
                 'module'   => 'places_list',
                 'action'   => 'List',
                 'action2'  => $display,
-                'place_id' => $place->id(),
+                'place_id' => $place_id,
                 'tree'     => $tree->name(),
             ]);
 
