@@ -12,8 +12,6 @@ use Fisharebest\Webtrees\Individual;
  */
 
 ?>
-<?php
-?>
 
 <table class="table table-sm wt-facts-table wt-family-navigator-family">
     <caption class="text-center wt-family-navigator-family-heading">
@@ -39,7 +37,7 @@ use Fisharebest\Webtrees\Individual;
                                 <?php if ($n > 0) : ?>
                                     <div class="dropdown-divider"></div>
                                 <?php endif ?>
-                                <a class="dropdown-header wt-family-navigator-dropdown-heading" href="<?= e($spouse_child_family->xref()) ?>">
+                                <a class="dropdown-header wt-family-navigator-dropdown-heading" href="<?= e($spouse_child_family->url()) ?>">
                                     <?= I18N::translate('Parents') ?>
                                 </a>
                                 <?php foreach ($spouse_child_family->spouses() as $parent) : ?>
