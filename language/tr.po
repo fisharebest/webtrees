@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-03-31 19:04+0000\n"
-"Last-Translator: Suleyman <hsarslan@yahoo.com>\n"
+"PO-Revision-Date: 2020-06-22 15:24+0000\n"
+"Last-Translator: Ekrem Parlak <ekrem@parlak.org>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/tr/>\n"
 "Language: tr\n"
@@ -6849,7 +6849,7 @@ msgstr "Manevi oğlu"
 #: app/Module/GoogleMapsModule.php:3477 app/Module/GoogleMapsModule.php:4325
 #: app/Module/GoogleMapsModule.php:4340
 msgid "Google Maps™"
-msgstr "Google Haritası™"
+msgstr "Google Haritalar™"
 
 #: app/Module/GoogleMapsModule.php:174 app/Module/GoogleMapsModule.php:184
 #: app/Module/GoogleMapsModule.php:284 app/Module/GoogleMapsModule.php:299
@@ -13290,7 +13290,7 @@ msgstr "Pazar"
 #: admin.php:617
 #, php-format
 msgid "Support and documentation can be found at %s."
-msgstr "Destek ve doküman %s adresinde bula bilirsiniz."
+msgstr "Destek ve doküman %s adresinde bulabilirsiniz."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6884
