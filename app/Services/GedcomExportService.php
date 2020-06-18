@@ -116,7 +116,12 @@ class GedcomExportService
                 } elseif ($datum instanceof GedcomRecord) {
                     $gedcom = $datum->privatizeGedcom($access_level);
                 } else {
-                    $gedcom = $datum->gedcom;
+                    $gedcom =
+                        $datum->i_gedcom ??
+                        $datum->f_gedcom ??
+                        $datum->s_gedcom ??
+                        $datum->m_gedcom ??
+                        $datum->o_gedcom;
                 }
 
                 if ($media_path !== '') {
@@ -283,7 +288,7 @@ class GedcomExportService
     {
         $query = DB::table('families')
             ->where('f_file', '=', $tree->id())
-            ->select(['f_gedcom AS gedcom', 'f_id AS xref']);
+            ->select(['f_gedcom', 'f_id']);
 
 
         if ($sort_by_xref) {
@@ -305,7 +310,7 @@ class GedcomExportService
     {
         $query = DB::table('individuals')
             ->where('i_file', '=', $tree->id())
-            ->select(['i_gedcom AS gedcom', 'i_id AS xref']);
+            ->select(['i_gedcom', 'i_id']);
 
         if ($sort_by_xref) {
             $query
@@ -326,7 +331,7 @@ class GedcomExportService
     {
         $query = DB::table('sources')
             ->where('s_file', '=', $tree->id())
-            ->select(['s_gedcom AS gedcom', 's_id AS xref']);
+            ->select(['s_gedcom', 's_id']);
 
         if ($sort_by_xref) {
             $query
@@ -347,7 +352,7 @@ class GedcomExportService
     {
         $query = DB::table('media')
             ->where('m_file', '=', $tree->id())
-            ->select(['m_gedcom AS gedcom', 'm_id AS xref']);
+            ->select(['m_gedcom', 'm_id']);
 
         if ($sort_by_xref) {
             $query
@@ -369,7 +374,7 @@ class GedcomExportService
         $query = DB::table('other')
             ->where('o_file', '=', $tree->id())
             ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
-            ->select(['o_gedcom AS gedcom', 'o_id AS xref']);
+            ->select(['o_gedcom', 'o_id']);
 
         if ($sort_by_xref) {
             $query
