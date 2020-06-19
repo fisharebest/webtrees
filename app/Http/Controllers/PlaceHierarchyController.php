@@ -252,7 +252,7 @@ class PlaceHierarchyController extends AbstractBaseController
                 $flag = '';
             }
 
-            if ($location->latitude() === 0.0 && $location->longitude() === 0.0) {
+            if (!$location->isMapped()) {
                 $sidebar_class = 'unmapped';
             } else {
                 $sidebar_class = 'mapped';
