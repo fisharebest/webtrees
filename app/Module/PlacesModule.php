@@ -168,7 +168,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
             $longitude = $fact->longitude();
 
             // Use the co-ordinates from the location otherwise.
-            if ($latitude === 0.0 && $longitude === 0.0) {
+            if ($latitude === 0.0 && $longitude === 0.0 && $location->isMapped()) {
                 $latitude  = $location->latitude();
                 $longitude = $location->longitude();
             }
