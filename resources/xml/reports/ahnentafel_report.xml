@@ -100,8 +100,8 @@
 						<SetVar name="empty_name" value="f" />
 					</if>
 					<!-- Generation counter -->
-					<TextBox width="25" height="30">
-						<Text style="text"><var var="num" />.</Text>
+					<TextBox width="50" height="30">
+						<Text style="text"><kekuleNumber />.</Text>
 					</TextBox>
 					<!-- Sentence 1 Individual, name... -->
 					<TextBox height="12" newline="1">

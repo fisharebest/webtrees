@@ -159,6 +159,9 @@ class ReportParserGenerate extends ReportParserBase
 
     /** @var int The current generational level */
     private $generation = 1;
+    
+    /** @var int The current kekule order number */
+    private $kekule_number = 1;
 
     /** @var array Source data for processing lists */
     private $list = [];
@@ -1471,6 +1474,8 @@ class ReportParserGenerate extends ReportParserBase
             $value = $this->desc;
         } elseif ($value === '@generation') {
             $value = (string) $this->generation;
+        } elseif ($value === '@kekule_number') {
+            $value = (string) $this->kekule_number;
         } elseif (preg_match("/@(\w+)/", $value, $match)) {
             $gmatch = [];
             if (preg_match("/\d $match[1] (.+)/", $this->gedrec, $gmatch)) {
@@ -1553,6 +1558,8 @@ class ReportParserGenerate extends ReportParserBase
                 $value = '"' . addslashes($this->desc) . '"';
             } elseif ($id === 'generation') {
                 $value = '"' . $this->generation . '"';
+            } elseif ($id === 'kekule_number') {
+                $value = '"' . $this->kekule_number .'"';
             } else {
                 $level = (int) explode(' ', trim($this->gedrec))[0];
                 if ($level === 0) {
@@ -2546,6 +2553,9 @@ class ReportParserGenerate extends ReportParserBase
                 if (isset($value->generation)) {
                     $this->generation = $value->generation;
                 }
+                if (isset($value->kekule_number)) {
+                    $this->kekule_number = $value->kekule_number;
+                }
                 $tmp          = Factory::gedcomRecord()->make((string) $xref, $this->tree);
                 $this->gedrec = $tmp->privatizeGedcom(Auth::accessLevel($this->tree));
 
@@ -2592,6 +2602,17 @@ class ReportParserGenerate extends ReportParserBase
     protected function generationStartHandler(): void
     {
         $this->current_element->addText((string) $this->generation);
+    }
+
+        /**
+     * Handle <kekuleNumber />
+     * Prints the kekule order number
+     *
+     * @return void
+     */
+    protected function kekuleNumberStartHandler(): void
+    {
+        $this->current_element->addText((string) $this->kekule_number);
     }
 
     /**
@@ -2704,9 +2725,12 @@ class ReportParserGenerate extends ReportParserBase
     private function addAncestors(array &$list, string $pid, bool $children = false, int $generations = -1): void
     {
         $genlist                = [$pid];
+        $kekulelist             = [1];
         $list[$pid]->generation = 1;
+        $list[$pid]->kekule_number = 1;
         while (count($genlist) > 0) {
             $id = array_shift($genlist);
+            $kekule_number = array_shift($kekulelist) + 1;
             if (strpos($id, 'empty') === 0) {
                 continue; // id can be something like “empty7”
             }
@@ -2715,19 +2739,23 @@ class ReportParserGenerate extends ReportParserBase
                 $husband = $family->husband();
                 $wife    = $family->wife();
                 if ($husband) {
-                    $list[$husband->xref()]             = $husband;
-                    $list[$husband->xref()]->generation = $list[$id]->generation + 1;
+                    $list[$husband->xref()]                = $husband;
+                    $list[$husband->xref()]->generation    = $list[$id]->generation + 1;
+                    $list[$husband->xref()]->kekule_number = $kekule_number;
                 }
                 if ($wife) {
-                    $list[$wife->xref()]             = $wife;
-                    $list[$wife->xref()]->generation = $list[$id]->generation + 1;
+                    $list[$wife->xref()]                = $wife;
+                    $list[$wife->xref()]->generation    = $list[$id]->generation + 1;
+                    $list[$wife->xref()]->kekule_number = $kekule_number + 1;
                 }
                 if ($generations == -1 || $list[$id]->generation + 1 < $generations) {
                     if ($husband) {
-                        $genlist[] = $husband->xref();
+                        $genlist[]    = $husband->xref();
+                        $kekulelist[] = ($kekule_number) * 2 - 1;
                     }
                     if ($wife) {
                         $genlist[] = $wife->xref();
+                        $kekulelist[] = ($kekule_number + 1) * 2 - 1;
                     }
                 }
                 if ($children) {
