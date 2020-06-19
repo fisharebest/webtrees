@@ -157,6 +157,36 @@ class PlaceLocation
     }
 
     /**
+     * Does this PlaceLocation have its own coordinates?
+     *
+     * @return bool
+     */
+    public function isMapped(): bool
+    {
+        $pl_lati = (string) $this->details()->pl_lati;
+        $pl_long = (string) $this->details()->pl_long;
+        return ($pl_lati !== '' && $pl_long !== '');
+    }
+
+    /**
+     * Get the parent, if $this has no coordinates.
+     *
+     * @return object
+     */
+    public function getValidData()
+    {
+        $parent = $this;
+        do {
+            $tmp = $parent;
+            $parent = $tmp->parent();
+            $pl_lati = (string) $tmp->details()->pl_lati;
+            $pl_long = (string) $tmp->details()->pl_long;
+        } while (($pl_lati === '' || $pl_long === '') && $parent->id() !== 0);
+
+        return $tmp;
+    }
+    
+    /**
      * Latitude of the location.
      *
      * @return float
@@ -165,11 +195,8 @@ class PlaceLocation
     {
         $gedcom_service = new GedcomService();
 
-        $tmp = $this;
-        do {
-            $pl_lati = (string) $tmp->details()->pl_lati;
-            $tmp = $tmp->parent();
-        } while ($pl_lati === '' && $tmp->id() !== 0);
+        $tmp = $this->getValidData();
+        $pl_lati = (string) $tmp->details()->pl_lati;
 
         return $gedcom_service->readLatitude($pl_lati);
     }
@@ -183,11 +210,8 @@ class PlaceLocation
     {
         $gedcom_service = new GedcomService();
 
-        $tmp = $this;
-        do {
-            $pl_long = (string) $tmp->details()->pl_long;
-            $tmp = $tmp->parent();
-        } while ($pl_long === '' && $tmp->id() !== 0);
+        $tmp = $this->getValidData();
+        $pl_long = (string) $tmp->details()->pl_long;
 
         return $gedcom_service->readLongitude($pl_long);
     }
@@ -209,7 +233,8 @@ class PlaceLocation
      */
     public function zoom(): int
     {
-        return (int) $this->details()->pl_zoom ?: 2;
+        $tmp = $this->getValidData();
+        return (int) $tmp->details()->pl_zoom ?: 2;
     }
 
     /**
