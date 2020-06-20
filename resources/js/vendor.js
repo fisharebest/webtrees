@@ -151,7 +151,7 @@ window.Sortable = Sortable;
 $('html[dir=rtl] .dropdown').on('shown.bs.dropdown', function (event) {
   let menu = event.target.querySelector('.dropdown-menu');
   // Bootstrap sets these *after* the event has fired, so wait before updating them.
-  setTimeout(function () {
+  setTimeout(() => {
     menu.style.right='0';
     menu.style.left='';
   }, 1);

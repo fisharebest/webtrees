@@ -830,7 +830,7 @@ document.addEventListener('click', (event) => {
         // Reload the current page. e.g. change language.
         document.location.reload();
       }
-    }).catch(function (error) {
+    }).catch((error) => {
       alert(error);
     });
   }
