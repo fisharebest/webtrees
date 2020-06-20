@@ -101,10 +101,6 @@ use Fisharebest\Webtrees\I18N;
                 map.fitWorld();
                 sidebar_content += '<div class="bg-info text-white text-center">' + <?= json_encode(I18N::translate('Nothing to show')) ?> + '</div>';
             } else {
-                if (data.features.length === 1) {
-                    //fudge factor - maps zooms to maximum permitted otherwise
-                    zoom = data.features[0].properties.zoom;
-                }
                 let geoJsonLayer = L.geoJson(data, {
                     pointToLayer: function(feature, latlng) {
                         return new L.Marker(latlng, {
@@ -136,11 +132,13 @@ use Fisharebest\Webtrees\I18N;
                 });
                 markers.addLayer(geoJsonLayer);
                 map.addLayer(markers);
-                if (zoom) {
-                    map.setView(markers.getBounds().getCenter(), zoom);
-                } else {
-                    map.fitBounds(markers.getBounds(), {padding: [50, 30]});
+                // Ensure map is not zoomed more than the largest saved zoom value
+                let zoom = 1;
+                let i = 0;
+                for (i=0; i<data.features.length; i++) {
+                    zoom = Math.max(zoom, data.features[i].properties.zoom);
                 }
+                map.fitBounds(markers.getBounds().pad(0.2), {padding: [50, 30], maxZoom: zoom});
             }
             sidebar.append(sidebar_content);
         };
