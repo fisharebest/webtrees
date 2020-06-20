@@ -87,24 +87,13 @@ class FunctionsEdit
      * Function edit_language_checkboxes
      *
      * @param string        $parameter_name
-     * @param array<string> $accepted_languages
+     * @param array<string> $languages
      *
      * @return string
      */
-    public static function editLanguageCheckboxes($parameter_name, $accepted_languages): string
+    public static function editLanguageCheckboxes($parameter_name, $languages): string
     {
-        $html = '';
-        foreach (I18N::activeLocales() as $locale) {
-            $html .= '<div class="form-check">';
-            $html .= '<label title="' . $locale->languageTag() . '">';
-            $html .= '<input type="checkbox" name="' . $parameter_name . '[]" value="' . $locale->languageTag() . '"';
-            $html .= in_array($locale->languageTag(), $accepted_languages, true) ? ' checked>' : '> ';
-            $html .= $locale->endonym();
-            $html .= '</label>';
-            $html .= '</div>';
-        }
-
-        return '<div style="columns: auto 12rem">' . $html . '</div>';
+        return view('edit/language-checkboxes', ['languages' => $languages]);
     }
 
     /**

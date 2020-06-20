@@ -169,7 +169,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $title = $this->html_service->sanitize($params['title']);
         $html  = $this->html_service->sanitize($params['html']);
 
-        $languages = $params['lang'] ?? [];
+        $languages = $params['languages'] ?? [];
 
         $this->setBlockSetting($block_id, 'title', $title);
         $this->setBlockSetting($block_id, 'html', $html);
