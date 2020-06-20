@@ -443,17 +443,17 @@
     },
     {
         "name": "egulias/email-validator",
-        "version": "2.1.17",
-        "version_normalized": "2.1.17.0",
+        "version": "2.1.18",
+        "version_normalized": "2.1.18.0",
         "source": {
             "type": "git",
             "url": "https://github.com/egulias/EmailValidator.git",
-            "reference": "ade6887fd9bd74177769645ab5c474824f8a418a"
+            "reference": "cfa3d44471c7f5bfb684ac2b0da7114283d78441"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/ade6887fd9bd74177769645ab5c474824f8a418a",
-            "reference": "ade6887fd9bd74177769645ab5c474824f8a418a",
+            "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/cfa3d44471c7f5bfb684ac2b0da7114283d78441",
+            "reference": "cfa3d44471c7f5bfb684ac2b0da7114283d78441",
             "shasum": ""
         },
         "require": {
@@ -469,7 +469,7 @@
         "suggest": {
             "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
         },
-        "time": "2020-02-13T22:36:52+00:00",
+        "time": "2020-06-16T20:11:17+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -479,7 +479,7 @@
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "Egulias\\EmailValidator\\": "EmailValidator"
+                "Egulias\\EmailValidator\\": "src"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -826,17 +826,17 @@
     },
     {
         "name": "guzzlehttp/guzzle",
-        "version": "6.5.4",
-        "version_normalized": "6.5.4.0",
+        "version": "6.5.5",
+        "version_normalized": "6.5.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/guzzle/guzzle.git",
-            "reference": "a4a1b6930528a8f7ee03518e6442ec7a44155d9d"
+            "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/a4a1b6930528a8f7ee03518e6442ec7a44155d9d",
-            "reference": "a4a1b6930528a8f7ee03518e6442ec7a44155d9d",
+            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
+            "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
             "shasum": ""
         },
         "require": {
@@ -844,7 +844,7 @@
             "guzzlehttp/promises": "^1.0",
             "guzzlehttp/psr7": "^1.6.1",
             "php": ">=5.5",
-            "symfony/polyfill-intl-idn": "1.17.0"
+            "symfony/polyfill-intl-idn": "^1.17.0"
         },
         "require-dev": {
             "ext-curl": "*",
@@ -854,7 +854,7 @@
         "suggest": {
             "psr/log": "Required for using the Log middleware"
         },
-        "time": "2020-05-25T19:35:05+00:00",
+        "time": "2020-06-16T21:01:06+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2820,17 +2820,17 @@
     },
     {
         "name": "symfony/cache",
-        "version": "v4.4.9",
-        "version_normalized": "4.4.9.0",
+        "version": "v4.4.10",
+        "version_normalized": "4.4.10.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/cache.git",
-            "reference": "aaf9cf1923794c950976bbcc35eb19a26aad95e8"
+            "reference": "e12aad53e6b9fa80a3ca1d043b6dde9449b4f924"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/cache/zipball/aaf9cf1923794c950976bbcc35eb19a26aad95e8",
-            "reference": "aaf9cf1923794c950976bbcc35eb19a26aad95e8",
+            "url": "https://api.github.com/repos/symfony/cache/zipball/e12aad53e6b9fa80a3ca1d043b6dde9449b4f924",
+            "reference": "e12aad53e6b9fa80a3ca1d043b6dde9449b4f924",
             "shasum": ""
         },
         "require": {
@@ -2862,7 +2862,7 @@
             "symfony/dependency-injection": "^3.4|^4.1|^5.0",
             "symfony/var-dumper": "^4.4|^5.0"
         },
-        "time": "2020-05-28T08:58:00+00:00",
+        "time": "2020-06-09T14:07:49+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2975,8 +2975,8 @@
     },
     {
         "name": "symfony/expression-language",
-        "version": "v4.4.9",
-        "version_normalized": "4.4.9.0",
+        "version": "v4.4.10",
+        "version_normalized": "4.4.10.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/expression-language.git",
@@ -3475,8 +3475,8 @@
     },
     {
         "name": "symfony/translation",
-        "version": "v4.4.9",
-        "version_normalized": "4.4.9.0",
+        "version": "v4.4.10",
+        "version_normalized": "4.4.10.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/translation.git",
@@ -3626,17 +3626,17 @@
     },
     {
         "name": "symfony/var-exporter",
-        "version": "v4.4.9",
-        "version_normalized": "4.4.9.0",
+        "version": "v4.4.10",
+        "version_normalized": "4.4.10.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/var-exporter.git",
-            "reference": "52624517deddee019b796021e084f30df40a9124"
+            "reference": "f311af6e44fefedbd4f1e23e97607ef0f917bfcc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/var-exporter/zipball/52624517deddee019b796021e084f30df40a9124",
-            "reference": "52624517deddee019b796021e084f30df40a9124",
+            "url": "https://api.github.com/repos/symfony/var-exporter/zipball/f311af6e44fefedbd4f1e23e97607ef0f917bfcc",
+            "reference": "f311af6e44fefedbd4f1e23e97607ef0f917bfcc",
             "shasum": ""
         },
         "require": {
@@ -3645,7 +3645,7 @@
         "require-dev": {
             "symfony/var-dumper": "^4.4.9|^5.0.9"
         },
-        "time": "2020-05-16T10:04:25+00:00",
+        "time": "2020-06-01T01:10:09+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

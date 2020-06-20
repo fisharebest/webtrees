@@ -307,7 +307,7 @@ class ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99
         ),
         'Egulias\\EmailValidator\\' => 
         array (
-            0 => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator',
+            0 => __DIR__ . '/..' . '/egulias/email-validator/src',
         ),
         'Doctrine\\DBAL\\' => 
         array (

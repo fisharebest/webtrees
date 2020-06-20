@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "990323048491cf113a5bef4afb59635e",
+    "content-hash": "804511c0e445c43f7b4d872ea51f9d8b",
     "packages": [
         {
             "name": "aura/router",
@@ -438,16 +438,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.17",
+            "version": "2.1.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "ade6887fd9bd74177769645ab5c474824f8a418a"
+                "reference": "cfa3d44471c7f5bfb684ac2b0da7114283d78441"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/ade6887fd9bd74177769645ab5c474824f8a418a",
-                "reference": "ade6887fd9bd74177769645ab5c474824f8a418a",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/cfa3d44471c7f5bfb684ac2b0da7114283d78441",
+                "reference": "cfa3d44471c7f5bfb684ac2b0da7114283d78441",
                 "shasum": ""
             },
             "require": {
@@ -471,7 +471,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Egulias\\EmailValidator\\": "EmailValidator"
+                    "Egulias\\EmailValidator\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -492,7 +492,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2020-02-13T22:36:52+00:00"
+            "time": "2020-06-16T20:11:17+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -807,16 +807,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.5.4",
+            "version": "6.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "a4a1b6930528a8f7ee03518e6442ec7a44155d9d"
+                "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/a4a1b6930528a8f7ee03518e6442ec7a44155d9d",
-                "reference": "a4a1b6930528a8f7ee03518e6442ec7a44155d9d",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
+                "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
                 "shasum": ""
             },
             "require": {
@@ -824,7 +824,7 @@
                 "guzzlehttp/promises": "^1.0",
                 "guzzlehttp/psr7": "^1.6.1",
                 "php": ">=5.5",
-                "symfony/polyfill-intl-idn": "1.17.0"
+                "symfony/polyfill-intl-idn": "^1.17.0"
             },
             "require-dev": {
                 "ext-curl": "*",
@@ -870,7 +870,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2020-05-25T19:35:05+00:00"
+            "time": "2020-06-16T21:01:06+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -2735,16 +2735,16 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v4.4.9",
+            "version": "v4.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "aaf9cf1923794c950976bbcc35eb19a26aad95e8"
+                "reference": "e12aad53e6b9fa80a3ca1d043b6dde9449b4f924"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache/zipball/aaf9cf1923794c950976bbcc35eb19a26aad95e8",
-                "reference": "aaf9cf1923794c950976bbcc35eb19a26aad95e8",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/e12aad53e6b9fa80a3ca1d043b6dde9449b4f924",
+                "reference": "e12aad53e6b9fa80a3ca1d043b6dde9449b4f924",
                 "shasum": ""
             },
             "require": {
@@ -2824,7 +2824,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-28T08:58:00+00:00"
+            "time": "2020-06-09T14:07:49+00:00"
         },
         {
             "name": "symfony/cache-contracts",
@@ -2886,7 +2886,7 @@
         },
         {
             "name": "symfony/expression-language",
-            "version": "v4.4.9",
+            "version": "v4.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/expression-language.git",
@@ -3372,7 +3372,7 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v4.4.9",
+            "version": "v4.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
@@ -3519,16 +3519,16 @@
         },
         {
             "name": "symfony/var-exporter",
-            "version": "v4.4.9",
+            "version": "v4.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-exporter.git",
-                "reference": "52624517deddee019b796021e084f30df40a9124"
+                "reference": "f311af6e44fefedbd4f1e23e97607ef0f917bfcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/52624517deddee019b796021e084f30df40a9124",
-                "reference": "52624517deddee019b796021e084f30df40a9124",
+                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/f311af6e44fefedbd4f1e23e97607ef0f917bfcc",
+                "reference": "f311af6e44fefedbd4f1e23e97607ef0f917bfcc",
                 "shasum": ""
             },
             "require": {
@@ -3589,7 +3589,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-16T10:04:25+00:00"
+            "time": "2020-06-01T01:10:09+00:00"
         },
         {
             "name": "tecnickcom/tcpdf",
@@ -5694,7 +5694,7 @@
         },
         {
             "name": "symfony/config",
-            "version": "v4.4.9",
+            "version": "v4.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
@@ -5772,7 +5772,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.4.9",
+            "version": "v4.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -5863,7 +5863,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.4.9",
+            "version": "v4.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -5927,7 +5927,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v4.4.9",
+            "version": "v4.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -6138,7 +6138,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v4.4.9",
+            "version": "v4.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -6201,7 +6201,7 @@
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v4.4.9",
+            "version": "v4.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
@@ -6265,7 +6265,7 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v4.4.9",
+            "version": "v4.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
@@ -6356,7 +6356,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.4.9",
+            "version": "v4.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
@@ -6469,16 +6469,16 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6"
+                "reference": "9dc4f203e36f2b486149058bade43c851dd97451"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
-                "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/9dc4f203e36f2b486149058bade43c851dd97451",
+                "reference": "9dc4f203e36f2b486149058bade43c851dd97451",
                 "shasum": ""
             },
             "require": {
@@ -6486,6 +6486,7 @@
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
+                "phpstan/phpstan": "<0.12.20",
                 "vimeo/psalm": "<3.9.1"
             },
             "require-dev": {
@@ -6513,7 +6514,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2020-04-18T12:12:48+00:00"
+            "time": "2020-06-16T10:16:42+00:00"
         }
     ],
     "aliases": [],
