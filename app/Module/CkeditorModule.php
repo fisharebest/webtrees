@@ -30,7 +30,7 @@ class CkeditorModule extends AbstractModule implements ModuleExternalUrlInterfac
     use ModuleGlobalTrait;
 
     // Location of our installation of CK editor.
-    public const CKEDITOR_PATH = 'ckeditor-4.11.2-custom/';
+    public const CKEDITOR_PATH = 'ckeditor-4.14.1-custom/';
 
     /**
      * How should this module be identified in the control panel, etc.?

@@ -1,17 +1,18 @@
 <script src="<?= e($ckeditor_path) ?>ckeditor.js"></script>
-<script src="<?= e($ckeditor_path) ?>adapters/jquery.js"></script>
 
 <script>
-    var CKEDITOR_BASEPATH = <?= json_encode($ckeditor_path) ?>;
+    const CKEDITOR_BASEPATH = <?= json_encode($ckeditor_path) ?>;
 
     // Enable for all browsers
     CKEDITOR.env.isCompatible = true;
 
     // Disable toolbars
-    CKEDITOR.config.language = "<?= strtolower($language) ?>";
+    CKEDITOR.config.language = <?= json_encode(strtolower($language)) ?>;
     CKEDITOR.config.removePlugins = "forms,newpage,preview,print,save,templates,flash,iframe";
     CKEDITOR.config.extraAllowedContent = "area[shape,coords,href,target,alt,title];map[name];img[usemap];*[class,style]";
 
     // Activate the editor
-    $("textarea.html-edit").ckeditor();
+    document.querySelectorAll("textarea.html-edit").forEach((node) => {
+        CKEDITOR.replace(node.id);
+    });
 </script>
