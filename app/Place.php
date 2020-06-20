@@ -119,7 +119,7 @@ class Place
 
             $place_id = (int) DB::table('places')
                 ->where('p_file', '=', $this->tree->id())
-                ->where('p_place', '=', $this->parts->first())
+                ->where('p_place', '=', mb_substr($this->parts->first(), 0, 120))
                 ->where('p_parent_id', '=', $parent_place_id)
                 ->value('p_id');
 
@@ -128,7 +128,7 @@ class Place
 
                 DB::table('places')->insert([
                     'p_file'        => $this->tree->id(),
-                    'p_place'       => $place,
+                    'p_place'       => mb_substr($place, 0, 120),
                     'p_parent_id'   => $parent_place_id,
                     'p_std_soundex' => Soundex::russell($place),
                     'p_dm_soundex'  => Soundex::daitchMokotoff($place),

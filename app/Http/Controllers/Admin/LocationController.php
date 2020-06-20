@@ -375,7 +375,7 @@ class LocationController extends AbstractAdminController
                 'pl_id'        => $place_id,
                 'pl_parent_id' => $parent_id,
                 'pl_level'     => $level,
-                'pl_place'     => $params['new_place_name'],
+                'pl_place'     => mb_substr($params['new_place_name'], 0, 120),
                 'pl_lati'      => $lat,
                 'pl_long'      => $lng,
                 'pl_zoom'      => $zoom,
@@ -385,7 +385,7 @@ class LocationController extends AbstractAdminController
             DB::table('placelocation')
                 ->where('pl_id', '=', $place_id)
                 ->update([
-                    'pl_place' => $params['new_place_name'],
+                    'pl_place' => mb_substr($params['new_place_name'], 0, 120),
                     'pl_lati'  => $lat,
                     'pl_long'  => $lng,
                     'pl_zoom'  => $zoom,
@@ -879,7 +879,7 @@ class LocationController extends AbstractAdminController
                                 'pl_id'        => $nextRecordId,
                                 'pl_parent_id' => $parent_id,
                                 'pl_level'     => $count - $i,
-                                'pl_place'     => $place_parts[$i],
+                                'pl_place'     => mb_substr($place_parts[$i], 0, 120),
                             ]);
 
                             $parent_id             = $nextRecordId;

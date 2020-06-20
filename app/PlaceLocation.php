@@ -82,7 +82,7 @@ class PlaceLocation
             $parent_location_id = $this->parent()->id();
 
             $location_id = (int) DB::table('placelocation')
-                ->where('pl_place', '=', $this->parts->first())
+                ->where('pl_place', '=', mb_substr($this->parts->first(), 0, 120))
                 ->where('pl_parent_id', '=', $parent_location_id)
                 ->value('pl_id');
 
@@ -93,7 +93,7 @@ class PlaceLocation
 
                 DB::table('placelocation')->insert([
                     'pl_id'        => $location_id,
-                    'pl_place'     => $location,
+                    'pl_place'     => mb_substr($location, 0, 120),
                     'pl_parent_id' => $parent_location_id,
                     'pl_level'     => $this->parts->count() - 1,
                     'pl_lati'      => '',
@@ -121,7 +121,7 @@ class PlaceLocation
             if ($location_id !== null) {
                 $location_id = DB::table('placelocation')
                     ->where('pl_parent_id', '=', $location_id)
-                    ->where('pl_place', '=', $place)
+                    ->where('pl_place', '=', mb_substr($place, 0, 120))
                     ->value('pl_id');
             }
         });
