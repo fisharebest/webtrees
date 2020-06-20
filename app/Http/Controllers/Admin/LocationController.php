@@ -319,6 +319,7 @@ class LocationController extends AbstractAdminController
             $latitude        = '';
             $longitude       = '';
             $map_bounds      = $parent->boundingRectangle();
+            $map_zoom        = $parent->zoom();
             $marker_position = [$parent->latitude(), $parent->longitude()];
         } else {
             $breadcrumbs[]   = I18N::translate('Edit');
@@ -326,6 +327,7 @@ class LocationController extends AbstractAdminController
             $latitude        = $location->latitude();
             $longitude       = $location->latitude();
             $map_bounds      = $location->boundingRectangle();
+            $map_zoom        = $location->zoom();
             $marker_position = [$location->latitude(), $location->longitude()];
         }
 
@@ -336,6 +338,7 @@ class LocationController extends AbstractAdminController
             'latitude'        => $latitude,
             'longitude'       => $longitude,
             'map_bounds'      => $map_bounds,
+            'map_zoom'        => $map_zoom,
             'marker_position' => $marker_position,
             'parent'          => $parent,
             'provider'        => [
