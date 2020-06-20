@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-30 07:30+0000\n"
+"PO-Revision-Date: 2020-06-22 15:24+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -15040,7 +15040,9 @@ msgstr "Tento zdroj bol upravený. Mali by ste tieto zmeny skontrolovať a potom
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: admin_trees_config.php:931
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
-msgstr "Tento text sa pripojí ku každému názvu stránky. Zobrazí sa v záložkách, v lište mena prohliadača atd."
+msgstr ""
+"Tento text sa pripojí ku každému názvu stránky. Zobrazí sa v záložkách, v "
+"lište prehliadača atd."
 
 #: admin_trees_check.php:180 admin_trees_check.php:185
 msgid "This type of link is not allowed here."
