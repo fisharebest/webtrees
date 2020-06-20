@@ -103,12 +103,7 @@ class FunctionsEdit
      */
     public static function optionsAccessLevels(): array
     {
-        return [
-            Auth::PRIV_PRIVATE => I18N::translate('Show to visitors'),
-            Auth::PRIV_USER    => I18N::translate('Show to members'),
-            Auth::PRIV_NONE    => I18N::translate('Show to managers'),
-            Auth::PRIV_HIDE    => I18N::translate('Hide from everyone'),
-        ];
+        return Auth::accessLevelNames();
     }
 
     /**

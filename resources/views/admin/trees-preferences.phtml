@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
@@ -251,7 +252,7 @@ use Fisharebest\Webtrees\I18N;
                 <?= /* I18N: A configuration setting */ I18N::translate('Show a download link in the media viewer') ?>
             </legend>
             <div class="col-sm-9">
-                <?= view('components/select', ['name' => 'SHOW_MEDIA_DOWNLOAD', 'selected' => $tree->getPreference('SHOW_MEDIA_DOWNLOAD'), 'options' => FunctionsEdit::optionsAccessLevels()]) ?>
+                <?= view('components/select', ['name' => 'SHOW_MEDIA_DOWNLOAD', 'selected' => $tree->getPreference('SHOW_MEDIA_DOWNLOAD'), 'options' => Auth::accessLevelNames()]) ?>
                 <p class="small text-muted">
                     <?= /* I18N: Help text for the “Show a download link in the media viewer” configuration setting */ I18N::translate('This option will make it easier for users to download images.') ?>
                 </p>
@@ -299,7 +300,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Images without watermarks') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'SHOW_NO_WATERMARK', 'selected' => $tree->getPreference('SHOW_NO_WATERMARK'), 'options' => FunctionsEdit::optionsAccessLevels()]) ?>
+            <?= view('components/select', ['name' => 'SHOW_NO_WATERMARK', 'selected' => $tree->getPreference('SHOW_NO_WATERMARK'), 'options' => Auth::accessLevelNames()]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Images without watermarks” configuration setting */ I18N::translate('Watermarks are optional and normally shown just to visitors.') ?>
             </p>
