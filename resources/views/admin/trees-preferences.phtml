@@ -1,6 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
@@ -88,10 +89,10 @@ use Fisharebest\Webtrees\I18N;
             <div class="col-sm-9">
                 <div class="row">
                     <div class="col-sm-6" style="padding-left: 0;">
-                        <?= view('components/select', ['name' => 'CALENDAR_FORMAT0', 'selected' => $calendar_formats[0], 'options' => FunctionsEdit::optionsCalendarConversions()]) ?>
+                        <?= view('components/select', ['name' => 'CALENDAR_FORMAT0', 'selected' => $calendar_formats[0], 'options' => ['none' => I18N::translate('No calendar conversion')] + Date::calendarNames()]) ?>
                     </div>
                     <div class="col-sm-6" style="padding-right: 0;">
-                        <?= view('components/select', ['name' => 'CALENDAR_FORMAT1', 'selected' => $calendar_formats[1], 'options' => FunctionsEdit::optionsCalendarConversions()]) ?>
+                        <?= view('components/select', ['name' => 'CALENDAR_FORMAT1', 'selected' => $calendar_formats[1], 'options' => ['none' => I18N::translate('No calendar conversion')] + Date::calendarNames()]) ?>
                     </div>
                 </div>
                 <p class="small text-muted">
