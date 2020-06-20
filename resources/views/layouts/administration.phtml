@@ -11,7 +11,6 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\View;
-use Psr\Http\Message\ServerRequestInterface;
 
 /** @var string $title */
 /** @var string $content */
@@ -40,7 +39,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
         <?= DebugBar::renderHead() ?>
     </head>
-    <body class="container wt-global wt-control-panel wt-route-<?= e(app(ServerRequestInterface::class)->getAttribute('route')->name) ?>">
+    <body class="container wt-global wt-control-panel">
         <header>
             <div class="wt-accessibility-links position-fixed">
                 <a class="sr-only sr-only-focusable btn btn-info btn-sm" href="#content">
