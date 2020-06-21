@@ -481,4 +481,17 @@ class Auth
             Auth::PRIV_HIDE    => I18N::translate('Hide from everyone'),
         ];
     }
+
+    /**
+     * @return array<string,string>
+     */
+    public static function privacyRuleNames(): array
+    {
+        return [
+            'none'         => I18N::translate('Show to visitors'),
+            'privacy'      => I18N::translate('Show to members'),
+            'confidential' => I18N::translate('Show to managers'),
+            'hidden'       => I18N::translate('Hide from everyone'),
+        ];
+    }
 }
