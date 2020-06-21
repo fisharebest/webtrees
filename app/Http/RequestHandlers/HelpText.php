@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\LocalizationService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -166,6 +167,19 @@ class HelpText extends AbstractBaseController
         ],
     ];
 
+    /** @var LocalizationService */
+    private $localisation_service;
+
+    /**
+     * HelpText constructor.
+     *
+     * @param LocalizationService $localization_service
+     */
+    public function __construct(LocalizationService $localization_service)
+    {
+        $this->localisation_service = $localization_service;
+    }
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -175,9 +189,11 @@ class HelpText extends AbstractBaseController
     {
         $topic = $request->getAttribute('topic');
 
+        $dmy = $this->localisation_service->dateFormatToOrder(I18N::dateFormat());
+
         switch ($topic) {
             case 'DATE':
-                switch ($this->dmyOrder()) {
+                switch ($dmy) {
                     case 'YMD':
                         $date_shortcuts = self::DATE_SHORTCUTS + self::YMD_SHORTCUTS;
                         break;
@@ -306,15 +322,5 @@ class HelpText extends AbstractBaseController
         }
 
         return $dates;
-    }
-
-    /**
-     * Does the current language use DMY, MDY or YMD for numeric date.
-     *
-     * @return string
-     */
-    private function dmyOrder(): string
-    {
-        return preg_replace('/[^DMY]/', '', str_replace(['J', 'F',], ['D', 'M',], I18N::dateFormat()));
     }
 }
