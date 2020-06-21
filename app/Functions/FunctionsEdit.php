@@ -46,6 +46,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Services\LocalizationService;
+use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
@@ -138,13 +139,7 @@ class FunctionsEdit
      */
     public static function optionsContactMethods(): array
     {
-        return [
-            'messaging'  => I18N::translate('Internal messaging'),
-            'messaging2' => I18N::translate('Internal messaging with emails'),
-            'messaging3' => I18N::translate('webtrees sends emails with no storage'),
-            'mailto'     => I18N::translate('Mailto link'),
-            'none'       => I18N::translate('No contact'),
-        ];
+        return app(MessageService::class)->contactMethods();
     }
 
     /**

@@ -22,10 +22,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Factory;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -42,16 +42,21 @@ class AccountEdit implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
+    /** @var MessageService */
+    private $message_service;
+
     /** @var ModuleService */
     private $module_service;
 
     /**
      * AccountEdit constructor.
      *
-     * @param ModuleService $module_service
+     * @param MessageService $message_service
+     * @param ModuleService  $module_service
      */
-    public function __construct(ModuleService $module_service)
+    public function __construct(MessageService $message_service, ModuleService $module_service)
     {
+        $this->message_service = $message_service;
         $this->module_service = $module_service;
     }
 
@@ -88,7 +93,7 @@ class AccountEdit implements RequestHandlerInterface
         $title              = I18N::translate('My account');
 
         return $this->viewResponse('edit-account-page', [
-            'contact_methods'      => FunctionsEdit::optionsContactMethods(),
+            'contact_methods'      => $this->message_service->contactMethods(),
             'default_individual'   => $default_individual,
             'languages'            => $languages->all(),
             'my_individual_record' => $my_individual_record,
