@@ -40,6 +40,7 @@ use stdClass;
 use function assert;
 use function e;
 use function route;
+use function view;
 
 /**
  * Class UserMessagesModule
@@ -182,11 +183,16 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             $content .= '<th class="list_label">' . I18N::translate('Email address') . '</th>';
             $content .= '</tr>';
             foreach ($messages as $message) {
-                $content .= '<tr>';
-                $content .= '<td class="list_value_wrap center"><input type="checkbox" name="message_id[]" value="' . $message->message_id . '" id="cb_message' . $message->message_id . '"></td>';
-                $content .= '<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message' . $message->message_id . '\');"><i id="message' . $message->message_id . '_img" class="icon-plus"></i> <b dir="auto">' . e($message->subject) . '</b></a></td>';
-                $content .= '<td class="list_value_wrap">' . view('components/datetime', ['timestamp' => $message->created]) . '</td>';
-                $content .= '<td class="list_value_wrap">';
+                $content .= '<tr>' .
+                    '<td class="list_value_wrap center"><input type="checkbox" name="message_id[]" value="' . $message->message_id . '" id="cb_message' . $message->message_id . '"></td>' .
+                    '<td class="list_value_wrap">' .
+                    '<a href="#message' . $message->message_id . '" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="message' . $message->message_id . '">' .
+                    view('icons/expand') .
+                    view('icons/collapse') .
+                    '<b dir="auto">' . e($message->subject) . '</b>' .
+                    '</a></td>' .
+                    '<td class="list_value_wrap">' . view('components/datetime', ['timestamp' => $message->created]) . '</td>' .
+                    '<td class="list_value_wrap">';
 
                 $user = $this->user_service->findByIdentifier($message->sender);
 
@@ -198,7 +204,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 
                 $content .= '</td>';
                 $content .= '</tr>';
-                $content .= '<tr><td class="list_value_wrap" colspan="4"><div id="message' . $message->message_id . '" style="display:none;">';
+                $content .= '<tr><td class="list_value_wrap" colspan="4"><div id="message' . $message->message_id . '" class="collapse">';
                 $content .= '<div dir="auto" style="white-space: pre-wrap;">' . Filter::expandUrls($message->body, $tree) . '</div><br>';
 
                 /* I18N: When replying to an email, the subject becomes “RE: <subject>” */
