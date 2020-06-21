@@ -792,7 +792,7 @@ class GedcomTag
                 return I18N::translate('Longitude');
             case 'MAP':
                 /* I18N: gedcom tag MAP */
-                return I18N::translate('Location');
+                return I18N::translate('Coordinates');
             case 'MARB':
                 /* I18N: gedcom tag MARB */
                 return I18N::translate('Marriage banns');
