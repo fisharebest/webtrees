@@ -442,10 +442,6 @@ a:hover {
     padding: 1px;
 }
 
-.source_citations {
-    display: none;
-}
-
 /* ==== FAQ table styles ===== */
 table.faq {
     background-color: #ddd;

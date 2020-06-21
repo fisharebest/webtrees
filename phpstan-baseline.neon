@@ -91,11 +91,6 @@ parameters:
 			path: app/Functions/FunctionsImport.php
 
 		-
-			message: "#^Cannot call method getNote\\(\\) on Fisharebest\\\\Webtrees\\\\Note\\|null\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
 			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\|false given\\.$#"
 			count: 1
 			path: app/Functions/FunctionsPrint.php

@@ -90,42 +90,51 @@ class FunctionsPrint
     {
         $text .= Functions::getCont($nlevel, $nrec);
 
-        // Check if shared note (we have already checked that it exists)
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
-            $note  = Factory::note()->make($match[1], $tree);
-            $label = 'SHARED_NOTE';
-            $html  = Filter::formatText($note->getNote(), $tree);
-        } else {
-            $note  = null;
-            $label = 'NOTE';
-            $html  = Filter::formatText($text, $tree);
-        }
+            // Shared note.
+            $note = Factory::note()->make($match[1], $tree);
+            // It must exist.
+            assert($note instanceof Note);
 
-        if (strpos($text, "\n") === false) {
-            // A one-line note? strip the block-level tags, so it displays inline
-            return GedcomTag::getLabelValue($label, strip_tags($html, '<a><strong><em>'));
-        }
-
-        if ($tree->getPreference('EXPAND_NOTES')) {
-            // A multi-line note, and we're expanding notes by default
-            return GedcomTag::getLabelValue($label, $html);
-        }
-
-        // A multi-line note, with an expand/collapse option
-        $element_id = Uuid::uuid4()->toString();
-        // NOTE: class "note-details" is (currently) used only by some third-party themes
-        if ($note) {
+            $label      = I18N::translate('Shared note');
+            $html       = Filter::formatText($note->getNote(), $tree);
             $first_line = '<a href="' . e($note->url()) . '">' . $note->fullName() . '</a>';
         } else {
-            [$text] = explode("\n", strip_tags($html));
-            $first_line = Str::limit($text, 100, I18N::translate('…'));
+            // Inline note.
+            $label = I18N::translate('Note');
+            $html  = Filter::formatText($text, $tree);
+
+            // Only one line?  Remove block-level attributes and skip expand/collapse.
+            if (strpos($text, "\n") === false) {
+                return
+                    '<div class="fact_NOTE">' .
+                    I18N::translate(
+                        '<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>',
+                        $label,
+                        strip_tags($html, '<a><strong><em>')
+                    ) .
+                    '</div>';
+            }
+
+            [$text] = explode("\n", strip_tags($text));
+            $first_line = Str::limit($text, 50, I18N::translate('…'));
         }
 
+        $id       = 'collapse-' . Uuid::uuid4()->toString();
+        $expanded = (bool) $tree->getPreference('EXPAND_NOTES');
+
         return
-            '<div class="fact_NOTE"><span class="label">' .
-            '<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . GedcomTag::getLabel($label) . ':</span> ' . '<span id="' . $element_id . '-alt">' . $first_line . '</span>' .
+            '<div class="fact_NOTE">' .
+            '<a href="#' . e($id) . '" role="button" data-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
+            view('icons/expand') .
+            view('icons/collapse') .
+            '</a> ' .
+            '<span class="label">' . $label . ':</span> ' .
+            $first_line .
             '</div>' .
-            '<div class="note-details" id="' . $element_id . '" style="display:none">' . $html . '</div>';
+            '<div id="' . e($id) . '" class="collapse ' . ($expanded ? 'show' : '') . '">' .
+            $html .
+            '</div>';
     }
 
     /**

@@ -711,10 +711,6 @@ a:hover .name1, a:hover .name2 {
     padding: 1px;
 }
 
-.source_citations {
-    display: none;
-}
-
 .selected-option {
     background-color: #edf7fd;
 }

@@ -598,26 +598,21 @@ class FunctionsPrintFacts
                     if (!$spos2) {
                         $spos2 = strlen($factrec);
                     }
-                    $srec      = substr($factrec, $spos1, $spos2 - $spos1);
-                    $lt        = preg_match_all("/$nlevel \w+/", $srec, $matches);
-                    $data      .= '<div class="fact_SOUR">';
-                    $elementID = Uuid::uuid4()->toString();
-                    if ($tree->getPreference('EXPAND_SOURCES')) {
-                        $plusminus = 'icon-minus';
-                    } else {
-                        $plusminus = 'icon-plus';
-                    }
+                    $srec     = substr($factrec, $spos1, $spos2 - $spos1);
+                    $lt       = preg_match_all("/$nlevel \w+/", $srec, $matches);
+                    $data     .= '<div class="fact_SOUR">';
+                    $id       = 'collapse-' . Uuid::uuid4()->toString();
+                    $expanded = (bool) $tree->getPreference('EXPAND_SOURCES');
                     if ($lt > 0) {
-                        $data .= '<a href="#" onclick="return expand_layer(\'' . $elementID . '\');"><i id="' . $elementID . '_img" class="' . $plusminus . '"></i></a> ';
+                        $data .= '<a href="#' . e($id) . '" role="button" data-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">';
+                        $data .= view('icons/expand');
+                        $data .= view('icons/collapse');
+                        $data .= '</a> ';
                     }
                     $data .= GedcomTag::getLabelValue('SOUR', '<a href="' . e($source->url()) . '">' . $source->fullName() . '</a>', null, 'span');
                     $data .= '</div>';
 
-                    $data .= "<div id=\"$elementID\"";
-                    if ($tree->getPreference('EXPAND_SOURCES')) {
-                        $data .= ' style="display:block"';
-                    }
-                    $data .= ' class="source_citations">';
+                    $data .= '<div id="' . e($id) . '" class="collapse ' . ($expanded ? 'show' : '') . '">';
                     $data .= self::printSourceStructure($tree, self::getSourceStructure($srec));
                     $data .= '<div class="indent">';
                     ob_start();
