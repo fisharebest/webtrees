@@ -285,7 +285,7 @@ class FunctionsEdit
      */
     public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = ''): string
     {
-        $localization_service = new LocalizationService();
+        $localization_service = app(LocalizationService::class);
 
         $request = app(ServerRequestInterface::class);
         $xref    = $request->getAttribute('xref', '');
