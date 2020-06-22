@@ -17,7 +17,6 @@ use Fisharebest\Webtrees\I18N;
     name="<?= e($name) ?>"
     id="<?= e($id ?? $name) ?>"
 >
-    <option>IT WORKS</option>
     <?php foreach ($options as $n) : ?>
         <option value="<?= (int) $n ?>" <?= (int) $n === (int) $selected ?  'selected' : '' ?>>
             <?= I18N::number($n) ?>
