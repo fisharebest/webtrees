@@ -71,6 +71,6 @@ class SurnameTraditionTest extends TestCase
     public function testAllDescriptions(): void
     {
         $descriptions = SurnameTradition::allDescriptions();
-        $this->assertCount(9, $descriptions);
+        $this->assertCount(10, $descriptions);
     }
 }

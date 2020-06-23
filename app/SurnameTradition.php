@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition;
+use Fisharebest\Webtrees\SurnameTradition\ArabicSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition;
@@ -61,6 +62,8 @@ class SurnameTradition
                 return new LithuanianSurnameTradition();
             case 'icelandic':
                 return new IcelandicSurnameTradition();
+            case 'arabic':
+                return new ArabicSurnameTradition();
             default:
                 return new DefaultSurnameTradition();
         }
@@ -111,6 +114,13 @@ class SurnameTradition
                 I18N::translate('Wives take their husband’s surname.') . ' ' .
                 /* I18N: In the Lithuanian surname tradition, ... */
                 I18N::translate('Surnames are inflected to indicate an individual’s gender and marital status.'),
+            'arabic'       => I18N::translateContext('Surname tradition', 'Arabic') . ' — ' .
+                /* I18N: In the Arabic surname tradition, ... */
+                I18N::translate('Children take their father’s first name, their grandfathers first name and the family name.') . ' ' .
+                /* I18N: In the Arabic surname tradition, ... */
+                I18N::translate('The first surname prefix is ibn/bint depending on the individual’s gender.')  . ' ' .
+                /* I18N: In the Arabic surname tradition, ... */
+                I18N::translate('Wives keep their maiden names.'),
             'none'         => I18N::translateContext('Surname tradition', 'none'),
         ];
     }
