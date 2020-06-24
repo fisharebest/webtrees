@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-06-04 17:16+0000\nLast-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\nLanguage-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-06-24 09:32+0000\nLast-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\nLanguage-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -3498,7 +3498,7 @@ msgstr "Leta efter fel"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:216
 msgid "Check for pending changes…"
-msgstr "Kolla för väntande ändringar…"
+msgstr "Kolla efter väntande ändringar…"
 
 #: resources/views/setup/step-2-server-checks.phtml:39
 msgid "Checking server capacity"
