@@ -145,6 +145,7 @@ use Fisharebest\Webtrees\Module\LanguageSpanish;
 use Fisharebest\Webtrees\Module\LanguageSundanese;
 use Fisharebest\Webtrees\Module\LanguageSwahili;
 use Fisharebest\Webtrees\Module\LanguageSwedish;
+use Fisharebest\Webtrees\Module\LanguageTagalog;
 use Fisharebest\Webtrees\Module\LanguageTamil;
 use Fisharebest\Webtrees\Module\LanguageTatar;
 use Fisharebest\Webtrees\Module\LanguageThai;
@@ -395,6 +396,7 @@ class ModuleService
         'language-sw'             => LanguageSwahili::class,
         'language-ta'             => LanguageTamil::class,
         'language-th'             => LanguageThai::class,
+        'language-tl'             => LanguageTagalog::class,
         'language-tr'             => LanguageTurkish::class,
         'language-tt'             => LanguageTatar::class,
         'language-uk'             => LanguageUkranian::class,
