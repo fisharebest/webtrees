@@ -324,7 +324,7 @@ class LocationController extends AbstractAdminController
             $breadcrumbs[]   = I18N::translate('Edit');
             $title           .= ' — ' . I18N::translate('Edit');
             $latitude        = $location->latitude();
-            $longitude       = $location->latitude();
+            $longitude       = $location->longitude();
             $map_bounds      = $location->boundingRectangle();
             $marker_position = [$location->latitude(), $location->longitude()];
         }
