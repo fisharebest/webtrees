@@ -617,6 +617,7 @@ class SearchService
                                 }
                                 break;
                         }
+                        unset($fields[$field_name]);
                         break;
                     case 'SURN':
                         switch ($modifiers[$field_name]) {
