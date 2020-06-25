@@ -177,8 +177,8 @@ use Psr\Http\Message\ServerRequestInterface;
                         // Disable click on image triggering next image
                         // https://github.com/jackmoore/colorbox/issues/668
                         $(".cboxPhoto").unbind("click");
-
-                        wheelzoom(document.querySelectorAll(".cboxPhoto"));
+                        // Enable wheel/pinch zooming
+                        $('.cboxPhoto').wrap("<pinch-zoom></pinch-zoom>");
                     }
                 });
             });

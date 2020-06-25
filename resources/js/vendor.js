@@ -112,8 +112,7 @@ import 'hideshowpassword';
 import 'moment';
 
 import 'jquery-colorbox';
-
-import 'wheelzoom';
+import 'pinch-zoom-element';
 
 import 'leaflet';
 import 'leaflet.markercluster';
