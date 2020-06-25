@@ -33,7 +33,7 @@ import {
   faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
   faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faPaintBrush, faPause, faPencilAlt,
   faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchMinus, faSearchPlus,
-  faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faThList, faThumbtack,
+  faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faTags, faThList, faThumbtack,
   faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench,
   // For the BeautifyMarker library
   faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater
@@ -125,7 +125,7 @@ window.$ = window.jQuery = $;
 library.add(
   // For resources/views/icons/*
   faBell, faCopy, faEnvelope, faFile, faFileAlt, faFileImage, faFolder, faKeyboard,
-  faMap, faMinusSquare, faPlusSquare, faStar, faStickyNote, faTrashAlt, faUser
+  faMap, faMinusSquare, faPlusSquare, faStar, faStickyNote, faTags, faTrashAlt, faUser
 );
 library.add(
   // For resources/views/icons/*

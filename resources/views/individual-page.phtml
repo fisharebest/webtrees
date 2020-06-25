@@ -144,7 +144,8 @@ use Illuminate\Support\Collection;
 
                 <div id="sidebar-content-<?= $sidebar->name() ?>" class="collapse<?= $sidebar->name() === 'family_nav' ? ' show' : '' ?>" data-parent="#sidebar" aria-labelledby="sidebar-header-<?= $sidebar->name() ?>">
                     <div class="card-body">
-                        <?= $sidebar->getSidebarContent($individual) ?></div>
+                        <?= $sidebar->getSidebarContent($individual) ?>
+                    </div>
                 </div>
             </div>
         <?php endforeach ?>

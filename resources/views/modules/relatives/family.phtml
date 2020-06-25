@@ -1,17 +1,17 @@
 <?php
 
 use Fisharebest\Webtrees\Date;
-
-?>
-<?php use Fisharebest\Webtrees\Functions\Functions; ?>
-<?php use Fisharebest\Webtrees\Gedcom; ?>
-<?php use Fisharebest\Webtrees\GedcomTag; ?>
-<?php use Fisharebest\Webtrees\Http\RequestHandlers\AddChildToFamilyPage;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\RequestHandlers\AddChildToFamilyPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToFamilyPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenPage;
-use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\Individual; ?>
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+
+?>
 
 <table class="table table-sm wt-facts-table">
     <caption>
@@ -112,7 +112,7 @@ use Fisharebest\Webtrees\I18N; ?>
 
             <tr class="<?= $row_class ?>">
                 <th scope="row">
-                    <span class="sr-only"><?= GedcomTag::getLabel($fact->getTag()) ?></span>
+                    <span class="sr-only"><?= $fact->label() ?></span>
                 </th>
 
                 <td>
