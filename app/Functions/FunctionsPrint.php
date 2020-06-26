@@ -558,7 +558,7 @@ class FunctionsPrint
         $quickfacts          = array_intersect($quickfacts, $addfacts);
         $translated_addfacts = [];
         foreach ($addfacts as $addfact) {
-            $translated_addfacts[$addfact] = GedcomTag::getLabel($addfact);
+            $translated_addfacts[$addfact] = GedcomTag::getLabel($record::RECORD_TYPE . ':' . $addfact);
         }
         uasort($translated_addfacts, static function (string $x, string $y): int {
             return I18N::strcasecmp(I18N::translate($x), I18N::translate($y));
