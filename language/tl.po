@@ -3,16 +3,17 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2017-07-02 08:11+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2020-06-26 11:52+0000\n"
+"Last-Translator: Lyndsey Grace Nepomuceno <lyndsey_gpn@yahoo.com>\n"
+"Language-Team: Tagalog <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/tl/>\n"
 "Language: tl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1 && n != 2 && n != 3 && (n % 10 == 4 "
 "|| n % 10 == 6 || n % 10 == 9);\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -249,8 +250,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "araw"
+msgstr[1] "mga araw"
 
 #: app/I18N.php:802
 #, php-format
@@ -355,8 +356,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "buwan"
+msgstr[1] "mga buwan"
 
 #: app/I18N.php:798
 #, php-format
@@ -448,8 +449,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s taon"
+msgstr[1] "%s taon"
 
 #: app/I18N.php:794
 #, php-format
