@@ -145,9 +145,7 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
      */
     private function updateMediaLinks(Individual $individual, string $xref, bool $primary): void
     {
-        $facts = $individual->facts()->filter(static function (Fact $fact): bool {
-            return !$fact->isPendingDeletion();
-        });
+        $facts = $individual->facts([], false, null, true);
 
         $facts1 = new Collection();
         $facts2 = new Collection();

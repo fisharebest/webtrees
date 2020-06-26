@@ -591,16 +591,6 @@ parameters:
 			path: app/Http/Controllers/PlaceHierarchyController.php
 
 		-
-			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string, string\\|false given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/SetupWizard.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function substr expects string, string\\|false given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/SetupWizard.php
-
-		-
 			message: "#^Parameter \\#1 \\$path of method Psr\\\\Http\\\\Message\\\\UriInterface\\:\\:withPath\\(\\) expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/Middleware/BaseUrl.php
@@ -789,6 +779,16 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\Select2Place\\:\\:search\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<array\\<string, string\\>\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Place\\>\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/Select2Place.php
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string, string\\|false given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SetupWizard.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function substr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SetupWizard.php
 
 		-
 			message: "#^Cannot call method local\\(\\) on Fisharebest\\\\Webtrees\\\\Carbon\\|null\\.$#"
@@ -1098,7 +1098,7 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-middleware.disable/module.php
+			path: modules_v4/example.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1108,7 +1108,7 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example.disable/module.php
+			path: modules_v4/example-footer.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1118,7 +1118,7 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-footer.disable/module.php
+			path: modules_v4/example-middleware.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1134,6 +1134,11 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixMissingDeaths\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
 			count: 1
 			path: app/Module/FixMissingDeaths.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameTags\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
+			count: 1
+			path: app/Module/FixNameTags.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPrimaryTag\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"

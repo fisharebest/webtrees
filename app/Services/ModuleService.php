@@ -64,6 +64,7 @@ use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\FamilyTreeNewsModule;
 use Fisharebest\Webtrees\Module\FamilyTreeStatisticsModule;
 use Fisharebest\Webtrees\Module\FanChartModule;
+use Fisharebest\Webtrees\Module\FixNameTags;
 use Fisharebest\Webtrees\Module\FrenchHistory;
 use Fisharebest\Webtrees\Module\FixCemeteryTag;
 use Fisharebest\Webtrees\Module\FixDuplicateLinks;
@@ -321,6 +322,7 @@ class ModuleService
         'fix-ceme-tag'            => FixCemeteryTag::class,
         'fix-duplicate-links'     => FixDuplicateLinks::class,
         'fix-name-slashes-spaces' => FixNameSlashesAndSpaces::class,
+        'fix-name-tags'           => FixNameTags::class,
         'fix-place-names'         => FixPlaceNames::class,
         'fix-prim-tag'            => FixPrimaryTag::class,
         'fix-search-and-replace'  => FixSearchAndReplace::class,
