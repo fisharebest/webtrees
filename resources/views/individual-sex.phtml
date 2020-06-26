@@ -1,0 +1,48 @@
+<?php
+
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditFactPage;
+use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var Fact $fact
+ */
+
+$container_class = '';
+if ($fact->isPendingDeletion()) {
+    $container_class = 'wt-old';
+} elseif ($fact->isPendingAddition()) {
+    $container_class = 'wt-new';
+}
+
+?>
+
+<div class="card <?= $container_class ?>">
+    <div class="card-header" role="tab" id="name-header-gender">
+        <div class="card-title mb-0">
+            <span class="label"><?= I18N::translate('Gender') ?></span>
+            <?php
+            switch ($fact->value()) {
+                case 'M':
+                    echo I18N::translate('Male');
+                    break;
+                case 'F':
+                    echo I18N::translate('Female');
+                    break;
+                default:
+                    echo I18N::translateContext('unknown gender', 'Unknown');
+                    break;
+            }
+            ?>
+
+            <?php if ($fact->canEdit()) : ?>
+                <a class="btn btn-link"
+                   href="<?= e(route(EditFactPage::class, ['xref' => $fact->record()->xref(), 'fact_id' => $fact->id(), 'tree' => $fact->record()->tree()->name()])) ?>"
+                   title="<?= I18N::translate('Edit the gender') ?>">
+                    <?= view('icons/edit') ?>
+                    <span class="sr-only"><?= I18N::translate('Edit the gender') ?></span>
+                </a>
+            <?php endif ?>
+        </div>
+    </div>
+</div>

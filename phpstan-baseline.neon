@@ -691,11 +691,6 @@ parameters:
 			path: app/Http/RequestHandlers/ExportGedcomClient.php
 
 		-
-			message: "#^Parameter \\#1 \\$type of static method Fisharebest\\\\Webtrees\\\\GedcomCode\\\\GedcomCodeName\\:\\:getValue\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/IndividualPage.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\IndividualPage\\:\\:getSidebars\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleSidebarInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/IndividualPage.php
