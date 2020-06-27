@@ -1,11 +1,12 @@
 <?php
 
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\View;
 
 ?>
-<?php use Fisharebest\Webtrees\Functions\FunctionsPrintFacts; ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-<?php use Fisharebest\Webtrees\View; ?>
 
 <div class="wt-tab-facts py-4">
     <table class="table wt-facts-table">
@@ -40,7 +41,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
             <?php if ($individual->canEdit()) : ?>
                 <?= view('edit/paste-fact-row', ['record' => $individual, 'facts' => $clipboard_facts]) ?>
 
-                <?php FunctionsPrint::printAddNewFact($individual, $facts, 'INDI') ?>
+                <?php FunctionsPrint::printAddNewFact($individual, $facts, Individual::RECORD_TYPE) ?>
             <?php endif ?>
         </tbody>
     </table>

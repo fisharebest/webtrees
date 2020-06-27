@@ -247,7 +247,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
             'user_id'   => null,
             'xref'      => $record->xref(),
         ], [
-            'favorite_type' => $record::RECORD_TYPE,
+            'favorite_type' => $record->tag(),
             'note'          => $note,
         ]);
     }

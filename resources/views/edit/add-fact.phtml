@@ -17,12 +17,12 @@ use Ramsey\Uuid\Uuid;
 
     <?php FunctionsEdit::createAddForm($tree, $fact) ?>
 
-    <?php if ($record::RECORD_TYPE === 'SOUR' && $fact === 'DATA') : ?>
+    <?php if ($record->tag() === 'SOUR' && $fact === 'DATA') : ?>
         <?= view('cards/add-note', ['level' => 2, 'tree' => $tree]) ?>
         <?= view('cards/add-shared-note', ['level' => 2, 'tree' => $tree]) ?>
     <?php endif ?>
 
-    <?php if (($record::RECORD_TYPE === 'INDI' || $record::RECORD_TYPE === 'FAM') && $fact !== 'OBJE' && $fact !== 'NOTE' && $fact !== 'SHARED_NOTE' && $fact !== 'REPO' && $fact !== 'SOUR' && $fact !== 'SUBM' && $fact !== 'ASSO' && $fact !== 'ALIA' && $fact !== 'SEX') : ?>
+    <?php if (($record->tag() === 'INDI' || $record->tag() === 'FAM') && $fact !== 'OBJE' && $fact !== 'NOTE' && $fact !== 'SHARED_NOTE' && $fact !== 'REPO' && $fact !== 'SOUR' && $fact !== 'SUBM' && $fact !== 'ASSO' && $fact !== 'ALIA' && $fact !== 'SEX') : ?>
         <?= view('cards/add-source-citation', [
             'level'          => 2,
             'full_citations' => $tree->getPreference('FULL_SOURCES'),

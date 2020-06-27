@@ -159,7 +159,7 @@ use Illuminate\Support\Collection;
                 <?php if ($media->canEdit()) : ?>
                     <?= view('edit/paste-fact-row', ['record' => $media, 'facts' => $clipboard_facts]) ?>
 
-                    <?php FunctionsPrint::printAddNewFact($media, $facts, 'OBJE') ?>
+                    <?php FunctionsPrint::printAddNewFact($media, $facts, Media::RECORD_TYPE) ?>
                     <tr>
                         <th>
                             <?= I18N::translate('Source') ?>

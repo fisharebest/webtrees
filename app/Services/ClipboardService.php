@@ -40,7 +40,7 @@ class ClipboardService
     public function copyFact(Fact $fact): void
     {
         $clipboard   = Session::get('clipboard', []);
-        $record_type = $fact->record()::RECORD_TYPE;
+        $record_type = $fact->record()->tag();
         $fact_id     = $fact->id();
 
         // If we are copying the same fact twice, make sure the new one is at the end.
@@ -69,7 +69,7 @@ class ClipboardService
     {
         $clipboard = Session::get('clipboard');
 
-        $record_type = $record::RECORD_TYPE;
+        $record_type = $record->tag();
 
         if (isset($clipboard[$record_type][$fact_id])) {
             $record->createFact($clipboard[$record_type][$fact_id]['factrec'], true);
@@ -91,7 +91,7 @@ class ClipboardService
     public function pastableFacts(GedcomRecord $record, Collection $exclude_types): Collection
     {
         // The facts are stored in the session.
-        return (new Collection(Session::get('clipboard', [])[$record::RECORD_TYPE] ?? []))
+        return (new Collection(Session::get('clipboard', [])[$record->tag()] ?? []))
             // Put the most recently copied fact at the top of the list.
             ->reverse()
             // Create facts for the record.

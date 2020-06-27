@@ -340,7 +340,7 @@ class FunctionsPrintFacts
 
         $addr = $fact->attribute('ADDR');
         if ($addr !== '') {
-            echo GedcomTag::getLabelValue($record::RECORD_TYPE . ':' . $fact->getTag() . ':ADDR', $addr);
+            echo GedcomTag::getLabelValue($record->tag() . ':' . $fact->getTag() . ':ADDR', $addr);
         }
 
         // Print the associates of this fact/event

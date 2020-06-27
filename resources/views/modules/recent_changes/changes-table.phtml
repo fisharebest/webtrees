@@ -53,26 +53,26 @@ use Illuminate\Support\Collection;
         <tbody>
             <?php foreach ($rows as $row) : ?>
                 <tr>
-                    <td data-sort="<?= $row->record::RECORD_TYPE ?>" class="text-centre wt-side-block-optional">
-                        <?php if ($row->record::RECORD_TYPE === Individual::RECORD_TYPE) : ?>
+                    <td data-sort="<?= $row->record->tag() ?>" class="text-centre wt-side-block-optional">
+                        <?php if ($row->record->tag() === Individual::RECORD_TYPE) : ?>
                             <?= view('icons/individual') ?>
                             <span class="sr-only"><?= I18N::translate('Individual') ?></span>
-                        <?php elseif ($row->record::RECORD_TYPE === Family::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record->tag() === Family::RECORD_TYPE) : ?>
                             <?= view('icons/family') ?>
                             <span class="sr-only"><?= I18N::translate('Family') ?></span>
-                        <?php elseif ($row->record::RECORD_TYPE === Media::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record->tag() === Media::RECORD_TYPE) : ?>
                             <?= view('icons/media') ?>
                             <span class="sr-only"><?= I18N::translate('Media') ?></span>
-                        <?php elseif ($row->record::RECORD_TYPE === Note::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record->tag() === Note::RECORD_TYPE) : ?>
                             <?= view('icons/note') ?>
                             <span class="sr-only"><?= I18N::translate('Note') ?></span>
-                        <?php elseif ($row->record::RECORD_TYPE === Source::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record->tag() === Source::RECORD_TYPE) : ?>
                             <?= view('icons/source') ?>
                             <span class="sr-only"><?= I18N::translate('Source') ?></span>
-                        <?php elseif ($row->record::RECORD_TYPE === Submitter::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record->tag() === Submitter::RECORD_TYPE) : ?>
                             <?= view('icons/submitter') ?>
                             <span class="sr-only"><?= I18N::translate('Submitter') ?></span>
-                        <?php elseif ($row->record::RECORD_TYPE === Repository::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record->tag() === Repository::RECORD_TYPE) : ?>
                             <?= view('icons/repository') ?>
                             <span class="sr-only"><?= I18N::translate('Repository') ?></span>
                         <?php endif ?>

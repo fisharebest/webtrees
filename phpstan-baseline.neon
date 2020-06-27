@@ -61,11 +61,6 @@ parameters:
 			path: app/Functions/Functions.php
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between 'UNKNOWN' and 'SOUR' will always evaluate to false\\.$#"
-			count: 1
-			path: app/Functions/FunctionsEdit.php
-
-		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
 			count: 1
 			path: app/Functions/FunctionsExport.php
@@ -701,24 +696,9 @@ parameters:
 			path: app/Http/RequestHandlers/IndividualPage.php
 
 		-
-			message: "#^Strict comparison using \\!\\=\\= between 'UNKNOWN' and 'UNKNOWN' will always evaluate to false\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MergeFactsAction.php
-
-		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateRecord\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MergeFactsAction.php
-
-		-
-			message: "#^Strict comparison using \\!\\=\\= between 'UNKNOWN' and 'UNKNOWN' will always evaluate to false\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MergeFactsPage.php
-
-		-
-			message: "#^Strict comparison using \\!\\=\\= between 'UNKNOWN' and 'UNKNOWN' will always evaluate to false\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MergeRecordsAction.php
 
 		-
 			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\) given\\.$#"
@@ -892,11 +872,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#2 \\$resource of method League\\\\Flysystem\\\\Filesystem\\:\\:writeStream\\(\\) expects resource, resource\\|false given\\.$#"
-			count: 1
-			path: app/Module/ClippingsCartModule.php
-
-		-
-			message: "#^Ternary operator condition is always false\\.$#"
 			count: 1
 			path: app/Module/ClippingsCartModule.php
 
@@ -1093,12 +1068,17 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
+			path: modules_v4/example-report.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
 			path: modules_v4/example.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-theme.disable/module.php
+			path: modules_v4/example-middleware.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1108,12 +1088,7 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-report.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-middleware.disable/module.php
+			path: modules_v4/example-theme.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"

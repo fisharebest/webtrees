@@ -717,7 +717,7 @@ class FunctionsEdit
 
         self::$tags = [];
 
-        $level0type = $record::RECORD_TYPE;
+        $level0type = $record->tag();
         $level1type = $fact->getTag();
 
         // List of tags we would expect at the next level
@@ -736,12 +736,12 @@ class FunctionsEdit
             ],
         ];
 
-        if ($record::RECORD_TYPE !== 'SOUR') {
+        if ($record->tag() !== 'SOUR') {
             //source citations within other records, i.e. n SOUR / +1 DATA / +2 TEXT
             $expected_subtags['DATA'][] = 'TEXT';
         } //else: source records themselves, i.e. 0 SOUR / 1 DATA don't get a 2 TEXT!
 
-        if ($record::RECORD_TYPE === 'SOUR') {
+        if ($record->tag() === 'SOUR') {
             //source records themselves, i.e. 0 SOUR / 1 DATA / 2 EVEN get a 3 DATE and a 3 PLAC
             $expected_subtags['EVEN'][] = 'DATE';
             $expected_subtags['EVEN'][] = 'PLAC';
@@ -750,7 +750,7 @@ class FunctionsEdit
         if ($record->tree()->getPreference('FULL_SOURCES')) {
             $expected_subtags['SOUR'][] = 'QUAY';
 
-            if ($record::RECORD_TYPE !== 'SOUR') {
+            if ($record->tag() !== 'SOUR') {
                 //source citations within other records, i.e. n SOUR / +1 DATA / +2 DATE
                 $expected_subtags['DATA'][] = 'DATE';
             } //else: source records themselves, i.e. 0 SOUR / 1 DATA don't get a 2 DATE!
@@ -844,7 +844,7 @@ class FunctionsEdit
         if ($level1type !== '_PRIM') {
             //0 SOUR / 1 DATA doesn't get a 2 DATE!
             //0 SOUR / 1 DATA doesn't get a 2 EVEN here either, we rather handle this via cards/add-sour-data-even
-            if ($record::RECORD_TYPE !== 'SOUR') {
+            if ($record->tag() !== 'SOUR') {
                 self::insertMissingSubtags($tree, $level1type, $add_date);
             }
         }

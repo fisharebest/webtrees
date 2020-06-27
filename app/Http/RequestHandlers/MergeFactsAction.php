@@ -70,7 +70,7 @@ class MergeFactsAction implements RequestHandlerInterface
             $record1 === null ||
             $record2 === null ||
             $record1 === $record2 ||
-            $record1::RECORD_TYPE !== $record2::RECORD_TYPE ||
+            $record1->tag() !== $record2->tag() ||
             $record1->isPendingDeletion() ||
             $record2->isPendingDeletion()
         ) {
@@ -136,7 +136,7 @@ class MergeFactsAction implements RequestHandlerInterface
             ->where('page_parameter', '=', $xref2)
             ->delete();
 
-        $gedcom = '0 @' . $record1->xref() . '@ ' . $record1::RECORD_TYPE;
+        $gedcom = '0 @' . $record1->xref() . '@ ' . $record1->tag();
 
         foreach ($record1->facts() as $fact) {
             if (in_array($fact->id(), $keep1, true)) {

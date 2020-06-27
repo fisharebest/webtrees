@@ -6,6 +6,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Repository;
 
 ?>
 
@@ -58,7 +59,7 @@ use Fisharebest\Webtrees\I18N;
                 <?php if ($repository->canEdit()) : ?>
                     <?= view('edit/paste-fact-row', ['record' => $repository, 'facts' => $clipboard_facts]) ?>
 
-                    <?php FunctionsPrint::printAddNewFact($repository, $facts, 'REPO') ?>
+                    <?php FunctionsPrint::printAddNewFact($repository, $facts, Repository::RECORD_TYPE) ?>
                 <?php endif ?>
             </table>
         </div>

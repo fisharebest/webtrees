@@ -59,7 +59,7 @@ class EditRawRecordAction implements RequestHandlerInterface
         $fact_ids = $params['fact_id'] ?? [];
 
         // Generate the level-0 line for the record.
-        switch ($record::RECORD_TYPE) {
+        switch ($record->tag()) {
             case GedcomRecord::RECORD_TYPE:
                 // Unknown type? - copy the existing data.
                 $gedcom = explode("\n", $record->gedcom(), 2)[0];
@@ -68,7 +68,7 @@ class EditRawRecordAction implements RequestHandlerInterface
                 $gedcom = '0 HEAD';
                 break;
             default:
-                $gedcom = '0 @' . $xref . '@ ' . $record::RECORD_TYPE;
+                $gedcom = '0 @' . $xref . '@ ' . $record->tag();
         }
 
         // Retain any private facts

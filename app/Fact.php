@@ -415,7 +415,7 @@ class Fact
      */
     public function tag(): string
     {
-        return $this->record::RECORD_TYPE . ':' . $this->tag;
+        return $this->record->tag() . ':' . $this->tag;
     }
 
     /**
@@ -477,7 +477,7 @@ class Fact
             }
         }
 
-        return GedcomTag::getLabel($this->record::RECORD_TYPE . ':' . $this->tag);
+        return GedcomTag::getLabel($this->record->tag() . ':' . $this->tag);
     }
 
     /**

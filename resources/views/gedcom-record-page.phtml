@@ -114,7 +114,7 @@ use Illuminate\Support\Collection;
                 <?php endforeach ?>
 
                 <?php if ($record->canEdit()) : ?>
-                    <?php FunctionsPrint::printAddNewFact($record, $facts, $record::RECORD_TYPE) ?>
+                    <?php FunctionsPrint::printAddNewFact($record, $facts, $record->tag()) ?>
                 <?php endif ?>
             </table>
         </div>

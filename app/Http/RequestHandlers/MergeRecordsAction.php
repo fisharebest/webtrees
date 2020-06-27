@@ -57,7 +57,7 @@ class MergeRecordsAction implements RequestHandlerInterface
             $record1 === null ||
             $record2 === null ||
             $record1 === $record2 ||
-            $record1::RECORD_TYPE !== $record2::RECORD_TYPE ||
+            $record1->tag() !== $record2->tag() ||
             $record1->isPendingDeletion() ||
             $record2->isPendingDeletion()
         ) {

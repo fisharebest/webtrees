@@ -21,7 +21,7 @@ use Ramsey\Uuid\Uuid;
 
     <?php
     $level1type = $edit_fact->getTag();
-    switch ($record::RECORD_TYPE) {
+    switch ($record->tag()) {
         case 'SOUR':
             if ($level1type === 'DATA') {
                 // SOUR:DATA facts may take a NOTE (but the SOUR record may not).
