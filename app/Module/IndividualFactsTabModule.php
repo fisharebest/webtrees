@@ -128,7 +128,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         $exclude_facts = $sidebar_facts->merge($tab_facts)->flatten();
 
-
         // The individual’s own facts
         $indifacts = $individual->facts()
             ->filter(static function (Fact $fact) use ($exclude_facts): bool {
@@ -167,7 +166,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         return view('modules/personal_facts/tab', [
             'can_edit'             => $individual->canEdit(),
-            'clipboard_facts'      => $this->clipboard_service->pastableFacts($individual, $exclude_facts),
+            'clipboard_facts'      => $this->clipboard_service->pastableFacts($individual, new Collection()),
             'has_historical_facts' => $historical_facts !== [],
             'individual'           => $individual,
             'facts'                => $indifacts,
