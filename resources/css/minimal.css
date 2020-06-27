@@ -485,22 +485,8 @@ div.faq_body {
     clear: left;
 }
 
-#sex {
-    float: right;
-}
-
-#dates {
-    color: #666;
-    float: right;
-}
-
 .label {
     font-weight: bold;
-}
-
-#individual-names .wt-icon-edit,
-#individual-names .wt-icon-delete {
-    float: right;
 }
 
 #indi_note .fact_NOTE {

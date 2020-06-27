@@ -993,19 +993,6 @@ div.faq_body {
     clear: left;
 }
 
-#sex {
-    float: right;
-}
-
-#dates {
-    float: right;
-}
-
-#individual-names .wt-icon-edit,
-#individual-names .wt-icon-delete {
-    float: right;
-}
-
 #indi_note .fact_NOTE {
     float: left;
     margin: 0 5px 0 0;

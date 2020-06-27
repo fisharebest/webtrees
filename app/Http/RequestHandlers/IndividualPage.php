@@ -137,7 +137,7 @@ class IndividualPage implements RequestHandlerInterface
 
         $sex_records = new Collection();
         foreach ($individual->facts(['SEX']) as $n => $sex_fact) {
-            $sex_records->add(view('individual-sex', ['fact' => $sex_fact]));
+            $sex_records->add(view('individual-sex', ['fact' => $sex_fact, 'n' => $n]));
         }
 
         // If this individual is linked to a user account, show the link

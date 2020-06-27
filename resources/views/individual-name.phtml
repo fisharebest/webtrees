@@ -6,6 +6,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Http\RequestHandlers\CopyFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditName;
 use Fisharebest\Webtrees\I18N;
@@ -28,13 +29,7 @@ $dummy = Factory::individual()->new(
 $dummy->setPrimaryName(0); // Make sure we use the name from "1 NAME"
 
 $container_class = '';
-$content_class   = 'collapse';
-$aria            = 'false';
 
-if ($n === $individual->getPrimaryName()) {
-    $content_class = 'collapse show';
-    $aria          = 'true';
-}
 if ($fact->isPendingDeletion()) {
     $container_class = 'wt-old';
 } elseif ($fact->isPendingAddition()) {
@@ -44,90 +39,72 @@ if ($fact->isPendingDeletion()) {
 ?>
 <div class="card <?= $container_class ?>">
     <div class="card-header" role="tab" id="name-header-<?= $n ?>">
-        <a data-toggle="collapse" href="#name-content-<?= $n ?>" aria-expanded="<?= $aria ?>"
-           aria-controls="name-content-<?= $n ?>">
-            <!--
+        <a data-toggle="collapse" href="#name-content-<?= $n ?>" aria-expanded="false" aria-controls="name-content-<?= $n ?>">
             <?= view('icons/expand') ?>
             <?= view('icons/collapse') ?>
-            -->
             <span class="label"><?= I18N::translate('Name') ?></span>
             <?= $dummy->fullName() ?>
+            <?php if ($fact->attribute('TYPE') !== '') : ?>
+                —
+                <?= GedcomCodeName::getValue($fact->attribute('TYPE'), $fact->record()) ?>
+            <?php endif ?>
         </a>
-
-        <?php if ($fact->canEdit()) : ?>
-            <a class="btn btn-link" href="#"
-               data-confirm="<?= I18N::translate('Are you sure you want to delete this fact?') ?>"
-               data-post-url="<?= e(route(DeleteFact::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact_id' => $fact->id()])) ?>"
-               title="<?= I18N::translate('Delete this name') ?>">
-                <?= view('icons/delete') ?>
-                <span class="sr-only"><?= I18N::translate('Delete this name') ?></span>
-            </a>
-
-            <a class="btn btn-link"
-               href="<?= e(route(EditName::class, ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) ?>"
-               title="<?= I18N::translate('Edit the name') ?>">
-                <?= view('icons/edit') ?>
-                <span class="sr-only"><?= I18N::translate('Edit the name') ?></span>
-            </a>
-        <?php endif ?>
     </div>
 
-    <div id="name-content-<?= $n ?>" class="<?= $content_class ?>" data-parent="#individual-names"
-         aria-labelledby="name-header-<?= $n ?>">
-        <div class="card-body">
-            <dl class="row mb-0">
-                <dt class="col-md-4 col-lg-3"><?= I18N::translate('Name') ?></dt>
-                <dd class="col-md-8 col-lg-9"><?= $dummy->fullName() ?></dd>
+    <div id="name-content-<?= $n ?>" class="card-body collapse" data-parent="#individual-names" aria-labelledby="name-header-<?= $n ?>">
+        <dl class="row mb-0">
+            <dt class="col-md-4 col-lg-3"><?= I18N::translate('Name') ?></dt>
+            <dd class="col-md-8 col-lg-9"><?= e($fact->value()) ?></dd>
 
-                <?php preg_match_all('/\n2 (\w+) (.+)/', $fact->gedcom(), $matches, PREG_SET_ORDER) ?>
+            <?php preg_match_all('/\n2 (\w+) (.+)/', $fact->gedcom(), $matches, PREG_SET_ORDER) ?>
 
-                <?php foreach ($matches as $key => $match) : ?>
-                    <?php [, $tag, $value] = $match ?>
-                    <?php if ($tag !== 'SOUR' && $tag !== 'NOTE' && $tag !== 'SPFX') : ?>
-                        <dt class="col-md-4 col-lg-3">
-                            <?= GedcomTag::getLabel($tag) ?>
-                        </dt>
-                        <dd class="col-md-8 col-lg-9">
-                            <?php
-                            switch ($tag) {
-                                case 'TYPE':
-                                    echo GedcomCodeName::getValue(e($value), $individual);
-                                    break;
-                                case 'GIVN':
-                                    echo '<span dir="auto">' . preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', e($value)) . '</span>';
-                                    break;
-                                case 'SURN':
-                                    // The SURN field is not necessarily the surname.
-                                    // Where it is not a substring of the real surname, show it after the real surname.
-                                    $surname = $dummy->getAllNames()[0]['surname'];
-                                    $surns   = preg_replace('/, */', ' ', $value);
-                                    if (strpos($dummy->getAllNames()[0]['surname'], $surns) !== false) {
-                                        echo '<span dir="auto">' . e($surname) . '</span>';
-                                    } else {
-                                        echo I18N::translate('%1$s (%2$s)', '<span dir="auto">' . e($surname) . '</span>', '<span dir="auto">' . e($value) . '</span>');
-                                    }
-                                    break;
-                                default:
-                                    echo '<span dir="auto">' . e($value) . '</span>';
-                                    break;
-                            }
-                            ?>
-                        </dd>
-                    <?php endif ?>
-                <?php endforeach ?>
-            </dl>
+            <?php foreach ($matches as $key => $match) : ?>
+                <?php [, $tag, $value] = $match ?>
+                <?php if ($tag !== 'SOUR' && $tag !== 'NOTE') : ?>
+                    <dt class="col-md-4 col-lg-3">
+                        <?= GedcomTag::getLabel($tag) ?>
+                    </dt>
+                    <dd class="col-md-8 col-lg-9">
+                        <?php if ($tag === 'TYPE') : ?>
+                            <?= GedcomCodeName::getValue(e($value), $individual) ?>
+                        <?php else: ?>
+                            <span dir="auto"><?= e($value) ?></span>
+                        <?php endif ?>
+                    </dd>
+                <?php endif ?>
+            <?php endforeach ?>
+        </dl>
 
-            <?php if (strpos($fact->gedcom(), "\n2 SOUR") !== false) : ?>
-                <div id="indi_sour">
-                    <?= FunctionsPrintFacts::printFactSources($tree, $fact->gedcom(), 2) ?>
-                </div>
-            <?php endif ?>
+        <?php if (strpos($fact->gedcom(), "\n2 SOUR") !== false) : ?>
+            <?= FunctionsPrintFacts::printFactSources($tree, $fact->gedcom(), 2) ?>
+        <?php endif ?>
 
-            <?php if (strpos($fact->gedcom(), "\n2 NOTE") !== false) : ?>
-                <div id="indi_note">
-                    <?= FunctionsPrint::printFactNotes($tree, $fact->gedcom(), 2) ?>
-                </div>
-            <?php endif ?>
-        </div>
+        <?php if (strpos($fact->gedcom(), "\n2 NOTE") !== false) : ?>
+            <?= FunctionsPrint::printFactNotes($tree, $fact->gedcom(), 2) ?>
+        <?php endif ?>
+
+        <?php if ($fact->canEdit()) : ?>
+            <div class="d-flex">
+                <a class="btn btn-link ml-auto"
+                   href="<?= e(route(EditName::class, ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) ?>"
+                   title="<?= I18N::translate('Edit the name') ?>">
+                    <?= view('icons/edit') ?>
+                    <span class="sr-only"><?= I18N::translate('Edit the name') ?></span>
+                </a>
+
+                <a class="btn btn-link btn-sm" href="#" data-post-url="<?= e(route(CopyFact::class, ['tree' => $fact->record()->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" title="<?= I18N::translate('Copy') ?>">
+                    <?= view('icons/copy') ?>
+                    <span class="sr-only"><?= I18N::translate('Copy') ?></span>
+                </a>
+
+                <a class="btn btn-link" href="#"
+                   data-confirm="<?= I18N::translate('Are you sure you want to delete this fact?') ?>"
+                   data-post-url="<?= e(route(DeleteFact::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact_id' => $fact->id()])) ?>"
+                   title="<?= I18N::translate('Delete this name') ?>">
+                    <?= view('icons/delete') ?>
+                    <span class="sr-only"><?= I18N::translate('Delete this name') ?></span>
+                </a>
+            </div>
+        <?php endif ?>
     </div>
 </div>
