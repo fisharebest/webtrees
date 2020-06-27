@@ -1031,18 +1031,6 @@ div.faq_body {
     color: #fff;
 }
 
-/* ======== Indi tabs ======== */
-/* Facts & Events tab */
-.media-display-image {
-    float: left;
-}
-
-.media-display-title {
-    float: left;
-    font-style: italic;
-    margin: 10px;
-}
-
 /* Sidebar - Family navigator */
 .wt-family-navigator-dropdown-heading {
     font-weight: bold;

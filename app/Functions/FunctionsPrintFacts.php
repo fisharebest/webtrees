@@ -651,15 +651,12 @@ class FunctionsPrintFacts
             $media    = Factory::media()->make($media_id, $tree);
             if ($media) {
                 if ($media->canShow()) {
-                    if ($objectNum > 0) {
-                        echo '<br class="media-separator" style="clear:both;">';
-                    }
-                    echo '<div class="media-display"><div class="media-display-image">';
+                    echo '<div class="d-flex align-items-center"><div class="p-1">';
                     foreach ($media->mediaFiles() as $media_file) {
                         echo $media_file->displayImage(100, 100, 'contain', []);
                     }
                     echo '</div>';
-                    echo '<div class="media-display-title">';
+                    echo '<div>';
                     echo '<a href="', e($media->url()), '">', $media->fullName(), '</a>';
                     // NOTE: echo the notes of the media
                     echo '<p>';
@@ -670,26 +667,6 @@ class FunctionsPrintFacts
                         echo '<span class="label">', I18N::translate('Type'), ': </span> <span class="field">', $mediaType, '</span>';
                     }
                     //-- print spouse name for marriage events
-                    $ct = preg_match('/WT_SPOUSE: (.*)/', $factrec, $match);
-                    if ($ct > 0) {
-                        $spouse = Factory::individual()->make($match[1], $tree);
-                        if ($spouse) {
-                            echo '<a href="', e($spouse->url()), '">';
-                            echo $spouse->fullName();
-                            echo '</a>';
-                        }
-                        $ct = preg_match('/WT_FAMILY_ID: (.*)/', $factrec, $match);
-                        if ($ct > 0) {
-                            $famid  = trim($match[1]);
-                            $family = Factory::family()->make($famid, $tree);
-                            if ($family) {
-                                if ($spouse) {
-                                    echo ' - ';
-                                }
-                                echo '<a href="', e($family->url()), '">', I18N::translate('View this family'), '</a>';
-                            }
-                        }
-                    }
                     echo FunctionsPrint::printFactNotes($tree, $media->gedcom(), $nlevel);
                     echo self::printFactSources($tree, $media->gedcom(), $nlevel);
                     echo '</div>'; //close div "media-display-title"
