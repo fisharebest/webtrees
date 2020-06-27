@@ -130,15 +130,13 @@ class IndividualPage implements RequestHandlerInterface
             }
         }
 
-        $name_records = new Collection();
-        foreach ($individual->facts(['NAME']) as $n => $name_fact) {
-            $name_records->add(view('individual-name', ['fact' => $name_fact, 'n' => $n]));
-        }
+        $name_records = $individual->facts(['NAME'])->map(static function (Fact $fact): string {
+            return view('individual-name', ['fact' => $fact]);
+        });
 
-        $sex_records = new Collection();
-        foreach ($individual->facts(['SEX']) as $n => $sex_fact) {
-            $sex_records->add(view('individual-sex', ['fact' => $sex_fact, 'n' => $n]));
-        }
+        $sex_records = $individual->facts(['SEX'])->map(static function (Fact $fact): string {
+            return view('individual-sex', ['fact' => $fact]);
+        });
 
         // If this individual is linked to a user account, show the link
         $user_link = '';

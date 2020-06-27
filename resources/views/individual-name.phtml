@@ -13,7 +13,6 @@ use Fisharebest\Webtrees\I18N;
 
 /**
  * @var Fact $fact
- * @var int  $n
  */
 
 $individual = $fact->record();
@@ -38,8 +37,8 @@ if ($fact->isPendingDeletion()) {
 
 ?>
 <div class="card <?= $container_class ?>">
-    <div class="card-header" role="tab" id="name-header-<?= $n ?>">
-        <a data-toggle="collapse" href="#name-content-<?= $n ?>" aria-expanded="false" aria-controls="name-content-<?= $n ?>">
+    <div class="card-header" role="tab" id="name-header-<?= $fact->id() ?>">
+        <a data-toggle="collapse" href="#name-content-<?= $fact->id() ?>" aria-expanded="false" aria-controls="name-content-<?= $fact->id() ?>">
             <?= view('icons/expand') ?>
             <?= view('icons/collapse') ?>
             <span class="label"><?= I18N::translate('Name') ?></span>
@@ -51,13 +50,12 @@ if ($fact->isPendingDeletion()) {
         </a>
     </div>
 
-    <div id="name-content-<?= $n ?>" class="card-body collapse" data-parent="#individual-names" aria-labelledby="name-header-<?= $n ?>">
+    <div id="name-content-<?= $fact->id() ?>" class="card-body collapse" data-parent="#individual-names" aria-labelledby="name-header-<?= $fact->id() ?>">
         <dl class="row mb-0">
             <dt class="col-md-4 col-lg-3"><?= I18N::translate('Name') ?></dt>
             <dd class="col-md-8 col-lg-9"><?= e($fact->value()) ?></dd>
 
             <?php preg_match_all('/\n2 (\w+) (.+)/', $fact->gedcom(), $matches, PREG_SET_ORDER) ?>
-
             <?php foreach ($matches as $key => $match) : ?>
                 <?php [, $tag, $value] = $match ?>
                 <?php if ($tag !== 'SOUR' && $tag !== 'NOTE') : ?>
@@ -75,19 +73,12 @@ if ($fact->isPendingDeletion()) {
             <?php endforeach ?>
         </dl>
 
-        <?php if (strpos($fact->gedcom(), "\n2 SOUR") !== false) : ?>
-            <?= FunctionsPrintFacts::printFactSources($tree, $fact->gedcom(), 2) ?>
-        <?php endif ?>
-
-        <?php if (strpos($fact->gedcom(), "\n2 NOTE") !== false) : ?>
-            <?= FunctionsPrint::printFactNotes($tree, $fact->gedcom(), 2) ?>
-        <?php endif ?>
+        <?= FunctionsPrintFacts::printFactSources($tree, $fact->gedcom(), 2) ?>
+        <?= FunctionsPrint::printFactNotes($tree, $fact->gedcom(), 2) ?>
 
         <?php if ($fact->canEdit()) : ?>
             <div class="d-flex">
-                <a class="btn btn-link ml-auto"
-                   href="<?= e(route(EditName::class, ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) ?>"
-                   title="<?= I18N::translate('Edit the name') ?>">
+                <a class="btn btn-link ml-auto" href="<?= e(route(EditName::class, ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) ?>" title="<?= I18N::translate('Edit the name') ?>">
                     <?= view('icons/edit') ?>
                     <span class="sr-only"><?= I18N::translate('Edit the name') ?></span>
                 </a>
