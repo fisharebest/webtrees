@@ -503,17 +503,17 @@
     },
     {
         "name": "ezyang/htmlpurifier",
-        "version": "v4.12.0",
-        "version_normalized": "4.12.0.0",
+        "version": "v4.13.0",
+        "version_normalized": "4.13.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/ezyang/htmlpurifier.git",
-            "reference": "a617e55bc62a87eec73bd456d146d134ad716f03"
+            "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/a617e55bc62a87eec73bd456d146d134ad716f03",
-            "reference": "a617e55bc62a87eec73bd456d146d134ad716f03",
+            "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
+            "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
             "shasum": ""
         },
         "require": {
@@ -522,7 +522,7 @@
         "require-dev": {
             "simpletest/simpletest": "dev-master#72de02a7b80c6bb8864ef9bf66d41d2f58f826bd"
         },
-        "time": "2019-10-28T03:44:26+00:00",
+        "time": "2020-06-29T00:56:53+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -531,6 +531,9 @@
             },
             "files": [
                 "library/HTMLPurifier.composer.php"
+            ],
+            "exclude-from-classmap": [
+                "/library/HTMLPurifier/Language/"
             ]
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -1370,17 +1373,17 @@
     },
     {
         "name": "league/commonmark",
-        "version": "1.5.0",
-        "version_normalized": "1.5.0.0",
+        "version": "1.5.1",
+        "version_normalized": "1.5.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/commonmark.git",
-            "reference": "fc33ca12575e98e57cdce7d5f38b2ca5335714b3"
+            "reference": "6d74caf6abeed5fd85d6ec20da23d7269cd0b46f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/fc33ca12575e98e57cdce7d5f38b2ca5335714b3",
-            "reference": "fc33ca12575e98e57cdce7d5f38b2ca5335714b3",
+            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/6d74caf6abeed5fd85d6ec20da23d7269cd0b46f",
+            "reference": "6d74caf6abeed5fd85d6ec20da23d7269cd0b46f",
             "shasum": ""
         },
         "require": {
@@ -1403,7 +1406,7 @@
             "scrutinizer/ocular": "^1.5",
             "symfony/finder": "^4.2"
         },
-        "time": "2020-06-21T20:50:13+00:00",
+        "time": "2020-06-27T12:50:08+00:00",
         "bin": [
             "bin/commonmark"
         ],

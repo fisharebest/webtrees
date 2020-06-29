@@ -22,6 +22,9 @@ namespace Fisharebest\Webtrees\Services;
 use HTMLPurifier;
 use HTMLPurifier_AttrDef_Enum;
 use HTMLPurifier_Config;
+use HTMLPurifier_HTMLDefinition;
+
+use function assert;
 
 /**
  * Filter/sanitize HTML
@@ -48,6 +51,7 @@ class HtmlService
         $config->set('CSS.MaxImgLength', null);
 
         $def = $config->getHTMLDefinition(true);
+        assert($def instanceof HTMLPurifier_HTMLDefinition);
 
         // Allow link targets.
         $def->addAttribute('a', 'target', new HTMLPurifier_AttrDef_Enum(['_blank', '_self', '_target', '_top']));
