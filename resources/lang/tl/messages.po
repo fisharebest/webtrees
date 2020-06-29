@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-06-26 11:52+0000\nLast-Translator: Lyndsey Grace Nepomuceno <lyndsey_gpn@yahoo.com>\nLanguage-Team: Tagalog <https://translate.webtrees.net/projects/webtrees/webtrees/tl/>\nLanguage: tl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1 && n != 2 && n != 3 && (n % 10 == 4 || n % 10 == 6 || n % 10 == 9);\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-07-02 21:14+0000\nLast-Translator: Lyndsey Grace Nepomuceno <lyndsey_gpn@yahoo.com>\nLanguage-Team: Tagalog <https://translate.webtrees.net/projects/webtrees/webtrees/tl/>\nLanguage: tl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1 && n != 2 && n != 3 && (n % 10 == 4 || n % 10 == 6 || n % 10 == 9);\nX-Generator: Weblate 3.9.1\n"
 
 #: app/Age.php:98 app/Functions/FunctionsDate.php:66
 #: app/Functions/FunctionsPrint.php:250
@@ -44,7 +44,7 @@ msgstr[1] "mga araw"
 #: app/Age.php:177
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "edad %s"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:181
