@@ -75,10 +75,11 @@ class EditFactPage implements RequestHandlerInterface
 
         return $this->viewResponse('edit/edit-fact', [
             'can_edit_raw' => $can_edit_raw,
-            'edit_fact'    => $fact,
+            'fact'         => $fact,
             'record'       => $record,
             'title'        => $title,
             'tree'         => $tree,
+            'url'          => $request->getQueryParams()['url'] ?? null,
         ]);
     }
 }

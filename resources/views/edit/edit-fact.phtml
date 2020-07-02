@@ -2,12 +2,22 @@
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Config;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditFactAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage;
 use Fisharebest\Webtrees\I18N;
 use Ramsey\Uuid\Uuid;
+
+/**
+ * @var bool         $can_edit_raw
+ * @var Fact         $fact
+ * @var GedcomRecord $record
+ * @var string       $title
+ * @var string|null  $url
+ */
 
 ?>
 
@@ -15,12 +25,13 @@ use Ramsey\Uuid\Uuid;
 
 <form method="post" action="<?= e(route(EditFactAction::class, ['tree' => $tree->name(), 'xref' => $record->xref()])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
-    <input type="hidden" name="fact_id" value="<?= e($edit_fact->id()) ?>">
+    <input type="hidden" name="fact_id" value="<?= e($fact->id()) ?>">
+    <input type="hidden" name="url" value="<?= e($url ?? $fact->record()->url()) ?>">
 
-    <?php FunctionsEdit::createEditForm($edit_fact) ?>
+    <?php FunctionsEdit::createEditForm($fact) ?>
 
     <?php
-    $level1type = $edit_fact->getTag();
+    $level1type = $fact->getTag();
     switch ($record->tag()) {
         case 'SOUR':
             if ($level1type === 'DATA') {
@@ -122,7 +133,7 @@ use Ramsey\Uuid\Uuid;
                 I18N::translate('cancel') ?>
             </a>
             <?php if ($can_edit_raw) : ?>
-                <a class="btn btn-link" href="<?= e(route(EditRawFactPage::class, ['xref' => $record->xref(), 'fact_id' => $edit_fact->id(), 'tree' => $tree->name()])) ?>">
+                <a class="btn btn-link" href="<?= e(route(EditRawFactPage::class, ['xref' => $record->xref(), 'fact_id' => $fact->id(), 'tree' => $tree->name(), 'url' => $url ?? $fact->record()->url()])) ?>">
                     <?= I18N::translate('Edit the raw GEDCOM') ?>
                 </a>
             <?php endif; ?>

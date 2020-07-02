@@ -186,7 +186,7 @@ class FunctionsPrintFacts
 
         if ($id !== 'histo' && $id !== 'asso' && $fact->canEdit()) {
             echo '<div class="editfacts nowrap">';
-            echo view('edit/icon-fact-edit', ['fact' => $fact]);
+            echo view('edit/icon-fact-edit', ['fact' => $fact, 'url' => $record->url()]);
             echo view('edit/icon-fact-copy', ['fact' => $fact]);
             echo view('edit/icon-fact-delete', ['fact' => $fact]);
             echo '</div>';

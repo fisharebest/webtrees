@@ -160,6 +160,6 @@ class EditFactAction implements RequestHandlerInterface
             }
         }
 
-        return redirect($record->url());
+        return redirect($params['url'] ?? $record->url());
     }
 }
