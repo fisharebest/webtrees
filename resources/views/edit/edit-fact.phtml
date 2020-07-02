@@ -4,35 +4,33 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditFactAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
 use Ramsey\Uuid\Uuid;
 
 /**
- * @var bool         $can_edit_raw
- * @var Fact         $fact
- * @var GedcomRecord $record
- * @var string       $title
- * @var string|null  $url
+ * @var bool        $can_edit_raw
+ * @var Fact        $fact
+ * @var string      $title
+ * @var Tree        $tree
+ * @var string|null $url
  */
 
 ?>
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(EditFactAction::class, ['tree' => $tree->name(), 'xref' => $record->xref()])) ?>" class="wt-page-content">
+<form method="post" action="<?= e(route(EditFactAction::class, ['tree' => $tree->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
-    <input type="hidden" name="fact_id" value="<?= e($fact->id()) ?>">
     <input type="hidden" name="url" value="<?= e($url ?? $fact->record()->url()) ?>">
 
     <?php FunctionsEdit::createEditForm($fact) ?>
 
     <?php
     $level1type = $fact->getTag();
-    switch ($record->tag()) {
+    switch ($fact->record()->tag()) {
         case 'SOUR':
             if ($level1type === 'DATA') {
                 // SOUR:DATA facts may take a NOTE (but the SOUR record may not).
@@ -113,8 +111,12 @@ use Ramsey\Uuid\Uuid;
         </label>
         <div class="col-sm-9">
             <?= view('components/checkbox-inline', ['label' => I18N::translate('Keep the existing “last change” information'), 'name' => 'keep_chan', 'checked' => (bool) $tree->getPreference('NO_UPDATE_CHAN')]) ?>
-            <?= GedcomTag::getLabelValue('DATE', view('components/datetime', ['timestamp' => $record->lastChangeTimestamp()])) ?>
-            <?= GedcomTag::getLabelValue('_WT_USER', e($record->lastChangeUser())) ?>
+            <div>
+                <?= I18N::translate('%1$s: %2$s', I18N::translate('Timestamp'), view('components/datetime', ['timestamp' => $fact->record()->lastChangeTimestamp()])) ?>
+            </div>
+            <div>
+                <?= I18N::translate('%1$s: %2$s', I18N::translate('Author of last change'), e($fact->record()->lastChangeUser())) ?>
+            </div>
         </div>
     </div>
 
@@ -127,13 +129,13 @@ use Ramsey\Uuid\Uuid;
                 <?= /* I18N: A button label. */
                 I18N::translate('save') ?>
             </button>
-            <a class="btn btn-secondary" href="<?= e($record->url()) ?>">
+            <a class="btn btn-secondary" href="<?= e($fact->record()->url()) ?>">
                 <?= view('icons/cancel') ?>
                 <?= /* I18N: A button label. */
                 I18N::translate('cancel') ?>
             </a>
             <?php if ($can_edit_raw) : ?>
-                <a class="btn btn-link" href="<?= e(route(EditRawFactPage::class, ['xref' => $record->xref(), 'fact_id' => $fact->id(), 'tree' => $tree->name(), 'url' => $url ?? $fact->record()->url()])) ?>">
+                <a class="btn btn-link" href="<?= e(route(EditRawFactPage::class, ['xref' => $fact->record()->xref(), 'fact_id' => $fact->id(), 'tree' => $tree->name(), 'url' => $url ?? $fact->record()->url()])) ?>">
                     <?= I18N::translate('Edit the raw GEDCOM') ?>
                 </a>
             <?php endif; ?>

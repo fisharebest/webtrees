@@ -52,7 +52,7 @@ class EditFactAction implements RequestHandlerInterface
     private $module_service;
 
     /**
-     * EditGedcomRecordController constructor.
+     * EditFactAction constructor.
      *
      * @param GedcomEditService $gedcom_edit_service
      * @param ModuleService     $module_service
@@ -60,7 +60,7 @@ class EditFactAction implements RequestHandlerInterface
     public function __construct(GedcomEditService $gedcom_edit_service, ModuleService $module_service)
     {
         $this->gedcom_edit_service = $gedcom_edit_service;
-        $this->module_service = $module_service;
+        $this->module_service      = $module_service;
     }
 
     /**
@@ -76,13 +76,13 @@ class EditFactAction implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $params = (array) $request->getParsedBody();
-
-        $fact_id = $params['fact_id'] ?? '';
+        $fact_id = $request->getAttribute('fact_id') ?? '';
+        assert(is_string($fact_id));
 
         $record = Factory::gedcomRecord()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
+        $params    = (array) $request->getParsedBody();
         $keep_chan = (bool) ($params['keep_chan'] ?? false);
 
         $this->gedcom_edit_service->glevels = $params['glevels'];

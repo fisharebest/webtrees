@@ -64,7 +64,6 @@ class EditFactPage implements RequestHandlerInterface
                 return $fact->id() === $fact_id && $fact->canEdit();
             });
 
-
         if ($fact === null) {
             throw new HttpNotFoundException();
         }
@@ -76,7 +75,6 @@ class EditFactPage implements RequestHandlerInterface
         return $this->viewResponse('edit/edit-fact', [
             'can_edit_raw' => $can_edit_raw,
             'fact'         => $fact,
-            'record'       => $record,
             'title'        => $title,
             'tree'         => $tree,
             'url'          => $request->getQueryParams()['url'] ?? null,
