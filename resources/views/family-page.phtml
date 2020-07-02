@@ -35,14 +35,6 @@ use Fisharebest\Webtrees\View;
     <?php endif ?>
 </div>
 
-<?php View::push('styles') ?>
-<style>
-    .wt-family-members .wt-chart-box {
-        width: 22.5vw;
-    }
-</style>
-<?php View::endpush() ?>
-
 <div class="wt-page-content">
     <div class="wt-family-members d-flex">
         <?= view('family-page-children', ['family' => $record]) ?>

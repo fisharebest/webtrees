@@ -17,12 +17,13 @@
  * Common formatting for all themes.
  */
 
-@import "_block-charts.css";
+@import "_blocks.css";
 @import "_charts.css";
 @import "_colorbox.css";
 @import "_lists.css";
 @import "_mime-type-icons.css";
 @import "_on-screen-keyboard.css";
+@import "_pages.css";
 @import "_sortable.css";
 @import "_tab-relatives.css";
 

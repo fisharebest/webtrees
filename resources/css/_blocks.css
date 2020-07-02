@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -13,21 +13,5 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * Charts block
- */
-
-.wt-block.wt-block-charts {
-    /* This strange workaround creates a new stacking context, which allows the absolutely-positioned */
-    /* pedigree chart lines to be displayed. */
-    opacity: 0.99;
-}
-
-.wt-block-charts .wt-chart-box {
-    width: 15rem;
-    height: 3.5rem;
-}
-
-.wt-block-charts .wt-chart-box-lifespan {
-    display: none;
-}
+@import "_block-charts.css";
+@import "_block-favorites.css";
