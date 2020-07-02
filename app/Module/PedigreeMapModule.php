@@ -305,7 +305,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                     'properties' => [
                         'polyline'  => $polyline,
                         'iconcolor' => $color,
-                        'tooltip'   => strip_tags($fact->place()->fullName()),
+                        'tooltip'   => $fact->place()->gedcomName(),
                         'summary'   => view('modules/pedigree-map/events', [
                             'fact'         => $fact,
                             'relationship' => ucfirst($this->getSosaName($sosa)),
@@ -324,7 +324,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
      * @param ServerRequestInterface $request
      * @param ChartService           $chart_service
      *
-     * @return array
+     * @return array<Fact>
      */
     private function getPedigreeMapFacts(ServerRequestInterface $request, ChartService $chart_service): array
     {

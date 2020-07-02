@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-05-10 19:46+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-05-30 07:30+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -2595,7 +2595,7 @@ msgstr "Bing Maps™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
-msgstr ""
+msgstr "Bing™ वेबमास्टर टूल्स"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:261
@@ -3067,131 +3067,131 @@ msgstr "दफ़न"
 
 #: app/GedcomTag.php:1443
 msgid "Burial of a brother"
-msgstr "भाई की तदफ़ीन"
+msgstr "भाई का दफ़्न"
 
 #: app/GedcomTag.php:1351
 msgid "Burial of a child"
-msgstr "बच्चे की तदफ़ीन"
+msgstr "बच्चे का दफ़्न"
 
 #: app/GedcomTag.php:1348
 msgid "Burial of a daughter"
-msgstr "बेटी की तदफ़ीन"
+msgstr "बेटी का दफ़्न"
 
 #: app/GedcomTag.php:1432
 msgid "Burial of a father"
-msgstr "पिता की तदफ़ीन"
+msgstr "पिता का दफ़्न"
 
 #: app/GedcomTag.php:1362 app/GedcomTag.php:1373 app/GedcomTag.php:1384
 msgid "Burial of a grandchild"
-msgstr "नाती/पोते की तदफ़ीन"
+msgstr "नाती/पोते का दफ़्न"
 
 #: app/GedcomTag.php:1359
 msgid "Burial of a granddaughter"
-msgstr "पोती/नवासी की तदफ़ीन"
+msgstr "पोती/नवासी का दफ़्न"
 
 #: app/GedcomTag.php:1370
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "नवासी की तदफ़ीन"
+msgstr "नवासी का दफ़्न"
 
 #: app/GedcomTag.php:1381
 msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "पोती की तदफ़ीन"
+msgstr "पोती का दफ़्न"
 
 #: app/GedcomTag.php:1388
 msgid "Burial of a grandfather"
-msgstr "नाना/दादा की तदफ़ीन"
+msgstr "नाना/दादा का दफ़्न"
 
 #: app/GedcomTag.php:1392
 msgid "Burial of a grandmother"
-msgstr "नानी/दादी की तदफ़ीन"
+msgstr "नानी/दादी का दफ़्न"
 
 #: app/GedcomTag.php:1395
 msgid "Burial of a grandparent"
-msgstr "दादा/दादी/नाना/नानी की तदफ़ीन"
+msgstr "दादा/दादी/नाना/नानी का दफ़्न"
 
 #: app/GedcomTag.php:1355
 msgid "Burial of a grandson"
-msgstr "पोते/नवासे की तदफ़ीन"
+msgstr "पोते/नवासे का दफ़्न"
 
 #: app/GedcomTag.php:1366
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr "नवासे की तदफ़ीन"
+msgstr "नवासे का दफ़्न"
 
 #: app/GedcomTag.php:1377
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr "पोते की तदफ़ीन"
+msgstr "पोते का दफ़्न"
 
 #: app/GedcomTag.php:1421
 msgid "Burial of a half-brother"
-msgstr "सौतेले भाई की तदफ़ीन"
+msgstr "सौतेले भाई का दफ़्न"
 
 #: app/GedcomTag.php:1428
 msgid "Burial of a half-sibling"
-msgstr "सौतेले भाई/बहन की तदफ़ीन"
+msgstr "सौतेले भाई/बहन का दफ़्न"
 
 #: app/GedcomTag.php:1425
 msgid "Burial of a half-sister"
-msgstr "सौतेली बहन की तदफ़ीन"
+msgstr "सौतेली बहन का दफ़्न"
 
 #: app/GedcomTag.php:1454
 msgid "Burial of a husband"
-msgstr "पति की तदफ़ीन"
+msgstr "पति का दफ़्न"
 
 #: app/GedcomTag.php:1410
 msgid "Burial of a maternal grandfather"
-msgstr "नाना की तदफ़ीन"
+msgstr "नाना का दफ़्न"
 
 #: app/GedcomTag.php:1414
 msgid "Burial of a maternal grandmother"
-msgstr "नानी की तदफ़ीन"
+msgstr "नानी का दफ़्न"
 
 #: app/GedcomTag.php:1417
 msgid "Burial of a maternal grandparent"
-msgstr "नाना/नानी की तदफ़ीन"
+msgstr "नाना/नानी का दफ़्न"
 
 #: app/GedcomTag.php:1436
 msgid "Burial of a mother"
-msgstr "माँ की तदफ़ीन"
+msgstr "माँ का दफ़्न"
 
 #: app/GedcomTag.php:1439
 msgid "Burial of a parent"
-msgstr "माँ/बाप की तदफ़ीन"
+msgstr "माँ/बाप का दफ़्न"
 
 #: app/GedcomTag.php:1399
 msgid "Burial of a paternal grandfather"
-msgstr "दादा की तदफ़ीन"
+msgstr "दादा का दफ़्न"
 
 #: app/GedcomTag.php:1403
 msgid "Burial of a paternal grandmother"
-msgstr "दादी की तदफ़ीन"
+msgstr "दादी का दफ़्न"
 
 #: app/GedcomTag.php:1406
 msgid "Burial of a paternal grandparent"
-msgstr "दादा/दादी की तदफ़ीन"
+msgstr "दादा/दादी का दफ़्न"
 
 #: app/GedcomTag.php:1450
 msgid "Burial of a sibling"
-msgstr "भाई/बहन की तदफ़ीन"
+msgstr "भाई/बहन का दफ़्न"
 
 #: app/GedcomTag.php:1447
 msgid "Burial of a sister"
-msgstr "बहन की तदफ़ीन"
+msgstr "बहन का दफ़्न"
 
 #: app/GedcomTag.php:1344
 msgid "Burial of a son"
-msgstr "बेटे की तदफ़ीन"
+msgstr "बेटे का दफ़्न"
 
 #: app/GedcomTag.php:1461
 msgid "Burial of a spouse"
-msgstr "जीवनसाथी की तदफ़ीन"
+msgstr "जीवनसाथी का दफ़्न"
 
 #: app/GedcomTag.php:1458
 msgid "Burial of a wife"
-msgstr "पत्नी की तदफ़ीन"
+msgstr "पत्नी का दफ़्न"
 
 #: resources/xml/reports/cemetery_report.xml:5
 msgid "Burial place contains"
@@ -3202,7 +3202,7 @@ msgstr "दफन स्थान में शामिल"
 #: resources/xml/reports/cemetery_report.xml:3
 #: resources/xml/reports/cemetery_report.xml:34
 msgid "Burials"
-msgstr "तदफ़ीन"
+msgstr "दफ़्न"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:83
@@ -4139,7 +4139,7 @@ msgid "Cremation of a father"
 msgstr "पिता का दाह संस्कार"
 
 #: app/GedcomTag.php:1586 app/GedcomTag.php:1597 app/GedcomTag.php:1608
-msgid "Cremation of a grand-parent"
+msgid "Cremation of a grandparent"
 msgstr "एक पूर्वज का दाह संस्कार"
 
 #: app/GedcomTag.php:1553 app/GedcomTag.php:1564 app/GedcomTag.php:1575
@@ -4756,7 +4756,7 @@ msgstr "पिता की मृत्यु"
 
 #: app/GedcomTag.php:1711 app/GedcomTag.php:1722 app/GedcomTag.php:1733
 #: resources/views/admin/trees-preferences.phtml:493
-msgid "Death of a grand-parent"
+msgid "Death of a grandparent"
 msgstr "किसी पूर्वज की मृत्यु"
 
 #: app/GedcomTag.php:1678 app/GedcomTag.php:1689 app/GedcomTag.php:1700
@@ -6854,11 +6854,11 @@ msgstr "Google Maps™"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
-msgstr ""
+msgstr "Google™ एनालिटिक्स"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
-msgstr ""
+msgstr "Google™ वेबमास्टर टूल्स"
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:785
@@ -8956,7 +8956,7 @@ msgstr "सटीक लेख से मिलान करें, जब त�
 
 #: app/Module/MatomoAnalyticsModule.php:42
 msgid "Matomo™ / Piwik™ analytics"
-msgstr ""
+msgstr "Matomo™ / Piwik™ एनालिटिक्स"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -13240,7 +13240,7 @@ msgstr "परिवर्तन की तारीखों की सीम�
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:1029
@@ -14303,7 +14303,7 @@ msgstr "यह फॅमिली ट्री अंतिम बार #gedcom
 #: resources/views/modules/html/template-statistics.phtml:13
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "यह फॅमिली ट्री अंतिम बार %s को अपडेट किया गया था।"
+msgstr "इस फॅमिली ट्री को अंतिम बार %s को अपडेट किया गया था।"
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32

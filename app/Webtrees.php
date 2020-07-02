@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -86,7 +86,7 @@ class Webtrees
     public const DEBUG = self::STABILITY !== '';
 
     // We want to know about all PHP errors during development, and fewer in production.
-    public const ERROR_REPORTING = self::DEBUG ? E_ALL | E_STRICT : E_ALL & !E_USER_DEPRECATED & !E_USER_DEPRECATED;
+    public const ERROR_REPORTING = self::DEBUG ? E_ALL | E_STRICT : E_ALL & ~E_USER_DEPRECATED & ~E_USER_DEPRECATED;
 
     // The name of the application.
     public const NAME = 'webtrees';
@@ -98,7 +98,7 @@ class Webtrees
     public const STABILITY = 'dev';
 
     // Version number
-    public const VERSION = '2.0.5' . (self::STABILITY === '' ? '' : '-') . self::STABILITY;
+    public const VERSION = '2.0.7' . (self::STABILITY === '' ? '' : '-') . self::STABILITY;
 
     // Project website.
     public const URL = 'https://webtrees.net/';
@@ -120,12 +120,12 @@ class Webtrees
         UseCache::class,
         BadBotBlocker::class,
         UseDatabase::class,
-        RegisterFactories::class,
         UseDebugbar::class,
         UpdateDatabaseSchema::class,
         UseFilesystem::class,
         UseSession::class,
         UseLanguage::class,
+        RegisterFactories::class,
         CheckForMaintenanceMode::class,
         UseTheme::class,
         DoHousekeeping::class,

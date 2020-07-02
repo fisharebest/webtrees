@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Functions;
 use Exception;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
@@ -203,10 +204,10 @@ class Functions
      * @param Individual $individual2 The person to compute the relatiohip to
      * @param int        $maxlength   The maximum length of path
      *
-     * @return array     An array of nodes on the relationship path, or false if no path found
+     * @return array{'path':array<Individual|Family>,'relations':array<string>} An array of nodes on the relationship path
      * @throws Exception If no relationship exists
      */
-    public static function getRelationship(Individual $individual1, Individual $individual2, $maxlength = 4): array
+    public static function getRelationship(Individual $individual1, Individual $individual2, int $maxlength = 4): array
     {
         $spouse_codes = [
             'M' => 'hus',
@@ -325,7 +326,7 @@ class Functions
     /**
      * Convert the result of get_relationship() into a relationship name.
      *
-     * @param mixed[][] $nodes
+     * @param array{'path':array<Individual|Family>,'relations':array<string>} $nodes
      *
      * @return string
      */
@@ -349,6 +350,10 @@ class Functions
         //
         // This is very repetitive in English, but necessary in order to handle the
         // complexities of other languages.
+
+        // Assertions help static analysis tools to know which array element we selected.
+        assert(!$person1 instanceof Family);
+        assert(!$person2 instanceof Family);
 
         return self::getRelationshipNameFromPath(
             implode('', $path),

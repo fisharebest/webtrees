@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @var string|null $class
+ * @var string|null $id
+ * @var string      $name
+ * @var mixed       $selected
+ * @var string[]    $options
+ */
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<select
+    class="form-control <?= $class ?? '' ?>"
+    name="<?= e($name) ?>"
+    id="<?= e($id ?? $name) ?>"
+>
+    <?php foreach ($options as $n) : ?>
+        <option value="<?= (int) $n ?>" <?= (int) $n === (int) $selected ?  'selected' : '' ?>>
+            <?= I18N::number($n) ?>
+        </option>
+    <?php endforeach ?>
+</select>

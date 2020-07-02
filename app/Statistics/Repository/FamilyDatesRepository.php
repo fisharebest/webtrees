@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
+use stdClass;
 
 /**
  * A repository providing methods for family dates related statistics (birth, death, marriage, divorce).
@@ -70,9 +71,9 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      * @param string $fact
      * @param string $operation
      *
-     * @return Model|object|static|null
+     * @return stdClass|null
      */
-    private function eventQuery(string $fact, string $operation)
+    private function eventQuery(string $fact, string $operation): ?stdClass
     {
         return DB::table('dates')
             ->select(['d_gid as id', 'd_year as year', 'd_fact AS fact', 'd_type AS type'])

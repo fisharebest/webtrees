@@ -16,6 +16,7 @@ use Illuminate\Support\Collection;
  * @var int                  $limit_low
  * @var array<array<mixed>>  $order
  * @var Collection<stdClass> $rows
+ * @var bool                 $show_date
  * @var bool                 $show_user
  */
 ?>
@@ -24,9 +25,7 @@ use Illuminate\Support\Collection;
     <table
         class="table table-sm wt-table-changes datatables d-none"
         <?= view('lists/datatables-attributes') ?>
-        <?php if ($rows->count() < e($limit_high)) : ?>
-            data-paging="false"
-        <?php endif ?>
+        data-paging="<?= e(json_encode($rows->count() >= e($limit_high))) ?>"
         data-filter="false"
         data-info="false"
         data-length-change="false"
@@ -43,39 +42,37 @@ use Illuminate\Support\Collection;
                 <th>
                     <?= I18N::translate('Record') ?>
                 </th>
-                <th>
+                <th class="<?= $show_date ? '' : 'd-none' ?>">
                     <?= I18N::translate('Last change') ?>
                 </th>
-                <?php if ($show_user) : ?>
-                    <th>
-                        <?= I18N::translate('User') ?>
-                    </th>
-                <?php endif ?>
+                <th class="<?= $show_user ? '' : 'd-none' ?>">
+                    <?= I18N::translate('Editor') ?>
+                </th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($rows as $row) : ?>
                 <tr>
-                    <td data-sort="<?= $row->record::RECORD_TYPE ?>" class="text-centre wt-side-block-optional">
-                        <?php if ($row->record::RECORD_TYPE === Individual::RECORD_TYPE) : ?>
+                    <td data-sort="<?= $row->record->tag() ?>" class="text-centre wt-side-block-optional">
+                        <?php if ($row->record->tag() === Individual::RECORD_TYPE) : ?>
                             <?= view('icons/individual') ?>
                             <span class="sr-only"><?= I18N::translate('Individual') ?></span>
-                        <?php elseif ($row->record::RECORD_TYPE === Family::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record->tag() === Family::RECORD_TYPE) : ?>
                             <?= view('icons/family') ?>
                             <span class="sr-only"><?= I18N::translate('Family') ?></span>
-                        <?php elseif ($row->record::RECORD_TYPE === Media::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record->tag() === Media::RECORD_TYPE) : ?>
                             <?= view('icons/media') ?>
                             <span class="sr-only"><?= I18N::translate('Media') ?></span>
-                        <?php elseif ($row->record::RECORD_TYPE === Note::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record->tag() === Note::RECORD_TYPE) : ?>
                             <?= view('icons/note') ?>
                             <span class="sr-only"><?= I18N::translate('Note') ?></span>
-                        <?php elseif ($row->record::RECORD_TYPE === Source::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record->tag() === Source::RECORD_TYPE) : ?>
                             <?= view('icons/source') ?>
                             <span class="sr-only"><?= I18N::translate('Source') ?></span>
-                        <?php elseif ($row->record::RECORD_TYPE === Submitter::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record->tag() === Submitter::RECORD_TYPE) : ?>
                             <?= view('icons/submitter') ?>
                             <span class="sr-only"><?= I18N::translate('Submitter') ?></span>
-                        <?php elseif ($row->record::RECORD_TYPE === Repository::RECORD_TYPE) : ?>
+                        <?php elseif ($row->record->tag() === Repository::RECORD_TYPE) : ?>
                             <?= view('icons/repository') ?>
                             <span class="sr-only"><?= I18N::translate('Repository') ?></span>
                         <?php endif ?>
@@ -85,15 +82,13 @@ use Illuminate\Support\Collection;
                         <a href="<?= e($row->record->url()) ?>"><?= $row->record->fullName() ?></a>
                     </td>
 
-                    <td data-sort="<?= $row->time->timestamp ?>">
+                    <td data-sort="<?= $row->time->timestamp ?>" class="<?= $show_date ? '' : 'd-none' ?>">
                         <?= view('components/datetime', ['timestamp' => $row->time]) ?>
                     </td>
 
-                    <?php if ($show_user) : ?>
-                        <td>
-                            <?= e($row->user->userName()) ?>
-                        </td>
-                    <?php endif ?>
+                    <td class="<?= $show_user ? '' : 'd-none' ?>">
+                        <?= e($row->user->userName()) ?>
+                    </td>
                 </tr>
             <?php endforeach ?>
         </tbody>

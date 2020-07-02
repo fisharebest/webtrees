@@ -379,7 +379,7 @@ class HousekeepingService
      *
      * @param FilesystemInterface $filesystem
      *
-     * @return array
+     * @return array<string>
      */
     public function deleteOldWebtreesFiles(FilesystemInterface $filesystem): array
     {

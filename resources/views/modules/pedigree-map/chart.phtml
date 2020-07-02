@@ -150,7 +150,7 @@ window.WT_OSM = (function () {
       if (zoom) {
         map.setView(markers.getBounds().getCenter(), zoom);
       } else {
-        map.fitBounds(markers.getBounds().pad(0.2));
+        map.fitBounds(markers.getBounds(), {padding: [50, 30]});
       }
     }
     sidebar.append(sidebar_content);

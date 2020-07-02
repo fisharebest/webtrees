@@ -75,22 +75,13 @@ class Fact
         '_MARI',
         '_MBON',
         'MARR',
-        'MARR_CIVIL',
-        'MARR_RELIGIOUS',
-        'MARR_PARTNERS',
-        'MARR_UNKNOWN',
         '_COML',
         '_STAT',
         '_SEPR',
         'DIVF',
         'MARS',
-        '_BIRT_CHIL',
         'DIV',
         'ANUL',
-        '_BIRT_',
-        '_MARR_',
-        '_DEAT_',
-        '_BURI_',
         'CENS',
         'OCCU',
         'RESI',
@@ -364,7 +355,7 @@ class Fact
         }
 
         // Members cannot edit RESN, CHAN and locked records
-        return Auth::isEditor($this->record->tree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() !== 'RESN' && $this->getTag() !== 'CHAN';
+        return Auth::isEditor($this->record->tree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->tag !== 'RESN' && $this->tag !== 'CHAN';
     }
 
     /**
@@ -422,6 +413,18 @@ class Fact
      *
      * @return string
      */
+    public function tag(): string
+    {
+        return $this->record->tag() . ':' . $this->tag;
+    }
+
+    /**
+     * What is the tag (type) of this fact, such as BIRT, MARR or DEAT.
+     *
+     * @return string
+     *
+     * @deprecated since 2.0.5.  Will be removed in 2.1.0
+     */
     public function getTag(): string
     {
         return $this->tag;
@@ -433,6 +436,8 @@ class Fact
      * @param string $tag
      *
      * @return void
+     *
+     * @deprecated since 2.0.5.  Will be removed in 2.1.0
      */
     public function setTag($tag): void
     {
@@ -442,7 +447,7 @@ class Fact
     /**
      * The Person/Family record where this Fact came from
      *
-     * @return Individual|Family|Source|Repository|Media|Note|GedcomRecord
+     * @return Individual|Family|Source|Repository|Media|Note|Submitter|Submission|Location|Header|GedcomRecord
      */
     public function record()
     {
@@ -457,11 +462,22 @@ class Fact
     public function label(): string
     {
         // Custom FACT/EVEN - with a TYPE
-        if (($this->tag === 'FACT' || $this->tag === 'EVEN') && $this->attribute('TYPE') !== '') {
-            return I18N::translate(e($this->attribute('TYPE')));
+        if ($this->tag === 'FACT' || $this->tag === 'EVEN') {
+            $type = $this->attribute('TYPE');
+
+            if ($type !== '') {
+                // Allow user-translations of custom types.
+                $translated = I18N::translate($type);
+
+                if ($translated !== $type) {
+                    return $translated;
+                }
+
+                return e($type);
+            }
         }
 
-        return GedcomTag::getLabel($this->tag, $this->record);
+        return GedcomTag::getLabel($this->record->tag() . ':' . $this->tag);
     }
 
     /**
@@ -590,7 +606,7 @@ class Fact
             // Fact date
             $date = $this->date();
             if ($date->isOK()) {
-                if ($this->record() instanceof Individual && in_array($this->getTag(), Gedcom::BIRTH_EVENTS, true) && $this->record()->tree()->getPreference('SHOW_PARENTS_AGE')) {
+                if ($this->record() instanceof Individual && in_array($this->tag, Gedcom::BIRTH_EVENTS, true) && $this->record()->tree()->getPreference('SHOW_PARENTS_AGE')) {
                     $attributes[] = $date->display() . FunctionsPrint::formatParentsAges($this->record(), $date);
                 } else {
                     $attributes[] = $date->display();
@@ -602,7 +618,7 @@ class Fact
             }
         }
 
-        $class = 'fact_' . $this->getTag();
+        $class = 'fact_' . $this->tag;
         if ($this->isPendingAddition()) {
             $class .= ' wt-new';
         } elseif ($this->isPendingDeletion()) {
@@ -667,24 +683,16 @@ class Fact
                 return $a->sortOrder - $b->sortOrder;
             }
 
-            $atag = $a->getTag();
-            $btag = $b->getTag();
+            $atag = $a->tag;
+            $btag = $b->tag;
 
             // Events not in the above list get mapped onto one that is.
             if (!array_key_exists($atag, $factsort)) {
-                if (preg_match('/^(_(BIRT|MARR|DEAT|BURI)_)/', $atag, $match)) {
-                    $atag = $match[1];
-                } else {
-                    $atag = '_????_';
-                }
+                $atag = '_????_';
             }
 
             if (!array_key_exists($btag, $factsort)) {
-                if (preg_match('/^(_(BIRT|MARR|DEAT|BURI)_)/', $btag, $match)) {
-                    $btag = $match[1];
-                } else {
-                    $btag = '_????_';
-                }
+                $btag = '_????_';
             }
 
             // - Don't let dated after DEAT/BURI facts sort non-dated facts before DEAT/BURI

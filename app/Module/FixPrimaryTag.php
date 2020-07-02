@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -145,9 +145,7 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
      */
     private function updateMediaLinks(Individual $individual, string $xref, bool $primary): void
     {
-        $facts = $individual->facts()->filter(static function (Fact $fact): bool {
-            return !$fact->isPendingDeletion();
-        });
+        $facts = $individual->facts([], false, null, true);
 
         $facts1 = new Collection();
         $facts2 = new Collection();

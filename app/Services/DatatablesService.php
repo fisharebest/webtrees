@@ -40,7 +40,7 @@ class DatatablesService
      * Apply filtering and pagination to a collection, and generate a response suitable for datatables.
      *
      * @param ServerRequestInterface $request        Includes the datatables request parameters.
-     * @param Collection             $collection     All the data.
+     * @param Collection<mixed>      $collection     All the data.
      * @param string[]|int[]         $search_columns The names of searchable columns.
      * @param string[]|int[]         $sort_columns   Sort column mapping.
      * @param Closure                $callback       Converts a row-object to an array-of-columns.

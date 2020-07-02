@@ -53,10 +53,11 @@ class Select2Repository extends AbstractSelect2Handler
      * @param string $query
      * @param int    $offset
      * @param int    $limit
+     * @param string $at
      *
      * @return Collection<array<string,string>>
      */
-    protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
+    protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
         // Search by XREF
         $repository = Factory::repository()->make($query, $tree);
@@ -67,9 +68,9 @@ class Select2Repository extends AbstractSelect2Handler
             $results = $this->search_service->searchRepositories([$tree], [$query], $offset, $limit);
         }
 
-        return $results->map(static function (Repository $repository): array {
+        return $results->map(static function (Repository $repository) use ($at): array {
             return [
-                'id'    => $repository->xref(),
+                'id'    => $at . $repository->xref() . $at,
                 'text'  => view('selects/repository', ['repository' => $repository]),
                 'title' => ' ',
             ];

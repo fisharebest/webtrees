@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-10 20:40+0100\n"
-"PO-Revision-Date: 2020-04-20 14:19+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
-"Language: sv\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-06-24 09:32+0000\nLast-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\nLanguage-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -484,7 +468,7 @@ msgstr "(%s efter dödsdagen)"
 #: app/Age.php:177
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(ålder %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:181
@@ -1358,11 +1342,11 @@ msgstr "Lägg till en händelse"
 
 #: resources/views/modules/custom-css-js/edit.phtml:28
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr "Lägg till innehåll till slutet av elementet <code>&lt;kropp&gt;</code>."
+msgstr "Lägg till innehåll till slutet av elementet <code>&lt;body&gt;</code>."
 
 #: resources/views/modules/custom-css-js/edit.phtml:16
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr "Lägg till innehåll till slutet av elementet <code>&lt;huvud&gt;</code>."
+msgstr "Lägg till innehåll till slutet av elementet <code>&lt;head&gt;</code>."
 
 #: resources/views/edit/paste-fact-row.phtml:12
 msgid "Add from clipboard"
@@ -1682,15 +1666,15 @@ msgstr "Åldersgräns då person antas vara död"
 
 #: resources/views/statistics/families/age-difference.phtml:42
 msgid "Age between husband and wife"
-msgstr "Årskillnad mellan man och hustru"
+msgstr "Åldersskillnad mellan man och hustru"
 
 #: resources/views/statistics/families/age-difference.phtml:20
 msgid "Age between siblings"
-msgstr "Årskillnad mellan syskon"
+msgstr "Åldersskillnad mellan syskon"
 
 #: resources/views/statistics/families/age-difference.phtml:51
 msgid "Age between wife and husband"
-msgstr "Årskillnad mellan hustru och man"
+msgstr "Åldersskillnad mellan hustru och man"
 
 #: resources/views/statistics/families/age-difference.phtml:12
 msgid "Age difference"
@@ -1931,7 +1915,7 @@ msgstr "Fel i databasen."
 
 #: resources/views/admin/control-panel.phtml:83
 msgid "An upgrade is available."
-msgstr ""
+msgstr "En uppgradering finns tillgänglig."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -2606,7 +2590,7 @@ msgstr "Bing Maps™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
-msgstr ""
+msgstr "Bing™ verktyg för webbadministratörer"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:261
@@ -3514,7 +3498,7 @@ msgstr "Leta efter fel"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:216
 msgid "Check for pending changes…"
-msgstr "Kolla för väntande ändringar…"
+msgstr "Kolla efter väntande ändringar…"
 
 #: resources/views/setup/step-2-server-checks.phtml:39
 msgid "Checking server capacity"
@@ -4150,7 +4134,7 @@ msgid "Cremation of a father"
 msgstr "Fars kremering"
 
 #: app/GedcomTag.php:1586 app/GedcomTag.php:1597 app/GedcomTag.php:1608
-msgid "Cremation of a grand-parent"
+msgid "Cremation of a grandparent"
 msgstr "Förälder förälders kremering"
 
 #: app/GedcomTag.php:1553 app/GedcomTag.php:1564 app/GedcomTag.php:1575
@@ -4432,7 +4416,7 @@ msgstr "LDS Makes/makas beseglingsdatum"
 
 #: app/GedcomTag.php:469
 msgid "Date of adoption"
-msgstr "Adoptions datum"
+msgstr "Adoptionsdatum"
 
 #: app/GedcomTag.php:512 resources/xml/reports/missing_facts_report.xml:129
 msgid "Date of baptism"
@@ -4475,7 +4459,7 @@ msgstr "Konfirmationsdatum"
 
 #: app/GedcomTag.php:635
 msgid "Date of cremation"
-msgstr "Kremerings datum"
+msgstr "Kremeringsdatum"
 
 #: app/GedcomTag.php:658 resources/xml/reports/cemetery_report.xml:46
 #: resources/xml/reports/fact_sources.xml:274
@@ -4485,7 +4469,7 @@ msgstr "Dödsdatum"
 
 #: app/GedcomTag.php:745
 msgid "Date of divorce"
-msgstr "Skilsmässa datum"
+msgstr "Skilsmässodatum"
 
 #: app/GedcomTag.php:695
 msgid "Date of emigration"
@@ -4497,7 +4481,7 @@ msgstr "Förlovningsdatum"
 
 #: app/GedcomTag.php:645 resources/views/cards/add-source-citation.phtml:62
 msgid "Date of entry in original source"
-msgstr "Inläggsdatum i original källa"
+msgstr "Inläggsdatum i originalkälla"
 
 #: app/GedcomTag.php:718
 msgid "Date of event"
@@ -4514,7 +4498,7 @@ msgstr "Datum för invandring"
 #. I18N: gedcom tag CHAN:DATE
 #: app/GedcomTag.php:580
 msgid "Date of last change"
-msgstr "Datum för senast ändring"
+msgstr "Datum för senaste ändring"
 
 #: app/GedcomTag.php:747 app/GedcomTag.php:840
 #: resources/xml/reports/fact_sources.xml:319
@@ -4767,7 +4751,7 @@ msgstr "Faderns död"
 
 #: app/GedcomTag.php:1711 app/GedcomTag.php:1722 app/GedcomTag.php:1733
 #: resources/views/admin/trees-preferences.phtml:493
-msgid "Death of a grand-parent"
+msgid "Death of a grandparent"
 msgstr "Gammelförälders död"
 
 #: app/GedcomTag.php:1678 app/GedcomTag.php:1689 app/GedcomTag.php:1700
@@ -6865,11 +6849,11 @@ msgstr "Google Maps™"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
-msgstr ""
+msgstr "Google Analytics™"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
-msgstr ""
+msgstr "Googles™ verktyg för webbadministratörer"
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:785
@@ -6882,7 +6866,7 @@ msgstr "Högsta ålder vid dödsfall"
 
 #: resources/views/statistics/families/age-difference.phtml:29
 msgid "Greatest age between siblings"
-msgstr "Största årskillnad mellan syskon"
+msgstr "Största åldersskillnad mellan syskon"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:221
@@ -7492,7 +7476,7 @@ msgstr "I webtrees version 2 lagras anpassade miniatyrbilder som en andra medief
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include aliases"
-msgstr ""
+msgstr "Inkludera alias"
 
 #: resources/views/admin/trees-unconnected.phtml:27
 msgid "Include associates"
@@ -8272,7 +8256,7 @@ msgstr "Vänster"
 #. I18N: Name of a module - historic/obsolete URLs.
 #: app/Module/RedirectLegacyUrlsModule.php:118
 msgid "Legacy URLs"
-msgstr ""
+msgstr "Äldre URL:er"
 
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:816
@@ -8967,7 +8951,7 @@ msgstr "Matcha exakt text, såvida den inte finns mitt i ord."
 
 #: app/Module/MatomoAnalyticsModule.php:42
 msgid "Matomo™ / Piwik™ analytics"
-msgstr ""
+msgstr "Matomo™ / Piwik™ - analys"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -10152,7 +10136,7 @@ msgstr "Inget hittades."
 #: resources/views/modules/pedigree-map/chart.phtml:110
 #: resources/views/modules/places/tab.phtml:102
 msgid "Nothing to show"
-msgstr ""
+msgstr "Inget att visa"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
@@ -11440,7 +11424,7 @@ msgstr "Dataposter"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:112
 msgid "Redirect old URLs from webtrees version 1."
-msgstr ""
+msgstr "Omdirigera gamla URL:er från webtrees version 1."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:573
@@ -11585,7 +11569,7 @@ msgstr "Religiöst namn"
 #: resources/views/modules/place-hierarchy/map.phtml:71
 #: resources/views/modules/places/tab.phtml:58
 msgid "Reload map"
-msgstr ""
+msgstr "Ladda om kartan"
 
 #: resources/views/modules/review_changes/config.phtml:24
 msgid "Reminder email frequency (days)"
@@ -12050,7 +12034,7 @@ msgstr "Sök och ersätt text, med enkla sökningar eller avancerad mönstermatc
 #. I18N: Help text for the “Description META tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:203
 msgid "Search engines may use this description of your site in their search results."
-msgstr ""
+msgstr "Sökmotorer kan använda denna beskrivning av din webbplats i sina sökresultat."
 
 #: resources/views/modules/media-list/page.phtml:52
 msgid "Search filters"
@@ -13251,7 +13235,7 @@ msgstr "Första datum för ändringar"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:1029
@@ -16849,15 +16833,15 @@ msgstr "svärfar"
 
 #: app/Functions/Functions.php:636
 msgid "fiancé"
-msgstr ""
+msgstr "fästman"
 
 #: app/Functions/Functions.php:683
 msgid "fiancé(e)"
-msgstr ""
+msgstr "fästman eller fästmö"
 
 #: app/Functions/Functions.php:660
 msgid "fiancée"
-msgstr ""
+msgstr "fästmö"
 
 #: app/Functions/Functions.php:491
 msgid "fifteenth cousin"

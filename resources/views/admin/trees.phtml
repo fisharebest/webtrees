@@ -1,6 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateMediaObjectModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateNoteModal;
@@ -17,8 +18,17 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 use Illuminate\Database\Capsule\Manager as DB;
+
+/**
+ * @var array<Tree>   $all_trees
+ * @var array<string> $gedcom_files
+ * @var int           $multiple_tree_threshold
+ * @var string        $title
+ * @var Tree          $tree
+ */
 
 ?>
 
@@ -52,7 +62,9 @@ use Illuminate\Database\Capsule\Manager as DB;
                         <?php if ($importing) : ?>
                             <div id="import<?= $managed_tree->id() ?>" class="col-12">
                                 <div class="progress">
-                                    <?= I18N::translate('Calculating…') ?>
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                        <?= I18N::translate('Calculating…') ?>
+                                    </div>
                                 </div>
                             </div>
                             <?php View::push('javascript'); ?>
@@ -95,7 +107,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                     <?php if (count($all_trees) > 1 && Auth::isAdmin()) : ?>
                                         <li>
                                             <span class="fa-li"><?= view('icons/delete') ?></span>
-                                            <a href="#" data-post-url="<?= e(route(DeleteTreeAction::class, ['tree' => $managed_tree->name()])) ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($managed_tree->title())) ?>">
+                                            <a href="#" data-post-url="<?= e(route(DeleteTreeAction::class, ['tree' => $managed_tree->name()])) ?>" data-reload-url="<?= e(route(ControlPanel::class)) ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($managed_tree->title())) ?>">
                                                 <?= I18N::translate('Delete') ?>
                                             </a>
                                         </li>
@@ -202,7 +214,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                     <!-- UNLINKED INDIVIDUAL -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/individual') ?></span>
-                                        <a href="<?= e(route('add-unlinked-individual', ['tree' => $managed_tree->name()])) ?>">
+                                        <a href="<?= e(route(AddUnlinkedPage::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Individual') ?>
                                             <span class="sr-only"><?= e($managed_tree->title()) ?></span>
                                         </a>

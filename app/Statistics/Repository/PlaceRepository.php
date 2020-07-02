@@ -171,9 +171,9 @@ class PlaceRepository implements PlaceRepositoryInterface
     /**
      * Get the top 10 places list.
      *
-     * @param array $places
+     * @param array<string,int> $places
      *
-     * @return array
+     * @return array<array<string,mixed>>
      */
     private function getTop10Places(array $places): array
     {
@@ -202,7 +202,7 @@ class PlaceRepository implements PlaceRepositoryInterface
     /**
      * Renders the top 10 places list.
      *
-     * @param array $places
+     * @param array<string,int> $places
      *
      * @return string
      */

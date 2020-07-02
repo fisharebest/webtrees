@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
  * @var int                  $limit_low
  * @var int                  $limit_high
  * @var Collection<stdClass> $rows
+ * @var bool                 $show_date
  * @var bool                 $show_user
  */
 
@@ -41,10 +42,12 @@ use Illuminate\Support\Collection;
 
         <div class="indent mb-1">
             <?php if ($row->record->lastChangeTimestamp()->unix() !== 0) : ?>
-                <?php if ($show_user) : ?>
+                <?php if ($show_user && $show_date) : ?>
                     <?= /* I18N: [a record was] Changed on <date/time> by <user> */I18N::translate('Changed on %1$s by %2$s', view('components/datetime', ['timestamp' => $row->record->lastChangeTimestamp()]), e($row->record->lastChangeUser())) ?>
-                <?php else : ?>
+                <?php elseif ($show_date) : ?>
                     <?= /* I18N: [a record was] Changed on <date/time> */ I18N::translate('Changed on %1$s', view('components/datetime', ['timestamp' => $row->record->lastChangeTimestamp()])) ?>
+                <?php elseif ($show_user) : ?>
+                    <?= /* I18N: [a record was] Changed on <date/time> */ I18N::translate('Changed by %1$s', e($row->user->userName())) ?>
                 <?php endif ?>
             <?php endif ?>
         </div>

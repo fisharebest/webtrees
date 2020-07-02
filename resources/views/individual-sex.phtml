@@ -1,0 +1,59 @@
+<?php
+
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditFactPage;
+use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var Fact $fact
+ */
+
+$individual = $fact->record();
+$tree       = $individual->tree();
+
+$container_class = '';
+if ($fact->isPendingDeletion()) {
+    $container_class = 'wt-old';
+} elseif ($fact->isPendingAddition()) {
+    $container_class = 'wt-new';
+}
+
+?>
+<div class="card <?= $container_class ?>">
+    <div class="card-header" role="tab" id="name-header-<?= $fact->id() ?>">
+        <a data-toggle="collapse" href="#name-content-<?= $fact->id() ?>" aria-expanded="false" aria-controls="name-content-<?= $fact->id() ?>">
+            <?= view('icons/expand') ?>
+            <?= view('icons/collapse') ?>
+            <span class="label"><?= I18N::translate('Gender') ?></span>
+            <?php
+            switch ($fact->value()) {
+                case 'M':
+                    echo I18N::translate('Male');
+                    break;
+                case 'F':
+                    echo I18N::translate('Female');
+                    break;
+                default:
+                    echo I18N::translateContext('unknown gender', 'Unknown');
+                    break;
+            }
+            ?>
+        </a>
+    </div>
+    <div id="name-content-<?= $fact->id() ?>" class="card-body collapse" data-parent="#individual-names" aria-labelledby="name-header-<?= $fact->id() ?>">
+        <?= FunctionsPrintFacts::printFactSources($tree, $fact->gedcom(), 2) ?>
+        <?= FunctionsPrint::printFactNotes($tree, $fact->gedcom(), 2) ?>
+
+        <?php if ($fact->canEdit()) : ?>
+            <div class="d-flex">
+                <a class="btn btn-link ml-auto" href="<?= e(route(EditFactPage::class, ['xref' => $fact->record()->xref(), 'fact_id' => $fact->id(), 'tree' => $fact->record()->tree()->name()])) ?>"
+                   title="<?= I18N::translate('Edit the gender') ?>">
+                    <?= view('icons/edit') ?>
+                    <span class="sr-only"><?= I18N::translate('Edit the gender') ?></span>
+                </a>
+            </div>
+        <?php endif ?>
+    </div>
+</div>

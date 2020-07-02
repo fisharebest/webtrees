@@ -52,7 +52,7 @@ class CreateRepositoryAction implements RequestHandlerInterface
         $privacy_restriction = $params['privacy-restriction'];
         $edit_restriction    = $params['edit-restriction'];
 
-        // Fix whitespace
+        // Fix non-printing characters
         $name = trim(preg_replace('/\s+/', ' ', $name));
 
         $gedcom = "0 @@ REPO\n1 NAME " . $name;

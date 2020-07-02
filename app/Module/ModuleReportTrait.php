@@ -29,16 +29,6 @@ use Fisharebest\Webtrees\Menu;
 trait ModuleReportTrait
 {
     /**
-     * @return string
-     */
-    abstract public function name(): string;
-
-    /**
-     * @return string
-     */
-    abstract public function title(): string;
-
-    /**
      * Name of the XML report file, relative to the resources folder.
      *
      * @return string

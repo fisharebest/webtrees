@@ -191,6 +191,18 @@ class GedcomRecord
     }
 
     /**
+     * Get the GEDCOM tag for this record.
+     *
+     * @return string
+     */
+    public function tag(): string
+    {
+        preg_match('/^0 @[^@]*@ (\w+)/', $this->gedcom(), $match);
+
+        return $match[1] ?? static::RECORD_TYPE;
+    }
+
+    /**
      * Get the XREF for this record
      *
      * @return string
@@ -1203,9 +1215,9 @@ class GedcomRecord
      * ['full'] = the name as specified in the record, e.g. 'Vincent van Gogh' or 'John Unknown'
      * ['sort'] = a sortable version of the name (not for display), e.g. 'Gogh, Vincent' or '@N.N., John'
      *
-     * @param int        $level
-     * @param string     $fact_type
-     * @param Collection $facts
+     * @param int              $level
+     * @param string           $fact_type
+     * @param Collection<Fact> $facts
      *
      * @return void
      */

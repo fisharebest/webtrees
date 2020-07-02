@@ -846,7 +846,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @param string $boundaries_csv
      *
-     * @return array
+     * @return array<string>
      */
     private function axisNumbers(string $boundaries_csv): array
     {

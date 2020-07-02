@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
+use stdClass;
 
 /**
  * A repository providing methods for event related statistics.
@@ -73,7 +74,7 @@ class EventRepository implements EventRepositoryInterface
     /**
      * Returns the total number of a given list of events (with dates).
      *
-     * @param array $events The list of events to count (e.g. BIRT, DEAT, ...)
+     * @param array<string> $events The list of events to count (e.g. BIRT, DEAT, ...)
      *
      * @return int
      */
@@ -87,7 +88,7 @@ class EventRepository implements EventRepositoryInterface
             'CHAN',
         ];
 
-        if ($events) {
+        if ($events !== []) {
             $types = [];
 
             foreach ($events as $type) {
@@ -98,7 +99,7 @@ class EventRepository implements EventRepositoryInterface
                 }
             }
 
-            if ($types) {
+            if ($types !== []) {
                 $query->whereIn('d_fact', $types);
             }
         }
@@ -186,7 +187,7 @@ class EventRepository implements EventRepositoryInterface
     /**
      * Retursn the list of common facts used query the data.
      *
-     * @return array
+     * @return array<string>
      */
     private function getCommonFacts(): array
     {
@@ -219,9 +220,9 @@ class EventRepository implements EventRepositoryInterface
      *
      * @param string $direction The sorting direction of the query (To return first or last record)
      *
-     * @return Model|Builder|object|null
+     * @return stdClass|null
      */
-    private function eventQuery(string $direction)
+    private function eventQuery(string $direction): ?stdClass
     {
         return DB::table('dates')
             ->select(['d_gid as id', 'd_year as year', 'd_fact AS fact', 'd_type AS type'])

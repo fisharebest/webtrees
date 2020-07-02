@@ -263,9 +263,10 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         return $this->viewResponse('modules/pedigree-chart/page', [
             'ajax_url'           => $ajax_url,
             'generations'        => $generations,
-            'generation_options' => $this->generationOptions(),
             'individual'         => $individual,
             'module'             => $this->name(),
+            'max_generations'    => self::MAXIMUM_GENERATIONS,
+            'min_generations'    => self::MINIMUM_GENERATIONS,
             'style'              => $style,
             'styles'             => $this->styles(),
             'title'              => $this->chartTitle($individual),
@@ -370,14 +371,6 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         ]);
 
         return '<a class="dropdown-item" href="' . e($url) . '" title="' . strip_tags($title) . '">' . $text . '</a>';
-    }
-
-    /**
-     * @return string[]
-     */
-    protected function generationOptions(): array
-    {
-        return FunctionsEdit::numericOptions(range(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS));
     }
 
     /**

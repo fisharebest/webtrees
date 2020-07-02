@@ -251,7 +251,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
             'user_id'   => $user->id(),
             'xref'      => $record->xref(),
         ], [
-            'favorite_type' => $record::RECORD_TYPE,
+            'favorite_type' => $record->tag(),
             'note'          => $note,
         ]);
     }

@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-10 20:40+0100\n"
-"PO-Revision-Date: 2020-03-31 19:05+0000\n"
-"Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
-"Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
-"Language: af\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-06-04 17:16+0000\nLast-Translator: Chris Theron <tronsmit@gmail.com>\nLanguage-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\nLanguage: af\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -474,13 +462,13 @@ msgstr "&lt;kies&gt;"
 #: app/Age.php:203
 #, php-format
 msgid "(%s after death)"
-msgstr ""
+msgstr "(%s na afsterwe)"
 
 #. I18N: The current age of a living individual
 #: app/Age.php:177
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(ouderdom %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:181
@@ -1927,7 +1915,7 @@ msgstr "'n Onverwagte databasisfout het voorgekom."
 
 #: resources/views/admin/control-panel.phtml:83
 msgid "An upgrade is available."
-msgstr ""
+msgstr "’n Opgradering is beskikbaar."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -2602,7 +2590,7 @@ msgstr "Bing Maps™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
-msgstr ""
+msgstr "Bing™ webmeester gereedskap"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:261
@@ -4146,7 +4134,7 @@ msgid "Cremation of a father"
 msgstr "Verassing van 'n vader"
 
 #: app/GedcomTag.php:1586 app/GedcomTag.php:1597 app/GedcomTag.php:1608
-msgid "Cremation of a grand-parent"
+msgid "Cremation of a grandparent"
 msgstr "Verassing van 'n grootouer"
 
 #: app/GedcomTag.php:1553 app/GedcomTag.php:1564 app/GedcomTag.php:1575
@@ -4763,7 +4751,7 @@ msgstr "Dood van 'n vader"
 
 #: app/GedcomTag.php:1711 app/GedcomTag.php:1722 app/GedcomTag.php:1733
 #: resources/views/admin/trees-preferences.phtml:493
-msgid "Death of a grand-parent"
+msgid "Death of a grandparent"
 msgstr "Dood van 'n grootouer"
 
 #: app/GedcomTag.php:1678 app/GedcomTag.php:1689 app/GedcomTag.php:1700
@@ -6861,11 +6849,11 @@ msgstr "Google Maps™"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
-msgstr ""
+msgstr "Google™ analytics"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
-msgstr ""
+msgstr "Google™ webmeester gereedskap"
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:785
@@ -7488,7 +7476,7 @@ msgstr "In die tweede weergawe van webtrees word aangepaste miniatuurbeelde as '
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include aliases"
-msgstr ""
+msgstr "Sluit aliasse in"
 
 #: resources/views/admin/trees-unconnected.phtml:27
 msgid "Include associates"
@@ -8268,7 +8256,7 @@ msgstr "Links"
 #. I18N: Name of a module - historic/obsolete URLs.
 #: app/Module/RedirectLegacyUrlsModule.php:118
 msgid "Legacy URLs"
-msgstr ""
+msgstr "Argaïese URL’s"
 
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:816
@@ -8963,7 +8951,7 @@ msgstr "Pas die presiese teks, tensy dit in die middel van 'n woord voorkom."
 
 #: app/Module/MatomoAnalyticsModule.php:42
 msgid "Matomo™ / Piwik™ analytics"
-msgstr ""
+msgstr "Matomo™ / Piwik™ analytics"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -10148,7 +10136,7 @@ msgstr "Niks gevind nie."
 #: resources/views/modules/pedigree-map/chart.phtml:110
 #: resources/views/modules/places/tab.phtml:102
 msgid "Nothing to show"
-msgstr ""
+msgstr "Niks om te vertoon nie"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
@@ -11436,7 +11424,7 @@ msgstr "Rekords"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:112
 msgid "Redirect old URLs from webtrees version 1."
-msgstr ""
+msgstr "Herlei ou URL’s vanaf webtrees weergawe 1."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:573
@@ -11581,7 +11569,7 @@ msgstr "Godsdienstige naam"
 #: resources/views/modules/place-hierarchy/map.phtml:71
 #: resources/views/modules/places/tab.phtml:58
 msgid "Reload map"
-msgstr ""
+msgstr "Herlaai kaart"
 
 #: resources/views/modules/review_changes/config.phtml:24
 msgid "Reminder email frequency (days)"
@@ -12046,7 +12034,7 @@ msgstr "Soek en vervang teks deur eenvoudige soektogte of gevorderde patroonherk
 #. I18N: Help text for the “Description META tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:203
 msgid "Search engines may use this description of your site in their search results."
-msgstr ""
+msgstr "Soekprogramme kan hierdie beskrywing van jou werf in hul soekresultate gebruik."
 
 #: resources/views/modules/media-list/page.phtml:52
 msgid "Search filters"
@@ -13247,7 +13235,7 @@ msgstr "Begin perk vir datum van wysigings"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:1029
@@ -16845,15 +16833,15 @@ msgstr "skoonpa"
 
 #: app/Functions/Functions.php:636
 msgid "fiancé"
-msgstr ""
+msgstr "verloofde"
 
 #: app/Functions/Functions.php:683
 msgid "fiancé(e)"
-msgstr ""
+msgstr "verloofde"
 
 #: app/Functions/Functions.php:660
 msgid "fiancée"
-msgstr ""
+msgstr "verloofde"
 
 #: app/Functions/Functions.php:491
 msgid "fifteenth cousin"

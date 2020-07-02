@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -128,7 +128,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         $exclude_facts = $sidebar_facts->merge($tab_facts)->flatten();
 
-
         // The individual’s own facts
         $indifacts = $individual->facts()
             ->filter(static function (Fact $fact) use ($exclude_facts): bool {
@@ -167,7 +166,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         return view('modules/personal_facts/tab', [
             'can_edit'             => $individual->canEdit(),
-            'clipboard_facts'      => $this->clipboard_service->pastableFacts($individual, $exclude_facts),
+            'clipboard_facts'      => $this->clipboard_service->pastableFacts($individual, new Collection()),
             'has_historical_facts' => $historical_facts !== [],
             'individual'           => $individual,
             'facts'                => $indifacts,
@@ -213,6 +212,23 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     }
 
     /**
+     * Convert an event into a special "event of a close relative".
+     *
+     * @param Fact   $fact
+     * @param string $type
+     *
+     * @return Fact
+     */
+    private function convertEvent(Fact $fact, string $type): Fact
+    {
+        $gedcom = $fact->gedcom();
+        $gedcom = preg_replace('/\n2 TYPE .*/', '', $gedcom);
+        $gedcom = preg_replace('/^1 .*/', "1 EVEN CLOSE_RELATIVE\n2 TYPE " . $type, $gedcom);
+
+        return new Fact($gedcom, $fact->record(), $fact->id());
+    }
+
+    /**
      * Spouse facts that are shown on an individual’s page.
      *
      * @param Individual $individual Show events that occured during the lifetime of this individual
@@ -226,14 +242,30 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     {
         $SHOW_RELATIVES_EVENTS = $individual->tree()->getPreference('SHOW_RELATIVES_EVENTS');
 
+        $death_of_a_spouse = [
+            'DEAT' => [
+                'M' => I18N::translate('Death of a husband'),
+                'F' => I18N::translate('Death of a wife'),
+                'U' => I18N::translate('Death of a spouse'),
+            ],
+            'BURI' => [
+                'M' => I18N::translate('Burial of a husband'),
+                'F' => I18N::translate('Burial of a wife'),
+                'U' => I18N::translate('Burial of a spouse'),
+            ],
+            'CREM' => [
+                'M' => I18N::translate('Cremation of a husband'),
+                'F' => I18N::translate('Cremation of a wife'),
+                'U' => I18N::translate('Cremation of a spouse'),
+            ],
+        ];
+
         $facts = [];
-        if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
-            foreach ($spouse->facts(Gedcom::DEATH_EVENTS) as $fact) {
+
+        if (strpos($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU') !== false) {
+            foreach ($spouse->facts(['DEAT', 'BURI', 'CREM']) as $fact) {
                 if ($this->includeFact($fact, $min_date, $max_date)) {
-                    // Convert the event to a close relatives event.
-                    $rela_fact = clone $fact;
-                    $rela_fact->setTag('_' . $fact->getTag() . '_SPOU');
-                    $facts[] = $rela_fact;
+                    $facts[] = $this->convertEvent($fact, $death_of_a_spouse[$fact->getTag()][$fact->record()->sex()]);
                 }
             }
         }
@@ -256,6 +288,288 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     private function childFacts(Individual $person, Family $family, $option, $relation, Date $min_date, Date $max_date): array
     {
         $SHOW_RELATIVES_EVENTS = $person->tree()->getPreference('SHOW_RELATIVES_EVENTS');
+
+        $birth_of_a_child = [
+            'BIRT' => [
+                'M' => I18N::translate('Birth of a son'),
+                'F' => I18N::translate('Birth of a daughter'),
+                'U' => I18N::translate('Birth of a child'),
+            ],
+            'CHR' => [
+                'M' => I18N::translate('Christening of a son'),
+                'F' => I18N::translate('Christening of a daughter'),
+                'U' => I18N::translate('Christening of a child'),
+            ],
+            'BAPM' => [
+                'M' => I18N::translate('Baptism of a son'),
+                'F' => I18N::translate('Baptism of a daughter'),
+                'U' => I18N::translate('Baptism of a child'),
+            ],
+            'ADOP' => [
+                'M' => I18N::translate('Adoption of a son'),
+                'F' => I18N::translate('Adoption of a daughter'),
+                'U' => I18N::translate('Adoption of a child'),
+            ],
+        ];
+
+        $birth_of_a_sibling = [
+            'BIRT' => [
+                'M' => I18N::translate('Birth of a brother'),
+                'F' => I18N::translate('Birth of a sister'),
+                'U' => I18N::translate('Birth of a sibling'),
+            ],
+            'CHR' => [
+                'M' => I18N::translate('Christening of a brother'),
+                'F' => I18N::translate('Christening of a sister'),
+                'U' => I18N::translate('Christening of a sibling'),
+            ],
+            'BAPM' => [
+                'M' => I18N::translate('Baptism of a brother'),
+                'F' => I18N::translate('Baptism of a sister'),
+                'U' => I18N::translate('Baptism of a sibling'),
+            ],
+            'ADOP' => [
+                'M' => I18N::translate('Adoption of a brother'),
+                'F' => I18N::translate('Adoption of a sister'),
+                'U' => I18N::translate('Adoption of a sibling'),
+            ],
+        ];
+
+        $birth_of_a_half_sibling = [
+            'BIRT' => [
+                'M' => I18N::translate('Birth of a half-brother'),
+                'F' => I18N::translate('Birth of a half-sister'),
+                'U' => I18N::translate('Birth of a half-sibling'),
+            ],
+            'CHR' => [
+                'M' => I18N::translate('Christening of a half-brother'),
+                'F' => I18N::translate('Christening of a half-sister'),
+                'U' => I18N::translate('Christening of a half-sibling'),
+            ],
+            'BAPM' => [
+                'M' => I18N::translate('Baptism of a half-brother'),
+                'F' => I18N::translate('Baptism of a half-sister'),
+                'U' => I18N::translate('Baptism of a half-sibling'),
+            ],
+            'ADOP' => [
+                'M' => I18N::translate('Adoption of a half-brother'),
+                'F' => I18N::translate('Adoption of a half-sister'),
+                'U' => I18N::translate('Adoption of a half-sibling'),
+            ],
+        ];
+
+        $birth_of_a_grandchild = [
+            'BIRT' => [
+                'M' => I18N::translate('Birth of a grandson'),
+                'F' => I18N::translate('Birth of a granddaughter'),
+                'U' => I18N::translate('Birth of a grandchild'),
+            ],
+            'CHR' => [
+                'M' => I18N::translate('Christening of a grandson'),
+                'F' => I18N::translate('Christening of a granddaughter'),
+                'U' => I18N::translate('Christening of a grandchild'),
+            ],
+            'BAPM' => [
+                'M' => I18N::translate('Baptism of a grandson'),
+                'F' => I18N::translate('Baptism of a granddaughter'),
+                'U' => I18N::translate('Baptism of a grandchild'),
+            ],
+            'ADOP' => [
+                'M' => I18N::translate('Adoption of a grandson'),
+                'F' => I18N::translate('Adoption of a granddaughter'),
+                'U' => I18N::translate('Adoption of a grandchild'),
+            ],
+        ];
+
+        $birth_of_a_grandchild1 = [
+            'BIRT' => [
+                'M' => I18N::translateContext('daughter’s son', 'Birth of a grandson'),
+                'F' => I18N::translateContext('daughter’s daughter', 'Birth of a granddaughter'),
+                'U' => I18N::translate('Birth of a grandchild'),
+            ],
+            'CHR' => [
+                'M' => I18N::translateContext('daughter’s son', 'Christening of a grandson'),
+                'F' => I18N::translateContext('daughter’s daughter', 'Christening of a granddaughter'),
+                'U' => I18N::translate('Christening of a grandchild'),
+            ],
+            'BAPM' => [
+                'M' => I18N::translateContext('daughter’s son', 'Baptism of a grandson'),
+                'F' => I18N::translateContext('daughter’s daughter', 'Baptism of a granddaughter'),
+                'U' => I18N::translate('Baptism of a grandchild'),
+            ],
+            'ADOP' => [
+                'M' => I18N::translateContext('daughter’s son', 'Adoption of a grandson'),
+                'F' => I18N::translateContext('daughter’s daughter', 'Adoption of a granddaughter'),
+                'U' => I18N::translate('Adoption of a grandchild'),
+            ],
+        ];
+
+        $birth_of_a_grandchild2 = [
+            'BIRT' => [
+                'M' => I18N::translateContext('son’s son', 'Birth of a grandson'),
+                'F' => I18N::translateContext('son’s daughter', 'Birth of a granddaughter'),
+                'U' => I18N::translate('Birth of a grandchild'),
+            ],
+            'CHR' => [
+                'M' => I18N::translateContext('son’s son', 'Christening of a grandson'),
+                'F' => I18N::translateContext('son’s daughter', 'Christening of a granddaughter'),
+                'U' => I18N::translate('Christening of a grandchild'),
+            ],
+            'BAPM' => [
+                'M' => I18N::translateContext('son’s son', 'Baptism of a grandson'),
+                'F' => I18N::translateContext('son’s daughter', 'Baptism of a granddaughter'),
+                'U' => I18N::translate('Baptism of a grandchild'),
+            ],
+            'ADOP' => [
+                'M' => I18N::translateContext('son’s son', 'Adoption of a grandson'),
+                'F' => I18N::translateContext('son’s daughter', 'Adoption of a granddaughter'),
+                'U' => I18N::translate('Adoption of a grandchild'),
+            ],
+        ];
+
+        $death_of_a_child = [
+            'DEAT' => [
+                'M' => I18N::translate('Death of a son'),
+                'F' => I18N::translate('Death of a daughter'),
+                'U' => I18N::translate('Death of a child'),
+            ],
+            'BURI' => [
+                'M' => I18N::translate('Burial of a son'),
+                'F' => I18N::translate('Burial of a daughter'),
+                'U' => I18N::translate('Burial of a child'),
+            ],
+            'CREM' => [
+                'M' => I18N::translate('Cremation of a son'),
+                'F' => I18N::translate('Cremation of a daughter'),
+                'U' => I18N::translate('Cremation of a child'),
+            ],
+        ];
+
+        $death_of_a_sibling = [
+            'DEAT' => [
+                'M' => I18N::translate('Death of a brother'),
+                'F' => I18N::translate('Death of a sister'),
+                'U' => I18N::translate('Death of a sibling'),
+            ],
+            'BURI' => [
+                'M' => I18N::translate('Burial of a brother'),
+                'F' => I18N::translate('Burial of a sister'),
+                'U' => I18N::translate('Burial of a sibling'),
+            ],
+            'CREM' => [
+                'M' => I18N::translate('Cremation of a brother'),
+                'F' => I18N::translate('Cremation of a sister'),
+                'U' => I18N::translate('Cremation of a sibling'),
+            ],
+        ];
+
+        $death_of_a_half_sibling = [
+            'DEAT' => [
+                'M' => I18N::translate('Death of a half-brother'),
+                'F' => I18N::translate('Death of a half-sister'),
+                'U' => I18N::translate('Death of a half-sibling'),
+            ],
+            'BURI' => [
+                'M' => I18N::translate('Burial of a half-brother'),
+                'F' => I18N::translate('Burial of a half-sister'),
+                'U' => I18N::translate('Burial of a half-sibling'),
+            ],
+            'CREM' => [
+                'M' => I18N::translate('Cremation of a half-brother'),
+                'F' => I18N::translate('Cremation of a half-sister'),
+                'U' => I18N::translate('Cremation of a half-sibling'),
+            ],
+        ];
+
+        $death_of_a_grandchild = [
+            'DEAT' => [
+                'M' => I18N::translate('Death of a grandson'),
+                'F' => I18N::translate('Death of a granddaughter'),
+                'U' => I18N::translate('Death of a grandchild'),
+            ],
+            'BURI' => [
+                'M' => I18N::translate('Burial of a grandson'),
+                'F' => I18N::translate('Burial of a granddaughter'),
+                'U' => I18N::translate('Burial of a grandchild'),
+            ],
+            'CREM' => [
+                'M' => I18N::translate('Cremation of a grandson'),
+                'F' => I18N::translate('Cremation of a granddaughter'),
+                'U' => I18N::translate('Baptism of a grandchild'),
+            ],
+        ];
+
+        $death_of_a_grandchild1 = [
+            'DEAT' => [
+                'M' => I18N::translateContext('daughter’s son', 'Death of a grandson'),
+                'F' => I18N::translateContext('daughter’s daughter', 'Death of a granddaughter'),
+                'U' => I18N::translate('Death of a grandchild'),
+            ],
+            'BURI' => [
+                'M' => I18N::translateContext('daughter’s son', 'Burial of a grandson'),
+                'F' => I18N::translateContext('daughter’s daughter', 'Burial of a granddaughter'),
+                'U' => I18N::translate('Burial of a grandchild'),
+            ],
+            'CREM' => [
+                'M' => I18N::translateContext('daughter’s son', 'Cremation of a grandson'),
+                'F' => I18N::translateContext('daughter’s daughter', 'Cremation of a granddaughter'),
+                'U' => I18N::translate('Baptism of a grandchild'),
+            ],
+        ];
+
+        $death_of_a_grandchild2 = [
+            'DEAT' => [
+                'M' => I18N::translateContext('son’s son', 'Death of a grandson'),
+                'F' => I18N::translateContext('son’s daughter', 'Death of a granddaughter'),
+                'U' => I18N::translate('Death of a grandchild'),
+            ],
+            'BURI' => [
+                'M' => I18N::translateContext('son’s son', 'Burial of a grandson'),
+                'F' => I18N::translateContext('son’s daughter', 'Burial of a granddaughter'),
+                'U' => I18N::translate('Burial of a grandchild'),
+            ],
+            'CREM' => [
+                'M' => I18N::translateContext('son’s son', 'Cremation of a grandson'),
+                'F' => I18N::translateContext('son’s daughter', 'Cremation of a granddaughter'),
+                'U' => I18N::translate('Cremation of a grandchild'),
+            ],
+        ];
+
+        $marriage_of_a_child = [
+            'M' => I18N::translate('Marriage of a son'),
+            'F' => I18N::translate('Marriage of a daughter'),
+            'U' => I18N::translate('Marriage of a child'),
+        ];
+
+        $marriage_of_a_grandchild = [
+            'M' => I18N::translate('Marriage of a grandson'),
+            'F' => I18N::translate('Marriage of a granddaughter'),
+            'U' => I18N::translate('Marriage of a grandchild'),
+        ];
+
+        $marriage_of_a_grandchild1 = [
+            'M' => I18N::translateContext('daughter’s son', 'Marriage of a grandson'),
+            'F' => I18N::translateContext('daughter’s daughter', 'Marriage of a granddaughter'),
+            'U' => I18N::translate('Marriage of a grandchild'),
+        ];
+
+        $marriage_of_a_grandchild2 = [
+            'M' => I18N::translateContext('son’s son', 'Marriage of a grandson'),
+            'F' => I18N::translateContext('son’s daughter', 'Marriage of a granddaughter'),
+            'U' => I18N::translate('Marriage of a grandchild'),
+        ];
+
+        $marriage_of_a_sibling = [
+            'M' => I18N::translate('Marriage of a brother'),
+            'F' => I18N::translate('Marriage of a sister'),
+            'U' => I18N::translate('Marriage of a sibling'),
+        ];
+
+        $marriage_of_a_half_sibling = [
+            'M' => I18N::translate('Marriage of a half-brother'),
+            'F' => I18N::translate('Marriage of a half-sister'),
+            'U' => I18N::translate('Marriage of a half-sibling'),
+        ];
 
         $facts = [];
 
@@ -295,71 +609,96 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             }
             // add child’s birth
             if (strpos($SHOW_RELATIVES_EVENTS, '_BIRT' . str_replace('_HSIB', '_SIBL', $option)) !== false) {
-                foreach ($child->facts(Gedcom::BIRTH_EVENTS) as $fact) {
+                foreach ($child->facts(['BIRT', 'CHR', 'BAPM', 'ADOP']) as $fact) {
                     // Always show _BIRT_CHIL, even if the dates are not known
                     if ($option === '_CHIL' || $this->includeFact($fact, $min_date, $max_date)) {
-                        if ($option === '_GCHI' && $relation === 'dau') {
-                            // Convert the event to a close relatives event.
-                            $rela_fact = clone $fact;
-                            $rela_fact->setTag('_' . $fact->getTag() . '_GCH1');
-                            $facts[] = $rela_fact;
-                        } elseif ($option === '_GCHI' && $relation === 'son') {
-                            // Convert the event to a close relatives event.
-                            $rela_fact = clone $fact;
-                            $rela_fact->setTag('_' . $fact->getTag() . '_GCH2');
-                            $facts[] = $rela_fact;
-                        } else {
-                            // Convert the event to a close relatives event.
-                            $rela_fact = clone $fact;
-                            $rela_fact->setTag('_' . $fact->getTag() . $option);
-                            $facts[] = $rela_fact;
+                        switch ($option) {
+                            case '_GCHI':
+                                switch ($relation) {
+                                    case 'dau':
+                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild1[$fact->getTag()][$fact->record()->sex()]);
+                                        break;
+                                    case 'son':
+                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild2[$fact->getTag()][$fact->record()->sex()]);
+                                        break;
+                                    case 'chil':
+                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild[$fact->getTag()][$fact->record()->sex()]);
+                                        break;
+                                }
+                                break;
+                            case '_SIBL':
+                                $facts[] = $this->convertEvent($fact, $birth_of_a_sibling[$fact->getTag()][$fact->record()->sex()]);
+                                break;
+                            case '_HSIB':
+                                $facts[] = $this->convertEvent($fact, $birth_of_a_half_sibling[$fact->getTag()][$fact->record()->sex()]);
+                                break;
+                            case '_CHIL':
+                                $facts[] = $this->convertEvent($fact, $birth_of_a_child[$fact->getTag()][$fact->record()->sex()]);
+                                break;
                         }
                     }
                 }
             }
             // add child’s death
             if (strpos($SHOW_RELATIVES_EVENTS, '_DEAT' . str_replace('_HSIB', '_SIBL', $option)) !== false) {
-                foreach ($child->facts(Gedcom::DEATH_EVENTS) as $fact) {
+                foreach ($child->facts(['DEAT', 'BURI', 'CREM']) as $fact) {
                     if ($this->includeFact($fact, $min_date, $max_date)) {
-                        if ($option === '_GCHI' && $relation === 'dau') {
-                            // Convert the event to a close relatives event.
-                            $rela_fact = clone $fact;
-                            $rela_fact->setTag('_' . $fact->getTag() . '_GCH1');
-                            $facts[] = $rela_fact;
-                        } elseif ($option === '_GCHI' && $relation === 'son') {
-                            // Convert the event to a close relatives event.
-                            $rela_fact = clone $fact;
-                            $rela_fact->setTag('_' . $fact->getTag() . '_GCH2');
-                            $facts[] = $rela_fact;
-                        } else {
-                            // Convert the event to a close relatives event.
-                            $rela_fact = clone $fact;
-                            $rela_fact->setTag('_' . $fact->getTag() . $option);
-                            $facts[] = $rela_fact;
+                        switch ($option) {
+                            case '_GCHI':
+                                switch ($relation) {
+                                    case 'dau':
+                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild1[$fact->getTag()][$fact->record()->sex()]);
+                                        break;
+                                    case 'son':
+                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild2[$fact->getTag()][$fact->record()->sex()]);
+                                        break;
+                                    case 'chi':
+                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild[$fact->getTag()][$fact->record()->sex()]);
+                                        break;
+                                }
+                                break;
+                            case '_SIBL':
+                                $facts[] = $this->convertEvent($fact, $death_of_a_sibling[$fact->getTag()][$fact->record()->sex()]);
+                                break;
+                            case '_HSIB':
+                                $facts[] = $this->convertEvent($fact, $death_of_a_half_sibling[$fact->getTag()][$fact->record()->sex()]);
+                                break;
+                            case 'CHIL':
+                                $facts[] = $this->convertEvent($fact, $death_of_a_child[$fact->getTag()][$fact->record()->sex()]);
+                                break;
                         }
                     }
                 }
             }
+
             // add child’s marriage
-            if (strstr($SHOW_RELATIVES_EVENTS, '_MARR' . str_replace('_HSIB', '_SIBL', $option))) {
+            if (strpos($SHOW_RELATIVES_EVENTS, '_MARR' . str_replace('_HSIB', '_SIBL', $option)) !== false) {
                 foreach ($child->spouseFamilies() as $sfamily) {
                     foreach ($sfamily->facts(['MARR']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
-                            if ($option === '_GCHI' && $relation === 'dau') {
-                                // Convert the event to a close relatives event.
-                                $rela_fact = clone $fact;
-                                $rela_fact->setTag('_' . $fact->getTag() . '_GCH1');
-                                $facts[] = $rela_fact;
-                            } elseif ($option === '_GCHI' && $relation === 'son') {
-                                // Convert the event to a close relatives event.
-                                $rela_fact = clone $fact;
-                                $rela_fact->setTag('_' . $fact->getTag() . '_GCH2');
-                                $facts[] = $rela_fact;
-                            } else {
-                                // Convert the event to a close relatives event.
-                                $rela_fact = clone $fact;
-                                $rela_fact->setTag('_' . $fact->getTag() . $option);
-                                $facts[] = $rela_fact;
+                            switch ($option) {
+                                case '_GCHI':
+                                    switch ($relation) {
+                                        case 'dau':
+                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild1['F']);
+                                            break;
+                                        case 'son':
+                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild2['M']);
+                                            break;
+                                        case 'chi':
+                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild['U']);
+                                            break;
+                                    }
+                                    break;
+                                case '_SIBL':
+                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_sibling['U']);
+                                    break;
+                                case '_HSIB':
+                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_half_sibling['U']);
+                                    break;
+                                case '_CHIL':
+                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_child['U']);
+                                    break;
                             }
                         }
                     }
@@ -380,13 +719,91 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Fact[]
      */
-    private function parentFacts(Individual $person, $sosa, Date $min_date, Date $max_date): array
+    private function parentFacts(Individual $person, int $sosa, Date $min_date, Date $max_date): array
     {
         $SHOW_RELATIVES_EVENTS = $person->tree()->getPreference('SHOW_RELATIVES_EVENTS');
 
+        $death_of_a_parent = [
+            'DEAT' => [
+                'M' => I18N::translate('Death of a father'),
+                'F' => I18N::translate('Death of a mother'),
+                'U' => I18N::translate('Death of a parent'),
+            ],
+            'BURI' => [
+                'M' => I18N::translate('Burial of a father'),
+                'F' => I18N::translate('Burial of a mother'),
+                'U' => I18N::translate('Burial of a parent'),
+            ],
+            'CREM' => [
+                'M' => I18N::translate('Cremation of a father'),
+                'F' => I18N::translate('Cremation of a mother'),
+                'U' => I18N::translate('Cremation of a parent'),
+            ],
+        ];
+
+        $death_of_a_grandparent = [
+            'DEAT' => [
+                'M' => I18N::translate('Death of a grandfather'),
+                'F' => I18N::translate('Death of a grandmother'),
+                'U' => I18N::translate('Death of a grandparent'),
+            ],
+            'BURI' => [
+                'M' => I18N::translate('Burial of a grandfather'),
+                'F' => I18N::translate('Burial of a grandmother'),
+                'U' => I18N::translate('Burial of a grandparent'),
+            ],
+            'CREM' => [
+                'M' => I18N::translate('Cremation of a grandfather'),
+                'F' => I18N::translate('Cremation of a grandmother'),
+                'U' => I18N::translate('Cremation of a grandparent'),
+            ],
+        ];
+
+        $death_of_a_maternal_grandparent = [
+            'DEAT' => [
+                'M' => I18N::translate('Death of a maternal grandfather'),
+                'F' => I18N::translate('Death of a maternal grandmother'),
+                'U' => I18N::translate('Death of a grandparent'),
+            ],
+            'BURI' => [
+                'M' => I18N::translate('Burial of a maternal grandfather'),
+                'F' => I18N::translate('Burial of a maternal grandmother'),
+                'U' => I18N::translate('Burial of a grandparent'),
+            ],
+            'CREM' => [
+                'M' => I18N::translate('Cremation of a maternal grandfather'),
+                'F' => I18N::translate('Cremation of a maternal grandmother'),
+                'U' => I18N::translate('Cremation of a grandparent'),
+            ],
+        ];
+
+        $death_of_a_paternal_grandparent = [
+            'DEAT' => [
+                'M' => I18N::translate('Death of a paternal grandfather'),
+                'F' => I18N::translate('Death of a paternal grandmother'),
+                'U' => I18N::translate('Death of a grandparent'),
+            ],
+            'BURI' => [
+                'M' => I18N::translate('Burial of a paternal grandfather'),
+                'F' => I18N::translate('Burial of a paternal grandmother'),
+                'U' => I18N::translate('Burial of a grandparent'),
+            ],
+            'CREM' => [
+                'M' => I18N::translate('Cremation of a paternal grandfather'),
+                'F' => I18N::translate('Cremation of a paternal grandmother'),
+                'U' => I18N::translate('Cremation of a grandparent'),
+            ],
+        ];
+
+        $marriage_of_a_parent = [
+            'M' => I18N::translate('Marriage of a father'),
+            'F' => I18N::translate('Marriage of a mother'),
+            'U' => I18N::translate('Marriage of a parent'),
+        ];
+
         $facts = [];
 
-        if ($sosa == 1) {
+        if ($sosa === 1) {
             foreach ($person->childFamilies() as $family) {
                 // Add siblings
                 foreach ($this->childFacts($person, $family, '_SIBL', '', $min_date, $max_date) as $fact) {
@@ -408,15 +825,13 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                 }
             }
 
-            if (strstr($SHOW_RELATIVES_EVENTS, '_MARR_PARE')) {
+            if (strpos($SHOW_RELATIVES_EVENTS, '_MARR_PARE') !== false) {
                 // add father/mother marriages
                 foreach ($person->childFamilies() as $sfamily) {
                     foreach ($sfamily->facts(['MARR']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             // marriage of parents (to each other)
-                            $rela_fact = clone $fact;
-                            $rela_fact->setTag('_' . $fact->getTag() . '_FAMC');
-                            $facts[] = $rela_fact;
+                            $facts[] = $this->convertEvent($fact, I18N::translate('Marriage of parents'));
                         }
                     }
                 }
@@ -424,10 +839,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                     foreach ($sfamily->facts(['MARR']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             // marriage of a parent (to another spouse)
-                            // Convert the event to a close relatives event
-                            $rela_fact = clone $fact;
-                            $rela_fact->setTag('_' . $fact->getTag() . '_PARE');
-                            $facts[] = $rela_fact;
+                            $facts[] = $this->convertEvent($fact, $marriage_of_a_parent['U']);
                         }
                     }
                 }
@@ -436,28 +848,26 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         foreach ($person->childFamilies() as $family) {
             foreach ($family->spouses() as $parent) {
-                if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT' . ($sosa == 1 ? '_PARE' : '_GPAR'))) {
-                    foreach ($parent->facts(Gedcom::DEATH_EVENTS) as $fact) {
+                if (strpos($SHOW_RELATIVES_EVENTS, '_DEAT' . ($sosa === 1 ? '_PARE' : '_GPAR')) !== false) {
+                    foreach ($parent->facts(['DEAT', 'BURI', 'CREM']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             switch ($sosa) {
                                 case 1:
-                                    // Convert the event to a close relatives event.
-                                    $rela_fact = clone $fact;
-                                    $rela_fact->setTag('_' . $fact->getTag() . '_PARE');
-                                    $facts[] = $rela_fact;
+                                    $facts[] = $this->convertEvent($fact, $death_of_a_parent[$fact->getTag()][$fact->record()->sex()]);
                                     break;
                                 case 2:
-                                    // Convert the event to a close relatives event
-                                    $rela_fact = clone $fact;
-                                    $rela_fact->setTag('_' . $fact->getTag() . '_GPA1');
-                                    $facts[] = $rela_fact;
-                                    break;
                                 case 3:
-                                    // Convert the event to a close relatives event
-                                    $rela_fact = clone $fact;
-                                    $rela_fact->setTag('_' . $fact->getTag() . '_GPA2');
-                                    $facts[] = $rela_fact;
-                                    break;
+                                    switch ($person->sex()) {
+                                        case 'M':
+                                            $facts[] = $this->convertEvent($fact, $death_of_a_paternal_grandparent[$fact->getTag()][$fact->record()->sex()]);
+                                            break;
+                                        case 'F':
+                                            $facts[] = $this->convertEvent($fact, $death_of_a_maternal_grandparent[$fact->getTag()][$fact->record()->sex()]);
+                                            break;
+                                        default:
+                                            $facts[] = $this->convertEvent($fact, $death_of_a_grandparent[$fact->getTag()][$fact->record()->sex()]);
+                                            break;
+                                    }
                             }
                         }
                     }

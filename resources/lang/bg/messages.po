@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-10 20:40+0100\n"
-"PO-Revision-Date: 2017-07-03 14:22+0000\n"
-"Last-Translator: Philip <philip@speedguide.net>\n"
-"Language-Team: Bulgarian <https://translate.webtrees.net/projects/webtrees/webtrees/bg/>\n"
-"Language: bg\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-05-30 07:30+0000\nLast-Translator: Dieter <ungeahnt@proavitus.de>\nLanguage-Team: Bulgarian <https://translate.webtrees.net/projects/webtrees/webtrees/bg/>\nLanguage: bg\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -77,7 +65,7 @@ msgstr "%1$s KB изтеглени за %2$s секунди."
 #: app/Http/Controllers/Admin/UsersController.php:340
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s не съществува"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/Admin/UsersController.php:237
@@ -230,8 +218,8 @@ msgstr[1] "%s дни"
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s Семейство"
+msgstr[1] "%s Семейства"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
@@ -4146,7 +4134,7 @@ msgid "Cremation of a father"
 msgstr "Кремация на баща"
 
 #: app/GedcomTag.php:1586 app/GedcomTag.php:1597 app/GedcomTag.php:1608
-msgid "Cremation of a grand-parent"
+msgid "Cremation of a grandparent"
 msgstr "Кремация на дядо/баба"
 
 #: app/GedcomTag.php:1553 app/GedcomTag.php:1564 app/GedcomTag.php:1575
@@ -4763,7 +4751,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1711 app/GedcomTag.php:1722 app/GedcomTag.php:1733
 #: resources/views/admin/trees-preferences.phtml:493
-msgid "Death of a grand-parent"
+msgid "Death of a grandparent"
 msgstr ""
 
 #: app/GedcomTag.php:1678 app/GedcomTag.php:1689 app/GedcomTag.php:1700

@@ -558,7 +558,7 @@ class FunctionsRtl
      * @param string $text
      * @param int    $offset
      *
-     * @return array
+     * @return array{'letter':string,'length':int}
      */
     public static function getChar(string $text, int $offset): array
     {

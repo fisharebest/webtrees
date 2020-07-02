@@ -53,10 +53,11 @@ class Select2MediaObject extends AbstractSelect2Handler
      * @param string $query
      * @param int    $offset
      * @param int    $limit
+     * @param string $at
      *
      * @return Collection<array<string,string>>
      */
-    protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
+    protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
         // Search by XREF
         $media = Factory::media()->make($query, $tree);
@@ -67,9 +68,9 @@ class Select2MediaObject extends AbstractSelect2Handler
             $results = $this->search_service->searchMedia([$tree], [$query], $offset, $limit);
         }
 
-        return $results->map(static function (Media $media): array {
+        return $results->map(static function (Media $media) use ($at): array {
             return [
-                'id'    => $media->xref(),
+                'id'    => $at . $media->xref() . $at,
                 'text'  => view('selects/media', ['media' => $media]),
                 'title' => ' ',
             ];

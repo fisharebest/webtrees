@@ -51,8 +51,10 @@ class EditRawFactAction implements RequestHandlerInterface
         assert(is_string($xref));
 
         $record = Factory::gedcomRecord()->make($xref, $tree);
+        $record = Auth::checkRecordAccess($record, true);
 
         $fact_id = $request->getAttribute('fact_id');
+        assert(is_string($fact_id));
 
         $params = (array) $request->getParsedBody();
 
@@ -70,6 +72,6 @@ class EditRawFactAction implements RequestHandlerInterface
             }
         }
 
-        return redirect($record->url());
+        return redirect($params['url'] ?? $record->url());
     }
 }

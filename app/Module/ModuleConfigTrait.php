@@ -25,11 +25,6 @@ namespace Fisharebest\Webtrees\Module;
 trait ModuleConfigTrait
 {
     /**
-     * @return string
-     */
-    abstract public function name(): string;
-
-    /**
      * The URL to a page where the user can modify the configuration of this module.
      *
      * @return string

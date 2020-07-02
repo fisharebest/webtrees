@@ -37,7 +37,7 @@ class Site
     /**
      * Everything from the wt_site_setting table.
      *
-     * @var array
+     * @var array<string,string>
      */
     public static $preferences = [];
 

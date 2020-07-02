@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Service;
 
+use function array_map;
+use function hexdec;
+use function ltrim;
+use function round;
+use function sprintf;
+
 /**
  * Functions for managing and manipulating colors.
  */
@@ -31,7 +37,7 @@ class ColorService
      * @param string $endColor   The end color
      * @param int    $steps      The number of steps to interpolate
      *
-     * @return array
+     * @return array<string>
      */
     public function interpolateRgb(string $startColor, string $endColor, int $steps): array
     {
@@ -78,10 +84,12 @@ class ColorService
      *
      * @param string $hex The HTML hex color code
      *
-     * @return array
+     * @return array<int>
      */
     private function hexToRgb(string $hex): array
     {
-        return array_map('hexdec', str_split(ltrim($hex, '#'), 2));
+        return array_map(function (string $hex): int {
+            return (int) hexdec($hex);
+        }, str_split(ltrim($hex, '#'), 2));
     }
 }

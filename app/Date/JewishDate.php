@@ -54,7 +54,7 @@ class JewishDate extends AbstractCalendarDate
      * day/month/year strings from a GEDCOM date
      * another CalendarDate object
      *
-     * @param array|int|AbstractCalendarDate $date
+     * @param array<string>|int|AbstractCalendarDate $date
      */
     public function __construct($date)
     {

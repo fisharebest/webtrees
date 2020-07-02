@@ -23,6 +23,7 @@ use Closure;
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
+use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
@@ -377,49 +378,14 @@ class Tree
      * @param resource $stream
      *
      * @return void
+     *
+     * @deprecated since 2.0.5.  Will be removed in 2.1.0
      */
     public function exportGedcom($stream): void
     {
-        $buffer = FunctionsExport::reformatRecord(FunctionsExport::gedcomHeader($this, 'UTF-8'));
+        $gedcom_export_service = new GedcomExportService();
 
-        $union_families = DB::table('families')
-            ->where('f_file', '=', $this->id)
-            ->select(['f_gedcom AS gedcom', 'f_id AS xref', new Expression('LENGTH(f_id) AS len'), new Expression('2 AS n')]);
-
-        $union_sources = DB::table('sources')
-            ->where('s_file', '=', $this->id)
-            ->select(['s_gedcom AS gedcom', 's_id AS xref', new Expression('LENGTH(s_id) AS len'), new Expression('3 AS n')]);
-
-        $union_other = DB::table('other')
-            ->where('o_file', '=', $this->id)
-            ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
-            ->select(['o_gedcom AS gedcom', 'o_id AS xref', new Expression('LENGTH(o_id) AS len'), new Expression('4 AS n')]);
-
-        $union_media = DB::table('media')
-            ->where('m_file', '=', $this->id)
-            ->select(['m_gedcom AS gedcom', 'm_id AS xref', new Expression('LENGTH(m_id) AS len'), new Expression('5 AS n')]);
-
-        DB::table('individuals')
-            ->where('i_file', '=', $this->id)
-            ->select(['i_gedcom AS gedcom', 'i_id AS xref', new Expression('LENGTH(i_id) AS len'), new Expression('1 AS n')])
-            ->union($union_families)
-            ->union($union_sources)
-            ->union($union_other)
-            ->union($union_media)
-            ->orderBy('n')
-            ->orderBy('len')
-            ->orderBy('xref')
-            ->chunk(1000, static function (Collection $rows) use ($stream, &$buffer): void {
-                foreach ($rows as $row) {
-                    $buffer .= FunctionsExport::reformatRecord($row->gedcom);
-                    if (strlen($buffer) > 65535) {
-                        fwrite($stream, $buffer);
-                        $buffer = '';
-                    }
-                }
-            });
-
-        fwrite($stream, $buffer . '0 TRLR' . Gedcom::EOL);
+        $gedcom_export_service->export($this, $stream);
     }
 
     /**

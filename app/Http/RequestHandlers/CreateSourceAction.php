@@ -53,7 +53,7 @@ class CreateSourceAction implements RequestHandlerInterface
         $privacy_restriction = $params['privacy-restriction'];
         $edit_restriction    = $params['edit-restriction'];
 
-        // Fix whitespace
+        // Fix non-printing characters
         $title        = trim(preg_replace('/\s+/', ' ', $title));
         $abbreviation = trim(preg_replace('/\s+/', ' ', $abbreviation));
         $author       = trim(preg_replace('/\s+/', ' ', $author));

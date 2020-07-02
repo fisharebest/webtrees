@@ -736,10 +736,6 @@ a:hover .name1, a:hover .name2 {
     padding: 1px;
 }
 
-.source_citations {
-    display: none;
-}
-
 .selected-option {
     background-color: #edf7fd;
 }
@@ -997,19 +993,6 @@ div.faq_body {
     clear: left;
 }
 
-#sex {
-    float: right;
-}
-
-#dates {
-    float: right;
-}
-
-#individual-names .wt-icon-edit,
-#individual-names .wt-icon-delete {
-    float: right;
-}
-
 #indi_note .fact_NOTE {
     float: left;
     margin: 0 5px 0 0;
@@ -1060,18 +1043,6 @@ div.faq_body {
     font-weight: bold;
     background: #000;
     color: #fff;
-}
-
-/* ======== Indi tabs ======== */
-/* Facts & Events tab */
-.media-display-image {
-    float: left;
-}
-
-.media-display-title {
-    float: left;
-    font-style: italic;
-    margin: 10px;
 }
 
 /* Sidebar - Family navigator */

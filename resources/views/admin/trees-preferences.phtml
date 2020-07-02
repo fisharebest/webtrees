@@ -1,6 +1,7 @@
 <?php
 
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 
@@ -87,10 +88,10 @@ use Fisharebest\Webtrees\I18N;
             <div class="col-sm-9">
                 <div class="row">
                     <div class="col-sm-6" style="padding-left: 0;">
-                        <?= view('components/select', ['name' => 'CALENDAR_FORMAT0', 'selected' => $calendar_formats[0], 'options' => FunctionsEdit::optionsCalendarConversions()]) ?>
+                        <?= view('components/select', ['name' => 'CALENDAR_FORMAT0', 'selected' => $calendar_formats[0], 'options' => ['none' => I18N::translate('No calendar conversion')] + Date::calendarNames()]) ?>
                     </div>
                     <div class="col-sm-6" style="padding-right: 0;">
-                        <?= view('components/select', ['name' => 'CALENDAR_FORMAT1', 'selected' => $calendar_formats[1], 'options' => FunctionsEdit::optionsCalendarConversions()]) ?>
+                        <?= view('components/select', ['name' => 'CALENDAR_FORMAT1', 'selected' => $calendar_formats[1], 'options' => ['none' => I18N::translate('No calendar conversion')] + Date::calendarNames()]) ?>
                     </div>
                 </div>
                 <p class="small text-muted">
@@ -251,7 +252,7 @@ use Fisharebest\Webtrees\I18N;
                 <?= /* I18N: A configuration setting */ I18N::translate('Show a download link in the media viewer') ?>
             </legend>
             <div class="col-sm-9">
-                <?= view('components/select', ['name' => 'SHOW_MEDIA_DOWNLOAD', 'selected' => $tree->getPreference('SHOW_MEDIA_DOWNLOAD'), 'options' => FunctionsEdit::optionsAccessLevels()]) ?>
+                <?= view('components/select', ['name' => 'SHOW_MEDIA_DOWNLOAD', 'selected' => $tree->getPreference('SHOW_MEDIA_DOWNLOAD'), 'options' => Auth::accessLevelNames()]) ?>
                 <p class="small text-muted">
                     <?= /* I18N: Help text for the “Show a download link in the media viewer” configuration setting */ I18N::translate('This option will make it easier for users to download images.') ?>
                 </p>
@@ -299,7 +300,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Images without watermarks') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'SHOW_NO_WATERMARK', 'selected' => $tree->getPreference('SHOW_NO_WATERMARK'), 'options' => FunctionsEdit::optionsAccessLevels()]) ?>
+            <?= view('components/select', ['name' => 'SHOW_NO_WATERMARK', 'selected' => $tree->getPreference('SHOW_NO_WATERMARK'), 'options' => Auth::accessLevelNames()]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Images without watermarks” configuration setting */ I18N::translate('Watermarks are optional and normally shown just to visitors.') ?>
             </p>
@@ -490,7 +491,7 @@ use Fisharebest\Webtrees\I18N;
                 <div class="form-check">
                     <label for="_DEAT_GPAR">
                         <input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_GPAR" value="_DEAT_GPAR" <?= in_array('_DEAT_GPAR', $relatives_events, true) ? 'checked' : '' ?>>
-                        <?= I18N::translate('Death of a grand-parent') ?>
+                        <?= I18N::translate('Death of a grandparent') ?>
                     </label>
                 </div>
             </div>
@@ -563,7 +564,7 @@ use Fisharebest\Webtrees\I18N;
                 <?= /* I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name */ I18N::translate(
                     'Show the %1$s %2$s parts of a place name.',
                     view('components/select', ['name' => 'SHOW_PEDIGREE_PLACES_SUFFIX', 'selected' => $tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX'), 'options' => ['0' => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'first'), '1' => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'last')]]),
-                    view('components/select', ['name' => 'SHOW_PEDIGREE_PLACES', 'selected' => $tree->getPreference('SHOW_PEDIGREE_PLACES'), 'options' => FunctionsEdit::numericOptions(range(1, 9))])
+                    view('components/select-number', ['name' => 'SHOW_PEDIGREE_PLACES', 'selected' => $tree->getPreference('SHOW_PEDIGREE_PLACES'), 'options' => range(1, 9)])
                 ) ?>
                 <p class="small text-muted">
                     <?= /* I18N: Help text for the “Abbreviate place names” configuration setting */ I18N::translate('Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>.') ?>

@@ -183,7 +183,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                     ],
                     'properties' => [
                         'icon'     => static::ICONS[$fact->getTag()] ?? static::DEFAULT_ICON,
-                        'tooltip'  => strip_tags($fact->place()->fullName()),
+                        'tooltip'  => $fact->place()->gedcomName(),
                         'summary'  => view('modules/places/event-sidebar', $this->summaryData($indi, $fact)),
                         'zoom'     => $location->zoom(),
                     ],
@@ -246,7 +246,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
             // Birth of a child
             $url  = $record->url();
             $name = $record->fullName();
-            $tag  = GedcomTag::getLabel('_BIRT_CHIL', $record);
+            $tag  = I18N::translate('Birth of a child');
         }
 
         return [

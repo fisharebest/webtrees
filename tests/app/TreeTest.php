@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Functions\FunctionsImport;
+use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use InvalidArgumentException;
@@ -339,7 +340,7 @@ class TreeTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Tree::exportGedcom
+     * @covers \Fisharebest\Webtrees\Services\GedcomExportService::export
      * @return void
      */
     public function testExportGedcom(): void
@@ -348,14 +349,17 @@ class TreeTest extends TestCase
 
         $fp = fopen('php://memory', 'wb');
 
-        $tree->exportGedcom($fp);
+        $gedcom_export_service = new GedcomExportService();
+        $gedcom_export_service->export($tree, $fp, true);
 
         rewind($fp);
 
         $original = file_get_contents(__DIR__ . '/../data/demo.ged');
         $export   = stream_get_contents($fp);
 
-        // The date and time in the HEAD record will be different.
+        // The version, date and time in the HEAD record will be different.
+        $original = preg_replace('/\n2 VERS .*/', '', $original, 1);
+        $export   = preg_replace('/\n2 VERS .*/', '', $export, 1);
         $original = preg_replace('/\n1 DATE .. ... ..../', '', $original, 1);
         $export   = preg_replace('/\n1 DATE .. ... ..../', '', $export, 1);
         $original = preg_replace('/\n2 TIME ..:..:../', '', $original, 1);

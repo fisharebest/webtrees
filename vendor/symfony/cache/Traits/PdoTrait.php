@@ -11,8 +11,10 @@
 
 namespace Symfony\Component\Cache\Traits;
 
+use Doctrine\DBAL\Abstraction\Result;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DBALException;
+use Doctrine\DBAL\Driver\Result as DriverResult;
 use Doctrine\DBAL\Driver\ServerInfoAwareConnection;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Exception\TableNotFoundException;
@@ -192,9 +194,16 @@ trait PdoTrait
         foreach ($ids as $id) {
             $stmt->bindValue(++$i, $id);
         }
-        $stmt->execute();
+        $result = $stmt->execute();
 
-        while ($row = $stmt->fetch(\PDO::FETCH_NUM)) {
+        if ($result instanceof Result) {
+            $result = $result->iterateNumeric();
+        } else {
+            $stmt->setFetchMode(\PDO::FETCH_NUM);
+            $result = $stmt;
+        }
+
+        foreach ($result as $row) {
             if (null === $row[1]) {
                 $expired[] = $row[0];
             } else {
@@ -224,9 +233,9 @@ trait PdoTrait
 
         $stmt->bindValue(':id', $id);
         $stmt->bindValue(':time', time(), \PDO::PARAM_INT);
-        $stmt->execute();
+        $result = $stmt->execute();
 
-        return (bool) $stmt->fetchColumn();
+        return (bool) ($result instanceof DriverResult ? $result->fetchOne() : $stmt->fetchColumn());
     }
 
     /**
@@ -275,7 +284,7 @@ trait PdoTrait
     /**
      * {@inheritdoc}
      */
-    protected function doSave(array $values, $lifetime)
+    protected function doSave(array $values, int $lifetime)
     {
         if (!$values = $this->marshaller->marshall($values, $failed)) {
             return $failed;
@@ -356,19 +365,19 @@ trait PdoTrait
 
         foreach ($values as $id => $data) {
             try {
-                $stmt->execute();
+                $result = $stmt->execute();
             } catch (TableNotFoundException $e) {
                 if (!$conn->isTransactionActive() || \in_array($this->driver, ['pgsql', 'sqlite', 'sqlsrv'], true)) {
                     $this->createTable();
                 }
-                $stmt->execute();
+                $result = $stmt->execute();
             } catch (\PDOException $e) {
                 if (!$conn->inTransaction() || \in_array($this->driver, ['pgsql', 'sqlite', 'sqlsrv'], true)) {
                     $this->createTable();
                 }
-                $stmt->execute();
+                $result = $stmt->execute();
             }
-            if (null === $driver && !$stmt->rowCount()) {
+            if (null === $driver && !($result instanceof DriverResult ? $result : $stmt)->rowCount()) {
                 try {
                     $insertStmt->execute();
                 } catch (DBALException $e) {

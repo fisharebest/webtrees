@@ -21,10 +21,11 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Fisharebest\ExtCalendar\GregorianCalendar;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
+
+use function preg_match;
 
 /**
  * A GEDCOM individual (INDI) object.
@@ -912,13 +913,19 @@ class Individual extends GedcomRecord
      */
     public function getChildFamilyLabel(Family $family): string
     {
-        if (preg_match('/\n1 FAMC @' . $family->xref() . '@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->gedcom(), $match)) {
-            // A specified pedigree
-            return GedcomCodePedi::getChildFamilyLabel($match[1]);
-        }
+        preg_match('/\n1 FAMC @' . $family->xref() . '@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->gedcom(), $match);
 
-        // Default (birth) pedigree
-        return GedcomCodePedi::getChildFamilyLabel('');
+        $values = [
+            'birth'   => I18N::translate('Family with parents'),
+            'adopted' => I18N::translate('Family with adoptive parents'),
+            'foster'  => I18N::translate('Family with foster parents'),
+            'sealing' => /* I18N: “sealing” is a Mormon ceremony. */
+                I18N::translate('Family with sealing parents'),
+            'rada'    => /* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
+                I18N::translate('Family with rada parents'),
+        ];
+
+        return $values[$match[1] ?? 'birth'] ?? $values['birth'];
     }
 
     /**
@@ -1036,7 +1043,6 @@ class Individual extends GedcomRecord
         $sublevel = 1 + (int) substr($gedcom, 0, 1);
         $GIVN     = preg_match("/\n{$sublevel} GIVN (.+)/", $gedcom, $match) ? $match[1] : '';
         $SURN     = preg_match("/\n{$sublevel} SURN (.+)/", $gedcom, $match) ? $match[1] : '';
-        $NICK     = preg_match("/\n{$sublevel} NICK (.+)/", $gedcom, $match) ? $match[1] : '';
 
         // SURN is an comma-separated list of surnames...
         if ($SURN !== '') {
@@ -1111,13 +1117,6 @@ class Individual extends GedcomRecord
             $GIVN = '@P.N.';
             $pos  = (int) strpos($full, '/');
             $full = substr($full, 0, $pos) . '@P.N. ' . substr($full, $pos);
-        }
-
-        // GEDCOM 5.5.1 nicknames should be specificied in a NICK field
-        // GEDCOM 5.5   nicknames should be specified in the NAME field, surrounded by quotes
-        if ($NICK && strpos($full, '"' . $NICK . '"') === false) {
-            // A NICK field is present, but not included in the NAME.  Show it at the end.
-            $full .= ' "' . $NICK . '"';
         }
 
         // Remove slashes - they don’t get displayed

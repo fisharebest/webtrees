@@ -114,17 +114,6 @@
   };
 }(window.webtrees = window.webtrees || {}));
 
-/**
- * @param {string} sid
- * @returns {boolean}
- */
-function expand_layer (sid) {
-  $('#' + sid + '_img').toggleClass('icon-plus icon-minus');
-  $('#' + sid).slideToggle('fast');
-  $('#' + sid + '-alt').toggle(); // hide something when we show the layer - and vice-versa
-  return false;
-}
-
 var pastefield;
 
 /**
@@ -830,7 +819,7 @@ document.addEventListener('click', (event) => {
         // Reload the current page. e.g. change language.
         document.location.reload();
       }
-    }).catch(function (error) {
+    }).catch((error) => {
       alert(error);
     });
   }

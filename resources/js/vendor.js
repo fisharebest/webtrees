@@ -29,11 +29,11 @@ import {
 import {
   // For resources/views/icons/*
   faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
-  faCalendar, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
+  faCalendar, faCaretDown, faCaretUp, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
   faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
   faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faPaintBrush, faPause, faPencilAlt,
   faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchMinus, faSearchPlus,
-  faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faThList, faThumbtack,
+  faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faTags, faThList, faThumbtack,
   faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench,
   // For the BeautifyMarker library
   faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater
@@ -112,8 +112,7 @@ import 'hideshowpassword';
 import 'moment';
 
 import 'jquery-colorbox';
-
-import 'wheelzoom';
+import 'pinch-zoom-element';
 
 import 'leaflet';
 import 'leaflet.markercluster';
@@ -125,12 +124,12 @@ window.$ = window.jQuery = $;
 library.add(
   // For resources/views/icons/*
   faBell, faCopy, faEnvelope, faFile, faFileAlt, faFileImage, faFolder, faKeyboard,
-  faMap, faMinusSquare, faPlusSquare, faStar, faStickyNote, faTrashAlt, faUser
+  faMap, faMinusSquare, faPlusSquare, faStar, faStickyNote, faTags, faTrashAlt, faUser
 );
 library.add(
   // For resources/views/icons/*
   faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
-  faCalendar, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
+  faCalendar, faCaretDown, faCaretUp, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
   faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
   faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faPaintBrush, faPause, faPencilAlt,
   faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchMinus, faSearchPlus,
@@ -146,3 +145,13 @@ window.Bloodhound = require('corejs-typeahead/dist/bloodhound.min.js');
 // See https://github.com/RubaXa/Sortable/issues/1229
 // window.Sortable = require('sortablejs');
 window.Sortable = Sortable;
+
+// Add RTL support for dropdown menu - see https://github.com/fisharebest/webtrees/issues/3332
+$('html[dir=rtl] .dropdown').on('shown.bs.dropdown', function (event) {
+  let menu = event.target.querySelector('.dropdown-menu');
+  // Bootstrap sets these *after* the event has fired, so wait before updating them.
+  setTimeout(() => {
+    menu.style.right='0';
+    menu.style.left='';
+  }, 1);
+});

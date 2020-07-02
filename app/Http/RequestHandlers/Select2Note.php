@@ -53,10 +53,11 @@ class Select2Note extends AbstractSelect2Handler
      * @param string $query
      * @param int    $offset
      * @param int    $limit
+     * @param string $at
      *
      * @return Collection<array<string,string>>
      */
-    protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
+    protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
         // Search by XREF
         $note = Factory::note()->make($query, $tree);
@@ -67,9 +68,9 @@ class Select2Note extends AbstractSelect2Handler
             $results = $this->search_service->searchNotes([$tree], [$query], $offset, $limit);
         }
 
-        return $results->map(static function (Note $note): array {
+        return $results->map(static function (Note $note) use ($at): array {
             return [
-                'id'    => $note->xref(),
+                'id'    => $at . $note->xref() . $at,
                 'text'  => view('selects/note', ['note' => $note]),
                 'title' => ' ',
             ];

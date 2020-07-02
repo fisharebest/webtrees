@@ -17,12 +17,13 @@
  * Common formatting for all themes.
  */
 
-@import "_block-charts.css";
+@import "_blocks.css";
 @import "_charts.css";
 @import "_colorbox.css";
 @import "_lists.css";
 @import "_mime-type-icons.css";
 @import "_on-screen-keyboard.css";
+@import "_pages.css";
 @import "_sortable.css";
 @import "_tab-relatives.css";
 
@@ -108,16 +109,9 @@ th.align-digits {
     quotes: "‘" "’" "“" "”";
 }
 
-/* Fix for https://github.com/DataTables/DataTablesSrc/issues/165 */
-table.dataTable.table-sm > thead > tr > th :not(.sorting_disabled) {
-    /* Most of the children were initially zero... */
-    padding-right: 0;
-}
-table.dataTable.table-sm > thead > tr > th .btn-group-sm > .btn {
-    /* ...except this one */
-    padding-right: 0.5rem;
-}
-table.dataTable.table-sm > thead > tr > th:not(.sorting_disabled) {
-    /* What the rule should have been! */
-    padding-right: 20px;
+/* Expand/collapse icons on accordions, etc. */
+[data-toggle=collapse][aria-expanded=true] > .wt-icon-expand {
+    display: none;
+}[data-toggle=collapse][aria-expanded=false] > .wt-icon-collapse {
+    display: none;
 }

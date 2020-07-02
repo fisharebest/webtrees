@@ -13,18 +13,18 @@ use Fisharebest\Webtrees\Submitter;
  * @var GedcomRecord $record
  */
 ?>
-<?php if ($record::RECORD_TYPE === Individual::RECORD_TYPE) : ?>
+<?php if ($record->tag() === Individual::RECORD_TYPE) : ?>
     <?= view('icons/individual') ?>
-<?php elseif ($record::RECORD_TYPE === Family::RECORD_TYPE) : ?>
+<?php elseif ($record->tag() === Family::RECORD_TYPE) : ?>
     <?= view('icons/family') ?>
-<?php elseif ($record::RECORD_TYPE === Source::RECORD_TYPE) : ?>
+<?php elseif ($record->tag() === Source::RECORD_TYPE) : ?>
     <?= view('icons/source') ?>
-<?php elseif ($record::RECORD_TYPE === Repository::RECORD_TYPE) : ?>
+<?php elseif ($record->tag() === Repository::RECORD_TYPE) : ?>
     <?= view('icons/repository') ?>
-<?php elseif ($record::RECORD_TYPE === Note::RECORD_TYPE) : ?>
+<?php elseif ($record->tag() === Note::RECORD_TYPE) : ?>
     <?= view('icons/note') ?>
-<?php elseif ($record::RECORD_TYPE === Media::RECORD_TYPE) : ?>
+<?php elseif ($record->tag() === Media::RECORD_TYPE) : ?>
     <?= view('icons/media') ?>
-<?php elseif ($record::RECORD_TYPE === Submitter::RECORD_TYPE) : ?>
+<?php elseif ($record->tag() === Submitter::RECORD_TYPE) : ?>
     <?= view('icons/submitter') ?>
 <?php endif;

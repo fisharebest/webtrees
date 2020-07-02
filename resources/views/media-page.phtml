@@ -114,14 +114,14 @@ use Illuminate\Support\Collection;
                         <td class="d-flex justify-content-between">
                             <div>
                                 <?php if ($media_file->isExternal()) : ?>
-                                    <?= GedcomTag::getLabelValue('URL', $media_file->filename()) ?>
+                                    <?= GedcomTag::getLabelValue('URL', e($media_file->filename())) ?>
                                 <?php elseif (Auth::isEditor($media->tree())) :?>
                                     <?php if (!$media_file->fileExists($data_filesystem)) : ?>
                                         <p class="alert alert-danger">
-                                            <?= I18N::translate('The file “%s” does not exist.', $media_file->filename()) ?>
+                                            <?= I18N::translate('The file “%s” does not exist.', e($media_file->filename())) ?>
                                         </p>
                                     <?php endif ?>
-                                    <?= GedcomTag::getLabelValue('FILE', $media_file->filename()) ?>
+                                    <?= GedcomTag::getLabelValue('FILE', e($media_file->filename())) ?>
                                 <?php endif ?>
 
                                 <?= GedcomTag::getLabelValue('TITL', e($media_file->title())) ?>
@@ -154,14 +154,12 @@ use Illuminate\Support\Collection;
                     </tr>
                 <?php endforeach ?>
                 <?php foreach ($facts as $fact) : ?>
-                    <?php if ($fact->getTag() !== 'FILE') : ?>
-                        <?php FunctionsPrintFacts::printFact($fact, $media) ?>
-                    <?php endif ?>
+                    <?php FunctionsPrintFacts::printFact($fact, $media) ?>
                 <?php endforeach ?>
                 <?php if ($media->canEdit()) : ?>
                     <?= view('edit/paste-fact-row', ['record' => $media, 'facts' => $clipboard_facts]) ?>
 
-                    <?php FunctionsPrint::printAddNewFact($media, $facts, 'OBJE') ?>
+                    <?php FunctionsPrint::printAddNewFact($media, $facts, Media::RECORD_TYPE) ?>
                     <tr>
                         <th>
                             <?= I18N::translate('Source') ?>

@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Exceptions\RepositoryNotFoundException;
 use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
 use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
@@ -44,33 +43,42 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
-use League\Flysystem\MountManager;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
+use RuntimeException;
 
 use function app;
 use function array_filter;
 use function array_keys;
 use function array_map;
+use function array_search;
 use function assert;
+use function fopen;
 use function in_array;
 use function is_string;
 use function key;
 use function preg_match_all;
 use function redirect;
+use function rewind;
 use function route;
 use function str_replace;
+use function stream_get_meta_data;
 use function strip_tags;
-use function utf8_decode;
+use function tmpfile;
+use function uasort;
+
+use const PREG_SET_ORDER;
 
 /**
  * Class ClippingsCartModule
@@ -92,19 +100,22 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     /** @var int The default access level for this module.  It can be changed in the control panel. */
     protected $access_level = Auth::PRIV_USER;
 
-    /**
-     * @var UserService
-     */
+    /** @var GedcomExportService */
+    private $gedcom_export_service;
+
+    /** @var UserService */
     private $user_service;
 
     /**
      * ClippingsCartModule constructor.
      *
-     * @param UserService $user_service
+     * @param GedcomExportService $gedcom_export_service
+     * @param UserService         $user_service
      */
-    public function __construct(UserService $user_service)
+    public function __construct(GedcomExportService $gedcom_export_service, UserService $user_service)
     {
-        $this->user_service = $user_service;
+        $this->gedcom_export_service = $gedcom_export_service;
+        $this->user_service          = $user_service;
     }
 
     /**
@@ -235,16 +246,14 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $zip_adapter    = new ZipArchiveAdapter($temp_zip_file);
         $zip_filesystem = new Filesystem($zip_adapter);
 
-        $manager = new MountManager([
-            'media' => $tree->mediaFilesystem($data_filesystem),
-            'zip'   => $zip_filesystem,
-        ]);
+        $media_filesystem = $tree->mediaFilesystem($data_filesystem);
 
         // Media file prefix
         $path = $tree->getPreference('MEDIA_DIRECTORY');
 
-        // GEDCOM file header
-        $filetext = FunctionsExport::gedcomHeader($tree, $convert ? 'ANSI' : 'UTF-8');
+        $encoding = $convert ? 'ANSI' : 'UTF-8';
+
+        $records = new Collection();
 
         switch ($privatize_export) {
             case 'gedadmin':
@@ -288,24 +297,21 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 }
 
                 if ($object instanceof Individual || $object instanceof Family) {
-                    $filetext .= $record . "\n";
-                    $filetext .= "1 SOUR @WEBTREES@\n";
-                    $filetext .= '2 PAGE ' . $object->url() . "\n";
+                    $records->add($record . "\n1 SOUR @WEBTREES@\n2 PAGE " . $object->url());
                 } elseif ($object instanceof Source) {
-                    $filetext .= $record . "\n";
-                    $filetext .= '1 NOTE ' . $object->url() . "\n";
+                    $records->add($record . "\n1 NOTE " . $object->url());
                 } elseif ($object instanceof Media) {
                     // Add the media files to the archive
                     foreach ($object->mediaFiles() as $media_file) {
-                        $from = 'media://' . $media_file->filename();
-                        $to   = 'zip://' . $path . $media_file->filename();
-                        if (!$media_file->isExternal() && $manager->has($from) && !$manager->has($to)) {
-                            $manager->copy($from, $to);
+                        $from = $media_file->filename();
+                        $to   = $path . $media_file->filename();
+                        if (!$media_file->isExternal() && $media_filesystem->has($from) && !$zip_filesystem->has($to)) {
+                            $zip_filesystem->writeStream($to, $media_filesystem->readStream($from));
                         }
                     }
-                    $filetext .= $record . "\n";
+                    $records->add($record);
                 } else {
-                    $filetext .= $record . "\n";
+                    $records->add($record);
                 }
             }
         }
@@ -313,22 +319,25 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $base_url = $request->getAttribute('base_url');
 
         // Create a source, to indicate the source of the data.
-        $filetext .= "0 @WEBTREES@ SOUR\n1 TITL " . $base_url . "\n";
+        $record = "0 @WEBTREES@ SOUR\n1 TITL " . $base_url;
         $author   = $this->user_service->find((int) $tree->getPreference('CONTACT_USER_ID'));
         if ($author !== null) {
-            $filetext .= '1 AUTH ' . $author->realName() . "\n";
+            $record .= "\n1 AUTH " . $author->realName();
         }
-        $filetext .= "0 TRLR\n";
+        $records->add($record);
 
-        // Make sure the preferred line endings are used
-        $filetext = strtr($filetext, ["\n" => Gedcom::EOL]);
+        $stream = fopen('php://temp', 'wb+');
 
-        if ($convert) {
-            $filetext = utf8_decode($filetext);
+        if ($stream === false) {
+            throw new RuntimeException('Failed to create temporary stream');
         }
+
+        // We have already applied privacy filtering, so do not do it again.
+        $this->gedcom_export_service->export($tree, $stream, false, $encoding, Auth::PRIV_HIDE, $path, $records);
+        rewind($stream);
 
         // Finally add the GEDCOM file to the .ZIP file.
-        $zip_filesystem->write('clippings.ged', $filetext);
+        $zip_filesystem->writeStream('clippings.ged', $stream);
 
         // Need to force-close ZipArchive filesystems.
         $zip_adapter->getArchive()->close();
@@ -1030,7 +1039,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         // Group and sort.
         uasort($records, static function (GedcomRecord $x, GedcomRecord $y): int {
-            return $x::RECORD_TYPE <=> $y::RECORD_TYPE ?: GedcomRecord::nameComparator()($x, $y);
+            return $x->tag() <=> $y->tag() ?: GedcomRecord::nameComparator()($x, $y);
         });
 
         return $records;

@@ -15,8 +15,9 @@ use Fisharebest\Webtrees\Webtrees;
             <th><?= I18N::translate('Place') ?></th>
             <th><?= I18N::translate('Latitude') ?></th>
             <th><?= I18N::translate('Longitude') ?></th>
-            <th><?= I18N::translate('Zoom level') ?></th>
+            <!--
             <th><?= I18N::translate('Flag') ?> </th>
+            -->
             <th><?= I18N::translate('Edit') ?></th>
             <th><?= I18N::translate('Delete') ?></th>
         </tr>
@@ -35,7 +36,7 @@ use Fisharebest\Webtrees\Webtrees;
             </th>
 
             <td dir="ltr">
-                <?php if ($place->pl_lati === null) : ?>
+                <?php if ((string) $place->pl_lati === '') : ?>
                     <?= view('icons/warning') ?>
                 <?php else : ?>
                     <?= strtr($place->pl_lati, ['N' => '', 'S' => '-', ',' => '.']) ?>
@@ -43,26 +44,20 @@ use Fisharebest\Webtrees\Webtrees;
             </td>
 
             <td dir="ltr">
-                <?php if ($place->pl_long === null) : ?>
+                <?php if ((string) $place->pl_long === '') : ?>
                     <?= view('icons/warning') ?>
                 <?php else : ?>
                     <?= strtr($place->pl_long, ['E' => '', 'W' => '-', ',' => '.']) ?>
                 <?php endif ?>
             </td>
 
-            <td dir="ltr">
-                <?php if ($place->pl_zoom === null) : ?>
-                    <?= view('icons/warning') ?>
-                <?php else : ?>
-                    <?= $place->pl_zoom ?>
-                <?php endif ?>
-            </td>
-
+            <!--
             <td>
                 <?php if (is_file(Webtrees::MODULES_PATH . 'openstreetmap/' . $place->pl_icon)) : ?>
                     <img src="<?= e(Webtrees::MODULES_PATH . 'openstreetmap/' . $place->pl_icon) ?>" width="25" height="15" alt="<?= I18N::translate('Flag of %s', $place->pl_place) ?>">
                 <?php endif ?>
             </td>
+            -->
 
             <td>
                 <a class="btn btn-primary" href="<?= e(route('map-data-edit', ['place_id'  => $place->pl_id, 'parent_id' => $place->pl_parent_id])) ?>" title="<?= I18N::translate('Edit') ?>">

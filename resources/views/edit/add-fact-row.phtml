@@ -1,11 +1,18 @@
 <?php
 
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectNewFact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+
+/**
+ * @var array<string,string> $add_facts
+ * @var array<string,string> $quick_facts
+ * @var GedcomRecord         $record
+ */
 
 ?>
 
@@ -27,7 +34,7 @@ use Fisharebest\Webtrees\Individual;
                     <?php foreach ($add_facts as $fact => $fact_name) : ?>
                         <option value="<?= $fact ?>"><?= $fact_name ?></option>
                     <?php endforeach ?>
-                    <?php if ($record::RECORD_TYPE === Individual::RECORD_TYPE || $record::RECORD_TYPE === Family::RECORD_TYPE) : ?>
+                    <?php if ($record->tag() === Individual::RECORD_TYPE || $record->tag() === Family::RECORD_TYPE) : ?>
                         <option value="FACT">
                         <?= I18N::translate('Custom fact') ?>
                         </option>
@@ -51,7 +58,7 @@ use Fisharebest\Webtrees\Individual;
                     'xref' => $record->xref(),
                     'tree' => $tree->name(),
                 ])) ?>">
-                    <?= GedcomTag::getLabel($fact) ?>
+                    <?= GedcomTag::getLabel($record->tag() . ':' . $fact) ?>
                 </a>
             <?php endforeach ?>
         </div>

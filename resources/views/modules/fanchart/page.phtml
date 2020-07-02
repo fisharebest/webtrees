@@ -1,6 +1,5 @@
 <?php
 
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 
 ?>
@@ -35,7 +34,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Generations') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select', ['name' => 'generations', 'selected' => $generations, 'options' => FunctionsEdit::numericOptions(range($minimum_generations, $maximum_generations))]) ?>
+            <?= view('components/select-number', ['name' => 'generations', 'selected' => $generations, 'options' => range($minimum_generations, $maximum_generations)]) ?>
         </div>
     </div>
 

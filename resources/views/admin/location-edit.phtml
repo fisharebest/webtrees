@@ -1,7 +1,20 @@
 <?php
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\View;
+
+/**
+ * @var array<string,string> $breadcrumbs
+ * @var string               $latitude
+ * @var string               $longitude
+ * @var PlaceLocation        $location
+ * @var array<array<float>>  $map_bounds
+ * @var <array<float>        $marker_position
+ * @var PlaceLocation        $parent
+ * @var mixed                $provider
+ * @var string               $title
+ */
 
 ?>
 
@@ -10,31 +23,24 @@ use Fisharebest\Webtrees\View;
 <h1><?= $title ?></h1>
 
 <div class="form-group row">
-    <div class="col-sm-10 offset-sm-1">
+    <div class="col-sm-12">
         <div id="osm-map" class="wt-ajax-load col-sm-12 osm-admin-map" dir="ltr"></div>
     </div>
 </div>
 
 <form method="post">
     <?= csrf_field() ?>
-    <input type="hidden" name="place_id" value="<?= e($place_id) ?>">
+    <input type="hidden" name="place_id" value="<?= e($location->id()) ?>">
 
     <div class="form-group row">
         <label class="col-form-label col-sm-1" for="new_place_name">
             <?= I18N::translate('Place') ?>
         </label>
-        <div class="col-sm-5">
-            <input type="text" id="new_place_name" name="new_place_name" value="<?= e($location->locationName()) ?>"
-            class="form-control" required>
+        <div class="col-sm-3">
+            <input type="text" id="new_place_name" name="new_place_name" value="<?= e($location->locationName()) ?>" class="form-control" required maxlength="120" pattern="[^,]+">
         </div>
-        <label class="col-form-label col-sm-1" for="icon">
-            <?= I18N::translate('Flag') ?>
-        </label>
-        <div class="col-sm-4">
-            <div class="input-group" dir="ltr">
-                <input type="text" name="icon" id="icon" class="form-control" value="<?= e($location->icon()) ?>">
-            </div>
-        </div>
+
+        <input type="hidden" name="icon" id="icon" class="form-control" value="<?= e($location->icon()) ?>">
     </div>
 
     <div class="form-group row">
@@ -43,29 +49,22 @@ use Fisharebest\Webtrees\View;
         </label>
         <div class="col-sm-3">
             <div class="input-group">
-                <input type="text" dir="ltr" id="new_place_lati" class="editable form-control" name="new_place_lati" required
-                placeholder="<?= I18N::translate('degrees') ?>" value="<?= e($lat) ?>"
-                >
+                <input type="text" dir="ltr" id="new_place_lati" class="editable form-control" name="new_place_lati" required placeholder="<?= I18N::translate('degrees') ?>" value="<?= e($latitude) ?>">
             </div>
         </div>
+    </div>
 
+    <div class="form-group row">
         <label class="col-form-label col-sm-1" for="new_place_long">
             <?= I18N::translate('Longitude') ?>
         </label>
         <div class="col-sm-3">
             <div class="input-group">
-                <input type="text" dir="ltr" id="new_place_long" class="editable form-control" name="new_place_long" required
-                placeholder="<?= I18N::translate('degrees') ?>" value="<?= e($lng) ?>"
-                >
+                <input type="text" dir="ltr" id="new_place_long" class="editable form-control" name="new_place_long" required placeholder="<?= I18N::translate('degrees') ?>" value="<?= e($longitude) ?>">
             </div>
         </div>
-        <label class="col-form-label col-sm-1" for="new_zoom_factor">
-            <?= I18N::translate('Zoom') ?>
-        </label>
-        <div class="col-sm-2">
-            <input type="text" id="new_zoom_factor" name="new_zoom_factor" value="<?= e($location->zoom()) ?>"
-            class="form-control" required readonly>
-        </div>
+
+        <input type="hidden" id="new_zoom_factor" name="new_zoom_factor" value="<?= e($location->zoom()) ?>" class="form-control">
     </div>
 
     <div class="form-group row">
@@ -75,7 +74,7 @@ use Fisharebest\Webtrees\View;
                 I18N::translate('save')
                 ?>
             </button>
-            <a class="btn btn-secondary" href="<?= e(route('map-data', ['parent_id' => $parent_id])) ?>">
+            <a class="btn btn-secondary" href="<?= e(route('map-data', ['parent_id' => $parent->id()])) ?>">
                 <?= I18N::translate('cancel') ?>
             </a>
         </div>
@@ -93,138 +92,120 @@ use Fisharebest\Webtrees\View;
 
 <?php View::push('javascript') ?>
 <script>
-'use strict';
+    'use strict';
 
-window.WT_OSM_ADMIN = (function () {
-  const minZoom = 2;
+    window.WT_OSM_ADMIN = (function () {
+        const minZoom = 2;
 
-  let provider = <?= json_encode($provider) ?>;
-  let data = <?= json_encode($data) ?>;
-  let map = null;
-  let add_place = <?= json_encode($place_id === 0) ?>;
+        let provider = <?= json_encode($provider) ?>;
+        let map = null;
+        let add_place = <?= json_encode($location->id() === 0) ?>;
 
-  // map components
+        // map components
 
-  // postcss_image_inliner breaks the autodetection of image paths.
-  L.Icon.Default.imagePath = <?= json_encode(asset('css/images/')) ?>;
+        // postcss_image_inliner breaks the autodetection of image paths.
+        L.Icon.Default.imagePath = <?= json_encode(asset('css/images/')) ?>;
 
-  // draggable marker
-  let marker = L.marker(data.coordinates, {
-    draggable: true,
-  })
-    .on('dragend', function (e) {
-      let coords = marker.getLatLng();
-      map.panTo(coords);
-      _update_Controls({
-        place:  '',
-        coords: coords,
-        zoom:   map.getZoom(),
-      });
-    });
+        // draggable marker
+        let marker = L.marker(<?= json_encode($marker_position) ?>, {
+            draggable: true,
+        })
+            .on('dragend', function () {
+                let coords = marker.getLatLng();
+                map.panTo(coords);
+                $('#new_place_lati').val(Number(coords.lat).toFixed(5));
+                $('#new_place_long').val(Number(coords.lng).toFixed(5));
+                $('#new_zoom_factor').val(Number(map.getZoom()));
+            });
 
-  //reset map to initial state
-  let resetControl = L.Control.extend({
-    options: {
-      position: 'topleft'
-    },
-    onAdd:   function (map) {
-      let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-      container.onclick = function () {
-        map.setView(data.coordinates, data.zoom);
-        marker.setLatLng(data.coordinates);
-        $('form').trigger('reset');
-        return false;
-      };
-      let reset = <?= json_encode(I18N::translate('Reset to initial map state')) ?>;
-      let anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
-      anchor.setAttribute('aria-label', reset);
-      anchor.href = '#';
-      anchor.title = reset;
-      anchor.role = 'button';
-      let image = L.DomUtil.create('i', 'fas fa-redo', anchor);
-      image.alt = reset;
+        //reset map to initial state
+        let resetControl = L.Control.extend({
+            options: {
+                position: 'topleft'
+            },
+            onAdd: function (map) {
+                let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+                container.onclick = function () {
+                    map.fitBounds(<?= json_encode($map_bounds) ?>, {padding: [50, 30]});
+                    marker.setLatLng(<?= json_encode([$location->latitude(), $location->longitude()]) ?>);
+                    $('form').trigger('reset');
+                    return false;
+                };
+                let reset = <?= json_encode(I18N::translate('Reset to initial map state')) ?>;
+                let anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
+                anchor.setAttribute('aria-label', reset);
+                anchor.href = '#';
+                anchor.title = reset;
+                anchor.role = 'button';
+                let image = L.DomUtil.create('i', 'fas fa-redo', anchor);
+                image.alt = reset;
 
-      return container;
-    }
-  });
+                return container;
+            }
+        });
 
-  // zoom control with localised text
-  let zoomCtl = new L.control.zoom({
-    zoomInTitle:  <?= json_encode(I18N::translate('Zoom in')) ?>,
-    zoomOutTitle: <?= json_encode(I18N::translate('Zoom out')) ?>,
-  });
+        // zoom control with localised text
+        let zoomCtl = new L.control.zoom({
+            zoomInTitle:  <?= json_encode(I18N::translate('Zoom in')) ?>,
+            zoomOutTitle: <?= json_encode(I18N::translate('Zoom out')) ?>,
+        });
 
-  // Geocoder (place lookup)
-  let geocoder = new L.Control.geocoder({
-    defaultMarkGeocode: false,
-    expand:             'click',
-    showResultIcons:    true,
-    query:              '<?= e($location->locationName()) ?>',
-    placeholder: <?= json_encode(I18N::translate('Place')) ?>,
-    errorMessage: <?= json_encode(I18N::translate('Nothing found.')) ?>,
-    iconLabel: <?= json_encode(I18N::translate('Search')) ?>
-  })
-    .on('markgeocode', function (result) {
-      let coords = result.geocode.center;
-      let place = result.geocode.name.split(',', 1);
-      marker.setLatLng(coords);
-      map.panTo(coords);
-      _update_Controls({
-        place:  place.shift(),
-        coords: coords,
-        zoom:   map.getZoom(),
-      });
-    });
+        // Geocoder (place lookup)
+        let geocoder = new L.Control.geocoder({
+            defaultMarkGeocode: false,
+            expand: 'click',
+            showResultIcons: true,
+            query: '<?= e($location->locationName()) ?>',
+            placeholder: <?= json_encode(I18N::translate('Place')) ?>,
+            errorMessage: <?= json_encode(I18N::translate('Nothing found.')) ?>,
+            iconLabel: <?= json_encode(I18N::translate('Search')) ?>
+        })
+            .on('markgeocode', function (result) {
+                let coords = result.geocode.center;
+                let place = result.geocode.name.split(',', 1);
+                marker.setLatLng(coords);
+                map.panTo(coords);
+                if (add_place) {
+                    $('#new_place_name').val(place.shift());
+                }
+                $('#new_place_lati').val(Number(coords.lat).toFixed(5));
+                $('#new_place_long').val(Number(coords.lng).toFixed(5));
+                $('#new_zoom_factor').val(Number(map.getZoom()));
+            });
 
-  /**
-   *
-   * @param newData
-   * @private
-   */
-  let _update_Controls = function (newData) {
+        /**
+         *
+         * @private
+         */
+        $(function () {
+            // geocoder button tooltip
+            $('.leaflet-control-geocoder-icon')
+                .attr('title', <?= json_encode(I18N::translate('Search')) ?>);
 
-    if (add_place) {
-      $('#new_place_name').val(newData.place);
-    }
-    $('#new_place_lati').val(Number(newData.coords.lat).toFixed(5)); // 5 decimal places (about 1 metre accuracy)
-    $('#new_place_long').val(Number(newData.coords.lng).toFixed(5));
-    $('#new_zoom_factor').val(Number(newData.zoom));
-  };
+            $('.editable').on('change', function () {
+                let lat = $('#new_place_lati').val();
+                let lng = $('#new_place_long').val();
+                marker.setLatLng([lat, lng]);
+                map.panTo([lat, lng]);
+            });
+        });
 
-  /**
-   *
-   * @private
-   */
-  $(function () {
-    // geocoder button tooltip
-    $('.leaflet-control-geocoder-icon')
-      .attr('title', <?= json_encode(I18N::translate('Search')) ?>);
+        // Create the map with all controls and layers
+        map = L.map('osm-map', {
+            minZoom: minZoom, // maxZoom set by leaflet-providers.js
+            zoomControl: false,   // remove default
+        })
+            .addControl(new resetControl())
+            .addControl(zoomCtl)
+            .addControl(geocoder)
+            .addLayer(marker)
+            .addLayer(L.tileLayer(provider.url, provider.options))
+            .fitBounds(<?= json_encode($map_bounds) ?>, {padding: [50, 30]})
+            .on('zoomend', function () {
+                $('#new_zoom_factor').val(map.getZoom());
+            });
 
-    $('.editable').on('change', function (e) {
-      let lat = $('#new_place_lati').val();
-      let lng = $('#new_place_long').val();
-      marker.setLatLng([lat, lng]);
-      map.panTo([lat, lng]);
-    });
-  });
-
-  // Create the map with all controls and layers
-  map = L.map('osm-map', {
-    minZoom:     minZoom, // maxZoom set by leaflet-providers.js
-    zoomControl: false,   // remove default
-  })
-    .addControl(new resetControl())
-    .addControl(zoomCtl)
-    .addControl(geocoder)
-    .addLayer(marker)
-    .addLayer(L.tileLayer(provider.url, provider.options))
-    .setView(data.coordinates, data.zoom)
-    .on('zoomend', function (e) {
-      $('#new_zoom_factor').val(map.getZoom());
-      map.panTo(marker.getLatLng());
-    });
-
-  return 'Leaflet map interface for webtrees-2';
-})();
+        return 'Leaflet map interface for webtrees-2';
+    })();
 </script>
 <?php View::endpush() ?>

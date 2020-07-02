@@ -1,13 +1,14 @@
 <?php
 
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\LinkSpouseToIndividualAction;
+use Fisharebest\Webtrees\I18N;
 
 ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route('link-spouse-to-individual-action', ['tree' => $tree->name(), 'xref' => $xref])) ?>" class="wt-page-content">
+<form method="post" action="<?= e(route(LinkSpouseToIndividualAction::class, ['tree' => $tree->name(), 'xref' => $xref])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
 
     <div class="form-group row">

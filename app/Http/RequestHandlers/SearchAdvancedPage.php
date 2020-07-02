@@ -73,7 +73,6 @@ class SearchAdvancedPage implements RequestHandlerInterface
         'BLES:PLAC',
         'BURI:DATE',
         'BURI:PLAC',
-        'CAST',
         'CENS:DATE',
         'CENS:PLAC',
         'CHAN:DATE',
@@ -83,7 +82,6 @@ class SearchAdvancedPage implements RequestHandlerInterface
         'CREM:DATE',
         'CREM:PLAC',
         'DSCR',
-        'EMAIL',
         'EMIG:DATE',
         'EMIG:PLAC',
         'ENDL:DATE',
@@ -100,7 +98,6 @@ class SearchAdvancedPage implements RequestHandlerInterface
         'FAMS:NOTE',
         'FAMS:SLGS:DATE',
         'FAMS:SLGS:PLAC',
-        'FAX',
         'FCOM:DATE',
         'FCOM:PLAC',
         'IMMI:DATE',
@@ -118,8 +115,8 @@ class SearchAdvancedPage implements RequestHandlerInterface
         'ORDN:PLAC',
         'REFN',
         'RELI',
-        'RESI',
         'RESI:DATE',
+        'RESI:EMAIL',
         'RESI:PLAC',
         'SLGC:DATE',
         'SLGC:PLAC',
@@ -173,6 +170,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
         return $this->viewResponse('search-advanced-page', [
             'date_options' => $date_options,
             'fields'       => $fields,
+            'field_labels' => $this->customFieldLabels(),
             'individuals'  => $individuals,
             'modifiers'    => $modifiers,
             'name_options' => $name_options,
@@ -210,6 +208,28 @@ class SearchAdvancedPage implements RequestHandlerInterface
                 return [$fact => GedcomTag::getLabel($fact)];
             })
             ->all();
+    }
+
+
+    /**
+     * We use some pseudo-GEDCOM tags for some of our fields.
+     *
+     * @return array<string,string>
+     */
+    private function customFieldLabels(): array
+    {
+        return [
+            'FAMS:DIV:DATE'       => I18N::translate('Date of divorce'),
+            'FAMS:NOTE'           => I18N::translate('Spouse note'),
+            'FAMS:SLGS:DATE'      => I18N::translate('Date of LDS spouse sealing'),
+            'FAMS:SLGS:PLAC'      => I18N::translate('Place of LDS spouse sealing'),
+            'FAMS:MARR:DATE'      => I18N::translate('Date of marriage'),
+            'FAMS:MARR:PLAC'      => I18N::translate('Place of marriage'),
+            'FAMC:HUSB:NAME:GIVN' => I18N::translate('Given names'),
+            'FAMC:HUSB:NAME:SURN' => I18N::translate('Surname'),
+            'FAMC:WIFE:NAME:GIVN' => I18N::translate('Given names'),
+            'FAMC:WIFE:NAME:SURN' => I18N::translate('Surname'),
+        ];
     }
 
     /**

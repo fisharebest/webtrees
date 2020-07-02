@@ -1,6 +1,6 @@
 <?php
 
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
@@ -45,7 +45,7 @@ use Fisharebest\Webtrees\View;
             </div>
         </div>
         <div class="col-sm-8">
-            <?= view('components/select', ['name' => 'SHOW_DEAD_PEOPLE', 'selected' => $tree->getPreference('SHOW_DEAD_PEOPLE'), 'options' => array_slice(FunctionsEdit::optionsAccessLevels(), 0, 2, true)]) ?>
+            <?= view('components/select', ['name' => 'SHOW_DEAD_PEOPLE', 'selected' => $tree->getPreference('SHOW_DEAD_PEOPLE'), 'options' => array_slice(Auth::accessLevelNames(), 0, 2, true)]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Show dead individuals” configuration setting */ I18N::translate('Set the privacy access level for all dead individuals.') ?>
             </p>
@@ -130,7 +130,7 @@ use Fisharebest\Webtrees\View;
             </div>
         </div>
         <div class="col-sm-8">
-            <?= view('components/select', ['name' => 'SHOW_LIVING_NAMES', 'selected' => $tree->getPreference('SHOW_LIVING_NAMES'), 'options' => array_slice(FunctionsEdit::optionsAccessLevels(), 0, 3, true)]) ?>
+            <?= view('components/select', ['name' => 'SHOW_LIVING_NAMES', 'selected' => $tree->getPreference('SHOW_LIVING_NAMES'), 'options' => array_slice(Auth::accessLevelNames(), 0, 3, true)]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Show names of private individuals” configuration setting */ I18N::translate('This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record.') ?>
             </p>
@@ -264,7 +264,7 @@ use Fisharebest\Webtrees\View;
                         <?php endif ?>
                     </td>
                     <td>
-                        <?= FunctionsEdit::optionsRestrictionsRule()[$privacy_restriction->resn] ?>
+                        <?= Auth::privacyRuleNames()[$privacy_restriction->resn] ?>
                     </td>
                     <td>
                         <label for="delete-<?= $privacy_restriction->default_resn_id ?>">

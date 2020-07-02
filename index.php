@@ -23,6 +23,8 @@ use Middleland\Dispatcher;
 use Nyholm\Psr7Server\ServerRequestCreator;
 
 use function app;
+use function is_file;
+use function is_string;
 use function parse_url;
 
 use const PHP_SAPI;
@@ -32,7 +34,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 if (PHP_SAPI === 'cli-server') {
     $file = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    if (file_exists($file)) {
+    if (is_string($file) && is_file($file)) {
         return false;
     }
 }

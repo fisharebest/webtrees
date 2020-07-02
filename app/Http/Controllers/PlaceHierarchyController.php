@@ -175,7 +175,7 @@ class PlaceHierarchyController extends AbstractBaseController
     /**
      * @param Place $place
      *
-     * @return array|null
+     * @return array{'tree':Tree,'col_class':string,'columns':array<array<Place>>,'place':Place}|null
      * @throws Exception
      */
     private function getHierarchy(Place $place): ?array
@@ -201,9 +201,9 @@ class PlaceHierarchyController extends AbstractBaseController
     /**
      * @param Place $place
      *
-     * @return array
+     * @return array{'breadcrumbs':array<Place>,'current':Place|null}
      */
-    private function breadcrumbs($place): array
+    private function breadcrumbs(Place $place): array
     {
         $breadcrumbs = [];
         if ($place->gedcomName() !== '') {
@@ -216,7 +216,7 @@ class PlaceHierarchyController extends AbstractBaseController
             $breadcrumbs = array_reverse($breadcrumbs);
             $current     = array_pop($breadcrumbs);
         } else {
-            $current = '';
+            $current = null;
         }
 
         return [
@@ -272,7 +272,6 @@ class PlaceHierarchyController extends AbstractBaseController
                             'latitude'  => $location->latitude(),
                             'longitude' => $location->longitude(),
                         ]),
-                        'zoom'    => $location->zoom() ?: 2,
                     ],
                 ];
             }
@@ -294,6 +293,7 @@ class PlaceHierarchyController extends AbstractBaseController
         }
 
         return [
+            'bounds'  => (new PlaceLocation($placeObj->gedcomName()))->boundingRectangle(),
             'sidebar' => $sidebar,
             'markers' => [
                 'type'     => 'FeatureCollection',

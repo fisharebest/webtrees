@@ -53,7 +53,7 @@ class Statistics {
 
     Promise.all([
       this.load(GOOGLE_CHARTS_LIB)
-    ]).then(function () {
+    ]).then(() => {
       google.charts.load(
         'current',
         {
@@ -70,13 +70,13 @@ class Statistics {
       );
 
       google.charts.setOnLoadCallback(function () {
-        that.callbacks.forEach(function (element) {
+        that.callbacks.forEach((element) => {
           element();
         });
       });
 
       that.initialized = true;
-    }).catch(function (error) {
+    }).catch((error) => {
       console.log(error);
     });
   }

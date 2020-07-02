@@ -85,7 +85,7 @@ class Header extends GedcomRecord
     public function extractNames(): void
     {
         $this->getAllNames[] = [
-            'type'   => self::RECORD_TYPE,
+            'type'   => static::RECORD_TYPE,
             'sort'   => I18N::translate('Header'),
             'full'   => I18N::translate('Header'),
             'fullNN' => I18N::translate('Header'),

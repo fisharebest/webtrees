@@ -170,7 +170,6 @@ class MediaController extends AbstractAdminController
 
         // Convert a row from the database into a row for datatables
         $callback = function (stdClass $row): array {
-            /** @var Media $media */
             $tree = $this->tree_service->find((int) $row->m_file);
             $media = Factory::media()->make($row->m_id, $tree, $row->m_gedcom);
             assert($media instanceof Media);

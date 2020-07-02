@@ -70,6 +70,7 @@ class EditRawFactPage implements RequestHandlerInterface
                 'fact'  => $fact,
                 'title' => $title,
                 'tree'  => $tree,
+                'url'   => $request->getQueryParams()['url'] ?? null,
             ]);
         }
 

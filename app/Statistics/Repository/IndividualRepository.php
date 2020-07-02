@@ -46,6 +46,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
+use stdClass;
 
 use function array_key_exists;
 use function array_slice;
@@ -771,7 +772,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @param int    $year1
      * @param int    $year2
      *
-     * @return array|string
+     * @return array<stdClass>
      */
     public function statsAgeQuery(string $related = 'BIRT', string $sex = 'BOTH', int $year1 = -1, int $year2 = -1)
     {
@@ -968,7 +969,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @param string $sex
      * @param int    $total
      *
-     * @return array
+     * @return array<array<string,mixed>>
      */
     private function topTenOldestQuery(string $sex, int $total): array
     {
@@ -1099,7 +1100,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @param string $sex   "M", "F" or "BOTH"
      * @param int    $total
      *
-     * @return array
+     * @return array<array<string,mixed>>
      */
     private function topTenOldestAliveQuery(string $sex, int $total): array
     {

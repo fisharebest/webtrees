@@ -303,7 +303,7 @@ class MediaRepository implements MediaRepositoryInterface
      *
      * @param int $tot The total number of media files
      *
-     * @return array
+     * @return array<string,int>
      */
     private function getSortedMediaTypeList(int $tot): array
     {

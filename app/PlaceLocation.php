@@ -24,6 +24,11 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use stdClass;
 
+use function app;
+use function max;
+use function min;
+use function preg_split;
+
 /**
  * Class PlaceLocation
  */
@@ -77,7 +82,7 @@ class PlaceLocation
             $parent_location_id = $this->parent()->id();
 
             $location_id = (int) DB::table('placelocation')
-                ->where('pl_place', '=', $this->parts->first())
+                ->where('pl_place', '=', mb_substr($this->parts->first(), 0, 120))
                 ->where('pl_parent_id', '=', $parent_location_id)
                 ->value('pl_id');
 
@@ -88,7 +93,7 @@ class PlaceLocation
 
                 DB::table('placelocation')->insert([
                     'pl_id'        => $location_id,
-                    'pl_place'     => $location,
+                    'pl_place'     => mb_substr($location, 0, 120),
                     'pl_parent_id' => $parent_location_id,
                     'pl_level'     => $this->parts->count() - 1,
                     'pl_lati'      => '',
@@ -116,7 +121,7 @@ class PlaceLocation
             if ($location_id !== null) {
                 $location_id = DB::table('placelocation')
                     ->where('pl_parent_id', '=', $location_id)
-                    ->where('pl_place', '=', $place)
+                    ->where('pl_place', '=', mb_substr($place, 0, 120))
                     ->value('pl_id');
             }
         });
@@ -160,7 +165,13 @@ class PlaceLocation
     {
         $gedcom_service = new GedcomService();
 
-        return $gedcom_service->readLatitude($this->details()->pl_lati ?? '');
+        $tmp = $this;
+        do {
+            $pl_lati = (string) $tmp->details()->pl_lati;
+            $tmp = $tmp->parent();
+        } while ($pl_lati === '' && $tmp->id() !== 0);
+
+        return $gedcom_service->readLatitude($pl_lati);
     }
 
     /**
@@ -172,7 +183,13 @@ class PlaceLocation
     {
         $gedcom_service = new GedcomService();
 
-        return $gedcom_service->readLongitude($this->details()->pl_long ?? '');
+        $tmp = $this;
+        do {
+            $pl_long = (string) $tmp->details()->pl_long;
+            $tmp = $tmp->parent();
+        } while ($pl_long === '' && $tmp->id() !== 0);
+
+        return $gedcom_service->readLongitude($pl_long);
     }
 
     /**
@@ -192,7 +209,7 @@ class PlaceLocation
      */
     public function zoom(): int
     {
-        return (int) $this->details()->pl_zoom;
+        return (int) $this->details()->pl_zoom ?: 2;
     }
 
     /**
@@ -201,5 +218,42 @@ class PlaceLocation
     public function locationName(): string
     {
         return (string) $this->parts->first();
+    }
+
+    /**
+     * Find a rectangle that (approximately) encloses this place.
+     *
+     * @return array<array<float>>
+     */
+    public function boundingRectangle(): array
+    {
+        if ($this->id() === 0) {
+            return [[-180.0, -90.0], [180.0, 90.0]];
+        }
+
+        // Find our own co-ordinates and those of any child places
+        $latitudes = DB::table('placelocation')
+            ->where('pl_parent_id', '=', $this->id())
+            ->orWhere('pl_id', '=', $this->id())
+            ->pluck('pl_lati')
+            ->filter()
+            ->map(static function (string $x): float {
+                return (new GedcomService())->readLatitude($x);
+            });
+
+        $longitudes = DB::table('placelocation')
+            ->where('pl_parent_id', '=', $this->id())
+            ->orWhere('pl_id', '=', $this->id())
+            ->pluck('pl_long')
+            ->filter()
+            ->map(static function (string $x): float {
+                return (new GedcomService())->readLongitude($x);
+            });
+
+        if ($latitudes->count() > 1 || $longitudes->count() > 1) {
+            return [[$latitudes->min(), $longitudes->min()], [$latitudes->max(), $longitudes->max()]];
+        }
+
+        return $this->parent()->boundingRectangle();
     }
 }

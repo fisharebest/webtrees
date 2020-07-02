@@ -24,6 +24,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\EmailService;
+use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -48,7 +49,8 @@ class UsersControllerTest extends TestCase
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
-        $controller         = new UsersController($datatables_service, $mail_service, $module_service, $tree_service, $user_service);
+        $message_service    = new MessageService($mail_service, $user_service);
+        $controller         = new UsersController($datatables_service, $mail_service, $message_service, $module_service, $tree_service, $user_service);
         $request            = self::createRequest()
             ->withAttribute('user', Auth::user());
         $response           = $controller->index($request);
@@ -66,7 +68,8 @@ class UsersControllerTest extends TestCase
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
-        $controller         = new UsersController($datatables_service, $mail_service, $module_service, $tree_service, $user_service);
+        $message_service    = new MessageService($mail_service, $user_service);
+        $controller         = new UsersController($datatables_service, $mail_service, $message_service, $module_service, $tree_service, $user_service);
         $request            = self::createRequest();
         $response           = $controller->data($request);
 
@@ -83,7 +86,8 @@ class UsersControllerTest extends TestCase
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
-        $controller         = new UsersController($datatables_service, $mail_service, $module_service, $tree_service, $user_service);
+        $message_service    = new MessageService($mail_service, $user_service);
+        $controller         = new UsersController($datatables_service, $mail_service, $message_service, $module_service, $tree_service, $user_service);
         $request            = self::createRequest();
         $response   = $controller->create($request);
 
@@ -100,7 +104,8 @@ class UsersControllerTest extends TestCase
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
-        $controller         = new UsersController($datatables_service, $mail_service, $module_service, $tree_service, $user_service);
+        $message_service    = new MessageService($mail_service, $user_service);
+        $controller         = new UsersController($datatables_service, $mail_service, $message_service, $module_service, $tree_service, $user_service);
         $request            = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
             'username'  => 'User name',
             'email'     => 'email@example.com',
@@ -122,8 +127,9 @@ class UsersControllerTest extends TestCase
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
+        $message_service    = new MessageService($mail_service, $user_service);
         $user               = $user_service->create('user', 'real', 'email', 'pass');
-        $controller         = new UsersController($datatables_service, $mail_service, $module_service, $tree_service, $user_service);
+        $controller         = new UsersController($datatables_service, $mail_service, $message_service, $module_service, $tree_service, $user_service);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, ['user_id' => (string) $user->id()]);
         $response           = $controller->edit($request);
 
@@ -140,8 +146,9 @@ class UsersControllerTest extends TestCase
         $module_service     = new ModuleService();
         $tree_service       = new TreeService();
         $user_service       = new UserService();
+        $message_service    = new MessageService($mail_service, $user_service);
         $user               = $user_service->create('user', 'real', 'email', 'pass');
-        $controller         = new UsersController($datatables_service, $mail_service, $module_service, $tree_service, $user_service);
+        $controller         = new UsersController($datatables_service, $mail_service, $message_service, $module_service, $tree_service, $user_service);
         $request    = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
             'user_id'        => $user->id(),
             'username'       => '',

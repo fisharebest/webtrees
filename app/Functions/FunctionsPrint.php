@@ -71,6 +71,8 @@ use const PREG_SPLIT_NO_EMPTY;
 
 /**
  * Class FunctionsPrint - common functions
+ *
+ * @deprecated since 2.0.6.  Will be removed in 2.1.0
  */
 class FunctionsPrint
 {
@@ -88,42 +90,51 @@ class FunctionsPrint
     {
         $text .= Functions::getCont($nlevel, $nrec);
 
-        // Check if shared note (we have already checked that it exists)
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
-            $note  = Factory::note()->make($match[1], $tree);
-            $label = 'SHARED_NOTE';
-            $html  = Filter::formatText($note->getNote(), $tree);
-        } else {
-            $note  = null;
-            $label = 'NOTE';
-            $html  = Filter::formatText($text, $tree);
-        }
+            // Shared note.
+            $note = Factory::note()->make($match[1], $tree);
+            // It must exist.
+            assert($note instanceof Note);
 
-        if (strpos($text, "\n") === false) {
-            // A one-line note? strip the block-level tags, so it displays inline
-            return GedcomTag::getLabelValue($label, strip_tags($html, '<a><strong><em>'));
-        }
-
-        if ($tree->getPreference('EXPAND_NOTES')) {
-            // A multi-line note, and we're expanding notes by default
-            return GedcomTag::getLabelValue($label, $html);
-        }
-
-        // A multi-line note, with an expand/collapse option
-        $element_id = Uuid::uuid4()->toString();
-        // NOTE: class "note-details" is (currently) used only by some third-party themes
-        if ($note) {
+            $label      = I18N::translate('Shared note');
+            $html       = Filter::formatText($note->getNote(), $tree);
             $first_line = '<a href="' . e($note->url()) . '">' . $note->fullName() . '</a>';
         } else {
-            [$text] = explode("\n", strip_tags($html));
-            $first_line = Str::limit($text, 100, I18N::translate('…'));
+            // Inline note.
+            $label = I18N::translate('Note');
+            $html  = Filter::formatText($text, $tree);
+
+            // Only one line?  Remove block-level attributes and skip expand/collapse.
+            if (strpos($text, "\n") === false) {
+                return
+                    '<div class="fact_NOTE">' .
+                    I18N::translate(
+                        '<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>',
+                        $label,
+                        strip_tags($html, '<a><strong><em>')
+                    ) .
+                    '</div>';
+            }
+
+            [$text] = explode("\n", strip_tags($text));
+            $first_line = Str::limit($text, 50, I18N::translate('…'));
         }
 
+        $id       = 'collapse-' . Uuid::uuid4()->toString();
+        $expanded = (bool) $tree->getPreference('EXPAND_NOTES');
+
         return
-            '<div class="fact_NOTE"><span class="label">' .
-            '<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . GedcomTag::getLabel($label) . ':</span> ' . '<span id="' . $element_id . '-alt">' . $first_line . '</span>' .
+            '<div class="fact_NOTE">' .
+            '<a href="#' . e($id) . '" role="button" data-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
+            view('icons/expand') .
+            view('icons/collapse') .
+            '</a> ' .
+            '<span class="label">' . $label . ':</span> ' .
+            $first_line .
             '</div>' .
-            '<div class="note-details" id="' . $element_id . '" style="display:none">' . $html . '</div>';
+            '<div id="' . e($id) . '" class="collapse ' . ($expanded ? 'show' : '') . '">' .
+            $html .
+            '</div>';
     }
 
     /**
@@ -195,7 +206,7 @@ class FunctionsPrint
                         case 'F':
                             // Highlight mothers who die in childbirth or shortly afterwards
                             if ($deatdate->isOK() && $deatdate->maximumJulianDay() < $birth_date->minimumJulianDay() + 90) {
-                                $html .= ' <span title="' . GedcomTag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . I18N::number($age->ageYears()) . '</span>';
+                                $html .= ' <span title="' . I18N::translate('Death of a mother') . '" class="parentdeath">' . $sex . I18N::number($age->ageYears()) . '</span>';
                             } else {
                                 $html .= ' <span title="' . I18N::translate('Mother’s age') . '">' . $sex . I18N::number($age->ageYears()) . '</span>';
                             }
@@ -203,7 +214,7 @@ class FunctionsPrint
                         case 'M':
                             // Highlight fathers who die before the birth
                             if ($deatdate->isOK() && $deatdate->maximumJulianDay() < $birth_date->minimumJulianDay()) {
-                                $html .= ' <span title="' . GedcomTag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . I18N::number($age->ageYears()) . '</span>';
+                                $html .= ' <span title="' . I18N::translate('Death of a father') . '" class="parentdeath">' . $sex . I18N::number($age->ageYears()) . '</span>';
                             } else {
                                 $html .= ' <span title="' . I18N::translate('Father’s age') . '">' . $sex . I18N::number($age->ageYears()) . '</span>';
                             }
@@ -453,10 +464,10 @@ class FunctionsPrint
      * Check for facts that may exist only once for a certain record type.
      * If the fact already exists in the second array, delete it from the first one.
      *
-     * @param string[]   $uniquefacts
-     * @param Collection $recfacts
+     * @param array<string>    $uniquefacts
+     * @param Collection<Fact> $recfacts
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function checkFactUnique(array $uniquefacts, Collection $recfacts): array
     {
@@ -475,9 +486,9 @@ class FunctionsPrint
     /**
      * Print a new fact box on details pages
      *
-     * @param GedcomRecord $record    the person, family, source etc the fact will be added to
-     * @param Collection   $usedfacts an array of facts already used in this record
-     * @param string       $type      the type of record INDI, FAM, SOUR etc
+     * @param GedcomRecord     $record    the person, family, source etc the fact will be added to
+     * @param Collection<Fact> $usedfacts an array of facts already used in this record
+     * @param string           $type      the type of record INDI, FAM, SOUR etc
      *
      * @return void
      */
@@ -547,7 +558,7 @@ class FunctionsPrint
         $quickfacts          = array_intersect($quickfacts, $addfacts);
         $translated_addfacts = [];
         foreach ($addfacts as $addfact) {
-            $translated_addfacts[$addfact] = GedcomTag::getLabel($addfact);
+            $translated_addfacts[$addfact] = GedcomTag::getLabel($record->tag() . ':' . $addfact);
         }
         uasort($translated_addfacts, static function (string $x, string $y): int {
             return I18N::strcasecmp(I18N::translate($x), I18N::translate($y));

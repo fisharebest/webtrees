@@ -42,7 +42,7 @@ use Fisharebest\Webtrees\I18N;
         </label>
 
         <div class="col-sm-9">
-            <?= FunctionsEdit::editLanguageCheckboxes('languages', $languages) ?>
+            <?= view('edit/language-checkboxes', ['languages' => $languages]) ?>
         </div>
     </div>
 

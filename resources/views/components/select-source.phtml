@@ -5,12 +5,15 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 
 /**
+ * @var string      $at     "@" or "" (or unset).
  * @var Source|null $source
  * @var string|null $class
  * @var string|null $id
  * @var string      $name
  * @var Tree        $tree
  */
+
+$at = $at ?? '';
 
 ?>
 
@@ -20,7 +23,7 @@ use Fisharebest\Webtrees\Tree;
     data-ajax--delay="<?= e(Select2Source::AJAX_DELAY) ?>"
     data-minimum-input-length="<?= e(Select2Source::MINIMUM_INPUT_LENGTH) ?>"
     data-ajax--type="POST"
-    data-ajax--url="<?= e(route(Select2Source::class, ['tree' => $tree->name()])) ?>"
+    data-ajax--url="<?= e(route(Select2Source::class, ['tree' => $tree->name(), 'at' => $at])) ?>"
     data-allow-clear="true"
     data-placeholder=""
     id="<?= e($id ?? $name) ?>"
@@ -30,7 +33,7 @@ use Fisharebest\Webtrees\Tree;
     style="width:100%"
 >
     <?php if (($source ?? null) instanceof Source) : ?>
-        <option value="<?= e($source->xref()) ?>"d>
+        <option value="<?= e($at . $source->xref() . $at) ?>"d>
             <?= view('selects/source', ['source' => $source]) ?>
         </option>
     <?php else : ?>

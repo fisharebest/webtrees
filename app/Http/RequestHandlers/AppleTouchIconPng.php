@@ -42,6 +42,6 @@ class AppleTouchIconPng implements RequestHandlerInterface
 
         return response($content)
             ->withHeader('Content-Type', 'image/png')
-            ->withHeader('Cache-Control', 'max-age=2592000');
+            ->withHeader('Cache-Control', 'public,max-age=31536000');
     }
 }

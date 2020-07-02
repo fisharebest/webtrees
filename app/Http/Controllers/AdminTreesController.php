@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
@@ -1641,7 +1642,7 @@ class AdminTreesController extends AbstractBaseController
     /**
      * @param Tree $tree
      *
-     * @return array
+     * @return array<string,array<GedcomRecord>>
      */
     private function duplicateRecords(Tree $tree): array
     {
@@ -1777,7 +1778,7 @@ class AdminTreesController extends AbstractBaseController
      *
      * @param FilesystemInterface $data_filesystem
      *
-     * @return array
+     * @return array<string>
      */
     private function gedcomFiles(FilesystemInterface $data_filesystem): array
     {

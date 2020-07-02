@@ -1,8 +1,15 @@
 <?php
 
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Webtrees;
+
+/**
+ * @var Fact        $fact
+ * @var string      $title
+ * @var string|null $url
+ */
 
 ?>
 
@@ -10,6 +17,7 @@ use Fisharebest\Webtrees\Webtrees;
 
 <form method="post" action="<?= e(route(EditRawFactAction::class, ['tree' => $tree->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
+    <input type="hidden" name="url" value="<?= e($url ?? $fact->record()->url()) ?>">
 
     <p class="text-muted small">
         <?= I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix.') ?>

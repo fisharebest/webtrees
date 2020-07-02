@@ -58,8 +58,8 @@ use Fisharebest\Webtrees\I18N;
                 <input type="hidden" name="day" value="<?= e($cal_date->day()) ?>">
                 <input type="hidden" name="month" value="<?= e($cal_month) ?>">
                 <input type="hidden" name="filtersx" value="<?= e($filtersx) ?>">
-                <input type="hidden" name="filterof" value="<?= e($filtersx) ?>">
-                <input type="hidden" name="filterev" value="<?= e($filtersx) ?>">
+                <input type="hidden" name="filterof" value="<?= e($filterof) ?>">
+                <input type="hidden" name="filterev" value="<?= e($filterev) ?>">
 
                 <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year() === 1 ? -1 : $cal_date->year() - 1, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => $view, 'tree' => $tree->name()])) ?>" rel="nofollow">
                     -1
@@ -90,7 +90,7 @@ use Fisharebest\Webtrees\I18N;
                 <input type="hidden" name="month" value="<?= e($cal_month) ?>">
                 <input type="hidden" name="year" value="<?= e($cal_date->year()) ?>">
                 <input type="hidden" name="filtersx" value="<?= e($filtersx) ?>">
-                <input type="hidden" name="filterev" value="<?= e($filtersx) ?>">
+                <input type="hidden" name="filterev" value="<?= e($filterev) ?>">
 
                 <select class="list_value" name="filterof" onchange="this.form.submit();">
                     <option value="all" <?= $filterof === 'all' ? 'selected' : '' ?>>
@@ -145,7 +145,7 @@ use Fisharebest\Webtrees\I18N;
                 <input type="hidden" name="month" value="<?= e($cal_month) ?>">
                 <input type="hidden" name="year" value="<?= e($cal_date->year()) ?>">
                 <input type="hidden" name="filtersx" value="<?= e($filtersx) ?>">
-                <input type="hidden" name="filterof" value="<?= e($filtersx) ?>">
+                <input type="hidden" name="filterof" value="<?= e($filterof) ?>">
 
                 <select class="list_value" name="filterev" onchange="this.form.submit();">
                 <option value="BIRT-MARR-DEAT" <?= $filterev === 'BIRT-MARR-DEAT' ? 'selected' : '' ?>>

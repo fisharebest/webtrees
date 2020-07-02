@@ -79,26 +79,15 @@ class Filter
 
         // Create a minimal commonmark processor - just add support for autolinks.
         $environment = new Environment();
-        $environment->mergeConfig([
-            'renderer'           => [
-                'block_separator' => "\n",
-                'inner_separator' => "\n",
-                'soft_break'      => "\n",
-            ],
-            'html_input'         => Environment::HTML_INPUT_ESCAPE,
-            'allow_unsafe_links' => true,
-        ]);
-
         $environment
             ->addBlockRenderer(Document::class, new DocumentRenderer())
             ->addBlockRenderer(Paragraph::class, new ParagraphRenderer())
             ->addInlineRenderer(Text::class, new TextRenderer())
             ->addInlineRenderer(Link::class, new LinkRenderer())
             ->addInlineParser(new AutolinkParser())
-            ->addExtension(new CensusTableExtension())
             ->addExtension(new XrefExtension($tree));
 
-        $converter = new CommonMarkConverter();
+        $converter = new CommonMarkConverter(['html_input' => Environment::HTML_INPUT_ESCAPE], $environment);
 
         return $converter->convertToHtml($text);
     }

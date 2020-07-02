@@ -6,6 +6,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Note;
 
 ?>
 
@@ -102,7 +103,7 @@ use Fisharebest\Webtrees\I18N;
                 <?php if ($note->canEdit()) : ?>
                     <?= view('edit/paste-fact-row', ['record' => $note, 'facts' => $clipboard_facts]) ?>
 
-                    <?php FunctionsPrint::printAddNewFact($note, $facts, 'NOTE') ?>
+                    <?php FunctionsPrint::printAddNewFact($note, $facts, Note::RECORD_TYPE) ?>
                 <?php endif ?>
             </table>
         </div>

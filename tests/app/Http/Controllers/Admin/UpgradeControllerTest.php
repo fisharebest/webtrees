@@ -24,6 +24,7 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\HttpServerErrorException;
+use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
@@ -48,6 +49,7 @@ class UpgradeControllerTest extends TestCase
     public function testWizard(): void
     {
         $controller = new UpgradeController(
+            new GedcomExportService(),
             new TreeService(),
             new UpgradeService(new TimeoutService())
         );
@@ -66,6 +68,7 @@ class UpgradeControllerTest extends TestCase
         $this->importTree('demo.ged');
 
         $controller = new UpgradeController(
+            new GedcomExportService(),
             new TreeService(),
             new UpgradeService(new TimeoutService())
         );
@@ -84,6 +87,7 @@ class UpgradeControllerTest extends TestCase
     public function testIgnoreStepInvalid(): void
     {
         $controller = new UpgradeController(
+            new GedcomExportService(),
             new TreeService(),
             new UpgradeService(new TimeoutService())
         );
@@ -105,6 +109,7 @@ class UpgradeControllerTest extends TestCase
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('latestVersion')->willReturn('999.999.999');
         $controller = new UpgradeController(
+            new GedcomExportService(),
             new TreeService(),
             $mock_upgrade_service
         );
@@ -127,6 +132,7 @@ class UpgradeControllerTest extends TestCase
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('latestVersion')->willReturn('');
         $controller = new UpgradeController(
+            new GedcomExportService(),
             new TreeService(),
             $mock_upgrade_service
         );
@@ -147,6 +153,7 @@ class UpgradeControllerTest extends TestCase
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('latestVersion')->willReturn('0.0.0');
         $controller = new UpgradeController(
+            new GedcomExportService(),
             new TreeService(),
             $mock_upgrade_service
         );
@@ -163,6 +170,7 @@ class UpgradeControllerTest extends TestCase
     public function testStepPrepare(): void
     {
         $controller = new UpgradeController(
+            new GedcomExportService(),
             new TreeService(),
             new UpgradeService(new TimeoutService())
         );
@@ -181,6 +189,7 @@ class UpgradeControllerTest extends TestCase
     public function testStepPending(): void
     {
         $controller = new UpgradeController(
+            new GedcomExportService(),
             new TreeService(),
             new UpgradeService(new TimeoutService())
         );
@@ -208,6 +217,7 @@ class UpgradeControllerTest extends TestCase
         $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
 
         $controller = new UpgradeController(
+            new GedcomExportService(),
             new TreeService(),
             new UpgradeService(new TimeoutService())
         );
@@ -229,6 +239,7 @@ class UpgradeControllerTest extends TestCase
         $tree_service->method('all')->willReturn($all_trees);
 
         $controller = new UpgradeController(
+            new GedcomExportService(),
             $tree_service,
             new UpgradeService(new TimeoutService())
         );
@@ -257,6 +268,7 @@ class UpgradeControllerTest extends TestCase
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('downloadFile')->will($this->throwException(new Exception()));
         $controller = new UpgradeController(
+            new GedcomExportService(),
             new TreeService(),
             $mock_upgrade_service
         );
@@ -275,6 +287,7 @@ class UpgradeControllerTest extends TestCase
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('downloadFile')->willReturn(123456);
         $controller = new UpgradeController(
+            new GedcomExportService(),
             new TreeService(),
             $mock_upgrade_service
         );
@@ -295,6 +308,7 @@ class UpgradeControllerTest extends TestCase
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('webtreesZipContents')->willReturn(new Collection());
         $controller = new UpgradeController(
+            new GedcomExportService(),
             new TreeService(),
             $mock_upgrade_service
         );
@@ -313,6 +327,7 @@ class UpgradeControllerTest extends TestCase
     public function testStepCopyAndCleanUp(): void
     {
         $controller = new UpgradeController(
+            new GedcomExportService(),
             new TreeService(),
             new UpgradeService(new TimeoutService())
         );

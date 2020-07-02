@@ -53,10 +53,11 @@ class Select2Submitter extends AbstractSelect2Handler
      * @param string $query
      * @param int    $offset
      * @param int    $limit
+     * @param string $at
      *
      * @return Collection<array<string,string>>
      */
-    protected function search(Tree $tree, string $query, int $offset, int $limit): Collection
+    protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
         // Search by XREF
         $submitter = Factory::submitter()->make($query, $tree);
@@ -67,9 +68,9 @@ class Select2Submitter extends AbstractSelect2Handler
             $results = $this->search_service->searchSubmitters([$tree], [$query], $offset, $limit);
         }
 
-        return $results->map(static function (Submitter $submitter): array {
+        return $results->map(static function (Submitter $submitter) use ($at): array {
             return [
-                'id'    => $submitter->xref(),
+                'id'    => $at . $submitter->xref() . $at,
                 'text'  => view('selects/submitter', ['submitter' => $submitter]),
                 'title' => ' ',
             ];

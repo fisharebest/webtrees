@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
@@ -284,7 +285,7 @@ class ModuleController extends AbstractAdminController
         $uses_access  = in_array($interface, $this->module_service->componentsWithAccess(), true);
         $uses_sorting = in_array($interface, $this->module_service->componentsWithOrder(), true);
 
-        $level_text = FunctionsEdit::optionsAccessLevels();
+        $level_text = Auth::accessLevelNames();
 
         $access_summary = $modules
             ->mapWithKeys(static function (ModuleInterface $module) use ($interface, $level_text, $trees): array {

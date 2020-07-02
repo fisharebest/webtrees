@@ -1970,7 +1970,7 @@ class ReportParserGenerate extends ReportParserBase
                                         ->on($attr . 'b.p_file', '=', $attr . 'a.pl_file')
                                         ->on($attr . 'b.p_id', '=', $attr . 'a.pl_p_id');
                                 })
-                                ->where($attr . 'b.p_place', '%' . addcslashes($match[1], '\\%_') . '%');
+                                ->where($attr . 'b.p_place', 'LIKE', '%' . addcslashes($match[1], '\\%_') . '%');
                         } elseif (preg_match('/^(\w*):(\w+) CONTAINS (.+)$/', $value, $match)) {
                             // Don't unset this filter. This is just initial filtering for performance
                             $match[3] = strtr($match[3], ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);

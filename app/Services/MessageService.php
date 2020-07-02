@@ -214,4 +214,20 @@ class MessageService
                 return I18N::translate('Send a message to users who have not signed in for 6 months');
         }
     }
+
+    /**
+     * A list of contact methods (e.g. for an edit control).
+     *
+     * @return string[]
+     */
+    public function contactMethods(): array
+    {
+        return [
+            'messaging'  => I18N::translate('Internal messaging'),
+            'messaging2' => I18N::translate('Internal messaging with emails'),
+            'messaging3' => I18N::translate('webtrees sends emails with no storage'),
+            'mailto'     => I18N::translate('Mailto link'),
+            'none'       => I18N::translate('No contact'),
+        ];
+    }
 }

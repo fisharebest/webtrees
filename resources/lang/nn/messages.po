@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-05-11 12:23+0000\nLast-Translator: HRN <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees/nn/>\nLanguage: nn\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-05-30 07:30+0000\nLast-Translator: HRN <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees/nn/>\nLanguage: nn\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -3279,7 +3279,7 @@ msgstr "Kamerun"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
 msgid "Campinas, Brazil"
-msgstr "Campinas, Brazil"
+msgstr "Campinas, Brasil"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:118
@@ -4134,7 +4134,7 @@ msgid "Cremation of a father"
 msgstr "Kremering av far"
 
 #: app/GedcomTag.php:1586 app/GedcomTag.php:1597 app/GedcomTag.php:1608
-msgid "Cremation of a grand-parent"
+msgid "Cremation of a grandparent"
 msgstr "Kremering av ein besteforelder"
 
 #: app/GedcomTag.php:1553 app/GedcomTag.php:1564 app/GedcomTag.php:1575
@@ -4751,7 +4751,7 @@ msgstr "Far sin død"
 
 #: app/GedcomTag.php:1711 app/GedcomTag.php:1722 app/GedcomTag.php:1733
 #: resources/views/admin/trees-preferences.phtml:493
-msgid "Death of a grand-parent"
+msgid "Death of a grandparent"
 msgstr "Besteforelder sin død"
 
 #: app/GedcomTag.php:1678 app/GedcomTag.php:1689 app/GedcomTag.php:1700
@@ -11138,7 +11138,7 @@ msgstr "Privat"
 
 #: resources/views/admin/site-mail.phtml:207
 msgid "Private key"
-msgstr "Private key"
+msgstr "Personleg kode"
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:943
@@ -12642,7 +12642,7 @@ msgstr "Syne kun personar, hendingar, eller alle"
 
 #: resources/views/lists/individuals-table.phtml:175
 msgid "Show only males."
-msgstr "Sun kun menn."
+msgstr "Syn kun menn."
 
 #: resources/views/lists/families-table.phtml:414
 #: resources/views/lists/individuals-table.phtml:421
@@ -16833,15 +16833,15 @@ msgstr "verfar"
 
 #: app/Functions/Functions.php:636
 msgid "fiancé"
-msgstr "trulovande"
+msgstr "trulova"
 
 #: app/Functions/Functions.php:683
 msgid "fiancé(e)"
-msgstr "trulovande"
+msgstr "trulova"
 
 #: app/Functions/Functions.php:660
 msgid "fiancée"
-msgstr "trulovande"
+msgstr "trulova"
 
 #: app/Functions/Functions.php:491
 msgid "fifteenth cousin"

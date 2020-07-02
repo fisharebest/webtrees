@@ -54,9 +54,9 @@ class ChartMedia
     /**
      * Create a chart of media types.
      *
-     * @param array       $media      The list of media types to display
-     * @param string|null $color_from
-     * @param string|null $color_to
+     * @param array<string,int> $media      The list of media types to display
+     * @param string|null       $color_from
+     * @param string|null       $color_to
      *
      * @return string
      */

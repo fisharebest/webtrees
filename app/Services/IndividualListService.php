@@ -298,7 +298,7 @@ class IndividualListService
                     ->on('n_file', '=', 'i_file');
             })
             ->where('i_file', '=', $this->tree->id())
-            ->select(['i_id AS xref', 'i_gedcom AS gedcom', 'n_full']);
+            ->select(['i_id AS xref', 'i_gedcom AS gedcom', 'n_givn', 'n_surn']);
 
         $this->whereFamily($fams, $query);
         $this->whereMarriedName($marnm, $query);
@@ -329,15 +329,15 @@ class IndividualListService
         $rows = $query->get();
 
         foreach ($rows as $row) {
-            $person = Factory::individual()->make($row->xref, $this->tree, $row->gedcom);
+            $individual = Factory::individual()->make($row->xref, $this->tree, $row->gedcom);
             // The name from the database may be private - check the filtered list...
-            foreach ($person->getAllNames() as $n => $name) {
-                if ($name['fullNN'] == $row->n_full) {
-                    $person->setPrimaryName($n);
-                    // We need to clone $person, as we may have multiple references to the
-                    // same person in this list, and the "primary name" would otherwise
+            foreach ($individual->getAllNames() as $n => $name) {
+                if ($name['givn'] === $row->n_givn && $name['surn'] === $row->n_surn) {
+                    $individual->setPrimaryName($n);
+                    // We need to clone $individual, as we may have multiple references to the
+                    // same individual in this list, and the "primary name" would otherwise
                     // be shared amongst all of them.
-                    $list[] = clone $person;
+                    $list[] = clone $individual;
                     break;
                 }
             }

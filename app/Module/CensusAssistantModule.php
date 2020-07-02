@@ -191,7 +191,7 @@ class CensusAssistantModule extends AbstractModule
             }
         }
 
-        return $text . "\n\n" . $ca_notes;
+        return $text . "\n\n" . strtr($ca_notes, ["\r" => '']);
     }
 
     /**

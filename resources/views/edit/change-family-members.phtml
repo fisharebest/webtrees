@@ -1,12 +1,13 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\ChangeFamilyMembersAction;
 use Fisharebest\Webtrees\I18N;
 
 ?>
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route('change-family-members-action', ['tree' => $tree->name()])) ?>" class="wt-page-content" name="changefamform">
+<form method="post" action="<?= e(route(ChangeFamilyMembersAction::class, ['tree' => $tree->name()])) ?>" class="wt-page-content" name="changefamform">
     <?= csrf_field() ?>
 
     <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">

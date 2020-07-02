@@ -51,13 +51,30 @@ final class ServerRequestCreator implements ServerRequestCreatorInterface
 
         $headers = \function_exists('getallheaders') ? getallheaders() : static::getHeadersFromServer($_SERVER);
 
-        return $this->fromArrays($server, $headers, $_COOKIE, $_GET, $_POST, $_FILES, \fopen('php://input', 'r') ?: null);
+        $post = null;
+        if ('POST' === $this->getMethodFromEnv($server)) {
+            foreach ($headers as $headerName => $headerValue) {
+                if ('content-type' !== \strtolower($headerName)) {
+                    continue;
+                }
+                if (\in_array(
+                    \strtolower(\trim(\explode(';', $headerValue, 2)[0])),
+                    ['application/x-www-form-urlencoded', 'multipart/form-data']
+                )) {
+                    $post = $_POST;
+
+                    break;
+                }
+            }
+        }
+
+        return $this->fromArrays($server, $headers, $_COOKIE, $_GET, $post, $_FILES, \fopen('php://input', 'r') ?: null);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function fromArrays(array $server, array $headers = [], array $cookie = [], array $get = [], array $post = [], array $files = [], $body = null): ServerRequestInterface
+    public function fromArrays(array $server, array $headers = [], array $cookie = [], array $get = [], ?array $post = null, array $files = [], $body = null): ServerRequestInterface
     {
         $method = $this->getMethodFromEnv($server);
         $uri = $this->getUriFromEnvWithHTTP($server);
@@ -65,6 +82,11 @@ final class ServerRequestCreator implements ServerRequestCreatorInterface
 
         $serverRequest = $this->serverRequestFactory->createServerRequest($method, $uri, $server);
         foreach ($headers as $name => $value) {
+            // Because PHP automatically casts array keys set with numeric strings to integers, we have to make sure
+            // that numeric headers will not be sent along as integers, as withAddedHeader can only accept strings.
+            if (\is_int($name)) {
+                $name = (string) $name;
+            }
             $serverRequest = $serverRequest->withAddedHeader($name, $value);
         }
 
@@ -210,8 +232,6 @@ final class ServerRequestCreator implements ServerRequestCreatorInterface
      *
      * Loops through all nested files and returns a normalized array of
      * UploadedFileInterface instances.
-     *
-     * @param array $files
      *
      * @return UploadedFileInterface[]
      */

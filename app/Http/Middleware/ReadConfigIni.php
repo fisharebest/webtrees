@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fisharebest\Webtrees\Http\Controllers\SetupController;
+use Fisharebest\Webtrees\Http\RequestHandlers\SetupWizard;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -34,15 +34,15 @@ use function parse_ini_file;
  */
 class ReadConfigIni implements MiddlewareInterface
 {
-    /** @var SetupController */
-    private $setup_controller;
+    /** @var SetupWizard */
+    private $setup_wizard;
 
     /**
-     * @param SetupController $setup_controller
+     * @param SetupWizard $setup_wizard
      */
-    public function __construct(SetupController $setup_controller)
+    public function __construct(SetupWizard $setup_wizard)
     {
-        $this->setup_controller = $setup_controller;
+        $this->setup_wizard = $setup_wizard;
     }
 
     /**
@@ -61,11 +61,11 @@ class ReadConfigIni implements MiddlewareInterface
             foreach ($config as $key => $value) {
                 $request = $request->withAttribute($key, $value);
             }
-
-            return $handler->handle($request);
+        } else {
+            // No configuration file? Run the setup wizard to create one.
+            $handler = $this->setup_wizard;
         }
 
-        // No configuration file? Run the setup wizard to create one.
-        return $this->setup_controller->setup($request);
+        return $handler->handle($request);
     }
 }

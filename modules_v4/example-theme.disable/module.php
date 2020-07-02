@@ -50,7 +50,7 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
     /**
      * Add our own stylesheet to the existing stylesheets.
      *
-     * @return array
+     * @return array<string>
      */
     public function stylesheets(): array
     {

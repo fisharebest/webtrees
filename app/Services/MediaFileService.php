@@ -101,15 +101,12 @@ class MediaFileService
         $number = (int) $size;
 
         switch (substr($size, -1)) {
-            case 't':
-            case 'T':
-                return $number * 1024 ** 4;
             case 'g':
             case 'G':
-                return $number * 1024 ** 3;
+                return $number * 1073741824;
             case 'm':
             case 'M':
-                return $number * 1024 ** 2;
+                return $number * 1048576;
             case 'k':
             case 'K':
                 return $number * 1024;
@@ -123,7 +120,7 @@ class MediaFileService
      *
      * @param string $current
      *
-     * @return array
+     * @return array<string,string>
      */
     public function mediaTypes($current = ''): array
     {
@@ -140,7 +137,7 @@ class MediaFileService
      * @param Tree                $tree
      * @param FilesystemInterface $data_filesystem
      *
-     * @return array
+     * @return array<string>
      */
     public function unusedFiles(Tree $tree, FilesystemInterface $data_filesystem): array
     {
@@ -245,7 +242,7 @@ class MediaFileService
                 }
 
                 try {
-                    $tree->mediaFilesystem($data_filesystem)->writeStream($folder . $file, $uploaded_file->getStream()->detach());
+                    $tree->mediaFilesystem($data_filesystem)->putStream($folder . $file, $uploaded_file->getStream()->detach());
 
                     return $folder . $file;
                 } catch (RuntimeException | InvalidArgumentException $ex) {
@@ -268,7 +265,7 @@ class MediaFileService
      */
     public function createMediaFileGedcom(string $file, string $type, string $title, string $note): string
     {
-        // Tidy whitespace
+        // Tidy non-printing characters
         $type  = trim(preg_replace('/\s+/', ' ', $type));
         $title = trim(preg_replace('/\s+/', ' ', $title));
 

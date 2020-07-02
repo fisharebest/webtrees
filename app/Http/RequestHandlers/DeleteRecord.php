@@ -21,20 +21,23 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function e;
 use function is_string;
-use function preg_match;
 use function preg_match_all;
 use function preg_replace;
 use function response;
+use function sprintf;
 
 /**
  * Controller for edit forms and responses.
@@ -65,26 +68,24 @@ class DeleteRecord implements RequestHandlerInterface
                 $old_gedcom = $linker->gedcom();
                 $new_gedcom = $this->removeLinks($old_gedcom, $record->xref());
                 if ($old_gedcom !== $new_gedcom) {
-                    // If we have removed a link from a family to an individual, and it has only one member
-                    if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ FAM/', $new_gedcom, $fmatch) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . Gedcom::REGEX_XREF . ')@/', $new_gedcom, $match) === 1) {
+                    // If we have removed a link from a family to an individual, and it now has only one member
+                    if ($linker instanceof Family && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . Gedcom::REGEX_XREF . ')@/', $new_gedcom, $match) === 1) {
                         // Delete the family
-                        $family = Factory::gedcomRecord()->make($fmatch[1], $tree);
                         /* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */
-                        FlashMessages::addMessage(I18N::translate('The family “%s” has been deleted because it only has one member.', $family->fullName()));
-                        $family->deleteRecord();
-                        // Delete any remaining link to this family
-                        if ($match) {
-                            $relict     = Factory::gedcomRecord()->make($match[2][0], $tree);
-                            $new_gedcom = $relict->gedcom();
-                            $new_gedcom = $this->removeLinks($new_gedcom, $linker->xref());
-                            $relict->updateRecord($new_gedcom, false);
+                        FlashMessages::addMessage(I18N::translate('The family “%s” has been deleted because it only has one member.', $linker->fullName()));
+                        $linker->deleteRecord();
+                        // Delete the remaining link to this family
+                        $relict = Factory::gedcomRecord()->make($match[2][0], $tree);
+                        if ($relict instanceof Individual) {
+                            $relict_gedcom = $this->removeLinks($relict->gedcom(), $linker->xref());
+                            $relict->updateRecord($relict_gedcom, false);
                             /* I18N: %s are names of records, such as sources, repositories or individuals */
-                            FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $relict->fullName(), $family->fullName()));
+                            FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', sprintf('<a href="%1$s" class="alert-link">%2$s</a>', e($relict->url()), $relict->fullName()), $linker->fullName()));
                         }
                     } else {
                         // Remove links from $linker to $record
                         /* I18N: %s are names of records, such as sources, repositories or individuals */
-                        FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $linker->fullName(), $record->fullName()));
+                        FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', sprintf('<a href="%1$s" class="alert-link">%2$s</a>', e($linker->url()), $linker->fullName()), $record->fullName()));
                         $linker->updateRecord($new_gedcom, false);
                     }
                 }

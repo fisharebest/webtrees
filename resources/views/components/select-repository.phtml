@@ -5,12 +5,15 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Tree;
 
 /**
+ * @var string      $at     "@" or "" (or unset).
  * @var Repository|null $repository
  * @var string|null     $class
  * @var string|null     $id
  * @var string          $name
  * @var Tree            $tree
  */
+
+$at = $at ?? '';
 
 ?>
 
@@ -20,7 +23,7 @@ use Fisharebest\Webtrees\Tree;
     data-ajax--delay="<?= e(Select2Repository::AJAX_DELAY) ?>"
     data-minimum-input-length="<?= e(Select2Repository::MINIMUM_INPUT_LENGTH) ?>"
     data-ajax--type="POST"
-    data-ajax--url="<?= e(route(Select2Repository::class, ['tree' => $tree->name()])) ?>"
+    data-ajax--url="<?= e(route(Select2Repository::class, ['tree' => $tree->name(), 'at' => $at])) ?>"
     data-allow-clear="true"
     data-placeholder=""
     id="<?= e($id ?? $name) ?>"
@@ -30,7 +33,7 @@ use Fisharebest\Webtrees\Tree;
     style="width:100%"
 >
     <?php if (($repository ?? null) instanceof Repository) : ?>
-        <option value="<?= e($repository->xref()) ?>">
+        <option value="<?= e($at . $repository->xref() . $at) ?>">
             <?= view('selects/repository', ['repository' => $repository]) ?>
         </option>
     <?php else : ?>

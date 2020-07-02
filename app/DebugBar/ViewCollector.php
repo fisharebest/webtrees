@@ -34,8 +34,8 @@ class ViewCollector extends DataCollector implements Renderable
     /**
      * Add details about a view
      *
-     * @param string $view
-     * @param array  $data
+     * @param string              $view
+     * @param array<string,mixed> $data
      *
      * @return void
      */
@@ -50,7 +50,7 @@ class ViewCollector extends DataCollector implements Renderable
     /**
      * Called by the DebugBar when data needs to be collected
      *
-     * @return array Collected data
+     * @return array<string,mixed> Collected data
      */
     public function collect(): array
     {
@@ -76,7 +76,7 @@ class ViewCollector extends DataCollector implements Renderable
      * Returns a hash where keys are control names and their values
      * an array of options as defined in {@see \DebugBar\JavascriptRenderer::addControl()}
      *
-     * @return array
+     * @return array<string,mixed>
      */
     public function getWidgets(): array
     {

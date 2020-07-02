@@ -95,6 +95,9 @@ class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
         $submenus   = $this->module_service->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
             ->map(static function (ModuleChartInterface $module) use ($individual): Menu {
                 return $module->chartMenu($individual);
+            })
+            ->sort(static function (Menu $x, Menu $y): int {
+                return $x->getLabel() <=> $y->getLabel();
             });
 
         if ($submenus->isEmpty()) {

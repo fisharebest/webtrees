@@ -49,9 +49,9 @@ class Application extends Container
     }
 
     /**
-     * @param array $parameters
+     * @param array<ReflectionParameter> $parameters
      *
-     * @return mixed[]
+     * @return array<mixed>
      */
     private function makeParameters(array $parameters): array
     {

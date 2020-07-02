@@ -79,7 +79,7 @@ class Submission extends GedcomRecord
         return DB::table('other')
             ->where('o_id', '=', $xref)
             ->where('o_file', '=', $tree_id)
-            ->where('o_type', '=', self::RECORD_TYPE)
+            ->where('o_type', '=', static::RECORD_TYPE)
             ->value('o_gedcom');
     }
 
@@ -102,7 +102,7 @@ class Submission extends GedcomRecord
     public function extractNames(): void
     {
         $this->getAllNames[] = [
-            'type'   => self::RECORD_TYPE,
+            'type'   => static::RECORD_TYPE,
             'sort'   => I18N::translate('Submission'),
             'full'   => I18N::translate('Submission'),
             'fullNN' => I18N::translate('Submission'),
