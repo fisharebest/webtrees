@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\I18N;
+
+use function str_contains;
 
 /**
  * RTL Functions for use in the PDF/HTML reports
@@ -196,20 +198,20 @@ class FunctionsRtl
                         // If we're inside a numeric string, look for reasons to end it
                         $offset    = 0; // Be sure to look at the current character first
                         $charArray = self::getChar($workingText . "\n", $offset);
-                        if (strpos(self::NUMBERS, $charArray['letter']) === false) {
+                        if (!str_contains(self::NUMBERS, $charArray['letter'])) {
                             // This is not a digit. Is it numeric punctuation?
                             if (substr($workingText . "\n", $offset, 6) === '&nbsp;') {
                                 $offset += 6; // This could be numeric punctuation
-                            } elseif (strpos(self::NUMBER_PUNCTUATION, $charArray['letter']) !== false) {
+                            } elseif (str_contains(self::NUMBER_PUNCTUATION, $charArray['letter'])) {
                                 $offset += $charArray['length']; // This could be numeric punctuation
                             }
                             // If the next character is a digit, the current character is numeric punctuation
                             $charArray = self::getChar($workingText . "\n", $offset);
-                            if (strpos(self::NUMBERS, $charArray['letter']) === false) {
+                            if (!str_contains(self::NUMBERS, $charArray['letter'])) {
                                 // This is not a digit. End the run of digits and punctuation.
                                 $numberState = false;
                                 if (self::$currentState === 'RTL') {
-                                    if (strpos(self::NUMBER_PREFIX, $currentLetter) === false) {
+                                    if (!str_contains(self::NUMBER_PREFIX, $currentLetter)) {
                                         $currentLetter = self::UTF8_PDF . $currentLetter;
                                     } else {
                                         $currentLetter .= self::UTF8_PDF; // Include a trailing + or - in the run
@@ -219,17 +221,17 @@ class FunctionsRtl
                         }
                     } else {
                         // If we're outside a numeric string, look for reasons to start it
-                        if (strpos(self::NUMBER_PREFIX, $currentLetter) !== false) {
+                        if (str_contains(self::NUMBER_PREFIX, $currentLetter)) {
                             // This might be a number lead-in
                             $offset   = $currentLen;
                             $nextChar = substr($workingText . "\n", $offset, 1);
-                            if (strpos(self::NUMBERS, $nextChar) !== false) {
+                            if (str_contains(self::NUMBERS, $nextChar)) {
                                 $numberState = true; // We found a digit: the lead-in is therefore numeric
                                 if (self::$currentState === 'RTL') {
                                     $currentLetter = self::UTF8_LRE . $currentLetter;
                                 }
                             }
-                        } elseif (strpos(self::NUMBERS, $currentLetter) !== false) {
+                        } elseif (str_contains(self::NUMBERS, $currentLetter)) {
                             $numberState = true; // The current letter is a digit
                             if (self::$currentState === 'RTL') {
                                 $currentLetter = self::UTF8_LRE . $currentLetter;
@@ -263,7 +265,7 @@ class FunctionsRtl
                                     break 2;
                                 }
 
-                                if (strpos(self::PUNCTUATION, $nextLetter) !== false || strpos(self::OPEN_PARENTHESES, $nextLetter) !== false) {
+                                if (str_contains(self::PUNCTUATION, $nextLetter) || str_contains(self::OPEN_PARENTHESES, $nextLetter)) {
                                     $newState = 'RTL';
                                     break 2;
                                 }
@@ -410,19 +412,19 @@ class FunctionsRtl
 
         // Trim trailing blanks preceding <br> in LTR text
         while (self::$previousState !== 'RTL') {
-            if (strpos($result, ' <LTRbr>') !== false) {
+            if (str_contains($result, ' <LTRbr>')) {
                 $result = str_replace(' <LTRbr>', '<LTRbr>', $result);
                 continue;
             }
-            if (strpos($result, '&nbsp;<LTRbr>') !== false) {
+            if (str_contains($result, '&nbsp;<LTRbr>')) {
                 $result = str_replace('&nbsp;<LTRbr>', '<LTRbr>', $result);
                 continue;
             }
-            if (strpos($result, ' <br>') !== false) {
+            if (str_contains($result, ' <br>')) {
                 $result = str_replace(' <br>', '<br>', $result);
                 continue;
             }
-            if (strpos($result, '&nbsp;<br>') !== false) {
+            if (str_contains($result, '&nbsp;<br>')) {
                 $result = str_replace('&nbsp;<br>', '<br>', $result);
                 continue;
             }
@@ -431,11 +433,11 @@ class FunctionsRtl
 
         // Trim trailing blanks preceding <br> in RTL text
         while (true) {
-            if (strpos($result, ' <RTLbr>') !== false) {
+            if (str_contains($result, ' <RTLbr>')) {
                 $result = str_replace(' <RTLbr>', '<RTLbr>', $result);
                 continue;
             }
-            if (strpos($result, '&nbsp;<RTLbr>') !== false) {
+            if (str_contains($result, '&nbsp;<RTLbr>')) {
                 $result = str_replace('&nbsp;<RTLbr>', '<RTLbr>', $result);
                 continue;
             }
@@ -817,7 +819,7 @@ class FunctionsRtl
             $leadingSeparator    = '';
 
             while (I18N::direction() === 'rtl') {
-                if (strpos($result, self::START_RTL) !== false) {
+                if (str_contains($result, self::START_RTL)) {
                     // Remove trailing blanks for inclusion in a separate LTR span
                     while ($textSpan !== '') {
                         if (substr($textSpan, -1) === ' ') {
@@ -839,7 +841,7 @@ class FunctionsRtl
                     } else {
                         $trailingChar = substr($textSpan, -1);
                     }
-                    if (strpos(self::PUNCTUATION, $trailingChar) !== false) {
+                    if (str_contains(self::PUNCTUATION, $trailingChar)) {
                         $trailingPunctuation = $trailingChar;
                         $textSpan            = substr($textSpan, 0, -1);
                     }
@@ -861,15 +863,15 @@ class FunctionsRtl
                     // This check won’t work if somebody uses ID numbers with an unusual format.
                     $offset    = 1;
                     $charArray = self::getChar($temp, $offset); // Get 1st character of parenthesized text
-                    if (strpos(self::NUMBERS, $charArray['letter']) !== false) {
+                    if (str_contains(self::NUMBERS, $charArray['letter'])) {
                         break;
                     }
                     $offset += $charArray['length']; // Point at 2nd character of parenthesized text
-                    if (strpos(self::NUMBERS, substr($temp, $offset, 1)) === false) {
+                    if (!str_contains(self::NUMBERS, substr($temp, $offset, 1))) {
                         break;
                     }
                     // 1st character of parenthesized text is alpha, 2nd character is a digit; last has to be a digit too
-                    if (strpos(self::NUMBERS, substr($temp, -2, 1)) === false) {
+                    if (!str_contains(self::NUMBERS, substr($temp, -2, 1))) {
                         break;
                     }
 
@@ -933,11 +935,11 @@ class FunctionsRtl
             $textSpan = self::starredName($textSpan, 'LTR'); // Wrap starred name in <u> and </u> tags
             while (true) {
                 // Remove blanks that precede <LTRbr>
-                if (strpos($textSpan, ' <LTRbr>') !== false) {
+                if (str_contains($textSpan, ' <LTRbr>')) {
                     $textSpan = str_replace(' <LTRbr>', '<LTRbr>', $textSpan);
                     continue;
                 }
-                if (strpos($textSpan, '&nbsp;<LTRbr>') !== false) {
+                if (str_contains($textSpan, '&nbsp;<LTRbr>')) {
                     $textSpan = str_replace('&nbsp;<LTRbr>', '<LTRbr>', $textSpan);
                     continue;
                 }

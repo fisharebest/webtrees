@@ -66,7 +66,7 @@ use function in_array;
 use function preg_match;
 use function preg_match_all;
 use function route;
-use function strstr;
+use function str_contains;
 use function strtolower;
 use function strtoupper;
 use function substr;
@@ -880,7 +880,7 @@ class FunctionsEdit
                     echo self::addSimpleTag($tree, '2 ' . $key . ' ' . $today, $level1tag);
                 } elseif ($level1tag === '_TODO' && $key === '_WT_USER') {
                     echo self::addSimpleTag($tree, '2 ' . $key . ' ' . Auth::user()->userName(), $level1tag);
-                } elseif ($level1tag === 'NAME' && strstr($tree->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
+                } elseif ($level1tag === 'NAME' && str_contains($tree->getPreference('ADVANCED_NAME_FACTS'), $key)) {
                     echo self::addSimpleTag($tree, '2 ' . $key, $level1tag);
                 } elseif ($level1tag !== 'NAME') {
                     echo self::addSimpleTag($tree, '2 ' . $key, $level1tag);

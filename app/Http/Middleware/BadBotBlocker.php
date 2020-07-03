@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Cache;
-use Illuminate\Support\Str;
 use Iodev\Whois\Loaders\CurlLoader;
 use Iodev\Whois\Modules\Asn\AsnRouteInfo;
 use Iodev\Whois\Whois;
@@ -40,6 +39,8 @@ use function assert;
 use function gethostbyaddr;
 use function gethostbyname;
 use function response;
+use function str_contains;
+use function str_ends_with;
 
 /**
  * Middleware to block bad robots before they waste our valuable CPU cycles.
@@ -155,24 +156,26 @@ class BadBotBlocker implements MiddlewareInterface
         $address = Factory::addressFromString($ip);
         assert($address instanceof AddressInterface);
 
-        if (Str::contains($ua, self::BAD_ROBOTS)) {
-            return $this->response();
+        foreach (self::BAD_ROBOTS as $robot) {
+            if (str_contains($ua, $robot)) {
+                return $this->response();
+            }
         }
 
         foreach (self::ROBOT_REV_FWD_DNS as $robot => $valid_domains) {
-            if (Str::contains($ua, $robot) && !$this->checkRobotDNS($ip, $valid_domains, false)) {
+            if (str_contains($ua, $robot) && !$this->checkRobotDNS($ip, $valid_domains, false)) {
                 return $this->response();
             }
         }
 
         foreach (self::ROBOT_REV_ONLY_DNS as $robot => $valid_domains) {
-            if (Str::contains($ua, $robot) && !$this->checkRobotDNS($ip, $valid_domains, true)) {
+            if (str_contains($ua, $robot) && !$this->checkRobotDNS($ip, $valid_domains, true)) {
                 return $this->response();
             }
         }
 
         foreach (self::ROBOT_IPS as $robot => $valid_ips) {
-            if (Str::contains($ua, $robot)) {
+            if (str_contains($ua, $robot)) {
                 foreach ($valid_ips as $ip) {
                     $range = Factory::rangeFromString($ip);
 
@@ -186,7 +189,7 @@ class BadBotBlocker implements MiddlewareInterface
         }
 
         foreach (self::ROBOT_ASN as $robot => $asn) {
-            if (Str::contains($ua, $robot)) {
+            if (str_contains($ua, $robot)) {
                 foreach ($this->fetchIpRangesForAsn($asn) as $range) {
                     if ($range->contains($address)) {
                         continue 2;
@@ -223,11 +226,17 @@ class BadBotBlocker implements MiddlewareInterface
     {
         $host = gethostbyaddr($ip);
 
-        if ($host === false || !Str::endsWith($host, $valid_domains)) {
+        if ($host === false) {
             return false;
         }
 
-        return $reverse_only || $ip === gethostbyname($host);
+        foreach ($valid_domains as $domain) {
+            if (str_ends_with($host, $domain)) {
+                return $reverse_only || $ip === gethostbyname($host);
+            }
+        }
+
+        return false;
     }
 
     /**

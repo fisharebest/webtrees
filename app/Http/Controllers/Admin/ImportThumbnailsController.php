@@ -47,10 +47,10 @@ use function is_file;
 use function max;
 use function response;
 use function route;
+use function str_contains;
 use function str_replace;
 use function stripos;
 use function strlen;
-use function strpos;
 use function substr;
 use function substr_compare;
 use function view;
@@ -192,7 +192,7 @@ class ImportThumbnailsController extends AbstractAdminController
         // Fetch all thumbnails
         $thumbnails = Collection::make($data_filesystem->listContents('', true))
             ->filter(static function (array $metadata): bool {
-                return $metadata['type'] === 'file' && strpos($metadata['path'], '/thumbs/') !== false;
+                return $metadata['type'] === 'file' && str_contains($metadata['path'], '/thumbs/');
             })
             ->map(static function (array $metadata): string {
                 return $metadata['path'];

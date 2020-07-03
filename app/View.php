@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Exception;
-use Illuminate\Support\Str;
 use InvalidArgumentException;
 use LogicException;
 use RuntimeException;
@@ -35,6 +34,9 @@ use function ob_end_clean;
 use function ob_get_level;
 use function ob_start;
 use function sha1;
+use function str_contains;
+use function str_ends_with;
+use function str_starts_with;
 
 use const EXTR_OVERWRITE;
 
@@ -206,7 +208,7 @@ class View
             throw new InvalidArgumentException('Cannot register the default namespace');
         }
 
-        if (!Str::endsWith($path, '/')) {
+        if (!str_ends_with($path, '/')) {
             throw new InvalidArgumentException('Paths must end with a directory separator');
         }
 
@@ -221,7 +223,7 @@ class View
      */
     public static function registerCustomView(string $old, string $new): void
     {
-        if (Str::contains($old, self::NAMESPACE_SEPARATOR) && Str::contains($new, self::NAMESPACE_SEPARATOR)) {
+        if (str_contains($old, self::NAMESPACE_SEPARATOR) && str_contains($new, self::NAMESPACE_SEPARATOR)) {
             self::$replacements[$old] = $new;
         } else {
             throw new InvalidArgumentException();
@@ -238,14 +240,14 @@ class View
      */
     public function getFilenameForView(string $view_name): string
     {
-        // If we request "::view", then use it explicityly.  Don't allow replacements.
-        $explicit = Str::startsWith($view_name, self::NAMESPACE_SEPARATOR);
+        // If we request "::view", then use it explicitly.  Don't allow replacements.
+        $explicit = str_starts_with($view_name, self::NAMESPACE_SEPARATOR);
 
-        if (!Str::contains($view_name, self::NAMESPACE_SEPARATOR)) {
+        if (!str_contains($view_name, self::NAMESPACE_SEPARATOR)) {
             $view_name = self::NAMESPACE_SEPARATOR . $view_name;
         }
 
-        // Apply replacements / customisations
+        // Apply replacements / customizations
         while (!$explicit && array_key_exists($view_name, self::$replacements)) {
             $view_name = self::$replacements[$view_name];
         }

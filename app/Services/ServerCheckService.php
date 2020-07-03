@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use SQLite3;
 
 use function array_map;
@@ -32,8 +31,8 @@ use function explode;
 use function extension_loaded;
 use function function_exists;
 use function in_array;
-use function preg_replace;
-use function strpos;
+use function str_ends_with;
+use function str_starts_with;
 use function strtolower;
 use function sys_get_temp_dir;
 use function trim;
@@ -241,7 +240,7 @@ class ServerCheckService
         foreach ($open_basedirs as $dir) {
             $dir = $this->normalizeFolder($dir);
 
-            if (strpos($sys_temp_dir, $dir) === 0) {
+            if (str_starts_with($sys_temp_dir, $dir)) {
                 return '';
             }
         }
@@ -266,10 +265,13 @@ class ServerCheckService
      */
     private function normalizeFolder(string $path): string
     {
-        $path = preg_replace('/[\\/]+/', '/', $path);
-        $path = Str::finish($path, '/');
+        $path = strtr($path, ['\\' => '/']);
 
-        return $path;
+        if (str_ends_with($path, '/')) {
+            return $path;
+        }
+
+        return $path . '/';
     }
 
     /**

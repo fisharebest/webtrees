@@ -43,6 +43,7 @@ use function max;
 use function min;
 use function redirect;
 use function route;
+use function str_contains;
 
 /**
  * Class FanChartModule
@@ -513,7 +514,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         // do not split hebrew line
         $found = false;
         foreach ($RTLOrd as $ord) {
-            if (strpos($data, chr($ord)) !== false) {
+            if (str_contains($data, chr($ord))) {
                 $found = true;
             }
         }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use function strpos;
+use function str_contains;
 
 /**
  * Class ReportBaseText
@@ -76,7 +76,7 @@ class ReportBaseText extends ReportBaseElement
     public function setWrapWidth(float $wrapwidth, float $cellwidth): float
     {
         $this->wrapWidthCell = $cellwidth;
-        if (strpos($this->text, "\n") !== false) {
+        if (str_contains($this->text, "\n")) {
             $this->wrapWidthRemaining = $cellwidth;
         } else {
             $this->wrapWidthRemaining = $wrapwidth;

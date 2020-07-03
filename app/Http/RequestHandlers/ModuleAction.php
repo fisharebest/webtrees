@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function call_user_func;
 use function method_exists;
-use function strpos;
+use function str_contains;
 use function strtolower;
 
 /**
@@ -79,7 +79,7 @@ class ModuleAction implements RequestHandlerInterface
         $method = $verb . $action . 'Action';
 
         // Actions with "Admin" in the name are for administrators only.
-        if (strpos($action, 'Admin') !== false && !Auth::isAdmin($user)) {
+        if (str_contains($action, 'Admin') && !Auth::isAdmin($user)) {
             throw new HttpAccessDeniedException('Admin only action');
         }
 

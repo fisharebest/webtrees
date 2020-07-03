@@ -29,6 +29,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 
 use function preg_match;
+use function str_contains;
 
 /**
  * Class FixCemeteryTag
@@ -197,7 +198,7 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
             // Add PLAC/ADDR
             $convert = $params['convert'];
 
-            if (strpos($gedcom, "\n2 " . $convert . ' ') === false) {
+            if (!str_contains($gedcom, "\n2 " . $convert . ' ')) {
                 $gedcom .= "\n2 " . $convert . ' ' . $ceme;
             } else {
                 $gedcom = strtr($gedcom, ["\n2 " . $convert . ' ' => "\n2 " . $convert . ' ' . $ceme . ', ']);

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,6 +40,7 @@ use stdClass;
 use function assert;
 use function e;
 use function route;
+use function str_starts_with;
 use function view;
 
 /**
@@ -208,7 +209,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                 $content .= '<div dir="auto" style="white-space: pre-wrap;">' . Filter::expandUrls($message->body, $tree) . '</div><br>';
 
                 /* I18N: When replying to an email, the subject becomes “RE: <subject>” */
-                if (strpos($message->subject, I18N::translate('RE: ')) !== 0) {
+                if (!str_starts_with($message->subject, I18N::translate('RE: '))) {
                     $message->subject = I18N::translate('RE: ') . $message->subject;
                 }
 

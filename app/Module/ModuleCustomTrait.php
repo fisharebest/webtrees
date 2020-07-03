@@ -26,12 +26,12 @@ use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Mime;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
-use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
 use function assert;
+use function str_contains;
 use function strlen;
 use function strtolower;
 
@@ -166,7 +166,7 @@ trait ModuleCustomTrait
         $asset = $request->getQueryParams()['asset'];
 
         // Do not allow requests that try to access parent folders.
-        if (Str::contains($asset, '..')) {
+        if (str_contains($asset, '..')) {
             throw new HttpAccessDeniedException($asset);
         }
 

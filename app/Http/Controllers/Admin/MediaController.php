@@ -38,7 +38,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
-use Illuminate\Support\Str;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -56,8 +55,8 @@ use function preg_match;
 use function redirect;
 use function route;
 use function str_replace;
+use function str_starts_with;
 use function strlen;
-use function strpos;
 use function substr;
 use function trim;
 
@@ -252,7 +251,7 @@ class MediaController extends AbstractAdminController
                 $callback = function (array $row) use ($data_filesystem, $media_trees): array {
                     $mime_type = $data_filesystem->getMimeType($row[0]) ?: Mime::DEFAULT_TYPE;
 
-                    if (strpos($mime_type, 'image/') === 0) {
+                    if (str_starts_with($mime_type, 'image/')) {
                         $url = route('unused-media-thumbnail', [
                             'path' => $row[0],
                             'w'    => 100,
@@ -266,7 +265,7 @@ class MediaController extends AbstractAdminController
                     // Form to create new media object in each tree
                     $create_form = '';
                     foreach ($media_trees as $media_tree => $media_directory) {
-                        if (Str::startsWith($row[0], $media_directory)) {
+                        if (str_starts_with($row[0], $media_directory)) {
                             $tmp         = substr($row[0], strlen($media_directory));
                             $create_form .=
                                 '<p><a href="#" data-toggle="modal" data-target="#modal-create-media-from-file" data-file="' . e($tmp) . '" data-url="' . e(route('create-media-from-file', ['tree' => $media_tree])) . '" onclick="document.getElementById(\'modal-create-media-from-file-form\').action=this.dataset.url; document.getElementById(\'file\').value=this.dataset.file;">' . I18N::translate('Create') . '</a> — ' . e($media_tree) . '<p>';

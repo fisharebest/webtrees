@@ -22,13 +22,9 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use InvalidArgumentException;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
@@ -36,8 +32,13 @@ use Psr\Http\Message\StreamInterface;
 use stdClass;
 
 use function app;
+use function array_key_exists;
 use function date;
+use function str_starts_with;
+use function strlen;
 use function strtoupper;
+use function substr;
+use function substr_replace;
 
 /**
  * Provide an interface to the wt_gedcom table.
@@ -445,12 +446,12 @@ class Tree
      */
     public function createRecord(string $gedcom): GedcomRecord
     {
-        if (!Str::startsWith($gedcom, '0 @@ ')) {
+        if (!str_starts_with($gedcom, '0 @@ ')) {
             throw new InvalidArgumentException('GedcomRecord::createRecord(' . $gedcom . ') does not begin 0 @@');
         }
 
         $xref   = $this->getNewXref();
-        $gedcom = '0 @' . $xref . '@ ' . Str::after($gedcom, '0 @@ ');
+        $gedcom = substr_replace($gedcom, $xref, 3, 0);
 
         // Create a change record
         $today = strtoupper(date('d M Y'));
@@ -528,12 +529,12 @@ class Tree
      */
     public function createFamily(string $gedcom): GedcomRecord
     {
-        if (!Str::startsWith($gedcom, '0 @@ FAM')) {
+        if (!str_starts_with($gedcom, '0 @@ FAM')) {
             throw new InvalidArgumentException('GedcomRecord::createFamily(' . $gedcom . ') does not begin 0 @@ FAM');
         }
 
         $xref   = $this->getNewXref();
-        $gedcom = '0 @' . $xref . '@ FAM' . Str::after($gedcom, '0 @@ FAM');
+        $gedcom = substr_replace($gedcom, $xref, 3, 0);
 
         // Create a change record
         $today = strtoupper(date('d M Y'));
@@ -571,12 +572,12 @@ class Tree
      */
     public function createIndividual(string $gedcom): GedcomRecord
     {
-        if (!Str::startsWith($gedcom, '0 @@ INDI')) {
+        if (!str_starts_with($gedcom, '0 @@ INDI')) {
             throw new InvalidArgumentException('GedcomRecord::createIndividual(' . $gedcom . ') does not begin 0 @@ INDI');
         }
 
         $xref   = $this->getNewXref();
-        $gedcom = '0 @' . $xref . '@ INDI' . Str::after($gedcom, '0 @@ INDI');
+        $gedcom = substr_replace($gedcom, $xref, 3, 0);
 
         // Create a change record
         $today = strtoupper(date('d M Y'));
@@ -614,12 +615,12 @@ class Tree
      */
     public function createMediaObject(string $gedcom): Media
     {
-        if (!Str::startsWith($gedcom, '0 @@ OBJE')) {
+        if (!str_starts_with($gedcom, '0 @@ OBJE')) {
             throw new InvalidArgumentException('GedcomRecord::createIndividual(' . $gedcom . ') does not begin 0 @@ OBJE');
         }
 
         $xref   = $this->getNewXref();
-        $gedcom = '0 @' . $xref . '@ OBJE' . Str::after($gedcom, '0 @@ OBJE');
+        $gedcom = substr_replace($gedcom, $xref, 3, 0);
 
         // Create a change record
         $today = strtoupper(date('d M Y'));

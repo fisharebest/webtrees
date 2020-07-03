@@ -73,11 +73,11 @@ use function preg_split;
 use function reset;
 use function round;
 use function sprintf;
+use function str_contains;
 use function str_replace;
+use function str_starts_with;
 use function strip_tags;
 use function strlen;
-use function strpos;
-use function strstr;
 use function strtoupper;
 use function substr;
 use function trim;
@@ -1177,7 +1177,7 @@ class ReportParserGenerate extends ReportParserBase
             }
             //-- read the xml from the file
             $lines = file($this->report);
-            while (strpos($lines[$lineoffset + $this->repeat_bytes], '<RepeatTag') === false) {
+            while (!str_contains($lines[$lineoffset + $this->repeat_bytes], '<RepeatTag')) {
                 $lineoffset--;
             }
             $lineoffset++;
@@ -1186,9 +1186,9 @@ class ReportParserGenerate extends ReportParserBase
             // RepeatTag Level counter
             $count = 1;
             while (0 < $count) {
-                if (strstr($lines[$line_nr], '<RepeatTag') !== false) {
+                if (str_contains($lines[$line_nr], '<RepeatTag')) {
                     $count++;
-                } elseif (strstr($lines[$line_nr], '</RepeatTag') !== false) {
+                } elseif (str_contains($lines[$line_nr], '</RepeatTag')) {
                     $count--;
                 }
                 if (0 < $count) {
@@ -1369,7 +1369,7 @@ class ReportParserGenerate extends ReportParserBase
 
             //-- read the xml from the file
             $lines = file($this->report);
-            while ($lineoffset + $this->repeat_bytes > 0 && strpos($lines[$lineoffset + $this->repeat_bytes], '<Facts ') === false) {
+            while ($lineoffset + $this->repeat_bytes > 0 && !str_contains($lines[$lineoffset + $this->repeat_bytes], '<Facts ')) {
                 $lineoffset--;
             }
             $lineoffset++;
@@ -1505,7 +1505,7 @@ class ReportParserGenerate extends ReportParserBase
             $value = (string) $expression_language->evaluate($value);
         }
 
-        if (strpos($value, '@') !== false) {
+        if (str_contains($value, '@')) {
             $value = '';
         }
         $this->vars[$name]['id'] = $value;
@@ -1913,7 +1913,7 @@ class ReportParserGenerate extends ReportParserBase
                     ->distinct();
 
                 foreach ($attrs as $attr => $value) {
-                    if (strpos($attr, 'filter') === 0 && $value) {
+                    if (str_starts_with($attr, 'filter') && $value !== '') {
                         $value = $this->substituteVars($value, false);
                         // Convert the various filters into SQL
                         if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
@@ -1999,7 +1999,7 @@ class ReportParserGenerate extends ReportParserBase
                     ->distinct();
 
                 foreach ($attrs as $attr => $value) {
-                    if (strpos($attr, 'filter') === 0 && $value) {
+                    if (str_starts_with($attr, 'filter') && $value !== '') {
                         $value = $this->substituteVars($value, false);
                         // Convert the various filters into SQL
                         if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
@@ -2287,7 +2287,7 @@ class ReportParserGenerate extends ReportParserBase
             }
             //-- read the xml from the file
             $lines = file($this->report);
-            while ((strpos($lines[$lineoffset + $this->repeat_bytes], '<List') === false) && (($lineoffset + $this->repeat_bytes) > 0)) {
+            while ((!str_contains($lines[$lineoffset + $this->repeat_bytes], '<List')) && (($lineoffset + $this->repeat_bytes) > 0)) {
                 $lineoffset--;
             }
             $lineoffset++;
@@ -2296,9 +2296,9 @@ class ReportParserGenerate extends ReportParserBase
             // List Level counter
             $count = 1;
             while (0 < $count) {
-                if (strpos($lines[$line_nr], '<List') !== false) {
+                if (str_contains($lines[$line_nr], '<List')) {
                     $count++;
-                } elseif (strpos($lines[$line_nr], '</List') !== false) {
+                } elseif (str_contains($lines[$line_nr], '</List')) {
                     $count--;
                 }
                 if (0 < $count) {
@@ -2514,7 +2514,7 @@ class ReportParserGenerate extends ReportParserBase
             }
             //-- read the xml from the file
             $lines = file($this->report);
-            while ((strpos($lines[$lineoffset + $this->repeat_bytes], '<Relatives') === false) && (($lineoffset + $this->repeat_bytes) > 0)) {
+            while (!str_contains($lines[$lineoffset + $this->repeat_bytes], '<Relatives') && $lineoffset + $this->repeat_bytes > 0) {
                 $lineoffset--;
             }
             $lineoffset++;
@@ -2523,9 +2523,9 @@ class ReportParserGenerate extends ReportParserBase
             // Relatives Level counter
             $count = 1;
             while (0 < $count) {
-                if (strpos($lines[$line_nr], '<Relatives') !== false) {
+                if (str_contains($lines[$line_nr], '<Relatives')) {
                     $count++;
-                } elseif (strpos($lines[$line_nr], '</Relatives') !== false) {
+                } elseif (str_contains($lines[$line_nr], '</Relatives')) {
                     $count--;
                 }
                 if (0 < $count) {
@@ -2707,7 +2707,7 @@ class ReportParserGenerate extends ReportParserBase
         $list[$pid]->generation = 1;
         while (count($genlist) > 0) {
             $id = array_shift($genlist);
-            if (strpos($id, 'empty') === 0) {
+            if (str_starts_with($id, 'empty')) {
                 continue; // id can be something like “empty7”
             }
             $person = Factory::individual()->make($id, $this->tree);

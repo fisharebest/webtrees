@@ -21,7 +21,7 @@ use Illuminate\Support\Collection;
             <div class="row">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-9">
-                    <?php if (strpos($bdm, 'B') !== false) : ?>
+                    <?php if (str_contains($bdm, 'B')) : ?>
                         <label>
                             <input type="checkbox" name="SOUR_INDI" <?= $prefer_level2_sources === '2' ? 'checked' : '' ?> value="1">
                             <?= I18N::translate('Individual') ?>
@@ -36,7 +36,7 @@ use Illuminate\Support\Collection;
                         <?php endif ?>
                     <?php endif ?>
 
-                    <?php if (strpos($bdm, 'M') !== false) : ?>
+                    <?php if (str_contains($bdm, 'M')) : ?>
                         <label>
                             <input type="checkbox" name="SOUR_FAM" <?= $prefer_level2_sources === '2' ? 'checked' : '' ?> value="1">
                             <?= I18N::translate('Family') ?>

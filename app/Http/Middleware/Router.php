@@ -31,6 +31,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
 use function array_map;
+use function str_contains;
 
 /**
  * Simple class to help migrate to a third-party routing library.
@@ -117,7 +118,7 @@ class Router implements MiddlewareInterface
                 app()->instance(Tree::class, $value);
 
                 // Missing mandatory parameter? Let the default handler take care of it.
-                if ($value === null && strpos($route->path, '{tree}') !== false) {
+                if ($value === null && str_contains($route->path, '{tree}')) {
                     return $handler->handle($request);
                 }
             }

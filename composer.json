@@ -73,6 +73,7 @@
         "symfony/cache": "~4.4",
         "symfony/expression-language": "~4.4",
         "symfony/polyfill-mbstring": "~1.17",
+        "symfony/polyfill-php80": "^1.17",
         "tecnickcom/tcpdf": "^6.3.5"
     },
     "require-dev": {

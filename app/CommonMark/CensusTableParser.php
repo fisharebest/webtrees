@@ -29,7 +29,7 @@ use League\CommonMark\Extension\Table\TableRow;
 
 use function array_shift;
 use function explode;
-use function strpos;
+use function str_starts_with;
 use function substr;
 
 /**
@@ -112,7 +112,7 @@ class CensusTableParser implements BlockParserInterface
         $row   = new TableRow();
 
         foreach ($cells as $cell) {
-            if (strpos($cell, self::TH_PREFIX) === 0) {
+            if (str_starts_with($cell, self::TH_PREFIX)) {
                 $cell = substr($cell, strlen(self::TH_PREFIX));
                 $type = TableCell::TYPE_HEAD;
             }

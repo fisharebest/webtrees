@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -28,6 +27,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function app;
 use function call_user_func;
 use function explode;
+use function str_contains;
 use function substr_compare;
 
 /**
@@ -67,7 +67,7 @@ class WrapHandler implements MiddlewareInterface
         }
 
         // A string containing class::method
-        if (Str::contains($this->handler, self::SCOPE_OPERATOR)) {
+        if (str_contains($this->handler, self::SCOPE_OPERATOR)) {
             [$class, $method] = explode(self::SCOPE_OPERATOR, $this->handler);
 
             if (substr_compare($class, '\\', 0, 1) !== 0) {

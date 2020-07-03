@@ -65,6 +65,7 @@ use stdClass;
 use function call_user_func;
 use function count;
 use function in_array;
+use function str_contains;
 
 /**
  * A selection of pre-formatted statistical queries.
@@ -256,7 +257,7 @@ class Statistics implements
      */
     public function embedTags(string $text): string
     {
-        if (strpos($text, '#') !== false) {
+        if (str_contains($text, '#')) {
             $text = strtr($text, $this->getTags($text));
         }
 

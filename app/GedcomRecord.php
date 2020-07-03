@@ -48,9 +48,9 @@ use function preg_replace;
 use function preg_replace_callback;
 use function preg_split;
 use function route;
+use function str_contains;
 use function str_pad;
 use function strip_tags;
-use function strpos;
 use function strtoupper;
 use function trim;
 
@@ -340,7 +340,7 @@ class GedcomRecord
             return true;
         }
 
-        return Auth::isEditor($this->tree) && strpos($this->gedcom, "\n1 RESN locked") === false;
+        return Auth::isEditor($this->tree) && !str_contains($this->gedcom, "\n1 RESN locked");
     }
 
     /**
@@ -983,7 +983,7 @@ class GedcomRecord
             $new_gedcom .= "\n" . $gedcom;
         }
 
-        if ($update_chan && strpos($new_gedcom, "\n1 CHAN") === false) {
+        if ($update_chan && !str_contains($new_gedcom, "\n1 CHAN")) {
             $today = strtoupper(date('d M Y'));
             $now   = date('H:i:s');
             $new_gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
@@ -1229,7 +1229,7 @@ class GedcomRecord
             if (preg_match_all("/^{$level} ({$fact_type}) (.+)((\n[{$sublevel}-9].+)*)/m", $fact->gedcom(), $matches, PREG_SET_ORDER)) {
                 foreach ($matches as $match) {
                     // Treat 1 NAME / 2 TYPE married the same as _MARNM
-                    if ($match[1] === 'NAME' && strpos($match[3], "\n2 TYPE married") !== false) {
+                    if ($match[1] === 'NAME' && str_contains($match[3], "\n2 TYPE married")) {
                         $this->addName('_MARNM', $match[2], $fact->gedcom());
                     } else {
                         $this->addName($match[1], $match[2], $fact->gedcom());
@@ -1303,13 +1303,13 @@ class GedcomRecord
         }
 
         // Does this record have a RESN?
-        if (strpos($this->gedcom, "\n1 RESN confidential") !== false) {
+        if (str_contains($this->gedcom, "\n1 RESN confidential")) {
             return Auth::PRIV_NONE >= $access_level;
         }
-        if (strpos($this->gedcom, "\n1 RESN privacy") !== false) {
+        if (str_contains($this->gedcom, "\n1 RESN privacy")) {
             return Auth::PRIV_USER >= $access_level;
         }
-        if (strpos($this->gedcom, "\n1 RESN none") !== false) {
+        if (str_contains($this->gedcom, "\n1 RESN none")) {
             return true;
         }
 

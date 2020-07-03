@@ -62,6 +62,7 @@ use function preg_replace;
 use function preg_split;
 use function rawurlencode;
 use function route;
+use function str_contains;
 use function str_replace;
 use function strip_tags;
 use function strlen;
@@ -580,7 +581,7 @@ class FunctionsPrintFacts
         // will display nicely when markdown is used.
         $ct = preg_match_all('/' . $level . ' SOUR (.*)((?:\n\d CONT.*)*)/', $factrec, $match, PREG_SET_ORDER);
         for ($j = 0; $j < $ct; $j++) {
-            if (strpos($match[$j][1], '@') === false) {
+            if (!str_contains($match[$j][1], '@')) {
                 $source = e($match[$j][1] . preg_replace('/\n\d CONT ?/', "\n", $match[$j][2]));
                 $data   .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">' . Filter::formatText($source, $tree) . '</span></div>';
             }

@@ -41,6 +41,7 @@ use function pathinfo;
 use function preg_match;
 use function preg_replace;
 use function preg_split;
+use function str_contains;
 use function str_replace;
 use function strpos;
 use function strtolower;
@@ -182,15 +183,15 @@ class FunctionsExport
         if ($path && preg_match('/\n1 FILE (.+)/', $rec, $match)) {
             $old_file_name = $match[1];
             // Don’t modify external links
-            if (strpos($old_file_name, '://') === false) {
+            if (!str_contains($old_file_name, '://')) {
                 // Adding a windows path? Convert the slashes.
-                if (strpos($path, '\\') !== false) {
+                if (str_contains($path, '\\')) {
                     $new_file_name = preg_replace('~/+~', '\\', $old_file_name);
                 } else {
                     $new_file_name = $old_file_name;
                 }
                 // Path not present - add it.
-                if (strpos($new_file_name, $path) === false) {
+                if (!str_contains($new_file_name, $path)) {
                     $new_file_name = $path . $new_file_name;
                 }
                 $rec = str_replace("\n1 FILE " . $old_file_name, "\n1 FILE " . $new_file_name, $rec);

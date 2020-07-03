@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -45,8 +45,7 @@ use function pathinfo;
 use function preg_replace;
 use function sha1;
 use function sort;
-use function str_replace;
-use function strpos;
+use function str_contains;
 use function strtolower;
 use function strtr;
 use function substr;
@@ -154,8 +153,8 @@ class MediaFileService
             // Older versions of webtrees used a couple of special folders.
             return
                 $item['type'] === 'file' &&
-                strpos($item['path'], '/thumbs/') === false &&
-                strpos($item['path'], '/watermarks/') === false;
+                !str_contains($item['path'], '/thumbs/') &&
+                !str_contains($item['path'], '/watermarks/');
         });
 
         $disk_files = array_map(static function (array $item): string {
@@ -192,7 +191,7 @@ class MediaFileService
             case 'url':
                 $remote = $params['remote'];
 
-                if (strpos($remote, '://') !== false) {
+                if (str_contains($remote, '://')) {
                     return $remote;
                 }
 
@@ -220,15 +219,15 @@ class MediaFileService
                 }
 
                 // The filename
-                $new_file = str_replace('\\', '/', $new_file);
-                if ($new_file !== '' && strpos($new_file, '/') === false) {
+                $new_file = strtr($new_file, ['\\' => '/']);
+                if ($new_file !== '' && !str_contains($new_file, '/')) {
                     $file = $new_file;
                 } else {
                     $file = $uploaded_file->getClientFilename();
                 }
 
                 // The folder
-                $folder = str_replace('\\', '/', $folder);
+                $folder = strtr($folder, ['\\' => '/']);
                 $folder = trim($folder, '/');
                 if ($folder !== '') {
                     $folder .= '/';
@@ -313,8 +312,8 @@ class MediaFileService
             ->filter(static function (array $metadata): bool {
                 return
                     $metadata['type'] === 'file' &&
-                    strpos($metadata['path'], '/thumbs/') === false &&
-                    strpos($metadata['path'], '/watermark/') === false;
+                    !str_contains($metadata['path'], '/thumbs/') &&
+                    !str_contains($metadata['path'], '/watermark/');
             })
             ->map(static function (array $metadata): string {
                 return $metadata['path'];
@@ -385,7 +384,7 @@ class MediaFileService
                     return $metadata['path'] . '/';
                 })
                 ->filter(static function (string $dir): bool {
-                    return strpos($dir, '/thumbs/') === false && strpos($dir, 'watermarks') === false;
+                    return !str_contains($dir, '/thumbs/') && !str_contains($dir, 'watermarks');
                 });
 
             $disk_folders = $disk_folders->concat($tmp);

@@ -57,6 +57,7 @@ use function preg_match;
 use function preg_match_all;
 use function preg_replace_callback;
 use function preg_split;
+use function str_contains;
 use function strip_tags;
 use function strlen;
 use function strpos;
@@ -105,7 +106,7 @@ class FunctionsPrint
             $html  = Filter::formatText($text, $tree);
 
             // Only one line?  Remove block-level attributes and skip expand/collapse.
-            if (strpos($text, "\n") === false) {
+            if (!str_contains($text, "\n")) {
                 return
                     '<div class="fact_NOTE">' .
                     I18N::translate(

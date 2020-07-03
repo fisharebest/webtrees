@@ -29,6 +29,7 @@ use function extension_loaded;
 use function getimagesize;
 use function intdiv;
 use function pathinfo;
+use function str_contains;
 use function strtolower;
 
 use const PATHINFO_EXTENSION;
@@ -217,7 +218,7 @@ class MediaFile
      */
     public function isExternal(): bool
     {
-        return strpos($this->multimedia_file_refn, '://') !== false;
+        return str_contains($this->multimedia_file_refn, '://');
     }
 
     /**

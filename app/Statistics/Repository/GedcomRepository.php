@@ -27,6 +27,8 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\GedcomRepositoryInterf
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
+use function str_contains;
+
 /**
  * A repository providing methods for GEDCOM related statistics.
  */
@@ -117,7 +119,7 @@ class GedcomRepository implements GedcomRepositoryInterface
         $head = $this->gedcomHead();
 
         // Fix broken version string in Family Tree Maker
-        if (strpos($head[1], 'Family Tree Maker ') !== false) {
+        if (str_contains($head[1], 'Family Tree Maker ')) {
             $p       = strpos($head[1], '(') + 1;
             $p2      = strpos($head[1], ')');
             $head[1] = substr($head[1], $p, $p2 - $p);

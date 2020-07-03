@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use function str_contains;
 use function str_replace;
 use function stripos;
-use function strpos;
 
 /**
  * Class ReportHtmlCell
@@ -37,7 +37,7 @@ class ReportHtmlCell extends ReportBaseCell
      */
     public function render($renderer)
     {
-        if (strpos($this->text, '{{:ptp:}}') !== false) {
+        if (str_contains($this->text, '{{:ptp:}}')) {
             return;
         }
         $temptext = str_replace('#PAGENUM#', (string) $renderer->pageNo(), $this->text);

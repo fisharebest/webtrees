@@ -31,7 +31,6 @@ use GuzzleHttp\Exception\RequestException;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -43,6 +42,7 @@ use function preg_match_all;
 use function preg_quote;
 use function rawurlencode;
 use function response;
+use function str_contains;
 
 /**
  * Controller for the autocomplete callbacks
@@ -92,7 +92,7 @@ class AutocompleteController extends AbstractBaseController
 
         $folders = $contents
             ->filter(static function (array $object) use ($query): bool {
-                return $object['type'] === 'dir' && Str::contains($object['path'], $query);
+                return $object['type'] === 'dir' && str_contains($object['path'], $query);
             })
             ->values()
             ->map(static function (array $object): array {

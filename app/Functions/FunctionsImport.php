@@ -46,8 +46,10 @@ use function array_map;
 use function array_unique;
 use function date;
 use function preg_match_all;
-use function strpos;
+use function str_contains;
+use function str_starts_with;
 use function strtoupper;
+use function trim;
 
 use const PREG_SET_ORDER;
 
@@ -89,7 +91,7 @@ class FunctionsImport
                     break;
                 case 'DATE':
                     // Preserve text from INT dates
-                    if (strpos($data, '(') !== false) {
+                    if (str_contains($data, '(')) {
                         [$date, $text] = explode('(', $data, 2);
                         $text = ' (' . $text;
                     } else {
@@ -208,14 +210,10 @@ class FunctionsImport
             switch ($tag) {
                 default:
                     // Remove tabs and multiple/leading/trailing spaces
-                    if (strpos($data, "\t") !== false) {
-                        $data = str_replace("\t", ' ', $data);
-                    }
-                    if (substr($data, 0, 1) === ' ' || substr($data, -1, 1) === ' ') {
-                        $data = trim($data);
-                    }
-                    while (strpos($data, '  ')) {
-                        $data = str_replace('  ', ' ', $data);
+                    $data = strtr($data, ["\t" => ' ']);
+                    $data = trim($data, ' ');
+                    while (str_contains($data, '  ')) {
+                        $data = strtr($data, ['  ' => ' ']);
                     }
                     $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level === '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag !== 'NOTE' ? '' : ' ' . $data);
                     break;
@@ -228,7 +226,7 @@ class FunctionsImport
                 case 'FILE':
                     // Strip off the user-defined path prefix
                     $GEDCOM_MEDIA_PATH = $tree->getPreference('GEDCOM_MEDIA_PATH');
-                    if ($GEDCOM_MEDIA_PATH && strpos($data, $GEDCOM_MEDIA_PATH) === 0) {
+                    if ($GEDCOM_MEDIA_PATH !== '' && str_starts_with($data, $GEDCOM_MEDIA_PATH)) {
                         $data = substr($data, strlen($GEDCOM_MEDIA_PATH));
                     }
                     // convert backslashes in filenames to forward slashes
@@ -273,7 +271,7 @@ class FunctionsImport
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ (' . Gedcom::REGEX_TAG . ')/', $gedrec, $match)) {
             [, $xref, $type] = $match;
             // check for a _UID, if the record doesn't have one, add one
-            if ($tree->getPreference('GENERATE_UIDS') && !strpos($gedrec, "\n1 _UID ")) {
+            if ($tree->getPreference('GENERATE_UIDS') === '1' && !str_contains($gedrec, "\n1 _UID ")) {
                 $gedrec .= "\n1 _UID " . GedcomTag::createUid();
             }
         } elseif (preg_match('/0 (HEAD|TRLR)/', $gedrec, $match)) {
@@ -394,7 +392,7 @@ class FunctionsImport
 
             case Header::RECORD_TYPE:
                 // Force HEAD records to have a creation date.
-                if (strpos($gedrec, "\n1 DATE ") === false) {
+                if (!str_contains($gedrec, "\n1 DATE ")) {
                     $today = strtoupper(date('d M Y'));
                     $gedrec .= "\n1 DATE " . $today;
                 }

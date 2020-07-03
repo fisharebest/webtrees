@@ -33,7 +33,7 @@ use stdClass;
 use function app;
 use function assert;
 use function in_array;
-use function strpos;
+use function str_contains;
 
 /**
  * Class SlideShowModule
@@ -134,10 +134,10 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
                             return true;
 
                         case self::LINK_INDIVIDUAL:
-                            return strpos($individual->gedcom(), "\n1 OBJE @" . $media->xref() . '@') !== false;
+                            return str_contains($individual->gedcom(), "\n1 OBJE @" . $media->xref() . '@');
 
                         case self::LINK_EVENT:
-                            return strpos($individual->gedcom(), "\n2 OBJE @" . $media->xref() . '@') !== false;
+                            return str_contains($individual->gedcom(), "\n2 OBJE @" . $media->xref() . '@');
                     }
                 }
 

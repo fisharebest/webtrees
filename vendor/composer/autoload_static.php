@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99
+class ComposerStaticInit68bcb1dc13d59569a24fdb2f09b53c39
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -21,12 +21,14 @@ class ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '68a364a398e4c810af7b33b66c1c5a1a' => __DIR__ . '/../..' . '/app/Helpers/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
+            'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Intl\\Idn\\' => 26,
@@ -123,6 +125,10 @@ class ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99
     );
 
     public static $prefixDirsPsr4 = array (
+        'Symfony\\Polyfill\\Php80\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
+        ),
         'Symfony\\Polyfill\\Php72\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php72',
@@ -353,6 +359,7 @@ class ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99
         'Datamatrix' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/datamatrix.php',
         'PDF417' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/pdf417.php',
         'QRcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/qrcode.php',
+        'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'TCPDF' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf.php',
         'TCPDF2DBarcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_barcodes_2d.php',
         'TCPDFBarcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_barcodes_1d.php',
@@ -364,15 +371,16 @@ class ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99
         'TCPDF_IMPORT' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_import.php',
         'TCPDF_PARSER' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_parser.php',
         'TCPDF_STATIC' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/tcpdf_static.php',
+        'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit00d031cf6ee8ec5ce4becbbe7ea38e99::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit68bcb1dc13d59569a24fdb2f09b53c39::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit68bcb1dc13d59569a24fdb2f09b53c39::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit68bcb1dc13d59569a24fdb2f09b53c39::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit68bcb1dc13d59569a24fdb2f09b53c39::$classMap;
 
         }, null, ClassLoader::class);
     }

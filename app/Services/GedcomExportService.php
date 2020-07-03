@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,6 +40,8 @@ use function explode;
 use function fwrite;
 use function mb_convert_encoding;
 use function pathinfo;
+use function str_contains;
+use function str_starts_with;
 use function strpos;
 use function strtolower;
 use function strtoupper;
@@ -197,11 +199,11 @@ class GedcomExportService
                 $filename = $match[1];
 
                 // Convert separators to match new path.
-                if (strpos($media_path, '\\') !== false) {
+                if (str_contains($media_path, '\\')) {
                     $filename = strtr($filename, ['/' => '\\']);
                 }
 
-                if (strpos($filename, $media_path) !== 0) {
+                if (!str_starts_with($filename, $media_path)) {
                     return $media_path . $filename;
                 }
 

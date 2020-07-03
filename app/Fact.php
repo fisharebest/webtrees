@@ -34,7 +34,7 @@ use function in_array;
 use function preg_match;
 use function preg_match_all;
 use function preg_replace;
-use function strpos;
+use function str_contains;
 use function usort;
 
 use const PREG_SET_ORDER;
@@ -314,13 +314,13 @@ class Fact
         $access_level = $access_level ?? Auth::accessLevel($this->record->tree());
 
         // Does this record have an explicit RESN?
-        if (strpos($this->gedcom, "\n2 RESN confidential") !== false) {
+        if (str_contains($this->gedcom, "\n2 RESN confidential")) {
             return Auth::PRIV_NONE >= $access_level;
         }
-        if (strpos($this->gedcom, "\n2 RESN privacy") !== false) {
+        if (str_contains($this->gedcom, "\n2 RESN privacy")) {
             return Auth::PRIV_USER >= $access_level;
         }
-        if (strpos($this->gedcom, "\n2 RESN none") !== false) {
+        if (str_contains($this->gedcom, "\n2 RESN none")) {
             return true;
         }
 
@@ -355,7 +355,7 @@ class Fact
         }
 
         // Members cannot edit RESN, CHAN and locked records
-        return Auth::isEditor($this->record->tree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->tag !== 'RESN' && $this->tag !== 'CHAN';
+        return Auth::isEditor($this->record->tree()) && !str_contains($this->gedcom, "\n2 RESN locked") && $this->tag !== 'RESN' && $this->tag !== 'CHAN';
     }
 
     /**

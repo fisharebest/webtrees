@@ -229,11 +229,12 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use stdClass;
 use Throwable;
 
 use function app;
+use function str_contains;
+use function strlen;
 
 /**
  * Functions for managing and maintaining modules.
@@ -619,7 +620,13 @@ class ModuleService
                 // This also allows us to ignore modules called "foo.example" and "foo.disable"
                 $module_name = basename(dirname($filename));
 
-                return !Str::contains($module_name, ['.', ' ', '[', ']']) && Str::length($module_name) <= 30;
+                foreach (['.', ' ', '[', ']'] as $character) {
+                    if (str_contains($module_name, $character)) {
+                        return false;
+                    }
+                }
+
+                return strlen($module_name) <= 30;
             })
             ->map(static function (string $filename): ?ModuleCustomInterface {
                 try {

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,6 +40,7 @@ use function mb_strtoupper;
 use function mb_substr;
 use function ord;
 use function sprintf;
+use function str_contains;
 use function str_replace;
 use function strcmp;
 use function strip_tags;
@@ -455,7 +456,7 @@ class I18N
         while ($text !== '') {
             $letter = mb_substr($text, 0, 1);
             $text   = mb_substr($text, 1);
-            if (strpos(self::DIGITS, $letter) !== false) {
+            if (str_contains(self::DIGITS, $letter)) {
                 $digits .= $letter;
             } else {
                 $reversed = $letter . $digits . $reversed;

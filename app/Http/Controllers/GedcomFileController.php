@@ -28,11 +28,11 @@ use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
-use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
+use function str_starts_with;
 
 /**
  * Controller for the processing GEDCOM files.
@@ -113,15 +113,15 @@ class GedcomFileController extends AbstractBaseController
                 // If we are loading the first (header) record, make sure the encoding is UTF-8.
                 if ($first_time) {
                     // Remove any byte-order-mark
-                    if (Str::startsWith($data->chunk_data, Gedcom::UTF8_BOM)) {
-                        $data->chunk_data = Str::after($data->chunk_data, Gedcom::UTF8_BOM);
+                    if (str_starts_with($data->chunk_data, Gedcom::UTF8_BOM)) {
+                        $data->chunk_data = substr($data->chunk_data, strlen(Gedcom::UTF8_BOM));
                         // Put it back in the database, so we can do character conversion
                         DB::table('gedcom_chunk')
                             ->where('gedcom_chunk_id', '=', $data->gedcom_chunk_id)
                             ->update(['chunk_data' => $data->chunk_data]);
                     }
 
-                    if (!Str::startsWith($data->chunk_data, '0 HEAD')) {
+                    if (!str_starts_with($data->chunk_data, '0 HEAD')) {
                         return $this->viewResponse('admin/import-fail', [
                             'error' => I18N::translate('Invalid GEDCOM file - no header record found.'),
                             'tree'  => $tree,

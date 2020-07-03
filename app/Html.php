@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use function e;
 use function http_build_query;
+use function implode;
+use function is_int;
+use function is_string;
+use function strtr;
 
 use const PHP_QUERY_RFC3986;
 
@@ -61,7 +66,7 @@ class Html
      */
     public static function url($path, array $data): string
     {
-        $path = str_replace(' ', '%20', $path);
+        $path = strtr($path, [' ' => '%20']);
 
         if ($data !== []) {
             $path .= '?' . http_build_query($data, '', '&', PHP_QUERY_RFC3986);
