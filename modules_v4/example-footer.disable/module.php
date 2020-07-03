@@ -57,7 +57,13 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
      */
     public function getFooter(ServerRequestInterface $request): string
     {
-        $url = route('module', ['module' => $this->name(), 'action' => 'Page']);
+        $tree = $request->getAttribute('tree');
+
+        $url = route('module', [
+            'module' => $this->name(),
+            'action' => 'Page',
+            'tree'   => $tree ? $tree->name() : null,
+        ]);
 
         return view($this->name() . '::footer', ['url' => $url]);
     }
@@ -73,6 +79,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     {
         return $this->viewResponse($this->name() . '::page', [
             'title' => $this->title(),
+            'tree'  => $request->getAttribute('tree'),
         ]);
     }
 };
