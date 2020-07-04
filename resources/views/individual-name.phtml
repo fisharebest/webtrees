@@ -18,14 +18,14 @@ use Fisharebest\Webtrees\I18N;
 $individual = $fact->record();
 $tree       = $individual->tree();
 
-// Create a dummy record, so we can extract the formatted NAME value from it.
-$dummy = Factory::individual()->new(
+// Create a fake record, so we can extract the formatted NAME value from it.
+$fake_individual = Factory::individual()->new(
     'xref',
     "0 @xref@ INDI\n1 DEAT Y\n" . $fact->gedcom(),
     null,
     $tree
 );
-$dummy->setPrimaryName(0); // Make sure we use the name from "1 NAME"
+$fake_individual->setPrimaryName(0); // Make sure we use the name from "1 NAME"
 
 $container_class = '';
 
@@ -42,7 +42,7 @@ if ($fact->isPendingDeletion()) {
             <?= view('icons/expand') ?>
             <?= view('icons/collapse') ?>
             <span class="label"><?= I18N::translate('Name') ?></span>
-            <?= $dummy->fullName() ?>
+            <?= $fake_individual->fullName() ?>
             <?php if ($fact->attribute('TYPE') !== '') : ?>
                 —
                 <?= GedcomCodeName::getValue($fact->attribute('TYPE'), $fact->record()) ?>

@@ -95,7 +95,7 @@ class CensusAssistantModule extends AbstractModule
         $census_class = $params['census'];
         $census       = new $census_class();
 
-        // No head of household?  Create a dummy one.
+        // No head of household?  Create a fake one.
         $head = $head ?? Factory::individual()->new('X', '0 @X@ INDI', null, $tree);
 
         // Generate columns (e.g. relationship name) using the correct language.

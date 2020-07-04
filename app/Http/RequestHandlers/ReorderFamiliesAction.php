@@ -61,9 +61,9 @@ class ReorderFamiliesAction implements RequestHandlerInterface
         $order = $params['order'];
         assert(is_array($order));
 
-        $dummy_facts = ['0 @' . $individual->xref() . '@ INDI'];
-        $sort_facts  = [];
-        $keep_facts  = [];
+        $fake_facts = ['0 @' . $individual->xref() . '@ INDI'];
+        $sort_facts = [];
+        $keep_facts = [];
 
         // Split facts into FAMS and other
         foreach ($individual->facts() as $fact) {
@@ -82,7 +82,7 @@ class ReorderFamiliesAction implements RequestHandlerInterface
         });
 
         // Merge the facts
-        $gedcom = implode("\n", array_merge($dummy_facts, $sort_facts, $keep_facts));
+        $gedcom = implode("\n", array_merge($fake_facts, $sort_facts, $keep_facts));
 
         $individual->updateRecord($gedcom, false);
 

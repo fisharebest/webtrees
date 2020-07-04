@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 
 /**
- * A dummy user that cannot receive email.
+ * A fake user that cannot receive email.
  */
 class NoReplyUser implements UserInterface
 {

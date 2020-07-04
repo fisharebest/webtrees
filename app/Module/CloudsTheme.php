@@ -86,7 +86,7 @@ class CloudsTheme extends AbstractModule implements ModuleThemeInterface
             $submenus = $menu->getSubmenus();
 
             if ($submenus !== []) {
-                // Insert a dummy menu / label into the submenu
+                // Insert a fake menu / label into the submenu
                 array_unshift($submenus, new Menu($menu->getLabel(), '#', '', ['onclick' => 'return false;']));
                 $menu->setSubmenus($submenus);
             }

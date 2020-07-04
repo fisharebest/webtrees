@@ -386,7 +386,7 @@ class Family extends GedcomRecord
                     return $x['type'] !== '_MARNM';
                 });
             }
-            // If the individual only has married names, create a dummy birth name.
+            // If the individual only has married names, create a fake birth name.
             if ($husb_names === []) {
                 $husb_names[] = [
                     'type' => 'BIRT',
@@ -404,7 +404,7 @@ class Family extends GedcomRecord
                     return $x['type'] !== '_MARNM';
                 });
             }
-            // If the individual only has married names, create a dummy birth name.
+            // If the individual only has married names, create a fake birth name.
             if ($wife_names === []) {
                 $wife_names[] = [
                     'type' => 'BIRT',

@@ -47,7 +47,7 @@ class ModuleActionTest extends TestCase
             ->expects($this->once())
             ->method('findByName')
             ->with('test')
-            ->willReturn($this->dummyModule());
+            ->willReturn($this->fooModule());
 
         $user     = new GuestUser();
         $request  = self::createRequest()
@@ -74,7 +74,7 @@ class ModuleActionTest extends TestCase
             ->expects($this->once())
             ->method('findByName')
             ->with('test')
-            ->willReturn($this->dummyModule());
+            ->willReturn($this->fooModule());
 
         $user    = new GuestUser();
         $request = self::createRequest()
@@ -122,7 +122,7 @@ class ModuleActionTest extends TestCase
             ->expects($this->once())
             ->method('findByName')
             ->with('test')
-            ->willReturn($this->dummyModule());
+            ->willReturn($this->fooModule());
 
         $user    = new GuestUser();
         $request = self::createRequest()
@@ -136,7 +136,7 @@ class ModuleActionTest extends TestCase
     /**
      * @return ModuleInterface
      */
-    private function dummyModule(): ModuleInterface
+    private function fooModule(): ModuleInterface
     {
         return new class extends AbstractModule {
             public function getTestAction(ServerRequestInterface $request): ResponseInterface

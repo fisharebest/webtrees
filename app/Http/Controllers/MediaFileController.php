@@ -163,7 +163,7 @@ class MediaFileController extends AbstractBaseController
     }
 
     /**
-     * Send a dummy image, to replace one that could not be found or created.
+     * Send a replacement image, to replace one that could not be found or created.
      *
      * @param int $status HTTP status code
      *
@@ -264,7 +264,7 @@ class MediaFileController extends AbstractBaseController
     }
 
     /**
-     * Send a dummy image, to replace a non-image file.
+     * Send a replacement image, to replace a non-image file.
      *
      * @param string $filename
      *

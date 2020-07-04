@@ -276,7 +276,7 @@ class TreeTest extends TestCase
         // Delete the tree's default individual.
         FunctionsImport::updateRecord('0 @X1@ INDI', $tree, true);
 
-        // No individuals in tree?  Dummy individual
+        // No individuals in tree?  Fake individual
         $this->assertSame('I', $tree->significantIndividual($user)->xref());
 
         $record1 = $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
