@@ -666,7 +666,7 @@ class FunctionsImport
             ->value('m_id');
 
         if ($xref === null) {
-            $xref = $tree->getNewXref();
+            $xref = Factory::xref()->make(Media::RECORD_TYPE);
             // renumber the lines
             $gedrec = preg_replace_callback('/\n(\d+)/', static function (array $m) use ($level): string {
                 return "\n" . ($m[1] - $level);

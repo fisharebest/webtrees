@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Contracts\RepositoryFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SourceFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmissionFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmitterFactoryInterface;
+use Fisharebest\Webtrees\Contracts\XrefFactoryInterface;
 
 /**
  * A service locator for our various factory objects.
@@ -68,6 +69,9 @@ class Factory
 
     /** @var SubmitterFactoryInterface */
     private static $submitter_factory;
+
+    /** @var XrefFactoryInterface */
+    private static $xref_factory;
 
     /**
      * Store or retrieve a factory object.
@@ -243,5 +247,21 @@ class Factory
         }
 
         return self::$submitter_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param XrefFactoryInterface|null $factory
+     *
+     * @return XrefFactoryInterface
+     */
+    public static function xref(XrefFactoryInterface $factory = null): XrefFactoryInterface
+    {
+        if ($factory instanceof XrefFactoryInterface) {
+            self::$xref_factory = $factory;
+        }
+
+        return self::$xref_factory;
     }
 }

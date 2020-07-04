@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Factories\RepositoryFactory;
 use Fisharebest\Webtrees\Factories\SourceFactory;
 use Fisharebest\Webtrees\Factories\SubmissionFactory;
 use Fisharebest\Webtrees\Factories\SubmitterFactory;
+use Fisharebest\Webtrees\Factories\XrefFactory;
 use Fisharebest\Webtrees\Http\Controllers\GedcomFileController;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -102,6 +103,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         Factory::source(new SourceFactory($cache));
         Factory::submission(new SubmissionFactory($cache));
         Factory::submitter(new SubmitterFactory($cache));
+        Factory::xref(new XrefFactory());
 
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
 

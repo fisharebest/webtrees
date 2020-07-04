@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Factories\RepositoryFactory;
 use Fisharebest\Webtrees\Factories\SourceFactory;
 use Fisharebest\Webtrees\Factories\SubmissionFactory;
 use Fisharebest\Webtrees\Factories\SubmitterFactory;
+use Fisharebest\Webtrees\Factories\XrefFactory;
 use Fisharebest\Webtrees\Factory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -67,6 +68,7 @@ class RegisterFactories implements MiddlewareInterface
         Factory::source(new SourceFactory($cache));
         Factory::submission(new SubmissionFactory($cache));
         Factory::submitter(new SubmitterFactory($cache));
+        Factory::xref(new XrefFactory());
 
         return $handler->handle($request);
     }
