@@ -121,4 +121,6 @@
     display: none;
 }
 
-
+.wt-chart-box-name {
+    font-weight: bold;
+}

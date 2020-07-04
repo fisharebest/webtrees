@@ -132,15 +132,15 @@ $id = Uuid::uuid4()->toString();
         </div>
     <?php endif ?>
 
-    <div class="wt-chart-box-name font-weight-bold">
+    <div class="wt-chart-box-name">
         <?php if ($individual->canShow()) : ?>
-            <a href="<?= e($individual->url()) ?>" class="wt-chart-box-name"><?= $individual->fullName() ?></a>
+            <a href="<?= e($individual->url()) ?>"><?= $individual->fullName() ?></a>
         <?php else : ?>
-            <span class="wt-chart-box-name"><?= $individual->fullName() ?></span>
+            <?= $individual->fullName() ?>
         <?php endif ?>
     </div>
 
-    <div class="wt-chart-box-name font-weight-bold">
+    <div class="wt-chart-box-name wt-chart-box-name-alt">
         <?= $individual->alternateName() ?>
     </div>
 

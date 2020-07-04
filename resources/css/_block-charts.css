@@ -28,6 +28,12 @@
     height: 3.5rem;
 }
 
-.wt-block-charts .wt-chart-box-lifespan {
+.wt-block-charts .wt-chart-box .wt-chart-box-extra,
+.wt-block-charts .wt-chart-box .wt-chart-box-facts,
+.wt-block-charts .wt-chart-box .wt-chart-box-name-alt {
     display: none;
+}
+
+.wt-block-charts .wt-chart-box .wt-chart-box-lifespan {
+    display: block;
 }
