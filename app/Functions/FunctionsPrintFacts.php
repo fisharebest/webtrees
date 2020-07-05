@@ -36,6 +36,7 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditFactPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
@@ -1041,60 +1042,38 @@ class FunctionsPrintFacts
      *
      * @return void
      */
-    public static function printMainMedia(Fact $fact, $level): void
+    public static function printMainMedia(Fact $fact, int $level): void
     {
-        $factrec = $fact->gedcom();
-        $parent  = $fact->record();
-        $tree    = $parent->tree();
+        $tree = $fact->record()->tree();
 
         if ($fact->isPendingAddition()) {
             $styleadd = 'wt-new';
-            $can_edit = $level == 1 && $fact->canEdit();
         } elseif ($fact->isPendingDeletion()) {
             $styleadd = 'wt-old';
-            $can_edit = false;
         } else {
             $styleadd = '';
-            $can_edit = $level == 1 && $fact->canEdit();
         }
 
         // -- find source for each fact
-        preg_match_all('/(?:^|\n)' . $level . ' OBJE @(.*)@/', $factrec, $matches);
+        preg_match_all('/(?:^|\n)' . $level . ' OBJE @(.*)@/', $fact->gedcom(), $matches);
         foreach ($matches[1] as $xref) {
             $media = Factory::media()->make($xref, $tree);
             // Allow access to "1 OBJE @non_existent_source@", so it can be corrected/deleted
-            if (!$media || $media->canShow()) {
-                echo '<tr>';
-                echo '<th scope="row" class="';
-                if ($level > 1) {
-                    echo 'rela ';
-                }
-                echo $styleadd, '">';
-                preg_match("/^\d (\w*)/", $factrec, $factname);
-                $factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
-                $factwords = explode(' ', $factlines[0]); // 1 BIRT Y
-                $factname  = $factwords[1]; // BIRT
-                if ($factname === 'EVEN' || $factname === 'FACT') {
-                    // Add ' EVEN' to provide sensible output for an event with an empty TYPE record
-                    $ct = preg_match('/2 TYPE (.*)/', $factrec, $ematch);
-                    if ($ct > 0) {
-                        $factname = $ematch[1];
-                        echo $factname;
-                    } else {
-                        echo GedcomTag::getLabel($factname);
-                    }
-                } elseif ($can_edit) {
-                    echo GedcomTag::getLabel($factname);
+            if (!$media instanceof Media || $media->canShow()) {
+                echo '<tr class="', $styleadd, '">';
+                echo '<th scope="row">';
+                echo $fact->label();
+
+                if ($level === 1 && $fact->canEdit()) {
                     echo '<div class="editfacts nowrap">';
                     echo view('edit/icon-fact-copy', ['fact' => $fact]);
                     echo view('edit/icon-fact-delete', ['fact' => $fact]);
                     echo '</div>';
-                } else {
-                    echo GedcomTag::getLabel($factname);
                 }
+
                 echo '</th>';
-                echo '<td class="', $styleadd, '">';
-                if ($media) {
+                echo '<td>';
+                if ($media instanceof Media) {
                     foreach ($media->mediaFiles() as $media_file) {
                         echo '<div>';
                         echo $media_file->displayImage(100, 100, 'contain', []);
