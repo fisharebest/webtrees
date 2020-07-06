@@ -36,7 +36,7 @@
 	<!-- Date -->
 	<Style name="date" font="$fonts" size="8"/>
 
-	<SetVar name="ignore" value="CHAN,NAME,SEX,SOUR,NOTE,OBJE,RESN,FAMC,FAMS,TITL,CHIL,HUSB,WIFE,MARR,BIRT,CHR,BAPM,DEAT,CREM,BURI,_UID,_WT_OBJE_SORT" />
+	<SetVar name="ignore" value="CHAN,NAME,SEX,SOUR,OBJE,RESN,FAMC,FAMS,TITL,CHIL,HUSB,WIFE,MARR,BIRT,CHR,BAPM,DEAT,CREM,BURI,_UID,_WT_OBJE_SORT" />
 	<!-- Setup colors -->
 	<!-- Section title background color -->
 	<SetVar name="sectionbox_bgcolor" value="#AAAAAA"/>
