@@ -224,7 +224,7 @@
 					</if>
 				</Facts>
 				<!-- print any level 1 notes, but only if exist -->
-				<if condition="($notes==1) and (@NOTE!='')">
+				<if condition="($notes=='on') and (@NOTE!='')">
 					<TextBox height="$sheight" newline="1" padding="0" width="15"/>
 					<Cell bgcolor="$stbgcolor" border="1" newline="1" style="title" tcolor="$tcolor" width="$width"><var var="I18N::translate('Notes')"/></Cell>
 					<RepeatTag tag="NOTE">
@@ -639,12 +639,10 @@
 		<if condition="$source_exist==1">
 			<!-- add a new page -->
 			<NewPage/>
-			<Body>
 				<TextBox newline="1">
 					<Text style="pageheader"><var var="I18N::translate('Sources')"/><br /><br /></Text>
 					<FootnoteTexts/>
 				</TextBox>
-			</Body>
 		</if>
 		<Footer>
 			<Cell align="rightrtl" newline="1" style="date"><Now/></Cell>
