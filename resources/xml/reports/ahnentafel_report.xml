@@ -192,8 +192,8 @@
 							<!-- Individual, occupation... -->
 							<RepeatTag tag="OCCU">
 								<Text style="text">
-									<if condition="$gender=='m'"><var var="I18N::translate('His occupation was')" /> <GedcomValue tag="OCCU" level="1" /></if>
-									<if condition="$gender=='f'"><var var="I18N::translate('Her occupation was')" /> <GedcomValue tag="OCCU" level="1" /></if>
+									<if condition="$gender=='m'"> <var var="I18N::translate('His occupation was')" /> <GedcomValue tag="OCCU" level="1" /></if>
+									<if condition="$gender=='f'"> <var var="I18N::translate('Her occupation was')" /> <GedcomValue tag="OCCU" level="1" /></if>
 								</Text>
 								<if condition="$sources=='on'">
 									<RepeatTag tag="OCCU:SOUR">
