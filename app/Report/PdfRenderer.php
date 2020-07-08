@@ -468,6 +468,7 @@ class PdfRenderer extends AbstractRenderer
         $this->tcpdf->SetTitle($this->title);
         $this->tcpdf->SetSubject($this->rsubject);
         $this->tcpdf->SetKeywords($this->rkeywords);
+        $this->tcpdf->SetHeaderData('', 0, $this->title);
 
         $this->setReport($this);
 
