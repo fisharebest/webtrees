@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 use stdClass;
 
 /**
@@ -56,15 +57,15 @@ class ChartAge
     /**
      * Returns the related database records.
      *
-     * @return stdClass[]
+     * @return Collection<stdClass>
      */
-    private function queryRecords(): array
+    private function queryRecords(): Collection
     {
         $prefix = DB::connection()->getTablePrefix();
 
         return DB::table('individuals')
             ->select([
-                new Expression('ROUND(AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) / 365.25, 1) AS age'),
+                new Expression('AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) / 365.25 AS age'),
                 new Expression('ROUND((' . $prefix . 'death.d_year + 49) / 100) AS century'),
                 'i_sex AS sex'
             ])
@@ -89,7 +90,13 @@ class ChartAge
             ->orderBy('century')
             ->orderBy('sex')
             ->get()
-            ->all();
+            ->map(static function (stdClass $row): stdClass {
+                return (object) [
+                    'age'     => (float) $row->age,
+                    'century' => (int) $row->century,
+                    'sex'     => $row->sex,
+                ];
+            });
     }
 
     /**
@@ -101,7 +108,7 @@ class ChartAge
     {
         $out = [];
         foreach ($this->queryRecords() as $record) {
-            $out[(int) $record->century][$record->sex] = (float) $record->age;
+            $out[$record->century][$record->sex] = $record->age;
         }
 
         $data = [
@@ -120,8 +127,8 @@ class ChartAge
 
             $data[] = [
                 $this->century_service->centuryName($century),
-                $male_age,
-                $female_age,
+                round($male_age, 1),
+                round($female_age, 1),
                 round($average_age, 1),
             ];
         }

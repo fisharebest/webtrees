@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
 use stdClass;
 
 use function app;
@@ -71,11 +72,11 @@ class ChartBirth
     /**
      * Returns the related database records.
      *
-     * @return stdClass[]
+     * @return Collection<stdClass>
      */
-    private function queryRecords(): array
+    private function queryRecords(): Collection
     {
-        $query = DB::table('dates')
+        return DB::table('dates')
             ->selectRaw('ROUND((d_year + 49) / 100) AS century')
             ->selectRaw('COUNT(*) AS total')
             ->where('d_file', '=', $this->tree->id())
@@ -83,9 +84,14 @@ class ChartBirth
             ->where('d_fact', '=', 'BIRT')
             ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
             ->groupBy(['century'])
-            ->orderBy('century');
-
-        return $query->get()->all();
+            ->orderBy('century')
+            ->get()
+            ->map(static function (stdClass $row): stdClass {
+                return (object) [
+                    'century' => (int) $row->century,
+                    'total'   => (float) $row->total,
+                ];
+            });
     }
 
     /**
@@ -112,7 +118,7 @@ class ChartBirth
 
         foreach ($this->queryRecords() as $record) {
             $data[] = [
-                $this->century_service->centuryName((int) $record->century),
+                $this->century_service->centuryName($record->century),
                 $record->total
             ];
         }

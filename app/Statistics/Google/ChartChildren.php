@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 use stdClass;
 
 /**
@@ -55,12 +56,12 @@ class ChartChildren
     /**
      * Returns the related database records.
      *
-     * @return stdClass[]
+     * @return Collection<stdClass>
      */
-    private function queryRecords(): array
+    private function queryRecords(): Collection
     {
-        $query = DB::table('families')
-            ->selectRaw('ROUND(AVG(f_numchil), 2) AS num')
+        return DB::table('families')
+            ->selectRaw('AVG(f_numchil) AS total')
             ->selectRaw('ROUND((d_year + 49) / 100) AS century')
             ->join('dates', static function (JoinClause $join): void {
                 $join->on('d_file', '=', 'f_file')
@@ -71,9 +72,14 @@ class ChartChildren
             ->where('d_fact', '=', 'MARR')
             ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
             ->groupBy(['century'])
-            ->orderBy('century');
-
-        return $query->get()->all();
+            ->orderBy('century')
+            ->get()
+            ->map(static function (stdClass $row): stdClass {
+                return (object) [
+                    'century' => (int) $row->century,
+                    'total'   => (float) $row->total,
+                ];
+            });
     }
 
     /**
@@ -92,8 +98,8 @@ class ChartChildren
 
         foreach ($this->queryRecords() as $record) {
             $data[] = [
-                $this->century_service->centuryName((int) $record->century),
-                (float) $record->num
+                $this->century_service->centuryName($record->century),
+                round($record->total, 2),
             ];
         }
 
