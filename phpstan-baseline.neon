@@ -21,11 +21,6 @@ parameters:
 			path: app/Date.php
 
 		-
-			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#"
-			count: 1
-			path: app/Date/AbstractCalendarDate.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Date\\\\AbstractCalendarDate\\:\\:formatGedcomMonth\\(\\) should return string but returns int\\|string\\|false\\.$#"
 			count: 1
 			path: app/Date/AbstractCalendarDate.php
