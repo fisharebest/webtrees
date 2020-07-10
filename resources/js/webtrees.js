@@ -117,7 +117,7 @@
 var pastefield;
 
 /**
- * @param {string} datefield
+ * @param {Element} datefield
  * @param {string} dmy
  */
 function valid_date (datefield, dmy) {
@@ -164,28 +164,36 @@ function valid_date (datefield, dmy) {
     datestr = '@#DFRENCH R@' + RegExp.$2 + french_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
   }
 
-  // e.g. 17.11.1860, 03/04/2005 or 1999-12-31. Use locale settings where DMY order is ambiguous.
-  var qsearch = /^([^\d]*)(\d+)[^\d](\d+)[^\d](\d+)$/i;
-  if (qsearch.exec(datestr)) {
-    var f0 = RegExp.$1;
-    var f1 = parseInt(RegExp.$2, 10);
+  // All digit dates
+  datestr = datestr.replaceAll(/(\d\d)(\d\d)(\d\d)(\d\d)/g, function () {
+    if (RegExp.$1 > '12' && RegExp.$3 <= '12' && RegExp.$4 <= '31') {
+      return RegExp.$4 + ' ' + months[RegExp.$3 - 1] + ' ' + RegExp.$1 + RegExp.$2;
+    }
+    if (RegExp.$1 <= '31' && RegExp.$2 <= '12' && RegExp.$3 > '12') {
+      return RegExp.$1 + ' ' + months[RegExp.$2 - 1] + ' '  + RegExp.$3 + RegExp.$4;
+    }
+    return RegExp.$1 + RegExp.$2 + RegExp.$3 + RegExp.$4;
+  });
+
+  // e.g. 17.11.1860, 3/4/2005 or 1999-12-31. Use locale settings since DMY order is ambiguous.
+  datestr = datestr.replaceAll(/(\d+)([./-])(\d+)([./-])(\d+)/g, function () {
+    var f1 = parseInt(RegExp.$1, 10);
     var f2 = parseInt(RegExp.$3, 10);
-    var f3 = parseInt(RegExp.$4, 10);
+    var f3 = parseInt(RegExp.$5, 10);
     var yyyy = new Date().getFullYear();
     var yy = yyyy % 100;
     var cc = yyyy - yy;
     if (dmy === 'DMY' && f1 <= 31 && f2 <= 12 || f1 > 13 && f1 <= 31 && f2 <= 12 && f3 > 31) {
-      datestr = f0 + f1 + ' ' + months[f2 - 1] + ' ' + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
-    } else {
-      if (dmy === 'MDY' && f1 <= 12 && f2 <= 31 || f2 > 13 && f2 <= 31 && f1 <= 12 && f3 > 31) {
-        datestr = f0 + f2 + ' ' + months[f1 - 1] + ' ' + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
-      } else {
-        if (dmy === 'YMD' && f2 <= 12 && f3 <= 31 || f3 > 13 && f3 <= 31 && f2 <= 12 && f1 > 31) {
-          datestr = f0 + f3 + ' ' + months[f2 - 1] + ' ' + (f1 >= 100 ? f1 : (f1 <= yy ? f1 + cc : f1 + cc - 100));
-        }
-      }
+      return f1 + ' ' + months[f2 - 1] + ' ' + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
     }
-  }
+    if (dmy === 'MDY' && f1 <= 12 && f2 <= 31 || f2 > 13 && f2 <= 31 && f1 <= 12 && f3 > 31) {
+      return f2 + ' ' + months[f1 - 1] + ' ' + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
+    }
+    if (dmy === 'YMD' && f2 <= 12 && f3 <= 31 || f3 > 13 && f3 <= 31 && f2 <= 12 && f1 > 31) {
+      return f3 + ' ' + months[f2 - 1] + ' ' + (f1 >= 100 ? f1 : (f1 <= yy ? f1 + cc : f1 + cc - 100));
+    }
+    return RegExp.$1 + RegExp.$2 + RegExp.$3 + RegExp.$4 + RegExp.$5;
+  });
 
   // Shortcuts for date ranges
   datestr = datestr.replace(/^[>]([\w ]+)$/, 'AFT $1');
