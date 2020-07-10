@@ -452,15 +452,15 @@ class ListController extends AbstractBaseController
                 $form_type
             );
         } else {
-            $media_objects = [];
+            $media_objects = new Collection();
         }
 
         // Pagination
-        $count = count($media_objects);
+        $count = $media_objects->count();
         $pages = (int) (($count + $max - 1) / $max);
         $page  = max(min($page, $pages), 1);
 
-        $media_objects = array_slice($media_objects, ($page - 1) * $max, $max);
+        $media_objects = $media_objects->slice(($page - 1) * $max, $max);
 
         return $this->viewResponse('modules/media-list/page', [
             'count'           => $count,
@@ -470,7 +470,7 @@ class ListController extends AbstractBaseController
             'formats'         => $formats,
             'form_type'       => $form_type,
             'max'             => $max,
-            'media_objects'   => new Collection($media_objects),
+            'media_objects'   => $media_objects,
             'page'            => $page,
             'pages'           => $pages,
             'subdirs'         => $subdirs,
@@ -604,9 +604,9 @@ class ListController extends AbstractBaseController
      * @param string $filter     optional search string
      * @param string $form_type  option OBJE/FILE/FORM/TYPE
      *
-     * @return Media[]
+     * @return Collection<Media>
      */
-    private function allMedia(Tree $tree, string $folder, string $subfolders, string $sort, string $filter, string $form_type): array
+    private function allMedia(Tree $tree, string $folder, string $subfolders, string $sort, string $filter, string $form_type): Collection
     {
         $query = DB::table('media')
             ->join('media_file', static function (JoinClause $join): void {
@@ -664,8 +664,8 @@ class ListController extends AbstractBaseController
         return $query
             ->get()
             ->map(Factory::media()->mapper($tree))
-            ->filter(GedcomRecord::accessFilter())
-            ->all();
+            ->uniqueStrict()
+            ->filter(GedcomRecord::accessFilter());
     }
 
     /**
