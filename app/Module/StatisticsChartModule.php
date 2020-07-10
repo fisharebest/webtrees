@@ -249,6 +249,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     public function postCustomChartAction(ServerRequestInterface $request): ResponseInterface
     {
         $statistics = app(Statistics::class);
+        assert($statistics instanceof Statistics);
 
         $params = (array) $request->getParsedBody();
 
@@ -493,13 +494,12 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $z_axis = $this->axisAll();
                         $rows   = $statistics->statsFirstMarriageQuery()->get();
                         $indi   = [];
-                        $fam    = [];
                         foreach ($rows as $row) {
-                            if (!in_array($row->indi, $indi, true) && !in_array($row->fams, $fam, true)) {
+                            if (!in_array($row->f_husb, $indi, true) && !in_array($row->f_wife, $indi, true)) {
                                 $this->fillYData($row->month, 0, 1, $x_axis, $z_axis, $ydata);
                             }
-                            $indi[] = $row->indi;
-                            $fam[]  = $row->fams;
+                            $indi[]  = $row->f_husb;
+                            $indi[]  = $row->f_wife;
                         }
                         break;
                     case self::Z_AXIS_TIME:
@@ -507,15 +507,14 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         $indi           = [];
-                        $fam            = [];
                         foreach (array_keys($z_axis) as $boundary) {
                             $rows = $statistics->statsFirstMarriageQuery($prev_boundary, $boundary)->get();
                             foreach ($rows as $row) {
-                                if (!in_array($row->indi, $indi, true) && !in_array($row->fams, $fam, true)) {
+                                if (!in_array($row->f_husb, $indi, true) && !in_array($row->f_wife, $indi, true)) {
                                     $this->fillYData($row->month, $boundary, 1, $x_axis, $z_axis, $ydata);
                                 }
-                                $indi[] = $row->indi;
-                                $fam[]  = $row->fams;
+                                $indi[]  = $row->f_husb;
+                                $indi[]  = $row->f_wife;
                             }
                             $prev_boundary = $boundary + 1;
                         }

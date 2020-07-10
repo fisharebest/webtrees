@@ -1690,25 +1690,15 @@ class FamilyRepository
                     ->where('d_fact', '=', 'MARR')
                     ->whereIn('d_month', ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'])
                     ->where('d_julianday2', '<>', 0);
-            })->join('individuals', static function (JoinClause $join): void {
-                $join
-                    ->on('i_file', '=', 'f_file');
             })
-            ->where('f_file', '=', $this->tree->id())
-            ->where(static function (Builder $query): void {
-                $query
-                    ->whereColumn('i_id', '=', 'f_husb')
-                    ->orWhereColumn('i_id', '=', 'f_wife');
-            });
+            ->where('f_file', '=', $this->tree->id());
 
         if ($year1 >= 0 && $year2 >= 0) {
             $query->whereBetween('d_year', [$year1, $year2]);
         }
 
         return $query
-            ->select(['f_id AS fams', 'f_husb', 'f_wife', 'd_julianday2 AS age', 'd_month AS month', 'i_id AS indi'])
-            ->orderBy('f_id')
-            ->orderBy('i_id')
+            ->select(['f_husb', 'f_wife', 'd_month AS month'])
             ->orderBy('d_julianday2');
     }
 
