@@ -209,8 +209,15 @@ class CalendarService
 
         switch ($sort_by) {
             case 'anniv':
+            case 'anniv_asc':
                 $facts = $facts->sort(static function (Fact $x, Fact $y): int {
-                    return $x->jd <=> $y->jd;
+                    return $x->jd <=> $y->jd ?: $x->date()->minimumJulianDay() <=> $y->date()->minimumJulianDay();
+                });
+                break;
+
+            case 'anniv_desc':
+                $facts = $facts->sort(static function (Fact $x, Fact $y): int {
+                    return $x->jd <=> $y->jd ?: $y->date()->minimumJulianDay() <=> $x->date()->minimumJulianDay();
                 });
                 break;
 

@@ -39,10 +39,15 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
     private const LIMIT_LOW  = 10;
     private const LIMIT_HIGH = 20;
 
+    // Default values for new blocks.
+    private const DEFAULT_SORT = 'date_desc';
+    private const DEFAULT_STYLE = 'date_desc';
+
     // Initial sorting for datatables
     private const DATATABLES_ORDER = [
-        'alpha' => [[0, 'asc']],
-        'anniv' => [[2, 'asc']],
+        'alpha'     => [[0, 'asc']],
+        'date_asc'  => [[2, 'asc']],
+        'date_desc' => [[2, 'desc']],
     ];
 
     // All standard GEDCOM 5.5.1 events except CENS, RESI and EVEN
@@ -124,8 +129,8 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
         $default_events = implode(',', self::DEFAULT_EVENTS);
 
         $filter    = (bool) $this->getBlockSetting($block_id, 'filter', '1');
-        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
-        $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
+        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
+        $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT);
         $events    = $this->getBlockSetting($block_id, 'events', $default_events);
 
         extract($config, EXTR_OVERWRITE);
@@ -158,7 +163,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
                 'facts'      => $facts,
                 'limit_low'  => self::LIMIT_LOW,
                 'limit_high' => self::LIMIT_HIGH,
-                'order'      => self::DATATABLES_ORDER[$sortStyle],
+                'order'      => self::DATATABLES_ORDER[$sortStyle] ?? self::DATATABLES_ORDER[self::DEFAULT_SORT],
             ]);
         }
 
@@ -238,8 +243,8 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
         $default_events = implode(',', self::DEFAULT_EVENTS);
 
         $filter    = $this->getBlockSetting($block_id, 'filter', '1');
-        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
-        $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
+        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
+        $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT);
         $events    = $this->getBlockSetting($block_id, 'events', $default_events);
 
         $event_array = explode(',', $events);
@@ -260,7 +265,9 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
             /* I18N: An option in a list-box */
             'alpha' => I18N::translate('sort by name'),
             /* I18N: An option in a list-box */
-            'anniv' => I18N::translate('sort by date'),
+            'anniv_asc'  => I18N::translate('sort by date, oldest first'),
+            /* I18N: An option in a list-box */
+            'anniv_desc' => I18N::translate('sort by date, newest first'),
         ];
 
         return view('modules/todays_events/config', [
