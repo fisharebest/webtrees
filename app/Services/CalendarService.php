@@ -445,7 +445,7 @@ class CalendarService
         } elseif ($anniv->day() === $anniv->daysInMonth()) {
             $query->where('d_day', '>=', $anniv->daysInMonth());
         } else {
-            $query->where('d_day', '<=', 1);
+            $query->where('d_day', '=', $anniv->day());
         }
 
         $query->where(static function (Builder $query): void {
