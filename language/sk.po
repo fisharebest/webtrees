@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-06-22 15:24+0000\n"
+"PO-Revision-Date: 2020-07-15 19:12+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -1535,7 +1535,7 @@ msgstr "Pridať k obľúbeným"
 #: app/Module/ClippingsCartModule.php:459
 #: app/Module/ClippingsCartModule.php:575
 msgid "Add to the clippings cart"
-msgstr "Pridať k schránke výstrižkov"
+msgstr "Pridať do schránky výstrižkov"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:720
