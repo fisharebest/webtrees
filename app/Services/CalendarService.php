@@ -454,7 +454,7 @@ class CalendarService
                 ->orWhere(static function (Builder $query): void {
                     $query
                         ->where('d_mon', '=', 6)
-                        ->where(new Expression('(7 * d_year + 1 % 19)'), '>=', 7);
+                        ->where(new Expression('(7 * d_year + 1 % 19)'), '<', 7);
                 });
         });
     }
