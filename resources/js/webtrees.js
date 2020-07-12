@@ -216,9 +216,9 @@
         .replaceAll('NOVEMBER', 'NOV')
         .replaceAll('DECEMBER', 'DEC')
         // Americans enter dates as SEP 20, 1999
-        .replaceAll(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\.? (\d\d?)[, ]+(\d\d\d\d)/, '$2 $1 $3')
+        .replaceAll(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\.? (\d\d?)[, ]+(\d\d\d\d)/g, '$2 $1 $3')
         // Apply leading zero to day numbers
-        .replaceAll(/(^| )(\d [A-Z]{3,5} \d{4})/, '$10$2');
+        .replaceAll(/(^| )(\d [A-Z]{3,5} \d{4})/g, '$10$2');
 
     if (datephrase) {
       datestr = datestr + ' (' + datephrase;
