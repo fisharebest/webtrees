@@ -19,32 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Carbon;
-use Fisharebest\Webtrees\Factory;
-use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Location;
-use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Note;
-use Fisharebest\Webtrees\Repository;
-use Fisharebest\Webtrees\Services\TreeService;
-use Fisharebest\Webtrees\Source;
-use Fisharebest\Webtrees\Submission;
-use Fisharebest\Webtrees\Submitter;
+use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
-use function key;
-use function preg_match;
-use function reset;
 use function route;
 
 /**
@@ -54,15 +37,20 @@ class PendingChanges implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var TreeService */
-    private $tree_service;
+    // Some servers may not have enough resources to show all the changes.
+    private const MAX_CHANGES = 1000;
+
+    /** @var PendingChangesService */
+    private $pending_changes_service;
 
     /**
-     * @param TreeService $tree_service
+     * PendingChanges constructor.
+     *
+     * @param PendingChangesService $pending_changes_service
      */
-    public function __construct(TreeService $tree_service)
+    public function __construct(PendingChangesService $pending_changes_service)
     {
-        $this->tree_service = $tree_service;
+        $this->pending_changes_service = $pending_changes_service;
     }
 
     /**
@@ -75,82 +63,19 @@ class PendingChanges implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $url = $request->getQueryParams()['url'] ?? route(TreePage::class, ['tree' => $tree->name()]);
+        $n = (int) ($request->getQueryParams()['n'] ?? self::MAX_CHANGES);
 
-        $rows = DB::table('change')
-            ->join('user', 'user.user_id', '=', 'change.user_id')
-            ->join('gedcom', 'gedcom.gedcom_id', '=', 'change.gedcom_id')
-            ->where('status', '=', 'pending')
-            ->orderBy('change.gedcom_id')
-            ->orderBy('change.xref')
-            ->orderBy('change.change_id')
-            ->select(['change.*', 'user.user_name', 'user.real_name', 'gedcom_name'])
-            ->get();
-
-        $changes = [];
-        foreach ($rows as $row) {
-            $row->change_time = Carbon::make($row->change_time);
-
-            $change_tree = $this->tree_service->all()->get($row->gedcom_name);
-
-            preg_match('/^0 (?:@' . Gedcom::REGEX_XREF . '@ )?(' . Gedcom::REGEX_TAG . ')/', $row->old_gedcom . $row->new_gedcom, $match);
-
-            switch ($match[1]) {
-                case Individual::RECORD_TYPE:
-                    $row->record = Factory::individual()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
-                    break;
-                case Family::RECORD_TYPE:
-                    $row->record = Factory::family()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
-                    break;
-                case Source::RECORD_TYPE:
-                    $row->record = Factory::source()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
-                    break;
-                case Repository::RECORD_TYPE:
-                    $row->record = Factory::repository()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
-                    break;
-                case Media::RECORD_TYPE:
-                    $row->record = Factory::media()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
-                    break;
-                case Note::RECORD_TYPE:
-                    $row->record = Factory::note()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
-                    break;
-                case Submitter::RECORD_TYPE:
-                    $row->record = Factory::submitter()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
-                    break;
-                case Submission::RECORD_TYPE:
-                    $row->record = Factory::submission()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
-                    break;
-                case Location::RECORD_TYPE:
-                    $row->record = Factory::location()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
-                    break;
-                case Header::RECORD_TYPE:
-                    $row->record = Factory::header()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
-                    break;
-                default:
-                    $row->record = Factory::gedcomRecord()->new($row->xref, $row->old_gedcom, $row->new_gedcom, $change_tree);
-                    break;
-            }
-
-            $changes[$row->gedcom_name][$row->xref][] = $row;
-        }
-
-        $title = I18N::translate('Pending changes');
-
-        // If the current tree has changes, activate that tab.  Otherwise activate the first tab.
-        if (($changes[$tree->id()] ?? []) === []) {
-            reset($changes);
-            $active_tree_name = key($changes);
-        } else {
-            $active_tree_name = $tree->name();
-        }
+        $url     = $request->getQueryParams()['url'] ?? route(TreePage::class, ['tree' => $tree->name()]);
+        $xrefs   = $this->pending_changes_service->pendingXrefs($tree);
+        $changes = $this->pending_changes_service->pendingChanges($tree, $n);
+        $title   = I18N::translate('Pending changes');
 
         return $this->viewResponse('pending-changes-page', [
-            'active_tree_name' => $active_tree_name,
-            'changes'          => $changes,
-            'title'            => $title,
-            'tree'             => $tree,
-            'trees'            => $this->tree_service->all(),
-            'url'              => $url,
+            'changes' => $changes,
+            'count'   => $xrefs->count(),
+            'title'   => $title,
+            'tree'    => $tree,
+            'url'     => $url,
         ]);
     }
 }

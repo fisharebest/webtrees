@@ -31,6 +31,8 @@ use function assert;
 use function e;
 use function response;
 
+use const PHP_INT_MAX;
+
 /**
  * Accept pending changes for a tree.
  */
@@ -57,7 +59,9 @@ class PendingChangesAcceptTree implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $this->pending_changes_service->acceptTree($tree);
+        $n = (int) ($request->getQueryParams()['n'] ?? PHP_INT_MAX);
+
+        $this->pending_changes_service->acceptTree($tree, $n);
 
         FlashMessages::addMessage(I18N::translate('The changes to “%s” have been accepted.', e($tree->title())));
         return response();
