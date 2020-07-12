@@ -167,19 +167,19 @@
         return RegExp.$4 + ' ' + months[RegExp.$3 - 1] + ' ' + RegExp.$1 + RegExp.$2;
       }
       if (RegExp.$1 <= '31' && RegExp.$2 <= '12' && RegExp.$3 > '12') {
-        return RegExp.$1 + ' ' + months[RegExp.$2 - 1] + ' '  + RegExp.$3 + RegExp.$4;
+        return RegExp.$1 + ' ' + months[RegExp.$2 - 1] + ' ' + RegExp.$3 + RegExp.$4;
       }
       return RegExp.$1 + RegExp.$2 + RegExp.$3 + RegExp.$4;
     });
 
     // e.g. 17.11.1860, 3/4/2005 or 1999-12-31. Use locale settings since DMY order is ambiguous.
     datestr = datestr.replaceAll(/(\d+)([./-])(\d+)([./-])(\d+)/g, function () {
-      var f1 = parseInt(RegExp.$1, 10);
-      var f2 = parseInt(RegExp.$3, 10);
-      var f3 = parseInt(RegExp.$5, 10);
-      var yyyy = new Date().getFullYear();
-      var yy = yyyy % 100;
-      var cc = yyyy - yy;
+      let f1 = parseInt(RegExp.$1, 10);
+      let f2 = parseInt(RegExp.$3, 10);
+      let f3 = parseInt(RegExp.$5, 10);
+      let yyyy = new Date().getFullYear();
+      let yy = yyyy % 100;
+      let cc = yyyy - yy;
       if (dmy === 'DMY' && f1 <= 31 && f2 <= 12 || f1 > 13 && f1 <= 31 && f2 <= 12 && f3 > 31) {
         return f1 + ' ' + months[f2 - 1] + ' ' + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
       }
@@ -193,32 +193,32 @@
     });
 
     datestr = datestr
-        // Shortcuts for date ranges
-        .replace(/^[>]([\w ]+)$/, 'AFT $1')
-        .replace(/^[<]([\w ]+)$/, 'BEF $1')
-        .replace(/^([\w ]+)[-]$/, 'FROM $1')
-        .replace(/^[-]([\w ]+)$/, 'TO $1')
-        .replace(/^[~]([\w ]+)$/, 'ABT $1')
-        .replace(/^[*]([\w ]+)$/, 'EST $1')
-        .replace(/^[#]([\w ]+)$/, 'CAL $1')
-        .replace(/^([\w ]+) ?- ?([\w ]+)$/, 'BET $1 AND $2')
-        .replace(/^([\w ]+) ?~ ?([\w ]+)$/, 'FROM $1 TO $2')
-        // Convert full months to short months
-        .replaceAll('JANUARY', 'JAN')
-        .replaceAll('FEBRUARY', 'FEB')
-        .replaceAll('MARCH', 'MAR')
-        .replaceAll('APRIL', 'APR')
-        .replaceAll('JUNE', 'JUN')
-        .replaceAll('JULY', 'JUL')
-        .replaceAll('AUGUST', 'AUG')
-        .replaceAll('SEPTEMBER', 'SEP')
-        .replaceAll('OCTOBER', 'OCT')
-        .replaceAll('NOVEMBER', 'NOV')
-        .replaceAll('DECEMBER', 'DEC')
-        // Americans enter dates as SEP 20, 1999
-        .replaceAll(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\.? (\d\d?)[, ]+(\d\d\d\d)/g, '$2 $1 $3')
-        // Apply leading zero to day numbers
-        .replaceAll(/(^| )(\d [A-Z]{3,5} \d{4})/g, '$10$2');
+      // Shortcuts for date ranges
+      .replace(/^[>]([\w ]+)$/, 'AFT $1')
+      .replace(/^[<]([\w ]+)$/, 'BEF $1')
+      .replace(/^([\w ]+)[-]$/, 'FROM $1')
+      .replace(/^[-]([\w ]+)$/, 'TO $1')
+      .replace(/^[~]([\w ]+)$/, 'ABT $1')
+      .replace(/^[*]([\w ]+)$/, 'EST $1')
+      .replace(/^[#]([\w ]+)$/, 'CAL $1')
+      .replace(/^([\w ]+) ?- ?([\w ]+)$/, 'BET $1 AND $2')
+      .replace(/^([\w ]+) ?~ ?([\w ]+)$/, 'FROM $1 TO $2')
+      // Convert full months to short months
+      .replaceAll('JANUARY', 'JAN')
+      .replaceAll('FEBRUARY', 'FEB')
+      .replaceAll('MARCH', 'MAR')
+      .replaceAll('APRIL', 'APR')
+      .replaceAll('JUNE', 'JUN')
+      .replaceAll('JULY', 'JUL')
+      .replaceAll('AUGUST', 'AUG')
+      .replaceAll('SEPTEMBER', 'SEP')
+      .replaceAll('OCTOBER', 'OCT')
+      .replaceAll('NOVEMBER', 'NOV')
+      .replaceAll('DECEMBER', 'DEC')
+      // Americans enter dates as SEP 20, 1999
+      .replaceAll(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\.? (\d\d?)[, ]+(\d\d\d\d)/g, '$2 $1 $3')
+      // Apply leading zero to day numbers
+      .replaceAll(/(^| )(\d [A-Z]{3,5} \d{4})/g, '$10$2');
 
     if (datephrase) {
       datestr = datestr + ' (' + datephrase;
@@ -229,431 +229,403 @@
     if (datefield.value !== datestr) {
       datefield.value = datestr;
     }
-  }
-}(window.webtrees = window.webtrees || {}));
+  };
 
-var monthLabels = [];
-monthLabels[1] = 'January';
-monthLabels[2] = 'February';
-monthLabels[3] = 'March';
-monthLabels[4] = 'April';
-monthLabels[5] = 'May';
-monthLabels[6] = 'June';
-monthLabels[7] = 'July';
-monthLabels[8] = 'August';
-monthLabels[9] = 'September';
-monthLabels[10] = 'October';
-monthLabels[11] = 'November';
-monthLabels[12] = 'December';
+  let monthLabels = [];
+  monthLabels[1] = 'January';
+  monthLabels[2] = 'February';
+  monthLabels[3] = 'March';
+  monthLabels[4] = 'April';
+  monthLabels[5] = 'May';
+  monthLabels[6] = 'June';
+  monthLabels[7] = 'July';
+  monthLabels[8] = 'August';
+  monthLabels[9] = 'September';
+  monthLabels[10] = 'October';
+  monthLabels[11] = 'November';
+  monthLabels[12] = 'December';
 
-var monthShort = [];
-monthShort[1] = 'JAN';
-monthShort[2] = 'FEB';
-monthShort[3] = 'MAR';
-monthShort[4] = 'APR';
-monthShort[5] = 'MAY';
-monthShort[6] = 'JUN';
-monthShort[7] = 'JUL';
-monthShort[8] = 'AUG';
-monthShort[9] = 'SEP';
-monthShort[10] = 'OCT';
-monthShort[11] = 'NOV';
-monthShort[12] = 'DEC';
+  let monthShort = [];
+  monthShort[1] = 'JAN';
+  monthShort[2] = 'FEB';
+  monthShort[3] = 'MAR';
+  monthShort[4] = 'APR';
+  monthShort[5] = 'MAY';
+  monthShort[6] = 'JUN';
+  monthShort[7] = 'JUL';
+  monthShort[8] = 'AUG';
+  monthShort[9] = 'SEP';
+  monthShort[10] = 'OCT';
+  monthShort[11] = 'NOV';
+  monthShort[12] = 'DEC';
 
-var daysOfWeek = [];
-daysOfWeek[0] = 'S';
-daysOfWeek[1] = 'M';
-daysOfWeek[2] = 'T';
-daysOfWeek[3] = 'W';
-daysOfWeek[4] = 'T';
-daysOfWeek[5] = 'F';
-daysOfWeek[6] = 'S';
+  let daysOfWeek = [];
+  daysOfWeek[0] = 'S';
+  daysOfWeek[1] = 'M';
+  daysOfWeek[2] = 'T';
+  daysOfWeek[3] = 'W';
+  daysOfWeek[4] = 'T';
+  daysOfWeek[5] = 'F';
+  daysOfWeek[6] = 'S';
 
-var weekStart = 0;
+  let weekStart = 0;
 
-/**
- * @param {string} jan
- * @param {string} feb
- * @param {string} mar
- * @param {string} apr
- * @param {string} may
- * @param {string} jun
- * @param {string} jul
- * @param {string} aug
- * @param {string} sep
- * @param {string} oct
- * @param {string} nov
- * @param {string} dec
- */
-function cal_setMonthNames (jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec) {
-  monthLabels[1] = jan;
-  monthLabels[2] = feb;
-  monthLabels[3] = mar;
-  monthLabels[4] = apr;
-  monthLabels[5] = may;
-  monthLabels[6] = jun;
-  monthLabels[7] = jul;
-  monthLabels[8] = aug;
-  monthLabels[9] = sep;
-  monthLabels[10] = oct;
-  monthLabels[11] = nov;
-  monthLabels[12] = dec;
-}
+  /**
+   * @param {string} jan
+   * @param {string} feb
+   * @param {string} mar
+   * @param {string} apr
+   * @param {string} may
+   * @param {string} jun
+   * @param {string} jul
+   * @param {string} aug
+   * @param {string} sep
+   * @param {string} oct
+   * @param {string} nov
+   * @param {string} dec
+   * @param {string} sun
+   * @param {string} mon
+   * @param {string} tue
+   * @param {string} wed
+   * @param {string} thu
+   * @param {string} fri
+   * @param {string} sat
+   * @param {number} day
+   */
+  webtrees.calLocalize = function (jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec, sun, mon, tue, wed, thu, fri, sat, day) {
+    monthLabels[1] = jan;
+    monthLabels[2] = feb;
+    monthLabels[3] = mar;
+    monthLabels[4] = apr;
+    monthLabels[5] = may;
+    monthLabels[6] = jun;
+    monthLabels[7] = jul;
+    monthLabels[8] = aug;
+    monthLabels[9] = sep;
+    monthLabels[10] = oct;
+    monthLabels[11] = nov;
+    monthLabels[12] = dec;
+    daysOfWeek[0] = sun;
+    daysOfWeek[1] = mon;
+    daysOfWeek[2] = tue;
+    daysOfWeek[3] = wed;
+    daysOfWeek[4] = thu;
+    daysOfWeek[5] = fri;
+    daysOfWeek[6] = sat;
 
-/**
- * @param {string} sun
- * @param {string} mon
- * @param {string} tue
- * @param {string} wed
- * @param {string} thu
- * @param {string} fri
- * @param {string} sat
- */
-function cal_setDayHeaders (sun, mon, tue, wed, thu, fri, sat) {
-  daysOfWeek[0] = sun;
-  daysOfWeek[1] = mon;
-  daysOfWeek[2] = tue;
-  daysOfWeek[3] = wed;
-  daysOfWeek[4] = thu;
-  daysOfWeek[5] = fri;
-  daysOfWeek[6] = sat;
-}
-
-/**
- * @param {number} day
- */
-function cal_setWeekStart (day) {
-  if (day >= 0 && day < 7) {
-    weekStart = day;
-  }
-}
-
-/**
- * @param {string} dateDivId
- * @param {string} dateFieldId
- * @returns {boolean}
- */
-function calendarWidget (dateDivId, dateFieldId) {
-  var dateDiv = document.getElementById(dateDivId);
-  var dateField = document.getElementById(dateFieldId);
-
-  if (dateDiv.style.visibility === 'visible') {
-    dateDiv.style.visibility = 'hidden';
-    return false;
-  }
-  if (dateDiv.style.visibility === 'show') {
-    dateDiv.style.visibility = 'hide';
-    return false;
-  }
-
-  /* Javascript calendar functions only work with precise gregorian dates "D M Y" or "Y" */
-  var greg_regex = /((\d+ (JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) )?\d+)/i;
-  var date;
-  if (greg_regex.exec(dateField.value)) {
-    date = new Date(RegExp.$1);
-  } else {
-    date = new Date();
-  }
-
-  dateDiv.innerHTML = cal_generateSelectorContent(dateFieldId, dateDivId, date);
-  if (dateDiv.style.visibility === 'hidden') {
-    dateDiv.style.visibility = 'visible';
-    return false;
-  }
-  if (dateDiv.style.visibility === 'hide') {
-    dateDiv.style.visibility = 'show';
-    return false;
-  }
-
-  return false;
-}
-
-/**
- * @param {string} dateFieldId
- * @param {string} dateDivId
- * @param {Date} date
- * @returns {string}
- */
-function cal_generateSelectorContent (dateFieldId, dateDivId, date) {
-  var i, j;
-  var content = '<table border="1"><tr>';
-  content += '<td><select class="form-control" id="' + dateFieldId + '_daySelect" onchange="return cal_updateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
-  for (i = 1; i < 32; i++) {
-    content += '<option value="' + i + '"';
-    if (date.getDate() === i) {
-      content += ' selected="selected"';
+    if (day >= 0 && day < 7) {
+      weekStart = day;
     }
-    content += '>' + i + '</option>';
-  }
-  content += '</select></td>';
-  content += '<td><select class="form-control" id="' + dateFieldId + '_monSelect" onchange="return cal_updateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
-  for (i = 1; i < 13; i++) {
-    content += '<option value="' + i + '"';
-    if (date.getMonth() + 1 === i) {
-      content += ' selected="selected"';
-    }
-    content += '>' + monthLabels[i] + '</option>';
-  }
-  content += '</select></td>';
-  content += '<td><input class="form-control" type="text" id="' + dateFieldId + '_yearInput" size="5" value="' + date.getFullYear() + '" onchange="return cal_updateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');" /></td></tr>';
-  content += '<tr><td colspan="3">';
-  content += '<table width="100%">';
-  content += '<tr>';
-  j = weekStart;
-  for (i = 0; i < 7; i++) {
-    content += '<td ';
-    content += 'class="descriptionbox"';
-    content += '>';
-    content += daysOfWeek[j];
-    content += '</td>';
-    j++;
-    if (j > 6) {
-      j = 0;
-    }
-  }
-  content += '</tr>';
+  };
 
-  var tdate = new Date(date.getFullYear(), date.getMonth(), 1);
-  var day = tdate.getDay();
-  day = day - weekStart;
-  var daymilli = 1000 * 60 * 60 * 24;
-  tdate = tdate.getTime() - (day * daymilli) + (daymilli / 2);
-  tdate = new Date(tdate);
+  /**
+   * @param {string} dateDivId
+   * @param {string} dateFieldId
+   * @returns {boolean}
+   */
+  webtrees.calendarWidget = function (dateDivId, dateFieldId) {
+    let dateDiv = document.getElementById(dateDivId);
+    let dateField = document.getElementById(dateFieldId);
 
-  for (j = 0; j < 6; j++) {
+    if (dateDiv.style.visibility === 'visible') {
+      dateDiv.style.visibility = 'hidden';
+      return false;
+    }
+    if (dateDiv.style.visibility === 'show') {
+      dateDiv.style.visibility = 'hide';
+      return false;
+    }
+
+    /* Javascript calendar functions only work with precise gregorian dates "D M Y" or "Y" */
+    let greg_regex = /((\d+ (JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) )?\d+)/i;
+    let date;
+    if (greg_regex.exec(dateField.value)) {
+      date = new Date(RegExp.$1);
+    } else {
+      date = new Date();
+    }
+
+    dateDiv.innerHTML = calGenerateSelectorContent(dateFieldId, dateDivId, date);
+    if (dateDiv.style.visibility === 'hidden') {
+      dateDiv.style.visibility = 'visible';
+      return false;
+    }
+    if (dateDiv.style.visibility === 'hide') {
+      dateDiv.style.visibility = 'show';
+      return false;
+    }
+
+    return false;
+  };
+
+  /**
+   * @param {string} dateFieldId
+   * @param {string} dateDivId
+   * @param {Date} date
+   * @returns {string}
+   */
+  function calGenerateSelectorContent (dateFieldId, dateDivId, date) {
+    let i, j;
+    let content = '<table border="1"><tr>';
+    content += '<td><select class="form-control" id="' + dateFieldId + '_daySelect" onchange="return webtrees.calUpdateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
+    for (i = 1; i < 32; i++) {
+      content += '<option value="' + i + '"';
+      if (date.getDate() === i) {
+        content += ' selected="selected"';
+      }
+      content += '>' + i + '</option>';
+    }
+    content += '</select></td>';
+    content += '<td><select class="form-control" id="' + dateFieldId + '_monSelect" onchange="return webtrees.calUpdateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
+    for (i = 1; i < 13; i++) {
+      content += '<option value="' + i + '"';
+      if (date.getMonth() + 1 === i) {
+        content += ' selected="selected"';
+      }
+      content += '>' + monthLabels[i] + '</option>';
+    }
+    content += '</select></td>';
+    content += '<td><input class="form-control" type="text" id="' + dateFieldId + '_yearInput" size="5" value="' + date.getFullYear() + '" onchange="return webtrees.calUpdateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');" /></td></tr>';
+    content += '<tr><td colspan="3">';
+    content += '<table width="100%">';
     content += '<tr>';
+    j = weekStart;
     for (i = 0; i < 7; i++) {
       content += '<td ';
-      if (tdate.getMonth() === date.getMonth()) {
-        if (tdate.getDate() === date.getDate()) {
-          content += 'class="descriptionbox"';
-        } else {
-          content += 'class="optionbox"';
-        }
-      } else {
-        content += 'style="background-color:#EAEAEA; border: solid #AAAAAA 1px;"';
+      content += 'class="descriptionbox"';
+      content += '>';
+      content += daysOfWeek[j];
+      content += '</td>';
+      j++;
+      if (j > 6) {
+        j = 0;
       }
-      content += '><a href="#" onclick="return cal_dateClicked(\'' + dateFieldId + '\', \'' + dateDivId + '\', ' + tdate.getFullYear() + ', ' + tdate.getMonth() + ', ' + tdate.getDate() + ');">';
-      content += tdate.getDate();
-      content += '</a></td>';
-      var datemilli = tdate.getTime() + daymilli;
-      tdate = new Date(datemilli);
     }
     content += '</tr>';
-  }
-  content += '</table>';
-  content += '</td></tr>';
-  content += '</table>';
 
-  return content;
-}
+    let tdate = new Date(date.getFullYear(), date.getMonth(), 1);
+    let day = tdate.getDay();
+    day = day - weekStart;
+    let daymilli = 1000 * 60 * 60 * 24;
+    tdate = tdate.getTime() - (day * daymilli) + (daymilli / 2);
+    tdate = new Date(tdate);
 
-/**
- * @param {string} dateFieldId
- * @param {number} year
- * @param {number} month
- * @param {number} day
- * @returns {boolean}
- */
-function cal_setDateField (dateFieldId, year, month, day) {
-  var dateField = document.getElementById(dateFieldId);
-  if (!dateField) {
-    return false;
-  }
-  if (day < 10) {
-    day = '0' + day;
-  }
-  dateField.value = day + ' ' + monthShort[month + 1] + ' ' + year;
-  return false;
-}
-
-/**
- * @param {string} dateFieldId
- * @param {string} dateDivId
- * @returns {boolean}
- */
-function cal_updateCalendar (dateFieldId, dateDivId) {
-  var dateSel = document.getElementById(dateFieldId + '_daySelect');
-  if (!dateSel) {
-    return false;
-  }
-  var monthSel = document.getElementById(dateFieldId + '_monSelect');
-  if (!monthSel) {
-    return false;
-  }
-  var yearInput = document.getElementById(dateFieldId + '_yearInput');
-  if (!yearInput) {
-    return false;
-  }
-
-  var month = parseInt(monthSel.options[monthSel.selectedIndex].value, 10);
-  month = month - 1;
-
-  var date = new Date(yearInput.value, month, dateSel.options[dateSel.selectedIndex].value);
-  cal_setDateField(dateFieldId, date.getFullYear(), date.getMonth(), date.getDate());
-
-  var dateDiv = document.getElementById(dateDivId);
-  if (!dateDiv) {
-    alert('no dateDiv ' + dateDivId);
-    return false;
-  }
-  dateDiv.innerHTML = cal_generateSelectorContent(dateFieldId, dateDivId, date);
-
-  return false;
-}
-
-/**
- * @param {string} dateFieldId
- * @param {string} dateDivId
- * @param {number} year
- * @param {number} month
- * @param {number} day
- * @returns {boolean}
- */
-function cal_dateClicked (dateFieldId, dateDivId, year, month, day) {
-  cal_setDateField(dateFieldId, year, month, day);
-  calendarWidget(dateDivId, dateFieldId);
-  return false;
-}
-
-/**
- * Persistant checkbox options to hide/show extra data.
- * @param element_id
- */
-function persistent_toggle (element_id) {
-  const element = document.getElementById(element_id);
-  const key = 'state-of-' + element_id;
-  const state = localStorage.getItem(key);
-
-  // Previously selected?
-  if (state === 'true') {
-    $(element).click();
-  }
-
-  // Remember state for the next page load.
-  $(element).on('change', function () { localStorage.setItem(key, element.checked); });
-}
-
-/**
- * @param {string} field
- * @param {string} pos
- * @param {string} neg
- */
-function valid_lati_long (field, pos, neg) {
-  // valid LATI or LONG according to Gedcom standard
-  // pos (+) : N or E
-  // neg (-) : S or W
-  var txt = field.value.toUpperCase();
-  txt = txt.replace(/(^\s*)|(\s*$)/g, ''); // trim
-  txt = txt.replace(/ /g, ':'); // N12 34 ==> N12.34
-  txt = txt.replace(/\+/g, ''); // +17.1234 ==> 17.1234
-  txt = txt.replace(/-/g, neg); // -0.5698 ==> W0.5698
-  txt = txt.replace(/,/g, '.'); // 0,5698 ==> 0.5698
-  // 0°34'11 ==> 0:34:11
-  txt = txt.replace(/\u00b0/g, ':'); // °
-  txt = txt.replace(/\u0027/g, ':'); // '
-  // 0:34:11.2W ==> W0.5698
-  txt = txt.replace(/^([0-9]+):([0-9]+):([0-9.]+)(.*)/g, function ($0, $1, $2, $3, $4) {
-    var n = parseFloat($1);
-    n += ($2 / 60);
-    n += ($3 / 3600);
-    n = Math.round(n * 1E4) / 1E4;
-    return $4 + n;
-  });
-  // 0:34W ==> W0.5667
-  txt = txt.replace(/^([0-9]+):([0-9]+)(.*)/g, function ($0, $1, $2, $3) {
-    var n = parseFloat($1);
-    n += ($2 / 60);
-    n = Math.round(n * 1E4) / 1E4;
-    return $3 + n;
-  });
-  // 0.5698W ==> W0.5698
-  txt = txt.replace(/(.*)([N|S|E|W]+)$/g, '$2$1');
-  // 17.1234 ==> N17.1234
-  if (txt && txt.charAt(0) !== neg && txt.charAt(0) !== pos) {
-    txt = pos + txt;
-  }
-  field.value = txt;
-}
-
-/**
- * Initialize autocomplete elements.
- * @param {string} selector
- */
-function autocomplete (selector) {
-  // Use typeahead/bloodhound for autocomplete
-  $(selector).each(function () {
-    const that = this;
-    $(this).typeahead(null, {
-      display: 'value',
-      limit: 0,
-      source: new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        remote: {
-          url: this.dataset.autocompleteUrl,
-          replace: function (url, uriEncodedQuery) {
-            if (that.dataset.autocompleteExtra) {
-              const extra = $(document.querySelector(that.dataset.autocompleteExtra)).val();
-              return url.replace('QUERY', uriEncodedQuery) + '&extra=' + encodeURIComponent(extra);
-            }
-            return url.replace('QUERY', uriEncodedQuery);
-          },
-          wildcard: 'QUERY'
-
+    for (j = 0; j < 6; j++) {
+      content += '<tr>';
+      for (i = 0; i < 7; i++) {
+        content += '<td ';
+        if (tdate.getMonth() === date.getMonth()) {
+          if (tdate.getDate() === date.getDate()) {
+            content += 'class="descriptionbox"';
+          } else {
+            content += 'class="optionbox"';
+          }
+        } else {
+          content += 'style="background-color:#EAEAEA; border: solid #AAAAAA 1px;"';
         }
-      })
-    });
-  });
-}
+        content += '><a href="#" onclick="return webtrees.calDateClicked(\'' + dateFieldId + '\', \'' + dateDivId + '\', ' + tdate.getFullYear() + ', ' + tdate.getMonth() + ', ' + tdate.getDate() + ');">';
+        content += tdate.getDate();
+        content += '</a></td>';
+        let datemilli = tdate.getTime() + daymilli;
+        tdate = new Date(datemilli);
+      }
+      content += '</tr>';
+    }
+    content += '</table>';
+    content += '</td></tr>';
+    content += '</table>';
 
-/**
- * Insert text at the current cursor position in an input field.
- * @param {Element} e The input element.
- * @param {string} t The text to insert.
- */
-function insertTextAtCursor (e, t) {
-  var scrollTop = e.scrollTop;
-  var selectionStart = e.selectionStart;
-  var prefix = e.value.substring(0, selectionStart);
-  var suffix = e.value.substring(e.selectionEnd, e.value.length);
-  e.value = prefix + t + suffix;
-  e.selectionStart = selectionStart + t.length;
-  e.selectionEnd = e.selectionStart;
-  e.focus();
-  e.scrollTop = scrollTop;
-}
-
-// Send the CSRF token on all AJAX requests
-$.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name=csrf]').attr('content')
+    return content;
   }
-});
+
+  /**
+   * @param {string} dateFieldId
+   * @param {number} year
+   * @param {number} month
+   * @param {number} day
+   * @returns {boolean}
+   */
+  function calSetDateField (dateFieldId, year, month, day) {
+    let dateField = document.getElementById(dateFieldId);
+    dateField.value = (day < 10 ? '0' : '') + day + ' ' + monthShort[month + 1] + ' ' + year;
+    return false;
+  }
+
+  /**
+   * @param {string} dateFieldId
+   * @param {string} dateDivId
+   * @returns {boolean}
+   */
+  webtrees.calUpdateCalendar = function (dateFieldId, dateDivId) {
+    let dateSel = document.getElementById(dateFieldId + '_daySelect');
+    if (!dateSel) {
+      return false;
+    }
+    let monthSel = document.getElementById(dateFieldId + '_monSelect');
+    if (!monthSel) {
+      return false;
+    }
+    let yearInput = document.getElementById(dateFieldId + '_yearInput');
+    if (!yearInput) {
+      return false;
+    }
+
+    let month = parseInt(monthSel.options[monthSel.selectedIndex].value, 10);
+    month = month - 1;
+
+    let date = new Date(yearInput.value, month, dateSel.options[dateSel.selectedIndex].value);
+    calSetDateField(dateFieldId, date.getFullYear(), date.getMonth(), date.getDate());
+
+    let dateDiv = document.getElementById(dateDivId);
+    if (!dateDiv) {
+      alert('no dateDiv ' + dateDivId);
+      return false;
+    }
+    dateDiv.innerHTML = calGenerateSelectorContent(dateFieldId, dateDivId, date);
+
+    return false;
+  };
+
+  /**
+   * @param {string} dateFieldId
+   * @param {string} dateDivId
+   * @param {number} year
+   * @param {number} month
+   * @param {number} day
+   * @returns {boolean}
+   */
+  webtrees.calDateClicked = function (dateFieldId, dateDivId, year, month, day) {
+    calSetDateField(dateFieldId, year, month, day);
+    webtrees.calendarWidget(dateDivId, dateFieldId);
+    return false;
+  };
+
+  /**
+   * Persistent checkbox options to hide/show extra data.
+   * @param {string} element_id
+   */
+  webtrees.persistentToggle = function (element_id) {
+    const element = document.getElementById(element_id);
+    const key = 'state-of-' + element_id;
+    const state = localStorage.getItem(key);
+
+    // Previously selected?
+    if (state === 'true') {
+      element.click();
+    }
+
+    // Remember state for the next page load.
+    element.addEventListener('change', function () {
+      localStorage.setItem(key, element.checked);
+    });
+  };
+
+  /**
+   * @param {Element} field
+   * @param {string} pos
+   * @param {string} neg
+   */
+  function reformatLatLong (field, pos, neg) {
+    // valid LATI or LONG according to Gedcom standard
+    // pos (+) : N or E
+    // neg (-) : S or W
+    let txt = field.value.toUpperCase();
+    txt = txt.replace(/(^\s*)|(\s*$)/g, ''); // trim
+    txt = txt.replace(/ /g, ':'); // N12 34 ==> N12.34
+    txt = txt.replace(/\+/g, ''); // +17.1234 ==> 17.1234
+    txt = txt.replace(/-/g, neg); // -0.5698 ==> W0.5698
+    txt = txt.replace(/,/g, '.'); // 0,5698 ==> 0.5698
+    // 0°34'11 ==> 0:34:11
+    txt = txt.replace(/\u00b0/g, ':'); // °
+    txt = txt.replace(/\u0027/g, ':'); // '
+    // 0:34:11.2W ==> W0.5698
+    txt = txt.replace(/^([0-9]+):([0-9]+):([0-9.]+)(.*)/g, function ($0, $1, $2, $3, $4) {
+      let n = parseFloat($1);
+      n += ($2 / 60);
+      n += ($3 / 3600);
+      n = Math.round(n * 1E4) / 1E4;
+      return $4 + n;
+    });
+    // 0:34W ==> W0.5667
+    txt = txt.replace(/^([0-9]+):([0-9]+)(.*)/g, function ($0, $1, $2, $3) {
+      let n = parseFloat($1);
+      n += ($2 / 60);
+      n = Math.round(n * 1E4) / 1E4;
+      return $3 + n;
+    });
+    // 0.5698W ==> W0.5698
+    txt = txt.replace(/(.*)(NSEW])$/g, '$2$1');
+    // 17.1234 ==> N17.1234
+    if (txt && txt.charAt(0) !== neg && txt.charAt(0) !== pos) {
+      txt = pos + txt;
+    }
+    field.value = txt;
+  }
+
+  /**
+   * @param {Element} field
+   */
+  webtrees.reformatLatitude = function (field) {
+    return reformatLatLong(field, 'N', 'S');
+  };
+
+  /**
+   * @param {Element} field
+   */
+  webtrees.reformatLongitude = function (field) {
+    return reformatLatLong(field, 'E', 'W');
+  };
+
+  /**
+   * Initialize autocomplete elements.
+   * @param {string} selector
+   */
+  webtrees.autocomplete = function (selector) {
+    // Use typeahead/bloodhound for autocomplete
+    $(selector).each(function () {
+      const that = this;
+      $(this).typeahead(null, {
+        display: 'value',
+        limit: 0,
+        source: new Bloodhound({
+          datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+          queryTokenizer: Bloodhound.tokenizers.whitespace,
+          remote: {
+            url: this.dataset.autocompleteUrl,
+            replace: function (url, uriEncodedQuery) {
+              if (that.dataset.autocompleteExtra) {
+                const extra = $(document.querySelector(that.dataset.autocompleteExtra)).val();
+                return url.replace('QUERY', uriEncodedQuery) + '&extra=' + encodeURIComponent(extra);
+              }
+              return url.replace('QUERY', uriEncodedQuery);
+            },
+            wildcard: 'QUERY'
+          }
+        })
+      });
+    });
+  };
+}(window.webtrees = window.webtrees || {}));
 
 /**
  * Initialisation
  */
 $(function () {
-  // Page elements that load automaticaly via AJAX.
+  // Send the CSRF token on all AJAX requests
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name=csrf]').attr('content')
+    }
+  });
+
+  // Page elements that load automatically via AJAX.
   // This prevents bad robots from crawling resource-intensive pages.
   $('[data-ajax-url]').each(function () {
     $(this).load($(this).data('ajaxUrl'));
   });
 
-  /**
-   * Select2 - format entries in the select list
-   * @param {Object} data
-   * @returns {string}
-   */
-  function templateOptionForSelect2 (data) {
-    // This could be a "waiting..." message (data.loading is true) or a response from the server.
-    // Both are already HTML, so no need to reformat it.
-    return data.text;
-  }
-
   // Autocomplete
-  autocomplete('input[data-autocomplete-url]');
+  webtrees.autocomplete('input[data-autocomplete-url]');
 
   // Select2 - activate autocomplete fields
   const lang = document.documentElement.lang;
@@ -706,7 +678,7 @@ $(function () {
   });
 
   // Activate the on-screen keyboard
-  var osk_focus_element;
+  let osk_focus_element;
   $('.wt-osk-trigger').click(function () {
     // When a user clicks the icon, set focus to the corresponding input
     osk_focus_element = document.getElementById($(this).data('id'));
@@ -721,9 +693,9 @@ $(function () {
     document.querySelector('.wt-osk-keys').classList.toggle('shifted');
   });
   $('.wt-osk-keys').on('click', '.wt-osk-key', function () {
-    var key = $(this).contents().get(0).nodeValue;
-    var shift_state = $('.wt-osk-shift-button').hasClass('active');
-    var shift_key = $('sup', this)[0];
+    let key = $(this).contents().get(0).nodeValue;
+    let shift_state = $('.wt-osk-shift-button').hasClass('active');
+    let shift_key = $('sup', this)[0];
     if (shift_state && shift_key !== undefined) {
       key = shift_key.innerText;
     }
@@ -760,7 +732,7 @@ document.addEventListener('click', (event) => {
         'X-CSRF-TOKEN': token,
         'X-Requested-with': 'XMLHttpRequest',
       },
-    }).then((response) => {
+    }).then(() => {
       if ('reloadUrl' in target.dataset) {
         // Go somewhere else.  e.g. home page after logout.
         document.location = target.dataset.reloadUrl;

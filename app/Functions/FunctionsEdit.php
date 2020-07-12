@@ -472,9 +472,9 @@ class FunctionsEdit
                 view('components/select-family', ['id' => $id, 'name' => $name, 'family' => Factory::family()->make($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'LATI') {
-            $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" oninput="valid_lati_long(this, \'N\', \'S\')">';
+            $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" oninput="webtrees.reformatLatitude(this)">';
         } elseif ($fact === 'LONG') {
-            $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" oninput="valid_lati_long(this, \'E\', \'W\')">';
+            $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" oninput="webtrees.reformatLongitude(this)">';
         } elseif ($fact === 'NOTE' && $islink) {
             $html .=
                 '<div class="input-group">' .

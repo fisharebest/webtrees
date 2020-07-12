@@ -6,7 +6,7 @@ use Fisharebest\Webtrees\I18N;
 
 <div class="input-group-append">
     <span class="input-group-text">
-        <a data-id="<?= e($id) ?>" href="#" onclick="return calendarWidget('caldiv<?= e($id) ?>', '<?= e($id) ?>');" title="<?= I18N::translate('Select a date') ?>">
+        <a data-id="<?= e($id) ?>" href="#" onclick="return webtrees.calendarWidget('caldiv<?= e($id) ?>', '<?= e($id) ?>');" title="<?= I18N::translate('Select a date') ?>">
             <?= view('icons/calendar') ?>
             <span class="sr-only">
                 <?= I18N::translate('Select a date') ?>

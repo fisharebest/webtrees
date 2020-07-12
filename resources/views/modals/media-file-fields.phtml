@@ -1,9 +1,10 @@
 <?php
 
 use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
 
 ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
+<?php ?>
 
 <div class="form-group row <?= $media_file ? 'd-none' : '' ?>">
     <label class="col-form-label col-sm-2" for="file-location">
@@ -120,9 +121,11 @@ use Fisharebest\Webtrees\GedcomTag;
 </div>
 
 <script>
-    autocomplete('#folder');
+    webtrees.autocomplete('#folder');
     document.getElementById('file-location').addEventListener('change', function () {
-    $('.file-location').addClass('d-none');
-    $('.file-location-' + $(this).val()).removeClass('d-none');
-  });
+        document.querySelectorAll('.file-location').forEach(function (element) {
+            element.classList.add('d-none');
+        });
+        document.querySelector('.file-location-' + this.value).classList.remove('d-none');
+    });
 </script>
