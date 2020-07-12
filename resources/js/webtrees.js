@@ -112,130 +112,125 @@
       element.focus();
     }
   };
+
+  /**
+   * @param {Element} datefield
+   * @param {string} dmy
+   */
+  webtrees.reformatDate = function (datefield, dmy) {
+    const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    const hijri_months = ['MUHAR', 'SAFAR', 'RABIA', 'RABIT', 'JUMAA', 'JUMAT', 'RAJAB', 'SHAAB', 'RAMAD', 'SHAWW', 'DHUAQ', 'DHUAH'];
+    const hebrew_months = ['TSH', 'CSH', 'KSL', 'TVT', 'SHV', 'ADR', 'ADS', 'NSN', 'IYR', 'SVN', 'TMZ', 'AAV', 'ELL'];
+    const french_months = ['VEND', 'BRUM', 'FRIM', 'NIVO', 'PLUV', 'VENT', 'GERM', 'FLOR', 'PRAI', 'MESS', 'THER', 'FRUC', 'COMP'];
+    const jalali_months = ['FARVA', 'ORDIB', 'KHORD', 'TIR', 'MORDA', 'SHAHR', 'MEHR', 'ABAN', 'AZAR', 'DEY', 'BAHMA', 'ESFAN'];
+
+    let datestr = datefield.value;
+    // if a date has a date phrase marked by () this has to be excluded from altering
+    let datearr = datestr.split('(');
+    let datephrase = '';
+    if (datearr.length > 1) {
+      datestr = datearr[0];
+      datephrase = datearr[1];
+    }
+
+    // Gedcom dates are upper case
+    datestr = datestr.toUpperCase();
+    // Gedcom dates have no leading/trailing/repeated whitespace
+    datestr = datestr.replace(/\s+/g, ' ');
+    datestr = datestr.replace(/(^\s)|(\s$)/, '');
+    // Gedcom dates have spaces between letters and digits, e.g. "01JAN2000" => "01 JAN 2000"
+    datestr = datestr.replace(/(\d)([A-Z])/g, '$1 $2');
+    datestr = datestr.replace(/([A-Z])(\d)/g, '$1 $2');
+
+    // Shortcut for quarter format, "Q1 1900" => "BET JAN 1900 AND MAR 1900". See [ 1509083 ]
+    if (datestr.match(/^Q ([1-4]) (\d\d\d\d)$/)) {
+      datestr = 'BET ' + months[RegExp.$1 * 3 - 3] + ' ' + RegExp.$2 + ' AND ' + months[RegExp.$1 * 3 - 1] + ' ' + RegExp.$2;
+    }
+
+    // Shortcut for @#Dxxxxx@ 01 01 1400, etc.
+    if (datestr.match(/^(@#DHIJRI@|HIJRI)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
+      datestr = '@#DHIJRI@' + RegExp.$2 + hijri_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
+    }
+    if (datestr.match(/^(@#DJALALI@|JALALI)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
+      datestr = '@#DJALALI@' + RegExp.$2 + jalali_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
+    }
+    if (datestr.match(/^(@#DHEBREW@|HEBREW)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
+      datestr = '@#DHEBREW@' + RegExp.$2 + hebrew_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
+    }
+    if (datestr.match(/^(@#DFRENCH R@|FRENCH)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
+      datestr = '@#DFRENCH R@' + RegExp.$2 + french_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
+    }
+
+    // All digit dates
+    datestr = datestr.replaceAll(/(\d\d)(\d\d)(\d\d)(\d\d)/g, function () {
+      if (RegExp.$1 > '12' && RegExp.$3 <= '12' && RegExp.$4 <= '31') {
+        return RegExp.$4 + ' ' + months[RegExp.$3 - 1] + ' ' + RegExp.$1 + RegExp.$2;
+      }
+      if (RegExp.$1 <= '31' && RegExp.$2 <= '12' && RegExp.$3 > '12') {
+        return RegExp.$1 + ' ' + months[RegExp.$2 - 1] + ' '  + RegExp.$3 + RegExp.$4;
+      }
+      return RegExp.$1 + RegExp.$2 + RegExp.$3 + RegExp.$4;
+    });
+
+    // e.g. 17.11.1860, 3/4/2005 or 1999-12-31. Use locale settings since DMY order is ambiguous.
+    datestr = datestr.replaceAll(/(\d+)([./-])(\d+)([./-])(\d+)/g, function () {
+      var f1 = parseInt(RegExp.$1, 10);
+      var f2 = parseInt(RegExp.$3, 10);
+      var f3 = parseInt(RegExp.$5, 10);
+      var yyyy = new Date().getFullYear();
+      var yy = yyyy % 100;
+      var cc = yyyy - yy;
+      if (dmy === 'DMY' && f1 <= 31 && f2 <= 12 || f1 > 13 && f1 <= 31 && f2 <= 12 && f3 > 31) {
+        return f1 + ' ' + months[f2 - 1] + ' ' + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
+      }
+      if (dmy === 'MDY' && f1 <= 12 && f2 <= 31 || f2 > 13 && f2 <= 31 && f1 <= 12 && f3 > 31) {
+        return f2 + ' ' + months[f1 - 1] + ' ' + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
+      }
+      if (dmy === 'YMD' && f2 <= 12 && f3 <= 31 || f3 > 13 && f3 <= 31 && f2 <= 12 && f1 > 31) {
+        return f3 + ' ' + months[f2 - 1] + ' ' + (f1 >= 100 ? f1 : (f1 <= yy ? f1 + cc : f1 + cc - 100));
+      }
+      return RegExp.$1 + RegExp.$2 + RegExp.$3 + RegExp.$4 + RegExp.$5;
+    });
+
+    datestr = datestr
+        // Shortcuts for date ranges
+        .replace(/^[>]([\w ]+)$/, 'AFT $1')
+        .replace(/^[<]([\w ]+)$/, 'BEF $1')
+        .replace(/^([\w ]+)[-]$/, 'FROM $1')
+        .replace(/^[-]([\w ]+)$/, 'TO $1')
+        .replace(/^[~]([\w ]+)$/, 'ABT $1')
+        .replace(/^[*]([\w ]+)$/, 'EST $1')
+        .replace(/^[#]([\w ]+)$/, 'CAL $1')
+        .replace(/^([\w ]+) ?- ?([\w ]+)$/, 'BET $1 AND $2')
+        .replace(/^([\w ]+) ?~ ?([\w ]+)$/, 'FROM $1 TO $2')
+        // Convert full months to short months
+        .replaceAll('JANUARY', 'JAN')
+        .replaceAll('FEBRUARY', 'FEB')
+        .replaceAll('MARCH', 'MAR')
+        .replaceAll('APRIL', 'APR')
+        .replaceAll('JUNE', 'JUN')
+        .replaceAll('JULY', 'JUL')
+        .replaceAll('AUGUST', 'AUG')
+        .replaceAll('SEPTEMBER', 'SEP')
+        .replaceAll('OCTOBER', 'OCT')
+        .replaceAll('NOVEMBER', 'NOV')
+        .replaceAll('DECEMBER', 'DEC')
+        // Americans enter dates as SEP 20, 1999
+        .replaceAll(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\.? (\d\d?)[, ]+(\d\d\d\d)/, '$2 $1 $3')
+        // Apply leading zero to day numbers
+        .replaceAll(/(^| )(\d [A-Z]{3,5} \d{4})/, '$10$2');
+
+    if (datephrase) {
+      datestr = datestr + ' (' + datephrase;
+    }
+
+    // Only update it if is has been corrected - otherwise input focus
+    // moves to the end of the field unnecessarily
+    if (datefield.value !== datestr) {
+      datefield.value = datestr;
+    }
+  }
 }(window.webtrees = window.webtrees || {}));
-
-var pastefield;
-
-/**
- * @param {Element} datefield
- * @param {string} dmy
- */
-function valid_date (datefield, dmy) {
-  var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-  var hijri_months = ['MUHAR', 'SAFAR', 'RABIA', 'RABIT', 'JUMAA', 'JUMAT', 'RAJAB', 'SHAAB', 'RAMAD', 'SHAWW', 'DHUAQ', 'DHUAH'];
-  var hebrew_months = ['TSH', 'CSH', 'KSL', 'TVT', 'SHV', 'ADR', 'ADS', 'NSN', 'IYR', 'SVN', 'TMZ', 'AAV', 'ELL'];
-  var french_months = ['VEND', 'BRUM', 'FRIM', 'NIVO', 'PLUV', 'VENT', 'GERM', 'FLOR', 'PRAI', 'MESS', 'THER', 'FRUC', 'COMP'];
-  var jalali_months = ['FARVA', 'ORDIB', 'KHORD', 'TIR', 'MORDA', 'SHAHR', 'MEHR', 'ABAN', 'AZAR', 'DEY', 'BAHMA', 'ESFAN'];
-
-  var datestr = datefield.value;
-  // if a date has a date phrase marked by () this has to be excluded from altering
-  var datearr = datestr.split('(');
-  var datephrase = '';
-  if (datearr.length > 1) {
-    datestr = datearr[0];
-    datephrase = datearr[1];
-  }
-
-  // Gedcom dates are upper case
-  datestr = datestr.toUpperCase();
-  // Gedcom dates have no leading/trailing/repeated whitespace
-  datestr = datestr.replace(/\s+/g, ' ');
-  datestr = datestr.replace(/(^\s)|(\s$)/, '');
-  // Gedcom dates have spaces between letters and digits, e.g. "01JAN2000" => "01 JAN 2000"
-  datestr = datestr.replace(/(\d)([A-Z])/g, '$1 $2');
-  datestr = datestr.replace(/([A-Z])(\d)/g, '$1 $2');
-
-  // Shortcut for quarter format, "Q1 1900" => "BET JAN 1900 AND MAR 1900". See [ 1509083 ]
-  if (datestr.match(/^Q ([1-4]) (\d\d\d\d)$/)) {
-    datestr = 'BET ' + months[RegExp.$1 * 3 - 3] + ' ' + RegExp.$2 + ' AND ' + months[RegExp.$1 * 3 - 1] + ' ' + RegExp.$2;
-  }
-
-  // Shortcut for @#Dxxxxx@ 01 01 1400, etc.
-  if (datestr.match(/^(@#DHIJRI@|HIJRI)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
-    datestr = '@#DHIJRI@' + RegExp.$2 + hijri_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
-  }
-  if (datestr.match(/^(@#DJALALI@|JALALI)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
-    datestr = '@#DJALALI@' + RegExp.$2 + jalali_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
-  }
-  if (datestr.match(/^(@#DHEBREW@|HEBREW)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
-    datestr = '@#DHEBREW@' + RegExp.$2 + hebrew_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
-  }
-  if (datestr.match(/^(@#DFRENCH R@|FRENCH)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
-    datestr = '@#DFRENCH R@' + RegExp.$2 + french_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
-  }
-
-  // All digit dates
-  datestr = datestr.replaceAll(/(\d\d)(\d\d)(\d\d)(\d\d)/g, function () {
-    if (RegExp.$1 > '12' && RegExp.$3 <= '12' && RegExp.$4 <= '31') {
-      return RegExp.$4 + ' ' + months[RegExp.$3 - 1] + ' ' + RegExp.$1 + RegExp.$2;
-    }
-    if (RegExp.$1 <= '31' && RegExp.$2 <= '12' && RegExp.$3 > '12') {
-      return RegExp.$1 + ' ' + months[RegExp.$2 - 1] + ' '  + RegExp.$3 + RegExp.$4;
-    }
-    return RegExp.$1 + RegExp.$2 + RegExp.$3 + RegExp.$4;
-  });
-
-  // e.g. 17.11.1860, 3/4/2005 or 1999-12-31. Use locale settings since DMY order is ambiguous.
-  datestr = datestr.replaceAll(/(\d+)([./-])(\d+)([./-])(\d+)/g, function () {
-    var f1 = parseInt(RegExp.$1, 10);
-    var f2 = parseInt(RegExp.$3, 10);
-    var f3 = parseInt(RegExp.$5, 10);
-    var yyyy = new Date().getFullYear();
-    var yy = yyyy % 100;
-    var cc = yyyy - yy;
-    if (dmy === 'DMY' && f1 <= 31 && f2 <= 12 || f1 > 13 && f1 <= 31 && f2 <= 12 && f3 > 31) {
-      return f1 + ' ' + months[f2 - 1] + ' ' + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
-    }
-    if (dmy === 'MDY' && f1 <= 12 && f2 <= 31 || f2 > 13 && f2 <= 31 && f1 <= 12 && f3 > 31) {
-      return f2 + ' ' + months[f1 - 1] + ' ' + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
-    }
-    if (dmy === 'YMD' && f2 <= 12 && f3 <= 31 || f3 > 13 && f3 <= 31 && f2 <= 12 && f1 > 31) {
-      return f3 + ' ' + months[f2 - 1] + ' ' + (f1 >= 100 ? f1 : (f1 <= yy ? f1 + cc : f1 + cc - 100));
-    }
-    return RegExp.$1 + RegExp.$2 + RegExp.$3 + RegExp.$4 + RegExp.$5;
-  });
-
-  // Shortcuts for date ranges
-  datestr = datestr.replace(/^[>]([\w ]+)$/, 'AFT $1');
-  datestr = datestr.replace(/^[<]([\w ]+)$/, 'BEF $1');
-  datestr = datestr.replace(/^([\w ]+)[-]$/, 'FROM $1');
-  datestr = datestr.replace(/^[-]([\w ]+)$/, 'TO $1');
-  datestr = datestr.replace(/^[~]([\w ]+)$/, 'ABT $1');
-  datestr = datestr.replace(/^[*]([\w ]+)$/, 'EST $1');
-  datestr = datestr.replace(/^[#]([\w ]+)$/, 'CAL $1');
-  datestr = datestr.replace(/^([\w ]+) ?- ?([\w ]+)$/, 'BET $1 AND $2');
-  datestr = datestr.replace(/^([\w ]+) ?~ ?([\w ]+)$/, 'FROM $1 TO $2');
-
-  // Convert full months to short months
-  datestr = datestr.replace(/(JANUARY)/, 'JAN');
-  datestr = datestr.replace(/(FEBRUARY)/, 'FEB');
-  datestr = datestr.replace(/(MARCH)/, 'MAR');
-  datestr = datestr.replace(/(APRIL)/, 'APR');
-  datestr = datestr.replace(/(MAY)/, 'MAY');
-  datestr = datestr.replace(/(JUNE)/, 'JUN');
-  datestr = datestr.replace(/(JULY)/, 'JUL');
-  datestr = datestr.replace(/(AUGUST)/, 'AUG');
-  datestr = datestr.replace(/(SEPTEMBER)/, 'SEP');
-  datestr = datestr.replace(/(OCTOBER)/, 'OCT');
-  datestr = datestr.replace(/(NOVEMBER)/, 'NOV');
-  datestr = datestr.replace(/(DECEMBER)/, 'DEC');
-
-  // Americans frequently enter dates as SEP 20, 1999
-  // No need to internationalise this, as this is an english-language issue
-  datestr = datestr.replace(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\.? (\d\d?)[, ]+(\d\d\d\d)/, '$2 $1 $3');
-
-  // Apply leading zero to day numbers
-  datestr = datestr.replace(/(^| )(\d [A-Z]{3,5} \d{4})/, '$10$2');
-
-  if (datephrase) {
-    datestr = datestr + ' (' + datephrase;
-  }
-  // Only update it if is has been corrected - otherwise input focus
-  // moves to the end of the field unnecessarily
-  if (datefield.value !== datestr) {
-    datefield.value = datestr;
-  }
-}
 
 var monthLabels = [];
 monthLabels[1] = 'January';
@@ -522,60 +517,6 @@ function cal_dateClicked (dateFieldId, dateDivId, year, month, day) {
 }
 
 /**
- * @param {string} id
- */
-function openerpasteid (id) {
-  if (window.opener.paste_id) {
-    window.opener.paste_id(id);
-  }
-  window.close();
-}
-
-/**
- * @param {string} value
- */
-function paste_id (value) {
-  pastefield.value = value;
-}
-
-/**
- * @param {string} name
- */
-function pastename (name) {
-  if (nameElement) {
-    nameElement.innerHTML = name;
-  }
-  if (remElement) {
-    remElement.style.display = 'block';
-  }
-}
-
-/**
- * @param {string} value
- */
-function paste_char (value) {
-  if (document.selection) {
-    // IE
-    pastefield.focus();
-    document.selection.createRange().text = value;
-  } else if (pastefield.selectionStart || pastefield.selectionStart === 0) {
-    // Mozilla/Chrome/Safari
-    pastefield.value =
-        pastefield.value.substring(0, pastefield.selectionStart) +
-        value +
-        pastefield.value.substring(pastefield.selectionEnd, pastefield.value.length);
-    pastefield.selectionStart = pastefield.selectionEnd = pastefield.selectionStart + value.length;
-  } else {
-    // Fallback? - just append
-    pastefield.value += value;
-  }
-
-  if (pastefield.id === 'NPFX' || pastefield.id === 'GIVN' || pastefield.id === 'SPFX' || pastefield.id === 'SURN' || pastefield.id === 'NSFX') {
-    updatewholename();
-  }
-}
-
-/**
  * Persistant checkbox options to hide/show extra data.
  * @param element_id
  */
@@ -799,7 +740,7 @@ $(function () {
 
 // Convert data-confirm and data-post-url attributes into useful behavior.
 document.addEventListener('click', (event) => {
-  const target = event.target.closest('a');
+  const target = event.target.closest('a,button');
 
   if (target === null) {
     return;

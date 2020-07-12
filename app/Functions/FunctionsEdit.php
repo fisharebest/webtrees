@@ -459,7 +459,7 @@ class FunctionsEdit
             $dmy = '"' . $localization_service->dateFormatToOrder(I18N::dateFormat()) . '"';
 
             $html .= '<div class="input-group">';
-            $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" onchange="valid_date(this, ' . e($dmy) . ')" dir="ltr">';
+            $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" onchange="webtrees.reformatDate(this, ' . e($dmy) . ')" dir="ltr">';
             $html .= view('edit/input-addon-calendar', ['id' => $id]);
             $html .= view('edit/input-addon-help', ['fact' => 'DATE']);
             $html .= '</div>';

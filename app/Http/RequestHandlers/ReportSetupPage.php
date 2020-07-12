@@ -148,7 +148,7 @@ class ReportSetupPage implements RequestHandlerInterface
                         'type'     => 'text',
                         'value'    => $input['default'],
                         'dir'      => 'ltr',
-                        'onchange' => 'valid_date(this, "' . $dmy . '")'
+                        'onchange' => 'webtrees.reformatDate(this, "' . $dmy . '")'
                     ];
                     $input['control'] = '<input ' . Html::attributes($attributes) . '>';
                     $input['extra']   = '<a href="#" title="' . I18N::translate('Select a date') . '" class ="btn btn-link" onclick="' . e('return calendarWidget("calendar-widget-' . $n . '", "input-' . $n . '");') . '">' . view('icons/calendar') . '</a>' .
