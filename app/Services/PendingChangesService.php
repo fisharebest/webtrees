@@ -38,14 +38,11 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
-
 use Illuminate\Support\Collection;
-
 use stdClass;
 
 use function addcslashes;
 use function preg_match;
-use function random_int;
 
 /**
  * Manage pending changes
