@@ -106,17 +106,26 @@ To create a module that is just a modified version of an existing module,
 you can extend the existing module (instead of extending `AbstractModule`).
 
 ```php
-<?php 
+<?php
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\Module\PedigreeChartModule;
+use Fisharebest\Webtrees\Services\ChartService;
 
 /**
  * Creating an anoymous class will prevent conflicts with other custom modules.
  */
 return new class extends PedigreeChartModule implements ModuleCustomInterface {
     use ModuleCustomTrait;
-    
+
+    /**
+     * The chart needs some chart functions.  We could pass in our own version here.
+     */
+    public function __construct()
+    {
+        parent::__construct(new ChartService());
+    }
+
     /**
      * @return string
      */
@@ -124,9 +133,14 @@ return new class extends PedigreeChartModule implements ModuleCustomInterface {
     {
         return 'A modified version of the pedigree chart';
     }
-    
+
     // Change the default layout...
-    public const DEFAULT_ORIENTATION = parent::STYLE_DOWN;
+    protected const DEFAULT_STYLE = self::STYLE_DOWN;
+
+    protected const DEFAULT_PARAMETERS  = [
+        'generations' => self::DEFAULT_GENERATIONS,
+        'style'       => self::DEFAULT_STYLE,
+    ];
 };
 ```
 
