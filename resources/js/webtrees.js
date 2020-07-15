@@ -607,17 +607,17 @@
   };
 }(window.webtrees = window.webtrees || {}));
 
+// Send the CSRF token on all AJAX requests
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name=csrf]').attr('content')
+  }
+});
+
 /**
  * Initialisation
  */
 $(function () {
-  // Send the CSRF token on all AJAX requests
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name=csrf]').attr('content')
-    }
-  });
-
   // Page elements that load automatically via AJAX.
   // This prevents bad robots from crawling resource-intensive pages.
   $('[data-ajax-url]').each(function () {
