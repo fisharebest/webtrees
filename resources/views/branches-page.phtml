@@ -2,6 +2,14 @@
 
 use Fisharebest\Webtrees\I18N;
 
+/**
+ * @var string $ajax_url
+ * @var bool   $soundex_dm
+ * @var bool   $soundex_std
+ * @var string $surname
+ * @var string $title
+ */
+
 ?>
 
 <h2 class="wt-page-title">
@@ -15,6 +23,7 @@ use Fisharebest\Webtrees\I18N;
         <label class="col-form-label col-sm-3 wt-page-options-label" for="surname">
             <?= I18N::translate('Surname') ?>
         </label>
+
         <div class="col-sm-9 wt-page-options-value">
             <input class="form-control" data-autocomplete-type="SURN" type="text" name="surname" id="surname" value="<?= e($surname) ?>" dir="auto" required>
         </div>
@@ -25,6 +34,7 @@ use Fisharebest\Webtrees\I18N;
             <legend class="col-form-label col-sm-3 wt-page-options-label">
                 <?= I18N::translate('Phonetic search') ?>
             </legend>
+
             <div class="col-sm-9 wt-page-options-value">
                 <?= view('components/checkbox-inline', ['label' => I18N::translate('Russell'), 'name' => 'soundex_std', 'checked' => $soundex_std]) ?>
                 <?= view('components/checkbox-inline', ['label' => I18N::translate('Daitch-Mokotoff'), 'name' => 'soundex_dm', 'checked' => $soundex_dm]) ?>
@@ -33,8 +43,8 @@ use Fisharebest\Webtrees\I18N;
     </fieldset>
 
     <div class="form-group row">
-        <div class="col-sm-3 wt-page-options-label">
-        </div>
+        <div class="col-sm-3 wt-page-options-label"></div>
+
         <div class="col-sm-9 wt-page-options-value">
             <button type="submit" class="btn btn-primary">
                 <?= /* I18N: A button label. */ I18N::translate('view') ?>
@@ -43,6 +53,6 @@ use Fisharebest\Webtrees\I18N;
     </div>
 </form>
 
-<?php if ($surname !== '') : ?>
-    <div class="wt-ajax-load wt-page-content wt-chart wt-branches" data-ajax-url="<?= e(route('module', ['module' => $module, 'action' => 'List', 'surname' => $surname, 'soundex_std' => $soundex_std, 'soundex_dm' => $soundex_dm, 'tree' => $tree->name()])) ?>"></div>
+<?php if ($ajax_url !== '') : ?>
+    <div class="wt-ajax-load wt-page-content wt-chart wt-branches" data-ajax-url="<?= e($ajax_url) ?>"></div>
 <?php endif ?>

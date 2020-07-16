@@ -42,29 +42,27 @@ class IndividualListTest extends TestCase
     public function testIndividualList(): void
     {
         $tree                    = $this->importTree('demo.ged');
-        $list_module             = new IndividualListModule();
+        $list_module             = new IndividualListModule(new LocalizationService());
         $localization_service    = new LocalizationService();
-        $individual_list_service = new IndividualListService($localization_service, $tree);
-        $controller              = new ListController($individual_list_service, $localization_service);
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $tree]);
-        $response = $controller->individualList($request, $list_module);
+        $response = $list_module->handle($request);
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => 'B'], [], [], ['tree' => $tree]);
-        $response = $controller->individualList($request, $list_module);
+        $response = $list_module->handle($request);
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => ','], [], [], ['tree' => $tree]);
-        $response = $controller->individualList($request, $list_module);
+        $response = $list_module->handle($request);
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => '@'], [], [], ['tree' => $tree]);
-        $response = $controller->individualList($request, $list_module);
+        $response = $list_module->handle($request);
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['surname' => 'BRAUN'], [], [], ['tree' => $tree]);
-        $response = $controller->individualList($request, $list_module);
+        $response = $list_module->handle($request);
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

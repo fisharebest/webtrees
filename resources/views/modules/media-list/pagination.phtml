@@ -1,0 +1,56 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var string              $filter
+ * @var string              $folder
+ * @var string              $format
+ * @var ModuleListInterface $module
+ * @var int                 $page
+ * @var int                 $pages
+ * @var string              $subdirs
+ * @var Tree                $tree
+ */
+
+?>
+
+<div class="row text-center">
+    <div class="col">
+        <?php if ($page > 1) : ?>
+            <a class="btn btn-outline-secondary" href="<?= e($module->listUrl($tree, ['go' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'format' => $format, 'max' => $max, 'page' => 1])) ?>">
+                <?= I18N::translate('first') ?>
+            </a>
+        <?php endif ?>
+    </div>
+
+    <div class="col">
+        <?php if ($page > 1) : ?>
+            <a class="btn btn-outline-secondary" href="<?= e($module->listUrl($tree, ['go' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'format' => $format, 'max' => $max, 'page' => $page - 1])) ?>">
+                <?= I18N::translate('previous') ?>
+            </a>
+        <?php endif ?>
+    </div>
+
+    <div class="col">
+        <?= I18N::translate('Page %s of %s', $page, $pages) ?>
+    </div>
+
+    <div class="col">
+        <?php if ($page < $pages) : ?>
+            <a class="btn btn-outline-secondary" href="<?= e($module->listUrl($tree, ['go' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'format' => $format, 'max' => $max, 'page' => $page + 1])) ?>">
+                <?= I18N::translate('next') ?>
+            </a>
+        <?php endif ?>
+    </div>
+
+    <div class="col">
+        <?php if ($page < $pages) : ?>
+            <a class="btn btn-outline-secondary" href="<?= e($module->listUrl($tree, ['go' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'format' => $format, 'max' => $max, 'page' => $pages])) ?>">
+                <?= I18N::translate('last') ?>
+            </a>
+        <?php endif ?>
+    </div>
+</div>

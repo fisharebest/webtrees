@@ -5,6 +5,26 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Illuminate\Support\Collection;
+use League\Flysystem\FilesystemInterface;
+
+/**
+ * @var int                 $count
+ * @var FilesystemInterface $data_filesystem
+ * @var string              $filter
+ * @var string              $folder
+ * @var array<string>       $folders
+ * @var string              $format
+ * @var array<string>       $formats
+ * @var Collection<Media>   $media_objects
+ * @var ModuleListInterface $module
+ * @var int                 $page
+ * @var int                 $pages
+ * @var string              $subdirs
+ * @var string              $title
+ */
 
 ?>
 
@@ -33,17 +53,17 @@ use Fisharebest\Webtrees\I18N;
     </div>
 
     <div class="row form-group">
-        <label class="col-sm-3 col-form-label wt-page-options-label" for="form-type">
+        <label class="col-sm-3 col-form-label wt-page-options-label" for="format">
             <?= I18N::translate('Type') ?>
         </label>
+
         <div class="col-sm-3 wt-page-options-value">
-            <?= view('components/select', ['name' => 'form_type', 'id' => 'form-type', 'selected' => $form_type, 'options' => ['' => ''] + $formats]) ?>
+            <?= view('components/select', ['name' => 'format', 'id' => 'format', 'selected' => $format, 'options' => ['' => ''] + $formats]) ?>
         </div>
 
-        <div class="col-sm-3 col-form-label wt-page-options-label">
-        </div>
-        <div class="col-sm-3 wt-page-options-value">
-        </div>
+        <div class="col-sm-3 col-form-label wt-page-options-label"></div>
+
+        <div class="col-sm-3 wt-page-options-value"></div>
     </div>
 
     <div class="row form-group">
@@ -54,13 +74,13 @@ use Fisharebest\Webtrees\I18N;
             <input type="text" class="form-control" name="filter" id="filter" value="<?= e($filter) ?>">
         </div>
 
-        <div class="col-sm-3 col-form-label wt-page-options-label">
-        </div>
+        <div class="col-sm-3 col-form-label wt-page-options-label"></div>
+
         <div class="col-sm-3 wt-page-options-value">
-            <button type="submit" name="action2" value="1" class="btn btn-primary">
+            <button type="submit" name="go" value="1" class="btn btn-primary">
                 <?= /* I18N: A button label. */ I18N::translate('search') ?>
             </button>
-            <a class="btn btn-secondary" href="<?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name()])) ?>">
+            <a class="btn btn-secondary" href="<?= e($module->listUrl($tree)) ?>">
                 <?= /* I18N: A button label. */ I18N::translate('reset') ?>
             </a>
         </div>
@@ -71,39 +91,7 @@ use Fisharebest\Webtrees\I18N;
     <p class="text-center mt-4"><?= I18N::translate('Media objects found') ?> <?= I18N::number($count) ?></p>
     <?php if ($media_objects->isNotEmpty()) : ?>
 
-        <div class="row text-center">
-            <div class="col">
-                <?php if ($page > 1) : ?>
-                    <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => 1])) ?>">
-                        <?= I18N::translate('first') ?>
-                    </a>
-                <?php endif ?>
-            </div>
-            <div class="col">
-                <?php if ($page > 1) : ?>
-                    <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $page - 1])) ?>">
-                        <?= I18N::translate('previous') ?>
-                    </a>
-                <?php endif ?>
-            </div>
-            <div class="col">
-                <?= I18N::translate('Page %s of %s', $page, $pages) ?>
-            </div>
-            <div class="col">
-                <?php if ($page < $pages) : ?>
-                    <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $page + 1])) ?>">
-                        <?= I18N::translate('next') ?>
-                    </a>
-                <?php endif ?>
-            </div>
-            <div class="col">
-                <?php if ($page < $pages) : ?>
-                    <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $pages])) ?>">
-                        <?= I18N::translate('last') ?>
-                    </a>
-                <?php endif ?>
-            </div>
-        </div>
+        <?= view('modules/media-list/pagination', ['module' => $module, 'page' => $page, 'pages' => $pages, 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'format' => $format, 'max' => $max, 'tree' => $tree]) ?>
 
         <div class="card-deck row mb-4 mt-4">
             <?php foreach ($media_objects as $n => $media_object) : ?>
@@ -170,38 +158,6 @@ use Fisharebest\Webtrees\I18N;
             <?php endforeach ?>
         </div>
 
-        <div class="row text-center">
-            <div class="col">
-                <?php if ($page > 1) : ?>
-                    <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => 1])) ?>">
-                        <?= I18N::translate('first') ?>
-                    </a>
-                <?php endif ?>
-            </div>
-            <div class="col">
-                <?php if ($page > 1) : ?>
-                    <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $page - 1])) ?>">
-                        <?= I18N::translate('previous') ?>
-                    </a>
-                <?php endif ?>
-            </div>
-            <div class="col">
-                <?= I18N::translate('Page %s of %s', $page, $pages) ?>
-            </div>
-            <div class="col">
-                <?php if ($page < $pages) : ?>
-                    <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $page + 1])) ?>">
-                        <?= I18N::translate('next') ?>
-                    </a>
-                <?php endif ?>
-            </div>
-            <div class="col">
-                <?php if ($page < $pages) : ?>
-                    <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name(), 'action2' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'form_type' => $form_type, 'max' => $max, 'page' => $pages])) ?>">
-                        <?= I18N::translate('last') ?>
-                    </a>
-                <?php endif ?>
-            </div>
-        </div>
+        <?= view('modules/media-list/pagination', ['module' => $module, 'page' => $page, 'pages' => $pages, 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'format' => $format, 'max' => $max, 'tree' => $tree]) ?>
     <?php endif ?>
 </div>

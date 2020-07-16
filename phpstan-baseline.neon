@@ -561,11 +561,6 @@ parameters:
 			path: app/Http/Controllers/GedcomFileController.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\ListController\\:\\:allFolders\\(\\) should return array\\<string\\> but returns array\\|false\\.$#"
-			count: 1
-			path: app/Http/Controllers/ListController.php
-
-		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/Controllers/MediaFileController.php
@@ -1021,6 +1016,11 @@ parameters:
 			path: app/Module/IndividualFactsTabModule.php
 
 		-
+			message: "#^Parameter \\#2 \\$key of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string\\|null, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
+			count: 2
+			path: app/Module/IndividualListModule.php
+
+		-
 			message: "#^Parameter \\#1 \\$str of function strip_tags expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Module/IndividualMetadataModule.php
@@ -1051,7 +1051,7 @@ parameters:
 			path: app/Module/LifespansChartModule.php
 
 		-
-			message: "#^Binary operation \"\\+\" between array\\('tree' \\=\\> string, 'module' \\=\\> string, 'action' \\=\\> 'List'\\) and array\\|object\\|null results in an error\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\MediaListModule\\:\\:allFolders\\(\\) should return array\\<string\\> but returns array\\|false\\.$#"
 			count: 1
 			path: app/Module/MediaListModule.php
 
@@ -1073,22 +1073,22 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-theme.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-middleware.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
 			path: modules_v4/example-report.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
 			path: modules_v4/example.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example-theme.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example-middleware.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1819,31 +1819,6 @@ parameters:
 			message: "#^Cannot access offset 'type' on array\\|false\\.$#"
 			count: 2
 			path: app/Services/HousekeepingService.php
-
-		-
-			message: "#^Parameter \\#2 \\$key of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string\\|null, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 2
-			path: app/Services/IndividualListService.php
-
-		-
-			message: "#^Cannot call method getAllNames\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
-			count: 1
-			path: app/Services/IndividualListService.php
-
-		-
-			message: "#^Cannot call method setPrimaryName\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
-			count: 1
-			path: app/Services/IndividualListService.php
-
-		-
-			message: "#^Cannot clone non\\-object variable \\$individual of type Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
-			count: 1
-			path: app/Services/IndividualListService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\IndividualListService\\:\\:individuals\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Individual\\> but returns array\\<int, Fisharebest\\\\Webtrees\\\\Individual\\|null\\>\\.$#"
-			count: 1
-			path: app/Services/IndividualListService.php
 
 		-
 			message: "#^Parameter \\#1 \\$size of method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:parseIniFileSize\\(\\) expects string, string\\|false given\\.$#"

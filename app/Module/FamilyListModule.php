@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,23 +19,22 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Http\Controllers\ListController;
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Services\IndividualListService;
-use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
+use function redirect;
 
 /**
  * Class FamilyListModule
  */
-class FamilyListModule extends AbstractModule implements ModuleListInterface
+class FamilyListModule extends IndividualListModule
 {
-    use ModuleListTrait;
+    protected const ROUTE_URL = '/tree/{tree}/family-list';
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -74,24 +73,16 @@ class FamilyListModule extends AbstractModule implements ModuleListInterface
      *
      * @return ResponseInterface
      */
-    public function getListAction(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
         $user = $request->getAttribute('user');
+        assert($user instanceof UserInterface);
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
-      
-        $listController = new ListController(app(IndividualListService::class), app(LocalizationService::class));
-        return $listController->familyList($request, $this);
-    }
 
-    /**
-     * @return string[]
-     */
-    public function listUrlAttributes(): array
-    {
-        return [];
+        return $this->createResponse($tree, $user, $request->getQueryParams(), true);
     }
 }
