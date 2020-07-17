@@ -21,8 +21,8 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Module\MediaListModule;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Module\NoteListModule;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
@@ -31,14 +31,12 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function array_flip;
-use function array_intersect_key;
 use function redirect;
 
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
  */
-class RedirectMediaListPhp implements RequestHandlerInterface
+class RedirectNoteListPhp implements RequestHandlerInterface
 {
     /** @var ModuleService */
     private $module_service;
@@ -66,13 +64,10 @@ class RedirectMediaListPhp implements RequestHandlerInterface
         $query  = $request->getQueryParams();
         $ged    = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
         $tree   = $this->tree_service->all()->get($ged);
-        $module = $this->module_service->findByInterface(MediaListModule::class)->first();
+        $module = $this->module_service->findByInterface(NoteListModule::class)->first();
 
         if ($tree instanceof Tree && $module instanceof ModuleListInterface) {
-            $allowed = ['folder', 'form_type', 'max', 'filter', 'subdirs'];
-            $params  = array_intersect_key($query, array_flip($allowed));
-
-            return redirect($module->listUrl($tree, $params), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return redirect($module->listUrl($tree), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         throw new HttpNotFoundException();

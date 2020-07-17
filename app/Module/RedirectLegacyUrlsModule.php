@@ -37,6 +37,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\RedirectLifeSpanPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectMediaListPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectMediaViewerPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectModulePhp;
+use Fisharebest\Webtrees\Http\RequestHandlers\RedirectNoteListPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectNotePhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectPedigreePhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectPlaceListPhp;
@@ -89,6 +90,7 @@ class RedirectLegacyUrlsModule extends AbstractModule
         $router->get(RedirectMediaViewerPhp::class, '/mediaviewer.php', RedirectMediaViewerPhp::class);
         $router->get(RedirectModulePhp::class, '/module.php', RedirectModulePhp::class);
         $router->get(RedirectNotePhp::class, '/note.php', RedirectNotePhp::class);
+        $router->get(RedirectNoteListPhp::class, '/notelist.php', RedirectNoteListPhp::class);
         $router->get(RedirectPedigreePhp::class, '/pedigree.php', RedirectPedigreePhp::class);
         $router->get(RedirectPlaceListPhp::class, '/placelist.php', RedirectPlaceListPhp::class);
         $router->get(RedirectRelationshipPhp::class, '/relationship.php', RedirectRelationshipPhp::class);

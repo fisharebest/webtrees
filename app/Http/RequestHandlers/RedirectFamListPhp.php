@@ -21,6 +21,9 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Module\FamilyListModule;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -28,6 +31,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_flip;
+use function array_intersect_key;
 use function redirect;
 
 /**
@@ -35,15 +40,20 @@ use function redirect;
  */
 class RedirectFamListPhp implements RequestHandlerInterface
 {
+    /** @var ModuleService */
+    private $module_service;
+
     /** @var TreeService */
     private $tree_service;
 
     /**
-     * @param TreeService $tree_service
+     * @param ModuleService $module_service
+     * @param TreeService   $tree_service
      */
-    public function __construct(TreeService $tree_service)
+    public function __construct(ModuleService $module_service, TreeService $tree_service)
     {
-        $this->tree_service = $tree_service;
+        $this->module_service = $module_service;
+        $this->tree_service   = $tree_service;
     }
 
     /**
@@ -53,33 +63,16 @@ class RedirectFamListPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query               = $request->getQueryParams();
-        $ged                 = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $alpha               = $query['alpha'] ?? null;
-        $falpha              = $query['falpha'] ?? null;
-        $show                = $query['show'] ?? null;
-        $show_all            = $query['show_all'] ?? null;
-        $show_all_firstnames = $query['show_all_firstnames'] ?? null;
-        $show_marnm          = $query['show_marnm'] ?? null;
-        $surname             = $query['surname'] ?? null;
+        $query  = $request->getQueryParams();
+        $ged    = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
+        $tree   = $this->tree_service->all()->get($ged);
+        $module = $this->module_service->findByInterface(FamilyListModule::class)->first();
 
-        $tree = $this->tree_service->all()->get($ged);
+        if ($tree instanceof Tree && $module instanceof ModuleListInterface) {
+            $allowed = ['alpha', 'falpha', 'show', 'show_all', 'show_all_firstnames', 'show_marnm', 'surname'];
+            $params  = array_intersect_key($query, array_flip($allowed));
 
-        if ($tree instanceof Tree) {
-            $url = route('module', [
-                'module'              => 'family_list',
-                'action'              => 'List',
-                'alpha'               => $alpha,
-                'falpha'              => $falpha,
-                'show'                => $show,
-                'show_all'            => $show_all,
-                'show_all_firstnames' => $show_all_firstnames,
-                'show_marnm'          => $show_marnm,
-                'surname'             => $surname,
-                'tree'                => $tree->name(),
-            ]);
-
-            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return redirect($module->listUrl($tree, $params), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         throw new HttpNotFoundException();
