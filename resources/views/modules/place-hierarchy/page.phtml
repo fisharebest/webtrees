@@ -5,17 +5,16 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * @var string $module
- * @var Tree $tree
- * @var string $action
- * @var string $title
- * @var Place|null $current
+ * @var string       $alt_link
+ * @var string       $alt_url
  * @var array<Place> $breadcrumbs
- * @var bool $note
- * @var string $content
- * @var bool $showeventslink
- * @var Place $place
- * @var array $nextaction
+ * @var string       $content
+ * @var Place|null   $current
+ * @var string       $events_link
+ * @var Place        $place
+ * @var string       $title
+ * @var Tree         $tree
+ * @var string       $world_url
  */
 
 ?>
@@ -24,8 +23,8 @@ use Fisharebest\Webtrees\Tree;
     <div class="container">
         <h4><?= $title ?></h4>
         <h5 class="text-center">
-            <?php if ($current) : ?>
-                <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name()])) ?>">
+            <?php if ($current !== null) : ?>
+                <a href="<?= e($world_url) ?>">
                     <?= I18N::translate('World') ?>
                 </a>
             <?php else : ?>
@@ -37,7 +36,7 @@ use Fisharebest\Webtrees\Tree;
                 <a href="<?= e($item->url()) ?>" dir="auto"><?= $item->placeName() ?></a>
             <?php endforeach ?>
 
-            <?php if ($current) : ?>
+            <?php if ($current !== null) : ?>
                 - <?= $current->placeName() ?>
             <?php endif ?>
         </h5>
@@ -45,15 +44,15 @@ use Fisharebest\Webtrees\Tree;
         <?= $content ?>
 
         <div class="text-center">
-            <?php if ($showeventslink) : ?>
-                <a class="formField" href= <?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name(), 'place_id' => $place->id(), 'action2' => 'hierarchy-e'])) ?>>
+            <?php if ($events_link !== '') : ?>
+                <a class="formField" href= <?= e($events_link) ?>>
                     <?= I18N::translate('View table of events occurring in %s', $place->fullName()) ?>
                 </a>
                 |
             <?php endif ?>
 
-            <a href="<?= e(route('module', ['module' => $module, 'action' => $action, 'tree' => $tree->name(), 'action2' => key($nextaction)])) ?>">
-                <?= current($nextaction) ?>
+            <a href="<?= e($alt_url) ?>">
+                <?= $alt_link ?>
             </a>
         </div>
     </div>

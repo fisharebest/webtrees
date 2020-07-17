@@ -22,7 +22,11 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Module\NoteListModule;
+use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -31,6 +35,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_flip;
+use function array_intersect_key;
 use function redirect;
 
 /**
@@ -38,15 +44,20 @@ use function redirect;
  */
 class RedirectPlaceListPhp implements RequestHandlerInterface
 {
+    /** @var ModuleService */
+    private $module_service;
+
     /** @var TreeService */
     private $tree_service;
 
     /**
-     * @param TreeService $tree_service
+     * @param ModuleService $module_service
+     * @param TreeService   $tree_service
      */
-    public function __construct(TreeService $tree_service)
+    public function __construct(ModuleService $module_service, TreeService $tree_service)
     {
-        $this->tree_service = $tree_service;
+        $this->module_service = $module_service;
+        $this->tree_service   = $tree_service;
     }
 
     /**
@@ -56,34 +67,16 @@ class RedirectPlaceListPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query   = $request->getQueryParams();
-        $ged     = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $parent  = $query['parent'] ?? [];
-        $display = $query['display'] ?? null;
+        $query  = $request->getQueryParams();
+        $ged    = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
+        $tree   = $this->tree_service->all()->get($ged);
+        $module = $this->module_service->findByInterface(PlaceHierarchyListModule::class)->first();
 
-        $tree = $this->tree_service->all()->get($ged);
+        if ($tree instanceof Tree && $module instanceof ModuleListInterface) {
+            $allowed = ['action2', 'place_id'];
+            $params  = array_intersect_key($query, array_flip($allowed));
 
-        if ($tree instanceof Tree) {
-            // Check the place exists in the database, to avoid creating new places.
-            $place_id = 0;
-
-            foreach ($parent as $place_name) {
-                $place_id = (int) DB::table('places')
-                    ->where('p_file', '=', $tree->id())
-                    ->where('p_place', '=', $place_name)
-                    ->where('p_parent_id', '=', $place_id)
-                    ->value('p_id');
-            }
-
-            $url = route('module', [
-                'module'   => 'places_list',
-                'action'   => 'List',
-                'action2'  => $display,
-                'place_id' => $place_id,
-                'tree'     => $tree->name(),
-            ]);
-
-            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return redirect($module->listUrl($tree, $params), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         throw new HttpNotFoundException();
