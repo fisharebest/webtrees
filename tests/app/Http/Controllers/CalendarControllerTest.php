@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\TestCase;
  * Test the module controller
  *
  * @covers \Fisharebest\Webtrees\Http\Controllers\AbstractBaseController
- * @covers \Fisharebest\Webtrees\Http\Controllers\CalendarController
+ * @covers \Fisharebest\Webtrees\Http\Controllers\CalendarPage
  * @covers \Fisharebest\Webtrees\Services\CalendarService
  */
 class CalendarControllerTest extends TestCase
@@ -45,7 +45,7 @@ class CalendarControllerTest extends TestCase
 
         $calendar_service     = new CalendarService();
         $localization_service = new LocalizationService();
-        $controller           = new CalendarController($calendar_service, $localization_service);
+        $controller           = new CalendarPage($calendar_service, $localization_service);
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $tree, 'view' => 'day']);
         $response = $controller->calendar($request);

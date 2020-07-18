@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\ExtCalendar\PersianCalendar;
+use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\AbstractCalendarDate;
 use Fisharebest\Webtrees\Date\FrenchDate;
@@ -94,14 +95,16 @@ class CalendarService
     /**
      * Get a list of events which occured during a given date range.
      *
-     * @param int    $jd1   the start range of julian day
-     * @param int    $jd2   the end range of julian day
-     * @param string $facts restrict the search to just these facts or leave blank for all
-     * @param Tree   $tree  the tree to search
+     * @param int    $jd1      the start range of julian day
+     * @param int    $jd2      the end range of julian day
+     * @param string $facts    restrict the search to just these facts or leave blank for all
+     * @param Tree   $tree     the tree to search
+     * @param string $filterof filter by living/recent
+     * @param string $filtersx filter by sex
      *
      * @return Fact[]
      */
-    public function getCalendarEvents(int $jd1, int $jd2, string $facts, Tree $tree): array
+    public function getCalendarEvents(int $jd1, int $jd2, string $facts, Tree $tree, string $filterof = '', string $filtersx = ''): array
     {
         // Events that start or end during the period
         $query = DB::table('dates')
@@ -127,34 +130,58 @@ class CalendarService
             $query->whereIn('d_fact', $matches[1]);
         }
 
+        if ($filterof === 'recent') {
+            $query->where('d_julianday1', '>=', Carbon::now()->subYears(100)->julianDay());
+        }
+
         $ind_query = (clone $query)
             ->join('individuals', static function (JoinClause $join): void {
                 $join->on('d_gid', '=', 'i_id')->on('d_file', '=', 'i_file');
             })
             ->select(['i_id AS xref', 'i_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact', 'd_type']);
 
-        $fam_query = (clone $query)
-            ->join('families', static function (JoinClause $join): void {
-                $join->on('d_gid', '=', 'f_id')->on('d_file', '=', 'f_file');
-            })
-            ->select(['f_id AS xref', 'f_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact', 'd_type']);
+        $queries = ['INDI' => $ind_query];
+
+        if ($filtersx === '') {
+            $fam_query = (clone $query)
+                ->join('families', static function (JoinClause $join): void {
+                    $join->on('d_gid', '=', 'f_id')->on('d_file', '=', 'f_file');
+                })
+                ->select(['f_id AS xref', 'f_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact', 'd_type']);
+
+            $queries['FAM'] = $fam_query;
+        } else {
+            $queries['INDI']->where('i_sex', '=', $filtersx);
+        }
 
         // Now fetch these events
         $found_facts = [];
 
-        foreach (['INDI' => $ind_query, 'FAM' => $fam_query] as $type => $record_query) {
+        foreach ($queries as $type => $record_query) {
             foreach ($record_query->get() as $row) {
                 if ($type === 'INDI') {
                     $record = Factory::individual()->make($row->xref, $tree, $row->gedcom);
+                    assert($record instanceof Individual);
+
+                    if ($filterof === 'living' && $record->isDead()) {
+                        continue;
+                    }
                 } else {
                     $record = Factory::family()->make($row->xref, $tree, $row->gedcom);
+                    assert($record instanceof Family);
+                    $husb = $record->husband();
+                    $wife = $record->wife();
+
+                    if ($filterof === 'living' && ($husb && $husb->isDead() || $wife && $wife->isDead())) {
+                        continue;
+                    }
                 }
 
                 $anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
 
-                foreach ($record->facts() as $fact) {
+                foreach ($record->facts([$row->d_fact]) as $fact) {
                     // For date ranges, we need a match on either the start/end.
-                    if (($fact->date()->minimumJulianDay() === $anniv_date->minimumJulianDay() || $fact->date()->maximumJulianDay() === $anniv_date->maximumJulianDay()) && $fact->getTag() === $row->d_fact) {
+                    if (($fact->date()->minimumJulianDay() === $anniv_date->minimumJulianDay() || $fact->date()->maximumJulianDay() === $anniv_date->maximumJulianDay())) {
                         $fact->anniv   = 0;
                         $found_facts[] = $fact;
                     }
@@ -235,13 +262,15 @@ class CalendarService
      * Get a list of events whose anniversary occured on a given julian day.
      * Used on the on-this-day/upcoming blocks and the day/month calendar views.
      *
-     * @param int    $jd    the julian day
-     * @param string $facts restrict the search to just these facts or leave blank for all
-     * @param Tree   $tree  the tree to search
+     * @param int    $jd       the julian day
+     * @param string $facts    restrict the search to just these facts or leave blank for all
+     * @param Tree   $tree     the tree to search
+     * @param string $filterof filter by living/recent
+     * @param string $filtersx filter by sex
      *
      * @return Fact[]
      */
-    public function getAnniversaryEvents($jd, string $facts, Tree $tree): array
+    public function getAnniversaryEvents($jd, string $facts, Tree $tree, string $filterof = '', string $filtersx = ''): array
     {
         $found_facts = [];
 
@@ -303,6 +332,10 @@ class CalendarService
                 $query->whereIn('d_fact', $matches[1]);
             }
 
+            if ($filterof === 'recent') {
+                $query->where('d_julianday1', '>=', Carbon::now()->subYears(100)->julianDay());
+            }
+
             $query
                 ->orderBy('d_day')
                 ->orderBy('d_year', 'DESC');
@@ -313,19 +346,39 @@ class CalendarService
                 })
                 ->select(['i_id AS xref', 'i_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact']);
 
-            $fam_query = (clone $query)
-                ->join('families', static function (JoinClause $join): void {
-                    $join->on('d_gid', '=', 'f_id')->on('d_file', '=', 'f_file');
-                })
-                ->select(['f_id AS xref', 'f_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact']);
+            $queries = ['INDI' => $ind_query];
+
+            if ($filtersx === '') {
+                $fam_query = (clone $query)
+                    ->join('families', static function (JoinClause $join): void {
+                        $join->on('d_gid', '=', 'f_id')->on('d_file', '=', 'f_file');
+                    })
+                    ->select(['f_id AS xref', 'f_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact']);
+
+                $queries['FAM'] = $fam_query;
+            } else {
+                $queries['INDI']->where('i_sex', '=', $filtersx);
+            }
 
             // Now fetch these anniversaries
-            foreach (['INDI' => $ind_query, 'FAM' => $fam_query] as $type => $record_query) {
+            foreach ($queries as $type => $record_query) {
                 foreach ($record_query->get() as $row) {
                     if ($type === 'INDI') {
                         $record = Factory::individual()->make($row->xref, $tree, $row->gedcom);
+                        assert($record instanceof Individual);
+
+                        if ($filterof === 'living' && $record->isDead()) {
+                            continue;
+                        }
                     } else {
                         $record = Factory::family()->make($row->xref, $tree, $row->gedcom);
+                        assert($record instanceof Family);
+                        $husb = $record->husband();
+                        $wife = $record->wife();
+
+                        if ($filterof === 'living' && ($husb && $husb->isDead() || $wife && $wife->isDead())) {
+                            continue;
+                        }
                     }
 
                     $anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);

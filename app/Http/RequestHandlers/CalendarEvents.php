@@ -17,9 +17,8 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\FrenchDate;
 use Fisharebest\Webtrees\Date\GregorianDate;
@@ -33,11 +32,11 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\CalendarService;
-use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 use function count;
@@ -46,171 +45,36 @@ use function explode;
 use function get_class;
 use function ob_get_clean;
 use function ob_start;
-use function preg_match;
 use function range;
-use function redirect;
 use function response;
-use function route;
-use function str_replace;
-use function strlen;
-use function substr;
 use function view;
 
 /**
- * Show anniveraries for events in a given day/month/year.
+ * Show anniversaries for events in a given day/month/year.
  */
-class CalendarController extends AbstractBaseController
+class CalendarEvents implements RequestHandlerInterface
 {
     /** @var CalendarService */
     private $calendar_service;
 
-    /** @var LocalizationService */
-    private $localization_service;
-
     /**
-     * CalendarController constructor.
+     * CalendarPage constructor.
      *
-     * @param CalendarService     $calendar_service
-     * @param LocalizationService $localization_service
+     * @param CalendarService $calendar_service
      */
-    public function __construct(CalendarService $calendar_service, LocalizationService $localization_service)
+    public function __construct(CalendarService $calendar_service)
     {
-        $this->calendar_service     = $calendar_service;
-        $this->localization_service = $localization_service;
+        $this->calendar_service = $calendar_service;
     }
 
     /**
-     * A form to request the page parameters.
+     * Show anniversaries that occured on a given day/month/year.
      *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function page(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $view     = $request->getAttribute('view');
-        $cal      = $request->getQueryParams()['cal'] ?? '';
-        $day      = $request->getQueryParams()['day'] ?? '';
-        $month    = $request->getQueryParams()['month'] ?? '';
-        $year     = $request->getQueryParams()['year'] ?? '';
-        $filterev = $request->getQueryParams()['filterev'] ?? 'BIRT-MARR-DEAT';
-        $filterof = $request->getQueryParams()['filterof'] ?? 'all';
-        $filtersx = $request->getQueryParams()['filtersx'] ?? '';
-
-        if ($cal . $day . $month . $year === '') {
-            // No date specified? Use the most likely calendar
-            $cal = $this->localization_service->calendar(I18N::locale())->gedcomCalendarEscape();
-        }
-
-        // need BC to parse date
-        if ($year < 0) {
-            $year = (-$year) . ' B.C.';
-        }
-        $ged_date = new Date("{$cal} {$day} {$month} {$year}");
-        // need negative year for year entry field.
-        $year     = $ged_date->minimumDate()->year;
-        $cal_date = $ged_date->minimumDate();
-
-        // Fill in any missing bits with todays date
-        $today = $cal_date->today();
-        if ($cal_date->day === 0) {
-            $cal_date->day = $today->day;
-        }
-        if ($cal_date->month === 0) {
-            $cal_date->month = $today->month;
-        }
-        if ($cal_date->year === 0) {
-            $cal_date->year = $today->year;
-        }
-
-        $cal_date->setJdFromYmd();
-
-        if ($year === 0) {
-            $year = $cal_date->year;
-        }
-
-        // Extract values from date
-        $days_in_month = $cal_date->daysInMonth();
-        $cal_month     = $cal_date->format('%O');
-        $today_month   = $today->format('%O');
-
-        // Invalid dates? Go to monthly view, where they'll be found.
-        if ($cal_date->day > $days_in_month && $view === 'day') {
-            $view = 'month';
-        }
-
-        $title = I18N::translate('Anniversary calendar');
-
-        switch ($view) {
-            case 'day':
-                $title = I18N::translate('On this day…') . ' ' . $ged_date->display(false);
-                break;
-            case 'month':
-                $title = I18N::translate('In this month…') . ' ' . $ged_date->display(false, '%F %Y');
-                break;
-            case 'year':
-                $title = I18N::translate('In this year…') . ' ' . $ged_date->display(false, '%Y');
-                break;
-        }
-
-        return $this->viewResponse('calendar-page', [
-            'cal'           => $cal,
-            'cal_date'      => $cal_date,
-            'cal_month'     => $cal_month,
-            'day'           => $day,
-            'days_in_month' => $days_in_month,
-            'filterev'      => $filterev,
-            'filterof'      => $filterof,
-            'filtersx'      => $filtersx,
-            'month'         => $month,
-            'months'        => $this->calendar_service->calendarMonthsInYear($cal, $year),
-            'title'         => $title,
-            'today'         => $today,
-            'today_month'   => $today_month,
-            'tree'          => $tree,
-            'view'          => $view,
-            'year'          => $year,
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function select(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $view = $request->getAttribute('view');
-
-        $params = (array) $request->getParsedBody();
-
-        return redirect(route('calendar', [
-            'cal'      => $params['cal'],
-            'day'      => $params['day'],
-            'filterev' => $params['filterev'],
-            'filterof' => $params['filterof'],
-            'filtersx' => $params['filtersx'],
-            'month'    => $params['month'],
-            'tree'     => $tree->name(),
-            'view'     => $view,
-            'year'     => $params['year'],
-        ]));
-    }
-
-    /**
-     * Show anniveraries that occured on a given day/month/year.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function calendar(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
@@ -226,73 +90,23 @@ class CalendarController extends AbstractBaseController
         $filterof = $request->getQueryParams()['filterof'] ?? 'all';
         $filtersx = $request->getQueryParams()['filtersx'] ?? '';
 
-        if ($cal . $day . $month . $year === '') {
-            // No date specified? Use the most likely calendar
-            $cal = $this->localization_service->calendar(I18N::locale())->gedcomCalendarEscape();
-        }
-
-        // Create a CalendarDate from the parameters
-
-        // We cannot display new-style/old-style years, so convert to new style
-        if (preg_match('/^(\d\d)\d\d\/(\d\d)$/', $year, $match)) {
-            $year = $match[1] . $match[2];
-        }
-
-        // advanced-year "year range"
-        if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
-            if (strlen($match[1]) > strlen($match[2])) {
-                $match[2] = substr($match[1], 0, strlen($match[1]) - strlen($match[2])) . $match[2];
-            }
-            $ged_date = new Date("FROM {$cal} {$match[1]} TO {$cal} {$match[2]}");
-            $view     = 'year';
-        } elseif (preg_match('/^(\d+)(\?+)$/', $year, $match)) {
-            // advanced-year "decade/century wildcard"
-            $y1       = $match[1] . str_replace('?', '0', $match[2]);
-            $y2       = $match[1] . str_replace('?', '9', $match[2]);
-            $ged_date = new Date("FROM {$cal} {$y1} TO {$cal} {$y2}");
-            $view     = 'year';
-        } else {
-            if ($year < 0) {
-                $year = (-$year) . ' B.C.';
-            } // need BC to parse date
-            $ged_date = new Date("{$cal} {$day} {$month} {$year}");
-        }
+        $ged_date = new Date("{$cal} {$day} {$month} {$year}");
         $cal_date = $ged_date->minimumDate();
+        $today    = $cal_date->today();
 
-        // Fill in any missing bits with todays date
-        $today = $cal_date->today();
-        if ($cal_date->day === 0) {
-            $cal_date->day = $today->day;
-        }
-        if ($cal_date->month === 0) {
-            $cal_date->month = $today->month;
-        }
-        if ($cal_date->year === 0) {
-            $cal_date->year = $today->year;
-        }
-
-        $cal_date->setJdFromYmd();
-
-        // Extract values from date
         $days_in_month = $cal_date->daysInMonth();
         $days_in_week  = $cal_date->daysInWeek();
 
-        // Invalid dates? Go to monthly view, where they'll be found.
-        if ($cal_date->day > $days_in_month && $view === 'day') {
-            $view = 'month';
-        }
-
         // Day and year share the same layout.
-        if ($view === 'day' || $view === 'year') {
+        if ($view !== 'month') {
             if ($view === 'day') {
-                $anniversary_facts = $this->calendar_service->getAnniversaryEvents($cal_date->minimumJulianDay(), $filterev, $tree);
+                $anniversary_facts = $this->calendar_service->getAnniversaryEvents($cal_date->minimumJulianDay(), $filterev, $tree, $filterof, $filtersx);
             } else {
-                $ged_year = new Date($cal . ' ' . $year);
-                $anniversary_facts = $this->calendar_service->getCalendarEvents($ged_year->minimumJulianDay(), $ged_year->maximumJulianDay(), $filterev, $tree);
+                $ged_year          = new Date($cal . ' ' . $year);
+                $anniversary_facts = $this->calendar_service->getCalendarEvents($ged_year->minimumJulianDay(), $ged_year->maximumJulianDay(), $filterev, $tree, $filterof, $filtersx);
             }
 
-            $anniversary_facts   = $this->applyFilter($anniversary_facts, $filterof, $filtersx);
-            $anniversaries = Collection::make($anniversary_facts)
+            $anniversaries     = Collection::make($anniversary_facts)
                 ->unique()
                 ->sort(static function (Fact $x, Fact $y): int {
                     return $x->date()->minimumJulianDay() <=> $y->date()->minimumJulianDay();
@@ -324,7 +138,7 @@ class CalendarController extends AbstractBaseController
         $jds = range($cal_date->minimumJulianDay(), $cal_date->maximumJulianDay());
 
         foreach ($jds as $jd) {
-            foreach ($this->applyFilter($this->calendar_service->getAnniversaryEvents($jd, $filterev, $tree), $filterof, $filtersx) as $fact) {
+            foreach ($this->calendar_service->getAnniversaryEvents($jd, $filterev, $tree, $filterof, $filtersx) as $fact) {
                 $tmp = $fact->date()->minimumDate();
                 if ($tmp->day >= 1 && $tmp->day <= $tmp->daysInMonth()) {
                     // If the day is valid (for its own calendar), display it in the
@@ -381,8 +195,8 @@ class CalendarController extends AbstractBaseController
         echo '<tbody>';
         // Print days 1 to n of the month, but extend to cover "empty" days before/after the month to make whole weeks.
         // e.g. instead of 1 -> 30 (=30 days), we might have -1 -> 33 (=35 days)
-        $start_d   = 1 - ($cal_date->minimumJulianDay() - $week_start) % $days_in_week;
-        $end_d     = $days_in_month + ($days_in_week - ($cal_date->maximumJulianDay() - $week_start + 1) % $days_in_week) % $days_in_week;
+        $start_d = 1 - ($cal_date->minimumJulianDay() - $week_start) % $days_in_week;
+        $end_d   = $days_in_month + ($days_in_week - ($cal_date->maximumJulianDay() - $week_start + 1) % $days_in_week) % $days_in_week;
         // Make sure that there is an empty box for any leap/missing days
         if ($start_d === 1 && $end_d === $days_in_month && count($found_facts[0]) > 0) {
             $end_d += $days_in_week;
@@ -454,54 +268,6 @@ class CalendarController extends AbstractBaseController
         echo '</table>';
 
         return response(ob_get_clean());
-    }
-
-    /**
-     * Filter a list of anniversaries
-     *
-     * @param Fact[] $facts
-     * @param string $filterof
-     * @param string $filtersx
-     *
-     * @return Fact[]
-     */
-    private function applyFilter(array $facts, string $filterof, string $filtersx): array
-    {
-        $filtered      = [];
-        $hundred_years_ago = Carbon::now()->subYears(100)->julianDay();
-        foreach ($facts as $fact) {
-            $record = $fact->record();
-            if ($filtersx) {
-                // Filter on sex
-                if ($record instanceof Individual && $filtersx !== $record->sex()) {
-                    continue;
-                }
-                // Can't display families if the sex filter is on.
-                if ($record instanceof Family) {
-                    continue;
-                }
-            }
-            // Filter living individuals
-            if ($filterof === 'living') {
-                if ($record instanceof Individual && $record->isDead()) {
-                    continue;
-                }
-                if ($record instanceof Family) {
-                    $husb = $record->husband();
-                    $wife = $record->wife();
-                    if ($husb && $husb->isDead() || $wife && $wife->isDead()) {
-                        continue;
-                    }
-                }
-            }
-            // Filter on recent events
-            if ($filterof === 'recent' && $fact->date()->maximumJulianDay() < $hundred_years_ago) {
-                continue;
-            }
-            $filtered[] = $fact;
-        }
-
-        return $filtered;
     }
 
     /**

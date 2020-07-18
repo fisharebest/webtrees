@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Date;
 use Fisharebest\ExtCalendar\CalendarInterface;
 use Fisharebest\ExtCalendar\JewishCalendar;
 use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Http\RequestHandlers\CalendarPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use InvalidArgumentException;
@@ -984,7 +985,7 @@ abstract class AbstractCalendarDate
             $view = 'year';
         }
 
-        return route('calendar', [
+        return route(CalendarPage::class, [
             'cal'   => $this->calendar->gedcomCalendarEscape(),
             'year'  => $this->formatGedcomYear(),
             'month' => $this->formatGedcomMonth(),
