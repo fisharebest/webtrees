@@ -120,6 +120,18 @@ trait ModuleCustomTrait
     }
 
     /**
+     * Translations for module metadata. They are always loaded, even if the module is disabled.
+     *
+     * @param string $language
+     *
+     * @return array<string,string>
+     */
+    public function customMetadataTranslations(string $language): array
+    {
+        return [];
+    }
+
+    /**
      * Additional/updated translations.
      *
      * @param string $language

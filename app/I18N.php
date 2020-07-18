@@ -312,9 +312,12 @@ class I18N
         // Add translations from custom modules (but not during setup, as we have no database/modules)
         if (!$setup) {
             $translations = app(ModuleService::class)
-                ->findByInterface(ModuleCustomInterface::class)
+                ->findByInterface(ModuleCustomInterface::class, true)
                 ->reduce(static function (array $carry, ModuleCustomInterface $item): array {
-                    return array_merge($carry, $item->customTranslations(self::$locale->languageTag()));
+                    if ($item->isEnabled()) {
+                        $carry = array_merge($carry, $item->customTranslations(self::$locale->languageTag()));
+                    }
+                    return array_merge($carry, $item->customMetadataTranslations(self::$locale->languageTag()));
                 }, $translations);
         }
 

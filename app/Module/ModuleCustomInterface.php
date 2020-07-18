@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -59,6 +59,15 @@ interface ModuleCustomInterface extends ModuleInterface
      */
     public function customModuleSupportUrl(): string;
 
+    /**
+     * Translations for module metadata. They are always loaded, even if the module is disabled.
+     *
+     * @param string $language
+     *
+     * @return array<string,string>
+     */
+    public function customMetadataTranslations(string $language): array;
+    
     /**
      * Additional/updated translations.
      *
