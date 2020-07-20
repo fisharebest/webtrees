@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeletePath;
+use Fisharebest\Webtrees\Http\RequestHandlers\MediaFileUnused;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
@@ -252,7 +253,7 @@ class MediaController extends AbstractAdminController
                     $mime_type = $data_filesystem->getMimeType($row[0]) ?: Mime::DEFAULT_TYPE;
 
                     if (str_starts_with($mime_type, 'image/')) {
-                        $url = route('unused-media-thumbnail', [
+                        $url = route(MediaFileUnused::class, [
                             'path' => $row[0],
                             'w'    => 100,
                             'h'    => 100,

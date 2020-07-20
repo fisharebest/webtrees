@@ -19,18 +19,28 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
+use League\Flysystem\Adapter\Local;
+use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
+use League\Glide\Filesystem\FileNotFoundException;
+use League\Glide\ServerFactory;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
+
 use RuntimeException;
+use Throwable;
 
 use function array_combine;
 use function array_diff;
@@ -38,18 +48,25 @@ use function array_filter;
 use function array_map;
 use function assert;
 use function dirname;
+use function explode;
+use function extension_loaded;
+use function implode;
 use function ini_get;
 use function intdiv;
 use function min;
 use function pathinfo;
 use function preg_replace;
+use function response;
 use function sha1;
 use function sort;
 use function str_contains;
+use function strlen;
 use function strtolower;
 use function strtr;
 use function substr;
 use function trim;
+
+use function view;
 
 use const PATHINFO_EXTENSION;
 use const UPLOAD_ERR_OK;
@@ -73,6 +90,8 @@ class MediaFileService
         'jpg' => 'jpeg',
         'tif' => 'tiff',
     ];
+
+    public const SUPPORTED_LIBRARIES = ['imagick', 'gd'];
 
     /**
      * What is the largest file a user may upload?
@@ -395,5 +414,89 @@ class MediaFileService
             ->mapWithKeys(static function (string $folder): array {
                 return [$folder => $folder];
             });
+    }
+
+    /**
+     * Send a replacement image, to replace one that could not be found or created.
+     *
+     * @param string $status HTTP status code or file extension
+     *
+     * @return ResponseInterface
+     */
+    public function replacementImage(string $status): ResponseInterface
+    {
+        $svg = view('errors/image-svg', ['status' => $status]);
+
+        // We can't use the actual status code, as browsers won't show images with 4xx/5xx
+        return response($svg, StatusCodeInterface::STATUS_OK, [
+            'Content-Type'   => 'image/svg+xml',
+            'Content-Length' => (string) strlen($svg),
+        ]);
+    }
+
+    /**
+     * Generate a thumbnail image for a file.
+     *
+     * @param string              $folder
+     * @param string              $file
+     * @param FilesystemInterface $filesystem
+     * @param array<string>       $params
+     *
+     * @return ResponseInterface
+     */
+    public function generateImage(string $folder, string $file, FilesystemInterface $filesystem, array $params): ResponseInterface
+    {
+        // Automatic rotation only works when the php-exif library is loaded.
+        if (!extension_loaded('exif')) {
+            $params['or'] = '0';
+        }
+
+        try {
+            $cache_path           = 'thumbnail-cache/' . $folder;
+            $cache_filesystem     = new Filesystem(new ChrootAdapter($filesystem, $cache_path));
+            $source_filesystem    = new Filesystem(new ChrootAdapter($filesystem, $folder));
+            $watermark_filesystem = new Filesystem(new Local('resources/img'));
+
+            $server = ServerFactory::create([
+                'cache'      => $cache_filesystem,
+                'driver'     => $this->graphicsDriver(),
+                'source'     => $source_filesystem,
+                'watermarks' => $watermark_filesystem,
+            ]);
+
+            // Workaround for https://github.com/thephpleague/glide/issues/227
+            $file = implode('/', array_map('rawurlencode', explode('/', $file)));
+
+            $thumbnail = $server->makeImage($file, $params);
+            $cache     = $server->getCache();
+
+            return response($cache->read($thumbnail), StatusCodeInterface::STATUS_OK, [
+                'Content-Type'   => $cache->getMimetype($thumbnail) ?: Mime::DEFAULT_TYPE,
+                'Content-Length' => (string) $cache->getSize($thumbnail),
+                'Cache-Control'  => 'public,max-age=31536000',
+            ]);
+        } catch (FileNotFoundException $ex) {
+            return $this->replacementImage((string) StatusCodeInterface::STATUS_NOT_FOUND);
+        } catch (Throwable $ex) {
+            return $this->replacementImage((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
+                ->withHeader('X-Thumbnail-Exception', $ex->getMessage());
+        }
+    }
+
+    /**
+     * Which graphics driver should we use for glide/intervention?
+     * Prefer ImageMagick
+     *
+     * @return string
+     */
+    private function graphicsDriver(): string
+    {
+        foreach (self::SUPPORTED_LIBRARIES as $library) {
+            if (extension_loaded($library)) {
+                return $library;
+            }
+        }
+
+        throw new RuntimeException('No PHP graphics library is installed.');
     }
 }

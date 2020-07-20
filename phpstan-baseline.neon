@@ -146,7 +146,11 @@ parameters:
 			path: app/Functions/FunctionsPrintFacts.php
 
 		-
-			message: "#^Binary operation \"\\.\" between array\\|string and '\n' results in an error\\.$#"
+			message:
+				"""
+					#^Binary operation "\\." between array\\|string and '
+					' results in an error\\.$#
+				"""
 			count: 2
 			path: app/Functions/FunctionsRtl.php
 
@@ -541,11 +545,6 @@ parameters:
 			path: app/Http/Controllers/GedcomFileController.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: app/Http/Controllers/MediaFileController.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\MediaFileController\\:\\:generateImage\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Http/Controllers/MediaFileController.php
@@ -607,11 +606,6 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property Fisharebest\\\\Webtrees\\\\Fact\\:\\:\\$anniv\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CalendarEvents.php
-
-		-
-			message: "#^Call to an undefined method Carbon\\\\CarbonImmutable\\:\\:julianDay\\(\\)\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/CalendarEvents.php
 
@@ -679,6 +673,11 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\IndividualPage\\:\\:getTabs\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleTabInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/IndividualPage.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/MediaFileDownload.php
 
 		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateRecord\\(\\) expects string, string\\|null given\\.$#"
@@ -1058,7 +1057,12 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-report.disable/module.php
+			path: modules_v4/example-theme.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1068,17 +1072,12 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-theme.disable/module.php
+			path: modules_v4/example-report.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
 			path: modules_v4/example-middleware.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1736,7 +1735,7 @@ parameters:
 			path: app/Report/TcpdfWrapper.php
 
 		-
-			message: "#^Cannot call method facts\\(\\) on Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
+			message: "#^Call to an undefined method Carbon\\\\CarbonImmutable\\:\\:julianDay\\(\\)\\.$#"
 			count: 2
 			path: app/Services/CalendarService.php
 

@@ -19,13 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Http\RequestHandlers\MediaFileDownload;
+use Fisharebest\Webtrees\Http\RequestHandlers\MediaFileThumbnail;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\FileNotFoundException;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
 use League\Glide\Signatures\SignatureFactory;
 
-use function extension_loaded;
 use function getimagesize;
 use function intdiv;
 use function pathinfo;
@@ -234,19 +235,11 @@ class MediaFile
     {
         // Sign the URL, to protect against mass-resize attacks.
         $glide_key = Site::getPreference('glide-key');
+
         if ($glide_key === '') {
             $glide_key = bin2hex(random_bytes(128));
             Site::setPreference('glide-key', $glide_key);
         }
-
-        if (Auth::accessLevel($this->media->tree()) > $this->media->tree()->getPreference('SHOW_NO_WATERMARK')) {
-            $mark = 'watermark.png';
-        } else {
-            $mark = '';
-        }
-
-        // Automatic rotation only works when the php-exif library is loaded.
-        $orientation = extension_loaded('exif') ? 'or' : 0;
 
         $params = [
             'xref'      => $this->media->xref(),
@@ -255,20 +248,23 @@ class MediaFile
             'w'         => $width,
             'h'         => $height,
             'fit'       => $fit,
-            'mark'      => $mark,
-            'markh'     => '100h',
-            'markw'     => '100w',
-            'markpos'   => 'center',
-            'markalpha' => 25,
-            'or'        => $orientation,
+            'or'        => 'or',
             'q'         => 45,
         ];
 
-        $signature = SignatureFactory::create($glide_key)->generateSignature('', $params);
+        if (Auth::accessLevel($this->media->tree()) > $this->media->tree()->getPreference('SHOW_NO_WATERMARK')) {
+            $params += [
+                'mark'      => 'watermark.png',
+                'markh'     => '100h',
+                'markw'     => '100w',
+                'markpos'   => 'center',
+                'markalpha' => 25,
+            ];
+        }
 
-        $params = ['route' => '/media-thumbnail', 's' => $signature] + $params;
+        $params['s'] = SignatureFactory::create($glide_key)->generateSignature('', $params);
 
-        return route('media-thumbnail', $params);
+        return route(MediaFileThumbnail::class, $params);
     }
 
     /**
@@ -301,7 +297,7 @@ class MediaFile
      */
     public function downloadUrl(string $disposition): string
     {
-        return route('media-download', [
+        return route(MediaFileDownload::class, [
             'xref'        => $this->media->xref(),
             'tree'        => $this->media->tree()->name(),
             'fact_id'     => $this->fact_id,
