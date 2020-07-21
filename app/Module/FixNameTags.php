@@ -184,18 +184,27 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
      */
     private function updateGedcom(Fact $fact): string
     {
-        $gedcom = $fact->gedcom();
+        $gedcom    = $fact->gedcom();
+        $converted = '';
 
-        foreach (self::CONVERT as $tag => $type) {
+        $tags = implode('|', array_keys(self::CONVERT));
+
+        while (preg_match('/\n2 (' . $tags . ') (.+)((?:\n[3-9].*)*)/', $gedcom, $match)) {
+            $type = self::CONVERT[$match[1]];
             if ($type !== '') {
                 $type = "\n2 TYPE " . $type;
             }
+            $gedcom = str_replace($match[0], '', $gedcom);
 
-            while (preg_match('/\n2 ' . $tag . ' (.+)(?:\n[3-9].*)*/', $gedcom, $match)) {
-                $gedcom = str_replace($match[0], '', $gedcom) . "\n1 NAME " . $match[1] . $type;
-            }
+            $subtags = strtr($match[3], [
+                "\n3" => "\n2",
+                "\n4" => "\n3",
+                "\n5" => "\n4",
+                "\n6" => "\n5",
+            ]);
+            $converted .= "\n1 NAME " . $match[2] . $type . $subtags;
         }
 
-        return $gedcom;
+        return $gedcom . $converted;
     }
 }
