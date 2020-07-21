@@ -68,50 +68,62 @@ class Subnet implements RangeInterface
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @see \IPLib\Range\RangeInterface::__toString()
+     */
+    public function __toString()
+    {
+        return $this->toString();
+    }
+
+    /**
      * Try get the range instance starting from its string representation.
      *
      * @param string|mixed $range
+     * @param bool $supportNonDecimalIPv4 set to true to support parsing non decimal (that is, octal and hexadecimal) IPv4 addresses
      *
      * @return static|null
      */
-    public static function fromString($range)
+    public static function fromString($range, $supportNonDecimalIPv4 = false)
     {
-        $result = null;
-        if (is_string($range)) {
-            $parts = explode('/', $range);
-            if (count($parts) === 2) {
-                $address = Factory::addressFromString($parts[0]);
-                if ($address !== null) {
-                    if (preg_match('/^[0-9]{1,9}$/', $parts[1])) {
-                        $networkPrefix = (int) $parts[1];
-                        if ($networkPrefix >= 0) {
-                            $addressBytes = $address->getBytes();
-                            $totalBytes = count($addressBytes);
-                            $numDifferentBits = $totalBytes * 8 - $networkPrefix;
-                            if ($numDifferentBits >= 0) {
-                                $numSameBytes = $networkPrefix >> 3;
-                                $sameBytes = array_slice($addressBytes, 0, $numSameBytes);
-                                $differentBytesStart = ($totalBytes === $numSameBytes) ? array() : array_fill(0, $totalBytes - $numSameBytes, 0);
-                                $differentBytesEnd = ($totalBytes === $numSameBytes) ? array() : array_fill(0, $totalBytes - $numSameBytes, 255);
-                                $startSameBits = $networkPrefix % 8;
-                                if ($startSameBits !== 0) {
-                                    $varyingByte = $addressBytes[$numSameBytes];
-                                    $differentBytesStart[0] = $varyingByte & bindec(str_pad(str_repeat('1', $startSameBits), 8, '0', STR_PAD_RIGHT));
-                                    $differentBytesEnd[0] = $differentBytesStart[0] + bindec(str_repeat('1', 8 - $startSameBits));
-                                }
-                                $result = new static(
-                                    Factory::addressFromBytes(array_merge($sameBytes, $differentBytesStart)),
-                                    Factory::addressFromBytes(array_merge($sameBytes, $differentBytesEnd)),
-                                    $networkPrefix
-                                );
-                            }
-                        }
-                    }
-                }
-            }
+        if (!is_string($range)) {
+            return null;
+        }
+        $parts = explode('/', $range);
+        if (count($parts) !== 2) {
+            return null;
+        }
+        $address = Factory::addressFromString($parts[0], true, true, $supportNonDecimalIPv4);
+        if ($address === null) {
+            return null;
+        }
+        if (!preg_match('/^[0-9]{1,9}$/', $parts[1])) {
+            return null;
+        }
+        $networkPrefix = (int) $parts[1];
+        $addressBytes = $address->getBytes();
+        $totalBytes = count($addressBytes);
+        $numDifferentBits = $totalBytes * 8 - $networkPrefix;
+        if ($numDifferentBits < 0) {
+            return null;
+        }
+        $numSameBytes = $networkPrefix >> 3;
+        $sameBytes = array_slice($addressBytes, 0, $numSameBytes);
+        $differentBytesStart = ($totalBytes === $numSameBytes) ? array() : array_fill(0, $totalBytes - $numSameBytes, 0);
+        $differentBytesEnd = ($totalBytes === $numSameBytes) ? array() : array_fill(0, $totalBytes - $numSameBytes, 255);
+        $startSameBits = $networkPrefix % 8;
+        if ($startSameBits !== 0) {
+            $varyingByte = $addressBytes[$numSameBytes];
+            $differentBytesStart[0] = $varyingByte & bindec(str_pad(str_repeat('1', $startSameBits), 8, '0', STR_PAD_RIGHT));
+            $differentBytesEnd[0] = $differentBytesStart[0] + bindec(str_repeat('1', 8 - $startSameBits));
         }
 
-        return $result;
+        return new static(
+            Factory::addressFromBytes(array_merge($sameBytes, $differentBytesStart)),
+            Factory::addressFromBytes(array_merge($sameBytes, $differentBytesEnd)),
+            $networkPrefix
+        );
     }
 
     /**
@@ -121,17 +133,7 @@ class Subnet implements RangeInterface
      */
     public function toString($long = false)
     {
-        return $this->fromAddress->toString($long).'/'.$this->networkPrefix;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @see \IPLib\Range\RangeInterface::__toString()
-     */
-    public function __toString()
-    {
-        return $this->toString();
+        return $this->fromAddress->toString($long) . '/' . $this->networkPrefix;
     }
 
     /**

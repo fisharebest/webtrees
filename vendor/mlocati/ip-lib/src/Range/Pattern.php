@@ -40,7 +40,7 @@ class Pattern implements RangeInterface
     /**
      * The type of the range of this IP range.
      *
-     * @var int|null|false false if this range crosses multiple range types, null if yet to be determined
+     * @var int|false|null false if this range crosses multiple range types, null if yet to be determined
      */
     protected $rangeType;
 
@@ -59,50 +59,68 @@ class Pattern implements RangeInterface
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @see \IPLib\Range\RangeInterface::__toString()
+     */
+    public function __toString()
+    {
+        return $this->toString();
+    }
+
+    /**
      * Try get the range instance starting from its string representation.
      *
      * @param string|mixed $range
+     * @param bool $supportNonDecimalIPv4 set to true to support parsing non decimal (that is, octal and hexadecimal) IPv4 addresses
      *
      * @return static|null
      */
-    public static function fromString($range)
+    public static function fromString($range, $supportNonDecimalIPv4 = false)
     {
-        $result = null;
-        if (is_string($range) && strpos($range, '*') !== false) {
-            $matches = null;
-            if ($range === '*.*.*.*') {
-                $result = new static(IPv4::fromString('0.0.0.0'), IPv4::fromString('255.255.255.255'), 4);
-            } elseif (strpos($range, '.') !== false && preg_match('/^[^*]+((?:\.\*)+)$/', $range, $matches)) {
-                $asterisksCount = strlen($matches[1]) >> 1;
-                if ($asterisksCount > 0) {
-                    $missingDots = 3 - substr_count($range, '.');
-                    if ($missingDots > 0) {
-                        $range .= str_repeat('.*', $missingDots);
-                        $asterisksCount += $missingDots;
-                    }
-                }
-                $fromAddress = IPv4::fromString(str_replace('*', '0', $range));
-                if ($fromAddress !== null) {
-                    $fixedBytes = array_slice($fromAddress->getBytes(), 0, -$asterisksCount);
-                    $otherBytes = array_fill(0, $asterisksCount, 255);
-                    $toAddress = IPv4::fromBytes(array_merge($fixedBytes, $otherBytes));
-                    $result = new static($fromAddress, $toAddress, $asterisksCount);
-                }
-            } elseif ($range === '*:*:*:*:*:*:*:*') {
-                $result = new static(IPv6::fromString('::'), IPv6::fromString('ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff'), 8);
-            } elseif (strpos($range, ':') !== false && preg_match('/^[^*]+((?::\*)+)$/', $range, $matches)) {
-                $asterisksCount = strlen($matches[1]) >> 1;
-                $fromAddress = IPv6::fromString(str_replace('*', '0', $range));
-                if ($fromAddress !== null) {
-                    $fixedWords = array_slice($fromAddress->getWords(), 0, -$asterisksCount);
-                    $otherWords = array_fill(0, $asterisksCount, 0xffff);
-                    $toAddress = IPv6::fromWords(array_merge($fixedWords, $otherWords));
-                    $result = new static($fromAddress, $toAddress, $asterisksCount);
+        if (!is_string($range) || strpos($range, '*') === false) {
+            return null;
+        }
+        if ($range === '*.*.*.*') {
+            return new static(IPv4::fromString('0.0.0.0'), IPv4::fromString('255.255.255.255'), 4);
+        }
+        if ($range === '*:*:*:*:*:*:*:*') {
+            return new static(IPv6::fromString('::'), IPv6::fromString('ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff'), 8);
+        }
+        $matches = null;
+        if (strpos($range, '.') !== false && preg_match('/^[^*]+((?:\.\*)+)$/', $range, $matches)) {
+            $asterisksCount = strlen($matches[1]) >> 1;
+            if ($asterisksCount > 0) {
+                $missingDots = 3 - substr_count($range, '.');
+                if ($missingDots > 0) {
+                    $range .= str_repeat('.*', $missingDots);
+                    $asterisksCount += $missingDots;
                 }
             }
+            $fromAddress = IPv4::fromString(str_replace('*', '0', $range), true, $supportNonDecimalIPv4);
+            if ($fromAddress === null) {
+                return null;
+            }
+            $fixedBytes = array_slice($fromAddress->getBytes(), 0, -$asterisksCount);
+            $otherBytes = array_fill(0, $asterisksCount, 255);
+            $toAddress = IPv4::fromBytes(array_merge($fixedBytes, $otherBytes));
+
+            return new static($fromAddress, $toAddress, $asterisksCount);
+        }
+        if (strpos($range, ':') !== false && preg_match('/^[^*]+((?::\*)+)$/', $range, $matches)) {
+            $asterisksCount = strlen($matches[1]) >> 1;
+            $fromAddress = IPv6::fromString(str_replace('*', '0', $range));
+            if ($fromAddress === null) {
+                return null;
+            }
+            $fixedWords = array_slice($fromAddress->getWords(), 0, -$asterisksCount);
+            $otherWords = array_fill(0, $asterisksCount, 0xffff);
+            $toAddress = IPv6::fromWords(array_merge($fixedWords, $otherWords));
+
+            return new static($fromAddress, $toAddress, $asterisksCount);
         }
 
-        return $result;
+        return null;
     }
 
     /**
@@ -136,7 +154,7 @@ class Pattern implements RangeInterface
                     $bytes = array_pad($bytes, 16, 1);
                     $address = IPv6::fromBytes($bytes);
                     $before = substr($address->toString(false), 0, -strlen(':101') * $this->asterisksCount);
-                    $result = $before.str_repeat(':*', $this->asterisksCount);
+                    $result = $before . str_repeat(':*', $this->asterisksCount);
                 }
                 break;
             default:
@@ -144,16 +162,6 @@ class Pattern implements RangeInterface
         }
 
         return $result;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @see \IPLib\Range\RangeInterface::__toString()
-     */
-    public function __toString()
-    {
-        return $this->toString();
     }
 
     /**

@@ -10,6 +10,13 @@ use IPLib\Range\RangeInterface;
 interface AddressInterface
 {
     /**
+     * Get the short string representation of this address.
+     *
+     * @return string
+     */
+    public function __toString();
+
+    /**
      * Get the string representation of this address.
      *
      * @param bool $long set to true to have a long/full representation, false otherwise
@@ -19,13 +26,6 @@ interface AddressInterface
      * @example If $long is true, you'll get '0000:0000:0000:0000:0000:0000:0000:0001', '::1' otherwise.
      */
     public function toString($long = false);
-
-    /**
-     * Get the short string representation of this address.
-     *
-     * @return string
-     */
-    public function __toString();
 
     /**
      * Get the byte list of the IP address.

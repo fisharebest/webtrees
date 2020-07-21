@@ -104,7 +104,7 @@ class AssignedRange
      *
      * @param \IPLib\Range\RangeInterface $range
      *
-     * @return int|null|false return NULL of the range is fully outside this range; false if it's partly crosses this range (or it contains mixed types); a \IPLib\Range\Type::T_ constant otherwise
+     * @return int|false|null return NULL of the range is fully outside this range; false if it's partly crosses this range (or it contains mixed types); a \IPLib\Range\Type::T_ constant otherwise
      */
     public function getRangeType(RangeInterface $range)
     {

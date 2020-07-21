@@ -62,40 +62,65 @@ class IPv4 implements AddressInterface
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @see \IPLib\Address\AddressInterface::__toString()
+     */
+    public function __toString()
+    {
+        return $this->address;
+    }
+
+    /**
      * Parse a string and returns an IPv4 instance if the string is valid, or null otherwise.
      *
      * @param string|mixed $address the address to parse
      * @param bool $mayIncludePort set to false to avoid parsing addresses with ports
+     * @param bool $supportNonDecimalIPv4 set to true to support parsing non decimal (that is, octal and hexadecimal) IPv4 addresses
      *
      * @return static|null
      */
-    public static function fromString($address, $mayIncludePort = true)
+    public static function fromString($address, $mayIncludePort = true, $supportNonDecimalIPv4 = false)
     {
-        $result = null;
-        if (is_string($address) && strpos($address, '.')) {
-            $rx = '([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})';
-            if ($mayIncludePort) {
-                $rx .= '(?::\d+)?';
-            }
-            $matches = null;
-            if (preg_match('/^'.$rx.'$/', $address, $matches)) {
-                $ok = true;
-                $nums = array();
-                for ($i = 1; $ok && $i <= 4; ++$i) {
-                    $ok = false;
-                    $n = (int) $matches[$i];
-                    if ($n >= 0 && $n <= 255) {
-                        $ok = true;
-                        $nums[] = (string) $n;
+        if (!is_string($address) || !strpos($address, '.')) {
+            return null;
+        }
+        $rxChunk = '0?[0-9]{1,3}';
+        if ($supportNonDecimalIPv4) {
+            $rxChunk = "(?:0[Xx]0*[0-9A-Fa-f]{1,2})|(?:{$rxChunk})";
+        }
+        $rx = "0*?({$rxChunk})\.0*?({$rxChunk})\.0*?({$rxChunk})\.0*?({$rxChunk})";
+        if ($mayIncludePort) {
+            $rx .= '(?::\d+)?';
+        }
+        $matches = null;
+        if (!preg_match('/^' . $rx . '$/', $address, $matches)) {
+            return null;
+        }
+        $nums = array();
+        for ($i = 1; $i <= 4; $i++) {
+            $s = $matches[$i];
+            if ($supportNonDecimalIPv4) {
+                if (stripos($s, '0x') === 0) {
+                    $n = hexdec(substr($s, 2));
+                } elseif ($s[0] === '0') {
+                    if (!preg_match('/^[0-7]+$/', $s)) {
+                        return null;
                     }
+                    $n = octdec(substr($s, 1));
+                } else {
+                    $n = (int) $s;
                 }
-                if ($ok) {
-                    $result = new static(implode('.', $nums));
-                }
+            } else {
+                $n = (int) $s;
             }
+            if ($n < 0 || $n > 255) {
+                return null;
+            }
+            $nums[] = (string) $n;
         }
 
-        return $result;
+        return new static(implode('.', $nums));
     }
 
     /**
@@ -138,13 +163,51 @@ class IPv4 implements AddressInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Get the octal representation of this IP address.
      *
-     * @see \IPLib\Address\AddressInterface::__toString()
+     * @param bool $long
+     *
+     * @return string
+     *
+     * @example if $long == false: if the decimal representation is '0.7.8.255': '0.7.010.0377'
+     * @example if $long == true: if the decimal representation is '0.7.8.255': '0000.0007.0010.0377'
      */
-    public function __toString()
+    public function toOctal($long = false)
     {
-        return $this->address;
+        $chunks = array();
+        foreach ($this->getBytes() as $byte) {
+            if ($long) {
+                $chunks[] = sprintf('%04o', $byte);
+            } else {
+                $chunks[] = '0' . decoct($byte);
+            }
+        }
+
+        return implode('.', $chunks);
+    }
+
+    /**
+     * Get the hexadecimal representation of this IP address.
+     *
+     * @param bool $long
+     *
+     * @return string
+     *
+     * @example if $long == false: if the decimal representation is '0.9.10.255': '0.9.0xa.0xff'
+     * @example if $long == true: if the decimal representation is '0.9.10.255': '0x00.0x09.0x0a.0xff'
+     */
+    public function toHexadecimal($long = false)
+    {
+        $chunks = array();
+        foreach ($this->getBytes() as $byte) {
+            if ($long) {
+                $chunks[] = sprintf('0x%02x', $byte);
+            } else {
+                $chunks[] = '0x' . dechex($byte);
+            }
+        }
+
+        return implode('.', $chunks);
     }
 
     /**
@@ -200,6 +263,8 @@ class IPv4 implements AddressInterface
                 '0.0.0.0/8' => array(RangeType::T_THISNETWORK, array('0.0.0.0/32' => RangeType::T_UNSPECIFIED)),
                 // RFC 5735
                 '10.0.0.0/8' => array(RangeType::T_PRIVATENETWORK),
+                // RFC 6598
+                '100.64.0.0/10' => array(RangeType::T_CGNAT),
                 // RFC 5735
                 '127.0.0.0/8' => array(RangeType::T_LOOPBACK),
                 // RFC 5735
@@ -261,7 +326,7 @@ class IPv4 implements AddressInterface
     }
 
     /**
-     * Create an IPv6 representation of this address.
+     * Create an IPv6 representation of this address (in 6to4 notation).
      *
      * @return \IPLib\Address\IPv6
      */
@@ -269,7 +334,17 @@ class IPv4 implements AddressInterface
     {
         $myBytes = $this->getBytes();
 
-        return IPv6::fromString('2002:'.sprintf('%02x', $myBytes[0]).sprintf('%02x', $myBytes[1]).':'.sprintf('%02x', $myBytes[2]).sprintf('%02x', $myBytes[3]).'::');
+        return IPv6::fromString('2002:' . sprintf('%02x', $myBytes[0]) . sprintf('%02x', $myBytes[1]) . ':' . sprintf('%02x', $myBytes[2]) . sprintf('%02x', $myBytes[3]) . '::');
+    }
+
+    /**
+     * Create an IPv6 representation of this address (in IPv6 IPv4-mapped notation).
+     *
+     * @return \IPLib\Address\IPv6
+     */
+    public function toIPv6IPv4Mapped()
+    {
+        return IPv6::fromBytes(array_merge(array(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff), $this->getBytes()));
     }
 
     /**
@@ -309,7 +384,7 @@ class IPv4 implements AddressInterface
     {
         $overflow = false;
         $bytes = $this->getBytes();
-        for ($i = count($bytes) - 1; $i >= 0; --$i) {
+        for ($i = count($bytes) - 1; $i >= 0; $i--) {
             if ($bytes[$i] === 255) {
                 if ($i === 0) {
                     $overflow = true;
@@ -317,7 +392,7 @@ class IPv4 implements AddressInterface
                 }
                 $bytes[$i] = 0;
             } else {
-                ++$bytes[$i];
+                $bytes[$i]++;
                 break;
             }
         }
@@ -334,7 +409,7 @@ class IPv4 implements AddressInterface
     {
         $overflow = false;
         $bytes = $this->getBytes();
-        for ($i = count($bytes) - 1; $i >= 0; --$i) {
+        for ($i = count($bytes) - 1; $i >= 0; $i--) {
             if ($bytes[$i] === 0) {
                 if ($i === 0) {
                     $overflow = true;
@@ -342,7 +417,7 @@ class IPv4 implements AddressInterface
                 }
                 $bytes[$i] = 255;
             } else {
-                --$bytes[$i];
+                $bytes[$i]--;
                 break;
             }
         }

@@ -99,6 +99,13 @@ class Type
     const T_PUBLIC = 13;
 
     /**
+     * Carrier-grade NAT address.
+     *
+     * @var int
+     */
+    const T_CGNAT = 14;
+
+    /**
      * Get the name of a type.
      *
      * @param int $type
@@ -134,6 +141,8 @@ class Type
                  return 'For use in private networks';
             case static::T_PUBLIC:
                  return 'Public address';
+            case static::T_CGNAT:
+                return 'Carrier-grade NAT';
             default:
                 return $type === null ? 'Unknown type' : sprintf('Unknown type (%s)', $type);
         }

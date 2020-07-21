@@ -1,8 +1,9 @@
 [![TravisCI Build Status](https://api.travis-ci.org/mlocati/ip-lib.svg?branch=master)](https://travis-ci.org/mlocati/ip-lib)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/mlocati/ip-lib?branch=master&svg=true)](https://ci.appveyor.com/project/mlocati/ip-lib)
-[![StyleCI Status](https://styleci.io/repos/54139375/shield)](https://styleci.io/repos/54139375)
+[![Coding Style checks status](https://github.com/mlocati/ip-lib/workflows/coding%20style/badge.svg)](https://github.com/mlocati/ip-lib/actions?query=workflow%3A%22coding+style%22)
 [![Coverage Status](https://coveralls.io/repos/github/mlocati/ip-lib/badge.svg?branch=master)](https://coveralls.io/github/mlocati/ip-lib?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mlocati/ip-lib/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mlocati/ip-lib/?branch=master)
+![Packagist Downloads](https://img.shields.io/packagist/dm/mlocati/ip-lib)
 
 # IPLib - Handle IPv4, IPv6 and IP ranges
 
@@ -33,7 +34,7 @@ Simply run `composer require mlocati/ip-lib`, or add these lines to your `compos
 
 ```json
 "require": {
-    "mlocati/ip-lib": "1.*"
+    "mlocati/ip-lib": "^1"
 }
 ```
 
@@ -229,6 +230,30 @@ echo \IPLib\Range\Type::getName($type);
 // 'Unknown type'
 ```
 
+
+### Converting IP addresses
+
+This library supports converting IPv4 to/from IPv6 addresses using the [6to4 notation](https://tools.ietf.org/html/rfc3056) or the [IPv4-mapped notation](https://tools.ietf.org/html/rfc4291#section-2.5.5.2):
+
+```php
+$ipv4 = \IPLib\Factory::addressFromString('1.2.3.4');
+
+// 6to4 notation
+$ipv6 = $ipv4->toIPv6();
+// This will print "2002:102:304::"
+echo (string) $ipv6;
+// This will print "1.2.3.4"
+echo $ipv6->toIPv4();
+
+// IPv4-mapped notation
+$ipv6 = $ipv4->toIPv6IPv4Mapped();
+// This will print "::ffff:1.2.3.4"
+echo (string) $ipv6;
+// This will print "1.2.3.4"
+echo $ipv6_6to4->toIPv4();
+```
+
+
 ### Converting IP ranges
 
 This library supports IPv4/IPv6 ranges in pattern format (eg. `192.168.*.*`) and in CIDR/subnet format (eg. `192.168.0.0/16`), and it offers a way to convert between the two formats:
@@ -309,3 +334,42 @@ $searchQuery->execute(array(
 $rows = $searchQuery->fetchAll();
 $searchQuery->closeCursor();
 ```
+
+## Non decimal notation
+
+IPv4 addresses are usually expresses in decimal notation, for example `192.168.0.1`.
+
+By the way, for historical reasons, widely used libraries (and browsers) accept IPv4 addresses with numbers in octal and/or hexadecimal format.
+So, for example, these addresses are all equivalent to `192.168.0.1`:
+
+- `0xC0.0xA8.0x0.0x01` (only hexadecimal)
+- `0300.0250.00.01` (only octal)
+- `192.0250.0.0x01` (decimal, octal and hexadecimal numbers)
+
+(try it: if you browse to [`http://0177.0.0.0x1`](http://0177.0.0.0x1), your browser will try to browse `http://127.0.0.1`).
+
+This library optionally accepts those alternative syntaxes:
+
+```php
+var_export(\IPLib\Factory::addressFromString('0177.0.0.0x1'));
+// Prints NULL since by default the library doesn't accept non-decimal addresses
+
+var_export(\IPLib\Factory::addressFromString('0177.0.0.0x1', true, true, false));
+// Prints NULL since the fourth argument is false
+
+var_export((string) \IPLib\Factory::addressFromString('0177.0.0.0x1', true, true, true));
+// Prints '127.0.0.1' since the fourth argument is true
+
+var_export(\IPLib\Factory::rangeFromString('0177.0.0.0x1/32'));
+// Prints NULL since by default the library doesn't accept non-decimal addresses
+
+var_export(\IPLib\Factory::rangeFromString('0177.0.0.0x1/32', false));
+// Prints NULL since the second argument is false
+
+var_export((string) \IPLib\Factory::rangeFromString('0177.0.0.0x1/32', true));
+// Prints '127.0.0.1/32' since the second argument is true
+```
+
+## Do you want to really say thank you?
+
+You can offer me a [monthly coffee](https://github.com/sponsors/mlocati) or a [one-time coffee](https://paypal.me/mlocati) :wink:

@@ -15,14 +15,15 @@ class Factory
      * @param string $address the address to parse
      * @param bool $mayIncludePort set to false to avoid parsing addresses with ports
      * @param bool $mayIncludeZoneID set to false to avoid parsing IPv6 addresses with zone IDs (see RFC 4007)
+     * @param bool $supportNonDecimalIPv4 set to true to support parsing non decimal (that is, octal and hexadecimal) IPv4 addresses
      *
      * @return \IPLib\Address\AddressInterface|null
      */
-    public static function addressFromString($address, $mayIncludePort = true, $mayIncludeZoneID = true)
+    public static function addressFromString($address, $mayIncludePort = true, $mayIncludeZoneID = true, $supportNonDecimalIPv4 = false)
     {
         $result = null;
         if ($result === null) {
-            $result = Address\IPv4::fromString($address, $mayIncludePort);
+            $result = Address\IPv4::fromString($address, $mayIncludePort, $supportNonDecimalIPv4);
         }
         if ($result === null) {
             $result = Address\IPv6::fromString($address, $mayIncludePort, $mayIncludeZoneID);
@@ -55,20 +56,21 @@ class Factory
      * Parse an IP range string.
      *
      * @param string $range
+     * @param bool $supportNonDecimalIPv4 set to true to support parsing non decimal (that is, octal and hexadecimal) IPv4 addresses
      *
      * @return \IPLib\Range\RangeInterface|null
      */
-    public static function rangeFromString($range)
+    public static function rangeFromString($range, $supportNonDecimalIPv4 = false)
     {
         $result = null;
         if ($result === null) {
-            $result = Range\Subnet::fromString($range);
+            $result = Range\Subnet::fromString($range, $supportNonDecimalIPv4);
         }
         if ($result === null) {
-            $result = Range\Pattern::fromString($range);
+            $result = Range\Pattern::fromString($range, $supportNonDecimalIPv4);
         }
         if ($result === null) {
-            $result = Range\Single::fromString($range);
+            $result = Range\Single::fromString($range, $supportNonDecimalIPv4);
         }
 
         return $result;
@@ -79,10 +81,11 @@ class Factory
      *
      * @param string|\IPLib\Address\AddressInterface $from
      * @param string|\IPLib\Address\AddressInterface $to
+     * @param bool $supportNonDecimalIPv4 set to true to support parsing non decimal (that is, octal and hexadecimal) IPv4 addresses
      *
      * @return \IPLib\Range\RangeInterface|null
      */
-    public static function rangeFromBoundaries($from, $to)
+    public static function rangeFromBoundaries($from, $to, $supportNonDecimalIPv4 = false)
     {
         $result = null;
         $invalid = false;
@@ -92,7 +95,7 @@ class Factory
                 if ($$param === '') {
                     $$param = null;
                 } else {
-                    $$param = static::addressFromString($$param);
+                    $$param = static::addressFromString($$param, true, true, $supportNonDecimalIPv4);
                     if ($$param === null) {
                         $invalid = true;
                     }
@@ -135,7 +138,7 @@ class Factory
                     $toBytes = $to->getBytes();
                     $numBytes = count($fromBytes);
                     $sameBits = 0;
-                    for ($byteIndex = 0; $byteIndex < $numBytes; ++$byteIndex) {
+                    for ($byteIndex = 0; $byteIndex < $numBytes; $byteIndex++) {
                         $fromByte = $fromBytes[$byteIndex];
                         $toByte = $toBytes[$byteIndex];
                         if ($fromByte === $toByte) {
@@ -146,7 +149,7 @@ class Factory
                             break;
                         }
                     }
-                    $result = static::rangeFromString($from->toString(true).'/'.(string) $sameBits);
+                    $result = static::rangeFromString($from->toString(true) . '/' . (string) $sameBits);
                 }
             }
         }

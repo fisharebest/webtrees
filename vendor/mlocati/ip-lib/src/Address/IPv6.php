@@ -72,6 +72,16 @@ class IPv6 implements AddressInterface
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @see \IPLib\Address\AddressInterface::__toString()
+     */
+    public function __toString()
+    {
+        return $this->toString();
+    }
+
+    /**
      * Parse a string and returns an IPv6 instance if the string is valid, or null otherwise.
      *
      * @param string|mixed $address the address to parse
@@ -95,12 +105,12 @@ class IPv6 implements AddressInterface
                 }
             }
             if (preg_match('/^((?:[0-9a-f]*:+)+)(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$/i', $address, $matches)) {
-                $address6 = static::fromString($matches[1].'0:0', false);
+                $address6 = static::fromString($matches[1] . '0:0', false);
                 if ($address6 !== null) {
                     $address4 = IPv4::fromString($matches[2], false);
                     if ($address4 !== null) {
                         $bytes4 = $address4->getBytes();
-                        $address6->longAddress = substr($address6->longAddress, 0, -9).sprintf('%02x%02x:%02x%02x', $bytes4[0], $bytes4[1], $bytes4[2], $bytes4[3]);
+                        $address6->longAddress = substr($address6->longAddress, 0, -9) . sprintf('%02x%02x:%02x%02x', $bytes4[0], $bytes4[1], $bytes4[2], $bytes4[3]);
                         $result = $address6;
                     }
                 }
@@ -161,7 +171,7 @@ class IPv6 implements AddressInterface
         $result = null;
         if (count($bytes) === 16) {
             $address = '';
-            for ($i = 0; $i < 16; ++$i) {
+            for ($i = 0; $i < 16; $i++) {
                 if ($i !== 0 && $i % 2 === 0) {
                     $address .= ':';
                 }
@@ -193,7 +203,7 @@ class IPv6 implements AddressInterface
         $result = null;
         if (count($words) === 8) {
             $chunks = array();
-            for ($i = 0; $i < 8; ++$i) {
+            for ($i = 0; $i < 8; $i++) {
                 $word = $words[$i];
                 if (is_int($word) && $word >= 0 && $word <= 0xffff) {
                     $chunks[] = sprintf('%04x', $word);
@@ -223,7 +233,7 @@ class IPv6 implements AddressInterface
             if ($this->shortAddress === null) {
                 if (strpos($this->longAddress, '0000:0000:0000:0000:0000:ffff:') === 0) {
                     $lastBytes = array_slice($this->getBytes(), -4);
-                    $this->shortAddress = '::ffff:'.implode('.', $lastBytes);
+                    $this->shortAddress = '::ffff:' . implode('.', $lastBytes);
                 } else {
                     $chunks = array_map(
                         function ($word) {
@@ -233,10 +243,10 @@ class IPv6 implements AddressInterface
                     );
                     $shortAddress = implode(':', $chunks);
                     $matches = null;
-                    for ($i = 8; $i > 1; --$i) {
-                        $search = '(?:^|:)'.rtrim(str_repeat('0:', $i), ':').'(?:$|:)';
-                        if (preg_match('/^(.*?)'.$search.'(.*)$/', $shortAddress, $matches)) {
-                            $shortAddress = $matches[1].'::'.$matches[2];
+                    for ($i = 8; $i > 1; $i--) {
+                        $search = '(?:^|:)' . rtrim(str_repeat('0:', $i), ':') . '(?:$|:)';
+                        if (preg_match('/^(.*?)' . $search . '(.*)$/', $shortAddress, $matches)) {
+                            $shortAddress = $matches[1] . '::' . $matches[2];
                             break;
                         }
                     }
@@ -247,16 +257,6 @@ class IPv6 implements AddressInterface
         }
 
         return $result;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @see \IPLib\Address\AddressInterface::__toString()
-     */
-    public function __toString()
-    {
-        return $this->toString();
     }
 
     /**
@@ -420,12 +420,16 @@ class IPv6 implements AddressInterface
      */
     public function toIPv4()
     {
-        $result = null;
         if (strpos($this->longAddress, '2002:') === 0) {
-            $result = IPv4::fromBytes(array_slice($this->getBytes(), 2, 4));
+            // 6to4
+            return IPv4::fromBytes(array_slice($this->getBytes(), 2, 4));
+        }
+        if (strpos($this->longAddress, '0000:0000:0000:0000:0000:ffff:') === 0) {
+            // IPv4-mapped IPv6 addresses
+            return IPv4::fromBytes(array_slice($this->getBytes(), -4));
         }
 
-        return $result;
+        return null;
     }
 
     /**
@@ -483,7 +487,7 @@ class IPv6 implements AddressInterface
     {
         $overflow = false;
         $words = $this->getWords();
-        for ($i = count($words) - 1; $i >= 0; --$i) {
+        for ($i = count($words) - 1; $i >= 0; $i--) {
             if ($words[$i] === 0xffff) {
                 if ($i === 0) {
                     $overflow = true;
@@ -491,7 +495,7 @@ class IPv6 implements AddressInterface
                 }
                 $words[$i] = 0;
             } else {
-                ++$words[$i];
+                $words[$i]++;
                 break;
             }
         }
@@ -508,7 +512,7 @@ class IPv6 implements AddressInterface
     {
         $overflow = false;
         $words = $this->getWords();
-        for ($i = count($words) - 1; $i >= 0; --$i) {
+        for ($i = count($words) - 1; $i >= 0; $i--) {
             if ($words[$i] === 0) {
                 if ($i === 0) {
                     $overflow = true;
@@ -516,7 +520,7 @@ class IPv6 implements AddressInterface
                 }
                 $words[$i] = 0xffff;
             } else {
-                --$words[$i];
+                $words[$i]--;
                 break;
             }
         }

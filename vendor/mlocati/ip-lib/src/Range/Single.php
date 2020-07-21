@@ -31,16 +31,27 @@ class Single implements RangeInterface
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @see \IPLib\Range\RangeInterface::__toString()
+     */
+    public function __toString()
+    {
+        return $this->address->__toString();
+    }
+
+    /**
      * Try get the range instance starting from its string representation.
      *
      * @param string|mixed $range
+     * @param bool $supportNonDecimalIPv4 set to true to support parsing non decimal (that is, octal and hexadecimal) IPv4 addresses
      *
      * @return static|null
      */
-    public static function fromString($range)
+    public static function fromString($range, $supportNonDecimalIPv4 = false)
     {
         $result = null;
-        $address = Factory::addressFromString($range);
+        $address = Factory::addressFromString($range, true, true, $supportNonDecimalIPv4);
         if ($address !== null) {
             $result = new static($address);
         }
@@ -68,16 +79,6 @@ class Single implements RangeInterface
     public function toString($long = false)
     {
         return $this->address->toString($long);
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @see \IPLib\Range\RangeInterface::__toString()
-     */
-    public function __toString()
-    {
-        return $this->address->__toString();
     }
 
     /**
