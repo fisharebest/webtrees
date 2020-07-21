@@ -508,15 +508,11 @@ class CalendarService
             $query->where('d_day', '=', $anniv->day());
         }
 
-        $query->where(static function (Builder $query): void {
-            $query
-                ->where('d_mon', '=', 7)
-                ->orWhere(static function (Builder $query): void {
-                    $query
-                        ->where('d_mon', '=', 6)
-                        ->where(new Expression('(7 * d_year + 1 % 19)'), '<', 7);
-                });
-        });
+        if ($anniv->isLeapYear()) {
+            $query->where('d_mon', '=', 7);
+        } else {
+            $query->whereIn('d_mon', [6, 7]);
+        }
     }
 
     /**
