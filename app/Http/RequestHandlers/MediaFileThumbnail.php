@@ -91,6 +91,7 @@ class MediaFileThumbnail implements RequestHandlerInterface
                 }
 
                 // Validate HTTP signature
+                unset($params['route']);
                 $params['tree'] = $media_file->media()->tree()->name();
 
                 try {
