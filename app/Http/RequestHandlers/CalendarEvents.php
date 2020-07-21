@@ -208,7 +208,7 @@ class CalendarEvents implements RequestHandlerInterface
             echo '<td class="wt-page-options-value">';
             if ($d < 1 || $d > $days_in_month) {
                 if (count($cal_facts[0]) > 0) {
-                    echo '<span class="cal_day">', I18N::translate('Day not set'), '</span><br style="clear: both;">';
+                    echo '<div class="cal_day">', I18N::translate('Day not set'), '</div>';
                     echo '<div class="small" style="height: 180px; overflow: auto;">';
                     echo $this->calendarListText($cal_facts[0], '', '', $tree);
                     echo '</div>';
@@ -218,6 +218,7 @@ class CalendarEvents implements RequestHandlerInterface
                 // Format the day number using the calendar
                 $tmp   = new Date($cal_date->format("%@ {$d} %O %E"));
                 $d_fmt = $tmp->minimumDate()->format('%j');
+                echo '<div class="d-flex d-flex justify-content-between">';
                 if ($d === $today->day && $cal_date->month === $today->month) {
                     echo '<span class="cal_day current_day">', $d_fmt, '</span>';
                 } else {
@@ -255,7 +256,8 @@ class CalendarEvents implements RequestHandlerInterface
                         break;
                     }
                 }
-                echo '<br style="clear: both;"><div class="small" style="height: 180px; overflow: auto;">';
+                echo '</div>';
+                echo '<div class="small" style="height: 180px; overflow: auto;">';
                 echo $this->calendarListText($cal_facts[$d], '', '', $tree);
                 echo '</div>';
             }
