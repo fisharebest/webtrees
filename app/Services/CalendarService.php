@@ -504,6 +504,10 @@ class CalendarService
             $query->where('d_day', '<=', 1);
         } elseif ($anniv->day() === $anniv->daysInMonth()) {
             $query->where('d_day', '>=', $anniv->daysInMonth());
+            if ($anniv->daysInMonth() === 29) {
+                // On short months, 30th Adar shown on 1st Nissan
+                $query->where('d_day', '<>', 30);
+            }
         } else {
             $query->where('d_day', '=', $anniv->day());
         }
