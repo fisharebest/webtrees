@@ -545,11 +545,6 @@ parameters:
 			path: app/Http/Controllers/GedcomFileController.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\MediaFileController\\:\\:generateImage\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Controllers/MediaFileController.php
-
-		-
 			message: "#^Parameter \\#1 \\$path of method Psr\\\\Http\\\\Message\\\\UriInterface\\:\\:withPath\\(\\) expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/Middleware/BaseUrl.php

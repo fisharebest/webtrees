@@ -38,7 +38,6 @@ use League\Glide\ServerFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
-
 use RuntimeException;
 use Throwable;
 
@@ -65,7 +64,6 @@ use function strtolower;
 use function strtr;
 use function substr;
 use function trim;
-
 use function view;
 
 use const PATHINFO_EXTENSION;
