@@ -376,6 +376,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
         var npfx = document.querySelector("[name=NPFX]").value;
         var givn = document.querySelector("[name=GIVN]").value;
         var spfx = document.querySelector("[name=SPFX]").value;
+        var surn = document.querySelector("[name=SURN]").value;
         var nsfx = document.querySelector("[name=NSFX]").value;
         var name = generate_name();
 
@@ -412,9 +413,9 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
                 if (ip[i].id.indexOf("_MARNM_SURN") === 0) {
                     var msurn = "";
                     if (val !== "") {
-                        if (webtrees.detectScript(val) === webtrees.detectScript(name)) {
+                        if (surn === "" || webtrees.detectScript(val) === webtrees.detectScript(surn)) {
                             // Same script as NAME field?
-                            msurn = webtrees.buildNameFromParts(npfx, givn, spfx, val, nsfx);
+                            msurn = name.replace(/\/.*\//, "/" + val + "/");
                         } else if (heb !== "" && webtrees.detectScript(val) === webtrees.detectScript(heb)) {
                             // Same script as _HEB field?
                             msurn = heb.replace(/\/.*\//, "/" + val + "/");
