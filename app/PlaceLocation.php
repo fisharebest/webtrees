@@ -25,8 +25,6 @@ use Illuminate\Support\Collection;
 use stdClass;
 
 use function app;
-use function max;
-use function min;
 use function preg_split;
 
 /**
@@ -37,7 +35,7 @@ class PlaceLocation
     /** @var string e.g. "Westminster, London, England" */
     private $location_name;
 
-    /** @var Collection|string[] The parts of a location name, e.g. ["Westminster", "London", "England"] */
+    /** @var Collection<string> The parts of a location name, e.g. ["Westminster", "London", "England"] */
     private $parts;
 
     /**

@@ -23,16 +23,13 @@ use Exception;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Services\GedcomService;
-use Fisharebest\Webtrees\Services\TreeService;
-use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\JoinClause;
-use Illuminate\Database\QueryException;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -46,14 +43,11 @@ use function array_combine;
 use function array_filter;
 use function array_merge;
 use function array_pad;
-use function array_pop;
 use function array_reverse;
-use function array_shift;
 use function array_slice;
 use function assert;
 use function count;
 use function e;
-use function explode;
 use function fclose;
 use function fgetcsv;
 use function fopen;
@@ -86,48 +80,14 @@ class LocationController extends AbstractAdminController
     /** @var GedcomService */
     private $gedcom_service;
 
-    /** @var TreeService */
-    private $tree_service;
-
     /**
      * Dependency injection.
      *
      * @param GedcomService $gedcom_service
-     * @param TreeService   $tree_service
      */
-    public function __construct(GedcomService $gedcom_service, TreeService $tree_service)
+    public function __construct(GedcomService $gedcom_service)
     {
-        $this->gedcom_service = $gedcom_service;
-        $this->tree_service   = $tree_service;
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function mapData(ServerRequestInterface $request): ResponseInterface
-    {
-        $parent_id   = (int) ($request->getQueryParams()['parent_id'] ?? 0);
-        $hierarchy   = $this->getHierarchy($parent_id);
-        $title       = I18N::translate('Geographic data');
-        $breadcrumbs = [
-            route(ControlPanel::class) => I18N::translate('Control panel'),
-            route('map-data')          => $title,
-        ];
-
-        foreach ($hierarchy as $row) {
-            $breadcrumbs[route('map-data', ['parent_id' => $row->pl_id])] = $row->pl_place;
-        }
-        $breadcrumbs[] = array_pop($breadcrumbs);
-
-        return $this->viewResponse('admin/locations', [
-            'title'       => $title,
-            'breadcrumbs' => $breadcrumbs,
-            'parent_id'   => $parent_id,
-            'placelist'   => $this->getPlaceListLocation($parent_id),
-            'tree_titles' => $this->tree_service->titles(),
-        ]);
+        $this->gedcom_service   = $gedcom_service;
     }
 
     /**
@@ -155,120 +115,6 @@ class LocationController extends AbstractAdminController
         }
 
         return array_reverse($arr);
-    }
-
-    /**
-     * Find all of the places in the hierarchy
-     *
-     * @param int $id
-     *
-     * @return stdClass[]
-     */
-    private function getPlaceListLocation(int $id): array
-    {
-        // We know the id of the place in the placelocation table,
-        // now get the id of the same place in the places table
-        if ($id === 0) {
-            $fqpn = '';
-        } else {
-            $hierarchy = $this->getHierarchy($id);
-            $fqpn      = ', ' . $hierarchy[0]->fqpn;
-        }
-
-        $rows = DB::table('placelocation')
-            ->where('pl_parent_id', '=', $id)
-            ->orderBy(new Expression('pl_place /*! COLLATE ' . I18N::collation() . ' */'))
-            ->get();
-
-        $list = [];
-        foreach ($rows as $row) {
-            // Find/count places without co-ordinates
-            $children = $this->childLocationStatus((int) $row->pl_id);
-            $active   = $this->isLocationActive($row->pl_place . $fqpn);
-
-            if (!$active) {
-                $badge = 'danger';
-            } elseif ((int) $children->no_coord > 0) {
-                $badge = 'warning';
-            } elseif ((int) $children->child_count > 0) {
-                $badge = 'info';
-            } else {
-                $badge = 'secondary';
-            }
-
-            $row->child_count = (int) $children->child_count;
-            $row->badge       = $badge;
-
-            $list[] = $row;
-        }
-
-        return $list;
-    }
-
-    /**
-     * How many children does place have?  How many have co-ordinates?
-     *
-     * @param int $parent_id
-     *
-     * @return stdClass
-     */
-    private function childLocationStatus(int $parent_id): stdClass
-    {
-        $prefix = DB::connection()->getTablePrefix();
-
-        $expression =
-            $prefix . 'p0.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p0.pl_lati, '') = '' OR " .
-            $prefix . 'p1.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p1.pl_lati, '') = '' OR " .
-            $prefix . 'p2.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p2.pl_lati, '') = '' OR " .
-            $prefix . 'p3.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p3.pl_lati, '') = '' OR " .
-            $prefix . 'p4.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p4.pl_lati, '') = '' OR " .
-            $prefix . 'p5.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p5.pl_lati, '') = '' OR " .
-            $prefix . 'p6.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p6.pl_lati, '') = '' OR " .
-            $prefix . 'p7.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p7.pl_lati, '') = '' OR " .
-            $prefix . 'p8.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p8.pl_lati, '') = '' OR " .
-            $prefix . 'p9.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p9.pl_lati, '') = ''";
-
-        return DB::table('placelocation AS p0')
-            ->leftJoin('placelocation AS p1', 'p1.pl_parent_id', '=', 'p0.pl_id')
-            ->leftJoin('placelocation AS p2', 'p2.pl_parent_id', '=', 'p1.pl_id')
-            ->leftJoin('placelocation AS p3', 'p3.pl_parent_id', '=', 'p2.pl_id')
-            ->leftJoin('placelocation AS p4', 'p4.pl_parent_id', '=', 'p3.pl_id')
-            ->leftJoin('placelocation AS p5', 'p5.pl_parent_id', '=', 'p4.pl_id')
-            ->leftJoin('placelocation AS p6', 'p6.pl_parent_id', '=', 'p5.pl_id')
-            ->leftJoin('placelocation AS p7', 'p7.pl_parent_id', '=', 'p6.pl_id')
-            ->leftJoin('placelocation AS p8', 'p8.pl_parent_id', '=', 'p7.pl_id')
-            ->leftJoin('placelocation AS p9', 'p9.pl_parent_id', '=', 'p8.pl_id')
-            ->where('p0.pl_parent_id', '=', $parent_id)
-            ->select([new Expression('COUNT(*) AS child_count'), new Expression('SUM(' . $expression . ') AS no_coord')])
-            ->first();
-    }
-
-    /**
-     * Is a place name used in any tree?
-     *
-     * @param string $place_name
-     *
-     * @return bool
-     */
-    private function isLocationActive(string $place_name): bool
-    {
-        $places = explode(Gedcom::PLACE_SEPARATOR, $place_name);
-
-        $query = DB::table('places AS p0')
-            ->where('p0.p_place', '=', $places[0])
-            ->select(['p0.*']);
-
-        array_shift($places);
-
-        foreach ($places as $n => $place) {
-            $query->join('places AS p' . ($n + 1), static function (JoinClause $join) use ($n, $place): void {
-                $join
-                    ->on('p' . ($n + 1) . '.p_id', '=', 'p' . $n . '.p_parent_id')
-                    ->where('p' . ($n + 1) . '.p_place', '=', $place);
-            });
-        }
-
-        return $query->exists();
     }
 
     /**
@@ -306,11 +152,11 @@ class LocationController extends AbstractAdminController
 
         $breadcrumbs = [
             route(ControlPanel::class) => I18N::translate('Control panel'),
-            route('map-data')          => I18N::translate('Geographic data'),
+            route(MapDataList::class)  => I18N::translate('Geographic data'),
         ];
 
         foreach ($hierarchy as $row) {
-            $breadcrumbs[route('map-data', ['parent_id' => $row->pl_id])] = e($row->pl_place);
+            $breadcrumbs[route(MapDataList::class, ['parent_id' => $row->pl_id])] = e($row->pl_place);
         }
 
         if ($place_id === 0) {
@@ -401,43 +247,7 @@ class LocationController extends AbstractAdminController
             'success'
         );
 
-        $url = route('map-data', ['parent_id' => $parent_id]);
-
-        return redirect($url);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function mapDataDelete(ServerRequestInterface $request): ResponseInterface
-    {
-        $place_id  = (int) $request->getQueryParams()['place_id'];
-        $parent_id = (int) $request->getQueryParams()['parent_id'];
-
-        try {
-            DB::table('placelocation')
-                ->where('pl_id', '=', $place_id)
-                ->delete();
-        } catch (Exception $ex) {
-            FlashMessages::addMessage(
-                I18N::translate('Location not removed: this location contains sub-locations'),
-                'danger'
-            );
-        }
-        // If after deleting there are no more places at this level then go up a level
-        $children = DB::table('placelocation')
-            ->where('pl_parent_id', '=', $parent_id)
-            ->count();
-
-        if ($children === 0) {
-            $parent_id = (int) DB::table('placelocation')
-                ->where('pl_id', '=', $parent_id)
-                ->value('pl_parent_id');
-        }
-
-        $url = route('map-data', ['parent_id' => $parent_id]);
+        $url = route(MapDataList::class, ['parent_id' => $parent_id]);
 
         return redirect($url);
     }
@@ -684,7 +494,7 @@ class LocationController extends AbstractAdminController
             'fqpn',
         ];
 
-        $url = route('map-data', ['parent_id' => 0]);
+        $url = route(MapDataList::class, ['parent_id' => 0]);
 
         $fp = false;
 
@@ -781,124 +591,6 @@ class LocationController extends AbstractAdminController
             I18N::translate('locations updated: %s, locations added: %s', I18N::number($updated), I18N::number($added)),
             'info'
         );
-
-        return redirect($url);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function importLocationsFromTree(ServerRequestInterface $request): ResponseInterface
-    {
-        $params = (array) $request->getParsedBody();
-
-        $ged  = $params['ged'] ?? '';
-        $tree = $this->tree_service->all()->get($ged);
-        assert($tree instanceof Tree);
-
-        // Get all the places from the places table ...
-        $places = DB::table('places AS p0')
-            ->leftJoin('places AS p1', 'p1.p_id', '=', 'p0.p_parent_id')
-            ->leftJoin('places AS p2', 'p2.p_id', '=', 'p1.p_parent_id')
-            ->leftJoin('places AS p3', 'p3.p_id', '=', 'p2.p_parent_id')
-            ->leftJoin('places AS p4', 'p4.p_id', '=', 'p3.p_parent_id')
-            ->leftJoin('places AS p5', 'p5.p_id', '=', 'p4.p_parent_id')
-            ->leftJoin('places AS p6', 'p6.p_id', '=', 'p5.p_parent_id')
-            ->leftJoin('places AS p7', 'p7.p_id', '=', 'p6.p_parent_id')
-            ->leftJoin('places AS p8', 'p8.p_id', '=', 'p7.p_parent_id')
-            ->where('p0.p_file', '=', $tree->id())
-            ->select([
-                'p0.p_place AS place0',
-                'p1.p_place AS place1',
-                'p2.p_place AS place2',
-                'p3.p_place AS place3',
-                'p4.p_place AS place4',
-                'p5.p_place AS place5',
-                'p6.p_place AS place6',
-                'p7.p_place AS place7',
-                'p8.p_place AS place8',
-            ])
-            ->get()
-            ->map(static function (stdClass $row): string {
-                return implode(', ', array_filter((array) $row));
-            });
-
-        // ... and the placelocation table
-        $locations = DB::table('placelocation AS p0')
-            ->leftJoin('placelocation AS p1', 'p1.pl_id', '=', 'p0.pl_parent_id')
-            ->leftJoin('placelocation AS p2', 'p2.pl_id', '=', 'p1.pl_parent_id')
-            ->leftJoin('placelocation AS p3', 'p3.pl_id', '=', 'p2.pl_parent_id')
-            ->leftJoin('placelocation AS p4', 'p4.pl_id', '=', 'p3.pl_parent_id')
-            ->leftJoin('placelocation AS p5', 'p5.pl_id', '=', 'p4.pl_parent_id')
-            ->leftJoin('placelocation AS p6', 'p6.pl_id', '=', 'p5.pl_parent_id')
-            ->leftJoin('placelocation AS p7', 'p7.pl_id', '=', 'p6.pl_parent_id')
-            ->leftJoin('placelocation AS p8', 'p8.pl_id', '=', 'p7.pl_parent_id')
-            ->select([
-                'p0.pl_id',
-                'p0.pl_place AS place0',
-                'p1.pl_place AS place1',
-                'p2.pl_place AS place2',
-                'p3.pl_place AS place3',
-                'p4.pl_place AS place4',
-                'p5.pl_place AS place5',
-                'p6.pl_place AS place6',
-                'p7.pl_place AS place7',
-                'p8.pl_place AS place8',
-            ])
-            ->get()
-            ->map(static function (stdClass $row): stdClass {
-                $row->place = implode(', ', array_filter(array_slice((array) $row, 1)));
-
-                return $row;
-            })
-            ->pluck('place', 'pl_id');
-
-        // Compare the two ...
-        $diff = $places->diff($locations);
-
-        // ... and process the differences
-        $inserted = 0;
-        if ($diff->isNotEmpty()) {
-            $nextRecordId = 1 + (int) DB::table('placelocation')->max('pl_id');
-
-            foreach ($diff as $place) {
-                // For Westminster, London, England, we must also create England and London, England
-                $place_parts = explode(', ', $place);
-                $count       = count($place_parts);
-
-                try {
-                    $parent_id = 0;
-                    for ($i = $count - 1; $i >= 0; $i--) {
-                        $parent   = implode(', ', array_slice($place_parts, $i));
-                        $place_id = $locations->search($parent);
-
-                        if ($place_id === false) {
-                            DB::table('placelocation')->insert([
-                                'pl_id'        => $nextRecordId,
-                                'pl_parent_id' => $parent_id,
-                                'pl_level'     => $count - $i,
-                                'pl_place'     => mb_substr($place_parts[$i], 0, 120),
-                            ]);
-
-                            $parent_id             = $nextRecordId;
-                            $locations[$parent_id] = $parent;
-                            $inserted++;
-                            $nextRecordId++;
-                        } else {
-                            $parent_id = $place_id;
-                        }
-                    }
-                } catch (QueryException $ex) {
-                    // Duplicates are expected due to collation differences.  e.g. Quebec / Québec
-                }
-            }
-        }
-
-        FlashMessages::addMessage(I18N::plural('%s location has been imported.', '%s locations have been imported.', $inserted, I18N::number($inserted)), 'success');
-
-        $url = route('map-data');
 
         return redirect($url);
     }

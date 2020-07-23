@@ -1,7 +1,18 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataDelete;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
 use Fisharebest\Webtrees\Webtrees;
+
+/**
+ * @var array<stdClass>      $active
+ * @var array<string,string> $breadcrumbs
+ * @var int                  $parent_id
+ * @var array<mixed>         $placelist
+ * @var string               $title
+ */
 
 ?>
 
@@ -19,6 +30,7 @@ use Fisharebest\Webtrees\Webtrees;
             <th><?= I18N::translate('Flag') ?> </th>
             -->
             <th><?= I18N::translate('Edit') ?></th>
+            <th><?= I18N::translate('Facts and events') ?></th>
             <th><?= I18N::translate('Delete') ?></th>
         </tr>
     </thead>
@@ -27,11 +39,20 @@ use Fisharebest\Webtrees\Webtrees;
     <?php foreach ($placelist as $place) : ?>
         <tr>
             <th scope="row">
-                <a href="<?= e(route('map-data', ['parent_id' => $place->pl_id])) ?>">
+                <a href="<?= e(route(MapDataList::class, ['parent_id' => $place->pl_id])) ?>">
                     <?= e($place->pl_place) ?>
-                    <span class="badge badge-pill badge-<?= $place->badge ?>">
-                        <?= I18N::number($place->child_count) ?>
-                    </span>
+                    <?php if ($place->no_coord > 0): ?>
+                        <span class="badge badge-pill badge-secondary">
+                            <?= view('icons/warning') ?>
+                            <?= I18N::number($place->no_coord) ?>
+                            /
+                            <?= I18N::number($place->child_count) ?>
+                        </span>
+                    <?php elseif ($place->child_count > 0): ?>
+                        <span class="badge badge-pill badge-secondary">
+                            <?= I18N::number($place->child_count) ?>
+                        </span>
+                    <?php endif ?>
                 </a>
             </th>
 
@@ -69,19 +90,37 @@ use Fisharebest\Webtrees\Webtrees;
             </td>
 
             <td>
-                <?php if ($place->child_count === 0) : ?>
-                    <form method="post" action="<?= e(route('map-data-delete', ['parent_id' => $parent_id, 'place_id' => $place->pl_id])) ?>"
-                          data-confirm="<?= I18N::translate('Remove this location?') ?>"
-                          onsubmit="return confirm(this.dataset.confirm)">
+                <?php if (array_key_exists($place->pl_place, $active)): ?>
+                    <?php if (count($active[$place->pl_place]) === 1): ?>
+                        <a class="btn btn-link" href="<?= e(route(PlaceHierarchyListModule::class, ['tree' => $active[$place->pl_place][0]->tree_name, 'place_id' => $active[$place->pl_place][0]->p_id, 'action2' => 'hierarchy-e'])) ?>">
+                            <?= e($active[$place->pl_place][0]->tree_title) ?>
+                        </a>
+                    <?php else: ?>
+                        <div class="dropdown">
+                            <a class="btn btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?= I18N::plural('%s tree', '%s trees', count($active[$place->pl_place]), I18N::number(count($active[$place->pl_place]))) ?>
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <?php foreach ($active[$place->pl_place] as $link): ?>
+                                    <a class="dropdown-item" href="<?= e(route(PlaceHierarchyListModule::class, ['tree' => $link->tree_name, 'place_id' => $link->p_id])) ?>">
+                                        <?= e($link->tree_title) ?>
+                                    </a>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
+                    <?php endif ?>
+                <?php endif ?>
+            </td>
+
+            <td>
+                <?php if (!array_key_exists($place->pl_place, $active)): ?>
+                    <form method="post" action="<?= e(route(MapDataDelete::class, ['place_id' => $place->pl_id])) ?>">
                         <?= csrf_field() ?>
-                        <button type="submit" class="btn btn-danger" aria-label="<?= I18N::translate('delete') ?>">
+                        <button type="submit" class="btn btn-danger" aria-label="<?= I18N::translate('delete') ?>" data-confirm="<?= I18N::translate('Remove this location?') ?>">
                             <?= view('icons/delete') ?>
                         </button>
                     </form>
-                <?php else : ?>
-                    <button type="button" class="btn btn-danger" disabled>
-                        <?= view('icons/delete') ?>
-                    </button>
                 <?php endif ?>
             </td>
         </tr>
@@ -119,23 +158,3 @@ use Fisharebest\Webtrees\Webtrees;
         </tr>
     </tfoot>
 </table>
-
-<form method="post" action="<?= e(route('locations-import-from-tree')) ?>">
-    <?= csrf_field() ?>
-
-    <div class="form-group row">
-        <label class="form-control-plaintext col-sm-4" for="tree">
-            <?= I18N::translate('Import all places from a family tree') ?>
-        </label>
-        <div class="col-sm-6">
-            <?= view('components/select', ['name' => 'ged', 'selected' => '', 'options' => $tree_titles]) ?>
-        </div>
-        <div class="col-sm-2">
-            <button type="submit" class="btn btn-primary">
-                <?= view('icons/upload') ?>
-                <?= /* I18N: A button label. */
-                I18N::translate('import') ?>
-            </button>
-        </div>
-    </div>
-</form>

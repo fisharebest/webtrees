@@ -1,12 +1,13 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
 
 ?>
 
-<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route('map-data')  => I18N::translate('Geographic data'), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(MapDataList::class)  => I18N::translate('Geographic data'), $title]]) ?>
 
 <h3><?= $title ?></h3>
 
@@ -66,7 +67,7 @@ use Fisharebest\Webtrees\View;
                 <?= I18N::translate('Import') ?>
             </legend>
             <div class="col-sm-8">
-                <?= view('components/select', ['name' => 'import-options', 'selected' => '', 'options' => ['addupdate' => I18N::translate('Add new, and update existing records'), 'add' => I18N::translate('Only add new records'), 'update' => I18N::translate('Only update existing records')]]) ?>
+                <?= view('components/select', ['name' => 'import-options', 'selected' => '', 'options' => ['update' => I18N::translate('Only update existing records'), 'add' => I18N::translate('Only add new records'), 'addupdate' => I18N::translate('Add new, and update existing records')]]) ?>
             </div>
         </div>
     </fieldset>
@@ -78,6 +79,10 @@ use Fisharebest\Webtrees\View;
                 <?= view('icons/save') ?>
                 <?= I18N::translate('continue') ?>
             </button>
+            <a href="<?= e(route(MapDataList::class)) ?>">
+                <?= view('icons/cancel') ?>
+                <?= /* I18N: A button label. */ I18N::translate('cancel') ?>
+            </a>
         </div>
     </div>
 </form>
