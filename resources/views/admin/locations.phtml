@@ -4,6 +4,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\MapDataDelete;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
+use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
 
 /**
@@ -20,7 +21,14 @@ use Fisharebest\Webtrees\Webtrees;
 
 <h1><?= $title ?></h1>
 
-<table class="table table-bordered table-striped table-sm table-hover">
+<p>
+    <label>
+        <input id="hide-unused-locations" type="checkbox" data-toggle="collapse" data-target=".unused-location">
+        <?= I18N::translate('Hide unused locations') ?>
+    </label>
+</p>
+
+<table class="table table-bordered table-striped table-sm table-hover wt-table-locations">
     <thead class="thead-dark">
         <tr>
             <th><?= I18N::translate('Place') ?></th>
@@ -37,7 +45,7 @@ use Fisharebest\Webtrees\Webtrees;
 
     <tbody>
     <?php foreach ($placelist as $place) : ?>
-        <tr>
+        <tr class="<?= $active[$place->pl_place] ?? null ? '' : 'unused-location collapse show' ?>">
             <th scope="row">
                 <a href="<?= e(route(MapDataList::class, ['parent_id' => $place->pl_id])) ?>">
                     <?= e($place->pl_place) ?>
@@ -158,3 +166,11 @@ use Fisharebest\Webtrees\Webtrees;
         </tr>
     </tfoot>
 </table>
+
+<?php View::push('javascript') ?>
+<script>
+  'use strict';
+
+  webtrees.persistentToggle("hide-unused-locations");
+</script>
+<?php View::endpush() ?>
