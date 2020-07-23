@@ -156,7 +156,7 @@ use Fisharebest\Webtrees\View;
             defaultMarkGeocode: false,
             expand: 'click',
             showResultIcons: true,
-            query: '<?= e($location->locationName()) ?>',
+            query: <?= json_encode($location->locationName()) ?>,
             placeholder: <?= json_encode(I18N::translate('Place')) ?>,
             errorMessage: <?= json_encode(I18N::translate('Nothing found.')) ?>,
             iconLabel: <?= json_encode(I18N::translate('Search')) ?>
