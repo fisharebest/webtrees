@@ -62,7 +62,6 @@ class MapDataList implements RequestHandlerInterface
     {
         $parent_id   = (int) ($request->getQueryParams()['parent_id'] ?? 0);
         $title       = I18N::translate('Geographic data');
-        $breadcrumbs = [];
         $parent      = $this->map_data_service->findById($parent_id);
 
         // Request for a non-existent location?
@@ -73,7 +72,9 @@ class MapDataList implements RequestHandlerInterface
         // Automatically import any new/missing places.
         $this->map_data_service->importMissingChildren($parent);
 
-        $tmp = clone $parent;
+        $breadcrumbs = [$parent->locationName()];
+
+        $tmp = $parent->parent();
 
         while ($tmp->id() !== 0) {
             $breadcrumbs[route(__CLASS__, ['parent_id' => $tmp->id()])] = $tmp->locationName();
