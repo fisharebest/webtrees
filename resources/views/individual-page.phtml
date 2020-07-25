@@ -158,7 +158,7 @@ use Illuminate\Support\Collection;
   // Bootstrap tabs - load content dynamically using AJAX
   $('a[data-toggle="tab"][data-href]').on('show.bs.tab', function () {
       let target = $(this.hash + ':empty');
-      if (target) {
+      if (target.length > 0) {
           // Start the download immediately...
           let download = fetch(this.dataset.href);
 
