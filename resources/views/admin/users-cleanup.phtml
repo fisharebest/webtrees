@@ -19,6 +19,9 @@ use Fisharebest\Webtrees\User;
         <?php foreach ($inactive_users as $user) : ?>
             <tr>
                 <td>
+                    <input type="checkbox" name="delete[]" value="<?= $user->id() ?>" aria-label="<?= e($user->userName()) ?>">
+                </td>
+                <td>
                     <a href="<?= e(route('admin-users-edit', ['user_id' => $user->id()])) ?>">
                         <?= e($user->userName()) ?>
                         —
@@ -29,14 +32,14 @@ use Fisharebest\Webtrees\User;
                     <?= I18N::translate('User’s account has been inactive too long: ') ?>
                     <?= view('components/datetime', ['timestamp' => Carbon::createFromTimestamp(max((int) $user->getPreference(User::PREF_TIMESTAMP_REGISTERED), (int) $user->getPreference(User::PREF_TIMESTAMP_ACTIVE)))]) ?>
                 </td>
-                <td>
-                    <input type="checkbox" name="delete[]" value="<?= $user->id() ?>">
-                </td>
             </tr>
         <?php endforeach ?>
 
         <?php foreach ($unverified_users as $user) : ?>
             <tr>
+                <td>
+                    <input type="checkbox" name="delete[]" value="<?= $user->id() ?>" aria-label="<?= e($user->userName()) ?>">
+                </td>
                 <td>
                     <a href="<?= e(route('admin-users-edit', ['user_id' => $user->id()])) ?>">
                         <?= e($user->userName()) ?>
@@ -49,9 +52,6 @@ use Fisharebest\Webtrees\User;
                     <?php if ($user->getPreference(User::PREF_IS_ACCOUNT_APPROVED) !== '1') : ?>
                         <?= I18N::translate('User not verified by administrator.') ?>
                     <?php endif ?>
-                </td>
-                <td>
-                    <input type="checkbox" name="delete[]" value="<?= $user->id() ?>">
                 </td>
             </tr>
         <?php endforeach ?>
