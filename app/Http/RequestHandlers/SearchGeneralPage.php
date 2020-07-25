@@ -40,6 +40,8 @@ use function redirect;
 use function str_replace;
 use function trim;
 
+use const PREG_SET_ORDER;
+
 /**
  * Search for genealogy data
  */
@@ -197,18 +199,20 @@ class SearchGeneralPage implements RequestHandlerInterface
         $search_terms = [];
 
         // Words in double quotes stay together
-        while (preg_match('/"([^"]+)"/', $query, $match)) {
+        preg_match_all('/"([^"]+)"/', $query, $matches, PREG_SET_ORDER);
+        foreach ($matches as $match) {
             $search_terms[] = trim($match[1]);
-            $query          = str_replace($match[0], '', $query);
+            // Remove this string from the search query
+            $query = strtr($query, [$match[0] => '']);
         }
 
         // Treat CJK characters as separate words, not as characters.
         $query = preg_replace('/\p{Han}/u', '$0 ', $query);
 
         // Other words get treated separately
-        while (preg_match('/[\S]+/', $query, $match)) {
-            $search_terms[] = trim($match[0]);
-            $query          = str_replace($match[0], '', $query);
+        preg_match_all('/[\S]+/', $query, $matches, PREG_SET_ORDER);
+        foreach ($matches as $match) {
+            $search_terms[] = $match[0];
         }
 
         return $search_terms;
