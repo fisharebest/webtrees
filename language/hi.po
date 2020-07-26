@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-30 07:30+0000\n"
+"PO-Revision-Date: 2020-07-31 06:37+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
@@ -3660,7 +3660,7 @@ msgstr "बच्चे"
 #: modules_v3/ahnentafel_report/report.xml:388
 #: modules_v3/descendancy_report/report.xml:480
 msgid "Child of "
-msgstr ""
+msgstr "वल्द "
 
 #. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:352
@@ -17297,7 +17297,7 @@ msgstr "बेटी"
 
 #: modules_v3/descendancy_report/report.xml:226
 msgid "daughter of"
-msgstr ""
+msgstr "वल्द"
 
 #: app/Functions/Functions.php:824
 msgctxt "child’s wife"
@@ -20263,7 +20263,7 @@ msgstr "बेटे"
 
 #: modules_v3/descendancy_report/report.xml:295
 msgid "son of"
-msgstr ""
+msgstr "वल्द"
 
 #: app/Functions/Functions.php:818
 msgctxt "child’s husband"
