@@ -59,7 +59,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
 {
     use ModuleListTrait;
 
-    protected const ROUTE_URL  = '/tree/{tree}/individual-list';
+    protected const ROUTE_URL = '/tree/{tree}/individual-list';
 
     /** @var LocalizationService */
     private $localization_service;
@@ -67,7 +67,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     /**
      * IndividualListModule constructor.
      *
-     * @param LocalizationService  $localization_service
+     * @param LocalizationService $localization_service
      */
     public function __construct(LocalizationService $localization_service)
     {
@@ -182,10 +182,10 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     }
 
     /**
-     * @param Tree                   $tree
-     * @param UserInterface          $user
-     * @param array<string>          $params
-     * @param bool                   $families
+     * @param Tree          $tree
+     * @param UserInterface $user
+     * @param array<string> $params
+     * @param bool          $families
      *
      * @return ResponseInterface
      */
@@ -199,7 +199,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         $alpha = $params['alpha'] ?? '';
 
         // All individuals with this surname
-        $surname = $params['surname'] ??  '';
+        $surname = $params['surname'] ?? '';
 
         // All individuals
         $show_all = $params['show_all'] ?? 'no';
@@ -240,7 +240,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                 $surname = '';
                 $legend  = I18N::translate('All') . ', ' . e($falpha) . '…';
                 $params  = [
-                    'tree'      => $tree->name(),
+                    'tree'     => $tree->name(),
                     'show_all' => 'yes',
                 ];
                 $show    = 'indi';
@@ -248,11 +248,11 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                 $alpha   = '';
                 $surname = '';
                 $legend  = I18N::translate('All');
+                $show    = $params['show'] ?? 'surn';
                 $params  = [
                     'tree'     => $tree->name(),
                     'show_all' => 'yes',
                 ];
-                $show    = $params['show'] ?? 'surn';
             }
         } elseif ($surname !== '') {
             $alpha    = $this->localization_service->initialLetter($surname, I18N::locale()); // so we can highlight the initial letter
@@ -285,7 +285,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             $legend   = I18N::translateContext('Unknown surname', '…');
             $params   = [
                 'alpha' => $alpha,
-                'tree'   => $tree->name(),
+                'tree'  => $tree->name(),
             ];
             $show     = 'indi'; // SURN list makes no sense here
         } elseif ($alpha === ',') {
@@ -293,17 +293,17 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             $legend   = I18N::translate('None');
             $params   = [
                 'alpha' => $alpha,
-                'tree'   => $tree->name(),
+                'tree'  => $tree->name(),
             ];
             $show     = 'indi'; // SURN list makes no sense here
         } elseif ($alpha !== '') {
             $show_all = 'no';
             $legend   = e($alpha) . '…';
+            $show     = $params['show'] ?? 'surn';
             $params   = [
                 'alpha' => $alpha,
-                'tree'   => $tree->name(),
+                'tree'  => $tree->name(),
             ];
-            $show     = $params['show'] ?? 'surn';
         } else {
             $show_all = 'no';
             $legend   = '…';
