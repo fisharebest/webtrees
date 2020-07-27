@@ -1470,17 +1470,17 @@
     },
     {
         "name": "league/flysystem",
-        "version": "1.0.69",
-        "version_normalized": "1.0.69.0",
+        "version": "1.0.70",
+        "version_normalized": "1.0.70.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/flysystem.git",
-            "reference": "7106f78428a344bc4f643c233a94e48795f10967"
+            "reference": "585824702f534f8d3cf7fab7225e8466cc4b7493"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/7106f78428a344bc4f643c233a94e48795f10967",
-            "reference": "7106f78428a344bc4f643c233a94e48795f10967",
+            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/585824702f534f8d3cf7fab7225e8466cc4b7493",
+            "reference": "585824702f534f8d3cf7fab7225e8466cc4b7493",
             "shasum": ""
         },
         "require": {
@@ -1491,7 +1491,7 @@
             "league/flysystem-sftp": "<1.0.6"
         },
         "require-dev": {
-            "phpspec/phpspec": "^3.4",
+            "phpspec/phpspec": "^3.4 || ^4.0 || ^5.0 || ^6.0",
             "phpunit/phpunit": "^5.7.26"
         },
         "suggest": {
@@ -1510,7 +1510,7 @@
             "spatie/flysystem-dropbox": "Allows you to use Dropbox storage",
             "srmklive/flysystem-dropbox-v2": "Allows you to use Dropbox storage for PHP 5 applications"
         },
-        "time": "2020-05-18T15:13:39+00:00",
+        "time": "2020-07-26T07:20:36+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1562,17 +1562,17 @@
     },
     {
         "name": "league/flysystem-cached-adapter",
-        "version": "1.0.9",
-        "version_normalized": "1.0.9.0",
+        "version": "1.1.0",
+        "version_normalized": "1.1.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/flysystem-cached-adapter.git",
-            "reference": "08ef74e9be88100807a3b92cc9048a312bf01d6f"
+            "reference": "d1925efb2207ac4be3ad0c40b8277175f99ffaff"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/flysystem-cached-adapter/zipball/08ef74e9be88100807a3b92cc9048a312bf01d6f",
-            "reference": "08ef74e9be88100807a3b92cc9048a312bf01d6f",
+            "url": "https://api.github.com/repos/thephpleague/flysystem-cached-adapter/zipball/d1925efb2207ac4be3ad0c40b8277175f99ffaff",
+            "reference": "d1925efb2207ac4be3ad0c40b8277175f99ffaff",
             "shasum": ""
         },
         "require": {
@@ -1589,7 +1589,7 @@
         "suggest": {
             "ext-phpredis": "Pure C implemented extension for PHP"
         },
-        "time": "2018-07-09T20:51:04+00:00",
+        "time": "2020-07-25T15:56:04+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -2834,17 +2834,17 @@
     },
     {
         "name": "symfony/cache",
-        "version": "v4.4.10",
-        "version_normalized": "4.4.10.0",
+        "version": "v4.4.11",
+        "version_normalized": "4.4.11.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/cache.git",
-            "reference": "e12aad53e6b9fa80a3ca1d043b6dde9449b4f924"
+            "reference": "b9ae3539a0ecd7bcffe426f7a91401489c069834"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/cache/zipball/e12aad53e6b9fa80a3ca1d043b6dde9449b4f924",
-            "reference": "e12aad53e6b9fa80a3ca1d043b6dde9449b4f924",
+            "url": "https://api.github.com/repos/symfony/cache/zipball/b9ae3539a0ecd7bcffe426f7a91401489c069834",
+            "reference": "b9ae3539a0ecd7bcffe426f7a91401489c069834",
             "shasum": ""
         },
         "require": {
@@ -2876,7 +2876,7 @@
             "symfony/dependency-injection": "^3.4|^4.1|^5.0",
             "symfony/var-dumper": "^4.4|^5.0"
         },
-        "time": "2020-06-09T14:07:49+00:00",
+        "time": "2020-07-23T11:31:42+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3007,8 +3007,8 @@
     },
     {
         "name": "symfony/expression-language",
-        "version": "v4.4.10",
-        "version_normalized": "4.4.10.0",
+        "version": "v4.4.11",
+        "version_normalized": "4.4.11.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/expression-language.git",
@@ -3794,17 +3794,17 @@
     },
     {
         "name": "symfony/translation",
-        "version": "v4.4.10",
-        "version_normalized": "4.4.10.0",
+        "version": "v4.4.11",
+        "version_normalized": "4.4.11.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/translation.git",
-            "reference": "79d3ef9096a6a6047dbc69218b68c7b7f63193af"
+            "reference": "a8ea9d97353294eb6783f2894ef8cee99a045822"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/translation/zipball/79d3ef9096a6a6047dbc69218b68c7b7f63193af",
-            "reference": "79d3ef9096a6a6047dbc69218b68c7b7f63193af",
+            "url": "https://api.github.com/repos/symfony/translation/zipball/a8ea9d97353294eb6783f2894ef8cee99a045822",
+            "reference": "a8ea9d97353294eb6783f2894ef8cee99a045822",
             "shasum": ""
         },
         "require": {
@@ -3837,7 +3837,7 @@
             "symfony/config": "",
             "symfony/yaml": ""
         },
-        "time": "2020-05-30T20:06:45+00:00",
+        "time": "2020-07-23T08:31:43+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3963,26 +3963,26 @@
     },
     {
         "name": "symfony/var-exporter",
-        "version": "v4.4.10",
-        "version_normalized": "4.4.10.0",
+        "version": "v4.4.11",
+        "version_normalized": "4.4.11.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/var-exporter.git",
-            "reference": "f311af6e44fefedbd4f1e23e97607ef0f917bfcc"
+            "reference": "09f0aec4b8bfc25c1dd306e6203cf055c9886560"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/var-exporter/zipball/f311af6e44fefedbd4f1e23e97607ef0f917bfcc",
-            "reference": "f311af6e44fefedbd4f1e23e97607ef0f917bfcc",
+            "url": "https://api.github.com/repos/symfony/var-exporter/zipball/09f0aec4b8bfc25c1dd306e6203cf055c9886560",
+            "reference": "09f0aec4b8bfc25c1dd306e6203cf055c9886560",
             "shasum": ""
         },
         "require": {
-            "php": "^7.1.3"
+            "php": ">=7.1.3"
         },
         "require-dev": {
             "symfony/var-dumper": "^4.4.9|^5.0.9"
         },
-        "time": "2020-06-01T01:10:09+00:00",
+        "time": "2020-07-05T09:39:30+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
