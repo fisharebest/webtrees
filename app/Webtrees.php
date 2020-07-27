@@ -97,10 +97,10 @@ class Webtrees
     public const SCHEMA_VERSION = 44;
 
     // e.g. "-dev", "-alpha", "-beta", etc.
-    public const STABILITY = '';
+    public const STABILITY = '-dev';
 
     // Version number
-    public const VERSION = '2.0.7' . self::STABILITY;
+    public const VERSION = '2.0.8' . self::STABILITY;
 
     // Project website.
     public const URL = 'https://webtrees.net/';
