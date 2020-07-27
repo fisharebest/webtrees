@@ -120,7 +120,11 @@ class UpgradeController extends AbstractAdminController
 
         $title = I18N::translate('Upgrade wizard');
 
-        if ($continue === '1') {
+        $latest_version = $this->upgrade_service->latestVersion();
+
+        $upgrade_available = version_compare($latest_version, Webtrees::VERSION) > 0;
+
+        if ($upgrade_available && $continue === '1') {
             return $this->viewResponse('admin/upgrade/steps', [
                 'steps' => $this->wizardSteps(),
                 'title' => $title,
@@ -129,7 +133,7 @@ class UpgradeController extends AbstractAdminController
 
         return $this->viewResponse('admin/upgrade/wizard', [
             'current_version' => Webtrees::VERSION,
-            'latest_version'  => $this->upgrade_service->latestVersion(),
+            'latest_version'  => $latest_version,
             'title'           => $title,
         ]);
     }
