@@ -2,22 +2,35 @@
 
 use Fisharebest\Webtrees\I18N;
 
+// Alternate layout duplicates pagination & display
+// controls below the data
+define('STANDARD_LAYOUT', true);
+
+$header_controls = STANDARD_LAYOUT ? 'pf'  : 'pfl';
+$footer_controls = STANDARD_LAYOUT ? 'irl' : 'pilr';
+$back            = I18N::direction() === 'ltr' ? 'left' : 'right';
+$forward         = I18N::direction() === 'ltr' ? 'right' : 'left';
 ?>
 
 data-auto-width="false"
-data-dom="<&quot;d-flex justify-content-between&quot;pf><t><&quot;d-flex justify-content-between&quot;irl>"
+data-dom="<&quot;d-flex justify-content-between&quot;<?= $header_controls ?>><t><&quot;d-flex justify-content-between&quot;<?= $footer_controls ?>>"
 data-state-save="true"
 data-length-menu="<?= e(json_encode([[10, 20, 50, 100, 500, 1000, -1], [I18N::number(10), I18N::number(20), I18N::number(50), I18N::number(100), I18N::number(500), I18N::number(1000), I18N::translate('All')]])) ?>"
+data-paging-type="full_numbers"
 data-language="<?= e(json_encode([
     'paginate'       => [
-        /* I18N: A button label, first page */
-        'first'    => I18N::translate('first'),
-        /* I18N: A button label, last page */
-        'last'     => I18N::translate('last'),
-        /* I18N: A button label, next page */
-        'next'     => I18N::translate('next'),
-        /* I18N: A button label, previous page */
-        'previous' => I18N::translate('previous'),
+        'first'    => view('icons/first', [
+                        'direction' => $back,
+                      ]),
+        'last'     => view('icons/last', [
+                        'direction' => $forward,
+                      ]),
+        'next'     => view('icons/next',[
+                        'direction' => $forward,
+                      ]),
+        'previous' => view('icons/previous',[
+                        'direction' => $back,
+                      ]),
     ],
     'emptyTable'     => I18N::translate('No records to display'),
     /* I18N: %s are placeholders for numbers */
