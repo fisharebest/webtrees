@@ -162,7 +162,7 @@
     }
 
     // All digit dates
-    datestr = datestr.replaceAll(/(\d\d)(\d\d)(\d\d)(\d\d)/g, function () {
+    datestr = datestr.replace(/(\d\d)(\d\d)(\d\d)(\d\d)/g, function () {
       if (RegExp.$1 > '12' && RegExp.$3 <= '12' && RegExp.$4 <= '31') {
         return RegExp.$4 + ' ' + months[RegExp.$3 - 1] + ' ' + RegExp.$1 + RegExp.$2;
       }
@@ -173,7 +173,7 @@
     });
 
     // e.g. 17.11.1860, 3/4/2005 or 1999-12-31. Use locale settings since DMY order is ambiguous.
-    datestr = datestr.replaceAll(/(\d+)([./-])(\d+)([./-])(\d+)/g, function () {
+    datestr = datestr.replace(/(\d+)([./-])(\d+)([./-])(\d+)/g, function () {
       let f1 = parseInt(RegExp.$1, 10);
       let f2 = parseInt(RegExp.$3, 10);
       let f3 = parseInt(RegExp.$5, 10);
@@ -204,21 +204,21 @@
       .replace(/^([\w ]+) ?- ?([\w ]+)$/, 'BET $1 AND $2')
       .replace(/^([\w ]+) ?~ ?([\w ]+)$/, 'FROM $1 TO $2')
       // Convert full months to short months
-      .replaceAll('JANUARY', 'JAN')
-      .replaceAll('FEBRUARY', 'FEB')
-      .replaceAll('MARCH', 'MAR')
-      .replaceAll('APRIL', 'APR')
-      .replaceAll('JUNE', 'JUN')
-      .replaceAll('JULY', 'JUL')
-      .replaceAll('AUGUST', 'AUG')
-      .replaceAll('SEPTEMBER', 'SEP')
-      .replaceAll('OCTOBER', 'OCT')
-      .replaceAll('NOVEMBER', 'NOV')
-      .replaceAll('DECEMBER', 'DEC')
+      .replace(/JANUARY/g, 'JAN')
+      .replace(/FEBRUARY/g, 'FEB')
+      .replace(/MARCH/g, 'MAR')
+      .replace(/APRIL/g, 'APR')
+      .replace(/JUNE/g, 'JUN')
+      .replace(/JULY/g, 'JUL')
+      .replace(/AUGUST/g, 'AUG')
+      .replace(/SEPTEMBER/g, 'SEP')
+      .replace(/OCTOBER/, 'OCT')
+      .replace(/NOVEMBER/g, 'NOV')
+      .replace(/DECEMBER/g, 'DEC')
       // Americans enter dates as SEP 20, 1999
-      .replaceAll(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\.? (\d\d?)[, ]+(\d\d\d\d)/g, '$2 $1 $3')
+      .replace(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\.? (\d\d?)[, ]+(\d\d\d\d)/g, '$2 $1 $3')
       // Apply leading zero to day numbers
-      .replaceAll(/(^| )(\d [A-Z]{3,5} \d{4})/g, '$10$2');
+      .replace(/(^| )(\d [A-Z]{3,5} \d{4})/g, '$10$2');
 
     if (datephrase) {
       datestr = datestr + ' (' + datephrase;
