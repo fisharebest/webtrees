@@ -21,7 +21,9 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
 use Fisharebest\Webtrees\Services\MapDataService;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;
@@ -43,14 +45,19 @@ class MapDataList implements RequestHandlerInterface
     /** @var MapDataService */
     private $map_data_service;
 
+    /** @var ModuleService */
+    private $module_service;
+
     /**
      * Dependency injection.
      *
      * @param MapDataService $map_data_service
+     * @param ModuleService  $module_service
      */
-    public function __construct(MapDataService $map_data_service)
+    public function __construct(MapDataService $map_data_service, ModuleService $module_service)
     {
         $this->map_data_service = $map_data_service;
+        $this->module_service   = $module_service;
     }
 
     /**
@@ -85,14 +92,17 @@ class MapDataList implements RequestHandlerInterface
         $breadcrumbs[route(__CLASS__)]           = $title;
         $breadcrumbs[route(ControlPanel::class)] = I18N::translate('Control panel');
 
+        $show_links = $this->module_service->findByInterface(PlaceHierarchyListModule::class)->isNotEmpty();
+
         $this->layout = 'layouts/administration';
 
         return $this->viewResponse('admin/locations', [
-            'title'       => $title,
             'active'      => $this->map_data_service->activePlaces($parent),
             'breadcrumbs' => array_reverse($breadcrumbs),
             'parent_id'   => $parent_id,
             'placelist'   => $this->getPlaceListLocation($parent_id),
+            'show_links'  => $show_links,
+            'title'       => $title,
         ]);
     }
 

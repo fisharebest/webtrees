@@ -12,6 +12,7 @@ use Fisharebest\Webtrees\Webtrees;
  * @var array<string,string> $breadcrumbs
  * @var int                  $parent_id
  * @var array<mixed>         $placelist
+ * @var bool                 $show_links
  * @var string               $title
  */
 
@@ -98,7 +99,7 @@ use Fisharebest\Webtrees\Webtrees;
             </td>
 
             <td>
-                <?php if (array_key_exists($place->pl_place, $active)): ?>
+                <?php if ($show_links && array_key_exists($place->pl_place, $active)): ?>
                     <?php if (count($active[$place->pl_place]) === 1): ?>
                         <a class="btn btn-link" href="<?= e(route(PlaceHierarchyListModule::class, ['tree' => $active[$place->pl_place][0]->tree_name, 'place_id' => $active[$place->pl_place][0]->p_id, 'action2' => 'hierarchy-e'])) ?>">
                             <?= e($active[$place->pl_place][0]->tree_title) ?>
