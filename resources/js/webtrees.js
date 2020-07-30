@@ -509,15 +509,17 @@
     const key = 'state-of-' + element_id;
     const state = localStorage.getItem(key);
 
-    // Previously selected?
-    if (state === 'true') {
-      element.click();
-    }
+    if (element instanceof HTMLInputElement && element.type === 'checkbox') {
+      // Previously selected?
+      if (state === 'true') {
+        element.click();
+      }
 
-    // Remember state for the next page load.
-    element.addEventListener('change', function () {
-      localStorage.setItem(key, element.checked);
-    });
+      // Remember state for the next page load.
+      element.addEventListener('change', function () {
+        localStorage.setItem(key, element.checked);
+      });
+    }
   };
 
   /**
