@@ -665,7 +665,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                             case '_HSIB':
                                 $facts[] = $this->convertEvent($fact, $death_of_a_half_sibling[$fact->getTag()][$fact->record()->sex()]);
                                 break;
-                            case 'CHIL':
+                            case '_CHIL':
                                 $facts[] = $this->convertEvent($fact, $death_of_a_child[$fact->getTag()][$fact->record()->sex()]);
                                 break;
                         }
