@@ -134,8 +134,7 @@ class SearchService
         $query
             ->orderBy('husb_name.n_sort')
             ->orderBy('wife_name.n_sort')
-            ->select(['families.*', 'husb_name.n_sort', 'wife_name.n_sort'])
-            ->distinct();
+            ->select(['families.*', 'husb_name.n_sort', 'wife_name.n_sort']);
 
         return $this->paginateQuery($query, $this->familyRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
     }
@@ -202,7 +201,6 @@ class SearchService
                     ->on('name.n_id', '=', 'individuals.i_id');
             })
             ->orderBy('n_sort')
-            ->distinct()
             ->select(['individuals.*', 'n_sort']);
 
         $this->whereTrees($query, 'i_file', $trees);
@@ -960,6 +958,11 @@ class SearchService
 
         foreach ($query->cursor() as $row) {
             $record = $row_mapper($row);
+            // searchIndividualNames() and searchFamilyNames() can return duplicate rows,
+            // where individuals have multiple names - and we need to sort results by name.
+            if ($collection->containsStrict($record)) {
+                continue;
+            }
             // If the object has a method "canShow()", then use it to filter for privacy.
             if ($row_filter($record)) {
                 if ($offset > 0) {

@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
+use function explode;
 use function view;
 
 /**
@@ -64,7 +65,7 @@ class Select2Individual extends AbstractSelect2Handler
         if ($individual instanceof Individual) {
             $results = new Collection([$individual]);
         } else {
-            $results = $this->search_service->searchIndividualNames([$tree], [$query], $offset, $limit);
+            $results = $this->search_service->searchIndividualNames([$tree], explode(' ', $query), $offset, $limit);
         }
 
         return $results->map(static function (Individual $individual) use ($at): array {

@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
+use function explode;
 use function view;
 
 /**
@@ -65,7 +66,7 @@ class Select2Family extends AbstractSelect2Handler
         if ($family instanceof Family) {
             $results = new Collection([$family]);
         } else {
-            $results = $this->search_service->searchFamilyNames([$tree], [$query], $offset, $limit);
+            $results = $this->search_service->searchFamilyNames([$tree], explode(' ', $query), $offset, $limit);
         }
 
         return $results->map(static function (Family $family) use ($at): array {
