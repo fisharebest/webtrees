@@ -142,7 +142,7 @@
     datestr = datestr.replace(/(\d)([A-Z])/g, '$1 $2');
     datestr = datestr.replace(/([A-Z])(\d)/g, '$1 $2');
 
-    // Shortcut for quarter format, "Q1 1900" => "BET JAN 1900 AND MAR 1900". See [ 1509083 ]
+    // Shortcut for quarter format, "Q1 1900" => "BET JAN 1900 AND MAR 1900".
     if (datestr.match(/^Q ([1-4]) (\d\d\d\d)$/)) {
       datestr = 'BET ' + months[RegExp.$1 * 3 - 3] + ' ' + RegExp.$2 + ' AND ' + months[RegExp.$1 * 3 - 1] + ' ' + RegExp.$2;
     }
@@ -172,8 +172,8 @@
       return RegExp.$1 + RegExp.$2 + RegExp.$3 + RegExp.$4;
     });
 
-    // e.g. 17.11.1860, 3/4/2005 or 1999-12-31. Use locale settings since DMY order is ambiguous.
-    datestr = datestr.replace(/(\d+)([./-])(\d+)([./-])(\d+)/g, function () {
+    // e.g. 17.11.1860, 2 4 1987, 3/4/2005, 1999-12-31. Use locale settings since DMY order is ambiguous.
+    datestr = datestr.replace(/(\d+)([ ./-])(\d+)(\2)(\d+)/g, function () {
       let f1 = parseInt(RegExp.$1, 10);
       let f2 = parseInt(RegExp.$3, 10);
       let f3 = parseInt(RegExp.$5, 10);
