@@ -637,10 +637,10 @@ abstract class AbstractCalendarDate
             $format = strtr($format, ['%M' => $this->formatShortMonth()]);
         }
         if (str_contains($format, '%n')) {
-            $format = strtr($format, [$this->formatMonth()]);
+            $format = strtr($format, ['%n' => $this->formatMonth()]);
         }
         if (str_contains($format, '%t')) {
-            $format = strtr($format, ['%n' => (string) $this->daysInMonth()]);
+            $format = strtr($format, ['%t' => (string) $this->daysInMonth()]);
         }
         if (str_contains($format, '%L')) {
             $format = strtr($format, ['%L' => $this->isLeapYear() ? '1' : '0']);
