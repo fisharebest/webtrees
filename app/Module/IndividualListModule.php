@@ -41,10 +41,12 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
+use function array_key_exists;
 use function array_keys;
 use function assert;
 use function e;
 use function implode;
+use function in_array;
 use function ob_get_clean;
 use function ob_start;
 use function redirect;
@@ -578,27 +580,28 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
 
         // Now fetch initial letters that are not in our alphabet,
         // including "@" (for "@N.N.") and "" for no surname.
-        $query2 = clone $query;
         foreach ($this->localization_service->alphabet($locale) as $n => $letter) {
-            $query2->where($n_surn, 'NOT LIKE', $letter . '%');
+            $query->where($n_surn, 'NOT LIKE', $letter . '%');
         }
 
-        $rows = $query2
+        $rows = $query
             ->groupBy(['initial'])
-            ->orderBy(new Expression("CASE SUBSTR(n_surn, 1, 1) WHEN '' THEN 1 ELSE 0 END"))
-            ->orderBy(new Expression("CASE SUBSTR(n_surn, 1, 1) WHEN '@' THEN 1 ELSE 0 END"))
             ->orderBy('initial')
             ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression('SUBSTR(n_surn, 1, 1) AS initial'));
 
+        $specials = ['@', ''];
+
         foreach ($rows as $alpha => $count) {
-            $alphas[$alpha] = (int) $count;
+            if (!in_array($alpha, $specials, true)) {
+                $alphas[$alpha] = (int) $count;
+            }
         }
 
-        $count_no_surname = $query->where('n_surn', '=', '')->count();
-
-        if ($count_no_surname !== 0) {
-            // Special code to indicate "no surname"
-            $alphas[','] = $count_no_surname;
+        // Empty surnames have a special code ',' - as we search for SURN.GIVN
+        foreach ($specials as $special) {
+            if ($rows->has($special)) {
+                $alphas[$special ?: ','] = (int) $rows[$special];
+            }
         }
 
         return $alphas;
@@ -655,14 +658,23 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
 
         $rows = $query
             ->groupBy(['initial'])
-            ->orderBy(new Expression("CASE UPPER(SUBSTR(n_givn, 1, 1)) WHEN '' THEN 1 ELSE 0 END"))
-            ->orderBy(new Expression("CASE UPPER(SUBSTR(n_givn, 1, 1)) WHEN '@' THEN 1 ELSE 0 END"))
             ->orderBy('initial')
             ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression('UPPER(SUBSTR(n_givn, 1, 1)) AS initial'));
 
+        $specials = ['@'];
+
         foreach ($rows as $alpha => $count) {
-            $alphas[$alpha] = (int) $count;
+            if ($alpha !== '@') {
+                $alphas[$alpha] = (int) $count;
+            }
         }
+
+        foreach ($specials as $special) {
+            if ($rows->has('@')) {
+                $alphas['@'] = (int) $rows['@'];
+            }
+        }
+
 
         return $alphas;
     }
