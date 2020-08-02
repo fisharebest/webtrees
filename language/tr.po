@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-06-22 15:24+0000\n"
-"Last-Translator: Ekrem Parlak <ekrem@parlak.org>\n"
+"PO-Revision-Date: 2020-08-21 17:21+0000\n"
+"Last-Translator: Suleyman <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/tr/>\n"
 "Language: tr\n"
@@ -801,7 +801,7 @@ msgstr "Kullanıcı için hoş geldiniz mesajı ve faydalı linkler içeren blok
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:35
 msgid "A greeting message for site visitors."
-msgstr "Site ziyaretçileri için bir Karşılama mesajı."
+msgstr "Site ziyaretçileri için bir karşılama mesajı."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
@@ -924,7 +924,7 @@ msgstr "Belirli bir kaynak tarafından desteklenen olguların bir raporunu verir
 #: app/Module/FamilyGroupReportModule.php:35
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr "Aile üyeleri ve oların ayrıntılarını içeren bir rapor verir."
+msgstr "Aile üyeleri ve onların ayrıntılarını içeren bir rapor verir."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
@@ -1924,7 +1924,7 @@ msgstr "\"Medya\" sekmesine alternatif, ve gelişmiş resim görüntüleyici."
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:39
 msgid "An alternative way to display charts."
-msgstr "çizelgeleri görüntülemek için alternatif bir yol."
+msgstr "Çizelgeleri görüntülemek için alternatif bir yol."
 
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:44
