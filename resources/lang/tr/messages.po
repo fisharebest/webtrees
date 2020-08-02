@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-06-22 15:24+0000\nLast-Translator: Ekrem Parlak <ekrem@parlak.org>\nLanguage-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\nLanguage: tr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-08-21 17:21+0000\nLast-Translator: Suleyman <hsarslan@yahoo.com>\nLanguage-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\nLanguage: tr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -468,7 +468,7 @@ msgstr "(%s ölümden sonra)"
 #: app/Age.php:177
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(yaş %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:181
@@ -690,7 +690,7 @@ msgstr "Kullanıcı için hoş geldiniz mesajı ve faydalı linkler içeren blok
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:71
 msgid "A greeting message for site visitors."
-msgstr "Site ziyaretçileri için bir Karşılama mesajı."
+msgstr "Site ziyaretçileri için bir karşılama mesajı."
 
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:68
@@ -863,7 +863,7 @@ msgstr "Belirli bir kaynak tarafından desteklenen olguların bir raporunu verir
 #: app/Module/FamilyGroupReportModule.php:56
 #: resources/xml/reports/family_group_report.xml:4
 msgid "A report of family members and their details."
-msgstr "Aile üyeleri ve oların ayrıntılarını içeren bir rapor verir."
+msgstr "Aile üyeleri ve onların ayrıntılarını içeren bir rapor verir."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:52 resources/xml/reports/death_report.xml:4
@@ -1869,7 +1869,7 @@ msgstr "\"Medya\" sekmesine alternatif, ve gelişmiş resim görüntüleyici."
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:73
 msgid "An alternative way to display charts."
-msgstr "çizelgeleri görüntülemek için alternatif bir yol."
+msgstr "Çizelgeleri görüntülemek için alternatif bir yol."
 
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:62
@@ -6849,7 +6849,7 @@ msgstr "Google Haritalar™"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
-msgstr ""
+msgstr "Google™ analytics"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
@@ -7476,7 +7476,7 @@ msgstr "Webtrees sürüm 2'de, özel tanımlı küçük resimler, aynı medya ne
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include aliases"
-msgstr ""
+msgstr "Takma adları dahil et"
 
 #: resources/views/admin/trees-unconnected.phtml:27
 msgid "Include associates"
@@ -8256,7 +8256,7 @@ msgstr "Sol"
 #. I18N: Name of a module - historic/obsolete URLs.
 #: app/Module/RedirectLegacyUrlsModule.php:118
 msgid "Legacy URLs"
-msgstr ""
+msgstr "Eski URL 'ler"
 
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:816
@@ -10136,7 +10136,7 @@ msgstr "Hiçbir şey bulunamadı."
 #: resources/views/modules/pedigree-map/chart.phtml:110
 #: resources/views/modules/places/tab.phtml:102
 msgid "Nothing to show"
-msgstr ""
+msgstr "Gösterilecek bir şey yok"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
@@ -11424,7 +11424,7 @@ msgstr "Kayıtlar"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:112
 msgid "Redirect old URLs from webtrees version 1."
-msgstr ""
+msgstr "Webtrees sürüm 1'den eski URL'leri yönlendirin."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:573
@@ -11569,7 +11569,7 @@ msgstr "Dini ismi"
 #: resources/views/modules/place-hierarchy/map.phtml:71
 #: resources/views/modules/places/tab.phtml:58
 msgid "Reload map"
-msgstr ""
+msgstr "Haritayı yeniden yükle"
 
 #: resources/views/modules/review_changes/config.phtml:24
 msgid "Reminder email frequency (days)"
@@ -12034,7 +12034,7 @@ msgstr "Basit arama yada gelişmiş desen eşleştirmeleri kullanarak metinleri 
 #. I18N: Help text for the “Description META tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:203
 msgid "Search engines may use this description of your site in their search results."
-msgstr ""
+msgstr "Arama motorları, sitenizin bu açıklamasını arama sonuçlarında kullanabilir."
 
 #: resources/views/modules/media-list/page.phtml:52
 msgid "Search filters"
