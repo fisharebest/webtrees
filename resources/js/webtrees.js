@@ -652,6 +652,36 @@ $(function () {
       $(evt.delegateTarget).html('<option value="" selected></option>');
     });
 
+  // Select2 with order of selections preserved
+  $('select.select2ordered').select2({
+    // Needed for elements that are initially hidden.    
+    width: '100%'  
+  });
+    
+  $('select.select2ordered').on('select2:select', function (evt) {    
+    //preserve insertion order, see https://github.com/select2/select2/issues/3106
+    //unfortunately this also affects dropdown order - ugly!
+    var id = evt.params.data.id;
+    var option = $(evt.target).children('[value='+id+']');
+    option.detach();
+    $(evt.target).append(option).change();
+    
+    var idRefSelector = '#' + $(evt.target).attr('id') + '_REF';
+    var updated = $(idRefSelector).val().split(',').filter(function(item){return item.trim()});
+    updated.push(id);
+    $(idRefSelector).val(updated.join(', '));
+  });
+    
+  $('select.select2ordered').on('select2:unselect', function (evt) {
+    var id = evt.params.data.id;
+    
+    //update actual value
+    var idRefSelector = '#' + $(evt.target).attr('id') + '_REF';
+    var updated = $(idRefSelector).val().split(',');
+    updated = updated.filter(function(item){return item.trim() !== id});
+    $(idRefSelector).val(updated.join(', '));
+  });
+
   // Datatables - locale aware sorting
   $.fn.dataTableExt.oSort['text-asc'] = function (x, y) {
     return x.localeCompare(y, document.documentElement.lang, { sensitivity: 'base' });

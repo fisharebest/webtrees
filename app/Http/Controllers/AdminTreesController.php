@@ -932,6 +932,7 @@ class AdminTreesController extends AbstractBaseController
         $tree->setPreference('SOUR_FACTS_ADD', implode(',', $params['SOUR_FACTS_ADD'] ?? []));
         $tree->setPreference('SOUR_FACTS_QUICK', implode(',', $params['SOUR_FACTS_QUICK'] ?? []));
         $tree->setPreference('SOUR_FACTS_UNIQUE', implode(',', $params['SOUR_FACTS_UNIQUE'] ?? []));
+        $tree->setPreference('SOUR_DATA_EVEN_FACTS', implode(',', $params['SOUR_DATA_EVEN_FACTS'] ?? []));
         $tree->setPreference('SUBLIST_TRIGGER_I', $params['SUBLIST_TRIGGER_I'] ?? '200');
         $tree->setPreference('SURNAME_LIST_STYLE', $params['SURNAME_LIST_STYLE'] ?? '');
         $tree->setPreference('SURNAME_TRADITION', $params['SURNAME_TRADITION'] ?? '');

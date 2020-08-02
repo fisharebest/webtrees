@@ -579,6 +579,27 @@ class FunctionsEdit
                 $html .= '>' . $typeValue . '</option>';
             }
             $html .= '</select>';
+            
+        //SOUR.DATA.EVEN ($upperlevel is SOUR when editing the DATA fact, and DATA when creating a DATA fact)
+        //we need the upperlevel to distinguish from individual custom events (same tag name unfortunately)
+        } elseif (($fact === 'EVEN') && (($upperlevel == 'DATA') || ($upperlevel == 'SOUR'))) {
+            $sour_data_even = FunctionsEdit::getPicklistSourDataEven($tree);
+            $selected = explode(',', $value);
+
+            //preserve order
+            foreach ($selected as $s) {
+              //spec strictly has ', ' as delimiter, seems a bit confused about this though ("Each enumeration is separated by a comma.")
+              $s = trim($s);
+              if (array_key_exists($s, $sour_data_even)) {
+                $val = $sour_data_even[$s];
+                unset($sour_data_even[$s]);
+                $sour_data_even[$s] = $val;
+              }
+            }
+            
+            $html .= view('components/select', ['name' => $id . '[]', 'id' => $id, 'selected' => $selected, 'options' => $sour_data_even, 'class' => 'select2ordered']);
+            $html .= '<input id= ' . $id . '_REF type="hidden" name="text[]" value="' . $value . '">';
+            
         } elseif (($fact !== 'NAME' || $upperlevel === 'REPO' || $upperlevel === 'SUBM' || $upperlevel === 'UNKNOWN') && $fact !== '_MARNM') {
             if ($fact === 'TEXT' || $fact === 'ADDR' || ($fact === 'NOTE' && !$islink)) {
                 $html .= '<div class="input-group">';
@@ -623,6 +644,19 @@ class FunctionsEdit
         return $html;
     }
 
+    public static function getPicklistSourDataEven(Tree $tree): array 
+    {
+        $tags = preg_split('/[, ;:]+/', $tree->getPreference('SOUR_DATA_EVEN_FACTS', 'BIRT,BAPM,CHR,CONF,MARR,DEAT,BURI'), -1, PREG_SPLIT_NO_EMPTY);
+
+        $facts = [];
+        foreach ($tags as $tag) {
+            $facts[$tag] = GedcomTag::getLabel($tag, null);
+        }
+        uasort($facts, '\Fisharebest\Webtrees\I18N::strcasecmp');
+
+        return $facts;
+    }
+    
     /**
      * Add some empty tags to create a new fact.
      *

@@ -790,6 +790,24 @@ use Fisharebest\Webtrees\I18N;
             </p>
         </div>
     </div>
+    
+    <!-- SOUR_DATA_EVEN_FACTS -->
+    <div class="row form-group">
+        <label class="col-sm-3 col-form-label" for="SOUR_DATA_EVEN_FACTS">
+            <?= I18N::translate('Facts recorded in sources') ?>
+        </label>
+        <div class="col-sm-9">
+            <?php
+              $all_sour_data_even_facts = array_merge($all_indi_facts, $all_fam_facts);
+            
+              //note: defaults are usually handled via SeedGedcomSettingTable, do that here as well?
+            ?>
+            <?= view('components/select', ['name' => 'SOUR_DATA_EVEN_FACTS[]', 'id' => 'SOUR_DATA_EVEN_FACTS', 'selected' => explode(',', $tree->getPreference('SOUR_DATA_EVEN_FACTS', 'BIRT,BAPM,CHR,CONF,MARR,DEAT,BURI')), 'options' => $all_sour_data_even_facts, 'class' => 'select2']) ?>
+            <p class="small text-muted">
+                <?= /* I18N: Help text for the “Facts recorded in sources” configuration setting */ I18N::translate('Sources can be annotated, via the \'data\' fact, in order to describe which individual and family facts they contain. This is the list of those GEDCOM facts. You can modify this list by removing or adding fact names, even custom ones, as necessary. ') ?>
+            </p>
+        </div>
+    </div>    
 
     <h3><?= I18N::translate('Facts for repository records') ?></h3>
 
