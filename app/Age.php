@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees;
 use function view;
 
 /**
- * The different between to GEDCOM dates.
+ * The difference between two GEDCOM dates.
  */
 class Age
 {

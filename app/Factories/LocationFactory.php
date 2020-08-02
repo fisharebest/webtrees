@@ -71,10 +71,10 @@ class LocationFactory extends AbstractGedcomRecordFactory implements LocationFac
     public function mapper(Tree $tree): Closure
     {
         return function (stdClass $row) use ($tree): Location {
-            $submitter = $this->make($row->o_id, $tree, $row->o_gedcom);
-            assert($submitter instanceof Location);
+            $location = $this->make($row->o_id, $tree, $row->o_gedcom);
+            assert($location instanceof Location);
 
-            return $submitter;
+            return $location;
         };
     }
 
