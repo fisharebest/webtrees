@@ -585,8 +585,8 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
 
         $rows = $query2
             ->groupBy(['initial'])
-            ->orderBy(new Expression("CASE initial WHEN '' THEN 1 ELSE 0 END"))
-            ->orderBy(new Expression("CASE initial WHEN '@' THEN 1 ELSE 0 END"))
+            ->orderBy(new Expression("CASE SUBSTR(n_surn, 1, 1) WHEN '' THEN 1 ELSE 0 END"))
+            ->orderBy(new Expression("CASE SUBSTR(n_surn, 1, 1) WHEN '@' THEN 1 ELSE 0 END"))
             ->orderBy('initial')
             ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression('SUBSTR(n_surn, 1, 1) AS initial'));
 
@@ -655,8 +655,8 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
 
         $rows = $query
             ->groupBy(['initial'])
-            ->orderBy(new Expression("CASE initial WHEN '' THEN 1 ELSE 0 END"))
-            ->orderBy(new Expression("CASE initial WHEN '@' THEN 1 ELSE 0 END"))
+            ->orderBy(new Expression("CASE UPPER(SUBSTR(n_givn, 1, 1)) WHEN '' THEN 1 ELSE 0 END"))
+            ->orderBy(new Expression("CASE UPPER(SUBSTR(n_givn, 1, 1)) WHEN '@' THEN 1 ELSE 0 END"))
             ->orderBy('initial')
             ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression('UPPER(SUBSTR(n_givn, 1, 1)) AS initial'));
 
