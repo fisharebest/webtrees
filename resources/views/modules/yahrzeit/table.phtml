@@ -48,7 +48,7 @@ use Illuminate\Support\Collection;
                             <?php endif ?>
                         </a>
                     </td>
-                    <td data-sort="<?= e($yahrzeit->jd) ?>">
+                    <td data-sort="<?= e($yahrzeit->yahrzeit_date->julianDay()) ?>">
                         <?= $yahrzeit->fact_date->display(true, null, false) ?>
                     </td>
                     <td data-sort="<?= e($yahrzeit->fact->anniv) ?>">

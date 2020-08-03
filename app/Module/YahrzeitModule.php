@@ -110,6 +110,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                 // Exact hebrew dates only
                 $date = $fact->date();
                 if ($date->minimumDate() instanceof JewishDate && $date->minimumJulianDay() === $date->maximumJulianDay()) {
+                    $jd_yahrtzeit = $jd;
                     // ...then adjust DEAT dates (but not _YART)
                     if ($fact->getTag() === 'DEAT') {
                         $today     = new JewishDate($jd);
@@ -121,35 +122,34 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                         // Everything else is taken care of by our standard anniversary rules.
                         if ($hd->day === 30 && $hd->month === 2 && $hd->year !== 0 && $hd1->daysInMonth() < 30) {
                             // 30 CSH - Last day in CSH
-                            $jd = $jewish_calendar->ymdToJd($today->year, 3, 1) - 1;
+                            $jd_yahrtzeit = $jewish_calendar->ymdToJd($today->year, 3, 1) - 1;
                         } elseif ($hd->day === 30 && $hd->month === 3 && $hd->year !== 0 && $hd1->daysInMonth() < 30) {
                             // 30 KSL - Last day in KSL
-                            $jd = $jewish_calendar->ymdToJd($today->year, 4, 1) - 1;
+                            $jd_yahrtzeit = $jewish_calendar->ymdToJd($today->year, 4, 1) - 1;
                         } elseif ($hd->day === 30 && $hd->month === 6 && $hd->year !== 0 && $today->daysInMonth() < 30 && !$today->isLeapYear()) {
                             // 30 ADR - Last day in SHV
-                            $jd = $jewish_calendar->ymdToJd($today->year, 6, 1) - 1;
+                            $jd_yahrtzeit = $jewish_calendar->ymdToJd($today->year, 6, 1) - 1;
                         }
                     }
 
                     // Filter adjusted dates to our date range
-                    if ($jd >= $startjd && $jd < $startjd + $days) {
+                    if ($jd_yahrtzeit >= $startjd && $jd_yahrtzeit < $startjd + $days) {
                         // upcomming yahrzeit dates
                         switch ($calendar) {
                             case 'gregorian':
-                                $yahrzeit_date = new GregorianDate($jd);
+                                $yahrzeit_calendar_date = new GregorianDate($jd_yahrtzeit);
                                 break;
                             case 'jewish':
                             default:
-                                $yahrzeit_date = new JewishDate($jd);
+                                $yahrzeit_calendar_date = new JewishDate($jd_yahrtzeit);
                                 break;
                         }
-                        $yahrzeit_date = new Date($yahrzeit_date->format('%@ %A %O %E'));
+                        $yahrzeit_date = new Date($yahrzeit_calendar_date->format('%@ %A %O %E'));
 
                         $yahrzeits->add((object) [
                             'individual'    => $fact->record(),
                             'fact_date'     => $fact->date(),
                             'fact'          => $fact,
-                            'jd'            => $jd,
                             'yahrzeit_date' => $yahrzeit_date,
                         ]);
                     }
