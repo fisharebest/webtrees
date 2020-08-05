@@ -151,7 +151,7 @@ class ReportPdfCell extends ReportBaseCell
         if ($this->newline >= 1) {
             $renderer->lastCellHeight = 0;
         } elseif ($renderer->lastCellHeight < $renderer->tcpdf->getLastH()) {
-            // OR save the last height if heigher then before
+            // OR save the last height if higher then before
             $renderer->lastCellHeight = $renderer->tcpdf->getLastH();
         }
 
