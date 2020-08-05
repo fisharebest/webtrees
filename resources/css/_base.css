@@ -35,6 +35,11 @@
     transform: scale(-1, 1);
 }
 
+/* Bootstrap 4.5.1 toggle buttons don't work when labels have additional markup */
+[data-toggle=buttons] > label > .wt-icon-sex {
+    pointer-events: none;
+}
+
 /* Remove border-radius for left-to-right input groups on right-to-left pages */
 [dir=rtl] .input-group[dir=ltr] [dir=ltr] {
     border-radius: 0;
