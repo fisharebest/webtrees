@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
@@ -90,6 +91,7 @@ class CreateMediaObjectAction implements RequestHandlerInterface
         }
 
         $record = $tree->createMediaObject($gedcom);
+        $record = Factory::media()->new($record->xref(), $record->gedcom(), null, $tree);
 
         // Accept the new record to keep the filesystem synchronized with the genealogy.
         $this->pending_changes_service->acceptRecord($record);

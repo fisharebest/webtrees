@@ -2,6 +2,11 @@
 
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateNoteAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var Tree $tree
+ */
 
 ?>
 
@@ -42,7 +47,7 @@ use Fisharebest\Webtrees\I18N;
                     option.innerHTML = data.text;
 
                     $(select)
-                        .select2()
+                        .select2({ escapeMarkup: (x) => x })
                         .empty()
                         .append(option)
                         .trigger("change");

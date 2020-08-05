@@ -2,6 +2,14 @@
 
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateMediaObjectAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var string        $max_upload_size
+ * @var array<string> $media_types
+ * @var Tree          $tree
+ * @var array<string> $unused_files
+ */
 
 ?>
 
@@ -41,7 +49,7 @@ use Fisharebest\Webtrees\I18N;
                     option.innerHTML = option.innerText;
 
                     $(select)
-                        .select2()
+                        .select2({ escapeMarkup: (x) => x })
                         .empty()
                         .append(option)
                         .trigger("change");
