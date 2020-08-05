@@ -7,17 +7,14 @@
 
 # IPLib - Handle IPv4, IPv6 and IP ranges
 
-
 ## Introduction
 
 This library can handle IPv4, IPv6 addresses, as well as IP ranges, in CIDR formats (like `::1/128` or `127.0.0.1/32`) and in pattern format (like `::*:*` or `127.0.*.*`).
-
 
 ## Requirements
 
 The only requirement is PHP 5.3.3.
 __No external dependencies__ and __no special PHP configuration__ are needed (yes, it will __always work__ even if PHP has not been built with IPv6 support!).
-
 
 ## Manual installation
 
@@ -26,7 +23,6 @@ __No external dependencies__ and __no special PHP configuration__ are needed (ye
 ```php
 require_once 'path/to/iplib/ip-lib.php';
 ```
-
 
 ## Installation with Composer
 
@@ -38,9 +34,7 @@ Simply run `composer require mlocati/ip-lib`, or add these lines to your `compos
 }
 ```
 
-
 ## Sample usage
-
 
 ### Parse an address
 
@@ -63,7 +57,6 @@ $address = \IPLib\Factory::addressFromString('::1');
 $address = \IPLib\Factory::addressFromString('127.0.0.1');
 ```
 
-
 ### Get the next/previous addresses
 
 ```php
@@ -73,7 +66,6 @@ echo (string) $address->getPreviousAddress();
 echo (string) $address->getNextAddress();
 // prints ::2
 ```
-
 
 ### Parse an IP address range
 
@@ -106,7 +98,6 @@ $range = \IPLib\Factory::rangeFromString('::1/128');
 $range = \IPLib\Factory::rangeFromString('::');
 ```
 
-
 ### Retrive a range from its boundaries
 
 ```php
@@ -114,7 +105,6 @@ $range = \IPLib\Factory::rangeFromBoundaries('192.168.0.1', '192.168.255.255');
 echo (string) $range;
 // prints 192.168.0.0/16
 ```
-
 
 ### Retrive the boundaries of a range
 
@@ -125,7 +115,6 @@ echo (string) $range->getStartAddress();
 echo (string) $range->getEndAddress();
 // prints 127.0.0.255
 ```
-
 
 ### Format addresses and ranges
 
@@ -161,7 +150,6 @@ echo \IPLib\Factory::rangeFromString('0:0::1/64')->toString();
 // prints 0000:0000:0000:0000:0000:0000:0000:0001/64
 ```
 
-
 ### Check if an address is contained in a range
 
 All the range types offer a `contains` method, and all the IP address types offer a `matches` method: you can call them to check if an address is contained in a range:
@@ -177,7 +165,6 @@ $contained = $range->contains($address);
 
 Please remark that if the address is IPv4 and the range is IPv6 (or vice-versa), the result will always be `false`.
 
-
 ### Check if a range contains another range
 
 All the range types offer a `containsRange` method: you can call them to check if an address range fully contains another range:
@@ -187,7 +174,6 @@ $range1 = \IPLib\Factory::rangeFromString('0:0::1/64');
 $range2 = \IPLib\Factory::rangeFromString('0:0::1/65');
 $contained = $range1->containsRange($range2);
 ```
-
 
 ### Getting the type of an IP address
 
@@ -206,7 +192,6 @@ The most notable values of the range type ID are:
 - `\IPLib\Range\Type::T_LOOPBACK` if the address is the localhost (usually `127.0.0.1` or `::1`)
 - `\IPLib\Range\Type::T_PRIVATENETWORK` if the address is in the local network (for instance `192.168.0.1` or `fc00::1`)
 - `\IPLib\Range\Type::T_PUBLIC` if the address is for public usage (for instance `104.25.25.33` or `2001:503:ba3e::2:30`)
-
 
 ### Getting the type of an IP address range
 
@@ -230,7 +215,6 @@ echo \IPLib\Range\Type::getName($type);
 // 'Unknown type'
 ```
 
-
 ### Converting IP addresses
 
 This library supports converting IPv4 to/from IPv6 addresses using the [6to4 notation](https://tools.ietf.org/html/rfc3056) or the [IPv4-mapped notation](https://tools.ietf.org/html/rfc4291#section-2.5.5.2):
@@ -252,7 +236,6 @@ echo (string) $ipv6;
 // This will print "1.2.3.4"
 echo $ipv6_6to4->toIPv4();
 ```
-
 
 ### Converting IP ranges
 
@@ -282,6 +265,23 @@ echo \IPLib\Factory::rangeFromString('192.168.0.*')->getSubnetMask()->toString()
 
 // This will print 255.255.255.252
 echo \IPLib\Factory::rangeFromString('192.168.0.12/30')->getSubnetMask()->toString();
+```
+
+### Getting the reverse DNS lookup address
+
+In order to perform reverse DNS queries, you need to use a special format of the IP addresses.
+
+You can use the `getReverseDNSLookupName()` method of the IP address instances to easily retrieve it:
+
+```php
+
+$ipv4 = \IPLib\Factory::addressFromString('1.2.3.255');
+// This will print 255.3.2.1.in-addr.arpa
+echo $ipv4->getReverseDNSLookupName();
+
+$ipv6 = \IPLib\Factory::addressFromString('1234:abcd::cafe:babe');
+// This will print e.b.a.b.e.f.a.c.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.c.b.a.4.3.2.1.ip6.arpa
+echo $ipv6->getReverseDNSLookupName();
 ```
 
 ### Using a database

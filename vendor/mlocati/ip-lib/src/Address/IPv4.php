@@ -424,4 +424,17 @@ class IPv4 implements AddressInterface
 
         return $overflow ? null : static::fromBytes($bytes);
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see \IPLib\Address\AddressInterface::getReverseDNSLookupName()
+     */
+    public function getReverseDNSLookupName()
+    {
+        return implode(
+            '.',
+            array_reverse($this->getBytes())
+        ) . '.in-addr.arpa';
+    }
 }

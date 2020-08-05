@@ -93,4 +93,14 @@ interface AddressInterface
      * @return \IPLib\Address\AddressInterface|null
      */
     public function getPreviousAddress();
+
+    /**
+     * Get the Reverse DNS Lookup Address of this IP address.
+     *
+     * @return string
+     *
+     * @example for IPv4 it returns something like x.x.x.x.in-addr.arpa
+     * @example for IPv6 it returns something like x.x.x.x..x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.ip6.arpa
+     */
+    public function getReverseDNSLookupName();
 }

@@ -527,4 +527,17 @@ class IPv6 implements AddressInterface
 
         return $overflow ? null : static::fromWords($words);
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see \IPLib\Address\AddressInterface::getReverseDNSLookupName()
+     */
+    public function getReverseDNSLookupName()
+    {
+        return implode(
+            '.',
+            array_reverse(str_split(str_replace(':', '', $this->toString(true)), 1))
+        ) . '.ip6.arpa';
+    }
 }
