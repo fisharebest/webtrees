@@ -708,17 +708,12 @@ class FunctionsPrintFacts
         }
 
         // -- find source for each fact
-        $ct    = preg_match_all("/($level SOUR (.+))/", $factrec, $match, PREG_SET_ORDER);
-        $spos2 = 0;
-        for ($j = 0; $j < $ct; $j++) {
-            $sid   = trim($match[$j][2], '@');
-            $spos1 = strpos($factrec, $match[$j][1], $spos2);
-            $spos2 = strpos($factrec, "\n$level", $spos1);
-            if (!$spos2) {
-                $spos2 = strlen($factrec);
-            }
-            $srec   = substr($factrec, $spos1, $spos2 - $spos1);
-            $source = Factory::source()->make($sid, $tree);
+        preg_match_all('/(?:^|\n)(' . $level . ' SOUR (.*)(?:\n[' . $nlevel . '-9] .*)*)/', $fact->gedcom(), $matches, PREG_SET_ORDER);
+
+        foreach ($matches as $match) {
+            $srec   = $match[1];
+            $sid    = $match[2];
+            $source = Factory::source()->make(trim($sid, '@'), $tree);
             // Allow access to "1 SOUR @non_existent_source@", so it can be corrected/deleted
             if (!$source || $source->canShow()) {
                 if ($level > 1) {
@@ -751,7 +746,7 @@ class FunctionsPrintFacts
                         ])) . '" title="', I18N::translate('Edit'), '">';
                     echo GedcomTag::getLabel($factname), '</a>';
                     echo '<div class="editfacts nowrap">';
-                    if (preg_match('/^@.+@$/', $match[$j][2])) {
+                    if (preg_match('/^@.+@$/', $sid)) {
                         // Inline sources can't be edited. Attempting to save one will convert it
                         // into a link, and delete it.
                         // e.g. "1 SOUR my source" becomes "1 SOUR @my source@" which does not exist.

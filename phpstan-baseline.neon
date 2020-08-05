@@ -107,12 +107,12 @@ parameters:
 
 		-
 			message: "#^Parameter \\#3 \\$offset of function strpos expects int, int\\|false given\\.$#"
-			count: 2
+			count: 1
 			path: app/Functions/FunctionsPrintFacts.php
 
 		-
 			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\|false given\\.$#"
-			count: 2
+			count: 1
 			path: app/Functions/FunctionsPrintFacts.php
 
 		-
