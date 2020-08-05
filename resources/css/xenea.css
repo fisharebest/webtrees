@@ -998,33 +998,6 @@ div.faq_body {
     clear: both;
 }
 
-/* markdown formatting */
-
-.markdown {
-    /* Tables and pre-formatted text can break the layout. */
-    overflow-x: auto;
-}
-
-.markdown p {
-    margin: 0 0 0.5em;
-    white-space: pre-wrap;
-}
-
-.markdown table {
-    border-collapse: collapse;
-    margin-bottom: 5px;
-}
-
-.markdown th {
-    font-weight: bold;
-}
-
-.markdown td,
-.markdown th {
-    border: solid thin #000;
-    padding: 3px;
-}
-
 .odometer {
     font-family: courier, monospace;
     font-weight: bold;
