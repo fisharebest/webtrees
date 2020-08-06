@@ -574,7 +574,8 @@ class WebRoutes
             $router->get(HelpText::class, '/help/{topic}', HelpText::class);
             $router->post(SelectLanguage::class, '/language/{language}', SelectLanguage::class);
             $router->post(Logout::class, '/logout', Logout::class);
-            $router->get(Ping::class, '/ping', Ping::class);
+            $router->get(Ping::class, '/ping', Ping::class)
+                ->allows(RequestMethodInterface::METHOD_HEAD);
             $router->get(RobotsTxt::class, '/robots.txt', RobotsTxt::class);
             $router->post(SelectTheme::class, '/theme/{theme}', SelectTheme::class);
             $router->get(HomePage::class, '/', HomePage::class);
