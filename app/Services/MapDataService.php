@@ -74,7 +74,7 @@ class MapDataService
             ->join('gedcom_setting', 'gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
             ->where('setting_name', '=', 'title')
             ->whereIn('p_parent_id', $parents)
-            ->select(['p_place', 'gedcom_name AS tree_name', 'setting_value AS tree_title', 'p_id'])
+            ->select(['p_place', 'p_file AS tree_id', 'gedcom_name AS tree_name', 'setting_value AS tree_title', 'p_id'])
             ->get();
 
         foreach ($rows as $row) {

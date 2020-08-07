@@ -92,17 +92,17 @@ class MapDataList implements RequestHandlerInterface
         $breadcrumbs[route(__CLASS__)]           = $title;
         $breadcrumbs[route(ControlPanel::class)] = I18N::translate('Control panel');
 
-        $show_links = $this->module_service->findByInterface(PlaceHierarchyListModule::class)->isNotEmpty();
+        $show_links_via_module = $this->module_service->findByInterface(PlaceHierarchyListModule::class)->first();
 
         $this->layout = 'layouts/administration';
 
         return $this->viewResponse('admin/locations', [
-            'active'      => $this->map_data_service->activePlaces($parent),
-            'breadcrumbs' => array_reverse($breadcrumbs),
-            'parent_id'   => $parent_id,
-            'placelist'   => $this->getPlaceListLocation($parent_id),
-            'show_links'  => $show_links,
-            'title'       => $title,
+            'active'                => $this->map_data_service->activePlaces($parent),
+            'breadcrumbs'           => array_reverse($breadcrumbs),
+            'parent_id'             => $parent_id,
+            'placelist'             => $this->getPlaceListLocation($parent_id),
+            'show_links_via_module' => $show_links_via_module,
+            'title'                 => $title,
         ]);
     }
 
