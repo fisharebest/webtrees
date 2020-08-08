@@ -70,7 +70,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
     <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(substr(strrchr($request->getAttribute('route')->name, '\\'),1)) ?>">
         <header class="wt-header-wrapper d-print-none">
-            <div class="container wt-header-container">
+            <div class="container-lg wt-header-container">
                 <div class="row wt-header-content">
                     <div class="wt-accessibility-links position-fixed">
                         <a class="sr-only sr-only-focusable btn btn-info btn-sm" href="#content">
@@ -124,7 +124,7 @@ use Psr\Http\Message\ServerRequestInterface;
         </header>
 
         <main id="content" class="wt-main-wrapper">
-            <div class="container wt-main-container">
+            <div class="container-lg wt-main-container">
                 <div class="flash-messages">
                     <?php foreach (FlashMessages::getMessages() as $message) : ?>
                         <div class="alert alert-<?= e($message->status) ?> alert-dismissible" role="alert">
@@ -141,7 +141,7 @@ use Psr\Http\Message\ServerRequestInterface;
             </div>
         </main>
 
-        <footer class="wt-footers container d-print-none">
+        <footer class="container-lg wt-footers d-print-none">
             <?= app(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static function (ModuleFooterInterface $module) use ($request): string {
                 return $module->getFooter($request);
             })->implode('') ?>
