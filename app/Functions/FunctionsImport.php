@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\GedcomService;
 use Fisharebest\Webtrees\Soundex;
@@ -45,6 +46,7 @@ use function array_intersect_key;
 use function array_map;
 use function array_unique;
 use function date;
+use function preg_match;
 use function preg_match_all;
 use function str_contains;
 use function str_starts_with;
@@ -274,9 +276,9 @@ class FunctionsImport
             if ($tree->getPreference('GENERATE_UIDS') === '1' && !str_contains($gedrec, "\n1 _UID ")) {
                 $gedrec .= "\n1 _UID " . GedcomTag::createUid();
             }
-        } elseif (preg_match('/0 (HEAD|TRLR)/', $gedrec, $match)) {
+        } elseif (preg_match('/0 (HEAD|TRLR|_PLAC_DEFN)/', $gedrec, $match)) {
             $type = $match[1];
-            $xref = $type; // For HEAD/TRLR, use type as pseudo XREF.
+            $xref = $type; // For records without an XREF, use the type as a pseudo XREF.
         } else {
             throw new GedcomErrorException($gedrec);
         }
@@ -427,6 +429,10 @@ class FunctionsImport
                 }
                 break;
 
+            case '_PLAC_DEFN':
+                self::importLegacyPlacDefn($gedrec);
+                return;
+
             default: // Custom record types.
                 DB::table('other')->insert([
                     'o_id'     => $xref,
@@ -439,6 +445,45 @@ class FunctionsImport
 
         // Update the cross-reference/index tables.
         self::updateLinks($xref, $tree_id, $gedrec);
+    }
+
+    /**
+     * Legacy Family Tree software generates _PLAC_DEFN records containing LAT/LONG values
+     *
+     * @param string $gedcom
+     */
+    private static function importLegacyPlacDefn(string $gedcom): void
+    {
+        $gedcom_service = new GedcomService();
+
+        if (preg_match('/\n1 PLAC (.+)/', $gedcom, $match)) {
+            $place_name = $match[1];
+        } else {
+            return;
+        }
+
+        if (preg_match('/\n3 LATI ([NS].+)/', $gedcom, $match)) {
+            $latitude = $gedcom_service->readLatitude($match[1]);
+        } else {
+            return;
+        }
+
+        if (preg_match('/\n3 LONG ([EW].+)/', $gedcom, $match)) {
+            $longitude = $gedcom_service->readLongitude($match[1]);
+        } else {
+            return;
+        }
+
+        $location = new PlaceLocation($place_name);
+
+        if ($location->latitude() === 0.0 && $location->longitude() === 0.0) {
+            DB::table('placelocation')
+                ->where('pl_id', '=', $location->id())
+                ->update([
+                    'pl_lati' => $latitude,
+                    'pl_long' => $longitude,
+                ]);
+        }
     }
 
     /**
