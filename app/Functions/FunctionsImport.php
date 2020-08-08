@@ -276,7 +276,7 @@ class FunctionsImport
             if ($tree->getPreference('GENERATE_UIDS') === '1' && !str_contains($gedrec, "\n1 _UID ")) {
                 $gedrec .= "\n1 _UID " . GedcomTag::createUid();
             }
-        } elseif (preg_match('/0 (HEAD|TRLR|_PLAC_DEFN)/', $gedrec, $match)) {
+        } elseif (preg_match('/0 (HEAD|TRLR|_PLAC |_PLAC_DEFN)/', $gedrec, $match)) {
             $type = $match[1];
             $xref = $type; // For records without an XREF, use the type as a pseudo XREF.
         } else {
@@ -429,6 +429,10 @@ class FunctionsImport
                 }
                 break;
 
+            case '_PLAC ':
+                self::importTNGPlac($gedrec);
+                return;
+
             case '_PLAC_DEFN':
                 self::importLegacyPlacDefn($gedrec);
                 return;
@@ -470,6 +474,45 @@ class FunctionsImport
 
         if (preg_match('/\n3 LONG ([EW].+)/', $gedcom, $match)) {
             $longitude = $gedcom_service->readLongitude($match[1]);
+        } else {
+            return;
+        }
+
+        $location = new PlaceLocation($place_name);
+
+        if ($location->latitude() === 0.0 && $location->longitude() === 0.0) {
+            DB::table('placelocation')
+                ->where('pl_id', '=', $location->id())
+                ->update([
+                    'pl_lati' => $latitude,
+                    'pl_long' => $longitude,
+                ]);
+        }
+    }
+
+    /**
+     * Legacy Family Tree software generates _PLAC_DEFN records containing LAT/LONG values
+     *
+     * @param string $gedcom
+     */
+    private static function importTNGPlac(string $gedcom): void
+    {
+        $gedcom_service = new GedcomService();
+
+        if (preg_match('/^0 _PLAC (.+)/', $gedcom, $match)) {
+            $place_name = $match[1];
+        } else {
+            return;
+        }
+
+        if (preg_match('/\n2 LATI (.+)/', $gedcom, $match)) {
+            $latitude = (float) $match[1];
+        } else {
+            return;
+        }
+
+        if (preg_match('/\n2 LONG (.+)/', $gedcom, $match)) {
+            $longitude = (float) $match[1];
         } else {
             return;
         }
