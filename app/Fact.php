@@ -466,11 +466,13 @@ class Fact
             $type = $this->attribute('TYPE');
 
             if ($type !== '') {
-                // Allow user-translations of custom types.
-                $translated = I18N::translate($type);
+                if (!str_contains($type, '%')) {
+                    // Allow user-translations of custom types.
+                    $translated = I18N::translate($type);
 
-                if ($translated !== $type) {
-                    return $translated;
+                    if ($translated !== $type) {
+                        return $translated;
+                    }
                 }
 
                 return e($type);
