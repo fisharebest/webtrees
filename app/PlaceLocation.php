@@ -162,12 +162,7 @@ class PlaceLocation
     public function latitude(): float
     {
         $gedcom_service = new GedcomService();
-
-        $tmp = $this;
-        do {
-            $pl_lati = (string) $tmp->details()->pl_lati;
-            $tmp = $tmp->parent();
-        } while ($pl_lati === '' && $tmp->id() !== 0);
+        $pl_lati        = (string) $this->details()->pl_lati;
 
         return $gedcom_service->readLatitude($pl_lati);
     }
@@ -180,12 +175,7 @@ class PlaceLocation
     public function longitude(): float
     {
         $gedcom_service = new GedcomService();
-
-        $tmp = $this;
-        do {
-            $pl_long = (string) $tmp->details()->pl_long;
-            $tmp = $tmp->parent();
-        } while ($pl_long === '' && $tmp->id() !== 0);
+        $pl_long        = (string) $this->details()->pl_long;
 
         return $gedcom_service->readLongitude($pl_long);
     }
@@ -233,6 +223,7 @@ class PlaceLocation
         $latitudes = DB::table('placelocation')
             ->where('pl_parent_id', '=', $this->id())
             ->orWhere('pl_id', '=', $this->id())
+            ->groupBy(['pl_lati'])
             ->pluck('pl_lati')
             ->filter()
             ->map(static function (string $x): float {
@@ -242,16 +233,45 @@ class PlaceLocation
         $longitudes = DB::table('placelocation')
             ->where('pl_parent_id', '=', $this->id())
             ->orWhere('pl_id', '=', $this->id())
+            ->groupBy(['pl_long'])
             ->pluck('pl_long')
             ->filter()
             ->map(static function (string $x): float {
                 return (new GedcomService())->readLongitude($x);
             });
 
+        // No co-ordinates?  Use the parent place instead.
+        if ($latitudes->isEmpty() && $longitudes->isEmpty()) {
+            return $this->parent()->boundingRectangle();
+        }
+
+        // Many co-ordinates?  Generate a bounding rectangle that includes them.
         if ($latitudes->count() > 1 || $longitudes->count() > 1) {
             return [[$latitudes->min(), $longitudes->min()], [$latitudes->max(), $longitudes->max()]];
         }
 
-        return $this->parent()->boundingRectangle();
+        // Just one co-ordinate?  Draw a box around it.
+        switch ($this->parts->count()) {
+            case 1:
+                // Countries
+                $delta = 5.0;
+                break;
+            case 2:
+                // Regions
+                $delta = 1.0;
+                break;
+            default:
+                // Cities and districts
+                $delta = 0.2;
+                break;
+        }
+
+        return [[
+            max($latitudes->min() - $delta, -90.0),
+            max($longitudes->min() - $delta, -180.0),
+        ], [
+            min($latitudes->max() + $delta, 90.0),
+            min($longitudes->max() + $delta, 180.0),
+        ]];
     }
 }

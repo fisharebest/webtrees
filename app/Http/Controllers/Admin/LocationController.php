@@ -162,17 +162,29 @@ class LocationController extends AbstractAdminController
         if ($place_id === 0) {
             $breadcrumbs[]   = I18N::translate('Add');
             $title           .= ' — ' . I18N::translate('Add');
-            $latitude        = '';
-            $longitude       = '';
+            $latitude        = 0.0;
+            $longitude       = 0.0;
             $map_bounds      = $parent->boundingRectangle();
-            $marker_position = [$parent->latitude(), $parent->longitude()];
         } else {
             $breadcrumbs[]   = I18N::translate('Edit');
             $title           .= ' — ' . I18N::translate('Edit');
             $latitude        = $location->latitude();
             $longitude       = $location->longitude();
             $map_bounds      = $location->boundingRectangle();
-            $marker_position = [$location->latitude(), $location->longitude()];
+        }
+
+        // If the current co-ordinates are unknown, leave the input fields empty,
+        // and show a marker in the middle of the map.
+        if ($latitude === 0.0 && $longitude === 0.0) {
+            $latitude  = '';
+            $longitude = '';
+
+            $marker_position = [
+                ($map_bounds[0][0] + $map_bounds[1][0]) / 2.0,
+                ($map_bounds[0][1] + $map_bounds[1][1]) / 2.0,
+            ];
+        } else {
+            $marker_position = [$latitude, $longitude];
         }
 
         return $this->viewResponse('admin/location-edit', [
