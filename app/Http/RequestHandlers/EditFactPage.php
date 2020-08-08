@@ -77,7 +77,7 @@ class EditFactPage implements RequestHandlerInterface
             'fact'         => $fact,
             'title'        => $title,
             'tree'         => $tree,
-            'url'          => $request->getQueryParams()['url'] ?? null,
+            'url'          => $request->getQueryParams()['url'] ?? $record->url(),
         ]);
     }
 }

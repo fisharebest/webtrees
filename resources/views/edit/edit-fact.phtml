@@ -11,11 +11,10 @@ use Fisharebest\Webtrees\Tree;
 use Ramsey\Uuid\Uuid;
 
 /**
- * @var bool        $can_edit_raw
- * @var Fact        $fact
- * @var string      $title
- * @var Tree        $tree
- * @var string|null $url
+ * @var bool   $can_edit_raw
+ * @var Fact   $fact
+ * @var string $title
+ * @var Tree   $tree
  */
 
 ?>
@@ -24,7 +23,7 @@ use Ramsey\Uuid\Uuid;
 
 <form method="post" action="<?= e(route(EditFactAction::class, ['tree' => $tree->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
-    <input type="hidden" name="url" value="<?= e($url ?? $fact->record()->url()) ?>">
+    <input type="hidden" name="url" value="<?= e($url) ?>">
 
     <?php FunctionsEdit::createEditForm($fact) ?>
 
@@ -135,7 +134,7 @@ use Ramsey\Uuid\Uuid;
                 I18N::translate('cancel') ?>
             </a>
             <?php if ($can_edit_raw) : ?>
-                <a class="btn btn-link" href="<?= e(route(EditRawFactPage::class, ['xref' => $fact->record()->xref(), 'fact_id' => $fact->id(), 'tree' => $tree->name(), 'url' => $url ?? $fact->record()->url()])) ?>">
+                <a class="btn btn-link" href="<?= e(route(EditRawFactPage::class, ['xref' => $fact->record()->xref(), 'fact_id' => $fact->id(), 'tree' => $tree->name(), 'url' => $url])) ?>">
                     <?= I18N::translate('Edit the raw GEDCOM') ?>
                 </a>
             <?php endif; ?>
