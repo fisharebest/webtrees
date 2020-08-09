@@ -275,10 +275,8 @@
 									</if>
 									<Text style="text">
 										<if condition="$spid!=''"><GetPersonName id="$spid" /></if>
-										<if condition="@DATE!=''"><var var=" " /> <GedcomValue tag="DATE" level="2" />
-											<if condition="@PLAC==''"> </if>
-										</if>
-										<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>
+										<if condition="@DATE!=''"><var var=" " /> <GedcomValue tag="DATE" level="2" /></if>
+										<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /><GedcomValue tag="PLAC" level="2" /></if>
 										<if condition="((@desc=='Y') or (@DATE=='' and @PLAC=='')) and ($spid=='')"><var var="I18N::translate(' but the details are unknown')" /></if>.
 									</Text>
 								</if>
