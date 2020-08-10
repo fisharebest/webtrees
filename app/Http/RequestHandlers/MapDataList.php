@@ -24,12 +24,9 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use stdClass;
 
 use function array_reverse;
 use function redirect;
@@ -77,7 +74,7 @@ class MapDataList implements RequestHandlerInterface
         }
 
         // Automatically import any new/missing places.
-        $this->map_data_service->importMissingChildren($parent);
+        $this->map_data_service->importMissingLocations();
 
         $breadcrumbs = [$parent->locationName()];
 
@@ -100,73 +97,9 @@ class MapDataList implements RequestHandlerInterface
             'active'      => $this->map_data_service->activePlaces($parent),
             'breadcrumbs' => array_reverse($breadcrumbs),
             'parent_id'   => $parent_id,
-            'placelist'   => $this->getPlaceListLocation($parent_id),
+            'placelist'   => $this->map_data_service->getPlaceListLocation($parent_id),
             'show_links'  => $show_links,
             'title'       => $title,
         ]);
-    }
-
-
-    /**
-     * Find all of the places in the hierarchy
-     *
-     * @param int $id
-     *
-     * @return stdClass[]
-     */
-    private function getPlaceListLocation(int $id): array
-    {
-        return DB::table('placelocation')
-            ->where('pl_parent_id', '=', $id)
-            ->orderBy(new Expression('pl_place /*! COLLATE ' . I18N::collation() . ' */'))
-            ->get()
-            ->map(function (stdClass $row): stdClass {
-                // Find/count places without co-ordinates
-                $children = $this->childLocationStatus((int) $row->pl_id);
-
-                $row->child_count = (int) $children->child_count;
-                $row->no_coord    = (int) $children->no_coord;
-
-                return $row;
-            })
-            ->all();
-    }
-
-    /**
-     * How many children does place have?  How many have co-ordinates?
-     *
-     * @param int $parent_id
-     *
-     * @return stdClass
-     */
-    private function childLocationStatus(int $parent_id): stdClass
-    {
-        $prefix = DB::connection()->getTablePrefix();
-
-        $expression =
-            $prefix . 'p0.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p0.pl_lati, '') = '' OR " .
-            $prefix . 'p1.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p1.pl_lati, '') = '' OR " .
-            $prefix . 'p2.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p2.pl_lati, '') = '' OR " .
-            $prefix . 'p3.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p3.pl_lati, '') = '' OR " .
-            $prefix . 'p4.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p4.pl_lati, '') = '' OR " .
-            $prefix . 'p5.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p5.pl_lati, '') = '' OR " .
-            $prefix . 'p6.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p6.pl_lati, '') = '' OR " .
-            $prefix . 'p7.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p7.pl_lati, '') = '' OR " .
-            $prefix . 'p8.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p8.pl_lati, '') = '' OR " .
-            $prefix . 'p9.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p9.pl_lati, '') = ''";
-
-        return DB::table('placelocation AS p0')
-            ->leftJoin('placelocation AS p1', 'p1.pl_parent_id', '=', 'p0.pl_id')
-            ->leftJoin('placelocation AS p2', 'p2.pl_parent_id', '=', 'p1.pl_id')
-            ->leftJoin('placelocation AS p3', 'p3.pl_parent_id', '=', 'p2.pl_id')
-            ->leftJoin('placelocation AS p4', 'p4.pl_parent_id', '=', 'p3.pl_id')
-            ->leftJoin('placelocation AS p5', 'p5.pl_parent_id', '=', 'p4.pl_id')
-            ->leftJoin('placelocation AS p6', 'p6.pl_parent_id', '=', 'p5.pl_id')
-            ->leftJoin('placelocation AS p7', 'p7.pl_parent_id', '=', 'p6.pl_id')
-            ->leftJoin('placelocation AS p8', 'p8.pl_parent_id', '=', 'p7.pl_id')
-            ->leftJoin('placelocation AS p9', 'p9.pl_parent_id', '=', 'p8.pl_id')
-            ->where('p0.pl_parent_id', '=', $parent_id)
-            ->select([new Expression('COUNT(*) AS child_count'), new Expression('SUM(' . $expression . ') AS no_coord')])
-            ->first();
     }
 }

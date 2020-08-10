@@ -20,11 +20,15 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\PlaceLocation;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
+use Illuminate\Support\Collection;
 use stdClass;
 
 use function array_unshift;
+use function implode;
 
 /**
  * Process geographic data.
@@ -87,47 +91,65 @@ class MapDataService
     /**
      * Make sure that all places in the genealogy data also exist in the location data.
      *
-     * @param PlaceLocation $location
-     *
      * @return void
      */
-    public function importMissingChildren(PlaceLocation $location): void
+    public function importMissingLocations(): void
     {
-        $parents = $this->placeIdsForLocation($location);
+        $all_places = DB::table('places AS p0')
+            ->leftJoin('places AS p1', 'p1.p_id', '=', 'p0.p_parent_id')
+            ->leftJoin('places AS p2', 'p2.p_id', '=', 'p1.p_parent_id')
+            ->leftJoin('places AS p3', 'p3.p_id', '=', 'p2.p_parent_id')
+            ->leftJoin('places AS p4', 'p4.p_id', '=', 'p3.p_parent_id')
+            ->leftJoin('places AS p5', 'p5.p_id', '=', 'p4.p_parent_id')
+            ->leftJoin('places AS p6', 'p6.p_id', '=', 'p5.p_parent_id')
+            ->leftJoin('places AS p7', 'p7.p_id', '=', 'p6.p_parent_id')
+            ->leftJoin('places AS p8', 'p8.p_id', '=', 'p7.p_parent_id')
+            ->select([
+                'p0.p_place AS part_0',
+                'p1.p_place AS part_1',
+                'p2.p_place AS part_2',
+                'p3.p_place AS part_3',
+                'p4.p_place AS part_4',
+                'p5.p_place AS part_5',
+                'p6.p_place AS part_6',
+                'p7.p_place AS part_7',
+                'p8.p_place AS part_8',
+            ])
+            ->get()
+            ->map(static function (stdClass $row): string {
+                return implode(Gedcom::PLACE_SEPARATOR, (array) $row);
+            });
 
-        $rows = DB::table('places')
-            ->join('gedcom', 'gedcom.gedcom_id', '=', 'p_file')
-            ->whereIn('p_parent_id', $parents)
-            ->whereNotIn('p_place', static function ($query) use ($location): void {
-                $query->select(['pl_place'])->from('placelocation')->where('pl_parent_id', '=', $location->id());
-            })
-            ->groupBy(['p_place'])
-            ->select(['p_place'])
-            ->get();
+        $all_locations = DB::table('placelocation AS p0')
+            ->leftJoin('placelocation AS p1', 'p1.pl_id', '=', 'p0.pl_parent_id')
+            ->leftJoin('placelocation AS p2', 'p2.pl_id', '=', 'p1.pl_parent_id')
+            ->leftJoin('placelocation AS p3', 'p3.pl_id', '=', 'p2.pl_parent_id')
+            ->leftJoin('placelocation AS p4', 'p4.pl_id', '=', 'p3.pl_parent_id')
+            ->leftJoin('placelocation AS p5', 'p5.pl_id', '=', 'p4.pl_parent_id')
+            ->leftJoin('placelocation AS p6', 'p6.pl_id', '=', 'p5.pl_parent_id')
+            ->leftJoin('placelocation AS p7', 'p7.pl_id', '=', 'p6.pl_parent_id')
+            ->leftJoin('placelocation AS p8', 'p8.pl_id', '=', 'p7.pl_parent_id')
+            ->select([
+                'p0.pl_place AS part_0',
+                'p1.pl_place AS part_1',
+                'p2.pl_place AS part_2',
+                'p3.pl_place AS part_3',
+                'p4.pl_place AS part_4',
+                'p5.pl_place AS part_5',
+                'p6.pl_place AS part_6',
+                'p7.pl_place AS part_7',
+                'p8.pl_place AS part_8',
+            ])
+            ->get()
+            ->map(static function (stdClass $row): string {
+                return implode(Gedcom::PLACE_SEPARATOR, (array) $row);
+            });
 
-        if ($rows->isNotEmpty()) {
-            $tmp   = clone $location;
-            $level = 1;
+        $missing = $all_places->diff($all_locations);
 
-            while ($tmp->id() !== 0) {
-                $level++;
-                $tmp = $tmp->parent();
-            }
 
-            foreach ($rows as $row) {
-                $place_id = 1 + (int) DB::table('placelocation')->max('pl_id');
-
-                DB::table('placelocation')->insert([
-                    'pl_id'        => $place_id,
-                    'pl_parent_id' => $location->id(),
-                    'pl_level'     => $level,
-                    'pl_place'     => $row->p_place,
-                    'pl_lati'      => '',
-                    'pl_long'      => '',
-                    'pl_zoom'      => 2,
-                    'pl_icon'      => '',
-                ]);
-            }
+        foreach ($missing as $location) {
+            (new PlaceLocation($location))->id();
         }
     }
 
@@ -177,5 +199,55 @@ class MapDataService
         DB::table('placelocation')
             ->where('pl_id', '=', $location_id)
             ->delete();
+    }
+
+    /**
+     * Find a list of child places.
+     * How many children does each child place have?  How many have co-ordinates?
+     *
+     * @param int $parent_id
+     *
+     * @return Collection<object>
+     */
+    public function getPlaceListLocation(int $parent_id): Collection
+    {
+        $prefix = DB::connection()->getTablePrefix();
+
+        $expression =
+            $prefix . 'p1.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p1.pl_lati, '') = '' OR " .
+            $prefix . 'p2.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p2.pl_lati, '') = '' OR " .
+            $prefix . 'p3.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p3.pl_lati, '') = '' OR " .
+            $prefix . 'p4.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p4.pl_lati, '') = '' OR " .
+            $prefix . 'p5.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p5.pl_lati, '') = '' OR " .
+            $prefix . 'p6.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p6.pl_lati, '') = '' OR " .
+            $prefix . 'p7.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p7.pl_lati, '') = '' OR " .
+            $prefix . 'p8.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p8.pl_lati, '') = '' OR " .
+            $prefix . 'p9.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p9.pl_lati, '') = ''";
+
+        return DB::table('placelocation AS p0')
+            ->leftJoin('placelocation AS p1', 'p1.pl_parent_id', '=', 'p0.pl_id')
+            ->leftJoin('placelocation AS p2', 'p2.pl_parent_id', '=', 'p1.pl_id')
+            ->leftJoin('placelocation AS p3', 'p3.pl_parent_id', '=', 'p2.pl_id')
+            ->leftJoin('placelocation AS p4', 'p4.pl_parent_id', '=', 'p3.pl_id')
+            ->leftJoin('placelocation AS p5', 'p5.pl_parent_id', '=', 'p4.pl_id')
+            ->leftJoin('placelocation AS p6', 'p6.pl_parent_id', '=', 'p5.pl_id')
+            ->leftJoin('placelocation AS p7', 'p7.pl_parent_id', '=', 'p6.pl_id')
+            ->leftJoin('placelocation AS p8', 'p8.pl_parent_id', '=', 'p7.pl_id')
+            ->leftJoin('placelocation AS p9', 'p9.pl_parent_id', '=', 'p8.pl_id')
+            ->where('p0.pl_parent_id', '=', $parent_id)
+            ->groupBy(['p0.pl_id'])
+            ->orderBy(new Expression($prefix . 'p0.pl_place /*! COLLATE ' . I18N::collation() . ' */'))
+            ->select([
+                'p0.*',
+                new Expression('COUNT(' . $prefix . 'p1.pl_id) AS child_count'),
+                new Expression('SUM(' . $expression . ') AS no_coord'),
+            ])
+            ->get()
+            ->map(static function (stdClass $row): stdClass {
+                $row->child_count = (int) $row->child_count;
+                $row->no_coord    = (int) $row->no_coord;
+
+                return $row;
+            });
     }
 }
