@@ -46,7 +46,7 @@ class Gedcom
     public const REGEX_TAG = '[_A-Z][_A-Z0-9]*';
 
     // Regular expression to match a GEDCOM XREF.
-    public const REGEX_XREF = '[A-Za-z0-9:_.-]+';
+    public const REGEX_XREF = '[A-Za-z0-9:_.-]{1,20}';
 
     // UTF-8 encoded files may begin with an optional byte-order-mark (U+FEFF).
     public const UTF8_BOM = "\xEF\xBB\xBF";
