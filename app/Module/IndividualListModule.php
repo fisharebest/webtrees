@@ -136,7 +136,9 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             $individual = Factory::individual()->make($xref, $tree);
 
             if ($individual instanceof Individual && $individual->canShow()) {
-                $parameters['surname'] = $parameters['surname'] ?? $individual->getAllNames()[0]['surn'] ?? null;
+                $primary_name = $individual->getPrimaryName();
+
+                $parameters['surname'] = $parameters['surname'] ?? $individual->getAllNames()[$primary_name]['surn'] ?? null;
             }
         }
 
