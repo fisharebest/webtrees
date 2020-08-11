@@ -181,7 +181,7 @@ class CalendarEvents implements RequestHandlerInterface
 
         ob_start();
 
-        echo '<table class="w-100"><thead><tr>';
+        echo '<table class="w-100 wt-calendar-month"><thead><tr>';
         for ($week_day = 0; $week_day < $days_in_week; ++$week_day) {
             $day_name = $cal_date->dayNames(($week_day + $week_start) % $days_in_week);
             if ($week_day === $weekend_start || $week_day === $weekend_end) {

@@ -1038,6 +1038,16 @@ a > .wt-icon-arrow-up:hover {
     vertical-align: top;
 }
 
+.wt-calendar-month {
+    border-collapse: collapse;
+}
+
+.wt-calendar-month .wt-page-options-label,
+.wt-calendar-month .wt-page-options-value {
+    border: solid grey thin;
+    padding: 0.2rem;
+}
+
 /* Some menus (e.g. languages) can be longer than a page */
 .dropdown-menu {
     max-height: 30rem;
