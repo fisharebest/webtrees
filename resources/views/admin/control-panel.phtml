@@ -199,8 +199,8 @@ use Illuminate\Support\Collection;
                 <?php foreach ($all_trees as $tree) : ?>
                     <tr class="<?= $changes[$tree->id()] ? 'danger' : '' ?>">
                         <th scope="row">
+                            <?= view('icons/preferences') ?>
                             <a href="<?= e(route('manage-trees', ['tree' => $tree->name()])) ?>">
-                                <?= view('icons/preferences') ?>
                                 <?= e($tree->name()) ?>
                                 -
                                 <?= e($tree->title()) ?>
