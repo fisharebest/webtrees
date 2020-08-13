@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-06-11 23:07+0000\n"
+"PO-Revision-Date: 2020-08-21 17:21+0000\n"
 "Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
@@ -16436,7 +16436,7 @@ msgstr "geborene"
 #: app/GedcomCode/GedcomCodeName.php:73
 msgctxt "MALE"
 msgid "birth name"
-msgstr "geborener"
+msgstr "Geburtsname"
 
 #. I18N: Extend privacy to dead individuals who were…
 #: admin_trees_config.php:450
