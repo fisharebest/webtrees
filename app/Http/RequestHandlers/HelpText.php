@@ -21,24 +21,21 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_keys;
-use function array_merge;
-use function preg_replace;
 use function response;
-use function str_replace;
 use function strip_tags;
 use function view;
 
 /**
  * Show help text.
  */
-class HelpText extends AbstractBaseController
+class HelpText implements RequestHandlerInterface
 {
     private const FRENCH_DATES = [
         '@#DFRENCH R@ 12',

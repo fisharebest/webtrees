@@ -23,7 +23,6 @@ use Exception;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UpgradeService;
@@ -33,13 +32,14 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 use function route;
 
 /**
  * Perform a login.
  */
-class LoginAction extends AbstractBaseController
+class LoginAction implements RequestHandlerInterface
 {
     /** @var UpgradeService */
     private $upgrade_service;

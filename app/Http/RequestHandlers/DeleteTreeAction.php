@@ -20,12 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 use function e;
@@ -34,7 +34,7 @@ use function response;
 /**
  * Delete a tree.
  */
-class DeleteTreeAction extends AbstractBaseController
+class DeleteTreeAction implements RequestHandlerInterface
 {
     /** @var TreeService */
     private $tree_service;
