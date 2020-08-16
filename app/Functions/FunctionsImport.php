@@ -42,15 +42,25 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 
+use function app;
 use function array_intersect_key;
 use function array_map;
 use function array_unique;
+use function assert;
 use function date;
+use function explode;
+use function max;
 use function preg_match;
 use function preg_match_all;
+use function preg_replace;
+use function round;
 use function str_contains;
+use function str_replace;
 use function str_starts_with;
+use function strlen;
+use function strtolower;
 use function strtoupper;
+use function substr;
 use function trim;
 
 use const PREG_SET_ORDER;
@@ -497,8 +507,6 @@ class FunctionsImport
      */
     private static function importTNGPlac(string $gedcom): void
     {
-        $gedcom_service = new GedcomService();
-
         if (preg_match('/^0 _PLAC (.+)/', $gedcom, $match)) {
             $place_name = $match[1];
         } else {
@@ -704,95 +712,98 @@ class FunctionsImport
      * Extract inline media data, and convert to media objects.
      *
      * @param Tree   $tree
-     * @param string $gedrec
+     * @param string $gedcom
      *
      * @return string
      */
-    public static function convertInlineMedia(Tree $tree, string $gedrec): string
+    public static function convertInlineMedia(Tree $tree, string $gedcom): string
     {
-        while (preg_match('/\n1 OBJE(?:\n[2-9].+)+/', $gedrec, $match)) {
-            $gedrec = str_replace($match[0], self::createMediaObject(1, $match[0], $tree), $gedrec);
+        while (preg_match('/\n1 OBJE(?:\n[2-9].+)+/', $gedcom, $match)) {
+            $xref   = self::createMediaObject($match[0], $tree);
+            $gedcom = strtr($gedcom, [$match[0] =>  "\n1 OBJE @" . $xref . '@']);
         }
-        while (preg_match('/\n2 OBJE(?:\n[3-9].+)+/', $gedrec, $match)) {
-            $gedrec = str_replace($match[0], self::createMediaObject(2, $match[0], $tree), $gedrec);
+        while (preg_match('/\n2 OBJE(?:\n[3-9].+)+/', $gedcom, $match)) {
+            $xref   = self::createMediaObject($match[0], $tree);
+            $gedcom = strtr($gedcom, [$match[0] =>  "\n2 OBJE @" . $xref . '@']);
         }
-        while (preg_match('/\n3 OBJE(?:\n[4-9].+)+/', $gedrec, $match)) {
-            $gedrec = str_replace($match[0], self::createMediaObject(3, $match[0], $tree), $gedrec);
+        while (preg_match('/\n3 OBJE(?:\n[4-9].+)+/', $gedcom, $match)) {
+            $xref   = self::createMediaObject($match[0], $tree);
+            $gedcom = strtr($gedcom, [$match[0] =>  "\n3 OBJE @" . $xref . '@']);
         }
 
-        return $gedrec;
+        return $gedcom;
     }
 
     /**
      * Create a new media object, from inline media data.
      *
-     * @param int    $level
-     * @param string $gedrec
+     * GEDCOM 5.5.1: +1 FILE / +2 FORM / +3 MEDI / +1 TITL
+     * GEDCOM 5.5: +1 FORM / +1 TITL / +1 FILE
+     *
+     * Legacy generates: +1 FORM / +1 FILE / +1 TITL
+     * RootsMagic generates: +1 FILE / +1 FORM / +1 TITL
+     *
+     * @param string $gedcom
      * @param Tree   $tree
      *
      * @return string
      */
-    public static function createMediaObject(int $level, string $gedrec, Tree $tree): string
+    public static function createMediaObject(string $gedcom, Tree $tree): string
     {
-        if (preg_match('/\n\d FILE (.+)/', $gedrec, $file_match)) {
-            $file = $file_match[1];
-        } else {
-            $file = '';
-        }
+        preg_match('/\n\d FILE (.+)/u', $gedcom, $match);
+        $file = $match[1] ?? '';
 
-        if (preg_match('/\n\d TITL (.+)/', $gedrec, $file_match)) {
-            $titl = $file_match[1];
-        } else {
-            $titl = '';
-        }
+        preg_match('/\n\d TITL (.+)/u', $gedcom, $match);
+        $title = $match[1] ?? '';
+
+        preg_match('/\n\d FORM (.+)/u', $gedcom, $match);
+        $format = $match[1] ?? '';
+
+        preg_match('/\n\d (?:MEDI|TYPE) (.+)/u', $gedcom, $match);
+        $type = $match[1] ?? '';
 
         // Have we already created a media object with the same title/filename?
         $xref = DB::table('media_file')
             ->where('m_file', '=', $tree->id())
-            ->where('descriptive_title', '=', $titl)
+            ->where('descriptive_title', '=', mb_substr($title, 0, 248))
             ->where('multimedia_file_refn', '=', mb_substr($file, 0, 248))
             ->value('m_id');
 
-        if ($xref === null) {
+        if ($xref === null && $file !== '') {
             $xref = Factory::xref()->make(Media::RECORD_TYPE);
-            // renumber the lines
-            $gedrec = preg_replace_callback('/\n(\d+)/', static function (array $m) use ($level): string {
-                return "\n" . ($m[1] - $level);
-            }, $gedrec);
-            // convert to an object
-            $gedrec = str_replace("\n0 OBJE\n", '0 @' . $xref . "@ OBJE\n", $gedrec);
 
-            // Fix Legacy GEDCOMS
-            $gedrec = preg_replace('/\n1 FORM (.+)\n1 FILE (.+)\n1 TITL (.+)/', "\n1 FILE $2\n2 FORM $1\n2 TITL $3", $gedrec);
+            // convert to a media-object
+            $gedcom = '0 OBJE @' . $xref . "@\n1 FILE " . $file;
 
-            // Fix FTB GEDCOMS
-            $gedrec = preg_replace('/\n1 FORM (.+)\n1 TITL (.+)\n1 FILE (.+)/', "\n1 FILE $3\n2 FORM $1\n2 TITL $2", $gedrec);
+            if ($format !== '') {
+                $gedcom .= "\n2 FORM " . $format;
 
-            // Fix RM7 GEDCOMS
-            $gedrec = preg_replace('/\n1 FILE (.+)\n1 FORM (.+)\n1 TITL (.+)/', "\n1 FILE $1\n2 FORM $2\n2 TITL $3", $gedrec);
+                if ($type !== '') {
+                    $gedcom .= "\n3 TYPE " . $type;
+                }
+            }
 
-            // Create new record
-            $record = Factory::media()->new($xref, $gedrec, null, $tree);
+            if ($title !== '') {
+                $gedcom .= "\n3 TITL " . $title;
+            }
 
             DB::table('media')->insert([
                 'm_id'     => $xref,
                 'm_file'   => $tree->id(),
-                'm_gedcom' => $gedrec,
+                'm_gedcom' => $gedcom,
             ]);
 
-            foreach ($record->mediaFiles() as $media_file) {
-                DB::table('media_file')->insert([
-                    'm_id'                 => $xref,
-                    'm_file'               => $tree->id(),
-                    'multimedia_file_refn' => mb_substr($media_file->filename(), 0, 248),
-                    'multimedia_format'    => mb_substr($media_file->format(), 0, 4),
-                    'source_media_type'    => mb_substr($media_file->type(), 0, 15),
-                    'descriptive_title'    => mb_substr($media_file->title(), 0, 248),
-                ]);
-            }
+            DB::table('media_file')->insert([
+                'm_id'                 => $xref,
+                'm_file'               => $tree->id(),
+                'multimedia_file_refn' => mb_substr($file, 0, 248),
+                'multimedia_format'    => mb_substr($format, 0, 4),
+                'source_media_type'    => mb_substr($type, 0, 15),
+                'descriptive_title'    => mb_substr($title, 0, 248),
+            ]);
         }
 
-        return "\n" . $level . ' OBJE @' . $xref . '@';
+        return $xref;
     }
 
     /**
