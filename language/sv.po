@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-06-26 11:52+0000\n"
+"PO-Revision-Date: 2020-08-21 17:21+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sv/>\n"
@@ -2371,7 +2371,7 @@ msgstr "Genomsnittsålder"
 #: app/Module/FamilyTreeStatisticsModule.php:390
 #: app/Module/HtmlBlockModule.php:241 app/Stats.php:2599 statistics.php:149
 msgid "Average age at death"
-msgstr "Medelålder vid död"
+msgstr "Medellivslängd"
 
 #: app/Stats.php:3930 app/Stats.php:3931 app/Stats.php:3935 app/Stats.php:3939
 #: app/Stats.php:3942
@@ -2853,7 +2853,7 @@ msgstr "Halvbrors födelse"
 
 #: app/GedcomTag.php:1074
 msgid "Birth of a half-sibling"
-msgstr "Halv-syskons födelse"
+msgstr "Halvsyskons födelse"
 
 #: app/GedcomTag.php:1072
 msgid "Birth of a half-sister"
@@ -4516,7 +4516,7 @@ msgstr "Datum för prästvigning"
 
 #: app/GedcomTag.php:734
 msgid "Date of residence"
-msgstr "Boningsplatsdatum"
+msgstr "Bosättningsdatum"
 
 #: help_text.php:159
 msgid "Date period"
@@ -5348,7 +5348,7 @@ msgstr "Varje användarkonto har ett alternativ att ”automatiskt acceptera än
 
 #: statistics.php:129
 msgid "Earliest birth"
-msgstr "Tidigaste födelseår"
+msgstr "Tidigaste födelse"
 
 #: app/Module/FamilyTreeStatisticsModule.php:142
 #: app/Module/FamilyTreeStatisticsModule.php:320
@@ -5358,7 +5358,7 @@ msgstr "Tidigaste födelseår"
 
 #: statistics.php:130
 msgid "Earliest death"
-msgstr "Tidigaste dödsåret"
+msgstr "Tidigaste död"
 
 #: app/Module/FamilyTreeStatisticsModule.php:156
 #: app/Module/FamilyTreeStatisticsModule.php:348
@@ -8104,7 +8104,7 @@ msgstr "Senast inloggad"
 
 #: statistics.php:137
 msgid "Latest birth"
-msgstr "Senaste födelseåret"
+msgstr "Senaste födelse"
 
 #: app/Module/FamilyTreeStatisticsModule.php:149
 #: app/Module/FamilyTreeStatisticsModule.php:334
@@ -8114,7 +8114,7 @@ msgstr "Senaste födelseåret"
 
 #: statistics.php:138
 msgid "Latest death"
-msgstr "Senaste dödsåret"
+msgstr "Senaste död"
 
 #: app/Module/FamilyTreeStatisticsModule.php:163
 #: app/Module/FamilyTreeStatisticsModule.php:362
