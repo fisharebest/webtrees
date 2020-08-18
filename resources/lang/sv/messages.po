@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-06-24 09:32+0000\nLast-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\nLanguage-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-08-21 17:21+0000\nLast-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\nLanguage-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -2308,7 +2308,7 @@ msgstr "Genomsnittsålder"
 #: resources/views/modules/statistics-chart/custom.phtml:30
 #: resources/views/statistics/individuals/lifespan.phtml:20
 msgid "Average age at death"
-msgstr "Medelålder vid död"
+msgstr "Medellivslängd"
 
 #: app/Statistics/Google/ChartMarriageAge.php:155
 msgid "Average age at marriage"
@@ -2806,7 +2806,7 @@ msgstr "Halvbrors födelse"
 
 #: app/GedcomTag.php:1322
 msgid "Birth of a half-sibling"
-msgstr "Halv-syskons födelse"
+msgstr "Halvsyskons födelse"
 
 #: app/GedcomTag.php:1319
 msgid "Birth of a half-sister"
@@ -4520,7 +4520,7 @@ msgstr "Datum för prästvigning"
 
 #: app/GedcomTag.php:969
 msgid "Date of residence"
-msgstr "Boningsplatsdatum"
+msgstr "Bosättningsdatum"
 
 #: resources/views/help/date.phtml:91
 msgid "Date period"
@@ -5357,14 +5357,14 @@ msgstr "Varje användarkonto har ett alternativ att ”automatiskt acceptera än
 #: resources/views/modules/html/template-statistics.phtml:64
 #: resources/views/statistics/individuals/total-events.phtml:44
 msgid "Earliest birth"
-msgstr "Tidigaste födelseår"
+msgstr "Tidigaste födelse"
 
 #: resources/views/modules/gedcom_stats/config.phtml:34
 #: resources/views/modules/gedcom_stats/statistics.phtml:166
 #: resources/views/modules/html/template-statistics.phtml:72
 #: resources/views/statistics/individuals/total-events.phtml:92
 msgid "Earliest death"
-msgstr "Tidigaste dödsåret"
+msgstr "Tidigaste död"
 
 #: resources/views/statistics/families/total-records.phtml:93
 msgid "Earliest divorce"
@@ -8191,14 +8191,14 @@ msgstr "Senast inloggad"
 #: resources/views/modules/html/template-statistics.phtml:68
 #: resources/views/statistics/individuals/total-events.phtml:55
 msgid "Latest birth"
-msgstr "Senaste födelseåret"
+msgstr "Senaste födelse"
 
 #: resources/views/modules/gedcom_stats/config.phtml:35
 #: resources/views/modules/gedcom_stats/statistics.phtml:177
 #: resources/views/modules/html/template-statistics.phtml:76
 #: resources/views/statistics/individuals/total-events.phtml:103
 msgid "Latest death"
-msgstr "Senaste dödsåret"
+msgstr "Senaste död"
 
 #: resources/views/statistics/families/total-records.phtml:104
 msgid "Latest divorce"
