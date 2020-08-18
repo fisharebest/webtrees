@@ -337,10 +337,13 @@
     }
 
     /* Javascript calendar functions only work with precise gregorian dates "D M Y" or "Y" */
-    let greg_regex = /((\d+ (JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) )?\d+)/i;
+    let greg_regex = /(?:(\d*) ?(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) )?(\d+)/i;
     let date;
     if (greg_regex.exec(dateField.value)) {
-      date = new Date(RegExp.$1);
+      let day   = RegExp.$1 || '1';
+      let month = RegExp.$2 || 'JAN'
+      let year  = RegExp.$3;
+      date = new Date(day + ' ' + month + ' ' + year);
     } else {
       date = new Date();
     }
