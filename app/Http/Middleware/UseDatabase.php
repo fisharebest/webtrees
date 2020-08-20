@@ -90,8 +90,8 @@ class UseDatabase implements MiddlewareInterface
             'modes'                   => [
                 'ANSI',
                 'STRICT_ALL_TABLES',
-                // Use SQL injection(!) to override MAX_JOIN_SIZE setting.
-                "', SQL_BIG_SELECTS=1, @foobar='"
+                // Use SQL injection(!) to override MAX_JOIN_SIZE and GROUP_CONCAT_MAX_LEN settings.
+                "', SQL_BIG_SELECTS=1, GROUP_CONCAT_MAX_LEN=1048576, @foobar='"
             ],
             // For SQLite
             'foreign_key_constraints' => true,
