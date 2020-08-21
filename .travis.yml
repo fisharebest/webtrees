@@ -5,8 +5,7 @@ php:
   - 7.2
   - 7.3
   - 7.4
-# doctrine/dbal isn't working with PHP 8.0 builds yet.
-#  - nightly
+  - nightly
 
 ## Non-sudo environments are faster
 sudo: false
