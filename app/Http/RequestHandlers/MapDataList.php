@@ -24,13 +24,13 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use stdClass;
-
 use function array_reverse;
 use function redirect;
 use function route;
@@ -48,16 +48,20 @@ class MapDataList implements RequestHandlerInterface
     /** @var ModuleService */
     private $module_service;
 
+    /** @var TreeService */
+    private $tree_service;
+
     /**
      * Dependency injection.
      *
      * @param MapDataService $map_data_service
      * @param ModuleService  $module_service
      */
-    public function __construct(MapDataService $map_data_service, ModuleService $module_service)
+    public function __construct(MapDataService $map_data_service, ModuleService $module_service, TreeService $tree_service)
     {
         $this->map_data_service = $map_data_service;
         $this->module_service   = $module_service;
+        $this->tree_service   = $tree_service;
     }
 
     /**
@@ -103,6 +107,7 @@ class MapDataList implements RequestHandlerInterface
             'placelist'             => $this->getPlaceListLocation($parent_id),
             'show_links_via_module' => $show_links_via_module,
             'title'                 => $title,
+            'tree_service'          => $this->tree_service,
         ]);
     }
 
