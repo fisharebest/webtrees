@@ -20,9 +20,7 @@ use Fisharebest\Webtrees\I18N;
         </div>
     </div>
 
-    <?= FunctionsEdit::addSimpleTag($tree, '0 MARR Y') ?>
-    <?= FunctionsEdit::addSimpleTag($tree, '0 DATE', 'MARR') ?>
-    <?= FunctionsEdit::addSimpleTag($tree, '0 PLAC', 'MARR') ?>
+    <?= FunctionsEdit::addSimpleTags($tree, 'MARR') ?>
 
     <div class="row form-group">
         <div class="col-sm-9 offset-sm-3">
@@ -39,3 +37,5 @@ use Fisharebest\Webtrees\I18N;
         </div>
     </div>
 </form>
+
+<?= view('modals/ajax') ?>
