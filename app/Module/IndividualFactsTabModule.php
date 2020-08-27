@@ -46,7 +46,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     private $clipboard_service;
 
     /**
-     * UserWelcomeModule constructor.
+     * IndividualFactsTabModule constructor.
      *
      * @param ModuleService    $module_service
      * @param ClipboardService $clipboard_service

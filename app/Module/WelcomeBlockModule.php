@@ -40,7 +40,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
     private $module_service;
 
     /**
-     * UserWelcomeModule constructor.
+     * WelcomeBlockModule constructor.
      *
      * @param ModuleService $module_service
      */

@@ -168,7 +168,7 @@ class PlaceLocation
     }
 
     /**
-     * Latitude of the longitude.
+     * Longitude of the location.
      *
      * @return float
      */
