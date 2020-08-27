@@ -31,6 +31,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use stdClass;
+
 use function array_reverse;
 use function redirect;
 use function route;
@@ -50,15 +51,19 @@ class MapDataList implements RequestHandlerInterface
 
     /** @var TreeService */
     private $tree_service;
-    
+
     /**
      * Dependency injection.
      *
      * @param MapDataService $map_data_service
      * @param ModuleService  $module_service
+     * @param TreeService    $tree_service
      */
-    public function __construct(MapDataService $map_data_service, ModuleService $module_service, TreeService $tree_service)
-    {
+    public function __construct(
+        MapDataService $map_data_service,
+        ModuleService $module_service,
+        TreeService $tree_service
+    ) {
         $this->map_data_service = $map_data_service;
         $this->module_service   = $module_service;
         $this->tree_service   = $tree_service;
@@ -96,18 +101,20 @@ class MapDataList implements RequestHandlerInterface
         $breadcrumbs[route(__CLASS__)]           = $title;
         $breadcrumbs[route(ControlPanel::class)] = I18N::translate('Control panel');
 
-        $show_links_via_module = $this->module_service->findByInterface(PlaceHierarchyListModule::class)->first();
+        $list_module = $this->module_service
+            ->findByInterface(PlaceHierarchyListModule::class)
+            ->first();
 
         $this->layout = 'layouts/administration';
 
         return $this->viewResponse('admin/locations', [
-            'active'                => $this->map_data_service->activePlaces($parent),
-            'breadcrumbs'           => array_reverse($breadcrumbs),
-            'parent_id'             => $parent_id,
-            'placelist'             => $this->map_data_service->getPlaceListLocation($parent_id),
-            'show_links_via_module' => $show_links_via_module,
-            'title'                 => $title,
-            'tree_service'          => $this->tree_service,
+            'active'       => $this->map_data_service->activePlaces($parent),
+            'all_trees'    => $this->tree_service->all(),
+            'breadcrumbs'  => array_reverse($breadcrumbs),
+            'parent_id'    => $parent_id,
+            'placelist'    => $this->map_data_service->getPlaceListLocation($parent_id),
+            'list_module'  => $list_module,
+            'title'        => $title,
         ]);
     }
 
