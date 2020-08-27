@@ -105,8 +105,9 @@ class ReportSetupPage implements RequestHandlerInterface
             ];
 
             $attributes = [
-                'id'   => 'input-' . $n,
-                'name' => 'vars[' . $input['name'] . ']',
+                'id'    => 'input-' . $n,
+                'name'  => 'vars[' . $input['name'] . ']',
+                'class' => 'form-control',
             ];
 
             switch ($input['lookup']) {
@@ -151,8 +152,7 @@ class ReportSetupPage implements RequestHandlerInterface
                         'onchange' => 'webtrees.reformatDate(this, "' . $dmy . '")'
                     ];
                     $input['control'] = '<input ' . Html::attributes($attributes) . '>';
-                    $input['extra']   = '<a href="#" title="' . I18N::translate('Select a date') . '" class ="btn btn-link" onclick="' . e('return webtrees.calendarWidget("calendar-widget-' . $n . '", "input-' . $n . '");') . '">' . view('icons/calendar') . '</a>' .
-                        '<div id="calendar-widget-' . $n . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000;"></div>';
+                    $input['extra'] = view('edit/input-addon-calendar', ['id' => 'input-' . $n]);
                     break;
 
                 default:
