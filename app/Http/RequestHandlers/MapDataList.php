@@ -66,7 +66,7 @@ class MapDataList implements RequestHandlerInterface
     ) {
         $this->map_data_service = $map_data_service;
         $this->module_service   = $module_service;
-        $this->tree_service   = $tree_service;
+        $this->tree_service = $tree_service;
     }
 
     /**
