@@ -307,7 +307,7 @@ class FunctionsPrintFacts
                         echo '<div class="field">', I18N::translate('No'), '</div>';
                         break;
                     case 'Y':
-                        // Do not display "Yes".
+                        echo '<div class="field">', I18N::translate('Yes'), '</div>';
                         break;
                     default:
                         if (preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $value, $match)) {
