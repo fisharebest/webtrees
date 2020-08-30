@@ -176,7 +176,7 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
             ]));
         }
 
-        Auth::checkComponentAccess($this, 'chart', $tree, $user);
+        Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
         if ($ajax === '1') {
             $this->layout = 'layouts/ajax';

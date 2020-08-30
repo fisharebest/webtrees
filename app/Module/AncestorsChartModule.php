@@ -191,7 +191,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         $style       = $request->getAttribute('style');
         $user        = $request->getAttribute('user');
 
-        Auth::checkComponentAccess($this, 'chart', $tree, $user);
+        Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
 
         // Convert POST requests into GET requests for pretty URLs.

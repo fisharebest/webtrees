@@ -217,7 +217,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
             ]));
         }
 
-        Auth::checkComponentAccess($this, 'chart', $tree, $user);
+        Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
         $width = min($width, self::MAXIMUM_WIDTH);
         $width = max($width, self::MINIMUM_WIDTH);

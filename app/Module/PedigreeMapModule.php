@@ -205,7 +205,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
         $user        = $request->getAttribute('user');
         $generations = (int) $request->getAttribute('generations');
-        Auth::checkComponentAccess($this, 'chart', $tree, $user);
+        Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {

@@ -109,7 +109,7 @@ trait ModuleTabTrait
 
         $user = $request->getAttribute('user');
 
-        if ($this->accessLevel($tree, 'tab') < Auth::accessLevel($tree, $user)) {
+        if ($this->accessLevel($tree, ModuleTabInterface::class) < Auth::accessLevel($tree, $user)) {
             throw new HttpAccessDeniedException();
         }
 

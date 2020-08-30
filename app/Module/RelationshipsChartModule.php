@@ -238,7 +238,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             $individual2 = Auth::checkIndividualAccess($individual2, false, true);
         }
 
-        Auth::checkComponentAccess($this, 'chart', $tree, $user);
+        Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
         if ($individual1 instanceof Individual && $individual2 instanceof Individual) {
             if ($ajax === '1') {

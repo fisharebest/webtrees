@@ -185,7 +185,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             ]));
         }
 
-        Auth::checkComponentAccess($this, 'chart', $tree, $user);
+        Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
         if ($ajax === '1') {
             $this->layout = 'layouts/ajax';

@@ -201,15 +201,15 @@ class Auth
 
     /**
      * @param ModuleInterface $module
-     * @param string          $component
+     * @param string          $interface
      * @param Tree            $tree
      * @param UserInterface   $user
      *
      * @return void
      */
-    public static function checkComponentAccess(ModuleInterface $module, string $component, Tree $tree, UserInterface $user): void
+    public static function checkComponentAccess(ModuleInterface $module, string $interface, Tree $tree, UserInterface $user): void
     {
-        if ($module->accessLevel($tree, $component) < self::accessLevel($tree, $user)) {
+        if ($module->accessLevel($tree, $interface) < self::accessLevel($tree, $user)) {
             throw new HttpAccessDeniedException();
         }
     }

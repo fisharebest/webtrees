@@ -198,7 +198,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
 
         $user = $request->getAttribute('user');
 
-        Auth::checkComponentAccess($this, 'chart', $tree, $user);
+        Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
         $tv = new TreeView('tv');
 

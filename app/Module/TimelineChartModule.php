@@ -154,7 +154,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 
         $add  = $params['add'] ?? '';
 
-        Auth::checkComponentAccess($this, 'chart', $tree, $user);
+        Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
         $scale = min($scale, self::MAXIMUM_SCALE);
         $scale = max($scale, self::MINIMUM_SCALE);
@@ -207,7 +207,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             return $individual instanceof Individual && $individual->canShow();
         });
 
-        Auth::checkComponentAccess($this, 'chart', $tree, $user);
+        Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
         if ($ajax === '1') {
             $this->layout = 'layouts/ajax';

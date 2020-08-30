@@ -203,7 +203,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
             ]));
         }
 
-        Auth::checkComponentAccess($this, 'chart', $tree, $user);
+        Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
         $generations = min($generations, self::MAXIMUM_GENERATIONS);
         $generations = max($generations, self::MINIMUM_GENERATIONS);

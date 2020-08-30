@@ -90,7 +90,7 @@ class ReportGenerate implements RequestHandlerInterface
             return redirect(route(ReportListPage::class, ['tree' => $tree->name()]));
         }
 
-        Auth::checkComponentAccess($module, 'report', $tree, $user);
+        Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $user);
 
         $varnames  = $request->getQueryParams()['varnames'] ?? [];
         $vars      = $request->getQueryParams()['vars'] ?? [];

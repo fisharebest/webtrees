@@ -73,7 +73,7 @@ class ReportListAction implements RequestHandlerInterface
         $module = $this->module_service->findByName($report);
 
         if ($module instanceof ModuleReportInterface) {
-            Auth::checkComponentAccess($module, 'report', $tree, $user);
+            Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $user);
 
             return redirect(route(ReportSetupPage::class, [
                 'tree'   => $tree->name(),
