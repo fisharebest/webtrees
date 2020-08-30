@@ -20288,6 +20288,9 @@ msgstr "år"
 msgid "yes"
 msgstr "ja"
 
+msgid "Yes"
+msgstr "Ja"
+
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:26
 msgid "you can connect to the database using other applications, such as phpmyadmin"

@@ -20539,6 +20539,9 @@ msgstr "annadas"
 msgid "yes"
 msgstr "oc"
 
+msgid "Yes"
+msgstr "Oc"
+
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:26
 msgid "you can connect to the database using other applications, such as phpmyadmin"

@@ -20318,6 +20318,9 @@ msgstr "metai"
 msgid "yes"
 msgstr "taip"
 
+msgid "Yes"
+msgstr "Taip"
+
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:26
 msgid "you can connect to the database using other applications, such as phpmyadmin"

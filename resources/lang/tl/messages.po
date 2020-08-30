@@ -5135,6 +5135,9 @@ msgstr ""
 msgid "yes"
 msgstr ""
 
+msgid "Yes"
+msgstr ""
+
 #: app/Functions/FunctionsEdit.php:193
 #: app/Http/Controllers/ListController.php:168
 #: app/Http/Controllers/ListController.php:177

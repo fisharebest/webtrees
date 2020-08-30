@@ -19227,7 +19227,7 @@ msgstr "9ος ξάδερφος"
 #: resources/xml/reports/individual_ext_report.xml:182
 #: resources/xml/reports/individual_report.xml:178
 msgid "no"
-msgstr "Όχι"
+msgstr "όχι"
 
 #. I18N: None of the other options
 #: app/Http/Controllers/AdminTreesController.php:753
@@ -20287,6 +20287,9 @@ msgstr "ετών"
 #: resources/xml/reports/individual_ext_report.xml:179
 #: resources/xml/reports/individual_report.xml:175
 msgid "yes"
+msgstr "ναι"
+
+msgid "Yes"
 msgstr "Ναι"
 
 #. I18N: [you should check that:] ...

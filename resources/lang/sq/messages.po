@@ -21660,6 +21660,9 @@ msgstr "vjet"
 msgid "yes"
 msgstr "po"
 
+msgid "Yes"
+msgstr "Po"
+
 # I18N: [you should check that:] ...
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:26

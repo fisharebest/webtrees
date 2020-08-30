@@ -20272,6 +20272,9 @@ msgstr "vuotta"
 msgid "yes"
 msgstr "kyllä"
 
+msgid "Yes"
+msgstr "Kyllä"
+
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:26
 msgid "you can connect to the database using other applications, such as phpmyadmin"

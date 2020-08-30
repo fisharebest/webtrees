@@ -20314,6 +20314,9 @@ msgstr "gadi"
 msgid "yes"
 msgstr "jā"
 
+msgid "Yes"
+msgstr "Jā"
+
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:26
 msgid "you can connect to the database using other applications, such as phpmyadmin"

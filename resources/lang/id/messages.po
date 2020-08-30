@@ -20258,6 +20258,9 @@ msgstr "tahun"
 #: resources/xml/reports/individual_ext_report.xml:179
 #: resources/xml/reports/individual_report.xml:175
 msgid "yes"
+msgstr "ya"
+
+msgid "Yes"
 msgstr "Ya"
 
 #. I18N: [you should check that:] ...
