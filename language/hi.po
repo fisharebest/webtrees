@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-07-31 06:37+0000\n"
+"PO-Revision-Date: 2020-09-06 08:32+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
@@ -3682,7 +3682,7 @@ msgstr "परिवार में बच्चे"
 #: modules_v3/ahnentafel_report/report.xml:391
 #: modules_v3/descendancy_report/report.xml:483
 msgid "Children of "
-msgstr ""
+msgstr "बाल-बच्चेः "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:88
@@ -5164,7 +5164,7 @@ msgstr "वंशज हित"
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
-msgstr ""
+msgstr "वंशजः "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/DescendancyController.php:62
@@ -19785,7 +19785,7 @@ msgstr "संख्या"
 #: statisticsplot.php:1122 statisticsplot.php:1172 statisticsplot.php:1222
 #: statisticsplot.php:1272 statisticsplot.php:1322 statisticsplot.php:1372
 msgid "of"
-msgstr ""
+msgstr "के"
 
 #: app/Functions/FunctionsPrint.php:373
 msgid "on the date of death"
