@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-07-31 06:37+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-09-06 08:32+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -3556,7 +3556,7 @@ msgstr "परिवार में बच्चे"
 #: resources/xml/reports/ahnentafel_report.xml:392
 #: resources/xml/reports/descendancy_report.xml:483
 msgid "Children of "
-msgstr ""
+msgstr "बाल-बच्चेः "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:99
@@ -5081,7 +5081,7 @@ msgstr "वंशज हित"
 
 #: resources/xml/reports/descendancy_report.xml:42
 msgid "Descendants of "
-msgstr ""
+msgstr "वंशजः "
 
 #. I18N: %s is an individual’s name
 #: app/Module/DescendancyChartModule.php:153
@@ -19249,7 +19249,7 @@ msgstr "संख्या"
 #: resources/xml/reports/occupation_report.xml:38
 #: resources/xml/reports/relative_ext_report.xml:44
 msgid "of"
-msgstr ""
+msgstr "के"
 
 #: app/Functions/Functions.php:620
 msgid "parent"
