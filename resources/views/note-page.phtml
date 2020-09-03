@@ -1,12 +1,31 @@
 <?php
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Note                   $note
+ * @var Collection<Fact>       $clipboard_facts
+ * @var Collection<Fact>       $facts
+ * @var Collection<Family>     $families
+ * @var Collection<Individual> $individuals
+ * @var Collection<Media>      $media_objects
+ * @var Collection<Source>     $sources
+ * @var string                 $text
+ * @var Tree                   $tree
+ */
 
 ?>
 
@@ -68,13 +87,6 @@ use Fisharebest\Webtrees\Note;
                 <?= view('components/badge', ['count' => count($sources)]) ?>
             </a>
         </li>
-
-        <li class="nav-item" role="presentation">
-            <a class="nav-link<?= $notes->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#notes">
-                <?= I18N::translate('Notes') ?>
-                <?= view('components/badge', ['count' => count($notes)]) ?>
-            </a>
-        </li>
     </ul>
 
     <div class="tab-content">
@@ -122,10 +134,6 @@ use Fisharebest\Webtrees\Note;
 
         <div class="tab-pane fade" role="tabpanel" id="sources">
             <?= view('lists/sources-table', ['sources' => $sources, 'tree' => $tree]) ?>
-        </div>
-
-        <div class="tab-pane fade" role="tabpanel" id="notes">
-            <?= view('lists/notes-table', ['notes' => $notes, 'tree' => $tree]) ?>
         </div>
     </div>
 </div>

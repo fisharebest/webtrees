@@ -84,7 +84,6 @@ class NotePage implements RequestHandlerInterface
             'families'         => $note->linkedFamilies('NOTE'),
             'individuals'      => $note->linkedIndividuals('NOTE'),
             'note'             => $note,
-            'notes'            => new Collection(),
             'media_objects'    => $note->linkedMedia('NOTE'),
             'meta_description' => '',
             'meta_robots'      => 'index,follow',
