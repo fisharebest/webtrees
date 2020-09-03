@@ -34,6 +34,11 @@ class Site
         'SMTP_AUTH_PASS'
     ];
 
+    // The following preferences contain unimportant data, and should not be logged.
+    private const UNIMPORTANT_PREFERENCES = [
+        'next_xref'
+    ];
+
     /**
      * Everything from the wt_site_setting table.
      *
@@ -88,7 +93,9 @@ class Site
                 $setting_value = '********';
             }
 
-            Log::addConfigurationLog('Site preference "' . $setting_name . '" set to "' . $setting_value . '"', null);
+            if (!in_array($setting_name, self::UNIMPORTANT_PREFERENCES)) {
+                Log::addConfigurationLog('Site preference "' . $setting_name . '" set to "' . $setting_value . '"', null);
+            }
         }
     }
 }
