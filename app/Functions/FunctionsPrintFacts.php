@@ -218,7 +218,7 @@ class FunctionsPrintFacts
         // Print the value of this fact/event
         switch ($tag) {
             case 'ADDR':
-                echo e($value);
+                echo '<div class="d-block" style="white-space: pre-wrap">' . e($value) . '</div';
                 break;
             case 'AFN':
                 echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($value), '">', e($value), '</a></div>';
@@ -342,6 +342,11 @@ class FunctionsPrintFacts
 
         $addr = $fact->attribute('ADDR');
         if ($addr !== '') {
+            $addr = e($addr);
+            if (str_contains($addr, "\n")) {
+                $addr = '<span class="d-block" style="white-space: pre-wrap">' . $addr . '</span';
+            }
+
             echo GedcomTag::getLabelValue($record->tag() . ':' . $fact->getTag() . ':ADDR', $addr);
         }
 
