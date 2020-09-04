@@ -47,18 +47,18 @@ class HeaderPage implements RequestHandlerInterface
 
     // Show the header's facts in this order:
     private const FACT_ORDER = [
-        1 => 'SOUR',
-        'DEST',
-        'DATE',
-        'SUBM',
-        'SUBN',
-        'FILE',
-        'COPR',
-        'GEDC',
-        'CHAR',
-        'LANG',
-        'PLAC',
-        'NOTE',
+        1 => 'HEAD:SOUR',
+        'HEAD:DEST',
+        'HEAD:DATE',
+        'HEAD:SUBM',
+        'HEAD:SUBN',
+        'HEAD:FILE',
+        'HEAD:COPR',
+        'HEAD:GEDC',
+        'HEAD:CHAR',
+        'HEAD:LANG',
+        'HEAD:PLAC',
+        'HEAD:NOTE',
     ];
 
     /**
@@ -106,8 +106,8 @@ class HeaderPage implements RequestHandlerInterface
     {
         return $record->facts()
             ->sort(static function (Fact $x, Fact $y): int {
-                $sort_x = array_search($x->getTag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
-                $sort_y = array_search($y->getTag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
+                $sort_x = array_search($x->tag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
+                $sort_y = array_search($y->tag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
 
                 return $sort_x <=> $sort_y;
             });

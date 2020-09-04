@@ -48,15 +48,15 @@ class RepositoryPage implements RequestHandlerInterface
 
     // Show the repository's facts in this order:
     private const FACT_ORDER = [
-        1 => 'NAME',
-        'ADDR',
-        'NOTE',
-        'WWW',
-        'REFN',
-        'RIN',
-        '_UID',
-        'CHAN',
-        'RESN',
+        1 => 'REPO:NAME',
+        'REPO:ADDR',
+        'REPO:NOTE',
+        'REPO:WWW',
+        'REPO:REFN',
+        'REPO:RIN',
+        'REPO:_UID',
+        'REPO:CHAN',
+        'REPO:RESN',
     ];
 
     /** @var ClipboardService */
@@ -114,8 +114,8 @@ class RepositoryPage implements RequestHandlerInterface
     {
         return $record->facts()
             ->sort(static function (Fact $x, Fact $y): int {
-                $sort_x = array_search($x->getTag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
-                $sort_y = array_search($y->getTag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
+                $sort_x = array_search($x->tag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
+                $sort_y = array_search($y->tag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
 
                 return $sort_x <=> $sort_y;
             });

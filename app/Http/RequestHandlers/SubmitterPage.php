@@ -47,17 +47,17 @@ class SubmitterPage implements RequestHandlerInterface
 
     // Show the submitter's facts in this order:
     private const FACT_ORDER = [
-        1 => 'NAME',
-        'ADDR',
-        'PHON',
-        'EMAIL',
-        'WWW',
-        'LANG',
-        'OBJE',
-        'RFN',
-        'RIN',
-        'NOTE',
-        'CHAN',
+        1 => 'SUBM:NAME',
+        'SUBM:ADDR',
+        'SUBM:PHON',
+        'SUBM:EMAIL',
+        'SUBM:WWW',
+        'SUBM:LANG',
+        'SUBM:OBJE',
+        'SUBM:RFN',
+        'SUBM:RIN',
+        'SUBM:NOTE',
+        'SUBM:CHAN',
     ];
 
     /**
@@ -102,8 +102,8 @@ class SubmitterPage implements RequestHandlerInterface
     {
         return $record->facts()
             ->sort(static function (Fact $x, Fact $y): int {
-                $sort_x = array_search($x->getTag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
-                $sort_y = array_search($y->getTag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
+                $sort_x = array_search($x->tag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
+                $sort_y = array_search($y->tag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
 
                 return $sort_x <=> $sort_y;
             });

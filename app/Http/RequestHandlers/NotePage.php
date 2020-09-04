@@ -103,7 +103,7 @@ class NotePage implements RequestHandlerInterface
     {
         return $record->facts()
             ->filter(static function (Fact $fact): bool {
-                return $fact->getTag() !== 'CONT';
+                return $fact->tag() !== 'NOTE:CONT';
             });
     }
 }

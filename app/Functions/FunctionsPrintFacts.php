@@ -347,7 +347,7 @@ class FunctionsPrintFacts
                 $addr = '<span class="d-block" style="white-space: pre-wrap">' . $addr . '</span';
             }
 
-            echo GedcomTag::getLabelValue($record->tag() . ':' . $fact->getTag() . ':ADDR', $addr);
+            echo GedcomTag::getLabelValue($fact->tag() . ':ADDR', $addr);
         }
 
         // Print the associates of this fact/event
