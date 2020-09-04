@@ -370,7 +370,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
                 return '/\b' . strtr(preg_quote($search, '/'), ['\*' => '.*', '\?' => '.']) . '\b/' . $case;
 
             case 'regex':
-                $regex = '/' . addcslashes($search, '/') . '/' . $case;
+                $regex = '/' . addcslashes($search, '/') . '/u' . $case;
 
                 try {
                     // A valid regex on an empty string returns zero.
