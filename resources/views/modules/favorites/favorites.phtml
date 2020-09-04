@@ -40,7 +40,7 @@ use Illuminate\Support\Collection;
 <?php endforeach ?>
 
 <?php if ($can_edit) : ?>
-    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#favorite-form-<?= e($block_id) ?>">
+    <button type="button" class="btn btn-link" data-toggle="modal" data-backdrop="static" data-target="#favorite-form-<?= e($block_id) ?>">
         <?= I18N::translate('Add a favorite') ?>
     </button>
 

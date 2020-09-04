@@ -92,7 +92,7 @@ use Illuminate\Support\Collection;
                             <?= I18N::translate('Media file') ?>
                             <?php if ($media->canEdit()) : ?>
                                 <div class="editfacts nowrap">
-                                    <a class="btn btn-link" href="#" data-toggle="modal" data-target="#wt-ajax-modal" data-href="<?= route('edit-media-file', ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact_id' => $media_file->factId()]) ?>" title="<?= I18N::translate('Edit') ?>">
+                                    <a class="btn btn-link" href="#" data-toggle="modal" data-backdrop="static" data-target="#wt-ajax-modal" data-href="<?= route('edit-media-file', ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact_id' => $media_file->factId()]) ?>" title="<?= I18N::translate('Edit') ?>">
                                         <?= view('icons/edit') ?>
                                         <span class="sr-only">
                                         <?= I18N::translate('Edit') ?>
@@ -195,7 +195,7 @@ use Illuminate\Support\Collection;
                             <?= I18N::translate('Media file') ?>
                         </th>
                         <td>
-                            <a href="#" data-href="<?= e(route('add-media-file', ['tree' => $media->tree()->name(), 'xref' => $media->xref()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+                            <a href="#" data-href="<?= e(route('add-media-file', ['tree' => $media->tree()->name(), 'xref' => $media->xref()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal" data-backdrop="static">
                                 <?= I18N::translate('Add a media file') ?>
                             </a>
                         </td>

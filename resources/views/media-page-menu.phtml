@@ -14,17 +14,17 @@ use Fisharebest\Webtrees\I18N;
     </button>
 
     <div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">
-        <a class="dropdown-item" href="#" data-href="<?= e(route('link-media-to-individual', ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+        <a class="dropdown-item" href="#" data-href="<?= e(route('link-media-to-individual', ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal" data-backdrop="static">
             <?= view('icons/link') ?>
             <?= I18N::translate('Link this media object to an individual') ?>
         </a>
 
-        <a class="dropdown-item" href="#" data-href="<?= e(route('link-media-to-family', ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+        <a class="dropdown-item" href="#" data-href="<?= e(route('link-media-to-family', ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal" data-backdrop="static">
             <?= view('icons/link') ?>
             <?= I18N::translate('Link this media object to a family') ?>
         </a>
 
-        <a class="dropdown-item" href="#" data-href="<?= e(route('link-media-to-source', ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+        <a class="dropdown-item" href="#" data-href="<?= e(route('link-media-to-source', ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal" data-backdrop="static">
             <?= view('icons/link') ?>
             <?= I18N::translate('Link this media object to a source') ?>
         </a>

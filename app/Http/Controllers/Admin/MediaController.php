@@ -269,7 +269,7 @@ class MediaController extends AbstractAdminController
                         if (str_starts_with($row[0], $media_directory)) {
                             $tmp         = substr($row[0], strlen($media_directory));
                             $create_form .=
-                                '<p><a href="#" data-toggle="modal" data-target="#modal-create-media-from-file" data-file="' . e($tmp) . '" data-url="' . e(route('create-media-from-file', ['tree' => $media_tree])) . '" onclick="document.getElementById(\'modal-create-media-from-file-form\').action=this.dataset.url; document.getElementById(\'file\').value=this.dataset.file;">' . I18N::translate('Create') . '</a> — ' . e($media_tree) . '<p>';
+                                '<p><a href="#" data-toggle="modal" data-backdrop="static" data-target="#modal-create-media-from-file" data-file="' . e($tmp) . '" data-url="' . e(route('create-media-from-file', ['tree' => $media_tree])) . '" onclick="document.getElementById(\'modal-create-media-from-file-form\').action=this.dataset.url; document.getElementById(\'file\').value=this.dataset.file;">' . I18N::translate('Create') . '</a> — ' . e($media_tree) . '<p>';
                         }
                     }
 

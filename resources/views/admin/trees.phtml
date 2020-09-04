@@ -222,7 +222,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                     <!-- UNLINKED SOURCE -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/source') ?></span>
-                                        <a href="#" data-href="<?= e(route(CreateSourceModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+                                        <a href="#" data-href="<?= e(route(CreateSourceModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal" data-backdrop="static">
                                             <?= I18N::translate('Source') ?>
                                             <span class="sr-only"><?= e($managed_tree->title()) ?></span>
                                         </a>
@@ -230,7 +230,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                     <!-- UNLINKED REPOSITORY -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/repository') ?></span>
-                                        <a href="#" data-href="<?= e(route(CreateRepositoryModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+                                        <a href="#" data-href="<?= e(route(CreateRepositoryModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal" data-backdrop="static">
                                             <?= I18N::translate('Repository') ?>
                                             <span class="sr-only"><?= e($managed_tree->title()) ?></span>
                                         </a>
@@ -238,7 +238,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                     <!-- UNLINKED MEDIA OBJECT -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/media') ?></span>
-                                        <a href="#" data-href="<?= e(route(CreateMediaObjectModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+                                        <a href="#" data-href="<?= e(route(CreateMediaObjectModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal" data-backdrop="static">
 
                                             <?= I18N::translate('Media object') ?>
                                             <span class="sr-only"><?= e($managed_tree->title()) ?></span>
@@ -247,7 +247,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                     <!-- UNLINKED NOTE -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/note') ?></span>
-                                        <a href="#" data-href="<?= e(route(CreateNoteModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+                                        <a href="#" data-href="<?= e(route(CreateNoteModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal" data-backdrop="static">
                                             <?= I18N::translate('Shared note') ?>
                                             <span class="sr-only"><?= e($managed_tree->title()) ?></span>
                                         </a>
@@ -255,7 +255,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                     <!-- UNLINKED SUBMITTER -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/submitter') ?></span>
-                                        <a href="#" data-href="<?= e(route(CreateSubmitterModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+                                        <a href="#" data-href="<?= e(route(CreateSubmitterModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal" data-backdrop="static">
                                             <?= I18N::translate('Submitter') ?>
                                             <span class="sr-only"><?= e($managed_tree->title()) ?></span>
                                         </a>

@@ -468,7 +468,7 @@ class FunctionsEdit
         } elseif ($fact === 'FAMC') {
             $html .=
                 '<div class="input-group">' .
-                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modal-create-family" data-element-id="' . $id . '" title="' . I18N::translate('Create a family') . '">' . view('icons/add') . '</button></div>' .
+                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-backdrop="static" data-target="#modal-create-family" data-element-id="' . $id . '" title="' . I18N::translate('Create a family') . '">' . view('icons/add') . '</button></div>' .
                 view('components/select-family', ['id' => $id, 'name' => $name, 'family' => Factory::family()->make($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'LATI') {
@@ -479,7 +479,7 @@ class FunctionsEdit
             $html .=
                 '<div class="input-group">' .
                 '<div class="input-group-prepend">' .
-                '<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#wt-ajax-modal" data-href="' . e(route(CreateNoteModal::class, ['tree' => $tree->name()])) . '" data-select-id="' . $id . '" title="' . I18N::translate('Create a shared note') . '">' .
+                '<button class="btn btn-secondary" type="button" data-toggle="modal" data-backdrop="static" data-target="#wt-ajax-modal" data-href="' . e(route(CreateNoteModal::class, ['tree' => $tree->name()])) . '" data-select-id="' . $id . '" title="' . I18N::translate('Create a shared note') . '">' .
                 '' . view('icons/add') . '<' .
                 '/button>' .
                 '</div>' .
@@ -488,7 +488,7 @@ class FunctionsEdit
         } elseif ($fact === 'OBJE') {
             $html .=
                 '<div class="input-group">' .
-                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route(CreateMediaObjectModal::class, ['tree' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a media object') . '">' . view('icons/add') . '</button></div>' .
+                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-backdrop="static" data-href="' . e(route(CreateMediaObjectModal::class, ['tree' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a media object') . '">' . view('icons/add') . '</button></div>' .
                 view('components/select-media', ['id' => $id, 'name' => $name, 'media' => Factory::media()->make($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'PAGE') {
@@ -526,7 +526,7 @@ class FunctionsEdit
         } elseif ($fact === 'REPO') {
             $html .=
                 '<div class="input-group">' .
-                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route(CreateRepositoryModal::class, ['tree' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a repository') . '">' . view('icons/add') . '</button></div>' .
+                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-backdrop="static" data-href="' . e(route(CreateRepositoryModal::class, ['tree' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a repository') . '">' . view('icons/add') . '</button></div>' .
                 view('components/select-repository', ['id' => $id, 'name' => $name, 'repository' => Factory::repository()->make($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'RESN') {
@@ -540,7 +540,7 @@ class FunctionsEdit
         } elseif ($fact === 'SOUR') {
             $html .=
                 '<div class="input-group">' .
-                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route(CreateSourceModal::class, ['tree' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a source') . '">' . view('icons/add') . '</button></div>' .
+                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-backdrop="static" data-href="' . e(route(CreateSourceModal::class, ['tree' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a source') . '">' . view('icons/add') . '</button></div>' .
                 view('components/select-source', ['id' => $id, 'name' => $name, 'source' => Factory::source()->make($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'STAT') {
@@ -548,7 +548,7 @@ class FunctionsEdit
         } elseif ($fact === 'SUBM') {
             $html .=
                 '<div class="input-group">' .
-                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-href="' . e(route(CreateSubmitterModal::class, ['tree' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a submitter') . '">' . view('icons/add') . '</button></div>' .
+                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-backdrop="static" data-href="' . e(route(CreateSubmitterModal::class, ['tree' => $tree->name()])) . '" data-target="#wt-ajax-modal" data-select-id="' . $id . '" title="' . I18N::translate('Create a submitter') . '">' . view('icons/add') . '</button></div>' .
                 view('components/select-submitter', ['id' => $id, 'name' => $name, 'submitter' => Factory::submitter()->make($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'TEMP') {

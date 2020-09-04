@@ -104,7 +104,7 @@ class DataFixData implements RequestHandlerInterface
                         'xref'     => $row->xref,
                     ] + $params);
                 // wt-ajax-modal-title
-                $col2 = '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#wt-ajax-modal" data-href="' . $preview_url . '">' . view('icons/search') . I18N::translate('Preview') . '</button>';
+                $col2 = '<button type="button" class="btn btn-primary" data-toggle="modal" data-backdrop="static" data-target="#wt-ajax-modal" data-href="' . $preview_url . '">' . view('icons/search') . I18N::translate('Preview') . '</button>';
                 $col2 .= ' <button type="button" class="btn btn-primary" data-update-url="' . $update_url . '">' . view('icons/data-fix') . I18N::translate('Update') . '</button>';
             } else {
                 $col2 = '—';
