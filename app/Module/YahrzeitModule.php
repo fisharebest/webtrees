@@ -112,7 +112,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                 if ($date->minimumDate() instanceof JewishDate && $date->minimumJulianDay() === $date->maximumJulianDay()) {
                     $jd_yahrtzeit = $jd;
                     // ...then adjust DEAT dates (but not _YART)
-                    if ($fact->getTag() === 'DEAT') {
+                    if ($fact->tag() === 'INDI:DEAT') {
                         $today     = new JewishDate($jd);
                         $hd        = $fact->date()->minimumDate();
                         $hd1       = new JewishDate($hd);

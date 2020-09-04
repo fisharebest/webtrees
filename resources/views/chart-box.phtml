@@ -46,33 +46,37 @@ foreach ($individual->spouseFamilies() as $family) {
 
 // Do not show these facts in the expanded chart boxes.
 $exclude = [
-    'ADDR',
-    'ALIA',
-    'ASSO',
-    'CHAN',
-    'CHIL',
-    'EMAIL',
-    'FAMC',
-    'FAMS',
-    'HUSB',
-    'NAME',
-    'NOTE',
-    'OBJE',
-    'PHON',
-    'RESI',
-    'RESN',
-    'SEX',
-    'SOUR',
-    'SSN',
-    'SUBM',
-    'TITL',
-    'URL',
-    'WIFE',
-    'WWW',
-    '_EMAIL',
-    '_TODO',
-    '_UID',
-    '_WT_OBJE_SORT',
+    'FAM:CHAN',
+    'FAM:CHIL',
+    'FAM:HUSB',
+    'FAM:NOTE',
+    'FAM:OBJE',
+    'FAM:RESN',
+    'FAM:SOUR',
+    'FAM:WIFE',
+    'INDI:ADDR',
+    'INDI:ALIA',
+    'INDI:ASSO',
+    'INDI:CHAN',
+    'INDI:EMAIL',
+    'INDI:FAMC',
+    'INDI:FAMS',
+    'INDI:NAME',
+    'INDI:NOTE',
+    'INDI:OBJE',
+    'INDI:PHON',
+    'INDI:RESI',
+    'INDI:RESN',
+    'INDI:SEX',
+    'INDI:SOUR',
+    'INDI:SSN',
+    'INDI:SUBM',
+    'INDI:TITL',
+    'INDI:URL',
+    'INDI:WWW',
+    'INDI:_EMAIL',
+    'INDI:_TODO',
+    'INDI:_UID',
 ];
 
 /** @var Collection|Fact[] $all_facts */
@@ -84,7 +88,7 @@ foreach ($individual->spouseFamilies() as $family) {
 }
 
 $all_facts = $all_facts->filter(static function (Fact $fact) use ($exclude): bool {
-    return !in_array($fact->getTag(), $exclude, true);
+    return !in_array($fact->tag(), $exclude, true);
 });
 
 $all_facts = Fact::sortFacts($all_facts);
