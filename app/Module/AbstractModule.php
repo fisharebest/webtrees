@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
@@ -90,7 +91,7 @@ abstract class AbstractModule implements ModuleInterface
      */
     final protected function getBlockSetting(int $block_id, string $setting_name, string $default = ''): string
     {
-        $settings = app('cache.array')->remember('block-setting-' . $block_id, static function () use ($block_id): array {
+        $settings = Factory::cache()->array()->remember('block-setting-' . $block_id, static function () use ($block_id): array {
             return DB::table('block_setting')
                 ->where('block_id', '=', $block_id)
                 ->pluck('setting_value', 'setting_name')
@@ -224,7 +225,7 @@ abstract class AbstractModule implements ModuleInterface
      */
     final public function accessLevel(Tree $tree, string $interface): int
     {
-        $access_levels = app('cache.array')
+        $access_levels = Factory::cache()->array()
             ->remember('module-privacy-' . $tree->id(), static function () use ($tree): Collection {
                 return DB::table('module_privacy')
                     ->where('gedcom_id', '=', $tree->id())

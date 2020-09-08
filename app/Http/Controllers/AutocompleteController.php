@@ -31,7 +31,6 @@ use GuzzleHttp\Exception\RequestException;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -81,8 +80,7 @@ class AutocompleteController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $query = $request->getQueryParams()['query'] ?? '';
 

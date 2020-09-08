@@ -21,16 +21,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
-use Fisharebest\Webtrees\Module\NoteListModule;
 use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
-use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;

@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -198,8 +199,7 @@ class MediaFileService
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $params        = (array) $request->getParsedBody();
         $file_location = $params['file_location'];

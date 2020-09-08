@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
-use LogicException;
 use PDO;
 use PDOException;
 use Psr\Http\Message\ResponseInterface;

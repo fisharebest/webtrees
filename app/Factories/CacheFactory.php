@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -17,23 +17,20 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Middleware;
+namespace Fisharebest\Webtrees\Factories;
 
 use Fisharebest\Webtrees\Cache;
+use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Webtrees;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
-use function app;
+use function random_int;
 
 /**
- * Middleware to setup an in-memory and file-system cache.
+ * Make a cache.
  */
-class UseCache implements MiddlewareInterface
+class CacheFactory implements CacheFactoryInterface
 {
     // How frequently to perform garbage collection.
     private const GC_PROBABILITY = 1000;
@@ -46,32 +43,35 @@ class UseCache implements MiddlewareInterface
     private $array_adapter;
 
     /** @var FilesystemAdapter */
-    private $files_adapter;
+    private $filesystem_adapter;
 
     /**
-     * UseCache constructor.
+     * CacheFactory constructor.
      */
     public function __construct()
     {
-        $this->array_adapter = new ArrayAdapter(0, false);
-        $this->files_adapter = new FilesystemAdapter('', self::FILES_TTL, self::FILES_DIR);
+        $this->array_adapter      = new ArrayAdapter(0, false);
+        $this->filesystem_adapter = new FilesystemAdapter('', self::FILES_TTL, self::FILES_DIR);
     }
 
     /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
+     * Create an array-based cache.
      *
-     * @return ResponseInterface
+     * @return Cache
      */
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    public function array(): Cache
     {
-        // Use an array cache for database calls, etc.
-        app()->instance('cache.array', new Cache($this->array_adapter));
+        return new Cache($this->array_adapter);
+    }
 
-        // Use a filesystem cache for image thumbnails, etc.
-        app()->instance('cache.files', new Cache($this->files_adapter));
-
-        return $handler->handle($request);
+    /**
+     * Create an file-based cache.
+     *
+     * @return Cache
+     */
+    public function file(): Cache
+    {
+        return new Cache($this->filesystem_adapter);
     }
 
     /**
@@ -80,7 +80,7 @@ class UseCache implements MiddlewareInterface
     public function __destruct()
     {
         if (random_int(1, self::GC_PROBABILITY) === 1) {
-            $this->files_adapter->prune();
+            $this->filesystem_adapter->prune();
         }
     }
 }

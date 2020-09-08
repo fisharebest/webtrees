@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Symfony\Component\Cache\Adapter\NullAdapter;
 
 /**
  * Test the DefaultUser class
@@ -27,6 +29,15 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 class DefaultUserTest extends TestCase
 {
     protected static $uses_database = true;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $cache_factory = $this->createMock(CacheFactoryInterface::class);
+        $cache_factory->method('array')->willReturn(new Cache(new NullAdapter()));
+        Factory::cache($cache_factory);
+    }
 
     /**
      * @covers \Fisharebest\Webtrees\DefaultUser::__construct

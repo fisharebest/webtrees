@@ -19,13 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Services\MediaFileService;
-use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function assert;
 
 /**
  * Controller for the media page and displaying images.
@@ -54,8 +52,7 @@ class MediaFileUnused implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $params = $request->getQueryParams();
 

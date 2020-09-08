@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
-use League\Flysystem\Filesystem;
 use League\Flysystem\Memory\MemoryAdapter;
 
 /**
@@ -77,10 +76,8 @@ class ImportThumbnailsControllerTest extends TestCase
         $search_service          = new SearchService($tree_service);
         $pending_changes_service = new PendingChangesService();
         $controller              = new ImportThumbnailsController($pending_changes_service, $search_service, $tree_service);
-        $request    = self::createRequest()
-            ->withQueryParams(['start' => '0', 'length' => '10', 'search' => ['value' => ''], 'draw' => '1'])
-            ->withAttribute('filesystem.data', new Filesystem(new MemoryAdapter()));
-        $response   = $controller->webtrees1ThumbnailsData($request);
+        $request                 = self::createRequest()->withQueryParams(['start' => '0', 'length' => '10', 'search' => ['value' => ''], 'draw' => '1']);
+        $response                = $controller->webtrees1ThumbnailsData($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }

@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Individual;

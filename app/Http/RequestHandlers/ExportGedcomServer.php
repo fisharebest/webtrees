@@ -19,13 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Tree;
-use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -73,8 +73,7 @@ class ExportGedcomServer implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $filename = $tree->name();
 

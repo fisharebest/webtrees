@@ -29,7 +29,6 @@ use function assert;
 use function count;
 use function preg_match_all;
 use function str_replace;
-use function substr;
 use function trim;
 
 /**

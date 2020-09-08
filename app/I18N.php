@@ -45,7 +45,6 @@ use function str_replace;
 use function strcmp;
 use function strip_tags;
 use function strlen;
-use function strpos;
 use function strtr;
 use function var_export;
 

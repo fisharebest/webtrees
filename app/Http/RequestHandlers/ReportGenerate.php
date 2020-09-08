@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
@@ -30,7 +31,6 @@ use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -80,8 +80,7 @@ class ReportGenerate implements RequestHandlerInterface
         $user = $request->getAttribute('user');
         assert($user instanceof UserInterface);
 
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $report = $request->getAttribute('report');
         $module = $this->module_service->findByName($report);

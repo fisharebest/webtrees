@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FamilyDatesRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 use stdClass;
 

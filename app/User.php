@@ -207,7 +207,7 @@ class User implements UserInterface
      */
     public function getPreference(string $setting_name, string $default = ''): string
     {
-        $preferences = app('cache.array')->remember('user-prefs-' . $this->user_id, function (): Collection {
+        $preferences = Factory::cache()->array()->remember('user-prefs-' . $this->user_id, function (): Collection {
             if ($this->user_id) {
                 return DB::table('user_setting')
                     ->where('user_id', '=', $this->user_id)

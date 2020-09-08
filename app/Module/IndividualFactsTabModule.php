@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ClipboardService;

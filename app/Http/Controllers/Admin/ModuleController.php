@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;

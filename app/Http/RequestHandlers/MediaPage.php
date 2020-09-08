@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -64,8 +63,7 @@ class MediaPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);

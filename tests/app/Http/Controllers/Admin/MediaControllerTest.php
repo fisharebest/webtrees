@@ -21,6 +21,10 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Cache;
+use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
+use Fisharebest\Webtrees\Contracts\FilesystemFactoryInterface;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -37,6 +41,16 @@ class MediaControllerTest extends TestCase
 {
     protected static $uses_database = true;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $filesystem_factory = $this->createMock(FilesystemFactoryInterface::class);
+        $filesystem_factory->method('data')->willReturn(new Filesystem(new NullAdapter()));
+        $filesystem_factory->method('dataName')->willReturn('data/');
+        Factory::filesystem($filesystem_factory);
+    }
+
     /**
      * @return void
      */
@@ -45,11 +59,8 @@ class MediaControllerTest extends TestCase
         $datatables_service = new DatatablesService();
         $media_file_service = new MediaFileService();
         $tree_service       = new TreeService();
-        $data_filesystem    = new Filesystem(new NullAdapter());
         $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
-        $request            = self::createRequest()
-            ->withAttribute('filesystem.data', $data_filesystem)
-            ->withAttribute('filesystem.data.name', 'data/');
+        $request            = self::createRequest();
         $response           = $controller->index($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -63,7 +74,6 @@ class MediaControllerTest extends TestCase
         $datatables_service = new DatatablesService();
         $media_file_service = new MediaFileService();
         $tree_service       = new TreeService();
-        $data_filesystem    = new Filesystem(new NullAdapter());
         $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
             'files'        => 'local',
@@ -72,9 +82,7 @@ class MediaControllerTest extends TestCase
             'search'       => ['value' => ''],
             'start'        => '0',
             'length'       => '10',
-        ])
-            ->withAttribute('filesystem.data', $data_filesystem)
-            ->withAttribute('filesystem.data.name', 'data/');
+        ]);
         $response           = $controller->data($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -88,7 +96,6 @@ class MediaControllerTest extends TestCase
         $datatables_service = new DatatablesService();
         $media_file_service = new MediaFileService();
         $tree_service       = new TreeService();
-        $data_filesystem    = new Filesystem(new NullAdapter());
         $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
             'files'        => 'local',
@@ -97,9 +104,7 @@ class MediaControllerTest extends TestCase
             'search'       => ['value' => ''],
             'start'        => '0',
             'length'       => '10',
-        ])
-            ->withAttribute('filesystem.data', $data_filesystem)
-            ->withAttribute('filesystem.data.name', 'data/');
+        ]);
         $response           = $controller->data($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -113,7 +118,6 @@ class MediaControllerTest extends TestCase
         $datatables_service = new DatatablesService();
         $media_file_service = new MediaFileService();
         $tree_service       = new TreeService();
-        $data_filesystem    = new Filesystem(new NullAdapter());
         $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
             'files'        => 'local',
@@ -122,9 +126,7 @@ class MediaControllerTest extends TestCase
             'search'       => ['value' => ''],
             'start'        => '0',
             'length'       => '10',
-        ])
-            ->withAttribute('filesystem.data', $data_filesystem)
-            ->withAttribute('filesystem.data.name', 'data/');
+        ]);
         $response           = $controller->data($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -138,9 +140,8 @@ class MediaControllerTest extends TestCase
         $datatables_service = new DatatablesService();
         $media_file_service = new MediaFileService();
         $tree_service       = new TreeService();
-        $data_filesystem    = new Filesystem(new NullAdapter());
         $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
-        $request            = self::createRequest()->withAttribute('filesystem.data', $data_filesystem);
+        $request            = self::createRequest();
         $response           = $controller->upload($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -154,9 +155,8 @@ class MediaControllerTest extends TestCase
         $datatables_service = new DatatablesService();
         $media_file_service = new MediaFileService();
         $tree_service       = new TreeService();
-        $data_filesystem    = new Filesystem(new NullAdapter());
         $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
-        $request            = self::createRequest()->withAttribute('filesystem.data', $data_filesystem);
+        $request            = self::createRequest();
         $response           = $controller->uploadAction($request);
 
         $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());

@@ -23,7 +23,6 @@ use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Factory;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;

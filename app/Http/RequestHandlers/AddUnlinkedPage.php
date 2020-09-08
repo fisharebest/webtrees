@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;

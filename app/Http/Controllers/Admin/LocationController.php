@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Exception;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
@@ -30,7 +31,6 @@ use Fisharebest\Webtrees\Services\GedcomService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Query\Expression;
-use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
@@ -54,7 +54,6 @@ use function fopen;
 use function fputcsv;
 use function implode;
 use function is_numeric;
-use function is_string;
 use function json_decode;
 use function preg_replace;
 use function redirect;
@@ -447,11 +446,8 @@ class LocationController extends AbstractAdminController
      */
     public function importLocations(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
-
-        $data_filesystem_name = $request->getAttribute('filesystem.data.name');
-        assert(is_string($data_filesystem_name));
+        $data_filesystem      = Factory::filesystem()->data();
+        $data_filesystem_name = Factory::filesystem()->dataName();
 
         $parent_id = (int) $request->getQueryParams()['parent_id'];
 
@@ -486,8 +482,7 @@ class LocationController extends AbstractAdminController
      */
     public function importLocationsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $params = (array) $request->getParsedBody();
 

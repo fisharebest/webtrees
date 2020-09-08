@@ -22,7 +22,10 @@ namespace Fisharebest\Webtrees;
 use Aura\Router\Route;
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
+use Fisharebest\Webtrees\Factories\CacheFactory;
 use Fisharebest\Webtrees\Factories\FamilyFactory;
+use Fisharebest\Webtrees\Factories\FilesystemFactory;
 use Fisharebest\Webtrees\Factories\GedcomRecordFactory;
 use Fisharebest\Webtrees\Factories\HeaderFactory;
 use Fisharebest\Webtrees\Factories\IndividualFactory;
@@ -87,22 +90,20 @@ class TestCase extends \PHPUnit\Framework\TestCase
         app()->bind(UploadedFileFactoryInterface::class, Psr17Factory::class);
         app()->bind(UriFactoryInterface::class, Psr17Factory::class);
 
-        // Disable the cache.
-        $cache = new Cache(new NullAdapter());
-        app()->instance('cache.array', $cache);
-
         // Register the factories
-        Factory::family(new FamilyFactory($cache));
-        Factory::gedcomRecord(new GedcomRecordFactory($cache));
-        Factory::header(new HeaderFactory($cache));
-        Factory::individual(new IndividualFactory($cache));
-        Factory::location(new LocationFactory($cache));
-        Factory::media(new MediaFactory($cache));
-        Factory::note(new NoteFactory($cache));
-        Factory::repository(new RepositoryFactory($cache));
-        Factory::source(new SourceFactory($cache));
-        Factory::submission(new SubmissionFactory($cache));
-        Factory::submitter(new SubmitterFactory($cache));
+        Factory::cache(new CacheFactory());
+        Factory::family(new FamilyFactory());
+        Factory::filesystem(new FilesystemFactory());
+        Factory::gedcomRecord(new GedcomRecordFactory());
+        Factory::header(new HeaderFactory());
+        Factory::individual(new IndividualFactory());
+        Factory::location(new LocationFactory());
+        Factory::media(new MediaFactory());
+        Factory::note(new NoteFactory());
+        Factory::repository(new RepositoryFactory());
+        Factory::source(new SourceFactory());
+        Factory::submission(new SubmissionFactory());
+        Factory::submitter(new SubmitterFactory());
         Factory::xref(new XrefFactory());
 
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
@@ -190,8 +191,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
             ->withAttribute('base_url', 'https://webtrees.test')
             ->withAttribute('client-ip', '127.0.0.1')
             ->withAttribute('user', new GuestUser())
-            ->withAttribute('filesystem.data', new Filesystem(new MemoryAdapter()))
-            ->withAttribute('filesystem.data.name', 'data/')
             ->withAttribute('route', new Route());
 
         foreach ($attributes as $key => $value) {

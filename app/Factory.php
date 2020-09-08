@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Contracts\FamilyFactoryInterface;
+use Fisharebest\Webtrees\Contracts\FilesystemFactoryInterface;
 use Fisharebest\Webtrees\Contracts\GedcomRecordFactoryInterface;
 use Fisharebest\Webtrees\Contracts\HeaderFactoryInterface;
 use Fisharebest\Webtrees\Contracts\IndividualFactoryInterface;
@@ -37,8 +39,14 @@ use Fisharebest\Webtrees\Contracts\XrefFactoryInterface;
  */
 class Factory
 {
+    /** @var CacheFactoryInterface */
+    private static $cache_factory;
+
     /** @var FamilyFactoryInterface */
     private static $family_factory;
+
+    /** @var FilesystemFactoryInterface */
+    private static $filesystem_factory;
 
     /** @var GedcomRecordFactoryInterface */
     private static $gedcom_record_factory;
@@ -76,6 +84,22 @@ class Factory
     /**
      * Store or retrieve a factory object.
      *
+     * @param CacheFactoryInterface|null $factory
+     *
+     * @return CacheFactoryInterface
+     */
+    public static function cache(CacheFactoryInterface $factory = null): CacheFactoryInterface
+    {
+        if ($factory instanceof CacheFactoryInterface) {
+            self::$cache_factory = $factory;
+        }
+
+        return self::$cache_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
      * @param FamilyFactoryInterface|null $factory
      *
      * @return FamilyFactoryInterface
@@ -87,6 +111,22 @@ class Factory
         }
 
         return self::$family_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param FilesystemFactoryInterface|null $factory
+     *
+     * @return FilesystemFactoryInterface
+     */
+    public static function filesystem(FilesystemFactoryInterface $factory = null): FilesystemFactoryInterface
+    {
+        if ($factory instanceof FilesystemFactoryInterface) {
+            self::$filesystem_factory = $factory;
+        }
+
+        return self::$filesystem_factory;
     }
 
     /**

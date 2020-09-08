@@ -23,6 +23,7 @@ use Aura\Router\RouterContainer;
 use Aura\Router\Rule\Accepts;
 use Aura\Router\Rule\Allows;
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
@@ -150,6 +151,17 @@ class Router implements MiddlewareInterface
         app()->instance(ServerRequestInterface::class, $request);
 
         $dispatcher = new Dispatcher($middleware, app());
+
+        // These are deprecated, and will be removed in webtrees 2.1.0
+        app()->instance('cache.array', Factory::cache()->array());
+        app()->instance('cache.files', Factory::cache()->file());
+
+        // These are deprecated, and will be removed in webtrees 2.1.0
+        $request = $request
+            ->withAttribute('filesystem.data', Factory::filesystem()->data())
+            ->withAttribute('filesystem.data.name', Factory::filesystem()->dataName())
+            ->withAttribute('filesystem.root', Factory::filesystem()->root())
+            ->withAttribute('filesystem.root.name', Factory::filesystem()->rootName());
 
         return $dispatcher->dispatch($request);
     }

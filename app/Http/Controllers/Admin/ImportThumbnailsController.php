@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\RequestHandlers\MediaFileUnused;
 use Fisharebest\Webtrees\I18N;
@@ -30,14 +29,12 @@ use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Support\Collection;
 use Intervention\Image\ImageManager;
-use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function abs;
-use function app;
 use function array_map;
-use function assert;
 use function dirname;
 use function e;
 use function explode;
@@ -114,8 +111,7 @@ class ImportThumbnailsController extends AbstractAdminController
      */
     public function webtrees1ThumbnailsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof Filesystem);
+        $data_filesystem = Factory::filesystem()->data();
 
         $params = (array) $request->getParsedBody();
 
@@ -183,8 +179,7 @@ class ImportThumbnailsController extends AbstractAdminController
      */
     public function webtrees1ThumbnailsData(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof Filesystem);
+        $data_filesystem = Factory::filesystem()->data();
 
         $start  = (int) $request->getQueryParams()['start'];
         $length = (int) $request->getQueryParams()['length'];
@@ -287,13 +282,13 @@ class ImportThumbnailsController extends AbstractAdminController
      * Compare two images, and return a quantified difference.
      * 0 (different) ... 100 (same)
      *
-     * @param Filesystem $data_filesystem
-     * @param string     $thumbnail
-     * @param string     $original
+     * @param FilesystemInterface $data_filesystem
+     * @param string              $thumbnail
+     * @param string              $original
      *
      * @return int
      */
-    private function imageDiff(Filesystem $data_filesystem, string $thumbnail, string $original): int
+    private function imageDiff(FilesystemInterface $data_filesystem, string $thumbnail, string $original): int
     {
         // The original filename was generated from the thumbnail filename.
         // It may not actually exist.
@@ -336,17 +331,14 @@ class ImportThumbnailsController extends AbstractAdminController
      * This is a slow operation, add we will do it many times on
      * the "import webtrees 1 thumbnails" page so cache the results.
      *
-     * @param Filesystem $filesystem
-     * @param string     $path
+     * @param FilesystemInterface $filesystem
+     * @param string              $path
      *
      * @return int[][]
      */
-    private function scaledImagePixels(Filesystem $filesystem, string $path): array
+    private function scaledImagePixels(FilesystemInterface $filesystem, string $path): array
     {
-        $cache = app('cache.files');
-        assert($cache instanceof Cache);
-
-        return $cache->remember('pixels-' . $path, static function () use ($filesystem, $path): array {
+        return Factory::cache()->file()->remember('pixels-' . $path, static function () use ($filesystem, $path): array {
             $blob    = $filesystem->read($path);
             $manager = new ImageManager();
             $image   = $manager->make($blob)->resize(self::FINGERPRINT_PIXELS, self::FINGERPRINT_PIXELS);

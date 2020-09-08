@@ -50,7 +50,6 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
-use League\Flysystem\FilesystemInterface;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -215,8 +214,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $params = (array) $request->getParsedBody();
 

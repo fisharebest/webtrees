@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Factory;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;

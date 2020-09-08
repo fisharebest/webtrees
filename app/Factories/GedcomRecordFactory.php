@@ -95,7 +95,7 @@ class GedcomRecordFactory extends AbstractGedcomRecordFactory implements GedcomR
             Factory::submission()->make($xref, $tree, $gedcom) ??
             Factory::location()->make($xref, $tree, $gedcom) ??
             Factory::header()->make($xref, $tree, $gedcom) ??
-            $this->cache->remember(__CLASS__ . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
+            Factory::cache()->array()->remember(__CLASS__ . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
                 $gedcom = $gedcom ?? $this->gedcom($xref, $tree);
 
                 $pending = $this->pendingChanges($tree)->get($xref);

@@ -41,7 +41,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
-use function array_key_exists;
 use function array_keys;
 use function assert;
 use function e;

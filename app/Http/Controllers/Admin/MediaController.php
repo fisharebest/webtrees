@@ -51,7 +51,6 @@ use function e;
 use function getimagesize;
 use function ini_get;
 use function intdiv;
-use function is_string;
 use function preg_match;
 use function redirect;
 use function route;
@@ -104,11 +103,8 @@ class MediaController extends AbstractAdminController
      */
     public function index(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
-
-        $data_filesystem_name = $request->getAttribute('filesystem.data.name');
-        assert(is_string($data_filesystem_name));
+        $data_filesystem      = Factory::filesystem()->data();
+        $data_filesystem_name = Factory::filesystem()->dataName();
 
         $files         = $request->getQueryParams()['files'] ?? 'local'; // local|unused|external
         $subfolders    = $request->getQueryParams()['subfolders'] ?? 'include'; // include|exclude
@@ -150,8 +146,7 @@ class MediaController extends AbstractAdminController
      */
     public function data(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $files  = $request->getQueryParams()['files']; // local|external|unused
 
@@ -382,8 +377,7 @@ class MediaController extends AbstractAdminController
      */
     public function upload(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $media_folders = $this->media_file_service->allMediaFolders($data_filesystem);
 
@@ -406,8 +400,7 @@ class MediaController extends AbstractAdminController
      */
     public function uploadAction(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $params = (array) $request->getParsedBody();
 

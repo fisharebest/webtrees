@@ -308,7 +308,7 @@ class GedcomRecord
 
         $cache_key = 'show-' . $this->xref . '-' . $this->tree->id() . '-' . $access_level;
 
-        return app('cache.array')->remember($cache_key, function () use ($access_level) {
+        return Factory::cache()->array()->remember($cache_key, function () use ($access_level) {
             return $this->canShowRecord($access_level);
         });
     }

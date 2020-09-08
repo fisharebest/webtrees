@@ -63,7 +63,6 @@ use function app;
 use function array_key_exists;
 use function assert;
 use function fclose;
-use function is_string;
 use function preg_match;
 use function route;
 
@@ -359,8 +358,7 @@ class AdminTreesController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $params             = (array) $request->getParsedBody();
         $source             = $params['source'];
@@ -414,11 +412,8 @@ class AdminTreesController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
-
-        $data_folder = $request->getAttribute('filesystem.data.name');
-        assert(is_string($data_folder));
+        $data_filesystem = Factory::filesystem()->data();
+        $data_folder     = Factory::filesystem()->dataName();
 
         $default_gedcom_file = $tree->getPreference('gedcom_filename');
         $gedcom_media_path   = $tree->getPreference('GEDCOM_MEDIA_PATH');
@@ -445,8 +440,7 @@ class AdminTreesController extends AbstractBaseController
     {
         $tree = $request->getAttribute('tree');
 
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $multiple_tree_threshold = (int) Site::getPreference('MULTIPLE_TREE_THRESHOLD', self::MULTIPLE_TREE_THRESHOLD);
         $gedcom_files            = $this->gedcomFiles($data_filesystem);
@@ -727,8 +721,7 @@ class AdminTreesController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_folder = $request->getAttribute('filesystem.data.name');
-        assert(is_string($data_folder));
+        $data_folder = Factory::filesystem()->dataName();
 
         $french_calendar_start    = new Date('22 SEP 1792');
         $french_calendar_end      = new Date('31 DEC 1805');
@@ -1488,8 +1481,7 @@ class AdminTreesController extends AbstractBaseController
      */
     public function synchronize(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $gedcom_files = $this->gedcomFiles($data_filesystem);
 

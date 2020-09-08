@@ -21,12 +21,9 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
 use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Tree;
-use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -54,8 +51,7 @@ class MediaFileDownload implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $disposition = $request->getQueryParams()['disposition'] ?? 'inline';
         assert($disposition === 'inline' || $disposition === 'attachment');

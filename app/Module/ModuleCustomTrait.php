@@ -20,17 +20,15 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Mime;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function app;
-use function assert;
 use function str_contains;
 use function strlen;
 use function strtolower;
@@ -82,10 +80,7 @@ trait ModuleCustomTrait
             return $this->customModuleVersion();
         }
 
-        $cache = app('cache.files');
-        assert($cache instanceof Cache);
-
-        return $cache->remember($this->name() . '-latest-version', function () {
+        return Factory::cache()->file()->remember($this->name() . '-latest-version', function () {
             try {
                 $client = new Client([
                     'timeout' => 3,

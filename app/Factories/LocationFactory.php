@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Factories;
 
 use Closure;
 use Fisharebest\Webtrees\Contracts\LocationFactoryInterface;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -47,7 +48,7 @@ class LocationFactory extends AbstractGedcomRecordFactory implements LocationFac
      */
     public function make(string $xref, Tree $tree, string $gedcom = null): ?Location
     {
-        return $this->cache->remember(__CLASS__ . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
+        return Factory::cache()->array()->remember(__CLASS__ . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
             $gedcom  = $gedcom ?? $this->gedcom($xref, $tree);
             $pending = $this->pendingChanges($tree)->get($xref);
 

@@ -33,7 +33,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -163,8 +162,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
         $user = $request->getAttribute('user');
         assert($user instanceof UserInterface);
 
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 

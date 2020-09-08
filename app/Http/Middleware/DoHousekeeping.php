@@ -20,14 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function assert;
 
 /**
  * Run the housekeeping service at irregular intervals.
@@ -72,17 +71,11 @@ class DoHousekeeping implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
-
-        $root_filesystem = $request->getAttribute('filesystem.root');
-        assert($root_filesystem instanceof FilesystemInterface);
-
         $response = $handler->handle($request);
 
         // Run the cleanup after random page requests.
         if ($request->getMethod() === RequestMethodInterface::METHOD_GET && random_int(1, self::PROBABILITY) === 1) {
-            $this->runHousekeeping($data_filesystem, $root_filesystem);
+            $this->runHousekeeping(Factory::filesystem()->data(), Factory::filesystem()->root());
         }
 
         return $response;

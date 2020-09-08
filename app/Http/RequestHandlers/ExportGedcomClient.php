@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Filesystem;
-use League\Flysystem\FilesystemInterface;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -78,8 +77,7 @@ class ExportGedcomClient implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $params = (array) $request->getParsedBody();
 

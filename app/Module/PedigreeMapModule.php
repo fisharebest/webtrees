@@ -44,7 +44,6 @@ use function intdiv;
 use function is_string;
 use function redirect;
 use function route;
-use function strip_tags;
 use function ucfirst;
 use function view;
 

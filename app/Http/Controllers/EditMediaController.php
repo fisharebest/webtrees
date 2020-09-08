@@ -33,7 +33,6 @@ use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Tree;
 use League\Flysystem\FileExistsException;
 use League\Flysystem\FileNotFoundException;
-use League\Flysystem\FilesystemInterface;
 use League\Flysystem\Util;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -76,8 +75,7 @@ class EditMediaController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $xref  = $request->getQueryParams()['xref'];
         $media = Factory::media()->make($xref, $tree);
@@ -154,8 +152,7 @@ class EditMediaController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
@@ -199,8 +196,7 @@ class EditMediaController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $xref    = $request->getQueryParams()['xref'];
         $fact_id = $request->getQueryParams()['fact_id'];
@@ -298,8 +294,7 @@ class EditMediaController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         return response(view('modals/create-media-object', [
             'max_upload_size' => $this->media_file_service->maxUploadFilesize(),

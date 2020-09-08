@@ -24,7 +24,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use stdClass;
 
-use function app;
 use function preg_split;
 
 /**
@@ -71,7 +70,7 @@ class PlaceLocation
      */
     public function id(): int
     {
-        return app('cache.array')->remember('location-' . $this->location_name, function () {
+        return Factory::cache()->array()->remember('location-' . $this->location_name, function () {
             // The "top-level" location won't exist in the database.
             if ($this->parts->isEmpty()) {
                 return 0;
@@ -132,7 +131,7 @@ class PlaceLocation
      */
     private function details(): stdClass
     {
-        return app('cache.array')->remember('location-details-' . $this->id(), function () {
+        return Factory::cache()->array()->remember('location-details-' . $this->id(), function () {
             // The "top-level" location won't exist in the database.
             if ($this->parts->isEmpty()) {
                 return (object) [

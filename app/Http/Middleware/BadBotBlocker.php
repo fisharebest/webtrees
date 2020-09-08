@@ -20,12 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Cache;
+use Fisharebest\Webtrees\Factory;
 use Iodev\Whois\Loaders\CurlLoader;
 use Iodev\Whois\Modules\Asn\AsnRouteInfo;
 use Iodev\Whois\Whois;
 use IPLib\Address\AddressInterface;
-use IPLib\Factory;
+use IPLib\Factory as IPFactory;
 use IPLib\Range\RangeInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -33,7 +33,6 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Throwable;
 
-use function app;
 use function array_map;
 use function assert;
 use function gethostbyaddr;
@@ -153,7 +152,7 @@ class BadBotBlocker implements MiddlewareInterface
     {
         $ua      = $request->getServerParams()['HTTP_USER_AGENT'] ?? '';
         $ip      = $request->getAttribute('client-ip');
-        $address = Factory::addressFromString($ip);
+        $address = IPFactory::addressFromString($ip);
         assert($address instanceof AddressInterface);
 
         foreach (self::BAD_ROBOTS as $robot) {
@@ -177,7 +176,7 @@ class BadBotBlocker implements MiddlewareInterface
         foreach (self::ROBOT_IPS as $robot => $valid_ips) {
             if (str_contains($ua, $robot)) {
                 foreach ($valid_ips as $ip) {
-                    $range = Factory::rangeFromString($ip);
+                    $range = IPFactory::rangeFromString($ip);
 
                     if ($range instanceof RangeInterface && $range->contains($address)) {
                         continue 2;
@@ -248,17 +247,14 @@ class BadBotBlocker implements MiddlewareInterface
      */
     private function fetchIpRangesForAsn(string $asn): array
     {
-        $cache = app('cache.files');
-        assert($cache instanceof Cache);
-
-        return $cache->remember('whois-asn-' . $asn, static function () use ($asn): array {
+        return Factory::cache()->file()->remember('whois-asn-' . $asn, static function () use ($asn): array {
             try {
                 $loader = new CurlLoader(self::WHOIS_TIMEOUT);
                 $whois  = new Whois($loader);
                 $info   = $whois->loadAsnInfo($asn);
                 $routes = $info->getRoutes();
                 $ranges = array_map(static function (AsnRouteInfo $route_info): ?RangeInterface {
-                    return Factory::rangeFromString($route_info->getRoute() ?: $route_info->getRoute6());
+                    return IPFactory::rangeFromString($route_info->getRoute() ?: $route_info->getRoute6());
                 }, $routes);
 
                 return array_filter($ranges);

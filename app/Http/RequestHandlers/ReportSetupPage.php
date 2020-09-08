@@ -35,7 +35,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
-use function e;
 use function redirect;
 use function route;
 

@@ -23,7 +23,6 @@ use Aura\Router\Route;
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
@@ -215,10 +214,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      */
     private function siteMapIndex(ServerRequestInterface $request): ResponseInterface
     {
-        $cache = app('cache.files');
-        assert($cache instanceof Cache);
-
-        $content = $cache->remember('sitemap.xml', function (): string {
+        $content = Factory::cache()->file()->remember('sitemap.xml', function (): string {
             // Which trees have sitemaps enabled?
             $tree_ids = $this->tree_service->all()->filter(static function (Tree $tree): bool {
                 return $tree->getPreference('include_in_sitemap') === '1';
@@ -320,12 +316,9 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             throw new HttpNotFoundException();
         }
 
-        $cache = app('cache.files');
-        assert($cache instanceof Cache);
-
         $cache_key = 'sitemap/' . $tree->id() . '/' . $type . '/' . $page . '.xml';
 
-        $content = $cache->remember($cache_key, function () use ($tree, $type, $page): string {
+        $content = Factory::cache()->file()->remember($cache_key, function () use ($tree, $type, $page): string {
             $records = $this->sitemapRecords($tree, $type, self::RECORDS_PER_VOLUME, self::RECORDS_PER_VOLUME * $page);
 
             return view('modules/sitemap/sitemap-file-xml', [

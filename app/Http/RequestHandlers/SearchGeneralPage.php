@@ -34,10 +34,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function array_filter;
 use function assert;
 use function in_array;
-use function preg_match;
 use function preg_replace;
 use function redirect;
-use function str_replace;
 use function trim;
 
 use const PREG_SET_ORDER;

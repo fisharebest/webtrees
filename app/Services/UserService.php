@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,6 +23,7 @@ use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\RequestHandlers\ContactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Individual;
@@ -34,7 +35,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function app;
 use function assert;
 use function max;
 
@@ -52,7 +52,7 @@ class UserService
      */
     public function find($user_id): ?User
     {
-        return app('cache.array')->remember('user-' . $user_id, static function () use ($user_id): ?User {
+        return Factory::cache()->array()->remember('user-' . $user_id, static function () use ($user_id): ?User {
             return DB::table('user')
                 ->where('user_id', '=', $user_id)
                 ->get()

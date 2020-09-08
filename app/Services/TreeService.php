@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
@@ -33,7 +34,6 @@ use Illuminate\Support\Collection;
 use RuntimeException;
 use stdClass;
 
-use function app;
 use function assert;
 
 /**
@@ -58,7 +58,7 @@ class TreeService
      */
     public function all(): Collection
     {
-        return app('cache.array')->remember('all-trees', static function (): Collection {
+        return Factory::cache()->array()->remember('all-trees', static function (): Collection {
             // All trees
             $query = DB::table('gedcom')
                 ->leftJoin('gedcom_setting', static function (JoinClause $join): void {

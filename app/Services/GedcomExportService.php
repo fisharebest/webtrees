@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\Factories\AbstractGedcomRecordFactory;
 use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Gedcom;
@@ -33,8 +32,6 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 
-use function app;
-use function assert;
 use function date;
 use function explode;
 use function fwrite;
@@ -94,9 +91,7 @@ class GedcomExportService
             ];
         } else {
             // Disable the pending changes before creating GEDCOM records.
-            $cache = app('cache.array');
-            assert($cache instanceof Cache);
-            $cache->remember(AbstractGedcomRecordFactory::class . $tree->id(), static function (): Collection {
+            Factory::cache()->array()->remember(AbstractGedcomRecordFactory::class . $tree->id(), static function (): Collection {
                 return new Collection();
             });
 

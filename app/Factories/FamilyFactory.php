@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -49,7 +49,7 @@ class FamilyFactory extends AbstractGedcomRecordFactory implements FamilyFactory
      */
     public function make(string $xref, Tree $tree, string $gedcom = null): ?Family
     {
-        return $this->cache->remember(__CLASS__ . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
+        return Factory::cache()->array()->remember(__CLASS__ . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
             $gedcom  = $gedcom ?? $this->gedcom($xref, $tree);
             $pending = $this->pendingChanges($tree)->get($xref);
 

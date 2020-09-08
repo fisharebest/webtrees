@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Statistics\Google\ChartChildren;
 use Fisharebest\Webtrees\Statistics\Google\ChartDivorce;
 use Fisharebest\Webtrees\Statistics\Google\ChartFamilyLargest;

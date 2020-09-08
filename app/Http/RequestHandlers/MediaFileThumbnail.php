@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use League\Flysystem\FilesystemInterface;
 use League\Glide\Signatures\SignatureException;
 use League\Glide\Signatures\SignatureFactory;
 use Psr\Http\Message\ResponseInterface;
@@ -68,8 +67,7 @@ class MediaFileThumbnail implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = $request->getAttribute('filesystem.data');
-        assert($data_filesystem instanceof FilesystemInterface);
+        $data_filesystem = Factory::filesystem()->data();
 
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
