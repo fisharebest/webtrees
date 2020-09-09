@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Tree;
@@ -51,7 +52,10 @@ class MediaFileDownload implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = Factory::filesystem()->data();
+        $user = $request->getAttribute('user');
+        assert($user instanceof UserInterface);
+
+        $image_factory = Factory::image();
 
         $disposition = $request->getQueryParams()['disposition'] ?? 'inline';
         assert($disposition === 'inline' || $disposition === 'attachment');
@@ -68,18 +72,13 @@ class MediaFileDownload implements RequestHandlerInterface
                     return redirect($media_file->filename());
                 }
 
-                if ($media_file->fileExists($data_filesystem)) {
-                    $data = $media_file->media()->tree()->mediaFilesystem($data_filesystem)->read($media_file->filename());
+                $watermark = $media_file->isImage() && $image_factory->fileNeedsWatermark($media_file, $user);
+                $download  = $disposition === 'attachment';
 
-                    return response($data, StatusCodeInterface::STATUS_OK, [
-                        'Content-Type'        => $media_file->mimeType(),
-                        'Content-Length'      => (string) strlen($data),
-                        'Content-Disposition' => $disposition . '; filename="' . addcslashes($media_file->filename(), '"') . '"',
-                    ]);
-                }
+                return $image_factory->mediaFileResponse($media_file, $watermark, $download);
             }
         }
 
-        throw new HttpNotFoundException();
+        return $image_factory->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
     }
 }

@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Factory;
-use Fisharebest\Webtrees\Http\RequestHandlers\MediaFileUnused;
+use Fisharebest\Webtrees\Http\RequestHandlers\AdminMediaFileThumbnail;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Mime;
@@ -210,16 +210,8 @@ class ImportThumbnailsController extends AbstractAdminController
                 // Turn each filename into a row for the table
                 $original = $this->findOriginalFileFromThumbnail($thumbnail);
 
-                $original_url  = route(MediaFileUnused::class, [
-                    'path' => $original,
-                    'w'    => 100,
-                    'h'    => 100,
-                ]);
-                $thumbnail_url = route(MediaFileUnused::class, [
-                    'path' => $thumbnail,
-                    'w'    => 100,
-                    'h'    => 100,
-                ]);
+                $original_url  = route(AdminMediaFileThumbnail::class, ['path' => $original]);
+                $thumbnail_url = route(AdminMediaFileThumbnail::class, ['path' => $thumbnail]);
 
                 $difference = $this->imageDiff($data_filesystem, $thumbnail, $original);
 

@@ -20,31 +20,17 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Factory;
-use Fisharebest\Webtrees\Services\MediaFileService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 /**
- * Controller for the media page and displaying images.
+ * Create a thumbnail of a file, for use on the admin page.
  */
-class MediaFileUnused implements RequestHandlerInterface
+class AdminMediaFileThumbnail implements RequestHandlerInterface
 {
-    /** @var MediaFileService */
-    private $media_file_service;
-
     /**
-     * MediaFileController constructor.
-     *
-     * @param MediaFileService $media_file_service
-     */
-    public function __construct(MediaFileService $media_file_service)
-    {
-        $this->media_file_service = $media_file_service;
-    }
-
-    /**
-     * Generate a thumbnail for an unused media file (i.e. not used by any media object).
+     * Show an image/thumbnail, with/without a watermark.
      *
      * @param ServerRequestInterface $request
      *
@@ -52,12 +38,9 @@ class MediaFileUnused implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = Factory::filesystem()->data();
+        $filesystem = Factory::filesystem()->data();
+        $path       = $request->getAttribute('path');
 
-        $params = $request->getQueryParams();
-
-        $file = $params['path'];
-
-        return $this->media_file_service->generateImage('', $file, $data_filesystem, $params);
+        return Factory::image()->thumbnailResponse($filesystem, $path, 120, 120, 'contain');
     }
 }

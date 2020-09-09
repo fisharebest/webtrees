@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Contracts\FamilyFactoryInterface;
 use Fisharebest\Webtrees\Contracts\FilesystemFactoryInterface;
 use Fisharebest\Webtrees\Contracts\GedcomRecordFactoryInterface;
 use Fisharebest\Webtrees\Contracts\HeaderFactoryInterface;
+use Fisharebest\Webtrees\Contracts\ImageFactoryInterface;
 use Fisharebest\Webtrees\Contracts\IndividualFactoryInterface;
 use Fisharebest\Webtrees\Contracts\LocationFactoryInterface;
 use Fisharebest\Webtrees\Contracts\MediaFactoryInterface;
@@ -53,6 +54,9 @@ class Factory
 
     /** @var HeaderFactoryInterface */
     private static $header_factory;
+
+    /** @var ImageFactoryInterface */
+    private static $image_factory;
 
     /** @var IndividualFactoryInterface */
     private static $individual_factory;
@@ -159,6 +163,22 @@ class Factory
         }
 
         return self::$header_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param ImageFactoryInterface|null $factory
+     *
+     * @return ImageFactoryInterface
+     */
+    public static function image(ImageFactoryInterface $factory = null): ImageFactoryInterface
+    {
+        if ($factory instanceof ImageFactoryInterface) {
+            self::$image_factory = $factory;
+        }
+
+        return self::$image_factory;
     }
 
     /**

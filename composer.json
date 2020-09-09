@@ -52,6 +52,7 @@
         "illuminate/container": "~5.8",
         "illuminate/database": "~5.8",
         "illuminate/support": "~5.8",
+        "intervention/image": "^2.5",
         "io-developer/php-whois": "~3.5",
         "league/commonmark": "~1.4",
         "league/flysystem": "~1.0",
@@ -86,6 +87,7 @@
         "phpunit/phpunit": "~7.5|~8.0"
     },
     "suggest": {
+        "ext-imagick": "Required to generate thumbnail images",
         "ext-pdo_mysql": "Required to use MySQL for database storage",
         "ext-pdo_sqlite": "Required to use SQLite for database storage",
         "ext-pdo_pgsql": "Required to use PostgreSQL for database storage",

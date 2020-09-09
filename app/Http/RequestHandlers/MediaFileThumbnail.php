@@ -20,41 +20,21 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Factory;
-use Fisharebest\Webtrees\Services\MediaFileService;
-use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use League\Glide\Signatures\SignatureException;
-use League\Glide\Signatures\SignatureFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
-use function pathinfo;
 use function redirect;
-use function strtolower;
-
-use const PATHINFO_EXTENSION;
 
 /**
- * Controller for the media page and displaying images.
+ * Create a thumbnail of a media file.
  */
 class MediaFileThumbnail implements RequestHandlerInterface
 {
-    /** @var MediaFileService */
-    private $media_file_service;
-
-    /**
-     * MediaFileController constructor.
-     *
-     * @param MediaFileService $media_file_service
-     */
-    public function __construct(MediaFileService $media_file_service)
-    {
-        $this->media_file_service = $media_file_service;
-    }
-
     /**
      * Show an image/thumbnail, with/without a watermark.
      *
@@ -67,7 +47,8 @@ class MediaFileThumbnail implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = Factory::filesystem()->data();
+        $user = $request->getAttribute('user');
+        assert($user instanceof UserInterface);
 
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
@@ -75,11 +56,11 @@ class MediaFileThumbnail implements RequestHandlerInterface
         $media   = Factory::media()->make($xref, $tree);
 
         if ($media === null) {
-            return $this->media_file_service->replacementImage((string) StatusCodeInterface::STATUS_NOT_FOUND);
+            return Factory::image()->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
         }
 
         if (!$media->canShow()) {
-            return $this->media_file_service->replacementImage((string) StatusCodeInterface::STATUS_FORBIDDEN);
+            return Factory::image()->replacementImageResponse((string) StatusCodeInterface::STATUS_FORBIDDEN);
         }
 
         foreach ($media->mediaFiles() as $media_file) {
@@ -92,28 +73,23 @@ class MediaFileThumbnail implements RequestHandlerInterface
                 unset($params['route']);
                 $params['tree'] = $media_file->media()->tree()->name();
 
-                try {
-                    SignatureFactory::create(Site::getPreference('glide-key'))
-                        ->validateRequest('', $params);
-                } catch (SignatureException $ex) {
-                    return $this->media_file_service->replacementImage((string) StatusCodeInterface::STATUS_FORBIDDEN)
-                        ->withHeader('X-Signature-Exception', $ex->getMessage());
+                if ($media_file->signature($params) !== $params['s']) {
+                    return Factory::image()->replacementImageResponse((string) StatusCodeInterface::STATUS_FORBIDDEN)
+                        ->withHeader('X-Signature-Exception', 'Signature mismatch');
                 }
 
-                if ($media_file->isImage()) {
-                    $media_folder = $media_file->media()->tree()->getPreference('MEDIA_DIRECTORY', 'media/');
-                    $file         = $media_file->filename();
+                $image_factory = Factory::image();
 
-                    return $this->media_file_service->generateImage($media_folder, $file, $data_filesystem, $request->getQueryParams());
-                }
-
-                // Shouldn't usually get here, as we only generate these URLs for images.
-                $extension = '.' . strtolower(pathinfo($media_file->filename(), PATHINFO_EXTENSION));
-
-                return $this->media_file_service->replacementImage($extension);
+                return $image_factory->mediaFileThumbnailResponse(
+                    $media_file,
+                    (int) $params['w'],
+                    (int) $params['h'],
+                    $params['fit'],
+                    $image_factory->fileNeedsWatermark($media_file, $user)
+                );
             }
         }
 
-        return $this->media_file_service->replacementImage((string) StatusCodeInterface::STATUS_NOT_FOUND);
+        return Factory::image()->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
     }
 }

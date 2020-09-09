@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Factories\FamilyFactory;
 use Fisharebest\Webtrees\Factories\FilesystemFactory;
 use Fisharebest\Webtrees\Factories\GedcomRecordFactory;
 use Fisharebest\Webtrees\Factories\HeaderFactory;
+use Fisharebest\Webtrees\Factories\ImageFactory;
 use Fisharebest\Webtrees\Factories\IndividualFactory;
 use Fisharebest\Webtrees\Factories\LocationFactory;
 use Fisharebest\Webtrees\Factories\MediaFactory;
@@ -57,6 +58,7 @@ class RegisterFactories implements MiddlewareInterface
         Factory::filesystem(new FilesystemFactory());
         Factory::gedcomRecord(new GedcomRecordFactory());
         Factory::header(new HeaderFactory());
+        Factory::image(new ImageFactory());
         Factory::individual(new IndividualFactory());
         Factory::location(new LocationFactory());
         Factory::media(new MediaFactory());
