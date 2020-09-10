@@ -168,7 +168,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     public function isGrayedOut(Individual $individual): bool
     {
-        return $this->getStoriesForIndividual($individual) !== [];
+        return $this->getStoriesForIndividual($individual) === [];
     }
 
     /**
