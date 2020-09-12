@@ -419,7 +419,7 @@ class HtmlRenderer extends AbstractRenderer
         string $ln,
         FilesystemInterface $data_filesystem
     ): ReportBaseImage {
-        return new ReportHtmlImage($media_file->imageUrl((int) $w, (int) $h, ''), $x, $y, $w, $h, $align, $ln);
+        return new ReportHtmlImage($media_file->imageUrl((int) $w, (int) $h, 'crop'), $x, $y, $w, $h, $align, $ln);
     }
 
     /**

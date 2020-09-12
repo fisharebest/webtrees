@@ -174,7 +174,7 @@ class MediaController extends AbstractAdminController
                     return $media_file->filename() === $row->multimedia_file_refn;
                 })
                 ->map(static function (MediaFile $media_file): string {
-                    return $media_file->displayImage(150, 150, '', []);
+                    return $media_file->displayImage(150, 150, 'contain', []);
                 })
                 ->first();
 

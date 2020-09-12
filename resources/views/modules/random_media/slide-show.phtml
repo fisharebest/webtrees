@@ -34,7 +34,7 @@ use Fisharebest\Webtrees\MediaFile;
     <?php endif ?>
 
     <figure class="wt-slide-show-figure text-center">
-        <?= $media_file->displayImage(200, 200, '', ['class' => 'slide-show-image img-fluid']) ?>
+        <?= $media_file->displayImage(200, 200, 'contain', ['class' => 'slide-show-image img-fluid']) ?>
         <figcaption class="wt-slide-show-figcaption">
             <a href="<?= e($media->url()) ?>">
                 <b><?= $media->fullName() ?></b>
