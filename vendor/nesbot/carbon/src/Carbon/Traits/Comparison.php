@@ -851,8 +851,6 @@ trait Comparison
      * Carbon::hasFormat('13:12:45', 'h:i:s'); // false
      * ```
      *
-     * @SuppressWarnings(PHPMD.EmptyCatchBlock)
-     *
      * @param string $date
      * @param string $format
      *
@@ -860,39 +858,54 @@ trait Comparison
      */
     public static function hasFormat($date, $format)
     {
+        // createFromFormat() is known to handle edge cases silently.
+        // E.g. "1975-5-1" (Y-n-j) will still be parsed correctly when "Y-m-d" is supplied as the format.
+        // To ensure we're really testing against our desired format, perform an additional regex validation.
+
+        // List letters to replace
+        $letters = array_keys(static::$regexFormats);
+        // Preg quote, but remove escaped backslashes since we'll deal with escaped characters in the format string.
+        $regex = str_replace('\\\\', '\\', preg_quote($format, '/'));
+        // Replace not-escaped letters
+        $regex = preg_replace_callback('/(?<!\\\\)((?:\\\\{2})*)(['.implode('', $letters).'])/', function ($match) {
+            return $match[1].strtr($match[2], static::$regexFormats);
+        }, $regex);
+        // Replace escaped letters by the letter itself
+        $regex = preg_replace('/(?<!\\\\)((?:\\\\{2})*)\\\\(\w)/', '$1$2', $regex);
+        // Escape not escaped slashes
+        $regex = preg_replace('#(?<!\\\\)((?:\\\\{2})*)/#', '$1\\/', $regex);
+
+        return (bool) @preg_match('/^'.$regex.'$/', $date);
+    }
+
+    /**
+     * Checks if the (date)time string is in a given format and valid to create a
+     * new instance.
+     *
+     * @example
+     * ```
+     * Carbon::canBeCreatedFromFormat('11:12:45', 'h:i:s'); // true
+     * Carbon::canBeCreatedFromFormat('13:12:45', 'h:i:s'); // false
+     * ```
+     *
+     * @param string $date
+     * @param string $format
+     *
+     * @return bool
+     */
+    public static function canBeCreatedFromFormat($date, $format)
+    {
         try {
             // Try to create a DateTime object. Throws an InvalidArgumentException if the provided time string
             // doesn't match the format in any way.
-            static::rawCreateFromFormat($format, $date);
-
-            // createFromFormat() is known to handle edge cases silently.
-            // E.g. "1975-5-1" (Y-n-j) will still be parsed correctly when "Y-m-d" is supplied as the format.
-            // To ensure we're really testing against our desired format, perform an additional regex validation.
-
-            // Preg quote, but remove escaped backslashes since we'll deal with escaped characters in the format string.
-            $quotedFormat = str_replace('\\\\', '\\', preg_quote($format, '/'));
-
-            // Build the regex string
-            $regex = '';
-
-            for ($i = 0; $i < strlen($quotedFormat); ++$i) {
-                // Backslash – the next character does not represent a date token so add it on as-is and continue.
-                // We're doing an extra ++$i here to increment the loop by 2.
-                if ($quotedFormat[$i] === '\\') {
-                    $char = $quotedFormat[++$i];
-                    $regex .= $char === '\\' ? '\\\\' : $char;
-
-                    continue;
-                }
-
-                $regex .= strtr($quotedFormat[$i], static::$regexFormats);
+            if (!static::rawCreateFromFormat($format, $date)) {
+                return false;
             }
-
-            return (bool) preg_match('/^'.str_replace('/', '\\/', $regex).'$/', $date);
         } catch (InvalidArgumentException $e) {
+            return false;
         }
 
-        return false;
+        return static::hasFormat($date, $format);
     }
 
     /**

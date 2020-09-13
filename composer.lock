@@ -452,16 +452,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.19",
+            "version": "2.1.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "840d5603eb84cc81a6a0382adac3293e57c1c64c"
+                "reference": "f46887bc48db66c7f38f668eb7d6ae54583617ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/840d5603eb84cc81a6a0382adac3293e57c1c64c",
-                "reference": "840d5603eb84cc81a6a0382adac3293e57c1c64c",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/f46887bc48db66c7f38f668eb7d6ae54583617ff",
+                "reference": "f46887bc48db66c7f38f668eb7d6ae54583617ff",
                 "shasum": ""
             },
             "require": {
@@ -506,7 +506,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2020-08-08T21:28:19+00:00"
+            "time": "2020-09-06T13:44:32+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -1805,16 +1805,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.39.0",
+            "version": "2.39.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "0a41ea7f7fedacf307b7a339800e10356a042918"
+                "reference": "326efde1bc09077a26cb77f6e2e32e13f06c27f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/0a41ea7f7fedacf307b7a339800e10356a042918",
-                "reference": "0a41ea7f7fedacf307b7a339800e10356a042918",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/326efde1bc09077a26cb77f6e2e32e13f06c27f2",
+                "reference": "326efde1bc09077a26cb77f6e2e32e13f06c27f2",
                 "shasum": ""
             },
             "require": {
@@ -1827,7 +1827,7 @@
                 "doctrine/orm": "^2.7",
                 "friendsofphp/php-cs-fixer": "^2.14 || ^3.0",
                 "kylekatarnls/multi-tester": "^2.0",
-                "phpmd/phpmd": "^2.8",
+                "phpmd/phpmd": "^2.9",
                 "phpstan/extension-installer": "^1.0",
                 "phpstan/phpstan": "^0.12.35",
                 "phpunit/phpunit": "^7.5 || ^8.0",
@@ -1890,7 +1890,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-24T12:35:58+00:00"
+            "time": "2020-09-10T12:16:42+00:00"
         },
         {
             "name": "nyholm/psr7",
@@ -2856,16 +2856,16 @@
         },
         {
             "name": "symfony/cache-contracts",
-            "version": "v1.1.9",
+            "version": "v1.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache-contracts.git",
-                "reference": "4638bdd93e14dddc171212258d0c6d8c95e95ced"
+                "reference": "8d5489c10ef90aa7413e4921fc3c0520e24cbed7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache-contracts/zipball/4638bdd93e14dddc171212258d0c6d8c95e95ced",
-                "reference": "4638bdd93e14dddc171212258d0c6d8c95e95ced",
+                "url": "https://api.github.com/repos/symfony/cache-contracts/zipball/8d5489c10ef90aa7413e4921fc3c0520e24cbed7",
+                "reference": "8d5489c10ef90aa7413e4921fc3c0520e24cbed7",
                 "shasum": ""
             },
             "require": {
@@ -2928,7 +2928,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-06T13:19:58+00:00"
+            "time": "2020-09-02T16:08:58+00:00"
         },
         {
             "name": "symfony/expression-language",
@@ -3789,16 +3789,16 @@
         },
         {
             "name": "symfony/translation-contracts",
-            "version": "v1.1.9",
+            "version": "v1.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "a5db6f7707fd35d137b1398734f2d745c8616ea2"
+                "reference": "84180a25fad31e23bebd26ca09d89464f082cacc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/a5db6f7707fd35d137b1398734f2d745c8616ea2",
-                "reference": "a5db6f7707fd35d137b1398734f2d745c8616ea2",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/84180a25fad31e23bebd26ca09d89464f082cacc",
+                "reference": "84180a25fad31e23bebd26ca09d89464f082cacc",
                 "shasum": ""
             },
             "require": {
@@ -3860,7 +3860,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-06T13:19:58+00:00"
+            "time": "2020-09-02T16:08:58+00:00"
         },
         {
             "name": "symfony/var-exporter",
@@ -4072,16 +4072,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "1.10.10",
+            "version": "1.10.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "32966a3b1d48bc01472a8321fd6472b44fad033a"
+                "reference": "47c841ba3b2d3fc0b4b13282cf029ea18b66d78b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/32966a3b1d48bc01472a8321fd6472b44fad033a",
-                "reference": "32966a3b1d48bc01472a8321fd6472b44fad033a",
+                "url": "https://api.github.com/repos/composer/composer/zipball/47c841ba3b2d3fc0b4b13282cf029ea18b66d78b",
+                "reference": "47c841ba3b2d3fc0b4b13282cf029ea18b66d78b",
                 "shasum": ""
             },
             "require": {
@@ -4162,20 +4162,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-03T09:35:19+00:00"
+            "time": "2020-09-09T09:46:34+00:00"
         },
         {
             "name": "composer/semver",
-            "version": "1.5.1",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/semver.git",
-                "reference": "c6bea70230ef4dd483e6bbcab6005f682ed3a8de"
+                "reference": "114f819054a2ea7db03287f5efb757e2af6e4079"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/c6bea70230ef4dd483e6bbcab6005f682ed3a8de",
-                "reference": "c6bea70230ef4dd483e6bbcab6005f682ed3a8de",
+                "url": "https://api.github.com/repos/composer/semver/zipball/114f819054a2ea7db03287f5efb757e2af6e4079",
+                "reference": "114f819054a2ea7db03287f5efb757e2af6e4079",
                 "shasum": ""
             },
             "require": {
@@ -4223,7 +4223,21 @@
                 "validation",
                 "versioning"
             ],
-            "time": "2020-01-13T12:06:48+00:00"
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-09-09T09:34:06+00:00"
         },
         {
             "name": "composer/spdx-licenses",
