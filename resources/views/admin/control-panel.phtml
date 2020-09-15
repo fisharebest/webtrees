@@ -6,6 +6,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAnalyticsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesBlocksPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesChartsPage;
@@ -13,7 +14,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ModulesDataFixesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesFootersPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesHistoricEventsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesLanguagesPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesListsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMenusPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesReportsPage;
@@ -32,21 +32,88 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyListModule;
 use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Module\MediaListModule;
+use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
+use Fisharebest\Webtrees\Module\ModuleBlockInterface;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
+use Fisharebest\Webtrees\Module\ModuleFooterInterface;
+use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
+use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Module\ModuleMenuInterface;
+use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
+use Fisharebest\Webtrees\Module\ModuleTabInterface;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\NoteListModule;
 use Fisharebest\Webtrees\Module\RepositoryListModule;
 use Fisharebest\Webtrees\Module\SourceListModule;
 use Fisharebest\Webtrees\Module\SubmitterListModule;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<ModuleCustomInterface> $custom_updates
- * @var string                            $latest_version
- * @var string                            $title
- * @var Collection<string>                $server_errors
- * @var Collection<string>                $server_warnings
+ * @var Collection<User>                     $administrators
+ * @var Collection<ModuleInterface>          $all_modules_disabled
+ * @var Collection<ModuleInterface>          $all_modules_enabled
+ * @var Collection<Tree>                     $all_trees
+ * @var Collection<User>                     $all_users
+ * @var Collection<ModuleAnalyticsInterface> $analytics_modules_disabled
+ * @var Collection<ModuleAnalyticsInterface> $analytics_modules_enabled
+ * @var Collection<ModuleBlockInterface>     $block_modules_disabled
+ * @var Collection<ModuleBlockInterface>     $block_modules_enabled
+ * @var array<string,int>                    $changes
+ * @var Collection<ModuleChartInterface>     $chart_modules_disabled
+ * @var Collection<ModuleChartInterface>     $chart_modules_enabled
+ * @var Collection<ModuleCustomInterface>    $custom_updates
+ * @var Collection<ModuleDataFixInterface>   $data_fix_modules_disabled
+ * @var Collection<ModuleDataFixInterface>   $data_fix_modules_enabled
+ * @var Collection<string,int>               $families
+ * @var FamilyListModule|null                $family_list_module
+ * @var Collection<ModuleFooterInterface>    $footer_modules_disabled
+ * @var Collection<ModuleFooterInterface>    $footer_modules_enabled
+ * @var Collection<ModuleHistoricEventsInterface>    $history_modules_disabled
+ * @var Collection<ModuleHistoricEventsInterface>    $history_modules_enabled
+ * @var Collection<string,int>               $individuals
+ * @var IndividualListModule|null            $individual_list_module
+ * @var Collection<ModuleLanguageInterface>  $language_modules_disabled
+ * @var Collection<ModuleLanguageInterface>  $language_modules_enabled
+ * @var string                               $latest_version
+ * @var Collection<ModuleListInterface>      $list_modules_disabled
+ * @var Collection<ModuleListInterface>      $list_modules_enabled
+ * @var Collection<User>                     $managers
+ * @var Collection<string,int>               $media
+ * @var MediaListModule|null                 $media_list_module
+ * @var Collection<ModuleMenuInterface>      $menu_modules_disabled
+ * @var Collection<ModuleMenuInterface>      $menu_modules_enabled
+ * @var Collection<User>                     $moderators
+ * @var Collection<string,int>               $notes
+ * @var NoteListModule|null                  $note_list_module
+ * @var Collection<ModuleInterface>          $other_modules
+ * @var Collection<ModuleReportInterface>    $report_modules_disabled
+ * @var Collection<ModuleReportInterface>    $report_modules_enabled
+ * @var Collection<string,int>               $repositories
+ * @var RepositoryListModule|null            $repository_list_module
+ * @var Collection<string>                   $server_errors
+ * @var Collection<string>                   $server_warnings
+ * @var Collection<ModuleSidebarInterface>   $sidebar_modules_disabled
+ * @var Collection<ModuleSidebarInterface>   $sidebar_modules_enabled
+ * @var Collection<string,int>               $sources
+ * @var SourceListModule|null                $source_list_module
+ * @var Collection<string,int>               $submitters
+ * @var SubmitterListModule|null             $submitter_list_module
+ * @var Collection<ModuleTabInterface>       $tab_modules_disabled
+ * @var Collection<ModuleTabInterface>       $tab_modules_enabled
+ * @var Collection<ModuleThemeInterface>     $theme_modules_disabled
+ * @var Collection<ModuleThemeInterface>     $theme_modules_enabled
+ * @var string                               $title
+ * @var Collection<User>                     $unapproved
+ * @var Collection<User>                     $unverified
  */
 
 ?>
@@ -156,7 +223,7 @@ use Illuminate\Support\Collection;
         <h2 class="mb-0">
             <?= I18N::translate('Family trees') ?>
             <span class="badge badge-secondary">
-                    <?= I18N::number(count($all_trees)) ?>
+                    <?= I18N::number($all_trees->count()) ?>
                 </span>
         </h2>
     </div>
