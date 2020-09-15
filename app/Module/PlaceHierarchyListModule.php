@@ -179,8 +179,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
-        $module   = $request->getAttribute('module');
-        $action   = $request->getAttribute('action');
         $action2  = $request->getQueryParams()['action2'] ?? 'hierarchy';
         $place_id = (int) ($request->getQueryParams()['place_id'] ?? 0);
         $place    = Place::find($place_id, $tree);
@@ -190,9 +188,9 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
             return redirect($place->url());
         }
 
-        $content    = '';
-        $showmap    = Site::getPreference('map-provider') !== '';
-        $data       = null;
+        $content = '';
+        $showmap = Site::getPreference('map-provider') !== '';
+        $data    = null;
 
         if ($showmap) {
             $content .= view('modules/place-hierarchy/map', [
