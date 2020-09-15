@@ -62,15 +62,6 @@ class MapDataDelete implements RequestHandlerInterface
             $this->map_data_service->deleteRecursively($place_id);
         }
 
-        // If after deleting there are no more places at this level then go up a level
-        $siblings = DB::table('placelocation')
-            ->where('pl_parent_id', '=', $parent->id())
-            ->count();
-
-        if ($siblings === 0) {
-            $parent_id = $parent->parent()->id();
-        }
-
         $url = route(MapDataList::class, ['parent_id' => $parent->id()]);
 
         return redirect($url);
