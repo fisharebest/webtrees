@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,11 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Illuminate\Support\Collection;
+
+use function preg_match;
 
 /**
  * Class MediaTabModule
@@ -130,29 +133,23 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
      *
      * @return Collection<Fact>
      */
-    private function getFactsWithMedia(Individual $individual): Collection
+    protected function getFactsWithMedia(Individual $individual): Collection
     {
-        if ($this->facts === null) {
+        return Factory::cache()->array()->remember(__CLASS__ . ':' . __METHOD__, static function () use ($individual): Collection {
             $facts = $individual->facts();
+
             foreach ($individual->spouseFamilies() as $family) {
                 if ($family->canShow()) {
-                    foreach ($family->facts() as $fact) {
-                        $facts->push($fact);
-                    }
+                    $facts = $facts->concat($family->facts());
                 }
             }
 
-            $this->facts = new Collection();
+            $facts = $facts->filter(static function (Fact $fact): bool {
+                return preg_match('/(?:^1|\n\d) OBJE @' . Gedcom::REGEX_XREF . '@/', $fact->gedcom()) === 1;
+            });
 
-            foreach ($facts as $fact) {
-                if (preg_match('/(?:^1|\n\d) OBJE @' . Gedcom::REGEX_XREF . '@/', $fact->gedcom())) {
-                    $this->facts->push($fact);
-                }
-            }
-            $this->facts = Fact::sortFacts($this->facts);
-        }
-
-        return $this->facts;
+            return Fact::sortFacts($facts);
+        });
     }
 
     /**

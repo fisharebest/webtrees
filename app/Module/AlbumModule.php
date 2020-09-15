@@ -24,17 +24,13 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
+use Illuminate\Support\Collection;
 
 /**
  * Class AlbumModule
  */
-class AlbumModule extends AbstractModule implements ModuleTabInterface
+class AlbumModule extends MediaTabModule
 {
-    use ModuleTabTrait;
-
-    /** @var Media[] List of media objects. */
-    private $media_list;
-
     /**
      * How should this module be identified in the control panel, etc.?
      *
@@ -68,31 +64,6 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
     }
 
     /**
-     * Is this tab empty? If so, we don't always need to display it.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
-     */
-    public function hasTabContent(Individual $individual): bool
-    {
-        return $individual->canEdit() || $this->getMedia($individual);
-    }
-
-    /**
-     * A greyed out tab has no actual content, but may perhaps have
-     * options to create content.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
-     */
-    public function isGrayedOut(Individual $individual): bool
-    {
-        return !$this->getMedia($individual);
-    }
-
-    /**
      * Generate the HTML content of this tab.
      *
      * @param Individual $individual
@@ -107,49 +78,27 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
     }
 
     /**
-     * Get all facts containing media links for this person and their spouse-family records
+     * Get the linked media objects.
      *
      * @param Individual $individual
      *
-     * @return Media[]
+     * @return Collection<Media>
      */
-    private function getMedia(Individual $individual): array
+    private function getMedia(Individual $individual): Collection
     {
-        if ($this->media_list === null) {
-            // Use facts from this individual and all their spouses
-            $facts = $individual->facts();
-            foreach ($individual->spouseFamilies() as $family) {
-                foreach ($family->facts() as $fact) {
-                    $facts->push($fact);
+        $media = new Collection();
+
+        foreach ($this->getFactsWithMedia($individual) as $fact) {
+            preg_match_all('/(?:^1|\n\d) OBJE @(' . Gedcom::REGEX_XREF . ')@/', $fact->gedcom(), $matches);
+
+            foreach ($matches[1] as $xref) {
+                if (!$media->has($xref)) {
+                    $media->push(Factory::media()->make($xref, $individual->tree()));
                 }
             }
-            // Use all media from each fact
-            $this->media_list = [];
-            foreach ($facts as $fact) {
-                // Don't show pending edits, as the user just sees duplicates
-                if (!$fact->isPendingDeletion()) {
-                    preg_match_all('/(?:^1|\n\d) OBJE @(' . Gedcom::REGEX_XREF . ')@/', $fact->gedcom(), $matches);
-                    foreach ($matches[1] as $match) {
-                        $media = Factory::media()->make($match, $individual->tree());
-                        if ($media && $media->canShow()) {
-                            $this->media_list[] = $media;
-                        }
-                    }
-                }
-            }
-            // If a media object is linked twice, only show it once
-            $this->media_list = array_unique($this->media_list);
-            // Sort these using _WT_OBJE_SORT
-            $wt_obje_sort = [];
-            foreach ($individual->facts(['_WT_OBJE_SORT']) as $fact) {
-                $wt_obje_sort[] = trim($fact->value(), '@');
-            }
-            usort($this->media_list, static function (Media $x, Media $y) use ($wt_obje_sort): int {
-                return array_search($x->xref(), $wt_obje_sort, true) - array_search($y->xref(), $wt_obje_sort, true);
-            });
         }
 
-        return $this->media_list;
+        return $media;
     }
 
     /**
