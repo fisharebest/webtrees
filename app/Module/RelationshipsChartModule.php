@@ -73,8 +73,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     private $tree_service;
 
     /**
-     * ModuleController constructor.
-     *
      * @param TreeService   $tree_service
      */
     public function __construct(TreeService $tree_service)

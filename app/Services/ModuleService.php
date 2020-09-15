@@ -857,18 +857,18 @@ class ModuleService
     }
 
     /**
-     * @return string[]
+     * @return Collection<string>
      */
-    public function componentsWithAccess(): array
+    public function componentsWithAccess(): Collection
     {
-        return self::COMPONENTS_WITH_ACCESS;
+        return new Collection(self::COMPONENTS_WITH_ACCESS);
     }
 
     /**
-     * @return string[]
+     * @return Collection<string>
      */
-    public function componentsWithOrder(): array
+    public function componentsWithOrder(): Collection
     {
-        return self::COMPONENTS_WITH_SORT;
+        return new Collection(self::COMPONENTS_WITH_SORT);
     }
 }

@@ -2,15 +2,30 @@
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface;
+use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
+
+/**
+ * @var array<string,array<string,string>> $access_summary
+ * @var string                             $description
+ * @var string                             $interface
+ * @var Collection<ModuleInterface>        $modules
+ * @var string                             $title
+ * @var Collection<Tree>                   $trees
+ * @var bool                               $uses_access
+ * @var bool                               $uses_sorting
+ */
 
 ?>
 
-<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route('modules') => I18N::translate('All modules'), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ModulesAllPage::class) => I18N::translate('All modules'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
@@ -59,7 +74,8 @@ use Fisharebest\Webtrees\View;
 
                     <td class="text-center">
                         <label class="d-block">
-                            <input type="checkbox" name="status-<?= e($module->name()) ?>" id="status-<?= e($module->name()) ?>" <?= $module->isEnabled() ? 'checked' : '' ?>>
+                            <input type="checkbox" name="status-<?= e($module->name()) ?>"
+                                   id="status-<?= e($module->name()) ?>" <?= $module->isEnabled() ? 'checked' : '' ?>>
                             <span class="sr-only">
                                 <?= I18N::translate('Enabled') ?>
                             </span>
@@ -74,7 +90,8 @@ use Fisharebest\Webtrees\View;
                                 <?php endforeach ?>
                             </ul>
 
-                            <div class="modal fade" id="access-level-<?= $module->name() ?>" tabindex="-1" role="dialog">
+                            <div class="modal fade" id="access-level-<?= $module->name() ?>" tabindex="-1"
+                                 role="dialog">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -101,7 +118,8 @@ use Fisharebest\Webtrees\View;
                                             </table>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +127,8 @@ use Fisharebest\Webtrees\View;
                         </td>
 
                         <td>
-                            <button type="button" class="btn btn-link" data-toggle="modal" data-backdrop="static" data-target="#access-level-<?= $module->name() ?>">
+                            <button type="button" class="btn btn-link" data-toggle="modal" data-backdrop="static"
+                                    data-target="#access-level-<?= $module->name() ?>">
                                 <?= view('icons/edit') ?>
                                 <span class="sr-only"><?= I18N::translate('edit') ?></span>
                             </button>
@@ -145,30 +164,30 @@ use Fisharebest\Webtrees\View;
     </a>
 </form>
 
-
 <?php View::push('javascript') ?>
 <script>
-    $('.wt-table-menu td.move').click(function() {
-        var row = $(this).closest('tr');
+  $('.wt-table-menu td.move').click(function () {
+    let row = $(this).closest('tr');
 
-        if ($(this).hasClass('up')) {
-            row.prev().before(row);
-        } else {
-            row.next().after(row);
-        }
+    if ($(this).hasClass('up')) {
+      row.prev().before(row);
+    } else {
+      row.next().after(row);
+    }
 
-        return false;
-    });
+    return false;
+  });
 </script>
 <?php View::endpush() ?>
 
 <?php View::push('styles') ?>
 <style>
     .wt-table-menu tr:first-child .wt-icon-arrow-up {
-        display:none;
+        display: none;
     }
+
     .wt-table-menu tr:last-child .wt-icon-arrow-down {
-        display:none;
+        display: none;
     }
 </style>
 <?php View::endpush() ?>

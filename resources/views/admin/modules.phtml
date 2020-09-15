@@ -1,6 +1,8 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleDeleteSettings;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
@@ -10,6 +12,7 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
+use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
@@ -18,6 +21,13 @@ use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Collection<string>          $deleted_modules
+ * @var Collection<ModuleInterface> $modules
+ * @var string                      $title
+ */
 
 ?>
 
@@ -27,7 +37,7 @@ use Fisharebest\Webtrees\View;
 
 <?php foreach ($deleted_modules as $module_name) : ?>
     <div class="alert alert-warning" role="alert">
-        <form method="post" action="<?= e(route('delete-module-settings')) ?>" class="form-inline">
+        <form method="post" action="<?= e(route(ModuleDeleteSettings::class)) ?>" class="form-inline">
             <?= csrf_field() ?>
             <input type="hidden" name="module_name" value="<?= $module_name ?>">
             <?= I18N::translate('Preferences exist for the module “%s”, but this module no longer exists.', $module_name) ?>
@@ -38,8 +48,9 @@ use Fisharebest\Webtrees\View;
     </div>
 <?php endforeach ?>
 
-<form method="post">
+<form method="post" action="<?= e(route(ModulesAllAction::class)) ?>">
     <?= csrf_field() ?>
+
     <table class="table table-bordered table-hover table-sm table-module-administration"
         <?= view('lists/datatables-attributes') ?>
         data-info="false"

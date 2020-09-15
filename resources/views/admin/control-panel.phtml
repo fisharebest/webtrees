@@ -6,6 +6,20 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAnalyticsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesBlocksPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesChartsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesDataFixesPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesFootersPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesHistoricEventsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesLanguagesPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesListsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMenusPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesReportsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesSidebarsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesTabsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesThemesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\Http\RequestHandlers\PhpInformation;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
@@ -429,7 +443,7 @@ use Illuminate\Support\Collection;
         <ul class="fa-ul">
             <li>
                 <span class="fa-li"><?= view('icons/module') ?></span>
-                <a href="<?= e(route('modules')) ?>">
+                <a href="<?= e(route(ModulesAllPage::class)) ?>">
                     <?= I18N::translate('All modules') ?>
                 </a>
                 <?= view('components/badge', ['count' => $all_modules_enabled->count(), 'total' => $all_modules_disabled->count(), 'context' => 'primary']) ?>
@@ -445,35 +459,35 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/menu') ?></span>
-                        <a href="<?= e(route('menus')) ?>">
+                        <a href="<?= e(route(ModulesMenusPage::class)) ?>">
                             <?= I18N::translate('Menus') ?>
                         </a>
                         <?= view('components/badge', ['count' => $menu_modules_enabled->count(), 'total' => $menu_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/chart') ?></span>
-                        <a href="<?= e(route('charts')) ?>">
+                        <a href="<?= e(route(ModulesChartsPage::class)) ?>">
                             <?= I18N::translate('Charts') ?>
                         </a>
                         <?= view('components/badge', ['count' => $chart_modules_enabled->count(), 'total' => $chart_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/list') ?></span>
-                        <a href="<?= e(route('lists')) ?>">
+                        <a href="<?= e(route(ModulesListsPage::class)) ?>">
                             <?= I18N::translate('Lists') ?>
                         </a>
                         <?= view('components/badge', ['count' => $list_modules_enabled->count(), 'total' => $list_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/report') ?></span>
-                        <a href="<?= e(route('reports')) ?>">
+                        <a href="<?= e(route(ModulesReportsPage::class)) ?>">
                             <?= I18N::translate('Reports') ?>
                         </a>
                         <?= view('components/badge', ['count' => $report_modules_enabled->count(), 'total' => $report_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/data-fix') ?></span>
-                        <a href="<?= e(route('data-fixes')) ?>">
+                        <a href="<?= e(route(ModulesDataFixesPage::class)) ?>">
                             <?= I18N::translate('Data fixes') ?>
                         </a>
                         <?= view('components/badge', ['count' => $data_fix_modules_enabled->count(), 'total' => $data_fix_modules_disabled->count(), 'context' => 'primary']) ?>
@@ -487,28 +501,28 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/footer') ?></span>
-                        <a href="<?= e(route('footers')) ?>">
+                        <a href="<?= e(route(ModulesFootersPage::class)) ?>">
                             <?= I18N::translate('Footers') ?>
                         </a>
                         <?= view('components/badge', ['count' => $footer_modules_enabled->count(), 'total' => $footer_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/analytics') ?></span>
-                        <a href="<?= e(route('analytics')) ?>">
+                        <a href="<?= e(route(ModulesAnalyticsPage::class)) ?>">
                             <?= I18N::translate('Tracking and analytics') ?>
                         </a>
                         <?= view('components/badge', ['count' => $analytics_modules_enabled->count(), 'total' => $analytics_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/theme') ?></span>
-                        <a href="<?= e(route('themes')) ?>">
+                        <a href="<?= e(route(ModulesThemesPage::class)) ?>">
                             <?= I18N::translate('Themes') ?>
                         </a>
                         <?= view('components/badge', ['count' => $theme_modules_enabled->count(), 'total' => $theme_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/language') ?></span>
-                        <a href="<?= e(route('languages')) ?>">
+                        <a href="<?= e(route(ModulesLanguagesPage::class)) ?>">
                             <?= I18N::translate('Languages') ?>
                         </a>
                         <?= view('components/badge', ['count' => $language_modules_enabled->count(), 'total' => $language_modules_disabled->count(), 'context' => 'primary']) ?>
@@ -526,7 +540,7 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/block') ?></span>
-                        <a href="<?= e(route('blocks')) ?>">
+                        <a href="<?= e(route(ModulesBlocksPage::class)) ?>">
                             <?= I18N::translate('Blocks') ?>
                         </a>
                         <?= view('components/badge', ['count' => $block_modules_enabled->count(), 'total' => $block_modules_disabled->count(), 'context' => 'primary']) ?>
@@ -540,21 +554,21 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/tab') ?></span>
-                        <a href="<?= e(route('tabs')) ?>">
+                        <a href="<?= e(route(ModulesTabsPage::class)) ?>">
                             <?= I18N::translate('Tabs') ?>
                             <?= view('components/badge', ['count' => $tab_modules_enabled->count(), 'total' => $tab_modules_disabled->count(), 'context' => 'primary']) ?>
                         </a>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/sidebar') ?></span>
-                        <a href="<?= e(route('sidebars')) ?>">
+                        <a href="<?= e(route(ModulesSidebarsPage::class)) ?>">
                             <?= I18N::translate('Sidebars') ?>
                         </a>
                         <?= view('components/badge', ['count' => $sidebar_modules_enabled->count(), 'total' => $sidebar_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/history') ?></span>
-                        <a href="<?= e(route('history')) ?>">
+                        <a href="<?= e(route(ModulesHistoricEventsPage::class)) ?>">
                             <?= I18N::translate('Historic events') ?>
                         </a>
                         <?= view('components/badge', ['count' => $history_modules_enabled->count(), 'total' => $history_modules_disabled->count(), 'context' => 'primary']) ?>

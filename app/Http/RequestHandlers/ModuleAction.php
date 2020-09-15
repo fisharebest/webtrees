@@ -42,8 +42,6 @@ class ModuleAction implements RequestHandlerInterface
     private $module_service;
 
     /**
-     * ModuleController constructor.
-     *
      * @param ModuleService $module_service
      */
     public function __construct(ModuleService $module_service)
