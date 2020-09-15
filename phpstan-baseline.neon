@@ -31,6 +31,21 @@ parameters:
 			path: app/Fact.php
 
 		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Factories/ImageFactory.php
+
+		-
+			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, string\\|false\\> given\\.$#"
+			count: 1
+			path: app/Factories/ImageFactory.php
+
+		-
+			message: "#^Parameter \\#2 \\$mime_type of method Fisharebest\\\\Webtrees\\\\Factories\\\\ImageFactory\\:\\:imageResponse\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Factories/ImageFactory.php
+
+		-
 			message: "#^Parameter \\#1 \\$commonMark of method League\\\\CommonMark\\\\Converter\\:\\:convertToHtml\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Filter.php
@@ -660,11 +675,6 @@ parameters:
 			path: app/Http/RequestHandlers/MapDataList.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MediaFileDownload.php
-
-		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateRecord\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MergeFactsAction.php
@@ -1037,12 +1047,17 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-report.disable/module.php
+			path: modules_v4/example.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-middleware.disable/module.php
+			path: modules_v4/example-theme.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example-report.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1052,12 +1067,7 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-theme.disable/module.php
+			path: modules_v4/example-middleware.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
