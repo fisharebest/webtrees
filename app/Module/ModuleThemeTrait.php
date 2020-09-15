@@ -357,7 +357,7 @@ trait ModuleThemeTrait
      */
     public function menuMyPages(?Tree $tree): ?Menu
     {
-        if (Auth::id()) {
+        if (Auth::check()) {
             if ($tree instanceof Tree) {
                 return new Menu(I18N::translate('My pages'), '#', 'menu-mymenu', [], array_filter([
                     $this->menuMyPage($tree),

@@ -36,9 +36,6 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
 
-    /** @var  Collection A list of facts with media objects. */
-    private $facts;
-
     /** @var ClipboardService */
     private $clipboard_service;
 
