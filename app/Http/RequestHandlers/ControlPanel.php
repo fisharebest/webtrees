@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyListModule;
@@ -44,6 +45,7 @@ use Fisharebest\Webtrees\Module\SourceListModule;
 use Fisharebest\Webtrees\Module\SubmitterListModule;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
@@ -69,6 +71,9 @@ class ControlPanel implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
+    /** @var AdminService */
+    private $admin_service;
+
     /** @var ModuleService */
     private $module_service;
 
@@ -90,6 +95,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * ControlPanel constructor.
      *
+     * @param AdminService        $admin_service
      * @param HousekeepingService $housekeeping_service
      * @param ModuleService       $module_service
      * @param ServerCheckService  $server_check_service
@@ -98,6 +104,7 @@ class ControlPanel implements RequestHandlerInterface
      * @param UserService         $user_service
      */
     public function __construct(
+        AdminService $admin_service,
         HousekeepingService $housekeeping_service,
         ModuleService $module_service,
         ServerCheckService $server_check_service,
@@ -105,8 +112,9 @@ class ControlPanel implements RequestHandlerInterface
         UpgradeService $upgrade_service,
         UserService $user_service
     ) {
-        $this->module_service       = $module_service;
+        $this->admin_service        = $admin_service;
         $this->housekeeping_service = $housekeeping_service;
+        $this->module_service       = $module_service;
         $this->server_check_service = $server_check_service;
         $this->tree_service         = $tree_service;
         $this->upgrade_service      = $upgrade_service;
@@ -130,6 +138,9 @@ class ControlPanel implements RequestHandlerInterface
             ->filter(static function (ModuleCustomInterface $module): bool {
                 return version_compare($module->customModuleLatestVersion(), $module->customModuleVersion()) > 0;
             });
+
+        $multiple_tree_threshold = $this->admin_service->multipleTreeThreshold();
+        $gedcom_file_count       = $this->admin_service->gedcomFiles(Factory::filesystem()->data())->count();
 
         return $this->viewResponse('admin/control-panel', [
             'title'                      => I18N::translate('Control panel'),
@@ -190,6 +201,7 @@ class ControlPanel implements RequestHandlerInterface
             'tab_modules_enabled'        => $this->module_service->findByInterface(ModuleTabInterface::class),
             'theme_modules_disabled'     => $this->module_service->findByInterface(ModuleThemeInterface::class, true),
             'theme_modules_enabled'      => $this->module_service->findByInterface(ModuleThemeInterface::class),
+            'show_synchronize'           => $gedcom_file_count >= $multiple_tree_threshold,
         ]);
     }
 

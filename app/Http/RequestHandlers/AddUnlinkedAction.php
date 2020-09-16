@@ -86,6 +86,6 @@ class AddUnlinkedAction implements RequestHandlerInterface
             return redirect($new_indi->url());
         }
 
-        return redirect(route('manage-trees', ['tree' => $tree->name()]));
+        return redirect(route(ManageTrees::class, ['tree' => $tree->name()]));
     }
 }

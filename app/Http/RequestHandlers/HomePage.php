@@ -75,7 +75,7 @@ class HomePage implements RequestHandlerInterface
             }
 
             if (Auth::isManager($tree, $user)) {
-                return redirect(route('manage-trees', ['tree' => $tree->name()]));
+                return redirect(route(ManageTrees::class, ['tree' => $tree->name()]));
             }
         }
 

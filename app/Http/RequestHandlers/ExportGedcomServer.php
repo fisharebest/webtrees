@@ -103,7 +103,7 @@ class ExportGedcomServer implements RequestHandlerInterface
             );
         }
 
-        $url = route('manage-trees', ['tree' => $tree->name()]);
+        $url = route(ManageTrees::class, ['tree' => $tree->name()]);
 
         return redirect($url);
     }

@@ -5,7 +5,9 @@ use Fisharebest\Webtrees\Http\RequestHandlers\CleanDataFolder;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
+use Fisharebest\Webtrees\Http\RequestHandlers\MergeTreesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAnalyticsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesBlocksPage;
@@ -101,6 +103,7 @@ use Illuminate\Support\Collection;
  * @var RepositoryListModule|null                 $repository_list_module
  * @var Collection<string>                        $server_errors
  * @var Collection<string>                        $server_warnings
+ * @var bool                                      $show_synchronize
  * @var Collection<ModuleSidebarInterface>        $sidebar_modules_disabled
  * @var Collection<ModuleSidebarInterface>        $sidebar_modules_enabled
  * @var Collection<string,int>                    $sources
@@ -227,6 +230,7 @@ use Illuminate\Support\Collection;
                 </span>
         </h2>
     </div>
+
     <div class="card-body">
         <?php if ($all_trees->isEmpty()) : ?>
             <p class="alert alert-info">
@@ -250,7 +254,7 @@ use Illuminate\Support\Collection;
             <?php if (count($all_trees) > 1) : ?>
                 <li>
                     <span class="fa-li"><?= view('icons/merge') ?></span>
-                    <a href="<?= e(route('admin-trees-merge')) ?>">
+                    <a href="<?= e(route(MergeTreesPage::class)) ?>">
                         <?= I18N::translate('Merge family trees') ?>
                     </a>
                 </li>
@@ -281,7 +285,7 @@ use Illuminate\Support\Collection;
                     <tr class="<?= $changes[$tree->id()] ? 'danger' : '' ?>">
                         <th scope="row">
                             <?= view('icons/preferences') ?>
-                            <a href="<?= e(route('manage-trees', ['tree' => $tree->name()])) ?>">
+                            <a href="<?= e(route(ManageTrees::class, ['tree' => $tree->name()])) ?>">
                                 <?= e($tree->name()) ?>
                                 -
                                 <?= e($tree->title()) ?>
@@ -409,6 +413,10 @@ use Illuminate\Support\Collection;
         </table>
     </div>
 </div>
+
+<?php if ($show_synchronize): ?>
+    <?= view('admin/synchronize-trees') ?>
+<?php endif ?>
 
 <!-- USERS -->
 <div class="card mb-4 <?= $unapproved || $unverified ? 'card-outline-danger' : '' ?>">

@@ -37,7 +37,7 @@ use Fisharebest\Webtrees\Factories\SourceFactory;
 use Fisharebest\Webtrees\Factories\SubmissionFactory;
 use Fisharebest\Webtrees\Factories\SubmitterFactory;
 use Fisharebest\Webtrees\Factories\XrefFactory;
-use Fisharebest\Webtrees\Http\Controllers\GedcomFileController;
+use Fisharebest\Webtrees\Http\RequestHandlers\GedcomLoad;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
@@ -248,11 +248,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $tree->importGedcomFile($stream, $gedcom_file);
 
         $timeout_service = new TimeoutService(microtime(true));
-        $controller      = new GedcomFileController($timeout_service);
+        $controller      = new GedcomLoad($timeout_service);
         $request         = self::createRequest()->withAttribute('tree', $tree);
 
         do {
-            $controller->import($request);
+            $controller->handle($request);
 
             $imported = $tree->getPreference('imported');
         } while (!$imported);

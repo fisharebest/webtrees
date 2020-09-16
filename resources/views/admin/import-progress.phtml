@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\GedcomLoad;
 use Fisharebest\Webtrees\I18N;
 
 ?>
@@ -20,7 +21,7 @@ use Fisharebest\Webtrees\I18N;
 <?php if ($errors === '') : ?>
     <script>
         $("#import<?= e($tree->id()) ?>")
-            .load("<?= route('import', ['tree' => $tree->name()]) ?>", {});
+            .load("<?= route(GedcomLoad::class, ['tree' => $tree->name()]) ?>", {});
     </script>
 <?php else : ?>
     <div class="alert alert-danger">
@@ -34,7 +35,7 @@ use Fisharebest\Webtrees\I18N;
     <script>
         $("#error-button-<?= $tree->id() ?>").click(function () {
             $("#import<?= e($tree->id()) ?>")
-                .load("<?= route('import', ['tree' => $tree->name()]) ?>", {});
+                .load("<?= route(GedcomLoad::class, ['tree' => $tree->name()]) ?>", {});
         });
     </script>
 <?php endif ?>

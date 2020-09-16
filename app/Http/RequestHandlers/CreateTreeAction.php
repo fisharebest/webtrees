@@ -70,6 +70,6 @@ class CreateTreeAction implements RequestHandlerInterface
 
         FlashMessages::addMessage(I18N::translate('The family tree “%s” has been created.', e($name)), 'success');
 
-        return redirect(route('manage-trees', ['tree' => $tree->name()]));
+        return redirect(route(ManageTrees::class, ['tree' => $tree->name()]));
     }
 }

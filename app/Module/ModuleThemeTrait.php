@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
+use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme;
@@ -224,7 +225,7 @@ trait ModuleThemeTrait
         }
 
         if (Auth::isManager($tree)) {
-            return new Menu(I18N::translate('Control panel'), route('manage-trees', ['tree' => $tree->name()]), 'menu-admin');
+            return new Menu(I18N::translate('Control panel'), route(ManageTrees::class, ['tree' => $tree->name()]), 'menu-admin');
         }
 
         return null;

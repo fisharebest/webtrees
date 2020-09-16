@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,10 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Services\AdminService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -30,14 +30,25 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 use function e;
-use function redirect;
-use function route;
 
 /**
- * Set the default tree.
+ * Renumber the XREFs in a family tree.
  */
-class SelectDefaultTree implements RequestHandlerInterface, StatusCodeInterface
+class RenumberTreePage implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
+    /** @var AdminService */
+    private $admin_service;
+
+    /**
+     * @param AdminService $admin_service
+     */
+    public function __construct(AdminService $admin_service)
+    {
+        $this->admin_service = $admin_service;
+    }
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -45,18 +56,20 @@ class SelectDefaultTree implements RequestHandlerInterface, StatusCodeInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $this->layout = 'layouts/administration';
+
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        Site::setPreference('DEFAULT_GEDCOM', $tree->name());
+        $xrefs = $this->admin_service->duplicateXrefs($tree);
 
-        /* I18N: %s is the name of a family tree */
-        $message = I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', e($tree->title()));
+        /* I18N: Renumber the records in a family tree */
+        $title = I18N::translate('Renumber family tree') . ' — ' . e($tree->title());
 
-        FlashMessages::addMessage($message, 'success');
-
-        $url = route(ManageTrees::class, ['tree' => $tree->name()]);
-
-        return redirect($url);
+        return $this->viewResponse('admin/trees-renumber', [
+            'title' => $title,
+            'tree'  => $tree,
+            'xrefs' => $xrefs,
+        ]);
     }
 }

@@ -1,0 +1,32 @@
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\SynchronizeTrees;
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h2 class="mb-0">
+            <?= view('icons/sync') ?>
+            <?= I18N::translate('Synchronize family trees with GEDCOM files') ?>
+        </h2>
+    </div>
+
+    <div class="card-body">
+        <p>
+            <?= I18N::translate('Create, update, and delete a family tree for every GEDCOM file in the data folder.') ?>
+        </p>
+        <form method="post" action="<?= e(route(SynchronizeTrees::class)) ?>" class="form form-horizontal">
+            <?= csrf_field() ?>
+            <button type="submit" class="btn btn-danger">
+                <?= view('icons/sync') ?>
+                <?= /* I18N: A button label. */
+                I18N::translate('continue') ?>
+            </button>
+            <span class="text-muted">
+                <?= I18N::translate('Caution! This may take a long time. Be patient.') ?>
+            </span>
+        </form>
+    </div>
+</div>

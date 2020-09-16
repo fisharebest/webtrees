@@ -1,12 +1,25 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\ImportGedcomAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
+
+/**
+ * @var string             $data_folder
+ * @var string             $default_gedcom_file
+ * @var Collection<string> $gedcom_files
+ * @var string             $gedcom_media_path
+ * @var string             $title
+ * @var Tree               $tree
+ */
 
 ?>
 
-<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route('manage-trees', ['tree' => $tree->name()]) => I18N::translate('Manage family trees'), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ManageTrees::class, ['tree' => $tree->name()]) => I18N::translate('Manage family trees'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
@@ -14,7 +27,7 @@ use Fisharebest\Webtrees\View;
     <?= /* I18N: %s is the name of a family tree */ I18N::translate('This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file.', e($tree->title())) ?>
 </div>
 
-<form method="post" action="<?= e(route('admin-trees-import-action', ['tree' => $tree->name()])) ?>" class="form form-horizontal" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= e(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">
+<form method="post" action="<?= e(route(ImportGedcomAction::class, ['tree' => $tree->name()])) ?>" class="form form-horizontal" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= e(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">
     <input type="hidden" id="gedcom_filename" value="<?= e($default_gedcom_file) ?>">
     <?= csrf_field() ?>
 
@@ -36,7 +49,7 @@ use Fisharebest\Webtrees\View;
                     </div>
                 </div>
                 <div class="row">
-                    <label class="col-sm-3">
+                    <label class="col-sm-3" for="import-server-file">
                         <input type="radio" name="source" id="import-server" value="server">
                         <?= I18N::translate('A file on the server') ?>
                     </label>
@@ -54,7 +67,7 @@ use Fisharebest\Webtrees\View;
                                         <?= e($gedcom_file) ?>
                                     </option>
                                 <?php endforeach ?>
-                                <?php if (empty($gedcom_files)) : ?>
+                                <?php if ($gedcom_files->isEmpty()) : ?>
                                     <option disabled selected>
                                         <?= I18N::translate('No GEDCOM files found.') ?>
                                     </option>
@@ -121,9 +134,9 @@ use Fisharebest\Webtrees\View;
 <?php View::push('javascript') ?>
 <script>
   function checkGedcomImportForm (message) {
-    var oldFile = $('#gedcom_filename').val();
-    var method = $('input[name=source]:checked').val();
-    var newFile = method === 'server' ? $('#import-server-file').val() : $('#import-computer-file').val();
+    let oldFile = $('#gedcom_filename').val();
+    let method = $('input[name=source]:checked').val();
+    let newFile = method === 'server' ? $('#import-server-file').val() : $('#import-computer-file').val();
 
     // Some browsers include c:\fakepath\ in the filename.
     newFile = newFile.replace(/.*[/\\]/, '');

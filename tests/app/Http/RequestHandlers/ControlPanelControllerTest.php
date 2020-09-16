@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
@@ -44,6 +45,7 @@ class ControlPanelControllerTest extends TestCase
      */
     public function testControlPanel(): void
     {
+        $admin_service        = new AdminService();
         $module_service       = new ModuleService();
         $housekeeping_service = new HousekeepingService();
         $server_check_service = new ServerCheckService();
@@ -51,7 +53,7 @@ class ControlPanelControllerTest extends TestCase
         $tree_service         = new TreeService();
         $upgrade_service      = new UpgradeService($timeout_service);
         $user_service         = new UserService();
-        $handler             = new ControlPanel($housekeeping_service, $module_service, $server_check_service, $tree_service, $upgrade_service, $user_service);
+        $handler              = new ControlPanel($admin_service, $housekeeping_service, $module_service, $server_check_service, $tree_service, $upgrade_service, $user_service);
         $request              = self::createRequest();
         $response             = $handler->handle($request);
 

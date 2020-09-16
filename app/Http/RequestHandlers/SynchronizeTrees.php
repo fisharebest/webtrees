@@ -1,0 +1,114 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2020 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
+
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\AdminService;
+use Fisharebest\Webtrees\Services\TimeoutService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+use function app;
+use function redirect;
+use function route;
+
+/**
+ * Synchronize GEDCOM files with trees.
+ */
+class SynchronizeTrees implements RequestHandlerInterface
+{
+    /** @var AdminService */
+    private $admin_service;
+
+    /** @var TimeoutService */
+    private $timeout_service;
+
+    /** @var TreeService */
+    private $tree_service;
+
+    /**
+     * AdminTreesController constructor.
+     *
+     * @param AdminService        $admin_service
+     * @param TimeoutService      $timeout_service
+     * @param TreeService         $tree_service
+     */
+    public function __construct(
+        AdminService $admin_service,
+        TimeoutService $timeout_service,
+        TreeService $tree_service
+    ) {
+        $this->admin_service   = $admin_service;
+        $this->timeout_service = $timeout_service;
+        $this->tree_service    = $tree_service;
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        $data_filesystem = Factory::filesystem()->data();
+
+        $gedcom_files = $this->admin_service->gedcomFiles($data_filesystem);
+
+        foreach ($gedcom_files as $gedcom_file) {
+            // Only import files that have changed
+            $filemtime = (string) $data_filesystem->getTimestamp($gedcom_file);
+
+            $tree = $this->tree_service->all()->get($gedcom_file) ?? $this->tree_service->create($gedcom_file, $gedcom_file);
+
+            if ($tree->getPreference('filemtime') !== $filemtime) {
+                $resource = $data_filesystem->readStream($gedcom_file);
+                $stream   = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
+                $tree->importGedcomFile($stream, $gedcom_file);
+                $stream->close();
+                $tree->setPreference('filemtime', $filemtime);
+
+                FlashMessages::addMessage(I18N::translate('The GEDCOM file “%s” has been imported.', e($gedcom_file)), 'success');
+
+                if ($this->timeout_service->isTimeNearlyUp(10.0)) {
+                    return redirect(route(__CLASS__), StatusCodeInterface::STATUS_TEMPORARY_REDIRECT);
+                }
+            }
+        }
+
+        foreach ($this->tree_service->all() as $tree) {
+            if (!$gedcom_files->containsStrict($tree->name())) {
+                $this->tree_service->delete($tree);
+                FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->title())), 'success');
+
+                if ($this->timeout_service->isTimeNearlyUp(10.0)) {
+                    return redirect(route(__CLASS__), StatusCodeInterface::STATUS_TEMPORARY_REDIRECT);
+                }
+            }
+        }
+
+        return redirect(route(ManageTrees::class, ['tree' => $this->tree_service->all()->first()->name()]));
+    }
+}
