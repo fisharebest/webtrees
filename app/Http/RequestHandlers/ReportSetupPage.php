@@ -106,7 +106,7 @@ class ReportSetupPage implements RequestHandlerInterface
             $attributes = [
                 'id'    => 'input-' . $n,
                 'name'  => 'vars[' . $input['name'] . ']',
-                'class' => 'form-control',
+                'class' => $input['type'] === 'checkbox' ? 'form-control-check' : 'form-control',
             ];
 
             switch ($input['lookup']) {
