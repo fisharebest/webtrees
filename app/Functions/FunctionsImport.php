@@ -552,7 +552,7 @@ class FunctionsImport
         // Insert all new rows together
         $rows = [];
 
-        preg_match_all('/^[2-9] PLAC (.+)/m', $gedrec, $matches);
+        preg_match_all('/\n2 PLAC (.+)/', $gedrec, $matches);
 
         $places = array_unique($matches[1]);
 
