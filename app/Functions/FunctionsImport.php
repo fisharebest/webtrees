@@ -43,6 +43,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 
 use function app;
+use function array_chunk;
 use function array_intersect_key;
 use function array_map;
 use function array_unique;
@@ -573,7 +574,10 @@ class FunctionsImport
         // array_unique doesn't work with arrays of arrays
         $rows = array_intersect_key($rows, array_unique(array_map('serialize', $rows)));
 
-        DB::table('placelinks')->insert($rows);
+        // PDO has a limit of 65535 placeholders, and each row requires 3 placeholders.
+        foreach (array_chunk($rows, 20000) as $chunk) {
+            DB::table('placelinks')->insert($chunk);
+        }
     }
 
     /**
