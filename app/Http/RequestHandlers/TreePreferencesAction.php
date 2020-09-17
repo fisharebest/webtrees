@@ -147,7 +147,7 @@ class TreePreferencesAction implements RequestHandlerInterface
             FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.'), 'success');
         }
 
-        $url = route(ManageTrees::class, ['tree' => $tree->name()]);
+        $url = route(ManageTrees::class, ['tree' => $gedcom]);
 
         return redirect($url);
     }
