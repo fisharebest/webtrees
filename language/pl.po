@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-09 09:33+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Polish <http://translate.webtrees.net/projects/webtrees/"
+"PO-Revision-Date: 2020-09-21 00:16+0000\n"
+"Last-Translator: Łukasz <wilenskipl@wp.pl>\n"
+"Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -19127,7 +19127,7 @@ msgstr "kuzyn dziewiątego stopnia"
 #: modules_v3/individual_ext_report/report.xml:182
 #: modules_v3/individual_report/report.xml:178
 msgid "no"
-msgstr "Nie"
+msgstr "nie"
 
 #. I18N: None of the other options
 #: admin_site_config.php:111 admin_trees_config.php:63
@@ -20168,7 +20168,7 @@ msgstr "lat"
 #: modules_v3/individual_ext_report/report.xml:179
 #: modules_v3/individual_report/report.xml:175
 msgid "yes"
-msgstr "Tak"
+msgstr "tak"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:91
