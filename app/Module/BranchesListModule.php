@@ -408,15 +408,16 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
         // If this is not a birth pedigree (e.g. an adoption), highlight it
         if ($parents) {
-            $pedi = '';
             foreach ($individual->facts(['FAMC']) as $fact) {
                 if ($fact->target() === $parents) {
                     $pedi = $fact->attribute('PEDI');
+
+                    if ($pedi !== '' && $pedi !== 'birth') {
+                        $pedigree  = GedcomCodePedi::getValue($pedi, $individual);
+                        $indi_html = '<span class="red">' . $pedigree . '</span> ' . $indi_html;
+                    }
                     break;
                 }
-            }
-            if ($pedi !== '' && $pedi !== 'birth') {
-                $indi_html = '<span class="red">' . GedcomCodePedi::getValue($pedi, $individual) . '</span> ' . $indi_html;
             }
         }
 
