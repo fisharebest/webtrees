@@ -400,7 +400,7 @@ class GedcomRecord
                 // Ask the record to extract its names
                 $this->extractNames();
                 // No name found? Use a fallback.
-                if ($this->getAllNames === null) {
+                if ($this->getAllNames === []) {
                     $this->addName(static::RECORD_TYPE, $this->getFallBackName(), '');
                 }
             } else {
