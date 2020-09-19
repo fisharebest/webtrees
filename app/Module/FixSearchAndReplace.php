@@ -361,13 +361,13 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
 
         switch ($method) {
             case 'exact':
-                return '/' . preg_quote($search, '/') . '/' . $case;
+                return '/' . preg_quote($search, '/') . '/u' . $case;
 
             case 'words':
-                return '/\b' . preg_quote($search, '/') . '\b/' . $case;
+                return '/\b' . preg_quote($search, '/') . '\b/u' . $case;
 
             case 'wildcards':
-                return '/\b' . strtr(preg_quote($search, '/'), ['\*' => '.*', '\?' => '.']) . '\b/' . $case;
+                return '/\b' . strtr(preg_quote($search, '/'), ['\*' => '.*', '\?' => '.']) . '\b/u' . $case;
 
             case 'regex':
                 $regex = '/' . addcslashes($search, '/') . '/u' . $case;
