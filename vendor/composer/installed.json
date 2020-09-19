@@ -1387,17 +1387,17 @@
     },
     {
         "name": "league/commonmark",
-        "version": "1.5.4",
-        "version_normalized": "1.5.4.0",
+        "version": "1.5.5",
+        "version_normalized": "1.5.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/commonmark.git",
-            "reference": "21819c989e69bab07e933866ad30c7e3f32984ba"
+            "reference": "45832dfed6007b984c0d40addfac48d403dc6432"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/21819c989e69bab07e933866ad30c7e3f32984ba",
-            "reference": "21819c989e69bab07e933866ad30c7e3f32984ba",
+            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/45832dfed6007b984c0d40addfac48d403dc6432",
+            "reference": "45832dfed6007b984c0d40addfac48d403dc6432",
             "shasum": ""
         },
         "require": {
@@ -1409,7 +1409,7 @@
         },
         "require-dev": {
             "cebe/markdown": "~1.0",
-            "commonmark/commonmark.js": "0.29.1",
+            "commonmark/commonmark.js": "0.29.2",
             "erusev/parsedown": "~1.0",
             "ext-json": "*",
             "github/gfm": "0.29.0",
@@ -1420,7 +1420,7 @@
             "scrutinizer/ocular": "^1.5",
             "symfony/finder": "^4.2"
         },
-        "time": "2020-08-18T01:19:12+00:00",
+        "time": "2020-09-13T14:44:46+00:00",
         "bin": [
             "bin/commonmark"
         ],
@@ -1856,17 +1856,17 @@
     },
     {
         "name": "nesbot/carbon",
-        "version": "2.39.2",
-        "version_normalized": "2.39.2.0",
+        "version": "2.40.0",
+        "version_normalized": "2.40.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/briannesbitt/Carbon.git",
-            "reference": "326efde1bc09077a26cb77f6e2e32e13f06c27f2"
+            "reference": "6c7646154181013ecd55e80c201b9fd873c6ee5d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/326efde1bc09077a26cb77f6e2e32e13f06c27f2",
-            "reference": "326efde1bc09077a26cb77f6e2e32e13f06c27f2",
+            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/6c7646154181013ecd55e80c201b9fd873c6ee5d",
+            "reference": "6c7646154181013ecd55e80c201b9fd873c6ee5d",
             "shasum": ""
         },
         "require": {
@@ -1885,7 +1885,7 @@
             "phpunit/phpunit": "^7.5 || ^8.0",
             "squizlabs/php_codesniffer": "^3.4"
         },
-        "time": "2020-09-10T12:16:42+00:00",
+        "time": "2020-09-11T19:00:58+00:00",
         "bin": [
             "bin/carbon"
         ],
@@ -1947,21 +1947,21 @@
     },
     {
         "name": "nyholm/psr7",
-        "version": "1.3.0",
-        "version_normalized": "1.3.0.0",
+        "version": "1.3.1",
+        "version_normalized": "1.3.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/Nyholm/psr7.git",
-            "reference": "c17f4f73985f62054a331cbc4ffdf9868c4ef256"
+            "reference": "21b71a31eab5c0c2caf967b9c0fd97020254ed75"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Nyholm/psr7/zipball/c17f4f73985f62054a331cbc4ffdf9868c4ef256",
-            "reference": "c17f4f73985f62054a331cbc4ffdf9868c4ef256",
+            "url": "https://api.github.com/repos/Nyholm/psr7/zipball/21b71a31eab5c0c2caf967b9c0fd97020254ed75",
+            "reference": "21b71a31eab5c0c2caf967b9c0fd97020254ed75",
             "shasum": ""
         },
         "require": {
-            "php": "^7.1",
+            "php": ">=7.1",
             "php-http/message-factory": "^1.0",
             "psr/http-factory": "^1.0",
             "psr/http-message": "^1.0"
@@ -1976,7 +1976,7 @@
             "phpunit/phpunit": "^7.5",
             "symfony/error-handler": "^4.4"
         },
-        "time": "2020-05-23T11:29:07+00:00",
+        "time": "2020-06-13T15:59:10+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
