@@ -27,4 +27,4 @@ script:
   - if [ $TRAVIS_PHP_VERSION = 7.1     ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
 
 after_script:
-  - if [ $TRAVIS_PHP_VERSION = 7.3 ]; then travis_retry php vendor/bin/php-coveralls -v; fi
+  - if [ $TRAVIS_PHP_VERSION = 7.4 ]; then travis_retry php vendor/bin/php-coveralls -v; fi
