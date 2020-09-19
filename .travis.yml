@@ -16,18 +16,13 @@ cache:
     - vendor
     - $HOME/.composer/cache
 
-# 7.4 does not currently have ext-gd and ext-zip - but we don't need them for our tests
-install:
-  - curl -s http://getcomposer.org/installer | php
-  - travis_retry composer install --ignore-platform-reqs
-
 before_script:
   - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
 
 # Coverage testing is slow, so only do it once.
 script:
-  - if [ $TRAVIS_PHP_VERSION = 7.4     ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
-  - if [ $TRAVIS_PHP_VERSION = 7.3     ]; then vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml; fi
+  - if [ $TRAVIS_PHP_VERSION = 7.4     ]; then vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml; fi
+  - if [ $TRAVIS_PHP_VERSION = 7.3     ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
   - if [ $TRAVIS_PHP_VERSION = 7.2     ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
   - if [ $TRAVIS_PHP_VERSION = 7.1     ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
 
