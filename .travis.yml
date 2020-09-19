@@ -5,7 +5,6 @@ php:
   - 7.2
   - 7.3
   - 7.4
-  - nightly
 
 ## Non-sudo environments are faster
 sudo: false
@@ -21,10 +20,8 @@ before_script:
 
 # Coverage testing is slow, so only do it once.
 script:
-  - if [ $TRAVIS_PHP_VERSION = 7.4     ]; then vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml; fi
-  - if [ $TRAVIS_PHP_VERSION = 7.3     ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
-  - if [ $TRAVIS_PHP_VERSION = 7.2     ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
-  - if [ $TRAVIS_PHP_VERSION = 7.1     ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
+  - if [ $TRAVIS_PHP_VERSION  = 7.4 ]; then vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml; fi
+  - if [ $TRAVIS_PHP_VERSION != 7.4 ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
 
 after_script:
   - if [ $TRAVIS_PHP_VERSION = 7.4 ]; then travis_retry php vendor/bin/php-coveralls -v; fi
