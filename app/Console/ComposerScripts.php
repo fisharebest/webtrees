@@ -122,7 +122,7 @@ class ComposerScripts
             $namespace = 'Fisharebest\\Webtrees\\' . $namespace;
         }
 
-        return <<<"EOF"
+        return <<<"end_of_file"
 <?php
 
 /**
@@ -155,6 +155,6 @@ class {$base_class}Test extends TestCase
 {
 }
 
-EOF;
+end_of_file;
     }
 }
