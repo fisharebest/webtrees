@@ -98,7 +98,7 @@ class AlbumModule extends MediaTabModule
             }
         }
 
-        return $media->filter(Media::accessFilter());
+        return $media->filter()->filter(Media::accessFilter());
     }
 
     /**
