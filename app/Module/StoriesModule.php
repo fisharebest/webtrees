@@ -341,7 +341,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $languages   = $params['languages'] ?? [];
 
         $story_body  = $this->html_service->sanitize($story_body);
-        $story_title = $this->html_service->sanitize($story_title);
 
         if ($block_id !== 0) {
             DB::table('block')
