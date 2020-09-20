@@ -72,6 +72,6 @@ class ModuleDeleteSettings implements RequestHandlerInterface
 
         FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been deleted.', $module_name), 'success');
 
-        return redirect(route('modules'));
+        return redirect(route(ModulesAllPage::class));
     }
 }

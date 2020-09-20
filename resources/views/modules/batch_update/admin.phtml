@@ -1,12 +1,13 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
 
 ?>
 
-<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route('modules') => I18N::translate('Module administration'), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ModulesAllPage::class) => I18N::translate('Module administration'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
