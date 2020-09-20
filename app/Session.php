@@ -46,7 +46,9 @@ use const PHP_VERSION_ID;
  */
 class Session
 {
-    private const SESSION_NAME = 'WT2_SESSION';
+    // Use the secure prefix with HTTPS.
+    private const SESSION_NAME        = 'WT2_SESSION';
+    private const SECURE_SESSION_NAME = '__Secure-WT-ID';
 
     /**
      * Start a session
@@ -68,7 +70,7 @@ class Session
         // Paths containing UTF-8 characters need special handling.
         $path = implode('/', array_map('rawurlencode', explode('/', $path)));
 
-        session_name(self::SESSION_NAME);
+        session_name($secure ? self::SECURE_SESSION_NAME : self::SESSION_NAME);
         session_register_shutdown();
         // Since PHP 7.3, we can set "SameSite: Lax" to help protect against CSRF attacks.
         if (PHP_VERSION_ID > 70300) {
