@@ -515,11 +515,11 @@ class WebRoutes
                 $router->get(EditName::class, '/edit-name/{xref}/{fact_id}');
             });
 
-            // Member routes.
+            // User routes with a tree.
             $router->attach('', '/tree/{tree}', static function (Map $router) {
                 $router->extras([
                     'middleware' => [
-                        AuthMember::class,
+                        AuthLoggedIn::class,
                     ],
                 ]);
 
@@ -534,7 +534,7 @@ class WebRoutes
                 $router->post(UserPageBlockUpdate::class, '/my-page-block-edit');
             });
 
-            // User routes.
+            // User routes without a tree.
             $router->attach('', '', static function (Map $router) {
                 $router->extras([
                     'middleware' => [
