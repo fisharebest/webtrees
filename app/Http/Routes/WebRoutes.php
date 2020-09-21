@@ -294,8 +294,8 @@ class WebRoutes
                 $router->get('admin-media-data', '/media-data', 'Admin\MediaController::data');
                 $router->get('admin-media-upload', '/media-upload', 'Admin\MediaController::upload');
                 $router->post('admin-media-upload-action', '/media-upload', 'Admin\MediaController::uploadAction');
-                $router->get(AdminMediaFileDownload::class, '/media-file/{path}');
-                $router->get(AdminMediaFileThumbnail::class, '/media-thumbnail/{path}');
+                $router->get(AdminMediaFileDownload::class, '/media-file');
+                $router->get(AdminMediaFileThumbnail::class, '/media-thumbnail');
                 $router->get(CreateTreePage::class, '/trees/create');
                 $router->post(CreateTreeAction::class, '/trees/create');
                 $router->post(SelectDefaultTree::class, '/trees/default/{tree}');

@@ -39,7 +39,8 @@ class AdminMediaFileThumbnail implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $filesystem = Factory::filesystem()->data();
-        $path       = $request->getAttribute('path');
+        $params     = (array) $request->getQueryParams();
+        $path       = $params['path'] ?? '';
 
         return Factory::image()->thumbnailResponse($filesystem, $path, 120, 120, 'contain');
     }
