@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Factories;
 
+use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Tree;
@@ -26,11 +27,28 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use stdClass;
 
+use function trigger_error;
+
+use const E_USER_DEPRECATED;
+
 /**
  * Make a GedcomRecord object.
  */
 abstract class AbstractGedcomRecordFactory
 {
+    /** @var Cache  */
+    protected $cache;
+
+    /**
+     * GedcomRecordFactory constructor.
+     *
+     * @deprecated since 2.0.8 - will be removed in 2.1.0
+     */
+    public function __construct()
+    {
+        $this->cache = Factory::cache()->array();
+    }
+
     /**
      * @param Tree $tree
      *
