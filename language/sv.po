@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-08-21 17:21+0000\n"
+"PO-Revision-Date: 2020-10-03 17:17+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sv/>\n"
@@ -3487,7 +3487,7 @@ msgstr "Ändrad %1$s"
 #: app/Module/RecentChangesModule.php:258
 #, php-format
 msgid "Changed on %1$s by %2$s"
-msgstr "Ändrad den %1$s av %2$s"
+msgstr "Ändrad %1$s av %2$s"
 
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:435
