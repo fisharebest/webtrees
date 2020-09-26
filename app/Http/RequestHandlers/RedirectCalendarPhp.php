@@ -67,7 +67,7 @@ class RedirectCalendarPhp implements RequestHandlerInterface
         $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $url = route('calendar', [
+            $url = route(CalendarPage::class, [
                 'tree'     => $tree->name(),
                 'view'     => $view,
                 'cal'      => $cal,
