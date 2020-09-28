@@ -421,7 +421,7 @@ class ImageFactory implements ImageFactoryInterface
         $core = $image->getCore();
 
         if ($core instanceof Imagick) {
-            return $core->getImageCompressionQuality();
+            return $core->getImageCompressionQuality() ?: $default;
         }
 
         return $default;
