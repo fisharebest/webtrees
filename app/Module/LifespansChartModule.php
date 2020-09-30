@@ -39,6 +39,8 @@ use stdClass;
 
 use function app;
 use function assert;
+use function explode;
+use function implode;
 
 /**
  * Class LifespansChartModule
@@ -48,6 +50,10 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     use ModuleChartTrait;
 
     protected const ROUTE_URL  = '/tree/{tree}/lifespans';
+
+    // In theory, only "@" is a safe separator, but it gives longer and uglier URLs.
+    // Unless some other application generates XREFs with a ".", we are safe.
+    protected const SEPARATOR = '.';
 
     // Defaults
     protected const DEFAULT_PARAMETERS = [];
@@ -117,7 +123,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     {
         return route(static::class, [
                 'tree'  => $individual->tree()->name(),
-                'xrefs' => [$individual->xref()],
+                'xrefs' => $individual->xref(),
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
@@ -134,6 +140,11 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         $user      = $request->getAttribute('user');
         $xrefs     = $request->getQueryParams()['xrefs'] ?? [];
         $ajax      = $request->getQueryParams()['ajax'] ?? '';
+
+        // URLs created by older versions may already contain an array.
+        if (!is_array($xrefs)) {
+            $xrefs = explode(self::SEPARATOR, $xrefs);
+        }
 
         $params = (array) $request->getParsedBody();
 
@@ -181,7 +192,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             return redirect(route(static::class, [
                 'tree'  => $tree->name(),
-                'xrefs' => $xrefs,
+                'xrefs' => implode(self::SEPARATOR, $xrefs),
             ]));
         }
 
@@ -198,7 +209,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         $ajax_url = route(static::class, [
             'ajax'  => true,
             'tree'  => $tree->name(),
-            'xrefs' => $xrefs,
+            'xrefs' => implode(self::SEPARATOR, $xrefs),
         ]);
 
         return $this->viewResponse('modules/lifespans-chart/page', [
