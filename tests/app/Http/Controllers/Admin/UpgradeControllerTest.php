@@ -295,21 +295,4 @@ class UpgradeControllerTest extends TestCase
 
         $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
-
-    /**
-     * @return void
-     */
-    public function testStepCopyAndCleanUp(): void
-    {
-        $controller = new UpgradeController(
-            new GedcomExportService(),
-            new TreeService(),
-            new UpgradeService(new TimeoutService())
-        );
-
-        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Copy']);
-        $response = $controller->step($request);
-
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-    }
 }
