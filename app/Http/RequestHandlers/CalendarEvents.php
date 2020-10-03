@@ -106,7 +106,7 @@ class CalendarEvents implements RequestHandlerInterface
                 $anniversary_facts = $this->calendar_service->getCalendarEvents($ged_year->minimumJulianDay(), $ged_year->maximumJulianDay(), $filterev, $tree, $filterof, $filtersx);
             }
 
-            $anniversaries     = Collection::make($anniversary_facts)
+            $anniversaries = Collection::make($anniversary_facts)
                 ->unique()
                 ->sort(static function (Fact $x, Fact $y): int {
                     return $x->date()->minimumJulianDay() <=> $y->date()->minimumJulianDay();
@@ -287,7 +287,7 @@ class CalendarEvents implements RequestHandlerInterface
         $html = '';
 
         foreach ($list as $xref => $facts) {
-            $tmp  = Registry::gedcomRecordFactory()->make((string) $xref, $tree);
+            $tmp = Registry::gedcomRecordFactory()->make((string) $xref, $tree);
             $html .= $tag1 . '<a href="' . e($tmp->url()) . '">' . $tmp->fullName() . '</a> ';
             $html .= '<div class="indent">' . $facts . '</div>' . $tag2;
         }

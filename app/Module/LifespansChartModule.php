@@ -49,7 +49,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL  = '/tree/{tree}/lifespans';
+    protected const ROUTE_URL = '/tree/{tree}/lifespans';
 
     // In theory, only "@" is a safe separator, but it gives longer and uglier URLs.
     // Unless some other application generates XREFs with a ".", we are safe.

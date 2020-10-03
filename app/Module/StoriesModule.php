@@ -308,7 +308,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             $title = I18N::translate('Edit the story') . ' — ' . e($tree->title());
         }
 
-        $individual  = Registry::individualFactory()->make($xref, $tree);
+        $individual = Registry::individualFactory()->make($xref, $tree);
 
         return $this->viewResponse('modules/stories/edit', [
             'block_id'    => $block_id,
