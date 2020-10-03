@@ -412,7 +412,7 @@ class LocationController extends AbstractAdminController
                 Gedcom::PLACE_SEPARATOR,
                 array_reverse(
                     array_filter(
-                        array_slice($place, 1, $maxlevel + 1)
+                        array_slice($place, 1, $maxlevel)
                     )
                 )
             );
@@ -422,8 +422,8 @@ class LocationController extends AbstractAdminController
                 'geometry'   => [
                     'type'        => 'Point',
                     'coordinates' => [
-                        $this->gedcom_service->readLongitude($place['pl_long'] ?? ''),
-                        $this->gedcom_service->readLatitude($place['pl_lati'] ?? ''),
+                        $this->gedcom_service->readLongitude($place[$maxlevel + 1]),
+                        $this->gedcom_service->readLatitude($place[$maxlevel + 2]),
                     ],
                 ],
                 'properties' => [
