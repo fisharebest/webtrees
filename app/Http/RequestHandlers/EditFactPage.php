@@ -22,8 +22,8 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -55,7 +55,7 @@ class EditFactPage implements RequestHandlerInterface
         $fact_id = $request->getAttribute('fact_id');
         assert(is_string($fact_id));
 
-        $record = Factory::gedcomRecord()->make($xref, $tree);
+        $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
         // Find the fact to edit

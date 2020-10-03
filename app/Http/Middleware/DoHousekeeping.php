@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -75,7 +75,7 @@ class DoHousekeeping implements MiddlewareInterface
 
         // Run the cleanup after random page requests.
         if ($request->getMethod() === RequestMethodInterface::METHOD_GET && random_int(1, self::PROBABILITY) === 1) {
-            $this->runHousekeeping(Factory::filesystem()->data(), Factory::filesystem()->root());
+            $this->runHousekeeping(Registry::filesystem()->data(), Registry::filesystem()->root());
         }
 
         return $response;

@@ -21,9 +21,9 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -64,7 +64,7 @@ class AddChildToFamilyAction implements RequestHandlerInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $family = Factory::family()->make($xref, $tree);
+        $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
         $params = (array) $request->getParsedBody();

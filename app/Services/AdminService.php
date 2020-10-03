@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -122,7 +122,7 @@ class AdminService
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
                 return array_map(static function (string $xref) use ($tree): Source {
-                    return Factory::source()->make($xref, $tree);
+                    return Registry::sourceFactory()->make($xref, $tree);
                 }, explode(',', $xrefs));
             })
             ->all();
@@ -142,7 +142,7 @@ class AdminService
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
                 return array_map(static function (string $xref) use ($tree): Individual {
-                    return Factory::individual()->make($xref, $tree);
+                    return Registry::individualFactory()->make($xref, $tree);
                 }, explode(',', $xrefs));
             })
             ->all();
@@ -156,7 +156,7 @@ class AdminService
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
                 return array_map(static function (string $xref) use ($tree): Family {
-                    return Factory::family()->make($xref, $tree);
+                    return Registry::familyFactory()->make($xref, $tree);
                 }, explode(',', $xrefs));
             })
             ->all();
@@ -170,7 +170,7 @@ class AdminService
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
                 return array_map(static function (string $xref) use ($tree): Media {
-                    return Factory::media()->make($xref, $tree);
+                    return Registry::mediaFactory()->make($xref, $tree);
                 }, explode(',', $xrefs));
             })
             ->all();

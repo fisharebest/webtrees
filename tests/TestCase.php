@@ -91,20 +91,20 @@ class TestCase extends \PHPUnit\Framework\TestCase
         app()->bind(UriFactoryInterface::class, Psr17Factory::class);
 
         // Register the factories
-        Factory::cache(new CacheFactory());
-        Factory::family(new FamilyFactory());
-        Factory::filesystem(new FilesystemFactory());
-        Factory::gedcomRecord(new GedcomRecordFactory());
-        Factory::header(new HeaderFactory());
-        Factory::individual(new IndividualFactory());
-        Factory::location(new LocationFactory());
-        Factory::media(new MediaFactory());
-        Factory::note(new NoteFactory());
-        Factory::repository(new RepositoryFactory());
-        Factory::source(new SourceFactory());
-        Factory::submission(new SubmissionFactory());
-        Factory::submitter(new SubmitterFactory());
-        Factory::xref(new XrefFactory());
+        Registry::cache(new CacheFactory());
+        Registry::familyFactory(new FamilyFactory());
+        Registry::filesystem(new FilesystemFactory());
+        Registry::gedcomRecordFactory(new GedcomRecordFactory());
+        Registry::headerFactory(new HeaderFactory());
+        Registry::individualFactory(new IndividualFactory());
+        Registry::locationFactory(new LocationFactory());
+        Registry::mediaFactory(new MediaFactory());
+        Registry::noteFactory(new NoteFactory());
+        Registry::repositoryFactory(new RepositoryFactory());
+        Registry::sourceFactory(new SourceFactory());
+        Registry::submissionFactory(new SubmissionFactory());
+        Registry::submitterFactory(new SubmitterFactory());
+        Registry::xrefFactory(new XrefFactory());
 
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
 

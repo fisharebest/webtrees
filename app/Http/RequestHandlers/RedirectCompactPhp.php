@@ -22,8 +22,8 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Module\CompactTreeChartModule;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -68,7 +68,7 @@ class RedirectCompactPhp implements RequestHandlerInterface
         $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $individual = Factory::individual()->make($root_id, $tree) ?? $tree->significantIndividual(Auth::user());
+            $individual = Registry::individualFactory()->make($root_id, $tree) ?? $tree->significantIndividual(Auth::user());
 
             $url = $this->chart->chartUrl($individual, []);
 

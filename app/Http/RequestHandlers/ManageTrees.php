@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
@@ -67,7 +67,7 @@ class ManageTrees implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
 
         $multiple_tree_threshold = $this->admin_service->multipleTreeThreshold();
-        $gedcom_file_count       = $this->admin_service->gedcomFiles(Factory::filesystem()->data())->count();
+        $gedcom_file_count       = $this->admin_service->gedcomFiles(Registry::filesystem()->data())->count();
 
         $all_trees = $this->tree_service->all();
 

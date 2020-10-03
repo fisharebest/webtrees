@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -226,7 +226,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             ->select(['families.*'])
             ->distinct()
             ->get()
-            ->map(Factory::family()->mapper($tree))
+            ->map(Registry::familyFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -250,7 +250,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             ->select(['individuals.*'])
             ->distinct()
             ->get()
-            ->map(Factory::individual()->mapper($tree))
+            ->map(Registry::individualFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
     }
 }

@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
@@ -81,7 +81,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
 
         $results = [];
         foreach ($query->cursor() as $row) {
-            $record = Factory::gedcomRecord()->make($row->page_parameter, $tree);
+            $record = Registry::gedcomRecordFactory()->make($row->page_parameter, $tree);
 
             if ($record instanceof GedcomRecord && $record->canShow()) {
                 $results[] = [

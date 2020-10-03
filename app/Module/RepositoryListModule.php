@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Repository;
@@ -159,7 +159,7 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Repository::RECORD_TYPE)
             ->get()
-            ->map(Factory::repository()->mapper($tree))
+            ->map(Registry::repositoryFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
 
         return $this->viewResponse('modules/repository-list/page', [

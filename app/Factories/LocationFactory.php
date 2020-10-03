@@ -21,8 +21,8 @@ namespace Fisharebest\Webtrees\Factories;
 
 use Closure;
 use Fisharebest\Webtrees\Contracts\LocationFactoryInterface;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Location;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
@@ -48,7 +48,7 @@ class LocationFactory extends AbstractGedcomRecordFactory implements LocationFac
      */
     public function make(string $xref, Tree $tree, string $gedcom = null): ?Location
     {
-        return Factory::cache()->array()->remember(__CLASS__ . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
+        return Registry::cache()->array()->remember(__CLASS__ . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
             $gedcom  = $gedcom ?? $this->gedcom($xref, $tree);
             $pending = $this->pendingChanges($tree)->get($xref);
 

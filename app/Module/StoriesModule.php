@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -239,7 +239,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             $block_id = (int) $story->block_id;
             $xref     = (string) $story->xref;
 
-            $story->individual = Factory::individual()->make($xref, $tree);
+            $story->individual = Registry::individualFactory()->make($xref, $tree);
             $story->title      = $this->getBlockSetting($block_id, 'title');
             $story->languages  = $this->getBlockSetting($block_id, 'languages');
         }
@@ -308,7 +308,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             $title = I18N::translate('Edit the story') . ' — ' . e($tree->title());
         }
 
-        $individual  = Factory::individual()->make($xref, $tree);
+        $individual  = Registry::individualFactory()->make($xref, $tree);
 
         return $this->viewResponse('modules/stories/edit', [
             'block_id'    => $block_id,
@@ -420,7 +420,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
                 $block_id = (int) $story->block_id;
                 $xref     = (string) $story->xref;
 
-                $story->individual = Factory::individual()->make($xref, $tree);
+                $story->individual = Registry::individualFactory()->make($xref, $tree);
                 $story->title      = $this->getBlockSetting($block_id, 'title');
                 $story->languages  = $this->getBlockSetting($block_id, 'languages');
 

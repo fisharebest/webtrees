@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -193,7 +193,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
 
         $xref = $request->getQueryParams()['xref'];
 
-        $individual = Factory::individual()->make($xref, $tree);
+        $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, false, true);
 
         $user = $request->getAttribute('user');
@@ -246,7 +246,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
         assert($tree instanceof Tree);
 
         $pid        = $request->getQueryParams()['pid'];
-        $individual = Factory::individual()->make($pid, $tree);
+        $individual = Registry::individualFactory()->make($pid, $tree);
 
         if ($individual === null) {
             throw new IndividualNotFoundException();

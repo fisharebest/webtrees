@@ -21,8 +21,8 @@ namespace Fisharebest\Webtrees\Factories;
 
 use Closure;
 use Fisharebest\Webtrees\Contracts\NoteFactoryInterface;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
@@ -48,7 +48,7 @@ class NoteFactory extends AbstractGedcomRecordFactory implements NoteFactoryInte
      */
     public function make(string $xref, Tree $tree, string $gedcom = null): ?Note
     {
-        return Factory::cache()->array()->remember(__CLASS__ . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
+        return Registry::cache()->array()->remember(__CLASS__ . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
             $gedcom  = $gedcom ?? $this->gedcom($xref, $tree);
             $pending = $this->pendingChanges($tree)->get($xref);
 

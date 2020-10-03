@@ -20,12 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -59,7 +59,7 @@ class DeleteRecord implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $record = Factory::gedcomRecord()->make($xref, $tree);
+        $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
         if ($record && Auth::isEditor($record->tree()) && $record->canShow() && $record->canEdit()) {
@@ -75,7 +75,7 @@ class DeleteRecord implements RequestHandlerInterface
                         FlashMessages::addMessage(I18N::translate('The family “%s” has been deleted because it only has one member.', $linker->fullName()));
                         $linker->deleteRecord();
                         // Delete the remaining link to this family
-                        $relict = Factory::gedcomRecord()->make($match[2][0], $tree);
+                        $relict = Registry::gedcomRecordFactory()->make($match[2][0], $tree);
                         if ($relict instanceof Individual) {
                             $relict_gedcom = $this->removeLinks($relict->gedcom(), $linker->xref());
                             $relict->updateRecord($relict_gedcom, false);

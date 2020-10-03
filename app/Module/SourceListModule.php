@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
@@ -156,7 +156,7 @@ class SourceListModule extends AbstractModule implements ModuleListInterface, Re
         $sources = DB::table('sources')
             ->where('s_file', '=', $tree->id())
             ->get()
-            ->map(Factory::source()->mapper($tree))
+            ->map(Registry::sourceFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
 
         return $this->viewResponse('modules/source-list/page', [

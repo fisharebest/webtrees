@@ -222,35 +222,35 @@ class Fact
         switch ($this->tag) {
             case 'FAMC':
             case 'FAMS':
-                return Factory::family()->make($xref, $this->record()->tree());
+                return Registry::familyFactory()->make($xref, $this->record()->tree());
             case 'HUSB':
             case 'WIFE':
             case 'ALIA':
             case 'CHIL':
             case '_ASSO':
-                return Factory::individual()->make($xref, $this->record()->tree());
+                return Registry::individualFactory()->make($xref, $this->record()->tree());
             case 'ASSO':
                 return
-                    Factory::individual()->make($xref, $this->record()->tree()) ??
-                    Factory::submitter()->make($xref, $this->record()->tree());
+                    Registry::individualFactory()->make($xref, $this->record()->tree()) ??
+                    Registry::submitterFactory()->make($xref, $this->record()->tree());
             case 'SOUR':
-                return Factory::source()->make($xref, $this->record()->tree());
+                return Registry::sourceFactory()->make($xref, $this->record()->tree());
             case 'OBJE':
-                return Factory::media()->make($xref, $this->record()->tree());
+                return Registry::mediaFactory()->make($xref, $this->record()->tree());
             case 'REPO':
-                return Factory::repository()->make($xref, $this->record()->tree());
+                return Registry::repositoryFactory()->make($xref, $this->record()->tree());
             case 'NOTE':
-                return Factory::note()->make($xref, $this->record()->tree());
+                return Registry::noteFactory()->make($xref, $this->record()->tree());
             case 'ANCI':
             case 'DESI':
             case 'SUBM':
-                return Factory::submitter()->make($xref, $this->record()->tree());
+                return Registry::submitterFactory()->make($xref, $this->record()->tree());
             case 'SUBN':
-                return Factory::submission()->make($xref, $this->record()->tree());
+                return Registry::submissionFactory()->make($xref, $this->record()->tree());
             case '_LOC':
-                return Factory::location()->make($xref, $this->record()->tree());
+                return Registry::locationFactory()->make($xref, $this->record()->tree());
             default:
-                return Factory::gedcomRecord()->make($xref, $this->record()->tree());
+                return Registry::gedcomRecordFactory()->make($xref, $this->record()->tree());
         }
     }
 
@@ -534,7 +534,7 @@ class Fact
         preg_match_all('/\n(2 SOUR @(' . Gedcom::REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $this->gedcom(), $matches, PREG_SET_ORDER);
         $citations = [];
         foreach ($matches as $match) {
-            $source = Factory::source()->make($match[2], $this->record()->tree());
+            $source = Registry::sourceFactory()->make($match[2], $this->record()->tree());
             if ($source && $source->canShow()) {
                 $citations[] = $match[1];
             }
@@ -555,7 +555,7 @@ class Fact
         foreach ($matches[1] as $match) {
             $note = preg_replace("/\n3 CONT ?/", "\n", $match);
             if (preg_match('/@(' . Gedcom::REGEX_XREF . ')@/', $note, $nmatch)) {
-                $note = Factory::note()->make($nmatch[1], $this->record()->tree());
+                $note = Registry::noteFactory()->make($nmatch[1], $this->record()->tree());
                 if ($note && $note->canShow()) {
                     // A note object
                     $notes[] = $note;
@@ -579,7 +579,7 @@ class Fact
         $media = [];
         preg_match_all('/\n2 OBJE @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom(), $matches);
         foreach ($matches[1] as $match) {
-            $obje = Factory::media()->make($match, $this->record()->tree());
+            $obje = Registry::mediaFactory()->make($match, $this->record()->tree());
             if ($obje && $obje->canShow()) {
                 $media[] = $obje;
             }

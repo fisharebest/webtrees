@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Services;
 use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\AhnentafelReportModule;
@@ -542,7 +542,7 @@ class ModuleService
      */
     public function all(bool $include_disabled = false): Collection
     {
-        return Factory::cache()->array()->remember('all-modules', function (): Collection {
+        return Registry::cache()->array()->remember('all-modules', function (): Collection {
             // Modules have a default status, order etc.
             // We can override these from database settings.
             $module_info = DB::table('module')
@@ -847,7 +847,7 @@ class ModuleService
     public function bootModules(ModuleThemeInterface $current_theme): void
     {
         // @deprecated since 2.0.8 - will be removed in 2.1.0
-        app()->instance('cache.array', Factory::cache()->array());
+        app()->instance('cache.array', Registry::cache()->array());
 
         foreach ($this->all() as $module) {
             // Only bootstrap the current theme.

@@ -44,7 +44,7 @@ class Note extends GedcomRecord
      */
     public static function rowMapper(Tree $tree): Closure
     {
-        return Factory::note()->mapper($tree);
+        return Registry::noteFactory()->mapper($tree);
     }
 
     /**
@@ -62,7 +62,7 @@ class Note extends GedcomRecord
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Note
     {
-        return Factory::note()->make($xref, $tree, $gedcom);
+        return Registry::noteFactory()->make($xref, $tree, $gedcom);
     }
 
     /**
@@ -95,7 +95,7 @@ class Note extends GedcomRecord
             ->pluck('l_from');
 
         foreach ($linked_ids as $linked_id) {
-            $linked_record = Factory::gedcomRecord()->make($linked_id, $this->tree);
+            $linked_record = Registry::gedcomRecordFactory()->make($linked_id, $this->tree);
             if ($linked_record instanceof GedcomRecord && !$linked_record->canShow($access_level)) {
                 return false;
             }

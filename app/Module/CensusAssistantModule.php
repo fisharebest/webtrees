@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Census\CensusInterface;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -90,13 +90,13 @@ class CensusAssistantModule extends AbstractModule
         assert($tree instanceof Tree);
 
         $params       = (array) $request->getParsedBody();
-        $individual   = Factory::individual()->make($params['xref'], $tree);
-        $head         = Factory::individual()->make($params['head'], $tree);
+        $individual   = Registry::individualFactory()->make($params['xref'], $tree);
+        $head         = Registry::individualFactory()->make($params['head'], $tree);
         $census_class = $params['census'];
         $census       = new $census_class();
 
         // No head of household?  Create a fake one.
-        $head = $head ?? Factory::individual()->new('X', '0 @X@ INDI', null, $tree);
+        $head = $head ?? Registry::individualFactory()->new('X', '0 @X@ INDI', null, $tree);
 
         // Generate columns (e.g. relationship name) using the correct language.
         I18N::init($census->censusLanguage());
@@ -154,7 +154,7 @@ class CensusAssistantModule extends AbstractModule
             // Add the census fact to the rest of the household
             foreach ($ca_individuals['xref'] ?? [] as $xref) {
                 if ($xref !== '' && $xref !== $individual->xref()) {
-                    Factory::individual()->make($xref, $individual->tree())
+                    Registry::individualFactory()->make($xref, $individual->tree())
                         ->updateFact($fact_id, $newged, !$keep_chan);
                 }
             }

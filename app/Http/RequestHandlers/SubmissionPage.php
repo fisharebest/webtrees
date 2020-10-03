@@ -22,8 +22,8 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
@@ -72,7 +72,7 @@ class SubmissionPage implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $submission = Factory::submission()->make($xref, $tree);
+        $submission = Registry::submissionFactory()->make($xref, $tree);
         $submission = Auth::checkSubmissionAccess($submission, false);
 
         // Redirect to correct xref/slug

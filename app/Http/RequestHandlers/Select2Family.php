@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
@@ -61,7 +61,7 @@ class Select2Family extends AbstractSelect2Handler
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
         // Search by XREF
-        $family = Factory::family()->make($query, $tree);
+        $family = Registry::familyFactory()->make($query, $tree);
 
         if ($family instanceof Family) {
             $results = new Collection([$family]);

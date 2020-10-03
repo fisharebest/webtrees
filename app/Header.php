@@ -42,7 +42,7 @@ class Header extends GedcomRecord
      */
     public static function rowMapper(Tree $tree): Closure
     {
-        return Factory::header()->mapper($tree);
+        return Registry::headerFactory()->mapper($tree);
     }
 
     /**
@@ -60,7 +60,7 @@ class Header extends GedcomRecord
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Header
     {
-        return Factory::header()->make($xref, $tree, $gedcom);
+        return Registry::headerFactory()->make($xref, $tree, $gedcom);
     }
 
     /**

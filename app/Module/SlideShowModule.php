@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
@@ -121,7 +121,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             ->get()
             ->shuffle()
             ->first(static function (stdClass $row) use ($filter_links, $tree): bool {
-                $media = Factory::media()->make($row->m_id, $tree, $row->m_gedcom);
+                $media = Registry::mediaFactory()->make($row->m_id, $tree, $row->m_gedcom);
                 assert($media instanceof Media);
 
                 if (!$media->canShow() || $media->firstImageFile() === null) {
@@ -147,7 +147,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         $random_media = null;
 
         if ($random_row !== null) {
-            $random_media = Factory::media()->make($random_row->m_id, $tree, $random_row->m_gedcom);
+            $random_media = Registry::mediaFactory()->make($random_row->m_id, $tree, $random_row->m_gedcom);
         }
 
         if ($random_media instanceof Media) {

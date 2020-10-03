@@ -20,9 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -80,7 +80,7 @@ class AutocompleteController extends AbstractBaseController
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = Factory::filesystem()->data();
+        $data_filesystem = Registry::filesystem()->data();
 
         $query = $request->getQueryParams()['query'] ?? '';
 
@@ -115,7 +115,7 @@ class AutocompleteController extends AbstractBaseController
         $query = $request->getQueryParams()['query'] ?? '';
         $xref  = $request->getQueryParams()['extra'] ?? '';
 
-        $source = Factory::source()->make($xref, $tree);
+        $source = Registry::sourceFactory()->make($xref, $tree);
         $source = Auth::checkSourceAccess($source);
 
         $regex_query = preg_quote(strtr($query, [' ' => '.+']), '/');
@@ -133,7 +133,7 @@ class AutocompleteController extends AbstractBaseController
             ->distinct()
             ->select(['individuals.*'])
             ->get()
-            ->map(Factory::individual()->mapper($tree))
+            ->map(Registry::individualFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
 
         $families = DB::table('families')
@@ -149,7 +149,7 @@ class AutocompleteController extends AbstractBaseController
             ->distinct()
             ->select(['families.*'])
             ->get()
-            ->map(Factory::family()->mapper($tree))
+            ->map(Registry::familyFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
 
         $pages = new Collection();

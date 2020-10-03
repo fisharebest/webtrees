@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\I18N;
@@ -141,7 +141,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
             ->get()
             ->map(static function (stdClass $row) use ($tree): stdClass {
                 if ($row->xref !== null) {
-                    $row->record = Factory::gedcomRecord()->make($row->xref, $tree);
+                    $row->record = Registry::gedcomRecordFactory()->make($row->xref, $tree);
                 } else {
                     $row->record = null;
                 }
@@ -263,19 +263,19 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
     {
         switch ($type) {
             case 'indi':
-                return Factory::individual()->make($xref, $tree);
+                return Registry::individualFactory()->make($xref, $tree);
 
             case 'fam':
-                return Factory::family()->make($xref, $tree);
+                return Registry::familyFactory()->make($xref, $tree);
 
             case 'sour':
-                return Factory::source()->make($xref, $tree);
+                return Registry::sourceFactory()->make($xref, $tree);
 
             case 'repo':
-                return Factory::repository()->make($xref, $tree);
+                return Registry::repositoryFactory()->make($xref, $tree);
 
             case 'obje':
-                return Factory::media()->make($xref, $tree);
+                return Registry::mediaFactory()->make($xref, $tree);
 
             default:
                 return null;

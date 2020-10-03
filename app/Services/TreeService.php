@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
@@ -58,7 +58,7 @@ class TreeService
      */
     public function all(): Collection
     {
-        return Factory::cache()->array()->remember('all-trees', static function (): Collection {
+        return Registry::cache()->array()->remember('all-trees', static function (): Collection {
             // All trees
             $query = DB::table('gedcom')
                 ->leftJoin('gedcom_setting', static function (JoinClause $join): void {

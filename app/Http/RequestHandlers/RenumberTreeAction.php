@@ -19,13 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\TimeoutService;
@@ -77,7 +77,7 @@ class RenumberTreeAction implements RequestHandlerInterface
         $xrefs = $this->admin_service->duplicateXrefs($tree);
 
         foreach ($xrefs as $old_xref => $type) {
-            $new_xref = Factory::xref()->make($type);
+            $new_xref = Registry::xrefFactory()->make($type);
             switch ($type) {
                 case Individual::RECORD_TYPE:
                     DB::table('individuals')

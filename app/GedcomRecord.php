@@ -119,7 +119,7 @@ class GedcomRecord
      */
     public static function rowMapper(Tree $tree): Closure
     {
-        return Factory::gedcomRecord()->mapper($tree);
+        return Registry::gedcomRecordFactory()->mapper($tree);
     }
 
     /**
@@ -187,7 +187,7 @@ class GedcomRecord
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
     {
-        return Factory::gedcomRecord()->make($xref, $tree, $gedcom);
+        return Registry::gedcomRecordFactory()->make($xref, $tree, $gedcom);
     }
 
     /**
@@ -308,7 +308,7 @@ class GedcomRecord
 
         $cache_key = 'show-' . $this->xref . '-' . $this->tree->id() . '-' . $access_level;
 
-        return Factory::cache()->array()->remember($cache_key, function () use ($access_level) {
+        return Registry::cache()->array()->remember($cache_key, function () use ($access_level) {
             return $this->canShowRecord($access_level);
         });
     }
@@ -620,7 +620,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['individuals.*'])
             ->get()
-            ->map(Factory::individual()->mapper($this->tree))
+            ->map(Registry::individualFactory()->mapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -644,7 +644,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['families.*'])
             ->get()
-            ->map(Factory::family()->mapper($this->tree))
+            ->map(Registry::familyFactory()->mapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -668,7 +668,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['sources.*'])
             ->get()
-            ->map(Factory::source()->mapper($this->tree))
+            ->map(Registry::sourceFactory()->mapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -692,7 +692,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['media.*'])
             ->get()
-            ->map(Factory::media()->mapper($this->tree))
+            ->map(Registry::mediaFactory()->mapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -717,7 +717,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['other.*'])
             ->get()
-            ->map(Factory::note()->mapper($this->tree))
+            ->map(Registry::noteFactory()->mapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -742,7 +742,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['other.*'])
             ->get()
-            ->map(Factory::repository()->mapper($this->tree))
+            ->map(Registry::repositoryFactory()->mapper($this->tree))
             ->filter(self::accessFilter());
     }
 
@@ -767,7 +767,7 @@ class GedcomRecord
             ->where('l_to', '=', $this->xref)
             ->select(['other.*'])
             ->get()
-            ->map(Factory::location()->mapper($this->tree))
+            ->map(Registry::locationFactory()->mapper($this->tree))
             ->filter(self::accessFilter());
     }
     
@@ -1143,7 +1143,7 @@ class GedcomRecord
             ->pluck('l_from');
 
         return $xrefs->map(function (string $xref): GedcomRecord {
-            $record = Factory::gedcomRecord()->make($xref, $this->tree);
+            $record = Registry::gedcomRecordFactory()->make($xref, $this->tree);
             assert($record instanceof GedcomRecord);
 
             return $record;

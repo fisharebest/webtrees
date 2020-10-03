@@ -24,7 +24,7 @@ use Aura\Router\RouterContainer;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -214,7 +214,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      */
     private function siteMapIndex(ServerRequestInterface $request): ResponseInterface
     {
-        $content = Factory::cache()->file()->remember('sitemap.xml', function (): string {
+        $content = Registry::cache()->file()->remember('sitemap.xml', function (): string {
             // Which trees have sitemaps enabled?
             $tree_ids = $this->tree_service->all()->filter(static function (Tree $tree): bool {
                 return $tree->getPreference('include_in_sitemap') === '1';
@@ -318,7 +318,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
 
         $cache_key = 'sitemap/' . $tree->id() . '/' . $type . '/' . $page . '.xml';
 
-        $content = Factory::cache()->file()->remember($cache_key, function () use ($tree, $type, $page): string {
+        $content = Registry::cache()->file()->remember($cache_key, function () use ($tree, $type, $page): string {
             $records = $this->sitemapRecords($tree, $type, self::RECORDS_PER_VOLUME, self::RECORDS_PER_VOLUME * $page);
 
             return view('modules/sitemap/sitemap-file-xml', [
@@ -400,7 +400,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Factory::family()->mapper($tree));
+            ->map(Registry::familyFactory()->mapper($tree));
     }
 
     /**
@@ -418,7 +418,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Factory::individual()->mapper($tree));
+            ->map(Registry::individualFactory()->mapper($tree));
     }
 
     /**
@@ -436,7 +436,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Factory::media()->mapper($tree));
+            ->map(Registry::mediaFactory()->mapper($tree));
     }
 
     /**
@@ -455,7 +455,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Factory::note()->mapper($tree));
+            ->map(Registry::noteFactory()->mapper($tree));
     }
 
     /**
@@ -474,7 +474,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Factory::repository()->mapper($tree));
+            ->map(Registry::repositoryFactory()->mapper($tree));
     }
 
     /**
@@ -492,7 +492,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Factory::source()->mapper($tree));
+            ->map(Registry::sourceFactory()->mapper($tree));
     }
 
     /**
@@ -511,6 +511,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Factory::submitter()->mapper($tree));
+            ->map(Registry::submitterFactory()->mapper($tree));
     }
 }

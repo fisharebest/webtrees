@@ -19,12 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Services\AdminService;
-use Fisharebest\Webtrees\Services\TimeoutService;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Nyholm\Psr7\UploadedFile;
 use Psr\Http\Message\ResponseInterface;
@@ -55,7 +53,7 @@ class ImportGedcomAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = Factory::filesystem()->data();
+        $data_filesystem = Registry::filesystem()->data();
 
         $params             = (array) $request->getParsedBody();
         $source             = $params['source'];

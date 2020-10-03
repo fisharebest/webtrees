@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Aura\Router\Route;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
@@ -328,7 +328,7 @@ trait ModuleThemeTrait
      */
     public function menuMyIndividualRecord(Tree $tree): ?Menu
     {
-        $record = Factory::individual()->make($tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF), $tree);
+        $record = Registry::individualFactory()->make($tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF), $tree);
 
         if ($record) {
             return new Menu(I18N::translate('My individual record'), $record->url(), 'menu-myrecord');

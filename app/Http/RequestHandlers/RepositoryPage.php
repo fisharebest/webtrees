@@ -22,8 +22,8 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
@@ -85,7 +85,7 @@ class RepositoryPage implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $repository = Factory::repository()->make($xref, $tree);
+        $repository = Registry::repositoryFactory()->make($xref, $tree);
         $repository = Auth::checkRepositoryAccess($repository, false);
 
         // Redirect to correct xref/slug

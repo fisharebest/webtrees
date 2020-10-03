@@ -20,9 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -77,7 +77,7 @@ class ExportGedcomClient implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = Factory::filesystem()->data();
+        $data_filesystem = Registry::filesystem()->data();
 
         $params = (array) $request->getParsedBody();
 
@@ -132,7 +132,7 @@ class ExportGedcomClient implements RequestHandlerInterface
                 $records = DB::table('media')
                     ->where('m_file', '=', $tree->id())
                     ->get()
-                    ->map(Factory::media()->mapper($tree))
+                    ->map(Registry::mediaFactory()->mapper($tree))
                     ->filter(GedcomRecord::accessFilter());
 
                 foreach ($records as $record) {

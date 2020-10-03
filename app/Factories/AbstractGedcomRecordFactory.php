@@ -20,8 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Factories;
 
 use Fisharebest\Webtrees\Cache;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
@@ -46,7 +46,7 @@ abstract class AbstractGedcomRecordFactory
      */
     public function __construct()
     {
-        $this->cache = Factory::cache()->array();
+        $this->cache = Registry::cache()->array();
     }
 
     /**
@@ -57,7 +57,7 @@ abstract class AbstractGedcomRecordFactory
     protected function pendingChanges(Tree $tree): Collection
     {
         // Caution - this cache can be overwritten by GedcomExportService
-        return Factory::cache()->array()->remember(__CLASS__ . $tree->id(), static function () use ($tree): Collection {
+        return Registry::cache()->array()->remember(__CLASS__ . $tree->id(), static function () use ($tree): Collection {
             return DB::table('change')
                 ->where('gedcom_id', '=', $tree->id())
                 ->where('status', '=', 'pending')

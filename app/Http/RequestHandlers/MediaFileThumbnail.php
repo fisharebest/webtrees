@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -53,14 +53,14 @@ class MediaFileThumbnail implements RequestHandlerInterface
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
         $fact_id = $params['fact_id'];
-        $media   = Factory::media()->make($xref, $tree);
+        $media   = Registry::mediaFactory()->make($xref, $tree);
 
         if ($media === null) {
-            return Factory::image()->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
+            return Registry::imageFactory()->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
         }
 
         if (!$media->canShow()) {
-            return Factory::image()->replacementImageResponse((string) StatusCodeInterface::STATUS_FORBIDDEN);
+            return Registry::imageFactory()->replacementImageResponse((string) StatusCodeInterface::STATUS_FORBIDDEN);
         }
 
         foreach ($media->mediaFiles() as $media_file) {
@@ -74,11 +74,11 @@ class MediaFileThumbnail implements RequestHandlerInterface
                 $params['tree'] = $media_file->media()->tree()->name();
 
                 if ($media_file->signature($params) !== $params['s']) {
-                    return Factory::image()->replacementImageResponse((string) StatusCodeInterface::STATUS_FORBIDDEN)
+                    return Registry::imageFactory()->replacementImageResponse((string) StatusCodeInterface::STATUS_FORBIDDEN)
                         ->withHeader('X-Signature-Exception', 'Signature mismatch');
                 }
 
-                $image_factory = Factory::image();
+                $image_factory = Registry::imageFactory();
 
                 return $image_factory->mediaFileThumbnailResponse(
                     $media_file,
@@ -90,6 +90,6 @@ class MediaFileThumbnail implements RequestHandlerInterface
             }
         }
 
-        return Factory::image()->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
+        return Registry::imageFactory()->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
     }
 }

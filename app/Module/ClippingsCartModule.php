@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
 use Fisharebest\Webtrees\Exceptions\NoteNotFoundException;
 use Fisharebest\Webtrees\Exceptions\RepositoryNotFoundException;
 use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -214,7 +214,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = Factory::filesystem()->data();
+        $data_filesystem = Registry::filesystem()->data();
 
         $params = (array) $request->getParsedBody();
 
@@ -270,7 +270,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         }
 
         foreach ($xrefs as $xref) {
-            $object = Factory::gedcomRecord()->make($xref, $tree);
+            $object = Registry::gedcomRecordFactory()->make($xref, $tree);
             // The object may have been deleted since we added it to the cart....
             if ($object instanceof  GedcomRecord) {
                 $record = $object->privatizeGedcom($access_level);
@@ -451,7 +451,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $family = Factory::family()->make($xref, $tree);
+        $family = Registry::familyFactory()->make($xref, $tree);
 
         if ($family === null) {
             throw new FamilyNotFoundException();
@@ -503,7 +503,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $xref   = $params['xref'];
         $option = $params['option'];
 
-        $family = Factory::family()->make($xref, $tree);
+        $family = Registry::familyFactory()->make($xref, $tree);
 
         if ($family === null) {
             throw new FamilyNotFoundException();
@@ -589,7 +589,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $individual = Factory::individual()->make($xref, $tree);
+        $individual = Registry::individualFactory()->make($xref, $tree);
 
         if ($individual === null) {
             throw new IndividualNotFoundException();
@@ -653,7 +653,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $xref   = $params['xref'];
         $option = $params['option'];
 
-        $individual = Factory::individual()->make($xref, $tree);
+        $individual = Registry::individualFactory()->make($xref, $tree);
 
         if ($individual === null) {
             throw new IndividualNotFoundException();
@@ -740,7 +740,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $media = Factory::media()->make($xref, $tree);
+        $media = Registry::mediaFactory()->make($xref, $tree);
 
         if ($media === null) {
             throw new MediaNotFoundException();
@@ -785,7 +785,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $media = Factory::media()->make($xref, $tree);
+        $media = Registry::mediaFactory()->make($xref, $tree);
 
         if ($media === null) {
             throw new MediaNotFoundException();
@@ -808,7 +808,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $note = Factory::note()->make($xref, $tree);
+        $note = Registry::noteFactory()->make($xref, $tree);
 
         if ($note === null) {
             throw new NoteNotFoundException();
@@ -853,7 +853,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $note = Factory::note()->make($xref, $tree);
+        $note = Registry::noteFactory()->make($xref, $tree);
 
         if ($note === null) {
             throw new NoteNotFoundException();
@@ -876,7 +876,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $repository = Factory::repository()->make($xref, $tree);
+        $repository = Registry::repositoryFactory()->make($xref, $tree);
 
         if ($repository === null) {
             throw new RepositoryNotFoundException();
@@ -921,7 +921,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $repository = Factory::repository()->make($xref, $tree);
+        $repository = Registry::repositoryFactory()->make($xref, $tree);
 
         if ($repository === null) {
             throw new RepositoryNotFoundException();
@@ -944,7 +944,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $source = Factory::source()->make($xref, $tree);
+        $source = Registry::sourceFactory()->make($xref, $tree);
 
         if ($source === null) {
             throw new SourceNotFoundException();
@@ -993,7 +993,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $xref   = $params['xref'];
         $option = $params['option'];
 
-        $source = Factory::source()->make($xref, $tree);
+        $source = Registry::sourceFactory()->make($xref, $tree);
 
         if ($source === null) {
             throw new SourceNotFoundException();
@@ -1029,7 +1029,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         // Fetch all the records in the cart.
         $records = array_map(static function (string $xref) use ($tree): ?GedcomRecord {
-            return Factory::gedcomRecord()->make($xref, $tree);
+            return Registry::gedcomRecordFactory()->make($xref, $tree);
         }, $xrefs);
 
         // Some records may have been deleted after they were added to the cart.

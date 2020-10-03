@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -60,7 +60,7 @@ class PendingChangesAcceptChange implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $record = Factory::gedcomRecord()->make($xref, $tree);
+        $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $change = $request->getAttribute('change');
 
         if ($record instanceof GedcomRecord) {

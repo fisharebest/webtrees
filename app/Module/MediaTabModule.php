@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -132,7 +132,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
      */
     protected function getFactsWithMedia(Individual $individual): Collection
     {
-        return Factory::cache()->array()->remember(__CLASS__ . ':' . __METHOD__, static function () use ($individual): Collection {
+        return Registry::cache()->array()->remember(__CLASS__ . ':' . __METHOD__, static function () use ($individual): Collection {
             $facts = $individual->facts();
 
             foreach ($individual->spouseFamilies() as $family) {

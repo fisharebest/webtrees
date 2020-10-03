@@ -27,10 +27,10 @@ use Fisharebest\Webtrees\Date\JalaliDate;
 use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\Date\JulianDate;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
@@ -287,7 +287,7 @@ class CalendarEvents implements RequestHandlerInterface
         $html = '';
 
         foreach ($list as $xref => $facts) {
-            $tmp  = Factory::gedcomRecord()->make((string) $xref, $tree);
+            $tmp  = Registry::gedcomRecordFactory()->make((string) $xref, $tree);
             $html .= $tag1 . '<a href="' . e($tmp->url()) . '">' . $tmp->fullName() . '</a> ';
             $html .= '<div class="indent">' . $facts . '</div>' . $tag2;
         }

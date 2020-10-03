@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Mime;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -80,7 +80,7 @@ trait ModuleCustomTrait
             return $this->customModuleVersion();
         }
 
-        return Factory::cache()->file()->remember($this->name() . '-latest-version', function () {
+        return Registry::cache()->file()->remember($this->name() . '-latest-version', function () {
             try {
                 $client = new Client([
                     'timeout' => 3,

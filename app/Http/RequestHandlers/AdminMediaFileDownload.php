@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -38,10 +38,10 @@ class AdminMediaFileDownload implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $filesystem = Factory::filesystem()->data();
+        $filesystem = Registry::filesystem()->data();
         $params     = (array) $request->getQueryParams();
         $path       = $params['path'] ?? '';
 
-        return Factory::image()->fileResponse($filesystem, $path, false);
+        return Registry::imageFactory()->fileResponse($filesystem, $path, false);
     }
 }

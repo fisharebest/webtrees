@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -229,7 +229,7 @@ class FixMissingMarriedNames extends AbstractModule implements ModuleDataFixInte
             $famrec = $family->gedcom();
 
             if (preg_match('/^1 MARR/m', $famrec) && preg_match('/^1 HUSB @(.+)@/m', $famrec, $hmatch)) {
-                $spouse = Factory::individual()->make($hmatch[1], $tree);
+                $spouse = Registry::individualFactory()->make($hmatch[1], $tree);
 
                 if ($spouse instanceof Individual) {
                     $husb_surnames = array_unique(array_merge($husb_surnames, $this->surnames($spouse)));

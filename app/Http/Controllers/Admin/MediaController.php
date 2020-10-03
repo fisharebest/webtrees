@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Html;
@@ -31,6 +30,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Mime;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -105,8 +105,8 @@ class MediaController extends AbstractAdminController
      */
     public function index(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem      = Factory::filesystem()->data();
-        $data_filesystem_name = Factory::filesystem()->dataName();
+        $data_filesystem      = Registry::filesystem()->data();
+        $data_filesystem_name = Registry::filesystem()->dataName();
 
         $files         = $request->getQueryParams()['files'] ?? 'local'; // local|unused|external
         $subfolders    = $request->getQueryParams()['subfolders'] ?? 'include'; // include|exclude
@@ -148,7 +148,7 @@ class MediaController extends AbstractAdminController
      */
     public function data(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = Factory::filesystem()->data();
+        $data_filesystem = Registry::filesystem()->data();
 
         $files = $request->getQueryParams()['files']; // local|external|unused
 
@@ -168,13 +168,13 @@ class MediaController extends AbstractAdminController
         // Convert a row from the database into a row for datatables
         $callback = function (stdClass $row): array {
             $tree = $this->tree_service->find((int) $row->m_file);
-            $media = Factory::media()->make($row->m_id, $tree, $row->m_gedcom);
+            $media = Registry::mediaFactory()->make($row->m_id, $tree, $row->m_gedcom);
             assert($media instanceof Media);
 
             $path = $row->media_folder . $row->multimedia_file_refn;
 
             try {
-                $mime_type = Factory::filesystem()->data()->getMimeType($path) ?: Mime::DEFAULT_TYPE;
+                $mime_type = Registry::filesystem()->data()->getMimeType($path) ?: Mime::DEFAULT_TYPE;
 
                 if (str_starts_with($mime_type, 'image/')) {
                     $url = route(AdminMediaFileThumbnail::class, ['path' => $path]);
@@ -387,7 +387,7 @@ class MediaController extends AbstractAdminController
      */
     public function upload(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = Factory::filesystem()->data();
+        $data_filesystem = Registry::filesystem()->data();
 
         $media_folders = $this->media_file_service->allMediaFolders($data_filesystem);
 
@@ -410,7 +410,7 @@ class MediaController extends AbstractAdminController
      */
     public function uploadAction(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = Factory::filesystem()->data();
+        $data_filesystem = Registry::filesystem()->data();
 
         $params = (array) $request->getParsedBody();
 

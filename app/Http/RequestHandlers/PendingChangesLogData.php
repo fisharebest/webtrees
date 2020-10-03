@@ -21,9 +21,9 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Carbon;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Tree;
@@ -102,7 +102,7 @@ class PendingChangesLogData implements RequestHandlerInterface
             }
 
             // Only convert valid xrefs to links
-            $record = Factory::gedcomRecord()->make($row->xref, $tree);
+            $record = Registry::gedcomRecordFactory()->make($row->xref, $tree);
 
             return [
                 $row->change_id,
@@ -113,7 +113,7 @@ class PendingChangesLogData implements RequestHandlerInterface
                 preg_replace_callback(
                     '/@(' . Gedcom::REGEX_XREF . ')@/',
                     static function (array $match) use ($tree): string {
-                        $record = Factory::gedcomRecord()->make($match[1], $tree);
+                        $record = Registry::gedcomRecordFactory()->make($match[1], $tree);
 
                         return $record ? '<a href="' . e($record->url()) . '">' . $match[0] . '</a>' : $match[0];
                     },

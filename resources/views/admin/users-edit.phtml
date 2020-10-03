@@ -1,7 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\User;
@@ -307,7 +307,7 @@ use Fisharebest\Webtrees\View;
                         </select>
                     </td>
                     <td>
-                        <?= view('components/select-individual', ['name' => 'gedcomid' . $tree->id(), 'individual' => Factory::individual()->make($tree->getUserPreference($user, 'gedcomid'), $tree), 'tree' => $tree]) ?>
+                        <?= view('components/select-individual', ['name' => 'gedcomid' . $tree->id(), 'individual' => Registry::individualFactory()->make($tree->getUserPreference($user, 'gedcomid'), $tree), 'tree' => $tree]) ?>
                     </td>
                     <td>
                         <select class="form-control" name="RELATIONSHIP_PATH_LENGTH<?= $tree->id() ?>" id="RELATIONSHIP_PATH_LENGTH<?= $tree->id() ?>" class="relpath">

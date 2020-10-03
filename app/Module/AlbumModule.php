@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -93,7 +93,7 @@ class AlbumModule extends MediaTabModule
 
             foreach ($matches[1] as $xref) {
                 if (!$media->has($xref)) {
-                    $media->push(Factory::media()->make($xref, $individual->tree()));
+                    $media->push(Registry::mediaFactory()->make($xref, $individual->tree()));
                 }
             }
         }

@@ -22,11 +22,11 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -82,7 +82,7 @@ class TreePreferencesPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_folder = Factory::filesystem()->dataName();
+        $data_folder = Registry::filesystem()->dataName();
 
         $french_calendar_start    = new Date('22 SEP 1792');
         $french_calendar_end      = new Date('31 DEC 1805');
@@ -157,7 +157,7 @@ class TreePreferencesPage implements RequestHandlerInterface
         // Split into separate fields
         $relatives_events = explode(',', $tree->getPreference('SHOW_RELATIVES_EVENTS'));
 
-        $pedigree_individual = Factory::individual()->make($tree->getPreference('PEDIGREE_ROOT_ID'), $tree);
+        $pedigree_individual = Registry::individualFactory()->make($tree->getPreference('PEDIGREE_ROOT_ID'), $tree);
 
         $members = $this->user_service->all()->filter(static function (UserInterface $user) use ($tree): bool {
             return Auth::isMember($tree, $user);

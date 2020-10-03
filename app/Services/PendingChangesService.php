@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Carbon;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Gedcom;
@@ -88,16 +88,16 @@ class PendingChangesService
         $changes = [];
 
         $factories = [
-            Individual::RECORD_TYPE => Factory::individual(),
-            Family::RECORD_TYPE     => Factory::family(),
-            Source::RECORD_TYPE     => Factory::source(),
-            Repository::RECORD_TYPE => Factory::repository(),
-            Media::RECORD_TYPE      => Factory::media(),
-            Note::RECORD_TYPE       => Factory::note(),
-            Submitter::RECORD_TYPE  => Factory::submitter(),
-            Submission::RECORD_TYPE => Factory::submission(),
-            Location::RECORD_TYPE   => Factory::location(),
-            Header::RECORD_TYPE     => Factory::header(),
+            Individual::RECORD_TYPE => Registry::individualFactory(),
+            Family::RECORD_TYPE     => Registry::familyFactory(),
+            Source::RECORD_TYPE     => Registry::sourceFactory(),
+            Repository::RECORD_TYPE => Registry::repositoryFactory(),
+            Media::RECORD_TYPE      => Registry::mediaFactory(),
+            Note::RECORD_TYPE       => Registry::noteFactory(),
+            Submitter::RECORD_TYPE  => Registry::submitterFactory(),
+            Submission::RECORD_TYPE => Registry::submissionFactory(),
+            Location::RECORD_TYPE   => Registry::locationFactory(),
+            Header::RECORD_TYPE     => Registry::headerFactory(),
         ];
 
         foreach ($rows as $row) {
@@ -105,7 +105,7 @@ class PendingChangesService
 
             preg_match('/^0 (?:@' . Gedcom::REGEX_XREF . '@ )?(' . Gedcom::REGEX_TAG . ')/', $row->old_gedcom . $row->new_gedcom, $match);
 
-            $factory = $factories[$match[1]] ?? Factory::gedcomRecord();
+            $factory = $factories[$match[1]] ?? Registry::gedcomRecordFactory();
 
             $row->record = $factory->new($row->xref, $row->old_gedcom, $row->new_gedcom, $tree);
 

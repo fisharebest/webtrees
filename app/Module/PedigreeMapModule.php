@@ -23,7 +23,7 @@ use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
@@ -199,7 +199,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $individual  = Factory::individual()->make($xref, $tree);
+        $individual  = Registry::individualFactory()->make($xref, $tree);
         $individual  = Auth::checkIndividualAccess($individual, false, true);
 
         $user        = $request->getAttribute('user');
@@ -332,7 +332,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
         $generations = (int) $request->getAttribute('generations');
         $xref        = $request->getAttribute('xref');
-        $individual  = Factory::individual()->make($xref, $tree);
+        $individual  = Registry::individualFactory()->make($xref, $tree);
         $ancestors   = $chart_service->sosaStradonitzAncestors($individual, $generations);
         $facts       = [];
         foreach ($ancestors as $sosa => $person) {

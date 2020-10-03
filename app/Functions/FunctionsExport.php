@@ -21,13 +21,13 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
@@ -129,7 +129,7 @@ class FunctionsExport
         $LANG = '';
 
         // Preserve some values from the original header
-        $header = Factory::header()->make('HEAD', $tree) ?? Factory::header()->new('HEAD', '0 HEAD', null, $tree);
+        $header = Registry::headerFactory()->make('HEAD', $tree) ?? Registry::headerFactory()->new('HEAD', '0 HEAD', null, $tree);
 
         $fact   = $header->facts(['COPR'])->first();
 
@@ -222,7 +222,7 @@ class FunctionsExport
             ->where('m_file', '=', $tree->id())
             ->orderBy('m_id')
             ->get()
-            ->map(Factory::media()->mapper($tree))
+            ->map(Registry::mediaFactory()->mapper($tree))
             ->map(static function (Media $record) use ($access_level): string {
                 return $record->privatizeGedcom($access_level);
             })
@@ -234,7 +234,7 @@ class FunctionsExport
             ->where('s_file', '=', $tree->id())
             ->orderBy('s_id')
             ->get()
-            ->map(Factory::source()->mapper($tree))
+            ->map(Registry::sourceFactory()->mapper($tree))
             ->map(static function (Source $record) use ($access_level): string {
                 return $record->privatizeGedcom($access_level);
             });
@@ -244,7 +244,7 @@ class FunctionsExport
             ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
             ->orderBy('o_id')
             ->get()
-            ->map(Factory::gedcomRecord()->mapper($tree))
+            ->map(Registry::gedcomRecordFactory()->mapper($tree))
             ->map(static function (GedcomRecord $record) use ($access_level): string {
                 return $record->privatizeGedcom($access_level);
             });
@@ -253,7 +253,7 @@ class FunctionsExport
             ->where('i_file', '=', $tree->id())
             ->orderBy('i_id')
             ->get()
-            ->map(Factory::individual()->mapper($tree))
+            ->map(Registry::individualFactory()->mapper($tree))
             ->map(static function (Individual $record) use ($access_level): string {
                 return $record->privatizeGedcom($access_level);
             });
@@ -262,7 +262,7 @@ class FunctionsExport
             ->where('f_file', '=', $tree->id())
             ->orderBy('f_id')
             ->get()
-            ->map(Factory::family()->mapper($tree))
+            ->map(Registry::familyFactory()->mapper($tree))
             ->map(static function (Family $record) use ($access_level): string {
                 return $record->privatizeGedcom($access_level);
             });

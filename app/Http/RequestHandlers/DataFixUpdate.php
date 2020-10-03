@@ -20,8 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -66,7 +66,7 @@ class DataFixUpdate implements RequestHandlerInterface
         $xref   = $request->getQueryParams()['xref'] ?? '';
         $params = (array) $request->getQueryParams();
 
-        $record = Factory::gedcomRecord()->make($xref, $tree);
+        $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
         if (!$record->isPendingDeletion() && $module->doesRecordNeedUpdate($record, $params)) {

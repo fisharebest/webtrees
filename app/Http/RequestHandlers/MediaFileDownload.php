@@ -22,18 +22,14 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function addcslashes;
 use function assert;
 use function redirect;
-use function response;
-use function strlen;
 
 /**
  * Download a media file.
@@ -55,7 +51,7 @@ class MediaFileDownload implements RequestHandlerInterface
         $user = $request->getAttribute('user');
         assert($user instanceof UserInterface);
 
-        $image_factory = Factory::image();
+        $image_factory = Registry::imageFactory();
 
         $disposition = $request->getQueryParams()['disposition'] ?? 'inline';
         assert($disposition === 'inline' || $disposition === 'attachment');
@@ -63,7 +59,7 @@ class MediaFileDownload implements RequestHandlerInterface
         $params  = $request->getQueryParams();
         $xref    = $params['xref'];
         $fact_id = $params['fact_id'];
-        $media   = Factory::media()->make($xref, $tree);
+        $media   = Registry::mediaFactory()->make($xref, $tree);
         $media   = Auth::checkMediaAccess($media);
 
         foreach ($media->mediaFiles() as $media_file) {

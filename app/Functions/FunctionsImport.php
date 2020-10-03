@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
@@ -32,6 +31,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\GedcomService;
 use Fisharebest\Webtrees\Soundex;
@@ -321,7 +321,7 @@ class FunctionsImport
 
         switch ($type) {
             case Individual::RECORD_TYPE:
-                $record = Factory::individual()->new($xref, $gedrec, null, $tree);
+                $record = Registry::individualFactory()->new($xref, $gedrec, null, $tree);
 
                 if (preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
                     $rin = $match[1];
@@ -420,7 +420,7 @@ class FunctionsImport
 
 
             case Media::RECORD_TYPE:
-                $record = Factory::media()->new($xref, $gedrec, null, $tree);
+                $record = Registry::mediaFactory()->new($xref, $gedrec, null, $tree);
 
                 DB::table('media')->insert([
                     'm_id'     => $xref,
@@ -774,7 +774,7 @@ class FunctionsImport
             ->value('m_id');
 
         if ($xref === null && $file !== '') {
-            $xref = Factory::xref()->make(Media::RECORD_TYPE);
+            $xref = Registry::xrefFactory()->make(Media::RECORD_TYPE);
 
             // convert to a media-object
             $gedcom = '0 OBJE @' . $xref . "@\n1 FILE " . $file;

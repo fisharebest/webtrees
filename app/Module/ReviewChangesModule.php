@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\EmailService;
@@ -170,7 +170,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                 ->get();
 
             foreach ($changes as $change) {
-                $record = Factory::gedcomRecord()->make($change->xref, $tree);
+                $record = Registry::gedcomRecordFactory()->make($change->xref, $tree);
                 if ($record->canShow()) {
                     $content .= '<li><a href="' . e($record->url()) . '">' . $record->fullName() . '</a></li>';
                 }

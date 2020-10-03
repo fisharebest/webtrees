@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -61,8 +61,8 @@ class ImportGedcomPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $data_filesystem = Factory::filesystem()->data();
-        $data_folder     = Factory::filesystem()->dataName();
+        $data_filesystem = Registry::filesystem()->data();
+        $data_folder     = Registry::filesystem()->dataName();
 
         $default_gedcom_file = $tree->getPreference('gedcom_filename');
         $gedcom_media_path   = $tree->getPreference('GEDCOM_MEDIA_PATH');

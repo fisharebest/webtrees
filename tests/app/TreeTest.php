@@ -42,7 +42,7 @@ class TreeTest extends TestCase
 
         $cache_factory = $this->createMock(CacheFactoryInterface::class);
         $cache_factory->method('array')->willReturn(new Cache(new NullAdapter()));
-        Factory::cache($cache_factory);
+        Registry::cache($cache_factory);
     }
 
     /**

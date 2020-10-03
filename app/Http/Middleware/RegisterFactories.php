@@ -34,7 +34,7 @@ use Fisharebest\Webtrees\Factories\SourceFactory;
 use Fisharebest\Webtrees\Factories\SubmissionFactory;
 use Fisharebest\Webtrees\Factories\SubmitterFactory;
 use Fisharebest\Webtrees\Factories\XrefFactory;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -53,21 +53,21 @@ class RegisterFactories implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        Factory::cache(new CacheFactory());
-        Factory::family(new FamilyFactory());
-        Factory::filesystem(new FilesystemFactory());
-        Factory::gedcomRecord(new GedcomRecordFactory());
-        Factory::header(new HeaderFactory());
-        Factory::image(new ImageFactory());
-        Factory::individual(new IndividualFactory());
-        Factory::location(new LocationFactory());
-        Factory::media(new MediaFactory());
-        Factory::note(new NoteFactory());
-        Factory::repository(new RepositoryFactory());
-        Factory::source(new SourceFactory());
-        Factory::submission(new SubmissionFactory());
-        Factory::submitter(new SubmitterFactory());
-        Factory::xref(new XrefFactory());
+        Registry::cache(new CacheFactory());
+        Registry::familyFactory(new FamilyFactory());
+        Registry::filesystem(new FilesystemFactory());
+        Registry::gedcomRecordFactory(new GedcomRecordFactory());
+        Registry::headerFactory(new HeaderFactory());
+        Registry::imageFactory(new ImageFactory());
+        Registry::individualFactory(new IndividualFactory());
+        Registry::locationFactory(new LocationFactory());
+        Registry::mediaFactory(new MediaFactory());
+        Registry::noteFactory(new NoteFactory());
+        Registry::repositoryFactory(new RepositoryFactory());
+        Registry::sourceFactory(new SourceFactory());
+        Registry::submissionFactory(new SubmissionFactory());
+        Registry::submitterFactory(new SubmitterFactory());
+        Registry::xrefFactory(new XrefFactory());
 
         return $handler->handle($request);
     }

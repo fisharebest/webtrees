@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\RepositoryNotFoundException;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
@@ -61,7 +61,7 @@ class RedirectRepositoryPhp implements RequestHandlerInterface
         $tree  = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $repository = Factory::repository()->make($rid, $tree);
+            $repository = Registry::repositoryFactory()->make($rid, $tree);
 
             if ($repository instanceof Repository) {
                 return redirect($repository->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);

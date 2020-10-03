@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -67,7 +67,7 @@ class PasteFact implements RequestHandlerInterface
         $params = (array) $request->getParsedBody();
 
         $fact_id = $params['fact_id'];
-        $record  = Factory::gedcomRecord()->make($xref, $tree);
+        $record  = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record  = Auth::checkRecordAccess($record, true);
 
         $this->clipboard_service->pasteFact($fact_id, $record);

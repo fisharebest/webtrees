@@ -56,7 +56,7 @@ class Individual extends GedcomRecord
      */
     public static function rowMapper(Tree $tree): Closure
     {
-        return Factory::individual()->mapper($tree);
+        return Registry::individualFactory()->mapper($tree);
     }
 
     /**
@@ -98,7 +98,7 @@ class Individual extends GedcomRecord
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Individual
     {
-        return Factory::individual()->make($xref, $tree, $gedcom);
+        return Registry::individualFactory()->make($xref, $tree, $gedcom);
     }
 
     /**
@@ -119,7 +119,7 @@ class Individual extends GedcomRecord
             ->get();
 
         foreach ($rows as $row) {
-            Factory::individual()->make($row->xref, $tree, $row->gedcom);
+            Registry::individualFactory()->make($row->xref, $tree, $row->gedcom);
         }
     }
 
@@ -199,7 +199,7 @@ class Individual extends GedcomRecord
     {
         static $cache = null;
 
-        $user_individual = Factory::individual()->make($target->tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF), $target->tree);
+        $user_individual = Registry::individualFactory()->make($target->tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF), $target->tree);
         if ($user_individual) {
             if (!$cache) {
                 $cache = [
@@ -284,7 +284,7 @@ class Individual extends GedcomRecord
         // Just show the 1 FAMC/FAMS tag, not any subtags, which may contain private data
         preg_match_all('/\n1 (?:FAMC|FAMS) @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom, $matches, PREG_SET_ORDER);
         foreach ($matches as $match) {
-            $rela = Factory::family()->make($match[1], $this->tree);
+            $rela = Registry::familyFactory()->make($match[1], $this->tree);
             if ($rela && ($SHOW_PRIVATE_RELATIONSHIPS || $rela->canShow($access_level))) {
                 $rec .= $match[0];
             }

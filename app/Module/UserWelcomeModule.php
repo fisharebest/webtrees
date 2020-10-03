@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -86,7 +86,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
         $gedcomid   = $tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF);
-        $individual = Factory::individual()->make($gedcomid, $tree);
+        $individual = Registry::individualFactory()->make($gedcomid, $tree);
         $links      = [];
 
         $pedigree_chart = $this->module_service->findByComponent(ModuleChartInterface::class, $tree, Auth::user())

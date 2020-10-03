@@ -23,7 +23,7 @@ use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -162,7 +162,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
         $user = $request->getAttribute('user');
         assert($user instanceof UserInterface);
 
-        $data_filesystem = Factory::filesystem()->data();
+        $data_filesystem = Registry::filesystem()->data();
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
@@ -319,7 +319,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
 
         return $query
             ->get()
-            ->map(Factory::media()->mapper($tree))
+            ->map(Registry::mediaFactory()->mapper($tree))
             ->uniqueStrict()
             ->filter(GedcomRecord::accessFilter());
     }

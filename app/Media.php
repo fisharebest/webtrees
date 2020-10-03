@@ -45,7 +45,7 @@ class Media extends GedcomRecord
      */
     public static function rowMapper(Tree $tree): Closure
     {
-        return Factory::media()->mapper($tree);
+        return Registry::mediaFactory()->mapper($tree);
     }
 
     /**
@@ -63,7 +63,7 @@ class Media extends GedcomRecord
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Media
     {
-        return Factory::media()->make($xref, $tree, $gedcom);
+        return Registry::mediaFactory()->make($xref, $tree, $gedcom);
     }
 
     /**
@@ -82,7 +82,7 @@ class Media extends GedcomRecord
             ->pluck('l_from');
 
         foreach ($linked_ids as $linked_id) {
-            $linked_record = Factory::gedcomRecord()->make($linked_id, $this->tree);
+            $linked_record = Registry::gedcomRecordFactory()->make($linked_id, $this->tree);
             if ($linked_record instanceof GedcomRecord && !$linked_record->canShow($access_level)) {
                 return false;
             }

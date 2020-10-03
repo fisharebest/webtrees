@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Iodev\Whois\Loaders\CurlLoader;
 use Iodev\Whois\Modules\Asn\AsnRouteInfo;
 use Iodev\Whois\Whois;
@@ -247,7 +247,7 @@ class BadBotBlocker implements MiddlewareInterface
      */
     private function fetchIpRangesForAsn(string $asn): array
     {
-        return Factory::cache()->file()->remember('whois-asn-' . $asn, static function () use ($asn): array {
+        return Registry::cache()->file()->remember('whois-asn-' . $asn, static function () use ($asn): array {
             try {
                 $loader = new CurlLoader(self::WHOIS_TIMEOUT);
                 $whois  = new Whois($loader);

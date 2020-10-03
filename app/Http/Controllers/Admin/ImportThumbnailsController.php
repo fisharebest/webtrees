@@ -19,11 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\RequestHandlers\AdminMediaFileThumbnail;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Mime;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -111,7 +111,7 @@ class ImportThumbnailsController extends AbstractAdminController
      */
     public function webtrees1ThumbnailsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = Factory::filesystem()->data();
+        $data_filesystem = Registry::filesystem()->data();
 
         $params = (array) $request->getParsedBody();
 
@@ -128,7 +128,7 @@ class ImportThumbnailsController extends AbstractAdminController
 
         foreach ($xrefs as $key => $xref) {
             $tree            = $this->tree_service->all()->get($geds[$key]);
-            $media_objects[] = Factory::media()->make($xref, $tree);
+            $media_objects[] = Registry::mediaFactory()->make($xref, $tree);
         }
 
         switch ($action) {
@@ -179,7 +179,7 @@ class ImportThumbnailsController extends AbstractAdminController
      */
     public function webtrees1ThumbnailsData(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = Factory::filesystem()->data();
+        $data_filesystem = Registry::filesystem()->data();
 
         $start  = (int) $request->getQueryParams()['start'];
         $length = (int) $request->getQueryParams()['length'];
@@ -330,7 +330,7 @@ class ImportThumbnailsController extends AbstractAdminController
      */
     private function scaledImagePixels(FilesystemInterface $filesystem, string $path): array
     {
-        return Factory::cache()->file()->remember('pixels-' . $path, static function () use ($filesystem, $path): array {
+        return Registry::cache()->file()->remember('pixels-' . $path, static function () use ($filesystem, $path): array {
             $blob    = $filesystem->read($path);
             $manager = new ImageManager();
             $image   = $manager->make($blob)->resize(self::FINGERPRINT_PIXELS, self::FINGERPRINT_PIXELS);

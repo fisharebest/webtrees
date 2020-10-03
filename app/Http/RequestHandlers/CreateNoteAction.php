@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -62,7 +62,7 @@ class CreateNoteAction implements RequestHandlerInterface
         }
 
         $record = $tree->createRecord($gedcom);
-        $record = Factory::note()->new($record->xref(), $record->gedcom(), null, $tree);
+        $record = Registry::noteFactory()->new($record->xref(), $record->gedcom(), null, $tree);
 
         // id and text are for select2 / autocomplete
         // html is for interactive modals

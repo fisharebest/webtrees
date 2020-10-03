@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -103,7 +103,7 @@ trait ModuleTabTrait
 
         $xref = $request->getQueryParams()['xref'];
 
-        $record = Factory::individual()->make($xref, $tree);
+        $record = Registry::individualFactory()->make($xref, $tree);
         $record = Auth::checkIndividualAccess($record);
 
         $user = $request->getAttribute('user');

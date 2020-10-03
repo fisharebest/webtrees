@@ -22,9 +22,9 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
@@ -63,7 +63,7 @@ class MediaPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = Factory::filesystem()->data();
+        $data_filesystem = Registry::filesystem()->data();
 
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
@@ -71,7 +71,7 @@ class MediaPage implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $media = Factory::media()->make($xref, $tree);
+        $media = Registry::mediaFactory()->make($xref, $tree);
         $media = Auth::checkMediaAccess($media);
 
         // Redirect to correct xref/slug

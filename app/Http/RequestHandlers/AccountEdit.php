@@ -21,10 +21,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
@@ -73,8 +73,8 @@ class AccountEdit implements RequestHandlerInterface
         assert($user instanceof User);
 
         if ($tree instanceof Tree) {
-            $my_individual_record = Factory::individual()->make($tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF), $tree);
-            $default_individual   = Factory::individual()->make($tree->getUserPreference(Auth::user(), User::PREF_TREE_DEFAULT_XREF), $tree);
+            $my_individual_record = Registry::individualFactory()->make($tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF), $tree);
+            $default_individual   = Registry::individualFactory()->make($tree->getUserPreference(Auth::user(), User::PREF_TREE_DEFAULT_XREF), $tree);
         } else {
             $my_individual_record = null;
             $default_individual   = null;

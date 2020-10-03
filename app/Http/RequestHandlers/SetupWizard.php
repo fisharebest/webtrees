@@ -26,10 +26,10 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\Factories\CacheFactory;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
@@ -126,7 +126,7 @@ class SetupWizard implements RequestHandlerInterface
         $this->layout = 'layouts/setup';
 
         // Some functions need a cache, but we don't have one yet.
-        Factory::cache(new CacheFactory());
+        Registry::cache(new CacheFactory());
 
         // We will need an IP address for the logs.
         $ip_address  = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';

@@ -19,10 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -112,7 +112,7 @@ class TreePrivacyPage implements RequestHandlerInterface
                 $row->label  = '';
 
                 if ($row->xref !== null) {
-                    $row->record = Factory::gedcomRecord()->make($row->xref, $tree);
+                    $row->record = Registry::gedcomRecordFactory()->make($row->xref, $tree);
                 }
 
                 if ($row->tag_type) {

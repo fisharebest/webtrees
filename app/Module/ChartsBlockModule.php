@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
@@ -95,7 +95,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
         extract($config, EXTR_OVERWRITE);
 
-        $individual = Factory::individual()->make($xref, $tree);
+        $individual = Registry::individualFactory()->make($xref, $tree);
 
         $title = $this->title();
 
@@ -248,7 +248,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
         ];
         uasort($charts, 'Fisharebest\Webtrees\I18N::strcasecmp');
 
-        $individual = Factory::individual()->make($xref, $tree);
+        $individual = Registry::individualFactory()->make($xref, $tree);
 
         return view('modules/charts/config', [
             'charts'     => $charts,

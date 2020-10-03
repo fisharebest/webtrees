@@ -255,7 +255,7 @@ class MediaFile
             'w'         => $width,
             'h'         => $height,
             'fit'       => $fit,
-            'mark'      => Factory::image()->thumbnailNeedsWatermark($this, Auth::user())
+            'mark'      => Registry::imageFactory()->thumbnailNeedsWatermark($this, Auth::user())
         ];
 
         $params['s'] = $this->signature($params);
@@ -299,7 +299,7 @@ class MediaFile
             'tree'        => $this->media->tree()->name(),
             'fact_id'     => $this->fact_id,
             'disposition' => $disposition,
-            'mark'        => Factory::image()->fileNeedsWatermark($this, Auth::user())
+            'mark'        => Registry::imageFactory()->fileNeedsWatermark($this, Auth::user())
         ]);
     }
 

@@ -22,10 +22,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
@@ -80,7 +80,7 @@ class ReportGenerate implements RequestHandlerInterface
         $user = $request->getAttribute('user');
         assert($user instanceof UserInterface);
 
-        $data_filesystem = Factory::filesystem()->data();
+        $data_filesystem = Registry::filesystem()->data();
 
         $report = $request->getAttribute('report');
         $module = $this->module_service->findByName($report);

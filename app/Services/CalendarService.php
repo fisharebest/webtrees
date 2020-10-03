@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\Date\JalaliDate;
 use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\Date\JulianDate;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
@@ -159,14 +159,14 @@ class CalendarService
         foreach ($queries as $type => $record_query) {
             foreach ($record_query->get() as $row) {
                 if ($type === 'INDI') {
-                    $record = Factory::individual()->make($row->xref, $tree, $row->gedcom);
+                    $record = Registry::individualFactory()->make($row->xref, $tree, $row->gedcom);
                     assert($record instanceof Individual);
 
                     if ($filterof === 'living' && $record->isDead()) {
                         continue;
                     }
                 } else {
-                    $record = Factory::family()->make($row->xref, $tree, $row->gedcom);
+                    $record = Registry::familyFactory()->make($row->xref, $tree, $row->gedcom);
                     assert($record instanceof Family);
                     $husb = $record->husband();
                     $wife = $record->wife();
@@ -363,14 +363,14 @@ class CalendarService
             foreach ($queries as $type => $record_query) {
                 foreach ($record_query->get() as $row) {
                     if ($type === 'INDI') {
-                        $record = Factory::individual()->make($row->xref, $tree, $row->gedcom);
+                        $record = Registry::individualFactory()->make($row->xref, $tree, $row->gedcom);
                         assert($record instanceof Individual);
 
                         if ($filterof === 'living' && $record->isDead()) {
                             continue;
                         }
                     } else {
-                        $record = Factory::family()->make($row->xref, $tree, $row->gedcom);
+                        $record = Registry::familyFactory()->make($row->xref, $tree, $row->gedcom);
                         assert($record instanceof Family);
                         $husb = $record->husband();
                         $wife = $record->wife();

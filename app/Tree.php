@@ -450,7 +450,7 @@ class Tree
             throw new InvalidArgumentException('GedcomRecord::createRecord(' . $gedcom . ') does not begin 0 @@');
         }
 
-        $xref   = Factory::xref()->make($match[1]);
+        $xref   = Registry::xrefFactory()->make($match[1]);
         $gedcom = substr_replace($gedcom, $xref, 3, 0);
 
         // Create a change record
@@ -469,14 +469,14 @@ class Tree
 
         // Accept this pending change
         if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS)) {
-            $record = Factory::gedcomRecord()->new($xref, $gedcom, null, $this);
+            $record = Registry::gedcomRecordFactory()->new($xref, $gedcom, null, $this);
 
             app(PendingChangesService::class)->acceptRecord($record);
 
             return $record;
         }
 
-        return Factory::gedcomRecord()->new($xref, '', $gedcom, $this);
+        return Registry::gedcomRecordFactory()->new($xref, '', $gedcom, $this);
     }
 
     /**
@@ -487,7 +487,7 @@ class Tree
      */
     public function getNewXref(): string
     {
-        return Factory::xref()->make(GedcomRecord::RECORD_TYPE);
+        return Registry::xrefFactory()->make(GedcomRecord::RECORD_TYPE);
     }
 
     /**
@@ -504,7 +504,7 @@ class Tree
             throw new InvalidArgumentException('GedcomRecord::createFamily(' . $gedcom . ') does not begin 0 @@ FAM');
         }
 
-        $xref   = Factory::xref()->make(Family::RECORD_TYPE);
+        $xref   = Registry::xrefFactory()->make(Family::RECORD_TYPE);
         $gedcom = substr_replace($gedcom, $xref, 3, 0);
 
         // Create a change record
@@ -523,14 +523,14 @@ class Tree
 
         // Accept this pending change
         if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
-            $record = Factory::family()->new($xref, $gedcom, null, $this);
+            $record = Registry::familyFactory()->new($xref, $gedcom, null, $this);
 
             app(PendingChangesService::class)->acceptRecord($record);
 
             return $record;
         }
 
-        return Factory::family()->new($xref, '', $gedcom, $this);
+        return Registry::familyFactory()->new($xref, '', $gedcom, $this);
     }
 
     /**
@@ -547,7 +547,7 @@ class Tree
             throw new InvalidArgumentException('GedcomRecord::createIndividual(' . $gedcom . ') does not begin 0 @@ INDI');
         }
 
-        $xref   = Factory::xref()->make(Individual::RECORD_TYPE);
+        $xref   = Registry::xrefFactory()->make(Individual::RECORD_TYPE);
         $gedcom = substr_replace($gedcom, $xref, 3, 0);
 
         // Create a change record
@@ -566,14 +566,14 @@ class Tree
 
         // Accept this pending change
         if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
-            $record = Factory::individual()->new($xref, $gedcom, null, $this);
+            $record = Registry::individualFactory()->new($xref, $gedcom, null, $this);
 
             app(PendingChangesService::class)->acceptRecord($record);
 
             return $record;
         }
 
-        return Factory::individual()->new($xref, '', $gedcom, $this);
+        return Registry::individualFactory()->new($xref, '', $gedcom, $this);
     }
 
     /**
@@ -590,7 +590,7 @@ class Tree
             throw new InvalidArgumentException('GedcomRecord::createIndividual(' . $gedcom . ') does not begin 0 @@ OBJE');
         }
 
-        $xref   = Factory::xref()->make(Media::RECORD_TYPE);
+        $xref   = Registry::xrefFactory()->make(Media::RECORD_TYPE);
         $gedcom = substr_replace($gedcom, $xref, 3, 0);
 
         // Create a change record
@@ -609,14 +609,14 @@ class Tree
 
         // Accept this pending change
         if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
-            $record = Factory::media()->new($xref, $gedcom, null, $this);
+            $record = Registry::mediaFactory()->new($xref, $gedcom, null, $this);
 
             app(PendingChangesService::class)->acceptRecord($record);
 
             return $record;
         }
 
-        return Factory::media()->new($xref, '', $gedcom, $this);
+        return Registry::mediaFactory()->new($xref, '', $gedcom, $this);
     }
 
     /**
@@ -632,10 +632,10 @@ class Tree
         if ($xref === '') {
             $individual = null;
         } else {
-            $individual = Factory::individual()->make($xref, $this);
+            $individual = Registry::individualFactory()->make($xref, $this);
 
             if ($individual === null) {
-                $family = Factory::family()->make($xref, $this);
+                $family = Registry::familyFactory()->make($xref, $this);
 
                 if ($family instanceof Family) {
                     $individual = $family->spouses()->first() ?? $family->children()->first();
@@ -644,26 +644,26 @@ class Tree
         }
 
         if ($individual === null && $this->getUserPreference($user, User::PREF_TREE_DEFAULT_XREF) !== '') {
-            $individual = Factory::individual()->make($this->getUserPreference($user, User::PREF_TREE_DEFAULT_XREF), $this);
+            $individual = Registry::individualFactory()->make($this->getUserPreference($user, User::PREF_TREE_DEFAULT_XREF), $this);
         }
 
         if ($individual === null && $this->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF) !== '') {
-            $individual = Factory::individual()->make($this->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF), $this);
+            $individual = Registry::individualFactory()->make($this->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF), $this);
         }
 
         if ($individual === null && $this->getPreference('PEDIGREE_ROOT_ID') !== '') {
-            $individual = Factory::individual()->make($this->getPreference('PEDIGREE_ROOT_ID'), $this);
+            $individual = Registry::individualFactory()->make($this->getPreference('PEDIGREE_ROOT_ID'), $this);
         }
         if ($individual === null) {
             $xref = (string) DB::table('individuals')
                 ->where('i_file', '=', $this->id())
                 ->min('i_id');
 
-            $individual = Factory::individual()->make($xref, $this);
+            $individual = Registry::individualFactory()->make($xref, $this);
         }
         if ($individual === null) {
             // always return a record
-            $individual = Factory::individual()->new('I', '0 @I@ INDI', null, $this);
+            $individual = Registry::individualFactory()->new('I', '0 @I@ INDI', null, $this);
         }
 
         return $individual;

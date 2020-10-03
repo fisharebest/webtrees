@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -56,8 +56,8 @@ class MergeFactsPage implements RequestHandlerInterface
 
         $title = I18N::translate('Merge records') . ' — ' . e($tree->title());
 
-        $record1 = Factory::gedcomRecord()->make($xref1, $tree);
-        $record2 = Factory::gedcomRecord()->make($xref2, $tree);
+        $record1 = Registry::gedcomRecordFactory()->make($xref1, $tree);
+        $record2 = Registry::gedcomRecordFactory()->make($xref2, $tree);
 
         if (
             $record1 === null ||

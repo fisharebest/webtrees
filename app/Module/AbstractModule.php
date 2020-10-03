@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
@@ -91,7 +91,7 @@ abstract class AbstractModule implements ModuleInterface
      */
     final protected function getBlockSetting(int $block_id, string $setting_name, string $default = ''): string
     {
-        $settings = Factory::cache()->array()->remember('block-setting-' . $block_id, static function () use ($block_id): array {
+        $settings = Registry::cache()->array()->remember('block-setting-' . $block_id, static function () use ($block_id): array {
             return DB::table('block_setting')
                 ->where('block_id', '=', $block_id)
                 ->pluck('setting_value', 'setting_name')
@@ -225,7 +225,7 @@ abstract class AbstractModule implements ModuleInterface
      */
     final public function accessLevel(Tree $tree, string $interface): int
     {
-        $access_levels = Factory::cache()->array()
+        $access_levels = Registry::cache()->array()
             ->remember('module-privacy-' . $tree->id(), static function () use ($tree): Collection {
                 return DB::table('module_privacy')
                     ->where('gedcom_id', '=', $tree->id())

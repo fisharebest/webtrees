@@ -1,7 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
@@ -19,7 +19,7 @@ $individual = $fact->record();
 $tree       = $individual->tree();
 
 // Create a fake record, so we can extract the formatted NAME value from it.
-$fake_individual = Factory::individual()->new(
+$fake_individual = Registry::individualFactory()->new(
     'xref',
     "0 @xref@ INDI\n1 DEAT Y\n" . $fact->gedcom(),
     null,

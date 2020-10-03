@@ -42,7 +42,7 @@ class Repository extends GedcomRecord
      */
     public static function rowMapper(Tree $tree): Closure
     {
-        return Factory::repository()->mapper($tree);
+        return Registry::repositoryFactory()->mapper($tree);
     }
 
     /**
@@ -60,7 +60,7 @@ class Repository extends GedcomRecord
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Repository
     {
-        return Factory::repository()->make($xref, $tree, $gedcom);
+        return Registry::repositoryFactory()->make($xref, $tree, $gedcom);
     }
 
     /**

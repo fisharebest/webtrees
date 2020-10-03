@@ -23,7 +23,7 @@ use Aura\Router\RouterContainer;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -132,7 +132,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         $xref = app(ServerRequestInterface::class)->getAttribute('xref', '');
 
         if ($xref !== '') {
-            $individual = Factory::individual()->make($xref, $tree);
+            $individual = Registry::individualFactory()->make($xref, $tree);
 
             if ($individual instanceof Individual && $individual->canShow()) {
                 $primary_name = $individual->getPrimaryName();
@@ -807,7 +807,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         $rows = $query->get();
 
         foreach ($rows as $row) {
-            $individual = Factory::individual()->make($row->xref, $tree, $row->gedcom);
+            $individual = Registry::individualFactory()->make($row->xref, $tree, $row->gedcom);
             assert($individual instanceof Individual);
 
             // The name from the database may be private - check the filtered list...

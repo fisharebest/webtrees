@@ -21,8 +21,8 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -61,7 +61,7 @@ class RedirectIndividualPhp implements RequestHandlerInterface
         $tree  = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $individual = Factory::individual()->make($pid, $tree);
+            $individual = Registry::individualFactory()->make($pid, $tree);
 
             if ($individual instanceof Individual) {
                 return redirect($individual->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);

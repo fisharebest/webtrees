@@ -42,7 +42,7 @@ class Submitter extends GedcomRecord
      */
     public static function rowMapper(Tree $tree): Closure
     {
-        return Factory::submitter()->mapper($tree);
+        return Registry::submitterFactory()->mapper($tree);
     }
 
     /**
@@ -60,7 +60,7 @@ class Submitter extends GedcomRecord
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Submitter
     {
-        return Factory::submitter()->make($xref, $tree, $gedcom);
+        return Registry::submitterFactory()->make($xref, $tree, $gedcom);
     }
 
     /**

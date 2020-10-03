@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Submitter;
@@ -169,7 +169,7 @@ class SubmitterListModule extends AbstractModule implements ModuleListInterface,
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Submitter::RECORD_TYPE)
             ->get()
-            ->map(Factory::submitter()->mapper($tree))
+            ->map(Registry::submitterFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
 
         return $this->viewResponse('modules/submitter-list/page', [

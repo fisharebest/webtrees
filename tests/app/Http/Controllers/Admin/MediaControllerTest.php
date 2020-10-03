@@ -24,7 +24,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Contracts\FilesystemFactoryInterface;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -48,7 +48,7 @@ class MediaControllerTest extends TestCase
         $filesystem_factory = $this->createMock(FilesystemFactoryInterface::class);
         $filesystem_factory->method('data')->willReturn(new Filesystem(new NullAdapter()));
         $filesystem_factory->method('dataName')->willReturn('data/');
-        Factory::filesystem($filesystem_factory);
+        Registry::filesystem($filesystem_factory);
     }
 
     /**

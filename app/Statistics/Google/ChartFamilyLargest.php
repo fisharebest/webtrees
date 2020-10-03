@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
@@ -107,7 +107,7 @@ class ChartFamilyLargest
         ];
 
         foreach ($this->queryRecords($total) as $record) {
-            $family = Factory::family()->make($record->id, $this->tree);
+            $family = Registry::familyFactory()->make($record->id, $this->tree);
 
             if ($family && $family->canShow()) {
                 $data[] = [

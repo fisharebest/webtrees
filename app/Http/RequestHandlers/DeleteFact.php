@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -51,7 +51,7 @@ class DeleteFact implements RequestHandlerInterface
         assert(is_string($xref));
 
         $fact_id = $request->getAttribute('fact_id');
-        $record  = Factory::gedcomRecord()->make($xref, $tree);
+        $record  = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record  = Auth::checkRecordAccess($record, true);
 
         foreach ($record->facts() as $fact) {

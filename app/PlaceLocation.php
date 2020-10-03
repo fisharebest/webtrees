@@ -70,7 +70,7 @@ class PlaceLocation
      */
     public function id(): int
     {
-        return Factory::cache()->array()->remember('location-' . $this->location_name, function () {
+        return Registry::cache()->array()->remember('location-' . $this->location_name, function () {
             // The "top-level" location won't exist in the database.
             if ($this->parts->isEmpty()) {
                 return 0;
@@ -131,7 +131,7 @@ class PlaceLocation
      */
     private function details(): stdClass
     {
-        return Factory::cache()->array()->remember('location-details-' . $this->id(), function () {
+        return Registry::cache()->array()->remember('location-details-' . $this->id(), function () {
             // The "top-level" location won't exist in the database.
             if ($this->parts->isEmpty()) {
                 return (object) [

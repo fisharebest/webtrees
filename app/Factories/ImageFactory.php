@@ -23,8 +23,8 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\ImageFactoryInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\MediaFile;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Webtrees;
 use Imagick;
 use Intervention\Image\Constraint;
@@ -151,7 +151,7 @@ class ImageFactory implements ImageFactoryInterface
      */
     public function mediaFileResponse(MediaFile $media_file, bool $add_watermark, bool $download): ResponseInterface
     {
-        $filesystem = Factory::filesystem()->media($media_file->media()->tree());
+        $filesystem = Registry::filesystem()->media($media_file->media()->tree());
         $filename   = $media_file->filename();
 
         if (!$add_watermark || !$media_file->isImage()) {
@@ -203,7 +203,7 @@ class ImageFactory implements ImageFactoryInterface
         bool $add_watermark
     ): ResponseInterface {
         // Where are the images stored.
-        $filesystem = Factory::filesystem()->media($media_file->media()->tree());
+        $filesystem = Registry::filesystem()->media($media_file->media()->tree());
 
         // Where is the image stored in the filesystem.
         $path = $media_file->filename();
@@ -239,7 +239,7 @@ class ImageFactory implements ImageFactoryInterface
 
             // Images and Responses both contain resources - which cannot be serialized.
             // So cache the raw image data.
-            $data = Factory::cache()->file()->remember($key, $closure, static::THUMBNAIL_CACHE_TTL);
+            $data = Registry::cache()->file()->remember($key, $closure, static::THUMBNAIL_CACHE_TTL);
 
             return $this->imageResponse($data, $mime_type, '');
         } catch (NotReadableException $ex) {

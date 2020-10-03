@@ -22,9 +22,9 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Exceptions\HttpServerErrorException;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
@@ -158,9 +158,9 @@ class UpgradeController extends AbstractAdminController
      */
     public function step(ServerRequestInterface $request): ResponseInterface
     {
-        $root_filesystem = Factory::filesystem()->root();
+        $root_filesystem = Registry::filesystem()->root();
 
-        $data_filesystem = Factory::filesystem()->data();
+        $data_filesystem = Registry::filesystem()->data();
 
         // Somewhere to unpack a .ZIP file
         $temporary_filesystem = new Filesystem(new ChrootAdapter($root_filesystem, self::UPGRADE_FOLDER));

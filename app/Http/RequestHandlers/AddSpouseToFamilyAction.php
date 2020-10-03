@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -62,7 +62,7 @@ class AddSpouseToFamilyAction implements RequestHandlerInterface
         assert($tree instanceof Tree);
 
         $xref   = $request->getQueryParams()['xref'];
-        $family = Factory::family()->make($xref, $tree);
+        $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
         $params = (array) $request->getParsedBody();

@@ -20,8 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -47,7 +47,7 @@ class EditNoteController extends AbstractBaseController
 
         $xref = $request->getAttribute('xref');
 
-        $note = Factory::note()->make($xref, $tree);
+        $note = Registry::noteFactory()->make($xref, $tree);
         $note = Auth::checkNoteAccess($note, true);
 
         return $this->viewResponse('edit/shared-note', [
@@ -71,7 +71,7 @@ class EditNoteController extends AbstractBaseController
 
         $xref = $request->getAttribute('xref');
 
-        $note = Factory::note()->make($xref, $tree);
+        $note = Registry::noteFactory()->make($xref, $tree);
         $note = Auth::checkNoteAccess($note, true);
 
         $params = (array) $request->getParsedBody();

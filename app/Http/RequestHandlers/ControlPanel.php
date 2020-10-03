@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyListModule;
@@ -44,6 +43,7 @@ use Fisharebest\Webtrees\Module\RepositoryListModule;
 use Fisharebest\Webtrees\Module\SourceListModule;
 use Fisharebest\Webtrees\Module\SubmitterListModule;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\HousekeepingService;
@@ -140,7 +140,7 @@ class ControlPanel implements RequestHandlerInterface
             });
 
         $multiple_tree_threshold = $this->admin_service->multipleTreeThreshold();
-        $gedcom_file_count       = $this->admin_service->gedcomFiles(Factory::filesystem()->data())->count();
+        $gedcom_file_count       = $this->admin_service->gedcomFiles(Registry::filesystem()->data())->count();
 
         return $this->viewResponse('admin/control-panel', [
             'title'                      => I18N::translate('Control panel'),

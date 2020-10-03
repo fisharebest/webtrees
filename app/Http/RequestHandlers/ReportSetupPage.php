@@ -21,11 +21,11 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -114,7 +114,7 @@ class ReportSetupPage implements RequestHandlerInterface
                     $input['control'] = view('components/select-individual', [
                         'id'         => 'input-' . $n,
                         'name'       => 'vars[' . $input['name'] . ']',
-                        'individual' => Factory::individual()->make($xref, $tree),
+                        'individual' => Registry::individualFactory()->make($xref, $tree),
                         'tree'       => $tree,
                         'required'   => true,
                     ]);
@@ -124,7 +124,7 @@ class ReportSetupPage implements RequestHandlerInterface
                     $input['control'] = view('components/select-family', [
                         'id'       => 'input-' . $n,
                         'name'     => 'vars[' . $input['name'] . ']',
-                        'family'   => Factory::family()->make($xref, $tree),
+                        'family'   => Registry::familyFactory()->make($xref, $tree),
                         'tree'     => $tree,
                         'required' => true,
                     ]);
@@ -134,7 +134,7 @@ class ReportSetupPage implements RequestHandlerInterface
                     $input['control'] = view('components/select-source', [
                         'id'       => 'input-' . $n,
                         'name'     => 'vars[' . $input['name'] . ']',
-                        'family'   => Factory::source()->make($xref, $tree),
+                        'family'   => Registry::sourceFactory()->make($xref, $tree),
                         'tree'     => $tree,
                         'required' => true,
                     ]);

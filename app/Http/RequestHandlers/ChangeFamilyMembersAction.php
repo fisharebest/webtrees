@@ -20,8 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -49,7 +49,7 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
         $params = (array) $request->getParsedBody();
 
         $xref   = $params['xref'];
-        $family = Factory::family()->make($xref, $tree);
+        $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
         $params = (array) $request->getParsedBody();
@@ -64,11 +64,11 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
         $old_children = $family->children();
 
         // New family members
-        $new_father   = Factory::individual()->make($HUSB, $tree);
-        $new_mother   = Factory::individual()->make($WIFE, $tree);
+        $new_father   = Registry::individualFactory()->make($HUSB, $tree);
+        $new_mother   = Registry::individualFactory()->make($WIFE, $tree);
         $new_children = [];
         foreach ($CHIL as $child) {
-            $new_children[] = Factory::individual()->make($child, $tree);
+            $new_children[] = Registry::individualFactory()->make($child, $tree);
         }
 
         if ($old_father !== $new_father) {

@@ -21,9 +21,9 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\PedigreeMapModule;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -73,7 +73,7 @@ class RedirectModulePhp implements RequestHandlerInterface
             switch ($mod . '/' . $mod_action) {
                 case 'googlemap/pedigree_map':
                     // Pedigree map:
-                    $individual = Factory::individual()->make($rootid, $tree);
+                    $individual = Registry::individualFactory()->make($rootid, $tree);
                     if ($individual instanceof Individual) {
                         $url = $this->pedigree_map_module->chartUrl($individual, [
                             'generations' => $query['PEDIGREE_GENERATIONS'] ?? PedigreeMapModule::DEFAULT_GENERATIONS,

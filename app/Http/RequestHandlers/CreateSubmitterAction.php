@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -67,7 +67,7 @@ class CreateSubmitterAction implements RequestHandlerInterface
         }
 
         $record = $tree->createRecord($gedcom);
-        $record = Factory::submitter()->new($record->xref(), $record->gedcom(), null, $tree);
+        $record = Registry::submitterFactory()->new($record->xref(), $record->gedcom(), null, $tree);
 
         return response([
             'id'   => $record->xref(),

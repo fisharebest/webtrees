@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module\InteractiveTree;
 
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
@@ -89,7 +89,7 @@ class TreeView
                 case 'c':
                     $families = Collection::make(explode(',', $json_request))
                         ->map(static function (string $xref) use ($tree): ?Family {
-                            return Factory::family()->make($xref, $tree);
+                            return Registry::familyFactory()->make($xref, $tree);
                         })
                         ->filter();
 
@@ -99,7 +99,7 @@ class TreeView
                 case 'p':
                     [$xref, $order] = explode('@', $json_request);
 
-                    $family = Factory::family()->make($xref, $tree);
+                    $family = Registry::familyFactory()->make($xref, $tree);
                     if ($family instanceof Family) {
                         // Prefer the paternal line
                         $parent = $family->husband() ?? $family->wife();

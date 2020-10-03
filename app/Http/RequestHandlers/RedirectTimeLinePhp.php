@@ -22,8 +22,8 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Module\TimelineChartModule;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -68,7 +68,7 @@ class RedirectTimeLinePhp implements RequestHandlerInterface
         $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $individual = Factory::individual()->make($pids[0] ?? '', $tree) ?? $tree->significantIndividual(Auth::user());
+            $individual = Registry::individualFactory()->make($pids[0] ?? '', $tree) ?? $tree->significantIndividual(Auth::user());
 
             $url = $this->chart->chartUrl($individual, [
                 'xrefs' => $pids,

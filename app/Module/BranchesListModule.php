@@ -23,7 +23,7 @@ use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -137,7 +137,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
         $xref = app(ServerRequestInterface::class)->getAttribute('xref', '');
 
         if ($xref !== '') {
-            $individual = Factory::individual()->make($xref, $tree);
+            $individual = Registry::individualFactory()->make($xref, $tree);
 
             if ($individual instanceof Individual && $individual->canShow()) {
                 $parameters['surname'] = $parameters['surname'] ?? $individual->getAllNames()[0]['surn'] ?? null;
@@ -201,7 +201,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
             // Highlight direct-line ancestors of this individual.
             $xref = $tree->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF);
-            $self = Factory::individual()->make($xref, $tree);
+            $self = Registry::individualFactory()->make($xref, $tree);
 
             if ($surname !== '') {
                 $individuals = $this->loadIndividuals($tree, $surname, $soundex_dm, $soundex_std);
@@ -319,7 +319,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
             ->select(['individuals.*'])
             ->distinct()
             ->get()
-            ->map(Factory::individual()->mapper($tree))
+            ->map(Registry::individualFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter())
             ->all();
 

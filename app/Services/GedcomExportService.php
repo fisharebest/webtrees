@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Factories\AbstractGedcomRecordFactory;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
@@ -91,17 +91,17 @@ class GedcomExportService
             ];
         } else {
             // Disable the pending changes before creating GEDCOM records.
-            Factory::cache()->array()->remember(AbstractGedcomRecordFactory::class . $tree->id(), static function (): Collection {
+            Registry::cache()->array()->remember(AbstractGedcomRecordFactory::class . $tree->id(), static function (): Collection {
                 return new Collection();
             });
 
             $data = [
                 new Collection([$this->createHeader($tree, $encoding, true)]),
-                $this->individualQuery($tree, $sort_by_xref)->get()->map(Factory::individual()->mapper($tree)),
-                $this->familyQuery($tree, $sort_by_xref)->get()->map(Factory::family()->mapper($tree)),
-                $this->sourceQuery($tree, $sort_by_xref)->get()->map(Factory::source()->mapper($tree)),
-                $this->otherQuery($tree, $sort_by_xref)->get()->map(Factory::gedcomRecord()->mapper($tree)),
-                $this->mediaQuery($tree, $sort_by_xref)->get()->map(Factory::media()->mapper($tree)),
+                $this->individualQuery($tree, $sort_by_xref)->get()->map(Registry::individualFactory()->mapper($tree)),
+                $this->familyQuery($tree, $sort_by_xref)->get()->map(Registry::familyFactory()->mapper($tree)),
+                $this->sourceQuery($tree, $sort_by_xref)->get()->map(Registry::sourceFactory()->mapper($tree)),
+                $this->otherQuery($tree, $sort_by_xref)->get()->map(Registry::gedcomRecordFactory()->mapper($tree)),
+                $this->mediaQuery($tree, $sort_by_xref)->get()->map(Registry::mediaFactory()->mapper($tree)),
                 new Collection(['0 TRLR']),
             ];
         }
@@ -164,7 +164,7 @@ class GedcomExportService
         $gedcom .= "\n1 FILE " . $filename;
 
         // Preserve some values from the original header
-        $header = Factory::header()->make('HEAD', $tree) ?? Factory::header()->new('HEAD', '0 HEAD', null, $tree);
+        $header = Registry::headerFactory()->make('HEAD', $tree) ?? Registry::headerFactory()->new('HEAD', '0 HEAD', null, $tree);
 
         foreach ($header->facts(['COPR', 'LANG', 'PLAC', 'NOTE']) as $fact) {
             $gedcom .= "\n" . $fact->gedcom();

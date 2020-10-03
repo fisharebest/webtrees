@@ -23,7 +23,7 @@ use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\ContactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Individual;
@@ -52,7 +52,7 @@ class UserService
      */
     public function find($user_id): ?User
     {
-        return Factory::cache()->array()->remember('user-' . $user_id, static function () use ($user_id): ?User {
+        return Registry::cache()->array()->remember('user-' . $user_id, static function () use ($user_id): ?User {
             return DB::table('user')
                 ->where('user_id', '=', $user_id)
                 ->get()

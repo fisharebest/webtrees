@@ -21,9 +21,9 @@ namespace Fisharebest\Webtrees\Factories;
 
 use Closure;
 use Fisharebest\Webtrees\Contracts\FamilyFactoryInterface;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
@@ -49,7 +49,7 @@ class FamilyFactory extends AbstractGedcomRecordFactory implements FamilyFactory
      */
     public function make(string $xref, Tree $tree, string $gedcom = null): ?Family
     {
-        return Factory::cache()->array()->remember(__CLASS__ . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
+        return Registry::cache()->array()->remember(__CLASS__ . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
             $gedcom  = $gedcom ?? $this->gedcom($xref, $tree);
             $pending = $this->pendingChanges($tree)->get($xref);
 
@@ -65,7 +65,7 @@ class FamilyFactory extends AbstractGedcomRecordFactory implements FamilyFactory
                 ->where('i_file', '=', $tree->id())
                 ->whereIn('i_id', $match[1])
                 ->get()
-                ->map(Factory::individual()->mapper($tree));
+                ->map(Registry::individualFactory()->mapper($tree));
 
             return new Family($xref, $gedcom ?? '', $pending, $tree);
         });

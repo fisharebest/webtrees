@@ -20,9 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
@@ -79,7 +79,7 @@ class EditFactAction implements RequestHandlerInterface
         $fact_id = $request->getAttribute('fact_id') ?? '';
         assert(is_string($fact_id));
 
-        $record = Factory::gedcomRecord()->make($xref, $tree);
+        $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
         $params    = (array) $request->getParsedBody();
@@ -152,7 +152,7 @@ class EditFactAction implements RequestHandlerInterface
         if ($pid_array !== '') {
             foreach (explode(',', $pid_array) as $pid) {
                 if ($pid !== $xref) {
-                    $indi = Factory::individual()->make($pid, $tree);
+                    $indi = Registry::individualFactory()->make($pid, $tree);
                     if ($indi && $indi->canEdit()) {
                         $indi->updateFact($fact_id, $newged, !$keep_chan);
                     }

@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -125,7 +125,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
-        $individual = Factory::individual()->make($xref, $tree);
+        $individual = Registry::individualFactory()->make($xref, $tree);
 
         if ($individual !== null && $individual->canShow()) {
             $html = $this->loadSpouses($individual, 1);

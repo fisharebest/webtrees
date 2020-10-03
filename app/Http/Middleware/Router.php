@@ -23,7 +23,7 @@ use Aura\Router\RouterContainer;
 use Aura\Router\Rule\Accepts;
 use Aura\Router\Rule\Allows;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
@@ -153,15 +153,15 @@ class Router implements MiddlewareInterface
         $dispatcher = new Dispatcher($middleware, app());
 
         // These are deprecated, and will be removed in webtrees 2.1.0
-        app()->instance('cache.array', Factory::cache()->array());
-        app()->instance('cache.files', Factory::cache()->file());
+        app()->instance('cache.array', Registry::cache()->array());
+        app()->instance('cache.files', Registry::cache()->file());
 
         // These are deprecated, and will be removed in webtrees 2.1.0
         $request = $request
-            ->withAttribute('filesystem.data', Factory::filesystem()->data())
-            ->withAttribute('filesystem.data.name', Factory::filesystem()->dataName())
-            ->withAttribute('filesystem.root', Factory::filesystem()->root())
-            ->withAttribute('filesystem.root.name', Factory::filesystem()->rootName());
+            ->withAttribute('filesystem.data', Registry::filesystem()->data())
+            ->withAttribute('filesystem.data.name', Registry::filesystem()->dataName())
+            ->withAttribute('filesystem.root', Registry::filesystem()->root())
+            ->withAttribute('filesystem.root.name', Registry::filesystem()->rootName());
 
         return $dispatcher->dispatch($request);
     }

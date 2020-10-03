@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Carbon;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -315,7 +315,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             ->get()
             ->map(function (stdClass $row) use ($tree): stdClass {
                 return (object) [
-                    'record' => Factory::gedcomRecord()->make($row->xref, $tree, $row->new_gedcom),
+                    'record' => Registry::gedcomRecordFactory()->make($row->xref, $tree, $row->new_gedcom),
                     'time'   => Carbon::create($row->change_time)->local(),
                     'user'   => $this->user_service->find($row->user_id),
                 ];
@@ -348,7 +348,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             })
             ->select(['individuals.*'])
             ->get()
-            ->map(Factory::individual()->mapper($tree))
+            ->map(Registry::individualFactory()->mapper($tree))
             ->filter(Individual::accessFilter());
 
         $families = DB::table('dates')
@@ -362,7 +362,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             })
             ->select(['families.*'])
             ->get()
-            ->map(Factory::family()->mapper($tree))
+            ->map(Registry::familyFactory()->mapper($tree))
             ->filter(Family::accessFilter());
 
         return $individuals->merge($families)

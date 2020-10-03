@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Algorithm\MyersDiff;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -56,28 +56,28 @@ class DataFixService
     {
         switch ($type) {
             case Family::RECORD_TYPE:
-                return Factory::family()->make($xref, $tree);
+                return Registry::familyFactory()->make($xref, $tree);
 
             case Individual::RECORD_TYPE:
-                return Factory::individual()->make($xref, $tree);
+                return Registry::individualFactory()->make($xref, $tree);
 
             case Note::RECORD_TYPE:
-                return Factory::note()->make($xref, $tree);
+                return Registry::noteFactory()->make($xref, $tree);
 
             case Media::RECORD_TYPE:
-                return Factory::media()->make($xref, $tree);
+                return Registry::mediaFactory()->make($xref, $tree);
 
             case Repository::RECORD_TYPE:
-                return Factory::repository()->make($xref, $tree);
+                return Registry::repositoryFactory()->make($xref, $tree);
 
             case Source::RECORD_TYPE:
-                return Factory::source()->make($xref, $tree);
+                return Registry::sourceFactory()->make($xref, $tree);
 
             case Submitter::RECORD_TYPE:
-                return Factory::submitter()->make($xref, $tree);
+                return Registry::submitterFactory()->make($xref, $tree);
 
             default:
-                return Factory::gedcomRecord()->make($xref, $tree);
+                return Registry::gedcomRecordFactory()->make($xref, $tree);
         }
     }
 
@@ -115,7 +115,7 @@ class DataFixService
         $html = implode('', $diff_lines);
 
         $html = preg_replace_callback('/@(' . Gedcom::REGEX_XREF . ')@/', static function (array $match) use ($tree): string {
-            $record = Factory::gedcomRecord()->make($match[0], $tree);
+            $record = Registry::gedcomRecordFactory()->make($match[0], $tree);
 
             if ($record instanceof GedcomRecord) {
                 $title = strip_tags($record->fullName());

@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\CommonMark;
 
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use League\CommonMark\Inline\Parser\InlineParserInterface;
 use League\CommonMark\InlineParserContext;
@@ -74,7 +74,7 @@ class XrefParser implements InlineParserInterface
 
         if (is_string($xref)) {
             $xref   = trim($xref, '@');
-            $record = Factory::gedcomRecord()->make($xref, $this->tree);
+            $record = Registry::gedcomRecordFactory()->make($xref, $this->tree);
 
             if ($record instanceof GedcomRecord) {
                 $context->getContainer()->appendChild(new XrefNode($record));

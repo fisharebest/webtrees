@@ -20,8 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -47,14 +47,14 @@ class LinkChildToFamilyAction implements RequestHandlerInterface
 
         $xref = $request->getQueryParams()['xref'];
 
-        $individual = Factory::individual()->make($xref, $tree);
+        $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
         $params = (array) $request->getParsedBody();
 
         $famid = $params['famid'];
 
-        $family = Factory::family()->make($famid, $tree);
+        $family = Registry::familyFactory()->make($famid, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
         $PEDI = $params['PEDI'];

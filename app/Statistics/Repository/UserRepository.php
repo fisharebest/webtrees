@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -111,7 +111,7 @@ class UserRepository implements UserRepositoryInterface
                     $content .= '<li>';
                 }
 
-                $individual = Factory::individual()->make($this->tree->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF), $this->tree);
+                $individual = Registry::individualFactory()->make($this->tree->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF), $this->tree);
 
                 if ($individual instanceof Individual && $individual->canShow()) {
                     $content .= '<a href="' . e($individual->url()) . '">' . e($user->realName()) . '</a>';

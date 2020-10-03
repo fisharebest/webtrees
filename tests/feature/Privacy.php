@@ -38,19 +38,19 @@ class Privacy extends TestCase
         $tree = $this->importTree('demo.ged');
 
         // Identify some individuals in the tree
-        $queen_elizabeth = Factory::individual()->make('X1030', $tree);
+        $queen_elizabeth = Registry::individualFactory()->make('X1030', $tree);
         $this->assertInstanceOf(Individual::class, $queen_elizabeth);
         $this->assertSame('Queen Elizabeth II', strip_tags($queen_elizabeth->fullName()));
 
-        $prince_charles = Factory::individual()->make('X1052', $tree);
+        $prince_charles = Registry::individualFactory()->make('X1052', $tree);
         $this->assertInstanceOf(Individual::class, $prince_charles);
         $this->assertSame('Charles, Prince of Wales', strip_tags($prince_charles->fullName()));
 
-        $savannah = Factory::individual()->make('X1044', $tree);
+        $savannah = Registry::individualFactory()->make('X1044', $tree);
         $this->assertInstanceOf(Individual::class, $savannah);
         $this->assertSame('Savannah Anne Kathleen Phillips', strip_tags($savannah->fullName()));
 
-        $beatrice = Factory::individual()->make('X1047', $tree);
+        $beatrice = Registry::individualFactory()->make('X1047', $tree);
         $this->assertInstanceOf(Individual::class, $beatrice);
         $this->assertSame('Princess Beatrice of York', strip_tags($beatrice->fullName()));
 

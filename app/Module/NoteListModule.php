@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Note;
@@ -156,7 +156,7 @@ class NoteListModule extends AbstractModule implements ModuleListInterface, Requ
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Note::RECORD_TYPE)
             ->get()
-            ->map(Factory::note()->mapper($tree))
+            ->map(Registry::noteFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
 
         return $this->viewResponse('modules/note-list/page', [

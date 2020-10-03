@@ -25,7 +25,7 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\ColorGenerator;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
@@ -161,7 +161,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         $xrefs = array_unique($xrefs);
 
         // Add an individual, and family members
-        $individual = Factory::individual()->make($addxref, $tree);
+        $individual = Registry::individualFactory()->make($addxref, $tree);
         if ($individual !== null) {
             $xrefs[] = $addxref;
             if ($addfam) {
@@ -183,7 +183,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         // Filter duplicates and private individuals.
         $xrefs = array_unique($xrefs);
         $xrefs = array_filter($xrefs, static function (string $xref) use ($tree): bool {
-            $individual = Factory::individual()->make($xref, $tree);
+            $individual = Registry::individualFactory()->make($xref, $tree);
 
             return $individual !== null && $individual->canShow();
         });
@@ -232,7 +232,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     {
         /** @var Individual[] $individuals */
         $individuals = array_map(static function (string $xref) use ($tree): ?Individual {
-            return Factory::individual()->make($xref, $tree);
+            return Registry::individualFactory()->make($xref, $tree);
         }, $xrefs);
 
         $individuals = array_filter($individuals, static function (?Individual $individual): bool {

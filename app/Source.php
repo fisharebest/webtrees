@@ -42,7 +42,7 @@ class Source extends GedcomRecord
      */
     public static function rowMapper(Tree $tree): Closure
     {
-        return Factory::source()->mapper($tree);
+        return Registry::sourceFactory()->mapper($tree);
     }
 
     /**
@@ -60,7 +60,7 @@ class Source extends GedcomRecord
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Source
     {
-        return Factory::source()->make($xref, $tree, $gedcom);
+        return Registry::sourceFactory()->make($xref, $tree, $gedcom);
     }
 
     /**
@@ -75,7 +75,7 @@ class Source extends GedcomRecord
         // Hide sources if they are attached to private repositories ...
         preg_match_all('/\n1 REPO @(.+)@/', $this->gedcom, $matches);
         foreach ($matches[1] as $match) {
-            $repo = Factory::repository()->make($match, $this->tree);
+            $repo = Registry::repositoryFactory()->make($match, $this->tree);
             if ($repo && !$repo->canShow($access_level)) {
                 return false;
             }

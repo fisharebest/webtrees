@@ -22,8 +22,8 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -71,7 +71,7 @@ class RedirectRelationshipPhp implements RequestHandlerInterface
         $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            $individual = Factory::individual()->make($pid1, $tree) ?? $tree->significantIndividual(Auth::user());
+            $individual = Registry::individualFactory()->make($pid1, $tree) ?? $tree->significantIndividual(Auth::user());
 
             $url = $this->chart->chartUrl($individual, [
                 'xref2'     => $pid2,

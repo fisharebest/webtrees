@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Factories;
 
 use Closure;
 use Fisharebest\Webtrees\Contracts\GedcomRecordFactoryInterface;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -30,6 +29,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submission;
@@ -61,41 +61,41 @@ class GedcomRecordFactory extends AbstractGedcomRecordFactory implements GedcomR
         if ($gedcom !== null && preg_match('/^0(?: @[^@]+@)? ([A-Z_]+)/', $gedcom, $match)) {
             switch ($match[1]) {
                 case Family::RECORD_TYPE:
-                    return Factory::family()->make($xref, $tree, $gedcom);
+                    return Registry::familyFactory()->make($xref, $tree, $gedcom);
                 case Header::RECORD_TYPE:
-                    return Factory::header()->make($xref, $tree, $gedcom);
+                    return Registry::headerFactory()->make($xref, $tree, $gedcom);
                 case Individual::RECORD_TYPE:
-                    return Factory::individual()->make($xref, $tree, $gedcom);
+                    return Registry::individualFactory()->make($xref, $tree, $gedcom);
                 case Location::RECORD_TYPE:
-                    return Factory::location()->make($xref, $tree, $gedcom);
+                    return Registry::locationFactory()->make($xref, $tree, $gedcom);
                 case Media::RECORD_TYPE:
-                    return Factory::media()->make($xref, $tree, $gedcom);
+                    return Registry::mediaFactory()->make($xref, $tree, $gedcom);
                 case Note::RECORD_TYPE:
-                    return Factory::note()->make($xref, $tree, $gedcom);
+                    return Registry::noteFactory()->make($xref, $tree, $gedcom);
                 case Repository::RECORD_TYPE:
-                    return Factory::repository()->make($xref, $tree, $gedcom);
+                    return Registry::repositoryFactory()->make($xref, $tree, $gedcom);
                 case Source::RECORD_TYPE:
-                    return Factory::source()->make($xref, $tree, $gedcom);
+                    return Registry::sourceFactory()->make($xref, $tree, $gedcom);
                 case Submitter::RECORD_TYPE:
-                    return Factory::submitter()->make($xref, $tree, $gedcom);
+                    return Registry::submitterFactory()->make($xref, $tree, $gedcom);
                 case Submission::RECORD_TYPE:
-                    return Factory::submission()->make($xref, $tree, $gedcom);
+                    return Registry::submissionFactory()->make($xref, $tree, $gedcom);
             }
         }
 
         // We do not know the type of the record.  Try them all in turn.
         return
-            Factory::family()->make($xref, $tree, $gedcom) ??
-            Factory::individual()->make($xref, $tree, $gedcom) ??
-            Factory::media()->make($xref, $tree, $gedcom) ??
-            Factory::note()->make($xref, $tree, $gedcom) ??
-            Factory::repository()->make($xref, $tree, $gedcom) ??
-            Factory::source()->make($xref, $tree, $gedcom) ??
-            Factory::submitter()->make($xref, $tree, $gedcom) ??
-            Factory::submission()->make($xref, $tree, $gedcom) ??
-            Factory::location()->make($xref, $tree, $gedcom) ??
-            Factory::header()->make($xref, $tree, $gedcom) ??
-            Factory::cache()->array()->remember(__CLASS__ . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
+            Registry::familyFactory()->make($xref, $tree, $gedcom) ??
+            Registry::individualFactory()->make($xref, $tree, $gedcom) ??
+            Registry::mediaFactory()->make($xref, $tree, $gedcom) ??
+            Registry::noteFactory()->make($xref, $tree, $gedcom) ??
+            Registry::repositoryFactory()->make($xref, $tree, $gedcom) ??
+            Registry::sourceFactory()->make($xref, $tree, $gedcom) ??
+            Registry::submitterFactory()->make($xref, $tree, $gedcom) ??
+            Registry::submissionFactory()->make($xref, $tree, $gedcom) ??
+            Registry::locationFactory()->make($xref, $tree, $gedcom) ??
+            Registry::headerFactory()->make($xref, $tree, $gedcom) ??
+            Registry::cache()->array()->remember(__CLASS__ . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
                 $gedcom = $gedcom ?? $this->gedcom($xref, $tree);
 
                 $pending = $this->pendingChanges($tree)->get($xref);
@@ -157,31 +157,31 @@ class GedcomRecordFactory extends AbstractGedcomRecordFactory implements GedcomR
     {
         switch ($type) {
             case Family::RECORD_TYPE:
-                return Factory::family()->new($xref, $gedcom, $pending, $tree);
+                return Registry::familyFactory()->new($xref, $gedcom, $pending, $tree);
 
             case Header::RECORD_TYPE:
-                return Factory::header()->new($xref, $gedcom, $pending, $tree);
+                return Registry::headerFactory()->new($xref, $gedcom, $pending, $tree);
 
             case Individual::RECORD_TYPE:
-                return Factory::individual()->new($xref, $gedcom, $pending, $tree);
+                return Registry::individualFactory()->new($xref, $gedcom, $pending, $tree);
 
             case Media::RECORD_TYPE:
-                return Factory::media()->new($xref, $gedcom, $pending, $tree);
+                return Registry::mediaFactory()->new($xref, $gedcom, $pending, $tree);
 
             case Note::RECORD_TYPE:
-                return Factory::note()->new($xref, $gedcom, $pending, $tree);
+                return Registry::noteFactory()->new($xref, $gedcom, $pending, $tree);
 
             case Repository::RECORD_TYPE:
-                return Factory::repository()->new($xref, $gedcom, $pending, $tree);
+                return Registry::repositoryFactory()->new($xref, $gedcom, $pending, $tree);
 
             case Source::RECORD_TYPE:
-                return Factory::source()->new($xref, $gedcom, $pending, $tree);
+                return Registry::sourceFactory()->new($xref, $gedcom, $pending, $tree);
 
             case Submission::RECORD_TYPE:
-                return Factory::submission()->new($xref, $gedcom, $pending, $tree);
+                return Registry::submissionFactory()->new($xref, $gedcom, $pending, $tree);
 
             case Submitter::RECORD_TYPE:
-                return Factory::submitter()->new($xref, $gedcom, $pending, $tree);
+                return Registry::submitterFactory()->new($xref, $gedcom, $pending, $tree);
 
             default:
                 return $this->new($xref, $gedcom, $pending, $tree);

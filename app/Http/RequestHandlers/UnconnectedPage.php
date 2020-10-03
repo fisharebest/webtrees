@@ -20,10 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Algorithm\ConnectedComponent;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -101,7 +101,7 @@ class UnconnectedPage implements RequestHandlerInterface
                     ->where('i_file', '=', $tree->id())
                     ->whereIn('i_id', $component)
                     ->get()
-                    ->map(Factory::individual()->mapper($tree))
+                    ->map(Registry::individualFactory()->mapper($tree))
                     ->filter();
             }
         }

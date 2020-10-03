@@ -23,7 +23,7 @@ use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\Functions;
@@ -681,7 +681,7 @@ class ReportParserGenerate extends ReportParserBase
         $tags      = explode(':', $tag);
         $newgedrec = '';
         if (count($tags) < 2) {
-            $tmp       = Factory::gedcomRecord()->make($attrs['id'], $this->tree);
+            $tmp       = Registry::gedcomRecordFactory()->make($attrs['id'], $this->tree);
             $newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
         }
         if (empty($newgedrec)) {
@@ -692,14 +692,14 @@ class ReportParserGenerate extends ReportParserBase
                     if (isset($this->vars[$match[1]]['gedcom'])) {
                         $newgedrec = $this->vars[$match[1]]['gedcom'];
                     } else {
-                        $tmp       = Factory::gedcomRecord()->make($match[1], $this->tree);
+                        $tmp       = Registry::gedcomRecordFactory()->make($match[1], $this->tree);
                         $newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
                     }
                 } else {
                     if (preg_match('/@(.+)/', $tag, $match)) {
                         $gmatch = [];
                         if (preg_match("/\d $match[1] @([^@]+)@/", $tgedrec, $gmatch)) {
-                            $tmp       = Factory::gedcomRecord()->make($gmatch[1], $this->tree);
+                            $tmp       = Registry::gedcomRecordFactory()->make($gmatch[1], $this->tree);
                             $newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
                             $tgedrec   = $newgedrec;
                         } else {
@@ -959,7 +959,7 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
         if (!empty($id)) {
-            $record = Factory::gedcomRecord()->make($id, $this->tree);
+            $record = Registry::gedcomRecordFactory()->make($id, $this->tree);
             if ($record === null) {
                 return;
             }
@@ -1144,7 +1144,7 @@ class ReportParserGenerate extends ReportParserBase
                     // Privacy check - is this a link, and are we allowed to view the linked object?
                     $subrecord = Functions::getSubRecord($level, "$level $t", $subrec, $i);
                     if (preg_match('/^\d ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@/', $subrecord, $xref_match)) {
-                        $linked_object = Factory::gedcomRecord()->make($xref_match[1], $this->tree);
+                        $linked_object = Registry::gedcomRecordFactory()->make($xref_match[1], $this->tree);
                         if ($linked_object && !$linked_object->canShow()) {
                             continue;
                         }
@@ -1328,7 +1328,7 @@ class ReportParserGenerate extends ReportParserBase
             $tag = $this->vars[$match[1]]['id'];
         }
 
-        $record = Factory::gedcomRecord()->make($id, $this->tree);
+        $record = Registry::gedcomRecordFactory()->make($id, $this->tree);
         if (empty($attrs['diff']) && !empty($id)) {
             $facts = $record->facts([], true);
             $this->repeats = [];
@@ -1609,7 +1609,7 @@ class ReportParserGenerate extends ReportParserBase
         if (preg_match('/[0-9] (.+) @(.+)@/', $this->gedrec, $match)) {
             $id = $match[2];
         }
-        $record = Factory::gedcomRecord()->make($id, $this->tree);
+        $record = Registry::gedcomRecordFactory()->make($id, $this->tree);
         if ($record && $record->canShow()) {
             $this->print_data_stack[] = $this->print_data;
             $this->print_data         = true;
@@ -1711,7 +1711,7 @@ class ReportParserGenerate extends ReportParserBase
         $width  = (float) ($attrs['width'] ?? 0.0);
         $height = (float) ($attrs['height'] ?? 0.0);
 
-        $person     = Factory::individual()->make($id, $this->tree);
+        $person     = Registry::individualFactory()->make($id, $this->tree);
         $media_file = $person->findHighlightedMediaFile();
 
         if ($media_file instanceof MediaFile && $media_file->fileExists($this->data_filesystem)) {
@@ -1763,7 +1763,7 @@ class ReportParserGenerate extends ReportParserBase
         if ($file === '@FILE') {
             $match = [];
             if (preg_match("/\d OBJE @(.+)@/", $this->gedrec, $match)) {
-                $mediaobject = Factory::media()->make($match[1], $this->tree);
+                $mediaobject = Registry::mediaFactory()->make($match[1], $this->tree);
                 $media_file  = $mediaobject->firstImageFile();
 
                 if ($media_file instanceof MediaFile && $media_file->fileExists($this->data_filesystem)) {
@@ -1903,7 +1903,7 @@ class ReportParserGenerate extends ReportParserBase
 
                 $this->list = [];
                 foreach ($xrefs as $xref) {
-                    $this->list[] = Factory::gedcomRecord()->make($xref, $this->tree);
+                    $this->list[] = Registry::gedcomRecordFactory()->make($xref, $this->tree);
                 }
                 break;
             case 'individual':
@@ -1988,7 +1988,7 @@ class ReportParserGenerate extends ReportParserBase
                 $this->list = [];
 
                 foreach ($query->get() as $row) {
-                    $this->list[$row->xref] = Factory::individual()->make($row->xref, $this->tree, $row->gedcom);
+                    $this->list[$row->xref] = Registry::individualFactory()->make($row->xref, $this->tree, $row->gedcom);
                 }
                 break;
 
@@ -2082,7 +2082,7 @@ class ReportParserGenerate extends ReportParserBase
                 $this->list = [];
 
                 foreach ($query->get() as $row) {
-                    $this->list[$row->xref] = Factory::family()->make($row->xref, $this->tree, $row->gedcom);
+                    $this->list[$row->xref] = Registry::familyFactory()->make($row->xref, $this->tree, $row->gedcom);
                 }
                 break;
 
@@ -2417,7 +2417,7 @@ class ReportParserGenerate extends ReportParserBase
         }
 
         $this->list = [];
-        $person     = Factory::individual()->make($id, $this->tree);
+        $person     = Registry::individualFactory()->make($id, $this->tree);
         if ($person instanceof Individual) {
             $this->list[$id] = $person;
             switch ($group) {
@@ -2546,7 +2546,7 @@ class ReportParserGenerate extends ReportParserBase
                 if (isset($value->generation)) {
                     $this->generation = $value->generation;
                 }
-                $tmp          = Factory::gedcomRecord()->make((string) $xref, $this->tree);
+                $tmp          = Registry::gedcomRecordFactory()->make((string) $xref, $this->tree);
                 $this->gedrec = $tmp->privatizeGedcom(Auth::accessLevel($this->tree));
 
                 $repeat_parser = xml_parser_create();
@@ -2638,7 +2638,7 @@ class ReportParserGenerate extends ReportParserBase
      */
     private function addDescendancy(&$list, $pid, $parents = false, $generations = -1): void
     {
-        $person = Factory::individual()->make($pid, $this->tree);
+        $person = Registry::individualFactory()->make($pid, $this->tree);
         if ($person === null) {
             return;
         }
@@ -2710,7 +2710,7 @@ class ReportParserGenerate extends ReportParserBase
             if (str_starts_with($id, 'empty')) {
                 continue; // id can be something like “empty7”
             }
-            $person = Factory::individual()->make($id, $this->tree);
+            $person = Registry::individualFactory()->make($id, $this->tree);
             foreach ($person->childFamilies() as $family) {
                 $husband = $family->husband();
                 $wife    = $family->wife();
@@ -2799,7 +2799,7 @@ class ReportParserGenerate extends ReportParserBase
         if ($ct > 0) {
             $value = trim($match[1]);
             if ($t === 'NOTE' && preg_match('/^@(.+)@$/', $value, $match)) {
-                $note = Factory::note()->make($match[1], $this->tree);
+                $note = Registry::noteFactory()->make($match[1], $this->tree);
                 if ($note instanceof Note) {
                     $value = $note->getNote();
                 } else {

@@ -20,8 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Factory;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Tree;
@@ -91,7 +91,7 @@ class CreateMediaObjectAction implements RequestHandlerInterface
         }
 
         $record = $tree->createMediaObject($gedcom);
-        $record = Factory::media()->new($record->xref(), $record->gedcom(), null, $tree);
+        $record = Registry::mediaFactory()->new($record->xref(), $record->gedcom(), null, $tree);
 
         // Accept the new record to keep the filesystem synchronized with the genealogy.
         $this->pending_changes_service->acceptRecord($record);

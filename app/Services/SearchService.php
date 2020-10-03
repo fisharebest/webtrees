@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Services;
 use Closure;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Exceptions\HttpServiceUnavailableException;
-use Fisharebest\Webtrees\Factory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -1116,7 +1116,7 @@ class SearchService
         return function (stdClass $row): Family {
             $tree = $this->tree_service->find((int) $row->f_file);
 
-            return Factory::family()->mapper($tree)($row);
+            return Registry::familyFactory()->mapper($tree)($row);
         };
     }
 
@@ -1130,7 +1130,7 @@ class SearchService
         return function (stdClass $row): Individual {
             $tree = $this->tree_service->find((int) $row->i_file);
 
-            return Factory::individual()->mapper($tree)($row);
+            return Registry::individualFactory()->mapper($tree)($row);
         };
     }
 
@@ -1144,7 +1144,7 @@ class SearchService
         return function (stdClass $row): Media {
             $tree = $this->tree_service->find((int) $row->m_file);
 
-            return Factory::media()->mapper($tree)($row);
+            return Registry::mediaFactory()->mapper($tree)($row);
         };
     }
 
@@ -1158,7 +1158,7 @@ class SearchService
         return function (stdClass $row): Note {
             $tree = $this->tree_service->find((int) $row->o_file);
 
-            return Factory::note()->mapper($tree)($row);
+            return Registry::noteFactory()->mapper($tree)($row);
         };
     }
 
@@ -1172,7 +1172,7 @@ class SearchService
         return function (stdClass $row): Repository {
             $tree = $this->tree_service->find((int) $row->o_file);
 
-            return Factory::repository()->mapper($tree)($row);
+            return Registry::repositoryFactory()->mapper($tree)($row);
         };
     }
 
@@ -1186,7 +1186,7 @@ class SearchService
         return function (stdClass $row): Source {
             $tree = $this->tree_service->find((int) $row->s_file);
 
-            return Factory::source()->mapper($tree)($row);
+            return Registry::sourceFactory()->mapper($tree)($row);
         };
     }
 
@@ -1200,7 +1200,7 @@ class SearchService
         return function (stdClass $row): Submitter {
             $tree = $this->tree_service->find((int) $row->o_file);
 
-            return Factory::submitter()->mapper($tree)($row);
+            return Registry::submitterFactory()->mapper($tree)($row);
         };
     }
 }
