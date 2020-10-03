@@ -562,9 +562,7 @@ class GedcomTag
                 return I18N::translate('Census date');
             case 'CENS:PLAC':
                 return I18N::translate('Census place');
-            case '_UPD':
-                // Family Tree Builder uses "1 _UPD 14 APR 2012 00:14:10 GMT-5" instead of 1 CHAN/2 DATE/3 TIME
-                // no break
+            case '_UPD': // Family Tree Builder uses "1 _UPD 14 APR 2012 00:14:10 GMT-5" instead of 1 CHAN/2 DATE/3 TIME
             case 'CHAN':
             /* I18N: gedcom tag CHAN */
                 return I18N::translate('Last change');
@@ -636,9 +634,7 @@ class GedcomTag
                 return I18N::translate('Data');
             case 'DATA:DATE':
                 return I18N::translate('Date of entry in original source');
-            case '_DATE':
-                // Family Tree Builder uses OBJE:_DATE
-                // no break
+            case '_DATE': // Family Tree Builder uses OBJE:_DATE
             case 'DATE':
                 /* I18N: gedcom tag DATE */
                 return I18N::translate('Date');
@@ -675,9 +671,7 @@ class GedcomTag
             case 'EDUC:AGNC':
                 return I18N::translate('School or college');
             case 'EMAI':
-                // no break
             case 'EMAL':
-                // no break
             case 'EMAIL':
                 /* I18N: gedcom tag EMAIL */
                 return I18N::translate('Email address');
@@ -893,9 +887,7 @@ class GedcomTag
             case 'PHON':
                 /* I18N: gedcom tag PHON */
                 return I18N::translate('Phone');
-            case '_PLACE':
-                // Family Tree Builder uses OBJE:_PLACE
-                // no break
+            case '_PLACE': // Family Tree Builder uses OBJE:_PLACE
             case 'PLAC':
             /* I18N: gedcom tag PLAC */
                 return I18N::translate('Place');
@@ -955,9 +947,7 @@ class GedcomTag
             case '_PHOTO_RIN':
                 // Family Tree Builder uses "0 OBJE/1 _PHOTO_RIN"
                 // no  break
-            case '_PRIN':
-                // Family Tree Builder uses "0 _ALBUM/1 _PHOTO/2 _PRIN"
-                // no break
+            case '_PRIN':// Family Tree Builder uses "0 _ALBUM/1 _PHOTO/2 _PRIN"
             case 'RIN':
                 /* I18N: gedcom tag RIN */
                 return I18N::translate('Record ID number');
@@ -1276,9 +1266,7 @@ class GedcomTag
             case '_YART':
                 /* I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar. */
                 return I18N::translate('Yahrzeit');
-            case '_FILESIZE':
-                // Family Tree Builder uses OBJE:_FILESIZE
-                // no break
+            case '_FILESIZE': // Family Tree Builder uses OBJE:_FILESIZE
             case '__FILE_SIZE__':
                 // This pseudo-tag is generated internally to present information about a media object
                 return I18N::translate('File size');
