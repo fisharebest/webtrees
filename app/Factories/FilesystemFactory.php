@@ -37,7 +37,7 @@ use function realpath;
  */
 class FilesystemFactory implements FilesystemFactoryInterface
 {
-    private const ROOT_DIR = __DIR__ . '/../../..';
+    private const ROOT_DIR = __DIR__ . '/../..';
 
     /**
      * Create a filesystem for the user's data folder.
