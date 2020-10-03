@@ -33,7 +33,7 @@ use League\Flysystem\FilesystemInterface;
 use function realpath;
 
 /**
- * Make a filesyste,.
+ * Make a filesystem.
  */
 class FilesystemFactory implements FilesystemFactoryInterface
 {
