@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -43,13 +43,13 @@ trait ModuleHistoricEventsTrait
     /**
      * All events provided by this module.
      *
-     * @return string[]
+     * @return Collection<string>
      */
-    public function historicEventsAll(): array
+    public function historicEventsAll(): Collection
     {
-        return [
+        return new Collection([
             "1 EVEN foo\n2 TYPE bar\n2 DATE FROM 6 FEB 1952"
-        ];
+        ]);
     }
 
     /**
