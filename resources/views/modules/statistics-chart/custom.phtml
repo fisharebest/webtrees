@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteSurname;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
 
@@ -158,7 +159,7 @@ use Fisharebest\Webtrees\View;
 
                         <div id="surname_opt" class="form-group" style="display:none;">
                             <label for="SURN"><?= I18N::translate('Surname') ?></label>
-                            <input data-autocomplete-type="SURN" class="form-control" type="text" id="SURN" name="SURN">
+                            <input data-autocomplete-url="<?= e(route(AutoCompleteSurname::class, ['tree' => $tree->name()])) ?>" autocomplete="off" class="form-control" type="text" id="SURN" name="SURN">
                         </div>
                     </fieldset>
 
@@ -337,5 +338,6 @@ use Fisharebest\Webtrees\View;
     });
 
     $("#own-stats-form").on("submit", loadCustomChart);
+    webtrees.autocomplete('#SURN');
 </script>
 <?php View::endpush() ?>

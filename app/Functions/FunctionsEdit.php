@@ -36,6 +36,9 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteCitation;
+use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompletePlace;
+use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteSurname;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateMediaObjectModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateNoteModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateRepositoryModal;
@@ -429,12 +432,12 @@ class FunctionsEdit
             $html .= '</div>';
         } elseif ($fact === 'GIVN') {
             $html .= '<div class="input-group">';
-            $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" data-autocomplete-type="GIVN" oninput="updatewholename()" autofocus>';
+            $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" data-autocomplete-typeoninput="updatewholename()" autofocus>';
             $html .= view('edit/input-addon-keyboard', ['id' => $id]);
             $html .= '</div>';
         } elseif ($fact === 'SURN' || $fact === '_MARNM_SURN') {
             $html .= '<div class="input-group">';
-            $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" data-autocomplete-type="SURN" oninput="updatewholename()">';
+            $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" autocomplete="off" data-autocomplete-url="' . e(route(AutoCompleteSurname::class, ['tree' => $tree->name()])) . '" oninput="updatewholename()">';
             $html .= view('edit/input-addon-keyboard', ['id' => $id]);
             $html .= '</div>';
         } elseif ($fact === 'ADOP') {
@@ -499,7 +502,7 @@ class FunctionsEdit
                     'name'                    => $name,
                     'value'                   => $value,
                     'type'                    => 'text',
-                    'data-autocomplete-url'   => route('autocomplete-page', ['tree'  => $tree->name(), 'query' => 'QUERY']),
+                    'data-autocomplete-url'   => route(AutoCompleteCitation::class, ['tree'  => $tree->name()]),
                     'data-autocomplete-extra' => '#' . $previous_ids['SOUR'],
                 ]) . '>';
         } elseif ($fact === 'PEDI') {
@@ -513,7 +516,7 @@ class FunctionsEdit
                     'name'                  => $name,
                     'value'                 => $value,
                     'type'                  => 'text',
-                    'data-autocomplete-url' => route('autocomplete-place', ['tree'  => $tree->name(), 'query' => 'QUERY']),
+                    'data-autocomplete-url' => route(AutoCompletePlace::class, ['tree'  => $tree->name()]),
                 ]) . '>';
 
             $html .= view('edit/input-addon-coordinates', ['id' => $id]);

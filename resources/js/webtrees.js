@@ -591,7 +591,8 @@
       const that = this;
       $(this).typeahead(null, {
         display: 'value',
-        limit: 0,
+        limit: 10,
+        minLength: 2,
         source: new Bloodhound({
           datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
           queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -600,11 +601,11 @@
             replace: function (url, uriEncodedQuery) {
               if (that.dataset.autocompleteExtra) {
                 const extra = $(document.querySelector(that.dataset.autocompleteExtra)).val();
-                return url.replace('QUERY', uriEncodedQuery) + '&extra=' + encodeURIComponent(extra);
+                return url.replace('{query}', uriEncodedQuery) + '?extra=' + encodeURIComponent(extra);
               }
-              return url.replace('QUERY', uriEncodedQuery);
+              return url.replace('{query}', uriEncodedQuery);
             },
-            wildcard: 'QUERY'
+            wildcard: '{query}'
           }
         })
       });

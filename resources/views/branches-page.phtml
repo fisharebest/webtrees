@@ -1,6 +1,8 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteSurname;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * @var string $ajax_url
@@ -8,6 +10,7 @@ use Fisharebest\Webtrees\I18N;
  * @var bool   $soundex_std
  * @var string $surname
  * @var string $title
+ * @var Tree   $tree
  */
 
 ?>
@@ -25,7 +28,7 @@ use Fisharebest\Webtrees\I18N;
         </label>
 
         <div class="col-sm-9 wt-page-options-value">
-            <input class="form-control" data-autocomplete-type="SURN" type="text" name="surname" id="surname" value="<?= e($surname) ?>" dir="auto" required>
+            <input class="form-control" data-autocomplete-url="<?= e(route(AutoCompleteSurname::class, ['tree' => $tree->name()])) ?>" autocomplete="off" type="text" name="surname" id="surname" value="<?= e($surname) ?>" dir="auto" required>
         </div>
     </div>
 

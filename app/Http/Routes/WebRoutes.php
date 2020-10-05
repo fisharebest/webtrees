@@ -47,6 +47,10 @@ use Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\AdminMediaFileDownload;
 use Fisharebest\Webtrees\Http\RequestHandlers\AdminMediaFileThumbnail;
 use Fisharebest\Webtrees\Http\RequestHandlers\AppleTouchIconPng;
+use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteCitation;
+use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteFolder;
+use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompletePlace;
+use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteSurname;
 use Fisharebest\Webtrees\Http\RequestHandlers\BroadcastAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\BroadcastPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\CalendarAction;
@@ -453,6 +457,10 @@ class WebRoutes
                     ],
                 ]);
 
+                $router->get(AutoCompleteCitation::class, '/autocomplete/citation/{query}');
+                $router->get(AutoCompleteFolder::class, '/autocomplete/folder/{query}');
+                $router->get(AutoCompletePlace::class, '/autocomplete/place/{query}');
+                $router->get(AutoCompleteSurname::class, '/autocomplete/surname/{query}');
                 $router->get(AddChildToFamilyPage::class, '/add-child-to-family');
                 $router->post(AddChildToFamilyAction::class, '/add-child-to-family');
                 $router->get(AddNewFact::class, '/add-fact/{xref}/{fact}');
@@ -566,9 +574,6 @@ class WebRoutes
             // Visitor routes with a tree.
             $router->attach('', '/tree/{tree}', static function (Map $router) {
                 $router->get(TreePage::class, '');
-                $router->get('autocomplete-folder', '/autocomplete-folder', 'AutocompleteController::folder');
-                $router->get('autocomplete-page', '/autocomplete-page', 'AutocompleteController::page');
-                $router->get('autocomplete-place', '/autocomplete-place', 'AutocompleteController::place');
                 $router->get(CalendarPage::class, '/calendar/{view}');
                 $router->post(CalendarAction::class, '/calendar/{view}');
                 $router->get(CalendarEvents::class, '/calendar-events/{view}');

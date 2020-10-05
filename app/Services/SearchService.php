@@ -335,6 +335,31 @@ class SearchService
     }
 
     /**
+     * Search for sources.
+     *
+     * @param Tree[]   $trees
+     * @param string[] $search
+     * @param int      $offset
+     * @param int      $limit
+     *
+     * @return Collection<string>
+     */
+    public function searchSurnames(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
+    {
+        $query = DB::table('name');
+
+        $this->whereTrees($query, 'n_file', $trees);
+        $this->whereSearch($query, 'n_surname', $search);
+
+        return $query
+            ->groupBy(['n_surname'])
+            ->orderBy('n_surname')
+            ->skip($offset)
+            ->take($limit)
+            ->pluck('n_surname');
+    }
+
+    /**
      * Search for submitters.
      *
      * @param Tree[]   $trees

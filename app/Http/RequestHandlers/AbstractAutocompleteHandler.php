@@ -19,16 +19,25 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Services\SearchService;
-use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+use function response;
 
 /**
- * Autocomplete for places.
+ * Autocomplete handler
  */
-class Select2Place extends AbstractSelect2Handler
+abstract class AbstractAutocompleteHandler implements RequestHandlerInterface
 {
+    // The client software only shows the first few results
+    protected const LIMIT = 10;
+
+    // Tell the browser to cache the results
+    protected const CACHE_LIFE = 1200;
+
     /** @var SearchService */
     protected $search_service;
 
@@ -41,26 +50,25 @@ class Select2Place extends AbstractSelect2Handler
     }
 
     /**
-     * Perform the search
+     * @param ServerRequestInterface $request
      *
-     * @param Tree   $tree
-     * @param string $query
-     * @param int    $offset
-     * @param int    $limit
-     * @param string $at
-     *
-     * @return Collection<array<string,string>>
+     * @return ResponseInterface
      */
-    protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        return $this->search_service
-            ->searchPlaces($tree, $query, $offset, $limit)
-            ->map(static function (Place $place): array {
-                return [
-                    'id'    => $place->id(),
-                    'text'  => $place->gedcomName(),
-                    'title' => ' ',
-                ];
+        $data = $this->search($request)
+            ->map(static function (string $datum): array {
+                return ['value' => $datum];
             });
+
+        return response($data)
+            ->withHeader('Cache-Control', 'public,max-age=' . static::CACHE_LIFE);
     }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return Collection<string>
+     */
+    abstract protected function search(ServerRequestInterface $request): Collection;
 }
