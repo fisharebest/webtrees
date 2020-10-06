@@ -6,7 +6,6 @@ use IPLib\Address\AddressInterface;
 use IPLib\Address\IPv4;
 use IPLib\Address\IPv6;
 use IPLib\Address\Type as AddressType;
-use IPLib\Factory;
 
 /**
  * Represents an address range in pattern format (only ending asterisks are supported).
@@ -14,7 +13,7 @@ use IPLib\Factory;
  * @example 127.0.*.*
  * @example ::/8
  */
-class Pattern implements RangeInterface
+class Pattern extends AbstractRange
 {
     /**
      * Starting address of the range.
@@ -177,89 +176,6 @@ class Pattern implements RangeInterface
     /**
      * {@inheritdoc}
      *
-     * @see \IPLib\Range\RangeInterface::getRangeType()
-     */
-    public function getRangeType()
-    {
-        if ($this->rangeType === null) {
-            $addressType = $this->getAddressType();
-            if ($addressType === AddressType::T_IPv6 && Subnet::get6to4()->containsRange($this)) {
-                $this->rangeType = Factory::rangeFromBoundaries($this->fromAddress->toIPv4(), $this->toAddress->toIPv4())->getRangeType();
-            } else {
-                switch ($addressType) {
-                    case AddressType::T_IPv4:
-                        $defaultType = IPv4::getDefaultReservedRangeType();
-                        $reservedRanges = IPv4::getReservedRanges();
-                        break;
-                    case AddressType::T_IPv6:
-                        $defaultType = IPv6::getDefaultReservedRangeType();
-                        $reservedRanges = IPv6::getReservedRanges();
-                        break;
-                    default:
-                        throw new \Exception('@todo'); // @codeCoverageIgnore
-                }
-                $rangeType = null;
-                foreach ($reservedRanges as $reservedRange) {
-                    $rangeType = $reservedRange->getRangeType($this);
-                    if ($rangeType !== null) {
-                        break;
-                    }
-                }
-                $this->rangeType = $rangeType === null ? $defaultType : $rangeType;
-            }
-        }
-
-        return $this->rangeType === false ? null : $this->rangeType;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @see \IPLib\Range\RangeInterface::contains()
-     */
-    public function contains(AddressInterface $address)
-    {
-        $result = false;
-        if ($address->getAddressType() === $this->getAddressType()) {
-            $cmp = $address->getComparableString();
-            $from = $this->getComparableStartString();
-            if ($cmp >= $from) {
-                $to = $this->getComparableEndString();
-                if ($cmp <= $to) {
-                    $result = true;
-                }
-            }
-        }
-
-        return $result;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @see \IPLib\Range\RangeInterface::containsRange()
-     */
-    public function containsRange(RangeInterface $range)
-    {
-        $result = false;
-        if ($range->getAddressType() === $this->getAddressType()) {
-            $myStart = $this->getComparableStartString();
-            $itsStart = $range->getComparableStartString();
-            if ($itsStart >= $myStart) {
-                $myEnd = $this->getComparableEndString();
-                $itsEnd = $range->getComparableEndString();
-                if ($itsEnd <= $myEnd) {
-                    $result = true;
-                }
-            }
-        }
-
-        return $result;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
      * @see \IPLib\Range\RangeInterface::getStartAddress()
      */
     public function getStartAddress()
@@ -298,9 +214,9 @@ class Pattern implements RangeInterface
     }
 
     /**
-     * Get the subnet/CIDR representation of this range.
+     * {@inheritdoc}
      *
-     * @return \IPLib\Range\Subnet
+     * @see \IPLib\Range\RangeInterface::asSubnet()
      */
     public function asSubnet()
     {
@@ -310,6 +226,16 @@ class Pattern implements RangeInterface
             case AddressType::T_IPv6:
                 return new Subnet($this->getStartAddress(), $this->getEndAddress(), 16 * (8 - $this->asterisksCount));
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see \IPLib\Range\RangeInterface::asPattern()
+     */
+    public function asPattern()
+    {
+        return $this;
     }
 
     /**
@@ -335,5 +261,15 @@ class Pattern implements RangeInterface
         }
 
         return IPv4::fromBytes($bytes);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see \IPLib\Range\RangeInterface::getReverseDNSLookupName()
+     */
+    public function getReverseDNSLookupName()
+    {
+        return $this->asterisksCount === 0 ? array($this->getStartAddress()->getReverseDNSLookupName()) : $this->asSubnet()->getReverseDNSLookupName();
     }
 }

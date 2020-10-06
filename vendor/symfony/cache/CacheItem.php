@@ -119,9 +119,10 @@ final class CacheItem implements ItemInterface
             $tags = [$tags];
         }
         foreach ($tags as $tag) {
-            if (!\is_string($tag)) {
-                throw new InvalidArgumentException(sprintf('Cache tag must be string, "%s" given.', \is_object($tag) ? \get_class($tag) : \gettype($tag)));
+            if (!\is_string($tag) && !(\is_object($tag) && method_exists($tag, '__toString'))) {
+                throw new InvalidArgumentException(sprintf('Cache tag must be string or object that implements __toString(), "%s" given.', \is_object($tag) ? \get_class($tag) : \gettype($tag)));
             }
+            $tag = (string) $tag;
             if (isset($this->newMetadata[self::METADATA_TAGS][$tag])) {
                 continue;
             }
@@ -152,7 +153,7 @@ final class CacheItem implements ItemInterface
      */
     public function getPreviousTags(): array
     {
-        @trigger_error(sprintf('The "%s()" method is deprecated since Symfony 4.2, use the "getMetadata()" method instead.', __METHOD__), E_USER_DEPRECATED);
+        @trigger_error(sprintf('The "%s()" method is deprecated since Symfony 4.2, use the "getMetadata()" method instead.', __METHOD__), \E_USER_DEPRECATED);
 
         return $this->metadata[self::METADATA_TAGS] ?? [];
     }
@@ -195,7 +196,7 @@ final class CacheItem implements ItemInterface
                     $replace['{'.$k.'}'] = $v;
                 }
             }
-            @trigger_error(strtr($message, $replace), E_USER_WARNING);
+            @trigger_error(strtr($message, $replace), \E_USER_WARNING);
         }
     }
 }

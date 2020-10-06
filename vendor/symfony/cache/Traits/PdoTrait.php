@@ -11,12 +11,11 @@
 
 namespace Symfony\Component\Cache\Traits;
 
-use Doctrine\DBAL\Abstraction\Result;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DBALException;
-use Doctrine\DBAL\Driver\Result as DriverResult;
 use Doctrine\DBAL\Driver\ServerInfoAwareConnection;
 use Doctrine\DBAL\DriverManager;
+use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Exception\TableNotFoundException;
 use Doctrine\DBAL\Schema\Schema;
 use Symfony\Component\Cache\Exception\InvalidArgumentException;
@@ -85,6 +84,7 @@ trait PdoTrait
      *
      * @throws \PDOException    When the table already exists
      * @throws DBALException    When the table already exists
+     * @throws Exception        When the table already exists
      * @throws \DomainException When an unsupported PDO driver is used
      */
     public function createTable()
@@ -204,7 +204,7 @@ trait PdoTrait
         }
         $result = $stmt->execute();
 
-        if ($result instanceof Result) {
+        if (\is_object($result)) {
             $result = $result->iterateNumeric();
         } else {
             $stmt->setFetchMode(\PDO::FETCH_NUM);
@@ -243,7 +243,7 @@ trait PdoTrait
         $stmt->bindValue(':time', time(), \PDO::PARAM_INT);
         $result = $stmt->execute();
 
-        return (bool) ($result instanceof DriverResult ? $result->fetchOne() : $stmt->fetchColumn());
+        return (bool) (\is_object($result) ? $result->fetchOne() : $stmt->fetchColumn());
     }
 
     /**
@@ -389,10 +389,10 @@ trait PdoTrait
                 }
                 $result = $stmt->execute();
             }
-            if (null === $driver && !($result instanceof DriverResult ? $result : $stmt)->rowCount()) {
+            if (null === $driver && !(\is_object($result) ? $result->rowCount() : $stmt->rowCount())) {
                 try {
                     $insertStmt->execute();
-                } catch (DBALException $e) {
+                } catch (DBALException | Exception $e) {
                 } catch (\PDOException $e) {
                     // A concurrent write won, let it be
                 }

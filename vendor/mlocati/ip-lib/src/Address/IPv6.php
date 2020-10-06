@@ -95,7 +95,7 @@ class IPv6 implements AddressInterface
         $result = null;
         if (is_string($address) && strpos($address, ':') !== false && strpos($address, ':::') === false) {
             $matches = null;
-            if ($mayIncludePort && $address[0] === '[' && preg_match('/^\[(.+)\]:\d+$/', $address, $matches)) {
+            if ($mayIncludePort && $address[0] === '[' && preg_match('/^\[(.+)]:\d+$/', $address, $matches)) {
                 $address = $matches[1];
             }
             if ($mayIncludeZoneID) {

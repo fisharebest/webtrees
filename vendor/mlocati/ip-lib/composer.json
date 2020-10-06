@@ -22,7 +22,9 @@
         "address",
         "addresses",
         "subnet",
-        "matching"
+        "matching",
+        "managing",
+        "manage"
     ],
     "require": {
         "php": ">=5.3.3"

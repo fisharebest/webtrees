@@ -13,7 +13,7 @@ use IPLib\Factory;
  * @example 127.0.0.1
  * @example ::1
  */
-class Single implements RangeInterface
+class Single extends AbstractRange
 {
     /**
      * @var \IPLib\Address\AddressInterface
@@ -178,6 +178,31 @@ class Single implements RangeInterface
     /**
      * {@inheritdoc}
      *
+     * @see \IPLib\Range\RangeInterface::asSubnet()
+     */
+    public function asSubnet()
+    {
+        $networkPrefixes = array(
+            AddressType::T_IPv4 => 32,
+            AddressType::T_IPv6 => 128,
+        );
+
+        return new Subnet($this->address, $this->address, $networkPrefixes[$this->address->getAddressType()]);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see \IPLib\Range\RangeInterface::asPattern()
+     */
+    public function asPattern()
+    {
+        return new Pattern($this->address, $this->address, 0);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
      * @see \IPLib\Range\RangeInterface::getSubnetMask()
      */
     public function getSubnetMask()
@@ -187,5 +212,15 @@ class Single implements RangeInterface
         }
 
         return IPv4::fromBytes(array(255, 255, 255, 255));
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see \IPLib\Range\RangeInterface::getReverseDNSLookupName()
+     */
+    public function getReverseDNSLookupName()
+    {
+        return array($this->getStartAddress()->getReverseDNSLookupName());
     }
 }
