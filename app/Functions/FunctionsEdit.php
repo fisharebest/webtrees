@@ -503,7 +503,7 @@ class FunctionsEdit
                     'value'                   => $value,
                     'type'                    => 'text',
                     'data-autocomplete-url'   => route(AutoCompleteCitation::class, ['tree'  => $tree->name()]),
-                    'data-autocomplete-extra' => '#' . $previous_ids['SOUR'],
+                    'data-autocomplete-extra' => 'SOUR',
                 ]) . '>';
         } elseif ($fact === 'PEDI') {
             $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => GedcomCodePedi::getValues()]);

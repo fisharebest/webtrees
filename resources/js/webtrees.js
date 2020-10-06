@@ -599,8 +599,9 @@
           remote: {
             url: this.dataset.autocompleteUrl,
             replace: function (url, uriEncodedQuery) {
-              if (that.dataset.autocompleteExtra) {
-                const extra = $(document.querySelector(that.dataset.autocompleteExtra)).val();
+              if (that.dataset.autocompleteExtra === 'SOUR') {
+                const element = that.closest('.form-group').previousElementSibling.querySelector('select');
+                const extra   = element.options[element.selectedIndex].value;
                 return url.replace('{query}', uriEncodedQuery) + '?extra=' + encodeURIComponent(extra);
               }
               return url.replace('{query}', uriEncodedQuery);
