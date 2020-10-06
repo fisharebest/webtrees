@@ -22,8 +22,8 @@ namespace Fisharebest\Webtrees\Module;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Mime;
+use Fisharebest\Webtrees\Registry;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Psr\Http\Message\ResponseInterface;
@@ -178,9 +178,10 @@ trait ModuleCustomTrait
         $extension = strtolower(pathinfo($asset, PATHINFO_EXTENSION));
         $mime_type = Mime::TYPES[$extension] ?? Mime::DEFAULT_TYPE;
 
-        return response($content, StatusCodeInterface::STATUS_OK)
-            ->withHeader('Cache-Control', 'public,max-age=31536000')
-            ->withHeader('Content-Length', (string) strlen($content))
-            ->withHeader('Content-Type', $mime_type);
+        return response($content, StatusCodeInterface::STATUS_OK, [
+            'Cache-Control'  => 'public,max-age=31536000',
+            'Content-Length' => (string) strlen($content),
+            'Content-Type'   => $mime_type,
+        ]);
     }
 }
