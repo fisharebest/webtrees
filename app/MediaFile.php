@@ -21,12 +21,10 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Http\RequestHandlers\MediaFileDownload;
 use Fisharebest\Webtrees\Http\RequestHandlers\MediaFileThumbnail;
-use Fisharebest\Webtrees\Services\MediaFileService;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\FileNotFoundException;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
-use League\Glide\Signatures\SignatureFactory;
 
 use function bin2hex;
 use function getimagesize;

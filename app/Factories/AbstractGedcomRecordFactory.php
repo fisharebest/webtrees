@@ -27,10 +27,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use stdClass;
 
-use function trigger_error;
-
-use const E_USER_DEPRECATED;
-
 /**
  * Make a GedcomRecord object.
  */
