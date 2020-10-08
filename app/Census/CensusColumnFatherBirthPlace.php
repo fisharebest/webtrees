@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\Individual;
 
 /**
- * Birth place of the individual's fther.
+ * Birth place of the individual's father.
  */
 class CensusColumnFatherBirthPlace extends AbstractCensusColumn implements CensusColumnInterface
 {

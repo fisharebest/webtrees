@@ -187,7 +187,7 @@ class ServerCheckService
     }
 
     /**
-     * Some servers configure their temporary folder in an unaccessible place.
+     * Some servers configure their temporary folder in an inaccessible place.
      */
     private function checkPhpVersion(): string
     {
@@ -221,7 +221,7 @@ class ServerCheckService
     }
 
     /**
-     * Some servers configure their temporary folder in an unaccessible place.
+     * Some servers configure their temporary folder in an inaccessible place.
      */
     private function checkSystemTemporaryFolder(): string
     {

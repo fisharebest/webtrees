@@ -35,7 +35,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function assert;
 
 /**
- * Show a users's page.
+ * Show a user's page.
  */
 class UserPage implements RequestHandlerInterface
 {

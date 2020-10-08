@@ -20,11 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Date;
 
 /**
- * Definitions for Roman dtes.
+ * Definitions for Roman dates.
  *
  * The 5.5.1 gedcom spec mentions this calendar, but gives no details of
  * how it is to be represented.... This class is just a place holder so that
- * webtrees won’t compain if it receives one.
+ * webtrees won’t complain if it receives one.
  */
 class RomanDate extends JulianDate
 {

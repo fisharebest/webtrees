@@ -85,7 +85,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
             'individual'           => $individual,
             'parent_families'      => $individual->childFamilies(),
             'spouse_families'      => $individual->spouseFamilies(),
-            'step_child_familiess' => $individual->spouseStepFamilies(),
+            'step_child_families'  => $individual->spouseStepFamilies(),
             'step_parent_families' => $individual->childStepFamilies(),
         ]);
     }

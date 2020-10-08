@@ -44,7 +44,7 @@ class CloudsTheme extends AbstractModule implements ModuleThemeInterface
     }
 
     /**
-     * Misecellaneous dimensions, fonts, styles, etc.
+     * Miscellaneous dimensions, fonts, styles, etc.
      *
      * @param string $parameter_name
      *

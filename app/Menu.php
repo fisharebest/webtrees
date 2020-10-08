@@ -28,7 +28,7 @@ use const E_USER_DEPRECATED;
  */
 class Menu
 {
-    /** @var string The text to be displayed in the mneu */
+    /** @var string The text to be displayed in the menu */
     private $label;
 
     /** @var string The target URL or href */

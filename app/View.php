@@ -84,7 +84,7 @@ class View
     private static $stacks = [];
 
     /**
-     * Createa view from a template name and optional data.
+     * Create a view from a template name and optional data.
      *
      * @param string       $name
      * @param array<mixed> $data
@@ -270,7 +270,7 @@ class View
     }
 
     /**
-     * Cerate and render a view in a single operation.
+     * Crate and render a view in a single operation.
      *
      * @param string  $name
      * @param mixed[] $data

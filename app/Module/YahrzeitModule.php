@@ -134,7 +134,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
 
                     // Filter adjusted dates to our date range
                     if ($jd_yahrtzeit >= $startjd && $jd_yahrtzeit < $startjd + $days) {
-                        // upcomming yahrzeit dates
+                        // upcoming yahrzeit dates
                         switch ($calendar) {
                             case 'gregorian':
                                 $yahrzeit_calendar_date = new GregorianDate($jd_yahrtzeit);

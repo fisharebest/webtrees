@@ -128,7 +128,7 @@ class Log
     /**
      * Store a search event in the message log.
      * Unlike most webtrees activity, search is not restricted to a single tree,
-     * so we need to record which trees were searchecd.
+     * so we need to record which trees were searched.
      *
      * @param string $message
      * @param Tree[] $trees Which trees were searched

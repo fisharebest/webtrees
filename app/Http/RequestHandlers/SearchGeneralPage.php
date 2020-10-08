@@ -96,7 +96,7 @@ class SearchGeneralPage implements RequestHandlerInterface
         // What to search for?
         $search_terms = $this->extractSearchTerms($query);
 
-        // What trees to seach?
+        // What trees to search?
         if (Site::getPreference('ALLOW_CHANGE_GEDCOM') === '1') {
             $all_trees = $this->tree_service->all()->all();
         } else {

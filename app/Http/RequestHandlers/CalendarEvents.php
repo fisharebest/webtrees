@@ -68,7 +68,7 @@ class CalendarEvents implements RequestHandlerInterface
     }
 
     /**
-     * Show anniversaries that occured on a given day/month/year.
+     * Show anniversaries that occurred on a given day/month/year.
      *
      * @param ServerRequestInterface $request
      *

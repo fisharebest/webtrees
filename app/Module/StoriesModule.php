@@ -426,7 +426,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
                 return $story;
             })->filter(static function (stdClass $story): bool {
-                // Filter non-existant and private individuals.
+                // Filter non-existent and private individuals.
                 return $story->individual instanceof Individual && $story->individual->canShow();
             })->filter(static function (stdClass $story): bool {
                 // Filter foreign languages.

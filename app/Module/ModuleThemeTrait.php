@@ -455,7 +455,7 @@ trait ModuleThemeTrait
     }
 
     /**
-     * Misecellaneous dimensions, fonts, styles, etc.
+     * Miscellaneous dimensions, fonts, styles, etc.
      *
      * @param string $parameter_name
      *

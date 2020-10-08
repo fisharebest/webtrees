@@ -39,7 +39,7 @@ interface BrowserRepositoryInterface
     public function browserTime(): string;
 
     /**
-     * What is the browser's tiemzone.
+     * What is the browser's timezone.
      *
      * @return string
      */

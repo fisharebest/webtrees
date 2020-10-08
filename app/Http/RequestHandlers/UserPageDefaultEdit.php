@@ -32,7 +32,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function route;
 
 /**
- * Show a form to edit the default blocks for new uesrs.
+ * Show a form to edit the default blocks for new users.
  */
 class UserPageDefaultEdit implements RequestHandlerInterface
 {

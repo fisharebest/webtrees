@@ -124,7 +124,7 @@ abstract class AbstractCalendarDate
             return;
         }
 
-        // Contruct from a CalendarDate
+        // Construct from a CalendarDate
         $this->minimum_julian_day = $date->minimum_julian_day;
         $this->maximum_julian_day = $date->maximum_julian_day;
 

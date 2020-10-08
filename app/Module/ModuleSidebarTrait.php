@@ -63,7 +63,7 @@ trait ModuleSidebarTrait
 
 
     /**
-     * The default position for this sdiebar.
+     * The default position for this sidebar.
      *
      * @return int
      */

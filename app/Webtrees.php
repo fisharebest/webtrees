@@ -103,7 +103,7 @@ class Webtrees
     // Project website.
     public const URL = 'https://webtrees.net/';
 
-    // FAQ linnks
+    // FAQ links
     public const URL_FAQ_EMAIL = 'https://webtrees.net/faq/email';
 
     // Project website.

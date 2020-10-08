@@ -390,7 +390,7 @@ class TreeView
     /**
      * Draw a vertical line
      *
-     * @param string $line A parameter that set how to draw this line with auto-redimensionning capabilities
+     * @param string $line A parameter that set how to draw this line with auto-resizing capabilities
      *
      * @return string
      * WARNING : some tricky hacks are required in CSS to ensure cross-browser compliance

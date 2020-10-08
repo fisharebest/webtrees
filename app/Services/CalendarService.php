@@ -92,7 +92,7 @@ class CalendarService
     }
 
     /**
-     * Get a list of events which occured during a given date range.
+     * Get a list of events which occurred during a given date range.
      *
      * @param int    $jd1      the start range of julian day
      * @param int    $jd2      the end range of julian day
@@ -258,7 +258,7 @@ class CalendarService
     }
 
     /**
-     * Get a list of events whose anniversary occured on a given julian day.
+     * Get a list of events whose anniversary occurred on a given julian day.
      * Used on the on-this-day/upcoming blocks and the day/month calendar views.
      *
      * @param int    $jd       the julian day
