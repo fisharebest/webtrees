@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-30 07:30+0000\n"
+"PO-Revision-Date: 2020-10-22 20:48+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Urdu <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ur/>\n"
@@ -241,8 +241,8 @@ msgstr[1] "%s گمنام سائن ان صارفین"
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s اولاد"
+msgstr[1] "%s اولادیں"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:54 app/I18N.php:314
