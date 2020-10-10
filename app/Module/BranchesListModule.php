@@ -54,6 +54,7 @@ use function redirect;
 use function route;
 use function strip_tags;
 use function stripos;
+use function strtolower;
 use function usort;
 use function view;
 
@@ -397,7 +398,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
         $sosa = array_search($individual, $ancestors, true);
         if (is_int($sosa) && $module instanceof RelationshipsChartModule) {
             $sosa_class = 'search_hit';
-            $sosa_html  = '<a class="small ' . $individual->getBoxStyle() . '" href="' . e($module->chartUrl($individual, ['xref2' => $individuals[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationships') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
+            $sosa_html  = ' <a class="small wt-chart-box-' . strtolower($individual->sex()) . '" href="' . e($module->chartUrl($individual, ['xref2' => $ancestors[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationship') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
         } else {
             $sosa_class = '';
             $sosa_html  = '';
@@ -435,7 +436,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
                     $sosa = array_search($spouse, $ancestors, true);
                     if (is_int($sosa) && $module instanceof RelationshipsChartModule) {
                         $sosa_class = 'search_hit';
-                        $sosa_html  = '<a class="small ' . $spouse->getBoxStyle() . '" href="' . e($module->chartUrl($individual, ['xref2' => $individuals[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationships') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
+                        $sosa_html  = ' <a class="small wt-chart-box-' . strtolower($spouse->sex()) . '" href="' . e($module->chartUrl($spouse, ['xref2' => $ancestors[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationship') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
                     } else {
                         $sosa_class = '';
                         $sosa_html  = '';
