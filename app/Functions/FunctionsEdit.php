@@ -432,7 +432,7 @@ class FunctionsEdit
             $html .= '</div>';
         } elseif ($fact === 'GIVN') {
             $html .= '<div class="input-group">';
-            $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" data-autocomplete-typeoninput="updatewholename()" autofocus>';
+            $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" oninput="updatewholename()" autofocus>';
             $html .= view('edit/input-addon-keyboard', ['id' => $id]);
             $html .= '</div>';
         } elseif ($fact === 'SURN' || $fact === '_MARNM_SURN') {
