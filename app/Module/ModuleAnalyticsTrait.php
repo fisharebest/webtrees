@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAnalyticsPage;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Psr\Http\Message\ResponseInterface;
@@ -142,6 +143,6 @@ trait ModuleAnalyticsTrait
             $this->setPreference($parameter, $new_value);
         }
 
-        return redirect(route('analytics'));
+        return redirect(route(ModulesAnalyticsPage::class));
     }
 }
