@@ -227,14 +227,16 @@ class HomePageService
         if (!$has_blocks) {
             foreach ([ModuleBlockInterface::MAIN_BLOCKS, ModuleBlockInterface::SIDE_BLOCKS] as $location) {
                 foreach (ModuleBlockInterface::DEFAULT_TREE_PAGE_BLOCKS[$location] as $block_order => $class) {
-                    $module_name = $this->module_service->findByInterface($class)->first()->name();
+                    $module = $this->module_service->findByInterface($class)->first();
 
-                    DB::table('block')->insert([
-                        'gedcom_id'   => -1,
-                        'location'    => $location,
-                        'block_order' => $block_order,
-                        'module_name' => $module_name,
-                    ]);
+                    if ($module instanceof ModuleInterface) {
+                        DB::table('block')->insert([
+                            'gedcom_id'   => -1,
+                            'location'    => $location,
+                            'block_order' => $block_order,
+                            'module_name' => $module->name(),
+                        ]);
+                    }
                 }
             }
         }
