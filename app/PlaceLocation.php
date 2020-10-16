@@ -224,23 +224,21 @@ class PlaceLocation
             ->orWhere('pl_id', '=', $this->id())
             ->groupBy(['pl_lati'])
             ->pluck('pl_lati')
-            ->filter()
             ->map(static function (string $x): float {
                 return (new GedcomService())->readLatitude($x);
-            });
+            })->filter();
 
         $longitudes = DB::table('placelocation')
             ->where('pl_parent_id', '=', $this->id())
             ->orWhere('pl_id', '=', $this->id())
             ->groupBy(['pl_long'])
             ->pluck('pl_long')
-            ->filter()
             ->map(static function (string $x): float {
                 return (new GedcomService())->readLongitude($x);
-            });
+            })->filter();
 
         // No co-ordinates?  Use the parent place instead.
-        if ($latitudes->isEmpty() && $longitudes->isEmpty()) {
+        if ($latitudes->isEmpty() || $longitudes->isEmpty()) {
             return $this->parent()->boundingRectangle();
         }
 
