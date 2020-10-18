@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2020-05-30 07:30+0000\n"
-"Last-Translator: rui <xmlf@hotmail.com>\n"
+"PO-Revision-Date: 2020-10-19 11:56+0000\n"
+"Last-Translator: nuxiong <49890338@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
 "Language: zh-Hans\n"
@@ -1679,7 +1679,7 @@ msgstr "添加子女"
 #: resources/views/modules/relatives/tab.phtml:132
 #: app/Http/Controllers/EditIndividualController.php:233,
 msgid "Add a child to create a one-parent family"
-msgstr "添加一个子女创建一个单亲家庭"
+msgstr "添加一个子女"
 
 #: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
