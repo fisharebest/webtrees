@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2020-10-19 11:56+0000\n"
-"Last-Translator: nuxiong <49890338@qq.com>\n"
+"PO-Revision-Date: 2020-10-22 20:48+0000\n"
+"Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
 "Language: zh-Hans\n"
@@ -1679,7 +1679,7 @@ msgstr "添加子女"
 #: resources/views/modules/relatives/tab.phtml:132
 #: app/Http/Controllers/EditIndividualController.php:233,
 msgid "Add a child to create a one-parent family"
-msgstr "添加一个子女"
+msgstr "添加一个子女组成一个单亲家庭"
 
 #: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
@@ -24071,7 +24071,7 @@ msgstr "文件上传功能"
 #: resources/views/lists/datatables-attributes.phtml:10,
 #: resources/views/media-list-page.phtml:80,
 msgid "first"
-msgstr "第一"
+msgstr "最前面"
 
 # I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
 #. I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
@@ -24079,7 +24079,7 @@ msgstr "第一"
 #: resources/views/admin/trees-preferences.phtml:595
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr "第一"
+msgstr "第一部分"
 
 # I18N: A Spanish relationship name, such as third great-nephew
 #. I18N: A Spanish relationship name, such as first great-nephew
