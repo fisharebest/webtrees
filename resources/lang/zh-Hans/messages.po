@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-10-19 11:56+0000\nLast-Translator: nuxiong <49890338@qq.com>\nLanguage-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-10-22 20:48+0000\nLast-Translator: rui <xmlf@hotmail.com>\nLanguage-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -1298,7 +1298,7 @@ msgstr "添加子女"
 #: app/Http/Controllers/EditIndividualController.php:59
 #: resources/views/modules/relatives/tab.phtml:137
 msgid "Add a child to create a one-parent family"
-msgstr "添加一个子女"
+msgstr "添加一个子女组成一个单亲家庭"
 
 #: app/Http/Controllers/EditFamilyController.php:59
 #: resources/views/family-page-children.phtml:39
@@ -5697,7 +5697,7 @@ msgstr "多米尼加共和国"
 
 #: app/Module/PedigreeChartModule.php:393
 msgid "Down"
-msgstr "长辈在下"
+msgstr "向下"
 
 #: app/Module/ClippingsCartModule.php:186
 #: app/Module/ClippingsCartModule.php:358
@@ -18100,7 +18100,7 @@ msgstr "去世"
 #: resources/views/edit/reorder-card-header.phtml:30
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "down"
-msgstr "长辈在下"
+msgstr "向下"
 
 # I18N: A button label.
 #. I18N: A button label.
@@ -18316,13 +18316,13 @@ msgstr "第五代堂兄(妹)"
 #: resources/views/modules/media-list/page.phtml:79
 #: resources/views/modules/media-list/page.phtml:178
 msgid "first"
-msgstr "第一"
+msgstr "最前面"
 
 # I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
 #: resources/views/admin/trees-preferences.phtml:565
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr "第一"
+msgstr "第一部分"
 
 # I18N: A Spanish relationship name, such as third great-nephew
 #. I18N: A Spanish relationship name, such as third great-nephew
@@ -20295,7 +20295,7 @@ msgstr "最后"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "left"
-msgstr "长辈在左"
+msgstr "向左"
 
 # I18N: Layout option for lists of names
 # I18N: An option in a list-box
@@ -20862,7 +20862,7 @@ msgstr "重置"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "right"
-msgstr "长辈在右"
+msgstr "向右"
 
 # I18N: A button label.
 #. I18N: A button label.
@@ -21661,7 +21661,7 @@ msgstr "不可靠的证据"
 #: resources/views/edit/reorder-card-header.phtml:26
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "up"
-msgstr "长辈在上"
+msgstr "向上"
 
 # I18N: A button label.
 #: resources/views/admin/trees-unconnected.phtml:30
