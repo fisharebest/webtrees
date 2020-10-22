@@ -139,7 +139,7 @@ class GedcomLoad implements RequestHandlerInterface
                     }
 
                     // What character set is this? Need to convert it to UTF8
-                    if (preg_match('/[\r\n][ \t]*1 CHAR(?:ACTER)? (.+)/', $data->chunk_data, $match)) {
+                    if (preg_match('/[\r\n][ \t]*1 CHAR(?:ACTER)? ([^\r\n]+)/', $data->chunk_data, $match)) {
                         $charset = strtoupper(trim($match[1]));
                     } else {
                         $charset = 'ASCII';

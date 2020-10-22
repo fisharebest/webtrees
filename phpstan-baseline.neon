@@ -12,7 +12,7 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$line of method Fisharebest\\\\Webtrees\\\\CommonMark\\\\CensusTableParser\\:\\:parseRow\\(\\) expects string, string\\|null given\\.$#"
-			count: 2
+			count: 1
 			path: app/CommonMark/CensusTableParser.php
 
 		-
@@ -160,7 +160,7 @@ parameters:
 			path: app/Functions/FunctionsRtl.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function substr expects string, array\\|string given\\.$#"
+			message: "#^Parameter \\#1 \\$string of function substr expects string, array\\|string given\\.$#"
 			count: 4
 			path: app/Functions/FunctionsRtl.php
 
@@ -240,7 +240,7 @@ parameters:
 			path: app/GedcomTag.php
 
 		-
-			message: "#^Parameter \\#1 \\$decimal_number of function dechex expects int, float\\|int given\\.$#"
+			message: "#^Parameter \\#1 \\$num of function dechex expects int, float\\|int given\\.$#"
 			count: 1
 			path: app/GedcomTag.php
 
@@ -325,7 +325,7 @@ parameters:
 			path: app/Http/Controllers/Admin/ImportThumbnailsController.php
 
 		-
-			message: "#^Cannot access offset 0 on array\\<int, string\\>\\|false\\.$#"
+			message: "#^Cannot access offset 0 on \\(array\\<int, string\\>&nonEmpty\\)\\|false\\.$#"
 			count: 2
 			path: app/Http/Controllers/Admin/ImportThumbnailsController.php
 
@@ -675,7 +675,7 @@ parameters:
 			path: app/Http/RequestHandlers/SetupWizard.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function substr expects string, string\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$string of function substr expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/SetupWizard.php
 
@@ -740,7 +740,7 @@ parameters:
 			path: app/Individual.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function substr expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$string of function substr expects string, string\\|null given\\.$#"
 			count: 2
 			path: app/Individual.php
 
@@ -982,7 +982,7 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-footer.disable/module.php
+			path: modules_v4/example.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -992,22 +992,17 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-theme.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
 			path: modules_v4/ghezibde-history.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-report.disable/module.php
+			path: modules_v4/example-theme.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example.disable/module.php
+			path: modules_v4/ghezibde-forum.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1017,12 +1012,17 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/ghezibde-gallery.disable/module.php
+			path: modules_v4/example-report.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/ghezibde-forum.disable/module.php
+			path: modules_v4/example-footer.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/ghezibde-gallery.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1571,16 +1571,6 @@ parameters:
 
 		-
 			message: "#^If condition is always true\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Parameter \\#1 \\$haystack of function str_starts_with expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Parameter \\#1 \\$xref of method Fisharebest\\\\Webtrees\\\\Contracts\\\\IndividualFactoryInterface\\:\\:make\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
 
