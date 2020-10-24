@@ -58,7 +58,7 @@ class FunctionsPrintLists
                 } else {
                     $size = 75.0 + 125.0 * ($count - $minimum) / ($maximum - $minimum);
                 }
-                
+
                 $tag = ($module instanceof ModuleListInterface) ? 'a' : 'span';
                 $html .= '<' . $tag . ' style="font-size:' . $size . '%"';
                 if ($module instanceof ModuleListInterface) {
@@ -112,7 +112,7 @@ class FunctionsPrintLists
                 $subhtml .= ' href="' . e($url) . '"';
             }
             $subhtml .= ' dir="auto">' . e(implode(I18N::$list_separator, array_keys($surns))) . '</' . $tag . '>';
-            
+
             if ($totals) {
                 $subtotal = 0;
                 foreach ($surns as $count) {

@@ -210,7 +210,7 @@ class Place
             ->first(static function (ModuleInterface $module): bool {
                 return $module instanceof PlaceHierarchyListModule;
             });
-        
+
         if ($module instanceof PlaceHierarchyListModule) {
             return $module->listUrl($this->tree, [
                 'place_id' => $this->id(),

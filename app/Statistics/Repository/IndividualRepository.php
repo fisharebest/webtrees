@@ -528,7 +528,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     public function getCommonSurname(): string
     {
         $top_surname = $this->topSurnames(1, 0);
-        
+
         return $top_surname
             ? implode(', ', array_keys(array_shift($top_surname)) ?? [])
             : '';
@@ -570,7 +570,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $this->tree, Auth::user())->first(static function (ModuleInterface $module): bool {
             return $module instanceof IndividualListModule;
         });
-        
+
         return FunctionsPrintLists::surnameList(
             $surnames,
             ($type === 'list' ? 1 : 2),

@@ -45,7 +45,7 @@ class Migration40 implements MigrationInterface
                 $table->string('subject', 255);
                 $table->text('body');
                 $table->timestamp('updated')->useCurrent();
-                
+
                 $table->index(['user_id', 'updated']);
                 $table->index(['gedcom_id', 'updated']);
 

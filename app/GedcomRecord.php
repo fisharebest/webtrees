@@ -770,7 +770,7 @@ class GedcomRecord
             ->map(Registry::locationFactory()->mapper($this->tree))
             ->filter(self::accessFilter());
     }
-    
+
     /**
      * Get all attributes (e.g. DATE or PLAC) from an event (e.g. BIRT or MARR).
      * This is used to display multiple events on the individual/family lists.

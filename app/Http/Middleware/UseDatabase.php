@@ -95,7 +95,7 @@ class UseDatabase implements MiddlewareInterface
             // For SQLite
             'foreign_key_constraints' => true,
         ]);
-        
+
         $capsule->setAsGlobal();
 
         Builder::macro('whereContains', function ($column, string $search, string $boolean = 'and'): Builder {

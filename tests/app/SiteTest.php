@@ -60,7 +60,7 @@ class SiteTest extends TestCase
     {
         $too_long = str_repeat('x', 3000);
         $expected = str_repeat('x', 2000);
-        
+
         Site::setPreference('setting', $too_long);
 
         $this->assertSame($expected, Site::getPreference('setting'));

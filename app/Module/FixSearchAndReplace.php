@@ -163,7 +163,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
 
         $query = DB::table('individuals')
             ->where('i_file', '=', $tree->id());
-        
+
         $this->recordQuery($query, 'i_gedcom', $params);
 
         return $query->pluck('i_id');

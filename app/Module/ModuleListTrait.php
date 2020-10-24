@@ -39,7 +39,7 @@ trait ModuleListTrait
         if ($this->listIsEmpty($tree)) {
             return null;
         }
-        
+
         return new Menu(
             $this->listTitle(),
             $this->listUrl($tree),

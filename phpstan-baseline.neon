@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Census\\\\AbstractCensusColumn\\:\\:lastPartOfPlace\\(\\) should return string but returns string\\|false\\.$#"
-			count: 1
-			path: app/Census/AbstractCensusColumn.php
-
-		-
 			message: "#^Cannot call method getAllNames\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
 			count: 1
 			path: app/Census/CensusColumnFullName.php
@@ -91,7 +86,7 @@ parameters:
 			path: app/Functions/FunctionsImport.php
 
 		-
-			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\|false given\\.$#"
+			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
 			count: 1
 			path: app/Functions/FunctionsPrint.php
 
@@ -116,12 +111,12 @@ parameters:
 			path: app/Functions/FunctionsPrintFacts.php
 
 		-
-			message: "#^Parameter \\#3 \\$offset of function strpos expects int, int\\|false given\\.$#"
+			message: "#^Parameter \\#3 \\$offset of function strpos expects int, int\\<0, max\\>\\|false given\\.$#"
 			count: 1
 			path: app/Functions/FunctionsPrintFacts.php
 
 		-
-			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\|false given\\.$#"
+			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
 			count: 1
 			path: app/Functions/FunctionsPrintFacts.php
 
@@ -185,12 +180,12 @@ parameters:
 			path: app/Functions/FunctionsRtl.php
 
 		-
-			message: "#^Parameter \\#3 \\$length of function substr expects int, int\\|false given\\.$#"
+			message: "#^Parameter \\#3 \\$length of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
 			count: 2
 			path: app/Functions/FunctionsRtl.php
 
 		-
-			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\|false given\\.$#"
+			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
 			count: 2
 			path: app/Functions/FunctionsRtl.php
 
@@ -371,11 +366,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$var of function count expects array\\|Countable, array\\|null given\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$input of function array_reverse expects array, array\\|null given\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/LocationController.php
 
@@ -982,17 +972,7 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-middleware.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/ghezibde-history.disable/module.php
+			path: modules_v4/ghezibde-forum.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1002,12 +982,12 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/ghezibde-forum.disable/module.php
+			path: modules_v4/example-middleware.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/ghezibde.disable/module.php
+			path: modules_v4/ghezibde-gallery.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1017,12 +997,22 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
+			path: modules_v4/ghezibde.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/ghezibde-history.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
 			path: modules_v4/example-footer.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/ghezibde-gallery.disable/module.php
+			path: modules_v4/example.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1926,7 +1916,7 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\(\\$this\\(Fisharebest\\\\Webtrees\\\\Statistics\\), string\\) given\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics.php
 
 		-
@@ -1956,16 +1946,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\:\\:statsChildrenQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Statistics.php
-
-		-
-			message: "#^Parameter \\#2 \\$method of function method_exists expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Statistics.php
-
-		-
-			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\(\\$this\\(Fisharebest\\\\Webtrees\\\\Statistics\\), string\\|null\\) given\\.$#"
 			count: 1
 			path: app/Statistics.php
 

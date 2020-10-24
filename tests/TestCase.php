@@ -181,7 +181,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $server_request_factory = app(ServerRequestFactoryInterface::class);
 
         $uri = 'https://webtrees.test/index.php?' . http_build_query($query);
-        
+
         /** @var ServerRequestInterface $request */
         $request = $server_request_factory
             ->createServerRequest($method, $uri)

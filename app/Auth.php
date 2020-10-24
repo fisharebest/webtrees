@@ -418,7 +418,7 @@ class Auth
 
         throw new SourceAccessDeniedException();
     }
-    
+
     /*
      * @param Submitter|null $submitter
      * @param bool           $edit

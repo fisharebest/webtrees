@@ -46,7 +46,7 @@ class ListsMenuModule extends AbstractModule implements ModuleMenuInterface
     {
         $this->module_service = $module_service;
     }
-        
+
     /**
      * How should this module be identified in the control panel, etc.?
      *
