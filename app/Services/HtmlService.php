@@ -50,6 +50,9 @@ class HtmlService
         // Remove the default maximum width/height for images.  This enables percentage values.
         $config->set('CSS.MaxImgLength', null);
 
+        // Allow id attributes.
+        $config->set('Attr.EnableID', true);
+
         $def = $config->getHTMLDefinition(true);
         assert($def instanceof HTMLPurifier_HTMLDefinition);
 
