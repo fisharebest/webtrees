@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2020-10-22 20:48+0000\n"
+"PO-Revision-Date: 2020-11-01 15:24+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
@@ -2059,17 +2059,17 @@ msgstr "过继"
 
 #: app/GedcomCode/GedcomCodeAdop.php:52 app/GedcomCode/GedcomCodeAdop.php:62
 msgid "Adopted by both parents"
-msgstr "父母双方共同收养"
+msgstr "由养父母收养"
 
 #: app/GedcomCode/GedcomCodeAdop.php:50 app/GedcomCode/GedcomCodeAdop.php:59
 msgctxt "FEMALE"
 msgid "Adopted by both parents"
-msgstr "父母双方共同收养"
+msgstr "由养父母收养"
 
 #: app/GedcomCode/GedcomCodeAdop.php:48 app/GedcomCode/GedcomCodeAdop.php:55
 msgctxt "MALE"
 msgid "Adopted by both parents"
-msgstr "父母双方共同收养"
+msgstr "由养父母收养"
 
 # I18N: gedcom tag _ADPF
 #. I18N: gedcom tag _ADPF
@@ -10457,17 +10457,17 @@ msgstr "如果一个人没有有姓氏，不需要用斜线: <%s>二麻子<%s>"
 #: help_text.php:226 resources/views/help/name.phtml:15
 #, php-format
 msgid "If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
-msgstr "如果一个人有两个独立的姓氏，都应该用斜线分隔： <%s>/王/ /张/ 二麻 <%s>"
+msgstr "如果一个人有两个独立的姓氏，都应该用斜线分隔： <%s>/王//张/二 <%s>"
 
 #: help_text.php:232 resources/views/help/name.phtml:24
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "如果一个人被称为的昵称不属于他们的正式名称，应该用引号引起来。例如，, <%s>/王/五 &quot;二麻&quot; <%s>。"
+msgstr "如果一个人的昵称不属于他们的正式名字，应该用引号引起来。例如 <%s>/王/五 &quot;二麻&quot; <%s>。"
 
 #: help_text.php:230 resources/views/help/name.phtml:21
 #, php-format
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
-msgstr "如果一个人不知道他们的第一个给定的名称，首选的名称应标有星号:<%s>/王/ * 麻<%s>"
+msgstr "如果一个人的名字不为人所知，则应以星号表示其首选名字:<%s>/王/ 二*<%s>"
 
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 msgstr "一个姓出现次数低于阈值,它不会出现在列表中。它可以在这里添加手动。如果多个姓列入,他们必须由一个逗号分开。<b>姓氏是区分大小写的。</b>"
@@ -10475,13 +10475,13 @@ msgstr "一个姓出现次数低于阈值,它不会出现在列表中。它可�
 #: help_text.php:224 resources/views/help/name.phtml:12
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
-msgstr "假如不知道姓氏，用斜线空出: <%s>// 五<%s>"
+msgstr "假如不知道姓氏，用斜线空出: <%s>//二<%s>"
 
 # I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:415 resources/views/admin/trees-privacy.phtml:79
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "如果这个人在最近这么多年内没有去世、埋葬或火化事件,他被认为是“在世”。孩子的出生日期被认为是用于此目的的类似事件。"
+msgstr "如果此人除了死亡、埋葬或火化之外，还有任何比这一年数更近的事件，则被视为 \"活着\"。为此，子女的出生日期被视为此类事件。"
 
 # I18N: Help text for the “Media folder” configuration setting
 #. I18N: Help text for the “Media folder” configuration setting
@@ -19165,7 +19165,7 @@ msgstr "苏里南"
 #: resources/views/lists/surnames-table.phtml:16,
 #: resources/views/modules/statistics-chart/custom.phtml:156,
 msgid "Surname"
-msgstr "姓氏"
+msgstr "姓"
 
 #: app/Stats.php:1638 statistics.php:658
 #: app/Statistics/Google/ChartDistribution.php:327
@@ -19437,7 +19437,10 @@ msgstr "<b>姓名</b>栏包含个人的全名，可能是拼写或是记录。�
 
 #: help_text.php:239 resources/views/help/surname.phtml:4
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr "<b>姓</b>栏包含用于排序和分组的名称。它可以是不同的，以个人的实际姓氏，总是从<b>名称</b>栏。可以使用此字段进行排序的姓氏带或不带前缀的（梵高/梵高）和组拼写变体或的语调（科瓦尔斯基/ Kowalska）。如果一个人需要被列在姓氏超过一个，每个名字应以逗号分隔。"
+msgstr ""
+"<b>姓</b>字段包含一个用于排序和分组的名称。它可能与个人的实际姓氏不同，后者总是取自<b>name</b>字段。该字段可用于对带有或不带有前缀的姓氏"
+"进行排序（Gogh / van Gogh），并对拼写变化或变音进行分组（Kowalski / "
+"Kowalska）。如果一个人需要以一个以上的姓氏列出，每个名字之间应以逗号分隔。"
 
 msgid "The FAQ list is empty."
 msgstr "常见问题列表是空的。"
@@ -19926,7 +19929,7 @@ msgstr "家谱的大小，最早、最新事件，常见的姓名等。"
 #: help_text.php:222 resources/views/help/name.phtml:9
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr "姓氏是用斜线分隔：<%s>John Paul /Smith/<%s>"
+msgstr "姓氏是用斜线分隔：<%s>/王/二<%s>"
 
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:965
