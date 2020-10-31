@@ -47,7 +47,7 @@ return new class extends AbstractModule implements ModuleCustomInterface {
      */
     public function title(): string
     {
-        return 'My custom module';
+        return I18N::translate('My custom module');
     }
 
     /**
@@ -57,7 +57,7 @@ return new class extends AbstractModule implements ModuleCustomInterface {
      */
     public function description(): string
     {
-        return 'This module doesn‘t do anything';
+        return I18N::translate('This module doesn‘t do anything');
     }
 
     /**
@@ -98,6 +98,36 @@ return new class extends AbstractModule implements ModuleCustomInterface {
     public function customModuleSupportUrl(): string
     {
         return 'https://www.example.com/support';
+    }
+
+    /**
+     * Translations for module metadata. They are always loaded, even if the module is disabled.
+     *
+     * @param string $language
+     *
+     * @return array<string,string>
+     */
+    public function customMetadataTranslations(string $language): array
+    {
+        switch ($language) {
+            case 'en-AU':
+            case 'en-GB':
+            case 'en-US':
+                return [
+                    'My custom module'                  => 'My custom module in English',
+                    'This module doesn‘t do anything'   => 'This module doesn‘t do anything, but in English'
+                ];
+
+            case 'fr':
+            case 'fr-CA':
+                return [
+                    'My custom module'                  => 'Mon module personnalisé',
+                    'This module doesn‘t do anything'   => 'Ce module ne fait absolument rien'
+                ];
+
+            default:
+                return [];
+        }
     }
 
     /**
