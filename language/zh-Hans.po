@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2020-11-01 15:24+0000\n"
+"PO-Revision-Date: 2020-11-02 15:23+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
@@ -10322,7 +10322,7 @@ msgstr "沙漏图"
 #: app/Module/ChartsBlockModule.php:111
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr "%s 的沙漏圖"
+msgstr "%s 的沙漏图"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:143
 #: resources/views/modules/census-assistant.phtml:105
