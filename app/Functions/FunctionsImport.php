@@ -777,7 +777,7 @@ class FunctionsImport
             $xref = Registry::xrefFactory()->make(Media::RECORD_TYPE);
 
             // convert to a media-object
-            $gedcom = '0 OBJE @' . $xref . "@\n1 FILE " . $file;
+            $gedcom = '0 @' . $xref . "@ OBJE\n1 FILE " . $file;
 
             if ($format !== '') {
                 $gedcom .= "\n2 FORM " . $format;

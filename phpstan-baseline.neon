@@ -1500,11 +1500,6 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$parser \\(resource\\) does not accept resource\\|null\\.$#"
-			count: 4
-			path: app/Report/ReportParserGenerate.php
-
-		-
 			message: "#^Cannot call method facts\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
 			count: 2
 			path: app/Report/ReportParserGenerate.php
