@@ -121,10 +121,7 @@ class UserRepository implements UserRepositoryInterface
 
                 $content .= ' - ' . e($user->userName());
 
-                if (($user->getPreference(User::PREF_CONTACT_METHOD) !== 'none') && (Auth::id() !== $user->id())) {
-                    if ($type === 'list') {
-                        $content .= '<br>';
-                    }
+                if ($user->getPreference(User::PREF_CONTACT_METHOD) !== 'none' && Auth::id() !== $user->id()) {
                     $content .= '<a href="' . e(route(MessagePage::class, ['to' => $user->userName(), 'tree' => $this->tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
                 }
 
