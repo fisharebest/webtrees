@@ -741,10 +741,11 @@ class FunctionsImport
     /**
      * Create a new media object, from inline media data.
      *
-     * GEDCOM 5.5.1: +1 FILE / +2 FORM / +3 MEDI / +1 TITL
-     * GEDCOM 5.5: +1 FORM / +1 TITL / +1 FILE
+     * GEDCOM 5.5.1 specifies: +1 FILE / +2 FORM / +3 MEDI / +1 TITL
+     * GEDCOM 5.5 specifies: +1 FILE / +1 FORM / +1 TITL
+     * GEDCOM 5.5.1 says that GEDCOM 5.5 specifies:  +1 FILE / +1 FORM / +2 MEDI
      *
-     * Legacy generates: +1 FORM / +1 FILE / +1 TITL
+     * Legacy generates: +1 FORM / +1 FILE / +1 TITL / +1 _SCBK / +1 _PRIM / +1 _TYPE / +1 NOTE
      * RootsMagic generates: +1 FILE / +1 FORM / +1 TITL
      *
      * @param string $gedcom
@@ -754,17 +755,35 @@ class FunctionsImport
      */
     public static function createMediaObject(string $gedcom, Tree $tree): string
     {
-        preg_match('/\n\d FILE (.+)/u', $gedcom, $match);
+        preg_match('/\n\d FILE (.+)/', $gedcom, $match);
         $file = $match[1] ?? '';
 
-        preg_match('/\n\d TITL (.+)/u', $gedcom, $match);
+        preg_match('/\n\d TITL (.+)/', $gedcom, $match);
         $title = $match[1] ?? '';
 
-        preg_match('/\n\d FORM (.+)/u', $gedcom, $match);
+        preg_match('/\n\d FORM (.+)/', $gedcom, $match);
         $format = $match[1] ?? '';
 
-        preg_match('/\n\d (?:MEDI|TYPE) (.+)/u', $gedcom, $match);
-        $type = $match[1] ?? '';
+        preg_match('/\n\d MEDI (.+)/', $gedcom, $match);
+        $media = $match[1] ?? '';
+
+        preg_match('/\n\d _SCBK (.+)/', $gedcom, $match);
+        $scrapbook = $match[1] ?? '';
+
+        preg_match('/\n\d _PRIM (.+)/', $gedcom, $match);
+        $primary = $match[1] ?? '';
+
+        preg_match('/\n\d _TYPE (.+)/', $gedcom, $match);
+        if ($media === '') {
+            // Legacy uses _TYPE instead of MEDI
+            $media  = $match[1] ?? '';
+            $type2 = '';
+        } else {
+            $type2 = $match[1] ?? '';
+        }
+
+        preg_match('/\n\d NOTE (.+(?:\n\d CONT.+)*)/', $gedcom, $match);
+        $note = $match[1] ?? '';
 
         // Have we already created a media object with the same title/filename?
         $xref = DB::table('media_file')
@@ -782,13 +801,29 @@ class FunctionsImport
             if ($format !== '') {
                 $gedcom .= "\n2 FORM " . $format;
 
-                if ($type !== '') {
-                    $gedcom .= "\n3 TYPE " . $type;
+                if ($media !== '') {
+                    $gedcom .= "\n3 TYPE " . $media;
                 }
             }
 
             if ($title !== '') {
                 $gedcom .= "\n3 TITL " . $title;
+            }
+
+            if ($scrapbook !== '') {
+                $gedcom .= "\n1 _SCBK " . $scrapbook;
+            }
+
+            if ($primary !== '') {
+                $gedcom .= "\n1 _PRIM " . $primary;
+            }
+
+            if ($type2 !== '') {
+                $gedcom .= "\n1 _TYPE " . $type2;
+            }
+
+            if ($note !== '') {
+                $gedcom .= "\n1 NOTE " . strtr($note, ["\n3 CONT" => "\n2 CONT", "\n4 CONT" => "\n3 CONT"]);
             }
 
             DB::table('media')->insert([
@@ -802,7 +837,7 @@ class FunctionsImport
                 'm_file'               => $tree->id(),
                 'multimedia_file_refn' => mb_substr($file, 0, 248),
                 'multimedia_format'    => mb_substr($format, 0, 4),
-                'source_media_type'    => mb_substr($type, 0, 15),
+                'source_media_type'    => mb_substr($media, 0, 15),
                 'descriptive_title'    => mb_substr($title, 0, 248),
             ]);
         }
