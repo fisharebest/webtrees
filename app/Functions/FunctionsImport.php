@@ -776,14 +776,14 @@ class FunctionsImport
         preg_match('/\n\d _TYPE (.+)/', $gedcom, $match);
         if ($media === '') {
             // Legacy uses _TYPE instead of MEDI
-            $media  = $match[1] ?? '';
-            $type2 = '';
+            $media = $match[1] ?? '';
+            $type  = '';
         } else {
-            $type2 = $match[1] ?? '';
+            $type = $match[1] ?? '';
         }
 
-        preg_match('/\n\d NOTE (.+(?:\n\d CONT.+)*)/', $gedcom, $match);
-        $note = $match[1] ?? '';
+        preg_match_all('/\n\d NOTE (.+(?:\n\d CONT.+)*)/', $gedcom, $matches);
+        $notes = $matches[1] ?? [];
 
         // Have we already created a media object with the same title/filename?
         $xref = DB::table('media_file')
@@ -818,12 +818,12 @@ class FunctionsImport
                 $gedcom .= "\n1 _PRIM " . $primary;
             }
 
-            if ($type2 !== '') {
-                $gedcom .= "\n1 _TYPE " . $type2;
+            if ($type !== '') {
+                $gedcom .= "\n1 _TYPE " . $type;
             }
 
-            if ($note !== '') {
-                $gedcom .= "\n1 NOTE " . strtr($note, ["\n3 CONT" => "\n2 CONT", "\n4 CONT" => "\n3 CONT"]);
+            foreach ($notes as $note) {
+                $gedcom .= "\n1 NOTE " . strtr($note, ["\n3" => "\n2", "\n4" => "\n2", "\n5" => "\n2"]);
             }
 
             DB::table('media')->insert([
