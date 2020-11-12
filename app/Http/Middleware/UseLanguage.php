@@ -20,21 +20,18 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Localization\Locale;
-use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\LanguageEnglishUnitedStates;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Session;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Site;
 use Generator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function app;
 
 /**
  * Middleware to select a language.
@@ -83,9 +80,7 @@ class UseLanguage implements MiddlewareInterface
      */
     private function languages(ServerRequestInterface $request): Generator
     {
-        $tree = $request->getAttribute('tree');
-
-        $languages = $this->module_service->findByInterface(ModuleLanguageInterface::class);
+        $languages = $this->module_service->findByInterface(ModuleLanguageInterface::class, true);
 
         // Last language used
         yield $languages->get('language-' . Session::get('language', ''));
@@ -96,17 +91,12 @@ class UseLanguage implements MiddlewareInterface
                 return $module->locale();
             });
 
-        if ($tree instanceof Tree) {
-            $default = Locale::create($tree->getPreference('LANGUAGE', 'en-US'));
-        } else {
-            $default = new LocaleEnUs();
-        }
-
-        $locale = Locale::httpAcceptLanguage($request->getServerParams(), $locales->all(), $default);
+        $default = Locale::create(Site::getPreference('LANGUAGE', 'en-US'));
+        $locale  = Locale::httpAcceptLanguage($request->getServerParams(), $locales->all(), $default);
 
         yield $languages->get('language-' . $locale->languageTag());
 
         // No languages enabled?  Use en-US
-        yield app(LanguageEnglishUnitedStates::class);
+        yield new LanguageEnglishUnitedStates();
     }
 }
