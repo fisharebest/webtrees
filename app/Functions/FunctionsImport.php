@@ -782,7 +782,7 @@ class FunctionsImport
             $type = $match[1] ?? '';
         }
 
-        preg_match_all('/\n\d NOTE (.+(?:\n\d CONT.+)*)/', $gedcom, $matches);
+        preg_match_all('/\n\d NOTE (.+(?:\n\d CONT.*)*)/', $gedcom, $matches);
         $notes = $matches[1] ?? [];
 
         // Have we already created a media object with the same title/filename?
