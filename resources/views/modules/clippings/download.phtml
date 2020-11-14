@@ -82,7 +82,7 @@ use Fisharebest\Webtrees\I18N;
                 <?= view('icons/download') ?>
                 <?= I18N::translate('download') ?>
             </button>
-            <a href="<?= e(route('module', ['module' => 'clippings', 'action' => 'Show', 'tree' => $tree->name()])) ?>" class="btn btn-secondary">
+            <a href="<?= e(route('module', ['module' => $module, 'action' => 'Show', 'tree' => $tree->name()])) ?>" class="btn btn-secondary">
                 <?= view('icons/cancel') ?>
                 <?= I18N::translate('cancel') ?>
             </a>
