@@ -47,6 +47,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Age;
 use Ramsey\Uuid\Uuid;
 
 use function app;
@@ -529,7 +530,17 @@ class FunctionsPrintFacts
                     $label = GedcomTag::getLabel('ASSO');
                 }
 
-                $values = ['<a href="' . e($person->url()) . '">' . $person->fullName() . '</a>'];
+                // Compute age of associated Person at the event (Person BIRT is mandatory )
+                $ageOfAssociated ="";
+                if (preg_match('/\n2 DATE (.+)/', $event->gedcom(), $match1)) {
+                    if (preg_match('/\n1 BIRT/', $person->gedcom(), $match)) {
+                        preg_match('/\n2 DATE (.+)/', $person->gedcom(), $match2);
+                        $dateEvent = new Date($match1[1]);
+                        $dateAssoP = new Date($match2[1]);
+                        $ageOfAssociated   = (new Age($dateAssoP, $dateEvent ))->ageAtEvent(true);
+                    }
+                }
+                $values = ['<a href="' . e($person->url()) . '">' . $person->fullName() . '<i> ' . $ageOfAssociated . '</i>' . '</a>'];
 
                 $module = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $person->tree(), Auth::user())->first(static function (ModuleInterface $module) {
                     return $module instanceof RelationshipsChartModule;
