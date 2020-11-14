@@ -537,7 +537,7 @@ class FunctionsPrintFacts
                         preg_match('/\n2 DATE (.+)/', $person->gedcom(), $match2);
                         $dateEvent = new Date($match1[1]);
                         $dateAssoP = new Date($match2[1]);
-                        $ageOfAssociated   = (new Age($dateAssoP, $dateEvent ))->ageAtEvent(true);
+                        $ageOfAssociated   = (new Age($dateAssoP, $dateEvent))->ageAtEvent(true);
                     }
                 }
                 $values = ['<a href="' . e($person->url()) . '">' . $person->fullName() . '<i> ' . $ageOfAssociated . '</i>' . '</a>'];
