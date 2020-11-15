@@ -894,6 +894,22 @@ use Fisharebest\Webtrees\I18N;
         </div>
     </fieldset>
 
+
+    <fieldset class="form-group">
+        <div class="row">
+            <legend class="col-form-label col-sm-3">
+                <?= /* I18N: Media Force unique file Name */ I18N::translate('Media Force unique file name') ?>
+            </legend>
+            <div class="col-sm-9">
+                <?= view('components/radios-inline', ['name' => 'MEDIA_UNIQUE_FILE_NAME', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $tree->getPreference('MEDIA_UNIQUE_FILE_NAME')]) ?>
+                <p class="small text-muted">
+                    <?= I18N::translate('For the Media files, will choose a Unique File Name') ?>
+                </p>
+            </div>
+        </div>
+    </fieldset>
+
+
     <!-- PREFER_LEVEL2_SOURCES -->
     <fieldset class="form-group">
         <div class="row">
