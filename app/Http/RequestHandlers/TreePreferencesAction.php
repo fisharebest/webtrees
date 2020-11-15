@@ -77,7 +77,7 @@ class TreePreferencesAction implements RequestHandlerInterface
         $tree->setPreference('INDI_FACTS_QUICK', implode(',', $params['INDI_FACTS_QUICK'] ?? []));
         $tree->setPreference('INDI_FACTS_UNIQUE', implode(',', $params['INDI_FACTS_UNIQUE'] ?? []));
         $tree->setPreference('MEDIA_UPLOAD', $params['MEDIA_UPLOAD'] ?? '');
-        $tree->setPreference('MEDIA_UNIQUE_FILE_NAME', $params['MEDIA_UNIQUE_FILE_NAME'] ?? '');
+        $tree->setPreference('MEDIA_FILE_NAME_UNIQUE', $params['MEDIA_FILE_NAME_UNIQUE'] ?? '');
         $tree->setPreference('META_DESCRIPTION', $params['META_DESCRIPTION'] ?? '');
         $tree->setPreference('META_TITLE', $params['META_TITLE'] ?? '');
         $tree->setPreference('NO_UPDATE_CHAN', $params['NO_UPDATE_CHAN'] ?? '');

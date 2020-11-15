@@ -901,9 +901,9 @@ use Fisharebest\Webtrees\I18N;
                 <?= /* I18N: Media Force unique file Name */ I18N::translate('Media Force unique file name') ?>
             </legend>
             <div class="col-sm-9">
-                <?= view('components/radios-inline', ['name' => 'MEDIA_UNIQUE_FILE_NAME', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $tree->getPreference('MEDIA_UNIQUE_FILE_NAME')]) ?>
+                <?= view('components/radios-inline', ['name' => 'MEDIA_FILE_NAME_UNIQUE', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $tree->getPreference('MEDIA_FILE_NAME_UNIQUE')]) ?>
                 <p class="small text-muted">
-                    <?= I18N::translate('For the Media files, will choose a Unique File Name') ?>
+                    <?= I18N::translate('When uploading Media files, will choose an Unique File Name') ?>
                 </p>
             </div>
         </div>

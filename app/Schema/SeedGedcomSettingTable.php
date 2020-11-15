@@ -60,7 +60,7 @@ class SeedGedcomSettingTable implements SeedInterface
         'MEDIA_ID_PREFIX'              => 'M',
         'MEDIA_UPLOAD'                 => Auth::PRIV_USER,
         'META_DESCRIPTION'             => '',
-        'MEDIA_UNIQUE_FILE_NAME'       => '0',
+        'MEDIA_FILE_NAME_UNIQUE'       => '0',
         'META_TITLE'                   => Webtrees::NAME,
         'NOTE_FACTS_ADD'               => 'SOUR,RESN',
         'NOTE_FACTS_QUICK'             => '',
