@@ -474,7 +474,10 @@ msgstr "(âge %s)"
 #: app/Age.php:181
 #, php-format
 msgid "(aged %s)"
-msgstr "(âgé de %s)"
+msgstr "(âgés de %s)"
+
+msgid "(agedF %s)"
+msgstr "(âgée de %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27

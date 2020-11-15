@@ -111,11 +111,11 @@ class IndividualPage implements RequestHandlerInterface
 
         if ($individual->isDead()) {
             // If dead, show age at death
-            $age = (new Age($bdate, $ddate))->ageAtEvent(false);
+            $age = (new Age($bdate, $ddate))->ageAtEvent(false,$individual->sex());
         } else {
             // If living, show age today
             $today = strtoupper(date('d M Y'));
-            $age   = (new Age($bdate, new Date($today)))->ageAtEvent(true);
+            $age   = (new Age($bdate, new Date($today)))->ageAtEvent(true,$individual->sex());
         }
 
         // What images are linked to this individual
