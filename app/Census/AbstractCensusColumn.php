@@ -120,6 +120,38 @@ class AbstractCensusColumn
     }
 
     /**
+     * What was an individual's likely name on a given date, allowing
+     * for marriages and married names.
+     *
+     * @param Individual $individual
+     *
+     * @return string[]
+     */
+    protected function nameAtCensusDate(Individual $individual): array
+    {
+        $names  = $individual->getAllNames();
+        $name   = $names[0];
+        $family = $this->spouseFamily($individual);
+
+        if ($family instanceof Family) {
+            foreach ($family->facts(['MARR']) as $marriage) {
+                if ($marriage->date()->isOK()) {
+                    $spouse = $family->spouse($individual);
+                    foreach ($names as $individual_name) {
+                        foreach ($spouse->getAllNames() as $spouse_name) {
+                            if ($individual_name['type'] === '_MARNM' && $individual_name['surn'] === $spouse_name['surn']) {
+                                return $individual_name;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return $name;
+    }
+
+    /**
      * When did this census occur
      *
      * @return Date
