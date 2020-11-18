@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -36,10 +37,11 @@ class CensusColumnOccupation extends AbstractCensusColumn implements CensusColum
      */
     public function generate(Individual $individual, Individual $head): string
     {
-        foreach ($individual->facts(['OCCU']) as $fact) {
-            return $fact->value();
-        }
+        $date = $this->date();
+        $occupations = $individual->facts(['OCCU'], true)->filter(function ($value, $key) use ($date) {
+            return Date::compare($value->date(), $date) <= 0;
+        });
 
-        return '';
+        return $occupations->isEmpty() ? '' : $occupations->last()->value();
     }
 }
