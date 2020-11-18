@@ -64,6 +64,19 @@ use Fisharebest\Webtrees\View;
         </div>
     </div>
 
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <label for="census-assistant-family" class="input-group-text">
+                    <?= I18N::translate('Family members') ?>
+                </label>
+            </div>
+            <select id="census-assistant-family" class="form-control select2" name="census-assistant-family">
+              <option><!-- Select2 placeholder --></option>
+            </select>
+        </div>
+    </div>
+
     <div class="table-responsive">
         <table class="table table-bordered table-small small wt-census-assistant-table"
         id="census-assistant-table">
@@ -85,6 +98,8 @@ use Fisharebest\Webtrees\View;
 
 <?php View::push('javascript') ?>
 <script>
+  const fam_selector = document.getElementById('census-assistant-family');
+
   // When a census date/place is selected, activate the census-assistant
   function censusAssistantSelect() {
     const select = this;
@@ -93,12 +108,14 @@ use Fisharebest\Webtrees\View;
 
     form.querySelector('.census-assistant-class').value = option.dataset.wtCensus;
 
-    var censusAssistantLink = document.querySelector('.census-assistant-link');
-    var censusAssistant     = document.querySelector('#census-assistant');
-    var censusOption        = this.options[this.selectedIndex];
-    var census              = censusOption.dataset.wtCensus;
-    var censusPlace         = censusOption.dataset.wtPlace;
-    var censusYear          = censusOption.dataset.wtDate.substr(-4);
+    form.querySelector('.census-assistant-class').value = option.dataset.census;
+
+    const censusAssistantLink = document.querySelector('.census-assistant-link');
+    const censusAssistant     = document.querySelector('#census-assistant');
+    const censusOption        = this.options[this.selectedIndex];
+    const census              = censusOption.dataset.wtCensus;
+    const censusPlace         = censusOption.dataset.wtPlace;
+    const censusYear          = censusOption.dataset.wtDate.substr(-4);
 
     if (censusOption.value !== '') {
       censusAssistantLink.removeAttribute('hidden');
@@ -112,18 +129,29 @@ use Fisharebest\Webtrees\View;
 
     let formData = new FormData();
     formData.append('census', census);
+    formData.append('xref', '<?= $individual->xref() ?>');
+    formData.append('tree_id', '<?= $individual->tree()->id() ?>');
     formData.append('_csrf', document.querySelector('meta[name=csrf]').content);
 
-    fetch(<?= json_encode(route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusHeader', 'tree' => $individual->tree()->name()])) ?>, {
+    fetch(<?= json_encode(route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusInitialize', 'tree' => $individual->tree()->name()])) ?>, {
         credentials: 'same-origin',
         body: formData,
         method: 'POST',
     })
     .then(response => response.text())
-    .then(function (text) {
-        document.querySelector('#census-assistant-table thead').innerHTML = text;
+    .then((text) => {
+        const data   = JSON.parse(text);
+        document.querySelector('#census-assistant-table thead').innerHTML = data.header;
         document.querySelector('#census-assistant-table tbody').innerHTML = '';
-    });
+        data.family.forEach(function(item) {
+          const option    = document.createElement('option');
+          option.text     = item.text;
+          option.value    = item.xref;
+          option.title    = item.relationship;
+          option.disabled = item.disabled;
+          fam_selector.add(option);
+        });
+      });
   }
 
   // When the census assistant is activated, show the input fields
@@ -132,21 +160,28 @@ use Fisharebest\Webtrees\View;
     this.setAttribute('hidden', '');
     document.getElementById('census-assistant').removeAttribute('hidden');
     // Set the current individual as the head of household.
-    censusAssistantAdd();
+    censusAssistantAdd('individual');
 
     return false;
   }
 
   // Add the currently selected individual to the census
-  function censusAssistantAdd() {
-    var censusSelector = document.querySelector('.census-selector');
-    var census         = censusSelector.options[censusSelector.selectedIndex].dataset.wtCensus;
-    var indi_selector  = document.querySelector('#census-assistant-individual');
-    var xref           = indi_selector.options[indi_selector.selectedIndex].value;
-    var headInput      = document.querySelector('#census-assistant-table td input');
-    var head           = headInput === null ? xref : headInput.value;
+  function censusAssistantAdd(caller) {
+    const selector = document.querySelector('#census-assistant-' + caller);
+    const xref     = selector.options[selector.selectedIndex].value;
+    const rows     = Array.from(document.querySelectorAll('#census-assistant-table tbody tr td:first-child input')).map(input => input.value);
 
-    let formData = new FormData();
+    // Is the selected individual already in the census?
+    if (xref !== '' && rows.includes(xref)) {
+      clear_indi_select();
+      return false;
+    }
+
+    const censusSelector = document.querySelector('.census-selector');
+    const census         = censusSelector.options[censusSelector.selectedIndex].dataset.wtCensus;
+    const headInput      = document.querySelector('#census-assistant-table td input');
+    const head           = headInput === null ? xref : headInput.value;
+    const formData       = new FormData();
     formData.append('census', census);
     formData.append('_csrf', document.querySelector('meta[name=csrf]').content);
     formData.append('head', head);
@@ -158,18 +193,21 @@ use Fisharebest\Webtrees\View;
       method: 'POST'
     })
       .then(response => response.text())
-      .then(function (text) {
+      .then((text) => {
         document.querySelector('#census-assistant-table tbody').insertAdjacentHTML('beforeend', text);
-        document.querySelector('#select2-census-assistant-individual-container .select2-selection__clear').click();
-        $(indi_selector).trigger({
-          type: 'select2:unselect'
-        });
-      });
+        clear_indi_select();
+        if (xref !== '') {
+          $('#census-assistant-family')
+            .val(null)
+            .trigger('change')
+            .children("option[value=" + xref + "]").prop('disabled', true);
+        }
+    });
 
     return false;
   }
 
-  document.querySelectorAll('.census-selector').forEach(function (el) {
+    document.querySelectorAll('.census-selector').forEach(function (el) {
     el.addEventListener('change', censusAssistantSelect);
   });
 
@@ -178,15 +216,43 @@ use Fisharebest\Webtrees\View;
   });
 
   document.querySelectorAll('.census-assistant-add').forEach(function (el) {
-    el.addEventListener('click', censusAssistantAdd);
+    el.addEventListener('click', () => {
+      censusAssistantAdd('individual')});
   });
 
   document.querySelectorAll('#census-assistant-table').forEach(function (el) {
-    el.addEventListener('click', function (el) {
+    el.addEventListener('click', (el) => {
       if (el.target.matches('.wt-icon-delete')) {
-        el.target.closest('tr').remove();
+        let line = el.target.closest('tr');
+        let xref = line.firstChild.firstChild.value;
+        line.remove();
+        fam_selector.querySelector('option[value="'+ xref +'"]').disabled = false;
       }
     })
   })
+
+  // Clear the individual search selector
+  function clear_indi_select() {
+    $('#census-assistant-individual').trigger({
+      type: 'select2:unselect'
+    });
+  }
+
+  //Set trigger points
+  $(function() {
+    $("#census-assistant-family")
+      // Add selected person to census table
+      .on('select2:select', function (el) {
+        censusAssistantAdd('family');
+      })
+      .select2({
+        placeholder: "<?= I18N::translate('Select a family member') ?>",
+        allowClear: false,
+      });
+
+    $('#select2-census-assistant-family-container').addClass('text-muted');
+  });
+
+
 </script>
 <?php View::endpush() ?>
