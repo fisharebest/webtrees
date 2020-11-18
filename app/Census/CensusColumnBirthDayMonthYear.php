@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Individual;
 /**
  * The individual's date of birth.
  */
-class CensusColumnBirthDayMonthSlashYear extends AbstractCensusColumn implements CensusColumnInterface
+class CensusColumnBirthDayMonthYear extends AbstractCensusColumn implements CensusColumnInterface
 {
     /**
      * Generate the likely value of this census column, based on available information.
@@ -39,7 +39,7 @@ class CensusColumnBirthDayMonthSlashYear extends AbstractCensusColumn implements
         $birth_date = $individual->getBirthDate();
 
         if ($birth_date->minimumJulianDay() === $birth_date->maximumJulianDay()) {
-            return $birth_date->minimumDate()->format('%j %M/%Y');
+            return $birth_date->minimumDate()->format('%d %M %Y');
         }
 
         return '';

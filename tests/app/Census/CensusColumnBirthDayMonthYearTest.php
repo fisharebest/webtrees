@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CensusColumnBirthDayMonthSlashYearTest
  */
-class CensusColumnBirthDayMonthSlashYearTest extends TestCase
+class CensusColumnBirthDayMonthYearTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthDayMonthSlashYearTest
@@ -38,7 +38,7 @@ class CensusColumnBirthDayMonthSlashYearTest extends TestCase
     public function testGenerateColumn(): void
     {
         $cal_date = $this->createMock(GregorianDate::class);
-        $cal_date->method('format')->willReturn('30 Jun/1832');
+        $cal_date->method('format')->willReturn('30 Jun 1832');
 
         $date = $this->createMock(Date::class);
         $date->method('minimumJulianDay')->willReturn(2390364);
@@ -51,8 +51,8 @@ class CensusColumnBirthDayMonthSlashYearTest extends TestCase
         $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1832');
 
-        $column = new CensusColumnBirthDayMonthSlashYear($census, '', '');
+        $column = new CensusColumnBirthDayMonthYear($census, '', '');
 
-        $this->assertSame('30 Jun/1832', $column->generate($individual, $individual));
+        $this->assertSame('30 Jun 1832', $column->generate($individual, $individual));
     }
 }

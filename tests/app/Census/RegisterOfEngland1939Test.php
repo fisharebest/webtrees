@@ -60,7 +60,7 @@ class RegisterOfEngland1939Test extends TestCase
         $this->assertInstanceOf(CensusColumnSurnameGivenNames::class, $columns[2]);
         $this->assertInstanceOf(CensusColumnNull::class, $columns[3]);
         $this->assertInstanceOf(CensusColumnSexMF::class, $columns[4]);
-        $this->assertInstanceOf(CensusColumnBirthDayMonthSlashYear::class, $columns[5]);
+        $this->assertInstanceOf(CensusColumnBirthDayMonthYear::class, $columns[5]);
         $this->assertInstanceOf(CensusColumnConditionEnglish::class, $columns[6]);
         $this->assertInstanceOf(CensusColumnOccupation::class, $columns[7]);
 
