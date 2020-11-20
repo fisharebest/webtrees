@@ -317,7 +317,7 @@ $deathAgeData = [
                 </td>
 
                 <!-- Birth place -->
-                <td>
+                <td data-sort="<?= e($individual->getBirthPlace()->gedcomName()) ?>">
                     <?php foreach ($individual->getAllBirthPlaces() as $n => $birth_place) : ?>
                         <?= $birth_place->shortName(true) ?>
                         <br>
@@ -362,7 +362,7 @@ $deathAgeData = [
                 </td>
 
                 <!-- Death place -->
-                <td>
+                <td data-sort="<?= e($individual->getDeathPlace()->gedcomName()) ?>">
                     <?php foreach ($individual->getAllDeathPlaces() as $n => $death_place) : ?>
                         <?= $death_place->shortName(true) ?>
                         <br>

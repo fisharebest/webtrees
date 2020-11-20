@@ -334,7 +334,7 @@ $marriageAgeData = [
                 </td>
 
                 <!-- Marriage place -->
-                <td>
+                <td data-sort="<?= e($family->getMarriagePlace()->gedcomName()) ?>">
                     <?php foreach ($family->getAllMarriagePlaces() as $n => $marriage_place) : ?>
                         <?= $marriage_place->shortName(true) ?>
                         <br>
