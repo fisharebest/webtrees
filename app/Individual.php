@@ -79,7 +79,7 @@ class Individual extends GedcomRecord
     public static function deathDateComparator(): Closure
     {
         return static function (Individual $x, Individual $y): int {
-            return Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
+            return Date::compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
         };
     }
 

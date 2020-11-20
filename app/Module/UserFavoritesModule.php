@@ -144,6 +144,10 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
             ->map(static function (stdClass $row) use ($tree): stdClass {
                 if ($row->xref !== null) {
                     $row->record = Registry::gedcomRecordFactory()->make($row->xref, $tree);
+
+                    if ($row->record instanceof GedcomRecord && !$row->record->canShowName()) {
+                        $row->record = null;
+                    }
                 } else {
                     $row->record = null;
                 }
