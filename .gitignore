@@ -10,6 +10,7 @@
 /resources/lang/webtees.pot
 /resources/lang/*/messages.php
 !/resources/lang/en-US/messages.php
+!/resources/lang/fr/messages.php
 
 /robots.txt
 
