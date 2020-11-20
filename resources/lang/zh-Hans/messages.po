@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-05-30 07:30+0000\nLast-Translator: rui <xmlf@hotmail.com>\nLanguage-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-11-02 15:23+0000\nLast-Translator: rui <xmlf@hotmail.com>\nLanguage-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -483,7 +483,7 @@ msgstr "(%s 去世后)"
 #: app/Age.php:177
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "年龄 %s"
 
 # I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #. I18N: The age of an individual at a given date
@@ -1298,7 +1298,7 @@ msgstr "添加子女"
 #: app/Http/Controllers/EditIndividualController.php:59
 #: resources/views/modules/relatives/tab.phtml:137
 msgid "Add a child to create a one-parent family"
-msgstr "添加一个子女创建一个单亲家庭"
+msgstr "添加一个子女组成一个单亲家庭"
 
 #: app/Http/Controllers/EditFamilyController.php:59
 #: resources/views/family-page-children.phtml:39
@@ -1597,17 +1597,17 @@ msgstr "过继"
 
 #: app/GedcomCode/GedcomCodeAdop.php:64
 msgid "Adopted by both parents"
-msgstr "父母双方共同收养"
+msgstr "由养父母收养"
 
 #: app/GedcomCode/GedcomCodeAdop.php:61
 msgctxt "FEMALE"
 msgid "Adopted by both parents"
-msgstr "父母双方共同收养"
+msgstr "由养父母收养"
 
 #: app/GedcomCode/GedcomCodeAdop.php:57
 msgctxt "MALE"
 msgid "Adopted by both parents"
-msgstr "父母双方共同收养"
+msgstr "由养父母收养"
 
 # I18N: gedcom tag _ADPF
 #. I18N: gedcom tag _ADPF
@@ -5697,7 +5697,7 @@ msgstr "多米尼加共和国"
 
 #: app/Module/PedigreeChartModule.php:393
 msgid "Down"
-msgstr "长辈在下"
+msgstr "向下"
 
 #: app/Module/ClippingsCartModule.php:186
 #: app/Module/ClippingsCartModule.php:358
@@ -7777,7 +7777,7 @@ msgstr "沙漏图"
 #: app/Module/HourglassChartModule.php:135
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr "%s 的沙漏圖"
+msgstr "%s 的沙漏图"
 
 #: resources/views/modules/census-assistant.phtml:106
 msgid "Household"
@@ -7875,22 +7875,22 @@ msgstr "如果一个人没有有姓氏，不需要用斜线: <%s>二麻子<%s>"
 #: resources/views/help/name.phtml:19
 #, php-format
 msgid "If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
-msgstr "如果一个人有两个独立的姓氏，都应该用斜线分隔： <%s>/王/ /张/ 二麻 <%s>"
+msgstr "如果一个人有两个独立的姓氏，都应该用斜线分隔： <%s>/王//张/二 <%s>"
 
 #: resources/views/help/name.phtml:28
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "如果一个人被称为的昵称不属于他们的正式名称，应该用引号引起来。例如，, <%s>/王/五 &quot;二麻&quot; <%s>。"
+msgstr "如果一个人的昵称不属于他们的正式名字，应该用引号引起来。例如 <%s>/王/五 &quot;二麻&quot; <%s>。"
 
 #: resources/views/help/name.phtml:25
 #, php-format
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
-msgstr "如果一个人不知道他们的第一个给定的名称，首选的名称应标有星号:<%s>/王/ * 麻<%s>"
+msgstr "如果一个人的名字不为人所知，则应以星号表示其首选名字:<%s>/王/ 二*<%s>"
 
 #: resources/views/help/name.phtml:16
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
-msgstr "假如不知道姓氏，用斜线空出: <%s>// 五<%s>"
+msgstr "假如不知道姓氏，用斜线空出: <%s>//二<%s>"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
@@ -7904,7 +7904,7 @@ msgstr "如果缩略图与原始图像相同，则不再需要它，您应该将
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:73
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "如果这个人在最近这么多年内没有去世、埋葬或火化事件,他被认为是“在世”。孩子的出生日期被认为是用于此目的的类似事件。"
+msgstr "如果此人除了死亡、埋葬或火化之外，还有任何比这一年数更近的事件，则被视为 \"活着\"。为此，子女的出生日期被视为此类事件。"
 
 # I18N: Help text for the “Media folder” configuration setting
 #. I18N: Help text for the “Media folder” configuration setting
@@ -13069,7 +13069,7 @@ msgstr "使用简单搜索或高级模式匹配搜索和替换文本。"
 #. I18N: Help text for the “Description META tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:203
 msgid "Search engines may use this description of your site in their search results."
-msgstr ""
+msgstr "搜索引擎可能会在其搜索结果中使用您网站的描述。"
 
 #: resources/views/modules/media-list/page.phtml:52
 msgid "Search filters"
@@ -14526,7 +14526,7 @@ msgstr "苏里南"
 #: resources/views/modules/statistics-chart/custom.phtml:160
 #: resources/views/search-phonetic-page.phtml:29
 msgid "Surname"
-msgstr "姓氏"
+msgstr "姓"
 
 #: app/Statistics/Google/ChartDistribution.php:333
 msgid "Surname distribution chart"
@@ -14792,7 +14792,7 @@ msgstr "<b>姓名</b>栏包含个人的全名，可能是拼写或是记录。�
 
 #: resources/views/help/surname.phtml:8
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr "<b>姓</b>栏包含用于排序和分组的名称。它可以是不同的，以个人的实际姓氏，总是从<b>名称</b>栏。可以使用此字段进行排序的姓氏带或不带前缀的（梵高/梵高）和组拼写变体或的语调（科瓦尔斯基/ Kowalska）。如果一个人需要被列在姓氏超过一个，每个名字应以逗号分隔。"
+msgstr "<b>姓</b>字段包含一个用于排序和分组的名称。它可能与个人的实际姓氏不同，后者总是取自<b>name</b>字段。该字段可用于对带有或不带有前缀的姓氏进行排序（Gogh / van Gogh），并对拼写变化或变音进行分组（Kowalski / Kowalska）。如果一个人需要以一个以上的姓氏列出，每个名字之间应以逗号分隔。"
 
 #: app/Http/Controllers/AdminTreesController.php:1507
 #, php-format
@@ -15251,7 +15251,7 @@ msgstr "提交者已被创建"
 #: resources/views/help/name.phtml:13
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr "姓氏是用斜线分隔：<%s>John Paul /Smith/<%s>"
+msgstr "姓氏是用斜线分隔：<%s>/王/二<%s>"
 
 #: resources/views/admin/site-preferences.phtml:55
 #: resources/views/admin/users-edit.phtml:122
@@ -18100,7 +18100,7 @@ msgstr "去世"
 #: resources/views/edit/reorder-card-header.phtml:30
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "down"
-msgstr "长辈在下"
+msgstr "向下"
 
 # I18N: A button label.
 #. I18N: A button label.
@@ -18243,7 +18243,7 @@ msgstr "岳父"
 
 #: app/Functions/Functions.php:636
 msgid "fiancé"
-msgstr ""
+msgstr "未婚夫"
 
 #: app/Functions/Functions.php:683
 msgid "fiancé(e)"
@@ -18316,13 +18316,13 @@ msgstr "第五代堂兄(妹)"
 #: resources/views/modules/media-list/page.phtml:79
 #: resources/views/modules/media-list/page.phtml:178
 msgid "first"
-msgstr "第一"
+msgstr "最前面"
 
 # I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
 #: resources/views/admin/trees-preferences.phtml:565
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr "第一"
+msgstr "第一部分"
 
 # I18N: A Spanish relationship name, such as third great-nephew
 #. I18N: A Spanish relationship name, such as third great-nephew
@@ -20295,7 +20295,7 @@ msgstr "最后"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "left"
-msgstr "长辈在左"
+msgstr "向左"
 
 # I18N: Layout option for lists of names
 # I18N: An option in a list-box
@@ -20862,7 +20862,7 @@ msgstr "重置"
 
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "right"
-msgstr "长辈在右"
+msgstr "向右"
 
 # I18N: A button label.
 #. I18N: A button label.
@@ -21661,7 +21661,7 @@ msgstr "不可靠的证据"
 #: resources/views/edit/reorder-card-header.phtml:26
 #: resources/views/modules/pedigree-chart/page.phtml:37
 msgid "up"
-msgstr "长辈在上"
+msgstr "向上"
 
 # I18N: A button label.
 #: resources/views/admin/trees-unconnected.phtml:30
