@@ -1005,10 +1005,10 @@ class FunctionsPrintFacts
             echo $text;
 
             // 2 RESN tags. Note, there can be more than one, such as "privacy" and "locked"
-            if (preg_match_all("/\n2 RESN (.+)/", $factrec, $matches)) {
-                foreach ($matches[1] as $match) {
+            if (preg_match_all("/\n2 RESN (.+)/", $factrec, $rmatches)) {
+                foreach ($rmatches[1] as $rmatch) {
                     echo '<br><span class="label">', GedcomTag::getLabel('RESN'), ':</span> <span class="field">';
-                    switch ($match) {
+                    switch ($rmatch) {
                         case 'none':
                             // Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
                             // However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
@@ -1024,7 +1024,7 @@ class FunctionsPrintFacts
                             echo '<i class="icon-resn-locked"></i> ', I18N::translate('Only managers can edit');
                             break;
                         default:
-                            echo $match;
+                            echo $rmatch;
                             break;
                     }
                     echo '</span>';
