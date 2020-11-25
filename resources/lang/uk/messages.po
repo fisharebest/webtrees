@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2020-05-10 20:40+0100\n"
-"PO-Revision-Date: 2018-10-19 17:57+0000\n"
-"Last-Translator: Vitalii Oleshkevych <mar2008m@gmail.com>\n"
-"Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
-"Language: uk\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.10\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-12-08 04:04+0000\nLast-Translator: Andriy Saturskyy <ansatur@gmail.com>\nLanguage-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\nLanguage: uk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -234,9 +222,9 @@ msgstr[2] "%s днів"
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s сім'я"
+msgstr[1] "%s сім'ї"
+msgstr[2] "%s сімей"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
@@ -301,7 +289,7 @@ msgstr[2] "%s повідомлень"
 msgid "%s month"
 msgid_plural "%s months"
 msgstr[0] "%s місяць"
-msgstr[1] "%s місяця"
+msgstr[1] "%s місяці"
 msgstr[2] "%s місяців"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:91
@@ -498,7 +486,7 @@ msgstr "(%s після смерті)"
 #: app/Age.php:177
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "вік %s"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:181
@@ -725,7 +713,7 @@ msgstr "Вітальне повідомлення для відвідувачі�
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:68
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "Посилання на контакти сайту."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
@@ -735,7 +723,7 @@ msgstr ""
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:60
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "Список гілок сім'ї."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:91
@@ -755,37 +743,37 @@ msgstr "Список поширених запитань і відповідей
 #. I18N: Description of the “Individuals” module
 #: app/Module/IndividualListModule.php:59
 msgid "A list of individuals."
-msgstr ""
+msgstr "Список осіб."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:62
 msgid "A list of media objects."
-msgstr ""
+msgstr "Список медіа-об’єктів."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:88
 msgid "A list of records that have been updated recently."
-msgstr "Список записів, які були недавно оновлені."
+msgstr "Список нещодавно оновлених записів."
 
 #. I18N: Description of the “Repositories” module
 #: app/Module/RepositoryListModule.php:64
 msgid "A list of repositories."
-msgstr ""
+msgstr "Список сховищ."
 
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:61
 msgid "A list of shared notes."
-msgstr ""
+msgstr "Список спільних нотаток."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:63
 msgid "A list of sources."
-msgstr ""
+msgstr "Список джерел."
 
 #. I18N: Description of the “Shared submitters” module
 #: app/Module/SubmitterListModule.php:64
 msgid "A list of submitters."
-msgstr ""
+msgstr "Список заявників."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:69
@@ -2989,7 +2977,7 @@ msgstr "Свідок нареченої"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Brigham City, Utah, United States"
-msgstr ""
+msgstr "Бригем-Сіті, Юта, США"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:282
@@ -3289,7 +3277,7 @@ msgstr "Конвертація календаря"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:288
 msgid "Calgary, Alberta, Canada"
-msgstr ""
+msgstr "Калґарі, Альберта, Канада"
 
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:555 resources/views/modals/source-fields.phtml:45
@@ -3375,7 +3363,7 @@ msgstr "Кайманові острови"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:297
 msgid "Cebu City, Philippines"
-msgstr ""
+msgstr "Себу, Філіппіни"
 
 #. I18N: gedcom tag CEME
 #: app/GedcomTag.php:564
@@ -4039,7 +4027,7 @@ msgstr "Авторські права"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:321
 msgid "Cordoba, Argentina"
-msgstr ""
+msgstr "Кордова, Аргентина"
 
 #. I18N: gedcom tag CORP
 #: app/GedcomTag.php:630
@@ -4281,7 +4269,7 @@ msgstr "Куба"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:327
 msgid "Curitiba, Brazil"
-msgstr ""
+msgstr "Куритиба, Бразилія"
 
 #: app/Module/HtmlBlockModule.php:198 app/Module/StatisticsChartModule.php:168
 msgid "Custom"
@@ -5354,7 +5342,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:339
 msgid "Draper, Utah, United States"
-msgstr ""
+msgstr "Дрейпер, Юта, США"
 
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:289
@@ -6503,7 +6491,7 @@ msgstr "Форматування тексту і примітки"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:348
 msgid "Fort Lauderdale, Florida, United States"
-msgstr ""
+msgstr "Форт-Лодердейл, Флоріда, США"
 
 #: app/GedcomCode/GedcomCodePedi.php:85
 msgctxt "Female pedigree"
