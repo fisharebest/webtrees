@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-30 07:30+0000\n"
+"PO-Revision-Date: 2020-12-08 04:04+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nn/>\n"
@@ -6279,7 +6279,7 @@ msgstr "Filer merka %s er naudsynte for at webtrees skal fungere, og kan ikkje s
 
 #: app/I18N.php:235 app/Module/SlideShowModule.php:302 find.php:532
 msgid "Filter"
-msgstr "Søk"
+msgstr "Filter"
 
 #: app/Functions/FunctionsPrint.php:794 find.php:76 find.php:81 find.php:86
 #: find.php:91 find.php:96 find.php:101
