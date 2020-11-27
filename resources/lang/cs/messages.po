@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-10-22 20:48+0000\nLast-Translator: Josef Prause <josef.prause@gmail.com>\nLanguage-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\nLanguage: cs\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Czech\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Language: cs_CZ\nX-Source-Language: C\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-12-08 04:04+0000\nLast-Translator: Josef Prause <josef.prause@gmail.com>\nLanguage-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\nLanguage: cs\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Czech\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Language: cs_CZ\nX-Source-Language: C\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -875,7 +875,7 @@ msgstr "Výpis podrobností o dané osobě."
 
 #: resources/xml/reports/fact_sources.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "Výpis údajů doložených daným pramenem."
+msgstr "Výpis faktů doložených daným pramenem."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:56
@@ -1228,7 +1228,7 @@ msgstr "Přidat dceru"
 
 #: resources/views/edit/raw-gedcom-record.phtml:46
 msgid "Add a fact"
-msgstr "Přidat údaj"
+msgstr "Přidat fakt"
 
 #: app/Http/Controllers/EditIndividualController.php:161
 #: resources/views/family-page-grandparents.phtml:24
@@ -1632,15 +1632,15 @@ msgstr "Křest v dospělosti"
 
 #: resources/views/admin/trees-preferences.phtml:834
 msgid "Advanced fact preferences"
-msgstr "Pokročilé nastavení údajů"
+msgstr "Pokročilé nastavení faktů"
 
 #: resources/views/admin/trees-preferences.phtml:839
 msgid "Advanced name facts"
-msgstr "Pokročilé údaje o jménech"
+msgstr "Pokročilé fakty o jménech"
 
 #: resources/views/admin/trees-preferences.phtml:852
 msgid "Advanced place name facts"
-msgstr "Pokročilé údaje o místech"
+msgstr "Pokročilé fakty o místech"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:171
 #: app/Module/SearchMenuModule.php:125
@@ -1799,7 +1799,7 @@ msgstr "Všechna fakta a události"
 
 #: resources/views/admin/trees-preferences.phtml:703
 msgid "All family facts"
-msgstr "Všechny údaje o rodině"
+msgstr "Všechna fakta o rodině"
 
 #: app/Http/RequestHandlers/RegisterAction.php:234
 msgid "All fields must be completed."
@@ -1807,7 +1807,7 @@ msgstr "Vyplňte všechna pole."
 
 #: resources/views/admin/trees-preferences.phtml:649
 msgid "All individual facts"
-msgstr "Všechny osobní údaje"
+msgstr "Všechna osobní fakta"
 
 #: resources/views/calendar-page.phtml:97
 #: resources/views/calendar-page.phtml:109
@@ -1827,11 +1827,11 @@ msgstr "Všechny záznamy"
 
 #: resources/views/admin/trees-preferences.phtml:798
 msgid "All repository facts"
-msgstr "Všechny údaje o repozitářích"
+msgstr "Všechna fakta o repozitářích"
 
 #: resources/views/admin/trees-preferences.phtml:757
 msgid "All source facts"
-msgstr "Všechny údaje o pramenech"
+msgstr "Všechna fakta o pramenech"
 
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:54
@@ -2085,7 +2085,7 @@ msgstr "Akvamarín"
 #: resources/views/edit/icon-fact-delete.phtml:8
 #: resources/views/media-page.phtml:103
 msgid "Are you sure you want to delete this fact?"
-msgstr "Jste si jisti, že chcete smazat tento údaj?"
+msgstr "Jste si jisti, že chcete smazat tento fakt?"
 
 #: app/Module/UserMessagesModule.php:173 app/Module/UserMessagesModule.php:220
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
@@ -3768,7 +3768,7 @@ msgstr "Vyjasněno, ale ještě nedokončeno"
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:117
 msgid "Clippings cart"
-msgstr "Schránka výstřižků"
+msgstr "Výstřižky"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:2372
@@ -4282,7 +4282,7 @@ msgstr "Vlastní událost"
 
 #: resources/views/edit/add-fact-row.phtml:32
 msgid "Custom fact"
-msgstr "Vlastní údaj"
+msgstr "Vlastní fakt"
 
 #: resources/views/admin/custom-module-info.phtml:12
 msgid "Custom module"
@@ -4547,7 +4547,7 @@ msgstr "Časové období"
 
 #: resources/views/help/date.phtml:84
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr "Časové období se používá pro činnost, která trvá nějakou dobu, třeba zaměstnání."
+msgstr "Časové období se používá pro fakt, který trvá nějakou dobu, třeba zaměstnání."
 
 #: resources/views/help/date.phtml:53
 #: resources/views/modules/statistics-chart/custom.phtml:88
@@ -5815,69 +5815,69 @@ msgstr "Časté dotazy je seznam otázek a odpovědí, jimiž můžete návště
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:725
 msgid "Fact"
-msgstr "Údaj"
+msgstr "Fakt"
 
 #: app/GedcomTag.php:1795
 msgid "Fact 1"
-msgstr "Údaj 1"
+msgstr "Fakt 1"
 
 #: app/GedcomTag.php:1813
 msgid "Fact 10"
-msgstr "Údaj 10"
+msgstr "Fakt 10"
 
 #: app/GedcomTag.php:1815
 msgid "Fact 11"
-msgstr "Údaj 11"
+msgstr "Fakt 11"
 
 #: app/GedcomTag.php:1817
 msgid "Fact 12"
-msgstr "Údaj 12"
+msgstr "Fakt 12"
 
 #: app/GedcomTag.php:1819
 msgid "Fact 13"
-msgstr "Údaj 13"
+msgstr "Fakt 13"
 
 #: app/GedcomTag.php:1797
 msgid "Fact 2"
-msgstr "Údaj 2"
+msgstr "Fakt 2"
 
 #: app/GedcomTag.php:1799
 msgid "Fact 3"
-msgstr "Údaj 3"
+msgstr "Fakt 3"
 
 #: app/GedcomTag.php:1801
 msgid "Fact 4"
-msgstr "Údaj 4"
+msgstr "Fakt 4"
 
 #: app/GedcomTag.php:1803
 msgid "Fact 5"
-msgstr "Údaj 5"
+msgstr "Fakt 5"
 
 #: app/GedcomTag.php:1805
 msgid "Fact 6"
-msgstr "Údaj 6"
+msgstr "Fakt 6"
 
 #: app/GedcomTag.php:1807
 msgid "Fact 7"
-msgstr "Údaj 7"
+msgstr "Fakt 7"
 
 #: app/GedcomTag.php:1809
 msgid "Fact 8"
-msgstr "Údaj 8"
+msgstr "Fakt 8"
 
 #: app/GedcomTag.php:1811
 msgid "Fact 9"
-msgstr "Údaj 9"
+msgstr "Fakt 9"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:504
 msgid "Fact icons"
-msgstr "Ikony údajů"
+msgstr "Ikony faktů"
 
 #: resources/views/admin/trees-privacy.phtml:228
 #: resources/views/edit/add-fact-row.phtml:15
 msgid "Fact or event"
-msgstr "Údaj nebo událost"
+msgstr "Fakt nebo událost"
 
 #. I18N: Name of a module/tab on the individual page.
 #: app/Module/IndividualFactsTabModule.php:66
@@ -5891,27 +5891,27 @@ msgstr "Fakta a události"
 
 #: resources/views/admin/trees-preferences.phtml:698
 msgid "Facts for family records"
-msgstr "Údaje pro Rodinné záznamy"
+msgstr "Fakta pro záznamy rodiny"
 
 #: resources/views/admin/trees-preferences.phtml:644
 msgid "Facts for individual records"
-msgstr "Údaje pro Osobní záznamy"
+msgstr "Fakta pro záznamy osob"
 
 #: resources/views/admin/trees-preferences.phtml:729
 msgid "Facts for new families"
-msgstr "Údaje pro nové rodiny"
+msgstr "Fakta pro nové rodiny"
 
 #: resources/views/admin/trees-preferences.phtml:675
 msgid "Facts for new individuals"
-msgstr "Údaje pro nové osoby"
+msgstr "Fakta pro nové osoby"
 
 #: resources/views/admin/trees-preferences.phtml:793
 msgid "Facts for repository records"
-msgstr "Údaje o repozitářích"
+msgstr "Fakta pro repozitáře"
 
 #: resources/views/admin/trees-preferences.phtml:752
 msgid "Facts for source records"
-msgstr "Údaje pro záznamy pramenů"
+msgstr "Fakta pro záznamy pramenů"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:191
@@ -9965,7 +9965,7 @@ msgstr "Žádné události pro zítřek."
 
 #: resources/views/family-page.phtml:56
 msgid "No facts exist for this family."
-msgstr "K této rodině nejsou údaje."
+msgstr "K této rodině nejsou fakta."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:55
@@ -9980,7 +9980,7 @@ msgstr "Mezi těmito dvěma osobami nebyl nalezen žádný vztah."
 #: resources/views/admin/merge-records-step-2.phtml:109
 #: resources/views/admin/merge-records-step-2.phtml:155
 msgid "No matching facts found"
-msgstr "Nenalezeny odpovídající údaje"
+msgstr "Nenalezena odpovídající fakta"
 
 #: resources/views/modules/gedcom_news/list.phtml:9
 #: resources/views/modules/user_blog/list.phtml:9
@@ -11146,7 +11146,7 @@ msgstr "Omezení soukromí"
 
 #: resources/views/admin/trees-privacy.phtml:220
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "Omezení soukromí - aplikují se na záznamy a data, která neobsahují tag RESN"
+msgstr "Omezení soukromí - aplikují se na záznamy a fakta, která neobsahují tag RESN"
 
 #: app/GedcomRecord.php:527 app/GedcomRecord.php:635 app/GedcomRecord.php:1281
 #: app/Header.php:110 app/Note.php:128 app/Report/ReportParserGenerate.php:967
@@ -11218,19 +11218,19 @@ msgstr "Quetzaltenango, Guatemala"
 
 #: resources/views/admin/trees-preferences.phtml:742
 msgid "Quick family facts"
-msgstr "Pohotové údaje o rodině"
+msgstr "Pohotová fakta k rodině"
 
 #: resources/views/admin/trees-preferences.phtml:688
 msgid "Quick individual facts"
-msgstr "Pohotové osobní údaje"
+msgstr "Pohotová fakta k osobě"
 
 #: resources/views/admin/trees-preferences.phtml:824
 msgid "Quick repository facts"
-msgstr "Pohotové údaje o repozitářích"
+msgstr "Pohotová fakta k repozitářům"
 
 #: resources/views/admin/trees-preferences.phtml:783
 msgid "Quick source facts"
-msgstr "Pohotové údaje o pramenech"
+msgstr "Pohotová fakta k pramenům"
 
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:295
@@ -11773,7 +11773,7 @@ msgstr "Omezení"
 
 #: resources/views/help/restriction.phtml:8
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr "K záznamům a/nebo údajům můžou být přidána omezení. Určují, kdo si může data prohlížet a kdo upravovat."
+msgstr "K záznamům a/nebo faktům mohou být přidána omezení. Určují, kdo si může údaje prohlížet a kdo upravovat."
 
 #: resources/views/modules/statistics-chart/custom.phtml:114
 msgid "Results"
@@ -14165,7 +14165,7 @@ msgstr "Motivy"
 
 #: resources/views/modules/personal_facts/tab.phtml:35
 msgid "There are no facts for this individual."
-msgstr "K této osobě nejsou známy žádné údaje."
+msgstr "K této osobě nejsou známa žádná fakta."
 
 #: app/Http/Controllers/Admin/MediaController.php:329
 msgid "There are no links to this media object."
@@ -14434,7 +14434,7 @@ msgstr "Toto je čárkami oddělený seznam faktů GEDCOMu, který se zobrazí p
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:857
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Toto je seznam čárkami oddělených popisků GEDCOMu, které se zobrazí na formuláři pro přidání/úpravu míst. Pokud používáte jinou než latinskou abecedu (hebrejština, alfabeta …), přidejte příslušný tag, např. _HEB, ROMN, FONE atd., abyste byli schopní tato data uložit v různých abecedách."
+msgstr "Toto je seznam čárkami oddělených popisků faktů GEDCOMu, které se zobrazí na formuláři pro přidání/úpravu míst. Pokud používáte jinou než latinskou abecedu (hebrejština, alfabeta …), přidejte příslušný tag, např. _HEB, ROMN, FONE atd., abyste byli schopní tato data uložit v různých abecedách."
 
 #: resources/views/edit-account-page.phtml:56
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -14458,42 +14458,42 @@ msgstr "Toto je poslední verze webtrees. Neni dostupná žádná aktualizace."
 #. I18N: Help text for the “All family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:708
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "Toto je seznam faktů v GEDCOMu, které uživatelé mohou přidávat k rodinám. Můžete ho upravit přidáním nebo odstraněním názvů faktů, případně dokonce vytvořením vlastních. Názvy faktů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Jedinečných údajů o rodině</i>."
+msgstr "Toto je seznam faktů v GEDCOMu, které uživatelé mohou přidávat k rodinám. Můžete ho upravit přidáním nebo odstraněním názvů faktů, případně dokonce vytvořením vlastních. Názvy faktů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Jedinečných faktů o rodině</i>."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:654
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "Toto je seznam faktů v GEDCOMu, které uživatelé mohou přidávat k osobám. Můžete ho upravit přidáním nebo odstraněním názvů faktů, případně dokonce vytvořením vlastních. Názvy údajů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Jedinečných osobních údajů</i>."
+msgstr "Toto je seznam faktů v GEDCOMu, které uživatelé mohou přidávat k osobám. Můžete ho upravit přidáním nebo odstraněním názvů faktů, případně dokonce vytvořením vlastních. Názvy faktů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Jedinečných faktů k osobě</i>."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:803
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr "Toto je seznam faktů v GEDCOMu, které uživatelé mohou přidávat k repozitářům. Můžete ho upravit přidáním nebo odstraněním názvů faktů, případně dokonce vytvořením vlastních. Názvy údajů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Jedinečné údaje o repozitářích</i>."
+msgstr "Toto je seznam faktů v GEDCOMu, které uživatelé mohou přidávat k repozitářům. Můžete ho upravit přidáním nebo odstraněním názvů faktů, případně dokonce vytvořením vlastních. Názvy faktů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Jedinečná fakta k repozitářům</i>."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:762
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "Toto je seznam údajů v GEDCOMu, které vaši uživatelé mohou přidávat k pramenům. Můžete ho upravit přidáním nebo odstraněním názvů údajů, případně dokonce vytvořením vlastních. Názvy údajů, které se objeví v seznamu, se nesmí objevit v seznamu <i>Jedinečné údaje o pramenech</i>."
+msgstr "Toto je seznam faktů v GEDCOMu, které vaši uživatelé mohou přidávat k pramenům. Můžete ho upravit přidáním nebo odstraněním názvů faktů, případně dokonce vytvořením vlastních. Názvy faktů, které se objeví v seznamu, se nesmí objevit v seznamu <i>Jedinečná fakta k pramenům</i>."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:721
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "Toto je seznam údajů v GEDCOMu, které uživatelé mohou přidat k rodinám <u>právě jednou</u>. Například pokud MARR je v tomto seznamu, uživatelé nebudou moct přidat tento záznam k rodině vícekrát než jednou. Názvy údajů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Všechny údaje o rodinách</i>."
+msgstr "Toto je seznam faktů v GEDCOMu, které uživatelé mohou přidat k rodinám <u>právě jednou</u>. Například pokud MARR je v tomto seznamu, uživatelé nebudou moct přidat tento záznam k rodině vícekrát než jednou. Názvy faktů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Všechna fakta k rodinám</i>."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:667
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "Toto je seznam faktů v GEDCOMu, které uživatelé mohou přidat k osobám <u>právě jednou</u>. Například pokud BIRT je v tomto seznamu, uživatelé nebudou moct přidat tento záznam k osobě vícekrát než jednou. Názvy údajů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Všechny osobní údaje</i>."
+msgstr "Toto je seznam faktů v GEDCOMu, které uživatelé mohou přidat k osobám <u>právě jednou</u>. Například pokud BIRT je v tomto seznamu, uživatelé nebudou moct přidat tento záznam k osobě vícekrát než jednou. Názvy faktů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Všechna fakta k osobám</i>."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:816
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "Toto je seznam údajů v GEDCOMu, které vaši uživatelé mohou přidat k repozitářům <u>právě jednou</u>. Například pokud TITL je v tomto seznamu, uživatelé nebudou moci přidat záznam TITL k repozitáři vícekrát než jednou. Názvy údajů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Všechny údaje o repozitářích</i>."
+msgstr "Toto je seznam faktů v GEDCOMu, které vaši uživatelé mohou přidat k repozitářům <u>právě jednou</u>. Například pokud TITL je v tomto seznamu, uživatelé nebudou moci přidat záznam TITL k repozitáři vícekrát než jednou. Názvy údajů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Všechna fakta k repozitářům</i>."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:775
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "Toto je seznam údajů v GEDCOMu, které vaši uživatelé mohou přidat k pramenům <u>právě jednou</u>. Například pokud TITL je v tomto seznamu, uživatelé nebudou moci přidat záznam TITL k prameni vícekrát než jednou. Názvy údajů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Všechny údaje o pramenech</i>."
+msgstr "Toto je seznam faktů v GEDCOMu, které vaši uživatelé mohou přidat k pramenům <u>právě jednou</u>. Například pokud TITL je v tomto seznamu, uživatelé nebudou moci přidat záznam TITL k prameni vícekrát než jednou. Názvy faktů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Všechna fakta k pramenům</i>."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml:85
@@ -14724,7 +14724,7 @@ msgstr "Limit paměti pro tento server je %s MB a limit pro procesorový čas je
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:400
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Toto by měl být seznam čárkami nebo mezerami oddělených údajů, navíc k narození nebo úmrtí, které chcete, aby se objevily v diagramech jako je Vývod. Tento seznam vyžaduje použití popisků údajů definovaných ve standardu GEDCOM 5.5.1. Například pokud chcete, aby se povolání ukázalo v rámečku, přidejte „OCCU“ do tohoto pole."
+msgstr "Toto by měl být seznam čárkami nebo mezerami oddělených faktů, navíc k narození nebo úmrtí, které chcete, aby se objevily v diagramech jako je Vývod. Tento seznam vyžaduje použití tagů faktů definovaných ve standardu GEDCOM 5.5.1. Například pokud chcete, aby se ukázalo v rámečku povolání, přidejte do tohoto pole \"OCCU\"."
 
 #: app/Exceptions/SourceAccessDeniedException.php:35
 #: app/Exceptions/SourceNotFoundException.php:35
@@ -15264,7 +15264,7 @@ msgstr "Typ události"
 
 #: app/GedcomTag.php:727
 msgid "Type of fact"
-msgstr "Typ skutečnosti"
+msgstr "Typ faktu"
 
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
@@ -15309,7 +15309,7 @@ msgstr "Nejasné: nedostatečná data"
 
 #: resources/views/admin/trees-preferences.phtml:716
 msgid "Unique family facts"
-msgstr "Jedinečné údaje o rodině"
+msgstr "Jedinečná fakta k rodině"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:2065
@@ -15323,15 +15323,15 @@ msgstr "Jedinečné identifikátory umožňují nalézt tentýž záznam v různ
 
 #: resources/views/admin/trees-preferences.phtml:662
 msgid "Unique individual facts"
-msgstr "Jedinečné osobní údaje"
+msgstr "Jedinečná fakta k osobě"
 
 #: resources/views/admin/trees-preferences.phtml:811
 msgid "Unique repository facts"
-msgstr "Jedinečné údaje o repozitářích"
+msgstr "Jedinečná fakta k repozitářům"
 
 #: resources/views/admin/trees-preferences.phtml:770
 msgid "Unique source facts"
-msgstr "Jedinečné údaje k pramenům"
+msgstr "Jedinečná fakta k pramenům"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:54
@@ -16063,7 +16063,7 @@ msgstr "Tento rodokmen můžete přečíslovat."
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:160
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr "Přístup k určitému záznamu, skutečnosti nebo události můžete nastavit tak, že k nim přidáte omezení. Jestliže tyto prvky nemají nastaveno žádné omezení, platí následující přednastavená omezení."
+msgstr "Přístup k určitému záznamu, faktu nebo události můžete nastavit tak, že k nim přidáte omezení. Jestliže záznam, fakt, nebo událost nemá nastaveno žádné omezení, platí následující přednastavená omezení."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:70
@@ -16180,7 +16180,7 @@ msgstr "Nejmladší matka"
 
 #: resources/views/modules/clippings/show.phtml:15
 msgid "Your clippings cart is empty."
-msgstr "Vaše Schránka výstřižků je prázdná."
+msgstr "Vaše schránka výstřižků je prázdná."
 
 #: resources/views/contact-page.phtml:28
 #: resources/views/setup/step-5-administrator.phtml:36
@@ -16837,7 +16837,7 @@ msgstr "exportovat soubor"
 #: app/Http/Controllers/AdminTreesController.php:760
 #: resources/xml/reports/fact_sources.xml:6
 msgid "facts"
-msgstr "údaje"
+msgstr "fakta"
 
 #: app/Functions/Functions.php:618
 msgid "father"
