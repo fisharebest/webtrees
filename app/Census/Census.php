@@ -37,7 +37,7 @@ class Census
                     new CensusOfCzechRepublic(),
                     new CensusOfSlovakia(),
                     new CensusOfDenmark(),
-                    new CensusOfDeutschland(),
+                    new CensusOfMecklenburg(),
                     new CensusOfEngland(),
                     new CensusOfFrance(),
                     new CensusOfScotland(),
@@ -54,7 +54,7 @@ class Census
                     new CensusOfUnitedStates(),
                     new CensusOfCzechRepublic(),
                     new CensusOfDenmark(),
-                    new CensusOfDeutschland(),
+                    new CensusOfMecklenburg(),
                     new CensusOfFrance(),
                     new CensusOfSlovakia(),
                 ];
@@ -64,7 +64,7 @@ class Census
                     new CensusOfUnitedStates(),
                     new CensusOfCzechRepublic(),
                     new CensusOfDenmark(),
-                    new CensusOfDeutschland(),
+                    new CensusOfMecklenburg(),
                     new CensusOfEngland(),
                     new CensusOfFrance(),
                     new CensusOfScotland(),
@@ -78,7 +78,7 @@ class Census
                     new CensusOfFrance(),
                     new CensusOfCzechRepublic(),
                     new CensusOfDenmark(),
-                    new CensusOfDeutschland(),
+                    new CensusOfMecklenburg(),
                     new CensusOfEngland(),
                     new CensusOfScotland(),
                     new CensusOfSlovakia(),
@@ -89,7 +89,7 @@ class Census
             case 'da':
                 return [
                     new CensusOfDenmark(),
-                    new CensusOfDeutschland(),
+                    new CensusOfMecklenburg(),
                     new CensusOfCzechRepublic(),
                     new CensusOfEngland(),
                     new CensusOfFrance(),
@@ -101,7 +101,7 @@ class Census
 
             case 'de':
                 return [
-                    new CensusOfDeutschland(),
+                    new CensusOfMecklenburg(),
                     new CensusOfCzechRepublic(),
                     new CensusOfDenmark(),
                     new CensusOfEngland(),
@@ -117,7 +117,7 @@ class Census
                     new CensusOfSlovakia(),
                     new CensusOfCzechRepublic(),
                     new CensusOfDenmark(),
-                    new CensusOfDeutschland(),
+                    new CensusOfMecklenburg(),
                     new CensusOfEngland(),
                     new CensusOfFrance(),
                     new CensusOfScotland(),
@@ -131,7 +131,7 @@ class Census
                     new CensusOfEngland(),
                     new CensusOfScotland(),
                     new CensusOfWales(),
-                    new CensusOfDeutschland(),
+                    new CensusOfMecklenburg(),
                     new CensusOfFrance(),
                     new CensusOfCzechRepublic(),
                     new CensusOfSlovakia(),

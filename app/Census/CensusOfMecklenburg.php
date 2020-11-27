@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfDeutschland extends Census implements CensusPlaceInterface
+class CensusOfMecklenburg extends Census implements CensusPlaceInterface
 {
     /**
      * All available censuses for this census place.
@@ -32,11 +32,11 @@ class CensusOfDeutschland extends Census implements CensusPlaceInterface
     public function allCensusDates(): array
     {
         return [
-            new CensusOfDeutschland1819(),
-            new CensusOfDeutschland1867(),
-            new CensusOfDeutschlandNL1867(),
-            new CensusOfDeutschland1900(),
-            new CensusOfDeutschland1919(),
+            new CensusOfMecklenburg1819(),
+            new CensusOfMecklenburg1867(),
+            new CensusOfMecklenburg1867NL(),
+            new CensusOfMecklenburg1900(),
+            new CensusOfMecklenburg1919(),
         ];
     }
 
@@ -47,7 +47,7 @@ class CensusOfDeutschland extends Census implements CensusPlaceInterface
      */
     public function censusPlace(): string
     {
-        return 'Deutschland';
+        return 'Mecklenburg';
     }
 
     /**

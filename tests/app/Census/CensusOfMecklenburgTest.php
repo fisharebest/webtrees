@@ -22,20 +22,20 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CensusOfDeutschland
+ * Test harness for the class CensusOfMecklenburg
  */
-class CensusOfDeutschlandTest extends TestCase
+class CensusOfMecklenburgTest extends TestCase
 {
     /**
      * Test the census place
      *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland
+     * @covers \Fisharebest\Webtrees\Census\CensusOfMecklenburg
      *
      * @return void
      */
     public function testPlace(): void
     {
-        $census = new CensusOfDeutschland();
+        $census = new CensusOfMecklenburg();
 
         $this->assertSame('Deutschland', $census->censusPlace());
     }
@@ -43,13 +43,13 @@ class CensusOfDeutschlandTest extends TestCase
     /**
      * Test the census language
      *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic
+     * @covers \Fisharebest\Webtrees\Census\CensusOfMecklenburg
      *
      * @return void
      */
     public function testLanguage(): void
     {
-        $census = new CensusOfDeutschland();
+        $census = new CensusOfMecklenburg();
 
         $this->assertSame('de', $census->censusLanguage());
     }
@@ -57,21 +57,21 @@ class CensusOfDeutschlandTest extends TestCase
     /**
      * Test the census dates
      *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland
+     * @covers \Fisharebest\Webtrees\Census\CensusOfMecklenburg
      *
      * @return void
      */
     public function testAllDates(): void
     {
-        $census = new CensusOfDeutschland();
+        $census = new CensusOfMecklenburg();
 
         $census_dates = $census->allCensusDates();
 
         $this->assertCount(5, $census_dates);
-        $this->assertInstanceOf(CensusOfDeutschland1819::class, $census_dates[0]);
-        $this->assertInstanceOf(CensusOfDeutschland1867::class, $census_dates[1]);
-        $this->assertInstanceOf(CensusOfDeutschlandNL1867::class, $census_dates[2]);
-        $this->assertInstanceOf(CensusOfDeutschland1900::class, $census_dates[3]);
-        $this->assertInstanceOf(CensusOfDeutschland1919::class, $census_dates[4]);
+        $this->assertInstanceOf(CensusOfMecklenburg1819::class, $census_dates[0]);
+        $this->assertInstanceOf(CensusOfMecklenburg1867::class, $census_dates[1]);
+        $this->assertInstanceOf(CensusOfMecklenburg1867NL::class, $census_dates[2]);
+        $this->assertInstanceOf(CensusOfMecklenburg1900::class, $census_dates[3]);
+        $this->assertInstanceOf(CensusOfMecklenburg1919::class, $census_dates[4]);
     }
 }

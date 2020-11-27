@@ -40,7 +40,7 @@ class CensusTest extends TestCase
         $this->assertInstanceOf(CensusOfEngland::class, $censuses[1]);
         $this->assertInstanceOf(CensusOfScotland::class, $censuses[2]);
         $this->assertInstanceOf(CensusOfWales::class, $censuses[3]);
-        $this->assertInstanceOf(CensusOfDeutschland::class, $censuses[4]);
+        $this->assertInstanceOf(CensusOfMecklenburg::class, $censuses[4]);
         $this->assertInstanceOf(CensusOfFrance::class, $censuses[5]);
         $this->assertInstanceOf(CensusOfCzechRepublic::class, $censuses[6]);
         $this->assertInstanceOf(CensusOfSlovakia::class, $censuses[7]);

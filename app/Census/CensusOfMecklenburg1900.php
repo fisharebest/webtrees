@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfDeutschland1900 extends CensusOfDeutschland implements CensusInterface
+class CensusOfMecklenburg1900 extends CensusOfMecklenburg implements CensusInterface
 {
     /**
      * When did this census occur.

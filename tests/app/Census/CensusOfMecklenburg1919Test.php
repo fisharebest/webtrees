@@ -22,20 +22,20 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CensusOfDeutschland1919
+ * Test harness for the class CensusOfMecklenburg1919
  */
-class CensusOfDeutschland1919Test extends TestCase
+class CensusOfMecklenburg1919Test extends TestCase
 {
     /**
      * Test the census place and date
      *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland1919
+     * @covers \Fisharebest\Webtrees\Census\CensusOfMecklenburg1919
      *
      * @return void
      */
     public function testPlaceAndDate(): void
     {
-        $census = new CensusOfDeutschland1919();
+        $census = new CensusOfMecklenburg1919();
 
         $this->assertSame('Mecklenburg-Schwerin, Deutschland', $census->censusPlace());
         $this->assertSame('08 OCT 1919', $census->censusDate());
@@ -44,14 +44,14 @@ class CensusOfDeutschland1919Test extends TestCase
     /**
      * Test the census columns
      *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland1919
+     * @covers \Fisharebest\Webtrees\Census\CensusOfMecklenburg1919
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
      *
      * @return void
      */
     public function testColumns(): void
     {
-        $census  = new CensusOfDeutschland1919();
+        $census  = new CensusOfMecklenburg1919();
         $columns = $census->columns();
 
         $this->assertCount(17, $columns);
