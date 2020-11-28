@@ -37,7 +37,7 @@ class CensusOfMecklenburgTest extends TestCase
     {
         $census = new CensusOfMecklenburg();
 
-        $this->assertSame('Deutschland', $census->censusPlace());
+        $this->assertSame('Mecklenburg', $census->censusPlace());
     }
 
     /**
