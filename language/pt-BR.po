@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-09 18:04+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Portuguese (Brazil) <http://translate.webtrees.net/projects/"
+"PO-Revision-Date: 2020-12-08 04:04+0000\n"
+"Last-Translator: Fosstributor <fosstributor@protonmail.com>\n"
+"Language-Team: Portuguese (Brazil) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/pt_BR/>\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
@@ -810,7 +810,7 @@ msgstr "Uma lista de alterações que necessitam de aprovação do moderador, e 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
 msgid "A list of frequently asked questions and answers."
-msgstr "Uma lista de perguntas e respostas freqüentemente feitas."
+msgstr "Uma lista de perguntas e respostas frequentemente feitas."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:49
@@ -840,7 +840,7 @@ msgstr "Uma lista de aniversários que ocorrerão em um futuro próximo."
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
 msgid "A list of the most popular given names."
-msgstr "Uma lista dos nomes mais populares."
+msgstr "Uma lista dos nomes próprios mais populares."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
@@ -1147,7 +1147,7 @@ msgstr "Aban"
 #: admin_trees_config.php:1505 admin_trees_config.php:1507
 #: admin_trees_config.php:1511
 msgid "Abbreviate place names"
-msgstr "Nomes de locais abreviados"
+msgstr "Abreviar nomes de locais"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:118
@@ -1274,11 +1274,11 @@ msgstr "Adicionar novo irmão ou irmã"
 
 #: edit_interface.php:496
 msgid "Add a child"
-msgstr "Adicionar um novo filho"
+msgstr "Adicionar filho(a)"
 
 #: app/Module/RelativesTabModule.php:398 edit_interface.php:575
 msgid "Add a child to create a one-parent family"
-msgstr "Adicionar um filho para criar família com pai solteiro"
+msgstr "Adicionar filho(a) para criar família com pai solteiro"
 
 #: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
@@ -2622,7 +2622,7 @@ msgstr "Berna, Suíça"
 
 #: app/GedcomCode/GedcomCodeRela.php:75
 msgid "Best man"
-msgstr "Padrinho"
+msgstr "Padrinho de casamento"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6707
@@ -5830,7 +5830,7 @@ msgstr "F.A.B."
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:34
 msgid "FAQ"
-msgstr "Perguntas Mais Freqüentes"
+msgstr "Perguntas Mais Frequentes"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:444
@@ -6261,7 +6261,7 @@ msgstr "Nome do arquivo no servidor"
 #: addmedia.php:161 addmedia.php:295 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr "Não são permitidos nomes de aquivos contendo o caracter “%s”."
+msgstr "Não são permitidos nomes de arquivos contendo o caractere “%s”."
 
 #: addmedia.php:165 addmedia.php:299 admin_media_upload.php:122
 #, php-format
@@ -6317,7 +6317,7 @@ msgstr "Localizar um caracter especial"
 
 #: relationship.php:132
 msgid "Find all possible relationships"
-msgstr "Encontrar todos os relacionamentos possíveis"
+msgstr "Encontrar todos os parentescos possíveis"
 
 #: app/Functions/FunctionsPrint.php:687 app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
@@ -6336,16 +6336,16 @@ msgstr "Encontrar duplicados"
 
 #: relationship.php:134
 msgid "Find other relationships"
-msgstr "Encontrar outros relacionamentos"
+msgstr "Encontrar outros parentescos"
 
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr "Procurar relacionamentos através de antepassados"
+msgstr "Procurar relações de parentesco através de antepassados"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
-msgstr "Encontrar o relacionamento mais próximo"
+msgstr "Encontrar o parentesco mais próximo"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
@@ -6555,7 +6555,7 @@ msgstr "Territórios Austrais Franceses"
 #: app/Module/FrequentlyAskedQuestionsModule.php:363
 #: app/Module/FrequentlyAskedQuestionsModule.php:405
 msgid "Frequently asked questions"
-msgstr "Perguntas Mais Freqüentes"
+msgstr "Perguntas Mais Frequentes"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:169
@@ -6810,12 +6810,12 @@ msgstr "Gilbert, Arizona, Estados Unidos"
 
 #: search.php:230
 msgid "Given name"
-msgstr "Nome"
+msgstr "Nome próprio"
 
 #. I18N: gedcom tag GIVN
 #: app/GedcomTag.php:504
 msgid "Given names"
-msgstr "Nomes"
+msgstr "Nomes próprios"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
 msgid "Godchild"
@@ -7220,7 +7220,7 @@ msgstr "Houston, Texas, Estados Unidos"
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:188
 msgid "How much recursion to use when searching for relationships"
-msgstr "Quantidade de interações para utilizar na pesquisa de relaçionamento"
+msgstr "Quantidade de interações para utilizar na pesquisa de parentesco"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6775
@@ -7296,7 +7296,9 @@ msgstr "Se uma pessoa não tem um sobrenome, não é necessário o uso de barras
 #: help_text.php:226
 #, php-format
 msgid "If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
-msgstr "Se uma pessoa tem dois sobrenomes separados, ambos deveriam estar cercados por barras: <%s>José Antonio /Souza/ /Silva/<%s>"
+msgstr ""
+"Se uma pessoa tem dois sobrenomes separados, ambos devem estar cercados por "
+"barras: <%s>José Antonio /Souza/ /Silva/<%s>"
 
 #: help_text.php:232
 #, php-format
@@ -8337,7 +8339,7 @@ msgstr "Localização"
 
 #: app/Module/GoogleMapsModule.php:3896
 msgid "Location not removed: this location contains sub-locations"
-msgstr "Local não removido: este local deve conter sub-locais"
+msgstr "Local não removido: este local contém sublocais"
 
 #: app/GedcomCode/GedcomCodeRela.php:191
 msgid "Lodger"
@@ -8366,7 +8368,12 @@ msgstr "Londres, Inglaterra"
 #. I18N: Help text for the “Maximum number of surnames on individual list” configuration setting
 #: admin_trees_config.php:1176
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
-msgstr "Longas listas de pessoas com o mesmo sobrenome podem ser quebradas em sublistas menores de acordo com a primeira letra do nome da pessoa.<br><br>Esta opção determina quando a sublistagem de sobrenomes ocorrerá. Para desabilitar sublistagem completmante, defina esta opção para zero."
+msgstr ""
+"Longas listas de pessoas com o mesmo sobrenome podem ser quebradas em "
+"sublistas menores de acordo com a primeira letra do nome próprio da "
+"pessoa.<br><br>Esta opção determina quando a sublistagem de sobrenomes "
+"ocorrerá. Para desabilitar sublistagem completmante, defina esta opção para "
+"zero."
 
 #: statistics.php:251
 msgid "Longest marriage"
@@ -10100,7 +10107,7 @@ msgstr "Número de gerações"
 #. I18N: ... to show in a list
 #: app/Module/TopGivenNamesModule.php:146
 msgid "Number of given names"
-msgstr "Número de nomes dados"
+msgstr "Número de nomes próprios"
 
 #. I18N: gedcom tag NMR
 #: app/GedcomTag.php:634
@@ -11429,7 +11436,7 @@ msgstr "Relação Paterna"
 
 #: app/Module/RelationshipsChartModule.php:83
 msgid "Relationship to me"
-msgstr "Relacionamento Comigo"
+msgstr "Parentesco comigo"
 
 #. I18N: gedcom tag _MREL
 #: app/GedcomTag.php:1667
@@ -11453,13 +11460,13 @@ msgstr "Parentesco: %s"
 #: app/Module/RelationshipsChartModule.php:90
 #: app/Module/RelationshipsChartModule.php:179 relationship.php:59
 msgid "Relationships"
-msgstr "Relacionamentos"
+msgstr "Relações de parentesco"
 
 #. I18N: %s are individual’s names
 #: relationship.php:54
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr "Relacionamentos entre %1$s e %2$s"
+msgstr "Parentesco entre %1$s e %2$s"
 
 #. I18N: gedcom tag RELI
 #: app/GedcomTag.php:724 modules_v3/missing_facts_report/report.xml:26
@@ -11948,7 +11955,9 @@ msgstr "Pesquisar texto/padrão"
 
 #: app/Module/RelationshipsChartModule.php:171
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
-msgstr "Procurar todas as relações possíveis pode consumir muito tempo em árvores complexas."
+msgstr ""
+"Procurar todas as relações de parentesco possíveis pode consumir muito tempo "
+"em árvores complexas."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:333
@@ -12622,7 +12631,7 @@ msgstr "Exibir Hierarquia dos Locais"
 #. I18N: A configuration setting
 #: admin_trees_config.php:484
 msgid "Show private relationships"
-msgstr "Mostrar relacionamentos privados"
+msgstr "Mostrar relações de parentesco privado"
 
 #: search.php:112 search.php:270
 msgid "Show related individuals/families"
@@ -14264,7 +14273,12 @@ msgstr "Esta caixa permite que você altere esse ano do calendário. Digite um a
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2053
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr "Esta é uma lista separada por vírgulas de marcas de fatos GEDCOM que será exibida no formulário de adição/edição. Se você usa alfabetos não-latinos como Hebraico, Greco, Círilico ou Árabe, você pode querer adicionar marcas como _HEB, ROMN, FONE, etc para permitir que você armazene nomes em diferentes alfabetos."
+msgstr ""
+"Esta é uma lista separada por vírgulas de marcas de fatos GEDCOM que será "
+"exibida no formulário de adição/edição. Se você usa alfabetos não-latinos "
+"como Hebraico, Grego, Cirílico ou Árabe, você pode querer adicionar marcas "
+"como _HEB, ROMN, FONE, etc para permitir que você armazene nomes em "
+"diferentes alfabetos."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1815
@@ -14279,7 +14293,12 @@ msgstr "Esta é uma lista separada por vírgulas de tags de fatos GEDCOM que ser
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2082
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Esta é uma lista separada por vírgulas de marcas de fatos GEDCOM que será exibida quando você adicionar ou editar nomes de locais. Se você usa alfabetos não-latinos como Hebraico, Greco, Círilico ou Árabe, você pode querer adicionar marcas como _HEB, ROMN, FONE, etc para permitir que você armazene nomes em diferentes alfabetos."
+msgstr ""
+"Esta é uma lista separada por vírgulas de marcas de fatos GEDCOM que será "
+"exibida quando você adicionar ou editar nomes de locais. Se você usa "
+"alfabetos não-latinos como Hebraico, Grego, Cirílico ou Árabe, você pode "
+"querer adicionar marcas como _HEB, ROMN, FONE, etc para permitir que você "
+"armazene nomes em diferentes alfabetos."
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -14340,7 +14359,12 @@ msgstr "Esta é a lista de fatos que podem ser adicionados <u>uma única vez</u>
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:1993
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "Esta é a lista dos fatos GEDCOM que seus usuário podem somente adicionar <u>uma vez</u> aos repositórios. Por exemplo, se NAME está nesta lista, os usuários não conseguirão adicionar mais que um registro NAME a um repositório. Nomes de fato que aparecerem nesta lista não devem aparecer também na lista de <i>Adicionar Fatos ao Repositório</i>."
+msgstr ""
+"Esta é a lista dos fatos GEDCOM que seus usuário podem somente adicionar <u>"
+"uma vez</u> aos repositórios. Por exemplo, se NOME está nesta lista, os "
+"usuários não conseguirão adicionar mais que um registro NOME a um "
+"repositório. Nomes de fato que aparecerem nesta lista não devem aparecer "
+"também na lista de <i>Adicionar Fatos ao Repositório</i>."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:1904
@@ -14498,7 +14522,12 @@ msgstr "Esta opção reterá os registros de links privados. Isto significa que 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:475
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr "ESta opção exibirá os nomes (mas não outros detalhes) de pessoas privadas. Pessoas são privadas se eles ainda estão vivos ou se as restrições de privacidade foram adicionadas para seus registros individuais. Para ocultar um nome específico, adicione uma restrição de privacidade para o registro de nome."
+msgstr ""
+"Esta opção exibirá os nomes (mas não outros detalhes) de pessoas privadas. "
+"Pessoas são privadas se eles ainda estão vivos ou se as restrições de "
+"privacidade foram adicionadas para seus registros individuais. Para ocultar "
+"um nome específico, adicione uma restrição de privacidade para o registro de "
+"nome."
 
 #: help_text.php:286
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
@@ -14866,8 +14895,8 @@ msgstr "Tonga"
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "%s nome mais frequente"
-msgstr[1] "%s nomes mais frequentes"
+msgstr[0] "%s nome próprio mais frequente"
+msgstr[1] "%s nomes próprios mais frequentes"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:97
@@ -14880,12 +14909,12 @@ msgstr[1] "%s sobrenomes mais frequentes"
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:71
 msgid "Top given name"
-msgstr "Nome mais frequente"
+msgstr "Nome próprio mais frequente"
 
 #. I18N: Name of a module. Top=Most common
 #: app/Module/TopGivenNamesModule.php:31 statistics.php:201
 msgid "Top given names"
-msgstr "Nomes mais populares"
+msgstr "Nomes próprios mais populares"
 
 #: app/Module/GoogleMapsModule.php:3944 app/Module/GoogleMapsModule.php:4020
 #: placelist.php:107
@@ -14957,7 +14986,7 @@ msgstr "Total de mulheres"
 
 #: statistics.php:193
 msgid "Total given names"
-msgstr "Total de nomes"
+msgstr "Total de nomes próprios"
 
 #: modules_v3/bdm_report/report.xml:210 modules_v3/birth_report/report.xml:66
 #: modules_v3/cemetery_report/report.xml:88
@@ -15438,7 +15467,10 @@ msgstr "Nome de usuário ou endereço de email"
 
 #: admin_users.php:330 edituser.php:164 login.php:444
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "Nomes de usuários são insensíveis ao caso e ignora letras acentuadas, de modo que \"chloe\", \"chloë\", e \"Chloe\" são considerados o mesmo."
+msgstr ""
+"Nomes de usuários são insensíveis às letras maiúsculas e minúsculas e ignora "
+"letras acentuadas, de modo que \"jose\", \"josé\", e \"Jose\" são "
+"considerados o mesmo."
 
 #. I18N: Menu entry
 #: admin.php:643 admin.php:651 app/Theme/AdministrationTheme.php:162
@@ -15786,7 +15818,11 @@ msgstr "Quando enviar esta mensagem você receberá uma cópia no endereço de e
 
 #: admin_users.php:599
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr "Quando um usuário é associado a um registro individual em uma árvore de família e tem um papel de membro, editor, ou moderador, você pode impedi-los de acessar os detalhes de parentes distantes vivos. Você pode especificar o número de gerações de relacionamento que o usuário tem permissão para ver."
+msgstr ""
+"Quando um usuário é associado a um registro individual em uma árvore de "
+"família e tem um papel de membro, editor, ou moderador, você pode impedi-los "
+"de acessar os detalhes de parentes distantes vivos. Você pode especificar o "
+"número de gerações de parentesco que o usuário tem permissão para ver."
 
 #: admin_pgv_to_wt.php:163
 msgid "Where is your PhpGedView installation?"
@@ -15848,7 +15884,7 @@ msgstr "Idade da esposa"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 msgid "Wife’s maiden surname becomes new given name"
-msgstr "Sobrenome de solteira da esposa torna-se um novo nome"
+msgstr "Sobrenome de solteira da esposa torna-se um novo nome próprio"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
@@ -19083,7 +19119,7 @@ msgstr "primo de nono grau"
 #: modules_v3/individual_ext_report/report.xml:182
 #: modules_v3/individual_report/report.xml:178
 msgid "no"
-msgstr "Não"
+msgstr "não"
 
 #. I18N: None of the other options
 #: admin_site_config.php:111 admin_trees_config.php:63
@@ -20124,7 +20160,7 @@ msgstr "anos"
 #: modules_v3/individual_ext_report/report.xml:179
 #: modules_v3/individual_report/report.xml:175
 msgid "yes"
-msgstr "Sim"
+msgstr "sim"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:91
