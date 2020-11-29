@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-11-29 15:44+0000\nLast-Translator: Fosstributor <fosstributor@protonmail.com>\nLanguage-Team: Portuguese (Brazil) <https://translate.webtrees.net/projects/webtrees/webtrees/pt_BR/>\nLanguage: pt-BR\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-11-29 17:13+0000\nLast-Translator: Fosstributor <fosstributor@protonmail.com>\nLanguage-Team: Portuguese (Brazil) <https://translate.webtrees.net/projects/webtrees/webtrees/pt_BR/>\nLanguage: pt-BR\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -1195,12 +1195,12 @@ msgstr "Adicionar um irmão"
 #: resources/views/family-page-menu.phtml:39
 #: resources/views/modules/relatives/family.phtml:215
 msgid "Add a child"
-msgstr "Adicionar um novo filho"
+msgstr "Adicionar filho(a)"
 
 #: app/Http/Controllers/EditIndividualController.php:59
 #: resources/views/modules/relatives/tab.phtml:137
 msgid "Add a child to create a one-parent family"
-msgstr "Adicionar um filho para criar família com pai solteiro"
+msgstr "Adicionar filho(a) para criar família com pai solteiro"
 
 #: app/Http/Controllers/EditFamilyController.php:59
 #: resources/views/family-page-children.phtml:39
