@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '9fb89da4c328b6bf9f200b9401b8267e02cc38c8',
+    'reference' => 'cbeb9e2e88c113def1bcd2b0e903a885258776aa',
     'name' => 'fisharebest/webtrees',
   ),
   'versions' => 
@@ -80,12 +80,12 @@ private static $installed = array (
     ),
     'egulias/email-validator' => 
     array (
-      'pretty_version' => '2.1.23',
-      'version' => '2.1.23.0',
+      'pretty_version' => '2.1.24',
+      'version' => '2.1.24.0',
       'aliases' => 
       array (
       ),
-      'reference' => '5fa792ad1853ae2bc60528dd3e5cbf4542d3c1df',
+      'reference' => 'ca90a3291eee1538cd48ff25163240695bd95448',
     ),
     'ezyang/htmlpurifier' => 
     array (
@@ -98,12 +98,12 @@ private static $installed = array (
     ),
     'fig/http-message-util' => 
     array (
-      'pretty_version' => '1.1.4',
-      'version' => '1.1.4.0',
+      'pretty_version' => '1.1.5',
+      'version' => '1.1.5.0',
       'aliases' => 
       array (
       ),
-      'reference' => '3242caa9da7221a304b8f84eb9eaddae0a7cf422',
+      'reference' => '9d94dc0154230ac39e5bf89398b324a86f63f765',
     ),
     'fisharebest/algorithm' => 
     array (
@@ -148,7 +148,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '9fb89da4c328b6bf9f200b9401b8267e02cc38c8',
+      'reference' => 'cbeb9e2e88c113def1bcd2b0e903a885258776aa',
     ),
     'guzzlehttp/guzzle' => 
     array (
@@ -296,30 +296,30 @@ private static $installed = array (
     ),
     'nesbot/carbon' => 
     array (
-      'pretty_version' => '2.41.5',
-      'version' => '2.41.5.0',
+      'pretty_version' => '2.42.0',
+      'version' => '2.42.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c4a9caf97cfc53adfc219043bcecf42bc663acee',
+      'reference' => 'd0463779663437392fe42ff339ebc0213bd55498',
     ),
     'nyholm/psr7' => 
     array (
-      'pretty_version' => '1.3.1',
-      'version' => '1.3.1.0',
+      'pretty_version' => '1.3.2',
+      'version' => '1.3.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '21b71a31eab5c0c2caf967b9c0fd97020254ed75',
+      'reference' => 'a272953743c454ac4af9626634daaf5ab3ce1173',
     ),
     'nyholm/psr7-server' => 
     array (
-      'pretty_version' => '1.0.0',
-      'version' => '1.0.0.0',
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '862529918766fb3825116d39e96feabf1e4bee4e',
+      'reference' => '5c134aeb5dd6521c7978798663470dabf0528c96',
     ),
     'oscarotero/middleland' => 
     array (
@@ -484,12 +484,12 @@ private static $installed = array (
     ),
     'symfony/cache' => 
     array (
-      'pretty_version' => 'v4.4.16',
-      'version' => '4.4.16.0',
+      'pretty_version' => 'v4.4.17',
+      'version' => '4.4.17.0',
       'aliases' => 
       array (
       ),
-      'reference' => '7ab1528cac0328566895ad303e2a5111aef2b440',
+      'reference' => '6d330ca81ce5c98f22224c980507a7f7a7df82e8',
     ),
     'symfony/cache-contracts' => 
     array (
@@ -509,12 +509,12 @@ private static $installed = array (
     ),
     'symfony/expression-language' => 
     array (
-      'pretty_version' => 'v4.4.16',
-      'version' => '4.4.16.0',
+      'pretty_version' => 'v4.4.17',
+      'version' => '4.4.17.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'b0b1ef4d86a968843748efd44c95abc0dd974de4',
+      'reference' => '772f99e7807330026fa9128a4992ee239bb4c213',
     ),
     'symfony/polyfill-ctype' => 
     array (
@@ -590,12 +590,12 @@ private static $installed = array (
     ),
     'symfony/translation' => 
     array (
-      'pretty_version' => 'v4.4.16',
-      'version' => '4.4.16.0',
+      'pretty_version' => 'v4.4.17',
+      'version' => '4.4.17.0',
       'aliases' => 
       array (
       ),
-      'reference' => '73095716af79f610f3b6338b911357393fdd10ab',
+      'reference' => '84821e6a14a637e817f25d11147388695b6f790a',
     ),
     'symfony/translation-contracts' => 
     array (
@@ -615,12 +615,12 @@ private static $installed = array (
     ),
     'symfony/var-exporter' => 
     array (
-      'pretty_version' => 'v4.4.16',
-      'version' => '4.4.16.0',
+      'pretty_version' => 'v4.4.17',
+      'version' => '4.4.17.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'a07f9c350ebe30dadd30505d2b05d7c9bbcef2b1',
+      'reference' => 'f04b7d187b120e0a44c18a2d479c2dd0abe99d9c',
     ),
     'tecnickcom/tcpdf' => 
     array (
