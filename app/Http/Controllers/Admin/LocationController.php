@@ -216,9 +216,9 @@ class LocationController extends AbstractAdminController
 
         $parent_id = (int) $request->getQueryParams()['parent_id'];
         $place_id  = (int) $request->getQueryParams()['place_id'];
-        $lat       = round($params['new_place_lati'], 5); // 5 decimal places (locate to within about 1 metre)
+        $lat       = round((float) $params['new_place_lati'], 5); // 5 decimal places (locate to within about 1 metre)
         $lat       = ($lat < 0 ? 'S' : 'N') . abs($lat);
-        $lng       = round($params['new_place_long'], 5);
+        $lng       = round((float) $params['new_place_long'], 5);
         $lng       = ($lng < 0 ? 'W' : 'E') . abs($lng);
         $hierarchy = $this->getHierarchy($parent_id);
         $level     = count($hierarchy);
