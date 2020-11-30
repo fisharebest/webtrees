@@ -80,7 +80,7 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
 
         if ($user instanceof User) {
             $token  = Str::random(self::TOKEN_LENGTH);
-            $expire = (string) Carbon::now()->addHour()->timestamp;
+            $expire = (string) Carbon::now()->addHour()->getTimestamp();
             $url    = route(PasswordResetPage::class, [
                 'token' => $token,
                 'tree'  => $tree instanceof Tree ? $tree->name() : null,

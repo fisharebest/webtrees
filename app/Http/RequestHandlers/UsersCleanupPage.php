@@ -52,8 +52,8 @@ class UsersCleanupPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $inactive_threshold   = Carbon::now()->subMonths(6)->timestamp;
-        $unverified_threshold = Carbon::now()->subDays(7)->timestamp;
+        $inactive_threshold   = Carbon::now()->subMonths(6)->getTimestamp();
+        $unverified_threshold = Carbon::now()->subDays(7)->getTimestamp();
 
         $inactive_users = $this->user_service->all()
             ->filter($this->user_service->filterInactive($inactive_threshold))

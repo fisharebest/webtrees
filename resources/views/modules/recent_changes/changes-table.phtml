@@ -82,7 +82,7 @@ use Illuminate\Support\Collection;
                         <a href="<?= e($row->record->url()) ?>"><?= $row->record->fullName() ?></a>
                     </td>
 
-                    <td data-sort="<?= $row->time->timestamp ?>" class="<?= $show_date ? '' : 'd-none' ?>">
+                    <td data-sort="<?= $row->time->getTimestamp() ?>" class="<?= $show_date ? '' : 'd-none' ?>">
                         <?= view('components/datetime', ['timestamp' => $row->time]) ?>
                     </td>
 

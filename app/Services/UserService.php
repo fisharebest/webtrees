@@ -128,7 +128,7 @@ class UserService
             ->where('us1.setting_value', '=', $token)
             ->join('user_setting AS us2', 'us2.user_id', '=', 'user.user_id')
             ->where('us2.setting_name', '=', 'password-token-expire')
-            ->where('us2.setting_value', '>', Carbon::now()->timestamp)
+            ->where('us2.setting_value', '>', Carbon::now()->getTimestamp())
             ->select(['user.*'])
             ->get()
             ->map(User::rowMapper())

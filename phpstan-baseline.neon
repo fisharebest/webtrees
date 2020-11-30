@@ -455,17 +455,17 @@ parameters:
 			path: app/Http/Middleware/BaseUrl.php
 
 		-
+			message: "#^Parameter \\#1 \\$scheme of method Psr\\\\Http\\\\Message\\\\UriInterface\\:\\:withScheme\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Http/Middleware/BaseUrl.php
+
+		-
 			message: "#^Parameter \\#1 \\$host of method Psr\\\\Http\\\\Message\\\\UriInterface\\:\\:withHost\\(\\) expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/Middleware/BaseUrl.php
 
 		-
 			message: "#^Parameter \\#1 \\$port of method Psr\\\\Http\\\\Message\\\\UriInterface\\:\\:withPort\\(\\) expects int\\|null, int\\|false\\|null given\\.$#"
-			count: 1
-			path: app/Http/Middleware/BaseUrl.php
-
-		-
-			message: "#^Parameter \\#1 \\$scheme of method Psr\\\\Http\\\\Message\\\\UriInterface\\:\\:withScheme\\(\\) expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/Middleware/BaseUrl.php
 
@@ -800,6 +800,11 @@ parameters:
 			path: app/Module/FanChartModule.php
 
 		-
+			message: "#^Parameter \\#2 \\$col of function imagecolortransparent expects int, int\\|false given\\.$#"
+			count: 1
+			path: app/Module/FanChartModule.php
+
+		-
 			message: "#^Parameter \\#1 \\$image of method Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule\\:\\:imageColor\\(\\) expects resource, resource\\|false given\\.$#"
 			count: 4
 			path: app/Module/FanChartModule.php
@@ -811,6 +816,11 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$im of function imagefilledrectangle expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: app/Module/FanChartModule.php
+
+		-
+			message: "#^Parameter \\#6 \\$col of function imagefilledrectangle expects int, int\\|false given\\.$#"
 			count: 1
 			path: app/Module/FanChartModule.php
 
@@ -836,6 +846,11 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$im of function imagedestroy expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: app/Module/FanChartModule.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule\\:\\:imageColor\\(\\) should return int but returns int\\|false\\.$#"
 			count: 1
 			path: app/Module/FanChartModule.php
 
@@ -972,6 +987,36 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
+			path: modules_v4/ghezibde-gallery.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/ghezibde.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example-report.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example-middleware.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/ghezibde-history.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
 			path: modules_v4/ghezibde-forum.disable/module.php
 
 		-
@@ -982,37 +1027,12 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-middleware.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/ghezibde-gallery.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-report.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/ghezibde.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/ghezibde-history.disable/module.php
+			path: modules_v4/descendants_count/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
 			path: modules_v4/example-footer.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1295,6 +1315,11 @@ parameters:
 			path: app/Report/AbstractRenderer.php
 
 		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\AbstractRenderer\\:\\:getStyle\\(\\) should return array but returns array\\<string\\>\\|false\\.$#"
+			count: 1
+			path: app/Report/AbstractRenderer.php
+
+		-
 			message: "#^Array \\(array\\<Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\>\\) does not accept Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\|string\\.$#"
 			count: 3
 			path: app/Report/HtmlRenderer.php
@@ -1482,11 +1507,6 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$str of function strip_tags expects string, string\\|null given\\.$#"
 			count: 2
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
-			count: 1
 			path: app/Report/ReportParserGenerate.php
 
 		-
