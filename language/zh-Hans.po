@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2020-11-02 15:23+0000\n"
+"PO-Revision-Date: 2020-12-08 04:04+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
@@ -2481,7 +2481,7 @@ msgstr "所有的家庭事件"
 
 #: login.php:415 app/Http/Controllers/Auth/RegisterController.php:210
 msgid "All fields must be completed."
-msgstr "所有项必须完成。"
+msgstr "所有必填项必须全部填写。"
 
 #: admin_site_upgrade.php:346
 msgid "All files have read and write permission."
@@ -20643,7 +20643,7 @@ msgstr "从这台服务器发送自动电子邮件时，在\"发件人\"字段�
 #: app/Exceptions/NoteNotFoundException.php:33
 #: app/Exceptions/NoteAccessDeniedException.php:33,
 msgid "This note does not exist or you do not have permission to view it."
-msgstr "这个记录不存在或您无权查看它。"
+msgstr "您无权查看它或是这条记录不存在。"
 
 #: note.php:46 resources/views/note-page.phtml:10
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
