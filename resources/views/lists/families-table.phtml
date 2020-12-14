@@ -396,7 +396,7 @@ $marriageAgeData = [
 
                 <!-- Filter by roots/leaves -->
                 <td hidden>
-                    <?php if (!$husb->childFamilies() && !$wife->childFamilies()) : ?>
+                    <?php if ($husb->childFamilies()->isEmpty() && $wife->childFamilies()->isEmpty()) : ?>
                         R
                     <?php elseif (!$husb->isDead() && !$wife->isDead() && $family->numberOfChildren() === 0) : ?>
                         L
