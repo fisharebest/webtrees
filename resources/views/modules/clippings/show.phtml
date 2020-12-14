@@ -33,7 +33,7 @@ use Fisharebest\Webtrees\I18N;
                         </a>
                     </td>
                     <td>
-                        <form method="post" action="<?= e(route('module', ['module' => 'clippings', 'action' => 'Remove', 'tree' => $tree->name(), 'xref' => $record->xref()])) ?>">
+                        <form method="post" action="<?= e(route('module', ['module' => $module, 'action' => 'Remove', 'tree' => $tree->name(), 'xref' => $record->xref()])) ?>">
                             <?= csrf_field() ?>
                             <button type="submit" class="btn btn-link" title="<?= I18N::translate('Remove') ?>">
                                 <?= view('icons/delete') ?>

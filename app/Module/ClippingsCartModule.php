@@ -433,6 +433,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         assert($tree instanceof Tree);
 
         return $this->viewResponse('modules/clippings/show', [
+            'module'  => $this->name(),
             'records' => $this->allRecordsInCart($tree),
             'title'   => I18N::translate('Family tree clippings cart'),
             'tree'    => $tree,
