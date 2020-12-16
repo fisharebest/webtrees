@@ -167,7 +167,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                 'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => $this->configUrl($tree, $context, $block_id),
-                'title'      => strip_tags($title),
+                'title'      => $title,
                 'content'    => $content,
             ]);
         }
