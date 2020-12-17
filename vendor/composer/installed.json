@@ -1908,17 +1908,17 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.42.0",
-            "version_normalized": "2.42.0.0",
+            "version": "2.43.0",
+            "version_normalized": "2.43.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "d0463779663437392fe42ff339ebc0213bd55498"
+                "reference": "d32c57d8389113742f4a88725a170236470012e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d0463779663437392fe42ff339ebc0213bd55498",
-                "reference": "d0463779663437392fe42ff339ebc0213bd55498",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d32c57d8389113742f4a88725a170236470012e2",
+                "reference": "d32c57d8389113742f4a88725a170236470012e2",
                 "shasum": ""
             },
             "require": {
@@ -1937,7 +1937,7 @@
                 "phpunit/phpunit": "^7.5 || ^8.0",
                 "squizlabs/php_codesniffer": "^3.4"
             },
-            "time": "2020-11-28T14:25:28+00:00",
+            "time": "2020-12-17T20:55:32+00:00",
             "bin": [
                 "bin/carbon"
             ],
@@ -2153,30 +2153,30 @@
         },
         {
             "name": "oscarotero/middleland",
-            "version": "v1.0.0",
-            "version_normalized": "1.0.0.0",
+            "version": "v1.0.1",
+            "version_normalized": "1.0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/middleland.git",
-                "reference": "abd480afe264714095d043edd76c542a99f1695b"
+                "reference": "4848543d59f753aa3352c52d88c66f978debafb2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/middleland/zipball/abd480afe264714095d043edd76c542a99f1695b",
-                "reference": "abd480afe264714095d043edd76c542a99f1695b",
+                "url": "https://api.github.com/repos/oscarotero/middleland/zipball/4848543d59f753aa3352c52d88c66f978debafb2",
+                "reference": "4848543d59f753aa3352c52d88c66f978debafb2",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0",
+                "php": "^7.0|^8.0",
                 "psr/container": "^1.0",
                 "psr/http-server-middleware": "^1.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.0",
-                "phpunit/phpunit": "^6.0",
-                "zendframework/zend-diactoros": "^1.3"
+                "laminas/laminas-diactoros": "^1.3",
+                "phpunit/phpunit": ">=6.0"
             },
-            "time": "2018-01-24T20:41:57+00:00",
+            "time": "2020-12-06T00:59:17+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2204,6 +2204,11 @@
                 "psr-15",
                 "psr-7"
             ],
+            "support": {
+                "email": "oom@oscarotero.com",
+                "issues": "https://github.com/oscarotero/dispatcher/issues",
+                "source": "https://github.com/oscarotero/middleland/tree/v1.0.1"
+            },
             "install-path": "../oscarotero/middleland"
         },
         {
@@ -2864,35 +2869,34 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v6.2.3",
-            "version_normalized": "6.2.3.0",
+            "version": "v6.2.4",
+            "version_normalized": "6.2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "149cfdf118b169f7840bbe3ef0d4bc795d1780c9"
+                "reference": "56f0ab23f54c4ccbb0d5dcc67ff8552e0c98d59e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/149cfdf118b169f7840bbe3ef0d4bc795d1780c9",
-                "reference": "149cfdf118b169f7840bbe3ef0d4bc795d1780c9",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/56f0ab23f54c4ccbb0d5dcc67ff8552e0c98d59e",
+                "reference": "56f0ab23f54c4ccbb0d5dcc67ff8552e0c98d59e",
                 "shasum": ""
             },
             "require": {
-                "egulias/email-validator": "~2.0",
+                "egulias/email-validator": "^2.0",
                 "php": ">=7.0.0",
                 "symfony/polyfill-iconv": "^1.0",
                 "symfony/polyfill-intl-idn": "^1.10",
                 "symfony/polyfill-mbstring": "^1.0"
             },
             "require-dev": {
-                "mockery/mockery": "~0.9.1",
-                "symfony/phpunit-bridge": "^3.4.19|^4.1.8"
+                "mockery/mockery": "^1.0",
+                "symfony/phpunit-bridge": "^4.4|^5.0"
             },
             "suggest": {
-                "ext-intl": "Needed to support internationalized email addresses",
-                "true/punycode": "Needed to support internationalized email addresses, if ext-intl is not installed"
+                "ext-intl": "Needed to support internationalized email addresses"
             },
-            "time": "2019-11-12T09:31:26+00:00",
+            "time": "2020-12-08T18:02:06+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2925,21 +2929,35 @@
                 "mail",
                 "mailer"
             ],
+            "support": {
+                "issues": "https://github.com/swiftmailer/swiftmailer/issues",
+                "source": "https://github.com/swiftmailer/swiftmailer/tree/v6.2.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/swiftmailer/swiftmailer",
+                    "type": "tidelift"
+                }
+            ],
             "install-path": "../swiftmailer/swiftmailer"
         },
         {
             "name": "symfony/cache",
-            "version": "v4.4.17",
-            "version_normalized": "4.4.17.0",
+            "version": "v4.4.18",
+            "version_normalized": "4.4.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "6d330ca81ce5c98f22224c980507a7f7a7df82e8"
+                "reference": "23cc546c9104693d6fce1b3aaa31c1fd47198bdc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache/zipball/6d330ca81ce5c98f22224c980507a7f7a7df82e8",
-                "reference": "6d330ca81ce5c98f22224c980507a7f7a7df82e8",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/23cc546c9104693d6fce1b3aaa31c1fd47198bdc",
+                "reference": "23cc546c9104693d6fce1b3aaa31c1fd47198bdc",
                 "shasum": ""
             },
             "require": {
@@ -2973,7 +2991,7 @@
                 "symfony/http-kernel": "^4.4|^5.0",
                 "symfony/var-dumper": "^4.4|^5.0"
             },
-            "time": "2020-11-16T17:15:10+00:00",
+            "time": "2020-12-10T17:56:42+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -3005,7 +3023,7 @@
                 "psr6"
             ],
             "support": {
-                "source": "https://github.com/symfony/cache/tree/v4.4.17"
+                "source": "https://github.com/symfony/cache/tree/v4.4.18"
             },
             "funding": [
                 {
@@ -3104,17 +3122,17 @@
         },
         {
             "name": "symfony/expression-language",
-            "version": "v4.4.17",
-            "version_normalized": "4.4.17.0",
+            "version": "v4.4.18",
+            "version_normalized": "4.4.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/expression-language.git",
-                "reference": "772f99e7807330026fa9128a4992ee239bb4c213"
+                "reference": "c1763368a38d5061e5aa03160b328075d000291b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/expression-language/zipball/772f99e7807330026fa9128a4992ee239bb4c213",
-                "reference": "772f99e7807330026fa9128a4992ee239bb4c213",
+                "url": "https://api.github.com/repos/symfony/expression-language/zipball/c1763368a38d5061e5aa03160b328075d000291b",
+                "reference": "c1763368a38d5061e5aa03160b328075d000291b",
                 "shasum": ""
             },
             "require": {
@@ -3122,7 +3140,7 @@
                 "symfony/cache": "^3.4|^4.0|^5.0",
                 "symfony/service-contracts": "^1.1|^2"
             },
-            "time": "2020-10-28T20:42:29+00:00",
+            "time": "2020-12-08T16:59:59+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -3150,7 +3168,7 @@
             "description": "Symfony ExpressionLanguage Component",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/expression-language/tree/v4.4.17"
+                "source": "https://github.com/symfony/expression-language/tree/v4.4.18"
             },
             "funding": [
                 {
@@ -3839,17 +3857,17 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v4.4.17",
-            "version_normalized": "4.4.17.0",
+            "version": "v4.4.18",
+            "version_normalized": "4.4.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "84821e6a14a637e817f25d11147388695b6f790a"
+                "reference": "c1001b7d75b3136648f94b245588209d881c6939"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/84821e6a14a637e817f25d11147388695b6f790a",
-                "reference": "84821e6a14a637e817f25d11147388695b6f790a",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/c1001b7d75b3136648f94b245588209d881c6939",
+                "reference": "c1001b7d75b3136648f94b245588209d881c6939",
                 "shasum": ""
             },
             "require": {
@@ -3882,7 +3900,7 @@
                 "symfony/config": "",
                 "symfony/yaml": ""
             },
-            "time": "2020-11-27T06:35:49+00:00",
+            "time": "2020-12-08T16:59:59+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -3910,7 +3928,7 @@
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/translation/tree/v4.4.17"
+                "source": "https://github.com/symfony/translation/tree/v4.4.18"
             },
             "funding": [
                 {
@@ -4008,8 +4026,8 @@
         },
         {
             "name": "symfony/var-exporter",
-            "version": "v4.4.17",
-            "version_normalized": "4.4.17.0",
+            "version": "v4.4.18",
+            "version_normalized": "4.4.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-exporter.git",
@@ -4063,7 +4081,7 @@
                 "serialize"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-exporter/tree/v4.4.17"
+                "source": "https://github.com/symfony/var-exporter/tree/v4.4.18"
             },
             "funding": [
                 {

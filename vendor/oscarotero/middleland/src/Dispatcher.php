@@ -30,7 +30,7 @@ class Dispatcher implements MiddlewareInterface, RequestHandlerInterface
     private $next;
 
     /**
-     * @param MiddlewareInterface[] $middleware
+     * @param MiddlewareInterface[]|string[]|array[]|Closure[] $middleware
      */
     public function __construct(array $middleware, ContainerInterface $container = null)
     {

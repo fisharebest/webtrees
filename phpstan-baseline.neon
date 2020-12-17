@@ -2238,9 +2238,3 @@ parameters:
 			message: "#^Ternary operator condition is always true\\.$#"
 			count: 1
 			path: app/Webtrees.php
-
-		-
-			message: "#^Parameter \\#1 \\$middleware of class Middleland\\\\Dispatcher constructor expects array\\<Psr\\\\Http\\\\Server\\\\MiddlewareInterface\\>, array\\<string\\> given\\.$#"
-			count: 1
-			path: index.php
-

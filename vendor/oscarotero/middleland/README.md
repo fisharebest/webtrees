@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE)
-[![Build Status][ico-travis]][link-travis]
+![Testing][ico-ga]
 [![Quality Score][ico-scrutinizer]][link-scrutinizer]
 
 Simple (but powerful) [PSR-15](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-15-request-handlers.md) middleware dispatcher:
@@ -10,7 +10,7 @@ Simple (but powerful) [PSR-15](https://github.com/php-fig/fig-standards/blob/mas
 ## Requirements
 
 * PHP 7
-* A [PSR-7 Message implementation](http://www.php-fig.org/psr/psr-7/), for example [zend-diactoros](https://github.com/zendframework/zend-diactoros)
+* A [PSR-7 Message implementation](http://www.php-fig.org/psr/psr-7/), for example [laminas-diactoros](https://github.com/laminas/laminas-diactoros)
 * Optionally, a [PSR-11 container](https://github.com/php-fig/container) implementation to create the middleware components on demand.
 
 ## Example
@@ -108,9 +108,8 @@ The MIT License (MIT). Please see [LICENSE](LICENSE) for more information.
 
 [ico-version]: https://img.shields.io/packagist/v/oscarotero/middleland.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/middlewares/oscarotero/middleland.svg?style=flat-square
+[ico-ga]: https://github.com/oscarotero/middleland/workflows/testing/badge.svg
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/g/oscarotero/middleland.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/oscarotero/middleland
-[link-travis]: https://travis-ci.org/oscarotero/middleland
 [link-scrutinizer]: https://scrutinizer-ci.com/g/oscarotero/middleland
