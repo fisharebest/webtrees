@@ -8,7 +8,7 @@ const postcss_import = require("postcss-import")();
 const postcss_autoprefixer = require("autoprefixer")();
 
 // https://github.com/jakob101/postcss-inline-rtl
-const postcss_rtl = require("postcss-rtl")();
+const postcss_rtl = require("@mjhenkes/postcss-rtl")();
 
 // https://github.com/bezoerb/postcss-image-inliner
 const postcss_image_inliner = require("postcss-image-inliner")({
@@ -25,7 +25,7 @@ mix
         jquery: ["$", "jQuery"],
     })
     .setPublicPath('./public')
-    .sourceMaps()
+    .sourceMaps(false)
     .js("resources/js/vendor.js", "public/js/vendor.min.js")
     .babel(["resources/js/webtrees.js", "resources/js/statistics.js", "resources/js/treeview.js"], "public/js/webtrees.min.js")
     .copy("node_modules/leaflet/dist/images/*", "public/css/images/")
