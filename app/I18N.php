@@ -435,7 +435,7 @@ class I18N
      *
      * @return string
      */
-    public static function reverseText($text): string
+    public static function reverseText(string $text): string
     {
         // Remove HTML markup - we can't display it and it is LTR.
         $text = strip_tags($text);
@@ -475,7 +475,7 @@ class I18N
      *
      * @return string
      */
-    public static function scriptDirection($script): string
+    public static function scriptDirection(string $script): string
     {
         switch ($script) {
             case 'Arab':
@@ -495,7 +495,7 @@ class I18N
      *
      * @return string
      */
-    public static function textScript($string): string
+    public static function textScript(string $string): string
     {
         $string = strip_tags($string); // otherwise HTML tags show up as latin
         $string = html_entity_decode($string, ENT_QUOTES, 'UTF-8'); // otherwise HTML entities show up as latin
@@ -548,7 +548,7 @@ class I18N
      *
      * @return int
      */
-    public static function strcasecmp($string1, $string2): int
+    public static function strcasecmp(string $string1, string $string2): int
     {
         if (self::$collator instanceof Collator) {
             return self::$collator->compare($string1, $string2);
@@ -564,7 +564,7 @@ class I18N
      *
      * @return string
      */
-    public static function strtolower($string): string
+    public static function strtolower(string $string): string
     {
         if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES, true)) {
             $string = strtr($string, self::DOTLESS_I_TOLOWER);
@@ -580,7 +580,7 @@ class I18N
      *
      * @return string
      */
-    public static function strtoupper($string): string
+    public static function strtoupper(string $string): string
     {
         if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES, true)) {
             $string = strtr($string, self::DOTLESS_I_TOUPPER);
