@@ -47,6 +47,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Age;
 use Ramsey\Uuid\Uuid;
 
 use function app;
@@ -529,7 +530,18 @@ class FunctionsPrintFacts
                     $label = GedcomTag::getLabel('ASSO');
                 }
 
-                $values = ['<a href="' . e($person->url()) . '">' . $person->fullName() . '</a>'];
+                // Compute age of associated Person at the event (Person BIRT is mandatory )
+                $ageOfAssociated ="";
+                if (preg_match('/\n2 DATE (.+)/', $event->gedcom(), $match1)) {
+                    if (preg_match('/\n1 BIRT/', $person->gedcom(), $match)) {
+                        preg_match('/\n2 DATE (.+)/', $person->gedcom(), $match2);
+                        $dateEvent = new Date($match1[1]);
+                        $dateAssoP = new Date($match2[1]);
+                        $ageOfAssociated   = (new Age($dateAssoP, $dateEvent))->ageAtEvent(true);
+                    }
+                }
+                $values = ['<a href="' . e($person->url()) . '">' . $person->fullName() . '<i> ' . $ageOfAssociated . '</i>' . '</a>'];
+
 
                 $module = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $person->tree(), Auth::user())->first(static function (ModuleInterface $module) {
                     return $module instanceof RelationshipsChartModule;
@@ -1005,10 +1017,10 @@ class FunctionsPrintFacts
             echo $text;
 
             // 2 RESN tags. Note, there can be more than one, such as "privacy" and "locked"
-            if (preg_match_all("/\n2 RESN (.+)/", $factrec, $rmatches)) {
-                foreach ($rmatches[1] as $rmatch) {
+            if (preg_match_all("/\n2 RESN (.+)/", $factrec, $matches)) {
+                foreach ($matches[1] as $match) {
                     echo '<br><span class="label">', GedcomTag::getLabel('RESN'), ':</span> <span class="field">';
-                    switch ($rmatch) {
+                    switch ($match) {
                         case 'none':
                             // Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
                             // However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
@@ -1024,7 +1036,7 @@ class FunctionsPrintFacts
                             echo '<i class="icon-resn-locked"></i> ', I18N::translate('Only managers can edit');
                             break;
                         default:
-                            echo $rmatch;
+                            echo $match;
                             break;
                     }
                     echo '</span>';
