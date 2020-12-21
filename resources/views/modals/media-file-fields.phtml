@@ -50,8 +50,12 @@ use Fisharebest\Webtrees\I18N;
             <div class="col-sm-6">
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="auto" value="0" checked>
-                        <input class="form-control" id="folder" name="folder" placeholder="<?= I18N::translate('Folder') ?>" type="text" value="<?= e(dirname($media_file ? $media_file->filename() : '') === '.' ? '' : dirname($media_file ? $media_file->filename() : '')) ?>" data-autocomplete-url="<?= e(route(AutoCompleteFolder::class, ['tree' => $tree->name()])) ?>" autocomplete="off">
+                        <?php if ($media_file_name_unique ==='1') : ?>
+                            <input class="form-control" id="folder" readonly name="folder" placeholder="<?= I18N::translate('Folder') ?>" type="text" value="<?= e(dirname($media_file ? $media_file->filename() : '') === '.' ? '' : dirname($media_file ? $media_file->filename() : '')) ?>" data-autocomplete-url="<?= e(route(AutoCompleteFolder::class, ['tree' => $tree->name()])) ?>" autocomplete="off">
+                        <?php else : ?>
+                            <input class="form-check-input" type="radio" name="auto" value="0" checked>
+                            <input class="form-control" id="folder" name="folder" placeholder="<?= I18N::translate('Folder') ?>" type="text" value="<?= e(dirname($media_file ? $media_file->filename() : '') === '.' ? '' : dirname($media_file ? $media_file->filename() : '')) ?>" data-autocomplete-url="<?= e(route(AutoCompleteFolder::class, ['tree' => $tree->name()])) ?>" autocomplete="off">
+                        <?php endif ?>
                         <div class="input-group">
                             <div class="input-group-append">
                                 <span class="input-group-text">/</span>
@@ -61,7 +65,11 @@ use Fisharebest\Webtrees\I18N;
                 </div>
             </div>
             <div class="col-sm-6">
-                <input class="form-control" name="new_file" type="text" placeholder="<?= I18N::translate('Same as uploaded file') ?>" value="<?= e(basename($media_file ? $media_file->filename() : '')) ?>">
+                <?php if ($media_file_name_unique ==='1') : ?>
+                    <input class="form-control" name="new_file" type="text" readonly placeholder="<?= I18N::translate('Same as uploaded file') ?>" value="<?= e(basename($media_file ? $media_file->filename() : '')) ?>">
+                <?php else : ?>
+                    <input class="form-control" name="new_file" type="text" placeholder="<?= I18N::translate('Same as uploaded file') ?>" value="<?= e(basename($media_file ? $media_file->filename() : '')) ?>">
+                <?php endif ?>
             </div>
         </div>
         <p class="small text-muted">
@@ -69,7 +77,11 @@ use Fisharebest\Webtrees\I18N;
         </p>
         <div class="form-check">
             <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="auto" value="1">
+                <?php if ($media_file_name_unique ==='1') : ?>
+                    <input class="form-check-input" type="radio" name="auto" value="1" checked>
+                <?php else : ?>
+                    <input class="form-check-input" type="radio" name="auto" value="1">                
+                <?php endif ?>
                 <?= I18N::translate('Create a unique filename') ?>
             </label>
         </div>
