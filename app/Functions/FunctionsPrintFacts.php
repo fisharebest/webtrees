@@ -535,9 +535,10 @@ class FunctionsPrintFacts
                 if (preg_match('/\n2 DATE (.+)/', $event->gedcom(), $match1)) {
                     if (preg_match('/\n1 BIRT/', $person->gedcom(), $match)) {
                         preg_match('/\n2 DATE (.+)/', $person->gedcom(), $match2);
+                        $isLiving = !preg_match('/\n1 DEAT/', $person->gedcom(), $match3);
                         $dateEvent = new Date($match1[1]);
                         $dateAssoP = new Date($match2[1]);
-                        $ageOfAssociated   = (new Age($dateAssoP, $dateEvent))->ageAtEvent(true);
+                        $ageOfAssociated   = (new Age($dateAssoP, $dateEvent))->ageAtEvent($isLiving,$person->sex());
                     }
                 }
                 $values = ['<a href="' . e($person->url()) . '">' . $person->fullName() . '<i> ' . $ageOfAssociated . '</i>' . '</a>'];
