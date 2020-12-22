@@ -164,7 +164,7 @@ class Age
      *
      * @return string
      */
-    public function ageAtEvent(bool $living): string
+    public function ageAtEvent(bool $living, string $sex = 'M'): string
     {
         $age = $this->ageString();
 
@@ -176,9 +176,17 @@ class Age
             /* I18N: The current age of a living individual */
             return I18N::translate('(age %s)', $age);
         }
-
-        /* I18N: The age of an individual at a given date */
-        return I18N::translate('(aged %s)', $age);
+ 
+        if ($sex === 'M') {
+            /* I18N: The age of an individual at a given date for a Male individual */          
+            //return I18N::translate('MALE', '(aged %s)', $age);
+            return 'aged-M '. $age;
+        } 
+        if ($sex === 'F') {
+            /* I18N: The age of an individual at a given date for a Female individual */          
+            //return I18N::translate('FEMALE', '(aged %s)', $age);
+            return 'aged-F '. $age;
+        }
     }
 
     /**
