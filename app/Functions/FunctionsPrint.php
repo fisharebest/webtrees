@@ -336,7 +336,7 @@ class FunctionsPrint
                     $ageText = '';
                     if ($fact === 'DEAT' || Date::compare($date, $death_date) <= 0 || !$record->isDead()) {
                         // Before death, print age
-                        $age = (new Age($birth_date, $date))->ageAtEvent(false);
+                        $age = (new Age($birth_date, $date))->ageAtEvent(false,$record->sex());
                         // Only show calculated age if it differs from recorded age
                         if ($age !== '') {
                             if ($fact_age !== '' && $fact_age !== $age) {
