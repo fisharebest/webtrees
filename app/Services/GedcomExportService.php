@@ -193,16 +193,19 @@ class GedcomExportService
             return preg_replace_callback('/\n1 FILE (.+)/', static function (array $match) use ($media_path): string {
                 $filename = $match[1];
 
-                // Convert separators to match new path.
-                if (str_contains($media_path, '\\')) {
-                    $filename = strtr($filename, ['/' => '\\']);
+                // Don’t modify external links
+                if (!str_contains($filename, '://')) {
+                    // Convert separators to match new path.
+                    if (str_contains($media_path, '\\')) {
+                        $filename = strtr($filename, ['/' => '\\']);
+                    }
+
+                    if (!str_starts_with($filename, $media_path)) {
+                        $filename = $media_path . $filename;
+                    }
                 }
 
-                if (!str_starts_with($filename, $media_path)) {
-                    return $media_path . $filename;
-                }
-
-                return $filename;
+                return "\n1 FILE " . $filename;
             }, $gedcom);
         }
 

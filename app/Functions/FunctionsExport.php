@@ -216,7 +216,7 @@ class FunctionsExport
     {
         $header = new Collection([self::gedcomHeader($tree, $encoding)]);
 
-        // Generate the OBJE/SOUR/REPO/NOTE records first, as their privacy calcualations involve
+        // Generate the OBJE/SOUR/REPO/NOTE records first, as their privacy calculations involve
         // database queries, and we wish to avoid large gaps between queries due to MySQL connection timeouts.
         $media = DB::table('media')
             ->where('m_file', '=', $tree->id())
