@@ -717,6 +717,21 @@ $(function () {
   });
 });
 
+// Prevent form re-submission via accidental double-click.
+document.addEventListener('submit', function (event) {
+  const form = event.target;
+
+  if (form.reportValidity()) {
+    form.addEventListener('submit', (event) => {
+      if (form.classList.contains('form-is-submitting')) {
+        event.preventDefault();
+      }
+
+      form.classList.add('form-is-submitting');
+    });
+  }
+});
+
 // Convert data-confirm and data-post-url attributes into useful behavior.
 document.addEventListener('click', (event) => {
   const target = event.target.closest('a,button');
