@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Cannot call method getAllNames\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
-			count: 1
-			path: app/Census/CensusColumnFullName.php
-
-		-
 			message: "#^Parameter \\#1 \\$line of method Fisharebest\\\\Webtrees\\\\CommonMark\\\\CensusTableParser\\:\\:parseRow\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/CommonMark/CensusTableParser.php

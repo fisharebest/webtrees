@@ -134,13 +134,16 @@ class AbstractCensusColumn
         $family = $this->spouseFamily($individual);
 
         if ($family instanceof Family) {
-            foreach ($family->facts(['MARR']) as $marriage) {
-                if ($marriage->date()->isOK()) {
-                    $spouse = $family->spouse($individual);
-                    foreach ($names as $individual_name) {
-                        foreach ($spouse->getAllNames() as $spouse_name) {
-                            if ($individual_name['type'] === '_MARNM' && $individual_name['surn'] === $spouse_name['surn']) {
-                                return $individual_name;
+            $spouse = $family->spouse($individual);
+
+            if ($spouse instanceof Individual) {
+                foreach ($family->facts(['MARR']) as $marriage) {
+                    if ($marriage->date()->isOK()) {
+                        foreach ($names as $individual_name) {
+                            foreach ($spouse->getAllNames() as $spouse_name) {
+                                if ($individual_name['type'] === '_MARNM' && $individual_name['surn'] === $spouse_name['surn']) {
+                                    return $individual_name;
+                                }
                             }
                         }
                     }
