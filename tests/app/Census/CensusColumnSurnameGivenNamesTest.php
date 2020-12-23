@@ -41,6 +41,7 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
             [
                 'givn' => 'Joe',
                 'surname' => 'Sixpack',
+                'full' => '<span class="NAME" dir="auto" translate="no">Joe <span class="SURN">Sixpack</span></span>',
             ],
         ]);
         $individual->method('spouseFamilies')->willReturn(new Collection());
@@ -66,6 +67,7 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
             [
                 'givn' => 'Joe Fred',
                 'surname' => 'Sixpack',
+                'full' => '<span class="NAME" dir="auto" translate="no">Joe Fred <span class="SURN">Sixpack</span></span>',
             ],
         ]);
         $individual->method('spouseFamilies')->willReturn(new Collection());
@@ -87,7 +89,14 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
     public function testNoName(): void
     {
         $individual = $this->createMock(Individual::class);
-        $individual->method('getAllNames')->willReturn([]);
+        $individual->method('getAllNames')->willReturn([
+            [
+                'givn' => '@P.N.',
+                'surname' => '@N.N.',
+                'full' => '<span class="NAME" dir="auto" translate="no">… <span class="SURN">…</span></span>',
+            ]
+
+        ]);
         $individual->method('spouseFamilies')->willReturn(new Collection());
 
         $census = $this->createMock(CensusInterface::class);
@@ -95,6 +104,6 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
 
         $column = new CensusColumnSurnameGivenNames($census, '', '');
 
-        $this->assertSame('', $column->generate($individual, $individual));
+        $this->assertSame('…, …', $column->generate($individual, $individual));
     }
 }
