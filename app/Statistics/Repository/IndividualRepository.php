@@ -92,7 +92,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             })
             ->where('n_file', '=', $this->tree->id())
             ->where('n_type', '<>', '_MARNM')
-            ->where('n_givn', '<>', '@P.N.')
+            ->where('n_givn', '<>', Individual::PRAENOMEN_NESCIO)
             ->where(new Expression('LENGTH(n_givn)'), '>', 1);
 
         switch ($sex) {
@@ -442,7 +442,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             // Count number of distinct given names.
             $query
                 ->distinct()
-                ->where('n_givn', '<>', '@P.N.')
+                ->where('n_givn', '<>', Individual::PRAENOMEN_NESCIO)
                 ->whereNotNull('n_givn');
         } else {
             // Count number of occurences of specific given names.
@@ -492,7 +492,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $top_surnames = DB::table('name')
             ->where('n_file', '=', $this->tree->id())
             ->where('n_type', '<>', '_MARNM')
-            ->whereNotIn('n_surn', ['', '@N.N.'])
+            ->whereNotIn('n_surn', ['', Individual::NOMEN_NESCIO])
             ->select(['n_surn'])
             ->groupBy(['n_surn'])
             ->orderByRaw('count(n_surn) desc')

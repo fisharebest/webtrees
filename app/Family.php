@@ -390,7 +390,7 @@ class Family extends GedcomRecord
             if ($husb_names === []) {
                 $husb_names[] = [
                     'type' => 'BIRT',
-                    'sort' => '@N.N.',
+                    'sort' => Individual::NOMEN_NESCIO,
                     'full' => I18N::translateContext('Unknown given name', '…') . ' ' . I18N::translateContext('Unknown surname', '…'),
                 ];
             }
@@ -408,7 +408,7 @@ class Family extends GedcomRecord
             if ($wife_names === []) {
                 $wife_names[] = [
                     'type' => 'BIRT',
-                    'sort' => '@N.N.',
+                    'sort' => Individual::NOMEN_NESCIO,
                     'full' => I18N::translateContext('Unknown given name', '…') . ' ' . I18N::translateContext('Unknown surname', '…'),
                 ];
             }

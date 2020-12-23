@@ -260,7 +260,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         } elseif ($surname !== '') {
             $alpha    = $this->localization_service->initialLetter($surname, I18N::locale()); // so we can highlight the initial letter
             $show_all = 'no';
-            if ($surname === '@N.N.') {
+            if ($surname === Individual::NOMEN_NESCIO) {
                 $legend = I18N::translateContext('Unknown surname', '…');
             } else {
                 // The surname parameter is a root/canonical form.
@@ -638,12 +638,12 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         } elseif ($salpha === ',') {
             $query->where('n_surn', '=', '');
         } elseif ($salpha === '@') {
-            $query->where('n_surn', '=', '@N.N.');
+            $query->where('n_surn', '=', Individual::NOMEN_NESCIO);
         } elseif ($salpha !== '') {
             $this->whereInitial($query, 'n_surn', $salpha, $locale);
         } else {
             // All surnames
-            $query->whereNotIn('n_surn', ['', '@N.N.']);
+            $query->whereNotIn('n_surn', ['', Individual::NOMEN_NESCIO]);
         }
 
         // Fetch all the letters in our alphabet, whether or not there
@@ -718,12 +718,12 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         } elseif ($salpha === ',') {
             $query->where('n_surn', '=', '');
         } elseif ($salpha === '@') {
-            $query->where('n_surn', '=', '@N.N.');
+            $query->where('n_surn', '=', Individual::NOMEN_NESCIO);
         } elseif ($salpha !== '') {
             $this->whereInitial($query, 'n_surn', $salpha, $locale);
         } else {
             // All surnames
-            $query->whereNotIn('n_surn', ['', '@N.N.']);
+            $query->whereNotIn('n_surn', ['', Individual::NOMEN_NESCIO]);
         }
         $query
             ->groupBy(['n_surn'])
@@ -786,21 +786,21 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         } elseif ($salpha === ',') {
             $query->where($n_surn, '=', '');
         } elseif ($salpha === '@') {
-            $query->where($n_surn, '=', '@N.N.');
+            $query->where($n_surn, '=', Individual::NOMEN_NESCIO);
         } elseif ($salpha) {
             $this->whereInitial($query, 'n_surn', $salpha, $locale);
         } else {
             // All surnames
-            $query->whereNotIn($n_surn, ['', '@N.N.']);
+            $query->whereNotIn($n_surn, ['', Individual::NOMEN_NESCIO]);
         }
         if ($galpha) {
             $this->whereInitial($query, 'n_givn', $galpha, $locale);
         }
 
         $query
-            ->orderBy(new Expression("CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END"))
+            ->orderBy(new Expression("CASE n_surn WHEN '" . Individual::NOMEN_NESCIO . "' THEN 1 ELSE 0 END"))
             ->orderBy($n_surn)
-            ->orderBy(new Expression("CASE n_givn WHEN '@N.N.' THEN 1 ELSE 0 END"))
+            ->orderBy(new Expression("CASE n_givn WHEN '" . Individual::NOMEN_NESCIO . "' THEN 1 ELSE 0 END"))
             ->orderBy($n_givn);
 
         $list = [];

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,6 +33,10 @@ use function preg_match;
 class Individual extends GedcomRecord
 {
     public const RECORD_TYPE = 'INDI';
+
+    // Placeholders to indicate unknown names
+    public const NOMEN_NESCIO     = '@N.N.';
+    public const PRAENOMEN_NESCIO = '@P.N.';
 
     protected const ROUTE_NAME = IndividualPage::class;
 
@@ -1114,7 +1118,7 @@ class Individual extends GedcomRecord
 
         // Add placeholder for unknown given name
         if (!$GIVN) {
-            $GIVN = '@P.N.';
+            $GIVN = Individual::PRAENOMEN_NESCIO;
             $pos  = (int) strpos($full, '/');
             $full = substr($full, 0, $pos) . '@P.N. ' . substr($full, $pos);
         }
@@ -1125,8 +1129,8 @@ class Individual extends GedcomRecord
         $fullNN = str_replace('/', '', $full);
 
         // Insert placeholders for any missing/unknown names
-        $full = str_replace('@N.N.', I18N::translateContext('Unknown surname', '…'), $full);
-        $full = str_replace('@P.N.', I18N::translateContext('Unknown given name', '…'), $full);
+        $full = str_replace(Individual::NOMEN_NESCIO, I18N::translateContext('Unknown surname', '…'), $full);
+        $full = str_replace(Individual::PRAENOMEN_NESCIO, I18N::translateContext('Unknown given name', '…'), $full);
         // Format for display
         $full = '<span class="NAME" dir="auto" translate="no">' . preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', e($full)) . '</span>';
         // Localise quotation marks around the nickname

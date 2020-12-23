@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -36,9 +37,10 @@ class CensusColumnSurnameGivenNames extends AbstractCensusColumn implements Cens
      */
     public function generate(Individual $individual, Individual $head): string
     {
-        $name       = $this->nameAtCensusDate($individual);
-        $name_parts = explode(' ', strip_tags($name['full']));
+        $name        = $this->nameAtCensusDate($individual);
+        $surname     = strtr($name['surname'], [Individual::NOMEN_NESCIO => I18N::translateContext('Unknown surname', '…')]);
+        $given_names = strtr($name['givn'], [Individual::PRAENOMEN_NESCIO => I18N::translateContext('Unknown given name', '…')]);
 
-        return array_pop($name_parts) . ', ' . implode(' ', $name_parts);
+        return $surname . ', ' . $given_names;
     }
 }

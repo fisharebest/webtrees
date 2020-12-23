@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomTag;
@@ -239,7 +240,7 @@ $marriageAgeData = [
 
             <tr class="<?= $family->isPendingDeletion() ? 'wt-old' : ($family->isPendingAddition() ? 'wt-new' : '') ?>">
                 <!-- Husband name -->
-                <td colspan="2" data-sort="<?= e(str_replace([',', '@P.N.', '@N.N.'], 'AAAA', implode(',', array_reverse(explode(',', $husb->sortName()))))) ?>">
+                <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $husb->sortName()))))) ?>">
                     <?php foreach ($husb->getAllNames() as $num => $name) : ?>
                         <?php if ($name['type'] !== '_MARNM' || $num == $husb->getPrimaryName()) : ?>
                         <a title="<?= $name['type'] === 'NAME' ? '' : strip_tags(GedcomTag::getLabel($name['type'])) ?>" href="<?= e($family->url()) ?>" class="<?= $num === $husb->getPrimaryName() ? 'name2' : '' ?>">
@@ -254,7 +255,7 @@ $marriageAgeData = [
                     <?= view('lists/individual-table-parents', ['individual' => $husb]) ?>
                 </td>
 
-                <td hidden data-sort="<?= e(str_replace([',', '@P.N.', '@N.N.'], 'AAAA', $husb->sortName())) ?>"></td>
+                <td hidden data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $husb->sortName())) ?>"></td>
 
                 <!-- Husband age -->
                 <?php
@@ -274,7 +275,7 @@ $marriageAgeData = [
                 </td>
 
                 <!-- Wife name -->
-                <td colspan="2" data-sort="<?= e(str_replace([',', '@P.N.', '@N.N.'], 'AAAA', implode(',', array_reverse(explode(',', $wife->sortName()))))) ?>">
+                <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $wife->sortName()))))) ?>">
                     <?php foreach ($wife->getAllNames() as $num => $name) : ?>
                         <?php if ($name['type'] !== '_MARNM' || $num == $wife->getPrimaryName()) : ?>
                             <a title="<?= $name['type'] === 'NAME' ? '' : strip_tags(GedcomTag::getLabel($name['type'])) ?>" href="<?= e($family->url()) ?>" class="<?= $num === $wife->getPrimaryName() ? 'name2' : '' ?>">
@@ -289,7 +290,7 @@ $marriageAgeData = [
                     <?= view('lists/individual-table-parents', ['individual' => $wife]) ?>
                 </td>
 
-                <td hidden data-sort="<?= e(str_replace([',', '@P.N.', '@N.N.'], 'AAAA', $wife->sortName())) ?>"></td>
+                <td hidden data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $wife->sortName())) ?>"></td>
 
                 <!-- Wife age -->
                 <?php

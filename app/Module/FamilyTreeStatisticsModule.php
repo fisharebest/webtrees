@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
@@ -103,7 +104,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
             $top_surnames = DB::table('name')
                 ->where('n_file', '=', $tree->id())
                 ->where('n_type', '<>', '_MARNM')
-                ->whereNotIn('n_surn', ['@N.N.', ''])
+                ->whereNotIn('n_surn', [Individual::NOMEN_NESCIO, ''])
                 ->groupBy(['n_surn'])
                 ->orderByDesc(new Expression('COUNT(n_surn)'))
                 ->take($number_of_surnames)

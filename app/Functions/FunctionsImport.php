@@ -676,7 +676,7 @@ class FunctionsImport
         $rows = [];
 
         foreach ($record->getAllNames() as $n => $name) {
-            if ($name['givn'] === '@P.N.') {
+            if ($name['givn'] === Individual::PRAENOMEN_NESCIO) {
                 $soundex_givn_std = null;
                 $soundex_givn_dm  = null;
             } else {
@@ -684,7 +684,7 @@ class FunctionsImport
                 $soundex_givn_dm  = Soundex::daitchMokotoff($name['givn']);
             }
 
-            if ($name['surn'] === '@N.N.') {
+            if ($name['surn'] === Individual::NOMEN_NESCIO) {
                 $soundex_surn_std = null;
                 $soundex_surn_dm  = null;
             } else {

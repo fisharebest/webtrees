@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -41,7 +41,6 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
             [
                 'givn' => 'Joe',
                 'surname' => 'Sixpack',
-                'full' => '<span class="NAME" dir="auto" translate="no">Joe <span class="SURN">Sixpack</span></span>',
             ],
         ]);
         $individual->method('spouseFamilies')->willReturn(new Collection());
@@ -65,9 +64,8 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
         $individual = $this->createMock(Individual::class);
         $individual->method('getAllNames')->willReturn([
             [
-                'givn' => 'Joe Fred',
+                'givn'    => 'Joe Fred',
                 'surname' => 'Sixpack',
-                'full' => '<span class="NAME" dir="auto" translate="no">Joe Fred <span class="SURN">Sixpack</span></span>',
             ],
         ]);
         $individual->method('spouseFamilies')->willReturn(new Collection());
@@ -91,11 +89,9 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
         $individual = $this->createMock(Individual::class);
         $individual->method('getAllNames')->willReturn([
             [
-                'givn' => '@P.N.',
-                'surname' => '@N.N.',
-                'full' => '<span class="NAME" dir="auto" translate="no">… <span class="SURN">…</span></span>',
-            ]
-
+                'givn'    => Individual::PRAENOMEN_NESCIO,
+                'surname' => Individual::NOMEN_NESCIO,
+            ],
         ]);
         $individual->method('spouseFamilies')->willReturn(new Collection());
 

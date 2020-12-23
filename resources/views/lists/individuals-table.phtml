@@ -263,7 +263,7 @@ $deathAgeData = [
         <tbody>
             <?php foreach ($individuals as $key => $individual) : ?>
             <tr class="<?= $individual->isPendingDeletion() ? 'wt-old' : ($individual->isPendingAddition() ? 'wt-new' : '') ?>">
-                <td colspan="2" data-sort="<?= e(str_replace([',', '@P.N.', '@N.N.'], 'AAAA', implode(',', array_reverse(explode(',', $individual->sortName()))))) ?>">
+                <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $individual->sortName()))))) ?>">
                     <?php foreach ($individual->getAllNames() as $num => $name) : ?>
                         <a title="<?= $name['type'] === 'NAME' ? '' : strip_tags(GedcomTag::getLabel($name['type'])) ?>" href="<?= e($individual->url()) ?>" class="<?= $num === $individual->getPrimaryName() ? 'name2' : '' ?>">
                             <?= $name['full'] ?>
@@ -276,7 +276,7 @@ $deathAgeData = [
                     <?= view('lists/individual-table-parents', ['individual' => $individual]) ?>
                 </td>
 
-                <td hidden data-sort="<?= e(str_replace([',', '@P.N.', '@N.N.'], 'AAAA', $individual->sortName())) ?>"></td>
+                <td hidden data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $individual->sortName())) ?>"></td>
 
                 <td class="text-center" data-sort="<?= $key ?>">
                     <?php if ($sosa) : ?>
