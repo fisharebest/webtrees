@@ -179,13 +179,11 @@ class Age
  
         if ($sex === 'M') {
             /* I18N: The age of an individual at a given date for a Male individual */          
-            //return I18N::translate('MALE', '(aged %s)', $age);
-            return 'aged-M '. $age;
+            return I18N::translateContext('MALE', '(aged %s)', $age);
         } 
         if ($sex === 'F') {
             /* I18N: The age of an individual at a given date for a Female individual */          
-            //return I18N::translate('FEMALE', '(aged %s)', $age);
-            return 'aged-F '. $age;
+            return I18N::translateContext('FEMALE', '(aged %s)', $age);
         }
     }
 
