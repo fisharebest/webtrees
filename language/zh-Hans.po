@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2020-12-08 04:04+0000\n"
+"PO-Revision-Date: 2020-12-26 10:06+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
@@ -8552,13 +8552,13 @@ msgstr "家庭"
 #. I18N: gedcom tag FAMC
 #: app/GedcomTag.php:448 app/GedcomTag.php:731
 msgid "Family as a child"
-msgstr "家庭里的孩子"
+msgstr "他(她)的父母"
 
 # I18N: gedcom tag FAMS
 #. I18N: gedcom tag FAMS
 #: app/GedcomTag.php:456 app/GedcomTag.php:737
 msgid "Family as a spouse"
-msgstr "家庭里的配偶"
+msgstr "是这个家庭中的配偶"
 
 # I18N: Name of a module/chart
 #. I18N: Name of a module/chart
