@@ -856,7 +856,7 @@ class SearchService
                         foreach ($individual->spouseFamilies() as $family) {
                             foreach ($family->facts([$parts[1]]) as $fact) {
                                 if (preg_match($regex, $fact->place()->gedcomName())) {
-                                    continue 2;
+                                    continue 3;
                                 }
                             }
                         }
