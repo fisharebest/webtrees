@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '79c6313cdce4736b19ad669dd20d14ef8a8e4eff',
+    'reference' => 'befb078ac49853bab3cf5a7e795637fe7911cedb',
     'name' => 'fisharebest/webtrees',
   ),
   'versions' => 
@@ -135,7 +135,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '79c6313cdce4736b19ad669dd20d14ef8a8e4eff',
+      'reference' => 'befb078ac49853bab3cf5a7e795637fe7911cedb',
     ),
     'guzzlehttp/guzzle' => 
     array (
@@ -253,15 +253,6 @@
       array (
       ),
       'reference' => 'c6d7c7ea23a57ee802d533ab9eb9f19dd5c5fc45',
-    ),
-    'league/glide' => 
-    array (
-      'pretty_version' => '1.5.0',
-      'version' => '1.5.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'a5477e9e822ed57b39861a17092b92553634932d',
     ),
     'middlewares/client-ip' => 
     array (

@@ -31,7 +31,6 @@ return array(
     'Nyholm\\Psr7Server\\' => array($vendorDir . '/nyholm/psr7-server/src'),
     'Middlewares\\' => array($vendorDir . '/middlewares/client-ip/src'),
     'Middleland\\' => array($vendorDir . '/oscarotero/middleland/src'),
-    'League\\Glide\\' => array($vendorDir . '/league/glide/src'),
     'League\\Flysystem\\ZipArchive\\' => array($vendorDir . '/league/flysystem-ziparchive/src'),
     'League\\Flysystem\\Cached\\' => array($vendorDir . '/league/flysystem-cached-adapter/src'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
