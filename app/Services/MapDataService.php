@@ -224,6 +224,8 @@ class MapDataService
             $prefix . 'p8.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p8.pl_lati, '') = '' OR " .
             $prefix . 'p9.pl_place IS NOT NULL AND COALESCE(' . $prefix . "p9.pl_lati, '') = ''";
 
+        $expression = 'CASE ' . $expression . ' WHEN TRUE THEN 1 ELSE 0 END';
+
         return DB::table('placelocation AS p0')
             ->leftJoin('placelocation AS p1', 'p1.pl_parent_id', '=', 'p0.pl_id')
             ->leftJoin('placelocation AS p2', 'p2.pl_parent_id', '=', 'p1.pl_id')
