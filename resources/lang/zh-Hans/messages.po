@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2020-12-26 10:06+0000\nLast-Translator: rui <xmlf@hotmail.com>\nLanguage-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 20:40+0100\nPO-Revision-Date: 2021-01-03 13:32+0000\nLast-Translator: rui <xmlf@hotmail.com>\nLanguage-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -15546,7 +15546,7 @@ msgstr "这个人已经被删除。你应该检查此操作，然后决定是 %1
 
 #: resources/views/individual-page.phtml:42
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
-msgstr "这个人已经被编辑。更改需要主编审批后，方可生效。"
+msgstr "这个人已经被编辑。更改必须经过主编审批，方可生效。"
 
 # I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
