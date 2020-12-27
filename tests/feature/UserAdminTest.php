@@ -61,12 +61,12 @@ class UserAdminTest extends TestCase
         $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
         $html = (string) $response->getBody();
 
-        $this->assertContains('AdminName', $html);
-        $this->assertContains('Administrator', $html);
-        $this->assertContains('admin@example.com', $html);
-        $this->assertContains('UserName', $html);
-        $this->assertContains('RealName', $html);
-        $this->assertContains('user@example.com', $html);
+        $this->assertStringContainsString('AdminName', $html);
+        $this->assertStringContainsString('Administrator', $html);
+        $this->assertStringContainsString('admin@example.com', $html);
+        $this->assertStringContainsString('UserName', $html);
+        $this->assertStringContainsString('RealName', $html);
+        $this->assertStringContainsString('user@example.com', $html);
     }
 
     /**
@@ -95,9 +95,9 @@ class UserAdminTest extends TestCase
         $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
         $html = (string) $response->getBody();
 
-        $this->assertContains('AdminName', $html);
-        $this->assertContains('Administrator', $html);
-        $this->assertContains('admin@example.com', $html);
+        $this->assertStringContainsString('AdminName', $html);
+        $this->assertStringContainsString('Administrator', $html);
+        $this->assertStringContainsString('admin@example.com', $html);
         $this->assertNotContains('UserName', $html);
         $this->assertNotContains('RealName', $html);
         $this->assertNotContains('user@example.com', $html);
@@ -129,7 +129,7 @@ class UserAdminTest extends TestCase
         $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
         $html = (string) $response->getBody();
 
-        $this->assertContains('AdminName', $html);
+        $this->assertStringContainsString('AdminName', $html);
         $this->assertNotContains('UserName', $html);
     }
 

@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '44aa8cdc74839e5b4de8a014d8b9edc7203a3848',
+    'reference' => '79c6313cdce4736b19ad669dd20d14ef8a8e4eff',
     'name' => 'fisharebest/webtrees',
   ),
   'versions' => 
@@ -135,7 +135,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '44aa8cdc74839e5b4de8a014d8b9edc7203a3848',
+      'reference' => '79c6313cdce4736b19ad669dd20d14ef8a8e4eff',
     ),
     'guzzlehttp/guzzle' => 
     array (
