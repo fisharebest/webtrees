@@ -77,7 +77,7 @@ class ImportThumbnailsAction implements RequestHandlerInterface
         $xrefs     = $params['xref'];
         $geds      = $params['ged'];
 
-        if (!$data_filesystem->has($thumbnail)) {
+        if (!$data_filesystem->fileExists($thumbnail)) {
             return response([]);
         }
 
@@ -94,13 +94,13 @@ class ImportThumbnailsAction implements RequestHandlerInterface
                 break;
 
             case 'add':
-                $mime_type = $data_filesystem->getMimetype($thumbnail) ?: Mime::DEFAULT_TYPE;
+                $mime_type = $data_filesystem->mimeType($thumbnail) ?: Mime::DEFAULT_TYPE;
                 $directory = dirname($thumbnail, 2);
                 $sha1      = sha1($data_filesystem->read($thumbnail));
                 $extension = explode('/', $mime_type)[1];
                 $move_to   = $directory . '/' . $sha1 . '.' . $extension;
 
-                $data_filesystem->rename($thumbnail, $move_to);
+                $data_filesystem->move($thumbnail, $move_to);
 
                 foreach ($media_objects as $media_object) {
                     $prefix = $media_object->tree()->getPreference('MEDIA_DIRECTORY');

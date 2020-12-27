@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Webtrees;
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\FilesystemOperator;
 
 use function count;
 
@@ -626,14 +626,14 @@ class PdfRenderer extends AbstractRenderer
     /**
      * Create a new image object from Media Object.
      *
-     * @param MediaFile           $media_file
-     * @param float               $x
-     * @param float               $y
-     * @param float               $w     Image width
-     * @param float               $h     Image height
-     * @param string              $align L:left, C:center, R:right or empty to use x/y
-     * @param string              $ln    T:same line, N:next line
-     * @param FilesystemInterface $data_filesystem
+     * @param MediaFile          $media_file
+     * @param float              $x
+     * @param float              $y
+     * @param float              $w     Image width
+     * @param float              $h     Image height
+     * @param string             $align L:left, C:center, R:right or empty to use x/y
+     * @param string             $ln    T:same line, N:next line
+     * @param FilesystemOperator $data_filesystem
      *
      * @return ReportBaseImage
      */
@@ -645,7 +645,7 @@ class PdfRenderer extends AbstractRenderer
         float $h,
         string $align,
         string $ln,
-        FilesystemInterface $data_filesystem
+        FilesystemOperator $data_filesystem
     ): ReportBaseImage {
         return new ReportPdfImage('@' . $media_file->fileContents($data_filesystem), $x, $y, $w, $h, $align, $ln);
     }

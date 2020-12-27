@@ -28,10 +28,11 @@ use Fisharebest\Webtrees\Webtrees;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Collection;
-use League\Flysystem\Cached\CachedAdapter;
-use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\FilesystemException;
+use League\Flysystem\FilesystemOperator;
+use League\Flysystem\StorageAttributes;
+use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use ZipArchive;
 
@@ -102,35 +103,39 @@ class UpgradeService
      * @param string $zip_file
      *
      * @return Collection<string>
+     * @throws FilesystemException
      */
     public function webtreesZipContents(string $zip_file): Collection
     {
-        $zip_adapter    = new ZipArchiveAdapter($zip_file, null, 'webtrees');
-        $zip_filesystem = new Filesystem(new CachedAdapter($zip_adapter, new Memory()));
-        $paths          = new Collection($zip_filesystem->listContents('', true));
+        $zip_provider   = new FilesystemZipArchiveProvider($zip_file, 0755);
+        $zip_adapter    = new ZipArchiveAdapter($zip_provider, 'webtrees');
+        $zip_filesystem = new Filesystem($zip_adapter);
 
-        return $paths->filter(static function (array $path): bool {
-            return $path['type'] === 'file';
-        })
-            ->map(static function (array $path): string {
-                return $path['path'];
+        $files = $zip_filesystem->listContents('', Filesystem::LIST_DEEP)
+            ->filter(static function (StorageAttributes $attributes): bool {
+                return $attributes->isFile();
+            })
+            ->map(static function (StorageAttributes $attributes): string {
+                return $attributes->path();
             });
+
+        return new Collection($files);
     }
 
     /**
      * Fetch a file from a URL and save it in a filesystem.
      * Use streams so that we can copy files larger than our available memory.
      *
-     * @param string              $url
-     * @param FilesystemInterface $filesystem
-     * @param string              $path
+     * @param string             $url
+     * @param FilesystemOperator $filesystem
+     * @param string             $path
      *
      * @return int The number of bytes downloaded
      */
-    public function downloadFile(string $url, FilesystemInterface $filesystem, string $path): int
+    public function downloadFile(string $url, FilesystemOperator $filesystem, string $path): int
     {
         // Overwrite any previous/partial/failed download.
-        if ($filesystem->has($path)) {
+        if ($filesystem->fileExists($path)) {
             $filesystem->delete($path);
         }
 
@@ -167,17 +172,18 @@ class UpgradeService
     /**
      * Move (copy and delete) all files from one filesystem to another.
      *
-     * @param FilesystemInterface $source
-     * @param FilesystemInterface $destination
+     * @param FilesystemOperator $source
+     * @param FilesystemOperator $destination
      *
      * @return void
+     * @throws FilesystemException
      */
-    public function moveFiles(FilesystemInterface $source, FilesystemInterface $destination): void
+    public function moveFiles(FilesystemOperator $source, FilesystemOperator $destination): void
     {
-        foreach ($source->listContents('', true) as $path) {
-            if ($path['type'] === 'file') {
-                $destination->put($path['path'], $source->read($path['path']));
-                $source->delete($path['path']);
+        foreach ($source->listContents('', Filesystem::LIST_DEEP) as $attributes) {
+            if ($attributes->isFile()) {
+                $destination->write($attributes->path(), $source->read($attributes->path()));
+                $source->delete($attributes->path());
 
                 if ($this->timeout_service->isTimeNearlyUp()) {
                     throw new HttpServerErrorException(I18N::translate('The server’s time limit has been reached.'));
@@ -189,16 +195,16 @@ class UpgradeService
     /**
      * Delete files in $destination that aren't in $source.
      *
-     * @param FilesystemInterface $filesystem
-     * @param Collection<string>  $folders_to_clean
-     * @param Collection<string>  $files_to_keep
+     * @param FilesystemOperator $filesystem
+     * @param Collection<string> $folders_to_clean
+     * @param Collection<string> $files_to_keep
      *
      * @return void
      */
-    public function cleanFiles(FilesystemInterface $filesystem, Collection $folders_to_clean, Collection $files_to_keep): void
+    public function cleanFiles(FilesystemOperator $filesystem, Collection $folders_to_clean, Collection $files_to_keep): void
     {
         foreach ($folders_to_clean as $folder_to_clean) {
-            foreach ($filesystem->listContents($folder_to_clean, true) as $path) {
+            foreach ($filesystem->listContents($folder_to_clean, Filesystem::LIST_DEEP) as $path) {
                 if ($path['type'] === 'file' && !$files_to_keep->contains($path['path'])) {
                     $filesystem->delete($path['path']);
                 }

@@ -81,7 +81,7 @@ class MapDataImportAction implements RequestHandlerInterface
 
         $fp = false;
 
-        if ($serverfile !== '' && $data_filesystem->has(MapDataService::PLACES_FOLDER . $serverfile)) {
+        if ($serverfile !== '' && $data_filesystem->fileExists(MapDataService::PLACES_FOLDER . $serverfile)) {
             // first choice is file on server
             $fp = $data_filesystem->readStream(MapDataService::PLACES_FOLDER . $serverfile);
         } elseif ($local_file instanceof UploadedFileInterface && $local_file->getError() === UPLOAD_ERR_OK) {

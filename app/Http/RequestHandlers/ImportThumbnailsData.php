@@ -26,7 +26,9 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
 use Illuminate\Support\Collection;
 use Intervention\Image\ImageManager;
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemOperator;
+use League\Flysystem\StorageAttributes;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -87,12 +89,12 @@ class ImportThumbnailsData implements RequestHandlerInterface
         $search = $request->getQueryParams()['search']['value'];
 
         // Fetch all thumbnails
-        $thumbnails = Collection::make($data_filesystem->listContents('', true))
-            ->filter(static function (array $metadata): bool {
-                return $metadata['type'] === 'file' && str_contains($metadata['path'], '/thumbs/');
+        $thumbnails = Collection::make($data_filesystem->listContents('', Filesystem::LIST_DEEP))
+            ->filter(static function (StorageAttributes $attributes): bool {
+                return $attributes->isFile() && str_contains($attributes->path(), '/thumbs/');
             })
-            ->map(static function (array $metadata): string {
-                return $metadata['path'];
+            ->map(static function (StorageAttributes $attributes): string {
+                return $attributes->path();
             });
 
         $recordsTotal = $thumbnails->count();
@@ -175,22 +177,22 @@ class ImportThumbnailsData implements RequestHandlerInterface
      * Compare two images, and return a quantified difference.
      * 0 (different) ... 100 (same)
      *
-     * @param FilesystemInterface $data_filesystem
-     * @param string              $thumbnail
-     * @param string              $original
+     * @param FilesystemOperator $data_filesystem
+     * @param string             $thumbnail
+     * @param string             $original
      *
      * @return int
      */
-    private function imageDiff(FilesystemInterface $data_filesystem, string $thumbnail, string $original): int
+    private function imageDiff(FilesystemOperator $data_filesystem, string $thumbnail, string $original): int
     {
         // The original filename was generated from the thumbnail filename.
         // It may not actually exist.
-        if (!$data_filesystem->has($original)) {
+        if (!$data_filesystem->fileExists($original)) {
             return 100;
         }
 
-        $thumbnail_type = explode('/', $data_filesystem->getMimetype($thumbnail) ?: Mime::DEFAULT_TYPE)[0];
-        $original_type  = explode('/', $data_filesystem->getMimetype($original) ?: Mime::DEFAULT_TYPE)[0];
+        $thumbnail_type = explode('/', $data_filesystem->mimeType($thumbnail) ?: Mime::DEFAULT_TYPE)[0];
+        $original_type  = explode('/', $data_filesystem->mimeType($original) ?: Mime::DEFAULT_TYPE)[0];
 
         if ($thumbnail_type !== 'image') {
             // If the thumbnail file is not an image then similarity is unimportant.
@@ -224,12 +226,12 @@ class ImportThumbnailsData implements RequestHandlerInterface
      * This is a slow operation, add we will do it many times on
      * the "import webtrees 1 thumbnails" page so cache the results.
      *
-     * @param FilesystemInterface $filesystem
-     * @param string              $path
+     * @param FilesystemOperator $filesystem
+     * @param string             $path
      *
      * @return int[][]
      */
-    private function scaledImagePixels(FilesystemInterface $filesystem, string $path): array
+    private function scaledImagePixels(FilesystemOperator $filesystem, string $path): array
     {
         return Registry::cache()->file()->remember('pixels-' . $path, static function () use ($filesystem, $path): array {
             $blob    = $filesystem->read($path);

@@ -79,7 +79,7 @@ class SynchronizeTrees implements RequestHandlerInterface
 
         foreach ($gedcom_files as $gedcom_file) {
             // Only import files that have changed
-            $filemtime = (string) $data_filesystem->getTimestamp($gedcom_file);
+            $filemtime = (string) $data_filesystem->lastModified($gedcom_file);
 
             $tree = $this->tree_service->all()->get($gedcom_file) ?? $this->tree_service->create($gedcom_file, $gedcom_file);
 

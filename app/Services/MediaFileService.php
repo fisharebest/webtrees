@@ -19,24 +19,25 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemException;
+use League\Flysystem\FilesystemOperator;
+use League\Flysystem\StorageAttributes;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use RuntimeException;
 
 use function array_combine;
 use function array_diff;
-use function array_filter;
-use function array_map;
 use function assert;
 use function dirname;
 use function ini_get;
@@ -47,6 +48,8 @@ use function preg_replace;
 use function sha1;
 use function sort;
 use function str_contains;
+use function str_ends_with;
+use function str_starts_with;
 use function strtolower;
 use function strtr;
 use function substr;
@@ -132,12 +135,13 @@ class MediaFileService
     /**
      * A list of media files not already linked to a media object.
      *
-     * @param Tree                $tree
-     * @param FilesystemInterface $data_filesystem
+     * @param Tree               $tree
+     * @param FilesystemOperator $data_filesystem
      *
      * @return array<string>
+     * @throws FilesystemException
      */
-    public function unusedFiles(Tree $tree, FilesystemInterface $data_filesystem): array
+    public function unusedFiles(Tree $tree, FilesystemOperator $data_filesystem): array
     {
         $used_files = DB::table('media_file')
             ->where('m_file', '=', $tree->id())
@@ -146,21 +150,9 @@ class MediaFileService
             ->pluck('multimedia_file_refn')
             ->all();
 
-        $disk_files = $tree->mediaFilesystem($data_filesystem)->listContents('', true);
-
-        $disk_files = array_filter($disk_files, static function (array $item) {
-            // Older versions of webtrees used a couple of special folders.
-            return
-                $item['type'] === 'file' &&
-                !str_contains($item['path'], '/thumbs/') &&
-                !str_contains($item['path'], '/watermarks/');
-        });
-
-        $disk_files = array_map(static function (array $item): string {
-            return $item['path'];
-        }, $disk_files);
-
-        $unused_files = array_diff($disk_files, $used_files);
+        $media_filesystem = $disk_files = $tree->mediaFilesystem($data_filesystem);
+        $disk_files       = $this->allFilesOnDisk($media_filesystem, '', Filesystem::LIST_DEEP)->all();
+        $unused_files     = array_diff($disk_files, $used_files);
 
         sort($unused_files);
 
@@ -174,6 +166,7 @@ class MediaFileService
      * @param ServerRequestInterface $request
      *
      * @return string The value to be stored in the 'FILE' field of the media object.
+     * @throws FilesystemException
      */
     public function uploadFile(ServerRequestInterface $request): string
     {
@@ -198,7 +191,7 @@ class MediaFileService
             case 'unused':
                 $unused = $params['unused'];
 
-                if ($tree->mediaFilesystem($data_filesystem)->has($unused)) {
+                if ($tree->mediaFilesystem($data_filesystem)->fileExists($unused)) {
                     return $unused;
                 }
 
@@ -232,14 +225,14 @@ class MediaFileService
                 }
 
                 // Generate a unique name for the file?
-                if ($auto === '1' || $tree->mediaFilesystem($data_filesystem)->has($folder . $file)) {
+                if ($auto === '1' || $tree->mediaFilesystem($data_filesystem)->fileExists($folder . $file)) {
                     $folder    = '';
                     $extension = pathinfo($uploaded_file->getClientFilename(), PATHINFO_EXTENSION);
                     $file      = sha1((string) $uploaded_file->getStream()) . '.' . $extension;
                 }
 
                 try {
-                    $tree->mediaFilesystem($data_filesystem)->putStream($folder . $file, $uploaded_file->getStream()->detach());
+                    $tree->mediaFilesystem($data_filesystem)->writeStream($folder . $file, $uploaded_file->getStream()->detach());
 
                     return $folder . $file;
                 } catch (RuntimeException | InvalidArgumentException $ex) {
@@ -296,26 +289,24 @@ class MediaFileService
     /**
      * Fetch a list of all files on disk (in folders used by any tree).
      *
-     * @param FilesystemInterface $data_filesystem Fileystem to search
-     * @param string              $media_folder    Root folder
-     * @param bool                $subfolders      Include subfolders
+     * @param FilesystemOperator $filesystem $filesystem to search
+     * @param string             $folder     Root folder
+     * @param bool               $subfolders Include subfolders
      *
      * @return Collection<string>
+     * @throws FilesystemException
      */
-    public function allFilesOnDisk(FilesystemInterface $data_filesystem, string $media_folder, bool $subfolders): Collection
+    public function allFilesOnDisk(FilesystemOperator $filesystem, string $folder, bool $subfolders): Collection
     {
-        $array = $data_filesystem->listContents($media_folder, $subfolders);
-
-        return Collection::make($array)
-            ->filter(static function (array $metadata): bool {
-                return
-                    $metadata['type'] === 'file' &&
-                    !str_contains($metadata['path'], '/thumbs/') &&
-                    !str_contains($metadata['path'], '/watermark/');
+        $files = $filesystem->listContents($folder, $subfolders)
+            ->filter(function (StorageAttributes $attributes): bool {
+                return $attributes->isFile() && !$this->isLegacyFolder($attributes->path());
             })
-            ->map(static function (array $metadata): string {
-                return $metadata['path'];
+            ->map(static function (StorageAttributes $attributes): string {
+                return $attributes->path();
             });
+
+        return new Collection($files->toArray());
     }
 
     /**
@@ -348,11 +339,12 @@ class MediaFileService
     /**
      * Generate a list of all folders in either the database or the filesystem.
      *
-     * @param FilesystemInterface $data_filesystem
+     * @param FilesystemOperator $data_filesystem
      *
      * @return Collection<string,string>
+     * @throws FilesystemException
      */
-    public function allMediaFolders(FilesystemInterface $data_filesystem): Collection
+    public function allMediaFolders(FilesystemOperator $data_filesystem): Collection
     {
         $db_folders = DB::table('media_file')
             ->join('gedcom_setting', 'gedcom_id', '=', 'm_file')
@@ -374,16 +366,14 @@ class MediaFileService
         $disk_folders = new Collection($media_roots);
 
         foreach ($media_roots as $media_folder) {
-            $tmp = Collection::make($data_filesystem->listContents($media_folder, true))
-                ->filter(static function (array $metadata) {
-                    return $metadata['type'] === 'dir';
+            $tmp = $data_filesystem->listContents($media_folder, Filesystem::LIST_DEEP)
+                ->filter(function (StorageAttributes $attributes): bool {
+                    return $attributes->isDir() && !$this->isLegacyFolder($attributes->path());
                 })
-                ->map(static function (array $metadata): string {
-                    return $metadata['path'] . '/';
+                ->map(static function (StorageAttributes $attributes): string {
+                    return $attributes->path() . '/';
                 })
-                ->filter(static function (string $dir): bool {
-                    return !str_contains($dir, '/thumbs/') && !str_contains($dir, 'watermarks');
-                });
+                ->toArray();
 
             $disk_folders = $disk_folders->concat($tmp);
         }
@@ -393,5 +383,19 @@ class MediaFileService
             ->mapWithKeys(static function (string $folder): array {
                 return [$folder => $folder];
             });
+    }
+
+    /**
+     * Some special media folders were created by earlier versions of webtrees.
+     */
+    private function isLegacyFolder(string $path): bool
+    {
+        return
+            str_starts_with($path, 'thumbs/') ||
+            str_contains($path, '/thumbs/') ||
+            str_ends_with($path, '/thumbs') ||
+            str_starts_with($path, 'watermarks/') ||
+            str_contains($path, '/watermarks/') ||
+            str_ends_with($path, '/watermarks');
     }
 }

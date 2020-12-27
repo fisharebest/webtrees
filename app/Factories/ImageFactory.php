@@ -32,8 +32,8 @@ use Intervention\Image\Exception\NotReadableException;
 use Intervention\Image\Exception\NotSupportedException;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
-use League\Flysystem\FileNotFoundException;
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\FilesystemException;
+use League\Flysystem\FilesystemOperator;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 use Throwable;
@@ -75,19 +75,19 @@ class ImageFactory implements ImageFactoryInterface
     /**
      * Send the original file - either inline or as a download.
      *
-     * @param FilesystemInterface $filesystem
-     * @param string              $path
-     * @param bool                $download
+     * @param FilesystemOperator $filesystem
+     * @param string             $path
+     * @param bool               $download
      *
      * @return ResponseInterface
      */
-    public function fileResponse(FilesystemInterface $filesystem, string $path, bool $download): ResponseInterface
+    public function fileResponse(FilesystemOperator $filesystem, string $path, bool $download): ResponseInterface
     {
         try {
             $data = $filesystem->read($path);
 
             $headers = [
-                'Content-Type'   => $filesystem->getMimetype($path),
+                'Content-Type'   => $filesystem->mimeType($path),
                 'Content-Length' => (string) strlen($data),
             ];
 
@@ -96,7 +96,7 @@ class ImageFactory implements ImageFactoryInterface
             }
 
             return response($data, StatusCodeInterface::STATUS_OK, $headers);
-        } catch (FileNotFoundException $ex) {
+        } catch (FilesystemException $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
         }
     }
@@ -104,17 +104,17 @@ class ImageFactory implements ImageFactoryInterface
     /**
      * Send a thumbnail.
      *
-     * @param FilesystemInterface $filesystem
-     * @param string              $path
-     * @param int                 $width
-     * @param int                 $height
-     * @param string              $fit
+     * @param FilesystemOperator $filesystem
+     * @param string             $path
+     * @param int                $width
+     * @param int                $height
+     * @param string             $fit
      *
      *
      * @return ResponseInterface
      */
     public function thumbnailResponse(
-        FilesystemInterface $filesystem,
+        FilesystemOperator $filesystem,
         string $path,
         int $width,
         int $height,
@@ -209,12 +209,12 @@ class ImageFactory implements ImageFactoryInterface
         $path = $media_file->filename();
 
         try {
-            $mime_type = $filesystem->getMimetype($path);
+            $mime_type = $filesystem->mimeType($path);
 
             $key = implode(':', [
                 $media_file->media()->tree()->name(),
                 $path,
-                $filesystem->getTimestamp($path),
+                $filesystem->lastModified($path),
                 (string) $width,
                 (string) $height,
                 $fit,

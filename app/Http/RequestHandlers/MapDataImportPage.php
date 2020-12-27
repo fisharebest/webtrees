@@ -24,11 +24,15 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Illuminate\Database\Eloquent\Collection;
+use League\Flysystem\StorageAttributes;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function pathinfo;
 use function strtolower;
+
+use const PATHINFO_EXTENSION;
 
 /**
  * Import geographic data.
@@ -49,16 +53,17 @@ class MapDataImportPage implements RequestHandlerInterface
         $data_filesystem      = Registry::filesystem()->data();
         $data_filesystem_name = Registry::filesystem()->dataName();
 
-        $files = Collection::make($data_filesystem->listContents('places'))
-            ->filter(static function (array $metadata): bool {
-                $extension = strtolower($metadata['extension'] ?? '');
+        $files = $data_filesystem->listContents('places')
+            ->filter(static function (StorageAttributes $attributes): bool {
+                $extension = pathinfo($attributes->path(), PATHINFO_EXTENSION);
 
                 return $extension === 'csv' || $extension === 'geojson';
             })
-            ->map(static function (array $metadata): string {
-                return $metadata['basename'];
-            })
-            ->sort();
+            ->map(static function (StorageAttributes $attributes): string {
+                return pathinfo($attributes->path(), PATHINFO_BASENAME);
+            });
+
+        $files = Collection::make($files)->sort();
 
         return $this->viewResponse('admin/map-import-form', [
             'folder' => $data_filesystem_name . MapDataService::PLACES_FOLDER,

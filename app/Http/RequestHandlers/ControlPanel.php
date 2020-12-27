@@ -58,8 +58,8 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
+use League\Flysystem\Local\LocalFilesystemAdapter;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -130,7 +130,7 @@ class ControlPanel implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $filesystem      = new Filesystem(new Local(Webtrees::ROOT_DIR));
+        $filesystem      = new Filesystem(new LocalFilesystemAdapter(Webtrees::ROOT_DIR));
         $files_to_delete = $this->housekeeping_service->deleteOldWebtreesFiles($filesystem);
 
         $custom_updates = $this->module_service

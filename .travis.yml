@@ -1,10 +1,9 @@
 language: php
 
 php:
-  - 7.1
-  - 7.2
   - 7.3
   - 7.4
+  - 8.0
 
 ## Non-sudo environments are faster
 sudo: false
@@ -17,10 +16,11 @@ cache:
 
 before_script:
   - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
+  - travis_retry composer install
 
 # Coverage testing is slow, so only do it once.
 script:
-  - if [ $TRAVIS_PHP_VERSION  = 7.4 ]; then vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml; fi
+  - if [ $TRAVIS_PHP_VERSION  = 7.4 ]; then XDEBUG_MODE=coverage vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover tests/clover.xml; fi
   - if [ $TRAVIS_PHP_VERSION != 7.4 ]; then vendor/bin/phpunit -c phpunit.xml.dist; fi
 
 after_script:

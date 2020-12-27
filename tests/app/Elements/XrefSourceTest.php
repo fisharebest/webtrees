@@ -64,10 +64,10 @@ class XrefSourceTest extends TestCase
         $dom->loadHTML($html);
 
         $select_nodes = $dom->getElementsByTagName('select');
-        self::assertEquals(1, $select_nodes->length);
+        self::assertEquals(1, $select_nodes->count());
 
         $option_nodes = $select_nodes[0]->getElementsByTagName('option');
-        self::assertEquals(1, $option_nodes->length);
+        self::assertEquals(1, $option_nodes->count());
     }
     /**
      * @return void

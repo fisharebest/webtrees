@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Contracts;
 
 use Fisharebest\Webtrees\MediaFile;
 use Intervention\Image\Image;
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\FilesystemOperator;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -32,27 +32,27 @@ interface ImageFactoryInterface
     /**
      * Send the original file - either inline or as a download.
      *
-     * @param FilesystemInterface $filesystem
-     * @param string              $path
-     * @param bool                $download
+     * @param FilesystemOperator $filesystem
+     * @param string             $path
+     * @param bool               $download
      *
      * @return ResponseInterface
      */
-    public function fileResponse(FilesystemInterface $filesystem, string $path, bool $download): ResponseInterface;
+    public function fileResponse(FilesystemOperator $filesystem, string $path, bool $download): ResponseInterface;
 
     /**
      * Send the original file - either inline or as a download.
      *
-     * @param FilesystemInterface $filesystem
-     * @param string              $path
-     * @param int                 $width
-     * @param int                 $height
-     * @param string              $fit
+     * @param FilesystemOperator $filesystem
+     * @param string             $path
+     * @param int                $width
+     * @param int                $height
+     * @param string             $fit
      *
      * @return ResponseInterface
      */
     public function thumbnailResponse(
-        FilesystemInterface $filesystem,
+        FilesystemOperator $filesystem,
         string $path,
         int $width,
         int $height,

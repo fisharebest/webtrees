@@ -22,7 +22,8 @@ namespace Fisharebest\Webtrees\Services;
 use Exception;
 use Fisharebest\Webtrees\Carbon;
 use Illuminate\Database\Capsule\Manager as DB;
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemOperator;
 
 /**
  * Clean up old data, files and folders.
@@ -377,11 +378,11 @@ class HousekeepingService
      * Delete files and folders that belonged to an earlier version of webtrees.
      * Return a list of those that we could not delete.
      *
-     * @param FilesystemInterface $filesystem
+     * @param FilesystemOperator $filesystem
      *
      * @return array<string>
      */
-    public function deleteOldWebtreesFiles(FilesystemInterface $filesystem): array
+    public function deleteOldWebtreesFiles(FilesystemOperator $filesystem): array
     {
         $paths_to_delete = [];
 
@@ -397,17 +398,17 @@ class HousekeepingService
     /**
      * Delete old cache files.
      *
-     * @param FilesystemInterface $filesystem
-     * @param string              $path
-     * @param int                 $max_age Seconds
+     * @param FilesystemOperator $filesystem
+     * @param string             $path
+     * @param int                $max_age Seconds
      *
      * @return void
      */
-    public function deleteOldFiles(FilesystemInterface $filesystem, string $path, int $max_age): void
+    public function deleteOldFiles(FilesystemOperator $filesystem, string $path, int $max_age): void
     {
         $threshold = Carbon::now()->unix() - $max_age;
 
-        $list = $filesystem->listContents($path, true);
+        $list = $filesystem->listContents($path, Filesystem::LIST_DEEP);
 
         foreach ($list as $metadata) {
             // The timestamp can be absent or false.
@@ -451,19 +452,19 @@ class HousekeepingService
     /**
      * Delete a file or folder, if we can.
      *
-     * @param FilesystemInterface $filesystem
-     * @param string              $path
+     * @param FilesystemOperator $filesystem
+     * @param string             $path
      *
      * @return bool
      */
-    private function deleteFileOrFolder(FilesystemInterface $filesystem, string $path): bool
+    private function deleteFileOrFolder(FilesystemOperator $filesystem, string $path): bool
     {
-        if ($filesystem->has($path)) {
+        if ($filesystem->fileExists($path)) {
             try {
                 $metadata = $filesystem->getMetadata($path);
 
                 if ($metadata['type'] === 'dir') {
-                    $filesystem->deleteDir($path);
+                    $filesystem->deleteDirectory($path);
                 }
 
                 if ($metadata['type'] === 'file') {

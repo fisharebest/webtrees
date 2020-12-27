@@ -91,7 +91,7 @@ class ExportGedcomServer implements RequestHandlerInterface
 
             $this->gedcom_export_service->export($tree, $stream, true);
             rewind($stream);
-            $data_filesystem->putStream($filename, $stream);
+            $data_filesystem->writeStream($filename, $stream);
             fclose($stream);
 
             /* I18N: %s is a filename */

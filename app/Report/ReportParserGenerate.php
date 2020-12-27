@@ -42,7 +42,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Str;
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\FilesystemOperator;
 use LogicException;
 use stdClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
@@ -184,24 +184,24 @@ class ReportParserGenerate extends ReportParserBase
     /** @var Tree The current tree */
     private $tree;
 
-    /** @var FilesystemInterface */
+    /** @var FilesystemOperator */
     private $data_filesystem;
 
     /**
      * Create a parser for a report
      *
-     * @param string              $report The XML filename
-     * @param AbstractRenderer    $report_root
-     * @param string[][]          $vars
-     * @param Tree                $tree
-     * @param FilesystemInterface $data_filesystem
+     * @param string             $report The XML filename
+     * @param AbstractRenderer   $report_root
+     * @param string[][]         $vars
+     * @param Tree               $tree
+     * @param FilesystemOperator $data_filesystem
      */
     public function __construct(
         string $report,
         AbstractRenderer $report_root,
         array $vars,
         Tree $tree,
-        FilesystemInterface $data_filesystem
+        FilesystemOperator $data_filesystem
     ) {
         $this->report          = $report;
         $this->report_root     = $report_root;

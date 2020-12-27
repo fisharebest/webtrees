@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HousekeepingService;
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\FilesystemOperator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -84,12 +84,12 @@ class DoHousekeeping implements MiddlewareInterface
     /**
      * Run the various housekeeping services.
      *
-     * @param FilesystemInterface $data_filesystem
-     * @param FilesystemInterface $root_filesystem
+     * @param FilesystemOperator $data_filesystem
+     * @param FilesystemOperator $root_filesystem
      *
      * @return void
      */
-    private function runHousekeeping(FilesystemInterface $data_filesystem, FilesystemInterface $root_filesystem): void
+    private function runHousekeeping(FilesystemOperator $data_filesystem, FilesystemOperator $root_filesystem): void
     {
         // Clear old thumbnails
         $this->housekeeping_service->deleteOldFiles($data_filesystem, self::THUMBNAIL_DIR, self::MAX_THUMBNAIL_AGE);

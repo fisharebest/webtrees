@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
+use League\Flysystem\Filesystem;
+use League\Flysystem\StorageAttributes;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -81,13 +83,14 @@ class CleanDataFolder implements RequestHandlerInterface
         }
 
         // List the top-level contents of the data folder
-        $entries = array_map(static function (array $content) {
-            if ($content['type'] === 'dir') {
-                return $content['path'] . '/';
-            }
+        $entries = $data_filesystem->listContents('', Filesystem::LIST_SHALLOW)
+            ->map(static function (StorageAttributes $attributes): string {
+                if ($attributes->isDir()) {
+                    return $attributes->path() . '/';
+                }
 
-            return $content['path'];
-        }, $data_filesystem->listContents());
+                return $attributes->path();
+            });
 
         return $this->viewResponse('admin/clean-data', [
             'title'     => I18N::translate('Clean up data folder'),

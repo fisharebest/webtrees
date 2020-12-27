@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+use League\Flysystem\Filesystem;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
@@ -40,7 +41,7 @@ class AutoCompleteFolder extends AbstractAutocompleteHandler
 
         $media_filesystem = Registry::filesystem()->media($tree);
 
-        $contents = new Collection($media_filesystem->listContents('', true));
+        $contents = new Collection($media_filesystem->listContents('', Filesystem::LIST_DEEP));
 
         return $contents
             ->filter(static function (array $object) use ($query): bool {

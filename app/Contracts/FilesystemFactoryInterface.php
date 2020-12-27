@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Contracts;
 
 use Fisharebest\Webtrees\Tree;
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\FilesystemOperator;
 
 /**
  * Make a filesystem.
@@ -37,25 +37,25 @@ interface FilesystemFactoryInterface
     /**
      * Create a filesystem for the user's data folder.
      *
-     * @return FilesystemInterface
+     * @return FilesystemOperator
      */
-    public function data(): FilesystemInterface;
+    public function data(): FilesystemOperator;
 
     /**
      * Create a filesystem for a tree's media folder.
      *
      * @param Tree $tree
      *
-     * @return FilesystemInterface
+     * @return FilesystemOperator
      */
-    public function media(Tree $tree): FilesystemInterface;
+    public function media(Tree $tree): FilesystemOperator;
 
     /**
      * Create a filesystem for the application's root folder.
      *
-     * @return FilesystemInterface
+     * @return FilesystemOperator
      */
-    public function root(): FilesystemInterface;
+    public function root(): FilesystemOperator;
 
     /**
      * Describe a filesystem for the application's root folder.

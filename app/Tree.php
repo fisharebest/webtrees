@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Database\Capsule\Manager as DB;
 use InvalidArgumentException;
 use League\Flysystem\Filesystem;
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\FilesystemOperator;
 use Psr\Http\Message\StreamInterface;
 use stdClass;
 
@@ -613,11 +613,11 @@ class Tree
     /**
      * Where do we store our media files.
      *
-     * @param FilesystemInterface $data_filesystem
+     * @param FilesystemOperator $data_filesystem
      *
-     * @return FilesystemInterface
+     * @return FilesystemOperator
      */
-    public function mediaFilesystem(FilesystemInterface $data_filesystem): FilesystemInterface
+    public function mediaFilesystem(FilesystemOperator $data_filesystem): FilesystemOperator
     {
         $media_dir = $this->getPreference('MEDIA_DIRECTORY', 'media/');
         $adapter   = new ChrootAdapter($data_filesystem, $media_dir);

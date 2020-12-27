@@ -22,8 +22,9 @@ namespace Fisharebest\Webtrees\Console;
 use Composer\Script\Event;
 use Fisharebest\Localization\Translation;
 use Illuminate\Support\Collection;
-use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemException;
+use League\Flysystem\Local\LocalFilesystemAdapter;
 
 use function basename;
 use function dirname;
@@ -71,6 +72,8 @@ class ComposerScripts
      * Ensure every class has a corresponding test script.
      *
      * @param Event $event
+     *
+     * @throws FilesystemException
      */
     public static function missingTests(Event $event): void
     {
@@ -78,9 +81,9 @@ class ComposerScripts
 
         $io = $event->getIO();
 
-        $filesystem = new Filesystem(new Local(self::ROOT_DIR));
+        $filesystem = new Filesystem(new LocalFilesystemAdapter(self::ROOT_DIR));
 
-        $scripts = Collection::make($filesystem->listContents('/app/', true))
+        $scripts = Collection::make($filesystem->listContents('app', Filesystem::LIST_DEEP))
             ->filter(static function (array $file): bool {
                 return $file['type'] !== 'dir';
             })
@@ -96,7 +99,7 @@ class ComposerScripts
             $class = strtr($script, ['app/' => '', '.php' => '', '/' => '\\']);
             $test  = strtr($script, ['app/' => 'tests/app/', '.php' => 'Test.php']);
 
-            if (!$filesystem->has($test)) {
+            if (!$filesystem->fileExists($test)) {
                 $io->write('Creating test script for: ' . $class);
                 $filesystem->write($test, self::testStub($class));
             }

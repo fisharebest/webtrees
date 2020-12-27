@@ -22,6 +22,9 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
+use League\Flysystem\FilesystemException;
+use League\Flysystem\UnableToDeleteDirectory;
+use League\Flysystem\UnableToDeleteFile;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -31,6 +34,7 @@ use function assert;
 use function e;
 use function is_string;
 use function response;
+use function str_ends_with;
 
 /**
  * Delete a file or folder from the data filesystem.
@@ -49,30 +53,20 @@ class DeletePath implements RequestHandlerInterface
         $path = $request->getQueryParams()['path'];
         assert(is_string($path));
 
-        if ($data_filesystem->has($path)) {
-            $metadata = $data_filesystem->getMetadata($path);
-
-            switch ($metadata['type']) {
-                case 'file':
-                    try {
-                        $data_filesystem->delete($path);
-                        FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', e($path)), 'success');
-                    } catch (Throwable $ex) {
-                        FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)), 'danger');
-                    }
-                    break;
-
-                case 'dir':
-                    try {
-                        $data_filesystem->deleteDir($path);
-                        FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', e($path)), 'success');
-                    } catch (Throwable $ex) {
-                        FlashMessages::addMessage(I18N::translate('The folder %s could not be deleted.', e($path)), 'danger');
-                    }
-                    break;
+        if (str_ends_with($path, '/')) {
+            try {
+                $data_filesystem->deleteDirectory($path);
+                FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', e($path)), 'success');
+            } catch (FilesystemException | UnableToDeleteDirectory $ex) {
+                FlashMessages::addMessage(I18N::translate('The folder %s could not be deleted.', e($path)), 'danger');
             }
         } else {
-            FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)), 'danger');
+            try {
+                $data_filesystem->delete($path);
+                FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', e($path)), 'success');
+            } catch (FilesystemException | UnableToDeleteFile $ex) {
+                FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)), 'danger');
+            }
         }
 
         return response();

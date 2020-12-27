@@ -27,13 +27,12 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\TreeService;
-use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
-use League\Flysystem\FileNotFoundException;
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\FilesystemOperator;
+use League\Flysystem\UnableToRetrieveMetadata;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -42,7 +41,7 @@ use Throwable;
 
 use function assert;
 use function e;
-use function getimagesize;
+use function getimagesizefromstring;
 use function intdiv;
 use function route;
 use function str_starts_with;
@@ -114,7 +113,11 @@ class ManageMediaData implements RequestHandlerInterface
             $path = $row->media_folder . $row->multimedia_file_refn;
 
             try {
-                $mime_type = Registry::filesystem()->data()->getMimeType($path) ?: Mime::DEFAULT_TYPE;
+                try {
+                    $mime_type = Registry::filesystem()->data()->mimeType($path);
+                } catch (UnableToRetrieveMetadata $ex) {
+                    $mime_type = Mime::DEFAULT_TYPE;
+                }
 
                 if (str_starts_with($mime_type, 'image/')) {
                     $url = route(AdminMediaFileThumbnail::class, ['path' => $path]);
@@ -206,7 +209,12 @@ class ManageMediaData implements RequestHandlerInterface
                 $sort_columns   = [0 => 0];
 
                 $callback = function (array $row) use ($data_filesystem, $media_trees): array {
-                    $mime_type = $data_filesystem->getMimeType($row[0]) ?: Mime::DEFAULT_TYPE;
+                    try {
+                        $mime_type = $data_filesystem->mimeType($row[0]);
+                    } catch (UnableToRetrieveMetadata $ex) {
+                        $mime_type = Mime::DEFAULT_TYPE;
+                    }
+
 
                     if (str_starts_with($mime_type, 'image/')) {
                         $url = route(AdminMediaFileThumbnail::class, ['path' => $row[0]]);
@@ -294,19 +302,19 @@ class ManageMediaData implements RequestHandlerInterface
     /**
      * Generate some useful information and links about a media file.
      *
-     * @param FilesystemInterface $data_filesystem
-     * @param string              $file
+     * @param FilesystemOperator $data_filesystem
+     * @param string             $file
      *
      * @return string
      */
-    private function mediaFileInfo(FilesystemInterface $data_filesystem, string $file): string
+    private function mediaFileInfo(FilesystemOperator $data_filesystem, string $file): string
     {
         $html = '<dl>';
         $html .= '<dt>' . I18N::translate('Filename') . '</dt>';
         $html .= '<dd>' . e($file) . '</dd>';
 
-        if ($data_filesystem->has($file)) {
-            $size = $data_filesystem->getSize($file);
+        if ($data_filesystem->fileExists($file)) {
+            $size = $data_filesystem->fileSize($file);
             $size = intdiv($size + 1023, 1024); // Round up to next KB
             /* I18N: size of file in KB */
             $size = I18N::translate('%s KB', I18N::number($size));
@@ -316,7 +324,7 @@ class ManageMediaData implements RequestHandlerInterface
             try {
                 // This will work for local filesystems.  For remote filesystems, we will
                 // need to copy the file locally to work out the image size.
-                $imgsize = getimagesize(Webtrees::DATA_DIR . $file);
+                $imgsize = getimagesizefromstring($data_filesystem->read($file));
                 $html    .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
                 /* I18N: image dimensions, width × height */
                 $html .= '<dd>' . I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';

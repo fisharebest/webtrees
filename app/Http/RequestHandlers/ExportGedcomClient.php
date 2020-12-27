@@ -123,7 +123,7 @@ class ExportGedcomClient implements RequestHandlerInterface
             $temp_zip_file  = stream_get_meta_data(tmpfile())['uri'];
             $zip_adapter    = new ZipArchiveAdapter($temp_zip_file);
             $zip_filesystem = new Filesystem($zip_adapter);
-            $zip_filesystem->putStream($download_filename, $tmp_stream);
+            $zip_filesystem->writeStream($download_filename, $tmp_stream);
             fclose($tmp_stream);
 
             if ($media) {
@@ -139,7 +139,7 @@ class ExportGedcomClient implements RequestHandlerInterface
                     foreach ($record->mediaFiles() as $media_file) {
                         $from = $media_file->filename();
                         $to   = $path . $media_file->filename();
-                        if (!$media_file->isExternal() && $media_filesystem->has($from) && !$zip_filesystem->has($to)) {
+                        if (!$media_file->isExternal() && $media_filesystem->fileExists($from) && !$zip_filesystem->fileExists($to)) {
                             $zip_filesystem->writeStream($to, $media_filesystem->readStream($from));
                         }
                     }

@@ -24,11 +24,9 @@ use Fisharebest\Webtrees\Contracts\FilesystemFactoryInterface;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\Cached\CachedAdapter;
-use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\FilesystemOperator;
+use League\Flysystem\Local\LocalFilesystemAdapter;
 
 use function realpath;
 
@@ -42,13 +40,13 @@ class FilesystemFactory implements FilesystemFactoryInterface
     /**
      * Create a filesystem for the user's data folder.
      *
-     * @return FilesystemInterface
+     * @return FilesystemOperator
      */
-    public function data(): FilesystemInterface
+    public function data(): FilesystemOperator
     {
         $data_dir = Site::getPreference('INDEX_DIRECTORY', Webtrees::DATA_DIR);
 
-        return new Filesystem(new CachedAdapter(new Local($data_dir), new Memory()));
+        return new Filesystem(new LocalFilesystemAdapter($data_dir));
     }
 
     /**
@@ -66,9 +64,9 @@ class FilesystemFactory implements FilesystemFactoryInterface
      *
      * @param Tree $tree
      *
-     * @return FilesystemInterface
+     * @return FilesystemOperator
      */
-    public function media(Tree $tree): FilesystemInterface
+    public function media(Tree $tree): FilesystemOperator
     {
         $media_dir = $tree->getPreference('MEDIA_DIRECTORY', 'media/');
         $adapter   = new ChrootAdapter($this->data(), $media_dir);
@@ -79,11 +77,11 @@ class FilesystemFactory implements FilesystemFactoryInterface
     /**
      * Create a filesystem for the application's root folder.
      *
-     * @return FilesystemInterface
+     * @return FilesystemOperator
      */
-    public function root(): FilesystemInterface
+    public function root(): FilesystemOperator
     {
-        return new Filesystem(new CachedAdapter(new Local(self::ROOT_DIR), new Memory()));
+        return new Filesystem(new LocalFilesystemAdapter(self::ROOT_DIR));
     }
 
     /**
