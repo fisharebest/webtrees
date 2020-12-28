@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2020-09-06 08:32+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2020-05-10 12:00+0100\nPO-Revision-Date: 2021-01-03 13:32+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -902,7 +902,7 @@ msgstr "उन व्यक्तियों की रिपोर्ट ज�
 #: app/Module/ChangeReportModule.php:56
 #: resources/xml/reports/change_report.xml:4
 msgid "A report of recent and pending changes."
-msgstr "हालिया और लंबित परिवर्तनों की एक रिपोर्ट।"
+msgstr "नवीनतम और लंबित परिवर्तनों की एक रिपोर्ट।"
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:56
@@ -5219,7 +5219,7 @@ msgstr "मतभेद"
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:97
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past. Where possible, you should enter dates using the calendar in which the event was originally recorded. You can then specify a conversion, to show these dates in a more familiar calendar. If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
-msgstr "दुनिया के विभिन्न हिस्सों में विभिन्न कैलेंडर प्रणालियों का उपयोग किया जाता है, और कई अन्य कैलेंडर प्रणालियों का उपयोग अतीत में किया गया है। जहां संभव हो, आपको कैलेंडर का उपयोग करके तिथियां दर्ज कर देनी चाहिए, जिसमें घटना मूल रूप से दर्ज की गई थी। फिर आप इन तिथियों को अधिक परिचित कैलेंडर में दिखाने के लिए किसी कैलेंडर परिवर्तन को विशेष कर सकते हैं। यदि आप नियमित रूप से दो कैलेंडर का उपयोग करते हैं, तो आप दो रूपांतरण निर्दिष्ट कर सकते हैं और दिनांक दोनों चयनित कैलेंडर में परिवर्तित हो जाएंगे।"
+msgstr "दुनिया के विभिन्न हिस्सों में विभिन्न कैलेंडर प्रणालियों का उपयोग किया जाता है, और कई अन्य कैलेंडर प्रणालियों का उपयोग अतीत में किया गया है। जहां संभव हो, आपको उसी कैलेंडर का उपयोग करके तिथियां दर्ज कर देनी चाहिए जिसमें घटना मूल रूप से दर्ज की गई थी। फिर आप इन तिथियों को अधिक परिचित कैलेंडर में दिखाने के लिए किसी कैलेंडर परिवर्तन को निर्धारित कर सकते हैं। यदि आप नियमित रूप से दो कैलेंडरों का उपयोग करते हैं, तो आप दो रूपांतरण निर्दिष्ट कर सकते हैं और दिनांक दोनों चयनित कैलेंडर में परिवर्तित हो जाएंगे।"
 
 #: resources/xml/reports/individual_ext_report.xml:6
 #: resources/xml/reports/missing_facts_report.xml:6
@@ -8196,14 +8196,14 @@ msgstr "अंतिम साइन इन"
 #: resources/views/modules/html/template-statistics.phtml:68
 #: resources/views/statistics/individuals/total-events.phtml:55
 msgid "Latest birth"
-msgstr "हालिया जन्म"
+msgstr "नवीनतम जन्म"
 
 #: resources/views/modules/gedcom_stats/config.phtml:35
 #: resources/views/modules/gedcom_stats/statistics.phtml:177
 #: resources/views/modules/html/template-statistics.phtml:76
 #: resources/views/statistics/individuals/total-events.phtml:103
 msgid "Latest death"
-msgstr "हालिया मृत्यु"
+msgstr "नवीनतम मृत्यु"
 
 #: resources/views/statistics/families/total-records.phtml:104
 msgid "Latest divorce"
@@ -11388,7 +11388,7 @@ msgstr "वाक़ई सारा भौगोलिक डेटा हट�
 #: app/Module/RecentChangesModule.php:77
 #: resources/xml/reports/change_report.xml:92
 msgid "Recent changes"
-msgstr "हालिया बदलाव"
+msgstr "नवीनतम बदलाव"
 
 #: resources/views/calendar-page.phtml:103
 msgid "Recent years (&lt; 100 yrs)"
