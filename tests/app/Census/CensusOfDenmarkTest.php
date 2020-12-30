@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,7 +37,7 @@ class CensusOfDenmarkTest extends TestCase
     {
         $census = new CensusOfDenmark();
 
-        $this->assertSame('Danmark', $census->censusPlace());
+        self::assertSame('Danmark', $census->censusPlace());
     }
 
     /**
@@ -51,7 +51,7 @@ class CensusOfDenmarkTest extends TestCase
     {
         $census = new CensusOfDenmark();
 
-        $this->assertSame('da', $census->censusLanguage());
+        self::assertSame('da', $census->censusLanguage());
     }
 
     /**
@@ -67,28 +67,28 @@ class CensusOfDenmarkTest extends TestCase
 
         $census_dates = $census->allCensusDates();
 
-        $this->assertCount(22, $census_dates);
-        $this->assertInstanceOf(CensusOfDenmark1787::class, $census_dates[0]);
-        $this->assertInstanceOf(CensusOfDenmark1801::class, $census_dates[1]);
-        $this->assertInstanceOf(CensusOfDenmark1803::class, $census_dates[2]);
-        $this->assertInstanceOf(CensusOfDenmark1834::class, $census_dates[3]);
-        $this->assertInstanceOf(CensusOfDenmark1835::class, $census_dates[4]);
-        $this->assertInstanceOf(CensusOfDenmark1840::class, $census_dates[5]);
-        $this->assertInstanceOf(CensusOfDenmark1845::class, $census_dates[6]);
-        $this->assertInstanceOf(CensusOfDenmark1850::class, $census_dates[7]);
-        $this->assertInstanceOf(CensusOfDenmark1855::class, $census_dates[8]);
-        $this->assertInstanceOf(CensusOfDenmark1860::class, $census_dates[9]);
-        $this->assertInstanceOf(CensusOfDenmark1870::class, $census_dates[10]);
-        $this->assertInstanceOf(CensusOfDenmark1880::class, $census_dates[11]);
-        $this->assertInstanceOf(CensusOfDenmark1885::class, $census_dates[12]);
-        $this->assertInstanceOf(CensusOfDenmark1890::class, $census_dates[13]);
-        $this->assertInstanceOf(CensusOfDenmark1901::class, $census_dates[14]);
-        $this->assertInstanceOf(CensusOfDenmark1906::class, $census_dates[15]);
-        $this->assertInstanceOf(CensusOfDenmark1911::class, $census_dates[16]);
-        $this->assertInstanceOf(CensusOfDenmark1916::class, $census_dates[17]);
-        $this->assertInstanceOf(CensusOfDenmark1921::class, $census_dates[18]);
-        $this->assertInstanceOf(CensusOfDenmark1925::class, $census_dates[19]);
-        $this->assertInstanceOf(CensusOfDenmark1930::class, $census_dates[20]);
-        $this->assertInstanceOf(CensusOfDenmark1940::class, $census_dates[21]);
+        self::assertCount(22, $census_dates);
+        self::assertInstanceOf(CensusOfDenmark1787::class, $census_dates[0]);
+        self::assertInstanceOf(CensusOfDenmark1801::class, $census_dates[1]);
+        self::assertInstanceOf(CensusOfDenmark1803::class, $census_dates[2]);
+        self::assertInstanceOf(CensusOfDenmark1834::class, $census_dates[3]);
+        self::assertInstanceOf(CensusOfDenmark1835::class, $census_dates[4]);
+        self::assertInstanceOf(CensusOfDenmark1840::class, $census_dates[5]);
+        self::assertInstanceOf(CensusOfDenmark1845::class, $census_dates[6]);
+        self::assertInstanceOf(CensusOfDenmark1850::class, $census_dates[7]);
+        self::assertInstanceOf(CensusOfDenmark1855::class, $census_dates[8]);
+        self::assertInstanceOf(CensusOfDenmark1860::class, $census_dates[9]);
+        self::assertInstanceOf(CensusOfDenmark1870::class, $census_dates[10]);
+        self::assertInstanceOf(CensusOfDenmark1880::class, $census_dates[11]);
+        self::assertInstanceOf(CensusOfDenmark1885::class, $census_dates[12]);
+        self::assertInstanceOf(CensusOfDenmark1890::class, $census_dates[13]);
+        self::assertInstanceOf(CensusOfDenmark1901::class, $census_dates[14]);
+        self::assertInstanceOf(CensusOfDenmark1906::class, $census_dates[15]);
+        self::assertInstanceOf(CensusOfDenmark1911::class, $census_dates[16]);
+        self::assertInstanceOf(CensusOfDenmark1916::class, $census_dates[17]);
+        self::assertInstanceOf(CensusOfDenmark1921::class, $census_dates[18]);
+        self::assertInstanceOf(CensusOfDenmark1925::class, $census_dates[19]);
+        self::assertInstanceOf(CensusOfDenmark1930::class, $census_dates[20]);
+        self::assertInstanceOf(CensusOfDenmark1940::class, $census_dates[21]);
     }
 }

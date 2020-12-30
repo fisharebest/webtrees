@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,15 +35,15 @@ class CensusTest extends TestCase
     {
         $censuses = Census::censusPlaces('XX');
 
-        $this->assertCount(9, $censuses);
-        $this->assertInstanceOf(CensusOfUnitedStates::class, $censuses[0]);
-        $this->assertInstanceOf(CensusOfEngland::class, $censuses[1]);
-        $this->assertInstanceOf(CensusOfScotland::class, $censuses[2]);
-        $this->assertInstanceOf(CensusOfWales::class, $censuses[3]);
-        $this->assertInstanceOf(CensusOfDeutschland::class, $censuses[4]);
-        $this->assertInstanceOf(CensusOfFrance::class, $censuses[5]);
-        $this->assertInstanceOf(CensusOfCzechRepublic::class, $censuses[6]);
-        $this->assertInstanceOf(CensusOfSlovakia::class, $censuses[7]);
-        $this->assertInstanceOf(CensusOfDenmark::class, $censuses[8]);
+        self::assertCount(9, $censuses);
+        self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[0]);
+        self::assertInstanceOf(CensusOfEngland::class, $censuses[1]);
+        self::assertInstanceOf(CensusOfScotland::class, $censuses[2]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[3]);
+        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[4]);
+        self::assertInstanceOf(CensusOfFrance::class, $censuses[5]);
+        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[6]);
+        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[7]);
+        self::assertInstanceOf(CensusOfDenmark::class, $censuses[8]);
     }
 }

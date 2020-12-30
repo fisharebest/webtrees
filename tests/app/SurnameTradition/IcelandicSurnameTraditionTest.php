@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -50,7 +50,7 @@ class IcelandicSurnameTraditionTest extends TestCase
      */
     public function testMarriedSurnames(): void
     {
-        $this->assertFalse($this->surname_tradition->hasMarriedNames());
+        self::assertFalse($this->surname_tradition->hasMarriedNames());
     }
 
     /**
@@ -62,7 +62,7 @@ class IcelandicSurnameTraditionTest extends TestCase
      */
     public function testSurnames(): void
     {
-        $this->assertFalse($this->surname_tradition->hasSurnames());
+        self::assertFalse($this->surname_tradition->hasSurnames());
     }
 
     /**
@@ -74,7 +74,7 @@ class IcelandicSurnameTraditionTest extends TestCase
      */
     public function testNewSonNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             ['NAME' => 'Jonsson'],
             $this->surname_tradition->newChildNames('Jon Einarsson', 'Eva Stefansdottir', 'M')
         );
@@ -89,7 +89,7 @@ class IcelandicSurnameTraditionTest extends TestCase
      */
     public function testNewDaughterNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             ['NAME' => 'Jonsdottir'],
             $this->surname_tradition->newChildNames('Jon Einarsson', 'Eva Stefansdottir', 'F')
         );
@@ -104,7 +104,7 @@ class IcelandicSurnameTraditionTest extends TestCase
      */
     public function testNewChildNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [],
             $this->surname_tradition->newChildNames('Jon Einarsson', 'Eva Stefansdottir', 'U')
         );
@@ -119,7 +119,7 @@ class IcelandicSurnameTraditionTest extends TestCase
      */
     public function testNewFatherNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => 'Einar',
                 'GIVN' => 'Einar',
@@ -137,7 +137,7 @@ class IcelandicSurnameTraditionTest extends TestCase
      */
     public function testNewMotherNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [],
             $this->surname_tradition->newParentNames('Jon Einarsson', 'F')
         );
@@ -152,7 +152,7 @@ class IcelandicSurnameTraditionTest extends TestCase
      */
     public function testNewParentNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [],
             $this->surname_tradition->newParentNames('Jon Einarsson', 'U')
         );
@@ -167,7 +167,7 @@ class IcelandicSurnameTraditionTest extends TestCase
      */
     public function testNewHusbandNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [],
             $this->surname_tradition->newSpouseNames('Eva Stefansdottir', 'M')
         );
@@ -182,7 +182,7 @@ class IcelandicSurnameTraditionTest extends TestCase
      */
     public function testNewWifeNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [],
             $this->surname_tradition->newSpouseNames('Jon Einarsson', 'F')
         );
@@ -197,7 +197,7 @@ class IcelandicSurnameTraditionTest extends TestCase
      */
     public function testNewSpouseNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [],
             $this->surname_tradition->newSpouseNames('Jon Einarsson', 'U')
         );

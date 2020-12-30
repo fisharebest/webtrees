@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,7 +37,7 @@ class CensusOfEnglandTest extends TestCase
     {
         $census = new CensusOfEngland();
 
-        $this->assertSame('England', $census->censusPlace());
+        self::assertSame('England', $census->censusPlace());
     }
 
     /**
@@ -51,7 +51,7 @@ class CensusOfEnglandTest extends TestCase
     {
         $census = new CensusOfEngland();
 
-        $this->assertSame('en-GB', $census->censusLanguage());
+        self::assertSame('en-GB', $census->censusLanguage());
     }
 
     /**
@@ -67,15 +67,15 @@ class CensusOfEnglandTest extends TestCase
 
         $census_dates = $census->allCensusDates();
 
-        $this->assertCount(9, $census_dates);
-        $this->assertInstanceOf(CensusOfEngland1841::class, $census_dates[0]);
-        $this->assertInstanceOf(CensusOfEngland1851::class, $census_dates[1]);
-        $this->assertInstanceOf(CensusOfEngland1861::class, $census_dates[2]);
-        $this->assertInstanceOf(CensusOfEngland1871::class, $census_dates[3]);
-        $this->assertInstanceOf(CensusOfEngland1881::class, $census_dates[4]);
-        $this->assertInstanceOf(CensusOfEngland1891::class, $census_dates[5]);
-        $this->assertInstanceOf(CensusOfEngland1901::class, $census_dates[6]);
-        $this->assertInstanceOf(CensusOfEngland1911::class, $census_dates[7]);
-        $this->assertInstanceOf(RegisterOfEngland1939::class, $census_dates[8]);
+        self::assertCount(9, $census_dates);
+        self::assertInstanceOf(CensusOfEngland1841::class, $census_dates[0]);
+        self::assertInstanceOf(CensusOfEngland1851::class, $census_dates[1]);
+        self::assertInstanceOf(CensusOfEngland1861::class, $census_dates[2]);
+        self::assertInstanceOf(CensusOfEngland1871::class, $census_dates[3]);
+        self::assertInstanceOf(CensusOfEngland1881::class, $census_dates[4]);
+        self::assertInstanceOf(CensusOfEngland1891::class, $census_dates[5]);
+        self::assertInstanceOf(CensusOfEngland1901::class, $census_dates[6]);
+        self::assertInstanceOf(CensusOfEngland1911::class, $census_dates[7]);
+        self::assertInstanceOf(RegisterOfEngland1939::class, $census_dates[8]);
     }
 }

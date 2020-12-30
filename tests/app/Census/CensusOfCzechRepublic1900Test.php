@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,8 +37,8 @@ class CensusOfCzechRepublic1900Test extends TestCase
     {
         $census = new CensusOfCzechRepublic1900();
 
-        $this->assertSame('Česko', $census->censusPlace());
-        $this->assertSame('31 DEC 1900', $census->censusDate());
+        self::assertSame('Česko', $census->censusPlace());
+        self::assertSame('31 DEC 1900', $census->censusDate());
     }
 
     /**
@@ -54,50 +54,50 @@ class CensusOfCzechRepublic1900Test extends TestCase
         $census  = new CensusOfCzechRepublic1900();
         $columns = $census->columns();
 
-        $this->assertCount(14, $columns);
-        $this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-        $this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[1]);
-        $this->assertInstanceOf(CensusColumnSexMZ::class, $columns[2]);
-        $this->assertInstanceOf(CensusColumnBirthDaySlashMonthYear::class, $columns[3]);
-        $this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[4]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[5]);
-        $this->assertInstanceOf(CensusColumnReligion::class, $columns[6]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[7]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[8]);
-        $this->assertInstanceOf(CensusColumnOccupation::class, $columns[9]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[10]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[11]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[12]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[13]);
+        self::assertCount(14, $columns);
+        self::assertInstanceOf(CensusColumnFullName::class, $columns[0]);
+        self::assertInstanceOf(CensusColumnRelationToHead::class, $columns[1]);
+        self::assertInstanceOf(CensusColumnSexMZ::class, $columns[2]);
+        self::assertInstanceOf(CensusColumnBirthDaySlashMonthYear::class, $columns[3]);
+        self::assertInstanceOf(CensusColumnBirthPlace::class, $columns[4]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[5]);
+        self::assertInstanceOf(CensusColumnReligion::class, $columns[6]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[7]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[8]);
+        self::assertInstanceOf(CensusColumnOccupation::class, $columns[9]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[10]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[11]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[12]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[13]);
 
-        $this->assertSame('Jméno', $columns[0]->abbreviation());
-        $this->assertSame('Vztah', $columns[1]->abbreviation());
-        $this->assertSame('Pohlaví', $columns[2]->abbreviation());
-        $this->assertSame('Narození', $columns[3]->abbreviation());
-        $this->assertSame('Rodiště', $columns[4]->abbreviation());
-        $this->assertSame('Přísluší', $columns[5]->abbreviation());
-        $this->assertSame('Vyznání', $columns[6]->abbreviation());
-        $this->assertSame('Stav', $columns[7]->abbreviation());
-        $this->assertSame('Jazyk', $columns[8]->abbreviation());
-        $this->assertSame('Povolání', $columns[9]->abbreviation());
-        $this->assertSame('Postavení', $columns[10]->abbreviation());
-        $this->assertSame('Gramotnost', $columns[11]->abbreviation());
-        $this->assertSame('Druh pobytu', $columns[12]->abbreviation());
-        $this->assertSame('Od roku', $columns[13]->abbreviation());
+        self::assertSame('Jméno', $columns[0]->abbreviation());
+        self::assertSame('Vztah', $columns[1]->abbreviation());
+        self::assertSame('Pohlaví', $columns[2]->abbreviation());
+        self::assertSame('Narození', $columns[3]->abbreviation());
+        self::assertSame('Rodiště', $columns[4]->abbreviation());
+        self::assertSame('Přísluší', $columns[5]->abbreviation());
+        self::assertSame('Vyznání', $columns[6]->abbreviation());
+        self::assertSame('Stav', $columns[7]->abbreviation());
+        self::assertSame('Jazyk', $columns[8]->abbreviation());
+        self::assertSame('Povolání', $columns[9]->abbreviation());
+        self::assertSame('Postavení', $columns[10]->abbreviation());
+        self::assertSame('Gramotnost', $columns[11]->abbreviation());
+        self::assertSame('Druh pobytu', $columns[12]->abbreviation());
+        self::assertSame('Od roku', $columns[13]->abbreviation());
 
-        $this->assertSame('', $columns[0]->title());
-        $this->assertSame('', $columns[1]->title());
-        $this->assertSame('', $columns[2]->title());
-        $this->assertSame('Datum narození', $columns[3]->title());
-        $this->assertSame('Místo narození', $columns[4]->title());
-        $this->assertSame('Domovské právo', $columns[5]->title());
-        $this->assertSame('', $columns[6]->title());
-        $this->assertSame('Rodinný stav', $columns[7]->title());
-        $this->assertSame('Jazyk v obcování', $columns[8]->title());
-        $this->assertSame('', $columns[9]->title());
-        $this->assertSame('Postavení v zaměstnání', $columns[10]->title());
-        $this->assertSame('Znalost čtení a psaní', $columns[11]->title());
-        $this->assertSame('Pobyt dočasný nebo trvalý', $columns[12]->title());
-        $this->assertSame('Počátek pobytu', $columns[13]->title());
+        self::assertSame('', $columns[0]->title());
+        self::assertSame('', $columns[1]->title());
+        self::assertSame('', $columns[2]->title());
+        self::assertSame('Datum narození', $columns[3]->title());
+        self::assertSame('Místo narození', $columns[4]->title());
+        self::assertSame('Domovské právo', $columns[5]->title());
+        self::assertSame('', $columns[6]->title());
+        self::assertSame('Rodinný stav', $columns[7]->title());
+        self::assertSame('Jazyk v obcování', $columns[8]->title());
+        self::assertSame('', $columns[9]->title());
+        self::assertSame('Postavení v zaměstnání', $columns[10]->title());
+        self::assertSame('Znalost čtení a psaní', $columns[11]->title());
+        self::assertSame('Pobyt dočasný nebo trvalý', $columns[12]->title());
+        self::assertSame('Počátek pobytu', $columns[13]->title());
     }
 }

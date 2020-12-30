@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,8 +37,8 @@ class CensusOfDenmark1925Test extends TestCase
     {
         $census = new CensusOfDenmark1925();
 
-        $this->assertSame('Danmark', $census->censusPlace());
-        $this->assertSame('05 NOV 1925', $census->censusDate());
+        self::assertSame('Danmark', $census->censusPlace());
+        self::assertSame('05 NOV 1925', $census->censusDate());
     }
 
     /**
@@ -54,41 +54,41 @@ class CensusOfDenmark1925Test extends TestCase
         $census  = new CensusOfDenmark1925();
         $columns = $census->columns();
 
-        $this->assertCount(11, $columns);
-        $this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-        $this->assertInstanceOf(CensusColumnSexMK::class, $columns[1]);
-        $this->assertInstanceOf(CensusColumnBirthDaySlashMonth::class, $columns[2]);
-        $this->assertInstanceOf(CensusColumnBirthYear::class, $columns[3]);
-        $this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[4]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[5]);
-        $this->assertInstanceOf(CensusColumnConditionDanish::class, $columns[6]);
-        $this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[7]);
-        $this->assertInstanceOf(CensusColumnOccupation::class, $columns[8]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[9]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[10]);
+        self::assertCount(11, $columns);
+        self::assertInstanceOf(CensusColumnFullName::class, $columns[0]);
+        self::assertInstanceOf(CensusColumnSexMK::class, $columns[1]);
+        self::assertInstanceOf(CensusColumnBirthDaySlashMonth::class, $columns[2]);
+        self::assertInstanceOf(CensusColumnBirthYear::class, $columns[3]);
+        self::assertInstanceOf(CensusColumnBirthPlace::class, $columns[4]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[5]);
+        self::assertInstanceOf(CensusColumnConditionDanish::class, $columns[6]);
+        self::assertInstanceOf(CensusColumnRelationToHead::class, $columns[7]);
+        self::assertInstanceOf(CensusColumnOccupation::class, $columns[8]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[9]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[10]);
 
-        $this->assertSame('Navn', $columns[0]->abbreviation());
-        $this->assertSame('Køn', $columns[1]->abbreviation());
-        $this->assertSame('Fødselsdag', $columns[2]->abbreviation());
-        $this->assertSame('Fødselsaar', $columns[3]->abbreviation());
-        $this->assertSame('Fødested', $columns[4]->abbreviation());
-        $this->assertSame('Statsbergerferhold', $columns[5]->abbreviation());
-        $this->assertSame('Civilstand', $columns[6]->abbreviation());
-        $this->assertSame('Stilling i familien', $columns[7]->abbreviation());
-        $this->assertSame('Erhverv', $columns[8]->abbreviation());
-        $this->assertSame('Bopæl', $columns[9]->abbreviation());
-        $this->assertSame('Anmærkninger', $columns[10]->abbreviation());
+        self::assertSame('Navn', $columns[0]->abbreviation());
+        self::assertSame('Køn', $columns[1]->abbreviation());
+        self::assertSame('Fødselsdag', $columns[2]->abbreviation());
+        self::assertSame('Fødselsaar', $columns[3]->abbreviation());
+        self::assertSame('Fødested', $columns[4]->abbreviation());
+        self::assertSame('Statsbergerferhold', $columns[5]->abbreviation());
+        self::assertSame('Civilstand', $columns[6]->abbreviation());
+        self::assertSame('Stilling i familien', $columns[7]->abbreviation());
+        self::assertSame('Erhverv', $columns[8]->abbreviation());
+        self::assertSame('Bopæl', $columns[9]->abbreviation());
+        self::assertSame('Anmærkninger', $columns[10]->abbreviation());
 
-        $this->assertSame('Samtlige Personers Navn (ogsaa Fornavn). Ved Børn, endnu uden Navn, sættes „Dreng“ eller „Pige“. Midlertidig fraværerade Personer anføres ikke her, men paa Skemaeta Bagside)', $columns[0]->title());
-        $this->assertSame('Kjønnet. Mandkøn (M) eller Kvindekøn (K).', $columns[1]->title());
-        $this->assertSame('', $columns[2]->title());
-        $this->assertSame('', $columns[3]->title());
-        $this->assertSame('', $columns[4]->title());
-        $this->assertSame('', $columns[5]->title());
-        $this->assertSame('Ægteskabelig Stillinge. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).', $columns[6]->title());
-        $this->assertSame('Stilling i Familien: Husfader, Husmoder, Barn, Slangtning o.l., Tjenestetyende, Logerende, Pensioner', $columns[7]->title());
-        $this->assertSame('Erhverv eller Livsstilling', $columns[8]->title());
-        $this->assertSame('Bopæl den 5. Novbr. 1924', $columns[9]->title());
-        $this->assertSame('Anmærkninger', $columns[10]->title());
+        self::assertSame('Samtlige Personers Navn (ogsaa Fornavn). Ved Børn, endnu uden Navn, sættes „Dreng“ eller „Pige“. Midlertidig fraværerade Personer anføres ikke her, men paa Skemaeta Bagside)', $columns[0]->title());
+        self::assertSame('Kjønnet. Mandkøn (M) eller Kvindekøn (K).', $columns[1]->title());
+        self::assertSame('', $columns[2]->title());
+        self::assertSame('', $columns[3]->title());
+        self::assertSame('', $columns[4]->title());
+        self::assertSame('', $columns[5]->title());
+        self::assertSame('Ægteskabelig Stillinge. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).', $columns[6]->title());
+        self::assertSame('Stilling i Familien: Husfader, Husmoder, Barn, Slangtning o.l., Tjenestetyende, Logerende, Pensioner', $columns[7]->title());
+        self::assertSame('Erhverv eller Livsstilling', $columns[8]->title());
+        self::assertSame('Bopæl den 5. Novbr. 1924', $columns[9]->title());
+        self::assertSame('Anmærkninger', $columns[10]->title());
     }
 }

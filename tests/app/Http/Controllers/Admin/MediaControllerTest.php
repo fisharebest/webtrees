@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,8 +21,6 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Cache;
-use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Contracts\FilesystemFactoryInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
@@ -45,7 +43,7 @@ class MediaControllerTest extends TestCase
     {
         parent::setUp();
 
-        $filesystem_factory = $this->createMock(FilesystemFactoryInterface::class);
+        $filesystem_factory = self::createMock(FilesystemFactoryInterface::class);
         $filesystem_factory->method('data')->willReturn(new Filesystem(new NullAdapter()));
         $filesystem_factory->method('dataName')->willReturn('data/');
         Registry::filesystem($filesystem_factory);
@@ -63,7 +61,7 @@ class MediaControllerTest extends TestCase
         $request            = self::createRequest();
         $response           = $controller->index($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -85,7 +83,7 @@ class MediaControllerTest extends TestCase
         ]);
         $response           = $controller->data($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -107,7 +105,7 @@ class MediaControllerTest extends TestCase
         ]);
         $response           = $controller->data($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -129,7 +127,7 @@ class MediaControllerTest extends TestCase
         ]);
         $response           = $controller->data($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -144,7 +142,7 @@ class MediaControllerTest extends TestCase
         $request            = self::createRequest();
         $response           = $controller->upload($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -159,6 +157,6 @@ class MediaControllerTest extends TestCase
         $request            = self::createRequest();
         $response           = $controller->uploadAction($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

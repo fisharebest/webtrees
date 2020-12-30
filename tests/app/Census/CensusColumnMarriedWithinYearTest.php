@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,21 +39,21 @@ class CensusColumnMarriedWithinYearTest extends TestCase
      */
     public function testMarriedWithinYear(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = self::createMock(Fact::class);
         $fact->method('date')->willReturn(new Date('01 DEC 1859'));
 
-        $family = $this->createMock(Family::class);
+        $family = self::createMock(Family::class);
         $family->method('facts')->with(['MARR'])->willReturn(new Collection([$fact]));
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMarriedWithinYear($census, '', '');
 
-        $this->assertSame('Y', $column->generate($individual, $individual));
+        self::assertSame('Y', $column->generate($individual, $individual));
     }
 
     /**
@@ -64,21 +64,21 @@ class CensusColumnMarriedWithinYearTest extends TestCase
      */
     public function testMarriedOverYearBeforeTheCensus(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = self::createMock(Fact::class);
         $fact->method('date')->willReturn(new Date('01 JAN 1859'));
 
-        $family = $this->createMock(Family::class);
+        $family = self::createMock(Family::class);
         $family->method('facts')->with(['MARR'])->willReturn(new Collection([$fact]));
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMarriedWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -89,21 +89,21 @@ class CensusColumnMarriedWithinYearTest extends TestCase
      */
     public function testMarriedAfterTheCensus(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = self::createMock(Fact::class);
         $fact->method('date')->willReturn(new Date('02 JUN 1860'));
 
-        $family = $this->createMock(Family::class);
+        $family = self::createMock(Family::class);
         $family->method('facts')->with(['MARR'])->willReturn(new Collection([$fact]));
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMarriedWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -114,18 +114,18 @@ class CensusColumnMarriedWithinYearTest extends TestCase
      */
     public function testNoMarriage(): void
     {
-        $family = $this->createMock(Family::class);
+        $family = self::createMock(Family::class);
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMarriedWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -136,14 +136,14 @@ class CensusColumnMarriedWithinYearTest extends TestCase
      */
     public function testNoSpouseFamily(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMarriedWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 }

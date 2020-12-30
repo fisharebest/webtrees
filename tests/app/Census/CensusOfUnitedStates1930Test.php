@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,8 +37,8 @@ class CensusOfUnitedStates1930Test extends TestCase
     {
         $census = new CensusOfUnitedStates1930();
 
-        $this->assertSame('United States', $census->censusPlace());
-        $this->assertSame('APR 1930', $census->censusDate());
+        self::assertSame('United States', $census->censusPlace());
+        self::assertSame('APR 1930', $census->censusDate());
     }
 
     /**
@@ -54,92 +54,92 @@ class CensusOfUnitedStates1930Test extends TestCase
         $census  = new CensusOfUnitedStates1930();
         $columns = $census->columns();
 
-        $this->assertCount(28, $columns);
-        $this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-        $this->assertInstanceOf(CensusColumnRelationToHeadEnglish::class, $columns[1]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[2]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[3]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[4]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[5]);
-        $this->assertInstanceOf(CensusColumnSexMF::class, $columns[6]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[7]);
-        $this->assertInstanceOf(CensusColumnAge::class, $columns[8]);
-        $this->assertInstanceOf(CensusColumnConditionUs::class, $columns[9]);
-        $this->assertInstanceOf(CensusColumnAgeMarried::class, $columns[10]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[11]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[12]);
-        $this->assertInstanceOf(CensusColumnBirthPlaceSimple::class, $columns[13]);
-        $this->assertInstanceOf(CensusColumnFatherBirthPlaceSimple::class, $columns[14]);
-        $this->assertInstanceOf(CensusColumnMotherBirthPlaceSimple::class, $columns[15]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[16]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[17]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[18]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[19]);
-        $this->assertInstanceOf(CensusColumnOccupation::class, $columns[20]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[21]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[22]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[23]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[24]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[25]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[26]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[27]);
+        self::assertCount(28, $columns);
+        self::assertInstanceOf(CensusColumnFullName::class, $columns[0]);
+        self::assertInstanceOf(CensusColumnRelationToHeadEnglish::class, $columns[1]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[2]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[3]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[4]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[5]);
+        self::assertInstanceOf(CensusColumnSexMF::class, $columns[6]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[7]);
+        self::assertInstanceOf(CensusColumnAge::class, $columns[8]);
+        self::assertInstanceOf(CensusColumnConditionUs::class, $columns[9]);
+        self::assertInstanceOf(CensusColumnAgeMarried::class, $columns[10]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[11]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[12]);
+        self::assertInstanceOf(CensusColumnBirthPlaceSimple::class, $columns[13]);
+        self::assertInstanceOf(CensusColumnFatherBirthPlaceSimple::class, $columns[14]);
+        self::assertInstanceOf(CensusColumnMotherBirthPlaceSimple::class, $columns[15]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[16]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[17]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[18]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[19]);
+        self::assertInstanceOf(CensusColumnOccupation::class, $columns[20]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[21]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[22]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[23]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[24]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[25]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[26]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[27]);
 
-        $this->assertSame('Name', $columns[0]->abbreviation());
-        $this->assertSame('Relation', $columns[1]->abbreviation());
-        $this->assertSame('Home', $columns[2]->abbreviation());
-        $this->assertSame('V/R', $columns[3]->abbreviation());
-        $this->assertSame('Radio', $columns[4]->abbreviation());
-        $this->assertSame('Farm', $columns[5]->abbreviation());
-        $this->assertSame('Sex', $columns[6]->abbreviation());
-        $this->assertSame('Race', $columns[7]->abbreviation());
-        $this->assertSame('Age', $columns[8]->abbreviation());
-        $this->assertSame('Cond', $columns[9]->abbreviation());
-        $this->assertSame('AM', $columns[10]->abbreviation());
-        $this->assertSame('School', $columns[11]->abbreviation());
-        $this->assertSame('R/W', $columns[12]->abbreviation());
-        $this->assertSame('BP', $columns[13]->abbreviation());
-        $this->assertSame('FBP', $columns[14]->abbreviation());
-        $this->assertSame('MBP', $columns[15]->abbreviation());
-        $this->assertSame('Lang', $columns[16]->abbreviation());
-        $this->assertSame('Imm', $columns[17]->abbreviation());
-        $this->assertSame('Nat', $columns[18]->abbreviation());
-        $this->assertSame('Eng', $columns[19]->abbreviation());
-        $this->assertSame('Occupation', $columns[20]->abbreviation());
-        $this->assertSame('Industry', $columns[21]->abbreviation());
-        $this->assertSame('Code', $columns[22]->abbreviation());
-        $this->assertSame('Emp', $columns[23]->abbreviation());
-        $this->assertSame('Work', $columns[24]->abbreviation());
-        $this->assertSame('Unemp', $columns[25]->abbreviation());
-        $this->assertSame('Vet', $columns[26]->abbreviation());
-        $this->assertSame('War', $columns[27]->abbreviation());
+        self::assertSame('Name', $columns[0]->abbreviation());
+        self::assertSame('Relation', $columns[1]->abbreviation());
+        self::assertSame('Home', $columns[2]->abbreviation());
+        self::assertSame('V/R', $columns[3]->abbreviation());
+        self::assertSame('Radio', $columns[4]->abbreviation());
+        self::assertSame('Farm', $columns[5]->abbreviation());
+        self::assertSame('Sex', $columns[6]->abbreviation());
+        self::assertSame('Race', $columns[7]->abbreviation());
+        self::assertSame('Age', $columns[8]->abbreviation());
+        self::assertSame('Cond', $columns[9]->abbreviation());
+        self::assertSame('AM', $columns[10]->abbreviation());
+        self::assertSame('School', $columns[11]->abbreviation());
+        self::assertSame('R/W', $columns[12]->abbreviation());
+        self::assertSame('BP', $columns[13]->abbreviation());
+        self::assertSame('FBP', $columns[14]->abbreviation());
+        self::assertSame('MBP', $columns[15]->abbreviation());
+        self::assertSame('Lang', $columns[16]->abbreviation());
+        self::assertSame('Imm', $columns[17]->abbreviation());
+        self::assertSame('Nat', $columns[18]->abbreviation());
+        self::assertSame('Eng', $columns[19]->abbreviation());
+        self::assertSame('Occupation', $columns[20]->abbreviation());
+        self::assertSame('Industry', $columns[21]->abbreviation());
+        self::assertSame('Code', $columns[22]->abbreviation());
+        self::assertSame('Emp', $columns[23]->abbreviation());
+        self::assertSame('Work', $columns[24]->abbreviation());
+        self::assertSame('Unemp', $columns[25]->abbreviation());
+        self::assertSame('Vet', $columns[26]->abbreviation());
+        self::assertSame('War', $columns[27]->abbreviation());
 
-        $this->assertSame('Name', $columns[0]->title());
-        $this->assertSame('Relationship of each person to the head of the family', $columns[1]->title());
-        $this->assertSame('Home owned or rented', $columns[2]->title());
-        $this->assertSame('Value of house, if owned, or monthly rental if rented', $columns[3]->title());
-        $this->assertSame('Radio set', $columns[4]->title());
-        $this->assertSame('Does this family live on a farm', $columns[5]->title());
-        $this->assertSame('Sex', $columns[6]->title());
-        $this->assertSame('Color or race', $columns[7]->title());
-        $this->assertSame('Age at last birthday', $columns[8]->title());
-        $this->assertSame('Whether single, married, widowed, or divorced', $columns[9]->title());
-        $this->assertSame('Age at first marriage', $columns[10]->title());
-        $this->assertSame('Attended school since Sept. 1, 1929', $columns[11]->title());
-        $this->assertSame('Whether able to read and write', $columns[12]->title());
-        $this->assertSame('Place of birth', $columns[13]->title());
-        $this->assertSame('Place of birth of father', $columns[14]->title());
-        $this->assertSame('Place of birth of mother', $columns[15]->title());
-        $this->assertSame('Language spoken in home before coming to the United States', $columns[16]->title());
-        $this->assertSame('Year of immigration to the United States', $columns[17]->title());
-        $this->assertSame('Naturalization', $columns[18]->title());
-        $this->assertSame('Whether able to speak English', $columns[19]->title());
-        $this->assertSame('Trade, profession, or particular kind of work done', $columns[20]->title());
-        $this->assertSame('Industry, business of establishment in which at work', $columns[21]->title());
-        $this->assertSame('Industry code', $columns[22]->title());
-        $this->assertSame('Class of worker', $columns[23]->title());
-        $this->assertSame('Whether normally at work yesterday or the last regular working day', $columns[24]->title());
-        $this->assertSame('If not, …', $columns[25]->title());
-        $this->assertSame('Whether a veteran of U.S. military or …', $columns[26]->title());
-        $this->assertSame('What war or …', $columns[27]->title());
+        self::assertSame('Name', $columns[0]->title());
+        self::assertSame('Relationship of each person to the head of the family', $columns[1]->title());
+        self::assertSame('Home owned or rented', $columns[2]->title());
+        self::assertSame('Value of house, if owned, or monthly rental if rented', $columns[3]->title());
+        self::assertSame('Radio set', $columns[4]->title());
+        self::assertSame('Does this family live on a farm', $columns[5]->title());
+        self::assertSame('Sex', $columns[6]->title());
+        self::assertSame('Color or race', $columns[7]->title());
+        self::assertSame('Age at last birthday', $columns[8]->title());
+        self::assertSame('Whether single, married, widowed, or divorced', $columns[9]->title());
+        self::assertSame('Age at first marriage', $columns[10]->title());
+        self::assertSame('Attended school since Sept. 1, 1929', $columns[11]->title());
+        self::assertSame('Whether able to read and write', $columns[12]->title());
+        self::assertSame('Place of birth', $columns[13]->title());
+        self::assertSame('Place of birth of father', $columns[14]->title());
+        self::assertSame('Place of birth of mother', $columns[15]->title());
+        self::assertSame('Language spoken in home before coming to the United States', $columns[16]->title());
+        self::assertSame('Year of immigration to the United States', $columns[17]->title());
+        self::assertSame('Naturalization', $columns[18]->title());
+        self::assertSame('Whether able to speak English', $columns[19]->title());
+        self::assertSame('Trade, profession, or particular kind of work done', $columns[20]->title());
+        self::assertSame('Industry, business of establishment in which at work', $columns[21]->title());
+        self::assertSame('Industry code', $columns[22]->title());
+        self::assertSame('Class of worker', $columns[23]->title());
+        self::assertSame('Whether normally at work yesterday or the last regular working day', $columns[24]->title());
+        self::assertSame('If not, …', $columns[25]->title());
+        self::assertSame('Whether a veteran of U.S. military or …', $columns[26]->title());
+        self::assertSame('What war or …', $columns[27]->title());
     }
 }

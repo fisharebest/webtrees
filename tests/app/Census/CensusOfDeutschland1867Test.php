@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,8 +37,8 @@ class CensusOfDeutschland1867Test extends TestCase
     {
         $census = new CensusOfDeutschland1867();
 
-        $this->assertSame('Mecklenburg-Schwerin, Deutschland', $census->censusPlace());
-        $this->assertSame('03 DEC 1867', $census->censusDate());
+        self::assertSame('Mecklenburg-Schwerin, Deutschland', $census->censusPlace());
+        self::assertSame('03 DEC 1867', $census->censusDate());
     }
 
     /**
@@ -54,77 +54,77 @@ class CensusOfDeutschland1867Test extends TestCase
         $census  = new CensusOfDeutschland1867();
         $columns = $census->columns();
 
-        $this->assertCount(23, $columns);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[0]);
-        $this->assertInstanceOf(CensusColumnGivenNames::class, $columns[1]);
-        $this->assertInstanceOf(CensusColumnSurname::class, $columns[2]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[3]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[4]);
-        $this->assertInstanceOf(CensusColumnBirthYear::class, $columns[5]);
-        $this->assertInstanceOf(CensusColumnReligion::class, $columns[6]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[7]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[8]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[9]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[10]);
-        $this->assertInstanceOf(CensusColumnRelationToHeadGerman::class, $columns[11]);
-        $this->assertInstanceOf(CensusColumnOccupation::class, $columns[12]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[13]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[14]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[15]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[16]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[17]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[18]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[19]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[20]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[21]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[22]);
+        self::assertCount(23, $columns);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[0]);
+        self::assertInstanceOf(CensusColumnGivenNames::class, $columns[1]);
+        self::assertInstanceOf(CensusColumnSurname::class, $columns[2]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[3]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[4]);
+        self::assertInstanceOf(CensusColumnBirthYear::class, $columns[5]);
+        self::assertInstanceOf(CensusColumnReligion::class, $columns[6]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[7]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[8]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[9]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[10]);
+        self::assertInstanceOf(CensusColumnRelationToHeadGerman::class, $columns[11]);
+        self::assertInstanceOf(CensusColumnOccupation::class, $columns[12]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[13]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[14]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[15]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[16]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[17]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[18]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[19]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[20]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[21]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[22]);
 
-        $this->assertSame('1.Nr.', $columns[0]->abbreviation());
-        $this->assertSame('2.Vorname', $columns[1]->abbreviation());
-        $this->assertSame('3.Familienname', $columns[2]->abbreviation());
-        $this->assertSame('4.männlich', $columns[3]->abbreviation());
-        $this->assertSame('5.weiblich', $columns[4]->abbreviation());
-        $this->assertSame('6.Geburtsjahr', $columns[5]->abbreviation());
-        $this->assertSame('7.Religion', $columns[6]->abbreviation());
-        $this->assertSame('8.ledig', $columns[7]->abbreviation());
-        $this->assertSame('9.verehelicht', $columns[8]->abbreviation());
-        $this->assertSame('10.verwittwet', $columns[9]->abbreviation());
-        $this->assertSame('11.geschieden', $columns[10]->abbreviation());
-        $this->assertSame('12.Stellung', $columns[11]->abbreviation());
-        $this->assertSame('13.Stand/Beruf', $columns[12]->abbreviation());
-        $this->assertSame('14.StA_M-S', $columns[13]->abbreviation());
-        $this->assertSame('15.StA', $columns[14]->abbreviation());
-        $this->assertSame('16.', $columns[15]->abbreviation());
-        $this->assertSame('17.', $columns[16]->abbreviation());
-        $this->assertSame('18.', $columns[17]->abbreviation());
-        $this->assertSame('19.', $columns[18]->abbreviation());
-        $this->assertSame('20.blind', $columns[19]->abbreviation());
-        $this->assertSame('21.taubstumm', $columns[20]->abbreviation());
-        $this->assertSame('22.blödsinnig', $columns[21]->abbreviation());
-        $this->assertSame('23.irrsinnig', $columns[22]->abbreviation());
+        self::assertSame('1.Nr.', $columns[0]->abbreviation());
+        self::assertSame('2.Vorname', $columns[1]->abbreviation());
+        self::assertSame('3.Familienname', $columns[2]->abbreviation());
+        self::assertSame('4.männlich', $columns[3]->abbreviation());
+        self::assertSame('5.weiblich', $columns[4]->abbreviation());
+        self::assertSame('6.Geburtsjahr', $columns[5]->abbreviation());
+        self::assertSame('7.Religion', $columns[6]->abbreviation());
+        self::assertSame('8.ledig', $columns[7]->abbreviation());
+        self::assertSame('9.verehelicht', $columns[8]->abbreviation());
+        self::assertSame('10.verwittwet', $columns[9]->abbreviation());
+        self::assertSame('11.geschieden', $columns[10]->abbreviation());
+        self::assertSame('12.Stellung', $columns[11]->abbreviation());
+        self::assertSame('13.Stand/Beruf', $columns[12]->abbreviation());
+        self::assertSame('14.StA_M-S', $columns[13]->abbreviation());
+        self::assertSame('15.StA', $columns[14]->abbreviation());
+        self::assertSame('16.', $columns[15]->abbreviation());
+        self::assertSame('17.', $columns[16]->abbreviation());
+        self::assertSame('18.', $columns[17]->abbreviation());
+        self::assertSame('19.', $columns[18]->abbreviation());
+        self::assertSame('20.blind', $columns[19]->abbreviation());
+        self::assertSame('21.taubstumm', $columns[20]->abbreviation());
+        self::assertSame('22.blödsinnig', $columns[21]->abbreviation());
+        self::assertSame('23.irrsinnig', $columns[22]->abbreviation());
 
-        $this->assertSame('Ordnungs-Nummer (1-15).', $columns[0]->title());
-        $this->assertSame('I. Vor- und Familien-Name jeder Person. Vorname', $columns[1]->title());
-        $this->assertSame('I. Vor- und Familien-Name jeder Person. Familienname.', $columns[2]->title());
-        $this->assertSame('II. Geschlecht männlich.', $columns[3]->title());
-        $this->assertSame('II. Geschlecht weiblich.', $columns[4]->title());
-        $this->assertSame('III. Alter.', $columns[5]->title());
-        $this->assertSame('IV. Religionsbekenntnis.', $columns[6]->title());
-        $this->assertSame('V. Familienstand. ledig.', $columns[7]->title());
-        $this->assertSame('V. Familienstand. verehelicht.', $columns[8]->title());
-        $this->assertSame('V. Familienstand. verwittwet.', $columns[9]->title());
-        $this->assertSame('V. Familienstand. geschieden.', $columns[10]->title());
-        $this->assertSame('V. Familienstand. Verhältnis der Familienglieder zum Haushaltungsvorstand.', $columns[11]->title());
-        $this->assertSame('VI. Stand, Beruf oder Vorbereitung zum Beruf, Arbeits- und Dienstverhältnis.', $columns[12]->title());
-        $this->assertSame('VII. Staatsangehörigkeit. Mecklenburg-Schwerinscher Unterthan.', $columns[13]->title());
-        $this->assertSame('VII. Staatsangehörigkeit. Anderen Staaten angehörig. Welchem Staat?', $columns[14]->title());
-        $this->assertSame('VIII. Art des Aufenthalts am Zählungsort. Norddeutscher und Zollvereins- See- und Flußschiffer.', $columns[15]->title());
-        $this->assertSame('VIII. Art des Aufenthalts am Zählungsort. Reisender im Gasthof.', $columns[16]->title());
-        $this->assertSame('VIII. Art des Aufenthalts am Zählungsort. Gast der Familie (zum Besuch aus).', $columns[17]->title());
-        $this->assertSame('VIII. Art des Aufenthalts am Zählungsort. Alle übrigen Anwesenden.', $columns[18]->title());
-        $this->assertSame('IX. Besondere Mängel einzelner Individuen. blind auf beiden Augen.', $columns[19]->title());
-        $this->assertSame('IX. Besondere Mängel einzelner Individuen. taubstumm.', $columns[20]->title());
-        $this->assertSame('IX. Besondere Mängel einzelner Individuen. blödsinnig.', $columns[21]->title());
-        $this->assertSame('IX. Besondere Mängel einzelner Individuen. irrsinnig.', $columns[22]->title());
+        self::assertSame('Ordnungs-Nummer (1-15).', $columns[0]->title());
+        self::assertSame('I. Vor- und Familien-Name jeder Person. Vorname', $columns[1]->title());
+        self::assertSame('I. Vor- und Familien-Name jeder Person. Familienname.', $columns[2]->title());
+        self::assertSame('II. Geschlecht männlich.', $columns[3]->title());
+        self::assertSame('II. Geschlecht weiblich.', $columns[4]->title());
+        self::assertSame('III. Alter.', $columns[5]->title());
+        self::assertSame('IV. Religionsbekenntnis.', $columns[6]->title());
+        self::assertSame('V. Familienstand. ledig.', $columns[7]->title());
+        self::assertSame('V. Familienstand. verehelicht.', $columns[8]->title());
+        self::assertSame('V. Familienstand. verwittwet.', $columns[9]->title());
+        self::assertSame('V. Familienstand. geschieden.', $columns[10]->title());
+        self::assertSame('V. Familienstand. Verhältnis der Familienglieder zum Haushaltungsvorstand.', $columns[11]->title());
+        self::assertSame('VI. Stand, Beruf oder Vorbereitung zum Beruf, Arbeits- und Dienstverhältnis.', $columns[12]->title());
+        self::assertSame('VII. Staatsangehörigkeit. Mecklenburg-Schwerinscher Unterthan.', $columns[13]->title());
+        self::assertSame('VII. Staatsangehörigkeit. Anderen Staaten angehörig. Welchem Staat?', $columns[14]->title());
+        self::assertSame('VIII. Art des Aufenthalts am Zählungsort. Norddeutscher und Zollvereins- See- und Flußschiffer.', $columns[15]->title());
+        self::assertSame('VIII. Art des Aufenthalts am Zählungsort. Reisender im Gasthof.', $columns[16]->title());
+        self::assertSame('VIII. Art des Aufenthalts am Zählungsort. Gast der Familie (zum Besuch aus).', $columns[17]->title());
+        self::assertSame('VIII. Art des Aufenthalts am Zählungsort. Alle übrigen Anwesenden.', $columns[18]->title());
+        self::assertSame('IX. Besondere Mängel einzelner Individuen. blind auf beiden Augen.', $columns[19]->title());
+        self::assertSame('IX. Besondere Mängel einzelner Individuen. taubstumm.', $columns[20]->title());
+        self::assertSame('IX. Besondere Mängel einzelner Individuen. blödsinnig.', $columns[21]->title());
+        self::assertSame('IX. Besondere Mängel einzelner Individuen. irrsinnig.', $columns[22]->title());
     }
 }

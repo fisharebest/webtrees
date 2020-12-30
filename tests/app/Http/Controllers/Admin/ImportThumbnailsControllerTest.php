@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
-use League\Flysystem\Memory\MemoryAdapter;
 
 /**
  * Test ImportThumbnailsController class.
@@ -48,7 +47,7 @@ class ImportThumbnailsControllerTest extends TestCase
         $request    = self::createRequest();
         $response   = $controller->webtrees1Thumbnails($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -64,7 +63,7 @@ class ImportThumbnailsControllerTest extends TestCase
             ->withParsedBody(['thumbnail' => 'foo', 'action' => '', 'xref' => [], 'ged' => []]);
         $response   = $controller->webtrees1ThumbnailsAction($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -79,6 +78,6 @@ class ImportThumbnailsControllerTest extends TestCase
         $request                 = self::createRequest()->withQueryParams(['start' => '0', 'length' => '10', 'search' => ['value' => ''], 'draw' => '1']);
         $response                = $controller->webtrees1ThumbnailsData($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

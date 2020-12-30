@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\GedcomService;
-use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 
 use function dirname;
@@ -46,7 +45,7 @@ class LocationControllerTest extends TestCase
         $request        = self::createRequest(RequestMethodInterface::METHOD_GET, ['place_id' => '0', 'parent_id' => '0']);
         $response       = $controller->mapDataEdit($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -70,7 +69,7 @@ class LocationControllerTest extends TestCase
         ]);
         $response       = $controller->mapDataSave($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -83,8 +82,8 @@ class LocationControllerTest extends TestCase
         $request        = self::createRequest(RequestMethodInterface::METHOD_GET, ['parent_id' => '0', 'format' => 'geojson']);
         $response       = $controller->exportLocations($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-        $this->assertSame($response->getHeaderLine('Content-Type'), 'application/vnd.geo+json');
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame($response->getHeaderLine('Content-Type'), 'application/vnd.geo+json');
     }
 
     /**
@@ -97,7 +96,7 @@ class LocationControllerTest extends TestCase
         $request        = self::createRequest(RequestMethodInterface::METHOD_GET, ['parent_id' => '0']);
         $response       = $controller->importLocations($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -111,6 +110,6 @@ class LocationControllerTest extends TestCase
         $request        = self::createRequest(RequestMethodInterface::METHOD_POST, ['parent_id' => '0'], [], ['csv' => $csv]);
         $response       = $controller->importLocationsAction($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

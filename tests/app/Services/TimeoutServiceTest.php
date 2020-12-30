@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -96,7 +96,7 @@ class TimeoutServiceTest extends TestCase
             ->with('max_execution_time')
             ->willReturn('0');
 
-        $this->assertFalse($timeout_service->isTimeNearlyUp());
+        self::assertFalse($timeout_service->isTimeNearlyUp());
     }
 
     /**
@@ -121,7 +121,7 @@ class TimeoutServiceTest extends TestCase
             ->with(true)
             ->willReturn($now + 60.0);
 
-        $this->assertTrue($timeout_service->isTimeNearlyUp());
+        self::assertTrue($timeout_service->isTimeNearlyUp());
     }
 
     /**
@@ -146,7 +146,7 @@ class TimeoutServiceTest extends TestCase
             ->with(true)
             ->willReturn($now + 10.0);
 
-        $this->assertFalse($timeout_service->isTimeNearlyUp());
+        self::assertFalse($timeout_service->isTimeNearlyUp());
     }
 
     /**
@@ -166,7 +166,7 @@ class TimeoutServiceTest extends TestCase
             ->with(true)
             ->willReturn($now + 1.4);
 
-        $this->assertFalse($timeout_service->isTimeLimitUp());
+        self::assertFalse($timeout_service->isTimeLimitUp());
     }
 
     /**
@@ -186,6 +186,6 @@ class TimeoutServiceTest extends TestCase
             ->with(true)
             ->willReturn($now + 1.6);
 
-        $this->assertTrue($timeout_service->isTimeLimitUp());
+        self::assertTrue($timeout_service->isTimeLimitUp());
     }
 }

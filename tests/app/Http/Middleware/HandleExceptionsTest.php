@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,12 +42,12 @@ class HandleExceptionsTest extends TestCase
      */
     public function testMiddleware(): void
     {
-        $tree_service = $this->createMock(TreeService::class);
+        $tree_service = self::createMock(TreeService::class);
 
-        $handler = $this->createMock(RequestHandlerInterface::class);
+        $handler = self::createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willThrowException(new HttpServerErrorException('eek'));
 
-        $module_service = $this->createMock(ModuleService::class);
+        $module_service = self::createMock(ModuleService::class);
         $module_service->method('findByInterface')->willReturn(new Collection());
         $module_service->method('findByComponent')->willReturn(new Collection());
         app()->instance(ModuleService::class, $module_service);
@@ -56,7 +56,7 @@ class HandleExceptionsTest extends TestCase
         $middleware = new HandleExceptions($tree_service);
         $response   = $middleware->process($request, $handler);
 
-        $this->assertSame(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR, $response->getStatusCode());
 
         app()->forgetInstance(ModuleService::class);
         app()->forgetInstance(UserService::class);

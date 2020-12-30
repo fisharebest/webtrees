@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,11 +38,11 @@ class GuestUserTest extends TestCase
     {
         $user = new GuestUser();
 
-        $this->assertInstanceOf(UserInterface::class, $user);
-        $this->assertSame(0, $user->id());
-        $this->assertSame('GUEST_USER', $user->email());
-        $this->assertSame('GUEST_USER', $user->realName());
-        $this->assertSame('', $user->userName());
+        self::assertInstanceOf(UserInterface::class, $user);
+        self::assertSame(0, $user->id());
+        self::assertSame('GUEST_USER', $user->email());
+        self::assertSame('GUEST_USER', $user->realName());
+        self::assertSame('', $user->userName());
     }
 
     /**
@@ -57,11 +57,11 @@ class GuestUserTest extends TestCase
     {
         $user = new GuestUser('guest@example.com', 'guest user');
 
-        $this->assertInstanceOf(UserInterface::class, $user);
-        $this->assertSame(0, $user->id());
-        $this->assertSame('guest@example.com', $user->email());
-        $this->assertSame('guest user', $user->realName());
-        $this->assertSame('', $user->userName());
+        self::assertInstanceOf(UserInterface::class, $user);
+        self::assertSame(0, $user->id());
+        self::assertSame('guest@example.com', $user->email());
+        self::assertSame('guest user', $user->realName());
+        self::assertSame('', $user->userName());
     }
 
     /**
@@ -73,13 +73,13 @@ class GuestUserTest extends TestCase
     {
         $user = new GuestUser();
 
-        $this->assertSame('', $user->getPreference('foo'));
-        $this->assertSame('', $user->getPreference('foo', ''));
-        $this->assertSame('bar', $user->getPreference('foo', 'bar'));
+        self::assertSame('', $user->getPreference('foo'));
+        self::assertSame('', $user->getPreference('foo'));
+        self::assertSame('bar', $user->getPreference('foo', 'bar'));
 
         // Guests users store preferences in the session
         $user->setPreference('foo', 'bar');
 
-        $this->assertSame('bar', $user->getPreference('foo'));
+        self::assertSame('bar', $user->getPreference('foo'));
     }
 }

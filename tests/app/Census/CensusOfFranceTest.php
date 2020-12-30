@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,7 +37,7 @@ class CensusOfFranceTest extends TestCase
     {
         $census = new CensusOfFrance();
 
-        $this->assertSame('France', $census->censusPlace());
+        self::assertSame('France', $census->censusPlace());
     }
 
     /**
@@ -51,7 +51,7 @@ class CensusOfFranceTest extends TestCase
     {
         $census = new CensusOfFrance();
 
-        $this->assertSame('fr', $census->censusLanguage());
+        self::assertSame('fr', $census->censusLanguage());
     }
 
     /**
@@ -67,28 +67,28 @@ class CensusOfFranceTest extends TestCase
 
         $census_dates = $census->allCensusDates();
 
-        $this->assertCount(22, $census_dates);
-        $this->assertInstanceOf(CensusOfFrance1831::class, $census_dates[0]);
-        $this->assertInstanceOf(CensusOfFrance1836::class, $census_dates[1]);
-        $this->assertInstanceOf(CensusOfFrance1841::class, $census_dates[2]);
-        $this->assertInstanceOf(CensusOfFrance1846::class, $census_dates[3]);
-        $this->assertInstanceOf(CensusOfFrance1851::class, $census_dates[4]);
-        $this->assertInstanceOf(CensusOfFrance1856::class, $census_dates[5]);
-        $this->assertInstanceOf(CensusOfFrance1861::class, $census_dates[6]);
-        $this->assertInstanceOf(CensusOfFrance1866::class, $census_dates[7]);
-        $this->assertInstanceOf(CensusOfFrance1872::class, $census_dates[8]);
-        $this->assertInstanceOf(CensusOfFrance1876::class, $census_dates[9]);
-        $this->assertInstanceOf(CensusOfFrance1881::class, $census_dates[10]);
-        $this->assertInstanceOf(CensusOfFrance1886::class, $census_dates[11]);
-        $this->assertInstanceOf(CensusOfFrance1891::class, $census_dates[12]);
-        $this->assertInstanceOf(CensusOfFrance1896::class, $census_dates[13]);
-        $this->assertInstanceOf(CensusOfFrance1901::class, $census_dates[14]);
-        $this->assertInstanceOf(CensusOfFrance1906::class, $census_dates[15]);
-        $this->assertInstanceOf(CensusOfFrance1911::class, $census_dates[16]);
-        $this->assertInstanceOf(CensusOfFrance1921::class, $census_dates[17]);
-        $this->assertInstanceOf(CensusOfFrance1926::class, $census_dates[18]);
-        $this->assertInstanceOf(CensusOfFrance1931::class, $census_dates[19]);
-        $this->assertInstanceOf(CensusOfFrance1936::class, $census_dates[20]);
-        $this->assertInstanceOf(CensusOfFrance1946::class, $census_dates[21]);
+        self::assertCount(22, $census_dates);
+        self::assertInstanceOf(CensusOfFrance1831::class, $census_dates[0]);
+        self::assertInstanceOf(CensusOfFrance1836::class, $census_dates[1]);
+        self::assertInstanceOf(CensusOfFrance1841::class, $census_dates[2]);
+        self::assertInstanceOf(CensusOfFrance1846::class, $census_dates[3]);
+        self::assertInstanceOf(CensusOfFrance1851::class, $census_dates[4]);
+        self::assertInstanceOf(CensusOfFrance1856::class, $census_dates[5]);
+        self::assertInstanceOf(CensusOfFrance1861::class, $census_dates[6]);
+        self::assertInstanceOf(CensusOfFrance1866::class, $census_dates[7]);
+        self::assertInstanceOf(CensusOfFrance1872::class, $census_dates[8]);
+        self::assertInstanceOf(CensusOfFrance1876::class, $census_dates[9]);
+        self::assertInstanceOf(CensusOfFrance1881::class, $census_dates[10]);
+        self::assertInstanceOf(CensusOfFrance1886::class, $census_dates[11]);
+        self::assertInstanceOf(CensusOfFrance1891::class, $census_dates[12]);
+        self::assertInstanceOf(CensusOfFrance1896::class, $census_dates[13]);
+        self::assertInstanceOf(CensusOfFrance1901::class, $census_dates[14]);
+        self::assertInstanceOf(CensusOfFrance1906::class, $census_dates[15]);
+        self::assertInstanceOf(CensusOfFrance1911::class, $census_dates[16]);
+        self::assertInstanceOf(CensusOfFrance1921::class, $census_dates[17]);
+        self::assertInstanceOf(CensusOfFrance1926::class, $census_dates[18]);
+        self::assertInstanceOf(CensusOfFrance1931::class, $census_dates[19]);
+        self::assertInstanceOf(CensusOfFrance1936::class, $census_dates[20]);
+        self::assertInstanceOf(CensusOfFrance1946::class, $census_dates[21]);
     }
 }

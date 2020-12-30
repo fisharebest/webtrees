@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,14 +36,14 @@ class CensusColumnAgeTest extends TestCase
      */
     public function testGenerateColumn(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1832');
 
         $column = new CensusColumnAge($census, '', '');
 
-        $this->assertSame('32', $column->generate($individual, $individual));
+        self::assertSame('32', $column->generate($individual, $individual));
     }
 }

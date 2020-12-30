@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -48,7 +48,7 @@ class LoginPageTest extends TestCase
     public function testLoginPageAlreadyLoggedIn(): void
     {
         $tree_service = new TreeService();
-        $user     = $this->createMock(User::class);
+        $user     = self::createMock(User::class);
         $request  = self::createRequest()->withAttribute('user', $user);
         $handler  = new LoginPage($tree_service);
         $response = $handler->handle($request);

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,7 +37,7 @@ class CensusOfSlovakiaTest extends TestCase
     {
         $census = new CensusOfSlovakia();
 
-        $this->assertSame('Slovensko', $census->censusPlace());
+        self::assertSame('Slovensko', $census->censusPlace());
     }
 
     /**
@@ -51,7 +51,7 @@ class CensusOfSlovakiaTest extends TestCase
     {
         $census = new CensusOfSlovakia();
 
-        $this->assertSame('sk', $census->censusLanguage());
+        self::assertSame('sk', $census->censusLanguage());
     }
 
     /**
@@ -67,7 +67,7 @@ class CensusOfSlovakiaTest extends TestCase
 
         $census_dates = $census->allCensusDates();
 
-        $this->assertCount(1, $census_dates);
-        $this->assertInstanceOf(CensusOfSlovakia1869::class, $census_dates[0]);
+        self::assertCount(1, $census_dates);
+        self::assertInstanceOf(CensusOfSlovakia1869::class, $census_dates[0]);
     }
 }

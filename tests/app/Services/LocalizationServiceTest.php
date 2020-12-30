@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,12 +36,12 @@ class LocalizationServiceTest extends TestCase
         $localization_service = new LocalizationService();
 
         // Chinese
-        $this->assertSame('YMD', $localization_service->dateFormatToOrder('%Y年 %n月 %j日'));
+        self::assertSame('YMD', $localization_service->dateFormatToOrder('%Y年 %n月 %j日'));
 
         // American
-        $this->assertSame('MDY', $localization_service->dateFormatToOrder('%F %j, %Y'));
+        self::assertSame('MDY', $localization_service->dateFormatToOrder('%F %j, %Y'));
 
         // European
-        $this->assertSame('DMY', $localization_service->dateFormatToOrder('%j %F %Y'));
+        self::assertSame('DMY', $localization_service->dateFormatToOrder('%j %F %Y'));
     }
 }

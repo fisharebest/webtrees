@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -85,7 +85,7 @@ class ChangeReportModuleTest extends TestCase
         $module = $module_service->findByInterface(ChangeReportModule::class)->first();
         $xml    = 'resources/' . $module->xmlFilename();
         $vars   = [
-            'changeRangeStart' => ['id' => Carbon::now()->subMonths(1)->format('d M Y')],
+            'changeRangeStart' => ['id' => Carbon::now()->subMonth()->format('d M Y')],
             'changeRangeEnd'   => ['id' => Carbon::now()->format('d M Y')],
             'pending'          => ['id' => 'yes'],
             'sortby'           => ['id' => 'CHAN'],
@@ -94,18 +94,18 @@ class ChangeReportModuleTest extends TestCase
         ];
 
         $report = new ReportParserSetup($xml);
-        $this->assertIsArray($report->reportProperties());
+        self::assertIsArray($report->reportProperties());
 
         ob_start();
         new ReportParserGenerate($xml, new HtmlRenderer(), $vars, $tree, $data_filesystem);
         $html = ob_get_clean();
-        $this->assertStringStartsWith('<', $html);
-        $this->assertStringEndsWith('>', $html);
+        self::assertStringStartsWith('<', $html);
+        self::assertStringEndsWith('>', $html);
 
         ob_start();
         new ReportParserGenerate($xml, new PdfRenderer(), $vars, $tree, $data_filesystem);
         $pdf = ob_get_clean();
-        $this->assertStringStartsWith('%PDF', $pdf);
-        $this->assertStringEndsWith("%%EOF\n", $pdf);
+        self::assertStringStartsWith('%PDF', $pdf);
+        self::assertStringEndsWith("%%EOF\n", $pdf);
     }
 }

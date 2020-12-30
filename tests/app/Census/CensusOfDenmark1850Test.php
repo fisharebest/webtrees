@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,8 +37,8 @@ class CensusOfDenmark1850Test extends TestCase
     {
         $census = new CensusOfDenmark1850();
 
-        $this->assertSame('Danmark', $census->censusPlace());
-        $this->assertSame('01 FEB 1850', $census->censusDate());
+        self::assertSame('Danmark', $census->censusPlace());
+        self::assertSame('01 FEB 1850', $census->censusDate());
     }
 
     /**
@@ -54,38 +54,38 @@ class CensusOfDenmark1850Test extends TestCase
         $census  = new CensusOfDenmark1850();
         $columns = $census->columns();
 
-        $this->assertCount(10, $columns);
-        $this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-        $this->assertInstanceOf(CensusColumnAge::class, $columns[1]);
-        $this->assertInstanceOf(CensusColumnConditionDanish::class, $columns[2]);
-        $this->assertInstanceOf(CensusColumnOccupation::class, $columns[3]);
-        $this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[4]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[5]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[6]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[7]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[8]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[9]);
+        self::assertCount(10, $columns);
+        self::assertInstanceOf(CensusColumnFullName::class, $columns[0]);
+        self::assertInstanceOf(CensusColumnAge::class, $columns[1]);
+        self::assertInstanceOf(CensusColumnConditionDanish::class, $columns[2]);
+        self::assertInstanceOf(CensusColumnOccupation::class, $columns[3]);
+        self::assertInstanceOf(CensusColumnRelationToHead::class, $columns[4]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[5]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[6]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[7]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[8]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[9]);
 
-        $this->assertSame('Navn', $columns[0]->abbreviation());
-        $this->assertSame('Alder', $columns[1]->abbreviation());
-        $this->assertSame('Civilstand', $columns[2]->abbreviation());
-        $this->assertSame('Erhverv', $columns[3]->abbreviation());
-        $this->assertSame('Stilling i familien', $columns[4]->abbreviation());
-        $this->assertSame('', $columns[5]->abbreviation());
-        $this->assertSame('', $columns[6]->abbreviation());
-        $this->assertSame('', $columns[7]->abbreviation());
-        $this->assertSame('', $columns[8]->abbreviation());
-        $this->assertSame('', $columns[9]->abbreviation());
+        self::assertSame('Navn', $columns[0]->abbreviation());
+        self::assertSame('Alder', $columns[1]->abbreviation());
+        self::assertSame('Civilstand', $columns[2]->abbreviation());
+        self::assertSame('Erhverv', $columns[3]->abbreviation());
+        self::assertSame('Stilling i familien', $columns[4]->abbreviation());
+        self::assertSame('', $columns[5]->abbreviation());
+        self::assertSame('', $columns[6]->abbreviation());
+        self::assertSame('', $columns[7]->abbreviation());
+        self::assertSame('', $columns[8]->abbreviation());
+        self::assertSame('', $columns[9]->abbreviation());
 
-        $this->assertSame('', $columns[0]->title());
-        $this->assertSame('', $columns[1]->title());
-        $this->assertSame('', $columns[2]->title());
-        $this->assertSame('', $columns[3]->title());
-        $this->assertSame('', $columns[4]->title());
-        $this->assertSame('', $columns[5]->title());
-        $this->assertSame('', $columns[6]->title());
-        $this->assertSame('', $columns[7]->title());
-        $this->assertSame('', $columns[8]->title());
-        $this->assertSame('', $columns[9]->title());
+        self::assertSame('', $columns[0]->title());
+        self::assertSame('', $columns[1]->title());
+        self::assertSame('', $columns[2]->title());
+        self::assertSame('', $columns[3]->title());
+        self::assertSame('', $columns[4]->title());
+        self::assertSame('', $columns[5]->title());
+        self::assertSame('', $columns[6]->title());
+        self::assertSame('', $columns[7]->title());
+        self::assertSame('', $columns[8]->title());
+        self::assertSame('', $columns[9]->title());
     }
 }

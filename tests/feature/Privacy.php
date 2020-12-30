@@ -39,20 +39,20 @@ class Privacy extends TestCase
 
         // Identify some individuals in the tree
         $queen_elizabeth = Registry::individualFactory()->make('X1030', $tree);
-        $this->assertInstanceOf(Individual::class, $queen_elizabeth);
-        $this->assertSame('Queen Elizabeth II', strip_tags($queen_elizabeth->fullName()));
+        self::assertInstanceOf(Individual::class, $queen_elizabeth);
+        self::assertSame('Queen Elizabeth II', strip_tags($queen_elizabeth->fullName()));
 
         $prince_charles = Registry::individualFactory()->make('X1052', $tree);
-        $this->assertInstanceOf(Individual::class, $prince_charles);
-        $this->assertSame('Charles, Prince of Wales', strip_tags($prince_charles->fullName()));
+        self::assertInstanceOf(Individual::class, $prince_charles);
+        self::assertSame('Charles, Prince of Wales', strip_tags($prince_charles->fullName()));
 
         $savannah = Registry::individualFactory()->make('X1044', $tree);
-        $this->assertInstanceOf(Individual::class, $savannah);
-        $this->assertSame('Savannah Anne Kathleen Phillips', strip_tags($savannah->fullName()));
+        self::assertInstanceOf(Individual::class, $savannah);
+        self::assertSame('Savannah Anne Kathleen Phillips', strip_tags($savannah->fullName()));
 
         $beatrice = Registry::individualFactory()->make('X1047', $tree);
-        $this->assertInstanceOf(Individual::class, $beatrice);
-        $this->assertSame('Princess Beatrice of York', strip_tags($beatrice->fullName()));
+        self::assertInstanceOf(Individual::class, $beatrice);
+        self::assertSame('Princess Beatrice of York', strip_tags($beatrice->fullName()));
 
         $user_service = new UserService();
 
@@ -78,86 +78,86 @@ class Privacy extends TestCase
         $tree->setPreference('HIDE_LIVE_PEOPLE', '1');
 
         Auth::login($admin);
-        $this->assertTrue(Auth::isAdmin(), 'admin isAdmin()');
-        $this->assertTrue(Auth::isManager($tree), 'admin isManager()');
-        $this->assertTrue(Auth::isModerator($tree), 'admin isModerator()');
-        $this->assertTrue(Auth::isEditor($tree), 'admin isEditor()');
-        $this->assertTrue(Auth::isMember($tree), 'admin isMember()');
+        self::assertTrue(Auth::isAdmin(), 'admin isAdmin()');
+        self::assertTrue(Auth::isManager($tree), 'admin isManager()');
+        self::assertTrue(Auth::isModerator($tree), 'admin isModerator()');
+        self::assertTrue(Auth::isEditor($tree), 'admin isEditor()');
+        self::assertTrue(Auth::isMember($tree), 'admin isMember()');
 
         Auth::login($manager);
-        $this->assertFalse(Auth::isAdmin(), 'manager NOT isAdmin()');
-        $this->assertTrue(Auth::isManager($tree, $manager), 'manager isManager()');
-        $this->assertTrue(Auth::isModerator($tree, $manager), 'manager isModerator()');
-        $this->assertTrue(Auth::isEditor($tree, $manager), 'manager isEditor()');
-        $this->assertTrue(Auth::isMember($tree, $manager), 'manager isMember()');
+        self::assertFalse(Auth::isAdmin(), 'manager NOT isAdmin()');
+        self::assertTrue(Auth::isManager($tree, $manager), 'manager isManager()');
+        self::assertTrue(Auth::isModerator($tree, $manager), 'manager isModerator()');
+        self::assertTrue(Auth::isEditor($tree, $manager), 'manager isEditor()');
+        self::assertTrue(Auth::isMember($tree, $manager), 'manager isMember()');
 
         Auth::login($moderator);
-        $this->assertFalse(Auth::isAdmin(), 'moderator NOT isAdmin()');
-        $this->assertFalse(Auth::isManager($tree, $moderator), 'moderator NOT isManager()');
-        $this->assertTrue(Auth::isModerator($tree, $moderator), 'moderator isModerator()');
-        $this->assertTrue(Auth::isEditor($tree, $moderator), 'moderator isEditor()');
-        $this->assertTrue(Auth::isMember($tree, $moderator), 'moderator isMember()');
+        self::assertFalse(Auth::isAdmin(), 'moderator NOT isAdmin()');
+        self::assertFalse(Auth::isManager($tree, $moderator), 'moderator NOT isManager()');
+        self::assertTrue(Auth::isModerator($tree, $moderator), 'moderator isModerator()');
+        self::assertTrue(Auth::isEditor($tree, $moderator), 'moderator isEditor()');
+        self::assertTrue(Auth::isMember($tree, $moderator), 'moderator isMember()');
 
         Auth::login($editor);
-        $this->assertFalse(Auth::isAdmin(), 'editor NOT isAdmin()');
-        $this->assertFalse(Auth::isManager($tree, $editor), 'editor NOT isManager()');
-        $this->assertFalse(Auth::isModerator($tree, $editor), 'editor isModerator()');
-        $this->assertTrue(Auth::isEditor($tree, $editor), 'editor isEditor()');
-        $this->assertTrue(Auth::isMember($tree, $editor), 'editor isMember()');
+        self::assertFalse(Auth::isAdmin(), 'editor NOT isAdmin()');
+        self::assertFalse(Auth::isManager($tree, $editor), 'editor NOT isManager()');
+        self::assertFalse(Auth::isModerator($tree, $editor), 'editor isModerator()');
+        self::assertTrue(Auth::isEditor($tree, $editor), 'editor isEditor()');
+        self::assertTrue(Auth::isMember($tree, $editor), 'editor isMember()');
 
         Auth::login($member);
-        $this->assertFalse(Auth::isAdmin(), 'member NOT isAdmin()');
-        $this->assertFalse(Auth::isManager($tree, $member), 'member NOT isManager()');
-        $this->assertFalse(Auth::isModerator($tree, $member), 'member isModerator()');
-        $this->assertFalse(Auth::isEditor($tree, $member), 'member isEditor()');
-        $this->assertTrue(Auth::isMember($tree, $member), 'member isMember()');
+        self::assertFalse(Auth::isAdmin(), 'member NOT isAdmin()');
+        self::assertFalse(Auth::isManager($tree, $member), 'member NOT isManager()');
+        self::assertFalse(Auth::isModerator($tree, $member), 'member isModerator()');
+        self::assertFalse(Auth::isEditor($tree, $member), 'member isEditor()');
+        self::assertTrue(Auth::isMember($tree, $member), 'member isMember()');
 
         Auth::login($visitor);
-        $this->assertFalse(Auth::isAdmin(), 'visitor NOT isAdmin()');
-        $this->assertFalse(Auth::isManager($tree, $visitor), 'visitor NOT isManager()');
-        $this->assertFalse(Auth::isModerator($tree, $visitor), 'visitor isModerator()');
-        $this->assertFalse(Auth::isEditor($tree, $visitor), 'visitor isEditor()');
-        $this->assertFalse(Auth::isMember($tree, $visitor), 'visitor isMember()');
+        self::assertFalse(Auth::isAdmin(), 'visitor NOT isAdmin()');
+        self::assertFalse(Auth::isManager($tree, $visitor), 'visitor NOT isManager()');
+        self::assertFalse(Auth::isModerator($tree, $visitor), 'visitor isModerator()');
+        self::assertFalse(Auth::isEditor($tree, $visitor), 'visitor isEditor()');
+        self::assertFalse(Auth::isMember($tree, $visitor), 'visitor isMember()');
 
         Auth::logout();
 
 
 
         Auth::login($admin);
-        $this->assertTrue($queen_elizabeth->canShow(), 'admin can see living individual with RESN=none');
-        $this->assertTrue($prince_charles->canShow(), 'admin can see living individual');
+        self::assertTrue($queen_elizabeth->canShow(), 'admin can see living individual with RESN=none');
+        self::assertTrue($prince_charles->canShow(), 'admin can see living individual');
 
         Auth::login($manager);
-        $this->assertTrue($queen_elizabeth->canShow(), 'manager can see living individual with RESN=none');
-        $this->assertTrue($prince_charles->canShow(), 'manager can see living individual');
+        self::assertTrue($queen_elizabeth->canShow(), 'manager can see living individual with RESN=none');
+        self::assertTrue($prince_charles->canShow(), 'manager can see living individual');
 
         Auth::login($moderator);
-        $this->assertTrue($queen_elizabeth->canShow(), 'moderator can see living individual with RESN=none');
-        $this->assertTrue($prince_charles->canShow(), 'moderator can see living individual');
+        self::assertTrue($queen_elizabeth->canShow(), 'moderator can see living individual with RESN=none');
+        self::assertTrue($prince_charles->canShow(), 'moderator can see living individual');
 
         Auth::login($editor);
-        $this->assertTrue($queen_elizabeth->canShow(), 'editor can see living individual with RESN=none');
-        $this->assertTrue($prince_charles->canShow(), 'editor can see living individual');
+        self::assertTrue($queen_elizabeth->canShow(), 'editor can see living individual with RESN=none');
+        self::assertTrue($prince_charles->canShow(), 'editor can see living individual');
 
         Auth::login($member);
-        $this->assertTrue($queen_elizabeth->canShow(), 'member can see living individual with RESN=none');
-        $this->assertTrue($prince_charles->canShow(), 'member can see living individual');
+        self::assertTrue($queen_elizabeth->canShow(), 'member can see living individual with RESN=none');
+        self::assertTrue($prince_charles->canShow(), 'member can see living individual');
 
         Auth::login($visitor);
-        $this->assertTrue($queen_elizabeth->canShow(), 'visitor can see living individual with RESN=none');
-        $this->assertFalse($prince_charles->canShow(), 'visitor can not see living individual');
+        self::assertTrue($queen_elizabeth->canShow(), 'visitor can see living individual with RESN=none');
+        self::assertFalse($prince_charles->canShow(), 'visitor can not see living individual');
 
         Auth::logout();
-        $this->assertTrue($queen_elizabeth->canShow(), 'guest can see living individual with RESN=none');
-        $this->assertFalse($prince_charles->canShow(), 'guest can not see living individual');
+        self::assertTrue($queen_elizabeth->canShow(), 'guest can see living individual with RESN=none');
+        self::assertFalse($prince_charles->canShow(), 'guest can not see living individual');
 
         // Relationship privacy
         Auth::login($member);
-        $this->assertTrue($beatrice->canShow());
+        self::assertTrue($beatrice->canShow());
         $tree->setUserPreference($member, User::PREF_TREE_ACCOUNT_XREF, $savannah->xref());
         $tree->setUserPreference($member, User::PREF_TREE_PATH_LENGTH, '3');
-        $this->assertFalse($beatrice->canShow());
+        self::assertFalse($beatrice->canShow());
         $tree->setUserPreference($member, User::PREF_TREE_PATH_LENGTH, '4');
-        $this->assertTrue($beatrice->canShow());
+        self::assertTrue($beatrice->canShow());
     }
 }

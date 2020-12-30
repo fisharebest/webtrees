@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,8 +38,8 @@ class CensusOfUnitedStates1870Test extends TestCase
     {
         $census = new CensusOfUnitedStates1870();
 
-        $this->assertSame('United States', $census->censusPlace());
-        $this->assertSame('JUN 1870', $census->censusDate());
+        self::assertSame('United States', $census->censusPlace());
+        self::assertSame('JUN 1870', $census->censusDate());
     }
 
     /**
@@ -54,62 +54,62 @@ class CensusOfUnitedStates1870Test extends TestCase
         $census  = new CensusOfUnitedStates1870();
         $columns = $census->columns();
 
-        $this->assertCount(18, $columns);
-        $this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-        $this->assertInstanceOf(CensusColumnAge::class, $columns[1]);
-        $this->assertInstanceOf(CensusColumnSexMF::class, $columns[2]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[3]);
-        $this->assertInstanceOf(CensusColumnOccupation::class, $columns[4]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[5]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[6]);
-        $this->assertInstanceOf(CensusColumnBirthPlaceSimple::class, $columns[7]);
-        $this->assertInstanceOf(CensusColumnFatherForeign::class, $columns[8]);
-        $this->assertInstanceOf(CensusColumnMotherForeign::class, $columns[9]);
-        $this->assertInstanceOf(CensusColumnMonthIfBornWithinYear::class, $columns[10]);
-        $this->assertInstanceOf(CensusColumnMonthIfMarriedWithinYear::class, $columns[11]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[12]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[13]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[14]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[15]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[16]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[17]);
+        self::assertCount(18, $columns);
+        self::assertInstanceOf(CensusColumnFullName::class, $columns[0]);
+        self::assertInstanceOf(CensusColumnAge::class, $columns[1]);
+        self::assertInstanceOf(CensusColumnSexMF::class, $columns[2]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[3]);
+        self::assertInstanceOf(CensusColumnOccupation::class, $columns[4]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[5]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[6]);
+        self::assertInstanceOf(CensusColumnBirthPlaceSimple::class, $columns[7]);
+        self::assertInstanceOf(CensusColumnFatherForeign::class, $columns[8]);
+        self::assertInstanceOf(CensusColumnMotherForeign::class, $columns[9]);
+        self::assertInstanceOf(CensusColumnMonthIfBornWithinYear::class, $columns[10]);
+        self::assertInstanceOf(CensusColumnMonthIfMarriedWithinYear::class, $columns[11]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[12]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[13]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[14]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[15]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[16]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[17]);
 
-        $this->assertSame('Name', $columns[0]->abbreviation());
-        $this->assertSame('Age', $columns[1]->abbreviation());
-        $this->assertSame('Sex', $columns[2]->abbreviation());
-        $this->assertSame('Color', $columns[3]->abbreviation());
-        $this->assertSame('Occupation', $columns[4]->abbreviation());
-        $this->assertSame('RE', $columns[5]->abbreviation());
-        $this->assertSame('PE', $columns[6]->abbreviation());
-        $this->assertSame('Birthplace', $columns[7]->abbreviation());
-        $this->assertSame('FFB', $columns[8]->abbreviation());
-        $this->assertSame('MFB', $columns[9]->abbreviation());
-        $this->assertSame('Born', $columns[10]->abbreviation());
-        $this->assertSame('Mar', $columns[11]->abbreviation());
-        $this->assertSame('School', $columns[12]->abbreviation());
-        $this->assertSame('Read', $columns[13]->abbreviation());
-        $this->assertSame('Write', $columns[14]->abbreviation());
-        $this->assertSame('Infirm', $columns[15]->abbreviation());
-        $this->assertSame('Cit', $columns[16]->abbreviation());
-        $this->assertSame('Dis', $columns[17]->abbreviation());
+        self::assertSame('Name', $columns[0]->abbreviation());
+        self::assertSame('Age', $columns[1]->abbreviation());
+        self::assertSame('Sex', $columns[2]->abbreviation());
+        self::assertSame('Color', $columns[3]->abbreviation());
+        self::assertSame('Occupation', $columns[4]->abbreviation());
+        self::assertSame('RE', $columns[5]->abbreviation());
+        self::assertSame('PE', $columns[6]->abbreviation());
+        self::assertSame('Birthplace', $columns[7]->abbreviation());
+        self::assertSame('FFB', $columns[8]->abbreviation());
+        self::assertSame('MFB', $columns[9]->abbreviation());
+        self::assertSame('Born', $columns[10]->abbreviation());
+        self::assertSame('Mar', $columns[11]->abbreviation());
+        self::assertSame('School', $columns[12]->abbreviation());
+        self::assertSame('Read', $columns[13]->abbreviation());
+        self::assertSame('Write', $columns[14]->abbreviation());
+        self::assertSame('Infirm', $columns[15]->abbreviation());
+        self::assertSame('Cit', $columns[16]->abbreviation());
+        self::assertSame('Dis', $columns[17]->abbreviation());
 
-        $this->assertSame('Name', $columns[0]->title());
-        $this->assertSame('Age', $columns[1]->title());
-        $this->assertSame('Sex', $columns[2]->title());
-        $this->assertSame('White, Black, Mulatto, Chinese, Indian', $columns[3]->title());
-        $this->assertSame('Profession, occupation, or trade', $columns[4]->title());
-        $this->assertSame('Value of real estate owned', $columns[5]->title());
-        $this->assertSame('Value of personal estate owned', $columns[6]->title());
-        $this->assertSame('Place of birth, naming the state, territory, or country', $columns[7]->title());
-        $this->assertSame('Father of foreign birth', $columns[8]->title());
-        $this->assertSame('Mother of foreign birth', $columns[9]->title());
-        $this->assertSame('If born within the year, state month', $columns[10]->title());
-        $this->assertSame('If married within the year, state month', $columns[11]->title());
-        $this->assertSame('Attended school within the year', $columns[12]->title());
-        $this->assertSame('Cannot read', $columns[13]->title());
-        $this->assertSame('Cannot write', $columns[14]->title());
-        $this->assertSame('Whether deaf and dumb, blind, insane, or idiotic', $columns[15]->title());
-        $this->assertSame('Male citizen of US', $columns[16]->title());
-        $this->assertSame('Male citizen of US, where right to vote is denied or abridged', $columns[17]->title());
+        self::assertSame('Name', $columns[0]->title());
+        self::assertSame('Age', $columns[1]->title());
+        self::assertSame('Sex', $columns[2]->title());
+        self::assertSame('White, Black, Mulatto, Chinese, Indian', $columns[3]->title());
+        self::assertSame('Profession, occupation, or trade', $columns[4]->title());
+        self::assertSame('Value of real estate owned', $columns[5]->title());
+        self::assertSame('Value of personal estate owned', $columns[6]->title());
+        self::assertSame('Place of birth, naming the state, territory, or country', $columns[7]->title());
+        self::assertSame('Father of foreign birth', $columns[8]->title());
+        self::assertSame('Mother of foreign birth', $columns[9]->title());
+        self::assertSame('If born within the year, state month', $columns[10]->title());
+        self::assertSame('If married within the year, state month', $columns[11]->title());
+        self::assertSame('Attended school within the year', $columns[12]->title());
+        self::assertSame('Cannot read', $columns[13]->title());
+        self::assertSame('Cannot write', $columns[14]->title());
+        self::assertSame('Whether deaf and dumb, blind, insane, or idiotic', $columns[15]->title());
+        self::assertSame('Male citizen of US', $columns[16]->title());
+        self::assertSame('Male citizen of US, where right to vote is denied or abridged', $columns[17]->title());
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,14 +36,14 @@ class CensusColumnAgeFemale5YearsTest extends TestCase
      */
     public function testMale(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('sex')->willReturn('M');
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
 
         $column = new CensusColumnAgeFemale5Years($census, '', '');
 
-        $this->assertSame('', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -54,16 +54,16 @@ class CensusColumnAgeFemale5YearsTest extends TestCase
      */
     public function testFemale(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         $column = new CensusColumnAgeFemale5Years($census, '', '');
 
-        $this->assertSame('30', $column->generate($individual, $individual));
+        self::assertSame('30', $column->generate($individual, $individual));
     }
 
     /**
@@ -74,16 +74,16 @@ class CensusColumnAgeFemale5YearsTest extends TestCase
      */
     public function testUnknownSex(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('sex')->willReturn('U');
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         $column = new CensusColumnAgeFemale5Years($census, '', '');
 
-        $this->assertSame('30', $column->generate($individual, $individual));
+        self::assertSame('30', $column->generate($individual, $individual));
     }
 
     /**
@@ -94,16 +94,16 @@ class CensusColumnAgeFemale5YearsTest extends TestCase
      */
     public function testLessThanOneYear(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1800');
 
         $column = new CensusColumnAgeFemale5Years($census, '', '');
 
-        $this->assertSame('0', $column->generate($individual, $individual));
+        self::assertSame('0', $column->generate($individual, $individual));
     }
 
     /**
@@ -114,16 +114,16 @@ class CensusColumnAgeFemale5YearsTest extends TestCase
      */
     public function testLessThanFifteenYears(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1814');
 
         $column = new CensusColumnAgeFemale5Years($census, '', '');
 
-        $this->assertSame('14', $column->generate($individual, $individual));
+        self::assertSame('14', $column->generate($individual, $individual));
     }
 
     /**
@@ -134,15 +134,15 @@ class CensusColumnAgeFemale5YearsTest extends TestCase
      */
     public function testRoundedDownToFiveYears(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1844');
 
         $column = new CensusColumnAgeFemale5Years($census, '', '');
 
-        $this->assertSame('40', $column->generate($individual, $individual));
+        self::assertSame('40', $column->generate($individual, $individual));
     }
 }

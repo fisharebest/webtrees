@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,15 +40,15 @@ class SurnameTraditionTest extends TestCase
      */
     public function testCreate(): void
     {
-        $this->assertInstanceOf(DefaultSurnameTradition::class, SurnameTradition::create('none'));
-        $this->assertInstanceOf(IcelandicSurnameTradition::class, SurnameTradition::create('icelandic'));
-        $this->assertInstanceOf(LithuanianSurnameTradition::class, SurnameTradition::create('lithuanian'));
-        $this->assertInstanceOf(MatrilinealSurnameTradition::class, SurnameTradition::create('matrilineal'));
-        $this->assertInstanceOf(PaternalSurnameTradition::class, SurnameTradition::create('paternal'));
-        $this->assertInstanceOf(PatrilinealSurnameTradition::class, SurnameTradition::create('patrilineal'));
-        $this->assertInstanceOf(PolishSurnameTradition::class, SurnameTradition::create('polish'));
-        $this->assertInstanceOf(PortugueseSurnameTradition::class, SurnameTradition::create('portuguese'));
-        $this->assertInstanceOf(SpanishSurnameTradition::class, SurnameTradition::create('spanish'));
+        self::assertInstanceOf(DefaultSurnameTradition::class, SurnameTradition::create('none'));
+        self::assertInstanceOf(IcelandicSurnameTradition::class, SurnameTradition::create('icelandic'));
+        self::assertInstanceOf(LithuanianSurnameTradition::class, SurnameTradition::create('lithuanian'));
+        self::assertInstanceOf(MatrilinealSurnameTradition::class, SurnameTradition::create('matrilineal'));
+        self::assertInstanceOf(PaternalSurnameTradition::class, SurnameTradition::create('paternal'));
+        self::assertInstanceOf(PatrilinealSurnameTradition::class, SurnameTradition::create('patrilineal'));
+        self::assertInstanceOf(PolishSurnameTradition::class, SurnameTradition::create('polish'));
+        self::assertInstanceOf(PortugueseSurnameTradition::class, SurnameTradition::create('portuguese'));
+        self::assertInstanceOf(SpanishSurnameTradition::class, SurnameTradition::create('spanish'));
     }
 
     /**
@@ -59,7 +59,7 @@ class SurnameTraditionTest extends TestCase
      */
     public function testCreateInvalid(): void
     {
-        $this->assertInstanceOf(DefaultSurnameTradition::class, SurnameTradition::create('FOOBAR'));
+        self::assertInstanceOf(DefaultSurnameTradition::class, SurnameTradition::create('FOOBAR'));
     }
 
     /**
@@ -71,6 +71,6 @@ class SurnameTraditionTest extends TestCase
     public function testAllDescriptions(): void
     {
         $descriptions = SurnameTradition::allDescriptions();
-        $this->assertCount(9, $descriptions);
+        self::assertCount(9, $descriptions);
     }
 }

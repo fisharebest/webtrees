@@ -36,7 +36,7 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
      */
     public function testOneGivenName(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('getAllNames')->willReturn([
             [
                 'givn' => 'Joe',
@@ -45,12 +45,12 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
         ]);
         $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('');
 
         $column = new CensusColumnSurnameGivenNames($census, '', '');
 
-        $this->assertSame('Sixpack, Joe', $column->generate($individual, $individual));
+        self::assertSame('Sixpack, Joe', $column->generate($individual, $individual));
     }
 
     /**
@@ -61,7 +61,7 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
      */
     public function testMultipleGivenNames(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('getAllNames')->willReturn([
             [
                 'givn'    => 'Joe Fred',
@@ -70,12 +70,12 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
         ]);
         $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('');
 
         $column = new CensusColumnSurnameGivenNames($census, '', '');
 
-        $this->assertSame('Sixpack, Joe Fred', $column->generate($individual, $individual));
+        self::assertSame('Sixpack, Joe Fred', $column->generate($individual, $individual));
     }
 
     /**
@@ -86,7 +86,7 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
      */
     public function testNoName(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('getAllNames')->willReturn([
             [
                 'givn'    => Individual::PRAENOMEN_NESCIO,
@@ -95,11 +95,11 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
         ]);
         $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('');
 
         $column = new CensusColumnSurnameGivenNames($census, '', '');
 
-        $this->assertSame('…, …', $column->generate($individual, $individual));
+        self::assertSame('…, …', $column->generate($individual, $individual));
     }
 }

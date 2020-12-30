@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,20 +38,20 @@ class AccountUpdateTest extends TestCase
      */
     public function testHandler(): void
     {
-        $user_service = $this->createMock(UserService::class);
+        $user_service = self::createMock(UserService::class);
 
-        $user = $this->createMock(User::class);
-        $user->expects($this->once())->method('setEmail')->with('b');
-        $user->expects($this->once())->method('setPassword')->with('e');
-        $user->expects($this->once())->method('setRealName')->with('d');
-        $user->expects($this->once())->method('setUserName')->with('h');
-        $user->expects($this->at(6))->method('setPreference')->with(User::PREF_CONTACT_METHOD, 'a');
-        $user->expects($this->at(7))->method('setPreference')->with(User::PREF_LANGUAGE, 'c');
-        $user->expects($this->at(8))->method('setPreference')->with(User::PREF_TIME_ZONE, 'g');
-        $user->expects($this->at(9))->method('setPreference')->with(User::PREF_IS_VISIBLE_ONLINE, 'i');
+        $user = self::createMock(User::class);
+        $user->expects(self::once())->method('setEmail')->with('b');
+        $user->expects(self::once())->method('setPassword')->with('e');
+        $user->expects(self::once())->method('setRealName')->with('d');
+        $user->expects(self::once())->method('setUserName')->with('h');
+        $user->expects(self::at(6))->method('setPreference')->with(User::PREF_CONTACT_METHOD, 'a');
+        $user->expects(self::at(7))->method('setPreference')->with(User::PREF_LANGUAGE, 'c');
+        $user->expects(self::at(8))->method('setPreference')->with(User::PREF_TIME_ZONE, 'g');
+        $user->expects(self::at(9))->method('setPreference')->with(User::PREF_IS_VISIBLE_ONLINE, 'i');
 
-        $tree = $this->createMock(Tree::class);
-        $tree->expects($this->once())->method('setUserPreference')->with($user, User::PREF_TREE_DEFAULT_XREF, 'f');
+        $tree = self::createMock(Tree::class);
+        $tree->expects(self::once())->method('setUserPreference')->with($user, User::PREF_TREE_DEFAULT_XREF, 'f');
 
         $handler  = new AccountUpdate($user_service);
         $request  = self::createRequest()
@@ -70,6 +70,6 @@ class AccountUpdateTest extends TestCase
             ]);
         $response = $handler->handle($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

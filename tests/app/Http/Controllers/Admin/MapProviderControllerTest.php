@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -41,7 +41,7 @@ class MapProviderControllerTest extends TestCase
         $request    = self::createRequest();
         $response   = $controller->mapProviderEdit($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -53,6 +53,6 @@ class MapProviderControllerTest extends TestCase
         $request    = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['provider' => '', 'geonames' => '']);
         $response   = $controller->mapProviderSave($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

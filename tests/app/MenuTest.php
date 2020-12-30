@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,11 +33,11 @@ class MenuTest extends TestCase
     {
         $menu = new Menu('Test!');
 
-        $this->assertSame('Test!', $menu->getLabel());
-        $this->assertSame('#', $menu->getLink());
-        $this->assertSame('', $menu->getClass());
-        $this->assertSame([], $menu->getAttrs());
-        $this->assertSame([], $menu->getSubmenus());
+        self::assertSame('Test!', $menu->getLabel());
+        self::assertSame('#', $menu->getLink());
+        self::assertSame('', $menu->getClass());
+        self::assertSame([], $menu->getAttrs());
+        self::assertSame([], $menu->getSubmenus());
     }
 
     /**
@@ -50,11 +50,11 @@ class MenuTest extends TestCase
         $submenus = [new Menu('Submenu')];
         $menu     = new Menu('Test!', 'link.html', 'link-class', ['foo' => 'bar'], $submenus);
 
-        $this->assertSame('Test!', $menu->getLabel());
-        $this->assertSame('link.html', $menu->getLink());
-        $this->assertSame('link-class', $menu->getClass());
-        $this->assertSame(['foo' => 'bar'], $menu->getAttrs());
-        $this->assertSame($submenus, $menu->getSubmenus());
+        self::assertSame('Test!', $menu->getLabel());
+        self::assertSame('link.html', $menu->getLink());
+        self::assertSame('link-class', $menu->getClass());
+        self::assertSame(['foo' => 'bar'], $menu->getAttrs());
+        self::assertSame($submenus, $menu->getSubmenus());
     }
 
     /**
@@ -69,8 +69,8 @@ class MenuTest extends TestCase
 
         $return = $menu->setLabel('Label');
 
-        $this->assertSame($return, $menu);
-        $this->assertSame('Label', $menu->getLabel());
+        self::assertSame($return, $menu);
+        self::assertSame('Label', $menu->getLabel());
     }
 
     /**
@@ -85,8 +85,8 @@ class MenuTest extends TestCase
 
         $return = $menu->setLink('link.html');
 
-        $this->assertSame($return, $menu);
-        $this->assertSame('link.html', $menu->getLink());
+        self::assertSame($return, $menu);
+        self::assertSame('link.html', $menu->getLink());
     }
 
     /**
@@ -101,8 +101,8 @@ class MenuTest extends TestCase
 
         $return = $menu->setClass('link-class');
 
-        $this->assertSame($return, $menu);
-        $this->assertSame('link-class', $menu->getClass());
+        self::assertSame($return, $menu);
+        self::assertSame('link-class', $menu->getClass());
     }
 
     /**
@@ -117,8 +117,8 @@ class MenuTest extends TestCase
 
         $return = $menu->setAttrs(['foo' => 'bar']);
 
-        $this->assertSame($return, $menu);
-        $this->assertSame(['foo' => 'bar'], $menu->getAttrs());
+        self::assertSame($return, $menu);
+        self::assertSame(['foo' => 'bar'], $menu->getAttrs());
     }
 
     /**
@@ -137,7 +137,7 @@ class MenuTest extends TestCase
 
         $return = $menu->setSubmenus($submenus);
 
-        $this->assertSame($return, $menu);
-        $this->assertSame($submenus, $menu->getSubmenus());
+        self::assertSame($return, $menu);
+        self::assertSame($submenus, $menu->getSubmenus());
     }
 }

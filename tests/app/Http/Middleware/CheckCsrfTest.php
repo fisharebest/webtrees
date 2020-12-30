@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,7 +40,7 @@ class CheckCsrfTest extends TestCase
      */
     public function testMiddleware(): void
     {
-        $handler = $this->createMock(RequestHandlerInterface::class);
+        $handler = self::createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response());
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST)
@@ -49,7 +49,7 @@ class CheckCsrfTest extends TestCase
         $middleware = new CheckCsrf();
         $response   = $middleware->process($request, $handler);
 
-        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
-        $this->assertSame('http://example.com', $response->getHeaderLine('Location'));
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        self::assertSame('http://example.com', $response->getHeaderLine('Location'));
     }
 }

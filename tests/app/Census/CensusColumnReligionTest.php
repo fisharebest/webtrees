@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,23 +36,23 @@ class CensusColumnReligionTest extends TestCase
      */
     public function testNoReligion(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('facts')
             ->with(['RELI'])
             ->willReturn(new Collection());
         $individual
-            ->expects($this->at(1))
+            ->expects(self::at(1))
             ->method('facts')
             ->with()
             ->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
 
         $column = new CensusColumnReligion($census, '', '');
 
-        $this->assertSame('', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -62,16 +62,16 @@ class CensusColumnReligionTest extends TestCase
      */
     public function testRecordReligion(): void
     {
-        $individual = $this->createMock(Individual::class);
-        $fact       = $this->createMock(Fact::class);
+        $individual = self::createMock(Individual::class);
+        $fact       = self::createMock(Fact::class);
         $fact->method('value')->willReturn('Jedi');
         $individual->method('facts')->with(['RELI'])->willReturn(new Collection([$fact]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
 
         $column = new CensusColumnReligion($census, '', '');
 
-        $this->assertSame('Jedi', $column->generate($individual, $individual));
+        self::assertSame('Jedi', $column->generate($individual, $individual));
     }
 
     /**
@@ -81,24 +81,24 @@ class CensusColumnReligionTest extends TestCase
      */
     public function testEventReligion(): void
     {
-        $individual = $this->createMock(Individual::class);
-        $fact       = $this->createMock(Fact::class);
+        $individual = self::createMock(Individual::class);
+        $fact       = self::createMock(Fact::class);
         $fact->method('attribute')->with('RELI')->willReturn('Jedi');
         $individual
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('facts')
             ->with(['RELI'])
             ->willReturn(new Collection());
         $individual
-            ->expects($this->at(1))
+            ->expects(self::at(1))
             ->method('facts')
             ->with()
             ->willReturn(new Collection([$fact]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
 
         $column = new CensusColumnReligion($census, '', '');
 
-        $this->assertSame('Jedi', $column->generate($individual, $individual));
+        self::assertSame('Jedi', $column->generate($individual, $individual));
     }
 }

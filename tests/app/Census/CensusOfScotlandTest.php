@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,7 +37,7 @@ class CensusOfScotlandTest extends TestCase
     {
         $census = new CensusOfScotland();
 
-        $this->assertSame('Scotland', $census->censusPlace());
+        self::assertSame('Scotland', $census->censusPlace());
     }
 
     /**
@@ -51,7 +51,7 @@ class CensusOfScotlandTest extends TestCase
     {
         $census = new CensusOfScotland();
 
-        $this->assertSame('en-GB', $census->censusLanguage());
+        self::assertSame('en-GB', $census->censusLanguage());
     }
 
     /**
@@ -67,14 +67,14 @@ class CensusOfScotlandTest extends TestCase
 
         $census_dates = $census->allCensusDates();
 
-        $this->assertCount(8, $census_dates);
-        $this->assertInstanceOf(CensusOfScotland1841::class, $census_dates[0]);
-        $this->assertInstanceOf(CensusOfScotland1851::class, $census_dates[1]);
-        $this->assertInstanceOf(CensusOfScotland1861::class, $census_dates[2]);
-        $this->assertInstanceOf(CensusOfScotland1871::class, $census_dates[3]);
-        $this->assertInstanceOf(CensusOfScotland1881::class, $census_dates[4]);
-        $this->assertInstanceOf(CensusOfScotland1891::class, $census_dates[5]);
-        $this->assertInstanceOf(CensusOfScotland1901::class, $census_dates[6]);
-        $this->assertInstanceOf(CensusOfScotland1911::class, $census_dates[7]);
+        self::assertCount(8, $census_dates);
+        self::assertInstanceOf(CensusOfScotland1841::class, $census_dates[0]);
+        self::assertInstanceOf(CensusOfScotland1851::class, $census_dates[1]);
+        self::assertInstanceOf(CensusOfScotland1861::class, $census_dates[2]);
+        self::assertInstanceOf(CensusOfScotland1871::class, $census_dates[3]);
+        self::assertInstanceOf(CensusOfScotland1881::class, $census_dates[4]);
+        self::assertInstanceOf(CensusOfScotland1891::class, $census_dates[5]);
+        self::assertInstanceOf(CensusOfScotland1901::class, $census_dates[6]);
+        self::assertInstanceOf(CensusOfScotland1911::class, $census_dates[7]);
     }
 }

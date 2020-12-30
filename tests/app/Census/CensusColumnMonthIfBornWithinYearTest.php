@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,15 +36,15 @@ class CensusColumnMonthIfBornWithinYearTest extends TestCase
      */
     public function testBornWithinYear(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('getBirthDate')->willReturn(new Date('01 JAN 1860'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
 
-        $this->assertSame('Jan', $column->generate($individual, $individual));
+        self::assertSame('Jan', $column->generate($individual, $individual));
     }
 
     /**
@@ -55,15 +55,15 @@ class CensusColumnMonthIfBornWithinYearTest extends TestCase
      */
     public function testBornOverYearBeforeTheCensus(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('getBirthDate')->willReturn(new Date('01 JAN 1859'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -74,16 +74,16 @@ class CensusColumnMonthIfBornWithinYearTest extends TestCase
      */
     public function testBornAfterTheCensus(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('getBirthDate')->willReturn(new Date('02 JUN 1860'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
 
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
 
@@ -95,14 +95,14 @@ class CensusColumnMonthIfBornWithinYearTest extends TestCase
      */
     public function testNoBirth(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('getBirthDate')->willReturn(new Date(''));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 }

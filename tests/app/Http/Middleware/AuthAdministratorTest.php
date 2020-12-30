@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,18 +40,18 @@ class AuthAdministratorTest extends TestCase
      */
     public function testAllowed(): void
     {
-        $handler = $this->createMock(RequestHandlerInterface::class);
+        $handler = self::createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $user = $this->createMock(User::class);
+        $user = self::createMock(User::class);
         $user->method('getPreference')->with(User::PREF_IS_ADMINISTRATOR)->willReturn('1');
 
         $request    = self::createRequest()->withAttribute('user', $user);
         $middleware = new AuthAdministrator();
         $response   = $middleware->process($request, $handler);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-        $this->assertSame('lorem ipsum', (string) $response->getBody());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame('lorem ipsum', (string) $response->getBody());
     }
 
     /**
@@ -62,10 +62,10 @@ class AuthAdministratorTest extends TestCase
         $this->expectException(HttpAccessDeniedException::class);
         $this->expectExceptionMessage('You do not have permission to view this page.');
 
-        $handler = $this->createMock(RequestHandlerInterface::class);
+        $handler = self::createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $user = $this->createMock(User::class);
+        $user = self::createMock(User::class);
         $user->method('getPreference')->with(User::PREF_IS_ADMINISTRATOR)->willReturn('');
 
         $request    = self::createRequest()->withAttribute('user', $user);
@@ -79,13 +79,13 @@ class AuthAdministratorTest extends TestCase
      */
     public function testNotLoggedIn(): void
     {
-        $handler = $this->createMock(RequestHandlerInterface::class);
+        $handler = self::createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
         $request    = self::createRequest()->withAttribute('user', new GuestUser());
         $middleware = new AuthAdministrator();
         $response   = $middleware->process($request, $handler);
 
-        $this->assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

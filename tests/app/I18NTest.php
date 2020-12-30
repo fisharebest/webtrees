@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,8 +31,8 @@ class I18NTest extends TestCase
      */
     public function testStrtoupper(): void
     {
-        $this->assertSame(I18N::strtoupper(''), '');
-        $this->assertSame(I18N::strtoupper('Abc'), 'ABC');
+        self::assertSame(I18N::strtoupper(''), '');
+        self::assertSame(I18N::strtoupper('Abc'), 'ABC');
     }
 
     /**
@@ -42,8 +42,8 @@ class I18NTest extends TestCase
      */
     public function testStrtolower(): void
     {
-        $this->assertSame(I18N::strtolower(''), '');
-        $this->assertSame(I18N::strtolower('Abc'), 'abc');
+        self::assertSame(I18N::strtolower(''), '');
+        self::assertSame(I18N::strtolower('Abc'), 'abc');
     }
 
     /**
@@ -53,12 +53,12 @@ class I18NTest extends TestCase
      */
     public function testStrcasecmp(): void
     {
-        $this->assertSame(I18N::strcasecmp('', ''), 0);
-        $this->assertSame(I18N::strcasecmp('Abc', 'abc'), 0);
-        $this->assertTrue(I18N::strcasecmp('Abc', 'bcd') < 0);
-        $this->assertTrue(I18N::strcasecmp('bcd', 'ABC') > 0);
-        $this->assertTrue(I18N::strcasecmp('Abc', 'abcd') < 0);
-        $this->assertTrue(I18N::strcasecmp('Abcd', 'abc') > 0);
+        self::assertSame(I18N::strcasecmp('', ''), 0);
+        self::assertSame(I18N::strcasecmp('Abc', 'abc'), 0);
+        self::assertTrue(I18N::strcasecmp('Abc', 'bcd') < 0);
+        self::assertTrue(I18N::strcasecmp('bcd', 'ABC') > 0);
+        self::assertTrue(I18N::strcasecmp('Abc', 'abcd') < 0);
+        self::assertTrue(I18N::strcasecmp('Abcd', 'abc') > 0);
     }
 
     /**
@@ -73,16 +73,16 @@ class I18NTest extends TestCase
         $rtl_cba = 'ג' . 'ב' . 'א';
         $rtl_123 = '١' . '٢' . '٣';
 
-        $this->assertSame(I18N::reverseText(''), '');
-        $this->assertSame(I18N::reverseText('abc123'), 'abc123');
-        $this->assertSame(I18N::reverseText('<b>abc</b>123'), 'abc123');
-        $this->assertSame(I18N::reverseText('&lt;abc&gt;'), '<abc>');
-        $this->assertSame(I18N::reverseText('abc[123]'), 'abc[123]');
-        $this->assertSame(I18N::reverseText($rtl_123), $rtl_123);
-        $this->assertSame(I18N::reverseText($rtl_abc), $rtl_cba);
-        $this->assertSame(I18N::reverseText($rtl_abc . '123'), '123' . $rtl_cba);
-        $this->assertSame(I18N::reverseText($rtl_abc . '[123]'), '[123]' . $rtl_cba);
-        $this->assertSame(I18N::reverseText('123' . $rtl_abc . '456'), '456' . $rtl_cba . '123');
-        $this->assertSame(I18N::reverseText($rtl_abc . '&lt;'), '>' . $rtl_cba);
+        self::assertSame(I18N::reverseText(''), '');
+        self::assertSame(I18N::reverseText('abc123'), 'abc123');
+        self::assertSame(I18N::reverseText('<b>abc</b>123'), 'abc123');
+        self::assertSame(I18N::reverseText('&lt;abc&gt;'), '<abc>');
+        self::assertSame(I18N::reverseText('abc[123]'), 'abc[123]');
+        self::assertSame(I18N::reverseText($rtl_123), $rtl_123);
+        self::assertSame(I18N::reverseText($rtl_abc), $rtl_cba);
+        self::assertSame(I18N::reverseText($rtl_abc . '123'), '123' . $rtl_cba);
+        self::assertSame(I18N::reverseText($rtl_abc . '[123]'), '[123]' . $rtl_cba);
+        self::assertSame(I18N::reverseText('123' . $rtl_abc . '456'), '456' . $rtl_cba . '123');
+        self::assertSame(I18N::reverseText($rtl_abc . '&lt;'), '>' . $rtl_cba);
     }
 }

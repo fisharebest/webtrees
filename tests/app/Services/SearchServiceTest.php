@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -41,36 +41,36 @@ class SearchServiceTest extends TestCase
         $tree = $this->importTree('demo.ged');
 
         $result = $search_service->searchFamilies([$tree], ['windsor']);
-        $this->assertInstanceOf(Collection::class, $result);
+        self::assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchFamilyNames([$tree], ['charles', 'diana']);
-        $this->assertInstanceOf(Collection::class, $result);
+        self::assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchIndividuals([$tree], ['windsor']);
-        $this->assertInstanceOf(Collection::class, $result);
+        self::assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchIndividualNames([$tree], ['windsor']);
-        $this->assertInstanceOf(Collection::class, $result);
+        self::assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchMedia([$tree], ['windsor']);
-        $this->assertInstanceOf(Collection::class, $result);
+        self::assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchNotes([$tree], ['windsor']);
-        $this->assertInstanceOf(Collection::class, $result);
+        self::assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchRepositories([$tree], ['national']);
-        $this->assertInstanceOf(Collection::class, $result);
+        self::assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchSources([$tree], ['england']);
-        $this->assertInstanceOf(Collection::class, $result);
+        self::assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchSourcesByName([$tree], ['england']);
-        $this->assertInstanceOf(Collection::class, $result);
+        self::assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchSubmitters([$tree], ['greg']);
-        $this->assertInstanceOf(Collection::class, $result);
+        self::assertInstanceOf(Collection::class, $result);
 
         $result = $search_service->searchPlaces($tree, 'England');
-        $this->assertInstanceOf(Collection::class, $result);
+        self::assertInstanceOf(Collection::class, $result);
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,11 +39,11 @@ class NoReplyUserTest extends TestCase
     {
         $user = new NoReplyUser();
 
-        $this->assertInstanceOf(UserInterface::class, $user);
-        $this->assertSame(0, $user->id());
-        $this->assertSame('no-reply@localhost', $user->email());
-        $this->assertSame(Webtrees::NAME, $user->realName());
-        $this->assertSame('', $user->userName());
+        self::assertInstanceOf(UserInterface::class, $user);
+        self::assertSame(0, $user->id());
+        self::assertSame('no-reply@localhost', $user->email());
+        self::assertSame(Webtrees::NAME, $user->realName());
+        self::assertSame('', $user->userName());
     }
 
     /**
@@ -55,13 +55,13 @@ class NoReplyUserTest extends TestCase
     {
         $user = new NoReplyUser();
 
-        $this->assertSame('', $user->getPreference('foo'));
-        $this->assertSame('', $user->getPreference('foo', ''));
-        $this->assertSame('bar', $user->getPreference('foo', 'bar'));
+        self::assertSame('', $user->getPreference('foo'));
+        self::assertSame('', $user->getPreference('foo'));
+        self::assertSame('bar', $user->getPreference('foo', 'bar'));
 
         // No reply users do not have preferences
         $user->setPreference('foo', 'bar');
 
-        $this->assertSame('', $user->getPreference('foo'));
+        self::assertSame('', $user->getPreference('foo'));
     }
 }

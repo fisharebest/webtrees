@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,7 +34,7 @@ class DefaultUserTest extends TestCase
     {
         parent::setUp();
 
-        $cache_factory = $this->createMock(CacheFactoryInterface::class);
+        $cache_factory = self::createMock(CacheFactoryInterface::class);
         $cache_factory->method('array')->willReturn(new Cache(new NullAdapter()));
         Registry::cache($cache_factory);
     }
@@ -51,11 +51,11 @@ class DefaultUserTest extends TestCase
     {
         $user = new DefaultUser();
 
-        $this->assertInstanceOf(UserInterface::class, $user);
-        $this->assertSame(-1, $user->id());
-        $this->assertSame('DEFAULT_USER', $user->email());
-        $this->assertSame('DEFAULT_USER', $user->realName());
-        $this->assertSame('', $user->userName());
+        self::assertInstanceOf(UserInterface::class, $user);
+        self::assertSame(-1, $user->id());
+        self::assertSame('DEFAULT_USER', $user->email());
+        self::assertSame('DEFAULT_USER', $user->realName());
+        self::assertSame('', $user->userName());
     }
 
     /**
@@ -67,13 +67,13 @@ class DefaultUserTest extends TestCase
     {
         $user = new DefaultUser();
 
-        $this->assertSame('', $user->getPreference('foo'));
-        $this->assertSame('', $user->getPreference('foo', ''));
-        $this->assertSame('bar', $user->getPreference('foo', 'bar'));
+        self::assertSame('', $user->getPreference('foo'));
+        self::assertSame('', $user->getPreference('foo'));
+        self::assertSame('bar', $user->getPreference('foo', 'bar'));
 
         // Default users store preferences in the database
         $user->setPreference('foo', 'bar');
 
-        $this->assertSame('bar', $user->getPreference('foo'));
+        self::assertSame('bar', $user->getPreference('foo'));
     }
 }

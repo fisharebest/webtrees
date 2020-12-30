@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,8 +37,8 @@ class CensusOfDeutschland1819Test extends TestCase
     {
         $census = new CensusOfDeutschland1819();
 
-        $this->assertSame('Mecklenburg-Schwerin, Deutschland', $census->censusPlace());
-        $this->assertSame('AUG 1819', $census->censusDate());
+        self::assertSame('Mecklenburg-Schwerin, Deutschland', $census->censusPlace());
+        self::assertSame('AUG 1819', $census->censusDate());
     }
 
     /**
@@ -54,47 +54,47 @@ class CensusOfDeutschland1819Test extends TestCase
         $census  = new CensusOfDeutschland1819();
         $columns = $census->columns();
 
-        $this->assertCount(13, $columns);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[0]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[1]);
-        $this->assertInstanceOf(CensusColumnFullName::class, $columns[2]);
-        $this->assertInstanceOf(CensusColumnBirthYear::class, $columns[3]);
-        $this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[4]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[5]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[6]);
-        $this->assertInstanceOf(CensusColumnOccupation::class, $columns[7]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[8]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[9]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[10]);
-        $this->assertInstanceOf(CensusColumnReligion::class, $columns[11]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[12]);
+        self::assertCount(13, $columns);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[0]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[1]);
+        self::assertInstanceOf(CensusColumnFullName::class, $columns[2]);
+        self::assertInstanceOf(CensusColumnBirthYear::class, $columns[3]);
+        self::assertInstanceOf(CensusColumnBirthPlace::class, $columns[4]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[5]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[6]);
+        self::assertInstanceOf(CensusColumnOccupation::class, $columns[7]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[8]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[9]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[10]);
+        self::assertInstanceOf(CensusColumnReligion::class, $columns[11]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[12]);
 
-        $this->assertSame('Nr.', $columns[0]->abbreviation());
-        $this->assertSame('Geschlecht', $columns[1]->abbreviation());
-        $this->assertSame('Name', $columns[2]->abbreviation());
-        $this->assertSame('Geburtsdatum', $columns[3]->abbreviation());
-        $this->assertSame('Geburtsort', $columns[4]->abbreviation());
-        $this->assertSame('Kirchspiel', $columns[5]->abbreviation());
-        $this->assertSame('', $columns[6]->abbreviation());
-        $this->assertSame('Stand/Beruf', $columns[7]->abbreviation());
-        $this->assertSame('Besitz', $columns[8]->abbreviation());
-        $this->assertSame('hier seit', $columns[9]->abbreviation());
-        $this->assertSame('Familienstand', $columns[10]->abbreviation());
-        $this->assertSame('Religion', $columns[11]->abbreviation());
-        $this->assertSame('Bemerkungen', $columns[12]->abbreviation());
+        self::assertSame('Nr.', $columns[0]->abbreviation());
+        self::assertSame('Geschlecht', $columns[1]->abbreviation());
+        self::assertSame('Name', $columns[2]->abbreviation());
+        self::assertSame('Geburtsdatum', $columns[3]->abbreviation());
+        self::assertSame('Geburtsort', $columns[4]->abbreviation());
+        self::assertSame('Kirchspiel', $columns[5]->abbreviation());
+        self::assertSame('', $columns[6]->abbreviation());
+        self::assertSame('Stand/Beruf', $columns[7]->abbreviation());
+        self::assertSame('Besitz', $columns[8]->abbreviation());
+        self::assertSame('hier seit', $columns[9]->abbreviation());
+        self::assertSame('Familienstand', $columns[10]->abbreviation());
+        self::assertSame('Religion', $columns[11]->abbreviation());
+        self::assertSame('Bemerkungen', $columns[12]->abbreviation());
 
-        $this->assertSame('Laufende Num̅er.', $columns[0]->title());
-        $this->assertSame('Ob männlichen oder weiblichen Geschlechts.', $columns[1]->title());
-        $this->assertSame('Vor- und Zuname.', $columns[2]->title());
-        $this->assertSame('Jahr und Tag der Geburt.', $columns[3]->title());
-        $this->assertSame('Geburtsort.', $columns[4]->title());
-        $this->assertSame('Kirchspiel, wohin der Geburtsort gehört.', $columns[5]->title());
-        $this->assertSame('leere Spalte', $columns[6]->title());
-        $this->assertSame('Stand und Gewerbe.', $columns[7]->title());
-        $this->assertSame('Grundbesitz.', $columns[8]->title());
-        $this->assertSame('Wie lange er schon hier ist.', $columns[9]->title());
-        $this->assertSame('Ob ledig oder verheirathet.', $columns[10]->title());
-        $this->assertSame('Religion.', $columns[11]->title());
-        $this->assertSame('Allgemeine Bemerkungen.', $columns[12]->title());
+        self::assertSame('Laufende Num̅er.', $columns[0]->title());
+        self::assertSame('Ob männlichen oder weiblichen Geschlechts.', $columns[1]->title());
+        self::assertSame('Vor- und Zuname.', $columns[2]->title());
+        self::assertSame('Jahr und Tag der Geburt.', $columns[3]->title());
+        self::assertSame('Geburtsort.', $columns[4]->title());
+        self::assertSame('Kirchspiel, wohin der Geburtsort gehört.', $columns[5]->title());
+        self::assertSame('leere Spalte', $columns[6]->title());
+        self::assertSame('Stand und Gewerbe.', $columns[7]->title());
+        self::assertSame('Grundbesitz.', $columns[8]->title());
+        self::assertSame('Wie lange er schon hier ist.', $columns[9]->title());
+        self::assertSame('Ob ledig oder verheirathet.', $columns[10]->title());
+        self::assertSame('Religion.', $columns[11]->title());
+        self::assertSame('Allgemeine Bemerkungen.', $columns[12]->title());
     }
 }

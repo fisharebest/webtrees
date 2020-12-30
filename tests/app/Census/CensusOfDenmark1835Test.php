@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,8 +37,8 @@ class CensusOfDenmark1835Test extends TestCase
     {
         $census = new CensusOfDenmark1835();
 
-        $this->assertSame('Schleswig-Holstein, Deutschland', $census->censusPlace());
-        $this->assertSame('18 FEB 1835', $census->censusDate());
+        self::assertSame('Schleswig-Holstein, Deutschland', $census->censusPlace());
+        self::assertSame('18 FEB 1835', $census->censusDate());
     }
 
     /**
@@ -54,20 +54,20 @@ class CensusOfDenmark1835Test extends TestCase
         $census  = new CensusOfDenmark1835();
         $columns = $census->columns();
 
-        $this->assertCount(4, $columns);
-        $this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-        $this->assertInstanceOf(CensusColumnAge::class, $columns[1]);
-        $this->assertInstanceOf(CensusColumnConditionDanish::class, $columns[2]);
-        $this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[3]);
+        self::assertCount(4, $columns);
+        self::assertInstanceOf(CensusColumnFullName::class, $columns[0]);
+        self::assertInstanceOf(CensusColumnAge::class, $columns[1]);
+        self::assertInstanceOf(CensusColumnConditionDanish::class, $columns[2]);
+        self::assertInstanceOf(CensusColumnRelationToHead::class, $columns[3]);
 
-        $this->assertSame('Navn', $columns[0]->abbreviation());
-        $this->assertSame('Alder', $columns[1]->abbreviation());
-        $this->assertSame('Civilstand', $columns[2]->abbreviation());
-        $this->assertSame('Stilling i familien', $columns[3]->abbreviation());
+        self::assertSame('Navn', $columns[0]->abbreviation());
+        self::assertSame('Alder', $columns[1]->abbreviation());
+        self::assertSame('Civilstand', $columns[2]->abbreviation());
+        self::assertSame('Stilling i familien', $columns[3]->abbreviation());
 
-        $this->assertSame('', $columns[0]->title());
-        $this->assertSame('', $columns[1]->title());
-        $this->assertSame('', $columns[2]->title());
-        $this->assertSame('', $columns[3]->title());
+        self::assertSame('', $columns[0]->title());
+        self::assertSame('', $columns[1]->title());
+        self::assertSame('', $columns[2]->title());
+        self::assertSame('', $columns[3]->title());
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -50,7 +50,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testMarriedSurnames(): void
     {
-        $this->assertTrue($this->surname_tradition->hasMarriedNames());
+        self::assertTrue($this->surname_tradition->hasMarriedNames());
     }
 
     /**
@@ -62,7 +62,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testSurnames(): void
     {
-        $this->assertTrue($this->surname_tradition->hasSurnames());
+        self::assertTrue($this->surname_tradition->hasSurnames());
     }
 
     /**
@@ -74,7 +74,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testNewSonNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/White/',
                 'SURN' => 'White',
@@ -92,7 +92,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testNewDaughterNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/White/',
                 'SURN' => 'White',
@@ -110,7 +110,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testNewChildNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/White/',
                 'SURN' => 'White',
@@ -128,7 +128,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testNewChildNamesWithSpfx(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/de White/',
                 'SPFX' => 'de',
@@ -147,7 +147,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testNewChildNamesWithMultipleSpfx(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/van der White/',
                 'SPFX' => 'van der',
@@ -166,7 +166,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testNewChildNamesWithDutchSpfx(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/\'t White/',
                 'SPFX' => '\'t',
@@ -174,7 +174,7 @@ class PaternalSurnameTraditionTest extends TestCase
             ],
             $this->surname_tradition->newChildNames('John /\'t White/', 'Mary /van Black/', 'U')
         );
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/’t White/',
                 'SPFX' => '’t',
@@ -193,7 +193,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testNewChildNamesWithMultipleDutchSpfx(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/van \'t White/',
                 'SPFX' => 'van \'t',
@@ -201,7 +201,7 @@ class PaternalSurnameTraditionTest extends TestCase
             ],
             $this->surname_tradition->newChildNames('John /van \'t White/', 'Mary /van Black/', 'U')
         );
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/van ’t White/',
                 'SPFX' => 'van ’t',
@@ -220,7 +220,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testNewFatherNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/White/',
                 'SURN' => 'White',
@@ -238,7 +238,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testNewMotherNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME'   => '//',
                 '_MARNM' => '/White/',
@@ -256,7 +256,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testNewParentNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             ['NAME' => '//'],
             $this->surname_tradition->newParentNames('John /White/', 'U')
         );
@@ -271,7 +271,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testNewHusbandNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             ['NAME' => '//'],
             $this->surname_tradition->newSpouseNames('Mary /Black/', 'M')
         );
@@ -286,7 +286,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testNewWifeNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME'   => '//',
                 '_MARNM' => '/White/',
@@ -304,7 +304,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testNewWifeNamesWithSpfx(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME'   => '//',
                 '_MARNM' => '/van der White/',
@@ -322,7 +322,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testNewSpouseNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             ['NAME' => '//'],
             $this->surname_tradition->newSpouseNames('Chris /Green/', 'U')
         );

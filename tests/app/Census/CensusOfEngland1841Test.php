@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,8 +37,8 @@ class CensusOfEngland1841Test extends TestCase
     {
         $census = new CensusOfEngland1841();
 
-        $this->assertSame('England', $census->censusPlace());
-        $this->assertSame('06 JUN 1841', $census->censusDate());
+        self::assertSame('England', $census->censusPlace());
+        self::assertSame('06 JUN 1841', $census->censusDate());
     }
 
     /**
@@ -54,26 +54,26 @@ class CensusOfEngland1841Test extends TestCase
         $census  = new CensusOfEngland1841();
         $columns = $census->columns();
 
-        $this->assertCount(6, $columns);
-        $this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-        $this->assertInstanceOf(CensusColumnAgeMale5Years::class, $columns[1]);
-        $this->assertInstanceOf(CensusColumnAgeFemale5Years::class, $columns[2]);
-        $this->assertInstanceOf(CensusColumnOccupation::class, $columns[3]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[4]);
-        $this->assertInstanceOf(CensusColumnBornForeignParts::class, $columns[5]);
+        self::assertCount(6, $columns);
+        self::assertInstanceOf(CensusColumnFullName::class, $columns[0]);
+        self::assertInstanceOf(CensusColumnAgeMale5Years::class, $columns[1]);
+        self::assertInstanceOf(CensusColumnAgeFemale5Years::class, $columns[2]);
+        self::assertInstanceOf(CensusColumnOccupation::class, $columns[3]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[4]);
+        self::assertInstanceOf(CensusColumnBornForeignParts::class, $columns[5]);
 
-        $this->assertSame('Name', $columns[0]->abbreviation());
-        $this->assertSame('AgeM', $columns[1]->abbreviation());
-        $this->assertSame('AgeF', $columns[2]->abbreviation());
-        $this->assertSame('Occupation', $columns[3]->abbreviation());
-        $this->assertSame('BiC', $columns[4]->abbreviation());
-        $this->assertSame('SIF', $columns[5]->abbreviation());
+        self::assertSame('Name', $columns[0]->abbreviation());
+        self::assertSame('AgeM', $columns[1]->abbreviation());
+        self::assertSame('AgeF', $columns[2]->abbreviation());
+        self::assertSame('Occupation', $columns[3]->abbreviation());
+        self::assertSame('BiC', $columns[4]->abbreviation());
+        self::assertSame('SIF', $columns[5]->abbreviation());
 
-        $this->assertSame('Name', $columns[0]->title());
-        $this->assertSame('Age (males)', $columns[1]->title());
-        $this->assertSame('Age (females)', $columns[2]->title());
-        $this->assertSame('Profession, trade, employment or of independent means', $columns[3]->title());
-        $this->assertSame('Born in same county', $columns[4]->title());
-        $this->assertSame('Born in Scotland, Ireland or foreign parts', $columns[5]->title());
+        self::assertSame('Name', $columns[0]->title());
+        self::assertSame('Age (males)', $columns[1]->title());
+        self::assertSame('Age (females)', $columns[2]->title());
+        self::assertSame('Profession, trade, employment or of independent means', $columns[3]->title());
+        self::assertSame('Born in same county', $columns[4]->title());
+        self::assertSame('Born in Scotland, Ireland or foreign parts', $columns[5]->title());
     }
 }

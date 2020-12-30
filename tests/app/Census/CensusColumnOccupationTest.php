@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,14 +37,14 @@ class CensusColumnOccupationTest extends TestCase
      */
     public function testNoOccupation(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('facts')->with(['OCCU'])->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
 
         $column = new CensusColumnOccupation($census, '', '');
 
-        $this->assertSame('', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -55,16 +55,16 @@ class CensusColumnOccupationTest extends TestCase
      */
     public function testOccupation(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = self::createMock(Fact::class);
         $fact->method('value')->willReturn('Farmer');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('facts')->with(['OCCU'])->willReturn(new Collection([$fact]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
 
         $column = new CensusColumnOccupation($census, '', '');
 
-        $this->assertSame('Farmer', $column->generate($individual, $individual));
+        self::assertSame('Farmer', $column->generate($individual, $individual));
     }
 }

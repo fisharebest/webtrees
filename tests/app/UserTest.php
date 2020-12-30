@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,7 +35,7 @@ class UserTest extends TestCase
     {
         parent::setUp();
 
-        $cache_factory = $this->createMock(CacheFactoryInterface::class);
+        $cache_factory = self::createMock(CacheFactoryInterface::class);
         $cache_factory->method('array')->willReturn(new Cache(new NullAdapter()));
         Registry::cache($cache_factory);
     }
@@ -52,11 +52,11 @@ class UserTest extends TestCase
     {
         $user = new User(123, 'username', 'real name', 'email');
 
-        $this->assertInstanceOf(UserInterface::class, $user);
-        $this->assertSame(123, $user->id());
-        $this->assertSame('email', $user->email());
-        $this->assertSame('real name', $user->realName());
-        $this->assertSame('username', $user->userName());
+        self::assertInstanceOf(UserInterface::class, $user);
+        self::assertSame(123, $user->id());
+        self::assertSame('email', $user->email());
+        self::assertSame('real name', $user->realName());
+        self::assertSame('username', $user->userName());
     }
 
     /**
@@ -75,23 +75,23 @@ class UserTest extends TestCase
         $user_service = new UserService();
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
 
-        $this->assertSame(1, $user->id());
+        self::assertSame(1, $user->id());
 
-        $this->assertSame('user', $user->userName());
+        self::assertSame('user', $user->userName());
         $user->setUserName('foo');
-        $this->assertSame('foo', $user->userName());
+        self::assertSame('foo', $user->userName());
 
-        $this->assertSame('User', $user->realName());
+        self::assertSame('User', $user->realName());
         $user->setRealName('Foo');
-        $this->assertSame('Foo', $user->realName());
+        self::assertSame('Foo', $user->realName());
 
-        $this->assertSame('user@example.com', $user->email());
+        self::assertSame('user@example.com', $user->email());
         $user->setEmail('foo@example.com');
-        $this->assertSame('foo@example.com', $user->email());
+        self::assertSame('foo@example.com', $user->email());
 
-        $this->assertTrue($user->checkPassword('secret'));
+        self::assertTrue($user->checkPassword('secret'));
         $user->setPassword('letmein');
-        $this->assertTrue($user->checkPassword('letmein'));
+        self::assertTrue($user->checkPassword('letmein'));
     }
 
     /**
@@ -104,8 +104,8 @@ class UserTest extends TestCase
         $user_service = new UserService();
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
 
-        $this->assertSame('', $user->getPreference('foo'));
+        self::assertSame('', $user->getPreference('foo'));
         $user->setPreference('foo', 'bar');
-        $this->assertSame('bar', $user->getPreference('foo'));
+        self::assertSame('bar', $user->getPreference('foo'));
     }
 }

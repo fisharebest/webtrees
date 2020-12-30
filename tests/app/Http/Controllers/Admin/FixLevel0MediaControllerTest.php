@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -45,7 +45,7 @@ class FixLevel0MediaControllerTest extends TestCase
         $request    = self::createRequest();
         $response   = $controller->fixLevel0Media($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     /**
@@ -64,7 +64,7 @@ class FixLevel0MediaControllerTest extends TestCase
         ]);
         $response   = $controller->fixLevel0MediaAction($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 
     /**
@@ -79,6 +79,6 @@ class FixLevel0MediaControllerTest extends TestCase
         $request      = self::createRequest(RequestMethodInterface::METHOD_GET, ['tree_id' => $tree->id()]);
         $response     = $controller->fixLevel0MediaData($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

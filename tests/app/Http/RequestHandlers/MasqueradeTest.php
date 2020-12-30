@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,14 +37,14 @@ class MasqueradeTest extends TestCase
      */
     public function testMasqueradeAsUser(): void
     {
-        $user1 = $this->createMock(User::class);
+        $user1 = self::createMock(User::class);
         $user1->method('id')->willReturn(1);
 
-        $user2 = $this->createMock(User::class);
+        $user2 = self::createMock(User::class);
         $user2->method('id')->willReturn(2);
 
-        $user_service = $this->createMock(UserService::class);
-        $user_service->expects($this->once())->method('find')->willReturn($user2);
+        $user_service = self::createMock(UserService::class);
+        $user_service->expects(self::once())->method('find')->willReturn($user2);
 
         $request = self::createRequest()
             ->withAttribute('user', $user1)
@@ -63,11 +63,11 @@ class MasqueradeTest extends TestCase
      */
     public function testCannotMasqueradeAsSelf(): void
     {
-        $user = $this->createMock(User::class);
+        $user = self::createMock(User::class);
         $user->method('id')->willReturn(1);
 
-        $user_service = $this->createMock(UserService::class);
-        $user_service->expects($this->once())->method('find')->willReturn($user);
+        $user_service = self::createMock(UserService::class);
+        $user_service->expects(self::once())->method('find')->willReturn($user);
 
         $request = self::createRequest()
             ->withAttribute('user', $user)
@@ -88,11 +88,11 @@ class MasqueradeTest extends TestCase
         $this->expectException(HttpNotFoundException::class);
         $this->expectExceptionMessage('User ID 2 not found');
 
-        $user = $this->createMock(User::class);
+        $user = self::createMock(User::class);
         $user->method('id')->willReturn(1);
 
-        $user_service = $this->createMock(UserService::class);
-        $user_service->expects($this->once())->method('find')->willReturn(null);
+        $user_service = self::createMock(UserService::class);
+        $user_service->expects(self::once())->method('find')->willReturn(null);
 
         $request = self::createRequest()
             ->withAttribute('user', $user)

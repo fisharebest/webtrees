@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -51,7 +51,7 @@ class LithuanianSurnameTraditionTest extends TestCase
      */
     public function testMarriedSurnames(): void
     {
-        $this->assertTrue($this->surname_tradition->hasMarriedNames());
+        self::assertTrue($this->surname_tradition->hasMarriedNames());
     }
 
     /**
@@ -64,7 +64,7 @@ class LithuanianSurnameTraditionTest extends TestCase
      */
     public function testSurnames(): void
     {
-        $this->assertTrue($this->surname_tradition->hasSurnames());
+        self::assertTrue($this->surname_tradition->hasSurnames());
     }
 
     /**
@@ -77,7 +77,7 @@ class LithuanianSurnameTraditionTest extends TestCase
      */
     public function testNewSonNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/White/',
                 'SURN' => 'White',
@@ -96,7 +96,7 @@ class LithuanianSurnameTraditionTest extends TestCase
      */
     public function testNewDaughterNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/White/',
                 'SURN' => 'White',
@@ -115,42 +115,42 @@ class LithuanianSurnameTraditionTest extends TestCase
      */
     public function testNewDaughterNamesInflected(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Whitaitė/',
                 'SURN' => 'Whita',
             ],
             $this->surname_tradition->newChildNames('John /Whita/', 'Mary /Black/', 'F')
         );
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Whitaitė/',
                 'SURN' => 'Whitas',
             ],
             $this->surname_tradition->newChildNames('John /Whitas/', 'Mary /Black/', 'F')
         );
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Whitytė/',
                 'SURN' => 'Whitis',
             ],
             $this->surname_tradition->newChildNames('John /Whitis/', 'Mary /Black/', 'F')
         );
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Whitytė/',
                 'SURN' => 'Whitys',
             ],
             $this->surname_tradition->newChildNames('John /Whitys/', 'Mary /Black/', 'F')
         );
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Whitiūtė/',
                 'SURN' => 'Whitius',
             ],
             $this->surname_tradition->newChildNames('John /Whitius/', 'Mary /Black/', 'F')
         );
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Whitutė/',
                 'SURN' => 'Whitus',
@@ -169,7 +169,7 @@ class LithuanianSurnameTraditionTest extends TestCase
      */
     public function testNewChildNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/White/',
                 'SURN' => 'White',
@@ -188,7 +188,7 @@ class LithuanianSurnameTraditionTest extends TestCase
      */
     public function testNewChildNamesWithNoParentsNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             ['NAME' => '//'],
             $this->surname_tradition->newChildNames('', '', 'U')
         );
@@ -204,7 +204,7 @@ class LithuanianSurnameTraditionTest extends TestCase
      */
     public function testNewFatherNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/White/',
                 'SURN' => 'White',
@@ -223,28 +223,28 @@ class LithuanianSurnameTraditionTest extends TestCase
      */
     public function testNewFatherNamesInflected(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Whitas/',
                 'SURN' => 'Whitas',
             ],
             $this->surname_tradition->newParentNames('Mary /Whitaitė/', 'M')
         );
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Whitis/',
                 'SURN' => 'Whitis',
             ],
             $this->surname_tradition->newParentNames('Mary /Whitytė/', 'M')
         );
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Whitius/',
                 'SURN' => 'Whitius',
             ],
             $this->surname_tradition->newParentNames('Mary /Whitiūtė/', 'M')
         );
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Whitus/',
                 'SURN' => 'Whitus',
@@ -263,7 +263,7 @@ class LithuanianSurnameTraditionTest extends TestCase
      */
     public function testNewMotherNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             ['NAME' => '//'],
             $this->surname_tradition->newParentNames('John /White/', 'F')
         );
@@ -279,7 +279,7 @@ class LithuanianSurnameTraditionTest extends TestCase
      */
     public function testNewParentNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             ['NAME' => '//'],
             $this->surname_tradition->newParentNames('John /White/', 'U')
         );
@@ -295,7 +295,7 @@ class LithuanianSurnameTraditionTest extends TestCase
      */
     public function testNewHusbandNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             ['NAME' => '//'],
             $this->surname_tradition->newSpouseNames('Mary /Black/', 'M')
         );
@@ -311,7 +311,7 @@ class LithuanianSurnameTraditionTest extends TestCase
      */
     public function testNewWifeNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME'   => '//',
                 '_MARNM' => '/White/',
@@ -330,7 +330,7 @@ class LithuanianSurnameTraditionTest extends TestCase
      */
     public function testNewSpouseNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             ['NAME' => '//'],
             $this->surname_tradition->newSpouseNames('Chris /Green/', 'U')
         );

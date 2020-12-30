@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,11 +35,11 @@ class PasswordResetPageTest extends TestCase
      */
     public function testPasswordResetPageWithValidToken(): void
     {
-        $user = $this->createMock(User::class);
+        $user = self::createMock(User::class);
 
-        $user_service = $this->createMock(UserService::class);
+        $user_service = self::createMock(UserService::class);
         $user_service
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('findByToken')
             ->with('1234')
             ->willReturn($user);
@@ -57,9 +57,9 @@ class PasswordResetPageTest extends TestCase
      */
     public function testPasswordResetPageWithoutValidToken(): void
     {
-        $user_service = $this->createMock(UserService::class);
+        $user_service = self::createMock(UserService::class);
         $user_service
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('findByToken')
             ->with('4321')
             ->willReturn(null);

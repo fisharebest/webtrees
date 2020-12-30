@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -43,11 +43,11 @@ class TreeUserTest extends TestCase
         $tree         = $tree_service->create('name', 'title');
         $user         = new TreeUser($tree);
 
-        $this->assertInstanceOf(UserInterface::class, $user);
-        $this->assertSame(0, $user->id());
-        $this->assertSame('', $user->email());
-        $this->assertSame('title', $user->realName());
-        $this->assertSame('', $user->userName());
+        self::assertInstanceOf(UserInterface::class, $user);
+        self::assertSame(0, $user->id());
+        self::assertSame('', $user->email());
+        self::assertSame('title', $user->realName());
+        self::assertSame('', $user->userName());
     }
 
     /**
@@ -61,13 +61,13 @@ class TreeUserTest extends TestCase
         $tree         = $tree_service->create('name', 'title');
         $user         = new TreeUser($tree);
 
-        $this->assertSame('', $user->getPreference('foo'));
-        $this->assertSame('', $user->getPreference('foo', ''));
-        $this->assertSame('bar', $user->getPreference('foo', 'bar'));
+        self::assertSame('', $user->getPreference('foo'));
+        self::assertSame('', $user->getPreference('foo'));
+        self::assertSame('bar', $user->getPreference('foo', 'bar'));
 
         // Tree users do not have preferences
         $user->setPreference('foo', 'bar');
 
-        $this->assertSame('', $user->getPreference('foo'));
+        self::assertSame('', $user->getPreference('foo'));
     }
 }

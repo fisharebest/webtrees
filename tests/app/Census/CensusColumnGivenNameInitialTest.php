@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,14 +35,14 @@ class CensusColumnGivenNameInitialTest extends TestCase
      */
     public function testOneGivenName(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('getAllNames')->willReturn([['givn' => 'Joe']]);
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
 
         $column = new CensusColumnGivenNameInitial($census, '', '');
 
-        $this->assertSame('Joe', $column->generate($individual, $individual));
+        self::assertSame('Joe', $column->generate($individual, $individual));
     }
 
     /**
@@ -53,14 +53,14 @@ class CensusColumnGivenNameInitialTest extends TestCase
      */
     public function testMultipleGivenNames(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('getAllNames')->willReturn([['givn' => 'Joe Fred']]);
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
 
         $column = new CensusColumnGivenNameInitial($census, '', '');
 
-        $this->assertSame('Joe F', $column->generate($individual, $individual));
+        self::assertSame('Joe F', $column->generate($individual, $individual));
     }
 
     /**
@@ -71,13 +71,13 @@ class CensusColumnGivenNameInitialTest extends TestCase
      */
     public function testNoName(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createMock(Individual::class);
         $individual->method('getAllNames')->willReturn([]);
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createMock(CensusInterface::class);
 
         $column = new CensusColumnGivenNameInitial($census, '', '');
 
-        $this->assertSame('', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 }

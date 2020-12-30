@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\TestCase;
 use Psr\Http\Server\RequestHandlerInterface;
 
@@ -37,13 +38,13 @@ class CheckForMaintenanceModeTest extends TestCase
      */
     public function testMiddleware(): void
     {
-        $handler = $this->createMock(RequestHandlerInterface::class);
+        $handler = self::createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response());
 
         $request    = self::createRequest();
         $middleware = new CheckForMaintenanceMode();
         $response   = $middleware->process($request, $handler);
 
-        $this->assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 }

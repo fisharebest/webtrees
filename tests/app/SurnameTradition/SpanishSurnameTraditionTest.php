@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -50,7 +50,7 @@ class SpanishSurnameTraditionTest extends TestCase
      */
     public function testMarriedSurnames(): void
     {
-        $this->assertFalse($this->surname_tradition->hasMarriedNames());
+        self::assertFalse($this->surname_tradition->hasMarriedNames());
     }
 
     /**
@@ -62,7 +62,7 @@ class SpanishSurnameTraditionTest extends TestCase
      */
     public function testSurnames(): void
     {
-        $this->assertTrue($this->surname_tradition->hasSurnames());
+        self::assertTrue($this->surname_tradition->hasSurnames());
     }
 
     /**
@@ -74,7 +74,7 @@ class SpanishSurnameTraditionTest extends TestCase
      */
     public function testNewSonNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Garcia/ /Ruiz/',
                 'SURN' => 'Garcia,Ruiz',
@@ -92,7 +92,7 @@ class SpanishSurnameTraditionTest extends TestCase
      */
     public function testNewDaughterNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Garcia/ /Ruiz/',
                 'SURN' => 'Garcia,Ruiz',
@@ -110,7 +110,7 @@ class SpanishSurnameTraditionTest extends TestCase
      */
     public function testNewChildNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Garcia/ /Ruiz/',
                 'SURN' => 'Garcia,Ruiz',
@@ -128,7 +128,7 @@ class SpanishSurnameTraditionTest extends TestCase
      */
     public function testNewChildNamesWithNoParentsNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '// //',
                 'SURN' => '',
@@ -146,14 +146,14 @@ class SpanishSurnameTraditionTest extends TestCase
      */
     public function testNewChildNamesCompunds(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Garcia/ /Ruiz/',
                 'SURN' => 'Garcia,Ruiz',
             ],
             $this->surname_tradition->newChildNames('Gabriel /Garcia Iglesias/', 'Maria /Ruiz Lorca/', 'M')
         );
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Garcia/ /Ruiz/',
                 'SURN' => 'Garcia,Ruiz',
@@ -171,7 +171,7 @@ class SpanishSurnameTraditionTest extends TestCase
      */
     public function testNewFatherNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Garcia/ //',
                 'SURN' => 'Garcia',
@@ -189,7 +189,7 @@ class SpanishSurnameTraditionTest extends TestCase
      */
     public function testNewMotherNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'NAME' => '/Iglesias/ //',
                 'SURN' => 'Iglesias',
@@ -207,7 +207,7 @@ class SpanishSurnameTraditionTest extends TestCase
      */
     public function testNewParentNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             ['NAME' => '// //'],
             $this->surname_tradition->newParentNames('Gabriel /Garcia/ /Iglesias/', 'U')
         );
@@ -222,7 +222,7 @@ class SpanishSurnameTraditionTest extends TestCase
      */
     public function testNewHusbandNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             ['NAME' => '// //'],
             $this->surname_tradition->newSpouseNames('Maria /Ruiz/ /Lorca/', 'M')
         );
@@ -237,7 +237,7 @@ class SpanishSurnameTraditionTest extends TestCase
      */
     public function testNewWifeNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             ['NAME' => '// //'],
             $this->surname_tradition->newSpouseNames('Gabriel /Garcia/ /Iglesias/', 'F')
         );
@@ -252,7 +252,7 @@ class SpanishSurnameTraditionTest extends TestCase
      */
     public function testNewSpouseNames(): void
     {
-        $this->assertSame(
+        self::assertSame(
             ['NAME' => '// //'],
             $this->surname_tradition->newSpouseNames('Gabriel /Garcia/ /Iglesias/', 'U')
         );

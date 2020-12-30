@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -57,16 +57,16 @@ class UserAdminTest extends TestCase
             ->withAttribute('user', $admin);
         $response   = $controller->data($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-        $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame('application/json', $response->getHeaderLine('Content-Type'));
         $html = (string) $response->getBody();
 
-        $this->assertStringContainsString('AdminName', $html);
-        $this->assertStringContainsString('Administrator', $html);
-        $this->assertStringContainsString('admin@example.com', $html);
-        $this->assertStringContainsString('UserName', $html);
-        $this->assertStringContainsString('RealName', $html);
-        $this->assertStringContainsString('user@example.com', $html);
+        self::assertStringContainsString('AdminName', $html);
+        self::assertStringContainsString('Administrator', $html);
+        self::assertStringContainsString('admin@example.com', $html);
+        self::assertStringContainsString('UserName', $html);
+        self::assertStringContainsString('RealName', $html);
+        self::assertStringContainsString('user@example.com', $html);
     }
 
     /**
@@ -91,16 +91,16 @@ class UserAdminTest extends TestCase
             ->withAttribute('user', $admin);
         $response   = $controller->data($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-        $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame('application/json', $response->getHeaderLine('Content-Type'));
         $html = (string) $response->getBody();
 
-        $this->assertStringContainsString('AdminName', $html);
-        $this->assertStringContainsString('Administrator', $html);
-        $this->assertStringContainsString('admin@example.com', $html);
-        $this->assertNotContains('UserName', $html);
-        $this->assertNotContains('RealName', $html);
-        $this->assertNotContains('user@example.com', $html);
+        self::assertStringContainsString('AdminName', $html);
+        self::assertStringContainsString('Administrator', $html);
+        self::assertStringContainsString('admin@example.com', $html);
+        self::assertStringNotContainsString('UserName', $html);
+        self::assertStringNotContainsString('RealName', $html);
+        self::assertStringNotContainsString('user@example.com', $html);
     }
 
     /**
@@ -125,12 +125,12 @@ class UserAdminTest extends TestCase
             ->withAttribute('user', $admin);
         $response   = $controller->data($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-        $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame('application/json', $response->getHeaderLine('Content-Type'));
         $html = (string) $response->getBody();
 
-        $this->assertStringContainsString('AdminName', $html);
-        $this->assertNotContains('UserName', $html);
+        self::assertStringContainsString('AdminName', $html);
+        self::assertStringNotContainsString('UserName', $html);
     }
 
     /**
@@ -156,13 +156,13 @@ class UserAdminTest extends TestCase
             ->withAttribute('user', $admin);
         $response   = $controller->data($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-        $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame('application/json', $response->getHeaderLine('Content-Type'));
         $html = (string) $response->getBody();
 
         $pos1 = strpos($html, 'AdminName');
         $pos2 = strpos($html, 'UserName');
-        $this->assertLessThan($pos2, $pos1);
+        self::assertLessThan($pos2, $pos1);
 
         $request = self::createRequest()
             ->withQueryParams(['order' => [['column' => 2, 'dir' => 'desc']]])
@@ -171,12 +171,12 @@ class UserAdminTest extends TestCase
         $controller = new UsersController($datatables_service, $mail_service, $message_service, $module_service, $tree_service, $user_service);
         $response   = $controller->data($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-        $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame('application/json', $response->getHeaderLine('Content-Type'));
         $html = (string) $response->getBody();
 
         $pos1 = strpos($html, 'AdminName');
         $pos2 = strpos($html, 'UserName');
-        $this->assertGreaterThan($pos2, $pos1);
+        self::assertGreaterThan($pos2, $pos1);
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,7 +37,7 @@ class CensusOfUnitedStatesTest extends TestCase
     {
         $census = new CensusOfUnitedStates();
 
-        $this->assertSame('United States', $census->censusPlace());
+        self::assertSame('United States', $census->censusPlace());
     }
 
     /**
@@ -51,7 +51,7 @@ class CensusOfUnitedStatesTest extends TestCase
     {
         $census = new CensusOfUnitedStates();
 
-        $this->assertSame('en-US', $census->censusLanguage());
+        self::assertSame('en-US', $census->censusLanguage());
     }
 
     /**
@@ -67,22 +67,22 @@ class CensusOfUnitedStatesTest extends TestCase
 
         $census_dates = $census->allCensusDates();
 
-        $this->assertCount(16, $census_dates);
-        $this->assertInstanceOf(CensusOfUnitedStates1790::class, $census_dates[0]);
-        $this->assertInstanceOf(CensusOfUnitedStates1800::class, $census_dates[1]);
-        $this->assertInstanceOf(CensusOfUnitedStates1810::class, $census_dates[2]);
-        $this->assertInstanceOf(CensusOfUnitedStates1820::class, $census_dates[3]);
-        $this->assertInstanceOf(CensusOfUnitedStates1830::class, $census_dates[4]);
-        $this->assertInstanceOf(CensusOfUnitedStates1840::class, $census_dates[5]);
-        $this->assertInstanceOf(CensusOfUnitedStates1850::class, $census_dates[6]);
-        $this->assertInstanceOf(CensusOfUnitedStates1860::class, $census_dates[7]);
-        $this->assertInstanceOf(CensusOfUnitedStates1870::class, $census_dates[8]);
-        $this->assertInstanceOf(CensusOfUnitedStates1880::class, $census_dates[9]);
-        $this->assertInstanceOf(CensusOfUnitedStates1890::class, $census_dates[10]);
-        $this->assertInstanceOf(CensusOfUnitedStates1900::class, $census_dates[11]);
-        $this->assertInstanceOf(CensusOfUnitedStates1910::class, $census_dates[12]);
-        $this->assertInstanceOf(CensusOfUnitedStates1920::class, $census_dates[13]);
-        $this->assertInstanceOf(CensusOfUnitedStates1930::class, $census_dates[14]);
-        $this->assertInstanceOf(CensusOfUnitedStates1940::class, $census_dates[15]);
+        self::assertCount(16, $census_dates);
+        self::assertInstanceOf(CensusOfUnitedStates1790::class, $census_dates[0]);
+        self::assertInstanceOf(CensusOfUnitedStates1800::class, $census_dates[1]);
+        self::assertInstanceOf(CensusOfUnitedStates1810::class, $census_dates[2]);
+        self::assertInstanceOf(CensusOfUnitedStates1820::class, $census_dates[3]);
+        self::assertInstanceOf(CensusOfUnitedStates1830::class, $census_dates[4]);
+        self::assertInstanceOf(CensusOfUnitedStates1840::class, $census_dates[5]);
+        self::assertInstanceOf(CensusOfUnitedStates1850::class, $census_dates[6]);
+        self::assertInstanceOf(CensusOfUnitedStates1860::class, $census_dates[7]);
+        self::assertInstanceOf(CensusOfUnitedStates1870::class, $census_dates[8]);
+        self::assertInstanceOf(CensusOfUnitedStates1880::class, $census_dates[9]);
+        self::assertInstanceOf(CensusOfUnitedStates1890::class, $census_dates[10]);
+        self::assertInstanceOf(CensusOfUnitedStates1900::class, $census_dates[11]);
+        self::assertInstanceOf(CensusOfUnitedStates1910::class, $census_dates[12]);
+        self::assertInstanceOf(CensusOfUnitedStates1920::class, $census_dates[13]);
+        self::assertInstanceOf(CensusOfUnitedStates1930::class, $census_dates[14]);
+        self::assertInstanceOf(CensusOfUnitedStates1940::class, $census_dates[15]);
     }
 }

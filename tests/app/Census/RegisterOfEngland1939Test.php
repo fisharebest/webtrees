@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,8 +37,8 @@ class RegisterOfEngland1939Test extends TestCase
     {
         $census = new RegisterOfEngland1939();
 
-        $this->assertSame('England', $census->censusPlace());
-        $this->assertSame('29 SEP 1939', $census->censusDate());
+        self::assertSame('England', $census->censusPlace());
+        self::assertSame('29 SEP 1939', $census->censusDate());
     }
 
     /**
@@ -54,32 +54,32 @@ class RegisterOfEngland1939Test extends TestCase
         $census  = new RegisterOfEngland1939();
         $columns = $census->columns();
 
-        $this->assertCount(8, $columns);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[0]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[1]);
-        $this->assertInstanceOf(CensusColumnSurnameGivenNames::class, $columns[2]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[3]);
-        $this->assertInstanceOf(CensusColumnSexMF::class, $columns[4]);
-        $this->assertInstanceOf(CensusColumnBirthDayMonthYear::class, $columns[5]);
-        $this->assertInstanceOf(CensusColumnConditionEnglish::class, $columns[6]);
-        $this->assertInstanceOf(CensusColumnOccupation::class, $columns[7]);
+        self::assertCount(8, $columns);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[0]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[1]);
+        self::assertInstanceOf(CensusColumnSurnameGivenNames::class, $columns[2]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[3]);
+        self::assertInstanceOf(CensusColumnSexMF::class, $columns[4]);
+        self::assertInstanceOf(CensusColumnBirthDayMonthYear::class, $columns[5]);
+        self::assertInstanceOf(CensusColumnConditionEnglish::class, $columns[6]);
+        self::assertInstanceOf(CensusColumnOccupation::class, $columns[7]);
 
-        $this->assertSame('Schedule', $columns[0]->abbreviation());
-        $this->assertSame('SubNum', $columns[1]->abbreviation());
-        $this->assertSame('Name', $columns[2]->abbreviation());
-        $this->assertSame('Role', $columns[3]->abbreviation());
-        $this->assertSame('Sex', $columns[4]->abbreviation());
-        $this->assertSame('DOB', $columns[5]->abbreviation());
-        $this->assertSame('MC', $columns[6]->abbreviation());
-        $this->assertSame('Occupation', $columns[7]->abbreviation());
+        self::assertSame('Schedule', $columns[0]->abbreviation());
+        self::assertSame('SubNum', $columns[1]->abbreviation());
+        self::assertSame('Name', $columns[2]->abbreviation());
+        self::assertSame('Role', $columns[3]->abbreviation());
+        self::assertSame('Sex', $columns[4]->abbreviation());
+        self::assertSame('DOB', $columns[5]->abbreviation());
+        self::assertSame('MC', $columns[6]->abbreviation());
+        self::assertSame('Occupation', $columns[7]->abbreviation());
 
-        $this->assertSame('Schedule Number', $columns[0]->title());
-        $this->assertSame('Schedule Sub Number', $columns[1]->title());
-        $this->assertSame('Surname & other names', $columns[2]->title());
-        $this->assertSame('For institutions only – for example, Officer, Visitor, Servant, Patient, Inmate', $columns[3]->title());
-        $this->assertSame('Male or Female', $columns[4]->title());
-        $this->assertSame('Date of birth', $columns[5]->title());
-        $this->assertSame('Marital Condition - Married, Single, Unmarried, Widowed or Divorced', $columns[6]->title());
-        $this->assertSame('Occupation', $columns[7]->title());
+        self::assertSame('Schedule Number', $columns[0]->title());
+        self::assertSame('Schedule Sub Number', $columns[1]->title());
+        self::assertSame('Surname & other names', $columns[2]->title());
+        self::assertSame('For institutions only – for example, Officer, Visitor, Servant, Patient, Inmate', $columns[3]->title());
+        self::assertSame('Male or Female', $columns[4]->title());
+        self::assertSame('Date of birth', $columns[5]->title());
+        self::assertSame('Marital Condition - Married, Single, Unmarried, Widowed or Divorced', $columns[6]->title());
+        self::assertSame('Occupation', $columns[7]->title());
     }
 }

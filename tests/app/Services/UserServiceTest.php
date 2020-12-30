@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,7 +34,7 @@ class UserServiceTest extends TestCase
     {
         parent::setUp();
 
-        $cache_factory = $this->createMock(CacheFactoryInterface::class);
+        $cache_factory = self::createMock(CacheFactoryInterface::class);
         $cache_factory->method('array')->willReturn(new Cache(new NullAdapter()));
         Registry::cache($cache_factory);
     }
@@ -49,7 +49,7 @@ class UserServiceTest extends TestCase
 
         $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
 
-        $this->assertSame(1, $user->id());
+        self::assertSame(1, $user->id());
     }
 
     /**
@@ -63,7 +63,7 @@ class UserServiceTest extends TestCase
         $user_id      = $user->id();
         $user_service->delete($user);
 
-        $this->assertNull($user_service->find($user_id));
+        self::assertNull($user_service->find($user_id));
     }
 
     /**
@@ -75,7 +75,7 @@ class UserServiceTest extends TestCase
         $user_service = new UserService();
         $user         = $user_service->find(999);
 
-        $this->assertNull($user);
+        self::assertNull($user);
     }
 
     /**
@@ -88,7 +88,7 @@ class UserServiceTest extends TestCase
         $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user2        = $user_service->find($user1->id());
 
-        $this->assertSame($user1->id(), $user2->id());
+        self::assertSame($user1->id(), $user2->id());
     }
 
     /**
@@ -101,7 +101,7 @@ class UserServiceTest extends TestCase
         $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user2        = $user_service->findByEmail($user1->email());
 
-        $this->assertSame($user1->id(), $user2->id());
+        self::assertSame($user1->id(), $user2->id());
     }
 
     /**
@@ -114,7 +114,7 @@ class UserServiceTest extends TestCase
         $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user2        = $user_service->findByUserName($user1->userName());
 
-        $this->assertSame($user1->id(), $user2->id());
+        self::assertSame($user1->id(), $user2->id());
     }
 
     /**
@@ -128,8 +128,8 @@ class UserServiceTest extends TestCase
         $user2        = $user_service->findByIdentifier($user1->userName());
         $user3        = $user_service->findByIdentifier($user1->email());
 
-        $this->assertSame($user1->id(), $user2->id());
-        $this->assertSame($user1->id(), $user3->id());
+        self::assertSame($user1->id(), $user2->id());
+        self::assertSame($user1->id(), $user3->id());
     }
 
     /**
@@ -147,8 +147,8 @@ class UserServiceTest extends TestCase
 
         $users = $user_service->findByIndividual($indi);
 
-        $this->assertCount(1, $users);
-        $this->assertSame($user->id(), $users[0]->id());
+        self::assertCount(1, $users);
+        self::assertSame($user->id(), $users[0]->id());
     }
 
     /**
@@ -163,9 +163,9 @@ class UserServiceTest extends TestCase
 
         $users = $user_service->all();
 
-        $this->assertSame(2, $users->count());
-        $this->assertSame($user2->id(), $users[0]->id());
-        $this->assertSame($user1->id(), $users[1]->id());
+        self::assertSame(2, $users->count());
+        self::assertSame($user2->id(), $users[0]->id());
+        self::assertSame($user1->id(), $users[1]->id());
     }
 
     /**
@@ -182,8 +182,8 @@ class UserServiceTest extends TestCase
 
         $users = $user_service->administrators();
 
-        $this->assertCount(1, $users);
-        $this->assertSame($admin->id(), $users[0]->id());
+        self::assertCount(1, $users);
+        self::assertSame($admin->id(), $users[0]->id());
     }
 
     /**
@@ -206,8 +206,8 @@ class UserServiceTest extends TestCase
 
         $users = $user_service->managers();
 
-        $this->assertCount(1, $users);
-        $this->assertSame($user1->id(), $users[0]->id());
+        self::assertCount(1, $users);
+        self::assertSame($user1->id(), $users[0]->id());
     }
 
     /**
@@ -230,8 +230,8 @@ class UserServiceTest extends TestCase
 
         $users = $user_service->moderators();
 
-        $this->assertCount(1, $users);
-        $this->assertSame($user2->id(), $users[0]->id());
+        self::assertCount(1, $users);
+        self::assertSame($user2->id(), $users[0]->id());
     }
 
     /**
@@ -258,14 +258,14 @@ class UserServiceTest extends TestCase
 
         $users = $user_service->unapproved();
 
-        $this->assertSame(2, $users->count());
-        $this->assertSame('user1', $users[0]->userName());
-        $this->assertSame('user3', $users[1]->userName());
+        self::assertSame(2, $users->count());
+        self::assertSame('user1', $users[0]->userName());
+        self::assertSame('user3', $users[1]->userName());
 
         $users = $user_service->unverified();
 
-        $this->assertSame(2, $users->count());
-        $this->assertSame('user1', $users[0]->userName());
-        $this->assertSame('user2', $users[1]->userName());
+        self::assertSame(2, $users->count());
+        self::assertSame('user1', $users[0]->userName());
+        self::assertSame('user2', $users[1]->userName());
     }
 }

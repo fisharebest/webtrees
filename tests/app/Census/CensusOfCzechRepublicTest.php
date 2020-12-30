@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,7 +37,7 @@ class CensusOfCzechRepublicTest extends TestCase
     {
         $census = new CensusOfCzechRepublic();
 
-        $this->assertSame('Česko', $census->censusPlace());
+        self::assertSame('Česko', $census->censusPlace());
     }
 
     /**
@@ -51,7 +51,7 @@ class CensusOfCzechRepublicTest extends TestCase
     {
         $census = new CensusOfCzechRepublic();
 
-        $this->assertSame('cs', $census->censusLanguage());
+        self::assertSame('cs', $census->censusLanguage());
     }
 
     /**
@@ -67,11 +67,11 @@ class CensusOfCzechRepublicTest extends TestCase
 
         $census_dates = $census->allCensusDates();
 
-        $this->assertCount(5, $census_dates);
-        $this->assertInstanceOf(CensusOfCzechRepublic1880::class, $census_dates[0]);
-        $this->assertInstanceOf(CensusOfCzechRepublic1890::class, $census_dates[1]);
-        $this->assertInstanceOf(CensusOfCzechRepublic1900::class, $census_dates[2]);
-        $this->assertInstanceOf(CensusOfCzechRepublic1910::class, $census_dates[3]);
-        $this->assertInstanceOf(CensusOfCzechRepublic1921::class, $census_dates[4]);
+        self::assertCount(5, $census_dates);
+        self::assertInstanceOf(CensusOfCzechRepublic1880::class, $census_dates[0]);
+        self::assertInstanceOf(CensusOfCzechRepublic1890::class, $census_dates[1]);
+        self::assertInstanceOf(CensusOfCzechRepublic1900::class, $census_dates[2]);
+        self::assertInstanceOf(CensusOfCzechRepublic1910::class, $census_dates[3]);
+        self::assertInstanceOf(CensusOfCzechRepublic1921::class, $census_dates[4]);
     }
 }

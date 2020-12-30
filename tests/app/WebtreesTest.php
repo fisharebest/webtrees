@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,14 +42,14 @@ class WebtreesTest extends TestCase
         $webtrees->bootstrap();
 
         // webtrees sets the error reporting level.
-        $this->assertNotSame(0, error_reporting());
-        $this->assertSame(Webtrees::ERROR_REPORTING, error_reporting());
+        self::assertNotSame(0, error_reporting());
+        self::assertSame(Webtrees::ERROR_REPORTING, error_reporting());
 
         try {
             // Trigger an error
             fopen(__DIR__ . '/no-such-file', 'rb');
         } catch (ErrorException $ex) {
-            $this->assertSame(__FILE__, $ex->getFile());
+            self::assertSame(__FILE__, $ex->getFile());
         }
 
         // Disable error reporting (we could use "@"), and don't raise an exception.

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,8 +37,8 @@ class CensusOfScotland1851Test extends TestCase
     {
         $census = new CensusOfScotland1851();
 
-        $this->assertSame('Scotland', $census->censusPlace());
-        $this->assertSame('30 MAR 1851', $census->censusDate());
+        self::assertSame('Scotland', $census->censusPlace());
+        self::assertSame('30 MAR 1851', $census->censusDate());
     }
 
     /**
@@ -54,32 +54,32 @@ class CensusOfScotland1851Test extends TestCase
         $census  = new CensusOfScotland1851();
         $columns = $census->columns();
 
-        $this->assertCount(8, $columns);
-        $this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-        $this->assertInstanceOf(CensusColumnRelationToHeadEnglish::class, $columns[1]);
-        $this->assertInstanceOf(CensusColumnConditionEnglish::class, $columns[2]);
-        $this->assertInstanceOf(CensusColumnAgeMale::class, $columns[3]);
-        $this->assertInstanceOf(CensusColumnAgeFemale::class, $columns[4]);
-        $this->assertInstanceOf(CensusColumnOccupation::class, $columns[5]);
-        $this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[6]);
-        $this->assertInstanceOf(CensusColumnNull::class, $columns[7]);
+        self::assertCount(8, $columns);
+        self::assertInstanceOf(CensusColumnFullName::class, $columns[0]);
+        self::assertInstanceOf(CensusColumnRelationToHeadEnglish::class, $columns[1]);
+        self::assertInstanceOf(CensusColumnConditionEnglish::class, $columns[2]);
+        self::assertInstanceOf(CensusColumnAgeMale::class, $columns[3]);
+        self::assertInstanceOf(CensusColumnAgeFemale::class, $columns[4]);
+        self::assertInstanceOf(CensusColumnOccupation::class, $columns[5]);
+        self::assertInstanceOf(CensusColumnBirthPlace::class, $columns[6]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[7]);
 
-        $this->assertSame('Name', $columns[0]->abbreviation());
-        $this->assertSame('Relation', $columns[1]->abbreviation());
-        $this->assertSame('Condition', $columns[2]->abbreviation());
-        $this->assertSame('AgeM', $columns[3]->abbreviation());
-        $this->assertSame('AgeF', $columns[4]->abbreviation());
-        $this->assertSame('Occupation', $columns[5]->abbreviation());
-        $this->assertSame('Birthplace', $columns[6]->abbreviation());
-        $this->assertSame('Infirm', $columns[7]->abbreviation());
+        self::assertSame('Name', $columns[0]->abbreviation());
+        self::assertSame('Relation', $columns[1]->abbreviation());
+        self::assertSame('Condition', $columns[2]->abbreviation());
+        self::assertSame('AgeM', $columns[3]->abbreviation());
+        self::assertSame('AgeF', $columns[4]->abbreviation());
+        self::assertSame('Occupation', $columns[5]->abbreviation());
+        self::assertSame('Birthplace', $columns[6]->abbreviation());
+        self::assertSame('Infirm', $columns[7]->abbreviation());
 
-        $this->assertSame('Name and surname', $columns[0]->title());
-        $this->assertSame('Relation to head of household', $columns[1]->title());
-        $this->assertSame('Condition', $columns[2]->title());
-        $this->assertSame('Age (males)', $columns[3]->title());
-        $this->assertSame('Age (females)', $columns[4]->title());
-        $this->assertSame('Rank, profession or occupation', $columns[5]->title());
-        $this->assertSame('Where born', $columns[6]->title());
-        $this->assertSame('Whether blind or deaf-and-dumb', $columns[7]->title());
+        self::assertSame('Name and surname', $columns[0]->title());
+        self::assertSame('Relation to head of household', $columns[1]->title());
+        self::assertSame('Condition', $columns[2]->title());
+        self::assertSame('Age (males)', $columns[3]->title());
+        self::assertSame('Age (females)', $columns[4]->title());
+        self::assertSame('Rank, profession or occupation', $columns[5]->title());
+        self::assertSame('Where born', $columns[6]->title());
+        self::assertSame('Whether blind or deaf-and-dumb', $columns[7]->title());
     }
 }
