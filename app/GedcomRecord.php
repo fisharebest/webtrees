@@ -1253,13 +1253,13 @@ class GedcomRecord
     {
         // Split the record into facts
         if ($this->gedcom) {
-            $gedcom_facts = preg_split('/\n(?=1)/s', $this->gedcom);
+            $gedcom_facts = preg_split('/\n(?=1)/', $this->gedcom);
             array_shift($gedcom_facts);
         } else {
             $gedcom_facts = [];
         }
         if ($this->pending) {
-            $pending_facts = preg_split('/\n(?=1)/s', $this->pending);
+            $pending_facts = preg_split('/\n(?=1)/', $this->pending);
             array_shift($pending_facts);
         } else {
             $pending_facts = [];

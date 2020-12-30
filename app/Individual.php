@@ -896,7 +896,7 @@ class Individual extends GedcomRecord
         foreach ($families as $family) {
             $spouse = $family->spouse($this);
 
-            if ($spouse instanceof Individual) {
+            if ($spouse instanceof self) {
                 foreach ($family->spouse($this)->spouseFamilies() as $step_family) {
                     if (!$families->containsStrict($step_family)) {
                         $step_families[] = $step_family;
@@ -1118,7 +1118,7 @@ class Individual extends GedcomRecord
 
         // Add placeholder for unknown given name
         if (!$GIVN) {
-            $GIVN = Individual::PRAENOMEN_NESCIO;
+            $GIVN = self::PRAENOMEN_NESCIO;
             $pos  = (int) strpos($full, '/');
             $full = substr($full, 0, $pos) . '@P.N. ' . substr($full, $pos);
         }
@@ -1129,8 +1129,8 @@ class Individual extends GedcomRecord
         $fullNN = str_replace('/', '', $full);
 
         // Insert placeholders for any missing/unknown names
-        $full = str_replace(Individual::NOMEN_NESCIO, I18N::translateContext('Unknown surname', '…'), $full);
-        $full = str_replace(Individual::PRAENOMEN_NESCIO, I18N::translateContext('Unknown given name', '…'), $full);
+        $full = str_replace(self::NOMEN_NESCIO, I18N::translateContext('Unknown surname', '…'), $full);
+        $full = str_replace(self::PRAENOMEN_NESCIO, I18N::translateContext('Unknown given name', '…'), $full);
         // Format for display
         $full = '<span class="NAME" dir="auto" translate="no">' . preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', e($full)) . '</span>';
         // Localise quotation marks around the nickname

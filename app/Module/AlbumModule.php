@@ -100,14 +100,4 @@ class AlbumModule extends MediaTabModule
 
         return $media->filter()->filter(Media::accessFilter());
     }
-
-    /**
-     * Can this tab load asynchronously?
-     *
-     * @return bool
-     */
-    public function canLoadAjax(): bool
-    {
-        return false;
-    }
 }

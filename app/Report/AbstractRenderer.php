@@ -340,10 +340,6 @@ abstract class AbstractRenderer
      */
     public function getStyle(string $s): array
     {
-        if (!isset($this->styles[$s])) {
-            return current($this->styles);
-        }
-
-        return $this->styles[$s];
+        return $this->styles[$s] ?? current($this->styles);
     }
 }

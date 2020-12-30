@@ -774,7 +774,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return array<stdClass>
      */
-    public function statsAgeQuery(string $related = 'BIRT', string $sex = 'BOTH', int $year1 = -1, int $year2 = -1)
+    public function statsAgeQuery(string $related = 'BIRT', string $sex = 'BOTH', int $year1 = -1, int $year2 = -1): array
     {
         $prefix = DB::connection()->getTablePrefix();
 

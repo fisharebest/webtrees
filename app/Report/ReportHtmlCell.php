@@ -196,16 +196,16 @@ class ReportHtmlCell extends ReportBaseCell
         echo "</div>\n";
 
         // Where to place the next position
-        if ($this->newline == 0) {
+        if ($this->newline === 0) {
             // -> Next to this cell in the same line
             $renderer->setXy($this->left + $this->width, $this->top);
             $renderer->lastCellHeight = $this->height;
-        } elseif ($this->newline == 1) {
+        } elseif ($this->newline === 1) {
             // -> On a new line at the margin - Default
             $renderer->setXy(0, $renderer->getY() + $this->height + ($cP * 2));
             // Reset the last cell height for the next line
             $renderer->lastCellHeight = 0;
-        } elseif ($this->newline == 2) {
+        } elseif ($this->newline === 2) {
             // -> On a new line at the end of this cell
             $renderer->setXy($renderer->getX() + $this->width, $renderer->getY() + $this->height + ($cP * 2));
             // Reset the last cell height for the next line

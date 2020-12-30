@@ -911,7 +911,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * Find the axis entry for a given value.
      * Some are direct lookup (e.g. M/F, JAN/FEB/MAR).
-     * Others need to find the approprate range.
+     * Others need to find the appropriate range.
      *
      * @param int|float|string $value
      * @param string[]         $axis
