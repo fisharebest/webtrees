@@ -137,8 +137,6 @@ class JewishDate extends AbstractCalendarDate
                 /* I18N: a month in the Jewish calendar */
                 7  => I18N::translateContext('NOMINATIVE', 'Adar'),
                 /* I18N: a month in the Jewish calendar */
-                -7 => I18N::translateContext('NOMINATIVE', 'Adar II'),
-                /* I18N: a month in the Jewish calendar */
                 8  => I18N::translateContext('NOMINATIVE', 'Nissan'),
                 /* I18N: a month in the Jewish calendar */
                 9  => I18N::translateContext('NOMINATIVE', 'Iyar'),
@@ -154,7 +152,8 @@ class JewishDate extends AbstractCalendarDate
         }
 
         if ($month === 7 && $leap_year) {
-            return $translated_month_names[-7];
+            /* I18N: a month in the Jewish calendar */
+            return I18N::translateContext('NOMINATIVE', 'Adar II');
         }
 
         return $translated_month_names[$month];
@@ -190,8 +189,6 @@ class JewishDate extends AbstractCalendarDate
                 /* I18N: a month in the Jewish calendar */
                 7  => I18N::translateContext('GENITIVE', 'Adar'),
                 /* I18N: a month in the Jewish calendar */
-                -7 => I18N::translateContext('GENITIVE', 'Adar II'),
-                /* I18N: a month in the Jewish calendar */
                 8  => I18N::translateContext('GENITIVE', 'Nissan'),
                 /* I18N: a month in the Jewish calendar */
                 9  => I18N::translateContext('GENITIVE', 'Iyar'),
@@ -207,7 +204,8 @@ class JewishDate extends AbstractCalendarDate
         }
 
         if ($month === 7 && $leap_year) {
-            return $translated_month_names[-7];
+            /* I18N: a month in the Jewish calendar */
+            return I18N::translateContext('GENITIVE', 'Adar II');
         }
 
         return $translated_month_names[$month];
@@ -243,8 +241,6 @@ class JewishDate extends AbstractCalendarDate
                 /* I18N: a month in the Jewish calendar */
                 7  => I18N::translateContext('LOCATIVE', 'Adar'),
                 /* I18N: a month in the Jewish calendar */
-                -7 => I18N::translateContext('LOCATIVE', 'Adar II'),
-                /* I18N: a month in the Jewish calendar */
                 8  => I18N::translateContext('LOCATIVE', 'Nissan'),
                 /* I18N: a month in the Jewish calendar */
                 9  => I18N::translateContext('LOCATIVE', 'Iyar'),
@@ -260,7 +256,8 @@ class JewishDate extends AbstractCalendarDate
         }
 
         if ($month === 7 && $leap_year) {
-            return $translated_month_names[-7];
+            /* I18N: a month in the Jewish calendar */
+            return I18N::translateContext('LOCATIVE', 'Adar II');x
         }
 
         return $translated_month_names[$month];
@@ -296,8 +293,6 @@ class JewishDate extends AbstractCalendarDate
                 /* I18N: a month in the Jewish calendar */
                 7  => I18N::translateContext('INSTRUMENTAL', 'Adar'),
                 /* I18N: a month in the Jewish calendar */
-                -7 => I18N::translateContext('INSTRUMENTAL', 'Adar II'),
-                /* I18N: a month in the Jewish calendar */
                 8  => I18N::translateContext('INSTRUMENTAL', 'Nissan'),
                 /* I18N: a month in the Jewish calendar */
                 9  => I18N::translateContext('INSTRUMENTAL', 'Iyar'),
@@ -313,7 +308,8 @@ class JewishDate extends AbstractCalendarDate
         }
 
         if ($month === 7 && $leap_year) {
-            return $translated_month_names[-7];
+            /* I18N: a month in the Jewish calendar */
+            return I18N::translateContext('INSTRUMENTAL', 'Adar II');
         }
 
         return $translated_month_names[$month];
@@ -348,7 +344,7 @@ class JewishDate extends AbstractCalendarDate
 
         return [
             $this->year + ($this->month === 13 ? 1 : 0),
-            ($this->month % 13) + 1,
+            $this->month % 13 + 1,
         ];
     }
 }
