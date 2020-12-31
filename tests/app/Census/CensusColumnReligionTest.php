@@ -38,15 +38,10 @@ class CensusColumnReligionTest extends TestCase
     {
         $individual = self::createMock(Individual::class);
         $individual
-            ->expects(self::at(0))
+            ->expects(self::exactly(2))
             ->method('facts')
-            ->with(['RELI'])
-            ->willReturn(new Collection());
-        $individual
-            ->expects(self::at(1))
-            ->method('facts')
-            ->with()
-            ->willReturn(new Collection());
+            ->withConsecutive([['RELI']], [])
+            ->willReturnOnConsecutiveCalls(new Collection(), new Collection());
 
         $census = self::createMock(CensusInterface::class);
 
@@ -85,15 +80,16 @@ class CensusColumnReligionTest extends TestCase
         $fact       = self::createMock(Fact::class);
         $fact->method('attribute')->with('RELI')->willReturn('Jedi');
         $individual
-            ->expects(self::at(0))
+            ->expects(self::exactly(2))
             ->method('facts')
-            ->with(['RELI'])
-            ->willReturn(new Collection());
-        $individual
-            ->expects(self::at(1))
-            ->method('facts')
-            ->with()
-            ->willReturn(new Collection([$fact]));
+            ->withConsecutive(
+                [['RELI']],
+                []
+            )
+            ->willReturnOnConsecutiveCalls(
+                new Collection(),
+                new Collection([$fact])
+            );
 
         $census = self::createMock(CensusInterface::class);
 

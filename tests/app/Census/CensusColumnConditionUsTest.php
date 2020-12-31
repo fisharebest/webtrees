@@ -137,10 +137,17 @@ class CensusColumnConditionUsTest extends TestCase
         $spouse->method('getDeathDate')->willReturn(new Date('1820'));
 
         $family = self::createMock(Family::class);
-        $family->expects(self::at(0))->method('getMarriageDate')->willReturn(new Date(''));
-        $family->expects(self::at(1))->method('facts')->with(['MARR'])->willReturn(new Collection([$fact]));
-        $family->expects(self::at(2))->method('facts')->with(['DIV'])->willReturn(new Collection());
-        $family->expects(self::at(3))->method('spouse')->willReturn($spouse);
+        $family->expects(self::once())->method('getMarriageDate')->willReturn(new Date(''));
+        $family->expects(self::exactly(2))
+            ->method('facts')
+            ->withConsecutive(
+                [['MARR']],
+                [['DIV']])
+            ->willReturnOnConsecutiveCalls(
+                new Collection([$fact]),
+                new Collection()
+            );
+        $family->expects(self::once())->method('spouse')->willReturn($spouse);
 
         $individual = self::createMock(Individual::class);
         $individual->method('sex')->willReturn('M');
@@ -168,10 +175,19 @@ class CensusColumnConditionUsTest extends TestCase
         $spouse->method('getDeathDate')->willReturn(new Date('1820'));
 
         $family = self::createMock(Family::class);
-        $family->expects(self::at(0))->method('getMarriageDate')->willReturn(new Date(''));
-        $family->expects(self::at(1))->method('facts')->with(['MARR'])->willReturn(new Collection([$fact]));
-        $family->expects(self::at(2))->method('facts')->with(['DIV'])->willReturn(new Collection());
-        $family->expects(self::at(3))->method('spouse')->willReturn($spouse);
+        $family->expects(self::once())->method('getMarriageDate')->willReturn(new Date(''));
+        $family
+            ->expects(self::exactly(2))
+            ->method('facts')
+            ->withConsecutive(
+                [['MARR']],
+                [['DIV']]
+            )
+            ->willReturnOnConsecutiveCalls(
+                new Collection([$fact]),
+                new Collection()
+            );
+        $family->expects(self::once())->method('spouse')->willReturn($spouse);
 
         $individual = self::createMock(Individual::class);
         $individual->method('sex')->willReturn('F');
@@ -296,9 +312,17 @@ class CensusColumnConditionUsTest extends TestCase
         $fact = self::createMock(Fact::class);
 
         $family = self::createMock(Family::class);
-        $family->expects(self::at(0))->method('getMarriageDate')->willReturn(new Date(''));
-        $family->expects(self::at(1))->method('facts')->with(['MARR'])->willReturn(new Collection([$fact]));
-        $family->expects(self::at(2))->method('facts')->with(['DIV'])->willReturn(new Collection([$fact]));
+        $family->expects(self::once())->method('getMarriageDate')->willReturn(new Date(''));
+        $family
+            ->expects(self::exactly(2))
+            ->method('facts')
+            ->withConsecutive(
+                [['MARR']],
+                [['DIV']]
+            )->willReturnOnConsecutiveCalls(
+                new Collection([$fact]),
+                new Collection([$fact])
+            );
 
         $individual = self::createMock(Individual::class);
         $individual->method('sex')->willReturn('M');
@@ -323,9 +347,17 @@ class CensusColumnConditionUsTest extends TestCase
         $fact = self::createMock(Fact::class);
 
         $family = self::createMock(Family::class);
-        $family->expects(self::at(0))->method('getMarriageDate')->willReturn(new Date(''));
-        $family->expects(self::at(1))->method('facts')->with(['MARR'])->willReturn(new Collection([$fact]));
-        $family->expects(self::at(2))->method('facts')->with(['DIV'])->willReturn(new Collection([$fact]));
+        $family->expects(self::once())->method('getMarriageDate')->willReturn(new Date(''));
+        $family
+            ->expects(self::exactly(2))
+            ->method('facts')
+            ->withConsecutive(
+                [['MARR']],
+                [['DIV']]
+            )->willReturnOnConsecutiveCalls(
+                new Collection([$fact]),
+                new Collection([$fact])
+            );
 
         $individual = self::createMock(Individual::class);
         $individual->method('sex')->willReturn('F');

@@ -45,10 +45,14 @@ class AccountUpdateTest extends TestCase
         $user->expects(self::once())->method('setPassword')->with('e');
         $user->expects(self::once())->method('setRealName')->with('d');
         $user->expects(self::once())->method('setUserName')->with('h');
-        $user->expects(self::at(6))->method('setPreference')->with(User::PREF_CONTACT_METHOD, 'a');
-        $user->expects(self::at(7))->method('setPreference')->with(User::PREF_LANGUAGE, 'c');
-        $user->expects(self::at(8))->method('setPreference')->with(User::PREF_TIME_ZONE, 'g');
-        $user->expects(self::at(9))->method('setPreference')->with(User::PREF_IS_VISIBLE_ONLINE, 'i');
+        $user->expects(self::exactly(4))
+            ->method('setPreference')
+            ->withConsecutive(
+                [User::PREF_CONTACT_METHOD, 'a'],
+                [User::PREF_LANGUAGE, 'c'],
+                [User::PREF_TIME_ZONE, 'g'],
+                [User::PREF_IS_VISIBLE_ONLINE, 'i']
+            );
 
         $tree = self::createMock(Tree::class);
         $tree->expects(self::once())->method('setUserPreference')->with($user, User::PREF_TREE_DEFAULT_XREF, 'f');
