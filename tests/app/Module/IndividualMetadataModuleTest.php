@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class ExtraInformationModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\ExtraInformationModule
  */
 class ExtraInformationModuleTest extends TestCase
 {
