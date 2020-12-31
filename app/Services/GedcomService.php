@@ -159,7 +159,7 @@ class GedcomService
     ];
 
     // LATI and LONG tags
-    private const DEGREE_FORMAT  = ' % .5f%s';
+    public const PRECISION       = 5; // 5 decimal places locate to within about 1 metre
     private const LATITUDE_NORTH = 'N';
     private const LATITUDE_SOUTH = 'S';
     private const LONGITUDE_EAST = 'E';
@@ -203,9 +203,9 @@ class GedcomService
     /**
      * @param string $text
      *
-     * @return float
+     * @return float|null
      */
-    public function readLatitude(string $text): float
+    public function readLatitude(string $text)
     {
         return $this->readDegrees($text, self::LATITUDE_NORTH, self::LATITUDE_SOUTH);
     }
@@ -213,9 +213,9 @@ class GedcomService
     /**
      * @param string $text
      *
-     * @return float
+     * @return float|null
      */
-    public function readLongitude(string $text): float
+    public function readLongitude(string $text)
     {
         return $this->readDegrees($text, self::LONGITUDE_EAST, self::LONGITUDE_WEST);
     }
@@ -225,9 +225,9 @@ class GedcomService
      * @param string $positive
      * @param string $negative
      *
-     * @return float
+     * @return float|null
      */
-    private function readDegrees(string $text, string $positive, string $negative): float
+    private function readDegrees(string $text, string $positive, string $negative)
     {
         $text       = trim($text);
         $hemisphere = substr($text, 0, 1);
@@ -253,7 +253,7 @@ class GedcomService
         }
 
         // Can't match anything.
-        return 0.0;
+        return null;
     }
 
     /**
@@ -285,11 +285,9 @@ class GedcomService
      */
     private function writeDegrees(float $degrees, string $positive, string $negative): string
     {
-        if ($degrees < 0.0) {
-            return sprintf(self::DEGREE_FORMAT, $degrees, $negative);
-        }
+        $tmp = round($degrees, self::PRECISION);
 
-        return sprintf(self::DEGREE_FORMAT, $degrees, $positive);
+        return ($tmp < 0 ? $negative : $positive) . (string) abs($tmp);
     }
 
     /**

@@ -3,6 +3,7 @@
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Services\GedcomService;
 use Fisharebest\Webtrees\View;
 
 /**
@@ -15,6 +16,7 @@ use Fisharebest\Webtrees\View;
  * @var PlaceLocation        $parent
  * @var mixed                $provider
  * @var string               $title
+ * @val integer              $level
  */
 
 ?>
@@ -98,9 +100,9 @@ use Fisharebest\Webtrees\View;
     window.WT_OSM_ADMIN = (function () {
         const minZoom = 2;
 
-        let provider = <?= json_encode($provider) ?>;
+        const provider  = <?= json_encode($provider) ?>;
+        const add_place = <?= json_encode($location->id() === 0) ?>;
         let map = null;
-        let add_place = <?= json_encode($location->id() === 0) ?>;
 
         // map components
 
@@ -114,8 +116,8 @@ use Fisharebest\Webtrees\View;
             .on('dragend', function () {
                 let coords = marker.getLatLng();
                 map.panTo(coords);
-                $('#new_place_lati').val(Number(coords.lat).toFixed(5));
-                $('#new_place_long').val(Number(coords.lng).toFixed(5));
+                $('#new_place_lati').val(Number(coords.lat).toFixed(<?= json_encode(GedcomService::PRECISION) ?>));
+                $('#new_place_long').val(Number(coords.lng).toFixed(<?= json_encode(GedcomService::PRECISION) ?>));
                 $('#new_zoom_factor').val(Number(map.getZoom()));
             });
 
@@ -169,9 +171,11 @@ use Fisharebest\Webtrees\View;
                 if (add_place) {
                     $('#new_place_name').val(place.shift());
                 }
-                $('#new_place_lati').val(Number(coords.lat).toFixed(5));
-                $('#new_place_long').val(Number(coords.lng).toFixed(5));
+                $('#new_place_lati').val(Number(coords.lat).toFixed(<?= json_encode(GedcomService::PRECISION) ?>));
+                $('#new_place_long').val(Number(coords.lng).toFixed(<?= json_encode(GedcomService::PRECISION) ?>));
                 $('#new_zoom_factor').val(Number(map.getZoom()));
+                validate_place();
+                validate_latlng();
             });
 
         /**
@@ -190,6 +194,41 @@ use Fisharebest\Webtrees\View;
                 map.panTo([lat, lng]);
             });
         });
+
+        /**
+         *
+         * Validate the fields
+         */
+        const level        = <?= json_encode($level) ?>;
+        const place_input  = document.getElementById("new_place_name");
+        const lat_input    = document.getElementById("new_place_lati");
+        const lng_input    = document.getElementById("new_place_long");
+        const place_error  = "<?= I18N::translate('Location [0,0] cannot have a subordinate place') ?>";
+        const latlng_error = "<?= I18N::translate('Location [0,0] cannot be subordinate to another place') ?>";
+        const parent_lat   = <?= json_encode($parent->latitude()) ?>;
+        const parent_lng   = <?= json_encode($parent->longitude()) ?>;
+
+        /**
+         *
+         * Place field
+         */
+        let validate_place = function() {
+          let invalid = level > 0 && parent_lat === 0.0 && parent_lng === 0.0;
+          place_input.setCustomValidity((invalid ? place_error : ''));
+        };
+        place_input.addEventListener('input', validate_place);
+
+        /**
+         *
+         * Combined latitude & longitude fields
+         */
+        let validate_latlng = function() {
+          let invalid = level > 0 && parseFloat(lat_input.value) === 0.0 && parseFloat(lng_input.value) === 0.0;
+          lat_input.setCustomValidity((invalid ? latlng_error : ''));
+          lng_input.setCustomValidity((invalid ? latlng_error : ''));
+        };
+        lat_input.addEventListener('input', validate_latlng);
+        lng_input.addEventListener('input', validate_latlng);
 
         // Create the map with all controls and layers
         map = L.map('osm-map', {

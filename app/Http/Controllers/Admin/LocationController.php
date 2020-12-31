@@ -37,9 +37,7 @@ use Psr\Http\Message\UploadedFileInterface;
 use RuntimeException;
 use stdClass;
 
-use function abs;
 use function addcslashes;
-use function array_combine;
 use function array_filter;
 use function array_merge;
 use function array_pad;
@@ -59,7 +57,6 @@ use function preg_replace;
 use function redirect;
 use function response;
 use function rewind;
-use function round;
 use function route;
 use function str_replace;
 use function stream_get_contents;
@@ -75,6 +72,9 @@ class LocationController extends AbstractAdminController
 {
     // Location of files to import
     private const PLACES_FOLDER = 'places/';
+
+    //Used when exporting csv file
+    private const FIELD_DELIMITER = ';';
 
     /** @var GedcomService */
     private $gedcom_service;
@@ -146,6 +146,12 @@ class LocationController extends AbstractAdminController
                 $hierarchy = $this->getHierarchy($parent_id);
                 $tmp       = new PlaceLocation($hierarchy[0]->fqpn);
                 $title     = e($tmp->locationName());
+
+                if ($tmp->latitude() === 0.0 && $tmp->longitude() === 0.0) {
+                    FlashMessages::addMessage(I18N::translate('%s (coordinates [0,0]) cannot have a subordinate place', $title), 'warning');
+
+                    return redirect(route(MapDataList::class, ['parent_id' => 0]));
+                }
             }
         }
 
@@ -161,8 +167,8 @@ class LocationController extends AbstractAdminController
         if ($place_id === 0) {
             $title .= ' — ' . I18N::translate('Add');
             $breadcrumbs[] = I18N::translate('Add');
-            $latitude      = 0.0;
-            $longitude     = 0.0;
+            $latitude      = null;
+            $longitude     = null;
             $map_bounds    = $parent->boundingRectangle();
         } else {
             $title .= ' — ' . I18N::translate('Edit');
@@ -174,10 +180,7 @@ class LocationController extends AbstractAdminController
 
         // If the current co-ordinates are unknown, leave the input fields empty,
         // and show a marker in the middle of the map.
-        if ($latitude === 0.0 && $longitude === 0.0) {
-            $latitude  = '';
-            $longitude = '';
-
+        if ($latitude === null || $longitude === null) {
             $marker_position = [
                 ($map_bounds[0][0] + $map_bounds[1][0]) / 2.0,
                 ($map_bounds[0][1] + $map_bounds[1][1]) / 2.0,
@@ -195,6 +198,7 @@ class LocationController extends AbstractAdminController
             'map_bounds'      => $map_bounds,
             'marker_position' => $marker_position,
             'parent'          => $parent,
+            'level'           => $parent_id,
             'provider'        => [
                 'url'     => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                 'options' => [
@@ -216,48 +220,49 @@ class LocationController extends AbstractAdminController
 
         $parent_id = (int) $request->getQueryParams()['parent_id'];
         $place_id  = (int) $request->getQueryParams()['place_id'];
-        $lat       = round((float) $params['new_place_lati'], 5); // 5 decimal places (locate to within about 1 metre)
-        $lat       = ($lat < 0 ? 'S' : 'N') . abs($lat);
-        $lng       = round((float) $params['new_place_long'], 5);
-        $lng       = ($lng < 0 ? 'W' : 'E') . abs($lng);
+        $lat       = $this->gedcom_service->writeLatitude((float) $params['new_place_lati']);
+        $lng       = $this->gedcom_service->writeLongitude((float) $params['new_place_long']);
         $hierarchy = $this->getHierarchy($parent_id);
         $level     = count($hierarchy);
-        $icon      = $params['icon'];
+        $icon      = $params['icon'] ?: null;
         $zoom      = (int) $params['new_zoom_factor'];
 
-        if ($place_id === 0) {
-            $place_id = 1 + (int) DB::table('placelocation')->max('pl_id');
-
-            DB::table('placelocation')->insert([
-                'pl_id'        => $place_id,
-                'pl_parent_id' => $parent_id,
-                'pl_level'     => $level,
-                'pl_place'     => mb_substr($params['new_place_name'], 0, 120),
-                'pl_lati'      => $lat,
-                'pl_long'      => $lng,
-                'pl_zoom'      => $zoom,
-                'pl_icon'      => $icon,
-            ]);
+        if ($parent_id > 0 && $lat === 'N0' && $lng === 'E0') {
+            FlashMessages::addMessage(I18N::translate('Location [0,0] cannot be subordinate to another place'), 'warning');
         } else {
-            DB::table('placelocation')
-                ->where('pl_id', '=', $place_id)
-                ->update([
-                    'pl_place' => mb_substr($params['new_place_name'], 0, 120),
-                    'pl_lati'  => $lat,
-                    'pl_long'  => $lng,
-                    'pl_zoom'  => $zoom,
-                    'pl_icon'  => $icon,
+            if ($place_id === 0) {
+                $place_id = 1 + (int) DB::table('placelocation')->max('pl_id');
+
+                DB::table('placelocation')->insert([
+                    'pl_id'        => $place_id,
+                    'pl_parent_id' => $parent_id,
+                    'pl_level'     => $level,
+                    'pl_place'     => mb_substr($params['new_place_name'], 0, 120),
+                    'pl_lati'      => $lat,
+                    'pl_long'      => $lng,
+                    'pl_zoom'      => $zoom,
+                    'pl_icon'      => $icon,
                 ]);
+            } else {
+                DB::table('placelocation')
+                ->where('pl_id', '=', $place_id)
+                    ->update([
+                        'pl_place' => mb_substr($params['new_place_name'], 0, 120),
+                        'pl_lati'  => $lat,
+                        'pl_long'  => $lng,
+                        'pl_zoom'  => $zoom,
+                        'pl_icon'  => $icon,
+                    ]);
+            }
+
+            FlashMessages::addMessage(
+                I18N::translate(
+                    'The details for “%s” have been updated.',
+                    e($params['new_place_name'])
+                ),
+                'success'
+            );
         }
-
-        FlashMessages::addMessage(
-            I18N::translate(
-                'The details for “%s” have been updated.',
-                e($params['new_place_name'])
-            ),
-            'success'
-        );
-
         $url = route(MapDataList::class, ['parent_id' => $parent_id]);
 
         return redirect($url);
@@ -278,7 +283,7 @@ class LocationController extends AbstractAdminController
         // $hierarchy[0] always holds the full placename
         $place_name = $hierarchy === [] ? 'Global' : $hierarchy[0]->fqpn;
         $place_name = str_replace(Gedcom::PLACE_SEPARATOR, '-', $place_name);
-        $filename   = 'Places-' . preg_replace('/[^a-zA-Z0-9.-]/', '', $place_name);
+        $filename   = addcslashes('Places-' . preg_replace('/[^a-zA-Z0-9.-]/', '', $place_name), '"');
 
         // Fill in the place names for the starting conditions
         $startfqpn = [];
@@ -290,42 +295,11 @@ class LocationController extends AbstractAdminController
         $places = [];
         $this->buildExport($parent_id, $startfqpn, $places);
 
-        // Pad all locations to the length of the longest.
-        $max_level = 0;
-        foreach ($places as $place) {
-            $max_level = max($max_level, count($place->fqpn));
-        }
-
-        $places = array_map(static function (stdClass $place) use ($max_level): array {
-            return array_merge(
-                [count($place->fqpn) - 1],
-                array_pad($place->fqpn, $max_level, ''),
-                [$place->pl_long],
-                [$place->pl_lati],
-                [$place->pl_zoom],
-                [$place->pl_icon]
-            );
-        }, $places);
-
         if ($format === 'csv') {
-            // Create the header line for the output file (always English)
-            $header = [
-                'Level',
-            ];
-
-            for ($i = 0; $i < $max_level; $i++) {
-                $header[] = 'Place' . $i;
-            }
-
-            $header[] = 'Longitude';
-            $header[] = 'Latitude';
-            $header[] = 'Zoom';
-            $header[] = 'Icon';
-
-            return $this->exportCSV($filename . '.csv', $header, $places);
+            return $this->exportCSV($filename . '.csv', $places);
         }
 
-        return $this->exportGeoJSON($filename . '.geojson', $places, $max_level);
+        return $this->exportGeoJSON($filename . '.geojson', $places);
     }
 
     /**
@@ -338,40 +312,33 @@ class LocationController extends AbstractAdminController
      */
     private function buildExport(int $parent_id, array $fqpn, array &$places): void
     {
-        // Current number of levels.
-        $level = count($fqpn);
-
         // Data for the next level.
         $rows = DB::table('placelocation')
             ->where('pl_parent_id', '=', $parent_id)
+            ->whereNotNull('pl_lati')
+            ->whereNotNull('pl_long')
             ->orderBy(new Expression('pl_place /*! COLLATE ' . I18N::collation() . ' */'))
-            ->get();
+            ->get()
+            ->map(static function (stdClass $x) use ($fqpn) {
+                $x->fqpn    = array_merge($fqpn, [$x->pl_place]);
+                $x->pl_zoom = (int) $x->pl_zoom;
+
+                return $x;
+            });
 
         foreach ($rows as $row) {
-            $fqpn[$level] = $row->pl_place;
-
-            $row->fqpn    = $fqpn;
-            $row->pl_long = $row->pl_long ?? 'E0';
-            $row->pl_lati = $row->pl_lati ?? 'N0';
-            $row->pl_zoom = (int) $row->pl_zoom;
-            $row->pl_icon = (string) $row->pl_icon;
-
-            if ($row->pl_long !== 'E0' || $row->pl_lati !== 'N0') {
-                $places[] = $row;
-            }
-
-            $this->buildExport((int) $row->pl_id, $fqpn, $places);
+            $places[] = $row;
+            $this->buildExport((int) $row->pl_id, $row->fqpn, $places);
         }
     }
 
     /**
      * @param string     $filename
-     * @param string[]   $columns
      * @param string[][] $places
      *
      * @return ResponseInterface
      */
-    private function exportCSV(string $filename, array $columns, array $places): ResponseInterface
+    private function exportCSV(string $filename, array $places): ResponseInterface
     {
         $resource = fopen('php://temp', 'wb+');
 
@@ -379,15 +346,42 @@ class LocationController extends AbstractAdminController
             throw new RuntimeException('Failed to create temporary stream');
         }
 
-        fputcsv($resource, $columns, ';');
+        $max_level = array_reduce($places, function ($carry, $item) {
+            return max($carry, count($item->fqpn));
+        });
+
+        $places = array_map(static function (stdClass $place) use ($max_level): array {
+            return array_merge(
+                [count($place->fqpn) - 1],
+                array_pad($place->fqpn, $max_level, ''),
+                [$place->pl_long],
+                [$place->pl_lati],
+                [$place->pl_zoom],
+                [$place->pl_icon]
+            );
+        }, $places);
+
+        // Create the header line for the output file (always English)
+        $header = [
+            'Level',
+        ];
+
+        for ($i = 0; $i < $max_level; $i++) {
+            $header[] = 'Place' . $i;
+        }
+
+        $header[] = 'Longitude';
+        $header[] = 'Latitude';
+        $header[] = 'Zoom';
+        $header[] = 'Icon';
+
+        fputcsv($resource, $header, self::FIELD_DELIMITER);
 
         foreach ($places as $place) {
-            fputcsv($resource, $place, ';');
+            fputcsv($resource, $place, self::FIELD_DELIMITER);
         }
 
         rewind($resource);
-
-        $filename = addcslashes($filename, '"');
 
         return response(stream_get_contents($resource))
             ->withHeader('Content-Type', 'text/csv; charset=utf-8')
@@ -397,42 +391,30 @@ class LocationController extends AbstractAdminController
     /**
      * @param string $filename
      * @param array  $rows
-     * @param int    $maxlevel
      *
      * @return ResponseInterface
      */
-    private function exportGeoJSON(string $filename, array $rows, int $maxlevel): ResponseInterface
+    private function exportGeoJSON(string $filename, array $rows): ResponseInterface
     {
         $geojson = [
             'type'     => 'FeatureCollection',
             'features' => [],
         ];
         foreach ($rows as $place) {
-            $fqpn = implode(
-                Gedcom::PLACE_SEPARATOR,
-                array_reverse(
-                    array_filter(
-                        array_slice($place, 1, $maxlevel)
-                    )
-                )
-            );
-
             $geojson['features'][] = [
                 'type'       => 'Feature',
                 'geometry'   => [
                     'type'        => 'Point',
                     'coordinates' => [
-                        $this->gedcom_service->readLongitude($place[$maxlevel + 1]),
-                        $this->gedcom_service->readLatitude($place[$maxlevel + 2]),
+                        $this->gedcom_service->readLongitude($place->pl_long),
+                        $this->gedcom_service->readLatitude($place->pl_lati),
                     ],
                 ],
                 'properties' => [
-                    'name' => $fqpn,
+                    'name' => implode(GEDCOM::PLACE_SEPARATOR, array_reverse($place->fqpn)),
                 ],
             ];
         }
-
-        $filename = addcslashes($filename, '"');
 
         return response($geojson)
             ->withHeader('Content-Type', 'application/vnd.geo+json')
@@ -485,23 +467,12 @@ class LocationController extends AbstractAdminController
         $data_filesystem = Registry::filesystem()->data();
 
         $params = (array) $request->getParsedBody();
+        $url    = route(MapDataList::class, ['parent_id' => 0]);
 
         $serverfile     = $params['serverfile'] ?? '';
         $options        = $params['import-options'] ?? '';
         $clear_database = (bool) ($params['cleardatabase'] ?? false);
         $local_file     = $request->getUploadedFiles()['localfile'] ?? null;
-
-        $places      = [];
-        $field_names = [
-            'pl_level',
-            'pl_long',
-            'pl_lati',
-            'pl_zoom',
-            'pl_icon',
-            'fqpn',
-        ];
-
-        $url = route(MapDataList::class, ['parent_id' => 0]);
 
         $fp = false;
 
@@ -519,23 +490,25 @@ class LocationController extends AbstractAdminController
 
         $string = stream_get_contents($fp);
 
+        $places = [];
+
         // Check the file type
         if (stripos($string, 'FeatureCollection') !== false) {
             $input_array = json_decode($string, false);
 
             foreach ($input_array->features as $feature) {
-                $places[] = array_combine($field_names, [
-                    $feature->properties->level ?? substr_count($feature->properties->name, ','),
-                    $this->gedcom_service->writeLongitude($feature->geometry->coordinates[0]),
-                    $this->gedcom_service->writeLatitude($feature->geometry->coordinates[1]),
-                    $feature->properties->zoom ?? null,
-                    $feature->properties->icon ?? null,
-                    $feature->properties->name,
-                ]);
+                $places[] = [
+                    'pl_level' => $feature->properties->level ?? substr_count($feature->properties->name, ','),
+                    'pl_long'  => $feature->geometry->coordinates[0],
+                    'pl_lati'  => $feature->geometry->coordinates[1],
+                    'pl_zoom'  => $feature->properties->zoom ?? null,
+                    'pl_icon'  => $feature->properties->icon ?? null,
+                    'fqpn'     => $feature->properties->name,
+                ];
             }
         } else {
             rewind($fp);
-            while (($row = fgetcsv($fp, 0, ';')) !== false) {
+            while (($row = fgetcsv($fp, 0, self::FIELD_DELIMITER)) !== false) {
                 // Skip the header
                 if (!is_numeric($row[0])) {
                     continue;
@@ -549,8 +522,8 @@ class LocationController extends AbstractAdminController
 
                 $places[] = [
                     'pl_level' => $level,
-                    'pl_long'  => $row[$count - 4],
-                    'pl_lati'  => $row[$count - 3],
+                    'pl_long'  => (float) strtr($row[$count - 4], ['E' => '', 'W' => '-', ',' => '.']),
+                    'pl_lati'  => (float) strtr($row[$count - 3], ['N' => '', 'S' => '-', ',' => '.']),
                     'pl_zoom'  => $row[$count - 2],
                     'pl_icon'  => $row[$count - 1],
                     'fqpn'     => $fqdn,
@@ -566,6 +539,11 @@ class LocationController extends AbstractAdminController
 
         $added   = 0;
         $updated = 0;
+
+        // Remove places with invalid coordinates
+        $places = array_filter($places, function ($item) {
+            return $item['pl_level'] === 0 || $item['pl_long'] !== 0.0 || $item['pl_lati'] !== 0.0;
+        });
 
         foreach ($places as $place) {
             $location = new PlaceLocation($place['fqpn']);
@@ -583,13 +561,15 @@ class LocationController extends AbstractAdminController
 
             if (!$exists) {
                 $added++;
+            } else {
+                $updated++;
             }
 
-            $updated += DB::table('placelocation')
+            DB::table('placelocation')
                 ->where('pl_id', '=', $location->id())
                 ->update([
-                    'pl_lati' => $place['pl_lati'],
-                    'pl_long' => $place['pl_long'],
+                    'pl_lati' => $this->gedcom_service->writeLatitude($place['pl_lati']),
+                    'pl_long' => $this->gedcom_service->writeLongitude($place['pl_long']),
                     'pl_zoom' => $place['pl_zoom'] ?: null,
                     'pl_icon' => $place['pl_icon'] ?: null,
                 ]);

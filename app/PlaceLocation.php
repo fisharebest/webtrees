@@ -93,10 +93,6 @@ class PlaceLocation
                     'pl_place'     => mb_substr($location, 0, 120),
                     'pl_parent_id' => $parent_location_id,
                     'pl_level'     => $this->parts->count() - 1,
-                    'pl_lati'      => '',
-                    'pl_long'      => '',
-                    'pl_icon'      => '',
-                    'pl_zoom'      => 2,
                 ]);
             }
 
@@ -156,9 +152,9 @@ class PlaceLocation
     /**
      * Latitude of the location.
      *
-     * @return float
+     * @return float|null
      */
-    public function latitude(): float
+    public function latitude()
     {
         $gedcom_service = new GedcomService();
         $pl_lati        = (string) $this->details()->pl_lati;
@@ -169,9 +165,9 @@ class PlaceLocation
     /**
      * Longitude of the location.
      *
-     * @return float
+     * @return float|null
      */
-    public function longitude(): float
+    public function longitude()
     {
         $gedcom_service = new GedcomService();
         $pl_long        = (string) $this->details()->pl_long;
@@ -220,27 +216,31 @@ class PlaceLocation
 
         // Find our own co-ordinates and those of any child places
         $latitudes = DB::table('placelocation')
-            ->where('pl_parent_id', '=', $this->id())
-            ->orWhere('pl_id', '=', $this->id())
+            ->whereNotNull('pl_lati')
+            ->where(function ($qry) {
+                $qry->where('pl_parent_id', '=', $this->id())
+                    ->orWhere('pl_id', '=', $this->id());
+            })
             ->groupBy(['pl_lati'])
             ->pluck('pl_lati')
-            ->filter()
-            ->map(static function (string $x): float {
+            ->map(static function (string $x) {
                 return (new GedcomService())->readLatitude($x);
             });
 
         $longitudes = DB::table('placelocation')
-            ->where('pl_parent_id', '=', $this->id())
-            ->orWhere('pl_id', '=', $this->id())
+            ->whereNotNull('pl_long')
+            ->where(function ($qry) {
+                $qry->where('pl_parent_id', '=', $this->id())
+                    ->orWhere('pl_id', '=', $this->id());
+            })
             ->groupBy(['pl_long'])
             ->pluck('pl_long')
-            ->filter()
-            ->map(static function (string $x): float {
+            ->map(static function (string $x) {
                 return (new GedcomService())->readLongitude($x);
             });
 
         // No co-ordinates?  Use the parent place instead.
-        if ($latitudes->isEmpty() && $longitudes->isEmpty()) {
+        if ($latitudes->isEmpty() || $longitudes->isEmpty()) {
             return $this->parent()->boundingRectangle();
         }
 

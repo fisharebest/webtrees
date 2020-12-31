@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Services\GedcomService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -353,7 +354,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
                 $flag = '';
             }
 
-            if ($location->latitude() === 0.0 && $location->longitude() === 0.0) {
+            if ($location->latitude() === null || $location->longitude() === null) {
                 $sidebar_class = 'unmapped';
             } else {
                 $sidebar_class = 'mapped';

@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Services\GedcomService;
 use Fisharebest\Webtrees\Site;
 use Illuminate\Support\Collection;
 use stdClass;
@@ -167,12 +168,12 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
             $longitude = $fact->longitude();
 
             // Use the co-ordinates from the location otherwise.
-            if ($latitude === 0.0 && $longitude === 0.0) {
+            if ($latitude === null || $longitude === null) {
                 $latitude  = $location->latitude();
                 $longitude = $location->longitude();
             }
 
-            if ($latitude !== 0.0 || $longitude !== 0.0) {
+            if ($latitude !== null && $longitude !== null) {
                 $geojson['features'][] = [
                     'type'       => 'Feature',
                     'id'         => $id,

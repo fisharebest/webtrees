@@ -491,7 +491,7 @@ class FunctionsImport
 
         $location = new PlaceLocation($place_name);
 
-        if ($location->latitude() === 0.0 && $location->longitude() === 0.0) {
+        if ($location->latitude() === null || $location->longitude() === null) {
             DB::table('placelocation')
                 ->where('pl_id', '=', $location->id())
                 ->update([
@@ -528,7 +528,7 @@ class FunctionsImport
 
         $location = new PlaceLocation($place_name);
 
-        if ($location->latitude() === 0.0 && $location->longitude() === 0.0) {
+        if ($location->latitude() === null || $location->longitude() === null) {
             DB::table('placelocation')
                 ->where('pl_id', '=', $location->id())
                 ->update([

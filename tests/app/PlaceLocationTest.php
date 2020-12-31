@@ -17,26 +17,22 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Schema;
-
-use Illuminate\Database\Capsule\Manager as DB;
+namespace Fisharebest\Webtrees;
 
 /**
- * Upgrade the database schema from version 44 to version 45.
+ * Test harness for the class PlaceLocation
+ *
+ * @covers \Fisharebest\Webtrees\PlaceLocation
  */
-class Migration44 implements MigrationInterface
+class PlaceLocationTest extends TestCase
 {
     /**
-     * Upgrade to the next version
+     * Test that the class exists
      *
      * @return void
      */
-    public function upgrade(): void
+    public function testClassExists(): void
     {
-        DB::table('placelocation')
-            ->where('pl_lati', '=', 'N0')
-            ->where('pl_long', '=', 'E0')
-            ->where('pl_level', '>', 0)
-            ->update(['pl_lati' => null, 'pl_long' => null, 'pl_zoom' => null]);
+        self::assertTrue(class_exists(PlaceLocation::class));
     }
 }

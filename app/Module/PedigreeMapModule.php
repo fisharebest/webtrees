@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
+use Fisharebest\Webtrees\Services\GedcomService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -268,12 +269,12 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
             $longitude = $fact->longitude();
 
             // Use the co-ordinates from the location otherwise.
-            if ($latitude === 0.0 && $longitude === 0.0) {
+            if ($latitude === null || $longitude === null) {
                 $latitude  = $location->latitude();
                 $longitude = $location->longitude();
             }
 
-            if ($latitude !== 0.0 || $longitude !== 0.0) {
+            if ($latitude !== null && $longitude !== null) {
                 $polyline           = null;
                 $sosa_points[$sosa] = [$latitude, $longitude];
                 $sosa_child         = intdiv($sosa, 2);
