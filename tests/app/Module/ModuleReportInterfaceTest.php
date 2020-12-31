@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class ModuleReportInterface
+ *
+ * @covers \Fisharebest\Webtrees\Module\ModuleReportInterface
  */
 class ModuleReportInterfaceTest extends TestCase
 {

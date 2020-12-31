@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class StatisticsChartModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\StatisticsChartModule
  */
 class StatisticsChartModuleTest extends TestCase
 {

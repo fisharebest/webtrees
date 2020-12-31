@@ -23,6 +23,9 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class GregorianDate
+ *
+ * @covers \Fisharebest\Webtrees\Date\AbstractGregorianJulianDate
+ * @covers \Fisharebest\Webtrees\Date\GregorianDate
  */
 class GregorianDateTest extends TestCase
 {

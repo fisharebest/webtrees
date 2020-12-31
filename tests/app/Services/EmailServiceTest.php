@@ -23,8 +23,10 @@ use Fisharebest\Webtrees\Services\EmailService;
 
 /**
  * Test harness for the class MailService
+ *
+ * @covers \Fisharebest\Webtrees\Services\EmailService
  */
-class MailServiceTest extends TestCase
+class EmailServiceTest extends TestCase
 {
     /**
      * Test that the class exists

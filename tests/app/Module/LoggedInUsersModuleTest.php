@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class LoggedInUsersModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\LoggedInUsersModule
  */
 class LoggedInUsersModuleTest extends TestCase
 {

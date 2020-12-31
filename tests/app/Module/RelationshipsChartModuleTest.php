@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class RelationshipsChartModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\RelationshipsChartModule
  */
 class RelationshipsChartModuleTest extends TestCase
 {

@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees;
 
 /**
  * Test harness for the class Fact
+ *
+ * @covers \Fisharebest\Webtrees\Fact
  */
 class FactTest extends TestCase
 {

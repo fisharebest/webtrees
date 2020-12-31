@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class ModuleChartInterface
+ *
+ * @covers \Fisharebest\Webtrees\Module\ModuleChartInterface
  */
 class ModuleChartInterfaceTest extends TestCase
 {

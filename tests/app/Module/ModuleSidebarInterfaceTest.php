@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class ModuleSidebarInterface
+ *
+ * @covers \Fisharebest\Webtrees\Module\ModuleSidebarInterface
  */
 class ModuleSidebarInterfaceTest extends TestCase
 {

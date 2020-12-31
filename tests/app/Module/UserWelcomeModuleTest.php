@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class UserWelcomeModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\UserWelcomeModule
  */
 class UserWelcomeModuleTest extends TestCase
 {

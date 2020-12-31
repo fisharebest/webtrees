@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class RelativesTabModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\RelativesTabModule
  */
 class RelativesTabModuleTest extends TestCase
 {

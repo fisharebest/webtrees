@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class FanChartModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\FanChartModule
  */
 class FanChartModuleTest extends TestCase
 {

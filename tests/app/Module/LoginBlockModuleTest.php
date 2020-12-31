@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class LoginBlockModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\LoginBlockModule
  */
 class LoginBlockModuleTest extends TestCase
 {

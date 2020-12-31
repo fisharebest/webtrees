@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class InteractiveTreeModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\InteractiveTreeModule
  */
 class InteractiveTreeModuleTest extends TestCase
 {

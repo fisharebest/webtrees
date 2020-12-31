@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class SiteMapModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\SiteMapModule
  */
 class SiteMapModuleTest extends TestCase
 {

@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class FamilyTreeNewsModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\FamilyTreeNewsModule
  */
 class FamilyTreeNewsModuleTest extends TestCase
 {

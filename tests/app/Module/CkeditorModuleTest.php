@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class CkeditorModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\CkeditorModule
  */
 class CkeditorModuleTest extends TestCase
 {

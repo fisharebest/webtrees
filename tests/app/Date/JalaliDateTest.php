@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class JalaliDate
+ *
+ * @covers \Fisharebest\Webtrees\Date\JalaliDate
  */
 class JalaliDateTest extends TestCase
 {

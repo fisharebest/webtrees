@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class ReviewChangesModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\ReviewChangesModule
  */
 class ReviewChangesModuleTest extends TestCase
 {

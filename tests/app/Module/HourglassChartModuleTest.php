@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class HourglassChartModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\HourglassChartModule
  */
 class HourglassChartModuleTest extends TestCase
 {

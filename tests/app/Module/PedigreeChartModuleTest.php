@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class PedigreeChartModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\PedigreeChartModule
  */
 class PedigreeChartModuleTest extends TestCase
 {

@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class GedcomCodeTemp
+ *
+ * @covers \Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp
  */
 class GedcomCodeTempTest extends TestCase
 {

@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class TimelineChartModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\TimelineChartModule
  */
 class TimelineChartModuleTest extends TestCase
 {

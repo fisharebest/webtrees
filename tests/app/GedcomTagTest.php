@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees;
 
 /**
  * Test harness for the class GedcomTag
+ *
+ * @covers \Fisharebest\Webtrees\GedcomTag
  */
 class GedcomTagTest extends TestCase
 {

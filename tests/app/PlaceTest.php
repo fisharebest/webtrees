@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees;
 
 /**
  * Test harness for the class Place
+ *
+ * @covers \Fisharebest\Webtrees\Place
  */
 class PlaceTest extends TestCase
 {

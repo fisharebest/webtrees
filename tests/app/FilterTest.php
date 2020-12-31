@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees;
 
 /**
  * Test harness for the class Filter
+ *
+ * @covers \Fisharebest\Webtrees\Filter
  */
 class FilterTest extends TestCase
 {

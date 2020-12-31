@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class OnThisDayModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\OnThisDayModule
  */
 class OnThisDayModuleTest extends TestCase
 {

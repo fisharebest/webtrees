@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees;
 
 /**
  * Test harness for the class Log
+ *
+ * @covers \Fisharebest\Webtrees\Log
  */
 class LogTest extends TestCase
 {

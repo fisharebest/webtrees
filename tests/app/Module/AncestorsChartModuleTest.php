@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class AncestorsChartModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\AncestorsChartModule
  */
 class AncestorsChartModuleTest extends TestCase
 {

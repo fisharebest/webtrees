@@ -22,11 +22,11 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ExtraInformationModule
+ * Test harness for the class IndividualMetadataModule
  *
- * @covers \Fisharebest\Webtrees\Module\ExtraInformationModule
+ * @covers \Fisharebest\Webtrees\Module\IndividualMetadataModule
  */
-class ExtraInformationModuleTest extends TestCase
+class IndividualMetadataModuleTest extends TestCase
 {
     /**
      * Test that the class exists

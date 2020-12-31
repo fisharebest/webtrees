@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class JewishDate
+ *
+ * @covers \Fisharebest\Webtrees\Date\JewishDate
  */
 class JewishDateTest extends TestCase
 {

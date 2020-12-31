@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class RecentChangesModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\RecentChangesModule
  */
 class RecentChangesModuleTest extends TestCase
 {

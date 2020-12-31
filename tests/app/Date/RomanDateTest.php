@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class RomanDate
+ *
+ * @covers \Fisharebest\Webtrees\Date\RomanDate
  */
 class RomanDateTest extends TestCase
 {

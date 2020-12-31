@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class ThemeSelectModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\ThemeSelectModule
  */
 class ThemeSelectModuleTest extends TestCase
 {

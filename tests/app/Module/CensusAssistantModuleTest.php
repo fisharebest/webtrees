@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class CensusAssistantModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\CensusAssistantModule
  */
 class CensusAssistantModuleTest extends TestCase
 {

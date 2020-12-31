@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class UserFavoritesModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\UserFavoritesModule
  */
 class UserFavoritesModuleTest extends TestCase
 {

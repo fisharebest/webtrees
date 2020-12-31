@@ -33,6 +33,8 @@ use League\Flysystem\Filesystem;
 
 /**
  * Test harness for the class PedigreeReportModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\PedigreeReportModule
  */
 class PedigreeReportModuleTest extends TestCase
 {

@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees;
 
 /**
  * Test harness for the class Individual
+ *
+ * @covers \Fisharebest\Webtrees\Individual
  */
 class IndividualTest extends TestCase
 {

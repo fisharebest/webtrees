@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class MediaTabModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\MediaTabModule
  */
 class MediaTabModuleTest extends TestCase
 {

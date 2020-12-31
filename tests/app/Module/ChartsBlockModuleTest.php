@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class ChartsBlockModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\ChartsBlockModule
  */
 class ChartsBlockModuleTest extends TestCase
 {

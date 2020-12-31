@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class TopPageViewsModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\TopPageViewsModule
  */
 class TopPageViewsModuleTest extends TestCase
 {

@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees;
 
 /**
  * Test harness for the class Date
+ *
+ * @covers \Fisharebest\Webtrees\Date
  */
 class DateTest extends TestCase
 {

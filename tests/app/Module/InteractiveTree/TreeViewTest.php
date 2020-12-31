@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class TreeView
+ *
+ * @covers \Fisharebest\Webtrees\Module\InteractiveTree\TreeView
  */
 class TreeViewTest extends TestCase
 {

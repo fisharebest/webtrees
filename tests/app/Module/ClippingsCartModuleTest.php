@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class ClippingsCartModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\ClippingsCartModule
  */
 class ClippingsCartModuleTest extends TestCase
 {

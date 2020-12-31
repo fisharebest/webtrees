@@ -22,9 +22,9 @@ namespace Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CalendarDate
+ * Test harness for the class AbstractCalendarDate
  */
-class CalendarDateTest extends TestCase
+class AbstractCalendarDateTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Date\AbstractCalendarDate::ageDifference

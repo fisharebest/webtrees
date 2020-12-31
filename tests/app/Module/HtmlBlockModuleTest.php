@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class HtmlBlockModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\HtmlBlockModule
  */
 class HtmlBlockModuleTest extends TestCase
 {

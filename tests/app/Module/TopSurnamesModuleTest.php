@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class TopSurnamesModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\TopSurnamesModule
  */
 class TopSurnamesModuleTest extends TestCase
 {

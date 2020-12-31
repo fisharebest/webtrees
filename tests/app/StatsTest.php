@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees;
 
 /**
  * Test harness for the class Stats
+ *
+ * @covers \Fisharebest\Webtrees\Statistics
  */
 class StatsTest extends TestCase
 {

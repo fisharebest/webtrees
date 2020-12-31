@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class CompactTreeChartModule
+ *
+ * @covers \Fisharebest\Webtrees\Module\CompactTreeChartModule
  */
 class CompactTreeChartModuleTest extends TestCase
 {
