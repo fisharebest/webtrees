@@ -257,7 +257,7 @@ class JewishDate extends AbstractCalendarDate
 
         if ($month === 7 && $leap_year) {
             /* I18N: a month in the Jewish calendar */
-            return I18N::translateContext('LOCATIVE', 'Adar II');x
+            return I18N::translateContext('LOCATIVE', 'Adar II');
         }
 
         return $translated_month_names[$month];
