@@ -50,6 +50,7 @@ class MediaFile
         'image/gif',
         'image/jpeg',
         'image/png',
+        'image/webp',
     ];
 
     /** @var string The filename */

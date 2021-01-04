@@ -57,6 +57,7 @@ class Mime
         'tif'  => 'image/tiff',
         'tiff' => 'image/tiff',
         'txt'  => 'text/plain',
+        'webp' => 'image/webp',
         'wmv'  => 'video/x-ms-wmv',
         'xls'  => 'application/vnd-ms-excel',
         'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
