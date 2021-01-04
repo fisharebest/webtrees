@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
@@ -31,6 +30,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 use function is_string;
+use function redirect;
 
 /**
  * Edit a fact.
@@ -49,7 +49,7 @@ class EditFactPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref    = $request->getAttribute('xref');
+        $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
         $fact_id = $request->getAttribute('fact_id');
@@ -65,7 +65,7 @@ class EditFactPage implements RequestHandlerInterface
             });
 
         if ($fact === null) {
-            throw new HttpNotFoundException();
+            return redirect($record->url());
         }
 
         $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');
