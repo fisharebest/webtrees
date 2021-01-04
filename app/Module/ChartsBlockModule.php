@@ -20,15 +20,21 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
+
+use function extract;
+use function uasort;
+use function view;
+
+use const EXTR_OVERWRITE;
 
 /**
  * Class ChartsBlockModule
@@ -103,59 +109,80 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
             switch ($type) {
                 default:
                 case 'pedigree':
-                    /** @var PedigreeChartModule $module */
-                    $module    = $this->module_service->findByInterface(PedigreeChartModule::class)->first();
-                    $title     = $module->chartTitle($individual);
-                    $chart_url = $module->chartUrl($individual, [
-                        'ajax'        => true,
-                        'generations' => 3,
-                        'layout'      => PedigreeChartModule::STYLE_RIGHT,
-                    ]);
-                    $content   = view('modules/charts/chart', [
-                        'block_id'  => $block_id,
-                        'chart_url' => $chart_url,
-                        'class'     => 'wt-chart-pedigree',
-                    ]);
+                    $module = $this->module_service->findByInterface(PedigreeChartModule::class)->first();
+                    if ($module instanceof PedigreeChartModule) {
+                        $title     = $module->chartTitle($individual);
+                        $chart_url = $module->chartUrl($individual, [
+                            'ajax'        => true,
+                            'generations' => 3,
+                            'layout'      => PedigreeChartModule::STYLE_RIGHT,
+                        ]);
+                        $content   = view('modules/charts/chart', [
+                            'block_id'  => $block_id,
+                            'chart_url' => $chart_url,
+                            'class'     => 'wt-chart-pedigree',
+                        ]);
+                    } else {
+                        $title   = I18N::translate('Pedigree');
+                        $content = I18N::translate('The module “%s” has been disabled.', $title);
+                    }
                     break;
 
                 case 'descendants':
-                    /** @var DescendancyChartModule $module */
-                    $module    = $this->module_service->findByInterface(DescendancyChartModule::class)->first();
-                    $title     = $module->chartTitle($individual);
-                    $chart_url = $module->chartUrl($individual, [
-                        'ajax'        => true,
-                        'generations' => 2,
-                        'chart_style' => DescendancyChartModule::CHART_STYLE_TREE,
-                    ]);
-                    $content   = view('modules/charts/chart', [
-                        'block_id'  => $block_id,
-                        'chart_url' => $chart_url,
-                        'class'     => 'wt-chart-descendants',
-                    ]);
+                    $module = $this->module_service->findByInterface(DescendancyChartModule::class)->first();
+
+                    if ($module instanceof DescendancyChartModule) {
+                        $title     = $module->chartTitle($individual);
+                        $chart_url = $module->chartUrl($individual, [
+                            'ajax'        => true,
+                            'generations' => 2,
+                            'chart_style' => DescendancyChartModule::CHART_STYLE_TREE,
+                        ]);
+                        $content   = view('modules/charts/chart', [
+                            'block_id'  => $block_id,
+                            'chart_url' => $chart_url,
+                            'class'     => 'wt-chart-descendants',
+                        ]);
+                    } else {
+                        $title   = I18N::translate('Descendants');
+                        $content = I18N::translate('The module “%s” has been disabled.', $title);
+                    }
+
                     break;
 
                 case 'hourglass':
-                    /** @var HourglassChartModule $module */
                     $module    = $this->module_service->findByInterface(HourglassChartModule::class)->first();
-                    $title     = $module->chartTitle($individual);
-                    $chart_url = $module->chartUrl($individual, [
-                        'ajax'        => true,
-                        'generations' => 2,
-                    ]);
-                    $content   = view('modules/charts/chart', [
-                        'block_id'  => $block_id,
-                        'chart_url' => $chart_url,
-                        'class'     => 'wt-chart-hourglass',
-                    ]);
+
+                    if ($module instanceof HourglassChartModule) {
+                        $title     = $module->chartTitle($individual);
+                        $chart_url = $module->chartUrl($individual, [
+                            'ajax'        => true,
+                            'generations' => 2,
+                        ]);
+                        $content   = view('modules/charts/chart', [
+                            'block_id'  => $block_id,
+                            'chart_url' => $chart_url,
+                            'class'     => 'wt-chart-hourglass',
+                        ]);
+                    } else {
+                        $title   = I18N::translate('Hourglass chart');
+                        $content = I18N::translate('The module “%s” has been disabled.', $title);
+                    }
                     break;
 
                 case 'treenav':
-                    /** @var InteractiveTreeModule $module */
                     $module = $this->module_service->findByInterface(InteractiveTreeModule::class)->first();
-                    $title  = I18N::translate('Interactive tree of %s', $individual->fullName());
-                    $tv     = new TreeView();
-                    [$html, $js] = $tv->drawViewport($individual, 2);
-                    $content = $html . '<script>' . $js . '</script>';
+
+                    if ($module instanceof InteractiveTreeModule) {
+                        $title  = I18N::translate('Interactive tree of %s', $individual->fullName());
+                        $tv     = new TreeView();
+                        [$html, $js] = $tv->drawViewport($individual, 2);
+                        $content = $html . '<script>' . $js . '</script>';
+                    } else {
+                        $title   = I18N::translate('Interactive tree');
+                        $content = I18N::translate('The module “%s” has been disabled.', $title);
+                    }
+
                     break;
             }
         } else {
