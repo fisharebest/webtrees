@@ -320,7 +320,8 @@ class CensusColumnConditionFrenchVeuveTest extends TestCase
             ->method('facts')
             ->withConsecutive(
                 [['MARR']],
-                [['DIV']])
+                [['DIV']]
+            )
             ->willReturn(
                 new Collection([$fact]),
                 new Collection([$fact])
@@ -355,7 +356,8 @@ class CensusColumnConditionFrenchVeuveTest extends TestCase
             ->method('facts')
             ->withConsecutive(
                 [['MARR']],
-                [['DIV']])
+                [['DIV']]
+            )
             ->willReturn(
                 new Collection([$fact]),
                 new Collection([$fact])

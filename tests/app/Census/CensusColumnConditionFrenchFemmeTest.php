@@ -317,7 +317,8 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
             ->method('facts')
             ->withConsecutive(
                 [['MARR']],
-                [['DIV']])
+                [['DIV']]
+            )
             ->willReturn(
                 new Collection([$fact]),
                 new Collection([$fact])
@@ -351,7 +352,8 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
             ->method('facts')
             ->withConsecutive(
                 [['MARR']],
-                [['DIV']])
+                [['DIV']]
+            )
             ->willReturn(
                 new Collection([$fact]),
                 new Collection([$fact])

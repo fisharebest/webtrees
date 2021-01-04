@@ -142,7 +142,8 @@ class CensusColumnConditionUsTest extends TestCase
             ->method('facts')
             ->withConsecutive(
                 [['MARR']],
-                [['DIV']])
+                [['DIV']]
+            )
             ->willReturnOnConsecutiveCalls(
                 new Collection([$fact]),
                 new Collection()
