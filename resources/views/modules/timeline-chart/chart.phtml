@@ -346,11 +346,11 @@ use Fisharebest\Webtrees\Individual;
 
             foreach ($record->spouses() as $spouse) {
                 if ($spouse->getBirthDate()->isOK()) {
-                    $age = new Age($spouse->getBirthDate(), $gdate);
+                    $age = (string) new Age($spouse->getBirthDate(), $gdate);
                     if ($spouse->sex() === 'F') {
-                        echo '<span class="age"> ', I18N::translate('Wife’s age'), ' ', $age->ageString(), '</span>';
+                        echo '<span class="age"> ', I18N::translate('Wife’s age'), ' ', $age, '</span>';
                     } else {
-                        echo '<span class="age"> ', I18N::translate('Husband’s age'), ' ', $age->ageString(), '</span>';
+                        echo '<span class="age"> ', I18N::translate('Husband’s age'), ' ', $age, '</span>';
                     }
                 }
             }

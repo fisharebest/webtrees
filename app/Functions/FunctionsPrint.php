@@ -286,7 +286,7 @@ class FunctionsPrint
      *
      * @return string
      */
-    public static function formatFactDate(Fact $event, GedcomRecord $record, $anchor, $time): string
+    public static function formatFactDate(Fact $event, GedcomRecord $record, bool $anchor, bool $time): string
     {
         $factrec = $event->gedcom();
         $html    = '';
@@ -336,23 +336,46 @@ class FunctionsPrint
                     $ageText = '';
                     if ($fact === 'DEAT' || Date::compare($date, $death_date) <= 0 || !$record->isDead()) {
                         // Before death, print age
-                        $age = (new Age($birth_date, $date))->ageAtEvent(false);
+                        $age = (string) new Age($birth_date, $date);
+
                         // Only show calculated age if it differs from recorded age
                         if ($age !== '') {
-                            if ($fact_age !== '' && $fact_age !== $age) {
-                                $ageText = $age;
-                            } elseif ($fact_age === '' && $husb_age === '' && $wife_age === '') {
-                                $ageText = $age;
-                            } elseif ($husb_age !== '' && $husb_age !== $age && $record->sex() === 'M') {
-                                $ageText = $age;
-                            } elseif ($wife_age !== '' && $wife_age !== $age && $record->sex() === 'F') {
-                                $ageText = $age;
+                            if (
+                                $fact_age !== '' && $fact_age !== $age ||
+                                $fact_age === '' && $husb_age === '' && $wife_age === '' ||
+                                $husb_age !== '' && $husb_age !== $age && $record->sex() === 'M' ||
+                                $wife_age !== '' && $wife_age !== $age && $record->sex() === 'F'
+                            ) {
+                                switch ($record->sex()) {
+                                    case 'M':
+                                        /* I18N: The age of an individual at a given date */
+                                        $ageText = I18N::translateContext('Male', '(aged %s)', $age);
+                                        break;
+                                    case 'F':
+                                        /* I18N: The age of an individual at a given date */
+                                        $ageText = I18N::translateContext('Female', '(aged %s)', $age);
+                                        break;
+                                    default:
+                                        /* I18N: The age of an individual at a given date */
+                                        $ageText = I18N::translate('(aged %s)', $age);
+                                        break;
+                                }
                             }
                         }
                     }
                     if ($fact !== 'DEAT' && $death_date->isOK() && Date::compare($death_date, $date) < 0) {
-                        // After death, print time since death
-                        $ageText = (new Age($death_date, $date))->timeAfterDeath();
+                        $death_day = $death_date->minimumDate()->day();
+                        $event_day = $date->minimumDate()->day();
+                        if ($death_day !== 0 && $event_day !== 0 && $death_day === $event_day) {
+                            // On the exact date of death?
+                            // NOTE: this path is never reached.  Keep the code (translation) in case
+                            // we decide to re-introduce it.
+                            $ageText = I18N::translate('(on the date of death)');
+                        } else {
+                            // After death
+                            $age = (string) new Age($death_date, $date);
+                            $ageText = I18N::translate('(%s after death)', $age);
+                        }
                         // Family events which occur after death are probably errors
                         if ($event->record() instanceof Family) {
                             $ageText .= view('icons/warning');

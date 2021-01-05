@@ -31,9 +31,7 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
-     * @covers \Fisharebest\Webtrees\Age::ageString
-     * @covers \Fisharebest\Webtrees\Age::ageAtEvent
-     * @covers \Fisharebest\Webtrees\Age::timeAfterDeath
+     * @covers \Fisharebest\Webtrees\Age::__toString
      *
      * @return void
      */
@@ -46,10 +44,7 @@ class AgeTest extends TestCase
         self::assertSame(0, $age->ageDays());
         self::assertSame(0, $age->ageYears());
         self::assertSame('0', $age->ageYearsString());
-        self::assertSame('0 days', $age->ageString());
-        self::assertSame('(aged 0 days)', $age->ageAtEvent(false));
-        self::assertSame('(age 0 days)', $age->ageAtEvent(true));
-        self::assertSame('(on the date of death)', $age->timeAfterDeath());
+        self::assertSame('0 days', (string) $age);
     }
 
     /**
@@ -57,9 +52,7 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
-     * @covers \Fisharebest\Webtrees\Age::ageString
-     * @covers \Fisharebest\Webtrees\Age::ageAtEvent
-     * @covers \Fisharebest\Webtrees\Age::timeAfterDeath
+     * @covers \Fisharebest\Webtrees\Age::__toString
      *
      * @return void
      */
@@ -72,10 +65,7 @@ class AgeTest extends TestCase
         self::assertSame(0, $age->ageDays());
         self::assertSame(0, $age->ageYears());
         self::assertSame('0', $age->ageYearsString());
-        self::assertSame('0', $age->ageString());
-        self::assertSame('(aged 0)', $age->ageAtEvent(false));
-        self::assertSame('(age 0)', $age->ageAtEvent(true));
-        self::assertSame('', $age->timeAfterDeath());
+        self::assertSame('0', (string) $age);
     }
 
     /**
@@ -83,9 +73,7 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
-     * @covers \Fisharebest\Webtrees\Age::ageString
-     * @covers \Fisharebest\Webtrees\Age::ageAtEvent
-     * @covers \Fisharebest\Webtrees\Age::timeAfterDeath
+     * @covers \Fisharebest\Webtrees\Age::__toString
      *
      * @return void
      */
@@ -98,10 +86,7 @@ class AgeTest extends TestCase
         self::assertSame(0, $age->ageDays());
         self::assertSame(0, $age->ageYears());
         self::assertSame('0', $age->ageYearsString());
-        self::assertSame('0', $age->ageString());
-        self::assertSame('(aged 0)', $age->ageAtEvent(false));
-        self::assertSame('(age 0)', $age->ageAtEvent(true));
-        self::assertSame('', $age->timeAfterDeath());
+        self::assertSame('0', (string) $age);
     }
 
     /**
@@ -109,9 +94,7 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
-     * @covers \Fisharebest\Webtrees\Age::ageString
-     * @covers \Fisharebest\Webtrees\Age::ageAtEvent
-     * @covers \Fisharebest\Webtrees\Age::timeAfterDeath
+     * @covers \Fisharebest\Webtrees\Age::__toString
      *
      * @return void
      */
@@ -124,10 +107,7 @@ class AgeTest extends TestCase
         self::assertSame(-37, $age->ageDays());
         self::assertSame(-1, $age->ageYears());
         self::assertSame(view('icons/warning'), $age->ageYearsString());
-        self::assertSame(view('icons/warning'), $age->ageString());
-        self::assertSame('(aged ' . view('icons/warning') . ')', $age->ageAtEvent(false));
-        self::assertSame('(age ' . view('icons/warning') . ')', $age->ageAtEvent(true));
-        self::assertSame('(' . view('icons/warning') . ' after death)', $age->timeAfterDeath());
+        self::assertSame(view('icons/warning'), (string) $age);
     }
 
     /**
@@ -135,9 +115,7 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
-     * @covers \Fisharebest\Webtrees\Age::ageString
-     * @covers \Fisharebest\Webtrees\Age::ageAtEvent
-     * @covers \Fisharebest\Webtrees\Age::timeAfterDeath
+     * @covers \Fisharebest\Webtrees\Age::__toString
      *
      * @return void
      */
@@ -150,10 +128,7 @@ class AgeTest extends TestCase
         self::assertSame(-1, $age->ageDays());
         self::assertSame(-1, $age->ageYears());
         self::assertSame('', $age->ageYearsString());
-        self::assertSame('', $age->ageString());
-        self::assertSame('', $age->ageAtEvent(false));
-        self::assertSame('', $age->ageAtEvent(true));
-        self::assertSame('', $age->timeAfterDeath());
+        self::assertSame('', (string) $age);
     }
 
     /**
@@ -161,9 +136,7 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
-     * @covers \Fisharebest\Webtrees\Age::ageString
-     * @covers \Fisharebest\Webtrees\Age::ageAtEvent
-     * @covers \Fisharebest\Webtrees\Age::timeAfterDeath
+     * @covers \Fisharebest\Webtrees\Age::__toString
      *
      * @return void
      */
@@ -176,10 +149,7 @@ class AgeTest extends TestCase
         self::assertSame(-1, $age->ageDays());
         self::assertSame(-1, $age->ageYears());
         self::assertSame('', $age->ageYearsString());
-        self::assertSame('', $age->ageString());
-        self::assertSame('', $age->ageAtEvent(false));
-        self::assertSame('', $age->ageAtEvent(true));
-        self::assertSame('', $age->timeAfterDeath());
+        self::assertSame('', (string) $age);
     }
 
     /**
@@ -187,9 +157,7 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
-     * @covers \Fisharebest\Webtrees\Age::ageString
-     * @covers \Fisharebest\Webtrees\Age::ageAtEvent
-     * @covers \Fisharebest\Webtrees\Age::timeAfterDeath
+     * @covers \Fisharebest\Webtrees\Age::__toString
      *
      * @return void
      */
@@ -202,10 +170,7 @@ class AgeTest extends TestCase
         self::assertSame(-6, $age->ageDays());
         self::assertSame(0, $age->ageYears());
         self::assertSame('0', $age->ageYearsString());
-        self::assertSame('0', $age->ageString());
-        self::assertSame('(aged 0)', $age->ageAtEvent(false));
-        self::assertSame('(age 0)', $age->ageAtEvent(true));
-        self::assertSame('', $age->timeAfterDeath());
+        self::assertSame('0', (string) $age);
     }
 
     /**
@@ -213,9 +178,7 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
-     * @covers \Fisharebest\Webtrees\Age::ageString
-     * @covers \Fisharebest\Webtrees\Age::ageAtEvent
-     * @covers \Fisharebest\Webtrees\Age::timeAfterDeath
+     * @covers \Fisharebest\Webtrees\Age::__toString
      *
      * @return void
      */
@@ -228,10 +191,7 @@ class AgeTest extends TestCase
         self::assertSame(6, $age->ageDays());
         self::assertSame(0, $age->ageYears());
         self::assertSame('0', $age->ageYearsString());
-        self::assertSame('0', $age->ageString());
-        self::assertSame('(aged 0)', $age->ageAtEvent(false));
-        self::assertSame('(age 0)', $age->ageAtEvent(true));
-        self::assertSame('', $age->timeAfterDeath());
+        self::assertSame('0', (string) $age);
     }
 
     /**
@@ -239,9 +199,7 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
-     * @covers \Fisharebest\Webtrees\Age::ageString
-     * @covers \Fisharebest\Webtrees\Age::ageAtEvent
-     * @covers \Fisharebest\Webtrees\Age::timeAfterDeath
+     * @covers \Fisharebest\Webtrees\Age::__toString
      *
      * @return void
      */
@@ -254,10 +212,7 @@ class AgeTest extends TestCase
         self::assertSame(14, $age->ageDays());
         self::assertSame(0, $age->ageYears());
         self::assertSame('0', $age->ageYearsString());
-        self::assertSame('14 days', $age->ageString());
-        self::assertSame('(aged 14 days)', $age->ageAtEvent(false));
-        self::assertSame('(age 14 days)', $age->ageAtEvent(true));
-        self::assertSame('(14 days after death)', $age->timeAfterDeath());
+        self::assertSame('14 days', (string) $age);
     }
 
     /**
@@ -265,9 +220,7 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
-     * @covers \Fisharebest\Webtrees\Age::ageString
-     * @covers \Fisharebest\Webtrees\Age::ageAtEvent
-     * @covers \Fisharebest\Webtrees\Age::timeAfterDeath
+     * @covers \Fisharebest\Webtrees\Age::__toString
      *
      * @return void
      */
@@ -280,10 +233,7 @@ class AgeTest extends TestCase
         self::assertSame(75, $age->ageDays());
         self::assertSame(0, $age->ageYears());
         self::assertSame('0', $age->ageYearsString());
-        self::assertSame('2 months', $age->ageString());
-        self::assertSame('(aged 2 months)', $age->ageAtEvent(false));
-        self::assertSame('(age 2 months)', $age->ageAtEvent(true));
-        self::assertSame('(2 months after death)', $age->timeAfterDeath());
+        self::assertSame('2 months', (string) $age);
     }
 
     /**
@@ -291,9 +241,7 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
-     * @covers \Fisharebest\Webtrees\Age::ageString
-     * @covers \Fisharebest\Webtrees\Age::ageAtEvent
-     * @covers \Fisharebest\Webtrees\Age::timeAfterDeath
+     * @covers \Fisharebest\Webtrees\Age::__toString
      *
      * @return void
      */
@@ -306,9 +254,6 @@ class AgeTest extends TestCase
         self::assertSame(2631, $age->ageDays());
         self::assertSame(7, $age->ageYears());
         self::assertSame('7', $age->ageYearsString());
-        self::assertSame('7 years', $age->ageString());
-        self::assertSame('(aged 7 years)', $age->ageAtEvent(false));
-        self::assertSame('(age 7 years)', $age->ageAtEvent(true));
-        self::assertSame('(7 years after death)', $age->timeAfterDeath());
+        self::assertSame('7 years', (string) $age);
     }
 }
