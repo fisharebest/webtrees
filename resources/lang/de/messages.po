@@ -630,7 +630,7 @@ msgstr "<Standardthema>"
 
 #: resources/views/register-page.phtml:24
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr "<div class=\"largeError\">Bitte beachten Sie:</div><div class=\"error\">Indem Sie dieses ausgefüllte Formular einsenden, bestätigen Sie Ihr Einverständnis zu den folgenden Bedingungen:<ul><li>Sie behandeln Informationen über lebende Personen, die in dieser Datenbank vorkommen, immer vertraulich;</li><li>und Sie erklären in der unten stehenden Textbox Ihre direkte Verwandtschaft zu Personen in dieser Datenbank oder geben Informationen über Personen, die in dieser Datenbank vorkommen, aber dort eventuell fehlen sollten, an.</li></ul></div>"
+msgstr "<div class=\"largeError\">Hinweis:</div><div class=\"error\">Mit dem Ausfüllen und Absenden dieses Formulars erklären Sie sich damit einverstanden:<ul><li>den Datenschutz von auf unserer Website aufgeführten lebenden Personen zu beachten</li><li>und im Textfeld unten Ihr Verwandtschaftsverhältnis zu Personen dieser Website zu beschreiben, oder uns Informationen über jemanden zukommen zu lassen, der auf unserer Website aufgeführt werden sollte.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:633 app/Functions/FunctionsPrint.php:113
@@ -5708,7 +5708,7 @@ msgstr "Ereignisse in Ländern"
 
 #: resources/views/modules/personal_facts/tab.phtml:18
 msgid "Events of close relatives"
-msgstr "Verwandtenereignisse"
+msgstr "Ereignisse naher Verwandter"
 
 #: resources/views/admin/users-edit.phtml:223
 msgid "Everybody has this role, including visitors to the website and search engines."
