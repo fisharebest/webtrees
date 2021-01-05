@@ -2,6 +2,7 @@
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
@@ -21,8 +22,13 @@ use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
+ * @var Family|null     $family
+ * @var string          $famtag
+ * @var string          $gender
  * @var Individual|null $individual
  * @var Fact|null       $name_fact
+ * @var string          $next_action
+ * @var string          $title
  */
 
 ?>
