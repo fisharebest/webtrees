@@ -1198,4 +1198,16 @@ class Individual extends GedcomRecord
             $this->formatFirstMajorFact(Gedcom::BIRTH_EVENTS, 1) .
             $this->formatFirstMajorFact(Gedcom::DEATH_EVENTS, 1);
     }
+
+    /**
+     * Lock the database row, to prevent concurrent edits.
+     */
+    public function lock(): void
+    {
+        DB::table('individuals')
+            ->where('i_file', '=', $this->tree->id())
+            ->where('i_id', '=', $this->xref())
+            ->lockForUpdate()
+            ->get();
+    }
 }

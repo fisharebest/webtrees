@@ -1327,4 +1327,16 @@ class GedcomRecord
         // Different types of record have different privacy rules
         return $this->canShowByType($access_level);
     }
+
+    /**
+     * Lock the database row, to prevent concurrent edits.
+     */
+    public function lock(): void
+    {
+        DB::table('other')
+            ->where('o_file', '=', $this->tree->id())
+            ->where('o_id', '=', $this->xref())
+            ->lockForUpdate()
+            ->get();
+    }
 }

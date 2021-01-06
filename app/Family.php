@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
+use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 
 /**
@@ -459,5 +460,17 @@ class Family extends GedcomRecord
         return
             $this->formatFirstMajorFact(Gedcom::MARRIAGE_EVENTS, 1) .
             $this->formatFirstMajorFact(Gedcom::DIVORCE_EVENTS, 1);
+    }
+
+    /**
+     * Lock the database row, to prevent concurrent edits.
+     */
+    public function lock(): void
+    {
+        DB::table('families')
+            ->where('f_file', '=', $this->tree->id())
+            ->where('f_id', '=', $this->xref())
+            ->lockForUpdate()
+            ->get();
     }
 }

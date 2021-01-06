@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * A GEDCOM source (SOUR) object.
@@ -105,5 +106,17 @@ class Source extends GedcomRecord
     public function extractNames(): void
     {
         $this->extractNamesFromFacts(1, 'TITL', $this->facts(['TITL']));
+    }
+
+    /**
+     * Lock the database row, to prevent concurrent edits.
+     */
+    public function lock(): void
+    {
+        DB::table('sources')
+            ->where('s_file', '=', $this->tree->id())
+            ->where('s_id', '=', $this->xref())
+            ->lockForUpdate()
+            ->get();
     }
 }

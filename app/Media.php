@@ -209,4 +209,16 @@ class Media extends GedcomRecord
         // No image?
         return '';
     }
+
+    /**
+     * Lock the database row, to prevent concurrent edits.
+     */
+    public function lock(): void
+    {
+        DB::table('media')
+            ->where('m_file', '=', $this->tree->id())
+            ->where('m_id', '=', $this->xref())
+            ->lockForUpdate()
+            ->get();
+    }
 }
