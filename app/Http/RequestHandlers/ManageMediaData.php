@@ -17,17 +17,10 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers\Admin;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\Html;
-use Fisharebest\Webtrees\Http\RequestHandlers\AdminMediaFileDownload;
-use Fisharebest\Webtrees\Http\RequestHandlers\AdminMediaFileThumbnail;
-use Fisharebest\Webtrees\Http\RequestHandlers\DeletePath;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Registry;
@@ -43,35 +36,25 @@ use League\Flysystem\FileNotFoundException;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\UploadedFileInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use stdClass;
 use Throwable;
 
 use function assert;
 use function e;
 use function getimagesize;
-use function ini_get;
 use function intdiv;
-use function preg_match;
-use function redirect;
 use function route;
-use function str_replace;
 use function str_starts_with;
 use function strlen;
 use function substr;
-use function trim;
 use function view;
 
-use const UPLOAD_ERR_OK;
-
 /**
- * Controller for media administration.
+ * Manage media from the control panel.
  */
-class MediaController extends AbstractAdminController
+class ManageMediaData implements RequestHandlerInterface
 {
-    // How many files to upload on one form.
-    private const MAX_UPLOAD_FILES = 10;
-
     /** @var DatatablesService */
     private $datatables_service;
 
@@ -103,50 +86,7 @@ class MediaController extends AbstractAdminController
      *
      * @return ResponseInterface
      */
-    public function index(ServerRequestInterface $request): ResponseInterface
-    {
-        $data_filesystem      = Registry::filesystem()->data();
-        $data_filesystem_name = Registry::filesystem()->dataName();
-
-        $files         = $request->getQueryParams()['files'] ?? 'local'; // local|unused|external
-        $subfolders    = $request->getQueryParams()['subfolders'] ?? 'include'; // include|exclude
-        $media_folders = $this->media_file_service->allMediaFolders($data_filesystem);
-        $media_folder  = $request->getQueryParams()['media_folder'] ?? $media_folders->first() ?? '';
-
-        $title = I18N::translate('Manage media');
-
-        return $this->viewResponse('admin/media', [
-            'data_folder'   => $data_filesystem_name,
-            'files'         => $files,
-            'media_folder'  => $media_folder,
-            'media_folders' => $media_folders,
-            'subfolders'    => $subfolders,
-            'title'         => $title,
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function select(ServerRequestInterface $request): ResponseInterface
-    {
-        $params = (array) $request->getParsedBody();
-
-        return redirect(route('admin-media', [
-            'files'        => $params['files'],
-            'media_folder' => $params['media_folder'] ?? '',
-            'subfolders'   => $params['subfolders'] ?? 'include',
-        ]));
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function data(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $data_filesystem = Registry::filesystem()->data();
 
@@ -162,12 +102,12 @@ class MediaController extends AbstractAdminController
 
         $sort_columns = [
             0 => 'multimedia_file_refn',
-            2 => new Expression('descriptive_title || multimedia_file_refn'),
+            2 => (string) new Expression('descriptive_title || multimedia_file_refn'),
         ];
 
         // Convert a row from the database into a row for datatables
         $callback = function (stdClass $row): array {
-            $tree = $this->tree_service->find((int) $row->m_file);
+            $tree  = $this->tree_service->find((int) $row->m_file);
             $media = Registry::mediaFactory()->make($row->m_id, $tree, $row->m_gedcom);
             assert($media instanceof Media);
 
@@ -209,7 +149,12 @@ class MediaController extends AbstractAdminController
                     ->where('setting_name', '=', 'MEDIA_DIRECTORY')
                     ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
                     ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-                    ->select(['media.*', 'multimedia_file_refn', 'descriptive_title', 'setting_value AS media_folder']);
+                    ->select([
+                        'media.*',
+                        'multimedia_file_refn',
+                        'descriptive_title',
+                        'setting_value AS media_folder',
+                    ]);
 
                 $query->where(new Expression('setting_value || multimedia_file_refn'), 'LIKE', $media_folder . '%');
 
@@ -231,7 +176,12 @@ class MediaController extends AbstractAdminController
                             ->where('multimedia_file_refn', 'LIKE', 'http://%')
                             ->orWhere('multimedia_file_refn', 'LIKE', 'https://%');
                     })
-                    ->select(['media.*', 'multimedia_file_refn', 'descriptive_title']);
+                    ->select([
+                        'media.*',
+                        'multimedia_file_refn',
+                        'descriptive_title',
+                        (string) new Expression("'' AS media_folder"),
+                    ]);
 
                 return $this->datatables_service->handleQuery($request, $query, $search_columns, $sort_columns, $callback);
 
@@ -279,7 +229,7 @@ class MediaController extends AbstractAdminController
                     }
 
                     $delete_link = '<p><a data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($row[0])) . '" data-post-url="' . e(route(DeletePath::class, [
-                            'path'   => $row[0],
+                            'path' => $row[0],
                         ])) . '" href="#">' . I18N::translate('Delete') . '</a></p>';
 
                     return [
@@ -366,7 +316,7 @@ class MediaController extends AbstractAdminController
             try {
                 // This will work for local filesystems.  For remote filesystems, we will
                 // need to copy the file locally to work out the image size.
-                $imgsize = getimagesize(Webtrees::DATA_DIR .  $file);
+                $imgsize = getimagesize(Webtrees::DATA_DIR . $file);
                 $html    .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
                 /* I18N: image dimensions, width × height */
                 $html .= '<dd>' . I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
@@ -378,103 +328,5 @@ class MediaController extends AbstractAdminController
         $html .= '</dl>';
 
         return $html;
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function upload(ServerRequestInterface $request): ResponseInterface
-    {
-        $data_filesystem = Registry::filesystem()->data();
-
-        $media_folders = $this->media_file_service->allMediaFolders($data_filesystem);
-
-        $filesize = ini_get('upload_max_filesize') ?: '2M';
-
-        $title = I18N::translate('Upload media files');
-
-        return $this->viewResponse('admin/media-upload', [
-            'max_upload_files' => self::MAX_UPLOAD_FILES,
-            'filesize'         => $filesize,
-            'media_folders'    => $media_folders,
-            'title'            => $title,
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function uploadAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $data_filesystem = Registry::filesystem()->data();
-
-        $params = (array) $request->getParsedBody();
-
-        $all_folders = $this->media_file_service->allMediaFolders($data_filesystem);
-
-        foreach ($request->getUploadedFiles() as $key => $uploaded_file) {
-            assert($uploaded_file instanceof UploadedFileInterface);
-            if ($uploaded_file->getClientFilename() === '') {
-                continue;
-            }
-            if ($uploaded_file->getError() !== UPLOAD_ERR_OK) {
-                FlashMessages::addMessage(Functions::fileUploadErrorText($uploaded_file->getError()), 'danger');
-                continue;
-            }
-            $key = substr($key, 9);
-
-            $folder   = $params['folder' . $key];
-            $filename = $params['filename' . $key];
-
-            // If no filename specified, use the original filename.
-            if ($filename === '') {
-                $filename = $uploaded_file->getClientFilename();
-            }
-
-            // Validate the folder
-            if (!$all_folders->contains($folder)) {
-                break;
-            }
-
-            // Validate the filename.
-            $filename = str_replace('\\', '/', $filename);
-            $filename = trim($filename, '/');
-
-            if (preg_match('/([:])/', $filename, $match)) {
-                // Local media files cannot contain certain special characters, especially on MS Windows
-                FlashMessages::addMessage(I18N::translate('Filenames are not allowed to contain the character “%s”.', $match[1]));
-                continue;
-            }
-
-            if (preg_match('/(\.(php|pl|cgi|bash|sh|bat|exe|com|htm|html|shtml))$/i', $filename, $match)) {
-                // Do not allow obvious script files.
-                FlashMessages::addMessage(I18N::translate('Filenames are not allowed to have the extension “%s”.', $match[1]));
-                continue;
-            }
-
-            $path = $folder . $filename;
-
-            if ($data_filesystem->has($path)) {
-                FlashMessages::addMessage(I18N::translate('The file %s already exists. Use another filename.', $path, 'error'));
-                continue;
-            }
-
-            // Now copy the file to the correct location.
-            try {
-                $data_filesystem->writeStream($path, $uploaded_file->getStream()->detach());
-                FlashMessages::addMessage(I18N::translate('The file %s has been uploaded.', Html::filename($path)), 'success');
-                Log::addMediaLog('Media file ' . $path . ' uploaded');
-            } catch (Throwable $ex) {
-                FlashMessages::addMessage(I18N::translate('There was an error uploading your file.') . '<br>' . e($ex->getMessage()), 'danger');
-            }
-        }
-
-        $url = route('admin-media-upload');
-
-        return redirect($url);
     }
 }

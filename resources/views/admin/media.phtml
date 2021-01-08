@@ -1,6 +1,8 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaData;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
 
@@ -17,7 +19,7 @@ use Fisharebest\Webtrees\View;
 
 <h1><?= $title ?></h1>
 
-<form method="post" action="<?= e(route('admin-media-select')) ?>" id="admin-media-form">
+<form method="post" action="<?= e(route(ManageMediaAction::class)) ?>" id="admin-media-form">
     <?= csrf_field() ?>
 
     <table class="table table-bordered table-sm">
@@ -86,7 +88,7 @@ use Fisharebest\Webtrees\View;
 <table
     class="table table-bordered table-sm datatables d-none"
     <?= view('lists/datatables-attributes') ?>
-    data-ajax="<?= e(route('admin-media-data', ['files' => $files, 'media_folder' => $media_folder, 'subfolders' => $subfolders])) ?>"
+    data-ajax="<?= e(route(ManageMediaData::class, ['files' => $files, 'media_folder' => $media_folder, 'subfolders' => $subfolders])) ?>"
     data-server-side="true"
 >
     <thead>

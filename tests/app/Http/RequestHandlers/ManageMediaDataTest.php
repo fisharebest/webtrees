@@ -17,52 +17,23 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers\Admin;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Contracts\FilesystemFactoryInterface;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
-use League\Flysystem\Adapter\NullAdapter;
-use League\Flysystem\Filesystem;
 
 /**
- * Test MediaController class.
+ * Test ManageMediaData class.
  *
- * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\MediaController
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaData
  */
-class MediaControllerTest extends TestCase
+class ManageMediaDataTest extends TestCase
 {
     protected static $uses_database = true;
-
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $filesystem_factory = self::createMock(FilesystemFactoryInterface::class);
-        $filesystem_factory->method('data')->willReturn(new Filesystem(new NullAdapter()));
-        $filesystem_factory->method('dataName')->willReturn('data/');
-        Registry::filesystem($filesystem_factory);
-    }
-
-    /**
-     * @return void
-     */
-    public function testIndex(): void
-    {
-        $datatables_service = new DatatablesService();
-        $media_file_service = new MediaFileService();
-        $tree_service       = new TreeService();
-        $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
-        $request            = self::createRequest();
-        $response           = $controller->index($request);
-
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-    }
 
     /**
      * @return void
@@ -72,7 +43,7 @@ class MediaControllerTest extends TestCase
         $datatables_service = new DatatablesService();
         $media_file_service = new MediaFileService();
         $tree_service       = new TreeService();
-        $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
+        $handler            = new ManageMediaData($datatables_service, $media_file_service, $tree_service);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
             'files'        => 'local',
             'media_folder' => '',
@@ -81,7 +52,7 @@ class MediaControllerTest extends TestCase
             'start'        => '0',
             'length'       => '10',
         ]);
-        $response           = $controller->data($request);
+        $response           = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -94,7 +65,7 @@ class MediaControllerTest extends TestCase
         $datatables_service = new DatatablesService();
         $media_file_service = new MediaFileService();
         $tree_service       = new TreeService();
-        $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
+        $handler            = new ManageMediaData($datatables_service, $media_file_service, $tree_service);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
             'files'        => 'local',
             'media_folder' => '',
@@ -103,7 +74,7 @@ class MediaControllerTest extends TestCase
             'start'        => '0',
             'length'       => '10',
         ]);
-        $response           = $controller->data($request);
+        $response           = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -116,7 +87,7 @@ class MediaControllerTest extends TestCase
         $datatables_service = new DatatablesService();
         $media_file_service = new MediaFileService();
         $tree_service       = new TreeService();
-        $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
+        $handler            = new ManageMediaData($datatables_service, $media_file_service, $tree_service);
         $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
             'files'        => 'local',
             'media_folder' => '',
@@ -125,38 +96,8 @@ class MediaControllerTest extends TestCase
             'start'        => '0',
             'length'       => '10',
         ]);
-        $response           = $controller->data($request);
+        $response           = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-    }
-
-    /**
-     * @return void
-     */
-    public function testUpload(): void
-    {
-        $datatables_service = new DatatablesService();
-        $media_file_service = new MediaFileService();
-        $tree_service       = new TreeService();
-        $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
-        $request            = self::createRequest();
-        $response           = $controller->upload($request);
-
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-    }
-
-    /**
-     * @return void
-     */
-    public function testUploadAction(): void
-    {
-        $datatables_service = new DatatablesService();
-        $media_file_service = new MediaFileService();
-        $tree_service       = new TreeService();
-        $controller         = new MediaController($datatables_service, $media_file_service, $tree_service);
-        $request            = self::createRequest();
-        $response           = $controller->uploadAction($request);
-
-        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

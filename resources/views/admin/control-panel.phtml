@@ -5,6 +5,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\CleanDataFolder;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
 use Fisharebest\Webtrees\Http\RequestHandlers\MergeTreesPage;
@@ -28,6 +29,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SitePreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteRegistrationPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePageDefaultEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\UploadMediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPageDefaultEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupPage;
 use Fisharebest\Webtrees\I18N;
@@ -705,13 +707,13 @@ use Illuminate\Support\Collection;
         <ul class="fa-ul">
             <li>
                 <span class="fa-li"><?= view('icons/preferences') ?></span>
-                <a href="<?= e(route('admin-media')) ?>">
+                <a href="<?= e(route(ManageMediaPage::class)) ?>">
                     <?= I18N::translate('Manage media') ?>
                 </a>
             </li>
             <li>
                 <span class="fa-li"><?= view('icons/upload') ?></span>
-                <a href="<?= e(route('admin-media-upload')) ?>">
+                <a href="<?= e(route(UploadMediaPage::class)) ?>">
                     <?= I18N::translate('Upload media files') ?>
                 </a>
             </li>
