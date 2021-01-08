@@ -165,7 +165,14 @@ class PlaceRepository implements PlaceRepositoryInterface
             });
         }
 
-        return $query->get()->all();
+        return $query
+            ->get()
+            ->map(static function (stdClass $entry) {
+                // Map total value to integer
+                $entry->tot = (int) $entry->tot;
+                return $entry;
+            })
+            ->all();
     }
 
     /**
