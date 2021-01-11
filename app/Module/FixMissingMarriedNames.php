@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 
 use function array_merge;
@@ -114,9 +113,8 @@ class FixMissingMarriedNames extends AbstractModule implements ModuleDataFixInte
      */
     protected function individualsToFix(Tree $tree, array $params): ?Collection
     {
-        // No DB querying possible?  Select all.
-        return DB::table('individuals')
-            ->where('i_file', '=', $tree->id())
+        // No DB querying possible?  Select all females.
+        return $this->individualsToFixQuery($tree, $params)
             ->where('i_sex', '=', 'F')
             ->pluck('i_id');
     }

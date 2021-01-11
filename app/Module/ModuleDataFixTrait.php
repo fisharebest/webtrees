@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
@@ -63,6 +64,7 @@ trait ModuleDataFixTrait
     {
         $families     = $this->familiesToFix($tree, $params);
         $individuals  = $this->individualsToFix($tree, $params);
+        $locations    = $this->locationsToFix($tree, $params);
         $media        = $this->mediaToFix($tree, $params);
         $notes        = $this->notesToFix($tree, $params);
         $repositories = $this->repositoriesToFix($tree, $params);
@@ -77,6 +79,10 @@ trait ModuleDataFixTrait
 
         if ($individuals !== null) {
             $records = $records->concat($this->mergePendingRecords($individuals, $tree, Individual::RECORD_TYPE));
+        }
+
+        if ($locations !== null) {
+            $records = $records->concat($this->mergePendingRecords($locations, $tree, Location::RECORD_TYPE));
         }
 
         if ($media !== null) {
@@ -158,6 +164,24 @@ trait ModuleDataFixTrait
     }
 
     /**
+     * @param Tree                 $tree
+     * @param array<string,string> $params
+     *
+     * @return Builder
+     */
+    protected function familiesToFixQuery(Tree $tree, array $params): Builder
+    {
+        $query = DB::table('families')
+            ->where('i_file', '=', $tree->id());
+
+        if (isset($params['start'], $params['end'])) {
+            $query->whereBetween('i_id', [$params['start'], $params['end']]);
+        }
+
+        return $query;
+    }
+
+    /**
      * XREFs of individual records that might need fixing.
      *
      * @param Tree                 $tree
@@ -168,6 +192,56 @@ trait ModuleDataFixTrait
     protected function individualsToFix(Tree $tree, array $params): ?Collection
     {
         return null;
+    }
+
+    /**
+     * @param Tree                 $tree
+     * @param array<string,string> $params
+     *
+     * @return Builder
+     */
+    protected function individualsToFixQuery(Tree $tree, array $params): Builder
+    {
+        $query = DB::table('individuals')
+            ->where('i_file', '=', $tree->id());
+
+        if (isset($params['start'], $params['end'])) {
+            $query->whereBetween('i_id', [$params['start'], $params['end']]);
+        }
+
+        return $query;
+    }
+
+    /**
+     * XREFs of location records that might need fixing.
+     *
+     * @param Tree                 $tree
+     * @param array<string,string> $params
+     *
+     * @return Collection<string>|null
+     */
+    protected function locationsToFix(Tree $tree, array $params): ?Collection
+    {
+        return null;
+    }
+
+    /**
+     * @param Tree                 $tree
+     * @param array<string,string> $params
+     *
+     * @return Builder
+     */
+    protected function locationsToFixQuery(Tree $tree, array $params): Builder
+    {
+        $query = DB::table('other')
+            ->where('o_type', '=', Location::RECORD_TYPE)
+            ->where('o_file', '=', $tree->id());
+
+        if (isset($params['start'], $params['end'])) {
+            $query->whereBetween('o_id', [$params['start'], $params['end']]);
+        }
+
+        return $query;
     }
 
     /**
@@ -184,6 +258,24 @@ trait ModuleDataFixTrait
     }
 
     /**
+     * @param Tree                 $tree
+     * @param array<string,string> $params
+     *
+     * @return Builder
+     */
+    protected function mediaToFixQuery(Tree $tree, array $params): Builder
+    {
+        $query = DB::table('media')
+            ->where('m_file', '=', $tree->id());
+
+        if (isset($params['start'], $params['end'])) {
+            $query->whereBetween('m_id', [$params['start'], $params['end']]);
+        }
+
+        return $query;
+    }
+
+    /**
      * XREFs of note records that might need fixing.
      *
      * @param Tree                 $tree
@@ -194,6 +286,25 @@ trait ModuleDataFixTrait
     protected function notesToFix(Tree $tree, array $params): ?Collection
     {
         return null;
+    }
+
+    /**
+     * @param Tree                 $tree
+     * @param array<string,string> $params
+     *
+     * @return Builder
+     */
+    protected function notesToFixQuery(Tree $tree, array $params): Builder
+    {
+        $query = DB::table('other')
+            ->where('o_type', '=', Note::RECORD_TYPE)
+            ->where('o_file', '=', $tree->id());
+
+        if (isset($params['start'], $params['end'])) {
+            $query->whereBetween('o_id', [$params['start'], $params['end']]);
+        }
+
+        return $query;
     }
 
     /**
@@ -210,6 +321,25 @@ trait ModuleDataFixTrait
     }
 
     /**
+     * @param Tree                 $tree
+     * @param array<string,string> $params
+     *
+     * @return Builder
+     */
+    protected function repositoriesToFixQuery(Tree $tree, array $params): Builder
+    {
+        $query = DB::table('other')
+            ->where('o_type', '=', Repository::RECORD_TYPE)
+            ->where('o_file', '=', $tree->id());
+
+        if (isset($params['start'], $params['end'])) {
+            $query->whereBetween('o_id', [$params['start'], $params['end']]);
+        }
+
+        return $query;
+    }
+
+    /**
      * XREFs of source records that might need fixing.
      *
      * @param Tree                 $tree
@@ -223,6 +353,24 @@ trait ModuleDataFixTrait
     }
 
     /**
+     * @param Tree                 $tree
+     * @param array<string,string> $params
+     *
+     * @return Builder
+     */
+    protected function sourcesToFixQuery(Tree $tree, array $params): Builder
+    {
+        $query = DB::table('sources')
+            ->where('s_file', '=', $tree->id());
+
+        if (isset($params['start'], $params['end'])) {
+            $query->whereBetween('s_id', [$params['start'], $params['end']]);
+        }
+
+        return $query;
+    }
+
+    /**
      * XREFs of submitter records that might need fixing.
      *
      * @param Tree                 $tree
@@ -233,6 +381,25 @@ trait ModuleDataFixTrait
     protected function submittersToFix(Tree $tree, array $params): ?Collection
     {
         return null;
+    }
+
+    /**
+     * @param Tree                 $tree
+     * @param array<string,string> $params
+     *
+     * @return Builder
+     */
+    protected function submittersToFixQuery(Tree $tree, array $params): Builder
+    {
+        $query = DB::table('other')
+            ->where('o_type', '=', Submitter::RECORD_TYPE)
+            ->where('o_file', '=', $tree->id());
+
+        if (isset($params['start'], $params['end'])) {
+            $query->whereBetween('o_id', [$params['start'], $params['end']]);
+        }
+
+        return $query;
     }
 
     /**

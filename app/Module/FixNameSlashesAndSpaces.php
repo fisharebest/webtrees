@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 
 use function preg_match;
@@ -83,8 +82,7 @@ class FixNameSlashesAndSpaces extends AbstractModule implements ModuleDataFixInt
     protected function individualsToFix(Tree $tree, array $params): ?Collection
     {
         // No DB querying possible?  Select all.
-        return DB::table('individuals')
-            ->where('i_file', '=', $tree->id())
+        return $this->individualsToFixQuery($tree, $params)
             ->pluck('i_id');
     }
 

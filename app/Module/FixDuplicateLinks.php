@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2020 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,12 +21,8 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Note;
-use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\DataFixService;
-use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 
 use function preg_match;
@@ -86,8 +82,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
     protected function familiesToFix(Tree $tree, array $params): Collection
     {
         // No DB querying possible?  Select all.
-        return DB::table('families')
-            ->where('f_file', '=', $tree->id())
+        return $this->familiesToFixQuery($tree, $params)
             ->pluck('f_id');
     }
 
@@ -103,8 +98,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
     protected function individualsToFix(Tree $tree, array $params): ?Collection
     {
         // No DB querying possible?  Select all.
-        return DB::table('individuals')
-            ->where('i_file', '=', $tree->id())
+        return $this->individualsToFixQuery($tree, $params)
             ->pluck('i_id');
     }
 
@@ -120,8 +114,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
     protected function mediaToFix(Tree $tree, array $params): Collection
     {
         // No DB querying possible?  Select all.
-        return DB::table('media')
-            ->where('m_file', '=', $tree->id())
+        return $this->mediaToFixQuery($tree, $params)
             ->pluck('m_id');
     }
 
@@ -137,9 +130,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
     protected function notesToFix(Tree $tree, array $params): Collection
     {
         // No DB querying possible?  Select all.
-        return DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Note::RECORD_TYPE)
+        return $this->notesToFixQuery($tree, $params)
             ->pluck('o_id');
     }
 
@@ -155,9 +146,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
     protected function repositoriesToFix(Tree $tree, array $params): Collection
     {
         // No DB querying possible?  Select all.
-        return DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Repository::RECORD_TYPE)
+        return $this->repositoriesToFixQuery($tree, $params)
             ->pluck('o_id');
     }
 
@@ -173,8 +162,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
     protected function sourcesToFix(Tree $tree, array $params): Collection
     {
         // No DB querying possible?  Select all.
-        return DB::table('sources')
-            ->where('s_file', '=', $tree->id())
+        return $this->sourcesToFixQuery($tree, $params)
             ->pluck('s_id');
     }
 
@@ -190,9 +178,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
     protected function submittersToFix(Tree $tree, array $params): Collection
     {
         // No DB querying possible?  Select all.
-        return DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Submitter::RECORD_TYPE)
+        return $this->submittersToFixQuery($tree, $params)
             ->pluck('o_id');
     }
 

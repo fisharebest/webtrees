@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 
 use function addcslashes;
@@ -103,8 +102,7 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
 
         $search = '%' . addcslashes($params['search'], '\\%_') . '%';
 
-        return  DB::table('families')
-            ->where('f_file', '=', $tree->id())
+        return  $this->familiesToFixQuery($tree, $params)
             ->where('f_gedcom', 'LIKE', $search)
             ->pluck('f_id');
     }
@@ -126,7 +124,7 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
 
         $search = '%' . addcslashes($params['search'], '\\%_') . '%';
 
-        return  DB::table('individuals')
+        return  $this->individualsToFixQuery($tree, $params)
             ->where('i_file', '=', $tree->id())
             ->where('i_gedcom', 'LIKE', $search)
             ->pluck('i_id');
