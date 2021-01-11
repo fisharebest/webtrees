@@ -52,7 +52,7 @@ class Mime
         'pdf'  => 'application/pdf',
         'png'  => 'image/png',
         'rar'  => 'application/x-rar-compressed',
-        'svg'  => 'image/svg',
+        'svg'  => 'image/svg+xml',
         'swf'  => 'application/x-shockwave-flash',
         'tif'  => 'image/tiff',
         'tiff' => 'image/tiff',
