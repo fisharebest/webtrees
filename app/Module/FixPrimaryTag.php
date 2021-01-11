@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 
 use function e;
@@ -70,7 +69,7 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
      */
     public function mediaToFix(Tree $tree, array $params): Collection
     {
-        return DB::table('media')
+        return $this->mediaToFixQuery($tree, $params)
             ->where('m_file', '=', $tree->id())
             ->where('m_gedcom', 'LIKE', "%\n1 _PRIM %")
             ->pluck('m_id');

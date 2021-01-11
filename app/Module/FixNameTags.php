@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 
@@ -106,8 +105,7 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
      */
     public function individualsToFix(Tree $tree, array $params): Collection
     {
-        return DB::table('individuals')
-            ->where('i_file', '=', $tree->id())
+        return $this->individualsToFixQuery($tree, $params)
             ->where(static function (Builder $query): void {
                 foreach (array_keys(self::CONVERT) as $tag) {
                     $query->orWhere('i_gedcom', 'LIKE', "%\n2 " . $tag . " %");

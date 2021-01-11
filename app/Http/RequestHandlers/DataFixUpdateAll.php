@@ -41,7 +41,7 @@ use function response;
 class DataFixUpdateAll implements RequestHandlerInterface
 {
     // Process this number of records in each HTTP request
-    private const CHUNK_SIZE = 100;
+    private const CHUNK_SIZE = 250;
 
     /** @var DataFixService */
     private $data_fix_service;
@@ -92,9 +92,7 @@ class DataFixUpdateAll implements RequestHandlerInterface
         }
 
         /** @var Collection<GedcomRecord> $records */
-        $records = $rows->filter(static function (stdClass $row) use ($start, $end): bool {
-            return $row->xref >= $start && $row->xref <= $end;
-        })->map(function (stdClass $row) use ($tree): ?GedcomRecord {
+        $records = $rows->map(function (stdClass $row) use ($tree): ?GedcomRecord {
             return $this->data_fix_service->getRecordByType($row->xref, $tree, $row->type);
         })->filter(static function (?GedcomRecord $record) use ($module, $params): bool {
             return $record instanceof GedcomRecord && !$record->isPendingDeletion() && $module->doesRecordNeedUpdate($record, $params);
