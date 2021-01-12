@@ -225,11 +225,6 @@ parameters:
 			path: app/GedcomRecord.php
 
 		-
-			message: "#^Parameter \\#2 \\$input1 of function array_map expects array, array\\|false given\\.$#"
-			count: 1
-			path: app/GedcomTag.php
-
-		-
 			message: "#^Parameter \\#1 \\$num of function dechex expects int, float\\|int given\\.$#"
 			count: 1
 			path: app/GedcomTag.php
@@ -376,31 +371,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$fp of function fclose expects resource, resource\\|null given\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Cannot access offset 'fqpn' on array\\|false\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Cannot access offset 'pl_lati' on array\\|false\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Cannot access offset 'pl_long' on array\\|false\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Cannot access offset 'pl_zoom' on array\\|false\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Cannot access offset 'pl_icon' on array\\|false\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/LocationController.php
 
@@ -578,6 +548,11 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\IndividualPage\\:\\:getTabs\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleTabInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/IndividualPage.php
+
+		-
+			message: "#^Parameter \\#4 \\$sort_columns of method Fisharebest\\\\Webtrees\\\\Services\\\\DatatablesService\\:\\:handleQuery\\(\\) expects array\\<string\\>, array\\<int, Illuminate\\\\Database\\\\Query\\\\Expression\\|string\\> given\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
 			message: "#^Cannot access offset '0' on array\\|false\\.$#"
@@ -970,19 +945,9 @@ parameters:
 			path: app/Module/LifespansChartModule.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\MediaListModule\\:\\:allFolders\\(\\) should return array\\<string\\> but returns array\\|false\\.$#"
-			count: 1
-			path: app/Module/MediaListModule.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Module/ModuleBlockInterface.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-theme.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -992,12 +957,17 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-middleware.disable/module.php
+			path: modules_v4/example-theme.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
 			path: modules_v4/example-report.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example-middleware.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1040,7 +1010,7 @@ parameters:
 			path: app/Module/CloudsTheme.php
 
 		-
-			message: "#^Cannot access offset mixed on array\\<int, string\\>\\|false\\.$#"
+			message: "#^Cannot access offset mixed on \\(array\\<int, string\\>&nonEmpty\\)\\|false\\.$#"
 			count: 1
 			path: app/Module/CloudsTheme.php
 
@@ -1065,7 +1035,7 @@ parameters:
 			path: app/Module/FabTheme.php
 
 		-
-			message: "#^Cannot access offset mixed on array\\<int, string\\>\\|false\\.$#"
+			message: "#^Cannot access offset mixed on \\(array\\<int, string\\>&nonEmpty\\)\\|false\\.$#"
 			count: 1
 			path: app/Module/FabTheme.php
 
@@ -1090,7 +1060,7 @@ parameters:
 			path: app/Module/MinimalTheme.php
 
 		-
-			message: "#^Cannot access offset mixed on array\\<int, string\\>\\|false\\.$#"
+			message: "#^Cannot access offset mixed on \\(array\\<int, string\\>&nonEmpty\\)\\|false\\.$#"
 			count: 1
 			path: app/Module/MinimalTheme.php
 
@@ -1115,7 +1085,7 @@ parameters:
 			path: app/Module/WebtreesTheme.php
 
 		-
-			message: "#^Cannot access offset mixed on array\\<int, string\\>\\|false\\.$#"
+			message: "#^Cannot access offset mixed on \\(array\\<int, string\\>&nonEmpty\\)\\|false\\.$#"
 			count: 1
 			path: app/Module/WebtreesTheme.php
 
@@ -1140,7 +1110,7 @@ parameters:
 			path: app/Module/XeneaTheme.php
 
 		-
-			message: "#^Cannot access offset mixed on array\\<int, string\\>\\|false\\.$#"
+			message: "#^Cannot access offset mixed on \\(array\\<int, string\\>&nonEmpty\\)\\|false\\.$#"
 			count: 1
 			path: app/Module/XeneaTheme.php
 
@@ -1757,11 +1727,6 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$size of method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:parseIniFileSize\\(\\) expects string, string\\|false given\\.$#"
 			count: 2
-			path: app/Services/MediaFileService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:unusedFiles\\(\\) should return array\\<string\\> but returns array\\|false\\.$#"
-			count: 1
 			path: app/Services/MediaFileService.php
 
 		-

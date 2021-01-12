@@ -102,7 +102,7 @@ class ManageMediaData implements RequestHandlerInterface
 
         $sort_columns = [
             0 => 'multimedia_file_refn',
-            2 => (string) new Expression('descriptive_title || multimedia_file_refn'),
+            2 => new Expression('descriptive_title || multimedia_file_refn'),
         ];
 
         // Convert a row from the database into a row for datatables
@@ -180,7 +180,7 @@ class ManageMediaData implements RequestHandlerInterface
                         'media.*',
                         'multimedia_file_refn',
                         'descriptive_title',
-                        (string) new Expression("'' AS media_folder"),
+                        new Expression("'' AS media_folder"),
                     ]);
 
                 return $this->datatables_service->handleQuery($request, $query, $search_columns, $sort_columns, $callback);
