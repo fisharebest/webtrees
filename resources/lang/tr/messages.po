@@ -6863,7 +6863,7 @@ msgstr "Google™ analytics"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
-msgstr ""
+msgstr "Google™ webmaster tools"
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:754
@@ -8943,8 +8943,9 @@ msgid "Match the exact text, unless it occurs in the middle of a word."
 msgstr "Bir kelimenin ortasında olmadığı sürece tam metin eşleştir."
 
 #: app/Module/MatomoAnalyticsModule.php:42
+#, fuzzy
 msgid "Matomo™ / Piwik™ analytics"
-msgstr ""
+msgstr "Matomo™ / Piwik™ analytics"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -13190,8 +13191,9 @@ msgid "Starting range of change dates"
 msgstr "Değişen tarihlerin başlama aralığı"
 
 #: app/Module/StatcounterModule.php:41
+#, fuzzy
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:991
@@ -16783,15 +16785,15 @@ msgctxt "wife’s father"
 msgid "father-in-law"
 msgstr "kayın baba"
 
-#: app/Functions/Functions.php:640
+#: app/Functions/Functions.php:636
 msgid "fiancé"
 msgstr ""
 
-#: app/Functions/Functions.php:687
+#: app/Functions/Functions.php:683
 msgid "fiancé(e)"
 msgstr ""
 
-#: app/Functions/Functions.php:664
+#: app/Functions/Functions.php:660
 msgid "fiancée"
 msgstr ""
 
