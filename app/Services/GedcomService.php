@@ -24,12 +24,6 @@ namespace Fisharebest\Webtrees\Services;
  */
 class GedcomService
 {
-    // Gedcom allows 255 characters (not bytes), including the EOL character.
-    private const EOL         = "\r\n";
-    private const EOL_REGEX   = '\r|\r\n|\n|\n\r';
-    private const LINE_LENGTH = 255 - 2;
-
-
     // User defined tags begin with an underscore
     private const USER_DEFINED_TAG_PREFIX = '_';
 

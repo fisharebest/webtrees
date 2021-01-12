@@ -64,7 +64,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
     // Limits
     public const MAXIMUM_GENERATIONS = 10;
-    private const MINZOOM            = 2;
 
     // CSS colors for each generation
     private const COLORS = [

@@ -48,7 +48,6 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
     ];
 
     // Can show this number of days into the future.
-    private const MIN_DAYS = 1;
     private const MAX_DAYS = 30;
 
     // Pagination

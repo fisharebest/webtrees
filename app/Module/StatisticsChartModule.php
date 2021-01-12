@@ -52,12 +52,6 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 {
     use ModuleChartTrait;
 
-    // We generate a bitmap chart with these dimensions in image pixels.
-    // These set the aspect ratio.  The actual image is sized using CSS
-    // The maximum size (width x height) is 300,000
-    private const CHART_WIDTH  = 950;
-    private const CHART_HEIGHT = 315;
-
     public const X_AXIS_INDIVIDUAL_MAP        = 1;
     public const X_AXIS_BIRTH_MAP             = 2;
     public const X_AXIS_DEATH_MAP             = 3;
