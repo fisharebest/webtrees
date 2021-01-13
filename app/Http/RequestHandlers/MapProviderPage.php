@@ -17,45 +17,35 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers\Admin;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
- * Controller for maps and geographic data.
+ * Select a map provider.
  */
-class MapProviderController extends AbstractAdminController
+class MapProviderPage implements RequestHandlerInterface
 {
+    use ViewResponseTrait;
+
     /**
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function mapProviderEdit(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $this->layout = 'layouts/administration';
+
         return $this->viewResponse('admin/map-provider', [
             'title'    => I18N::translate('Map provider'),
             'provider' => Site::getPreference('map-provider'),
             'geonames' => Site::getPreference('geonames'),
         ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function mapProviderSave(ServerRequestInterface $request): ResponseInterface
-    {
-        $settings = (array) $request->getParsedBody();
-
-        Site::setPreference('map-provider', $settings['provider']);
-        Site::setPreference('geonames', $settings['geonames']);
-
-        return redirect(route(ControlPanel::class));
     }
 }

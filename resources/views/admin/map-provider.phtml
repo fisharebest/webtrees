@@ -1,13 +1,20 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapProviderAction;
 use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var string $geonames
+ * @var string $provider
+ * @var string $title
+ */
 
 ?>
 
 <?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
 
-<form method="post">
+<form method="post" action="<?= e(route(MapProviderAction::class)) ?>">
     <?= csrf_field() ?>
 
     <div class="form-group">

@@ -8,6 +8,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapProviderPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MergeTreesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAnalyticsPage;
@@ -756,7 +757,7 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/map') ?></span>
-                        <a href="<?= e(route('map-provider')) ?>">
+                        <a href="<?= e(route(MapProviderPage::class)) ?>">
                             <?= I18N::translate('Map provider') ?>
                         </a>
                     </li>

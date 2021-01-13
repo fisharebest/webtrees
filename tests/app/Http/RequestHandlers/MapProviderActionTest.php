@@ -17,41 +17,29 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers\Admin;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test the changes log controller
+ * Test the MapProviderAction request handler.
  *
- * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\MapProviderController
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapProviderAction
  */
-class MapProviderControllerTest extends TestCase
+class MapProviderActionTest extends TestCase
 {
     protected static $uses_database = true;
 
     /**
      * @return void
      */
-    public function testMapProviderEdit(): void
+    public function testMapProviderAction(): void
     {
-        $controller = new MapProviderController();
-        $request    = self::createRequest();
-        $response   = $controller->mapProviderEdit($request);
-
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-    }
-
-    /**
-     * @return void
-     */
-    public function testMapProviderSave(): void
-    {
-        $controller = new MapProviderController();
-        $request    = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['provider' => '', 'geonames' => '']);
-        $response   = $controller->mapProviderSave($request);
+        $handler  = new MapProviderAction();
+        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['provider' => '', 'geonames' => '']);
+        $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
