@@ -82,8 +82,8 @@ class PendingChangesLogData implements RequestHandlerInterface
         $query = $this->pending_changes_service->changesQuery($params);
 
         $callback = function (stdClass $row) use ($tree): array {
-            $old_lines = explode("\n", $row->old_gedcom);
-            $new_lines = explode("\n", $row->new_gedcom);
+            $old_lines = $row->old_gedcom === '' ? [] : explode("\n", $row->old_gedcom);
+            $new_lines = $row->new_gedcom === '' ? [] : explode("\n", $row->new_gedcom);
 
             $differences = $this->myers_diff->calculate($old_lines, $new_lines);
             $diff_lines  = [];
