@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2020-05-01 09:45+0000\n"
+"PO-Revision-Date: 2021-01-15 18:36+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/he/>\n"
@@ -15461,7 +15461,7 @@ msgstr "עבד"
 #: app/GedcomCode/GedcomCodeRela.php:252 app/GedcomCode/GedcomCodeRela.php:330
 msgctxt "FEMALE"
 msgid "Slave"
-msgstr "אמה"
+msgstr "שפחה"
 
 #: app/GedcomCode/GedcomCodeRela.php:250 app/GedcomCode/GedcomCodeRela.php:326
 msgctxt "MALE"
