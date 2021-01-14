@@ -12907,7 +12907,7 @@ msgstr "עבד"
 #: app/GedcomCode/GedcomCodeRela.php:332
 msgctxt "FEMALE"
 msgid "Slave"
-msgstr "אמה"
+msgstr "שפחה"
 
 #: app/GedcomCode/GedcomCodeRela.php:328
 msgctxt "MALE"
