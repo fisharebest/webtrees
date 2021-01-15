@@ -30,7 +30,16 @@ use Fisharebest\Webtrees\I18N;
     </a>
 </p>
 
-<table class="table table-bordered table-sm">
+<table
+    class="table table-bordered table-sm datatables d-none"
+    <?= view('lists/datatables-attributes') ?>
+    data-columns="<?= e(json_encode([
+       null,
+       null,
+       ['sortable' => false],
+       ['sortable' => false],
+    ])) ?>"
+>
     <thead>
         <tr>
             <th><?= I18N::translate('Individual') ?></th>
