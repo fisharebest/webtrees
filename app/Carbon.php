@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Carbon\CarbonImmutable;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 
 use function gregoriantojd;
 
@@ -48,7 +49,7 @@ class Carbon extends CarbonImmutable
      */
     public function local(): Carbon
     {
-        $timezone = Auth::user()->getPreference(User::PREF_TIME_ZONE, Site::getPreference('TIMEZONE', 'UTC'));
+        $timezone = Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, Site::getPreference('TIMEZONE', 'UTC'));
 
         // Changing locale does not create a new immutable object.
         $this->locale(I18N::locale()->code());

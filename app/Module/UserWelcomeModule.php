@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,13 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Support\Str;
 
 /**
@@ -85,7 +85,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $gedcomid   = $tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF);
+        $gedcomid   = $tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
         $individual = Registry::individualFactory()->make($gedcomid, $tree);
         $links      = [];
 

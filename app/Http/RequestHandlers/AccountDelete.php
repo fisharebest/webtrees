@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -59,7 +60,7 @@ class AccountDelete implements RequestHandlerInterface
         $user = $request->getAttribute('user');
 
         // An administrator can only be deleted by another administrator
-        if ($user instanceof User && $user->getPreference(User::PREF_IS_ADMINISTRATOR) !== '1') {
+        if ($user instanceof User && $user->getPreference(UserInterface::PREF_IS_ADMINISTRATOR) !== '1') {
             $this->user_service->delete($user);
             Auth::logout();
         }

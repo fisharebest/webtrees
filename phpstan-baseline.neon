@@ -375,11 +375,6 @@ parameters:
 			path: app/Http/Controllers/Admin/LocationController.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\Admin\\\\UsersController\\:\\:themeOptions\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/UsersController.php
-
-		-
 			message: "#^Parameter \\#1 \\$path of method Psr\\\\Http\\\\Message\\\\UriInterface\\:\\:withPath\\(\\) expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/Middleware/BaseUrl.php

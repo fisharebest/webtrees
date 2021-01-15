@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\TestCase;
@@ -45,10 +46,10 @@ class AuthModeratorTest extends TestCase
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
         $user = self::createMock(User::class);
-        $user->method('getPreference')->with(User::PREF_IS_ADMINISTRATOR)->willReturn('');
+        $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('');
 
         $tree = self::createMock(Tree::class);
-        $tree->method('getUserPreference')->with($user, User::PREF_TREE_ROLE)->willReturn(User::ROLE_MODERATOR);
+        $tree->method('getUserPreference')->with($user, UserInterface::PREF_TREE_ROLE)->willReturn(UserInterface::ROLE_MODERATOR);
 
         $request    = self::createRequest()->withAttribute('tree', $tree)->withAttribute('user', $user);
         $middleware = new AuthModerator();
@@ -70,10 +71,10 @@ class AuthModeratorTest extends TestCase
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
         $user = self::createMock(User::class);
-        $user->method('getPreference')->with(User::PREF_IS_ADMINISTRATOR)->willReturn('');
+        $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('');
 
         $tree = self::createMock(Tree::class);
-        $tree->method('getUserPreference')->with($user, User::PREF_TREE_ROLE)->willReturn('edit');
+        $tree->method('getUserPreference')->with($user, UserInterface::PREF_TREE_ROLE)->willReturn(UserInterface::ROLE_EDITOR);
 
         $request    = self::createRequest()->withAttribute('tree', $tree)->withAttribute('user', $user);
         $middleware = new AuthModerator();

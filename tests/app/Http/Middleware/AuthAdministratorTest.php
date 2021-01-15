@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\TestCase;
@@ -44,7 +45,7 @@ class AuthAdministratorTest extends TestCase
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
         $user = self::createMock(User::class);
-        $user->method('getPreference')->with(User::PREF_IS_ADMINISTRATOR)->willReturn('1');
+        $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('1');
 
         $request    = self::createRequest()->withAttribute('user', $user);
         $middleware = new AuthAdministrator();
@@ -66,7 +67,7 @@ class AuthAdministratorTest extends TestCase
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
         $user = self::createMock(User::class);
-        $user->method('getPreference')->with(User::PREF_IS_ADMINISTRATOR)->willReturn('');
+        $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('');
 
         $request    = self::createRequest()->withAttribute('user', $user);
         $middleware = new AuthAdministrator();

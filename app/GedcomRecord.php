@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Exception;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\Services\PendingChangesService;
@@ -1001,7 +1002,7 @@ class GedcomRecord
 
             $this->pending = $new_gedcom;
 
-            if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
+            if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
                 app(PendingChangesService::class)->acceptRecord($this);
                 $this->gedcom  = $new_gedcom;
                 $this->pending = null;
@@ -1048,7 +1049,7 @@ class GedcomRecord
         $this->pending = $gedcom;
 
         // Accept this pending change
-        if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
+        if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             app(PendingChangesService::class)->acceptRecord($this);
             $this->gedcom  = $gedcom;
             $this->pending = null;
@@ -1078,7 +1079,7 @@ class GedcomRecord
         }
 
         // Auto-accept this pending change
-        if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
+        if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             app(PendingChangesService::class)->acceptRecord($this);
         }
 
@@ -1298,7 +1299,7 @@ class GedcomRecord
         }
 
         // We should always be able to see our own record (unless an admin is applying download restrictions)
-        if ($this->xref() === $this->tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF) && $access_level === Auth::accessLevel($this->tree)) {
+        if ($this->xref() === $this->tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF) && $access_level === Auth::accessLevel($this->tree)) {
             return true;
         }
 

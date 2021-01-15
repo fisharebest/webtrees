@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -468,7 +468,7 @@ class Tree
         ]);
 
         // Accept this pending change
-        if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS)) {
+        if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record = Registry::gedcomRecordFactory()->new($xref, $gedcom, null, $this);
 
             app(PendingChangesService::class)->acceptRecord($record);
@@ -522,7 +522,7 @@ class Tree
         ]);
 
         // Accept this pending change
-        if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
+        if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record = Registry::familyFactory()->new($xref, $gedcom, null, $this);
 
             app(PendingChangesService::class)->acceptRecord($record);
@@ -565,7 +565,7 @@ class Tree
         ]);
 
         // Accept this pending change
-        if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
+        if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record = Registry::individualFactory()->new($xref, $gedcom, null, $this);
 
             app(PendingChangesService::class)->acceptRecord($record);
@@ -608,7 +608,7 @@ class Tree
         ]);
 
         // Accept this pending change
-        if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
+        if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record = Registry::mediaFactory()->new($xref, $gedcom, null, $this);
 
             app(PendingChangesService::class)->acceptRecord($record);
@@ -643,12 +643,12 @@ class Tree
             }
         }
 
-        if ($individual === null && $this->getUserPreference($user, User::PREF_TREE_DEFAULT_XREF) !== '') {
-            $individual = Registry::individualFactory()->make($this->getUserPreference($user, User::PREF_TREE_DEFAULT_XREF), $this);
+        if ($individual === null && $this->getUserPreference($user, UserInterface::PREF_TREE_DEFAULT_XREF) !== '') {
+            $individual = Registry::individualFactory()->make($this->getUserPreference($user, UserInterface::PREF_TREE_DEFAULT_XREF), $this);
         }
 
-        if ($individual === null && $this->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF) !== '') {
-            $individual = Registry::individualFactory()->make($this->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF), $this);
+        if ($individual === null && $this->getUserPreference($user, UserInterface::PREF_TREE_ACCOUNT_XREF) !== '') {
+            $individual = Registry::individualFactory()->make($this->getUserPreference($user, UserInterface::PREF_TREE_ACCOUNT_XREF), $this);
         }
 
         if ($individual === null && $this->getPreference('PEDIGREE_ROOT_ID') !== '') {

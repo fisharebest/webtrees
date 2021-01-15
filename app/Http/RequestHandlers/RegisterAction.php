@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Exception;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -33,7 +34,6 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
@@ -118,18 +118,18 @@ class RegisterAction implements RequestHandlerInterface
         $user  = $this->user_service->create($username, $realname, $email, $password);
         $token = Str::random(32);
 
-        $user->setPreference(User::PREF_LANGUAGE, I18N::languageTag());
-        $user->setPreference(User::PREF_TIME_ZONE, Site::getPreference('TIMEZONE', 'UTC'));
-        $user->setPreference(User::PREF_IS_EMAIL_VERIFIED, '');
-        $user->setPreference(User::PREF_IS_ACCOUNT_APPROVED, '');
-        $user->setPreference(User::PREF_TIMESTAMP_REGISTERED, date('U'));
-        $user->setPreference(User::PREF_VERIFICATION_TOKEN, $token);
-        $user->setPreference(User::PREF_CONTACT_METHOD, 'messaging2');
-        $user->setPreference(User::PREF_NEW_ACCOUNT_COMMENT, $comment);
-        $user->setPreference(User::PREF_IS_VISIBLE_ONLINE, '1');
-        $user->setPreference(User::PREF_AUTO_ACCEPT_EDITS, '');
-        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '');
-        $user->setPreference(User::PREF_TIMESTAMP_ACTIVE, '0');
+        $user->setPreference(UserInterface::PREF_LANGUAGE, I18N::languageTag());
+        $user->setPreference(UserInterface::PREF_TIME_ZONE, Site::getPreference('TIMEZONE', 'UTC'));
+        $user->setPreference(UserInterface::PREF_IS_EMAIL_VERIFIED, '');
+        $user->setPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED, '');
+        $user->setPreference(UserInterface::PREF_TIMESTAMP_REGISTERED, date('U'));
+        $user->setPreference(UserInterface::PREF_VERIFICATION_TOKEN, $token);
+        $user->setPreference(UserInterface::PREF_CONTACT_METHOD, 'messaging2');
+        $user->setPreference(UserInterface::PREF_NEW_ACCOUNT_COMMENT, $comment);
+        $user->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, '1');
+        $user->setPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS, '');
+        $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '');
+        $user->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, '0');
 
         $base_url = $request->getAttribute('base_url');
         $reply_to = $tree instanceof Tree ? new TreeUser($tree) : new SiteUser();
@@ -153,7 +153,7 @@ class RegisterAction implements RequestHandlerInterface
 
         // Tell the administrators about the registration.
         foreach ($this->user_service->administrators() as $administrator) {
-            I18N::init($administrator->getPreference(User::PREF_LANGUAGE));
+            I18N::init($administrator->getPreference(UserInterface::PREF_LANGUAGE));
 
             /* I18N: %s is a server name/URL */
             $subject = I18N::translate('New registration at %s', $base_url);
@@ -183,7 +183,7 @@ class RegisterAction implements RequestHandlerInterface
                 $body_html
             );
 
-            $mail1_method = $administrator->getPreference(User::PREF_CONTACT_METHOD);
+            $mail1_method = $administrator->getPreference(UserInterface::PREF_CONTACT_METHOD);
             if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
                 DB::table('message')->insert([
                     'sender'     => $user->email(),

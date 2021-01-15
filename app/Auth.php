@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -70,7 +70,7 @@ class Auth
     {
         $user = $user ?? self::user();
 
-        return $user->getPreference(User::PREF_IS_ADMINISTRATOR) === '1';
+        return $user->getPreference(UserInterface::PREF_IS_ADMINISTRATOR) === '1';
     }
 
     /**
@@ -85,7 +85,7 @@ class Auth
     {
         $user = $user ?? self::user();
 
-        return self::isAdmin($user) || $tree->getUserPreference($user, User::PREF_TREE_ROLE) === User::ROLE_MANAGER;
+        return self::isAdmin($user) || $tree->getUserPreference($user, UserInterface::PREF_TREE_ROLE) === UserInterface::ROLE_MANAGER;
     }
 
     /**
@@ -100,7 +100,9 @@ class Auth
     {
         $user = $user ?? self::user();
 
-        return self::isManager($tree, $user) || $tree->getUserPreference($user, User::PREF_TREE_ROLE) === User::ROLE_MODERATOR;
+        return
+            self::isManager($tree, $user) ||
+            $tree->getUserPreference($user, UserInterface::PREF_TREE_ROLE) === UserInterface::ROLE_MODERATOR;
     }
 
     /**
@@ -115,7 +117,9 @@ class Auth
     {
         $user = $user ?? self::user();
 
-        return self::isModerator($tree, $user) || $tree->getUserPreference($user, User::PREF_TREE_ROLE) === 'edit';
+        return
+            self::isModerator($tree, $user) ||
+            $tree->getUserPreference($user, UserInterface::PREF_TREE_ROLE) === UserInterface::ROLE_EDITOR;
     }
 
     /**
@@ -130,7 +134,9 @@ class Auth
     {
         $user = $user ?? self::user();
 
-        return self::isEditor($tree, $user) || $tree->getUserPreference($user, User::PREF_TREE_ROLE) === 'access';
+        return
+            self::isEditor($tree, $user) ||
+            $tree->getUserPreference($user, UserInterface::PREF_TREE_ROLE) === UserInterface::ROLE_MEMBER;
     }
 
     /**

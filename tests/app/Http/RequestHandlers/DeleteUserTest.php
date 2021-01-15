@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Services\UserService;
@@ -79,7 +80,7 @@ class DeleteUserTest extends TestCase
 
         $user = self::createMock(User::class);
         $user->method('id')->willReturn(1);
-        $user->expects(self::once())->method('getPreference')->with(User::PREF_IS_ADMINISTRATOR)->willReturn('1');
+        $user->expects(self::once())->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('1');
 
         $user_service = self::createMock(UserService::class);
         $user_service->expects(self::once())->method('find')->willReturn($user);

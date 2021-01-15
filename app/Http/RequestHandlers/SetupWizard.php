@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,6 +25,7 @@ use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Cache;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Factories\CacheFactory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
@@ -35,7 +36,6 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
-use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
@@ -405,15 +405,15 @@ class SetupWizard implements RequestHandlerInterface
         // Create the user
         if ($admin === null) {
             $admin = $this->user_service->create($data['wtuser'], $data['wtname'], $data['wtemail'], $data['wtpass']);
-            $admin->setPreference(User::PREF_LANGUAGE, $data['lang']);
-            $admin->setPreference(User::PREF_IS_VISIBLE_ONLINE, '1');
+            $admin->setPreference(UserInterface::PREF_LANGUAGE, $data['lang']);
+            $admin->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, '1');
         } else {
             $admin->setPassword($_POST['wtpass']);
         }
         // Make the user an administrator
-        $admin->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
-        $admin->setPreference(User::PREF_IS_EMAIL_VERIFIED, '1');
-        $admin->setPreference(User::PREF_IS_ACCOUNT_APPROVED, '1');
+        $admin->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
+        $admin->setPreference(UserInterface::PREF_IS_EMAIL_VERIFIED, '1');
+        $admin->setPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED, '1');
 
         // Write the config file. We already checked that this would work.
         $config_ini_php = view('setup/config.ini', $data);

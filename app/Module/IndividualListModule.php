@@ -662,20 +662,15 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             ->orderBy('initial')
             ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression('UPPER(SUBSTR(n_givn, 1, 1)) AS initial'));
 
-        $specials = ['@'];
-
         foreach ($rows as $alpha => $count) {
             if ($alpha !== '@') {
                 $alphas[$alpha] = (int) $count;
             }
         }
 
-        foreach ($specials as $special) {
-            if ($rows->has('@')) {
-                $alphas['@'] = (int) $rows['@'];
-            }
+        if ($rows->has('@')) {
+            $alphas['@'] = (int) $rows['@'];
         }
-
 
         return $alphas;
     }

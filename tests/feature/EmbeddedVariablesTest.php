@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -81,7 +82,7 @@ class EmbeddedVariablesTest extends TestCase
 
         // As member
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
-        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
+        $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $text = $statistics->embedTags('#getAllTagsTable#');
@@ -103,7 +104,7 @@ class EmbeddedVariablesTest extends TestCase
 
         // As member
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
-        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
+        $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $text = $statistics->embedTags('#getAllTagsTable#');

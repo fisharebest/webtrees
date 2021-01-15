@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,7 +32,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
@@ -201,7 +200,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
             $this->layout = 'layouts/ajax';
 
             // Highlight direct-line ancestors of this individual.
-            $xref = $tree->getUserPreference($user, User::PREF_TREE_ACCOUNT_XREF);
+            $xref = $tree->getUserPreference($user, UserInterface::PREF_TREE_ACCOUNT_XREF);
             $self = Registry::individualFactory()->make($xref, $tree);
 
             if ($surname !== '') {

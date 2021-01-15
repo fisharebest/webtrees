@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -26,7 +27,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -80,7 +80,7 @@ class MessageAction implements RequestHandlerInterface
         $to_user = $this->user_service->findByUserName($to);
         $ip      = $request->getAttribute('client-ip');
 
-        if ($to_user === null || $to_user->getPreference(User::PREF_CONTACT_METHOD) === 'none') {
+        if ($to_user === null || $to_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === 'none') {
             throw new HttpAccessDeniedException('Invalid contact user id');
         }
 

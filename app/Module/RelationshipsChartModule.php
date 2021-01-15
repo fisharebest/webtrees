@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,7 @@ use Closure;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Algorithm\Dijkstra;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
@@ -32,7 +33,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
@@ -131,7 +131,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     public function chartMenu(Individual $individual): Menu
     {
-        $gedcomid = $individual->tree()->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF);
+        $gedcomid = $individual->tree()->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
 
         if ($gedcomid !== '' && $gedcomid !== $individual->xref()) {
             return new Menu(

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,12 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -88,18 +88,18 @@ class TreeService
                     ->leftJoin('user_gedcom_setting', static function (JoinClause $join): void {
                         $join->on('user_gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
                             ->where('user_gedcom_setting.user_id', '=', Auth::id())
-                            ->where('user_gedcom_setting.setting_name', '=', User::PREF_TREE_ROLE);
+                            ->where('user_gedcom_setting.setting_name', '=', UserInterface::PREF_TREE_ROLE);
                     })
                     ->where(static function (Builder $query): void {
                         $query
                             // Managers
-                            ->where('user_gedcom_setting.setting_value', '=', User::ROLE_MANAGER)
+                            ->where('user_gedcom_setting.setting_value', '=', UserInterface::ROLE_MANAGER)
                             // Members
                             ->orWhere(static function (Builder $query): void {
                                 $query
                                     ->where('gs2.setting_value', '=', '1')
                                     ->where('gs3.setting_value', '=', '1')
-                                    ->where('user_gedcom_setting.setting_value', '<>', User::ROLE_VISITOR);
+                                    ->where('user_gedcom_setting.setting_value', '<>', UserInterface::ROLE_VISITOR);
                             })
                             // Public trees
                             ->orWhere(static function (Builder $query): void {

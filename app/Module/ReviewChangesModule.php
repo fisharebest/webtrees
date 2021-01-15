@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\I18N;
@@ -31,7 +32,6 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
@@ -122,10 +122,10 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             if ($next_email_timestamp < Carbon::now()) {
                 // Which users have pending changes?
                 foreach ($this->user_service->all() as $user) {
-                    if ($user->getPreference(User::PREF_CONTACT_METHOD) !== 'none') {
+                    if ($user->getPreference(UserInterface::PREF_CONTACT_METHOD) !== 'none') {
                         foreach ($this->tree_service->all() as $tmp_tree) {
                             if ($tmp_tree->hasPendingEdit() && Auth::isManager($tmp_tree, $user)) {
-                                I18N::init($user->getPreference(User::PREF_LANGUAGE));
+                                I18N::init($user->getPreference(UserInterface::PREF_LANGUAGE));
 
                                 $this->email_service->send(
                                     new SiteUser(),

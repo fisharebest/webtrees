@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,11 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;
@@ -82,7 +82,7 @@ class MergeFactsAction implements RequestHandlerInterface
         }
 
         // If we are not auto-accepting, then we can show a link to the pending deletion
-        if (Auth::user()->getPreference(User::PREF_AUTO_ACCEPT_EDITS) === '1') {
+        if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record2_name = $record2->fullName();
         } else {
             $record2_name = '<a class="alert-link" href="' . e($record2->url()) . '">' . $record2->fullName() . '</a>';
@@ -112,7 +112,7 @@ class MergeFactsAction implements RequestHandlerInterface
         // Update any linked user-accounts
         DB::table('user_gedcom_setting')
             ->where('gedcom_id', '=', $tree->id())
-            ->whereIn('setting_name', [User::PREF_TREE_ACCOUNT_XREF, User::PREF_TREE_DEFAULT_XREF])
+            ->whereIn('setting_name', [UserInterface::PREF_TREE_ACCOUNT_XREF, UserInterface::PREF_TREE_DEFAULT_XREF])
             ->where('setting_value', '=', $xref2)
             ->update(['setting_value' => $xref1]);
 

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -91,7 +91,7 @@ class MessageService
 
         // Temporarily switch to the recipient's language
         $old_language = I18N::languageTag();
-        I18N::init($recipient->getPreference(User::PREF_LANGUAGE));
+        I18N::init($recipient->getPreference(UserInterface::PREF_LANGUAGE));
 
         $body_text = view('emails/message-user-text', [
             'sender'    => $sender,
@@ -144,7 +144,7 @@ class MessageService
      */
     public function sendInternalMessage(UserInterface $user): bool
     {
-        return in_array($user->getPreference(User::PREF_CONTACT_METHOD), [
+        return in_array($user->getPreference(UserInterface::PREF_CONTACT_METHOD), [
             'messaging',
             'messaging2',
             'mailto',
@@ -161,7 +161,7 @@ class MessageService
      */
     public function sendEmail(UserInterface $user): bool
     {
-        return in_array($user->getPreference(User::PREF_CONTACT_METHOD), [
+        return in_array($user->getPreference(UserInterface::PREF_CONTACT_METHOD), [
             'messaging2',
             'messaging3',
             'mailto',
@@ -184,13 +184,13 @@ class MessageService
                 return $this->user_service->all();
             case 'never_logged':
                 return $this->user_service->all()->filter(static function (UserInterface $user): bool {
-                    return $user->getPreference(User::PREF_IS_ACCOUNT_APPROVED) === '1' && $user->getPreference(User::PREF_TIMESTAMP_REGISTERED) > $user->getPreference(User::PREF_TIMESTAMP_ACTIVE);
+                    return $user->getPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED) === '1' && $user->getPreference(UserInterface::PREF_TIMESTAMP_REGISTERED) > $user->getPreference(UserInterface::PREF_TIMESTAMP_ACTIVE);
                 });
             case 'last_6mo':
                 $six_months_ago = Carbon::now()->subMonths(6)->unix();
 
                 return $this->user_service->all()->filter(static function (UserInterface $user) use ($six_months_ago): bool {
-                    $session_time = (int) $user->getPreference(User::PREF_TIMESTAMP_ACTIVE);
+                    $session_time = (int) $user->getPreference(UserInterface::PREF_TIMESTAMP_ACTIVE);
 
                     return $session_time > 0 && $session_time < $six_months_ago;
                 });

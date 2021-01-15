@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountUpdate;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
@@ -48,14 +49,14 @@ class AccountUpdateTest extends TestCase
         $user->expects(self::exactly(4))
             ->method('setPreference')
             ->withConsecutive(
-                [User::PREF_CONTACT_METHOD, 'a'],
-                [User::PREF_LANGUAGE, 'c'],
-                [User::PREF_TIME_ZONE, 'g'],
-                [User::PREF_IS_VISIBLE_ONLINE, 'i']
+                [UserInterface::PREF_CONTACT_METHOD, 'a'],
+                [UserInterface::PREF_LANGUAGE, 'c'],
+                [UserInterface::PREF_TIME_ZONE, 'g'],
+                [UserInterface::PREF_IS_VISIBLE_ONLINE, 'i']
             );
 
         $tree = self::createMock(Tree::class);
-        $tree->expects(self::once())->method('setUserPreference')->with($user, User::PREF_TREE_DEFAULT_XREF, 'f');
+        $tree->expects(self::once())->method('setUserPreference')->with($user, UserInterface::PREF_TREE_DEFAULT_XREF, 'f');
 
         $handler  = new AccountUpdate($user_service);
         $request  = self::createRequest()

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
@@ -31,7 +32,6 @@ use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
@@ -153,7 +153,7 @@ class RenumberTreeAction implements RequestHandlerInterface
                     DB::table('user_gedcom_setting')
                         ->where('gedcom_id', '=', $tree->id())
                         ->where('setting_value', '=', $old_xref)
-                        ->whereIn('setting_name', [User::PREF_TREE_ACCOUNT_XREF, User::PREF_TREE_DEFAULT_XREF])
+                        ->whereIn('setting_name', [UserInterface::PREF_TREE_ACCOUNT_XREF, UserInterface::PREF_TREE_DEFAULT_XREF])
                         ->update([
                             'setting_value' => $new_xref,
                         ]);

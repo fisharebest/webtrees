@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Fisharebest\ExtCalendar\GregorianCalendar;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
@@ -180,8 +181,8 @@ class Individual extends GedcomRecord
             }
         }
         // Consider relationship privacy (unless an admin is applying download restrictions)
-        $user_path_length = (int) $this->tree->getUserPreference(Auth::user(), User::PREF_TREE_PATH_LENGTH);
-        $gedcomid         = $this->tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF);
+        $user_path_length = (int) $this->tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_PATH_LENGTH);
+        $gedcomid         = $this->tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
 
         if ($gedcomid !== '' && $user_path_length > 0) {
             return self::isRelated($this, $user_path_length);
@@ -203,7 +204,7 @@ class Individual extends GedcomRecord
     {
         static $cache = null;
 
-        $user_individual = Registry::individualFactory()->make($target->tree->getUserPreference(Auth::user(), User::PREF_TREE_ACCOUNT_XREF), $target->tree);
+        $user_individual = Registry::individualFactory()->make($target->tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF), $target->tree);
         if ($user_individual) {
             if (!$cache) {
                 $cache = [

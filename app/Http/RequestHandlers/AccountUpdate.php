@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
@@ -97,14 +98,14 @@ class AccountUpdate implements RequestHandlerInterface
         }
 
         $user->setRealName($real_name);
-        $user->setPreference(User::PREF_CONTACT_METHOD, $contact_method);
-        $user->setPreference(User::PREF_LANGUAGE, $language);
-        $user->setPreference(User::PREF_TIME_ZONE, $time_zone);
-        $user->setPreference(User::PREF_IS_VISIBLE_ONLINE, $visible_online);
+        $user->setPreference(UserInterface::PREF_CONTACT_METHOD, $contact_method);
+        $user->setPreference(UserInterface::PREF_LANGUAGE, $language);
+        $user->setPreference(UserInterface::PREF_TIME_ZONE, $time_zone);
+        $user->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, $visible_online);
 
         if ($tree instanceof Tree) {
             $default_xref = $params['default-xref'];
-            $tree->setUserPreference($user, User::PREF_TREE_DEFAULT_XREF, $default_xref);
+            $tree->setUserPreference($user, UserInterface::PREF_TREE_DEFAULT_XREF, $default_xref);
         }
 
         // Switch to the new language now

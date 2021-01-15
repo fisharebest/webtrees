@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
@@ -27,7 +28,6 @@ use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
-use Fisharebest\Webtrees\User;
 use League\Flysystem\Adapter\NullAdapter;
 use League\Flysystem\Filesystem;
 
@@ -80,7 +80,7 @@ class DescendancyReportModuleTest extends TestCase
         $module_service  = new ModuleService();
 
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
-        $user->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
+        $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $tree   = $this->importTree('demo.ged');

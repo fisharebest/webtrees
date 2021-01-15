@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\UserService;
 
 use function strip_tags;
@@ -57,22 +58,22 @@ class Privacy extends TestCase
         $user_service = new UserService();
 
         $admin = $user_service->create('admin', 'admin', 'admin', '*');
-        $admin->setPreference(User::PREF_IS_ADMINISTRATOR, '1');
+        $admin->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
 
         $manager = $user_service->create('manager', 'manager', 'manager', '*');
-        $tree->setUserPreference($manager, User::PREF_TREE_ROLE, User::ROLE_MANAGER);
+        $tree->setUserPreference($manager, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MANAGER);
 
         $moderator = $user_service->create('moderator', 'moderator', 'moderator', '*');
-        $tree->setUserPreference($moderator, User::PREF_TREE_ROLE, User::ROLE_MODERATOR);
+        $tree->setUserPreference($moderator, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MODERATOR);
 
         $editor = $user_service->create('editor', 'editor', 'editor', '*');
-        $tree->setUserPreference($editor, User::PREF_TREE_ROLE, User::ROLE_EDITOR);
+        $tree->setUserPreference($editor, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_EDITOR);
 
         $member = $user_service->create('member', 'member', 'member', '*');
-        $tree->setUserPreference($member, User::PREF_TREE_ROLE, User::ROLE_MEMBER);
+        $tree->setUserPreference($member, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MEMBER);
 
         $visitor = $user_service->create('visitor', 'visitor', 'visitor', '*');
-        $tree->setUserPreference($visitor, User::PREF_TREE_ROLE, User::ROLE_VISITOR);
+        $tree->setUserPreference($visitor, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_VISITOR);
 
         // Enable privacy functions
         $tree->setPreference('HIDE_LIVE_PEOPLE', '1');
@@ -154,10 +155,10 @@ class Privacy extends TestCase
         // Relationship privacy
         Auth::login($member);
         self::assertTrue($beatrice->canShow());
-        $tree->setUserPreference($member, User::PREF_TREE_ACCOUNT_XREF, $savannah->xref());
-        $tree->setUserPreference($member, User::PREF_TREE_PATH_LENGTH, '3');
+        $tree->setUserPreference($member, UserInterface::PREF_TREE_ACCOUNT_XREF, $savannah->xref());
+        $tree->setUserPreference($member, UserInterface::PREF_TREE_PATH_LENGTH, '3');
         self::assertFalse($beatrice->canShow());
-        $tree->setUserPreference($member, User::PREF_TREE_PATH_LENGTH, '4');
+        $tree->setUserPreference($member, UserInterface::PREF_TREE_PATH_LENGTH, '4');
         self::assertTrue($beatrice->canShow());
     }
 }

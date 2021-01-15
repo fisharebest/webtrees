@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
@@ -74,12 +75,12 @@ class VerifyEmail implements RequestHandlerInterface
 
         $user = $this->user_service->findByUserName($username);
 
-        if ($user instanceof User && $user->getPreference(User::PREF_VERIFICATION_TOKEN) === $token) {
+        if ($user instanceof User && $user->getPreference(UserInterface::PREF_VERIFICATION_TOKEN) === $token) {
             $old_language = I18N::languageTag();
 
             foreach ($this->user_service->administrators() as $administrator) {
                 // switch language to administrator settings
-                I18N::init($administrator->getPreference(User::PREF_LANGUAGE));
+                I18N::init($administrator->getPreference(UserInterface::PREF_LANGUAGE));
 
                 $base_url = $request->getAttribute('base_url');
 
@@ -109,9 +110,9 @@ class VerifyEmail implements RequestHandlerInterface
             }
             I18N::init($old_language);
 
-            $user->setPreference(User::PREF_IS_EMAIL_VERIFIED, '1');
-            $user->setPreference(User::PREF_TIMESTAMP_REGISTERED, date('U'));
-            $user->setPreference(User::PREF_VERIFICATION_TOKEN, '');
+            $user->setPreference(UserInterface::PREF_IS_EMAIL_VERIFIED, '1');
+            $user->setPreference(UserInterface::PREF_TIMESTAMP_REGISTERED, date('U'));
+            $user->setPreference(UserInterface::PREF_VERIFICATION_TOKEN, '');
 
             Log::addAuthenticationLog('User ' . $username . ' verified their email address');
 

@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Exception;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;

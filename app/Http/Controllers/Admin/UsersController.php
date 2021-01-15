@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers\Admin;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
@@ -38,7 +39,6 @@ use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
-use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
@@ -145,22 +145,22 @@ class UsersController extends AbstractAdminController
             ->leftJoin('user_setting AS us2', static function (JoinClause $join): void {
                 $join
                     ->on('us2.user_id', '=', 'user.user_id')
-                    ->where('us2.setting_name', '=', User::PREF_TIMESTAMP_REGISTERED);
+                    ->where('us2.setting_name', '=', UserInterface::PREF_TIMESTAMP_REGISTERED);
             })
             ->leftJoin('user_setting AS us3', static function (JoinClause $join): void {
                 $join
                     ->on('us3.user_id', '=', 'user.user_id')
-                    ->where('us3.setting_name', '=', User::PREF_TIMESTAMP_ACTIVE);
+                    ->where('us3.setting_name', '=', UserInterface::PREF_TIMESTAMP_ACTIVE);
             })
             ->leftJoin('user_setting AS us4', static function (JoinClause $join): void {
                 $join
                     ->on('us4.user_id', '=', 'user.user_id')
-                    ->where('us4.setting_name', '=', User::PREF_IS_EMAIL_VERIFIED);
+                    ->where('us4.setting_name', '=', UserInterface::PREF_IS_EMAIL_VERIFIED);
             })
             ->leftJoin('user_setting AS us5', static function (JoinClause $join): void {
                 $join
                     ->on('us5.user_id', '=', 'user.user_id')
-                    ->where('us5.setting_name', '=', User::PREF_IS_ACCOUNT_APPROVED);
+                    ->where('us5.setting_name', '=', UserInterface::PREF_IS_ACCOUNT_APPROVED);
             })
             ->where('user.user_id', '>', '0')
             ->select([
@@ -250,13 +250,31 @@ class UsersController extends AbstractAdminController
                 return [$locale->languageTag() => $locale->endonym()];
             });
 
+        $roles = [
+            /* I18N: Listbox entry; name of a role */
+            UserInterface::ROLE_VISITOR   => I18N::translate('Visitor'),
+            /* I18N: Listbox entry; name of a role */
+            UserInterface::ROLE_MEMBER => I18N::translate('Member'),
+            /* I18N: Listbox entry; name of a role */
+            UserInterface::ROLE_EDITOR   => I18N::translate('Editor'),
+            /* I18N: Listbox entry; name of a role */
+            UserInterface::ROLE_MODERATOR => I18N::translate('Moderator'),
+            /* I18N: Listbox entry; name of a role */
+            UserInterface::ROLE_MANAGER  => I18N::translate('Manager'),
+        ];
+
+        $theme_options = $this->module_service
+            ->findByInterface(ModuleThemeInterface::class)
+            ->map($this->module_service->titleMapper())
+            ->prepend(I18N::translate('<default theme>'), '');
+
         return $this->viewResponse('admin/users-edit', [
             'contact_methods'  => $this->message_service->contactMethods(),
             'default_language' => I18N::languageTag(),
             'languages'        => $languages->all(),
-            'roles'            => $this->roles(),
+            'roles'            => $roles,
             'trees'            => $this->tree_service->all(),
-            'theme_options'    => $this->themeOptions(),
+            'theme_options'    => $theme_options,
             'title'            => I18N::translate('Edit the user'),
             'user'             => $user,
         ]);
@@ -298,11 +316,11 @@ class UsersController extends AbstractAdminController
         }
 
         $new_user = $this->user_service->create($username, $real_name, $email, $password);
-        $new_user->setPreference(User::PREF_IS_EMAIL_VERIFIED, '1');
-        $new_user->setPreference(User::PREF_LANGUAGE, I18N::languageTag());
-        $new_user->setPreference(User::PREF_TIME_ZONE, Site::getPreference('TIMEZONE', 'UTC'));
-        $new_user->setPreference(User::PREF_TIMESTAMP_REGISTERED, date('U'));
-        $new_user->setPreference(User::PREF_TIMESTAMP_ACTIVE, '0');
+        $new_user->setPreference(UserInterface::PREF_IS_EMAIL_VERIFIED, '1');
+        $new_user->setPreference(UserInterface::PREF_LANGUAGE, I18N::languageTag());
+        $new_user->setPreference(UserInterface::PREF_TIME_ZONE, Site::getPreference('TIMEZONE', 'UTC'));
+        $new_user->setPreference(UserInterface::PREF_TIMESTAMP_REGISTERED, date('U'));
+        $new_user->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, '0');
 
         Log::addAuthenticationLog('User ->' . $username . '<- created');
 
@@ -334,10 +352,10 @@ class UsersController extends AbstractAdminController
         $timezone       = $params['timezone'];
         $contact_method = $params['contact-method'];
         $comment        = $params['comment'];
-        $auto_accept    = (bool) ($params[User::PREF_AUTO_ACCEPT_EDITS] ?? '');
-        $canadmin       = (bool) ($params[User::PREF_IS_ADMINISTRATOR] ?? '');
+        $auto_accept    = (bool) ($params[UserInterface::PREF_AUTO_ACCEPT_EDITS] ?? '');
+        $canadmin       = (bool) ($params[UserInterface::PREF_IS_ADMINISTRATOR] ?? '');
         $visible_online = (bool) ($params['visible-online'] ?? '');
-        $verified       = (bool) ($params[User::PREF_IS_EMAIL_VERIFIED] ?? '');
+        $verified       = (bool) ($params[UserInterface::PREF_IS_EMAIL_VERIFIED] ?? '');
         $approved       = (bool) ($params['approved'] ?? '');
 
         $edit_user = $this->user_service->find($user_id);
@@ -347,8 +365,8 @@ class UsersController extends AbstractAdminController
         }
 
         // We have just approved a user.  Tell them
-        if ($approved && $edit_user->getPreference(User::PREF_IS_ACCOUNT_APPROVED) !== '1') {
-            I18N::init($edit_user->getPreference(User::PREF_LANGUAGE));
+        if ($approved && $edit_user->getPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED) !== '1') {
+            I18N::init($edit_user->getPreference(UserInterface::PREF_LANGUAGE));
 
             $base_url = $request->getAttribute('base_url');
 
@@ -364,15 +382,15 @@ class UsersController extends AbstractAdminController
         }
 
         $edit_user->setRealName($real_name);
-        $edit_user->setPreference(User::PREF_THEME, $theme);
-        $edit_user->setPreference(User::PREF_LANGUAGE, $language);
-        $edit_user->setPreference(User::PREF_TIME_ZONE, $timezone);
-        $edit_user->setPreference(User::PREF_CONTACT_METHOD, $contact_method);
-        $edit_user->setPreference(User::PREF_NEW_ACCOUNT_COMMENT, $comment);
-        $edit_user->setPreference(User::PREF_AUTO_ACCEPT_EDITS, (string) $auto_accept);
-        $edit_user->setPreference(User::PREF_IS_VISIBLE_ONLINE, (string) $visible_online);
-        $edit_user->setPreference(User::PREF_IS_EMAIL_VERIFIED, (string) $verified);
-        $edit_user->setPreference(User::PREF_IS_ACCOUNT_APPROVED, (string) $approved);
+        $edit_user->setPreference(UserInterface::PREF_THEME, $theme);
+        $edit_user->setPreference(UserInterface::PREF_LANGUAGE, $language);
+        $edit_user->setPreference(UserInterface::PREF_TIME_ZONE, $timezone);
+        $edit_user->setPreference(UserInterface::PREF_CONTACT_METHOD, $contact_method);
+        $edit_user->setPreference(UserInterface::PREF_NEW_ACCOUNT_COMMENT, $comment);
+        $edit_user->setPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS, (string) $auto_accept);
+        $edit_user->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, (string) $visible_online);
+        $edit_user->setPreference(UserInterface::PREF_IS_EMAIL_VERIFIED, (string) $verified);
+        $edit_user->setPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED, (string) $approved);
 
         if ($password !== '') {
             $edit_user->setPassword($password);
@@ -380,7 +398,7 @@ class UsersController extends AbstractAdminController
 
         // We cannot change our own admin status. Another admin will need to do it.
         if ($edit_user->id() !== $user->id()) {
-            $edit_user->setPreference(User::PREF_IS_ADMINISTRATOR, $canadmin ? '1' : '');
+            $edit_user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, $canadmin ? '1' : '');
         }
 
         foreach ($this->tree_service->all() as $tree) {
@@ -393,9 +411,9 @@ class UsersController extends AbstractAdminController
                 $path_length = 0;
             }
 
-            $tree->setUserPreference($edit_user, User::PREF_TREE_ACCOUNT_XREF, $gedcom_id);
-            $tree->setUserPreference($edit_user, User::PREF_TREE_ROLE, $can_edit);
-            $tree->setUserPreference($edit_user, User::PREF_TREE_PATH_LENGTH, (string) $path_length);
+            $tree->setUserPreference($edit_user, UserInterface::PREF_TREE_ACCOUNT_XREF, $gedcom_id);
+            $tree->setUserPreference($edit_user, UserInterface::PREF_TREE_ROLE, $can_edit);
+            $tree->setUserPreference($edit_user, UserInterface::PREF_TREE_PATH_LENGTH, (string) $path_length);
         }
 
         if ($edit_user->email() !== $email && $this->user_service->findByEmail($email) instanceof User) {
@@ -415,35 +433,5 @@ class UsersController extends AbstractAdminController
             ->setUserName($username);
 
         return redirect(route('admin-users'));
-    }
-
-    /**
-     * @return string[]
-     */
-    private function roles(): array
-    {
-        return [
-            /* I18N: Listbox entry; name of a role */
-            User::ROLE_VISITOR   => I18N::translate('Visitor'),
-            /* I18N: Listbox entry; name of a role */
-            User::ROLE_MEMBER => I18N::translate('Member'),
-            /* I18N: Listbox entry; name of a role */
-            User::ROLE_EDITOR   => I18N::translate('Editor'),
-            /* I18N: Listbox entry; name of a role */
-            User::ROLE_MODERATOR => I18N::translate('Moderator'),
-            /* I18N: Listbox entry; name of a role */
-            User::ROLE_MANAGER  => I18N::translate('Manager'),
-        ];
-    }
-
-    /**
-     * @return Collection<string>
-     */
-    private function themeOptions(): Collection
-    {
-        return $this->module_service
-            ->findByInterface(ModuleThemeInterface::class)
-            ->map($this->module_service->titleMapper())
-            ->prepend(I18N::translate('<default theme>'), '');
     }
 }
