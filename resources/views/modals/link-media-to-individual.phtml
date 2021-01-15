@@ -1,10 +1,18 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\LinkMediaToRecordAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var Media $media
+ * @var Tree $tree
+ */
 
 ?>
 
-<form method="post" action="<?= e(route('link-media-to-record', ['tree' => $tree->name(), 'xref' => $media->xref()])) ?>" id="wt-modal-form">
+<form method="post" action="<?= e(route(LinkMediaToRecordAction::class, ['tree' => $tree->name(), 'xref' => $media->xref()])) ?>" id="wt-modal-form">
     <?= csrf_field() ?>
 
     <?= view('modals/header', ['title' => I18N::translate('Link this media object to an individual')]) ?>

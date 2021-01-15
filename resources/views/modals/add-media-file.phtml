@@ -1,10 +1,20 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\AddMediaFileAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var string               $max_upload_size
+ * @var Media                $media
+ * @var Tree                 $tree
+ * @var array<string,string> $unused_files
+ */
 
 ?>
 
-<form method="post" action="<?= e(route('add-media-file', ['xref' => $media->xref(), 'tree' => $media->tree()->name()])) ?>" enctype="multipart/form-data">
+<form method="post" action="<?= e(route(AddMediaFileAction::class, ['xref' => $media->xref(), 'tree' => $media->tree()->name()])) ?>" enctype="multipart/form-data">
     <?= csrf_field() ?>
 
     <?= view('modals/header', ['title' => I18N::translate('Add a media file')]) ?>
