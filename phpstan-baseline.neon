@@ -390,11 +390,6 @@ parameters:
 			path: app/Http/Controllers/EditMediaController.php
 
 		-
-			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateRecord\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Http/Controllers/EditNoteController.php
-
-		-
 			message: "#^Parameter \\#1 \\$path of method Psr\\\\Http\\\\Message\\\\UriInterface\\:\\:withPath\\(\\) expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/Middleware/BaseUrl.php
@@ -493,6 +488,11 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\DeleteRecord\\:\\:removeLinks\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/DeleteRecord.php
+
+		-
+			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateRecord\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/EditNoteAction.php
 
 		-
 			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"

@@ -5,6 +5,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditNotePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
 use Fisharebest\Webtrees\I18N;
@@ -97,7 +98,7 @@ use Illuminate\Support\Collection;
                         <?= I18N::translate('Shared note') ?>
                         <?php if (Auth::isEditor($note->tree())) : ?>
                             <div class="editfacts nowrap">
-                                <a class="btn btn-link" href="<?= e(route('edit-note-object', ['xref' => $note->xref(), 'tree' => $note->tree()->name()])) ?>" title="<?= I18N::translate('Edit') ?>">
+                                <a class="btn btn-link" href="<?= e(route(EditNotePage::class, ['xref' => $note->xref(), 'tree' => $note->tree()->name()])) ?>" title="<?= I18N::translate('Edit') ?>">
                                     <?= view('icons/edit') ?>
                                     <span class="sr-only">
                                         <?= I18N::translate('Edit') ?>
