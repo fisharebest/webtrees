@@ -2,6 +2,8 @@
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserEditAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserListPage;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
@@ -9,11 +11,15 @@ use Fisharebest\Webtrees\View;
 
 ?>
 
-<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route('admin-users') => I18N::translate('User administration'), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [
+    route(ControlPanel::class) => I18N::translate('Control panel'),
+    route(UserListPage::class) => I18N::translate('User administration'),
+    $title,
+]]) ?>
 
 <h1><?= $title ?></h1>
 
-<form method="post" action="<?= e(route('admin-users-edit')) ?>" class="form-horizontal" autocomplete="off">
+<form method="post" action="<?= e(route(UserEditAction::class)) ?>" class="form-horizontal" autocomplete="off">
     <?= csrf_field() ?>
     <input type="hidden" name="user_id" value="<?= $user->id() ?>">
 

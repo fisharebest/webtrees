@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\UserEditPage;
 use Fisharebest\Webtrees\I18N;
 
 ?>
@@ -22,8 +23,8 @@ use Fisharebest\Webtrees\I18N;
         <?= I18N::translate('You need to review the account details.') ?>
     </p>
 
-    <a href="<?= e(route('admin-users-edit', ['user_id' => $user->id()])) ?>">
-        <?= e(route('admin-users-edit', ['user_id' => $user->id()])) ?>
+    <a href="<?= e(route(UserEditPage::class, ['user_id' => $user->id()])) ?>">
+        <?= e(route(UserEditPage::class, ['user_id' => $user->id()])) ?>
     </a>
 
     <ul>

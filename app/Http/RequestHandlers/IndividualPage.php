@@ -130,7 +130,7 @@ class IndividualPage implements RequestHandlerInterface
         if (Auth::isAdmin()) {
             $users = $this->user_service->findByIndividual($individual);
             foreach ($users as $user) {
-                $user_link = ' —  <a href="' . e(route('admin-users', ['filter' => $user->email()])) . '">' . e($user->userName()) . '</a>';
+                $user_link = ' —  <a href="' . e(route(UserListPage::class, ['filter' => $user->email()])) . '">' . e($user->userName()) . '</a>';
             }
         }
 

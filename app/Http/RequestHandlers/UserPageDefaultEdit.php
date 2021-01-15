@@ -67,7 +67,7 @@ class UserPageDefaultEdit implements RequestHandlerInterface
         $side_blocks = $this->home_page_service->userBlocks($default_tree, $default_user, ModuleBlockInterface::SIDE_BLOCKS);
         $all_blocks  = $this->home_page_service->availableUserBlocks($default_tree, $default_user);
         $title       = I18N::translate('Set the default blocks for new users');
-        $url_cancel  = route('admin-users');
+        $url_cancel  = route(UserListPage::class);
         $url_save    = route(UserPageDefaultUpdate::class);
 
         return $this->viewResponse('edit-blocks-page', [

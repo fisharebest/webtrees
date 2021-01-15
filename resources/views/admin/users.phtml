@@ -1,6 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserListData;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
 
@@ -39,7 +40,7 @@ use Fisharebest\Webtrees\View;
     processing:          true,
     serverSide:          true,
     ajax:                {
-      url: "<?= e(route('admin-users-data')) ?>"
+      url: "<?= e(route(UserListData::class)) ?>"
     },
     autoWidth:           false,
     sorting:             [[2, "asc"]],

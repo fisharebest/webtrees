@@ -31,6 +31,9 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SitePreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteRegistrationPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePageDefaultEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\UploadMediaPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserAddPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserEditPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserListPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPageDefaultEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupPage;
 use Fisharebest\Webtrees\I18N;
@@ -441,7 +444,7 @@ use Illuminate\Support\Collection;
                     <dd class="col-sm-6">
                         <?php foreach ($list as $n => $user) : ?>
                             <?= $n ? I18N::$list_separator : '' ?>
-                            <a href="<?= e(route('admin-users-edit', ['user_id' => $user->id()])) ?>" dir="auto">
+                            <a href="<?= e(route(UserEditPage::class, ['user_id' => $user->id()])) ?>" dir="auto">
                                 <?= e($user->realName()) ?>
                             </a>
                         <?php endforeach ?>
@@ -458,13 +461,13 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/preferences') ?></span>
-                        <a href="<?= e(route('admin-users')) ?>">
+                        <a href="<?= e(route(UserListPage::class)) ?>">
                             <?= I18N::translate('User administration') ?>
                         </a>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/add') ?></span>
-                        <a href="<?= e(route('admin-users-create')) ?>">
+                        <a href="<?= e(route(UserAddPage::class)) ?>">
                             <?= I18N::translate('Add a user') ?>
                         </a>
                     </li>
