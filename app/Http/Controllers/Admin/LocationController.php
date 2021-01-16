@@ -86,7 +86,7 @@ class LocationController extends AbstractAdminController
      */
     public function __construct(GedcomService $gedcom_service)
     {
-        $this->gedcom_service   = $gedcom_service;
+        $this->gedcom_service = $gedcom_service;
     }
 
     /**
@@ -159,17 +159,17 @@ class LocationController extends AbstractAdminController
         }
 
         if ($place_id === 0) {
-            $breadcrumbs[]   = I18N::translate('Add');
-            $title           .= ' — ' . I18N::translate('Add');
-            $latitude        = 0.0;
-            $longitude       = 0.0;
-            $map_bounds      = $parent->boundingRectangle();
+            $title .= ' — ' . I18N::translate('Add');
+            $breadcrumbs[] = I18N::translate('Add');
+            $latitude      = 0.0;
+            $longitude     = 0.0;
+            $map_bounds    = $parent->boundingRectangle();
         } else {
-            $breadcrumbs[]   = I18N::translate('Edit');
-            $title           .= ' — ' . I18N::translate('Edit');
-            $latitude        = $location->latitude();
-            $longitude       = $location->longitude();
-            $map_bounds      = $location->boundingRectangle();
+            $title .= ' — ' . I18N::translate('Edit');
+            $breadcrumbs[] = I18N::translate('Edit');
+            $latitude      = $location->latitude();
+            $longitude     = $location->longitude();
+            $map_bounds    = $location->boundingRectangle();
         }
 
         // If the current co-ordinates are unknown, leave the input fields empty,
@@ -310,7 +310,7 @@ class LocationController extends AbstractAdminController
         if ($format === 'csv') {
             // Create the header line for the output file (always English)
             $header = [
-                I18N::translate('Level'),
+                'Level',
             ];
 
             for ($i = 0; $i < $max_level; $i++) {
