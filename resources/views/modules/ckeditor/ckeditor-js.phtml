@@ -11,6 +11,9 @@
     CKEDITOR.config.removePlugins = "forms,newpage,preview,print,save,templates,flash,iframe";
     CKEDITOR.config.extraAllowedContent = "area[shape,coords,href,target,alt,title];map[name];img[usemap];*[class,style]";
 
+    // Do not convert é to &eacute; in the editor
+    CKEDITOR.config.entities = false;
+
     // Activate the editor
     document.querySelectorAll("textarea.html-edit").forEach((node) => {
         CKEDITOR.replace(node.id);
