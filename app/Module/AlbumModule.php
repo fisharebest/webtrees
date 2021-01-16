@@ -93,7 +93,7 @@ class AlbumModule extends MediaTabModule
 
             foreach ($matches[1] as $xref) {
                 if (!$media->has($xref)) {
-                    $media->push(Registry::mediaFactory()->make($xref, $individual->tree()));
+                    $media->put($xref, Registry::mediaFactory()->make($xref, $individual->tree()));
                 }
             }
         }
