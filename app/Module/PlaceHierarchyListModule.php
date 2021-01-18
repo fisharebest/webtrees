@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\PlaceLocation;
@@ -31,7 +32,6 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -43,7 +43,6 @@ use function array_reverse;
 use function assert;
 use function ceil;
 use function count;
-use function is_file;
 use function redirect;
 use function route;
 use function view;
@@ -235,7 +234,16 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
         $breadcrumbs = $this->breadcrumbs($place);
 
+        $geo_link = '';
+        if (Auth::isAdmin() && $showmap) {
+            $location = new PlaceLocation($place->gedcomName());
+            if ($location->id() !== null || $location->parent()->id() !== null) { //Can't edit the world's coordinates
+                $geo_link = route(MapDataEdit::class, ['place_id'  => $location->id()]);
+            }
+        }
+
         return $this->viewResponse('modules/place-hierarchy/page', [
+            'geo_link'    => $geo_link,
             'alt_link'    => $alt_link,
             'alt_url'     => $alt_url,
             'breadcrumbs' => $breadcrumbs['breadcrumbs'],
