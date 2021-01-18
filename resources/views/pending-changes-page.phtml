@@ -95,12 +95,14 @@ use Fisharebest\Webtrees\Tree;
     </table>
 <?php endforeach ?>
 
-<div class="d-flex justify-content-between">
-    <button type="button" class="btn btn-primary" data-post-url="<?= e(route(PendingChangesAcceptTree::class, ['tree' => $tree->name(), 'n' => count($changes)])) ?>">
-        <?= I18N::translate('Accept all changes') ?>
-    </button>
+<?php if ($changes !== []) : ?>
+    <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-primary" data-post-url="<?= e(route(PendingChangesAcceptTree::class, ['tree' => $tree->name(), 'n' => count($changes)])) ?>">
+            <?= I18N::translate('Accept all changes') ?>
+        </button>
 
-    <button type="button" class="btn btn-secondary" data-post-url="<?= e(route(PendingChangesRejectTree::class, ['tree' => $tree->name()])) ?>" data-confirm="<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>">
-        <?= I18N::translate('Reject all changes') ?>
-    </button>
-</div>
+        <button type="button" class="btn btn-secondary" data-post-url="<?= e(route(PendingChangesRejectTree::class, ['tree' => $tree->name()])) ?>" data-confirm="<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>">
+            <?= I18N::translate('Reject all changes') ?>
+        </button>
+    </div>
+<?php endif ?>
