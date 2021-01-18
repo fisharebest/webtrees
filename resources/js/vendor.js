@@ -29,7 +29,7 @@ import {
 import {
   // For resources/views/icons/*
   faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
-  faCalendar, faCaretDown, faCaretUp, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
+  faCalendar, faCaretDown, faCaretUp, faCheck, faCodeBranch, faDownload, faEdit, faExclamationTriangle, faGenderless,
   faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
   faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faPaintBrush, faPause, faPencilAlt,
   faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchMinus, faSearchPlus,
@@ -129,7 +129,7 @@ library.add(
 library.add(
   // For resources/views/icons/*
   faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
-  faCalendar, faCaretDown, faCaretUp, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
+  faCalendar, faCaretDown, faCaretUp, faCheck, faCodeBranch, faDownload, faEdit, faExclamationTriangle, faGenderless,
   faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
   faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faPaintBrush, faPause, faPencilAlt,
   faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchMinus, faSearchPlus,

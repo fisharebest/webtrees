@@ -22,6 +22,11 @@ use Fisharebest\Webtrees\Place;
             <?php else : ?>
                 <?= $place->placeName() ?>
             <?php endif ?>
+            <?php if($geo_link !== '') : ?>
+              <a href="<?= e($geo_link)?>" title = "<?= I18N::translate('Edit map co-ordinates') ?>">
+                <?= view('icons/edit_coord') ?>
+              </a>
+          <?php endif ?>
         </div>
     </div>
 
