@@ -54,7 +54,9 @@ use Fisharebest\Webtrees\Tree;
             <a href="<?= e($alt_url) ?>">
                 <?= $alt_link ?>
             </a>
+            <?php if($geo_link) : ?>
+              | <a href="<?= e($geo_link) ?>"><?= I18N::translate('Edit map coordinates for %s', $place->placeName()) ?></a>
+            <?php endif ?>
         </div>
     </div>
 </div>
-

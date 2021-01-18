@@ -235,7 +235,16 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
         $breadcrumbs = $this->breadcrumbs($place);
 
+        $geo_link = '';
+        if (Auth::isAdmin() && $showmap) {
+            $location = new PlaceLocation($place->gedcomName());
+            if ($location->id() !== 0 || $location->parent()->id() !== 0) { //Can't edit the world's coordinates
+                $geo_link = route('map-data-edit', ['place_id'  => $location->id(), 'parent_id' => $location->parent()->id()]);
+            }
+        }
+
         return $this->viewResponse('modules/place-hierarchy/page', [
+            'geo_link'    => $geo_link,
             'alt_link'    => $alt_link,
             'alt_url'     => $alt_url,
             'breadcrumbs' => $breadcrumbs['breadcrumbs'],
