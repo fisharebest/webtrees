@@ -226,7 +226,17 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         $gedcom = preg_replace('/\n2 TYPE .*/', '', $gedcom);
         $gedcom = preg_replace('/^1 .*/', "1 EVEN CLOSE_RELATIVE\n2 TYPE " . $type, $gedcom);
 
-        return new Fact($gedcom, $fact->record(), $fact->id());
+        $converted = new Fact($gedcom, $fact->record(), $fact->id());
+
+        if ($fact->isPendingAddition()) {
+            $converted->setPendingAddition();
+        }
+
+        if ($fact->isPendingDeletion()) {
+            $converted->setPendingDeletion();
+        }
+
+        return $converted;
     }
 
     /**
