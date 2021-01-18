@@ -11999,7 +11999,7 @@ msgstr "Zoekmachines kunnen deze beschrijving van uw site gebruiken in hun zoekr
 
 #: resources/views/modules/media-list/page.phtml:71
 msgid "Search filters"
-msgstr "Zoek filters"
+msgstr "Zoekfilters"
 
 #: resources/views/search-general-page.phtml:16
 #: resources/views/search-replace-page.phtml:17
@@ -12008,7 +12008,7 @@ msgstr "Zoek naar"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:38
 msgid "Search method"
-msgstr "Zoek methode"
+msgstr "Zoekmethode"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:18
 msgid "Search text/pattern"
