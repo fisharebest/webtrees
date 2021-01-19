@@ -6,7 +6,6 @@ use Fisharebest\Webtrees\Place;
 /**
  * @var bool   $showlink
  * @var Place  $place
- * @var string $flag
  * @var int    $id
  * @var string $sidebar_class
  * @var array  $stats
@@ -24,12 +23,6 @@ use Fisharebest\Webtrees\Place;
                 <?= $place->placeName() ?>
             <?php endif ?>
         </div>
-
-        <?php if ($flag) : ?>
-            <div class="col-sm-3 align-digits">
-                <img class="flag" alt="<?= strip_tags($place->placeName()) ?>" title="<?= strip_tags($place->placeName()) ?>" src="<?= $flag ?>">
-            </div>
-        <?php endif ?>
     </div>
 
     <?php if ($sidebar_class === 'unmapped') : ?>

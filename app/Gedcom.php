@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -55,7 +55,13 @@ class Gedcom
     public const PLACE_SEPARATOR = ', ';
 
     // Regex to match a (badly formed) GEDCOM place separator.
-    public const PLACE_SEPARATOR_REGEX = ' *, *';
+    public const PLACE_SEPARATOR_REGEX = '/ *,[, ]*/';
+
+    // LATI and LONG tags
+    public const LATITUDE_NORTH = 'N';
+    public const LATITUDE_SOUTH = 'S';
+    public const LONGITUDE_EAST = 'E';
+    public const LONGITUDE_WEST = 'W';
 
     // Not all record types allow a CHAN event.
     public const RECORDS_WITH_CHAN = [

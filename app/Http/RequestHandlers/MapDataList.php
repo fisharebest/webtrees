@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
+use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -30,6 +31,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_reverse;
+use function e;
 use function redirect;
 use function route;
 
@@ -73,29 +75,41 @@ class MapDataList implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $parent_id   = (int) ($request->getQueryParams()['parent_id'] ?? 0);
-        $title       = I18N::translate('Geographic data');
-        $parent      = $this->map_data_service->findById($parent_id);
+        $parent_id = $request->getAttribute('parent_id');
+
+        if ($parent_id === null) {
+            $parent = new PlaceLocation('');
+        } else {
+            $parent_id = (int) $parent_id;
+            $parent = $this->map_data_service->findById($parent_id);
+        }
 
         // Request for a non-existent location?
-        if ($parent_id !== $parent->id()) {
+        if ($parent_id !== null &&  $parent->id() === null) {
             return redirect(route(__CLASS__));
         }
 
         // Automatically import any new/missing places.
         $this->map_data_service->importMissingLocations();
 
-        $breadcrumbs = [$parent->locationName()];
+        $breadcrumbs = [];
+
+        if ($parent->id() !== null) {
+            $breadcrumbs[] = e($parent->locationName());
+        }
 
         $tmp = $parent->parent();
 
-        while ($tmp->id() !== 0) {
+        while ($tmp->id() !== null) {
             $breadcrumbs[route(__CLASS__, ['parent_id' => $tmp->id()])] = $tmp->locationName();
 
             $tmp = $tmp->parent();
         }
 
-        $breadcrumbs[route(__CLASS__)]           = $title;
+        $title = I18N::translate('Geographic data');
+
+        $breadcrumbs[route(__CLASS__)] = $title;
+
         $breadcrumbs[route(ControlPanel::class)] = I18N::translate('Control panel');
 
         $list_module = $this->module_service

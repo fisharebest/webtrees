@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -491,12 +491,12 @@ class FunctionsImport
 
         $location = new PlaceLocation($place_name);
 
-        if ($location->latitude() === 0.0 && $location->longitude() === 0.0) {
-            DB::table('placelocation')
-                ->where('pl_id', '=', $location->id())
+        if ($location->latitude() === null && $location->longitude() === null) {
+            DB::table('place_location')
+                ->where('id', '=', $location->id())
                 ->update([
-                    'pl_lati' => $latitude,
-                    'pl_long' => $longitude,
+                    'latitude'  => $latitude,
+                    'longitude' => $longitude,
                 ]);
         }
     }
@@ -528,12 +528,12 @@ class FunctionsImport
 
         $location = new PlaceLocation($place_name);
 
-        if ($location->latitude() === 0.0 && $location->longitude() === 0.0) {
-            DB::table('placelocation')
-                ->where('pl_id', '=', $location->id())
+        if ($location->latitude() === null && $location->longitude() === null) {
+            DB::table('place_location')
+                ->where('id', '=', $location->id())
                 ->update([
-                    'pl_lati' => $latitude,
-                    'pl_long' => $longitude,
+                    'latitude'  => $latitude,
+                    'longitude' => $longitude,
                 ]);
         }
     }

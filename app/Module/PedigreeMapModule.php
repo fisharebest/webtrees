@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -268,12 +268,12 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
             $longitude = $fact->longitude();
 
             // Use the co-ordinates from the location otherwise.
-            if ($latitude === 0.0 && $longitude === 0.0) {
+            if ($latitude === null || $longitude === null) {
                 $latitude  = $location->latitude();
                 $longitude = $location->longitude();
             }
 
-            if ($latitude !== 0.0 || $longitude !== 0.0) {
+            if ($latitude !== null && $longitude !== null) {
                 $polyline           = null;
                 $sosa_points[$sosa] = [$latitude, $longitude];
                 $sosa_child         = intdiv($sosa, 2);
@@ -309,7 +309,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                             'relationship' => ucfirst($this->getSosaName($sosa)),
                             'sosa'         => $sosa,
                         ]),
-                        'zoom'      => $location->zoom() ?: self::DEFAULT_ZOOM,
+                        'zoom'      => self::DEFAULT_ZOOM,
                     ],
                 ];
             }

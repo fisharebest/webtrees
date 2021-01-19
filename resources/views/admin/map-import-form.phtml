@@ -1,9 +1,16 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataImportAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
+
+/**
+ * @var array<string> $files
+ * @var string        $folder
+ * @var string        $title
+ */
 
 ?>
 
@@ -11,7 +18,7 @@ use Fisharebest\Webtrees\View;
 
 <h3><?= $title ?></h3>
 
-<form method="post" action="<?= e(route('locations-import-action')) ?>" id="upload_form" enctype="multipart/form-data">
+<form method="post" action="<?= e(route(MapDataImportAction::class)) ?>" id="upload_form" enctype="multipart/form-data">
     <?= csrf_field() ?>
 
     <!-- Server file -->
@@ -23,7 +30,7 @@ use Fisharebest\Webtrees\View;
             <div class="input-group" dir="ltr">
                 <div class="input-group-prepend">
                             <span class="input-group-text">
-                                <?= e($place_folder) ?>
+                                <?= e($folder) ?>
                             </span>
                 </div>
                 <select id="serverfile" name="serverfile" class="form-control">

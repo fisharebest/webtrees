@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -273,9 +273,9 @@ class Fact
     /**
      * Get the PLAC:MAP:LATI for the fact.
      *
-     * @return float
+     * @return float|null
      */
-    public function latitude(): float
+    public function latitude(): ?float
     {
         if (preg_match('/\n4 LATI (.+)/', $this->gedcom, $match)) {
             $gedcom_service = new GedcomService();
@@ -289,9 +289,9 @@ class Fact
     /**
      * Get the PLAC:MAP:LONG for the fact.
      *
-     * @return float
+     * @return float|null
      */
-    public function longitude(): float
+    public function longitude(): ?float
     {
         if (preg_match('/\n4 LONG (.+)/', $this->gedcom, $match)) {
             $gedcom_service = new GedcomService();

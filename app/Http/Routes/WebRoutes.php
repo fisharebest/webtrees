@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -132,8 +132,15 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaData;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataAdd;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataDelete;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportCSV;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportGeoJson;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataImportAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataImportPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataSave;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapProviderAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapProviderPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\Masquerade;
@@ -335,13 +342,15 @@ class WebRoutes
                 $router->get('admin-webtrees1-thumbs-data', '/webtrees1-thumbs-data', 'Admin\ImportThumbnailsController::webtrees1ThumbnailsData');
                 $router->get(UsersCleanupPage::class, '/users-cleanup');
                 $router->post(UsersCleanupAction::class, '/users-cleanup');
-                $router->get(MapDataList::class, '/map-data');
-                $router->get('map-data-edit', '/map-data-edit', 'Admin\LocationController::mapDataEdit');
-                $router->post('map-data-update', '/map-data-edit', 'Admin\LocationController::mapDataSave');
-                $router->post(MapDataDelete::class, '/map-data-delete');
-                $router->get('locations-export', '/locations-export', 'Admin\LocationController::exportLocations');
-                $router->get('locations-import', '/locations-import', 'Admin\LocationController::importLocations');
-                $router->post('locations-import-action', '/locations-import', 'Admin\LocationController::importLocationsAction');
+                $router->get(MapDataAdd::class, '/map-data-add{/parent_id}');
+                $router->post(MapDataDelete::class, '/map-data-delete/{place_id}');
+                $router->get(MapDataEdit::class, '/map-data-edit/{place_id}');
+                $router->get(MapDataExportCSV::class, '/map-data-csv{/parent_id}');
+                $router->get(MapDataExportGeoJson::class, '/map-data-geojson{/parent_id}');
+                $router->get(MapDataImportPage::class, '/locations-import');
+                $router->post(MapDataImportAction::class, '/locations-import');
+                $router->get(MapDataList::class, '/map-data{/parent_id}');
+                $router->post(MapDataSave::class, '/map-data-update');
                 $router->get(MapProviderPage::class, '/map-provider');
                 $router->post(MapProviderAction::class, '/map-provider');
                 $router->post(ModuleDeleteSettings::class, '/module-delete-settings');

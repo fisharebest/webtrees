@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -336,7 +336,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
         $places    = $placeObj->getChildPlaces();
         $features  = [];
         $sidebar   = '';
-        $flag_path = Webtrees::MODULES_DIR . 'openstreetmap/';
         $show_link = true;
 
         if ($places === []) {
@@ -347,13 +346,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
         foreach ($places as $id => $place) {
             $location = new PlaceLocation($place->gedcomName());
 
-            if ($location->icon() !== '' && is_file($flag_path . $location->icon())) {
-                $flag = $flag_path . $location->icon();
-            } else {
-                $flag = '';
-            }
-
-            if ($location->latitude() === 0.0 && $location->longitude() === 0.0) {
+            if ($location->latitude() === null || $location->longitude() === null) {
                 $sidebar_class = 'unmapped';
             } else {
                 $sidebar_class = 'mapped';
@@ -368,7 +361,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
                         'tooltip' => $place->gedcomName(),
                         'popup'   => view('modules/place-hierarchy/popup', [
                             'showlink'  => $show_link,
-                            'flag'      => $flag,
                             'place'     => $place,
                             'latitude'  => $location->latitude(),
                             'longitude' => $location->longitude(),
@@ -387,7 +379,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
             }
             $sidebar .= view('modules/place-hierarchy/sidebar', [
                 'showlink'      => $show_link,
-                'flag'          => $flag,
                 'id'            => $id,
                 'place'         => $place,
                 'sidebar_class' => $sidebar_class,

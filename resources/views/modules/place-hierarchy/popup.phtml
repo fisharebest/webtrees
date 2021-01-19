@@ -6,15 +6,11 @@ use Fisharebest\Webtrees\I18N;
 /**
  * @var bool   $showlink
  * @var Place  $place
- * @var string $flag
  * @var string $latitude
  * @var string $longitude
  */
 ?>
 <div dir="auto" class="label">
-    <?php if ($flag) : ?>
-        <img class="flag mx-1 mr-1" alt = "<?=strip_tags($place->placeName()) ?>" title = "<?=strip_tags($place->placeName()) ?>" src='<?= $flag ?>'>
-    <?php endif ?>
     <?php if ($showlink) : ?>
         <a href="<?= e($place->url()) ?>">
             <?= $place->placeName() ?>
