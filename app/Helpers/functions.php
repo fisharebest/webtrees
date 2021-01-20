@@ -122,7 +122,7 @@ function response($content = '', $code = StatusCodeInterface::STATUS_OK, $header
     if ($headers === []) {
         if (is_string($content)) {
             $headers = [
-                'Content-Type'   => 'text/html; charset=utf-8',
+                'Content-Type'   => 'text/html; charset=UTF-8',
                 'Content-Length' => (string) strlen($content),
             ];
         } else {

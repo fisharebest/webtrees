@@ -390,7 +390,7 @@ class LocationController extends AbstractAdminController
         $filename = addcslashes($filename, '"');
 
         return response(stream_get_contents($resource))
-            ->withHeader('Content-Type', 'text/csv; charset=utf-8')
+            ->withHeader('Content-Type', 'text/csv; charset=UTF-8')
             ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
     }
 
