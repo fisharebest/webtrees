@@ -90,8 +90,8 @@ class MapDataExportGeoJson implements RequestHandlerInterface
                     'geometry'   => [
                         'type'        => 'Point',
                         'coordinates' => [
-                            $longitude,
-                            $latitude,
+                            (float) $longitude,
+                            (float) $latitude,
                         ],
                     ],
                     'properties' => [
