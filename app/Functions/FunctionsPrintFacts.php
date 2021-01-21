@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Functions;
 
+use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
@@ -529,7 +530,24 @@ class FunctionsPrintFacts
                     $label = GedcomTag::getLabel('ASSO');
                 }
 
-                $values = ['<a href="' . e($person->url()) . '">' . $person->fullName() . '</a>'];
+                if ($person->getBirthDate()->isOK() && $event->date()->isOK()) {
+                    $age = new Age($person->getBirthDate(), $event->date());
+                    switch ($person->sex()) {
+                        case 'M':
+                            $age_text = ' ' . I18N::translateContext('Male', '(aged %s)', (string) $age);
+                            break;
+                        case 'F':
+                            $age_text = ' ' . I18N::translateContext('Female', '(aged %s)', (string) $age);
+                            break;
+                        default:
+                            $age_text = ' ' . I18N::translate('(aged %s)', (string) $age);
+                            break;
+                    }
+                } else {
+                    $age_text = '';
+                }
+
+                $values = ['<a href="' . e($person->url()) . '">' . $person->fullName() . '</a>' . $age_text];
 
                 $module = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $person->tree(), Auth::user())->first(static function (ModuleInterface $module) {
                     return $module instanceof RelationshipsChartModule;
