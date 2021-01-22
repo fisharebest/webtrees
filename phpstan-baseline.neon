@@ -2080,6 +2080,11 @@ parameters:
 			path: app/Statistics/Repository/IndividualRepository.php
 
 		-
+			message: "#^Parameter \\#3 \\$value of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:having\\(\\) expects string\\|null, int given\\.$#"
+			count: 1
+			path: app/Statistics/Repository/IndividualRepository.php
+
+		-
 			message: "#^Access to an undefined property object\\:\\:\\$days\\.$#"
 			count: 1
 			path: app/Statistics/Repository/IndividualRepository.php
