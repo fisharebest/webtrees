@@ -560,9 +560,10 @@ class Individual extends GedcomRecord
     public function getAllBirthDates(): array
     {
         foreach (Gedcom::BIRTH_EVENTS as $event) {
-            $tmp = $this->getAllEventDates([$event]);
-            if ($tmp) {
-                return $tmp;
+            $dates = $this->getAllEventDates([$event]);
+
+            if ($dates !== []) {
+                return $dates;
             }
         }
 
@@ -578,6 +579,7 @@ class Individual extends GedcomRecord
     {
         foreach (Gedcom::BIRTH_EVENTS as $event) {
             $places = $this->getAllEventPlaces([$event]);
+
             if ($places !== []) {
                 return $places;
             }
@@ -594,9 +596,10 @@ class Individual extends GedcomRecord
     public function getAllDeathDates(): array
     {
         foreach (Gedcom::DEATH_EVENTS as $event) {
-            $tmp = $this->getAllEventDates([$event]);
-            if ($tmp) {
-                return $tmp;
+            $dates = $this->getAllEventDates([$event]);
+
+            if ($dates !== []) {
+                return $dates;
             }
         }
 
@@ -612,6 +615,7 @@ class Individual extends GedcomRecord
     {
         foreach (Gedcom::DEATH_EVENTS as $event) {
             $places = $this->getAllEventPlaces([$event]);
+
             if ($places !== []) {
                 return $places;
             }
