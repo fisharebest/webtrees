@@ -256,6 +256,26 @@ class UserService
     }
 
     /**
+     * Get a list of all editors.
+     *
+     * @return Collection<User>
+     */
+
+    public function editors(): Collection
+    {
+        return DB::table('user')
+            ->join('user_gedcom_setting', 'user_gedcom_setting.user_id', '=', 'user.user_id')
+            ->where('user_gedcom_setting.setting_name', '=', User::PREF_TREE_ROLE)
+            ->where('user_gedcom_setting.setting_value', '=', User::ROLE_EDITOR)
+            ->where('user.user_id', '>', 0)
+            ->groupBy(['user.user_id'])
+            ->orderBy('real_name')
+            ->select(['user.*'])
+            ->get()
+            ->map(User::rowMapper());
+    }
+
+    /**
      * Get a list of all verified users.
      *
      * @return Collection<User>
