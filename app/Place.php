@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,6 +28,10 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use stdClass;
 
+use function trim;
+
+use const PREG_SPLIT_NO_EMPTY;
+
 /**
  * A GEDCOM place (PLAC) object.
  */
@@ -51,8 +55,8 @@ class Place
     public function __construct(string $place_name, Tree $tree)
     {
         // Ignore any empty parts in place names such as "Village, , , Country".
-        $this->parts = Collection::make(preg_split(Gedcom::PLACE_SEPARATOR_REGEX, $place_name))
-            ->filter();
+        $place_name  = trim($place_name);
+        $this->parts = new Collection(preg_split(Gedcom::PLACE_SEPARATOR_REGEX, $place_name, -1, PREG_SPLIT_NO_EMPTY));
 
         // Rebuild the placename in the correct format.
         $this->place_name = $this->parts->implode(Gedcom::PLACE_SEPARATOR);

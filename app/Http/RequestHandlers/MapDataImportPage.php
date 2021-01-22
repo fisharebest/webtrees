@@ -19,31 +19,23 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MapDataService;
+use Illuminate\Database\Eloquent\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-use function route;
+use function strtolower;
 
 /**
- * Delete a place location from the control panel.
+ * Import geographic data.
  */
-class MapDataDelete implements RequestHandlerInterface
+class MapDataImportPage implements RequestHandlerInterface
 {
-    /** @var MapDataService */
-    private $map_data_service;
-
-    /**
-     * Dependency injection.
-     *
-     * @param MapDataService $map_data_service
-     */
-    public function __construct(MapDataService $map_data_service)
-    {
-        $this->map_data_service = $map_data_service;
-    }
+    use ViewResponseTrait;
 
     /**
      * @param ServerRequestInterface $request
@@ -52,14 +44,26 @@ class MapDataDelete implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $place_id = (int) $request->getAttribute('place_id');
+        $this->layout = 'layouts/administration';
 
-        $place = $this->map_data_service->findById($place_id);
+        $data_filesystem      = Registry::filesystem()->data();
+        $data_filesystem_name = Registry::filesystem()->dataName();
 
-        $this->map_data_service->deleteRecursively($place_id);
+        $files = Collection::make($data_filesystem->listContents('places'))
+            ->filter(static function (array $metadata): bool {
+                $extension = strtolower($metadata['extension'] ?? '');
 
-        $url = route(MapDataList::class, ['parent_id' => $place->parent()->id()]);
+                return $extension === 'csv' || $extension === 'geojson';
+            })
+            ->map(static function (array $metadata): string {
+                return $metadata['basename'];
+            })
+            ->sort();
 
-        return redirect($url);
+        return $this->viewResponse('admin/map-import-form', [
+            'folder' => $data_filesystem_name . MapDataService::PLACES_FOLDER,
+            'title'  => I18N::translate('Import geographic data'),
+            'files'  => $files,
+        ]);
     }
 }

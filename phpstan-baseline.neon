@@ -315,66 +315,6 @@ parameters:
 			path: app/Http/Controllers/Admin/ImportThumbnailsController.php
 
 		-
-			message: "#^Binary operation \"\\.\" between 'Places\\-' and array\\|string\\|null results in an error\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\Admin\\\\LocationController\\:\\:exportGeoJSON\\(\\) has parameter \\$rows with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$source of function stream_get_contents expects resource, resource\\|null given\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$haystack of function stripos expects string, string\\|false given\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$json of function json_decode expects string, string\\|false given\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$fp of function rewind expects resource, resource\\|null given\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$fp of function fgetcsv expects resource, resource\\|null given\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Offset 0 does not exist on array\\|null\\.$#"
-			count: 2
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$var of function count expects array\\|Countable, array\\|null given\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$input of function array_slice expects array, array\\|null given\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Offset int does not exist on array\\|null\\.$#"
-			count: 4
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$fp of function fclose expects resource, resource\\|null given\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/LocationController.php
-
-		-
 			message: "#^Parameter \\#1 \\$path of method Psr\\\\Http\\\\Message\\\\UriInterface\\:\\:withPath\\(\\) expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/Middleware/BaseUrl.php
@@ -548,6 +488,36 @@ parameters:
 			message: "#^Cannot access offset '1' on array\\|false\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ManageMediaData.php
+
+		-
+			message: "#^Parameter \\#1 \\$haystack of function str_contains expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/MapDataImportAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$json of function json_decode expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/MapDataImportAction.php
+
+		-
+			message: "#^Offset 0 does not exist on array\\|null\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/MapDataImportAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$var of function count expects array\\|Countable, array\\|null given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/MapDataImportAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$input of function array_slice expects array, array\\|null given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/MapDataImportAction.php
+
+		-
+			message: "#^Offset int does not exist on array\\|null\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/MapDataImportAction.php
 
 		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateRecord\\(\\) expects string, string\\|null given\\.$#"
@@ -937,17 +907,7 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-footer.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-middleware.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-report.disable/module.php
+			path: modules_v4/example.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -957,7 +917,17 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example.disable/module.php
+			path: modules_v4/example-report.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example-middleware.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example-footer.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -1218,6 +1188,16 @@ parameters:
 			message: "#^Cannot access property \\$subject on object\\|null\\.$#"
 			count: 1
 			path: app/Module/UserJournalModule.php
+
+		-
+			message: "#^Cannot access property \\$latitude on object\\|null\\.$#"
+			count: 3
+			path: app/PlaceLocation.php
+
+		-
+			message: "#^Cannot access property \\$longitude on object\\|null\\.$#"
+			count: 3
+			path: app/PlaceLocation.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\AbstractRenderer\\:\\:getStyle\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -1695,17 +1675,12 @@ parameters:
 			path: app/Services/HousekeepingService.php
 
 		-
-			message: "#^Access to an undefined property object\\:\\:\\$pl_place\\.$#"
+			message: "#^Access to an undefined property object\\:\\:\\$place\\.$#"
 			count: 1
 			path: app/Services/MapDataService.php
 
 		-
-			message: "#^Access to an undefined property object\\:\\:\\$pl_parent_id\\.$#"
-			count: 1
-			path: app/Services/MapDataService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MapDataService\\:\\:activePlaces\\(\\) should return array\\<string, array\\<stdClass\\>\\> but returns array\\<int\\|string, array\\<int, mixed\\>\\>\\.$#"
+			message: "#^Access to an undefined property object\\:\\:\\$parent_id\\.$#"
 			count: 1
 			path: app/Services/MapDataService.php
 
@@ -2101,6 +2076,11 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\IndividualRepository\\:\\:commonGivenUnknownTable\\(\\) should return string but returns array\\<int\\>\\|string\\.$#"
+			count: 1
+			path: app/Statistics/Repository/IndividualRepository.php
+
+		-
+			message: "#^Parameter \\#3 \\$value of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:having\\(\\) expects string\\|null, int given\\.$#"
 			count: 1
 			path: app/Statistics/Repository/IndividualRepository.php
 

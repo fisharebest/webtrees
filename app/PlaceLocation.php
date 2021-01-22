@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,12 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Services\GedcomService;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use stdClass;
 
+use function max;
+use function min;
 use function preg_split;
+use function trim;
+
+use const PREG_SPLIT_NO_EMPTY;
 
 /**
  * Class PlaceLocation
@@ -45,8 +50,8 @@ class PlaceLocation
     public function __construct(string $location_name)
     {
         // Ignore any empty parts in location names such as "Village, , , Country".
-        $this->parts = (new Collection(preg_split(Gedcom::PLACE_SEPARATOR_REGEX, $location_name)))
-            ->filter();
+        $location_name = trim($location_name);
+        $this->parts   = new Collection(preg_split(Gedcom::PLACE_SEPARATOR_REGEX, $location_name, -1, PREG_SPLIT_NO_EMPTY));
 
         // Rebuild the location name in the correct format.
         $this->location_name = $this->parts->implode(Gedcom::PLACE_SEPARATOR);
@@ -63,44 +68,42 @@ class PlaceLocation
     }
 
     /**
-     * The database row that contains this location.
+     * The database row id that contains this location.
      * Note that due to database collation, both "Quebec" and "Québec" will share the same row.
      *
-     * @return int
+     * @return int|null
      */
-    public function id(): int
+    public function id(): ?int
     {
+        // The "top-level" location won't exist in the database.
+        if ($this->parts->isEmpty()) {
+            return null;
+        }
+
         return Registry::cache()->array()->remember('location-' . $this->location_name, function () {
-            // The "top-level" location won't exist in the database.
-            if ($this->parts->isEmpty()) {
-                return 0;
+            $parent_id = $this->parent()->id();
+
+            $place = $this->parts->first();
+            $place = mb_substr($place, 0, 120);
+
+            if ($parent_id === null) {
+                $location_id = DB::table('place_location')
+                    ->where('place', '=', $place)
+                    ->whereNull('parent_id')
+                    ->value('id');
+            } else {
+                $location_id = DB::table('place_location')
+                    ->where('place', '=', $place)
+                    ->where('parent_id', '=', $parent_id)
+                    ->value('id');
             }
 
-            $parent_location_id = $this->parent()->id();
-
-            $location_id = (int) DB::table('placelocation')
-                ->where('pl_place', '=', mb_substr($this->parts->first(), 0, 120))
-                ->where('pl_parent_id', '=', $parent_location_id)
-                ->value('pl_id');
-
-            if ($location_id === 0) {
-                $location = $this->parts->first();
-
-                $location_id = 1 + (int) DB::table('placelocation')->max('pl_id');
-
-                DB::table('placelocation')->insert([
-                    'pl_id'        => $location_id,
-                    'pl_place'     => mb_substr($location, 0, 120),
-                    'pl_parent_id' => $parent_location_id,
-                    'pl_level'     => $this->parts->count() - 1,
-                    'pl_lati'      => '',
-                    'pl_long'      => '',
-                    'pl_icon'      => '',
-                    'pl_zoom'      => 2,
+            $location_id = $location_id ?? DB::table('place_location')->insertGetId([
+                    'parent_id' => $parent_id,
+                    'place'     => $place,
                 ]);
-            }
 
-            return $location_id;
+            return (int) $location_id;
         });
     }
 
@@ -112,18 +115,27 @@ class PlaceLocation
      */
     public function exists(): bool
     {
-        $location_id = 0;
+        $parent_id = null;
 
-        $this->parts->reverse()->each(static function (string $place) use (&$location_id) {
-            if ($location_id !== null) {
-                $location_id = DB::table('placelocation')
-                    ->where('pl_parent_id', '=', $location_id)
-                    ->where('pl_place', '=', mb_substr($place, 0, 120))
-                    ->value('pl_id');
+        foreach ($this->parts->reverse() as $place) {
+            if ($parent_id === null) {
+                $parent_id = DB::table('place_location')
+                    ->whereNull('parent_id')
+                    ->where('place', '=', mb_substr($place, 0, 120))
+                    ->value('id');
+            } else {
+                $parent_id = DB::table('place_location')
+                    ->where('parent_id', '=', $parent_id)
+                    ->where('place', '=', mb_substr($place, 0, 120))
+                    ->value('id');
             }
-        });
 
-        return $location_id !== null;
+            if ($parent_id === null) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
@@ -135,68 +147,46 @@ class PlaceLocation
             // The "top-level" location won't exist in the database.
             if ($this->parts->isEmpty()) {
                 return (object) [
-                    'pl_id'        => '0',
-                    'pl_parent_id' => '0',
-                    'pl_level' => null,
-                    'pl_place' => '',
-                    'pl_lati' => null,
-                    'pl_long' => null,
-                    'pl_zoom' => null,
-                    'pl_icon' => null,
-                    'pl_media' => null,
+                    'latitude'  => null,
+                    'longitude' => null,
                 ];
             }
 
-            return DB::table('placelocation')
-                ->where('pl_id', '=', $this->id())
+            $row = DB::table('place_location')
+                ->where('id', '=', $this->id())
+                ->select(['latitude', 'longitude'])
                 ->first();
+
+            if ($row->latitude !== null) {
+                $row->latitude = (float) $row->latitude;
+            }
+
+            if ($row->longitude !== null) {
+                $row->longitude = (float) $row->longitude;
+            }
+
+            return $row;
         });
     }
 
     /**
      * Latitude of the location.
      *
-     * @return float
+     * @return float|null
      */
-    public function latitude(): float
+    public function latitude(): ?float
     {
-        $gedcom_service = new GedcomService();
-        $pl_lati        = (string) $this->details()->pl_lati;
-
-        return $gedcom_service->readLatitude($pl_lati);
+        return $this->details()->latitude;
     }
 
     /**
      * Longitude of the location.
      *
-     * @return float
+     * @return float|null
      */
-    public function longitude(): float
+    public function longitude(): ?float
     {
-        $gedcom_service = new GedcomService();
-        $pl_long        = (string) $this->details()->pl_long;
-
-        return $gedcom_service->readLongitude($pl_long);
-    }
-
-    /**
-     * The icon for the location.
-     *
-     * @return string
-     */
-    public function icon(): string
-    {
-        return (string) $this->details()->pl_icon;
-    }
-
-    /**
-     * Zoom level for the location.
-     *
-     * @return int
-     */
-    public function zoom(): int
-    {
-        return (int) $this->details()->pl_zoom ?: 2;
+        return $this->details()->longitude;
     }
 
     /**
@@ -219,28 +209,34 @@ class PlaceLocation
         }
 
         // Find our own co-ordinates and those of any child places
-        $latitudes = DB::table('placelocation')
-            ->where('pl_parent_id', '=', $this->id())
-            ->orWhere('pl_id', '=', $this->id())
-            ->groupBy(['pl_lati'])
-            ->pluck('pl_lati')
-            ->filter()
+        $latitudes = DB::table('place_location')
+            ->whereNotNull('latitude')
+            ->where(function (Builder $query): void {
+                $query
+                    ->where('parent_id', '=', $this->id())
+                    ->orWhere('id', '=', $this->id());
+            })
+            ->groupBy(['latitude'])
+            ->pluck('latitude')
             ->map(static function (string $x): float {
-                return (new GedcomService())->readLatitude($x);
+                return (float) $x;
             });
 
-        $longitudes = DB::table('placelocation')
-            ->where('pl_parent_id', '=', $this->id())
-            ->orWhere('pl_id', '=', $this->id())
-            ->groupBy(['pl_long'])
-            ->pluck('pl_long')
-            ->filter()
+        $longitudes = DB::table('place_location')
+            ->whereNotNull('longitude')
+            ->where(function (Builder $query): void {
+                $query
+                    ->where('parent_id', '=', $this->id())
+                    ->orWhere('id', '=', $this->id());
+            })
+            ->groupBy(['longitude'])
+            ->pluck('longitude')
             ->map(static function (string $x): float {
-                return (new GedcomService())->readLongitude($x);
+                return (float) $x;
             });
 
         // No co-ordinates?  Use the parent place instead.
-        if ($latitudes->isEmpty() && $longitudes->isEmpty()) {
+        if ($latitudes->isEmpty() || $longitudes->isEmpty()) {
             return $this->parent()->boundingRectangle();
         }
 

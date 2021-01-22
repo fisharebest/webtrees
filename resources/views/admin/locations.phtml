@@ -1,12 +1,16 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataAdd;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataDelete;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportCSV;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportGeoJson;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataImportPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
-use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
 
 /**
@@ -49,10 +53,10 @@ use Illuminate\Support\Collection;
 
     <tbody>
     <?php foreach ($placelist as $place) : ?>
-        <tr class="<?= $active[$place->pl_place] ?? null ? '' : 'unused-location collapse show' ?>">
+        <tr class="<?= $active[$place->key] ?? null ? '' : 'unused-location collapse show' ?>">
             <th scope="row">
-                <a href="<?= e(route(MapDataList::class, ['parent_id' => $place->pl_id])) ?>">
-                    <?= e($place->pl_place) ?>
+                <a href="<?= e(route(MapDataList::class, ['parent_id' => $place->id])) ?>">
+                    <span dir="auto"><?= e($place->place) ?></span>
                     <?php if ($place->no_coord > 0): ?>
                         <span class="badge badge-pill badge-secondary">
                             <?= view('icons/warning') ?>
@@ -69,31 +73,23 @@ use Illuminate\Support\Collection;
             </th>
 
             <td dir="ltr">
-                <?php if ((string) $place->pl_lati === '') : ?>
+                <?php if ($place->latitude === null) : ?>
                     <?= view('icons/warning') ?>
                 <?php else : ?>
-                    <?= strtr($place->pl_lati, ['N' => '', 'S' => '-', ',' => '.']) ?>
+                    <?= $place->latitude ?>
                 <?php endif ?>
             </td>
 
             <td dir="ltr">
-                <?php if ((string) $place->pl_long === '') : ?>
+                <?php if ($place->longitude === null) : ?>
                     <?= view('icons/warning') ?>
                 <?php else : ?>
-                    <?= strtr($place->pl_long, ['E' => '', 'W' => '-', ',' => '.']) ?>
+                    <?= $place->longitude ?>
                 <?php endif ?>
             </td>
 
-            <!--
             <td>
-                <?php if (is_file(Webtrees::MODULES_PATH . 'openstreetmap/' . $place->pl_icon)) : ?>
-                    <img src="<?= e(Webtrees::MODULES_PATH . 'openstreetmap/' . $place->pl_icon) ?>" width="25" height="15" alt="<?= I18N::translate('Flag of %s', $place->pl_place) ?>">
-                <?php endif ?>
-            </td>
-            -->
-
-            <td>
-                <a class="btn btn-primary" href="<?= e(route('map-data-edit', ['place_id'  => $place->pl_id, 'parent_id' => $place->pl_parent_id])) ?>" title="<?= I18N::translate('Edit') ?>">
+                <a class="btn btn-primary" href="<?= e(route(MapDataEdit::class, ['place_id'  => $place->id])) ?>" title="<?= I18N::translate('Edit') ?>">
                     <?= view('icons/edit') ?>
                     <span class="sr-only">
                         <?= I18N::translate('Edit') ?>
@@ -102,20 +98,20 @@ use Illuminate\Support\Collection;
             </td>
 
             <td>
-                <?php if (($list_module !== null) && array_key_exists($place->pl_place, $active)): ?>
-                    <?php if (count($active[$place->pl_place]) === 1): ?>
-                        <a class="btn btn-link" href="<?= e($list_module->listUrl($all_trees->get($active[$place->pl_place][0]->tree_name), ['place_id' => $active[$place->pl_place][0]->p_id, 'action2' => 'hierarchy-e'])) ?>">
-                            <?= e($active[$place->pl_place][0]->tree_title) ?>
+                <?php if ($list_module !== null && array_key_exists($place->key, $active)): ?>
+                    <?php if (count($active[$place->key]) === 1): ?>
+                        <a class="btn btn-link" href="<?= e($list_module->listUrl($all_trees->get($active[$place->key][0]->tree_name), ['place_id' => $active[$place->key][0]->p_id, 'action2' => 'hierarchy-e'])) ?>">
+                            <?= e($active[$place->key][0]->tree_title) ?>
                         </a>
                     <?php else: ?>
                         <div class="dropdown">
                             <a class="btn btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?= I18N::plural('%s family tree', '%s family trees', count($active[$place->pl_place]), I18N::number(count($active[$place->pl_place]))) ?>
+                                <?= I18N::plural('%s family tree', '%s family trees', count($active[$place->key]), I18N::number(count($active[$place->key]))) ?>
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <?php foreach ($active[$place->pl_place] as $link): ?>
-                                    <a class="dropdown-item" href="<?= e($list_module->listUrl($all_trees->get($active[$place->pl_place][0]->tree_name), ['place_id' => $link->p_id])) ?>">
+                                <?php foreach ($active[$place->key] as $link): ?>
+                                    <a class="dropdown-item" href="<?= e($list_module->listUrl($all_trees->get($active[$place->key][0]->tree_name), ['place_id' => $link->p_id])) ?>">
                                         <?= e($link->tree_title) ?>
                                     </a>
                                 <?php endforeach ?>
@@ -126,8 +122,8 @@ use Illuminate\Support\Collection;
             </td>
 
             <td>
-                <?php if (!array_key_exists($place->pl_place, $active)): ?>
-                    <form method="post" action="<?= e(route(MapDataDelete::class, ['place_id' => $place->pl_id])) ?>">
+                <?php if (!array_key_exists($place->key, $active)): ?>
+                    <form method="post" action="<?= e(route(MapDataDelete::class, ['place_id' => $place->id])) ?>">
                         <?= csrf_field() ?>
                         <button type="submit" class="btn btn-danger" aria-label="<?= I18N::translate('delete') ?>" data-confirm="<?= I18N::translate('Remove this location?') ?>">
                             <?= view('icons/delete') ?>
@@ -142,7 +138,7 @@ use Illuminate\Support\Collection;
     <tfoot>
         <tr>
             <td colspan="7">
-                <a class="btn btn-primary" href="<?= e(route('map-data-edit', ['place_id' => '0', 'parent_id' => $parent_id])) ?>">
+                <a class="btn btn-primary" href="<?= e(route(MapDataAdd::class, ['parent_id' => $parent_id])) ?>">
                     <?= view('icons/add') ?>
                     <?= /* I18N: A button label. */
                     I18N::translate('add place') ?>
@@ -154,14 +150,14 @@ use Illuminate\Support\Collection;
                     I18N::translate('export file') ?>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="<?= e(route('locations-export', ['parent_id' => $parent_id, 'format' => 'csv'])) ?>">
+                    <a class="dropdown-item" href="<?= e(route(MapDataExportCSV::class, ['parent_id' => $parent_id])) ?>">
                         csv
                     </a>
-                    <a class="dropdown-item" href="<?= e(route('locations-export', ['parent_id' => $parent_id, 'format' => 'geojson'])) ?>">
+                    <a class="dropdown-item" href="<?= e(route(MapDataExportGeoJson::class, ['parent_id' => $parent_id])) ?>">
                         geoJSON
                     </a>
                 </div>
-                <a class="btn btn-primary" href="<?= e(route('locations-import', ['parent_id' => $parent_id])) ?>">
+                <a class="btn btn-primary" href="<?= e(route(MapDataImportPage::class, ['parent_id' => $parent_id])) ?>">
                     <?= view('icons/upload') ?>
                     <?= /* I18N: A button label. */
                     I18N::translate('import file') ?>

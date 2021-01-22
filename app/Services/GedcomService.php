@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -18,6 +18,10 @@
 declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
+
+use Fisharebest\Webtrees\Gedcom;
+
+use function abs;
 
 /**
  * Utilities for manipulating GEDCOM data.
@@ -158,17 +162,6 @@ class GedcomService
         '_PGV_OBJS' => '_WT_OBJE_SORT',
     ];
 
-    // LATI and LONG tags
-    private const DEGREE_FORMAT  = ' % .5f%s';
-    private const LATITUDE_NORTH = 'N';
-    private const LATITUDE_SOUTH = 'S';
-    private const LONGITUDE_EAST = 'E';
-    private const LONGITUDE_WEST = 'W';
-
-    // PLAC tags
-    private const PLACE_SEPARATOR       = ', ';
-    private const PLACE_SEPARATOR_REGEX = ' *, *';
-
     // SEX tags
     private const SEX_FEMALE  = 'F';
     private const SEX_MALE    = 'M';
@@ -203,21 +196,21 @@ class GedcomService
     /**
      * @param string $text
      *
-     * @return float
+     * @return float|null
      */
-    public function readLatitude(string $text): float
+    public function readLatitude(string $text): ?float
     {
-        return $this->readDegrees($text, self::LATITUDE_NORTH, self::LATITUDE_SOUTH);
+        return $this->readDegrees($text, Gedcom::LATITUDE_NORTH, Gedcom::LATITUDE_SOUTH);
     }
 
     /**
      * @param string $text
      *
-     * @return float
+     * @return float|null
      */
-    public function readLongitude(string $text): float
+    public function readLongitude(string $text): ?float
     {
-        return $this->readDegrees($text, self::LONGITUDE_EAST, self::LONGITUDE_WEST);
+        return $this->readDegrees($text, Gedcom::LONGITUDE_EAST, Gedcom::LONGITUDE_WEST);
     }
 
     /**
@@ -225,9 +218,9 @@ class GedcomService
      * @param string $positive
      * @param string $negative
      *
-     * @return float
+     * @return float|null
      */
-    private function readDegrees(string $text, string $positive, string $negative): float
+    private function readDegrees(string $text, string $positive, string $negative): ?float
     {
         $text       = trim($text);
         $hemisphere = substr($text, 0, 1);
@@ -253,43 +246,7 @@ class GedcomService
         }
 
         // Can't match anything.
-        return 0.0;
-    }
-
-    /**
-     * @param float $latitude
-     *
-     * @return string
-     */
-    public function writeLatitude(float $latitude): string
-    {
-        return $this->writeDegrees($latitude, self::LATITUDE_NORTH, self::LATITUDE_SOUTH);
-    }
-
-    /**
-     * @param float $longitude
-     *
-     * @return string
-     */
-    public function writeLongitude(float $longitude): string
-    {
-        return $this->writeDegrees($longitude, self::LONGITUDE_EAST, self::LONGITUDE_WEST);
-    }
-
-    /**
-     * @param float  $degrees
-     * @param string $positive
-     * @param string $negative
-     *
-     * @return string
-     */
-    private function writeDegrees(float $degrees, string $positive, string $negative): string
-    {
-        if ($degrees < 0.0) {
-            return sprintf(self::DEGREE_FORMAT, $degrees, $negative);
-        }
-
-        return sprintf(self::DEGREE_FORMAT, $degrees, $positive);
+        return null;
     }
 
     /**
@@ -305,7 +262,7 @@ class GedcomService
     {
         $text = trim($text);
 
-        return preg_split(self::PLACE_SEPARATOR_REGEX, $text, PREG_SPLIT_NO_EMPTY);
+        return preg_split(Gedcom::PLACE_SEPARATOR_REGEX, $text);
     }
 
     /**
@@ -315,7 +272,7 @@ class GedcomService
      */
     public function writePlace(array $place): string
     {
-        return implode(self::PLACE_SEPARATOR, $place);
+        return implode(Gedcom::PLACE_SEPARATOR, $place);
     }
 
     /**

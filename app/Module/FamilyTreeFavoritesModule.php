@@ -145,6 +145,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
                     if ($row->record instanceof GedcomRecord && !$row->record->canShowName()) {
                         $row->record = null;
+                        $row->note   = null;
                     }
                 } else {
                     $row->record = null;

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Schema;
 
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -35,35 +36,76 @@ class Migration44 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        if (!DB::schema()->hasColumn('placelocation', 'pl_latitude')) {
-            DB::schema()->table('placelocation', static function (Blueprint $table): void {
-                $table->float('pl_latitude')->nullable()->after('pl_lati');
-                $table->float('pl_longitude')->nullable()->after('pl_long');
+        // It is simpler to create a new table than to update the existing one.
+
+        if (!DB::schema()->hasTable('place_location')) {
+            DB::schema()->create('place_location', static function (Blueprint $table): void {
+                $table->integer('id', true);
+                $table->integer('parent_id')->nullable();
+                $table->string('place', 120);
+                $table->double('latitude')->nullable();
+                $table->double('longitude')->nullable();
+
+                $table->unique(['parent_id', 'place']);
+                $table->unique(['place', 'parent_id']);
+
+                $table->index(['latitude']);
+                $table->index(['longitude']);
+            });
+
+            DB::schema()->table('place_location', static function (Blueprint $table): void {
+                $table->foreign(['parent_id'])
+                    ->references(['id'])
+                    ->on('place_location')
+                    ->onDelete('CASCADE')
+                    ->onUpdate('CASCADE');
             });
         }
 
-        DB::table('placelocation')
-            ->where('pl_lati', 'LIKE', 'N%')
-            ->update(['pl_latitude' => new Expression('CAST(SUBSTR(pl_lati, 2) AS FLOAT)')]);
+        if (DB::schema()->hasTable('placelocation')) {
+            DB::table('placelocation')
+                ->where('pl_lati', '=', '')
+                ->orWhere('pl_long', '=', '')
+                ->update([
+                    'pl_lati' => null,
+                    'pl_long' => null,
+                ]);
 
-        DB::table('placelocation')
-            ->where('pl_lati', 'LIKE', 'S%')
-            ->update(['pl_latitude' => new Expression('- CAST(SUBSTR(pl_lati, 2) AS FLOAT)')]);
+            // Ideally, we would update the parent_id separately,
+            $select = DB::table('placelocation')
+                ->leftJoin('place_location', 'id', '=', 'pl_id')
+                ->whereNull('id')
+                ->orderBy('pl_id')
+                ->select([
+                    'pl_id',
+                    new Expression('CASE pl_parent_id WHEN 0 THEN NULL ELSE pl_parent_id END'),
+                    'pl_place',
+                    new Expression("REPLACE(REPLACE(pl_lati, 'S', '-'), 'N', '')"),
+                    new Expression("REPLACE(REPLACE(pl_long, 'W', '-'), 'E', '')"),
+                ]);
 
-        DB::table('placelocation')
-            ->where('pl_long', 'LIKE', 'E%')
-            ->update(['pl_longitude' => new Expression('CAST(SUBSTR(pl_long, 2) AS FLOAT)')]);
+            DB::table('place_location')
+                ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select);
 
-        DB::table('placelocation')
-            ->where('pl_long', 'LIKE', 'W%')
-            ->update(['pl_longitude' => new Expression('- CAST(SUBSTR(pl_long, 2) AS FLOAT)')]);
+            //DB::table('place_location')
+            //    ->join('placelocation', 'pl_id', '=', 'id')
+            //    ->where('pl_parent_id', '<>', 0)
+            //    ->update([
+            //        'parent_id' => new Expression('pl_parent_id'),
+            //    ]);
 
-        DB::schema()->table('placelocation', static function (Blueprint $table): void {
-            $table->dropColumn('pl_lati');
-            $table->dropColumn('pl_long');
-            $table->dropColumn('pl_zoom');
-            $table->dropColumn('pl_icon');
-            $table->dropColumn('pl_level');
-        });
+            DB::schema()->drop('placelocation');
+        }
+
+        // Earlier versions of webtrees used 0 and NULL interchangeably.
+        // Assume 0 at the country-level and NULL at lower levels.
+        DB::table('place_location')
+            ->whereNotNull('parent_id')
+            ->where('latitude', '=', 0)
+            ->where('longitude', '=', 0)
+            ->update([
+                'latitude'  => null,
+                'longitude' => null,
+            ]);
     }
 }

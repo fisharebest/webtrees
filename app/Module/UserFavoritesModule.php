@@ -147,6 +147,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
 
                     if ($row->record instanceof GedcomRecord && !$row->record->canShowName()) {
                         $row->record = null;
+                        $row->note   = null;
                     }
                 } else {
                     $row->record = null;

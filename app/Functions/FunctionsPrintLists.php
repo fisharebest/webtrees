@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -59,7 +59,7 @@ class FunctionsPrintLists
                     $size = 75.0 + 125.0 * ($count - $minimum) / ($maximum - $minimum);
                 }
 
-                $tag = ($module instanceof ModuleListInterface) ? 'a' : 'span';
+                $tag = $module instanceof ModuleListInterface ? 'a' : 'span';
                 $html .= '<' . $tag . ' style="font-size:' . $size . '%"';
                 if ($module instanceof ModuleListInterface) {
                     $url = $module->listUrl($tree, ['surname' => $surn]);
@@ -89,8 +89,13 @@ class FunctionsPrintLists
      *
      * @return string
      */
-    public static function surnameList($surnames, $style, $totals, ?ModuleListInterface $module, Tree $tree): string
-    {
+    public static function surnameList(
+        array $surnames,
+        int $style,
+        bool $totals,
+        ?ModuleListInterface $module,
+        Tree $tree
+    ): string {
         $html = [];
         foreach ($surnames as $surn => $surns) {
             // Each surname links back to the indilist
@@ -106,7 +111,7 @@ class FunctionsPrintLists
 
             // If all the surnames are just case variants, then merge them into one
             // Comment out this block if you want SMITH listed separately from Smith
-            $tag = ($module instanceof ModuleListInterface) ? 'a' : 'span';
+            $tag = $module instanceof ModuleListInterface ? 'a' : 'span';
             $subhtml = '<' . $tag;
             if ($url !== null) {
                 $subhtml .= ' href="' . e($url) . '"';

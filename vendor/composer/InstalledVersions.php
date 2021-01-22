@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'befb078ac49853bab3cf5a7e795637fe7911cedb',
+    'reference' => '487118181e1ec54730273eb7d052a97b608e2369',
     'name' => 'fisharebest/webtrees',
   ),
   'versions' => 
@@ -148,7 +148,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'befb078ac49853bab3cf5a7e795637fe7911cedb',
+      'reference' => '487118181e1ec54730273eb7d052a97b608e2369',
     ),
     'guzzlehttp/guzzle' => 
     array (
