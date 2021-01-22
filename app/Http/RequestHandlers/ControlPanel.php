@@ -151,6 +151,7 @@ class ControlPanel implements RequestHandlerInterface
             'administrators'             => $this->user_service->administrators(),
             'managers'                   => $this->user_service->managers(),
             'moderators'                 => $this->user_service->moderators(),
+            'editors'                    => $this->user_service->editors(),
             'unapproved'                 => $this->user_service->unapproved(),
             'unverified'                 => $this->user_service->unverified(),
             'all_trees'                  => $this->tree_service->all(),
