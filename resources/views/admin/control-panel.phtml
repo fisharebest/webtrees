@@ -100,6 +100,7 @@ use Illuminate\Support\Collection;
  * @var Collection<ModuleMenuInterface>           $menu_modules_disabled
  * @var Collection<ModuleMenuInterface>           $menu_modules_enabled
  * @var Collection<User>                          $moderators
+ * @var Collection<User>                          $editors
  * @var Collection<string,int>                    $notes
  * @var NoteListModule|null                       $note_list_module
  * @var Collection<ModuleInterface>               $other_modules
@@ -436,7 +437,7 @@ use Illuminate\Support\Collection;
     </div>
     <div class="card-body">
         <dl class="row">
-            <?php foreach ([I18N::translate('Administrators') => $administrators, I18N::translate('Managers') => $managers, I18N::translate('Moderators') => $moderators, I18N::translate('Not verified by the user') => $unverified, I18N::translate('Not approved by an administrator') => $unapproved] as $label => $list) : ?>
+            <?php foreach ([I18N::translate('Administrators') => $administrators, I18N::translate('Managers') => $managers, I18N::translate('Moderators') => $moderators, I18N::translate('Editors') => $editors, I18N::translate('Not verified by the user') => $unverified, I18N::translate('Not approved by an administrator') => $unapproved] as $label => $list) : ?>
                 <?php if (!empty($list)) : ?>
                     <dt class="col-sm-6">
                         <?= $label ?>
