@@ -82,6 +82,13 @@ class SetupWizard implements RequestHandlerInterface
         'wtemail' => '',
     ];
 
+    private const DEFAULT_PORTS = [
+        'mysql'  => '3306',
+        'pgsql'  => '5432',
+        'sqlite' => '',
+        'sqlsvr' => '1433',
+    ];
+
     /** @var MigrationService */
     private $migration_service;
 
@@ -325,6 +332,9 @@ class SetupWizard implements RequestHandlerInterface
      */
     private function step5Administrator(array $data): ResponseInterface
     {
+        // Use default port, if none specified.
+        $data['dbport'] = $data['dbport'] ?: self::DEFAULT_PORTS[$data['dbtype']];
+
         try {
             $this->connectToDatabase($data);
         } catch (Throwable $ex) {
