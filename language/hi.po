@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-01-05 13:27+0000\n"
+"PO-Revision-Date: 2021-01-26 03:25+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
@@ -1848,7 +1848,7 @@ msgstr "उपनाम"
 
 #: app/Functions/FunctionsPrintLists.php:209
 msgid "Alive"
-msgstr "जिवित"
+msgstr "जीवित"
 
 #. I18N: listbox option, e.g. “10,25,50,100,all”
 #: app/I18N.php:179 app/Module/FrequentlyAskedQuestionsModule.php:221
@@ -3038,7 +3038,7 @@ msgstr "बोस्टन, मैसाचुसेट्स, संयुक�
 
 #: app/Functions/FunctionsPrintLists.php:619
 msgid "Both alive"
-msgstr "दोनों जिवित"
+msgstr "दोनों जीवित"
 
 #: app/Functions/FunctionsPrintLists.php:646
 msgid "Both dead"
@@ -5199,7 +5199,7 @@ msgstr "मंज़िल"
 #: gedrecord.php:105 mediaviewer.php:94 note.php:106 repo.php:114
 #: source.php:118
 msgid "Details"
-msgstr "तफ़सील"
+msgstr "विवरण"
 
 #: admin_site_config.php:497
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
@@ -5603,7 +5603,7 @@ msgstr "उपयोगकर्ता एडिट करें"
 
 #: app/Tree.php:494
 msgid "Edit this individual and replace their details with your own."
-msgstr "इस व्यक्ति को एडिट करें और उनकी तफ़सील की जगह अपनी तफ़सील डाल दें।"
+msgstr "इस व्यक्ति को एडिट करें और उनके विवरण को अपने विवरण से बदल लें।"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:543
@@ -6612,7 +6612,7 @@ msgstr ""
 
 #: app/Module/LoginBlockModule.php:87 login.php:210
 msgid "Forgot password?"
-msgstr "पासवर्ड भूल गए?"
+msgstr "पासवर्ड याद नहीं? "
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:496 help_text.php:136 help_text.php:148 help_text.php:159
@@ -6842,7 +6842,7 @@ msgstr "सामान्य"
 #: app/Controller/SearchController.php:188
 #: app/Controller/SearchController.php:192 app/Theme/AbstractTheme.php:1724
 msgid "General search"
-msgstr "जनरल खोज"
+msgstr "सामान्य खोज"
 
 #. I18N: Description of the “Sitemaps” module
 #: app/Module/SiteMapModule.php:44
@@ -8535,7 +8535,7 @@ msgstr "लिथुआनियाई"
 
 #: app/Stats.php:1068 app/Stats.php:1070
 msgid "Living"
-msgstr "जिवित"
+msgstr "जीवित"
 
 #: calendar.php:231
 msgid "Living individuals"
@@ -10223,7 +10223,7 @@ msgstr "किसी एडमिनिस्ट्रेटर द्वार�
 #. I18N: gedcom tag _NLIV
 #: app/GedcomTag.php:1683
 msgid "Not living"
-msgstr "जिवित नहीं"
+msgstr "जीवित नहीं"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1712
