@@ -79,8 +79,8 @@ class MapDataEdit implements RequestHandlerInterface
             $tmp = $tmp->parent();
         }
 
-        $breadcrumbs[route(ControlPanel::class)] = I18N::translate('Control panel');
         $breadcrumbs[route(MapDataList::class)]  = I18N::translate('Geographic data');
+        $breadcrumbs[route(ControlPanel::class)] = I18N::translate('Control panel');
 
         $latitude      = $location->latitude();
         $longitude     = $location->longitude();
@@ -101,7 +101,7 @@ class MapDataEdit implements RequestHandlerInterface
         }
 
         return $this->viewResponse('admin/location-edit', [
-            'breadcrumbs'     => $breadcrumbs,
+            'breadcrumbs'     => array_reverse($breadcrumbs, true),
             'title'           => $title,
             'location'        => $location,
             'latitude'        => $latitude,

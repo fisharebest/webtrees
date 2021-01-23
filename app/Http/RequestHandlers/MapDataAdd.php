@@ -85,8 +85,8 @@ class MapDataAdd implements RequestHandlerInterface
             $tmp = $tmp->parent();
         }
 
-        $breadcrumbs[route(ControlPanel::class)] = I18N::translate('Control panel');
         $breadcrumbs[route(MapDataList::class)]  = I18N::translate('Geographic data');
+        $breadcrumbs[route(ControlPanel::class)] = I18N::translate('Control panel');
 
         $map_bounds = $parent->boundingRectangle();
 
@@ -96,7 +96,7 @@ class MapDataAdd implements RequestHandlerInterface
         ];
 
         return $this->viewResponse('admin/location-edit', [
-            'breadcrumbs'     => array_reverse($breadcrumbs),
+            'breadcrumbs'     => array_reverse($breadcrumbs, true),
             'title'           => $title,
             'location'        => new PlaceLocation(''),
             'latitude'        => '',
