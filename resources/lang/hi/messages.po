@@ -1752,7 +1752,7 @@ msgstr "उपनाम"
 
 #: resources/views/lists/individuals-table.phtml:192
 msgid "Alive"
-msgstr "जिवित"
+msgstr "जीवित"
 
 #: app/Functions/FunctionsEdit.php:173
 #: app/Module/FrequentlyAskedQuestionsModule.php:320
@@ -2914,7 +2914,7 @@ msgstr "बोस्टन, मैसाचुसेट्स, संयुक�
 
 #: resources/views/lists/families-table.phtml:162
 msgid "Both alive"
-msgstr "दोनों जिवित"
+msgstr "दोनों जीवित"
 
 #: resources/views/lists/families-table.phtml:174
 msgid "Both dead"
@@ -5113,7 +5113,7 @@ msgstr "मंज़िल"
 #: resources/views/note-page.phtml:59 resources/views/repository-page.phtml:40
 #: resources/views/source-page.phtml:41 resources/views/submitter-page.phtml:40
 msgid "Details"
-msgstr "तफ़सील"
+msgstr "विवरण"
 
 #: resources/views/admin/site-registration.phtml:58
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
@@ -5460,7 +5460,7 @@ msgstr "उपयोगकर्ता एडिट करें"
 
 #: app/Services/TreeService.php:203
 msgid "Edit this individual and replace their details with your own."
-msgstr "इस व्यक्ति को एडिट करें और उनकी तफ़सील की जगह अपनी तफ़सील डाल दें।"
+msgstr "इस व्यक्ति को एडिट करें और उनके विवरण को अपने विवरण से बदल लें।"
 
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.phtml:26
@@ -6462,7 +6462,7 @@ msgstr "एक से अधिक फॅमिली ट्री वाली 
 #: resources/views/login-page.phtml:60
 #: resources/views/modules/login_block/sign-in.phtml:37
 msgid "Forgot password?"
-msgstr "पासवर्ड भूल गए?"
+msgstr "पासवर्ड याद नहीं? "
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:745 resources/views/help/date.phtml:18
@@ -6710,7 +6710,7 @@ msgstr "सामान्य"
 #: app/Http/RequestHandlers/SearchGeneralPage.php:167
 #: app/Module/SearchMenuModule.php:100
 msgid "General search"
-msgstr "जनरल खोज"
+msgstr "सामान्य खोज"
 
 #. I18N: Description of the “Sitemaps” module
 #: app/Module/SiteMapModule.php:117
@@ -8400,7 +8400,7 @@ msgstr "लिथुआनियाई"
 
 #: app/Statistics/Google/ChartMortality.php:73
 msgid "Living"
-msgstr "जिवित"
+msgstr "जीवित"
 
 #: resources/views/calendar-page.phtml:122
 msgid "Living individuals"
@@ -10047,7 +10047,7 @@ msgstr "किसी एडमिनिस्ट्रेटर द्वार�
 #. I18N: gedcom tag _NLIV
 #: app/GedcomTag.php:1210
 msgid "Not living"
-msgstr "जिवित नहीं"
+msgstr "जीवित नहीं"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1217 app/Module/BranchesListModule.php:450
@@ -13662,7 +13662,7 @@ msgstr "आख़िरी अपडेट की तारीख और सम�
 #: app/Http/RequestHandlers/AccountUpdate.php:113
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr "“%s” की तफ़सील अपडेट कर दी गई।"
+msgstr "“%s” का विवरण अपडेट किया गया है।"
 
 #. I18N: %s is a filename
 #: app/Http/Controllers/Admin/UpgradeController.php:315
