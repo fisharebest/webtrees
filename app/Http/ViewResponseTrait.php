@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -51,11 +51,8 @@ trait ViewResponseTrait
         $layout_data['content'] = view($view_name, $view_data);
         $layout_data['request'] = app(ServerRequestInterface::class);
 
-        // Most pages use the default layout.  Other built-in layouts include admin and ajax.
-        $layout = $this->layout;
-
         // Insert the view into the layout
-        $html = view($layout, $layout_data);
+        $html = view($this->layout, $layout_data);
 
         return response($html, $status);
     }
