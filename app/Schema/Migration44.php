@@ -71,7 +71,14 @@ class Migration44 implements MigrationInterface
                     'pl_long' => null,
                 ]);
 
-            // Ideally, we would update the parent_id separately,
+            // Missing/invalid parents?  Move them to the top level
+            DB::table('placelocation AS pl1')
+                ->leftJoin('placelocation AS pl2', 'pl1.pl_parent_id', '=', 'pl2.pl_id')
+                ->whereNull('pl2.pl_id')
+                ->update([
+                    'pl1.pl_parent_id' => 0,
+                ]);
+
             $select = DB::table('placelocation')
                 ->leftJoin('place_location', 'id', '=', 'pl_id')
                 ->whereNull('id')
@@ -86,13 +93,6 @@ class Migration44 implements MigrationInterface
 
             DB::table('place_location')
                 ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select);
-
-            //DB::table('place_location')
-            //    ->join('placelocation', 'pl_id', '=', 'id')
-            //    ->where('pl_parent_id', '<>', 0)
-            //    ->update([
-            //        'parent_id' => new Expression('pl_parent_id'),
-            //    ]);
 
             DB::schema()->drop('placelocation');
         }
