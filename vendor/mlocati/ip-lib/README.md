@@ -113,11 +113,22 @@ $range = \IPLib\Factory::rangeFromString('::');
 
 ### Retrieve a range from its boundaries
 
+You can calculate the smallest range that comprises two addresses:
+
 ```php
 $range = \IPLib\Factory::rangeFromBoundaries('192.168.0.1', '192.168.255.255');
 
 // This will print 192.168.0.0/16
 echo (string) $range;
+```
+
+You can also calculate a list of ranges that exactly describes all the addresses between two addresses:
+
+```php
+$ranges = \IPLib\Factory::rangesFromBoundaries('192.168.0.0', '192.168.0.5');
+
+// This will print 192.168.0.0/30 192.168.0.4/31
+echo implode(' ', $ranges);
 ```
 
 ### Retrieve the boundaries of a range

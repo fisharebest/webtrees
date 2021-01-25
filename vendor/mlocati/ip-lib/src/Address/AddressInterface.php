@@ -17,6 +17,16 @@ interface AddressInterface
     public function __toString();
 
     /**
+     * Get the number of bits representing this address type.
+     *
+     * @return int
+     *
+     * @example 32 for IPv4
+     * @example 128 for IPv6
+     */
+    public static function getNumberOfBits();
+
+    /**
      * Get the string representation of this address.
      *
      * @param bool $long set to true to have a long/full representation, false otherwise
@@ -32,9 +42,18 @@ interface AddressInterface
      *
      * @return int[]
      *
-     * @example For IPv4 you'll get array(127, 0, 0, 1), for IPv6 array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)
+     * @example For localhost: for IPv4 you'll get array(127, 0, 0, 1), for IPv6 array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)
      */
     public function getBytes();
+
+    /**
+     * Get the full bit list the IP address.
+     *
+     * @return string
+     *
+     * @example For localhost: For IPv4 you'll get '01111111000000000000000000000001' (32 digits), for IPv6 '00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001' (128 digits)
+     */
+    public function getBits();
 
     /**
      * Get the type of the IP address.

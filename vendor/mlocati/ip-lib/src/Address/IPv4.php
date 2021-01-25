@@ -72,6 +72,16 @@ class IPv4 implements AddressInterface
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @see \IPLib\Address\AddressInterface::getNumberOfBits()
+     */
+    public static function getNumberOfBits()
+    {
+        return 32;
+    }
+
+    /**
      * Parse a string and returns an IPv4 instance if the string is valid, or null otherwise.
      *
      * @param string|mixed $address the address to parse
@@ -227,6 +237,21 @@ class IPv4 implements AddressInterface
         }
 
         return $this->bytes;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see \IPLib\Address\AddressInterface::getBits()
+     */
+    public function getBits()
+    {
+        $parts = array();
+        foreach ($this->getBytes() as $byte) {
+            $parts[] = sprintf('%08b', $byte);
+        }
+
+        return implode('', $parts);
     }
 
     /**
