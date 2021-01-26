@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers\Admin;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Exception;
 use Fig\Http\Message\RequestMethodInterface;
@@ -35,54 +35,18 @@ use Illuminate\Support\Collection;
 /**
  * Test UpgradeController class.
  *
- * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\UpgradeController
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UpgradeWizardStep
  */
-class UpgradeControllerTest extends TestCase
+class UpgradeWizardStepTest extends TestCase
 {
     protected static $uses_database = true;
 
     /**
      * @return void
      */
-    public function testWizard(): void
-    {
-        $controller = new UpgradeController(
-            new GedcomExportService(),
-            new TreeService(),
-            new UpgradeService(new TimeoutService())
-        );
-
-        $request  = self::createRequest();
-        $response = $controller->wizard($request);
-
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-    }
-
-    /**
-     * @return void
-     */
-    public function testWizardContinue(): void
-    {
-        $this->importTree('demo.ged');
-
-        $controller = new UpgradeController(
-            new GedcomExportService(),
-            new TreeService(),
-            new UpgradeService(new TimeoutService())
-        );
-
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['continue' => '1']);
-        $response = $controller->wizard($request);
-
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-    }
-
-    /**
-     * @return void
-     */
     public function testIgnoreStepInvalid(): void
     {
-        $controller = new UpgradeController(
+        $handler = new UpgradeWizardStep(
             new GedcomExportService(),
             new TreeService(),
             new UpgradeService(new TimeoutService())
@@ -90,7 +54,7 @@ class UpgradeControllerTest extends TestCase
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Invalid']);
 
-        $response = $controller->step($request);
+        $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
@@ -100,16 +64,16 @@ class UpgradeControllerTest extends TestCase
      */
     public function testStepCheckOK(): void
     {
-        $mock_upgrade_service = self::createMock(UpgradeService::class);
+        $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('latestVersion')->willReturn('999.999.999');
-        $controller = new UpgradeController(
+        $handler = new UpgradeWizardStep(
             new GedcomExportService(),
             new TreeService(),
             $mock_upgrade_service
         );
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Check']);
-        $response = $controller->step($request);
+        $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -121,16 +85,16 @@ class UpgradeControllerTest extends TestCase
     {
         $this->expectException(HttpServerErrorException::class);
 
-        $mock_upgrade_service = self::createMock(UpgradeService::class);
+        $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('latestVersion')->willReturn('');
-        $controller = new UpgradeController(
+        $handler = new UpgradeWizardStep(
             new GedcomExportService(),
             new TreeService(),
             $mock_upgrade_service
         );
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Check']);
-        $controller->step($request);
+        $handler->handle($request);
     }
 
     /**
@@ -140,16 +104,16 @@ class UpgradeControllerTest extends TestCase
     {
         $this->expectException(HttpServerErrorException::class);
 
-        $mock_upgrade_service = self::createMock(UpgradeService::class);
+        $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('latestVersion')->willReturn('0.0.0');
-        $controller = new UpgradeController(
+        $handler = new UpgradeWizardStep(
             new GedcomExportService(),
             new TreeService(),
             $mock_upgrade_service
         );
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Check']);
-        $controller->step($request);
+        $handler->handle($request);
     }
 
     /**
@@ -157,14 +121,14 @@ class UpgradeControllerTest extends TestCase
      */
     public function testStepPrepare(): void
     {
-        $controller = new UpgradeController(
+        $handler = new UpgradeWizardStep(
             new GedcomExportService(),
             new TreeService(),
             new UpgradeService(new TimeoutService())
         );
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Prepare']);
-        $response = $controller->step($request);
+        $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -174,14 +138,14 @@ class UpgradeControllerTest extends TestCase
      */
     public function testStepPending(): void
     {
-        $controller = new UpgradeController(
+        $handler = new UpgradeWizardStep(
             new GedcomExportService(),
             new TreeService(),
             new UpgradeService(new TimeoutService())
         );
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Pending']);
-        $response = $controller->step($request);
+        $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -200,14 +164,14 @@ class UpgradeControllerTest extends TestCase
         Auth::login($user);
         $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
 
-        $controller = new UpgradeController(
+        $handler = new UpgradeWizardStep(
             new GedcomExportService(),
             new TreeService(),
             new UpgradeService(new TimeoutService())
         );
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Pending']);
-        $controller->step($request);
+        $handler->handle($request);
     }
 
     /**
@@ -217,22 +181,22 @@ class UpgradeControllerTest extends TestCase
     {
         $tree            = $this->importTree('demo.ged');
         $all_trees       = Collection::make([$tree->name() => $tree]);
-        $tree_service    = self::createMock(TreeService::class);
+        $tree_service    = $this->createMock(TreeService::class);
         $tree_service->method('all')->willReturn($all_trees);
 
-        $controller = new UpgradeController(
+        $handler = new UpgradeWizardStep(
             new GedcomExportService(),
             $tree_service,
             new UpgradeService(new TimeoutService())
         );
 
         $request  = self::createRequest()->withQueryParams(['step' => 'Export', 'tree' => $tree->name()]);
-        $response = $controller->step($request);
+        $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
 
         // Now overwrite the file we just created
-        $response = $controller->step($request);
+        $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -244,16 +208,16 @@ class UpgradeControllerTest extends TestCase
     {
         $this->expectException(HttpServerErrorException::class);
 
-        $mock_upgrade_service = self::createMock(UpgradeService::class);
+        $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('downloadFile')->will(self::throwException(new Exception()));
-        $controller = new UpgradeController(
+        $handler = new UpgradeWizardStep(
             new GedcomExportService(),
             new TreeService(),
             $mock_upgrade_service
         );
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Download']);
-        $controller->step($request);
+        $handler->handle($request);
     }
 
     /**
@@ -261,16 +225,16 @@ class UpgradeControllerTest extends TestCase
      */
     public function testStepDownload(): void
     {
-        $mock_upgrade_service = self::createMock(UpgradeService::class);
+        $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('downloadFile')->willReturn(123456);
-        $controller = new UpgradeController(
+        $handler = new UpgradeWizardStep(
             new GedcomExportService(),
             new TreeService(),
             $mock_upgrade_service
         );
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Download']);
-        $response = $controller->step($request);
+        $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -280,16 +244,16 @@ class UpgradeControllerTest extends TestCase
      */
     public function testStepUnzip(): void
     {
-        $mock_upgrade_service = self::createMock(UpgradeService::class);
+        $mock_upgrade_service = $this->createMock(UpgradeService::class);
         $mock_upgrade_service->method('webtreesZipContents')->willReturn(new Collection());
-        $controller = new UpgradeController(
+        $handler = new UpgradeWizardStep(
             new GedcomExportService(),
             new TreeService(),
             $mock_upgrade_service
         );
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Unzip']);
-        $response = $controller->step($request);
+        $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }

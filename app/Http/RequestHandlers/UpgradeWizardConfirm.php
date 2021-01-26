@@ -17,15 +17,27 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers\Admin;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+use function redirect;
+use function route;
 
 /**
- * Common functions for admin controllers.
+ * Upgrade to a new version of webtrees.
  */
-abstract class AbstractAdminController extends AbstractBaseController
+class UpgradeWizardConfirm implements RequestHandlerInterface
 {
-    /** @var string */
-    protected $layout = 'layouts/administration';
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        return redirect(route(UpgradeWizardPage::class, ['continue' => 1]));
+    }
 }

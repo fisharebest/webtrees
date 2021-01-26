@@ -1,6 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\UpgradeWizardConfirm;
 use Fisharebest\Webtrees\I18N;
 
 ?>
@@ -26,7 +27,7 @@ use Fisharebest\Webtrees\I18N;
         <?= I18N::translate('Depending on your server configuration, you may be able to upgrade automatically.') ?>
     </p>
 
-    <form method="post" action="<?= e(route('upgrade-confirm')) ?>" class="form-horizontal">
+    <form method="post" action="<?= e(route(UpgradeWizardConfirm::class)) ?>" class="form-horizontal">
         <?= csrf_field() ?>
 
         <button type="submit" class="btn btn-primary" name="continue" value="1">

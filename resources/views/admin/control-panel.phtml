@@ -5,6 +5,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\CleanDataFolder;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\FixLevel0MediaPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ImportThumbnailsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
@@ -30,6 +32,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SitePreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteRegistrationPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePageDefaultEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\UpgradeWizardPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UploadMediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserAddPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserEditPage;
@@ -158,7 +161,7 @@ use Illuminate\Support\Collection;
             <?php elseif (version_compare(Webtrees::VERSION, $latest_version) < 0) : ?>
                 <div class="alert alert-info">
                     <?= I18N::translate('A new version of webtrees is available.') ?>
-                    <a href="<?= e(route('upgrade')) ?>" class="alert-link">
+                    <a href="<?= e(route(UpgradeWizardPage::class)) ?>" class="alert-link">
                         <?= /* I18N: %s is a version number */
                         I18N::translate('Upgrade to webtrees %s.', e($latest_version)) ?>
                     </a>
@@ -723,13 +726,13 @@ use Illuminate\Support\Collection;
             </li>
             <li>
                 <span class="fa-li"><?= view('icons/link') ?></span>
-                <a href="<?= e(route('admin-fix-level-0-media')) ?>">
+                <a href="<?= e(route(FixLevel0MediaPage::class)) ?>">
                     <?= I18N::translate('Link media objects to facts and events') ?>
                 </a>
             </li>
             <li>
                 <span class="fa-li"><?= view('icons/upload') ?></span>
-                <a href="<?= e(route('admin-webtrees1-thumbs')) ?>">
+                <a href="<?= e(route(ImportThumbnailsPage::class)) ?>">
                     <?= I18N::translate('Import custom thumbnails from webtrees version 1') ?>
                 </a>
             </li>

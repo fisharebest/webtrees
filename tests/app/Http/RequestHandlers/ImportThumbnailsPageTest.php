@@ -17,14 +17,29 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\TestCase;
 
 /**
- * Common functions for all controllers
+ * Test ImportThumbnailsData class.
+ *
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ImportThumbnailsPage
  */
-abstract class AbstractBaseController
+class ImportThumbnailsPageTest extends TestCase
 {
-    use ViewResponseTrait;
+    protected static $uses_database = true;
+
+    /**
+     * @return void
+     */
+    public function testWebtrees1Thumbnails(): void
+    {
+        $handler  = new ImportThumbnailsPage();
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
 }

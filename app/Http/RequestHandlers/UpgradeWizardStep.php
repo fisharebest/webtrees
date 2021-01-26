@@ -17,12 +17,11 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers\Admin;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Exceptions\HttpServerErrorException;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomExportService;
@@ -36,11 +35,11 @@ use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use RuntimeException;
 use Throwable;
 
 use function assert;
-use function basename;
 use function date;
 use function e;
 use function fclose;
@@ -48,16 +47,15 @@ use function fopen;
 use function fseek;
 use function intdiv;
 use function microtime;
-use function redirect;
 use function response;
 use function route;
 use function version_compare;
 use function view;
 
 /**
- * Controller for upgrading to a new version of webtrees.
+ * Upgrade to a new version of webtrees.
  */
-class UpgradeController extends AbstractAdminController
+class UpgradeWizardStep implements RequestHandlerInterface
 {
     // We make the upgrade in a number of small steps to keep within server time limits.
     private const STEP_CHECK    = 'Check';
@@ -111,55 +109,15 @@ class UpgradeController extends AbstractAdminController
     }
 
     /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function wizard(ServerRequestInterface $request): ResponseInterface
-    {
-        $continue = $request->getQueryParams()['continue'] ?? '';
-
-        $title = I18N::translate('Upgrade wizard');
-
-        $latest_version = $this->upgrade_service->latestVersion();
-
-        $upgrade_available = version_compare($latest_version, Webtrees::VERSION) > 0;
-
-        if ($upgrade_available && $continue === '1') {
-            return $this->viewResponse('admin/upgrade/steps', [
-                'steps' => $this->wizardSteps(),
-                'title' => $title,
-            ]);
-        }
-
-        return $this->viewResponse('admin/upgrade/wizard', [
-            'current_version' => Webtrees::VERSION,
-            'latest_version'  => $latest_version,
-            'title'           => $title,
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function confirm(ServerRequestInterface $request): ResponseInterface
-    {
-        return redirect(route('upgrade', ['continue' => 1]));
-    }
-
-    /**
      * Perform one step of the wizard
      *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function step(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $root_filesystem = Registry::filesystem()->root();
-
         $data_filesystem = Registry::filesystem()->data();
 
         // Somewhere to unpack a .ZIP file
@@ -200,35 +158,6 @@ class UpgradeController extends AbstractAdminController
             default:
                 return response('', StatusCodeInterface::STATUS_NO_CONTENT);
         }
-    }
-
-    /**
-     * @return string[]
-     */
-    private function wizardSteps(): array
-    {
-        $download_url = $this->upgrade_service->downloadUrl();
-
-        $export_steps = [];
-
-        foreach ($this->tree_service->all() as $tree) {
-            $route = route('upgrade', [
-                'step' => self::STEP_EXPORT,
-                'tree' => $tree->name(),
-            ]);
-
-            $export_steps[$route] = I18N::translate('Export all the family trees to GEDCOM files…') . ' ' . e($tree->title());
-        }
-
-        return [
-                route('upgrade', ['step' => self::STEP_CHECK])   => I18N::translate('Upgrade wizard'),
-                route('upgrade', ['step' => self::STEP_PREPARE]) => I18N::translate('Create a temporary folder…'),
-                route('upgrade', ['step' => self::STEP_PENDING]) => I18N::translate('Check for pending changes…'),
-            ] + $export_steps + [
-                route('upgrade', ['step' => self::STEP_DOWNLOAD]) => I18N::translate('Download %s…', e($download_url)),
-                route('upgrade', ['step' => self::STEP_UNZIP])    => I18N::translate('Unzip %s to a temporary folder…', e(basename($download_url))),
-                route('upgrade', ['step' => self::STEP_COPY])     => I18N::translate('Copy files…'),
-            ];
     }
 
     /**
@@ -390,7 +319,7 @@ class UpgradeController extends AbstractAdminController
         $this->upgrade_service->cleanFiles($root_filesystem, $folders_to_clean, $files_to_keep);
 
         $url    = route(ControlPanel::class);
-        $alert  =  I18N::translate('The upgrade is complete.');
+        $alert  = I18N::translate('The upgrade is complete.');
         $button = '<a href="' . e($url) . '" class="btn btn-primary">' . I18N::translate('continue') . '</a>';
 
         return response(view('components/alert-success', [

@@ -240,81 +240,6 @@ parameters:
 			path: app/Helpers/functions.php
 
 		-
-			message: "#^Cannot call method facts\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
-			count: 2
-			path: app/Http/Controllers/Admin/FixLevel0MediaController.php
-
-		-
-			message: "#^Cannot call method displayImage\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/FixLevel0MediaController.php
-
-		-
-			message: "#^Cannot call method fullName\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/FixLevel0MediaController.php
-
-		-
-			message: "#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/FixLevel0MediaController.php
-
-		-
-			message: "#^Cannot call method fullName\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/FixLevel0MediaController.php
-
-		-
-			message: "#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/FixLevel0MediaController.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function sha1 expects string, string\\|false given\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ImportThumbnailsController.php
-
-		-
-			message: "#^Cannot call method tree\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ImportThumbnailsController.php
-
-		-
-			message: "#^Cannot call method firstImageFile\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ImportThumbnailsController.php
-
-		-
-			message: "#^Cannot call method createFact\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ImportThumbnailsController.php
-
-		-
-			message: "#^Cannot call method xref\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ImportThumbnailsController.php
-
-		-
-			message: "#^Cannot call method facts\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ImportThumbnailsController.php
-
-		-
-			message: "#^Cannot call method updateRecord\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ImportThumbnailsController.php
-
-		-
-			message: "#^Parameter \\#1 \\$record of method Fisharebest\\\\Webtrees\\\\Services\\\\PendingChangesService\\:\\:acceptRecord\\(\\) expects Fisharebest\\\\Webtrees\\\\GedcomRecord, Fisharebest\\\\Webtrees\\\\Media\\|null given\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ImportThumbnailsController.php
-
-		-
-			message: "#^Cannot access offset 0 on \\(array\\<int, string\\>&nonEmpty\\)\\|false\\.$#"
-			count: 2
-			path: app/Http/Controllers/Admin/ImportThumbnailsController.php
-
-		-
 			message: "#^Parameter \\#1 \\$path of method Psr\\\\Http\\\\Message\\\\UriInterface\\:\\:withPath\\(\\) expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/Middleware/BaseUrl.php
@@ -435,6 +360,36 @@ parameters:
 			path: app/Http/RequestHandlers/ExportGedcomClient.php
 
 		-
+			message: "#^Cannot call method facts\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/FixLevel0MediaData.php
+
+		-
+			message: "#^Cannot call method displayImage\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/FixLevel0MediaData.php
+
+		-
+			message: "#^Cannot call method fullName\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/FixLevel0MediaData.php
+
+		-
+			message: "#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/FixLevel0MediaData.php
+
+		-
+			message: "#^Cannot call method fullName\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/FixLevel0MediaData.php
+
+		-
+			message: "#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/FixLevel0MediaData.php
+
+		-
 			message: "#^Cannot access property \\$chunk_data on object\\|null\\.$#"
 			count: 6
 			path: app/Http/RequestHandlers/GedcomLoad.php
@@ -463,6 +418,51 @@ parameters:
 			message: "#^Parameter \\#1 \\$path of function basename expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ImportGedcomAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function sha1 expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ImportThumbnailsAction.php
+
+		-
+			message: "#^Cannot call method tree\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ImportThumbnailsAction.php
+
+		-
+			message: "#^Cannot call method firstImageFile\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ImportThumbnailsAction.php
+
+		-
+			message: "#^Cannot call method createFact\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ImportThumbnailsAction.php
+
+		-
+			message: "#^Cannot call method xref\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ImportThumbnailsAction.php
+
+		-
+			message: "#^Cannot call method facts\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ImportThumbnailsAction.php
+
+		-
+			message: "#^Cannot call method updateRecord\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ImportThumbnailsAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$record of method Fisharebest\\\\Webtrees\\\\Services\\\\PendingChangesService\\:\\:acceptRecord\\(\\) expects Fisharebest\\\\Webtrees\\\\GedcomRecord, Fisharebest\\\\Webtrees\\\\Media\\|null given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ImportThumbnailsAction.php
+
+		-
+			message: "#^Cannot access offset 0 on \\(array\\<int, string\\>&nonEmpty\\)\\|false\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/ImportThumbnailsData.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\IndividualPage\\:\\:getSidebars\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleSidebarInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"

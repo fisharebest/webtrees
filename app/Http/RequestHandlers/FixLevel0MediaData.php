@@ -17,11 +17,10 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers\Admin;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -31,19 +30,19 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use stdClass;
 
 use function addcslashes;
 use function e;
 use function in_array;
 use function preg_match;
-use function response;
 use function view;
 
 /**
- * Controller for fixing media links.
+ * Move media links from records to facts.
  */
-class FixLevel0MediaController extends AbstractAdminController
+class FixLevel0MediaData implements RequestHandlerInterface
 {
     /** @var DatatablesService */
     private $datatables_service;
@@ -71,59 +70,7 @@ class FixLevel0MediaController extends AbstractAdminController
      *
      * @return ResponseInterface
      */
-    public function fixLevel0Media(ServerRequestInterface $request): ResponseInterface
-    {
-        return $this->viewResponse('admin/fix-level-0-media', [
-            'title' => I18N::translate('Link media objects to facts and events'),
-        ]);
-    }
-
-    /**
-     * Move a link to a media object from a level 0 record to a level 1 record.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function fixLevel0MediaAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $params = (array) $request->getParsedBody();
-
-        $fact_id   = $params['fact_id'];
-        $indi_xref = $params['indi_xref'];
-        $obje_xref = $params['obje_xref'];
-        $tree_id   = (int) $params['tree_id'];
-
-        $tree       = $this->tree_service->find($tree_id);
-        $individual = Registry::individualFactory()->make($indi_xref, $tree);
-        $media      = Registry::mediaFactory()->make($obje_xref, $tree);
-
-        if ($individual !== null && $media !== null) {
-            foreach ($individual->facts() as $fact1) {
-                if ($fact1->id() === $fact_id) {
-                    $individual->updateFact($fact_id, $fact1->gedcom() . "\n2 OBJE @" . $obje_xref . '@', false);
-                    foreach ($individual->facts(['OBJE']) as $fact2) {
-                        if ($fact2->target() === $media) {
-                            $individual->deleteFact($fact2->id(), false);
-                        }
-                    }
-                    break;
-                }
-            }
-        }
-
-        return response();
-    }
-
-    /**
-     * If media objects are wronly linked to top-level records, reattach them
-     * to facts/events.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function fixLevel0MediaData(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $ignore_facts = [
             'NAME',
