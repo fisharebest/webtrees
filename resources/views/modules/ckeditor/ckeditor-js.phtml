@@ -1,21 +1,38 @@
-<script src="<?= e($ckeditor_path) ?>ckeditor.js"></script>
+<?php
 
+/**
+ * @var string $ckeditor_path
+ * @var string $language
+ */
+
+?>
 <script>
-    const CKEDITOR_BASEPATH = <?= json_encode($ckeditor_path) ?>;
+  const CKEDITOR_BASEPATH = <?= json_encode($ckeditor_path, JSON_THROW_ON_ERROR) ?>;
 
-    // Enable for all browsers
-    CKEDITOR.env.isCompatible = true;
+  (function () {
+    let elements = document.querySelectorAll('textarea.html-edit');
 
-    // Disable toolbars
-    CKEDITOR.config.language = <?= json_encode(strtolower($language)) ?>;
-    CKEDITOR.config.removePlugins = "forms,newpage,preview,print,save,templates,flash,iframe";
-    CKEDITOR.config.extraAllowedContent = "area[shape,coords,href,target,alt,title];map[name];img[usemap];*[class,style]";
+    if (elements.length !== 0) {
+      let script = document.createElement('script');
+      script.src = <?= json_encode($ckeditor_path . 'ckeditor.js', JSON_THROW_ON_ERROR) ?>;
+      script.type = 'text/javascript';
+      script.onload = function () {
+        // Enable for all browsers
+        CKEDITOR.env.isCompatible = true;
 
-    // Do not convert é to &eacute; in the editor
-    CKEDITOR.config.entities = false;
+        // Disable toolbars
+        CKEDITOR.config.language = <?= json_encode(strtolower($language), JSON_THROW_ON_ERROR) ?>;
+        CKEDITOR.config.removePlugins = 'forms,newpage,preview,print,save,templates,flash,iframe';
+        CKEDITOR.config.extraAllowedContent = 'area[shape,coords,href,target,alt,title];map[name];img[usemap];*[class,style]';
 
-    // Activate the editor
-    document.querySelectorAll("textarea.html-edit").forEach((node) => {
-        CKEDITOR.replace(node.id);
-    });
+        // Do not convert é to &eacute; in the editor
+        CKEDITOR.config.entities = false;
+
+        // Activate the editor
+        elements.forEach(element => CKEDITOR.replace(element.id));
+      };
+
+      document.querySelector('head').appendChild(script);
+    }
+  })();
 </script>
