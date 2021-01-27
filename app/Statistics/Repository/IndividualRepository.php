@@ -834,7 +834,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         /** @var Individual $individual */
         $individual = Registry::individualFactory()->mapper($this->tree)($row);
 
-        if (!$individual->canShow()) {
+        if ($type !== 'age' && !$individual->canShow()) {
             return I18N::translate('This information is private and cannot be shown.');
         }
 
