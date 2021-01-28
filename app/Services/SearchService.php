@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Services;
 use Closure;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Exceptions\HttpServiceUnavailableException;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
@@ -34,6 +35,7 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -232,6 +234,27 @@ class SearchService
     }
 
     /**
+     * Search for submissions.
+     *
+     * @param Tree[]   $trees
+     * @param string[] $search
+     * @param int      $offset
+     * @param int      $limit
+     *
+     * @return Collection<Location>
+     */
+    public function searchLocations(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
+    {
+        $query = DB::table('other')
+            ->where('o_type', '=', '_LOC');
+
+        $this->whereTrees($query, 'o_file', $trees);
+        $this->whereSearch($query, 'o_gedcom', $search);
+
+        return $this->paginateQuery($query, $this->locationRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
+    }
+
+    /**
      * Search for media objects.
      *
      * @param Tree[]   $trees
@@ -357,6 +380,27 @@ class SearchService
             ->skip($offset)
             ->take($limit)
             ->pluck('n_surname');
+    }
+
+    /**
+     * Search for submissions.
+     *
+     * @param Tree[]   $trees
+     * @param string[] $search
+     * @param int      $offset
+     * @param int      $limit
+     *
+     * @return Collection<Submission>
+     */
+    public function searchSubmissions(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
+    {
+        $query = DB::table('other')
+            ->where('o_type', '=', 'SUBN');
+
+        $this->whereTrees($query, 'o_file', $trees);
+        $this->whereSearch($query, 'o_gedcom', $search);
+
+        return $this->paginateQuery($query, $this->submissionRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
     }
 
     /**
@@ -1160,6 +1204,20 @@ class SearchService
     }
 
     /**
+     * Convert a row from any tree in the media table into a location object.
+     *
+     * @return Closure
+     */
+    private function locationRowMapper(): Closure
+    {
+        return function (stdClass $row): Media {
+            $tree = $this->tree_service->find((int) $row->m_file);
+
+            return Registry::locationFactory()->mapper($tree)($row);
+        };
+    }
+
+    /**
      * Convert a row from any tree in the media table into an media object.
      *
      * @return Closure
@@ -1212,6 +1270,20 @@ class SearchService
             $tree = $this->tree_service->find((int) $row->s_file);
 
             return Registry::sourceFactory()->mapper($tree)($row);
+        };
+    }
+
+    /**
+     * Convert a row from any tree in the other table into a submission object.
+     *
+     * @return Closure
+     */
+    private function submissionRowMapper(): Closure
+    {
+        return function (stdClass $row): Submission {
+            $tree = $this->tree_service->find((int) $row->o_file);
+
+            return Registry::submissionFactory()->mapper($tree)($row);
         };
     }
 

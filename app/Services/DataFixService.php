@@ -44,7 +44,7 @@ use function strip_tags;
 class DataFixService
 {
     /**
-     * Since we know the type, this is quicker than calling Factory::gedcomRecord()->make().
+     * Since we know the type, this is quicker than calling Registry::gedcomRecordFactory()->make().
      *
      * @param string $xref
      * @param Tree   $tree

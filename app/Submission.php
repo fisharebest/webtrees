@@ -37,7 +37,7 @@ class Submission extends GedcomRecord
     /**
      * A closure which will create a record from a database row.
      *
-     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Factory::submission()
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Registry::submissionFactory()
      *
      * @param Tree $tree
      *
@@ -57,7 +57,7 @@ class Submission extends GedcomRecord
      * @param Tree        $tree
      * @param string|null $gedcom
      *
-     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Factory::submission()
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Registry::submissionFactory()
      *
      * @return Submission|null
      */

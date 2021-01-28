@@ -112,7 +112,7 @@ class GedcomRecord
     /**
      * A closure which will create a record from a database row.
      *
-     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Factory::gedcomRecord()
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Registry::gedcomRecordFactory()
      *
      * @param Tree $tree
      *
@@ -178,7 +178,7 @@ class GedcomRecord
      * we just receive the XREF. For bulk records (such as lists
      * and search results) we can receive the GEDCOM data as well.
      *
-     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Factory::gedcomRecord()
+     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Registry::gedcomRecordFactory()
      *
      * @param string      $xref
      * @param Tree        $tree

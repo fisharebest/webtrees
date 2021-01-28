@@ -55,8 +55,8 @@ abstract class AbstractSelect2Handler implements RequestHandlerInterface
 
         $params = (array) $request->getParsedBody();
         $query  = $params['q'] ?? '';
-        $at     = (bool) ($params['at'] ?? false);
         $page   = (int) ($params['page'] ?? 1);
+        $at     = (bool) ($request->getQueryParams()['at'] ?? false);
 
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;
