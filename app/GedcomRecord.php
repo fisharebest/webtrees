@@ -1180,7 +1180,7 @@ class GedcomRecord
      */
     protected function createPrivateGedcomRecord(int $access_level): string
     {
-        return '0 @' . $this->xref . '@ ' . static::RECORD_TYPE . "\n1 NOTE " . I18N::translate('Private');
+        return '0 @' . $this->xref . '@ ' . static::RECORD_TYPE;
     }
 
     /**

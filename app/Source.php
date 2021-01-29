@@ -87,18 +87,6 @@ class Source extends GedcomRecord
     }
 
     /**
-     * Generate a private version of this record
-     *
-     * @param int $access_level
-     *
-     * @return string
-     */
-    protected function createPrivateGedcomRecord(int $access_level): string
-    {
-        return '0 @' . $this->xref . "@ SOUR\n1 TITL " . I18N::translate('Private');
-    }
-
-    /**
      * Extract names from the GEDCOM record.
      *
      * @return void

@@ -106,18 +106,6 @@ class Note extends GedcomRecord
     }
 
     /**
-     * Generate a private version of this record
-     *
-     * @param int $access_level
-     *
-     * @return string
-     */
-    protected function createPrivateGedcomRecord(int $access_level): string
-    {
-        return '0 @' . $this->xref . '@ NOTE ' . I18N::translate('Private');
-    }
-
-    /**
      * Create a name for this note - apply (and remove) markup, then take
      * a maximum of 100 characters from the first non-empty line.
      *
