@@ -287,6 +287,8 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
         $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
 
+        $url = $request->getQueryParams()['url'] ?? '';
+
         if ($block_id === 0) {
             // Creating a new story
             $story_title = '';
@@ -317,6 +319,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             'story_title' => $story_title,
             'title'       => $title,
             'tree'        => $tree,
+            'url'         => $url,
             'individual'  => $individual,
         ]);
     }
@@ -339,6 +342,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $story_body  = $params['story_body'];
         $story_title = $params['story_title'];
         $languages   = $params['languages'] ?? [];
+        $url         = $params['url'] ?? '';
 
         $story_body  = $this->html_service->sanitize($story_body);
 
@@ -364,7 +368,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $this->setBlockSetting($block_id, 'title', $story_title);
         $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
 
-        $url = route('module', [
+        $url = $url ?: route('module', [
             'module' => $this->name(),
             'action' => 'Admin',
             'tree'    => $tree->name(),
