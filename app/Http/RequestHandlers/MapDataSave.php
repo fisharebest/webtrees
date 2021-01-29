@@ -45,7 +45,7 @@ class MapDataSave implements RequestHandlerInterface
     {
         $params = (array) $request->getParsedBody();
 
-        $place_id  = $params['place_id'] ?? null;
+        $place_id  = $params['place_id'] ?? '';
         $parent_id = $params['parent_id'] ?? null;
         $latitude  = $params['new_place_lati'] ?? '';
         $longitude = $params['new_place_long'] ?? '';
@@ -66,7 +66,7 @@ class MapDataSave implements RequestHandlerInterface
             }
         }
 
-        if ($place_id === null) {
+        if ($place_id === '') {
             DB::table('place_location')->insert([
                 'parent_id' => $parent_id,
                 'place'     => $name,
