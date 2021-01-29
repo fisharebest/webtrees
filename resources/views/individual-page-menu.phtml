@@ -10,7 +10,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ReorderMediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderNamesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderFamiliesPage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 
+/**
+ * @var Individual $record
+ */
 ?>
 
 <div class="dropdown wt-page-menu">
@@ -20,13 +24,13 @@ use Fisharebest\Webtrees\I18N;
     </button>
 
     <div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">
-        <a class="dropdown-item" href="<?= e(route(AddName::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+        <a class="dropdown-item" href="<?= e(route(AddName::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
             <?= view('icons/add') ?>
             <?= I18N::translate('Add a name') ?>
         </a>
 
-        <?php if ($individual->facts(['NAME'], false, null, true)->count() > 1) : ?>
-            <a class="dropdown-item" href="<?= e(route(ReorderNamesPage::class, ['tree' => $tree->name(), 'xref' => $individual->xref()])) ?>">
+        <?php if ($record->facts(['NAME'], false, null, true)->count() > 1) : ?>
+            <a class="dropdown-item" href="<?= e(route(ReorderNamesPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/reorder') ?>
                 <?= I18N::translate('Re-order names') ?>
             </a>
@@ -39,16 +43,16 @@ use Fisharebest\Webtrees\I18N;
 
         <div class="dropdown-divider"></div>
 
-        <?php if ($individual->facts(['SEX'], false, null, true)->isEmpty()) : ?>
-            <a class="dropdown-item" href="<?= e(route(AddNewFact::class, ['fact' => 'SEX', 'tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+        <?php if ($record->facts(['SEX'], false, null, true)->isEmpty()) : ?>
+            <a class="dropdown-item" href="<?= e(route(AddNewFact::class, ['fact' => 'SEX', 'tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/edit') ?>
                 <?= I18N::translate('Edit the gender') ?>
             </a>
         <?php endif ?>
 
-        <?php foreach ($individual->facts(['SEX'], false, null, true) as $fact) : ?>
+        <?php foreach ($record->facts(['SEX'], false, null, true) as $fact) : ?>
             <?php if ($fact->canEdit()) : ?>
-                <a class="dropdown-item" href="<?= e(route(EditFactPage::class, ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) ?>">
+                <a class="dropdown-item" href="<?= e(route(EditFactPage::class, ['xref' => $record->xref(), 'fact_id' => $fact->id(), 'tree' => $record->tree()->name()])) ?>">
                     <?= view('icons/edit') ?>
                     <?= I18N::translate('Edit the gender') ?>
                 </a>
@@ -57,8 +61,8 @@ use Fisharebest\Webtrees\I18N;
 
         <div class="dropdown-divider"></div>
 
-        <?php if ($individual->spouseFamilies()->count() > 1 || $individual->childFamilies()->count() > 1) : ?>
-            <a class="dropdown-item" href="<?= e(route(ReorderFamiliesPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+        <?php if ($record->spouseFamilies()->count() > 1 || $record->childFamilies()->count() > 1) : ?>
+            <a class="dropdown-item" href="<?= e(route(ReorderFamiliesPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/reorder') ?>
                 <?= I18N::translate('Re-order families') ?>
             </a>
@@ -71,13 +75,13 @@ use Fisharebest\Webtrees\I18N;
 
         <div class="dropdown-divider"></div>
 
-        <a class="dropdown-item" href="<?= e(route(AddNewFact::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'OBJE'])) ?>">
+        <a class="dropdown-item" href="<?= e(route(AddNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact' => 'OBJE'])) ?>">
             <?= view('icons/add') ?>
             <?= I18N::translate('Add a media object') ?>
         </a>
 
-        <?php if ($individual->facts(['OBJE'], false, null, true)->count() > 1) : ?>
-            <a class="dropdown-item" href="<?= e(route(ReorderMediaPage::class, ['tree' => $tree->name(), 'xref' => $individual->xref()])) ?>">
+        <?php if ($record->facts(['OBJE'], false, null, true)->count() > 1) : ?>
+            <a class="dropdown-item" href="<?= e(route(ReorderMediaPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/reorder') ?>
                 <?= I18N::translate('Re-order media') ?>
             </a>
@@ -90,13 +94,13 @@ use Fisharebest\Webtrees\I18N;
 
         <div class="dropdown-divider"></div>
 
-        <a class="dropdown-item" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($individual->fullName())) ?>" data-post-url="<?= e(route(DeleteRecord::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+        <a class="dropdown-item" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->fullName())) ?>" data-post-url="<?= e(route(DeleteRecord::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
             <?= view('icons/delete') ?>
             <?= I18N::translate('Delete') ?>
         </a>
 
-        <?php if (Auth::isAdmin() || $individual->tree()->getPreference('SHOW_GEDCOM_RECORD')) : ?>
-            <a class="dropdown-item" href="<?= e(route(EditRawRecordPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+        <?php if (Auth::isAdmin() || $record->tree()->getPreference('SHOW_GEDCOM_RECORD')) : ?>
+            <a class="dropdown-item" href="<?= e(route(EditRawRecordPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/edit') ?>
                 <?= I18N::translate('Edit the raw GEDCOM') ?>
             </a>
