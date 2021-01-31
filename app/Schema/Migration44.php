@@ -23,6 +23,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Blueprint;
+use PDOException;
 
 /**
  * Upgrade the database schema from version 44 to version 45.
@@ -79,7 +80,8 @@ class Migration44 implements MigrationInterface
                     'pl1.pl_parent_id' => 0,
                 ]);
 
-            $select = DB::table('placelocation')
+            // This is the SQL standard.  It works with Postgres, Sqlite and MySQL 8
+            $select1 = DB::table('placelocation')
                 ->leftJoin('place_location', 'id', '=', 'pl_id')
                 ->whereNull('id')
                 ->orderBy('pl_id')
@@ -91,8 +93,26 @@ class Migration44 implements MigrationInterface
                     new Expression("CAST(REPLACE(REPLACE(pl_long, 'W', '-'), 'E', '') AS FLOAT)"),
                 ]);
 
-            DB::table('place_location')
-                ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select);
+            // This works for MySQL 5.7 and lower, which cannot cast to FLOAT
+            $select2 = DB::table('placelocation')
+                ->leftJoin('place_location', 'id', '=', 'pl_id')
+                ->whereNull('id')
+                ->orderBy('pl_id')
+                ->select([
+                    'pl_id',
+                    new Expression('CASE pl_parent_id WHEN 0 THEN NULL ELSE pl_parent_id END'),
+                    'pl_place',
+                    new Expression("REPLACE(REPLACE(pl_lati, 'S', '-'), 'N', '')"),
+                    new Expression("REPLACE(REPLACE(pl_long, 'W', '-'), 'E', '')"),
+                ]);
+
+            try {
+                DB::table('place_location')
+                    ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select1);
+            } catch (PDOException $ex) {
+                DB::table('place_location')
+                    ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select2);
+            }
 
             DB::schema()->drop('placelocation');
         }
