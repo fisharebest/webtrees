@@ -47,16 +47,18 @@ class MigrationService
     public function updateSchema($namespace, $schema_name, $target_version): bool
     {
         try {
-            $this->transactionalTables();
-        } catch (PDOException $ex) {
-            // There is probably nothing we can do.
-        }
-
-        try {
             $current_version = (int) Site::getPreference($schema_name);
         } catch (PDOException $ex) {
             // During initial installation, the site_preference table won’t exist.
             $current_version = 0;
+        }
+
+        if ($current_version < $target_version) {
+            try {
+                $this->transactionalTables();
+            } catch (PDOException $ex) {
+                // There is probably nothing we can do.
+            }
         }
 
         $updates_applied = false;
