@@ -1,10 +1,9 @@
 <?php
 
-use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderNamesAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 
@@ -30,7 +29,7 @@ use Fisharebest\Webtrees\View;
                 </div>
 
                 <div class="card-body">
-                    <?= GedcomTag::getLabelValue('TYPE', GedcomCodeName::getValue($fact->attribute('TYPE'), $fact->record())) ?>
+                    <?= Registry::elementFactory()->make('INDI:NAME:TYPE')->value($fact->attribute('TYPE'), $tree) ?>
                 </div>
             </div>
         <?php endforeach ?>

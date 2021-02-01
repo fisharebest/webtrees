@@ -1,12 +1,10 @@
 <?php
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Submitter;
 
 ?>
 
@@ -62,10 +60,6 @@ use Fisharebest\Webtrees\Submitter;
                 <?php foreach ($facts as $fact) : ?>
                     <?php FunctionsPrintFacts::printFact($fact, $submitter) ?>
                 <?php endforeach ?>
-
-                <?php if ($submitter->canEdit()) : ?>
-                    <?php FunctionsPrint::printAddNewFact($submitter, $facts, Submitter::RECORD_TYPE) ?>
-                <?php endif ?>
             </table>
         </div>
 

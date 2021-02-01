@@ -1,0 +1,65 @@
+<?php
+
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditRawRecordPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditRecordAction;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var bool         $can_edit_raw
+ * @var GedcomRecord $record
+ * @var string       $title
+ * @var Tree         $tree
+ */
+
+?>
+
+<h2 class="wt-page-title"><?= $title ?></h2>
+
+<form method="post" action="<?= e(route(EditRecordAction::class, ['tree' => $tree->name(), 'xref' => $record->xref()])) ?>" class="wt-page-content">
+    <?= csrf_field() ?>
+
+    <?= view('edit/edit-gedcom-fields', ['gedcom' => $record->insertMissingSubtags(), 'hierarchy' => [$record->tag()], 'tree' => $tree, 'prefix' => '']) ?>
+
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label" for="keep_chan">
+            <?= I18N::translate('Last change') ?>
+        </label>
+        <div class="col-sm-9">
+            <?= view('components/checkbox-inline', ['label' => I18N::translate('Keep the existing “last change” information'), 'name' => 'keep_chan', 'checked' => (bool) $tree->getPreference('NO_UPDATE_CHAN')]) ?>
+            <div>
+                <?= I18N::translate('%1$s: %2$s', I18N::translate('Timestamp'), view('components/datetime', ['timestamp' => $record->lastChangeTimestamp()])) ?>
+            </div>
+            <div>
+                <?= I18N::translate('%1$s: %2$s', I18N::translate('Author of last change'), e($record->lastChangeUser())) ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-3 wt-page-options-label">
+        </div>
+        <div class="col-sm-9 wt-page-options-value">
+            <button class="btn btn-primary" type="submit">
+                <?= view('icons/save') ?>
+                <?= /* I18N: A button label. */
+                I18N::translate('save') ?>
+            </button>
+            <a class="btn btn-secondary" href="<?= e($record->url()) ?>">
+                <?= view('icons/cancel') ?>
+                <?= /* I18N: A button label. */
+                I18N::translate('cancel') ?>
+            </a>
+            <?php if ($can_edit_raw) : ?>
+                <a class="btn btn-link" href="<?= e(route(EditRawRecordPage::class, ['xref' => $record->xref(), 'tree' => $tree->name()])) ?>">
+                    <?= I18N::translate('Edit the raw GEDCOM') ?>
+                </a>
+            <?php endif; ?>
+        </div>
+    </div>
+</form>
+
+<?= view('modals/on-screen-keyboard') ?>
+<?= view('modals/ajax') ?>
+<?= view('edit/initialize-calendar-popup') ?>

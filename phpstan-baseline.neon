@@ -16,6 +16,26 @@ parameters:
 			path: app/Date/AbstractCalendarDate.php
 
 		-
+			message: "#^Parameter \\#1 \\$commonMark of method League\\\\CommonMark\\\\Converter\\:\\:convertToHtml\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Elements/AbstractElement.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\DateValue\\:\\:escape\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Elements/DateValue.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\LanguageId\\:\\:canonical\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Elements/LanguageId.php
+
+		-
+			message: "#^Parameter \\#1 \\$num of function dechex expects int, float\\|int given\\.$#"
+			count: 1
+			path: app/Elements/PafUid.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Fact\\:\\:getNotes\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Note\\|string\\> but returns array\\<int, array\\|Fisharebest\\\\Webtrees\\\\Note\\|string\\|null\\>\\.$#"
 			count: 1
 			path: app/Fact.php
@@ -221,7 +241,12 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$stack of function array_shift expects array, array\\<int, string\\>\\|false given\\.$#"
-			count: 2
+			count: 3
+			path: app/GedcomRecord.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:insertMissingSubtags\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
 			path: app/GedcomRecord.php
 
 		-
@@ -907,17 +932,7 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-theme.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-report.disable/module.php
+			path: modules_v4/example-footer.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
@@ -927,7 +942,17 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
-			path: modules_v4/example-footer.disable/module.php
+			path: modules_v4/example-report.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example-theme.disable/module.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: modules_v4/example.disable/module.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"

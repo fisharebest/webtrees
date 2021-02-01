@@ -1,0 +1,38 @@
+<?php
+
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tree;
+use Ramsey\Uuid\Uuid;
+
+/**
+ * @var string        $gedcom
+ * @var array<string> $hierarchy
+ * @var string        $prefix
+ * @var Tree          $tree
+ */
+
+$gedcom = preg_replace('/\n\d CONT ?/', "\r", $gedcom);
+?>
+
+<?php foreach (explode("\n", $gedcom) as $line) : ?>
+    <?php
+    preg_match('/^(\d+) (\w+) ?(.*)/', $line, $match);
+    [, $level, $tag, $value] = $match;
+    $hierarchy[$level] = $tag;
+    $full_tag          = implode(':', array_slice($hierarchy, 0, 1 + (int) $level));
+    $element           = Registry::elementFactory()->make($full_tag);
+    $id                = Uuid::uuid4()->toString() . '-' . $full_tag;
+    ?>
+
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label" for="<?= e($id) ?>">
+            <?= $element->label() ?>
+        </label>
+
+        <div class="col-sm-9">
+            <input type="hidden" name="<?= e($prefix) ?>levels[]" value="<?= e($level) ?>">
+            <input type="hidden" name="<?= e($prefix) ?>tags[]" value="<?= e($tag) ?>">
+            <?= $element->edit($id, $prefix . 'values[]', strtr($value, ["\r" => "\n"]), $tree) ?>
+        </div>
+    </div>
+<?php endforeach ?>

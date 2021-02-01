@@ -1,12 +1,12 @@
 <?php
 
-use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Http\RequestHandlers\Select2Submitter;
 use Fisharebest\Webtrees\Tree;
 
 /**
  * @var string      $at     "@" or "" (or unset).
- * @var GedcomRecord|null $submitter
+ * @var Submitter|null $submitter
  * @var string|null       $class
  * @var string|null       $id
  * @var string            $name
@@ -32,7 +32,7 @@ $at = $at ?? '';
     <?= ($required ?? false) ? 'required' : '' ?>
     style="width:100%"
 >
-    <?php if (($submitter ?? null) instanceof GedcomRecord) : ?>
+    <?php if (($submitter ?? null) instanceof Submitter) : ?>
         <option value="<?= e($at . $submitter->xref() . $at) ?>">
             <?= view('selects/submitter', ['submitter' => $submitter]) ?>
         </option>

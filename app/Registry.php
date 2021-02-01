@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Contracts\FamilyFactoryInterface;
 use Fisharebest\Webtrees\Contracts\FilesystemFactoryInterface;
+use Fisharebest\Webtrees\Contracts\ElementFactoryInterface;
 use Fisharebest\Webtrees\Contracts\GedcomRecordFactoryInterface;
 use Fisharebest\Webtrees\Contracts\HeaderFactoryInterface;
 use Fisharebest\Webtrees\Contracts\ImageFactoryInterface;
@@ -42,6 +43,9 @@ class Registry
 {
     /** @var CacheFactoryInterface */
     private static $cache_factory;
+
+    /** @var ElementFactoryInterface */
+    private static $element_factory;
 
     /** @var FamilyFactoryInterface */
     private static $family_factory;
@@ -99,6 +103,22 @@ class Registry
         }
 
         return self::$cache_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param ElementFactoryInterface|null $factory
+     *
+     * @return ElementFactoryInterface
+     */
+    public static function elementFactory(ElementFactoryInterface $factory = null): ElementFactoryInterface
+    {
+        if ($factory instanceof ElementFactoryInterface) {
+            self::$element_factory = $factory;
+        }
+
+        return self::$element_factory;
     }
 
     /**

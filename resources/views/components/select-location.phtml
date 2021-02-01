@@ -1,0 +1,42 @@
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\Select2Location;
+use Fisharebest\Webtrees\Location;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var string        $at "@" or "" (or unset).
+ * @var Location|null $location
+ * @var string|null   $class
+ * @var string|null   $id
+ * @var string        $name
+ * @var Tree          $tree
+ */
+
+$at = $at ?? '';
+
+?>
+
+<select
+        autocomplete="off"
+        class="form-control select2 <?= $class ?? '' ?>"
+        data-ajax--delay="<?= e(Select2Location::AJAX_DELAY) ?>"
+        data-minimum-input-length="<?= e(Select2Location::MINIMUM_INPUT_LENGTH) ?>"
+        data-ajax--type="POST"
+        data-ajax--url="<?= e(route(Select2Location::class, ['tree' => $tree->name(), 'at' => $at])) ?>"
+        data-allow-clear="true"
+        data-placeholder=""
+        id="<?= e($id ?? $name) ?>"
+        name="<?= e($name) ?>"
+    <?= ($disabled ?? false) ? 'disabled' : '' ?>
+    <?= ($required ?? false) ? 'required' : '' ?>
+        style="width:100%"
+>
+    <?php if (($location ?? null) instanceof Location) : ?>
+        <option value="<?= e($at . $location->xref() . $at) ?>">
+            <?= view('selects/location', ['location' => $location]) ?>
+        </option>
+    <?php else : ?>
+        <option value="">&nbsp;</option>
+    <?php endif ?>
+</select>

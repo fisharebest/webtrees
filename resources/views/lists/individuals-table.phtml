@@ -12,6 +12,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
@@ -265,7 +266,7 @@ $deathAgeData = [
             <tr class="<?= $individual->isPendingDeletion() ? 'wt-old' : ($individual->isPendingAddition() ? 'wt-new' : '') ?>">
                 <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $individual->sortName()))))) ?>">
                     <?php foreach ($individual->getAllNames() as $num => $name) : ?>
-                        <a title="<?= $name['type'] === 'NAME' ? '' : strip_tags(GedcomTag::getLabel($name['type'])) ?>" href="<?= e($individual->url()) ?>" class="<?= $num === $individual->getPrimaryName() ? 'name2' : '' ?>">
+                        <a title="<?= $name['type'] === 'NAME' ? '' :  Registry::elementFactory()->make('INDI:NAME:' . $name['type'])->label() ?>" href="<?= e($individual->url()) ?>" class="<?= $num === $individual->getPrimaryName() ? 'name2' : '' ?>">
                             <?= $name['full'] ?>
                         </a>
                         <?php if ($num === $individual->getPrimaryName()) : ?>

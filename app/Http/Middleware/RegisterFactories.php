@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fisharebest\Webtrees\Factories\CacheFactory;
 use Fisharebest\Webtrees\Factories\FamilyFactory;
 use Fisharebest\Webtrees\Factories\FilesystemFactory;
+use Fisharebest\Webtrees\Factories\ElementFactory;
 use Fisharebest\Webtrees\Factories\GedcomRecordFactory;
 use Fisharebest\Webtrees\Factories\HeaderFactory;
 use Fisharebest\Webtrees\Factories\ImageFactory;
@@ -56,6 +57,7 @@ class RegisterFactories implements MiddlewareInterface
         Registry::cache(new CacheFactory());
         Registry::familyFactory(new FamilyFactory());
         Registry::filesystem(new FilesystemFactory());
+        Registry::elementFactory(new ElementFactory());
         Registry::gedcomRecordFactory(new GedcomRecordFactory());
         Registry::headerFactory(new HeaderFactory());
         Registry::imageFactory(new ImageFactory());

@@ -557,24 +557,6 @@ class FunctionsPrint
                 $uniquefacts = [];
                 $quickfacts  = [];
                 break;
-
-            case Submitter::RECORD_TYPE:
-                $addfacts    = ['LANG', 'OBJE', 'NOTE', 'SHARED_NOTE'];
-                $uniquefacts = ['ADDR', 'EMAIL', 'NAME', 'PHON', 'WWW'];
-                $quickfacts  = [];
-                break;
-
-            case Submission::RECORD_TYPE:
-                $addfacts    = ['NOTE', 'SHARED_NOTE'];
-                $uniquefacts = ['FAMF', 'TEMP', 'ANCE', 'DESC', 'ORDI', 'SUBM'];
-                $quickfacts  = [];
-                break;
-
-            case Header::RECORD_TYPE:
-                $addfacts    = [];
-                $uniquefacts = ['COPR', 'LANG', 'SUBM'];
-                $quickfacts  = [];
-                break;
             default:
                 return;
         }

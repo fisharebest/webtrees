@@ -243,7 +243,7 @@ $marriageAgeData = [
                 <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $husb->sortName()))))) ?>">
                     <?php foreach ($husb->getAllNames() as $num => $name) : ?>
                         <?php if ($name['type'] !== '_MARNM' || $num == $husb->getPrimaryName()) : ?>
-                        <a title="<?= $name['type'] === 'NAME' ? '' : strip_tags(GedcomTag::getLabel($name['type'])) ?>" href="<?= e($family->url()) ?>" class="<?= $num === $husb->getPrimaryName() ? 'name2' : '' ?>">
+                        <a title="<?= $name['type'] === 'NAME' ? '' : Registry::elementFactory()->make('INDI:NAME:' . $name['type'])->label() ?>" href="<?= e($family->url()) ?>" class="<?= $num === $husb->getPrimaryName() ? 'name2' : '' ?>">
                             <?= $name['full'] ?>
                         </a>
                             <?php if ($num === $husb->getPrimaryName()) : ?>
@@ -278,7 +278,7 @@ $marriageAgeData = [
                 <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $wife->sortName()))))) ?>">
                     <?php foreach ($wife->getAllNames() as $num => $name) : ?>
                         <?php if ($name['type'] !== '_MARNM' || $num == $wife->getPrimaryName()) : ?>
-                            <a title="<?= $name['type'] === 'NAME' ? '' : strip_tags(GedcomTag::getLabel($name['type'])) ?>" href="<?= e($family->url()) ?>" class="<?= $num === $wife->getPrimaryName() ? 'name2' : '' ?>">
+                            <a title="<?= $name['type'] === 'NAME' ? '' : Registry::elementFactory()->make('INDI:NAME:' . $name['type'])->label() ?>" href="<?= e($family->url()) ?>" class="<?= $num === $wife->getPrimaryName() ? 'name2' : '' ?>">
                                 <?= $name['full'] ?>
                             </a>
                             <?php if ($num === $wife->getPrimaryName()) : ?>

@@ -3,7 +3,6 @@
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
@@ -112,10 +111,6 @@ use Illuminate\Support\Collection;
                 <?php foreach ($facts as $fact) : ?>
                     <?php FunctionsPrintFacts::printFact($fact, $record) ?>
                 <?php endforeach ?>
-
-                <?php if ($record->canEdit()) : ?>
-                    <?php FunctionsPrint::printAddNewFact($record, $facts, $record->tag()) ?>
-                <?php endif ?>
             </table>
         </div>
 

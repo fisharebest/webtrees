@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -244,7 +245,7 @@ class GedcomEditService
                 $pass = false;
                 while ($k < $count && $this->glevels[$k] > $this->glevels[$j]) {
                     if ($this->text[$k] !== '') {
-                        if (($this->tag[$j] !== 'OBJE') || ($this->tag[$k] === 'FILE')) {
+                        if ($this->tag[$j] !== 'OBJE' || $this->tag[$k] === 'FILE') {
                             $pass = true;
                             break;
                         }
@@ -435,5 +436,64 @@ class GedcomEditService
         }
 
         return $gedrec;
+    }
+
+    /**
+     * Reassemble edited GEDCOM fields into a GEDCOM fact/event string.
+     *
+     * @param string        $record_type
+     * @param array<string> $levels
+     * @param array<string> $tags
+     * @param array<string> $values
+     *
+     * @return string
+     */
+    public function editLinesToGedcom(string $record_type, array $levels, array $tags, array $values): string
+    {
+        // Assert all arrays are the same size.
+        $count = count($levels);
+        assert($count > 0);
+        assert(count($tags) === $count);
+        assert(count($values) === $count);
+
+        $gedcom_lines = [];
+        $hierarchy    = [$record_type];
+
+        for ($i = 0; $i < $count; $i++) {
+            $hierarchy[$levels[$i]] = $tags[$i];
+
+            $full_tag   = implode(':', array_slice($hierarchy, 0, 1 + (int) $levels[$i]));
+            $element    = Registry::elementFactory()->make($full_tag);
+            $values[$i] = $element->canonical($values[$i]);
+
+            // If "1 FACT Y" has a DATE or PLAC, then delete the value of Y
+            if ($levels[$i] === '1' && $values[$i] === 'Y') {
+                for ($j = $i + 1; $j < $count && $levels[$j] > $levels[$i]; ++$j) {
+                    if ($levels[$j] === '2' && ($tags[$j] === 'DATE' || $tags[$j] === 'PLAC') && $values[$j] !== '') {
+                        $values[$i] = '';
+                        break;
+                    }
+                }
+            }
+
+            // Include this line if there is a value - or if there is a child record with a value.
+            $include = $values[$i] !== '';
+
+            for ($j = $i + 1; !$include && $j < $count && $levels[$j] > $levels[$i]; $j++) {
+                $include = $values[$j] !== '';
+            }
+
+            if ($include) {
+                if ($values[$i] === '') {
+                    $gedcom_lines[] = $levels[$i] . ' ' . $tags[$i];
+                } else {
+                    $next_level = 1 + (int) $levels[$i];
+
+                    $gedcom_lines[] = $levels[$i] . ' ' . $tags[$i] . ' ' . str_replace("\n", "\n" . $next_level . ' CONT ', $values[$i]);
+                }
+            }
+        }
+
+        return implode("\n", $gedcom_lines);
     }
 }

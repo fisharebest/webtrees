@@ -310,7 +310,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Returns the formatted type of the first/last occuring event.
+     * Returns the formatted type of the first/last occurring event.
      *
      * @param string $direction The sorting direction
      *

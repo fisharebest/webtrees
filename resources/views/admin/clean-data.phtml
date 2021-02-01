@@ -30,7 +30,12 @@ use Fisharebest\Webtrees\I18N;
                 <?php if (in_array($entry, $protected, true)) : ?>
                     <?= view('icons/ban') ?>
                 <?php else : ?>
-                    <a href="#" data-post-url="<?= e(route(DeletePath::class, ['path' => $entry])) ?>" class="btn btn-sm btn-link">
+                    <a
+                        href="#"
+                        data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($entry)) ?>"
+                        data-post-url="<?= e(route(DeletePath::class, ['path' => $entry])) ?>"
+                        class="btn btn-sm btn-link"
+                    >
                         <?= view('icons/delete') ?>
                     </a>
                 <?php endif ?>

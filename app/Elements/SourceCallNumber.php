@@ -17,22 +17,30 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Elements;
+
+use Fisharebest\Webtrees\Tree;
 
 /**
- * Test harness for the class GedcomTag
- *
- * @covers \Fisharebest\Webtrees\GedcomTag
+ * SOURCE_CALL_NUMBER := {Size=1:120}
+ * An identification or reference description used to file and retrieve items from the holdings of
+ * a repository.
  */
-class GedcomTagTest extends TestCase
+class SourceCallNumber extends AbstractElement
 {
+    protected const MAX_LENGTH = 120;
     /**
-     * Test that the class exists
+     * Display the value of this type of element.
      *
-     * @return void
+     * @param string $value
+     * @param Tree   $tree
+     *
+     * @return string
      */
-    public function testClassExists(): void
+    public function value(string $value, Tree $tree): string
     {
-        self::assertTrue(class_exists(GedcomTag::class));
+        $canonical = $this->canonical($value);
+
+        return $this->valueAutoLink($canonical);
     }
 }

@@ -41,6 +41,7 @@ use function count;
 use function date;
 use function e;
 use function explode;
+use function implode;
 use function in_array;
 use function md5;
 use function preg_match;
@@ -51,10 +52,13 @@ use function preg_split;
 use function route;
 use function str_contains;
 use function str_pad;
+use function str_starts_with;
 use function strip_tags;
 use function strtoupper;
+use function substr_count;
 use function trim;
 
+use const PHP_INT_MAX;
 use const PREG_SET_ORDER;
 use const STR_PAD_LEFT;
 
@@ -1339,5 +1343,72 @@ class GedcomRecord
             ->where('o_id', '=', $this->xref())
             ->lockForUpdate()
             ->get();
+    }
+
+    /**
+     * Add blank lines, to allow a user to add/edit new values.
+     *
+     * @return string
+     */
+    public function insertMissingSubtags(): string
+    {
+        $gedcom = $this->insertMissingLevels($this->tag(), $this->gedcom());
+
+        return preg_replace('/^0.*\n/', '', $gedcom);
+    }
+
+    /**
+     * @param string $tag
+     * @param string $gedcom
+     *
+     * @return string
+     */
+    public function insertMissingLevels(string $tag, string $gedcom): string
+    {
+        $next_level = substr_count($tag, ':') + 1;
+        $factory    = Registry::elementFactory();
+        $subtags    = $factory->make($tag)->subtags($this->tree);
+
+        // The first part is level N (includes CONT records).  The remainder are level N+1.
+        $parts  = preg_split('/\n(?=' . $next_level . ')/', $gedcom);
+        $return = array_shift($parts);
+
+        foreach ($subtags as $subtag => $occurrences) {
+            [$min, $max] = explode(':', $occurrences);
+            if ($max === 'M') {
+                $max = PHP_INT_MAX;
+            } else {
+                $max = (int) $max;
+            }
+
+            $count = 0;
+
+            // Add expected subtags in our preferred order.
+            foreach ($parts as $n => $part) {
+                if (str_starts_with($part, $next_level . ' ' . $subtag)) {
+                    $return .= "\n" . $this->insertMissingLevels($tag . ':' . $subtag, $part);
+                    $count++;
+                    unset($parts[$n]);
+                }
+            }
+
+            // Allowed to have more of this subtag?
+            if ($count < $max) {
+                // Create a new one.
+                $gedcom  = $next_level . ' ' . $subtag;
+                $default = $factory->make($tag . ':' . $subtag)->default($this->tree);
+                if ($default !== '') {
+                    $gedcom .= ' ' . $default;
+                }
+                $return .= "\n" . $this->insertMissingLevels($tag . ':' . $subtag, $gedcom);
+            }
+        }
+
+        // Now add any unexpected/existing data.
+        if ($parts !== []) {
+            $return .= "\n" . implode("\n", $parts);
+        }
+
+        return $return;
     }
 }
