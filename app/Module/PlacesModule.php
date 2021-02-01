@@ -254,7 +254,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
             'value'  => $fact->value(),
             'date'   => $fact->date()->display(true),
             'place'  => $fact->place(),
-            'addtag' => false,
         ];
     }
 }

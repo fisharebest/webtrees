@@ -1,30 +1,32 @@
 <?php
 
-use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\Place;
+
+/**
+ * @var string $name
+ * @var Place $place
+ * @var string $tag
+ * @var string $url
+ * @var string $value
+ */
 
 ?>
+
 <div class="label">
     <?= $tag ?>
 </div>
 
-<?php if ($url) : ?>
+<?php if ($url !== '') : ?>
     <a href="<?= e($url) ?>">
         <?= $name ?>
     </a>
 <?php endif ?>
 
-<?php if ($value) : ?>
+<?php if ($value !== '') : ?>
     <span>
         <?= $value ?>
     </span>
 <?php endif ?>
-
-<div>
-    <?php if ($addtag) : ?>
-        <?= GedcomTag::getLabel('BIRT') ?>:
-    <?php endif ?>
-    <?= $date ?>
-</div>
 
 <?php if ($place->gedcomName() !== '') : ?>
     <div>

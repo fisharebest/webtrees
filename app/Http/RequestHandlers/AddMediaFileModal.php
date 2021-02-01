@@ -83,7 +83,6 @@ class AddMediaFileModal implements RequestHandlerInterface
         return response(view('modals/add-media-file', [
             'max_upload_size' => $this->media_file_service->maxUploadFilesize(),
             'media'           => $media,
-            'media_types'     => $this->media_file_service->mediaTypes(),
             'tree'            => $tree,
             'unused_files'    => $this->media_file_service->unusedFiles($tree, $data_filesystem),
         ]));
