@@ -121,6 +121,8 @@ class MediaFileService
      * @param string $current
      *
      * @return array<string,string>
+     *
+     * @deprecated - Will be removed in 2.1.0 - use Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values()
      */
     public function mediaTypes($current = ''): array
     {
