@@ -17,30 +17,25 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\RequestHandlers;
+namespace Fisharebest\Webtrees\Schema;
 
-use Fig\Http\Message\RequestMethodInterface;
-use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\TestCase;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
- * Test the MapProviderAction request handler.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapProviderAction
+ * Upgrade the database schema from version 45 to version 46.
  */
-class MapProviderActionTest extends TestCase
+class Migration45 implements MigrationInterface
 {
-    protected static $uses_database = true;
-
     /**
+     * Upgrade to to the next version
+     *
      * @return void
      */
-    public function testMapProviderAction(): void
+    public function upgrade(): void
     {
-        $handler  = new MapProviderAction();
-        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['provider' => '', 'use_gazetteer' => '', 'openroute_key' => '']);
-        $response = $handler->handle($request);
-
-        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        // Cleanup
+        DB::table('site_setting')
+        ->where('setting_name', '=', 'geonames')
+        ->delete();
     }
 }

@@ -42,10 +42,48 @@ class MapProviderPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
+        $data = [
+            'neighbourhood' => [
+                'title'       => I18N::translate('Neighborhood'),
+                'description' => I18N::translate('Social communities, neighborhoods.')
+            ],
+            'localadmin'    => [
+                'title'       => I18N::translate('Local Admin'),
+                'description' => I18N::translate('Local administrative boundaries.')
+            ],
+            'locality'      => [
+                'title'       => I18N::translate('Locality'),
+                'description' => I18N::translate('Towns, hamlets, cities.')
+            ],
+            'county'        => [
+                'title'       => I18N::translate('County'),
+                'description' => I18N::translate('Official governmental area; usually bigger than a locality, almost always smaller than a region.')
+            ],
+            'region'        => [
+                'title'       => I18N::translate('Region'),
+                'description' => I18N::translate('States and provinces.')
+            ],
+            'country'       => [
+                'title'       => I18N::translate('Country'),
+                'description' => I18N::translate('Places that issue passports, nations, nation-states.')
+            ]
+        ];
+
+        $select_opts  = [];
+        $descriptions = [];
+        foreach ($data as $k => $v) {
+            $select_opts[$k]           = $v['title'];
+            $descriptions[$v['title']] = $v['description'];
+        }
+
         return $this->viewResponse('admin/map-provider', [
-            'title'    => I18N::translate('Map provider'),
-            'provider' => Site::getPreference('map-provider'),
-            'geonames' => Site::getPreference('geonames'),
+            'title'            => I18N::translate('Map provider'),
+            'provider'         => Site::getPreference('map-provider'),
+            'use_gazetteer'    => Site::getPreference('use_gazetteer'),
+            'openroute_key'    => Site::getPreference('openroute_key'),
+            'openroute_layers' => Site::getPreference('openroute_layers'),
+            'openroute_opts'   => $select_opts,
+            'openroute_desc'   => $descriptions
         ]);
     }
 }

@@ -33,23 +33,61 @@ use Fisharebest\Webtrees\I18N;
 
     <hr>
 
+        <div class="form-group">
+          <div class="form-row">
+            <legend class="col-form-label col-sm-3">
+                <?= /* I18N: A configuration setting */ I18N::translate('Search gazetteer') ?>
+            </legend>
+            <div class="col-sm-9">
+                <?= view('components/radios-inline', ['name' => 'use_gazetteer', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $use_gazetteer]) ?>
+                <p class="small text-muted">
+                    <?= /* I18N: Help text for the “Search gazetteer” configuration setting */
+                    I18N::translate('This option controls whether or not to use a gazetteer to provide autocomplete suggestions for places. When this is enabled, the default is Nominatim the free search engine provided by OpenStreetMap, however if a key for Openrouteservice is provided then that is used instead.') ?>
+                </p>
+            </div>
+          </div>
+        </div>
+
+    <h3><?= I18N::translate('Openroute service') ?></h3>
+
+    <!-- OPENROUTE_KEY -->
     <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="geonames">
-            <?= I18N::translate('Use the GeoNames database for autocomplete on places') ?>
+        <label class="col-sm-3 col-form-label" for="openroute_key">
+            <?= I18N::translate('Key') ?>
         </label>
         <div class="col-sm-9">
             <input
             class="form-control"
             dir="ltr"
-            id="geonames"
+            id="openroute_key"
             maxlength="255"
-            name="geonames"
+            name="openroute_key"
             type="text"
-            value="<?= e($geonames) ?>"
+            value="<?= e($openroute_key) ?>"
             >
             <p class="small text-muted">
-                <?= /* I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting */ I18N::translate('The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username.') ?>
+                <?= /* I18N: Help text for the “Use Openrouteservice for autocomplete on places” configuration setting */ I18N::translate('Openrouteservice is a free service which searches a number of sources in order to provide autocomplete suggestions for new places. To use this feature, you must register for an account at %s and obtain a key. An account allows 1000 searches per day.', '<a href="https://openrouteservice.org/dev/#/signup">openrouteservice</a>') ?>
             </p>
+        </div>
+    </div>
+
+    <!-- OPENROUTE_LAYERS -->
+    <div class="row form-group">
+        <label class="col-sm-3 col-form-label" for="openroute_layers">
+            <?= I18N::translate('Place elements') ?>
+        </label>
+        <div class="col-sm-9">
+            <?= view('components/select', ['name' => 'openroute_layers[]', 'id' => 'openroute_layers', 'selected' => explode(',', $openroute_layers), 'options' => $openroute_opts, 'class' => 'select2']) ?>
+            <p class="small text-muted">
+                <?= /* I18N: Help text for the Openroute place parts” configuration setting */ I18N::translate('Place elements used in building an entry in the place autocomplete list. If nothing is selected defaults will be used. Note: some places may not contain all elements selected.') ?>
+            </p>
+
+            <dl class="small text-muted">
+              <?php foreach($openroute_desc as $term => $description) : ?>
+                <dt><?= $term ?></dt>
+                <dd><?= $description ?></dd>
+              <?php endforeach; ?>
+            </dl>
         </div>
     </div>
 

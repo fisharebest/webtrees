@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Services\MapDataService;
+use Fisharebest\Webtrees\Site;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -104,6 +105,7 @@ class MapDataAdd implements RequestHandlerInterface
             'map_bounds'      => $map_bounds,
             'marker_position' => $marker_position,
             'parent'          => $parent,
+            'openroute_key'   => Site::getPreference('openroute_key'),
             'provider'        => [
                 'url'     => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                 'options' => [

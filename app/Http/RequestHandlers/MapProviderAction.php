@@ -39,7 +39,9 @@ class MapProviderAction implements RequestHandlerInterface
         $settings = (array) $request->getParsedBody();
 
         Site::setPreference('map-provider', $settings['provider']);
-        Site::setPreference('geonames', $settings['geonames']);
+        Site::setPreference('use_gazetteer', $settings['use_gazetteer']);
+        Site::setPreference('openroute_key', $settings['openroute_key']);
+        Site::setPreference('openroute_layers', implode(',', $settings['openroute_layers'] ?? []));
 
         return redirect(route(ControlPanel::class));
     }

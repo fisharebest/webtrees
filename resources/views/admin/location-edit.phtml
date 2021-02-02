@@ -93,11 +93,13 @@ use Fisharebest\Webtrees\View;
     'use strict';
 
     window.WT_OSM_ADMIN = (function () {
-        const minZoom   = 2;
-        const provider  = <?= json_encode($provider) ?>;
-        const add_place = <?= json_encode($location->id() === null) ?>;
+        const minZoom       = 2;
+        const provider      = <?= json_encode($provider) ?>;
+        const add_place     = <?= json_encode($location->id() === null) ?>;
+        const openroute_key = <?= json_encode($openroute_key) ?>;
 
         let map = null;
+
         // map components
 
         // postcss_image_inliner breaks the autodetection of image paths.
@@ -147,7 +149,17 @@ use Fisharebest\Webtrees\View;
         });
 
         // Geocoder (place lookup)
+        let geocode_provider = null;
+        if (openroute_key === '') {
+          geocode_provider = new L.Control.Geocoder.Nominatim();
+        } else {
+          geocode_provider = new L.Control.Geocoder.Openrouteservice({
+            apiKey: openroute_key,
+          });
+        }
+
         let geocoder = new L.Control.geocoder({
+            geocoder: geocode_provider,
             defaultMarkGeocode: false,
             expand: 'click',
             showResultIcons: true,
