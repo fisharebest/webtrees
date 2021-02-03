@@ -28,5 +28,6 @@ class IndividualRecord extends AbstractElement
         'SEX'  => '1:1',
         'BIRT' => '0:1',
         'DEAT' => '0:1',
+        'CHAN' => '0:1',
     ];
 }
