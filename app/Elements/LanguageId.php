@@ -91,6 +91,8 @@ use Fisharebest\Localization\Locale\LocaleVi;
 use Fisharebest\Localization\Locale\LocaleYi;
 use Fisharebest\Localization\Locale\LocaleYue;
 
+use Fisharebest\Webtrees\I18N;
+
 use function preg_replace_callback;
 
 /**
@@ -123,7 +125,7 @@ class LanguageId extends AbstractElement
      */
     public function values(): array
     {
-        return [
+        $values = [
             ''              => '',
             'Afrikaans'     => (new LocaleAf())->endonym(),
             'Albanian'      => (new LocaleSq())->endonym(),
@@ -212,5 +214,10 @@ class LanguageId extends AbstractElement
             //'Wendic' => (new LocaleWen())->endonym(),
             'Yiddish'       => (new LocaleYi())->endonym(),
         ];
+
+        uasort($values, [I18N::class, 'strcasecmp']);
+
+        return $values;
+
     }
 }

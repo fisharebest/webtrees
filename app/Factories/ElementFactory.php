@@ -77,6 +77,7 @@ use Fisharebest\Webtrees\Elements\EventDescriptor;
 use Fisharebest\Webtrees\Elements\EventOrFactClassification;
 use Fisharebest\Webtrees\Elements\EventsRecorded;
 use Fisharebest\Webtrees\Elements\EventTypeCitedFrom;
+use Fisharebest\Webtrees\Elements\FamilyRecord;
 use Fisharebest\Webtrees\Elements\FileName;
 use Fisharebest\Webtrees\Elements\FirstCommunion;
 use Fisharebest\Webtrees\Elements\Form;
@@ -84,7 +85,9 @@ use Fisharebest\Webtrees\Elements\Gedcom;
 use Fisharebest\Webtrees\Elements\GenerationsOfAncestors;
 use Fisharebest\Webtrees\Elements\GenerationsOfDescendants;
 use Fisharebest\Webtrees\Elements\Graduation;
+use Fisharebest\Webtrees\Elements\HeaderRecord;
 use Fisharebest\Webtrees\Elements\Immigration;
+use Fisharebest\Webtrees\Elements\IndividualRecord;
 use Fisharebest\Webtrees\Elements\LanguageId;
 use Fisharebest\Webtrees\Elements\LdsBaptism;
 use Fisharebest\Webtrees\Elements\LdsBaptismDateStatus;
@@ -256,7 +259,7 @@ class ElementFactory implements ElementFactoryInterface
         if ($this->elements === null) {
             // Custom tags are indicated with ***
             $this->elements = [
-                'FAM'                      => new EmptyElement(I18N::translate('Family')),
+                'FAM'                      => new FamilyRecord(I18N::translate('Family')),
                 'FAM:*:ADDR'               => new AddressLine(I18N::translate('Address')),
                 'FAM:*:ADDR:ADR1'          => new AddressLine1(I18N::translate('Address line 1')),
                 'FAM:*:ADDR:ADR2'          => new AddressLine2(I18N::translate('Address line 2')),
@@ -356,7 +359,7 @@ class ElementFactory implements ElementFactoryInterface
                 'FAM:SUBM'                 => new XrefSubmitter(I18N::translate('Submitter')),
                 'FAM:WIFE'                 => new XrefIndividual(I18N::translate('Wife')),
                 'FAM:_UID'                 => new PafUid(I18N::translate('Unique identifier')), // ***
-                'HEAD'                     => new EmptyElement(I18N::translate('Header')),
+                'HEAD'                     => new HeaderRecord(I18N::translate('Header')),
                 'HEAD:CHAR'                => new CharacterSet(I18N::translate('Character set')),
                 'HEAD:CHAR:VERS'           => new VersionNumber(I18N::translate('Version')),
                 'HEAD:COPR'                => new CopyrightFile(I18N::translate('Copyright')),
@@ -367,6 +370,7 @@ class ElementFactory implements ElementFactoryInterface
                 'HEAD:GEDC'                => new Gedcom(I18N::translate('GEDCOM file')),
                 'HEAD:GEDC:FORM'           => new Form(I18N::translate('Format')),
                 'HEAD:GEDC:VERS'           => new VersionNumber(I18N::translate('Version')),
+                'HEAD:LANG'                => new LanguageId(I18N::translate('Language')),
                 'HEAD:NOTE'                => new ContentDescription(I18N::translate('Note')),
                 'HEAD:PLAC'                => new EmptyElement(I18N::translate('Place'), ['FORM' => '1:1']),
                 'HEAD:PLAC:FORM'           => new PlaceHierarchy(I18N::translate('Format')),
@@ -391,7 +395,7 @@ class ElementFactory implements ElementFactoryInterface
                 'HEAD:SOUR:VERS'           => new VersionNumber(I18N::translate('Version')),
                 'HEAD:SUBM'                => new XrefSubmitter(I18N::translate('Submitter')),
                 'HEAD:SUBN'                => new XrefSubmission(I18N::translate('Submission')),
-                'INDI'                     => new EmptyElement(I18N::translate('Individual')),
+                'INDI'                     => new IndividualRecord(I18N::translate('Individual')),
                 'INDI:*:ADDR'              => new AddressLine(I18N::translate('Address')),
                 'INDI:*:ADDR:ADR1'         => new AddressLine1(I18N::translate('Address line 1')),
                 'INDI:*:ADDR:ADR2'         => new AddressLine2(I18N::translate('Address line 2')),

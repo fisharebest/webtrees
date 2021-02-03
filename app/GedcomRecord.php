@@ -1363,7 +1363,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function insertMissingLevels(string $tag, string $gedcom): string
+    protected function insertMissingLevels(string $tag, string $gedcom): string
     {
         $next_level = substr_count($tag, ':') + 1;
         $factory    = Registry::elementFactory();

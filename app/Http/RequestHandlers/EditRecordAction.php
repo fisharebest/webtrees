@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -77,7 +78,12 @@ class EditRecordAction implements RequestHandlerInterface
         $tags      = $params['tags'];
         $values    = $params['values'];
 
-        $gedcom = '0 @' . $record->xref() . '@ ' . $record->tag() . "\n";
+        if ($record->tag() === Header::RECORD_TYPE) {
+            $gedcom = '0 ' . $record->tag() . "\n";
+        } else {
+            $gedcom = '0 @' . $record->xref() . '@ ' . $record->tag() . "\n";
+        }
+
         $gedcom .= $this->gedcom_edit_service->editLinesToGedcom($record::RECORD_TYPE, $levels, $tags, $values);
 
         $record->updateRecord($gedcom, !$keep_chan);
