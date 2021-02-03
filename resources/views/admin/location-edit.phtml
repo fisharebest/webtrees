@@ -97,7 +97,8 @@ use Fisharebest\Webtrees\View;
 
         let provider = <?= json_encode($provider) ?>;
         let map = null;
-        let add_place = <?= json_encode($location->id() === 0) ?>;
+        let add_place = <?= json_encode($location->id() === null) ?>;
+        console.log(add_place);
 
         // map components
 

@@ -1,0 +1,66 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<div class="input-group-prepend">
+    <span class="input-group-text">
+        <a id="<?= e($id) ?>-edit" href="#" title="<?= I18N::translate('Edit the name') ?>">
+            <?= view('icons/edit') ?>
+            <span class="sr-only">
+                <?= I18N::translate('Edit the name') ?>
+            </span>
+        </a>
+    </span>
+</div>
+<script>
+    document.getElementById('<?= e($id) ?>-edit').addEventListener('click', function (event) {
+        event.preventDefault();
+        let element = document.getElementById('<?= e($id) ?>');
+        element.readOnly = false;
+        element.focus();
+
+        let input_addon = this.parentNode.parentNode;
+        input_addon.parentNode.removeChild(input_addon);
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        let container = document.getElementById('<?= e($id) ?>').parentNode.parentNode.parentNode.parentNode;
+        let NAME = container.querySelector('[id$="INDI:NAME"]');
+        let NPFX = container.querySelector('[id$="INDI:NAME:NPFX"]');
+        let GIVN = container.querySelector('[id$="INDI:NAME:GIVN"]');
+        let SPFX = container.querySelector('[id$="INDI:NAME:SPFX"]');
+        let SURN = container.querySelector('[id$="INDI:NAME:SURN"]');
+        let NSFX = container.querySelector('[id$="INDI:NAME:NSFX"]');
+
+        if (NAME.value !== webtrees.buildNameFromParts(
+            NPFX ? NPFX.value : '',
+            GIVN ? GIVN.value : '',
+            SPFX ? SPFX.value : '',
+            SURN ? SURN.value : '',
+            NSFX ? NSFX.value : '',
+            'U'
+        )) {
+            document.getElementById('<?= e($id) ?>-edit').click();
+        } else {
+            let fn = function () {
+                if (NAME.readOnly === true) {
+                    NAME.value = webtrees.buildNameFromParts(
+                        NPFX ? NPFX.value : '',
+                        GIVN ? GIVN.value : '',
+                        SPFX ? SPFX.value : '',
+                        SURN ? SURN.value : '',
+                        NSFX ? NSFX.value : '',
+                        'U'
+                    );
+                }
+            }
+            NPFX.addEventListener('input', fn);
+            GIVN.addEventListener('input', fn);
+            SPFX.addEventListener('input', fn);
+            SURN.addEventListener('input', fn);
+            SURN.addEventListener('blur', fn); // For autocompleted entries
+            NSFX.addEventListener('input', fn);
+        }
+    });
+</script>
