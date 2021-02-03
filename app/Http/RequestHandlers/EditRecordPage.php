@@ -55,8 +55,11 @@ class EditRecordPage implements RequestHandlerInterface
 
         $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');
 
+        $subtags = Registry::elementFactory()->make($record->tag())->subtags($tree);
+
         return $this->viewResponse('edit/edit-record', [
             'can_edit_raw' => $can_edit_raw,
+            'has_chan'     => array_key_exists('CHAN', $subtags),
             'record'       => $record,
             'title'        => $record->fullName(),
             'tree'         => $tree,

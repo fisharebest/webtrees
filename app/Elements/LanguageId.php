@@ -90,7 +90,6 @@ use Fisharebest\Localization\Locale\LocaleUr;
 use Fisharebest\Localization\Locale\LocaleVi;
 use Fisharebest\Localization\Locale\LocaleYi;
 use Fisharebest\Localization\Locale\LocaleYue;
-
 use Fisharebest\Webtrees\I18N;
 
 use function preg_replace_callback;
@@ -218,6 +217,5 @@ class LanguageId extends AbstractElement
         uasort($values, [I18N::class, 'strcasecmp']);
 
         return $values;
-
     }
 }

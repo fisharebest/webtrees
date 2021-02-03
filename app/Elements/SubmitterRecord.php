@@ -34,5 +34,6 @@ class SubmitterRecord extends AbstractElement
         'RFN'   => '0:1',
         'RIN'   => '0:1',
         'NOTE'  => '0:1',
+        'CHAN'  => '0:1',
     ];
 }
