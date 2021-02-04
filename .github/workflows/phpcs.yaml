@@ -8,11 +8,11 @@ jobs:
     name: PHP/PHTML/CSS
 
     steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
+      - uses: actions/checkout@v2
 
-      - run: composer global require squizlabs/php_codesniffer=* --quiet
+      - run: composer validate
+
+      - run: composer global require squizlabs/php_codesniffer
 
       - name: PHP
         run: ~/.composer/vendor/bin/phpcs --colors --standard=PSR12 --exclude=Generic.Files.LineLength --extensions=php index.php app modules_v4 tests

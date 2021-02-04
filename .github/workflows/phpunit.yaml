@@ -20,13 +20,11 @@ jobs:
           extensions: gd,intl,mbstring,sqlite,zip
           coverage: pcov
 
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
+      - uses: actions/checkout@v2
 
       - run: composer validate
 
-      - run: composer install --prefer-dist --no-progress --no-suggest --ignore-platform-reqs
+      - run: composer install --no-progress
 
       - run: composer require pcov/clobber
       - run: vendor/bin/pcov clobber
