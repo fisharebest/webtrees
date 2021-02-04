@@ -77,6 +77,7 @@
         "tecnickcom/tcpdf": "^6.3.5"
     },
     "require-dev": {
+        "ext-dom": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
         "composer/composer": "~1.10",
