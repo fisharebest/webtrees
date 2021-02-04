@@ -86,11 +86,13 @@ class EditMediaFileModal implements RequestHandlerInterface
 
         foreach ($media->mediaFiles() as $media_file) {
             if ($media_file->factId() === $fact_id) {
+                $media_types = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
+
                 return response(view('modals/edit-media-file', [
                     'media_file'      => $media_file,
                     'max_upload_size' => $this->media_file_service->maxUploadFilesize(),
                     'media'           => $media,
-                    'media_types'     => $this->media_file_service->mediaTypes(),
+                    'media_types'     => $media_types,
                     'unused_files'    => $this->media_file_service->unusedFiles($tree, $data_filesystem),
                     'tree'            => $tree,
                 ]));

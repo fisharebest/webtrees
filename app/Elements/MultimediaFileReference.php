@@ -19,6 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\Tree;
+
+use function preg_match;
+use function strpos;
+use function trim;
+
 /**
  * MULTIMEDIA_FILE_REFERENCE := {Size=1:30}
  * A complete local or remote file reference to the auxiliary data to be linked
@@ -31,4 +37,36 @@ class MultimediaFileReference extends AbstractElement
         'FORM' => '0:1',
         'TITL' => '0:1',
     ];
+
+    /**
+     * Convert a value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function canonical(string $value): string
+    {
+        // Leading/trailing/multiple spaces are valid in filenames.
+        return strtr($value, ["\t" => ' ', "\r" => ' ', "\n" => ' ']);
+    }
+
+    /**
+     * Display the value of this type of element.
+     *
+     * @param string $value
+     * @param Tree   $tree
+     *
+     * @return string
+     */
+    public function value(string $value, Tree $tree): string
+    {
+        $canonical = $this->canonical($value);
+
+        if (preg_match(static::REGEX_URL, $canonical)) {
+            return '<a href="' . e($canonical) . '">' . e($canonical) . '</a>';
+        }
+
+        return parent::value($value, $tree);
+    }
 }

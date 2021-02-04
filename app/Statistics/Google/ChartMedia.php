@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
 
 use function app;
@@ -77,9 +78,11 @@ class ChartMedia
             ],
         ];
 
+        $values = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
+
         foreach ($media as $type => $count) {
             $data[] = [
-                GedcomTag::getFileFormTypeValue($type),
+                $values[$type] ?? $type,
                 $count
             ];
         }

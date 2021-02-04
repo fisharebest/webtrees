@@ -63,6 +63,7 @@ class ManageMediaPage implements RequestHandlerInterface
         $subfolders    = $request->getQueryParams()['subfolders'] ?? 'include'; // include|exclude
         $media_folders = $this->media_file_service->allMediaFolders($data_filesystem);
         $media_folder  = $request->getQueryParams()['media_folder'] ?? $media_folders->first() ?? '';
+        $media_types   = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
 
         $title = I18N::translate('Manage media');
 
@@ -71,6 +72,7 @@ class ManageMediaPage implements RequestHandlerInterface
             'files'         => $files,
             'media_folder'  => $media_folder,
             'media_folders' => $media_folders,
+            'media_types'   => $media_types,
             'subfolders'    => $subfolders,
             'title'         => $title,
         ]);

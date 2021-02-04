@@ -31,6 +31,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
 use function app;
+use function array_filter;
 use function assert;
 use function in_array;
 use function str_contains;
@@ -290,7 +291,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             'video'       => $this->getBlockSetting($block_id, 'filter_video', '0'),
         ];
 
-        $formats = GedcomTag::getFileFormTypes();
+        $formats = array_filter(Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values());
 
         return view('modules/random_media/config', [
             'controls' => $controls,

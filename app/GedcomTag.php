@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Ramsey\Uuid\Uuid;
 
+use function array_filter;
 use function str_contains;
 
 /**
@@ -394,28 +395,6 @@ class GedcomTag
         // These pseudo-tags are generated dynamically to display media object attributes
         '__FILE_SIZE__',
         '__IMAGE_SIZE__',
-    ];
-
-    /** @var string[] Possible values for the Object-File-Format types */
-    private const OBJE_FILE_FORM_TYPE = [
-        'audio',
-        'book',
-        'card',
-        'certificate',
-        'coat',
-        'document',
-        'electronic',
-        'fiche',
-        'film',
-        'magazine',
-        'manuscript',
-        'map',
-        'newspaper',
-        'photo',
-        'tombstone',
-        'video',
-        'painting',
-        'other',
     ];
 
     /**
@@ -1527,62 +1506,9 @@ class GedcomTag
      */
     public static function getFileFormTypeValue(string $type): string
     {
-        switch (strtolower($type)) {
-            case 'audio':
-                /* I18N: Type of media object */
-                return I18N::translate('Audio');
-            case 'book':
-                /* I18N: Type of media object */
-                return I18N::translate('Book');
-            case 'card':
-                /* I18N: Type of media object */
-                return I18N::translate('Card');
-            case 'certificate':
-                /* I18N: Type of media object */
-                return I18N::translate('Certificate');
-            case 'coat':
-                /* I18N: Type of media object */
-                return I18N::translate('Coat of arms');
-            case 'document':
-                /* I18N: Type of media object */
-                return I18N::translate('Document');
-            case 'electronic':
-                /* I18N: Type of media object */
-                return I18N::translate('Electronic');
-            case 'fiche':
-                /* I18N: Type of media object */
-                return I18N::translate('Microfiche');
-            case 'film':
-                /* I18N: Type of media object */
-                return I18N::translate('Microfilm');
-            case 'magazine':
-                /* I18N: Type of media object */
-                return I18N::translate('Magazine');
-            case 'manuscript':
-                /* I18N: Type of media object */
-                return I18N::translate('Manuscript');
-            case 'map':
-                /* I18N: Type of media object */
-                return I18N::translate('Map');
-            case 'newspaper':
-                /* I18N: Type of media object */
-                return I18N::translate('Newspaper');
-            case 'photo':
-                /* I18N: Type of media object */
-                return I18N::translate('Photo');
-            case 'tombstone':
-                /* I18N: Type of media object */
-                return I18N::translate('Tombstone');
-            case 'video':
-                /* I18N: Type of media object */
-                return I18N::translate('Video');
-            case 'painting':
-                /* I18N: Type of media object */
-                return I18N::translate('Painting');
-            default:
-                /* I18N: Type of media object */
-                return I18N::translate('Other');
-        }
+        $element = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE');
+
+        return $element->values()[$type] ?? $type;
     }
 
     /**
@@ -1592,13 +1518,9 @@ class GedcomTag
      */
     public static function getFileFormTypes(): array
     {
-        $values = array_map(static function (string $keyword): string {
-            return self::getFileFormTypeValue($keyword);
-        }, array_combine(self::OBJE_FILE_FORM_TYPE, self::OBJE_FILE_FORM_TYPE));
+        $element = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE');
 
-        uasort($values, '\Fisharebest\Webtrees\I18N::strcasecmp');
-
-        return $values;
+        return array_filter($element->values());
     }
 
     /**

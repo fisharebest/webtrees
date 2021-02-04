@@ -4,14 +4,15 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * @var string               $max_upload_size
- * @var Tree                 $tree
- * @var array<string,string> $unused_files
+ * @var string                   $max_upload_size
+ * @var array<int|string,string> $media_types
+ * @var Tree                     $tree
+ * @var array<string,string>     $unused_files
  */
 
 ?>
 
-<?= view('modals/media-file-fields', ['max_upload_size' => $max_upload_size, 'unused_files' => $unused_files, 'media_file' => null, 'tree' => $tree]) ?>
+<?= view('modals/media-file-fields', ['max_upload_size' => $max_upload_size, 'media_file' => null, 'media_types' => $media_types, 'tree' => $tree, 'unused_files' => $unused_files]) ?>
 
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="media-note">

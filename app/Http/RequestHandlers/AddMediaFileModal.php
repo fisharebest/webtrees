@@ -80,11 +80,16 @@ class AddMediaFileModal implements RequestHandlerInterface
             ]));
         }
 
+        $max_upload_size = $this->media_file_service->maxUploadFilesize();
+        $media_types     = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
+        $unused_files    = $this->media_file_service->unusedFiles($tree, $data_filesystem);
+
         return response(view('modals/add-media-file', [
-            'max_upload_size' => $this->media_file_service->maxUploadFilesize(),
+            'max_upload_size' => $max_upload_size,
             'media'           => $media,
+            'media_types'     => $media_types,
             'tree'            => $tree,
-            'unused_files'    => $this->media_file_service->unusedFiles($tree, $data_filesystem),
+            'unused_files'    => $unused_files,
         ]));
     }
 }

@@ -6,10 +6,11 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * @var string               $max_upload_size
- * @var Media                $media
- * @var Tree                 $tree
- * @var array<string,string> $unused_files
+ * @var string                   $max_upload_size
+ * @var Media                    $media
+ * @var array<int|string,string> $media_types
+ * @var Tree                     $tree
+ * @var array<string,string>     $unused_files
  */
 
 ?>
@@ -20,7 +21,7 @@ use Fisharebest\Webtrees\Tree;
     <?= view('modals/header', ['title' => I18N::translate('Add a media file')]) ?>
 
     <div class="modal-body">
-        <?= view('modals/media-file-fields', ['max_upload_size' => $max_upload_size, 'unused_files' => $unused_files, 'media_file' => null, 'tree' => $tree]) ?>
+        <?= view('modals/media-file-fields', ['max_upload_size' => $max_upload_size, 'media_file' => null, 'media_types' => $media_types, 'tree' => $tree, 'unused_files' => $unused_files]) ?>
     </div>
 
     <?= view('modals/footer-save-cancel') ?>

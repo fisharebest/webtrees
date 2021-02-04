@@ -567,21 +567,6 @@ class FunctionsEdit
         } elseif ($fact === 'TYPE' && $level === '0') {
             // Level 0 TYPE fields are only used for NAME records
             $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => GedcomCodeName::getValues()]);
-        } elseif ($fact === 'TYPE' && $level === '3') {
-            //-- Build the selector for the Media 'TYPE' Fact
-            $html          .= '<select name="text[]"><option selected value="" ></option>';
-            $selectedValue = strtolower($value);
-            if (!array_key_exists($selectedValue, GedcomTag::getFileFormTypes())) {
-                $html .= '<option selected value="' . e($value) . '" >' . e($value) . '</option>';
-            }
-            foreach (['' => ''] + GedcomTag::getFileFormTypes() + [] as $typeName => $typeValue) {
-                $html .= '<option value="' . $typeName . '" ';
-                if ($selectedValue === $typeName) {
-                    $html .= 'selected';
-                }
-                $html .= '>' . $typeValue . '</option>';
-            }
-            $html .= '</select>';
         } elseif (($fact !== 'NAME' || $upperlevel === 'REPO' || $upperlevel === 'SUBM' || $upperlevel === 'UNKNOWN') && $fact !== '_MARNM') {
             if ($fact === 'TEXT' || $fact === 'ADDR' || ($fact === 'NOTE' && !$islink)) {
                 $html .= '<div class="input-group">';

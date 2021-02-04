@@ -479,7 +479,7 @@ class Fact
             }
         }
 
-        return GedcomTag::getLabel($this->record->tag() . ':' . $this->tag);
+        return Registry::elementFactory()->make($this->tag())->label();
     }
 
     /**

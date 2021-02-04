@@ -3,7 +3,6 @@
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddMediaFileModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact;
@@ -12,6 +11,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 /**
@@ -22,6 +23,7 @@ use Illuminate\Support\Collection;
  * @var Media      $media
  * @var Collection $notes
  * @var Collection $sources
+ * @var Tree       $tree
  */
 ?>
 
@@ -116,19 +118,19 @@ use Illuminate\Support\Collection;
                         <td class="d-flex justify-content-between">
                             <div>
                                 <?php if ($media_file->isExternal()) : ?>
-                                    <?= GedcomTag::getLabelValue('URL', e($media_file->filename())) ?>
+                                    <?= Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $media->tree()) ?>
                                 <?php elseif (Auth::isEditor($media->tree())) :?>
                                     <?php if (!$media_file->fileExists($data_filesystem)) : ?>
                                         <p class="alert alert-danger">
                                             <?= I18N::translate('The file “%s” does not exist.', e($media_file->filename())) ?>
                                         </p>
                                     <?php endif ?>
-                                    <?= GedcomTag::getLabelValue('FILE', e($media_file->filename())) ?>
+                                    <?= Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $media->tree()) ?>
                                 <?php endif ?>
 
-                                <?= GedcomTag::getLabelValue('TITL', e($media_file->title())) ?>
-                                <?= GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue(e($media_file->type()))) ?>
-                                <?= GedcomTag::getLabelValue('FORM', e($media_file->format())) ?>
+                                <?= Registry::elementFactory()->make('OBJE:FILE:TITL')->labelValue($media_file->title(), $media->tree()) ?>
+                                <?= Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->labelValue($media_file->type(), $media->tree()) ?>
+                                <?= Registry::elementFactory()->make('OBJE:FILE:FORM')->labelValue($media_file->format(), $media->tree()) ?>
                             </div>
 
                             <div>

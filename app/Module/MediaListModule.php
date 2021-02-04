@@ -172,7 +172,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
         }
 
         $params  = $request->getQueryParams();
-        $formats = GedcomTag::getFileFormTypes();
+        $formats = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
         $go      = $params['go'] ?? '';
         $page    = (int) ($params['page'] ?? 1);
         $max     = (int) ($params['max'] ?? 20);

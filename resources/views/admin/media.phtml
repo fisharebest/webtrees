@@ -5,13 +5,16 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaData;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
 
 /**
- * @var string $title
- * @var string $data_folder
- * @var array $media_folders
- * @var string $media_folder
- * @var string $subfolders
+ * @var string                   $data_folder
+ * @var string                   $files
+ * @var string                   $media_folder
+ * @var Collection<string>       $media_folders
+ * @var array<int|string,string> $media_types
+ * @var string                   $subfolders
+ * @var string                   $title
  */
 ?>
 
@@ -107,7 +110,7 @@ use Fisharebest\Webtrees\View;
         </tr>
     </thead>
 </table>
-<?= view('modals/create-media-from-file') ?>
+<?= view('modals/create-media-from-file', ['media_types' => $media_types]) ?>
 
 <?php View::push('javascript') ?>
 <script>

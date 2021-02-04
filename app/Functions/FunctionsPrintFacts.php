@@ -454,12 +454,6 @@ class FunctionsPrintFacts
                 case 'CALN':
                     echo GedcomTag::getLabelValue('CALN', Filter::expandUrls($match[2], $tree));
                     break;
-                case 'FORM': // 0 OBJE / 1 FILE / 2 FORM / 3 TYPE
-                    echo GedcomTag::getLabelValue('FORM', $match[2]);
-                    if (preg_match('/\n3 TYPE (.+)/', $fact->gedcom(), $type_match)) {
-                        echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($type_match[1]));
-                    }
-                    break;
                 case 'URL':
                 case '_URL':
                 case 'WWW':
@@ -686,11 +680,6 @@ class FunctionsPrintFacts
                     // NOTE: echo the notes of the media
                     echo '<p>';
                     echo FunctionsPrint::printFactNotes($tree, $media->gedcom(), 1);
-                    $ttype = preg_match('/' . ($nlevel + 1) . ' TYPE (.*)/', $media->gedcom(), $match);
-                    if ($ttype > 0) {
-                        $mediaType = GedcomTag::getFileFormTypeValue($match[1]);
-                        echo '<span class="label">', I18N::translate('Type'), ': </span> <span class="field">', $mediaType, '</span>';
-                    }
                     //-- print spouse name for marriage events
                     echo FunctionsPrint::printFactNotes($tree, $media->gedcom(), $nlevel);
                     echo self::printFactSources($tree, $media->gedcom(), $nlevel);

@@ -1,16 +1,16 @@
 <?php
 
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteFolder;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * @var string               $max_upload_size
- * @var MediaFile|null       $media_file
- * @var Tree                 $tree
- * @var array<string,string> $unused_files
+ * @var string                   $max_upload_size
+ * @var MediaFile|null           $media_file
+ * @var array<int|string,string> $media_types
+ * @var Tree                     $tree
+ * @var array<string,string>     $unused_files
  */
 
 ?>
@@ -118,7 +118,7 @@ use Fisharebest\Webtrees\Tree;
         <?= I18N::translate('Media type') ?>
     </label>
     <div class="col-sm-10">
-        <?= view('components/select', ['name' => 'type', 'selected' => $media_file ? $media_file->type() : '', 'options' => ['' => ''] + GedcomTag::getFileFormTypes()]) ?>
+        <?= view('components/select', ['name' => 'type', 'selected' => $media_file ? $media_file->type() : '', 'options' => $media_types]) ?>
     </div>
 </div>
 

@@ -120,17 +120,13 @@ class MediaFileService
      *
      * @param string $current
      *
-     * @return array<string,string>
+     * @return array<int|string,string>
      *
      * @deprecated - Will be removed in 2.1.0 - use Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values()
      */
     public function mediaTypes($current = ''): array
     {
-        $media_types = GedcomTag::getFileFormTypes();
-
-        $media_types = ['' => ''] + [$current => $current] + $media_types;
-
-        return $media_types;
+        return Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
     }
 
     /**
