@@ -74,7 +74,7 @@ interface ModuleChartInterface extends ModuleInterface
     /**
      * Attributes for the URL.
      *
-     * @return string[]
+     * @return array<string>
      */
     public function chartUrlAttributes(): array;
 }

@@ -268,7 +268,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * This chart can display its output in a number of styles
      *
-     * @return string[]
+     * @return array<string>
      */
     protected function styles(): array
     {

@@ -51,7 +51,7 @@ class ClientIp extends \Middlewares\ClientIp
      * @param ServerRequestInterface $request
      * @param string                 $attribute
      *
-     * @return string[]
+     * @return array<string>
      */
     private function getCommaSeparatedAttribute(ServerRequestInterface $request, string $attribute): array
     {

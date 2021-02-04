@@ -32,7 +32,7 @@ class GedcomCodeStat
      *
      * @param string $tag
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function statusCodes(string $tag): array
     {
@@ -150,7 +150,7 @@ class GedcomCodeStat
      *
      * @param string $tag
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function statusNames(string $tag): array
     {

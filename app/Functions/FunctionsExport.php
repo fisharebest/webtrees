@@ -64,7 +64,7 @@ class FunctionsExport
      *
      * @return string
      */
-    public static function reformatRecord($rec): string
+    public static function reformatRecord(string $rec): string
     {
         $newrec = '';
         foreach (preg_split('/[\r\n]+/', $rec, -1, PREG_SPLIT_NO_EMPTY) as $line) {
@@ -178,7 +178,7 @@ class FunctionsExport
      *
      * @return string
      */
-    private static function convertMediaPath($rec, $path): string
+    private static function convertMediaPath(string $rec, string $path): string
     {
         if ($path && preg_match('/\n1 FILE (.+)/', $rec, $match)) {
             $old_file_name = $match[1];

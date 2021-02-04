@@ -146,7 +146,7 @@ class ReportParserBase
      *
      * @return void
      */
-    protected function characterData($parser, $data): void
+    protected function characterData($parser, string $data): void
     {
         $this->text .= $data;
     }

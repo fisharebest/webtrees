@@ -276,7 +276,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    protected function characterData($parser, $data): void
+    protected function characterData($parser, string $data): void
     {
         if ($this->print_data && $this->process_gedcoms === 0 && $this->process_ifs === 0 && $this->process_repeats === 0) {
             $this->current_element->addText($data);
@@ -603,8 +603,8 @@ class ReportParserGenerate extends ReportParserBase
         $this->print_data         = true;
 
         $this->current_element = $this->report_root->createCell(
-            $width,
-            $height,
+            (int) $width,
+            (int) $height,
             $border,
             $align,
             $bgcolor,

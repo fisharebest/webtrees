@@ -40,12 +40,12 @@ class GedcomCodePedi
     /**
      * Translate a code, for an optional record
      *
-     * @param string $type
+     * @param string            $type
      * @param GedcomRecord|null $record
      *
      * @return string
      */
-    public static function getValue($type, GedcomRecord $record = null): string
+    public static function getValue(string $type, GedcomRecord $record = null): string
     {
         if ($record instanceof Individual) {
             $sex = $record->sex();
@@ -117,7 +117,7 @@ class GedcomCodePedi
      *
      * @param GedcomRecord|null $record
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function getValues(GedcomRecord $record = null): array
     {

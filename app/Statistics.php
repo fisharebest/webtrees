@@ -2888,7 +2888,7 @@ class Statistics implements
      *
      * @param string $text
      *
-     * @return string[]
+     * @return array<string>
      */
     private function getTags(string $text): array
     {

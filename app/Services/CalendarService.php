@@ -59,7 +59,7 @@ class CalendarService
      * @param string $calendar
      * @param int    $year
      *
-     * @return string[]
+     * @return array<string>
      */
     public function calendarMonthsInYear(string $calendar, int $year): array
     {
@@ -269,7 +269,7 @@ class CalendarService
      *
      * @return Fact[]
      */
-    public function getAnniversaryEvents($jd, string $facts, Tree $tree, string $filterof = '', string $filtersx = ''): array
+    public function getAnniversaryEvents(int $jd, string $facts, Tree $tree, string $filterof = '', string $filtersx = ''): array
     {
         $found_facts = [];
 

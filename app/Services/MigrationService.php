@@ -41,10 +41,10 @@ class MigrationService
      * @param string $schema_name    Which schema to update.
      * @param int    $target_version Upgrade to this version
      *
-     * @throws PDOException
      * @return bool  Were any updates applied
+     * @throws PDOException
      */
-    public function updateSchema($namespace, $schema_name, $target_version): bool
+    public function updateSchema(string $namespace, string $schema_name, int $target_version): bool
     {
         try {
             $current_version = (int) Site::getPreference($schema_name);

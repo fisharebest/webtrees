@@ -135,10 +135,10 @@ class ReportBaseCell extends ReportBaseElement
      * @param bool   $reseth
      */
     public function __construct(
-        $width,
-        $height,
+        int $width,
+        int $height,
         $border,
-        $align,
+        string $align,
         string $bgcolor,
         string $style,
         int $ln,

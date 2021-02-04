@@ -185,7 +185,7 @@ class GedcomCodeName
      *
      * @param GedcomRecord|null $record
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function getValues(GedcomRecord $record = null): array
     {

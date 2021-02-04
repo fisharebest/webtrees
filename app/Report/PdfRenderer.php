@@ -540,7 +540,7 @@ class PdfRenderer extends AbstractRenderer
      *
      * @return ReportBaseCell
      */
-    public function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth): ReportBaseCell
+    public function createCell(int $width, int $height, $border, string $align, string $bgcolor, string $style, int $ln, $top, $left, int $fill, int $stretch, string $bocolor, string $tcolor, bool $reseth): ReportBaseCell
     {
         return new ReportPdfCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
     }
@@ -600,7 +600,7 @@ class PdfRenderer extends AbstractRenderer
      *
      * @return ReportBaseFootnote
      */
-    public function createFootnote($style): ReportBaseFootnote
+    public function createFootnote(string $style): ReportBaseFootnote
     {
         return new ReportPdfFootnote($style);
     }

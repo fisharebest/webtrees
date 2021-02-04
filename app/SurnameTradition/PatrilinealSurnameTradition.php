@@ -31,7 +31,7 @@ class PatrilinealSurnameTradition extends DefaultSurnameTradition
      * @param string $mother_name A GEDCOM NAME
      * @param string $child_sex   M, F or U
      *
-     * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     * @return array<string,string> Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
     public function newChildNames(string $father_name, string $mother_name, string $child_sex): array
     {
@@ -54,7 +54,7 @@ class PatrilinealSurnameTradition extends DefaultSurnameTradition
      * @param string $child_name A GEDCOM NAME
      * @param string $parent_sex M, F or U
      *
-     * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     * @return array<string,string> Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
     public function newParentNames(string $child_name, string $parent_sex): array
     {
@@ -72,12 +72,12 @@ class PatrilinealSurnameTradition extends DefaultSurnameTradition
     }
 
     /**
-     * @param string   $name        A name
-     * @param string[] $inflections A list of inflections
+     * @param string               $name        A name
+     * @param array<string,string> $inflections A list of inflections
      *
      * @return string An inflected name
      */
-    protected function inflect($name, $inflections): string
+    protected function inflect(string $name, array $inflections): string
     {
         foreach ($inflections as $from => $to) {
             $name = preg_replace('~' . $from . '~u', $to, $name);

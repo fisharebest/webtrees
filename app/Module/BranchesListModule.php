@@ -149,7 +149,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function listUrlAttributes(): array
     {
@@ -495,7 +495,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
      *
      * @return string
      */
-    private static function sosaGeneration($sosa): string
+    private static function sosaGeneration(int $sosa): string
     {
         $generation = (int) log($sosa, 2) + 1;
 

@@ -326,7 +326,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      * @param Date $end
      * @param Tree $tree
      *
-     * @return string[]
+     * @return array<string>
      */
     protected function findIndividualsByDate(Date $start, Date $end, Tree $tree): array
     {
@@ -348,7 +348,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      * @param Place $place
      * @param Tree  $tree
      *
-     * @return string[]
+     * @return array<string>
      */
     protected function findIndividualsByPlace(Place $place, Tree $tree): array
     {
@@ -369,7 +369,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      *
      * @param Individual $individual
      *
-     * @return string[]
+     * @return array<string>
      */
     protected function closeFamily(Individual $individual): array
     {

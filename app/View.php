@@ -277,7 +277,7 @@ class View
      *
      * @return string
      */
-    public static function make($name, $data = []): string
+    public static function make(string $name, array $data = []): string
     {
         $view = new self($name, $data);
 

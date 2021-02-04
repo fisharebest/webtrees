@@ -118,7 +118,7 @@ class SubmitterListModule extends AbstractModule implements ModuleListInterface,
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function listUrlAttributes(): array
     {

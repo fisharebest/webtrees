@@ -218,7 +218,7 @@ class MessageService
     /**
      * A list of contact methods (e.g. for an edit control).
      *
-     * @return string[]
+     * @return array<string>
      */
     public function contactMethods(): array
     {

@@ -84,7 +84,7 @@ class GoogleWebmasterToolsModule extends AbstractModule implements ModuleAnalyti
     /**
      * The parameters that need to be embedded in the snippet.
      *
-     * @return string[]
+     * @return array<string>
      */
     public function analyticsParameters(): array
     {

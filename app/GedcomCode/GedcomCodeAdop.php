@@ -41,7 +41,7 @@ class GedcomCodeAdop
     /**
      * A list of all possible values for PEDI
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function getValues(): array
     {

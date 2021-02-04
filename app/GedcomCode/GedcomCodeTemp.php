@@ -33,7 +33,7 @@ class GedcomCodeTemp
      *
      * @return bool
      */
-    public static function isTagLDS($tag): bool
+    public static function isTagLDS(string $tag): bool
     {
         return $tag === 'BAPL' || $tag === 'CONL' || $tag === 'ENDL' || $tag === 'SLGC' || $tag === 'SLGS';
     }
@@ -47,7 +47,7 @@ class GedcomCodeTemp
      * @link http://en.wikipedia.org/wiki/List_of_temples_of_The_Church_of_Jesus_Christ_of_Latter-day_Saints
      * @link http://www.ldschurchtemples.com/codes/
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function templeCodes(): array
     {
@@ -693,7 +693,7 @@ class GedcomCodeTemp
     /**
      * A sorted list of all temple names
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function templeNames(): array
     {

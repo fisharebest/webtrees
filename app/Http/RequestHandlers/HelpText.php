@@ -304,7 +304,7 @@ class HelpText implements RequestHandlerInterface
      *
      * @param string[]|int[] $gedcom_dates
      *
-     * @return string[]
+     * @return array<string>
      */
     private function formatDates(array $gedcom_dates): array
     {

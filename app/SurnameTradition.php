@@ -42,7 +42,7 @@ class SurnameTradition
      *
      * @return SurnameTraditionInterface
      */
-    public static function create($name): SurnameTraditionInterface
+    public static function create(string $name): SurnameTraditionInterface
     {
         switch ($name) {
             case 'paternal':
@@ -69,7 +69,7 @@ class SurnameTradition
     /**
      * A list of known surname traditions, with their descriptions
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function allDescriptions(): array
     {

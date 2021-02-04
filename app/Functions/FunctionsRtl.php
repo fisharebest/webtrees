@@ -77,7 +77,7 @@ class FunctionsRtl
      *
      * @return string The input string, with &lrm; and &rlm; stripped
      */
-    public static function stripLrmRlm($inputText): string
+    public static function stripLrmRlm(string $inputText): string
     {
         return str_replace([
             self::UTF8_LRM,
@@ -514,7 +514,7 @@ class FunctionsRtl
      *
      * @return string
      */
-    public static function starredName($textSpan, $direction): string
+    public static function starredName(string $textSpan, string $direction): string
     {
         // To avoid a TCPDF bug that mixes up the word order, insert those <u> and </u> tags
         // only when page and span directions are identical.
@@ -597,7 +597,7 @@ class FunctionsRtl
      *
      * @return void
      */
-    public static function breakCurrentSpan(&$result): void
+    public static function breakCurrentSpan(string &$result): void
     {
         // Interrupt the current span, insert that <br>, and then continue the current span
         $result .= self::$waitingText;
@@ -614,7 +614,7 @@ class FunctionsRtl
      *
      * @return void
      */
-    public static function beginCurrentSpan(&$result): void
+    public static function beginCurrentSpan(string &$result): void
     {
         if (self::$currentState === 'LTR') {
             $result .= self::START_LTR;
@@ -634,7 +634,7 @@ class FunctionsRtl
      *
      * @return void
      */
-    public static function finishCurrentSpan(&$result, $theEnd = false): void
+    public static function finishCurrentSpan(string &$result, bool $theEnd = false): void
     {
         $textSpan = substr($result, self::$posSpanStart);
         $result   = substr($result, 0, self::$posSpanStart);

@@ -29,7 +29,7 @@ class CountryService
     /**
      * Country codes and names
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getAllCountries(): array
     {
@@ -550,7 +550,7 @@ class CountryService
      * NOTE: this is not 1:1. ENG/SCO/WAL/NIR => GB
      * NOTE: this also includes champman codes and others. Should it?
      *
-     * @return string[]
+     * @return array<string>
      */
     public function iso3166(): array
     {

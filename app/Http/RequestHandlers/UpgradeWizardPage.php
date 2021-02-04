@@ -100,7 +100,7 @@ class UpgradeWizardPage implements RequestHandlerInterface
 
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     private function wizardSteps(): array
     {

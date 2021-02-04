@@ -134,7 +134,7 @@ class TreePrivacyPage implements RequestHandlerInterface
      *
      * @param Tree $tree
      *
-     * @return string[]
+     * @return array<string>
      */
     private function tagsForPrivacy(Tree $tree): array
     {

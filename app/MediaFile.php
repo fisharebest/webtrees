@@ -78,7 +78,7 @@ class MediaFile
      * @param string $gedcom
      * @param Media  $media
      */
-    public function __construct($gedcom, Media $media)
+    public function __construct(string $gedcom, Media $media)
     {
         $this->media   = $media;
         $this->fact_id = md5($gedcom);
@@ -172,14 +172,14 @@ class MediaFile
     /**
      * Display an image-thumbnail or a media-icon, and add markup for image viewers such as colorbox.
      *
-     * @param int      $width            Pixels
-     * @param int      $height           Pixels
-     * @param string   $fit              "crop" or "contain"
-     * @param string[] $image_attributes Additional HTML attributes
+     * @param int                  $width            Pixels
+     * @param int                  $height           Pixels
+     * @param string               $fit              "crop" or "contain"
+     * @param array<string,string> $image_attributes Additional HTML attributes
      *
      * @return string
      */
-    public function displayImage($width, $height, $fit, $image_attributes = []): string
+    public function displayImage(int $width, int $height, string $fit, array $image_attributes = []): string
     {
         if ($this->isExternal()) {
             $src    = $this->multimedia_file_refn;
@@ -236,7 +236,7 @@ class MediaFile
      *
      * @return string
      */
-    public function imageUrl($width, $height, $fit): string
+    public function imageUrl(int $width, int $height, string $fit): string
     {
         // Sign the URL, to protect against mass-resize attacks.
         $glide_key = Site::getPreference('glide-key');
@@ -307,7 +307,7 @@ class MediaFile
      *
      * @param FilesystemInterface $data_filesystem
      *
-     * @return string[]
+     * @return array<string>
      */
     public function attributes(FilesystemInterface $data_filesystem): array
     {

@@ -141,7 +141,7 @@ class GedcomCodeLang
     /**
      * A list of all possible values for LANG fields.
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function getValues(): array
     {

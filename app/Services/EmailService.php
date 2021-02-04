@@ -226,7 +226,7 @@ class EmailService
     /**
      * A list SSL modes (e.g. for an edit control).
      *
-     * @return string[]
+     * @return array<string>
      */
     public function mailSslOptions(): array
     {
@@ -242,7 +242,7 @@ class EmailService
     /**
      * A list SSL modes (e.g. for an edit control).
      *
-     * @return string[]
+     * @return array<string>
      */
     public function mailTransportOptions(): array
     {

@@ -68,9 +68,9 @@ abstract class AbstractGedcomRecordFactory
      * @param string $gedcom
      * @param string $xref
      *
-     * @return mixed|string
+     * @return string
      */
-    protected function extractXref(string $gedcom, string $xref)
+    protected function extractXref(string $gedcom, string $xref): string
     {
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@/', $gedcom, $match)) {
             return $match[1];

@@ -294,7 +294,7 @@ class CheckTree implements RequestHandlerInterface
      *
      * @return string
      */
-    private function checkLinkMessage(Tree $tree, string $type1, string $xref1, string $type2, $xref2): string
+    private function checkLinkMessage(Tree $tree, string $type1, string $xref1, string $type2, string $xref2): string
     {
         /* I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.” */
         return I18N::translate(

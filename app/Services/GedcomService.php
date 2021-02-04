@@ -256,7 +256,7 @@ class GedcomService
      *
      * @param string $text
      *
-     * @return string[]
+     * @return array<string>
      */
     public function readPlace(string $text): array
     {

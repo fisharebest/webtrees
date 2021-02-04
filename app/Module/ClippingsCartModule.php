@@ -474,7 +474,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     /**
      * @param Family $family
      *
-     * @return string[]
+     * @return array<string>
      */
     private function familyOptions(Family $family): array
     {
@@ -612,7 +612,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     /**
      * @param Individual $individual
      *
-     * @return string[]
+     * @return array<string>
      */
     private function individualOptions(Individual $individual): array
     {
@@ -763,7 +763,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     /**
      * @param Media $media
      *
-     * @return string[]
+     * @return array<string>
      */
     private function mediaOptions(Media $media): array
     {
@@ -831,7 +831,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     /**
      * @param Note $note
      *
-     * @return string[]
+     * @return array<string>
      */
     private function noteOptions(Note $note): array
     {
@@ -899,7 +899,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     /**
      * @param Repository $repository
      *
-     * @return string[]
+     * @return array<string>
      */
     private function repositoryOptions(Repository $repository): array
     {
@@ -967,7 +967,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     /**
      * @param Source $source
      *
-     * @return string[]
+     * @return array<string>
      */
     private function sourceOptions(Source $source): array
     {

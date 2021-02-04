@@ -37,7 +37,7 @@ class ReportHtmlText extends ReportBaseText
      *
      * @return void
      */
-    public function render($renderer, $attrib = true)
+    public function render($renderer, bool $attrib = true)
     {
         // Set up the style
         if ($renderer->getCurrentStyle() !== $this->styleName) {

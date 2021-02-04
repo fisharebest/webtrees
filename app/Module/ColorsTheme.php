@@ -103,7 +103,7 @@ class ColorsTheme extends CloudsTheme
     /**
      * A list of CSS files to include for this page.
      *
-     * @return string[]
+     * @return array<string>
      */
     public function stylesheets(): array
     {
@@ -144,7 +144,7 @@ class ColorsTheme extends CloudsTheme
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     private function palettes(): array
     {

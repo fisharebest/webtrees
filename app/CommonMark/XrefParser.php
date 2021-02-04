@@ -50,7 +50,7 @@ class XrefParser implements InlineParserInterface
     /**
      * We are only interested in text that begins with '@'.
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getCharacters(): array
     {

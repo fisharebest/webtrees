@@ -47,7 +47,7 @@ class PolishSurnameTradition extends PaternalSurnameTradition
      * @param string $mother_name A GEDCOM NAME
      * @param string $child_sex   M, F or U
      *
-     * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     * @return array<string,string> Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
     public function newChildNames(string $father_name, string $mother_name, string $child_sex): array
     {
@@ -76,7 +76,7 @@ class PolishSurnameTradition extends PaternalSurnameTradition
      * @param string $child_name A GEDCOM NAME
      * @param string $parent_sex M, F or U
      *
-     * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     * @return array<string,string> Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
     public function newParentNames(string $child_name, string $parent_sex): array
     {
@@ -98,7 +98,7 @@ class PolishSurnameTradition extends PaternalSurnameTradition
      * @param string $spouse_name A GEDCOM NAME
      * @param string $spouse_sex  M, F or U
      *
-     * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     * @return array<string,string> Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
     public function newSpouseNames(string $spouse_name, string $spouse_sex): array
     {

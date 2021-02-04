@@ -44,7 +44,7 @@ interface ModuleAnalyticsInterface extends ModuleInterface
     /**
      * The parameters that need to be embedded in the snippet.
      *
-     * @return string[]
+     * @return array<string>
      */
     public function analyticsParameters(): array;
 

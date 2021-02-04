@@ -69,7 +69,7 @@ class WebtreesTheme extends AbstractModule implements ModuleThemeInterface
     /**
      * A list of CSS files to include for this page.
      *
-     * @return string[]
+     * @return array<string>
      */
     public function stylesheets(): array
     {

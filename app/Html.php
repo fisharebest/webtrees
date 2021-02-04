@@ -59,12 +59,12 @@ class Html
     /**
      * Encode a URL.
      *
-     * @param string  $path
-     * @param mixed[] $data
+     * @param string       $path
+     * @param array<mixed> $data
      *
      * @return string
      */
-    public static function url($path, array $data): string
+    public static function url(string $path, array $data): string
     {
         $path = strtr($path, [' ' => '%20']);
 
@@ -82,7 +82,7 @@ class Html
      *
      * @return string
      */
-    public static function filename($filename): string
+    public static function filename(string $filename): string
     {
         return '<samp class="filename" dir="ltr">' . e($filename) . '</samp>';
     }

@@ -157,7 +157,22 @@ abstract class AbstractRenderer
      *
      * @return ReportBaseCell
      */
-    abstract public function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth): ReportBaseCell;
+    abstract public function createCell(
+        int $width,
+        int $height,
+        $border,
+        string $align,
+        string $bgcolor,
+        string $style,
+        int $ln,
+        $top,
+        $left,
+        int $fill,
+        int $stretch,
+        string $bocolor,
+        string $tcolor,
+        bool $reseth
+    ): ReportBaseCell;
 
     /**
      * Create a new TextBox object.
@@ -261,7 +276,7 @@ abstract class AbstractRenderer
      *
      * @return ReportBaseFootnote
      */
-    abstract public function createFootnote($style): ReportBaseFootnote;
+    abstract public function createFootnote(string $style): ReportBaseFootnote;
 
     /**
      * Initial Setup

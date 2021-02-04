@@ -95,7 +95,7 @@ class FunctionsEdit
      *
      * @return string
      */
-    public static function editLanguageCheckboxes($parameter_name, $languages): string
+    public static function editLanguageCheckboxes(string $parameter_name, array $languages): string
     {
         return view('edit/language-checkboxes', ['languages' => $languages]);
     }
@@ -103,7 +103,7 @@ class FunctionsEdit
     /**
      * A list of access levels (e.g. for an edit control).
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function optionsAccessLevels(): array
     {
@@ -113,7 +113,7 @@ class FunctionsEdit
     /**
      * A list of active languages (e.g. for an edit control).
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function optionsActiveLanguages(): array
     {
@@ -128,7 +128,7 @@ class FunctionsEdit
     /**
      * A list of calendar conversions (e.g. for an edit control).
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function optionsCalendarConversions(): array
     {
@@ -138,7 +138,7 @@ class FunctionsEdit
     /**
      * A list of contact methods (e.g. for an edit control).
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function optionsContactMethods(): array
     {
@@ -148,7 +148,7 @@ class FunctionsEdit
     /**
      * A list of hide/show options (e.g. for an edit control).
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function optionsHideShow(): array
     {
@@ -161,11 +161,11 @@ class FunctionsEdit
     /**
      * A list of integers (e.g. for an edit control).
      *
-     * @param int[] $integers
+     * @param array<int> $integers
      *
-     * @return string[]
+     * @return array<int,string>
      */
-    public static function numericOptions($integers): array
+    public static function numericOptions(array $integers): array
     {
         $array = [];
         foreach ($integers as $integer) {
@@ -182,7 +182,7 @@ class FunctionsEdit
     /**
      * A list of no/yes options (e.g. for an edit control).
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function optionsNoYes(): array
     {
@@ -197,9 +197,9 @@ class FunctionsEdit
      *
      * @param string $relationship
      *
-     * @return string[]
+     * @return array<string>
      */
-    public static function optionsRelationships($relationship): array
+    public static function optionsRelationships(string $relationship): array
     {
         $relationships = GedcomCodeRela::getValues();
         // The user is allowed to specify values that aren't in the list.
@@ -215,9 +215,9 @@ class FunctionsEdit
      *
      * @param bool $include_empty
      *
-     * @return string[]
+     * @return array<string>
      */
-    public static function optionsRestrictions($include_empty): array
+    public static function optionsRestrictions(bool $include_empty): array
     {
         $options = [
             'none'         => I18N::translate('Show to visitors'),
@@ -236,7 +236,7 @@ class FunctionsEdit
     /**
      * A list of GEDCOM restrictions for privacy rules.
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function optionsRestrictionsRule(): array
     {
@@ -246,7 +246,7 @@ class FunctionsEdit
     /**
      * A list of temple options (e.g. for an edit control).
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function optionsTemples(): array
     {
@@ -256,7 +256,7 @@ class FunctionsEdit
     /**
      * A list of user options (e.g. for an edit control).
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function optionsUsers(): array
     {
@@ -286,7 +286,7 @@ class FunctionsEdit
      *
      * @return string
      */
-    public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = ''): string
+    public static function addSimpleTag(Tree $tree, string $tag, string $upperlevel = '', string $label = ''): string
     {
         $localization_service = app(LocalizationService::class);
 
@@ -619,7 +619,7 @@ class FunctionsEdit
      *
      * @return void
      */
-    public static function addSimpleTags(Tree $tree, $fact): void
+    public static function addSimpleTags(Tree $tree, string $fact): void
     {
         // For new individuals, these facts default to "Y"
         if ($fact === 'MARR') {
@@ -654,7 +654,7 @@ class FunctionsEdit
      *
      * @return void
      */
-    public static function createAddForm(Tree $tree, $fact): void
+    public static function createAddForm(Tree $tree, string $fact): void
     {
         self::$tags = [];
 
@@ -847,7 +847,7 @@ class FunctionsEdit
      *
      * @return void
      */
-    public static function insertMissingSubtags(Tree $tree, $level1tag, $add_date = false): void
+    public static function insertMissingSubtags(Tree $tree, string $level1tag, bool $add_date = false): void
     {
         // handle  MARRiage TYPE
         $type_val = '';

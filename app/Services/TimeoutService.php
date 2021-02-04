@@ -40,7 +40,7 @@ class TimeoutService
     /**
      * TimeoutService constructor.
      *
-     * @param float $start_time
+     * @param float|null $start_time
      */
     public function __construct(float $start_time = null)
     {

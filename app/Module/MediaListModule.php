@@ -118,7 +118,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function listUrlAttributes(): array
     {
@@ -227,7 +227,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
      *
      * @param Tree $tree
      *
-     * @return string[]
+     * @return array<string>
      */
     private function allFolders(Tree $tree): array
     {

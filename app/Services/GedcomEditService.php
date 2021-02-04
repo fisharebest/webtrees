@@ -284,7 +284,7 @@ class GedcomEditService
      *
      * @return string
      */
-    public function addNewFact(ServerRequestInterface $request, Tree $tree, $fact): string
+    public function addNewFact(ServerRequestInterface $request, Tree $tree, string $fact): string
     {
         $params = (array) $request->getParsedBody();
 

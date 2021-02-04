@@ -179,7 +179,7 @@ class Fact
      *
      * @throws InvalidArgumentException
      */
-    public function __construct($gedcom, GedcomRecord $parent, $id)
+    public function __construct(string $gedcom, GedcomRecord $parent, string $id)
     {
         if (preg_match('/^1 (' . Gedcom::REGEX_TAG . ')/', $gedcom, $match)) {
             $this->gedcom = $gedcom;
@@ -261,7 +261,7 @@ class Fact
      *
      * @return string
      */
-    public function attribute($tag): string
+    public function attribute(string $tag): string
     {
         if (preg_match('/\n2 (?:' . $tag . ') ?(.*(?:(?:\n3 CONT ?.*)*)*)/', $this->gedcom, $match)) {
             return preg_replace("/\n3 CONT ?/", "\n", $match[1]);
@@ -439,7 +439,7 @@ class Fact
      *
      * @deprecated since 2.0.5.  Will be removed in 2.1.0
      */
-    public function setTag($tag): void
+    public function setTag(string $tag): void
     {
         $this->tag = $tag;
     }
@@ -527,7 +527,7 @@ class Fact
     /**
      * Source citations linked to this fact
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getCitations(): array
     {

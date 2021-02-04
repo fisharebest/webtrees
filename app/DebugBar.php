@@ -136,7 +136,7 @@ class DebugBar
      *
      * @return void
      */
-    public static function addMessage($message, $label = 'info', $isString = true): void
+    public static function addMessage(string $message, $label = 'info', $isString = true): void
     {
         if (self::$debugbar instanceof StandardDebugBar) {
             $collector = self::$debugbar->getCollector('messages');
@@ -150,11 +150,11 @@ class DebugBar
     /**
      * Start a timer.
      *
-     * @param string      $name
+     * @param string $name
      *
      * @return void
      */
-    public static function startMeasure($name): void
+    public static function startMeasure(string $name): void
     {
         if (self::$debugbar instanceof StandardDebugBar) {
             $collector = self::$debugbar->getCollector('time');
@@ -172,7 +172,7 @@ class DebugBar
      *
      * @return void
      */
-    public static function stopMeasure($name): void
+    public static function stopMeasure(string $name): void
     {
         if (self::$debugbar instanceof StandardDebugBar) {
             $collector = self::$debugbar->getCollector('time');

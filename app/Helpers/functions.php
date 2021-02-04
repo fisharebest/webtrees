@@ -73,7 +73,7 @@ function asset(string $path): string
  *
  * @return string
  */
-function csrf_field()
+function csrf_field(): string
 {
     return '<input type="hidden" name="_csrf" value="' . e(WebtreesSession::getCsrfToken()) . '">';
 }
@@ -83,7 +83,7 @@ function csrf_field()
  *
  * @return string
  */
-function csrf_token()
+function csrf_token(): string
 {
     return WebtreesSession::getCsrfToken();
 }
@@ -198,7 +198,7 @@ function route(string $route_name, array $parameters = []): string
  *
  * @return string
  */
-function view(string $name, array $data = [])
+function view(string $name, array $data = []): string
 {
     return WebtreesView::make($name, $data);
 }

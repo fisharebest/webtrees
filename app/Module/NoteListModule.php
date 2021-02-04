@@ -105,7 +105,7 @@ class NoteListModule extends AbstractModule implements ModuleListInterface, Requ
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function listUrlAttributes(): array
     {

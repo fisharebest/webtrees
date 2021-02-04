@@ -87,7 +87,7 @@ class FunctionsPrint
      *
      * @return string
      */
-    private static function printNoteRecord(Tree $tree, $text, $nlevel, $nrec): string
+    private static function printNoteRecord(Tree $tree, string $text, int $nlevel, string $nrec): string
     {
         $text .= Functions::getCont($nlevel, $nrec);
 
@@ -147,7 +147,7 @@ class FunctionsPrint
      *
      * @return string HTML
      */
-    public static function printFactNotes(Tree $tree, $factrec, $level): string
+    public static function printFactNotes(Tree $tree, string $factrec, int $level): string
     {
         $data          = '';
         $previous_spos = 0;
@@ -516,7 +516,7 @@ class FunctionsPrint
      *
      * @return void
      */
-    public static function printAddNewFact(GedcomRecord $record, Collection $usedfacts, $type): void
+    public static function printAddNewFact(GedcomRecord $record, Collection $usedfacts, string $type): void
     {
         $tree = $record->tree();
 

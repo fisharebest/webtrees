@@ -105,7 +105,7 @@ return new class extends AbstractModule implements ModuleCustomInterface {
      *
      * @param string $language
      *
-     * @return string[]
+     * @return array<string>
      */
     public function customTranslations(string $language): array
     {

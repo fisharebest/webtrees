@@ -42,7 +42,7 @@ class Log
      *
      * @return void
      */
-    public static function addAuthenticationLog($message): void
+    public static function addAuthenticationLog(string $message): void
     {
         self::addLog($message, self::TYPE_AUTHENTICATION);
     }
@@ -56,7 +56,7 @@ class Log
      *
      * @return void
      */
-    private static function addLog($message, $log_type, Tree $tree = null): void
+    private static function addLog(string $message, string $log_type, Tree $tree = null): void
     {
         if (app()->has(ServerRequestInterface::class)) {
             $request    = app(ServerRequestInterface::class);
@@ -83,7 +83,7 @@ class Log
      *
      * @return void
      */
-    public static function addConfigurationLog($message, Tree $tree = null): void
+    public static function addConfigurationLog(string $message, Tree $tree = null): void
     {
         self::addLog($message, self::TYPE_CONFIGURATION, $tree);
     }
@@ -96,7 +96,7 @@ class Log
      *
      * @return void
      */
-    public static function addEditLog($message, Tree $tree): void
+    public static function addEditLog(string $message, Tree $tree): void
     {
         self::addLog($message, self::TYPE_EDIT, $tree);
     }
@@ -108,7 +108,7 @@ class Log
      *
      * @return void
      */
-    public static function addErrorLog($message): void
+    public static function addErrorLog(string $message): void
     {
         self::addLog($message, self::TYPE_ERROR);
     }
@@ -120,7 +120,7 @@ class Log
      *
      * @return void
      */
-    public static function addMediaLog($message): void
+    public static function addMediaLog(string $message): void
     {
         self::addLog($message, self::TYPE_MEDIA);
     }
@@ -135,7 +135,7 @@ class Log
      *
      * @return void
      */
-    public static function addSearchLog($message, array $trees): void
+    public static function addSearchLog(string $message, array $trees): void
     {
         foreach ($trees as $tree) {
             self::addLog($message, self::TYPE_SEARCH, $tree);

@@ -52,8 +52,13 @@ class Menu
      * @param string[] $attrs    Optional attributes, such as onclick or data-xxx
      * @param Menu[]   $submenus Any submenus
      */
-    public function __construct($label, $link = '#', $class = '', array $attrs = [], array $submenus = [])
-    {
+    public function __construct(
+        string $label,
+        string $link = '#',
+        string $class = '',
+        array $attrs = [],
+        array $submenus = []
+    ) {
         $this
             ->setLabel($label)
             ->setLink($link)
@@ -82,7 +87,7 @@ class Menu
     /**
      * Get the optional attributes.
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getAttrs(): array
     {
@@ -120,7 +125,7 @@ class Menu
      *
      * @return $this
      */
-    public function setClass($class): self
+    public function setClass(string $class): self
     {
         $this->class = $class;
 
@@ -144,7 +149,7 @@ class Menu
      *
      * @return $this
      */
-    public function setLabel($label): self
+    public function setLabel(string $label): self
     {
         $this->label = $label;
 
@@ -168,7 +173,7 @@ class Menu
      *
      * @return $this
      */
-    public function setLink($link): self
+    public function setLink(string $link): self
     {
         $this->link = $link;
 
@@ -182,7 +187,7 @@ class Menu
      *
      * @return $this
      */
-    public function addSubmenu($menu): self
+    public function addSubmenu(Menu $menu): self
     {
         $this->submenus[] = $menu;
 

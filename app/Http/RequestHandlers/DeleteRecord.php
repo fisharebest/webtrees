@@ -105,7 +105,7 @@ class DeleteRecord implements RequestHandlerInterface
      *
      * @return string
      */
-    private function removeLinks($gedrec, $xref): string
+    private function removeLinks(string $gedrec, string $xref): string
     {
         $gedrec = preg_replace('/\n1 ' . Gedcom::REGEX_TAG . ' @' . $xref . '@(\n[2-9].*)*/', '', $gedrec);
         $gedrec = preg_replace('/\n2 ' . Gedcom::REGEX_TAG . ' @' . $xref . '@(\n[3-9].*)*/', '', $gedrec);

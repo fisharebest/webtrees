@@ -107,7 +107,7 @@ class SourceListModule extends AbstractModule implements ModuleListInterface, Re
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function listUrlAttributes(): array
     {

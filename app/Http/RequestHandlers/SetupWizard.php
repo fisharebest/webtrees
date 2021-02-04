@@ -380,7 +380,7 @@ class SetupWizard implements RequestHandlerInterface
      *
      * @return string
      */
-    private function checkAdminUser($wtname, $wtuser, $wtpass, $wtemail): string
+    private function checkAdminUser(string $wtname, string $wtuser, string $wtpass, string $wtemail): string
     {
         if ($wtname === '' || $wtuser === '' || $wtpass === '' || $wtemail === '') {
             return I18N::translate('You must enter all the administrator account fields.');

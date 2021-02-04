@@ -125,7 +125,7 @@ class AbstractCensusColumn
      *
      * @param Individual $individual
      *
-     * @return string[]
+     * @return array<string>
      */
     protected function nameAtCensusDate(Individual $individual): array
     {

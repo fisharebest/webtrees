@@ -88,7 +88,7 @@ trait ModuleListTrait
     /**
      * Attributes for the URL.
      *
-     * @return string[]
+     * @return array<string>
      */
     public function listUrlAttributes(): array
     {

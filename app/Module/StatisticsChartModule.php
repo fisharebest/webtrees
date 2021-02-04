@@ -764,7 +764,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     private function axisAll(): array
     {
@@ -774,7 +774,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     private function axisSexes(): array
     {
@@ -787,7 +787,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * Labels for the X axis
      *
-     * @return string[]
+     * @return array<string>
      */
     private function axisMonths(): array
     {
@@ -812,7 +812,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @param string $boundaries_csv
      *
-     * @return string[]
+     * @return array<string>
      */
     private function axisYears(string $boundaries_csv): array
     {
@@ -912,7 +912,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return int|string
      */
-    private function findAxisEntry($value, $axis)
+    private function findAxisEntry($value, array $axis)
     {
         if (is_numeric($value)) {
             $value = (int) $value;

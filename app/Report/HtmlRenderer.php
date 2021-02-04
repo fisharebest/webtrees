@@ -305,14 +305,14 @@ class HtmlRenderer extends AbstractRenderer
      * @param mixed  $top     Y-position
      * @param mixed  $left    X-position
      * @param int    $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
-     * @param int    $stretch Stretch carachter mode
+     * @param int    $stretch Stretch character mode
      * @param string $bocolor Border color
      * @param string $tcolor  Text color
      * @param bool   $reseth
      *
      * @return ReportBaseCell
      */
-    public function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth): ReportBaseCell
+    public function createCell(int $width, int $height, $border, string $align, string $bgcolor, string $style, int $ln, $top, $left, int $fill, int $stretch, string $bocolor, string $tcolor, bool $reseth): ReportBaseCell
     {
         return new ReportHtmlCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
     }
@@ -372,7 +372,7 @@ class HtmlRenderer extends AbstractRenderer
      *
      * @return ReportBaseFootnote
      */
-    public function createFootnote($style): ReportBaseFootnote
+    public function createFootnote(string $style): ReportBaseFootnote
     {
         return new ReportHtmlFootnote($style);
     }
@@ -670,7 +670,7 @@ class HtmlRenderer extends AbstractRenderer
      *
      * @return void
      */
-    public function setX($x): void
+    public function setX(float $x): void
     {
         $this->X = $x;
     }
@@ -684,7 +684,7 @@ class HtmlRenderer extends AbstractRenderer
      *
      * @return void
      */
-    public function setY($y): void
+    public function setY(float $y): void
     {
         $this->Y = $y;
         if ($this->maxY < $y) {
@@ -702,7 +702,7 @@ class HtmlRenderer extends AbstractRenderer
      *
      * @return void
      */
-    public function setXy($x, $y): void
+    public function setXy(float $x, float $y): void
     {
         $this->setX($x);
         $this->setY($y);
@@ -747,7 +747,7 @@ class HtmlRenderer extends AbstractRenderer
      *
      * @return void
      */
-    public function write($text, $color = '', $useclass = true): void
+    public function write(string $text, string $color = '', bool $useclass = true): void
     {
         $style    = $this->getStyle($this->getCurrentStyle());
         $htmlcode = '<span dir="' . I18N::direction() . '"';

@@ -147,7 +147,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function listUrlAttributes(): array
     {
@@ -835,7 +835,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      *
      * @return Family[]
      */
-    public function families(Tree $tree, $surn, $salpha, $galpha, $marnm, LocaleInterface $locale): array
+    public function families(Tree $tree, string $surn, string $salpha, string $galpha, bool $marnm, LocaleInterface $locale): array
     {
         $list = [];
         foreach ($this->individuals($tree, $surn, $salpha, $galpha, $marnm, true, $locale) as $indi) {

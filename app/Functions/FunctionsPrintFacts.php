@@ -588,7 +588,7 @@ class FunctionsPrintFacts
      *
      * @return string HTML text
      */
-    public static function printFactSources(Tree $tree, $factrec, $level): string
+    public static function printFactSources(Tree $tree, string $factrec, int $level): string
     {
         $data   = '';
         $nlevel = $level + 1;
@@ -658,7 +658,7 @@ class FunctionsPrintFacts
      *
      * @return void
      */
-    public static function printMediaLinks(Tree $tree, $factrec, $level): void
+    public static function printMediaLinks(Tree $tree, string $factrec, int $level): void
     {
         $nlevel = $level + 1;
         if (preg_match_all("/$level OBJE @(.*)@/", $factrec, $omatch, PREG_SET_ORDER) === 0) {
@@ -880,7 +880,7 @@ class FunctionsPrintFacts
      *
      * @param string $srec
      *
-     * @return string[]|string[][]
+     * @return array<array<string>>
      */
     public static function getSourceStructure(string $srec): array
     {

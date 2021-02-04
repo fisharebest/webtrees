@@ -88,7 +88,7 @@ class ChartDistribution
     /**
      * Returns the country names for each language.
      *
-     * @return string[]
+     * @return array<string>
      */
     private function getIso3166Countries(): array
     {

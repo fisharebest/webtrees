@@ -189,7 +189,7 @@ class AdminService
      *
      * @param Tree $tree
      *
-     * @return string[]
+     * @return array<string>
      */
     public function duplicateXrefs(Tree $tree): array
     {

@@ -213,7 +213,7 @@ class FixMissingMarriedNames extends AbstractModule implements ModuleDataFixInte
      *
      * @param Individual $record
      *
-     * @return string[]
+     * @return array<string>
      */
     private function surnamesToAdd(Individual $record): array
     {
@@ -249,7 +249,7 @@ class FixMissingMarriedNames extends AbstractModule implements ModuleDataFixInte
      *
      * @param GedcomRecord $record
      *
-     * @return string[]
+     * @return array<string>
      */
     private function surnames(GedcomRecord $record): array
     {

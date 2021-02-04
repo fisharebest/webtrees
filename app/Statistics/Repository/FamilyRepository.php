@@ -1377,13 +1377,13 @@ class FamilyRepository
     /**
      * General query on ages at marriage.
      *
-     * @param string $sex   "M" or "F"
+     * @param string $sex "M" or "F"
      * @param int    $year1
      * @param int    $year2
      *
      * @return array<stdClass>
      */
-    public function statsMarrAgeQuery($sex, $year1 = -1, $year2 = -1): array
+    public function statsMarrAgeQuery(string $sex, int $year1 = -1, int $year2 = -1): array
     {
         $prefix = DB::connection()->getTablePrefix();
 

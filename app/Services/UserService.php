@@ -50,7 +50,7 @@ class UserService
      *
      * @return User|null
      */
-    public function find($user_id): ?User
+    public function find(?int $user_id): ?User
     {
         return Registry::cache()->array()->remember('user-' . $user_id, static function () use ($user_id): ?User {
             return DB::table('user')
@@ -68,7 +68,7 @@ class UserService
      *
      * @return User|null
      */
-    public function findByEmail($email): ?User
+    public function findByEmail(string $email): ?User
     {
         return DB::table('user')
             ->where('email', '=', $email)
@@ -84,7 +84,7 @@ class UserService
      *
      * @return User|null
      */
-    public function findByIdentifier($identifier): ?User
+    public function findByIdentifier(string $identifier): ?User
     {
         return DB::table('user')
             ->where('user_name', '=', $identifier)
@@ -142,7 +142,7 @@ class UserService
      *
      * @return User|null
      */
-    public function findByUserName($user_name): ?User
+    public function findByUserName(string $user_name): ?User
     {
         return DB::table('user')
             ->where('user_name', '=', $user_name)

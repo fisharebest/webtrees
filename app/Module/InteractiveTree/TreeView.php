@@ -52,7 +52,7 @@ class TreeView
      * @param Individual $individual  Draw the chart for this individual
      * @param int        $generations number of generations to draw
      *
-     * @return string[]  HTML and Javascript
+     * @return array<string>  HTML and Javascript
      */
     public function drawViewport(Individual $individual, int $generations): array
     {

@@ -83,6 +83,10 @@ class LatestUserRepository implements LatestUserRepositoryInterface
             ->orderByDesc('us.setting_value')
             ->value('user_id');
 
+        if ($user_id !== null) {
+            $user_id = (int) $user_id;
+        }
+
         $user = $this->user_service->find($user_id) ?? Auth::user();
 
         return $user;

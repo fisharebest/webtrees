@@ -200,7 +200,7 @@ class Individual extends GedcomRecord
      *
      * @return bool
      */
-    private static function isRelated(Individual $target, $distance): bool
+    private static function isRelated(Individual $target, int $distance): bool
     {
         static $cache = null;
 
@@ -432,7 +432,7 @@ class Individual extends GedcomRecord
      *
      * @return string
      */
-    public function displayImage($width, $height, $fit, $attributes): string
+    public function displayImage(int $width, int $height, string $fit, array $attributes): string
     {
         $media_file = $this->findHighlightedMediaFile();
 

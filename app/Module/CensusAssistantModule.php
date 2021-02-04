@@ -173,7 +173,7 @@ class CensusAssistantModule extends AbstractModule
      *
      * @return string
      */
-    private function createNoteText(CensusInterface $census, $ca_title, $ca_place, $ca_citation, $ca_individuals, $ca_notes): string
+    private function createNoteText(CensusInterface $census, string $ca_title, string $ca_place, string $ca_citation, array $ca_individuals, string $ca_notes): string
     {
         $text = $ca_title . "\n" . $ca_citation . "\n" . $ca_place . "\n\n|";
 

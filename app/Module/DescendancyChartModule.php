@@ -257,7 +257,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     /**
      * This chart can display its output in a number of styles
      *
-     * @return string[]
+     * @return array<string>
      */
     protected function styles(): array
     {

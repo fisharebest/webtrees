@@ -404,7 +404,7 @@ class GedcomTag
      *
      * @return bool
      */
-    public static function isTag($tag): bool
+    public static function isTag(string $tag): bool
     {
         return in_array($tag, self::ALL_TAGS, true);
     }
@@ -416,7 +416,7 @@ class GedcomTag
      *
      * @return string
      */
-    public static function getLabel($tag): string
+    public static function getLabel(string $tag): string
     {
         switch ($tag) {
             case 'ABBR':
@@ -1275,7 +1275,7 @@ class GedcomTag
      *
      * @return string
      */
-    public static function getLabelValue($tag, $value, GedcomRecord $record = null, $element = 'div'): string
+    public static function getLabelValue(string $tag, string $value, GedcomRecord $record = null, $element = 'div'): string
     {
         return
             '<' . $element . ' class="fact_' . $tag . '">' .
@@ -1289,9 +1289,9 @@ class GedcomTag
      *
      * @param string $fact_type
      *
-     * @return string[]
+     * @return array<string>
      */
-    public static function getPicklistFacts($fact_type): array
+    public static function getPicklistFacts(string $fact_type): array
     {
         switch ($fact_type) {
             case Individual::RECORD_TYPE:
@@ -1514,7 +1514,7 @@ class GedcomTag
     /**
      * A list of all possible values for 1 FILE/2 FORM/3 TYPE
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function getFileFormTypes(): array
     {

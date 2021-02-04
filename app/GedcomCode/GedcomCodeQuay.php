@@ -64,7 +64,7 @@ class GedcomCodeQuay
     /**
      * A list of all possible values for QUAY
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function getValues(): array
     {

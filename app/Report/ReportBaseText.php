@@ -57,7 +57,7 @@ class ReportBaseText extends ReportBaseElement
      * @param string $style The name of the text style
      * @param string $color HTML color code
      */
-    public function __construct($style, $color)
+    public function __construct(string $style, string $color)
     {
         $this->text               = '';
         $this->color              = $color;

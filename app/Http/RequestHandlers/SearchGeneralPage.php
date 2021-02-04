@@ -190,7 +190,7 @@ class SearchGeneralPage implements RequestHandlerInterface
      *
      * @param string $query
      *
-     * @return string[]
+     * @return array<string>
      */
     private function extractSearchTerms(string $query): array
     {

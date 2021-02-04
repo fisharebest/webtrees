@@ -139,7 +139,7 @@ class TreeService
     /**
      * All trees, name => title
      *
-     * @return string[]
+     * @return array<string>
      */
     public function titles(): array
     {

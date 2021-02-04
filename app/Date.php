@@ -106,10 +106,10 @@ class Date
      *
      * @param string $date
      *
-     * @throws DomainException
      * @return AbstractCalendarDate
+     * @throws DomainException
      */
-    private function parseDate($date): AbstractCalendarDate
+    private function parseDate(string $date): AbstractCalendarDate
     {
         // Valid calendar escape specified? - use it
         if (preg_match('/^(@#D(?:GREGORIAN|JULIAN|HEBREW|HIJRI|JALALI|FRENCH R|ROMAN)+@) ?(.*)/', $date, $match)) {
@@ -223,7 +223,7 @@ class Date
     /**
      * A list of supported calendars and their names.
      *
-     * @return string[]
+     * @return array<string>
      */
     public static function calendarNames(): array
     {

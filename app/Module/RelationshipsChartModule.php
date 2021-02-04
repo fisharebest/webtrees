@@ -433,7 +433,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     /**
      * Possible options for the ancestors option
      *
-     * @return string[]
+     * @return array<string>
      */
     private function ancestorsOptions(): array
     {
@@ -446,7 +446,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     /**
      * Possible options for the recursion option
      *
-     * @return string[]
+     * @return array<string>
      */
     private function recursionConfigOptions(): array
     {
@@ -467,10 +467,14 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      * @param int        $recursion How many levels of recursion to use
      * @param bool       $ancestor  Restrict to relationships via a common ancestor
      *
-     * @return string[][]
+     * @return array<array<string>>
      */
-    private function calculateRelationships(Individual $individual1, Individual $individual2, $recursion, $ancestor = false): array
-    {
+    private function calculateRelationships(
+        Individual $individual1,
+        Individual $individual2,
+        int $recursion,
+        bool $ancestor = false
+    ): array {
         $tree = $individual1->tree();
 
         $rows = DB::table('link')
@@ -571,9 +575,9 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      * @param string $xref2
      * @param int    $tree_id
      *
-     * @return string[]
+     * @return array<string>
      */
-    private function allAncestors($xref1, $xref2, $tree_id): array
+    private function allAncestors(string $xref1, string $xref2, int $tree_id): array
     {
         $ancestors = [
             $xref1,
@@ -616,9 +620,9 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      * @param string $xref2
      * @param int    $tree_id
      *
-     * @return string[]
+     * @return array<string>
      */
-    private function excludeFamilies($xref1, $xref2, $tree_id): array
+    private function excludeFamilies(string $xref1, string $xref2, int $tree_id): array
     {
         return DB::table('link AS l1')
             ->join('link AS l2', static function (JoinClause $join): void {
@@ -642,7 +646,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      * @param Tree     $tree
      * @param string[] $path Alternately Individual / Family
      *
-     * @return string[]
+     * @return array<string>
      */
     private function oldStyleRelationshipPath(Tree $tree, array $path): array
     {
@@ -701,7 +705,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      *
      * @param int $max_recursion
      *
-     * @return string[]
+     * @return array<string>
      */
     private function recursionOptions(int $max_recursion): array
     {

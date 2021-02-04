@@ -52,7 +52,7 @@ class GedcomRepository implements GedcomRepositoryInterface
     /**
      * Get information from the GEDCOM's HEAD record.
      *
-     * @return string[]
+     * @return array<string>
      */
     private function gedcomHead(): array
     {

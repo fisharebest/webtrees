@@ -88,7 +88,7 @@ class User implements UserInterface
      *
      * @return User
      */
-    public function setEmail($email): User
+    public function setEmail(string $email): User
     {
         if ($this->email !== $email) {
             $this->email = $email;
@@ -120,7 +120,7 @@ class User implements UserInterface
      *
      * @return User
      */
-    public function setRealName($real_name): User
+    public function setRealName(string $real_name): User
     {
         if ($this->real_name !== $real_name) {
             $this->real_name = $real_name;
@@ -152,7 +152,7 @@ class User implements UserInterface
      *
      * @return $this
      */
-    public function setUserName($user_name): self
+    public function setUserName(string $user_name): self
     {
         if ($this->user_name !== $user_name) {
             $this->user_name = $user_name;

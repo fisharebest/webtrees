@@ -235,7 +235,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
     /**
      * For the advanced search
      *
-     * @return string[]
+     * @return array<string>
      */
     private function dateOptions(): array
     {
@@ -252,7 +252,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
     /**
      * For the advanced search
      *
-     * @return string[]
+     * @return array<string>
      */
     private function nameOptions(): array
     {

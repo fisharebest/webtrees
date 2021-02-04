@@ -59,7 +59,7 @@ class HitCountRepository implements HitCountRepositoryInterface
      *
      * @return string
      */
-    private function hitCountQuery($page_name, string $page_parameter = ''): string
+    private function hitCountQuery(string $page_name, string $page_parameter = ''): string
     {
         if ($page_name === '') {
             // index.php?context=gedcom
