@@ -88,7 +88,7 @@ class ColorService
      */
     private function hexToRgb(string $hex): array
     {
-        return array_map(function (string $hex): int {
+        return array_map(static function (string $hex): int {
             return (int) hexdec($hex);
         }, str_split(ltrim($hex, '#'), 2));
     }

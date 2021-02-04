@@ -83,7 +83,7 @@ use Fisharebest\Webtrees\View;
 <?php View::push('javascript') ?>
 <script>
   function regex_quote(str) {
-    return str.replace(/[\\.?+*()[\](){}|]/g, "\\$&");
+    return str.replace(/[\\.?+*()[\]{}|]/g, "\\$&");
   }
 </script>
 <?php View::endpush() ?>
