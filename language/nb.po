@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-11-25 15:21+0000\n"
+"PO-Revision-Date: 2021-02-11 03:42+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nb_NO/>\n"
@@ -10551,11 +10551,11 @@ msgstr "Payson, Utah, USA"
 #: modules_v3/pedigree_report/report.xml:3
 #: modules_v3/pedigree_report/report.xml:43
 msgid "Pedigree"
-msgstr "Anetavle"
+msgstr "Anediagram"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree chart"
-msgstr "Anetavle"
+msgstr "Anediagram"
 
 #: app/Module/GoogleMapsModule.php:210
 msgid "Pedigree map"
@@ -10576,7 +10576,7 @@ msgstr "%ss anetre"
 #: app/Controller/PedigreeController.php:85
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "Anetavle for %s"
+msgstr "Anediagram for %s"
 
 #. I18N: Name of a module
 #: admin.php:767 admin.php:789 admin_site_upgrade.php:100
@@ -14596,7 +14596,12 @@ msgstr "Serverens minnegrense er på %sMB og CPU-tidsgrensen er på %s sekunder.
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1358
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Dette skal være en liste med faktatyper, adskilt med komma eller mellomrom, som du vil skal vises i tillegg til fødsels- og dødsår i diagrambokser som anetreet. Listen må bestå av fakta-tagger som definert i GEDCOM 5.5.1-standarden. F.eks. hvis du vil at yrket skal stå i boksen, legger du til «OCCU» i dette feltet."
+msgstr ""
+"Dette skal være en liste med faktatyper, adskilt med komma eller mellomrom, "
+"som du vil skal vises i tillegg til fødsels- og dødsår i diagrambokser som "
+"anediagrammet. Listen må bestå av fakta-tagger som definert i GEDCOM 5.5.1-"
+"standarden. F.eks. hvis du vil at yrket skal stå i boksen, legger du til "
+"«OCCU» i dette feltet."
 
 #: source.php:60
 msgid "This source does not exist or you do not have permission to view it."
