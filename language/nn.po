@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-02-04 19:26+0000\n"
+"PO-Revision-Date: 2021-02-11 03:42+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nn/>\n"
@@ -10555,11 +10555,11 @@ msgstr "Payson, Utah, USA"
 #: modules_v3/pedigree_report/report.xml:3
 #: modules_v3/pedigree_report/report.xml:43
 msgid "Pedigree"
-msgstr "Anetavle"
+msgstr "Anediagram"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree chart"
-msgstr "Anetavle"
+msgstr "Anediagram"
 
 #: app/Module/GoogleMapsModule.php:210
 msgid "Pedigree map"
@@ -10574,13 +10574,13 @@ msgstr "Anekart til %s"
 #: app/Module/ChartsBlockModule.php:86
 #, php-format
 msgid "Pedigree of %s"
-msgstr "Anetre til %s"
+msgstr "Anediagram til %s"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/PedigreeController.php:85
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "Anar til %s"
+msgstr "Anediagram til %s"
 
 #. I18N: Name of a module
 #: admin.php:767 admin.php:789 admin_site_upgrade.php:100
@@ -14483,7 +14483,8 @@ msgstr "Dette valet fastset om ein person sitt kjønn skal synast med ikon på d
 #. I18N: Help text for the “Default pedigree chart layout” tree configuration setting
 #: admin_trees_config.php:1216
 msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
-msgstr "Dette valet fastset om sletstreet skal synast liggjande eller ståaende."
+msgstr ""
+"Dette valet fastset om anediagrammet skal synast liggjande eller ståaende."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1036
@@ -14493,7 +14494,10 @@ msgstr "Dette valet vil gjere det enklare for brukarar å laste ned bileter."
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:494
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Dette valet vil behalde familieband i private postar. Det tyder at du vil sjå tome «private» bokser i stamtreet og andre diagramer med private personar."
+msgstr ""
+"Dette valet vil behalde familieband i private postar. Det tyder at du vil "
+"sjå tome «private» bokser i anediagrammet og andre diagram med private "
+"personar."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:475
