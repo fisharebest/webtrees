@@ -52,7 +52,7 @@
 
 	<Doc pageSize="$pageSize">
 		<Header>
-			<Cell align="center" height="30" newline="1" style="header"><var var="I18N::translate('Ancestors of ')" /><GetPersonName id="$pid" /></Cell>
+			<Cell style="header" align="center" height="30" newline="1"><var var="I18N::translate('Ancestors of ')" /><GetPersonName id="$pid" /></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>
 		</Header>
 		<Body>
@@ -105,7 +105,7 @@
 					</TextBox>
 					<!-- Sentence 1 Individual, name... -->
 					<TextBox height="12" newline="1">
-						<Text style="name"><GetPersonName id="" /> </Text>
+						<Text style="name"><GetPersonName id="" /></Text>
 						<if condition="$sources=='on'">
 							<!-- print level 1 sources -->
 							<RepeatTag tag="SOUR">
@@ -134,6 +134,7 @@
 								<SetVar name="source_exist" value="1" />
 							</RepeatTag>
 						</if>
+						<Text style="name">  </Text>
 						<!-- Individual, birth... -->
 						<Gedcom id="BIRT">
 							<Text style="text">
@@ -419,7 +420,7 @@
 											<if condition="$familyChildNumber==20"><SetVar name="familyChildRoman" value="xx" /></if>
 											<TextBox left="25" height="20" newline="1">
 												<Text style="label1"><var var="familyChildRoman" /></Text>
-												<Text style="namech">  <GetPersonName id="" /> </Text>
+												<Text style="namech">  <GetPersonName id="" /></Text>
 												<if condition="$sources=='on'">
 													<RepeatTag tag="SOUR">
 														<Footnote>

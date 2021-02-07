@@ -86,9 +86,17 @@
 		<SetVar name="width2" value="0"/>
 	</if>
 
+	<if condition="$relatives=='child-family'"><SetVar name="explain" value="I18N::translate('Parents and siblings')"/></if>
+	<if condition="$relatives=='spouse-family'"><SetVar name="explain" value="I18N::translate('Spouses and children')"/></if>
+	<if condition="$relatives=='direct-ancestors'"><SetVar name="explain" value="I18N::translate('Direct line ancestors')"/></if>
+	<if condition="$relatives=='ancestors'"><SetVar name="explain" value="I18N::translate('Direct line ancestors and their families')"/></if>
+	<if condition="$relatives=='descendants'"><SetVar name="explain" value="I18N::translate('Descendants')"/></if>
+	<if condition="$relatives=='all'"><SetVar name="explain" value="I18N::translate('All')"/></if>
+
+
 	<Doc pageSize="$pageSize">
 		<Header>
-			<Cell align="center" newline="1" style="header"><var var="I18N::translate('Related families')"/></Cell>
+			<Cell align="center" newline="1" style="header"><GetPersonName id="$pid" /> — <var var="$explain"/></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="I18N::translate('Page')"/> <PageNum/> / <TotalPages/></Cell>
 		</Header>
 
@@ -103,7 +111,7 @@
 				<SetVar name="mid" value="@ID"/>
 				<!-- Individual name -->
 				<TextBox newline="1">
-					<Text style="pageheader"><GetPersonName id=""/> </Text>
+					<Text style="pageheader"><GetPersonName id=""/></Text>
 					<if condition="$sources=='on'">
 						<!-- print level 1 sources -->
 						<RepeatTag tag="SOUR">
@@ -241,7 +249,7 @@
 						<Gedcom id="@HUSB">
 							<TextBox bgcolor="$mbgcolor" border="1" newline="1" width="$width">
 								<Text color="$tcolor" style="text"><var var="I18N::translate('Father')"/>  </Text>
-								<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
+								<Text color="$tcolor" style="name"><GetPersonName id=""/></Text>
 								<if condition="$sources=='on'">
 									<!-- print level 1 sources -->
 									<RepeatTag tag="SOUR">
@@ -270,14 +278,14 @@
 										<SetVar name="source_exist" value="1" />
 									</RepeatTag>
 								</if>
-								<Text color="$tcolor" style="text"> (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
+								<Text color="$tcolor" style="text">  (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 							</TextBox>
 						</Gedcom>
 						<!-- mother -->
 						<Gedcom id="@WIFE">
 							<TextBox bgcolor="$fbgcolor" border="1" newline="1" width="$width">
 								<Text color="$tcolor" style="text"><var var="I18N::translate('Mother')"/>  </Text>
-								<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
+								<Text color="$tcolor" style="name"><GetPersonName id=""/></Text>
 								<if condition="$sources=='on'">
 									<!-- print level 1 sources -->
 									<RepeatTag tag="SOUR">
@@ -306,7 +314,7 @@
 										<SetVar name="source_exist" value="1" />
 									</RepeatTag>
 								</if>
-								<Text color="$tcolor" style="text"> (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
+								<Text color="$tcolor" style="text">  (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 							</TextBox>
 						</Gedcom>
 						<!-- siblings -->
@@ -317,7 +325,7 @@
 								<if condition="@SEX=='M'">
 									<TextBox bgcolor="$mbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="I18N::translate('Brother')"/>  </Text>
-										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
+										<Text color="$tcolor" style="name"><GetPersonName id=""/></Text>
 										<if condition="$sources=='on'">
 											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
@@ -346,14 +354,14 @@
 												<SetVar name="source_exist" value="1" />
 											</RepeatTag>
 										</if>
-										<Text color="$tcolor" style="text"> (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
+										<Text color="$tcolor" style="text">  (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 									</TextBox>
 								</if>
 								<!-- Sister -->
 								<if condition="@SEX=='F'">
 									<TextBox bgcolor="$fbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="I18N::translate('Sister')"/>  </Text>
-										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
+										<Text color="$tcolor" style="name"><GetPersonName id=""/></Text>
 										<if condition="$sources=='on'">
 											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
@@ -382,14 +390,14 @@
 												<SetVar name="source_exist" value="1" />
 											</RepeatTag>
 										</if>
-										<Text color="$tcolor" style="text"> (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
+										<Text color="$tcolor" style="text">  (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 									</TextBox>
 								</if>
 								<!-- Unknown gender for Sibling -->
 								<if condition="@SEX=='U'">
 									<TextBox bgcolor="$ugbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="I18N::translate('Gender')"/> <var var="I18N::translateContext('unknown gender', 'Unknown')"/>  </Text>
-										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
+										<Text color="$tcolor" style="name"><GetPersonName id=""/></Text>
 										<if condition="$sources=='on'">
 											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
@@ -418,7 +426,7 @@
 												<SetVar name="source_exist" value="1" />
 											</RepeatTag>
 										</if>
-										<Text color="$tcolor" style="text"> (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
+										<Text color="$tcolor" style="text">  (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 									</TextBox>
 								</if>
 							</Gedcom>
@@ -447,7 +455,7 @@
 							<if condition="@SEX!='F'">
 								<TextBox bgcolor="$mbgcolor" border="1" newline="1" width="$width">
 									<Text color="$tcolor" style="text"><var var="I18N::translate('Husband')"/>  </Text>
-									<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
+									<Text color="$tcolor" style="name"><GetPersonName id=""/></Text>
 									<if condition="$sources=='on'">
 										<!-- print level 1 sources -->
 										<RepeatTag tag="SOUR">
@@ -476,14 +484,14 @@
 											<SetVar name="source_exist" value="1" />
 										</RepeatTag>
 									</if>
-									<Text color="$tcolor" style="text"> (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
+									<Text color="$tcolor" style="text">  (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 								</TextBox>
 							</if>
 							<!-- wife -->
 							<if condition="@SEX=='F'">
 								<TextBox bgcolor="$fbgcolor" border="1" newline="1" width="$width">
 									<Text color="$tcolor" style="text"><var var="I18N::translate('Wife')"/>  </Text>
-									<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
+									<Text color="$tcolor" style="name"><GetPersonName id=""/></Text>
 									<if condition="$sources=='on'">
 										<!-- print level 1 sources -->
 										<RepeatTag tag="SOUR">
@@ -512,7 +520,7 @@
 											<SetVar name="source_exist" value="1" />
 										</RepeatTag>
 									</if>
-									<Text color="$tcolor" style="text"> (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
+									<Text color="$tcolor" style="text">  (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 								</TextBox>
 							</if>
 						</Gedcom>
@@ -524,7 +532,7 @@
 								<if condition="@SEX=='M'">
 									<TextBox bgcolor="$mbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="I18N::translate('Son')"/>  </Text>
-										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
+										<Text color="$tcolor" style="name"><GetPersonName id=""/></Text>
 										<if condition="$sources=='on'">
 											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
@@ -553,14 +561,14 @@
 												<SetVar name="source_exist" value="1" />
 											</RepeatTag>
 										</if>
-										<Text color="$tcolor" style="text"> (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
+										<Text color="$tcolor" style="text">  (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 									</TextBox>
 								</if>
 								<!-- Daughter -->
 								<if condition="@SEX=='F'">
 									<TextBox bgcolor="$fbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="I18N::translate('Daughter')"/>  </Text>
-										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
+										<Text color="$tcolor" style="name"><GetPersonName id=""/></Text>
 										<if condition="$sources=='on'">
 											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
@@ -589,14 +597,14 @@
 												<SetVar name="source_exist" value="1" />
 											</RepeatTag>
 										</if>
-										<Text color="$tcolor" style="text"> (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
+										<Text color="$tcolor" style="text">  (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 									</TextBox>
 								</if>
 								<!-- Unknown gender for Child -->
 								<if condition="@SEX=='U'">
 									<TextBox bgcolor="$ugbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="I18N::translate('Gender')"/> <var var="I18N::translateContext('unknown gender', 'Unknown')"/>  </Text>
-										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
+										<Text color="$tcolor" style="name"><GetPersonName id=""/></Text>
 										<if condition="$sources=='on'">
 											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
@@ -625,7 +633,7 @@
 												<SetVar name="source_exist" value="1" />
 											</RepeatTag>
 										</if>
-										<Text color="$tcolor" style="text"> (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
+										<Text color="$tcolor" style="text">  (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 									</TextBox>
 								</if>
 							</Gedcom>

@@ -38,9 +38,16 @@
 	<SetVar name="widthB4" value="375" />
 	<SetVar name="leftbdp" value="$width1+$width2" />
 
+	<if condition="$relatives=='child-family'"><SetVar name="explain" value="I18N::translate('Parents and siblings')"/></if>
+	<if condition="$relatives=='spouse-family'"><SetVar name="explain" value="I18N::translate('Spouses and children')"/></if>
+	<if condition="$relatives=='direct-ancestors'"><SetVar name="explain" value="I18N::translate('Direct line ancestors')"/></if>
+	<if condition="$relatives=='ancestors'"><SetVar name="explain" value="I18N::translate('Direct line ancestors and their families')"/></if>
+	<if condition="$relatives=='descendants'"><SetVar name="explain" value="I18N::translate('Descendants')"/></if>
+	<if condition="$relatives=='all'"><SetVar name="explain" value="I18N::translate('All')"/></if>
+
 	<Doc pageSize="$pageSize" orientation="landscape">
 		<Header>
-			<Cell align="center" height="20" newline="1" style="header"><var var="I18N::translate('Related individuals')" /></Cell>
+			<Cell align="center" height="20" newline="1" style="header"><GetPersonName id="$pid" /> — <var var="$explain"/></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>
 
 			<SetVar name="fill" value="" />

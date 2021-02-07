@@ -45,7 +45,7 @@
 
 		<Doc pageSize="$pageSize" leftmargin="1" rightmargin="1">
 			<Header>
-				<Cell height="20" newline="1" left="20" style="header"><var var="I18N::translate('Pedigree')" /></Cell>
+				<Cell height="20" newline="1" left="20" style="header"><var var="I18N::translate('Pedigree')" /> — <GetPersonName id="$pid" /></Cell>
 				<Cell align="rightrtl" height="10" newline="1" style="date"><Now /></Cell>
 			</Header>
 			<Body>
@@ -747,7 +747,7 @@
 
 		<Doc pageSize="$pageSize" orientation="landscape" leftmargin="1" rightmargin="1" topmargin="65">
 			<Header>
-				<Cell height="20" newline="1" left="20" style="header"><var var="I18N::translate('Pedigree chart')" /></Cell>
+				<Cell height="20" newline="1" left="20" style="header"><var var="I18N::translate('Pedigree chart')" /> — <GetPersonName id="$pid" /></Cell>
 				<Cell align="rightrtl" height="10" newline="1" style="date"><Now /></Cell>
 			</Header>
 			<Body>
