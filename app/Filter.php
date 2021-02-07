@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\CommonMark\CensusTableExtension;
+use Fisharebest\Webtrees\CommonMark\ResponsiveTableExtension;
 use Fisharebest\Webtrees\CommonMark\XrefExtension;
 use League\CommonMark\Block\Element\Document;
 use League\CommonMark\Block\Element\Paragraph;
@@ -103,7 +104,7 @@ class Filter
     public static function markdown(string $text, Tree $tree): string
     {
         $environment = Environment::createCommonMarkEnvironment();
-        $environment->addExtension(new TableExtension());
+        $environment->addExtension(new ResponsiveTableExtension());
         $environment->addExtension(new CensusTableExtension());
         $environment->addExtension(new XrefExtension($tree));
 
