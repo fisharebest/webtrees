@@ -46,6 +46,8 @@ class CreateSubmitterAction implements RequestHandlerInterface
         $params              = (array) $request->getParsedBody();
         $name                = $params['submitter_name'];
         $address             = $params['submitter_address'];
+        $email               = $params['submitter_email'];
+        $phone               = $params['submitter_phone'];
         $privacy_restriction = $params['privacy-restriction'];
         $edit_restriction    = $params['edit-restriction'];
 
@@ -56,6 +58,14 @@ class CreateSubmitterAction implements RequestHandlerInterface
 
         if ($address !== '') {
             $gedcom .= "\n1 ADDR " . $address;
+        }
+
+        if ($email !== '') {
+            $gedcom .= "\n1 EMAIL " . $email;
+        }
+
+        if ($phone !== '') {
+            $gedcom .= "\n1 PHON " . $phone;
         }
 
         if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'], true)) {
