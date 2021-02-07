@@ -1370,16 +1370,6 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Parameter \\#1 \\$width of method Fisharebest\\\\Webtrees\\\\Report\\\\AbstractRenderer\\:\\:createCell\\(\\) expects int, int\\|string given\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Parameter \\#2 \\$height of method Fisharebest\\\\Webtrees\\\\Report\\\\AbstractRenderer\\:\\:createCell\\(\\) expects int, int\\|string given\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$print_data \\(bool\\) does not accept bool\\|null\\.$#"
 			count: 4
 			path: app/Report/ReportParserGenerate.php

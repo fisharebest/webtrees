@@ -61,6 +61,6 @@ class ResponsiveTableRenderer implements BlockRendererInterface
     ): HtmlElement {
         $table_element = $this->table_renderer->render($block, $htmlRenderer, $inTightList);
 
-        return new HtmlElement(self::WRAP_ELEMENT, self::WRAP_ATTRIBUTES, [$table_element]);
+        return new HtmlElement(self::WRAP_ELEMENT, self::WRAP_ATTRIBUTES, $table_element);
     }
 }
