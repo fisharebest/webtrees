@@ -967,37 +967,11 @@ class ReportParserGenerate extends ReportParserBase
                 $this->current_element->addText(I18N::translate('Private'));
             } else {
                 $name = $record->fullName();
-                $name = preg_replace(
-                    [
-                        '/<span class="starredname">/',
-                        '/<\/span><\/span>/',
-                        '/<\/span>/',
-                    ],
-                    [
-                        '«',
-                        '',
-                        '»',
-                    ],
-                    $name
-                );
                 $name = strip_tags($name);
                 if (!empty($attrs['truncate'])) {
                     $name = Str::limit($name, (int) $attrs['truncate'], I18N::translate('…'));
                 } else {
                     $addname = (string) $record->alternateName();
-                    $addname = preg_replace(
-                        [
-                            '/<span class="starredname">/',
-                            '/<\/span><\/span>/',
-                            '/<\/span>/',
-                        ],
-                        [
-                            '«',
-                            '',
-                            '»',
-                        ],
-                        $addname
-                    );
                     $addname = strip_tags($addname);
                     if (!empty($addname)) {
                         $name .= ' ' . $addname;
