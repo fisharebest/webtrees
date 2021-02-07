@@ -50,7 +50,7 @@
 	<!-- New Page for Sources controller if SOUR exist -->
 	<SetVar name="source_exist" value="0" />
 
-	<Doc pageSize="$pageSize">
+	<Doc pageSize="$pageSize" headermargin="15" footermargin="15" showGeneratedBy="1">
 		<Header>
 			<Cell style="header" align="center" height="30" newline="1"><var var="I18N::translate('Ancestors of ')" /><GetPersonName id="$pid" /></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>

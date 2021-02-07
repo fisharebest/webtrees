@@ -176,7 +176,13 @@ class PdfRenderer extends AbstractRenderer
      */
     public function addHeader($element): void
     {
+        static $done = 0;
         $this->headerElements[] = $element;
+    // set default header data
+        if ($done == 0) {
+            $this->tcpdf->SetHeaderData('', 0, $element->getValue(), '', array(0,0,0), array(255,255,255));
+            $done++;
+        }
     }
 
     /**

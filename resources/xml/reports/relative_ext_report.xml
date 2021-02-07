@@ -49,6 +49,9 @@
 		<Header>
 			<Cell align="center" height="20" newline="1" style="header"><GetPersonName id="$pid" /> — <var var="$explain"/></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>
+		</Header>
+
+		<Body>
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='NAME'">
@@ -70,9 +73,7 @@
 
 			<Cell border="1" height="$height1" style="label" width="$width5"> <var var="I18N::translate('Father')" /></Cell>
 			<Cell border="1" height="$height1" newline="1" style="label"> <var var="I18N::translate('Mother')" /></Cell>
-		</Header>
 
-		<Body>
 			<Relatives id="$pid" group="$relatives" sortby="$sortby">
 				<SetVar name="sex" value="@SEX" />
 				<!-- 1. Block -->
