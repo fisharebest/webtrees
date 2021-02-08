@@ -77,7 +77,7 @@ $count_sources = DB::table('sources')
 
     <tbody>
         <?php foreach ($media_objects as $media_object) : ?>
-            <tr class="<?= $media_object->isPendingDeletion() ? 'wt-old' : ($media_object->isPendingAddition() ? 'wt-new' : '') ?>">
+            <tr class="<?= $media_object->isPendingAddition() ? 'wt-new' : '' ?> <?= $media_object->isPendingDeletion() ? 'wt-old' : '' ?>">
                 <!-- Thumbnails-->
                 <td data-sort="<?= e($media_object->sortName()) ?>">
                     <?php foreach ($media_object->mediaFiles() as $media_file) : ?>

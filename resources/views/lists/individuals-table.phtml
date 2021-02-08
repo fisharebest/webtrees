@@ -263,7 +263,7 @@ $deathAgeData = [
 
         <tbody>
             <?php foreach ($individuals as $key => $individual) : ?>
-            <tr class="<?= $individual->isPendingDeletion() ? 'wt-old' : ($individual->isPendingAddition() ? 'wt-new' : '') ?>">
+            <tr class="<?= $individual->isPendingAddition() ? 'wt-new' : '' ?> <?= $individual->isPendingDeletion() ? 'wt-old' : '' ?>">
                 <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $individual->sortName()))))) ?>">
                     <?php foreach ($individual->getAllNames() as $num => $name) : ?>
                         <a title="<?= $name['type'] === 'NAME' ? '' :  Registry::elementFactory()->make('INDI:NAME:' . $name['type'])->label() ?>" href="<?= e($individual->url()) ?>" class="<?= $num === $individual->getPrimaryName() ? 'name2' : '' ?>">

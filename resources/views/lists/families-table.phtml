@@ -238,7 +238,7 @@ $marriageAgeData = [
             <?php $husb = $family->husband() ?? Registry::individualFactory()->new('H', '0 @H@ INDI', null, $family->tree()) ?>
             <?php $wife = $family->wife() ?? Registry::individualFactory()->new('W', '0 @W@ INDI', null, $family->tree()) ?>
 
-            <tr class="<?= $family->isPendingDeletion() ? 'wt-old' : ($family->isPendingAddition() ? 'wt-new' : '') ?>">
+            <tr class="<?= $family->isPendingAddition() ? 'wt-new' : '' ?> <?= $family->isPendingDeletion() ? 'wt-old' : '' ?>">
                 <!-- Husband name -->
                 <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $husb->sortName()))))) ?>">
                     <?php foreach ($husb->getAllNames() as $num => $name) : ?>
