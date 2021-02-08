@@ -31,6 +31,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 use function in_array;
+use function response;
 
 /**
  * Process a form to create a new media object.
@@ -68,11 +69,11 @@ class CreateMediaObjectAction implements RequestHandlerInterface
         assert($tree instanceof Tree);
 
         $params              = (array) $request->getParsedBody();
-        $note                = $params['media-note'];
-        $title               = $params['title'];
-        $type                = $params['type'];
-        $privacy_restriction = $params['privacy-restriction'];
-        $edit_restriction    = $params['edit-restriction'];
+        $note                = $params['media-note'] ?? '';
+        $title               = $params['title'] ?? '';
+        $type                = $params['type'] ?? '';
+        $privacy_restriction = $params['privacy-restriction'] ?? '';
+        $edit_restriction    = $params['edit-restriction'] ?? '';
 
         $file = $this->media_file_service->uploadFile($request);
 
