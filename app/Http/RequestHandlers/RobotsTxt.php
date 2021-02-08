@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
 use Fisharebest\Webtrees\Module\SiteMapModule;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Psr\Http\Message\ResponseInterface;
@@ -65,6 +66,7 @@ class RobotsTxt implements RequestHandlerInterface
         $base_url = $request->getAttribute('base_url');
 
         $data = [
+            'bad_user_agents'  => BadBotBlocker::BAD_ROBOTS,
             'base_url'         => $base_url,
             'base_path'        => parse_url($base_url, PHP_URL_PATH) ?? '',
             'disallowed_paths' => self::DISALLOWED_PATHS,

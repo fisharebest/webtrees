@@ -51,8 +51,8 @@ class BadBotBlocker implements MiddlewareInterface
     private const WHOIS_TTL_MAX = 35 * 86400;
     private const WHOIS_TIMEOUT = 5;
 
-    // Bad robots - SEO optimisers, advertisers, etc
-    private const BAD_ROBOTS = [
+    // Bad robots - SEO optimisers, advertisers, etc.  This list is shared with robots.txt.
+    public const BAD_ROBOTS = [
         'admantx',
         'Adsbot',
         'AhrefsBot',
@@ -82,7 +82,7 @@ class BadBotBlocker implements MiddlewareInterface
         'bingbot'     => ['.search.msn.com'],
         'BingPreview' => ['.search.msn.com'],
         'Google'      => ['.google.com', '.googlebot.com'],
-        'Mail.ru'     => ['mail.ru'],
+        'Mail.RU_Bot' => ['mail.ru'],
         'msnbot'      => ['.search.msn.com'],
         'Qwantify'    => ['.search.qwant.com'],
         'Sogou'       => ['.crawl.sogou.com'],
