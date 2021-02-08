@@ -1410,11 +1410,6 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function strip_tags expects string, string\\|null given\\.$#"
-			count: 2
-			path: app/Report/ReportParserGenerate.php
-
-		-
 			message: "#^Parameter \\#1 \\$array_arg of function end expects array\\|object, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
