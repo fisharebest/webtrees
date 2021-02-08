@@ -3,16 +3,19 @@
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\SearchAdvancedAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 
 /**
- * @var array<string,string> $date_options
- * @var array<string,string> $fields
- * @var array<string,string> $field_labels
- * @var array<string,string> $name_options
- * @var array<string,string> $other_options
- * @var string               $title
- * @var Tree                 $tree
+ * @var array<string,string>   $date_options
+ * @var array<string,string>   $fields
+ * @var array<string,string>   $field_labels
+ * @var Collection<Individual> $individuals
+ * @var array<string,string>   $name_options
+ * @var array<string,string>   $other_fields
+ * @var string                 $title
+ * @var Tree                   $tree
  */
 
 ?>
@@ -32,7 +35,7 @@ use Fisharebest\Webtrees\Tree;
         </div>
 
         <?php foreach ($fields as $field_name => $field_value) : ?>
-            <?php if (substr($field_name, 0, 5) !== 'FAMC:') : ?>
+            <?php if (!str_starts_with($field_name, 'FAMC:')) : ?>
                 <?= view('search-advanced-field', ['field_label' => $field_labels[$field_name] ?? GedcomTag::getLabel($field_name), 'field_name' => $field_name, 'field_value' => $field_value, 'modifier' => $modifiers[$field_name] ?? '', 'date_options' => $date_options, 'name_options' => $name_options]) ?>
             <?php endif ?>
         <?php endforeach ?>
@@ -61,7 +64,7 @@ use Fisharebest\Webtrees\Tree;
         </div>
 
         <?php foreach ($fields as $field_name => $field_value) : ?>
-            <?php if (substr($field_name, 0, 10) === 'FAMC:HUSB:') : ?>
+            <?php if (str_starts_with($field_name, 'FAMC:HUSB:')) : ?>
                 <?= view('search-advanced-field', ['field_label' => $field_labels[$field_name], 'field_name' => $field_name, 'field_value' => $field_value, 'modifier' => $modifiers[$field_name] ?? '', 'date_options' => $date_options, 'name_options' => $name_options]) ?>
             <?php endif ?>
         <?php endforeach ?>
@@ -73,7 +76,7 @@ use Fisharebest\Webtrees\Tree;
         </div>
 
         <?php foreach ($fields as $field_name => $field_value) : ?>
-            <?php if (substr($field_name, 0, 10) === 'FAMC:WIFE:') : ?>
+            <?php if (str_starts_with($field_name, 'FAMC:WIFE:')) : ?>
                 <?= view('search-advanced-field', ['field_label' => $field_labels[$field_name], 'field_name' => $field_name, 'field_value' => $field_value, 'modifier' => $modifiers[$field_name] ?? '', 'date_options' => $date_options, 'name_options' => $name_options]) ?>
             <?php endif ?>
         <?php endforeach ?>
@@ -87,7 +90,7 @@ use Fisharebest\Webtrees\Tree;
     </form>
 </div>
 
-<?php if (true) : ?>
+<?php if (array_filter($fields) !== []) : ?>
     <?php if ($individuals->isEmpty()) : ?>
         <div class="alert alert-info row">
             <?= I18N::translate('No results found.') ?>

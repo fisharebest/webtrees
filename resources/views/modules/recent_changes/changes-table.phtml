@@ -25,7 +25,7 @@ use Illuminate\Support\Collection;
     <table
         class="table table-sm wt-table-changes datatables d-none"
         <?= view('lists/datatables-attributes') ?>
-        data-paging="<?= e(json_encode($rows->count() >= e($limit_high))) ?>"
+        data-paging="<?= $rows->count() >= $limit_high ? 'true' : 'false' ?>"
         data-filter="false"
         data-info="false"
         data-length-change="false"

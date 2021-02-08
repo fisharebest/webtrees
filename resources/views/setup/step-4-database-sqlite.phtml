@@ -2,6 +2,24 @@
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Webtrees;
+use Illuminate\Support\Collection;
+
+/**
+ * @var string             $dbhost
+ * @var string             $dbname
+ * @var string             $dbpass
+ * @var string             $dbport
+ * @var string             $dbtype
+ * @var string             $dbuser
+ * @var Collection<string> $errors
+ * @var string             $lang
+ * @var string             $tblpfx
+ * @var Collection<string> $warnings
+ * @var string             $wtemail
+ * @var string             $wtname
+ * @var string             $wtpass
+ * @var string             $wtuser
+ */
 
 ?>
 
@@ -37,7 +55,7 @@ use Fisharebest\Webtrees\Webtrees;
         <div class="col-sm-9">
             <div class="input-group" dir="ltr">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"><?=e(realpath(Webtrees::ROOT_DIR)) ?>/data/</span>
+                    <span class="input-group-text"><?=e((string) realpath(Webtrees::ROOT_DIR)) ?>/data/</span>
                 </div>
 
                 <input class="form-control" id="dbname" name="dbname" pattern="[a-zA-Z0-9_]{1,63}" type="text" value="<?= e($dbname) ?>">

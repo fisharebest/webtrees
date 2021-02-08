@@ -164,7 +164,7 @@ class SetupWizard implements RequestHandlerInterface
         I18N::init($data['lang'], true);
 
         $data['cpu_limit']    = $this->maxExecutionTime();
-        $data['locales']      = $locales->all();
+        $data['locales']      = $locales;
         $data['memory_limit'] = $this->memoryLimit();
 
         // Only show database errors after the user has chosen a driver.

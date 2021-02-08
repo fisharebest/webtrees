@@ -4,8 +4,9 @@ use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 /**
- * @var int        $limit_low
- * @var Collection $yahrzeits
+ * @var int                  $limit_high
+ * @var int                  $limit_low
+ * @var Collection<stdClass> $yahrzeits
  */
 
 ?>
@@ -13,10 +14,8 @@ use Illuminate\Support\Collection;
 <div class="table-responsive">
     <table
         class="table table-sm datatable wt-table-yahrzeits"
-            <?= view('lists/datatables-attributes') ?>
-            <?php if ($yahrzeits->count() < e($limit_high)) : ?>
-                data-paging="false"
-            <?php endif ?>
+        <?= view('lists/datatables-attributes') ?>
+        data-paging="<?= $yahrzeits->count() >= $limit_high ? 'true' : 'false' ?>"
         data-filter="false"
         data-info="false"
         data-length-change="false"

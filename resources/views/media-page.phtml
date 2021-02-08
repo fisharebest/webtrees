@@ -1,6 +1,8 @@
 <?php
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddMediaFileModal;
@@ -10,20 +12,24 @@ use Fisharebest\Webtrees\Http\RequestHandlers\EditMediaFileModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection $clipboard_facts
- * @var Collection $facts
- * @var Collection $families
- * @var Collection $individuals
- * @var Media      $media
- * @var Collection $notes
- * @var Collection $sources
- * @var Tree       $tree
+ * @var Collection<Fact                       $clipboard_facts
+ * @var \League\Flysystem\FilesystemInterface $data_filesystem
+ * @var Collection<Fact>                      $facts
+ * @var Collection<Family>                    $families
+ * @var Collection<Individual>                $individuals
+ * @var Media                                 $media
+ * @var Collection<Note>                      $notes
+ * @var Collection<Source>                    $sources
+ * @var Tree                                  $tree
  */
 ?>
 

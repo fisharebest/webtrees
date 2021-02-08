@@ -2,6 +2,25 @@
 
 use Fisharebest\Webtrees\Http\RequestHandlers\SearchGeneralAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var array<Tree>                                                      $all_trees
+ * @var \Illuminate\Support\Collection<\Fisharebest\Webtrees\Family>     $families
+ * @var \Illuminate\Support\Collection<\Fisharebest\Webtrees\Individual> $individuals
+ * @var \Illuminate\Support\Collection<\Fisharebest\Webtrees\Note>       $notes
+ * @var string                                                           $query
+ * @var \Illuminate\Support\Collection<\Fisharebest\Webtrees\Repository> $repositories
+ * @var \Illuminate\Support\Collection<\Fisharebest\Webtrees\Source>     $sources
+ * @var bool                                                             $search_families
+ * @var bool                                                             $search_individuals
+ * @var bool                                                             $search_notes
+ * @var bool                                                             $search_repositories
+ * @var bool                                                             $search_sources
+ * @var array<Tree>                                                      $search_trees
+ * @var string                                                           $title
+ * @var Tree                                                             $tree
+ */
 
 ?>
 
@@ -9,7 +28,8 @@ use Fisharebest\Webtrees\I18N;
     <?= $title ?>
 </h2>
 
-<form method="post" action="<?= e(route(SearchGeneralAction::class, ['tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-search hidden-print mb-4" name="searchform">
+<form method="post" action="<?= e(route(SearchGeneralAction::class, ['tree' => $tree->name()])) ?>"
+      class="wt-page-options wt-page-options-search hidden-print mb-4" name="searchform">
     <?= csrf_field() ?>
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="query">
@@ -30,35 +50,40 @@ use Fisharebest\Webtrees\I18N;
             <div class="col-sm-9 wt-page-options-value">
                 <div class="form-check form-check-inline">
                     <label class="form-check-label">
-                        <input class="form-check-input" <?= $search_individuals ? 'checked' : '' ?> name="search_individuals" type="checkbox">
+                        <input class="form-check-input" <?= $search_individuals ? 'checked' : '' ?>
+                               name="search_individuals" type="checkbox">
                         <?= I18N::translate('Individuals') ?>
                     </label>
                 </div>
 
                 <div class="form-check form-check-inline">
                     <label class="form-check-label">
-                        <input class="form-check-input" <?= $search_families ? 'checked' : '' ?> name="search_families" type="checkbox">
+                        <input class="form-check-input" <?= $search_families ? 'checked' : '' ?> name="search_families"
+                               type="checkbox">
                         <?= I18N::translate('Families') ?>
                     </label>
                 </div>
 
                 <div class="form-check form-check-inline">
                     <label class="form-check-label">
-                        <input class="form-check-input" <?= $search_sources ? 'checked' : '' ?> name="search_sources" type="checkbox">
+                        <input class="form-check-input" <?= $search_sources ? 'checked' : '' ?> name="search_sources"
+                               type="checkbox">
                         <?= I18N::translate('Sources') ?>
                     </label>
                 </div>
 
                 <div class="form-check form-check-inline">
                     <label class="form-check-label">
-                        <input class="form-check-input" <?= $search_repositories ? 'checked' : '' ?> name="search_repositories" type="checkbox">
+                        <input class="form-check-input" <?= $search_repositories ? 'checked' : '' ?>
+                               name="search_repositories" type="checkbox">
                         <?= I18N::translate('Repositories') ?>
                     </label>
                 </div>
 
                 <div class="form-check form-check-inline">
                     <label class="form-check-label">
-                        <input class="form-check-input" <?= $search_notes ? 'checked' : '' ?> name="search_notes" type="checkbox">
+                        <input class="form-check-input" <?= $search_notes ? 'checked' : '' ?> name="search_notes"
+                               type="checkbox">
                         <?= I18N::translate('Shared notes') ?>
                     </label>
                 </div>
@@ -78,7 +103,9 @@ use Fisharebest\Webtrees\I18N;
                             <?php foreach ($all_trees as $tree) : ?>
                                 <div class="col px-0">
                                     <label class="form-check-label">
-                                        <input class="form-check form-check-input" type="checkbox" <?= in_array($tree, $search_trees, true) ? 'checked' : '' ?> value="<?= $tree->name() ?>" name="search_trees[]">
+                                        <input class="form-check form-check-input"
+                                               type="checkbox" <?= in_array($tree, $search_trees, true) ? 'checked' : '' ?>
+                                               value="<?= $tree->name() ?>" name="search_trees[]">
                                         <?= e($tree->title()) ?>
                                     </label>
                                 </div>
@@ -86,10 +113,17 @@ use Fisharebest\Webtrees\I18N;
                         </div>
                         <?php if (count($all_trees) > 3) : ?>
                             <div class="d-row align-self-end mb-2">
-                                <input type="button" class="btn btn-sm btn-secondary mx-1" value="<?= /* I18N: select all (of the family trees) */ I18N::translate('select all') ?>" onclick="$('#search-trees :checkbox').each(function(){$(this).attr('checked', true);});return false;">
-                                <input type="button" class="btn btn-sm btn-secondary mx-1" value="<?= /* I18N: select none (of the family trees) */ I18N::translate('select none') ?>" onclick="$('#search-trees :checkbox').each(function(){$(this).attr('checked', false);});return false;">
+                                <input type="button" class="btn btn-sm btn-secondary mx-1"
+                                       value="<?= /* I18N: select all (of the family trees) */
+                                       I18N::translate('select all') ?>"
+                                       onclick="$('#search-trees :checkbox').each(function(){$(this).attr('checked', true);});return false;">
+                                <input type="button" class="btn btn-sm btn-secondary mx-1"
+                                       value="<?= /* I18N: select none (of the family trees) */
+                                       I18N::translate('select none') ?>"
+                                       onclick="$('#search-trees :checkbox').each(function(){$(this).attr('checked', false);});return false;">
                                 <?php if (count($all_trees) > 10) : ?>
-                                    <input type="button" value="<?= I18N::translate('invert selection') ?>" onclick="$('#search-trees :checkbox').each(function(){$(this).attr('checked', !$(this).attr('checked'));});return false;">
+                                    <input type="button" value="<?= I18N::translate('invert selection') ?>"
+                                           onclick="$('#search-trees :checkbox').each(function(){$(this).attr('checked', !$(this).attr('checked'));});return false;">
                                 <?php endif ?>
                             </div>
                         <?php endif ?>
@@ -102,7 +136,8 @@ use Fisharebest\Webtrees\I18N;
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label"></label>
         <div class="col-sm-9 wt-page-options-value">
-            <input type="submit" class="btn btn-primary" value="<?=  /* I18N: A button label. */ I18N::translate('search') ?>">
+            <input type="submit" class="btn btn-primary" value="<?= /* I18N: A button label. */
+            I18N::translate('search') ?>">
         </div>
     </div>
 </form>

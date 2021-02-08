@@ -15,9 +15,7 @@ use Illuminate\Support\Collection;
 <table
     class="table table-bordered table-sm wt-table-tasks datatables d-none"
     <?= view('lists/datatables-attributes') ?>
-    <?php if ($tasks->count() < e($limit_high)) : ?>
-        data-paging="false"
-    <?php endif ?>
+    data-paging="<?= $tasks->count() >= $limit_high ? 'true' : 'false' ?>"
     data-filter="false"
     data-info="false"
     data-length-change="false"

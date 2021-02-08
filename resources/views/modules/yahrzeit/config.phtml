@@ -2,6 +2,15 @@
 
 use Fisharebest\Webtrees\I18N;
 
+/**
+ * @var string               $calendar
+ * @var array<string,string> $calendars
+ * @var string               $days
+ * @var string               $info_style
+ * @var array<string,string> $styles
+ * @var int                  $max_days
+ */
+
 ?>
 
 <div class="form-group row">
@@ -21,7 +30,7 @@ use Fisharebest\Webtrees\I18N;
         <?= I18N::translate('Presentation style') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $infoStyle, 'options' => $styles]) ?>
+        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $info_style, 'options' => $styles]) ?>
     </div>
 </div>
 

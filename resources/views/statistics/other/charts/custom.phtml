@@ -4,6 +4,13 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
 
+/**
+ * @var array<mixed> $chart_options
+ * @var string       $chart_title
+ * @var array<array> $data
+ * @var string       $language
+ */
+
 ?>
 
 <?php if (count($data) === 1) : ?>
@@ -17,7 +24,7 @@ use Fisharebest\Webtrees\I18N;
                         <?= $chart_title ?>
                     </div>
                     <div class="card-body">
-                        <?= view('statistics/other/charts/column', [ 'data' => $data, 'chart_options' => $chart_options, 'language' => $language]) ?>
+                        <?= view('statistics/other/charts/column', [ 'data' => $data, 'chart_options' => $chart_options, 'chart_title' => '', 'language' => $language]) ?>
                     </div>
                 </div>
             </div>

@@ -19,9 +19,7 @@ use Illuminate\Support\Collection;
     <table
         class="table table-sm datatable wt-table-events"
         <?= view('lists/datatables-attributes') ?>
-        <?php if ($facts->count() < e($limit_high)) : ?>
-            data-paging="false"
-        <?php endif ?>
+        data-paging="<?= $facts->count() >= $limit_high ? 'true' : 'false' ?>"
         data-filter="false"
         data-info="false"
         data-length-change="false"

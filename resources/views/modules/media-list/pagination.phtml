@@ -8,6 +8,7 @@ use Fisharebest\Webtrees\Tree;
  * @var string              $filter
  * @var string              $folder
  * @var string              $format
+ * @var int                 $max
  * @var ModuleListInterface $module
  * @var int                 $page
  * @var int                 $pages
@@ -35,7 +36,7 @@ use Fisharebest\Webtrees\Tree;
     </div>
 
     <div class="col">
-        <?= I18N::translate('Page %s of %s', $page, $pages) ?>
+        <?= I18N::translate('Page %s of %s', I18N::number($page), I18N::number($pages)) ?>
     </div>
 
     <div class="col">

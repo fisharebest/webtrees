@@ -248,9 +248,9 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
-        $calendar  = $this->getBlockSetting($block_id, 'calendar', 'jewish');
-        $days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
-        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+        $calendar   = $this->getBlockSetting($block_id, 'calendar', 'jewish');
+        $days       = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
+        $info_style = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
         $styles = [
             /* I18N: An option in a list-box */
@@ -265,12 +265,12 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
         ];
 
         return view('modules/yahrzeit/config', [
-            'calendar'  => $calendar,
-            'calendars' => $calendars,
-            'days'      => $days,
-            'infoStyle' => $infoStyle,
-            'max_days'  => self::MAX_DAYS,
-            'styles'    => $styles,
+            'calendar'   => $calendar,
+            'calendars'  => $calendars,
+            'days'       => $days,
+            'info_style' => $info_style,
+            'max_days'   => self::MAX_DAYS,
+            'styles'     => $styles,
         ]);
     }
 }

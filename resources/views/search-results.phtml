@@ -1,9 +1,30 @@
 <?php
 
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Collection<Family>     $families
+ * @var Collection<Individual> $individuals
+ * @var Collection<Note>       $notes
+ * @var Collection<Repository> $repositories
+ * @var Collection<Source>     $sources
+ * @var bool                   $search_families
+ * @var bool                   $search_individuals
+ * @var bool                   $search_notes
+ * @var bool                   $search_repositories
+ * @var bool                   $search_sources
+ * @var Tree                   $tree
+ */
 
 ?>
-<?php use Fisharebest\Webtrees\View; ?>
 
 <div class="wt-search-results">
     <ul class="nav nav-tabs wt-search-results-tabs" role="tablist">

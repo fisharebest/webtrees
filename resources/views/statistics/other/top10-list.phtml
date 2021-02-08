@@ -5,11 +5,13 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Place;
 
-/* @var array $records */
-/* @var Place $place */
+/**
+ * @var array<array> $records
+ * @var Place        $place
+ */
 ?>
 
-<?php if ($records) : ?>
+<?php if ($records !== []) : ?>
     <ul class="list-group list-group-flush">
         <?php foreach ($records as $record) : ?>
             <?php $place = $record['place']; ?>

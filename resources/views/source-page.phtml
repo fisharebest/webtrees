@@ -1,13 +1,31 @@
 <?php
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Collection<Fact>                           $clipboard_facts
+ * @var Collection<Fact>                           $facts
+ * @var \Illuminate\Support\Collection<Family>     $families
+ * @var \Illuminate\Support\Collection<Individual> $individuals
+ * @var \Illuminate\Support\Collection<Media>      $media_objects
+ * @var \Illuminate\Support\Collection<Note>       $notes
+ * @var Source                                     $source
+ * @var Tree                                       $tree
+ */
 
 ?>
 
