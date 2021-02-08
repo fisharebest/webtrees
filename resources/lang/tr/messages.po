@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-01-05 13:29+0000\n"
-"PO-Revision-Date: 2020-08-21 17:21+0000\n"
-"Last-Translator: Suleyman <hsarslan@yahoo.com>\n"
-"Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
-"Language: tr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-01-05 13:29+0000\nPO-Revision-Date: 2021-02-11 03:43+0000\nLast-Translator: Osman Öz <osmanoz05@hotmail.com>\nLanguage-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\nLanguage: tr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -42,29 +30,29 @@ msgstr " içinde "
 #: app/Http/RequestHandlers/CheckTree.php:301
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s %2$s ile %4$s arasında bir %3$s bağlantısı var."
+msgstr "%1$s %2$s, %4$s ile %3$s bağlantısına sahip."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2374
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s %2$s kez çıkarıldı (artan)"
+msgstr "%1$s %2$s kez artan şekilde kaldırıldı"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2378
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr "%1$s %2$s kez çıkarıldı (azalan)"
+msgstr "%1$s %2$s kez azalan şekilde kaldırıldı"
 
 #: app/Functions/FunctionsPrintLists.php:70
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr "%1$s (%2$s)"
+msgstr "%1$s (%2$s) "
 
 #: app/Http/Controllers/Admin/UpgradeController.php:340
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%2$s saniyede %1$s KB indirildi."
+msgstr "%1$s KB, %2$s saniye içinde indirildi."
 
 #: app/Http/Controllers/Admin/UsersController.php:346
 #, php-format
@@ -82,47 +70,47 @@ msgstr "%1$s mevcut değil."
 #: app/Http/RequestHandlers/CheckTree.php:223
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr "%1$s mevcut değil. %2$s mi kastettiniz?"
+msgstr "%1$s mevcut değil. %2$s mi demek istediniz?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: app/Http/RequestHandlers/CheckTree.php:256
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr "%1$s in %2$s ile geriye bağlantısı yok."
+msgstr "%1$s, %2$s ile geri bağlantı içermiyor."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: app/Http/Controllers/Admin/UpgradeController.php:361
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "%1$s dosya %2$s saniyede çıkarıldı."
-msgstr[1] "%1$s dosya %2$s saniyede çıkarıldı."
+msgstr[0] "%1$s dosyası %2$s saniye içinde çıkarıldı."
+msgstr[1] "%1$s dosyaları %2$s saniye içinde çıkarıldı."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: app/Http/RequestHandlers/CheckTree.php:247
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s bir %2$s dır, ancak bir %3$s beklendi."
+msgstr "%1$s bir %2$s, ancak bir %3$s bekleniyor."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:577
 #, php-format
 msgid "%1$s × %2$s"
-msgstr "%1$s × %2$s"
+msgstr "%1$s × %2$s "
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:555
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr "%1$s × %2$s"
+msgstr "%1$s × %2$s "
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:532
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr "%1$s × %2$s"
+msgstr "%1$s × %2$s "
 
 #. I18N: image dimensions, width × height
 #: app/Http/Controllers/Admin/MediaController.php:372 app/MediaFile.php:333
@@ -140,22 +128,22 @@ msgstr ""
 #: app/Individual.php:548 app/Module/StatisticsChartModule.php:871
 #, php-format
 msgid "%1$s–%2$s"
-msgstr "%1$s–%2$s"
+msgstr "%1$s–%2$s "
 
 #: app/Functions/Functions.php:2396
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr "%1$s’sının %2$s"
+msgstr "%1$s’ın %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:600
 msgid "%H:%i:%s"
-msgstr "%H:%i:%s"
+msgstr "%H:%i:%s "
 
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:257
 msgid "%j %F %Y"
-msgstr "%j %F %Y"
+msgstr "%j %F %Y "
 
 #: app/Statistics/Service/CenturyService.php:39
 #, php-format
@@ -172,36 +160,36 @@ msgstr "%s KB"
 #: app/Module/ClippingsCartModule.php:626
 #, php-format
 msgid "%s and her ancestors"
-msgstr "%s ve onun ataları"
+msgstr "%s ve ataları"
 
 #: app/Module/ClippingsCartModule.php:636
 #, php-format
 msgid "%s and his ancestors"
-msgstr "%s ve onun ataları"
+msgstr "%s ve ataları"
 
 #: app/Module/ClippingsCartModule.php:978
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr "%s ve onu referans alan bireyler."
+msgstr "%s ve buna referans kişiler."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:486
 #, php-format
 msgid "%s and their children"
-msgstr "%s ve onların çocukları"
+msgstr "%s ve çocukları"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:488
 #, php-format
 msgid "%s and their descendants"
-msgstr "%s ve onların nesli"
+msgstr "%s ve onların nesilleri"
 
 #: app/Statistics/Repository/UserRepository.php:89
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] "%s anonim kullanıcı çevrimiçi"
-msgstr[1] "%s anonim kullanıcı çevrimiçi"
+msgstr[0] "%s anonim oturum açmış kullanıcı"
+msgstr[1] "%s anonim oturum açmış kullanıcılar"
 
 #: resources/views/family-page-children.phtml:14
 #: resources/views/modules/ancestors-chart/tree.phtml:39
@@ -212,7 +200,7 @@ msgstr[1] "%s anonim kullanıcı çevrimiçi"
 msgid "%s child"
 msgid_plural "%s children"
 msgstr[0] "%s çocuk"
-msgstr[1] "%s çocuk"
+msgstr[1] "%s çocuklar"
 
 #: app/Age.php:120 app/Functions/FunctionsDate.php:72
 #: app/Functions/FunctionsPrint.php:269
@@ -222,22 +210,22 @@ msgstr[1] "%s çocuk"
 msgid "%s day"
 msgid_plural "%s days"
 msgstr[0] "%s gün"
-msgstr[1] "%s gün"
+msgstr[1] "%s günler"
 
 #: resources/views/calendar-list.phtml:22
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
 msgstr[0] "%s aile"
-msgstr[1] "%s aile"
+msgstr[1] "%s aileler"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] "%s aile güncellendi."
-msgstr[1] "%s aile güncellendi."
+msgstr[0] "%s ailesi güncellendi."
+msgstr[1] "%s aileleri güncellendi."
 
 #: resources/views/admin/locations.phtml:113
 #, php-format
@@ -251,8 +239,8 @@ msgstr[1] "%s aile ağacı"
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] "%s torun"
-msgstr[1] "%s torun"
+msgstr[0] "%s torunu"
+msgstr[1] "%s torunları"
 
 #: app/Module/LifespansChartModule.php:256
 #: resources/views/admin/trees-unconnected.phtml:38
@@ -261,7 +249,7 @@ msgstr[1] "%s torun"
 msgid "%s individual"
 msgid_plural "%s individuals"
 msgstr[0] "%s birey"
-msgstr[1] "%s birey"
+msgstr[1] "%s bireyler"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:75
 #: app/Http/RequestHandlers/SearchReplaceAction.php:109
@@ -269,15 +257,15 @@ msgstr[1] "%s birey"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] "%s birey güncellendi."
-msgstr[1] "%s birey güncellendi."
+msgstr[0] "%s bireyi güncellendi."
+msgstr[1] "%s bireyleri güncellendi."
 
 #: app/Module/UserMessagesModule.php:242
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] "%s mesajınız var"
-msgstr[1] "%s mesajınız var"
+msgstr[0] "%s mesajı"
+msgstr[1] "%s mesajları"
 
 #: app/Age.php:116 app/Functions/FunctionsDate.php:68
 #: app/Functions/FunctionsPrint.php:265
@@ -288,85 +276,85 @@ msgstr[1] "%s mesajınız var"
 msgid "%s month"
 msgid_plural "%s months"
 msgstr[0] "%s ay"
-msgstr[1] "%s ay"
+msgstr[1] "%s aylar"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:91
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] "%s not güncellendi."
-msgstr[1] "%s not güncellendi."
+msgstr[0] "%s notu güncellendi."
+msgstr[1] "%s notları güncellendi."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2350
 #, php-format
 msgid "%s once removed ascending"
-msgstr "%s yukardan bir çıkarıldı"
+msgstr "%s bir kez artan şekilde kaldırıldı"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2354
 #, php-format
 msgid "%s once removed descending"
-msgstr "%s alttan bir çıkarıldı"
+msgstr "%s bir kez azalan şekilde kaldırıldı"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:83
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] "%s depo güncellendi."
-msgstr[1] "%s depo güncellendi."
+msgstr[0] "%s deposu güncellendi."
+msgstr[1] "%s depoları güncellendi."
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:13
 #: resources/views/emails/message-user-text.phtml:8
 #, php-format
 msgid "%s sent you the following message."
-msgstr "%s sana aşağıdaki mesajı gönderdi."
+msgstr "%s size aşağıdaki mesajı gönderdi."
 
 #: app/Statistics/Repository/UserRepository.php:100
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr[0] "%s kullanıcı çevrimiçi"
-msgstr[1] "%s kullanıcı çevrimiçi"
+msgstr[0] "%s oturum açmış kullanıcı"
+msgstr[1] "%s oturum açmış kullanıcılar"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:87
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] "%s kaynak güncellendi."
-msgstr[1] "%s kaynak güncellendi."
+msgstr[0] "%s kaynağı güncellendi."
+msgstr[1] "%s kaynakları güncellendi."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2366
 #, php-format
 msgid "%s three times removed ascending"
-msgstr "%s üç kez çıkarıldı (artan)"
+msgstr "%s üç kez artan şekilde kaldırıldı"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2370
 #, php-format
 msgid "%s three times removed descending"
-msgstr "%s üç kez çıkarıldı (azalan)"
+msgstr "%s üç kez azalan şekilde kaldırıldı"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2358
 #, php-format
 msgid "%s twice removed ascending"
-msgstr "%s iki kez çıkarıldı (artan)"
+msgstr "%s iki kez artan şekilde kaldırıldı"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2362
 #, php-format
 msgid "%s twice removed descending"
-msgstr "%s iki kez çıkarıldı (azalan)"
+msgstr "%s iki kez azalan şekilde kaldırıldı"
 
 #: app/Functions/FunctionsDate.php:70 app/Functions/FunctionsPrint.php:267
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
 msgstr[0] "%s hafta"
-msgstr[1] "%s hafta"
+msgstr[1] "%s haftalar"
 
 #: app/Age.php:112 app/Functions/FunctionsDate.php:66
 #: app/Functions/FunctionsPrint.php:263
@@ -379,13 +367,13 @@ msgstr[1] "%s hafta"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s yıl"
-msgstr[1] "%s yıl"
+msgstr[1] "%s yıllar"
 
 #: app/Http/RequestHandlers/CalendarEvents.php:162
 #: resources/views/modules/yahrzeit/list.phtml:44
 #, php-format
 msgid "%s year anniversary"
-msgstr "%s. yıl dönümü"
+msgstr "%s yıl dönümü"
 
 #: app/Functions/Functions.php:497
 #, php-format
@@ -409,7 +397,7 @@ msgstr "%s × kuzen"
 #: app/Date/JulianDate.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;MÖ"
+msgstr "%s&nbsp;M.Ö."
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
@@ -426,42 +414,42 @@ msgstr "%s+"
 #: app/Module/ClippingsCartModule.php:627
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr "%s, onun ataları ve aileleri"
+msgstr "%s, ataları ve aileleri"
 
 #: app/Module/ClippingsCartModule.php:624
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr "%s, onun anne baba ve kardeşleri"
+msgstr "%s, ebeveynleri ve kardeşleri"
 
 #: app/Module/ClippingsCartModule.php:625
 #, php-format
 msgid "%s, her spouses and children"
-msgstr "%s, onun eşleri ve çocukları"
+msgstr "%s, eşleri ve çocukları"
 
 #: app/Module/ClippingsCartModule.php:628
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr "%s, onun eşleri ve nesli"
+msgstr "%s, eşleri ve nesilleri"
 
 #: app/Module/ClippingsCartModule.php:637
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr "%s, onun ataları ve aileleri"
+msgstr "%s, ataları ve aileleri"
 
 #: app/Module/ClippingsCartModule.php:634
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr "%s, onun anne babası ve kardeşleri"
+msgstr "%s, ebeveynleri ve kardeşleri"
 
 #: app/Module/ClippingsCartModule.php:635
 #, php-format
 msgid "%s, his spouses and children"
-msgstr "%s, onun eşleri ve çocukları"
+msgstr "%s, eşleri ve çocukları"
 
 #: app/Module/ClippingsCartModule.php:638
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr "%s, onun eşleri ve nesli"
+msgstr "%s, eşleri ve nesilleri"
 
 #: app/Module/UserMessagesModule.php:162
 #: resources/views/admin/data-fix-select.phtml:33
@@ -472,20 +460,20 @@ msgstr "&lt;seç&gt;"
 #: app/Age.php:219 app/Functions/FunctionsPrint.php:377
 #, php-format
 msgid "(%s after death)"
-msgstr "(%s ölümden sonra)"
+msgstr "(ölümden sonra %s)"
 
 #. I18N: The current age of a living individual
 #: app/Age.php:192 app/Http/RequestHandlers/IndividualPage.php:192
 #, php-format
 msgid "(age %s)"
-msgstr "(yaş %s)"
+msgstr "(%s yaş)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:196 app/Functions/FunctionsPrint.php:360
 #: app/Http/RequestHandlers/IndividualPage.php:179
 #, php-format
 msgid "(aged %s)"
-msgstr "(%s yaşındaydı)"
+msgstr "(%s yaşadı)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:356
@@ -507,14 +495,15 @@ msgstr ""
 #: resources/views/lists/datatables-attributes.phtml:27
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr "(toplam %s girişten filtrelendi)"
+msgstr "(%s toplam girişten filtrelendi)"
 
 #: app/Age.php:213 app/Functions/FunctionsPrint.php:373
 msgid "(on the date of death)"
-msgstr "(ölümün tarihinde)"
+msgstr "(ölüm tarihinde)"
 
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:324
+#, fuzzy
 msgid ", "
 msgstr ", "
 
@@ -630,68 +619,68 @@ msgstr "<varsayılan tema>"
 
 #: resources/views/register-page.phtml:24
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr "<div class=\"largeError\">Uyarı:</div><div class=\"error\">Bu formu doldurup göndererek: <ul><li>sitemizde listelenen yaşayan kişilerin mahremiyetini korumayı kabul etmiş sayılırsınız;</li><li>Aşağıdaki metin kutusuna kendiniz hakkında detaylı açıklama yapın veya sitemizde kayıtlı, sizin hakkınızda bilgi alabileceğimiz referans kişiyi giriniz.</li></ul></div>"
+msgstr "<div class=\"largeError\">Uyarı:</div><div class=\"error\">Bu formu doldurup göndererek şunları kabul etmiş olursunuz:<ul><li>sitemizde listelenen yaşayan bireylerin mahremiyetini korumak için;</li><li>ve aşağıdaki metin kutusuna, kiminle akraba olduğunuzu açıklamak veya web sitemizde listelenmesi gereken biri hakkında bize bilgi vermek için.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:633 app/Functions/FunctionsPrint.php:113
 #: app/Functions/FunctionsPrintFacts.php:556 app/GedcomTag.php:1304
-#, php-format
+#, fuzzy, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:25
 msgid "A URL"
-msgstr "URL"
+msgstr "Bir URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:110
 msgid "A chart displaying relationships between two individuals."
-msgstr "İki birey arasındaki akrabalığı gösteren bir çizelge."
+msgstr "İki kişi arasındaki ilişkileri gösteren bir grafik."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:103
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "Bireylerin atalarını ve torunlarını aile kitabı olarak gösterildiği çizelge."
+msgstr "Bir aile kitabı olarak bir bireyin atalarının ve nesillerinin tablosu."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:96
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "Bireylerin atalarının kısa ağaç olarak gösteren çizelge."
+msgstr "Bir bireyin atalarının bir grafiği, kompakt bir ağaç olarak."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:129
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "Bireylerin atalarının ağaç olarak gösteren çizelge."
+msgstr "Bir bireyin atalarının bir grafiği, bir ağaç olarak biçimlendirilmiş."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:119
 msgid "A chart of an individual’s ancestors."
-msgstr "Bireylerin atalarının çizelge."
+msgstr "Bir bireyin atalarının bir grafiği."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:119
 msgid "A chart of an individual’s descendants."
-msgstr "Bireylerin torunlarının çizelge."
+msgstr "Bir bireyin nesillerinin bir grafiği."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:101
 msgid "A chart of individuals’ lifespans."
-msgstr "Bireylerin yaşam çizelgesi."
+msgstr "Bireylerin yaşam sürelerini gösteren bir grafik."
 
 #: resources/views/edit/link-child-to-family.phtml:30
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "Bir çocuk birden fazla veli grubuna sahip olabilir. Çocuk ile veli arasındaki ilişki; biyolojik, yasal yada yerel gelenek ve güreneklere olabilir. Eğer bir soy belirtilmemiş ise biyolojik olduğu varsayılır."
+msgstr "Bir çocuğun birden fazla ebeveyn grubu olabilir. Çocuk ve ebeveynler arasındaki ilişki biyolojik, yasal veya yerel kültür ve geleneğe dayalı olabilir. Soyağacı belirtilmezse, biyolojik bir ilişki varsayılacaktır."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixDuplicateLinks.php:74
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
-msgstr "Aynı kayıda birden fazla bağlantı sık yapılan bir hatadır. Örneğin aynı çocuk bir aile kaydında birden fazla listelenebilir."
+msgstr "Yaygın bir hata, aynı kayıt için birden çok bağlantıya sahip olmaktır; örneğin, aynı çocuğu bir aile kaydında birden çok kez listelemek."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:130
 msgid "A fan chart of an individual’s ancestors."
-msgstr "Bireylerin atalarının daire çizelgesi."
+msgstr "Bir bireyin atalarının bir fan grafiği."
 
 #: resources/views/admin/map-import-form.phtml:20
 #: resources/views/admin/trees-export.phtml:19
@@ -699,7 +688,7 @@ msgstr "Bireylerin atalarının daire çizelgesi."
 #: resources/views/modals/media-file-fields.phtml:21
 #: resources/views/modals/media-file-fields.phtml:81
 msgid "A file on the server"
-msgstr "Sunucudaki bir dosyaya"
+msgstr "Sunucudaki bir dosya"
 
 #: resources/views/admin/map-import-form.phtml:44
 #: resources/views/admin/trees-export.phtml:38
@@ -707,12 +696,12 @@ msgstr "Sunucudaki bir dosyaya"
 #: resources/views/modals/media-file-fields.phtml:17
 #: resources/views/modals/media-file-fields.phtml:33
 msgid "A file on your computer"
-msgstr "Bilgisayarınızdaki bir dosyaya"
+msgstr "Bilgisayarınızdaki bir dosya"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:73
 msgid "A greeting message and useful links for a user."
-msgstr "Kullanıcı için hoş geldiniz mesajı ve faydalı linkler içeren blok."
+msgstr "Bir kullanıcı için bir karşılama mesajı ve faydalı bağlantılar."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:71
@@ -722,291 +711,291 @@ msgstr "Site ziyaretçileri için bir karşılama mesajı."
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:68
 msgid "A link to the site contacts."
-msgstr "Site kişilerine bağlantı."
+msgstr "Site ilgili kişilere bir bağlantı."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
 msgid "A link to the webtrees home page."
-msgstr "Webtrees ana sayfasına link."
+msgstr "Webtrees ana sayfasına bir bağlantı."
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:117
 msgid "A list of branches of a family."
-msgstr "Aile şubelerinin listesi."
+msgstr "Bir ailenin şubelerinin listesi."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:91
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "Moderatör onayı gereken değişikliklerin listesi ve e-posta mesaj bildirimleri."
+msgstr "Bir moderatör tarafından incelenmesi gereken değişikliklerin listesi ve e-posta bildirimleri."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamilyListModule.php:57
 msgid "A list of families."
-msgstr "Ailelerin listesi."
+msgstr "Ailelerin bir listesi."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:84
 msgid "A list of frequently asked questions and answers."
-msgstr "Sıkça sorulan sorular ve cevapları listesi."
+msgstr "Sık sorulan soruların ve cevapların bir listesi."
 
 #. I18N: Description of the “Individuals” module
 #: app/Module/IndividualListModule.php:111
 msgid "A list of individuals."
-msgstr "Bireylerin listesi."
+msgstr "Bireylerin bir listesi."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:94
 msgid "A list of media objects."
-msgstr "Medya nesnelerinin listesi."
+msgstr "Medya nesnelerinin bir listesi."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:99
 msgid "A list of records that have been updated recently."
-msgstr "Son güncellenen kayıtların bir listesini verir."
+msgstr "Son zamanlarda güncelleştirilen kayıtların bir listesi."
 
 #. I18N: Description of the “Repositories” module
 #: app/Module/RepositoryListModule.php:84
 msgid "A list of repositories."
-msgstr "Depoların listesi."
+msgstr "Depoların bir listesi."
 
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:81
 msgid "A list of shared notes."
-msgstr "Paylaşılan notların listesi."
+msgstr "Paylaşılan notların bir listesi."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:83
 msgid "A list of sources."
-msgstr "Kaynakların listesi."
+msgstr "Kaynakların bir listesi."
 
 #. I18N: Description of the “Shared submitters” module
 #: app/Module/SubmitterListModule.php:84
 msgid "A list of submitters."
-msgstr "Gönderenlerin listesi."
+msgstr "Gönderenlerin bir listesi."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:70
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr "Aile ağacı ile bağlantılı görev ve faaliyetlerin bir listesini verir."
+msgstr "Aile ağacına bağlı görevlerin ve etkinliklerin bir listesi."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:77
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "Yakın gelecekte oluşacak İbrani ölüm yıldönümlerinin bir listesini verir."
+msgstr "Yakın gelecekte gerçekleşecek olan İbranice ölüm yıldönümlerinin bir listesi."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:112
 msgid "A list of the anniversaries that occur today."
-msgstr "Bugün meydana gelen yıldönümlerinin bir listesini verir."
+msgstr "Bugün gerçekleşen yıldönümlerinin bir listesi."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:117
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr "Yakın gelecekte oluşacak yıldönümlerinin bir listesini verir."
+msgstr "Yakın gelecekte gerçekleşecek yıldönümlerinin bir listesi."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:58
 msgid "A list of the most popular given names."
-msgstr "En popüler verilen adların listesini verir."
+msgstr "En popüler verilen adların bir listesi."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:76
 msgid "A list of the most popular surnames."
-msgstr "En çok kullanılan soyadların bir listesini verir."
+msgstr "En popüler soyadlarının bir listesi."
 
 #. I18N: Description of the “Most viewed pages” module
 #: app/Module/TopPageViewsModule.php:58
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr "En çok ziyaret edilen sayfaların bir listesini verir."
+msgstr "En çok görüntülenen sayfaların bir listesi."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:53
 msgid "A list of users and visitors who are currently online."
-msgstr "Çevrimiçi ziyaretçi ve kullanıcıların listesini verir."
+msgstr "Şu anda çevrimiçi olan kullanıcıların ve ziyaretçilerin bir listesi."
 
 #: resources/views/help/media-object.phtml:8
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "Medya oğesi, medya dosyası hakkında bilgi içeren bir soyağacı kaydıdır. Bu bilgiler, başlık, telif hakkı bildirimi, transkript, gizlilik kısıtlamaları, vb içerebilir. Resim, video gibi media dosyaları lokal sunucuda olabileceği gibi uzak ağ sunucularında da olabilir."
+msgstr "Bir medya nesnesi, bir medya dosyası hakkında bilgi içeren aile ağacında yer alan bir kayıttır. Bu bilgiler bir başlık, bir telif hakkı bildirimi, bir transkript, gizlilik kısıtlamaları vb. içerebilir. Fotoğraf veya video gibi medya dosyası yerel olarak (bu web sunucusunda) veya uzaktan (farklı bir web sunucusunda) depolanabilir."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: resources/views/emails/verify-notify-html.phtml:14
 #: resources/views/emails/verify-notify-text.phtml:9
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "Yeni bir kullanıcı (Adı: %1$s) bir hesap açtı (Kullanıcı Adı: %2$s) ve (E-posta: %3$s) adresi ile üyeliğini doğruladı."
+msgstr "Yeni bir kullanıcı (%1$s) bir hesap (%2$s) istedi ve bir e-posta adresini (%3$s) doğruladı."
 
 #: app/Http/RequestHandlers/LoginAction.php:83
 #: resources/views/admin/control-panel.phtml:154
 #: resources/views/admin/upgrade/wizard.phtml:22
 msgid "A new version of webtrees is available."
-msgstr "Yeni versiyon webtrees mevcut."
+msgstr "Webtrees'in yeni bir sürümü mevcuttur."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:103
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr "“%s” 'e bir şifre sıfırlama bağlantısı gönderildi."
+msgstr "“%s” adresine bir şifre sıfırlama bağlantısı gönderildi."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:66
 msgid "A private area to record notes or keep a journal."
-msgstr "Kullanıcılar için notları kaydetmek veya bir günlük tutmak için hususi bir alandır."
+msgstr "Notları kaydetmek veya bir günlük tutmak için özel bir alan."
 
 #. I18N: %s is a server name/URL
 #: resources/views/emails/register-notify-html.phtml:13
 #: resources/views/emails/register-notify-text.phtml:9
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr "%s webtrees sitesinde yeni bir kullanıcı adayı kayıt yaptı."
+msgstr "Potansiyel bir kullanıcı %s adresindeki webtrees'e kaydoldu."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:52
 #: resources/xml/reports/pedigree_report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "Bir bireyin atalarının ağaç olarak biçimlendirilmiş raporu."
+msgstr "Bir bireyin atalarının bir raporu, bir ağaç olarak biçimlendirilmiş."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:52
 #: resources/xml/reports/ahnentafel_report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "Bir bireyin atalarının anlatım tarzında raporunu verir."
+msgstr "Anlatı tarzında bir bireyin atalarının bir raporu."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:52
 #: resources/xml/reports/descendancy_report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr "Bir bireyin nesillerinin anlatım tarzında raporunu verir."
+msgstr "Bir bireyin nesillerinden bir rapor, bir anlatı tarzında."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:52
 #: resources/xml/reports/individual_report.xml:4
 msgid "A report of an individual’s details."
-msgstr "Bir bireyin detaylı bir raporunu verir."
+msgstr "Bir kişinin detaylarının bir raporu."
 
 #: resources/xml/reports/fact_sources.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "Belirli bir kaynak tarafından desteklenen olguların bir raporunu verir."
+msgstr "Belirli bir kaynak tarafından desteklenen gerçeklerin bir raporu."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:56
 #: resources/xml/reports/family_group_report.xml:4
 msgid "A report of family members and their details."
-msgstr "Aile üyeleri ve onların ayrıntılarını içeren bir rapor verir."
+msgstr "Aile üyeleri ve detayları hakkında bir rapor."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:52 resources/xml/reports/death_report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr "Belirli zaman içinde veya bir yerde ölen kişilerin bir raporunu verir."
+msgstr "Belirli bir zamanda veya yerde ölen kişilerin bir raporu."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:56
 #: resources/xml/reports/occupation_report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr "Belirli bir mesleği olan bireylerin raporunu verir."
+msgstr "Belirli bir mesleği olan kişilerin bir raporu."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:52 resources/xml/reports/birth_report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "Belirli bir zaman veya yerde doğmuş kişilerin bir raporunu verir."
+msgstr "Belirli bir zamanda veya yerde doğan bireylerin bir raporu."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:52
 #: resources/xml/reports/cemetery_report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr "Belirli bir yere gömülen bireylerin bir raporunu verir."
+msgstr "Belirli bir yere gömülen kişilerin bir raporu."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:52
 #: resources/xml/reports/marriage_report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr "Belli bir zamanda veya mekanda evlenen bireylerin bir raporunu verir."
+msgstr "Belirli bir zamanda veya yerde evli olan kişilerin bir raporu."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:56
 #: resources/xml/reports/change_report.xml:4
 msgid "A report of recent and pending changes."
-msgstr "Bekleyen değişikliklerin ve son zamanın bir raporunu verir."
+msgstr "En son ve bekleyen değişikliklerin bir raporu."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:56
 #: resources/xml/reports/individual_ext_report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr "Bireyin yakından ilintili olan ailelerin bir raporunu verir."
+msgstr "Bir bireyle yakından ilişkili olan ailelerin bir raporu."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:52
 #: resources/xml/reports/relative_ext_report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr "Bireyin yakından ilintili olan bireylerin bir raporunu verir."
+msgstr "Bir bireyle yakından ilişkili olan bireylerin bir raporu."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:56
 msgid "A report of the information provided by a source."
-msgstr "Bir kaynak tarafından sağlanan bilgileri bir rapor."
+msgstr "Bir kaynak tarafından sağlanan bilgilerin bir raporu."
 
 #. I18N: Description of the “Missing data”
 #: app/Module/MissingFactsReportModule.php:56
 #: resources/xml/reports/missing_facts_report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr "Birey ve onların yakınları için eksik bilgilerin bir raporunu verir."
+msgstr "Bir birey ve akrabaları için eksik olan bilgilerin bir raporu."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:52
 #: resources/xml/reports/bdm_report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr "Belirli bir tarih veya yer için hayati yaşam kayıtların bir raporunu verir."
+msgstr "Belirli bir tarih veya yer için hayati kayıtların bir raporu."
 
 #: resources/views/admin/users-edit.phtml:214
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Rol; verileri görmenize, yapılandırma ayarlarını değiştirmenize, vb. izin veren bir dizi erişim hakkıdır. Erişim hakları rollere atanmış, roller de kullanıcılara verilmiştir. Herbir aile ağacı için herbir role farklı erişim hakkı verilebilir. Aynı şekilde herbir kullanıcı farklı aile ağaçlerında farklı rol alabilir."
+msgstr "Rol, verileri görüntüleme, tercihleri değiştirme vb. izni veren bir dizi erişim hakkıdır. Erişim hakları rollere atanır ve roller kullanıcılara atanır. Her bir aile ağacı, her role farklı erişim atayabilir ve kullanıcıların her aile ağacında farklı bir rolü olabilir."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:51
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr "Bir bireyin yakın aile ve yakınlarına gösterilen bir kenar çubuğu."
+msgstr "Bir bireyin yakın ailelerini ve akrabalarını gösteren bir kenar çubuğu."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/IndividualMetadataModule.php:67
 msgid "A sidebar showing non-genealogy information about an individual."
-msgstr "Soyağacına ait olmyan bireyin bilgilerini gösteren bir kenar çubuğu."
+msgstr "Bir kişi hakkında şecere dışı bilgileri gösteren bir kenar çubuğu."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:73
 msgid "A sidebar showing the descendants of an individual."
-msgstr "Bireyin torunlarını gösterilen bir kenar çubuğu."
+msgstr "Bir bireyin nesillerini gösteren bir kenar çubuğu."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:53
 msgid "A tab showing the close relatives of an individual."
-msgstr "Bireyin yakın akrabalarını gösterilen bir sekme."
+msgstr "Bir bireyin yakın akrabalarını gösteren bir sekme."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:78
 msgid "A tab showing the facts and events of an individual."
-msgstr "Bir bireyin olgularını ve hadiselerini gösteren sekme."
+msgstr "Bir bireyin gerçeklerini ve olaylarını gösteren bir sekme."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:71
 msgid "A tab showing the media objects linked to an individual."
-msgstr "Bir bireye bağlı medya öğelerini gösteren bir sekme."
+msgstr "Bir kişiye bağlı medya nesnelerini gösteren bir sekme."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:70
 msgid "A tab showing the notes attached to an individual."
-msgstr "Bir bireyle iliştirilmiş notları gösteren bir sekme."
+msgstr "Bir kişiye eklenmiş notları gösteren bir sekme."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:70
 msgid "A tab showing the sources linked to an individual."
-msgstr "Bir Bireye bağlı olan kaynakları gösteren bir sekme."
+msgstr "Bir kişiye bağlı kaynakları gösteren bir sekme."
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:108
 msgid "A timeline displaying individual events."
-msgstr "Bireysel olayları görüntüleyen zaman çizelgesi."
+msgstr "Bireysel olayları gösteren bir zaman çizelgesi."
 
 #: resources/views/admin/users-edit.phtml:98
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Kullanıcı, \"e-posta doğrulandı\" ve \"yönetici tarafından onaylandı\" seçenekleri işaretlenmeden, çevrimiçi olamayacaktır."
+msgstr "Bir kullanıcı, hem \"e-posta doğrulandı\" hem de \"yönetici tarafından onaylandı\" seçilinceye kadar oturum açamaz."
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -1087,13 +1076,13 @@ msgstr "Aban"
 #: resources/views/admin/trees-preferences.phtml:558
 #: resources/views/admin/trees-preferences.phtml:562
 msgid "Abbreviate place names"
-msgstr "Yer isimlerini kısaltmak"
+msgstr "Yer adlarını kısaltın"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:445 resources/views/lists/sources-table.phtml:86
 #: resources/views/modals/source-fields.phtml:17
 msgid "Abbreviation"
-msgstr "Kısıtlama"
+msgstr "Kısaltma"
 
 #: resources/views/pending-changes-page.phtml:47
 #: resources/views/pending-changes-page.phtml:59
@@ -1116,7 +1105,7 @@ msgstr "Aile ağaçlarına erişim"
 
 #: resources/views/admin/users-edit.phtml:76
 msgid "Account approval and email verification"
-msgstr "Hesap onaylama ve mail doğrulama"
+msgstr "Hesap onayı ve e-posta doğrulaması"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:228
@@ -1212,44 +1201,44 @@ msgstr "Ekle"
 #: app/Module/ClippingsCartModule.php:956
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr "%s sepete ekle"
+msgstr "Kupür sepetine %s ekle"
 
 #: resources/views/modules/relatives/family.phtml:209
 msgid "Add a brother"
-msgstr "Erkek kardeş ekle"
+msgstr "Bir erkek kardeş ekle"
 
 #: app/Http/RequestHandlers/AddChildToFamilyPage.php:60
 #: resources/views/family-page-menu.phtml:42
 #: resources/views/modules/relatives/family.phtml:217
 msgid "Add a child"
-msgstr "Yeni bir çocuk ekle"
+msgstr "Bir çocuk ekle"
 
 #: app/Http/RequestHandlers/AddChildToIndividualPage.php:55
 #: resources/views/modules/relatives/tab.phtml:142
 msgid "Add a child to create a one-parent family"
-msgstr "Tek ebeveyn 'li bir aile oluşturmak için bir çocuk ekle"
+msgstr "Tek ebeveynli bir aile oluşturmak için bir çocuk ekle"
 
 #: app/Http/RequestHandlers/AddChildToFamilyPage.php:59
 #: resources/views/family-page-children.phtml:40
 #: resources/views/modules/relatives/family.phtml:213
 msgid "Add a daughter"
-msgstr "Kız kardeş ekle"
+msgstr "Bir kız kardeş ekle"
 
 #: resources/views/edit/raw-gedcom-record.phtml:44
 msgid "Add a fact"
-msgstr "Bir olgu ekle"
+msgstr "Bir gerçek ekle"
 
 #: app/Http/RequestHandlers/AddParentToIndividualPage.php:61
 #: resources/views/family-page-grandparents.phtml:26
 #: resources/views/family-page-grandparents.phtml:34
 #: resources/views/modules/relatives/tab.phtml:34
 msgid "Add a father"
-msgstr "Yeni bir baba ekle"
+msgstr "Bir baba ekle"
 
 #: resources/views/modules/favorites/favorites.phtml:44
 #: resources/views/modules/favorites/favorites.phtml:54
 msgid "Add a favorite"
-msgstr "Yeni favori ekle"
+msgstr "Bir favori ekle"
 
 #: app/Http/RequestHandlers/AddSpouseToFamilyPage.php:59
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:56
@@ -1258,7 +1247,7 @@ msgstr "Yeni favori ekle"
 #: resources/views/modules/relatives/family.phtml:54
 #: resources/views/modules/relatives/tab.phtml:121
 msgid "Add a husband"
-msgstr "Yeni bir koca ekle"
+msgstr "Bir koca ekle"
 
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:56
 #: resources/views/modules/relatives/tab.phtml:133
@@ -1267,7 +1256,7 @@ msgstr "Mevcut bir kişiyi kullanarak bir koca ekle"
 
 #: resources/views/modules/user_blog/list.phtml:50
 msgid "Add a journal entry"
-msgstr "Yeni bir Günlük girdisi ekle"
+msgstr "Bir günlük girdisi ekle"
 
 #: app/Http/Controllers/EditMediaController.php:87
 #: resources/views/media-page.phtml:199
@@ -1281,67 +1270,67 @@ msgstr "Bir medya dosyası ekle"
 #: resources/views/individual-page.phtml:90
 #: resources/views/source-page.phtml:93
 msgid "Add a media object"
-msgstr "Yeni bir medya öğesi ekle"
+msgstr "Bir medya nesnesi ekle"
 
 #: app/Http/RequestHandlers/AddParentToIndividualPage.php:58
 #: resources/views/family-page-grandparents.phtml:56
 #: resources/views/family-page-grandparents.phtml:64
 #: resources/views/modules/relatives/tab.phtml:41
 msgid "Add a mother"
-msgstr "Yeni bir anne ekle"
+msgstr "Bir anne ekle"
 
 #: app/Http/RequestHandlers/AddName.php:55
 #: resources/views/individual-page-menu.phtml:25
 msgid "Add a name"
-msgstr "Yeni Adı ekle"
+msgstr "Bir ad ekle"
 
 #: resources/views/modules/gedcom_news/list.phtml:51
 msgid "Add a news article"
-msgstr "Bir Haber makalesi ekle"
+msgstr "Bir haber makalesi ekle"
 
 #: resources/views/family-page.phtml:68
 #: resources/views/modules/notes/tab.phtml:45
 msgid "Add a note"
-msgstr "Yeni bir not ekle"
+msgstr "Bir not ekle"
 
 #: resources/views/media-page.phtml:189
 msgid "Add a restriction"
-msgstr "Yeni bir kısıtlama ekle"
+msgstr "Bir kısıtlama ekle"
 
 #: resources/views/family-page.phtml:79 resources/views/media-page.phtml:179
 #: resources/views/modules/notes/tab.phtml:55
 msgid "Add a shared note"
-msgstr "Yeni bir paylaşılan not ekle"
+msgstr "Paylaşılan bir not ekle"
 
 #: resources/views/modules/relatives/family.phtml:217
 msgid "Add a sibling"
-msgstr "Kardeş ekle"
+msgstr "Bir kardeş ekle"
 
 #: resources/views/modules/relatives/family.phtml:213
 msgid "Add a sister"
-msgstr "Kız kardeş ekle"
+msgstr "Bir kız kardeş ekle"
 
 #: app/Http/RequestHandlers/AddChildToFamilyPage.php:58
 #: resources/views/family-page-children.phtml:36
 #: resources/views/modules/relatives/family.phtml:209
 msgid "Add a son"
-msgstr "Oğul ekle"
+msgstr "Bir oğul ekle"
 
 #: resources/views/family-page.phtml:103 resources/views/media-page.phtml:169
 #: resources/views/modules/sources_tab/tab.phtml:43
 msgid "Add a source citation"
-msgstr "Yeni bir Alıntı Kaynak ekle"
+msgstr "Bir kaynak alıntı ekle"
 
 #: app/Module/StoriesModule.php:297
 #: resources/views/modules/stories/config.phtml:29
 #: resources/views/modules/stories/tab.phtml:27
 msgid "Add a story"
-msgstr "Hikaye ekle"
+msgstr "Bir hikaye ekle"
 
 #: app/Http/Controllers/Admin/UsersController.php:222
 #: resources/views/admin/control-panel.phtml:465
 msgid "Add a user"
-msgstr "Yeni bir kullanıcı ekle"
+msgstr "Bir kullanıcı ekle"
 
 #: app/Http/RequestHandlers/AddSpouseToFamilyPage.php:56
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:60
@@ -1350,30 +1339,30 @@ msgstr "Yeni bir kullanıcı ekle"
 #: resources/views/modules/relatives/family.phtml:91
 #: resources/views/modules/relatives/tab.phtml:119
 msgid "Add a wife"
-msgstr "Yeni bir hanım ekle"
+msgstr "Bir eş ekle"
 
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:59
 #: resources/views/modules/relatives/tab.phtml:131
 msgid "Add a wife using an existing individual"
-msgstr "Mevcut bir kişiyi kullanarak bir hanım ekle"
+msgstr "Mevcut bir kişiyi kullanarak bir eş ekle"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:301
 #: resources/views/modules/faq/config.phtml:35
 msgid "Add an FAQ"
-msgstr "Bir SSS öğesi ekle"
+msgstr "SSS ekle"
 
 #: resources/views/cards/add-sour-data-even.phtml:10
 msgid "Add an event"
-msgstr "Bir etkinlik ekle"
+msgstr "Etkinlik ekle"
 
 #: resources/views/modules/custom-css-js/edit.phtml:28
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr "<code>&lt;body&gt;</code> elemanının sonuna içerik ekleyin."
+msgstr "<code>&lt;body&gt;</code> öğesinin sonuna içerik ekleyin."
 
 #: resources/views/modules/custom-css-js/edit.phtml:16
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr "<code>&lt;head&gt;</code> elemanının sonuna içerik ekleyin."
+msgstr "<code>&lt;head&gt;</code> öğesinin sonuna içerik ekleyin."
 
 #: resources/views/edit/paste-fact-row.phtml:12
 msgid "Add from clipboard"
@@ -1381,7 +1370,7 @@ msgstr "Panodan ekle"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
-msgstr "Kişinin sayfasına geçmiş etkinlikler ekleyin."
+msgstr "Bir kişinin sayfasına tarihi olaylar ekle."
 
 #: resources/views/modules/lifespans-chart/page.phtml:20
 msgid "Add individuals"
@@ -1403,62 +1392,62 @@ msgstr "Eksik ölüm kayıtları ekle"
 
 #: resources/views/edit-blocks-page.phtml:34
 msgid "Add more blocks from the following list."
-msgstr "Aşağıdaki listeden daha fazla blok ekleyin."
+msgstr "Aşağıdaki listeden daha fazla blok ekle."
 
 #: resources/views/search-advanced-page.phtml:42
 msgid "Add more fields"
-msgstr "Daha Fazla Alan Ekle"
+msgstr "Daha fazla alan ekle"
 
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:78
 msgid "Add narrative stories to individuals in the family tree."
-msgstr "Aile ağacındaki bireylere öyküsel hikayeler ekler."
+msgstr "Aile ağacındaki bireylere anlatı hikayeleri ekle."
 
 #: resources/views/admin/map-import-form.phtml:70
 msgid "Add new, and update existing records"
-msgstr "Yeni ekle ve varolan kayıtları güncelle"
+msgstr "Yeni kayıtlar ekle ve mevcut kayıtları güncelle"
 
 #: resources/views/admin/trees-import.phtml:100
 msgid "Add spaces where long lines were wrapped"
-msgstr "Bölünmüş uzun kelimelere boşluk ekle"
+msgstr "Uzun çizgilerin sarıldığı boşluklar ekle"
 
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:43
 msgid "Add styling and scripts to every page."
-msgstr "Her sayfaya stil ve komut dosyaları ekleyin."
+msgstr "Her sayfaya stil ve komut dosyaları ekle."
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: resources/views/admin/trees-export.phtml:77
 msgid "Add the GEDCOM media path to filenames"
-msgstr "GEDCOM medya dosyası yolunu dosya adlarına ekle"
+msgstr "GEDCOM medya yolunu dosya adlarına ekle"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:174
 msgid "Add to TITLE header tag"
-msgstr "'Header' da bulunan 'TITLE' etiketine ekle"
+msgstr "Üstbilgi BAŞLIK etiketine ekle"
 
 #: app/Module/ClippingsCartModule.php:187
 #: resources/views/modules/clippings/add-options.phtml:15
 msgid "Add to the clippings cart"
-msgstr "Küpür sepetine ekle"
+msgstr "Kupür sepetine ekle"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:116
 msgid "Add unique identifiers"
-msgstr "Benzersiz tanımlayıcıları ekle"
+msgstr "Benzersiz tanımlayıcılar ekle"
 
 #: resources/views/admin/trees.phtml:216
 msgid "Add unlinked records"
-msgstr "Bağlantısız kayıt ekle"
+msgstr "Bağlantısız kayıtları ekle"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:75
 msgid "Add your own text and graphics."
-msgstr "HTML destekli kendi metin ve grafikleri ekleyebileceğiniz blok."
+msgstr "Kendi metninizi ve grafiklerinizi ekleyin."
 
 #: app/Module/FamilyTreeNewsModule.php:182 app/Module/UserJournalModule.php:182
 msgid "Add/edit a journal/news entry"
-msgstr "Günlük/Haber kaydı Ekle/Düzelt"
+msgstr "Bir dergi/haber girişi ekle/düzenle"
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:448 app/Module/FixCemeteryTag.php:86
@@ -1539,90 +1528,90 @@ msgstr "Evlât edinme"
 
 #: app/Module/IndividualFactsTabModule.php:333
 msgid "Adoption of a brother"
-msgstr "Erkek kareşi evlât edinme"
+msgstr "Bir erkek kardeşin evlât edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:312
 msgid "Adoption of a child"
-msgstr "Çocuğu evlât edinme"
+msgstr "Bir çocuğun evlât edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:311
 msgid "Adoption of a daughter"
-msgstr "Kız evladı evlât edinme"
+msgstr "Bir kızın evlât edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:381
 #: app/Module/IndividualFactsTabModule.php:404
 #: app/Module/IndividualFactsTabModule.php:427
 msgid "Adoption of a grandchild"
-msgstr "Büyük çocuğu evlât edinme"
+msgstr "Bir torunun evlât edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:380
 msgid "Adoption of a granddaughter"
-msgstr "Kız torunu evlât edinme"
+msgstr "Bir kız torunun evlât edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:403
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr "Kız torunu evlât edinme"
+msgstr "Bir kız torunun evlât edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:426
 msgctxt "son’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr "Kız torunu evlât edinme"
+msgstr "Bir kız torunun evlât edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:379
 msgid "Adoption of a grandson"
-msgstr "Erkek torunu evlât edinme"
+msgstr "Bir erkek torunun evlât edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:402
 msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
-msgstr "Erkek torunu evlât edinme"
+msgstr "Bir erkek torunun evlât edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:425
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr "Erkek torunu evlât edinme"
+msgstr "Bir erkek torunun evlât edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:356
 msgid "Adoption of a half-brother"
-msgstr "Üvey-erkek-kardeşi evlât edinme"
+msgstr "Bir üvey erkek kardeşin evlât edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:358
 msgid "Adoption of a half-sibling"
-msgstr "Üvey-kardeşi evlât edinme"
+msgstr "Bir üvey kardeşin evlât edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:357
 msgid "Adoption of a half-sister"
-msgstr "Üvey-kız-kardeşi evlât edinme"
+msgstr "Bir üvey kız kardeşin evlât edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:335
 msgid "Adoption of a sibling"
-msgstr "Kareşi evlât edinme"
+msgstr "Bir kardeşin evlât edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:334
 msgid "Adoption of a sister"
-msgstr "Kız kareşi evlât edinme"
+msgstr "Bir kız kardeşin evlât edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:310
 msgid "Adoption of a son"
-msgstr "Oğlunu evlât edinme"
+msgstr "Bir oğlun evlât edinilmesi"
 
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:590
 msgid "Adult christening"
-msgstr "Yetişkin Vaftiz etme"
+msgstr "Yetişkin vaftiz"
 
 #: resources/views/admin/trees-preferences.phtml:837
 msgid "Advanced fact preferences"
-msgstr "Gelişmiş olgu ayarları"
+msgstr "Gelişmiş gerçek tercihleri"
 
 #: resources/views/admin/trees-preferences.phtml:842
 msgid "Advanced name facts"
-msgstr "Gelişmiş adı olguları"
+msgstr "Gelişmiş ad gerçekleri"
 
 #: resources/views/admin/trees-preferences.phtml:855
 msgid "Advanced place name facts"
-msgstr "Gelişmiş yer adı olguları"
+msgstr "Gelişmiş yer adı gerçekleri"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:168
 #: app/Module/SearchMenuModule.php:125
@@ -1640,7 +1629,7 @@ msgstr "Afrika"
 
 #: resources/views/admin/trees-create.phtml:55
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr "Aile ağacını oluşturduktan sonra, GEDCOM dosya verilerini yükleyebilirsiniz."
+msgstr "Aile ağacını oluşturduktan sonra, bir GEDCOM dosyasından veri içe aktarabilirsiniz."
 
 #. I18N: gedcom tag AGE
 #: app/Functions/FunctionsPrint.php:392 app/GedcomTag.php:470
@@ -1658,15 +1647,15 @@ msgstr "Yaş"
 
 #: resources/views/statistics/families/birth-age.phtml:12
 msgid "Age at birth of child"
-msgstr "Çocuk doğduğundaki yaşı"
+msgstr "Çocuğun doğum yaşı"
 
 #: resources/views/admin/trees-privacy.phtml:61
 msgid "Age at which to assume an individual is dead"
-msgstr "Bir kişinin öldü sayılacağı yaşı"
+msgstr "Bir bireyin öldüğünü varsayma yaşı"
 
 #: resources/views/statistics/families/age-difference.phtml:42
 msgid "Age between husband and wife"
-msgstr "Hanım ile kocası arasındaki yaş"
+msgstr "Karı koca arasındaki yaş"
 
 #: resources/views/statistics/families/age-difference.phtml:20
 msgid "Age between siblings"
@@ -1674,7 +1663,7 @@ msgstr "Kardeşler arasındaki yaş"
 
 #: resources/views/statistics/families/age-difference.phtml:51
 msgid "Age between wife and husband"
-msgstr "Koca ile hanımı arasındaki yaş"
+msgstr "Karısı ve kocası arasındaki yaş"
 
 #: resources/views/statistics/families/age-difference.phtml:12
 msgid "Age difference"
@@ -1683,7 +1672,7 @@ msgstr "Yaş farkı"
 #: app/Module/StatisticsChartModule.php:652
 #: resources/views/modules/statistics-chart/custom.phtml:33
 msgid "Age in year of first marriage"
-msgstr "İlk evlendiğindeki yaşı"
+msgstr "İlk evlilik yılında yaş"
 
 #: app/Module/StatisticsChartModule.php:591
 #: resources/views/lists/families-table.phtml:483
@@ -1691,7 +1680,7 @@ msgstr "İlk evlendiğindeki yaşı"
 #: resources/views/modules/statistics-chart/custom.phtml:32
 #: resources/views/statistics/families/marriage-age.phtml:12
 msgid "Age in year of marriage"
-msgstr "Evlendiğindeki yaşı"
+msgstr "Evlilik yılında yaş"
 
 #: resources/views/modules/statistics-chart/custom.phtml:129
 #: resources/views/modules/statistics-chart/custom.phtml:132
@@ -1702,17 +1691,17 @@ msgstr "Yaş aralığı"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:382
 msgid "Age of parents next to child’s birthdate"
-msgstr "çocukların doğum tarihinin yanında ebeveynlerin yaşı"
+msgstr "Çocuğun doğum tarihine yakın ebeveynlerin yaşı"
 
 #: resources/views/lists/individuals-table.phtml:491
 #: resources/views/lists/individuals-table.phtml:533
 msgid "Age related to death year"
-msgstr "Ölüm yılına ilişkin yaşı"
+msgstr "Ölüm yılına ilişkin yaş"
 
 #. I18N: gedcom tag AGNC
 #: app/GedcomTag.php:473
 msgid "Agency"
-msgstr "Ajans"
+msgstr "Kuruluş"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:48
@@ -1743,7 +1732,7 @@ msgstr "Cezayir"
 #. I18N: gedcom tag ALIA
 #: app/GedcomTag.php:476
 msgid "Alias"
-msgstr "Rumuz"
+msgstr "Takma ad"
 
 #: resources/views/lists/individuals-table.phtml:192
 msgid "Alive"
@@ -1772,29 +1761,29 @@ msgstr "Yaşayan"
 #: resources/xml/reports/missing_facts_report.xml:7
 #: resources/xml/reports/relative_ext_report.xml:6
 msgid "All"
-msgstr "Tümü"
+msgstr "Tüm"
 
 #: app/Http/RequestHandlers/TreePrivacyPage.php:176
 #: resources/views/admin/trees-privacy.phtml:262
 msgid "All facts and events"
-msgstr "Tüm olgu ve hadiseler"
+msgstr "Tüm gerçekler ve olaylar"
 
 #: resources/views/admin/trees-preferences.phtml:706
 msgid "All family facts"
-msgstr "Tüm aile olguları"
+msgstr "Tüm aile gerçekleri"
 
 #: app/Http/RequestHandlers/RegisterAction.php:237
 msgid "All fields must be completed."
-msgstr "Tüm alanların doldurulması zorunludur."
+msgstr "Tüm alanlar doldurulmalıdır."
 
 #: resources/views/admin/trees-preferences.phtml:652
 msgid "All individual facts"
-msgstr "Tüm kişi olguları"
+msgstr "Tüm bireysel gerçekler"
 
 #: resources/views/calendar-page.phtml:119
 #: resources/views/calendar-page.phtml:131
 msgid "All individuals"
-msgstr "Tüm Kişiler"
+msgstr "Tüm bireyler"
 
 #: app/Http/RequestHandlers/ModulesAllPage.php:59
 #: resources/views/admin/components.phtml:28
@@ -1809,26 +1798,26 @@ msgstr "Tüm kayıtlar"
 
 #: resources/views/admin/trees-preferences.phtml:801
 msgid "All repository facts"
-msgstr "Tüm depo olguları"
+msgstr "Tüm depo gerçekleri"
 
 #: resources/views/admin/trees-preferences.phtml:760
 msgid "All source facts"
-msgstr "Tüm kaynak olguları"
+msgstr "Tüm kaynak gerçekler"
 
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:54
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "Diğer modüllerin HTML kodları yerine \"WYSIWYG\" editörü kullanarak metin düzenlemesine izin verir."
+msgstr "Diğer modüllerin HTML kodlarını kullanmak yerine bir \"WYSIWYG\" düzenleyicisi kullanarak metin düzenlemesine izin verin."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:604
 msgid "Allow users to see raw GEDCOM records"
-msgstr "Kullanıcıların ham GEDCOM kayıtlarını görmesine izni ver"
+msgstr "Kullanıcıların ham GEDCOM kayıtlarını görmesine izin ver"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:52
 msgid "Allow visitors to request a new user account"
-msgstr "Ziyaretçilerin kullanıcı hesabı istemelerine izin ver"
+msgstr "Ziyaretçilerin yeni bir kullanıcı hesabı talep etmesine izin ver"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:1057
@@ -1838,31 +1827,31 @@ msgstr "Olarak da bilinir"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
 msgid "American Samoa"
-msgstr "Amerikan Samoa"
+msgstr "Amerikan Samoası"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/edit.phtml:69
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "Bir SSS maddesi sadece bir soy ağacı için veya tüm soy ağaçları için gösterilebilir."
+msgstr "SSS, aile ağaçlarından sadece birinde veya tüm aile ağaçlarında görüntülenebilir."
 
 #: resources/views/admin/site-registration.phtml:59
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
-msgstr "Yeni bir kullanıcının oturum açabilmesi için, yöneticinin hesabı onaylaması ve erişim düzeyini seçmesi gerekir."
+msgstr "Kullanıcı oturum açmadan önce bir yöneticinin yeni kullanıcı hesabını onaylaması ve bir erişim düzeyi seçmesi gerekir."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:53
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "\"Medya\" sekmesine alternatif, ve gelişmiş resim görüntüleyici."
+msgstr "\"Medya\" sekmesine bir alternatif ve gelişmiş bir resim görüntüleyici."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:80
 msgid "An alternative way to display charts."
-msgstr "Çizelgeleri görüntülemek için alternatif bir yol."
+msgstr "Grafikleri görüntülemek için alternatif bir yol."
 
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:63
 msgid "An alternative way to enter census transcripts and link them to individuals."
-msgstr "Nüfus sayımı tutanakları girmek ve bunları bağlamak için bireyler için alternatif bir yol."
+msgstr "Nüfus sayımı transkriptlerini girmenin ve bunları bireylere bağlamanın alternatif bir yolu."
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:56
@@ -1872,20 +1861,20 @@ msgstr "Yeni bir tema seçmek için alternatif bir yol."
 #. I18N: Description of the “Sign in” module
 #: app/Module/LoginBlockModule.php:54
 msgid "An alternative way to sign in and sign out."
-msgstr "Giriş ve çıkış için alternatif bir yol."
+msgstr "Oturum açmanın ve oturumu kapatmanın alternatif bir yolu."
 
 #: app/Functions/FunctionsEdit.php:458
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr "İştirak, bu olgu veya hadiseye karışmış başka bir kişidir. Örneğin bir tanık veya rahip."
+msgstr "Bir ortak, tanık veya rahip gibi bu gerçek veya olayla ilgili olan başka bir kişidir."
 
 #: app/Functions/FunctionsEdit.php:456
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-msgstr "İştirak, bu kişi ile ilgili başka bir kişidir. Örneğin bir arkadaş yada işveren."
+msgstr "Bir ortak, bir arkadaş veya işveren gibi bu kişiyle ilişkisi olan başka bir kişidir."
 
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:101
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr "Bireylerin atalarını ve soyunu gösteren kum saati çizelgesi."
+msgstr "Bir bireyin atalarının ve nesillerinin bir kum saati grafiği."
 
 #: resources/views/edit/reorder-families.phtml:63
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
@@ -1894,16 +1883,16 @@ msgstr "Bir birey birden fazla ebeveyn grubuna sahip olabilir. Örneğin, doğum
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:64
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr "Bütün ataları ve bir kişinin soyunu gösteren etkileşimli bir ağaç."
+msgstr "Bir bireyin tüm atalarını ve nesillerini gösteren etkileşimli bir ağaç."
 
 #: resources/views/errors/database-error.phtml:8
 #: resources/views/setup/step-6-failed.phtml:8
 msgid "An unexpected database error occurred."
-msgstr "Beklenmeyen bir veritabanı hatası oluştu."
+msgstr "Beklenmeyen bir veri tabanı hatası oluştu."
 
 #: resources/views/admin/control-panel.phtml:168
 msgid "An upgrade is available."
-msgstr "Bir güncelleme mevcut."
+msgstr "Bir yükseltme mevcut."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -1911,27 +1900,27 @@ msgstr "Bir güncelleme mevcut."
 #: app/Module/AncestorsChartModule.php:108
 #: resources/xml/reports/ahnentafel_report.xml:4
 msgid "Ancestors"
-msgstr "Atalara Doğru"
+msgstr "Atalar"
 
 #. I18N: gedcom tag ANCI
 #: app/GedcomTag.php:482
 msgid "Ancestors interest"
-msgstr "Ecdat Nema"
+msgstr "Ataların ilgisi"
 
 #: resources/xml/reports/ahnentafel_report.xml:55
 msgid "Ancestors of "
-msgstr "Atalarına Doğru "
+msgstr "Ataları "
 
 #. I18N: %s is an individual’s name
 #: app/Module/AncestorsChartModule.php:154
 #, php-format
 msgid "Ancestors of %s"
-msgstr "%s için Atalara Doğru Çizelgesi"
+msgstr "%s 'in ataları"
 
 #. I18N: gedcom tag AFN
 #: app/GedcomTag.php:467
 msgid "Ancestral file number"
-msgstr "Atalara İlişkin Dosya Numarası"
+msgstr "Ataların dosya numarası"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:240
@@ -1963,12 +1952,12 @@ msgstr "Yıldönümü"
 
 #: app/Http/RequestHandlers/CalendarPage.php:122
 msgid "Anniversary calendar"
-msgstr "Yıldönümü Takvimi"
+msgstr "Yıldönümü takvimi"
 
 #. I18N: gedcom tag ANUL
 #: app/GedcomTag.php:485
 msgid "Annulment"
-msgstr "Feshi"
+msgstr "Fesih"
 
 #: resources/views/modules/faq/edit.phtml:31
 msgid "Answer"
@@ -1977,7 +1966,7 @@ msgstr "Cevap"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:62
 msgid "Antarctica"
-msgstr "Antarktika"
+msgstr "Antartika"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:66
@@ -1986,7 +1975,7 @@ msgstr "Antigua ve Barbuda"
 
 #: app/Http/RequestHandlers/LoginPage.php:85
 msgid "Anyone with a user account can access this website."
-msgstr "Kullanıcı hesabı olan herkes bu siteye erişebilir."
+msgstr "Kullanıcı hesabı olan herkes bu web sitesine erişebilir."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:243
@@ -1997,19 +1986,19 @@ msgstr "Apia, Samoa"
 #: resources/views/modules/clippings/download.phtml:15
 #: resources/views/modules/clippings/download.phtml:47
 msgid "Apply privacy settings"
-msgstr "Mahremiyet ayarları uygula"
+msgstr "Gizlilik ayarlarını uygulayın"
 
 #. I18N: Label for checkbox
 #: resources/views/admin/trees-preferences.phtml:942
 #: resources/views/admin/trees-privacy.phtml:298
 msgid "Apply these preferences to all family trees"
-msgstr "Bu ayarları tüm soy ağaçlarına uygula"
+msgstr "Bu tercihleri tüm aile ağaçlarına uygulayın"
 
 #. I18N: Label for checkbox
 #: resources/views/admin/trees-preferences.phtml:949
 #: resources/views/admin/trees-privacy.phtml:305
 msgid "Apply these preferences to new family trees"
-msgstr "Bu ayarları yeni aile ağaçlarına uygula"
+msgstr "Bu tercihleri yeni aile ağaçlarına uygulayın"
 
 #: resources/views/admin/users.phtml:29
 msgid "Approved"
@@ -2017,7 +2006,7 @@ msgstr "Onaylandı"
 
 #: resources/views/admin/users-edit.phtml:86
 msgid "Approved by administrator"
-msgstr "Yönetici onayladı"
+msgstr "Yönetici tarafından onaylandı"
 
 #: app/Date/AbstractGregorianJulianDate.php:204
 msgctxt "Abbreviation for April"
@@ -2048,18 +2037,19 @@ msgstr "Nisan"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:153
+#, fuzzy
 msgid "Aqua Marine"
-msgstr "Su Bahri"
+msgstr "Aqua Marine"
 
 #: resources/views/edit/icon-fact-delete.phtml:8
 #: resources/views/individual-name.phtml:92
 #: resources/views/media-page.phtml:103
 msgid "Are you sure you want to delete this fact?"
-msgstr "Bu olguyu silmek istediğinizden emin misiniz?"
+msgstr "Bu gerçeği silmek istediğinizden emin misiniz?"
 
 #: app/Module/UserMessagesModule.php:175 app/Module/UserMessagesModule.php:227
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
-msgstr "Bu mesajı silmek istediğinizden emin mısınız? Daha sonra geri alınamaz."
+msgstr "Bu mesajı silmek istediğinizden emin misiniz? Daha sonra geri alınamaz."
 
 #: app/Http/Controllers/Admin/MediaController.php:281
 #: resources/views/admin/trees.phtml:115
@@ -2078,11 +2068,11 @@ msgstr "Bu mesajı silmek istediğinizden emin mısınız? Daha sonra geri alın
 #: resources/views/submitter-page-menu.phtml:17
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "“%s” silmek istediğinizden emin misiniz?"
+msgstr "“%s” i silmek istediğinizden emin misiniz?"
 
 #: resources/views/pending-changes-page.phtml:103
 msgid "Are you sure you want to reject all the changes to this family tree?"
-msgstr "Bu aile ağacında yapılan tüm değişiklikeri geri almak istediğinizden emin misiniz?"
+msgstr "Bu aile ağacındaki tüm değişiklikleri reddetmek istediğinizden emin misiniz?"
 
 #: resources/views/modules/favorites/favorites.phtml:35
 msgid "Are you sure you want to remove this item from your list of favorites?"
@@ -2125,7 +2115,7 @@ msgstr "Aruba"
 
 #: resources/views/modules/html/config.phtml:36
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr "HTML formatı için araç çubuğunu kullanmanın yanı sıra otomatik olarak güncellenen veritabanı alanları da ekleyebilirsiniz. Bu özel alanlar <b>#</b> karakteri ile işaretlenmiştir. Örneğin <b>#totalFamilies#</b> veritabanındaki toplam aile sayısı ile değiştirilecektir. İleri düzey kullanıcılar 'CSS Class' da kullanarak hazırladıkları html metninin seçilen tema ile de uyumlu olmasını sağlayabilirler."
+msgstr "HTML biçimlendirmesini uygulamak için araç çubuğunu kullanmanın yanı sıra, otomatik olarak güncellenen veritabanı alanları ekleyebilirsiniz. Bu özel alanlar <b>#</b> karakterleriyle işaretlenmiştir. Örneğin, <b>#totalFamilies#</b> veritabanındaki gerçek aile sayısıyla değiştirilecektir. İleri düzey kullanıcılar metinlerine CSS sınıfları uygulamak isteyebilir, böylece biçimlendirme o anda seçili olan temayla eşleşir."
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:155
@@ -2141,11 +2131,11 @@ msgstr "Asya"
 #: app/GedcomTag.php:488 app/GedcomTag.php:1065
 #: resources/views/cards/add-associate.phtml:10
 msgid "Associate"
-msgstr "İştirak"
+msgstr "Ortak"
 
 #: app/Http/RequestHandlers/HelpText.php:262
 msgid "Associate events with this source"
-msgstr "Bu kaynak ile hadiseleri ilişkilendir"
+msgstr "Olayları bu kaynakla ilişkilendirin"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:249
@@ -2164,31 +2154,31 @@ msgstr "Atlanta, Georgia, ABD"
 
 #: app/GedcomCode/GedcomCodeRela.php:96
 msgid "Attendant"
-msgstr "Bakıcı"
+msgstr "Görevli"
 
 #: app/GedcomCode/GedcomCodeRela.php:93
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr "Bakıcı"
+msgstr "Görevli"
 
 #: app/GedcomCode/GedcomCodeRela.php:89
 msgctxt "MALE"
 msgid "Attendant"
-msgstr "Bakıcı"
+msgstr "Görevli"
 
 #: app/GedcomCode/GedcomCodeRela.php:107
 msgid "Attending"
-msgstr "Bakıyor"
+msgstr "Kadrolu"
 
 #: app/GedcomCode/GedcomCodeRela.php:104
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr "Bakıyor"
+msgstr "Kadrolu"
 
 #: app/GedcomCode/GedcomCodeRela.php:100
 msgctxt "MALE"
 msgid "Attending"
-msgstr "Bakıyor"
+msgstr "Kadrolu"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1533
@@ -2236,12 +2226,12 @@ msgstr "Avusturya"
 #: app/GedcomTag.php:491 resources/views/lists/sources-table.phtml:87
 #: resources/views/modals/source-fields.phtml:25
 msgid "Author"
-msgstr "Yazan"
+msgstr "Yazar"
 
 #. I18N: gedcom tag CHAN:_WT_USER
 #: app/GedcomTag.php:574 resources/views/edit/edit-fact.phtml:118
 msgid "Author of last change"
-msgstr "Son değiştiren"
+msgstr "Son değişikliğin yazarı"
 
 #: resources/views/admin/users-edit.phtml:136
 msgid "Automatically accept changes made by this user"
@@ -2250,12 +2240,12 @@ msgstr "Bu kullanıcı tarafından yapılan değişiklikleri otomatik olarak kab
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:522
 msgid "Automatically expand notes"
-msgstr "Otomatikman notları genişlet"
+msgstr "Notları otomatik olarak genişlet"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:538
 msgid "Automatically expand sources"
-msgstr "Otomatikman kaynakları genişlet"
+msgstr "Kaynakları otomatik olarak genişlet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:200
@@ -2300,15 +2290,15 @@ msgstr "Ortalama ölüm yaşı"
 
 #: app/Statistics/Google/ChartMarriageAge.php:162
 msgid "Average age at marriage"
-msgstr "Yaklaşık evlenme yaşı"
+msgstr "Ortalama evlilik yaşı"
 
 #: app/Statistics/Google/ChartMarriageAge.php:159
 msgid "Average age in century of marriage"
-msgstr "Evliliğin yüzyıl içindeki ortalama yaşı"
+msgstr "Evlilik yüzyılındaki ortalama yaş"
 
 #: app/Statistics/Google/ChartAge.php:136
 msgid "Average age related to death century"
-msgstr "Ölüm yüzyıla ilişkili ortalama yaşı"
+msgstr "Ölüm yüzyılındaki ortalama yaş"
 
 #: app/Statistics/Google/ChartChildren.php:95
 msgid "Average number"
@@ -2326,36 +2316,41 @@ msgstr "Aile başına ortalama çocuk sayısı"
 #: resources/views/admin/trees-create.phtml:43
 #: resources/views/admin/trees-preferences.phtml:60
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
-msgstr "Boşluk ve noktalama işaretlerinden kaçının. Bir aile adı (soyadı) iyi bir tercih olabilir."
+msgstr "Boşluklardan ve noktalama işaretlerinden kaçının. Bir aile adı iyi bir seçim olabilir."
 
 #: app/Date/JalaliDate.php:267
+#, fuzzy
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
-msgstr "Azer"
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:141
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Azar"
-msgstr "Azer"
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:231
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
-msgstr "Azer"
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:186
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Azar"
-msgstr "Azer"
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:96
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Azar"
-msgstr "Azer"
+msgstr "Azar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:72
@@ -2365,7 +2360,7 @@ msgstr "Azerbaycan"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:74
 msgid "Azores"
-msgstr "Azor Adaları"
+msgstr "Azorlar"
 
 #: app/Date/JalaliDate.php:269
 msgctxt "Abbreviation for Persian month: Bahman"
@@ -2379,27 +2374,31 @@ msgstr "Bahamalar"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:145
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Bahman"
-msgstr "Behmen"
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:235
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
-msgstr "Behmen"
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:190
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Bahman"
-msgstr "Behmen"
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:100
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Bahman"
-msgstr "Behmen"
+msgstr "Bahman"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:89
@@ -2409,7 +2408,7 @@ msgstr "Bahreyn"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:85
 msgid "Bangladesh"
-msgstr "Burkina Faso"
+msgstr "Bangladeş"
 
 #. I18N: gedcom tag BAPM
 #: app/GedcomTag.php:503 resources/views/calendar-page.phtml:183
@@ -2419,7 +2418,7 @@ msgstr "Vaftiz"
 
 #: app/Module/IndividualFactsTabModule.php:328
 msgid "Baptism of a brother"
-msgstr "Kardeşin vaftizi"
+msgstr "Bir kardeşin vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:307
 msgid "Baptism of a child"
@@ -2435,64 +2434,64 @@ msgstr "Bir kızın vaftizi"
 #: app/Module/IndividualFactsTabModule.php:499
 #: app/Module/IndividualFactsTabModule.php:517
 msgid "Baptism of a grandchild"
-msgstr "Torunun vaftizi"
+msgstr "Bir torunun vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:375
 msgid "Baptism of a granddaughter"
-msgstr "Bir turunun vaftizi"
+msgstr "Bir torunun vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:398
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr "Bir turunun vaftizi"
+msgstr "Bir torunun vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:421
 msgctxt "son’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr "Bir turunun vaftizi"
+msgstr "Bir torunun vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:374
 msgid "Baptism of a grandson"
-msgstr "Bir turunun vaftizi"
+msgstr "Bir torunun vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:397
 msgctxt "daughter’s son"
 msgid "Baptism of a grandson"
-msgstr "Bir turunun vaftizi"
+msgstr "Bir torunun vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:420
 msgctxt "son’s son"
 msgid "Baptism of a grandson"
-msgstr "Bir turunun vaftizi"
+msgstr "Bir torunun vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:351
 msgid "Baptism of a half-brother"
-msgstr "Üvey kardeşin vaftizi"
+msgstr "Bir üvey kardeşin vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:353
 msgid "Baptism of a half-sibling"
-msgstr "Üvey-kardeşin vaftizi"
+msgstr "Bir üvey kardeşin vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:352
 msgid "Baptism of a half-sister"
-msgstr "Üvey kardeşin vaftizi"
+msgstr "Bir üvey kız kardeşin vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:330
 msgid "Baptism of a sibling"
-msgstr "Kardeşin vaftizi"
+msgstr "Bir kardeşin vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:329
 msgid "Baptism of a sister"
-msgstr "Kardeşin vaftizi"
+msgstr "Bir kız kardeşin vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:305
 msgid "Baptism of a son"
-msgstr "Oğlunun vaftizi"
+msgstr "Bir oğlun vaftizi"
 
 #. I18N: gedcom tag BARM
 #: app/GedcomTag.php:510 resources/xml/reports/missing_facts_report.xml:17
 msgid "Bar mitzvah"
-msgstr "Koca"
+msgstr "Bar mitzvah"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:106
@@ -2506,7 +2505,7 @@ msgstr "Bat mitzvah"
 
 #: resources/views/modules/batch_update/admin.phtml:26
 msgid "Batch update"
-msgstr "Toplu güncelleştirme"
+msgstr "Toplu güncelleme"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:285
@@ -2515,17 +2514,18 @@ msgstr "Baton Rouge, Louisiana, ABD"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:261
 msgid "Begins with"
-msgstr "İle başlayan"
+msgstr "İle başlar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:96
+#, fuzzy
 msgid "Belarus"
-msgstr "Beyaz Rusya"
+msgstr "Belarus"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:157
 msgid "Belgian Chocolate"
-msgstr "Çikolata"
+msgstr "Belçika Çikolatası"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:78
@@ -2559,7 +2559,7 @@ msgstr "Sağdıç"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:110
 msgid "Bhutan"
-msgstr "Bhutan"
+msgstr "Butan"
 
 #. I18N: gedcom tag _BIBL
 #: app/GedcomTag.php:1069
@@ -2574,15 +2574,15 @@ msgstr "Billings, Montana, ABD"
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:538
 msgid "Binary data object"
-msgstr "İkili Veri Öğesi"
+msgstr "İkili veri nesnesi"
 
 #: app/Functions/FunctionsPrint.php:456 app/Functions/FunctionsPrint.php:458
 msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgstr "Bing Haritalar™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
-msgstr "Bing™ web uzmanı araçları"
+msgstr "Bing™ web yöneticisi araçları"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:261
@@ -2735,90 +2735,90 @@ msgstr "Doğum"
 
 #: app/Statistics/Google/ChartDistribution.php:338
 msgid "Birth by country"
-msgstr "Ülkelere göre doğum"
+msgstr "Ülkeye göre doğum"
 
 #: resources/xml/reports/bdm_report.xml:8
 #: resources/xml/reports/birth_report.xml:8
 msgid "Birth date range end"
-msgstr "Doğum Tarihinde bitir"
+msgstr "Doğum tarihi aralığı sonu"
 
 #: resources/xml/reports/bdm_report.xml:7
 #: resources/xml/reports/birth_report.xml:7
 msgid "Birth date range start"
-msgstr "Doğum Tarihinden başla"
+msgstr "Doğum tarihi aralığı başlangıcı"
 
 #: app/Module/IndividualFactsTabModule.php:318
 msgid "Birth of a brother"
-msgstr "Erkek kardeşin doğumu"
+msgstr "Bir erkek kardeşin doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:297 app/Module/PlacesModule.php:248
 #: resources/views/admin/trees-preferences.phtml:426
 msgid "Birth of a child"
-msgstr "Çocuğunun doğumu"
+msgstr "Bir çocuğun doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:296
 msgid "Birth of a daughter"
-msgstr "Kızının doğumu"
+msgstr "Bir kızın doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:366
 #: app/Module/IndividualFactsTabModule.php:389
 #: app/Module/IndividualFactsTabModule.php:412
 #: resources/views/admin/trees-preferences.phtml:420
 msgid "Birth of a grandchild"
-msgstr "Torununun doğumu"
+msgstr "Bir torunun doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:365
 msgid "Birth of a granddaughter"
-msgstr "Kız torunun doğumu"
+msgstr "Bir kız torunun doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:388
 msgctxt "daughter’s daughter"
 msgid "Birth of a granddaughter"
-msgstr "Kız torunun doğumu"
+msgstr "Bir kız torunun doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:411
 msgctxt "son’s daughter"
 msgid "Birth of a granddaughter"
-msgstr "Kız torunun doğumu"
+msgstr "Bir kız torunun doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:364
 msgid "Birth of a grandson"
-msgstr "Erkek torunun doğumu"
+msgstr "Bir erkek torunun doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:387
 msgctxt "daughter’s son"
 msgid "Birth of a grandson"
-msgstr "Erkek torunun doğumu"
+msgstr "Bir erkek torunun doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:410
 msgctxt "son’s son"
 msgid "Birth of a grandson"
-msgstr "Erkek torunun doğumu"
+msgstr "Bir erkek torunun doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:341
 msgid "Birth of a half-brother"
-msgstr "Üvey-erkek-kardeşin doğumu"
+msgstr "Bir üvey erkek kardeşin doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:343
 msgid "Birth of a half-sibling"
-msgstr "Üvey-kardeşin doğumu"
+msgstr "Bir üvey kardeşin doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:342
 msgid "Birth of a half-sister"
-msgstr "Üvey-kız-kardeşin doğumu"
+msgstr "Bir üvey kız kardeşin doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:320
 #: resources/views/admin/trees-preferences.phtml:432
 msgid "Birth of a sibling"
-msgstr "Kardeşin doğumu"
+msgstr "Bir kardeşin doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:319
 msgid "Birth of a sister"
-msgstr "Kız kardeşin doğumu"
+msgstr "Bir kız kardeşin doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:295
 msgid "Birth of a son"
-msgstr "Oğlunun doğumu"
+msgstr "Bir oğlun doğumu"
 
 #: resources/views/statistics/other/places.phtml:21
 msgid "Birth places"
@@ -2826,7 +2826,7 @@ msgstr "Doğum yerleri"
 
 #: resources/xml/reports/birth_report.xml:6
 msgid "Birthplace contains"
-msgstr "Doğum Yeri içerenler"
+msgstr "Doğum yeri şunları içerir"
 
 #. I18N: Name of a module/report
 #: app/Module/BirthReportModule.php:40
@@ -2844,7 +2844,7 @@ msgstr "Yüzyıla göre doğumlar"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:264
 msgid "Bismarck, North Dakota, United States"
-msgstr "Bismarck, Kuzey Dakota"
+msgstr "Bismarck, Kuzey Dakota, ABD"
 
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:531
@@ -2865,12 +2865,12 @@ msgstr "Bloklar"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:159
 msgid "Blue Lagoon"
-msgstr "Mavi Göl"
+msgstr "Mavi Lagün"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:161
 msgid "Blue Marine"
-msgstr "Mavi Bahri"
+msgstr "Mavi Deniz"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:267
@@ -2895,12 +2895,12 @@ msgstr "Kitap"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:105
 msgid "Born in the covenant"
-msgstr "Dini nikahta doğmuş"
+msgstr "Ahit'te doğdu"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:93
 msgid "Bosnia and Herzegovina"
-msgstr "Bosna-Hersek"
+msgstr "Bosna Hersek"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:273
@@ -2909,11 +2909,11 @@ msgstr "Boston, Massachusetts, ABD"
 
 #: resources/views/lists/families-table.phtml:162
 msgid "Both alive"
-msgstr "Yaşayan her ikisi"
+msgstr "İkisi de hayatta"
 
 #: resources/views/lists/families-table.phtml:174
 msgid "Both dead"
-msgstr "Ölmüş her ikisi"
+msgstr "İkisi de öldü"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:114
@@ -2934,13 +2934,13 @@ msgstr "Bouvet Adası"
 #. I18N: Branches of a family tree
 #: app/Module/BranchesListModule.php:106 app/Module/BranchesListModule.php:231
 msgid "Branches"
-msgstr "Dallar"
+msgstr "Şubeler"
 
 #. I18N: %s is a surname
 #: app/Module/BranchesListModule.php:226
 #, php-format
 msgid "Branches of the %s family"
-msgstr "%s ailesinin dalları"
+msgstr "%s ailesinin şubeleri"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:104
@@ -2949,7 +2949,7 @@ msgstr "Brezilya"
 
 #: app/GedcomCode/GedcomCodeRela.php:115
 msgid "Bridesmaid"
-msgstr "Geline eşlik eden"
+msgstr "Nedime"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:279
@@ -2964,17 +2964,17 @@ msgstr "Brisbane, Avustralya"
 #. I18N: gedcom tag _BRTM
 #: app/GedcomTag.php:1073
 msgid "Brit milah"
-msgstr "Brit milah (Sünnet)"
+msgstr "Brit milah"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:253
 msgid "British Indian Ocean Territory"
-msgstr "İngiliz Hindistan Okyanus Toprakları"
+msgstr "İngiliz Hint Okyanusu Bölgesi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:524
 msgid "British Virgin Islands"
-msgstr "İngiliz Vırgın Adası"
+msgstr "İngiliz Virgin Adaları"
 
 #: resources/xml/reports/individual_ext_report.xml:319
 #: resources/xml/reports/individual_report.xml:316
@@ -3031,131 +3031,131 @@ msgstr "Defin"
 
 #: app/Module/IndividualFactsTabModule.php:456
 msgid "Burial of a brother"
-msgstr "Erkek kardeşin mezarı"
+msgstr "Bir kardeşin defni"
 
 #: app/Module/IndividualFactsTabModule.php:440
 msgid "Burial of a child"
-msgstr "Çocuğunun mezarı"
+msgstr "Bir çocuğun defni"
 
 #: app/Module/IndividualFactsTabModule.php:439
 msgid "Burial of a daughter"
-msgstr "Kızının mezarı"
+msgstr "Bir kızın defni"
 
 #: app/Module/IndividualFactsTabModule.php:734
 msgid "Burial of a father"
-msgstr "Babanın defni"
+msgstr "Bir babanın defni"
 
 #: app/Module/IndividualFactsTabModule.php:494
 #: app/Module/IndividualFactsTabModule.php:512
 #: app/Module/IndividualFactsTabModule.php:530
 msgid "Burial of a grandchild"
-msgstr "Torunun mezarı"
+msgstr "Bir torunun defni"
 
 #: app/Module/IndividualFactsTabModule.php:493
 msgid "Burial of a granddaughter"
-msgstr "Kız torunun mezarı"
+msgstr "Bir kız torunun defni"
 
 #: app/Module/IndividualFactsTabModule.php:511
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "Kız torunun mezarı"
+msgstr "Bir kız torunun defni"
 
 #: app/Module/IndividualFactsTabModule.php:529
 msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "Kız torunun mezarı"
+msgstr "Bir kız torunun defni"
 
 #: app/Module/IndividualFactsTabModule.php:752
 msgid "Burial of a grandfather"
-msgstr "Büyükbabanın mezarı"
+msgstr "Bir büyükbabanın defni"
 
 #: app/Module/IndividualFactsTabModule.php:753
 msgid "Burial of a grandmother"
-msgstr "Babaannenin mezarı"
+msgstr "Bir büyükannenin defni"
 
 #: app/Module/IndividualFactsTabModule.php:754
 #: app/Module/IndividualFactsTabModule.php:772
 #: app/Module/IndividualFactsTabModule.php:790
 msgid "Burial of a grandparent"
-msgstr "Büyük ebeveynin mezarı"
+msgstr "Bir büyükanne ve büyükbabanın defni"
 
 #: app/Module/IndividualFactsTabModule.php:492
 msgid "Burial of a grandson"
-msgstr "Erkek torunun mezarı"
+msgstr "Bir erkek torunun defni"
 
 #: app/Module/IndividualFactsTabModule.php:510
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr "Erkek torunun mezarı"
+msgstr "Bir erkek torunun defni"
 
 #: app/Module/IndividualFactsTabModule.php:528
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr "Erkek torunun mezarı"
+msgstr "Bir erkek torunun defni"
 
 #: app/Module/IndividualFactsTabModule.php:474
 msgid "Burial of a half-brother"
-msgstr "Üvey-erkek kardeşin mezarı"
+msgstr "Bir üvey erkek kardeşin defni"
 
 #: app/Module/IndividualFactsTabModule.php:476
 msgid "Burial of a half-sibling"
-msgstr "Üvey-kardeşin mezarı"
+msgstr "Bir üvey kardeşin defni"
 
 #: app/Module/IndividualFactsTabModule.php:475
 msgid "Burial of a half-sister"
-msgstr "Üvey-kız kardeşin mezarı"
+msgstr "Bir üvey kız kardeşin defni"
 
 #: app/Module/IndividualFactsTabModule.php:253
 msgid "Burial of a husband"
-msgstr "Kocasının defni"
+msgstr "Bir kocanın defni"
 
 #: app/Module/IndividualFactsTabModule.php:770
 msgid "Burial of a maternal grandfather"
-msgstr "Dedenin mezarı"
+msgstr "Bir anne büyükbabasının defni"
 
 #: app/Module/IndividualFactsTabModule.php:771
 msgid "Burial of a maternal grandmother"
-msgstr "Anneannenin mezarı"
+msgstr "Bir anneannenin defni"
 
 #: app/Module/IndividualFactsTabModule.php:735
 msgid "Burial of a mother"
-msgstr "Annenin defni"
+msgstr "Bir annenin defni"
 
 #: app/Module/IndividualFactsTabModule.php:736
 msgid "Burial of a parent"
-msgstr "Ebeveynin defni"
+msgstr "Bir ebeveynin defni"
 
 #: app/Module/IndividualFactsTabModule.php:788
 msgid "Burial of a paternal grandfather"
-msgstr "Büyükbabanın mezarı"
+msgstr "Bir baba tarafından büyükbabanın defni"
 
 #: app/Module/IndividualFactsTabModule.php:789
 msgid "Burial of a paternal grandmother"
-msgstr "Babaannenin mezarı"
+msgstr "Bir baba tarafından büyükannenin defni"
 
 #: app/Module/IndividualFactsTabModule.php:458
 msgid "Burial of a sibling"
-msgstr "Kardeşin defni"
+msgstr "Bir kardeşin defni"
 
 #: app/Module/IndividualFactsTabModule.php:457
 msgid "Burial of a sister"
-msgstr "Kız kardeşin defni"
+msgstr "Bir kız kardeşin defni"
 
 #: app/Module/IndividualFactsTabModule.php:438
 msgid "Burial of a son"
-msgstr "Oğlunun defni"
+msgstr "Bir oğlun defni"
 
 #: app/Module/IndividualFactsTabModule.php:255
 msgid "Burial of a spouse"
-msgstr "Eşinin defni"
+msgstr "Bir eşin defni"
 
 #: app/Module/IndividualFactsTabModule.php:254
 msgid "Burial of a wife"
-msgstr "Karısının defni"
+msgstr "Bir eşin defni"
 
 #: resources/xml/reports/cemetery_report.xml:5
 msgid "Burial place contains"
-msgstr "Mezar Yeri içeren"
+msgstr "Defin yeri şunları içerir"
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:40
@@ -3191,12 +3191,12 @@ msgstr "Alıcı"
 #. I18N: Help text for the "Port number" site configuration setting
 #: resources/views/admin/site-mail.phtml:99
 msgid "By default, SMTP works on port 25."
-msgstr "Varsayılan olarak SMTP bağlantı noktası 25 üzerinde çalışır."
+msgstr "Varsayılan olarak, SMTP 25 numaralı bağlantı noktasında çalışır."
 
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:43
 msgid "CKEditor™"
-msgstr "CKEditör™"
+msgstr "CKEditor™"
 
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:82
@@ -3229,7 +3229,7 @@ msgstr "Calgary, Alberta, Kanada"
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:548 resources/views/modals/source-fields.phtml:45
 msgid "Call number"
-msgstr "Telefon Numara"
+msgstr "Çağrı numarası"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:280
@@ -3253,8 +3253,9 @@ msgstr "Kanada"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:142
+#, fuzzy
 msgid "Cape Verde"
-msgstr "Kap Verd"
+msgstr "Cape Verde"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:294
@@ -3273,12 +3274,12 @@ msgstr "Cardston, Alberta, Kanada"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:52
 msgid "Case insensitive"
-msgstr "Büyük/küçük hafre duyarsız"
+msgstr "Büyük/küçük harfe duyarlı"
 
 #. I18N: gedcom tag CAST
 #: app/GedcomTag.php:551
 msgid "Caste"
-msgstr "Sosyal Sınıf"
+msgstr "Sosyal sınıf"
 
 #: resources/views/modules/statistics-chart/custom.phtml:72
 msgid "Categories"
@@ -3287,7 +3288,7 @@ msgstr "Kategoriler"
 #. I18N: gedcom tag CAUS
 #: app/GedcomTag.php:554
 msgid "Cause"
-msgstr "Sebep"
+msgstr "Neden"
 
 #: app/GedcomTag.php:645
 msgid "Cause of death"
@@ -3297,7 +3298,7 @@ msgstr "Ölüm nedeni"
 #: resources/views/admin/trees-merge.phtml:60
 #: resources/views/admin/trees-renumber.phtml:46
 msgid "Caution! This may take a long time. Be patient."
-msgstr "Dikkat! Bu uzun zaman alabilir. Sabırlı olun."
+msgstr "Dikkat! Bu uzun bir zaman alabilir. Sabırlı olun."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:151
@@ -3312,7 +3313,7 @@ msgstr "Cebu City, Filipinler"
 #. I18N: gedcom tag CEME
 #: app/GedcomTag.php:557
 msgid "Cemetery"
-msgstr "Mezar"
+msgstr "Mezarlık"
 
 #. I18N: gedcom tag CENS
 #: app/GedcomTag.php:560
@@ -3322,20 +3323,20 @@ msgstr "Nüfus sayımı"
 #. I18N: Name of a module
 #: app/Module/CensusAssistantModule.php:52
 msgid "Census assistant"
-msgstr "Nüfus sayım asistanı"
+msgstr "Nüfus sayımı asistanı"
 
 #: app/GedcomTag.php:562
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:19
 msgid "Census date"
-msgstr "Nüfus sayım tarihi"
+msgstr "Nüfus sayımı tarihi"
 
 #: app/GedcomTag.php:564
 msgid "Census place"
-msgstr "Nüfus sayım yeri"
+msgstr "Nüfus sayımı yeri"
 
 #: resources/views/modules/census-assistant.phtml:106
 msgid "Census transcript"
-msgstr "Nüfus sayım sureti"
+msgstr "Nüfus sayımı transkripti"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:116
@@ -3377,7 +3378,7 @@ msgstr "Çad"
 #: app/Http/RequestHandlers/ChangeFamilyMembersPage.php:54
 #: resources/views/family-page-menu.phtml:23
 msgid "Change family members"
-msgstr "Aile Üyelerini Değiştir"
+msgstr "Aile üyelerini değiştir"
 
 #: app/Http/RequestHandlers/TreePageEdit.php:70
 msgid "Change the “Home page” blocks"
@@ -3385,7 +3386,7 @@ msgstr "\"Ana sayfa\" bloklarını değiştir"
 
 #: app/Http/RequestHandlers/UserPageEdit.php:70
 msgid "Change the “My page” blocks"
-msgstr "\"Benim sayfam\" bloklarını değiştir"
+msgstr "\"Sayfam\" bloklarını değiştir"
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:50
@@ -3413,7 +3414,7 @@ msgstr "%1$s tarihinde %2$s tarafından değiştirdi"
 #: resources/xml/reports/change_report.xml:3
 #: resources/xml/reports/change_report.xml:44
 msgid "Changes"
-msgstr "Değişenler"
+msgstr "Değişiklikler"
 
 #: app/Module/RecentChangesModule.php:178
 #, php-format
@@ -3425,7 +3426,7 @@ msgstr[1] "Son %s gün içindeki değişiklikler"
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:101
 #: resources/views/admin/trees.phtml:207
 msgid "Changes log"
-msgstr "Değişiklik günlüğü"
+msgstr "Değişiklikler günlüğü"
 
 #. I18N: gedcom tag CHAR
 #: app/GedcomTag.php:577
@@ -3435,18 +3436,18 @@ msgstr "Karakter kümesi"
 #: resources/views/admin/modules.phtml:208
 #: resources/views/admin/modules.phtml:211
 msgid "Chart"
-msgstr "Çizelge"
+msgstr "Grafik"
 
 #: app/Module/RelationshipsChartModule.php:407
 msgid "Chart preferences"
-msgstr "Çizelge tercihleri"
+msgstr "Grafik tercihleri"
 
 #: resources/views/modules/charts/config.phtml:9
 #: resources/views/modules/statistics-chart/custom.phtml:19
 #: resources/views/modules/statistics-chart/custom.phtml:148
 #: resources/views/modules/statistics-chart/custom.phtml:150
 msgid "Chart type"
-msgstr "Çizelge Tipi"
+msgstr "Grafik türü"
 
 #. I18N: Name of a module/block
 #. I18N: Name of a module
@@ -3458,7 +3459,7 @@ msgstr "Çizelge Tipi"
 #: resources/views/admin/modules.phtml:96
 #: resources/views/admin/trees-preferences.phtml:376
 msgid "Charts"
-msgstr "Çizelgeler"
+msgstr "Grafikler"
 
 #: app/Http/RequestHandlers/CheckTree.php:261
 #: resources/views/admin/trees.phtml:181
@@ -3471,11 +3472,11 @@ msgstr "Bekleyen değişiklikleri kontrol et…"
 
 #: resources/views/setup/step-2-server-checks.phtml:39
 msgid "Checking server capacity"
-msgstr "Sunucu kapasitesi kontrol ediliyor"
+msgstr "Sunucu kapasitesini kontrol etme"
 
 #: resources/views/setup/step-2-server-checks.phtml:22
 msgid "Checking server configuration"
-msgstr "Sunucu yapılandırması kontrol edliyor"
+msgstr "Sunucu yapılandırmasını kontrol etme"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:300
@@ -3515,7 +3516,7 @@ msgstr "Çocuklar"
 
 #: resources/views/statistics/families/children.phtml:12
 msgid "Children in family"
-msgstr "Ailenin çocukları"
+msgstr "Aile içindeki çocuklar"
 
 #: resources/xml/reports/ahnentafel_report.xml:390
 #: resources/xml/reports/descendancy_report.xml:483
@@ -3525,17 +3526,17 @@ msgstr "Çocukları "
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:99
 msgid "Children take a patronym instead of a surname."
-msgstr "Çocuk soyadı yerine baba tarafının lakabını (sülale adı) alır."
+msgstr "Çocuklar soyadı yerine bir aile adı alırlar."
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition.php:93
 msgid "Children take one surname from the father and one surname from the mother."
-msgstr "Çocuk bir babadan bir anneden soyadı alır."
+msgstr "Çocuklar babadan bir soyadı ve anneden bir soyadı alırlar."
 
 #. I18N: In the Portuguese surname tradition, ...
 #: app/SurnameTradition.php:96
 msgid "Children take one surname from the mother and one surname from the father."
-msgstr "Çocuk bir anneden bir babadan soyadı alır."
+msgstr "Çocuklar anneden bir soyadı ve babadan bir soyadı alırlar."
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the patrilineal surname tradition, ...
@@ -3544,12 +3545,12 @@ msgstr "Çocuk bir anneden bir babadan soyadı alır."
 #: app/SurnameTradition.php:79 app/SurnameTradition.php:86
 #: app/SurnameTradition.php:102 app/SurnameTradition.php:109
 msgid "Children take their father’s surname."
-msgstr "Çocuk babasının soyadını alır."
+msgstr "Çocuklar babalarının soyadını alırlar."
 
 #. I18N: In the matrilineal surname tradition, ...
 #: app/SurnameTradition.php:90
 msgid "Children take their mother’s surname."
-msgstr "Çocuk annesinin soyadını alır."
+msgstr "Çocuklar annelerinin soyadını alırlar."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:124
@@ -3573,7 +3574,7 @@ msgstr "Akrabaları seç"
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:51
 msgid "Choose user defined welcome text typed below"
-msgstr "Aşağıda yazılı Özel Hoş Geldiniz metnini seç"
+msgstr "Aşağıda yazılan kullanıcı tanımlı karşılama metnini seçin"
 
 #. I18N: gedcom tag CHR
 #: app/GedcomTag.php:583 resources/xml/reports/family_group_report.xml:206
@@ -3581,82 +3582,82 @@ msgstr "Aşağıda yazılı Özel Hoş Geldiniz metnini seç"
 #: resources/xml/reports/family_group_report.xml:904
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Christening"
-msgstr "Vaftiz etme"
+msgstr "Vaftiz"
 
 #: app/Module/IndividualFactsTabModule.php:323
 msgid "Christening of a brother"
-msgstr "Bir erkek kardeşinin vaftiz etme"
+msgstr "Bir erkek kardeşin vaftiz edilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:302
 msgid "Christening of a child"
-msgstr "Bir çocuğun vaftiz etme"
+msgstr "Bir çocuğun vaftiz edilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:301
 msgid "Christening of a daughter"
-msgstr "Bir kızının vaftiz etme"
+msgstr "Bir kızın vaftiz edilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:371
 #: app/Module/IndividualFactsTabModule.php:394
 #: app/Module/IndividualFactsTabModule.php:417
 msgid "Christening of a grandchild"
-msgstr "Bir torunu vaftiz etme"
+msgstr "Bir torunun vaftiz edilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:370
 msgid "Christening of a granddaughter"
-msgstr "Bir kız torunun vaftiz etme"
+msgstr "Bir kız torunun vaftiz edilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:393
 msgctxt "daughter’s daughter"
 msgid "Christening of a granddaughter"
-msgstr "Bir kız torunun vaftiz etme"
+msgstr "Bir kız torunun vaftiz edilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:416
 msgctxt "son’s daughter"
 msgid "Christening of a granddaughter"
-msgstr "Bir kız torunun vaftiz etme"
+msgstr "Bir kız torunun vaftiz edilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:369
 msgid "Christening of a grandson"
-msgstr "Bir erkek torunun vaftiz etme"
+msgstr "Bir erkek torunun vaftiz edilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:392
 msgctxt "daughter’s son"
 msgid "Christening of a grandson"
-msgstr "Bir erkek torunun vaftiz etme"
+msgstr "Bir erkek torunun vaftiz edilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:415
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr "Bir erkek torunun vaftiz etme"
+msgstr "Bir erkek torunun vaftiz edilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:346
 msgid "Christening of a half-brother"
-msgstr "Bir üvey erkek kardeşinin vaftiz etme"
+msgstr "Bir üvey erkek kardeşin vaftiz edilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:348
 msgid "Christening of a half-sibling"
-msgstr "Bir üvey kardeşin vaftiz etme"
+msgstr "Bir üvey kardeşin vaftiz edilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:347
 msgid "Christening of a half-sister"
-msgstr "Bir üvey kız kardeşin vaftiz etme"
+msgstr "Bir üvey kız kardeşin vaftiz edilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:325
 msgid "Christening of a sibling"
-msgstr "Bir kardeşin vaftiz etme"
+msgstr "Bir kardeşin vaftiz edilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:324
 msgid "Christening of a sister"
-msgstr "Bir kız kardeşin vaftiz etme"
+msgstr "Bir kız kardeşin vaftiz edilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:300
 msgid "Christening of a son"
-msgstr "Bir oğlunun vaftiz etme"
+msgstr "Bir oğlun vaftiz edilmesi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
 msgid "Christmas Island"
-msgstr "Chrıstmas Adası"
+msgstr "Noel Adası"
 
 #: app/GedcomCode/GedcomCodeRela.php:130
 msgid "Circumciser"
@@ -3672,12 +3673,12 @@ msgstr "Alıntı"
 #: resources/xml/reports/fact_sources.xml:277
 #: resources/xml/reports/fact_sources.xml:323
 msgid "Citation details"
-msgstr "Alıntı Detayı"
+msgstr "Alıntı detayları"
 
 #. I18N: gedcom tag CITN
 #: app/GedcomTag.php:593
 msgid "Citizenship"
-msgstr "Yurttaşlık"
+msgstr "Vatandaşlık"
 
 #. I18N: gedcom tag CITY
 #: app/GedcomTag.php:596
@@ -3693,41 +3694,41 @@ msgstr "Ciudad Juarez, Meksika"
 #: app/Functions/FunctionsPrintFacts.php:171 app/GedcomTag.php:813
 #: resources/xml/reports/fact_sources.xml:202
 msgid "Civil marriage"
-msgstr "Medeni Nikâh"
+msgstr "Sivil evlilik"
 
 #: app/GedcomCode/GedcomCodeRela.php:141
 msgid "Civil registrar"
-msgstr "Nüfus Şefi"
+msgstr "Sivil kayıt memuru"
 
 #: app/GedcomCode/GedcomCodeRela.php:138
 msgctxt "FEMALE"
 msgid "Civil registrar"
-msgstr "Nüfus Şefi"
+msgstr "Sivil kayıt memuru"
 
 #: app/GedcomCode/GedcomCodeRela.php:134
 msgctxt "MALE"
 msgid "Civil registrar"
-msgstr "Nüfus Şefi"
+msgstr "Sivil kayıt memuru"
 
 #: app/Http/RequestHandlers/CleanDataFolder.php:93
 #: resources/views/admin/control-panel.phtml:208
 msgid "Clean up data folder"
-msgstr "Veri klasörü temizle"
+msgstr "Veri klasörünü temizle"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:115
 msgid "Cleared but not yet completed"
-msgstr "Temizlendi ama henüz tamamlanmadı"
+msgstr "Temizlendi, ancak henüz tamamlanmadı"
 
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:128
 msgid "Clippings cart"
-msgstr "Küpür sepeti"
+msgstr "Kupürler sepeti"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1545
 msgid "Coat of arms"
-msgstr "Arma"
+msgstr "Armalı giysi"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:306
@@ -3742,17 +3743,17 @@ msgstr "Cocos (Keeling) Adaları"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:163
 msgid "Coffee and Cream"
-msgstr "Kahve ve krem"
+msgstr "Kahve ve krema"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:165
 msgid "Cold Day"
-msgstr "Soğuk Gün"
+msgstr "Soğuk gün"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:138
 msgid "Colombia"
-msgstr "Kolombia"
+msgstr "Kolombiya"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:309
@@ -3762,12 +3763,12 @@ msgstr "Colonia Juarez, Meksika"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:324
 msgid "Columbia River, Washington, United States"
-msgstr "Columbia River, Washington, ABD"
+msgstr "Columbia Nehri, Washington, ABD"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:312
 msgid "Columbia, South Carolina, United States"
-msgstr "Columbia, Güney Carolina"
+msgstr "Columbia, Güney Carolina, ABD"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:315
@@ -3784,33 +3785,33 @@ msgstr "Yorum"
 #: resources/views/modules/census-assistant.phtml:79
 #: resources/views/register-page.phtml:83
 msgid "Comments"
-msgstr "Kendinizi Tanıtın"
+msgstr "Yorumlar"
 
 #. I18N: gedcom tag _COML
 #: app/GedcomTag.php:1081
 msgid "Common law marriage"
-msgstr "Resmi Nikahsız Evlilik"
+msgstr "Genel hukuk evliliği"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:87
 msgid "Communicate directly with other users, using private messages."
-msgstr "Özel mesajlaşmayı kullanarak, diğer kullanıcılar ile doğrudan iletişim kurabilirsiniz."
+msgstr "Özel mesajları kullanarak doğrudan diğer kullanıcılarla iletişim kurun."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:140
 msgid "Comoros"
-msgstr "Komor Adaları"
+msgstr "Komorlar"
 
 #. I18N: Name of a module/chart
 #: app/Module/CompactTreeChartModule.php:85
 msgid "Compact tree"
-msgstr "Sıkıştırılmış Çizelge"
+msgstr "Kompakt ağaç"
 
 #. I18N: %s is an individual’s name
 #: app/Module/CompactTreeChartModule.php:131
 #, php-format
 msgid "Compact tree of %s"
-msgstr "%s için Sıkıştırılmış Çizelge"
+msgstr "%s için kompakt ağaç"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:37
 msgid "Comparison"
@@ -3834,26 +3835,26 @@ msgstr "GEDCOM dosyasını sıkıştır"
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:602
 msgid "Concatenation"
-msgstr "Birleştirme"
+msgstr "Birbirine bağlama"
 
 #. I18N: gedcom tag CONF
 #: app/GedcomTag.php:608 resources/xml/reports/missing_facts_report.xml:19
 msgid "Confirmation"
-msgstr "Tasdik"
+msgstr "Onay"
 
 #: resources/views/setup/step-3-database-type.phtml:17
 msgid "Connection to database server"
-msgstr "Veritabanı sunucusu bağlantısı"
+msgstr "Veri tabanı sunucusuna bağlantı"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:57
 #: resources/views/admin/trees-preferences.phtml:127
 msgid "Contact information"
-msgstr "İletişim Bilgileri"
+msgstr "İletişim bilgileri"
 
 #: resources/views/edit-account-page.phtml:123
 msgid "Contact method"
-msgstr "İrtibat türü"
+msgstr "İletişim yöntemi"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:262
 msgid "Contains"
@@ -3937,23 +3938,23 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:49
 msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-msgstr "_PRIM etiketlerini GEDCOM 5.5.1'e dönüştürme"
+msgstr "_PRIM etiketlerini GEDCOM 5.5.1'e dönüştür"
 
 #: app/Http/RequestHandlers/HelpText.php:279
 #: resources/views/admin/trees-export.phtml:66
 #: resources/views/modules/clippings/download.phtml:70
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr "UTF-8 den ISO-8859-1 dönüştür"
+msgstr "UTF-8'den ISO-8859-1'e dönüştür"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr "Şuna Dönüştür"
+msgstr "Şuna dönüştür"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
 msgid "Cook Islands"
-msgstr "Cook Adası"
+msgstr "Cook Adaları"
 
 #: resources/views/modules/privacy-policy/page.phtml:20
 msgid "Cookies"
@@ -3980,7 +3981,7 @@ msgstr "Kopyala"
 #: resources/views/admin/trees-merge.phtml:49
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr "%1$s daki bütün kayıtları %2$s ya kopyala."
+msgstr "Tüm kayıtları %1$s'den %2$s'e kopyalayın."
 
 #: app/Http/Controllers/Admin/UpgradeController.php:230
 msgid "Copy files…"
@@ -4004,7 +4005,7 @@ msgstr "Şirket"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameSlashesAndSpaces.php:71
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "Eski soy ağacı programları formu tarafından 'Adem/GENÇ/' veya 'Adem /GENÇ' olarak üretilen NAME kayıtlarını düzeltmek."
+msgstr "Daha eski şecere programları tarafından üretilen \"John/DOE/\" veya \"John/DOE\" formundaki doğru AD kayıtları."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:144
@@ -4018,7 +4019,7 @@ msgstr "Fildişi Sahili"
 
 #: resources/views/verify-failure-page.phtml:13
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
-msgstr "Girdiğiniz bilgiler doğrulanamadı. Lütfen yeniden deneyin yada daha fazla bilgi için site yöneticisine başvurun."
+msgstr "Girdiğiniz bilgiler doğrulanamadı. Lütfen tekrar deneyin veya daha fazla bilgi için site yöneticisine başvurun."
 
 #. I18N: Description of the “Hit counters” module
 #: app/Module/HitCountFooterModule.php:86
@@ -4041,37 +4042,37 @@ msgstr "Bir aile oluştur"
 #: app/Http/RequestHandlers/CreateTreePage.php:58
 #: resources/views/admin/control-panel.phtml:245
 msgid "Create a family tree"
-msgstr "Yeni bir aile ağacı oluştur"
+msgstr "Bir aile ağacı oluştur"
 
 #: app/Functions/FunctionsEdit.php:494
 #: resources/views/modals/create-media-from-file.phtml:16
 #: resources/views/modals/create-media-object.phtml:19
 msgid "Create a media object"
-msgstr "Yeni medya öğesi oluştur"
+msgstr "Bir medya nesnesi oluştur"
 
 #: app/Functions/FunctionsEdit.php:532
 #: resources/views/modals/create-repository.phtml:16
 msgid "Create a repository"
-msgstr "Depo oluştur"
+msgstr "Bir depo oluştur"
 
 #: app/Functions/FunctionsEdit.php:485
 #: resources/views/modals/create-note-object.phtml:16
 msgid "Create a shared note"
-msgstr "Yeni bir Paylaşılan Not oluştur"
+msgstr "Paylaşılan bir not oluştur"
 
 #: resources/views/modules/census-assistant.phtml:10
 msgid "Create a shared note using the census assistant"
-msgstr "Yardımcısı kullanarak yeni bir Paylaşılan Not oluşturun"
+msgstr "Sayım asistanını kullanarak paylaşılan bir not oluştur"
 
 #: app/Functions/FunctionsEdit.php:546
 #: resources/views/modals/create-source.phtml:16
 msgid "Create a source"
-msgstr "Yeni bir kaynak ekle"
+msgstr "Bir kaynak oluştur"
 
 #: app/Functions/FunctionsEdit.php:554
 #: resources/views/modals/create-submitter.phtml:16
 msgid "Create a submitter"
-msgstr "Gönderen oluştur"
+msgstr "Bir gönderici oluştur"
 
 #: app/Http/Controllers/Admin/UpgradeController.php:225
 msgid "Create a temporary folder…"
@@ -4083,15 +4084,15 @@ msgstr "Benzersiz bir dosya adı oluştur"
 
 #: app/Http/RequestHandlers/AddUnlinkedPage.php:51
 msgid "Create an individual"
-msgstr "Yeni birey oluştur"
+msgstr "Bir birey oluştur"
 
 #: resources/views/modules/statistics-chart/custom.phtml:11
 msgid "Create your own chart"
-msgstr "Kendi çizelgeni oluştur"
+msgstr "Kendi grafiğinizi oluşturun"
 
 #: resources/views/admin/synchronize-trees.phtml:18
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
-msgstr "Data klasöründeki her bir GEDCOM dosyası için bir soy ağacı oluşturma, güncelleme yada silme."
+msgstr "Veri klasöründeki her GEDCOM dosyası için bir aile ağacı oluşturun, güncelleyin ve silin."
 
 #. I18N: gedcom tag CREM
 #: app/GedcomTag.php:624 resources/xml/reports/family_group_report.xml:315
@@ -4101,11 +4102,11 @@ msgstr "Data klasöründeki her bir GEDCOM dosyası için bir soy ağacı oluşt
 #: resources/xml/reports/family_group_report.xml:1013
 #: resources/xml/reports/family_group_report.xml:1040
 msgid "Cremation"
-msgstr "Ölü yakma"
+msgstr "Kremasyon"
 
 #: app/Module/IndividualFactsTabModule.php:461
 msgid "Cremation of a brother"
-msgstr "Bir erkek kardeşinin kremasyonu"
+msgstr "Bir erkek kardeşin kremasyonu"
 
 #: app/Module/IndividualFactsTabModule.php:445
 msgid "Cremation of a child"
@@ -4113,7 +4114,7 @@ msgstr "Bir çocuğun kremasyonu"
 
 #: app/Module/IndividualFactsTabModule.php:444
 msgid "Cremation of a daughter"
-msgstr "Bir kızının kremasyonu"
+msgstr "Bir kızın kremasyonu"
 
 #: app/Module/IndividualFactsTabModule.php:739
 msgid "Cremation of a father"
@@ -4139,7 +4140,7 @@ msgstr "Bir kız torunun kremasyonu"
 
 #: app/Module/IndividualFactsTabModule.php:757
 msgid "Cremation of a grandfather"
-msgstr "Bir dedenin kremasyonu"
+msgstr "Bir büyükbabanın kremasyonu"
 
 #: app/Module/IndividualFactsTabModule.php:758
 msgid "Cremation of a grandmother"
@@ -4149,7 +4150,7 @@ msgstr "Bir büyükannenin kremasyonu"
 #: app/Module/IndividualFactsTabModule.php:777
 #: app/Module/IndividualFactsTabModule.php:795
 msgid "Cremation of a grandparent"
-msgstr "Bir büyük-ebeveyn kremasyonu"
+msgstr "Bir büyük ebeveynin kremasyonu"
 
 #: app/Module/IndividualFactsTabModule.php:497
 msgid "Cremation of a grandson"
@@ -4167,15 +4168,15 @@ msgstr "Bir erkek torunun kremasyonu"
 
 #: app/Module/IndividualFactsTabModule.php:479
 msgid "Cremation of a half-brother"
-msgstr "Bir üvey-erkek kardeşin kremasyonu"
+msgstr "Bir üvey erkek kardeşin kremasyonu"
 
 #: app/Module/IndividualFactsTabModule.php:481
 msgid "Cremation of a half-sibling"
-msgstr "Bir üvey-kardeşin kremasyonu"
+msgstr "Bir üvey kardeşin kremasyonu"
 
 #: app/Module/IndividualFactsTabModule.php:480
 msgid "Cremation of a half-sister"
-msgstr "Bir üvey-kız kardeşin kremasyonu"
+msgstr "Bir üvey kız kardeşin kremasyonu"
 
 #: app/Module/IndividualFactsTabModule.php:258
 msgid "Cremation of a husband"
@@ -4203,7 +4204,7 @@ msgstr "Bir babanın büyükbabasının kremasyonu"
 
 #: app/Module/IndividualFactsTabModule.php:794
 msgid "Cremation of a paternal grandmother"
-msgstr "Bir babanın büyük annesinin kremasyonu"
+msgstr "Bir babanın büyükannesinin kremasyonu"
 
 #: app/Module/IndividualFactsTabModule.php:463
 msgid "Cremation of a sibling"
@@ -4215,7 +4216,7 @@ msgstr "Bir kız kardeşin kremasyonu"
 
 #: app/Module/IndividualFactsTabModule.php:443
 msgid "Cremation of a son"
-msgstr "Bir oğlunun kremasyonu"
+msgstr "Bir oğlun kremasyonu"
 
 #: app/Module/IndividualFactsTabModule.php:260
 msgid "Cremation of a spouse"
@@ -4223,7 +4224,7 @@ msgstr "Bir eşin kremasyonu"
 
 #: app/Module/IndividualFactsTabModule.php:259
 msgid "Cremation of a wife"
-msgstr "Bir hanımın kremasyonu"
+msgstr "Bir eşin kremasyonu"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:241
@@ -4247,11 +4248,11 @@ msgstr "Özel"
 #: resources/views/calendar-page.phtml:201
 #: resources/views/edit/add-fact-row.phtml:42
 msgid "Custom event"
-msgstr "Özel Hadise"
+msgstr "Özel olay"
 
 #: resources/views/edit/add-fact-row.phtml:39
 msgid "Custom fact"
-msgstr "Özel olgu"
+msgstr "Özel gerçek"
 
 #: resources/views/admin/custom-module-info.phtml:12
 msgid "Custom module"
@@ -4260,7 +4261,7 @@ msgstr "Özel modül"
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:38
 msgid "Custom welcome text"
-msgstr "Özel Hoş Geldiniz metni"
+msgstr "Özel karşılama metni"
 
 #: app/Module/ModuleThemeTrait.php:204 app/Module/ModuleThemeTrait.php:208
 msgid "Customize this page"
@@ -4279,12 +4280,12 @@ msgstr "Çek Cumhuriyeti"
 #. I18N: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail
 #: resources/views/admin/site-mail.phtml:184
 msgid "DKIM digital signature"
-msgstr "DKIM Dijital imza"
+msgstr "DKIM dijital imza"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1095
 msgid "DNA markers"
-msgstr "DNA işaretleyicileri"
+msgstr "DNA belirteçleri"
 
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:3493 resources/views/branches-page.phtml:43
@@ -4335,7 +4336,7 @@ msgstr "Veri klasörü"
 #: resources/views/setup/step-4-database-sqlite.phtml:21
 #: resources/views/setup/step-4-database-sqlsvr.phtml:16
 msgid "Database connection"
-msgstr "Veritabanı Bağlantısı"
+msgstr "Veritabanı bağlantısı"
 
 #: resources/views/setup/step-4-database-mysql.phtml:91
 #: resources/views/setup/step-4-database-pgsql.phtml:77
@@ -4358,7 +4359,7 @@ msgstr "Veritabanı türü"
 #: resources/views/setup/step-4-database-pgsql.phtml:53
 #: resources/views/setup/step-4-database-sqlsvr.phtml:53
 msgid "Database user account"
-msgstr "Veritabanı kullanıcı adı"
+msgstr "Veritabanı kullanıcı hesabı"
 
 #. I18N: gedcom tag DATE
 #: app/GedcomTag.php:640 app/Http/RequestHandlers/HelpText.php:206
@@ -4380,30 +4381,30 @@ msgstr "Tarih"
 
 #: resources/views/modules/relatives/tab.phtml:21
 msgid "Date differences"
-msgstr "Yaş Farklarını"
+msgstr "Tarih farklılıkları"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:497
 msgid "Date of LDS baptism"
-msgstr "LDS Vaftiz tarihi"
+msgstr "LDS vaftiz tarihi"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:973
 msgid "Date of LDS child sealing"
-msgstr "LDS Kapatma Çocuğun Tarihi"
+msgstr "LDS çocuk mühürleme tarihi"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:690
 msgid "Date of LDS endowment"
-msgstr "LDS Bağışın tarihi"
+msgstr "LDS bağış tarihi"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:224
 msgid "Date of LDS spouse sealing"
-msgstr "LDS Kapatma Eşin Tarihi"
+msgstr "LDS eş mühürleme tarihi"
 
 #: app/GedcomTag.php:462
 msgid "Date of adoption"
-msgstr "Kabul Tarihi"
+msgstr "Evlât edinme tarihi"
 
 #: app/GedcomTag.php:505 resources/xml/reports/missing_facts_report.xml:129
 msgid "Date of baptism"
@@ -4411,11 +4412,11 @@ msgstr "Vaftiz tarihi"
 
 #: app/GedcomTag.php:512 resources/xml/reports/missing_facts_report.xml:212
 msgid "Date of bar mitzvah"
-msgstr "Bar Mitzvah tarihi"
+msgstr "Bar mitzvah tarihi"
 
 #: app/GedcomTag.php:519 resources/xml/reports/missing_facts_report.xml:253
 msgid "Date of bat mitzvah"
-msgstr "Bat Mitzvah tarihi"
+msgstr "Bat mitzvah tarihi"
 
 #: app/GedcomTag.php:526 resources/xml/reports/fact_sources.xml:68
 #: resources/xml/reports/fact_sources.xml:272
@@ -4426,7 +4427,7 @@ msgstr "Doğum tarihi"
 
 #: app/GedcomTag.php:533
 msgid "Date of blessing"
-msgstr "Kutsanma tarihi"
+msgstr "Kutsama tarihi"
 
 #: app/GedcomTag.php:1075
 msgid "Date of brit milah"
@@ -4438,15 +4439,15 @@ msgstr "Defin tarihi"
 
 #: app/GedcomTag.php:585 resources/xml/reports/missing_facts_report.xml:170
 msgid "Date of christening"
-msgstr "Vaftiz Tarihi"
+msgstr "Vaftiz tarihi"
 
 #: app/GedcomTag.php:610 resources/xml/reports/missing_facts_report.xml:294
 msgid "Date of confirmation"
-msgstr "Onaylama tarihi"
+msgstr "Onay tarihi"
 
 #: app/GedcomTag.php:626
 msgid "Date of cremation"
-msgstr "Ölü Yakma Tarihi"
+msgstr "Kremasyon tarihi"
 
 #: app/GedcomTag.php:647 resources/xml/reports/cemetery_report.xml:46
 #: resources/xml/reports/fact_sources.xml:274
@@ -4460,7 +4461,7 @@ msgstr "Boşanma tarihi"
 
 #: app/GedcomTag.php:682
 msgid "Date of emigration"
-msgstr "Dışgöçün Tarihi"
+msgstr "Göç tarihi"
 
 #: app/GedcomTag.php:698 resources/xml/reports/missing_facts_report.xml:336
 msgid "Date of engagement"
@@ -4468,24 +4469,24 @@ msgstr "Nişan tarihi"
 
 #: app/GedcomTag.php:636 resources/views/cards/add-source-citation.phtml:62
 msgid "Date of entry in original source"
-msgstr "Orijinal kaynak girişin tarihi"
+msgstr "Orijinal kaynağa giriş tarihi"
 
 #: app/GedcomTag.php:705
 msgid "Date of event"
-msgstr "Hadisenin Tarihi"
+msgstr "Etkinlik tarihi"
 
 #: app/GedcomTag.php:734 resources/xml/reports/missing_facts_report.xml:378
 msgid "Date of first communion"
-msgstr "İlk cemaatı için tarihi"
+msgstr "İlk cemaat tarihi"
 
 #: app/GedcomTag.php:768
 msgid "Date of immigration"
-msgstr "Göç Tarihi"
+msgstr "Göç tarihi"
 
 #. I18N: gedcom tag CHAN:DATE
 #: app/GedcomTag.php:571
 msgid "Date of last change"
-msgstr "Son değiştirme zamanı"
+msgstr "Son değişiklik tarihi"
 
 #: app/GedcomTag.php:809 app/Http/RequestHandlers/SearchAdvancedPage.php:226
 #: resources/xml/reports/fact_sources.xml:319
@@ -4495,19 +4496,19 @@ msgstr "Evlilik tarihi"
 
 #: app/GedcomTag.php:796 resources/xml/reports/missing_facts_report.xml:420
 msgid "Date of marriage banns"
-msgstr "Evlilik ilanı için tarih"
+msgstr "Evlilik yasakları tarihi"
 
 #: app/GedcomTag.php:840
 msgid "Date of naturalization"
-msgstr "Vatandaşlık Tarihi"
+msgstr "Vatandaşlığa kabul tarihi"
 
 #: app/GedcomTag.php:878
 msgid "Date of ordination"
-msgstr "Kutsanma Tarihi"
+msgstr "Koordinasyon tarihi"
 
 #: app/GedcomTag.php:933
 msgid "Date of residence"
-msgstr "İkamet Tarihi"
+msgstr "İkamet tarihi"
 
 #: resources/views/help/date.phtml:91
 msgid "Date period"
@@ -4515,7 +4516,7 @@ msgstr "Tarih dönemi"
 
 #: resources/views/help/date.phtml:84
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr "Tarih dönemleri, bir meslek, bir durum olarak, belli bir süre için devam ettiğini belirtmek için kullanılır."
+msgstr "Tarih dönemleri, bir meslek gibi bir gerçeğin bir süre devam ettiğini belirtmek için kullanılır."
 
 #: resources/views/help/date.phtml:53
 #: resources/views/modules/statistics-chart/custom.phtml:89
@@ -4524,32 +4525,32 @@ msgstr "Tarih aralığı"
 
 #: resources/views/help/date.phtml:46
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
-msgstr "Tarih aralıkları bir doğum gibi bir olay olası bir aralık içinde bir bilinmeyen bir tarihte gerçekleştiğini belirtmek için kullanılır."
+msgstr "Tarih aralıkları, doğum gibi bir olayın olası bir aralıkta bilinmeyen bir tarihte gerçekleştiğini belirtmek için kullanılır."
 
 #: resources/views/admin/users.phtml:25
 msgid "Date registered"
-msgstr "Üyelik tarihi"
+msgstr "Tarih kayıtlı"
 
 #: app/Module/UserMessagesModule.php:183
 msgid "Date sent"
-msgstr "Gönderme Tarihi"
+msgstr "Gönderilme tarihi"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:103
 #, php-format
 msgid "Dates are only converted if they are valid for the calendar. For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar."
-msgstr "Sadece geçerli takvim tarihleri dönüştürülür. Örneğin, sadece %1$s ile %2$s tarihleri arası Fransız takvimine dönüştürülür, ve sadece %3$s tarihinden sonraki tarihler Miladi takvime dönüştürülür."
+msgstr "Tarihler, yalnızca takvim için geçerli olmaları durumunda dönüştürülür. Örneğin, yalnızca %1$s ile %2$s arasındaki tarihler Fransız takvimine dönüştürülecek ve yalnızca %3$s'den sonraki tarihler Miladi takvime dönüştürülecektir."
 
 #: resources/views/help/date.phtml:8
 msgid "Dates are stored using English abbreviations and keywords. Shortcuts are available as alternatives to these abbreviations and keywords."
-msgstr "Tarihler İngilizce kısaltmalar ve anahtar kelimeler kullanılarak depolanır. Kısayollar bu kısaltmalar ve anahtar kelimeler alternatif olarak kullanılabilir."
+msgstr "Tarihler, İngilizce kısaltmalar ve anahtar kelimeler kullanılarak saklanır. Kısayollar, bu kısaltmalara ve anahtar kelimelere alternatif olarak mevcuttur."
 
 #: resources/views/edit/change-family-members.phtml:52
 #: resources/xml/reports/family_group_report.xml:809
 #: resources/xml/reports/individual_ext_report.xml:562
 #: resources/xml/reports/individual_report.xml:566
 msgid "Daughter"
-msgstr "Kız evlat"
+msgstr "Kız evlât"
 
 #. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:362
@@ -4708,162 +4709,162 @@ msgstr "Vefat"
 
 #: app/Statistics/Google/ChartDistribution.php:343
 msgid "Death by country"
-msgstr "Ülkelere göre ölüm"
+msgstr "Ülkeye göre ölüm"
 
 #: resources/xml/reports/bdm_report.xml:10
 #: resources/xml/reports/death_report.xml:8
 msgid "Death date range end"
-msgstr "Ölüm Tarihinde bitir"
+msgstr "Ölüm tarih aralığı sonu"
 
 #: resources/xml/reports/bdm_report.xml:9
 #: resources/xml/reports/death_report.xml:7
 msgid "Death date range start"
-msgstr "Ölüm Tarihinden başla"
+msgstr "Ölüm tarih aralığı başlangıcı"
 
 #: app/Module/IndividualFactsTabModule.php:451
 msgid "Death of a brother"
-msgstr "Erkek kardeşim ölümü"
+msgstr "Bir erkek kardeşin ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:435
 #: resources/views/admin/trees-preferences.phtml:472
 msgid "Death of a child"
-msgstr "Çocuğunun ölümü"
+msgstr "Bir çocuğun ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:434
 msgid "Death of a daughter"
-msgstr "Kız evladın ölümü"
+msgstr "Bir kızın ölümü"
 
 #: app/Functions/FunctionsPrint.php:218
 #: app/Module/IndividualFactsTabModule.php:729
 msgid "Death of a father"
-msgstr "Babanın ölümü"
+msgstr "Bir babanın ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:489
 #: app/Module/IndividualFactsTabModule.php:507
 #: app/Module/IndividualFactsTabModule.php:525
 #: resources/views/admin/trees-preferences.phtml:466
 msgid "Death of a grandchild"
-msgstr "Torununun ölümü"
+msgstr "Bir torunun ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:488
 msgid "Death of a granddaughter"
-msgstr "Kız torunu ölümü"
+msgstr "Bir kız torunun ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:506
 msgctxt "daughter’s daughter"
 msgid "Death of a granddaughter"
-msgstr "Kız torunu ölümü"
+msgstr "Bir kız torunun ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:524
 msgctxt "son’s daughter"
 msgid "Death of a granddaughter"
-msgstr "Kız torunu ölümü"
+msgstr "Bir kız torunun ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:747
 msgid "Death of a grandfather"
-msgstr "Dedenin ölümü"
+msgstr "Bir büyükbabanın ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:748
 msgid "Death of a grandmother"
-msgstr "Büyükannenin ölümü"
+msgstr "Bir büyükannenin ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:749
 #: app/Module/IndividualFactsTabModule.php:767
 #: app/Module/IndividualFactsTabModule.php:785
 #: resources/views/admin/trees-preferences.phtml:496
 msgid "Death of a grandparent"
-msgstr "Büyük ebeveynin ölümü"
+msgstr "Bir büyükanne ve büyükbabanın ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:487
 msgid "Death of a grandson"
-msgstr "Erkek torunu ölümü"
+msgstr "Bir erkek torunun ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:505
 msgctxt "daughter’s son"
 msgid "Death of a grandson"
-msgstr "Erkek torunu ölümü"
+msgstr "Bir erkek torunun ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:523
 msgctxt "son’s son"
 msgid "Death of a grandson"
-msgstr "Erkek torunu ölümü"
+msgstr "Bir erkek torunun ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:469
 msgid "Death of a half-brother"
-msgstr "Üvey-erkek kardeşinin ölümü"
+msgstr "Bir üvey erkek kardeşin ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:471
 msgid "Death of a half-sibling"
-msgstr "Üvey-kardeşinin ölümü"
+msgstr "Bir üvey kardeşin ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:470
 msgid "Death of a half-sister"
-msgstr "Üvey-kız kardeşinin ölümü"
+msgstr "Bir üvey kız kardeşin ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:248
 msgid "Death of a husband"
-msgstr "Kocanın ölümü"
+msgstr "Bir kocanın ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:765
 msgid "Death of a maternal grandfather"
-msgstr "Dedenin ölümü"
+msgstr "Bir anne büyükbabasının ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:766
 msgid "Death of a maternal grandmother"
-msgstr "Anneannenin ölümü"
+msgstr "Bir anne büyükannenin ölümü"
 
 #: app/Functions/FunctionsPrint.php:210
 #: app/Module/IndividualFactsTabModule.php:730
 msgid "Death of a mother"
-msgstr "Annenin ölümü"
+msgstr "Bir annenin ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:731
 #: resources/views/admin/trees-preferences.phtml:484
 msgid "Death of a parent"
-msgstr "Ebeveynin ölümü"
+msgstr "Bir ebeveynin ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:783
 msgid "Death of a paternal grandfather"
-msgstr "Dedenin ölümü"
+msgstr "Bir babanın büyükbabasının ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:784
 msgid "Death of a paternal grandmother"
-msgstr "Babaannenin ölümü"
+msgstr "Bir babanın babaannesinin ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:453
 #: resources/views/admin/trees-preferences.phtml:478
 msgid "Death of a sibling"
-msgstr "Kardeşin ölümü"
+msgstr "Bir kardeşin ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:452
 msgid "Death of a sister"
-msgstr "Kız kardeşin ölümü"
+msgstr "Bir kız kardeşin ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:433
 msgid "Death of a son"
-msgstr "Oğlunun ölümü"
+msgstr "Bir oğlun ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:250
 #: resources/views/admin/trees-preferences.phtml:490
 msgid "Death of a spouse"
-msgstr "Eşin ölümü"
+msgstr "Bir eşin ölümü"
 
 #: app/Module/IndividualFactsTabModule.php:249
 msgid "Death of a wife"
-msgstr "Hanımın ölümü"
+msgstr "Bir hanımın ölümü"
 
 #. I18N: gedcom tag _DETS
 #: app/GedcomTag.php:1092
 msgid "Death of one spouse"
-msgstr "Bir Eşinin Ölümü"
+msgstr "Bir eşin ölümü"
 
 #: resources/xml/reports/death_report.xml:6
 msgid "Death place contains"
-msgstr "Ölüm Yeri içerecekler"
+msgstr "Ölüm yeri içerir"
 
 #: resources/views/statistics/other/places.phtml:30
 msgid "Death places"
-msgstr "Vefat yerleri"
+msgstr "Ölüm yerleri"
 
 #. I18N: Name of a module/report
 #: app/Module/DeathReportModule.php:40
@@ -4871,7 +4872,7 @@ msgstr "Vefat yerleri"
 #: resources/xml/reports/death_report.xml:3
 #: resources/xml/reports/death_report.xml:32
 msgid "Deaths"
-msgstr "Vefatlar"
+msgstr "Ölümler"
 
 #: app/Statistics/Google/ChartDeath.php:129
 #: resources/views/statistics/individuals/total-events.phtml:79
@@ -4929,7 +4930,7 @@ msgstr "Decidi"
 
 #: app/Module/UserWelcomeModule.php:101 app/Module/WelcomeBlockModule.php:100
 msgid "Default chart"
-msgstr "Varsayılan çizelge"
+msgstr "Varsayılan grafik"
 
 #: resources/views/admin/trees.phtml:126
 msgid "Default family tree"
@@ -5001,38 +5002,38 @@ msgstr "Sil"
 
 #: resources/views/admin/map-import-form.phtml:55
 msgid "Delete all existing geographic data before importing the file."
-msgstr "Dosyayı almadan önce varolan tüm coğrafi verileri sil."
+msgstr "Dosyayı içe aktarmadan önce mevcut tüm coğrafi verileri silin."
 
 #: app/Http/RequestHandlers/UsersCleanupPage.php:66
 #: resources/views/admin/control-panel.phtml:471
 msgid "Delete inactive users"
-msgstr "Aktif olmayan kullanıcıları sil"
+msgstr "Etkin olmayan kullanıcıları silin"
 
 #: app/Module/UserMessagesModule.php:231
 msgid "Delete selected messages"
-msgstr "Seçilen Mesajları Sil"
+msgstr "Seçili mesajları silin"
 
 #: resources/views/admin/modules.phtml:45
 msgid "Delete the preferences for this module."
-msgstr "Bu modülün ayarlarını sil."
+msgstr "Bu modül için tercihleri silin."
 
 #: resources/views/individual-name.phtml:94
 #: resources/views/individual-name.phtml:96
 msgid "Delete this name"
-msgstr "Adı sil"
+msgstr "Bu adı sil"
 
 #: resources/views/edit-account-page.phtml:164
 msgid "Delete your account"
-msgstr "Hesabımı sil"
+msgstr "Hesabınızı silin"
 
 #: resources/views/family-page-menu.phtml:54
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr "Bu aileyi silerseniz buna bağlı tüm bireyler (çocukları, eşleri) ile bağlantıyı koparmış olacaksınız. ancak bu bireyler silinmeyerek bağlantısız bir şekilde kalacaktır. Yinede siz bu aileyi silmek istediğinizden emin misiniz?"
+msgstr "Ailenin silinmesi, tüm bireylerin birbirleriyle olan bağlantısını kesecek, ancak bireyleri yerinde bırakacaktır. Bu aileyi silmek istediğinizden emin misiniz?"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
 msgid "Democratic Republic of the Congo"
-msgstr "Kongo (Kinshasa)"
+msgstr "Kongo Demokratik Cumhuriyeti"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:163
@@ -5046,7 +5047,7 @@ msgstr "Denver, Colorado, ABD"
 
 #: resources/views/admin/upgrade/wizard.phtml:26
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr "Sunucu ayarlarınıza bağlı olarak otomatik olarak güncelleyebilirsiniz."
+msgstr "Sunucu yapılandırmanıza bağlı olarak, otomatik olarak yükseltme yapabilirsiniz."
 
 #: resources/views/modules/family-book-chart/page.phtml:35
 msgid "Descendant generations"
@@ -5066,22 +5067,22 @@ msgstr "Soyundan nesiller"
 #: resources/xml/reports/missing_facts_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:6
 msgid "Descendants"
-msgstr "Bireyin Nesilleri"
+msgstr "Nesilleri"
 
 #. I18N: gedcom tag DESI
 #: app/GedcomTag.php:655
 msgid "Descendants interest"
-msgstr "Zürriyet Nema"
+msgstr "Nesilleri ilgi"
 
 #: resources/xml/reports/descendancy_report.xml:42
 msgid "Descendants of "
-msgstr "Soyu "
+msgstr "Nesilleri "
 
 #. I18N: %s is an individual’s name
 #: app/Module/DescendancyChartModule.php:154
 #, php-format
 msgid "Descendants of %s"
-msgstr "%s için Nesiller Çizelgesi"
+msgstr "%s nesilleri"
 
 #. I18N: gedcom tag DSCR
 #: app/GedcomTag.php:667 resources/views/admin/modules.phtml:72
@@ -5092,12 +5093,12 @@ msgstr "Açıklama"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:194
 msgid "Description META tag"
-msgstr "META etiket açıklama"
+msgstr "Açıklama META etiketi"
 
 #. I18N: gedcom tag DEST
 #: app/GedcomTag.php:658
 msgid "Destination"
-msgstr "Gidilecek yer"
+msgstr "Hedef"
 
 #: resources/views/admin/merge-records-step-2.phtml:39
 #: resources/views/admin/merge-records-step-2.phtml:86
@@ -5112,7 +5113,7 @@ msgstr "Ayrıntılar"
 
 #: resources/views/admin/site-registration.phtml:58
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
-msgstr "Yeni kullanıcı detayları, ilgili soyağacının yetkili kişisine gönderilecektir."
+msgstr "Yeni kullanıcı hakkında ayrıntılı bilgi, ilgili aile ağacının şecere iletişim sorumlusuna gönderilecektir."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:336
@@ -5208,40 +5209,40 @@ msgstr "Bebekken öldü: muaf"
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
-msgstr "Farklar"
+msgstr "Farklılıklar"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:100
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past. Where possible, you should enter dates using the calendar in which the event was originally recorded. You can then specify a conversion, to show these dates in a more familiar calendar. If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
-msgstr "Dünyanın farklı yerlerinde farklı takvim sistemleri kullanılmakta ve geçmiştede birçok farklı takvimler kullanılmıştır. Mümkün olduğu müddetce tarih bilgilerini olayın olduğu anda kullanılan takvimi kullanarak girmelisiniz. Daha sonra bilindik tarih formatına dönüşümü tanımlayabilirsiniz. Eğer sıklıkla çift takvim kullanıyorsanız, iki tane dönüşüm tanımlayarak tarihlerin her iki takvime de dönüşümünü sağlayabilirsiniz."
+msgstr "Dünyanın farklı yerlerinde farklı takvim sistemleri kullanılmaktadır ve geçmişte birçok başka takvim sistemi kullanılmıştır. Mümkünse tarihleri, etkinliğin ilk kaydedildiği takvimi kullanarak girmelisiniz. Ardından, bu tarihleri daha tanıdık bir takvimde göstermek için bir dönüşüm belirtebilirsiniz. Düzenli olarak iki takvim kullanıyorsanız, iki dönüşüm belirtebilirsiniz ve tarihler seçilen her iki takvime de dönüştürülür."
 
 #: resources/xml/reports/individual_ext_report.xml:6
 #: resources/xml/reports/missing_facts_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:6
 msgid "Direct line ancestors"
-msgstr "Direk atalara doğru"
+msgstr "Doğrudan hat ataları"
 
 #: resources/xml/reports/individual_ext_report.xml:6
 #: resources/xml/reports/missing_facts_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:6
 msgid "Direct line ancestors and their families"
-msgstr "Direk atalara doğru ve onların aileleri"
+msgstr "Doğrudan hat ataları ve aileleri"
 
 #. I18N: %s is a number of records per page
 #: resources/views/lists/datatables-attributes.phtml:29
 #, php-format
 msgid "Display %s"
-msgstr "Göster %s"
+msgstr "%s göster"
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:62
 msgid "Display and manage a family tree’s favorite pages."
-msgstr "Bir aile ağacı favori sayfalarında görüntülemenizi ve yönetmenizi sağlar."
+msgstr "Bir aile ağacının favori sayfalarını görüntüleyin ve yönetin."
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:63
 msgid "Display and manage a user’s favorite pages."
-msgstr "Bir kullanıcının favori sayfalarını yönetme ve gösterme."
+msgstr "Bir kullanıcının favori sayfalarını görüntüleyin ve yönetin."
 
 #. I18N: gedcom tag DIV
 #: app/GedcomTag.php:661 resources/views/calendar-page.phtml:189
@@ -5252,7 +5253,7 @@ msgstr "Boşanma"
 #. I18N: gedcom tag DIVF
 #: app/GedcomTag.php:664
 msgid "Divorce filed"
-msgstr "Boşanma dava açıldı"
+msgstr "Boşanma davası açıldı"
 
 #: app/Statistics/Google/ChartDivorce.php:129
 #: resources/views/statistics/families/total-records.phtml:80
@@ -5267,30 +5268,30 @@ msgstr "Cibuti"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:124
 msgid "Do not seal, previous sealing canceled"
-msgstr "Kapatma değil, önceki kapatma iptalı"
+msgstr "Mühürlemeyin, önceki mühür iptal edildi"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:121
 msgid "Do not seal: unauthorized"
-msgstr "Kapatma değil: onaylanmamış"
+msgstr "Mühürlemeyin: yetkisiz"
 
 #: resources/views/admin/map-provider.phtml:20
 msgid "Do not use maps"
-msgstr "Haritaları kullanma"
+msgstr "Haritaları kullanmayın"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1548
 msgid "Document"
-msgstr "Doküman"
+msgstr "Belge"
 
 #: resources/views/admin/site-mail.phtml:189
 msgid "Domain name"
-msgstr "Domain adı"
+msgstr "Etki alanı adı"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:161
 msgid "Dominica"
-msgstr "Dominik"
+msgstr "Dominika"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:165
@@ -5309,15 +5310,15 @@ msgstr "İndir"
 #: app/Http/Controllers/Admin/UpgradeController.php:228
 #, php-format
 msgid "Download %s…"
-msgstr "İndiriliyor %s…"
+msgstr "İndir %s…"
 
 #: resources/views/media-page.phtml:148
 msgid "Download file"
-msgstr "Dosyayı İndir"
+msgstr "Dosya indir"
 
 #: resources/views/edit-blocks-page.phtml:11
 msgid "Drag the blocks to change their position."
-msgstr "Konumunu değiştirmek için blokları sürükleyin."
+msgstr "Konumlarını değiştirmek için blokları sürükleyin."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:339
@@ -5334,40 +5335,40 @@ msgstr "Duodi"
 #: app/Http/RequestHandlers/AccountUpdate.php:95
 #: app/Http/RequestHandlers/RegisterAction.php:247
 msgid "Duplicate email address. A user with that email already exists."
-msgstr "Bu email adresi ile kayıtlı kullanıcı zaten mevcut."
+msgstr "Yinelenen e-posta adresi. Bu e-postaya sahip bir kullanıcı zaten var."
 
 #: app/Http/Controllers/Admin/UsersController.php:281
 #: app/Http/Controllers/Admin/UsersController.php:408
 #: app/Http/RequestHandlers/AccountUpdate.php:86
 #: app/Http/RequestHandlers/RegisterAction.php:242
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
-msgstr "Kullanılan Kullanıcı adı. Bu kullanıcı adı ile bir kullanıcı zaten var. Lütfen başka bir kullanıcı adı seçin."
+msgstr "Yinelenen kullanıcı adı. Bu kullanıcı adına sahip bir kullanıcı zaten var. Lütfen başka bir kullanıcı adı seçin."
 
 #: resources/views/help/source-events.phtml:8
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Her kaynak, genellikle belirli bir tarih aralığı için ve bir olay yeri için, belirli olayları kaydeder. Örneğin bir nüfus sayımı kayıtları nüfus sayımı olaylar ve kilise kayıtları, doğum, evlenme ve ölüm olayları. Sağlanan olayların listeden bu kaynak tarafından kaydedilen olayları seçin <br>.Belirtilen tarih <i>1900 dan 1910 a kadar<i> şeklinde bir tarih aralığı belirtmelidir. Olay yeri, belirtilen tüm olayları kapsayan en alt seviye yeri ifade etmelidir. Örneğin Sarıyer ilçesinin çeşitli mahalle, köy ve kasabalarında meydana gelen hadiseler için olay yeri \"Sarıyer, İstanbul, Türkiye\" olarak belirtilmelidir. Eğer kaydedilen hadiseler sadece Sarıyer ilçesini kapsamayıp İstanbul'un başka ilçelerini de kapsıyorsa, olay yeri \"İstanbul, Türkiye\" şeklinde belirtilmelidir."
+msgstr "Her kaynak, genellikle belirli bir tarih aralığı ve bir yer için belirli olayları kaydeder. Örneğin bir Nüfus Sayımı, nüfus sayımı olaylarını kaydeder ve kilise kayıtları doğum, evlilik ve ölüm olaylarını kaydeder.<br><br>Sağlanan olaylar listesinden bu kaynak tarafından kaydedilen olayları seçin. Tarih, <i>1900'den 1910'a</i>gibi bir aralık biçiminde belirtilmelidir. Yargı alanı, bu kaynakta adı geçen tüm alt düzey yerleri kapsayan en düşük yargı alanının adıdır. Örneğin, \"Oneida, Idaho, ABD\", Oneida County içindeki çeşitli kasabalarda meydana gelen olaylar için kaynak yargı yeri olarak kullanılacaktır. Kaydedilen olaylar yalnızca Oneida İlçesinde değil, aynı zamanda Idaho'daki diğer ilçelerde de meydana gelirse, \"Idaho, ABD\" kaynak yargı yeri olacaktır."
 
 #: resources/views/help/pending-changes.phtml:21
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "Her bir kullanıcı hesabı için \"Değişiklikleri otomatik olarak onayla\" seçeneği vardır. Bu seçenek seçildiğinde, kullanıcı tarafından yapılan değişiklikler doğrudan kaydedilir. Birçok yönetici kendi kullanıcı hesapları için bu seçeneği seçerler."
+msgstr "Her kullanıcı hesabının \"değişiklikleri otomatik olarak kabul etme\" seçeneği vardır. Bu etkinleştirildiğinde, o kullanıcı tarafından yapılan tüm değişiklikler anında kaydedilir. Birçok yönetici bunu kendi kullanıcı hesapları için etkinleştirir."
 
 #: resources/views/modules/gedcom_stats/config.phtml:32
 #: resources/views/modules/gedcom_stats/statistics.phtml:144
 #: resources/views/modules/html/template-statistics.phtml:64
 #: resources/views/statistics/individuals/total-events.phtml:44
 msgid "Earliest birth"
-msgstr "En erken doğan"
+msgstr "En erken doğum"
 
 #: resources/views/modules/gedcom_stats/config.phtml:34
 #: resources/views/modules/gedcom_stats/statistics.phtml:166
 #: resources/views/modules/html/template-statistics.phtml:72
 #: resources/views/statistics/individuals/total-events.phtml:92
 msgid "Earliest death"
-msgstr "En erken vefat"
+msgstr "En erken ölüm"
 
 #: resources/views/statistics/families/total-records.phtml:93
 msgid "Earliest divorce"
-msgstr "En erken boşanan"
+msgstr "En erken boşanma"
 
 #: resources/views/statistics/families/total-records.phtml:45
 msgid "Earliest marriage"
@@ -5376,7 +5377,7 @@ msgstr "En erken evlilik"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:169
 msgid "Ecuador"
-msgstr "Ekvator"
+msgstr "Ekvador"
 
 #: app/Functions/FunctionsPrintFacts.php:751
 #: app/Http/Controllers/Admin/LocationController.php:168
@@ -6859,11 +6860,11 @@ msgstr "Google Haritalar™"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
-msgstr "Google™ analytics"
+msgstr "Google™ analizi"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
-msgstr "Google™ webmaster tools"
+msgstr "Google™ web yöneticisi araçları"
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:754
@@ -8943,9 +8944,8 @@ msgid "Match the exact text, unless it occurs in the middle of a word."
 msgstr "Bir kelimenin ortasında olmadığı sürece tam metin eşleştir."
 
 #: app/Module/MatomoAnalyticsModule.php:42
-#, fuzzy
 msgid "Matomo™ / Piwik™ analytics"
-msgstr "Matomo™ / Piwik™ analytics"
+msgstr "Matomo™ / Piwik™ analizi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -13191,9 +13191,8 @@ msgid "Starting range of change dates"
 msgstr "Değişen tarihlerin başlama aralığı"
 
 #: app/Module/StatcounterModule.php:41
-#, fuzzy
 msgid "Statcounter™"
-msgstr "Statcounter™"
+msgstr "Statcounter™-"
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:991
@@ -16787,15 +16786,15 @@ msgstr "kayın baba"
 
 #: app/Functions/Functions.php:636
 msgid "fiancé"
-msgstr ""
+msgstr "nişanlı"
 
 #: app/Functions/Functions.php:683
 msgid "fiancé(e)"
-msgstr ""
+msgstr "nişanlı"
 
 #: app/Functions/Functions.php:660
 msgid "fiancée"
-msgstr ""
+msgstr "nişanlı"
 
 #: app/Functions/Functions.php:495
 msgid "fifteenth cousin"
