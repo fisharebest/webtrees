@@ -1,9 +1,19 @@
 <?php
 
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
+
+/**
+ * @var bool             $can_edit
+ * @var Collection<Fact> $clipboard_facts
+ * @var Collection<Fact> $facts
+ * @var Individual       $individual
+ */
 
 ?>
 

@@ -1,15 +1,14 @@
-<?php if ($individual === null) : ?>
-    <div class="h-100 wt-chart-box">&nbsp;</div>
-<?php else : ?>
+<?php
+
+use Fisharebest\Webtrees\Individual;
+
+/**
+ * @var Individual|null $individual
+ */
+
+?>
+<?php if ($individual instanceof Individual) : ?>
     <?= view('chart-box', ['individual' => $individual]) ?>
-<!--
-    <div class="h-100 person_box<?= ['M' => '', 'F' => 'F', 'U' => 'NN'][$individual->sex()]?> person_box_template">
-        <a href="<?= e($individual->url()) ?>">
-            <?= $individual->fullName() ?>
-        </a>
-        <div class="small">
-            <?= $individual->lifespan() ?>
-        </div>
-    </div>
--->
+<?php else : ?>
+    <div class="h-100 wt-chart-box">&nbsp;</div>
 <?php endif ?>

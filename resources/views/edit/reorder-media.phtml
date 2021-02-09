@@ -2,13 +2,19 @@
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderMediaAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\View;
+
+/**
+ * @var Individual $individual
+ * @var string     $title
+ */
 
 ?>
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(ReorderMediaAction::class, ['tree' => $tree->name(), 'xref' => $individual->xref()])) ?>" class="wt-page-content">
+<form method="post" action="<?= e(route(ReorderMediaAction::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
 
     <div class="wt-sortable-list">

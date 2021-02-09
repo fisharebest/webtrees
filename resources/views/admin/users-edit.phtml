@@ -2,12 +2,25 @@
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserEditAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserListPage;
-use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
+
+/**
+ * @var array<string,string> $contact_methods
+ * @var string               $default_language
+ * @var array<string,string> $languages
+ * @var array<string,string> $roles
+ * @var array<string,string> $theme_options
+ * @var string               $title
+ * @var Collection<Tree>     $trees
+ * @var UserInterface        $user
+ */
 
 ?>
 

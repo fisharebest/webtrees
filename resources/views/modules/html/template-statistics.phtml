@@ -2,12 +2,17 @@
 
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var Tree $tree
+ */
 
 ?>
 
 <div class="gedcom_stats">
     <p>
-        <a href="<?= e(route(TreePage::class, ['tree' => $tree])) ?>">#gedcomTitle#</a>
+        <a href="<?= e(route(TreePage::class, ['tree' => $tree->name()])) ?>">#gedcomTitle#</a>
     </p>
 
     <?= I18N::translate('This family tree was last updated on %s.', '#gedcomUpdated#') ?>

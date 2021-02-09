@@ -256,11 +256,11 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
     {
         $default_events = implode(',', self::DEFAULT_EVENTS);
 
-        $days      = (int) $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
-        $filter    = $this->getBlockSetting($block_id, 'filter', self::DEFAULT_FILTER);
-        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
-        $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT);
-        $events    = $this->getBlockSetting($block_id, 'events', $default_events);
+        $days       = (int) $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
+        $filter     = $this->getBlockSetting($block_id, 'filter', self::DEFAULT_FILTER);
+        $info_style = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
+        $sort_style = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT);
+        $events     = $this->getBlockSetting($block_id, 'events', $default_events);
 
         $event_array = explode(',', $events);
 
@@ -288,10 +288,10 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
             'days'        => $days,
             'event_array' => $event_array,
             'filter'      => $filter,
-            'infoStyle'   => $infoStyle,
+            'info_style'  => $info_style,
             'info_styles' => $info_styles,
             'max_days'    => self::MAX_DAYS,
-            'sortStyle'   => $sortStyle,
+            'sort_style'  => $sort_style,
             'sort_styles' => $sort_styles,
         ]);
     }

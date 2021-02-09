@@ -38,9 +38,29 @@ use Psr\Http\Server\RequestHandlerInterface;
 use stdClass;
 
 use function app;
+use function array_filter;
+use function array_intersect;
+use function array_map;
+use function array_merge;
+use function array_reduce;
+use function array_unique;
 use function assert;
+use function count;
+use function date;
 use function explode;
 use function implode;
+use function intdiv;
+use function is_array;
+use function max;
+use function md5;
+use function min;
+use function redirect;
+use function response;
+use function route;
+use function usort;
+use function view;
+
+use const PHP_INT_MAX;
 
 /**
  * Class LifespansChartModule
@@ -243,8 +263,8 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         usort($individuals, Individual::birthDateComparator());
 
         // Round to whole decades
-        $start_year = (int) floor($this->minYear($individuals) / 10) * 10;
-        $end_year   = (int) ceil($this->maxYear($individuals) / 10) * 10;
+        $start_year = intdiv($this->minYear($individuals), 10) * 10;
+        $end_year   = intdiv($this->maxYear($individuals), 10) * 10;
 
         $lifespans = $this->layoutIndividuals($individuals);
 

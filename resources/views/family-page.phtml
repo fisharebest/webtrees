@@ -1,6 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
@@ -8,6 +9,13 @@ use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
 use Fisharebest\Webtrees\I18N;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Collection<Fact> $clipboard_facts
+ * @var Collection<Fact> $facts
+ * @var Family           $record
+ */
 
 ?>
 

@@ -4,6 +4,12 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreeAction;
 use Fisharebest\Webtrees\I18N;
 
+/**
+ * @var string $title
+ * @var string $tree_name
+ * @var string $tree_title
+ */
+
 ?>
 
 <?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>

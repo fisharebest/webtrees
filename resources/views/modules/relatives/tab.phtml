@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddChildToIndividualPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddParentToIndividualPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToIndividualPage;
@@ -7,9 +8,23 @@ use Fisharebest\Webtrees\Http\RequestHandlers\LinkChildToFamilyPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\LinkSpouseToIndividualPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderFamiliesPage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
+
+/**
+ * @var bool               $can_edit
+ * @var int                $fam_access_level
+ * @var Individual         $individual
+ * @var Collection<Family> $parent_families
+ * @var Collection<Family> $spouse_families
+ * @var Collection<Family> $step_child_families
+ * @var Collection<Family> $step_parent_families
+ */
 
 ?>
-<?php use Fisharebest\Webtrees\View; ?>
+<?php
+?>
 
 <div class="wt-tab-relatives py-4">
     <table class="table table-sm wt-facts-table" role="presentation">
@@ -25,7 +40,7 @@ use Fisharebest\Webtrees\I18N;
     </tbody>
 </table>
 
-<?php if ($parent_families->isEmpty() && $can_edit) : ?>
+<?php if ($can_edit && $parent_families->isEmpty()) : ?>
     <table class="table table-sm wt-facts-table" role="presentation">
         <tbody>
             <tr>

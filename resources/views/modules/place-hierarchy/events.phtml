@@ -1,18 +1,28 @@
 <?php
 
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Collection<Family>     $famlist
+ * @var Collection<Individual> $indilist
+ * @var Tree                                       $tree
+ */
 
 ?>
 
 <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item" role="presentation">
-        <a class="nav-link active<?= $indilist === [] ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
+        <a class="nav-link active<?= $indilist->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
             <?= I18N::translate('Individuals') ?>
             <?= view('components/badge', ['count' => count($indilist)]) ?>
         </a>
     </li>
     <li class="nav-item" role="presentation">
-        <a class="nav-link<?= $famlist === [] ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#families">
+        <a class="nav-link<?= $famlist->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#families">
             <?= I18N::translate('Families') ?>
             <?= view('components/badge', ['count' => count($famlist)]) ?>
         </a>
@@ -20,7 +30,7 @@ use Fisharebest\Webtrees\I18N;
 </ul>
 <div class="tab-content">
     <div class="tab-pane fade show active" role="tabpanel" id="individuals">
-        <?php if ($indilist === []) : ?>
+        <?php if ($indilist->isEmpty()) : ?>
             <p><?= I18N::translate('No results found.') ?></p>
         <?php else : ?>
             <?= view('lists/individuals-table', [
@@ -32,7 +42,7 @@ use Fisharebest\Webtrees\I18N;
     </div>
 
     <div class="tab-pane fade" role="tabpanel" id="families">
-        <?php if ($famlist === []) : ?>
+        <?php if ($famlist->isEmpty()) : ?>
             <p><?= I18N::translate('No results found.') ?></p>
         <?php else : ?>
             <?= view('lists/families-table', ['families' => $famlist, 'tree' => $tree]) ?>

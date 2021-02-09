@@ -1,9 +1,20 @@
 <?php
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\BroadcastAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\I18N;
+use Illuminate\Support\Collection;
+
+/**
+ * @var string             $body
+ * @var UserInterface      $from
+ * @var string             $subject
+ * @var string             $title
+ * @var string             $to
+ * @var Collection<string> $to_names
+ */
 
 ?>
 

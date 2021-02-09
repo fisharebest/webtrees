@@ -1,7 +1,18 @@
-<?php if ($individual === null) : ?>
-    <?= view('icons/arrow-left') ?>
-<?php else : ?>
+<?php
+
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\CompactTreeChartModule;
+
+/**
+ * @var Individual|null        $individual
+ * @var CompactTreeChartModule $module
+ */
+
+?>
+<?php if ($individual instanceof Individual) : ?>
     <a href="<?= e($module->chartUrl($individual)) ?>" title="<?= strip_tags($module->chartTitle($individual)) ?>">
         <?= view('icons/arrow-left') ?>
     </a>
+<?php else : ?>
+    <?= view('icons/arrow-left') ?>
 <?php endif;

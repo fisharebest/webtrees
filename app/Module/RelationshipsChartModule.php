@@ -433,7 +433,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     /**
      * Possible options for the ancestors option
      *
-     * @return array<string>
+     * @return array<int,string>
      */
     private function ancestorsOptions(): array
     {
@@ -446,7 +446,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     /**
      * Possible options for the recursion option
      *
-     * @return array<string>
+     * @return array<int,string>
      */
     private function recursionConfigOptions(): array
     {

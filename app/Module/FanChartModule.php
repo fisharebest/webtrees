@@ -271,22 +271,22 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         $sosa = 2 ** $generations - 1;
 
         // fan size
-        $fanw = 640 * $width / 100;
+        $fanw = intdiv(640 * $width, 100);
         $cx   = $fanw / 2 - 1; // center x
         $cy   = $cx; // center y
         $rx   = $fanw - 1;
         $rw   = $fanw / ($gen + 1);
         $fanh = $fanw; // fan height
         if ($style === self::STYLE_HALF_CIRCLE) {
-            $fanh = $fanh * ($gen + 1) / ($gen * 2);
+            $fanh = intdiv($fanh * ($gen + 1), $gen * 2);
         }
         if ($style === self::STYLE_THREE_QUARTER_CIRCLE) {
-            $fanh *= 0.86;
+            $fanh = intdiv($fanw * 86, 100);
         }
         $scale = $fanw / 640;
 
         // Create the image
-        $image = imagecreate((int) $fanw, (int) $fanh);
+        $image = imagecreate($fanw, (int) $fanh);
 
         // Create colors
         $transparent = imagecolorallocate($image, 0, 0, 0);
@@ -303,7 +303,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
             'U' => $this->imageColor($image, $theme->parameter('chart-background-u')),
         ];
 
-        imagefilledrectangle($image, 0, 0, (int) $fanw, (int) $fanh, $transparent);
+        imagefilledrectangle($image, 0, 0, $fanw, $fanh, $transparent);
 
         $fandeg = 90 * $style;
 

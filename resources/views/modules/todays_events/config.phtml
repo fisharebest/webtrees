@@ -2,6 +2,16 @@
 
 use Fisharebest\Webtrees\I18N;
 
+/**
+ * @var array<string,string> $all_events
+ * @var array<string,string> $event_array
+ * @var string               $filter
+ * @var string               $info_style
+ * @var array<string,string> $info_styles
+ * @var string               $sort_style
+ * @var array<string,string> $sort_styles
+ */
+
 ?>
 
 <div class="form-group row">
@@ -27,7 +37,7 @@ use Fisharebest\Webtrees\I18N;
         <?= /* I18N: Label for a configuration option */ I18N::translate('Presentation style') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $infoStyle, 'options' => $info_styles]) ?>
+        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $info_style, 'options' => $info_styles]) ?>
     </div>
 </div>
 
@@ -36,6 +46,6 @@ use Fisharebest\Webtrees\I18N;
         <?= /* I18N: Label for a configuration option */ I18N::translate('Sort order') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'sortStyle', 'selected' => $sortStyle, 'options' => $sort_styles]) ?>
+        <?= view('components/select', ['name' => 'sortStyle', 'selected' => $sort_style, 'options' => $sort_styles]) ?>
     </div>
 </div>

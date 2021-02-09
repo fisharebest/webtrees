@@ -174,8 +174,8 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
-        $num       = $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
-        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
+        $num        = $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
+        $info_style = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
 
         $info_styles = [
             /* I18N: An option in a list-box */
@@ -185,7 +185,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
         ];
 
         return view('modules/top10_givnnames/config', [
-            'infoStyle'   => $infoStyle,
+            'infoStyle'   => $info_style,
             'info_styles' => $info_styles,
             'num'         => $num,
         ]);

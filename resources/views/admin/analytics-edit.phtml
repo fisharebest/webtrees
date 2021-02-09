@@ -5,6 +5,13 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAnalyticsPage;
 use Fisharebest\Webtrees\I18N;
 
+/**
+ * @var string $action
+ * @var string $form_fields
+ * @var string $preview
+ * @var string $title
+ */
+
 ?>
 
 <?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ModulesAllPage::class) => I18N::translate('Modules'), route(ModulesAnalyticsPage::class) => I18N::translate('Tracking and analytics'), $title]]) ?>

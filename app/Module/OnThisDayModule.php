@@ -242,10 +242,10 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
     {
         $default_events = implode(',', self::DEFAULT_EVENTS);
 
-        $filter    = $this->getBlockSetting($block_id, 'filter', '1');
-        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
-        $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT);
-        $events    = $this->getBlockSetting($block_id, 'events', $default_events);
+        $filter     = $this->getBlockSetting($block_id, 'filter', '1');
+        $info_style = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
+        $sort_style = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT);
+        $events     = $this->getBlockSetting($block_id, 'events', $default_events);
 
         $event_array = explode(',', $events);
 
@@ -274,9 +274,9 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
             'all_events'  => $all_events,
             'event_array' => $event_array,
             'filter'      => $filter,
-            'infoStyle'   => $infoStyle,
+            'info_style'  => $info_style,
             'info_styles' => $info_styles,
-            'sortStyle'   => $sortStyle,
+            'sort_style'  => $sort_style,
             'sort_styles' => $sort_styles,
         ]);
     }

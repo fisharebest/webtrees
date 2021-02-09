@@ -56,7 +56,7 @@ use Fisharebest\Webtrees\Individual;
                 <a class="btn btn-link btn-sm wt-quick-fact" href="<?= e(route(AddNewFact::class, [
                     'fact' => $fact,
                     'xref' => $record->xref(),
-                    'tree' => $tree->name(),
+                    'tree' => $record->tree()->name(),
                 ])) ?>">
                     <?= GedcomTag::getLabel($record->tag() . ':' . $fact) ?>
                 </a>

@@ -106,7 +106,7 @@ class AdminService
     /**
      * @param Tree $tree
      *
-     * @return array<string,array<GedcomRecord>>
+     * @return array<string,array<int,array<int,GedcomRecord>>>
      */
     public function duplicateRecords(Tree $tree): array
     {

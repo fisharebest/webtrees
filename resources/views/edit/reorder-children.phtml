@@ -1,15 +1,21 @@
 <?php
 
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
 
+/**
+ * @var Family $family
+ * @var string $title
+ */
+
 ?>
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(ReorderChildrenAction::class, ['tree' => $tree->name(), 'xref' => $family->xref()])) ?>" class="wt-page-content">
+<form method="post" action="<?= e(route(ReorderChildrenAction::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
 
     <div class="wt-sortable-list">

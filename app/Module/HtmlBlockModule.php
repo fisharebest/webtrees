@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\HtmlService;
-use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
@@ -38,19 +37,14 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
     /** @var HtmlService */
     private $html_service;
 
-    /** @var TreeService */
-    private $tree_service;
-
     /**
      * HtmlBlockModule bootstrap.
      *
      * @param HtmlService $html_service
-     * @param TreeService $tree_service
      */
-    public function __construct(HtmlService $html_service, TreeService $tree_service)
+    public function __construct(HtmlService $html_service)
     {
         $this->html_service = $html_service;
-        $this->tree_service = $tree_service;
     }
 
     /**
@@ -192,7 +186,6 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $html           = $this->getBlockSetting($block_id, 'html');
         $show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
         $languages      = explode(',', $this->getBlockSetting($block_id, 'languages'));
-        $all_trees      = $this->tree_service->titles();
 
         $templates = [
             $html                                    => I18N::translate('Custom'),
@@ -202,7 +195,6 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         ];
 
         return view('modules/html/config', [
-            'all_trees'      => $all_trees,
             'html'           => $html,
             'languages'      => $languages,
             'show_timestamp' => $show_timestamp,

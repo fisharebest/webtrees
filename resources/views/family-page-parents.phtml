@@ -1,7 +1,13 @@
 <?php
 
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToFamilyPage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+
+/**
+ * @var Family $family
+ */
 
 ?>
 <div class="d-flex">
@@ -12,7 +18,7 @@ use Fisharebest\Webtrees\I18N;
             </div>
 
             <div class="align-self-center">
-                <?php if ($family->husband()) : ?>
+                <?php if ($family->husband() instanceof Individual) : ?>
                     <?= view('chart-box', ['individual' => $family->husband()]) ?>
                 <?php else : ?>
                 <div class="wt-chart-box">
@@ -34,7 +40,7 @@ use Fisharebest\Webtrees\I18N;
             </div>
 
             <div class="align-self-center">
-                <?php if ($family->wife()) : ?>
+                <?php if ($family->wife() instanceof Individual) : ?>
                     <?= view('chart-box', ['individual' => $family->wife()]) ?>
                 <?php else : ?>
                     <div class="wt-chart-box">

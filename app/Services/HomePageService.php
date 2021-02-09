@@ -199,7 +199,7 @@ class HomePageService
      * @param UserInterface $user
      * @param string        $location "main" or "side"
      *
-     * @return Collection<string,ModuleBlockInterface>
+     * @return Collection<int,ModuleBlockInterface>
      */
     public function treeBlocks(Tree $tree, UserInterface $user, string $location): Collection
     {
@@ -249,7 +249,7 @@ class HomePageService
      * @param UserInterface $user
      * @param string        $location "main" or "side"
      *
-     * @return Collection<string,ModuleBlockInterface>
+     * @return Collection<int,ModuleBlockInterface>
      */
     public function userBlocks(Tree $tree, UserInterface $user, string $location): Collection
     {
@@ -409,10 +409,10 @@ class HomePageService
     /**
      * Take a list of block names, and return block (module) objects.
      *
-     * @param Collection<string>                      $blocks
-     * @param Collection<string,ModuleBlockInterface> $active_blocks
+     * @param Collection<string>                   $blocks
+     * @param Collection<int,ModuleBlockInterface> $active_blocks
      *
-     * @return Collection<string,ModuleBlockInterface>
+     * @return Collection<int,ModuleBlockInterface>
      */
     private function filterActiveBlocks(Collection $blocks, Collection $active_blocks): Collection
     {

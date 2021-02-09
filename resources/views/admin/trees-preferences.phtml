@@ -1,11 +1,40 @@
 <?php
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePreferencesAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
+
+/**
+ * @var array<string,string>      $all_fam_facts
+ * @var array<string,string>      $all_indi_facts
+ * @var array<string,string>      $all_name_facts
+ * @var array<string,string>      $all_plac_facts
+ * @var array<string,string>      $all_repo_facts
+ * @var array<string,string>      $all_sour_facts
+ * @var array<string,string>      $all_surname_traditions
+ * @var array<int,string>         $calendar_formats
+ * @var string                    $data_folder
+ * @var array<int,string>         $formats
+ * @var Date                      $french_calendar_end
+ * @var Date                      $french_calendar_start
+ * @var Date                      $gregorian_calendar_start
+ * @var Collection<UserInterface> $members
+ * @var Individual|null           $pedigree_individual
+ * @var array<int,string>         $privacy_options
+ * @var array<int,string>         $relatives_events
+ * @var array<int,string>         $source_types
+ * @var array<string,string>      $surname_list_styles
+ * @var string                    $title
+ * @var Tree                      $tree
+ * @var int                       $tree_count
+ */
 
 ?>
 

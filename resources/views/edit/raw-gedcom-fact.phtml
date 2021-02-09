@@ -3,6 +3,7 @@
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 
 /**
@@ -15,7 +16,7 @@ use Fisharebest\Webtrees\Webtrees;
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(EditRawFactAction::class, ['tree' => $tree->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" class="wt-page-content">
+<form method="post" action="<?= e(route(EditRawFactAction::class, ['tree' => $fact->record()->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
     <input type="hidden" name="url" value="<?= e($url ?? $fact->record()->url()) ?>">
 

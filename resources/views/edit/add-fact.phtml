@@ -2,15 +2,25 @@
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Config;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditFactAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
 use Ramsey\Uuid\Uuid;
+
+/**
+ * @var string       $fact
+ * @var GedcomRecord $record
+ * @var string       $title
+ * @var Tree         $tree
+ */
 
 ?>
 
-<h2 class="wt-page-title"><?= $title ?></h2>
+<h2 class="wt-page-title"><?= $title ?></h2>z
 
 <form method="post" action="<?= e(route(EditFactAction::class, ['tree' => $tree->name(), 'xref' => $record->xref()])) ?>" class="wt-page-content">
     <?= csrf_field() ?>

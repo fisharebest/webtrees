@@ -8,6 +8,11 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 
+/**
+ * @var bool $allow_register
+ * @var Tree $tree
+ */
+
 ?>
 
 <form method="post" action="<?= route(LoginAction::class, ['tree' => $tree->name()]) ?>" name="login-form">
@@ -46,7 +51,7 @@ use Fisharebest\Webtrees\View;
 <?php endif ?>
 
 <div class="collapse" id="forgot-password">
-    <form method="post" action="<?= e(route(PasswordRequestAction::class, ['tree' => $tree instanceof Tree ? $tree->name() : null])) ?>">
+    <form method="post" action="<?= e(route(PasswordRequestAction::class, ['tree' => $tree->name()])) ?>">
         <?= I18N::translate('Request a new password') ?>
         <div class="form-group">
             <label for="new_passwd_username">

@@ -12,12 +12,13 @@ use Fisharebest\Webtrees\Http\RequestHandlers\AddParentToIndividualAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToFamilyAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToIndividualAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditFactAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\SurnameTradition;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
@@ -29,6 +30,7 @@ use Illuminate\Support\Collection;
  * @var Fact|null       $name_fact
  * @var string          $next_action
  * @var string          $title
+ * @var Tree            $tree
  */
 
 ?>
@@ -270,8 +272,8 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 
         foreach (Fact::sortFactTags($tags) as $tag) {
             echo view('cards/add-fact', [
-                'tag' => $tag,
-                'tree'  => $tree,
+                'tag'  => $tag,
+                'tree' => $tree,
             ]);
         }
     }
@@ -299,7 +301,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
         echo view('cards/add-source-citation', [
             'bdm'                     => $bdm,
             'level'                   => 1,
-            'full_citations'          => $tree->getPreference('FULL_SOURCES'),
+            'full_citations'          => (bool) $tree->getPreference('FULL_SOURCES'),
             'prefer_level2_sources'   => $tree->getPreference('PREFER_LEVEL2_SOURCES'),
             'quick_required_facts'    => $tree->getPreference('QUICK_REQUIRED_FACTS'),
             'quick_required_famfacts' => $tree->getPreference('QUICK_REQUIRED_FAMFACTS'),

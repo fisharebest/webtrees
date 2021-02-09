@@ -5,6 +5,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\UserListData;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
 
+/**
+ * @var string $filter
+ * @var string $title
+ */
+
 ?>
 
 <?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>

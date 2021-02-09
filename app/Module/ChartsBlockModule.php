@@ -120,7 +120,6 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                         $content   = view('modules/charts/chart', [
                             'block_id'  => $block_id,
                             'chart_url' => $chart_url,
-                            'class'     => 'wt-chart-pedigree',
                         ]);
                     } else {
                         $title   = I18N::translate('Pedigree');
@@ -141,7 +140,6 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                         $content   = view('modules/charts/chart', [
                             'block_id'  => $block_id,
                             'chart_url' => $chart_url,
-                            'class'     => 'wt-chart-descendants',
                         ]);
                     } else {
                         $title   = I18N::translate('Descendants');
@@ -162,7 +160,6 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                         $content   = view('modules/charts/chart', [
                             'block_id'  => $block_id,
                             'chart_url' => $chart_url,
-                            'class'     => 'wt-chart-hourglass',
                         ]);
                     } else {
                         $title   = I18N::translate('Hourglass chart');

@@ -19,7 +19,7 @@ use Illuminate\Support\Collection;
 <?php endif ?>
 
 <?php foreach ($articles as $n => $article) : ?>
-    <?php if ($n === 5 && count($articles) > $limit) : ?>
+    <?php if ($n === $limit && count($articles) > $limit) : ?>
         <p>
             <button class="btn btn-sm btn-secondary" data-toggle="collapse" data-target="#more-news-<?= e($block_id) ?>" role="button" aria-expanded="false" aria-controls="more-news-<?= e($block_id) ?>">
                 <?= view('icons/add') ?>
@@ -50,7 +50,7 @@ use Illuminate\Support\Collection;
     </div>
 <?php endforeach ?>
 
-<?php if (count($articles) > 5) : ?>
+<?php if (count($articles) > $limit) : ?>
     </div>
 <?php endif ?>
 

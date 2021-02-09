@@ -1,3 +1,13 @@
+<?php
+
+use Fisharebest\Webtrees\Fact;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Collection<Fact> $facts
+ */
+
+?>
 <?php foreach ($facts as $fact) : ?>
     <?= $fact->summary() ?>
 <?php endforeach;

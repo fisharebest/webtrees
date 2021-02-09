@@ -3,8 +3,21 @@
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountDelete;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
+
+/**
+ * @var array<string,string> $contact_methods
+ * @var Individual|null      $default_individual
+ * @var array<string,string> $languages
+ * @var Individual|null      $my_individual_record
+ * @var bool                 $show_delete_option
+ * @var array<string,string> $timezones
+ * @var string               $title
+ * @var Tree|null            $tree
+ * @var UserInterface        $user
+ */
 
 ?>
 

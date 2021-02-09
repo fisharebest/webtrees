@@ -1,3 +1,22 @@
+<?php
+
+/**
+ * @var string $areas
+ * @var int    $fanh
+ * @var int    $fanw
+ * @var string $html
+ * @var string $png
+ * @var string $title
+ */
+
+assert(is_string($areas));
+assert(is_int($fanh));
+assert(is_int($fanw));
+assert(is_string($html));
+assert(is_string($png));
+assert(is_string($title));
+
+?>
 <?= $html ?>
 
 <map id="fan-chart-map" name="fan-chart-map">
@@ -13,7 +32,7 @@
     .click(function (e) {
       e.stopPropagation();
       e.preventDefault();
-      var target = jQuery(this.hash);
+      let target = jQuery(this.hash);
       // position the menu centered immediately above the mouse click position and
       // make sure it doesn’t end up off the screen
       target
@@ -29,7 +48,7 @@
       e.stopPropagation();
     });
   jQuery("#fan_chart")
-    .click(function (e) {
+    .click(function () {
       jQuery(".fan_chart_menu").hide();
     });
 </script>

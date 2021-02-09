@@ -4,6 +4,14 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UploadMediaPage;
 use Fisharebest\Webtrees\I18N;
+use Illuminate\Support\Collection;
+
+/**
+ * @var string                    $filesize
+ * @var int                       $max_upload_files
+ * @var Collection<string,string> $media_folders
+ * @var string                    $title
+ */
 
 ?>
 
@@ -51,7 +59,7 @@ use Fisharebest\Webtrees\I18N;
                 <span class="sr-only"><?= e($i) ?></span>
             </label>
             <div class="col-sm-9">
-                <select class="form-control" id="folder_list<?= e($i) ?>"name="folder<?= e($i) ?>">
+                <select class="form-control" id="folder_list<?= e($i) ?>" name="folder<?= e($i) ?>">
                     <?php foreach ($media_folders as $media_folder) : ?>
                         <option value="<?= e($media_folder) ?>">
                             <?= e($media_folder) ?>

@@ -3,6 +3,10 @@
 use Fisharebest\Webtrees\Http\RequestHandlers\HelpText;
 use Fisharebest\Webtrees\I18N;
 
+/**
+ * @var string $topic
+ */
+
 ?>
 <a href="#" data-toggle="modal" data-backdrop="static" data-target="#wt-ajax-modal" data-href="<?= e(route(HelpText::class, ['topic' => $topic])) ?>" title="<?= I18N::translate('Help') ?>">
     <?= view('icons/help') ?>

@@ -8,8 +8,8 @@ use Fisharebest\Webtrees\Tree;
 
 /**
  * @var string               $title
- * @var Tree                 $tree1
- * @var Tree                 $tree2
+ * @var Tree|null            $tree1
+ * @var Tree|null            $tree2
  * @var array<string,string> $tree_list
  * @var int                  $xrefs
  */
@@ -47,8 +47,8 @@ use Fisharebest\Webtrees\Tree;
     <p class="form-inline">
         <?= I18N::translate(/* I18N: Copy all the records from [family tree 1] into [family tree 2] */
             'Copy all the records from %1$s into %2$s.',
-            view('components/select', ['name' => 'tree1_name', 'selected' => $tree1 ? $tree1->name() : '', 'options' => $tree_list]),
-            view('components/select', ['name' => 'tree2_name', 'selected' => $tree2 ? $tree2->name() : '', 'options' => $tree_list])
+            view('components/select', ['name' => 'tree1_name', 'selected' => $tree1 instanceof Tree ? $tree1->name() : '', 'options' => $tree_list]),
+            view('components/select', ['name' => 'tree2_name', 'selected' => $tree2 instanceof Tree ? $tree2->name() : '', 'options' => $tree_list])
         ) ?>
     </p>
 

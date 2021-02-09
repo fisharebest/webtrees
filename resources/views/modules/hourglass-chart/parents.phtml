@@ -1,6 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * @var Family $family
@@ -20,7 +21,7 @@ use Fisharebest\Webtrees\Family;
                 <?= view('chart-box', ['individual' => $family->husband()]) ?>
             </div>
 
-            <?php if ($family->husband() && $family->husband()->childFamilies()->first()) : ?>
+            <?php if ($family->husband() instanceof Individual && $family->husband()->childFamilies()->first() instanceof Family) : ?>
                 <div class="wt-chart-horizontal-spacer">
                     <div class="wt-chart-horizontal-line"></div>
                 </div>
@@ -46,7 +47,7 @@ use Fisharebest\Webtrees\Family;
                 <?= view('chart-box', ['individual' => $family->wife()]) ?>
             </div>
 
-            <?php if ($family->wife() && $family->wife()->childFamilies()->first()) : ?>
+            <?php if ($family->wife() instanceof Individual && $family->wife()->childFamilies()->first() instanceof Family) : ?>
                 <div class="wt-chart-horizontal-spacer">
                     <div class="wt-chart-horizontal-line"></div>
                 </div>

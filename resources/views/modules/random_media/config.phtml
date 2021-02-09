@@ -2,6 +2,14 @@
 
 use Fisharebest\Webtrees\I18N;
 
+/**
+ * @var string               $controls
+ * @var string               $filter
+ * @var array<string,string> $filters
+ * @var array<string,string> $formats
+ * @var string               $start
+ */
+
 ?>
 
 <div class="form-group row">
@@ -19,8 +27,8 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Type') ?>
         </legend>
         <div class="col-sm-9">
-            <?php foreach ($formats as $typeName => $typeValue) : ?>
-                <?= view('components/checkbox', ['label' => $typeValue, 'name' => 'filter_' . $typeName, 'checked' => (bool) $filters[$typeName]]) ?>
+            <?php foreach ($formats as $type => $label) : ?>
+                <?= view('components/checkbox', ['label' => $label, 'name' => 'filter_' . $type, 'checked' => (bool) $filters[$type]]) ?>
             <?php endforeach ?>
         </div>
     </div>

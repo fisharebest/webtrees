@@ -1,10 +1,19 @@
 <?php
 
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Illuminate\Support\Collection;
+
+/**
+ * @var bool             $can_edit
+ * @var Collection<Fact> $clipboard_facts
+ * @var Collection<Fact> $facts
+ * @var Individual       $individual
+ */
 
 ?>
-<?php use Fisharebest\Webtrees\I18N; ?>
-
 <div class="wt-tab-media py-4">
     <table class="table wt-facts-table">
         <?php foreach ($facts as $fact) : ?>

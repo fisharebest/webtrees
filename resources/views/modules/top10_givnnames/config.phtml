@@ -2,6 +2,12 @@
 
 use Fisharebest\Webtrees\I18N;
 
+/**
+ * @var string               $info_style
+ * @var array<string,string> $info_styles
+ * @var string               $num
+ */
+
 ?>
 
 <div class="form-group row">
@@ -18,6 +24,6 @@ use Fisharebest\Webtrees\I18N;
         <?= I18N::translate('Presentation style') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $infoStyle, 'options' => $info_styles]) ?>
+        <?= view('components/select', ['name' => 'infoStyle', 'selected' => $info_style, 'options' => $info_styles]) ?>
     </div>
 </div>
