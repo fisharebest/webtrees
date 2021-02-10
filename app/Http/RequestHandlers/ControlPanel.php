@@ -162,7 +162,7 @@ class ControlPanel implements RequestHandlerInterface
             'repositories'               => $this->totalRepositories(),
             'notes'                      => $this->totalNotes(),
             'submitters'                 => $this->totalSubmitters(),
-            'individual_list_module'     => $this->module_service->findByInterface(IndividualListModule::class)->first(),
+            'individual_list_module'     => $this->module_service->findByInterface(IndividualListModule::class)->last(),
             'family_list_module'         => $this->module_service->findByInterface(FamilyListModule::class)->first(),
             'media_list_module'          => $this->module_service->findByInterface(MediaListModule::class)->first(),
             'note_list_module'           => $this->module_service->findByInterface(NoteListModule::class)->first(),
