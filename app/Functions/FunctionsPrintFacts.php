@@ -27,10 +27,6 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodeAdop;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodeLang;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodeQuay;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodeRela;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditFactPage;
@@ -69,7 +65,6 @@ use function str_replace;
 use function strip_tags;
 use function strlen;
 use function strpos;
-use function strtoupper;
 use function substr;
 use function trim;
 use function view;
@@ -105,6 +100,8 @@ class FunctionsPrintFacts
         $value  = $fact->value();
         $type   = $fact->attribute('TYPE');
         $id     = $fact->id();
+
+        $element = Registry::elementFactory()->make($fact->tag());
 
         // This preference is named HIDE instead of SHOW
         $hide_errors = $tree->getPreference('HIDE_GEDCOM_ERRORS') === '0';
@@ -167,20 +164,8 @@ class FunctionsPrintFacts
 
         // Use marriage type as the label.
         if ($tag === 'MARR' && $type !== '') {
-            switch (strtoupper($type)) {
-                case 'CIVIL':
-                    $label = I18N::translate('Civil marriage');
-                    $type  = ''; // Do not print this again
-                    break;
-                case 'PARTNERS':
-                    $label = I18N::translate('Registered partnership');
-                    $type  = ''; // Do not print this again
-                    break;
-                case 'RELIGIOUS':
-                    $label = I18N::translate('Religious marriage');
-                    $type  = ''; // Do not print this again
-                    break;
-            }
+            $label = Registry::elementFactory()->make($fact->tag() . ':TYPE')->value($type, $tree);
+            $type  = ''; // Do not print this again
         }
 
         echo '<tr class="', implode(' ', $styles), '">';
@@ -219,10 +204,11 @@ class FunctionsPrintFacts
         // Print the value of this fact/event
         switch ($tag) {
             case 'ADDR':
-                echo '<div class="d-block" style="white-space: pre-wrap">' . e($value) . '</div';
-                break;
             case 'AFN':
-                echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($value), '">', e($value), '</a></div>';
+            case 'LANG':
+            case 'PUBL':
+            case 'RESN':
+                echo '<div class="field">' . $element->value($value, $tree) . '</div>';
                 break;
             case 'ASSO':
                 // we handle this later, in format_asso_rela_record()
@@ -231,35 +217,6 @@ class FunctionsPrintFacts
             case 'EMAI':
             case '_EMAIL':
                 echo '<div class="field"><a href="mailto:', e($value), '">', e($value), '</a></div>';
-                break;
-            case 'LANG':
-                echo GedcomCodeLang::getValue($value);
-                break;
-            case 'RESN':
-                echo '<div class="field">';
-                switch ($value) {
-                    case 'none':
-                        // Note: "1 RESN none" is not valid gedcom.
-                        // However, webtrees privacy rules will interpret it as "show an otherwise private record to public".
-                        echo '<i class="icon-resn-none"></i> ', I18N::translate('Show to visitors');
-                        break;
-                    case 'privacy':
-                        echo '<i class="icon-class-none"></i> ', I18N::translate('Show to members');
-                        break;
-                    case 'confidential':
-                        echo '<i class="icon-confidential-none"></i> ', I18N::translate('Show to managers');
-                        break;
-                    case 'locked':
-                        echo '<i class="icon-locked-none"></i> ', I18N::translate('Only managers can edit');
-                        break;
-                    default:
-                        echo e($value);
-                        break;
-                }
-                echo '</div>';
-                break;
-            case 'PUBL': // Publication details might contain URLs.
-                echo '<div class="field">', Filter::expandUrls($value, $tree), '</div>';
                 break;
             case 'REPO':
                 $repository = $fact->target();
@@ -414,7 +371,7 @@ class FunctionsPrintFacts
                     if ($family instanceof Family) {
                         echo GedcomTag::getLabelValue('FAM', '<a href="' . e($family->url()) . '">' . $family->fullName() . '</a>');
                         if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $fact->gedcom(), $adop_match)) {
-                            echo GedcomTag::getLabelValue('ADOP', GedcomCodeAdop::getValue($adop_match[1]));
+                            echo Registry::elementFactory()->make('INDI:ADOP:FAMC:ADOP')->labelValue($adop_match[1], $tree);
                         }
                     } else {
                         echo GedcomTag::getLabelValue('FAM', '<span class="error">' . $match[2] . '</span>');
@@ -518,10 +475,10 @@ class FunctionsPrintFacts
                 // Is there a "RELA" tag
                 if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
                     // Use the supplied relationship as a label
-                    $label = GedcomCodeRela::getValue($rmatch[1], $person);
+                    $label = Registry::elementFactory()->make($event->record()::RECORD_TYPE . ':ASSO:RELA')->value($rmatch[1], $parent->tree());
                 } else {
                     // Use a default label
-                    $label = GedcomTag::getLabel('ASSO');
+                    $label = Registry::elementFactory()->make($event->record()::RECORD_TYPE . ':ASSO')->label();
                 }
 
                 if ($person->getBirthDate()->isOK() && $event->date()->isOK()) {
@@ -841,27 +798,27 @@ class FunctionsPrintFacts
         $html = '';
 
         if ($textSOUR['PAGE'] !== '') {
-            $html .= GedcomTag::getLabelValue('PAGE', Filter::expandUrls($textSOUR['PAGE'], $tree));
+            $html .= Registry::elementFactory()->make('INDI:SOUR:PAGE')->labelValue($textSOUR['PAGE'], $tree);
         }
 
         if ($textSOUR['EVEN'] !== '') {
-            $html .= GedcomTag::getLabelValue('EVEN', e($textSOUR['EVEN']));
+            $html .= Registry::elementFactory()->make('INDI:SOUR:EVEN')->labelValue($textSOUR['EVEN'], $tree);
+
             if ($textSOUR['ROLE']) {
-                $html .= GedcomTag::getLabelValue('ROLE', e($textSOUR['ROLE']));
+                $html .= Registry::elementFactory()->make('INDI:SOUR:EVEN:ROLE')->labelValue($textSOUR['ROLE'], $tree);
             }
         }
 
         if ($textSOUR['DATE'] !== '') {
-            $date = new Date($textSOUR['DATE']);
-            $html .= GedcomTag::getLabelValue('DATA:DATE', $date->display());
+            $html .= Registry::elementFactory()->make('INDI:SOUR:DATA:DATE')->labelValue($textSOUR['DATE'], $tree);
         }
 
         foreach ($textSOUR['TEXT'] as $text) {
-            $html .= GedcomTag::getLabelValue('TEXT', Filter::formatText($text, $tree));
+            $html .= Registry::elementFactory()->make('INDI:SOUR:DATA:TEXT')->labelValue($text, $tree);
         }
 
         if ($textSOUR['QUAY'] !== '') {
-            $html .= GedcomTag::getLabelValue('QUAY', GedcomCodeQuay::getValue($textSOUR['QUAY']));
+            $html .= Registry::elementFactory()->make('INDI:SOUR:QUAY')->labelValue($textSOUR['QUAY'], $tree);
         }
 
         return '<div class="indent">' . $html . '</div>';

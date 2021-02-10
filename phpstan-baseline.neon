@@ -136,27 +136,12 @@ parameters:
 			path: app/Functions/FunctionsPrintFacts.php
 
 		-
-			message: "#^Parameter \\#1 \\$text of static method Fisharebest\\\\Webtrees\\\\Filter\\:\\:expandUrls\\(\\) expects string, array\\<string\\>\\|string given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string, array\\<string\\>\\|string given\\.$#"
-			count: 2
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Parameter \\#1 \\$date of class Fisharebest\\\\Webtrees\\\\Date constructor expects string, array\\<string\\>\\|string given\\.$#"
-			count: 1
+			message: "#^Parameter \\#1 \\$value of method Fisharebest\\\\Webtrees\\\\Contracts\\\\ElementInterface\\:\\:labelValue\\(\\) expects string, array\\<string\\>\\|string given\\.$#"
+			count: 5
 			path: app/Functions/FunctionsPrintFacts.php
 
 		-
 			message: "#^Argument of an invalid type array\\<string\\>\\|string supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Parameter \\#1 \\$type of static method Fisharebest\\\\Webtrees\\\\GedcomCode\\\\GedcomCodeQuay\\:\\:getValue\\(\\) expects string, array\\<string\\>\\|string given\\.$#"
 			count: 1
 			path: app/Functions/FunctionsPrintFacts.php
 

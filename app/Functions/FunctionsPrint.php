@@ -25,8 +25,6 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Header;
@@ -470,13 +468,16 @@ class FunctionsPrint
         }
         if ($lds) {
             if (preg_match('/2 TEMP (.*)/', $event->gedcom(), $match)) {
-                $html .= '<br>' . I18N::translate('LDS temple') . ': ' . GedcomCodeTemp::templeName($match[1]);
+                $element = Registry::elementFactory()->make($event->tag() . ':TEMP');
+                $html .= $element->labelValue($match[1], $tree);
             }
             if (preg_match('/2 STAT (.*)/', $event->gedcom(), $match)) {
-                $html .= '<br>' . I18N::translate('Status') . ': ' . GedcomCodeStat::statusName($match[1]);
+                $element = Registry::elementFactory()->make($event->tag() . ':STAT');
+                $html .= $element->labelValue($match[1], $tree);
                 if (preg_match('/3 DATE (.*)/', $event->gedcom(), $match)) {
                     $date = new Date($match[1]);
-                    $html .= ', ' . GedcomTag::getLabel('STAT:DATE') . ': ' . $date->display();
+                    $element = Registry::elementFactory()->make($event->tag() . ':STAT:DATE');
+                    $html .= $element->labelValue($date->display(), $tree);
                 }
             }
         }

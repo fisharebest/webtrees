@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\Tree;
 
 use function e;
+use function rawurlencode;
 use function strtoupper;
 
 /**
@@ -31,6 +32,8 @@ use function strtoupper;
  */
 class AncestralFileNumber extends AbstractElement
 {
+    protected const FAMILY_SEARCH_URL = 'https://www.familysearch.org/search/family-trees/results?q.afnId=';
+
     protected const MAX_LENGTH = 12;
 
     /**
@@ -55,6 +58,9 @@ class AncestralFileNumber extends AbstractElement
      */
     public function value(string $value, Tree $tree): string
     {
-        return '<span dir="ltr">' . e($this->canonical($value)) . '</span>';
+        $canonical = $this->canonical($value);
+        $url       = static::FAMILY_SEARCH_URL . rawurlencode($canonical);
+
+        return '<a dir="ltr" href="' . e($url) . '" rel="nofollow">' . e($canonical) . '</a>';
     }
 }

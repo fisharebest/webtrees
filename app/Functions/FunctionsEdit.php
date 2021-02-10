@@ -26,11 +26,7 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodeAdop;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodeLang;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodeQuay;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeRela;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
@@ -250,7 +246,7 @@ class FunctionsEdit
      */
     public static function optionsTemples(): array
     {
-        return ['' => I18N::translate('No temple - living ordinance')] + GedcomCodeTemp::templeNames();
+        return Registry::elementFactory()->make('SUBN:TEMP')->values();
     }
 
     /**
@@ -441,9 +437,11 @@ class FunctionsEdit
             $html .= view('edit/input-addon-keyboard', ['id' => $id]);
             $html .= '</div>';
         } elseif ($fact === 'ADOP') {
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => GedcomCodeAdop::getValues()]);
+            $element = Registry::elementFactory()->make('INDI:ADOP:FAMC:ADOP');
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => $element->values()]);
         } elseif ($fact === 'LANG') {
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => GedcomCodeLang::getValues()]);
+            $element = Registry::elementFactory()->make('HEAD:LANG');
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => $element->values()]);
         } elseif ($fact === 'ALIA') {
             $html .= '<div class="input-group">';
             $html .= view('components/select-individual', ['id' => $id, 'name' => $name, 'individual' => Registry::individualFactory()->make($value, $tree), 'tree' => $tree]);
@@ -506,7 +504,9 @@ class FunctionsEdit
                     'data-autocomplete-extra' => 'SOUR',
                 ]) . '>';
         } elseif ($fact === 'PEDI') {
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => GedcomCodePedi::getValues()]);
+            $element = Registry::elementFactory()->make('INDI:FAMC:PEDI');
+
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => $element->values()]);
         } elseif ($fact === 'PLAC') {
             $html .= '<div class="input-group">';
             $html .= '<input ' . Html::attributes([
@@ -523,7 +523,8 @@ class FunctionsEdit
             $html .= view('edit/input-addon-help', ['fact' => 'PLAC']);
             $html .= '</div>';
         } elseif ($fact === 'QUAY') {
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => ['' => ''] + GedcomCodeQuay::getValues()]);
+            $element = Registry::elementFactory()->make('INDI:SOUR:QUAY');
+            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => $element->values()]);
         } elseif ($fact === 'RELA') {
             $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => self::optionsRelationships($value)]);
         } elseif ($fact === 'REPO') {
