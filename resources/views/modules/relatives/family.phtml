@@ -125,7 +125,9 @@ use Fisharebest\Webtrees\Individual;
                 </th>
 
                 <td>
-                    <?= GedcomTag::getLabelValue($fact->getTag(), $fact->date()->display() . ' — ' . $fact->place()->fullName()) ?>
+                    <span class="label"><?= $fact->label() ?></span>
+                    —
+                    <span class="field"><?= $fact->date()->display() ?> — <?= $fact->place()->fullName() ?></span>
                 </td>
             </tr>
 

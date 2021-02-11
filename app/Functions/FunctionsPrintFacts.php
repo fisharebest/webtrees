@@ -162,10 +162,10 @@ class FunctionsPrintFacts
             $styles[] = 'wt-historic-fact collapse';
         }
 
-        // Use marriage type as the label.
-        if ($tag === 'MARR' && $type !== '') {
-            $label = Registry::elementFactory()->make($fact->tag() . ':TYPE')->value($type, $tree);
-            $type  = ''; // Do not print this again
+        // Use marriage type as the label.  e.g. "Civil partnership"
+        if ($tag === 'MARR') {
+            $label = $fact->label();
+            $type  = '';
         }
 
         echo '<tr class="', implode(' ', $styles), '">';
