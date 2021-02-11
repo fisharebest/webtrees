@@ -32,7 +32,7 @@ use function strtoupper;
  */
 class AncestralFileNumber extends AbstractElement
 {
-    protected const FAMILY_SEARCH_URL = 'https://www.familysearch.org/search/family-trees/results?q.afnId=';
+    protected const EXTERNAL_URL = 'https://www.familysearch.org/search/family-trees/results?q.afnId=';
 
     protected const MAX_LENGTH = 12;
 
@@ -59,7 +59,7 @@ class AncestralFileNumber extends AbstractElement
     public function value(string $value, Tree $tree): string
     {
         $canonical = $this->canonical($value);
-        $url       = static::FAMILY_SEARCH_URL . rawurlencode($canonical);
+        $url       = static::EXTERNAL_URL . rawurlencode($canonical);
 
         return '<a dir="ltr" href="' . e($url) . '" rel="nofollow">' . e($canonical) . '</a>';
     }

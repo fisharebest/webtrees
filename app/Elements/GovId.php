@@ -22,12 +22,30 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\Tree;
 
 use function e;
+use function rawurlencode;
+use function strtoupper;
 
 /**
  * A custom field used in _LOC records
  */
 class GovId extends AbstractElement
 {
+    protected const EXTERNAL_URL = 'https://gov.genealogy.net/item/show/';
+
+    protected const MAX_LENGTH = 12;
+
+    /**
+     * Convert a value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function canonical(string $value): string
+    {
+        return strtoupper(parent::canonical($value));
+    }
+
     /**
      * Display the value of this type of element.
      *
@@ -39,7 +57,8 @@ class GovId extends AbstractElement
     public function value(string $value, Tree $tree): string
     {
         $canonical = $this->canonical($value);
+        $url       = static::EXTERNAL_URL . rawurlencode($canonical);
 
-        return '<a dir="ltr" href="https://gov.genealogy.net/item/show/' . e($canonical) . '">' . e($canonical) . '</a>';
+        return '<a dir="ltr" href="' . e($url) . '" rel="nofollow">' . e($canonical) . '</a>';
     }
 }
