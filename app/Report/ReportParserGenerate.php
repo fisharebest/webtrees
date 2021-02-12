@@ -1950,7 +1950,7 @@ class ReportParserGenerate extends ReportParserBase
                             $match[3] = strtr($match[3], ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);
                             $like = "%\n1 " . $match[1] . "%\n2 " . $match[2] . '%' . $match[3] . '%';
                             $query->where('i_gedcom', 'LIKE', $like);
-                        } elseif (preg_match('/^(\w+) CONTAINS (.+)$/', $value, $match)) {
+                        } elseif (preg_match('/^(\w+) CONTAINS (.*)$/', $value, $match)) {
                             // Don't unset this filter. This is just initial filtering for performance
                             $match[2] = strtr($match[2], ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);
                             $like = "%\n1 " . $match[1] . '%' . $match[2] . '%';
