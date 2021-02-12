@@ -33,7 +33,7 @@ use Fisharebest\Webtrees\I18N;
  */
 class RelationIsDescriptor extends AbstractElement
 {
-    protected const MAX_LENGTH = 25;
+    protected const MAXIMUM_LENGTH = 25;
 
     /**
      * A list of controlled values for this element

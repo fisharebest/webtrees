@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class SocialSecurityNumber extends AbstractElement
 {
-    protected const MAX_LENGTH = 11;
+    protected const MAXIMUM_LENGTH = 11;
 
     protected const SUBTAGS = [
         'DATE' => '0:1',

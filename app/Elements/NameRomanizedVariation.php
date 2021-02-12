@@ -35,7 +35,7 @@ use function view;
  */
 class NameRomanizedVariation extends AbstractElement
 {
-    protected const MAX_LENGTH = 120;
+    protected const MAXIMUM_LENGTH = 120;
 
     /**
      * An edit control for this data.

@@ -35,7 +35,7 @@ use const PATHINFO_EXTENSION;
  */
 class NameOfFamilyFile extends AbstractElement
 {
-    protected const MAX_LENGTH = 120;
+    protected const MAXIMUM_LENGTH = 120;
 
     /**
      * Create a default value for this element.
@@ -46,12 +46,12 @@ class NameOfFamilyFile extends AbstractElement
      */
     public function default(Tree $tree): string
     {
-        $value = mb_substr($tree->name(), 0, self::MAX_LENGTH);
+        $value = mb_substr($tree->name(), 0, self::MAXIMUM_LENGTH);
 
         $extension = strtolower(pathinfo($value, PATHINFO_EXTENSION));
 
         if ($extension !== 'ged') {
-            $value = mb_substr($tree->name(), 0, self::MAX_LENGTH - 4) . '.ged';
+            $value = mb_substr($tree->name(), 0, self::MAXIMUM_LENGTH - 4) . '.ged';
         }
 
         return $value;

@@ -30,7 +30,7 @@ use function e;
  */
 class VersionNumber extends AbstractElement
 {
-    protected const MAX_LENGTH = 15;
+    protected const MAXIMUM_LENGTH = 15;
     /**
      * Display the value of this type of element.
      *

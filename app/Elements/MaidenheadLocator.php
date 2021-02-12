@@ -19,22 +19,18 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\Tree;
-
-use function e;
-use function rawurlencode;
-use function strtoupper;
+use function mb_strlen;
+use function mb_strtolower;
+use function mb_strtoupper;
+use function mb_substr;
 
 /**
- * ANCESTRAL_FILE_NUMBER := {Size=1:12}
- * A unique permanent record number of an individual record contained in the
- * Family History Department's Ancestral File.
+ * @see https://en.wikipedia.org/wiki/Maidenhead_Locator_System
  */
-class AncestralFileNumber extends AbstractElement
+class MaidenheadLocator extends AbstractElement
 {
-    protected const EXTERNAL_URL = 'https://www.familysearch.org/search/family-trees/results?q.afnId=';
-
-    protected const MAXIMUM_LENGTH = 12;
+    protected const MAXIMUM_LENGTH = 8;
+    protected const PATTERN        = '[A-Ra-r][A-Ra-r]([0-9][0-9]([A-Xa-x][A-Xa-x]([0-9][0-9])?)?)?';
 
     /**
      * Convert a value to a canonical form.
@@ -45,22 +41,18 @@ class AncestralFileNumber extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        return strtoupper(parent::canonical($value));
-    }
+        $value = parent::canonical($value);
 
-    /**
-     * Display the value of this type of element.
-     *
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
-     */
-    public function value(string $value, Tree $tree): string
-    {
-        $canonical = $this->canonical($value);
-        $url       = static::EXTERNAL_URL . rawurlencode($canonical);
+        // Characters 1 and 2 are upper case
+        if (mb_strlen($value) >= 2) {
+            $value = mb_strtoupper(mb_substr($value, 0, 2)) . mb_substr($value, 2);
+        }
 
-        return '<a dir="ltr" href="' . e($url) . '" rel="nofollow">' . e($canonical) . '</a>';
+        // Characters 5 and 6 are lower case
+        if (mb_strlen($value) >= 6) {
+            $value = mb_substr($value, 0, 4) . mb_strtolower(mb_substr($value, 4, 2)) . mb_substr($value, 6);
+        }
+
+        return $value;
     }
 }

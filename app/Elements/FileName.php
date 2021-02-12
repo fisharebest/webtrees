@@ -26,7 +26,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class FileName extends AbstractElement
 {
-    protected const MAX_LENGTH = 90;
+    protected const MAXIMUM_LENGTH = 90;
 
     /**
      * Convert a value to a canonical form.

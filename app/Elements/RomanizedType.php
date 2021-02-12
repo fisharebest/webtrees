@@ -28,7 +28,7 @@ use function strtolower;
  */
 class RomanizedType extends AbstractElement
 {
-    protected const MAX_LENGTH = 30;
+    protected const MAXIMUM_LENGTH = 30;
 
     /**
      * Convert a value to a canonical form.

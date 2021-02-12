@@ -20,10 +20,25 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 /**
- * SUBMITTER_NAME := {Size=1:60}
- * The name of the submitter formatted for display and address generation.
+ * A level 0 location record
  */
-class SubmitterName extends AbstractElement
+class LocationRecord extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 60;
+    protected const SUBTAGS = [
+        'NAME'        => '1:M',
+        'TYPE'        => '0:M',
+        '_POST'       => '0:M',
+        '_GOV'        => '0:1',
+        'MAP'         => '0:1',
+        '_MAIDENHEAD' => '0:1',
+        'RELI'        => '0:1',
+        'EVEN'        => '0:M',
+        '_LOC'        => '0:M',
+        '_DMGD'       => '0:M',
+        '_AIDN'       => '0:M',
+        'OBJE'        => '0:M',
+        'NOTE'        => '0:M',
+        'SOUR'        => '0:M',
+        'CHAN'        => '0:1',
+    ];
 }

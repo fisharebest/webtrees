@@ -30,7 +30,7 @@ use function preg_match;
  */
 class PhoneNumber extends AbstractElement
 {
-    protected const MAX_LENGTH = 25;
+    protected const MAXIMUM_LENGTH = 25;
 
     /**
      * Display the value of this type of element.

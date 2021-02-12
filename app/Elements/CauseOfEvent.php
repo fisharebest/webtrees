@@ -27,5 +27,5 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class CauseOfEvent extends AbstractElement
 {
-    protected const MAX_LENGTH = 90;
+    protected const MAXIMUM_LENGTH = 90;
 }

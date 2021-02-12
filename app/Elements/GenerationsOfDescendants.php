@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\Tree;
  */
 class GenerationsOfDescendants extends AbstractElement
 {
-    protected const MAX_LENGTH = 4;
+    protected const MAXIMUM_LENGTH = 4;
 
     /**
      * Display the value of this type of element.

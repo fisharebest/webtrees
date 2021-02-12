@@ -52,7 +52,8 @@ abstract class AbstractElement implements ElementInterface
     protected const REGEX_URL = '~((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?~';
 
     // HTML attributes for an <input>
-    protected const MAX_LENGTH = false;
+    protected const MAXIMUM_LENGTH = false;
+    protected const PATTERN        = false;
 
     // Which child elements can appear under this element.
     protected const SUBTAGS = [];
@@ -144,7 +145,8 @@ abstract class AbstractElement implements ElementInterface
             'id'       => $id,
             'name'     => $name,
             'value'    => $value,
-            'maxvalue' => static::MAX_LENGTH,
+            'maxvalue' => static::MAXIMUM_LENGTH,
+            'pattern'  => static::PATTERN,
         ];
 
         return '<input ' . Html::attributes($attributes) . '">';

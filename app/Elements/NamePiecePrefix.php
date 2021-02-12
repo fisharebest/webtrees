@@ -35,7 +35,7 @@ use function view;
  */
 class NamePiecePrefix extends AbstractElement
 {
-    protected const MAX_LENGTH = 30;
+    protected const MAXIMUM_LENGTH = 30;
 
     /**
      * An edit control for this data.

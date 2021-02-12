@@ -26,7 +26,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class NobilityTypeTitle extends AbstractElement
 {
-    protected const MAX_LENGTH = 120;
+    protected const MAXIMUM_LENGTH = 120;
 
     protected const SUBTAGS = [
         'DATE' => '0:1',

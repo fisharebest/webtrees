@@ -36,7 +36,7 @@ use Fisharebest\Webtrees\Tree;
  */
 class EventDescriptor extends AbstractElement
 {
-    protected const MAX_LENGTH = 90;
+    protected const MAXIMUM_LENGTH = 90;
 
     protected const SUBTAGS = [
         'DATE' => '0:1',

@@ -26,5 +26,5 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class AddressLine3 extends AbstractElement
 {
-    protected const MAX_LENGTH = 60;
+    protected const MAXIMUM_LENGTH = 60;
 }

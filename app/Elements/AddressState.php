@@ -25,5 +25,5 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class AddressState extends AbstractElement
 {
-    protected const MAX_LENGTH = 60;
+    protected const MAXIMUM_LENGTH = 60;
 }

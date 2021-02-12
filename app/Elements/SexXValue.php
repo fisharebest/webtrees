@@ -19,11 +19,29 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+
+use function strtoupper;
+use function view;
+
 /**
- * SUBMITTER_NAME := {Size=1:60}
- * The name of the submitter formatted for display and address generation.
+ * A modification to the standard SEX record, which allows 'X'.
+ * Gedcom-L defines this as 'Intersex'.  We use the more general term 'Other'.
  */
-class SubmitterName extends AbstractElement
+class SexXValue extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 60;
+    /**
+     * A list of controlled values for this element
+     *
+     * @return array<int|string,string>
+     */
+    public function values(): array
+    {
+        $values = parent::values();
+
+        $values['X'] = I18N::translate('Other');
+
+        return $values;
+    }
 }

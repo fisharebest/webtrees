@@ -19,23 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\I18N;
 
-use function e;
-use function rawurlencode;
 use function strtoupper;
 
 /**
- * ANCESTRAL_FILE_NUMBER := {Size=1:12}
- * A unique permanent record number of an individual record contained in the
- * Family History Department's Ancestral File.
+ * <TYPE_OF_DEMOGRAPHICAL_DATA>:= {Size=1:35}
+ * Type the demographic data for a place.
+ * [ HSHO | CITI ] means: household | resident
  */
-class AncestralFileNumber extends AbstractElement
+class DemographicDataType extends AbstractElement
 {
-    protected const EXTERNAL_URL = 'https://www.familysearch.org/search/family-trees/results?q.afnId=';
-
-    protected const MAXIMUM_LENGTH = 12;
-
     /**
      * Convert a value to a canonical form.
      *
@@ -48,19 +42,22 @@ class AncestralFileNumber extends AbstractElement
         return strtoupper(parent::canonical($value));
     }
 
-    /**
-     * Display the value of this type of element.
-     *
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
-     */
-    public function value(string $value, Tree $tree): string
-    {
-        $canonical = $this->canonical($value);
-        $url       = static::EXTERNAL_URL . rawurlencode($canonical);
 
-        return '<a dir="ltr" href="' . e($url) . '" rel="nofollow">' . e($canonical) . '</a>';
+    /**
+     * A list of controlled values for this element
+     *
+     * @return array<int|string,string>
+     */
+    public function values(): array
+    {
+        $values = [
+            ''     => '',
+            'HSHO' => I18N::translate('household'),
+            'CITI' => I18N::translate('citizen'),
+        ];
+
+        uasort($values, [I18N::class, 'strcasecmp']);
+
+        return $values;
     }
 }

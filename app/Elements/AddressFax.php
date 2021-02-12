@@ -30,7 +30,7 @@ use function preg_match;
  */
 class AddressFax extends AbstractElement
 {
-    protected const MAX_LENGTH = 60;
+    protected const MAXIMUM_LENGTH = 60;
 
     /**
      * Display the value of this type of element.

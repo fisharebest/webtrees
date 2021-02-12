@@ -25,5 +25,5 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class NameOfRepository extends AbstractElement
 {
-    protected const MAX_LENGTH = 90;
+    protected const MAXIMUM_LENGTH = 90;
 }

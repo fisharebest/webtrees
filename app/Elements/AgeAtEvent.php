@@ -44,7 +44,7 @@ use function strtoupper;
  */
 class AgeAtEvent extends AbstractElement
 {
-    protected const MAX_LENGTH = 12;
+    protected const MAXIMUM_LENGTH = 12;
 
     public function canonical(string $value): string
     {

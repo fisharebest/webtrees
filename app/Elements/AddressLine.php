@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\Tree;
  */
 class AddressLine extends AbstractElement
 {
-    protected const MAX_LENGTH = 60;
+    protected const MAXIMUM_LENGTH = 60;
 
     /**
      * Convert a value to a canonical form.

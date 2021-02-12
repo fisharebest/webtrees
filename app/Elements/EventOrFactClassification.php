@@ -46,5 +46,5 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class EventOrFactClassification extends AbstractElement
 {
-    protected const MAX_LENGTH = 90;
+    protected const MAXIMUM_LENGTH = 90;
 }

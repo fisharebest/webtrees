@@ -34,7 +34,7 @@ use function substr;
  */
 class PafUid extends AbstractElement
 {
-    protected const MAX_LENGTH = 34;
+    protected const MAXIMUM_LENGTH = 34;
 
     /**
      * Create a default value for this element.

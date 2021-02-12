@@ -33,7 +33,7 @@ use function uasort;
  */
 class SourceMediaType extends AbstractElement
 {
-    protected const MAX_LENGTH = 15;
+    protected const MAXIMUM_LENGTH = 15;
 
     /**
      * Convert a value to a canonical form.

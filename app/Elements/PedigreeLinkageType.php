@@ -33,7 +33,7 @@ use Fisharebest\Webtrees\I18N;
  */
 class PedigreeLinkageType extends AbstractElement
 {
-    protected const MAX_LENGTH = 7;
+    protected const MAXIMUM_LENGTH = 7;
 
     /**
      * A list of controlled values for this element

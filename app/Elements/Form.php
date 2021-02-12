@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\Tree;
  */
 class Form extends AbstractElement
 {
-    protected const MAX_LENGTH = 20;
+    protected const MAXIMUM_LENGTH = 20;
 
     /**
      * Create a default value for this element.

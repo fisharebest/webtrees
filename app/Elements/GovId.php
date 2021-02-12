@@ -32,7 +32,7 @@ class GovId extends AbstractElement
 {
     protected const EXTERNAL_URL = 'https://gov.genealogy.net/item/show/';
 
-    protected const MAX_LENGTH = 12;
+    protected const MAXIMUM_LENGTH = 12;
 
     /**
      * Convert a value to a canonical form.

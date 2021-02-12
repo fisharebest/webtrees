@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Tree;
  */
 class SourceCallNumber extends AbstractElement
 {
-    protected const MAX_LENGTH = 120;
+    protected const MAXIMUM_LENGTH = 120;
     /**
      * Display the value of this type of element.
      *

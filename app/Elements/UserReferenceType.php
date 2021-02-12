@@ -25,5 +25,5 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class UserReferenceType extends AbstractElement
 {
-    protected const MAX_LENGTH = 40;
+    protected const MAXIMUM_LENGTH = 40;
 }

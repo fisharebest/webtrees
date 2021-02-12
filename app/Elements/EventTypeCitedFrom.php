@@ -31,5 +31,5 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class EventTypeCitedFrom extends AbstractElement
 {
-    protected const MAX_LENGTH = 15;
+    protected const MAXIMUM_LENGTH = 15;
 }
