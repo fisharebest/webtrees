@@ -283,7 +283,7 @@ class Fact
             return $gedcom_service->readLatitude($match[1]);
         }
 
-        return 0.0;
+        return null;
     }
 
     /**
@@ -299,7 +299,7 @@ class Fact
             return $gedcom_service->readLongitude($match[1]);
         }
 
-        return 0.0;
+        return null;
     }
 
     /**
