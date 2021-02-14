@@ -1560,6 +1560,16 @@ parameters:
 			path: app/Report/TcpdfWrapper.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$max\\.$#"
+			count: 2
+			path: app/Schema/Migration44.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$min\\.$#"
+			count: 1
+			path: app/Schema/Migration44.php
+
+		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Source but returns Fisharebest\\\\Webtrees\\\\Source\\|null\\.$#"
 			count: 1
 			path: app/Services/AdminService.php

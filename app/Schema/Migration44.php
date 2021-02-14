@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Schema;
 
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Blueprint;
 use PDOException;
@@ -79,6 +78,33 @@ class Migration44 implements MigrationInterface
                 ->update([
                     'pl1.pl_parent_id' => 0,
                 ]);
+
+            // The lack of unique key constraints means that there may be duplicates...
+            while (true) {
+                // Two places with the same name and parent...
+                $row = DB::table('placelocation')
+                    ->select([
+                        new Expression('MIN(pl_id) AS min'),
+                        new Expression('MAX(pl_id) AS max'),
+                    ])
+                    ->groupBy(['pl_parent_id', 'pl_place'])
+                    ->having(new Expression('COUNT(*)'), '>', '1')
+                    ->first();
+
+                if ($row === null) {
+                    break;
+                }
+
+                // ...move children to the first
+                DB::table('placelocation')
+                    ->where('pl_parent_id', '=', $row->max)
+                    ->update(['pl_parent_id' => $row->min]);
+
+                // ...delete the second
+                DB::table('placelocation')
+                    ->where('pl_id', '=', $row->max)
+                    ->delete();
+            }
 
             // This is the SQL standard.  It works with Postgres, Sqlite and MySQL 8
             $select1 = DB::table('placelocation')
