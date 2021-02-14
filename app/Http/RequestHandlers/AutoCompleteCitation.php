@@ -47,7 +47,7 @@ class AutoCompleteCitation extends AbstractAutocompleteHandler
         $source = Registry::sourceFactory()->make($xref, $tree);
         $source = Auth::checkSourceAccess($source);
 
-        $regex_query = preg_quote(strtr($query, [' ' => '.+']), '/');
+        $regex_query = strtr(preg_quote($query, '/'), [' ' => '.+']);
 
         // Fetch all records with a link to this source
         $individuals = DB::table('individuals')
