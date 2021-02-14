@@ -128,7 +128,7 @@ class UserListData implements RequestHandlerInterface
         $sort_columns   = [];
 
         $callback = function (stdClass $row) use ($languages, $user): array {
-            $row_user = $this->user_service->find($row->user_id);
+            $row_user = $this->user_service->find((int) $row->user_id);
             $datum = [
                 view('admin/users-table-options', ['row' => $row, 'self' => $user, 'user' => $row_user]),
                 $row->user_id,
