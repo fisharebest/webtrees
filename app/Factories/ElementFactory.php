@@ -151,6 +151,7 @@ use Fisharebest\Webtrees\Elements\ReceivingSystemName;
 use Fisharebest\Webtrees\Elements\RelationIsDescriptor;
 use Fisharebest\Webtrees\Elements\ReligiousAffiliation;
 use Fisharebest\Webtrees\Elements\RepositoryRecord;
+use Fisharebest\Webtrees\Elements\ResearchTask;
 use Fisharebest\Webtrees\Elements\Residence;
 use Fisharebest\Webtrees\Elements\ResponsibleAgency;
 use Fisharebest\Webtrees\Elements\RestrictionNotice;
@@ -358,6 +359,9 @@ class ElementFactory implements ElementFactoryInterface
                 'FAM:SOUR:QUAY'            => new CertaintyAssessment(I18N::translate('Quality of data')),
                 'FAM:SUBM'                 => new XrefSubmitter(I18N::translate('Submitter')),
                 'FAM:WIFE'                 => new XrefIndividual(I18N::translate('Wife')),
+                'FAM:_TODO'                => new ResearchTask(I18N::translate('Research task')), // *** webtrees
+                'FAM:_TODO:DATE'           => new TransmissionDate(I18N::translate('Date')), // *** webtrees
+                'FAM:_TODO:_WT_USER'       => new WebtreesUser(I18N::translate('User')), // *** webtrees
                 'FAM:_UID'                 => new PafUid(I18N::translate('Unique identifier')), // ***
                 'HEAD'                     => new HeaderRecord(I18N::translate('Header')),
                 'HEAD:CHAR'                => new CharacterSet(I18N::translate('Character set')),
@@ -618,8 +622,8 @@ class ElementFactory implements ElementFactoryInterface
                 'INDI:SUBM'                => new XrefSubmitter(I18N::translate('Submitter')),
                 'INDI:TITL'                => new NobilityTypeTitle(I18N::translate('Title')),
                 'INDI:WILL'                => new Will(I18N::translate('Will')),
-                'INDI:_TODO'               => new UnknownElement(I18N::translate('Research task')), // *** webtrees
-                'INDI:_TODO:DATE'          => new DateValue(I18N::translate('Date')), // *** webtrees
+                'INDI:_TODO'               => new ResearchTask(I18N::translate('Research task')), // *** webtrees
+                'INDI:_TODO:DATE'          => new TransmissionDate(I18N::translate('Date')), // *** webtrees
                 'INDI:_TODO:_WT_USER'      => new WebtreesUser(I18N::translate('User')), // *** webtrees
                 'INDI:_UID'                => new PafUid(I18N::translate('Unique identifier')), // ***
                 'INDI:_WT_OBJE_SORT'       => new XrefMedia(I18N::translate('Re-order media')), // *** webtrees 1.7
@@ -767,7 +771,7 @@ class ElementFactory implements ElementFactoryInterface
                 'SUBN:SUBM'                => new XrefSubmitter(I18N::translate('Submitter')),
                 'SUBN:TEMP'                => new TempleCode(/* I18N: https://en.wikipedia.org/wiki/Temple_(LDS_Church)*/ I18N::translate('Temple')),
                 'SUBN:_UID'                => new PafUid(I18N::translate('Unique identifier')), // ***
-                'TRLR'                     => new EmptyElement(I18N::translate('Trailer')), // Not used in webtrees
+                'TRLR'                     => new EmptyElement(I18N::translate('Trailer')),
             ];
         }
 
